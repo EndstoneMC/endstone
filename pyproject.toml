@@ -1,0 +1,37 @@
+[build-system]
+requires = ["scikit-build-core"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "endstone"
+version = "0.0.1"
+authors = [
+    { name = "Vincent Wu", email = "magicdroidx@gmail.com" }
+]
+description = "Endstone offers a Python-based plugin API, enabling developers to create plugins that enhance Bedrock Dedicated Servers with various features and functionalities."
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["python", "bedrock", "minecraft"]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: Microsoft :: Windows"
+]
+
+dependencies = [
+    "click",
+    "requests",
+    "tqdm"
+]
+
+[project.optional-dependencies]
+pytest = ["pytest"]
+
+[project.scripts]
+endstone = "endstone.loader.cli:cli"
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+wheel.packages = ["python/endstone"]
+wheel.license-files = ["LICENSE"]

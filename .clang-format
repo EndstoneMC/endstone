@@ -1,0 +1,5 @@
+BasedOnStyle: Microsoft
+AlwaysBreakTemplateDeclarations: Yes
+PackConstructorInitializers: CurrentLine
+BinPackArguments: false
+BinPackParameters: false
