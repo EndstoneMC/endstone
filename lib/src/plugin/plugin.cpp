@@ -3,7 +3,7 @@
 //
 
 #include "plugin.h"
-#include "enstone.h"
+#include "endstone.h"
 
 void PythonPlugin::on_enable()
 {

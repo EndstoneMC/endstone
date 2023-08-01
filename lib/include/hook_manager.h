@@ -5,7 +5,7 @@
 #ifndef ENDSTONE_HOOK_MANAGER_H
 #define ENDSTONE_HOOK_MANAGER_H
 
-#include "enstone.h"
+#include "endstone.h"
 
 template <class R, class T, class... Args>
 void *fp_cast(R (T::*fp)(Args...))

@@ -5,7 +5,7 @@
 #ifndef ENDSTONE_SERVER_H
 #define ENDSTONE_SERVER_H
 
-#include "enstone.h"
+#include "endstone.h"
 #include "plugin_manager.h"
 
 class Server

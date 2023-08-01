@@ -138,14 +138,13 @@ void HookManager::uninstallHooks()
 
 void ServerInstance::startServerThread()
 {
-    py::scoped_interpreter interpreter;
-    py::gil_scoped_release release;
-    printf("Loading plugins...\n");
-    auto &server = Server::getInstance();
-    server.getPluginManager().load_plugins(std::filesystem::current_path() / "plugins");
-    printf("Enabling plugins...\n");
-    server.enablePlugins();
-
+    //    py::scoped_interpreter interpreter;
+    //    py::gil_scoped_release release;
+    //    printf("Loading plugins...\n");
+    //    auto &server = Server::getInstance();
+    //    server.getPluginManager().load_plugins(std::filesystem::current_path() / "plugins");
+    //    printf("Enabling plugins...\n");
+    //    server.enablePlugins();
 
     printf("Hook ServerInstance::startServerThread() is called!\n");
     CALL_ORIGINAL(ServerInstance::startServerThread);
