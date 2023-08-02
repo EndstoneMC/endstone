@@ -4,6 +4,7 @@
 
 #include "plugin.h"
 #include "endstone.h"
+#include "endstone_py.h"
 
 void PythonPlugin::on_enable()
 {

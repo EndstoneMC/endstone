@@ -4,15 +4,16 @@
 
 #ifdef _WIN32
 
+#include "endstone.h"
 #include "hook_error.h"
 #include "hook_manager.h"
+#include "logger.h"
 #include "server.h"
 
 #include <DbgHelp.h>
 #include <MinHook.h>
 #include <Psapi.h>
-
-#define RTLD_NEXT GetCurrentProcess()
+#include <indicators/progress_spinner.hpp>
 
 const IHook &HookManager::getHook(const std::string &symbol)
 {
@@ -43,75 +44,70 @@ void loadSymbols()
     }
 }
 
-void *dlsym(void *handle, const char *symbol)
-{
-    MODULEINFO mi = {nullptr};
-    if (!GetModuleInformation(handle, GetModuleHandle(nullptr), &mi, sizeof(mi)))
-    {
-        throw std::system_error(GetLastError(), std::system_category(), "GetModuleInformation failed");
-    }
-
-    // https://learn.microsoft.com/en-us/windows/win32/debug/retrieving-symbol-information-by-name
-    ULONG64 buffer[(sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR) + sizeof(ULONG64) - 1) / sizeof(ULONG64)];
-    auto symbol_info = (PSYMBOL_INFO)buffer;
-
-    symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
-    symbol_info->MaxNameLen = MAX_SYM_NAME;
-
-    if (!SymFromName(handle, symbol, symbol_info))
-    {
-        throw std::system_error(GetLastError(), std::system_category(), "SymFromName failed");
-    }
-
-    return static_cast<char *>(mi.lpBaseOfDll) + symbol_info->Address - 0x140000000;
-}
-
-void HookManager::installHooks()
+void HookManager::initialize()
 {
     if (is_initialised)
     {
         return;
     }
 
+    using namespace indicators;
+    indicators::ProgressSpinner spinner{option::PostfixText{"EndStone is now loading..."},
+                                        option::ForegroundColor{Color::yellow},
+                                        option::SpinnerStates{std::vector<std::string>{"-", "\\", "|", "/"}},
+                                        option::FontStyles{std::vector<FontStyle>{FontStyle::bold}}};
+    std::this_thread::sleep_for(std::chrono::milliseconds(40));
+
     MH_STATUS status;
 
-    printf("Initialising MinHook...\n");
+    spinner.set_option(option::PostfixText{"Initialising MinHook..."});
     status = MH_Initialize();
     if (status != MH_OK)
     {
         throw std::system_error(minhook::make_error_code(status));
     }
+    spinner.set_progress(5);
 
-    printf("Loading symbols...\n");
+    spinner.set_option(option::PostfixText{"Loading symbols..."});
     loadSymbols();
+    spinner.set_progress(10);
 
-    printf("Adding hooks...\n");
-    HOOK_FUNCTION(ServerInstance::startServerThread)
+    registerHooks();
 
-    printf("Creating hooks...\n");
+    spinner.set_option(option::PostfixText{"Creating hooks..."});
+    auto step = (90 - spinner.current()) / hooks.size();
     for (const auto &item : hooks)
     {
+        auto symbol = item.first.c_str();
         auto &hook = const_cast<IHook &>(item.second);
-        printf("%p -> %p\n", hook.p_target, hook.p_detour);
+        hook.p_target = lookupSymbol(symbol);
+        // printf("%p -> %p\n", hook.p_target, hook.p_detour);
         status = MH_CreateHook(hook.p_target, hook.p_detour, &hook.p_original);
         if (status != MH_OK)
         {
             throw std::system_error(minhook::make_error_code(status));
         }
+        spinner.set_progress(spinner.current() + step);
     }
 
-    printf("Enabling hooks...\n");
+    spinner.set_option(option::PostfixText{"Enabling hooks..."});
     status = MH_EnableHook(MH_ALL_HOOKS);
     if (status != MH_OK)
     {
         throw std::system_error(minhook::make_error_code(status));
     }
+    spinner.set_progress(95);
 
     is_initialised = true;
-    printf("Installed all hooks.\n");
+    spinner.set_option(option::ForegroundColor{Color::green});
+    //    spinner.set_option(option::PrefixText{""});
+    spinner.set_option(option::ShowSpinner{false});
+    spinner.set_option(option::ShowPercentage{false});
+    spinner.set_option(option::PostfixText{"EndStone loaded successfully!"});
+    spinner.mark_as_completed();
 }
 
-void HookManager::uninstallHooks()
+void HookManager::finalize()
 {
     if (!is_initialised)
     {
@@ -136,19 +132,28 @@ void HookManager::uninstallHooks()
     is_initialised = false;
 }
 
-void ServerInstance::startServerThread()
+void *lookupSymbol(const char *symbol)
 {
-    //    py::scoped_interpreter interpreter;
-    //    py::gil_scoped_release release;
-    //    printf("Loading plugins...\n");
-    //    auto &server = Server::getInstance();
-    //    server.getPluginManager().load_plugins(std::filesystem::current_path() / "plugins");
-    //    printf("Enabling plugins...\n");
-    //    server.enablePlugins();
+    auto handle = GetCurrentProcess();
+    MODULEINFO mi = {nullptr};
+    if (!GetModuleInformation(handle, GetModuleHandle(nullptr), &mi, sizeof(mi)))
+    {
+        throw std::system_error(GetLastError(), std::system_category(), "GetModuleInformation failed");
+    }
 
-    printf("Hook ServerInstance::startServerThread() is called!\n");
-    CALL_ORIGINAL(ServerInstance::startServerThread);
-    printf("Original ServerInstance::startServerThread() is called!\n");
+    // https://learn.microsoft.com/en-us/windows/win32/debug/retrieving-symbol-information-by-name
+    ULONG64 buffer[(sizeof(SYMBOL_INFO) + MAX_SYM_NAME * sizeof(TCHAR) + sizeof(ULONG64) - 1) / sizeof(ULONG64)];
+    auto symbol_info = (PSYMBOL_INFO)buffer;
+
+    symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
+    symbol_info->MaxNameLen = MAX_SYM_NAME;
+
+    if (!SymFromName(handle, symbol, symbol_info))
+    {
+        throw std::system_error(GetLastError(), std::system_category(), "SymFromName failed");
+    }
+
+    return static_cast<char *>(mi.lpBaseOfDll) + symbol_info->Address - 0x140000000;
 }
 
 #endif // _WIN32

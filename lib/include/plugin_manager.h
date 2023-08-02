@@ -8,6 +8,7 @@
 #include <utility>
 
 #include "endstone.h"
+#include "endstone_py.h"
 
 class Server;
 

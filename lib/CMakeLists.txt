@@ -28,7 +28,8 @@ pybind11_add_module(plugin MODULE src/plugin/plugin.cpp)
 
 target_link_libraries(libendstone PRIVATE
         pybind11::embed
-        tomlplusplus::tomlplusplus)
+        tomlplusplus::tomlplusplus
+        indicators::indicators)
 
 
 install(TARGETS libendstone plugin

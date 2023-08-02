@@ -7,6 +7,8 @@
 
 #include "endstone.h"
 
+void *lookupSymbol(const char *symbol);
+
 template <class R, class T, class... Args>
 void *fp_cast(R (T::*fp)(Args...))
 {
@@ -14,6 +16,13 @@ void *fp_cast(R (T::*fp)(Args...))
     std::function<R(T *, Args...)> func = fp;
     // Obtain function pointer from std::function
     void *detour_ptr = *reinterpret_cast<void **>(func.template target<R (T::*)(Args...)>());
+    return detour_ptr;
+}
+
+template <class R, class... Args>
+void *fp_cast(R (*fp)(Args...))
+{
+    void *detour_ptr = reinterpret_cast<void *>(fp);
     return detour_ptr;
 }
 
@@ -27,19 +36,28 @@ R call_original(const std::string &symbol, R (T::*)(Args...), T *instance, Args.
     return bound_func(args...);
 }
 
+template <class R, class... Args>
+R call_original(const std::string &symbol, R (*)(Args...), Args... args)
+{
+    using fp = R (*)(Args...);
+    auto hook = HookManager::getHook(symbol);
+    auto func = reinterpret_cast<fp>(hook.p_original);
+    return func(args...);
+}
+
 struct IHook
 {
-    void *p_target = nullptr;
-    void *p_detour = nullptr;
-    void *p_original = nullptr;
+    void *p_target;
+    void *p_detour;
+    void *p_original;
 };
 
 class HookManager
 {
   public:
-    static void installHooks();
-
-    static void uninstallHooks();
+    static void initialize();
+    static void finalize();
+    static void registerHooks();
 
     const static IHook &getHook(const std::string &symbol);
 
@@ -48,20 +66,14 @@ class HookManager
     inline static std::map<std::string, IHook> hooks;
 };
 
-class ServerInstance
-{
-  public:
-    void startServerThread();
-};
-
 #define HOOK_FUNCTION(symbol)                                                                                          \
     {                                                                                                                  \
         IHook hook;                                                                                                    \
-        hook.p_target = dlsym(RTLD_NEXT, #symbol);                                                                     \
         hook.p_detour = fp_cast(&symbol);                                                                              \
         hooks.insert({#symbol, hook});                                                                                 \
     }
 
-#define CALL_ORIGINAL(symbol, ...) call_original(#symbol, &symbol, this, ##__VA_ARGS__)
+#define CALL_ORIGINAL_INSTANCE(symbol, ...) call_original(#symbol, &symbol, this, ##__VA_ARGS__);
+#define CALL_ORIGINAL(symbol, ...) call_original(#symbol, &symbol, ##__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_MANAGER_H

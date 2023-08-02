@@ -23,8 +23,13 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
         GIT_TAG v3.3.0
 )
+FetchContent_Declare(
+        indicators
+        GIT_REPOSITORY https://github.com/p-ranav/indicators.git
+        GIT_TAG v2.3
+)
 
-FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus)
+FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus indicators)
 
 include(DynamicVersion)
 #dynamic_version()
