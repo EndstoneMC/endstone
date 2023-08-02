@@ -1,4 +1,3 @@
-import importlib.resources
 import logging
 import os
 import platform
@@ -11,7 +10,7 @@ import click
 import requests
 import tqdm
 
-from endstone import __version__
+from endstone import __minecraft__version__
 
 logger = logging.getLogger("loader")
 
@@ -35,14 +34,14 @@ def cli(path: str, yes: bool):
     exec_path = (path / filename).absolute()
     if not exec_path.exists():
         if not yes:
-            download = click.confirm("Bedrock Dedicated Server can not be found. "
-                                     "Would you like to download it now?",
+            download = click.confirm(f"Bedrock Dedicated Server (v{__minecraft__version__}) can not be found. "
+                                     f"Would you like to download it now?",
                                      default=True)
         else:
             download = True
 
         if download:
-            zip_filename = f"bedrock-server-{__version__}.zip"
+            zip_filename = f"bedrock-server-{__minecraft__version__}.zip"
 
             response = requests.get(urllib.parse.urljoin(base_url, zip_filename), stream=True)
             assert response.status_code == 200, f"Error while downloading from {response.url}"

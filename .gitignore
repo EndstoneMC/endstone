@@ -11,5 +11,7 @@ CTestTestfile.cmake
 _deps
 server/*
 .idea/*
+build/*
 cmake-build-debug/*
 cmake-build-release/*
+python/endstone/_version.py

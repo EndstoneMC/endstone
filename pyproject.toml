@@ -4,7 +4,6 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "endstone"
-version = "0.0.1"
 authors = [
     { name = "Vincent Wu", email = "magicdroidx@gmail.com" }
 ]
@@ -18,12 +17,12 @@ classifiers = [
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: Microsoft :: Windows"
 ]
-
 dependencies = [
     "click",
     "requests",
     "tqdm"
 ]
+dynamic = ["version"]
 
 [project.optional-dependencies]
 pytest = ["pytest"]
@@ -32,6 +31,13 @@ pytest = ["pytest"]
 endstone = "endstone.loader.cli:cli"
 
 [tool.scikit-build]
+build-dir = "build/{wheel_tag}"
 cmake.build-type = "Release"
 wheel.packages = ["python/endstone"]
 wheel.license-files = ["LICENSE"]
+metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+sdist.include = ["python/endstone/_version.py"]
+
+[tool.setuptools_scm]
+write_to = "python/endstone/_version.py"
+version_scheme = "no-guess-dev"
