@@ -80,9 +80,8 @@ class BedrockLog
         LOG_ALL = -1,
         LOG_VERBOSE = 1,
         LOG_INFO = 2,
-        LOG_WARN = 3,
+        LOG_WARN = 4,
         LOG_ERROR = 8,
-        LOG_UNKNOWN = 0x40000000,
     };
 
     static void log(LogCategory category,
