@@ -68,12 +68,12 @@ class HookManager
 
 #define HOOK_FUNCTION(symbol)                                                                                          \
     {                                                                                                                  \
-        IHook hook;                                                                                                    \
+        IHook hook{};                                                                                                  \
         hook.p_detour = fp_cast(&symbol);                                                                              \
         hooks.insert({#symbol, hook});                                                                                 \
     }
 
-#define CALL_ORIGINAL_INSTANCE(symbol, ...) call_original(#symbol, &symbol, this, ##__VA_ARGS__);
-#define CALL_ORIGINAL(symbol, ...) call_original(#symbol, &symbol, ##__VA_ARGS__);
+#define CALL_ORIGINAL(symbol, ...) call_original(#symbol, &symbol, this, ##__VA_ARGS__);
+#define CALL_ORIGINAL_STATIC(symbol, ...) call_original(#symbol, &symbol, ##__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_MANAGER_H

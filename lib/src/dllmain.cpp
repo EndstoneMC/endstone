@@ -22,7 +22,7 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
 
             // Initialize Python interpreter
             py::initialize_interpreter();
-            // Release the GIL from main thread so that it can acquired by the server thread
+            // Release the GIL from main thread so that it can be acquired by the server thread
             state = PyEval_SaveThread();
 
             {

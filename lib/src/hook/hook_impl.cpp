@@ -19,26 +19,26 @@ void HookManager::registerHooks()
 void ServerInstance::startServerThread()
 {
     Server::getInstance().getPluginManager().load_plugins(std::filesystem::current_path() / "plugins");
-    CALL_ORIGINAL_INSTANCE(ServerInstance::startServerThread)
+    CALL_ORIGINAL(ServerInstance::startServerThread)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *serverInstance)
 {
     // Server loop starts
     Server::getInstance().enablePlugins();
-    CALL_ORIGINAL_INSTANCE(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
+    CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance *serverInstance)
 {
     // Server loop stops
-    CALL_ORIGINAL_INSTANCE(ServerInstanceEventCoordinator::sendServerThreadStopped, serverInstance)
+    CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStopped, serverInstance)
 }
 
 void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance *serverInstance)
 {
     // Server ticks
-    CALL_ORIGINAL_INSTANCE(ServerInstanceEventCoordinator::sendServerUpdateEnd, serverInstance)
+    CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerUpdateEnd, serverInstance)
 }
 
 void BedrockLog::log_va(BedrockLog::LogCategory category,
@@ -51,5 +51,5 @@ void BedrockLog::log_va(BedrockLog::LogCategory category,
                         const char *format,
                         va_list args)
 {
-    CALL_ORIGINAL(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
+    CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
 }
