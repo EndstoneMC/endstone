@@ -100,6 +100,8 @@ void PluginManager::disablePlugins() const
 void PluginManager::clearPlugins()
 {
     disablePlugins();
+
+    ENDSTONE_INFO(SERVER, "Clearing plugins...")
     {
         py::gil_scoped_acquire acquire{};
         plugins_.clear();
