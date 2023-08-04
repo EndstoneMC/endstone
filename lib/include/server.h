@@ -21,8 +21,6 @@ class Server
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
     [[nodiscard]] PluginManager &getPluginManager() const;
-    void enablePlugin(const py::object &plugin) const;
-    void enablePlugins() const;
 
   private:
     Server();

@@ -17,13 +17,18 @@ class PluginManager
   public:
     explicit PluginManager(Server &server);
 
-    py::object load_plugin(const std::filesystem::path &path);
-    std::vector<py::object> load_plugins(const std::filesystem::path &directory);
+    py::object loadPlugin(const std::filesystem::path &path);
+    std::vector<py::object> loadPlugins(const std::filesystem::path &directory);
+    void enablePlugin(const py::object &plugin) const;
+    void enablePlugins() const;
+    void disablePlugin(const py::object &plugin) const;
+    void disablePlugins() const;
+    void clearPlugins();
     [[nodiscard]] const std::vector<py::object> &getPlugins() const;
 
   private:
-    Server &_server;
-    std::vector<py::object> plugins;
+    Server &server_;
+    std::vector<py::object> plugins_;
 };
 
 #endif // ENDSTONE_PLUGIN_MANAGER_H

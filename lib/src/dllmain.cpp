@@ -45,7 +45,7 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
     case DLL_PROCESS_DETACH: {
         // Reacquire GIL and associate with thread state
         PyEval_RestoreThread(state);
-        py::finalize_interpreter();
+        // py::finalize_interpreter();
 
         if (lpvReserved != nullptr)
         {
