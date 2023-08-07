@@ -41,4 +41,5 @@ sdist.include = ["python/endstone/_version.py"]
 
 [tool.setuptools_scm]
 write_to = "python/endstone/_version.py"
-version_scheme = "no-guess-dev"
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"

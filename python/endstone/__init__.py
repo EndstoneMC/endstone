@@ -1,10 +1,12 @@
 import importlib.metadata
+from packaging.version import Version
 
 __version__ = importlib.metadata.version('endstone')
 
 
 def _get_minecraft_version():
-    major, minor, patch, build = [int(a) for a in __version__.split('.')[:4]]
+    version = Version(__version__)
+    major, minor, patch, build = [int(a) for a in version.release]
     return f"{major}.{minor}.{patch}.{build:02}"
 
 
