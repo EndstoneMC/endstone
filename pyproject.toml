@@ -21,7 +21,8 @@ dependencies = [
     "click",
     "requests",
     "toml",
-    "tqdm"
+    "tqdm",
+    "packaging"
 ]
 dynamic = ["version"]
 
