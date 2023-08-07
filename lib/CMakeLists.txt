@@ -29,9 +29,9 @@ target_link_libraries(libendstone PRIVATE
         tomlplusplus::tomlplusplus
         indicators::indicators)
 
-pybind11_add_module(_server MODULE src/python/server.cpp src/python/plugin_manager.cpp src/python/plugin.cpp)
-pybind11_add_module(_plugin MODULE src/python/server.cpp src/python/plugin_manager.cpp src/python/plugin.cpp)
-pybind11_add_module(_plugin_manager MODULE src/python/server.cpp src/python/plugin_manager.cpp src/python/plugin.cpp)
+pybind11_add_module(_server MODULE src/python/server.cpp)
+pybind11_add_module(_plugin MODULE src/python/plugin.cpp)
+pybind11_add_module(_plugin_manager MODULE src/python/plugin_manager.cpp src/python/server.cpp)
 
 install(TARGETS libendstone _plugin _plugin_manager _server
         LIBRARY DESTINATION endstone

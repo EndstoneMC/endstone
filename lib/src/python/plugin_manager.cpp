@@ -26,7 +26,7 @@ std::vector<Plugin *> PyPluginManager::loadPlugins(const std::string &directory)
 PYBIND11_MODULE(_plugin_manager, m)
 {
     py::class_<PluginManager, PyPluginManager>(m, "PluginManager")
-        .def(py::init<Server &>())
-        .def("load_plugin", &PluginManager::loadPlugin)
-        .def("load_plugins", &PluginManager::loadPlugins);
+        .def(py::init<Server *>(), py::arg("server"))
+        .def("load_plugin", &PluginManager::loadPlugin, py::arg("path"))
+        .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"));
 }

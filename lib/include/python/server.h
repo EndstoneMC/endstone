@@ -20,6 +20,9 @@ class Server
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
+    void loadPlugins();
+    void enablePlugins();
+
   private:
     Server();
 

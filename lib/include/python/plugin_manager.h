@@ -15,7 +15,7 @@ class Server;
 class PluginManager
 {
   public:
-    explicit PluginManager(Server &server){};
+    explicit PluginManager(Server *server){};
     virtual ~PluginManager() = default;
 
     virtual Plugin *loadPlugin(const std::string &path) = 0;
