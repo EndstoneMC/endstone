@@ -12,9 +12,6 @@ Server::Server()
         auto module = py::module_::import("endstone.plugin");
         auto cls = module.attr("PluginManager");
         pluginManager_ = cls(this);
-
-        //        pluginManager_.attr("load_plugins")("abc");
-        //        pluginManager_.attr("enable_plugins")();
     }
     catch (py::error_already_set &e)
     {
@@ -30,14 +27,12 @@ Server::Server()
 void Server::loadPlugins()
 {
     py::gil_scoped_acquire lock{};
-    printf("Loading plugins...\n");
     pluginManager_.attr("load_plugins")((std::filesystem::current_path() / "plugins").string());
 }
 
 void Server::enablePlugins()
 {
     py::gil_scoped_acquire lock{};
-    printf("Enabling plugins...\n");
     pluginManager_.attr("enable_plugins")();
 }
 

@@ -20,6 +20,7 @@ classifiers = [
 dependencies = [
     "click",
     "requests",
+    "toml",
     "tqdm"
 ]
 dynamic = ["version"]

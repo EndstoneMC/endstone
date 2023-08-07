@@ -19,7 +19,6 @@ void HookManager::registerHooks()
 void ServerInstance::startServerThread()
 {
     Server::getInstance().loadPlugins();
-    // Server::getInstance().getPluginManager().loadPlugins(std::filesystem::current_path() / "plugins");
     CALL_ORIGINAL(ServerInstance::startServerThread)
 }
 
@@ -27,7 +26,6 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *ser
 {
     // Server loop starts
     Server::getInstance().enablePlugins();
-    // Server::getInstance().getPluginManager().enablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
 }
 
