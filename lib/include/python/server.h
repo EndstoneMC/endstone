@@ -29,9 +29,9 @@ class Server
     Server();
 
   private:
-    py::scoped_interpreter interpreter_;
-    py::gil_scoped_release release_;
+    py::scoped_interpreter interpreter_{};
     py::object pluginManager_;
+    py::gil_scoped_release release_{}; // Must be the last member to re-acquire GIL before destroying the PluginManager
 };
 
 #endif // ENDSTONE_SERVER_H
