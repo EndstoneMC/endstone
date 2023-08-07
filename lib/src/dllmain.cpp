@@ -19,19 +19,7 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
         try
         {
             // Initialize once for each new process.
-
-            // Initialize Python interpreter
-            py::initialize_interpreter();
-            // Release the GIL from main thread so that it can be acquired by the server thread
-            state = PyEval_SaveThread();
-
-            {
-                // Destroy the thread state
-                // Reference: https://github.com/wjakob/nanogui/blob/master/python/main.cpp#L89
-                py::gil_scoped_acquire acquire{};
-                acquire.dec_ref();
-            }
-
+            Server::getInstance();
             HookManager::initialize();
             break;
         }
@@ -43,10 +31,6 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
         }
     }
     case DLL_PROCESS_DETACH: {
-        // Reacquire GIL and associate with thread state
-        PyEval_RestoreThread(state);
-        // py::finalize_interpreter();
-
         if (lpvReserved != nullptr)
         {
             break; // do not do cleanup if process termination scenario

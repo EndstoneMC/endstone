@@ -27,6 +27,8 @@ class Server
     Server();
 
   private:
+    py::scoped_interpreter interpreter_;
+    py::gil_scoped_release release_;
     py::object pluginManager_;
 };
 
