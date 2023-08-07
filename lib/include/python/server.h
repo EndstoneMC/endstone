@@ -20,13 +20,18 @@ class Server
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
-    [[nodiscard]] PluginManager &getPluginManager() const;
+    void loadPlugins();
+    void enablePlugins();
+    void disablePlugins();
+    void clearPlugins();
 
   private:
     Server();
 
   private:
-    std::unique_ptr<PluginManager> pluginManager;
+    py::scoped_interpreter interpreter_;
+    py::gil_scoped_release release_;
+    py::object pluginManager_;
 };
 
 #endif // ENDSTONE_SERVER_H

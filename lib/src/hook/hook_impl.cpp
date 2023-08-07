@@ -4,8 +4,8 @@
 
 #include "bedrock/bedrock_log.h"
 #include "bedrock/server_instance.h"
-#include "hook_manager.h"
-#include "server.h"
+#include "hook/hook_manager.h"
+#include "python/server.h"
 
 void HookManager::registerHooks()
 {
@@ -18,21 +18,21 @@ void HookManager::registerHooks()
 
 void ServerInstance::startServerThread()
 {
-    Server::getInstance().getPluginManager().loadPlugins(std::filesystem::current_path() / "plugins");
+    Server::getInstance().loadPlugins();
     CALL_ORIGINAL(ServerInstance::startServerThread)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *serverInstance)
 {
     // Server loop starts
-    Server::getInstance().getPluginManager().enablePlugins();
+    Server::getInstance().enablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance *serverInstance)
 {
     // Server loop stops
-    Server::getInstance().getPluginManager().clearPlugins();
+    Server::getInstance().disablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStopped, serverInstance)
 }
 

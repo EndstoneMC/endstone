@@ -4,10 +4,10 @@ file(
         GLOB_RECURSE SOURCE_FILES
         LIST_DIRECTORIES false
         RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
-        "*.cpp"
+        "src/*.cpp"
 )
 
-add_library(libendstone SHARED ${SOURCE_FILES} src/plugin/plugin_manager.cpp include/plugin_manager.h)
+add_library(libendstone SHARED ${SOURCE_FILES})
 
 include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
@@ -24,14 +24,15 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 
 endif ()
 
-pybind11_add_module(plugin MODULE src/plugin/plugin.cpp)
-
 target_link_libraries(libendstone PRIVATE
         pybind11::embed
         tomlplusplus::tomlplusplus
         indicators::indicators)
 
+pybind11_add_module(_server MODULE src/python/server.cpp)
+pybind11_add_module(_plugin MODULE src/python/plugin.cpp)
+pybind11_add_module(_plugin_manager MODULE src/python/plugin_manager.cpp src/python/server.cpp)
 
-install(TARGETS libendstone plugin
+install(TARGETS libendstone _plugin _plugin_manager _server
         LIBRARY DESTINATION endstone
         RUNTIME DESTINATION endstone)
