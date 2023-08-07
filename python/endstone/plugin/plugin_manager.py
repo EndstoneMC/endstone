@@ -36,7 +36,6 @@ class PluginManager(IPluginManager):
         assert os.path.isdir(directory), f"Path {directory} is not a directory"
 
         results = []
-        # print(f"Loading plugins in {directory}...")
         for entry in Path(directory).iterdir():
             if not entry.is_dir():
                 continue
@@ -54,6 +53,24 @@ class PluginManager(IPluginManager):
 
         return results
 
-    def enable_plugins(self):
+    def enable_plugin(self, plugin: Plugin) -> None:
+        if not plugin.is_enabled():
+            # noinspection PyProtectedMember
+            plugin._set_enabled(True)
+
+    def enable_plugins(self) -> None:
         for plugin in self._plugins:
-            plugin.on_enable()
+            self.enable_plugin(plugin)
+
+    def disable_plugin(self, plugin: Plugin):
+        if plugin.is_enabled():
+            # noinspection PyProtectedMember
+            plugin._set_enabled(False)
+
+    def disable_plugins(self):
+        for plugin in self._plugins:
+            self.disable_plugin(plugin)
+
+    def clear_plugins(self):
+        self.disable_plugins()
+        self._plugins.clear()

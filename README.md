@@ -59,7 +59,7 @@ Here's how you can get started with Endstone:
       Then install locally:
 
       ```bash
-      pip install -e .
+      pip install -U .
       ```
 
 4. **Start the server**

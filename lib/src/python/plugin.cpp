@@ -35,11 +35,35 @@ void PyPlugin::onDisable()
     );
 }
 
+bool Plugin::isEnabled() const
+{
+    return enabled_;
+}
+
+void Plugin::setEnabled(bool enabled)
+{
+    if (enabled_ != enabled)
+    {
+        enabled_ = enabled;
+
+        if (enabled_)
+        {
+            onEnable();
+        }
+        else
+        {
+            onDisable();
+        }
+    }
+}
+
 PYBIND11_MODULE(_plugin, m)
 {
-    py::class_<Plugin, PyPlugin>(m, "Plugin") //
-        .def(py::init<>())                    //
-        .def("on_load", &Plugin::onLoad)      //
-        .def("on_enable", &Plugin::onEnable)  //
-        .def("on_disable", &Plugin::onDisable);
+    py::class_<Plugin, PyPlugin>(m, "Plugin")  //
+        .def(py::init<>())                     //
+        .def("on_load", &Plugin::onLoad)       //
+        .def("on_enable", &Plugin::onEnable)   //
+        .def("on_disable", &Plugin::onDisable) //
+        .def("is_enabled", &Plugin::isEnabled) //
+        .def("_set_enabled", &Plugin::setEnabled, py::arg("enabled"));
 }

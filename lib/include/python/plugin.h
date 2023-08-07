@@ -8,11 +8,19 @@
 class Plugin
 {
   public:
-    Plugin() = default;
+    Plugin() : enabled_(false)
+    {
+    }
+    explicit Plugin(bool enabled);
     virtual ~Plugin() = default;
     virtual void onLoad(){};
     virtual void onEnable(){};
     virtual void onDisable(){};
+    bool isEnabled() const;
+    void setEnabled(bool enabled);
+
+  private:
+    bool enabled_;
 };
 
 class PyPlugin : public Plugin

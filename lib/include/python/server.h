@@ -22,6 +22,8 @@ class Server
 
     void loadPlugins();
     void enablePlugins();
+    void disablePlugins();
+    void clearPlugins();
 
   private:
     Server();

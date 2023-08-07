@@ -32,7 +32,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *ser
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance *serverInstance)
 {
     // Server loop stops
-    // Server::getInstance().getPluginManager().clearPlugins();
+    Server::getInstance().disablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStopped, serverInstance)
 }
 

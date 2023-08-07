@@ -36,6 +36,18 @@ void Server::enablePlugins()
     pluginManager_.attr("enable_plugins")();
 }
 
+void Server::disablePlugins()
+{
+    py::gil_scoped_acquire lock{};
+    pluginManager_.attr("disable_plugins")();
+}
+
+void Server::clearPlugins()
+{
+    py::gil_scoped_acquire lock{};
+    pluginManager_.attr("clear_plugins")();
+}
+
 PYBIND11_MODULE(_server, m)
 {
     py::class_<Server>(m, "Server") //
