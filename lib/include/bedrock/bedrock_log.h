@@ -10,71 +10,90 @@
 #include <cstdarg>
 #include <cstdio>
 
+/**
+ * @class BedrockLog
+ * @brief Provides logging functionalities with different levels and categories.
+ */
 class BedrockLog
 {
   public:
+    /**
+     * @enum LogAreaID
+     * @brief Identifies different logging areas within the system.
+     */
     enum class LogAreaID
     {
-        ALL,
-        PLATFORM_,
-        ENTITY,
-        DATABASE,
-        GUI,
-        SYSTEM,
-        NETWORK,
-        RENDER,
-        MEMORY,
-        ANIMATION,
-        INPUT,
-        LEVEL,
-        SERVER,
-        DLC,
-        PHYSICS,
-        FILE,
-        STORAGE,
-        REALMS,
-        REALMS_API,
-        XBOX_LIVE,
-        USER_MANAGER,
-        XS_API,
-        PERF,
-        TELEMETRY,
-        BLOCKS,
-        RAKNET,
-        GAMEFACE,
-        SOUND,
-        INTERACTIVE,
-        SCRIPTING,
-        PLAY_FAB,
-        AUTOMATION,
-        PERSONA,
-        TEXTURE,
-        ASSET_PACKAGES,
-        ITEMS,
-        SERVICES,
-        VOLUMES,
-        LOOT_TABLE,
-        SIDEBAR,
-        LOCALIZATION,
-        MOVEMENT,
-        LIVE_EVENTS,
-        EDITOR,
-        LEVEL_TRANSITION,
-        UNKNOWN,
-        STORE,
-        NUM_LOG_AREA_IDS
+        LOG_ALL,
+        LOG_PLATFORM,
+        LOG_ENTITY,
+        LOG_DATABASE,
+        LOG_GUI,
+        LOG_SYSTEM,
+        LOG_NETWORK,
+        LOG_RENDER,
+        LOG_MEMORY,
+        LOG_ANIMATION,
+        LOG_INPUT,
+        LOG_LEVEL,
+        LOG_SERVER,
+        LOG_DLC,
+        LOG_PHYSICS,
+        LOG_FILE,
+        LOG_STORAGE,
+        LOG_REALMS,
+        LOG_REALMS_API,
+        LOG_XBOX_LIVE,
+        LOG_USER_MANAGER,
+        LOG_XS_API,
+        LOG_PERF,
+        LOG_TELEMETRY,
+        LOG_BLOCKS,
+        LOG_RAKNET,
+        LOG_GAMEFACE,
+        LOG_SOUND,
+        LOG_INTERACTIVE,
+        LOG_SCRIPTING,
+        LOG_PLAY_FAB,
+        LOG_AUTOMATION,
+        LOG_PERSONA,
+        LOG_TEXTURE,
+        LOG_ASSET_PACKAGES,
+        LOG_ITEMS,
+        LOG_SERVICES,
+        LOG_VOLUMES,
+        LOG_LOOT_TABLE,
+        LOG_SIDEBAR,
+        LOG_LOCALIZATION,
+        LOG_MOVEMENT,
+        LOG_LIVE_EVENTS,
+        LOG_EDITOR,
+        LOG_LEVEL_TRANSITION,
+        LOG_UNKNOWN,
+        LOG_STORE
     };
 
+    /**
+     * @enum LogCategory
+     * @brief Identifies logging categories.
+     */
     enum class LogCategory
     {
-        ALL
+        LOG_ALL
     };
 
+    /**
+     * @enum LogRule
+     * @brief Represents specific rules for logging.
+     */
     enum class LogRule
     {
-        DEFAULT
+        LOG_DEFAULT
     };
 
+    /**
+     * @enum LogLevel
+     * @brief Specifies the log level.
+     */
     enum class LogLevel
     {
         LOG_ALL = -1,
@@ -84,9 +103,21 @@ class BedrockLog
         LOG_ERROR = 8,
     };
 
+    /**
+     * @brief Logs a message with the given parameters.
+     * @param category Logging category.
+     * @param flags Bitset of flags.
+     * @param rule Logging rule.
+     * @param area Logging area identifier.
+     * @param level Logging level.
+     * @param function Function name.
+     * @param line Line number.
+     * @param format Format string for the log message.
+     * @param ... Additional arguments for the format string.
+     */
     static void log(LogCategory category,
-                    std::bitset<3> flags, // unknown
-                    LogRule rule,         // unknown
+                    std::bitset<3> flags,
+                    LogRule rule,
                     LogAreaID area,
                     LogLevel level,
                     char const *function,
@@ -94,9 +125,21 @@ class BedrockLog
                     char const *format,
                     ...);
 
+    /**
+     * @brief Logs a message with a variable argument list.
+     * @param category Logging category.
+     * @param flags Bitset of flags.
+     * @param rule Logging rule.
+     * @param area Logging area identifier.
+     * @param level Logging level.
+     * @param function Function name.
+     * @param line Line number.
+     * @param format Format string for the log message.
+     * @param args Variable argument list.
+     */
     static void log_va(LogCategory category,
-                       std::bitset<3> flags, // unknown - always 1?
-                       LogRule rule,         // 0?
+                       std::bitset<3> flags,
+                       LogRule rule,
                        LogAreaID area,
                        LogLevel level,
                        char const *function,

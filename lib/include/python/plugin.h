@@ -5,19 +5,19 @@
 #ifndef ENDSTONE_PLUGIN_H
 #define ENDSTONE_PLUGIN_H
 
-class BasePlugin
+class Plugin
 {
   public:
-    BasePlugin() = default;
-    virtual ~BasePlugin() = default;
+    Plugin() = default;
+    virtual ~Plugin() = default;
     virtual void onEnable(){};
     virtual void onDisable(){};
 };
 
-class PythonPlugin : public BasePlugin
+class PyPlugin : public Plugin
 {
   public:
-    using BasePlugin::BasePlugin; // Inherit the constructors
+    using Plugin::Plugin; // Inherit the constructors
     void onEnable() override;
     void onDisable() override;
 };

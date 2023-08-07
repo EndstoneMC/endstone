@@ -5,19 +5,19 @@
 #ifdef _WIN32
 
 #include "endstone.h"
-#include "hook_error.h"
-#include "hook_manager.h"
+#include "hook/hook_error.h"
+#include "hook/hook_manager.h"
 #include "logger.h"
-#include "server.h"
+#include "python/server.h"
 
 #include <DbgHelp.h>
 #include <MinHook.h>
 #include <Psapi.h>
 #include <indicators/progress_spinner.hpp>
 
-const IHook &HookManager::getHook(const std::string &symbol)
+const Hook &HookManager::getHook(const std::string &symbol)
 {
-    return hooks[symbol];
+    return hooks_[symbol];
 }
 
 void loadSymbols()
@@ -46,7 +46,7 @@ void loadSymbols()
 
 void HookManager::initialize()
 {
-    if (is_initialised)
+    if (initialized_)
     {
         return;
     }
@@ -75,11 +75,11 @@ void HookManager::initialize()
     registerHooks();
 
     spinner.set_option(option::PostfixText{"Creating hooks..."});
-    auto step = (90 - spinner.current()) / hooks.size();
-    for (const auto &item : hooks)
+    auto step = (90 - spinner.current()) / hooks_.size();
+    for (const auto &item : hooks_)
     {
         auto symbol = item.first.c_str();
-        auto &hook = const_cast<IHook &>(item.second);
+        auto &hook = const_cast<Hook &>(item.second);
         hook.p_target = lookupSymbol(symbol);
         // printf("%p -> %p\n", hook.p_target, hook.p_detour);
         status = MH_CreateHook(hook.p_target, hook.p_detour, &hook.p_original);
@@ -98,7 +98,7 @@ void HookManager::initialize()
     }
     spinner.set_progress(95);
 
-    is_initialised = true;
+    initialized_ = true;
     spinner.set_option(option::ForegroundColor{Color::green});
     //    spinner.set_option(option::PrefixText{""});
     spinner.set_option(option::ShowSpinner{false});
@@ -109,7 +109,7 @@ void HookManager::initialize()
 
 void HookManager::finalize()
 {
-    if (!is_initialised)
+    if (!initialized_)
     {
         return;
     }
@@ -128,8 +128,8 @@ void HookManager::finalize()
         throw std::system_error(minhook::make_error_code(status));
     }
 
-    hooks.clear();
-    is_initialised = false;
+    hooks_.clear();
+    initialized_ = false;
 }
 
 void *lookupSymbol(const char *symbol)

@@ -3,8 +3,8 @@
 #include <Windows.h>
 
 #include "endstone.h"
-#include "hook_manager.h"
-#include "server.h"
+#include "hook/hook_manager.h"
+#include "python/server.h"
 
 BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
                     _In_ DWORD fdwReason,    // reason for calling function

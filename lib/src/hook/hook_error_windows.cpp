@@ -4,7 +4,7 @@
 
 #ifdef _WIN32
 
-#include "hook_error.h"
+#include "hook/hook_error.h"
 
 const char *MinHookErrorCategory::name() const noexcept
 {
@@ -46,6 +46,12 @@ std::string MinHookErrorCategory::message(int errVal) const
     default:
         return "Unknown error.";
     }
+}
+
+std::error_code minhook::make_error_code(MH_STATUS e)
+{
+    static auto category = MinHookErrorCategory();
+    return {static_cast<int>(e), category};
 }
 
 #endif // _WIN32
