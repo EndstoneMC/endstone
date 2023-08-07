@@ -38,5 +38,6 @@ void Server::enablePlugins()
 
 PYBIND11_MODULE(_server, m)
 {
-    py::class_<Server>(m, "Server");
+    py::class_<Server>(m, "Server") //
+        .def_static("getInstance", &Server::getInstance, py::return_value_policy::reference_internal);
 }
