@@ -10,6 +10,8 @@
 #include <cstdarg>
 #include <cstdio>
 
+enum class LogLevel;
+
 /**
  * @class BedrockLog
  * @brief Provides logging functionalities with different levels and categories.
@@ -18,67 +20,12 @@ class BedrockLog
 {
   public:
     /**
-     * @enum LogAreaID
-     * @brief Identifies different logging areas within the system.
-     */
-    enum class LogAreaID
-    {
-        LOG_ALL,
-        LOG_PLATFORM,
-        LOG_ENTITY,
-        LOG_DATABASE,
-        LOG_GUI,
-        LOG_SYSTEM,
-        LOG_NETWORK,
-        LOG_RENDER,
-        LOG_MEMORY,
-        LOG_ANIMATION,
-        LOG_INPUT,
-        LOG_LEVEL,
-        LOG_SERVER,
-        LOG_DLC,
-        LOG_PHYSICS,
-        LOG_FILE,
-        LOG_STORAGE,
-        LOG_REALMS,
-        LOG_REALMS_API,
-        LOG_XBOX_LIVE,
-        LOG_USER_MANAGER,
-        LOG_XS_API,
-        LOG_PERF,
-        LOG_TELEMETRY,
-        LOG_BLOCKS,
-        LOG_RAKNET,
-        LOG_GAMEFACE,
-        LOG_SOUND,
-        LOG_INTERACTIVE,
-        LOG_SCRIPTING,
-        LOG_PLAY_FAB,
-        LOG_AUTOMATION,
-        LOG_PERSONA,
-        LOG_TEXTURE,
-        LOG_ASSET_PACKAGES,
-        LOG_ITEMS,
-        LOG_SERVICES,
-        LOG_VOLUMES,
-        LOG_LOOT_TABLE,
-        LOG_SIDEBAR,
-        LOG_LOCALIZATION,
-        LOG_MOVEMENT,
-        LOG_LIVE_EVENTS,
-        LOG_EDITOR,
-        LOG_LEVEL_TRANSITION,
-        LOG_UNKNOWN,
-        LOG_STORE
-    };
-
-    /**
      * @enum LogCategory
      * @brief Identifies logging categories.
      */
     enum class LogCategory
     {
-        LOG_ALL
+        All
     };
 
     /**
@@ -87,43 +34,63 @@ class BedrockLog
      */
     enum class LogRule
     {
-        LOG_DEFAULT
+        Default
     };
 
     /**
-     * @enum LogLevel
-     * @brief Specifies the log level.
+     * @enum LogAreaID
+     * @brief Identifies different logging areas within the system.
      */
-    enum class LogLevel
+    enum class LogAreaID
     {
-        LOG_ALL = -1,
-        LOG_VERBOSE = 1,
-        LOG_INFO = 2,
-        LOG_WARN = 4,
-        LOG_ERROR = 8,
+        All,
+        Platform,
+        Entity,
+        Database,
+        GUI,
+        System,
+        Network,
+        Render,
+        Memory,
+        Animation,
+        Input,
+        Level,
+        Server,
+        DLC,
+        Physics,
+        File,
+        Storage,
+        Realms,
+        RealmsAPI,
+        XboxLive,
+        UserManager,
+        XsAPI,
+        Perf,
+        Telemetry,
+        Blocks,
+        RakNet,
+        Gameface,
+        Sound,
+        Interactive,
+        Scripting,
+        PlayFab,
+        Automation,
+        Persona,
+        Texture,
+        AssetPackages,
+        Items,
+        Services,
+        Volumes,
+        LootTable,
+        Sidebar,
+        Localization,
+        Movement,
+        LiveEvents,
+        Editor,
+        LevelTransition,
+        Unknown,
+        Store
     };
-
-    /**
-     * @brief Logs a message with the given parameters.
-     * @param category Logging category.
-     * @param flags Bitset of flags.
-     * @param rule Logging rule.
-     * @param area Logging area identifier.
-     * @param level Logging level.
-     * @param function Function name.
-     * @param line Line number.
-     * @param format Format string for the log message.
-     * @param ... Additional arguments for the format string.
-     */
-    static void log(LogCategory category,
-                    std::bitset<3> flags,
-                    LogRule rule,
-                    LogAreaID area,
-                    LogLevel level,
-                    char const *function,
-                    int line,
-                    char const *format,
-                    ...);
 
     /**
      * @brief Logs a message with a variable argument list.
@@ -137,10 +104,10 @@ class BedrockLog
      * @param format Format string for the log message.
      * @param args Variable argument list.
      */
-    static void log_va(LogCategory category,
-                       std::bitset<3> flags,
-                       LogRule rule,
-                       LogAreaID area,
+    static void log_va(BedrockLog::LogCategory category, // always 0
+                       std::bitset<3> flags,             // always 1
+                       BedrockLog::LogRule rule,         // always 0
+                       BedrockLog::LogAreaID area,
                        LogLevel level,
                        char const *function,
                        int line,

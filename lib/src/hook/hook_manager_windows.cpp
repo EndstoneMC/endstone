@@ -7,8 +7,6 @@
 #include "endstone.h"
 #include "hook/hook_error.h"
 #include "hook/hook_manager.h"
-#include "logger.h"
-#include "python/server.h"
 
 #include <DbgHelp.h>
 #include <MinHook.h>

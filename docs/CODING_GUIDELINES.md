@@ -33,17 +33,17 @@ else
 
 Avoid using any sort of Hungarian notation on names and "_ptr" on pointers.
 
-| **Code Element**  | **Style**                                     |
-|-------------------|-----------------------------------------------|
-| Namespace         | under_scored                                  |
-| Class name        | CamelCase                                     |
-| Function name     | camelCase                                     |
-| Parameters/Locals | under_scored                                  |
-| Member variables  | under_scored_with_                            |
-| Enum members      | UPPER_CASE                                    |
-| Globals           | g_under_scored                                |
-| Constants         | UPPER_CASE                                    |
-| File names        | under_scored (if the class name is CamelCase) |
+| **Code Element**         | **Style**                                     |
+|--------------------------|-----------------------------------------------|
+| Namespace                | under_scored                                  |
+| Class name               | CamelCase                                     |
+| Function name            | camelCase                                     |
+| Parameters/Locals        | under_scored                                  |
+| Member variables         | under_scored_with_                            |
+| Enum classes and members | CamelCase                                     |
+| Globals                  | g_under_scored                                |
+| Constants                | UPPER_CASE                                    |
+| File names               | under_scored (if the class name is CamelCase) |
 
 ## 4. Documentation
 
