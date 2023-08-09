@@ -23,10 +23,17 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
             HookManager::initialize();
             break;
         }
-        catch (const std::system_error &e)
+        catch (const std::exception &e)
         {
             printf("LibEndStone loads failed.\n");
-            printf("%s, error code: %d.\n", e.what(), e.code().value());
+            if (const auto *se = dynamic_cast<const std::system_error *>(&e))
+            {
+                printf("%s, error code: %d.\n", se->what(), se->code().value());
+            }
+            else
+            {
+                printf("%s\n", e.what());
+            }
             return FALSE; // Return FALSE to fail DLL load.
         }
     }

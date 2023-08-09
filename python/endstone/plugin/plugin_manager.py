@@ -2,9 +2,10 @@ import importlib
 import os.path
 from pathlib import Path
 
-from endstone._plugin_manager import PluginManager as IPluginManager
 import toml
+from endstone._logger import Logger
 from endstone._plugin import Plugin
+from endstone._plugin_manager import PluginManager as IPluginManager
 from endstone._server import Server
 
 
@@ -14,6 +15,7 @@ class PluginManager(IPluginManager):
         IPluginManager.__init__(self, server)
         self._server = server
         self._plugins = []
+        self._logger = Logger.get_logger(self.__class__.__name__)
 
     def load_plugin(self, path: str) -> Plugin:
 
@@ -21,7 +23,7 @@ class PluginManager(IPluginManager):
         main = description["main"]
         name = description["name"]
 
-        print(f"Loading plugin: {name}")
+        self._logger.info(f"Loading plugin: {name}")
 
         pos = main.rfind('.')
         module_name = str(os.path.basename(path)) + "." + main[:pos]
@@ -49,7 +51,7 @@ class PluginManager(IPluginManager):
                 self._plugins.append(plugin)
                 plugin.on_load()
             except Exception as e:
-                print(f"Could not load plugin in {entry}: {e}")
+                self._logger.error(f"Could not load plugin in {entry}: {e}")
 
         return results
 

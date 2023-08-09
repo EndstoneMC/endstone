@@ -4,13 +4,13 @@
 
 #include "python/server.h"
 
-Server::Server()
+Server::Server() : logger_(Logger::getLogger("Server"))
 {
     try
     {
         py::gil_scoped_acquire lock{};
         auto module = py::module_::import("endstone.plugin");
-        auto cls = module.attr("PluginManager");
+        auto cls = module.attr("PluginManager2");
         pluginManager_ = cls(this);
     }
     catch (py::error_already_set &e)

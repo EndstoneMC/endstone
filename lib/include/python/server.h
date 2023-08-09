@@ -6,6 +6,7 @@
 #define ENDSTONE_SERVER_H
 
 #include "endstone.h"
+#include "logger.h"
 #include "plugin_manager.h"
 
 class Server
@@ -29,6 +30,8 @@ class Server
     Server();
 
   private:
+    Logger &logger_;
+
     py::scoped_interpreter interpreter_{};
     py::object pluginManager_;
     py::gil_scoped_release release_{}; // Must be the last member to re-acquire GIL before destroying the PluginManager

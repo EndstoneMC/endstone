@@ -34,7 +34,7 @@ class Logger
     void error(const char *format, ...) const;
     void setLevel(LogLevel level);
 
-    static std::shared_ptr<Logger> getLogger(const std::string &name);
+    static Logger& getLogger(const std::string &name);
 
     std::string name_;
     LogLevel level_;

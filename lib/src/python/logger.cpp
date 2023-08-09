@@ -7,23 +7,46 @@
 #include "endstone.h"
 #include "python/logger.h"
 
+#define BEDROCK_LOG(level)                                                                                             \
+    if (level >= level_)                                                                                               \
+    {                                                                                                                  \
+        va_list args;                                                                                                  \
+        va_start(args, format);                                                                                        \
+        BedrockLog::log_va(BedrockLog::LogCategory::All,                                                               \
+                           1,                                                                                          \
+                           BedrockLog::LogRule::Default,                                                               \
+                           BedrockLog::LogAreaID::Server,                                                              \
+                           level,                                                                                      \
+                           __FUNCTION__,                                                                               \
+                           __LINE__,                                                                                   \
+                           format,                                                                                     \
+                           args);                                                                                      \
+        va_end(args);                                                                                                  \
+    }
+
 void Logger::log(LogLevel level, char const *format, ...) const
 {
-    if (level >= level_)
-    {
-        va_list args;
-        va_start(args, format);
-        BedrockLog::log_va(BedrockLog::LogCategory::All,  // 0
-                           1,                             // 1
-                           BedrockLog::LogRule::Default,  // 0
-                           BedrockLog::LogAreaID::Server, // 12
-                           level,
-                           __FUNCTION__,
-                           __LINE__,
-                           format,
-                           args);
-        va_end(args);
-    }
+    BEDROCK_LOG(level)
+}
+
+void Logger::verbose(const char *format, ...) const
+{
+    BEDROCK_LOG(LogLevel::Verbose)
+}
+
+void Logger::info(const char *format, ...) const
+{
+    BEDROCK_LOG(LogLevel::Info)
+}
+
+void Logger::warning(const char *format, ...) const
+{
+    BEDROCK_LOG(LogLevel::Warning)
+}
+
+void Logger::error(const char *format, ...) const
+{
+    BEDROCK_LOG(LogLevel::Error)
 }
 
 void Logger::setLevel(LogLevel level)
@@ -31,29 +54,19 @@ void Logger::setLevel(LogLevel level)
     level_ = level;
 }
 
-std::shared_ptr<Logger> Logger::getLogger(const std::string &name)
+Logger &Logger::getLogger(const std::string &name)
 {
-    return std::make_shared<Logger>(name);
-}
+    static std::map<std::string, Logger> loggers;
+    static std::mutex mutex;
 
-void Logger::verbose(const char *format, ...) const
-{
-    log(LogLevel::Verbose, format);
-}
+    std::scoped_lock<std::mutex> lock(mutex);
+    auto it = loggers.find(name);
+    if (it == loggers.end())
+    {
+        it = loggers.insert({name, Logger(name)}).first;
+    }
 
-void Logger::info(const char *format, ...) const
-{
-    log(LogLevel::Info, format);
-}
-
-void Logger::warning(const char *format, ...) const
-{
-    log(LogLevel::Warning, format);
-}
-
-void Logger::error(const char *format, ...) const
-{
-    log(LogLevel::Error, format);
+    return it->second;
 }
 
 void PyLogger::log(LogLevel level, const char *format, ...) const
@@ -101,7 +114,7 @@ PYBIND11_MODULE(_logger, m)
         .value("ERROR", LogLevel::Error)
         .export_values();
 
-    py::class_<Logger, PyLogger, std::shared_ptr<Logger>>(m, "Logger")
+    py::class_<Logger, PyLogger>(m, "Logger")
         .def(py::init<std::string>())
         .def("log", &LoggerWrapper::log, py::arg("level"), py::arg("msg"))
         .def("verbose", &LoggerWrapper::verbose, py::arg("msg"))
@@ -109,5 +122,5 @@ PYBIND11_MODULE(_logger, m)
         .def("warning", &LoggerWrapper::warning, py::arg("msg"))
         .def("error", &LoggerWrapper::error, py::arg("msg"))
         .def("set_level", &Logger::setLevel, py::arg("level"))
-        .def_static("get_logger", &Logger::getLogger);
+        .def_static("get_logger", &Logger::getLogger, py::return_value_policy::reference_internal);
 }

@@ -37,7 +37,6 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif ()
 
 target_link_libraries(libendstone PRIVATE ${ENDSTONE_LIBRARIES})
-set_target_properties(libendstone PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin _plugin_manager)
 
