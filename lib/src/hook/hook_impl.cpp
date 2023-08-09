@@ -11,23 +11,25 @@
 void HookManager::registerHooks()
 {
     HOOK_FUNCTION(BedrockLog::log_va)
-    HOOK_FUNCTION(DedicatedServer::runDedicatedServerLoop)
+    //    HOOK_FUNCTION(DedicatedServer::runDedicatedServerLoop)
     HOOK_FUNCTION(ServerInstance::startServerThread)
-    HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
+    //    HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStopped)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerUpdateEnd)
 }
 
 void ServerInstance::startServerThread()
 {
+    Server::getInstance().start();
     Server::getInstance().loadPlugins();
     CALL_ORIGINAL(ServerInstance::startServerThread)
+    Server::getInstance().enablePlugins();
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *serverInstance)
 {
     // Server loop starts
-    Server::getInstance().enablePlugins();
+    // Server::getInstance().enablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
 }
 
@@ -50,7 +52,7 @@ int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
                                             void *allow_list,
                                             void *permissions)
 {
-    Server::getInstance().start();
+    // Server::getInstance().start();
     return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop,
                          file_path_manager,
                          properties,

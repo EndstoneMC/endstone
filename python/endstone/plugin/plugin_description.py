@@ -54,7 +54,15 @@ class PluginDescription:
 class PluginDescriptionFile(PluginDescription):
     def __init__(self, fp: BinaryIO):
         data = load(fp)
-        super().__init__(data.pop("name"), data.pop("version"), data.pop("main"))
+
+        try:
+            name = data.pop("name")
+            version = data.pop("version")
+            main = data.pop("main")
+            super().__init__(name, version, main)
+        except KeyError as e:
+            raise RuntimeError(f"{e} is not defined")
+
         for k, v in data.items():
             if hasattr(self, f"_{k}"):
                 setattr(self, f"_{k}", v)

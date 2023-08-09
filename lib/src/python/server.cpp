@@ -7,8 +7,7 @@
 Server::Server() : logger_(Logger::getLogger("Server"))
 {
     py::gil_scoped_acquire lock{};
-    // https://github.com/pybind/pybind11/issues/2197
-    py::module_::import("threading");
+    py::module_::import("threading"); // https://github.com/pybind/pybind11/issues/2197
 }
 
 void Server::loadPlugins()

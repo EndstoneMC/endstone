@@ -15,5 +15,4 @@ class DedicatedServer
                                void *permissions);      // std::unique_ptr<PermissionsFile> &
 };
 
-
 #endif // ENDSTONE_DEDICATED_SERVER_H
