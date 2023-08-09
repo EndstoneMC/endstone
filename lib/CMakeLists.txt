@@ -7,6 +7,13 @@ file(
         "src/*.cpp"
 )
 
+file(
+        GLOB_RECURSE ENDSTONE_PYBIND11_MODULE_SOURCES
+        LIST_DIRECTORIES false
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "src/python/*.cpp"
+)
+
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
 
 include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -30,14 +37,15 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
 endif ()
 
 target_link_libraries(libendstone PRIVATE ${ENDSTONE_LIBRARIES})
+set_target_properties(libendstone PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
 
 set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin _plugin_manager)
 
 foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
-    pybind11_add_module(${ENDSTONE_PYBIND11_MODULE} MODULE ${ENDSTONE_SOURCES})
-    target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE ${ENDSTONE_LIBRARIES})
+    pybind11_add_module(${ENDSTONE_PYBIND11_MODULE} MODULE ${ENDSTONE_PYBIND11_MODULE_SOURCES})
+    target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE libendstone)
 endforeach ()
 
-install(TARGETS libendstone ${ENDSTONE_PYBIND11_MODULE}
+install(TARGETS libendstone ${ENDSTONE_PYBIND11_MODULES}
         LIBRARY DESTINATION endstone
         RUNTIME DESTINATION endstone)
