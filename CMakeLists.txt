@@ -32,7 +32,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus indicators)
 
 include(DynamicVersion)
-#dynamic_version()
+dynamic_version(PROJECT_PREFIX endstone_)
 
 project(endstone VERSION ${PROJECT_VERSION})
 
