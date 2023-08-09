@@ -100,3 +100,61 @@ Here's how you can get started with Endstone:
    ```
 
 Congratulations! You're now ready to use Endstone to create plugins for Bedrock Dedicated Servers.
+
+## Creating a Sample Plugin
+
+To get a taste of what you can do with Endstone, let's create a simple plugin. This will give you an idea of the basic
+structure of a plugin and how it interacts with the server.
+
+Here's a step-by-step guide to creating a sample plugin:
+
+1. **Create a new folder for the plugin**
+
+   Under the folder named `plugins` in the server directory, create a new folder named `sample_plugin`.
+
+2. **Create a Python file for the plugin**
+
+   Inside the `sample_plugin` folder, create a Python file named `sample_plugin.py` and add the following code:
+
+   ```python
+   from endstone.plugin import Plugin
+
+   class SamplePlugin(Plugin):
+
+       def on_load(self):
+           self.logger.info("on_load is called!")
+
+       def on_enable(self):
+           self.logger.info("on_enable is called!")
+
+       def on_disable(self):
+           self.logger.info("on_disable is called!")
+   ```
+
+3. **Create a configuration file for the plugin**
+
+   Under the same folder, create a file named `plugin.toml` and include the following:
+
+   ```toml
+   name = "Sample Plugin"
+   version = "1.0.0"
+   main = "sample_plugin.sample_plugin.SamplePlugin"
+   ```
+
+   Here, the main field specifies the location of the main plugin class. It's constructed by combining the folder
+   name `sample_plugin`, the file name `sample_plugin.py` (without the extension), and the class name `SamplePlugin`.
+
+4. **Run the server again**
+
+   Start the server again using the command:
+
+   ```bash
+   endstone
+   ```
+
+   You should now see the sample plugin being loaded, and the corresponding log messages will appear in the server's
+   console.
+
+Congratulations! You've just created a simple plugin for Endstone. You are now ready to extend this sample to include
+more complex features. Explore the Endstone documentation (WIP) for more in-depth guides and resources to help you
+create powerful plugins for Bedrock Dedicated Servers.
