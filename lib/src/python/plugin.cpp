@@ -34,6 +34,15 @@ void PyPlugin::onDisable()
                            onDisable,    // Name of function in C++
     );
 }
+Logger &PyPlugin::getLogger()
+{
+    // Trampoline (need one for each virtual function)
+    PYBIND11_OVERLOAD_PURE_NAME(Logger &,     // Return type
+                                Plugin,       // Parent class
+                                "get_logger", // Name of function in python
+                                getLogger,    // Name of function in C++
+    );
+}
 
 bool Plugin::isEnabled() const
 {
@@ -65,5 +74,6 @@ PYBIND11_MODULE(_plugin, m)
         .def("on_enable", &Plugin::onEnable)   //
         .def("on_disable", &Plugin::onDisable) //
         .def("is_enabled", &Plugin::isEnabled) //
-        .def("_set_enabled", &Plugin::setEnabled, py::arg("enabled"));
+        .def("_set_enabled", &Plugin::setEnabled, py::arg("enabled"))
+        .def("get_logger", &Plugin::getLogger, py::return_value_policy::reference_internal);
 }

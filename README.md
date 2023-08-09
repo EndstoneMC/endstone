@@ -1,6 +1,35 @@
 # Endstone
 
-Endstone provides a Python-based plugin API, allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities.
+Endstone provides a Python-based plugin API, allowing developers to enhance Bedrock Dedicated Servers with various
+features and functionalities. This project requires Python 3.9 or higher.
+
+## Installing Python
+
+Before you start with Endstone, make sure you have Python 3.9 or higher installed on your system. Here's how you can
+install it:
+
+### Windows
+
+1. Visit the [Python Downloads page](https://www.python.org/downloads/) for Windows.
+2. Download the installer for Python 3.9 or higher.
+3. Run the installer and follow the on-screen instructions, making sure to check the box that adds Python to your PATH.
+
+### Linux
+
+The method of installing Python varies between Linux distributions. Here's a general guide for Ubuntu:
+
+1. Open a terminal window.
+2. Run the following command to update your package list:
+
+   ```bash
+   sudo apt update
+   ```
+
+3. Run the following command to install Python 3.9:
+
+   ```bash
+   sudo apt install python3.9
+   ```
 
 ## Quick Start
 
@@ -18,16 +47,16 @@ Here's how you can get started with Endstone:
 
 2. **Activate the virtual environment**
 
-   On Linux:
-
-   ```bash
-   source venv/bin/activate
-   ```
-
    On Windows:
 
    ```bash
    .\venv\Scripts\activate
+   ```
+
+   On Linux:
+
+   ```bash
+   source venv/bin/activate
    ```
 
 3. **Install Endstone**
