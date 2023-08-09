@@ -3,6 +3,7 @@
 //
 
 #include "bedrock/bedrock_log.h"
+#include "bedrock/dedicated_server.h"
 #include "bedrock/server_instance.h"
 #include "hook/hook_manager.h"
 #include "python/server.h"
@@ -10,6 +11,7 @@
 void HookManager::registerHooks()
 {
     HOOK_FUNCTION(BedrockLog::log_va)
+    HOOK_FUNCTION(DedicatedServer::runDedicatedServerLoop)
     HOOK_FUNCTION(ServerInstance::startServerThread)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStopped)
@@ -40,6 +42,21 @@ void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance *serverI
 {
     // Server ticks
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerUpdateEnd, serverInstance)
+}
+
+int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
+                                            void *properties,
+                                            void *level_settings,
+                                            void *allow_list,
+                                            void *permissions)
+{
+    Server::getInstance().start();
+    return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop,
+                         file_path_manager,
+                         properties,
+                         level_settings,
+                         allow_list,
+                         permissions);
 }
 
 void BedrockLog::log_va(BedrockLog::LogCategory category,

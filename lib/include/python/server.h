@@ -21,6 +21,7 @@ class Server
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
+    void start();
     void loadPlugins();
     void enablePlugins();
     void disablePlugins();

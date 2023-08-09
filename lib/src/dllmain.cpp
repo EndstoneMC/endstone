@@ -19,13 +19,13 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
         try
         {
             // Initialize once for each new process.
-            Server::getInstance();
+            Server::getInstance(); // To ensure python interpreter is initialised on main thread
             HookManager::initialize();
             break;
         }
         catch (const std::exception &e)
         {
-            printf("LibEndStone loads failed.\n");
+            printf("LibEndstone loads failed.\n");
             if (const auto *se = dynamic_cast<const std::system_error *>(&e))
             {
                 printf("%s, error code: %d.\n", se->what(), se->code().value());

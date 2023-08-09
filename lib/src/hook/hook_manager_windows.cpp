@@ -50,7 +50,7 @@ void HookManager::initialize()
     }
 
     using namespace indicators;
-    indicators::ProgressSpinner spinner{option::PostfixText{"EndStone is now loading..."},
+    indicators::ProgressSpinner spinner{option::PostfixText{"Endstone is now loading..."},
                                         option::ForegroundColor{Color::yellow},
                                         option::SpinnerStates{std::vector<std::string>{"-", "\\", "|", "/"}},
                                         option::FontStyles{std::vector<FontStyle>{FontStyle::bold}}};
@@ -101,7 +101,7 @@ void HookManager::initialize()
     //    spinner.set_option(option::PrefixText{""});
     spinner.set_option(option::ShowSpinner{false});
     spinner.set_option(option::ShowPercentage{false});
-    spinner.set_option(option::PostfixText{"EndStone loaded successfully!"});
+    spinner.set_option(option::PostfixText{"Endstone loaded successfully!"});
     spinner.mark_as_completed();
 }
 

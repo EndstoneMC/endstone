@@ -26,8 +26,16 @@ namespace py = pybind11;
 
 #if defined(_WIN32)
 #define BEDROCK_API __declspec(dllexport)
+#define ENDSTONE_API __declspec(dllexport)
 #else
 #define BEDROCK_API
+#define ENDSTONE_API
 #endif
+
+class Endstone
+{
+  public:
+    static const ENDSTONE_API std::string &getVersion();
+};
 
 #endif // ENDSTONE_ENDSTONE_H
