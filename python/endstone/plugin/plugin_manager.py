@@ -4,9 +4,10 @@ from pathlib import Path
 
 import toml
 from endstone._logger import Logger
-from endstone._plugin import Plugin
 from endstone._plugin_manager import PluginManager as IPluginManager
 from endstone._server import Server
+
+from endstone.plugin import Plugin
 
 
 class PluginManager(IPluginManager):

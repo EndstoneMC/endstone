@@ -89,11 +89,6 @@ void PyLogger::log(LogLevel level, const char *message) const
                            message);
 }
 
-void PyLogger::verbose(const char *message) const
-{
-    log(LogLevel::Verbose, message);
-}
-
 namespace LoggerWrapper
 {
 void log(const Logger &logger, LogLevel level, const char *message)

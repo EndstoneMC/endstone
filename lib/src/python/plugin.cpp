@@ -8,32 +8,33 @@
 void PyPlugin::onLoad()
 {
     // Trampoline (need one for each virtual function)
-    PYBIND11_OVERLOAD_NAME(void,      // Return type
-                           Plugin,    // Parent class
-                           "on_load", // Name of function in python
-                           onLoad,    // Name of function in C++
+    PYBIND11_OVERLOAD_PURE_NAME(void,      // Return type
+                                Plugin,    // Parent class
+                                "on_load", // Name of function in python
+                                onLoad,    // Name of function in C++
     );
 }
 
 void PyPlugin::onEnable()
 {
     // Trampoline (need one for each virtual function)
-    PYBIND11_OVERLOAD_NAME(void,        // Return type
-                           Plugin,      // Parent class
-                           "on_enable", // Name of function in python
-                           onEnable,    // Name of function in C++
+    PYBIND11_OVERLOAD_PURE_NAME(void,        // Return type
+                                Plugin,      // Parent class
+                                "on_enable", // Name of function in python
+                                onEnable,    // Name of function in C++
     );
 }
 
 void PyPlugin::onDisable()
 {
     // Trampoline (need one for each virtual function)
-    PYBIND11_OVERLOAD_NAME(void,         // Return type
-                           Plugin,       // Parent class
-                           "on_disable", // Name of function in python
-                           onDisable,    // Name of function in C++
+    PYBIND11_OVERLOAD_PURE_NAME(void,         // Return type
+                                Plugin,       // Parent class
+                                "on_disable", // Name of function in python
+                                onDisable,    // Name of function in C++
     );
 }
+
 Logger &PyPlugin::getLogger()
 {
     // Trampoline (need one for each virtual function)

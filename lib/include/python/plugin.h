@@ -11,12 +11,13 @@ class Plugin
   public:
     explicit Plugin() : enabled_(false){};
     virtual ~Plugin() = default;
-    virtual void onLoad(){};
-    virtual void onEnable(){};
-    virtual void onDisable(){};
+    virtual void onLoad() = 0;
+    virtual void onEnable() = 0;
+    virtual void onDisable() = 0;
+    virtual Logger &getLogger() = 0;
+
     bool isEnabled() const;
     void setEnabled(bool enabled);
-    virtual Logger &getLogger() = 0;
 
   private:
     bool enabled_;

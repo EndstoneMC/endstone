@@ -38,7 +38,7 @@ endif ()
 
 target_link_libraries(libendstone PRIVATE ${ENDSTONE_LIBRARIES})
 
-set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin _plugin_manager)
+set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin_manager)
 
 foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
     pybind11_add_module(${ENDSTONE_PYBIND11_MODULE} MODULE ${ENDSTONE_PYBIND11_MODULE_SOURCES})
