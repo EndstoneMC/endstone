@@ -1,35 +1,34 @@
-import importlib
+import importlib.resources
+import logging
 import os.path
 import site
 from ctypes import get_last_error
 
 from endstone.loader.loader import AbstractLoader
 from endstone.loader.windows.win_internal import *
-import logging
 
 # Logger
 logger = logging.getLogger("loader-win")
 
 
 class WindowsLoader(AbstractLoader):
-
     def __init__(self, exec_path):
         super().__init__(exec_path)
         self.process = None
 
     def _find_lib(self) -> str:
-        lib_filename = 'libendstone.dll'
+        lib_filename = "libendstone.dll"
 
         # try to find under site-packages folder
         for parent_dir in site.getsitepackages():
-            lib_path = os.path.join(parent_dir, 'endstone', lib_filename)
+            lib_path = os.path.join(parent_dir, "endstone", lib_filename)
             if os.path.exists(lib_path):
                 return lib_path
 
         # try to find under resources path
-        with importlib.resources.path('endstone', lib_filename) as lib_path:
+        with importlib.resources.path("endstone", lib_filename) as lib_path:
             if os.path.exists(lib_path):
-                return lib_path
+                return str(lib_path)
 
         return lib_filename
 
@@ -48,7 +47,7 @@ class WindowsLoader(AbstractLoader):
             None,  # lpEnvironment
             None,  # lpCurrentDirectory
             ctypes.byref(startupinfo),  # lpStartupInfo
-            ctypes.byref(process_information)  # lpProcessInformation
+            ctypes.byref(process_information),  # lpProcessInformation
         )
 
         if result:
@@ -62,17 +61,13 @@ class WindowsLoader(AbstractLoader):
             0,  # lpAddress
             size,  # dwSize
             DWORD(MEM_COMMIT),  # flAllocationType
-            DWORD(PAGE_READWRITE)  # flProtect
+            DWORD(PAGE_READWRITE),  # flProtect
         )
 
     def _prepare_lib(self, address):
         size_written = SIZE_T(0)
         return WriteProcessMemory(
-            self.process.hProcess,
-            address,
-            self.lib_path,
-            len(self.lib_path) * 2 + 1,
-            ctypes.byref(size_written)
+            self.process.hProcess, address, self.lib_path, len(self.lib_path) * 2 + 1, ctypes.byref(size_written)
         )
 
     def _load_lib(self, address):
@@ -88,15 +83,7 @@ class WindowsLoader(AbstractLoader):
             exit(1)
 
         # Start a new thread in the process, starting at LoadLibraryW with address as argument
-        remote_thread = CreateRemoteThread(
-            self.process.hProcess,
-            None,
-            0,
-            load_library,
-            address,
-            0,
-            None
-        )
+        remote_thread = CreateRemoteThread(self.process.hProcess, None, 0, load_library, address, 0, None)
 
         return remote_thread
 

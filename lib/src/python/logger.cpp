@@ -120,6 +120,7 @@ void error(const Logger &logger, const char *message)
 PYBIND11_MODULE(_logger, m)
 {
     py::enum_<LogLevel>(m, "LogLevel")
+        .value("ALL", LogLevel::All)
         .value("VERBOSE", LogLevel::Verbose)
         .value("INFO", LogLevel::Info)
         .value("WARNING", LogLevel::Warning)

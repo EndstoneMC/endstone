@@ -1,7 +1,8 @@
 import importlib.metadata
+
 from packaging.version import Version
 
-__version__ = importlib.metadata.version('endstone')
+__version__ = importlib.metadata.version("endstone")
 
 
 def _get_minecraft_version():

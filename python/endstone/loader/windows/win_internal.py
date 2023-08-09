@@ -1,6 +1,5 @@
-import platform
-
 import ctypes
+import platform
 from ctypes.wintypes import *
 
 SIZE_T = ctypes.c_size_t
@@ -55,13 +54,23 @@ PAGE_READWRITE = 0x04
 INFINITE = 0xFFFFFFFF
 
 # Kernel32 Functions
-kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
+kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
 
 # https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw
 CreateProcess = kernel32.CreateProcessW
 CreateProcess.restype = BOOL
 CreateProcess.argtypes = (
-    LPCWSTR, LPWSTR, LPVOID, LPVOID, BOOL, DWORD, LPVOID, LPCWSTR, LPSTARTUPINFO, LPPROCESS_INFORMATION)
+    LPCWSTR,
+    LPWSTR,
+    LPVOID,
+    LPVOID,
+    BOOL,
+    DWORD,
+    LPVOID,
+    LPCWSTR,
+    LPSTARTUPINFO,
+    LPPROCESS_INFORMATION,
+)
 
 # https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-terminateprocess
 TerminateProcess = kernel32.TerminateProcess
@@ -81,8 +90,7 @@ WriteProcessMemory.argtypes = (HANDLE, LPVOID, LPCVOID, SIZE_T, PSIZE_T)
 # https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createremotethread
 CreateRemoteThread = kernel32.CreateRemoteThread
 CreateRemoteThread.restype = HANDLE
-CreateRemoteThread.argtypes = (
-    HANDLE, LPVOID, SIZE_T, LPVOID, LPVOID, DWORD, LPDWORD)
+CreateRemoteThread.argtypes = (HANDLE, LPVOID, SIZE_T, LPVOID, LPVOID, DWORD, LPDWORD)
 
 # https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlew
 GetModuleHandle = kernel32.GetModuleHandleW

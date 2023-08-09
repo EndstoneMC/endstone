@@ -1,8 +1,15 @@
 import importlib
 import os.path
+import sys
 from pathlib import Path
 
-import toml
+from endstone.plugin.plugin_description import PluginDescriptionFile
+
+if sys.version_info >= (3, 11):
+    pass
+else:
+    pass
+
 from endstone._logger import Logger
 from endstone._plugin_manager import PluginManager as IPluginManager
 from endstone._server import Server
@@ -11,7 +18,6 @@ from endstone.plugin import Plugin
 
 
 class PluginManager(IPluginManager):
-
     def __init__(self, server: Server):
         IPluginManager.__init__(self, server)
         self._server = server
@@ -19,20 +25,28 @@ class PluginManager(IPluginManager):
         self._logger = Logger.get_logger(self.__class__.__name__)
 
     def load_plugin(self, path: str) -> Plugin:
+        try:
+            with open(os.path.join(path, "plugin.toml"), "rb") as f:
+                description = PluginDescriptionFile(f)
+        except Exception as e:
+            raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
 
-        description = toml.load(os.path.join(path, "plugin.toml"))
-        main = description["main"]
-        name = description["name"]
+        try:
+            main = description.main
+            pos = main.rfind(".")
+            module_name = main[:pos]
+            class_name = main[pos + 1 :]
 
-        self._logger.info(f"Loading plugin: {name}")
+            module = importlib.import_module(module_name)
+            plugin = getattr(module, class_name)()
 
-        pos = main.rfind('.')
-        module_name = str(os.path.basename(path)) + "." + main[:pos]
-        class_name = main[pos + 1:]
+            assert isinstance(plugin, Plugin), f"Main class {main} does not extend endstone.plugin.Plugin"
 
-        module = importlib.import_module(module_name)
-        plugin = getattr(module, class_name)()
-        return plugin
+            # noinspection PyProtectedMember
+            plugin._init(description)
+            return plugin
+        except Exception as e:
+            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
 
     def load_plugins(self, directory: str) -> list[Plugin]:
         assert directory is not None, "Directory cannot be None"
@@ -40,6 +54,8 @@ class PluginManager(IPluginManager):
 
         results = []
         for entry in Path(directory).iterdir():
+            entry = entry.absolute()
+
             if not entry.is_dir():
                 continue
 
@@ -47,17 +63,18 @@ class PluginManager(IPluginManager):
                 continue
 
             try:
-                plugin = self.load_plugin(str(entry.absolute()))
+                plugin = self.load_plugin(str(entry))
                 results.append(plugin)
                 self._plugins.append(plugin)
                 plugin.on_load()
-            except Exception as e:
-                self._logger.error(f"Could not load plugin in {entry}: {e}")
+            except RuntimeError as e:
+                self._logger.error(f"{e}")
 
         return results
 
     def enable_plugin(self, plugin: Plugin) -> None:
         if not plugin.is_enabled():
+            plugin.logger.info(f"Enabling {plugin.description.fullname}")
             # noinspection PyProtectedMember
             plugin._set_enabled(True)
 
@@ -67,6 +84,7 @@ class PluginManager(IPluginManager):
 
     def disable_plugin(self, plugin: Plugin):
         if plugin.is_enabled():
+            plugin.logger.info(f"Disabling {plugin.description.fullname}")
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
 

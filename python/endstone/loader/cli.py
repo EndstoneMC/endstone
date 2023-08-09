@@ -25,6 +25,7 @@ def cli(path: str, yes: bool):
     system = platform.system()
     if system == "Windows":
         from endstone.loader.windows.loader_win import WindowsLoader
+
         filename = "bedrock_server.exe"
         base_url = f"https://minecraft.azureedge.net/bin-win/"
         loader_cls = WindowsLoader
@@ -34,9 +35,11 @@ def cli(path: str, yes: bool):
     exec_path = (path / filename).absolute()
     if not exec_path.exists():
         if not yes:
-            download = click.confirm(f"Bedrock Dedicated Server (v{__minecraft__version__}) can not be found. "
-                                     f"Would you like to download it now?",
-                                     default=True)
+            download = click.confirm(
+                f"Bedrock Dedicated Server (v{__minecraft__version__}) can not be found. "
+                f"Would you like to download it now?",
+                default=True,
+            )
         else:
             download = True
 
@@ -46,9 +49,9 @@ def cli(path: str, yes: bool):
             response = requests.get(urllib.parse.urljoin(base_url, zip_filename), stream=True)
             assert response.status_code == 200, f"Error while downloading from {response.url}"
 
-            total_size = int(response.headers.get('Content-Length', 0))
+            total_size = int(response.headers.get("Content-Length", 0))
             logger.info(f"Downloading {zip_filename}...")
-            with tqdm.tqdm(total=total_size, unit='iB', unit_scale=True) as progress_bar:
+            with tqdm.tqdm(total=total_size, unit="iB", unit_scale=True) as progress_bar:
                 with open(path / zip_filename, "wb") as file:
                     for data in response.iter_content(chunk_size=1024):
                         progress_bar.update(len(data))
@@ -69,8 +72,8 @@ def cli(path: str, yes: bool):
     plugins_dir.mkdir(exist_ok=True)
     sys.path.append(str(plugins_dir.absolute()))
 
-    os.environ['PYTHONHOME'] = sys.base_exec_prefix
-    os.environ['PYTHONPATH'] = os.pathsep.join(sys.path)
+    os.environ["PYTHONHOME"] = sys.base_exec_prefix
+    os.environ["PYTHONPATH"] = os.pathsep.join(sys.path)
     os.chdir(path)
 
     loader = loader_cls(exec_path)
