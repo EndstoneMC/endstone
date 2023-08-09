@@ -156,5 +156,9 @@ Here's a step-by-step guide to creating a sample plugin:
    console.
 
 Congratulations! You've just created a simple plugin for Endstone. You are now ready to extend this sample to include
-more complex features. Explore the Endstone documentation (WIP) for more in-depth guides and resources to help you
+more complex features.
+
+## Next steps
+
+Explore the Endstone documentation (WIP) for more in-depth guides and resources to help you
 create powerful plugins for Bedrock Dedicated Servers.
