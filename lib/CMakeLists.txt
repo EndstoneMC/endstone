@@ -21,8 +21,8 @@ include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(
         ENDSTONE_LIBRARIES
         pybind11::embed
-        tomlplusplus::tomlplusplus
         indicators::indicators
+        nlohmann_json::nlohmann_json
 )
 
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
@@ -30,6 +30,8 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
             minhook
             GIT_REPOSITORY https://github.com/TsudaKageyu/minhook.git
             GIT_TAG master
+            GIT_PROGRESS TRUE
+            GIT_SHALLOW TRUE
     )
     FetchContent_MakeAvailable(minhook)
 

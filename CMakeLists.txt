@@ -11,25 +11,37 @@ add_definitions(-D_UNICODE)
 FetchContent_Declare(
         CMakeExtraUtils
         GIT_REPOSITORY https://github.com/LecrisUT/CMakeExtraUtils
+        GIT_PROGRESS TRUE
+        GIT_SHALLOW TRUE
         GIT_TAG v0.3.0
 )
 FetchContent_Declare(
         pybind11
         GIT_REPOSITORY https://github.com/pybind/pybind11
+        GIT_PROGRESS TRUE
+        GIT_SHALLOW TRUE
         GIT_TAG v2.11.1
 )
 FetchContent_Declare(
         tomlplusplus
         GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
+        GIT_PROGRESS TRUE
+        GIT_SHALLOW TRUE
         GIT_TAG v3.3.0
 )
 FetchContent_Declare(
         indicators
         GIT_REPOSITORY https://github.com/p-ranav/indicators.git
+        GIT_PROGRESS TRUE
+        GIT_SHALLOW TRUE
         GIT_TAG v2.3
 )
-
-FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus indicators)
+FetchContent_Declare(
+        json
+        URL
+        https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+)
+FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus indicators json)
 
 include(DynamicVersion)
 dynamic_version(PROJECT_PREFIX endstone_)

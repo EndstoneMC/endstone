@@ -8,6 +8,7 @@
 #include <bitset>
 #include <codecvt>
 #include <filesystem>
+#include <fstream>
 #include <functional>
 #include <iostream>
 #include <map>
@@ -36,6 +37,7 @@ class Endstone
 {
   public:
     static const ENDSTONE_API std::string &getVersion();
+    static const ENDSTONE_API std::string &getMinecraftVersion();
 };
 
 #endif // ENDSTONE_ENDSTONE_H

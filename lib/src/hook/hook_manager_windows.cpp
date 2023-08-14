@@ -12,6 +12,7 @@
 #include <MinHook.h>
 #include <Psapi.h>
 #include <indicators/progress_spinner.hpp>
+#include <nlohmann/json.hpp>
 
 const Hook &HookManager::getHook(const std::string &symbol)
 {
@@ -50,30 +51,22 @@ void HookManager::initialize()
     }
 
     using namespace indicators;
-    indicators::ProgressSpinner spinner{option::PostfixText{"Endstone is now loading..."},
-                                        option::ForegroundColor{Color::yellow},
+    indicators::ProgressSpinner spinner{option::ForegroundColor{Color::yellow},
+                                        option::ShowElapsedTime{true},
                                         option::SpinnerStates{std::vector<std::string>{"-", "\\", "|", "/"}},
                                         option::FontStyles{std::vector<FontStyle>{FontStyle::bold}}};
-    std::this_thread::sleep_for(std::chrono::milliseconds(40));
 
     MH_STATUS status;
-
-    spinner.set_option(option::PostfixText{"Initialising MinHook..."});
     status = MH_Initialize();
     if (status != MH_OK)
     {
         throw std::system_error(minhook::make_error_code(status));
     }
-    spinner.set_progress(5);
-
-    spinner.set_option(option::PostfixText{"Loading symbols..."});
-    loadSymbols();
-    spinner.set_progress(10);
 
     registerHooks();
 
     spinner.set_option(option::PostfixText{"Creating hooks..."});
-    auto step = (90 - spinner.current()) / hooks_.size();
+    auto step = 100 / hooks_.size();
     for (const auto &item : hooks_)
     {
         auto symbol = item.first.c_str();
@@ -88,20 +81,18 @@ void HookManager::initialize()
         spinner.set_progress(spinner.current() + step);
     }
 
-    spinner.set_option(option::PostfixText{"Enabling hooks..."});
     status = MH_EnableHook(MH_ALL_HOOKS);
     if (status != MH_OK)
     {
         throw std::system_error(minhook::make_error_code(status));
     }
-    spinner.set_progress(95);
 
     initialized_ = true;
     spinner.set_option(option::ForegroundColor{Color::green});
-    //    spinner.set_option(option::PrefixText{""});
+    spinner.set_option(option::PrefixText{"Endstone loaded successfully!"});
     spinner.set_option(option::ShowSpinner{false});
     spinner.set_option(option::ShowPercentage{false});
-    spinner.set_option(option::PostfixText{"Endstone loaded successfully!"});
+    spinner.set_option(option::PostfixText{""});
     spinner.mark_as_completed();
 }
 
@@ -130,13 +121,99 @@ void HookManager::finalize()
     initialized_ = false;
 }
 
+void saveSymbolsToCache(const std::map<std::string, size_t> &symbols)
+{
+    auto path = std::filesystem::current_path() / "config" / "endstone";
+    if (!std::filesystem::exists(path))
+    {
+        std::filesystem::create_directories(path);
+    }
+
+    std::ofstream file(path / "symbols.json");
+    if (!file.is_open())
+    {
+        return;
+    }
+
+    nlohmann::json json_data;
+    json_data["version"] = Endstone::getMinecraftVersion();
+
+    // Save symbols
+    for (const auto &[key, value] : symbols)
+    {
+        json_data["symbols"][key] = value;
+    }
+
+    file << json_data;
+}
+
+void loadSymbolsFromCache(std::map<std::string, size_t> &symbols)
+{
+    auto path = std::filesystem::current_path() / "config" / "endstone" / "symbols.json";
+    std::ifstream file(path);
+    if (!file.is_open())
+    {
+        return;
+    }
+
+    nlohmann::json json_data;
+    file >> json_data;
+
+    // Check if the version field matches
+    if (json_data["version"] != Endstone::getMinecraftVersion())
+    {
+        return;
+    }
+
+    // Clear existing cache
+    symbols.clear();
+
+    // Load symbols
+    for (auto &[key, value] : json_data["symbols"].items())
+    {
+        symbols[key] = value.get<size_t>();
+    }
+}
+
 void *lookupSymbol(const char *symbol)
 {
-    auto handle = GetCurrentProcess();
-    MODULEINFO mi = {nullptr};
-    if (!GetModuleInformation(handle, GetModuleHandle(nullptr), &mi, sizeof(mi)))
+    static std::map<std::string, size_t> symbol_map;
+    static char *base_address = nullptr;
+    static std::mutex mtx;
+    static bool symbol_loaded = false;
+
+    std::lock_guard<std::mutex> lock(mtx);
+
+    // Attempt to load the cache from a file if it's empty.
+    if (symbol_map.empty())
     {
-        throw std::system_error(GetLastError(), std::system_category(), "GetModuleInformation failed");
+        loadSymbolsFromCache(symbol_map);
+    }
+
+    if (!base_address)
+    {
+        MODULEINFO mi = {nullptr};
+        if (!GetModuleInformation(GetCurrentProcess(), GetModuleHandle(nullptr), &mi, sizeof(mi)))
+        {
+            throw std::system_error(GetLastError(), std::system_category(), "GetModuleInformation failed");
+        }
+
+        base_address = static_cast<char *>(mi.lpBaseOfDll);
+    }
+
+    // Check if the symbol is in the cache.
+    auto it = symbol_map.find(symbol);
+    if (it != symbol_map.end())
+    {
+        auto offset = it->second;
+        return base_address + offset;
+    }
+
+    // Initialise symbol handler if not valid
+    if (!symbol_loaded)
+    {
+        loadSymbols();
+        symbol_loaded = true;
     }
 
     // https://learn.microsoft.com/en-us/windows/win32/debug/retrieving-symbol-information-by-name
@@ -146,12 +223,20 @@ void *lookupSymbol(const char *symbol)
     symbol_info->SizeOfStruct = sizeof(SYMBOL_INFO);
     symbol_info->MaxNameLen = MAX_SYM_NAME;
 
-    if (!SymFromName(handle, symbol, symbol_info))
+    if (!SymFromName(GetCurrentProcess(), symbol, symbol_info))
     {
         throw std::system_error(GetLastError(), std::system_category(), "SymFromName failed");
     }
 
-    return static_cast<char *>(mi.lpBaseOfDll) + symbol_info->Address - 0x140000000;
+    auto offset = symbol_info->Address - 0x140000000;
+
+    // Save the symbol to the cache.
+    symbol_map[symbol] = offset;
+
+    // Optionally save the cache to a file.
+    saveSymbolsToCache(symbol_map);
+
+    return base_address + offset;
 }
 
 #endif // _WIN32

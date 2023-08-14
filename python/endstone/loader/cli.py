@@ -16,11 +16,11 @@ logger = logging.getLogger("loader")
 
 
 @click.command
-@click.option("-p", "--path", default="./server/")
+@click.option("-p", "--path", default="minecraft_server")
 @click.option("-y", "--yes", default=False, is_flag=True, show_default=True)
 def cli(path: str, yes: bool):
-    path = Path(path)
-    path.mkdir(parents=True, exist_ok=True)
+    minecraft_version = __minecraft__version__
+    path = Path(path) / minecraft_version
 
     system = platform.system()
     if system == "Windows":
@@ -36,7 +36,7 @@ def cli(path: str, yes: bool):
     if not exec_path.exists():
         if not yes:
             download = click.confirm(
-                f"Bedrock Dedicated Server (v{__minecraft__version__}) can not be found. "
+                f"Bedrock Dedicated Server (v{minecraft_version}) can not be found in {str(path)}. "
                 f"Would you like to download it now?",
                 default=True,
             )
@@ -44,7 +44,8 @@ def cli(path: str, yes: bool):
             download = True
 
         if download:
-            zip_filename = f"bedrock-server-{__minecraft__version__}.zip"
+            path.mkdir(parents=True, exist_ok=True)
+            zip_filename = f"bedrock-server-{minecraft_version}.zip"
 
             response = requests.get(urllib.parse.urljoin(base_url, zip_filename), stream=True)
             assert response.status_code == 200, f"Error while downloading from {response.url}"
