@@ -13,6 +13,8 @@ class DedicatedServer
                                void *level_settings,    // LevelSettings &
                                void *allow_list,        // AllowListFile &
                                void *permissions);      // std::unique_ptr<PermissionsFile> &
+
+    void initializeLogging();
 };
 
 #endif // ENDSTONE_DEDICATED_SERVER_H

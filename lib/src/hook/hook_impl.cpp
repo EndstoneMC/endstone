@@ -12,6 +12,7 @@ void HookManager::registerHooks()
 {
     HOOK_FUNCTION(BedrockLog::log_va)
     //    HOOK_FUNCTION(DedicatedServer::runDedicatedServerLoop)
+    HOOK_FUNCTION(DedicatedServer::initializeLogging)
     HOOK_FUNCTION(ServerInstance::startServerThread)
     //    HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStopped)
@@ -59,6 +60,17 @@ int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
                          level_settings,
                          allow_list,
                          permissions);
+}
+
+void DedicatedServer::initializeLogging()
+{
+    std::vector<std::string> &filters = *static_cast<std::vector<std::string> *>(lookupSymbol("gPriorityFilters"));
+    if (std::find(filters.begin(), filters.end(), "VERBOSE") == filters.end())
+    {
+        filters.emplace_back("VERBOSE");
+    }
+
+    return CALL_ORIGINAL(DedicatedServer::initializeLogging);
 }
 
 void BedrockLog::log_va(BedrockLog::LogCategory category,
