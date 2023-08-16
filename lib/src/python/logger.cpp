@@ -24,12 +24,7 @@
         va_end(args);                                                                                                  \
     }
 
-void Logger::log(LogLevel level, const char *message) const
-{
-    log_va(level, message);
-}
-
-void Logger::log_va(LogLevel level, char const *format, ...) const
+void Logger::log(LogLevel level, char const *format, ...) const
 {
     BEDROCK_LOG(level)
 }
@@ -79,43 +74,15 @@ Logger &Logger::getLogger(const std::string &name)
     return it->second;
 }
 
-void PyLogger::log(LogLevel level, const char *message) const
+void PyLogger::log(LogLevel level, const char *format, ...) const
 {
     PYBIND11_OVERRIDE_NAME(void,   // Return type
                            Logger, // Parent class
                            "log",  // Name of method in Python
                            log,    // Name of method in C++
                            level,  // Argument(s)
-                           message);
+                           format);
 }
-
-namespace LoggerWrapper
-{
-void log(const Logger &logger, LogLevel level, const char *message)
-{
-    logger.log(level, message);
-}
-
-void verbose(const Logger &logger, const char *message)
-{
-    log(logger, LogLevel::Verbose, message);
-}
-
-void info(const Logger &logger, const char *message)
-{
-    log(logger, LogLevel::Info, message);
-}
-
-void warning(const Logger &logger, const char *message)
-{
-    log(logger, LogLevel::Warning, message);
-}
-
-void error(const Logger &logger, const char *message)
-{
-    log(logger, LogLevel::Error, message);
-}
-} // namespace LoggerWrapper
 
 PYBIND11_MODULE(_logger, m)
 {
@@ -129,11 +96,14 @@ PYBIND11_MODULE(_logger, m)
 
     py::class_<Logger, PyLogger>(m, "Logger")
         .def(py::init<std::string>())
-        .def("log", &LoggerWrapper::log, py::arg("level"), py::arg("msg"))
-        .def("verbose", &LoggerWrapper::verbose, py::arg("msg"))
-        .def("info", &LoggerWrapper::info, py::arg("msg"))
-        .def("warning", &LoggerWrapper::warning, py::arg("msg"))
-        .def("error", &LoggerWrapper::error, py::arg("msg"))
+        .def(
+            "log",
+            [](const PyLogger &logger, const LogLevel level, const char *msg) //
+            {                                                                 //
+                return logger.log(level, msg);
+            },
+            py::arg("level"),
+            py::arg("msg"))
         .def("set_level", &Logger::setLevel, py::arg("level"))
         .def("get_name", &Logger::getName)
         .def_static("get_logger", &Logger::getLogger, py::return_value_policy::reference_internal);

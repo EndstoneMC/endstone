@@ -5,21 +5,21 @@ from .plugin_logger import PluginLogger
 
 
 class Plugin:
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
-    def on_load(self):
+    def on_load(self) -> None:
         pass
 
-    def on_enable(self):
+    def on_enable(self) -> None:
         pass
 
-    def on_disable(self):
+    def on_disable(self) -> None:
         pass
 
     # noinspection PyAttributeOutsideInit
     @final
-    def _init(self, description: PluginDescription):
+    def _init(self, description: PluginDescription) -> None:
         self._enabled = False
         self._description = description
         self._logger = PluginLogger(self)
@@ -37,11 +37,11 @@ class Plugin:
         return self._description
 
     @final
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         return self._enabled
 
     @final
-    def _set_enabled(self, enabled: bool):
+    def _set_enabled(self, enabled: bool) -> None:
         if self._enabled is not enabled:
             self._enabled = enabled
 

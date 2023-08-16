@@ -27,8 +27,7 @@ class Logger
 {
   public:
     explicit Logger(std::string name) : name_(std::move(name)), level_(LogLevel::Info){};
-    virtual void log(LogLevel level, const char *message) const;
-    void log_va(LogLevel level, const char *format, ...) const;
+    virtual void log(LogLevel level, const char *format, ...) const;
     void verbose(const char *format, ...) const;
     void info(const char *format, ...) const;
     void warning(const char *format, ...) const;
@@ -46,7 +45,7 @@ class PyLogger : public Logger
 {
   public:
     using Logger::Logger;
-    void log(LogLevel level, const char *message) const override;
+    void log(LogLevel level, const char *format, ...) const override;
 };
 
 #endif // ENDSTONE_LOGGER_H
