@@ -23,25 +23,11 @@ FetchContent_Declare(
         GIT_TAG v2.11.1
 )
 FetchContent_Declare(
-        tomlplusplus
-        GIT_REPOSITORY https://github.com/marzer/tomlplusplus.git
-        GIT_PROGRESS TRUE
-        GIT_SHALLOW TRUE
-        GIT_TAG v3.3.0
-)
-FetchContent_Declare(
-        indicators
-        GIT_REPOSITORY https://github.com/p-ranav/indicators.git
-        GIT_PROGRESS TRUE
-        GIT_SHALLOW TRUE
-        GIT_TAG v2.3
-)
-FetchContent_Declare(
         json
         URL
         https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
 )
-FetchContent_MakeAvailable(CMakeExtraUtils pybind11 tomlplusplus indicators json)
+FetchContent_MakeAvailable(CMakeExtraUtils pybind11 json)
 
 include(DynamicVersion)
 dynamic_version(PROJECT_PREFIX endstone_)

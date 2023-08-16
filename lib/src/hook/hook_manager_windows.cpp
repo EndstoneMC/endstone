@@ -11,7 +11,6 @@
 #include <DbgHelp.h>
 #include <MinHook.h>
 #include <Psapi.h>
-#include <indicators/progress_spinner.hpp>
 #include <nlohmann/json.hpp>
 
 const Hook &HookManager::getHook(const std::string &symbol)
@@ -50,12 +49,6 @@ void HookManager::initialize()
         return;
     }
 
-    using namespace indicators;
-    indicators::ProgressSpinner spinner{option::ForegroundColor{Color::yellow},
-                                        option::ShowElapsedTime{true},
-                                        option::SpinnerStates{std::vector<std::string>{"-", "\\", "|", "/"}},
-                                        option::FontStyles{std::vector<FontStyle>{FontStyle::bold}}};
-
     MH_STATUS status;
     status = MH_Initialize();
     if (status != MH_OK)
@@ -65,8 +58,6 @@ void HookManager::initialize()
 
     registerHooks();
 
-    spinner.set_option(option::PostfixText{"Creating hooks..."});
-    auto step = 100 / hooks_.size();
     for (const auto &item : hooks_)
     {
         auto symbol = item.first.c_str();
@@ -78,7 +69,6 @@ void HookManager::initialize()
         {
             throw std::system_error(minhook::make_error_code(status));
         }
-        spinner.set_progress(spinner.current() + step);
     }
 
     status = MH_EnableHook(MH_ALL_HOOKS);
@@ -88,12 +78,6 @@ void HookManager::initialize()
     }
 
     initialized_ = true;
-    spinner.set_option(option::ForegroundColor{Color::green});
-    spinner.set_option(option::PrefixText{"Endstone loaded successfully!"});
-    spinner.set_option(option::ShowSpinner{false});
-    spinner.set_option(option::ShowPercentage{false});
-    spinner.set_option(option::PostfixText{""});
-    spinner.mark_as_completed();
 }
 
 void HookManager::finalize()

@@ -21,7 +21,6 @@ include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(
         ENDSTONE_LIBRARIES
         pybind11::embed
-        indicators::indicators
         nlohmann_json::nlohmann_json
 )
 
