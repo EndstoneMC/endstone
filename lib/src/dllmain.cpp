@@ -3,6 +3,7 @@
 #include <Windows.h>
 
 #include "common.h"
+#include "endstone/endstone.h"
 #include "endstone/server.h"
 #include "hook/hook_manager.h"
 
@@ -17,8 +18,8 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
         try
         {
             // Initialize once for each new process.
-            Server::getInstance(); // To ensure python interpreter is initialised on main thread
             HookManager::initialize();
+            Endstone::setServer(std::make_unique<Server>());
             break;
         }
         catch (const std::exception &e)

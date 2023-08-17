@@ -59,6 +59,5 @@ void Server::start()
 
 PYBIND11_MODULE(_server, m)
 {
-    py::class_<Server>(m, "Server") //
-        .def_static("getInstance", &Server::getInstance, py::return_value_policy::reference_internal);
+    py::class_<Server>(m, "Server");
 }

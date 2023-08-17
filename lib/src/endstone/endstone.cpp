@@ -16,7 +16,8 @@ const std::string &Endstone::getVersion()
 
     return version;
 }
-const ENDSTONE_API std::string &Endstone::getMinecraftVersion()
+
+const std::string &Endstone::getMinecraftVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};
@@ -27,3 +28,19 @@ const ENDSTONE_API std::string &Endstone::getMinecraftVersion()
 
     return version;
 }
+
+ Server &Endstone::getServer()
+{
+    return *server_;
+}
+
+void Endstone::setServer(std::unique_ptr<Server> server)
+{
+    if (server_)
+    {
+        throw std::runtime_error("Server singleton is already set!");
+    }
+    server_ = std::move(server);
+}
+
+std::unique_ptr<Server> Endstone::server_ = nullptr;

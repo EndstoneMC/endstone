@@ -6,12 +6,18 @@
 #define ENDSTONE_ENDSTONE_H
 
 #include "common.h"
+#include "server.h"
 
 class Endstone
 {
   public:
-    static const ENDSTONE_API std::string &getVersion();
-    static const ENDSTONE_API std::string &getMinecraftVersion();
+    ENDSTONE_API static const std::string &getVersion();
+    ENDSTONE_API static const std::string &getMinecraftVersion();
+    ENDSTONE_API static Server &getServer();
+    ENDSTONE_API static void setServer(std::unique_ptr<Server> server);
+
+  private:
+    static std::unique_ptr<Server> server_;
 };
 
 #endif // ENDSTONE_ENDSTONE_H

@@ -1,4 +1,5 @@
 add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
+add_definitions(-DENDSTONE_VERSION="${PROJECT_VERSION}")
 
 file(
         GLOB_RECURSE ENDSTONE_SOURCES

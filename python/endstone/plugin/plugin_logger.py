@@ -3,7 +3,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from endstone.plugin import Plugin
 
-from endstone.logging import Logger, LogLevel
+from endstone.util.logging import Logger, LogLevel
 
 
 class PluginLogger(Logger):

@@ -12,12 +12,6 @@
 class Server
 {
   public:
-    static Server &getInstance()
-    {
-        static Server instance;
-        return instance;
-    }
-
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
@@ -27,7 +21,6 @@ class Server
     void disablePlugins();
     void clearPlugins();
 
-  private:
     Server();
 
   private:

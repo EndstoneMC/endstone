@@ -5,7 +5,7 @@
 #include "bedrock/bedrock_log.h"
 #include "bedrock/dedicated_server.h"
 #include "bedrock/server_instance.h"
-#include "endstone/server.h"
+#include "endstone/endstone.h"
 #include "hook/hook_manager.h"
 
 void HookManager::registerHooks()
@@ -21,10 +21,11 @@ void HookManager::registerHooks()
 
 void ServerInstance::startServerThread()
 {
-    Server::getInstance().start();
-    Server::getInstance().loadPlugins();
+    auto &server = Endstone::getServer();
+    server.start();
+    server.loadPlugins();
     CALL_ORIGINAL(ServerInstance::startServerThread)
-    Server::getInstance().enablePlugins();
+    server.enablePlugins();
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *serverInstance)
@@ -37,7 +38,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *ser
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance *serverInstance)
 {
     // Server loop stops
-    Server::getInstance().disablePlugins();
+    Endstone::getServer().disablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStopped, serverInstance)
 }
 
