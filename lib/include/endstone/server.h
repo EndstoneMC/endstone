@@ -20,7 +20,7 @@ class Server
     void enablePlugins();
     void disablePlugins();
     void clearPlugins();
-    const Logger& getLogger();
+    const Logger &getLogger();
 
     Server();
     ~Server()

@@ -42,7 +42,7 @@ void Endstone::setServer(std::unique_ptr<Server> server)
     }
 
     server_ = std::move(server);
-    server_->getLogger().info("Endstone Version: %s", Endstone::getVersion());
+    server_->getLogger().info("Endstone Version: %s", Endstone::getVersion().c_str());
 }
 
 std::unique_ptr<Server> Endstone::server_ = nullptr;

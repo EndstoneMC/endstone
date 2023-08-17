@@ -13,40 +13,62 @@ Server::Server() : logger_(Logger::getLogger("Server"))
         auto cls = module.attr("PluginManager");
         pluginManager_ = cls(this);
     }
-    catch (py::error_already_set &e)
-    {
-        logger_.error("Failed to load PluginManager with Python exceptions: %s\n", e.what());
-        throw e;
-    }
     catch (const std::exception &e)
     {
-        logger_.error("Failed to load PluginManager with Python C API exceptions: %s\n", e.what());
-        throw e;
+        logger_.error("%s\n", e.what());
     }
 }
 
 void Server::loadPlugins()
 {
-    py::gil_scoped_acquire lock{};
-    pluginManager_.attr("load_plugins")((std::filesystem::current_path() / "plugins").string());
+    try
+    {
+        py::gil_scoped_acquire lock{};
+        pluginManager_.attr("load_plugins")((std::filesystem::current_path() / "plugins").string());
+    }
+    catch (const std::exception &e)
+    {
+        logger_.error("%s\n", e.what());
+    }
 }
 
 void Server::enablePlugins()
 {
-    py::gil_scoped_acquire lock{};
-    pluginManager_.attr("enable_plugins")();
+    try
+    {
+        py::gil_scoped_acquire lock{};
+        pluginManager_.attr("enable_plugins")();
+    }
+    catch (const std::exception &e)
+    {
+        logger_.error("%s\n", e.what());
+    }
 }
 
 void Server::disablePlugins()
 {
-    py::gil_scoped_acquire lock{};
-    pluginManager_.attr("disable_plugins")();
+    try
+    {
+        py::gil_scoped_acquire lock{};
+        pluginManager_.attr("disable_plugins")();
+    }
+    catch (const std::exception &e)
+    {
+        logger_.error("%s\n", e.what());
+    }
 }
 
 void Server::clearPlugins()
 {
-    py::gil_scoped_acquire lock{};
-    pluginManager_.attr("clear_plugins")();
+    try
+    {
+        py::gil_scoped_acquire lock{};
+        pluginManager_.attr("clear_plugins")();
+    }
+    catch (const std::exception &e)
+    {
+        logger_.error("%s\n", e.what());
+    }
 }
 
 void Server::start()
@@ -57,4 +79,3 @@ const Logger &Server::getLogger()
 {
     return logger_;
 }
-

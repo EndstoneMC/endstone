@@ -30,7 +30,7 @@ class PluginManager:
             raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
 
         try:
-            main = description.main
+            main = description.get_main()
             pos = main.rfind(".")
             module_name = main[:pos]
             class_name = main[pos + 1 :]
@@ -44,7 +44,7 @@ class PluginManager:
             plugin._init(description)
             return plugin
         except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
+            raise RuntimeError(f"Unable to load plugin {description.get_fullname()}: {e}")
 
     def load_plugins(self, directory: str) -> list[Plugin]:
         assert directory is not None, "Directory cannot be None"
@@ -72,7 +72,7 @@ class PluginManager:
 
     def enable_plugin(self, plugin: Plugin) -> None:
         if not plugin.is_enabled():
-            plugin.logger.info(f"Enabling {plugin.description.fullname}")
+            plugin.logger.info(f"Enabling {plugin.get_description().get_fullname()}")
             # noinspection PyProtectedMember
             plugin._set_enabled(True)
 
@@ -82,7 +82,7 @@ class PluginManager:
 
     def disable_plugin(self, plugin: Plugin):
         if plugin.is_enabled():
-            plugin.logger.info(f"Disabling {plugin.description.fullname}")
+            plugin.logger.info(f"Disabling {plugin.get_description().get_fullname()}")
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
 

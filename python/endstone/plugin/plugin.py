@@ -2,8 +2,8 @@ from typing import final
 
 from endstone._plugin import IPlugin
 
-from endstone.plugin import PluginLogger
-from endstone.plugin.plugin_description import PluginDescription
+from .plugin_description import PluginDescription
+from .plugin_logger import PluginLogger
 
 
 class Plugin(IPlugin):
@@ -35,5 +35,20 @@ class Plugin(IPlugin):
         return self._enabled
 
     @final
+    def _set_enabled(self, enabled: bool):
+        if self._enabled is not enabled:
+            self._enabled = enabled
+
+            if self._enabled:
+                self.on_enable()
+            else:
+                self.on_disable()
+
+    @final
     def get_logger(self) -> PluginLogger:
+        return self._logger
+
+    @final
+    @property
+    def logger(self) -> PluginLogger:
         return self._logger
