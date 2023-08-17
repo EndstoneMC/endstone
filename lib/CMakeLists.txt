@@ -12,7 +12,7 @@ file(
         GLOB_RECURSE ENDSTONE_PYBIND11_MODULE_SOURCES
         LIST_DIRECTORIES false
         RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
-        "src/endstone/*.cpp"
+        "src/pybind/*.cpp"
 )
 
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
@@ -25,7 +25,9 @@ set(
         nlohmann_json::nlohmann_json
 )
 
-if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
+if (WIN32)
+    set_target_properties(libendstone PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+
     FetchContent_Declare(
             minhook
             GIT_REPOSITORY https://github.com/TsudaKageyu/minhook.git
@@ -34,16 +36,18 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
             GIT_SHALLOW TRUE
     )
     FetchContent_MakeAvailable(minhook)
-
     list(APPEND ENDSTONE_LIBRARIES minhook dbghelp.lib)
 endif ()
 
 target_link_libraries(libendstone PRIVATE ${ENDSTONE_LIBRARIES})
 
-set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin_manager)
+set(ENDSTONE_PYBIND11_MODULES _plugin _server _logger)
 
 foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
-    pybind11_add_module(${ENDSTONE_PYBIND11_MODULE} MODULE ${ENDSTONE_PYBIND11_MODULE_SOURCES})
+    pybind11_add_module(
+            ${ENDSTONE_PYBIND11_MODULE} MODULE
+            ${CMAKE_CURRENT_SOURCE_DIR}/src/pybind/${ENDSTONE_PYBIND11_MODULE}.cpp
+    )
     target_include_directories(${ENDSTONE_PYBIND11_MODULE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
     if (WIN32)

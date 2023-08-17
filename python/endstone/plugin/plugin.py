@@ -1,12 +1,25 @@
 from typing import final
 
-from .plugin_description import PluginDescription
-from .plugin_logger import PluginLogger
+from endstone._plugin import IPlugin
+
+from endstone.plugin import PluginLogger
+from endstone.plugin.plugin_description import PluginDescription
 
 
-class Plugin:
+class Plugin(IPlugin):
     def __init__(self) -> None:
-        pass
+        IPlugin.__init__(self)
+
+    # noinspection PyAttributeOutsideInit
+    @final
+    def _init(self, description: PluginDescription) -> None:
+        self._enabled = False
+        self._description = description
+        self._logger = PluginLogger(self)
+
+    @final
+    def get_description(self) -> PluginDescription:
+        return self._description
 
     def on_load(self) -> None:
         pass
@@ -17,35 +30,10 @@ class Plugin:
     def on_disable(self) -> None:
         pass
 
-    # noinspection PyAttributeOutsideInit
     @final
-    def _init(self, description: PluginDescription) -> None:
-        self._enabled = False
-        self._description = description
-        self._logger = PluginLogger(self)
-
-    @final
-    @property
-    def logger(self) -> PluginLogger:
-        assert self._logger is not None
-        return self._logger
-
-    @final
-    @property
-    def description(self) -> PluginDescription:
-        assert self._description is not None
-        return self._description
-
-    @final
-    def is_enabled(self) -> bool:
+    def is_enabled(self):
         return self._enabled
 
     @final
-    def _set_enabled(self, enabled: bool) -> None:
-        if self._enabled is not enabled:
-            self._enabled = enabled
-
-            if enabled:
-                self.on_enable()
-            else:
-                self.on_disable()
+    def get_logger(self) -> PluginLogger:
+        return self._logger

@@ -2,16 +2,20 @@ import re
 import sys
 from typing import BinaryIO
 
+from endstone._plugin import IPluginDescription
+
 if sys.version_info >= (3, 11):
     from tomllib import load
 else:
     from tomli import load
 
 
-class PluginDescription:
+class PluginDescription(IPluginDescription):
     VALID_NAME = re.compile(r"^[A-Za-z0-9 _.-]+$")
 
     def __init__(self, name: str, version: str, main_cls: str):
+        IPluginDescription.__init__(self)
+
         if not self.VALID_NAME.match(name):
             raise ValueError(f"Plugin name {name} contains invalid characters.")
 
@@ -22,32 +26,22 @@ class PluginDescription:
         self._authors = []
         self._prefix = None
 
-    @property
-    def name(self) -> str:
+    def get_name(self):
         return self._name
 
-    @property
-    def fullname(self) -> str:
-        return f"{self._name} v{self._version}"
-
-    @property
-    def version(self) -> str:
+    def get_version(self) -> str:
         return self._version
 
-    @property
-    def main(self) -> str:
+    def get_main(self) -> str:
         return self._main
 
-    @property
-    def description(self) -> str:
+    def get_description(self) -> str:
         return self._description
 
-    @property
-    def authors(self) -> list[str]:
+    def get_authors(self) -> list[str]:
         return self._authors
 
-    @property
-    def prefix(self) -> str:
+    def get_prefix(self) -> str:
         return self._prefix
 
 

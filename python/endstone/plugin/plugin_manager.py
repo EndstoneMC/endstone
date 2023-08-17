@@ -11,15 +11,13 @@ else:
     pass
 
 from endstone._logger import Logger
-from endstone._plugin_manager import PluginManager as IPluginManager
 from endstone._server import Server
 
 from endstone.plugin import Plugin
 
 
-class PluginManager(IPluginManager):
+class PluginManager:
     def __init__(self, server: Server):
-        IPluginManager.__init__(self, server)
         self._server = server
         self._plugins = []
         self._logger = Logger.get_logger(self.__class__.__name__)

@@ -41,11 +41,4 @@ class Logger
     LogLevel level_;
 };
 
-class PyLogger : public Logger
-{
-  public:
-    using Logger::Logger;
-    void log(LogLevel level, const char *format, ...) const override;
-};
-
 #endif // ENDSTONE_LOGGER_H

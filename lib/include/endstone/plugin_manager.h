@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "common.h"
-#include "plugin.h"
+#include "endstone/plugin/plugin.h"
 
 class Server;
 

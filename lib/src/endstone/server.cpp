@@ -3,7 +3,6 @@
 //
 
 #include "endstone/server.h"
-#include "endstone/endstone.h"
 
 Server::Server() : logger_(Logger::getLogger("Server"))
 {
@@ -53,12 +52,9 @@ void Server::clearPlugins()
 void Server::start()
 {
 }
+
 const Logger &Server::getLogger()
 {
     return logger_;
 }
 
-PYBIND11_MODULE(_server, m)
-{
-    py::class_<Server>(m, "Server");
-}

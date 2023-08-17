@@ -10,7 +10,7 @@ class Logger(BaseLogger):
     def __init__(self, name: str) -> None:
         BaseLogger.__init__(self, name)
 
-    def log(self, level, msg, *args):
+    def log(self, level: LogLevel, msg, *args):
         if args and len(args) == 1 and isinstance(args[0], collections.abc.Mapping) and args[0]:
             args = args[0]
 

@@ -5,7 +5,7 @@
 #include "endstone/endstone.h"
 #include "common.h"
 
-const char *Endstone::getVersion()
+std::string Endstone::getVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};
@@ -14,10 +14,10 @@ const char *Endstone::getVersion()
         return py::cast<std::string>(version);
     }();
 
-    return version.c_str();
+    return version;
 }
 
-const char *Endstone::getMinecraftVersion()
+std::string Endstone::getMinecraftVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};
@@ -26,7 +26,7 @@ const char *Endstone::getMinecraftVersion()
         return py::cast<std::string>(version);
     }();
 
-    return version.c_str();
+    return version;
 }
 
 Server &Endstone::getServer()

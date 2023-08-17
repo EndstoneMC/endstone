@@ -11,8 +11,8 @@
 class Endstone
 {
   public:
-    ENDSTONE_API static const char *getVersion();
-    ENDSTONE_API static const char *getMinecraftVersion();
+    ENDSTONE_API static std::string getVersion();
+    ENDSTONE_API static std::string getMinecraftVersion();
     ENDSTONE_API static Server &getServer();
     ENDSTONE_API static void setServer(std::unique_ptr<Server> server);
 
