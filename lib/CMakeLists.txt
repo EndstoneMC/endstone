@@ -11,12 +11,12 @@ file(
         GLOB_RECURSE ENDSTONE_PYBIND11_MODULE_SOURCES
         LIST_DIRECTORIES false
         RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
-        "src/python/*.cpp"
+        "src/endstone/*.cpp"
 )
 
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
-
-include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
 
 set(
         ENDSTONE_LIBRARIES

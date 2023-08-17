@@ -4,8 +4,8 @@
 
 #include <memory>
 
-#include "endstone.h"
-#include "python/logger.h"
+#include "common.h"
+#include "endstone/logger.h"
 
 #define BEDROCK_LOG(level)                                                                                             \
     if (level >= level_)                                                                                               \

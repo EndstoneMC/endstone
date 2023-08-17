@@ -2,7 +2,8 @@
 // Created by Vincent on 31/07/2023.
 //
 
-#include "python/server.h"
+#include "endstone/server.h"
+#include "endstone/endstone.h"
 
 Server::Server() : logger_(Logger::getLogger("Server"))
 {

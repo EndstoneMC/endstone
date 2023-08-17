@@ -4,7 +4,8 @@
 
 #ifdef _WIN32
 
-#include "endstone.h"
+#include "common.h"
+#include "endstone/endstone.h"
 #include "hook/hook_error.h"
 #include "hook/hook_manager.h"
 

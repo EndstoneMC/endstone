@@ -2,8 +2,8 @@
 // Created by Vincent on 22/07/2023.
 //
 
-#include "python/plugin_manager.h"
-#include "python/server.h"
+#include "endstone/plugin_manager.h"
+#include "endstone/server.h"
 
 Plugin *PyPluginManager::loadPlugin(const std::string &path)
 {

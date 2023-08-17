@@ -2,9 +2,13 @@
 // Created by Vincent on 07/08/2023.
 //
 
-#ifndef ENDSTONE_ENDSTONE_H
-#define ENDSTONE_ENDSTONE_H
+// common.h - Intended to be used as a Precompiled Header (PCH)
+// Contains commonly used and stable headers to improve compilation times.
 
+#ifndef ENDSTONE_COMMON_H
+#define ENDSTONE_COMMON_H
+
+// C++ Standard Library headers
 #include <bitset>
 #include <codecvt>
 #include <filesystem>
@@ -19,12 +23,15 @@
 #include <thread>
 #include <vector>
 
+// Third-party library headers (pybind11)
 #include <pybind11/embed.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+// Namespace alias for pybind11 (used frequently across the project)
 namespace py = pybind11;
 
+// Platform-specific macros for exporting symbols
 #if defined(_WIN32)
 #define BEDROCK_API __declspec(dllexport)
 #define ENDSTONE_API __declspec(dllexport)
@@ -33,11 +40,4 @@ namespace py = pybind11;
 #define ENDSTONE_API
 #endif
 
-class Endstone
-{
-  public:
-    static const ENDSTONE_API std::string &getVersion();
-    static const ENDSTONE_API std::string &getMinecraftVersion();
-};
-
-#endif // ENDSTONE_ENDSTONE_H
+#endif // ENDSTONE_COMMON_H

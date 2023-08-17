@@ -5,7 +5,7 @@
 #ifndef ENDSTONE_HOOK_MANAGER_H
 #define ENDSTONE_HOOK_MANAGER_H
 
-#include "endstone.h"
+#include "common.h"
 
 /**
  * @brief Look up a symbol within the base module.

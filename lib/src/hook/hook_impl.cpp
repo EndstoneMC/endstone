@@ -5,8 +5,8 @@
 #include "bedrock/bedrock_log.h"
 #include "bedrock/dedicated_server.h"
 #include "bedrock/server_instance.h"
+#include "endstone/server.h"
 #include "hook/hook_manager.h"
-#include "python/server.h"
 
 void HookManager::registerHooks()
 {

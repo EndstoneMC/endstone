@@ -8,7 +8,7 @@
 #include <utility>
 
 #include "bedrock/bedrock_log.h"
-#include "endstone.h"
+#include "common.h"
 
 /**
  * @enum LogLevel

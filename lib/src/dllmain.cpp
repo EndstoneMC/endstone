@@ -2,16 +2,14 @@
 
 #include <Windows.h>
 
-#include "endstone.h"
+#include "common.h"
+#include "endstone/server.h"
 #include "hook/hook_manager.h"
-#include "python/server.h"
 
 BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
                     _In_ DWORD fdwReason,    // reason for calling function
                     _In_ LPVOID lpvReserved) // reserved
 {
-    static PyThreadState *state = nullptr;
-
     // Perform actions based on the reason for calling.
     switch (fdwReason)
     {

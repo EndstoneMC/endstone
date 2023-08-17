@@ -5,7 +5,7 @@
 #ifndef ENDSTONE_BEDROCK_LOG_H
 #define ENDSTONE_BEDROCK_LOG_H
 
-#include "endstone.h"
+#include "common.h"
 
 #include <cstdarg>
 #include <cstdio>

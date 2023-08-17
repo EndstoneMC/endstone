@@ -2,7 +2,8 @@
 // Created by Vincent on 09/08/2023.
 //
 
-#include "endstone.h"
+#include "endstone/endstone.h"
+#include "common.h"
 
 const std::string &Endstone::getVersion()
 {

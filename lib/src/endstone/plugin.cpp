@@ -1,9 +1,8 @@
 //
 // Created by Vincent on 21/07/2023.
 //
-
-#include "python/plugin.h"
-#include "endstone.h"
+#include "endstone/plugin.h"
+#include "common.h"
 
 void PyPlugin::onLoad()
 {
