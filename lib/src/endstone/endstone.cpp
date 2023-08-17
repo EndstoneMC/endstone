@@ -5,7 +5,7 @@
 #include "endstone/endstone.h"
 #include "common.h"
 
-const std::string &Endstone::getVersion()
+const char *Endstone::getVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};
@@ -14,10 +14,10 @@ const std::string &Endstone::getVersion()
         return py::cast<std::string>(version);
     }();
 
-    return version;
+    return version.c_str();
 }
 
-const std::string &Endstone::getMinecraftVersion()
+const char *Endstone::getMinecraftVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};
@@ -26,10 +26,10 @@ const std::string &Endstone::getMinecraftVersion()
         return py::cast<std::string>(version);
     }();
 
-    return version;
+    return version.c_str();
 }
 
- Server &Endstone::getServer()
+Server &Endstone::getServer()
 {
     return *server_;
 }
@@ -40,7 +40,9 @@ void Endstone::setServer(std::unique_ptr<Server> server)
     {
         throw std::runtime_error("Server singleton is already set!");
     }
+
     server_ = std::move(server);
+    server_->getLogger().info("Endstone Version: %s", Endstone::getVersion());
 }
 
 std::unique_ptr<Server> Endstone::server_ = nullptr;

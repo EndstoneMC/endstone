@@ -7,6 +7,9 @@
 #include "endstone/server.h"
 #include "hook/hook_manager.h"
 
+std::unique_ptr<py::scoped_interpreter> g_interpreter;
+std::unique_ptr<py::gil_scoped_release> g_release;
+
 BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
                     _In_ DWORD fdwReason,    // reason for calling function
                     _In_ LPVOID lpvReserved) // reserved
@@ -17,9 +20,13 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
     case DLL_PROCESS_ATTACH: {
         try
         {
-            // Initialize once for each new process.
+            // Initialize python interpreter and release the GIL
+            g_interpreter = std::make_unique<py::scoped_interpreter>();
+            py::module_::import("threading"); // https://github.com/pybind/pybind11/issues/2197
+            g_release = std::make_unique<py::gil_scoped_release>();
+
+            // Initialize hook manager
             HookManager::initialize();
-            Endstone::setServer(std::make_unique<Server>());
             break;
         }
         catch (const std::exception &e)
@@ -44,6 +51,8 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
 
         // Perform any necessary cleanup.
         HookManager::finalize();
+        g_release.reset();
+        g_interpreter.reset();
 
         break;
     }

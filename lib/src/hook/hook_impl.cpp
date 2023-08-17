@@ -14,24 +14,22 @@ void HookManager::registerHooks()
     //    HOOK_FUNCTION(DedicatedServer::runDedicatedServerLoop)
     HOOK_FUNCTION(DedicatedServer::initializeLogging)
     HOOK_FUNCTION(ServerInstance::startServerThread)
-    //    HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
+    HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStopped)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerUpdateEnd)
 }
 
 void ServerInstance::startServerThread()
 {
-    auto &server = Endstone::getServer();
-    server.start();
-    server.loadPlugins();
+    Endstone::setServer(std::make_unique<Server>());
+    Endstone::getServer().loadPlugins();
     CALL_ORIGINAL(ServerInstance::startServerThread)
-    server.enablePlugins();
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *serverInstance)
 {
     // Server loop starts
-    // Server::getInstance().enablePlugins();
+    Endstone::getServer().enablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, serverInstance)
 }
 
