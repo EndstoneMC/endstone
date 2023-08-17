@@ -44,6 +44,13 @@ set(ENDSTONE_PYBIND11_MODULES _logger _server _plugin_manager)
 
 foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
     pybind11_add_module(${ENDSTONE_PYBIND11_MODULE} MODULE ${ENDSTONE_PYBIND11_MODULE_SOURCES})
+    target_include_directories(${ENDSTONE_PYBIND11_MODULE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+    if (WIN32)
+        target_link_options(${ENDSTONE_PYBIND11_MODULE} PRIVATE "/DELAYLOAD:libendstone.dll")
+        target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE delayimp.lib)
+    endif ()
+
     target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE libendstone)
 endforeach ()
 
