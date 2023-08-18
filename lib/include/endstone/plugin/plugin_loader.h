@@ -5,8 +5,15 @@
 #ifndef ENDSTONE_PLUGIN_LOADER_H
 #define ENDSTONE_PLUGIN_LOADER_H
 
+#include "plugin.h"
 class PluginLoader
 {
+  public:
+    virtual ~PluginLoader() = default;
+    virtual Plugin *loadPlugin(const std::string &file) = 0;
+    virtual std::vector<std::string> getPluginFilters() = 0;
+    virtual void enablePlugin(const Plugin &plugin) = 0;
+    virtual void disablePlugin(const Plugin &plugin) = 0;
 };
 
 #endif // ENDSTONE_PLUGIN_LOADER_H

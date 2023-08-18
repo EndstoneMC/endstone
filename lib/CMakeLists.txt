@@ -1,5 +1,6 @@
 add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
-add_definitions(-DENDSTONE_VERSION="${PROJECT_VERSION}")
+add_definitions(-DMINECRAFT_VERSION="${MINECRAFT_VERSION}")
+add_definitions(-DENDSTONE_VERSION="${ENDSTONE_VERSION}")
 
 file(
         GLOB_RECURSE ENDSTONE_SOURCES
@@ -16,6 +17,7 @@ file(
 )
 
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
+add_dependencies(libendstone Endstone_Version)
 target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
 

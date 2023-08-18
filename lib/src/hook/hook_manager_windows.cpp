@@ -5,6 +5,7 @@
 #ifdef _WIN32
 
 #include "common.h"
+#include "endstone/endstone.h"
 #include "hook/hook_error.h"
 #include "hook/hook_manager.h"
 
@@ -120,7 +121,7 @@ void saveSymbolsToCache(const std::map<std::string, size_t> &symbols)
     }
 
     nlohmann::json json_data;
-    json_data["version"] = ENDSTONE_VERSION;
+    json_data["version"] = Endstone::getMinecraftVersion();
 
     // Save symbols
     for (const auto &[key, value] : symbols)
@@ -144,7 +145,7 @@ void loadSymbolsFromCache(std::map<std::string, size_t> &symbols)
     file >> json_data;
 
     // Check if the version field matches
-    if (json_data["version"] != ENDSTONE_VERSION)
+    if (json_data["version"] != Endstone::getMinecraftVersion())
     {
         return;
     }

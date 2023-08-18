@@ -5,6 +5,7 @@
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/python/python_plugin.h"
 #include "endstone/plugin/python/python_plugin_description.h"
+#include "endstone/plugin/python/python_plugin_loader.h"
 
 PYBIND11_MODULE(_plugin, m)
 {
@@ -25,4 +26,11 @@ PYBIND11_MODULE(_plugin, m)
         .def("get_authors", &PluginDescription::getAuthors)                     //
         .def("get_prefix", &PluginDescription::getPrefix)                       //
         .def("get_fullname", &PluginDescription::getFullName);
+
+    py::class_<PluginLoader, PyPluginLoader>(m, "IPluginLoader")              //
+        .def(py::init<>())                                                    //
+        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))       //
+        .def("get_plugin_filters", &PluginLoader::getPluginFilters)           //
+        .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin")) //
+        .def("disable_plugin", &PluginLoader::disablePlugin, py::arg("plugin"));
 }
