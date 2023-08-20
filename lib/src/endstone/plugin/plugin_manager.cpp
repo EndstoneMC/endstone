@@ -68,7 +68,7 @@ Plugin *PluginManager::loadPlugin(const std::filesystem::path &file)
     for (const auto &[pattern, loader] : fileAssociations_)
     {
         std::regex r(pattern);
-        if (std::regex_match(file.string(), r))
+        if (std::regex_search(file.string(), r))
         {
             Plugin *plugin = loader->loadPlugin(file.string());
 
@@ -86,38 +86,53 @@ Plugin *PluginManager::loadPlugin(const std::filesystem::path &file)
 
 std::vector<Plugin *> PluginManager::loadPlugins(const std::filesystem::path &directory)
 {
-    if (!exists(directory))
+    if (!std::filesystem::exists(directory))
     {
         throw std::runtime_error("Provided directory does not exist.");
     }
 
-    if (!is_directory(directory))
+    if (!std::filesystem::is_directory(directory))
     {
         throw std::runtime_error("Provided path is not a directory.");
     }
 
     std::vector<Plugin *> loadedPlugins;
 
-    // Traverse through the directory and its subdirectories.
-    for (const auto &entry : std::filesystem::recursive_directory_iterator(directory))
+    for (const auto &entry : std::filesystem::directory_iterator(directory))
     {
+        std::filesystem::path file;
+
+        // If it's a regular file, try to load it as a plugin.
         if (std::filesystem::is_regular_file(entry.status()))
         {
-            auto file = entry.path();
+            file = entry.path();
+        }
+        // If it's a subdirectory, look for a plugin.toml inside it.
+        else if (std::filesystem::is_directory(entry.status()))
+        {
+            file = entry.path() / "plugin.toml";
+            if (!std::filesystem::exists(file) || !std::filesystem::is_regular_file(file))
+            {
+                continue;
+            }
+        }
+        else
+        {
+            continue;
+        }
 
-            try
+        try
+        {
+            auto plugin = loadPlugin(file);
+            if (plugin)
             {
-                auto plugin = loadPlugin(file);
-                if (plugin)
-                {
-                    loadedPlugins.push_back(plugin);
-                }
+                loadedPlugins.push_back(plugin);
             }
-            catch (std::exception &e)
-            {
-                server_.getLogger().error(
-                    "Could not load '%s' in folder '%s': %s", file.c_str(), directory.c_str(), e.what());
-            }
+        }
+        catch (std::exception &e)
+        {
+            server_.getLogger().error(
+                "Could not load '%s' in folder '%s': %s", file.c_str(), directory.c_str(), e.what());
         }
     }
 
