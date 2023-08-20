@@ -15,6 +15,8 @@ __all__ = ["ZipPluginLoader", "SourcePluginLoader"]
 
 
 class PluginLoader(IPluginLoader):
+    _file_filters = []
+
     def __init__(self):
         IPluginLoader.__init__(self)
 
@@ -29,6 +31,9 @@ class PluginLoader(IPluginLoader):
             plugin.logger.info(f"Disabling {plugin.get_description().get_fullname()}")
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
+
+    def get_plugin_filters(self) -> list[str]:
+        return self._file_filters.copy()
 
 
 class ZipPluginLoader(PluginLoader):
@@ -62,9 +67,6 @@ class ZipPluginLoader(PluginLoader):
             return plugin
         except Exception as e:
             raise RuntimeError(f"Unable to load plugin {description.get_fullname()}: {e}")
-
-    def get_plugin_filters(self) -> list[str]:
-        return self._file_filters.copy()
 
 
 class SourcePluginLoader(PluginLoader):
@@ -102,9 +104,6 @@ class SourcePluginLoader(PluginLoader):
 
         except Exception as e:
             raise RuntimeError(f"Unable to load plugin {description.get_fullname()}: {e}")
-
-    def get_plugin_filters(self) -> list[str]:
-        return self._file_filters.copy()
 
     @staticmethod
     def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:

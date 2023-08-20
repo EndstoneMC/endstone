@@ -5,7 +5,7 @@
 #include "endstone/server.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 
-Server::Server() : logger_(Logger::getLogger("Server"))
+Server::Server() : logger_(Logger::getLogger("Server")), pluginManager_(std::make_unique<PluginManager>(*this))
 {
 }
 
