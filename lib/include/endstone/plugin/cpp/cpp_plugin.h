@@ -17,6 +17,7 @@ class CppPlugin : public Plugin
     void onDisable() override;
     Logger &getLogger() override;
     bool isEnabled() const override;
+    std::shared_ptr<PluginLoader> getPluginLoader() const override;
 
   protected:
     void setEnabled(bool enabled);
@@ -24,6 +25,7 @@ class CppPlugin : public Plugin
   private:
     bool enabled_;
     std::unique_ptr<Logger> logger_;
+    std::weak_ptr<PluginLoader> loader_;
 };
 
 #endif // ENDSTONE_CPP_PLUGIN_H

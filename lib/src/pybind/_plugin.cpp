@@ -2,10 +2,109 @@
 // Created by Vincent on 17/08/2023.
 //
 
+#include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_logger.h"
-#include "endstone/plugin/python/python_plugin.h"
-#include "endstone/plugin/python/python_plugin_description.h"
-#include "endstone/plugin/python/python_plugin_loader.h"
+
+class PyPlugin : public Plugin
+{
+  public:
+    PluginDescription &getDescription() const override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(PluginDescription &, Plugin, "get_description", getDescription);
+    }
+
+    void onLoad() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_load", onLoad);
+    }
+
+    void onEnable() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_enable", onEnable);
+    }
+
+    void onDisable() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
+    }
+
+    Logger &getLogger() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(Logger &, Plugin, "get_logger", onDisable);
+    }
+
+    bool isEnabled() const override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(bool, Plugin, "is_enabled", isEnabled);
+    }
+
+    std::shared_ptr<PluginLoader> getPluginLoader() const override
+    {
+        throw std::runtime_error("Not supported");
+    }
+};
+
+class PyPluginDescription : public PluginDescription
+{
+  public:
+    using PluginDescription::PluginDescription;
+
+    std::string getName() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::string, PluginDescription, "get_name", getName);
+    }
+
+    std::string getVersion() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::string, PluginDescription, "get_version", getVersion);
+    }
+
+    std::optional<std::string> getDescription() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::optional<std::string>, PluginDescription, "get_description", getDescription);
+    }
+
+    std::optional<std::vector<std::string>> getAuthors() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(
+            std::optional<std::vector<std::string>>, PluginDescription, "get_authors", getAuthors);
+    }
+
+    std::optional<std::string> getPrefix() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::optional<std::string>, PluginDescription, "get_prefix", getPrefix);
+    }
+
+    std::string getFullName() override
+    {
+        return getName() + " v" + getVersion();
+    }
+};
+
+class PyPluginLoader : public PluginLoader
+{
+  public:
+    Plugin *loadPlugin(const std::string &file) override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin);
+    }
+
+    std::vector<std::string> getPluginFilters() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_filters", getPluginFilters);
+    }
+
+    void enablePlugin(const Plugin &plugin) override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "enable_plugin", enablePlugin);
+    }
+
+    void disablePlugin(const Plugin &plugin) override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "disable_plugin", disablePlugin);
+    }
+};
 
 PYBIND11_MODULE(_plugin, m)
 {

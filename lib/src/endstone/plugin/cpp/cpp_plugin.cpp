@@ -42,3 +42,8 @@ void CppPlugin::setEnabled(bool enabled)
         }
     }
 }
+
+std::shared_ptr<PluginLoader> CppPlugin::getPluginLoader() const
+{
+    return loader_.lock();
+}

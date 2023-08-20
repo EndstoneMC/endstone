@@ -7,7 +7,7 @@ name = "endstone"
 authors = [
     { name = "Vincent Wu", email = "magicdroidx@gmail.com" }
 ]
-description = "Endstone offers a Python-based plugin API, enabling developers to create plugins that enhance Bedrock Dedicated Servers with various features and functionalities."
+description = "Endstone offers a Python-based plugin API, enabling developers to create plugins_ that enhance Bedrock Dedicated Servers with various features and functionalities."
 readme = "README.md"
 requires-python = ">=3.9"
 keywords = ["python", "bedrock", "minecraft"]

@@ -5,7 +5,8 @@
 #ifndef ENDSTONE_PLUGIN_LOADER_H
 #define ENDSTONE_PLUGIN_LOADER_H
 
-#include "plugin.h"
+class Plugin;
+
 class PluginLoader
 {
   public:

@@ -99,7 +99,7 @@ Here's how you can get started with Endstone:
    endstone
    ```
 
-Congratulations! You're now ready to use Endstone to create plugins for Bedrock Dedicated Servers.
+Congratulations! You're now ready to use Endstone to create plugins_ for Bedrock Dedicated Servers.
 
 ## Creating a Sample Plugin
 
@@ -110,7 +110,7 @@ Here's a step-by-step guide to creating a sample plugin:
 
 1. **Create a new folder for the plugin**
 
-   Under the folder named `plugins` in the server directory, create a new folder named `sample_plugin`.
+   Under the folder named `plugins_` in the server directory, create a new folder named `sample_plugin`.
 
 2. **Create a Python file for the plugin**
 
@@ -161,4 +161,4 @@ more complex features.
 ## Next steps
 
 Explore the Endstone documentation (WIP) for more in-depth guides and resources to help you
-create powerful plugins for Bedrock Dedicated Servers.
+create powerful plugins_ for Bedrock Dedicated Servers.

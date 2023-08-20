@@ -3,76 +3,58 @@
 //
 
 #include "endstone/server.h"
+#include "endstone/plugin/python/python_plugin_loader.h"
 
 Server::Server() : logger_(Logger::getLogger("Server"))
 {
-    try
-    {
-        py::gil_scoped_acquire lock{};
-        auto module = py::module_::import("endstone.plugin");
-        auto cls = module.attr("PluginManager");
-        pluginManager_ = cls(this);
-    }
-    catch (const std::exception &e)
-    {
-        logger_.error("%s\n", e.what());
-    }
 }
 
 void Server::loadPlugins()
 {
-    try
+    // TODO: add C++ plugin loader
+    pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
+    pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
+    auto pluginFolder = std::filesystem::current_path() / "plugins";
+
+    if (exists(pluginFolder))
     {
-        py::gil_scoped_acquire lock{};
-        pluginManager_.attr("load_plugins")((std::filesystem::current_path() / "plugins").string());
+        auto plugins = pluginManager_->loadPlugins(pluginFolder);
+        for (const auto &plugin : plugins)
+        {
+            try
+            {
+                plugin->getLogger().info("Loading %s", plugin->getDescription().getFullName().c_str());
+                plugin->onLoad();
+            }
+            catch (std::exception &e)
+            {
+                logger_.error("Error occurred when initializing %s: %s",
+                              plugin->getDescription().getFullName().c_str(),
+                              e.what());
+            }
+        }
     }
-    catch (const std::exception &e)
+    else
     {
-        logger_.error("%s\n", e.what());
+        create_directories(pluginFolder);
     }
 }
 
 void Server::enablePlugins()
 {
-    try
+    auto plugins = pluginManager_->getPlugins();
+    for (const auto &plugin : plugins)
     {
-        py::gil_scoped_acquire lock{};
-        pluginManager_.attr("enable_plugins")();
-    }
-    catch (const std::exception &e)
-    {
-        logger_.error("%s\n", e.what());
+        if (!plugin->isEnabled())
+        {
+            pluginManager_->enablePlugin(*plugin);
+        }
     }
 }
 
 void Server::disablePlugins()
 {
-    try
-    {
-        py::gil_scoped_acquire lock{};
-        pluginManager_.attr("disable_plugins")();
-    }
-    catch (const std::exception &e)
-    {
-        logger_.error("%s\n", e.what());
-    }
-}
-
-void Server::clearPlugins()
-{
-    try
-    {
-        py::gil_scoped_acquire lock{};
-        pluginManager_.attr("clear_plugins")();
-    }
-    catch (const std::exception &e)
-    {
-        logger_.error("%s\n", e.what());
-    }
-}
-
-void Server::start()
-{
+    pluginManager_->disablePlugins();
 }
 
 const Logger &Server::getLogger()

@@ -2,34 +2,58 @@
 // Created by Vincent on 17/08/2023.
 //
 
+#include <utility>
+
+#include "endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/python/python_plugin.h"
 
-PluginDescription &PyPlugin::getDescription() const
+PythonPlugin::PythonPlugin(py::object impl) : impl_(std::move(impl))
 {
-    PYBIND11_OVERLOAD_PURE_NAME(PluginDescription &, Plugin, "get_description", getDescription);
 }
 
-void PyPlugin::onLoad()
+PythonPlugin::~PythonPlugin()
 {
-    PYBIND11_OVERLOAD_PURE_NAME(void, Plugin, "on_load", onLoad);
+    py::gil_scoped_acquire lock{};
+    impl_.release();
 }
 
-void PyPlugin::onEnable()
+PluginDescription &PythonPlugin::getDescription() const
 {
-    PYBIND11_OVERLOAD_PURE_NAME(void, Plugin, "on_enable", onEnable);
+    py::gil_scoped_acquire lock{};
+    return impl_.attr("get_description")().cast<PluginDescription &>();
 }
 
-void PyPlugin::onDisable()
+void PythonPlugin::onLoad()
 {
-    PYBIND11_OVERLOAD_PURE_NAME(void, Plugin, "on_disable", onDisable);
+    py::gil_scoped_acquire lock{};
+    impl_.attr("on_load")();
 }
 
-Logger &PyPlugin::getLogger()
+void PythonPlugin::onEnable()
 {
-    PYBIND11_OVERLOAD_PURE_NAME(Logger &, Plugin, "get_logger", onDisable);
+    py::gil_scoped_acquire lock{};
+    impl_.attr("on_enable")();
 }
 
-bool PyPlugin::isEnabled() const
+void PythonPlugin::onDisable()
 {
-    PYBIND11_OVERLOAD_PURE_NAME(bool, Plugin, "is_enabled", isEnabled);
+    py::gil_scoped_acquire lock{};
+    impl_.attr("on_disable")();
+}
+
+Logger &PythonPlugin::getLogger()
+{
+    py::gil_scoped_acquire lock{};
+    return impl_.attr("get_logger")().cast<Logger &>();
+}
+
+bool PythonPlugin::isEnabled() const
+{
+    py::gil_scoped_acquire lock{};
+    return impl_.attr("is_enabled")().cast<bool>();
+}
+
+std::shared_ptr<PluginLoader> PythonPlugin::getPluginLoader() const
+{
+    return loader_.lock();
 }
