@@ -1,29 +1,43 @@
+# ------------------------
+# Compile Definitions
+# ------------------------
 add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
 add_definitions(-DPYBIND11_DETAILED_ERROR_MESSAGES)
 add_definitions(-DMINECRAFT_VERSION="${MINECRAFT_VERSION}")
 add_definitions(-DENDSTONE_VERSION="${ENDSTONE_VERSION}")
 
+# ------------------------
+# Source Files Gathering
+# ------------------------
 file(
-        GLOB_RECURSE ENDSTONE_SOURCES
+        GLOB_RECURSE ENDSTONE_SOURCES CONFIGURE_DEPENDS
         LIST_DIRECTORIES false
         RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
         "src/*.cpp"
 )
 
 file(
-        GLOB_RECURSE ENDSTONE_PYBIND11_MODULE_SOURCES
+        GLOB_RECURSE ENDSTONE_PYBIND11_MODULE_SOURCES CONFIGURE_DEPENDS
         LIST_DIRECTORIES false
         RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
         "src/pybind/*.cpp"
 )
 
+# ------------------------
+# API and Main Library Setup
+# ------------------------
+# API Library
+add_library(api INTERFACE)
+add_library(endstone::api ALIAS api)
+target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Main Shared Library
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
-add_dependencies(libendstone Endstone_Version)
-target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
 
+# External Dependencies
 set(
-        ENDSTONE_LIBRARIES
+        ENDSTONE_PRIVATE_LIBRARIES
         pybind11::embed
         nlohmann_json::nlohmann_json
 )
@@ -39,11 +53,14 @@ if (WIN32)
             GIT_SHALLOW TRUE
     )
     FetchContent_MakeAvailable(minhook)
-    list(APPEND ENDSTONE_LIBRARIES minhook dbghelp.lib)
+    list(APPEND ENDSTONE_PRIVATE_LIBRARIES minhook dbghelp.lib)
 endif ()
 
-target_link_libraries(libendstone PRIVATE ${ENDSTONE_LIBRARIES})
+target_link_libraries(libendstone PUBLIC endstone::api PRIVATE ${ENDSTONE_PRIVATE_LIBRARIES})
 
+# ------------------------
+# Pybind11 Modules Setup
+# ------------------------
 set(ENDSTONE_PYBIND11_MODULES _plugin _server _logger)
 
 foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
@@ -51,16 +68,19 @@ foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
             ${ENDSTONE_PYBIND11_MODULE} MODULE
             ${CMAKE_CURRENT_SOURCE_DIR}/src/pybind/${ENDSTONE_PYBIND11_MODULE}.cpp
     )
-    target_include_directories(${ENDSTONE_PYBIND11_MODULE} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE libendstone)
 
     if (WIN32)
         target_link_options(${ENDSTONE_PYBIND11_MODULE} PRIVATE "/DELAYLOAD:libendstone.dll")
         target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE delayimp.lib)
     endif ()
-
-    target_link_libraries(${ENDSTONE_PYBIND11_MODULE} PRIVATE libendstone)
 endforeach ()
 
-install(TARGETS libendstone ${ENDSTONE_PYBIND11_MODULES}
+# ------------------------
+# Installation Setup
+# ------------------------
+install(
+        TARGETS libendstone ${ENDSTONE_PYBIND11_MODULES}
         LIBRARY DESTINATION endstone
-        RUNTIME DESTINATION endstone)
+        RUNTIME DESTINATION endstone
+)
