@@ -18,22 +18,15 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <optional>
 #include <regex>
 #include <string>
 #include <system_error>
 #include <thread>
 #include <vector>
 
-// Third-party library headers (pybind11)
-#include <pybind11/embed.h>
-#include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
-
-// Namespace alias for pybind11 (used frequently across the project)
-namespace py = pybind11;
-
 // Platform-specific macros for exporting symbols
-#if defined(_WIN32)
+#ifdef _WIN32
 #define BEDROCK_API __declspec(dllexport)
 #define ENDSTONE_API __declspec(dllexport)
 #else

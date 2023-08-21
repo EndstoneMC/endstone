@@ -5,6 +5,7 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_logger.h"
+#include "endstone/pybind.h"
 
 class PyPlugin : public Plugin
 {

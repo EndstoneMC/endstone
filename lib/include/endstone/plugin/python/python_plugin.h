@@ -6,6 +6,7 @@
 #define ENDSTONE_PYTHON_PLUGIN_H
 
 #include "endstone/plugin/plugin.h"
+#include "endstone/pybind.h"
 
 class PythonPlugin : public Plugin
 {

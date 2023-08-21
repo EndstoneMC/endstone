@@ -4,6 +4,7 @@
 
 #include "common.h"
 #include "endstone/logger.h"
+#include "endstone/pybind.h"
 
 class PyLogger : public Logger
 {

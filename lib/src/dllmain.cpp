@@ -3,8 +3,7 @@
 #include <Windows.h>
 
 #include "common.h"
-#include "endstone/endstone.h"
-#include "endstone/server.h"
+#include "endstone/pybind.h"
 #include "hook/hook_manager.h"
 
 std::unique_ptr<py::scoped_interpreter> g_interpreter;
