@@ -12,10 +12,10 @@ class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_t
   public:
     PythonPluginLoader(const std::string &module_name, const std::string &class_name);
     ~PythonPluginLoader() override;
-    Plugin *loadPlugin(const std::string &file) override;
-    std::vector<std::string> getPluginFilters() override;
-    void enablePlugin(const Plugin &plugin) override;
-    void disablePlugin(const Plugin &plugin) override;
+    Plugin *loadPlugin(const std::string &file) const override;
+    std::vector<std::string> getPluginFilters() const noexcept override;
+    void enablePlugin(Plugin &plugin) const override;
+    void disablePlugin(Plugin &plugin) const override;
 
   private:
     py::object impl_;

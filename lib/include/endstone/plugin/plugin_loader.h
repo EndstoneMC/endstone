@@ -11,10 +11,10 @@ class PluginLoader
 {
   public:
     virtual ~PluginLoader() = default;
-    virtual Plugin *loadPlugin(const std::string &file) = 0;
-    virtual std::vector<std::string> getPluginFilters() = 0;
-    virtual void enablePlugin(const Plugin &plugin) = 0;
-    virtual void disablePlugin(const Plugin &plugin) = 0;
+    virtual Plugin *loadPlugin(const std::string &file) const = 0;
+    virtual std::vector<std::string> getPluginFilters() const noexcept = 0;
+    virtual void enablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugin(Plugin &plugin) const = 0;
 };
 
 #endif // ENDSTONE_PLUGIN_LOADER_H

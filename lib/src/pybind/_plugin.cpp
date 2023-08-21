@@ -29,7 +29,7 @@ class PyPlugin : public Plugin
         PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
     }
 
-    Logger &getLogger() override
+    Logger &getLogger() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(Logger &, Plugin, "get_logger", onDisable);
     }
@@ -39,7 +39,7 @@ class PyPlugin : public Plugin
         PYBIND11_OVERRIDE_PURE_NAME(bool, Plugin, "is_enabled", isEnabled);
     }
 
-    std::shared_ptr<PluginLoader> getPluginLoader() const override
+    std::shared_ptr<const PluginLoader> getPluginLoader() const override
     {
         throw std::runtime_error("Not supported");
     }
@@ -85,22 +85,22 @@ class PyPluginDescription : public PluginDescription
 class PyPluginLoader : public PluginLoader
 {
   public:
-    Plugin *loadPlugin(const std::string &file) override
+    Plugin *loadPlugin(const std::string &file) const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin);
     }
 
-    std::vector<std::string> getPluginFilters() override
+    std::vector<std::string> getPluginFilters() const noexcept override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_filters", getPluginFilters);
     }
 
-    void enablePlugin(const Plugin &plugin) override
+    void enablePlugin(Plugin &plugin) const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "enable_plugin", enablePlugin);
     }
 
-    void disablePlugin(const Plugin &plugin) override
+    void disablePlugin(Plugin &plugin) const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "disable_plugin", disablePlugin);
     }

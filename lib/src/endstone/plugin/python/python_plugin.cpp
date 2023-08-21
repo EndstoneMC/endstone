@@ -41,7 +41,7 @@ void PythonPlugin::onDisable()
     impl_.attr("on_disable")();
 }
 
-Logger &PythonPlugin::getLogger()
+Logger &PythonPlugin::getLogger() const
 {
     py::gil_scoped_acquire lock{};
     return impl_.attr("get_logger")().cast<Logger &>();
@@ -53,7 +53,7 @@ bool PythonPlugin::isEnabled() const
     return impl_.attr("is_enabled")().cast<bool>();
 }
 
-std::shared_ptr<PluginLoader> PythonPlugin::getPluginLoader() const
+std::shared_ptr<const PluginLoader> PythonPlugin::getPluginLoader() const
 {
     return loader_.lock();
 }

@@ -33,7 +33,7 @@ PythonPluginLoader::~PythonPluginLoader()
     impl_.release();
 }
 
-Plugin *PythonPluginLoader::loadPlugin(const std::string &file)
+Plugin *PythonPluginLoader::loadPlugin(const std::string &file) const
 {
     py::gil_scoped_acquire lock{};
     auto py_plugin = impl_.attr("load_plugin")(file);
@@ -42,17 +42,17 @@ Plugin *PythonPluginLoader::loadPlugin(const std::string &file)
     return plugin;
 }
 
-std::vector<std::string> PythonPluginLoader::getPluginFilters()
+std::vector<std::string> PythonPluginLoader::getPluginFilters() const noexcept
 {
     py::gil_scoped_acquire lock{};
     return impl_.attr("get_plugin_filters")().cast<std::vector<std::string>>();
 }
 
-void PythonPluginLoader::enablePlugin(const Plugin &plugin)
+void PythonPluginLoader::enablePlugin(Plugin &plugin) const
 {
     try
     {
-        const auto &py_plugin = dynamic_cast<const PythonPlugin &>(plugin);
+        auto &py_plugin = dynamic_cast<PythonPlugin &>(plugin);
         py::gil_scoped_acquire lock{};
         impl_.attr("enable_plugin")(py_plugin.impl_);
     }
@@ -62,7 +62,7 @@ void PythonPluginLoader::enablePlugin(const Plugin &plugin)
     }
 }
 
-void PythonPluginLoader::disablePlugin(const Plugin &plugin)
+void PythonPluginLoader::disablePlugin(Plugin &plugin) const
 {
     try
     {

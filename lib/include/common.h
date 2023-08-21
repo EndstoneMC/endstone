@@ -41,4 +41,10 @@ namespace py = pybind11;
 #define ENDSTONE_API
 #endif
 
+#define ENDSTONE_PLUGIN_CLASS(ClassName)                                                                               \
+    extern "C" Plugin *createPluginInstance()                                                                          \
+    {                                                                                                                  \
+        return new ClassName();                                                                                        \
+    }
+
 #endif // ENDSTONE_COMMON_H

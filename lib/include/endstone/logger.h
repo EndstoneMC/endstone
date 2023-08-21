@@ -5,8 +5,6 @@
 #ifndef ENDSTONE_LOGGER_H
 #define ENDSTONE_LOGGER_H
 
-#include <utility>
-
 #include "bedrock/bedrock_log.h"
 #include "common.h"
 

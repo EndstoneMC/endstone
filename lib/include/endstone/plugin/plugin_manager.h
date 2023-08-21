@@ -22,8 +22,8 @@ class PluginManager
     bool isPluginEnabled(Plugin *plugin) const;
     Plugin *loadPlugin(const std::filesystem::path &file);
     std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory);
-    void enablePlugin(const Plugin &plugin) const;
-    void disablePlugin(const Plugin &plugin) const;
+    void enablePlugin(Plugin &plugin) const;
+    void disablePlugin(Plugin &plugin) const;
     void disablePlugins();
     void clearPlugins();
 

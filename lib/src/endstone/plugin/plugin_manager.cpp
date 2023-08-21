@@ -140,7 +140,7 @@ std::vector<Plugin *> PluginManager::loadPlugins(const std::filesystem::path &di
     return loadedPlugins;
 }
 
-void PluginManager::enablePlugin(const Plugin &plugin) const
+void PluginManager::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled())
     {
@@ -157,7 +157,7 @@ void PluginManager::enablePlugin(const Plugin &plugin) const
     }
 }
 
-void PluginManager::disablePlugin(const Plugin &plugin) const
+void PluginManager::disablePlugin(Plugin &plugin) const
 {
     if (plugin.isEnabled())
     {

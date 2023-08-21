@@ -10,13 +10,39 @@
 class CppPluginDescription : public PluginDescription
 {
   public:
-    CppPluginDescription(std::string name, std::string version);
-    std::string getName() override;
-    std::string getVersion() override;
-    std::optional<std::string> getDescription() override;
-    std::optional<std::vector<std::string>> getAuthors() override;
-    std::optional<std::string> getPrefix() override;
-    std::string getFullName() override;
+    CppPluginDescription(std::string name, std::string version) : name_(std::move(name)), version_(std::move(version))
+    {
+    }
+
+    std::string getName() final
+    {
+        return name_;
+    };
+
+    std::string getVersion() final
+    {
+        return version_;
+    };
+
+    std::optional<std::string> getDescription() override
+    {
+        return {};
+    }
+
+    std::optional<std::vector<std::string>> getAuthors() override
+    {
+        return {};
+    }
+
+    std::optional<std::string> getPrefix() override
+    {
+        return {};
+    }
+
+    std::string getFullName() final
+    {
+        return getName() + " v" + getVersion();
+    }
 
   private:
     std::string name_;

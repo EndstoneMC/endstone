@@ -16,14 +16,14 @@ class PythonPlugin : public Plugin
     void onLoad() override;
     void onEnable() override;
     void onDisable() override;
-    Logger &getLogger() override;
+    Logger &getLogger() const override;
     bool isEnabled() const override;
-    std::shared_ptr<PluginLoader> getPluginLoader() const override;
+    std::shared_ptr<const PluginLoader> getPluginLoader() const override;
 
     friend class PythonPluginLoader;
 
   private:
-    std::weak_ptr<PluginLoader> loader_;
+    std::weak_ptr<const PluginLoader> loader_;
     py::object impl_;
 };
 
