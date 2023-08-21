@@ -31,6 +31,11 @@ add_library(api INTERFACE)
 add_library(endstone::api ALIAS api)
 target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
+    # endstone is being included as a sub-module.
+    return()
+endif ()
+
 # Main Shared Library
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
 target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
