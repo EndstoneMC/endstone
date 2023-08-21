@@ -30,7 +30,8 @@ Plugin *PluginManager::getPlugin(const std::string &name) const
 
 std::vector<Plugin *> PluginManager::getPlugins() const
 {
-    std::vector<Plugin *> plugins(plugins_.size());
+    std::vector<Plugin *> plugins;
+    plugins.reserve(plugins_.size());
     for (const auto &plugin : plugins_)
     {
         plugins.push_back(plugin.get());

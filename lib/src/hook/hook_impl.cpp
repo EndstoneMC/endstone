@@ -82,5 +82,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category,
                         const char *format,
                         va_list args)
 {
+    static std::mutex mtx;
+    std::lock_guard<std::mutex> lock(mtx);
     CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
 }

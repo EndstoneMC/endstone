@@ -45,10 +45,7 @@ void Server::enablePlugins()
     auto plugins = pluginManager_->getPlugins();
     for (const auto &plugin : plugins)
     {
-        if (!plugin->isEnabled())
-        {
-            pluginManager_->enablePlugin(*plugin);
-        }
+        pluginManager_->enablePlugin(*plugin);
     }
 }
 

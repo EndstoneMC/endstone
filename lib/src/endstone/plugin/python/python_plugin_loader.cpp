@@ -37,7 +37,9 @@ Plugin *PythonPluginLoader::loadPlugin(const std::string &file)
 {
     py::gil_scoped_acquire lock{};
     auto py_plugin = impl_.attr("load_plugin")(file);
-    return new PythonPlugin(py_plugin);
+    auto plugin = new PythonPlugin(py_plugin);
+    plugin->loader_ = shared_from_this();
+    return plugin;
 }
 
 std::vector<std::string> PythonPluginLoader::getPluginFilters()
@@ -48,12 +50,28 @@ std::vector<std::string> PythonPluginLoader::getPluginFilters()
 
 void PythonPluginLoader::enablePlugin(const Plugin &plugin)
 {
-    py::gil_scoped_acquire lock{};
-    impl_.attr("enable_plugin")(plugin);
+    try
+    {
+        const auto &py_plugin = dynamic_cast<const PythonPlugin &>(plugin);
+        py::gil_scoped_acquire lock{};
+        impl_.attr("enable_plugin")(py_plugin.impl_);
+    }
+    catch (const std::bad_cast &e)
+    {
+        throw std::runtime_error("Plugin is not associated with this PluginLoader");
+    }
 }
 
 void PythonPluginLoader::disablePlugin(const Plugin &plugin)
 {
-    py::gil_scoped_acquire lock{};
-    impl_.attr("disable_plugin")(plugin);
+    try
+    {
+        const auto &py_plugin = dynamic_cast<const PythonPlugin &>(plugin);
+        py::gil_scoped_acquire lock{};
+        impl_.attr("disable_plugin")(py_plugin.impl_);
+    }
+    catch (const std::bad_cast &e)
+    {
+        throw std::runtime_error("Plugin is not associated with this PluginLoader");
+    }
 }

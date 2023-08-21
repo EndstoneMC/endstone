@@ -7,7 +7,7 @@
 
 #include "endstone/plugin/plugin_loader.h"
 
-class PythonPluginLoader : public PluginLoader
+class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_this<PythonPluginLoader>
 {
   public:
     PythonPluginLoader(const std::string &module_name, const std::string &class_name);

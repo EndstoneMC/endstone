@@ -4,7 +4,6 @@ from .plugin import Plugin
 from .plugin_description import PluginDescription, PluginDescriptionFile
 from .plugin_loader import ZipPluginLoader, SourcePluginLoader
 from .plugin_logger import PluginLogger
-from .plugin_manager import PluginManager
 
 
 def plugin_setup(**attrs):
