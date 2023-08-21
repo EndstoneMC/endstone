@@ -5,6 +5,8 @@
 #ifndef ENDSTONE_PLUGIN_DESCRIPTION_H
 #define ENDSTONE_PLUGIN_DESCRIPTION_H
 
+#include "common.h"
+
 class PluginDescription
 {
   public:

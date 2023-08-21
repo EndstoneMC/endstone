@@ -5,8 +5,6 @@
 #ifndef ENDSTONE_PLUGIN_LOGGER_H
 #define ENDSTONE_PLUGIN_LOGGER_H
 
-#include <utility>
-
 #include "endstone/logger.h"
 
 class Plugin;
