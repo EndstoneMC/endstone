@@ -8,9 +8,7 @@
 class BedrockLoggerAdapter : public Logger
 {
   public:
-    explicit BedrockLoggerAdapter(std::string name) : level_(LogLevel::Info), name_(std::move(name))
-    {
-    }
+    explicit BedrockLoggerAdapter(std::string name) : level_(LogLevel::Info), name_(std::move(name)) {}
 
     void setLevel(LogLevel level) override
     {

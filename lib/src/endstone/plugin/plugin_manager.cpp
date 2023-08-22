@@ -5,9 +5,7 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-PluginManager::PluginManager(Server &server) : server_(server)
-{
-}
+PluginManager::PluginManager(Server &server) : server_(server) {}
 
 void PluginManager::registerLoader(const std::shared_ptr<PluginLoader> &loader)
 {
@@ -52,8 +50,9 @@ bool PluginManager::isPluginEnabled(Plugin *plugin) const
     }
 
     // Check if the plugin exists in the vector
-    auto it = std::find_if(
-        plugins_.begin(), plugins_.end(), [plugin](const std::unique_ptr<Plugin> &p) { return p.get() == plugin; });
+    auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const std::unique_ptr<Plugin> &p) {
+        return p.get() == plugin;
+    });
 
     // If plugin is in the vector and is enabled, return true
     return it != plugins_.end() && plugin->isEnabled();

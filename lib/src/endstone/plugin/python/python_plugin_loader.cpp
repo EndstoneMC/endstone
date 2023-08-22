@@ -4,7 +4,7 @@
 
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/common.h"
-#include "endstone/logger.h"
+#include "endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/python/python_plugin.h"
 
 PythonPluginLoader::PythonPluginLoader(const std::string &module_name, const std::string &class_name)
@@ -26,7 +26,8 @@ Plugin *PythonPluginLoader::loadPlugin(const std::string &file) const
     py::gil_scoped_acquire lock{};
     auto py_plugin = impl_.attr("load_plugin")(file);
     auto plugin = new PythonPlugin(py_plugin);
-    plugin->init(shared_from_this());
+    plugin->loader_ = shared_from_this();
+    plugin->logger_ = std::make_shared<PluginLogger>(*plugin);
     return plugin;
 }
 

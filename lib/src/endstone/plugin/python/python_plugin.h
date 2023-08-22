@@ -7,6 +7,7 @@
 
 #include "endstone/plugin/plugin.h"
 #include "endstone/pybind.h"
+#include "python_plugin_description.h"
 
 class PythonPlugin : public Plugin
 {
@@ -30,6 +31,7 @@ class PythonPlugin : public Plugin
     py::object impl_;
     std::weak_ptr<const PluginLoader> loader_;
     std::shared_ptr<Logger> logger_;
+    std::unique_ptr<PythonPluginDescription> description_;
 };
 
 #endif // ENDSTONE_PYTHON_PLUGIN_H

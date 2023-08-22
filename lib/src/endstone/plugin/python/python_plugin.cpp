@@ -10,6 +10,7 @@
 
 PythonPlugin::PythonPlugin(py::object impl) : impl_(std::move(impl))
 {
+    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("get_description")());
 }
 
 PythonPlugin::~PythonPlugin()
@@ -20,9 +21,7 @@ PythonPlugin::~PythonPlugin()
 
 const PluginDescription &PythonPlugin::getDescription() const
 {
-    // TODO: need a delegate
-    py::gil_scoped_acquire lock{};
-    return impl_.attr("get_description")().cast<PluginDescription &>();
+    return *description_;
 }
 
 void PythonPlugin::onLoad()

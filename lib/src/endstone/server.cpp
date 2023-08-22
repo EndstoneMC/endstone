@@ -15,8 +15,8 @@ void Server::loadPlugins()
 {
     try
     {
-//        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
-//        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
+        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
+        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
         pluginManager_->registerLoader(std::make_unique<CppPluginLoader>());
 
         auto pluginFolder = std::filesystem::current_path() / "plugins";
