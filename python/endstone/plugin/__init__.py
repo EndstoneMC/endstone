@@ -3,7 +3,6 @@ from setuptools import find_packages, setup
 from .plugin import Plugin
 from .plugin_description import PluginDescription, PluginDescriptionFile
 from .plugin_loader import ZipPluginLoader, SourcePluginLoader
-from .plugin_logger import PluginLogger
 
 
 def plugin_setup(**attrs):

@@ -1,9 +1,8 @@
 from typing import final
 
-from endstone._plugin import IPlugin
+from endstone._plugin import IPlugin, PluginLogger
 
 from .plugin_description import PluginDescription
-from .plugin_logger import PluginLogger
 
 
 class Plugin(IPlugin):

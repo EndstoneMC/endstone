@@ -1,5 +1,7 @@
 BasedOnStyle: Microsoft
 AlwaysBreakTemplateDeclarations: Yes
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLambdasOnASingleLine: Empty
 PackConstructorInitializers: CurrentLine
 BinPackArguments: false
 BinPackParameters: false
