@@ -4,6 +4,7 @@
 
 #include "endstone/server.h"
 #include "endstone/logger_factory.h"
+#include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 
 Server::Server() : logger_(LoggerFactory::getLogger("Server")), pluginManager_(std::make_unique<PluginManager>(*this))
@@ -12,31 +13,39 @@ Server::Server() : logger_(LoggerFactory::getLogger("Server")), pluginManager_(s
 
 void Server::loadPlugins()
 {
-    // TODO: add C++ plugin loader
-    pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
-    pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
-    auto pluginFolder = std::filesystem::current_path() / "plugins";
-
-    if (exists(pluginFolder))
+    try
     {
-        auto plugins = pluginManager_->loadPlugins(pluginFolder);
-        for (const auto &plugin : plugins)
+//        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
+//        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
+        pluginManager_->registerLoader(std::make_unique<CppPluginLoader>());
+
+        auto pluginFolder = std::filesystem::current_path() / "plugins";
+
+        if (exists(pluginFolder))
         {
-            try
+            auto plugins = pluginManager_->loadPlugins(pluginFolder);
+            for (const auto &plugin : plugins)
             {
-                plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
-                plugin->onLoad();
-            }
-            catch (std::exception &e)
-            {
-                logger_->error(
-                    "Error occurred when initializing {}: {}", plugin->getDescription().getFullName(), e.what());
+                try
+                {
+                    plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
+                    plugin->onLoad();
+                }
+                catch (std::exception &e)
+                {
+                    logger_->error(
+                        "Error occurred when initializing {}: {}", plugin->getDescription().getFullName(), e.what());
+                }
             }
         }
+        else
+        {
+            create_directories(pluginFolder);
+        }
     }
-    else
+    catch (std::exception &e)
     {
-        create_directories(pluginFolder);
+        logger_->error("Error occurred when trying to load plugins: {}", e.what());
     }
 }
 

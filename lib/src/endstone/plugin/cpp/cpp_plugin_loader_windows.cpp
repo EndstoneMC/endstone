@@ -19,15 +19,16 @@ Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
     }
 
     using createPlugin_t = CppPlugin *(*)();
-    auto createPlugin = reinterpret_cast<createPlugin_t>(GetProcAddress(module, "createPlugin"));
+    auto createPlugin_addr = GetProcAddress(module, "createPlugin");
 
-    if (!createPlugin)
+    if (!createPlugin_addr)
     {
         FreeLibrary(module);
         throw std::runtime_error("Failed to find createPlugin function in DLL: " + file +
                                  ". Did you forget ENDSTONE_PLUGIN_CLASS?");
     }
 
+    auto createPlugin = reinterpret_cast<createPlugin_t>(createPlugin_addr);
     auto plugin = createPlugin();
     plugin->loader_ = shared_from_this();
     plugin->logger_ = std::make_shared<PluginLogger>(*plugin);

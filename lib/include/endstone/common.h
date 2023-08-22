@@ -36,7 +36,7 @@
 #endif
 
 #define ENDSTONE_PLUGIN_CLASS(ClassName)                                                                               \
-    extern "C" Plugin *createPlugin()                                                                                  \
+    extern "C" CppPlugin *createPlugin()                                                                                  \
     {                                                                                                                  \
         return new ClassName();                                                                                        \
     }
