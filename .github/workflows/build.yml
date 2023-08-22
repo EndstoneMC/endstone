@@ -14,7 +14,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
-          - [ windows-2019, win_amd64 ]
+          - [ windows-latest, win_amd64 ]
         python: [ "cp39", "cp310", "cp311" ]
 
     steps:
