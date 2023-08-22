@@ -7,7 +7,6 @@
 
 #include "cpp_plugin_description.h"
 #include "endstone/plugin/plugin.h"
-#include "endstone/plugin/plugin_logger.h"
 
 class CppPlugin : public Plugin
 {
@@ -50,12 +49,6 @@ class CppPlugin : public Plugin
                 onDisable();
             }
         }
-    }
-
-    void init(const std::shared_ptr<const PluginLoader> &loader)
-    {
-        loader_ = loader;
-        logger_ = std::make_shared<PluginLogger>(*this);
     }
 
   private:

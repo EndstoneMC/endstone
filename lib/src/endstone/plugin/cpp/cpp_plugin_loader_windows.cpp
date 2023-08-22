@@ -6,6 +6,7 @@
 
 #include "endstone/plugin/cpp/cpp_plugin.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
+#include "endstone/plugin/plugin_logger.h"
 
 #include <Windows.h>
 
@@ -28,7 +29,8 @@ Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
     }
 
     auto plugin = createPlugin();
-    plugin->init(shared_from_this());
+    plugin->loader_ = shared_from_this();
+    plugin->logger_ = std::make_shared<PluginLogger>(*plugin);
     return plugin;
 }
 

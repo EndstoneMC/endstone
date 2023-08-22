@@ -34,20 +34,10 @@ class Logger
         log(level, std::format(format, std::forward<Args>(args)...));
     }
 
-    void verbose(LogLevel level, const std::string &message) const
-    {
-        log(LogLevel::Verbose, message);
-    }
-
     template <typename... Args>
     void verbose(const std::format_string<Args...> format, Args &&...args) const
     {
         log(LogLevel::Verbose, std::format(format, std::forward<Args>(args)...));
-    }
-
-    void info(LogLevel level, const std::string &message) const
-    {
-        log(LogLevel::Info, message);
     }
 
     template <typename... Args>
@@ -56,20 +46,10 @@ class Logger
         log(LogLevel::Info, std::format(format, std::forward<Args>(args)...));
     }
 
-    void warning(LogLevel level, const std::string &message) const
-    {
-        log(LogLevel::Warning, message);
-    }
-
     template <typename... Args>
     void warning(const std::format_string<Args...> format, Args &&...args) const
     {
         log(LogLevel::Warning, std::format(format, std::forward<Args>(args)...));
-    }
-
-    void error(LogLevel level, const std::string &message) const
-    {
-        log(LogLevel::Error, message);
     }
 
     template <typename... Args>
