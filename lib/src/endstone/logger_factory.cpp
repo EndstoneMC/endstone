@@ -8,7 +8,7 @@
 class BedrockLoggerAdapter : public Logger
 {
   public:
-    explicit BedrockLoggerAdapter(std::string name) : name_(std::move(name))
+    explicit BedrockLoggerAdapter(std::string name) : level_(LogLevel::Info), name_(std::move(name))
     {
     }
 
@@ -50,5 +50,15 @@ class BedrockLoggerAdapter : public Logger
 
 std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
 {
-    return std::make_shared<BedrockLoggerAdapter>(name);
+    static std::mutex mutex;
+    std::scoped_lock<std::mutex> lock(mutex);
+
+    static std::map<std::string, std::shared_ptr<BedrockLoggerAdapter>> loggers;
+    auto it = loggers.find(name);
+    if (it == loggers.end())
+    {
+        it = loggers.insert({name, std::make_shared<BedrockLoggerAdapter>(name)}).first;
+    }
+
+    return it->second;
 }
