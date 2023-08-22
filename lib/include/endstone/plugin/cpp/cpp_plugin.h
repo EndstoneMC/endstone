@@ -7,20 +7,21 @@
 
 #include "cpp_plugin_description.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_logger.h"
 
 class CppPlugin : public Plugin
 {
   public:
     friend class CppPluginLoader;
 
-    PluginDescription &getDescription() const override = 0;
+    const PluginDescription &getDescription() const override = 0;
     void onLoad() override{};
     void onEnable() override{};
     void onDisable() override{};
 
-    Logger &getLogger() const final
+    std::shared_ptr<Logger> getLogger() const final
     {
-        return *logger_;
+        return logger_;
     }
 
     bool isEnabled() const final
@@ -51,10 +52,16 @@ class CppPlugin : public Plugin
         }
     }
 
+    void init(const std::shared_ptr<const PluginLoader> &loader)
+    {
+        loader_ = loader;
+        logger_ = std::make_shared<PluginLogger>(*this);
+    }
+
   private:
     bool enabled_{false};
-    std::unique_ptr<Logger> logger_{};
-    std::weak_ptr<PluginLoader> loader_{};
+    std::weak_ptr<const PluginLoader> loader_;
+    std::shared_ptr<Logger> logger_;
 };
 
 #endif // ENDSTONE_CPP_PLUGIN_H

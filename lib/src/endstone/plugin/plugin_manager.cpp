@@ -132,8 +132,8 @@ std::vector<Plugin *> PluginManager::loadPlugins(const std::filesystem::path &di
         }
         catch (std::exception &e)
         {
-            server_.getLogger().error(
-                "Could not load '%s' in folder '%s': %s", file.c_str(), directory.c_str(), e.what());
+            server_.getLogger()->error(
+                "Could not load '{}' in folder '{}': {}", file.string(), directory.string(), e.what());
         }
     }
 
@@ -150,9 +150,9 @@ void PluginManager::enablePlugin(Plugin &plugin) const
         }
         catch (std::exception &e)
         {
-            server_.getLogger().error("Error occurred (in the plugin loader) while enabling %s: %s",
-                                      plugin.getDescription().getFullName().c_str(),
-                                      e.what());
+            server_.getLogger()->error("Error occurred (in the plugin loader) while enabling {}: {}",
+                                       plugin.getDescription().getFullName(),
+                                       e.what());
         }
     }
 }
@@ -167,9 +167,9 @@ void PluginManager::disablePlugin(Plugin &plugin) const
         }
         catch (std::exception &e)
         {
-            server_.getLogger().error("Error occurred (in the plugin loader) while disabling %s: %s",
-                                      plugin.getDescription().getFullName().c_str(),
-                                      e.what());
+            server_.getLogger()->error("Error occurred (in the plugin loader) while disabling {}: {}",
+                                       plugin.getDescription().getFullName(),
+                                       e.what());
         }
     }
 }

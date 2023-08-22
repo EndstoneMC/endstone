@@ -1,24 +1,35 @@
 //
-// Created by Vincent on 17/08/2023.
+// Created by Vincent on 22/08/2023.
 //
 
-#include "endstone/plugin/plugin_logger.h"
-#include "endstone/plugin/plugin.h"
+#include "plugin_logger.h"
+#include "endstone/logger_factory.h"
 
-PluginLogger::PluginLogger(const Plugin &plugin) : Logger(plugin.getDescription().getName())
+PluginLogger::PluginLogger(const Plugin &plugin)
 {
-    auto prefix = plugin.getDescription().getPrefix();
-    if (prefix.has_value())
-    {
-        pluginName_ = prefix.value();
-    }
-    else
-    {
-        pluginName_ = plugin.getDescription().getName();
-    }
+    auto &description = plugin.getDescription();
+    logger_ = LoggerFactory::getLogger(description.getName());
+
+    auto prefix = description.getPrefix();
+    pluginName_ = std::format("[{}] ", prefix.value_or(description.getName()));
 }
 
-void PluginLogger::log(LogLevel level, const char *format, ...) const
+void PluginLogger::log(LogLevel level, const std::string &message) const
 {
-    Logger::log(level, "[%s] %s", pluginName_.c_str(), format);
+    logger_->log(level, pluginName_ + message);
+}
+
+void PluginLogger::setLevel(LogLevel level)
+{
+    logger_->setLevel(level);
+}
+
+bool PluginLogger::isEnabledFor(LogLevel level) const noexcept
+{
+    return logger_->isEnabledFor(level);
+}
+
+std::string_view PluginLogger::getName() const
+{
+    return logger_->getName();
 }

@@ -6,7 +6,7 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/server_instance.h"
 #include "endstone/endstone.h"
-#include "hook/hook_manager.h"
+#include "hook_manager.h"
 
 void HookManager::registerHooks()
 {

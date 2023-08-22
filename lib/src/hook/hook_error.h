@@ -8,7 +8,7 @@
 #include <system_error>
 
 #ifdef _WIN32
-#include <MinHook.h>
+#include "MinHook.h"
 
 /**
  * @brief This class provides a custom error category for MinHook errors.

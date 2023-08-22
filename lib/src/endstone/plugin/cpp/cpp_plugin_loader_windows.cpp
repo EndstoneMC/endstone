@@ -17,7 +17,7 @@ Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
         throw std::system_error(GetLastError(), std::system_category(), "LoadLibrary failed");
     }
 
-    using createPlugin_t = Plugin *(*)();
+    using createPlugin_t = CppPlugin *(*)();
     auto createPlugin = reinterpret_cast<createPlugin_t>(GetProcAddress(module, "createPlugin"));
 
     if (!createPlugin)
@@ -27,7 +27,9 @@ Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
                                  ". Did you forget ENDSTONE_PLUGIN_CLASS?");
     }
 
-    return createPlugin();
+    auto plugin = createPlugin();
+    plugin->init(shared_from_this());
+    return plugin;
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFilters() const noexcept
@@ -42,7 +44,7 @@ void CppPluginLoader::enablePlugin(Plugin &plugin) const
         auto &cpp_plugin = dynamic_cast<CppPlugin &>(plugin);
         if (!cpp_plugin.isEnabled())
         {
-            cpp_plugin.getLogger().info("Enabling %", cpp_plugin.getDescription().getFullName().c_str());
+            cpp_plugin.getLogger()->info("Enabling {}", cpp_plugin.getDescription().getFullName());
             cpp_plugin.setEnabled(true);
         }
     }
@@ -59,7 +61,7 @@ void CppPluginLoader::disablePlugin(Plugin &plugin) const
         auto &cpp_plugin = dynamic_cast<CppPlugin &>(plugin);
         if (cpp_plugin.isEnabled())
         {
-            cpp_plugin.getLogger().info("Disabling %", cpp_plugin.getDescription().getFullName().c_str());
+            cpp_plugin.getLogger()->info("Disabling {}", cpp_plugin.getDescription().getFullName());
             cpp_plugin.setEnabled(false);
         }
     }

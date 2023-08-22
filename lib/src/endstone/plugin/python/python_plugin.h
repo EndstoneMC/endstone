@@ -11,21 +11,25 @@
 class PythonPlugin : public Plugin
 {
   public:
-    PythonPlugin(py::object impl);
+    explicit PythonPlugin(py::object impl);
     ~PythonPlugin() override;
-    PluginDescription &getDescription() const override;
+    const PluginDescription &getDescription() const override;
     void onLoad() override;
     void onEnable() override;
     void onDisable() override;
-    Logger &getLogger() const override;
+    std::shared_ptr<Logger> getLogger() const override;
     bool isEnabled() const override;
     std::shared_ptr<const PluginLoader> getPluginLoader() const override;
 
     friend class PythonPluginLoader;
 
+  protected:
+    void init(const std::shared_ptr<const PluginLoader> &loader);
+
   private:
-    std::weak_ptr<const PluginLoader> loader_;
     py::object impl_;
+    std::weak_ptr<const PluginLoader> loader_;
+    std::shared_ptr<Logger> logger_;
 };
 
 #endif // ENDSTONE_PYTHON_PLUGIN_H

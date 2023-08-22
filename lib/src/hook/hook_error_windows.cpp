@@ -4,7 +4,7 @@
 
 #ifdef _WIN32
 
-#include "hook/hook_error.h"
+#include "hook_error.h"
 
 const char *MinHookErrorCategory::name() const noexcept
 {

@@ -3,9 +3,10 @@
 //
 
 #include "endstone/server.h"
+#include "endstone/logger_factory.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 
-Server::Server() : logger_(Logger::getLogger("Server")), pluginManager_(std::make_unique<PluginManager>(*this))
+Server::Server() : logger_(LoggerFactory::getLogger("Server")), pluginManager_(std::make_unique<PluginManager>(*this))
 {
 }
 
@@ -23,14 +24,13 @@ void Server::loadPlugins()
         {
             try
             {
-                plugin->getLogger().info("Loading %s", plugin->getDescription().getFullName().c_str());
+                plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
                 plugin->onLoad();
             }
             catch (std::exception &e)
             {
-                logger_.error("Error occurred when initializing %s: %s",
-                              plugin->getDescription().getFullName().c_str(),
-                              e.what());
+                logger_->error(
+                    "Error occurred when initializing {}: {}", plugin->getDescription().getFullName(), e.what());
             }
         }
     }
@@ -54,7 +54,7 @@ void Server::disablePlugins()
     pluginManager_->disablePlugins();
 }
 
-const Logger &Server::getLogger()
+std::shared_ptr<Logger> Server::getLogger()
 {
     return logger_;
 }

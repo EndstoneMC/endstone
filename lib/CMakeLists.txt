@@ -39,7 +39,8 @@ endif ()
 # Main Shared Library Setup
 # ------------------------
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
-target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
+target_precompile_headers(libendstone PUBLIC include/endstone/common.h)
+target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # External Dependencies
 set(

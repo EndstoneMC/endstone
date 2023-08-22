@@ -4,6 +4,7 @@
 
 #include <utility>
 
+#include "endstone/logger.h"
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/python/python_plugin.h"
 
@@ -17,8 +18,9 @@ PythonPlugin::~PythonPlugin()
     impl_.release();
 }
 
-PluginDescription &PythonPlugin::getDescription() const
+const PluginDescription &PythonPlugin::getDescription() const
 {
+    // TODO: need a delegate
     py::gil_scoped_acquire lock{};
     return impl_.attr("get_description")().cast<PluginDescription &>();
 }
@@ -41,10 +43,9 @@ void PythonPlugin::onDisable()
     impl_.attr("on_disable")();
 }
 
-Logger &PythonPlugin::getLogger() const
+std::shared_ptr<Logger> PythonPlugin::getLogger() const
 {
-    py::gil_scoped_acquire lock{};
-    return impl_.attr("get_logger")().cast<Logger &>();
+    return logger_;
 }
 
 bool PythonPlugin::isEnabled() const
@@ -56,4 +57,10 @@ bool PythonPlugin::isEnabled() const
 std::shared_ptr<const PluginLoader> PythonPlugin::getPluginLoader() const
 {
     return loader_.lock();
+}
+
+void PythonPlugin::init(const std::shared_ptr<const PluginLoader> &loader)
+{
+    loader_ = loader;
+    logger_ = std::make_shared<PluginLogger>(*this);
 }

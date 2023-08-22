@@ -5,7 +5,6 @@
 #ifndef ENDSTONE_LOGGER_H
 #define ENDSTONE_LOGGER_H
 
-#include "bedrock/bedrock_log.h"
 #include "common.h"
 
 /**
@@ -24,19 +23,40 @@ enum class LogLevel
 class Logger
 {
   public:
-    explicit Logger(std::string name) : name_(std::move(name)), level_(LogLevel::Info){};
-    virtual void log(LogLevel level, const char *format, ...) const;
-    void verbose(const char *format, ...) const;
-    void info(const char *format, ...) const;
-    void warning(const char *format, ...) const;
-    void error(const char *format, ...) const;
-    void setLevel(LogLevel level);
-    const std::string &getName() const;
+    virtual void setLevel(LogLevel level) = 0;
+    virtual bool isEnabledFor(LogLevel level) const noexcept = 0;
+    virtual std::string_view getName() const = 0;
+    virtual void log(LogLevel level, const std::string &message) const = 0;
 
-    static Logger &getLogger(const std::string &name);
+    template <typename... Args>
+    void log(LogLevel level, const std::format_string<Args...> format, Args &&...args) const
+    {
+        log(level, std::format(format, std::forward<Args>(args)...));
+    }
 
-    std::string name_;
-    LogLevel level_;
+    template <typename... Args>
+    void verbose(const std::format_string<Args...> format, Args &&...args) const
+    {
+        log(LogLevel::Verbose, std::format(format, std::forward<Args>(args)...));
+    }
+
+    template <typename... Args>
+    void info(const std::format_string<Args...> format, Args &&...args) const
+    {
+        log(LogLevel::Info, std::format(format, std::forward<Args>(args)...));
+    }
+
+    template <typename... Args>
+    void warning(const std::format_string<Args...> format, Args &&...args) const
+    {
+        log(LogLevel::Warning, std::format(format, std::forward<Args>(args)...));
+    }
+
+    template <typename... Args>
+    void error(const std::format_string<Args...> format, Args &&...args) const
+    {
+        log(LogLevel::Error, std::format(format, std::forward<Args>(args)...));
+    }
 };
 
 #endif // ENDSTONE_LOGGER_H

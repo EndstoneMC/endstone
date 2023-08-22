@@ -5,19 +5,19 @@
 #ifndef ENDSTONE_PLUGIN_DESCRIPTION_H
 #define ENDSTONE_PLUGIN_DESCRIPTION_H
 
-#include "common.h"
+#include "endstone/common.h"
 
 class PluginDescription
 {
   public:
     virtual ~PluginDescription() = default;
 
-    virtual std::string getName() = 0;
-    virtual std::string getVersion() = 0;
-    virtual std::optional<std::string> getDescription() = 0;
-    virtual std::optional<std::vector<std::string>> getAuthors() = 0;
-    virtual std::optional<std::string> getPrefix() = 0;
-    virtual std::string getFullName() = 0;
+    virtual std::string getName() const = 0;
+    virtual std::string getVersion() const = 0;
+    virtual std::optional<std::string> getDescription() const = 0;
+    virtual std::optional<std::vector<std::string>> getAuthors() const = 0;
+    virtual std::optional<std::string> getPrefix() const = 0;
+    virtual std::string getFullName() const = 0;
 };
 
 #endif // ENDSTONE_PLUGIN_DESCRIPTION_H

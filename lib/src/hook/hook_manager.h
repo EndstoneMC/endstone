@@ -5,7 +5,52 @@
 #ifndef ENDSTONE_HOOK_MANAGER_H
 #define ENDSTONE_HOOK_MANAGER_H
 
-#include "common.h"
+#include "endstone/common.h"
+
+/**
+ * @struct Hook
+ * @brief Structure to represent a hook.
+ */
+struct Hook
+{
+    void *p_target;   ///< Pointer to the target function.
+    void *p_detour;   ///< Pointer to the detour function.
+    void *p_original; ///< Pointer to the original function.
+};
+
+/**
+ * @class HookManager
+ * @brief Class to manage hooks.
+ */
+class HookManager
+{
+  public:
+    /**
+     * @brief Initialize the hook manager.
+     */
+    static void initialize();
+
+    /**
+     * @brief Finalize the hook manager.
+     */
+    static void finalize();
+
+    /**
+     * @brief Register all hooks.
+     */
+    static void registerHooks();
+
+    /**
+     * @brief Retrieve hook by symbol name.
+     * @param symbol Symbol name of the hook.
+     * @return Reference to the Hook object.
+     */
+    const static Hook &getHook(const std::string &symbol);
+
+  private:
+    inline static bool initialized_ = false;          ///< Flag indicating whether the hook manager is initialized.
+    inline static std::map<std::string, Hook> hooks_; ///< Map to store hooks by symbol name.
+};
 
 /**
  * @brief Look up a symbol within the base module.
@@ -82,51 +127,6 @@ R call_original(const std::string &symbol, R (*)(Args...), Args... args)
     auto func = reinterpret_cast<fp>(hook.p_original);
     return func(args...);
 }
-
-/**
- * @struct Hook
- * @brief Structure to represent a hook.
- */
-struct Hook
-{
-    void *p_target;   ///< Pointer to the target function.
-    void *p_detour;   ///< Pointer to the detour function.
-    void *p_original; ///< Pointer to the original function.
-};
-
-/**
- * @class HookManager
- * @brief Class to manage hooks.
- */
-class HookManager
-{
-  public:
-    /**
-     * @brief Initialize the hook manager.
-     */
-    static void initialize();
-
-    /**
-     * @brief Finalize the hook manager.
-     */
-    static void finalize();
-
-    /**
-     * @brief Register all hooks.
-     */
-    static void registerHooks();
-
-    /**
-     * @brief Retrieve hook by symbol name.
-     * @param symbol Symbol name of the hook.
-     * @return Reference to the Hook object.
-     */
-    const static Hook &getHook(const std::string &symbol);
-
-  private:
-    inline static bool initialized_ = false;          ///< Flag indicating whether the hook manager is initialized.
-    inline static std::map<std::string, Hook> hooks_; ///< Map to store hooks by symbol name.
-};
 
 #define HOOK_FUNCTION(symbol)                                                                                          \
     {                                                                                                                  \

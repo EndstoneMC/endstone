@@ -4,10 +4,10 @@
 
 #ifdef _WIN32
 
-#include "common.h"
+#include "endstone/common.h"
 #include "endstone/endstone.h"
-#include "hook/hook_error.h"
-#include "hook/hook_manager.h"
+#include "hook_error.h"
+#include "hook_manager.h"
 
 #include <DbgHelp.h>
 #include <MinHook.h>

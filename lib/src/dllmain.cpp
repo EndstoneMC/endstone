@@ -2,7 +2,7 @@
 
 #include <Windows.h>
 
-#include "common.h"
+#include "endstone/common.h"
 #include "endstone/pybind.h"
 #include "hook/hook_manager.h"
 

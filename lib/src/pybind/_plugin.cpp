@@ -4,15 +4,14 @@
 
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
-#include "endstone/plugin/plugin_logger.h"
 #include "endstone/pybind.h"
 
 class PyPlugin : public Plugin
 {
   public:
-    PluginDescription &getDescription() const override
+    const PluginDescription &getDescription() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(PluginDescription &, Plugin, "get_description", getDescription);
+        PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "get_description", getDescription);
     }
 
     void onLoad() override
@@ -30,9 +29,9 @@ class PyPlugin : public Plugin
         PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
     }
 
-    Logger &getLogger() const override
+    std::shared_ptr<Logger> getLogger() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(Logger &, Plugin, "get_logger", onDisable);
+        PYBIND11_OVERRIDE_PURE_NAME(std::shared_ptr<Logger>, Plugin, "get_logger", onDisable);
     }
 
     bool isEnabled() const override
@@ -51,33 +50,33 @@ class PyPluginDescription : public PluginDescription
   public:
     using PluginDescription::PluginDescription;
 
-    std::string getName() override
+    std::string getName() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::string, PluginDescription, "get_name", getName);
     }
 
-    std::string getVersion() override
+    std::string getVersion() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::string, PluginDescription, "get_version", getVersion);
     }
 
-    std::optional<std::string> getDescription() override
+    std::optional<std::string> getDescription() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::optional<std::string>, PluginDescription, "get_description", getDescription);
     }
 
-    std::optional<std::vector<std::string>> getAuthors() override
+    std::optional<std::vector<std::string>> getAuthors() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(
             std::optional<std::vector<std::string>>, PluginDescription, "get_authors", getAuthors);
     }
 
-    std::optional<std::string> getPrefix() override
+    std::optional<std::string> getPrefix() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::optional<std::string>, PluginDescription, "get_prefix", getPrefix);
     }
 
-    std::string getFullName() override
+    std::string getFullName() const override
     {
         return getName() + " v" + getVersion();
     }

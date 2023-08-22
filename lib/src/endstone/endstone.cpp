@@ -3,7 +3,7 @@
 //
 
 #include "endstone/endstone.h"
-#include "common.h"
+#include "endstone/common.h"
 #include "endstone/pybind.h"
 
 std::string Endstone::getVersion()
@@ -43,7 +43,7 @@ void Endstone::setServer(std::unique_ptr<Server> server)
     }
 
     server_ = std::move(server);
-    server_->getLogger().info("Endstone Version: %s", Endstone::getVersion().c_str());
+    server_->getLogger()->info("Endstone Version: {}", Endstone::getVersion().c_str());
 }
 
 std::unique_ptr<Server> Endstone::server_ = nullptr;

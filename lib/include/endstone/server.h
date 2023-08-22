@@ -18,13 +18,13 @@ class Server
     void loadPlugins();
     void enablePlugins();
     void disablePlugins();
-    const Logger &getLogger();
+    std::shared_ptr<Logger> getLogger();
 
     Server();
     ~Server() = default;
 
   private:
-    Logger &logger_;
+    std::shared_ptr<Logger> logger_;
     std::unique_ptr<PluginManager> pluginManager_;
 };
 

@@ -16,11 +16,11 @@ class Plugin
     explicit Plugin() = default;
     virtual ~Plugin() = default;
 
-    virtual PluginDescription &getDescription() const = 0;
+    virtual const PluginDescription &getDescription() const = 0;
     virtual void onLoad() = 0;
     virtual void onEnable() = 0;
     virtual void onDisable() = 0;
-    virtual Logger &getLogger() const = 0;
+    virtual std::shared_ptr<Logger> getLogger() const = 0;
     virtual bool isEnabled() const = 0;
     virtual std::shared_ptr<const PluginLoader> getPluginLoader() const = 0;
 };
