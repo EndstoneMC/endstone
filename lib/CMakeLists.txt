@@ -24,9 +24,8 @@ file(
 )
 
 # ------------------------
-# API and Main Library Setup
+# API Library Setup
 # ------------------------
-# API Library
 add_library(api INTERFACE)
 add_library(endstone::api ALIAS api)
 target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -36,7 +35,9 @@ if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
     return()
 endif ()
 
-# Main Shared Library
+# ------------------------
+# Main Shared Library Setup
+# ------------------------
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
 target_precompile_headers(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/common.h)
 
@@ -54,7 +55,6 @@ if (WIN32)
             minhook
             GIT_REPOSITORY https://github.com/TsudaKageyu/minhook.git
             GIT_TAG master
-            GIT_PROGRESS TRUE
             GIT_SHALLOW TRUE
     )
     FetchContent_MakeAvailable(minhook)
