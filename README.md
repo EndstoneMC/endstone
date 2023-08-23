@@ -4,6 +4,10 @@ Endstone offers a versatile plugin API for Bedrock Dedicated Servers, supporting
 allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities. This project
 requires Python 3.9 or higher.
 
+[![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
+[![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
+---
+
 ## Installing Python
 
 Before you start with Endstone, make sure you have Python 3.9 or higher installed on your system. Here's how you can
