@@ -5,9 +5,9 @@
 #ifndef ENDSTONE_PYBIND_H
 #define ENDSTONE_PYBIND_H
 
-#include "../../../cmake-build-debug/_deps/pybind11-src/include/pybind11/embed.h"
-#include "../../../cmake-build-debug/_deps/pybind11-src/include/pybind11/pybind11.h"
-#include "../../../cmake-build-debug/_deps/pybind11-src/include/pybind11/stl.h"
+#include <pybind11/embed.h>
+#include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 namespace py = pybind11;
 
