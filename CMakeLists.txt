@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
 
-option(ENABLE_CODE_COVERAGE "Enable code coverage analysis" OFF)
-if (ENABLE_CODE_COVERAGE)
-    message(STATUS "Enabling code coverage analysis.")
-endif ()
-
 include(FetchContent)
 
 set(CMAKE_CXX_STANDARD 20)

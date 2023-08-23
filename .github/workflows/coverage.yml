@@ -34,9 +34,10 @@ jobs:
 
       - name: Run tests and generate coverage
         working-directory: build
-        run: ctest -C ${{ matrix.build-config }} --extra-verbose
+        run: OpenCppCoverage --export_type cobertura:coverage.xml --sources "lib" --modules "*.exe" --cover_children -- ctest -C ${{ matrix.build-config }} --output-on-failure
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./build/coverage.xml
