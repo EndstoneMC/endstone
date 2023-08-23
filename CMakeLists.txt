@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.25)
+
+option(ENABLE_CODE_COVERAGE "Enable code coverage analysis" OFF)
+if (ENABLE_CODE_COVERAGE)
+    message(STATUS "Enabling code coverage analysis.")
+endif ()
+
 include(FetchContent)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -10,7 +16,7 @@ add_definitions(-D_UNICODE)
 
 FetchContent_Declare(
         CMakeExtraUtils
-        GIT_REPOSITORY https://github.com/LecrisUT/CMakeExtraUtils
+        GIT_REPOSITORY https://github.com/LecrisUT/CMakeExtraUtils.git
         GIT_SHALLOW TRUE
         GIT_TAG v0.3.0
 )
@@ -48,3 +54,9 @@ set(PROJECT_VERSION ${MINECRAFT_VERSION})
 project(endstone VERSION ${PROJECT_VERSION})
 
 add_subdirectory(lib)
+
+option(ENDSTONE_BUILD_TESTING "Build the testing tree." ON)
+if (ENDSTONE_BUILD_TESTING AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
+    enable_testing()
+    add_subdirectory(tests)
+endif ()

@@ -1,0 +1,36 @@
+name: Code Coverage
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-latest ]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: CMake build
+        run: |
+          mkdir build
+          cd build
+          cmake .. -DENABLE_CODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
+          cmake --build . --config Debug
+
+      - name: Run tests and generate coverage
+        working-directory: build
+        run: ctest
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
