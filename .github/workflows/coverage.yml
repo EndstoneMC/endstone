@@ -13,6 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ windows-latest ]
+        build-config: [ Debug ]
 
     steps:
       - uses: actions/checkout@v3
@@ -28,12 +29,12 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -DENABLE_CODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=Debug
-          cmake --build . --config Debug
+          cmake .. -DENABLE_CODE_COVERAGE=ON -DCMAKE_BUILD_TYPE=${{ matrix.build-config }}
+          cmake --build . --config ${{ matrix.build-config }}
 
       - name: Run tests and generate coverage
         working-directory: build
-        run: ctest  --extra-verbose
+        run: ctest -C ${{ matrix.build-config }} --extra-verbose
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
