@@ -7,6 +7,18 @@ add_definitions(-DMINECRAFT_VERSION="${MINECRAFT_VERSION}")
 add_definitions(-DENDSTONE_VERSION="${ENDSTONE_VERSION}")
 
 # ------------------------
+# API Library Setup
+# ------------------------
+add_library(api INTERFACE)
+add_library(endstone::api ALIAS api)
+target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
+    # endstone is being included as a sub-module.
+    return()
+endif ()
+
+# ------------------------
 # Source Files Gathering
 # ------------------------
 file(
@@ -24,18 +36,6 @@ file(
 )
 
 # ------------------------
-# API Library Setup
-# ------------------------
-add_library(api INTERFACE)
-add_library(endstone::api ALIAS api)
-target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-
-if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
-    # endstone is being included as a sub-module.
-    return()
-endif ()
-
-# ------------------------
 # Main Shared Library Setup
 # ------------------------
 add_library(libendstone SHARED ${ENDSTONE_SOURCES})
@@ -43,6 +43,17 @@ target_precompile_headers(libendstone PUBLIC include/endstone/common.h)
 target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # External Dependencies
+FetchContent_Declare(
+        pybind11
+        GIT_REPOSITORY https://github.com/pybind/pybind11
+        GIT_SHALLOW TRUE
+        GIT_TAG v2.11.1
+)
+FetchContent_Declare(
+        json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+)
+FetchContent_MakeAvailable(pybind11 json)
 set(
         ENDSTONE_PRIVATE_LIBRARIES
         pybind11::embed
