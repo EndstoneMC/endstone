@@ -1,12 +1,10 @@
 # Endstone
 
----
-
 [![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
 [![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
 
-Endstone offers a versatile plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
+Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
 allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities. This project
 requires Python 3.9 or higher.
 

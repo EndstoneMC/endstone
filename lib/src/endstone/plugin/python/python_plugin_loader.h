@@ -6,7 +6,7 @@
 #define ENDSTONE_PYTHON_PLUGIN_LOADER_H
 
 #include "endstone/plugin/plugin_loader.h"
-#include "endstone/pybind.h"
+#include "pybind/pybind.h"
 
 class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_this<PythonPluginLoader> {
 public:

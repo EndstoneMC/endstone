@@ -4,7 +4,7 @@
 
 #include "endstone/common.h"
 #include "endstone/logger.h"
-#include "endstone/pybind.h"
+#include "pybind.h"
 
 PYBIND11_MODULE(_logger, m)
 {

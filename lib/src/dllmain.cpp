@@ -1,8 +1,8 @@
 #ifdef _WIN32
 
 #include "endstone/common.h"
-#include "endstone/pybind.h"
 #include "hook/hook_manager.h"
+#include "pybind/pybind.h"
 
 #include <Windows.h>
 

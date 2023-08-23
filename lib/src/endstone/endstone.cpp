@@ -5,7 +5,7 @@
 #include "endstone/endstone.h"
 
 #include "endstone/common.h"
-#include "endstone/pybind.h"
+#include "pybind/pybind.h"
 
 std::string Endstone::getVersion()
 {

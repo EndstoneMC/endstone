@@ -6,7 +6,7 @@
 #define ENDSTONE_PYTHON_PLUGIN_DESCRIPTION_H
 
 #include "endstone/plugin/plugin_description.h"
-#include "endstone/pybind.h"
+#include "pybind/pybind.h"
 
 class PythonPluginDescription : public PluginDescription {
 public:
