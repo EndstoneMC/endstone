@@ -16,15 +16,13 @@ enum class LogLevel;
  * @class BedrockLog
  * @brief Provides logging functionalities with different levels and categories.
  */
-class BedrockLog
-{
-  public:
+class BedrockLog {
+public:
     /**
      * @enum LogCategory
      * @brief Identifies logging categories.
      */
-    enum class LogCategory
-    {
+    enum class LogCategory {
         All
     };
 
@@ -32,8 +30,7 @@ class BedrockLog
      * @enum LogRule
      * @brief Represents specific rules for logging.
      */
-    enum class LogRule
-    {
+    enum class LogRule {
         Default
     };
 
@@ -41,8 +38,7 @@ class BedrockLog
      * @enum LogAreaID
      * @brief Identifies different logging areas within the system.
      */
-    enum class LogAreaID
-    {
+    enum class LogAreaID {
         All,
         Platform,
         Entity,
@@ -107,12 +103,8 @@ class BedrockLog
     static BEDROCK_API void log_va(BedrockLog::LogCategory category, // always 0
                                    std::bitset<3> flags,             // always 1
                                    BedrockLog::LogRule rule,         // always 0
-                                   BedrockLog::LogAreaID area,
-                                   LogLevel level,
-                                   char const *function,
-                                   int line,
-                                   char const *format,
-                                   va_list args);
+                                   BedrockLog::LogAreaID area, LogLevel level, char const *function, int line,
+                                   char const *format, va_list args);
 };
 
 #endif // ENDSTONE_BEDROCK_LOG_H

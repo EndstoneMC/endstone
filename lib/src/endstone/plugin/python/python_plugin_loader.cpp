@@ -3,6 +3,7 @@
 //
 
 #include "endstone/plugin/python/python_plugin_loader.h"
+
 #include "endstone/common.h"
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/python/python_plugin.h"
@@ -39,28 +40,24 @@ std::vector<std::string> PythonPluginLoader::getPluginFilters() const noexcept
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const
 {
-    try
-    {
+    try {
         auto &py_plugin = dynamic_cast<PythonPlugin &>(plugin);
         py::gil_scoped_acquire lock{};
         impl_.attr("enable_plugin")(py_plugin.impl_);
     }
-    catch (const std::bad_cast &e)
-    {
+    catch (const std::bad_cast &e) {
         throw std::runtime_error("Plugin is not associated with this PluginLoader");
     }
 }
 
 void PythonPluginLoader::disablePlugin(Plugin &plugin) const
 {
-    try
-    {
+    try {
         const auto &py_plugin = dynamic_cast<const PythonPlugin &>(plugin);
         py::gil_scoped_acquire lock{};
         impl_.attr("disable_plugin")(py_plugin.impl_);
     }
-    catch (const std::bad_cast &e)
-    {
+    catch (const std::bad_cast &e) {
         throw std::runtime_error("Plugin is not associated with this PluginLoader");
     }
 }

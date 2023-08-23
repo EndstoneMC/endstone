@@ -7,9 +7,8 @@
 
 #include "endstone/common.h"
 
-class PluginDescription
-{
-  public:
+class PluginDescription {
+public:
     virtual ~PluginDescription() = default;
 
     virtual std::string getName() const = 0;

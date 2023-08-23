@@ -1,7 +1,12 @@
 BasedOnStyle: Microsoft
-AlwaysBreakTemplateDeclarations: Yes
+AccessModifierOffset: -4
+AlignConsecutiveMacros: Consecutive
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortLambdasOnASingleLine: Empty
-PackConstructorInitializers: CurrentLine
-BinPackArguments: false
-BinPackParameters: false
+AlwaysBreakTemplateDeclarations: Yes
+BreakBeforeBraces: Stroustrup
+IncludeBlocks: Regroup
+InsertBraces: true
+InsertNewlineAtEOF: true

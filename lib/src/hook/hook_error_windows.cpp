@@ -14,8 +14,7 @@ const char *MinHookErrorCategory::name() const noexcept
 std::string MinHookErrorCategory::message(int errVal) const
 {
     auto errorCode = static_cast<MH_STATUS>(errVal);
-    switch (errorCode)
-    {
+    switch (errorCode) {
     case MH_ERROR_ALREADY_INITIALIZED:
         return "MinHook is already initialized.";
     case MH_ERROR_NOT_INITIALIZED:

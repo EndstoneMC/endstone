@@ -11,8 +11,7 @@
  * @enum LogLevel
  * @brief Specifies the log level.
  */
-enum class LogLevel
-{
+enum class LogLevel {
     All = -1,
     Verbose = 1,
     Info = 2,
@@ -20,9 +19,8 @@ enum class LogLevel
     Error = 8,
 };
 
-class Logger
-{
-  public:
+class Logger {
+public:
     virtual void setLevel(LogLevel level) = 0;
     virtual bool isEnabledFor(LogLevel level) const noexcept = 0;
     virtual std::string_view getName() const = 0;

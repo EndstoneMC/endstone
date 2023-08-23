@@ -9,9 +9,8 @@
 #include "endstone/pybind.h"
 #include "python_plugin_description.h"
 
-class PythonPlugin : public Plugin
-{
-  public:
+class PythonPlugin : public Plugin {
+public:
     explicit PythonPlugin(py::object impl);
     ~PythonPlugin() override;
     const PluginDescription &getDescription() const override;
@@ -24,10 +23,10 @@ class PythonPlugin : public Plugin
 
     friend class PythonPluginLoader;
 
-  protected:
+protected:
     void init(const std::shared_ptr<const PluginLoader> &loader);
 
-  private:
+private:
     py::object impl_;
     std::weak_ptr<const PluginLoader> loader_;
     std::shared_ptr<Logger> logger_;

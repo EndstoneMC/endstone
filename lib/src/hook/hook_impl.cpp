@@ -47,39 +47,25 @@ void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance *serverI
 }
 
 int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
-                                            void *properties,
-                                            void *level_settings,
-                                            void *allow_list,
-                                            void *permissions)
+                                            void *properties, void *level_settings, void *allow_list, void *permissions)
 {
     // Server::getInstance().start();
-    return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop,
-                         file_path_manager,
-                         properties,
-                         level_settings,
-                         allow_list,
-                         permissions);
+    return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop, file_path_manager, properties, level_settings,
+                         allow_list, permissions);
 }
 
 void DedicatedServer::initializeLogging()
 {
     std::vector<std::string> &filters = *static_cast<std::vector<std::string> *>(lookupSymbol("gPriorityFilters"));
-    if (std::find(filters.begin(), filters.end(), "VERBOSE") == filters.end())
-    {
+    if (std::find(filters.begin(), filters.end(), "VERBOSE") == filters.end()) {
         filters.emplace_back("VERBOSE");
     }
 
     return CALL_ORIGINAL(DedicatedServer::initializeLogging);
 }
 
-void BedrockLog::log_va(BedrockLog::LogCategory category,
-                        std::bitset<3> flags,
-                        BedrockLog::LogRule rule,
-                        LogAreaID area,
-                        LogLevel level,
-                        const char *function,
-                        int line,
-                        const char *format,
+void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
+                        LogAreaID area, LogLevel level, const char *function, int line, const char *format,
                         va_list args)
 {
     static std::mutex mtx;

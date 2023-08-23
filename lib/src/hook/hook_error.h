@@ -13,9 +13,8 @@
 /**
  * @brief This class provides a custom error category for MinHook errors.
  */
-class MinHookErrorCategory : public std::error_category
-{
-  public:
+class MinHookErrorCategory : public std::error_category {
+public:
     /**
      * @brief Returns the name of the error category.
      * @return The name of the error category.
@@ -33,8 +32,7 @@ class MinHookErrorCategory : public std::error_category
 /**
  * @brief A namespace containing helper functions related to MinHook.
  */
-namespace minhook
-{
+namespace minhook {
 
 /**
  * @brief Creates an error code based on a MinHook status.

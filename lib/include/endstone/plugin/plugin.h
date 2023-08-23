@@ -10,9 +10,8 @@
 
 class PluginLoader;
 
-class Plugin
-{
-  public:
+class Plugin {
+public:
     explicit Plugin() = default;
     virtual ~Plugin() = default;
 

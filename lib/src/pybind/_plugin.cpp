@@ -7,9 +7,8 @@
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/pybind.h"
 
-class PyPlugin : public Plugin
-{
-  public:
+class PyPlugin : public Plugin {
+public:
     const PluginDescription &getDescription() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "get_description", getDescription);
@@ -46,9 +45,8 @@ class PyPlugin : public Plugin
     }
 };
 
-class PyPluginDescription : public PluginDescription
-{
-  public:
+class PyPluginDescription : public PluginDescription {
+public:
     using PluginDescription::PluginDescription;
 
     std::string getName() const override
@@ -68,8 +66,8 @@ class PyPluginDescription : public PluginDescription
 
     std::optional<std::vector<std::string>> getAuthors() const override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(
-            std::optional<std::vector<std::string>>, PluginDescription, "get_authors", getAuthors);
+        PYBIND11_OVERRIDE_PURE_NAME(std::optional<std::vector<std::string>>, PluginDescription, "get_authors",
+                                    getAuthors);
     }
 
     std::optional<std::string> getPrefix() const override
@@ -83,9 +81,8 @@ class PyPluginDescription : public PluginDescription
     }
 };
 
-class PyPluginLoader : public PluginLoader
-{
-  public:
+class PyPluginLoader : public PluginLoader {
+public:
     Plugin *loadPlugin(const std::string &file) const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin);
@@ -141,8 +138,7 @@ PYBIND11_MODULE(_plugin, m)
             [](const PluginLogger &logger, const LogLevel level, const std::string &msg) {
                 return logger.log(level, msg);
             },
-            py::arg("level"),
-            py::arg("msg"))
+            py::arg("level"), py::arg("msg"))
         .def(
             "verbose",
             [](const PluginLogger &logger, const std::string &msg) {

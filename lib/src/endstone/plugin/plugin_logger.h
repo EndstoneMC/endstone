@@ -8,16 +8,15 @@
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 
-class PluginLogger : public Logger
-{
-  public:
+class PluginLogger : public Logger {
+public:
     explicit PluginLogger(const Plugin &plugin);
     void setLevel(LogLevel level) override;
     bool isEnabledFor(LogLevel level) const noexcept override;
     std::string_view getName() const override;
     void log(LogLevel level, const std::string &message) const override;
 
-  private:
+private:
     std::shared_ptr<Logger> logger_;
     std::string pluginName_;
 };

@@ -8,9 +8,8 @@
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/pybind.h"
 
-class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_this<PythonPluginLoader>
-{
-  public:
+class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_this<PythonPluginLoader> {
+public:
     PythonPluginLoader(const std::string &module_name, const std::string &class_name);
     ~PythonPluginLoader() override;
     Plugin *loadPlugin(const std::string &file) const override;
@@ -18,7 +17,7 @@ class PythonPluginLoader : public PluginLoader, public std::enable_shared_from_t
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
 
-  private:
+private:
     py::object impl_;
 };
 

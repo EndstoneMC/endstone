@@ -9,9 +9,8 @@
 #include "logger.h"
 #include "plugin/plugin_manager.h"
 
-class Server
-{
-  public:
+class Server {
+public:
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
@@ -23,7 +22,7 @@ class Server
     Server();
     ~Server() = default;
 
-  private:
+private:
     std::shared_ptr<Logger> logger_;
     std::unique_ptr<PluginManager> pluginManager_;
 };

@@ -3,6 +3,7 @@
 //
 
 #include "endstone/endstone.h"
+
 #include "endstone/common.h"
 #include "endstone/pybind.h"
 
@@ -37,8 +38,7 @@ Server &Endstone::getServer()
 
 void Endstone::setServer(std::unique_ptr<Server> server)
 {
-    if (server_)
-    {
+    if (server_) {
         throw std::runtime_error("Server singleton is already set!");
     }
 

@@ -3,6 +3,7 @@
 //
 
 #include "plugin_logger.h"
+
 #include "endstone/logger_factory.h"
 
 PluginLogger::PluginLogger(const Plugin &plugin)

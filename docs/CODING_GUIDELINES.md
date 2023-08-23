@@ -16,15 +16,14 @@ mandatory for all contributions.
 
 ## 2. Braces
 
-We use the [Allman](https://en.wikipedia.org/wiki/Indent_style#Allman) style. Open braces go on the next line.
+We use the [Stroustrup](https://en.wikipedia.org/wiki/Indent_style#Variant:_Stroustrup) style. Open braces go on the
+same line.
 
 ```cpp
-if (condition)
-{
+if (condition) {
     // code
 }
-else
-{
+else {
     // code
 }
 ```
@@ -85,7 +84,8 @@ be `PROJECT_NAME_HEADER_NAME_H`.
 ### 5.2 Standard Headers
 
 Standard headers should be included using angle brackets (`< >`), while project headers should be included using double
-quotes (`" "`).
+quotes (`" "`). Ensure you regroup the `#include` blocks, with the main file header first, followed by project headers
+in double quotes and then system headers with angle brackets.
 
 ### 5.3 Functions
 

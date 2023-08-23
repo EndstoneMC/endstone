@@ -11,8 +11,7 @@
  * @struct Hook
  * @brief Structure to represent a hook.
  */
-struct Hook
-{
+struct Hook {
     void *p_target;   ///< Pointer to the target function.
     void *p_detour;   ///< Pointer to the detour function.
     void *p_original; ///< Pointer to the original function.
@@ -22,9 +21,8 @@ struct Hook
  * @class HookManager
  * @brief Class to manage hooks.
  */
-class HookManager
-{
-  public:
+class HookManager {
+public:
     /**
      * @brief Initialize the hook manager.
      */
@@ -47,7 +45,7 @@ class HookManager
      */
     const static Hook &getHook(const std::string &symbol);
 
-  private:
+private:
     inline static bool initialized_ = false;          ///< Flag indicating whether the hook manager is initialized.
     inline static std::map<std::string, Hook> hooks_; ///< Map to store hooks by symbol name.
 };
@@ -128,14 +126,14 @@ R call_original(const std::string &symbol, R (*)(Args...), Args... args)
     return func(args...);
 }
 
-#define HOOK_FUNCTION(symbol)                                                                                          \
-    {                                                                                                                  \
-        Hook hook{};                                                                                                   \
-        hook.p_detour = fp_cast(&symbol);                                                                              \
-        hooks_.insert({#symbol, hook});                                                                                \
+#define HOOK_FUNCTION(symbol)             \
+    {                                     \
+        Hook hook{};                      \
+        hook.p_detour = fp_cast(&symbol); \
+        hooks_.insert({#symbol, hook});   \
     }
 
-#define CALL_ORIGINAL(symbol, ...) call_original(#symbol, &symbol, this, ##__VA_ARGS__);
+#define CALL_ORIGINAL(symbol, ...)        call_original(#symbol, &symbol, this, ##__VA_ARGS__);
 #define CALL_ORIGINAL_STATIC(symbol, ...) call_original(#symbol, &symbol, ##__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_MANAGER_H

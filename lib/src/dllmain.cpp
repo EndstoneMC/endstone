@@ -1,10 +1,10 @@
 #ifdef _WIN32
 
-#include <Windows.h>
-
 #include "endstone/common.h"
 #include "endstone/pybind.h"
 #include "hook/hook_manager.h"
+
+#include <Windows.h>
 
 std::unique_ptr<py::scoped_interpreter> g_interpreter;
 std::unique_ptr<py::gil_scoped_release> g_release;
@@ -14,11 +14,9 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
                     _In_ LPVOID lpvReserved) // reserved
 {
     // Perform actions based on the reason for calling.
-    switch (fdwReason)
-    {
+    switch (fdwReason) {
     case DLL_PROCESS_ATTACH: {
-        try
-        {
+        try {
             // Initialize python interpreter and release the GIL
             g_interpreter = std::make_unique<py::scoped_interpreter>();
             py::module_::import("threading"); // https://github.com/pybind/pybind11/issues/2197
@@ -28,23 +26,19 @@ BOOL WINAPI DllMain(_In_ HINSTANCE,          // handle to DLL module
             HookManager::initialize();
             break;
         }
-        catch (const std::exception &e)
-        {
+        catch (const std::exception &e) {
             printf("LibEndstone loads failed.\n");
-            if (const auto *se = dynamic_cast<const std::system_error *>(&e))
-            {
+            if (const auto *se = dynamic_cast<const std::system_error *>(&e)) {
                 printf("%s, error code: %d.\n", se->what(), se->code().value());
             }
-            else
-            {
+            else {
                 printf("%s\n", e.what());
             }
             return FALSE; // Return FALSE to fail DLL load.
         }
     }
     case DLL_PROCESS_DETACH: {
-        if (lpvReserved != nullptr)
-        {
+        if (lpvReserved != nullptr) {
             break; // do not do cleanup if process termination scenario
         }
 

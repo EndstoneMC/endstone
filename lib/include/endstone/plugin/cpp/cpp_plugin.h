@@ -8,9 +8,8 @@
 #include "cpp_plugin_description.h"
 #include "endstone/plugin/plugin.h"
 
-class CppPlugin : public Plugin
-{
-  public:
+class CppPlugin : public Plugin {
+public:
     friend class CppPluginLoader;
 
     const PluginDescription &getDescription() const override = 0;
@@ -33,25 +32,22 @@ class CppPlugin : public Plugin
         return loader_.lock();
     }
 
-  protected:
+protected:
     void setEnabled(bool enabled)
     {
-        if (enabled_ != enabled)
-        {
+        if (enabled_ != enabled) {
             enabled_ = enabled;
 
-            if (enabled_)
-            {
+            if (enabled_) {
                 onEnable();
             }
-            else
-            {
+            else {
                 onDisable();
             }
         }
     }
 
-  private:
+private:
     bool enabled_{false};
     std::weak_ptr<const PluginLoader> loader_;
     std::shared_ptr<Logger> logger_;

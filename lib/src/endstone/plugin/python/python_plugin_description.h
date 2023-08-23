@@ -8,9 +8,8 @@
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/pybind.h"
 
-class PythonPluginDescription : public PluginDescription
-{
-  public:
+class PythonPluginDescription : public PluginDescription {
+public:
     explicit PythonPluginDescription(py::object impl);
     ~PythonPluginDescription() override;
     std::string getName() const override;
@@ -20,7 +19,7 @@ class PythonPluginDescription : public PluginDescription
     std::optional<std::string> getPrefix() const override;
     std::string getFullName() const override;
 
-  private:
+private:
     py::object impl_;
 };
 

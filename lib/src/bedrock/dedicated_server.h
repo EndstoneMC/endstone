@@ -5,9 +5,8 @@
 #ifndef ENDSTONE_DEDICATED_SERVER_H
 #define ENDSTONE_DEDICATED_SERVER_H
 
-class DedicatedServer
-{
-  public:
+class DedicatedServer {
+public:
     int runDedicatedServerLoop(void *file_path_manager, // Core::FilePathManager &
                                void *properties,        // PropertiesSettings &
                                void *level_settings,    // LevelSettings &

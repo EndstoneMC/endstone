@@ -13,16 +13,14 @@
 Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
 {
     HMODULE module = LoadLibraryA(file.c_str());
-    if (!module)
-    {
+    if (!module) {
         throw std::system_error(GetLastError(), std::system_category(), "LoadLibrary failed");
     }
 
     using createPlugin_t = CppPlugin *(*)();
     auto createPlugin_addr = GetProcAddress(module, "createPlugin");
 
-    if (!createPlugin_addr)
-    {
+    if (!createPlugin_addr) {
         FreeLibrary(module);
         throw std::runtime_error("Failed to find createPlugin function in DLL: " + file +
                                  ". Did you forget ENDSTONE_PLUGIN_CLASS?");
@@ -42,34 +40,28 @@ std::vector<std::string> CppPluginLoader::getPluginFilters() const noexcept
 
 void CppPluginLoader::enablePlugin(Plugin &plugin) const
 {
-    try
-    {
+    try {
         auto &cpp_plugin = dynamic_cast<CppPlugin &>(plugin);
-        if (!cpp_plugin.isEnabled())
-        {
+        if (!cpp_plugin.isEnabled()) {
             cpp_plugin.getLogger()->info("Enabling {}", cpp_plugin.getDescription().getFullName());
             cpp_plugin.setEnabled(true);
         }
     }
-    catch (const std::bad_cast &e)
-    {
+    catch (const std::bad_cast &e) {
         throw std::runtime_error("Plugin is not associated with this PluginLoader");
     }
 }
 
 void CppPluginLoader::disablePlugin(Plugin &plugin) const
 {
-    try
-    {
+    try {
         auto &cpp_plugin = dynamic_cast<CppPlugin &>(plugin);
-        if (cpp_plugin.isEnabled())
-        {
+        if (cpp_plugin.isEnabled()) {
             cpp_plugin.getLogger()->info("Disabling {}", cpp_plugin.getDescription().getFullName());
             cpp_plugin.setEnabled(false);
         }
     }
-    catch (const std::bad_cast &e)
-    {
+    catch (const std::bad_cast &e) {
         throw std::runtime_error("Plugin is not associated with this PluginLoader");
     }
 }

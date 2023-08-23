@@ -5,17 +5,13 @@
 #ifndef ENDSTONE_CPP_PLUGIN_DESCRIPTION_H
 #define ENDSTONE_CPP_PLUGIN_DESCRIPTION_H
 
-#include <utility>
-
 #include "endstone/plugin/plugin_description.h"
 
-class CppPluginDescription : public PluginDescription
-{
-  public:
+class CppPluginDescription : public PluginDescription {
+public:
     CppPluginDescription(const std::string &name, const std::string &version)
     {
-        if (!std::regex_match(name, VALID_NAME))
-        {
+        if (!std::regex_match(name, VALID_NAME)) {
             throw std::invalid_argument("Plugin name contains invalid characters.");
         }
 
@@ -54,7 +50,7 @@ class CppPluginDescription : public PluginDescription
         return getName() + " v" + getVersion();
     }
 
-  private:
+private:
     std::string name_;
     std::string version_;
 

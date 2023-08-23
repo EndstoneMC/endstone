@@ -3,11 +3,11 @@
 //
 
 #include "logger_factory.h"
+
 #include "bedrock/bedrock_log.h"
 
-class BedrockLoggerAdapter : public Logger
-{
-  public:
+class BedrockLoggerAdapter : public Logger {
+public:
     explicit BedrockLoggerAdapter(std::string name) : level_(LogLevel::Info), name_(std::move(name)) {}
 
     void setLevel(LogLevel level) override
@@ -27,21 +27,13 @@ class BedrockLoggerAdapter : public Logger
 
     void log(LogLevel level, const std::string &message) const override
     {
-        if (isEnabledFor(level))
-        {
-            BedrockLog::log_va(BedrockLog::LogCategory::All,
-                               1,
-                               BedrockLog::LogRule::Default,
-                               BedrockLog::LogAreaID::Server,
-                               level,
-                               __FUNCTION__,
-                               __LINE__,
-                               message.c_str(),
-                               {});
+        if (isEnabledFor(level)) {
+            BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default,
+                               BedrockLog::LogAreaID::Server, level, __FUNCTION__, __LINE__, message.c_str(), {});
         }
     }
 
-  private:
+private:
     LogLevel level_;
     std::string name_;
 };
@@ -53,8 +45,7 @@ std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
 
     static std::map<std::string, std::shared_ptr<BedrockLoggerAdapter>> loggers;
     auto it = loggers.find(name);
-    if (it == loggers.end())
-    {
+    if (it == loggers.end()) {
         it = loggers.insert({name, std::make_shared<BedrockLoggerAdapter>(name)}).first;
     }
 

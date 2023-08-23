@@ -7,9 +7,8 @@
 
 #include "plugin.h"
 
-class PluginLoader
-{
-  public:
+class PluginLoader {
+public:
     virtual ~PluginLoader() = default;
     virtual Plugin *loadPlugin(const std::string &file) const = 0;
     virtual std::vector<std::string> getPluginFilters() const noexcept = 0;

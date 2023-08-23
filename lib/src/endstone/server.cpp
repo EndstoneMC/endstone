@@ -3,6 +3,7 @@
 //
 
 #include "endstone/server.h"
+
 #include "endstone/logger_factory.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
@@ -13,38 +14,31 @@ Server::Server() : logger_(LoggerFactory::getLogger("Server")), pluginManager_(s
 
 void Server::loadPlugins()
 {
-    try
-    {
+    try {
         pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
         pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
         pluginManager_->registerLoader(std::make_unique<CppPluginLoader>());
 
         auto pluginFolder = std::filesystem::current_path() / "plugins";
 
-        if (exists(pluginFolder))
-        {
+        if (exists(pluginFolder)) {
             auto plugins = pluginManager_->loadPlugins(pluginFolder);
-            for (const auto &plugin : plugins)
-            {
-                try
-                {
+            for (const auto &plugin : plugins) {
+                try {
                     plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
                     plugin->onLoad();
                 }
-                catch (std::exception &e)
-                {
-                    logger_->error(
-                        "Error occurred when initializing {}: {}", plugin->getDescription().getFullName(), e.what());
+                catch (std::exception &e) {
+                    logger_->error("Error occurred when initializing {}: {}", plugin->getDescription().getFullName(),
+                                   e.what());
                 }
             }
         }
-        else
-        {
+        else {
             create_directories(pluginFolder);
         }
     }
-    catch (std::exception &e)
-    {
+    catch (std::exception &e) {
         logger_->error("Error occurred when trying to load plugins: {}", e.what());
     }
 }
@@ -52,8 +46,7 @@ void Server::loadPlugins()
 void Server::enablePlugins()
 {
     auto plugins = pluginManager_->getPlugins();
-    for (const auto &plugin : plugins)
-    {
+    for (const auto &plugin : plugins) {
         pluginManager_->enablePlugin(*plugin);
     }
 }

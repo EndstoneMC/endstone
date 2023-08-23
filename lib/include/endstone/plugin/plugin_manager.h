@@ -10,9 +10,8 @@
 
 class Server;
 
-class PluginManager
-{
-  public:
+class PluginManager {
+public:
     explicit PluginManager(Server &server);
 
     void registerLoader(const std::shared_ptr<PluginLoader> &loader);
@@ -27,7 +26,7 @@ class PluginManager
     void disablePlugins();
     void clearPlugins();
 
-  private:
+private:
     Server &server_;
     std::map<std::string, std::shared_ptr<PluginLoader>> fileAssociations_;
     std::vector<std::unique_ptr<Plugin>> plugins_;

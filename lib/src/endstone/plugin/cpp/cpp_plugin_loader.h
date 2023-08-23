@@ -7,9 +7,8 @@
 
 #include "endstone/plugin/plugin_loader.h"
 
-class CppPluginLoader : public PluginLoader, public std::enable_shared_from_this<CppPluginLoader>
-{
-  public:
+class CppPluginLoader : public PluginLoader, public std::enable_shared_from_this<CppPluginLoader> {
+public:
     ~CppPluginLoader() override = default;
     Plugin *loadPlugin(const std::string &file) const override;
     std::vector<std::string> getPluginFilters() const noexcept override;

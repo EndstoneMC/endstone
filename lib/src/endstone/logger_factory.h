@@ -7,9 +7,8 @@
 
 #include "endstone/logger.h"
 
-class LoggerFactory
-{
-  public:
+class LoggerFactory {
+public:
     static std::shared_ptr<Logger> getLogger(const std::string &name);
 };
 
