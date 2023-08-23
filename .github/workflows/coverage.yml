@@ -19,6 +19,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup OpenCppCoverage and add to PATH
+        run: |
+          choco install OpenCppCoverage -y
+          echo "C:\Program Files\OpenCppCoverage" >> $env:GITHUB_PATH
+
       - name: CMake build
         run: |
           mkdir build
@@ -28,7 +33,7 @@ jobs:
 
       - name: Run tests and generate coverage
         working-directory: build
-        run: ctest
+        run: ctest  --extra-verbose
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
