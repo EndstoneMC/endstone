@@ -14,10 +14,6 @@ file(
 
 include(GoogleTest)
 
-foreach (ENDSTONE_TEST_SOURCE ${ENDSTONE_TEST_SOURCES})
-    get_filename_component(ENDSTONE_TEST_NAME ${ENDSTONE_TEST_SOURCE} NAME_WE)
-    add_executable(${ENDSTONE_TEST_NAME} ${ENDSTONE_TEST_SOURCES})
-    target_link_libraries(${ENDSTONE_TEST_NAME} PRIVATE GTest::gtest_main libendstone)
-    gtest_discover_tests(${ENDSTONE_TEST_NAME})
-endforeach ()
-
+add_executable(endstone_test ${ENDSTONE_TEST_SOURCES})
+target_link_libraries(endstone_test PRIVATE GTest::gtest_main libendstone)
+gtest_discover_tests(endstone_test)
