@@ -13,7 +13,7 @@ public:
     PythonPluginLoader(const std::string &module_name, const std::string &class_name);
     ~PythonPluginLoader() override;
     Plugin *loadPlugin(const std::string &file) const override;
-    std::vector<std::string> getPluginFilters() const noexcept override;
+    std::vector<std::string> getPluginFileFilters() const noexcept override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
 

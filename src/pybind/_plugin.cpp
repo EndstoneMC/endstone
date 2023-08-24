@@ -81,29 +81,6 @@ public:
     }
 };
 
-class PyPluginLoader : public PluginLoader {
-public:
-    Plugin *loadPlugin(const std::string &file) const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin);
-    }
-
-    std::vector<std::string> getPluginFilters() const noexcept override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_filters", getPluginFilters);
-    }
-
-    void enablePlugin(Plugin &plugin) const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "enable_plugin", enablePlugin);
-    }
-
-    void disablePlugin(Plugin &plugin) const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(void, PluginLoader, "disable_plugin", disablePlugin);
-    }
-};
-
 PYBIND11_MODULE(_plugin, m)
 {
     py::class_<Plugin, PyPlugin>(m, "IPlugin") //
@@ -123,13 +100,6 @@ PYBIND11_MODULE(_plugin, m)
         .def("get_authors", &PluginDescription::getAuthors)                     //
         .def("get_prefix", &PluginDescription::getPrefix)                       //
         .def("get_fullname", &PluginDescription::getFullName);
-
-    py::class_<PluginLoader, PyPluginLoader>(m, "IPluginLoader")              //
-        .def(py::init<>())                                                    //
-        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))       //
-        .def("get_plugin_filters", &PluginLoader::getPluginFilters)           //
-        .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin")) //
-        .def("disable_plugin", &PluginLoader::disablePlugin, py::arg("plugin"));
 
     py::class_<PluginLogger>(m, "PluginLogger")
         .def(py::init<const Plugin &>())

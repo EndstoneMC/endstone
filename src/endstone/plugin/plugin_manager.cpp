@@ -10,7 +10,7 @@ PluginManager::PluginManager(Server &server) : server_(server) {}
 
 void PluginManager::registerLoader(const std::shared_ptr<PluginLoader> &loader)
 {
-    auto patterns = loader->getPluginFilters();
+    auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
         fileAssociations_[pattern] = loader;
     }

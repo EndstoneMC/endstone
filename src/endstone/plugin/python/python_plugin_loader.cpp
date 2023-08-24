@@ -32,10 +32,10 @@ Plugin *PythonPluginLoader::loadPlugin(const std::string &file) const
     return plugin;
 }
 
-std::vector<std::string> PythonPluginLoader::getPluginFilters() const noexcept
+std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const noexcept
 {
     py::gil_scoped_acquire lock{};
-    return impl_.attr("get_plugin_filters")().cast<std::vector<std::string>>();
+    return impl_.attr("plugin_file_filters").cast<std::vector<std::string>>();
 }
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const

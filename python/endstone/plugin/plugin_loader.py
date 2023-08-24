@@ -6,19 +6,17 @@ from importlib.machinery import ModuleSpec
 from pathlib import Path
 from types import ModuleType
 
-from endstone._plugin import IPluginLoader
-
 from .plugin import Plugin
 from .plugin_description import PluginDescriptionFile
 
 __all__ = ["ZipPluginLoader", "SourcePluginLoader"]
 
 
-class PluginLoader(IPluginLoader):
+class PluginLoader:
     _file_filters = []
 
     def __init__(self):
-        IPluginLoader.__init__(self)
+        pass
 
     def enable_plugin(self, plugin: Plugin) -> None:
         if not plugin.is_enabled():
@@ -32,7 +30,8 @@ class PluginLoader(IPluginLoader):
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
 
-    def get_plugin_filters(self) -> list[str]:
+    @property
+    def plugin_file_filters(self) -> list[str]:
         return self._file_filters.copy()
 
 

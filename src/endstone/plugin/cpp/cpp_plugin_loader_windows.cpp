@@ -33,7 +33,7 @@ Plugin *CppPluginLoader::loadPlugin(const std::string &file) const
     return plugin;
 }
 
-std::vector<std::string> CppPluginLoader::getPluginFilters() const noexcept
+std::vector<std::string> CppPluginLoader::getPluginFileFilters() const noexcept
 {
     return {"\\.dll$"};
 }
