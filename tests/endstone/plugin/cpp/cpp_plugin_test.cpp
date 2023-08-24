@@ -6,7 +6,7 @@
 
 #include <gtest/gtest.h>
 
-class TestCppPlugin : public CppPlugin {
+class MockCppPlugin : public CppPlugin {
 public:
     const PluginDescription &getDescription() const override
     {
@@ -19,21 +19,19 @@ public:
 
 TEST(CppPluginTest, IsEnabledTest)
 {
-    TestCppPlugin plugin;
+    MockCppPlugin plugin;
     EXPECT_EQ(plugin.isEnabled(), false);
 }
 
 TEST(CppPluginTest, PluginLoaderTest)
 {
-    TestCppPlugin plugin;
-    // Assuming PluginLoader has some identifiable characteristics you can check.
-    // For this example, let's assume it's just a nullptr.
+    MockCppPlugin plugin;
     EXPECT_EQ(plugin.getPluginLoader(), nullptr);
 }
 
 TEST(CppPluginTest, SetEnabledTest)
 {
-    TestCppPlugin plugin;
+    MockCppPlugin plugin;
     plugin.setEnabled(true);
     EXPECT_EQ(plugin.isEnabled(), true);
     plugin.setEnabled(false);
