@@ -19,9 +19,7 @@ endif ()
 
 FetchContent_Declare(
         pybind11
-        GIT_REPOSITORY https://github.com/pybind/pybind11
-        GIT_SHALLOW TRUE
-        GIT_TAG v2.11.1
+        URL https://github.com/pybind/pybind11/archive/refs/tags/v2.11.1.tar.gz
 )
 FetchContent_Declare(
         json
