@@ -1,9 +1,10 @@
 # Endstone
 
-[![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
-[![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
+![PyPI - Version](https://img.shields.io/pypi/v/endstone)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
+[![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone)
+[![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
 
 Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
 allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities. This project
@@ -20,22 +21,32 @@ install it:
 2. Download the installer for Python 3.9 or higher.
 3. Run the installer and follow the on-screen instructions, making sure to check the box that adds Python to your PATH.
 
-### Linux
+[//]: # (### Linux)
 
-The method of installing Python varies between Linux distributions. Here's a general guide for Ubuntu:
+[//]: # ()
+[//]: # (The method of installing Python varies between Linux distributions. Here's a general guide for Ubuntu:)
 
-1. Open a terminal window.
-2. Run the following command to update your package list:
+[//]: # ()
+[//]: # (1. Open a terminal window.)
 
-   ```bash
-   sudo apt update
-   ```
+[//]: # (2. Run the following command to update your package list:)
 
-3. Run the following command to install Python 3.9:
+[//]: # ()
+[//]: # (   ```bash)
 
-   ```bash
-   sudo apt install python3.9
-   ```
+[//]: # (   sudo apt update)
+
+[//]: # (   ```)
+
+[//]: # ()
+[//]: # (3. Run the following command to install Python 3.9:)
+
+[//]: # ()
+[//]: # (   ```bash)
+
+[//]: # (   sudo apt install python3.9)
+
+[//]: # (   ```)
 
 ## Quick Start
 
@@ -59,11 +70,15 @@ Here's how you can get started with Endstone:
    .\venv\Scripts\activate
    ```
 
-   On Linux:
+[//]: # ()
+[//]: # (   On Linux:)
 
-   ```bash
-   source venv/bin/activate
-   ```
+[//]: # ()
+[//]: # (   ```bash)
+
+[//]: # (   source venv/bin/activate)
+
+[//]: # (   ```)
 
 3. **Install Endstone**
 
