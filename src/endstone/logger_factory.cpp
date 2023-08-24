@@ -23,19 +23,13 @@ std::string_view AbstractLogger::getName() const
     return name_;
 }
 
-class BedrockLoggerAdapter : public AbstractLogger {
-
-public:
-    using AbstractLogger::AbstractLogger;
-
-    void log(LogLevel level, const std::string &message) const override
-    {
-        if (isEnabledFor(level)) {
-            BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default,
-                               BedrockLog::LogAreaID::Server, level, __FUNCTION__, __LINE__, message.c_str(), {});
-        }
+void BedrockLoggerAdapter::log(LogLevel level, const std::string &message) const
+{
+    if (isEnabledFor(level)) {
+        BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default, BedrockLog::LogAreaID::Server,
+                           level, __FUNCTION__, __LINE__, message.c_str(), {});
     }
-};
+}
 
 std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
 {

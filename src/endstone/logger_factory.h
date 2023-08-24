@@ -22,6 +22,14 @@ private:
     std::string name_;
 };
 
+class BedrockLoggerAdapter : public AbstractLogger {
+
+public:
+    using AbstractLogger::AbstractLogger;
+
+    void log(LogLevel level, const std::string &message) const override;
+};
+
 class LoggerFactory {
 public:
     static std::shared_ptr<Logger> getLogger(const std::string &name);
