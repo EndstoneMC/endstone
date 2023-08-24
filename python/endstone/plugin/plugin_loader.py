@@ -15,18 +15,18 @@ __all__ = ["ZipPluginLoader", "SourcePluginLoader"]
 class PluginLoader:
     _file_filters = []
 
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     def enable_plugin(self, plugin: Plugin) -> None:
-        if not plugin.is_enabled():
-            plugin.logger.info(f"Enabling {plugin.get_description().get_fullname()}")
+        if not plugin.enabled:
+            plugin.logger.info(f"Enabling {plugin.description.get_fullname()}")
             # noinspection PyProtectedMember
             plugin._set_enabled(True)
 
     def disable_plugin(self, plugin: Plugin) -> None:
-        if plugin.is_enabled():
-            plugin.logger.info(f"Disabling {plugin.get_description().get_fullname()}")
+        if plugin.enabled:
+            plugin.logger.info(f"Disabling {plugin.description.get_fullname()}")
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
 

@@ -7,44 +7,6 @@
 #include "endstone/plugin/plugin_logger.h"
 #include "pybind.h"
 
-class PyPlugin : public Plugin {
-public:
-    const PluginDescription &getDescription() const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "get_description", getDescription);
-    }
-
-    void onLoad() override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_load", onLoad);
-    }
-
-    void onEnable() override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_enable", onEnable);
-    }
-
-    void onDisable() override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
-    }
-
-    std::shared_ptr<Logger> getLogger() const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(std::shared_ptr<Logger>, Plugin, "get_logger", onDisable);
-    }
-
-    bool isEnabled() const override
-    {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, Plugin, "is_enabled", isEnabled);
-    }
-
-    std::shared_ptr<const PluginLoader> getPluginLoader() const override
-    {
-        throw std::runtime_error("Not supported");
-    }
-};
-
 class PyPluginDescription : public PluginDescription {
 public:
     using PluginDescription::PluginDescription;
@@ -83,15 +45,6 @@ public:
 
 PYBIND11_MODULE(_plugin, m)
 {
-    py::class_<Plugin, PyPlugin>(m, "IPlugin") //
-        .def(py::init<>())                     //
-        .def("get_description", &Plugin::getDescription, py::return_value_policy::reference_internal)
-        .def("on_load", &Plugin::onLoad)       //
-        .def("on_enable", &Plugin::onEnable)   //
-        .def("on_disable", &Plugin::onDisable) //
-        .def("is_enabled", &Plugin::isEnabled) //
-        .def("get_logger", &Plugin::getLogger, py::return_value_policy::reference_internal);
-
     py::class_<PluginDescription, PyPluginDescription>(m, "IPluginDescription") //
         .def(py::init<>())                                                      //
         .def("get_name", &PluginDescription::getName)                           //
@@ -101,7 +54,7 @@ PYBIND11_MODULE(_plugin, m)
         .def("get_prefix", &PluginDescription::getPrefix)                       //
         .def("get_fullname", &PluginDescription::getFullName);
 
-    py::class_<PluginLogger>(m, "PluginLogger")
+    py::class_<PluginLogger, std::shared_ptr<PluginLogger>>(m, "PluginLogger")
         .def(py::init<const Plugin &>())
         .def(
             "log",

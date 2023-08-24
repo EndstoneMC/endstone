@@ -9,7 +9,7 @@
 
 PythonPlugin::PythonPlugin(py::object impl) : impl_(std::move(impl))
 {
-    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("get_description")());
+    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("description"));
 }
 
 PythonPlugin::~PythonPlugin()
@@ -49,7 +49,7 @@ std::shared_ptr<Logger> PythonPlugin::getLogger() const
 bool PythonPlugin::isEnabled() const
 {
     py::gil_scoped_acquire lock{};
-    return impl_.attr("is_enabled")().cast<bool>();
+    return impl_.attr("enabled").cast<bool>();
 }
 
 std::shared_ptr<const PluginLoader> PythonPlugin::getPluginLoader() const

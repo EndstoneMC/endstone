@@ -29,6 +29,7 @@ Plugin *PythonPluginLoader::loadPlugin(const std::string &file) const
     auto plugin = new PythonPlugin(py_plugin);
     plugin->loader_ = shared_from_this();
     plugin->logger_ = std::make_shared<PluginLogger>(*plugin);
+    py_plugin.attr("_logger") = py::cast(plugin->logger_);
     return plugin;
 }
 
