@@ -6,24 +6,27 @@
 
 #include "bedrock/bedrock_log.h"
 
-class BedrockLoggerAdapter : public Logger {
+AbstractLogger::AbstractLogger(std::string name) : level_(LogLevel::Info), name_(std::move(name)) {}
+
+void AbstractLogger::setLevel(LogLevel level)
+{
+    level_ = level;
+}
+
+bool AbstractLogger::isEnabledFor(LogLevel level) const noexcept
+{
+    return level >= level_;
+}
+
+std::string_view AbstractLogger::getName() const
+{
+    return name_;
+}
+
+class BedrockLoggerAdapter : public AbstractLogger {
+
 public:
-    explicit BedrockLoggerAdapter(std::string name) : level_(LogLevel::Info), name_(std::move(name)) {}
-
-    void setLevel(LogLevel level) override
-    {
-        level_ = level;
-    }
-
-    bool isEnabledFor(LogLevel level) const noexcept override
-    {
-        return level >= level_;
-    }
-
-    std::string_view getName() const override
-    {
-        return name_;
-    }
+    using AbstractLogger::AbstractLogger;
 
     void log(LogLevel level, const std::string &message) const override
     {
@@ -32,10 +35,6 @@ public:
                                BedrockLog::LogAreaID::Server, level, __FUNCTION__, __LINE__, message.c_str(), {});
         }
     }
-
-private:
-    LogLevel level_;
-    std::string name_;
 };
 
 std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
