@@ -20,13 +20,13 @@ class PluginLoader:
 
     def enable_plugin(self, plugin: Plugin) -> None:
         if not plugin.enabled:
-            plugin.logger.info(f"Enabling {plugin.description.get_fullname()}")
+            plugin.logger.info(f"Enabling {plugin.description.fullname}")
             # noinspection PyProtectedMember
             plugin._set_enabled(True)
 
     def disable_plugin(self, plugin: Plugin) -> None:
         if plugin.enabled:
-            plugin.logger.info(f"Disabling {plugin.description.get_fullname()}")
+            plugin.logger.info(f"Disabling {plugin.description.fullname}")
             # noinspection PyProtectedMember
             plugin._set_enabled(False)
 
@@ -52,7 +52,7 @@ class ZipPluginLoader(PluginLoader):
             raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
 
         try:
-            main = description.get_main()
+            main = description.main
             parts = main.split(".")
             class_name = parts.pop()
             module_name = ".".join(parts)
@@ -65,7 +65,7 @@ class ZipPluginLoader(PluginLoader):
             plugin._init(description)
             return plugin
         except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.get_fullname()}: {e}")
+            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
 
 
 class SourcePluginLoader(PluginLoader):
@@ -84,7 +84,7 @@ class SourcePluginLoader(PluginLoader):
             raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
 
         try:
-            main = description.get_main()
+            main = description.main
             parts = main.split(".")
             class_name = parts.pop()
             module_name = ".".join(parts)
@@ -102,7 +102,7 @@ class SourcePluginLoader(PluginLoader):
             return plugin
 
         except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.get_fullname()}: {e}")
+            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
 
     @staticmethod
     def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:

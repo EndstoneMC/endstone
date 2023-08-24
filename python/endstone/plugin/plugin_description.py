@@ -1,8 +1,6 @@
 import re
 import sys
-from typing import BinaryIO
-
-from endstone._plugin import IPluginDescription
+from typing import BinaryIO, Optional, final
 
 if sys.version_info >= (3, 11):
     from tomllib import load
@@ -10,39 +8,54 @@ else:
     from tomli import load
 
 
-class PluginDescription(IPluginDescription):
+class PluginDescription:
     VALID_NAME = re.compile(r"^[A-Za-z0-9 _.-]+$")
 
     def __init__(self, name: str, version: str, main_cls: str):
-        IPluginDescription.__init__(self)
-
         if not self.VALID_NAME.match(name):
             raise ValueError(f"Plugin name {name} contains invalid characters.")
 
-        self._name = name.replace(" ", "_")
-        self._version = version
-        self._main = main_cls
-        self._description = None
-        self._authors = []
-        self._prefix = None
+        self._name: str = name.replace(" ", "_")
+        self._version: str = version
+        self._main: str = main_cls
+        self._description: Optional[str] = None
+        self._authors: Optional[list[str]] = []
+        self._prefix: Optional[str] = None
 
-    def get_name(self):
+    @final
+    @property
+    def name(self) -> str:
         return self._name
 
-    def get_version(self) -> str:
+    @final
+    @property
+    def version(self) -> str:
         return self._version
 
-    def get_main(self) -> str:
+    @final
+    @property
+    def main(self) -> str:
         return self._main
 
-    def get_description(self) -> str:
+    @final
+    @property
+    def description(self) -> Optional[str]:
         return self._description
 
-    def get_authors(self) -> list[str]:
+    @final
+    @property
+    def authors(self) -> Optional[list[str]]:
         return self._authors
 
-    def get_prefix(self) -> str:
+    @final
+    @property
+    def prefix(self) -> Optional[str]:
         return self._prefix
+
+    @final
+    @property
+    def fullname(self) -> str:
+        return f"{self.name} v{self.version}"
 
 
 class PluginDescriptionFile(PluginDescription):

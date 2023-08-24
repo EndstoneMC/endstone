@@ -21,8 +21,8 @@ def plugin_setup(**attrs):
     with open(description_file, "rb") as f:
         description = PluginDescriptionFile(f)
 
-    name = attrs.pop("name", description.get_name().lower())
-    version = attrs.pop("version", description.get_version())
+    name = attrs.pop("name", description.name.lower())
+    version = attrs.pop("version", description.version)
     packages = attrs.pop("packages", find_packages())
     if "." not in packages:
         packages.append(".")
