@@ -15,5 +15,5 @@ file(
 include(GoogleTest)
 
 add_executable(endstone_test ${ENDSTONE_TEST_SOURCES})
-target_link_libraries(endstone_test PRIVATE GTest::gtest_main libendstone)
+target_link_libraries(endstone_test PRIVATE GTest::gtest_main endstone::core)
 gtest_discover_tests(endstone_test)

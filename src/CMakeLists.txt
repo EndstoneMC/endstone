@@ -1,0 +1,91 @@
+# ------------------------
+# Endstone Core
+# ------------------------
+file(
+        GLOB_RECURSE ENDSTONE_SOURCES CONFIGURE_DEPENDS
+        LIST_DIRECTORIES false
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "endstone/*.cpp"
+)
+
+add_library(core STATIC ${ENDSTONE_SOURCES})
+add_library(endstone::core ALIAS core)
+
+target_include_directories(core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+if (WIN32)
+    set_target_properties(core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
+endif ()
+
+FetchContent_Declare(
+        pybind11
+        GIT_REPOSITORY https://github.com/pybind/pybind11
+        GIT_SHALLOW TRUE
+        GIT_TAG v2.11.1
+)
+FetchContent_Declare(
+        json
+        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+)
+FetchContent_MakeAvailable(pybind11 json)
+target_link_libraries(core PUBLIC endstone::api pybind11::embed nlohmann_json::nlohmann_json)
+
+# ------------------------
+# Endstone Dynamic Library
+# ------------------------
+file(
+        GLOB_RECURSE ENDSTONE_LIB_SOURCES CONFIGURE_DEPENDS
+        LIST_DIRECTORIES false
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "lib/*.cpp"
+)
+add_library(libendstone SHARED ${ENDSTONE_LIB_SOURCES})
+target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+if (WIN32)
+    FetchContent_Declare(
+            minhook
+            GIT_REPOSITORY https://github.com/TsudaKageyu/minhook.git
+            GIT_TAG master
+            GIT_SHALLOW TRUE
+    )
+    FetchContent_MakeAvailable(minhook)
+    target_link_libraries(libendstone PRIVATE minhook dbghelp.lib)
+endif ()
+
+target_link_libraries(libendstone PUBLIC endstone::api endstone::core)
+
+install(TARGETS libendstone
+        LIBRARY DESTINATION ${PROJECT_NAME}
+        RUNTIME DESTINATION ${PROJECT_NAME}
+        )
+
+# ------------------------
+# Endstone Pybind Modules
+# ------------------------
+file(
+        GLOB_RECURSE ENDSTONE_PYBIND11_MODULES CONFIGURE_DEPENDS
+        LIST_DIRECTORIES false
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "pybind/*.cpp"
+)
+
+foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
+    get_filename_component(ENDSTONE_PYBIND11_MODULE_NAME ${ENDSTONE_PYBIND11_MODULE} NAME_WE)
+    pybind11_add_module(
+            ${ENDSTONE_PYBIND11_MODULE_NAME} MODULE ${ENDSTONE_PYBIND11_MODULE}
+    )
+    target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE libendstone)
+
+    if (WIN32)
+        target_link_options(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE "/DELAYLOAD:libendstone.dll")
+        target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE delayimp.lib)
+    endif ()
+
+    install(
+            TARGETS ${ENDSTONE_PYBIND11_MODULE_NAME}
+            LIBRARY DESTINATION ${PROJECT_NAME}
+            RUNTIME DESTINATION ${PROJECT_NAME}
+    )
+
+endforeach ()

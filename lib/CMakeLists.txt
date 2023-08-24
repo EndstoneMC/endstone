@@ -12,6 +12,7 @@ add_definitions(-DENDSTONE_VERSION="${ENDSTONE_VERSION}")
 add_library(api INTERFACE)
 add_library(endstone::api ALIAS api)
 target_include_directories(api INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_precompile_headers(api PUBLIC include/endstone/common.h)
 
 if (NOT ${CMAKE_SOURCE_DIR} STREQUAL ${PROJECT_SOURCE_DIR})
     # endstone is being included as a sub-module.
