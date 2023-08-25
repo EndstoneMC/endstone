@@ -1,6 +1,6 @@
 # Endstone
 
-![PyPI - Version](https://img.shields.io/pypi/v/endstone)
+[![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
 [![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone)
@@ -24,14 +24,17 @@ install it:
 [//]: # (### Linux)
 
 [//]: # ()
+
 [//]: # (The method of installing Python varies between Linux distributions. Here's a general guide for Ubuntu:)
 
 [//]: # ()
+
 [//]: # (1. Open a terminal window.)
 
 [//]: # (2. Run the following command to update your package list:)
 
 [//]: # ()
+
 [//]: # (   ```bash)
 
 [//]: # (   sudo apt update)
@@ -39,9 +42,11 @@ install it:
 [//]: # (   ```)
 
 [//]: # ()
+
 [//]: # (3. Run the following command to install Python 3.9:)
 
 [//]: # ()
+
 [//]: # (   ```bash)
 
 [//]: # (   sudo apt install python3.9)
@@ -71,9 +76,11 @@ Here's how you can get started with Endstone:
    ```
 
 [//]: # ()
+
 [//]: # (   On Linux:)
 
 [//]: # ()
+
 [//]: # (   ```bash)
 
 [//]: # (   source venv/bin/activate)
@@ -97,7 +104,7 @@ Here's how you can get started with Endstone:
       You can also clone the repository and install it locally. First, clone the repository:
 
       ```bash
-      git clone https://github.com/pybedrock/endstone.git
+      git clone https://github.com/EndstoneMC/endstone.git
       ```
 
       Navigate into the `endstone` directory:
@@ -168,4 +175,5 @@ Dive deep into the Endstone documentation (Work-In-Progress) for comprehensive g
 crafting influential plugins for Bedrock Dedicated Servers, regardless of your choice between Python or C++.
 
 ## Licenses
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone?ref=badge_large)

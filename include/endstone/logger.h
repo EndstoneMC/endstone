@@ -27,33 +27,33 @@ public:
     virtual void log(LogLevel level, const std::string &message) const = 0;
 
     template <typename... Args>
-    void log(LogLevel level, const std::format_string<Args...> format, Args &&...args) const
+    void log(LogLevel level, const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(level, std::format(format, std::forward<Args>(args)...));
+        log(level, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
-    void verbose(const std::format_string<Args...> format, Args &&...args) const
+    void verbose(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Verbose, std::format(format, std::forward<Args>(args)...));
+        log(LogLevel::Verbose, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
-    void info(const std::format_string<Args...> format, Args &&...args) const
+    void info(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Info, std::format(format, std::forward<Args>(args)...));
+        log(LogLevel::Info, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
-    void warning(const std::format_string<Args...> format, Args &&...args) const
+    void warning(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Warning, std::format(format, std::forward<Args>(args)...));
+        log(LogLevel::Warning, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
-    void error(const std::format_string<Args...> format, Args &&...args) const
+    void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Error, std::format(format, std::forward<Args>(args)...));
+        log(LogLevel::Error, fmt::format(format, std::forward<Args>(args)...));
     }
 };
 

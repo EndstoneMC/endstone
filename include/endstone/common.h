@@ -12,7 +12,7 @@
 #include <bitset>
 #include <codecvt>
 #include <filesystem>
-#include <format>
+#include <fmt/core.h>
 #include <fstream>
 #include <functional>
 #include <iostream>

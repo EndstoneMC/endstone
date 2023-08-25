@@ -44,32 +44,19 @@ public:
         }
 
         if (!success && !usage_.empty()) {
-            size_t position = 0;
-            std::string line;
-            constexpr std::string placeholder = "<command>";
-            while (position < usage_.length()) {
-                // If we find the placeholder
-                if (usage_.compare(position, placeholder.length(), placeholder) == 0) {
-                    line += label;
-                    position += placeholder.length(); // Skip past placeholder
-                    continue;
+            std::size_t start = 0;
+            std::size_t end = 0;
+            auto usage = fmt::format(usage_, fmt::arg("command", label));
+
+            while (start < usage.length()) {
+                end = usage.find('\n', start);
+                if (end == std::string::npos) {
+                    end = usage.length();
                 }
 
-                // If it's a newline, send the accumulated line and reset it
-                if (usage_[position] == '\n') {
-                    sender.sendMessage(line);
-                    line.clear();
-                    ++position; // Skip past newline
-                    continue;
-                }
+                sender.sendMessage(usage.substr(start, end - start));
 
-                line += usage_[position];
-                ++position;
-            }
-
-            // Handle the remaining line, if any
-            if (!line.empty()) {
-                sender.sendMessage(line);
+                start = end + 1;
             }
         }
 

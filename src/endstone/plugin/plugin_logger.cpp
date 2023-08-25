@@ -12,7 +12,7 @@ PluginLogger::PluginLogger(const Plugin &plugin)
     logger_ = LoggerFactory::getLogger(description.getName());
 
     auto prefix = description.getPrefix();
-    pluginName_ = std::format("[{}] ", prefix.value_or(description.getName()));
+    pluginName_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
 }
 
 void PluginLogger::log(LogLevel level, const std::string &message) const
