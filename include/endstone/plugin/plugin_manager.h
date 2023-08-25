@@ -10,6 +10,7 @@
 
 class PluginManager {
 public:
+    virtual ~PluginManager() = default;
     virtual void registerLoader(const std::shared_ptr<PluginLoader> &loader) = 0;
     virtual Plugin *getPlugin(const std::string &name) const = 0;
     virtual std::vector<Plugin *> getPlugins() const = 0;

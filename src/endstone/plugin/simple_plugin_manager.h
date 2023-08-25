@@ -11,7 +11,7 @@
 class SimplePluginManager : public PluginManager {
 
 public:
-    explicit SimplePluginManager(Server &server, SimpleCommandMap &&command_map);
+    explicit SimplePluginManager(Server &server, std::shared_ptr<SimpleCommandMap> command_map);
 
     void registerLoader(const std::shared_ptr<PluginLoader> &loader);
     Plugin *getPlugin(const std::string &name) const;
@@ -30,7 +30,7 @@ private:
     std::map<std::string, std::shared_ptr<PluginLoader>> file_associations_;
     std::vector<std::unique_ptr<Plugin>> plugins_;
     std::map<std::string, Plugin *> lookup_names_;
-    SimpleCommandMap &command_map_;
+    std::shared_ptr<SimpleCommandMap> command_map_;
 };
 
 #endif // ENDSTONE_SIMPLE_PLUGIN_MANAGER_H

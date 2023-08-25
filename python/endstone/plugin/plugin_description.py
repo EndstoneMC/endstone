@@ -19,8 +19,9 @@ class PluginDescription:
         self._version: str = version
         self._main: str = main_cls
         self._description: Optional[str] = None
-        self._authors: Optional[list[str]] = []
+        self._authors: Optional[list[str]] = None
         self._prefix: Optional[str] = None
+        self._commands: Optional[dict] = None
 
     @final
     @property
@@ -51,6 +52,11 @@ class PluginDescription:
     @property
     def prefix(self) -> Optional[str]:
         return self._prefix
+
+    @final
+    @property
+    def commands(self) -> Optional[dict]:
+        return self._commands
 
     @final
     @property

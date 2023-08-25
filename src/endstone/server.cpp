@@ -11,7 +11,7 @@
 
 Server::Server()
     : logger_(LoggerFactory::getLogger("Server")),
-      pluginManager_(std::make_unique<SimplePluginManager>(*this, std::move(SimpleCommandMap(*this))))
+      pluginManager_(std::make_unique<SimplePluginManager>(*this, std::make_shared<SimpleCommandMap>(*this)))
 {
 }
 

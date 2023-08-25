@@ -81,19 +81,19 @@ std::vector<std::shared_ptr<Command>> PythonPluginDescription::getCommands() con
         auto usage = value.attr("get")("usage", py::none());
         auto aliases = value.attr("get")("aliases", py::none());
 
-        // TODO: permission system
+        // TODO #permissions:
         //        auto permission = value.attr("get")("permission", py::none());
         //        auto permission_message = value.attr("get")("permission-message", py::none());
 
-        if (description) {
+        if (!description.is_none()) {
             command->setDescription(description.cast<std::string>());
         }
 
-        if (usage) {
-            command->setUsage(description.cast<std::string>());
+        if (!usage.is_none()) {
+            command->setUsage(usage.cast<std::string>());
         }
 
-        if (aliases) {
+        if (!aliases.is_none()) {
             std::vector<std::string> alias_list;
 
             if (py::isinstance<py::list>(aliases)) {
@@ -126,7 +126,7 @@ std::vector<std::shared_ptr<Command>> PythonPluginDescription::getCommands() con
         //            command.setPermissionMessage(permission_message.cast<std::string>());
         //        }
 
-        commands.push_back(std::move(command));
+        commands.push_back(command);
     }
 
     return commands;

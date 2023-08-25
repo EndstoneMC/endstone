@@ -4,6 +4,8 @@
 
 #include "simple_plugin_manager.h"
 
+#include <utility>
+
 //
 // Created by Vincent on 20/08/2023.
 //
@@ -11,8 +13,8 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &&command_map)
-    : server_(server), command_map_(command_map)
+SimplePluginManager::SimplePluginManager(Server &server, std::shared_ptr<SimpleCommandMap> command_map)
+    : server_(server), command_map_(std::move(command_map))
 {
 }
 
@@ -133,12 +135,12 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
 void SimplePluginManager::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled()) {
-        auto commands = plugin.getDescription().getCommands();
-        if (!commands.empty()) {
-            command_map_.registerAll(plugin.getDescription().getName(), commands);
-        }
-
         try {
+            auto commands = plugin.getDescription().getCommands();
+            if (!commands.empty()) {
+                command_map_->registerAll(plugin.getDescription().getName(), commands);
+            }
+            printf("e\n");
             plugin.getPluginLoader()->enablePlugin(plugin);
         }
         catch (std::exception &e) {

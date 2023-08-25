@@ -45,7 +45,7 @@ public:
 
         if (!success && !usage_.empty()) {
             std::size_t start = 0;
-            std::size_t end = 0;
+            std::size_t end;
             auto usage = fmt::format(usage_, fmt::arg("command", label));
 
             while (start < usage.length()) {

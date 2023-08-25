@@ -14,7 +14,7 @@ class PluginLoader;
 class Plugin : public CommandExecutor {
 public:
     explicit Plugin() = default;
-    virtual ~Plugin() = default;
+    ~Plugin() override = default;
 
     virtual const PluginDescription &getDescription() const = 0;
     virtual void onLoad() = 0;
