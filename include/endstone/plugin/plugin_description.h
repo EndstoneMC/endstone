@@ -18,7 +18,7 @@ public:
     virtual std::optional<std::vector<std::string>> getAuthors() const = 0;
     virtual std::optional<std::string> getPrefix() const = 0;
     virtual std::string getFullName() const = 0;
-    virtual std::vector<std::unique_ptr<Command>> getCommands() const = 0;
+    virtual std::vector<std::shared_ptr<Command>> getCommands() const = 0;
 };
 
 #endif // ENDSTONE_PLUGIN_DESCRIPTION_H

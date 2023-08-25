@@ -1,31 +1,39 @@
 //
+// Created by Vincent on 25/08/2023.
+//
+
+#include "simple_plugin_manager.h"
+
+//
 // Created by Vincent on 20/08/2023.
 //
 
 #include "endstone/plugin/plugin_manager.h"
-
 #include "endstone/server.h"
 
-PluginManager::PluginManager(Server &server) : server_(server) {}
+SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &&command_map)
+    : server_(server), command_map_(command_map)
+{
+}
 
-void PluginManager::registerLoader(const std::shared_ptr<PluginLoader> &loader)
+void SimplePluginManager::registerLoader(const std::shared_ptr<PluginLoader> &loader)
 {
     auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
-        fileAssociations_[pattern] = loader;
+        file_associations_[pattern] = loader;
     }
 }
 
-Plugin *PluginManager::getPlugin(const std::string &name) const
+Plugin *SimplePluginManager::getPlugin(const std::string &name) const
 {
-    auto it = lookupNames_.find(name);
-    if (it != lookupNames_.end()) {
+    auto it = lookup_names_.find(name);
+    if (it != lookup_names_.end()) {
         return it->second;
     }
     return nullptr;
 }
 
-std::vector<Plugin *> PluginManager::getPlugins() const
+std::vector<Plugin *> SimplePluginManager::getPlugins() const
 {
     std::vector<Plugin *> plugins;
     plugins.reserve(plugins_.size());
@@ -35,12 +43,12 @@ std::vector<Plugin *> PluginManager::getPlugins() const
     return plugins;
 }
 
-bool PluginManager::isPluginEnabled(const std::string &name) const
+bool SimplePluginManager::isPluginEnabled(const std::string &name) const
 {
     return isPluginEnabled(getPlugin(name));
 }
 
-bool PluginManager::isPluginEnabled(Plugin *plugin) const
+bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const
 {
     if (!plugin) {
         return false;
@@ -55,20 +63,20 @@ bool PluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *PluginManager::loadPlugin(const std::filesystem::path &file)
+Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
 {
     if (!exists(file)) {
         throw std::runtime_error("Provided file does not exist.");
     }
 
-    for (const auto &[pattern, loader] : fileAssociations_) {
+    for (const auto &[pattern, loader] : file_associations_) {
         std::regex r(pattern);
         if (std::regex_search(file.string(), r)) {
             Plugin *plugin = loader->loadPlugin(file.string());
 
             if (plugin) {
                 plugins_.push_back(std::unique_ptr<Plugin>(plugin));
-                lookupNames_[plugin->getDescription().getName()] = plugin;
+                lookup_names_[plugin->getDescription().getName()] = plugin;
                 return plugin;
             }
         }
@@ -77,7 +85,7 @@ Plugin *PluginManager::loadPlugin(const std::filesystem::path &file)
     return nullptr;
 }
 
-std::vector<Plugin *> PluginManager::loadPlugins(const std::filesystem::path &directory)
+std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::path &directory)
 {
     if (!std::filesystem::exists(directory)) {
         throw std::runtime_error("Provided directory does not exist.");
@@ -122,9 +130,14 @@ std::vector<Plugin *> PluginManager::loadPlugins(const std::filesystem::path &di
     return loadedPlugins;
 }
 
-void PluginManager::enablePlugin(Plugin &plugin) const
+void SimplePluginManager::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled()) {
+        auto commands = plugin.getDescription().getCommands();
+        if (!commands.empty()) {
+            command_map_.registerAll(plugin.getDescription().getName(), commands);
+        }
+
         try {
             plugin.getPluginLoader()->enablePlugin(plugin);
         }
@@ -135,7 +148,7 @@ void PluginManager::enablePlugin(Plugin &plugin) const
     }
 }
 
-void PluginManager::disablePlugin(Plugin &plugin) const
+void SimplePluginManager::disablePlugin(Plugin &plugin) const
 {
     if (plugin.isEnabled()) {
         try {
@@ -148,16 +161,16 @@ void PluginManager::disablePlugin(Plugin &plugin) const
     }
 }
 
-void PluginManager::disablePlugins()
+void SimplePluginManager::disablePlugins()
 {
     for (const auto &plugin : plugins_) {
         disablePlugin(*plugin);
     }
 }
 
-void PluginManager::clearPlugins()
+void SimplePluginManager::clearPlugins()
 {
     disablePlugins();
     plugins_.clear();
-    lookupNames_.clear();
+    lookup_names_.clear();
 }

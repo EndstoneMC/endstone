@@ -7,8 +7,11 @@
 #include "endstone/logger_factory.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
+#include "endstone/plugin/simple_plugin_manager.h"
 
-Server::Server() : logger_(LoggerFactory::getLogger("Server")), pluginManager_(std::make_unique<PluginManager>(*this))
+Server::Server()
+    : logger_(LoggerFactory::getLogger("Server")),
+      pluginManager_(std::make_unique<SimplePluginManager>(*this, std::move(SimpleCommandMap(*this))))
 {
 }
 

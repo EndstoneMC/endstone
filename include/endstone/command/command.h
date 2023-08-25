@@ -5,9 +5,10 @@
 #ifndef ENDSTONE_COMMAND_H
 #define ENDSTONE_COMMAND_H
 
-#include "command_map.h"
 #include "command_sender.h"
 #include "endstone/common.h"
+
+class CommandMap;
 
 /**
  * Represents a Command, which executes various tasks upon user input
@@ -38,7 +39,7 @@ public:
      *
      * @return Name of this command
      */
-    std::string_view getName() const noexcept
+    const std::string &getName() const noexcept
     {
         return name_;
     }

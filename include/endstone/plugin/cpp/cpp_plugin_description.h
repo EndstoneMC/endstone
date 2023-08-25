@@ -50,7 +50,7 @@ public:
         return getName() + " v" + getVersion();
     }
 
-    std::vector<std::unique_ptr<Command>> getCommands() const override
+    std::vector<std::shared_ptr<Command>> getCommands() const override
     {
         return {};
     }

@@ -8,29 +8,19 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 
-class Server;
-
 class PluginManager {
 public:
-    explicit PluginManager(Server &server);
-
-    void registerLoader(const std::shared_ptr<PluginLoader> &loader);
-    Plugin *getPlugin(const std::string &name) const;
-    std::vector<Plugin *> getPlugins() const;
-    bool isPluginEnabled(const std::string &name) const;
-    bool isPluginEnabled(Plugin *plugin) const;
-    Plugin *loadPlugin(const std::filesystem::path &file);
-    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory);
-    void enablePlugin(Plugin &plugin) const;
-    void disablePlugin(Plugin &plugin) const;
-    void disablePlugins();
-    void clearPlugins();
-
-private:
-    Server &server_;
-    std::map<std::string, std::shared_ptr<PluginLoader>> fileAssociations_;
-    std::vector<std::unique_ptr<Plugin>> plugins_;
-    std::map<std::string, Plugin *> lookupNames_;
+    virtual void registerLoader(const std::shared_ptr<PluginLoader> &loader) = 0;
+    virtual Plugin *getPlugin(const std::string &name) const = 0;
+    virtual std::vector<Plugin *> getPlugins() const = 0;
+    virtual bool isPluginEnabled(const std::string &name) const = 0;
+    virtual bool isPluginEnabled(Plugin *plugin) const = 0;
+    virtual Plugin *loadPlugin(const std::filesystem::path &file) = 0;
+    virtual std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) = 0;
+    virtual void enablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugins() = 0;
+    virtual void clearPlugins() = 0;
 };
 
 #endif // ENDSTONE_PLUGIN_MANAGER_H

@@ -20,7 +20,7 @@ public:
     std::optional<std::vector<std::string>> getAuthors() const override;
     std::optional<std::string> getPrefix() const override;
     std::string getFullName() const override;
-    std::vector<std::unique_ptr<Command>> getCommands() const override;
+    std::vector<std::shared_ptr<Command>> getCommands() const override;
 
 private:
     py::object impl_;

@@ -55,10 +55,10 @@ std::string PythonPluginDescription::getFullName() const
     return impl_.attr("fullname").cast<std::string>();
 }
 
-std::vector<std::unique_ptr<Command>> PythonPluginDescription::getCommands() const
+std::vector<std::shared_ptr<Command>> PythonPluginDescription::getCommands() const
 {
     py::gil_scoped_acquire lock{};
-    std::vector<std::unique_ptr<Command>> commands;
+    std::vector<std::shared_ptr<Command>> commands;
 
     if (!hasattr(impl_, "commands")) {
         return commands;
@@ -76,7 +76,7 @@ std::vector<std::unique_ptr<Command>> PythonPluginDescription::getCommands() con
             continue;
         }
 
-        auto command = std::unique_ptr<PluginCommand>(new PluginCommand(name, owner_));
+        auto command = std::shared_ptr<PluginCommand>(new PluginCommand(name, owner_));
         auto description = value.attr("get")("description", py::none());
         auto usage = value.attr("get")("usage", py::none());
         auto aliases = value.attr("get")("aliases", py::none());
