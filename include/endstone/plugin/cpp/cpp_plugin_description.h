@@ -50,6 +50,11 @@ public:
         return getName() + " v" + getVersion();
     }
 
+    std::vector<std::unique_ptr<Command>> getCommands() const override
+    {
+        return {};
+    }
+
 private:
     std::string name_;
     std::string version_;

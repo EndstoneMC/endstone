@@ -9,7 +9,7 @@
 
 PythonPlugin::PythonPlugin(py::object impl) : impl_(std::move(impl))
 {
-    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("description"));
+    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("description"), *this);
 }
 
 PythonPlugin::~PythonPlugin()
@@ -57,8 +57,9 @@ std::shared_ptr<const PluginLoader> PythonPlugin::getPluginLoader() const
     return loader_.lock();
 }
 
-void PythonPlugin::init(const std::shared_ptr<const PluginLoader> &loader)
+bool PythonPlugin::onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                             const std::vector<std::string> &args) const noexcept
 {
-    loader_ = loader;
-    logger_ = std::make_shared<PluginLogger>(*this);
+    py::gil_scoped_acquire lock{};
+    return impl_.attr("on_command")(sender, command, label, args).cast<bool>();
 }

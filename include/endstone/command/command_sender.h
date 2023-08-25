@@ -1,0 +1,39 @@
+//
+// Created by Vincent on 25/08/2023.
+//
+
+#ifndef ENDSTONE_COMMAND_SENDER_H
+#define ENDSTONE_COMMAND_SENDER_H
+
+#include "endstone/common.h"
+#include "endstone/permission/permissible.h"
+
+class Server;
+
+class CommandSender : public Permissible {
+public:
+    virtual ~CommandSender() = default;
+
+    /**
+     * Sends this sender a message
+     *
+     * @param message Message to be displayed
+     */
+    virtual void sendMessage(const std::string &message) = 0;
+
+    /**
+     * Returns the server instance that this command is running on
+     *
+     * @return Server instance
+     */
+    virtual Server &getServer() const = 0;
+
+    /**
+     * Gets the name of this command sender
+     *
+     * @return Name of the sender
+     */
+    virtual std::string_view getName() const = 0;
+};
+
+#endif // ENDSTONE_COMMAND_SENDER_H

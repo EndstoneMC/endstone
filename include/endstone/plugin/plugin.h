@@ -5,12 +5,13 @@
 #ifndef ENDSTONE_PLUGIN_H
 #define ENDSTONE_PLUGIN_H
 
+#include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
 #include "plugin_description.h"
 
 class PluginLoader;
 
-class Plugin {
+class Plugin : public CommandExecutor {
 public:
     explicit Plugin() = default;
     virtual ~Plugin() = default;

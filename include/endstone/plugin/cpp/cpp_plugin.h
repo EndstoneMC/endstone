@@ -32,6 +32,12 @@ public:
         return loader_.lock();
     }
 
+    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) const noexcept override
+    {
+        return false;
+    }
+
 protected:
     void setEnabled(bool enabled)
     {

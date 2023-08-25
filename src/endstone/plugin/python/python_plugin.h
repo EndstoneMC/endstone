@@ -20,11 +20,10 @@ public:
     std::shared_ptr<Logger> getLogger() const override;
     bool isEnabled() const override;
     std::shared_ptr<const PluginLoader> getPluginLoader() const override;
+    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) const noexcept override;
 
     friend class PythonPluginLoader;
-
-protected:
-    void init(const std::shared_ptr<const PluginLoader> &loader);
 
 private:
     py::object impl_;
