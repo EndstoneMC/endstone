@@ -34,11 +34,11 @@ class Plugin:
 
     @final
     @property
-    def enabled(self):
+    def enabled(self) -> bool:
         return self._enabled
 
     @final
-    def _set_enabled(self, enabled: bool):
+    def _set_enabled(self, enabled: bool) -> None:
         if self._enabled is not enabled:
             self._enabled = enabled
 
@@ -46,3 +46,6 @@ class Plugin:
                 self.on_enable()
             else:
                 self.on_disable()
+
+    def on_command(self, sender, command, label: str, *args) -> bool:
+        return False
