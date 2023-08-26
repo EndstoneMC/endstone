@@ -5,6 +5,7 @@
 [![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone)
 [![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/endstone)
 
 Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
 allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities. This project
@@ -173,6 +174,19 @@ help you get started quickly:
 
 Dive deep into the Endstone documentation (Work-In-Progress) for comprehensive guides and resources that assist you in
 crafting influential plugins for Bedrock Dedicated Servers, regardless of your choice between Python or C++.
+
+## Development Timeline
+
+| Milestone                                | Duration   | C++ Status     | Python Status |
+|------------------------------------------|------------|----------------|---------------|
+| **🔍 Research & Feasibility Study**      | 1-2 months | ✅ Completed    | ✅ Completed   |
+| **🔌 Plugin Loader**                     | 3-4 months | ✅ Completed    | ✅ Completed   |
+| **⌨️ Command & Event System**            | 2-3 months | 🔧 In Progress | ❌ Not Started |
+| **🛠 Plugin API: Core Features**         | 4-5 months | ❌ Not Started  | ❌ Not Started |
+| **🖼 GUI & Inventory System**            | 3-4 months | ❌ Not Started  | ❌ Not Started |
+| **🌟 Advanced Features & Refinements**   | 4-6 months | ❌ Not Started  | ❌ Not Started |
+| **🧪 Beta Testing & Community Feedback** | 3 months   | ❌ Not Started  | ❌ Not Started |
+| **🚀 Official Release & Support**        | -          | ❌ Not Started  | ❌ Not Started |
 
 ## Licenses
 
