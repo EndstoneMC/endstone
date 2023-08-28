@@ -19,7 +19,8 @@ protected:
     explicit Command(const std::string &name) : Command(name, "", "/" + name, {}){};
     explicit Command(const std::string &name, const std::string &description, const std::string &usage,
                      const std::vector<std::string> &aliases)
-        : name_(name), label_(name), description_(description), usage_(usage), aliases_(aliases){};
+        : name_(name), label_(name), next_label_(name), description_(description), usage_(usage), aliases_(aliases),
+          active_aliases_(std::vector<std::string>(aliases)){};
 
 public:
     virtual ~Command() = default;
@@ -88,6 +89,8 @@ public:
      */
     bool setLabel(const std::string &name) noexcept
     {
+        next_label_ = name;
+
         if (!isRegistered()) {
             label_ = name;
             return true;
@@ -127,6 +130,8 @@ public:
     {
         if (allowChangesFrom(command_map)) {
             command_map_.reset();
+            active_aliases_ = std::vector<std::string>(aliases_);
+            label_ = next_label_;
             return true;
         }
 
@@ -150,7 +155,7 @@ public:
      */
     const std::vector<std::string> &getAliases() const
     {
-        return aliases_;
+        return active_aliases_;
     }
 
     /**
@@ -181,8 +186,9 @@ public:
      */
     Command &setAliases(const std::vector<std::string> &aliases)
     {
+        aliases_ = aliases;
         if (!isRegistered()) {
-            aliases_ = aliases;
+            active_aliases_ = std::vector<std::string>(aliases);
         }
 
         return *this;
@@ -221,7 +227,9 @@ private:
 private:
     std::string name_;
     std::string label_;
+    std::string next_label_;
     std::vector<std::string> aliases_;
+    std::vector<std::string> active_aliases_;
 
 protected:
     std::string usage_;
