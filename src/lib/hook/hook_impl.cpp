@@ -7,7 +7,9 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
+#include "endstone/command/bedrock_command_wrapper.h"
 #include "endstone/endstone.h"
+#include "endstone/endstone_server.h"
 #include "endstone/logger_factory.h"
 #include "hook_manager.h"
 
@@ -54,7 +56,7 @@ void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance *instanc
 int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
                                             void *properties, void *level_settings, void *allow_list, void *permissions)
 {
-    Endstone::setServer(std::make_unique<Server>());
+    Endstone::setServer(std::make_unique<EndstoneServer>());
     return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop, file_path_manager, properties, level_settings,
                          allow_list, permissions);
 }
@@ -81,16 +83,20 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
 MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::Result *result,
                                                              CommandContext *command_ctx, bool flag)
 {
+    // TODO:
     return CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag);
 }
 
 void CommandRegistry::registerAlias(std::string label, std::string alias)
 {
-    return CALL_ORIGINAL(CommandRegistry::registerAlias, label, alias);
+    // TODO:
+    return CALL_ORIGINAL(CommandRegistry::registerAlias, std::move(label), std::move(alias));
 }
 
 void CommandRegistry::registerCommand(const std::string *label, const char *description,
                                       CommandPermissionLevel permission_level, CommandFlag flag1, CommandFlag flag2)
 {
+    auto server = dynamic_cast<EndstoneServer *>(&Endstone::getServer());
+    server->command_map_->registerOne("minecraft", std::make_shared<BedrockCommandWrapper>(*label));
     return CALL_ORIGINAL(CommandRegistry::registerCommand, label, description, permission_level, flag1, flag2);
 }

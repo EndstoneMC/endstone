@@ -5,6 +5,8 @@
 #ifndef ENDSTONE_COMMAND_ORIGIN_H
 #define ENDSTONE_COMMAND_ORIGIN_H
 
+#include "endstone/common.h"
+
 class CommandOrigin {
 
 public:

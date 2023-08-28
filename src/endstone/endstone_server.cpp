@@ -1,31 +1,31 @@
 //
-// Created by Vincent on 31/07/2023.
+// Created by Vincent on 28/08/2023.
 //
 
-#include "endstone/server.h"
+#include "endstone_server.h"
 
-#include "endstone/logger_factory.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/plugin/simple_plugin_manager.h"
+#include "logger_factory.h"
 
-Server::Server()
-    : logger_(LoggerFactory::getLogger("Server")),
-      pluginManager_(std::make_unique<SimplePluginManager>(*this, std::make_shared<SimpleCommandMap>(*this)))
+EndstoneServer::EndstoneServer()
+    : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_shared<SimpleCommandMap>(*this)),
+      plugin_manager_(std::make_unique<SimplePluginManager>(*this, command_map_))
 {
 }
 
-void Server::loadPlugins()
+void EndstoneServer::loadPlugins()
 {
     try {
-        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
-        pluginManager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
-        pluginManager_->registerLoader(std::make_unique<CppPluginLoader>());
+        plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
+        plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
+        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>());
 
         auto pluginFolder = std::filesystem::current_path() / "plugins";
 
         if (exists(pluginFolder)) {
-            auto plugins = pluginManager_->loadPlugins(pluginFolder);
+            auto plugins = plugin_manager_->loadPlugins(pluginFolder);
             for (const auto &plugin : plugins) {
                 try {
                     plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
@@ -46,20 +46,20 @@ void Server::loadPlugins()
     }
 }
 
-void Server::enablePlugins()
+void EndstoneServer::enablePlugins()
 {
-    auto plugins = pluginManager_->getPlugins();
+    auto plugins = plugin_manager_->getPlugins();
     for (const auto &plugin : plugins) {
-        pluginManager_->enablePlugin(*plugin);
+        plugin_manager_->enablePlugin(*plugin);
     }
 }
 
-void Server::disablePlugins()
+void EndstoneServer::disablePlugins()
 {
-    pluginManager_->disablePlugins();
+    plugin_manager_->disablePlugins();
 }
 
-std::shared_ptr<Logger> Server::getLogger()
+std::shared_ptr<Logger> EndstoneServer::getLogger()
 {
     return logger_;
 }

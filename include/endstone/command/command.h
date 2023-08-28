@@ -33,7 +33,8 @@ public:
      * @param args All arguments passed to the command, split via ' '
      * @return true if the command was successful, otherwise false
      */
-    virtual bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &) const = 0;
+    virtual bool execute(CommandSender &sender, const std::string &label,
+                         const std::vector<std::string> &args) const = 0;
 
     /**
      * Returns the name of this command

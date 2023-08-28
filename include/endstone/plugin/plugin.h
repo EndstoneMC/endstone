@@ -25,4 +25,10 @@ public:
     virtual std::shared_ptr<const PluginLoader> getPluginLoader() const = 0;
 };
 
+#define ENDSTONE_PLUGIN_CLASS(ClassName)              \
+    extern "C" ENDSTONE_API CppPlugin *createPlugin() \
+    {                                                 \
+        return new ClassName();                       \
+    }
+
 #endif // ENDSTONE_PLUGIN_H

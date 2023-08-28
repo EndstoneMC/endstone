@@ -7,6 +7,8 @@
 
 #include "endstone/command/command.h"
 
-class EndstoneCommand : public Command {};
+class EndstoneCommand : public Command {
+    using Command::Command;
+};
 
 #endif // ENDSTONE_ENDSTONE_COMMAND_H

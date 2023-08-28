@@ -6,6 +6,7 @@
 #define ENDSTONE_SERVER_H
 
 #include "common.h"
+#include "endstone/command/simple_command_map.h"
 #include "logger.h"
 #include "plugin/plugin_manager.h"
 
@@ -14,17 +15,13 @@ public:
     Server(const Server &) = delete;            // Disable copy constructor
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
-    void loadPlugins();
-    void enablePlugins();
-    void disablePlugins();
-    std::shared_ptr<Logger> getLogger();
+    Server() = default;
+    virtual ~Server() = default;
 
-    Server();
-    ~Server() = default;
-
-private:
-    std::shared_ptr<Logger> logger_;
-    std::unique_ptr<PluginManager> pluginManager_;
+    virtual void loadPlugins() = 0;
+    virtual void enablePlugins() = 0;
+    virtual void disablePlugins() = 0;
+    virtual std::shared_ptr<Logger> getLogger() = 0;
 };
 
 #endif // ENDSTONE_SERVER_H

@@ -37,10 +37,6 @@
 #define ENDSTONE_API
 #endif
 
-#define ENDSTONE_PLUGIN_CLASS(ClassName)              \
-    extern "C" ENDSTONE_API CppPlugin *createPlugin() \
-    {                                                 \
-        return new ClassName();                       \
-    }
+
 
 #endif // ENDSTONE_COMMON_H
