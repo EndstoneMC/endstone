@@ -140,7 +140,6 @@ void SimplePluginManager::enablePlugin(Plugin &plugin) const
             if (!commands.empty()) {
                 command_map_->registerAll(plugin.getDescription().getName(), commands);
             }
-            printf("e\n");
             plugin.getPluginLoader()->enablePlugin(plugin);
         }
         catch (std::exception &e) {
