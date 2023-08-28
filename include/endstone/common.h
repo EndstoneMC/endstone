@@ -11,6 +11,7 @@
 // C++ Standard Library headers
 #include <bitset>
 #include <codecvt>
+#include <cstdint>
 #include <filesystem>
 #include <fmt/core.h>
 #include <fstream>

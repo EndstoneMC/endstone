@@ -118,7 +118,7 @@ R call_original(const std::string &symbol, R (T::*)(Args...), T *instance, Args.
  * @return The return value of the function.
  */
 template <class R, class... Args>
-R call_original(const std::string &symbol, R (*)(Args...), Args... args)
+R call_original_static(const std::string &symbol, R (*)(Args...), Args... args)
 {
     using fp = R (*)(Args...);
     auto hook = HookManager::getHook(symbol);
@@ -134,6 +134,6 @@ R call_original(const std::string &symbol, R (*)(Args...), Args... args)
     }
 
 #define CALL_ORIGINAL(symbol, ...)        call_original(#symbol, &symbol, this, ##__VA_ARGS__);
-#define CALL_ORIGINAL_STATIC(symbol, ...) call_original(#symbol, &symbol, ##__VA_ARGS__);
+#define CALL_ORIGINAL_STATIC(symbol, ...) call_original_static(#symbol, &symbol, ##__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_MANAGER_H

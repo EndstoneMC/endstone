@@ -4,6 +4,7 @@
 
 #include "bedrock/bedrock_log.h"
 #include "bedrock/dedicated_server.h"
+#include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
 #include "endstone/endstone.h"
 #include "hook_manager.h"
@@ -17,6 +18,7 @@ void HookManager::registerHooks()
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStarted)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerThreadStopped)
     HOOK_FUNCTION(ServerInstanceEventCoordinator::sendServerUpdateEnd)
+    HOOK_FUNCTION(MinecraftCommands::executeCommand)
 }
 
 void ServerInstance::startServerThread()
@@ -71,4 +73,10 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     static std::mutex mtx;
     std::lock_guard<std::mutex> lock(mtx);
     CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
+}
+
+MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::Result *result,
+                                                             CommandContext *command_ctx, bool flag)
+{
+    return CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag);
 }
