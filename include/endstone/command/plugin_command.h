@@ -20,7 +20,7 @@ public:
 protected:
     PluginCommand(const std::string &name, Plugin &owner) noexcept : Command(name), owner_(owner)
     {
-        usage_ = "";
+        usages_.clear();
     }
 
 public:
@@ -46,26 +46,16 @@ public:
                                      owner_.getDescription().getFullName() + ": " + e.what());
         }
 
-        if (!success && !usage_.empty()) {
-            std::size_t start = 0;
-            std::size_t end;
-            auto usage = fmt::format(usage_, fmt::arg("command", label));
-
-            while (start < usage.length()) {
-                end = usage.find('\n', start);
-                if (end == std::string::npos) {
-                    end = usage.length();
-                }
-
-                auto line = usage.substr(start, end - start);
+        if (!success) {
+            for (const auto &usage : usages_) {
+                auto usage_msg = fmt::format(usage, fmt::arg("command", label));
 
                 if (dynamic_cast<ConsoleCommandSender *>(&sender)) {
-                    sender.getServer().getLogger()->error("Usage: {}", line);
+                    sender.getServer().getLogger()->error("Usage: {}", usage_msg);
                 }
                 else {
-                    sender.sendMessage("Usage: {}", line);
+                    sender.sendMessage("Usage: {}", usage_msg);
                 }
-                start = end + 1;
             }
         }
 

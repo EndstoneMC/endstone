@@ -78,7 +78,7 @@ std::vector<std::shared_ptr<Command>> PythonPluginDescription::getCommands() con
 
         auto command = std::shared_ptr<PluginCommand>(new PluginCommand(name, owner_));
         auto description = value.attr("get")("description", py::none());
-        auto usage = value.attr("get")("usage", py::none());
+        auto usages = value.attr("get")("usages", py::none());
         auto aliases = value.attr("get")("aliases", py::none());
 
         // TODO #permissions:
@@ -89,8 +89,17 @@ std::vector<std::shared_ptr<Command>> PythonPluginDescription::getCommands() con
             command->setDescription(description.cast<std::string>());
         }
 
-        if (!usage.is_none()) {
-            command->setUsage(usage.cast<std::string>());
+        if (!usages.is_none()) {
+            std::vector<std::string> usage_list;
+
+            if (py::isinstance<py::list>(usages)) {
+                usage_list = usages.cast<std::vector<std::string>>();
+            }
+            else {
+                usage_list.push_back(usages.cast<std::string>());
+            }
+
+            command->setUsages(usage_list);
         }
 
         if (!aliases.is_none()) {

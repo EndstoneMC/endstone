@@ -16,10 +16,10 @@ class CommandMap;
 class Command {
 
 protected:
-    explicit Command(const std::string &name) : Command(name, "", "/" + name, {}){};
-    explicit Command(const std::string &name, const std::string &description, const std::string &usage,
+    explicit Command(const std::string &name) : Command(name, "", {"/" + name}, {}){};
+    explicit Command(const std::string &name, const std::string &description, const std::vector<std::string> &usages,
                      const std::vector<std::string> &aliases)
-        : name_(name), label_(name), next_label_(name), description_(description), usage_(usage), aliases_(aliases),
+        : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
           active_aliases_(std::vector<std::string>(aliases)){};
 
 public:
@@ -174,9 +174,9 @@ public:
      *
      * @return One or more example usages
      */
-    const std::string &getUsage() const
+    const std::vector<std::string> &getUsages() const
     {
-        return usage_;
+        return usages_;
     }
 
     /**
@@ -210,12 +210,12 @@ public:
     /**
      * Sets the example usage of this command
      *
-     * @param usage new example usage
+     * @param usages new example usage
      * @return this command object, for chaining
      */
-    Command &setUsage(const std::string &usage)
+    Command &setUsages(std::vector<std::string> usages)
     {
-        usage_ = usage;
+        usages_ = std::move(usages);
         return *this;
     }
 
@@ -233,7 +233,7 @@ private:
     std::vector<std::string> active_aliases_;
 
 protected:
-    std::string usage_;
+    std::vector<std::string> usages_;
 
 private:
     std::string description_;
