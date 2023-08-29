@@ -87,10 +87,7 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     constexpr MinecraftCommands::Result success{true, 0, 0};
     constexpr MinecraftCommands::Result not_found{false, 0, 1};
 
-    auto command_line = command_ctx->command_line;
-    auto command_name =
-        command_line.substr(command_line[0] == '/' ? 1 : 0, command_line.find(' ') - (command_line[0] == '/' ? 1 : 0));
-
+    auto command_name = CommandMap::getCommandName(command_ctx->command_line);
     auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
     auto command = server.getCommandMap().getCommand(command_name);
 
@@ -111,10 +108,13 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     return result;
 }
 
-void CommandRegistry::registerAlias(std::string label, std::string alias)
+void CommandRegistry::registerAlias(std::string name, std::string alias)
 {
-    // TODO:
-    return CALL_ORIGINAL(CommandRegistry::registerAlias, std::move(label), std::move(alias));
+    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
+    auto command = std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(server.getCommandMap().getCommand(name));
+    server.getCommandMap().registerCommand(alias, command, true, "minecraft");
+
+    return CALL_ORIGINAL(CommandRegistry::registerAlias, std::move(name), std::move(alias));
 }
 
 void CommandRegistry::registerCommand(const std::string *name, const char *description,
@@ -122,6 +122,6 @@ void CommandRegistry::registerCommand(const std::string *name, const char *descr
 {
     auto server = dynamic_cast<EndstoneServer *>(&Endstone::getServer());
     // put a placeholder so that no plugin can override vanilla commands
-    server->getCommandMap().registerOne("minecraft", std::make_shared<BedrockCommandPlaceHolder>(*name));
+    server->getCommandMap().registerCommand("minecraft", std::make_shared<BedrockCommandPlaceHolder>(*name));
     return CALL_ORIGINAL(CommandRegistry::registerCommand, name, description, permission_level, flag1, flag2);
 }

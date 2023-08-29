@@ -11,7 +11,7 @@
 class CommandRegistry {
 
 public:
-    void registerAlias(std::string label, std::string alias);
+    void registerAlias(std::string name, std::string alias);
     void registerCommand(const std::string *name, char const *description, CommandPermissionLevel permission_level,
                          CommandFlag flag1, CommandFlag flag2);
 };

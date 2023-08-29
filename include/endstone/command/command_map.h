@@ -51,8 +51,8 @@ public:
      *     otherwise, which indicates the fallbackPrefix was used one or more
      *     times
      */
-    virtual bool registerOne(std::string label, std::string fallback_prefix,
-                             std::shared_ptr<Command> command) noexcept = 0;
+    virtual bool registerCommand(std::string label, std::string fallback_prefix,
+                                 std::shared_ptr<Command> command) noexcept = 0;
 
     /**
      * Registers a command. Returns true on success; false if name is already
@@ -74,7 +74,7 @@ public:
      *     otherwise, which indicates the fallbackPrefix was used one or more
      *     times
      */
-    virtual bool registerOne(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept = 0;
+    virtual bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept = 0;
 
     /**
      * Looks for the requested command and executes it if found.
@@ -99,6 +99,17 @@ public:
      *     label doesn't exist
      */
     virtual std::shared_ptr<Command> getCommand(std::string name) const noexcept = 0;
+
+    static std::string getCommandName(const std::string &command_line)
+    {
+        std::size_t start = command_line[0] == '/' ? 1 : 0;
+        std::size_t end = command_line.find(' ');
+        if (end == std::string::npos) {
+            end = command_line.length();
+        }
+
+        return command_line.substr(start, end - start);
+    }
 };
 
 #endif // ENDSTONE_COMMAND_MAP_H

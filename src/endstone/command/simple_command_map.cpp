@@ -12,17 +12,17 @@ void SimpleCommandMap::registerAll(const std::string &fallback_prefix,
                                    const std::vector<std::shared_ptr<Command>> &commands) noexcept
 {
     for (auto &c : commands) {
-        registerOne(fallback_prefix, c);
+        registerCommand(fallback_prefix, c);
     }
 }
 
-bool SimpleCommandMap::registerOne(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept
+bool SimpleCommandMap::registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept
 {
-    return registerOne(command->getName(), fallback_prefix, command);
+    return registerCommand(command->getName(), fallback_prefix, command);
 }
 
-bool SimpleCommandMap::registerOne(std::string label, std::string fallback_prefix,
-                                   std::shared_ptr<Command> command) noexcept
+bool SimpleCommandMap::registerCommand(std::string label, std::string fallback_prefix,
+                                       std::shared_ptr<Command> command) noexcept
 {
     std::transform(label.begin(), label.end(), label.begin(), [](unsigned char c) {
         return std::tolower(c);
@@ -32,11 +32,11 @@ bool SimpleCommandMap::registerOne(std::string label, std::string fallback_prefi
         return std::tolower(c);
     });
 
-    auto registered = registerOne(label, command, false, fallback_prefix);
+    auto registered = registerCommand(label, command, false, fallback_prefix);
 
     std::vector<std::string> aliases = command->getAliases();
     for (auto it = aliases.begin(); it != aliases.end();) {
-        if (!registerOne(*it, command, true, fallback_prefix)) {
+        if (!registerCommand(*it, command, true, fallback_prefix)) {
             it = aliases.erase(it);
         }
         else {
@@ -55,8 +55,8 @@ bool SimpleCommandMap::registerOne(std::string label, std::string fallback_prefi
     return registered;
 }
 
-bool SimpleCommandMap::registerOne(const std::string &label, const std::shared_ptr<Command> &command, bool is_alias,
-                                   const std::string &fallback_prefix) noexcept
+bool SimpleCommandMap::registerCommand(const std::string &label, const std::shared_ptr<Command> &command, bool is_alias,
+                                       const std::string &fallback_prefix) noexcept
 {
     std::lock_guard lock(mutex_);
 
@@ -92,12 +92,8 @@ bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &comman
     }
 
     std::vector<std::string> args;
-    std::size_t start = 0;
+    std::size_t start = command_line[0] == '/' ? 1 : 0;
     std::size_t end;
-
-    if (command_line[0] == '/') {
-        start++;
-    }
 
     while (start < command_line.length()) {
         end = command_line.find(' ', start);

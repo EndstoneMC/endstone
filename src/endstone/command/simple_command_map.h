@@ -14,9 +14,9 @@ public:
 
     void registerAll(const std::string &fallback_prefix,
                      const std::vector<std::shared_ptr<Command>> &commands) noexcept override;
-    bool registerOne(std::string label, std::string fallback_prefix,
-                     std::shared_ptr<Command> command) noexcept override;
-    bool registerOne(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
+    bool registerCommand(std::string label, std::string fallback_prefix,
+                         std::shared_ptr<Command> command) noexcept override;
+    bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
     bool dispatch(CommandSender &sender, const std::string &command_line) const override;
     void clearCommands() noexcept override;
     std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
@@ -25,6 +25,7 @@ protected:
     std::map<std::string, std::shared_ptr<Command>> known_commands_;
 
 private:
+    friend class CommandRegistry;
     void setDefaultCommands();
 
     /**
@@ -38,8 +39,8 @@ private:
      *     unique address
      * @return true if command was registered, false otherwise.
      */
-    bool registerOne(const std::string &label, const std::shared_ptr<Command> &command, bool is_alias,
-                     const std::string &fallback_prefix) noexcept;
+    bool registerCommand(const std::string &label, const std::shared_ptr<Command> &command, bool is_alias,
+                         const std::string &fallback_prefix) noexcept;
 
     Server &server_;
     std::mutex mutex_;
