@@ -19,9 +19,7 @@ public:
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;
 
-private:
-    friend class CommandRegistry;
-    void registerBedrockCommands(const std::string &name);
+    SimpleCommandMap &getCommandMap() const;
 
 private:
     std::shared_ptr<Logger> logger_;

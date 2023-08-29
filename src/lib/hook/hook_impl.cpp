@@ -7,6 +7,7 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
+#include "endstone/command/bedrock_command.h"
 #include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
 #include "endstone/logger_factory.h"
@@ -84,21 +85,27 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
                                                              CommandContext *command_ctx, bool flag)
 {
     constexpr MinecraftCommands::Result success{true, 0, 0};
-    constexpr MinecraftCommands::Result failed{false, 2, 0};
+    constexpr MinecraftCommands::Result not_found{false, 0, 1};
 
-    CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)
-    if (result->is_success) {
+    auto command_line = command_ctx->command_line;
+    auto command_name =
+        command_line.substr(command_line[0] == '/' ? 1 : 0, command_line.find(' ') - (command_line[0] == '/' ? 1 : 0));
+
+    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
+    auto command = server.getCommandMap().getCommand(command_name);
+
+    if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
+        CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)
         return result;
     }
-
-    auto &server = Endstone::getServer();
-
-    // TODO: check origin type and pass the right command sender
-    if (server.dispatchCommand(server.getConsoleSender(), command_ctx->command_line)) {
-        *result = success;
-    }
     else {
-        *result = failed;
+        // TODO: check origin type and pass the right command sender
+        if (server.dispatchCommand(server.getConsoleSender(), command_ctx->command_line)) {
+            *result = success;
+        }
+        else {
+            *result = not_found;
+        }
     }
 
     return result;
@@ -114,6 +121,7 @@ void CommandRegistry::registerCommand(const std::string *name, const char *descr
                                       CommandPermissionLevel permission_level, CommandFlag flag1, CommandFlag flag2)
 {
     auto server = dynamic_cast<EndstoneServer *>(&Endstone::getServer());
-    server->registerBedrockCommands(*name); // put a placeholder so that no plugin can override vanilla commands
+    // put a placeholder so that no plugin can override vanilla commands
+    server->getCommandMap().registerOne("minecraft", std::make_shared<BedrockCommandPlaceHolder>(*name));
     return CALL_ORIGINAL(CommandRegistry::registerCommand, name, description, permission_level, flag1, flag2);
 }

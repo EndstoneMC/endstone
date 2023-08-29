@@ -4,7 +4,6 @@
 
 #include "endstone_server.h"
 
-#include "endstone/command/bedrock_command_wrapper.h"
 #include "endstone/command/server_command_sender.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
@@ -67,11 +66,6 @@ std::shared_ptr<Logger> EndstoneServer::getLogger()
     return logger_;
 }
 
-void EndstoneServer::registerBedrockCommands(const std::string &name)
-{
-    command_map_->registerOne("minecraft", std::make_shared<BedrockCommandWrapper>(name));
-}
-
 bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line)
 {
     if (command_map_->dispatch(sender, command_line)) {
@@ -90,4 +84,9 @@ bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &c
 CommandSender &EndstoneServer::getConsoleSender()
 {
     return *console_;
+}
+
+SimpleCommandMap &EndstoneServer::getCommandMap() const
+{
+    return *command_map_;
 }
