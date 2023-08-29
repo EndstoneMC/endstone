@@ -6,7 +6,9 @@
 #define ENDSTONE_PLUGIN_COMMAND_H
 
 #include "command.h"
+#include "endstone/command/server_command_sender.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/server.h"
 
 class CommandExecutor;
 
@@ -36,7 +38,8 @@ public:
 
         bool success;
         try {
-            success = executor_->onCommand(sender, *this, label, std::forward<const std::vector<std::string> &>(args));
+            success =
+                getExecutor().onCommand(sender, *this, label, std::forward<const std::vector<std::string> &>(args));
         }
         catch (std::exception &e) {
             throw std::runtime_error("Unhandled exception executing command '" + label + "' in plugin " +
@@ -54,8 +57,14 @@ public:
                     end = usage.length();
                 }
 
-                sender.sendMessage(usage.substr(start, end - start));
+                auto line = usage.substr(start, end - start);
 
+                if (dynamic_cast<ServerCommandSender *>(&sender)) {
+                    sender.getServer().getLogger()->error("Usage: {}", line);
+                }
+                else {
+                    sender.sendMessage("Usage: {}", line);
+                }
                 start = end + 1;
             }
         }
@@ -68,14 +77,9 @@ public:
      *
      * @param executor New executor to run
      */
-    void setExecutor(std::unique_ptr<CommandExecutor> &executor) noexcept
+    void setExecutor(const std::shared_ptr<CommandExecutor> &executor) noexcept
     {
-        if (executor) {
-            executor_ = std::move(executor);
-        }
-        else {
-            executor_ = std::unique_ptr<CommandExecutor>(&owner_);
-        }
+        executor_ = executor;
     }
 
     /**
@@ -85,7 +89,12 @@ public:
      */
     CommandExecutor &getExecutor() const noexcept
     {
-        return *executor_;
+        if (executor_) {
+            return *executor_;
+        }
+        else {
+            return owner_;
+        }
     }
 
     /**
@@ -100,7 +109,7 @@ public:
 
 private:
     Plugin &owner_;
-    std::unique_ptr<CommandExecutor> executor_;
+    std::shared_ptr<CommandExecutor> executor_;
 };
 
 #endif // ENDSTONE_PLUGIN_COMMAND_H

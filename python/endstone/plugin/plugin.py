@@ -1,5 +1,6 @@
 from typing import final
 
+from endstone._command import Command, CommandSender
 from endstone._plugin import PluginLogger
 
 from .plugin_description import PluginDescription
@@ -47,5 +48,5 @@ class Plugin:
             else:
                 self.on_disable()
 
-    def on_command(self, sender, command, label: str, *args) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, label: str, *args) -> bool:
         return False

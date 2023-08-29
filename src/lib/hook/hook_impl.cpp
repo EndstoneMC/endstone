@@ -7,7 +7,6 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
-#include "endstone/command/bedrock_command_wrapper.h"
 #include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
 #include "endstone/logger_factory.h"
@@ -78,13 +77,31 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     static std::mutex mtx;
     std::lock_guard<std::mutex> lock(mtx);
     CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
+    printf("\x1b[3;32m"); // set to green and italic
 }
 
 MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::Result *result,
                                                              CommandContext *command_ctx, bool flag)
 {
-    // TODO:
-    return CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag);
+    constexpr MinecraftCommands::Result success{true, 0, 0};
+    constexpr MinecraftCommands::Result failed{false, 2, 0};
+
+    CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)
+    if (result->is_success) {
+        return result;
+    }
+
+    auto &server = Endstone::getServer();
+
+    // TODO: check origin type and pass the right command sender
+    if (server.dispatchCommand(server.getConsoleSender(), command_ctx->command_line)) {
+        *result = success;
+    }
+    else {
+        *result = failed;
+    }
+
+    return result;
 }
 
 void CommandRegistry::registerAlias(std::string label, std::string alias)
@@ -93,10 +110,10 @@ void CommandRegistry::registerAlias(std::string label, std::string alias)
     return CALL_ORIGINAL(CommandRegistry::registerAlias, std::move(label), std::move(alias));
 }
 
-void CommandRegistry::registerCommand(const std::string *label, const char *description,
+void CommandRegistry::registerCommand(const std::string *name, const char *description,
                                       CommandPermissionLevel permission_level, CommandFlag flag1, CommandFlag flag2)
 {
     auto server = dynamic_cast<EndstoneServer *>(&Endstone::getServer());
-    server->command_map_->registerOne("minecraft", std::make_shared<BedrockCommandWrapper>(*label));
-    return CALL_ORIGINAL(CommandRegistry::registerCommand, label, description, permission_level, flag1, flag2);
+    server->registerBedrockCommands(*name); // put a placeholder so that no plugin can override vanilla commands
+    return CALL_ORIGINAL(CommandRegistry::registerCommand, name, description, permission_level, flag1, flag2);
 }

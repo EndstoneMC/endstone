@@ -11,13 +11,5 @@ BedrockCommandWrapper::BedrockCommandWrapper(const std::string &name) : Endstone
 bool BedrockCommandWrapper::execute(CommandSender &sender, const std::string &label,
                                     const std::vector<std::string> &vector) const
 {
-    throw std::runtime_error("Not supported!");
-}
-
-bool BedrockCommandWrapper::execute(MinecraftCommands &minecraft_commands, MinecraftCommands::Result &result,
-                                    CommandContext &command_ctx, bool flag)
-{
-    printf("BedrockCommandWrapper\n");
-    minecraft_commands.executeCommand(&result, &command_ctx, flag);
     return true;
 }

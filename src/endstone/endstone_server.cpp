@@ -4,6 +4,8 @@
 
 #include "endstone_server.h"
 
+#include "endstone/command/bedrock_command_wrapper.h"
+#include "endstone/command/server_command_sender.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/plugin/simple_plugin_manager.h"
@@ -11,7 +13,8 @@
 
 EndstoneServer::EndstoneServer()
     : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_shared<SimpleCommandMap>(*this)),
-      plugin_manager_(std::make_unique<SimplePluginManager>(*this, command_map_))
+      plugin_manager_(std::make_unique<SimplePluginManager>(*this, command_map_)),
+      console_(std::make_unique<ServerCommandSender>())
 {
 }
 
@@ -62,4 +65,29 @@ void EndstoneServer::disablePlugins()
 std::shared_ptr<Logger> EndstoneServer::getLogger()
 {
     return logger_;
+}
+
+void EndstoneServer::registerBedrockCommands(const std::string &name)
+{
+    command_map_->registerOne("minecraft", std::make_shared<BedrockCommandWrapper>(name));
+}
+
+bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line)
+{
+    if (command_map_->dispatch(sender, command_line)) {
+        return true;
+    }
+
+    if (dynamic_cast<ServerCommandSender *>(&sender)) {
+        logger_->error("Unknown command. Type \"help\" for help.");
+    }
+    else {
+        sender.sendMessage("Unknown command. Type \"/help\" for help.");
+    }
+
+    return false;
+}
+CommandSender &EndstoneServer::getConsoleSender()
+{
+    return *console_;
 }

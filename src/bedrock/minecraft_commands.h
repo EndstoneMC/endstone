@@ -34,6 +34,13 @@ public:
 
 public:
     Result *executeCommand(MinecraftCommands::Result *result, CommandContext *command_ctx, bool flag);
+
+    static MinecraftCommands &getInstance()
+    {
+        return *g_instance;
+    };
+
+    static MinecraftCommands *g_instance;
 };
 
 #endif // ENDSTONE_MINECRAFT_COMMANDS_H

@@ -72,7 +72,7 @@ public:
      *
      * @return Label of this command
      */
-    std::string_view getLabel() const noexcept
+    const std::string &getLabel() const noexcept
     {
         return label_;
     }
@@ -108,7 +108,7 @@ public:
      * @return true if the registration was successful (the current registered
      *     CommandMap was the passed CommandMap or null) false otherwise
      */
-    bool registerCommand(const std::shared_ptr<CommandMap> &command_map) noexcept
+    bool registerTo(const std::shared_ptr<CommandMap> &command_map) noexcept
     {
         if (allowChangesFrom(command_map)) {
             command_map_ = command_map;
@@ -127,7 +127,7 @@ public:
      *     registered CommandMap was the passed CommandMap or null) false
      *     otherwise
      */
-    bool unregisterCommand(const std::shared_ptr<CommandMap> &command_map) noexcept
+    bool unregisterFrom(const std::shared_ptr<CommandMap> &command_map) noexcept
     {
         if (allowChangesFrom(command_map)) {
             command_map_.reset();

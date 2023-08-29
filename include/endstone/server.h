@@ -22,6 +22,8 @@ public:
     virtual void enablePlugins() = 0;
     virtual void disablePlugins() = 0;
     virtual std::shared_ptr<Logger> getLogger() = 0;
+    virtual bool dispatchCommand(CommandSender &sender, const std::string &command_line) = 0;
+    virtual CommandSender &getConsoleSender() = 0;
 };
 
 #endif // ENDSTONE_SERVER_H

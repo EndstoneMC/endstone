@@ -13,6 +13,7 @@
 #include <codecvt>
 #include <cstdint>
 #include <filesystem>
+#include <fmt/color.h>
 #include <fmt/core.h>
 #include <fstream>
 #include <functional>
@@ -36,7 +37,5 @@
 #define BEDROCK_API
 #define ENDSTONE_API
 #endif
-
-
 
 #endif // ENDSTONE_COMMON_H

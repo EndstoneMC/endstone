@@ -50,7 +50,7 @@ bool SimpleCommandMap::registerOne(std::string label, std::string fallback_prefi
     }
 
     // Register to us so further updates of the commands label and aliases are postponed until it's re-registered
-    command->registerCommand(shared_from_this());
+    command->registerTo(shared_from_this());
 
     return registered;
 }
@@ -87,9 +87,18 @@ bool SimpleCommandMap::registerOne(const std::string &label, const std::shared_p
 
 bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &command_line) const
 {
+    if (command_line.empty()) {
+        return false;
+    }
+
     std::vector<std::string> args;
     std::size_t start = 0;
-    std::size_t end = 0;
+    std::size_t end;
+
+    if (command_line[0] == '/') {
+        start++;
+    }
+
     while (start < command_line.length()) {
         end = command_line.find(' ', start);
         if (end == std::string::npos) {
@@ -129,7 +138,7 @@ void SimpleCommandMap::clearCommands() noexcept
 {
     std::lock_guard lock(mutex_);
     for (const auto &item : known_commands_) {
-        item.second->unregisterCommand(shared_from_this());
+        item.second->unregisterFrom(shared_from_this());
     }
     known_commands_.clear();
     setDefaultCommands();
@@ -140,7 +149,13 @@ std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const no
     std::transform(name.begin(), name.end(), name.begin(), [](auto c) {
         return std::tolower(c, std::locale("en_US.utf8"));
     });
-    return known_commands_.at(name);
+
+    auto it = known_commands_.find(name);
+    if (it == known_commands_.end()) {
+        return nullptr;
+    }
+
+    return it->second;
 }
 
 void SimpleCommandMap::setDefaultCommands()

@@ -14,8 +14,6 @@ public:
     explicit BedrockCommandWrapper(const std::string &name);
 
     bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override;
-    bool execute(MinecraftCommands &minecraft_commands, MinecraftCommands::Result &result, CommandContext &command_ctx,
-                 bool flag);
 };
 
 #endif // ENDSTONE_BEDROCK_COMMAND_WRAPPER_H

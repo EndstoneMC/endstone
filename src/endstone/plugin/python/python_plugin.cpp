@@ -61,5 +61,6 @@ bool PythonPlugin::onCommand(CommandSender &sender, const Command &command, cons
                              const std::vector<std::string> &args) const noexcept
 {
     py::gil_scoped_acquire lock{};
-    return impl_.attr("on_command")(sender, command, label, args).cast<bool>();
+    //    return impl_.attr("on_command_dummy")().cast<bool>();
+    return impl_.attr("on_command")(std::ref(sender), std::ref(command), label, args).cast<bool>();
 }

@@ -21,6 +21,7 @@ enum class LogLevel {
 
 class Logger {
 public:
+    virtual ~Logger() = default;
     virtual void setLevel(LogLevel level) = 0;
     virtual bool isEnabledFor(LogLevel level) const noexcept = 0;
     virtual std::string_view getName() const = 0;
