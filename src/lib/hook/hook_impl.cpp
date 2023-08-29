@@ -7,7 +7,9 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
+#include "endstone/chat_colors.h"
 #include "endstone/command/bedrock_command.h"
+#include "endstone/common.h"
 #include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
 #include "endstone/logger_factory.h"
@@ -75,9 +77,64 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
                         LogAreaID area, LogLevel level, const char *function, int line, const char *format,
                         va_list args)
 {
+    static std::unordered_map<std::string, std::string> replacements = {
+        {ChatColors::BLACK.toString(), "\x1b[0;30m"},                          // 0
+        {ChatColors::DARK_BLUE.toString(), "\x1b[0;34m"},                      // 1
+        {ChatColors::DARK_GREEN.toString(), "\x1b[0;32m"},                     // 2
+        {ChatColors::DARK_AQUA.toString(), "\x1b[0;36m"},                      // 3
+        {ChatColors::DARK_RED.toString(), "\x1b[0;31m"},                       // 4
+        {ChatColors::DARK_PURPLE.toString(), "\x1b[0;35m"},                    // 5
+        {ChatColors::GOLD.toString(), "\x1b[0;33m"},                           // 6
+        {ChatColors::GRAY.toString(), "\x1b[0;37m"},                           // 7
+        {ChatColors::DARK_GRAY.toString(), "\x1b[0;90m"},                      // 8
+        {ChatColors::BLUE.toString(), "\x1b[0;94m"},                           // 9
+        {ChatColors::GREEN.toString(), "\x1b[0;92m"},                          // a
+        {ChatColors::AQUA.toString(), "\x1b[0;96m"},                           // b
+        {ChatColors::RED.toString(), "\x1b[0;91m"},                            // c
+        {ChatColors::LIGHT_PURPLE.toString(), "\x1b[0;95m"},                   // d
+        {ChatColors::YELLOW.toString(), "\x1b[0;93m"},                         // e
+        {ChatColors::WHITE.toString(), "\x1b[0;97m"},                          // f
+        {ChatColors::MINECOIN_GOLD.toString(), "\x1b[0;38;2;221;214;5m"},      // g
+        {ChatColors::MATERIAL_QUARTZ.toString(), "\x1b[0;38;2;227;212;209m"},  // h
+        {ChatColors::MATERIAL_IRON.toString(), "\x1b[0;38;2;206;202;202m"},    // i
+        {ChatColors::MATERIAL_NETHERITE.toString(), "\x1b[0;38;2;68;58;59m"},  // j
+        {ChatColors::MAGIC.toString(), "\x1b[8m"},                             // k
+        {ChatColors::BOLD.toString(), "\x1b[1m"},                              // l
+        {ChatColors::MATERIAL_REDSTONE.toString(), "\x1b[0;38;2;151;22;7m"},   // m
+        {ChatColors::MATERIAL_COPPER.toString(), "\x1b[0;38;2;180;104;77m"},   // n
+        {ChatColors::ITALIC.toString(), "\x1b[3m"},                            // o
+        {ChatColors::MATERIAL_GOLD.toString(), "\x1b[0;38;2;222;177;45m"},     // p
+        {ChatColors::MATERIAL_EMERALD.toString(), "\x1b[0;38;2;222;177;45m"},  // q
+        {ChatColors::RESET.toString(), "\x1b[0m"},                             // r
+        {ChatColors::MATERIAL_DIAMOND.toString(), "\x1b[0;38;2;44;186;168m"},  // s
+        {ChatColors::MATERIAL_LAPIS.toString(), "\x1b[0;38;2;33;73;123m"},     // t
+        {ChatColors::MATERIAL_AMETHYST.toString(), "\x1b[0;38;2;154;92;198m"}, // u
+    };
+
+    std::string_view subject = format;
+    std::string output;
+    output.reserve(strlen(format) * 2);
+    std::ptrdiff_t last_pos = 0;
+    std::match_results<std::string_view::const_iterator> match;
+
+    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColor::COLOR_PATTERN)) {
+        output.append(subject.substr(last_pos, match.position()));
+
+        auto it = replacements.find(match.str());
+        if (it != replacements.end()) {
+            output.append(it->second);
+        }
+        else {
+            output.append(match.str());
+        }
+
+        last_pos += (match.position() + match.length());
+    }
+    output.append(subject.substr(last_pos));
+
     static std::mutex mtx;
     std::lock_guard<std::mutex> lock(mtx);
-    CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
+    CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, output.c_str(), args);
     printf("\x1b[3;32m"); // set to green and italic
 }
 

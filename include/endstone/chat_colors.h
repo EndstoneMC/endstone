@@ -6,67 +6,69 @@
 #define ENDSTONE_CHAT_COLORS_H
 
 #include "endstone/common.h"
-
 class ChatColor {
-public:
-    inline static const auto COLOR_CHAR = char(167); // §
-    inline static const auto COLOR_PATTERN =
-        std::regex(std::string(1, COLOR_CHAR) + "[0-9A-FK-ORX]", std::regex_constants::icase);
 
-private:
     friend class ChatColors;
 
-    enum Code : int {
-        BLACK = 0,
-        DARK_BLUE,
-        DARK_GREEN,
-        DARK_AQUA,
-        DARK_RED,
-        DARK_PURPLE,
-        GOLD,
-        GRAY,
-        DARK_GRAY,
-        BLUE,
-        GREEN,
-        AQUA,
-        RED,
-        LIGHT_PURPLE,
-        YELLOW,
-        WHITE,
-        MAGIC,
-        BOLD,
-        STRIKETHROUGH,
-        UNDERLINE,
-        ITALIC,
-        RESET
-    };
+public:
+    const inline static std::string COLOR_CHAR = "§";
+    const inline static std::regex COLOR_PATTERN =
+        std::regex("(" + COLOR_CHAR + "[0-9A-U])", std::regex_constants::icase);
 
-    ChatColor(char code, int int_code, bool is_format = false)
-        : code_(code), int_code_(int_code), is_format_(is_format), str_(std::string(1, COLOR_CHAR) + code)
-    {
-        id_lookup_[int_code] = this;
-        char_lookup_[code] = this;
-    }
+private:
+    explicit ChatColor(char code) : code_(code), str_{COLOR_CHAR + code} {}
 
 public:
-    char getChar() const
+    constexpr char getChar() const
     {
         return code_;
     }
 
-    std::string toString() const
+    const std::string &toString() const
     {
         return str_;
     }
 
-    bool isFormatCode() const
+    constexpr bool isFormatCode() const
     {
-        return is_format_;
+        return code_ != 'k'  // MAGIC
+            && code_ != 'l'  // BOLD
+            && code_ != 'o'  // ITALIC
+            && code_ != 'r'; // RESET
     }
 
-    bool isColorCode() const
+    constexpr bool isColorCode() const
     {
-        return !is_format_ && int_code_ != RESET;
+        return !isFormatCode();
+    }
+
+    constexpr bool operator==(const ChatColor &other) const
+    {
+        return code_ == other.code_;
+    }
+
+    constexpr bool operator!=(const ChatColor &other) const
+    {
+        return !(*this == other);
+    }
+
+private:
+    char code_;
+    std::string str_;
+};
+
+class ChatColors {
+public:
+    static std::vector<ChatColor *> values()
+    {
+        std::vector<ChatColor *> colors;
+        colors.reserve(char_lookup_.size()); // Optional, but can improve performance
+
+        for (const auto &pair : char_lookup_) {
+            colors.push_back(pair.second);
+        }
+
+        return colors;
     }
 
     static ChatColor *getByChar(char code)
@@ -79,108 +81,51 @@ public:
 
     static std::string stripColor(const std::string &input)
     {
-        return std::regex_replace(input, COLOR_PATTERN, "");
-    }
-
-    static std::string translateColorCodes(char color_char, const std::string &input)
-    {
-        std::string result = input;
-        for (size_t i = 0; i < result.length() - 1; ++i) {
-            if (result[i] == color_char &&
-                std::string_view("0123456789AaBbCcDdEeFfKkLlMmNnOoRrXx").find(result[i + 1]) != std::string::npos) {
-                result[i] = COLOR_CHAR;
-                result[i + 1] = static_cast<char>(std::tolower(static_cast<unsigned char>(result[i + 1])));
-            }
-        }
-        return result;
-    }
-
-    static std::string getLastColors(const std::string &input)
-    {
-        std::string result;
-        size_t length = input.length();
-
-        for (size_t index = length - 1; index != std::string::npos; --index) {
-            if (input[index] == COLOR_CHAR && index < length - 1) {
-                std::string hex_color = getHexColor(input, index);
-                if (!hex_color.empty()) {
-                    result += hex_color;
-                    break;
-                }
-
-                char c = input[index + 1];
-                ChatColor *color = getByChar(c);
-                if (color) {
-                    result += color->toString();
-                    if (color->isColorCode() || color->int_code_ == RESET) {
-                        break;
-                    }
-                }
-            }
-        }
-
-        return result;
+        return std::regex_replace(input, ChatColor::COLOR_PATTERN, "");
     }
 
 private:
-    static std::string getHexColor(const std::string &input, size_t index)
-    {
-        if (index >= 12 && input[index - 11] == 'x' && input[index - 12] == COLOR_CHAR) {
-            for (size_t i = index - 10; i <= index; i += 2) {
-                if (input[i] != COLOR_CHAR) {
-                    return "";
-                }
-            }
-
-            for (size_t i = index - 9; i <= index + 1; i += 2) {
-                char toCheck = input[i];
-                if (toCheck < '0' || toCheck > 'f' || (toCheck > '9' && toCheck < 'A') ||
-                    (toCheck > 'F' && toCheck < 'a')) {
-                    return "";
-                }
-            }
-
-            return input.substr(index - 12, 14);
-        }
-        else {
-            return "";
-        }
-    }
-
-private:
-    char code_;
-    int int_code_;
-    bool is_format_;
-    std::string str_;
-
-    inline static std::unordered_map<int, ChatColor *> id_lookup_;
     inline static std::unordered_map<char, ChatColor *> char_lookup_;
-};
 
-class ChatColors {
+    static ChatColor newChatColor(char code)
+    {
+        ChatColor color(code);
+        char_lookup_[code] = &color;
+        return color;
+    }
+
 public:
-    const inline static ChatColor BLACK{'0', ChatColor::BLACK};
-    const inline static ChatColor DARK_BLUE{'1', ChatColor::DARK_BLUE};
-    const inline static ChatColor DARK_GREEN{'2', ChatColor::DARK_GREEN};
-    const inline static ChatColor DARK_AQUA{'3', ChatColor::DARK_AQUA};
-    const inline static ChatColor DARK_RED{'4', ChatColor::DARK_RED};
-    const inline static ChatColor DARK_PURPLE{'5', ChatColor::DARK_PURPLE};
-    const inline static ChatColor GOLD{'6', ChatColor::GOLD};
-    const inline static ChatColor GRAY{'7', ChatColor::GRAY};
-    const inline static ChatColor DARK_GRAY{'8', ChatColor::DARK_GRAY};
-    const inline static ChatColor BLUE{'9', ChatColor::BLUE};
-    const inline static ChatColor GREEN{'a', ChatColor::GREEN};
-    const inline static ChatColor AQUA{'b', ChatColor::AQUA};
-    const inline static ChatColor RED{'c', ChatColor::RED};
-    const inline static ChatColor LIGHT_PURPLE{'d', ChatColor::LIGHT_PURPLE};
-    const inline static ChatColor YELLOW{'e', ChatColor::YELLOW};
-    const inline static ChatColor WHITE{'f', ChatColor::WHITE};
-    const inline static ChatColor MAGIC{'k', ChatColor::MAGIC, true};
-    const inline static ChatColor BOLD{'l', ChatColor::BOLD, true};
-    const inline static ChatColor STRIKETHROUGH{'m', ChatColor::STRIKETHROUGH, true};
-    const inline static ChatColor UNDERLINE{'n', ChatColor::UNDERLINE, true};
-    const inline static ChatColor ITALIC{'o', ChatColor::ITALIC, true};
-    const inline static ChatColor RESET{'r', ChatColor::RESET};
+    const inline static auto BLACK = newChatColor('0');
+    const inline static auto DARK_BLUE = newChatColor('1');
+    const inline static auto DARK_GREEN = newChatColor('2');
+    const inline static auto DARK_AQUA = newChatColor('3');
+    const inline static auto DARK_RED = newChatColor('4');
+    const inline static auto DARK_PURPLE = newChatColor('5');
+    const inline static auto GOLD = newChatColor('6');
+    const inline static auto GRAY = newChatColor('7');
+    const inline static auto DARK_GRAY = newChatColor('8');
+    const inline static auto BLUE = newChatColor('9');
+    const inline static auto GREEN = newChatColor('a');
+    const inline static auto AQUA = newChatColor('b');
+    const inline static auto RED = newChatColor('c');
+    const inline static auto LIGHT_PURPLE = newChatColor('d');
+    const inline static auto YELLOW = newChatColor('e');
+    const inline static auto WHITE = newChatColor('f');
+    const inline static auto MINECOIN_GOLD = newChatColor('g');
+    const inline static auto MATERIAL_QUARTZ = newChatColor('h');
+    const inline static auto MATERIAL_IRON = newChatColor('i');
+    const inline static auto MATERIAL_NETHERITE = newChatColor('j');
+    const inline static auto MAGIC = newChatColor('k');
+    const inline static auto BOLD = newChatColor('l');
+    const inline static auto MATERIAL_REDSTONE = newChatColor('m');
+    const inline static auto MATERIAL_COPPER = newChatColor('n');
+    const inline static auto ITALIC = newChatColor('o');
+    const inline static auto MATERIAL_GOLD = newChatColor('p');
+    const inline static auto MATERIAL_EMERALD = newChatColor('q');
+    const inline static auto RESET = newChatColor('r');
+    const inline static auto MATERIAL_DIAMOND = newChatColor('s');
+    const inline static auto MATERIAL_LAPIS = newChatColor('t');
+    const inline static auto MATERIAL_AMETHYST = newChatColor('u');
 };
 
 #endif // ENDSTONE_CHAT_COLORS_H
