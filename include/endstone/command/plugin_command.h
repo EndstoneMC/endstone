@@ -6,7 +6,7 @@
 #define ENDSTONE_PLUGIN_COMMAND_H
 
 #include "command.h"
-#include "endstone/command/server_command_sender.h"
+#include "endstone/command/console_command_sender.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
@@ -59,7 +59,7 @@ public:
 
                 auto line = usage.substr(start, end - start);
 
-                if (dynamic_cast<ServerCommandSender *>(&sender)) {
+                if (dynamic_cast<ConsoleCommandSender *>(&sender)) {
                     sender.getServer().getLogger()->error("Usage: {}", line);
                 }
                 else {

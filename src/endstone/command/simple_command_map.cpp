@@ -24,12 +24,12 @@ bool SimpleCommandMap::registerOne(const std::string &fallback_prefix, std::shar
 bool SimpleCommandMap::registerOne(std::string label, std::string fallback_prefix,
                                    std::shared_ptr<Command> command) noexcept
 {
-    std::transform(label.begin(), label.end(), label.begin(), [](auto c) {
-        return std::tolower(c, std::locale("en_US.utf8"));
+    std::transform(label.begin(), label.end(), label.begin(), [](unsigned char c) {
+        return std::tolower(c);
     });
 
     std::transform(fallback_prefix.begin(), fallback_prefix.end(), fallback_prefix.begin(), [](unsigned char c) {
-        return std::tolower(c, std::locale("en_US.utf8"));
+        return std::tolower(c);
     });
 
     auto registered = registerOne(label, command, false, fallback_prefix);
@@ -114,8 +114,8 @@ bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &comman
     }
 
     auto label = args[0];
-    std::transform(label.begin(), label.end(), label.begin(), [](auto c) {
-        return std::tolower(c, std::locale("en_US.utf8"));
+    std::transform(label.begin(), label.end(), label.begin(), [](unsigned char c) {
+        return std::tolower(c);
     });
     auto target = getCommand(label);
 
@@ -146,8 +146,8 @@ void SimpleCommandMap::clearCommands() noexcept
 
 std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const noexcept
 {
-    std::transform(name.begin(), name.end(), name.begin(), [](auto c) {
-        return std::tolower(c, std::locale("en_US.utf8"));
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
+        return std::tolower(c);
     });
 
     auto it = known_commands_.find(name);
