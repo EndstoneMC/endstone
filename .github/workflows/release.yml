@@ -1,4 +1,4 @@
-name: Publish Endstone to PyPI
+name: Release
 
 on:
   workflow_dispatch:
@@ -48,7 +48,7 @@ jobs:
         with:
           path: dist/*.tar.gz
 
-  upload_pypi:
+  upload:
     needs: [ build_wheels, build_sdist ]
     runs-on: ubuntu-latest
     environment: pypi
@@ -58,11 +58,13 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
         with:
-          # unpacks default artifact into dist/
-          # if `name: artifact` is omitted, the action will create extra parent dir
           name: artifact
           path: dist
 
-      - uses: pypa/gh-action-pypi-publish@release/v1
-        # with:
-        # To test: repository_url: https://test.pypi.org/legacy/
+      - name: Make a GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+
+      - name: Upload to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
