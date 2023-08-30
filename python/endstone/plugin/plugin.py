@@ -1,8 +1,7 @@
 from typing import final
 
-from endstone._command import Command, CommandSender
-from endstone._plugin import PluginLogger
-
+from endstone.command import Command, CommandSender
+from endstone.logger import Logger
 from .plugin_description import PluginDescription
 
 
@@ -30,7 +29,7 @@ class Plugin:
 
     @final
     @property
-    def logger(self) -> PluginLogger:
+    def logger(self) -> Logger:
         return self._logger
 
     @final
