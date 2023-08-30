@@ -10,4 +10,4 @@
  * Record here in case we need them back in the future...
  */
 
-PYBIND11_MODULE(_plugin, m) {}
+PYBIND11_EMBEDDED_MODULE(_plugin, m) {}

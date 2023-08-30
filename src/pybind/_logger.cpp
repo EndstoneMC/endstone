@@ -6,7 +6,7 @@
 #include "endstone/logger.h"
 #include "pybind.h"
 
-PYBIND11_MODULE(_logger, m)
+PYBIND11_EMBEDDED_MODULE(_logger, m)
 {
     py::enum_<LogLevel>(m, "LogLevel")
         .value("ALL", LogLevel::All)
