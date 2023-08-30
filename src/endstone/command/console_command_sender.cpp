@@ -4,7 +4,7 @@
 
 #include "console_command_sender.h"
 
-#include "endstone/chat_colors.h"
+#include "endstone/chat_color.h"
 #include "endstone/endstone.h"
 
 void ConsoleCommandSender::sendMessage(const std::string &message) const

@@ -9,7 +9,7 @@
 BedrockCommandPlaceHolder::BedrockCommandPlaceHolder(const std::string &name) : EndstoneCommand(name) {}
 
 bool BedrockCommandPlaceHolder::execute(CommandSender &sender, const std::string &label,
-                                    const std::vector<std::string> &vector) const
+                                        const std::vector<std::string> &vector) const
 {
     return true;
 }

@@ -7,7 +7,7 @@
 #include "bedrock/dedicated_server.h"
 #include "bedrock/minecraft_commands.h"
 #include "bedrock/server_instance.h"
-#include "endstone/chat_colors.h"
+#include "endstone/chat_color.h"
 #include "endstone/command/bedrock_command.h"
 #include "endstone/common.h"
 #include "endstone/endstone.h"
@@ -78,37 +78,37 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
                         va_list args)
 {
     static std::unordered_map<std::string, std::string> replacements = {
-        {ChatColors::BLACK.toString(), "\x1b[0;30m"},                          // 0
-        {ChatColors::DARK_BLUE.toString(), "\x1b[0;34m"},                      // 1
-        {ChatColors::DARK_GREEN.toString(), "\x1b[0;32m"},                     // 2
-        {ChatColors::DARK_AQUA.toString(), "\x1b[0;36m"},                      // 3
-        {ChatColors::DARK_RED.toString(), "\x1b[0;31m"},                       // 4
-        {ChatColors::DARK_PURPLE.toString(), "\x1b[0;35m"},                    // 5
-        {ChatColors::GOLD.toString(), "\x1b[0;33m"},                           // 6
-        {ChatColors::GRAY.toString(), "\x1b[0;37m"},                           // 7
-        {ChatColors::DARK_GRAY.toString(), "\x1b[0;90m"},                      // 8
-        {ChatColors::BLUE.toString(), "\x1b[0;94m"},                           // 9
-        {ChatColors::GREEN.toString(), "\x1b[0;92m"},                          // a
-        {ChatColors::AQUA.toString(), "\x1b[0;96m"},                           // b
-        {ChatColors::RED.toString(), "\x1b[0;91m"},                            // c
-        {ChatColors::LIGHT_PURPLE.toString(), "\x1b[0;95m"},                   // d
-        {ChatColors::YELLOW.toString(), "\x1b[0;93m"},                         // e
-        {ChatColors::WHITE.toString(), "\x1b[0;97m"},                          // f
-        {ChatColors::MINECOIN_GOLD.toString(), "\x1b[0;38;2;221;214;5m"},      // g
-        {ChatColors::MATERIAL_QUARTZ.toString(), "\x1b[0;38;2;227;212;209m"},  // h
-        {ChatColors::MATERIAL_IRON.toString(), "\x1b[0;38;2;206;202;202m"},    // i
-        {ChatColors::MATERIAL_NETHERITE.toString(), "\x1b[0;38;2;68;58;59m"},  // j
-        {ChatColors::MAGIC.toString(), "\x1b[8m"},                             // k
-        {ChatColors::BOLD.toString(), "\x1b[1m"},                              // l
-        {ChatColors::MATERIAL_REDSTONE.toString(), "\x1b[0;38;2;151;22;7m"},   // m
-        {ChatColors::MATERIAL_COPPER.toString(), "\x1b[0;38;2;180;104;77m"},   // n
-        {ChatColors::ITALIC.toString(), "\x1b[3m"},                            // o
-        {ChatColors::MATERIAL_GOLD.toString(), "\x1b[0;38;2;222;177;45m"},     // p
-        {ChatColors::MATERIAL_EMERALD.toString(), "\x1b[0;38;2;222;177;45m"},  // q
-        {ChatColors::RESET.toString(), "\x1b[0m"},                             // r
-        {ChatColors::MATERIAL_DIAMOND.toString(), "\x1b[0;38;2;44;186;168m"},  // s
-        {ChatColors::MATERIAL_LAPIS.toString(), "\x1b[0;38;2;33;73;123m"},     // t
-        {ChatColors::MATERIAL_AMETHYST.toString(), "\x1b[0;38;2;154;92;198m"}, // u
+        {ChatColors::toString(ChatColor::Black), "\x1b[30m"},
+        {ChatColors::toString(ChatColor::DarkBlue), "\x1b[34m"},
+        {ChatColors::toString(ChatColor::DarkGreen), "\x1b[32m"},
+        {ChatColors::toString(ChatColor::DarkAqua), "\x1b[36m"},
+        {ChatColors::toString(ChatColor::DarkRed), "\x1b[31m"},
+        {ChatColors::toString(ChatColor::DarkPurple), "\x1b[35m"},
+        {ChatColors::toString(ChatColor::Gold), "\x1b[33m"},
+        {ChatColors::toString(ChatColor::Gray), "\x1b[37m"},
+        {ChatColors::toString(ChatColor::DarkGray), "\x1b[90m"},
+        {ChatColors::toString(ChatColor::Blue), "\x1b[94m"},
+        {ChatColors::toString(ChatColor::Green), "\x1b[92m"},
+        {ChatColors::toString(ChatColor::Aqua), "\x1b[96m"},
+        {ChatColors::toString(ChatColor::Red), "\x1b[91m"},
+        {ChatColors::toString(ChatColor::LightPurple), "\x1b[95m"},
+        {ChatColors::toString(ChatColor::Yellow), "\x1b[93m"},
+        {ChatColors::toString(ChatColor::White), "\x1b[97m"},
+        {ChatColors::toString(ChatColor::MinecoinGold), "\x1b[38;2;221;214;5m"},
+        {ChatColors::toString(ChatColor::MaterialQuartz), "\x1b[38;2;227;212;209m"},
+        {ChatColors::toString(ChatColor::MaterialIron), "\x1b[38;2;206;202;202m"},
+        {ChatColors::toString(ChatColor::MaterialNetherite), "\x1b[38;2;68;58;59m"},
+        {ChatColors::toString(ChatColor::Magic), "\x1b[8m"},
+        {ChatColors::toString(ChatColor::Bold), "\x1b[1m"},
+        {ChatColors::toString(ChatColor::MaterialRedstone), "\x1b[38;2;151;22;7m"},
+        {ChatColors::toString(ChatColor::MaterialCopper), "\x1b[38;2;180;104;77m"},
+        {ChatColors::toString(ChatColor::Italic), "\x1b[3m"},
+        {ChatColors::toString(ChatColor::MaterialGold), "\x1b[38;2;222;177;45m"},
+        {ChatColors::toString(ChatColor::MaterialEmerald), "\x1b[38;2;222;177;45m"},
+        {ChatColors::toString(ChatColor::Reset), "\x1b[0m"},
+        {ChatColors::toString(ChatColor::MaterialDiamond), "\x1b[38;2;44;186;168m"},
+        {ChatColors::toString(ChatColor::MaterialLapis), "\x1b[38;2;33;73;123m"},
+        {ChatColors::toString(ChatColor::MaterialAmethyst), "\x1b[38;2;154;92;198m"},
     };
 
     std::string_view subject = format;
@@ -117,7 +117,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     std::ptrdiff_t last_pos = 0;
     std::match_results<std::string_view::const_iterator> match;
 
-    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColor::COLOR_PATTERN)) {
+    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::COLOR_PATTERN)) {
         output.append(subject.substr(last_pos, match.position()));
 
         auto it = replacements.find(match.str());
@@ -135,7 +135,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     static std::mutex mtx;
     std::lock_guard<std::mutex> lock(mtx);
     CALL_ORIGINAL_STATIC(BedrockLog::log_va, category, flags, rule, area, level, function, line, output.c_str(), args);
-    printf("\x1b[3;32m"); // set to green and italic
+    printf("\x1b[0;3;32m"); // set to green and italic
 }
 
 MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::Result *result,

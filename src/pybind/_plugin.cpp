@@ -10,6 +10,4 @@
  * Record here in case we need them back in the future...
  */
 
-PYBIND11_MODULE(_plugin, m)
-{
-}
+PYBIND11_MODULE(_plugin, m) {}

@@ -2,14 +2,14 @@
 // Created by Vincent on 29/08/2023.
 //
 
-#include "endstone/chat_colors.h"
+#include "endstone/chat_color.h"
 
 #include <gtest/gtest.h>
 
 TEST(ChatColorTest, GetByChar)
 {
     for (auto &color : ChatColors::values()) {
-        EXPECT_EQ(ChatColors::getByChar(color->getChar()), color);
+        EXPECT_EQ(*ChatColors::get(static_cast<char>(color)), color);
     }
 }
 
@@ -24,7 +24,7 @@ TEST(ChatColorTest, StripColor)
     std::string expected;
     const std::string filler = "test";
     for (auto &color : ChatColors::values()) {
-        subject += color->toString() + filler;
+        subject += ChatColors::toString(color) + filler;
         expected += filler;
     }
     EXPECT_EQ(ChatColors::stripColor(subject), expected);
@@ -33,8 +33,8 @@ TEST(ChatColorTest, StripColor)
 TEST(ChatColorTest, ToString)
 {
     for (auto &color : ChatColors::values()) {
-        std::string expected = ChatColor::COLOR_CHAR + std::string(1, color->getChar());
-        EXPECT_EQ(expected, color->toString());
+        std::string expected = ChatColors::COLOR_CHAR + static_cast<char>(color);
+        EXPECT_EQ(ChatColors::toString(color), expected);
     }
 }
 
@@ -43,10 +43,10 @@ TEST(ChatColorTest, RegexSearch)
     std::string subject;
     const std::string filler = "test";
     for (auto &color : ChatColors::values()) {
-        subject += color->toString() + filler;
+        subject += color + filler;
     }
 
-    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColor::COLOR_PATTERN);
+    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::COLOR_PATTERN);
     std::sregex_iterator end = std::sregex_iterator();
     size_t count = std::distance(begin, end);
     EXPECT_EQ(count, ChatColors::values().size());
@@ -57,11 +57,11 @@ TEST(ChatColorTest, RegexReplaceWithString)
     std::string subject;
     const std::string filler = "test";
     for (auto &color : ChatColors::values()) {
-        subject += color->toString() + filler;
+        subject += color + filler;
     }
 
     std::string replaced;
-    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColor::COLOR_PATTERN);
+    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::COLOR_PATTERN);
     std::sregex_iterator end = std::sregex_iterator();
     std::ptrdiff_t lastPos = 0;
 
@@ -79,7 +79,7 @@ TEST(ChatColorTest, RegexReplaceWithStringView)
     const std::string filler = "test";
     std::string subject_str;
     for (auto &color : ChatColors::values()) {
-        subject_str += color->toString() + filler;
+        subject_str += color + filler;
     }
     std::string_view subject = subject_str;
 
@@ -87,7 +87,7 @@ TEST(ChatColorTest, RegexReplaceWithStringView)
     std::ptrdiff_t last_pos = 0;
     std::match_results<std::string_view::const_iterator> match;
 
-    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColor::COLOR_PATTERN)) {
+    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::COLOR_PATTERN)) {
         replaced_str += std::string(subject.substr(last_pos, match.position()));
         last_pos += (match.position() + match.length());
     }
