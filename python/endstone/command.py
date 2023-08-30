@@ -1,3 +1,3 @@
 from endstone._command import *
 
-__all__ = ["Command", "CommandSender"]
+__all__ = ["Command", "CommandSender", "CommandExecutor"]

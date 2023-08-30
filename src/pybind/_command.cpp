@@ -9,6 +9,17 @@
 #include "endstone/server.h"
 #include "pybind.h"
 
+class PyCommandExecutor : public CommandExecutor {
+    using CommandExecutor::CommandExecutor;
+
+public:
+    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) const noexcept override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(bool, CommandExecutor, "on_command", onCommand);
+    }
+};
+
 PYBIND11_MODULE(_command, m)
 {
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
@@ -32,4 +43,9 @@ PYBIND11_MODULE(_command, m)
         .def("__repr__", [](const CommandSender &cs) {
             return "<CommandSender name='" + std::string(cs.getName()) + "'>";
         });
+
+    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
+        .def(py::init<>())
+        .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"),
+             py::arg("args"));
 }
