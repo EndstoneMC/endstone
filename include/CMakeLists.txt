@@ -4,7 +4,7 @@
 
 FetchContent_Declare(
         fmt
-        URL https://github.com/fmtlib/fmt/releases/download/10.1.0/fmt-10.1.0.zip
+        URL https://github.com/fmtlib/fmt/releases/download/10.1.1/fmt-10.1.1.zip
 )
 FetchContent_MakeAvailable(fmt)
 
