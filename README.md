@@ -138,38 +138,6 @@ help you get started quickly:
 - [Python Plugin Template](https://github.com/EndstoneMC/python-plugin-template)
 - [C++ Plugin Template](https://github.com/EndstoneMC/cpp-plugin-template)
 
-### Creating a Plugin Using Python
-
-1. **Clone the Python Plugin Template Repository**
-
-   ```bash
-   git clone https://github.com/EndstoneMC/python-plugin-template.git
-   ```
-
-2. **Navigate to the Cloned Directory**
-
-   ```bash
-   cd python-plugin-template
-   ```
-
-3. Follow the `README.md` instructions in the cloned repository to set up, modify, and test your Python plugin.
-
-### Creating a Plugin Using C++
-
-1. **Clone the C++ Plugin Template Repository**
-
-   ```bash
-   git clone https://github.com/EndstoneMC/cpp-plugin-template.git
-   ```
-
-2. **Navigate to the Cloned Directory**
-
-   ```bash
-   cd cpp-plugin-template
-   ```
-
-3. Follow the `README.md` instructions in the cloned repository to set up, modify, and test your C++ plugin.
-
 ## Next Steps
 
 Dive deep into the Endstone documentation (Work-In-Progress) for comprehensive guides and resources that assist you in
