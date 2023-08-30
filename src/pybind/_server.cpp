@@ -5,7 +5,7 @@
 #include "endstone/server.h"
 #include "pybind.h"
 
-PYBIND11_EMBEDDED_MODULE(_server, m)
+PYBIND11_MODULE(_server, m)
 {
     py::class_<Server>(m, "Server");
 }

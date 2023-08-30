@@ -5,8 +5,8 @@
 #ifndef ENDSTONE_CPP_PLUGIN_H
 #define ENDSTONE_CPP_PLUGIN_H
 
-#include "cpp_plugin_description.h"
 #include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_description.h"
 
 class CppPlugin : public Plugin {
 public:

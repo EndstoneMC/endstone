@@ -6,7 +6,7 @@
 #include "endstone/permission/permissible.h"
 #include "pybind.h"
 
-PYBIND11_EMBEDDED_MODULE(_permission, m)
+PYBIND11_MODULE(_permission, m)
 {
     py::class_<Permissible, std::shared_ptr<Permissible>>(m, "Permissible");
 }

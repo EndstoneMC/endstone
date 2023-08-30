@@ -9,7 +9,11 @@
 
 PythonPlugin::PythonPlugin(py::object impl) : impl_(std::move(impl))
 {
-    description_ = std::make_unique<PythonPluginDescription>(impl_.attr("description"), *this);
+    auto py_description = impl_.attr("description");
+    printf("before casting\n");
+    const auto &description = py_description.cast<const std::shared_ptr<PluginDescription> &>();
+    printf("!!! yo, we did it: %s\n", description->getFullName().c_str());
+    //    description_ =
 }
 
 PythonPlugin::~PythonPlugin()

@@ -20,7 +20,7 @@ public:
     }
 };
 
-PYBIND11_EMBEDDED_MODULE(_command, m)
+PYBIND11_MODULE(_command, m)
 {
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
         .def("execute", &Command::execute)

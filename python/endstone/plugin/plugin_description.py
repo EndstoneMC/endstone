@@ -1,67 +1,14 @@
-import re
 import sys
-from typing import BinaryIO, Optional, final
+from typing import BinaryIO, Optional
+
+from endstone._plugin import PluginDescription
+
+from endstone.command import Command
 
 if sys.version_info >= (3, 11):
     from tomllib import load
 else:
     from tomli import load
-
-
-class PluginDescription:
-    VALID_NAME = re.compile(r"^[A-Za-z0-9 _.-]+$")
-
-    def __init__(self, name: str, version: str, main_cls: str):
-        if not self.VALID_NAME.match(name):
-            raise ValueError(f"Plugin name {name} contains invalid characters.")
-
-        self._name: str = name.replace(" ", "_")
-        self._version: str = version
-        self._main: str = main_cls
-        self._description: Optional[str] = None
-        self._authors: Optional[list[str]] = None
-        self._prefix: Optional[str] = None
-        self._commands: Optional[dict] = None
-
-    @final
-    @property
-    def name(self) -> str:
-        return self._name
-
-    @final
-    @property
-    def version(self) -> str:
-        return self._version
-
-    @final
-    @property
-    def main(self) -> str:
-        return self._main
-
-    @final
-    @property
-    def description(self) -> Optional[str]:
-        return self._description
-
-    @final
-    @property
-    def authors(self) -> Optional[list[str]]:
-        return self._authors
-
-    @final
-    @property
-    def prefix(self) -> Optional[str]:
-        return self._prefix
-
-    @final
-    @property
-    def commands(self) -> Optional[dict]:
-        return self._commands
-
-    @final
-    @property
-    def fullname(self) -> str:
-        return f"{self.name} v{self.version}"
 
 
 class PluginDescriptionFile(PluginDescription):
@@ -72,10 +19,49 @@ class PluginDescriptionFile(PluginDescription):
             name = data.pop("name")
             version = data.pop("version")
             main = data.pop("main")
-            super().__init__(name, version, main)
+            PluginDescription.__init__(self, name, version)
+            self._main: str = main
+            self._description: Optional[str] = None
+            self._authors: Optional[list[str]] = None
+            self._prefix: Optional[str] = None
+            self._commands: Optional[dict] = None
+
         except KeyError as e:
             raise RuntimeError(f"{e} is not defined")
 
         for k, v in data.items():
             if hasattr(self, f"_{k}"):
                 setattr(self, f"_{k}", v)
+
+    @property
+    def main(self) -> str:
+        return self._main
+
+    @property
+    def description(self) -> Optional[str]:
+        return self._description
+
+    @property
+    def authors(self) -> Optional[list[str]]:
+        return self._authors
+
+    @property
+    def prefix(self) -> Optional[str]:
+        return self._prefix
+
+    @property
+    def commands(self) -> list[Command]:
+        # TODO: implement this
+        return []
+
+    def _get_description(self):
+        return self.description
+
+    def _get_authors(self):
+        return self.authors
+
+    def _get_prefix(self):
+        return self.prefix
+
+    def _get_commands(self):
+        return self.commands
