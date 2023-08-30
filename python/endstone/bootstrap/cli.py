@@ -12,7 +12,7 @@ import tqdm
 
 from endstone import __minecraft__version__
 
-logger = logging.getLogger("loader")
+logger = logging.getLogger("main")
 
 
 @click.command
@@ -24,11 +24,9 @@ def cli(path: str, yes: bool):
 
     system = platform.system()
     if system == "Windows":
-        from endstone.loader.windows.loader_win import WindowsLoader
-
         filename = "bedrock_server.exe"
         base_url = f"https://minecraft.azureedge.net/bin-win/"
-        loader_cls = WindowsLoader
+        from .windows import start_server
     else:
         raise NotImplementedError(f"{system} is not currently supported.")
 
@@ -77,8 +75,7 @@ def cli(path: str, yes: bool):
     os.environ["PYTHONPATH"] = os.pathsep.join(sys.path)
     os.chdir(path)
 
-    loader = loader_cls(exec_path)
-    loader.start()
+    start_server(exec_path)
 
 
 if __name__ == "__main__":

@@ -35,7 +35,7 @@ dynamic = ["version"]
 pytest = ["pytest"]
 
 [project.scripts]
-endstone = "endstone.loader.cli:cli"
+endstone = "endstone.bootstrap.cli:cli"
 
 [tool.scikit-build]
 build-dir = "build/{wheel_tag}"
