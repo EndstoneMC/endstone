@@ -2,7 +2,7 @@
 // Created by Vincent on 17/08/2023.
 //
 
-#include "endstone/plugin/plugin_logger.h"
+//#include "endstone/plugin/plugin_logger.h"
 #include "pybind.h"
 
 /*

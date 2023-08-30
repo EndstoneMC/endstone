@@ -6,6 +6,7 @@
 #define ENDSTONE_ENDSTONE_SERVER_H
 
 #include "bedrock/minecraft_commands.h"
+#include "endstone/command/simple_command_map.h"
 #include "endstone/server.h"
 
 class EndstoneServer : public Server {

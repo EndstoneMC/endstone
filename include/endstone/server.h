@@ -6,7 +6,6 @@
 #define ENDSTONE_SERVER_H
 
 #include "common.h"
-#include "endstone/command/simple_command_map.h"
 #include "logger.h"
 #include "plugin/plugin_manager.h"
 

@@ -1,4 +1,35 @@
 # ------------------------
+# Endstone API Pybind
+# ------------------------
+file(
+        GLOB_RECURSE ENDSTONE_PYBIND11_MODULES CONFIGURE_DEPENDS
+        LIST_DIRECTORIES false
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "pybind/*.cpp"
+)
+
+FetchContent_Declare(
+        pybind11
+        URL https://github.com/pybind/pybind11/archive/refs/tags/v2.11.1.tar.gz
+)
+FetchContent_MakeAvailable(pybind11)
+
+foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
+    get_filename_component(ENDSTONE_PYBIND11_MODULE_NAME ${ENDSTONE_PYBIND11_MODULE} NAME_WE)
+    pybind11_add_module(
+            ${ENDSTONE_PYBIND11_MODULE_NAME} MODULE ${ENDSTONE_PYBIND11_MODULE}
+    )
+    target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE endstone::api)
+
+    install(
+            TARGETS ${ENDSTONE_PYBIND11_MODULE_NAME}
+            LIBRARY DESTINATION ${PROJECT_NAME}
+            RUNTIME DESTINATION ${PROJECT_NAME}
+    )
+
+endforeach ()
+
+# ------------------------
 # Endstone Core
 # ------------------------
 file(
@@ -18,14 +49,10 @@ if (WIN32)
 endif ()
 
 FetchContent_Declare(
-        pybind11
-        URL https://github.com/pybind/pybind11/archive/refs/tags/v2.11.1.tar.gz
-)
-FetchContent_Declare(
         json
         URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
 )
-FetchContent_MakeAvailable(pybind11 json)
+FetchContent_MakeAvailable(json)
 target_link_libraries(core PUBLIC endstone::api pybind11::embed nlohmann_json::nlohmann_json)
 
 # ------------------------
@@ -56,34 +83,4 @@ target_link_libraries(libendstone PUBLIC endstone::api endstone::core)
 install(TARGETS libendstone
         LIBRARY DESTINATION ${PROJECT_NAME}
         RUNTIME DESTINATION ${PROJECT_NAME}
-        )
-
-# ------------------------
-# Endstone Pybind Modules
-# ------------------------
-file(
-        GLOB_RECURSE ENDSTONE_PYBIND11_MODULES CONFIGURE_DEPENDS
-        LIST_DIRECTORIES false
-        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
-        "pybind/*.cpp"
 )
-
-foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
-    get_filename_component(ENDSTONE_PYBIND11_MODULE_NAME ${ENDSTONE_PYBIND11_MODULE} NAME_WE)
-    pybind11_add_module(
-            ${ENDSTONE_PYBIND11_MODULE_NAME} MODULE ${ENDSTONE_PYBIND11_MODULE}
-    )
-    target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE libendstone)
-
-    if (WIN32)
-        target_link_options(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE "/DELAYLOAD:libendstone.dll")
-        target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE delayimp.lib)
-    endif ()
-
-    install(
-            TARGETS ${ENDSTONE_PYBIND11_MODULE_NAME}
-            LIBRARY DESTINATION ${PROJECT_NAME}
-            RUNTIME DESTINATION ${PROJECT_NAME}
-    )
-
-endforeach ()
