@@ -20,7 +20,7 @@ public:
     }
 };
 
-PYBIND11_MODULE(_command, m)
+void export_command(py::module &m)
 {
     py::class_<Command, py::smart_holder>(m, "Command")
         .def("execute", &Command::execute)

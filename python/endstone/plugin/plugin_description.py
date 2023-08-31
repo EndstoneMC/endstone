@@ -1,7 +1,7 @@
 import sys
 from typing import BinaryIO, Optional
 
-from endstone._plugin import PluginDescription
+from endstone._bindings import PluginDescription
 
 from endstone.command import Command
 

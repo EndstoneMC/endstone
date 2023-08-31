@@ -1,9 +1,9 @@
 from typing import final
 
-from endstone._plugin import PluginBase
+from endstone._bindings import PluginBase
+from endstone._bindings import PluginDescription
 
 from endstone.command import Command, CommandSender
-from .plugin_description import PluginDescription
 
 
 class Plugin(PluginBase):

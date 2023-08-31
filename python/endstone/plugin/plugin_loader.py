@@ -6,7 +6,7 @@ from importlib.machinery import ModuleSpec
 from pathlib import Path
 from types import ModuleType
 
-from endstone._plugin import PluginLoader
+from endstone._bindings import PluginLoader
 
 from .plugin import Plugin
 from .plugin_description import PluginDescriptionFile
@@ -49,7 +49,7 @@ class ZipPluginLoader(PluginLoader):
             plugin._init(description)
             return plugin
         except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
+            raise RuntimeError(f"Unable to load plugin {description.full_name}: {e}")
 
 
 class SourcePluginLoader(PluginLoader):
@@ -93,7 +93,7 @@ class SourcePluginLoader(PluginLoader):
             return plugin
 
         except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.fullname}: {e}")
+            raise RuntimeError(f"Unable to load plugin {description.full_name}: {e}")
 
     @staticmethod
     def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:

@@ -17,4 +17,9 @@ PYBIND11_SMART_HOLDER_TYPE_CASTERS(class Command)
 PYBIND11_SMART_HOLDER_TYPE_CASTERS(class Plugin)
 PYBIND11_SMART_HOLDER_TYPE_CASTERS(class PluginLoader)
 
+void export_plugin(py::module &m);
+void export_logger(py::module &m);
+void export_command(py::module &m);
+void export_chat_color(py::module &m);
+
 #endif // ENDSTONE_PYBIND_H

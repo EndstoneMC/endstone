@@ -4,7 +4,7 @@
 #include "endstone/chat_color.h"
 #include "pybind.h"
 
-PYBIND11_MODULE(_chat_color, m)
+void export_chat_color(py::module &m)
 {
     py::enum_<ChatColor>(m, "ChatColor")
         .value("BLACK", ChatColor::Black)

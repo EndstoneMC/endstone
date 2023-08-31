@@ -14,20 +14,12 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(pybind11)
 
-foreach (ENDSTONE_PYBIND11_MODULE ${ENDSTONE_PYBIND11_MODULES})
-    get_filename_component(ENDSTONE_PYBIND11_MODULE_NAME ${ENDSTONE_PYBIND11_MODULE} NAME_WE)
-    pybind11_add_module(
-            ${ENDSTONE_PYBIND11_MODULE_NAME} MODULE ${ENDSTONE_PYBIND11_MODULE}
-    )
-    target_link_libraries(${ENDSTONE_PYBIND11_MODULE_NAME} PRIVATE endstone::api)
-
-    install(
-            TARGETS ${ENDSTONE_PYBIND11_MODULE_NAME}
-            LIBRARY DESTINATION ${PROJECT_NAME}
-            RUNTIME DESTINATION ${PROJECT_NAME}
-    )
-
-endforeach ()
+pybind11_add_module(_bindings MODULE ${ENDSTONE_PYBIND11_MODULES})
+target_link_libraries(_bindings PRIVATE endstone::api)
+install(TARGETS _bindings
+        LIBRARY DESTINATION ${PROJECT_NAME}
+        RUNTIME DESTINATION ${PROJECT_NAME}
+)
 
 # ------------------------
 # Endstone Core

@@ -76,9 +76,9 @@ public:
     }
 };
 
-PYBIND11_MODULE(_plugin, m)
+void export_plugin(py::module &m)
 {
-    py::class_<Plugin, PyPlugin, PYBIND11_SH_DEF(Plugin)>(m, "PluginBase")
+    py::class_<Plugin, PyPlugin, py::smart_holder>(m, "PluginBase")
         .def(py::init<>())
         .def("_get_description", &Plugin::getDescription)
         .def("on_load", &Plugin::onLoad)
@@ -100,7 +100,7 @@ PYBIND11_MODULE(_plugin, m)
         .def("_get_prefix", &PluginDescription::getPrefix)
         .def("_get_commands", &PluginDescription::getCommands);
 
-    py::class_<PluginLoader, PyPluginLoader, PYBIND11_SH_DEF(PluginLoader)>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader, py::smart_holder>(m, "PluginLoader")
         .def(py::init<>())
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
         .def("_get_plugin_file_filters", &PluginLoader::getPluginFileFilters);

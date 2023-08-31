@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 from .plugin import Plugin
-from .plugin_description import PluginDescription, PluginDescriptionFile
+from .plugin_description import PluginDescriptionFile
 from .plugin_loader import ZipPluginLoader, SourcePluginLoader
 
 
@@ -27,7 +27,7 @@ def plugin_setup(**attrs):
     if "." not in packages:
         packages.append(".")
 
-    package_data = attrs.get("package_data", {})
+    package_data = attrs.pop("package_data", {})
     data_files = package_data.setdefault("", [])
     if description_file not in data_files:
         data_files.append(description_file)
