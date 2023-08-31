@@ -13,17 +13,17 @@ class SimplePluginManager : public PluginManager {
 public:
     explicit SimplePluginManager(Server &server, std::shared_ptr<SimpleCommandMap> command_map);
 
-    void registerLoader(const std::shared_ptr<PluginLoader> &loader);
-    Plugin *getPlugin(const std::string &name) const;
-    std::vector<Plugin *> getPlugins() const;
-    bool isPluginEnabled(const std::string &name) const;
-    bool isPluginEnabled(Plugin *plugin) const;
-    Plugin *loadPlugin(const std::filesystem::path &file);
-    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory);
-    void enablePlugin(Plugin &plugin) const;
-    void disablePlugin(Plugin &plugin) const;
-    void disablePlugins();
-    void clearPlugins();
+    void registerLoader(const std::shared_ptr<PluginLoader> &loader) override;
+    Plugin *getPlugin(const std::string &name) const override;
+    std::vector<Plugin *> getPlugins() const override;
+    bool isPluginEnabled(const std::string &name) const override;
+    bool isPluginEnabled(Plugin *plugin) const override;
+    Plugin *loadPlugin(const std::filesystem::path &file) override;
+    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) override;
+    void enablePlugin(Plugin &plugin) const override;
+    void disablePlugin(Plugin &plugin) const override;
+    void disablePlugins() override;
+    void clearPlugins() override;
 
 private:
     Server &server_;

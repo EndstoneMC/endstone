@@ -6,37 +6,21 @@ from importlib.machinery import ModuleSpec
 from pathlib import Path
 from types import ModuleType
 
+from endstone._plugin import PluginLoader
+
 from .plugin import Plugin
 from .plugin_description import PluginDescriptionFile
 
-__all__ = ["ZipPluginLoader", "SourcePluginLoader"]
 
-
-class PluginLoader:
-    _file_filters = []
-
-    def __init__(self) -> None:
-        pass
-
-    def enable_plugin(self, plugin: Plugin) -> None:
-        if not plugin.enabled:
-            plugin.logger.info(f"Enabling {plugin.description.fullname}")
-            # noinspection PyProtectedMember
-            plugin._set_enabled(True)
-
-    def disable_plugin(self, plugin: Plugin) -> None:
-        if plugin.enabled:
-            plugin.logger.info(f"Disabling {plugin.description.fullname}")
-            # noinspection PyProtectedMember
-            plugin._set_enabled(False)
+class ZipPluginLoader(PluginLoader):
+    _file_filters = [r"\.whl$", r"\.zip$"]
 
     @property
     def plugin_file_filters(self) -> list[str]:
         return self._file_filters.copy()
 
-
-class ZipPluginLoader(PluginLoader):
-    _file_filters = [r"\.whl$", r"\.zip$"]
+    def _get_plugin_file_filters(self) -> list[str]:
+        return self.plugin_file_filters
 
     def load_plugin(self, file: str) -> Plugin:
         assert file is not None, "File cannot be None"
@@ -70,6 +54,13 @@ class ZipPluginLoader(PluginLoader):
 
 class SourcePluginLoader(PluginLoader):
     _file_filters = [r"plugin\.toml$"]
+
+    @property
+    def plugin_file_filters(self) -> list[str]:
+        return self._file_filters.copy()
+
+    def _get_plugin_file_filters(self) -> list[str]:
+        return self.plugin_file_filters
 
     def load_plugin(self, file: str) -> Plugin:
         assert file is not None, "File cannot be None"

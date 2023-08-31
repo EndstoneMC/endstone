@@ -2,14 +2,41 @@
 // Created by Vincent on 17/08/2023.
 //
 
+#include "../endstone/plugin/plugin_logger.h"
+#include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_description.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "pybind.h"
 
-/*
- * All the plugin-related python trampoline classes are removed since the following commit
- * https://github.com/EndstoneMC/endstone/commit/c579df43332abf9c7f73553648ca47e34256fec7
- * Record here in case we need them back in the future...
- */
+class PyPlugin : public Plugin {
+public:
+    const PluginDescription &getDescription() const override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
+    }
+
+    void onLoad() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_load", onLoad);
+    }
+
+    void onEnable() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_enable", onEnable);
+    }
+
+    void onDisable() override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
+    }
+
+    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) const noexcept override
+    {
+        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
+                               std::ref(label), std::ref(args));
+    }
+};
 
 class PyPluginDescription : public PluginDescription {
 public:
@@ -36,9 +63,36 @@ public:
     }
 };
 
+class PyPluginLoader : public PluginLoader {
+public:
+    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
+    {
+        return std::unique_ptr<Plugin>([this, &file]() -> Plugin * {
+            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, file);
+        }());
+    }
+
+    std::vector<std::string> getPluginFileFilters() const noexcept override
+    {
+        PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "_get_plugin_file_filters",
+                                    getPluginFileFilters);
+    }
+};
+
 PYBIND11_MODULE(_plugin, m)
 {
-    py::class_<PluginDescription, PyPluginDescription, std::shared_ptr<PluginDescription>>(m, "PluginDescription")
+    py::class_<Plugin, PyPlugin>(m, "PluginBase")
+        .def(py::init<>())
+        .def("_get_description", &Plugin::getDescription)
+        .def("on_load", &Plugin::onLoad)
+        .def("on_enable", &Plugin::onEnable)
+        .def("on_disable", &Plugin::onDisable)
+        .def("on_command", &Plugin::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"), py::arg("args"))
+        .def_property_readonly("logger", &Plugin::getLogger)
+        .def_property_readonly("enabled", &Plugin::isEnabled)
+        .def_property_readonly("plugin_loader", &Plugin::getPluginLoader);
+
+    py::class_<PluginDescription, PyPluginDescription>(m, "PluginDescription")
         .def(py::init<const std::string &, const std::string &>(), py::arg("name"), py::arg("version"))
         .def_property_readonly("name", &PluginDescription::getName)
         .def_property_readonly("version", &PluginDescription::getVersion)
@@ -47,4 +101,9 @@ PYBIND11_MODULE(_plugin, m)
         .def("_get_authors", &PluginDescription::getAuthors)
         .def("_get_prefix", &PluginDescription::getPrefix)
         .def("_get_commands", &PluginDescription::getCommands);
+
+    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
+        .def(py::init<>())
+        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
+        .def("_get_plugin_file_filters", &PluginLoader::getPluginFileFilters);
 }

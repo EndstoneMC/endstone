@@ -17,18 +17,58 @@ public:
     ~Plugin() override = default;
 
     virtual const PluginDescription &getDescription() const = 0;
-    virtual void onLoad() = 0;
-    virtual void onEnable() = 0;
-    virtual void onDisable() = 0;
-    virtual std::shared_ptr<Logger> getLogger() const = 0;
-    virtual bool isEnabled() const = 0;
-    virtual std::shared_ptr<const PluginLoader> getPluginLoader() const = 0;
+    virtual void onLoad(){};
+    virtual void onEnable(){};
+    virtual void onDisable(){};
+
+    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) const noexcept override
+    {
+        return false;
+    }
+
+    std::shared_ptr<Logger> getLogger()
+    {
+        return logger_;
+    }
+
+    bool isEnabled()
+    {
+        return enabled_;
+    }
+
+    std::shared_ptr<PluginLoader> getPluginLoader()
+    {
+        return loader_.lock();
+    }
+
+private:
+    friend class PluginLoader;
+
+    void setEnabled(bool enabled)
+    {
+        if (enabled_ != enabled) {
+            enabled_ = enabled;
+
+            if (enabled_) {
+                onEnable();
+            }
+            else {
+                onDisable();
+            }
+        }
+    }
+
+private:
+    bool enabled_{false};
+    std::weak_ptr<PluginLoader> loader_;
+    std::shared_ptr<Logger> logger_;
 };
 
-#define ENDSTONE_PLUGIN_CLASS(ClassName)              \
-    extern "C" ENDSTONE_API CppPlugin *createPlugin() \
-    {                                                 \
-        return new ClassName();                       \
+#define ENDSTONE_PLUGIN_CLASS(ClassName)           \
+    extern "C" ENDSTONE_API Plugin *createPlugin() \
+    {                                              \
+        return new ClassName();                    \
     }
 
 #endif // ENDSTONE_PLUGIN_H

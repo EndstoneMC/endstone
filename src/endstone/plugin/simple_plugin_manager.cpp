@@ -74,12 +74,13 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
     for (const auto &[pattern, loader] : file_associations_) {
         std::regex r(pattern);
         if (std::regex_search(file.string(), r)) {
-            Plugin *plugin = loader->loadPlugin(file.string());
+            auto plugin = loader->loadPlugin(file.string());
 
             if (plugin) {
-                plugins_.push_back(std::unique_ptr<Plugin>(plugin));
-                lookup_names_[plugin->getDescription().getName()] = plugin;
-                return plugin;
+                auto plugin_ptr = plugin.get();
+                lookup_names_[plugin->getDescription().getName()] = plugin_ptr;
+                plugins_.push_back(std::move(plugin));
+                return plugin_ptr;
             }
         }
     }
@@ -140,6 +141,7 @@ void SimplePluginManager::enablePlugin(Plugin &plugin) const
             if (!commands.empty()) {
                 command_map_->registerAll(plugin.getDescription().getName(), commands);
             }
+
             plugin.getPluginLoader()->enablePlugin(plugin);
         }
         catch (std::exception &e) {

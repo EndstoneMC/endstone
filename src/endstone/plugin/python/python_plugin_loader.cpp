@@ -6,59 +6,41 @@
 
 #include "endstone/common.h"
 #include "endstone/plugin/plugin_logger.h"
-#include "endstone/plugin/python/python_plugin.h"
 
 PythonPluginLoader::PythonPluginLoader(const std::string &module_name, const std::string &class_name)
 {
-    py::gil_scoped_acquire lock{};
+    py::gil_scoped_acquire gil{};
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
-    impl_ = cls();
+    py_loader_ = cls();
+    loader_ = py_loader_.cast<std::shared_ptr<PluginLoader>>();
 }
 
 PythonPluginLoader::~PythonPluginLoader()
 {
-    py::gil_scoped_acquire lock{};
-    impl_.release();
+    py::gil_scoped_acquire gil{};
+    py_loader_.dec_ref();
+    py_loader_.release();
 }
 
-Plugin *PythonPluginLoader::loadPlugin(const std::string &file) const
+std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
 {
-    py::gil_scoped_acquire lock{};
-    auto py_plugin = impl_.attr("load_plugin")(file);
-    auto plugin = new PythonPlugin(py_plugin);
-    plugin->loader_ = shared_from_this();
-    plugin->logger_ = std::make_shared<PluginLogger>(*plugin);
-    py_plugin.attr("_logger") = py::cast(plugin->logger_);
+    auto plugin = std::move(loader_->loadPlugin(file));
+    initPlugin(*plugin, std::make_shared<PluginLogger>(*plugin));
     return plugin;
 }
 
 std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const noexcept
 {
-    py::gil_scoped_acquire lock{};
-    return impl_.attr("plugin_file_filters").cast<std::vector<std::string>>();
+    return std::move(loader_->getPluginFileFilters());
 }
 
-void PythonPluginLoader::enablePlugin(Plugin &plugin) const
+void PythonPluginLoader::enablePlugin(Plugin &plugin) const noexcept
 {
-    try {
-        auto &py_plugin = dynamic_cast<PythonPlugin &>(plugin);
-        py::gil_scoped_acquire lock{};
-        impl_.attr("enable_plugin")(py_plugin.impl_);
-    }
-    catch (const std::bad_cast &e) {
-        throw std::runtime_error("Plugin is not associated with this PluginLoader");
-    }
+    loader_->enablePlugin(plugin);
 }
 
-void PythonPluginLoader::disablePlugin(Plugin &plugin) const
+void PythonPluginLoader::disablePlugin(Plugin &plugin) const noexcept
 {
-    try {
-        const auto &py_plugin = dynamic_cast<const PythonPlugin &>(plugin);
-        py::gil_scoped_acquire lock{};
-        impl_.attr("disable_plugin")(py_plugin.impl_);
-    }
-    catch (const std::bad_cast &e) {
-        throw std::runtime_error("Plugin is not associated with this PluginLoader");
-    }
+    loader_->enablePlugin(plugin);
 }
