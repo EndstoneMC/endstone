@@ -37,9 +37,9 @@ public:
         return enabled_;
     }
 
-    std::shared_ptr<PluginLoader> getPluginLoader()
+    PluginLoader &getPluginLoader()
     {
-        return loader_.lock();
+        return *loader_;
     }
 
 private:
@@ -61,7 +61,7 @@ private:
 
 private:
     bool enabled_{false};
-    std::weak_ptr<PluginLoader> loader_;
+    PluginLoader *loader_;
     std::shared_ptr<Logger> logger_;
 };
 

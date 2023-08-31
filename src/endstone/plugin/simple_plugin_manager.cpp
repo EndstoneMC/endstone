@@ -18,11 +18,11 @@ SimplePluginManager::SimplePluginManager(Server &server, std::shared_ptr<SimpleC
 {
 }
 
-void SimplePluginManager::registerLoader(const std::shared_ptr<PluginLoader> &loader)
+void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
 {
     auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
-        file_associations_[pattern] = loader;
+        file_associations_[pattern] = std::move(loader);
     }
 }
 
@@ -142,7 +142,7 @@ void SimplePluginManager::enablePlugin(Plugin &plugin) const
                 command_map_->registerAll(plugin.getDescription().getName(), commands);
             }
 
-            plugin.getPluginLoader()->enablePlugin(plugin);
+            plugin.getPluginLoader().enablePlugin(plugin);
         }
         catch (std::exception &e) {
             server_.getLogger()->error("Error occurred (in the plugin loader) while enabling {}: {}",
@@ -155,7 +155,7 @@ void SimplePluginManager::disablePlugin(Plugin &plugin) const
 {
     if (plugin.isEnabled()) {
         try {
-            plugin.getPluginLoader()->disablePlugin(plugin);
+            plugin.getPluginLoader().disablePlugin(plugin);
         }
         catch (std::exception &e) {
             server_.getLogger()->error("Error occurred (in the plugin loader) while disabling {}: {}",

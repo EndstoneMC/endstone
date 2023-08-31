@@ -85,7 +85,6 @@ void export_plugin(py::module &m)
         .def("on_enable", &Plugin::onEnable)
         .def("on_disable", &Plugin::onDisable)
         .def("on_command", &Plugin::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"), py::arg("args"))
-        .def("get_logger", &Plugin::getLogger)
         .def_property_readonly("logger", &Plugin::getLogger)
         .def_property_readonly("enabled", &Plugin::isEnabled)
         .def_property_readonly("plugin_loader", &Plugin::getPluginLoader);

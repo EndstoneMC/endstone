@@ -7,7 +7,7 @@
 
 #include "plugin.h"
 
-class PluginLoader : public std::enable_shared_from_this<PluginLoader> {
+class PluginLoader {
 public:
     virtual ~PluginLoader() = default;
     virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
@@ -30,7 +30,7 @@ public:
 protected:
     virtual void initPlugin(Plugin &plugin, const std::shared_ptr<Logger> &logger) noexcept
     {
-        plugin.loader_ = shared_from_this();
+        plugin.loader_ = this;
         plugin.logger_ = logger;
     }
 };
