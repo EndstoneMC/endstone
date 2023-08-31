@@ -16,6 +16,7 @@ namespace py = pybind11;
 PYBIND11_SMART_HOLDER_TYPE_CASTERS(class Command)
 PYBIND11_SMART_HOLDER_TYPE_CASTERS(class Plugin)
 PYBIND11_SMART_HOLDER_TYPE_CASTERS(class PluginLoader)
+PYBIND11_SMART_HOLDER_TYPE_CASTERS(class Logger)
 
 void export_plugin(py::module &m);
 void export_logger(py::module &m);

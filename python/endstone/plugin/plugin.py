@@ -7,6 +7,9 @@ from endstone.command import Command, CommandSender
 
 
 class Plugin(PluginBase):
+    def __init__(self):
+        PluginBase.__init__(self)
+
     def on_load(self) -> None:
         pass
 

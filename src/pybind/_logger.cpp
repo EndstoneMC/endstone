@@ -16,7 +16,7 @@ void export_logger(py::module &m)
         .value("ERROR", LogLevel::Error)
         .export_values();
 
-    py::class_<Logger>(m, "Logger")
+    py::class_<Logger, py::smart_holder>(m, "Logger")
         .def("set_level", &Logger::setLevel, py::arg("level"))
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
         .def_property_readonly("name", &Logger::getName)

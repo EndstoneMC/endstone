@@ -35,5 +35,5 @@ void PythonPluginLoader::enablePlugin(Plugin &plugin) const noexcept
 
 void PythonPluginLoader::disablePlugin(Plugin &plugin) const noexcept
 {
-    loader_->enablePlugin(plugin);
+    loader_->disablePlugin(plugin);
 }

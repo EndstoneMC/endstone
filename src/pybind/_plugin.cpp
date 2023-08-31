@@ -16,17 +16,17 @@ public:
 
     void onLoad() override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_load", onLoad);
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
     }
 
     void onEnable() override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_enable", onEnable);
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
     }
 
     void onDisable() override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(void, Plugin, "on_disable", onDisable);
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
     }
 
     bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
