@@ -10,7 +10,7 @@ file(
 
 FetchContent_Declare(
         pybind11
-        URL https://github.com/pybind/pybind11/archive/refs/tags/v2.11.1.tar.gz
+        URL https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip # smart_holder branch v2.11.1
 )
 FetchContent_MakeAvailable(pybind11)
 

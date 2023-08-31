@@ -8,5 +8,5 @@
 
 PYBIND11_MODULE(_permission, m)
 {
-    py::class_<Permissible, std::shared_ptr<Permissible>>(m, "Permissible");
+    py::class_<Permissible>(m, "Permissible");
 }

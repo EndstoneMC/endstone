@@ -22,7 +22,7 @@ public:
 
 PYBIND11_MODULE(_command, m)
 {
-    py::class_<Command, std::shared_ptr<Command>>(m, "Command")
+    py::class_<Command, py::smart_holder>(m, "Command")
         .def("execute", &Command::execute)
         .def_property("name", &Command::getName, &Command::setName)
         .def_property("label", &Command::getLabel, &Command::setLabel)
@@ -36,7 +36,7 @@ PYBIND11_MODULE(_command, m)
             return "<Command name='" + c.getName() + "' label='" + c.getLabel() + "'>";
         });
 
-    py::class_<CommandSender, std::shared_ptr<CommandSender>>(m, "CommandSender")
+    py::class_<CommandSender>(m, "CommandSender")
         .def("send_message", (void(CommandSender::*)(const std::string &) const) & CommandSender::sendMessage)
         .def_property_readonly("server", &CommandSender::getServer)
         .def_property_readonly("name", &CommandSender::getName)
@@ -44,7 +44,7 @@ PYBIND11_MODULE(_command, m)
             return "<CommandSender name='" + std::string(cs.getName()) + "'>";
         });
 
-    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
+    py::class_<CommandExecutor, PyCommandExecutor>(m, "CommandExecutor")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"),
              py::arg("args"));

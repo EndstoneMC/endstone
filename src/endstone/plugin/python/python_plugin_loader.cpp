@@ -12,15 +12,8 @@ PythonPluginLoader::PythonPluginLoader(const std::string &module_name, const std
     py::gil_scoped_acquire gil{};
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
-    py_loader_ = cls();
-    loader_ = py_loader_.cast<std::shared_ptr<PluginLoader>>();
-}
-
-PythonPluginLoader::~PythonPluginLoader()
-{
-    py::gil_scoped_acquire gil{};
-    py_loader_.dec_ref();
-    py_loader_.release();
+    auto py_loader = cls();
+    loader_ = py_loader.cast<std::shared_ptr<PluginLoader>>();
 }
 
 std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)

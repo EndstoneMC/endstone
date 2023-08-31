@@ -2,13 +2,12 @@
 // Created by Vincent on 17/08/2023.
 //
 
-#include "../endstone/plugin/plugin_logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "pybind.h"
 
-class PyPlugin : public Plugin {
+class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
     const PluginDescription &getDescription() const override
     {
@@ -67,9 +66,7 @@ class PyPluginLoader : public PluginLoader {
 public:
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
     {
-        return std::unique_ptr<Plugin>([this, &file]() -> Plugin * {
-            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, file);
-        }());
+        PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, file);
     }
 
     std::vector<std::string> getPluginFileFilters() const noexcept override
@@ -81,13 +78,14 @@ public:
 
 PYBIND11_MODULE(_plugin, m)
 {
-    py::class_<Plugin, PyPlugin>(m, "PluginBase")
+    py::class_<Plugin, PyPlugin, PYBIND11_SH_DEF(Plugin)>(m, "PluginBase")
         .def(py::init<>())
         .def("_get_description", &Plugin::getDescription)
         .def("on_load", &Plugin::onLoad)
         .def("on_enable", &Plugin::onEnable)
         .def("on_disable", &Plugin::onDisable)
         .def("on_command", &Plugin::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"), py::arg("args"))
+        .def("get_logger", &Plugin::getLogger)
         .def_property_readonly("logger", &Plugin::getLogger)
         .def_property_readonly("enabled", &Plugin::isEnabled)
         .def_property_readonly("plugin_loader", &Plugin::getPluginLoader);
@@ -102,7 +100,7 @@ PYBIND11_MODULE(_plugin, m)
         .def("_get_prefix", &PluginDescription::getPrefix)
         .def("_get_commands", &PluginDescription::getCommands);
 
-    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader, PYBIND11_SH_DEF(PluginLoader)>(m, "PluginLoader")
         .def(py::init<>())
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
         .def("_get_plugin_file_filters", &PluginLoader::getPluginFileFilters);
