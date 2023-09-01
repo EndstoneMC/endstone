@@ -50,7 +50,7 @@ bool SimpleCommandMap::registerCommand(std::string label, std::string fallback_p
     }
 
     // Register to us so further updates of the commands label and aliases are postponed until it's re-registered
-    command->registerTo(shared_from_this());
+    command->registerTo(*this);
 
     return registered;
 }
@@ -134,7 +134,7 @@ void SimpleCommandMap::clearCommands() noexcept
 {
     std::lock_guard lock(mutex_);
     for (const auto &item : known_commands_) {
-        item.second->unregisterFrom(shared_from_this());
+        item.second->unregisterFrom(*this);
     }
     known_commands_.clear();
     setDefaultCommands();

@@ -108,10 +108,10 @@ public:
      * @return true if the registration was successful (the current registered
      *     CommandMap was the passed CommandMap or null) false otherwise
      */
-    bool registerTo(const std::shared_ptr<CommandMap> &command_map) noexcept
+    bool registerTo(CommandMap &command_map) noexcept
     {
         if (allowChangesFrom(command_map)) {
-            command_map_ = command_map;
+            command_map_ = &command_map;
             return true;
         }
 
@@ -127,10 +127,10 @@ public:
      *     registered CommandMap was the passed CommandMap or null) false
      *     otherwise
      */
-    bool unregisterFrom(const std::shared_ptr<CommandMap> &command_map) noexcept
+    bool unregisterFrom(CommandMap &command_map) noexcept
     {
         if (allowChangesFrom(command_map)) {
-            command_map_.reset();
+            command_map_ = nullptr;
             active_aliases_ = std::vector<std::string>(aliases_);
             label_ = next_label_;
             return true;
@@ -146,7 +146,7 @@ public:
      */
     bool isRegistered() const noexcept
     {
-        return !command_map_.expired();
+        return !command_map_;
     }
 
     /**
@@ -220,9 +220,9 @@ public:
     }
 
 private:
-    bool allowChangesFrom(const std::shared_ptr<CommandMap> &command_map)
+    bool allowChangesFrom(CommandMap &command_map)
     {
-        return (!isRegistered() || command_map_.lock() == command_map);
+        return (!isRegistered() || command_map_ == &command_map);
     }
 
 private:
@@ -237,7 +237,7 @@ protected:
 
 private:
     std::string description_;
-    std::weak_ptr<CommandMap> command_map_;
+    CommandMap *command_map_;
 };
 
 #endif // ENDSTONE_COMMAND_H

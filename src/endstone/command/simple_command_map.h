@@ -7,7 +7,7 @@
 
 #include "endstone/command/command_map.h"
 
-class SimpleCommandMap : public CommandMap, public std::enable_shared_from_this<SimpleCommandMap> {
+class SimpleCommandMap : public CommandMap {
 
 public:
     explicit SimpleCommandMap(Server &server);

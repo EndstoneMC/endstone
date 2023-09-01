@@ -13,8 +13,8 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-SimplePluginManager::SimplePluginManager(Server &server, std::shared_ptr<SimpleCommandMap> command_map)
-    : server_(server), command_map_(std::move(command_map))
+SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &command_map)
+    : server_(server), command_map_(command_map)
 {
 }
 
@@ -139,7 +139,7 @@ void SimplePluginManager::enablePlugin(Plugin &plugin) const
         try {
             auto commands = plugin.getDescription().getCommands();
             if (!commands.empty()) {
-                command_map_->registerAll(plugin.getDescription().getName(), commands);
+                command_map_.registerAll(plugin.getDescription().getName(), commands);
             }
 
             plugin.getPluginLoader().enablePlugin(plugin);

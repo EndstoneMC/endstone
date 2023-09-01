@@ -24,7 +24,7 @@ public:
 
 private:
     std::shared_ptr<Logger> logger_;
-    std::shared_ptr<SimpleCommandMap> command_map_;
+    std::unique_ptr<SimpleCommandMap> command_map_;
     std::unique_ptr<PluginManager> plugin_manager_;
     std::unique_ptr<CommandSender> console_;
 };

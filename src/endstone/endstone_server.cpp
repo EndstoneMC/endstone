@@ -11,8 +11,8 @@
 #include "logger_factory.h"
 
 EndstoneServer::EndstoneServer()
-    : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_shared<SimpleCommandMap>(*this)),
-      plugin_manager_(std::make_unique<SimplePluginManager>(*this, command_map_)),
+    : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
+      plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_)),
       console_(std::make_unique<ConsoleCommandSender>())
 {
 }
