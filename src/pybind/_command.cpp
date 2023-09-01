@@ -37,7 +37,8 @@ void export_command(py::module &m)
         });
 
     py::class_<CommandSender>(m, "CommandSender")
-        .def("send_message", (void(CommandSender::*)(const std::string &) const) & CommandSender::sendMessage)
+        .def("send_message", (void(CommandSender::*)(const std::string &) const) & CommandSender::sendMessage,
+             py::arg("msg"))
         .def_property_readonly("server", &CommandSender::getServer)
         .def_property_readonly("name", &CommandSender::getName)
         .def("__repr__", [](const CommandSender &cs) {

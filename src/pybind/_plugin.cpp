@@ -32,8 +32,7 @@ public:
     bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
-                               std::ref(label), std::ref(args));
+        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, sender, command, label, args);
     }
 };
 
@@ -53,7 +52,7 @@ public:
 
     std::optional<std::string> getPrefix() const override
     {
-        PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getDescription);
+        PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getPrefix);
     }
 
     std::vector<std::shared_ptr<Command>> getCommands() const override
