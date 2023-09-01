@@ -6,6 +6,7 @@ from endstone._bindings import PluginDescription
 from endstone.command import Command
 
 if sys.version_info >= (3, 11):
+    # noinspection PyUnresolvedReferences
     from tomllib import load
 else:
     from tomli import load
@@ -97,28 +98,28 @@ class PluginDescriptionFile(PluginDescription):
 
     @property
     def description(self) -> Optional[str]:
-        return self._description
+        return self._get_description()
 
     @property
     def authors(self) -> Optional[list[str]]:
-        return self._authors
+        return self._get_authors()
 
     @property
     def prefix(self) -> Optional[str]:
-        return self._prefix
+        return self._get_prefix()
 
     @property
     def commands(self) -> list[Command]:
-        return self._commands
+        return self._get_commands()
 
     def _get_description(self) -> Optional[str]:
-        return self.description
+        return self._description
 
     def _get_authors(self) -> Optional[list[str]]:
-        return self.authors
+        return self._authors
 
     def _get_prefix(self) -> Optional[str]:
-        return self.prefix
+        return self._prefix
 
     def _get_commands(self) -> list[Command]:
-        return self.commands
+        return self._commands

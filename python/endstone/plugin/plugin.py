@@ -1,7 +1,6 @@
 from typing import final
 
-from endstone._bindings import PluginBase
-from endstone._bindings import PluginDescription
+from endstone._bindings import PluginBase, Logger, PluginLoader, PluginDescription
 
 from endstone.command import Command, CommandSender
 
@@ -29,7 +28,15 @@ class Plugin(PluginBase):
 
     @property
     def description(self) -> PluginDescription:
-        return self._description
+        return self._get_description()
+
+    @property
+    def logger(self) -> Logger:
+        return self._get_logger()
+
+    @property
+    def plugin_loader(self) -> PluginLoader:
+        return self._get_plugin_loader()
 
     def _get_description(self):
-        return self.description
+        return self._description
