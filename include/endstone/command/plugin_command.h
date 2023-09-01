@@ -13,15 +13,9 @@
 class CommandExecutor;
 
 class PluginCommand : public Command {
-public:
-    friend class PythonPluginDescription;
-    friend class CppPluginDescription;
 
-protected:
-    PluginCommand(const std::string &name, Plugin &owner) noexcept : Command(name), owner_(owner)
-    {
-        usages_.clear();
-    }
+public:
+    PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner){};
 
 public:
     bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override

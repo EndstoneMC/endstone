@@ -10,6 +10,7 @@
 // Created by Vincent on 20/08/2023.
 //
 
+#include "endstone/command/plugin_command.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
@@ -138,8 +139,15 @@ void SimplePluginManager::enablePlugin(Plugin &plugin) const
     if (!plugin.isEnabled()) {
         try {
             auto commands = plugin.getDescription().getCommands();
+
             if (!commands.empty()) {
-                command_map_.registerAll(plugin.getDescription().getName(), commands);
+                auto plugin_commands = std::vector<std::shared_ptr<Command>>(commands.size());
+                std::transform(commands.begin(), commands.end(), plugin_commands.begin(),
+                               [&plugin](const auto &command) {
+                                   return std::make_shared<PluginCommand>(*command, plugin);
+                               });
+
+                command_map_.registerAll(plugin.getDescription().getName(), plugin_commands);
             }
 
             plugin.getPluginLoader().enablePlugin(plugin);

@@ -15,14 +15,13 @@ class CommandMap;
  */
 class Command {
 
-protected:
+public:
     explicit Command(const std::string &name) : Command(name, "", {"/" + name}, {}){};
     explicit Command(const std::string &name, const std::string &description, const std::vector<std::string> &usages,
                      const std::vector<std::string> &aliases)
         : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
           active_aliases_(std::vector<std::string>(aliases)){};
-
-public:
+    Command(const Command &command) = default;
     virtual ~Command() = default;
 
     /**
@@ -33,8 +32,10 @@ public:
      * @param args All arguments passed to the command, split via ' '
      * @return true if the command was successful, otherwise false
      */
-    virtual bool execute(CommandSender &sender, const std::string &label,
-                         const std::vector<std::string> &args) const = 0;
+    virtual bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
+    {
+        throw std::logic_error("Command::execute() is not implemented.");
+    }
 
     /**
      * Returns the name of this command
