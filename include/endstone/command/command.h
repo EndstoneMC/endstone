@@ -21,9 +21,12 @@ public:
                      const std::vector<std::string> &aliases)
         : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
           active_aliases_(std::vector<std::string>(aliases)){};
-    Command(const Command &command) = default;
     virtual ~Command() = default;
 
+protected:
+    Command(const Command &command) = default;
+
+public:
     /**
      * Executes the command, returning its success
      *

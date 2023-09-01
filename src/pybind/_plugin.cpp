@@ -32,7 +32,8 @@ public:
     bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, sender, command, label, args);
+        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
+                               std::ref(label), std::ref(args));
     }
 };
 
@@ -65,7 +66,7 @@ class PyPluginLoader : public PluginLoader {
 public:
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, file);
+        PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
     }
 
     std::vector<std::string> getPluginFileFilters() const noexcept override

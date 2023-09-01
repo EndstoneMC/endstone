@@ -16,7 +16,8 @@ public:
     bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) const noexcept override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, CommandExecutor, "on_command", onCommand);
+        PYBIND11_OVERRIDE_PURE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
+                                    std::ref(label), std::ref(args));
     }
 };
 
