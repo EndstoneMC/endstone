@@ -33,7 +33,7 @@ TEST(ChatColorTest, StripColor)
 TEST(ChatColorTest, ToString)
 {
     for (auto &color : ChatColors::values()) {
-        std::string expected = ChatColors::COLOR_CHAR + static_cast<char>(color);
+        std::string expected = ChatColors::ESCAPE + static_cast<char>(color);
         EXPECT_EQ(ChatColors::toString(color), expected);
     }
 }
@@ -46,7 +46,7 @@ TEST(ChatColorTest, RegexSearch)
         subject += color + filler;
     }
 
-    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::COLOR_PATTERN);
+    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::PATTERN);
     std::sregex_iterator end = std::sregex_iterator();
     size_t count = std::distance(begin, end);
     EXPECT_EQ(count, ChatColors::values().size());
@@ -61,7 +61,7 @@ TEST(ChatColorTest, RegexReplaceWithString)
     }
 
     std::string replaced;
-    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::COLOR_PATTERN);
+    std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::PATTERN);
     std::sregex_iterator end = std::sregex_iterator();
     std::ptrdiff_t lastPos = 0;
 
@@ -87,7 +87,7 @@ TEST(ChatColorTest, RegexReplaceWithStringView)
     std::ptrdiff_t last_pos = 0;
     std::match_results<std::string_view::const_iterator> match;
 
-    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::COLOR_PATTERN)) {
+    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::PATTERN)) {
         replaced_str += std::string(subject.substr(last_pos, match.position()));
         last_pos += (match.position() + match.length());
     }

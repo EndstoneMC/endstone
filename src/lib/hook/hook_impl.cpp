@@ -117,7 +117,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     std::ptrdiff_t last_pos = 0;
     std::match_results<std::string_view::const_iterator> match;
 
-    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::COLOR_PATTERN)) {
+    while (std::regex_search(subject.begin() + last_pos, subject.end(), match, ChatColors::PATTERN)) {
         output.append(subject.substr(last_pos, match.position()));
 
         auto it = replacements.find(match.str());

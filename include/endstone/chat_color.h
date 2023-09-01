@@ -50,9 +50,8 @@ private:
     }
 
 public:
-    const inline static std::string COLOR_CHAR = "§";
-    const inline static std::regex COLOR_PATTERN =
-        std::regex("(" + COLOR_CHAR + "[0-9A-U])", std::regex_constants::icase);
+    const inline static std::string ESCAPE = "§";
+    const inline static std::regex PATTERN = std::regex("(" + ESCAPE + "[0-9A-U])", std::regex_constants::icase);
 
     static const ChatColor *get(char ch)
     {
@@ -65,12 +64,12 @@ public:
 
     static std::string toString(const ChatColor &color)
     {
-        return COLOR_CHAR + static_cast<char>(color);
+        return ESCAPE + static_cast<char>(color);
     }
 
     static std::string stripColor(const std::string &input)
     {
-        return std::regex_replace(input, COLOR_PATTERN, "");
+        return std::regex_replace(input, PATTERN, "");
     }
 
     static std::vector<ChatColor> values()
@@ -119,12 +118,12 @@ inline std::map<char, ChatColor> ChatColors::lookup_map_ = { //
 
 inline std::string operator+(const std::string &lhs, const ChatColor &rhs)
 {
-    return lhs + ChatColors::COLOR_CHAR + static_cast<char>(rhs);
+    return lhs + ChatColors::ESCAPE + static_cast<char>(rhs);
 }
 
 inline std::string operator+(const ChatColor &lhs, const std::string &rhs)
 {
-    return ChatColors::COLOR_CHAR + static_cast<char>(lhs) + rhs;
+    return ChatColors::ESCAPE + static_cast<char>(lhs) + rhs;
 }
 
 #endif // ENDSTONE_CHAT_COLOR_H
