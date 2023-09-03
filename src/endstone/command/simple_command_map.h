@@ -19,7 +19,7 @@ public:
     bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
     bool dispatch(CommandSender &sender, const std::string &command_line) const override;
     void clearCommands() noexcept override;
-    Command *getCommand(std::string name) const noexcept override;
+    std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
 
     void setFallbackCommands();
 

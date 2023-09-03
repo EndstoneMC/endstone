@@ -38,8 +38,8 @@ public:
      */
     virtual void onDisable(){};
 
-    bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
-                   const std::vector<std::string> &args) const noexcept override
+    bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
+                   const std::vector<std::string> &args) noexcept override
     {
         return false;
     }
@@ -93,7 +93,7 @@ public:
      * @param name name or alias of the command
      * @return the plugin command if found, otherwise null
      */
-    PluginCommand *getCommand(const std::string &name)
+    std::shared_ptr<PluginCommand> getCommand(const std::string &name)
     {
         auto alias = name;
         std::transform(alias.begin(), alias.end(), alias.begin(), [](unsigned char c) {

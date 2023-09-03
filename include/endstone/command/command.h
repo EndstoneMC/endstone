@@ -35,7 +35,8 @@ public:
      * @param args All arguments passed to the command, split via ' '
      * @return true if the command was successful, otherwise false
      */
-    virtual bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
+    virtual bool execute(const CommandSender &sender, const std::string &label,
+                         const std::vector<std::string> &args) const
     {
         throw std::logic_error("Command::execute() is not implemented.");
     }

@@ -151,7 +151,7 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
     auto command = server.getCommandMap().getCommand(command_name);
 
-    if (dynamic_cast<BedrockCommandPlaceHolder *>(command)) {
+    if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
         // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
         command_ctx->command_line = std::regex_replace(command_ctx->command_line, std::regex("^/(\\w+):"), "/");
         CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)

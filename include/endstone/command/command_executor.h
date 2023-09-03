@@ -28,8 +28,8 @@ public:
      * @param args Passed command arguments
      * @return true if a valid command, otherwise false
      */
-    virtual bool onCommand(CommandSender &sender, const Command &command, const std::string &label,
-                           const std::vector<std::string> &args) const noexcept = 0;
+    virtual bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
+                           const std::vector<std::string> &args) noexcept = 0;
 };
 
 #endif // ENDSTONE_COMMAND_EXECUTOR_H

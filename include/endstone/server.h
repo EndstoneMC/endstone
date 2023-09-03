@@ -32,7 +32,7 @@ public:
      * @param name the name of the command to retrieve
      * @return a plugin command if found, null otherwise
      */
-    virtual PluginCommand *getPluginCommand(const std::string &name) = 0;
+    virtual std::shared_ptr<PluginCommand> getPluginCommand(const std::string &name) = 0;
 
     /**
      * Dispatches a command on this server, and executes it if found.

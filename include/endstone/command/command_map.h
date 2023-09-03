@@ -98,7 +98,7 @@ public:
      * @return Command with the specified name or nullptr if a command with that
      *     label doesn't exist
      */
-    virtual Command *getCommand(std::string name) const noexcept = 0;
+    virtual std::shared_ptr<Command> getCommand(std::string name) const noexcept = 0;
 
     static std::string getCommandName(const std::string &command_line)
     {

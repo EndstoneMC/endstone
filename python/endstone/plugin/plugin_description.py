@@ -80,7 +80,7 @@ class PluginDescriptionFile(PluginDescription):
 
                     alias_list.append(aliases)
 
-                command.setAliases(alias_list)
+                command.aliases = alias_list
 
             # TODO: permission system
             # if permission:

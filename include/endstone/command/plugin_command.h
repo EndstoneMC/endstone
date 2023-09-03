@@ -16,7 +16,8 @@ public:
     PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner){};
 
 public:
-    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override
+    bool execute(const CommandSender &sender, const std::string &label,
+                 const std::vector<std::string> &args) const override
     {
         if (!owner_.isEnabled()) {
             throw std::runtime_error("Cannot execute command '" + label + "' in plugin " +
@@ -42,7 +43,7 @@ public:
             for (const auto &usage : usages_) {
                 auto usage_msg = fmt::format(usage, fmt::arg("command", label));
 
-                if (dynamic_cast<ConsoleCommandSender *>(&sender)) {
+                if (dynamic_cast<const ConsoleCommandSender *>(&sender)) {
                     sender.getServer().getLogger()->error("Usage: {}", usage_msg);
                 }
                 else {
@@ -59,7 +60,7 @@ public:
      *
      * @param executor New executor to run
      */
-    void setExecutor(const std::shared_ptr<CommandExecutor> &executor) noexcept
+    void setExecutor(std::shared_ptr<CommandExecutor> executor) noexcept
     {
         executor_ = executor;
     }
