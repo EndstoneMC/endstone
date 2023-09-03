@@ -23,6 +23,9 @@ public:
     SimpleCommandMap &getCommandMap() const;
 
 private:
+    void setBedrockCommands();
+
+private:
     std::shared_ptr<Logger> logger_;
     std::unique_ptr<SimpleCommandMap> command_map_;
     std::unique_ptr<PluginManager> plugin_manager_;

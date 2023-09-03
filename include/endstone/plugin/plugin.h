@@ -61,7 +61,7 @@ private:
 
 private:
     bool enabled_{false};
-    PluginLoader *loader_;
+    PluginLoader *loader_{nullptr};
     std::shared_ptr<Logger> logger_;
 };
 

@@ -11,5 +11,5 @@ BedrockCommandPlaceHolder::BedrockCommandPlaceHolder(const std::string &name) : 
 bool BedrockCommandPlaceHolder::execute(CommandSender &sender, const std::string &label,
                                         const std::vector<std::string> &vector) const
 {
-    return true;
+    throw std::runtime_error("BedrockCommandPlaceHolder is not an executable command.");
 }

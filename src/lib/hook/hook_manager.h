@@ -12,9 +12,9 @@
  * @brief Structure to represent a hook.
  */
 struct Hook {
-    void *p_target;   ///< Pointer to the target function.
-    void *p_detour;   ///< Pointer to the detour function.
-    void *p_original; ///< Pointer to the original function.
+    void *p_target = nullptr;   ///< Pointer to the target function.
+    void *p_detour = nullptr;   ///< Pointer to the detour function.
+    void *p_original = nullptr; ///< Pointer to the original function.
 };
 
 /**

@@ -4,6 +4,7 @@
 
 #include "endstone_server.h"
 
+#include "bedrock/command_registry.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
@@ -54,6 +55,11 @@ void EndstoneServer::enablePlugins()
     for (const auto &plugin : plugins) {
         plugin_manager_->enablePlugin(*plugin);
     }
+
+    command_map_->setFallbackCommands();
+    setBedrockCommands();
+    // TODO: permission
+    // TODO: syncCommands
 }
 
 void EndstoneServer::disablePlugins()
@@ -89,4 +95,11 @@ CommandSender &EndstoneServer::getConsoleSender()
 SimpleCommandMap &EndstoneServer::getCommandMap() const
 {
     return *command_map_;
+}
+
+void EndstoneServer::setBedrockCommands()
+{
+    for (const auto &item : CommandRegistry::commands) {
+        command_map_->registerCommand("minecraft", item.second);
+    }
 }

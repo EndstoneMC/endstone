@@ -150,7 +150,7 @@ public:
      */
     bool isRegistered() const noexcept
     {
-        return !command_map_;
+        return command_map_;
     }
 
     /**
@@ -238,10 +238,10 @@ private:
 
 protected:
     std::vector<std::string> usages_;
+    std::string description_;
 
 private:
-    std::string description_;
-    CommandMap *command_map_;
+    CommandMap *command_map_{nullptr};
 };
 
 #endif // ENDSTONE_COMMAND_H

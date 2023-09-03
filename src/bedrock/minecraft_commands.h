@@ -40,7 +40,7 @@ public:
         return *g_instance;
     };
 
-    static MinecraftCommands *g_instance;
+    inline static MinecraftCommands *g_instance{nullptr};
 };
 
 #endif // ENDSTONE_MINECRAFT_COMMANDS_H

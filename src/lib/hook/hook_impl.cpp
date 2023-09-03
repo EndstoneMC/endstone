@@ -145,15 +145,19 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     constexpr MinecraftCommands::Result not_found{false, 0, 1};
 
     auto command_name = CommandMap::getCommandName(command_ctx->command_line);
+
     auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
     auto command = server.getCommandMap().getCommand(command_name);
 
     if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
+        // remove the fallback prefix
+        command_ctx->command_line =
+            std::regex_replace(command_ctx->command_line, std::regex("^/" + command_name), "/" + command->getLabel());
         CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)
         return result;
     }
     else {
-        // TODO: check origin type and pass the right command sender
+        // TODO: check origin type and pass the right command sender (e.g. PlayerCommandSender)
         if (server.dispatchCommand(server.getConsoleSender(), command_ctx->command_line)) {
             *result = success;
         }
@@ -167,18 +171,16 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
 
 void CommandRegistry::registerAlias(std::string name, std::string alias)
 {
-    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
-    auto command = std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(server.getCommandMap().getCommand(name));
-    server.getCommandMap().registerCommand(alias, command, true, "minecraft");
-
+    auto command = commands[name];
+    auto aliases = command->getAliases();
+    aliases.push_back(alias);
+    command->setAliases(aliases);
     return CALL_ORIGINAL(CommandRegistry::registerAlias, std::move(name), std::move(alias));
 }
 
 void CommandRegistry::registerCommand(const std::string *name, const char *description,
                                       CommandPermissionLevel permission_level, CommandFlag flag1, CommandFlag flag2)
 {
-    auto server = dynamic_cast<EndstoneServer *>(&Endstone::getServer());
-    // put a placeholder so that no plugin can override vanilla commands
-    server->getCommandMap().registerCommand("minecraft", std::make_shared<BedrockCommandPlaceHolder>(*name));
+    commands[*name] = std::make_shared<BedrockCommandPlaceHolder>(*name);
     return CALL_ORIGINAL(CommandRegistry::registerCommand, name, description, permission_level, flag1, flag2);
 }

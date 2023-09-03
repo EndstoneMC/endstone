@@ -21,12 +21,14 @@ public:
     void clearCommands() noexcept override;
     std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
 
+    void setFallbackCommands();
+
 protected:
     std::map<std::string, std::shared_ptr<Command>> known_commands_;
 
 private:
-    friend class CommandRegistry;
     void setDefaultCommands();
+
 
     /**
      * Registers a command with the given name is possible. Also uses

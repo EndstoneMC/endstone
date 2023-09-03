@@ -4,9 +4,13 @@
 
 #include "simple_command_map.h"
 
+#include "endstone/command/defaults/help_command.h"
 #include "endstone_command.h"
 
-SimpleCommandMap::SimpleCommandMap(Server &server) : server_(server) {}
+SimpleCommandMap::SimpleCommandMap(Server &server) : server_(server)
+{
+    setDefaultCommands();
+}
 
 void SimpleCommandMap::registerAll(const std::string &fallback_prefix,
                                    const std::vector<std::shared_ptr<Command>> &commands) noexcept
@@ -34,7 +38,7 @@ bool SimpleCommandMap::registerCommand(std::string label, std::string fallback_p
 
     auto registered = registerCommand(label, command, false, fallback_prefix);
 
-    std::vector<std::string> aliases = command->getAliases();
+    auto aliases = command->getAliases();
     for (auto it = aliases.begin(); it != aliases.end();) {
         if (!registerCommand(*it, command, true, fallback_prefix)) {
             it = aliases.erase(it);
@@ -154,7 +158,12 @@ std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const no
     return it->second;
 }
 
+void SimpleCommandMap::setFallbackCommands()
+{
+    registerCommand("endstone", std::make_shared<HelpCommand>());
+}
+
 void SimpleCommandMap::setDefaultCommands()
 {
-    // TODO: default commands...
+    // TODO: default endstone commands...
 }
