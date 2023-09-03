@@ -2,13 +2,17 @@
 // Created by Vincent on 17/08/2023.
 //
 
+#include "endstone/command/plugin_command.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/plugin/plugin_loader.h"
+#include "endstone/server.h"
 #include "pybind.h"
 
 class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
+    using Plugin::Plugin;
+
     const PluginDescription &getDescription() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
@@ -64,6 +68,8 @@ public:
 
 class PyPluginLoader : public PluginLoader {
 public:
+    using PluginLoader::PluginLoader;
+
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
@@ -76,7 +82,7 @@ public:
     }
 };
 
-void export_plugin(py::module &m)
+void def_plugin(py::module &m)
 {
     py::class_<Plugin, PyPlugin, py::smart_holder>(m, "PluginBase")
         .def(py::init<>())
@@ -85,8 +91,10 @@ void export_plugin(py::module &m)
         .def("on_enable", &Plugin::onEnable)
         .def("on_disable", &Plugin::onDisable)
         .def("on_command", &Plugin::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"), py::arg("args"))
+        .def("get_command", &Plugin::getCommand, py::arg("name"))
         .def("_get_logger", &Plugin::getLogger)
         .def("_get_plugin_loader", &Plugin::getPluginLoader)
+        .def("_get_server", &Plugin::getServer)
         .def_property_readonly("enabled", &Plugin::isEnabled);
 
     py::class_<PluginDescription, PyPluginDescription>(m, "PluginDescription")
@@ -100,7 +108,7 @@ void export_plugin(py::module &m)
         .def("_get_commands", &PluginDescription::getCommands);
 
     py::class_<PluginLoader, PyPluginLoader, py::smart_holder>(m, "PluginLoader")
-        .def(py::init<>())
+        .def(py::init<Server &>(), py::arg("server"))
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
         .def("_get_plugin_file_filters", &PluginLoader::getPluginFileFilters);
 }

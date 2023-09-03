@@ -9,6 +9,8 @@
 
 class PluginLoader {
 public:
+    explicit PluginLoader(Server &server) : server_(server){};
+
     virtual ~PluginLoader() = default;
     virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
     virtual std::vector<std::string> getPluginFileFilters() const noexcept = 0;
@@ -31,8 +33,12 @@ protected:
     virtual void initPlugin(Plugin &plugin, const std::shared_ptr<Logger> &logger) noexcept
     {
         plugin.loader_ = this;
+        plugin.server_ = &server_;
         plugin.logger_ = logger;
     }
+
+private:
+    Server &server_;
 };
 
 #endif // ENDSTONE_PLUGIN_LOADER_H

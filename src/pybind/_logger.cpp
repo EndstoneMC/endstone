@@ -6,7 +6,7 @@
 #include "endstone/logger.h"
 #include "pybind.h"
 
-void export_logger(py::module &m)
+void def_logger(py::module &m)
 {
     py::enum_<LogLevel>(m, "LogLevel")
         .value("ALL", LogLevel::All)

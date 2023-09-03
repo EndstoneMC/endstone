@@ -15,6 +15,8 @@
 #include "endstone/logger_factory.h"
 #include "hook_manager.h"
 
+using ServerImpl = EndstoneServer;
+
 void HookManager::registerHooks()
 {
     HOOK_FUNCTION(BedrockLog::log_va)
@@ -31,21 +33,21 @@ void HookManager::registerHooks()
 
 void ServerInstance::startServerThread()
 {
-    Endstone::getServer().loadPlugins();
+    dynamic_cast<ServerImpl &>(Endstone::getServer()).loadPlugins();
     CALL_ORIGINAL(ServerInstance::startServerThread)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance *instance)
 {
     // Server loop starts
-    Endstone::getServer().enablePlugins();
+    dynamic_cast<ServerImpl &>(Endstone::getServer()).enablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStarted, instance)
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance *instance)
 {
     // Server loop stops
-    Endstone::getServer().disablePlugins();
+    dynamic_cast<ServerImpl &>(Endstone::getServer()).disablePlugins();
     CALL_ORIGINAL(ServerInstanceEventCoordinator::sendServerThreadStopped, instance)
 }
 
@@ -58,7 +60,7 @@ void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance *instanc
 int DedicatedServer::runDedicatedServerLoop(void *file_path_manager, //
                                             void *properties, void *level_settings, void *allow_list, void *permissions)
 {
-    Endstone::setServer(std::make_unique<EndstoneServer>());
+    Endstone::setServer(std::make_unique<ServerImpl>());
     return CALL_ORIGINAL(DedicatedServer::runDedicatedServerLoop, file_path_manager, properties, level_settings,
                          allow_list, permissions);
 }
@@ -149,7 +151,7 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
     auto command = server.getCommandMap().getCommand(command_name);
 
-    if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
+    if (dynamic_cast<BedrockCommandPlaceHolder *>(command)) {
         // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
         command_ctx->command_line = std::regex_replace(command_ctx->command_line, std::regex("^/(\\w+):"), "/");
         CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)

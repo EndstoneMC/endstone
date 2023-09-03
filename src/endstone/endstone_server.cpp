@@ -6,6 +6,7 @@
 
 #include "bedrock/command_registry.h"
 #include "endstone/command/console_command_sender.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/plugin/simple_plugin_manager.h"
@@ -21,9 +22,11 @@ EndstoneServer::EndstoneServer()
 void EndstoneServer::loadPlugins()
 {
     try {
-        plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "ZipPluginLoader"));
-        plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>("endstone.plugin", "SourcePluginLoader"));
-        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>());
+        plugin_manager_->registerLoader(
+            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+        plugin_manager_->registerLoader(
+            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
+        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 
         auto pluginFolder = std::filesystem::current_path() / "plugins";
 
@@ -102,4 +105,10 @@ void EndstoneServer::setBedrockCommands()
     for (const auto &item : CommandRegistry::commands) {
         command_map_->registerCommand("minecraft", item.second);
     }
+}
+
+PluginCommand *EndstoneServer::getPluginCommand(const std::string &name)
+{
+    auto command = command_map_->getCommand(name);
+    return dynamic_cast<PluginCommand *>(command);
 }

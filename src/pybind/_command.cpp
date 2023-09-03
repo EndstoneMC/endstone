@@ -3,8 +3,10 @@
 //
 
 #include "endstone/command/command.h"
+#include "endstone/command/command_executor.h"
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/common.h"
 #include "endstone/server.h"
 #include "pybind.h"
@@ -21,7 +23,7 @@ public:
     }
 };
 
-void export_command(py::module &m)
+void def_command_api(py::module &m)
 {
     py::class_<Command, py::smart_holder>(m, "Command")
         .def(py::init<const std::string &>(), py::arg("name"))
@@ -38,13 +40,16 @@ void export_command(py::module &m)
         .def("register", &Command::registerTo, py::arg("command_map"))
         .def("unregister", &Command::unregisterFrom, py::arg("command_map"));
 
+    py::class_<PluginCommand, Command, py::smart_holder>(m, "PluginCommand")
+        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor);
+
     py::class_<CommandSender>(m, "CommandSender")
         .def("send_message", (void(CommandSender::*)(const std::string &) const) & CommandSender::sendMessage,
              py::arg("msg"))
         .def_property_readonly("server", &CommandSender::getServer)
         .def_property_readonly("name", &CommandSender::getName);
 
-    py::class_<CommandExecutor, PyCommandExecutor>(m, "CommandExecutor")
+    py::class_<CommandExecutor, PyCommandExecutor, py::smart_holder>(m, "CommandExecutor")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"),
              py::arg("args"));

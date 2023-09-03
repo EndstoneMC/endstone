@@ -1,6 +1,4 @@
-from typing import final
-
-from endstone._bindings import PluginBase, Logger, PluginLoader, PluginDescription
+from endstone._bindings import PluginBase, PluginDescription
 
 from endstone.command import Command, CommandSender
 
@@ -8,6 +6,7 @@ from endstone.command import Command, CommandSender
 class Plugin(PluginBase):
     def __init__(self):
         PluginBase.__init__(self)
+        self._description: PluginDescription
 
     def on_load(self) -> None:
         pass
@@ -21,22 +20,10 @@ class Plugin(PluginBase):
     def on_command(self, sender: CommandSender, command: Command, label: str, *args) -> bool:
         return False
 
-    # noinspection PyAttributeOutsideInit
-    @final
-    def _init(self, description: PluginDescription) -> None:
-        self._description = description
-
-    @property
-    def description(self) -> PluginDescription:
-        return self._get_description()
-
-    @property
-    def logger(self) -> Logger:
-        return self._get_logger()
-
-    @property
-    def plugin_loader(self) -> PluginLoader:
-        return self._get_plugin_loader()
-
-    def _get_description(self):
+    def _get_description(self) -> PluginDescription:
         return self._description
+
+    description = property(fget=_get_description)
+    logger = property(fget=PluginBase._get_logger)
+    plugin_loader = property(fget=PluginBase._get_plugin_loader)
+    server = property(fget=PluginBase._get_server)

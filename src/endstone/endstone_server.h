@@ -7,19 +7,21 @@
 
 #include "bedrock/minecraft_commands.h"
 #include "endstone/command/simple_command_map.h"
+#include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
 class EndstoneServer : public Server {
 public:
     EndstoneServer();
 
-    void loadPlugins() override;
-    void enablePlugins() override;
-    void disablePlugins() override;
     std::shared_ptr<Logger> getLogger() override;
+    PluginCommand *getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;
 
+    void loadPlugins();
+    void enablePlugins();
+    void disablePlugins();
     SimpleCommandMap &getCommandMap() const;
 
 private:

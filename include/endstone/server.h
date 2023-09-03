@@ -7,7 +7,9 @@
 
 #include "common.h"
 #include "logger.h"
-#include "plugin/plugin_manager.h"
+
+class PluginCommand;
+class CommandSender;
 
 class Server {
 public:
@@ -17,11 +19,38 @@ public:
     Server() = default;
     virtual ~Server() = default;
 
-    virtual void loadPlugins() = 0;
-    virtual void enablePlugins() = 0;
-    virtual void disablePlugins() = 0;
+    /**
+     * Returns the primary logger associated with this server instance.
+     *
+     * @return Logger associated with this server
+     */
     virtual std::shared_ptr<Logger> getLogger() = 0;
+
+    /**
+     * Gets a PluginCommand with the given name or alias.
+     *
+     * @param name the name of the command to retrieve
+     * @return a plugin command if found, null otherwise
+     */
+    virtual PluginCommand *getPluginCommand(const std::string &name) = 0;
+
+    /**
+     * Dispatches a command on this server, and executes it if found.
+     *
+     * @param sender the apparent sender of the command
+     * @param commandLine the command + arguments. Example: <code>test abc 123</code>
+     * @return returns false if no target is found
+     * @throws std::exception thrown when the executor for the given command
+     *     fails with an unhandled exception
+     */
     virtual bool dispatchCommand(CommandSender &sender, const std::string &command_line) = 0;
+
+    /**
+     * Gets a ConsoleCommandSender that may be used as an input source
+     * for this server.
+     *
+     * @return a console command sender
+     */
     virtual CommandSender &getConsoleSender() = 0;
 };
 

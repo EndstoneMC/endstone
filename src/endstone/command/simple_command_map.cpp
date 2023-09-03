@@ -144,7 +144,7 @@ void SimpleCommandMap::clearCommands() noexcept
     setDefaultCommands();
 }
 
-std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const noexcept
+Command *SimpleCommandMap::getCommand(std::string name) const noexcept
 {
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
         return std::tolower(c);
@@ -155,7 +155,7 @@ std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const no
         return nullptr;
     }
 
-    return it->second;
+    return it->second.get();
 }
 
 void SimpleCommandMap::setFallbackCommands()

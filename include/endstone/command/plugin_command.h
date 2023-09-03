@@ -10,8 +10,6 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
-class CommandExecutor;
-
 class PluginCommand : public Command {
 
 public:

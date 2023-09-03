@@ -6,8 +6,9 @@
 
 PYBIND11_MODULE(_bindings, m)
 {
-    export_plugin(m);
-    export_logger(m);
-    export_command(m);
-    export_chat_color(m);
+    def_server(m);
+    def_logger(m);
+    def_plugin(m);
+    def_command_api(m);
+    def_chat_color(m);
 }

@@ -18,8 +18,8 @@ public:
 
     /**
      * Executes the given command, returning its success.
-     * <br>
-     * If false is returned, then the "usage" plugin.yml entry for this command
+     *
+     * If false is returned, then the command usages
      * (if defined) will be sent to the player.
      *
      * @param sender Source of the command

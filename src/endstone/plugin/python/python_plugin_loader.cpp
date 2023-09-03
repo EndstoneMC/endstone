@@ -6,13 +6,15 @@
 
 #include "endstone/common.h"
 #include "endstone/plugin/plugin_logger.h"
+#include "endstone/server.h"
 
-PythonPluginLoader::PythonPluginLoader(const std::string &module_name, const std::string &class_name)
+PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name)
+    : PluginLoader(server)
 {
     py::gil_scoped_acquire gil{};
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
-    auto py_loader = cls();
+    auto py_loader = cls(std::ref(server));
     loader_ = py_loader.cast<std::shared_ptr<PluginLoader>>();
 }
 

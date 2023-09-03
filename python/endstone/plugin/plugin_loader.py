@@ -46,7 +46,7 @@ class ZipPluginLoader(PluginLoader):
             assert isinstance(plugin, Plugin), f"Main class {main} does not extend endstone.plugin.Plugin"
 
             # noinspection PyProtectedMember
-            plugin._init(description)
+            plugin._description = description
             return plugin
         except Exception as e:
             raise RuntimeError(f"Unable to load plugin {description.full_name}: {e}")
@@ -89,7 +89,7 @@ class SourcePluginLoader(PluginLoader):
             assert isinstance(plugin, Plugin), f"Main class {main} does not extend endstone.plugin.Plugin"
 
             # noinspection PyProtectedMember
-            plugin._init(description)
+            plugin._description = description
             return plugin
 
         except Exception as e:
