@@ -150,9 +150,8 @@ MinecraftCommands::Result *MinecraftCommands::executeCommand(MinecraftCommands::
     auto command = server.getCommandMap().getCommand(command_name);
 
     if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
-        // remove the fallback prefix
-        command_ctx->command_line =
-            std::regex_replace(command_ctx->command_line, std::regex("^/" + command_name), "/" + command->getLabel());
+        // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
+        command_ctx->command_line = std::regex_replace(command_ctx->command_line, std::regex("^/(\\w+):"), "/");
         CALL_ORIGINAL(MinecraftCommands::executeCommand, result, command_ctx, flag)
         return result;
     }
