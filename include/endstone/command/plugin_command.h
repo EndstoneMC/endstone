@@ -31,8 +31,7 @@ public:
 
         bool success;
         try {
-            success =
-                getExecutor().onCommand(sender, *this, label, std::forward<const std::vector<std::string> &>(args));
+            success = getExecutor().onCommand(sender, *this, label, args);
         }
         catch (std::exception &e) {
             throw std::runtime_error("Unhandled exception executing command '" + label + "' in plugin " +

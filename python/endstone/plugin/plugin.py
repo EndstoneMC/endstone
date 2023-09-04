@@ -17,7 +17,7 @@ class Plugin(PluginBase):
     def on_disable(self) -> None:
         pass
 
-    def on_command(self, sender: CommandSender, command: Command, label: str, *args) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, label: str, args: list[str]) -> bool:
         return False
 
     def _get_description(self) -> PluginDescription:
