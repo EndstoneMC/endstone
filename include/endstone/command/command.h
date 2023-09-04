@@ -175,9 +175,9 @@ public:
     }
 
     /**
-     * Gets an example usage of this command
+     * Gets example usages of this command
      *
-     * @return One or more example usages
+     * @return List of example usages
      */
     const std::vector<std::string> &getUsages() const
     {

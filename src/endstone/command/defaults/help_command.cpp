@@ -105,7 +105,7 @@ void HelpCommand::displayHelpCommand(const CommandSender &sender, const std::str
     if (!usages.empty()) {
         sender.sendMessage("Usage:");
         for (const auto &usage : command->getUsages()) {
-            sender.sendMessage("- {}", usage);
+            sender.sendMessage("- " + fmt::format(usage, fmt::arg("command", command->getLabel())));
         }
     }
 
