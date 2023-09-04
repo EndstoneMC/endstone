@@ -160,10 +160,20 @@ std::shared_ptr<Command> SimpleCommandMap::getCommand(std::string name) const no
 
 void SimpleCommandMap::setFallbackCommands()
 {
-    registerCommand("endstone", std::make_shared<HelpCommand>());
+    registerCommand("endstone", std::make_shared<HelpCommand>(*this));
 }
 
 void SimpleCommandMap::setDefaultCommands()
 {
     // TODO: default endstone commands...
+}
+
+std::vector<std::shared_ptr<Command>> SimpleCommandMap::getCommands() const noexcept
+{
+    std::vector<std::shared_ptr<Command>> commands;
+    commands.reserve(known_commands_.size());
+    for (const auto &[key, value] : known_commands_) {
+        commands.push_back(value);
+    }
+    return commands;
 }

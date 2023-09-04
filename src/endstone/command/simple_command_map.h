@@ -22,13 +22,13 @@ public:
     std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
 
     void setFallbackCommands();
+    std::vector<std::shared_ptr<Command>> getCommands() const noexcept;
 
 protected:
     std::map<std::string, std::shared_ptr<Command>> known_commands_;
 
 private:
     void setDefaultCommands();
-
 
     /**
      * Registers a command with the given name is possible. Also uses
