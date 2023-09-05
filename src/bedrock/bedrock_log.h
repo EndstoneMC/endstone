@@ -97,9 +97,7 @@ enum class LogRule {
  * @param format Format string for the log message.
  * @param args Variable argument list.
  */
-void log_va(BedrockLog::LogCategory category, // always 0
-                        std::bitset<3> flags,             // always 1
-                        BedrockLog::LogRule rule,         // always 0
+BEDROCK_API void log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
                         LogAreaID area, LogLevel level, char const *function, int line, char const *format,
                         va_list args);
 }; // namespace BedrockLog
