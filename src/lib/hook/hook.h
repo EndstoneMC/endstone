@@ -51,9 +51,9 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*)(Arg
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) &, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(sym_from_name(name));
+    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(sym_from_name(name));
     return [func](Class *obj, Arg... args) -> Return {
-        return (obj->*func)(std::forward<Arg>(args)...);
+        return func(obj, std::forward<Arg>(args)...);
     };
 }
 
@@ -61,11 +61,11 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
  * @brief Construct a std::function from a class method (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const, const std::string &name)
+inline std::function<Return(const Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(sym_from_name(name));
+    auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
-        return (obj->*func)(std::forward<Arg>(args)...);
+        return func(obj, std::forward<Arg>(args)...);
     };
 }
 
@@ -76,11 +76,12 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
  * but with an added `&`.
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const &, const std::string &name)
+inline std::function<Return(const Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const &,
+                                                                 const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
+    auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
-        return (obj->*func)(std::forward<Arg>(args)...);
+        return func(obj, std::forward<Arg>(args)...);
     };
 }
 

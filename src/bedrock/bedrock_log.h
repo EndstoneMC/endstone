@@ -10,6 +10,8 @@
 #include <cstdarg>
 #include <cstdio>
 
+using LogLevel = uint32_t;
+
 /**
  * @enum LogAreaID
  * @brief Identifies different logging areas within the system.
