@@ -5,8 +5,8 @@
 #ifndef ENDSTONE_COMMAND_CONTEXT_H
 #define ENDSTONE_COMMAND_CONTEXT_H
 
+#include "bedrock_common.h"
 #include "command_origin.h"
-#include "endstone/common.h"
 struct CommandContext {
     std::string command_line;              // +0
     std::unique_ptr<CommandOrigin> sender; // +32

@@ -5,8 +5,8 @@
 #ifndef ENDSTONE_MINECRAFT_COMMANDS_H
 #define ENDSTONE_MINECRAFT_COMMANDS_H
 
+#include "bedrock_common.h"
 #include "command_context.h"
-#include "endstone/common.h"
 
 class MinecraftCommands {
 

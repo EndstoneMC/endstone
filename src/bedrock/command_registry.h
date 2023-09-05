@@ -5,9 +5,8 @@
 #ifndef ENDSTONE_COMMAND_REGISTRY_H
 #define ENDSTONE_COMMAND_REGISTRY_H
 
-#include "bedrock_types.h"
+#include "bedrock_common.h"
 #include "endstone/command/command.h"
-#include "endstone/common.h"
 
 class CommandRegistry {
 

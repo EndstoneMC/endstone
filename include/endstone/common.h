@@ -32,13 +32,4 @@
 #include <utility>
 #include <vector>
 
-// Platform-specific macros for exporting symbols
-#ifdef _WIN32
-#define BEDROCK_API  __declspec(dllexport)
-#define ENDSTONE_API __declspec(dllexport)
-#else
-#define BEDROCK_API
-#define ENDSTONE_API
-#endif
-
 #endif // ENDSTONE_COMMON_H

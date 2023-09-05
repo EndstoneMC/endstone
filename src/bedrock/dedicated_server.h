@@ -5,6 +5,8 @@
 #ifndef ENDSTONE_DEDICATED_SERVER_H
 #define ENDSTONE_DEDICATED_SERVER_H
 
+#include "bedrock_common.h"
+
 class DedicatedServer {
 public:
     int runDedicatedServerLoop(void *file_path_manager, // Core::FilePathManager &

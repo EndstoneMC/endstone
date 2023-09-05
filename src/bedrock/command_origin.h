@@ -5,7 +5,7 @@
 #ifndef ENDSTONE_COMMAND_ORIGIN_H
 #define ENDSTONE_COMMAND_ORIGIN_H
 
-#include "endstone/common.h"
+#include "bedrock_common.h"
 
 class CommandOrigin {
 
