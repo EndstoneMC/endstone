@@ -9,13 +9,25 @@
 
 namespace endstone::hook {
 
+template <typename ReturnType = void *>
+inline ReturnType sym_from_name(const std::string &name)
+{
+    auto &internals = internal::get_internals();
+    auto it = internals.originals.find(name);
+    if (it == internals.originals.end()) {
+        throw std::runtime_error("Symbol " + name + " not found.");
+    }
+
+    return reinterpret_cast<ReturnType>(it->second);
+}
+
 /**
  * @brief Construct a std::function from a vanilla function pointer
  */
 template <typename Return, typename... Arg>
 inline std::function<Return(Arg...)> get_function(Return (*f)(Arg...), const std::string &name)
 {
-    return reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
+    return reinterpret_cast<decltype(f)>(sym_from_name(name));
 }
 
 /**
@@ -24,7 +36,7 @@ inline std::function<Return(Arg...)> get_function(Return (*f)(Arg...), const std
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*)(Arg...), const std::string &name)
 {
-    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(internal::sym_from_name(name));
+    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(sym_from_name(name));
     return [func](Class *obj, Arg... args) -> Return {
         return func(obj, std::forward<Arg>(args)...);
     };
@@ -39,7 +51,7 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*)(Arg
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) &, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
+    auto func = reinterpret_cast<decltype(f)>(sym_from_name(name));
     return [func](Class *obj, Arg... args) -> Return {
         return (obj->*func)(std::forward<Arg>(args)...);
     };
@@ -51,7 +63,7 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
+    auto func = reinterpret_cast<decltype(f)>(sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
         return (obj->*func)(std::forward<Arg>(args)...);
     };
@@ -99,8 +111,20 @@ public:
         module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
         sym_module_base = sym.load_module(nullptr);
         sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
-            internals.originals.insert(
-                {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - sym_module_base)});
+            auto name = std::string(info->Name);
+            if (internals.detours.find(name) == internals.detours.end()) {
+                // Not used for hooking; we proceed to undecorate it for easier lookup and to save some memory.
+                char buffer[4096];
+                auto len = UnDecorateSymbolName(name.c_str(), buffer, sizeof(buffer), UNDNAME_NAME_ONLY);
+
+                if (!len) {
+                    throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
+                                            "UnDecorateSymbolName failed");
+                }
+                name = std::string(buffer, len);
+            }
+
+            internals.originals.insert({name, static_cast<char *>(module_base) + (info->Address - sym_module_base)});
             return true;
         });
 
@@ -111,7 +135,7 @@ public:
         }
 
         for (const auto &[name, detour] : internals.detours) {
-            auto target = internal::sym_from_name(name);
+            auto target = sym_from_name(name);
             void *original = nullptr;
 
             // printf("%s: 0x%p -> 0x%p\n", name.c_str(), target, detour);
