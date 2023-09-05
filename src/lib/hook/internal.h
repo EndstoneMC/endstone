@@ -22,17 +22,6 @@ inline internals &get_internals()
     return i;
 }
 
-inline void *sym_from_name(const std::string &name)
-{
-    auto &internals = get_internals();
-    auto it = internals.originals.find(name);
-    if (it == internals.originals.end()) {
-        throw std::runtime_error("Symbol " + name + " not found.");
-    }
-
-    return it->second;
-}
-
 } // namespace endstone::hook::internal
 
 #ifdef _WIN32

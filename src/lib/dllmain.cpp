@@ -1,6 +1,5 @@
 #ifdef _WIN32
 
-#include "bedrock/server_instance.h"
 #include "endstone/common.h"
 #include "hook/hook.h"
 #include "pybind/pybind.h"
