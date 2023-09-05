@@ -11,6 +11,10 @@ using CommandPermissionLevel = uint8_t;
 using CommandFlag = int16_t;
 using LogLevel = uint32_t;
 
+namespace Core {
+class FilePathManager;
+}
+
 #if defined(_WIN32)
 #ifdef BEDROCK_EXPORTS
 #define BEDROCK_API __declspec(dllexport)

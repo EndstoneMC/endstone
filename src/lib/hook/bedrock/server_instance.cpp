@@ -4,23 +4,25 @@
 
 #include "bedrock/server_instance.h"
 
+#include "endstone/endstone.h"
+#include "endstone/endstone_server.h"
 #include "hook/hook.h"
 
 void ServerInstance::startServerThread()
 {
-    printf("Hook is called: %s\n", __FUNCSIG__);
+    dynamic_cast<EndstoneServer &>(Endstone::getServer()).loadPlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    printf("Hook is called: %s\n", __FUNCSIG__);
+    dynamic_cast<EndstoneServer &>(Endstone::getServer()).enablePlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
 {
-    printf("Hook is called: %s\n", __FUNCSIG__);
+    dynamic_cast<EndstoneServer &>(Endstone::getServer()).disablePlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
 }
 

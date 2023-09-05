@@ -180,9 +180,6 @@ private:
 
 #endif
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)                          \
-    do {                                                              \
-        endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__); \
-    } while (false)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_H

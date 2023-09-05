@@ -68,6 +68,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
 
     static std::mutex mtx;
     std::lock_guard<std::mutex> lock(mtx);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&BedrockLog::log_va, category, flags, rule, area, level, function, line, format, args);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&BedrockLog::log_va, //
+                                category, flags, rule, area, level, function, line, output.c_str(), args);
     printf("\x1b[0;3;32m"); // set to green and italic
 }
