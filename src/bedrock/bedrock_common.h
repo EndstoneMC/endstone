@@ -9,6 +9,7 @@
 
 using CommandPermissionLevel = uint8_t;
 using CommandFlag = int16_t;
+using LogLevel = uint32_t;
 
 #if defined(_WIN32)
 #ifdef BEDROCK_EXPORTS

@@ -11,14 +11,14 @@ class AbstractLogger : public Logger {
 public:
     explicit AbstractLogger(std::string name);
 
-    void setLevel(LogLevel level) override;
-    bool isEnabledFor(LogLevel level) const noexcept override;
+    void setLevel(Level level) override;
+    bool isEnabledFor(Level level) const noexcept override;
     std::string_view getName() const override;
 
-    void log(LogLevel level, const std::string &message) const override = 0;
+    void log(Level level, const std::string &message) const override = 0;
 
 private:
-    LogLevel level_;
+    Level level_;
     std::string name_;
 };
 
@@ -27,7 +27,7 @@ class BedrockLoggerAdapter : public AbstractLogger {
 public:
     using AbstractLogger::AbstractLogger;
 
-    void log(LogLevel level, const std::string &message) const override;
+    void log(Level level, const std::string &message) const override;
 };
 
 class LoggerFactory {

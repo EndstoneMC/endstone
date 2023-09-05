@@ -11,10 +11,10 @@
 class PluginLogger : public Logger {
 public:
     explicit PluginLogger(const Plugin &plugin);
-    void setLevel(LogLevel level) override;
-    bool isEnabledFor(LogLevel level) const noexcept override;
+    void setLevel(Level level) override;
+    bool isEnabledFor(Level level) const noexcept override;
     std::string_view getName() const override;
-    void log(LogLevel level, const std::string &message) const override;
+    void log(Level level, const std::string &message) const override;
 
 private:
     std::shared_ptr<Logger> logger_;

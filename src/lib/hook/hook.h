@@ -75,19 +75,20 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
 } // namespace endstone::hook
 
 #ifdef _WIN32
-
-#include <Windows.h>
-//
-#include <DbgHelp.h>
 #include <MinHook.h>
-#include <Psapi.h>
 
 namespace endstone::hook {
 class manager {
 public:
-    explicit manager()
+    explicit manager(void *h_library) : h_library_(h_library)
     {
-        internal::symbol_handler sym{GetCurrentProcess(), 0, nullptr, false};
+        internal::symbol_handler sym{0, nullptr, false};
+
+        auto base = sym.load_module(h_library);
+        sym.enum_symbols(base, "*", [](auto info, auto size) -> bool {
+            printf("%s -> 0x%p | %lu\n", info->Name, reinterpret_cast<void *>(info->Address), info->Flags);
+            return true;
+        });
 
         MH_STATUS status;
         status = MH_Initialize();
@@ -116,6 +117,7 @@ public:
 
 private:
     bool initialized_{false};
+    void *h_library_{nullptr};
 };
 } // namespace endstone::hook
 

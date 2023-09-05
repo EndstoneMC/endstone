@@ -5,6 +5,10 @@
 #ifndef ENDSTONE_INTERNAL_H
 #define ENDSTONE_INTERNAL_H
 
+#include <limits>
+#include <random>
+#include <utility>
+
 namespace endstone::hook::internal {
 
 struct internals {
@@ -31,6 +35,8 @@ inline void *get_function_raw(const std::string &name)
 
 #ifdef _WIN32
 
+#define NOMINMAX
+
 #include <Windows.h>
 //
 #include <DbgHelp.h>
@@ -46,11 +52,12 @@ inline void sym_initialize(void *handle, int options = 0, const char *search_pat
     if (!SymInitialize(handle, search_path, invade_process)) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
     }
+}
 
-    auto &internals = get_internals();
-
+inline size_t sym_load_module(void *handle, void *h_module = nullptr)
+{
     wchar_t image_name[MAX_PATH];
-    auto len = GetModuleFileNameEx(handle, nullptr, image_name, MAX_PATH);
+    auto len = GetModuleFileNameExW(GetCurrentProcess(), reinterpret_cast<HINSTANCE>(h_module), image_name, MAX_PATH);
     if (len == 0 || len == MAX_PATH) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
     }
@@ -60,24 +67,20 @@ inline void sym_initialize(void *handle, int options = 0, const char *search_pat
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymLoadModuleExW failed");
     }
 
+    return module_base;
+}
+
+inline void sym_enum_symbols(void *handle, size_t module_base, const char *mask,
+                             std::function<bool(PSYMBOL_INFO, int)> callback)
+{
     SymEnumSymbols(
-        handle, 0, "*!*",
-        [](auto info, auto size, auto user_context) -> auto {
-            auto internals = static_cast<internal::internals *>(user_context);
-            internals->symbol_map.insert({std::string(info->Name), static_cast<char *>(nullptr) + info->Address});
-            return 1;
+        handle, module_base, mask,
+        [](auto info, auto value, auto user_context) -> int {
+            auto callback = static_cast<std::function<bool(PSYMBOL_INFO, int)> *>(user_context);
+            auto result = (*callback)(info, value);
+            return result ? TRUE : FALSE;
         },
-        &internals);
-
-    MODULEINFO mi = {nullptr};
-    if (!GetModuleInformation(GetCurrentProcess(), GetModuleHandle(nullptr), &mi, sizeof(mi))) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
-                                "GetModuleInformation failed");
-    }
-
-    for (auto &item : internals.symbol_map) {
-        item.second = static_cast<char *>(mi.lpBaseOfDll) + (reinterpret_cast<size_t>(item.second) - module_base);
-    }
+        &callback);
 }
 
 inline void sym_cleanup(void *handle)
@@ -142,11 +145,13 @@ inline const std::error_category &minhook_category() noexcept
 namespace endstone::hook::internal {
 class symbol_handler {
 public:
-    explicit symbol_handler(void *handle = ((void *)-1l), int options = 0, const char *search_path = nullptr,
-                            bool invade_process = false)
-        : handle_(handle)
+    explicit symbol_handler(int options = 0, const char *search_path = nullptr, bool invade_process = false)
     {
-        sym_initialize(handle, options, search_path, invade_process);
+        std::random_device rd;
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<size_t> dist(1, std::numeric_limits<size_t>::max());
+        handle_ = reinterpret_cast<void *>(dist(gen));
+        sym_initialize(handle_, options, search_path, invade_process);
     }
 
     symbol_handler(const symbol_handler &) = delete;
@@ -162,6 +167,16 @@ public:
         if (valid_) {
             sym_cleanup(handle_);
         }
+    }
+
+    size_t load_module(void *h_module)
+    {
+        return sym_load_module(handle_, h_module);
+    }
+
+    void enum_symbols(size_t module_base, const char *mask, std::function<bool(PSYMBOL_INFO, int)> callback)
+    {
+        sym_enum_symbols(handle_, module_base, mask, std::move(callback));
     }
 
 private:
