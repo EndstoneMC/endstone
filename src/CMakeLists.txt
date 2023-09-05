@@ -36,10 +36,6 @@ add_library(endstone::core ALIAS core)
 
 target_include_directories(core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-if (WIN32)
-    set_target_properties(core PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
-endif ()
-
 FetchContent_Declare(
         json
         URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
