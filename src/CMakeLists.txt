@@ -54,7 +54,7 @@ file(
 )
 add_library(libendstone SHARED ${ENDSTONE_LIB_SOURCES})
 target_compile_definitions(libendstone PRIVATE BEDROCK_EXPORTS)
-target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(libendstone PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 if (WIN32)
     FetchContent_Declare(
