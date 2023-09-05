@@ -15,18 +15,18 @@ namespace endstone::hook {
 template <typename Return, typename... Arg>
 inline std::function<Return(Arg...)> get_function(Return (*f)(Arg...), const std::string &name)
 {
-    return reinterpret_cast<decltype(f)>(internal::get_function_raw(name));
+    return reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
 }
 
 /**
  * @brief Construct a std::function from a class method (non-const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...), const std::string &name)
+inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*)(Arg...), const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::get_function_raw(name));
+    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(internal::sym_from_name(name));
     return [func](Class *obj, Arg... args) -> Return {
-        return (obj->*func)(std::forward<Arg>(args)...);
+        return func(obj, std::forward<Arg>(args)...);
     };
 }
 
@@ -39,7 +39,7 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) &, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::get_function_raw(name));
+    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
     return [func](Class *obj, Arg... args) -> Return {
         return (obj->*func)(std::forward<Arg>(args)...);
     };
@@ -51,7 +51,7 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::get_function_raw(name));
+    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
         return (obj->*func)(std::forward<Arg>(args)...);
     };
@@ -66,7 +66,7 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Ar
 template <typename Return, typename Class, typename... Arg>
 inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const &, const std::string &name)
 {
-    auto func = reinterpret_cast<decltype(f)>(internal::get_function_raw(name));
+    auto func = reinterpret_cast<decltype(f)>(internal::sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
         return (obj->*func)(std::forward<Arg>(args)...);
     };
@@ -83,15 +83,48 @@ public:
     explicit manager(void *h_library) : h_library_(h_library)
     {
         internal::symbol_handler sym{0, nullptr, false};
+        auto &internals = internal::get_internals();
 
-        auto base = sym.load_module(h_library);
-        sym.enum_symbols(base, "*", [](auto info, auto size) -> bool {
-            printf("%s -> 0x%p | %lu\n", info->Name, reinterpret_cast<void *>(info->Address), info->Flags);
+        void *module_base;
+        size_t sym_module_base;
+
+        module_base = internal::get_module_base(GetCurrentProcess(), h_library);
+        sym_module_base = sym.load_module(h_library);
+        sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
+            internals.detours.insert(
+                {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - sym_module_base)});
+            return true;
+        });
+
+        module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
+        sym_module_base = sym.load_module(nullptr);
+        sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
+            internals.originals.insert(
+                {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - sym_module_base)});
             return true;
         });
 
         MH_STATUS status;
         status = MH_Initialize();
+        if (status != MH_OK) {
+            throw std::system_error(status, internal::minhook_category());
+        }
+
+        for (const auto &[name, detour] : internals.detours) {
+            auto target = internal::sym_from_name(name);
+            void *original = nullptr;
+
+            // printf("%s: 0x%p -> 0x%p\n", name.c_str(), target, detour);
+            status = MH_CreateHook(target, detour, &original);
+            if (status != MH_OK) {
+                throw std::system_error(status, internal::minhook_category());
+            }
+
+            // printf("%s: = 0x%p\n", name.c_str(), original);
+            internals.originals[name] = original;
+        }
+
+        status = MH_EnableHook(MH_ALL_HOOKS);
         if (status != MH_OK) {
             throw std::system_error(status, internal::minhook_category());
         }
@@ -122,5 +155,10 @@ private:
 } // namespace endstone::hook
 
 #endif
+
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)                          \
+    do {                                                              \
+        endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__); \
+    } while (false)
 
 #endif // ENDSTONE_HOOK_H

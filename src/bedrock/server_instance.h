@@ -14,9 +14,9 @@ public:
 
 class ServerInstanceEventCoordinator {
 public:
-    BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
-    BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
-    BEDROCK_API void sendServerUpdateEnd(ServerInstance &instance);
+    void sendServerThreadStarted(ServerInstance &instance);
+    void sendServerThreadStopped(ServerInstance &instance);
+    void sendServerUpdateEnd(ServerInstance &instance);
 };
 
 #endif // ENDSTONE_SERVER_INSTANCE_H

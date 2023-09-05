@@ -4,10 +4,28 @@
 
 #include "bedrock/server_instance.h"
 
-void ServerInstance::startServerThread() {}
+#include "../../hook/hook.h"
 
-void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance) {}
+void ServerInstance::startServerThread()
+{
+    printf("Hook is called: %s\n", __FUNCSIG__);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
+}
 
-void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance) {}
+void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
+{
+    printf("Hook is called: %s\n", __FUNCSIG__);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
+}
 
-void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance &instance) {}
+void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
+{
+    printf("Hook is called: %s\n", __FUNCSIG__);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
+}
+
+void ServerInstanceEventCoordinator::sendServerUpdateEnd(ServerInstance &instance)
+{
+    printf("Hook is called: %s\n", __FUNCSIG__);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerUpdateEnd, this, instance);
+}

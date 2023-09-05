@@ -4,8 +4,6 @@
 
 #include "bedrock/bedrock_log.h"
 
-std::vector<std::string> gPriorityFilters = {};
-
 void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
                         LogAreaID area, LogLevel level, char const *function, int line, char const *format,
                         va_list args)

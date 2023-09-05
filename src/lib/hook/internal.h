@@ -12,7 +12,8 @@
 namespace endstone::hook::internal {
 
 struct internals {
-    std::unordered_map<std::string, void *> symbol_map{};
+    std::unordered_map<std::string, void *> detours{};
+    std::unordered_map<std::string, void *> originals{};
 };
 
 inline internals &get_internals()
@@ -21,11 +22,12 @@ inline internals &get_internals()
     return i;
 }
 
-inline void *get_function_raw(const std::string &name)
+inline void *sym_from_name(const std::string &name)
 {
-    auto it = get_internals().symbol_map.find(name);
-    if (it == get_internals().symbol_map.end()) {
-        throw std::runtime_error("Function " + name + " not found.");
+    auto &internals = get_internals();
+    auto it = internals.originals.find(name);
+    if (it == internals.originals.end()) {
+        throw std::runtime_error("Symbol " + name + " not found.");
     }
 
     return it->second;
@@ -44,6 +46,28 @@ inline void *get_function_raw(const std::string &name)
 #include <Psapi.h>
 
 namespace endstone::hook::internal {
+
+inline void *get_module_base(void *h_process, void *h_module)
+{
+    MODULEINFO mi = {nullptr};
+    if (!GetModuleInformation(h_process, reinterpret_cast<HMODULE>(h_module), &mi, sizeof(mi))) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(),
+                                "GetModuleInformation failed");
+    }
+
+    return mi.lpBaseOfDll;
+}
+
+inline std::wstring get_module_file_name(void *h_process, void *h_module)
+{
+    wchar_t file_name[MAX_PATH];
+    auto len = GetModuleFileNameExW(h_process, reinterpret_cast<HMODULE>(h_module), file_name, MAX_PATH);
+    if (len == 0 || len == MAX_PATH) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
+    }
+    return file_name;
+}
+
 inline void sym_initialize(void *handle, int options = 0, const char *search_path = nullptr,
                            bool invade_process = false)
 {
@@ -56,13 +80,8 @@ inline void sym_initialize(void *handle, int options = 0, const char *search_pat
 
 inline size_t sym_load_module(void *handle, void *h_module = nullptr)
 {
-    wchar_t image_name[MAX_PATH];
-    auto len = GetModuleFileNameExW(GetCurrentProcess(), reinterpret_cast<HINSTANCE>(h_module), image_name, MAX_PATH);
-    if (len == 0 || len == MAX_PATH) {
-        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
-    }
-
-    auto module_base = SymLoadModuleExW(handle, nullptr, image_name, nullptr, 0, 0, nullptr, 0);
+    auto file_name = get_module_file_name(GetCurrentProcess(), h_module);
+    auto module_base = SymLoadModuleExW(handle, nullptr, file_name.c_str(), nullptr, 0, 0, nullptr, 0);
     if (!module_base) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymLoadModuleExW failed");
     }

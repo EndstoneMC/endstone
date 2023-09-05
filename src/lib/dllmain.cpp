@@ -1,5 +1,6 @@
 #ifdef _WIN32
 
+#include "bedrock/server_instance.h"
 #include "endstone/common.h"
 #include "hook/hook.h"
 #include "pybind/pybind.h"
@@ -9,6 +10,16 @@
 std::unique_ptr<py::scoped_interpreter> g_interpreter;
 std::unique_ptr<py::gil_scoped_release> g_release;
 std::unique_ptr<endstone::hook::manager> g_hook_manager;
+
+template <class R, class T, class... Args>
+void *fp_cast(R (T::*fp)(Args...))
+{
+    // Implicit convert from member function pointer to std::function
+    std::function<R(T *, Args...)> func = fp;
+    // Obtain function pointer from std::function
+    void *detour_ptr = *reinterpret_cast<void **>(func.template target<R (T::*)(Args...)>());
+    return detour_ptr;
+}
 
 BOOL WINAPI DllMain(_In_ HINSTANCE h_library, // handle to DLL module
                     _In_ DWORD fdwReason,     // reason for calling function
@@ -22,6 +33,8 @@ BOOL WINAPI DllMain(_In_ HINSTANCE h_library, // handle to DLL module
             g_interpreter = std::make_unique<py::scoped_interpreter>();
             py::module_::import("threading"); // https://github.com/pybind/pybind11/issues/2197
             g_release = std::make_unique<py::gil_scoped_release>();
+
+            printf("ServerInstance::startServerThread 0x%p\n", fp_cast(&ServerInstance::startServerThread));
 
             // Initialize hook manager
             g_hook_manager = std::make_unique<endstone::hook::manager>(h_library);

@@ -10,8 +10,6 @@
 #include <cstdarg>
 #include <cstdio>
 
-extern "C" BEDROCK_API std::vector<std::string> gPriorityFilters;
-
 /**
  * @enum LogAreaID
  * @brief Identifies different logging areas within the system.
@@ -99,7 +97,7 @@ enum class LogRule {
  * @param format Format string for the log message.
  * @param args Variable argument list.
  */
-BEDROCK_API void log_va(BedrockLog::LogCategory category, // always 0
+void log_va(BedrockLog::LogCategory category, // always 0
                         std::bitset<3> flags,             // always 1
                         BedrockLog::LogRule rule,         // always 0
                         LogAreaID area, LogLevel level, char const *function, int line, char const *format,
