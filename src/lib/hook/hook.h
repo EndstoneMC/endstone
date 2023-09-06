@@ -97,13 +97,13 @@ public:
         auto &internals = internal::get_internals();
 
         void *module_base;
-        size_t sym_module_base;
+        size_t image_base;
 
         module_base = internal::get_module_base(GetCurrentProcess(), h_library);
-        sym_module_base = sym.load_module(h_library);
-        sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
+        image_base = sym.load_module(h_library);
+        sym.enum_symbols(image_base, "*", [&](auto info, auto size) -> bool {
             internals.detours.insert(
-                {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - sym_module_base)});
+                {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - image_base)});
             return true;
         });
 
@@ -112,8 +112,8 @@ public:
         auto last_time = std::chrono::steady_clock::now();
 
         module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
-        sym_module_base = sym.load_module(nullptr);
-        sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
+        image_base = sym.load_module(nullptr);
+        sym.enum_symbols(image_base, "*", [&](auto info, auto size) -> bool {
             auto name = std::string(info->Name);
             if (internals.detours.find(name) == internals.detours.end()) {
                 // Not used for hooking; we proceed to undecorate it for easier lookup and to save some memory.
@@ -127,7 +127,7 @@ public:
                 name = std::string(buffer, len);
             }
 
-            internals.originals.insert({name, static_cast<char *>(module_base) + (info->Address - sym_module_base)});
+            internals.originals.insert({name, static_cast<char *>(module_base) + (info->Address - image_base)});
 
             // Update the progress indicator
             using namespace std::chrono_literals;

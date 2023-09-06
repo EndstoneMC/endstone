@@ -47,7 +47,7 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
 
     std::string_view subject = format;
     std::string output;
-    output.reserve(strlen(format) * 2);
+    output.reserve(subject.size() * 2);
     std::ptrdiff_t last_pos = 0;
     std::match_results<std::string_view::const_iterator> match;
 
