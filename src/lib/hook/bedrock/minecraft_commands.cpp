@@ -22,7 +22,9 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
     if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
         // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
         command_ctx.setCommandLine(std::regex_replace(command_ctx.getCommandLine(), std::regex("^/(\\w+):"), "/"));
-        return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, command_ctx, flag);
+        MCRESULT result;
+        ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, this, &result, command_ctx, flag);
+        return result;
     }
     else {
         // TODO: check origin type and pass the right command sender (e.g. PlayerCommandSender)

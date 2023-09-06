@@ -25,9 +25,9 @@ inline ReturnType sym_from_name(const std::string &name)
  * @brief Construct a std::function from a vanilla function pointer
  */
 template <typename Return, typename... Arg>
-inline std::function<Return(Arg...)> get_function(Return (*f)(Arg...), const std::string &name)
+inline std::function<Return(Arg...)> get_function(Return (*)(Arg...), const std::string &name)
 {
-    return reinterpret_cast<decltype(f)>(sym_from_name(name));
+    return reinterpret_cast<Return (*)(Arg...)>(sym_from_name(name));
 }
 
 /**
@@ -43,45 +43,43 @@ inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*)(Arg
 }
 
 /**
- * @brief Construct a std::function from a class method (non-const, lvalue ref-qualifier)
- *
- * A copy of the overload for non-const functions without explicit ref-qualifier
- * but with an added `&`.
- */
-template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(Class *, Arg...)> get_function(Return (Class::*f)(Arg...) &, const std::string &name)
-{
-    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(sym_from_name(name));
-    return [func](Class *obj, Arg... args) -> Return {
-        return func(obj, std::forward<Arg>(args)...);
-    };
-}
-
-/**
  * @brief Construct a std::function from a class method (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(const Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const, const std::string &name)
-{
-    auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(sym_from_name(name));
-    return [func](const Class *obj, Arg... args) -> Return {
-        return func(obj, std::forward<Arg>(args)...);
-    };
-}
-
-/**
- * @brief Construct a std::function from a class method (const, lvalue ref-qualifier)
- *
- * A copy of the overload for const functions without explicit ref-qualifier
- * but with an added `&`.
- */
-template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(const Class *, Arg...)> get_function(Return (Class::*f)(Arg...) const &,
+inline std::function<Return(const Class *, Arg...)> get_function(Return (Class::*)(Arg...) const,
                                                                  const std::string &name)
 {
     auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(sym_from_name(name));
     return [func](const Class *obj, Arg... args) -> Return {
         return func(obj, std::forward<Arg>(args)...);
+    };
+}
+
+/**
+ * @brief Construct a std::function from a class method (non-const, no ref-qualifier)
+ *  with considerations for Return Value Optimization (RVO).
+ */
+template <typename Return, typename Class, typename... Arg>
+inline std::function<Return *(Class *, Return *, Arg...)> get_function_rvo(Return (Class::*)(Arg...),
+                                                                           const std::string &name)
+{
+    auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(sym_from_name(name));
+    return [func](Class *obj, Return *ret, Arg... args) -> Return * {
+        return func(obj, ret, std::forward<Arg>(args)...);
+    };
+}
+
+/**
+ * @brief Construct a std::function from a class method (const, no ref-qualifier)
+ *  with considerations for Return Value Optimization (RVO).
+ */
+template <typename Return, typename Class, typename... Arg>
+inline std::function<Return *(const Class *, Return *, Arg...)> get_function_rvo(Return (Class::*)(Arg...) const,
+                                                                                 const std::string &name)
+{
+    auto func = reinterpret_cast<Return *(*)(const Class *, Return *, Arg...)>(sym_from_name(name));
+    return [func](const Class *obj, Return *ret, Arg... args) -> Return * {
+        return func(obj, ret, std::forward<Arg>(args)...);
     };
 }
 
@@ -181,6 +179,7 @@ private:
 
 #endif
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::get_function_rvo(fp, __FUNCDNAME__)(__VA_ARGS__);
 
 #endif // ENDSTONE_HOOK_H
