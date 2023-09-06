@@ -5,16 +5,18 @@
 #ifndef ENDSTONE_SERVER_INSTANCE_H
 #define ENDSTONE_SERVER_INSTANCE_H
 
+#include "bedrock_common.h"
+
 class ServerInstance {
 public:
-    void startServerThread();
+    BEDROCK_API void startServerThread();
 };
 
 class ServerInstanceEventCoordinator {
 public:
-    void sendServerThreadStarted(ServerInstance *instance);
-    void sendServerThreadStopped(ServerInstance *instance);
-    void sendServerUpdateEnd(ServerInstance *instance);
+    BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
+    BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
+    BEDROCK_API void sendServerUpdateEnd(ServerInstance &instance);
 };
 
 #endif // ENDSTONE_SERVER_INSTANCE_H

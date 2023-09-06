@@ -15,17 +15,17 @@ PluginLogger::PluginLogger(const Plugin &plugin)
     pluginName_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
 }
 
-void PluginLogger::log(LogLevel level, const std::string &message) const
+void PluginLogger::log(Level level, const std::string &message) const
 {
     logger_->log(level, pluginName_ + message);
 }
 
-void PluginLogger::setLevel(LogLevel level)
+void PluginLogger::setLevel(Level level)
 {
     logger_->setLevel(level);
 }
 
-bool PluginLogger::isEnabledFor(LogLevel level) const noexcept
+bool PluginLogger::isEnabledFor(Level level) const noexcept
 {
     return logger_->isEnabledFor(level);
 }

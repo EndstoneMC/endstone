@@ -102,7 +102,7 @@ SimpleCommandMap &EndstoneServer::getCommandMap() const
 
 void EndstoneServer::setBedrockCommands()
 {
-    for (const auto &item : CommandRegistry::commands) {
+    for (const auto &item : CommandRegistry::bedrock_commands) {
         command_map_->registerCommand("minecraft", item.second);
     }
 }

@@ -7,28 +7,28 @@
 
 #include "common.h"
 
-/**
- * @enum LogLevel
- * @brief Specifies the log level.
- */
-enum class LogLevel {
-    All = -1,
-    Verbose = 1,
-    Info = 2,
-    Warning = 4,
-    Error = 8,
-};
-
 class Logger {
 public:
+    /**
+     * @enum LogLevel
+     * @brief Specifies the log level.
+     */
+    enum class Level {
+        All = 0,
+        Verbose = 1,
+        Info = 2,
+        Warning = 3,
+        Error = 4,
+    };
+
     virtual ~Logger() = default;
-    virtual void setLevel(LogLevel level) = 0;
-    virtual bool isEnabledFor(LogLevel level) const noexcept = 0;
+    virtual void setLevel(Level level) = 0;
+    virtual bool isEnabledFor(Level level) const noexcept = 0;
     virtual std::string_view getName() const = 0;
-    virtual void log(LogLevel level, const std::string &message) const = 0;
+    virtual void log(Level level, const std::string &message) const = 0;
 
     template <typename... Args>
-    void log(LogLevel level, const fmt::format_string<Args...> format, Args &&...args) const
+    void log(Level level, const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(level, fmt::format(format, std::forward<Args>(args)...));
     }
@@ -36,25 +36,25 @@ public:
     template <typename... Args>
     void verbose(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Verbose, fmt::format(format, std::forward<Args>(args)...));
+        log(Level::Verbose, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
     void info(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Info, fmt::format(format, std::forward<Args>(args)...));
+        log(Level::Info, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
     void warning(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Warning, fmt::format(format, std::forward<Args>(args)...));
+        log(Level::Warning, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>
     void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(LogLevel::Error, fmt::format(format, std::forward<Args>(args)...));
+        log(Level::Error, fmt::format(format, std::forward<Args>(args)...));
     }
 };
 

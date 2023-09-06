@@ -5,15 +5,20 @@
 #ifndef ENDSTONE_DEDICATED_SERVER_H
 #define ENDSTONE_DEDICATED_SERVER_H
 
+#include "bedrock_common.h"
+
 class DedicatedServer {
 public:
-    int runDedicatedServerLoop(void *file_path_manager, // Core::FilePathManager &
-                               void *properties,        // PropertiesSettings &
-                               void *level_settings,    // LevelSettings &
-                               void *allow_list,        // AllowListFile &
-                               void *permissions);      // std::unique_ptr<PermissionsFile> &
+    enum class StartResult;
 
-    void initializeLogging();
+public:
+    BEDROCK_API DedicatedServer::StartResult runDedicatedServerLoop(
+        Core::FilePathManager &file_path_manager, class PropertiesSettings &properties_settings,
+        class LevelSettings &level_settings, class AllowListFile &allow_list_file,
+        class std::unique_ptr<class PermissionsFile> &permissions_file);
+
+private:
+    BEDROCK_API void initializeLogging();
 };
 
 #endif // ENDSTONE_DEDICATED_SERVER_H

@@ -8,24 +8,10 @@
 
 void def_logger(py::module &m)
 {
-    py::enum_<LogLevel>(m, "LogLevel")
-        .value("ALL", LogLevel::All)
-        .value("VERBOSE", LogLevel::Verbose)
-        .value("INFO", LogLevel::Info)
-        .value("WARNING", LogLevel::Warning)
-        .value("ERROR", LogLevel::Error)
-        .export_values();
-
     py::class_<Logger, py::smart_holder>(m, "Logger")
         .def("set_level", &Logger::setLevel, py::arg("level"))
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
         .def_property_readonly("name", &Logger::getName)
-        .def(
-            "log",
-            [](const Logger &logger, LogLevel level, const std::string &message) {
-                logger.log(level, message);
-            },
-            py::arg("level"), py::arg("msg"))
         .def(
             "verbose",
             [](const Logger &logger, const std::string &message) {

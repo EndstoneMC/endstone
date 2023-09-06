@@ -6,14 +6,14 @@
 
 #include "bedrock/bedrock_log.h"
 
-AbstractLogger::AbstractLogger(std::string name) : level_(LogLevel::Info), name_(std::move(name)) {}
+AbstractLogger::AbstractLogger(std::string name) : level_(Level::Info), name_(std::move(name)) {}
 
-void AbstractLogger::setLevel(LogLevel level)
+void AbstractLogger::setLevel(Level level)
 {
     level_ = level;
 }
 
-bool AbstractLogger::isEnabledFor(LogLevel level) const noexcept
+bool AbstractLogger::isEnabledFor(Level level) const noexcept
 {
     return level >= level_;
 }
@@ -23,11 +23,30 @@ std::string_view AbstractLogger::getName() const
     return name_;
 }
 
-void BedrockLoggerAdapter::log(LogLevel level, const std::string &message) const
+void BedrockLoggerAdapter::log(Level level, const std::string &message) const
 {
     if (isEnabledFor(level)) {
-        BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default, BedrockLog::LogAreaID::Server,
-                           level, __FUNCTION__, __LINE__, message.c_str(), {});
+        uint32_t log_level;
+
+        switch (level) {
+        case Level::Verbose:
+            log_level = 1;
+            break;
+        case Level::Info:
+            log_level = 2;
+            break;
+        case Level::Warning:
+            log_level = 4;
+            break;
+        case Level::Error:
+            log_level = 8;
+            break;
+        default:
+            log_level = 0;
+        }
+
+        BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default, LogAreaID::Server, log_level,
+                           __FUNCTION__, __LINE__, message.c_str(), {});
     }
 }
 
