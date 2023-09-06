@@ -159,6 +159,8 @@ public:
         std::mt19937 gen(rd());
         std::uniform_int_distribution<size_t> dist(1, std::numeric_limits<size_t>::max());
         handle_ = reinterpret_cast<void *>(dist(gen));
+
+        std::lock_guard lock{mutex_};
         sym_initialize(handle_, options, search_path, invade_process);
     }
 
@@ -172,6 +174,7 @@ public:
 
     ~symbol_handler()
     {
+        std::lock_guard lock{mutex_};
         if (valid_) {
             sym_cleanup(handle_);
         }
@@ -179,17 +182,20 @@ public:
 
     size_t load_module(void *h_module)
     {
+        std::lock_guard lock{mutex_};
         return sym_load_module(handle_, h_module);
     }
 
     void enum_symbols(size_t module_base, const char *mask, std::function<bool(PSYMBOL_INFO, int)> callback)
     {
+        std::lock_guard lock{mutex_};
         sym_enum_symbols(handle_, module_base, mask, std::move(callback));
     }
 
 private:
-    bool valid_ = true;
-    void *handle_ = nullptr;
+    bool valid_{true};
+    void *handle_{nullptr};
+    std::mutex mutex_{};
 };
 } // namespace endstone::hook::internal
 
