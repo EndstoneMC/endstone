@@ -11,7 +11,7 @@
 HelpCommand::HelpCommand(const SimpleCommandMap &command_map) : EndstoneCommand("help"), command_map_(command_map)
 {
     description_ = "Provides help/list of commands.";
-    usages_ = {"/{command} <page: int>", "/{command} [command: CommandName]"};
+    usages_ = {"/{command} [command: CommandName]", "/{command} <page: int>"};
     setAliases({"?"});
 }
 

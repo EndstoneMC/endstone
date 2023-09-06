@@ -57,9 +57,9 @@ public:
     };
     static_assert(sizeof(Signature) == 152);
 
-    BEDROCK_API void registerAlias(std::string name, std::string alias);
     BEDROCK_API void registerCommand(const std::string &name, char const *description,
                                      enum class CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2);
+    BEDROCK_API void registerAlias(std::string name, std::string alias);
 
     inline static std::map<std::string, std::shared_ptr<Command>> bedrock_commands{};
 
