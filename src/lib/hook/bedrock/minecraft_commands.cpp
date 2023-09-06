@@ -19,20 +19,23 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
     auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
     auto command = server.getCommandMap().getCommand(command_name);
 
+    MCRESULT result;
+
     if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
         // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
         command_ctx.setCommandLine(std::regex_replace(command_ctx.getCommandLine(), std::regex("^/(\\w+):"), "/"));
-        MCRESULT result;
-        ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, this, &result, command_ctx, flag);
-        return result;
+
+        result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, this, &result, command_ctx, flag);
     }
     else {
         // TODO: check origin type and pass the right command sender (e.g. PlayerCommandSender)
         if (server.dispatchCommand(server.getConsoleSender(), command_ctx.getCommandLine())) {
-            return success;
+            result = success;
         }
         else {
-            return not_found;
+            result = not_found;
         }
     }
+
+    return result;
 }

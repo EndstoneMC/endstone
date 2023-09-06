@@ -23,3 +23,21 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
         name, I18n::get(description), std::vector<std::string>{"/" + name}, std::vector<std::string>{});
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2);
 }
+
+void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signature,
+                                               CommandRegistry::Overload &overload)
+{
+    printf("/%s ", signature.label.c_str());
+    for (const auto &parameter : overload.parameters) {
+        printf("%s ", describe(parameter).c_str());
+    }
+    printf("\n");
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
+}
+
+std::string CommandRegistry::describe(const CommandParameterData &parameter) const
+{
+    std::string result;
+    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, parameter);
+    return result;
+}
