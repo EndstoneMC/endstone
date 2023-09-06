@@ -31,7 +31,7 @@ struct MCRESULT {
 
 class MinecraftCommands {
 public:
-    BEDROCK_API MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool flag) const;
+    BEDROCK_API MCRESULT executeCommand(CommandContext &command_ctx, bool flag) const;
 };
 
 #endif // ENDSTONE_MINECRAFT_COMMANDS_H

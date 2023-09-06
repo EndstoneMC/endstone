@@ -11,7 +11,7 @@
 
 class BedrockCommandPlaceHolder : public EndstoneCommand {
 public:
-    explicit BedrockCommandPlaceHolder(const std::string &name);
+    using EndstoneCommand::EndstoneCommand;
 
     bool execute(const CommandSender &sender, const std::string &label,
                  const std::vector<std::string> &args) const override;
