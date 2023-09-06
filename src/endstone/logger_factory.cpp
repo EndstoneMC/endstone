@@ -45,8 +45,8 @@ void BedrockLoggerAdapter::log(Level level, const std::string &message) const
             log_level = 0;
         }
 
-        BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default, LogAreaID::Server,
-                           log_level, __FUNCTION__, __LINE__, message.c_str(), {});
+        BedrockLog::log_va(BedrockLog::LogCategory::All, 1, BedrockLog::LogRule::Default, LogAreaID::Server, log_level,
+                           __FUNCTION__, __LINE__, message.c_str(), {});
     }
 }
 

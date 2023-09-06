@@ -5,6 +5,9 @@
 #ifndef ENDSTONE_INTERNAL_H
 #define ENDSTONE_INTERNAL_H
 
+#include <chrono>
+#include <future>
+#include <iostream>
 #include <limits>
 #include <random>
 #include <utility>
@@ -159,9 +162,10 @@ public:
         std::mt19937 gen(rd());
         std::uniform_int_distribution<size_t> dist(1, std::numeric_limits<size_t>::max());
         handle_ = reinterpret_cast<void *>(dist(gen));
-
-        std::lock_guard lock{mutex_};
-        sym_initialize(handle_, options, search_path, invade_process);
+        {
+            std::lock_guard lock{mutex_};
+            sym_initialize(handle_, options, search_path, invade_process);
+        }
     }
 
     symbol_handler(const symbol_handler &) = delete;
@@ -174,8 +178,8 @@ public:
 
     ~symbol_handler()
     {
-        std::lock_guard lock{mutex_};
         if (valid_) {
+            std::lock_guard lock{mutex_};
             sym_cleanup(handle_);
         }
     }

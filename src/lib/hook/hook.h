@@ -107,6 +107,10 @@ public:
             return true;
         });
 
+        const auto SPINNER_CHARS = std::vector<std::string>{"⠈", "⠐", "⠠", "⢀", "⡀", "⠄", "⠂", "⠁"};
+        size_t spinner_id = 0;
+        auto last_time = std::chrono::steady_clock::now();
+
         module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
         sym_module_base = sym.load_module(nullptr);
         sym.enum_symbols(sym_module_base, "*", [&](auto info, auto size) -> bool {
@@ -124,8 +128,21 @@ public:
             }
 
             internals.originals.insert({name, static_cast<char *>(module_base) + (info->Address - sym_module_base)});
+
+            // Update the progress indicator
+            using namespace std::chrono_literals;
+            auto now = std::chrono::steady_clock::now();
+            if ((now - last_time) >= 40ms) {
+                printf("\r\x1b[93;1m%s Loading endstone...", SPINNER_CHARS[spinner_id % SPINNER_CHARS.size()].c_str());
+                fflush(stdout);
+                spinner_id++;
+                last_time = now;
+            }
+
             return true;
         });
+
+        printf("\r\x1b[0m"); // Dismiss the progress indicator
 
         MH_STATUS status;
         status = MH_Initialize();

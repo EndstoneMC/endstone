@@ -7,8 +7,6 @@
 
 #include "endstone/common.h"
 
-
-
 namespace Core {
 class FilePathManager;
 }
