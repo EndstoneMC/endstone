@@ -61,10 +61,5 @@ jobs:
           name: artifact
           path: dist
 
-      - name: Make a GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: dist/*
-
       - name: Upload to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
