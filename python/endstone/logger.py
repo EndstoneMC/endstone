@@ -1,3 +1,3 @@
-from endstone._bindings import Logger, LogLevel
+from endstone._bindings import Logger
 
-__all__ = ["Logger", "LogLevel"]
+__all__ = ["Logger"]

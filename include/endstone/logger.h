@@ -13,7 +13,7 @@ public:
      * @enum LogLevel
      * @brief Specifies the log level.
      */
-    enum class Level {
+    enum Level {
         All = 0,
         Verbose = 1,
         Info = 2,
