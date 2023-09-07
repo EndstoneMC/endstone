@@ -32,6 +32,9 @@ struct MCRESULT {
 class MinecraftCommands {
 public:
     BEDROCK_API MCRESULT executeCommand(CommandContext &command_ctx, bool flag) const;
+
+    inline static std::optional<std::function<bool(const std::string &, std::unique_ptr<CommandOrigin>)>>
+        original_executor;
 };
 
 #endif // ENDSTONE_MINECRAFT_COMMANDS_H

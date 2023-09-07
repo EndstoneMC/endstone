@@ -10,30 +10,35 @@
 class CommandContext {
 
 public:
+    CommandContext(const std::string &command_line, std::unique_ptr<CommandOrigin> sender, int command_version)
+        : command_line_(command_line), sender_(std::move(sender)), command_version_(command_version)
+    {
+    }
+
     const std::string &getCommandLine() const
     {
-        return command_line;
+        return command_line_;
     }
 
     void setCommandLine(const std::string &commandLine)
     {
-        command_line = commandLine;
+        command_line_ = commandLine;
     }
 
-    const CommandOrigin &getCommonOrigin() const
+    const std::unique_ptr<CommandOrigin> &getSender() const
     {
-        return *sender;
+        return sender_;
     }
 
     int getCommandVersion() const
     {
-        return command_version;
+        return command_version_;
     }
 
 private:
-    std::string command_line;              // +0
-    std::unique_ptr<CommandOrigin> sender; // +32
-    int command_version;                   // +40
+    std::string command_line_;              // +0
+    std::unique_ptr<CommandOrigin> sender_; // +32
+    int command_version_;                   // +40
 };
 
 static_assert(sizeof(CommandContext) == 48);
