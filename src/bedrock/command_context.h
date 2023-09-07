@@ -20,7 +20,7 @@ public:
         command_line = commandLine;
     }
 
-    const std::unique_ptr<CommandOrigin> &getSender() const
+    const std::unique_ptr<CommandOrigin> &getCommonOrigin() const
     {
         return sender;
     }

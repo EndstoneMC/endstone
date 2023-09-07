@@ -11,6 +11,8 @@
 #include "hook/hook.h"
 MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool flag) const
 {
+    printf("%hhd\n", command_ctx.getCommonOrigin()->getOriginType());
+
     constexpr MCRESULT success{true, 0, 0};
     constexpr MCRESULT not_found{false, 0, 1};
 
@@ -21,7 +23,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
 
     MCRESULT result;
 
-    if (std::dynamic_pointer_cast<BedrockCommandPlaceHolder>(command)) {
+    if (std::dynamic_pointer_cast<BedrockCommand>(command)) {
         // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
         command_ctx.setCommandLine(std::regex_replace(command_ctx.getCommandLine(), std::regex("^/(\\w+):"), "/"));
 
