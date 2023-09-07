@@ -5,14 +5,14 @@
 #include "bedrock/command_registry.h"
 
 #include "bedrock/i18n.h"
-#include "endstone/command/bedrock_command.h"
+#include "endstone/command/bedrock/bedrock_command.h"
 #include "hook/hook.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description,
                                       enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)
 {
-    bedrock_commands[name] = std::make_shared<BedrockCommand>(
-        name, I18n::get(description), std::vector<std::string>{}, std::vector<std::string>{});
+    bedrock_commands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
+                                                              std::vector<std::string>{});
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2);
 }
 

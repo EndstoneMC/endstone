@@ -5,7 +5,6 @@
 #include "endstone_server.h"
 
 #include "bedrock/command_registry.h"
-#include "endstone/command/console_command_sender.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
@@ -14,8 +13,7 @@
 
 EndstoneServer::EndstoneServer()
     : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
-      plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_)),
-      console_(std::make_unique<ConsoleCommandSender>())
+      plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_))
 {
 }
 
@@ -81,12 +79,7 @@ bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &c
         return true;
     }
 
-    if (dynamic_cast<ConsoleCommandSender *>(&sender)) {
-        logger_->error("Unknown command. Type \"help\" for help.");
-    }
-    else {
-        sender.sendMessage("Unknown command. Type \"/help\" for help.");
-    }
+    sender.sendMessage(ChatColor::Red + "Unknown command. Type \"/help\" for help.");
 
     return false;
 }

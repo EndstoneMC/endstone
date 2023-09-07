@@ -7,7 +7,7 @@
 
 #include "bedrock/command_context.h"
 #include "bedrock/minecraft_commands.h"
-#include "endstone_command.h"
+#include "endstone/command/endstone_command.h"
 
 class BedrockCommand : public EndstoneCommand {
 public:

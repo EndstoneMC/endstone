@@ -20,9 +20,9 @@ public:
         command_line = commandLine;
     }
 
-    const std::unique_ptr<CommandOrigin> &getCommonOrigin() const
+    const CommandOrigin &getCommonOrigin() const
     {
-        return sender;
+        return *sender;
     }
 
     int getCommandVersion() const

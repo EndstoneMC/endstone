@@ -6,7 +6,7 @@
 #define ENDSTONE_PLUGIN_COMMAND_H
 
 #include "command.h"
-#include "endstone/command/console_command_sender.h"
+#include "endstone/chat_color.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
@@ -42,12 +42,7 @@ public:
             for (const auto &usage : usages_) {
                 auto usage_msg = fmt::format(usage, fmt::arg("command", label));
 
-                if (dynamic_cast<const ConsoleCommandSender *>(&sender)) {
-                    sender.getServer().getLogger()->error("Usage: {}", usage_msg);
-                }
-                else {
-                    sender.sendMessage("Usage: {}", usage_msg);
-                }
+                sender.sendMessage("Usage: {}", ChatColor::Red + usage_msg);
             }
         }
 
