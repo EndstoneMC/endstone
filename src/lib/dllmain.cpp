@@ -18,6 +18,10 @@ BOOL WINAPI DllMain(_In_ HINSTANCE h_library, // handle to DLL module
     switch (fdwReason) {
     case DLL_PROCESS_ATTACH: {
         try {
+            // Set both input and output code page to be utf-8
+            SetConsoleCP(65001);
+            SetConsoleOutputCP(65001);
+
             // Initialize python interpreter and release the GIL
             g_interpreter = std::make_unique<py::scoped_interpreter>();
             py::module_::import("threading"); // https://github.com/pybind/pybind11/issues/2197
