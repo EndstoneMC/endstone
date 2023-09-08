@@ -7,14 +7,17 @@
 
 #include "bedrock/command_context.h"
 #include "bedrock/minecraft_commands.h"
-#include "endstone_command.h"
+#include "endstone/command/endstone_command.h"
 
-class BedrockCommandPlaceHolder : public EndstoneCommand {
+class BedrockCommand : public EndstoneCommand {
 public:
     using EndstoneCommand::EndstoneCommand;
 
     bool execute(const CommandSender &sender, const std::string &label,
-                 const std::vector<std::string> &args) const override;
+                 const std::vector<std::string> &args) const override
+    {
+        throw std::runtime_error("BedrockCommand is not executable.");
+    }
 };
 
 #endif // ENDSTONE_BEDROCK_COMMAND_H

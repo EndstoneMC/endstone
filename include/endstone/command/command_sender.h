@@ -39,7 +39,7 @@ public:
      *
      * @return Name of the sender
      */
-    virtual std::string_view getName() const = 0;
+    virtual std::string getName() const = 0;
 };
 
 #endif // ENDSTONE_COMMAND_SENDER_H

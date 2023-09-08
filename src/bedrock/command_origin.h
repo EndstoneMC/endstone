@@ -7,31 +7,35 @@
 
 #include "bedrock_common.h"
 
+enum class CommandOriginType : char {
+    Player = 0,
+    Block = 1,
+    MinecartBlock = 2,
+    AutomationPlayer = 5,
+    ClientAutomation = 6,
+    Server = 7,
+    Actor = 8,
+    Virtual = 9,
+    ActorServer = 11,
+    Precompiled = 12,
+    GameDirectoryEntityServerCommand = 13,
+    Script = 14,
+    ExecuteContext = 15,
+};
+
 class CommandOrigin {
 
 public:
-    enum class Type : uint8_t {
-        Player = 0,
-        Block = 1,
-        MinecartBlock = 2,
-        AutomationPlayer = 5,
-        ClientAutomation = 6,
-        Server = 7,
-        Actor = 8,
-        Virtual = 9,
-        ActorServer = 11,
-        Precompiled = 12,
-        GameDirectoryEntityServerCommand = 13,
-        Script = 14,
-        ExecuteContext = 15,
-    };
-
-    Type getOriginType()
+    CommandOriginType getOriginType() const
     {
-        using func_t = Type (*)(CommandOrigin *);
-        auto v_table = *reinterpret_cast<char **>(this);
-        auto func = *reinterpret_cast<func_t *>(v_table + 23 * 8);
-        return func(this);
+        return BEDROCK_VIRTUAL_CALL(23, &CommandOrigin::getOriginType, this);
+    }
+
+    std::string getName() const
+    {
+        std::string name;
+        name = *BEDROCK_VIRTUAL_CALL_RVO(2, &CommandOrigin::getName, this, &name);
+        return name;
     }
 };
 
