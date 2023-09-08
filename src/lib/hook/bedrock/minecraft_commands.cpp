@@ -27,6 +27,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
                 std::move(command_origin), version};
 
             result = *endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, func_name)(this, &result,
+                                                                                                      ctx, flag);
             return result.is_success;
         };
     }
