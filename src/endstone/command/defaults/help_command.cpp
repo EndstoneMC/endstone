@@ -15,8 +15,7 @@ HelpCommand::HelpCommand(const SimpleCommandMap &command_map) : EndstoneCommand(
     setAliases({"?"});
 }
 
-bool HelpCommand::execute(const CommandSender &sender, const std::string &label,
-                          const std::vector<std::string> &args) const
+bool HelpCommand::execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
 {
     // TODO: testPermission
 

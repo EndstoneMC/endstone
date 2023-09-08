@@ -7,11 +7,12 @@
 
 #include "bedrock_common.h"
 #include "command_origin.h"
+
 class CommandContext {
 
 public:
     CommandContext(const std::string &command_line, std::unique_ptr<CommandOrigin> sender, int command_version)
-        : command_line_(command_line), sender_(std::move(sender)), command_version_(command_version)
+        : command_line_(command_line), origin_(std::move(sender)), command_version_(command_version)
     {
     }
 
@@ -25,9 +26,14 @@ public:
         command_line_ = commandLine;
     }
 
-    const std::unique_ptr<CommandOrigin> &getSender() const
+    const std::unique_ptr<CommandOrigin> &getOrigin() const
     {
-        return sender_;
+        return origin_;
+    }
+
+    std::unique_ptr<CommandOrigin> takeOrigin()
+    {
+        return std::move(origin_);
     }
 
     int getCommandVersion() const
@@ -37,7 +43,7 @@ public:
 
 private:
     std::string command_line_;              // +0
-    std::unique_ptr<CommandOrigin> sender_; // +32
+    std::unique_ptr<CommandOrigin> origin_; // +32
     int command_version_;                   // +40
 };
 

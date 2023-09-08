@@ -10,17 +10,20 @@
 
 class BedrockCommandSender : public CommandSender {
 public:
-    explicit BedrockCommandSender(const CommandOrigin &command_origin) : command_origin_(command_origin) {}
+    explicit BedrockCommandSender(std::unique_ptr<CommandOrigin> origin) : origin_(std::move(origin)) {}
 
 public:
     Server &getServer() const override;
     std::string getName() const override;
 
+    const std::unique_ptr<CommandOrigin> &getOrigin() const;
+    std::unique_ptr<CommandOrigin> takeOrigin();
+
 public:
-    static std::unique_ptr<CommandSender> fromCommandOrigin(const CommandOrigin &origin);
+    static std::unique_ptr<CommandSender> fromCommandOrigin(std::unique_ptr<CommandOrigin> origin);
 
 private:
-    const CommandOrigin &command_origin_;
+    std::unique_ptr<CommandOrigin> origin_;
 };
 
 #endif // ENDSTONE_BEDROCK_COMMAND_SENDER_H

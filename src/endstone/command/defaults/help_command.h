@@ -15,8 +15,7 @@ private:
 
 public:
     HelpCommand(const SimpleCommandMap &command_map);
-    bool execute(const CommandSender &sender, const std::string &label,
-                 const std::vector<std::string> &args) const override;
+    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override;
 
 private:
     void displayHelpPage(const CommandSender &sender, int page) const;

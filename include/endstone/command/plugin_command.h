@@ -16,8 +16,7 @@ public:
     PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner){};
 
 public:
-    bool execute(const CommandSender &sender, const std::string &label,
-                 const std::vector<std::string> &args) const override
+    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override
     {
         if (!owner_.isEnabled()) {
             throw std::runtime_error("Cannot execute command '" + label + "' in plugin " +

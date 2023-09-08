@@ -7,6 +7,7 @@
 
 #include "bedrock_common.h"
 #include "command_context.h"
+#include "endstone/command/bedrock/bedrock_command.h"
 
 struct MCRESULT {
     bool is_success;
@@ -33,8 +34,13 @@ class MinecraftCommands {
 public:
     BEDROCK_API MCRESULT executeCommand(CommandContext &command_ctx, bool flag) const;
 
+private:
     inline static std::optional<std::function<bool(const std::string &, std::unique_ptr<CommandOrigin>)>>
-        original_executor;
+        vanilla_dispatcher;
+
+    // Allow the BedrockCommand::execute to use the vanilla executor
+    friend bool BedrockCommand::execute(CommandSender &sender, const std::string &label,
+                                        const std::vector<std::string> &args) const;
 };
 
 #endif // ENDSTONE_MINECRAFT_COMMANDS_H
