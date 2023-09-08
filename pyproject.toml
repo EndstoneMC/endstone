@@ -25,7 +25,7 @@ classifiers = [
 dependencies = [
     "click",
     "requests",
-    "toml",
+    "tomli",
     "tqdm",
     "packaging"
 ]
