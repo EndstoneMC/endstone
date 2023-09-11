@@ -11,23 +11,16 @@
 #include "endstone/endstone_server.h"
 #include "hook/hook.h"
 
-MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool flag) const
-{
-    constexpr static auto func_name = __FUNCDNAME__;
+MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool flag) const {
+    constexpr static auto func_decorated_name = __FUNCDNAME__;
 
     if (!vanilla_dispatcher.has_value()) {
         vanilla_dispatcher = [this, version = command_ctx.getCommandVersion(), flag](auto &command_line,
                                                                                      auto command_origin) -> bool {
             MCRESULT result = {};
-
-            CommandContext ctx = {
-                // replace the fallback prefix in a command (e.g. /minecraft:) with a forward slash (i.e. /)
-                std::regex_replace(command_line, std::regex("^/(\\w+):"), "/"),
-                // take the ownership of command origin
-                std::move(command_origin), version};
-
-            result = *endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, func_name)(this, &result,
-                                                                                                      ctx, flag);
+            CommandContext ctx = {command_line, std::move(command_origin), version};
+            auto func = endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, func_decorated_name);
+            result = *func(this, &result, ctx, flag);
             return result.is_success;
         };
     }
@@ -45,8 +38,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
     auto sender = BedrockCommandSender::fromCommandOrigin(command_ctx.takeOrigin());
     if (server.dispatchCommand(*sender, command_ctx.getCommandLine())) {
         result = success;
-    }
-    else {
+    } else {
         result = failed;
     }
 
