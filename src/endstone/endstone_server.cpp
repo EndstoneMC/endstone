@@ -12,25 +12,23 @@
 #include "logger_factory.h"
 
 EndstoneServer::EndstoneServer()
-    : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
-      plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_))
-{
+        : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
+          plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_)) {
 }
 
-void EndstoneServer::loadPlugins()
-{
+void EndstoneServer::loadPlugins() {
     try {
         plugin_manager_->registerLoader(
-            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+                std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
         plugin_manager_->registerLoader(
-            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
+                std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
         plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 
         auto pluginFolder = std::filesystem::current_path() / "plugins";
 
         if (exists(pluginFolder)) {
             auto plugins = plugin_manager_->loadPlugins(pluginFolder);
-            for (const auto &plugin : plugins) {
+            for (const auto &plugin: plugins) {
                 try {
                     plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
                     plugin->onLoad();
@@ -40,8 +38,7 @@ void EndstoneServer::loadPlugins()
                                    e.what());
                 }
             }
-        }
-        else {
+        } else {
             create_directories(pluginFolder);
         }
     }
@@ -50,10 +47,9 @@ void EndstoneServer::loadPlugins()
     }
 }
 
-void EndstoneServer::enablePlugins()
-{
+void EndstoneServer::enablePlugins() {
     auto plugins = plugin_manager_->getPlugins();
-    for (const auto &plugin : plugins) {
+    for (const auto &plugin: plugins) {
         plugin_manager_->enablePlugin(*plugin);
     }
 
@@ -63,18 +59,15 @@ void EndstoneServer::enablePlugins()
     // TODO: syncCommands
 }
 
-void EndstoneServer::disablePlugins()
-{
+void EndstoneServer::disablePlugins() {
     plugin_manager_->disablePlugins();
 }
 
-std::shared_ptr<Logger> EndstoneServer::getLogger()
-{
+std::shared_ptr<Logger> EndstoneServer::getLogger() {
     return logger_;
 }
 
-bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line)
-{
+bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line) {
     if (command_map_->dispatch(sender, command_line)) {
         return true;
     }
@@ -83,25 +76,22 @@ bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &c
 
     return false;
 }
-CommandSender &EndstoneServer::getConsoleSender()
-{
-    return *console_;
-}
 
-SimpleCommandMap &EndstoneServer::getCommandMap() const
-{
+SimpleCommandMap &EndstoneServer::getCommandMap() const {
     return *command_map_;
 }
 
-void EndstoneServer::setBedrockCommands()
-{
-    for (const auto &item : CommandRegistry::bedrock_commands) {
+void EndstoneServer::setBedrockCommands() {
+    for (const auto &item: CommandRegistry::bedrock_commands) {
         command_map_->registerCommand("minecraft", item.second);
     }
 }
 
-std::shared_ptr<PluginCommand> EndstoneServer::getPluginCommand(const std::string &name)
-{
+std::shared_ptr<PluginCommand> EndstoneServer::getPluginCommand(const std::string &name) {
     auto command = command_map_->getCommand(name);
     return std::dynamic_pointer_cast<PluginCommand>(command);
+}
+
+PluginManager &EndstoneServer::getPluginManager() const {
+    return *plugin_manager_;
 }

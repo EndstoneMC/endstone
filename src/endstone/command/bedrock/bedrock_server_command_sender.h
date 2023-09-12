@@ -12,6 +12,8 @@ public:
 
 public:
     void sendMessage(const std::string &message) const override;
+    bool isOperator() const override;
+    void setOperator(bool value) override;
 };
 
 #endif // ENDSTONE_BEDROCK_SERVER_COMMAND_SENDER_H

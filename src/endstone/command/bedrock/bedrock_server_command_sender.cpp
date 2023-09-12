@@ -10,3 +10,13 @@ void BedrockServerCommandSender::sendMessage(const std::string &message) const
 {
     getServer().getLogger()->info(message);
 }
+
+bool BedrockServerCommandSender::isOperator() const
+{
+    return true;
+}
+
+void BedrockServerCommandSender::setOperator(bool value)
+{
+    throw std::runtime_error("Cannot change operator status of server console");
+}
