@@ -7,6 +7,7 @@
 
 #include "bedrock/command_origin.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/permission/permissible_base.h"
 
 class BedrockCommandSender : public CommandSender {
 public:
@@ -24,6 +25,7 @@ public:
 
 private:
     std::unique_ptr<CommandOrigin> origin_;
+    PermissibleBase permissible_;
 };
 
 #endif // ENDSTONE_BEDROCK_COMMAND_SENDER_H
