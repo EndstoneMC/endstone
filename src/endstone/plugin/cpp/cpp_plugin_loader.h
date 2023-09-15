@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "endstone/plugin/plugin_loader.h"
 
 class CppPluginLoader : public PluginLoader {

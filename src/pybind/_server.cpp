@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "endstone/server.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 void def_server(py::module &m)
 {

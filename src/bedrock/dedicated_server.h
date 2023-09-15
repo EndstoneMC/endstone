@@ -14,7 +14,10 @@
 
 #pragma once
 
-#include "bedrock_common.h"
+#include <memory>
+
+#include "bedrock/internal.h"
+#include "bedrock/types.h"
 
 class DedicatedServer {
 public:

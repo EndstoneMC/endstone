@@ -14,7 +14,12 @@
 
 #pragma once
 
-#include "bedrock_common.h"
+#include <memory>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+#include "bedrock/internal.h"
 #include "endstone/command/command.h"
 
 struct CommandFlag {
@@ -70,7 +75,7 @@ public:
                                      enum class CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
 
-    inline static std::map<std::string, std::shared_ptr<Command>> bedrock_commands{};
+    inline static std::unordered_map<std::string, std::shared_ptr<Command>> bedrock_commands{};
 
 private:
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,

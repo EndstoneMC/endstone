@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/common.h"
 #include "endstone/logger.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 void def_logger(py::module &m)
 {

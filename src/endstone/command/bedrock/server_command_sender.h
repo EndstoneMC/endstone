@@ -12,11 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock_server_command_sender.h"
+#pragma once
 
-#include "endstone/server.h"
+#include <string>
 
-void BedrockServerCommandSender::sendMessage(const std::string &message) const
-{
-    getServer().getLogger()->info(message);
-}
+#include "endstone/command/bedrock/bedrock_command_sender.h"
+
+class ServerCommandSender : public BedrockCommandSender {
+public:
+    using BedrockCommandSender::BedrockCommandSender;
+
+public:
+    void sendMessage(const std::string &message) const override;
+};

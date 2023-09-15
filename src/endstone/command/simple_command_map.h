@@ -14,10 +14,15 @@
 
 #pragma once
 
+#include <memory>
+#include <mutex>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
 #include "endstone/command/command_map.h"
 
 class SimpleCommandMap : public CommandMap {
-
 public:
     explicit SimpleCommandMap(Server &server);
 
@@ -28,13 +33,13 @@ public:
     bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
     bool dispatch(CommandSender &sender, const std::string &command_line) const override;
     void clearCommands() noexcept override;
-    std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
+    [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
 
     void setFallbackCommands();
-    std::vector<std::shared_ptr<Command>> getCommands() const noexcept;
+    [[nodiscard]] std::vector<std::shared_ptr<Command>> getCommands() const noexcept;
 
 protected:
-    std::map<std::string, std::shared_ptr<Command>> known_commands_;
+    std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
 
 private:
     void setDefaultCommands();

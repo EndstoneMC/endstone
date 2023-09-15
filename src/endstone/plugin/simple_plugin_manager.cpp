@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "simple_plugin_manager.h"
+#include "endstone/plugin/simple_plugin_manager.h"
 
+#include <algorithm>
 #include <utility>
 
 #include "endstone/command/plugin_command.h"

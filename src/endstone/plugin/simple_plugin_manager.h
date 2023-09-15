@@ -14,11 +14,15 @@
 
 #pragma once
 
+#include <map>
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "endstone/command/simple_command_map.h"
 #include "endstone/plugin/plugin_manager.h"
 
 class SimplePluginManager : public PluginManager {
-
 public:
     explicit SimplePluginManager(Server &server, SimpleCommandMap &command_map);
 

@@ -14,7 +14,11 @@
 
 #pragma once
 
-#include "internal.h"
+#include <string>
+#include <utility>
+#include <vector>
+
+#include "lib/hook/internal.h"
 
 namespace endstone::hook {
 
@@ -139,7 +143,7 @@ public:
             internals.originals.insert({name, static_cast<char *>(module_base) + (info->Address - image_base)});
 
             // Update the progress indicator
-            using namespace std::chrono_literals;
+            using std::chrono_literals::operator""ms;
             auto now = std::chrono::steady_clock::now();
             if ((now - last_time) >= 40ms) {
                 printf("\r\x1b[93;1m%s Loading endstone...", SPINNER_CHARS[spinner_id % SPINNER_CHARS.size()].c_str());

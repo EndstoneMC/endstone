@@ -14,16 +14,18 @@
 
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include "endstone/command/endstone_command.h"
 #include "endstone/command/simple_command_map.h"
 
 class HelpCommand : public EndstoneCommand {
-
 private:
-    const int COMMANDS_PER_PAGE = 8;
+    constexpr static int COMMANDS_PER_PAGE = 8;
 
 public:
-    HelpCommand(const SimpleCommandMap &command_map);
+    explicit HelpCommand(const SimpleCommandMap &command_map);
     bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override;
 
 private:

@@ -14,15 +14,18 @@
 
 #include "endstone/command/bedrock/bedrock_command.h"
 
+#include <regex>
+#include <utility>
+
 #include "bedrock/minecraft_commands.h"
-#include "bedrock_command_sender.h"
+#include "endstone/command/bedrock/bedrock_command_sender.h"
 
 bool BedrockCommand::execute(CommandSender &sender, const std::string &label,
                              const std::vector<std::string> &args) const
 {
     auto &bedrock_sender = dynamic_cast<BedrockCommandSender &>(sender);
     auto command_line = toCommandLine(label, args);
-    return MinecraftCommands::vanilla_dispatcher.value()(command_line, std::move(bedrock_sender.takeOrigin()));
+    return MinecraftCommands::vanilla_dispatcher_.value()(command_line, std::move(bedrock_sender.takeOrigin()));
 }
 
 std::string BedrockCommand::toCommandLine(const std::string &label, const std::vector<std::string> &args)

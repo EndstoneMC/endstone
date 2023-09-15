@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "plugin_logger.h"
+#include "endstone/plugin/plugin_logger.h"
 
 #include "endstone/logger_factory.h"
 

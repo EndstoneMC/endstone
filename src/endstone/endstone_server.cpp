@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_server.h"
+#include "endstone/endstone_server.h"
 
 #include "bedrock/command_registry.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/logger_factory.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/plugin/simple_plugin_manager.h"
-#include "logger_factory.h"
 
 EndstoneServer::EndstoneServer()
     : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
@@ -69,8 +69,8 @@ void EndstoneServer::enablePlugins()
 
     command_map_->setFallbackCommands();
     setBedrockCommands();
-    // TODO: permission
-    // TODO: syncCommands
+    // TODO(permission): add permissions from plugin's description
+    // TODO(command): send new available command packet to clients
 }
 
 void EndstoneServer::disablePlugins()

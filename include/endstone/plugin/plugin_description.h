@@ -15,6 +15,9 @@
 #pragma once
 
 #include <memory>
+#include <mutex>
+#include <optional>
+#include <regex>
 #include <string>
 #include <vector>
 

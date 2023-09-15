@@ -14,8 +14,14 @@
 
 #pragma once
 
-#include "bedrock_common.h"
-#include "command_context.h"
+#include <functional>
+#include <memory>
+#include <optional>
+#include <string>
+#include <vector>
+
+#include "bedrock/command_context.h"
+#include "bedrock/internal.h"
 #include "endstone/command/bedrock/bedrock_command.h"
 
 struct MCRESULT {
@@ -23,7 +29,7 @@ struct MCRESULT {
     uint8_t category;
     uint16_t error_code;
 
-    constexpr int getFullCode() const
+    [[nodiscard]] constexpr int getFullCode() const
     {
         return error_code | ((category | (is_success ? 0 : 0x8000)) << 16);
     }
@@ -37,7 +43,12 @@ struct MCRESULT {
     {
         return !(lhs == rhs);
     }
+
+    static const MCRESULT SUCCESS;
+    static const MCRESULT FAILED;
 };
+inline const MCRESULT MCRESULT::SUCCESS = {true};
+inline const MCRESULT MCRESULT::FAILED = {false};
 
 class MinecraftCommands {
 public:
@@ -45,7 +56,7 @@ public:
 
 private:
     inline static std::optional<std::function<bool(const std::string &, std::unique_ptr<CommandOrigin>)>>
-        vanilla_dispatcher;
+        vanilla_dispatcher_;
 
     // Allow the BedrockCommand::execute to use the vanilla executor
     friend bool BedrockCommand::execute(CommandSender &sender, const std::string &label,

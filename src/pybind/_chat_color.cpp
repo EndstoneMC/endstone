@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "endstone/chat_color.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 void def_chat_color(py::module &m)
 {

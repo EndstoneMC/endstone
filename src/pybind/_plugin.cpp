@@ -17,7 +17,7 @@
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:

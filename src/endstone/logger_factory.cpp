@@ -12,7 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "logger_factory.h"
+#include "endstone/logger_factory.h"
+
+#include <mutex>
+#include <unordered_map>
+#include <utility>
 
 #include "bedrock/bedrock_log.h"
 
@@ -65,7 +69,7 @@ std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
     static std::mutex mutex;
     std::scoped_lock<std::mutex> lock(mutex);
 
-    static std::map<std::string, std::shared_ptr<BedrockLoggerAdapter>> loggers;
+    static std::unordered_map<std::string, std::shared_ptr<BedrockLoggerAdapter>> loggers;
     auto it = loggers.find(name);
     if (it == loggers.end()) {
         it = loggers.insert({name, std::make_shared<BedrockLoggerAdapter>(name)}).first;

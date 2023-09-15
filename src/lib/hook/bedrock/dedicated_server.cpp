@@ -16,7 +16,7 @@
 
 #include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
-#include "hook/hook.h"
+#include "lib/hook/hook.h"
 
 void DedicatedServer::initializeLogging()
 {

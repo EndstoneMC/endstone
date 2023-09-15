@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "endstone/logger.h"
 
 class AbstractLogger : public Logger {
@@ -32,7 +35,6 @@ private:
 };
 
 class BedrockLoggerAdapter : public AbstractLogger {
-
 public:
     using AbstractLogger::AbstractLogger;
 

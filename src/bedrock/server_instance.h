@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock_common.h"
+#include "bedrock/internal.h"
 
 class ServerInstance {
 public:

@@ -14,7 +14,8 @@
 
 #include "endstone/plugin/python/python_plugin_loader.h"
 
-#include "endstone/common.h"
+#include <utility>
+
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/server.h"
 

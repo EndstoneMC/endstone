@@ -16,20 +16,19 @@
 
 #include <Windows.h>
 
-#include "endstone/common.h"
-#include "hook/hook.h"
+#include "lib/hook/hook.h"
 #include "pybind/pybind.h"
 
-[[maybe_unused]] std::unique_ptr<py::scoped_interpreter> g_interpreter;
-[[maybe_unused]] std::unique_ptr<py::gil_scoped_release> g_release;
-[[maybe_unused]] std::unique_ptr<endstone::hook::manager> g_hook_manager;
+[[maybe_unused]] std::unique_ptr<py::scoped_interpreter> gInterpreter;
+[[maybe_unused]] std::unique_ptr<py::gil_scoped_release> gRelease;
+[[maybe_unused]] std::unique_ptr<endstone::hook::manager> gHookManager;
 
-BOOL WINAPI DllMain(_In_ HINSTANCE h_library,  // handle to DLL module
-                    _In_ DWORD fdwReason,      // reason for calling function
-                    _In_ LPVOID lpvReserved)   // reserved
+[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,  // handle to DLL module
+                                     _In_ DWORD reason,      // reason for calling function
+                                     _In_ LPVOID reserved)   // reserved
 {
     // Perform actions based on the reason for calling.
-    switch (fdwReason) {
+    switch (reason) {
     case DLL_PROCESS_ATTACH: {
         try {
             // Set both input and output code page to be utf-8
@@ -37,12 +36,12 @@ BOOL WINAPI DllMain(_In_ HINSTANCE h_library,  // handle to DLL module
             SetConsoleOutputCP(65001);
 
             // Initialize python interpreter and release the GIL
-            g_interpreter = std::make_unique<py::scoped_interpreter>();
+            gInterpreter = std::make_unique<py::scoped_interpreter>();
             py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
-            g_release = std::make_unique<py::gil_scoped_release>();
+            gRelease = std::make_unique<py::gil_scoped_release>();
 
             // Initialize hook manager
-            g_hook_manager = std::make_unique<endstone::hook::manager>(h_library);
+            gHookManager = std::make_unique<endstone::hook::manager>(module);
             break;
         }
         catch (const std::exception &e) {
@@ -57,11 +56,11 @@ BOOL WINAPI DllMain(_In_ HINSTANCE h_library,  // handle to DLL module
         }
     }
     case DLL_PROCESS_DETACH: {
-        if (lpvReserved != nullptr) {
+        if (reserved != nullptr) {
             break;  // do not do cleanup if process termination scenario
         }
 
-        g_release.reset();  // Ensure the GIL is re-acquired.
+        gRelease.reset();  // Ensure the GIL is re-acquired.
         break;
     }
     case DLL_THREAD_ATTACH:

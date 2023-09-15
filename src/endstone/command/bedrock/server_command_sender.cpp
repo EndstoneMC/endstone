@@ -12,24 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/command/bedrock/server_command_sender.h"
 
-#include <memory>
-#include <string>
-#include <vector>
+#include "endstone/server.h"
 
-#include "endstone/plugin/plugin_loader.h"
-#include "pybind/pybind.h"
-
-class PythonPluginLoader : public PluginLoader {
-public:
-    PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name);
-
-    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override;
-    std::vector<std::string> getPluginFileFilters() const noexcept override;
-    void enablePlugin(Plugin &plugin) const noexcept override;
-    void disablePlugin(Plugin &plugin) const noexcept override;
-
-private:
-    std::shared_ptr<PluginLoader> loader_;
-};
+void ServerCommandSender::sendMessage(const std::string &message) const
+{
+    getServer().getLogger()->info(message);
+}

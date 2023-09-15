@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 PYBIND11_MODULE(_bindings, m)
 {

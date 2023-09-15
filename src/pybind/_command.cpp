@@ -17,8 +17,7 @@
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/plugin_command.h"
-#include "endstone/common.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 class PyCommandExecutor : public CommandExecutor {
     using CommandExecutor::CommandExecutor;

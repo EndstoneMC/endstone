@@ -16,7 +16,7 @@
 
 #include "bedrock/i18n.h"
 #include "endstone/command/bedrock/bedrock_command.h"
-#include "hook/hook.h"
+#include "lib/hook/hook.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description,
                                       enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)

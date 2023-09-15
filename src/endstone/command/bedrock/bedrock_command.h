@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <string>
+#include <vector>
+
 #include "bedrock/command_context.h"
 #include "endstone/command/endstone_command.h"
 

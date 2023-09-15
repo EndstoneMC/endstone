@@ -14,7 +14,7 @@
 
 #include "bedrock/i18n.h"
 
-#include "hook/hook.h"
+#include "lib/hook/hook.h"
 
 std::string I18n::get(const std::string &message, const class Localization *language)
 {

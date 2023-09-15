@@ -15,6 +15,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(pybind11)
 
 pybind11_add_module(_bindings MODULE ${ENDSTONE_PYBIND11_MODULES})
+target_include_directories(_bindings PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(_bindings PRIVATE endstone::api)
 install(TARGETS _bindings
         LIBRARY DESTINATION ${PROJECT_NAME}

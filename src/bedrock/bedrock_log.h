@@ -14,10 +14,11 @@
 
 #pragma once
 
+#include <bitset>
 #include <cstdarg>
 #include <cstdio>
 
-#include "bedrock_common.h"
+#include "bedrock/internal.h"
 
 using LogLevel = uint32_t;
 

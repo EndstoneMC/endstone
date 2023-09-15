@@ -19,6 +19,8 @@
 #include <iostream>
 #include <limits>
 #include <random>
+#include <string>
+#include <unordered_map>
 #include <utility>
 
 namespace endstone::hook::internal {

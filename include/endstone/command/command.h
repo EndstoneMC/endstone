@@ -19,7 +19,6 @@
 #include <vector>
 
 #include "endstone/command/command_sender.h"
-#include "endstone/common.h"
 
 class CommandMap;
 

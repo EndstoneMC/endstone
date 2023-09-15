@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "bedrock/minecraft_commands.h"
 #include "endstone/command/simple_command_map.h"
 #include "endstone/plugin/plugin_manager.h"

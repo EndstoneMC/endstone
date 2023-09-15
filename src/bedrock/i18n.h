@@ -14,7 +14,9 @@
 
 #pragma once
 
-#include "bedrock_common.h"
+#include <string>
+
+#include "bedrock/internal.h"
 
 class I18n {
 public:

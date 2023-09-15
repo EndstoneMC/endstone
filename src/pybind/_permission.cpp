@@ -12,9 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/common.h"
 #include "endstone/permission/permissible.h"
-#include "pybind.h"
+#include "pybind/pybind.h"
 
 PYBIND11_MODULE(_permission, m)
 {

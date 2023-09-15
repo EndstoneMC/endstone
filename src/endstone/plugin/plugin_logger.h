@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 

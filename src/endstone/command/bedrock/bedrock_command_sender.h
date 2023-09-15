@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+#include <utility>
+
 #include "bedrock/command_origin.h"
 #include "endstone/command/command_sender.h"
 

@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "help_command.h"
+#include "endstone/command/defaults/help_command.h"
+
+#include <algorithm>
+#include <unordered_set>
 
 #include "endstone/chat_color.h"
 #include "endstone/command/command_map.h"
-#include "endstone/common.h"
 
 HelpCommand::HelpCommand(const SimpleCommandMap &command_map) : EndstoneCommand("help"), command_map_(command_map)
 {
@@ -27,7 +29,7 @@ HelpCommand::HelpCommand(const SimpleCommandMap &command_map) : EndstoneCommand(
 
 bool HelpCommand::execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
 {
-    // TODO: testPermission
+    // TODO(permission): test sender's permission before the execution
 
     if (args.size() >= 2) {
         return false;
@@ -68,7 +70,7 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const
     std::unordered_set<std::string> help_set;
 
     for (const auto &command : commands) {
-        // TODO: check if the caller has permission
+        // TODO(permission): check if the caller has permission
 
         for (const auto &usage : command->getUsages()) {
             help_set.insert(fmt::format(usage, fmt::arg("command", command->getLabel())));
@@ -82,7 +84,7 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const
     std::vector<std::string> helps(help_set.begin(), help_set.end());
     std::sort(helps.begin(), helps.end());
 
-    int total_pages = (helps.size() + COMMANDS_PER_PAGE - 1) / COMMANDS_PER_PAGE;
+    int total_pages = (static_cast<int>(helps.size()) + COMMANDS_PER_PAGE - 1) / COMMANDS_PER_PAGE;
     if (page > total_pages) {
         page = total_pages;
     }

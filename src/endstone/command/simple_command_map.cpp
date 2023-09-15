@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "simple_command_map.h"
+#include "endstone/command/simple_command_map.h"
+
+#include <algorithm>
 
 #include "endstone/command/defaults/help_command.h"
-#include "endstone_command.h"
+#include "endstone/command/endstone_command.h"
 
 SimpleCommandMap::SimpleCommandMap(Server &server) : server_(server)
 {
@@ -175,7 +177,7 @@ void SimpleCommandMap::setFallbackCommands()
 
 void SimpleCommandMap::setDefaultCommands()
 {
-    // TODO: default endstone commands...
+    // TODO(command): add default endstone commands like /version
 }
 
 std::vector<std::shared_ptr<Command>> SimpleCommandMap::getCommands() const noexcept

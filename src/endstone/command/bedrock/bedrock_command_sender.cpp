@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock_command_sender.h"
+#include "endstone/command/bedrock/bedrock_command_sender.h"
 
-#include "bedrock_server_command_sender.h"
+#include "endstone/command/bedrock/server_command_sender.h"
 #include "endstone/endstone.h"
 
 std::unique_ptr<CommandSender> BedrockCommandSender::fromCommandOrigin(std::unique_ptr<CommandOrigin> origin)
 {
     switch (origin->getOriginType()) {
     case CommandOriginType::Server:
-        return std::move(std::make_unique<BedrockServerCommandSender>(std::move(origin)));
+        return std::move(std::make_unique<ServerCommandSender>(std::move(origin)));
     default:
         throw std::runtime_error("Command origin type is not supported.");
     }
