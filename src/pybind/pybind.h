@@ -2,8 +2,7 @@
 // Created by Vincent on 21/08/2023.
 //
 
-#ifndef ENDSTONE_PYBIND_H
-#define ENDSTONE_PYBIND_H
+#pragma once
 
 #include <pybind11/embed.h>
 #include <pybind11/operators.h>
@@ -26,4 +25,3 @@ void def_command_api(py::module &m);
 void def_chat_color(py::module &m);
 void def_server(py::module &m);
 
-#endif // ENDSTONE_PYBIND_H

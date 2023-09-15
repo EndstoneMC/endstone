@@ -2,8 +2,7 @@
 // Created by Vincent on 18/08/2023.
 //
 
-#ifndef ENDSTONE_PYTHON_PLUGIN_LOADER_H
-#define ENDSTONE_PYTHON_PLUGIN_LOADER_H
+#pragma once
 
 #include "endstone/plugin/plugin_loader.h"
 #include "pybind/pybind.h"
@@ -21,4 +20,3 @@ private:
     std::shared_ptr<PluginLoader> loader_;
 };
 
-#endif // ENDSTONE_PYTHON_PLUGIN_LOADER_H

@@ -2,8 +2,7 @@
 // Created by Vincent on 28/08/2023.
 //
 
-#ifndef ENDSTONE_ENDSTONE_SERVER_H
-#define ENDSTONE_ENDSTONE_SERVER_H
+#pragma once
 
 #include "bedrock/minecraft_commands.h"
 #include "endstone/command/simple_command_map.h"
@@ -34,4 +33,3 @@ private:
     std::unique_ptr<CommandSender> console_;
 };
 
-#endif // ENDSTONE_ENDSTONE_SERVER_H

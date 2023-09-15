@@ -2,8 +2,7 @@
 // Created by Vincent on 05/09/2023.
 //
 
-#ifndef ENDSTONE_INTERNAL_H
-#define ENDSTONE_INTERNAL_H
+#pragma once
 
 #include <chrono>
 #include <future>
@@ -203,4 +202,3 @@ private:
 };
 } // namespace endstone::hook::internal
 
-#endif // ENDSTONE_INTERNAL_H

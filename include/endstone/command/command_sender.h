@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_SENDER_H
-#define ENDSTONE_COMMAND_SENDER_H
+#pragma once
 
 #include "endstone/common.h"
 #include "endstone/permission/permissible.h"
@@ -42,4 +41,3 @@ public:
     virtual std::string getName() const = 0;
 };
 
-#endif // ENDSTONE_COMMAND_SENDER_H

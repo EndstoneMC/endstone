@@ -2,8 +2,7 @@
 // Created by Vincent on 05/09/2023.
 //
 
-#ifndef ENDSTONE_HOOK_H
-#define ENDSTONE_HOOK_H
+#pragma once
 
 #include "internal.h"
 
@@ -199,4 +198,3 @@ private:
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::get_function_rvo(fp, __FUNCDNAME__)(__VA_ARGS__);
 
-#endif // ENDSTONE_HOOK_H

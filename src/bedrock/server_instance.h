@@ -2,8 +2,7 @@
 // Created by Vincent on 02/08/2023.
 //
 
-#ifndef ENDSTONE_SERVER_INSTANCE_H
-#define ENDSTONE_SERVER_INSTANCE_H
+#pragma once
 
 #include "bedrock_common.h"
 
@@ -19,4 +18,3 @@ public:
     BEDROCK_API void sendServerUpdateEnd(ServerInstance &instance);
 };
 
-#endif // ENDSTONE_SERVER_INSTANCE_H

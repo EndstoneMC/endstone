@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_SIMPLE_COMMAND_MAP_H
-#define ENDSTONE_SIMPLE_COMMAND_MAP_H
+#pragma once
 
 #include "endstone/command/command_map.h"
 
@@ -48,4 +47,3 @@ private:
     std::mutex mutex_;
 };
 
-#endif // ENDSTONE_SIMPLE_COMMAND_MAP_H

@@ -2,8 +2,7 @@
 // Created by Vincent on 29/08/2023.
 //
 
-#ifndef ENDSTONE_CHAT_COLOR_H
-#define ENDSTONE_CHAT_COLOR_H
+#pragma once
 
 #include "endstone/common.h"
 
@@ -126,4 +125,3 @@ inline std::string operator+(const ChatColor &lhs, const std::string &rhs)
     return ChatColors::ESCAPE + static_cast<char>(lhs) + rhs;
 }
 
-#endif // ENDSTONE_CHAT_COLOR_H

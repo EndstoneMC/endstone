@@ -2,8 +2,7 @@
 // Created by Vincent on 02/08/2023.
 //
 
-#ifndef ENDSTONE_LOGGER_H
-#define ENDSTONE_LOGGER_H
+#pragma once
 
 #include "common.h"
 
@@ -58,4 +57,3 @@ public:
     }
 };
 
-#endif // ENDSTONE_LOGGER_H

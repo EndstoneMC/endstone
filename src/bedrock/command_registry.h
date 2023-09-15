@@ -2,8 +2,7 @@
 // Created by Vincent on 28/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_REGISTRY_H
-#define ENDSTONE_COMMAND_REGISTRY_H
+#pragma once
 
 #include "bedrock_common.h"
 #include "endstone/command/command.h"
@@ -69,4 +68,3 @@ private:
     BEDROCK_API std::string describe(CommandParameterData const &parameter) const;
 };
 
-#endif // ENDSTONE_COMMAND_REGISTRY_H

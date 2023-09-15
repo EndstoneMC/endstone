@@ -2,8 +2,7 @@
 // Created by Vincent on 21/07/2023.
 //
 
-#ifndef ENDSTONE_PLUGIN_H
-#define ENDSTONE_PLUGIN_H
+#pragma once
 
 #include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
@@ -148,4 +147,3 @@ private:
         return new ClassName();                    \
     }
 
-#endif // ENDSTONE_PLUGIN_H

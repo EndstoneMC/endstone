@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_SIMPLE_PLUGIN_MANAGER_H
-#define ENDSTONE_SIMPLE_PLUGIN_MANAGER_H
+#pragma once
 
 #include "endstone/command/simple_command_map.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -33,4 +32,3 @@ private:
     SimpleCommandMap &command_map_;
 };
 
-#endif // ENDSTONE_SIMPLE_PLUGIN_MANAGER_H

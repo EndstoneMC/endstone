@@ -2,8 +2,7 @@
 // Created by Vincent on 17/08/2023.
 //
 
-#ifndef ENDSTONE_PLUGIN_LOADER_H
-#define ENDSTONE_PLUGIN_LOADER_H
+#pragma once
 
 #include "plugin.h"
 
@@ -41,4 +40,3 @@ private:
     Server &server_;
 };
 
-#endif // ENDSTONE_PLUGIN_LOADER_H

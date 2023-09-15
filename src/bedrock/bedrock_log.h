@@ -2,8 +2,7 @@
 // Created by Vincent on 02/08/2023.
 //
 
-#ifndef ENDSTONE_BEDROCK_LOG_H
-#define ENDSTONE_BEDROCK_LOG_H
+#pragma once
 
 #include "bedrock_common.h"
 
@@ -104,4 +103,3 @@ BEDROCK_API void log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
                         va_list args);
 }; // namespace BedrockLog
 
-#endif // ENDSTONE_BEDROCK_LOG_H

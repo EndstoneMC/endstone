@@ -2,8 +2,7 @@
 // Created by Vincent on 22/08/2023.
 //
 
-#ifndef ENDSTONE_LOGGER_FACTORY_H
-#define ENDSTONE_LOGGER_FACTORY_H
+#pragma once
 
 #include "endstone/logger.h"
 
@@ -35,4 +34,3 @@ public:
     static std::shared_ptr<Logger> getLogger(const std::string &name);
 };
 
-#endif // ENDSTONE_LOGGER_FACTORY_H

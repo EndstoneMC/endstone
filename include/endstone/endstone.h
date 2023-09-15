@@ -2,8 +2,7 @@
 // Created by Vincent on 17/08/2023.
 //
 
-#ifndef ENDSTONE_ENDSTONE_H
-#define ENDSTONE_ENDSTONE_H
+#pragma once
 
 #include "common.h"
 #include "server.h"
@@ -19,4 +18,3 @@ private:
     static std::unique_ptr<Server> server_;
 };
 
-#endif // ENDSTONE_ENDSTONE_H

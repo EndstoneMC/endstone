@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_CONTEXT_H
-#define ENDSTONE_COMMAND_CONTEXT_H
+#pragma once
 
 #include "bedrock_common.h"
 #include "command_origin.h"
@@ -49,4 +48,3 @@ private:
 
 static_assert(sizeof(CommandContext) == 48);
 
-#endif // ENDSTONE_COMMAND_CONTEXT_H

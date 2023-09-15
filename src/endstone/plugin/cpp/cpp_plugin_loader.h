@@ -2,8 +2,7 @@
 // Created by Vincent on 21/08/2023.
 //
 
-#ifndef ENDSTONE_CPP_PLUGIN_LOADER_H
-#define ENDSTONE_CPP_PLUGIN_LOADER_H
+#pragma once
 
 #include "endstone/plugin/plugin_loader.h"
 
@@ -15,4 +14,3 @@ public:
     std::vector<std::string> getPluginFileFilters() const noexcept override;
 };
 
-#endif // ENDSTONE_CPP_PLUGIN_LOADER_H

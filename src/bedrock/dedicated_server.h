@@ -2,8 +2,7 @@
 // Created by Vincent on 09/08/2023.
 //
 
-#ifndef ENDSTONE_DEDICATED_SERVER_H
-#define ENDSTONE_DEDICATED_SERVER_H
+#pragma once
 
 #include "bedrock_common.h"
 
@@ -21,4 +20,3 @@ private:
     BEDROCK_API void initializeLogging();
 };
 
-#endif // ENDSTONE_DEDICATED_SERVER_H

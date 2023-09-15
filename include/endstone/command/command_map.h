@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_MAP_H
-#define ENDSTONE_COMMAND_MAP_H
+#pragma once
 
 #include "command.h"
 #include "endstone/common.h"
@@ -112,4 +111,3 @@ public:
     }
 };
 
-#endif // ENDSTONE_COMMAND_MAP_H

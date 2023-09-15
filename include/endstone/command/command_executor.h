@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_EXECUTOR_H
-#define ENDSTONE_COMMAND_EXECUTOR_H
+#pragma once
 
 #include "command.h"
 #include "command_sender.h"
@@ -32,4 +31,3 @@ public:
                            const std::vector<std::string> &args) noexcept = 0;
 };
 
-#endif // ENDSTONE_COMMAND_EXECUTOR_H

@@ -2,8 +2,7 @@
 // Created by Vincent on 31/07/2023.
 //
 
-#ifndef ENDSTONE_SERVER_H
-#define ENDSTONE_SERVER_H
+#pragma once
 
 #include "common.h"
 #include "logger.h"
@@ -54,4 +53,3 @@ public:
     virtual CommandSender &getConsoleSender() = 0;
 };
 
-#endif // ENDSTONE_SERVER_H

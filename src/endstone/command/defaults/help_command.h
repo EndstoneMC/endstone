@@ -2,8 +2,7 @@
 // Created by Vincent on 01/09/2023.
 //
 
-#ifndef ENDSTONE_HELP_COMMAND_H
-#define ENDSTONE_HELP_COMMAND_H
+#pragma once
 
 #include "endstone/command/endstone_command.h"
 #include "endstone/command/simple_command_map.h"
@@ -24,4 +23,3 @@ private:
     const SimpleCommandMap &command_map_;
 };
 
-#endif // ENDSTONE_HELP_COMMAND_H

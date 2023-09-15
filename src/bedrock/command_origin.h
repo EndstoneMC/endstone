@@ -2,8 +2,7 @@
 // Created by Vincent on 28/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_ORIGIN_H
-#define ENDSTONE_COMMAND_ORIGIN_H
+#pragma once
 
 #include "bedrock_common.h"
 
@@ -39,4 +38,3 @@ public:
     }
 };
 
-#endif // ENDSTONE_COMMAND_ORIGIN_H

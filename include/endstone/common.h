@@ -5,8 +5,7 @@
 // common.h - Intended to be used as a Precompiled Header (PCH)
 // Contains commonly used and stable headers to improve compilation times.
 
-#ifndef ENDSTONE_COMMON_H
-#define ENDSTONE_COMMON_H
+#pragma once
 
 // C++ Standard Library headers
 #include <bitset>
@@ -32,4 +31,3 @@
 #include <utility>
 #include <vector>
 
-#endif // ENDSTONE_COMMON_H

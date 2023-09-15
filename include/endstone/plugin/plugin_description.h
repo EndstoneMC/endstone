@@ -2,8 +2,7 @@
 // Created by Vincent on 17/08/2023.
 //
 
-#ifndef ENDSTONE_PLUGIN_DESCRIPTION_H
-#define ENDSTONE_PLUGIN_DESCRIPTION_H
+#pragma once
 
 #include "endstone/command/command.h"
 #include "endstone/common.h"
@@ -67,4 +66,3 @@ private:
     inline static const std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
 };
 
-#endif // ENDSTONE_PLUGIN_DESCRIPTION_H

@@ -2,8 +2,7 @@
 // Created by Vincent on 25/08/2023.
 //
 
-#ifndef ENDSTONE_PLUGIN_COMMAND_H
-#define ENDSTONE_PLUGIN_COMMAND_H
+#pragma once
 
 #include "command.h"
 #include "endstone/chat_color.h"
@@ -88,4 +87,3 @@ private:
     std::shared_ptr<CommandExecutor> executor_;
 };
 
-#endif // ENDSTONE_PLUGIN_COMMAND_H

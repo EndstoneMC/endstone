@@ -2,8 +2,7 @@
 // Created by Vincent on 24/08/2023.
 //
 
-#ifndef ENDSTONE_COMMAND_H
-#define ENDSTONE_COMMAND_H
+#pragma once
 
 #include "command_sender.h"
 #include "endstone/common.h"
@@ -244,4 +243,3 @@ private:
     CommandMap *command_map_{nullptr};
 };
 
-#endif // ENDSTONE_COMMAND_H

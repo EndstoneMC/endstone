@@ -2,8 +2,7 @@
 // Created by Vincent on 27/08/2023.
 //
 
-#ifndef ENDSTONE_MINECRAFT_COMMANDS_H
-#define ENDSTONE_MINECRAFT_COMMANDS_H
+#pragma once
 
 #include "bedrock_common.h"
 #include "command_context.h"
@@ -43,4 +42,3 @@ private:
                                         const std::vector<std::string> &args) const;
 };
 
-#endif // ENDSTONE_MINECRAFT_COMMANDS_H

@@ -2,8 +2,7 @@
 // Created by Vincent on 07/09/2023.
 //
 
-#ifndef ENDSTONE_BEDROCK_COMMAND_SENDER_H
-#define ENDSTONE_BEDROCK_COMMAND_SENDER_H
+#pragma once
 
 #include "bedrock/command_origin.h"
 #include "endstone/command/command_sender.h"
@@ -26,4 +25,3 @@ private:
     std::unique_ptr<CommandOrigin> origin_;
 };
 
-#endif // ENDSTONE_BEDROCK_COMMAND_SENDER_H

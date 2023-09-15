@@ -2,8 +2,7 @@
 // Created by Vincent on 22/08/2023.
 //
 
-#ifndef ENDSTONE_PLUGIN_LOGGER_H
-#define ENDSTONE_PLUGIN_LOGGER_H
+#pragma once
 
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
@@ -21,4 +20,3 @@ private:
     std::string pluginName_;
 };
 
-#endif // ENDSTONE_PLUGIN_LOGGER_H
