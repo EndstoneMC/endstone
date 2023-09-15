@@ -14,7 +14,11 @@
 
 #pragma once
 
-#include "endstone/common.h"
+#include <string>
+#include <utility>
+
+#include <fmt/format.h>
+
 #include "endstone/permission/permissible.h"
 
 class Server;

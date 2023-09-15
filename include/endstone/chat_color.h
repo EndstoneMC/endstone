@@ -14,7 +14,11 @@
 
 #pragma once
 
-#include "endstone/common.h"
+#include <map>
+#include <regex>
+#include <string>
+#include <utility>
+#include <vector>
 
 enum class ChatColor : char {
     Black = '0',
@@ -92,7 +96,7 @@ public:
     }
 };
 
-inline std::map<char, ChatColor> ChatColors::lookup_map_ = { //
+inline std::map<char, ChatColor> ChatColors::lookup_map_ = {  //
     ChatColors::a(ChatColor::Black),
     ChatColors::a(ChatColor::DarkBlue),
     ChatColors::a(ChatColor::DarkGreen),

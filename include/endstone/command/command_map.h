@@ -14,11 +14,13 @@
 
 #pragma once
 
-#include "command.h"
-#include "endstone/common.h"
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "endstone/command/command.h"
 
 class CommandMap {
-
 public:
     virtual ~CommandMap() = default;
 

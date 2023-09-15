@@ -14,16 +14,18 @@
 
 #pragma once
 
-#include "common.h"
-#include "logger.h"
+#include <memory>
+#include <string>
+
+#include "endstone/logger.h"
 
 class PluginCommand;
 class CommandSender;
 
 class Server {
 public:
-    Server(const Server &) = delete;            // Disable copy constructor
-    Server &operator=(const Server &) = delete; // Disable assignment operator
+    Server(const Server &) = delete;             // Disable copy constructor
+    Server &operator=(const Server &) = delete;  // Disable assignment operator
 
     Server() = default;
     virtual ~Server() = default;

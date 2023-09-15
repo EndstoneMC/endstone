@@ -14,8 +14,10 @@
 
 #pragma once
 
-#include "common.h"
-#include "server.h"
+#include <memory>
+#include <string>
+
+#include "endstone/server.h"
 
 class Endstone {
 public:

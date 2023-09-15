@@ -14,14 +14,16 @@
 
 #pragma once
 
-#include "command.h"
-#include "command_sender.h"
+#include <string>
+#include <vector>
+
+#include "endstone/command/command.h"
+#include "endstone/command/command_sender.h"
 
 /**
  * Represents a class which contains a single method for executing commands
  */
 class CommandExecutor {
-
 public:
     virtual ~CommandExecutor() = default;
 

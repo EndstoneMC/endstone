@@ -18,12 +18,13 @@
 #pragma once
 
 // C++ Standard Library headers
+#include <fmt/color.h>
+#include <fmt/core.h>
+
 #include <bitset>
 #include <codecvt>
 #include <cstdint>
 #include <filesystem>
-#include <fmt/color.h>
-#include <fmt/core.h>
 #include <fstream>
 #include <functional>
 #include <iostream>

@@ -14,17 +14,22 @@
 
 #pragma once
 
+#include <algorithm>
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
+#include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
-#include "plugin_description.h"
 
 class PluginLoader;
 class PluginCommand;
 
 class Plugin : public CommandExecutor {
 public:
-    explicit Plugin() = default;
+    Plugin() = default;
     ~Plugin() override = default;
 
     virtual const PluginDescription &getDescription() const = 0;
@@ -35,17 +40,17 @@ public:
      * When multiple plugins are loaded, the onLoad() for all plugins is
      * called before any onEnable() is called.
      */
-    virtual void onLoad(){};
+    virtual void onLoad() {}
 
     /**
      * Called when this plugin is enabled
      */
-    virtual void onEnable(){};
+    virtual void onEnable() {}
 
     /**
      * Called when this plugin is disabled
      */
-    virtual void onDisable(){};
+    virtual void onDisable() {}
 
     bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) noexcept override

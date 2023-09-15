@@ -14,8 +14,11 @@
 
 #pragma once
 
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "endstone/command/command.h"
-#include "endstone/common.h"
 
 class PluginDescription {
 public:

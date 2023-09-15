@@ -14,15 +14,17 @@
 
 #pragma once
 
-#include "command.h"
+#include <memory>
+#include <string>
+#include <vector>
+
 #include "endstone/chat_color.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
 class PluginCommand : public Command {
-
 public:
-    PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner){};
+    PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner) {}
 
 public:
     bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override
@@ -32,10 +34,10 @@ public:
                                      owner_.getDescription().getFullName() + " - plugin is disabled.");
         }
 
-        // TODO: permission check
-        //  if (!testPermission(sender)) {
-        //      return true;
-        //  }
+        // TODO(permission): test sender's permission before execution
+        // if (!testPermission(sender)) {
+        //     return true;
+        // }
 
         bool success;
         try {

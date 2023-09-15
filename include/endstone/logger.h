@@ -14,7 +14,10 @@
 
 #pragma once
 
-#include "common.h"
+#include <string>
+#include <utility>
+
+#include <fmt/format.h>
 
 class Logger {
 public:

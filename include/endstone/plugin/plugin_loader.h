@@ -14,11 +14,15 @@
 
 #pragma once
 
-#include "plugin.h"
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "endstone/plugin/plugin.h"
 
 class PluginLoader {
 public:
-    explicit PluginLoader(Server &server) : server_(server){};
+    explicit PluginLoader(Server &server) : server_(server){}
 
     virtual ~PluginLoader() = default;
     virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;

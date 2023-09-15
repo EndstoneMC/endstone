@@ -14,7 +14,11 @@
 
 #pragma once
 
-#include "command_sender.h"
+#include <string>
+#include <utility>
+#include <vector>
+
+#include "endstone/command/command_sender.h"
 #include "endstone/common.h"
 
 class CommandMap;
@@ -23,13 +27,14 @@ class CommandMap;
  * Represents a Command, which executes various tasks upon user input
  */
 class Command {
-
 public:
-    explicit Command(const std::string &name) : Command(name, "", {"/" + name}, {}){};
+    explicit Command(const std::string &name) : Command(name, "", {"/" + name}, {}) {}
     explicit Command(const std::string &name, const std::string &description, const std::vector<std::string> &usages,
                      const std::vector<std::string> &aliases)
         : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
-          active_aliases_(std::vector<std::string>(aliases)){};
+          active_aliases_(std::vector<std::string>(aliases))
+    {
+    }
     virtual ~Command() = default;
 
 protected:
