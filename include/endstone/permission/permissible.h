@@ -5,7 +5,6 @@
 #ifndef ENDSTONE_PERMISSIBLE_H
 #define ENDSTONE_PERMISSIBLE_H
 
-#include "endstone/common.h"
 #include "server_operator.h"
 
 class Permission;
