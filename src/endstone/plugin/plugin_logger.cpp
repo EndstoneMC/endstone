@@ -22,12 +22,12 @@ PluginLogger::PluginLogger(const Plugin &plugin)
     logger_ = LoggerFactory::getLogger(description.getName());
 
     auto prefix = description.getPrefix();
-    pluginName_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
+    plugin_name_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
 }
 
 void PluginLogger::log(Level level, const std::string &message) const
 {
-    logger_->log(level, pluginName_ + message);
+    logger_->log(level, plugin_name_ + message);
 }
 
 void PluginLogger::setLevel(Level level)

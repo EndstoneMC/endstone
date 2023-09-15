@@ -23,7 +23,7 @@ class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
     using Plugin::Plugin;
 
-    const PluginDescription &getDescription() const override
+    [[nodiscard]] const PluginDescription &getDescription() const override
     {
         PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
     }
@@ -55,22 +55,22 @@ class PyPluginDescription : public PluginDescription {
 public:
     using PluginDescription::PluginDescription;
 
-    std::optional<std::string> getDescription() const override
+    [[nodiscard]] std::optional<std::string> getDescription() const override
     {
         PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_description", getDescription);
     }
 
-    std::optional<std::vector<std::string>> getAuthors() const override
+    [[nodiscard]] std::optional<std::vector<std::string>> getAuthors() const override
     {
         PYBIND11_OVERRIDE_NAME(std::optional<std::vector<std::string>>, PluginDescription, "_get_authors", getAuthors);
     }
 
-    std::optional<std::string> getPrefix() const override
+    [[nodiscard]] std::optional<std::string> getPrefix() const override
     {
         PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getPrefix);
     }
 
-    std::vector<std::shared_ptr<Command>> getCommands() const override
+    [[nodiscard]] std::vector<std::shared_ptr<Command>> getCommands() const override
     {
         PYBIND11_OVERRIDE_NAME(std::vector<std::shared_ptr<Command>>, PluginDescription, "_get_commands", getCommands);
     }
@@ -85,7 +85,7 @@ public:
         PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
     }
 
-    std::vector<std::string> getPluginFileFilters() const noexcept override
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override
     {
         PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "_get_plugin_file_filters",
                                     getPluginFileFilters);

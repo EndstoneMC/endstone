@@ -28,17 +28,17 @@ public:
     {
     }
 
-    const std::string &getCommandLine() const
+    [[nodiscard]] const std::string &getCommandLine() const
     {
         return command_line_;
     }
 
-    void setCommandLine(const std::string &commandLine)
+    void setCommandLine(const std::string &command_line)
     {
-        command_line_ = commandLine;
+        command_line_ = command_line;
     }
 
-    const std::unique_ptr<CommandOrigin> &getOrigin() const
+    [[nodiscard]] const std::unique_ptr<CommandOrigin> &getOrigin() const
     {
         return origin_;
     }
@@ -48,7 +48,7 @@ public:
         return std::move(origin_);
     }
 
-    int getCommandVersion() const
+    [[nodiscard]] int getCommandVersion() const
     {
         return command_version_;
     }

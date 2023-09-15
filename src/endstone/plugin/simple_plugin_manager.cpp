@@ -106,7 +106,7 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
         throw std::runtime_error("Provided path is not a directory.");
     }
 
-    std::vector<Plugin *> loadedPlugins;
+    std::vector<Plugin *> loaded_plugins;
 
     for (const auto &entry : std::filesystem::directory_iterator(directory)) {
         std::filesystem::path file;
@@ -129,7 +129,7 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
         try {
             auto plugin = loadPlugin(file);
             if (plugin) {
-                loadedPlugins.push_back(plugin);
+                loaded_plugins.push_back(plugin);
             }
         }
         catch (std::exception &e) {
@@ -138,7 +138,7 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
         }
     }
 
-    return loadedPlugins;
+    return loaded_plugins;
 }
 
 void SimplePluginManager::enablePlugin(Plugin &plugin) const

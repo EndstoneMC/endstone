@@ -36,10 +36,10 @@ void EndstoneServer::loadPlugins()
             std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
         plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 
-        auto pluginFolder = std::filesystem::current_path() / "plugins";
+        auto plugin_folder = std::filesystem::current_path() / "plugins";
 
-        if (exists(pluginFolder)) {
-            auto plugins = plugin_manager_->loadPlugins(pluginFolder);
+        if (exists(plugin_folder)) {
+            auto plugins = plugin_manager_->loadPlugins(plugin_folder);
             for (const auto &plugin : plugins) {
                 try {
                     plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
@@ -52,7 +52,7 @@ void EndstoneServer::loadPlugins()
             }
         }
         else {
-            create_directories(pluginFolder);
+            create_directories(plugin_folder);
         }
     }
     catch (std::exception &e) {
@@ -105,7 +105,7 @@ SimpleCommandMap &EndstoneServer::getCommandMap() const
 
 void EndstoneServer::setBedrockCommands()
 {
-    for (const auto &item : CommandRegistry::bedrock_commands) {
+    for (const auto &item : CommandRegistry::bedrock_commands_) {
         command_map_->registerCommand("minecraft", item.second);
     }
 }

@@ -34,7 +34,7 @@ public:
     void loadPlugins();
     void enablePlugins();
     void disablePlugins();
-    SimpleCommandMap &getCommandMap() const;
+    [[nodiscard]] SimpleCommandMap &getCommandMap() const;
 
 private:
     void setBedrockCommands();

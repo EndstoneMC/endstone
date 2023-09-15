@@ -27,9 +27,9 @@ public:
     explicit SimplePluginManager(Server &server, SimpleCommandMap &command_map);
 
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
-    Plugin *getPlugin(const std::string &name) const override;
-    std::vector<Plugin *> getPlugins() const override;
-    bool isPluginEnabled(const std::string &name) const override;
+    [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;
+    [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
+    [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
     bool isPluginEnabled(Plugin *plugin) const override;
     Plugin *loadPlugin(const std::filesystem::path &file) override;
     std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) override;

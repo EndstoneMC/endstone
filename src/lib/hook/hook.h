@@ -120,7 +120,7 @@ public:
             return true;
         });
 
-        const auto SPINNER_CHARS = std::vector<std::string>{"⠈", "⠐", "⠠", "⢀", "⡀", "⠄", "⠂", "⠁"};
+        const static auto SPINNER_CHARS = std::vector<std::string>{"⠈", "⠐", "⠠", "⢀", "⡀", "⠄", "⠂", "⠁"};
         size_t spinner_id = 0;
         auto last_time = std::chrono::steady_clock::now();
 

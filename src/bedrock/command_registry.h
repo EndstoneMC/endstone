@@ -32,23 +32,23 @@ enum class CommandParameterDataType : int {
 };
 
 class CommandParameterData {
-    const char *type_id;            // +0
-    void *parse_fn;                 // +8
-    std::string name;               // +16
-    const char *enum_name;          // +48
-    int unknown1;                   // +56
-    const char *unknown2;           // +64
-    int unknown3;                   // +72
-    CommandParameterDataType type;  // +76
-    int unknown4;                   // +80
-    int unknown5;                   // +84
-    bool is_value;                  // +88
-    char options;                   // +89
+    const char *type_id_;            // +0
+    void *parse_fn_;                 // +8
+    std::string name_;               // +16
+    const char *enum_name_;          // +48
+    int unknown_1_;                  // +56
+    const char *unknown_2_;          // +64
+    int unknown_3_;                  // +72
+    CommandParameterDataType type_;  // +76
+    int unknown_4_;                  // +80
+    int unknown_5_;                  // +84
+    bool is_value_;                  // +88
+    char options_;                   // +89
 };
 static_assert(sizeof(CommandParameterData) == 96);
 
 class CommandVersion {
-    uint64_t version;
+    uint64_t version_;
 };
 
 class CommandRegistry {
@@ -75,10 +75,10 @@ public:
                                      enum class CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
 
-    inline static std::unordered_map<std::string, std::shared_ptr<Command>> bedrock_commands{};
+    inline static std::unordered_map<std::string, std::shared_ptr<Command>> bedrock_commands_{};
 
 private:
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
-    BEDROCK_API std::string describe(CommandParameterData const &parameter) const;
+    [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &parameter) const;
 };

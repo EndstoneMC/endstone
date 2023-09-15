@@ -120,10 +120,10 @@ public:
         return "MinHookError";
     }
 
-    [[nodiscard]] std::string message(int errVal) const override
+    [[nodiscard]] std::string message(int err_val) const override
     {
-        auto errorCode = static_cast<MH_STATUS>(errVal);
-        switch (errorCode) {
+        auto error_code = static_cast<MH_STATUS>(err_val);
+        switch (error_code) {
         case MH_ERROR_ALREADY_INITIALIZED:
             return "MinHook is already initialized.";
         case MH_ERROR_NOT_INITIALIZED:
@@ -157,8 +157,8 @@ public:
 
 inline const std::error_category &minhook_category() noexcept
 {
-    static const MinHookErrorCategory category;
-    return category;
+    static const MinHookErrorCategory CATEGORY;
+    return CATEGORY;
 }
 
 }  // namespace endstone::hook::internal

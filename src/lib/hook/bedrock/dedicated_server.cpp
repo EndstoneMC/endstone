@@ -25,7 +25,7 @@ void DedicatedServer::initializeLogging()
         filters->emplace_back("VERBOSE");
     }
 
-    ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::initializeLogging, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::initializeLogging, this)
 }
 
 DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FilePathManager &file_path_manager,
@@ -36,5 +36,5 @@ DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FileP
 {
     Endstone::setServer(std::make_unique<EndstoneServer>());
     return ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::runDedicatedServerLoop, this, file_path_manager,
-                                       properties_settings, level_settings, allow_list_file, permissions_file);
+                                       properties_settings, level_settings, allow_list_file, permissions_file)
 }

@@ -26,10 +26,10 @@ public:
     explicit BedrockCommandSender(std::unique_ptr<CommandOrigin> origin) : origin_(std::move(origin)) {}
 
 public:
-    Server &getServer() const override;
-    std::string getName() const override;
+    [[nodiscard]] Server &getServer() const override;
+    [[nodiscard]] std::string getName() const override;
 
-    const std::unique_ptr<CommandOrigin> &getOrigin() const;
+    [[nodiscard]] const std::unique_ptr<CommandOrigin> &getOrigin() const;
     std::unique_ptr<CommandOrigin> takeOrigin();
 
 public:
