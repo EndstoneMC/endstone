@@ -14,10 +14,10 @@ class EndstoneServer : public Server {
 public:
     EndstoneServer();
 
-    PluginManager &getPluginManager() const override;
     std::shared_ptr<Logger> getLogger() override;
     std::shared_ptr<PluginCommand> getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
+    CommandSender &getConsoleSender() override;
 
     void loadPlugins();
     void enablePlugins();
@@ -31,6 +31,7 @@ private:
     std::shared_ptr<Logger> logger_;
     std::unique_ptr<SimpleCommandMap> command_map_;
     std::unique_ptr<PluginManager> plugin_manager_;
+    std::unique_ptr<CommandSender> console_;
 };
 
 #endif // ENDSTONE_ENDSTONE_SERVER_H

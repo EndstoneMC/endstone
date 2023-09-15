@@ -9,9 +9,6 @@
 #include "logger.h"
 
 class PluginCommand;
-
-class PluginManager;
-
 class CommandSender;
 
 class Server {
@@ -20,15 +17,7 @@ public:
     Server &operator=(const Server &) = delete; // Disable assignment operator
 
     Server() = default;
-
     virtual ~Server() = default;
-
-    /**
-     * Gets the plugin manager for interfacing with plugins.
-     *
-     * @return a plugin manager for this Server instance
-     */
-    virtual PluginManager &getPluginManager() const = 0;
 
     /**
      * Returns the primary logger associated with this server instance.
