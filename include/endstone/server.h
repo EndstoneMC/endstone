@@ -62,5 +62,5 @@ public:
      *
      * @return a console command sender
      */
-    virtual CommandSender &getConsoleSender() = 0;
+    [[maybe_unused]] virtual CommandSender &getConsoleSender() = 0;
 };

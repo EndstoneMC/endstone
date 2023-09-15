@@ -34,12 +34,12 @@ inline internals &get_internals()
     return i;
 }
 
-} // namespace endstone::hook::internal
+}  // namespace endstone::hook::internal
 
 #ifdef _WIN32
-
+#ifndef NOMINMAX
 #define NOMINMAX
-
+#endif
 #include <Windows.h>
 //
 #include <DbgHelp.h>
@@ -159,7 +159,7 @@ inline const std::error_category &minhook_category() noexcept
     return category;
 }
 
-} // namespace endstone::hook::internal
+}  // namespace endstone::hook::internal
 #endif
 
 namespace endstone::hook::internal {
@@ -169,7 +169,7 @@ public:
     {
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_int_distribution<size_t> dist(1, std::numeric_limits<size_t>::max());
+        std::uniform_int_distribution<size_t> dist(1, SIZE_MAX);
         handle_ = reinterpret_cast<void *>(dist(gen));
         {
             std::lock_guard lock{mutex_};
@@ -210,4 +210,4 @@ private:
     void *handle_{nullptr};
     std::mutex mutex_{};
 };
-} // namespace endstone::hook::internal
+}  // namespace endstone::hook::internal

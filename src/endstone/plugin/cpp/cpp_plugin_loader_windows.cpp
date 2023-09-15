@@ -14,11 +14,11 @@
 
 #ifdef _WIN32
 
+#include <Windows.h>
+
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_logger.h"
-
-#include <Windows.h>
 
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
@@ -40,7 +40,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
     auto plugin = createPlugin();
 
     if (!plugin) {
-        FreeLibrary(module); // First, free the loaded library to clean up resources.
+        FreeLibrary(module);  // First, free the loaded library to clean up resources.
         throw std::runtime_error("Failed to create a plugin instance from DLL: " + file + ". Invalid plugin instance.");
     }
 
@@ -53,4 +53,4 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const noexcept
     return {"\\.dll$"};
 }
 
-#endif //_WIN32
+#endif  //_WIN32

@@ -92,7 +92,7 @@ inline std::function<Return *(const Class *, Return *, Arg...)> get_function_rvo
     };
 }
 
-} // namespace endstone::hook
+}  // namespace endstone::hook
 
 #ifdef _WIN32
 #include <MinHook.h>
@@ -151,7 +151,7 @@ public:
             return true;
         });
 
-        printf("\r\x1b[0m"); // Dismiss the progress indicator
+        printf("\r\x1b[0m");  // Dismiss the progress indicator
 
         MH_STATUS status;
         status = MH_Initialize();
@@ -201,7 +201,7 @@ private:
     bool initialized_{false};
     void *h_library_{nullptr};
 };
-} // namespace endstone::hook
+}  // namespace endstone::hook
 
 #endif
 

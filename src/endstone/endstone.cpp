@@ -29,7 +29,7 @@ std::string Endstone::getVersion()
     return version;
 }
 
-std::string Endstone::getMinecraftVersion()
+[[maybe_unused]] std::string Endstone::getMinecraftVersion()
 {
     static std::string version = []() -> std::string {
         py::gil_scoped_acquire lock{};

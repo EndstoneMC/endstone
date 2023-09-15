@@ -35,8 +35,8 @@ public:
 
     virtual ~Logger() = default;
     virtual void setLevel(Level level) = 0;
-    virtual bool isEnabledFor(Level level) const noexcept = 0;
-    virtual std::string_view getName() const = 0;
+    [[nodiscard]] virtual bool isEnabledFor(Level level) const noexcept = 0;
+    [[nodiscard]] virtual std::string_view getName() const = 0;
     virtual void log(Level level, const std::string &message) const = 0;
 
     template <typename... Args>

@@ -14,11 +14,11 @@
 
 #include "simple_plugin_manager.h"
 
+#include <utility>
+
 #include "endstone/command/plugin_command.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
-
-#include <utility>
 
 SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &command_map)
     : server_(server), command_map_(command_map)

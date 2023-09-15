@@ -59,7 +59,7 @@ public:
      *
      * @return Name of this command
      */
-    const std::string &getName() const noexcept
+    [[nodiscard]] [[nodiscard]] const std::string &getName() const noexcept
     {
         return name_;
     }
@@ -90,7 +90,7 @@ public:
      *
      * @return Label of this command
      */
-    const std::string &getLabel() const noexcept
+    [[nodiscard]] const std::string &getLabel() const noexcept
     {
         return label_;
     }
@@ -162,7 +162,7 @@ public:
      *
      * @return true if this command is currently registered false otherwise
      */
-    bool isRegistered() const noexcept
+    [[nodiscard]] bool isRegistered() const noexcept
     {
         return command_map_;
     }
@@ -172,7 +172,7 @@ public:
      *
      * @return List of aliases
      */
-    const std::vector<std::string> &getAliases() const
+    [[nodiscard]] const std::vector<std::string> &getAliases() const
     {
         return active_aliases_;
     }
@@ -182,7 +182,7 @@ public:
      *
      * @return Description of this command
      */
-    const std::string &getDescription() const
+    [[nodiscard]] const std::string &getDescription() const
     {
         return description_;
     }
@@ -192,7 +192,7 @@ public:
      *
      * @return List of example usages
      */
-    const std::vector<std::string> &getUsages() const
+    [[nodiscard]] const std::vector<std::string> &getUsages() const
     {
         return usages_;
     }

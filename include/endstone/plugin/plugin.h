@@ -32,7 +32,7 @@ public:
     Plugin() = default;
     ~Plugin() override = default;
 
-    virtual const PluginDescription &getDescription() const = 0;
+    [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
 
     /**
      * Called after a plugin is loaded but before it has been enabled.
@@ -76,7 +76,7 @@ public:
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    bool isEnabled()
+    [[nodiscard]] bool isEnabled() const
     {
         return enabled_;
     }
@@ -156,8 +156,6 @@ private:
     std::shared_ptr<Logger> logger_;
 };
 
-#define ENDSTONE_PLUGIN_CLASS(ClassName)           \
-    extern "C" ENDSTONE_API Plugin *createPlugin() \
-    {                                              \
-        return new ClassName();                    \
-    }
+#ifndef ENDSTONE_PLUGIN_CLASS
+#define ENDSTONE_PLUGIN_CLASS(ClassName) (extern "C" ENDSTONE_API Plugin * createPlugin() { return new ClassName(); })
+#endif

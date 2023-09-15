@@ -22,7 +22,7 @@
 class Endstone {
 public:
     static std::string getVersion();
-    static std::string getMinecraftVersion();
+    [[maybe_unused]] static std::string getMinecraftVersion();
     static Server &getServer();
     static void setServer(std::unique_ptr<Server> server);
 

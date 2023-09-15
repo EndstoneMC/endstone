@@ -45,12 +45,12 @@ public:
      *
      * @return Server instance
      */
-    virtual Server &getServer() const = 0;
+    [[nodiscard]] virtual Server &getServer() const = 0;
 
     /**
      * Gets the name of this command sender
      *
      * @return Name of the sender
      */
-    virtual std::string getName() const = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
 };

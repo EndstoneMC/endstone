@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/chat_color.h"
@@ -66,7 +67,7 @@ public:
      */
     void setExecutor(std::shared_ptr<CommandExecutor> executor) noexcept
     {
-        executor_ = executor;
+        executor_ = std::move(executor);
     }
 
     /**
@@ -74,7 +75,7 @@ public:
      *
      * @return CommandExecutor object linked to this command
      */
-    CommandExecutor &getExecutor() const noexcept
+    [[nodiscard]] CommandExecutor &getExecutor() const noexcept
     {
         if (executor_) {
             return *executor_;
@@ -89,7 +90,7 @@ public:
      *
      * @return Plugin that owns this command
      */
-    Plugin &getPlugin() const noexcept
+    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const noexcept
     {
         return owner_;
     }

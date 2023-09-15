@@ -51,9 +51,9 @@ public:
     }
 
 private:
-    std::string command_line_;              // +0
-    std::unique_ptr<CommandOrigin> origin_; // +32
-    int command_version_;                   // +40
+    std::string command_line_;               // +0
+    std::unique_ptr<CommandOrigin> origin_;  // +32
+    int command_version_;                    // +40
 };
 
 static_assert(sizeof(CommandContext) == 48);

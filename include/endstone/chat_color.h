@@ -63,8 +63,8 @@ private:
     }
 
 public:
-    const inline static std::string ESCAPE = "§";
-    const inline static std::regex PATTERN = std::regex("(" + ESCAPE + "[0-9A-U])", std::regex_constants::icase);
+    inline const static std::string ESCAPE = "§";
+    inline const static std::regex PATTERN = std::regex("(" + ESCAPE + "[0-9A-U])", std::regex_constants::icase);
 
     static const ChatColor *get(char ch)
     {

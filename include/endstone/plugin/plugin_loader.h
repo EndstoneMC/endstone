@@ -22,11 +22,11 @@
 
 class PluginLoader {
 public:
-    explicit PluginLoader(Server &server) : server_(server){}
+    explicit PluginLoader(Server &server) : server_(server) {}
 
     virtual ~PluginLoader() = default;
     virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
-    virtual std::vector<std::string> getPluginFileFilters() const noexcept = 0;
+    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const noexcept = 0;
     virtual void enablePlugin(Plugin &plugin) const noexcept
     {
         if (!plugin.isEnabled()) {

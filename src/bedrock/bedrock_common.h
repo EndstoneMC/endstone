@@ -97,4 +97,4 @@ inline std::function<Return *(Return *, Arg...)> get_virtual_function_rvo(Return
 
 #define BEDROCK_VIRTUAL_CALL(index, fp, obj, ...)     get_virtual_function(fp, obj, index)(__VA_ARGS__);
 #define BEDROCK_VIRTUAL_CALL_RVO(index, fp, obj, ...) get_virtual_function_rvo(fp, obj, index)(__VA_ARGS__);
-} // namespace
+}  // namespace

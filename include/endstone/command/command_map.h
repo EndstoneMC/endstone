@@ -100,7 +100,7 @@ public:
     /**
      * Clears all registered commands.
      */
-    virtual void clearCommands() noexcept = 0;
+    [[maybe_unused]] virtual void clearCommands() noexcept = 0;
 
     /**
      * Gets the command registered to the specified name
@@ -109,7 +109,7 @@ public:
      * @return Command with the specified name or nullptr if a command with that
      *     label doesn't exist
      */
-    virtual std::shared_ptr<Command> getCommand(std::string name) const noexcept = 0;
+    [[nodiscard]] virtual std::shared_ptr<Command> getCommand(std::string name) const noexcept = 0;
 
     static std::string getCommandName(const std::string &command_line)
     {
