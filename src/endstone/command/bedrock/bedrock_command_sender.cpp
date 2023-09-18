@@ -27,7 +27,8 @@ std::unique_ptr<CommandSender> BedrockCommandSender::fromCommandOrigin(std::uniq
         return std::move(std::make_unique<ServerCommandSender>(std::move(origin)));
 
     default:
-        Endstone::getServer().getLogger().error("Command origin type is not supported.");
+        Endstone::getServer().getLogger().error("Command origin type: {} is not supported.",
+                                                static_cast<char>(origin->getOriginType()));
         return nullptr;
     }
 }

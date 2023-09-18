@@ -27,7 +27,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
 
     if (!vanilla_dispatcher_.has_value()) {
         vanilla_dispatcher_ = [this, version = command_ctx.getCommandVersion(), flag](auto &command_line,
-                                                                                     auto command_origin) -> bool {
+                                                                                      auto command_origin) -> bool {
             MCRESULT result = {};
             CommandContext ctx = {command_line, std::move(command_origin), version};
             auto func = endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, FUNC_DECORATED_NAME);
@@ -38,13 +38,11 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
 
     auto command_name = CommandMap::getCommandName(command_ctx.getCommandLine());
 
-    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
-    auto command = server.getCommandMap().getCommand(command_name);
-
     MCRESULT result = {};
-
     auto sender = BedrockCommandSender::fromCommandOrigin(command_ctx.takeOrigin());
-    if (server.dispatchCommand(*sender, command_ctx.getCommandLine())) {
+    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
+
+    if (sender && server.dispatchCommand(*sender, command_ctx.getCommandLine())) {
         result = MCRESULT::SUCCESS;
     }
     else {
