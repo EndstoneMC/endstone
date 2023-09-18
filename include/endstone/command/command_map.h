@@ -112,7 +112,7 @@ public:
 
     static std::string getCommandName(const std::string &command_line) noexcept
     {
-        std::size_t start = command_line[0] == '/' ? 1 : 0;
+        const std::size_t start = command_line[0] == '/' ? 1 : 0;
         std::size_t end = command_line.find(' ');
         if (end == std::string::npos) {
             end = command_line.length();

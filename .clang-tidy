@@ -1,0 +1,20 @@
+---
+Checks: >
+  -*,
+  bugprone-*,
+  google-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -misc-non-private-member-variables-in-classes,
+  -modernize-use-trailing-return-type,
+  -readability-identifier-length
+
+WarningsAsErrors: "*"
+HeaderFilterRegex: "(include/|src/).*"
+
+CheckOptions:
+  misc-unused-parameters.IgnoreVirtual: true
+  readability-implicit-bool-conversion.AllowPointerConditions: true

@@ -243,7 +243,6 @@ private:
         return (!isRegistered() || command_map_ == &command_map);
     }
 
-private:
     std::string name_;
     std::string label_;
     std::string next_label_;
