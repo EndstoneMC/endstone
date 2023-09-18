@@ -1,7 +1,21 @@
 import ctypes
 import logging
 from ctypes import get_last_error
-from ctypes.wintypes import *
+from ctypes.wintypes import (
+    BOOL,
+    WORD,
+    DWORD,
+    UINT,
+    LPWSTR,
+    LPCSTR,
+    LPCWSTR,
+    LPVOID,
+    LPCVOID,
+    LPBYTE,
+    LPDWORD,
+    HANDLE,
+    HMODULE,
+)
 from pathlib import Path
 from typing import Union
 

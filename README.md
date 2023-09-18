@@ -76,17 +76,17 @@ Here's how you can get started with Endstone:
    .\venv\Scripts\activate
    ```
 
-[//]: # ()
+   [//]: # ()
 
-[//]: # (   On Linux:)
+   [//]: # (   On Linux:)
 
-[//]: # ()
+   [//]: # ()
 
-[//]: # (   ```bash)
+   [//]: # (   ```bash)
 
-[//]: # (   source venv/bin/activate)
+   [//]: # (   source venv/bin/activate)
 
-[//]: # (   ```)
+   [//]: # (   ```)
 
 3. **Install Endstone**
 
