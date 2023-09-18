@@ -93,7 +93,6 @@ public:
      * @param sender The command's sender
      * @param command_line command + arguments. Example: "/test abc 123"
      * @return returns false if no target is found, true otherwise.
-     * @throws std::exception Thrown when the executor for the given command fails with an unhandled exception
      */
     virtual bool dispatch(CommandSender &sender, const std::string &command_line) const noexcept = 0;
 

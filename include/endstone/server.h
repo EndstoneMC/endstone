@@ -51,8 +51,6 @@ public:
      * @param sender the apparent sender of the command
      * @param commandLine the command + arguments. Example: <code>test abc 123</code>
      * @return returns false if no target is found
-     * @throws std::exception thrown when the executor for the given command
-     *     fails with an unhandled exception
      */
     virtual bool dispatchCommand(CommandSender &sender, const std::string &command_line) = 0;
 
