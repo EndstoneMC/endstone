@@ -31,7 +31,7 @@ public:
     bool registerCommand(std::string label, std::string fallback_prefix,
                          std::shared_ptr<Command> command) noexcept override;
     bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
-    bool dispatch(CommandSender &sender, const std::string &command_line) const override;
+    bool dispatch(CommandSender &sender, const std::string &command_line) const noexcept override;
     void clearCommands() noexcept override;
     [[nodiscard]] Command *getCommand(std::string name) const noexcept override;
 

@@ -25,7 +25,7 @@
  */
 class CommandExecutor {
 public:
-    virtual ~CommandExecutor() = default;
+    virtual ~CommandExecutor() noexcept = default;
 
     /**
      * Executes the given command, returning its success.

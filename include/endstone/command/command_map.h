@@ -22,7 +22,7 @@
 
 class CommandMap {
 public:
-    virtual ~CommandMap() = default;
+    virtual ~CommandMap() noexcept = default;
 
     /**
      * Registers all the commands belonging to a certain plugin.
@@ -95,7 +95,7 @@ public:
      * @return returns false if no target is found, true otherwise.
      * @throws std::exception Thrown when the executor for the given command fails with an unhandled exception
      */
-    virtual bool dispatch(CommandSender &sender, const std::string &command_line) const = 0;
+    virtual bool dispatch(CommandSender &sender, const std::string &command_line) const noexcept = 0;
 
     /**
      * Clears all registered commands.
@@ -111,7 +111,7 @@ public:
      */
     [[nodiscard]] virtual Command *getCommand(std::string name) const noexcept = 0;
 
-    static std::string getCommandName(const std::string &command_line)
+    static std::string getCommandName(const std::string &command_line) noexcept
     {
         std::size_t start = command_line[0] == '/' ? 1 : 0;
         std::size_t end = command_line.find(' ');

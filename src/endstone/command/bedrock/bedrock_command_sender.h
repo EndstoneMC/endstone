@@ -23,17 +23,17 @@
 
 class BedrockCommandSender : public CommandSender {
 public:
-    explicit BedrockCommandSender(std::unique_ptr<CommandOrigin> origin) : origin_(std::move(origin)) {}
+    explicit BedrockCommandSender(std::unique_ptr<CommandOrigin> origin) noexcept : origin_(std::move(origin)) {}
 
 public:
-    [[nodiscard]] Server &getServer() const override;
-    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] Server &getServer() const noexcept override;
+    [[nodiscard]] std::string getName() const noexcept override;
 
-    [[nodiscard]] const std::unique_ptr<CommandOrigin> &getOrigin() const;
-    std::unique_ptr<CommandOrigin> takeOrigin();
+    [[nodiscard]] const std::unique_ptr<CommandOrigin> &getOrigin() const noexcept;
+    std::unique_ptr<CommandOrigin> takeOrigin() noexcept;
 
 public:
-    static std::unique_ptr<CommandSender> fromCommandOrigin(std::unique_ptr<CommandOrigin> origin);
+    static std::unique_ptr<CommandSender> fromCommandOrigin(std::unique_ptr<CommandOrigin> origin) noexcept;
 
 private:
     std::unique_ptr<CommandOrigin> origin_;

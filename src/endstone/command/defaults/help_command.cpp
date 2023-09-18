@@ -20,14 +20,16 @@
 #include "endstone/chat_color.h"
 #include "endstone/command/command_map.h"
 
-HelpCommand::HelpCommand(const SimpleCommandMap &command_map) : EndstoneCommand("help"), command_map_(command_map)
+HelpCommand::HelpCommand(const SimpleCommandMap &command_map) noexcept
+    : EndstoneCommand("help"), command_map_(command_map)
 {
     description_ = "Provides help/list of commands.";
     usages_ = {"/{command} [command: CommandName]", "/{command} <page: int>"};
     setAliases({"?"});
 }
 
-bool HelpCommand::execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
+bool HelpCommand::execute(CommandSender &sender, const std::string &label,
+                          const std::vector<std::string> &args) const noexcept
 {
     // TODO(permission): test sender's permission before the execution
 
@@ -64,7 +66,7 @@ bool HelpCommand::execute(CommandSender &sender, const std::string &label, const
     return true;
 }
 
-void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const
+void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const noexcept
 {
     auto commands = command_map_.getCommands();
     std::unordered_set<std::string> help_set;
@@ -100,7 +102,7 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const
     }
 }
 
-void HelpCommand::displayHelpCommand(const CommandSender &sender, const std::string &name) const
+void HelpCommand::displayHelpCommand(const CommandSender &sender, const std::string &name) const noexcept
 {
     auto command = command_map_.getCommand(name);
     if (!command) {

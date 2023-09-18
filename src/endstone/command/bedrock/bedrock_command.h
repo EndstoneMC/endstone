@@ -24,8 +24,8 @@ class BedrockCommand : public EndstoneCommand {
 public:
     using EndstoneCommand::EndstoneCommand;
 
-    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override;
+    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const noexcept override;
 
 private:
-    static std::string toCommandLine(const std::string &label, const std::vector<std::string> &args);
+    static std::string toCommandLine(const std::string &label, const std::vector<std::string> &args) noexcept;
 };

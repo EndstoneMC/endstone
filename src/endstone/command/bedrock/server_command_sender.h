@@ -23,5 +23,5 @@ public:
     using BedrockCommandSender::BedrockCommandSender;
 
 public:
-    void sendMessage(const std::string &message) const override;
+    void sendMessage(const std::string &message) const noexcept override;
 };

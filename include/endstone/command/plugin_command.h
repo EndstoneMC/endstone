@@ -28,11 +28,13 @@ public:
     PluginCommand(const Command &command, Plugin &owner) noexcept : Command(command), owner_(owner) {}
 
 public:
-    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override
+    bool execute(CommandSender &sender, const std::string &label,
+                 const std::vector<std::string> &args) const noexcept override
     {
         if (!owner_.isEnabled()) {
-            throw std::runtime_error("Cannot execute command '" + label + "' in plugin " +
-                                     owner_.getDescription().getFullName() + " - plugin is disabled.");
+            sender.sendMessage(ChatColor::Red + "Cannot execute command '{}' in plugin {} - plugin is disabled.", label,
+                               owner_.getDescription().getFullName());
+            return false;
         }
 
         // TODO(permission): test sender's permission before execution
@@ -41,19 +43,12 @@ public:
         // }
 
         bool success;
-        try {
-            success = getExecutor().onCommand(sender, *this, label, args);
-        }
-        catch (std::exception &e) {
-            throw std::runtime_error("Unhandled exception executing command '" + label + "' in plugin " +
-                                     owner_.getDescription().getFullName() + ": " + e.what());
-        }
+        success = getExecutor().onCommand(sender, *this, label, args);
 
         if (!success) {
             for (const auto &usage : usages_) {
                 auto usage_msg = fmt::format(usage, fmt::arg("command", label));
-
-                sender.sendMessage("Usage: {}", ChatColor::Red + usage_msg);
+                sender.sendMessage(ChatColor::Red + "Usage: {}", usage_msg);
             }
         }
 

@@ -16,7 +16,7 @@
 
 #include "endstone/server.h"
 
-void ServerCommandSender::sendMessage(const std::string &message) const
+void ServerCommandSender::sendMessage(const std::string &message) const noexcept
 {
     getServer().getLogger().info(message);
 }

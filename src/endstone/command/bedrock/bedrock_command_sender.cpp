@@ -16,33 +16,38 @@
 
 #include "endstone/command/bedrock/server_command_sender.h"
 #include "endstone/endstone.h"
+#include "endstone/logger.h"
+#include "endstone/server.h"
 
-std::unique_ptr<CommandSender> BedrockCommandSender::fromCommandOrigin(std::unique_ptr<CommandOrigin> origin)
+std::unique_ptr<CommandSender> BedrockCommandSender::fromCommandOrigin(std::unique_ptr<CommandOrigin> origin) noexcept
 {
+    // TODO(command): support player command origin
     switch (origin->getOriginType()) {
     case CommandOriginType::Server:
         return std::move(std::make_unique<ServerCommandSender>(std::move(origin)));
+
     default:
-        throw std::runtime_error("Command origin type is not supported.");
+        Endstone::getServer().getLogger().error("Command origin type is not supported.");
+        return nullptr;
     }
 }
 
-Server &BedrockCommandSender::getServer() const
+Server &BedrockCommandSender::getServer() const noexcept
 {
     return Endstone::getServer();
 }
 
-std::string BedrockCommandSender::getName() const
+std::string BedrockCommandSender::getName() const noexcept
 {
     return origin_->getName();
 }
 
-const std::unique_ptr<CommandOrigin> &BedrockCommandSender::getOrigin() const
+const std::unique_ptr<CommandOrigin> &BedrockCommandSender::getOrigin() const noexcept
 {
     return origin_;
 }
 
-std::unique_ptr<CommandOrigin> BedrockCommandSender::takeOrigin()
+std::unique_ptr<CommandOrigin> BedrockCommandSender::takeOrigin() noexcept
 {
     return std::move(origin_);
 }

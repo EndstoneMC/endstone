@@ -101,7 +101,7 @@ bool SimpleCommandMap::registerCommand(const std::string &label, const std::shar
     return registered;
 }
 
-bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &command_line) const
+bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &command_line) const noexcept
 {
     if (command_line.empty()) {
         return false;
@@ -135,14 +135,7 @@ bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &comman
         return false;
     }
 
-    try {
-        target->execute(sender, label, std::vector<std::string>(args.begin() + 1, args.end()));
-    }
-    catch (std::exception &e) {
-        throw std::runtime_error("Unhandled exception executing '" + command_line + "' in " + target->getName() + ": " +
-                                 e.what());
-    }
-
+    target->execute(sender, label, std::vector<std::string>(args.begin() + 1, args.end()));
     return true;
 }
 

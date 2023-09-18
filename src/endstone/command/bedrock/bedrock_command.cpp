@@ -21,14 +21,14 @@
 #include "endstone/command/bedrock/bedrock_command_sender.h"
 
 bool BedrockCommand::execute(CommandSender &sender, const std::string &label,
-                             const std::vector<std::string> &args) const
+                             const std::vector<std::string> &args) const noexcept
 {
     auto &bedrock_sender = dynamic_cast<BedrockCommandSender &>(sender);
     auto command_line = toCommandLine(label, args);
     return MinecraftCommands::vanilla_dispatcher_.value()(command_line, std::move(bedrock_sender.takeOrigin()));
 }
 
-std::string BedrockCommand::toCommandLine(const std::string &label, const std::vector<std::string> &args)
+std::string BedrockCommand::toCommandLine(const std::string &label, const std::vector<std::string> &args) noexcept
 {
     // remove the fallback prefix in a command (e.g. minecraft:) before dispatching it using the vanilla dispatcher
     auto name = std::regex_replace(label, std::regex("^(\\w+):"), "");

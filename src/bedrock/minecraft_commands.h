@@ -60,5 +60,5 @@ private:
 
     // Allow the BedrockCommand::execute to use the vanilla executor
     friend bool BedrockCommand::execute(CommandSender &sender, const std::string &label,
-                                        const std::vector<std::string> &args) const;
+                                        const std::vector<std::string> &args) const noexcept;
 };

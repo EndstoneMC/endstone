@@ -25,12 +25,13 @@ private:
     constexpr static int COMMANDS_PER_PAGE = 8;
 
 public:
-    explicit HelpCommand(const SimpleCommandMap &command_map);
-    bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const override;
+    explicit HelpCommand(const SimpleCommandMap &command_map) noexcept;
+    bool execute(CommandSender &sender, const std::string &label,
+                 const std::vector<std::string> &args) const noexcept override;
 
 private:
-    void displayHelpPage(const CommandSender &sender, int page) const;
-    void displayHelpCommand(const CommandSender &sender, const std::string &name) const;
+    void displayHelpPage(const CommandSender &sender, int page) const noexcept;
+    void displayHelpCommand(const CommandSender &sender, const std::string &name) const noexcept;
 
     const SimpleCommandMap &command_map_;
 };

@@ -27,17 +27,17 @@ class CommandMap;
  */
 class Command {
 public:
-    explicit Command(const std::string &name) : Command(name, "", {"/" + name}, {}) {}
+    explicit Command(const std::string &name) noexcept : Command(name, "", {"/" + name}, {}) {}
     explicit Command(const std::string &name, const std::string &description, const std::vector<std::string> &usages,
-                     const std::vector<std::string> &aliases)
+                     const std::vector<std::string> &aliases) noexcept
         : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
           active_aliases_(std::vector<std::string>(aliases))
     {
     }
-    virtual ~Command() = default;
+    virtual ~Command() noexcept = default;
 
 protected:
-    Command(const Command &command) = default;
+    Command(const Command &command) noexcept = default;
 
 public:
     /**
@@ -48,9 +48,10 @@ public:
      * @param args All arguments passed to the command, split via ' '
      * @return true if the command was successful, otherwise false
      */
-    virtual bool execute(CommandSender &sender, const std::string &label, const std::vector<std::string> &args) const
+    virtual bool execute(CommandSender &sender, const std::string &label,
+                         const std::vector<std::string> &args) const noexcept
     {
-        throw std::logic_error("Command::execute() is not implemented.");
+        return false;
     }
 
     /**
@@ -171,7 +172,7 @@ public:
      *
      * @return List of aliases
      */
-    [[nodiscard]] const std::vector<std::string> &getAliases() const
+    [[nodiscard]] const std::vector<std::string> &getAliases() const noexcept
     {
         return active_aliases_;
     }
@@ -181,7 +182,7 @@ public:
      *
      * @return Description of this command
      */
-    [[nodiscard]] const std::string &getDescription() const
+    [[nodiscard]] const std::string &getDescription() const noexcept
     {
         return description_;
     }
@@ -191,7 +192,7 @@ public:
      *
      * @return List of example usages
      */
-    [[nodiscard]] const std::vector<std::string> &getUsages() const
+    [[nodiscard]] const std::vector<std::string> &getUsages() const noexcept
     {
         return usages_;
     }
@@ -202,7 +203,7 @@ public:
      * @param aliases aliases to register to this command
      * @return this command object, for chaining
      */
-    Command &setAliases(const std::vector<std::string> &aliases)
+    Command &setAliases(const std::vector<std::string> &aliases) noexcept
     {
         aliases_ = aliases;
         if (!isRegistered()) {
@@ -218,7 +219,7 @@ public:
      * @param description new command description
      * @return this command object, for chaining
      */
-    Command &setDescription(const std::string &description)
+    Command &setDescription(const std::string &description) noexcept
     {
         description_ = description;
         return *this;
@@ -230,14 +231,14 @@ public:
      * @param usages new example usage
      * @return this command object, for chaining
      */
-    Command &setUsages(std::vector<std::string> usages)
+    Command &setUsages(std::vector<std::string> usages) noexcept
     {
         usages_ = std::move(usages);
         return *this;
     }
 
 private:
-    bool allowChangesFrom(CommandMap &command_map)
+    bool allowChangesFrom(CommandMap &command_map) noexcept
     {
         return (!isRegistered() || command_map_ == &command_map);
     }
@@ -254,5 +255,5 @@ protected:
     std::string description_;
 
 private:
-    CommandMap *command_map_{nullptr};
+    CommandMap *command_map_ = nullptr;
 };
