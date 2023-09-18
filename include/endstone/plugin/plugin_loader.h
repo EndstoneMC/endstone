@@ -30,24 +30,24 @@ public:
     virtual void enablePlugin(Plugin &plugin) const noexcept
     {
         if (!plugin.isEnabled()) {
-            plugin.getLogger()->info("Enabling {}", plugin.getDescription().getFullName());
+            plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
             plugin.setEnabled(true);
         }
     }
     virtual void disablePlugin(Plugin &plugin) const noexcept
     {
         if (plugin.isEnabled()) {
-            plugin.getLogger()->info("Disabling {}", plugin.getDescription().getFullName());
+            plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
             plugin.setEnabled(false);
         }
     }
 
 protected:
-    virtual void initPlugin(Plugin &plugin, const std::shared_ptr<Logger> &logger) noexcept
+    virtual void initPlugin(Plugin &plugin, std::unique_ptr<Logger> logger) noexcept
     {
         plugin.loader_ = this;
         plugin.server_ = &server_;
-        plugin.logger_ = logger;
+        plugin.logger_ = std::move(logger);
     }
 
 private:

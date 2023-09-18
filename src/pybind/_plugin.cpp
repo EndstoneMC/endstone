@@ -102,7 +102,7 @@ void def_plugin(py::module &m)
         .def("on_disable", &Plugin::onDisable)
         .def("on_command", &Plugin::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"), py::arg("args"))
         .def("get_command", &Plugin::getCommand, py::arg("name"))
-        .def("_get_logger", &Plugin::getLogger)
+        .def("_get_logger", &Plugin::getLogger, py::return_value_policy::reference)
         .def("_get_plugin_loader", &Plugin::getPluginLoader)
         .def("_get_server", &Plugin::getServer)
         .def_property_readonly("enabled", &Plugin::isEnabled);

@@ -65,9 +65,9 @@ public:
      *
      * @return Logger associated with this plugin
      */
-    std::shared_ptr<Logger> getLogger()
+    Logger &getLogger()
     {
-        return logger_;
+        return *logger_;
     }
 
     /**
@@ -153,7 +153,7 @@ private:
     bool enabled_{false};
     PluginLoader *loader_{nullptr};
     Server *server_{nullptr};
-    std::shared_ptr<Logger> logger_;
+    std::unique_ptr<Logger> logger_;
 };
 
 #ifndef ENDSTONE_PLUGIN_CLASS

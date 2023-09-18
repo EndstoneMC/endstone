@@ -26,7 +26,7 @@ class EndstoneServer : public Server {
 public:
     EndstoneServer();
 
-    std::shared_ptr<Logger> getLogger() override;
+    Logger &getLogger() override;
     std::shared_ptr<PluginCommand> getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;
@@ -40,7 +40,7 @@ private:
     void setBedrockCommands();
 
 private:
-    std::shared_ptr<Logger> logger_;
+    Logger &logger_;
     std::unique_ptr<SimpleCommandMap> command_map_;
     std::unique_ptr<PluginManager> plugin_manager_;
     std::unique_ptr<CommandSender> console_;

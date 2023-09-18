@@ -37,7 +37,7 @@ PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module
 std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
 {
     auto plugin = std::move(loader_->loadPlugin(file));
-    initPlugin(*plugin, std::make_shared<PluginLogger>(*plugin));
+    initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
     return plugin;
 }
 

@@ -64,15 +64,15 @@ void BedrockLoggerAdapter::log(Level level, const std::string &message) const
     }
 }
 
-std::shared_ptr<Logger> LoggerFactory::getLogger(const std::string &name)
+Logger &LoggerFactory::getLogger(const std::string &name)
 {
     static std::mutex mutex;
     std::scoped_lock<std::mutex> lock(mutex);
 
-    static std::unordered_map<std::string, std::shared_ptr<BedrockLoggerAdapter>> loggers;
+    static std::unordered_map<std::string, BedrockLoggerAdapter> loggers;
     auto it = loggers.find(name);
     if (it == loggers.end()) {
-        it = loggers.insert({name, std::make_shared<BedrockLoggerAdapter>(name)}).first;
+        it = loggers.insert({name, BedrockLoggerAdapter(name)}).first;
     }
 
     return it->second;

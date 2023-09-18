@@ -31,7 +31,7 @@ public:
     }
 };
 
-void def_command_api(py::module &m)
+void def_command(py::module &m)
 {
     py::class_<Command, py::smart_holder>(m, "Command")
         .def(py::init<const std::string &>(), py::arg("name"))

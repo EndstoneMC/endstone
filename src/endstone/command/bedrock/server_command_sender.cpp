@@ -18,5 +18,5 @@
 
 void ServerCommandSender::sendMessage(const std::string &message) const
 {
-    getServer().getLogger()->info(message);
+    getServer().getLogger().info(message);
 }

@@ -44,7 +44,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         throw std::runtime_error("Failed to create a plugin instance from DLL: " + file + ". Invalid plugin instance.");
     }
 
-    initPlugin(*plugin, std::make_shared<PluginLogger>(*plugin));
+    initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
     return std::unique_ptr<Plugin>(plugin);
 }
 

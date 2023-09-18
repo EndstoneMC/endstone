@@ -29,6 +29,6 @@ public:
     void log(Level level, const std::string &message) const override;
 
 private:
-    std::shared_ptr<Logger> logger_;
+    Logger &logger_;
     std::string plugin_name_;
 };

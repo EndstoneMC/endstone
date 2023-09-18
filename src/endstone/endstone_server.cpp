@@ -42,12 +42,12 @@ void EndstoneServer::loadPlugins()
             auto plugins = plugin_manager_->loadPlugins(plugin_folder);
             for (const auto &plugin : plugins) {
                 try {
-                    plugin->getLogger()->info("Loading {}", plugin->getDescription().getFullName());
+                    plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
                     plugin->onLoad();
                 }
                 catch (std::exception &e) {
-                    logger_->error("Error occurred when initializing {}: {}", plugin->getDescription().getFullName(),
-                                   e.what());
+                    logger_.error("Error occurred when initializing {}: {}", plugin->getDescription().getFullName(),
+                                  e.what());
                 }
             }
         }
@@ -56,7 +56,7 @@ void EndstoneServer::loadPlugins()
         }
     }
     catch (std::exception &e) {
-        logger_->error("Error occurred when trying to load plugins: {}", e.what());
+        logger_.error("Error occurred when trying to load plugins: {}", e.what());
     }
 }
 
@@ -78,7 +78,7 @@ void EndstoneServer::disablePlugins()
     plugin_manager_->disablePlugins();
 }
 
-std::shared_ptr<Logger> EndstoneServer::getLogger()
+Logger &EndstoneServer::getLogger()
 {
     return logger_;
 }

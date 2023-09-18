@@ -16,31 +16,29 @@
 
 #include "endstone/logger_factory.h"
 
-PluginLogger::PluginLogger(const Plugin &plugin)
+PluginLogger::PluginLogger(const Plugin &plugin) : logger_(LoggerFactory::getLogger(plugin.getDescription().getName()))
 {
     auto &description = plugin.getDescription();
-    logger_ = LoggerFactory::getLogger(description.getName());
-
     auto prefix = description.getPrefix();
     plugin_name_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
 }
 
 void PluginLogger::log(Level level, const std::string &message) const
 {
-    logger_->log(level, plugin_name_ + message);
+    logger_.log(level, plugin_name_ + message);
 }
 
 void PluginLogger::setLevel(Level level)
 {
-    logger_->setLevel(level);
+    logger_.setLevel(level);
 }
 
 bool PluginLogger::isEnabledFor(Level level) const noexcept
 {
-    return logger_->isEnabledFor(level);
+    return logger_.isEnabledFor(level);
 }
 
 std::string_view PluginLogger::getName() const
 {
-    return logger_->getName();
+    return logger_.getName();
 }

@@ -43,5 +43,5 @@ public:
 
 class LoggerFactory {
 public:
-    static std::shared_ptr<Logger> getLogger(const std::string &name);
+    static Logger &getLogger(const std::string &name);
 };

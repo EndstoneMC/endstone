@@ -17,7 +17,7 @@
 
 void def_logger(py::module &m)
 {
-    auto logger = py::class_<Logger, py::smart_holder>(m, "Logger")
+    auto logger = py::class_<Logger>(m, "Logger")
                       .def("set_level", &Logger::setLevel, py::arg("level"))
                       .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
                       .def_property_readonly("name", &Logger::getName)

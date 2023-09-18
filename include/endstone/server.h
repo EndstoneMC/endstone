@@ -35,7 +35,7 @@ public:
      *
      * @return Logger associated with this server
      */
-    virtual std::shared_ptr<Logger> getLogger() = 0;
+    virtual Logger &getLogger() = 0;
 
     /**
      * Gets a PluginCommand with the given name or alias.

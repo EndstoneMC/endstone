@@ -25,7 +25,6 @@
 
 class PluginDescription {
 public:
-    // Constructor for PluginDescription with default behavior from CppPluginDescription
     PluginDescription(const std::string &name, const std::string &version)
     {
         if (!std::regex_match(name, VALID_NAME)) {
@@ -39,6 +38,9 @@ public:
     }
 
     virtual ~PluginDescription() = default;
+    // Delete the copy constructor and copy assignment operator
+    PluginDescription(const PluginDescription &) = delete;
+    PluginDescription &operator=(const PluginDescription &) = delete;
 
     [[nodiscard]] const std::string &getName() const
     {
