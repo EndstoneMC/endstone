@@ -14,10 +14,15 @@
 
 #include "endstone/plugin/python/python_plugin_loader.h"
 
-#include <utility>
+#include <memory>
+#include <string>
+#include <vector>
 
+#include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_logger.h"
 #include "endstone/server.h"
+#include "pybind/pybind.h"
 
 PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name)
     : PluginLoader(server)
@@ -26,7 +31,7 @@ PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
     auto py_loader = cls(std::ref(server));
-    loader_ = py_loader.cast<std::shared_ptr<PluginLoader>>();
+    loader_ = py_loader.cast<std::unique_ptr<PluginLoader>>();
 }
 
 std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)

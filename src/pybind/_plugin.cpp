@@ -76,7 +76,7 @@ public:
     }
 };
 
-class PyPluginLoader : public PluginLoader {
+class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_support {
 public:
     using PluginLoader::PluginLoader;
 

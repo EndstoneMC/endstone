@@ -18,7 +18,9 @@
 #include <string>
 #include <vector>
 
+#include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
+#include "endstone/server.h"
 #include "pybind/pybind.h"
 
 class PythonPluginLoader : public PluginLoader {
@@ -31,5 +33,5 @@ public:
     void disablePlugin(Plugin &plugin) const noexcept override;
 
 private:
-    std::shared_ptr<PluginLoader> loader_;
+    std::unique_ptr<PluginLoader> loader_;
 };
