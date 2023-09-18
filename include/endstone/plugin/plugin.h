@@ -107,7 +107,7 @@ public:
      * @param name name or alias of the command
      * @return the plugin command if found, otherwise null
      */
-    std::shared_ptr<PluginCommand> getCommand(const std::string &name)
+    PluginCommand *getCommand(const std::string &name)
     {
         auto alias = name;
         std::transform(alias.begin(), alias.end(), alias.begin(), [](unsigned char c) {

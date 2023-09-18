@@ -110,8 +110,8 @@ void EndstoneServer::setBedrockCommands()
     }
 }
 
-std::shared_ptr<PluginCommand> EndstoneServer::getPluginCommand(const std::string &name)
+PluginCommand *EndstoneServer::getPluginCommand(const std::string &name)
 {
     auto command = command_map_->getCommand(name);
-    return std::dynamic_pointer_cast<PluginCommand>(command);
+    return dynamic_cast<PluginCommand *>(command);
 }

@@ -27,7 +27,7 @@ public:
     EndstoneServer();
 
     Logger &getLogger() override;
-    std::shared_ptr<PluginCommand> getPluginCommand(const std::string &name) override;
+    PluginCommand *getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;
 

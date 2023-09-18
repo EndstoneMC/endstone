@@ -33,10 +33,10 @@ public:
     bool registerCommand(const std::string &fallback_prefix, std::shared_ptr<Command> command) noexcept override;
     bool dispatch(CommandSender &sender, const std::string &command_line) const override;
     void clearCommands() noexcept override;
-    [[nodiscard]] std::shared_ptr<Command> getCommand(std::string name) const noexcept override;
+    [[nodiscard]] Command *getCommand(std::string name) const noexcept override;
 
     void setFallbackCommands();
-    [[nodiscard]] std::vector<std::shared_ptr<Command>> getCommands() const noexcept;
+    [[nodiscard]] std::vector<Command *> getCommands() const noexcept;
 
 protected:
     std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
