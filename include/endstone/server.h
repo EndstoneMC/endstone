@@ -35,7 +35,7 @@ public:
      *
      * @return Logger associated with this server
      */
-    virtual Logger &getLogger() = 0;
+    [[nodiscard]] virtual Logger &getLogger() const = 0;
 
     /**
      * Gets a PluginCommand with the given name or alias.

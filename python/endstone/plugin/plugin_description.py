@@ -22,7 +22,7 @@ class PluginDescriptionFile(PluginDescription):
             main = data.pop("main")
             PluginDescription.__init__(self, name, version)
         except KeyError as e:
-            raise RuntimeError(f"{e} is not defined")
+            raise RuntimeError(f"Invalid plugin.toml: {e} is not defined") from e
 
         self._main: str = main
         self._description: Optional[str] = None

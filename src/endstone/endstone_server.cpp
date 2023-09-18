@@ -29,34 +29,22 @@ EndstoneServer::EndstoneServer()
 
 void EndstoneServer::loadPlugins()
 {
-    try {
-        plugin_manager_->registerLoader(
-            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
-        plugin_manager_->registerLoader(
-            std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
-        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+    plugin_manager_->registerLoader(
+        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
+    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 
-        auto plugin_folder = std::filesystem::current_path() / "plugins";
+    auto plugin_folder = std::filesystem::current_path() / "plugins";
 
-        if (exists(plugin_folder)) {
-            auto plugins = plugin_manager_->loadPlugins(plugin_folder);
-            for (const auto &plugin : plugins) {
-                try {
-                    plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
-                    plugin->onLoad();
-                }
-                catch (std::exception &e) {
-                    logger_.error("Error occurred when initializing {}: {}", plugin->getDescription().getFullName(),
-                                  e.what());
-                }
-            }
-        }
-        else {
-            create_directories(plugin_folder);
+    if (exists(plugin_folder)) {
+        auto plugins = plugin_manager_->loadPlugins(plugin_folder);
+        for (const auto &plugin : plugins) {
+            plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
+            plugin->onLoad();
         }
     }
-    catch (std::exception &e) {
-        logger_.error("Error occurred when trying to load plugins: {}", e.what());
+    else {
+        create_directories(plugin_folder);
     }
 }
 
@@ -78,7 +66,7 @@ void EndstoneServer::disablePlugins()
     plugin_manager_->disablePlugins();
 }
 
-Logger &EndstoneServer::getLogger()
+Logger &EndstoneServer::getLogger() const
 {
     return logger_;
 }

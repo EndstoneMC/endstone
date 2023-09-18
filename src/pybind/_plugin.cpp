@@ -23,31 +23,63 @@ class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
     using Plugin::Plugin;
 
-    [[nodiscard]] const PluginDescription &getDescription() const override
+    [[nodiscard]] const PluginDescription &getDescription() const noexcept override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error(e.what());
+            std::terminate();
+        }
     }
 
-    void onLoad() override
+    void onLoad() noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
+        try {
+            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when loading {}", getDescription().getFullName());
+            getServer().getLogger().error(e.what());
+        }
     }
 
-    void onEnable() override
+    void onEnable() noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
+        try {
+            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when enabling {}.", getDescription().getFullName());
+            getServer().getLogger().error(e.what());
+        }
     }
 
-    void onDisable() override
+    void onDisable() noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
+        try {
+            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when disabling {}.", getDescription().getFullName());
+            getServer().getLogger().error(e.what());
+        }
     }
 
     bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
-                               std::ref(label), std::ref(args));
+        try {
+            PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
+                                   std::ref(label), std::ref(args));
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Unhandled exception executing command '' in plugin {}.", label,
+                                          getDescription().getFullName());
+            getServer().getLogger().error(e.what());
+            return false;
+        }
     }
 };
 
@@ -55,24 +87,54 @@ class PyPluginDescription : public PluginDescription {
 public:
     using PluginDescription::PluginDescription;
 
-    [[nodiscard]] std::optional<std::string> getDescription() const override
+    [[nodiscard]] std::optional<std::string> getDescription() const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_description", getDescription);
+        try {
+            PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_description", getDescription);
+        }
+        catch (py::error_already_set &e) {
+            pybind11::gil_scoped_acquire gil;
+            e.discard_as_unraisable(__func__);
+            return std::nullopt;
+        }
     }
 
-    [[nodiscard]] std::optional<std::vector<std::string>> getAuthors() const override
+    [[nodiscard]] std::optional<std::vector<std::string>> getAuthors() const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(std::optional<std::vector<std::string>>, PluginDescription, "_get_authors", getAuthors);
+        try {
+            PYBIND11_OVERRIDE_NAME(std::optional<std::vector<std::string>>, PluginDescription, "_get_authors",
+                                   getAuthors);
+        }
+        catch (py::error_already_set &e) {
+            pybind11::gil_scoped_acquire gil;
+            e.discard_as_unraisable(__func__);
+            return std::nullopt;
+        }
     }
 
-    [[nodiscard]] std::optional<std::string> getPrefix() const override
+    [[nodiscard]] std::optional<std::string> getPrefix() const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getPrefix);
+        try {
+            PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getPrefix);
+        }
+        catch (py::error_already_set &e) {
+            pybind11::gil_scoped_acquire gil;
+            e.discard_as_unraisable(__func__);
+            return std::nullopt;
+        }
     }
 
-    [[nodiscard]] std::vector<std::shared_ptr<Command>> getCommands() const override
+    [[nodiscard]] std::vector<std::shared_ptr<Command>> getCommands() const noexcept override
     {
-        PYBIND11_OVERRIDE_NAME(std::vector<std::shared_ptr<Command>>, PluginDescription, "_get_commands", getCommands);
+        try {
+            PYBIND11_OVERRIDE_NAME(std::vector<std::shared_ptr<Command>>, PluginDescription, "_get_commands",
+                                   getCommands);
+        }
+        catch (py::error_already_set &e) {
+            pybind11::gil_scoped_acquire gil;
+            e.discard_as_unraisable(__func__);
+            return {};
+        }
     }
 };
 
@@ -80,15 +142,29 @@ class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_supp
 public:
     using PluginLoader::PluginLoader;
 
-    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
+    std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin,
+                                        std::ref(file));
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Failed to load python plugin from {}.", file);
+            getServer().getLogger().error(e.what());
+            return nullptr;
+        }
     }
 
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "_get_plugin_file_filters",
-                                    getPluginFileFilters);
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "_get_plugin_file_filters",
+                                        getPluginFileFilters);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error(e.what());
+            return {};
+        }
     }
 };
 

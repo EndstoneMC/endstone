@@ -24,7 +24,8 @@
 #include "endstone/server.h"
 #include "pybind/pybind.h"
 
-PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name)
+PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module_name,
+                                       const std::string &class_name) noexcept
     : PluginLoader(server)
 {
     py::gil_scoped_acquire gil{};
@@ -34,11 +35,15 @@ PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module
     loader_ = py_loader.cast<std::unique_ptr<PluginLoader>>();
 }
 
-std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
+std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file) noexcept
 {
-    auto plugin = std::move(loader_->loadPlugin(file));
-    initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
-    return plugin;
+    auto plugin = loader_->loadPlugin(file);
+    if (plugin) {
+        initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
+        return plugin;
+    }
+
+    return nullptr;
 }
 
 std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const noexcept

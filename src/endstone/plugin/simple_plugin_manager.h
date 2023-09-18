@@ -24,19 +24,19 @@
 
 class SimplePluginManager : public PluginManager {
 public:
-    explicit SimplePluginManager(Server &server, SimpleCommandMap &command_map);
+    explicit SimplePluginManager(Server &server, SimpleCommandMap &command_map) noexcept;
 
-    void registerLoader(std::unique_ptr<PluginLoader> loader) override;
-    [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;
-    [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
-    [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
-    bool isPluginEnabled(Plugin *plugin) const override;
-    Plugin *loadPlugin(const std::filesystem::path &file) override;
-    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) override;
-    void enablePlugin(Plugin &plugin) const override;
-    void disablePlugin(Plugin &plugin) const override;
-    void disablePlugins() override;
-    void clearPlugins() override;
+    void registerLoader(std::unique_ptr<PluginLoader> loader) noexcept override;
+    [[nodiscard]] Plugin *getPlugin(const std::string &name) const noexcept override;
+    [[nodiscard]] std::vector<Plugin *> getPlugins() const noexcept override;
+    [[nodiscard]] bool isPluginEnabled(const std::string &name) const noexcept override;
+    bool isPluginEnabled(Plugin *plugin) const noexcept override;
+    Plugin *loadPlugin(const std::filesystem::path &file) noexcept override;
+    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) noexcept override;
+    void enablePlugin(Plugin &plugin) const noexcept override;
+    void disablePlugin(Plugin &plugin) const noexcept override;
+    void disablePlugins() const noexcept override;
+    void clearPlugins() noexcept override;
 
 private:
     Server &server_;

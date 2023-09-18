@@ -29,10 +29,10 @@ class PluginCommand;
 
 class Plugin : public CommandExecutor {
 public:
-    Plugin() = default;
-    ~Plugin() override = default;
+    Plugin() noexcept = default;
+    ~Plugin() noexcept override = default;
 
-    [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
+    [[nodiscard]] virtual const PluginDescription &getDescription() const noexcept = 0;
 
     /**
      * Called after a plugin is loaded but before it has been enabled.
@@ -40,17 +40,17 @@ public:
      * When multiple plugins are loaded, the onLoad() for all plugins is
      * called before any onEnable() is called.
      */
-    virtual void onLoad() {}
+    virtual void onLoad() noexcept {}
 
     /**
      * Called when this plugin is enabled
      */
-    virtual void onEnable() {}
+    virtual void onEnable() noexcept {}
 
     /**
      * Called when this plugin is disabled
      */
-    virtual void onDisable() {}
+    virtual void onDisable() noexcept {}
 
     bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) noexcept override
@@ -65,7 +65,7 @@ public:
      *
      * @return Logger associated with this plugin
      */
-    Logger &getLogger()
+    [[nodiscard]] Logger &getLogger() const noexcept
     {
         return *logger_;
     }
@@ -76,7 +76,7 @@ public:
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    [[nodiscard]] bool isEnabled() const
+    [[nodiscard]] bool isEnabled() const noexcept
     {
         return enabled_;
     }
@@ -86,7 +86,7 @@ public:
      *
      * @return PluginLoader that controls this plugin
      */
-    PluginLoader &getPluginLoader()
+    [[nodiscard]] PluginLoader &getPluginLoader() const noexcept
     {
         return *loader_;
     }
@@ -96,7 +96,7 @@ public:
      *
      * @return Server running this plugin
      */
-    Server &getServer()
+    [[nodiscard]] Server &getServer() const noexcept
     {
         return *server_;
     }
@@ -107,7 +107,7 @@ public:
      * @param name name or alias of the command
      * @return the plugin command if found, otherwise null
      */
-    PluginCommand *getCommand(const std::string &name)
+    [[nodiscard]] PluginCommand *getCommand(const std::string &name) const noexcept
     {
         auto alias = name;
         std::transform(alias.begin(), alias.end(), alias.begin(), [](unsigned char c) {
@@ -135,7 +135,7 @@ private:
      *
      * @param enabled true if enabled, otherwise false
      */
-    void setEnabled(bool enabled)
+    void setEnabled(bool enabled) noexcept
     {
         if (enabled_ != enabled) {
             enabled_ = enabled;
@@ -150,9 +150,9 @@ private:
     }
 
 private:
-    bool enabled_{false};
-    PluginLoader *loader_{nullptr};
-    Server *server_{nullptr};
+    bool enabled_ = false;
+    PluginLoader *loader_ = nullptr;
+    Server *server_ = nullptr;
     std::unique_ptr<Logger> logger_;
 };
 

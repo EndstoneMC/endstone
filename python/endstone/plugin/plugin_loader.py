@@ -12,8 +12,8 @@ from .plugin import Plugin
 from .plugin_description import PluginDescriptionFile
 
 
-class ZipPluginLoader(PluginLoader):
-    _file_filters = [r"\.whl$", r"\.zip$"]
+class BasePluginLoader(PluginLoader):
+    _file_filters = []
 
     @property
     def plugin_file_filters(self) -> list[str]:
@@ -21,79 +21,60 @@ class ZipPluginLoader(PluginLoader):
 
     def _get_plugin_file_filters(self) -> list[str]:
         return self.plugin_file_filters
+
+    @staticmethod
+    def _parse_main_class(description):
+        main = description.main
+        parts = main.split(".")
+        class_name = parts.pop()
+        module_name = ".".join(parts)
+        return module_name, class_name
+
+    @staticmethod
+    def _create_plugin(module, class_name, description):
+        plugin = getattr(module, class_name)()
+        assert isinstance(plugin, Plugin), f"Main class {class_name} does not extend endstone.plugin.Plugin"
+        plugin._description = description  # noinspection PyProtectedMember
+        return plugin
+
+
+class ZipPluginLoader(BasePluginLoader):
+    _file_filters = [r"\.whl$", r"\.zip$"]
 
     def load_plugin(self, file: str) -> Plugin:
         assert file is not None, "File cannot be None"
 
         importer = zipimport.zipimporter(file)
+        # noinspection PyTypeChecker
+        fp = io.BytesIO(importer.get_data("plugin.toml"))
+        description = PluginDescriptionFile(fp)
 
-        try:
-            # noinspection PyTypeChecker
-            fp = io.BytesIO(importer.get_data("plugin.toml"))
-            description = PluginDescriptionFile(fp)
+        module_name, class_name = self._parse_main_class(description)
+        module = importer.load_module(module_name)
 
-        except Exception as e:
-            raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
-
-        try:
-            main = description.main
-            parts = main.split(".")
-            class_name = parts.pop()
-            module_name = ".".join(parts)
-
-            module = importer.load_module(module_name)
-            plugin = getattr(module, class_name)()
-            assert isinstance(plugin, Plugin), f"Main class {main} does not extend endstone.plugin.Plugin"
-
-            # noinspection PyProtectedMember
-            plugin._description = description
-            return plugin
-        except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.full_name}: {e}")
+        return self._create_plugin(module, class_name, description)
 
 
-class SourcePluginLoader(PluginLoader):
+class SourcePluginLoader(BasePluginLoader):
     _file_filters = [r"plugin\.toml$"]
-
-    @property
-    def plugin_file_filters(self) -> list[str]:
-        return self._file_filters.copy()
-
-    def _get_plugin_file_filters(self) -> list[str]:
-        return self.plugin_file_filters
 
     def load_plugin(self, file: str) -> Plugin:
         assert file is not None, "File cannot be None"
+
         file = Path(file)
         dir_name = file.resolve().parent
 
-        try:
-            with open(file, "rb") as f:
-                description = PluginDescriptionFile(f)
+        with open(file, "rb") as f:
+            description = PluginDescriptionFile(f)
+        module_name, class_name = self._parse_main_class(description)
 
-        except Exception as e:
-            raise RuntimeError(f"Unable to load 'plugin.toml': {e}")
+        spec = self._get_module_spec(module_name, dir_name)
+        if not spec:
+            raise ModuleNotFoundError(module_name)
 
-        try:
-            main = description.main
-            parts = main.split(".")
-            class_name = parts.pop()
-            module_name = ".".join(parts)
+        module = self._load_module_from_spec(spec)
 
-            spec = self._get_module_spec(module_name, dir_name)
-            if not spec:
-                raise ModuleNotFoundError(module_name)
-
-            module = self._load_module_from_spec(spec)
-            plugin = getattr(module, class_name)()
-            assert isinstance(plugin, Plugin), f"Main class {main} does not extend endstone.plugin.Plugin"
-
-            # noinspection PyProtectedMember
-            plugin._description = description
-            return plugin
-
-        except Exception as e:
-            raise RuntimeError(f"Unable to load plugin {description.full_name}: {e}")
+        return self._create_plugin(module, class_name, description)
 
     @staticmethod
     def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:

@@ -26,7 +26,7 @@ class EndstoneServer : public Server {
 public:
     EndstoneServer();
 
-    Logger &getLogger() override;
+    [[nodiscard]] Logger &getLogger() const override;
     PluginCommand *getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;

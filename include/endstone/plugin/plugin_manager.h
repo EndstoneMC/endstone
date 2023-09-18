@@ -24,16 +24,16 @@
 
 class PluginManager {
 public:
-    virtual ~PluginManager() = default;
-    virtual void registerLoader(std::unique_ptr<PluginLoader> loader) = 0;
-    [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
-    [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
-    [[maybe_unused]] [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const = 0;
-    virtual bool isPluginEnabled(Plugin *plugin) const = 0;
-    virtual Plugin *loadPlugin(const std::filesystem::path &file) = 0;
-    virtual std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) = 0;
-    virtual void enablePlugin(Plugin &plugin) const = 0;
-    virtual void disablePlugin(Plugin &plugin) const = 0;
-    virtual void disablePlugins() = 0;
-    [[maybe_unused]] virtual void clearPlugins() = 0;
+    virtual ~PluginManager() noexcept = default;
+    virtual void registerLoader(std::unique_ptr<PluginLoader> loader) noexcept = 0;
+    [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const noexcept = 0;
+    [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const noexcept = 0;
+    [[maybe_unused]] [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const noexcept = 0;
+    virtual bool isPluginEnabled(Plugin *plugin) const noexcept = 0;
+    virtual Plugin *loadPlugin(const std::filesystem::path &file) noexcept = 0;
+    virtual std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) noexcept = 0;
+    virtual void enablePlugin(Plugin &plugin) const noexcept = 0;
+    virtual void disablePlugin(Plugin &plugin) const noexcept = 0;
+    virtual void disablePlugins() const noexcept = 0;
+    [[maybe_unused]] virtual void clearPlugins() noexcept = 0;
 };

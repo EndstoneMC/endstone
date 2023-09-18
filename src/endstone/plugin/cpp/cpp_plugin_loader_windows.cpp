@@ -16,15 +16,18 @@
 
 #include <Windows.h>
 
+#include "endstone/endstone.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_logger.h"
 
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
+std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
 {
     HMODULE module = LoadLibraryA(file.c_str());
     if (!module) {
-        throw std::system_error(GetLastError(), std::system_category(), "LoadLibrary failed");
+        Endstone::getServer().getLogger().error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.",
+                                                file, GetLastError());
+        return nullptr;
     }
 
     using fp = Plugin *(*)();
@@ -32,16 +35,18 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 
     if (!func) {
         FreeLibrary(module);
-        throw std::runtime_error("Failed to find createPlugin function in DLL: " + file +
-                                 ". Did you forget ENDSTONE_PLUGIN_CLASS?");
+        Endstone::getServer().getLogger().error(
+            "Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN_CLASS?", file);
+        return nullptr;
     }
 
-    auto createPlugin = reinterpret_cast<fp>(func);
-    auto plugin = createPlugin();
+    auto create_plugin = reinterpret_cast<fp>(func);
+    auto plugin = create_plugin();
 
     if (!plugin) {
         FreeLibrary(module);  // First, free the loaded library to clean up resources.
-        throw std::runtime_error("Failed to create a plugin instance from DLL: " + file + ". Invalid plugin instance.");
+        Endstone::getServer().getLogger().error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
+        return nullptr;
     }
 
     initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));

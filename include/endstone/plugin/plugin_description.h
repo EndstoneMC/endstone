@@ -25,61 +25,58 @@
 
 class PluginDescription {
 public:
-    PluginDescription(const std::string &name, const std::string &version)
+    PluginDescription(const std::string &name, const std::string &version) noexcept
     {
-        if (!std::regex_match(name, VALID_NAME)) {
-            throw std::invalid_argument("Plugin name contains invalid characters.");
-        }
-
         name_ = name;
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = version;
         full_name_ = name_ + " v" + version;
     }
 
-    virtual ~PluginDescription() = default;
+    virtual ~PluginDescription() noexcept = default;
     // Delete the copy constructor and copy assignment operator
     PluginDescription(const PluginDescription &) = delete;
     PluginDescription &operator=(const PluginDescription &) = delete;
 
-    [[nodiscard]] const std::string &getName() const
+    [[nodiscard]] const std::string &getName() const noexcept
     {
         return name_;
     }
 
-    [[nodiscard]] const std::string &getVersion() const
+    [[nodiscard]] const std::string &getVersion() const noexcept
     {
         return version_;
     }
 
-    [[nodiscard]] const std::string &getFullName() const
+    [[nodiscard]] const std::string &getFullName() const noexcept
     {
         return full_name_;
     }
 
-    [[nodiscard]] virtual std::optional<std::string> getDescription() const
+    [[nodiscard]] virtual std::optional<std::string> getDescription() const noexcept
     {
         return {};
     }
 
-    [[nodiscard]] virtual std::optional<std::vector<std::string>> getAuthors() const
+    [[nodiscard]] virtual std::optional<std::vector<std::string>> getAuthors() const noexcept
     {
         return {};
     }
 
-    [[nodiscard]] virtual std::optional<std::string> getPrefix() const
+    [[nodiscard]] virtual std::optional<std::string> getPrefix() const noexcept
     {
         return {};
     }
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Command>> getCommands() const
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Command>> getCommands() const noexcept
     {
         return {};
     }
+
+    inline const static std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
 
 private:
     std::string name_;
     std::string version_;
     std::string full_name_;
-    inline const static std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
 };

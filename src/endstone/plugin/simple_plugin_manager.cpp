@@ -21,12 +21,12 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &command_map)
+SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &command_map) noexcept
     : server_(server), command_map_(command_map)
 {
 }
 
-void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
+void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader) noexcept
 {
     auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
@@ -34,7 +34,7 @@ void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
     }
 }
 
-Plugin *SimplePluginManager::getPlugin(const std::string &name) const
+Plugin *SimplePluginManager::getPlugin(const std::string &name) const noexcept
 {
     auto it = lookup_names_.find(name);
     if (it != lookup_names_.end()) {
@@ -43,7 +43,7 @@ Plugin *SimplePluginManager::getPlugin(const std::string &name) const
     return nullptr;
 }
 
-std::vector<Plugin *> SimplePluginManager::getPlugins() const
+std::vector<Plugin *> SimplePluginManager::getPlugins() const noexcept
 {
     std::vector<Plugin *> plugins;
     plugins.reserve(plugins_.size());
@@ -53,12 +53,12 @@ std::vector<Plugin *> SimplePluginManager::getPlugins() const
     return plugins;
 }
 
-bool SimplePluginManager::isPluginEnabled(const std::string &name) const
+bool SimplePluginManager::isPluginEnabled(const std::string &name) const noexcept
 {
     return isPluginEnabled(getPlugin(name));
 }
 
-bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const
+bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const noexcept
 {
     if (!plugin) {
         return false;
@@ -73,10 +73,10 @@ bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
+Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file) noexcept
 {
     if (!exists(file)) {
-        throw std::runtime_error("Provided file does not exist.");
+        server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", file.string());
     }
 
     for (const auto &[pattern, loader] : file_associations_) {
@@ -85,10 +85,18 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
             auto plugin = loader->loadPlugin(file.string());
 
             if (plugin) {
-                auto plugin_ptr = plugin.get();
-                lookup_names_[plugin->getDescription().getName()] = plugin_ptr;
+                const auto plugin_ptr = plugin.get();
+                auto name = plugin->getDescription().getName();
+
+                if (!std::regex_match(name, PluginDescription::VALID_NAME)) {
+                    server_.getLogger().error(
+                        "Could not load plugin from '{}': Plugin name contains invalid characters.", file.string());
+                    return nullptr;
+                }
+
+                lookup_names_[name] = plugin_ptr;
                 plugins_.push_back(std::move(plugin));
-                return plugin_ptr;
+                return lookup_names_[name];
             }
         }
     }
@@ -96,14 +104,20 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
     return nullptr;
 }
 
-std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::path &directory)
+std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::path &directory) noexcept
 {
     if (!std::filesystem::exists(directory)) {
-        throw std::runtime_error("Provided directory does not exist.");
+        server_.getLogger().error(
+            "Error occurred when trying to load plugins in '{}': Provided directory does not exist.",
+            directory.string());
+        return {};
     }
 
     if (!std::filesystem::is_directory(directory)) {
-        throw std::runtime_error("Provided path is not a directory.");
+        server_.getLogger().error(
+            "Error occurred when trying to load plugins in '{}': Provided path is not a directory.",
+            directory.string());
+        return {};
     }
 
     std::vector<Plugin *> loaded_plugins;
@@ -126,67 +140,48 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
             continue;
         }
 
-        try {
-            auto plugin = loadPlugin(file);
-            if (plugin) {
-                loaded_plugins.push_back(plugin);
-            }
-        }
-        catch (std::exception &e) {
-            server_.getLogger().error("Could not load '{}' in folder '{}': {}", file.string(), directory.string(),
-                                       e.what());
+        auto plugin = loadPlugin(file);
+        if (plugin) {
+            loaded_plugins.push_back(plugin);
         }
     }
 
     return loaded_plugins;
 }
 
-void SimplePluginManager::enablePlugin(Plugin &plugin) const
+void SimplePluginManager::enablePlugin(Plugin &plugin) const noexcept
 {
     if (!plugin.isEnabled()) {
-        try {
-            auto commands = plugin.getDescription().getCommands();
+        auto commands = plugin.getDescription().getCommands();
 
-            if (!commands.empty()) {
-                auto plugin_commands = std::vector<std::shared_ptr<Command>>(commands.size());
-                std::transform(commands.begin(), commands.end(), plugin_commands.begin(),
-                               [&plugin](const auto &command) {
-                                   return std::make_shared<PluginCommand>(*command, plugin);
-                               });
+        if (!commands.empty()) {
+            auto plugin_commands = std::vector<std::shared_ptr<Command>>(commands.size());
+            std::transform(commands.begin(), commands.end(), plugin_commands.begin(), [&plugin](const auto &command) {
+                return std::make_shared<PluginCommand>(*command, plugin);
+            });
 
-                command_map_.registerAll(plugin.getDescription().getName(), plugin_commands);
-            }
-
-            plugin.getPluginLoader().enablePlugin(plugin);
+            command_map_.registerAll(plugin.getDescription().getName(), plugin_commands);
         }
-        catch (std::exception &e) {
-            server_.getLogger().error("Error occurred (in the plugin loader) while enabling {}: {}",
-                                       plugin.getDescription().getFullName(), e.what());
-        }
+
+        plugin.getPluginLoader().enablePlugin(plugin);
     }
 }
 
-void SimplePluginManager::disablePlugin(Plugin &plugin) const
+void SimplePluginManager::disablePlugin(Plugin &plugin) const noexcept
 {
     if (plugin.isEnabled()) {
-        try {
-            plugin.getPluginLoader().disablePlugin(plugin);
-        }
-        catch (std::exception &e) {
-            server_.getLogger().error("Error occurred (in the plugin loader) while disabling {}: {}",
-                                       plugin.getDescription().getFullName(), e.what());
-        }
+        plugin.getPluginLoader().disablePlugin(plugin);
     }
 }
 
-void SimplePluginManager::disablePlugins()
+void SimplePluginManager::disablePlugins() const noexcept
 {
     for (const auto &plugin : plugins_) {
         disablePlugin(*plugin);
     }
 }
 
-void SimplePluginManager::clearPlugins()
+void SimplePluginManager::clearPlugins() noexcept
 {
     disablePlugins();
     plugins_.clear();
