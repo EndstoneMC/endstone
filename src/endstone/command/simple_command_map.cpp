@@ -109,10 +109,9 @@ bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &comman
 
     std::vector<std::string> args;
     std::size_t start = command_line[0] == '/' ? 1 : 0;
-    std::size_t end;
 
     while (start < command_line.length()) {
-        end = command_line.find(' ', start);
+        auto end = command_line.find(' ', start);
         if (end == std::string::npos) {
             end = command_line.length();
         }
