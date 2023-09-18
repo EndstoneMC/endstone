@@ -17,7 +17,6 @@
 #include "bedrock/command_context.h"
 #include "endstone/command/bedrock/bedrock_command_sender.h"
 #include "endstone/command/command_map.h"
-#include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
 #include "lib/hook/hook.h"
 
@@ -40,9 +39,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
 
     MCRESULT result = {};
     auto sender = BedrockCommandSender::fromCommandOrigin(command_ctx.takeOrigin());
-    auto &server = dynamic_cast<EndstoneServer &>(Endstone::getServer());
-
-    if (sender && server.dispatchCommand(*sender, command_ctx.getCommandLine())) {
+    if (sender && EndstoneServer::getInstance().dispatchCommand(*sender, command_ctx.getCommandLine())) {
         result = MCRESULT::SUCCESS;
     }
     else {

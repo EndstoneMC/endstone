@@ -14,7 +14,6 @@
 
 #include "bedrock/dedicated_server.h"
 
-#include "endstone/endstone.h"
 #include "endstone/endstone_server.h"
 #include "lib/hook/hook.h"
 
@@ -34,7 +33,8 @@ DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FileP
                                                                      AllowListFile &allow_list_file,
                                                                      std::unique_ptr<PermissionsFile> &permissions_file)
 {
-    Endstone::setServer(std::make_unique<EndstoneServer>());
+    auto &server = EndstoneServer::getInstance();
+    server.getLogger().info("Endstone Version: {}", server.getVersion().c_str());
     return ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::runDedicatedServerLoop, this, file_path_manager,
                                        properties_settings, level_settings, allow_list_file, permissions_file)
 }

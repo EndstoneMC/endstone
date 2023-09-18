@@ -15,7 +15,7 @@
 #include "endstone/command/bedrock/bedrock_command_sender.h"
 
 #include "endstone/command/bedrock/server_command_sender.h"
-#include "endstone/endstone.h"
+#include "endstone/endstone_server.h"
 #include "endstone/logger.h"
 #include "endstone/server.h"
 
@@ -27,15 +27,15 @@ std::unique_ptr<CommandSender> BedrockCommandSender::fromCommandOrigin(std::uniq
         return std::move(std::make_unique<ServerCommandSender>(std::move(origin)));
 
     default:
-        Endstone::getServer().getLogger().error("Command origin type: {} is not supported.",
-                                                static_cast<char>(origin->getOriginType()));
+        EndstoneServer::getInstance().getLogger().error("Command origin type: {} is not supported.",
+                                                        static_cast<char>(origin->getOriginType()));
         return nullptr;
     }
 }
 
 Server &BedrockCommandSender::getServer() const noexcept
 {
-    return Endstone::getServer();
+    return EndstoneServer::getInstance();
 }
 
 std::string BedrockCommandSender::getName() const noexcept

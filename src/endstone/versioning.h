@@ -14,18 +14,10 @@
 
 #pragma once
 
-#include <memory>
 #include <string>
+namespace Versioning {
 
-#include "endstone/server.h"
+[[maybe_unused]] std::string getEndstoneVersion();
+[[maybe_unused]] std::string getMinecraftVersion();
 
-class Endstone {
-public:
-    static std::string getVersion();
-    [[maybe_unused]] static std::string getMinecraftVersion();
-    static Server &getServer();
-    static void setServer(std::unique_ptr<Server> server);
-
-private:
-    static std::unique_ptr<Server> server_;
-};
+}  // namespace Versioning

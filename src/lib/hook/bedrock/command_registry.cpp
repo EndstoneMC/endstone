@@ -22,7 +22,7 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
                                       enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)
 {
     bedrock_commands_[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
-                                                              std::vector<std::string>{});
+                                                               std::vector<std::string>{});
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
 }
 
@@ -57,6 +57,5 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
 std::string CommandRegistry::describe(const CommandParameterData &parameter) const
 {
     std::string result;
-    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, parameter)
-    return result;
+    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, parameter) return result;
 }

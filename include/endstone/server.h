@@ -63,4 +63,18 @@ public:
      * @return a console command sender
      */
     [[maybe_unused]] virtual CommandSender &getConsoleSender() = 0;
+
+    /**
+     * Gets the version string of this server implementation.
+     *
+     * @return version of this server implementation
+     */
+    [[nodiscard]] virtual const std::string &getVersion() const noexcept = 0;
+
+    /**
+     * Gets the Minecraft version that this server is running.
+     *
+     * @return version of Minecraft
+     */
+    [[nodiscard]] virtual const std::string &getMinecraftVersion() const noexcept = 0;
 };

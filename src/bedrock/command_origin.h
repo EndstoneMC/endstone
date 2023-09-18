@@ -44,7 +44,6 @@ public:
     [[nodiscard]] std::string getName() const
     {
         std::string name;
-        name = *BEDROCK_VIRTUAL_CALL_RVO(2, &CommandOrigin::getName, this, &name)
-        return name;
+        name = *BEDROCK_VIRTUAL_CALL_RVO(2, &CommandOrigin::getName, this, &name) return name;
     }
 };

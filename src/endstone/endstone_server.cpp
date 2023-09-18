@@ -20,11 +20,12 @@
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/python/python_plugin_loader.h"
 #include "endstone/plugin/simple_plugin_manager.h"
+#include "endstone/versioning.h"
 
-EndstoneServer::EndstoneServer()
-    : logger_(LoggerFactory::getLogger("Server")), command_map_(std::make_unique<SimpleCommandMap>(*this)),
-      plugin_manager_(std::make_unique<SimplePluginManager>(*this, *command_map_))
+EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    command_map_ = std::make_unique<SimpleCommandMap>(*this);
+    plugin_manager_ = std::make_unique<SimplePluginManager>(*this, *command_map_);
 }
 
 void EndstoneServer::loadPlugins()
@@ -86,7 +87,7 @@ CommandSender &EndstoneServer::getConsoleSender()
     return *console_;
 }
 
-SimpleCommandMap &EndstoneServer::getCommandMap() const
+[[maybe_unused]] SimpleCommandMap &EndstoneServer::getCommandMap() const
 {
     return *command_map_;
 }

@@ -21,10 +21,23 @@
 #include "endstone/command/simple_command_map.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
+#include "pybind/pybind.h"
+#include "versioning.h"
 
 class EndstoneServer : public Server {
 public:
-    EndstoneServer();
+    static EndstoneServer &getInstance()
+    {
+        static EndstoneServer instance;
+        return instance;
+    }
+
+    // Delete copy and move constructors and assignment operators
+    ~EndstoneServer() override = default;
+    EndstoneServer(EndstoneServer const &) = delete;
+    EndstoneServer(EndstoneServer &&) = delete;
+    EndstoneServer &operator=(EndstoneServer const &) = delete;
+    EndstoneServer &operator=(EndstoneServer &&) = delete;
 
     [[nodiscard]] Logger &getLogger() const override;
     PluginCommand *getPluginCommand(const std::string &name) override;
@@ -34,9 +47,22 @@ public:
     void loadPlugins();
     void enablePlugins();
     void disablePlugins();
-    [[nodiscard]] SimpleCommandMap &getCommandMap() const;
+    [[maybe_unused]] [[nodiscard]] SimpleCommandMap &getCommandMap() const;
+
+    [[nodiscard]] const std::string &getVersion() const noexcept override
+    {
+        static std::string version = Versioning::getEndstoneVersion();
+        return version;
+    }
+
+    [[nodiscard]] const std::string &getMinecraftVersion() const noexcept override
+    {
+        static std::string minecraft_version = Versioning::getMinecraftVersion();
+        return minecraft_version;
+    }
 
 private:
+    EndstoneServer();
     void setBedrockCommands();
 
 private:

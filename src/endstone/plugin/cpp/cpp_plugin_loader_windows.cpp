@@ -16,7 +16,7 @@
 
 #include <Windows.h>
 
-#include "endstone/endstone.h"
+#include "endstone/endstone_server.h"
 #include "endstone/plugin/cpp/cpp_plugin_loader.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_logger.h"
@@ -25,8 +25,8 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
 {
     HMODULE module = LoadLibraryA(file.c_str());
     if (!module) {
-        Endstone::getServer().getLogger().error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.",
-                                                file, GetLastError());
+        EndstoneServer::getInstance().getLogger().error(
+            "Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", file, GetLastError());
         return nullptr;
     }
 
@@ -35,7 +35,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
 
     if (!func) {
         FreeLibrary(module);
-        Endstone::getServer().getLogger().error(
+        EndstoneServer::getInstance().getLogger().error(
             "Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN_CLASS?", file);
         return nullptr;
     }
@@ -45,7 +45,8 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
 
     if (!plugin) {
         FreeLibrary(module);  // First, free the loaded library to clean up resources.
-        Endstone::getServer().getLogger().error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
+        EndstoneServer::getInstance().getLogger().error("Failed to load c++ plugin from {}: Invalid plugin instance.",
+                                                        file);
         return nullptr;
     }
 
