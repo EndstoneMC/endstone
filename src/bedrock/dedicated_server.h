@@ -23,7 +23,6 @@ class DedicatedServer {
 public:
     enum class StartResult;
 
-public:
     BEDROCK_API DedicatedServer::StartResult runDedicatedServerLoop(
         Core::FilePathManager &file_path_manager, class PropertiesSettings &properties_settings,
         class LevelSettings &level_settings, class AllowListFile &allow_list_file,

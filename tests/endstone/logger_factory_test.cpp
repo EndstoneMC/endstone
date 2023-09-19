@@ -13,9 +13,9 @@
 
 static std::string last_message;
 
-BEDROCK_API void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
-                                    LogAreaID area, LogLevel level, char const *function, int line, char const *format,
-                                    va_list args)
+BEDROCK_API void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*flags*/,
+                                    BedrockLog::LogRule /*rule*/, LogAreaID /*area*/, LogLevel /*level*/,
+                                    char const * /*function*/, int /*line*/, char const *format, va_list args)
 {
     va_list tmp_args;  // Required to calculate the needed length without modifying the original va_list.
     va_copy(tmp_args, args);

@@ -23,6 +23,7 @@
 
 class CommandContext {
 public:
+    // NOLINTNEXTLINE(modernize-pass-by-value)
     CommandContext(const std::string &command_line, std::unique_ptr<CommandOrigin> sender, int command_version)
         : command_line_(command_line), origin_(std::move(sender)), command_version_(command_version)
     {

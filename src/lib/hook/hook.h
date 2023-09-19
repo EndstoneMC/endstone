@@ -114,7 +114,7 @@ public:
 
         module_base = internal::get_module_base(GetCurrentProcess(), h_library);
         image_base = sym.load_module(h_library);
-        sym.enum_symbols(image_base, "*", [&](auto info, auto size) -> bool {
+        sym.enum_symbols(image_base, "*", [&](auto info, auto /*size*/) -> bool {
             internals.detours.insert(
                 {std::string(info->Name), static_cast<char *>(module_base) + (info->Address - image_base)});
             return true;
@@ -126,7 +126,7 @@ public:
 
         module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
         image_base = sym.load_module(nullptr);
-        sym.enum_symbols(image_base, "*", [&](auto info, auto size) -> bool {
+        sym.enum_symbols(image_base, "*", [&](auto info, auto /*size*/) -> bool {
             auto name = std::string(info->Name);
             if (internals.detours.find(name) == internals.detours.end()) {
                 // Not used for hooking; we proceed to undecorate it for easier lookup and to save some memory.
@@ -164,7 +164,7 @@ public:
         }
 
         for (const auto &[name, detour] : internals.detours) {
-            auto target = sym_from_name(name);
+            auto *target = sym_from_name(name);
             void *original = nullptr;
 
             // printf("%s: 0x%p -> 0x%p\n", name.c_str(), target, detour);

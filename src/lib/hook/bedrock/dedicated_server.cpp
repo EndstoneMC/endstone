@@ -19,7 +19,7 @@
 
 void DedicatedServer::initializeLogging()
 {
-    auto filters = endstone::hook::sym_from_name<std::vector<std::string> *>("gPriorityFilters");
+    auto *filters = endstone::hook::sym_from_name<std::vector<std::string> *>("gPriorityFilters");
     if (std::find(filters->begin(), filters->end(), "VERBOSE") == filters->end()) {
         filters->emplace_back("VERBOSE");
     }

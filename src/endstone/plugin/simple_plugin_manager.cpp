@@ -85,7 +85,7 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file) noexc
             auto plugin = loader->loadPlugin(file.string());
 
             if (plugin) {
-                const auto plugin_ptr = plugin.get();
+                auto *const plugin_ptr = plugin.get();
                 auto name = plugin->getDescription().getName();
 
                 if (!std::regex_match(name, PluginDescription::VALID_NAME)) {
@@ -140,7 +140,7 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
             continue;
         }
 
-        auto plugin = loadPlugin(file);
+        auto *plugin = loadPlugin(file);
         if (plugin) {
             loaded_plugins.push_back(plugin);
         }

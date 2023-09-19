@@ -76,7 +76,7 @@ inline void sym_initialize(void *handle, int options = 0, const char *search_pat
 {
     SymSetOptions(options);
 
-    if (!SymInitialize(handle, search_path, invade_process)) {
+    if (!SymInitialize(handle, search_path, static_cast<BOOL>(invade_process))) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
     }
 }
@@ -98,7 +98,7 @@ inline void sym_enum_symbols(void *handle, size_t module_base, const char *mask,
     SymEnumSymbols(
         handle, module_base, mask,
         [](auto info, auto value, auto user_context) -> int {
-            auto callback = static_cast<std::function<bool(PSYMBOL_INFO, int)> *>(user_context);
+            auto *callback = static_cast<std::function<bool(PSYMBOL_INFO, int)> *>(user_context);
             auto result = (*callback)(info, value);
             return result ? TRUE : FALSE;
         },

@@ -30,7 +30,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
         return nullptr;
     }
 
-    using fp = Plugin *(*)();
+    using CreatePlugin = Plugin *(*)();
     auto func = GetProcAddress(module, "createPlugin");
 
     if (!func) {
@@ -40,8 +40,8 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
         return nullptr;
     }
 
-    auto create_plugin = reinterpret_cast<fp>(func);
-    auto plugin = create_plugin();
+    auto create_plugin = reinterpret_cast<CreatePlugin>(func);
+    auto *plugin = create_plugin();
 
     if (!plugin) {
         FreeLibrary(module);  // First, free the loaded library to clean up resources.

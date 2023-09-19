@@ -4,6 +4,7 @@ from endstone._bindings import PluginBase, PluginDescription
 from endstone.command import Command, CommandSender
 
 
+# noinspection PyProtectedMember
 class Plugin(PluginBase):
     def __init__(self):
         PluginBase.__init__(self)

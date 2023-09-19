@@ -14,6 +14,7 @@
 
 #include "pybind/pybind.h"
 
+namespace {
 PYBIND11_MODULE(_bindings, m)
 {
     def_server(m);
@@ -22,3 +23,4 @@ PYBIND11_MODULE(_bindings, m)
     def_command(m);
     def_chat_color(m);
 }
+}  // namespace

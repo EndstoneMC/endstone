@@ -114,7 +114,7 @@ public:
             return std::tolower(c);
         });
 
-        auto command = getServer().getPluginCommand(alias);
+        auto *command = getServer().getPluginCommand(alias);
         if (!command) {
             auto prefix = getDescription().getName();
             std::transform(prefix.begin(), prefix.end(), prefix.begin(), [](unsigned char c) {

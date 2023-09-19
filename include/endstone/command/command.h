@@ -28,9 +28,9 @@ class CommandMap;
 class Command {
 public:
     explicit Command(const std::string &name) noexcept : Command(name, "", {"/" + name}, {}) {}
-    explicit Command(const std::string &name, const std::string &description, const std::vector<std::string> &usages,
+    explicit Command(const std::string &name, std::string description, const std::vector<std::string> &usages,
                      const std::vector<std::string> &aliases) noexcept
-        : name_(name), label_(name), next_label_(name), description_(description), usages_(usages), aliases_(aliases),
+        : name_(name), label_(name), next_label_(name), description_(std::move(description)), usages_(usages), aliases_(aliases),
           active_aliases_(std::vector<std::string>(aliases))
     {
     }

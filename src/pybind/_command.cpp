@@ -52,7 +52,8 @@ void def_command(py::module &m)
         .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor);
 
     py::class_<CommandSender>(m, "CommandSender")
-        .def("send_message", (void(CommandSender::*)(const std::string &) const) & CommandSender::sendMessage,
+        .def("send_message",
+             static_cast<void (CommandSender::*)(const std::string &) const>(&CommandSender::sendMessage),
              py::arg("msg"))
         .def_property_readonly("server", &CommandSender::getServer)
         .def_property_readonly("name", &CommandSender::getName);

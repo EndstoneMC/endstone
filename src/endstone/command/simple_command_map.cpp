@@ -27,7 +27,7 @@ SimpleCommandMap::SimpleCommandMap(Server &server) : server_(server)
 void SimpleCommandMap::registerAll(const std::string &fallback_prefix,
                                    const std::vector<std::shared_ptr<Command>> &commands) noexcept
 {
-    for (auto &c : commands) {
+    for (const auto &c : commands) {
         registerCommand(fallback_prefix, c);
     }
 }
@@ -128,7 +128,7 @@ bool SimpleCommandMap::dispatch(CommandSender &sender, const std::string &comman
     std::transform(label.begin(), label.end(), label.begin(), [](unsigned char c) {
         return std::tolower(c);
     });
-    auto target = getCommand(label);
+    auto *target = getCommand(label);
 
     if (!target) {
         return false;

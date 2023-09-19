@@ -104,7 +104,7 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
 
 void HelpCommand::displayHelpCommand(const CommandSender &sender, const std::string &name) const noexcept
 {
-    auto command = command_map_.getCommand(name);
+    auto *command = command_map_.getCommand(name);
     if (!command) {
         sender.sendMessage(ChatColor::Red + "Unknown command: {}.", name);
         return;
