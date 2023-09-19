@@ -20,14 +20,21 @@
 #include <unordered_map>
 #include <vector>
 
-enum class PermissionLevel {
-    Any,
-    Member,
-    Operator,
-    Owner
-};
+#include "endstone/permission/permissible.h"
 
 class PermissionDefault {
+
+    enum class Value {
+        True,
+        False,
+        Visitor,
+        NotVisitor,
+        Member,
+        NotMember,
+        Operator,
+        NotOperator,
+    };
+
 public:
     // Delete copy constructor and copy assignment operator
     PermissionDefault(const PermissionDefault &) = delete;
@@ -37,9 +44,26 @@ public:
     PermissionDefault(PermissionDefault &&) = delete;
     PermissionDefault &operator=(PermissionDefault &&) = delete;
 
-    [[nodiscard]] bool hasPermission(const PermissionLevel &level) const
+    [[nodiscard]] bool hasPermission(const Permissible &permissible) const
     {
-        return level >= level_;
+        switch (value_) {
+        case Value::True:
+            return true;
+        case Value::False:
+            return false;
+        case Value::Visitor:
+            return permissible.getRole() == Permissible::Role::Visitor;
+        case Value::NotVisitor:
+            return permissible.getRole() != Permissible::Role::Visitor;
+        case Value::Member:
+            return permissible.getRole() == Permissible::Role::Member;
+        case Value::NotMember:
+            return permissible.getRole() != Permissible::Role::Member;
+        case Value::Operator:
+            return permissible.getRole() == Permissible::Role::Operator;
+        case Value::NotOperator:
+            return permissible.getRole() != Permissible::Role::Operator;
+        }
     }
 
     static const PermissionDefault *getByName(const std::string &name)
@@ -49,20 +73,40 @@ public:
             return std::tolower(c);
         });
         lower_name = std::regex_replace(lower_name, std::regex("[^a-z!]"), "");
-        auto it = lookup_.find(lower_name);
-        return it != lookup_.end() ? it->second : nullptr;
+        auto it = mLookupByName.find(lower_name);
+        return it != mLookupByName.end() ? it->second : nullptr;
     }
 
 private:
-    PermissionDefault(const std::vector<std::string> &names, const PermissionLevel level) : names_(names), level_(level)
+    PermissionDefault(const Value value, const std::vector<std::string> &names) : value_(value), names_(names)
     {
         for (const auto &name : names) {
-            lookup_.insert({name, this});
+            mLookupByName.insert({name, this});
         }
     }
-
+    const Value value_;
     const std::vector<std::string> names_;
-    const PermissionLevel level_;
 
-    inline static std::unordered_map<std::string, PermissionDefault *> lookup_;
+    inline static std::unordered_map<std::string, PermissionDefault *> mLookupByName;
+
+public:
+    const static PermissionDefault True;
+    const static PermissionDefault False;
+    const static PermissionDefault Visitor;
+    const static PermissionDefault NotVisitor;
+    const static PermissionDefault Member;
+    const static PermissionDefault NotMember;
+    const static PermissionDefault Operator;
+    const static PermissionDefault NotOperator;
 };
+
+const PermissionDefault PermissionDefault::True = {PermissionDefault::Value::True, {"true"}};
+const PermissionDefault PermissionDefault::False = {PermissionDefault::Value::False, {"false"}};
+const PermissionDefault PermissionDefault::Visitor = {PermissionDefault::Value::Visitor, {"visitor"}};
+const PermissionDefault PermissionDefault::NotVisitor = {PermissionDefault::Value::NotVisitor,
+                                                         {"not_visitor", "!visitor"}};
+const PermissionDefault PermissionDefault::Member = {PermissionDefault::Value::Member, {"member"}};
+const PermissionDefault PermissionDefault::NotMember = {PermissionDefault::Value::NotMember, {"not_member", "!member"}};
+const PermissionDefault PermissionDefault::Operator = {PermissionDefault::Value::Operator, {"op", "operator"}};
+const PermissionDefault PermissionDefault::NotOperator = {PermissionDefault::Value::NotOperator,
+                                                          {"not_op", "!op", "not_operator", "!operator"}};

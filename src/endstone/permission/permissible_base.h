@@ -14,19 +14,15 @@
 
 #pragma once
 
-class Permissible {
+#include "endstone/permission/permission_default.h"
+
+class PermissibleBase {
 public:
-    enum class Role {
-        Visitor,
-        Member,
-        Operator
-    };
+    // Delete copy constructor and copy assignment operator
+    PermissibleBase(const PermissibleBase &) = delete;
+    PermissibleBase &operator=(const PermissibleBase &) = delete;
 
-    [[nodiscard]] Role getRole() const
-    {
-        return role_;
-    }
-
-private:
-    Role role_;
+    // Delete move constructor and move assignment operator
+    PermissibleBase(PermissibleBase &&) = delete;
+    PermissibleBase &operator=(PermissibleBase &&) = delete;
 };

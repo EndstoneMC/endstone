@@ -12,21 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-class Permissible {
-public:
-    enum class Role {
-        Visitor,
-        Member,
-        Operator
-    };
-
-    [[nodiscard]] Role getRole() const
-    {
-        return role_;
-    }
-
-private:
-    Role role_;
-};
+#include "permissible_base.h"
