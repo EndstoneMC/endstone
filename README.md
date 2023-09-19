@@ -145,12 +145,14 @@ crafting influential plugins for Bedrock Dedicated Servers, regardless of your c
 
 ## Development Timeline
 
-| Milestone                                | Duration   | C++ Status     | Python Status |
+| Milestone                                | Duration   | C++ API & Core | Python API    |
 |------------------------------------------|------------|----------------|---------------|
 | **🔍 Research & Feasibility Study**      | 1-2 months | ✅ Completed    | ✅ Completed   |
 | **🔌 Plugin Loader**                     | 3-4 months | ✅ Completed    | ✅ Completed   |
-| **⌨️ Command & Event System**            | 2-3 months | 🔧 In Progress | ❌ Not Started |
-| **🛠 Plugin API: Core Features**         | 4-5 months | ❌ Not Started  | ❌ Not Started |
+| **⌨️ Command System**                    | 2-3 months | 🔧 In Progress | ❌ Not Started |
+| **🔐 Permission System**                 | 2-3 months | 🔧 In Progress | ❌ Not Started |
+| **🎈 Event System**                      | 2-3 months | ❌ Not Started  | ❌ Not Started |
+| **🛠 Minecraft Core Features**           | 4-5 months | ❌ Not Started  | ❌ Not Started |
 | **🖼 GUI & Inventory System**            | 3-4 months | ❌ Not Started  | ❌ Not Started |
 | **🌟 Advanced Features & Refinements**   | 4-6 months | ❌ Not Started  | ❌ Not Started |
 | **🧪 Beta Testing & Community Feedback** | 3 months   | ❌ Not Started  | ❌ Not Started |
