@@ -57,7 +57,7 @@ void def_command(py::module &m)
         .def_property_readonly("server", &CommandSender::getServer)
         .def_property_readonly("name", &CommandSender::getName);
 
-    py::class_<CommandExecutor, PyCommandExecutor, py::smart_holder>(m, "CommandExecutor")
+    py::class_<CommandExecutor, PyCommandExecutor, py::smart_holder>(m, "CommandExecutorBase")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("label"),
              py::arg("args"));

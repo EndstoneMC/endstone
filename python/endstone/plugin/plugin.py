@@ -18,6 +18,7 @@ class Plugin(PluginBase):
     def on_disable(self) -> None:
         pass
 
+    # noinspection PyMethodOverriding
     def on_command(self, sender: CommandSender, command: Command, label: str, args: list[str]) -> bool:
         return False
 
