@@ -25,6 +25,11 @@ include(EndstoneVersion)
 project(endstone VERSION ${PROJECT_VERSION})
 
 # ------------------------
+# Platform Checks
+# ------------------------
+include(CheckPlatform)
+
+# ------------------------
 # Main Project Check
 # if endstone is built as a subproject
 # ------------------------
