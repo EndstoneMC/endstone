@@ -29,7 +29,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool fla
                                                                                      auto command_origin) -> bool {
             MCRESULT result = {};
             CommandContext ctx = {command_line, std::move(command_origin), version};
-            auto func = endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, FuncDecoratedName);
+            auto func = Endstone::Hook::get_function_rvo(&MinecraftCommands::executeCommand, FuncDecoratedName);
             result = *func(this, &result, ctx, flag);
             return result.is_success;
         };

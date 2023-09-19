@@ -20,12 +20,12 @@
 
 #include "lib/hook/internal.h"
 
-namespace endstone::hook {
+namespace Endstone::Hook {
 
 template <typename ReturnType = void *>
 inline ReturnType sym_from_name(const std::string &name)
 {
-    auto &internals = internal::get_internals();
+    auto &internals = Endstone::HookInternal::get_internals();
     auto it = internals.originals.find(name);
     if (it == internals.originals.end()) {
         throw std::runtime_error("Symbol " + name + " not found.");
@@ -96,23 +96,23 @@ inline std::function<Return *(const Class *, Return *, Arg...)> get_function_rvo
     };
 }
 
-}  // namespace endstone::hook
+}  // namespace Endstone::Hook
 
 #ifdef _WIN32
 #include <MinHook.h>
 
-namespace endstone::hook {
-class manager {
+namespace Endstone::Hook {
+class HookManager {
 public:
-    explicit manager(void *h_library) : h_library_(h_library)
+    explicit HookManager(void *h_library)
     {
-        internal::symbol_handler sym{0, nullptr, false};
-        auto &internals = internal::get_internals();
+        Endstone::HookInternal::SymbolHandler sym{0, nullptr, false};
+        auto &internals = Endstone::HookInternal::get_internals();
 
         void *module_base;
         size_t image_base;
 
-        module_base = internal::get_module_base(GetCurrentProcess(), h_library);
+        module_base = Endstone::HookInternal::get_module_base(GetCurrentProcess(), h_library);
         image_base = sym.load_module(h_library);
         sym.enum_symbols(image_base, "*", [&](auto info, auto /*size*/) -> bool {
             internals.detours.insert(
@@ -120,11 +120,11 @@ public:
             return true;
         });
 
-        const static auto SPINNER_CHARS = std::vector<std::string>{"⠈", "⠐", "⠠", "⢀", "⡀", "⠄", "⠂", "⠁"};
+        const static auto SpinnerChars = std::vector<std::string>{"⠈", "⠐", "⠠", "⢀", "⡀", "⠄", "⠂", "⠁"};
         size_t spinner_id = 0;
         auto last_time = std::chrono::steady_clock::now();
 
-        module_base = internal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
+        module_base = Endstone::HookInternal::get_module_base(GetCurrentProcess(), GetModuleHandle(nullptr));
         image_base = sym.load_module(nullptr);
         sym.enum_symbols(image_base, "*", [&](auto info, auto /*size*/) -> bool {
             auto name = std::string(info->Name);
@@ -146,7 +146,7 @@ public:
             using std::chrono_literals::operator""ms;
             auto now = std::chrono::steady_clock::now();
             if ((now - last_time) >= 40ms) {
-                printf("\r\x1b[93;1m%s Loading endstone...", SPINNER_CHARS[spinner_id % SPINNER_CHARS.size()].c_str());
+                printf("\r\x1b[93;1m%s Loading endstone...", SpinnerChars[spinner_id % SpinnerChars.size()].c_str());
                 fflush(stdout);
                 spinner_id++;
                 last_time = now;
@@ -160,7 +160,7 @@ public:
         MH_STATUS status;
         status = MH_Initialize();
         if (status != MH_OK) {
-            throw std::system_error(status, internal::minhook_category());
+            throw std::system_error(status, Endstone::HookInternal::minhook_category());
         }
 
         for (const auto &[name, detour] : internals.detours) {
@@ -170,7 +170,7 @@ public:
             // printf("%s: 0x%p -> 0x%p\n", name.c_str(), target, detour);
             status = MH_CreateHook(target, detour, &original);
             if (status != MH_OK) {
-                throw std::system_error(status, internal::minhook_category());
+                throw std::system_error(status, Endstone::HookInternal::minhook_category());
             }
 
             // printf("%s: = 0x%p\n", name.c_str(), original);
@@ -179,21 +179,21 @@ public:
 
         status = MH_EnableHook(MH_ALL_HOOKS);
         if (status != MH_OK) {
-            throw std::system_error(status, internal::minhook_category());
+            throw std::system_error(status, Endstone::HookInternal::minhook_category());
         }
 
         initialized_ = true;
     }
 
-    manager(const manager &) = delete;
-    manager(manager &&other) noexcept
+    HookManager(const HookManager &) = delete;
+    HookManager(HookManager &&other) noexcept
     {
         other.initialized_ = false;
     }
-    manager &operator=(const manager &) = delete;
-    manager &operator=(manager &&) = delete;
+    HookManager &operator=(const HookManager &) = delete;
+    HookManager &operator=(HookManager &&) = delete;
 
-    ~manager()
+    ~HookManager()
     {
         if (initialized_) {
             MH_DisableHook(MH_ALL_HOOKS);
@@ -202,12 +202,11 @@ public:
     }
 
 private:
-    bool initialized_{false};
-    void *h_library_{nullptr};
+    bool initialized_ = false;
 };
-}  // namespace endstone::hook
+}  // namespace Endstone::Hook
 
 #endif
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
-#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::get_function_rvo(fp, __FUNCDNAME__)(__VA_ARGS__);
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     Endstone::Hook::get_function(fp, __FUNCDNAME__)(__VA_ARGS__);
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) Endstone::Hook::get_function_rvo(fp, __FUNCDNAME__)(__VA_ARGS__);

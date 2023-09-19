@@ -21,7 +21,7 @@
 
 [[maybe_unused]] std::unique_ptr<py::scoped_interpreter> gInterpreter;
 [[maybe_unused]] std::unique_ptr<py::gil_scoped_release> gRelease;
-[[maybe_unused]] std::unique_ptr<endstone::hook::manager> gHookManager;
+[[maybe_unused]] std::unique_ptr<Endstone::Hook::HookManager> gHookManager;
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,  // handle to DLL module
                                      _In_ DWORD reason,      // reason for calling function
@@ -41,7 +41,7 @@
             gRelease = std::make_unique<py::gil_scoped_release>();
 
             // Initialize hook manager
-            gHookManager = std::make_unique<endstone::hook::manager>(module);
+            gHookManager = std::make_unique<Endstone::Hook::HookManager>(module);
             break;
         }
         catch (const std::exception &e) {

@@ -12,25 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/command_origin.h"
 
-#include <functional>
-#include <utility>
+#include "lib/hook/virtual_functions.h"
 
-#if defined(_WIN32)
-#ifdef BEDROCK_EXPORTS
-#define BEDROCK_API __declspec(dllexport)
-#elif defined(BEDROCK_IMPORTS)
-#define BEDROCK_API __declspec(dllimport)
-#endif
-#else
-#if defined(BEDROCK_EXPORTS) || defined(BEDROCK_IMPORTS)
-#if defined(__GNUC__) || defined(__clang__)
-#define BEDROCK_API __attribute__((visibility("default")))
-#endif
-#endif
-#endif
+CommandOriginType CommandOrigin::getOriginType() const
+{
+    return ENDSTONE_VIRTUAL_CALL(23, &CommandOrigin::getOriginType, this);
+}
 
-#ifndef BEDROCK_API
-#define BEDROCK_API
-#endif
+std::string CommandOrigin::getName() const
+{
+    std::string name;
+    name = *ENDSTONE_VIRTUAL_CALL_RVO(2, &CommandOrigin::getName, this, &name);
+    return name;
+}

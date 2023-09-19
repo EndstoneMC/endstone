@@ -36,14 +36,6 @@ enum class CommandOriginType : char {
 
 class CommandOrigin {
 public:
-    [[nodiscard]] CommandOriginType getOriginType() const
-    {
-        return BEDROCK_VIRTUAL_CALL(23, &CommandOrigin::getOriginType, this)
-    }
-
-    [[nodiscard]] std::string getName() const
-    {
-        std::string name;
-        name = *BEDROCK_VIRTUAL_CALL_RVO(2, &CommandOrigin::getName, this, &name) return name;
-    }
+    [[nodiscard]] CommandOriginType getOriginType() const;
+    [[nodiscard]] std::string getName() const;
 };

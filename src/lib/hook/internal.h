@@ -23,20 +23,20 @@
 #include <unordered_map>
 #include <utility>
 
-namespace endstone::hook::internal {
+namespace Endstone::HookInternal {
 
-struct internals {
+struct Internals {
     std::unordered_map<std::string, void *> detours{};
     std::unordered_map<std::string, void *> originals{};
 };
 
-inline internals &get_internals()
+inline Internals &get_internals()
 {
-    static internals i{};
+    static Internals i{};
     return i;
 }
 
-}  // namespace endstone::hook::internal
+}  // namespace Endstone::HookInternal
 
 #ifdef _WIN32
 #ifndef NOMINMAX
@@ -48,7 +48,7 @@ inline internals &get_internals()
 #include <MinHook.h>
 #include <Psapi.h>
 
-namespace endstone::hook::internal {
+namespace Endstone::HookInternal {
 
 inline void *get_module_base(void *h_process, void *h_module)
 {
@@ -161,13 +161,13 @@ inline const std::error_category &minhook_category() noexcept
     return CATEGORY;
 }
 
-}  // namespace endstone::hook::internal
+}  // namespace Endstone::HookInternal
 #endif
 
-namespace endstone::hook::internal {
-class symbol_handler {
+namespace Endstone::HookInternal {
+class SymbolHandler {
 public:
-    explicit symbol_handler(int options = 0, const char *search_path = nullptr, bool invade_process = false)
+    explicit SymbolHandler(int options = 0, const char *search_path = nullptr, bool invade_process = false)
     {
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -180,15 +180,15 @@ public:
         }
     }
 
-    symbol_handler(const symbol_handler &) = delete;
-    symbol_handler(symbol_handler &&other) noexcept
+    SymbolHandler(const SymbolHandler &) = delete;
+    SymbolHandler(SymbolHandler &&other) noexcept
     {
         other.valid_ = false;
     }
-    symbol_handler &operator=(const symbol_handler &) = delete;
-    symbol_handler &operator=(symbol_handler &&) = delete;
+    SymbolHandler &operator=(const SymbolHandler &) = delete;
+    SymbolHandler &operator=(SymbolHandler &&) = delete;
 
-    ~symbol_handler()
+    ~SymbolHandler()
     {
         if (valid_) {
             std::lock_guard lock{mutex_};
@@ -213,4 +213,4 @@ private:
     void *handle_{nullptr};
     std::mutex mutex_{};
 };
-}  // namespace endstone::hook::internal
+}  // namespace Endstone::HookInternal
