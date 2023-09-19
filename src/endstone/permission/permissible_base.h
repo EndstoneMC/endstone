@@ -21,8 +21,4 @@ public:
     // Delete copy constructor and copy assignment operator
     PermissibleBase(const PermissibleBase &) = delete;
     PermissibleBase &operator=(const PermissibleBase &) = delete;
-
-    // Delete move constructor and move assignment operator
-    PermissibleBase(PermissibleBase &&) = delete;
-    PermissibleBase &operator=(PermissibleBase &&) = delete;
 };

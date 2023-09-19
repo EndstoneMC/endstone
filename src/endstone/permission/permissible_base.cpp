@@ -12,4 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "permissible_base.h"
+#include "endstone/permission/permissible_base.h"
+
+#include "endstone/permission/permission.h"

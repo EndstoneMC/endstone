@@ -14,15 +14,15 @@
 
 #pragma once
 
+enum class PermissibleRole {
+    Visitor,
+    Member,
+    Operator
+};
+
 class Permissible {
 public:
-    enum class Role {
-        Visitor,
-        Member,
-        Operator
-    };
-
-    [[nodiscard]] Role getRole() const
+    [[nodiscard]] PermissibleRole getRole() const
     {
         return role_;
     }

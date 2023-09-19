@@ -36,15 +36,7 @@ class PermissionDefault {
     };
 
 public:
-    // Delete copy constructor and copy assignment operator
-    PermissionDefault(const PermissionDefault &) = delete;
-    PermissionDefault &operator=(const PermissionDefault &) = delete;
-
-    // Delete move constructor and move assignment operator
-    PermissionDefault(PermissionDefault &&) = delete;
-    PermissionDefault &operator=(PermissionDefault &&) = delete;
-
-    [[nodiscard]] bool hasPermission(const Permissible &permissible) const
+    [[nodiscard]] bool hasPermission(const Permissible &permissible) const noexcept
     {
         switch (value_) {
         case Value::True:
@@ -52,21 +44,31 @@ public:
         case Value::False:
             return false;
         case Value::Visitor:
-            return permissible.getRole() == Permissible::Role::Visitor;
+            return permissible.getRole() == PermissibleRole::Visitor;
         case Value::NotVisitor:
-            return permissible.getRole() != Permissible::Role::Visitor;
+            return permissible.getRole() != PermissibleRole::Visitor;
         case Value::Member:
-            return permissible.getRole() == Permissible::Role::Member;
+            return permissible.getRole() == PermissibleRole::Member;
         case Value::NotMember:
-            return permissible.getRole() != Permissible::Role::Member;
+            return permissible.getRole() != PermissibleRole::Member;
         case Value::Operator:
-            return permissible.getRole() == Permissible::Role::Operator;
+            return permissible.getRole() == PermissibleRole::Operator;
         case Value::NotOperator:
-            return permissible.getRole() != Permissible::Role::Operator;
+            return permissible.getRole() != PermissibleRole::Operator;
         }
     }
 
-    static const PermissionDefault *getByName(const std::string &name)
+    bool operator==(const PermissionDefault &rhs) const noexcept
+    {
+        return value_ == rhs.value_;
+    }
+
+    bool operator!=(const PermissionDefault &rhs) const noexcept
+    {
+        return !(rhs == *this);
+    }
+
+    static const PermissionDefault *getByName(const std::string &name) noexcept
     {
         std::string lower_name = name;
         std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
@@ -78,14 +80,15 @@ public:
     }
 
 private:
-    PermissionDefault(const Value value, const std::vector<std::string> &names) : value_(value), names_(names)
+    PermissionDefault(const Value value, const std::vector<std::string> &names) noexcept : value_(value), names_(names)
     {
         for (const auto &name : names) {
             mLookupByName.insert({name, this});
         }
     }
-    const Value value_;
-    const std::vector<std::string> names_;
+
+    Value value_;
+    std::vector<std::string> names_;
 
     inline static std::unordered_map<std::string, PermissionDefault *> mLookupByName;
 
