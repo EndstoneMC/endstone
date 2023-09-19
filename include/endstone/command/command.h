@@ -30,8 +30,8 @@ public:
     explicit Command(const std::string &name) noexcept : Command(name, "", {"/" + name}, {}) {}
     explicit Command(const std::string &name, std::string description, const std::vector<std::string> &usages,
                      const std::vector<std::string> &aliases) noexcept
-        : name_(name), label_(name), next_label_(name), description_(std::move(description)), usages_(usages), aliases_(aliases),
-          active_aliases_(std::vector<std::string>(aliases))
+        : name_(name), label_(name), next_label_(name), description_(std::move(description)), usages_(usages),
+          aliases_(aliases), active_aliases_(std::vector<std::string>(aliases))
     {
     }
     virtual ~Command() noexcept = default;
@@ -164,7 +164,7 @@ public:
      */
     [[nodiscard]] bool isRegistered() const noexcept
     {
-        return command_map_;
+        return command_map_ != nullptr;
     }
 
     /**

@@ -55,8 +55,7 @@ public:
     BEDROCK_API MCRESULT executeCommand(CommandContext &command_ctx, bool flag) const;
 
 private:
-    inline static std::optional<std::function<bool(const std::string &, std::unique_ptr<CommandOrigin>)>>
-        vanilla_dispatcher_;
+    inline static std::function<bool(const std::string &, std::unique_ptr<CommandOrigin>)> mVanillaDispatcher;
 
     // Allow the BedrockCommand::execute to use the vanilla executor
     friend bool BedrockCommand::execute(CommandSender &sender, const std::string &label,

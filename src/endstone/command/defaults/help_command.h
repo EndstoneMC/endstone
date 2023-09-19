@@ -22,7 +22,7 @@
 
 class HelpCommand : public EndstoneCommand {
 private:
-    constexpr static int COMMANDS_PER_PAGE = 8;
+    constexpr static int NumCommandPerPage = 8;
 
 public:
     explicit HelpCommand(const SimpleCommandMap &command_map) noexcept;

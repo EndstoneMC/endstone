@@ -86,7 +86,7 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
     std::vector<std::string> helps(help_set.begin(), help_set.end());
     std::sort(helps.begin(), helps.end());
 
-    int total_pages = (static_cast<int>(helps.size()) + COMMANDS_PER_PAGE - 1) / COMMANDS_PER_PAGE;
+    int total_pages = (static_cast<int>(helps.size()) + NumCommandPerPage - 1) / NumCommandPerPage;
     if (page > total_pages) {
         page = total_pages;
     }
@@ -95,8 +95,8 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
     }
 
     sender.sendMessage(ChatColor::Yellow + "--- Showing help page {} of {} ---", page, total_pages);
-    auto begin = helps.begin() + (page - 1) * COMMANDS_PER_PAGE;
-    auto end = std::min(helps.begin() + page * COMMANDS_PER_PAGE, helps.end());
+    auto begin = helps.begin() + (page - 1) * NumCommandPerPage;
+    auto end = std::min(helps.begin() + page * NumCommandPerPage, helps.end());
     for (auto it = begin; it != end; ++it) {
         sender.sendMessage(*it);
     }

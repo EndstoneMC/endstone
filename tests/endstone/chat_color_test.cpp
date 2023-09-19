@@ -2,9 +2,9 @@
 // Created by Vincent on 29/08/2023.
 //
 
-#include "endstone/chat_color.h"
-
 #include <gtest/gtest.h>
+
+#include "endstone/chat_color.h"
 
 TEST(ChatColorTest, GetByChar)
 {
@@ -63,13 +63,13 @@ TEST(ChatColorTest, RegexReplaceWithString)
     std::string replaced;
     std::sregex_iterator begin = std::sregex_iterator(subject.begin(), subject.end(), ChatColors::PATTERN);
     std::sregex_iterator end = std::sregex_iterator();
-    std::ptrdiff_t lastPos = 0;
+    std::ptrdiff_t last_pos = 0;
 
     for (std::sregex_iterator it = begin; it != end; ++it) {
-        replaced += subject.substr(lastPos, it->position() - lastPos);
-        lastPos = it->position() + it->length();
+        replaced += subject.substr(last_pos, it->position() - last_pos);
+        last_pos = it->position() + it->length();
     }
-    replaced += subject.substr(lastPos);
+    replaced += subject.substr(last_pos);
 
     EXPECT_EQ(replaced, ChatColors::stripColor(subject));
 }

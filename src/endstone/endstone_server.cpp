@@ -94,13 +94,13 @@ CommandSender &EndstoneServer::getConsoleSender()
 
 void EndstoneServer::setBedrockCommands()
 {
-    for (const auto &item : CommandRegistry::bedrock_commands_) {
+    for (const auto &item : CommandRegistry::mBedrockCommands) {
         command_map_->registerCommand("minecraft", item.second);
     }
 }
 
 PluginCommand *EndstoneServer::getPluginCommand(const std::string &name)
 {
-    auto command = command_map_->getCommand(name);
+    auto *command = command_map_->getCommand(name);
     return dynamic_cast<PluginCommand *>(command);
 }

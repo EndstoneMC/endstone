@@ -75,7 +75,7 @@ public:
                                      enum class CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
 
-    inline static std::unordered_map<std::string, std::shared_ptr<Command>> bedrock_commands_{};
+    inline static std::unordered_map<std::string, std::shared_ptr<Command>> mBedrockCommands{};
 
 private:
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,

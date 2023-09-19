@@ -65,7 +65,6 @@ private:
     EndstoneServer();
     void setBedrockCommands();
 
-private:
     Logger &logger_;
     std::unique_ptr<SimpleCommandMap> command_map_;
     std::unique_ptr<PluginManager> plugin_manager_;

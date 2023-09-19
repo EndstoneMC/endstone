@@ -56,7 +56,7 @@ enum class ChatColor : char {
 
 class ChatColors {
 private:
-    static std::map<char, ChatColor> lookup_map_;
+    static std::map<char, ChatColor> mLookupMap;
     static std::pair<char, ChatColor> a(ChatColor color)
     {
         return {static_cast<char>(color), color};
@@ -68,8 +68,8 @@ public:
 
     static const ChatColor *get(char ch)
     {
-        auto it = lookup_map_.find(ch);
-        if (it != lookup_map_.end()) {
+        auto it = mLookupMap.find(ch);
+        if (it != mLookupMap.end()) {
             return &it->second;
         }
         return nullptr;
@@ -88,15 +88,15 @@ public:
     static std::vector<ChatColor> values()
     {
         std::vector<ChatColor> colors;
-        colors.reserve(lookup_map_.size());
-        for (const auto &pair : lookup_map_) {
+        colors.reserve(mLookupMap.size());
+        for (const auto &pair : mLookupMap) {
             colors.push_back(pair.second);
         }
         return colors;
     }
 };
 
-inline std::map<char, ChatColor> ChatColors::lookup_map_ = {  //
+inline std::map<char, ChatColor> ChatColors::mLookupMap = {  //
     ChatColors::a(ChatColor::Black),
     ChatColors::a(ChatColor::DarkBlue),
     ChatColors::a(ChatColor::DarkGreen),

@@ -11,7 +11,7 @@
 #include "bedrock/bedrock_log.h"
 #include "endstone/logger_factory.h"
 
-static std::string last_message;
+std::string gLastMessage;
 
 BEDROCK_API void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*flags*/,
                                     BedrockLog::LogRule /*rule*/, LogAreaID /*area*/, LogLevel /*level*/,
@@ -22,8 +22,8 @@ BEDROCK_API void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::b
     auto len = vsnprintf(nullptr, 0, format, tmp_args) + 1;
     va_end(tmp_args);
 
-    last_message.resize(len - 1);
-    vsnprintf(last_message.data(), len, format, args);
+    gLastMessage.resize(len - 1);
+    vsnprintf(gLastMessage.data(), len, format, args);
     va_end(args);
 }
 
@@ -54,7 +54,7 @@ TEST(BedrockLoggerAdapterTest, LogMessage)
 {
     BedrockLoggerAdapter logger("TestLogger");
     logger.log(Logger::Level::Info, "This is a test message.");
-    ASSERT_EQ(last_message, "This is a test message.");
+    ASSERT_EQ(gLastMessage, "This is a test message.");
 }
 
 TEST(BedrockLoggerAdapterTest, LogOnlyForEnabledLevels)
@@ -64,11 +64,11 @@ TEST(BedrockLoggerAdapterTest, LogOnlyForEnabledLevels)
 
     // Try to log a message with Info level (shouldn't be logged due to the level check)
     logger.log(Logger::Level::Info, "This is an info message.");
-    ASSERT_NE(last_message, "This is an info message.");
+    ASSERT_NE(gLastMessage, "This is an info message.");
 
     // Now, log a message with Error level (should be logged)
     logger.log(Logger::Level::Error, "This is an error message.");
-    ASSERT_EQ(last_message, "This is an error message.");
+    ASSERT_EQ(gLastMessage, "This is an error message.");
 }
 
 TEST(LoggerFactoryTest, ReturnLoggerForNewName)

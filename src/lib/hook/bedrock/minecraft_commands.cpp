@@ -22,14 +22,14 @@
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &command_ctx, bool flag) const
 {
-    constexpr static auto FUNC_DECORATED_NAME = __FUNCDNAME__;
+    constexpr static auto FuncDecoratedName = __FUNCDNAME__;
 
-    if (!vanilla_dispatcher_.has_value()) {
-        vanilla_dispatcher_ = [this, version = command_ctx.getCommandVersion(), flag](auto &command_line,
-                                                                                      auto command_origin) -> bool {
+    if (!mVanillaDispatcher) {
+        mVanillaDispatcher = [this, version = command_ctx.getCommandVersion(), flag](auto &command_line,
+                                                                                     auto command_origin) -> bool {
             MCRESULT result = {};
             CommandContext ctx = {command_line, std::move(command_origin), version};
-            auto func = endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, FUNC_DECORATED_NAME);
+            auto func = endstone::hook::get_function_rvo(&MinecraftCommands::executeCommand, FuncDecoratedName);
             result = *func(this, &result, ctx, flag);
             return result.is_success;
         };

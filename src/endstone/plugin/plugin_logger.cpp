@@ -18,7 +18,7 @@
 
 PluginLogger::PluginLogger(const Plugin &plugin) : logger_(LoggerFactory::getLogger(plugin.getDescription().getName()))
 {
-    auto &description = plugin.getDescription();
+    const auto &description = plugin.getDescription();
     auto prefix = description.getPrefix();
     plugin_name_ = fmt::format("[{}] ", prefix.value_or(description.getName()));
 }

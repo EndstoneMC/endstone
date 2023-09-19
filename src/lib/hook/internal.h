@@ -172,6 +172,7 @@ public:
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<size_t> dist(1, SIZE_MAX);
+        // NOLINTNEXTLINE(performance-no-int-to-ptr)
         handle_ = reinterpret_cast<void *>(dist(gen));
         {
             std::lock_guard lock{mutex_};

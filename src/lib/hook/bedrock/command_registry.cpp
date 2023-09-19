@@ -21,14 +21,14 @@
 void CommandRegistry::registerCommand(const std::string &name, const char *description,
                                       enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)
 {
-    bedrock_commands_[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
+    mBedrockCommands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
                                                                std::vector<std::string>{});
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
 }
 
 void CommandRegistry::registerAlias(std::string name, std::string alias)
 {
-    auto command = bedrock_commands_[name];
+    auto command = mBedrockCommands[name];
     auto aliases = command->getAliases();
     aliases.push_back(alias);
     command->setAliases(aliases);
@@ -48,7 +48,7 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
     }
     auto usage = fmt::format("{}", fmt::join(parts.begin(), parts.end(), " "));
 
-    auto command = bedrock_commands_[name];
+    auto command = mBedrockCommands[name];
     auto usages = command->getUsages();
     usages.push_back(usage);
     command->setUsages(usages);

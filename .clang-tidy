@@ -16,6 +16,7 @@ Checks: >
   -readability-magic-numbers,
   -readability-named-parameter,
   -bugprone-easily-swappable-parameters,
+  -bugprone-exception-escape,
   -bugprone-implicit-widening-of-multiplication-result
 
 WarningsAsErrors: "*"

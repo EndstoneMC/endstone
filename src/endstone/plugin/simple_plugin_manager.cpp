@@ -88,7 +88,7 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file) noexc
                 auto *const plugin_ptr = plugin.get();
                 auto name = plugin->getDescription().getName();
 
-                if (!std::regex_match(name, PluginDescription::VALID_NAME)) {
+                if (!std::regex_match(name, PluginDescription::ValidName)) {
                     server_.getLogger().error(
                         "Could not load plugin from '{}': Plugin name contains invalid characters.", file.string());
                     return nullptr;

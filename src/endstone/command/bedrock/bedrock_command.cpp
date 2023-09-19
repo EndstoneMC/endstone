@@ -25,7 +25,7 @@ bool BedrockCommand::execute(CommandSender &sender, const std::string &label,
 {
     auto &bedrock_sender = dynamic_cast<BedrockCommandSender &>(sender);
     auto command_line = toCommandLine(label, args);
-    return MinecraftCommands::vanilla_dispatcher_.value()(command_line, std::move(bedrock_sender.takeOrigin()));
+    return MinecraftCommands::mVanillaDispatcher(command_line, std::move(bedrock_sender.takeOrigin()));
 }
 
 std::string BedrockCommand::toCommandLine(const std::string &label, const std::vector<std::string> &args) noexcept
@@ -36,7 +36,5 @@ std::string BedrockCommand::toCommandLine(const std::string &label, const std::v
     if (args.empty()) {
         return "/" + name;
     }
-    else {
-        return fmt::format("/{} {}", name, fmt::join(args.begin(), args.end(), " "));
-    }
+    return fmt::format("/{} {}", name, fmt::join(args.begin(), args.end(), " "));
 }
