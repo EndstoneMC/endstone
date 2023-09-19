@@ -22,6 +22,9 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 
+class Permissible;
+class Permission;
+
 class PluginManager {
 public:
     virtual ~PluginManager() noexcept = default;
@@ -36,4 +39,8 @@ public:
     virtual void disablePlugin(Plugin &plugin) const noexcept = 0;
     virtual void disablePlugins() const noexcept = 0;
     [[maybe_unused]] virtual void clearPlugins() noexcept = 0;
+
+    [[nodiscard]] virtual std::vector<Permissible> getPermissionSubscriptions(
+        std::string permission) const noexcept = 0;
+    virtual void recalculatePermissionDefaults(Permission &permission) noexcept = 0;
 };

@@ -104,3 +104,8 @@ PluginCommand *EndstoneServer::getPluginCommand(const std::string &name)
     auto *command = command_map_->getCommand(name);
     return dynamic_cast<PluginCommand *>(command);
 }
+
+PluginManager &EndstoneServer::getPluginManager()
+{
+    return *plugin_manager_;
+}

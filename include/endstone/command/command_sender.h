@@ -25,7 +25,8 @@ class Server;
 
 class CommandSender : public Permissible {
 public:
-    virtual ~CommandSender() noexcept = default;
+    CommandSender() noexcept = default;
+    ~CommandSender() noexcept override = default;
 
     /**
      * Sends this sender a message

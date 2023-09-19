@@ -43,6 +43,7 @@ public:
     PluginCommand *getPluginCommand(const std::string &name) override;
     bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
     CommandSender &getConsoleSender() override;
+    PluginManager &getPluginManager() override;
 
     void loadPlugins();
     void enablePlugins();

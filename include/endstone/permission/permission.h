@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "endstone/permission/permission_default.h"
+#include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
 class Permission {
@@ -75,23 +76,20 @@ public:
 
     [[nodiscard]] std::vector<Permissible> getPermissibles() const noexcept
     {
-        // TODO(permission):
-        // return getServer().getPluginManager().getPermissionSubscriptions(name);
+        return getServer().getPluginManager().getPermissionSubscriptions(name_);
     }
 
     void recalculatePermissibles() noexcept
     {
         auto permissibles = getPermissibles();
-        // TODO(permission):
-        // getServer().getPluginManager().recalculatePermissionDefaults(this);
+        getServer().getPluginManager().recalculatePermissionDefaults(*this);
 
-        for (const auto &p : permissibles) {
-            // TODO(permission):
-            // p.recalculatePermissions();
+        for (auto &p : permissibles) {
+            p.recalculatePermissions();
         }
     }
 
-    virtual Server &getServer() noexcept = 0;
+    [[nodiscard]] virtual Server &getServer() const noexcept = 0;
 
 private:
     std::string name_;

@@ -21,6 +21,7 @@
 
 class PluginCommand;
 class CommandSender;
+class PluginManager;
 
 class Server {
 public:
@@ -61,6 +62,13 @@ public:
      * @return a console command sender
      */
     [[maybe_unused]] virtual CommandSender &getConsoleSender() = 0;
+
+    /**
+     * Gets the plugin manager for interfacing with plugins.
+     *
+     * @return a plugin manager for this Server instance
+     */
+    [[maybe_unused]] virtual PluginManager &getPluginManager() = 0;
 
     /**
      * Gets the version string of this server implementation.

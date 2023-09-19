@@ -38,6 +38,17 @@ public:
     void disablePlugins() const noexcept override;
     void clearPlugins() noexcept override;
 
+    [[nodiscard]] std::vector<Permissible> getPermissionSubscriptions(std::string permission) const noexcept override
+    {
+        // TODO (permission):
+        server_.getLogger().error("getPermissionSubscriptions is not implemented");
+        return {};
+    }
+    void recalculatePermissionDefaults(Permission &permission) noexcept override
+    {
+        server_.getLogger().error("recalculatePermissionDefaults is not implemented");
+    }
+
 private:
     Server &server_;
     std::map<std::string, std::unique_ptr<PluginLoader>> file_associations_;

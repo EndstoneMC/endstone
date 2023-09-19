@@ -22,11 +22,13 @@ enum class PermissibleRole {
 
 class Permissible {
 public:
-    [[nodiscard]] PermissibleRole getRole() const
-    {
-        return role_;
-    }
+    Permissible() noexcept = default;
+    virtual ~Permissible() noexcept = default;
 
-private:
-    Role role_;
+    // Delete copy constructor and copy assignment operator
+    Permissible(const Permissible &) = delete;
+    Permissible &operator=(const Permissible &) = delete;
+
+    [[nodiscard]] virtual PermissibleRole getRole() const noexcept = 0;
+    virtual void recalculatePermissions() noexcept = 0;
 };

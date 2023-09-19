@@ -11,12 +11,3 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-#include "endstone/command/bedrock/server_command_sender.h"
-
-#include "endstone/server.h"
-
-void ServerCommandSender::sendMessage(const std::string &message) const noexcept
-{
-    getServer().getLogger().info(message);
-}

@@ -17,10 +17,25 @@
 #include <string>
 
 #include "endstone/command/bedrock/bedrock_command_sender.h"
+#include "endstone/server.h"
 
 class ServerCommandSender : public BedrockCommandSender {
 public:
     using BedrockCommandSender::BedrockCommandSender;
 
-    void sendMessage(const std::string &message) const noexcept override;
+    void sendMessage(const std::string &message) const noexcept override
+    {
+        getServer().getLogger().info(message);
+    }
+
+    [[nodiscard]] PermissibleRole getRole() const noexcept override
+    {
+        return PermissibleRole::Operator;
+    }
+
+    void recalculatePermissions() noexcept override
+    {
+        // TODO(permission)
+        getServer().getLogger().error("recalculatePermissions is not implemented.");
+    }
 };
