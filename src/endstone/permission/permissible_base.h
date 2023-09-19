@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include "endstone/permission/permission_default.h"
+#include "endstone/permission/permissible.h"
 
-class PermissibleBase {
+class PermissibleBase : public Permissible {
 public:
     // Delete copy constructor and copy assignment operator
     PermissibleBase(const PermissibleBase &) = delete;

@@ -40,6 +40,8 @@ public:
     virtual void disablePlugins() const noexcept = 0;
     [[maybe_unused]] virtual void clearPlugins() noexcept = 0;
 
+    [[nodiscard]] virtual Permission *getPermission(const std::string &name) const noexcept = 0;
+    [[nodiscard]] virtual Permission &addPermission(const std::string &name) const noexcept = 0;
     [[nodiscard]] virtual std::vector<Permissible> getPermissionSubscriptions(
         std::string permission) const noexcept = 0;
     virtual void recalculatePermissionDefaults(Permission &permission) noexcept = 0;

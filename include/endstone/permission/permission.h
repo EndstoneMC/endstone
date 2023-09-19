@@ -27,11 +27,22 @@ class Permission {
 public:
     inline const static PermissionDefault DefaultPermission = PermissionDefault::Operator;
 
-    Permission(std::string name, std::string description, std::optional<PermissionDefault> default_value) noexcept
-        : name_(std::move(name)), description_(std::move(description))
+    explicit Permission(
+        std::string name, std::optional<std::string> description = std::nullopt,
+        std::optional<PermissionDefault> default_value = std::nullopt,
+        std::optional<std::unordered_map<std::string, PermissionDefault>> children = std::nullopt) noexcept
+        : name_(std::move(name))
     {
+        if (description.has_value()) {
+            description_ = description.value();
+        }
+
         if (default_value.has_value()) {
             default_ = default_value.value();
+        }
+
+        if (children.has_value()) {
+            children_ = children.value();
         }
     }
 
@@ -69,7 +80,7 @@ public:
         }
     }
 
-    [[nodiscard]] const std::unordered_map<std::string, PermissionDefault> &getChildren() const noexcept
+    [[nodiscard]] std::unordered_map<std::string, PermissionDefault> &getChildren() noexcept
     {
         return children_;
     }
@@ -89,9 +100,32 @@ public:
         }
     }
 
-    [[nodiscard]] virtual Server &getServer() const noexcept = 0;
+    Permission &addParent(const std::string &name, const PermissionDefault &value) noexcept
+    {
+        auto &plugin_manager = getServer().getPluginManager();
+        auto lower_name = name;
+        std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+            return std::tolower(c);
+        });
+
+        auto *permission = plugin_manager.getPermission(lower_name);
+        if (!permission) {
+            permission = &plugin_manager.addPermission(lower_name);
+        }
+
+        addParent(*permission, value);
+        return *permission;
+    }
+
+    void addParent(Permission &permission, const PermissionDefault &value) const noexcept
+    {
+        permission.getChildren().insert({getName(), value});
+        permission.recalculatePermissibles();
+    }
 
 private:
+    [[nodiscard]] virtual Server &getServer() const noexcept = 0;
+
     std::string name_;
     std::string description_;
     PermissionDefault default_ = DefaultPermission;
