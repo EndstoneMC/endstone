@@ -22,7 +22,7 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
                                       enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)
 {
     mBedrockCommands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
-                                                               std::vector<std::string>{});
+                                                              std::vector<std::string>{});
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
 }
 
@@ -40,22 +40,20 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload)
 
-    auto name = signature.label;
-    // The description is fetched after registration to ensure any new types associated with this overload are added.
-    std::vector<std::string> parts = {"/{command}"};
-    for (const auto &parameter : overload.parameters) {
-        parts.push_back(describe(parameter));
-    }
-    auto usage = fmt::format("{}", fmt::join(parts.begin(), parts.end(), " "));
-
-    auto command = mBedrockCommands[name];
+    auto label = signature.label;
+    auto usage = describe(signature, label, overload, 0, nullptr, nullptr);
+    auto command = mBedrockCommands[label];
     auto usages = command->getUsages();
     usages.push_back(usage);
     command->setUsages(usages);
 }
 
-std::string CommandRegistry::describe(const CommandParameterData &parameter) const
+std::string CommandRegistry::describe(CommandRegistry::Signature const &signature, const std::string &label,
+                                      CommandRegistry::Overload const &overload, unsigned int unused,
+                                      unsigned int *out_label_size, unsigned int *out_args_size) const
 {
     std::string result;
-    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, parameter) return result;
+    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, signature, label, overload,
+                                              unused, out_label_size, out_args_size);
+    return result;
 }

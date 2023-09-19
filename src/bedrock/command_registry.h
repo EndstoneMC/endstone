@@ -26,41 +26,9 @@ struct CommandFlag {
     uint16_t value;
 };
 
-enum class CommandParameterDataType : int {
-    Value,
-    Enum,
-};
-
-class CommandParameterData {
-    const char *type_id_;            // +0
-    void *parse_fn_;                 // +8
-    std::string name_;               // +16
-    const char *enum_name_;          // +48
-    int unknown_1_;                  // +56
-    const char *unknown_2_;          // +64
-    int unknown_3_;                  // +72
-    CommandParameterDataType type_;  // +76
-    int unknown_4_;                  // +80
-    int unknown_5_;                  // +84
-    bool is_value_;                  // +88
-    char options_;                   // +89
-};
-static_assert(sizeof(CommandParameterData) == 96);
-
-class CommandVersion {
-    uint64_t version_;
-};
-
 class CommandRegistry {
 public:
-    struct Overload {
-        CommandVersion version;                                     // +0
-        [[maybe_unused]] std::unique_ptr<Command> (*factory_fn)();  // +8
-        std::vector<CommandParameterData> parameters;               // +16
-        char unknown[32];                                           // +44
-    };
-    static_assert(sizeof(Overload) == 72);
-
+    struct Overload;
     struct Signature {
         std::string label;                                 // +0
         std::string description;                           // +32
@@ -80,5 +48,8 @@ public:
 private:
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
-    [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &parameter) const;
+    [[nodiscard]] BEDROCK_API std::string describe(CommandRegistry::Signature const &signature,
+                                                   const std::string &label, CommandRegistry::Overload const &overload,
+                                                   unsigned int unused, unsigned int *out_label_size,
+                                                   unsigned int *out_args_size) const;
 };
