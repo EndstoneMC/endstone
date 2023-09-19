@@ -6,6 +6,7 @@ from importlib.machinery import ModuleSpec
 from pathlib import Path
 from types import ModuleType
 
+# noinspection PyProtectedMember
 from endstone._bindings import PluginLoader
 
 from .plugin import Plugin

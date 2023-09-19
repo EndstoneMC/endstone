@@ -1,3 +1,4 @@
+# noinspection PyProtectedMember
 from endstone._bindings import PluginBase, PluginDescription
 
 from endstone.command import Command, CommandSender

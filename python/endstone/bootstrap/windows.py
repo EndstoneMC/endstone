@@ -53,6 +53,7 @@ class STARTUPINFO(ctypes.Structure):
 LPSTARTUPINFO = ctypes.POINTER(STARTUPINFO)
 
 
+# noinspection PyPep8Naming
 class PROCESS_INFORMATION(ctypes.Structure):
     _fields_ = [
         ("hProcess", HMODULE),

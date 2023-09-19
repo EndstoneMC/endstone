@@ -1,6 +1,7 @@
 import sys
 from typing import BinaryIO, Optional
 
+# noinspection PyProtectedMember
 from endstone._bindings import PluginDescription
 
 from endstone.command import Command
