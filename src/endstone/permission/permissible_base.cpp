@@ -13,5 +13,4 @@
 // limitations under the License.
 
 #include "endstone/permission/permissible_base.h"
-
-#include "endstone/permission/permission.h"
+#include "endstone/permission/permission_attachment.h"

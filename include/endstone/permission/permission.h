@@ -27,12 +27,15 @@ class Permission {
 public:
     inline const static PermissionDefault DefaultPermission = PermissionDefault::Operator;
 
-    explicit Permission(
-        std::string name, std::optional<std::string> description = std::nullopt,
-        std::optional<PermissionDefault> default_value = std::nullopt,
-        std::optional<std::unordered_map<std::string, PermissionDefault>> children = std::nullopt) noexcept
-        : name_(std::move(name))
+    explicit Permission(std::string name, std::optional<std::string> description = std::nullopt,
+                        std::optional<PermissionDefault> default_value = std::nullopt,
+                        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
     {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
+            return std::tolower(c);
+        });
+        name_ = name;
+
         if (description.has_value()) {
             description_ = description.value();
         }
@@ -80,7 +83,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::unordered_map<std::string, PermissionDefault> &getChildren() noexcept
+    [[nodiscard]] std::unordered_map<std::string, bool> &getChildren() noexcept
     {
         return children_;
     }
@@ -100,7 +103,7 @@ public:
         }
     }
 
-    Permission &addParent(const std::string &name, const PermissionDefault &value) noexcept
+    Permission &addParent(const std::string &name, bool value) noexcept
     {
         auto &plugin_manager = getServer().getPluginManager();
         auto lower_name = name;
@@ -117,7 +120,7 @@ public:
         return *permission;
     }
 
-    void addParent(Permission &permission, const PermissionDefault &value) const noexcept
+    void addParent(Permission &permission, bool value) const noexcept
     {
         permission.getChildren().insert({getName(), value});
         permission.recalculatePermissibles();
@@ -129,5 +132,5 @@ private:
     std::string name_;
     std::string description_;
     PermissionDefault default_ = DefaultPermission;
-    std::unordered_map<std::string, PermissionDefault> children_;
+    std::unordered_map<std::string, bool> children_;
 };

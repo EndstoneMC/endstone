@@ -14,11 +14,14 @@
 
 #pragma once
 
+#include "endstone/plugin/plugin.h"
 enum class PermissibleRole {
     Visitor,
     Member,
     Operator
 };
+
+class PermissionAttachment;
 
 class Permissible {
 public:
@@ -30,5 +33,12 @@ public:
     Permissible &operator=(const Permissible &) = delete;
 
     [[nodiscard]] virtual PermissibleRole getRole() const noexcept = 0;
+    [[nodiscard]] virtual bool setRole(PermissibleRole role) const noexcept = 0;
+    [[nodiscard]] virtual bool isPermissionSet(const std::string &name) const noexcept = 0;
+    [[nodiscard]] virtual bool hasPermission(const std::string &name) const noexcept = 0;
+    [[nodiscard]] virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name,
+                                                              bool value) noexcept = 0;
+    [[nodiscard]] virtual PermissionAttachment *addAttachment(Plugin &plugin) noexcept = 0;
+    [[nodiscard]] virtual bool removeAttachment(const PermissionAttachment &attachment) noexcept = 0;
     virtual void recalculatePermissions() noexcept = 0;
 };
