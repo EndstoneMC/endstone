@@ -55,6 +55,10 @@ public:
     Permission(const Permission &) = delete;
     Permission &operator=(const Permission &) = delete;
 
+    // Enable move constructor and move assignment operator
+    Permission(Permission &&) noexcept = default;
+    Permission &operator=(Permission &&) noexcept = default;
+
     [[nodiscard]] const std::string &getName() const noexcept
     {
         return name_;
@@ -88,7 +92,7 @@ public:
         return children_;
     }
 
-    [[nodiscard]] std::vector<Permissible> getPermissibles() const noexcept
+    [[nodiscard]] std::vector<Permissible *> getPermissibles() const noexcept
     {
         return getServer().getPluginManager().getPermissionSubscriptions(name_);
     }
@@ -99,7 +103,7 @@ public:
         getServer().getPluginManager().recalculatePermissionDefaults(*this);
 
         for (auto &p : permissibles) {
-            p.recalculatePermissions();
+            p->recalculatePermissions();
         }
     }
 

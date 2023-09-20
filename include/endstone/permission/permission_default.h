@@ -38,23 +38,30 @@ class PermissionDefault {
 public:
     [[nodiscard]] bool hasPermission(const Permissible &permissible) const noexcept
     {
+        return hasPermission(permissible.getRole());
+    }
+
+    [[nodiscard]] bool hasPermission(PermissibleRole role) const noexcept
+    {
         switch (value_) {
         case Value::True:
             return true;
         case Value::False:
             return false;
         case Value::Visitor:
-            return permissible.getRole() == PermissibleRole::Visitor;
+            return role == PermissibleRole::Visitor;
         case Value::NotVisitor:
-            return permissible.getRole() != PermissibleRole::Visitor;
+            return role != PermissibleRole::Visitor;
         case Value::Member:
-            return permissible.getRole() == PermissibleRole::Member;
+            return role == PermissibleRole::Member;
         case Value::NotMember:
-            return permissible.getRole() != PermissibleRole::Member;
+            return role != PermissibleRole::Member;
         case Value::Operator:
-            return permissible.getRole() == PermissibleRole::Operator;
+            return role == PermissibleRole::Operator;
         case Value::NotOperator:
-            return permissible.getRole() != PermissibleRole::Operator;
+            return role != PermissibleRole::Operator;
+        default:
+            return false;
         }
     }
 
@@ -103,13 +110,14 @@ public:
     const static PermissionDefault NotOperator;
 };
 
-const PermissionDefault PermissionDefault::True = {PermissionDefault::Value::True, {"true"}};
-const PermissionDefault PermissionDefault::False = {PermissionDefault::Value::False, {"false"}};
-const PermissionDefault PermissionDefault::Visitor = {PermissionDefault::Value::Visitor, {"visitor"}};
-const PermissionDefault PermissionDefault::NotVisitor = {PermissionDefault::Value::NotVisitor,
-                                                         {"not_visitor", "!visitor"}};
-const PermissionDefault PermissionDefault::Member = {PermissionDefault::Value::Member, {"member"}};
-const PermissionDefault PermissionDefault::NotMember = {PermissionDefault::Value::NotMember, {"not_member", "!member"}};
-const PermissionDefault PermissionDefault::Operator = {PermissionDefault::Value::Operator, {"op", "operator"}};
-const PermissionDefault PermissionDefault::NotOperator = {PermissionDefault::Value::NotOperator,
-                                                          {"not_op", "!op", "not_operator", "!operator"}};
+inline const PermissionDefault PermissionDefault::True = {PermissionDefault::Value::True, {"true"}};
+inline const PermissionDefault PermissionDefault::False = {PermissionDefault::Value::False, {"false"}};
+inline const PermissionDefault PermissionDefault::Visitor = {PermissionDefault::Value::Visitor, {"visitor"}};
+inline const PermissionDefault PermissionDefault::NotVisitor = {PermissionDefault::Value::NotVisitor,
+                                                                {"not_visitor", "!visitor"}};
+inline const PermissionDefault PermissionDefault::Member = {PermissionDefault::Value::Member, {"member"}};
+inline const PermissionDefault PermissionDefault::NotMember = {PermissionDefault::Value::NotMember,
+                                                               {"not_member", "!member"}};
+inline const PermissionDefault PermissionDefault::Operator = {PermissionDefault::Value::Operator, {"op", "operator"}};
+inline const PermissionDefault PermissionDefault::NotOperator = {PermissionDefault::Value::NotOperator,
+                                                                 {"not_op", "!op", "not_operator", "!operator"}};

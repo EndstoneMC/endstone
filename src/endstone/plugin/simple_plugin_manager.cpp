@@ -15,10 +15,18 @@
 #include "endstone/plugin/simple_plugin_manager.h"
 
 #include <algorithm>
+#include <filesystem>
+#include <memory>
+#include <string>
 #include <utility>
+#include <vector>
 
 #include "endstone/command/plugin_command.h"
-#include "endstone/plugin/plugin_manager.h"
+#include "endstone/command/simple_command_map.h"
+#include "endstone/permission/permissible.h"
+#include "endstone/permission/permission.h"
+#include "endstone/permission/simple_permission.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
 SimplePluginManager::SimplePluginManager(Server &server, SimpleCommandMap &command_map) noexcept
@@ -186,4 +194,170 @@ void SimplePluginManager::clearPlugins() noexcept
     disablePlugins();
     plugins_.clear();
     lookup_names_.clear();
+}
+
+Permission *SimplePluginManager::getPermission(const std::string &name) noexcept
+{
+    auto lower_name = name;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    auto it = permissions_.find(lower_name);
+    if (it != permissions_.end()) {
+        return it->second.get();
+    }
+
+    return nullptr;
+}
+
+Permission &SimplePluginManager::addPermission(const std::string &name) noexcept
+{
+    return addPermission(name, true);
+}
+
+Permission &SimplePluginManager::addPermission(const std::string &name, bool update) noexcept
+{
+    auto lower_name = name;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    auto [it, success] = permissions_.insert({lower_name, std::make_unique<SimplePermission>(lower_name)});
+    auto &permission = it->second;
+
+    if (!success) {
+        server_.getLogger().error("The permission {} is already defined.", lower_name);
+    }
+    else {
+        calculatePermissionDefault(*permission, update);
+    }
+
+    return *permission;
+}
+
+void SimplePluginManager::removePermission(const std::string &name) noexcept
+{
+    auto lower_name = name;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+    permissions_.erase(lower_name);
+}
+
+std::vector<Permission *> SimplePluginManager::getDefaultPermissions(PermissibleRole role) const noexcept
+{
+    const auto &permissions = default_permissions_.find(role)->second;
+    return std::vector<Permission *>(permissions.begin(), permissions.end());
+}
+
+void SimplePluginManager::subscribeToDefaultPermissions(Permissible &permissible) noexcept
+{
+    auto &map = default_subscriptions_[permissible.getRole()];
+    map.insert_or_assign(&permissible, true);
+}
+
+void SimplePluginManager::unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept
+{
+    auto &map = default_subscriptions_[permissible.getRole()];
+    map.erase(&permissible);
+}
+
+void SimplePluginManager::subscribeToPermission(const std::string &permission, Permissible &permissible) noexcept
+{
+    auto lower_name = permission;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    auto &map = permission_subscriptions_[lower_name];
+    map.insert_or_assign(&permissible, true);
+}
+
+void SimplePluginManager::unsubscribeFromPermission(const std::string &permission, Permissible &permissible) noexcept
+{
+    auto lower_name = permission;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    auto map = permission_subscriptions_[lower_name];
+    map.erase(&permissible);
+}
+
+std::vector<Permissible *> SimplePluginManager::getPermissionSubscriptions(std::string permission) const noexcept
+{
+    auto lower_name = permission;
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    auto it = permission_subscriptions_.find(lower_name);
+    if (it == permission_subscriptions_.end()) {
+        return {};
+    }
+    else {
+        std::vector<Permissible *> keys;
+        const auto &map = it->second;
+        keys.reserve(map.size());
+
+        for (const auto &pair : map) {
+            keys.push_back(pair.first);
+        }
+        return keys;
+    }
+}
+
+void SimplePluginManager::recalculatePermissionDefaults(Permission &permission) noexcept
+{
+    auto lower_name = permission.getName();
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    for (auto &[role, permissions] : default_permissions_) {
+        permissions.erase(std::remove(permissions.begin(), permissions.end(), &permission), permissions.end());
+    }
+
+    calculatePermissionDefault(permission, true);
+}
+
+void SimplePluginManager::calculatePermissionDefault(Permission &permission, bool update) noexcept
+{
+    for (auto &[role, permissions] : default_permissions_) {
+        if (!permission.getDefault().hasPermission(role)) {
+            continue;
+        }
+
+        permissions.push_back(&permission);
+        if (update) {
+            updatePermissibles(role);
+        }
+    }
+}
+
+std::vector<Permissible *> SimplePluginManager::getDefaultPermissionSubscriptions(PermissibleRole role) const noexcept
+{
+    auto it = default_subscriptions_.find(role);
+    if (it == default_subscriptions_.end()) {
+        return {};
+    }
+    else {
+        std::vector<Permissible *> keys;
+        const auto &map = it->second;
+        keys.reserve(map.size());
+
+        for (const auto &pair : map) {
+            keys.push_back(pair.first);
+        }
+        return keys;
+    }
+}
+
+void SimplePluginManager::updatePermissibles(PermissibleRole role) noexcept
+{
+    auto permissibles = getDefaultPermissionSubscriptions(role);
+    for (const auto &p : permissibles) {
+        p->recalculatePermissions();
+    }
 }

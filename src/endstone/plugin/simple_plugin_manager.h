@@ -14,13 +14,19 @@
 
 #pragma once
 
-#include <map>
+#include <filesystem>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
 #include "endstone/command/simple_command_map.h"
+#include "endstone/permission/permissible.h"
+#include "endstone/permission/permission.h"
+#include "endstone/permission/simple_permission.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
+#include "endstone/server.h"
 
 class SimplePluginManager : public PluginManager {
 public:
@@ -38,38 +44,31 @@ public:
     void disablePlugins() const noexcept override;
     void clearPlugins() noexcept override;
 
-    [[nodiscard]] Permission *getPermission(const std::string &name) const noexcept override
-    {
-        // TODO (permission):
-        server_.getLogger().error("getPermission is not implemented");
-        std::terminate();
-    }
-
-    [[nodiscard]] Permission &addPermission(const std::string &name) const noexcept override
-    {
-        // TODO (permission):
-        server_.getLogger().error("addPermission is not implemented");
-        std::terminate();
-    }
-
-    [[nodiscard]] std::vector<Permissible> getPermissionSubscriptions(std::string permission) const noexcept override
-    {
-        // TODO (permission):
-        server_.getLogger().error("getPermissionSubscriptions is not implemented");
-        std::terminate();
-    }
-
-    void recalculatePermissionDefaults(Permission &permission) noexcept override
-    {
-        // TODO (permission):
-        server_.getLogger().error("recalculatePermissionDefaults is not implemented");
-        std::terminate();
-    }
+    [[nodiscard]] Permission *getPermission(const std::string &name) noexcept override;
+    [[nodiscard]] Permission &addPermission(const std::string &name) noexcept override;
+    [[nodiscard]] Permission &addPermission(const std::string &name, bool update = true) noexcept;
+    [[nodiscard]] void removePermission(const std::string &name) noexcept override;
+    [[nodiscard]] std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept override;
+    void subscribeToDefaultPermissions(Permissible &permissible) noexcept override;
+    void unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept override;
+    void subscribeToPermission(const std::string &permission, Permissible &permissible) noexcept override;
+    void unsubscribeFromPermission(const std::string &permission, Permissible &permissible) noexcept override;
+    [[nodiscard]] std::vector<Permissible *> getPermissionSubscriptions(std::string permission) const noexcept override;
+    [[nodiscard]] std::vector<Permissible *> getDefaultPermissionSubscriptions(
+        PermissibleRole role) const noexcept override;
+    void recalculatePermissionDefaults(Permission &permission) noexcept override;
 
 private:
+    void calculatePermissionDefault(Permission &permission, bool update) noexcept;
+    void updatePermissibles(PermissibleRole role) noexcept;
+
     Server &server_;
     std::map<std::string, std::unique_ptr<PluginLoader>> file_associations_;
     std::vector<std::unique_ptr<Plugin>> plugins_;
     std::map<std::string, Plugin *> lookup_names_;
     SimpleCommandMap &command_map_;
+    std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
+    std::unordered_map<PermissibleRole, std::vector<Permission *>> default_permissions_;
+    std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> permission_subscriptions_;
+    std::unordered_map<PermissibleRole, std::unordered_map<Permissible *, bool>> default_subscriptions_;
 };
