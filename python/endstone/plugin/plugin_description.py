@@ -97,54 +97,42 @@ class PluginDescriptionFile(PluginDescription):
         for k, v in permission_map.items():
             result.append(self._load_permission(k, v, default, result))
 
-        print(result)
         return result
 
     def _load_permission(self, name: str, data: dict, default: PermissionDefault, output: list) -> Permission:
         assert name is not None and len(name) != 0, "Name must not be null or empty"
 
         description = None
-        children = None
+        children = {}
 
         for k, v in data.items():
             if k == "default":
+                # Convert the value to a string and make it lowercase for a case-insensitive match
                 # noinspection PyArgumentList
                 value = PermissionDefault.get_by_name(str(v).lower())
                 if value:
                     default = value
                 else:
                     raise ValueError(f"'default' key contained unknown value: {v}")
+
             elif k == "description":
                 description = str(v)
-            else:
-                if isinstance(children_list := v, list):
-                    children = {}
-                    for node in children_list:
-                        children[f"{name}.{node}"] = True
 
-                elif isinstance(children_map := v, dict):
-                    children = self._extract_children(children_map, name, default, output)
+            else:
+                # Check if it is a leaf node
+                if isinstance(v, bool):
+                    children[f"{name}.{k}"] = v
+
+                # Check if it is a subtree
+                elif isinstance(v, dict):
+                    permission = self._load_permission(f"{name}.{k}", v, default, output)
+                    children[permission.name] = True
+                    output.append(permission)
+
                 else:
                     raise TypeError(f"Permission node {name}.{k} has wrong type {type(v)}")
 
         return Permission(name, description, default, children)
-
-    def _extract_children(self, data: dict, name: str, default: PermissionDefault, output: list) -> dict[str, bool]:
-        children = {}
-
-        for k, v in data.items():
-            if isinstance(v, bool):
-                children[f"{name}.{k}"] = v
-
-            elif isinstance(v, dict):
-                permission = self._load_permission(k, v, default, output)
-                children[permission.name] = True
-                output.append(permission)
-
-            else:
-                raise TypeError(f"Permission node {name}.{k} has wrong type {type(v)}")
-
-        return children
 
     @property
     def main(self) -> str:
