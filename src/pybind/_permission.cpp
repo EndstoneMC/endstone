@@ -27,25 +27,45 @@ void def_permission(py::module &m)
              py::arg("children") = std::nullopt)
         .def_property_readonly("name", &Permission::getName)
         .def_property("description", &Permission::getDescription, &Permission::setDescription)
-        .def_property("default", &Permission::getDefault, &Permission::setDefault)
+        .def_property("default", &Permission::getDefault, &Permission::setDefault, py::return_value_policy::reference)
         .def_property_readonly("children", &Permission::getChildren, py::return_value_policy::reference_internal)
-        .def_property_readonly("permissibles", &Permission::getPermissibles)
+        .def_property_readonly("permissibles", &Permission::getPermissibles,
+                               py::return_value_policy::reference_internal)
         .def("recalculate_permissibles", &Permission::recalculatePermissibles)
-        .def("addParent", py::overload_cast<const std::string &, bool>(&Permission::addParent));
+        .def("add_parent", py::overload_cast<const std::string &, bool>(&Permission::addParent),
+             py::return_value_policy::reference)
+        .def_readonly_static("DEFAULT_PERMISSION", &Permission::DefaultPermission);
 
     auto permissible =
         py::class_<Permissible>(m, "Permissible")
             .def_property("role", &Permissible::getRole, &Permissible::setRole)
             .def("is_permission_set", &Permissible::isPermissionSet)
             .def("has_permission", &Permissible::hasPermission)
-            .def("add_attachment", py::overload_cast<Plugin &, const std::string &, bool>(&Permissible::addAttachment))
-            .def("add_attachment", py::overload_cast<Plugin &>(&Permissible::addAttachment))
+            .def("add_attachment", py::overload_cast<Plugin &, const std::string &, bool>(&Permissible::addAttachment),
+                 py::return_value_policy::reference)
+            .def("add_attachment", py::overload_cast<Plugin &>(&Permissible::addAttachment),
+                 py::return_value_policy::reference)
             .def("remove_attachment", &Permissible::removeAttachment)
             .def("recalculate_permissions", &Permissible::recalculatePermissions);
 
     py::enum_<PermissibleRole>(permissible, "PermissibleRole")
-        .value("Visitor", PermissibleRole::Visitor)
-        .value("Member", PermissibleRole::Member)
-        .value("Operator", PermissibleRole::Operator)
+        .value("VISITOR", PermissibleRole::Visitor)
+        .value("MEMBER", PermissibleRole::Member)
+        .value("OPERATOR", PermissibleRole::Operator)
         .export_values();
+
+    py::class_<PermissionDefault>(m, "PermissionDefault")
+        .def("is_granted_for", py::overload_cast<const Permissible &>(&PermissionDefault::isGrantedFor, py::const_))
+        .def("is_granted_for", py::overload_cast<PermissibleRole>(&PermissionDefault::isGrantedFor, py::const_))
+        .def_static("get_by_name", &PermissionDefault::getByName, py::return_value_policy::reference)
+        .def("__eq__", &PermissionDefault::operator==)
+        .def("__ne__", &PermissionDefault::operator!=)
+        .def_readonly_static("TRUE", &PermissionDefault::True)
+        .def_readonly_static("FALSE", &PermissionDefault::False)
+        .def_readonly_static("VISITOR", &PermissionDefault::Visitor)
+        .def_readonly_static("NOT_VISITOR", &PermissionDefault::NotVisitor)
+        .def_readonly_static("MEMBER", &PermissionDefault::Member)
+        .def_readonly_static("NOT_MEMBER", &PermissionDefault::NotMember)
+        .def_readonly_static("OPERATOR", &PermissionDefault::Operator)
+        .def_readonly_static("NOT_OPERATOR", &PermissionDefault::NotOperator);
 }
