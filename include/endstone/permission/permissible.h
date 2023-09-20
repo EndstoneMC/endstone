@@ -14,13 +14,13 @@
 
 #pragma once
 
-#include "endstone/plugin/plugin.h"
 enum class PermissibleRole {
     Visitor,
     Member,
     Operator
 };
 
+class Plugin;
 class PermissionAttachment;
 
 class Permissible {

@@ -132,7 +132,7 @@ public:
     {
         clearPermissions();
         auto &plugin_manager = EndstoneServer::getInstance().getPluginManager();
-        plugin_manager.subscribeToDefaultPerms(owner_);
+        plugin_manager.subscribeToDefaultPermissions(owner_);
 
         auto defaults = plugin_manager.getDefaultPermissions(getRole());
         for (auto &perm : defaults) {
@@ -156,7 +156,7 @@ public:
             plugin_manager.unsubscribeFromPermission(name, owner_);
         }
 
-        plugin_manager.unsubscribeFromDefaultPerms(owner_);
+        plugin_manager.unsubscribeFromDefaultPermissions(owner_);
     }
 
 private:
