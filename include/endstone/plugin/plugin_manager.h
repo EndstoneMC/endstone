@@ -41,7 +41,7 @@ public:
     [[maybe_unused]] virtual void clearPlugins() noexcept = 0;
 
     [[nodiscard]] virtual Permission *getPermission(const std::string &name) noexcept = 0;
-    [[nodiscard]] virtual Permission &addPermission(const std::string &name) noexcept = 0;
+    [[nodiscard]] virtual Permission *addPermission(const std::string &name) noexcept = 0;
     virtual void removePermission(const std::string &name) noexcept = 0;
     [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept = 0;
     virtual void recalculatePermissionDefaults(Permission &permission) noexcept = 0;

@@ -27,28 +27,6 @@ class Permission {
 public:
     inline const static PermissionDefault DefaultPermission = PermissionDefault::Operator;
 
-    explicit Permission(std::string name, std::optional<std::string> description = std::nullopt,
-                        std::optional<PermissionDefault> default_value = std::nullopt,
-                        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
-    {
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
-            return std::tolower(c);
-        });
-        name_ = name;
-
-        if (description.has_value()) {
-            description_ = description.value();
-        }
-
-        if (default_value.has_value()) {
-            default_ = default_value.value();
-        }
-
-        if (children.has_value()) {
-            children_ = children.value();
-        }
-    }
-
     virtual ~Permission() noexcept = default;
 
     // Delete copy constructor and copy assignment operator
@@ -107,7 +85,7 @@ public:
         }
     }
 
-    Permission &addParent(const std::string &name, bool value) noexcept
+    Permission *addParent(const std::string &name, bool value) noexcept
     {
         auto &plugin_manager = getServer().getPluginManager();
         auto lower_name = name;
@@ -117,17 +95,44 @@ public:
 
         auto *permission = plugin_manager.getPermission(lower_name);
         if (!permission) {
-            permission = &plugin_manager.addPermission(lower_name);
+            permission = plugin_manager.addPermission(lower_name);
+        }
+
+        if (!permission) {
+            return nullptr;
         }
 
         addParent(*permission, value);
-        return *permission;
+        return permission;
     }
 
     void addParent(Permission &permission, bool value) const noexcept
     {
         permission.getChildren().insert({getName(), value});
         permission.recalculatePermissibles();
+    }
+
+protected:
+    explicit Permission(std::string name, std::optional<std::string> description = std::nullopt,
+                        std::optional<PermissionDefault> default_value = std::nullopt,
+                        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
+    {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
+            return std::tolower(c);
+        });
+        name_ = name;
+
+        if (description.has_value()) {
+            description_ = description.value();
+        }
+
+        if (default_value.has_value()) {
+            default_ = default_value.value();
+        }
+
+        if (children.has_value()) {
+            children_ = children.value();
+        }
     }
 
 private:

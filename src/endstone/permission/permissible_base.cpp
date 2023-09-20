@@ -68,18 +68,14 @@ PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::
 
 PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin) noexcept
 {
-    if (!plugin.isEnabled()) {
-        EndstoneServer::getInstance().getLogger().error("Plugin {} is disabled.",
-                                                        plugin.getDescription().getFullName());
+    auto result = PermissionAttachment::create(plugin, owner_);
+    if (!result) {
         return nullptr;
     }
 
-    auto result = std::make_unique<PermissionAttachment>(plugin, owner_);
-    auto *result_raw = result.get();
     attachments_.push_back(std::move(result));
     recalculatePermissions();
-
-    return result_raw;
+    return attachments_.back().get();
 }
 
 bool PermissibleBase::removeAttachment(const PermissionAttachment &attachment) noexcept
@@ -116,8 +112,7 @@ void PermissibleBase::recalculatePermissions() noexcept
     auto defaults = plugin_manager.getDefaultPermissions(getRole());
     for (auto &perm : defaults) {
         auto name = perm->getName();
-
-        permissions_.insert({name, PermissionAttachmentInfo(owner_, name, nullptr, true)});
+        permissions_.insert_or_assign(name, PermissionAttachmentInfo(owner_, name, nullptr, true));
         plugin_manager.subscribeToPermission(name, owner_);
         calculateChildPermissions(perm->getChildren(), false, nullptr);
     }

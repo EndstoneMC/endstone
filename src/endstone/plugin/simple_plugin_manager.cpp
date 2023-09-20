@@ -211,29 +211,33 @@ Permission *SimplePluginManager::getPermission(const std::string &name) noexcept
     return nullptr;
 }
 
-Permission &SimplePluginManager::addPermission(const std::string &name) noexcept
+Permission *SimplePluginManager::addPermission(const std::string &name) noexcept
 {
     return addPermission(name, true);
 }
 
-Permission &SimplePluginManager::addPermission(const std::string &name, bool update) noexcept
+Permission *SimplePluginManager::addPermission(const std::string &name, bool update) noexcept
 {
     auto lower_name = name;
     std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
         return std::tolower(c);
     });
 
-    auto [it, success] = permissions_.insert({lower_name, std::make_unique<SimplePermission>(lower_name)});
-    auto &permission = it->second;
+    auto permission = SimplePermission::create(lower_name);
+    if (!permission) {
+        return nullptr;
+    }
+
+    auto [it, success] = permissions_.insert({lower_name, std::move(permission)});
 
     if (!success) {
         server_.getLogger().error("The permission {} is already defined.", lower_name);
     }
     else {
-        calculatePermissionDefault(*permission, update);
+        calculatePermissionDefault(*it->second, update);
     }
 
-    return *permission;
+    return it->second.get();
 }
 
 void SimplePluginManager::removePermission(const std::string &name) noexcept

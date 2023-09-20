@@ -14,18 +14,37 @@
 
 #pragma once
 
+#include <memory>
+#include <utility>
+
 #include "endstone/endstone_server.h"
 #include "endstone/permission/permission.h"
 
 class SimplePermission : public Permission {
 public:
-    using Permission::Permission;
-
-    SimplePermission(SimplePermission&&) noexcept = default;
-    SimplePermission& operator=(SimplePermission&&) noexcept = default;
+    SimplePermission(SimplePermission &&) noexcept = default;
+    SimplePermission &operator=(SimplePermission &&) noexcept = default;
 
     [[nodiscard]] Server &getServer() const noexcept override
     {
         return EndstoneServer::getInstance();
     }
+
+    static std::unique_ptr<SimplePermission> create(
+        std::string name, std::optional<std::string> description = std::nullopt,
+        std::optional<PermissionDefault> default_value = std::nullopt,
+        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
+    {
+        if (!name.empty()) {
+            EndstoneServer::getInstance().getLogger().error("Permission name must not be empty");
+            return nullptr;
+        }
+
+        // NOLINTNEXTLINE(bugprone-unhandled-exception-at-new)
+        return std::unique_ptr<SimplePermission>(new SimplePermission(std::move(name), std::move(description),
+                                                                      std::move(default_value), std::move(children)));
+    }
+
+private:
+    using Permission::Permission;
 };

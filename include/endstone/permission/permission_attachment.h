@@ -65,8 +65,16 @@ using PermissionRemovedExecutor = std::function<void(PermissionAttachment &)>;
 
 class PermissionAttachment {
 public:
-    PermissionAttachment(Plugin &plugin, Permissible &permissible) noexcept : permissible_(permissible), plugin_(plugin)
+    static std::unique_ptr<PermissionAttachment> create(Plugin &plugin, Permissible &permissible) noexcept
     {
+        if (!plugin.isEnabled()) {
+            EndstoneServer::getInstance().getLogger().error("Plugin {} is disabled.",
+                                                            plugin.getDescription().getFullName());
+            return nullptr;
+        }
+
+        // NOLINTNEXTLINE(bugprone-unhandled-exception-at-new)
+        return std::unique_ptr<PermissionAttachment>(new PermissionAttachment(plugin, permissible));
     }
 
     [[nodiscard]] Plugin &getPlugin() const noexcept
@@ -130,6 +138,10 @@ public:
     }
 
 private:
+    PermissionAttachment(Plugin &plugin, Permissible &permissible) noexcept : permissible_(permissible), plugin_(plugin)
+    {
+    }
+
     PermissionRemovedExecutor removal_callback_;
     std::unordered_map<std::string, bool> permissions_;
     Permissible &permissible_;

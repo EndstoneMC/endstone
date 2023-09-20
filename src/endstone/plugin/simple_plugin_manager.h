@@ -45,8 +45,8 @@ public:
     void clearPlugins() noexcept override;
 
     [[nodiscard]] Permission *getPermission(const std::string &name) noexcept override;
-    [[nodiscard]] Permission &addPermission(const std::string &name) noexcept override;
-    [[nodiscard]] Permission &addPermission(const std::string &name, bool update = true) noexcept;
+    [[nodiscard]] Permission *addPermission(const std::string &name) noexcept override;
+    [[nodiscard]] Permission *addPermission(const std::string &name, bool update = true) noexcept;
     void removePermission(const std::string &name) noexcept override;
     [[nodiscard]] std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept override;
     void recalculatePermissionDefaults(Permission &permission) noexcept override;
