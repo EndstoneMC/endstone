@@ -188,7 +188,9 @@ void def_plugin(py::module &m)
         .def("_get_description", &PluginDescription::getDescription)
         .def("_get_authors", &PluginDescription::getAuthors)
         .def("_get_prefix", &PluginDescription::getPrefix)
-        .def("_get_commands", &PluginDescription::getCommands);
+        .def("_get_commands", &PluginDescription::getCommands)
+        .def("_get_permissions", &PluginDescription::getPermissions)
+        .def("_get_default_permission", &PluginDescription::getDefaultPermission);
 
     py::class_<PluginLoader, PyPluginLoader, py::smart_holder>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))

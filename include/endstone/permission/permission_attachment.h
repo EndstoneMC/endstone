@@ -21,6 +21,7 @@
 #include <fmt/color.h>
 
 #include "endstone/permission/permissible.h"
+#include "endstone/plugin/plugin.h"
 
 class PermissionAttachment;
 

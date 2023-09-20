@@ -17,10 +17,11 @@
 namespace {
 PYBIND11_MODULE(_bindings, m)
 {
-    def_server(m);
-    def_logger(m);
-    def_plugin(m);
-    def_command(m);
     def_chat_color(m);
+    def_command(m);
+    def_logger(m);
+    def_server(m);
+    def_permission(m);
+    def_plugin(m);
 }
 }  // namespace

@@ -25,7 +25,6 @@
 #include "endstone/command/simple_command_map.h"
 #include "endstone/permission/permissible.h"
 #include "endstone/permission/permission.h"
-#include "endstone/permission/simple_permission.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
@@ -223,7 +222,7 @@ Permission *SimplePluginManager::addPermission(const std::string &name, bool upd
         return std::tolower(c);
     });
 
-    auto permission = SimplePermission::create(lower_name);
+    auto permission = std::make_unique<Permission>(lower_name);
     if (!permission) {
         return nullptr;
     }

@@ -23,7 +23,6 @@
 #include "endstone/command/simple_command_map.h"
 #include "endstone/permission/permissible.h"
 #include "endstone/permission/permission.h"
-#include "endstone/permission/simple_permission.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"

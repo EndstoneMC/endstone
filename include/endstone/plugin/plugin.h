@@ -26,6 +26,7 @@
 
 class PluginLoader;
 class PluginCommand;
+class PluginDescription;
 
 class Plugin : public CommandExecutor {
 public:

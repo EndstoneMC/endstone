@@ -19,11 +19,10 @@
 #include <string>
 #include <vector>
 
-#include "endstone/plugin/plugin.h"
-#include "endstone/plugin/plugin_loader.h"
-
 class Permissible;
 class Permission;
+class Plugin;
+class PluginLoader;
 
 class PluginManager {
 public:

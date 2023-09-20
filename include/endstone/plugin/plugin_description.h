@@ -22,6 +22,8 @@
 #include <vector>
 
 #include "endstone/command/command.h"
+#include "endstone/permission/permission.h"
+#include "endstone/permission/permission_default.h"
 
 class PluginDescription {
 public:
@@ -55,22 +57,32 @@ public:
 
     [[nodiscard]] virtual std::optional<std::string> getDescription() const noexcept
     {
-        return {};
+        return std::nullopt;
     }
 
     [[nodiscard]] virtual std::optional<std::vector<std::string>> getAuthors() const noexcept
     {
-        return {};
+        return std::nullopt;
     }
 
     [[nodiscard]] virtual std::optional<std::string> getPrefix() const noexcept
     {
-        return {};
+        return std::nullopt;
     }
 
     [[nodiscard]] virtual std::vector<std::shared_ptr<Command>> getCommands() const noexcept
     {
         return {};
+    }
+
+    [[nodiscard]] virtual std::vector<std::unique_ptr<Permission>> getPermissions() const noexcept
+    {
+        return {};
+    }
+
+    [[nodiscard]] virtual std::optional<PermissionDefault> getDefaultPermission() const noexcept
+    {
+        return std::nullopt;
     }
 
     inline const static std::regex ValidName{"^[A-Za-z0-9 _.-]+$"};

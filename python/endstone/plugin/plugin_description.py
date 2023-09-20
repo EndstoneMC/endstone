@@ -30,16 +30,21 @@ class PluginDescriptionFile(PluginDescription):
         self._authors: Optional[list[str]] = None
         self._prefix: Optional[str] = None
         self._commands: list[Command] = []
+        self._permissions: list[Permission] = []
 
         for k, v in data.items():
             if k == "commands":
-                self._commands = self._parse_command_map(v)
+                self._commands = self._load_commands(v)
+                continue
+
+            if k == "permissions":
+                self._permissions = self._load_permissions(v)
                 continue
 
             if hasattr(self, f"_{k}"):
                 setattr(self, f"_{k}", v)
 
-    def _parse_command_map(self, command_map: dict) -> list[Command]:
+    def _load_commands(self, command_map: dict) -> list[Command]:
         commands = []
         for name, value in command_map.items():
             if ":" in name:
@@ -86,6 +91,9 @@ class PluginDescriptionFile(PluginDescription):
             commands.append(command)
 
         return commands
+
+    def _load_permissions(self, permission_map: dict) -> list[Permission]:
+        ...
 
     @property
     def main(self) -> str:

@@ -22,10 +22,33 @@
 #include "endstone/permission/permission_default.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
+#include "fmt/color.h"
 
 class Permission {
 public:
     inline const static PermissionDefault DefaultPermission = PermissionDefault::Operator;
+
+    explicit Permission(std::string name, std::optional<std::string> description = std::nullopt,
+                        std::optional<PermissionDefault> default_value = std::nullopt,
+                        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
+    {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
+            return std::tolower(c);
+        });
+        name_ = name;
+
+        if (description.has_value()) {
+            description_ = description.value();
+        }
+
+        if (default_value.has_value()) {
+            default_ = default_value.value();
+        }
+
+        if (children.has_value()) {
+            children_ = children.value();
+        }
+    }
 
     virtual ~Permission() noexcept = default;
 
@@ -72,13 +95,21 @@ public:
 
     [[nodiscard]] std::vector<Permissible *> getPermissibles() const noexcept
     {
-        return getServer().getPluginManager().getPermissionSubscriptions(name_);
+        if (!plugin_manager_) {
+            return {};
+        }
+
+        return plugin_manager_->getPermissionSubscriptions(name_);
     }
 
     void recalculatePermissibles() noexcept
     {
+        if (!plugin_manager_) {
+            return;
+        }
+
         auto permissibles = getPermissibles();
-        getServer().getPluginManager().recalculatePermissionDefaults(*this);
+        plugin_manager_->recalculatePermissionDefaults(*this);
 
         for (auto &p : permissibles) {
             p->recalculatePermissions();
@@ -87,15 +118,18 @@ public:
 
     Permission *addParent(const std::string &name, bool value) noexcept
     {
-        auto &plugin_manager = getServer().getPluginManager();
+        if (!plugin_manager_) {
+            return nullptr;
+        }
+
         auto lower_name = name;
         std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
             return std::tolower(c);
         });
 
-        auto *permission = plugin_manager.getPermission(lower_name);
+        auto *permission = plugin_manager_->getPermission(lower_name);
         if (!permission) {
-            permission = plugin_manager.addPermission(lower_name);
+            permission = plugin_manager_->addPermission(lower_name);
         }
 
         if (!permission) {
@@ -112,34 +146,13 @@ public:
         permission.recalculatePermissibles();
     }
 
-protected:
-    explicit Permission(std::string name, std::optional<std::string> description = std::nullopt,
-                        std::optional<PermissionDefault> default_value = std::nullopt,
-                        std::optional<std::unordered_map<std::string, bool>> children = std::nullopt) noexcept
-    {
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) {
-            return std::tolower(c);
-        });
-        name_ = name;
-
-        if (description.has_value()) {
-            description_ = description.value();
-        }
-
-        if (default_value.has_value()) {
-            default_ = default_value.value();
-        }
-
-        if (children.has_value()) {
-            children_ = children.value();
-        }
-    }
-
 private:
-    [[nodiscard]] virtual Server &getServer() const noexcept = 0;
-
     std::string name_;
     std::string description_;
     PermissionDefault default_ = DefaultPermission;
     std::unordered_map<std::string, bool> children_;
+
+    PluginManager *plugin_manager_;
+
+    inline const static std::regex ValidName{"^[a-zA-Z_]+(\\.[a-zA-Z_]+)*$"};
 };
