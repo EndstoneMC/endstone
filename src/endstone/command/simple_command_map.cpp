@@ -78,7 +78,7 @@ bool SimpleCommandMap::registerCommand(const std::string &label, const std::shar
 
     known_commands_[fallback_prefix + ":" + label] = command;
 
-    if ((dynamic_cast<EndstoneCommand *>(command.get()) || is_alias) &&
+    if ((dynamic_cast<EndstoneCommand *>(command.get()) != nullptr || is_alias) &&
         known_commands_.find(label) != known_commands_.end()) {
         // Request for an alias/fallback command which conflicts with an existing command or previous alias.
         // This will remove it from the list of active aliases

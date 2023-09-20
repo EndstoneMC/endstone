@@ -73,8 +73,13 @@ public:
             return nullptr;
         }
 
-        // NOLINTNEXTLINE(bugprone-unhandled-exception-at-new)
-        return std::unique_ptr<PermissionAttachment>(new PermissionAttachment(plugin, permissible));
+        try {
+            return std::unique_ptr<PermissionAttachment>(new PermissionAttachment(plugin, permissible));
+        }
+        catch (const std::bad_alloc &) {
+            EndstoneServer::getInstance().getLogger().error("Failed to allocate memory for PermissionAttachment.");
+            return nullptr;
+        }
     }
 
     [[nodiscard]] Plugin &getPlugin() const noexcept

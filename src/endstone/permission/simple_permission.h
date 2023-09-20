@@ -46,9 +46,14 @@ public:
             return nullptr;
         }
 
-        // NOLINTNEXTLINE(bugprone-unhandled-exception-at-new)
-        return std::unique_ptr<SimplePermission>(new SimplePermission(std::move(name), std::move(description),
-                                                                      std::move(default_value), std::move(children)));
+        try {
+            return std::unique_ptr<SimplePermission>(new SimplePermission(
+                std::move(name), std::move(description), std::move(default_value), std::move(children)));
+        }
+        catch (const std::bad_alloc &) {
+            EndstoneServer::getInstance().getLogger().error("Failed to allocate memory for SimplePermission.");
+            return nullptr;
+        }
     }
 
 private:
