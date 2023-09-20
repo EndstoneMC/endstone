@@ -40,11 +40,18 @@ public:
             return nullptr;
         }
 
+        if (!std::regex_match(name, ValidName)) {
+            EndstoneServer::getInstance().getLogger().error("Permission name '{}' does not match the expected format.",
+                                                            name);
+            return nullptr;
+        }
+
         // NOLINTNEXTLINE(bugprone-unhandled-exception-at-new)
         return std::unique_ptr<SimplePermission>(new SimplePermission(std::move(name), std::move(description),
                                                                       std::move(default_value), std::move(children)));
     }
 
 private:
+    inline const static std::regex ValidName{"^[a-zA-Z_]+(\\.[a-zA-Z_]+)*$"};
     using Permission::Permission;
 };
