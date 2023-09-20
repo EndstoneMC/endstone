@@ -68,22 +68,8 @@ using PermissionRemovedExecutor = std::function<void(PermissionAttachment &)>;
 
 class PermissionAttachment {
 public:
-    static std::unique_ptr<PermissionAttachment> create(Plugin &plugin, Permissible &permissible) noexcept
+    PermissionAttachment(Plugin &plugin, Permissible &permissible) noexcept : permissible_(permissible), plugin_(plugin)
     {
-        if (!plugin.isEnabled()) {
-            EndstoneServer::getInstance().getLogger().error("Plugin {} is disabled.",
-                                                            plugin.getDescription().getFullName());
-            return nullptr;
-        }
-
-        try {
-            return std::unique_ptr<PermissionAttachment>(new PermissionAttachment(plugin, permissible));
-        }
-        catch (const std::bad_alloc &) {
-            fmt::print(fg(fmt::color::red) | fmt::emphasis::bold,
-                       "FATAL: Bad allocation when creating PermissionAttachment.\n");
-            std::terminate();
-        }
     }
 
     [[nodiscard]] Plugin &getPlugin() const noexcept
@@ -147,10 +133,6 @@ public:
     }
 
 private:
-    PermissionAttachment(Plugin &plugin, Permissible &permissible) noexcept : permissible_(permissible), plugin_(plugin)
-    {
-    }
-
     PermissionRemovedExecutor removal_callback_;
     std::unordered_map<std::string, bool> permissions_;
     Permissible &permissible_;

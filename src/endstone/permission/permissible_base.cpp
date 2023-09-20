@@ -68,11 +68,13 @@ PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::
 
 PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin) noexcept
 {
-    auto result = PermissionAttachment::create(plugin, owner_);
-    if (!result) {
+    if (!plugin.isEnabled()) {
+        EndstoneServer::getInstance().getLogger().error("Plugin {} is disabled.",
+                                                        plugin.getDescription().getFullName());
         return nullptr;
     }
 
+    auto result = std::make_unique<PermissionAttachment>(plugin, owner_);
     attachments_.push_back(std::move(result));
     recalculatePermissions();
     return attachments_.back().get();

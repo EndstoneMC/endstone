@@ -47,10 +47,10 @@ void def_logger(py::module &m)
                           py::arg("msg"));
 
     py::enum_<Logger::Level>(logger, "Level")
-        .value("ALL", Logger::Level::All)
-        .value("VERBOSE", Logger::Level::Verbose)
-        .value("INFO", Logger::Level::Info)
-        .value("WARNING", Logger::Level::Warning)
-        .value("ERROR", Logger::Level::Error)
+        .value("ALL", Logger::All)
+        .value("VERBOSE", Logger::Verbose)
+        .value("INFO", Logger::Info)
+        .value("WARNING", Logger::Warning)
+        .value("ERROR", Logger::Error)
         .export_values();
 }

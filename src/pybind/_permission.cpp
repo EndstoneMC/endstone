@@ -15,6 +15,7 @@
 #include <utility>
 
 #include "endstone/permission/permission.h"
+#include "endstone/permission/permission_attachment.h"
 #include "pybind/pybind.h"
 
 void def_permission(py::module &m)
@@ -31,4 +32,20 @@ void def_permission(py::module &m)
         .def_property_readonly("permissibles", &Permission::getPermissibles)
         .def("recalculate_permissibles", &Permission::recalculatePermissibles)
         .def("addParent", py::overload_cast<const std::string &, bool>(&Permission::addParent));
+
+    auto permissible =
+        py::class_<Permissible>(m, "Permissible")
+            .def_property("role", &Permissible::getRole, &Permissible::setRole)
+            .def("is_permission_set", &Permissible::isPermissionSet)
+            .def("has_permission", &Permissible::hasPermission)
+            .def("add_attachment", py::overload_cast<Plugin &, const std::string &, bool>(&Permissible::addAttachment))
+            .def("add_attachment", py::overload_cast<Plugin &>(&Permissible::addAttachment))
+            .def("remove_attachment", &Permissible::removeAttachment)
+            .def("recalculate_permissions", &Permissible::recalculatePermissions);
+
+    py::enum_<PermissibleRole>(permissible, "PermissibleRole")
+        .value("Visitor", PermissibleRole::Visitor)
+        .value("Member", PermissibleRole::Member)
+        .value("Operator", PermissibleRole::Operator)
+        .export_values();
 }
