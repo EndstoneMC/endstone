@@ -17,6 +17,7 @@
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/command/plugin_command.h"
+#include "fmt/color.h"
 #include "pybind/pybind.h"
 
 class PyCommandExecutor : public CommandExecutor {
@@ -26,8 +27,15 @@ public:
     bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
                    const std::vector<std::string> &args) noexcept override
     {
-        PYBIND11_OVERRIDE_PURE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
-                                    std::ref(label), std::ref(args));
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender),
+                                        std::ref(command), std::ref(label), std::ref(args));
+        }
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "Unhandled exception executing command '{}'.\n", label);
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
+            return true;
+        }
     }
 };
 
@@ -44,6 +52,7 @@ void def_command(py::module &m)
         .def_property("aliases", &Command::getAliases, &Command::setAliases)
         .def_property("description", &Command::getDescription, &Command::setDescription)
         .def_property("usages", &Command::getUsages, &Command::setUsages)
+        .def_property("permission", &Command::getPermission, &Command::setPermission)
         .def_property_readonly("registered", &Command::isRegistered)
         .def("register", &Command::registerTo, py::arg("command_map"))
         .def("unregister", &Command::unregisterFrom, py::arg("command_map"));

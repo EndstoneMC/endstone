@@ -50,10 +50,7 @@ class PluginDescriptionFile(PluginDescription):
             description = value.get("description", None)
             usages = value.get("usages", None)
             aliases = value.get("aliases", None)
-
-            # TODO: permissions:
-            #  permission = value.get("permission", None)
-            #  permission_message = value.get("permission-message", None)
+            permission = value.get("permission", None)
 
             if description:
                 command.description = description
@@ -83,11 +80,8 @@ class PluginDescriptionFile(PluginDescription):
 
                 command.aliases = alias_list
 
-            # TODO: permission system
-            # if permission:
-            #     command.permission = permission
-            # if permission_message:
-            #     command.permission_message = permission_message
+            if permission:
+                command.permission = permission
 
             commands.append(command)
 

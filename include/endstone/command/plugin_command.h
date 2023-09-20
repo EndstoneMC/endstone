@@ -36,10 +36,9 @@ public:
             return false;
         }
 
-        // TODO(permission): test sender's permission before execution
-        // if (!testPermission(sender)) {
-        //     return true;
-        // }
+        if (!testPermission(sender)) {
+            return true;
+        }
 
         bool success;
         success = getExecutor().onCommand(sender, *this, label, args);

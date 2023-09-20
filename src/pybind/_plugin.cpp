@@ -17,6 +17,7 @@
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
+#include "fmt/color.h"
 #include "pybind/pybind.h"
 
 class PyPlugin : public Plugin, public py::trampoline_self_life_support {
@@ -75,7 +76,7 @@ public:
                                    std::ref(label), std::ref(args));
         }
         catch (std::exception &e) {
-            getServer().getLogger().error("Unhandled exception executing command '' in plugin {}.", label,
+            getServer().getLogger().error("Unhandled exception executing command '{}' in plugin {}.", label,
                                           getDescription().getFullName());
             getServer().getLogger().error(e.what());
             return false;
@@ -92,9 +93,8 @@ public:
         try {
             PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_description", getDescription);
         }
-        catch (py::error_already_set &e) {
-            pybind11::gil_scoped_acquire gil;
-            e.discard_as_unraisable(__func__);
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
             return std::nullopt;
         }
     }
@@ -105,9 +105,8 @@ public:
             PYBIND11_OVERRIDE_NAME(std::optional<std::vector<std::string>>, PluginDescription, "_get_authors",
                                    getAuthors);
         }
-        catch (py::error_already_set &e) {
-            pybind11::gil_scoped_acquire gil;
-            e.discard_as_unraisable(__func__);
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
             return std::nullopt;
         }
     }
@@ -117,9 +116,8 @@ public:
         try {
             PYBIND11_OVERRIDE_NAME(std::optional<std::string>, PluginDescription, "_get_prefix", getPrefix);
         }
-        catch (py::error_already_set &e) {
-            pybind11::gil_scoped_acquire gil;
-            e.discard_as_unraisable(__func__);
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
             return std::nullopt;
         }
     }
@@ -130,9 +128,8 @@ public:
             PYBIND11_OVERRIDE_NAME(std::vector<std::shared_ptr<Command>>, PluginDescription, "_get_commands",
                                    getCommands);
         }
-        catch (py::error_already_set &e) {
-            pybind11::gil_scoped_acquire gil;
-            e.discard_as_unraisable(__func__);
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
             return {};
         }
     }

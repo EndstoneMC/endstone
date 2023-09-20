@@ -31,7 +31,9 @@ HelpCommand::HelpCommand(const SimpleCommandMap &command_map) noexcept
 bool HelpCommand::execute(CommandSender &sender, const std::string &label,
                           const std::vector<std::string> &args) const noexcept
 {
-    // TODO(permission): test sender's permission before the execution
+    if (!testPermission(sender)) {
+        return true;
+    }
 
     if (args.size() >= 2) {
         return false;
@@ -72,7 +74,9 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
     std::unordered_set<std::string> help_set;
 
     for (const auto &command : commands) {
-        // TODO(permission): check if the caller has permission
+        if (!command->testPermission(sender)) {
+            continue;
+        }
 
         for (const auto &usage : command->getUsages()) {
             help_set.insert(fmt::format(usage, fmt::arg("command", command->getLabel())));

@@ -14,10 +14,12 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
 
+#include "endstone/chat_color.h"
 #include "endstone/command/command_sender.h"
 
 class CommandMap;
@@ -83,6 +85,62 @@ public:
         }
 
         return false;
+    }
+
+    /**
+     * Gets the permission required by users to be able to perform this command
+     *
+     * @return Permission name, or null if none
+     */
+    [[nodiscard]] const std::optional<std::string> &getPermission() const
+    {
+        return permission_;
+    }
+
+    /**
+     * Sets the permission required by users to be able to perform this command
+     *
+     * @param permission Permission name
+     */
+    void setPermission(const std::optional<std::string> &permission)
+    {
+        permission_ = permission;
+    }
+
+    /**
+     * Tests the given CommandSender to see if they can perform this command.
+     *
+     * If they do not have permission, they will be informed that they cannot
+     * do this.
+     *
+     * @param target CommandSender to test
+     * @return true if they can use it, otherwise false
+     */
+    [[nodiscard]] bool testPermission(const CommandSender &target) const noexcept
+    {
+        if (testPermissionSilently(target)) {
+            return true;
+        }
+
+        target.sendMessage(ChatColor::Red + "You do not have permission to use this command.");
+        return false;
+    }
+
+    /**
+     * Tests the given CommandSender to see if they can perform this command.
+     *
+     * No error message is sent to the sender.
+     *
+     * @param target CommandSender to test
+     * @return true if they can use it, otherwise false
+     */
+    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const noexcept
+    {
+        if (!permission_.has_value() || permission_.value().empty()) {
+            return true;
+        }
+
+        return target.hasPermission(permission_.value());
     }
 
     /**
@@ -248,6 +306,7 @@ private:
     std::string next_label_;
     std::vector<std::string> aliases_;
     std::vector<std::string> active_aliases_;
+    std::optional<std::string> permission_;
 
 protected:
     std::vector<std::string> usages_;
