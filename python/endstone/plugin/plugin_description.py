@@ -1,5 +1,5 @@
 import sys
-from typing import BinaryIO, Optional
+from typing import BinaryIO, Optional, List
 
 # noinspection PyProtectedMember
 from endstone._bindings import PluginDescription, Permission, PermissionDefault
@@ -31,6 +31,7 @@ class PluginDescriptionFile(PluginDescription):
         self._prefix: Optional[str] = None
         self._commands: list[Command] = []
         self._permissions: list[Permission] = []
+        self._default_permission: Optional[PermissionDefault] = None
 
         for k, v in data.items():
             if k == "commands":
@@ -39,6 +40,10 @@ class PluginDescriptionFile(PluginDescription):
 
             if k == "permissions":
                 self._permissions = self._load_permissions(v, Permission.DEFAULT_PERMISSION)
+                continue
+
+            if k == "default-permission":
+                self._default_permission = PermissionDefault.get_by_name(str(v).lower())
                 continue
 
             if hasattr(self, f"_{k}"):
@@ -154,6 +159,14 @@ class PluginDescriptionFile(PluginDescription):
     def commands(self) -> list[Command]:
         return self._get_commands()
 
+    @property
+    def permissions(self) -> list[Permission]:
+        return self._get_permissions()
+
+    @property
+    def default_permission(self) -> Optional[PermissionDefault]:
+        return self._get_default_permission()
+
     def _get_description(self) -> Optional[str]:
         return self._description
 
@@ -165,3 +178,9 @@ class PluginDescriptionFile(PluginDescription):
 
     def _get_commands(self) -> list[Command]:
         return self._commands
+
+    def _get_permissions(self) -> list[Permission]:
+        return self._permissions
+
+    def _get_default_permission(self) -> Optional[PermissionDefault]:
+        return self._default_permission

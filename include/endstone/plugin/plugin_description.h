@@ -75,7 +75,7 @@ public:
         return {};
     }
 
-    [[nodiscard]] virtual std::vector<std::unique_ptr<Permission>> getPermissions() const noexcept
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Permission>> getPermissions() const noexcept
     {
         return {};
     }

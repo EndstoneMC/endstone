@@ -133,6 +133,30 @@ public:
             return {};
         }
     }
+
+    [[nodiscard]] std::vector<std::shared_ptr<Permission>> getPermissions() const noexcept override
+    {
+        try {
+            PYBIND11_OVERRIDE_NAME(std::vector<std::shared_ptr<Permission>>, PluginDescription, "_get_permissions",
+                                   getPermissions);
+        }
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
+            return {};
+        }
+    }
+
+    [[nodiscard]] std::optional<PermissionDefault> getDefaultPermission() const noexcept override
+    {
+        try {
+            PYBIND11_OVERRIDE_NAME(std::optional<PermissionDefault>, PluginDescription, "_get_default_permission",
+                                   getDefaultPermission);
+        }
+        catch (std::exception &e) {
+            fmt::print(fg(fmt::color::red), "{}\n", e.what());
+            return {};
+        }
+    }
 };
 
 class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_support {
