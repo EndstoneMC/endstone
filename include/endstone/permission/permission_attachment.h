@@ -18,6 +18,8 @@
 #include <string>
 #include <utility>
 
+#include <fmt/color.h>
+
 #include "endstone/permission/permissible.h"
 
 class PermissionAttachment;
@@ -77,8 +79,9 @@ public:
             return std::unique_ptr<PermissionAttachment>(new PermissionAttachment(plugin, permissible));
         }
         catch (const std::bad_alloc &) {
-            EndstoneServer::getInstance().getLogger().error("Failed to allocate memory for PermissionAttachment.");
-            return nullptr;
+            fmt::print(fg(fmt::color::red) | fmt::emphasis::bold,
+                       "FATAL: Bad allocation when creating PermissionAttachment.\n");
+            std::terminate();
         }
     }
 

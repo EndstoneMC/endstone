@@ -19,6 +19,7 @@
 
 #include "endstone/endstone_server.h"
 #include "endstone/permission/permission.h"
+#include "fmt/color.h"
 
 class SimplePermission : public Permission {
 public:
@@ -51,8 +52,9 @@ public:
                 std::move(name), std::move(description), std::move(default_value), std::move(children)));
         }
         catch (const std::bad_alloc &) {
-            EndstoneServer::getInstance().getLogger().error("Failed to allocate memory for SimplePermission.");
-            return nullptr;
+            fmt::print(fg(fmt::color::red) | fmt::emphasis::bold,
+                       "FATAL: Bad allocation when creating SimplePermission.\n");
+            std::terminate();
         }
     }
 
