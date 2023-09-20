@@ -47,20 +47,22 @@ public:
     [[nodiscard]] Permission *getPermission(const std::string &name) noexcept override;
     [[nodiscard]] Permission &addPermission(const std::string &name) noexcept override;
     [[nodiscard]] Permission &addPermission(const std::string &name, bool update = true) noexcept;
-    [[nodiscard]] void removePermission(const std::string &name) noexcept override;
+    void removePermission(const std::string &name) noexcept override;
     [[nodiscard]] std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept override;
-    void subscribeToDefaultPermissions(Permissible &permissible) noexcept override;
-    void unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept override;
+    void recalculatePermissionDefaults(Permission &permission) noexcept override;
     void subscribeToPermission(const std::string &permission, Permissible &permissible) noexcept override;
     void unsubscribeFromPermission(const std::string &permission, Permissible &permissible) noexcept override;
     [[nodiscard]] std::vector<Permissible *> getPermissionSubscriptions(std::string permission) const noexcept override;
+    void subscribeToDefaultPermissions(Permissible &permissible) noexcept override;
+    void unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept override;
     [[nodiscard]] std::vector<Permissible *> getDefaultPermissionSubscriptions(
         PermissibleRole role) const noexcept override;
-    void recalculatePermissionDefaults(Permission &permission) noexcept override;
+    [[nodiscard]] std::vector<Permission *> getPermissions() const noexcept override;
+    void updatePermissibles() const noexcept;
 
 private:
     void calculatePermissionDefault(Permission &permission, bool update) noexcept;
-    void updatePermissibles(PermissibleRole role) noexcept;
+    void updatePermissibles(PermissibleRole role) const noexcept;
 
     Server &server_;
     std::map<std::string, std::unique_ptr<PluginLoader>> file_associations_;

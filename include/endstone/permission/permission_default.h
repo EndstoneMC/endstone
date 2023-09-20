@@ -36,12 +36,12 @@ class PermissionDefault {
     };
 
 public:
-    [[nodiscard]] bool hasPermission(const Permissible &permissible) const noexcept
+    [[nodiscard]] bool isGrantedFor(const Permissible &permissible) const noexcept
     {
-        return hasPermission(permissible.getRole());
+        return isGrantedFor(permissible.getRole());
     }
 
-    [[nodiscard]] bool hasPermission(PermissibleRole role) const noexcept
+    [[nodiscard]] bool isGrantedFor(PermissibleRole role) const noexcept
     {
         switch (value_) {
         case Value::True:

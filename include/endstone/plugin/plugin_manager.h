@@ -42,15 +42,16 @@ public:
 
     [[nodiscard]] virtual Permission *getPermission(const std::string &name) noexcept = 0;
     [[nodiscard]] virtual Permission &addPermission(const std::string &name) noexcept = 0;
-    [[nodiscard]] virtual void removePermission(const std::string &name) noexcept = 0;
+    virtual void removePermission(const std::string &name) noexcept = 0;
     [[nodiscard]] virtual std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept = 0;
-    virtual void subscribeToDefaultPermissions(Permissible &permissible) noexcept = 0;
-    virtual void unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept = 0;
+    virtual void recalculatePermissionDefaults(Permission &permission) noexcept = 0;
     virtual void subscribeToPermission(const std::string &permission, Permissible &permissible) noexcept = 0;
     virtual void unsubscribeFromPermission(const std::string &permission, Permissible &permissible) noexcept = 0;
     [[nodiscard]] virtual std::vector<Permissible *> getPermissionSubscriptions(
         std::string permission) const noexcept = 0;
+    virtual void subscribeToDefaultPermissions(Permissible &permissible) noexcept = 0;
+    virtual void unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept = 0;
     [[nodiscard]] virtual std::vector<Permissible *> getDefaultPermissionSubscriptions(
         PermissibleRole role) const noexcept = 0;
-    virtual void recalculatePermissionDefaults(Permission &permission) noexcept = 0;
+    [[nodiscard]] virtual std::vector<Permission *> getPermissions() const noexcept = 0;
 };

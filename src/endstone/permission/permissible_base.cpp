@@ -45,9 +45,9 @@ bool PermissibleBase::hasPermission(const std::string &name) const noexcept
     auto *permission = EndstoneServer::getInstance().getPluginManager().getPermission(lower_name);
 
     if (permission) {
-        return permission->getDefault().hasPermission(*this);
+        return permission->getDefault().isGrantedFor(*this);
     }
-    return Permission::DefaultPermission.hasPermission(*this);
+    return Permission::DefaultPermission.isGrantedFor(*this);
 }
 
 PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value) noexcept

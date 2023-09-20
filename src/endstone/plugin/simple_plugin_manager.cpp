@@ -247,20 +247,50 @@ void SimplePluginManager::removePermission(const std::string &name) noexcept
 
 std::vector<Permission *> SimplePluginManager::getDefaultPermissions(PermissibleRole role) const noexcept
 {
-    const auto &permissions = default_permissions_.find(role)->second;
-    return std::vector<Permission *>(permissions.begin(), permissions.end());
+    return default_permissions_.find(role)->second;
 }
 
-void SimplePluginManager::subscribeToDefaultPermissions(Permissible &permissible) noexcept
+void SimplePluginManager::recalculatePermissionDefaults(Permission &permission) noexcept
 {
-    auto &map = default_subscriptions_[permissible.getRole()];
-    map.insert_or_assign(&permissible, true);
+    auto lower_name = permission.getName();
+    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
+        return std::tolower(c);
+    });
+
+    for (auto &[role, permissions] : default_permissions_) {
+        permissions.erase(std::remove(permissions.begin(), permissions.end(), &permission), permissions.end());
+    }
+
+    calculatePermissionDefault(permission, true);
 }
 
-void SimplePluginManager::unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept
+void SimplePluginManager::calculatePermissionDefault(Permission &permission, bool update) noexcept
 {
-    auto &map = default_subscriptions_[permissible.getRole()];
-    map.erase(&permissible);
+    for (auto &[role, permissions] : default_permissions_) {
+        if (!permission.getDefault().isGrantedFor(role)) {
+            continue;
+        }
+
+        permissions.push_back(&permission);
+        if (update) {
+            updatePermissibles(role);
+        }
+    }
+}
+
+void SimplePluginManager::updatePermissibles() const noexcept
+{
+    for (const auto &[role, _] : default_subscriptions_) {
+        updatePermissibles(role);
+    }
+}
+
+void SimplePluginManager::updatePermissibles(PermissibleRole role) const noexcept
+{
+    auto permissibles = getDefaultPermissionSubscriptions(role);
+    for (const auto &p : permissibles) {
+        p->recalculatePermissions();
+    }
 }
 
 void SimplePluginManager::subscribeToPermission(const std::string &permission, Permissible &permissible) noexcept
@@ -296,44 +326,27 @@ std::vector<Permissible *> SimplePluginManager::getPermissionSubscriptions(std::
     if (it == permission_subscriptions_.end()) {
         return {};
     }
-    else {
-        std::vector<Permissible *> keys;
-        const auto &map = it->second;
-        keys.reserve(map.size());
 
-        for (const auto &pair : map) {
-            keys.push_back(pair.first);
-        }
-        return keys;
+    std::vector<Permissible *> keys;
+    const auto &map = it->second;
+    keys.reserve(map.size());
+
+    for (const auto &pair : map) {
+        keys.push_back(pair.first);
     }
+    return keys;
 }
 
-void SimplePluginManager::recalculatePermissionDefaults(Permission &permission) noexcept
+void SimplePluginManager::subscribeToDefaultPermissions(Permissible &permissible) noexcept
 {
-    auto lower_name = permission.getName();
-    std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
-        return std::tolower(c);
-    });
-
-    for (auto &[role, permissions] : default_permissions_) {
-        permissions.erase(std::remove(permissions.begin(), permissions.end(), &permission), permissions.end());
-    }
-
-    calculatePermissionDefault(permission, true);
+    auto &map = default_subscriptions_[permissible.getRole()];
+    map.insert_or_assign(&permissible, true);
 }
 
-void SimplePluginManager::calculatePermissionDefault(Permission &permission, bool update) noexcept
+void SimplePluginManager::unsubscribeFromDefaultPermissions(Permissible &permissible) noexcept
 {
-    for (auto &[role, permissions] : default_permissions_) {
-        if (!permission.getDefault().hasPermission(role)) {
-            continue;
-        }
-
-        permissions.push_back(&permission);
-        if (update) {
-            updatePermissibles(role);
-        }
-    }
+    auto &map = default_subscriptions_[permissible.getRole()];
+    map.erase(&permissible);
 }
 
 std::vector<Permissible *> SimplePluginManager::getDefaultPermissionSubscriptions(PermissibleRole role) const noexcept
@@ -342,22 +355,24 @@ std::vector<Permissible *> SimplePluginManager::getDefaultPermissionSubscription
     if (it == default_subscriptions_.end()) {
         return {};
     }
-    else {
-        std::vector<Permissible *> keys;
-        const auto &map = it->second;
-        keys.reserve(map.size());
 
-        for (const auto &pair : map) {
-            keys.push_back(pair.first);
-        }
-        return keys;
+    std::vector<Permissible *> keys;
+    const auto &map = it->second;
+    keys.reserve(map.size());
+
+    for (const auto &pair : map) {
+        keys.push_back(pair.first);
     }
+    return keys;
 }
 
-void SimplePluginManager::updatePermissibles(PermissibleRole role) noexcept
+std::vector<Permission *> SimplePluginManager::getPermissions() const noexcept
 {
-    auto permissibles = getDefaultPermissionSubscriptions(role);
-    for (const auto &p : permissibles) {
-        p->recalculatePermissions();
+    std::vector<Permission *> permissions;
+    permissions.reserve(permissions_.size());
+    for (const auto &permission : permissions_) {
+        permissions.push_back(permission.second.get());
     }
+
+    return permissions;
 }
