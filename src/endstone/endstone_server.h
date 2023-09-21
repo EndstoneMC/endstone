@@ -20,6 +20,7 @@
 #include "bedrock/minecraft_commands.h"
 #include "endstone/command/simple_command_map.h"
 #include "endstone/plugin/plugin_manager.h"
+#include "endstone/plugin/simple_plugin_manager.h"
 #include "endstone/server.h"
 #include "pybind/pybind.h"
 #include "versioning.h"
@@ -39,16 +40,16 @@ public:
     EndstoneServer &operator=(EndstoneServer const &) = delete;
     EndstoneServer &operator=(EndstoneServer &&) = delete;
 
-    [[nodiscard]] Logger &getLogger() const override;
-    PluginCommand *getPluginCommand(const std::string &name) override;
-    bool dispatchCommand(CommandSender &sender, const std::string &command_line) override;
-    CommandSender &getConsoleSender() override;
-    PluginManager &getPluginManager() override;
+    [[nodiscard]] Logger &getLogger() const noexcept override;
+    PluginCommand *getPluginCommand(const std::string &name) const noexcept override;
+    bool dispatchCommand(CommandSender &sender, const std::string &command_line) const noexcept override;
+    CommandSender &getConsoleSender() const noexcept override;
+    PluginManager &getPluginManager() const noexcept override;
 
-    void loadPlugins();
-    void enablePlugins();
-    void disablePlugins();
-    [[maybe_unused]] [[nodiscard]] SimpleCommandMap &getCommandMap() const;
+    void loadPlugins() noexcept;
+    void enablePlugins() const noexcept;
+    void disablePlugins() const noexcept;
+    [[maybe_unused]] [[nodiscard]] SimpleCommandMap &getCommandMap() const noexcept;
 
     [[nodiscard]] const std::string &getVersion() const noexcept override
     {
@@ -63,11 +64,12 @@ public:
     }
 
 private:
-    EndstoneServer();
-    void setBedrockCommands();
+    EndstoneServer() noexcept;
+    void setBedrockCommands() const noexcept;
+    void enablePlugin(Plugin &plugin) const noexcept;
 
     Logger &logger_;
     std::unique_ptr<SimpleCommandMap> command_map_;
-    std::unique_ptr<PluginManager> plugin_manager_;
+    std::unique_ptr<SimplePluginManager> plugin_manager_;
     std::unique_ptr<CommandSender> console_;
 };

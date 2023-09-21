@@ -44,8 +44,9 @@ public:
     void clearPlugins() noexcept override;
 
     [[nodiscard]] Permission *getPermission(const std::string &name) noexcept override;
-    [[nodiscard]] Permission *addPermission(const std::string &name) noexcept override;
-    [[nodiscard]] Permission *addPermission(const std::string &name, bool update = true) noexcept;
+    bool addPermission(const std::string &name) noexcept override;
+    bool addPermission(const std::shared_ptr<Permission> &permission) noexcept override;
+    bool addPermission(const std::shared_ptr<Permission> &permission, bool dirty) noexcept;
     void removePermission(const std::string &name) noexcept override;
     [[nodiscard]] std::vector<Permission *> getDefaultPermissions(PermissibleRole role) const noexcept override;
     void recalculatePermissionDefaults(Permission &permission) noexcept override;
@@ -57,18 +58,18 @@ public:
     [[nodiscard]] std::vector<Permissible *> getDefaultPermissionSubscriptions(
         PermissibleRole role) const noexcept override;
     [[nodiscard]] std::vector<Permission *> getPermissions() const noexcept override;
-    void updatePermissibles() const noexcept;
+    void dirtyPermissibles() const noexcept;
 
 private:
-    void calculatePermissionDefault(Permission &permission, bool update) noexcept;
-    void updatePermissibles(PermissibleRole role) const noexcept;
+    void calculatePermissionDefault(Permission &permission, bool dirty) noexcept;
+    void dirtyPermissibles(PermissibleRole role) const noexcept;
 
     Server &server_;
     std::map<std::string, std::unique_ptr<PluginLoader>> file_associations_;
     std::vector<std::unique_ptr<Plugin>> plugins_;
     std::map<std::string, Plugin *> lookup_names_;
     SimpleCommandMap &command_map_;
-    std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
+    std::unordered_map<std::string, std::shared_ptr<Permission>> permissions_;
     std::unordered_map<PermissibleRole, std::vector<Permission *>> default_permissions_;
     std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> permission_subscriptions_;
     std::unordered_map<PermissibleRole, std::unordered_map<Permissible *, bool>> default_subscriptions_;

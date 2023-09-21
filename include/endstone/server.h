@@ -36,7 +36,7 @@ public:
      *
      * @return Logger associated with this server
      */
-    [[nodiscard]] virtual Logger &getLogger() const = 0;
+    [[nodiscard]] virtual Logger &getLogger() const noexcept = 0;
 
     /**
      * Gets a PluginCommand with the given name or alias.
@@ -44,7 +44,7 @@ public:
      * @param name the name of the command to retrieve
      * @return a plugin command if found, null otherwise
      */
-    virtual PluginCommand *getPluginCommand(const std::string &name) = 0;
+    virtual PluginCommand *getPluginCommand(const std::string &name) const noexcept = 0;
 
     /**
      * Dispatches a command on this server, and executes it if found.
@@ -53,7 +53,7 @@ public:
      * @param commandLine the command + arguments. Example: <code>test abc 123</code>
      * @return returns false if no target is found
      */
-    virtual bool dispatchCommand(CommandSender &sender, const std::string &command_line) = 0;
+    virtual bool dispatchCommand(CommandSender &sender, const std::string &command_line) const noexcept = 0;
 
     /**
      * Gets a ConsoleCommandSender that may be used as an input source
@@ -61,14 +61,14 @@ public:
      *
      * @return a console command sender
      */
-    [[maybe_unused]] virtual CommandSender &getConsoleSender() = 0;
+    [[maybe_unused]] virtual CommandSender &getConsoleSender() const noexcept = 0;
 
     /**
      * Gets the plugin manager for interfacing with plugins.
      *
      * @return a plugin manager for this Server instance
      */
-    [[maybe_unused]] virtual PluginManager &getPluginManager() = 0;
+    [[maybe_unused]] virtual PluginManager &getPluginManager() const noexcept = 0;
 
     /**
      * Gets the version string of this server implementation.

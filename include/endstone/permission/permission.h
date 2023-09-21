@@ -129,7 +129,8 @@ public:
 
         auto *permission = plugin_manager_->getPermission(lower_name);
         if (!permission) {
-            permission = plugin_manager_->addPermission(lower_name);
+            plugin_manager_->addPermission(lower_name);
+            permission = plugin_manager_->getPermission(lower_name);
         }
 
         if (!permission) {

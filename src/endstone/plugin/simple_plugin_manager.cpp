@@ -210,33 +210,34 @@ Permission *SimplePluginManager::getPermission(const std::string &name) noexcept
     return nullptr;
 }
 
-Permission *SimplePluginManager::addPermission(const std::string &name) noexcept
-{
-    return addPermission(name, true);
-}
-
-Permission *SimplePluginManager::addPermission(const std::string &name, bool update) noexcept
+bool SimplePluginManager::addPermission(const std::string &name) noexcept
 {
     auto lower_name = name;
     std::transform(lower_name.begin(), lower_name.end(), lower_name.begin(), [](unsigned char c) {
         return std::tolower(c);
     });
 
-    auto permission = std::make_unique<Permission>(lower_name);
+    return addPermission(std::make_shared<Permission>(lower_name));
+}
+
+bool SimplePluginManager::addPermission(const std::shared_ptr<Permission> &permission) noexcept
+{
+    return addPermission(permission, true);
+}
+
+bool SimplePluginManager::addPermission(const std::shared_ptr<Permission> &permission, bool dirty) noexcept
+{
     if (!permission) {
-        return nullptr;
+        return false;
     }
 
-    auto [it, success] = permissions_.insert({lower_name, std::move(permission)});
+    auto [it, success] = permissions_.insert({permission->getName(), permission});
 
-    if (!success) {
-        server_.getLogger().error("The permission {} is already defined.", lower_name);
-    }
-    else {
-        calculatePermissionDefault(*it->second, update);
+    if (success) {
+        calculatePermissionDefault(*it->second, dirty);
     }
 
-    return it->second.get();
+    return success;
 }
 
 void SimplePluginManager::removePermission(const std::string &name) noexcept
@@ -267,7 +268,7 @@ void SimplePluginManager::recalculatePermissionDefaults(Permission &permission) 
     calculatePermissionDefault(permission, true);
 }
 
-void SimplePluginManager::calculatePermissionDefault(Permission &permission, bool update) noexcept
+void SimplePluginManager::calculatePermissionDefault(Permission &permission, bool dirty) noexcept
 {
     for (auto &[role, permissions] : default_permissions_) {
         if (!permission.getDefault().isGrantedFor(role)) {
@@ -275,20 +276,20 @@ void SimplePluginManager::calculatePermissionDefault(Permission &permission, boo
         }
 
         permissions.push_back(&permission);
-        if (update) {
-            updatePermissibles(role);
+        if (dirty) {
+            dirtyPermissibles(role);
         }
     }
 }
 
-void SimplePluginManager::updatePermissibles() const noexcept
+void SimplePluginManager::dirtyPermissibles() const noexcept
 {
     for (const auto &[role, _] : default_subscriptions_) {
-        updatePermissibles(role);
+        dirtyPermissibles(role);
     }
 }
 
-void SimplePluginManager::updatePermissibles(PermissibleRole role) const noexcept
+void SimplePluginManager::dirtyPermissibles(PermissibleRole role) const noexcept
 {
     auto permissibles = getDefaultPermissionSubscriptions(role);
     for (const auto &p : permissibles) {

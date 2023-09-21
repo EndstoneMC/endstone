@@ -22,13 +22,13 @@
 #include "endstone/plugin/simple_plugin_manager.h"
 #include "endstone/versioning.h"
 
-EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
+EndstoneServer::EndstoneServer() noexcept : logger_(LoggerFactory::getLogger("Server"))
 {
     command_map_ = std::make_unique<SimpleCommandMap>(*this);
     plugin_manager_ = std::make_unique<SimplePluginManager>(*this, *command_map_);
 }
 
-void EndstoneServer::loadPlugins()
+void EndstoneServer::loadPlugins() noexcept
 {
     plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
     plugin_manager_->registerLoader(
@@ -49,63 +49,78 @@ void EndstoneServer::loadPlugins()
     }
 }
 
-void EndstoneServer::enablePlugins()
+void EndstoneServer::enablePlugins() const noexcept
 {
     auto plugins = plugin_manager_->getPlugins();
     for (const auto &plugin : plugins) {
-        plugin_manager_->enablePlugin(*plugin);
+        if (!plugin->isEnabled()) {
+            enablePlugin(*plugin);
+        }
     }
 
     command_map_->setFallbackCommands();
     setBedrockCommands();
-    // TODO(permission): add permissions from plugin's description
     // TODO(command): send new available command packet to clients
 }
 
-void EndstoneServer::disablePlugins()
+void EndstoneServer::enablePlugin(Plugin &plugin) const noexcept
+{
+    auto permissions = plugin.getDescription().getPermissions();
+    for (const auto &permission : permissions) {
+        if (!plugin_manager_->addPermission(permission, false)) {
+            getLogger().warning("Plugin {} tried to register permission {} but it's already registered.",
+                                plugin.getDescription().getFullName(), permission->getName());
+        }
+    }
+
+    plugin_manager_->dirtyPermissibles();
+    plugin_manager_->enablePlugin(plugin);
+}
+
+void EndstoneServer::disablePlugins() const noexcept
 {
     plugin_manager_->disablePlugins();
 }
 
-Logger &EndstoneServer::getLogger() const
+Logger &EndstoneServer::getLogger() const noexcept
 {
     return logger_;
 }
 
-bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line)
+bool EndstoneServer::dispatchCommand(CommandSender &sender, const std::string &command_line) const noexcept
 {
     if (command_map_->dispatch(sender, command_line)) {
         return true;
     }
 
     sender.sendMessage(ChatColor::Red + "Unknown command. Type \"/help\" for help.");
-
     return false;
 }
-CommandSender &EndstoneServer::getConsoleSender()
+
+CommandSender &EndstoneServer::getConsoleSender() const noexcept
 {
     return *console_;
 }
 
-[[maybe_unused]] SimpleCommandMap &EndstoneServer::getCommandMap() const
+[[maybe_unused]] SimpleCommandMap &EndstoneServer::getCommandMap() const noexcept
 {
     return *command_map_;
 }
 
-void EndstoneServer::setBedrockCommands()
+void EndstoneServer::setBedrockCommands() const noexcept
 {
     for (const auto &item : CommandRegistry::mBedrockCommands) {
         command_map_->registerCommand("minecraft", item.second);
     }
 }
 
-PluginCommand *EndstoneServer::getPluginCommand(const std::string &name)
+PluginCommand *EndstoneServer::getPluginCommand(const std::string &name) const noexcept
 {
     auto *command = command_map_->getCommand(name);
     return dynamic_cast<PluginCommand *>(command);
 }
 
-PluginManager &EndstoneServer::getPluginManager()
+PluginManager &EndstoneServer::getPluginManager() const noexcept
 {
     return *plugin_manager_;
 }
