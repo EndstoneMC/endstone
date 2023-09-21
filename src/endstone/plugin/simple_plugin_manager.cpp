@@ -234,6 +234,7 @@ bool SimplePluginManager::addPermission(const std::shared_ptr<Permission> &permi
     auto [it, success] = permissions_.insert({permission->getName(), permission});
 
     if (success) {
+        permission->plugin_manager_ = this;
         calculatePermissionDefault(*it->second, dirty);
     }
 

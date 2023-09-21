@@ -148,6 +148,8 @@ public:
     }
 
 private:
+    friend class SimplePluginManager;
+
     std::string name_;
     std::string description_;
     PermissionDefault default_ = DefaultPermission;
