@@ -14,16 +14,17 @@
 
 #include "bedrock/command_registry.h"
 
+#include "bedrock/command_origin.h"
 #include "bedrock/i18n.h"
 #include "endstone/command/bedrock/bedrock_command.h"
 #include "lib/hook/hook.h"
 
-void CommandRegistry::registerCommand(const std::string &name, const char *description,
-                                      enum CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2)
+void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
+                                      CommandFlag flag1, CommandFlag flag2)
 {
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
     mBedrockCommands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
                                                               std::vector<std::string>{});
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
 }
 
 void CommandRegistry::registerAlias(std::string name, std::string alias)
@@ -56,4 +57,15 @@ std::string CommandRegistry::describe(CommandRegistry::Signature const &signatur
     result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, signature, label, overload,
                                               unused, out_label_size, out_args_size);
     return result;
+}
+
+const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string &name) const
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::findCommand, this, name);
+}
+
+bool CommandRegistry::checkOriginCommandFlags(const CommandOrigin &origin, CommandFlag flag,
+                                              CommandPermissionLevel permission_level) const
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::checkOriginCommandFlags, this, origin, flag, permission_level);
 }

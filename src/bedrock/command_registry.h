@@ -26,6 +26,16 @@ struct CommandFlag {
     uint16_t value;
 };
 
+enum class CommandPermissionLevel : char {
+    Any,
+    GameDirectors,
+    Admin,
+    Host,
+    Owner,
+    Internal
+};
+
+class CommandOrigin;
 class CommandRegistry {
 public:
     struct Overload;
@@ -33,22 +43,32 @@ public:
         std::string label;                                 // +0
         std::string description;                           // +32
         std::vector<CommandRegistry::Overload> overloads;  // +64
-        std::string str3;                                  // +88
-        char permission_level;                             // +120
-        char pad[28];                                      // +124
+        char pad1[24];                                     // +88
+        CommandPermissionLevel permission_level;           // +112
+        int32_t unknown1;                                  // +116
+        int32_t unknown2;                                  // +120
+        CommandFlag command_flag;                          // +124
+        int32_t unknown3;                                  // +128
+        int32_t unknown4;                                  // +132
+        int32_t unknown5;                                  // +136
+        char unknown6;                                     // +140
+        int64_t unknown7;                                  // +144
     };
     static_assert(sizeof(Signature) == 152);
 
-    BEDROCK_API void registerCommand(const std::string &name, char const *description,
-                                     enum class CommandPermissionLevel level, CommandFlag flag1, CommandFlag flag2);
+    BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
+                                     CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
 
     inline static std::unordered_map<std::string, std::shared_ptr<Command>> mBedrockCommands{};
 
 private:
+    BEDROCK_API [[nodiscard]] const CommandRegistry::Signature *findCommand(const std::string &name) const;
+    BEDROCK_API [[nodiscard]] bool checkOriginCommandFlags(const CommandOrigin &origin, CommandFlag flag,
+                                                           CommandPermissionLevel permission_level) const;
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
-    [[nodiscard]] BEDROCK_API std::string describe(CommandRegistry::Signature const &signature,
+    BEDROCK_API [[nodiscard]] std::string describe(CommandRegistry::Signature const &signature,
                                                    const std::string &label, CommandRegistry::Overload const &overload,
                                                    unsigned int unused, unsigned int *out_label_size,
                                                    unsigned int *out_args_size) const;
