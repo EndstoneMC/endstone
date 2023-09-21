@@ -1,5 +1,5 @@
 import sys
-from typing import BinaryIO, Optional, List
+from typing import BinaryIO, Optional
 
 # noinspection PyProtectedMember
 from endstone._bindings import PluginDescription, Permission, PermissionDefault
@@ -99,45 +99,50 @@ class PluginDescriptionFile(PluginDescription):
 
     def _load_permissions(self, permission_map: dict, default: PermissionDefault) -> list[Permission]:
         result = []
+
         for k, v in permission_map.items():
-            result.append(self._load_permission(k, v, default, result))
+            perm, _ = self._load_permission(k, v, default, result)
+            if perm:
+                result.append(perm)
 
         return result
 
-    def _load_permission(self, name: str, data: dict, default: PermissionDefault, output: list) -> Permission:
-        assert name is not None and len(name) != 0, "Name must not be null or empty"
+    def _load_permission(
+        self, name: str, data: dict, default: PermissionDefault, output: list
+    ) -> tuple[Permission, bool]:
+        assert name, "Name must not be null or empty"
+        name = name.lower()
 
-        description = None
-        children = {}
-
-        for k, v in data.items():
-            if k == "default":
-                # Convert the value to a string and make it lowercase for a case-insensitive match
-                # noinspection PyArgumentList
-                value = PermissionDefault.get_by_name(str(v).lower())
-                if value:
-                    default = value
-                else:
-                    raise ValueError(f"'default' key contained unknown value: {v}")
-
-            elif k == "description":
-                description = str(v)
-
+        if (v := data.pop("default", None)) is not None:
+            value = PermissionDefault.get_by_name(str(v).lower())
+            if value:
+                default = value
             else:
-                # Check if it is a leaf node
-                if isinstance(v, bool):
-                    children[f"{name}.{k}"] = v
+                raise ValueError(f"'default' key contained unknown value: {v}")
 
-                # Check if it is a subtree
-                elif isinstance(v, dict):
-                    permission = self._load_permission(f"{name}.{k}", v, default, output)
-                    children[permission.name] = True
-                    output.append(permission)
+        description = data.pop("description", None)
+        if description is not None and not isinstance(description, str):
+            raise TypeError(f"'description' has wrong type {type(description)}")
 
-                else:
-                    raise TypeError(f"Permission node {name}.{k} has wrong type {type(v)}")
+        invert = data.pop("invert", False)
+        if not isinstance(invert, bool):
+            raise TypeError(f"'invert' has wrong type {type(invert)}")
 
-        return Permission(name, description, default, children)
+        children = {}
+        for k, v in data.items():
+            if isinstance(v, dict):
+                child_permission, is_granted = self._load_permission(f"{name}.{k}", v, default, output)
+                if child_permission:
+                    children[child_permission.name] = is_granted
+                    output.append(child_permission)
+            else:
+                raise TypeError(f"Permission node {name}.{k} has wrong type {type(v)}")
+
+        if description:
+            permission = Permission(name, description, default, children)
+            return permission, not invert
+
+        return None, not invert
 
     @property
     def main(self) -> str:
