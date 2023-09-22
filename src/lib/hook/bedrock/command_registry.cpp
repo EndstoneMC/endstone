@@ -24,8 +24,14 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
                                       CommandFlag flag1, CommandFlag flag2)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
-    mBedrockCommands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
-                                                              std::vector<std::string>{});
+
+    auto desc = I18n::get(description);
+    if (desc == description) {
+        desc = "A Mojang provided command.";
+    }
+
+    mBedrockCommands[name] =
+        std::make_shared<BedrockCommand>(name, desc, std::vector<std::string>{}, std::vector<std::string>{});
 
     std::optional<PermissionDefault> value;
     switch (level) {
