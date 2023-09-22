@@ -1,11 +1,15 @@
 # Endstone
 
+[![BDS - Version](https://img.shields.io/badge/Bedrock%20Dedicated%20Server-1.20.30.02-brightgreen)](https://www.minecraft.net/download/server/bedrock)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
 [![Build Endstone](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/build.yml)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=shield&issueType=license)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone)
-[![codecov](https://codecov.io/gh/EndstoneMC/endstone/graph/badge.svg?token=GQ6IX9GDT1)](https://codecov.io/gh/EndstoneMC/endstone)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/endstone)
+[![codecov](https://img.shields.io/codecov/c/github/EndstoneMC/endstone?token=GQ6IX9GDT1&logo=codecov
+)](https://codecov.io/gh/EndstoneMC/endstone)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)
+![Codacy](https://img.shields.io/codacy/grade/9417e7bf4d614ca89307af346c581038?logo=codacy
+)
 
 Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
 allowing developers to enhance Bedrock Dedicated Servers with various features and functionalities. This project
