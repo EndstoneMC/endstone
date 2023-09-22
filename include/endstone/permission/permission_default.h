@@ -25,17 +25,18 @@
 class PermissionDefault {
 
     enum class Value {
-        True,
-        False,
-        Visitor,
-        NotVisitor,
-        Member,
-        NotMember,
+        Any,
+        None,
         Operator,
-        NotOperator,
+        Owner
     };
 
 public:
+    [[nodiscard]] std::string_view getName() const noexcept
+    {
+        return names_[0];
+    }
+
     [[nodiscard]] bool isGrantedFor(const Permissible &permissible) const noexcept
     {
         return isGrantedFor(permissible.getRole());
@@ -44,22 +45,14 @@ public:
     [[nodiscard]] bool isGrantedFor(PermissibleRole role) const noexcept
     {
         switch (value_) {
-        case Value::True:
+        case Value::Any:
             return true;
-        case Value::False:
+        case Value::None:
             return false;
-        case Value::Visitor:
-            return role == PermissibleRole::Visitor;
-        case Value::NotVisitor:
-            return role != PermissibleRole::Visitor;
-        case Value::Member:
-            return role == PermissibleRole::Member;
-        case Value::NotMember:
-            return role != PermissibleRole::Member;
         case Value::Operator:
-            return role == PermissibleRole::Operator;
-        case Value::NotOperator:
-            return role != PermissibleRole::Operator;
+            return role >= PermissibleRole::Operator;
+        case Value::Owner:
+            return role >= PermissibleRole::Owner;
         default:
             return false;
         }
@@ -100,24 +93,17 @@ private:
     inline static std::unordered_map<std::string, PermissionDefault *> mLookupByName;
 
 public:
-    const static PermissionDefault True;
-    const static PermissionDefault False;
-    const static PermissionDefault Visitor;
-    const static PermissionDefault NotVisitor;
-    const static PermissionDefault Member;
-    const static PermissionDefault NotMember;
+    const static PermissionDefault Any;
+    const static PermissionDefault None;
     const static PermissionDefault Operator;
-    const static PermissionDefault NotOperator;
+    const static PermissionDefault Owner;
 };
 
-inline const PermissionDefault PermissionDefault::True = {PermissionDefault::Value::True, {"true"}};
-inline const PermissionDefault PermissionDefault::False = {PermissionDefault::Value::False, {"false"}};
-inline const PermissionDefault PermissionDefault::Visitor = {PermissionDefault::Value::Visitor, {"visitor"}};
-inline const PermissionDefault PermissionDefault::NotVisitor = {PermissionDefault::Value::NotVisitor,
-                                                                {"not_visitor", "!visitor"}};
-inline const PermissionDefault PermissionDefault::Member = {PermissionDefault::Value::Member, {"member"}};
-inline const PermissionDefault PermissionDefault::NotMember = {PermissionDefault::Value::NotMember,
-                                                               {"not_member", "!member"}};
-inline const PermissionDefault PermissionDefault::Operator = {PermissionDefault::Value::Operator, {"op", "operator"}};
-inline const PermissionDefault PermissionDefault::NotOperator = {PermissionDefault::Value::NotOperator,
-                                                                 {"not_op", "!op", "not_operator", "!operator"}};
+inline const PermissionDefault PermissionDefault::Any = {PermissionDefault::Value::Any,  //
+                                                         {"any", "true", "player", "member", "visitor"}};
+inline const PermissionDefault PermissionDefault::None = {PermissionDefault::Value::None,  //
+                                                          {"none", "false"}};
+inline const PermissionDefault PermissionDefault::Operator = {PermissionDefault::Value::Operator,  //
+                                                              {"op", "operator", "admin", "moderator"}};
+inline const PermissionDefault PermissionDefault::Owner = {PermissionDefault::Value::Owner,  //
+                                                           {"owner", "server", "console"}};

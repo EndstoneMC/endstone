@@ -49,23 +49,20 @@ void def_permission(py::module &m)
             .def("recalculate_permissions", &Permissible::recalculatePermissions);
 
     py::enum_<PermissibleRole>(permissible, "PermissibleRole")
-        .value("VISITOR", PermissibleRole::Visitor)
-        .value("MEMBER", PermissibleRole::Member)
+        .value("PLAYER", PermissibleRole::Player)
         .value("OPERATOR", PermissibleRole::Operator)
+        .value("OWNER", PermissibleRole::Owner)
         .export_values();
 
     py::class_<PermissionDefault>(m, "PermissionDefault")
         .def("is_granted_for", py::overload_cast<const Permissible &>(&PermissionDefault::isGrantedFor, py::const_))
         .def("is_granted_for", py::overload_cast<PermissibleRole>(&PermissionDefault::isGrantedFor, py::const_))
         .def_static("get_by_name", &PermissionDefault::getByName, py::return_value_policy::reference)
-        .def("__eq__", &PermissionDefault::operator==)
-        .def("__ne__", &PermissionDefault::operator!=)
-        .def_readonly_static("TRUE", &PermissionDefault::True)
-        .def_readonly_static("FALSE", &PermissionDefault::False)
-        .def_readonly_static("VISITOR", &PermissionDefault::Visitor)
-        .def_readonly_static("NOT_VISITOR", &PermissionDefault::NotVisitor)
-        .def_readonly_static("MEMBER", &PermissionDefault::Member)
-        .def_readonly_static("NOT_MEMBER", &PermissionDefault::NotMember)
+        .def(py::self == py::self)  // NOLINT(misc-redundant-expression)
+        .def(py::self != py::self)  // NOLINT(misc-redundant-expression)
+        .def("__str__", &PermissionDefault::getName)
+        .def_readonly_static("ANY", &PermissionDefault::Any)
+        .def_readonly_static("NONE", &PermissionDefault::None)
         .def_readonly_static("OPERATOR", &PermissionDefault::Operator)
-        .def_readonly_static("NOT_OPERATOR", &PermissionDefault::NotOperator);
+        .def_readonly_static("OWNER", &PermissionDefault::Owner);
 }

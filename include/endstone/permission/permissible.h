@@ -15,9 +15,9 @@
 #pragma once
 
 enum class PermissibleRole {
-    Visitor,
-    Member,
-    Operator
+    Player,
+    Operator,
+    Owner
 };
 
 class Plugin;
