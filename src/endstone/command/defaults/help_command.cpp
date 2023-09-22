@@ -74,16 +74,13 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
     std::unordered_set<std::string> help_set;
 
     for (const auto &command : commands) {
-        if (!command->testPermission(sender)) {
+        if (!command->testPermissionSilently(sender)) {
             continue;
         }
 
-        for (const auto &usage : command->getUsages()) {
-            help_set.insert(fmt::format(usage, fmt::arg("command", command->getLabel())));
-
-            for (const auto &alias : command->getAliases()) {
-                help_set.insert(fmt::format(usage, fmt::arg("command", alias)));
-            }
+        help_set.insert(fmt::format("/{}: {}", command->getLabel(), command->getDescription()));
+        for (const auto &alias : command->getAliases()) {
+            help_set.insert(fmt::format("/{}: {}", alias, command->getDescription()));
         }
     }
 
