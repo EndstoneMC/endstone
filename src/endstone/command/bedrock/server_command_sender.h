@@ -31,7 +31,7 @@ public:
 
     [[nodiscard]] PermissibleRole getRole() const noexcept override
     {
-        return PermissibleRole::Operator;
+        return PermissibleRole::Owner;
     }
 
     [[nodiscard]] bool setRole(PermissibleRole role) const noexcept override

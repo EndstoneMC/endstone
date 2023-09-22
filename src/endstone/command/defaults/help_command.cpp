@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <unordered_set>
 
+#include "bedrock/i18n.h"
 #include "endstone/chat_color.h"
 #include "endstone/command/command_map.h"
 
@@ -106,8 +107,11 @@ void HelpCommand::displayHelpPage(const CommandSender &sender, int page) const n
 void HelpCommand::displayHelpCommand(const CommandSender &sender, const std::string &name) const noexcept
 {
     auto *command = command_map_.getCommand(name);
-    if (!command) {
-        sender.sendMessage(ChatColor::Red + "Unknown command: {}.", name);
+    if (!command || !command->testPermissionSilently(sender)) {
+        sender.sendMessage(
+            ChatColor::Red +
+                "Unknown command: {}. Please check that the command exists and that you have permission to use it.",
+            name);
         return;
     }
 
