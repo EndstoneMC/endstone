@@ -17,6 +17,7 @@
 #include "bedrock/command_origin.h"
 #include "bedrock/i18n.h"
 #include "endstone/command/bedrock/bedrock_command.h"
+#include "endstone/endstone_server.h"
 #include "lib/hook/hook.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
@@ -25,6 +26,28 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2)
     mBedrockCommands[name] = std::make_shared<BedrockCommand>(name, I18n::get(description), std::vector<std::string>{},
                                                               std::vector<std::string>{});
+
+    std::optional<PermissionDefault> value;
+    switch (level) {
+    case CommandPermissionLevel::Any:
+        value = PermissionDefault::Any;
+        break;
+    case CommandPermissionLevel::GameDirectors:
+        value = PermissionDefault::Operator;
+        break;
+    case CommandPermissionLevel::Admin:
+    case CommandPermissionLevel::Host:
+    case CommandPermissionLevel::Owner:
+        value = PermissionDefault::Owner;
+        break;
+    case CommandPermissionLevel::Internal:
+    default:
+        value = PermissionDefault::None;
+        break;
+    }
+
+    EndstoneServer::getInstance().getPluginManager().addPermission(std::make_shared<Permission>(
+        "minecraft.command." + name, fmt::format("Allow the use of the {} command.", name), value));
 }
 
 void CommandRegistry::registerAlias(std::string name, std::string alias)

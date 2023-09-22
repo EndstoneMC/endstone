@@ -15,6 +15,7 @@
 #pragma once
 
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "bedrock/command_context.h"
@@ -22,7 +23,13 @@
 
 class BedrockCommand : public EndstoneCommand {
 public:
-    using EndstoneCommand::EndstoneCommand;
+    explicit BedrockCommand(const std::string &name) noexcept : BedrockCommand(name, "", {"/" + name}, {}) {}
+    explicit BedrockCommand(const std::string &name, std::string description, const std::vector<std::string> &usages,
+                            const std::vector<std::string> &aliases) noexcept
+        : EndstoneCommand(name, std::move(description), usages, aliases)
+    {
+        setPermission("minecraft.command." + name);
+    }
 
     bool execute(CommandSender &sender, const std::string &label,
                  const std::vector<std::string> &args) const noexcept override;
