@@ -22,39 +22,10 @@
 
 class PluginLoader {
 public:
-    explicit PluginLoader(Server &server) : server_(server) {}
-
     virtual ~PluginLoader() = default;
     [[nodiscard]] virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
     [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
-    virtual void enablePlugin(Plugin &plugin) const
-    {
-        if (!plugin.isEnabled()) {
-            plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
-            plugin.setEnabled(true);
-        }
-    }
-    virtual void disablePlugin(Plugin &plugin) const
-    {
-        if (plugin.isEnabled()) {
-            plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
-            plugin.setEnabled(false);
-        }
-    }
-
-    [[nodiscard]] Server &getServer() const
-    {
-        return server_;
-    }
-
-protected:
-    virtual void initPlugin(Plugin &plugin, std::unique_ptr<Logger> logger)
-    {
-        plugin.loader_ = this;
-        plugin.server_ = &server_;
-        plugin.logger_ = std::move(logger);
-    }
-
-private:
-    Server &server_;
+    virtual void enablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugin(Plugin &plugin) const = 0;
+    [[nodiscard]] Server &getServer() const = 0;
 };
