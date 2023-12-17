@@ -19,10 +19,8 @@
 #include <string>
 #include <vector>
 
-class Permissible;
-class Permission;
-class Plugin;
-class PluginLoader;
+#include "endstone/plugin/plugin.h"
+#include "endstone/plugin/plugin_loader.h"
 
 class PluginManager {
 public:

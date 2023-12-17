@@ -21,11 +21,8 @@
 
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_description.h"
+#include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
-
-class PluginLoader;
-class PluginCommand;
-class PluginDescription;
 
 class Plugin {
 public:

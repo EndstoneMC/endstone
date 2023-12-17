@@ -19,8 +19,6 @@
 
 #include "endstone/logger.h"
 
-class PluginCommand;
-class CommandSender;
 class PluginManager;
 
 class Server {
