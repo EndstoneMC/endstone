@@ -1,0 +1,84 @@
+---
+Checks: >
+  -*,
+  bugprone-*,
+  google-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -misc-non-private-member-variables-in-classes,
+  -misc-const-correctness,
+  -modernize-use-trailing-return-type,
+  -modernize-avoid-c-arrays,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-named-parameter,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-exception-escape,
+  -bugprone-implicit-widening-of-multiplication-result
+
+WarningsAsErrors: "*"
+HeaderFilterRegex: "(include/|src/).*"
+
+CheckOptions:
+  misc-unused-parameters.IgnoreVirtual: true
+  readability-implicit-bool-conversion.AllowPointerConditions: true
+  readability-implicit-bool-conversion.AllowIntegerConditions: true
+  readability-identifier-naming.AbstractClassCase: CamelCase
+  readability-identifier-naming.ClassCase: CamelCase
+  readability-identifier-naming.ClassConstantCase: CamelCase
+  readability-identifier-naming.ClassMemberCase: CamelCase
+  readability-identifier-naming.ClassMemberPrefix: 'm'
+  readability-identifier-naming.ClassMethodCase: camelCase
+  readability-identifier-naming.ConstantCase: lower_case
+  readability-identifier-naming.ConstantMemberCase: lower_case
+  readability-identifier-naming.ConstantMemberSuffix: '_'
+  readability-identifier-naming.ConstantParameterCase: lower_case
+  readability-identifier-naming.ConstantPointerParameterCase: lower_case
+  readability-identifier-naming.ConstexprFunctionCase: aNy_CasE
+  readability-identifier-naming.ConstexprMethodCase: camelCase
+  readability-identifier-naming.ConstexprVariableCase: CamelCase
+  readability-identifier-naming.EnumCase: CamelCase
+  readability-identifier-naming.EnumConstantCase: CamelCase
+  readability-identifier-naming.FunctionCase: aNy_CasE
+  readability-identifier-naming.GlobalConstantCase: CamelCase
+  readability-identifier-naming.GlobalConstantPointerCase: CamelCase
+  readability-identifier-naming.GlobalVariableCase: CamelCase
+  readability-identifier-naming.GlobalVariablePrefix: 'g'
+  readability-identifier-naming.InlineNamespaceCase: CamelCase
+  readability-identifier-naming.LocalConstantCase: lower_case
+  readability-identifier-naming.LocalConstantPointerCase: lower_case
+  readability-identifier-naming.LocalPointerCase: lower_case
+  readability-identifier-naming.LocalVariableCase: lower_case
+  readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
+  readability-identifier-naming.MemberCase: lower_case
+  readability-identifier-naming.MemberSuffix: '_'
+  readability-identifier-naming.MethodCase: camelCase
+  readability-identifier-naming.NamespaceCase: CamelCase
+  readability-identifier-naming.ParameterCase: lower_case
+  readability-identifier-naming.ParameterPackCase: lower_case
+  readability-identifier-naming.PointerParameterCase: lower_case
+  readability-identifier-naming.PrivateMemberCase: lower_case
+  readability-identifier-naming.PrivateMemberSuffix: '_'
+  readability-identifier-naming.PrivateMethodCase: camelCase
+  readability-identifier-naming.ProtectedMemberCase: camelCase
+  readability-identifier-naming.ProtectedMemberSuffix: '_'
+  readability-identifier-naming.ProtectedMethodCase: camelCase
+  readability-identifier-naming.PublicMemberCase: lower_case
+  readability-identifier-naming.PublicMemberSuffix: ''
+  readability-identifier-naming.PublicMethodCase: camelCase
+  readability-identifier-naming.ScopedEnumConstantCase: CamelCase
+  readability-identifier-naming.StaticConstantCase: CamelCase
+  readability-identifier-naming.StaticVariableCase: lower_case
+  readability-identifier-naming.StructCase: CamelCase
+  readability-identifier-naming.TemplateParameterCase: CamelCase
+  readability-identifier-naming.TemplateTemplateParameterCase: CamelCase
+  readability-identifier-naming.TypeAliasCase: CamelCase
+  readability-identifier-naming.TypedefCase: CamelCase
+  readability-identifier-naming.TypeTemplateParameterCase: CamelCase
+  readability-identifier-naming.UnionCase: CamelCase
+  readability-identifier-naming.ValueTemplateParameterCase: lower_case
+  readability-identifier-naming.VariableCase: lower_case
+  readability-identifier-naming.VirtualMethodCase: camelCase
