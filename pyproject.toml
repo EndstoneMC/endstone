@@ -1,0 +1,51 @@
+[build-system]
+requires = ["scikit-build-core", "conan"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "endstone"
+authors = [
+    { name = "Vincent Wu", email = "magicdroidx@gmail.com" }
+]
+description = "Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++."
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["plugin", "python", "minecraft", "bedrock"]
+license = { file = "LICENSE" }
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+]
+#dependencies = [
+#    "click",
+#    "requests",
+#    "tomli",
+#    "tqdm",
+#    "packaging"
+#]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+pytest = ["pytest"]
+
+#[project.scripts]
+#endstone = "endstone.bootstrap.cli:cli"
+#
+#[tool.scikit-build]
+#build-dir = "build/{wheel_tag}"
+#cmake.build-type = "Release"
+#cmake.verbose = true
+#wheel.packages = ["python/endstone"]
+#wheel.license-files = ["LICENSE"]
+#metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+#sdist.include = ["python/endstone/_version.py"]
+#
+#[tool.scikit-build.cmake.define]
+#BUILD_TESTING = "OFF"

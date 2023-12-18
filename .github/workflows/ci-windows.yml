@@ -1,0 +1,39 @@
+name: Endstone CI (Windows)
+
+on:
+  push:
+    branches:
+      - next
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows-2019, windows-2022 ]
+        build_type: [ Debug, Release ]
+
+    name: Build on ${{ matrix.os }} (${{ matrix.build_type }})
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install conan cmake ninja
+
+      - name: Build with Conan
+        run: |
+          conan profile detect --force
+          conan create . --build=missing -s compiler.cppstd=17 -s build_type=${{ matrix.build_type }}
