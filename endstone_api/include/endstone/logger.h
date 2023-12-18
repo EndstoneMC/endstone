@@ -25,17 +25,17 @@ public:
      * @enum LogLevel
      * @brief Specifies the log level.
      */
-    enum Level {
-        All = 0,
-        Verbose = 1,
+    enum Level : uint8_t {
+        Trace = 0,
+        Debug = 1,
         Info = 2,
         Warning = 3,
         Error = 4,
+        Critical = 5,
+        Off = 6,
     };
 
     Logger() = default;
-    Logger(const Logger &) = delete;
-    Logger &operator=(const Logger &) = delete;
 
     virtual ~Logger() = default;
     virtual void setLevel(Level level) = 0;
@@ -52,7 +52,7 @@ public:
     template <typename... Args>
     void verbose(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Verbose, fmt::format(format, std::forward<Args>(args)...));
+        log(Level::Debug, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>

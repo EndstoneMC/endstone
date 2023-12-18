@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <string>
+#include <string_view>
 
 #include "endstone/logger.h"
 
@@ -48,12 +49,12 @@ public:
      *
      * @return version of this server implementation
      */
-    [[nodiscard]] virtual const std::string &getVersion() const = 0;
+    [[nodiscard]] virtual std::string_view getVersion() const = 0;
 
     /**
      * Gets the Minecraft version that this server is running.
      *
      * @return version of Minecraft
      */
-    [[nodiscard]] virtual const std::string &getMinecraftVersion() const = 0;
+    [[nodiscard]] virtual std::string_view getMinecraftVersion() const = 0;
 };

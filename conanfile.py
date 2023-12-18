@@ -23,7 +23,7 @@ class EndstoneRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True, "fmt/*:header_only": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "endstone_api/*"
+    exports_sources = "CMakeLists.txt", "endstone_api/*", "endstone_core/*"
 
     @property
     def _min_cppstd(self):
@@ -60,6 +60,7 @@ class EndstoneRecipe(ConanFile):
 
     def requirements(self):
         self.requires("fmt/10.1.1", transitive_headers=True)
+        self.requires("spdlog/1.12.0")
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -93,3 +94,7 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["api"].libdirs = []
         self.cpp_info.components["api"].set_property("cmake_target_name", "endstone::api")
         self.cpp_info.components["api"].requires = ["fmt::fmt"]
+
+        self.cpp_info.components["core"].libs = ["endstone_core"]
+        self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
+        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog"]
