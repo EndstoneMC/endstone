@@ -35,7 +35,7 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _min_clang_compiler_version(self):
-        return 5
+        return 7  # std::filesystem requires Clang 7.0
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
