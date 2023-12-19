@@ -14,10 +14,17 @@
 
 #pragma once
 
-#include <filesystem>
 #include <memory>
 #include <string>
 #include <vector>
+
+#if defined(__GNUC__) && __GNUC__ < 8
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
 
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
@@ -30,8 +37,8 @@ public:
     [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
     [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const = 0;
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
-    [[nodiscard]] virtual Plugin *loadPlugin(const std::filesystem::path &file) = 0;
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) = 0;
+    [[nodiscard]] virtual Plugin *loadPlugin(const fs::path &file) = 0;
+    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const fs::path &directory) = 0;
     virtual void enablePlugin(Plugin &plugin) const = 0;
     virtual void disablePlugin(Plugin &plugin) const = 0;
     virtual void disablePlugins() const = 0;

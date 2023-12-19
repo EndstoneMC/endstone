@@ -12,34 +12,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-20.04, ubuntu-22.04 ]
-        compiler_version: [ '11', '12', '13', '14', '15' ]
+        os: [ ubuntu16.04, ubuntu18.04 ]
+        gcc_version: [ '7', '8', '9', '10', '11' ]
         build_type: [ Debug, Release ]
 
-    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with Clang ${{ matrix.compiler_version }}
-    runs-on: ${{ matrix.os }}
+    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with GCC ${{ matrix.gcc_version }}
+    runs-on: ubuntu-latest
+    container:
+      image: conanio/gcc${{ matrix.gcc_version }}-${{ matrix.os }}
+      options: --user root
 
     steps:
-      - name: Set up Clang
-        uses: egor-tensin/setup-clang@v1
-        with:
-          version: ${{ matrix.compiler_version }}
-
       - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip'
+        uses: actions/checkout@v3
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install conan cmake ninja
+          pip install --upgrade conan cmake ninja
 
       - name: Build with Conan
         run: |
           conan profile detect --force
-          conan create . --build=missing -s compiler=clang -s compiler.cppstd=17 -s compiler.version=${{ matrix.compiler_version }} -s build_type=${{ matrix.build_type }}
+          conan create . --build=missing -s compiler.cppstd=17 -s build_type=${{ matrix.build_type }}

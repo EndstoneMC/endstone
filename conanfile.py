@@ -31,11 +31,14 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _min_msvc_compiler_version(self):
+        # NOTE: the latest bedrock server for Windows is compiled with MSVC 2022 (193),
+        # but it should be ABI compatible with MSVC 2017 (191)
         return 191  # Visual Studio 17
 
     @property
-    def _min_clang_compiler_version(self):
-        return 7  # std::filesystem requires Clang 7.0
+    def _min_gcc_compiler_version(self):
+        # NOTE: the latest bedrock server of Linux is compiled with GCC 7.5.0
+        return 7
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
@@ -46,12 +49,12 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Windows":
             if not compiler == "msvc" or Version(compiler_version) < self._min_msvc_compiler_version:
                 raise ConanInvalidConfiguration(
-                    f"{self.ref} requires MSVC compiler version {self._min_msvc_compiler_version} on Windows."
+                    f"{self.ref} requires MSVC compiler version >= {self._min_msvc_compiler_version} on Windows."
                 )
         elif self.settings.os == "Linux":
-            if not compiler == "clang" or Version(compiler_version) < self._min_clang_compiler_version:
+            if not compiler == "gcc" or Version(compiler_version) < self._min_gcc_compiler_version:
                 raise ConanInvalidConfiguration(
-                    f"{self.ref} requires Clang compiler version {self._min_clang_compiler_version} on Linux."
+                    f"{self.ref} requires GCC compiler version >= {self._min_gcc_compiler_version} on Linux."
                 )
         else:
             raise ConanInvalidConfiguration(
@@ -99,4 +102,4 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
         self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog"]
         if self.settings.os == "Linux":
-            self.cpp_info.components["core"].system_libs.extend(["dl"])
+            self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])

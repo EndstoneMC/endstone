@@ -14,11 +14,18 @@
 
 #pragma once
 
-#include <filesystem>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <vector>
+
+#if defined(__GNUC__) && __GNUC__ < 8
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -33,8 +40,8 @@ public:
     [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
     [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
     bool isPluginEnabled(Plugin *plugin) const override;
-    Plugin *loadPlugin(const std::filesystem::path &file) override;
-    std::vector<Plugin *> loadPlugins(const std::filesystem::path &directory) override;
+    Plugin *loadPlugin(const fs::path &file) override;
+    std::vector<Plugin *> loadPlugins(const fs::path &directory) override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
     void disablePlugins() const override;

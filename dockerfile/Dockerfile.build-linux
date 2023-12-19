@@ -1,4 +1,4 @@
-FROM conanio/clang14-ubuntu18.04
+FROM conanio/gcc7
 
 USER root
 WORKDIR /usr/src/endstone
@@ -12,4 +12,5 @@ COPY ../test_package/src ./test_package/src
 COPY ../test_package/CMakeLists.txt ./test_package
 COPY ../test_package/conanfile.py ./test_package
 
+RUN python -m pip install --upgrade pip && pip install conan>=2.0 cmake ninja
 RUN conan create . --build=missing -s compiler.cppstd=17

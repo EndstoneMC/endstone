@@ -15,11 +15,18 @@
 #include "endstone_core/plugin/endstone_plugin_manager.h"
 
 #include <algorithm>
-#include <filesystem>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
+
+#if defined(__GNUC__) && __GNUC__ < 8
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
@@ -73,7 +80,7 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *EndstonePluginManager::loadPlugin(const std::filesystem::path &file)
+Plugin *EndstonePluginManager::loadPlugin(const fs::path &file)
 {
     if (!exists(file)) {
         server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", file.string());
@@ -104,16 +111,16 @@ Plugin *EndstonePluginManager::loadPlugin(const std::filesystem::path &file)
     return nullptr;
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::filesystem::path &directory)
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(const fs::path &directory)
 {
-    if (!std::filesystem::exists(directory)) {
+    if (!exists(directory)) {
         server_.getLogger().error(
             "Error occurred when trying to load plugins in '{}': Provided directory does not exist.",
             directory.string());
         return {};
     }
 
-    if (!std::filesystem::is_directory(directory)) {
+    if (!is_directory(directory)) {
         server_.getLogger().error(
             "Error occurred when trying to load plugins in '{}': Provided path is not a directory.",
             directory.string());
@@ -122,17 +129,17 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::filesystem::
 
     std::vector<Plugin *> loaded_plugins;
 
-    for (const auto &entry : std::filesystem::directory_iterator(directory)) {
-        std::filesystem::path file;
+    for (const auto &entry : fs::directory_iterator(directory)) {
+        fs::path file;
 
         // If it's a regular file, try to load it as a plugin.
-        if (std::filesystem::is_regular_file(entry.status())) {
+        if (is_regular_file(entry.status())) {
             file = entry.path();
         }
         // If it's a subdirectory, look for a plugin.toml inside it.
-        else if (std::filesystem::is_directory(entry.status())) {
+        else if (is_directory(entry.status())) {
             file = entry.path() / "plugin.toml";
-            if (!std::filesystem::exists(file) || !std::filesystem::is_regular_file(file)) {
+            if (!exists(file) || !is_regular_file(file)) {
                 continue;
             }
         }

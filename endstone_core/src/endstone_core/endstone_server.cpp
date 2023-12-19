@@ -16,6 +16,14 @@
 
 #include <memory>
 
+#if defined(__GNUC__) && __GNUC__ < 8
+#include <experimental/filesystem>
+namespace fs = std::experimental::filesystem;
+#else
+#include <filesystem>
+namespace fs = std::filesystem;
+#endif
+
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
 
@@ -30,7 +38,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 
 void EndstoneServer::loadPlugins()
 {
-    auto plugin_folder = std::filesystem::current_path() / "plugins";
+    auto plugin_folder = fs::current_path() / "plugins";
 
     if (exists(plugin_folder)) {
         auto plugins = plugin_manager_->loadPlugins(plugin_folder);
