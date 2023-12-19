@@ -23,14 +23,11 @@ class EndstoneTestConan(ConanFile):
 
     def test(self):
         if can_run(self):
-            plugins_dir = os.path.join(self.cpp.build.bindir, "plugins")
-            os.makedirs(plugins_dir, exist_ok=True)
-
             if self.settings.os == "Windows":
-                copy(self, "test_plugin.dll", self.cpp.build.bindir, plugins_dir)
+                copy(self, "test_plugin.dll", self.cpp.build.bindir, "plugins")
             elif self.settings.os == "Linux":
-                copy(self, "libtest_plugin.so", self.cpp.build.bindir, plugins_dir)
+                copy(self, "libtest_plugin.so", self.cpp.build.bindir, "plugins")
             else:
                 raise NotImplementedError(f"{self.settings.os} is not supported.")
 
-            self.run("test_server", env="conanrun", cwd=self.cpp.build.bindir)
+            self.run(os.path.join(self.cpp.build.bindir, "test_server"), env="conanrun")

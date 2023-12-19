@@ -1,0 +1,15 @@
+FROM conanio/clang14-ubuntu18.04
+
+USER root
+WORKDIR /usr/src/endstone
+
+COPY ../endstone_api ./endstone_api
+COPY ../endstone_core ./endstone_core
+COPY ../CMakeLists.txt .
+COPY ../conanfile.py .
+
+COPY ../test_package/src ./test_package/src
+COPY ../test_package/CMakeLists.txt ./test_package
+COPY ../test_package/conanfile.py ./test_package
+
+RUN conan create . --build=missing -s compiler.cppstd=17
