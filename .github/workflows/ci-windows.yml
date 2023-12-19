@@ -13,9 +13,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ windows-2019, windows-2022 ]
+        python: [ '3.9', '3.10', '3.11', '3.12' ]
         build_type: [ Debug, Release ]
 
-    name: Build on ${{ matrix.os }} (${{ matrix.build_type }})
+    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) for Python ${{ matrix.python }}
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -25,7 +26,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: ${{ matrix.python }}
           cache: 'pip'
 
       - name: Install Dependencies
