@@ -31,8 +31,8 @@ public:
     void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override
     {
         static const std::unordered_map<spdlog::level::level_enum, std::string_view> SpdlogLevelNames = {
-            {spdlog::level::trace, "TRACE"}, {spdlog::level::debug, "DEBUG"}, {spdlog::level::info, "INFO"},
-            {spdlog::level::warn, "WARN"},   {spdlog::level::err, "ERROR"},   {spdlog::level::critical, "CRITICAL"},
+            {spdlog::level::trace, "TRACE"},  {spdlog::level::debug, "DEBUG"}, {spdlog::level::info, "INFO"},
+            {spdlog::level::warn, "WARNING"}, {spdlog::level::err, "ERROR"},   {spdlog::level::critical, "CRITICAL"},
             {spdlog::level::off, "OFF"},
         };
 
@@ -82,10 +82,10 @@ Logger &LoggerFactory::getLogger(const std::string &name)
         return it->second;
     }
 
-    auto console_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
     auto formatter = std::make_unique<spdlog::pattern_formatter>();
     formatter->add_flag<LevelFormatter>('L').set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
 
+    auto console_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
     console_sink->set_formatter(std::move(formatter));
     console_sink->set_color(spdlog::level::info, console_sink->reset);
 
