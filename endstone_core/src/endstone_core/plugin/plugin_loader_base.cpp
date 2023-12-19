@@ -1,0 +1,43 @@
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#include "endstone_core/plugin/plugin_loader_base.h"
+
+void PluginLoaderBase::enablePlugin(Plugin &plugin) const
+{
+    if (!plugin.isEnabled()) {
+        plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
+        plugin.setEnabled(true);
+    }
+}
+
+void PluginLoaderBase::disablePlugin(Plugin &plugin) const
+{
+    if (plugin.isEnabled()) {
+        plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
+        plugin.setEnabled(false);
+    }
+}
+
+Server &PluginLoaderBase::getServer() const
+{
+    return server_;
+}
+
+void PluginLoaderBase::initPlugin(Plugin &plugin, std::unique_ptr<Logger> logger)
+{
+    plugin.loader_ = this;
+    plugin.server_ = &server_;
+    plugin.logger_ = std::move(logger);
+}

@@ -18,15 +18,12 @@
 #include <string>
 #include <vector>
 
-#include "endstone/plugin/plugin.h"
-#include "endstone/server.h"
+#include "endstone_core/plugin/plugin_loader_base.h"
 
-class PluginLoader {
+class CppPluginLoader : public PluginLoaderBase {
 public:
-    virtual ~PluginLoader() = default;
-    [[nodiscard]] virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
-    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
-    virtual void enablePlugin(Plugin &plugin) const = 0;
-    virtual void disablePlugin(Plugin &plugin) const = 0;
-    [[nodiscard]] virtual Server &getServer() const = 0;
+    using PluginLoaderBase::PluginLoaderBase;
+
+    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override;
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
 };

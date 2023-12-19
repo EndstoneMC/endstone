@@ -21,8 +21,9 @@
 
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_description.h"
-#include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
+
+class PluginLoader;
 
 class Plugin {
 public:
@@ -97,6 +98,7 @@ public:
 
 private:
     friend class PluginLoader;
+    friend class PluginLoaderBase;
 
     /**
      * Sets the enabled state of this plugin
@@ -125,16 +127,16 @@ private:
 
 #ifndef ENDSTONE_PLUGIN
 #if defined(WIN32)
-#define ENDSTONE_PLUGIN(ClassName)                          \
-    extern "C" __declspec(dllexport) Plugin *createPlugin() \
-    {                                                       \
-        return new ClassName();                             \
+#define ENDSTONE_PLUGIN(ClassName)                                \
+    extern "C" __declspec(dllexport) Plugin *EndstonePluginInit() \
+    {                                                             \
+        return new ClassName();                                   \
     }
 #else
-#define ENDSTONE_PLUGIN(ClassName)                                           \
-    extern "C" __attribute__((visibility("default"))) Plugin *createPlugin() \
-    {                                                                        \
-        return new ClassName();                                              \
+#define ENDSTONE_PLUGIN(ClassName)                                                 \
+    extern "C" __attribute__((visibility("default"))) Plugin *EndstonePluginInit() \
+    {                                                                              \
+        return new ClassName();                                                    \
     }
 #endif
 #endif

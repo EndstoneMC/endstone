@@ -16,17 +16,19 @@
 
 #include <memory>
 #include <string>
-#include <vector>
 
+#include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
-#include "endstone/server.h"
 
-class PluginLoader {
+class PluginLogger : public Logger {
 public:
-    virtual ~PluginLoader() = default;
-    [[nodiscard]] virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
-    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
-    virtual void enablePlugin(Plugin &plugin) const = 0;
-    virtual void disablePlugin(Plugin &plugin) const = 0;
-    [[nodiscard]] virtual Server &getServer() const = 0;
+    explicit PluginLogger(const Plugin &plugin);
+    void setLevel(Level level) override;
+    [[nodiscard]] bool isEnabledFor(Level level) const noexcept override;
+    [[nodiscard]] std::string_view getName() const override;
+    void log(Level level, const std::string &message) const override;
+
+private:
+    Logger &logger_;
+    std::string plugin_name_;
 };

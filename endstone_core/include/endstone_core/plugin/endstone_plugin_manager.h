@@ -24,9 +24,9 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
-class SimplePluginManager : public PluginManager {
+class EndstonePluginManager : public PluginManager {
 public:
-    explicit SimplePluginManager(Server &server);
+    explicit EndstonePluginManager(Server &server);
 
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
     [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;

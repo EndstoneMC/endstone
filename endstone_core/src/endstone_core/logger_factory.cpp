@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/logger_factory.h"
+#include "endstone_core/logger_factory.h"
 
 #include <mutex>
 #include <string>

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/plugin/simple_plugin_manager.h"
+#include "endstone_core/plugin/endstone_plugin_manager.h"
 
 #include <algorithm>
 #include <filesystem>
@@ -24,9 +24,9 @@
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
-SimplePluginManager::SimplePluginManager(Server &server) : server_(server) {}
+EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server) {}
 
-void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
+void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
 {
     auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
@@ -34,7 +34,7 @@ void SimplePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
     }
 }
 
-Plugin *SimplePluginManager::getPlugin(const std::string &name) const
+Plugin *EndstonePluginManager::getPlugin(const std::string &name) const
 {
     auto it = lookup_names_.find(name);
     if (it != lookup_names_.end()) {
@@ -43,7 +43,7 @@ Plugin *SimplePluginManager::getPlugin(const std::string &name) const
     return nullptr;
 }
 
-std::vector<Plugin *> SimplePluginManager::getPlugins() const
+std::vector<Plugin *> EndstonePluginManager::getPlugins() const
 {
     std::vector<Plugin *> plugins;
     plugins.reserve(plugins_.size());
@@ -53,12 +53,12 @@ std::vector<Plugin *> SimplePluginManager::getPlugins() const
     return plugins;
 }
 
-bool SimplePluginManager::isPluginEnabled(const std::string &name) const
+bool EndstonePluginManager::isPluginEnabled(const std::string &name) const
 {
     return isPluginEnabled(getPlugin(name));
 }
 
-bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const
+bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
 {
     if (!plugin) {
         return false;
@@ -73,7 +73,7 @@ bool SimplePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
+Plugin *EndstonePluginManager::loadPlugin(const std::filesystem::path &file)
 {
     if (!exists(file)) {
         server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", file.string());
@@ -104,7 +104,7 @@ Plugin *SimplePluginManager::loadPlugin(const std::filesystem::path &file)
     return nullptr;
 }
 
-std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::path &directory)
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::filesystem::path &directory)
 {
     if (!std::filesystem::exists(directory)) {
         server_.getLogger().error(
@@ -149,28 +149,28 @@ std::vector<Plugin *> SimplePluginManager::loadPlugins(const std::filesystem::pa
     return loaded_plugins;
 }
 
-void SimplePluginManager::enablePlugin(Plugin &plugin) const
+void EndstonePluginManager::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled()) {
         plugin.getPluginLoader().enablePlugin(plugin);
     }
 }
 
-void SimplePluginManager::disablePlugin(Plugin &plugin) const
+void EndstonePluginManager::disablePlugin(Plugin &plugin) const
 {
     if (plugin.isEnabled()) {
         plugin.getPluginLoader().disablePlugin(plugin);
     }
 }
 
-void SimplePluginManager::disablePlugins() const
+void EndstonePluginManager::disablePlugins() const
 {
     for (const auto &plugin : plugins_) {
         disablePlugin(*plugin);
     }
 }
 
-void SimplePluginManager::clearPlugins()
+void EndstonePluginManager::clearPlugins()
 {
     disablePlugins();
     plugins_.clear();

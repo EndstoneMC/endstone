@@ -11,6 +11,7 @@ target_include_directories(endstone_core PUBLIC include)
 target_link_libraries(endstone_core PUBLIC endstone::api spdlog::spdlog)
 
 include(GNUInstallDirs)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(TARGETS endstone_core
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

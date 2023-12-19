@@ -12,17 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/core/endstone_server.h"
+#include "endstone_core/endstone_server.h"
 
-#include "endstone/core/logger_factory.h"
+#include <memory>
+
+#include "endstone_core/logger_factory.h"
+#include "endstone_core/plugin/cpp_plugin_loader.h"
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
-    plugin_manager_ = std::make_unique<SimplePluginManager>(*this);
+    plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     //    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this, "endstone.plugin",
     //    "ZipPluginLoader")); plugin_manager_->registerLoader(
     //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
-    //    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 }
 
 void EndstoneServer::loadPlugins()

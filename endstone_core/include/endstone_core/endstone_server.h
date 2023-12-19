@@ -18,9 +18,9 @@
 #include <string>
 #include <string_view>
 
-#include "endstone/core/plugin/simple_plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
+#include "endstone_core/plugin/endstone_plugin_manager.h"
 
 #ifndef ENDSTONE_VERSION
 #define ENDSTONE_VERSION "unknown"
@@ -66,5 +66,5 @@ private:
     void enablePlugin(Plugin &plugin) const;
 
     Logger &logger_;
-    std::unique_ptr<SimplePluginManager> plugin_manager_;
+    std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };
