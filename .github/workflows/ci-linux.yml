@@ -14,10 +14,9 @@ jobs:
       matrix:
         os: [ ubuntu-20.04 ]
         gcc: [ '7', '8', '9', '10', '11' ]
-        python: [ '3.9', '3.10', '3.11', '3.12' ]
         build_type: [ Debug, Release ]
 
-    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with GCC ${{ matrix.gcc }} for Python ${{ matrix.python}}
+    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with GCC ${{ matrix.gcc }}
     runs-on: ${{ matrix.os}}
 
     steps:
@@ -32,7 +31,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python }}
+          python-version: '3.11'
           cache: 'pip'
 
       - name: Install Dependencies
