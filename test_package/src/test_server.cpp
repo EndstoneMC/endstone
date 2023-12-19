@@ -17,8 +17,7 @@
 #undef NDEBUG
 #endif
 
-#include <assert.h>
-#include <stdio.h>
+#include <cassert>
 
 #include "endstone_core/endstone_server.h"
 
@@ -38,12 +37,15 @@ int main()
 
     auto *plugin = plugin_manager.getPlugin(PluginName);
     assert(plugin != nullptr);
+    assert(plugin_manager.isPluginEnabled(plugin) == false);
     assert(plugin_manager.isPluginEnabled(PluginName) == false);
 
     server.enablePlugins();
+    assert(plugin_manager.isPluginEnabled(plugin) == true);
     assert(plugin_manager.isPluginEnabled(PluginName) == true);
 
     server.disablePlugins();
+    assert(plugin_manager.isPluginEnabled(plugin) == false);
     assert(plugin_manager.isPluginEnabled(PluginName) == false);
 
     server.getLogger().info("Bye!");
