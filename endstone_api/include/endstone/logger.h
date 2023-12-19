@@ -50,7 +50,7 @@ public:
     }
 
     template <typename... Args>
-    void verbose(const fmt::format_string<Args...> format, Args &&...args) const
+    void debug(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Level::Debug, fmt::format(format, std::forward<Args>(args)...));
     }
@@ -71,5 +71,11 @@ public:
     void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Level::Error, fmt::format(format, std::forward<Args>(args)...));
+    }
+
+    template <typename... Args>
+    void critical(const fmt::format_string<Args...> format, Args &&...args) const
+    {
+        log(Level::Critical, fmt::format(format, std::forward<Args>(args)...));
     }
 };

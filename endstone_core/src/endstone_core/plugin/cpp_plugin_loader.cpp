@@ -22,7 +22,6 @@
 
 #include "endstone/plugin/plugin.h"
 #include "endstone_core/endstone_server.h"
-#include "endstone_core/plugin/plugin_logger.h"
 
 #ifdef _WIN32
 
@@ -51,7 +50,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
+    initPlugin(*plugin);
     return std::unique_ptr<Plugin>(plugin);
 }
 
@@ -87,7 +86,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    initPlugin(*plugin, std::make_unique<PluginLogger>(*plugin));
+    initPlugin(*plugin);
     return std::unique_ptr<Plugin>(plugin);
 }
 

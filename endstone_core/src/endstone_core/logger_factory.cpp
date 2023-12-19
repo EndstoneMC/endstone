@@ -19,8 +19,33 @@
 #include <unordered_map>
 #include <utility>
 
-#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/sinks/ansicolor_sink-inl.h>
+#include <spdlog/sinks/ansicolor_sink.h>
 #include <spdlog/spdlog.h>
+
+template class SPDLOG_API spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>;
+
+#include "spdlog/pattern_formatter.h"
+class LevelFormatter : public spdlog::custom_flag_formatter {
+public:
+    void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override
+    {
+        static const std::unordered_map<spdlog::level::level_enum, std::string_view> SpdlogLevelNames = {
+            {spdlog::level::trace, "TRACE"}, {spdlog::level::debug, "DEBUG"}, {spdlog::level::info, "INFO"},
+            {spdlog::level::warn, "WARN"},   {spdlog::level::err, "ERROR"},   {spdlog::level::critical, "CRITICAL"},
+            {spdlog::level::off, "OFF"},
+        };
+
+        const auto level_name = SpdlogLevelNames.find(msg.level)->second;
+        const auto *buf_ptr = level_name.data();
+        dest.append(buf_ptr, buf_ptr + level_name.size());
+    }
+
+    [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override
+    {
+        return spdlog::details::make_unique<LevelFormatter>();
+    }
+};
 
 SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger)) {}
 
@@ -57,7 +82,15 @@ Logger &LoggerFactory::getLogger(const std::string &name)
         return it->second;
     }
 
-    auto console = spdlog::stdout_color_mt(name);
+    auto console_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
+    auto formatter = std::make_unique<spdlog::pattern_formatter>();
+    formatter->add_flag<LevelFormatter>('L').set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
+
+    console_sink->set_formatter(std::move(formatter));
+    console_sink->set_color(spdlog::level::info, console_sink->reset);
+
+    auto console = std::make_shared<spdlog::logger>(name, console_sink);
+    spdlog::register_logger(console);
     it = loggers.emplace(name, SpdLogAdapter(console)).first;
     return it->second;
 }

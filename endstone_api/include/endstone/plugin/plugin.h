@@ -122,7 +122,7 @@ private:
     bool enabled_ = false;
     PluginLoader *loader_ = nullptr;
     Server *server_ = nullptr;
-    std::unique_ptr<Logger> logger_;
+    Logger *logger_ = nullptr;
 };
 
 #ifndef ENDSTONE_PLUGIN

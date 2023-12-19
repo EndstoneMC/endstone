@@ -24,7 +24,13 @@
 int main()
 {
     auto &server = EndstoneServer::getInstance();
-    server.getLogger().info("Hello World!");
+    auto &logger = server.getLogger();
+
+    logger.debug("Hello World!");
+    logger.info("Hello World!");
+    logger.warning("Hello World!");
+    logger.error("Hello World!");
+    logger.critical("Hello World!");
 
     auto constexpr PluginName = "TestPlugin";
 

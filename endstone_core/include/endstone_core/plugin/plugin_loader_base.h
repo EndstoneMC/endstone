@@ -30,7 +30,7 @@ public:
     [[nodiscard]] Server &getServer() const override;
 
 protected:
-    virtual void initPlugin(Plugin &plugin, std::unique_ptr<Logger> logger);
+    virtual void initPlugin(Plugin &plugin);
 
 private:
     Server &server_;

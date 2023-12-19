@@ -14,6 +14,8 @@
 
 #include "endstone_core/plugin/plugin_loader_base.h"
 
+#include "endstone_core/logger_factory.h"
+
 void PluginLoaderBase::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled()) {
@@ -35,9 +37,9 @@ Server &PluginLoaderBase::getServer() const
     return server_;
 }
 
-void PluginLoaderBase::initPlugin(Plugin &plugin, std::unique_ptr<Logger> logger)
+void PluginLoaderBase::initPlugin(Plugin &plugin)
 {
     plugin.loader_ = this;
     plugin.server_ = &server_;
-    plugin.logger_ = std::move(logger);
+    plugin.logger_ = &LoggerFactory::getLogger(plugin.getDescription().getName());
 }
