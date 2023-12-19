@@ -3,9 +3,8 @@ project(PackageTest CXX)
 
 find_package(endstone CONFIG REQUIRED)
 
-# TODO: test server
-#add_executable(test_server src/test_server.cpp)
-#target_link_libraries(test_server endstone::core)
+add_executable(test_server src/test_server.cpp)
+target_link_libraries(test_server endstone::core)
 
 add_library(test_plugin SHARED src/test_plugin.cpp)
 target_link_libraries(test_plugin endstone::api)
