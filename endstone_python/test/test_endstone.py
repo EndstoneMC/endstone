@@ -3,7 +3,9 @@ import importlib
 
 def test_import_endstone():
     # import endstone
-    importlib.import_module("endstone")
+    module = importlib.import_module("endstone")
+    assert getattr(module, "__version__") is not None
+    assert getattr(module, "__version_tuple__") is not None
 
 
 def test_import_server():

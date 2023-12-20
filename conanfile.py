@@ -4,10 +4,12 @@ from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 from conans.errors import ConanInvalidConfiguration
 from conans.model.version import Version
 
+from setuptools_scm import Configuration, _get_version
+
 
 class EndstoneRecipe(ConanFile):
     name = "endstone"
-    version = "0.1.0"
+    version = _get_version(Configuration.from_file("pyproject.toml"), force_write_version_files=False)
     package_type = "library"
 
     # Optional metadata
@@ -23,6 +25,7 @@ class EndstoneRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True, "fmt/*:header_only": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
+    exports = "pyproject.toml"
     exports_sources = "CMakeLists.txt", "endstone_api/*", "endstone_core/*", "endstone_python/*"
 
     @property

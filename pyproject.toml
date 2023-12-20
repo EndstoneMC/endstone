@@ -51,6 +51,8 @@ sdist.include = ["endstone_python/python/endstone/_version.py"]
 
 [tool.setuptools_scm]
 write_to = "endstone_python/python/endstone/_version.py"
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
 
 [tool.cibuildwheel]
 build = ["cp*-win_amd64", "cp*-manylinux_x86_64"]

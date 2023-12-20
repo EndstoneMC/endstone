@@ -12,3 +12,4 @@ CTestTestfile.cmake
 _deps
 .idea/*
 build/*
+wheelhouse/*
