@@ -26,9 +26,11 @@
 #define ENDSTONE_VERSION "unknown"
 #endif
 
-#ifndef MINECRAFT_VERSION
-#define MINECRAFT_VERSION "unknown"
+#ifndef ENDSTONE_MINECRAFT_VERSION
+#define ENDSTONE_MINECRAFT_VERSION "unknown"
 #endif
+
+#define TO_STRING_VERSION(x) #x
 
 class EndstoneServer : public Server {
 public:
@@ -58,7 +60,7 @@ public:
 
     [[nodiscard]] std::string_view getMinecraftVersion() const override
     {
-        return MINECRAFT_VERSION;
+        return ENDSTONE_MINECRAFT_VERSION;
     }
 
 private:

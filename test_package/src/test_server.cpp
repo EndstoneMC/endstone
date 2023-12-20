@@ -32,6 +32,8 @@ int main()
     logger.error("Hello World!");
     logger.critical("Hello World!");
 
+    logger.info("Endstone version: v{} (Minecraft: v{})", server.getVersion(), server.getMinecraftVersion());
+
     auto constexpr PluginName = "TestPlugin";
 
     auto &plugin_manager = server.getPluginManager();

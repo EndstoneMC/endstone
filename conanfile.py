@@ -1,15 +1,13 @@
 from conan import ConanFile
 from conan.tools.build import check_min_cppstd
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
+from conan.tools.scm import Git
 from conans.errors import ConanInvalidConfiguration
 from conans.model.version import Version
-
-from setuptools_scm import Configuration, _get_version
 
 
 class EndstoneRecipe(ConanFile):
     name = "endstone"
-    version = _get_version(Configuration.from_file("pyproject.toml"), force_write_version_files=False)
     package_type = "library"
 
     # Optional metadata
@@ -25,8 +23,30 @@ class EndstoneRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True, "fmt/*:header_only": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports = "pyproject.toml"
     exports_sources = "CMakeLists.txt", "endstone_api/*", "endstone_core/*", "endstone_python/*"
+
+    def set_version(self):
+        if self.version:
+            return
+
+        git = Git(self)
+        tag = git.run("describe --tags --long")
+
+        import re
+
+        tag, num_commits, commit_hash = re.match(r"^(\S+)-(\d+)-g([a-f0-9]+)$", tag).groups()
+        version = Version(tag)
+        value = ".".join(str(i) for i in version.main)
+        if version.pre:
+            value += f"-{version.pre}"
+
+        if (num_commits := int(num_commits)) > 0:
+            value += f".dev{num_commits}"
+
+        if version.build:
+            value += f"+{version.build}"
+
+        self.version = value
 
     @property
     def _min_cppstd(self):
@@ -84,6 +104,10 @@ class EndstoneRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
+        tc.variables["ENDSTONE_VERSION"] = self.version
+        tc.variables["ENDSTONE_MINECRAFT_VERSION"] = (lambda v: f"{v[0]}.{v[1]}.{v[2]}.{v[3]:02}")(
+            [int(a.value) for a in Version(self.version).main]
+        )
         tc.generate()
 
     def build(self):
