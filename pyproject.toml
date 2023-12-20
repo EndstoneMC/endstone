@@ -1,5 +1,5 @@
 [build-system]
-requires = ["scikit-build-core", "conan"]
+requires = ["scikit-build-core"]
 build-backend = "scikit_build_core.build"
 
 [project]
@@ -23,29 +23,51 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
 ]
-#dependencies = [
-#    "click",
-#    "requests",
-#    "tomli",
-#    "tqdm",
-#    "packaging"
-#]
+dependencies = ["click", "requests", "rich", "tomli", "packaging"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
-pytest = ["pytest"]
+test = ["pytest"]
 
-#[project.scripts]
-#endstone = "endstone.bootstrap.cli:cli"
-#
-#[tool.scikit-build]
-#build-dir = "build/{wheel_tag}"
-#cmake.build-type = "Release"
-#cmake.verbose = true
-#wheel.packages = ["python/endstone"]
-#wheel.license-files = ["LICENSE"]
-#metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-#sdist.include = ["python/endstone/_version.py"]
-#
-#[tool.scikit-build.cmake.define]
-#BUILD_TESTING = "OFF"
+[project.urls]
+#Changelog = "https://endstone.readthedocs.io/en/latest/changelog.html"
+Discussions = "https://github.com/orgs/EndstoneMC/discussions"
+Documentation = "https://endstone.readthedocs.io"
+Homepage = "https://github.com/EndstoneMC/endstone"
+Issues = "https://github.com/EndstoneMC/endstone/issues"
+
+[project.scripts]
+endstone = "endstone._bootstrap:cli"
+
+[tool.scikit-build]
+build-dir = "build/{wheel_tag}"
+cmake.args = ["-G Ninja", "--preset conan-release"]
+cmake.define = { BUILD_TESTING = "OFF" }
+wheel.packages = ["endstone_python/python/endstone"]
+wheel.license-files = ["LICENSE"]
+install.components = ["endstone_wheel"]
+metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+sdist.include = ["endstone_python/python/endstone/_version.py"]
+
+[tool.setuptools_scm]
+write_to = "endstone_python/python/endstone/_version.py"
+
+[tool.cibuildwheel]
+build = ["cp*-win_amd64", "cp*-manylinux_x86_64"]
+test-requires = "pytest"
+test-command = "pytest {project}/endstone_python/test"
+
+[tool.cibuildwheel.windows]
+before-build = [
+    "pip install conan",
+    "conan profile detect --force",
+    "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja",
+    ".\\build\\Release\\generators\\conanbuild.bat"
+]
+
+[tool.cibuildwheel.linux]
+before-build = [
+    "pip install conan ninja",
+    "conan profile detect --force",
+    "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja"
+]

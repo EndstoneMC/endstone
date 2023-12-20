@@ -22,6 +22,9 @@
 
 class PluginManager;
 
+/**
+ * @brief Represents a server implementation.
+ */
 class Server {
 public:
     Server() = default;

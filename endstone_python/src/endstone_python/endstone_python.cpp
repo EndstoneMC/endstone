@@ -20,7 +20,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(endstone, m)
+PYBIND11_MODULE(_api, m)
 {
     py::class_<Server>(m, "Server");
 }
