@@ -19,13 +19,13 @@
 #include <unordered_map>
 #include <utility>
 
+#include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/ansicolor_sink-inl.h>
 #include <spdlog/sinks/ansicolor_sink.h>
 #include <spdlog/spdlog.h>
 
 template class SPDLOG_API spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>;
 
-#include "spdlog/pattern_formatter.h"
 class LevelFormatter : public spdlog::custom_flag_formatter {
 public:
     void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override
