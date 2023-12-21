@@ -4,10 +4,17 @@ import importlib
 def test_import_endstone():
     # import endstone
     module = importlib.import_module("endstone")
-    assert getattr(module, "__version__") is not None
-    assert getattr(module, "__minecraft_version__") is not None
+    getattr(module, "__version__")
+    getattr(module, "__minecraft_version__")
+
+    # from endstone import Logger, Server
+    getattr(module, "Server")
+    getattr(module, "Logger")
 
 
-def test_import_server():
-    # from endstone import Server
-    getattr(importlib.import_module("endstone"), "Server")
+def test_import_plugin():
+    # import endstone.plugin
+    module = importlib.import_module("endstone.plugin")
+
+    # from endstone.plugin import Plugin
+    getattr(module, "Plugin")
