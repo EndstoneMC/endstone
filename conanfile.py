@@ -23,7 +23,7 @@ class EndstoneRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True, "fmt/*:header_only": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "endstone_api/*", "endstone_core/*", "endstone_python/*"
+    exports_sources = "CMakeLists.txt", "cmake/*", "endstone_api/*", "endstone_core/*", "endstone_python/*"
 
     def set_version(self):
         if self.version:

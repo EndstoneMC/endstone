@@ -45,3 +45,46 @@ jobs:
         run: |
           conan profile detect --force
           conan create . --build=missing -s compiler.cppstd=17 -s build_type=${{ matrix.build_type }}
+
+  coverage:
+    name: Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install conan cmake ninja
+
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
+
+      - name: Create Conan build
+        run: |
+          conan profile detect --force
+          conan install . --build=missing -s compiler.cppstd=17 -s build_type=Debug --output-folder=build
+
+      - name: Build with CMake
+        run: |
+          cmake -S . -B build --preset conan-debug -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+          cmake --build build
+
+      - name: Run Tests and Generate Coverage Data
+        run: |
+          ctest --test-dir build
+          lcov -c -d build -o coverage.info
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
