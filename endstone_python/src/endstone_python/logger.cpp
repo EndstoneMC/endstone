@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_python/endstone_python.h"
+#include "endstone/logger.h"
 
 #include <pybind11/pybind11.h>
 
+#include "endstone_python/endstone_python.h"
+
 namespace py = pybind11;
 
-PYBIND11_MODULE(_api, m)
+void def_logger(py::module &m)
 {
-    def_logger(m);
-    def_server(m);
-    def_plugin(m);
+    py::class_<Logger>(m, "Logger");
 }

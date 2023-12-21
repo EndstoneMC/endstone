@@ -11,3 +11,16 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+#include "endstone/server.h"
+
+#include <pybind11/pybind11.h>
+
+#include "endstone_python/endstone_python.h"
+
+namespace py = pybind11;
+
+void def_server(py::module &m)
+{
+    py::class_<Server>(m, "Server");
+}
