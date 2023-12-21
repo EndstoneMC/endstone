@@ -54,14 +54,15 @@ class EndstoneRecipe(ConanFile):
 
     @property
     def _min_msvc_compiler_version(self):
-        # NOTE: the latest bedrock server for Windows is compiled with MSVC 2022 (193),
-        # but it should be ABI compatible with MSVC 2017 (191)
+        # NOTE: the latest bedrock server for Windows is compiled with MSVC 2022 (v193),
+        # but it should be ABI compatible with MSVC 2017 (v191)
         return 191  # Visual Studio 17
 
     @property
     def _min_gcc_compiler_version(self):
-        # NOTE: the latest bedrock server of Linux is compiled with GCC 7.5.0
-        return 7
+        # NOTE: the latest bedrock server for Linux is compiled with GCC 7.5.0,
+        # but we enforce the GCC version >= 8
+        return 8
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)

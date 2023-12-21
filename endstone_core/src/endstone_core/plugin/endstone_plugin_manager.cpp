@@ -15,18 +15,12 @@
 #include "endstone_core/plugin/endstone_plugin_manager.h"
 
 #include <algorithm>
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
-
-#if defined(__GNUC__) && __GNUC__ < 8
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
-#else
-#include <filesystem>
 namespace fs = std::filesystem;
-#endif
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"

@@ -14,17 +14,11 @@
 
 #pragma once
 
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <vector>
-
-#if defined(__GNUC__) && __GNUC__ < 8
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
-#else
-#include <filesystem>
 namespace fs = std::filesystem;
-#endif
 
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"

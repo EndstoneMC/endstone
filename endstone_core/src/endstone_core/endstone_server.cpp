@@ -14,15 +14,9 @@
 
 #include "endstone_core/endstone_server.h"
 
-#include <memory>
-
-#if defined(__GNUC__) && __GNUC__ < 8
-#include <experimental/filesystem>
-namespace fs = std::experimental::filesystem;
-#else
 #include <filesystem>
+#include <memory>
 namespace fs = std::filesystem;
-#endif
 
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
