@@ -22,7 +22,6 @@
 class Logger {
 public:
     /**
-     * @enum LogLevel
      * @brief Specifies the log level.
      */
     enum Level : uint8_t {
@@ -47,6 +46,12 @@ public:
     void log(Level level, const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(level, fmt::format(format, std::forward<Args>(args)...));
+    }
+
+    template <typename... Args>
+    void trace(const fmt::format_string<Args...> format, Args &&...args) const
+    {
+        log(Level::Trace, fmt::format(format, std::forward<Args>(args)...));
     }
 
     template <typename... Args>

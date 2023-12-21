@@ -22,5 +22,54 @@ namespace py = pybind11;
 
 void def_logger(py::module &m)
 {
-    py::class_<Logger>(m, "Logger");
+    auto logger =  //
+        py::class_<Logger>(m, "Logger")
+            .def("set_level", &Logger::setLevel, py::arg("level"))
+            .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
+            .def(
+                "trace",
+                [](const Logger &logger, const std::string &message) {
+                    logger.trace(message);
+                },
+                py::arg("msg"))
+            .def(
+                "debug",
+                [](const Logger &logger, const std::string &message) {
+                    logger.debug(message);
+                },
+                py::arg("msg"))
+            .def(
+                "info",
+                [](const Logger &logger, const std::string &message) {
+                    logger.info(message);
+                },
+                py::arg("msg"))
+            .def(
+                "warning",
+                [](const Logger &logger, const std::string &message) {
+                    logger.warning(message);
+                },
+                py::arg("msg"))
+            .def(
+                "error",
+                [](const Logger &logger, const std::string &message) {
+                    logger.error(message);
+                },
+                py::arg("msg"))
+            .def(
+                "critical",
+                [](const Logger &logger, const std::string &message) {
+                    logger.critical(message);
+                },
+                py::arg("msg"))
+            .def_property_readonly("name", &Logger::getName);
+
+    py::enum_<Logger::Level>(logger, "Level")
+        .value("TRACE", Logger::Level::Trace)
+        .value("DEBUG", Logger::Level::Debug)
+        .value("INFO", Logger::Level::Info)
+        .value("WARNING", Logger::Level::Warning)
+        .value("ERROR", Logger::Level::Error)
+        .value("CRITICAL", Logger::Level::Critical)
+        .export_values();
 }
