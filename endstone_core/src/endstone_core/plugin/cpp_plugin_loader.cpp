@@ -22,6 +22,7 @@
 
 #include "endstone/plugin/plugin.h"
 #include "endstone_core/endstone_server.h"
+#include "endstone_core/logger_factory.h"
 
 #ifdef _WIN32
 
@@ -50,7 +51,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    initPlugin(*plugin);
+    initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
     return std::unique_ptr<Plugin>(plugin);
 }
 

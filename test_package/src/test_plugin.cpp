@@ -39,7 +39,7 @@ public:
     }
 
 private:
-    PluginDescription description_{"TestPlugin", "1.0.0"};
+    PluginDescription description_{"CppTestPlugin", "1.0.0"};
 };
 
 ENDSTONE_PLUGIN(TestPlugin)

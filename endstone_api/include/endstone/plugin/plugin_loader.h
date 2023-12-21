@@ -18,15 +18,49 @@
 #include <string>
 #include <vector>
 
+#include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
 class PluginLoader {
 public:
+    explicit PluginLoader(Server &server) noexcept : server_(server) {}
+    PluginLoader(const PluginLoader &) = delete;
+    PluginLoader &operator=(const PluginLoader &) = delete;
+
     virtual ~PluginLoader() = default;
     [[nodiscard]] virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
     [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
-    virtual void enablePlugin(Plugin &plugin) const = 0;
-    virtual void disablePlugin(Plugin &plugin) const = 0;
-    [[nodiscard]] virtual Server &getServer() const = 0;
+
+    void enablePlugin(Plugin &plugin) const
+    {
+        if (!plugin.isEnabled()) {
+            plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
+            plugin.setEnabled(true);
+        }
+    }
+
+    void disablePlugin(Plugin &plugin) const
+    {
+        if (plugin.isEnabled()) {
+            plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
+            plugin.setEnabled(false);
+        }
+    }
+
+    [[nodiscard]] virtual Server &getServer() const
+    {
+        return server_;
+    }
+
+protected:
+    void initPlugin(Plugin &plugin, Logger &logger)
+    {
+        plugin.loader_ = this;
+        plugin.server_ = &server_;
+        plugin.logger_ = &logger;
+    }
+
+private:
+    Server &server_;
 };

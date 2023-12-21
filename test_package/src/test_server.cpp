@@ -34,27 +34,27 @@ int main()
 
     logger.info("Endstone version: v{} (Minecraft: v{})", server.getVersion(), server.getMinecraftVersion());
 
-    auto constexpr PluginName = "TestPlugin";
+    auto constexpr CppTestPluginName = "CppTestPlugin";
 
     auto &plugin_manager = server.getPluginManager();
     assert(plugin_manager.getPlugins().size() == 0);
-    assert(plugin_manager.getPlugin(PluginName) == nullptr);
+    assert(plugin_manager.getPlugin(CppTestPluginName) == nullptr);
 
     server.loadPlugins();
     assert(plugin_manager.getPlugins().size() == 1);
 
-    auto *plugin = plugin_manager.getPlugin(PluginName);
+    auto *plugin = plugin_manager.getPlugin(CppTestPluginName);
     assert(plugin != nullptr);
     assert(plugin_manager.isPluginEnabled(plugin) == false);
-    assert(plugin_manager.isPluginEnabled(PluginName) == false);
+    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
 
     server.enablePlugins();
     assert(plugin_manager.isPluginEnabled(plugin) == true);
-    assert(plugin_manager.isPluginEnabled(PluginName) == true);
+    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == true);
 
     server.disablePlugins();
     assert(plugin_manager.isPluginEnabled(plugin) == false);
-    assert(plugin_manager.isPluginEnabled(PluginName) == false);
+    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
 
     server.getLogger().info("Bye!");
 }

@@ -18,11 +18,11 @@
 #include <string>
 #include <vector>
 
-#include "endstone_core/plugin/plugin_loader_base.h"
+#include "endstone/plugin/plugin_loader.h"
 
-class CppPluginLoader : public PluginLoaderBase {
+class CppPluginLoader : public PluginLoader {
 public:
-    using PluginLoaderBase::PluginLoaderBase;
+    using PluginLoader::PluginLoader;
 
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
