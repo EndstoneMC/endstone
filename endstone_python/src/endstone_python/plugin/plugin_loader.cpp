@@ -45,7 +45,7 @@ public:
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "_get_plugin_file_filters",
+            PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_file_filters",
                                         getPluginFileFilters);
         }
         catch (std::exception &e) {
@@ -59,6 +59,9 @@ void def_plugin_loader(py::module &m)
 {
     py::class_<PluginLoader, PyPluginLoader, std::unique_ptr<PluginLoader, py::nodelete>>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
+        .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
-        .def("_get_plugin_file_filters", &PluginLoader::getPluginFileFilters);
+        .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
+        .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
+        .def_property_readonly("server", &PluginLoader::getServer);
 }

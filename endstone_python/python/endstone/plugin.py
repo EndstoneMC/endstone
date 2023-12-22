@@ -1,6 +1,7 @@
-__all__ = ["Plugin"]
+__all__ = ["Plugin", "PluginLoader"]
 
 from endstone._api import Plugin as _Plugin
+from endstone._api import PluginLoader
 
 
 class Plugin(_Plugin):
