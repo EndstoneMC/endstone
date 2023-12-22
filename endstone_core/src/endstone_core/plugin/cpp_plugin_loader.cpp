@@ -87,7 +87,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    initPlugin(*plugin);
+    initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
     return std::unique_ptr<Plugin>(plugin);
 }
 
