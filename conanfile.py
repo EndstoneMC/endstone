@@ -88,7 +88,7 @@ class EndstoneRecipe(ConanFile):
     def requirements(self):
         self.requires("fmt/10.1.1", transitive_headers=True)
         self.requires("spdlog/1.12.0")
-        self.requires("pybind11/2.11.1")
+        self.requires("pybind11/2.11.1", transitive_headers=True)
         self.test_requires("gtest/1.14.0")
 
     def config_options(self):

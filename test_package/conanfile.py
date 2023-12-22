@@ -1,4 +1,5 @@
 import os
+import sys
 
 from conan import ConanFile
 from conan.tools.build import can_run
@@ -20,6 +21,18 @@ class EndstoneTestConan(ConanFile):
 
     def layout(self):
         cmake_layout(self)
+
+    @property
+    def runenv(self):
+        from conan.tools.env import Environment
+
+        if not isinstance(self._conan_runenv, Environment):
+            env: Environment = super().runenv
+            env.prepend_path("PATH", os.pathsep.join(sys.path))
+            env.define_path("PYTHONHOME", sys.base_exec_prefix)
+            env.define_path("PYTHONPATH", os.pathsep.join(sys.path))
+
+        return self._conan_runenv
 
     def test(self):
         if can_run(self):

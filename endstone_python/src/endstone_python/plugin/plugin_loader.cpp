@@ -57,7 +57,7 @@ public:
 
 void def_plugin_loader(py::module &m)
 {
-    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference)

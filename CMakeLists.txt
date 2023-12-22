@@ -15,5 +15,5 @@ endif ()
 
 
 add_subdirectory(endstone_api)
-add_subdirectory(endstone_core)
 add_subdirectory(endstone_python)
+add_subdirectory(endstone_core)

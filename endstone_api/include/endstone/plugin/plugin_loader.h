@@ -32,7 +32,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Plugin> loadPlugin(const std::string &file) = 0;
     [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
 
-    void enablePlugin(Plugin &plugin) const
+    virtual void enablePlugin(Plugin &plugin) const
     {
         if (!plugin.isEnabled()) {
             plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
@@ -40,7 +40,7 @@ public:
         }
     }
 
-    void disablePlugin(Plugin &plugin) const
+    virtual void disablePlugin(Plugin &plugin) const
     {
         if (plugin.isEnabled()) {
             plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
