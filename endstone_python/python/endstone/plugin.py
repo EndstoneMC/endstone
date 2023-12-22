@@ -1,14 +1,27 @@
-__all__ = ["Plugin", "PluginLoader"]
+import warnings
 
 from endstone._api import Plugin as _Plugin
-from endstone._api import PluginLoader
+from endstone._api import PluginLoader, PluginDescription
+
+__all__ = ["Plugin", "PluginLoader", "PluginDescription"]
 
 
 class Plugin(_Plugin):
     def __init__(self):
         _Plugin.__init__(self)
+        self._description: PluginDescription
+
+    def _get_description(self) -> PluginDescription:
+        warnings.warn(
+            (
+                "The method '_get_description()' is deprecated and for internal use only. "
+                "Use the 'description' property of the Plugin class instead."
+            ),
+            DeprecationWarning,
+        )
+        return self._description
 
     @property
-    def __description__(self):
-        # TODO: pass description from python back to c++, should not be called by end users
-        raise NotImplementedError
+    def description(self) -> PluginDescription:
+        # noinspection PyUnresolvedReferences
+        return self._get_description()

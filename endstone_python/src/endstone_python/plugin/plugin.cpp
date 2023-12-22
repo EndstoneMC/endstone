@@ -29,9 +29,13 @@ public:
 
     [[nodiscard]] const PluginDescription &getDescription() const noexcept override
     {
-        // TODO: implement loading description from file
-        static const PluginDescription DummyDescription = {"PythonPlugin", "1.0.0"};
-        return DummyDescription;
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
+        }
+        catch (std::exception &e) {
+            getLogger().error(e.what());
+            std::terminate();
+        }
     }
 
     void onLoad() noexcept override
@@ -72,10 +76,10 @@ void def_plugin(py::module &m)
 {
     py::class_<Plugin, PyPlugin, std::unique_ptr<Plugin, py::nodelete>>(m, "Plugin")
         .def(py::init<>())
-        // TODO:  .def("_get_description", &Plugin::getDescription, py::return_value_policy::reference)
         .def("on_load", &Plugin::onLoad)
         .def("on_enable", &Plugin::onEnable)
         .def("on_disable", &Plugin::onDisable)
+        .def("_get_description", &Plugin::getDescription, py::return_value_policy::reference)
         .def_property_readonly("logger", &Plugin::getLogger, py::return_value_policy::reference)
         .def_property_readonly("plugin_loader", &Plugin::getPluginLoader, py::return_value_policy::reference)
         .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference)

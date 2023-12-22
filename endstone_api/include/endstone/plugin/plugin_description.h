@@ -19,21 +19,25 @@
 #include <optional>
 #include <regex>
 #include <string>
+#include <utility>
 #include <vector>
+
+#include <fmt/format.h>
 
 class PluginDescription {
 public:
-    PluginDescription(const std::string &name, const std::string &version)
+    PluginDescription(std::string name, std::string version, std::optional<std::string> description = std::nullopt,
+                      std::optional<std::vector<std::string>> authors = std::nullopt,
+                      std::optional<std::string> prefix = std::nullopt)
     {
-        name_ = name;
+        name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
-        version_ = version;
-        full_name_ = name_ + " v" + version;
+        version_ = std::move(version);
+        full_name_ = fmt::format("{} v{}", name_, version_);
+        description_ = std::move(description);
+        authors_ = std::move(authors);
+        prefix_ = std::move(prefix);
     }
-    PluginDescription(const PluginDescription &) = delete;
-    PluginDescription &operator=(const PluginDescription &) = delete;
-
-    virtual ~PluginDescription() = default;
 
     [[nodiscard]] const std::string &getName() const
     {
@@ -50,19 +54,19 @@ public:
         return full_name_;
     }
 
-    [[nodiscard]] virtual std::optional<std::string> getDescription() const
+    [[nodiscard]] std::optional<std::string> getDescription() const
     {
-        return std::nullopt;
+        return description_;
     }
 
-    [[nodiscard]] virtual std::optional<std::vector<std::string>> getAuthors() const
+    [[nodiscard]] std::optional<std::vector<std::string>> getAuthors() const
     {
-        return std::nullopt;
+        return authors_;
     }
 
-    [[nodiscard]] virtual std::optional<std::string> getPrefix() const
+    [[nodiscard]] std::optional<std::string> getPrefix() const
     {
-        return std::nullopt;
+        return prefix_;
     }
 
     inline const static std::regex ValidName{"^[A-Za-z0-9 _.-]+$"};
@@ -71,4 +75,7 @@ private:
     std::string name_;
     std::string version_;
     std::string full_name_;
+    std::optional<std::string> description_;
+    std::optional<std::vector<std::string>> authors_;
+    std::optional<std::string> prefix_;
 };

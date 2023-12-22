@@ -23,5 +23,6 @@ PYBIND11_MODULE(_api, m)
     def_logger(m);
     def_server(m);
     def_plugin(m);
+    def_plugin_description(m);
     def_plugin_loader(m);
 }
