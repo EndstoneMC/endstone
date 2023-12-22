@@ -37,7 +37,7 @@ Homepage = "https://github.com/EndstoneMC/endstone"
 Issues = "https://github.com/EndstoneMC/endstone/issues"
 
 [project.scripts]
-endstone = "endstone._bootstrap:cli"
+endstone = "endstone._internal._bootstrap:cli"
 
 [tool.scikit-build]
 build-dir = "build/{wheel_tag}"
@@ -50,7 +50,7 @@ metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["endstone_python/python/endstone/_version.py"]
 
 [tool.setuptools_scm]
-write_to = "endstone_python/python/endstone/_version.py"
+write_to = "endstone_python/python/endstone/_internal/_version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
