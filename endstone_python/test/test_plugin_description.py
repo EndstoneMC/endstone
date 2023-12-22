@@ -11,9 +11,10 @@ def cls():
 
 def test_construct_default(cls):
     # construct with required arguments
-    desc = cls("test", "1.0.0")
-    assert desc.name == "test"
+    desc = cls("name with space", "1.0.0")
+    assert desc.name == "name_with_space"
     assert desc.version == "1.0.0"
+    assert desc.full_name == "name_with_space v1.0.0"
     assert desc.description is None
     assert desc.authors is None
     assert desc.prefix is None
@@ -24,6 +25,7 @@ def test_construct_args(cls):
     desc = cls("test", "1.0.0", "this is a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
+    assert desc.full_name == "test v1.0.0"
     assert desc.description == "this is a description"
     assert desc.authors is None
     assert desc.prefix is None
@@ -34,6 +36,7 @@ def test_construct_kwargs(cls):
     desc = cls(name="test", version="1.0.0", description="this is a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
+    assert desc.full_name == "test v1.0.0"
     assert desc.description == "this is a description"
     assert desc.authors is None
     assert desc.prefix is None
@@ -44,6 +47,7 @@ def test_construct_mixed(cls):
     desc = cls("test", "1.0.0", prefix="Python", description="this is also a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
+    assert desc.full_name == "test v1.0.0"
     assert desc.description == "this is also a description"
     assert desc.authors is None
     assert desc.prefix == "Python"
@@ -63,7 +67,9 @@ def test_construct_dict(cls):
     )
     assert desc.name == "test"
     assert desc.version == "1.0.0"
+    assert desc.full_name == "test v1.0.0"
     assert desc.description == "this is another description"
     assert "Alice" in desc.authors
     assert "Bob" in desc.authors
+    assert "Charlie" not in desc.authors
     assert desc.prefix is None
