@@ -60,8 +60,8 @@ void def_plugin_loader(py::module &m)
     py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
-        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"))
+        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference)
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
         .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
-        .def_property_readonly("server", &PluginLoader::getServer);
+        .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference);
 }
