@@ -74,16 +74,17 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *EndstonePluginManager::loadPlugin(const fs::path &file)
+Plugin *EndstonePluginManager::loadPlugin(const std::string &file)
 {
-    if (!exists(file)) {
-        server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", file.string());
+    auto path = fs::path(file);
+    if (!exists(path)) {
+        server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", path.string());
     }
 
     for (const auto &[pattern, loader] : file_associations_) {
         std::regex r(pattern);
-        if (std::regex_search(file.string(), r)) {
-            auto plugin = loader->loadPlugin(file.string());
+        if (std::regex_search(path.string(), r)) {
+            auto plugin = loader->loadPlugin(path.string());
 
             if (plugin) {
                 auto *const plugin_ptr = plugin.get();
@@ -91,7 +92,7 @@ Plugin *EndstonePluginManager::loadPlugin(const fs::path &file)
 
                 if (!std::regex_match(name, PluginDescription::ValidName)) {
                     server_.getLogger().error(
-                        "Could not load plugin from '{}': Plugin name contains invalid characters.", file.string());
+                        "Could not load plugin from '{}': Plugin name contains invalid characters.", path.string());
                     return nullptr;
                 }
 
@@ -105,25 +106,24 @@ Plugin *EndstonePluginManager::loadPlugin(const fs::path &file)
     return nullptr;
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(const fs::path &directory)
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &directory)
 {
-    if (!exists(directory)) {
+    auto dir = fs::path(directory);
+    if (!exists(dir)) {
         server_.getLogger().error(
-            "Error occurred when trying to load plugins in '{}': Provided directory does not exist.",
-            directory.string());
+            "Error occurred when trying to load plugins in '{}': Provided directory does not exist.", dir.string());
         return {};
     }
 
-    if (!is_directory(directory)) {
+    if (!is_directory(dir)) {
         server_.getLogger().error(
-            "Error occurred when trying to load plugins in '{}': Provided path is not a directory.",
-            directory.string());
+            "Error occurred when trying to load plugins in '{}': Provided path is not a directory.", dir.string());
         return {};
     }
 
     std::vector<Plugin *> loaded_plugins;
 
-    for (const auto &entry : fs::directory_iterator(directory)) {
+    for (const auto &entry : fs::directory_iterator(dir)) {
         fs::path file;
 
         // If it's a regular file, try to load it as a plugin.
@@ -141,7 +141,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const fs::path &directo
             continue;
         }
 
-        auto *plugin = loadPlugin(file);
+        auto *plugin = loadPlugin(file.string());
         if (plugin) {
             loaded_plugins.push_back(plugin);
         }

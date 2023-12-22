@@ -24,25 +24,26 @@ namespace fs = std::filesystem;
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
-    //    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this, "endstone.plugin",
-    //    "ZipPluginLoader")); plugin_manager_->registerLoader(
+    //    plugin_manager_->registerLoader(
+    //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+    //    plugin_manager_->registerLoader(
     //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 }
 
 void EndstoneServer::loadPlugins()
 {
-    auto plugin_folder = fs::current_path() / "plugins";
+    auto plugin_dir = fs::current_path() / "plugins";
 
-    if (exists(plugin_folder)) {
-        auto plugins = plugin_manager_->loadPlugins(plugin_folder);
+    if (exists(plugin_dir)) {
+        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
         for (const auto &plugin : plugins) {
             plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
             plugin->onLoad();
         }
     }
     else {
-        create_directories(plugin_folder);
+        create_directories(plugin_dir);
     }
 }
 
