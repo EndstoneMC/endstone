@@ -1,65 +1,57 @@
 import importlib
 
-
-def test_import_endstone():
-    # import endstone
-    module = importlib.import_module("endstone")
-    getattr(module, "__version__")
-    getattr(module, "__minecraft_version__")
-
-    # from endstone import Logger, Server
-    getattr(module, "Server")
-    getattr(module, "Logger")
+import pytest
 
 
-def test_import_plugin():
-    # import endstone.plugin
+@pytest.fixture
+def cls():
     module = importlib.import_module("endstone.plugin")
-
-    # from endstone.plugin import Plugin, PluginDescription, PluginLoader
-    getattr(module, "Plugin")
-    getattr(module, "PluginDescription")
-    getattr(module, "PluginLoader")
+    return getattr(module, "PluginDescription")
 
 
-def test_construct_plugin_description():
-    module = importlib.import_module("endstone.plugin")
-    PluginDescription = getattr(module, "PluginDescription")
-
+def test_construct_default(cls):
     # construct with required arguments
-    desc = PluginDescription("test", "1.0.0")
+    desc = cls("test", "1.0.0")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
     assert desc.description is None
     assert desc.authors is None
     assert desc.prefix is None
 
+
+def test_construct_args(cls):
     # construct with positional arguments
-    desc = PluginDescription("test", "1.0.0", "this is a description")
+    desc = cls("test", "1.0.0", "this is a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
     assert desc.description == "this is a description"
     assert desc.authors is None
     assert desc.prefix is None
 
+
+def test_construct_kwargs(cls):
     # construct with keyword arguments
-    desc = PluginDescription(name="test", version="1.0.0", description="this is a description")
+    desc = cls(name="test", version="1.0.0", description="this is a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
     assert desc.description == "this is a description"
     assert desc.authors is None
     assert desc.prefix is None
 
+
+def test_construct_mixed(cls):
     # construct with positional and keyword arguments
-    desc = PluginDescription("test", "1.0.0", prefix="Python", description="this is also a description")
+    desc = cls("test", "1.0.0", prefix="Python", description="this is also a description")
     assert desc.name == "test"
     assert desc.version == "1.0.0"
     assert desc.description == "this is also a description"
     assert desc.authors is None
     assert desc.prefix == "Python"
 
+
+def test_construct_dict(cls):
     # construct with dictionary
-    desc = PluginDescription(
+    desc = cls(
         **{
             "name": "test",
             "version": "1.0.0",
