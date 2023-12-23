@@ -16,9 +16,9 @@ class PluginDescriptionFile(PluginDescription):
         for prop in ["name", "version", "main"]:
             assert prop in data, f"Invalid plugin.toml: property {prop} is not defined"
 
-        name = data["name"]
+        main = data["main"]
         assert (
-            name is not None and len(name) > 0 and len(name.split(":")) == 2
+            main is not None and len(main) > 0 and len(main.split(":")) == 2
         ), "Invalid main: must be {module_name}:{class_name}"
 
         PluginDescription.__init__(self, **data)

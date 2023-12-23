@@ -16,11 +16,7 @@ endif ()
 
 include(FetchContent)
 cmake_policy(SET CMP0135 NEW)
-FetchContent_Declare(
-        pybind11
-        URL https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip # smart_holder branch v2.11.1
-        OVERRIDE_FIND_PACKAGE
-)
+FetchContent_Declare(pybind11 URL https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip OVERRIDE_FIND_PACKAGE)
 FetchContent_MakeAvailable(pybind11)
 
 
