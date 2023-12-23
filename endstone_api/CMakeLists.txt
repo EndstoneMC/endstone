@@ -1,4 +1,3 @@
-cmake_minimum_required(VERSION 3.15)
 project(endstone_api LANGUAGES CXX)
 
 find_package(fmt CONFIG REQUIRED)
