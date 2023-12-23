@@ -20,7 +20,7 @@ class EndstoneRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True, "fmt/*:header_only": True}
+    default_options = {"shared": False, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = "CMakeLists.txt", "cmake/*", "endstone_api/*", "endstone_core/*", "endstone_python/*"
@@ -86,7 +86,7 @@ class EndstoneRecipe(ConanFile):
             )
 
     def requirements(self):
-        self.requires("fmt/10.1.1", transitive_headers=True)
+        self.requires("fmt/10.1.1", transitive_headers=True, transitive_libs=True)
         self.requires("spdlog/1.12.0")
         self.test_requires("gtest/1.14.0")
 
