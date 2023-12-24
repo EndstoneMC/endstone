@@ -30,10 +30,7 @@ public:
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
     {
         try {
-            auto *plugin = [&] {
-                PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, file);
-            }();
-            return std::unique_ptr<Plugin>(plugin);
+            PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, file);
         }
         catch (std::exception &e) {
             getServer().getLogger().error("Failed to load python plugin from {}.", file);
@@ -57,7 +54,7 @@ public:
 
 void def_plugin_loader(py::module &m)
 {
-    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference)

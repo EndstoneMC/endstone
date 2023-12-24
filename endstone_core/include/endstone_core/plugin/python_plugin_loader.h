@@ -30,5 +30,5 @@ public:
     void disablePlugin(Plugin &plugin) const override;
 
 private:
-    std::shared_ptr<PluginLoader> pimpl_;
+    std::unique_ptr<PluginLoader> pimpl_;
 };

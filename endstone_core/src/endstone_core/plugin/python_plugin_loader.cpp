@@ -27,7 +27,7 @@ PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
     auto loader = cls(std::ref(server));
-    pimpl_ = loader.cast<std::shared_ptr<PluginLoader>>();
+    pimpl_ = loader.cast<std::unique_ptr<PluginLoader>>();
 }
 
 std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)

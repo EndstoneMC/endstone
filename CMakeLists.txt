@@ -18,7 +18,7 @@ include(FetchContent)
 cmake_policy(SET CMP0135 NEW)
 FetchContent_Declare(pybind11 URL https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip OVERRIDE_FIND_PACKAGE)
 FetchContent_MakeAvailable(pybind11)
-
+add_compile_definitions(PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 
 add_subdirectory(endstone_api)
 add_subdirectory(endstone_python)
