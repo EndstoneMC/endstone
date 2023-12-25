@@ -63,6 +63,7 @@ test-command = "pytest {project}/endstone_python/test"
 before-build = [
     "pip install conan",
     "conan profile detect --force",
+    "conan export third_party/pybind11",
     "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja",
     ".\\build\\Release\\generators\\conanbuild.bat"
 ]
@@ -71,5 +72,6 @@ before-build = [
 before-build = [
     "pip install conan ninja",
     "conan profile detect --force",
+    "conan export third_party/pybind11",
     "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja"
 ]

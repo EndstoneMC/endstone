@@ -12,6 +12,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     target_link_libraries(endstone_python PRIVATE "stdc++fs")
 endif ()
 set_target_properties(endstone_python PROPERTIES OUTPUT_NAME "_api")
+target_compile_definitions(endstone_python PRIVATE PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 
 
 include(GNUInstallDirs)

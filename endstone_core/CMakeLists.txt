@@ -14,15 +14,16 @@ target_link_libraries(endstone_core PUBLIC endstone::api spdlog::spdlog pybind11
 if (CMAKE_COMPILER_IS_GNUCXX)
     target_link_libraries(endstone_core PRIVATE ${CMAKE_DL_LIBS} "stdc++fs")
 endif ()
+target_compile_definitions(endstone_core PRIVATE PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 if (NOT DEFINED ENDSTONE_VERSION)
     message(FATAL_ERROR "ENDSTONE_VERSION is not defined")
 else ()
-    add_definitions(-DENDSTONE_VERSION="${ENDSTONE_VERSION}")
+    target_compile_definitions(endstone_core PRIVATE ENDSTONE_VERSION="${ENDSTONE_VERSION}")
 endif ()
 if (NOT DEFINED ENDSTONE_MINECRAFT_VERSION)
     message(FATAL_ERROR "ENDSTONE_MINECRAFT_VERSION is not defined")
 else ()
-    add_definitions(-DENDSTONE_MINECRAFT_VERSION="${ENDSTONE_MINECRAFT_VERSION}")
+    target_compile_definitions(endstone_core PRIVATE ENDSTONE_MINECRAFT_VERSION="${ENDSTONE_MINECRAFT_VERSION}")
 endif ()
 
 

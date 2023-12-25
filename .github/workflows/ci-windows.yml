@@ -38,4 +38,5 @@ jobs:
       - name: Build with Conan
         run: |
           conan profile detect --force
+          conan export third_party/pybind11
           conan create . --build=missing -s compiler.cppstd=17 -s build_type=${{ matrix.build_type }}

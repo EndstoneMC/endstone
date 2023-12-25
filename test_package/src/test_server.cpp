@@ -19,10 +19,16 @@
 
 #include <cassert>
 
+#include <pybind11/embed.h>
+namespace py = pybind11;
+
 #include "endstone_core/endstone_server.h"
 
 int main()
 {
+    py::scoped_interpreter interpreter{};
+    py::print("Hello World from Python");
+
     auto &server = EndstoneServer::getInstance();
     auto &logger = server.getLogger();
 

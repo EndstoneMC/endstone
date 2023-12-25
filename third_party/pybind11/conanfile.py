@@ -1,16 +1,19 @@
-from conan import ConanFile
-from conan.tools.cmake import CMake, CMakeToolchain
-from conan.tools.layout import basic_layout
-from conan.tools.files import get, copy, replace_in_file, rm, rmdir
-from conan.tools.scm import Version
 import os
 
+from conan import ConanFile
+from conan.tools.cmake import CMake, CMakeToolchain
+from conan.tools.files import get, copy, replace_in_file, rm, rmdir
+from conan.tools.layout import basic_layout
+from conan.tools.scm import Version
 
 required_conan_version = ">=1.52.0"
 
 
 class PyBind11Conan(ConanFile):
     name = "pybind11"
+    version = "2.11.1"
+    user = "pybind11"
+    channel = "smart_holder"
     description = "Seamless operability between C++11 and Python"
     topics = "pybind11", "python", "binding"
     homepage = "https://github.com/pybind/pybind11"
@@ -23,7 +26,13 @@ class PyBind11Conan(ConanFile):
         basic_layout(self, src_folder="src")
 
     def source(self):
-        get(self, **self.conan_data["sources"][self.version], destination=self.source_folder, strip_root=True)
+        # https://github.com/pybind/pybind11/commit/b6444460eeddc2965ab1a49c6c50c83073779489
+        get(
+            self,
+            "https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip",
+            destination=self.source_folder,
+            strip_root=True,
+        )
 
     def generate(self):
         tc = CMakeToolchain(self)
@@ -47,12 +56,18 @@ class PyBind11Conan(ConanFile):
         rmdir(self, os.path.join(self.package_folder, "share"))
 
         checked_target = "lto" if self.version < Version("2.11.0") else "pybind11"
-        replace_in_file(self, os.path.join(self.package_folder, "lib", "cmake", "pybind11", "pybind11Common.cmake"),
-                              f"if(TARGET pybind11::{checked_target})",
-                              "if(FALSE)")
-        replace_in_file(self, os.path.join(self.package_folder, "lib", "cmake", "pybind11", "pybind11Common.cmake"),
-                              "add_library(",
-                              "# add_library(")
+        replace_in_file(
+            self,
+            os.path.join(self.package_folder, "lib", "cmake", "pybind11", "pybind11Common.cmake"),
+            f"if(TARGET pybind11::{checked_target})",
+            "if(FALSE)",
+        )
+        replace_in_file(
+            self,
+            os.path.join(self.package_folder, "lib", "cmake", "pybind11", "pybind11Common.cmake"),
+            "add_library(",
+            "# add_library(",
+        )
 
     def package_id(self):
         self.info.clear()

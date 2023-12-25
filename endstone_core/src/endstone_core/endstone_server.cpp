@@ -76,3 +76,13 @@ PluginManager &EndstoneServer::getPluginManager() const
 {
     return *plugin_manager_;
 }
+
+std::string_view EndstoneServer::getVersion() const
+{
+    return ENDSTONE_VERSION;
+}
+
+std::string_view EndstoneServer::getMinecraftVersion() const
+{
+    return ENDSTONE_MINECRAFT_VERSION;
+}

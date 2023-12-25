@@ -22,16 +22,6 @@
 #include "endstone/server.h"
 #include "endstone_core/plugin/endstone_plugin_manager.h"
 
-#ifndef ENDSTONE_VERSION
-#define ENDSTONE_VERSION "unknown"
-#endif
-
-#ifndef ENDSTONE_MINECRAFT_VERSION
-#define ENDSTONE_MINECRAFT_VERSION "unknown"
-#endif
-
-#define TO_STRING_VERSION(x) #x
-
 class EndstoneServer : public Server {
 public:
     static EndstoneServer &getInstance()
@@ -53,15 +43,8 @@ public:
     void enablePlugins() const;
     void disablePlugins() const;
 
-    [[nodiscard]] std::string_view getVersion() const override
-    {
-        return ENDSTONE_VERSION;
-    }
-
-    [[nodiscard]] std::string_view getMinecraftVersion() const override
-    {
-        return ENDSTONE_MINECRAFT_VERSION;
-    }
+    [[nodiscard]] std::string_view getVersion() const override;
+    [[nodiscard]] std::string_view getMinecraftVersion() const override;
 
 private:
     EndstoneServer();
