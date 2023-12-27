@@ -15,6 +15,7 @@
 #include "endstone/plugin/plugin_loader.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
@@ -23,14 +24,15 @@
 
 namespace py = pybind11;
 
-class PyPluginLoader : public PluginLoader {
+class PyPluginLoader : public PluginLoader, public py::trampoline_self_life_support {
 public:
     using PluginLoader::PluginLoader;
 
-    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override
+    std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin, file);
+            PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin,
+                                        std::ref(file));
         }
         catch (std::exception &e) {
             getServer().getLogger().error("Failed to load python plugin from {}.", file);
@@ -39,7 +41,7 @@ public:
         }
     }
 
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override
     {
         try {
             PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_file_filters",

@@ -43,15 +43,16 @@ def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:
         return module
 
 
-class PythonSourcePluginLoader(PluginLoader):
-    def get_plugin_file_filters(self):
+class SourcePluginLoader(PluginLoader):
+    # noinspection PyMethodMayBeStatic
+    def get_plugin_file_filters(self) -> list[str]:
         return [r"plugin\.toml$"]
 
     def load_plugin(self, file) -> Plugin:
         assert file is not None, "File cannot be None"
 
         file = Path(file)
-        dir_name = file.resolve().parent
+        dir_name = file.resolve().parent / "src"
 
         with open(file, "rb") as f:
             description = PluginDescriptionFile(f)
@@ -64,4 +65,4 @@ class PythonSourcePluginLoader(PluginLoader):
 
         module = _load_module_from_spec(spec)
 
-        return self._create_plugin(module, class_name, description)
+        return _create_plugin(module, class_name, description)

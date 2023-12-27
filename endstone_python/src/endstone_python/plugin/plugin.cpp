@@ -23,7 +23,7 @@
 
 namespace py = pybind11;
 
-class PyPlugin : public Plugin {
+class PyPlugin : public Plugin, public py::trampoline_self_life_support {
 public:
     using Plugin::Plugin;
 

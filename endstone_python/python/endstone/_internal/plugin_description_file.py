@@ -20,5 +20,6 @@ class PluginDescriptionFile(PluginDescription):
         assert (
             main is not None and len(main) > 0 and len(main.split(":")) == 2
         ), "Invalid main: must be {module_name}:{class_name}"
+        self.main = main
 
         PluginDescription.__init__(self, **data)

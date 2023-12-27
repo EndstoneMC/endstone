@@ -18,6 +18,7 @@
 #endif
 
 #include <cassert>
+#include <cstdio>
 
 #include <pybind11/embed.h>
 namespace py = pybind11;
@@ -28,6 +29,7 @@ int main()
 {
     py::scoped_interpreter interpreter{};
     py::print("Hello World from Python");
+    //    py::gil_scoped_release release{};
 
     auto &server = EndstoneServer::getInstance();
     auto &logger = server.getLogger();
@@ -41,26 +43,36 @@ int main()
     logger.info("Endstone version: v{} (Minecraft: v{})", server.getVersion(), server.getMinecraftVersion());
 
     auto constexpr CppTestPluginName = "CppTestPlugin";
+    auto constexpr PythonTestPluginName = "PythonTestPlugin";
 
     auto &plugin_manager = server.getPluginManager();
     assert(plugin_manager.getPlugins().size() == 0);
     assert(plugin_manager.getPlugin(CppTestPluginName) == nullptr);
 
     server.loadPlugins();
-    assert(plugin_manager.getPlugins().size() == 1);
+    assert(plugin_manager.getPlugins().size() == 2);
 
-    auto *plugin = plugin_manager.getPlugin(CppTestPluginName);
-    assert(plugin != nullptr);
-    assert(plugin_manager.isPluginEnabled(plugin) == false);
+    auto *cpp_plugin = plugin_manager.getPlugin(CppTestPluginName);
+    assert(cpp_plugin != nullptr);
+    assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
+
+    auto *python_plugin = plugin_manager.getPlugin(PythonTestPluginName);
+    assert(python_plugin != nullptr);
+    assert(plugin_manager.isPluginEnabled(python_plugin) == false);
+    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == false);
 
     server.enablePlugins();
-    assert(plugin_manager.isPluginEnabled(plugin) == true);
+    assert(plugin_manager.isPluginEnabled(cpp_plugin) == true);
+    assert(plugin_manager.isPluginEnabled(python_plugin) == true);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == true);
+    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == true);
 
     server.disablePlugins();
-    assert(plugin_manager.isPluginEnabled(plugin) == false);
+    assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
+    assert(plugin_manager.isPluginEnabled(python_plugin) == false);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
+    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == false);
 
     server.getLogger().info("Bye!");
 }

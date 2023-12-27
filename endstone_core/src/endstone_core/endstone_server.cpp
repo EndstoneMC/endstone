@@ -20,15 +20,21 @@ namespace fs = std::filesystem;
 
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
+#include "endstone_core/plugin/python_plugin_loader.h"
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
-    //    plugin_manager_->registerLoader(
-    //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
-    //    plugin_manager_->registerLoader(
-    //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "SourcePluginLoader"));
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    try {
+        //    plugin_manager_->registerLoader(
+        //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+        plugin_manager_->registerLoader(
+            std::make_unique<PythonPluginLoader>(*this, "endstone._internal.plugin_loader", "SourcePluginLoader"));
+    }
+    catch (std::exception &e) {
+        logger_.error("Error occurred when trying to register a plugin loader: {}", e.what());
+    }
 }
 
 void EndstoneServer::loadPlugins()
