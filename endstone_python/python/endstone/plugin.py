@@ -1,5 +1,3 @@
-import warnings
-
 from importlib import import_module
 
 for name in (__all__ := ["Plugin", "PluginLoader", "PluginDescription"]):
@@ -18,13 +16,6 @@ class Plugin(_Plugin):
         self._description: PluginDescription
 
     def _get_description(self) -> PluginDescription:
-        warnings.warn(
-            (
-                "The method '_get_description()' is deprecated and for internal use only. "
-                "Use the 'description' property of the Plugin class instead."
-            ),
-            DeprecationWarning,
-        )
         return self._description
 
     @property
