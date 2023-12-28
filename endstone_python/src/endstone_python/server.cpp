@@ -15,12 +15,19 @@
 #include "endstone/server.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
+#include "endstone/logger.h"
+#include "endstone/plugin/plugin_manager.h"
 #include "endstone_python/endstone_python.h"
 
 namespace py = pybind11;
 
 void def_server(py::module &m)
 {
-    py::class_<Server>(m, "Server");
+    py::class_<Server>(m, "Server")
+        .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference)
+        // .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference)
+        .def_property_readonly("version", &Server::getVersion)
+        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion);
 }
