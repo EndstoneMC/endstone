@@ -27,7 +27,7 @@ void def_server(py::module &m)
 {
     py::class_<Server>(m, "Server")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference)
-        // .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference)
+        .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference)
         .def_property_readonly("version", &Server::getVersion)
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion);
 }

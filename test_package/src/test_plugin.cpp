@@ -18,7 +18,7 @@ class TestPlugin : public Plugin {
 public:
     TestPlugin() = default;
 
-    const PluginDescription &getDescription() const override
+    [[nodiscard]] const PluginDescription &getDescription() const override
     {
         return description_;
     }

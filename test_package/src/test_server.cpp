@@ -18,7 +18,6 @@
 #endif
 
 #include <cassert>
-#include <cstdio>
 
 #include <pybind11/embed.h>
 namespace py = pybind11;
@@ -36,7 +35,7 @@ void testLogger(EndstoneServer &server)
     logger.critical("Hello World!");
 }
 
-void testPythonInterpreter(EndstoneServer &server)
+void testPythonInterpreter(EndstoneServer & /*server*/)
 {
     py::gil_scoped_acquire gil{};
     py::print("Hello World from Python!");
@@ -48,7 +47,7 @@ auto constexpr PythonTestPluginName = "PythonTestPlugin";
 void testPluginLoading(EndstoneServer &server)
 {
     auto &plugin_manager = server.getPluginManager();
-    assert(plugin_manager.getPlugins().size() == 0);
+    assert(plugin_manager.getPlugins().empty());
     assert(plugin_manager.getPlugin(CppTestPluginName) == nullptr);
     assert(plugin_manager.getPlugin(PythonTestPluginName) == nullptr);
 
