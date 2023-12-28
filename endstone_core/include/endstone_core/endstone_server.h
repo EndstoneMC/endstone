@@ -18,6 +18,9 @@
 #include <string>
 #include <string_view>
 
+#include <pybind11/embed.h>
+namespace py = pybind11;
+
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 #include "endstone_core/plugin/endstone_plugin_manager.h"
@@ -51,5 +54,7 @@ private:
     void enablePlugin(Plugin &plugin) const;
 
     Logger &logger_;
+    py::scoped_interpreter interpreter_{};
+    py::gil_scoped_release release_{};
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };
