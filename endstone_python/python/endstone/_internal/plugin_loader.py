@@ -5,7 +5,8 @@ from pathlib import Path
 from types import ModuleType
 
 import endstone.plugin
-from endstone._api import PluginLoader, Plugin
+
+from endstone._internal.endstone_python import PluginLoader, Plugin
 from endstone._internal.plugin_description_file import PluginDescriptionFile
 
 

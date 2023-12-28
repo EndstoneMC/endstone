@@ -47,14 +47,19 @@ class EndstoneTestConan(ConanFile):
 
     def test(self):
         if can_run(self):
-            copy(self, "*", os.path.join(self.source_path, "..", "endstone_python", "python"), self.cpp.build.bindir)
-            copy(
+            copy(  # python package source
                 self,
-                "_api*",
-                os.path.join(self.dependencies["endstone"].package_folder, "lib"),
+                "*",
+                os.path.join(self.source_path, "..", "endstone_python", "python"),
+                self.cpp.build.bindir,
+            )
+            copy(  # python bindings
+                self,
+                "*",
+                os.path.join(self.dependencies["endstone"].package_folder, "endstone"),
                 os.path.join(self.cpp.build.bindir, "endstone"),
             )
-            copy(
+            copy(  # test python plugin
                 self,
                 "*",
                 os.path.join(self.source_folder, "src", "test_plugin_python"),

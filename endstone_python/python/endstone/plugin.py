@@ -1,7 +1,7 @@
 import warnings
 
-from endstone._api import Plugin as _Plugin
-from endstone._api import PluginLoader, PluginDescription
+from endstone._internal.endstone_python import Plugin as _Plugin
+from endstone._internal.endstone_python import PluginLoader, PluginDescription
 
 __all__ = ["Plugin", "PluginLoader", "PluginDescription"]
 

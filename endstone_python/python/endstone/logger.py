@@ -1,3 +1,3 @@
-from endstone._api import Logger
+from endstone._internal.endstone_python import Logger
 
 __all__ = ["Logger"]

@@ -18,7 +18,7 @@
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(_api, m)
+PYBIND11_MODULE(endstone_python, m)
 {
     def_logger(m);
     def_server(m);

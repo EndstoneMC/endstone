@@ -11,7 +11,6 @@ target_link_libraries(endstone_python PRIVATE endstone::api)
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     target_link_libraries(endstone_python PRIVATE "stdc++fs")
 endif ()
-set_target_properties(endstone_python PROPERTIES OUTPUT_NAME "_api")
 target_compile_definitions(endstone_python PRIVATE PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 
 
@@ -21,6 +20,4 @@ install(TARGETS endstone_python
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-if (DEFINED SKBUILD_PROJECT_NAME)
-    install(TARGETS endstone_python DESTINATION ${SKBUILD_PROJECT_NAME} COMPONENT endstone_wheel OPTIONAL)
-endif ()
+install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
