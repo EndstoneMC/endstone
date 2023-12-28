@@ -1,6 +1,3 @@
-__version__: str
-__minecraft_version__: str
-
 class Logger:
     def set_level(self, level: int) -> None:
         """
