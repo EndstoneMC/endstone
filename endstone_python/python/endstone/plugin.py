@@ -1,4 +1,9 @@
-__all__ = ["Plugin", "PluginLoader", "PluginDescription"]
+__all__ = [
+    "Plugin",
+    "PluginDescription",
+    "PluginLoader",
+    "PluginManager",
+]
 
 for name in __all__:
     from importlib import import_module
@@ -8,8 +13,9 @@ for name in __all__:
     del module
 
 _Plugin = globals()["_Plugin"]
-PluginLoader = globals()["_PluginLoader"]
 PluginDescription = globals()["_PluginDescription"]
+PluginLoader = globals()["_PluginLoader"]
+PluginManager = globals()["_PluginManager"]
 
 
 class Plugin(_Plugin):

@@ -23,3 +23,4 @@ void def_server(py::module &m);
 void def_plugin(py::module &m);
 void def_plugin_description(py::module &m);
 void def_plugin_loader(py::module &m);
+void def_plugin_manager(py::module &m);

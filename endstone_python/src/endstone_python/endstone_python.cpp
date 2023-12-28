@@ -25,4 +25,5 @@ PYBIND11_MODULE(endstone_python, m)
     def_plugin(m);
     def_plugin_description(m);
     def_plugin_loader(m);
+    def_plugin_manager(m);
 }
