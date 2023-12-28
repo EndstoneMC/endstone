@@ -1,12 +1,12 @@
 import sys
 from typing import BinaryIO
 
-from endstone.plugin import PluginDescription
-
 if sys.version_info >= (3, 11):
     from tomllib import load
 else:
     from tomli import load
+
+from endstone.plugin import PluginDescription
 
 
 class PluginDescriptionFile(PluginDescription):
