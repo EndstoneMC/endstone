@@ -1,9 +1,15 @@
 import warnings
 
-from endstone._internal.endstone_python import Plugin as _Plugin
-from endstone._internal.endstone_python import PluginLoader, PluginDescription
+from importlib import import_module
 
-__all__ = ["Plugin", "PluginLoader", "PluginDescription"]
+for name in (__all__ := ["Plugin", "PluginLoader", "PluginDescription"]):
+    module = import_module("endstone._internal.endstone_python")
+    globals()[f"_{name}"] = module.__dict__[name]
+    del module
+
+_Plugin = globals()["_Plugin"]
+PluginLoader = globals()["_PluginLoader"]
+PluginDescription = globals()["_PluginDescription"]
 
 
 class Plugin(_Plugin):

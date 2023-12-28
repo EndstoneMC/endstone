@@ -4,15 +4,13 @@ from importlib.machinery import ModuleSpec
 from pathlib import Path
 from types import ModuleType
 
-import endstone.plugin
-
-from endstone._internal.endstone_python import PluginLoader, Plugin
 from endstone._internal.plugin_description_file import PluginDescriptionFile
+from endstone.plugin import PluginDescription, PluginLoader, Plugin
 
 
-def _create_plugin(module, class_name, description):
+def _create_plugin(module: ModuleType, class_name: str, description: PluginDescription) -> Plugin:
     plugin = getattr(module, class_name)()
-    assert isinstance(plugin, endstone.plugin.Plugin), f"Main class {class_name} does not extend endstone.plugin.Plugin"
+    assert isinstance(plugin, Plugin), f"Main class {class_name} does not extend endstone.plugin.Plugin"
     plugin._description = description  # noinspection PyProtectedMember
     return plugin
 
