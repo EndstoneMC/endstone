@@ -78,10 +78,3 @@ class Logger:
     WARNING: int
     ERROR: int
     CRITICAL: int
-
-class Server:
-    """
-    Represents a server implementation.
-    """
-
-    ...

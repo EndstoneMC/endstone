@@ -1,6 +1,7 @@
 from typing import Optional, List
 
-from endstone import Logger, Server
+from endstone.logger import Logger
+from endstone.server import Server
 
 
 class PluginLoader:
