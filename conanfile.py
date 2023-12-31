@@ -34,7 +34,7 @@ class EndstoneRecipe(ConanFile):
 
         import re
 
-        tag, num_commits, commit_hash = re.match(r"^(\S+)-(\d+)-g([a-f0-9]+)$", tag).groups()
+        tag, num_commits, commit_hash = re.match(r"^v?(\S+)-(\d+)-g([a-f0-9]+)$", tag).groups()
         version = Version(tag)
         value = ".".join(str(i) for i in version.main)
         if version.pre:
@@ -107,9 +107,6 @@ class EndstoneRecipe(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
-        tc.variables["ENDSTONE_MINECRAFT_VERSION"] = (lambda v: f"{v[0]}.{v[1]}.{v[2]}.{v[3]:02}")(
-            [int(a.value) for a in Version(self.version).main]
-        )
         tc.generate()
 
     def build(self):

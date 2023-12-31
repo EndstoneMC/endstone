@@ -20,11 +20,6 @@ if (NOT DEFINED ENDSTONE_VERSION)
 else ()
     target_compile_definitions(endstone_core PRIVATE ENDSTONE_VERSION="${ENDSTONE_VERSION}")
 endif ()
-if (NOT DEFINED ENDSTONE_MINECRAFT_VERSION)
-    message(FATAL_ERROR "ENDSTONE_MINECRAFT_VERSION is not defined")
-else ()
-    target_compile_definitions(endstone_core PRIVATE ENDSTONE_MINECRAFT_VERSION="${ENDSTONE_MINECRAFT_VERSION}")
-endif ()
 
 
 include(GNUInstallDirs)
