@@ -12,4 +12,5 @@ CTestTestfile.cmake
 _deps
 .idea/*
 build/*
+bedrock_server/*
 wheelhouse/*
