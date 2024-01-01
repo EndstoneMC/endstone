@@ -90,5 +90,5 @@ std::string_view EndstoneServer::getVersion() const
 
 std::string_view EndstoneServer::getMinecraftVersion() const
 {
-    return "Unknown";  // TODO: retrieve from bedrock
+    return "Unknown";  // TODO: retrieve from bedrock Common::getServerVersionString
 }
