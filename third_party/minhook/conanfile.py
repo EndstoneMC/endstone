@@ -12,7 +12,7 @@ class PackageConan(ConanFile):
     name = "minhook"
     description = "The Minimalistic x86/x64 API Hooking Library for Windows"
     license = "BSD-2-Clause"
-    # url = "https://github.com/conan-io/conan-center-index"
+    # url = "https://github.com/conan-io/conan-center-index" # TODO: uncomment this
     homepage = "https://github.com/TsudaKageyu/minhook"
     topics = ("hook", "windows")
     package_type = "library"
@@ -27,7 +27,7 @@ class PackageConan(ConanFile):
     }
 
     def set_version(self):
-        self.version = self.version or "1.3.3"
+        self.version = self.version or "1.3.3"  # TODO: remove this before submitting to conan-center-index
 
     def export_sources(self):
         export_conandata_patches(self)
@@ -45,9 +45,6 @@ class PackageConan(ConanFile):
 
     def layout(self):
         cmake_layout(self, src_folder="src")
-
-    def requirements(self):
-        pass
 
     def validate(self):
         if self.settings.os != "Windows":

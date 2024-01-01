@@ -10,10 +10,25 @@ typedef int(WINAPI *MESSAGEBOXW)(HWND, LPCWSTR, LPCWSTR, UINT);
 MESSAGEBOXW fpMessageBoxW = NULL;
 
 // Dummy MessageBox function for testing.
-int DummyMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType)
+int WINAPI DummyMessageBoxW(HWND hWnd, LPCWSTR lpText, LPCWSTR lpCaption, UINT uType)
 {
-    std::wcout << lpCaption << ":" << std::endl;
-    std::wcout << lpText << std::endl;
+    const int box_width = 40;
+    std::wstring text(lpText);
+    std::wstring caption(lpCaption);
+
+    // Top border
+    std::wcout << "+" << std::wstring(box_width - 2, '-') << "+\n";
+
+    // Caption
+    std::wcout << "| " << caption << std::wstring(box_width - 3 - caption.size(), ' ') << "|\n";
+    std::wcout << "| " << std::wstring(box_width - 4, '=') << " |\n";
+
+    // Text
+    std::wcout << "| " << text << std::wstring(box_width - 3 - text.size(), ' ') << "|\n";
+
+    // Bottom border
+    std::wcout << "+" << std::wstring(box_width - 2, '-') << "+\n";
+
     return IDOK;  // The OK button was selected.
 }
 
