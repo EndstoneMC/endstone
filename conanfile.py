@@ -89,6 +89,9 @@ class EndstoneRecipe(ConanFile):
         self.requires("fmt/10.1.1", transitive_headers=True, transitive_libs=True)
         self.requires("spdlog/1.12.0")
         self.requires("pybind11/2.11.1@pybind11/smart_holder", transitive_headers=True)
+        if self.settings.os == "Windows":
+            self.requires("minhook/1.3.3")
+
         self.test_requires("gtest/1.14.0")
 
     def config_options(self):
@@ -130,3 +133,9 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog", "pybind11::pybind11"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
+
+        self.cpp_info.components["runtime"].libs = []  # TODO: add libs
+        self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
+        self.cpp_info.components["runtime"].requires = []  # TODO: add requires
+        if self.settings.os == "Windows":
+            self.cpp_info.components["runtime"].requires.extend(["minhook::minhook"])

@@ -39,4 +39,5 @@ jobs:
         run: |
           conan profile detect --force
           conan export third_party/pybind11
+          conan export third_party/minhook
           conan create . --build=missing -s compiler.cppstd=17 -s build_type=${{ matrix.build_type }}

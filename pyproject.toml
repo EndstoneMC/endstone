@@ -64,6 +64,7 @@ before-build = [
     "pip install conan",
     "conan profile detect --force",
     "conan export third_party/pybind11",
+    "conan export third_party/minhook",
     "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja",
     ".\\build\\Release\\generators\\conanbuild.bat"
 ]

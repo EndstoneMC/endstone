@@ -26,6 +26,9 @@ class PackageConan(ConanFile):
         "fPIC": True,
     }
 
+    def set_version(self):
+        self.version = self.version or "1.3.3"
+
     def export_sources(self):
         export_conandata_patches(self)
 
