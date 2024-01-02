@@ -23,7 +23,7 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
 ]
-dependencies = ["click", "requests", "rich", "tomli", "packaging"]
+dependencies = ["asyncio", "aioconsole", "click", "requests", "rich", "tomli", "packaging"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
