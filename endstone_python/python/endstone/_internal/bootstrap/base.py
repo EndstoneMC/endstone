@@ -40,7 +40,7 @@ class Bootstrap:
             remote (str): The URL of the remote server for downloading server binaries.
 
         """
-        self._install_path = Path(install_path)
+        self._install_path = Path(install_path).absolute()
         self._version = version
         self._remote = remote
         self._logger = logging.getLogger(self.name)
@@ -190,6 +190,7 @@ class Bootstrap:
             int: The exit code from the server process.
         """
         self.plugin_path.mkdir(parents=True, exist_ok=True)
+        os.chdir(self.server_path)
         return asyncio.run(self._run_server())
 
     async def _run_server(self) -> int:

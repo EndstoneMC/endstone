@@ -93,7 +93,7 @@ def cli(install_folder: str, install: bool, remote: str) -> int:
         else:
             download = True
 
-        if download:
+        if not download:
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(bootstrap.executable_path))
 
         bootstrap.install()
