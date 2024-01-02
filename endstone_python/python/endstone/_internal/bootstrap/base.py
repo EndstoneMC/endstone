@@ -3,6 +3,7 @@ import hashlib
 import logging
 import os
 import platform
+import sys
 import zipfile
 from pathlib import Path
 from tempfile import TemporaryFile
@@ -209,8 +210,8 @@ class Bootstrap:
         )
         await self._create_process()
         await self._post_create_process()
-        await self._start_server_loop()
-        return await self._server_terminated()
+        # await self._pipe_read_write()
+        return await self._wait_for_server()
 
     async def _create_process(self, *args, **kwargs):
         """
@@ -218,8 +219,8 @@ class Bootstrap:
         """
         self._process = await asyncio.create_subprocess_exec(
             str(self.executable_path.absolute()),
-            stdin=asyncio.subprocess.PIPE,
-            stdout=asyncio.subprocess.PIPE,
+            stdin=sys.stdin,  # TODO: use asyncio.subprocess.PIPE with pty
+            stdout=sys.stdout,  # TODO: use asyncio.subprocess.PIPE with pty
             stderr=asyncio.subprocess.STDOUT,
             *args,
             **kwargs,
@@ -241,11 +242,9 @@ class Bootstrap:
         """
         pass
 
-    async def _start_server_loop(self) -> None:
+    async def _pipe_read_write(self) -> None:
         """
-        Manages the server loop, handling input and output.
-
-        This method reads output from the server and sends input to it, managing asynchronous tasks for each.
+        Reads output from the server and sends input to it.
         """
 
         async def read_output(process: asyncio.subprocess.Process) -> None:
@@ -271,7 +270,7 @@ class Bootstrap:
         send_task = asyncio.create_task(send_input(self._process))
         await asyncio.gather(read_task, send_task, return_exceptions=True)
 
-    async def _server_terminated(self) -> int:
+    async def _wait_for_server(self) -> int:
         """
         Handles the server process termination.
 
