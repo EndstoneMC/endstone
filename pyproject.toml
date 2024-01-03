@@ -71,6 +71,11 @@ before-build = [
 
 [tool.cibuildwheel.linux]
 before-build = [
+    # Restore libpython*.a - essential for embedding python interpreter.
+    # see https://github.com/pypa/manylinux/blob/main/docker/build_scripts/finalize-python.sh
+    "pushd /opt/_internal",
+    "tar -xJf static-libs-for-embedding-only.tar.xz",
+    "popd",
     "pip install conan ninja",
     "conan profile detect --force",
     "conan export third_party/pybind11",
