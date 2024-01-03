@@ -81,7 +81,6 @@ def cli(install_folder: str, install: bool, remote: str) -> int:
         raise NotImplementedError(f"{system} is not supported.")
 
     bootstrap = cls(install_path=install_folder, version=server_version, remote=remote)
-    bootstrap.validate()
 
     if not bootstrap.executable_path.exists():
         if not install:

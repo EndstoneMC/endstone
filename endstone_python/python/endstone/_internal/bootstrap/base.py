@@ -3,14 +3,13 @@ import hashlib
 import logging
 import os
 import platform
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
 from tempfile import TemporaryFile
 from typing import Union
 
-import aioconsole
-import asyncio
 import requests
 from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TimeRemainingColumn
 
@@ -45,7 +44,7 @@ class Bootstrap:
         self._version = version
         self._remote = remote
         self._logger = logging.getLogger(self.name)
-        self._process: asyncio.subprocess.Process
+        self._process: subprocess.Popen
 
     @property
     def name(self) -> str:
@@ -122,26 +121,35 @@ class Bootstrap:
         return self.server_path / "plugins"
 
     def validate(self) -> None:
-        assert platform.system() == self.target_system, f"{platform.system()} is not supported by this boostrap."
+        assert platform.system() == self.target_system, NotImplementedError(
+            f"{platform.system()} is not supported by this boostrap."
+        )
+        assert self.executable_path.exists(), FileNotFoundError(
+            errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path)
+        )
 
-    def download(self, dst: Union[str, os.PathLike], url: str, sha256: str) -> None:
+    def _download(self, dst: Union[str, os.PathLike], url: str, sha256: str) -> None:
         """
         Downloads and extracts the server binaries from a given URL.
 
+        This method downloads a file from the specified URL, computes its SHA256 checksum, and compares it
+        against the provided checksum to ensure the file's integrity. If the checksum matches, the file is
+        extracted to the specified destination.
+
         Args:
-            dst (Union[str, os.PathLike]): The destination path where the server will be extracted.
-            url (str): The URL from which the server binaries will be downloaded.
-            sha256 (str): The SHA256 checksum of the file to verify its integrity.
+            dst (Union[str, os.PathLike]): The destination path for the extracted server.
+            url (str): The URL from which to download the server binaries.
+            sha256 (str): The expected SHA256 checksum of the downloaded file.
 
         Raises:
-            AssertionError: If the SHA256 checksum does not match.
+            ValueError: If the SHA256 checksum of the downloaded file does not match the expected checksum.
         """
 
         with TemporaryFile() as f:
             response = requests.get(url, stream=True)
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
-            self._logger.info(f"Downloading {url}...")
+            self._logger.info(f"Downloading server from {url}...")
             m = hashlib.sha256()
 
             with Progress(
@@ -156,14 +164,20 @@ class Bootstrap:
                     f.write(data)
                     m.update(data)
 
-            self._logger.info(f"Verifying...")
-            assert m.hexdigest() == sha256, "SHA256 mismatch: the downloaded file may be corrupted or tampered with."
+            self._logger.info(f"Download complete. Verifying integrity...")
+            if m.hexdigest() != sha256:
+                raise ValueError("SHA256 mismatch: the downloaded file may be corrupted or tampered with.")
 
-            self._logger.info(f"Unzipping to {dst}...")
+            self._logger.info(f"Integrity check passed. Extracting to {dst}...")
             dst = Path(dst)
             dst.mkdir(parents=True, exist_ok=True)
             with zipfile.ZipFile(f) as zip_ref:
                 zip_ref.extractall(str(dst))
+
+        self._download_finished()
+
+    def _download_finished(self) -> None:
+        self.validate()
 
     def install(self) -> None:
         """
@@ -181,104 +195,57 @@ class Bootstrap:
         server_data = response.json()
 
         assert self._version in server_data["binary"], f"Version v{self._version} is not found in the remote server."
-        self.download(self.server_path, **server_data["binary"][self._version][self.target_system.lower()])
+        self._download(self.server_path, **server_data["binary"][self._version][self.target_system.lower()])
 
     def run(self) -> int:
         """
-        Runs the server application.
+        Runs the server application and returns its exit code.
 
         Returns:
-            int: The exit code from the server process.
+            int: The exit code of the server process. A zero value typically indicates successful termination.
         """
+        self.validate()
         self.plugin_path.mkdir(parents=True, exist_ok=True)
-        os.chdir(self.server_path)
-        return asyncio.run(self._run_server())
+        self._create_process()
+        return self._wait_for_server()
 
-    async def _run_server(self) -> int:
+    def _create_process(self, *args, **kwargs):
         """
-        Core routine to manage the server process.
+        Creates a subprocess for running the server.
 
-        This method includes pre-creation, creation, post-creation processes, and starts the server loop.
+        This method initializes a subprocess.Popen object for the server executable. It sets up the necessary
+        buffers and encodings for the process and specifies the working directory.
 
-        Returns:
-            int: The exit code from the server process.
+        Args:
+            *args: Variable length argument list.
+            **kwargs: Arbitrary keyword arguments.
+
         """
-
-        await self._pre_create_process()
-        assert self.executable_path.exists(), FileNotFoundError(
-            errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path)
-        )
-        await self._create_process()
-        await self._post_create_process()
-        # await self._pipe_read_write()
-        return await self._wait_for_server()
-
-    async def _create_process(self, *args, **kwargs):
-        """
-        Creates an asynchronous subprocess for the server.
-        """
-        self._process = await asyncio.create_subprocess_exec(
-            str(self.executable_path.absolute()),
-            stdin=sys.stdin,  # TODO: use asyncio.subprocess.PIPE with pty
-            stdout=sys.stdout,  # TODO: use asyncio.subprocess.PIPE with pty
-            stderr=asyncio.subprocess.STDOUT,
+        self._process = subprocess.Popen(
+            [str(self.executable_path.absolute())],
+            stdin=sys.stdin,
+            stdout=sys.stdout,
+            stderr=subprocess.STDOUT,
+            text=True,
+            encoding="utf-8",
+            cwd=str(self.server_path.absolute()),
             *args,
             **kwargs,
         )
 
-    async def _pre_create_process(self) -> None:
+    def _wait_for_server(self) -> int:
         """
-        Lifecycle method to be run before creating the server process.
+        Waits for the server process to terminate and returns its exit code.
 
-        This method can be overridden in subclasses to perform tasks before the creation of server process.
-        """
-        pass
-
-    async def _post_create_process(self) -> None:
-        """
-        Lifecycle method to be run after creating the server process.
-
-        This method can be overridden in subclasses to perform tasks after the creation of server process.
-        """
-        pass
-
-    async def _pipe_read_write(self) -> None:
-        """
-        Reads output from the server and sends input to it.
-        """
-
-        async def read_output(process: asyncio.subprocess.Process) -> None:
-            while True:
-                line = await process.stdout.readline()
-                if not line:
-                    send_task.cancel()
-                    break
-
-                print(line.decode().rstrip("\n"))
-
-        async def send_input(process: asyncio.subprocess.Process) -> None:
-            while True:
-                line = await aioconsole.ainput()
-                if not line:
-                    break
-
-                line += "\n"
-                process.stdin.write(line.encode())
-                await process.stdin.drain()
-
-        read_task = asyncio.create_task(read_output(self._process))
-        send_task = asyncio.create_task(send_input(self._process))
-        await asyncio.gather(read_task, send_task, return_exceptions=True)
-
-    async def _wait_for_server(self) -> int:
-        """
-        Handles the server process termination.
+        This method blocks until the server process created by _create_process terminates. It returns the
+        exit code of the process, which can be used to determine if the server shut down successfully or if
+        there were errors.
 
         Returns:
-            int: The exit code of the server process. Returns -1 if the process is not created.
+            int: The exit code of the server process. Returns -1 if the process is not created or still running.
         """
 
         if self._process is None:
             return -1
 
-        return await self._process.wait()
+        return self._process.wait()
