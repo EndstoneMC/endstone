@@ -136,7 +136,6 @@ class WindowsBootstrap(Bootstrap):
         success = kernel32.Thread32First(snapshot, ctypes.byref(thread_entry))
         assert success, f"Thread32First failed with error {get_last_error()}."
 
-        # Resume main thread execution
         handle_thread = None
         while success:
             if thread_entry.th32OwnerProcessID == self._process.pid:
@@ -146,5 +145,7 @@ class WindowsBootstrap(Bootstrap):
             success = kernel32.Thread32Next(snapshot, ctypes.byref(thread_entry))
 
         assert handle_thread is not None, f"OpenThread failed with error {get_last_error()}."
+
+        # Resume main thread execution
         kernel32.ResumeThread(handle_thread)
         kernel32.CloseHandle(handle_thread)

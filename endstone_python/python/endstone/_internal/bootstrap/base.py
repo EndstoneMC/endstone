@@ -121,8 +121,15 @@ class Bootstrap:
         return self.server_path / "plugins"
 
     def validate(self) -> None:
+        """
+        Validate if the current platform is supported by this bootstrap, and if the necessary paths exist.
+
+        Raises:
+            NotImplementedError: If the current platform system is not supported by this bootstrap.
+            FileNotFoundError: If either the executable_path or _endstone_runtime_path do not exist.
+        """
         assert platform.system() == self.target_system, NotImplementedError(
-            f"{platform.system()} is not supported by this boostrap."
+            f"{platform.system()} is not supported by this bootstrap."
         )
         assert self.executable_path.exists(), FileNotFoundError(
             errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path)
