@@ -127,6 +127,9 @@ class Bootstrap:
         assert self.executable_path.exists(), FileNotFoundError(
             errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path)
         )
+        assert self._endstone_runtime_path.exists(), FileNotFoundError(
+            errno.ENOENT, os.strerror(errno.ENOENT), str(self._endstone_runtime_path)
+        )
 
     def _download(self, dst: Union[str, os.PathLike], url: str, sha256: str) -> None:
         """
@@ -209,7 +212,16 @@ class Bootstrap:
         self._create_process()
         return self._wait_for_server()
 
-    def _create_process(self, *args, **kwargs):
+    @property
+    def _endstone_runtime_filename(self) -> str:
+        raise NotImplementedError
+
+    @property
+    def _endstone_runtime_path(self) -> Path:
+        p = Path(__file__).parent / ".." / self._endstone_runtime_filename
+        return p.resolve().absolute()
+
+    def _create_process(self, *args, **kwargs) -> None:
         """
         Creates a subprocess for running the server.
 
