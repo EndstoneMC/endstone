@@ -23,7 +23,14 @@ class EndstoneRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "cmake/*", "endstone_api/*", "endstone_core/*", "endstone_python/*"
+    exports_sources = (
+        "CMakeLists.txt",
+        "cmake/*",
+        "endstone_api/*",
+        "endstone_core/*",
+        "endstone_python/*",
+        "endstone_runtime/*",
+    )
 
     def set_version(self):
         if self.version:
@@ -86,8 +93,8 @@ class EndstoneRecipe(ConanFile):
             )
 
     def requirements(self):
-        self.requires("fmt/10.1.1", transitive_headers=True, transitive_libs=True)
         self.requires("spdlog/1.12.0")
+        self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("pybind11/2.11.1@pybind11/smart_holder", transitive_headers=True)
         if self.settings.os == "Windows":
             self.requires("minhook/1.3.3")
@@ -134,8 +141,9 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
-        self.cpp_info.components["runtime"].libs = []  # TODO: add libs
+        self.cpp_info.components["runtime"].libs = []
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = []  # TODO: add requires
+        self.cpp_info.components["runtime"].requires = ["api", "core"]
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].requires.extend(["minhook::minhook"])
+            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp.lib"])
