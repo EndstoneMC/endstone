@@ -16,10 +16,10 @@
 
 #include <Windows.h>
 
-#include <cstdio>
-#include <system_error>
-
 #include <spdlog/spdlog.h>
+
+#include "endstone_runtime/internals.h"
+#include "endstone_runtime/windows/hook.h"
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,  // handle to DLL module
                                      _In_ DWORD reason,      // reason for calling function
@@ -32,17 +32,13 @@
             SetConsoleCP(65001);
             SetConsoleOutputCP(65001);
             spdlog::info("Hello World!!");
-            // TODO: hook methods
+            bedrock::internals::install_hooks(module);
             break;
         }
         catch (const std::exception &e) {
-            spdlog::error("Endstone runtime loads failed.");
-            if (const auto *se = dynamic_cast<const std::system_error *>(&e)) {
-                spdlog::error("{}, error code: {}", se->what(), se->code().value());
-            }
-            else {
-                spdlog::error("{}", e.what());
-            }
+            spdlog::error("An exception occurred while attaching Endstone runtime to the process.");
+            spdlog::error("{}", e.what());
+
             return FALSE;  // Return FALSE to fail DLL load.
         }
     }
@@ -50,19 +46,16 @@
         if (reserved != nullptr) {
             break;  // do not do cleanup if process termination scenario
         }
+        bedrock::internals::uninstall_hooks();
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     default:
         break;
     }
-
     return TRUE;
 }
 
 #elif __GNUC__
-
-#include <cstdio>
-#include <system_error>
 
 #include <spdlog/spdlog.h>
 
@@ -72,4 +65,4 @@ __attribute__((constructor)) int main()
     return 0;
 }
 
-#endif  // _WIN32
+#endif

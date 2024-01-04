@@ -240,6 +240,8 @@ class Bootstrap:
             **kwargs: Arbitrary keyword arguments.
 
         """
+        env = kwargs.pop("env", os.environ.copy())
+        env["PATH"] = os.pathsep.join(sys.path)
         self._process = subprocess.Popen(
             [str(self.executable_path.absolute())],
             stdin=sys.stdin,
@@ -248,6 +250,7 @@ class Bootstrap:
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),
+            env=env,
             *args,
             **kwargs,
         )

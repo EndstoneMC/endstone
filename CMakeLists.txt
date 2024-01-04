@@ -13,7 +13,7 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     endif ()
 endif ()
 
-
+add_subdirectory(bedrock_internals)
 add_subdirectory(endstone_api)
 add_subdirectory(endstone_python)
 add_subdirectory(endstone_core)

@@ -56,7 +56,7 @@ CheckOptions:
   readability-identifier-naming.MemberCase: lower_case
   readability-identifier-naming.MemberSuffix: '_'
   readability-identifier-naming.MethodCase: camelCase
-  readability-identifier-naming.NamespaceCase: CamelCase
+  readability-identifier-naming.NamespaceCase: lower_case
   readability-identifier-naming.ParameterCase: lower_case
   readability-identifier-naming.ParameterPackCase: lower_case
   readability-identifier-naming.PointerParameterCase: lower_case

@@ -13,3 +13,14 @@
 // limitations under the License.
 
 #pragma once
+
+#ifdef _WIN32
+
+#include "Windows.h"
+
+namespace bedrock::internals {
+void install_hooks(HINSTANCE module);
+void uninstall_hooks();
+}  // namespace bedrock::internals
+
+#endif

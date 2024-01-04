@@ -26,6 +26,7 @@ class EndstoneRecipe(ConanFile):
     exports_sources = (
         "CMakeLists.txt",
         "cmake/*",
+        "bedrock_internals/*",
         "endstone_api/*",
         "endstone_core/*",
         "endstone_python/*",
@@ -135,15 +136,19 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["api"].set_property("cmake_target_name", "endstone::api")
         self.cpp_info.components["api"].requires = ["fmt::fmt"]
 
+        self.cpp_info.components["bedrock_internals"].libs = []
+        self.cpp_info.components["bedrock_internals"].libdirs = []
+        self.cpp_info.components["bedrock_internals"].set_property("cmake_target_name", "bedrock::internals")
+
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog", "pybind11::pybind11"]
+        self.cpp_info.components["core"].requires = ["api", "bedrock_internals", "spdlog::spdlog", "pybind11::pybind11"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
         self.cpp_info.components["runtime"].libs = []
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["api", "core"]
+        self.cpp_info.components["runtime"].requires = ["api", "bedrock_internals", "core"]
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].requires.extend(["minhook::minhook"])
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp.lib"])
