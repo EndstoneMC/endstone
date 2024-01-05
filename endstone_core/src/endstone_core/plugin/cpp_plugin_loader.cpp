@@ -28,7 +28,7 @@
 
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
-    auto &logger = EndstoneServer::getInstance().getLogger();
+    auto &logger = getServer().getLogger();
 
     auto *module = LoadLibraryA(file.c_str());
     if (!module) {
@@ -64,7 +64,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
-    auto &logger = EndstoneServer::getInstance().getLogger();
+    auto &logger = getServer().getLogger();
 
     auto *module = dlopen(file.c_str(), RTLD_NOW);
     if (!module) {
