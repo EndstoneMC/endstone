@@ -47,7 +47,7 @@ public:
     void disablePlugins() const;
 
     [[nodiscard]] std::string_view getVersion() const override;
-    [[nodiscard]] std::string_view getMinecraftVersion() const override;
+    [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
     EndstoneServer();

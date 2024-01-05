@@ -59,5 +59,5 @@ public:
      *
      * @return version of Minecraft
      */
-    [[nodiscard]] virtual std::string_view getMinecraftVersion() const = 0;
+    [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 };

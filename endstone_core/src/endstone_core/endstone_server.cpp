@@ -18,19 +18,16 @@
 #include <memory>
 namespace fs = std::filesystem;
 
+#include "bedrock/common.h"
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
 #include "endstone_core/plugin/python_plugin_loader.h"
 
-EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
+EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
     try {
-        {
-            py::gil_scoped_acquire gil{};
-            py::print("Hello World from Python!!!");
-        }
         //    plugin_manager_->registerLoader(
         //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
         plugin_manager_->registerLoader(
@@ -92,7 +89,7 @@ std::string_view EndstoneServer::getVersion() const
     return ENDSTONE_VERSION;
 }
 
-std::string_view EndstoneServer::getMinecraftVersion() const
+std::string EndstoneServer::getMinecraftVersion() const
 {
-    return "Unknown";  // TODO: retrieve from bedrock Common::getServerVersionString
+    return Common::getGameVersionString();
 }

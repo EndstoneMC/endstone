@@ -21,6 +21,8 @@
 #include <system_error>
 #include <unordered_map>
 
+#include <spdlog/spdlog.h>
+
 #include "endstone_runtime/internals.h"
 #include "endstone_runtime/windows/symbol_manager.h"
 
@@ -107,13 +109,13 @@ void install_hooks(HINSTANCE module)
 
         if (detour && target) {
             void *original = nullptr;
-            printf("%s: 0x%p -> 0x%p\n", name.c_str(), target, detour);
+            spdlog::debug("{}: 0x{:p} -> 0x{:p}", name, target, detour);
             status = MH_CreateHook(target, detour, &original);
             if (status != MH_OK) {
                 throw std::system_error(status, minhook_category());
             }
 
-            printf("%s: = 0x%p\n", name.c_str(), original);
+            spdlog::debug("{}: = 0x{:p}", original);
             bedrock::internals::gSymbols[name] = original;
         }
 

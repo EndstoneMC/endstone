@@ -33,7 +33,7 @@
             SetConsoleCP(65001);
             SetConsoleOutputCP(65001);
             auto &server = EndstoneServer::getInstance();
-            server.getLogger().info("Endstone is loading. Version: {}", server.getVersion());
+            server.getLogger().info("Initialising...");
             bedrock::internals::install_hooks(module);
             break;
         }
