@@ -28,8 +28,7 @@ void testLogger(EndstoneServer &server)
 {
     auto &logger = server.getLogger();
     logger.debug("Hello World!");
-    logger.info("Hello World! Endstone version: v{} (Minecraft: v{})", server.getVersion(),
-                server.getMinecraftVersion());
+    logger.info("Hello World! Endstone version: {} (Minecraft: {})", server.getVersion(), server.getMinecraftVersion());
     logger.warning("Hello World!");
     logger.error("Hello World!");
     logger.critical("Hello World!");
