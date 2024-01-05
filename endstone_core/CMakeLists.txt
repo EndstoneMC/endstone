@@ -15,7 +15,6 @@ target_link_libraries(endstone_core PUBLIC endstone::api spdlog::spdlog pybind11
 if (CMAKE_COMPILER_IS_GNUCXX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS} "stdc++fs")
 endif ()
-target_compile_definitions(endstone_core PUBLIC PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 if (NOT DEFINED ENDSTONE_VERSION)
     message(FATAL_ERROR "ENDSTONE_VERSION is not defined")
 else ()

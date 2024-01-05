@@ -26,10 +26,10 @@ class PyBind11Conan(ConanFile):
         basic_layout(self, src_folder="src")
 
     def source(self):
-        # https://github.com/pybind/pybind11/commit/b6444460eeddc2965ab1a49c6c50c83073779489
+        # https://github.com/pybind/pybind11/commit/d2ac3f5c70c76c367a8af6592fc4ac2eb325b253
         get(
             self,
-            "https://github.com/pybind/pybind11/archive/b6444460eeddc2965ab1a49c6c50c83073779489.zip",
+            "https://github.com/pybind/pybind11/archive/d2ac3f5c70c76c367a8af6592fc4ac2eb325b253.zip",
             destination=self.source_folder,
             strip_root=True,
         )
