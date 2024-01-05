@@ -18,6 +18,7 @@
 
 #include <spdlog/spdlog.h>
 
+#include "endstone_core/endstone_server.h"
 #include "endstone_runtime/internals.h"
 #include "endstone_runtime/windows/hook.h"
 
@@ -31,7 +32,8 @@
         try {
             SetConsoleCP(65001);
             SetConsoleOutputCP(65001);
-            spdlog::info("Hello World!!");
+            auto &server = EndstoneServer::getInstance();
+            server.getLogger().info("Endstone is loading. Version: {}", server.getVersion());
             bedrock::internals::install_hooks(module);
             break;
         }
@@ -47,6 +49,7 @@
             break;  // do not do cleanup if process termination scenario
         }
         bedrock::internals::uninstall_hooks();
+        break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     default:
@@ -59,9 +62,13 @@
 
 #include <spdlog/spdlog.h>
 
+#include "endstone_core/endstone_server.h"
+
 __attribute__((constructor)) int main()
 {
     spdlog::info("Hello World!!");
+    auto &server = EndstoneServer::getInstance();
+    server.getLogger().info("Endstone is loading. Version: {}", server.getVersion());
     return 0;
 }
 

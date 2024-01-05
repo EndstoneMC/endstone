@@ -27,6 +27,10 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
     try {
+        {
+            py::gil_scoped_acquire gil{};
+            py::print("Hello World from Python!!!");
+        }
         //    plugin_manager_->registerLoader(
         //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
         plugin_manager_->registerLoader(
