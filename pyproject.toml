@@ -58,6 +58,7 @@ local_scheme = "no-local-version"
 build = ["cp*-win_amd64", "cp*-manylinux_x86_64"]
 test-requires = "pytest"
 test-command = "pytest {project}/endstone_python/test"
+manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux2014_x86_64:latest"
 
 [tool.cibuildwheel.windows]
 before-build = [
