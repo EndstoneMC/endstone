@@ -16,7 +16,7 @@
 
 #include <string>
 
-#include <bedrock/bedrock.h>
+#include "bedrock/bedrock.h"
 
 namespace Common {
 BEDROCK_API std::string getGameVersionString();
