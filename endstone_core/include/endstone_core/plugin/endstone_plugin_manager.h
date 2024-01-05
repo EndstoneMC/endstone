@@ -14,12 +14,10 @@
 
 #pragma once
 
-#include <filesystem>
 #include <memory>
 #include <string>
 #include <unordered_map>
 #include <vector>
-namespace fs = std::filesystem;
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"

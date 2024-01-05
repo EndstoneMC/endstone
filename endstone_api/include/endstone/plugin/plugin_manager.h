@@ -23,6 +23,9 @@
 
 class PluginManager {
 public:
+    PluginManager() = default;
+    PluginManager(PluginManager const &) = delete;
+    PluginManager &operator=(PluginManager const &) = delete;
     virtual ~PluginManager() = default;
     virtual void registerLoader(std::unique_ptr<PluginLoader> loader) = 0;
     [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
