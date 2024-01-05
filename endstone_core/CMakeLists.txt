@@ -2,6 +2,7 @@ project(endstone_core LANGUAGES CXX)
 
 
 find_package(spdlog CONFIG REQUIRED)
+find_package(Python COMPONENTS Interpreter Development.Embed REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 

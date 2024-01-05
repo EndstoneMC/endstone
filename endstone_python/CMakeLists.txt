@@ -1,6 +1,7 @@
 project(endstone_python LANGUAGES CXX)
 
 
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
 
