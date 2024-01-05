@@ -242,6 +242,7 @@ class Bootstrap:
         """
         env = kwargs.pop("env", os.environ.copy())
         env["PATH"] = os.pathsep.join(sys.path)
+        env["PYTHONPATH"] = os.pathsep.join(sys.path)
         self._process = subprocess.Popen(
             [str(self.executable_path.absolute())],
             stdin=sys.stdin,
