@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-20.04 ]
-        gcc: [ '8', '9', '10', '11' ]
+        gcc: [ '9', '10', '11' ]
         build_type: [ Debug, Release ]
 
     name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with GCC ${{ matrix.gcc }}
