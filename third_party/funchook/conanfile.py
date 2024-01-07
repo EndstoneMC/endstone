@@ -48,7 +48,7 @@ class PackageConan(ConanFile):
 
     def validate(self):
         if self.settings.os not in ["Windows", "Linux"]:
-            raise ConanInvalidConfiguration(f"{self.ref} can not be built as shared on {self.settings.os}.")
+            raise ConanInvalidConfiguration(f"{self.ref} can not be built on {self.settings.os}.")
 
     def source(self):
         get(self, **self.conan_data["sources"][self.version], strip_root=True)
