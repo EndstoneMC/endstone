@@ -1,7 +1,7 @@
 #include "bedrock/dedicated_server.h"
 
 #include "endstone_core/endstone_server.h"
-#include "endstone_runtime/internals.h"
+#include "endstone_runtime/hook.h"
 
 DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FilePathManager &file_path_manager,
                                                                      PropertiesSettings &properties_settings,
@@ -11,6 +11,6 @@ DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FileP
 {
     auto &server = EndstoneServer::getInstance();
     server.getLogger().info("Version: {} (Minecraft: {})", server.getVersion(), server.getMinecraftVersion());
-    return BEDROCK_CALL(&DedicatedServer::runDedicatedServerLoop, this, file_path_manager, properties_settings,
-                        level_settings, allow_list_file, permissions_file);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&DedicatedServer::runDedicatedServerLoop, this, file_path_manager,
+                                       properties_settings, level_settings, allow_list_file, permissions_file);
 }

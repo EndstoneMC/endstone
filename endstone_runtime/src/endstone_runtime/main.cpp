@@ -12,64 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifdef _WIN32
-
-#include <Windows.h>
+#include <exception>
 
 #include <spdlog/spdlog.h>
 
 #include "endstone_core/endstone_server.h"
-#include "endstone_runtime/internals.h"
-#include "endstone_runtime/windows/hook.h"
+#include "endstone_runtime/hook.h"
 
-[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE module,  // handle to DLL module
-                                     _In_ DWORD reason,      // reason for calling function
-                                     _In_ LPVOID reserved)   // reserved
+#ifdef __GNUC__
+#define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
+#else
+#define ENDSTONE_RUNTIME_CTOR
+#endif
+
+ENDSTONE_RUNTIME_CTOR int main()
 {
-    // Perform actions based on the reason for calling.
+    try {
+        auto &server = EndstoneServer::getInstance();
+        server.getLogger().info("Initialising...");
+        endstone::hook::install();
+        return 0;
+    }
+    catch (const std::exception &e) {
+        spdlog::error("An exception occurred while attaching Endstone runtime to the process.");
+        spdlog::error("{}", e.what());
+
+        return -1;
+    }
+}
+
+#ifdef _WIN32
+#include <Windows.h>
+
+[[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
+                                     _In_ DWORD reason,          // reason for calling function
+                                     _In_ LPVOID /*reserved*/)   // reserved
+{
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
-        try {
-            SetConsoleCP(65001);
-            SetConsoleOutputCP(65001);
-            auto &server = EndstoneServer::getInstance();
-            server.getLogger().info("Initialising...");
-            bedrock::internals::install_hooks(module);
-            break;
-        }
-        catch (const std::exception &e) {
-            spdlog::error("An exception occurred while attaching Endstone runtime to the process.");
-            spdlog::error("{}", e.what());
-
-            return FALSE;  // Return FALSE to fail DLL load.
-        }
+        return main() == 0 ? TRUE : FALSE;
     }
-    case DLL_PROCESS_DETACH:
-        if (reserved != nullptr) {
-            break;  // do not do cleanup if process termination scenario
-        }
-        bedrock::internals::uninstall_hooks();
-        break;
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
     default:
         break;
     }
     return TRUE;
 }
-
-#elif __GNUC__
-
-#include <spdlog/spdlog.h>
-
-#include "endstone_core/endstone_server.h"
-
-__attribute__((constructor)) int main()
-{
-    spdlog::info("Hello World!!");
-    auto &server = EndstoneServer::getInstance();
-    server.getLogger().info("Endstone is loading. Version: {}", server.getVersion());
-    return 0;
-}
-
 #endif

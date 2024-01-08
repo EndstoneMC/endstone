@@ -14,9 +14,9 @@
 
 #include "bedrock/common.h"
 
-#include "endstone_runtime/internals.h"
+#include "endstone_runtime/hook.h"
 
 std::string Common::getGameVersionString()
 {
-    return BEDROCK_CALL(&Common::getGameVersionString);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Common::getGameVersionString);
 }

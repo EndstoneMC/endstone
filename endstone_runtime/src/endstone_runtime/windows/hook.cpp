@@ -13,24 +13,25 @@
 // limitations under the License.
 
 #ifdef _WIN32
-#include "endstone_runtime/windows/hook.h"
 
-#include <MinHook.h>
+#include "endstone_runtime/hook.h"
+
+#include <Windows.h>
+// must be included after Windows.h
 #include <Psapi.h>
+#include <funchook.h>
 
-#include <system_error>
 #include <unordered_map>
 
+#include <fmt/format.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone_runtime/internals.h"
-#include "endstone_runtime/windows/symbol_manager.h"
+#include "endstone_runtime/symbol_handler.h"
 
-namespace bedrock::internals {
+namespace endstone::hook {
 
 namespace {
-
-std::unordered_map<std::string, void *> gSymbols;
+std::unordered_map<void *, void *> gOriginals;
 
 void *get_module_base(HANDLE process, HMODULE module)
 {
@@ -43,126 +44,90 @@ void *get_module_base(HANDLE process, HMODULE module)
     return mi.lpBaseOfDll;
 }
 
-const std::error_category &minhook_category() noexcept
+std::string get_module_filename(HMODULE module)
 {
-    static const class MinHookErrorCategory : public std::error_category {
-    public:
-        [[nodiscard]] const char *name() const noexcept override
-        {
-            return "MinHookError";
-        }
-
-        [[nodiscard]] std::string message(int err_val) const override
-        {
-            auto error_code = static_cast<MH_STATUS>(err_val);
-            switch (error_code) {
-            case MH_ERROR_ALREADY_INITIALIZED:
-                return "MinHook is already initialized.";
-            case MH_ERROR_NOT_INITIALIZED:
-                return "MinHook is not initialized yet, or already uninitialized.";
-            case MH_ERROR_ALREADY_CREATED:
-                return "The hook for the specified target function is already created.";
-            case MH_ERROR_NOT_CREATED:
-                return "The hook for the specified target function is not created yet.";
-            case MH_ERROR_ENABLED:
-                return "The hook for the specified target function is already enabled.";
-            case MH_ERROR_DISABLED:
-                return "The hook for the specified target function is not enabled yet, or already disabled.";
-            case MH_ERROR_NOT_EXECUTABLE:
-                return "The specified pointer is invalid. It points the address of non-allocated and/or non-executable "
-                       "region.";
-            case MH_ERROR_UNSUPPORTED_FUNCTION:
-                return "The specified target function cannot be hooked.";
-            case MH_ERROR_MEMORY_ALLOC:
-                return "Failed to allocate memory.";
-            case MH_ERROR_MEMORY_PROTECT:
-                return "Failed to change the memory protection.";
-            case MH_ERROR_MODULE_NOT_FOUND:
-                return "The specified module is not loaded.";
-            case MH_ERROR_FUNCTION_NOT_FOUND:
-                return "The specified function is not found.";
-            default:
-                return "Unknown error.";
-            }
-        }
-    } CATEGORY;
-    return CATEGORY;
+    char file_name[MAX_PATH];
+    auto len = GetModuleFileNameExA(GetCurrentProcess(), module, file_name, MAX_PATH);
+    if (len == 0 || len == MAX_PATH) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleFileNameEx failed");
+    }
+    return file_name;
 }
 
 }  // namespace
 
-void install_hooks(HINSTANCE module)
+namespace internals {
+void *get_original(void *detour)
 {
-    MH_STATUS status;
-    status = MH_Initialize();
-    if (status != MH_OK) {
-        throw std::system_error(status, minhook_category());
+    auto it = gOriginals.find(detour);
+    if (it == gOriginals.end()) {
+        return nullptr;
     }
+    return it->second;
+}
+}  // namespace internals
 
-    auto sym = endstone::sym::SymbolManager();
+void install()
+{
+    auto sym = endstone::sym::create_handler();
+
+    // Find detours
+    auto *module = GetModuleHandleA("endstone_runtime");
+    if (!module) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "GetModuleHandleA failed");
+    }
+    auto *module_base = get_module_base(GetCurrentProcess(), module);
 
     std::unordered_map<std::string, void *> detours;
-    auto *module_base = get_module_base(GetCurrentProcess(), module);
-    sym.enumerate(module, "*", [&](const std::string &name, size_t offset) -> bool {
+    sym->enumerate(get_module_filename(module).c_str(), [&](const std::string &name, size_t offset) -> bool {
         auto *detour = static_cast<char *>(module_base) + offset;
-        auto *target = bedrock::internals::symbol(name);
-
-        if (detour && target) {
-            void *original = nullptr;
-            spdlog::debug("{}: 0x{:p} -> 0x{:p}", name, target, detour);
-            status = MH_CreateHook(target, detour, &original);
-            if (status != MH_OK) {
-                throw std::system_error(status, minhook_category());
-            }
-
-            spdlog::debug("{}: = 0x{:p}", original);
-            bedrock::internals::gSymbols[name] = original;
-        }
-
+        detours.emplace(name, detour);
         return true;
     });
 
-    status = MH_EnableHook(MH_ALL_HOOKS);
-    if (status != MH_OK) {
-        throw std::system_error(status, minhook_category());
+    // Find targets
+    const char *executable_name = "bedrock_server.exe";
+    auto *executable = GetModuleHandleA(nullptr);
+    auto *executable_base = get_module_base(GetCurrentProcess(), executable);
+    std::unordered_map<std::string, void *> targets;
+    sym->enumerate(get_module_filename(executable).c_str(), [&](const std::string &name, size_t offset) -> bool {
+        auto it = detours.find(name);
+        if (it != detours.end()) {
+            auto *target = static_cast<char *>(executable_base) + offset;
+            targets.emplace(name, target);
+        }
+        return true;
+    });
+
+    // Install hooks
+    for (const auto &[name, detour] : detours) {
+        auto it = targets.find(name);
+        if (it != targets.end()) {
+            void *target = it->second;
+            void *original = target;
+
+            spdlog::debug("{}: 0x{:p} -> 0x{:p}", name, target, detour);
+
+            funchook_t *hook = funchook_create();
+            int status;
+            status = funchook_prepare(hook, &original, detour);
+            if (status != 0) {
+                throw std::system_error(status, hook_error_category());
+            }
+
+            status = funchook_install(hook, 0);
+            if (status != 0) {
+                throw std::system_error(status, hook_error_category());
+            }
+
+            spdlog::debug("{}: = 0x{:p}", original);
+            gOriginals.emplace(detour, original);
+        }
+        else {
+            throw std::runtime_error(fmt::format("Unable to find target function {} in the executable", name));
+        }
     }
 }
 
-void uninstall_hooks()
-{
-    MH_STATUS status;
-    status = MH_DisableHook(MH_ALL_HOOKS);
-    if (status != MH_OK) {
-        throw std::system_error(status, minhook_category());
-    }
-    MH_DisableHook(MH_ALL_HOOKS);
-
-    status = MH_Uninitialize();
-    if (status != MH_OK) {
-        throw std::system_error(status, minhook_category());
-    }
-}
-
-void *symbol(const std::string &name) noexcept
-{
-    if (gSymbols.empty()) {
-        auto sym = endstone::sym::SymbolManager();
-
-        HMODULE module = GetModuleHandleW(nullptr);
-        auto *module_base = get_module_base(GetCurrentProcess(), module);
-        sym.enumerate(module, "*", [&](const std::string &name, size_t offset) -> bool {
-            gSymbols.insert({name, static_cast<char *>(module_base) + offset});
-            return true;
-        });
-    }
-
-    auto it = gSymbols.find(name);
-    if (it == gSymbols.end()) {
-        return nullptr;
-    }
-
-    return it->second;
-}
-}  // namespace bedrock::internals
-
+}  // namespace endstone::hook
 #endif

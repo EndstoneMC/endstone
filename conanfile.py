@@ -97,9 +97,8 @@ class EndstoneRecipe(ConanFile):
         self.requires("spdlog/1.12.0")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("pybind11/2.11.1@pybind11/smart_holder", transitive_headers=True)
+        self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
-        if self.settings.os == "Windows":
-            self.requires("minhook/1.3.3")
 
         self.test_requires("gtest/1.14.0")
 
@@ -150,7 +149,7 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["runtime"].libs = []
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["api", "bedrock_internals", "core", "magic_enum::magic_enum"]
+        self.cpp_info.components["runtime"].requires = ["api", "bedrock_internals", "core", "funchook::funchook",
+                                                        "magic_enum::magic_enum"]
         if self.settings.os == "Windows":
-            self.cpp_info.components["runtime"].requires.extend(["minhook::minhook"])
-            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp.lib"])
+            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp"])
