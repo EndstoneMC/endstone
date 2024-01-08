@@ -99,6 +99,8 @@ class EndstoneRecipe(ConanFile):
         self.requires("pybind11/2.11.1@pybind11/smart_holder", transitive_headers=True)
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
+        if self.settings.os == "Linux":
+            self.requires("lief/0.13.1")
 
         self.test_requires("gtest/1.14.0")
 
@@ -153,3 +155,5 @@ class EndstoneRecipe(ConanFile):
                                                         "magic_enum::magic_enum"]
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp"])
+        elif self.settings.os == "Linux":
+            self.cpp_info.components["runtime"].system_libs.extend(["lief::lief"])

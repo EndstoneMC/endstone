@@ -12,11 +12,92 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <funchook.h>
-
 #include "endstone_runtime/hook.h"
 
+#include <funchook.h>
+
+#include <unordered_map>
+
+#include <fmt/format.h>
+#include <spdlog/spdlog.h>
+
+#include "endstone_runtime/platform.h"
+
 namespace endstone::hook {
+
+namespace {
+std::unordered_map<void *, void *> gOriginals;
+}  // namespace
+
+namespace internals {
+void *get_original(void *detour)
+{
+    auto it = gOriginals.find(detour);
+    if (it == gOriginals.end()) {
+        return nullptr;
+    }
+    return it->second;
+}
+}  // namespace internals
+
+void install()
+{
+    namespace ep = endstone::platform;
+    // Find detours
+    const auto *module_name = "endstone_runtime";
+    auto *module_base = ep::get_module_base(module_name);
+
+    std::unordered_map<std::string, void *> detours;
+    ep::enumerate_symbols(  //
+        ep::get_module_path(module_name).c_str(), [&](const std::string &name, size_t offset) -> bool {
+            auto *detour = static_cast<char *>(module_base) + offset;
+            detours.emplace(name, detour);
+            return true;
+        });
+
+    // Find targets
+    auto *executable_base = ep::get_module_base(nullptr);
+    std::unordered_map<std::string, void *> targets;
+    ep::enumerate_symbols(  //
+        ep::get_module_path(nullptr).c_str(), [&](const std::string &name, size_t offset) -> bool {
+            auto it = detours.find(name);
+            if (it != detours.end()) {
+                auto *target = static_cast<char *>(executable_base) + offset;
+                targets.emplace(name, target);
+            }
+            return true;
+        });
+
+    // Install hooks
+    for (const auto &[name, detour] : detours) {
+        auto it = targets.find(name);
+        if (it != targets.end()) {
+            void *target = it->second;
+            void *original = target;
+
+            spdlog::debug("{}: 0x{:p} -> 0x{:p}", name, target, detour);
+
+            funchook_t *hook = funchook_create();
+            int status;
+            status = funchook_prepare(hook, &original, detour);
+            if (status != 0) {
+                throw std::system_error(status, hook_error_category());
+            }
+
+            status = funchook_install(hook, 0);
+            if (status != 0) {
+                throw std::system_error(status, hook_error_category());
+            }
+
+            spdlog::debug("{}: = 0x{:p}", original);
+            gOriginals.emplace(detour, original);
+        }
+        else {
+            throw std::runtime_error(fmt::format("Unable to find target function {} in the executable", name));
+        }
+    }
+}
+
 const std::error_category &hook_error_category() noexcept
 {
     static const class HookErrorCategory : public std::error_category {

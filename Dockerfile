@@ -26,6 +26,7 @@ RUN apt-get update -yq && \
     pip3 install conan cmake ninja && \
     conan profile detect --force && \
     conan export third_party/pybind11 && \
+    conan export third_party/funchook --version 1.1.3 && \
     conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja && \
     pip3 install --no-cache . && \
     apt-get purge -yq build-essential git && \
