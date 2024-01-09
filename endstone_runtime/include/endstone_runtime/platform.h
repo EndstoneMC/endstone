@@ -20,7 +20,7 @@
 namespace endstone::platform {
 
 void *get_module_base(const char *module_name);
-std::string get_module_path(const char *module_name);
+std::string get_module_pathname(const char *module_name);
 void enumerate_symbols(const char *module_path, std::function<bool(const std::string &, size_t)> callback);
 
 }  // namespace endstone::platform

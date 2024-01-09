@@ -3,6 +3,9 @@ project(endstone_runtime LANGUAGES CXX)
 find_package(funchook CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
+if (UNIX)
+    find_package(lief CONFIG REQUIRED)
+endif ()
 
 
 file(GLOB_RECURSE ENDSTONE_RUNTIME_SOURCE_FILES CONFIGURE_DEPENDS "src/*.cpp")
@@ -12,6 +15,8 @@ target_include_directories(endstone_runtime PUBLIC include)
 target_link_libraries(endstone_runtime PUBLIC endstone::api endstone::core PRIVATE bedrock::internals funchook::funchook magic_enum::magic_enum)
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib)
+elseif (UNIX)
+    target_link_libraries(endstone_runtime PRIVATE lief::lief)
 endif ()
 
 

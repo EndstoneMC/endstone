@@ -20,7 +20,7 @@ class EndstoneRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True}
+    default_options = {"shared": False, "fPIC": True, "lief/*:with_json": False, "lief/*:with_frozen": False}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = (
@@ -100,7 +100,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
         if self.settings.os == "Linux":
-            self.requires("lief/0.13.1")
+            self.requires("lief/0.10.1")
 
         self.test_requires("gtest/1.14.0")
 
@@ -151,9 +151,14 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["runtime"].libs = []
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = ["api", "bedrock_internals", "core", "funchook::funchook",
-                                                        "magic_enum::magic_enum"]
+        self.cpp_info.components["runtime"].requires = [
+            "api",
+            "bedrock_internals",
+            "core",
+            "funchook::funchook",
+            "magic_enum::magic_enum",
+        ]
+        if self.settings.os == "Linux":
+            self.cpp_info.components["runtime"].requires.extend(["lief::lief"])
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp"])
-        elif self.settings.os == "Linux":
-            self.cpp_info.components["runtime"].system_libs.extend(["lief::lief"])

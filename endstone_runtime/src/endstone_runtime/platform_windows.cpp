@@ -47,7 +47,7 @@ void *get_module_base(const char *module_name)
     return mi.lpBaseOfDll;
 }
 
-std::string get_module_path(const char *module_name)
+std::string get_module_pathname(const char *module_name)
 {
     char file_name[MAX_PATH] = {0};
     auto len = GetModuleFileNameExA(GetCurrentProcess(), get_module_handle(module_name), file_name, MAX_PATH);

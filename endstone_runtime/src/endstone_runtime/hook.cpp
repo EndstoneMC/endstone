@@ -49,7 +49,7 @@ void install()
 
     std::unordered_map<std::string, void *> detours;
     ep::enumerate_symbols(  //
-        ep::get_module_path(module_name).c_str(), [&](const std::string &name, size_t offset) -> bool {
+        ep::get_module_pathname(module_name).c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto *detour = static_cast<char *>(module_base) + offset;
             detours.emplace(name, detour);
             return true;
@@ -59,7 +59,7 @@ void install()
     auto *executable_base = ep::get_module_base(nullptr);
     std::unordered_map<std::string, void *> targets;
     ep::enumerate_symbols(  //
-        ep::get_module_path(nullptr).c_str(), [&](const std::string &name, size_t offset) -> bool {
+        ep::get_module_pathname(nullptr).c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto it = detours.find(name);
             if (it != detours.end()) {
                 auto *target = static_cast<char *>(executable_base) + offset;
