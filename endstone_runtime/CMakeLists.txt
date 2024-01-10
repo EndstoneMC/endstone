@@ -4,7 +4,7 @@ find_package(funchook CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 if (UNIX)
-    find_package(lief CONFIG REQUIRED)
+    find_package(LIEF CONFIG REQUIRED)
 endif ()
 
 
@@ -15,9 +15,15 @@ target_include_directories(endstone_runtime PUBLIC include)
 target_link_libraries(endstone_runtime PUBLIC endstone::api endstone::core PRIVATE bedrock::internals funchook::funchook magic_enum::magic_enum)
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib)
-elseif (UNIX)
-    target_link_libraries(endstone_runtime PRIVATE lief::lief)
 endif ()
+if (UNIX)
+    target_link_libraries(endstone_runtime PRIVATE LIEF::LIEF)
+endif ()
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
+    target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden")
+endif()
 
 
 include(GNUInstallDirs)

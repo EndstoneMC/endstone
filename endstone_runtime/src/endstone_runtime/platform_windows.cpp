@@ -20,6 +20,7 @@
 #include <Psapi.h>
 
 #include <random>
+#include <system_error>
 
 #include "endstone_runtime/platform.h"
 
@@ -57,7 +58,7 @@ std::string get_module_pathname(const char *module_name)
     return file_name;
 }
 
-void enumerate_symbols(const char *module_path, std::function<bool(const std::string &, size_t)> callback)
+void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -68,7 +69,7 @@ void enumerate_symbols(const char *module_path, std::function<bool(const std::st
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
     }
 
-    auto module_base = SymLoadModuleEx(handle, nullptr, module_path, nullptr, 0, 0, nullptr, 0);
+    auto module_base = SymLoadModuleEx(handle, nullptr, path, nullptr, 0, 0, nullptr, 0);
     if (!module_base) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymLoadModuleEx failed");
     }
@@ -83,8 +84,10 @@ void enumerate_symbols(const char *module_path, std::function<bool(const std::st
         handle, module_base, "*" /*Mask*/,
         [](PSYMBOL_INFO info /*pSymInfo*/, ULONG /*SymbolSize*/, PVOID user_context /*UserContext*/) -> BOOL {
             auto *ctx = static_cast<UserContext *>(user_context);
-            auto should_continue = (ctx->callback)(info->Name, info->Address - ctx->module_base);
-            return should_continue ? TRUE : FALSE;
+            if (!(ctx->callback)(info->Name, info->Address - ctx->module_base)) {
+                return FALSE;
+            }
+            return TRUE;
         },
         &user_context);
 

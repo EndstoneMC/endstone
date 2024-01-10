@@ -44,12 +44,18 @@ void install()
 {
     namespace ep = endstone::platform;
     // Find detours
-    const auto *module_name = "endstone_runtime";
+#ifdef _WIN32
+    const auto *module_name = "endstone_runtime.dll";
+#elif __linux__
+    const auto *module_name = "libendstone_runtime.so";
+#endif
     auto *module_base = ep::get_module_base(module_name);
+    auto module_pathname = ep::get_module_pathname(module_name);
 
     std::unordered_map<std::string, void *> detours;
     ep::enumerate_symbols(  //
-        ep::get_module_pathname(module_name).c_str(), [&](const std::string &name, size_t offset) -> bool {
+        module_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
+            spdlog::info("{} -> 0x{:x}", name, offset);
             auto *detour = static_cast<char *>(module_base) + offset;
             detours.emplace(name, detour);
             return true;
@@ -58,10 +64,16 @@ void install()
     // Find targets
     auto *executable_base = ep::get_module_base(nullptr);
     std::unordered_map<std::string, void *> targets;
+#ifdef _WIN32
+    const auto executable_pathname = ep::get_module_pathname(nullptr);
+#elif __linux__
+    const auto executable_pathname = ep::get_module_pathname(nullptr) + "_symbols.debug";
+#endif
     ep::enumerate_symbols(  //
-        ep::get_module_pathname(nullptr).c_str(), [&](const std::string &name, size_t offset) -> bool {
+        executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto it = detours.find(name);
             if (it != detours.end()) {
+                spdlog::warn("{}", name);
                 auto *target = static_cast<char *>(executable_base) + offset;
                 targets.emplace(name, target);
             }
@@ -75,7 +87,7 @@ void install()
             void *target = it->second;
             void *original = target;
 
-            spdlog::debug("{}: 0x{:p} -> 0x{:p}", name, target, detour);
+            spdlog::info("{}: 0x{:p} -> 0x{:p}", name, target, detour);
 
             funchook_t *hook = funchook_create();
             int status;
@@ -89,7 +101,7 @@ void install()
                 throw std::system_error(status, hook_error_category());
             }
 
-            spdlog::debug("{}: = 0x{:p}", original);
+            spdlog::info("{}: = 0x{:p}", original);
             gOriginals.emplace(detour, original);
         }
         else {
