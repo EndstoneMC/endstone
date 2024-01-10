@@ -67,10 +67,10 @@ class EndstoneRecipe(ConanFile):
         return 191  # Visual Studio 17
 
     @property
-    def _min_gcc_compiler_version(self):
-        # NOTE: the latest bedrock server for Linux is compiled with GCC 7.5.0,
-        # but we enforce the GCC version >= 8
-        return 8
+    def _min_clang_compiler_version(self):
+        # NOTE: the latest bedrock server for Linux is compiled with Clang 15.0.7,
+        # but it should be ABI compatible with Clang 5
+        return 5
 
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
@@ -84,13 +84,17 @@ class EndstoneRecipe(ConanFile):
                     f"{self.ref} requires MSVC compiler version >= {self._min_msvc_compiler_version} on Windows."
                 )
         elif self.settings.os == "Linux":
-            if not compiler == "gcc" or Version(compiler_version) < self._min_gcc_compiler_version:
+            if not compiler == "clang" or Version(compiler_version) < self._min_clang_compiler_version:
                 raise ConanInvalidConfiguration(
-                    f"{self.ref} requires GCC compiler version >= {self._min_gcc_compiler_version} on Linux."
+                    f"{self.ref} requires Clang compiler version >= {self._min_clang_compiler_version} on Linux."
+                )
+            if not compiler.libcxx == "libc++":
+                raise ConanInvalidConfiguration(
+                    f"{self.ref} requires C++ standard libraries libc++ on Linux."
                 )
         else:
             raise ConanInvalidConfiguration(
-                f"{self.ref} can only be built on Windows or Linux. {self.settings.os} is not supported."
+                f"{self.ref} can only not be built on {self.settings.os}."
             )
 
     def requirements(self):
