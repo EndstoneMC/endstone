@@ -16,11 +16,16 @@
 
 #include "endstone_runtime/hook.h"
 
-#include <funchook.h>
+#include <Windows.h>
+// DbgHelp.h must be included after Windows.h
+#include <DbgHelp.h>
 
+#include <random>
+#include <system_error>
 #include <unordered_map>
 
 #include <fmt/format.h>
+#include <funchook/funchook.h>
 #include <spdlog/spdlog.h>
 
 #include "endstone_runtime/platform.h"
@@ -29,6 +34,45 @@ namespace endstone::hook {
 
 namespace {
 std::unordered_map<void *, void *> gOriginals;
+
+void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback)
+{
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<size_t> dist(1, static_cast<size_t>(-1));
+    auto *handle = reinterpret_cast<HANDLE>(dist(gen));
+
+    if (!SymInitialize(handle, nullptr, FALSE)) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
+    }
+
+    SymSetOptions(NULL);  // do not undecorate symbols by default
+
+    auto module_base = SymLoadModuleEx(handle, nullptr, path, nullptr, 0, 0, nullptr, 0);
+    if (!module_base) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymLoadModuleEx failed");
+    }
+
+    struct UserContext {
+        size_t module_base;
+        std::function<bool(const std::string &, size_t)> callback;
+    };
+    auto user_context = UserContext{module_base, std::move(callback)};
+
+    SymEnumSymbols(
+        handle, module_base, "*" /*Mask*/,
+        [](PSYMBOL_INFO info /*pSymInfo*/, ULONG /*SymbolSize*/, PVOID user_context /*UserContext*/) -> BOOL {
+            auto *ctx = static_cast<UserContext *>(user_context);
+            if (!(ctx->callback)(info->Name, info->Address - ctx->module_base)) {
+                return FALSE;
+            }
+            return TRUE;
+        },
+        &user_context);
+
+    SymCleanup(handle);
+}
+
 }  // namespace
 
 namespace internals {
@@ -45,37 +89,30 @@ void *get_original(void *detour)
 void install()
 {
     namespace ep = endstone::platform;
+
     // Find detours
-#ifdef _WIN32
-    const auto *module_name = "endstone_runtime.dll";
-#elif __linux__
-    const auto *module_name = "libendstone_runtime.so";
-#endif
     auto *module_base = ep::get_module_base();
     auto module_pathname = ep::get_module_pathname();
 
     std::unordered_map<std::string, void *> detours;
-    ep::enumerate_symbols(  //
+    enumerate_symbols(  //
         module_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
-            spdlog::info("{} -> 0x{:x}", name, offset);
+            spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *detour = static_cast<char *>(module_base) + offset;
             detours.emplace(name, detour);
             return true;
         });
 
     // Find targets
-    auto *executable_base = ep::get_module_base();
+    auto *executable_base = ep::get_executable_base();
     std::unordered_map<std::string, void *> targets;
-#ifdef _WIN32
-    const auto executable_pathname = ep::get_module_pathname(nullptr);
-#elif __linux__
-    const auto executable_pathname = ep::get_module_pathname() + "_symbols.debug";
-#endif
-    ep::enumerate_symbols(  //
+
+    const auto executable_pathname = ep::get_executable_pathname();
+    enumerate_symbols(  //
         executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto it = detours.find(name);
             if (it != detours.end()) {
-                spdlog::info("{} -> 0x{:x}", name, offset);
+                spdlog::debug("{} -> 0x{:x}", name, offset);
                 auto *target = static_cast<char *>(executable_base) + offset;
                 targets.emplace(name, target);
             }
@@ -89,7 +126,8 @@ void install()
             void *target = it->second;
             void *original = target;
 
-            spdlog::info("{}: 0x{:p} -> 0x{:p}", name, target, detour);
+            spdlog::debug("{}: T = 0x{:p}", name, target);
+            spdlog::debug("{}: D = 0x{:p}", name, detour);
 
             funchook_t *hook = funchook_create();
             int status;
@@ -103,7 +141,7 @@ void install()
                 throw std::system_error(status, hook_error_category());
             }
 
-            spdlog::info("{}: = 0x{:p}", original);
+            spdlog::debug("{}: O = 0x{:p}", name, original);
             gOriginals.emplace(detour, original);
         }
         else {
