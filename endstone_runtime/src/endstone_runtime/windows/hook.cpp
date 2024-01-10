@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifdef _WIN32
+
 #include "endstone_runtime/hook.h"
 
 #include <funchook.h>
@@ -49,8 +51,8 @@ void install()
 #elif __linux__
     const auto *module_name = "libendstone_runtime.so";
 #endif
-    auto *module_base = ep::get_module_base(module_name);
-    auto module_pathname = ep::get_module_pathname(module_name);
+    auto *module_base = ep::get_module_base();
+    auto module_pathname = ep::get_module_pathname();
 
     std::unordered_map<std::string, void *> detours;
     ep::enumerate_symbols(  //
@@ -62,12 +64,12 @@ void install()
         });
 
     // Find targets
-    auto *executable_base = ep::get_module_base(nullptr);
+    auto *executable_base = ep::get_module_base();
     std::unordered_map<std::string, void *> targets;
 #ifdef _WIN32
     const auto executable_pathname = ep::get_module_pathname(nullptr);
 #elif __linux__
-    const auto executable_pathname = ep::get_module_pathname(nullptr) + "_symbols.debug";
+    const auto executable_pathname = ep::get_module_pathname() + "_symbols.debug";
 #endif
     ep::enumerate_symbols(  //
         executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
@@ -156,3 +158,5 @@ const std::error_category &hook_error_category() noexcept
     return CATEGORY;
 }
 }  // namespace endstone::hook
+
+#endif

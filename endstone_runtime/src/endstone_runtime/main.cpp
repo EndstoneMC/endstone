@@ -36,8 +36,7 @@ ENDSTONE_RUNTIME_CTOR int main()
     catch (const std::exception &e) {
         spdlog::error("An exception occurred while attaching Endstone runtime to the process.");
         spdlog::error("{}", e.what());
-
-        return -1;
+        std::terminate();
     }
 }
 

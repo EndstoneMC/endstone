@@ -19,8 +19,9 @@
 
 namespace endstone::platform {
 
-void *get_module_base(const char *module_name);
-std::string get_module_pathname(const char *module_name);
-void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback);
+void *get_module_base();
+std::string get_module_pathname();
+void *get_executable_base();
+std::string get_executable_pathname();
 
 }  // namespace endstone::platform
