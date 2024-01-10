@@ -73,7 +73,7 @@ void install()
         executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto it = detours.find(name);
             if (it != detours.end()) {
-                spdlog::warn("{}", name);
+                spdlog::info("{} -> 0x{:x}", name, offset);
                 auto *target = static_cast<char *>(executable_base) + offset;
                 targets.emplace(name, target);
             }

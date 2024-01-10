@@ -17,9 +17,10 @@
 #include <climits>
 #include <fstream>
 
-#include <LIEF/LIEF.hpp>
 #include <fmt/format.h>
+#include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
+namespace py = pybind11;
 
 #include "endstone_runtime/platform.h"
 
@@ -107,15 +108,20 @@ std::string get_module_pathname(const char *module_name)
 
 void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback)
 {
-    spdlog::info("{}", path);
-    auto elf = LIEF::ELF::Parser::parse(path);
-    for (const auto &symbol : elf->static_symbols()) {
-        if (!symbol.is_exported() || symbol.binding() != LIEF::ELF::SYMBOL_BINDINGS::STB_GLOBAL) {
-            continue;
-        }
+    static constexpr size_t STB_GLOBAL = 1;
 
-        if (!callback(symbol.name(), symbol.value())) {
-            break;
+    spdlog::info("{}", path);
+
+    py::gil_scoped_acquire gil{};
+    auto lief = py::module_::import("lief");
+    auto binary = lief.attr("parse")(path);
+    auto symbols = binary.attr("static_symbols").cast<py::list>();
+
+    for (const auto &symbol : symbols) {
+        if (py::bool_(symbol.attr("exported")) && symbol.attr("binding").cast<size_t>() == STB_GLOBAL) {
+            if (!callback(symbol.attr("name").cast<std::string>(), symbol.attr("value").cast<size_t>())) {
+                break;
+            }
         }
     }
 }
