@@ -27,7 +27,7 @@ RUN apt-get update -yq && \
     conan profile detect --force && \
     conan export third_party/pybind11 && \
     conan export third_party/funchook --version 1.1.3 && \
-    conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja && \
+    conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libstdc++ -c tools.cmake.cmaketoolchain:generator=Ninja && \
     pip3 install --no-cache . && \
     apt-get purge -yq build-essential git && \
     apt-get autoremove -yq && \

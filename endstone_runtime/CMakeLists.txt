@@ -1,11 +1,9 @@
 project(endstone_runtime LANGUAGES CXX)
 
+
 find_package(funchook CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
-if (UNIX)
-    find_package(LIEF CONFIG REQUIRED)
-endif ()
 
 
 file(GLOB_RECURSE ENDSTONE_RUNTIME_SOURCE_FILES CONFIGURE_DEPENDS "src/*.cpp")
@@ -13,17 +11,12 @@ add_library(endstone_runtime SHARED ${ENDSTONE_RUNTIME_SOURCE_FILES})
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_include_directories(endstone_runtime PUBLIC include)
 target_link_libraries(endstone_runtime PUBLIC endstone::api endstone::core PRIVATE bedrock::internals funchook::funchook magic_enum::magic_enum)
-if (WIN32)
+if (MSVC)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib)
-endif ()
-if (UNIX)
-    target_link_libraries(endstone_runtime PRIVATE LIEF::LIEF)
-endif ()
-
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden")
-endif()
+endif ()
 
 
 include(GNUInstallDirs)
