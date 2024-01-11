@@ -52,6 +52,7 @@ void install()
 
     std::unordered_map<std::string, void *> detours;
     {
+        spdlog::debug("{}", module_pathname);
         auto elf = LIEF::ELF::Parser::parse(module_pathname);
         for (const auto &symbol : elf->static_symbols()) {
             if (!symbol.is_exported()) {
@@ -64,7 +65,7 @@ void install()
 
             auto name = symbol.name();
             auto offset = symbol.value();
-            spdlog::info("{} -> 0x{:x}", name, offset);
+            spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *detour = static_cast<char *>(module_base) + offset;
             detours.emplace(symbol.name(), detour);
         }
@@ -85,7 +86,7 @@ void install()
             auto offset = symbol.value();
             auto it = detours.find(name);
             if (it != detours.end()) {
-                spdlog::info("{} -> 0x{:x}", name, offset);
+                spdlog::debug("{} -> 0x{:x}", name, offset);
                 auto *target = static_cast<char *>(executable_base) + offset;
                 targets.emplace(name, target);
             }
@@ -99,7 +100,8 @@ void install()
             void *target = it->second;
             void *original = target;
 
-            spdlog::info("{}: 0x{:p} -> 0x{:p}", name, target, detour);
+            spdlog::debug("{}: T = 0x{:p}", name, target);
+            spdlog::debug("{}: D = 0x{:p}", name, detour);
 
             funchook_t *hook = funchook_create();
             int status;
@@ -113,7 +115,7 @@ void install()
                 throw std::system_error(status, hook_error_category());
             }
 
-            spdlog::info("{}: = 0x{:p}", original);
+            spdlog::debug("{}: O = 0x{:p}", name, original);
             gOriginals.emplace(detour, original);
         }
         else {
