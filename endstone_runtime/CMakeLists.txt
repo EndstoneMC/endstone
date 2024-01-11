@@ -3,6 +3,7 @@ project(endstone_runtime LANGUAGES CXX)
 
 find_package(funchook CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
+find_package(LIEF CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
 
@@ -14,6 +15,7 @@ target_link_libraries(endstone_runtime PUBLIC endstone::api endstone::core PRIVA
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib)
 elseif (UNIX)
+    target_link_libraries(endstone_runtime PRIVATE LIEF::LIEF)
     target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden")
 endif ()

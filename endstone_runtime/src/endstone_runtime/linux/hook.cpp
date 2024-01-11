@@ -18,11 +18,10 @@
 
 #include <unordered_map>
 
+#include <LIEF/LIEF.hpp>
 #include <fmt/format.h>
 #include <funchook/funchook.h>
-#include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
-namespace py = pybind11;
 
 #include "endstone_runtime/platform.h"
 
@@ -30,28 +29,6 @@ namespace endstone::hook {
 
 namespace {
 std::unordered_map<void *, void *> gOriginals;
-
-enum class SYMBOL_BINDINGS : size_t {
-    STB_LOCAL = 0,
-    STB_GLOBAL = 1,
-    STB_WEAK = 2
-};
-
-void enumerate_symbols(const char *path, const char *type, std::function<bool(py::handle symbol)> callback)
-{
-    spdlog::info("{}", path);
-    py::gil_scoped_acquire gil{};
-    auto lief = py::module_::import("lief");
-    auto binary = lief.attr("parse")(path);
-    auto symbols = binary.attr(type).cast<py::list>();
-
-    for (auto symbol : symbols) {
-        if (!callback(symbol)) {
-            break;
-        }
-    }
-}
-
 }  // namespace
 
 namespace internals {
@@ -74,47 +51,46 @@ void install()
     auto module_pathname = ep::get_module_pathname();
 
     std::unordered_map<std::string, void *> detours;
-    enumerate_symbols(  //
-        module_pathname.c_str(), "static_symbols", [&](auto symbol) -> bool {
-            if (!py::bool_(symbol.attr("exported"))) {
-                return true;
+    {
+        auto elf = LIEF::ELF::Parser::parse(module_pathname);
+        for (const auto &symbol : elf->static_symbols()) {
+            if (!symbol.is_exported()) {
+                continue;
             }
 
-            auto binding = py::cast<size_t>(symbol.attr("binding"));
-            if (binding != 1) {  // STB_GLOBAL = 1
-                return true;
+            if (symbol.binding() != LIEF::ELF::SYMBOL_BINDINGS::STB_GLOBAL) {
+                continue;
             }
 
-            auto name = py::cast<std::string>(symbol.attr("name"));
-            auto offset = py::cast<size_t>(symbol.attr("value"));
+            auto name = symbol.name();
+            auto offset = symbol.value();
             spdlog::info("{} -> 0x{:x}", name, offset);
             auto *detour = static_cast<char *>(module_base) + offset;
-            detours.emplace(name, detour);
-            return true;
-        });
+            detours.emplace(symbol.name(), detour);
+        }
+    }
 
     // Find targets
     auto *executable_base = ep::get_executable_base();
     std::unordered_map<std::string, void *> targets;
-
     const auto executable_pathname = ep::get_executable_pathname() + "_symbols.debug";
-    enumerate_symbols(  //
-        executable_pathname.c_str(), "symbols", [&](auto symbol) -> bool {
-            auto binding = py::cast<size_t>(symbol.attr("binding"));
-            if (binding != 0) {  // STB_LOCAL = 0
-                return true;
+    {
+        auto elf = LIEF::ELF::Parser::parse(executable_pathname);
+        for (const auto &symbol : elf->symbols()) {
+            if (symbol.binding() != LIEF::ELF::SYMBOL_BINDINGS::STB_LOCAL) {
+                continue;
             }
 
-            auto name = py::cast<std::string>(symbol.attr("name"));
-            auto offset = py::cast<size_t>(symbol.attr("value"));
+            auto name = symbol.name();
+            auto offset = symbol.value();
             auto it = detours.find(name);
             if (it != detours.end()) {
                 spdlog::info("{} -> 0x{:x}", name, offset);
                 auto *target = static_cast<char *>(executable_base) + offset;
                 targets.emplace(name, target);
             }
-            return true;
-        });
+        }
+    }
 
     // Install hooks
     for (const auto &[name, detour] : detours) {

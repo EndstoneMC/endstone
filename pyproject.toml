@@ -23,7 +23,7 @@ classifiers = [
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
 ]
-dependencies = ["click", "lief==0.13.2", "requests", "rich", "tomli", "packaging"]
+dependencies = ["click", "requests", "rich", "tomli", "packaging"]
 dynamic = ["version"]
 
 [project.optional-dependencies]
