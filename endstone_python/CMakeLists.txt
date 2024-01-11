@@ -9,9 +9,7 @@ file(GLOB_RECURSE ENDSTONE_PYTHON_SOURCE_FILES CONFIGURE_DEPENDS "src/*.cpp")
 pybind11_add_module(endstone_python MODULE ${ENDSTONE_PYTHON_SOURCE_FILES})
 target_include_directories(endstone_python PUBLIC include)
 target_link_libraries(endstone_python PRIVATE endstone::api)
-if (UNIX)
-    target_link_options(endstone_python PRIVATE "-Wl,--dynamic-list-cpp-typeinfo")
-endif ()
+
 
 include(GNUInstallDirs)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

@@ -3,7 +3,9 @@ project(endstone_runtime LANGUAGES CXX)
 
 find_package(funchook CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
-find_package(LIEF CONFIG REQUIRED)
+if (UNIX)
+    find_package(LIEF CONFIG REQUIRED)
+endif ()
 find_package(GTest CONFIG REQUIRED)
 
 
