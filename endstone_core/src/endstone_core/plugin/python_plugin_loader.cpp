@@ -33,9 +33,10 @@ PythonPluginLoader::~PythonPluginLoader()
 {
     py::gil_scoped_acquire gil{};
     obj_.dec_ref();
+    obj_.release();
 }
 
-std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
+std::shared_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file) noexcept
 {
     auto plugin = pimpl()->loadPlugin(file);
     if (plugin) {

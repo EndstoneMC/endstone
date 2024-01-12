@@ -42,6 +42,6 @@ public:
 private:
     Server &server_;
     std::unordered_map<std::string, std::shared_ptr<PluginLoader>> file_associations_;
-    std::vector<std::unique_ptr<Plugin>> plugins_;
+    std::vector<std::shared_ptr<Plugin>> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
 };

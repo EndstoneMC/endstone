@@ -6,6 +6,7 @@ from types import ModuleType
 
 from endstone._internal.plugin_description_file import PluginDescriptionFile
 from endstone.plugin import PluginDescription, PluginLoader, Plugin
+from endstone.server import Server
 
 
 def _create_plugin(module: ModuleType, class_name: str, description: PluginDescription) -> Plugin:
@@ -43,6 +44,10 @@ def _load_module_from_spec(spec: ModuleSpec) -> ModuleType:
 
 
 class SourcePluginLoader(PluginLoader):
+    def __init__(self, server: Server):
+        PluginLoader.__init__(self, server)
+        self._keep_alive = []  # we are responsible for the lifecycle of objects created from the python side
+
     # noinspection PyMethodMayBeStatic
     def get_plugin_file_filters(self) -> list[str]:
         return [r"plugin\.toml$"]
@@ -64,4 +69,7 @@ class SourcePluginLoader(PluginLoader):
 
         module = _load_module_from_spec(spec)
 
-        return _create_plugin(module, class_name, description)
+        plugin = _create_plugin(module, class_name, description)
+        self._keep_alive.append(plugin)
+
+        return plugin

@@ -28,18 +28,17 @@ class PyPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
+    std::shared_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
     {
-        // TODO:
-        //        try {
-        //            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
-        //        }
-        //        catch (std::exception &e) {
-        //            getServer().getLogger().error("Failed to load python plugin from {}.", file);
-        //            getServer().getLogger().error(e.what());
-        //            return nullptr;
-        //        }
-        return nullptr;
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(std::shared_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin,
+                                        std::ref(file));
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Failed to load python plugin from {}.", file);
+            getServer().getLogger().error(e.what());
+            return nullptr;
+        }
     }
 
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override

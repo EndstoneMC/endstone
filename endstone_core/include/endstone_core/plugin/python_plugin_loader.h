@@ -26,7 +26,7 @@ public:
     PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name);
     ~PythonPluginLoader() override;
 
-    std::unique_ptr<Plugin> loadPlugin(const std::string &file) override;
+    std::shared_ptr<Plugin> loadPlugin(const std::string &file) noexcept override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;

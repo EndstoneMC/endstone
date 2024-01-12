@@ -66,7 +66,7 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     }
 
     // Check if the plugin exists in the vector
-    auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const std::unique_ptr<Plugin> &p) {
+    auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const auto &p) {
         return p.get() == plugin;
     });
 
@@ -87,7 +87,6 @@ Plugin *EndstonePluginManager::loadPlugin(const std::string &file)
             auto plugin = loader->loadPlugin(path.string());
 
             if (plugin) {
-                auto *const plugin_ptr = plugin.get();
                 auto name = plugin->getDescription().getName();
 
                 if (!std::regex_match(name, PluginDescription::ValidName)) {
@@ -96,8 +95,8 @@ Plugin *EndstonePluginManager::loadPlugin(const std::string &file)
                     return nullptr;
                 }
 
-                lookup_names_[name] = plugin_ptr;
-                plugins_.push_back(std::move(plugin));
+                plugins_.push_back(plugin);
+                lookup_names_[name] = plugin.get();
                 return lookup_names_[name];
             }
         }

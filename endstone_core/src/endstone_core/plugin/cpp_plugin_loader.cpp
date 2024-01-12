@@ -26,7 +26,7 @@
 
 #ifdef _WIN32
 
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
+std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
 {
     auto &logger = getServer().getLogger();
 
@@ -52,7 +52,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
     }
 
     initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
-    return std::unique_ptr<Plugin>(plugin);
+    return std::shared_ptr<Plugin>(plugin);
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
@@ -62,7 +62,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 #elif __linux__
 
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
+std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
     auto &logger = getServer().getLogger();
 
@@ -88,7 +88,7 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
     }
 
     initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
-    return std::unique_ptr<Plugin>(plugin);
+    return std::shared_ptr<Plugin>(plugin);
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const

@@ -14,9 +14,9 @@ if (NOT BUILD_TESTING STREQUAL OFF)
 endif ()
 
 
-add_compile_definitions(PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
+#add_compile_definitions(PYBIND11_USE_SMART_HOLDER_AS_DEFAULT)
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
-add_compile_definitions(PYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF)
+#add_compile_definitions(PYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF)
 # the above line is a temporary fix for error: "pybind11::handle::inc_ref() is being called while the GIL is either not
 # held or invalid." when shutting down server on Windows, due to stricter GIL check on pybind11 >= 2.11.0. We were not
 # able to determine what causes this issue for now, leave it for the other day...
