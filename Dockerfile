@@ -25,7 +25,6 @@ RUN apt-get update -yq && \
     python3 -m pip install --upgrade pip && \
     pip3 install conan cmake ninja && \
     conan profile detect --force && \
-    conan export third_party/pybind11 && \
     conan export third_party/funchook --version 1.1.3 && \
     conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja && \
     pip3 install --no-cache . && \
