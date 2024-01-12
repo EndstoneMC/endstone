@@ -100,7 +100,7 @@ class EndstoneRecipe(ConanFile):
     def requirements(self):
         self.requires("spdlog/1.12.0")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
-        self.requires("pybind11/2.11.1@pybind11/smart_holder", transitive_headers=True)
+        self.requires("pybind11/2.11.1", transitive_headers=True)
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
         if self.settings.os == "Linux":
