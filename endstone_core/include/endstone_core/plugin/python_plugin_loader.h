@@ -17,12 +17,14 @@
 #include <string_view>
 
 #include <pybind11/embed.h>
+namespace py = pybind11;
 
 #include "endstone/plugin/plugin_loader.h"
 
 class PythonPluginLoader : public PluginLoader {
 public:
     PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name);
+    ~PythonPluginLoader() override;
 
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) override;
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
@@ -30,5 +32,6 @@ public:
     void disablePlugin(Plugin &plugin) const override;
 
 private:
-    std::unique_ptr<PluginLoader> pimpl_;
+    [[nodiscard]] std::shared_ptr<PluginLoader> pimpl() const;
+    py::object obj_;
 };

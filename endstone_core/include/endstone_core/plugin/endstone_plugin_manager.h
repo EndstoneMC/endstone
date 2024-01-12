@@ -27,7 +27,7 @@ class EndstonePluginManager : public PluginManager {
 public:
     explicit EndstonePluginManager(Server &server);
 
-    void registerLoader(std::unique_ptr<PluginLoader> loader) override;
+    void registerLoader(std::shared_ptr<PluginLoader> loader) override;
     [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;
     [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
     [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
@@ -41,7 +41,7 @@ public:
 
 private:
     Server &server_;
-    std::unordered_map<std::string, std::unique_ptr<PluginLoader>> file_associations_;
+    std::unordered_map<std::string, std::shared_ptr<PluginLoader>> file_associations_;
     std::vector<std::unique_ptr<Plugin>> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
 };

@@ -27,11 +27,11 @@ namespace fs = std::filesystem;
 
 EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server) {}
 
-void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
+void EndstonePluginManager::registerLoader(std::shared_ptr<PluginLoader> loader)
 {
     auto patterns = loader->getPluginFileFilters();
     for (const auto &pattern : patterns) {
-        file_associations_[pattern] = std::move(loader);
+        file_associations_[pattern] = loader;
     }
 }
 

@@ -26,13 +26,18 @@ PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module
     py::gil_scoped_acquire gil{};
     auto module = py::module_::import(module_name.c_str());
     auto cls = module.attr(class_name.c_str());
-    auto loader = cls(std::ref(server));
-    pimpl_ = loader.cast<std::unique_ptr<PluginLoader>>();
+    obj_ = cls(std::ref(server));
+}
+
+PythonPluginLoader::~PythonPluginLoader()
+{
+    py::gil_scoped_acquire gil{};
+    obj_.dec_ref();
 }
 
 std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
 {
-    auto plugin = pimpl_->loadPlugin(file);
+    auto plugin = pimpl()->loadPlugin(file);
     if (plugin) {
         initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
         return plugin;
@@ -43,15 +48,20 @@ std::unique_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file)
 
 std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const
 {
-    return std::move(pimpl_->getPluginFileFilters());
+    return std::move(pimpl()->getPluginFileFilters());
 }
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const
 {
-    pimpl_->enablePlugin(plugin);
+    pimpl()->enablePlugin(plugin);
 }
 
 void PythonPluginLoader::disablePlugin(Plugin &plugin) const
 {
-    pimpl_->disablePlugin(plugin);
+    pimpl()->disablePlugin(plugin);
+}
+
+std::shared_ptr<PluginLoader> PythonPluginLoader::pimpl() const
+{
+    return obj_.cast<std::shared_ptr<PluginLoader>>();
 }

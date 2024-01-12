@@ -30,15 +30,16 @@ public:
 
     std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
     {
-        try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::unique_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin,
-                                        std::ref(file));
-        }
-        catch (std::exception &e) {
-            getServer().getLogger().error("Failed to load python plugin from {}.", file);
-            getServer().getLogger().error(e.what());
-            return nullptr;
-        }
+        // TODO:
+        //        try {
+        //            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, std::ref(file));
+        //        }
+        //        catch (std::exception &e) {
+        //            getServer().getLogger().error("Failed to load python plugin from {}.", file);
+        //            getServer().getLogger().error(e.what());
+        //            return nullptr;
+        //        }
+        return nullptr;
     }
 
     [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override
@@ -56,7 +57,7 @@ public:
 
 void def_plugin_loader(py::module &m)
 {
-    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
         .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference)
