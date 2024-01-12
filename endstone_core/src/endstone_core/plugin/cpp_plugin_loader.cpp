@@ -62,7 +62,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 #elif __linux__
 
-std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
+std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
 {
     auto &logger = getServer().getLogger();
 
