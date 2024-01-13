@@ -6,10 +6,9 @@ option(CODE_COVERAGE "Enable code coverage reporting" false)
 if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()
 
-    if (CODE_COVERAGE AND CMAKE_COMPILER_IS_GNUCXX)
-        list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake)
-        include(CodeCoverage)
-        append_coverage_compiler_flags()
+    if (CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "(GNU|Clang)")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g --coverage")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g --coverage")
     endif ()
 endif ()
 

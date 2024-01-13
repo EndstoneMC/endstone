@@ -28,7 +28,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install conan
+          pip install conan gcovr
 
       - name: Build with Conan
         run: |
@@ -52,24 +52,24 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install conan
+          pip install conan gcovr
 
       - name: Create Conan build
         run: |
           chown -R root:root .
           conan profile detect --force
           conan export third_party/funchook --version 1.1.3
-          conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=Debug --output-folder=build -c tools.cmake.cmaketoolchain:generator=Ninja
+          conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=Debug -c tools.cmake.cmaketoolchain:generator=Ninja
 
       - name: Build with CMake
         run: |
-          cmake -S . -B build --preset conan-debug -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
-          cmake --build build
+          cmake --preset conan-debug -DCMAKE_BUILD_TYPE=Debug -DCODE_COVERAGE=ON
+          cmake --build build/Debug
 
       - name: Run Tests and Generate Coverage Data
         run: |
-          ctest --test-dir build
-          lcov -c -d build -o coverage.info
+          ctest --test-dir build/Debug
+          gcovr -r . --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
