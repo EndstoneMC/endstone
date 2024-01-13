@@ -12,12 +12,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-20.04 ]
-        gcc: [ '9', '10', '11' ]
         build_type: [ Debug, Release ]
 
-    name: Build on ${{ matrix.os }} (${{ matrix.build_type }}) with GCC ${{ matrix.gcc }}
-    runs-on: ${{ matrix.os}}
+    name: Build on Ubuntu (${{ matrix.build_type }})
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/endstonemc/endstone-dev:latest
 
     steps:
       - name: Checkout Code
@@ -25,56 +25,41 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
-        with:
-          version: ${{ matrix.gcc }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install conan cmake ninja
+          pip install conan
 
       - name: Build with Conan
         run: |
+          chown -R root:root .
           conan profile detect --force
           conan export third_party/funchook --version 1.1.3
-          conan create . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=${{ matrix.build_type }}
+          conan create . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=${{ matrix.build_type }} -c tools.cmake.cmaketoolchain:generator=Ninja
 
   coverage:
     name: Code Coverage
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/endstonemc/endstone-dev:latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install conan cmake ninja
-
-      - name: Setup LCOV
-        uses: hrishikesh-kadam/setup-lcov@v1
+          pip install conan
 
       - name: Create Conan build
         run: |
+          chown -R root:root .
           conan profile detect --force
           conan export third_party/funchook --version 1.1.3
-          conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=Debug --output-folder=build
+          conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -s build_type=Debug --output-folder=build -c tools.cmake.cmaketoolchain:generator=Ninja
 
       - name: Build with CMake
         run: |
