@@ -59,26 +59,3 @@ sdist.include = ["endstone_python/python/endstone/_internal/version.py"]
 write_to = "endstone_python/python/endstone/_internal/version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
-
-[tool.cibuildwheel]
-build = ["cp*-win_amd64", "cp*-manylinux_x86_64"]
-test-requires = "pytest"
-test-command = "pytest {project}/endstone_python/test"
-manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux2014_x86_64:latest"
-
-[tool.cibuildwheel.windows]
-before-build = [
-    "pip install conan",
-    "conan profile detect --force",
-    "conan export third_party/funchook --version 1.1.3",
-    "conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja",
-    ".\\build\\Release\\generators\\conanbuild.bat"
-]
-
-[tool.cibuildwheel.linux]
-before-build = [
-    "pip install conan ninja",
-    "conan profile detect --force",
-    "conan export third_party/funchook --version 1.1.3",
-    "conan install . --build=missing -s compiler.cppstd=gnu17 -s compiler.libcxx=libc++ -c tools.cmake.cmaketoolchain:generator=Ninja"
-]
