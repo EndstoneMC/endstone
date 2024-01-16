@@ -142,25 +142,20 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["api"].set_property("cmake_target_name", "endstone::api")
         self.cpp_info.components["api"].requires = ["fmt::fmt"]
 
-        self.cpp_info.components["bedrock_internals"].libs = []
-        self.cpp_info.components["bedrock_internals"].libdirs = []
-        self.cpp_info.components["bedrock_internals"].set_property("cmake_target_name", "bedrock::internals")
-
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["api", "bedrock_internals", "spdlog::spdlog", "pybind11::pybind11"]
+        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog", "pybind11::pybind11"]
         self.cpp_info.components["core"].defines = ["PYBIND11_USE_SMART_HOLDER_AS_DEFAULT"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
-        self.cpp_info.components["runtime"].libs = []
+        self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
         self.cpp_info.components["runtime"].requires = [
             "api",
-            "bedrock_internals",
             "core",
             "funchook::funchook",
-            "magic_enum::magic_enum",
+            "magic_enum::magic_enum"
         ]
         if self.settings.os == "Linux":
             self.cpp_info.components["runtime"].requires.extend(["lief::lief"])
