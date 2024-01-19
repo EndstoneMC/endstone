@@ -23,7 +23,7 @@ namespace py = pybind11;
 
 class PythonPluginLoader : public PluginLoader {
 public:
-    PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name);
+    explicit PythonPluginLoader(Server &server);
     ~PythonPluginLoader() override;
 
     std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;

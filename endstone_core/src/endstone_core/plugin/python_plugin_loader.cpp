@@ -20,13 +20,18 @@
 
 namespace py = pybind11;
 
-PythonPluginLoader::PythonPluginLoader(Server &server, const std::string &module_name, const std::string &class_name)
-    : PluginLoader(server)
+PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
 {
-    py::gil_scoped_acquire gil{};
-    auto module = py::module_::import(module_name.c_str());
-    auto cls = module.attr(class_name.c_str());
-    obj_ = cls(std::ref(server));
+    try {
+        py::gil_scoped_acquire gil{};
+        auto module = py::module_::import("endstone._internal.plugin_loader");
+        auto cls = module.attr("PythonPluginLoader");
+        obj_ = cls(std::ref(server));
+    }
+    catch (std::exception &e) {
+        server.getLogger().error("Error occurred when trying to register a plugin loader: {}", e.what());
+        throw e;
+    }
 }
 
 PythonPluginLoader::~PythonPluginLoader()

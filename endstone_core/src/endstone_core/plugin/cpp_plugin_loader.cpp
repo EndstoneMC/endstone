@@ -113,7 +113,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 #elif __linux__
 
-std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
+std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
 {
     auto &logger = getServer().getLogger();
     auto path = fs::path(file);
@@ -144,7 +144,7 @@ std::shared_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noe
     }
 
     initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
-    return std::shared_ptr<Plugin>(plugin);
+    return std::unique_ptr<Plugin>(plugin);
 }
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
