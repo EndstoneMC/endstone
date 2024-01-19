@@ -55,6 +55,6 @@ private:
 
     Logger &logger_;
     py::scoped_interpreter interpreter_{};
-    py::gil_scoped_release release_{};
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
+    py::gil_scoped_release release_{};
 };

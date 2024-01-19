@@ -34,16 +34,15 @@ PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
     }
 }
 
-PythonPluginLoader::~PythonPluginLoader()
-{
-    py::gil_scoped_acquire gil{};
-    obj_.dec_ref();
-    obj_.release();
-}
-
 std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory) noexcept
 {
-    return pimpl()->loadPlugins(directory);
+    auto plugins = pimpl()->loadPlugins(directory);
+    for (const auto &plugin : plugins) {
+        if (plugin) {
+            initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
+        }
+    }
+    return plugins;
 }
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const
