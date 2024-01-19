@@ -24,6 +24,10 @@ class CppPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    [[nodiscard]] std::shared_ptr<Plugin> loadPlugin(const std::string &file) noexcept override;
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
+    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;
+    [[nodiscard]] std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept;
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const;
+
+private:
+    std::vector<std::unique_ptr<Plugin>> plugins_;
 };

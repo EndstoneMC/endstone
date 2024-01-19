@@ -28,27 +28,15 @@ class PyPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    std::shared_ptr<Plugin> loadPlugin(const std::string &file) noexcept override
+    std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::shared_ptr<Plugin>, PluginLoader, "load_plugin", loadPlugin,
-                                        std::ref(file));
+            PYBIND11_OVERRIDE_PURE_NAME(std::vector<Plugin *>, PluginLoader, "load_plugins", loadPlugins,
+                                        std::ref(directory));
         }
         catch (std::exception &e) {
-            getServer().getLogger().error("Failed to load python plugin from {}.", file);
-            getServer().getLogger().error(e.what());
-            return nullptr;
-        }
-    }
-
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const noexcept override
-    {
-        try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::vector<std::string>, PluginLoader, "get_plugin_file_filters",
-                                        getPluginFileFilters);
-        }
-        catch (std::exception &e) {
-            getServer().getLogger().error(e.what());
+            getServer().getLogger().error("Error occurred when trying to load plugins in '{}': {}", directory,
+                                          e.what());
             return {};
         }
     }
@@ -56,10 +44,10 @@ public:
 
 void def_plugin_loader(py::module &m)
 {
-    py::class_<PluginLoader, PyPluginLoader, std::shared_ptr<PluginLoader>>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
-        .def("get_plugin_file_filters", &PluginLoader::getPluginFileFilters)
-        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference)
+        .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
+             py::return_value_policy::reference_internal)
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
         .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference);

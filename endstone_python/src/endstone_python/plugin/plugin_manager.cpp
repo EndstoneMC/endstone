@@ -27,14 +27,12 @@ namespace py = pybind11;
 void def_plugin_manager(py::module &m)
 {
     py::class_<PluginManager>(m, "PluginManager")
-        .def("register_loader", &PluginManager::registerLoader, py::arg("loader"))
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference)
         .def_property_readonly("plugins", &PluginManager::getPlugins)
         .def("is_plugin_enabled", py::overload_cast<const std::string &>(&PluginManager::isPluginEnabled, py::const_),
              py::arg("plugin"))
         .def("is_plugin_enabled", py::overload_cast<Plugin *>(&PluginManager::isPluginEnabled, py::const_),
              py::arg("plugin"))
-        .def("load_plugin", &PluginManager::loadPlugin, py::arg("plugin"), py::return_value_policy::reference)
         .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"))
         .def("enable_plugin", &PluginManager::enablePlugin, py::arg("plugin"))
         .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"))

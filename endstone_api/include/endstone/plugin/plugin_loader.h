@@ -29,8 +29,7 @@ public:
     PluginLoader &operator=(const PluginLoader &) = delete;
 
     virtual ~PluginLoader() = default;
-    [[nodiscard]] virtual std::shared_ptr<Plugin> loadPlugin(const std::string &file) noexcept = 0;
-    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
+    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept = 0;
 
     virtual void enablePlugin(Plugin &plugin) const
     {

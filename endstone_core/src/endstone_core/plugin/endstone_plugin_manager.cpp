@@ -15,24 +15,19 @@
 #include "endstone_core/plugin/endstone_plugin_manager.h"
 
 #include <algorithm>
-#include <filesystem>
 #include <memory>
 #include <string>
 #include <utility>
 #include <vector>
-namespace fs = std::filesystem;
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
 EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server) {}
 
-void EndstonePluginManager::registerLoader(std::shared_ptr<PluginLoader> loader)
+void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
 {
-    auto patterns = loader->getPluginFileFilters();
-    for (const auto &pattern : patterns) {
-        file_associations_[pattern] = loader;
-    }
+    plugin_loaders_.push_back(std::move(loader));
 }
 
 Plugin *EndstonePluginManager::getPlugin(const std::string &name) const
@@ -49,7 +44,7 @@ std::vector<Plugin *> EndstonePluginManager::getPlugins() const
     std::vector<Plugin *> plugins;
     plugins.reserve(plugins_.size());
     for (const auto &plugin : plugins_) {
-        plugins.push_back(plugin.get());
+        plugins.push_back(plugin);
     }
     return plugins;
 }
@@ -67,81 +62,33 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
 
     // Check if the plugin exists in the vector
     auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const auto &p) {
-        return p.get() == plugin;
+        return p == plugin;
     });
 
     // If plugin is in the vector and is enabled, return true
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-Plugin *EndstonePluginManager::loadPlugin(const std::string &file)
-{
-    auto path = fs::path(file);
-    if (!exists(path)) {
-        server_.getLogger().error("Could not load plugin from '{}': Provided file does not exist.", path.string());
-    }
-
-    for (const auto &[pattern, loader] : file_associations_) {
-        std::regex r(pattern);
-        if (std::regex_search(path.string(), r)) {
-            auto plugin = loader->loadPlugin(path.string());
-
-            if (plugin) {
-                auto name = plugin->getDescription().getName();
-
-                if (!std::regex_match(name, PluginDescription::ValidName)) {
-                    server_.getLogger().error(
-                        "Could not load plugin from '{}': Plugin name contains invalid characters.", path.string());
-                    return nullptr;
-                }
-
-                plugins_.push_back(plugin);
-                lookup_names_[name] = plugin.get();
-                return lookup_names_[name];
-            }
-        }
-    }
-
-    return nullptr;
-}
-
 std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &directory)
 {
-    auto dir = fs::path(directory);
-    if (!exists(dir)) {
-        server_.getLogger().error(
-            "Error occurred when trying to load plugins in '{}': Provided directory does not exist.", dir.string());
-        return {};
-    }
-
-    if (!is_directory(dir)) {
-        server_.getLogger().error(
-            "Error occurred when trying to load plugins in '{}': Provided path is not a directory.", dir.string());
-        return {};
-    }
-
     std::vector<Plugin *> loaded_plugins;
 
-    for (const auto &entry : fs::directory_iterator(dir)) {
-        fs::path file;
-
-        // If it's a regular file, try to load it as a plugin.
-        if (is_regular_file(entry.status())) {
-            file = entry.path();
-        }
-        // If it's a subdirectory, look for a plugin.toml inside it.
-        else if (is_directory(entry.status())) {
-            file = entry.path() / "plugin.toml";
-            if (!exists(file) || !is_regular_file(file)) {
+    for (const auto &loader : plugin_loaders_) {
+        auto plugins = loader->loadPlugins(directory);
+        for (const auto &plugin : plugins) {
+            if (!plugin) {
                 continue;
             }
-        }
-        else {
-            continue;
-        }
 
-        auto *plugin = loadPlugin(file.string());
-        if (plugin) {
+            auto name = plugin->getDescription().getName();
+
+            if (!std::regex_match(name, PluginDescription::ValidName)) {
+                server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", name);
+                continue;
+            }
+
+            plugins_.push_back(plugin);
+            lookup_names_[name] = plugin;
             loaded_plugins.push_back(plugin);
         }
     }

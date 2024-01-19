@@ -36,20 +36,9 @@ PythonPluginLoader::~PythonPluginLoader()
     obj_.release();
 }
 
-std::shared_ptr<Plugin> PythonPluginLoader::loadPlugin(const std::string &file) noexcept
+std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory) noexcept
 {
-    auto plugin = pimpl()->loadPlugin(file);
-    if (plugin) {
-        initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
-        return plugin;
-    }
-
-    return nullptr;
-}
-
-std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const
-{
-    return std::move(pimpl()->getPluginFileFilters());
+    return pimpl()->loadPlugins(directory);
 }
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const

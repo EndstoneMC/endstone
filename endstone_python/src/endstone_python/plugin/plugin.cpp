@@ -74,7 +74,7 @@ public:
 
 void def_plugin(py::module &m)
 {
-    py::class_<Plugin, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
+    py::class_<Plugin, PyPlugin>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad)
         .def("on_enable", &Plugin::onEnable)

@@ -27,15 +27,15 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("EndstoneSer
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
-    try {
-        //    plugin_manager_->registerLoader(
-        //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
-        plugin_manager_->registerLoader(
-            std::make_unique<PythonPluginLoader>(*this, "endstone._internal.plugin_loader", "SourcePluginLoader"));
-    }
-    catch (std::exception &e) {
-        logger_.error("Error occurred when trying to register a plugin loader: {}", e.what());
-    }
+//    try {
+//        //    plugin_manager_->registerLoader(
+//        //        std::make_unique<PythonPluginLoader>(*this, "endstone.plugin", "ZipPluginLoader"));
+//        plugin_manager_->registerLoader(
+//            std::make_unique<PythonPluginLoader>(*this, "endstone._internal.plugin_loader", "SourcePluginLoader"));
+//    }
+//    catch (std::exception &e) {
+//        logger_.error("Error occurred when trying to register a plugin loader: {}", e.what());
+//    }
 }
 
 void EndstoneServer::loadPlugins()

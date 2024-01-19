@@ -27,12 +27,11 @@ public:
     PluginManager(PluginManager const &) = delete;
     PluginManager &operator=(PluginManager const &) = delete;
     virtual ~PluginManager() = default;
-    virtual void registerLoader(std::shared_ptr<PluginLoader> loader) = 0;
+    virtual void registerLoader(std::unique_ptr<PluginLoader> loader) = 0;
     [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
     [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
     [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const = 0;
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
-    [[nodiscard]] virtual Plugin *loadPlugin(const std::string &file) = 0;
     [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
     virtual void enablePlugin(Plugin &plugin) const = 0;
     virtual void disablePlugin(Plugin &plugin) const = 0;
