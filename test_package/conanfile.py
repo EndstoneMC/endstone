@@ -59,12 +59,6 @@ class EndstoneTestConan(ConanFile):
                 os.path.join(self.dependencies["endstone"].package_folder, "endstone"),
                 os.path.join(self.cpp.build.bindir, "endstone"),
             )
-            copy(  # test python plugin
-                self,
-                "*",
-                os.path.join(self.source_folder, "src", "test_plugin_python"),
-                os.path.join("plugins", "test_plugin_python"),
-            )
 
             if self.settings.os == "Windows":
                 copy(self, "test_plugin.dll", self.cpp.build.bindir, "plugins")

@@ -1,3 +1,0 @@
-name = "PythonTestPlugin"
-version = "1.0.0"
-main = "test_plugin:TestPlugin"

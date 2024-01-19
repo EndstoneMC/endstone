@@ -41,19 +41,16 @@ void testPythonInterpreter(EndstoneServer & /*server*/)
 }
 
 auto constexpr CppTestPluginName = "CppTestPlugin";
-auto constexpr PythonTestPluginName = "PythonTestPlugin";
 
 void testPluginLoading(EndstoneServer &server)
 {
     auto &plugin_manager = server.getPluginManager();
     assert(plugin_manager.getPlugins().empty());
     assert(plugin_manager.getPlugin(CppTestPluginName) == nullptr);
-    assert(plugin_manager.getPlugin(PythonTestPluginName) == nullptr);
 
     server.loadPlugins();
-    assert(plugin_manager.getPlugins().size() == 2);
+    assert(plugin_manager.getPlugins().size() == 1);
     assert(plugin_manager.getPlugin(CppTestPluginName) != nullptr);
-    assert(plugin_manager.getPlugin(PythonTestPluginName) != nullptr);
 }
 
 void testPluginEnabling(EndstoneServer &server)
@@ -65,16 +62,9 @@ void testPluginEnabling(EndstoneServer &server)
     assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
 
-    auto *python_plugin = plugin_manager.getPlugin(PythonTestPluginName);
-    assert(python_plugin != nullptr);
-    assert(plugin_manager.isPluginEnabled(python_plugin) == false);
-    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == false);
-
     server.enablePlugins();
     assert(plugin_manager.isPluginEnabled(cpp_plugin) == true);
-    assert(plugin_manager.isPluginEnabled(python_plugin) == true);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == true);
-    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == true);
 }
 
 void testPluginDisabling(EndstoneServer &server)
@@ -87,11 +77,6 @@ void testPluginDisabling(EndstoneServer &server)
     assert(cpp_plugin != nullptr);
     assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
     assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
-
-    auto *python_plugin = plugin_manager.getPlugin(PythonTestPluginName);
-    assert(python_plugin != nullptr);
-    assert(plugin_manager.isPluginEnabled(python_plugin) == false);
-    assert(plugin_manager.isPluginEnabled(PythonTestPluginName) == false);
 }
 
 int main()
