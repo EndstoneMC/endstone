@@ -52,6 +52,10 @@ ENDSTONE_RUNTIME_CTOR int main()
         main();
         break;
     }
+    case DLL_PROCESS_DETACH: {
+        std::exit(0);  // TODO: without this, the server won't exit on Windows for unknown reason.
+        break;
+    }
     default:
         break;
     }
