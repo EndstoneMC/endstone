@@ -31,6 +31,6 @@ public:
     void disablePlugin(Plugin &plugin) const override;
 
 private:
-    [[nodiscard]] std::shared_ptr<PluginLoader> pimpl() const;
+    [[nodiscard]] PluginLoader *pimpl() const;
     py::object obj_;
 };

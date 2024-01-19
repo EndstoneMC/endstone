@@ -56,7 +56,7 @@ void PythonPluginLoader::disablePlugin(Plugin &plugin) const
     pimpl()->disablePlugin(plugin);
 }
 
-std::shared_ptr<PluginLoader> PythonPluginLoader::pimpl() const
+PluginLoader *PythonPluginLoader::pimpl() const
 {
-    return obj_.cast<std::shared_ptr<PluginLoader>>();
+    return obj_.cast<PluginLoader *>();
 }
