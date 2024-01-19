@@ -16,7 +16,6 @@ endif ()
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 
 
-add_subdirectory(bedrock_internals)
 add_subdirectory(endstone_api)
 add_subdirectory(endstone_python)
 add_subdirectory(endstone_core)

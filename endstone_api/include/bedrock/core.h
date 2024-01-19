@@ -14,6 +14,6 @@
 
 #pragma once
 
-namespace Core {  // NOLINT(*-identifier-naming)
+namespace Core {
 class FilePathManager;
 }
