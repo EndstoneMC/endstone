@@ -26,7 +26,6 @@ class EndstoneRecipe(ConanFile):
     exports_sources = (
         "CMakeLists.txt",
         "cmake/*",
-        "bedrock_internals/*",
         "endstone_api/*",
         "endstone_core/*",
         "endstone_python/*",
