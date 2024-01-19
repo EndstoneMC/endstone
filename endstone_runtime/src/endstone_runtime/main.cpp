@@ -19,7 +19,7 @@
 #include "endstone_core/endstone_server.h"
 #include "endstone_runtime/hook.h"
 
-#ifdef __GNUC__
+#if defined(__GNUC__) || defined(__clang__)
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
 #else
 #define ENDSTONE_RUNTIME_CTOR
@@ -49,7 +49,8 @@ ENDSTONE_RUNTIME_CTOR int main()
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
-        return main() == 0 ? TRUE : FALSE;
+        main();
+        break;
     }
     default:
         break;
