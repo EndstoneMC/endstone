@@ -14,10 +14,13 @@
 
 #include <exception>
 
+#include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
+namespace py = pybind11;
 
 #include "endstone_core/endstone_server.h"
 #include "endstone_runtime/hook.h"
+#include "endstone_runtime/python_plugin_loader.h"
 
 #if defined(__GNUC__) || defined(__clang__)
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
@@ -25,11 +28,18 @@
 #define ENDSTONE_RUNTIME_CTOR
 #endif
 
+std::unique_ptr<py::scoped_interpreter> gInterpreter;
+std::unique_ptr<py::gil_scoped_release> gRelease;
+
 ENDSTONE_RUNTIME_CTOR int main()
 {
     try {
+        gInterpreter = std::make_unique<py::scoped_interpreter>();
         auto &server = EndstoneServer::getInstance();
         server.getLogger().info("Initialising...");
+        server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
+        gRelease = std::make_unique<py::gil_scoped_release>();
+
         endstone::hook::install();
         return 0;
     }
@@ -45,7 +55,7 @@ ENDSTONE_RUNTIME_CTOR int main()
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
                                      _In_ DWORD reason,          // reason for calling function
-                                     _In_ LPVOID /*reserved*/)   // reserved
+                                     _In_ LPVOID reserved)       // reserved
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {

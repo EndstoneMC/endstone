@@ -21,13 +21,11 @@ namespace fs = std::filesystem;
 #include "bedrock/common.h"
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
-#include "endstone_core/plugin/python_plugin_loader.h"
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
-    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this));
 }
 
 void EndstoneServer::loadPlugins()

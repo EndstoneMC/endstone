@@ -12,13 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/plugin/python_plugin_loader.h"
+#include "endstone_runtime/python_plugin_loader.h"
 
 #include <pybind11/embed.h>
 
 #include "endstone_core/logger_factory.h"
-
-namespace py = pybind11;
 
 PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
 {

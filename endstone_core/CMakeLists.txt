@@ -2,8 +2,6 @@ project(endstone_core LANGUAGES CXX)
 
 
 find_package(spdlog CONFIG REQUIRED)
-find_package(Python COMPONENTS Interpreter Development.Embed REQUIRED)
-find_package(pybind11 CONFIG REQUIRED)
 find_package(GTest CONFIG REQUIRED)
 
 
@@ -11,7 +9,7 @@ file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/*.cpp")
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_include_directories(endstone_core PUBLIC include)
-target_link_libraries(endstone_core PUBLIC endstone::api spdlog::spdlog pybind11::embed)
+target_link_libraries(endstone_core PUBLIC endstone::api spdlog::spdlog)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
 endif ()

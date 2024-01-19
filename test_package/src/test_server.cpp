@@ -19,9 +19,6 @@
 
 #include <cassert>
 
-#include <pybind11/embed.h>
-namespace py = pybind11;
-
 #include "endstone_core/endstone_server.h"
 
 void testLogger(EndstoneServer &server)
@@ -32,12 +29,6 @@ void testLogger(EndstoneServer &server)
     logger.warning("Hello World!");
     logger.error("Hello World!");
     logger.critical("Hello World!");
-}
-
-void testPythonInterpreter(EndstoneServer & /*server*/)
-{
-    py::gil_scoped_acquire gil{};
-    py::print("Hello World from Python!");
 }
 
 auto constexpr CppTestPluginName = "CppTestPlugin";
@@ -83,7 +74,6 @@ int main()
 {
     auto &server = EndstoneServer::getInstance();
     testLogger(server);
-    testPythonInterpreter(server);
     testPluginLoading(server);
     testPluginEnabling(server);
     testPluginDisabling(server);

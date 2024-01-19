@@ -88,18 +88,14 @@ class EndstoneRecipe(ConanFile):
                     f"{self.ref} requires Clang compiler version >= {self._min_clang_compiler_version} on Linux."
                 )
             if not compiler.libcxx == "libc++":
-                raise ConanInvalidConfiguration(
-                    f"{self.ref} requires C++ standard libraries libc++ on Linux."
-                )
+                raise ConanInvalidConfiguration(f"{self.ref} requires C++ standard libraries libc++ on Linux.")
         else:
-            raise ConanInvalidConfiguration(
-                f"{self.ref} can only not be built on {self.settings.os}."
-            )
+            raise ConanInvalidConfiguration(f"{self.ref} can only not be built on {self.settings.os}.")
 
     def requirements(self):
         self.requires("spdlog/1.12.0")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
-        self.requires("pybind11/2.11.1", transitive_headers=True)
+        self.requires("pybind11/2.11.1")
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
         if self.settings.os == "Linux":
@@ -143,7 +139,7 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog", "pybind11::pybind11"]
+        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog"]
         self.cpp_info.components["core"].defines = ["PYBIND11_USE_SMART_HOLDER_AS_DEFAULT"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
@@ -154,7 +150,8 @@ class EndstoneRecipe(ConanFile):
             "api",
             "core",
             "funchook::funchook",
-            "magic_enum::magic_enum"
+            "magic_enum::magic_enum",
+            "pybind11::pybind11",
         ]
         if self.settings.os == "Linux":
             self.cpp_info.components["runtime"].requires.extend(["lief::lief"])

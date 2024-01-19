@@ -95,6 +95,7 @@ pip install .
 To try Endstone from a Docker image, use the following command:
 
 ```shell
+docker pull endstone/endstone
 docker run --rm -it endstone/endstone
 ```
 
