@@ -17,7 +17,6 @@
 #include <string_view>
 
 #include <pybind11/embed.h>
-namespace py = pybind11;
 
 #include "endstone/plugin/plugin_loader.h"
 
@@ -31,5 +30,8 @@ public:
 
 private:
     [[nodiscard]] PluginLoader *pimpl() const;
-    py::object obj_;
+
+    pybind11::scoped_interpreter interpreter_;
+    pybind11::object obj_;
+    pybind11::gil_scoped_release release_;
 };

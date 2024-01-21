@@ -15,6 +15,7 @@
 #include "endstone_runtime/python_plugin_loader.h"
 
 #include <pybind11/embed.h>
+namespace py = pybind11;
 
 #include "endstone_core/logger_factory.h"
 
