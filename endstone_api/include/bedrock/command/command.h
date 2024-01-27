@@ -21,7 +21,7 @@
 class Command {
 public:
     Command() = default;
-    ~Command() = default;
+    virtual ~Command() = default;
     virtual bool collectOptionalArguments()
     {
         return true;
