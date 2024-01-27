@@ -50,11 +50,11 @@ public:
         CommandVersion version;
         std::unique_ptr<Command> (*factory)();
         std::vector<CommandParameterData> params;
-        uint8_t unk1 = 0;
-        uint16_t unk2 = -1;
-        uint64_t unk3 = 0;
-        uint64_t unk4 = 0;
-        uint64_t unk5 = 0;
+        uint8_t unknown1 = 0;
+        uint16_t unknown2 = -1;
+        uint64_t unknown3 = 0;
+        uint64_t unknown4 = 0;
+        uint64_t unknown5 = 0;
     };
 
     struct Symbol {
@@ -77,14 +77,13 @@ public:
         int64_t unknown7;                                  // +144
     };
 
-    template <typename Cmd>
+    template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
     {
-        printf("allocateCommand\n");
-        return std::move(std::make_unique<Cmd>());
+        return std::move(std::make_unique<CommandType>());
     }
 
-    template <typename Cmd, typename... Params>
+    template <typename CommandType, typename... Params>
     const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version, const Params &...params)
     {
         // TODO: can we get rid of const_cast?
@@ -95,7 +94,7 @@ public:
         }
 
         // TODO: add params support, currently ignored
-        auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<Cmd>);
+        auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<CommandType>);
 
         signature->overloads.push_back(overload);
         registerOverloadInternal(*signature, overload);

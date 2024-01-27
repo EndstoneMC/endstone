@@ -16,6 +16,7 @@
 
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
+#include "bedrock/type_id.h"
 #include "endstone_runtime/hook.h"
 
 class TestCommand : public Command {
@@ -24,6 +25,14 @@ public:
     {
         registry.registerCommand("test", "Test command description", CommandPermissionLevel::Any, {128}, {0});
         registry.registerOverload<TestCommand>("test", {1, INT_MAX});
+        printf("%d\n", Bedrock::type_id<CommandRegistry, std::string>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, std::string>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, bool>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, bool>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, float>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, float>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, int>().id());
+        printf("%d\n", Bedrock::type_id<CommandRegistry, int>().id());
     }
 
     void execute(const struct CommandOrigin &origin, struct CommandOutput &output) const override

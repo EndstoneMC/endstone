@@ -84,6 +84,17 @@ inline std::function<Return(const Class *, Arg...)> get_original(Return (Class::
 }
 
 /**
+ * @brief Construct a std::function from a vanilla function pointer
+ *  with considerations for Return Value Optimization (RVO).
+ */
+template <typename Return, typename... Arg>
+inline std::function<Return *(Return *, Arg...)> get_original_rvo(Return (*fp)(Arg...))
+{
+    return reinterpret_cast<Return *(*)(Return *, Arg...)>(get_original(fp_cast(fp)));
+}
+
+
+/**
  * @brief Construct a std::function from a class method (non-const, no ref-qualifier)
  *  with considerations for Return Value Optimization (RVO).
  */
@@ -111,4 +122,4 @@ inline std::function<Return *(const Class *, Return *, Arg...)> get_original_rvo
 }  // namespace endstone::hook::internals
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::internals::get_original(fp)(__VA_ARGS__)
-#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::internals::get_original(fp)(__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::internals::get_original_rvo(fp)(__VA_ARGS__)
