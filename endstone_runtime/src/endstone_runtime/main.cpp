@@ -20,7 +20,7 @@
 #include "endstone_runtime/hook.h"
 #include "endstone_runtime/python_plugin_loader.h"
 
-#if defined(__GNUC__) || defined(__clang__)
+#if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
 #else
 #define ENDSTONE_RUNTIME_CTOR

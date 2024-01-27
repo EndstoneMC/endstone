@@ -1,4 +1,4 @@
-#include "bedrock/dedicated_server.h"
+#include "bedrock/server/dedicated_server.h"
 
 #include "endstone_core/endstone_server.h"
 #include "endstone_runtime/hook.h"
