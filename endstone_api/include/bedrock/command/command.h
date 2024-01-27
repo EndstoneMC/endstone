@@ -17,10 +17,11 @@
 
 #include <cstdint>
 
+#include "bedrock/command/command_registry.h"
 class Command {
 public:
     Command() = default;
-    virtual ~Command() = default;
+    ~Command() = default;
     virtual bool collectOptionalArguments()
     {
         return true;
@@ -29,9 +30,9 @@ public:
 
 private:
     int32_t unk1_ = 0;
-    int64_t unk2_ = 0;
-    int32_t unk3_ = -1;
-    int8_t unk4_ = 5;
-    int16_t unk5_ = -1;
+    CommandRegistry *registry_ = nullptr;                                         // +16
+    CommandRegistry::Symbol symbol_{-1};                                          // +24
+    CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
+    CommandFlag command_flag_{0};                                                 // +30
 };
 static_assert(sizeof(Command) == 32);

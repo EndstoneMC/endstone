@@ -21,7 +21,6 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/command/command.h"
 #include "bedrock/command/command_parameter_data.h"
 #include "bedrock/command/command_version.h"
 
@@ -37,6 +36,8 @@ enum class CommandPermissionLevel : std::uint8_t {
     Owner = 4,
     Internal = 5
 };
+
+class Command;
 
 class CommandRegistry {
 public:
@@ -57,7 +58,7 @@ public:
     };
 
     struct Symbol {
-        uint32_t value;
+        int32_t value;
     };
 
     struct Signature {
