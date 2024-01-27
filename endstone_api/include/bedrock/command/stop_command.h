@@ -18,5 +18,5 @@
 
 class StopCommand {
 public:
-    static BEDROCK_API void StopCommand::setup(class CommandRegistry &registry, class DedicatedServer &server);
+    static BEDROCK_API void setup(class CommandRegistry &registry, class DedicatedServer &server);
 };
