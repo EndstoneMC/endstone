@@ -24,19 +24,27 @@ const std::error_category &hook_error_category() noexcept;
 
 namespace endstone::hook::internals {
 
-template <class R, class... Args>
-void *fp_cast(R (*fp)(Args...))
+template <typename Return, typename... Args>
+void *fp_cast(Return (*fp)(Args...))
 {
-    std::function<R(Args...)> func = fp;
-    void *target = *reinterpret_cast<void **>(func.template target<R (*)(Args...)>());
+    std::function<Return(Args...)> func = fp;
+    void *target = *reinterpret_cast<void **>(func.template target<Return (*)(Args...)>());
     return target;
 }
 
-template <class R, class T, class... Args>
-void *fp_cast(R (T::*fp)(Args...))
+template <typename Return, typename Class, typename... Args>
+void *fp_cast(Return (Class::*fp)(Args...))
 {
-    std::function<R(T *, Args...)> func = fp;
-    void *target = *reinterpret_cast<void **>(func.template target<R (T::*)(Args...)>());
+    std::function<Return(Class *, Args...)> func = fp;
+    void *target = *reinterpret_cast<void **>(func.template target<Return (Class::*)(Args...)>());
+    return target;
+}
+
+template <typename Return, typename Class, typename... Args>
+void *fp_cast(Return (Class::*fp)(Args...) const)
+{
+    std::function<Return(Class *, Args...)> func = fp;
+    void *target = *reinterpret_cast<void **>(func.template target<Return (Class::*)(Args...) const>());
     return target;
 }
 
@@ -102,5 +110,5 @@ inline std::function<Return *(const Class *, Return *, Arg...)> get_original_rvo
 }
 }  // namespace endstone::hook::internals
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::internals::get_original(fp)(__VA_ARGS__);
-#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::internals::get_original(fp)(__VA_ARGS__);
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)     endstone::hook::internals::get_original(fp)(__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ...) endstone::hook::internals::get_original(fp)(__VA_ARGS__)
