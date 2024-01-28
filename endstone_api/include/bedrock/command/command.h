@@ -31,7 +31,7 @@ public:
 private:
     int32_t unk1_ = 0;
     CommandRegistry *registry_ = nullptr;                                         // +16
-    CommandRegistry::Symbol symbol_{-1};                                          // +24
+    CommandRegistry::Symbol symbol_;                                              // +24
     CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
     CommandFlag command_flag_{0};                                                 // +30
 };

@@ -21,8 +21,9 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/command/command_parameter_data.h"
+#include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_version.h"
+#include "bedrock/type_id.h"
 
 struct CommandFlag {
     uint16_t value;
@@ -38,7 +39,7 @@ enum class CommandPermissionLevel : std::uint8_t {
 };
 
 class Command;
-
+class CommandParameterData;
 class CommandRegistry {
 public:
     struct Overload {
@@ -58,7 +59,7 @@ public:
     };
 
     struct Symbol {
-        int32_t value;
+        int value = -1;
     };
 
     struct Signature {
@@ -76,6 +77,11 @@ public:
         char unknown6;                                     // +140
         int64_t unknown7;                                  // +144
     };
+
+    class ParseToken;
+
+    using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
+                                                std::string &, std::vector<std::string> &);
 
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
@@ -108,4 +114,33 @@ private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
+};
+
+enum CommandParameterDataType : int;
+enum CommandParameterOption : char;
+
+class CommandParameterData {
+
+public:
+    CommandParameterData(const Bedrock::typeid_t<CommandRegistry> &type_id, CommandRegistry::ParseRule parse_rule,
+                         const char *name, CommandParameterDataType type, const char *enum_name,
+                         const char *postfix_name, int unknown4, bool optional, int unknown5)
+        : type_id_(type_id), parse_rule_(parse_rule), name_(name), type_(type), enum_name_(enum_name),
+          postfix_name_(postfix_name), unknown4_(unknown4), optional_(optional), unknown5_(unknown5)
+    {
+    }
+
+private:
+    Bedrock::typeid_t<CommandRegistry> type_id_;  // +0
+    CommandRegistry::ParseRule parse_rule_;       // +8
+    std::string name_;                            // +16
+    const char *enum_name_;                       // +48
+    CommandRegistry::Symbol enum_symbol_;         // +56
+    const char *postfix_name_;                    // +64
+    CommandRegistry::Symbol postfix_symbol_;      // +72
+    CommandParameterDataType type_;               // +76
+    int unknown4_;                                // +80
+    int unknown5_;                                // +84
+    bool optional_;                               // +88
+    CommandParameterOption option_;               // +89
 };
