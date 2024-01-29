@@ -99,8 +99,8 @@ public:
             return nullptr;
         }
 
-        // TODO: add params support, currently ignored
         auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<CommandType>);
+        overload.params = {params...};
 
         signature->overloads.push_back(overload);
         registerOverloadInternal(*signature, overload);
@@ -112,6 +112,7 @@ public:
 
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &) const;
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
 };
@@ -122,12 +123,65 @@ enum CommandParameterOption : char;
 class CommandParameterData {
 
 public:
+    template <typename Type>
+    static CommandParameterData create(const char *name, bool optional = false)
+    {
+        return create(Bedrock::type_id<CommandRegistry, Type>(), name, optional);
+    }
+
+private:
+    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
+                                       bool optional);
+
+public:
     CommandParameterData(const Bedrock::typeid_t<CommandRegistry> &type_id, CommandRegistry::ParseRule parse_rule,
                          const char *name, CommandParameterDataType type, const char *enum_name,
                          const char *postfix_name, int unknown4, bool optional, int unknown5)
         : type_id_(type_id), parse_rule_(parse_rule), name_(name), type_(type), enum_name_(enum_name),
           postfix_name_(postfix_name), unknown4_(unknown4), optional_(optional), unknown5_(unknown5)
     {
+    }
+
+    [[nodiscard]] Bedrock::typeid_t<CommandRegistry> getTypeId() const
+    {
+        return type_id_;
+    }
+
+    [[nodiscard]] CommandRegistry::ParseRule getParseRule() const
+    {
+        return parse_rule_;
+    }
+    [[nodiscard]] const std::string &getName() const
+    {
+        return name_;
+    }
+    [[nodiscard]] const char *getEnumName() const
+    {
+        return enum_name_;
+    }
+    [[nodiscard]] const CommandRegistry::Symbol &getEnumSymbol() const
+    {
+        return enum_symbol_;
+    }
+    [[nodiscard]] const char *getPostfixName() const
+    {
+        return postfix_name_;
+    }
+    [[nodiscard]] const CommandRegistry::Symbol &getPostfixSymbol() const
+    {
+        return postfix_symbol_;
+    }
+    [[nodiscard]] CommandParameterDataType getType() const
+    {
+        return type_;
+    }
+    [[nodiscard]] bool isOptional() const
+    {
+        return optional_;
+    }
+    [[nodiscard]] CommandParameterOption getOption() const
+    {
+        return option_;
     }
 
 private:

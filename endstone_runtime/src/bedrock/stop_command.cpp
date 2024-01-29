@@ -24,15 +24,12 @@ public:
     static void setup(CommandRegistry &registry)
     {
         registry.registerCommand("test", "Test command description", CommandPermissionLevel::Any, {128}, {0});
-        registry.registerOverload<TestCommand>("test", {1, INT_MAX});
-        printf("%d\n", Bedrock::type_id<CommandRegistry, std::string>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, std::string>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, bool>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, bool>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, float>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, float>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, int>().id());
-        printf("%d\n", Bedrock::type_id<CommandRegistry, int>().id());
+        auto version = CommandVersion{1, INT_MAX};
+        registry.registerOverload<TestCommand>("test", version);
+        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<std::string>("text"));
+        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<float>("value"));
+        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<int>("integer"));
+        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<bool>("boolean"));
     }
 
     void execute(const struct CommandOrigin &origin, struct CommandOutput &output) const override

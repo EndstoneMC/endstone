@@ -23,13 +23,7 @@ namespace Bedrock {
 template <typename Context>
 class typeid_t {  // NOLINT(*-identifier-naming)
 public:
-    uint32_t id()
-    {
-        return id_;
-    }
-
-private:
-    uint32_t id_;
+    uint16_t id;
 };
 
 template <typename Context, typename Type>

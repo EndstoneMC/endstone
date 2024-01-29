@@ -15,24 +15,16 @@
 #include "bedrock/type_id.h"
 
 #include "bedrock/command/command_registry.h"
-#include "endstone_runtime/hook.h"
 
-#define DEFINE_BEDROCK_TYPE_ID(Context, Type)                                  \
-    template <>                                                                \
-    BEDROCK_API Bedrock::typeid_t<Context> Bedrock::type_id<Context, Type>()   \
-    {                                                                          \
-        /* IMPORTANT: Use of lambda ensures unique template instantiations. */ \
-        static typeid_t<Context> id = []() {                                   \
-            Bedrock::typeid_t<Context> result;                                 \
-            auto fp = &Bedrock::type_id<Context, Type>;                        \
-            result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, &result);            \
-            return result;                                                     \
-        }();                                                                   \
-                                                                               \
-        return id;                                                             \
+#define DEFINE_BEDROCK_TYPE_ID(Context, Type, Value)             \
+    template <>                                                  \
+    Bedrock::typeid_t<Context> Bedrock::type_id<Context, Type>() \
+    {                                                            \
+        return {Value};                                          \
     }
 
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, std::string);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, bool);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, int);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, float);
+DEFINE_BEDROCK_TYPE_ID(CommandRegistry, std::string, 1);
+DEFINE_BEDROCK_TYPE_ID(CommandRegistry, bool, 2);
+DEFINE_BEDROCK_TYPE_ID(CommandRegistry, int, 5);
+DEFINE_BEDROCK_TYPE_ID(CommandRegistry, float, 6);
+DEFINE_BEDROCK_TYPE_ID(CommandRegistry, std::unique_ptr<Command>, 7);

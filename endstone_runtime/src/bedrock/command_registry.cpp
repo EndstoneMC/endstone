@@ -14,7 +14,33 @@
 
 #include "bedrock/command/command_registry.h"
 
+#include <spdlog/spdlog.h>
+
+#include "bedrock/type_id.h"
 #include "endstone_runtime/hook.h"
+
+namespace {
+
+class CommandParameterDataTemplate {
+public:
+    explicit CommandParameterDataTemplate(const CommandParameterData &data)
+        : type_id_(data.getTypeId()), parse_rule_(data.getParseRule())
+    {
+    }
+
+    CommandParameterData create(const char *name, bool optional)
+    {
+        return {type_id_, parse_rule_, name, static_cast<CommandParameterDataType>(0), nullptr, nullptr,
+                0,        optional,    0};
+    }
+
+private:
+    Bedrock::typeid_t<CommandRegistry> type_id_;
+    CommandRegistry::ParseRule parse_rule_;
+};
+
+std::unordered_map<uint32_t, CommandParameterDataTemplate> gCommandParameterTemplate;
+}  // namespace
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
                                       CommandFlag flag1, CommandFlag flag2)
@@ -27,8 +53,42 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
     return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::findCommand, this, name);
 }
 
+std::string CommandRegistry::describe(const CommandParameterData &param) const
+{
+    std::string result;
+    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, param);
+    return result;
+}
+
 void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signature,
                                                CommandRegistry::Overload &overload)
 {
+    printf("registerOverloadInternal\n");
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
+
+    printf("registerOverloadInternal\n");
+    for (const auto &param : overload.params) {
+        auto type_id = param.getTypeId();
+        if (gCommandParameterTemplate.find(type_id.id) != gCommandParameterTemplate.end()) {
+            continue;
+        }
+
+        // NOTE: Retrieve the typeid_t for each type after each game update and update values in `type_id.cpp`.
+        // spdlog::debug("Bedrock::typeid_t<CommandRegistry> = {}, Description = {}", type_id.id, describe(param));
+
+        // save the param as a template
+        gCommandParameterTemplate.emplace(type_id.id, CommandParameterDataTemplate(param));
+    }
+}
+
+CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
+                                                  bool optional)
+{
+    auto it = gCommandParameterTemplate.find(type_id.id);
+    if (it == gCommandParameterTemplate.end()) {
+        spdlog::error("Bedrock::typeid_t<CommandRegistry> = {} is not registered, terminating...", type_id.id);
+        std::terminate();
+    }
+
+    return it->second.create(name, optional);
 }
