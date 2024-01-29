@@ -31,7 +31,7 @@ namespace {
 std::unordered_map<void *, void *> gOriginals;
 }  // namespace
 
-namespace internals {
+namespace detail {
 void *get_original(void *detour)
 {
     auto it = gOriginals.find(detour);
@@ -40,7 +40,7 @@ void *get_original(void *detour)
     }
     return it->second;
 }
-}  // namespace internals
+}  // namespace detail
 
 void install()
 {
