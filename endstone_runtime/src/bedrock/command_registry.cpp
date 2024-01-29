@@ -56,7 +56,7 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
 std::string CommandRegistry::describe(const CommandParameterData &param) const
 {
     std::string result;
-    result = *ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, this, &result, param);
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, result, this, param);
     return result;
 }
 

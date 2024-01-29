@@ -75,7 +75,7 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 
 }  // namespace
 
-namespace internals {
+namespace detail {
 void *get_original(void *detour)
 {
     auto it = gOriginals.find(detour);
