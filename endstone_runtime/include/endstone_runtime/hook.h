@@ -27,25 +27,34 @@ namespace endstone::hook::internals {
 template <typename Return, typename... Args>
 void *fp_cast(Return (*fp)(Args...))
 {
-    std::function<Return(Args...)> func = fp;
-    void *target = *reinterpret_cast<void **>(func.template target<Return (*)(Args...)>());
-    return target;
+    union {
+        Return (*p)(Args...);
+        void *v;
+    } temp;
+    temp.p = fp;
+    return temp.v;
 }
 
 template <typename Return, typename Class, typename... Args>
 void *fp_cast(Return (Class::*fp)(Args...))
 {
-    std::function<Return(Class *, Args...)> func = fp;
-    void *target = *reinterpret_cast<void **>(func.template target<Return (Class::*)(Args...)>());
-    return target;
+    union {
+        Return (Class::*p)(Args...);
+        void *v;
+    } temp;
+    temp.p = fp;
+    return temp.v;
 }
 
 template <typename Return, typename Class, typename... Args>
 void *fp_cast(Return (Class::*fp)(Args...) const)
 {
-    std::function<Return(Class *, Args...)> func = fp;
-    void *target = *reinterpret_cast<void **>(func.template target<Return (Class::*)(Args...) const>());
-    return target;
+    union {
+        Return (Class::*p)(Args...) const;
+        void *v;
+    } temp;
+    temp.p = fp;
+    return temp.v;
 }
 
 void *get_original(void *detour);
@@ -92,7 +101,6 @@ inline std::function<Return *(Return *, Arg...)> get_original_rvo(Return (*fp)(A
 {
     return reinterpret_cast<Return *(*)(Return *, Arg...)>(get_original(fp_cast(fp)));
 }
-
 
 /**
  * @brief Construct a std::function from a class method (non-const, no ref-qualifier)
