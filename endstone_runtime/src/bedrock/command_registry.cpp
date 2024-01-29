@@ -63,10 +63,8 @@ std::string CommandRegistry::describe(const CommandParameterData &param) const
 void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signature,
                                                CommandRegistry::Overload &overload)
 {
-    printf("registerOverloadInternal\n");
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 
-    printf("registerOverloadInternal\n");
     for (const auto &param : overload.params) {
         auto type_id = param.getTypeId();
         if (gCommandParameterTemplate.find(type_id.id) != gCommandParameterTemplate.end()) {

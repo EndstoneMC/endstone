@@ -27,8 +27,8 @@ public:
         auto version = CommandVersion{1, INT_MAX};
         registry.registerOverload<TestCommand>("test", version);
         registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<std::string>("text"));
-        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<float>("value"));
-        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<int>("integer"));
+        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<float>("value", true));
+        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<int>("value", false));
         // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<bool>("boolean"));
     }
 

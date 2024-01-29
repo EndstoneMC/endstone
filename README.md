@@ -46,7 +46,7 @@ Please also ensure you have **Python 3.9 or higher** installed on your system.
 
 There are several ways to install Endstone:
 
-### PyPi
+### 🐍 PyPi
 
 Endstone can be installed from PyPi using pip. Open your terminal and execute the following command to install:
 
@@ -54,7 +54,7 @@ Endstone can be installed from PyPi using pip. Open your terminal and execute th
 pip install endstone
 ```
 
-### Build locally from Source
+### 🔨 Build locally from Source
 
 You also have the option to build Endstone locally from the source.
 
@@ -90,18 +90,19 @@ Finally, you can build the wheel and install it on your local machine:
 pip install .
 ```
 
-### Docker
+### 🐳 Docker
 
 To try Endstone from a Docker image, use the following command:
 
 ```shell
 docker pull endstone/endstone
-docker run --rm -it endstone/endstone
+docker run --rm -it -p 19132:19132/udp endstone/endstone
 ```
 
 or
 
 ```shell
+docker pull ghcr.io/endstonemc/endstone
 docker run --rm -it ghcr.io/endstonemc/endstone
 ```
 
