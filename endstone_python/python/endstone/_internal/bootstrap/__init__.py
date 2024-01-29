@@ -86,8 +86,8 @@ def cli(install_folder: str, install: bool, remote: str) -> int:
         if not install:
             download = click.confirm(
                 f"Bedrock Dedicated Server (v{server_version}) "
-                f"is found in {str(bootstrap.executable_path.parent)}. "
-                f"Would you like to download it from remote now?",
+                f"is not found in {str(bootstrap.executable_path.parent)}. "
+                f"Would you like to download it now?",
                 default=True,
             )
         else:

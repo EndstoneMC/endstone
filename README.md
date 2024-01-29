@@ -103,7 +103,7 @@ or
 
 ```shell
 docker pull ghcr.io/endstonemc/endstone
-docker run --rm -it ghcr.io/endstonemc/endstone
+docker run --rm -it -p 19132:19132/udp ghcr.io/endstonemc/endstone
 ```
 
 This will pull the latest Endstone image and run it interactively in your terminal.
