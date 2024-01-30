@@ -20,7 +20,19 @@ class EndstoneRecipe(ConanFile):
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True, "lief/*:with_json": False, "lief/*:with_frozen": False}
+    default_options = {
+        "shared": False,
+        "fPIC": True,
+        "lief/*:with_frozen": False,
+        "lief/*:with_json": False,
+        "lief/*:with_c_api": False,
+        "lief/*:with_art": False,
+        "lief/*:with_dex": False,
+        "lief/*:with_macho": False,
+        "lief/*:with_oat": False,
+        "lief/*:with_pe": False,
+        "lief/*:with_vdex": False,
+    }
 
     # Sources are located in the same place as this recipe, copy them to the recipe
     exports_sources = (
