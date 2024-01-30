@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <functional>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -123,22 +124,42 @@ enum CommandParameterOption : char;
 class CommandParameterData {
 
 public:
-    template <typename Type>
-    static CommandParameterData create(const char *name, bool optional = false)
+    template <typename Command, typename Type>
+    static CommandParameterData create(const char *name, Type Command::*data)
     {
-        return create(Bedrock::type_id<CommandRegistry, Type>(), name, optional);
+        union {
+            Type Command::*p;
+            uint32_t v;
+        } tmp;
+        tmp.p = data;
+        return create(Bedrock::type_id<CommandRegistry, Type>(), name, tmp.v, false, -1);
+    }
+
+    template <typename Command, typename Type>
+    static CommandParameterData create(const char *name, std::optional<Type> Command::*data)
+    {
+        union {
+            std::optional<Type> Command::*p;
+            uint32_t v;
+        } tmp;
+        tmp.p = data;
+        // tmp.v + sizeof(Type) is based on the assumption of std::optional implementation
+        // https://github.com/llvm/llvm-project/blob/659ce8f66597ba19845e407d06156ff33c8c7fb1/libc/src/__support/CPP/optional.h#L30
+        // https://github.com/microsoft/STL/blob/32e65ac3e54a7150202cc9b3cc4de7330d58d24e/stl/inc/optional#L97
+        return create(Bedrock::type_id<CommandRegistry, Type>(), name, tmp.v, true, tmp.v + sizeof(Type));
     }
 
 private:
     static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
-                                       bool optional);
+                                       int offset_value, bool optional, int offset_has_value);
 
 public:
     CommandParameterData(const Bedrock::typeid_t<CommandRegistry> &type_id, CommandRegistry::ParseRule parse_rule,
                          const char *name, CommandParameterDataType type, const char *enum_name,
-                         const char *postfix_name, int unknown4, bool optional, int unknown5)
+                         const char *postfix_name, int offset_value, bool optional, int offset_has_value)
         : type_id_(type_id), parse_rule_(parse_rule), name_(name), type_(type), enum_name_(enum_name),
-          postfix_name_(postfix_name), unknown4_(unknown4), optional_(optional), unknown5_(unknown5)
+          postfix_name_(postfix_name), offset_value_(offset_value), optional_(optional),
+          offset_has_value_(offset_has_value)
     {
     }
 
@@ -193,8 +214,8 @@ private:
     const char *postfix_name_;                    // +64
     CommandRegistry::Symbol postfix_symbol_;      // +72
     CommandParameterDataType type_;               // +76
-    int unknown4_;                                // +80
-    int unknown5_;                                // +84
+    int offset_value_;                            // +80
+    int offset_has_value_;                        // +84
     bool optional_;                               // +88
     CommandParameterOption option_;               // +89
 };

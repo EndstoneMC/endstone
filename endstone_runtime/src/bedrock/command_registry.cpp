@@ -28,10 +28,11 @@ public:
     {
     }
 
-    CommandParameterData create(const char *name, bool optional)
+    CommandParameterData create(const char *name, int offset_value, bool optional, int offset_has_value)
     {
-        return {type_id_, parse_rule_, name, static_cast<CommandParameterDataType>(0), nullptr, nullptr,
-                0,        optional,    0};
+        return {type_id_,        parse_rule_, name,         static_cast<CommandParameterDataType>(0),
+                nullptr,         nullptr,     offset_value, optional,
+                offset_has_value};
     }
 
 private:
@@ -80,7 +81,7 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
 }
 
 CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
-                                                  bool optional)
+                                                  int offset_value, bool optional, int offset_has_value)
 {
     auto it = gCommandParameterTemplate.find(type_id.id);
     if (it == gCommandParameterTemplate.end()) {
@@ -88,5 +89,5 @@ CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<Comman
         std::terminate();
     }
 
-    return it->second.create(name, optional);
+    return it->second.create(name, offset_value, optional, offset_has_value);
 }

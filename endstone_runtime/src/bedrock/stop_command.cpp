@@ -14,6 +14,10 @@
 
 #include "bedrock/command/stop_command.h"
 
+#include <optional>
+
+#include <spdlog/spdlog.h>
+
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
 #include "bedrock/type_id.h"
@@ -23,19 +27,38 @@ class TestCommand : public Command {
 public:
     static void setup(CommandRegistry &registry)
     {
-        registry.registerCommand("test", "Test command description", CommandPermissionLevel::Any, {128}, {0});
         auto version = CommandVersion{1, INT_MAX};
+
+        registry.registerCommand("test", "Test command description", CommandPermissionLevel::Any, {128}, {0});
         registry.registerOverload<TestCommand>("test", version);
-        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<std::string>("text"));
-        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<float>("value", true));
-        registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<int>("value", false));
-        // registry.registerOverload<TestCommand>("test", version, CommandParameterData::create<bool>("boolean"));
+        registry.registerOverload<TestCommand>("test", version,
+                                               CommandParameterData::create("text", &TestCommand::text_));
+
+        registry.registerOverload<TestCommand>("test", version,
+                                               CommandParameterData::create("value", &TestCommand::i_));
+
+        registry.registerCommand("testo", "Test optional command description", CommandPermissionLevel::Any, {128}, {0});
+        registry.registerOverload<TestCommand>("testo", version,
+                                               CommandParameterData::create("optional value", &TestCommand::f_));
     }
 
     void execute(const struct CommandOrigin &origin, struct CommandOutput &output) const override
     {
-        printf("Hello world from Endstone!!\n");
+        spdlog::info("String: {}", text_);
+        spdlog::info("Int: {}", i_);
+
+        if (f_.has_value()) {
+            spdlog::info("Float: {}", f_.value());
+        }
+        else {
+            spdlog::info("Float: no value");
+        }
     }
+
+private:
+    std::string text_;
+    int i_;
+    std::optional<float> f_;
 };
 
 void StopCommand::setup(CommandRegistry &registry, DedicatedServer &server)
