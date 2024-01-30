@@ -12,6 +12,10 @@
   </p>
 </div>
 
+[![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)
+
 ## 📄 Table of Contents
 
 - [📖 Introduction](#-introduction-)
