@@ -29,7 +29,8 @@ functionalities.
 
 | System         | Build Status                                                                                                                                                       |
 |----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows x86_64 | [![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml) |
+| Windows x86_64 | [![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone?ref=badge_shield)
+|
 | Linux x86_64   | [![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)       |
 | Wheel          | [![Wheel](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml)       |
 | Docker         | [![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)    |
@@ -128,3 +129,6 @@ Please ensure your code follows our coding standards and include tests where pos
 ## 🎫 License [🔝](#-table-of-contents)
 
 The Endstone project is licensed under the [Apache-2.0 license](LICENSE).
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FEndstoneMC%2Fendstone?ref=badge_large)
