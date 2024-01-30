@@ -35,7 +35,7 @@ RUN apt-get update -y -q \
 
 WORKDIR /usr/src/endstone
 
-RUN git clone --branch next https://github.com/EndstoneMC/endstone.git .
+RUN git clone https://github.com/EndstoneMC/endstone.git .
 
 RUN python -m pip install --upgrade pip \
     && pip install conan \
@@ -48,7 +48,7 @@ RUN python -m pip install --upgrade pip \
     && python -m pip wheel . --no-deps --wheel-dir=wheelhouse --verbose \
     && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w wheelhouse wheelhouse/*.whl \
     && pip install wheelhouse/*.whl \
-    && pytest endstone_python/test
+    && pytest python/tests
 
 FROM base AS final
 

@@ -1,15 +1,16 @@
-name: Docker Publish
+name: Docker
 
 on:
   schedule:
     - cron: '0 0 * * *'
   push:
-    branches: [ "next" ]
-    tags: [ 'v*.*.*' ]
+    branches:
+      - main
+    tags:
+      - '*'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -46,7 +47,7 @@ jobs:
             endstone/endstone
             ghcr.io/endstonemc/endstone
           tags: |
-            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'next') }}
+            type=raw,value=latest,enable=${{is_default_branch}}
             type=pep440,pattern={{version}}
 
       - name: Build and Push Docker Image
