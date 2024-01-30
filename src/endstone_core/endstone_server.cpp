@@ -22,6 +22,10 @@ namespace fs = std::filesystem;
 #include "endstone_core/logger_factory.h"
 #include "endstone_core/plugin/cpp_plugin_loader.h"
 
+#if !defined(ENDSTONE_VERSION)
+#error ENDSTONE_VERSION is not defined
+#endif
+
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);

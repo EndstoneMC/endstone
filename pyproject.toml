@@ -48,14 +48,14 @@ endstone = "endstone._internal.bootstrap:cli"
 [tool.scikit-build]
 cmake.args = ["-G Ninja", "--preset conan-release"]
 cmake.define = { BUILD_TESTING = "OFF" }
-wheel.packages = ["endstone_python/python/endstone"]
+wheel.packages = ["python/src/endstone"]
 wheel.license-files = ["LICENSE"]
 install.components = ["endstone_wheel"]
 install.strip = false
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
-sdist.include = ["endstone_python/python/endstone/_internal/version.py"]
+sdist.include = ["python/src/endstone/_internal/version.py"]
 
 [tool.setuptools_scm]
-write_to = "endstone_python/python/endstone/_internal/version.py"
+write_to = "python/src/endstone/_internal/version.py"
 version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"

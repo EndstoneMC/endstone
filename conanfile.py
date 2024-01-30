@@ -44,15 +44,7 @@ class EndstoneRecipe(ConanFile):
         "lief/*:with_vdex": False,
     }
 
-    # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = (
-        "CMakeLists.txt",
-        "cmake/*",
-        "endstone_api/*",
-        "endstone_core/*",
-        "endstone_python/*",
-        "endstone_runtime/*",
-    )
+    exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
 
     def set_version(self):
         if self.version:
@@ -154,14 +146,14 @@ class EndstoneRecipe(ConanFile):
         cmake.install()
 
     def package_info(self):
-        self.cpp_info.components["api"].libs = []
-        self.cpp_info.components["api"].libdirs = []
-        self.cpp_info.components["api"].set_property("cmake_target_name", "endstone::api")
-        self.cpp_info.components["api"].requires = ["fmt::fmt"]
+        self.cpp_info.components["headers"].libs = []
+        self.cpp_info.components["headers"].libdirs = []
+        self.cpp_info.components["headers"].set_property("cmake_target_name", "endstone::headers")
+        self.cpp_info.components["headers"].requires = ["fmt::fmt"]
 
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["api", "spdlog::spdlog"]
+        self.cpp_info.components["core"].requires = ["spdlog::spdlog"]
         self.cpp_info.components["core"].defines = ["PYBIND11_USE_SMART_HOLDER_AS_DEFAULT"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
@@ -169,7 +161,6 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
         self.cpp_info.components["runtime"].requires = [
-            "api",
             "core",
             "funchook::funchook",
             "magic_enum::magic_enum",
