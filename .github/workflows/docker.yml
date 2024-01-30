@@ -48,7 +48,7 @@ jobs:
             endstone/endstone
             ghcr.io/endstonemc/endstone
           tags: |
-            type=raw,value=latest,enable=${{is_default_branch}}
+            type=raw,value=latest,enable={{ is_default_branch }}
             type=pep440,pattern={{version}}
 
       - name: Build and Push

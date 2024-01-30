@@ -27,10 +27,12 @@ functionalities.
 
 ### Build Status
 
-| System         | Build Status                                                                                                                                                                           |
-|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows x86_64 | [![Endstone CI (Windows)](https://github.com/EndstoneMC/endstone/actions/workflows/ci-windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/ci-windows.yml) |
-| Linux x86_64   | [![Endstone CI (Linux)](https://github.com/EndstoneMC/endstone/actions/workflows/ci-linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/ci-linux.yml)       |
+| System         | Build Status                                                                                                                                                       |
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Windows x86_64 | [![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml) |
+| Linux x86_64   | [![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)       |
+| Wheel          | [![Wheel](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml)       |
+| Docker         | [![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)    |
 
 ## 🛠️ Installation [🔝](#-table-of-contents)
 
