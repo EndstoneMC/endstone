@@ -1,4 +1,4 @@
-name: Linux
+name: Code Coverage
 
 on:
   push:

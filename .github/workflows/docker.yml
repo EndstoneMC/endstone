@@ -10,7 +10,8 @@ on:
       - '*'
 
 jobs:
-  build:
+  build-push:
+    name: Build and Publish Docker Image
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -39,7 +40,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract Docker Metadata
+      - name: Extract Metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -50,7 +51,7 @@ jobs:
             type=raw,value=latest,enable=${{is_default_branch}}
             type=pep440,pattern={{version}}
 
-      - name: Build and Push Docker Image
+      - name: Build and Push
         id: build-and-push
         uses: docker/build-push-action@v5
         with:
