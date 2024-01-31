@@ -7,9 +7,9 @@
 
 <h3 align="center">Endstone</h3>
 
-  <p align="center">
-    Write your plugins in Python and C++ for Bedrock Dedicated Servers.
-  </p>
+<p align="center">
+  Write your plugins in Python and C++ for Bedrock Dedicated Servers.
+</p>
 </div>
 
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
