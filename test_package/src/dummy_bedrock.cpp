@@ -16,5 +16,5 @@
 
 std::string Common::getGameVersionString()
 {
-    return "1.20.30 (dummy)";
+    return "dummy-version";
 }
