@@ -52,6 +52,8 @@ ENDSTONE_RUNTIME_CTOR int main()
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
+        SetConsoleCP(CP_UTF8);
+        SetConsoleOutputCP(CP_UTF8);
         main();
         break;
     }
