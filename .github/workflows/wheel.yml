@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - main
-  release:
-    types:
-      - published
+    tags:
+      - '*'
   workflow_dispatch:
 
 jobs:
@@ -157,7 +156,7 @@ jobs:
 
   publish:
     name: Publish Wheels to PyPI
-    if: github.event_name == 'release' && github.event.action == 'published'
+    if: contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     needs: [ build_wheels_windows, build_wheels_linux, build_sdist ]
     environment: pypi
