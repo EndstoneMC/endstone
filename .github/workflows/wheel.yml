@@ -171,5 +171,10 @@ jobs:
           name: artifact
           path: dist
 
+      - name: Create a Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
