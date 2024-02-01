@@ -27,9 +27,9 @@ void BedrockTextFormatter::format(const spdlog::details::log_msg &msg, const tm 
             i += 2;                  // Skip §
             if (i < input.size()) {  // if there's a color code character to after §
                 if (should_do_colors_) {
-                    auto code = static_cast<unsigned char>(input[i]);
-                    auto it = color_translation.find(code);
-                    if (it != color_translation.end()) {
+                    auto format_code = static_cast<unsigned char>(input[i]);
+                    auto it = ansi_codes.find(format_code);
+                    if (it != ansi_codes.end()) {
                         spdlog::details::fmt_helper::append_string_view(it->second, dest);
                     }
                     else {
