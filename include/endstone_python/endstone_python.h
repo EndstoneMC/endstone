@@ -18,6 +18,7 @@
 
 namespace py = pybind11;
 
+void def_color_format(py::module &m);
 void def_logger(py::module &m);
 void def_server(py::module &m);
 void def_plugin(py::module &m);

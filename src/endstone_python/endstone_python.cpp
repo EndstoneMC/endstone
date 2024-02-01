@@ -20,6 +20,7 @@ namespace py = pybind11;
 
 PYBIND11_MODULE(endstone_python, m)
 {
+    def_color_format(m);
     def_logger(m);
     def_server(m);
     def_plugin(m);
