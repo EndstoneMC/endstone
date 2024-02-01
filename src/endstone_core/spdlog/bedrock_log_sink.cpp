@@ -18,16 +18,17 @@
 #include <spdlog/sinks/base_sink-inl.h>
 
 #include "endstone_core/spdlog/bedrock_level_formatter.h"
+#include "endstone_core/spdlog/bedrock_text_formatter.h"
 
 BedrockLogSink::BedrockLogSink(FILE *target_file, spdlog::color_mode mode)
     : target_file_(target_file), spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t>(
                                      spdlog::details::make_unique<spdlog::pattern_formatter>())
 {
+    set_color_mode(mode);
     auto *formatter = dynamic_cast<spdlog::pattern_formatter *>(formatter_.get());
     formatter->add_flag<BedrockLevelFormatter>('L');
+    formatter->add_flag<BedrockTextFormatter>('v', should_do_colors_);
     formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
-    // TODO: replace minecraft color format with ansi code
-    set_color_mode(mode);
     colors_.at(spdlog::level::trace) = to_string(white);
     colors_.at(spdlog::level::debug) = to_string(cyan);
     colors_.at(spdlog::level::info) = to_string(reset);

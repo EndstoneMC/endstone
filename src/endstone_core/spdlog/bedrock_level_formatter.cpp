@@ -14,6 +14,8 @@
 
 #include "endstone_core/spdlog/bedrock_level_formatter.h"
 
+#include <spdlog/details/fmt_helper.h>
+
 void BedrockLevelFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
 {
     static const std::unordered_map<spdlog::level::level_enum, std::string_view> level_names = {
@@ -23,8 +25,7 @@ void BedrockLevelFormatter::format(const spdlog::details::log_msg &msg, const tm
     };
 
     const auto level_name = level_names.find(msg.level)->second;
-    const auto *buf_ptr = level_name.data();
-    dest.append(buf_ptr, buf_ptr + level_name.size());
+    spdlog::details::fmt_helper::append_string_view(level_name, dest);
 }
 
 std::unique_ptr<spdlog::custom_flag_formatter> BedrockLevelFormatter::clone() const
