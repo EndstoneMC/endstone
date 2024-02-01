@@ -34,7 +34,7 @@ CheckOptions:
   readability-identifier-naming.ClassMethodCase: camelCase
   readability-identifier-naming.ConstantCase: lower_case
   readability-identifier-naming.ConstantMemberCase: lower_case
-  readability-identifier-naming.ConstantMemberSuffix: '_'
+  readability-identifier-naming.ConstantMemberSuffix: ''
   readability-identifier-naming.ConstantParameterCase: lower_case
   readability-identifier-naming.ConstantPointerParameterCase: lower_case
   readability-identifier-naming.ConstexprFunctionCase: aNy_CasE
@@ -70,7 +70,7 @@ CheckOptions:
   readability-identifier-naming.PublicMemberSuffix: ''
   readability-identifier-naming.PublicMethodCase: camelCase
   readability-identifier-naming.ScopedEnumConstantCase: CamelCase
-  readability-identifier-naming.StaticConstantCase: CamelCase
+  readability-identifier-naming.StaticConstantCase: lower_case
   readability-identifier-naming.StaticVariableCase: lower_case
   readability-identifier-naming.StructCase: CamelCase
   readability-identifier-naming.TemplateParameterCase: CamelCase

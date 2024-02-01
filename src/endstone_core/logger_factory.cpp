@@ -17,59 +17,9 @@
 #include <mutex>
 #include <string>
 #include <unordered_map>
-#include <utility>
 
-#include <spdlog/pattern_formatter.h>
-#include <spdlog/sinks/ansicolor_sink-inl.h>
-#include <spdlog/sinks/ansicolor_sink.h>
-#include <spdlog/spdlog.h>
-
-template class SPDLOG_API spdlog::sinks::ansicolor_stdout_sink<spdlog::details::console_mutex>;
-
-class LevelFormatter : public spdlog::custom_flag_formatter {
-public:
-    void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override
-    {
-        static const std::unordered_map<spdlog::level::level_enum, std::string_view> SpdlogLevelNames = {
-            {spdlog::level::trace, "TRACE"},  {spdlog::level::debug, "DEBUG"}, {spdlog::level::info, "INFO"},
-            {spdlog::level::warn, "WARNING"}, {spdlog::level::err, "ERROR"},   {spdlog::level::critical, "CRITICAL"},
-            {spdlog::level::off, "OFF"},
-        };
-
-        const auto level_name = SpdlogLevelNames.find(msg.level)->second;
-        const auto *buf_ptr = level_name.data();
-        dest.append(buf_ptr, buf_ptr + level_name.size());
-    }
-
-    [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override
-    {
-        return spdlog::details::make_unique<LevelFormatter>();
-    }
-};
-
-SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger)) {}
-
-void SpdLogAdapter::log(Logger::Level level, const std::string &message) const
-{
-    if (isEnabledFor(level)) {
-        logger_->log(static_cast<spdlog::level::level_enum>(level), message);
-    }
-}
-
-void SpdLogAdapter::setLevel(Logger::Level level)
-{
-    logger_->set_level(static_cast<spdlog::level::level_enum>(level));
-}
-
-bool SpdLogAdapter::isEnabledFor(Logger::Level level) const
-{
-    return logger_->should_log(static_cast<spdlog::level::level_enum>(level));
-}
-
-std::string_view SpdLogAdapter::getName() const
-{
-    return logger_->name();
-}
+#include "endstone_core/spdlog/bedrock_log_sink.h"
+#include "endstone_core/spdlog/spdlog_adapter.h"
 
 Logger &LoggerFactory::getLogger(const std::string &name)
 {
@@ -82,13 +32,7 @@ Logger &LoggerFactory::getLogger(const std::string &name)
         return it->second;
     }
 
-    auto formatter = std::make_unique<spdlog::pattern_formatter>();
-    formatter->add_flag<LevelFormatter>('L').set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
-
-    auto console_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
-    console_sink->set_formatter(std::move(formatter));
-    console_sink->set_color(spdlog::level::info, console_sink->reset);
-
+    spdlog::sink_ptr console_sink = std::make_shared<BedrockLogSink>(stdout);
     auto console = std::make_shared<spdlog::logger>(name, console_sink);
     spdlog::register_logger(console);
     it = loggers.emplace(name, SpdLogAdapter(console)).first;

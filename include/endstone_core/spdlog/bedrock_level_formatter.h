@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,13 +14,12 @@
 
 #pragma once
 
-#include <string>
-
+#include <spdlog/pattern_formatter.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone/logger.h"
-
-class LoggerFactory {
+class BedrockLevelFormatter : public spdlog::custom_flag_formatter {
 public:
-    static Logger &getLogger(const std::string &name);
+    void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
+
+    [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override;
 };

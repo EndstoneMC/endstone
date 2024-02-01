@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,13 +14,18 @@
 
 #pragma once
 
-#include <string>
-
 #include <spdlog/spdlog.h>
 
 #include "endstone/logger.h"
 
-class LoggerFactory {
+class SpdLogAdapter : public Logger {
 public:
-    static Logger &getLogger(const std::string &name);
+    explicit SpdLogAdapter(std::shared_ptr<spdlog::logger> logger);
+    void setLevel(Level level) override;
+    [[nodiscard]] bool isEnabledFor(Level level) const override;
+    [[nodiscard]] std::string_view getName() const override;
+    void log(Level level, const std::string &message) const override;
+
+private:
+    std::shared_ptr<spdlog::logger> logger_;
 };
