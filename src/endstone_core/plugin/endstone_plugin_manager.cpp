@@ -80,7 +80,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
 
             auto name = plugin->getDescription().getName();
 
-            if (!std::regex_match(name, PluginDescription::ValidName)) {
+            if (!std::regex_match(name, PluginDescription::VALID_NAME)) {
                 server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", name);
                 continue;
             }
