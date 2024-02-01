@@ -28,8 +28,13 @@ void BedrockTextFormatter::format(const spdlog::details::log_msg &msg, const tm 
             if (i < input.size()) {  // if there's a color code character to after §
                 if (should_do_colors_) {
                     auto code = static_cast<unsigned char>(input[i]);
-                    auto ansi_code = color_translation.at(code);
-                    spdlog::details::fmt_helper::append_string_view(ansi_code, dest);
+                    auto it = color_translation.find(code);
+                    if (it != color_translation.end()) {
+                        spdlog::details::fmt_helper::append_string_view(it->second, dest);
+                    }
+                    else {
+                        fmt::format_to(std::back_inserter(dest), "{}", input[i]);
+                    }
                 }
             }
         }
