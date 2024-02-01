@@ -55,5 +55,16 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     std::string message(buf.data(), len);
     message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
 
-    logger.log(log_level, "{}", message);
+    std::string_view sv(message);
+    size_t start = 0;
+    size_t end;
+
+    while ((end = sv.find('\n', start)) != std::string::npos) {
+        logger.log(log_level, sv.substr(start, end - start));
+        start = end + 1;
+    }
+
+    if (start < sv.length()) {
+        logger.log(log_level, sv.substr(start));
+    }
 }
