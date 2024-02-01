@@ -25,14 +25,14 @@
 #include "endstone/logger.h"
 #include "endstone_core/logger_factory.h"
 
-void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
-                        LogAreaID area, LogLevel level, const char *function, int line, const char *format,
+void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*flags*/, BedrockLog::LogRule /*rule*/,
+                        LogAreaID area, LogLevel level, const char * /*function*/, int /*line*/, const char *format,
                         va_list args)
 {
     auto name = magic_enum::enum_name(area);
     auto &logger = LoggerFactory::getLogger(std::string(name));
 
-    static const std::unordered_map<LogLevel, Logger::Level> LevelMapping = {
+    static const std::unordered_map<LogLevel, Logger::Level> log_levels = {
         {1, Logger::Level::Debug},
         {2, Logger::Level::Info},
         {4, Logger::Level::Warning},
@@ -40,8 +40,8 @@ void BedrockLog::log_va(BedrockLog::LogCategory category, std::bitset<3> flags, 
     };
 
     Logger::Level log_level = Logger::Level::Critical;
-    auto iter = LevelMapping.find(level);
-    if (iter != LevelMapping.end()) {
+    auto iter = log_levels.find(level);
+    if (iter != log_levels.end()) {
         log_level = iter->second;
     }
 

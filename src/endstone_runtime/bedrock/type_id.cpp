@@ -21,7 +21,8 @@
     Bedrock::typeid_t<Context> Bedrock::type_id<Context, Type>() \
     {                                                            \
         return {Value};                                          \
-    }
+    }                                                            \
+    [[maybe_unused]] void __##Context##__##Value()
 
 DEFINE_BEDROCK_TYPE_ID(CommandRegistry, std::string, 1);
 DEFINE_BEDROCK_TYPE_ID(CommandRegistry, bool, 2);

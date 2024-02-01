@@ -192,8 +192,8 @@ const std::error_category &hook_error_category() noexcept
                 return "Unknown error.";
             }
         }
-    } CATEGORY;
-    return CATEGORY;
+    } category;
+    return category;
 }
 }  // namespace endstone::hook
 

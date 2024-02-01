@@ -2,7 +2,7 @@ import importlib
 
 
 def test_import_endstone():
-    module = importlib.import_module("endstone")
+    importlib.import_module("endstone")
 
 
 def test_import_server():

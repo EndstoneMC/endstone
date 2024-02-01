@@ -16,9 +16,7 @@
 
 #include <pybind11/pybind11.h>
 
-namespace py = pybind11;
-
-PYBIND11_MODULE(endstone_python, m)
+PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
     def_color_format(m);
     def_logger(m);

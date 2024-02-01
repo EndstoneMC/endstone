@@ -24,21 +24,21 @@ BedrockLogSink::BedrockLogSink(FILE *target_file, spdlog::color_mode mode)
     : target_file_(target_file), spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t>(
                                      spdlog::details::make_unique<spdlog::pattern_formatter>())
 {
-    set_color_mode(mode);
+    setColorMode(mode);
     auto *formatter = dynamic_cast<spdlog::pattern_formatter *>(formatter_.get());
     formatter->add_flag<BedrockLevelFormatter>('L');
     formatter->add_flag<BedrockTextFormatter>('v', should_do_colors_);
     formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
-    colors_.at(spdlog::level::trace) = to_string(white);
-    colors_.at(spdlog::level::debug) = to_string(cyan);
-    colors_.at(spdlog::level::info) = to_string(reset);
-    colors_.at(spdlog::level::warn) = to_string(yellow_bold);
-    colors_.at(spdlog::level::err) = to_string(red_bold);
-    colors_.at(spdlog::level::critical) = to_string(bold_on_red);
-    colors_.at(spdlog::level::off) = to_string(reset);
+    colors_.at(spdlog::level::trace) = toString(white);
+    colors_.at(spdlog::level::debug) = toString(cyan);
+    colors_.at(spdlog::level::info) = toString(reset);
+    colors_.at(spdlog::level::warn) = toString(yellow_bold);
+    colors_.at(spdlog::level::err) = toString(red_bold);
+    colors_.at(spdlog::level::critical) = toString(bold_on_red);
+    colors_.at(spdlog::level::off) = toString(reset);
 }
 
-void BedrockLogSink::set_color_mode(spdlog::color_mode mode)
+void BedrockLogSink::setColorMode(spdlog::color_mode mode)
 {
     switch (mode) {
     case spdlog::color_mode::always:
@@ -53,7 +53,7 @@ void BedrockLogSink::set_color_mode(spdlog::color_mode mode)
     }
 }
 
-std::string BedrockLogSink::to_string(const spdlog::string_view_t &sv)
+std::string BedrockLogSink::toString(const spdlog::string_view_t &sv)
 {
     return {sv.data(), sv.size()};
 }
@@ -66,17 +66,17 @@ void BedrockLogSink::sink_it_(const spdlog::details::log_msg &msg)
     formatter_->format(msg, formatted);
     if (should_do_colors_ && msg.color_range_end > msg.color_range_start) {
         // before color range
-        print_range_(formatted, 0, msg.color_range_start);
+        printRange(formatted, 0, msg.color_range_start);
         // in color range
-        print_ccode_(colors_.at(static_cast<size_t>(msg.level)));
-        print_range_(formatted, msg.color_range_start, msg.color_range_end);
-        print_ccode_(reset);
+        printColorCode(colors_.at(static_cast<size_t>(msg.level)));
+        printRange(formatted, msg.color_range_start, msg.color_range_end);
+        printColorCode(reset);
         // after color range
-        print_range_(formatted, msg.color_range_end, formatted.size());
+        printRange(formatted, msg.color_range_end, formatted.size());
     }
     else  // no color
     {
-        print_range_(formatted, 0, formatted.size());
+        printRange(formatted, 0, formatted.size());
     }
     fflush(target_file_);
 }
@@ -86,12 +86,12 @@ void BedrockLogSink::flush_()
     fflush(target_file_);
 }
 
-void BedrockLogSink::print_ccode_(const spdlog::string_view_t &color_code)
+void BedrockLogSink::printColorCode(const spdlog::string_view_t &color_code)
 {
     fwrite(color_code.data(), sizeof(char), color_code.size(), target_file_);
 }
 
-void BedrockLogSink::print_range_(const spdlog::memory_buf_t &formatted, size_t start, size_t end)
+void BedrockLogSink::printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end)
 {
     fwrite(formatted.data() + start, sizeof(char), end - start, target_file_);
 }

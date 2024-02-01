@@ -98,7 +98,6 @@ public:
 
 private:
     friend class PluginLoader;
-    friend class PluginLoaderBase;
 
     /**
      * Sets the enabled state of this plugin

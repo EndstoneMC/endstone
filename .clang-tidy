@@ -42,7 +42,7 @@ CheckOptions:
   readability-identifier-naming.ConstexprVariableCase: CamelCase
   readability-identifier-naming.EnumCase: CamelCase
   readability-identifier-naming.EnumConstantCase: CamelCase
-  readability-identifier-naming.FunctionCase: lower_case
+  readability-identifier-naming.FunctionCase: aNy_CasE
   readability-identifier-naming.GlobalConstantCase: UPPER_CASE
   readability-identifier-naming.GlobalConstantPointerCase: CamelCase
   readability-identifier-naming.GlobalVariableCase: CamelCase

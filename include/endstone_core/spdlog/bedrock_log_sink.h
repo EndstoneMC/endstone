@@ -25,7 +25,7 @@
 class BedrockLogSink : public spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t> {
 public:
     explicit BedrockLogSink(FILE *target_file, spdlog::color_mode mode = spdlog::color_mode::automatic);
-    void set_color_mode(spdlog::color_mode mode);
+    void setColorMode(spdlog::color_mode mode);
 
 protected:
     void sink_it_(const spdlog::details::log_msg &msg) override;
@@ -68,9 +68,9 @@ public:
     const spdlog::string_view_t bold_on_red = "\033[1m\033[41m";
 
 private:
-    void print_ccode_(const spdlog::string_view_t &color_code);
-    void print_range_(const spdlog::memory_buf_t &formatted, size_t start, size_t end);
-    static std::string to_string(const spdlog::string_view_t &sv);
+    void printColorCode(const spdlog::string_view_t &color_code);
+    void printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end);
+    static std::string toString(const spdlog::string_view_t &sv);
 
     FILE *target_file_;
     bool should_do_colors_;

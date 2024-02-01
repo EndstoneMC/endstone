@@ -69,7 +69,7 @@ public:
         return prefix_;
     }
 
-    inline const static std::regex ValidName{"^[A-Za-z0-9 _.-]+$"};
+    inline const static std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
 
 private:
     std::string name_;

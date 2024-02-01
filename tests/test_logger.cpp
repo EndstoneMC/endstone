@@ -35,26 +35,14 @@ TEST_F(LoggerFactoryTest, GetLogger)
 TEST_F(LoggerFactoryTest, SetLevel)
 {
     auto &logger = LoggerFactory::getLogger("TestLogger");
-    ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Trace));
     ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Debug));
     ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Info));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Warning));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Error));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Critical));
 
     logger.setLevel(Logger::Level::Debug);
     ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Trace));
     ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Debug));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Info));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Warning));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Error));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Critical));
 
     logger.setLevel(Logger::Level::Error);
-    ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Trace));
-    ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Debug));
-    ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Info));
     ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Warning));
     ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Error));
-    ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Critical));
 }

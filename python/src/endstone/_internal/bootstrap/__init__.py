@@ -6,7 +6,6 @@ import platform
 import sys
 
 import click
-
 from endstone._internal.version import __version__, __version_tuple__
 
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s %(levelname)s] [%(name)s] %(message)s")
@@ -52,7 +51,7 @@ def catch_exceptions(func):
 )
 @click.version_option(__version__)
 @catch_exceptions
-def cli(install_folder: str, install: bool, remote: str) -> int:
+def cli(install_folder: str, install: bool, remote: str) -> None:
     """
     Starts an endstone server.
 

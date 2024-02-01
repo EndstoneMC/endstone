@@ -45,7 +45,7 @@ class LinuxBootstrap(Bootstrap):
             (Path): Path object representing the path of the linked libpython.
         """
 
-        class Dl_info(ctypes.Structure):
+        class DlInfo(ctypes.Structure):
             # https://www.man7.org/linux/man-pages/man3/dladdr.3.html
             _fields_ = [
                 ("dli_fname", ctypes.c_char_p),
@@ -55,10 +55,10 @@ class LinuxBootstrap(Bootstrap):
             ]
 
         libdl = ctypes.CDLL(ctypes.util.find_library("dl"))
-        libdl.dladdr.argtypes = [ctypes.c_void_p, ctypes.POINTER(Dl_info)]
+        libdl.dladdr.argtypes = [ctypes.c_void_p, ctypes.POINTER(DlInfo)]
         libdl.dladdr.restype = ctypes.c_int
 
-        dlinfo = Dl_info()
+        dlinfo = DlInfo()
         retcode = libdl.dladdr(ctypes.cast(ctypes.pythonapi.Py_GetVersion, ctypes.c_void_p), ctypes.pointer(dlinfo))
         assert retcode != 0, ValueError(
             "dladdr cannot match the address of ctypes.pythonapi.Py_GetVersion to a shared object"
