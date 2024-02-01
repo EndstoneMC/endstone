@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/color_format.h"
+#include "endstone/util/color_format.h"
 
 #include "endstone_python/endstone_python.h"
 
@@ -20,7 +20,7 @@
 
 void def_color_format(py::module &m)
 {
-    py::class_<ColorFormat>(m, "ColorFormat")  //
+    py::class_<ColorFormat>(m, "ColorFormat")
         .ADD_COLOR_FORMAT(BLACK)
         .ADD_COLOR_FORMAT(DARK_BLUE)
         .ADD_COLOR_FORMAT(DARK_GREEN)
@@ -48,7 +48,6 @@ void def_color_format(py::module &m)
         .ADD_COLOR_FORMAT(MATERIAL_DIAMOND)
         .ADD_COLOR_FORMAT(MATERIAL_LAPIS)
         .ADD_COLOR_FORMAT(MATERIAL_AMETHYST)
-
         .ADD_COLOR_FORMAT(OBFUSCATED)
         .ADD_COLOR_FORMAT(BOLD)
         .ADD_COLOR_FORMAT(ITALIC)

@@ -22,9 +22,9 @@ PYBIND11_MODULE(endstone_python, m)
 {
     def_color_format(m);
     def_logger(m);
-    def_server(m);
     def_plugin(m);
     def_plugin_description(m);
     def_plugin_loader(m);
     def_plugin_manager(m);
+    def_server(m);
 }
