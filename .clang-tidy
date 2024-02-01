@@ -28,22 +28,22 @@ CheckOptions:
   readability-implicit-bool-conversion.AllowIntegerConditions: true
   readability-identifier-naming.AbstractClassCase: CamelCase
   readability-identifier-naming.ClassCase: CamelCase
-  readability-identifier-naming.ClassConstantCase: lower_case
+  readability-identifier-naming.ClassConstantCase: UPPER_CASE
   readability-identifier-naming.ClassMemberCase: CamelCase
   readability-identifier-naming.ClassMemberPrefix: 'm'
-  readability-identifier-naming.ClassMethodCase: camelCase
+  readability-identifier-naming.ClassMethodCase: camelBack
   readability-identifier-naming.ConstantCase: lower_case
   readability-identifier-naming.ConstantMemberCase: lower_case
   readability-identifier-naming.ConstantMemberSuffix: ''
   readability-identifier-naming.ConstantParameterCase: lower_case
   readability-identifier-naming.ConstantPointerParameterCase: lower_case
-  readability-identifier-naming.ConstexprFunctionCase: aNy_CasE
-  readability-identifier-naming.ConstexprMethodCase: camelCase
+  readability-identifier-naming.ConstexprFunctionCase: camelBack
+  readability-identifier-naming.ConstexprMethodCase: camelBack
   readability-identifier-naming.ConstexprVariableCase: CamelCase
   readability-identifier-naming.EnumCase: CamelCase
   readability-identifier-naming.EnumConstantCase: CamelCase
-  readability-identifier-naming.FunctionCase: aNy_CasE
-  readability-identifier-naming.GlobalConstantCase: CamelCase
+  readability-identifier-naming.FunctionCase: lower_case
+  readability-identifier-naming.GlobalConstantCase: UPPER_CASE
   readability-identifier-naming.GlobalConstantPointerCase: CamelCase
   readability-identifier-naming.GlobalVariableCase: CamelCase
   readability-identifier-naming.GlobalVariablePrefix: 'g'
@@ -55,20 +55,20 @@ CheckOptions:
   readability-identifier-naming.MacroDefinitionCase: UPPER_CASE
   readability-identifier-naming.MemberCase: lower_case
   readability-identifier-naming.MemberSuffix: '_'
-  readability-identifier-naming.MethodCase: camelCase
+  readability-identifier-naming.MethodCase: camelBack
   readability-identifier-naming.NamespaceCase: aNy_CasE
   readability-identifier-naming.ParameterCase: lower_case
   readability-identifier-naming.ParameterPackCase: lower_case
   readability-identifier-naming.PointerParameterCase: lower_case
   readability-identifier-naming.PrivateMemberCase: lower_case
   readability-identifier-naming.PrivateMemberSuffix: '_'
-  readability-identifier-naming.PrivateMethodCase: camelCase
-  readability-identifier-naming.ProtectedMemberCase: camelCase
+  readability-identifier-naming.PrivateMethodCase: camelBack
+  readability-identifier-naming.ProtectedMemberCase: camelBack
   readability-identifier-naming.ProtectedMemberSuffix: '_'
-  readability-identifier-naming.ProtectedMethodCase: camelCase
+  readability-identifier-naming.ProtectedMethodCase: camelBack
   readability-identifier-naming.PublicMemberCase: lower_case
   readability-identifier-naming.PublicMemberSuffix: ''
-  readability-identifier-naming.PublicMethodCase: camelCase
+  readability-identifier-naming.PublicMethodCase: camelBack
   readability-identifier-naming.ScopedEnumConstantCase: CamelCase
   readability-identifier-naming.StaticConstantCase: lower_case
   readability-identifier-naming.StaticVariableCase: lower_case
@@ -81,4 +81,4 @@ CheckOptions:
   readability-identifier-naming.UnionCase: CamelCase
   readability-identifier-naming.ValueTemplateParameterCase: lower_case
   readability-identifier-naming.VariableCase: lower_case
-  readability-identifier-naming.VirtualMethodCase: camelCase
+  readability-identifier-naming.VirtualMethodCase: camelBack

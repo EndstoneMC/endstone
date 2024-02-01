@@ -84,7 +84,7 @@ void *get_original(void *detour)
     }
     return it->second;
 }
-}  // namespace internals
+}  // namespace detail
 
 void install()
 {

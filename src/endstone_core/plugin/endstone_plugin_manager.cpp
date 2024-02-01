@@ -61,9 +61,7 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     }
 
     // Check if the plugin exists in the vector
-    auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const auto &p) {
-        return p == plugin;
-    });
+    auto it = std::find_if(plugins_.begin(), plugins_.end(), [plugin](const auto &p) { return p == plugin; });
 
     // If plugin is in the vector and is enabled, return true
     return it != plugins_.end() && plugin->isEnabled();
