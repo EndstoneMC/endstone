@@ -17,12 +17,14 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
-#include "endstone_python/endstone_python.h"
 
 namespace py = pybind11;
+
+namespace endstone::detail {
 
 void def_plugin_manager(py::module &m)
 {
@@ -39,3 +41,5 @@ void def_plugin_manager(py::module &m)
         .def("disable_plugins", &PluginManager::disablePlugins)
         .def("clear_plugins", &PluginManager::clearPlugins);
 }
+
+}  // namespace endstone::detail

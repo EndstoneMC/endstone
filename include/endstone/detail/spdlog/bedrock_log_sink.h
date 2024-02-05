@@ -22,6 +22,8 @@
 #include <spdlog/sinks/base_sink.h>
 #include <spdlog/spdlog.h>
 
+namespace endstone::detail {
+
 class BedrockLogSink : public spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t> {
 public:
     explicit BedrockLogSink(FILE *target_file, spdlog::color_mode mode = spdlog::color_mode::automatic);
@@ -76,3 +78,5 @@ private:
     bool should_do_colors_;
     std::array<std::string, spdlog::level::n_levels> colors_;
 };
+
+}  // namespace endstone::detail

@@ -14,14 +14,14 @@
 
 #ifdef __linux__
 
-#include "endstone_runtime/platform.h"
+#include "endstone/detail/os.h"
 
 #include <climits>
 #include <fstream>
 
 #include <fmt/format.h>
 
-namespace endstone::platform {
+namespace endstone::os {
 
 namespace {
 struct ModuleInfo {
@@ -93,6 +93,6 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
-}  // namespace endstone::platform
+}  // namespace endstone::os
 
 #endif

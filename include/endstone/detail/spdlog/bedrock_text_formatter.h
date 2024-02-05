@@ -19,6 +19,8 @@
 
 #include "endstone/util/color_format.h"
 
+namespace endstone::detail {
+
 class BedrockTextFormatter : public spdlog::custom_flag_formatter {
 public:
     explicit BedrockTextFormatter(bool should_do_colors) : should_do_colors_(should_do_colors){};
@@ -67,3 +69,5 @@ private:
 
     bool should_do_colors_;
 };
+
+}  // namespace endstone::detail

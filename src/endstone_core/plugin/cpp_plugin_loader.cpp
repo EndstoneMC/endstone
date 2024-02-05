@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/plugin/cpp_plugin_loader.h"
+#include "endstone/detail/plugin/cpp_plugin_loader.h"
 
 #ifdef _WIN32
 #include <Windows.h>
@@ -23,9 +23,11 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
+#include "endstone/detail/endstone_server.h"
+#include "endstone/detail/logger_factory.h"
 #include "endstone/plugin/plugin.h"
-#include "endstone_core/endstone_server.h"
-#include "endstone_core/logger_factory.h"
+
+namespace endstone::detail {
 
 std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory) noexcept
 {
@@ -153,3 +155,5 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 }
 
 #endif
+
+}  // namespace endstone::detail

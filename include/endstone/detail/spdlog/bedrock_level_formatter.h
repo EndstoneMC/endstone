@@ -14,14 +14,16 @@
 
 #pragma once
 
-#include <functional>
-#include <string>
+#include <spdlog/pattern_formatter.h>
+#include <spdlog/spdlog.h>
 
-namespace endstone::platform {
+namespace endstone::detail {
 
-void *get_module_base();
-std::string get_module_pathname();
-void *get_executable_base();
-std::string get_executable_pathname();
+class BedrockLevelFormatter : public spdlog::custom_flag_formatter {
+public:
+    void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
 
-}  // namespace endstone::platform
+    [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override;
+};
+
+}  // namespace endstone::detail

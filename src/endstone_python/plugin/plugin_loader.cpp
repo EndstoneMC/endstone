@@ -17,12 +17,14 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
-#include "endstone_python/endstone_python.h"
 
 namespace py = pybind11;
+
+namespace endstone::detail {
 
 class PyPluginLoader : public PluginLoader {
 public:
@@ -52,3 +54,5 @@ void def_plugin_loader(py::module &m)
         .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference);
 }
+
+}  // namespace endstone::detail

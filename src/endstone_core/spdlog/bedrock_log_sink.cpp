@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/spdlog/bedrock_log_sink.h"
+#include "endstone/detail/spdlog/bedrock_log_sink.h"
 
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/base_sink-inl.h>
 
-#include "endstone_core/spdlog/bedrock_level_formatter.h"
-#include "endstone_core/spdlog/bedrock_text_formatter.h"
+#include "endstone/detail/spdlog/bedrock_level_formatter.h"
+#include "endstone/detail/spdlog/bedrock_text_formatter.h"
+
+namespace endstone::detail {
 
 BedrockLogSink::BedrockLogSink(FILE *target_file, spdlog::color_mode mode)
     : target_file_(target_file), spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t>(
@@ -95,3 +97,5 @@ void BedrockLogSink::printRange(const spdlog::memory_buf_t &formatted, size_t st
 {
     fwrite(formatted.data() + start, sizeof(char), end - start, target_file_);
 }
+
+}  // namespace endstone::detail

@@ -20,6 +20,8 @@
 
 #include "endstone/logger.h"
 
+namespace endstone {
+
 class PluginManager;
 
 /**
@@ -61,3 +63,5 @@ public:
      */
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 };
+
+}  // namespace endstone

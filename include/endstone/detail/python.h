@@ -1,4 +1,4 @@
-// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,12 +14,16 @@
 
 #pragma once
 
-#include <spdlog/pattern_formatter.h>
-#include <spdlog/spdlog.h>
+#include <pybind11/pybind11.h>
 
-class BedrockLevelFormatter : public spdlog::custom_flag_formatter {
-public:
-    void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
+namespace endstone::detail {
 
-    [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override;
-};
+void def_color_format(pybind11::module &m);
+void def_logger(pybind11::module &m);
+void def_server(pybind11::module &m);
+void def_plugin(pybind11::module &m);
+void def_plugin_description(pybind11::module &m);
+void def_plugin_loader(pybind11::module &m);
+void def_plugin_manager(pybind11::module &m);
+
+}  // namespace endstone::detail

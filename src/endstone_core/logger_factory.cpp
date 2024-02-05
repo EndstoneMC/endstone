@@ -12,14 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/logger_factory.h"
+#include "endstone/detail/logger_factory.h"
 
 #include <mutex>
 #include <string>
 #include <unordered_map>
 
-#include "endstone_core/spdlog/bedrock_log_sink.h"
-#include "endstone_core/spdlog/spdlog_adapter.h"
+#include "endstone/detail/spdlog/bedrock_log_sink.h"
+#include "endstone/detail/spdlog/spdlog_adapter.h"
+
+namespace endstone::detail {
 
 Logger &LoggerFactory::getLogger(const std::string &name)
 {
@@ -38,3 +40,5 @@ Logger &LoggerFactory::getLogger(const std::string &name)
     it = loggers.emplace(name, SpdLogAdapter(console)).first;
     return it->second;
 }
+
+}  // namespace endstone::detail

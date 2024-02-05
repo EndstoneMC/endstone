@@ -14,27 +14,29 @@
 
 #include <gtest/gtest.h>
 
+#include "endstone/detail/logger_factory.h"
 #include "endstone/logger.h"
-#include "endstone_core/logger_factory.h"
+
+namespace endstone {
 
 class LoggerFactoryTest : public ::testing::Test {};
 
 TEST_F(LoggerFactoryTest, CreateLogger)
 {
-    auto &logger = LoggerFactory::getLogger("TestLogger");
+    auto &logger = detail::LoggerFactory::getLogger("TestLogger");
     ASSERT_EQ("TestLogger", logger.getName());
 }
 
 TEST_F(LoggerFactoryTest, GetLogger)
 {
-    auto &logger1 = LoggerFactory::getLogger("TestLogger");
-    auto &logger2 = LoggerFactory::getLogger("TestLogger");
+    auto &logger1 = detail::LoggerFactory::getLogger("TestLogger");
+    auto &logger2 = detail::LoggerFactory::getLogger("TestLogger");
     ASSERT_EQ(&logger1, &logger2);
 }
 
 TEST_F(LoggerFactoryTest, SetLevel)
 {
-    auto &logger = LoggerFactory::getLogger("TestLogger");
+    auto &logger = detail::LoggerFactory::getLogger("TestLogger");
     ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Debug));
     ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Info));
 
@@ -46,3 +48,5 @@ TEST_F(LoggerFactoryTest, SetLevel)
     ASSERT_FALSE(logger.isEnabledFor(Logger::Level::Warning));
     ASSERT_TRUE(logger.isEnabledFor(Logger::Level::Error));
 }
+
+}  // namespace endstone

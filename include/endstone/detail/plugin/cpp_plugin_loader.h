@@ -14,14 +14,26 @@
 
 #pragma once
 
-#include <pybind11/pybind11.h>
+#include <memory>
+#include <string>
+#include <vector>
 
-namespace py = pybind11;
+#include "endstone/plugin/plugin_loader.h"
 
-void def_color_format(py::module &m);
-void def_logger(py::module &m);
-void def_server(py::module &m);
-void def_plugin(py::module &m);
-void def_plugin_description(py::module &m);
-void def_plugin_loader(py::module &m);
-void def_plugin_manager(py::module &m);
+namespace endstone {
+namespace detail {
+
+class CppPluginLoader : public PluginLoader {
+public:
+    using PluginLoader::PluginLoader;
+
+    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;
+    [[nodiscard]] std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept;
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const;
+
+private:
+    std::vector<std::unique_ptr<Plugin>> plugins_;
+};
+
+}  // namespace detail
+}  // namespace endstone

@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,20 +14,14 @@
 
 #pragma once
 
-#include <memory>
+#include <functional>
 #include <string>
-#include <vector>
 
-#include "endstone/plugin/plugin_loader.h"
+namespace endstone::detail::os {
 
-class CppPluginLoader : public PluginLoader {
-public:
-    using PluginLoader::PluginLoader;
+void *get_module_base();
+std::string get_module_pathname();
+void *get_executable_base();
+std::string get_executable_pathname();
 
-    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;
-    [[nodiscard]] std::unique_ptr<Plugin> loadPlugin(const std::string &file) noexcept;
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const;
-
-private:
-    std::vector<std::unique_ptr<Plugin>> plugins_;
-};
+}  // namespace endstone::detail::os

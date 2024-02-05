@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_python/endstone_python.h"
-
 #include <pybind11/pybind11.h>
+
+#include "endstone/detail/python.h"
+
+namespace endstone::detail {
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
@@ -26,3 +28,5 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     def_plugin_manager(m);
     def_server(m);
 }
+
+}  // namespace endstone::detail

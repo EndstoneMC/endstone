@@ -17,7 +17,7 @@
 #include <spdlog/spdlog.h>
 
 #include "bedrock/type_id.h"
-#include "endstone_runtime/hook.h"
+#include "endstone/detail/hook.h"
 
 namespace {
 

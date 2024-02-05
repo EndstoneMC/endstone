@@ -16,6 +16,8 @@
 
 #include <string>
 
+namespace endstone {
+
 struct ColorFormat {
     // Escape
     inline static const std::string ESCAPE = "§";
@@ -55,3 +57,5 @@ struct ColorFormat {
     inline static const std::string ITALIC = ESCAPE + 'o';
     inline static const std::string RESET = ESCAPE + 'r';
 };
+
+}  // namespace endstone

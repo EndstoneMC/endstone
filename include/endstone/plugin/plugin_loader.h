@@ -22,6 +22,8 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
+namespace endstone {
+
 class PluginLoader {
 public:
     explicit PluginLoader(Server &server) noexcept : server_(server) {}
@@ -63,3 +65,5 @@ protected:
 private:
     Server &server_;
 };
+
+}  // namespace endstone

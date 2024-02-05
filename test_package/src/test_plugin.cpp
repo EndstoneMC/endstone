@@ -14,6 +14,8 @@
 
 #include "endstone/plugin/plugin.h"
 
+using namespace endstone;
+
 class TestPlugin : public Plugin {
 public:
     TestPlugin() = default;

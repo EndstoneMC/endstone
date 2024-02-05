@@ -14,13 +14,28 @@
 
 #pragma once
 
-#include <string>
+#include <string_view>
 
-#include <spdlog/spdlog.h>
+#include <pybind11/embed.h>
 
-#include "endstone/logger.h"
+#include "endstone/plugin/plugin_loader.h"
 
-class LoggerFactory {
+namespace endstone::detail {
+
+class PythonPluginLoader : public PluginLoader {
 public:
-    static Logger &getLogger(const std::string &name);
+    explicit PythonPluginLoader(Server &server);
+
+    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;
+    void enablePlugin(Plugin &plugin) const override;
+    void disablePlugin(Plugin &plugin) const override;
+
+private:
+    [[nodiscard]] PluginLoader *pimpl() const;
+
+    pybind11::scoped_interpreter interpreter_;
+    pybind11::object obj_;
+    pybind11::gil_scoped_release release_;
 };
+
+}  // namespace endstone::detail

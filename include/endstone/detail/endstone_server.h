@@ -18,11 +18,11 @@
 #include <string>
 #include <string_view>
 
-
-
+#include "endstone/detail/plugin/endstone_plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
-#include "endstone_core/plugin/endstone_plugin_manager.h"
+
+namespace endstone::detail {
 
 class EndstoneServer : public Server {
 public:
@@ -55,3 +55,5 @@ private:
     Logger &logger_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };
+
+}  // namespace endstone::detail

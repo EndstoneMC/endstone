@@ -16,9 +16,9 @@
 
 #include <spdlog/spdlog.h>
 
-#include "endstone_core/endstone_server.h"
-#include "endstone_runtime/hook.h"
-#include "endstone_runtime/python_plugin_loader.h"
+#include "endstone/detail/endstone_server.h"
+#include "endstone/detail/hook.h"
+#include "endstone/detail/plugin/python_plugin_loader.h"
 
 #if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
@@ -29,11 +29,11 @@
 ENDSTONE_RUNTIME_CTOR int main()
 {
     try {
-        auto &server = EndstoneServer::getInstance();
+        auto &server = endstone::detail::EndstoneServer::getInstance();
         server.getLogger().info("Initialising...");
-        server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
+        server.getPluginManager().registerLoader(std::make_unique<endstone::detail::PythonPluginLoader>(server));
 
-        endstone::hook::install();
+        endstone::detail::hook::install();
         return 0;
     }
     catch (const std::exception &e) {

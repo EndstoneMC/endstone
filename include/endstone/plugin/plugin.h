@@ -23,6 +23,8 @@
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
 
+namespace endstone {
+
 class PluginLoader;
 
 class Plugin {
@@ -123,6 +125,7 @@ private:
     Server *server_ = nullptr;
     Logger *logger_ = nullptr;
 };
+}  // namespace endstone
 
 #ifndef ENDSTONE_PLUGIN
 #if defined(WIN32)

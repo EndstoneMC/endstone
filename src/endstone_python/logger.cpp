@@ -16,9 +16,11 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone_python/endstone_python.h"
+#include "endstone/detail/python.h"
 
 namespace py = pybind11;
+
+namespace endstone::detail {
 
 void def_logger(py::module &m)
 {
@@ -54,3 +56,5 @@ void def_logger(py::module &m)
         .value("CRITICAL", Logger::Level::Critical)
         .export_values();
 }
+
+}  // namespace endstone::detail

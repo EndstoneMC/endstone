@@ -19,7 +19,9 @@
 
 #include <cassert>
 
-#include "endstone_core/endstone_server.h"
+#include "endstone/detail/endstone_server.h"
+
+using namespace endstone::detail;
 
 void testLogger(EndstoneServer &server)
 {

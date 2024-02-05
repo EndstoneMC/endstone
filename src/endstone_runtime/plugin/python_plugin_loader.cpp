@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_runtime/python_plugin_loader.h"
+#include "endstone/detail/plugin/python_plugin_loader.h"
 
 #include <pybind11/embed.h>
 namespace py = pybind11;
 
-#include "endstone_core/logger_factory.h"
+#include "endstone/detail/logger_factory.h"
+
+namespace endstone::detail {
 
 PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
 {
@@ -58,3 +60,5 @@ PluginLoader *PythonPluginLoader::pimpl() const
 {
     return obj_.cast<PluginLoader *>();
 }
+
+}  // namespace endstone::detail

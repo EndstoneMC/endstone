@@ -24,6 +24,8 @@
 
 #include <fmt/format.h>
 
+namespace endstone {
+
 class PluginDescription {
 public:
     PluginDescription(std::string name, std::string version, std::optional<std::string> description = std::nullopt,
@@ -79,3 +81,5 @@ private:
     std::optional<std::vector<std::string>> authors_;
     std::optional<std::string> prefix_;
 };
+
+}  // namespace endstone

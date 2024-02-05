@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/plugin/endstone_plugin_manager.h"
+#include "endstone/detail/plugin/endstone_plugin_manager.h"
 
 #include <algorithm>
 #include <memory>
@@ -22,6 +22,8 @@
 
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
+
+namespace endstone::detail {
 
 EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server) {}
 
@@ -121,3 +123,5 @@ void EndstonePluginManager::clearPlugins()
     plugins_.clear();
     lookup_names_.clear();
 }
+
+}  // namespace endstone::detail

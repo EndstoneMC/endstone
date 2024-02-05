@@ -14,7 +14,7 @@
 
 #ifdef _WIN32
 
-#include "endstone_runtime/hook.h"
+#include "endstone/detail/hook.h"
 
 #include <Windows.h>
 // DbgHelp.h must be included after Windows.h
@@ -28,9 +28,9 @@
 #include <funchook/funchook.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone_runtime/platform.h"
+#include "endstone/detail/os.h"
 
-namespace endstone::hook {
+namespace endstone::detail::hook {
 
 namespace {
 std::unordered_map<void *, void *> gOriginals;
@@ -75,7 +75,6 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 
 }  // namespace
 
-namespace detail {
 void *get_original(void *detour)
 {
     auto it = gOriginals.find(detour);
@@ -84,15 +83,13 @@ void *get_original(void *detour)
     }
     return it->second;
 }
-}  // namespace detail
 
 void install()
 {
-    namespace ep = endstone::platform;
 
     // Find detours
-    auto *module_base = ep::get_module_base();
-    auto module_pathname = ep::get_module_pathname();
+    auto *module_base = os::get_module_base();
+    auto module_pathname = os::get_module_pathname();
 
     std::unordered_map<std::string, void *> detours;
     enumerate_symbols(  //
@@ -104,10 +101,10 @@ void install()
         });
 
     // Find targets
-    auto *executable_base = ep::get_executable_base();
+    auto *executable_base = os::get_executable_base();
     std::unordered_map<std::string, void *> targets;
 
-    const auto executable_pathname = ep::get_executable_pathname();
+    const auto executable_pathname = os::get_executable_pathname();
     enumerate_symbols(  //
         executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
             auto it = detours.find(name);
@@ -195,6 +192,6 @@ const std::error_category &hook_error_category() noexcept
     } category;
     return category;
 }
-}  // namespace endstone::hook
+}  // namespace endstone::detail::hook
 
 #endif

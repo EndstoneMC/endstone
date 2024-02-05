@@ -14,9 +14,13 @@
 
 #include "endstone/util/color_format.h"
 
-#include "endstone_python/endstone_python.h"
+#include "endstone/detail/python.h"
+
+namespace py = pybind11;
 
 #define ADD_COLOR_FORMAT(Name) def_property_readonly_static(#Name, [](const py::object &) { return ColorFormat::Name; })
+
+namespace endstone::detail {
 
 void def_color_format(py::module &m)
 {
@@ -53,3 +57,5 @@ void def_color_format(py::module &m)
         .ADD_COLOR_FORMAT(ITALIC)
         .ADD_COLOR_FORMAT(RESET);
 }
+
+}  // namespace endstone::detail

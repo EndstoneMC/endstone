@@ -17,11 +17,13 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_manager.h"
-#include "endstone_python/endstone_python.h"
 
 namespace py = pybind11;
+
+namespace endstone::detail {
 
 void def_server(py::module &m)
 {
@@ -31,3 +33,5 @@ void def_server(py::module &m)
         .def_property_readonly("version", &Server::getVersion)
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion);
 }
+
+}  // namespace endstone::detail

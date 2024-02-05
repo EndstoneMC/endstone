@@ -12,19 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/endstone_server.h"
+#include "endstone/detail/endstone_server.h"
 
 #include <filesystem>
 #include <memory>
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
-#include "endstone_core/logger_factory.h"
-#include "endstone_core/plugin/cpp_plugin_loader.h"
+#include "endstone/detail/logger_factory.h"
+#include "endstone/detail/plugin/cpp_plugin_loader.h"
 
 #if !defined(ENDSTONE_VERSION)
 #error ENDSTONE_VERSION is not defined
 #endif
+
+namespace endstone::detail {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
@@ -87,3 +89,5 @@ std::string EndstoneServer::getMinecraftVersion() const
 {
     return Common::getGameVersionString();
 }
+
+}  // namespace endstone::detail

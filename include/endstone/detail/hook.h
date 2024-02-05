@@ -17,12 +17,12 @@
 #include <functional>
 #include <system_error>
 
-namespace endstone::hook {
+namespace endstone::detail::hook {
 void install();
 const std::error_category &hook_error_category() noexcept;
-}  // namespace endstone::hook
+}  // namespace endstone::detail::hook
 
-namespace endstone::hook::detail {
+namespace endstone::detail::hook {
 
 /**
  * @brief Cast a function pointer to void pointer
@@ -88,13 +88,13 @@ void *fp_cast(Return (Class::*fp)(Args...) const)
     temp.p = fp;
     return temp.v;
 }
-}  // namespace endstone::hook::detail
+}  // namespace endstone::detail::hook
 
-namespace endstone::hook::detail {
+namespace endstone::detail::hook {
 void *get_original(void *detour);
 }
 
-namespace endstone::hook::detail {
+namespace endstone::detail::hook {
 /**
  * @brief Construct a std::function from a function pointer
  */
@@ -127,10 +127,10 @@ inline std::function<Return(const Class *, Arg...)> get_original(Return (Class::
         return func(obj, std::forward<Arg>(args)...);
     };
 }
-}  // namespace endstone::hook::detail
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) endstone::hook::detail::get_original(fp)(__VA_ARGS__)
+}  // namespace endstone::detail::hook
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) endstone::detail::hook::get_original(fp)(__VA_ARGS__)
 
-namespace endstone::hook::detail {
+namespace endstone::detail::hook {
 /**
  * @brief Construct a std::function from a function pointer
  * with Return Value Optimization (RVO).
@@ -180,6 +180,7 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
     };
 #endif
 }
-}  // namespace endstone::hook::detail
+}  // namespace endstone::detail::hook
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) ret = *endstone::hook::detail::get_original_rvo(fp)(&ret, __VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) \
+    ret = *endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__)

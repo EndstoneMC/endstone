@@ -18,6 +18,8 @@
 
 #include "endstone/logger.h"
 
+namespace endstone::detail {
+
 class SpdLogAdapter : public Logger {
 public:
     explicit SpdLogAdapter(std::shared_ptr<spdlog::logger> logger);
@@ -29,3 +31,5 @@ public:
 private:
     std::shared_ptr<spdlog::logger> logger_;
 };
+
+}  // namespace endstone::detail

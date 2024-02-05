@@ -19,6 +19,8 @@
 
 #include <fmt/format.h>
 
+namespace endstone {
+
 class Logger {
 public:
     /**
@@ -84,3 +86,5 @@ public:
         log(Level::Critical, fmt::format(format, std::forward<Args>(args)...));
     }
 };
+
+}  // namespace endstone

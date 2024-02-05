@@ -20,9 +20,9 @@
 
 #include <system_error>
 
-#include "endstone_runtime/platform.h"
+#include "endstone/detail/os.h"
 
-namespace endstone::platform {
+namespace endstone::detail::os {
 
 namespace {
 HMODULE get_module_handle(const char *module_name)
@@ -78,6 +78,6 @@ std::string get_executable_pathname()
     return file_name;
 }
 
-}  // namespace endstone::platform
+}  // namespace endstone::detail::os
 
 #endif

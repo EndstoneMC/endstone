@@ -23,6 +23,8 @@
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
+namespace endstone::detail {
+
 class EndstonePluginManager : public PluginManager {
 public:
     explicit EndstonePluginManager(Server &server);
@@ -44,3 +46,5 @@ private:
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
 };
+
+}  // namespace endstone::detail

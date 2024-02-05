@@ -19,13 +19,16 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
-#include "endstone_python/endstone_python.h"
 
 namespace py = pybind11;
 
+namespace endstone::detail {
+
+namespace {
 PluginDescription createPluginDescription(std::string name, std::string version, std::optional<std::string> description,
                                           std::optional<std::vector<std::string>> authors,
                                           std::optional<std::string> prefix, const py::args & /*args*/,
@@ -33,6 +36,7 @@ PluginDescription createPluginDescription(std::string name, std::string version,
 {
     return {std::move(name), std::move(version), std::move(description), std::move(authors), std::move(prefix)};
 }
+}  // namespace
 
 void def_plugin_description(py::module &m)
 {
@@ -46,3 +50,5 @@ void def_plugin_description(py::module &m)
         .def_property_readonly("authors", &PluginDescription::getAuthors)
         .def_property_readonly("prefix", &PluginDescription::getPrefix);
 }
+
+}  // namespace endstone::detail

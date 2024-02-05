@@ -21,6 +21,8 @@
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 
+namespace endstone {
+
 class PluginManager {
 public:
     PluginManager() = default;
@@ -38,3 +40,5 @@ public:
     virtual void disablePlugins() const = 0;
     virtual void clearPlugins() = 0;
 };
+
+}  // namespace endstone

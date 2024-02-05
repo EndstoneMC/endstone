@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone_core/spdlog/spdlog_adapter.h"
+#include "endstone/detail/spdlog/spdlog_adapter.h"
+
+namespace endstone::detail {
 
 SpdLogAdapter::SpdLogAdapter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger)) {}
 
@@ -37,3 +39,5 @@ std::string_view SpdLogAdapter::getName() const
 {
     return logger_->name();
 }
+
+}  // namespace endstone::detail
