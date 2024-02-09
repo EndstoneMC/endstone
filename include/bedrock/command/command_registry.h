@@ -49,10 +49,10 @@ public:
         {
         }
 
-        CommandVersion version;
-        std::unique_ptr<Command> (*factory)();
-        std::vector<CommandParameterData> params;
-        uint8_t unknown1 = 0;
+        CommandVersion version;                    // +0
+        std::unique_ptr<Command> (*factory)();     // +8
+        std::vector<CommandParameterData> params;  // +16
+        uint8_t unknown1 = 0;                      // +40
         uint16_t unknown2 = -1;
         uint64_t unknown3 = 0;
         uint64_t unknown4 = 0;
@@ -79,7 +79,15 @@ public:
         int64_t unknown7;                                  // +144
     };
 
-    class ParseToken;
+    struct ParseToken {
+        std::unique_ptr<ParseToken> child;  // +0
+        std::unique_ptr<ParseToken> next;   // +8
+        ParseToken *parent;                 // +16
+        char const *data;                   // +24
+        uint32_t size;                      // +32
+        Symbol symbol;                      // +36
+    };
+    static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &);
