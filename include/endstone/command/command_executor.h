@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <any>
 #include <map>
 #include <string>
 
@@ -34,11 +33,13 @@ public:
      *
      * @param sender Source of the command
      * @param command Command which was executed
-     * @param label Alias of the command which was used
      * @param args Passed command arguments
-     * @return true if a valid command, otherwise false
+     * @return true if the execution is successful, otherwise false
      */
-    virtual bool onCommand(const CommandSender &sender, const Command &command, const std::string &label,
-                           const std::map<std::string, std::string> &args) = 0;
+    virtual bool onCommand(const CommandSender &sender, const Command &command,
+                           const std::map<std::string, std::string> &args)
+    {
+        return false;
+    }
 };
 }  // namespace endstone

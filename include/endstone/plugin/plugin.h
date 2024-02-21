@@ -19,6 +19,7 @@
 #include <string>
 #include <vector>
 
+#include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
@@ -27,13 +28,13 @@ namespace endstone {
 
 class PluginLoader;
 
-class Plugin {
+class Plugin : public CommandExecutor {
 public:
     Plugin() = default;
     Plugin(const Plugin &) = delete;
     Plugin &operator=(const Plugin &) = delete;
 
-    virtual ~Plugin() = default;
+    ~Plugin() override = default;
 
     [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
 

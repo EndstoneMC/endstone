@@ -18,8 +18,9 @@
 #include <string>
 #include <vector>
 
-#include "endstone/command/command.h"
+class Command;
 
+namespace endstone {
 class CommandMap {
 public:
     virtual ~CommandMap() noexcept = default;
@@ -51,3 +52,4 @@ public:
      */
     [[nodiscard]] virtual Command *getCommand(std::string name) const noexcept = 0;
 };
+}  // namespace endstone
