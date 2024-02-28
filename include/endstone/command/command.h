@@ -28,10 +28,8 @@ namespace endstone {
  */
 class Command {
 public:
-    explicit Command(CommandMap &command_map) : command_map_(command_map) {}
     virtual ~Command() = default;
 
-public:
     /**
      * Executes the command, returning its success
      *
@@ -67,8 +65,5 @@ public:
     {
         return {};
     }
-
-private:
-    CommandMap &command_map_;
 };
 }  // namespace endstone

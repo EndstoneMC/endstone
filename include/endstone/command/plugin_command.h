@@ -27,7 +27,7 @@
 namespace endstone {
 class PluginCommand : public Command {
 public:
-    PluginCommand(CommandMap &command_map, Plugin &owner) : Command(command_map), owner_(owner) {}
+    PluginCommand(CommandMap &command_map, Plugin &owner) : command_map_(command_map), owner_(owner) {}
 
     bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override
     {
@@ -82,5 +82,6 @@ public:
 private:
     Plugin &owner_;
     std::shared_ptr<CommandExecutor> executor_;
+    CommandMap &command_map_;
 };
 }  // namespace endstone
