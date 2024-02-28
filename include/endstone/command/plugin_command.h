@@ -27,9 +27,9 @@
 namespace endstone {
 class PluginCommand : public Command {
 public:
-    PluginCommand(CommandMap &command_map, Plugin &owner) noexcept : Command(command_map), owner_(owner) {}
+    PluginCommand(CommandMap &command_map, Plugin &owner) : Command(command_map), owner_(owner) {}
 
-    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const noexcept override
+    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override
     {
         if (!owner_.isEnabled()) {
             sender.sendMessage("Cannot execute command '{}' in plugin {} - plugin is disabled.", getName(),
@@ -51,7 +51,7 @@ public:
      *
      * @param executor New executor to run
      */
-    void setExecutor(std::shared_ptr<CommandExecutor> executor) noexcept
+    void setExecutor(std::shared_ptr<CommandExecutor> executor)
     {
         executor_ = std::move(executor);
     }
@@ -61,7 +61,7 @@ public:
      *
      * @return CommandExecutor object linked to this command
      */
-    [[nodiscard]] CommandExecutor &getExecutor() const noexcept
+    [[nodiscard]] CommandExecutor &getExecutor() const
     {
         if (executor_) {
             return *executor_;
@@ -74,7 +74,7 @@ public:
      *
      * @return Plugin that owns this command
      */
-    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const noexcept
+    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const
     {
         return owner_;
     }

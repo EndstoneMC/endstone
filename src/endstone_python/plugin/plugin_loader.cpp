@@ -30,7 +30,7 @@ class PyPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override
+    std::vector<Plugin *> loadPlugins(const std::string &directory) override
     {
         try {
             PYBIND11_OVERRIDE_PURE_NAME(std::vector<Plugin *>, PluginLoader, "load_plugins", loadPlugins,

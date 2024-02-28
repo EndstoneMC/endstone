@@ -20,19 +20,19 @@
 
 class Server;
 
-class CommandSender  {
+class CommandSender {
 public:
-    CommandSender() noexcept = default;
+    CommandSender() = default;
 
     /**
      * Sends this sender a message
      *
      * @param message Message to be displayed
      */
-    virtual void sendMessage(const std::string &message) const noexcept = 0;
+    virtual void sendMessage(const std::string &message) const = 0;
 
     template <typename... Args>
-    void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const noexcept
+    void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const
     {
         sendMessage(fmt::format(format, std::forward<Args>(args)...));
     }
@@ -42,12 +42,12 @@ public:
      *
      * @return Server instance
      */
-    [[nodiscard]] virtual Server &getServer() const noexcept = 0;
+    [[nodiscard]] virtual Server &getServer() const = 0;
 
     /**
      * Gets the name of this command sender
      *
      * @return Name of the sender
      */
-    [[nodiscard]] virtual std::string getName() const noexcept = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
 };

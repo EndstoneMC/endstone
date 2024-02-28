@@ -147,11 +147,11 @@ void install()
     }
 }
 
-const std::error_category &hook_error_category() noexcept
+const std::error_category &hook_error_category()
 {
     static const class HookErrorCategory : public std::error_category {
     public:
-        [[nodiscard]] const char *name() const noexcept override
+        [[nodiscard]] const char *name() const override
         {
             return "HookError";
         }

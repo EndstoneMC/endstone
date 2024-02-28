@@ -23,26 +23,27 @@ class Command;
 namespace endstone {
 class CommandMap {
 public:
-    virtual ~CommandMap() noexcept = default;
+    virtual ~CommandMap() = default;
 
     /**
      * Registers a command. Returns true on success; false if name is already
      * taken and fallback had to be used.
      *
      * @param label the label of the command, without the '/'-prefix.
-     * @param fallback_prefix a prefix which is prepended to the command with a ':' one or more times to make the command unique
+     * @param fallback_prefix a prefix which is prepended to the command with a ':' one or more times to make the
+     * command unique
      * @param command the command to register
-     * @return true if command was registered with the passed in label, false otherwise, which indicates the fallbackPrefix was used one or more times
+     * @return true if command was registered with the passed in label, false otherwise, which indicates the
+     * fallbackPrefix was used one or more times
      */
-    virtual bool registerCommand(std::string label, std::string fallback_prefix,
-                                 std::shared_ptr<Command> command) noexcept = 0;
+    virtual bool registerCommand(std::string label, std::string fallback_prefix, std::shared_ptr<Command> command) = 0;
 
     // TODO: dispatch functions
 
     /**
      * Clears all registered commands.
      */
-    [[maybe_unused]] virtual void clearCommands() noexcept = 0;
+    [[maybe_unused]] virtual void clearCommands() = 0;
 
     /**
      * Gets the command registered to the specified name
@@ -50,6 +51,6 @@ public:
      * @param name Name of the command to retrieve
      * @return Command with the specified name or nullptr if a command with that label doesn't exist
      */
-    [[nodiscard]] virtual Command *getCommand(std::string name) const noexcept = 0;
+    [[nodiscard]] virtual Command *getCommand(std::string name) const = 0;
 };
 }  // namespace endstone

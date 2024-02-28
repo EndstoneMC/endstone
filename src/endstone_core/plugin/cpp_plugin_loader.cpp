@@ -29,7 +29,7 @@ namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory) noexcept
+std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
 {
     auto &logger = getServer().getLogger();
 
@@ -74,7 +74,7 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
 
 #ifdef _WIN32
 
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
+std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
     auto &logger = getServer().getLogger();
     auto path = fs::path(file);
@@ -115,7 +115,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 #elif __linux__
 
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file) noexcept
+std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
     auto &logger = getServer().getLogger();
     auto path = fs::path(file);

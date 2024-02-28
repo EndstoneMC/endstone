@@ -26,7 +26,7 @@ namespace endstone {
  */
 class CommandExecutor {
 public:
-    virtual ~CommandExecutor() noexcept = default;
+    virtual ~CommandExecutor() = default;
 
     /**
      * Executes the given command, returning its success.

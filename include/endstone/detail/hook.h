@@ -19,7 +19,7 @@
 
 namespace endstone::detail::hook {
 void install();
-const std::error_category &hook_error_category() noexcept;
+const std::error_category &hook_error_category();
 }  // namespace endstone::detail::hook
 
 namespace endstone::detail::hook {

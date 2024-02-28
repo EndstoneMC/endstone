@@ -29,7 +29,7 @@ namespace endstone {
 class Command {
 public:
     explicit Command(CommandMap &command_map) : command_map_(command_map) {}
-    virtual ~Command() noexcept = default;
+    virtual ~Command() = default;
 
 public:
     /**
@@ -39,29 +39,34 @@ public:
      * @param args Arguments passed to the command
      * @return true if the execution was successful, otherwise false
      */
-    [[nodiscard]] virtual bool execute(CommandSender &sender,
-                                       const std::map<std::string, std::string> &args) const noexcept = 0;
+    [[nodiscard]] virtual bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const = 0;
 
     /**
      * Returns the name of this command
      *
      * @return Name of this command
      */
-    [[nodiscard]] virtual std::string getName() const noexcept = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
      * Gets a brief description of this command
      *
      * @return Description of this command
      */
-    [[nodiscard]] virtual std::string getDescription() const noexcept = 0;
+    [[nodiscard]] virtual std::string getDescription() const
+    {
+        return "";
+    }
 
     /**
      * Returns a list of aliases of this command
      *
      * @return List of aliases
      */
-    [[nodiscard]] virtual std::vector<std::string> getAliases() const noexcept = 0;
+    [[nodiscard]] virtual std::vector<std::string> getAliases() const
+    {
+        return {};
+    }
 
 private:
     CommandMap &command_map_;

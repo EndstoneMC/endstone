@@ -29,7 +29,7 @@ class PyPlugin : public Plugin {
 public:
     using Plugin::Plugin;
 
-    [[nodiscard]] const PluginDescription &getDescription() const noexcept override
+    [[nodiscard]] const PluginDescription &getDescription() const override
     {
         try {
             PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
@@ -40,7 +40,7 @@ public:
         }
     }
 
-    void onLoad() noexcept override
+    void onLoad() override
     {
         try {
             PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
@@ -51,7 +51,7 @@ public:
         }
     }
 
-    void onEnable() noexcept override
+    void onEnable() override
     {
         try {
             PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
@@ -62,7 +62,7 @@ public:
         }
     }
 
-    void onDisable() noexcept override
+    void onDisable() override
     {
         try {
             PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);

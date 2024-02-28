@@ -26,7 +26,7 @@ class PythonPluginLoader : public PluginLoader {
 public:
     explicit PythonPluginLoader(Server &server);
 
-    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept override;
+    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
 

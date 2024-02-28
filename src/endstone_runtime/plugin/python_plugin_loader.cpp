@@ -35,7 +35,7 @@ PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
     }
 }
 
-std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory) noexcept
+std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory)
 {
     auto plugins = pimpl()->loadPlugins(directory);
     for (const auto &plugin : plugins) {

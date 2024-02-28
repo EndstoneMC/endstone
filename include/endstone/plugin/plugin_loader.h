@@ -26,12 +26,12 @@ namespace endstone {
 
 class PluginLoader {
 public:
-    explicit PluginLoader(Server &server) noexcept : server_(server) {}
+    explicit PluginLoader(Server &server) : server_(server) {}
     PluginLoader(const PluginLoader &) = delete;
     PluginLoader &operator=(const PluginLoader &) = delete;
 
     virtual ~PluginLoader() = default;
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) noexcept = 0;
+    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
 
     virtual void enablePlugin(Plugin &plugin) const
     {
