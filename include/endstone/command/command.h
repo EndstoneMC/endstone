@@ -65,5 +65,60 @@ public:
     {
         return {};
     }
+
+    /**
+     * Registers this command to a CommandMap.
+     * Once called it only allows changes the registered CommandMap
+     *
+     * @param command_map the CommandMap to register this command to
+     * @return true if the registration was successful (the current registered
+     *     CommandMap was the passed CommandMap or null) false otherwise
+     */
+    bool registerTo(CommandMap &command_map) noexcept
+    {
+        if (allowChangesFrom(command_map)) {
+            command_map_ = &command_map;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Unregisters this command from the passed CommandMap applying any
+     * outstanding changes
+     *
+     * @param command_map the CommandMap to unregister
+     * @return true if the unregistration was successful (the current
+     *     registered CommandMap was the passed CommandMap or null) false
+     *     otherwise
+     */
+    bool unregisterFrom(CommandMap &command_map) noexcept
+    {
+        if (allowChangesFrom(command_map)) {
+            command_map_ = nullptr;
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the current registered state of this command
+     *
+     * @return true if this command is currently registered false otherwise
+     */
+    [[nodiscard]] bool isRegistered() const noexcept
+    {
+        return command_map_ != nullptr;
+    }
+
+private:
+    bool allowChangesFrom(CommandMap &command_map) noexcept
+    {
+        return (!isRegistered() || command_map_ == &command_map);
+    }
+
+    CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone
