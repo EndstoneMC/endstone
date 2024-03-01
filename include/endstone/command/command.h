@@ -21,6 +21,7 @@
 
 #include "endstone/command/command_map.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/detail/typeid.h"
 
 namespace endstone {
 /**
@@ -65,6 +66,18 @@ public:
     {
         return {};
     }
+
+    class Argument {
+    public:
+        template <typename T>
+        explicit Argument(std::string name) : type_(type_id<T>()), name_(std::move(name))
+        {
+        }
+
+    private:
+        std::string type_;
+        std::string name_;
+    };
 
     /**
      * Registers this command to a CommandMap.
