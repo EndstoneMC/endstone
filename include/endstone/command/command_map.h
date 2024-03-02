@@ -30,17 +30,12 @@ public:
     CommandMap& operator=(CommandMap&&) = default;
 
     /**
-     * Registers a command. Returns true on success; false if name is already
-     * taken and fallback had to be used.
+     * Registers a command.
      *
-     * @param label the label of the command, without the '/'-prefix.
-     * @param fallback_prefix a prefix which is prepended to the command with a ':' one or more times to make the
-     * command unique
      * @param command the command to register
-     * @return true if command was registered with the passed in label, false otherwise, which indicates the
-     * fallbackPrefix was used one or more times
+     * @return true on success, false if a command with the same name is already registered
      */
-    virtual bool registerCommand(std::string label, std::string fallback_prefix, std::shared_ptr<Command> command) = 0;
+    virtual bool registerCommand(std::shared_ptr<Command> command) = 0;
 
     // TODO: dispatch functions
 

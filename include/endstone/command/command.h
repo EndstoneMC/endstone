@@ -17,6 +17,7 @@
 #include <map>
 #include <optional>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/command/command_map.h"
@@ -25,10 +26,16 @@
 
 namespace endstone {
 /**
- * Represents a registered Command, which executes various tasks upon user input
+ * Represents a Command, which executes various tasks upon user input
  */
 class Command {
 public:
+    explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {"/command"},
+                     std::vector<std::string> aliases = {}) noexcept
+        : name_(std::move(name)), description_(std::move(description)), usages_(std::move(usages)),
+          aliases_(std::move(aliases))
+    {
+    }
     virtual ~Command() = default;
 
     /**
@@ -45,16 +52,19 @@ public:
      *
      * @return Name of this command
      */
-    [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] std::string getName() const
+    {
+        return name_;
+    }
 
     /**
      * Gets a brief description of this command
      *
      * @return Description of this command
      */
-    [[nodiscard]] virtual std::string getDescription() const
+    [[nodiscard]] std::string getDescription() const
     {
-        return "";
+        return description_;
     }
 
     /**
@@ -62,30 +72,26 @@ public:
      *
      * @return List of aliases
      */
-    [[nodiscard]] virtual std::vector<std::string> getAliases() const
+    [[nodiscard]] std::vector<std::string> getAliases() const
     {
-        return {};
+        return aliases_;
     }
 
-    class Argument {
-    public:
-        template <typename T>
-        explicit Argument(std::string name) : type_(type_id<T>()), name_(std::move(name))
-        {
-        }
-
-    private:
-        std::string type_;
-        std::string name_;
-    };
+    /**
+     * Returns a list of usages of this command
+     *
+     * @return List of usages
+     */
+    [[nodiscard]] std::vector<std::string> getUsages() const
+    {
+        return usages_;
+    }
 
     /**
      * Registers this command to a CommandMap.
-     * Once called it only allows changes the registered CommandMap
      *
-     * @param command_map the CommandMap to register this command to
-     * @return true if the registration was successful (the current registered
-     *     CommandMap was the passed CommandMap or null) false otherwise
+     * @param command_map the CommandMap to register to
+     * @return true if the registration was successful, false otherwise
      */
     bool registerTo(CommandMap &command_map) noexcept
     {
@@ -98,13 +104,10 @@ public:
     }
 
     /**
-     * Unregisters this command from the passed CommandMap applying any
-     * outstanding changes
+     * Unregisters this command from a CommandMap
      *
-     * @param command_map the CommandMap to unregister
-     * @return true if the unregistration was successful (the current
-     *     registered CommandMap was the passed CommandMap or null) false
-     *     otherwise
+     * @param command_map the CommandMap to unregister from
+     * @return true if the unregistration was successful, false otherwise
      */
     bool unregisterFrom(CommandMap &command_map) noexcept
     {
@@ -132,6 +135,10 @@ private:
         return (!isRegistered() || command_map_ == &command_map);
     }
 
+    std::string name_;
+    std::string description_;
+    std::vector<std::string> aliases_;
+    std::vector<std::string> usages_;
     CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone
