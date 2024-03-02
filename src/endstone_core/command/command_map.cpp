@@ -12,32 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <gtest/gtest.h>
-
-#include "bedrock/common.h"
-#include "endstone/detail/server.h"
-
-std::string Common::getGameVersionString()
-{
-    return "1.2.3";
-}
-
-namespace endstone {
-
-class EndstoneServerTest : public ::testing::Test {
-protected:
-    detail::EndstoneServer &server_ = detail::EndstoneServer::getInstance();
-};
-
-TEST_F(EndstoneServerTest, GetInstance)
-{
-    EXPECT_NO_THROW(detail::EndstoneServer::getInstance());
-    EXPECT_EQ(&detail::EndstoneServer::getInstance(), &server_);
-}
-
-TEST_F(EndstoneServerTest, GetMinecraftVersion)
-{
-    EXPECT_EQ(server_.getMinecraftVersion(), "1.2.3");
-}
-
-}  // namespace endstone
+#include "endstone/detail/command/command_map.h"

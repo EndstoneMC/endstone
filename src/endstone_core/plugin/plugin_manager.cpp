@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/plugin/endstone_plugin_manager.h"
+#include "endstone/detail/plugin/plugin_manager.h"
 
 #include <algorithm>
 #include <memory>

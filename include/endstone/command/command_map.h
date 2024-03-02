@@ -24,10 +24,10 @@ namespace endstone {
 class CommandMap {
 public:
     virtual ~CommandMap() = default;
-    CommandMap(const CommandMap&) = delete;
-    CommandMap& operator=(const CommandMap&) = delete;
-    CommandMap(CommandMap&&) = default;
-    CommandMap& operator=(CommandMap&&) = default;
+    CommandMap(const CommandMap &) = delete;
+    CommandMap &operator=(const CommandMap &) = delete;
+    CommandMap(CommandMap &&) = default;
+    CommandMap &operator=(CommandMap &&) = default;
 
     /**
      * Registers a command.

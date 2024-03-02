@@ -14,13 +14,6 @@
 
 #pragma once
 
-// The ENDSTONE_NOINLINE macro is for function DEFINITIONS.
-// FORWARD DECLARATIONS should never use this macro:
-// https://stackoverflow.com/questions/9317473/forward-declaration-of-inline-functions
-#if defined(ENDSTONE_NOINLINE_DISABLED)
-#define ENDSTONE_NOINLINE inline
-#elif defined(_MSC_VER)
-#define ENDSTONE_NOINLINE __declspec(noinline) inline
-#else
-#define ENDSTONE_NOINLINE __attribute__((noinline)) inline
-#endif
+namespace endstone::detail {
+class EndstoneCommandMap {};
+}  // namespace endstone::detail

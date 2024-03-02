@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail//spdlog/bedrock_text_formatter.h"
+#include "endstone/detail//spdlog/text_formatter.h"
 
 #include <spdlog/details/fmt_helper.h>
 
 namespace endstone::detail {
 
-void BedrockTextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
+void TextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
 {
 
     const auto &input = msg.payload;
@@ -47,9 +47,9 @@ void BedrockTextFormatter::format(const spdlog::details::log_msg &msg, const tm 
     }
 }
 
-std::unique_ptr<spdlog::custom_flag_formatter> BedrockTextFormatter::clone() const
+std::unique_ptr<spdlog::custom_flag_formatter> TextFormatter::clone() const
 {
-    return spdlog::details::make_unique<BedrockTextFormatter>(should_do_colors_);
+    return spdlog::details::make_unique<TextFormatter>(should_do_colors_);
 }
 
 }  // namespace endstone::detail

@@ -23,8 +23,8 @@
 #include <filesystem>
 namespace fs = std::filesystem;
 
-#include "endstone/detail/endstone_server.h"
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/server.h"
 #include "endstone/plugin/plugin.h"
 
 namespace endstone::detail {

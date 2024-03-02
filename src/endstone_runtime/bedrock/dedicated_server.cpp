@@ -1,7 +1,7 @@
 #include "bedrock/server/dedicated_server.h"
 
-#include "endstone/detail/endstone_server.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
 
 DedicatedServer::StartResult DedicatedServer::runDedicatedServerLoop(Core::FilePathManager &file_path_manager,
                                                                      PropertiesSettings &properties_settings,

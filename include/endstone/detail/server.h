@@ -18,7 +18,7 @@
 #include <string>
 #include <string_view>
 
-#include "endstone/detail/plugin/endstone_plugin_manager.h"
+#include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 

@@ -16,9 +16,9 @@
 
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail/endstone_server.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
+#include "endstone/detail/server.h"
 
 #if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))

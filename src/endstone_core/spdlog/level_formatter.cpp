@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/spdlog/bedrock_level_formatter.h"
+#include "endstone/detail/spdlog/level_formatter.h"
 
 #include <spdlog/details/fmt_helper.h>
 
 namespace endstone::detail {
 
-void BedrockLevelFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
+void LevelFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdlog::memory_buf_t &dest)
 {
     static const std::unordered_map<spdlog::level::level_enum, std::string_view> level_names = {
         {spdlog::level::trace, "TRACE"},  {spdlog::level::debug, "DEBUG"}, {spdlog::level::info, "INFO"},
@@ -30,9 +30,9 @@ void BedrockLevelFormatter::format(const spdlog::details::log_msg &msg, const tm
     spdlog::details::fmt_helper::append_string_view(level_name, dest);
 }
 
-std::unique_ptr<spdlog::custom_flag_formatter> BedrockLevelFormatter::clone() const
+std::unique_ptr<spdlog::custom_flag_formatter> LevelFormatter::clone() const
 {
-    return spdlog::details::make_unique<BedrockLevelFormatter>();
+    return spdlog::details::make_unique<LevelFormatter>();
 }
 
 }  // namespace endstone::detail

@@ -19,7 +19,7 @@
 
 namespace endstone::detail {
 
-class BedrockLevelFormatter : public spdlog::custom_flag_formatter {
+class LevelFormatter : public spdlog::custom_flag_formatter {
 public:
     void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
 

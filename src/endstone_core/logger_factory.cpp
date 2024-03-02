@@ -18,7 +18,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "endstone/detail/spdlog/bedrock_log_sink.h"
+#include "endstone/detail/spdlog/log_sink.h"
 #include "endstone/detail/spdlog/spdlog_adapter.h"
 
 namespace endstone::detail {
@@ -34,7 +34,7 @@ Logger &LoggerFactory::getLogger(const std::string &name)
         return it->second;
     }
 
-    spdlog::sink_ptr console_sink = std::make_shared<BedrockLogSink>(stdout);
+    spdlog::sink_ptr console_sink = std::make_shared<LogSink>(stdout);
     auto console = std::make_shared<spdlog::logger>(name, console_sink);
     spdlog::register_logger(console);
     it = loggers.emplace(name, SpdLogAdapter(console)).first;

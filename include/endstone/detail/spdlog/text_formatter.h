@@ -21,9 +21,9 @@
 
 namespace endstone::detail {
 
-class BedrockTextFormatter : public spdlog::custom_flag_formatter {
+class TextFormatter : public spdlog::custom_flag_formatter {
 public:
-    explicit BedrockTextFormatter(bool should_do_colors) : should_do_colors_(should_do_colors){};
+    explicit TextFormatter(bool should_do_colors) : should_do_colors_(should_do_colors){};
     void format(const spdlog::details::log_msg &msg, const std::tm &, spdlog::memory_buf_t &dest) override;
     [[nodiscard]] std::unique_ptr<custom_flag_formatter> clone() const override;
 

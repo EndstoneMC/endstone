@@ -19,7 +19,7 @@
 
 #include <cassert>
 
-#include "endstone/detail/endstone_server.h"
+#include "endstone/detail/server.h"
 
 using namespace endstone::detail;
 

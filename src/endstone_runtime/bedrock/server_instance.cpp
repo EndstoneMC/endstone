@@ -14,8 +14,8 @@
 
 #include "bedrock/server/server_instance.h"
 
-#include "endstone/detail/endstone_server.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
 
 void ServerInstance::startServerThread()
 {

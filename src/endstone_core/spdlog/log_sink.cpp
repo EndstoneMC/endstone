@@ -12,24 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/spdlog/bedrock_log_sink.h"
+#include "endstone/detail/spdlog/log_sink.h"
 
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/sinks/base_sink-inl.h>
 
-#include "endstone/detail/spdlog/bedrock_level_formatter.h"
-#include "endstone/detail/spdlog/bedrock_text_formatter.h"
+#include "endstone/detail/spdlog/level_formatter.h"
+#include "endstone/detail/spdlog/text_formatter.h"
 
 namespace endstone::detail {
 
-BedrockLogSink::BedrockLogSink(FILE *target_file, spdlog::color_mode mode)
+LogSink::LogSink(FILE *target_file, spdlog::color_mode mode)
     : target_file_(target_file), spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t>(
                                      spdlog::details::make_unique<spdlog::pattern_formatter>())
 {
     setColorMode(mode);
     auto *formatter = dynamic_cast<spdlog::pattern_formatter *>(formatter_.get());
-    formatter->add_flag<BedrockLevelFormatter>('L');
-    formatter->add_flag<BedrockTextFormatter>('v', should_do_colors_);
+    formatter->add_flag<LevelFormatter>('L');
+    formatter->add_flag<TextFormatter>('v', should_do_colors_);
     formatter->set_pattern("%^[%Y-%m-%d %H:%M:%S.%e %L] [%n] %v%$");
     colors_.at(spdlog::level::trace) = toString(white);
     colors_.at(spdlog::level::debug) = toString(cyan);
@@ -40,7 +40,7 @@ BedrockLogSink::BedrockLogSink(FILE *target_file, spdlog::color_mode mode)
     colors_.at(spdlog::level::off) = toString(reset);
 }
 
-void BedrockLogSink::setColorMode(spdlog::color_mode mode)
+void LogSink::setColorMode(spdlog::color_mode mode)
 {
     switch (mode) {
     case spdlog::color_mode::always:
@@ -55,12 +55,12 @@ void BedrockLogSink::setColorMode(spdlog::color_mode mode)
     }
 }
 
-std::string BedrockLogSink::toString(const spdlog::string_view_t &sv)
+std::string LogSink::toString(const spdlog::string_view_t &sv)
 {
     return {sv.data(), sv.size()};
 }
 
-void BedrockLogSink::sink_it_(const spdlog::details::log_msg &msg)
+void LogSink::sink_it_(const spdlog::details::log_msg &msg)
 {
     msg.color_range_start = 0;
     msg.color_range_end = 0;
@@ -83,17 +83,17 @@ void BedrockLogSink::sink_it_(const spdlog::details::log_msg &msg)
     fflush(target_file_);
 }
 
-void BedrockLogSink::flush_()
+void LogSink::flush_()
 {
     fflush(target_file_);
 }
 
-void BedrockLogSink::printColorCode(const spdlog::string_view_t &color_code)
+void LogSink::printColorCode(const spdlog::string_view_t &color_code)
 {
     fwrite(color_code.data(), sizeof(char), color_code.size(), target_file_);
 }
 
-void BedrockLogSink::printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end)
+void LogSink::printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end)
 {
     fwrite(formatted.data() + start, sizeof(char), end - start, target_file_);
 }

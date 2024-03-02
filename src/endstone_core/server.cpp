@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/endstone_server.h"
+#include "endstone/detail/server.h"
 
 #include <filesystem>
 #include <memory>
