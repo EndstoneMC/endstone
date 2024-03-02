@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail//spdlog/text_formatter.h"
+#include "endstone/detail/spdlog/text_formatter.h"
 
 #include <spdlog/details/fmt_helper.h>
 
