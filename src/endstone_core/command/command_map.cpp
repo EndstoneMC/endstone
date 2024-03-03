@@ -16,6 +16,7 @@
 
 #include <algorithm>
 
+#include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
 #include "endstone/detail/command/defaults/version_command.h"
 
@@ -52,6 +53,13 @@ void EndstoneCommandMap::setDefaultCommands()
 
 }  // namespace endstone::detail
 
+class CommandWrapper : public Command {
+    void execute(const struct CommandOrigin &origin, struct CommandOutput &output) const override
+    {
+        printf("TODO...\n");
+    }
+};
+
 bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endstone::Command> command)
 {
     if (!command) {
@@ -63,9 +71,13 @@ bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endst
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, {128}, {0});
-    auto *signature = registry.getCommand(name);
-    // TODO: register the alias
-    // TODO: register the overloads from usage
 
-    return false;
+    for (auto alias : command->getAliases()) {
+        std::transform(alias.begin(), alias.end(), alias.begin(), [](unsigned char c) { return std::tolower(c); });
+        registry.registerAlias(name, alias);
+    }
+
+    // TODO: register the overloads from usage
+    const auto *overload = registry.registerOverload<CommandWrapper>("test", {1, INT_MAX});
+    return overload != nullptr;
 }
