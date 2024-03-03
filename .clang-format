@@ -27,4 +27,5 @@ IncludeCategories:
     CaseSensitive: false
 InsertBraces: true
 InsertNewlineAtEOF: true
+MaxEmptyLinesToKeep: 1
 SpacesBeforeTrailingComments: 2

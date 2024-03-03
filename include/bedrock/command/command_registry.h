@@ -41,6 +41,7 @@ enum class CommandPermissionLevel : std::uint8_t {
 
 class Command;
 class CommandParameterData;
+
 class CommandRegistry {
 public:
     struct Overload {
@@ -86,6 +87,8 @@ public:
         char const *data;                   // +24
         uint32_t size;                      // +32
         Symbol symbol;                      // +36
+
+        friend std::ostream &operator<<(std::ostream &os, const ParseToken &token);
     };
     static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
@@ -121,6 +124,9 @@ public:
 
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] BEDROCK_API std::unique_ptr<Command> CommandRegistry::createCommand(
+        const CommandRegistry::ParseToken &parse_token, const CommandOrigin &origin, int version,
+        std::string &error_message, std::vector<std::string> &error_params) const;
     [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &) const;
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
@@ -129,101 +135,26 @@ private:
 enum CommandParameterDataType : int;
 enum CommandParameterOption : char;
 
-class CommandParameterData {
+struct CommandParameterData {
 
-public:
-    template <typename Command, typename Type>
-    static CommandParameterData create(const char *name, Type Command::*data)
-    {
-        union {
-            Type Command::*p;
-            uint32_t v;
-        } tmp;
-        tmp.p = data;
-        return create(Bedrock::type_id<CommandRegistry, Type>(), name, tmp.v, false, -1);
-    }
-
-    template <typename Command, typename Type>
-    static CommandParameterData create(const char *name, std::optional<Type> Command::*data)
-    {
-        union {
-            std::optional<Type> Command::*p;
-            uint32_t v;
-        } tmp;
-        tmp.p = data;
-        // tmp.v + sizeof(Type) is based on the assumption of std::optional implementation
-        // https://github.com/llvm/llvm-project/blob/659ce8f66597ba19845e407d06156ff33c8c7fb1/libc/src/__support/CPP/optional.h#L30
-        // https://github.com/microsoft/STL/blob/32e65ac3e54a7150202cc9b3cc4de7330d58d24e/stl/inc/optional#L97
-        return create(Bedrock::type_id<CommandRegistry, Type>(), name, tmp.v, true, tmp.v + sizeof(Type));
-    }
-
-private:
-    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
-                                       int offset_value, bool optional, int offset_has_value);
-
-public:
     CommandParameterData(const Bedrock::typeid_t<CommandRegistry> &type_id, CommandRegistry::ParseRule parse_rule,
                          const char *name, CommandParameterDataType type, const char *enum_name,
                          const char *postfix_name, int offset_value, bool optional, int offset_has_value)
-        : type_id_(type_id), parse_rule_(parse_rule), name_(name), type_(type), enum_name_(enum_name),
-          postfix_name_(postfix_name), offset_value_(offset_value), optional_(optional),
-          offset_has_value_(offset_has_value)
+        : type_id(type_id), parse_rule(parse_rule), name(name), type(type), enum_name(enum_name),
+          postfix_name(postfix_name), offset_value(offset_value), optional(optional), offset_has_value(offset_has_value)
     {
     }
 
-    [[nodiscard]] Bedrock::typeid_t<CommandRegistry> getTypeId() const
-    {
-        return type_id_;
-    }
-
-    [[nodiscard]] CommandRegistry::ParseRule getParseRule() const
-    {
-        return parse_rule_;
-    }
-    [[nodiscard]] const std::string &getName() const
-    {
-        return name_;
-    }
-    [[nodiscard]] const char *getEnumName() const
-    {
-        return enum_name_;
-    }
-    [[nodiscard]] const CommandRegistry::Symbol &getEnumSymbol() const
-    {
-        return enum_symbol_;
-    }
-    [[nodiscard]] const char *getPostfixName() const
-    {
-        return postfix_name_;
-    }
-    [[nodiscard]] const CommandRegistry::Symbol &getPostfixSymbol() const
-    {
-        return postfix_symbol_;
-    }
-    [[nodiscard]] CommandParameterDataType getType() const
-    {
-        return type_;
-    }
-    [[nodiscard]] bool isOptional() const
-    {
-        return optional_;
-    }
-    [[nodiscard]] CommandParameterOption getOption() const
-    {
-        return option_;
-    }
-
-private:
-    Bedrock::typeid_t<CommandRegistry> type_id_;  // +0
-    CommandRegistry::ParseRule parse_rule_;       // +8
-    std::string name_;                            // +16
-    const char *enum_name_;                       // +48
-    CommandRegistry::Symbol enum_symbol_;         // +56
-    const char *postfix_name_;                    // +64
-    CommandRegistry::Symbol postfix_symbol_;      // +72
-    CommandParameterDataType type_;               // +76
-    int offset_value_;                            // +80
-    int offset_has_value_;                        // +84
-    bool optional_;                               // +88
-    CommandParameterOption option_;               // +89
+    Bedrock::typeid_t<CommandRegistry> type_id;  // +0
+    CommandRegistry::ParseRule parse_rule;       // +8
+    std::string name;                            // +16
+    const char *enum_name;                       // +48
+    CommandRegistry::Symbol enum_symbol;         // +56
+    const char *postfix_name;                    // +64
+    CommandRegistry::Symbol postfix_symbol;      // +72
+    CommandParameterDataType type;               // +76
+    int offset_value;                            // +80
+    int offset_has_value;                        // +84
+    bool optional;                               // +88
+    CommandParameterOption option;               // +89
 };

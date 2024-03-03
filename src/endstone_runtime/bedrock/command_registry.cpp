@@ -14,34 +14,17 @@
 
 #include "bedrock/command/command_registry.h"
 
+#include <iomanip>
+#include <iostream>
+#include <memory>
+#include <stack>
+
+#include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
 
+#include "bedrock/command/command.h"
 #include "bedrock/type_id.h"
 #include "endstone/detail/hook.h"
-
-namespace {
-
-class CommandParameterDataTemplate {
-public:
-    explicit CommandParameterDataTemplate(const CommandParameterData &data)
-        : type_id_(data.getTypeId()), parse_rule_(data.getParseRule())
-    {
-    }
-
-    CommandParameterData create(const char *name, int offset_value, bool optional, int offset_has_value)
-    {
-        return {type_id_,        parse_rule_, name,         static_cast<CommandParameterDataType>(0),
-                nullptr,         nullptr,     offset_value, optional,
-                offset_has_value};
-    }
-
-private:
-    Bedrock::typeid_t<CommandRegistry> type_id_;
-    CommandRegistry::ParseRule parse_rule_;
-};
-
-std::unordered_map<uint32_t, CommandParameterDataTemplate> gCommandParameterTemplate;
-}  // namespace
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
                                       CommandFlag flag1, CommandFlag flag2)
@@ -67,27 +50,54 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 
     for (const auto &param : overload.params) {
-        auto type_id = param.getTypeId();
-        if (gCommandParameterTemplate.find(type_id.id) != gCommandParameterTemplate.end()) {
-            continue;
-        }
-
         // NOTE: Retrieve the typeid_t for each type after each game update and update values in `type_id.cpp`.
-        // spdlog::debug("Bedrock::typeid_t<CommandRegistry> = {}, Description = {}", type_id.id, describe(param));
-
-        // save the param as a template
-        gCommandParameterTemplate.emplace(type_id.id, CommandParameterDataTemplate(param));
+        spdlog::debug("Bedrock::typeid_t<CommandRegistry> = {}, Description = {}", param.type_id.id, describe(param));
     }
 }
 
-CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
-                                                  int offset_value, bool optional, int offset_has_value)
+std::unique_ptr<Command> CommandRegistry::createCommand(const CommandRegistry::ParseToken &parse_token,
+                                                        const CommandOrigin &origin, int version,
+                                                        std::string &error_message,
+                                                        std::vector<std::string> &error_params) const
 {
-    auto it = gCommandParameterTemplate.find(type_id.id);
-    if (it == gCommandParameterTemplate.end()) {
-        spdlog::error("Bedrock::typeid_t<CommandRegistry> = {} is not registered, terminating...", type_id.id);
-        std::terminate();
-    }
+    spdlog::debug("ParseToken:\n{}", parse_token);
+    std::unique_ptr<Command> result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::createCommand, result, this, parse_token, origin, version,
+                                    error_message, error_params);
+    return result;
+}
 
-    return it->second.create(name, offset_value, optional, offset_has_value);
+template <>
+struct fmt::formatter<CommandRegistry::ParseToken> : ostream_formatter {};
+
+std::ostream &operator<<(std::ostream &os, const CommandRegistry::ParseToken &token)
+{
+    std::stack<std::pair<const CommandRegistry::ParseToken *, int>> to_visit;
+
+    to_visit.emplace(&token, 0);
+    while (!to_visit.empty()) {
+        auto node_level = to_visit.top();
+        to_visit.pop();
+
+        const auto *node = node_level.first;
+        auto level = node_level.second;
+
+        os << std::string(level * 4, ' ');
+
+        if (node) {
+            os << "Symbol: 0x" << std::hex << node->symbol.value << std::dec;
+            if (node->size > 0) {
+                os << ", Data: " << std::string(node->data, node->size);
+            }
+            os << "\n";
+
+            if (node->next) {
+                to_visit.emplace(node->next.get(), level);
+            }
+            if (node->child) {
+                to_visit.emplace(node->child.get(), level + 1);
+            }
+        }
+    }
+    return os;
 }
