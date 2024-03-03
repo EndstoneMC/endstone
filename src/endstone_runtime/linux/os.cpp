@@ -21,7 +21,7 @@
 
 #include <fmt/format.h>
 
-namespace endstone::os {
+namespace endstone::detail::os {
 
 namespace {
 struct ModuleInfo {
@@ -93,6 +93,6 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
-}  // namespace endstone::os
+}  // namespace endstone::detail::os
 
 #endif
