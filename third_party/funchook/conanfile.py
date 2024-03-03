@@ -78,8 +78,10 @@ class PackageConan(ConanFile):
         cmake.install()
 
         os.makedirs(os.path.join(self.package_folder, "include", "funchook"))
-        shutil.move(os.path.join(self.package_folder, "include", "funchook.h"),
-                    os.path.join(self.package_folder, "include", "funchook", "funchook.h"))
+        shutil.move(
+            os.path.join(self.package_folder, "include", "funchook.h"),
+            os.path.join(self.package_folder, "include", "funchook", "funchook.h"),
+        )
 
     def package_info(self):
         if is_msvc(self) and self.options.shared:

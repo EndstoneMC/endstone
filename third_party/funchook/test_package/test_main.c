@@ -6,28 +6,29 @@
 #ifdef _WIN32
 #define _CRT_SECURE_NO_WARNINGS
 #endif
+#include <fcntl.h>
+#include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <inttypes.h>
 #include <string.h>
-#include <sys/types.h>
+
 #include <sys/stat.h>
-#include <fcntl.h>
+#include <sys/types.h>
 #ifdef _WIN32
-#include <windows.h>
 #include <io.h>
-#define mode_t int
+#include <windows.h>
+#define mode_t  int
 #define ssize_t int
-#define open _open
+#define open    _open
 /* cast the third argument of _read to suppress warning C4267 */
 #define read(fd, buf, count) _read((fd), (buf), (unsigned int)(count))
 /* cast the second argument of fgets to suppress warning C4267 */
 #define fgets(s, size, fp) fgets((s), (int)(size), (fp))
-#define close _close
+#define close              _close
 #else
-#include <unistd.h>
 #include <dlfcn.h>
+#include <unistd.h>
 #endif
 #include <funchook.h>
 
@@ -125,9 +126,9 @@ static uint64_t uint64_hook_func(uint64_t arg)
 #define TEST_FUNCHOOK_INT(func, load_type) test_funchook_int(func, #func, load_type)
 
 enum load_type {
-   LOAD_TYPE_IN_EXE,
-   LOAD_TYPE_IN_DLL,
-   LOAD_TYPE_NO_LOAD,
+    LOAD_TYPE_IN_EXE,
+    LOAD_TYPE_IN_DLL,
+    LOAD_TYPE_NO_LOAD,
 };
 
 static void *load_func(const char *module, const char *func)
@@ -135,7 +136,7 @@ static void *load_func(const char *module, const char *func)
     void *addr;
 #ifdef _WIN32
     HMODULE hMod = GetModuleHandleA(module);
-        
+
     if (hMod == NULL) {
         printf("ERROR: Could not open module %s.\n", module ? module : "(null)");
         exit(1);
@@ -202,7 +203,7 @@ void test_funchook_int(volatile int_func_t func, const char *func_name, enum loa
         }
     }
     orig_func = func;
-    rv = funchook_prepare(funchook, (void**)&orig_func, hook_func);
+    rv = funchook_prepare(funchook, (void **)&orig_func, hook_func);
     if (rv != 0) {
         printf("ERROR: failed to prepare hook %s. (%s)\n", func_name, funchook_error_message(funchook));
         error_cnt++;
@@ -275,9 +276,9 @@ void test_funchook_uint64(volatile uint64_func_t func, const char *func_name)
 {
     funchook_t *funchook = funchook_create();
     uint64_t test_data[] = {0, 0xFFFFFFFFFFFFFFFF, 0x8000000000000000, 0x2};
-    uint64_t results[sizeof(test_data)/sizeof(test_data[0])];
+    uint64_t results[sizeof(test_data) / sizeof(test_data[0])];
     uint64_t result;
-    size_t i, num_test_data = sizeof(test_data)/sizeof(test_data[0]);
+    size_t i, num_test_data = sizeof(test_data) / sizeof(test_data[0]);
     int rv;
 
     test_cnt++;
@@ -285,11 +286,11 @@ void test_funchook_uint64(volatile uint64_func_t func, const char *func_name)
 
     for (i = 0; i < num_test_data; i++) {
         results[i] = func(test_data[i]);
-        //fprintf(stderr, "%s(0x%"PRIx64") -> 0x%"PRIx64"\n", func_name, test_data[i], results[i]);
+        // fprintf(stderr, "%s(0x%"PRIx64") -> 0x%"PRIx64"\n", func_name, test_data[i], results[i]);
     }
 
     uint64_orig_func = func;
-    rv = funchook_prepare(funchook, (void**)&uint64_orig_func, uint64_hook_func);
+    rv = funchook_prepare(funchook, (void **)&uint64_orig_func, uint64_hook_func);
     if (rv != 0) {
         printf("ERROR: failed to prepare hook %s. (%s)\n", func_name, funchook_error_message(funchook));
         error_cnt++;
@@ -312,7 +313,8 @@ void test_funchook_uint64(volatile uint64_func_t func, const char *func_name)
             return;
         }
         if (results[i] != result) {
-            printf("ERROR: %s should return 0x%"PRIx64" but 0x%"PRIx64" after hooking.\n", func_name, results[i], result);
+            printf("ERROR: %s should return 0x%" PRIx64 " but 0x%" PRIx64 " after hooking.\n", func_name, results[i],
+                   result);
             error_cnt++;
             return;
         }
@@ -330,7 +332,8 @@ void test_funchook_uint64(volatile uint64_func_t func, const char *func_name)
             return;
         }
         if (results[i] != result) {
-            printf("ERROR: %s should return 0x%"PRIx64" but 0x%"PRIx64" after uninstall.\n", func_name, results[i], result);
+            printf("ERROR: %s should return 0x%" PRIx64 " but 0x%" PRIx64 " after uninstall.\n", func_name, results[i],
+                   result);
             error_cnt++;
             return;
         }
@@ -347,7 +350,7 @@ void test_funchook_expect_error(int_func_t func, int errcode, const char *func_s
     printf("[%d] test_funchook_expect_error: %s\n", test_cnt, func_str);
 
     orig_func = func;
-    rv = funchook_prepare(funchook, (void**)&orig_func, hook_func);
+    rv = funchook_prepare(funchook, (void **)&orig_func, hook_func);
     if (rv != errcode) {
         printf("ERROR at line %d: hooking must fail with %d but %d.\n", line, errcode, rv);
         error_cnt++;
@@ -356,7 +359,7 @@ void test_funchook_expect_error(int_func_t func, int errcode, const char *func_s
 }
 
 #ifdef __ANDROID__
-static int (*open_func)(const char* const pass_object_size, int, ...);
+static int (*open_func)(const char *const pass_object_size, int, ...);
 #else
 static int (*open_func)(const char *pathname, int flags, mode_t mode);
 #endif
@@ -385,7 +388,8 @@ static void read_content_by_open(const char *filename, char *buf, size_t bufsiz)
 
     if (size >= 0) {
         buf[size] = '\0';
-    } else {
+    }
+    else {
         strcpy(buf, "read error");
     }
     close(fd);
@@ -399,7 +403,8 @@ static void read_content_by_fopen(const char *filename, char *buf, size_t bufsiz
             strcpy(buf, "read error");
         }
         fclose(fp);
-    } else {
+    }
+    else {
         strcpy(buf, "open error");
     }
 }
@@ -447,13 +452,13 @@ static void test_hook_open_and_fopen(void)
     /* prepare to hook `open' and `fopen` */
     funchook = funchook_create();
 #ifdef __ANDROID__
-    open_func = (int (*)(const char* const pass_object_size, int, ...))open;
+    open_func = (int (*)(const char *const pass_object_size, int, ...))open;
 #else
-    open_func = (int (*)(const char*, int, mode_t))open;
+    open_func = (int (*)(const char *, int, mode_t))open;
 #endif
-    funchook_prepare(funchook, (void**)&open_func, open_hook);
+    funchook_prepare(funchook, (void **)&open_func, open_hook);
     fopen_func = fopen;
-    funchook_prepare(funchook, (void**)&fopen_func, fopen_hook);
+    funchook_prepare(funchook, (void **)&fopen_func, fopen_hook);
 
     /* The contents of test-1.txt should be "This is test-1.txt". */
     check_content("test-1.txt", "This is test-1.txt.", __LINE__);
@@ -476,16 +481,21 @@ static void test_hook_open_and_fopen(void)
     funchook_destroy(funchook);
 }
 
-#define S(suffix) \
-    extern int dllfunc_##suffix(int, int); \
+#define S(suffix)                                    \
+    extern int dllfunc_##suffix(int, int);           \
     static int (*dllfunc_##suffix##_func)(int, int); \
-    static int dllfunc_##suffix##_hook(int a, int b) { \
-        return dllfunc_##suffix##_func(a, b) * 2; \
-    } \
-    NOINLINE int exefunc_##suffix(int a, int b) { return a * b + suffix; } \
+    static int dllfunc_##suffix##_hook(int a, int b) \
+    {                                                \
+        return dllfunc_##suffix##_func(a, b) * 2;    \
+    }                                                \
+    NOINLINE int exefunc_##suffix(int a, int b)      \
+    {                                                \
+        return a * b + suffix;                       \
+    }                                                \
     static int (*exefunc_##suffix##_func)(int, int); \
-    static int exefunc_##suffix##_hook(int a, int b) { \
-        return exefunc_##suffix##_func(a, b) * 2; \
+    static int exefunc_##suffix##_hook(int a, int b) \
+    {                                                \
+        return exefunc_##suffix##_func(a, b) * 2;    \
     }
 #include "suffix.list"
 #undef S
@@ -496,24 +506,24 @@ static NOINLINE int call_many_funcs(int installed)
     int expected;
     int mul = installed ? 2 : 1;
     const char *is_str = installed ? "isn't" : "is";
-#define S(suffix) \
-    rv = dllfunc_##suffix(2, 3); \
-    expected = (2 * 3 + suffix) * mul; \
-    if (rv != expected) { \
+#define S(suffix)                                                                                   \
+    rv = dllfunc_##suffix(2, 3);                                                                    \
+    expected = (2 * 3 + suffix) * mul;                                                              \
+    if (rv != expected) {                                                                           \
         printf("ERROR: dllfunc_%s %s hooked. (expect %d but %d)\n", #suffix, is_str, expected, rv); \
-        error_cnt++; \
-        return -1; \
+        error_cnt++;                                                                                \
+        return -1;                                                                                  \
     }
 #include "suffix.list"
 #undef S
 #ifndef SKIP_TESTS_CHANGING_EXE
-#define S(suffix) \
-    rv = exefunc_##suffix(2, 3); \
-    expected = (2 * 3 + suffix) * mul; \
-    if (rv != expected) { \
+#define S(suffix)                                                                                   \
+    rv = exefunc_##suffix(2, 3);                                                                    \
+    expected = (2 * 3 + suffix) * mul;                                                              \
+    if (rv != expected) {                                                                           \
         printf("ERROR: exefunc_%s %s hooked. (expect %d but %d)\n", #suffix, is_str, expected, rv); \
-        error_cnt++; \
-        return -1; \
+        error_cnt++;                                                                                \
+        return -1;                                                                                  \
     }
 #include "suffix.list"
 #undef S
@@ -529,18 +539,19 @@ static void test_hook_many_funcs(void)
     test_cnt++;
     printf("[%d] test_hook_many_funcs\n", test_cnt);
     funchook = funchook_create();
-#define S(suffix) \
-    dllfunc_##suffix##_func = dllfunc_##suffix; \
-    funchook_prepare(funchook, (void**)&dllfunc_##suffix##_func, dllfunc_##suffix##_hook); \
-    putchar('.'); fflush(stdout); \
+#define S(suffix)                                                                           \
+    dllfunc_##suffix##_func = dllfunc_##suffix;                                             \
+    funchook_prepare(funchook, (void **)&dllfunc_##suffix##_func, dllfunc_##suffix##_hook); \
+    putchar('.');                                                                           \
+    fflush(stdout);                                                                         \
     funchook_set_debug_file(NULL); /* disable logging except the first to reduce log size. */
 #include "suffix.list"
     funchook_set_debug_file("debug.log");
 #undef S
 #ifndef SKIP_TESTS_CHANGING_EXE
-#define S(suffix) \
-    exefunc_##suffix##_func = exefunc_##suffix; \
-    funchook_prepare(funchook, (void**)&exefunc_##suffix##_func, exefunc_##suffix##_hook); \
+#define S(suffix)                                                                           \
+    exefunc_##suffix##_func = exefunc_##suffix;                                             \
+    funchook_prepare(funchook, (void **)&exefunc_##suffix##_func, exefunc_##suffix##_hook); \
     funchook_set_debug_file(NULL); /* disable logging except the first to reduce log size. */
 #include "suffix.list"
     funchook_set_debug_file("debug.log");
@@ -597,7 +608,7 @@ int main()
 #endif
 
 #ifndef _MSC_VER
-#if defined __i386 || defined  _M_I386
+#if defined __i386 || defined _M_I386
     TEST_FUNCHOOK_EXPECT_ERROR(x86_test_error_jump1, FUNCHOOK_ERROR_CANNOT_FIX_IP_RELATIVE);
     TEST_FUNCHOOK_EXPECT_ERROR(x86_test_error_jump2, FUNCHOOK_ERROR_FOUND_BACK_JUMP);
 
@@ -627,7 +638,8 @@ int main()
     if (error_cnt == 0) {
         printf("all %d tests are passed.\n", test_cnt);
         return 0;
-    } else {
+    }
+    else {
         printf("%d of %d tests are failed.\n", error_cnt, test_cnt);
         return 1;
     }

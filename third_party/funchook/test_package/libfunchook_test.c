@@ -16,6 +16,10 @@ DLLEXPORT int get_val_in_dll()
     return val_in_dll;
 }
 
-#define S(suffix) DLLEXPORT int dllfunc_##suffix(int a, int b) { return a * b + suffix; }
+#define S(suffix)                                \
+    DLLEXPORT int dllfunc_##suffix(int a, int b) \
+    {                                            \
+        return a * b + suffix;                   \
+    }
 #include "suffix.list"
 #undef S
