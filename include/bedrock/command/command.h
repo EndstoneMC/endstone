@@ -29,7 +29,7 @@ public:
     virtual void execute(class CommandOrigin const &, class CommandOutput &) const = 0;
 
 private:
-    int32_t unk1_ = 0;
+    int version_ = 0;
     CommandRegistry *registry_ = nullptr;                                         // +16
     CommandRegistry::Symbol symbol_;                                              // +24
     CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
