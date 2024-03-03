@@ -124,7 +124,7 @@ public:
 
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
-    [[nodiscard]] BEDROCK_API std::unique_ptr<Command> CommandRegistry::createCommand(
+    [[nodiscard]] BEDROCK_API std::unique_ptr<Command> createCommand(
         const CommandRegistry::ParseToken &parse_token, const CommandOrigin &origin, int version,
         std::string &error_message, std::vector<std::string> &error_params) const;
     [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &) const;
