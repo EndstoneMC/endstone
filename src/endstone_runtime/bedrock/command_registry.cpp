@@ -50,7 +50,7 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
 
     for (const auto &param : overload.params) {
-        // NOTE: Retrieve the typeid_t for each type after each game update and update values in `type_id.cpp`.
+        // NOTE: Retrieve the typeid_t after game updates and fix values in `type_id.cpp`.
         spdlog::debug("Bedrock::typeid_t<CommandRegistry> = {}, Description = {}", param.type_id.id, describe(param));
     }
 }

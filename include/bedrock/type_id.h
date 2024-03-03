@@ -27,6 +27,20 @@ public:
 };
 
 template <typename Context, typename Type>
-BEDROCK_API typeid_t<Context> type_id();
+typeid_t<Context> type_id();
+
+#define DEFINE_BEDROCK_TYPE_ID(Context, Type, Value)  \
+    template <>                                       \
+    inline typeid_t<Context> type_id<Context, Type>() \
+    {                                                 \
+        return {Value};                               \
+    }
+
+DEFINE_BEDROCK_TYPE_ID(class CommandRegistry, std::string, 1);
+DEFINE_BEDROCK_TYPE_ID(class CommandRegistry, bool, 2);
+DEFINE_BEDROCK_TYPE_ID(class CommandRegistry, int, 5);
+DEFINE_BEDROCK_TYPE_ID(class CommandRegistry, float, 6);
+
+#undef DEFINE_BEDROCK_TYPE_ID
 
 }  // namespace Bedrock
