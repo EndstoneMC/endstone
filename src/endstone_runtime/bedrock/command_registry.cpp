@@ -32,6 +32,11 @@ void CommandRegistry::registerCommand(const std::string &name, const char *descr
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerCommand, this, name, description, level, flag1, flag2);
 }
 
+void CommandRegistry::registerAlias(std::string name, std::string alias)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerAlias, this, std::move(name), std::move(alias));
+}
+
 const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string &name) const
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::findCommand, this, name);

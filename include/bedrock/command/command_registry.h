@@ -95,6 +95,10 @@ public:
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &);
 
+    BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
+                                     CommandFlag flag1, CommandFlag flag2);
+    BEDROCK_API void registerAlias(std::string name, std::string alias);
+
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
     {
@@ -104,9 +108,7 @@ public:
     template <typename CommandType, typename... Params>
     const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version, const Params &...params)
     {
-        // TODO: can we get rid of const_cast?
         auto *signature = const_cast<CommandRegistry::Signature *>(findCommand(name));
-
         if (!signature) {
             return nullptr;
         }
@@ -117,14 +119,6 @@ public:
         signature->overloads.push_back(overload);
         registerOverloadInternal(*signature, overload);
         return &signature->overloads.back();
-    }
-
-    BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
-                                     CommandFlag flag1, CommandFlag flag2);
-
-    [[nodiscard]] const CommandRegistry::Signature *getCommand(const std::string &name) const
-    {
-        return findCommand(name);
     }
 
 private:
