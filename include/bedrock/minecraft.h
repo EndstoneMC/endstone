@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,17 +14,9 @@
 
 #pragma once
 
-#include <memory>
+#include "bedrock/command/minecraft_commands.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/core.h"
-
-class DedicatedServer {
+class Minecraft {
 public:
-    enum class StartResult;
-
-    BEDROCK_API DedicatedServer::StartResult runDedicatedServerLoop(
-        Core::FilePathManager &file_path_manager, class PropertiesSettings &properties_settings,
-        class LevelSettings &level_settings, class AllowListFile &allow_list_file,
-        class std::unique_ptr<class PermissionsFile> &permissions_file);
+    MinecraftCommands &getCommands();
 };
