@@ -14,27 +14,31 @@
 
 #pragma once
 
-#include <mutex>
-#include <unordered_map>
-
-#include "endstone/command/command.h"
-#include "endstone/command/command_map.h"
+#include <memory>
+#include <stdexcept>
 
 namespace endstone::detail {
 
-class EndstoneCommandMap : public CommandMap {
+template <typename T>
+class Singleton {
+
 public:
-    explicit EndstoneCommandMap(Server &server);
-    bool registerCommand(std::shared_ptr<Command> command) override;
-    void clearCommands() override;
-    [[nodiscard]] Command *getCommand(std::string name) const override;
+    Singleton() = delete;
+
+    static void setInstance(std::unique_ptr<T> instance)
+    {
+        if (mInstance) {
+            throw std::runtime_error("Instance is already set");
+        }
+        mInstance = std::move(instance);
+    }
+
+    static T &getInstance()
+    {
+        return *mInstance.get();
+    }
 
 private:
-    void setDefaultCommands();
-
-    Server &server_;
-    std::mutex mutex_;
-    std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
+    inline static std::unique_ptr<T> mInstance = nullptr;
 };
-
 }  // namespace endstone::detail

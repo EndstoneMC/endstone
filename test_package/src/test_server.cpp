@@ -74,7 +74,8 @@ void testPluginDisabling(EndstoneServer &server)
 
 int main()
 {
-    auto &server = EndstoneServer::getInstance();
+    DedicatedServer dummy_ds;
+    EndstoneServer server(dummy_ds);
     testLogger(server);
     testPluginLoading(server);
     testPluginEnabling(server);

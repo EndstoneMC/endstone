@@ -14,11 +14,11 @@
 
 #include <exception>
 
+#include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/hook.h"
-#include "endstone/detail/plugin/python_plugin_loader.h"
-#include "endstone/detail/server.h"
+#include "endstone/detail/logger_factory.h"
 
 #if __GNUC__
 #define ENDSTONE_RUNTIME_CTOR __attribute__((constructor))
@@ -26,13 +26,13 @@
 #define ENDSTONE_RUNTIME_CTOR
 #endif
 
+[[maybe_unused]] pybind11::scoped_interpreter gInterpreter;
+[[maybe_unused]] pybind11::gil_scoped_release gRelease;
+
 ENDSTONE_RUNTIME_CTOR int main()
 {
     try {
-        auto &server = endstone::detail::EndstoneServer::getInstance();
-        server.getLogger().info("Initialising...");
-        server.getPluginManager().registerLoader(std::make_unique<endstone::detail::PythonPluginLoader>(server));
-
+        endstone::detail::LoggerFactory::getLogger("EndstoneServer").info("Initialising...");
         endstone::detail::hook::install();
         return 0;
     }

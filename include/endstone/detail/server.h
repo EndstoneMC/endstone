@@ -18,6 +18,7 @@
 #include <string>
 #include <string_view>
 
+#include "bedrock/server/dedicated_server.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -26,12 +27,7 @@ namespace endstone::detail {
 
 class EndstoneServer : public Server {
 public:
-    static EndstoneServer &getInstance()
-    {
-        static EndstoneServer instance;
-        return instance;
-    }
-
+    explicit EndstoneServer(DedicatedServer &dedicated_server);
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
@@ -49,9 +45,9 @@ public:
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
-    EndstoneServer();
     void enablePlugin(Plugin &plugin) const;
 
+    DedicatedServer &dedicated_server_;
     Logger &logger_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };

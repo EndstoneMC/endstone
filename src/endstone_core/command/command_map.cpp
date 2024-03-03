@@ -13,3 +13,58 @@
 // limitations under the License.
 
 #include "endstone/detail/command/command_map.h"
+
+#include <algorithm>
+
+#include "bedrock/command/command_registry.h"
+#include "endstone/detail/command/defaults/version_command.h"
+
+namespace endstone::detail {
+
+EndstoneCommandMap::EndstoneCommandMap(Server &server) : server_(server) {}
+
+void EndstoneCommandMap::clearCommands()
+{
+    std::lock_guard lock(mutex_);
+    for (const auto &item : known_commands_) {
+        item.second->unregisterFrom(*this);
+    }
+    known_commands_.clear();
+    setDefaultCommands();
+}
+
+Command *EndstoneCommandMap::getCommand(std::string name) const
+{
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+
+    auto it = known_commands_.find(name);
+    if (it == known_commands_.end()) {
+        return nullptr;
+    }
+
+    return it->second.get();
+}
+
+void EndstoneCommandMap::setDefaultCommands()
+{
+    registerCommand(std::make_unique<VersionCommand>());
+}
+
+}  // namespace endstone::detail
+
+bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endstone::Command> command)
+{
+    if (!command) {
+        return false;
+    }
+
+    auto name = command->getName();
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+
+    // TODO: register to BDS
+    // registry.registerCommand(name, command->getDescription(), CommandPermissionLevel::Any, {128}, {0});
+    // TODO: register the alias
+    // TODO: register the overloads from usage
+
+    return false;
+}

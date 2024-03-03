@@ -18,16 +18,18 @@
 #include <string>
 #include <vector>
 
-class Command;
-
 namespace endstone {
+
+class Command;
 class CommandMap {
 public:
-    virtual ~CommandMap() = default;
+    CommandMap() = default;
     CommandMap(const CommandMap &) = delete;
     CommandMap &operator=(const CommandMap &) = delete;
     CommandMap(CommandMap &&) = default;
     CommandMap &operator=(CommandMap &&) = default;
+
+    virtual ~CommandMap() = default;
 
     /**
      * Registers a command.
@@ -42,7 +44,7 @@ public:
     /**
      * Clears all registered commands.
      */
-    [[maybe_unused]] virtual void clearCommands() = 0;
+    virtual void clearCommands() = 0;
 
     /**
      * Gets the command registered to the specified name

@@ -35,6 +35,12 @@ PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
     }
 }
 
+PythonPluginLoader::~PythonPluginLoader()
+{
+    py::gil_scoped_acquire gil{};
+    obj_.dec_ref();
+}
+
 std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory)
 {
     auto plugins = pimpl()->loadPlugins(directory);

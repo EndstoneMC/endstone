@@ -25,6 +25,7 @@ namespace endstone::detail {
 class PythonPluginLoader : public PluginLoader {
 public:
     explicit PythonPluginLoader(Server &server);
+    ~PythonPluginLoader() override;
 
     [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) override;
     void enablePlugin(Plugin &plugin) const override;
@@ -33,9 +34,7 @@ public:
 private:
     [[nodiscard]] PluginLoader *pimpl() const;
 
-    pybind11::scoped_interpreter interpreter_;
     pybind11::object obj_;
-    pybind11::gil_scoped_release release_;
 };
 
 }  // namespace endstone::detail

@@ -16,21 +16,25 @@
 
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/singleton.h"
+
+using endstone::detail::EndstoneServer;
+using endstone::detail::Singleton;
 
 void ServerInstance::startServerThread()
 {
-    endstone::detail::EndstoneServer::getInstance().loadPlugins();
+    Singleton<EndstoneServer>::getInstance().loadPlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    endstone::detail::EndstoneServer::getInstance().enablePlugins();
+    Singleton<EndstoneServer>::getInstance().enablePlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
 {
-    endstone::detail::EndstoneServer::getInstance().disablePlugins();
+    Singleton<EndstoneServer>::getInstance().disablePlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
 }

@@ -12,32 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <gtest/gtest.h>
+#include "endstone/detail/command/defaults/version_command.h"
 
-#include "bedrock/common.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/singleton.h"
 
-std::string Common::getGameVersionString()
+endstone::detail::VersionCommand::VersionCommand() : Command("version", "Version command", {"/version"}) {}
+
+bool endstone::detail::VersionCommand::execute(CommandSender &sender,
+                                               const std::map<std::string, std::string> &args) const
 {
-    return "1.2.3";
+    sender.sendMessage("This server is running Endstone version: {}",
+                       Singleton<EndstoneServer>::getInstance().getVersion());
+    return true;
 }
-
-namespace endstone {
-
-class EndstoneServerTest : public ::testing::Test {
-protected:
-    detail::EndstoneServer &server_ = detail::EndstoneServer::getInstance();
-};
-
-TEST_F(EndstoneServerTest, GetInstance)
-{
-    EXPECT_NO_THROW(detail::EndstoneServer::getInstance());
-    EXPECT_EQ(&detail::EndstoneServer::getInstance(), &server_);
-}
-
-TEST_F(EndstoneServerTest, GetMinecraftVersion)
-{
-    EXPECT_EQ(server_.getMinecraftVersion(), "1.2.3");
-}
-
-}  // namespace endstone
