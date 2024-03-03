@@ -36,13 +36,13 @@ public:
     ~EndstoneServer() override = default;
 
     [[nodiscard]] Logger &getLogger() const override;
+    [[nodiscard]] EndstoneCommandMap &getCommandMap() const noexcept;
+    [[nodiscard]] MinecraftCommands &getMinecraftCommands();
     [[nodiscard]] PluginManager &getPluginManager() const override;
 
     void loadPlugins();
     void enablePlugins() const;
     void disablePlugins() const;
-
-    MinecraftCommands &getMinecraftCommands();
 
     [[nodiscard]] std::string_view getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;

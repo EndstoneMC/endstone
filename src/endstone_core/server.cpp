@@ -78,6 +78,16 @@ Logger &EndstoneServer::getLogger() const
     return logger_;
 }
 
+EndstoneCommandMap &EndstoneServer::getCommandMap() const noexcept
+{
+    return *command_map_;
+}
+
+MinecraftCommands &EndstoneServer::getMinecraftCommands()
+{
+    return server_instance_.getMinecraft().getCommands();
+}
+
 PluginManager &EndstoneServer::getPluginManager() const
 {
     return *plugin_manager_;
@@ -91,11 +101,6 @@ std::string_view EndstoneServer::getVersion() const
 std::string EndstoneServer::getMinecraftVersion() const
 {
     return Common::getGameVersionString();
-}
-
-MinecraftCommands &EndstoneServer::getMinecraftCommands()
-{
-    return server_instance_.getMinecraft().getCommands();
 }
 
 }  // namespace endstone::detail
