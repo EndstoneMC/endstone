@@ -14,3 +14,4 @@ _deps
 build/*
 bedrock_server/*
 wheelhouse/*
+stubs/*

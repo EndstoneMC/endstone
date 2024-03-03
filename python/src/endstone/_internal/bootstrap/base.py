@@ -163,10 +163,10 @@ class Bootstrap:
             m = hashlib.sha256()
 
             with Progress(
-                    TextColumn("[progress.description]{task.description}"),
-                    BarColumn(),
-                    DownloadColumn(),
-                    TimeRemainingColumn(),
+                TextColumn("[progress.description]{task.description}"),
+                BarColumn(),
+                DownloadColumn(),
+                TimeRemainingColumn(),
             ) as progress:
                 task = progress.add_task("[bold blue]Downloading...", total=total_size)
                 for data in response.iter_content(chunk_size=1024):
@@ -201,7 +201,8 @@ class Bootstrap:
             raise AssertionError(
                 f"Server directory {self.server_path} exists and is not empty but the server executable "
                 f"{self.executable_filename} for the current system can not be found. Are you using the same "
-                f"directory for both Windows and Linux platform?")
+                f"directory for both Windows and Linux platform?"
+            )
 
         self.server_path.mkdir(parents=True, exist_ok=True)
 

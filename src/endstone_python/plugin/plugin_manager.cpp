@@ -37,6 +37,7 @@ void def_plugin_manager(py::module &m)
              py::arg("plugin"))
         .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"))
         .def("enable_plugin", &PluginManager::enablePlugin, py::arg("plugin"))
+        .def("enable_plugins", &PluginManager::enablePlugins)
         .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"))
         .def("disable_plugins", &PluginManager::disablePlugins)
         .def("clear_plugins", &PluginManager::clearPlugins);

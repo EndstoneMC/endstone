@@ -1,21 +1,12 @@
+from endstone._internal.endstone_python import PluginDescription, PluginLoader, PluginManager
+from endstone._internal.endstone_python import Plugin as _Plugin
+
 __all__ = [
     "Plugin",
     "PluginDescription",
     "PluginLoader",
     "PluginManager",
 ]
-
-for name in __all__:
-    from importlib import import_module
-
-    module = import_module("endstone._internal.endstone_python")
-    globals()[f"_{name}"] = module.__dict__[name]
-    del module
-
-_Plugin = globals()["_Plugin"]
-PluginDescription = globals()["_PluginDescription"]
-PluginLoader = globals()["_PluginLoader"]
-PluginManager = globals()["_PluginManager"]
 
 
 class Plugin(_Plugin):
