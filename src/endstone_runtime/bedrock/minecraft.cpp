@@ -17,8 +17,8 @@
 MinecraftCommands &Minecraft::getCommands()
 {
 #ifdef __linux__
-    return *reinterpret_cast<MinecraftCommands *>(reinterpret_cast<size_t *>(this) + 22);
+    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<size_t *>(this) + 22);
 #elif _WIN32
-    return *reinterpret_cast<MinecraftCommands *>(reinterpret_cast<size_t *>(this) + 23);
+    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<size_t *>(this) + 23);
 #endif
 }

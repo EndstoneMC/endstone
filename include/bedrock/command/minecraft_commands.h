@@ -32,7 +32,7 @@ public:
     }
 
 private:
-    std::unique_ptr<CommandOutputSender> output_sender_;
-    std::unique_ptr<CommandRegistry> registry_;
+    std::unique_ptr<CommandOutputSender> output_sender_;  // +8
+    std::unique_ptr<CommandRegistry> registry_;           // +16
 };
 static_assert(sizeof(MinecraftCommands) == 24);

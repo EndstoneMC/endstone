@@ -36,9 +36,9 @@ void ServerInstance::startServerThread()
 Minecraft &ServerInstance::getMinecraft()
 {
 #ifdef __linux__
-    return *reinterpret_cast<Minecraft *>(reinterpret_cast<size_t *>(this) + 16);
+    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 16);
 #elif _WIN32
-    return *reinterpret_cast<Minecraft *>(reinterpret_cast<size_t *>(this) + 21);
+    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 21);
 #endif
 }
 
