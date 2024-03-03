@@ -19,6 +19,7 @@
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
+#include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 
@@ -31,6 +32,7 @@ namespace endstone::detail {
 EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     : server_instance_(server_instance), logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
+    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 }

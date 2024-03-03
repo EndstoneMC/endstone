@@ -19,10 +19,10 @@
 
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
-#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
+class EndstoneServer;
 class EndstoneCommandMap : public CommandMap {
 public:
     explicit EndstoneCommandMap(EndstoneServer &server);

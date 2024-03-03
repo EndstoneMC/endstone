@@ -19,6 +19,7 @@
 #include <string_view>
 
 #include "bedrock/server/server_instance.h"
+#include "endstone/detail/command/command_map.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -41,7 +42,7 @@ public:
     void enablePlugins() const;
     void disablePlugins() const;
 
-    MinecraftCommands& getMinecraftCommands();
+    MinecraftCommands &getMinecraftCommands();
 
     [[nodiscard]] std::string_view getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
@@ -51,6 +52,7 @@ private:
 
     ServerInstance &server_instance_;
     Logger &logger_;
+    std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };
 
