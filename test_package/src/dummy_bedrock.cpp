@@ -13,8 +13,22 @@
 // limitations under the License.
 
 #include "bedrock/common.h"
+#include "bedrock/minecraft.h"
+#include "bedrock/server/server_instance.h"
 
 std::string Common::getGameVersionString()
 {
     return "dummy-version";
+}
+
+Minecraft &ServerInstance::getMinecraft()
+{
+    static Minecraft minecraft;
+    return minecraft;
+}
+
+MinecraftCommands &Minecraft::getCommands()
+{
+    static MinecraftCommands commands;
+    return commands;
 }

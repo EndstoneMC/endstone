@@ -18,5 +18,6 @@
 
 class Minecraft {
 public:
+    virtual ~Minecraft() = default;
     MinecraftCommands &getCommands();
 };

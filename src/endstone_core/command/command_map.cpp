@@ -21,7 +21,7 @@
 
 namespace endstone::detail {
 
-EndstoneCommandMap::EndstoneCommandMap(Server &server) : server_(server) {}
+EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server) {}
 
 void EndstoneCommandMap::clearCommands()
 {
@@ -61,8 +61,9 @@ bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endst
     auto name = command->getName();
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
 
-    // TODO: register to BDS
-    // registry.registerCommand(name, command->getDescription(), CommandPermissionLevel::Any, {128}, {0});
+    auto &registry = server_.getMinecraftCommands().getRegistry();
+    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, {128}, {0});
+    auto *signature = registry.getCommand(name);
     // TODO: register the alias
     // TODO: register the overloads from usage
 

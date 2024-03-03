@@ -28,8 +28,8 @@ namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-EndstoneServer::EndstoneServer(ServerInstance &dedicated_server)
-    : dedicated_server_(dedicated_server), logger_(LoggerFactory::getLogger("EndstoneServer"))
+EndstoneServer::EndstoneServer(ServerInstance &server_instance)
+    : server_instance_(server_instance), logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
@@ -89,6 +89,11 @@ std::string_view EndstoneServer::getVersion() const
 std::string EndstoneServer::getMinecraftVersion() const
 {
     return Common::getGameVersionString();
+}
+
+MinecraftCommands &EndstoneServer::getMinecraftCommands()
+{
+    return server_instance_.getMinecraft().getCommands();
 }
 
 }  // namespace endstone::detail

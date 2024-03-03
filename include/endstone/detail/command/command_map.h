@@ -19,12 +19,13 @@
 
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
 class EndstoneCommandMap : public CommandMap {
 public:
-    explicit EndstoneCommandMap(Server &server);
+    explicit EndstoneCommandMap(EndstoneServer &server);
     bool registerCommand(std::shared_ptr<Command> command) override;
     void clearCommands() override;
     [[nodiscard]] Command *getCommand(std::string name) const override;
@@ -32,7 +33,7 @@ public:
 private:
     void setDefaultCommands();
 
-    Server &server_;
+    EndstoneServer &server_;
     std::mutex mutex_;
     std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
 };

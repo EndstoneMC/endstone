@@ -27,7 +27,7 @@ namespace endstone::detail {
 
 class EndstoneServer : public Server {
 public:
-    explicit EndstoneServer(ServerInstance &dedicated_server);
+    explicit EndstoneServer(ServerInstance &server_instance);
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
@@ -41,13 +41,15 @@ public:
     void enablePlugins() const;
     void disablePlugins() const;
 
+    MinecraftCommands& getMinecraftCommands();
+
     [[nodiscard]] std::string_view getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
     void enablePlugin(Plugin &plugin) const;
 
-    ServerInstance &dedicated_server_;
+    ServerInstance &server_instance_;
     Logger &logger_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };

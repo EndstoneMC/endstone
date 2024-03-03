@@ -15,10 +15,12 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/minecraft.h"
 
 class ServerInstance {
 public:
     BEDROCK_API void startServerThread();
+    Minecraft &getMinecraft();
 };
 
 class ServerInstanceEventCoordinator {

@@ -33,6 +33,15 @@ void ServerInstance::startServerThread()
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
 }
 
+Minecraft &ServerInstance::getMinecraft()
+{
+#ifdef __linux__
+    return *reinterpret_cast<Minecraft *>(reinterpret_cast<size_t *>(this) + 16);
+#elif _WIN32
+    return *reinterpret_cast<Minecraft *>(reinterpret_cast<size_t *>(this) + 21);
+#endif
+}
+
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
     Singleton<EndstoneServer>::getInstance().enablePlugins();
