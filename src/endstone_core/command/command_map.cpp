@@ -19,10 +19,14 @@
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
 #include "endstone/detail/command/defaults/version_command.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
-EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server) {}
+EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
+{
+    setDefaultCommands();
+}
 
 void EndstoneCommandMap::clearCommands()
 {
@@ -62,22 +66,36 @@ class CommandWrapper : public Command {
 
 bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endstone::Command> command)
 {
+    std::lock_guard lock(mutex_);
+
     if (!command) {
         return false;
     }
 
     auto name = command->getName();
-    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto it = known_commands_.find(name);
+    if (it != known_commands_.end() && it->second->getName() == it->first) {
+        // the name was registered and is not an alias
+        return false;
+    }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, {128}, {0});
+    known_commands_.emplace(name, command);
 
-    for (auto alias : command->getAliases()) {
-        std::transform(alias.begin(), alias.end(), alias.begin(), [](unsigned char c) { return std::tolower(c); });
-        registry.registerAlias(name, alias);
+    std::vector<std::string> registered_alias;
+    for (const auto &alias : command->getAliases()) {
+        if (known_commands_.find(alias) == known_commands_.end()) {
+            registry.registerAlias(name, alias);
+            known_commands_.emplace(alias, command);
+            registered_alias.push_back(alias);
+        }
     }
 
     // TODO: register the overloads from usage
-    const auto *overload = registry.registerOverload<CommandWrapper>("test", {1, INT_MAX});
-    return overload != nullptr;
+    registry.registerOverload<CommandWrapper>(name.c_str(), {1, INT_MAX});
+
+    command->setAliases(registered_alias);
+    command->registerTo(*this);
+    return true;
 }

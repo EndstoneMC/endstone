@@ -14,10 +14,10 @@
 
 #pragma once
 
+#include <algorithm>
 #include <map>
 #include <optional>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "endstone/command/command_map.h"
@@ -29,11 +29,13 @@ namespace endstone {
  */
 class Command {
 public:
-    explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {"/command"},
-                     std::vector<std::string> aliases = {}) noexcept
-        : name_(std::move(name)), description_(std::move(description)), usages_(std::move(usages)),
-          aliases_(std::move(aliases))
+    explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                     const std::vector<std::string> &aliases = {}) noexcept
     {
+        setName(std::move(name));
+        setDescription(std::move(description));
+        setUsages(std::move(usages));
+        setAliases(aliases);
     }
     virtual ~Command() = default;
 
@@ -57,6 +59,25 @@ public:
     }
 
     /**
+     * Sets the name of this command.
+     *
+     * May only be used before registering the command.
+     *
+     * @param name New command name
+     * @return returns true if the name is changed, false otherwise
+     */
+    bool setName(std::string name) noexcept
+    {
+        if (!isRegistered()) {
+            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+            name_ = std::move(name);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Gets a brief description of this command
      *
      * @return Description of this command
@@ -64,6 +85,21 @@ public:
     [[nodiscard]] std::string getDescription() const
     {
         return description_;
+    }
+
+    /**
+     * Sets a brief description of this command.
+     *
+     * @param description new command description
+     * @return this command object, for chaining
+     */
+    Command &setDescription(std::string description) noexcept
+    {
+        if (!isRegistered()) {
+            description_ = std::move(description);
+        }
+
+        return *this;
     }
 
     /**
@@ -77,6 +113,27 @@ public:
     }
 
     /**
+     * Sets the list of aliases to request on registration for this command.
+     *
+     * @param aliases aliases to register to this command
+     * @return this command object, for chaining
+     */
+    template <typename... Alias>
+    Command &setAliases(Alias... aliases) noexcept
+    {
+        std::vector<std::string> all_aliases = {aliases...};
+        if (!isRegistered()) {
+            aliases_.clear();
+            for (auto alias : all_aliases) {
+                std::transform(alias.begin(), alias.end(), alias.begin(),
+                               [](unsigned char c) { return std::tolower(c); });
+                aliases_.push_back(alias);
+            }
+        }
+        return *this;
+    }
+
+    /**
      * Returns a list of usages of this command
      *
      * @return List of usages
@@ -84,6 +141,25 @@ public:
     [[nodiscard]] std::vector<std::string> getUsages() const
     {
         return usages_;
+    }
+
+    /**
+     * Sets the example usage of this command
+     *
+     * @param usages new example usage
+     * @return this command object, for chaining
+     */
+    template <typename... Usage>
+    Command &setUsages(Usage... usages) noexcept
+    {
+        std::vector<std::string> all_usages = {usages...};
+        if (!isRegistered()) {
+            if (all_usages.empty()) {
+                all_usages.push_back("/" + getName());
+            }
+            usages_ = std::move(all_usages);
+        }
+        return *this;
     }
 
     /**

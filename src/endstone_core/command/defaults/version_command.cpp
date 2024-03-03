@@ -14,10 +14,16 @@
 
 #include "endstone/detail/command/defaults/version_command.h"
 
+#include "endstone/detail/command/command_map.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
 
-endstone::detail::VersionCommand::VersionCommand() : Command("version", "Version command", {"/version"}) {}
+endstone::detail::VersionCommand::VersionCommand() : Command("version")
+{
+    setDescription("Gets the version of this server");
+    setUsages("/version");
+    setAliases("ver", "about");
+}
 
 bool endstone::detail::VersionCommand::execute(CommandSender &sender,
                                                const std::map<std::string, std::string> &args) const
