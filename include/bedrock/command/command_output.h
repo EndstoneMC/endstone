@@ -14,4 +14,6 @@
 
 #pragma once
 
+class CommandOutput {};
+
 class CommandOutputSender {};

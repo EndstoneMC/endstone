@@ -17,16 +17,20 @@
 
 #include <cstdint>
 
+#include "bedrock/command/command_output.h"
 #include "bedrock/command/command_registry.h"
+
 class Command {
 public:
     Command() = default;
     virtual ~Command() = default;
+    [[nodiscard]] BEDROCK_API std::string getCommandName() const;
+
     virtual bool collectOptionalArguments()
     {
         return true;
     }
-    virtual void execute(class CommandOrigin const &, class CommandOutput &) const = 0;
+    virtual void execute(CommandOrigin const &, CommandOutput &) const = 0;
 
 private:
     int version_ = 0;
