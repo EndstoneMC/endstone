@@ -18,8 +18,9 @@
 
 #include <fmt/format.h>
 
-class Server;
+namespace endstone {
 
+class Server;
 class CommandSender {
 public:
     CommandSender() = default;
@@ -51,3 +52,4 @@ public:
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 };
+}  // namespace endstone

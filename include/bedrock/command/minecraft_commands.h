@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/command/command_output_sender.h"
+#include "bedrock/command/command_output.h"
 #include "bedrock/command/command_registry.h"
 
 class MinecraftCommands {

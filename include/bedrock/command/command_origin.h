@@ -20,6 +20,8 @@ class CommandOrigin {
 public:
     CommandOrigin() = default;
     virtual ~CommandOrigin() = default;
+    [[nodiscard]] virtual const std::string &getRequestId() const = 0;
+    [[nodiscard]] virtual std::string getName() const = 0;
 
 private:
     mce::UUID uuid_;

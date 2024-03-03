@@ -18,6 +18,7 @@
 
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
+#include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/defaults/version_command.h"
 #include "endstone/detail/server.h"
 
@@ -55,16 +56,7 @@ void EndstoneCommandMap::setDefaultCommands()
     registerCommand(std::make_unique<VersionCommand>());
 }
 
-}  // namespace endstone::detail
-
-class CommandWrapper : public Command {
-    void execute(const struct CommandOrigin &origin, struct CommandOutput &output) const override
-    {
-        printf("TODO...\n");
-    }
-};
-
-bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endstone::Command> command)
+bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
 
@@ -80,6 +72,7 @@ bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endst
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
+    // TODO: configure the permission level and flags
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, {128}, {0});
     known_commands_.emplace(name, command);
 
@@ -93,9 +86,10 @@ bool endstone::detail::EndstoneCommandMap::registerCommand(std::shared_ptr<endst
     }
 
     // TODO: register the overloads from usage
-    registry.registerOverload<CommandWrapper>(name.c_str(), {1, INT_MAX});
+    registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX});
 
     command->setAliases(registered_alias);
     command->registerTo(*this);
     return true;
 }
+}  // namespace endstone::detail
