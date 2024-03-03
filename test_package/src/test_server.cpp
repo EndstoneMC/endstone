@@ -18,64 +18,134 @@
 #endif
 
 #include <cassert>
+#include <filesystem>
+#include <memory>
 
-#include "endstone/detail/server.h"
+#include "endstone/detail/logger_factory.h"
+#include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/detail/plugin/plugin_manager.h"
+#include "endstone/logger.h"
+#include "endstone/plugin/plugin.h"
+#include "endstone/server.h"
 
-using namespace endstone::detail;
+namespace fs = std::filesystem;
 
-void testLogger(EndstoneServer &server)
+namespace endstone::detail {
+
+class TestServer : public Server {
+public:
+    explicit TestServer() : logger_(LoggerFactory::getLogger("TestServer"))
+    {
+        plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
+        plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    };
+    ~TestServer() override = default;
+
+    [[nodiscard]] Logger &getLogger() const override
+    {
+        return logger_;
+    }
+
+    [[nodiscard]] PluginManager &getPluginManager() const override
+    {
+        return *plugin_manager_;
+    }
+
+    void loadPlugins()
+    {
+        auto plugin_dir = fs::current_path() / "plugins";
+        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
+        for (const auto &plugin : plugins) {
+            plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
+            plugin->onLoad();
+        }
+    }
+
+    void enablePlugins() const
+    {
+        auto plugins = plugin_manager_->getPlugins();
+        for (const auto &plugin : plugins) {
+            if (!plugin->isEnabled()) {
+                plugin_manager_->enablePlugin(*plugin);
+            }
+        }
+    }
+
+    void disablePlugins() const
+    {
+        plugin_manager_->disablePlugins();
+    }
+
+    [[nodiscard]] std::string_view getVersion() const override
+    {
+        return "test";
+    }
+
+    [[nodiscard]] std::string getMinecraftVersion() const override
+    {
+        return "test";
+    }
+
+private:
+    Logger &logger_;
+    std::unique_ptr<EndstonePluginManager> plugin_manager_;
+};
+}  // namespace endstone::detail
+
+using endstone::detail::TestServer;
+
+void testLogger(TestServer &server)
 {
     auto &logger = server.getLogger();
     logger.debug("Hello World!");
-    logger.info("Hello World! Endstone version: {} (Minecraft: {})", server.getVersion(), server.getMinecraftVersion());
+    logger.info("Hello World!");
     logger.warning("Hello World!");
     logger.error("Hello World!");
     logger.critical("Hello World!");
 }
 
-auto constexpr CppTestPluginName = "CppTestPlugin";
+auto constexpr TestPluginName = "TestPlugin";
 
-void testPluginLoading(EndstoneServer &server)
+void testPluginLoading(TestServer &server)
 {
     auto &plugin_manager = server.getPluginManager();
     assert(plugin_manager.getPlugins().empty());
-    assert(plugin_manager.getPlugin(CppTestPluginName) == nullptr);
+    assert(plugin_manager.getPlugin(TestPluginName) == nullptr);
 
     server.loadPlugins();
     assert(plugin_manager.getPlugins().size() == 1);
-    assert(plugin_manager.getPlugin(CppTestPluginName) != nullptr);
+    assert(plugin_manager.getPlugin(TestPluginName) != nullptr);
 }
 
-void testPluginEnabling(EndstoneServer &server)
+void testPluginEnabling(TestServer &server)
 {
     auto &plugin_manager = server.getPluginManager();
 
-    auto *cpp_plugin = plugin_manager.getPlugin(CppTestPluginName);
-    assert(cpp_plugin != nullptr);
-    assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
-    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
+    auto *plugin = plugin_manager.getPlugin(TestPluginName);
+    assert(plugin != nullptr);
+    assert(plugin_manager.isPluginEnabled(plugin) == false);
+    assert(plugin_manager.isPluginEnabled(TestPluginName) == false);
 
     server.enablePlugins();
-    assert(plugin_manager.isPluginEnabled(cpp_plugin) == true);
-    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == true);
+    assert(plugin_manager.isPluginEnabled(plugin) == true);
+    assert(plugin_manager.isPluginEnabled(TestPluginName) == true);
 }
 
-void testPluginDisabling(EndstoneServer &server)
+void testPluginDisabling(TestServer &server)
 {
     auto &plugin_manager = server.getPluginManager();
 
     server.disablePlugins();
 
-    auto *cpp_plugin = plugin_manager.getPlugin(CppTestPluginName);
-    assert(cpp_plugin != nullptr);
-    assert(plugin_manager.isPluginEnabled(cpp_plugin) == false);
-    assert(plugin_manager.isPluginEnabled(CppTestPluginName) == false);
+    auto *plugin = plugin_manager.getPlugin(TestPluginName);
+    assert(plugin != nullptr);
+    assert(plugin_manager.isPluginEnabled(plugin) == false);
+    assert(plugin_manager.isPluginEnabled(TestPluginName) == false);
 }
 
 int main()
 {
-    ServerInstance dummy;
-    EndstoneServer server(dummy);
+    TestServer server;
     testLogger(server);
     testPluginLoading(server);
     testPluginEnabling(server);

@@ -16,8 +16,6 @@
 
 #include <string>
 
-#include <spdlog/spdlog.h>
-
 #include "endstone/logger.h"
 
 namespace endstone::detail {

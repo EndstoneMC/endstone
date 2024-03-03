@@ -18,6 +18,8 @@
 #include <string>
 #include <unordered_map>
 
+#include <spdlog/spdlog.h>
+
 #include "endstone/detail/spdlog/log_sink.h"
 #include "endstone/detail/spdlog/spdlog_adapter.h"
 
