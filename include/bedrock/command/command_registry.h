@@ -122,6 +122,11 @@ public:
     BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
 
+    [[nodiscard]] const CommandRegistry::Signature *getCommand(const std::string &name) const
+    {
+        return findCommand(name);
+    }
+
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
     [[nodiscard]] BEDROCK_API std::unique_ptr<Command> createCommand(const CommandRegistry::ParseToken &parse_token,
