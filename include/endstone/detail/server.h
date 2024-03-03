@@ -18,7 +18,7 @@
 #include <string>
 #include <string_view>
 
-#include "bedrock/server/dedicated_server.h"
+#include "bedrock/server/server_instance.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -27,7 +27,7 @@ namespace endstone::detail {
 
 class EndstoneServer : public Server {
 public:
-    explicit EndstoneServer(DedicatedServer &dedicated_server);
+    explicit EndstoneServer(ServerInstance &dedicated_server);
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
@@ -47,7 +47,7 @@ public:
 private:
     void enablePlugin(Plugin &plugin) const;
 
-    DedicatedServer &dedicated_server_;
+    ServerInstance &dedicated_server_;
     Logger &logger_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
 };

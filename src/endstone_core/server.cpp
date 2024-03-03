@@ -28,7 +28,7 @@ namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-EndstoneServer::EndstoneServer(DedicatedServer &dedicated_server)
+EndstoneServer::EndstoneServer(ServerInstance &dedicated_server)
     : dedicated_server_(dedicated_server), logger_(LoggerFactory::getLogger("EndstoneServer"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
