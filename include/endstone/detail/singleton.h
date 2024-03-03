@@ -35,7 +35,7 @@ public:
 
     static T &getInstance()
     {
-        return *mInstance.get();
+        return *mInstance;
     }
 
 private:
