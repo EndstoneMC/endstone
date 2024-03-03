@@ -54,21 +54,12 @@ public:
     void loadPlugins()
     {
         auto plugin_dir = fs::current_path() / "plugins";
-        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
-        for (const auto &plugin : plugins) {
-            plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
-            plugin->onLoad();
-        }
+        plugin_manager_->loadPlugins(plugin_dir.string());
     }
 
     void enablePlugins() const
     {
-        auto plugins = plugin_manager_->getPlugins();
-        for (const auto &plugin : plugins) {
-            if (!plugin->isEnabled()) {
-                plugin_manager_->enablePlugin(*plugin);
-            }
-        }
+        plugin_manager_->enablePlugins();
     }
 
     void disablePlugins() const
@@ -78,12 +69,12 @@ public:
 
     [[nodiscard]] std::string_view getVersion() const override
     {
-        return "test";
+        return "test(endstone)";
     }
 
     [[nodiscard]] std::string getMinecraftVersion() const override
     {
-        return "test";
+        return "test(minecraft)";
     }
 
 private:

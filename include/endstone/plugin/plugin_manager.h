@@ -36,6 +36,7 @@ public:
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
     [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
     virtual void enablePlugin(Plugin &plugin) const = 0;
+    virtual void enablePlugins() const = 0;
     virtual void disablePlugin(Plugin &plugin) const = 0;
     virtual void disablePlugins() const = 0;
     virtual void clearPlugins() = 0;

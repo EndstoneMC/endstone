@@ -42,11 +42,7 @@ void EndstoneServer::loadPlugins()
     auto plugin_dir = fs::current_path() / "plugins";
 
     if (exists(plugin_dir)) {
-        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
-        for (const auto &plugin : plugins) {
-            plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
-            plugin->onLoad();
-        }
+        plugin_manager_->loadPlugins(plugin_dir.string());
     }
     else {
         create_directories(plugin_dir);
@@ -55,12 +51,7 @@ void EndstoneServer::loadPlugins()
 
 void EndstoneServer::enablePlugins() const
 {
-    auto plugins = plugin_manager_->getPlugins();
-    for (const auto &plugin : plugins) {
-        if (!plugin->isEnabled()) {
-            enablePlugin(*plugin);
-        }
-    }
+    plugin_manager_->enablePlugins();
 }
 
 void EndstoneServer::enablePlugin(Plugin &plugin) const

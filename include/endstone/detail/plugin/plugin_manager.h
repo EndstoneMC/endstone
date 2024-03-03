@@ -36,6 +36,7 @@ public:
     bool isPluginEnabled(Plugin *plugin) const override;
     std::vector<Plugin *> loadPlugins(const std::string &directory) override;
     void enablePlugin(Plugin &plugin) const override;
+    void enablePlugins() const override;
     void disablePlugin(Plugin &plugin) const override;
     void disablePlugins() const override;
     void clearPlugins() override;

@@ -93,6 +93,11 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
         }
     }
 
+    for (const auto &plugin : loaded_plugins) {
+        plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
+        plugin->onLoad();
+    }
+
     return loaded_plugins;
 }
 
@@ -100,6 +105,13 @@ void EndstonePluginManager::enablePlugin(Plugin &plugin) const
 {
     if (!plugin.isEnabled()) {
         plugin.getPluginLoader().enablePlugin(plugin);
+    }
+}
+
+void EndstonePluginManager::enablePlugins() const
+{
+    for (const auto &plugin : plugins_) {
+        enablePlugin(*plugin);
     }
 }
 
