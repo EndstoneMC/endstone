@@ -39,12 +39,10 @@ public:
      */
     virtual bool registerCommand(std::shared_ptr<Command> command) = 0;
 
-    // TODO: dispatch functions
-
     /**
      * Clears all registered commands.
      */
-    virtual void clearCommands() = 0;
+    // virtual void clearCommands() = 0;
 
     /**
      * Gets the command registered to the specified name

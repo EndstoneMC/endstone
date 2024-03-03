@@ -29,15 +29,15 @@ EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
     setDefaultCommands();
 }
 
-void EndstoneCommandMap::clearCommands()
-{
-    std::lock_guard lock(mutex_);
-    for (const auto &item : known_commands_) {
-        item.second->unregisterFrom(*this);
-    }
-    known_commands_.clear();
-    setDefaultCommands();
-}
+// void EndstoneCommandMap::clearCommands()
+// {
+//     std::lock_guard lock(mutex_);
+//     for (const auto &item : known_commands_) {
+//         item.second->unregisterFrom(*this);
+//     }
+//     known_commands_.clear();
+//     setDefaultCommands();
+// }
 
 Command *EndstoneCommandMap::getCommand(std::string name) const
 {
