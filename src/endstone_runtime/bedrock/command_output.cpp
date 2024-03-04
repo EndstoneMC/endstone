@@ -16,12 +16,27 @@
 
 #include "endstone/detail/hook.h"
 
+void CommandOutput::addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
+                               enum CommandOutputMessageType type)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandOutput::addMessage, this, message_id, params, type);
+}
+
 void CommandOutput::forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandOutput::forceOutput, this, message_id, params);
+    if (type_ != CommandOutputType::None) {
+        addMessage(message_id, params, CommandOutputMessageType::Success);
+    }
 }
 
 void CommandOutput::error(const std::string &message_id, const std::vector<CommandOutputParameter> &params)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandOutput::error, this, message_id, params);
+    if (type_ != CommandOutputType::None) {
+        addMessage(message_id, params, CommandOutputMessageType::Error);
+    }
+}
+
+void CommandOutput::success()
+{
+    success_count_++;
 }

@@ -41,23 +41,24 @@ public:
 class CommandOutputParameter {
 public:
     std::string text;  // +0
-    int count;         // +32 - the number of targets returned by selector (e.g. actor / player)
+    int count;         // +32
 };
 
 class CommandOutput {
 public:
-    void success()
-    {
-        success_count++;
-    }
-    BEDROCK_API void forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
-    BEDROCK_API void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
+    void success();
+    void forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
+    void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
 
-    CommandOutputType type;                          // +0
-    std::unique_ptr<class CommandPropertyBag> data;  // +8
-    std::vector<CommandOutputMessage> messages;      // +16
-    int success_count;                               // +40
-    bool has_player_text;                            // +44
+private:
+    BEDROCK_API void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
+                                enum CommandOutputMessageType);
+
+    CommandOutputType type_;                          // +0
+    std::unique_ptr<class CommandPropertyBag> data_;  // +8
+    std::vector<CommandOutputMessage> messages_;      // +16
+    int success_count_;                               // +40
+    bool has_player_text_;                            // +44
 };
 
 class CommandOutputSender {};

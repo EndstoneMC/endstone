@@ -31,14 +31,15 @@
 
 ENDSTONE_RUNTIME_CTOR int main()
 {
+    auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
-        endstone::detail::LoggerFactory::getLogger("EndstoneServer").info("Initialising...");
+        logger.info("Initialising...");
         endstone::detail::hook::install();
         return 0;
     }
     catch (const std::exception &e) {
-        spdlog::error("An exception occurred while attaching Endstone runtime to the process.");
-        spdlog::error("{}", e.what());
+        logger.error("An exception occurred while initialising Endstone runtime.");
+        logger.error("{}", e.what());
         std::terminate();
     }
 }
