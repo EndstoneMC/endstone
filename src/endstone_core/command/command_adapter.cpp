@@ -55,7 +55,8 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
         }
     }
     else {
-        sender.CommandSender::sendErrorMessage("Command {} was executed but not registered.", command_name);
+        sender.CommandSender::sendErrorMessage("Command {} was executed but not found in the command map.",
+                                               command_name);
     }
 }
 
