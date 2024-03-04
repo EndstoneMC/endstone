@@ -15,10 +15,15 @@
 #include "endstone/detail/command/command_map.h"
 
 #include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <vector>
 
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
+#include "bedrock/i18n.h"
 #include "endstone/detail/command/command_adapter.h"
+#include "endstone/detail/command/command_view.h"
 #include "endstone/detail/command/defaults/version_command.h"
 #include "endstone/detail/server.h"
 
@@ -59,25 +64,34 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setMinecraftCommands()
 {
-    // do not call registerCommand, just emplace to map
     auto &commands = server_.getMinecraftCommands();
     auto &registry = commands.getRegistry();
 
-    for (const auto &[command_name, signature] : registry.commands) {
-        server_.getLogger().info("Key: {}, Name: {}, Description: {}", command_name, signature.name,
-                                 signature.description);
-        // TODO: make and emplace command
-        //  known_commands_.emplace(signature.name, std::make_unique<MinecraftCommandView>());
+    std::unordered_map<std::string, std::vector<std::string>> command_aliases;
+    for (const auto &[alias, command_name] : registry.aliases) {
+        auto it = command_aliases.emplace(command_name, std::vector<std::string>()).first;
+        it->second.push_back(alias);
     }
 
-    for (const auto &[alias, command_name] : registry.aliases) {
-        auto it = known_commands_.find(command_name);
-        if (it == known_commands_.end()) {
-            // should never happen
-            continue;
+    for (const auto &[command_name, signature] : registry.commands) {
+        auto description = I18n::get(signature.description, {}, nullptr);
+
+        std::vector<std::string> usages;
+        usages.reserve(signature.overloads.size());
+        for (const auto &overload : signature.overloads) {
+            usages.push_back(registry.describe(signature, overload));
         }
-        server_.getLogger().info("Alias: {}, Name: {}", alias, command_name);
-        known_commands_.emplace(alias, it->second);
+
+        std::vector<std::string> aliases;
+        auto it = command_aliases.find(command_name);
+        if (it != command_aliases.end()) {
+            aliases.insert(aliases.end(), it->second.begin(), it->second.end());
+        }
+
+        auto command = std::make_unique<CommandView>(command_name, description, usages, aliases);
+        command->registerTo(*this);
+
+        known_commands_.emplace(signature.name, std::move(command));
     }
 }
 
@@ -92,8 +106,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     auto name = command->getName();
     auto it = known_commands_.find(name);
     if (it != known_commands_.end() && it->second->getName() == it->first) {
-        // the name was registered and is not an alias
-        return false;
+        return false;  // the name was registered and is not an alias, we don't replace it
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
