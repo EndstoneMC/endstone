@@ -47,7 +47,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
 
     auto &command_map = server.getCommandMap();
     auto command_name = getCommandName();
-    auto *command = command_map.getCommand(getCommandName());
+    auto *command = command_map.getCommand(command_name);
     if (command) {
         bool success = command->execute(sender, {});
         if (success) {

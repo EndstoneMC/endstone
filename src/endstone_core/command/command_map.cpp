@@ -26,6 +26,7 @@ namespace endstone::detail {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
+    // TODO: register minecraft commands to the map (as view)
     setDefaultCommands();
 }
 

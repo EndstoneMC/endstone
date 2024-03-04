@@ -182,5 +182,4 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
 }
 }  // namespace endstone::detail::hook
 
-#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) \
-    ret = std::move(*endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__))
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) *endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__)
