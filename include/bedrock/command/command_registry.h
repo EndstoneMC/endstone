@@ -16,6 +16,7 @@
 
 #include <cstdint>
 #include <functional>
+#include <map>
 #include <memory>
 #include <optional>
 #include <string>
@@ -37,6 +38,9 @@ enum class CommandPermissionLevel : std::uint8_t {
     Host = 3,
     Owner = 4,
     Internal = 5
+};
+
+enum SemanticConstraint {
 };
 
 class Command;
@@ -92,6 +96,9 @@ public:
     };
     static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
+    class ParseTable;
+    class Enum;
+
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &);
 
@@ -120,6 +127,41 @@ public:
         registerOverloadInternal(*signature, overload);
         return &signature->overloads.back();
     }
+
+    std::function<void(class Packet const &)> network_update_callback;                      // +0
+    std::function<int(bool &, std::string const &, class Actor const &)> score_callback;    // +56
+    std::vector<void *> unknown1;                                                           // +128
+    std::map<uint32_t, CommandRegistry::ParseTable> parse_tables;                           // +152
+    std::vector<void *> unknown2;                                                           // +168
+    std::vector<std::string> enums;                                                         // +192
+    std::vector<CommandRegistry::Enum> enum_data;                                           // +216
+    std::vector<std::string> subcommands;                                                   // +240
+    std::vector<CommandRegistry::Enum> subcommand_data;                                     // +264
+    std::vector<void *> unknown3;                                                           // +288
+    std::vector<std::string> postfixes;                                                     // +312
+    std::map<std::string, uint32_t> unknown4;                                               // +336
+    std::map<std::string, CommandRegistry::Symbol> enum_symbols;                            // +352
+    std::map<std::string, uint32_t> unknown5;                                               // +368
+    std::map<std::string, uint64_t> unknown6;                                               // +384
+    std::vector<void *> unknown7;                                                           // +400
+    std::map<std::string, CommandRegistry::Signature> commands;                             // +424
+    std::map<Bedrock::typeid_t<CommandRegistry>, int> type_ids;                             // +440
+    std::map<std::string, std::string> aliases;                                             // +456
+    std::vector<SemanticConstraint> semantic_constraints;                                   // +472
+    std::map<SemanticConstraint, unsigned char> constrained_values;                         // +496
+    std::vector<void *> constrained_value_data;                                             // +512
+    std::map<std::pair<uint64_t, uint32_t>, uint32_t> unknown8;                             // +536
+    std::vector<void *> soft_enum_data;                                                     // +552
+    std::map<std::string, uint32_t> unknown9;                                               // +576
+    std::vector<void *> unknown10;                                                          // +592
+#ifdef __linux__                                                                            // __linux__
+    char param_symbols[120];                                                                //
+#elif _WIN32                                                                                // _WIN32
+    char param_symbols[96];
+#endif                                                                                      // __linux__
+    std::unordered_map<unsigned char, unsigned char> unknown11;                             // +712
+    std::unordered_map<unsigned char, unsigned char> unknown12;                             // +776
+    std::function<void(CommandFlag &, std::string const &)> command_registration_override;  // +840
 
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
