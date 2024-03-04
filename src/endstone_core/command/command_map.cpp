@@ -26,7 +26,7 @@ namespace endstone::detail {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
-    // TODO: register minecraft commands to the map (as view)
+    setMinecraftCommands();
     setDefaultCommands();
 }
 
@@ -55,6 +55,30 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 void EndstoneCommandMap::setDefaultCommands()
 {
     registerCommand(std::make_unique<VersionCommand>());
+}
+
+void EndstoneCommandMap::setMinecraftCommands()
+{
+    // do not call registerCommand, just emplace to map
+    auto &commands = server_.getMinecraftCommands();
+    auto &registry = commands.getRegistry();
+
+    for (const auto &[command_name, signature] : registry.commands) {
+        server_.getLogger().info("Key: {}, Name: {}, Description: {}", command_name, signature.name,
+                                 signature.description);
+        // TODO: make and emplace command
+        //  known_commands_.emplace(signature.name, std::make_unique<MinecraftCommandView>());
+    }
+
+    for (const auto &[alias, command_name] : registry.aliases) {
+        auto it = known_commands_.find(command_name);
+        if (it == known_commands_.end()) {
+            // should never happen
+            continue;
+        }
+        server_.getLogger().info("Alias: {}, Name: {}", alias, command_name);
+        known_commands_.emplace(alias, it->second);
+    }
 }
 
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
@@ -93,4 +117,5 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     command->registerTo(*this);
     return true;
 }
+
 }  // namespace endstone::detail

@@ -154,11 +154,7 @@ public:
     std::vector<void *> soft_enum_data;                                                     // +552
     std::map<std::string, uint32_t> unknown9;                                               // +576
     std::vector<void *> unknown10;                                                          // +592
-#ifdef __linux__                                                                            // __linux__
-    char param_symbols[120];                                                                //
-#elif _WIN32                                                                                // _WIN32
-    char param_symbols[96];
-#endif                                                                                      // __linux__
+    char param_symbols[96];                                                                 // +616
     std::unordered_map<unsigned char, unsigned char> unknown11;                             // +712
     std::unordered_map<unsigned char, unsigned char> unknown12;                             // +776
     std::function<void(CommandFlag &, std::string const &)> command_registration_override;  // +840

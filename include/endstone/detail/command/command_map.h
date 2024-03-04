@@ -32,6 +32,7 @@ public:
 
 private:
     void setDefaultCommands();
+    void setMinecraftCommands();
 
     EndstoneServer &server_;
     std::mutex mutex_;
