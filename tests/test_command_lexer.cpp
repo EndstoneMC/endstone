@@ -18,8 +18,17 @@
 
 using endstone::detail::CommandLexer;
 
-class UsageLexerTest : public ::testing::Test {
+class CommandLexerTest : public ::testing::Test {
 protected:
+    void SetUp() override
+    {
+        // Prepare context if needed
+    }
+
+    void TearDown() override
+    {
+        // Cleanup context if needed
+    }
 };
 
 CommandLexer::Token makeToken(CommandLexer::TokenType type, std::string_view value = "")
@@ -27,7 +36,7 @@ CommandLexer::Token makeToken(CommandLexer::TokenType type, std::string_view val
     return {type, value};
 }
 
-TEST_F(UsageLexerTest, TestCommandWithoutParameters)
+TEST_F(CommandLexerTest, TestCommandWithoutParameters)
 {
     CommandLexer lexer("/command");
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::Slash, "/"));
@@ -35,7 +44,7 @@ TEST_F(UsageLexerTest, TestCommandWithoutParameters)
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::End, "\0"));
 }
 
-TEST_F(UsageLexerTest, TestCommandWithRequiredParameter)
+TEST_F(CommandLexerTest, TestCommandWithRequiredParameter)
 {
     CommandLexer lexer("/command <text: string>");
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::Slash, "/"));
@@ -48,7 +57,7 @@ TEST_F(UsageLexerTest, TestCommandWithRequiredParameter)
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::End, "\0"));
 }
 
-TEST_F(UsageLexerTest, TestCommandWithOptionalParameter)
+TEST_F(CommandLexerTest, TestCommandWithOptionalParameter)
 {
     CommandLexer lexer("/command [text: string]");
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::Slash, "/"));
@@ -61,7 +70,7 @@ TEST_F(UsageLexerTest, TestCommandWithOptionalParameter)
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::End, "\0"));
 }
 
-TEST_F(UsageLexerTest, TestCommandWithEnumParameter)
+TEST_F(CommandLexerTest, TestCommandWithEnumParameter)
 {
     CommandLexer lexer("/command <mode: (add |set|query)>");
     EXPECT_EQ(lexer.next(), makeToken(CommandLexer::TokenType::Slash, "/"));

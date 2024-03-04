@@ -82,24 +82,24 @@ CommandLexer::Token CommandLexer::next()
 
 CommandLexer::Token CommandLexer::next(CommandLexer::TokenType type)
 {
-    return CommandLexer::Token{type, value_.substr(position_++, 1)};
+    return CommandLexer::Token{type, value.substr(position++, 1)};
 }
 
 CommandLexer::Token CommandLexer::nextIdentifier()
 {
-    auto start = position_;
+    auto start = position;
     do {
         get();
     } while (isIdentifierCharacter(peek()));
-    return CommandLexer::Token{CommandLexer::TokenType::Identifier, value_.substr(start, position_ - start)};
+    return CommandLexer::Token{CommandLexer::TokenType::Identifier, value.substr(start, position - start)};
 }
 
 CommandLexer::Token CommandLexer::nextNumber()
 {
-    auto start = position_;
+    auto start = position;
     do {
         get();
     } while (isDigit(peek()));
-    return CommandLexer::Token{CommandLexer::TokenType::Number, value_.substr(start, position_ - start)};
+    return CommandLexer::Token{CommandLexer::TokenType::Number, value.substr(start, position - start)};
 }
 }  // namespace endstone::detail

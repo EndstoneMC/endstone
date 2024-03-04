@@ -54,6 +54,11 @@ public:
         TokenType type;
         std::string_view value;
 
+        [[nodiscard]] bool is(TokenType t) const
+        {
+            return type == t;
+        }
+
         bool operator==(const Token &other) const
         {
             return type == other.type && value == other.value;
@@ -66,10 +71,30 @@ public:
         }
     };
 
-    explicit CommandLexer(std::string_view value) : value_{value} {}
+    explicit CommandLexer(std::string_view value) : value{value} {}
     Token next();
 
-private:
+    void reset()
+    {
+        position = 0;
+    }
+
+    [[nodiscard]] char peek() const
+    {
+        if (position >= value.size()) {
+            return '\0';
+        }
+        return value[position];
+    }
+
+    char get()
+    {
+        if (position >= value.size()) {
+            return '\0';
+        }
+        return value[position++];
+    }
+
     Token next(CommandLexer::TokenType type);
     Token nextIdentifier();
     Token nextNumber();
@@ -89,23 +114,7 @@ private:
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || isDigit(c) || c == '_';
     }
 
-    [[nodiscard]] char peek() const
-    {
-        if (position_ >= value_.size()) {
-            return '\0';
-        }
-        return value_[position_];
-    }
-
-    char get()
-    {
-        if (position_ >= value_.size()) {
-            return '\0';
-        }
-        return value_[position_++];
-    }
-
-    std::string_view value_;
-    size_t position_ = 0;
+    std::string_view value;
+    size_t position = 0;
 };
 }  // namespace endstone::detail
