@@ -39,6 +39,19 @@ public:
     }
 
     /**
+     * Sends this sender a error message
+     *
+     * @param message Error message to be displayed
+     */
+    virtual void sendErrorMessage(const std::string &message) const = 0;
+
+    template <typename... Args>
+    void sendErrorMessage(const fmt::format_string<Args...> format, Args &&...args) const
+    {
+        sendErrorMessage(fmt::format(format, std::forward<Args>(args)...));
+    }
+
+    /**
      * Returns the server instance that this command is running on
      *
      * @return Server instance

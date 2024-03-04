@@ -22,9 +22,12 @@ CommandSenderAdapter::CommandSenderAdapter(EndstoneServer &server, const Command
 
 void CommandSenderAdapter::sendMessage(const std::string &message) const
 {
-    // TODO: addMessage to output
-    printf("%s\n", message.c_str());
-    printf("Sender name: %s\n", getName().c_str());
+    output_.forceOutput(message, {});
+}
+
+void CommandSenderAdapter::sendErrorMessage(const std::string &message) const
+{
+    output_.error(message, {});
 }
 
 Server &CommandSenderAdapter::getServer() const
@@ -40,17 +43,19 @@ std::string CommandSenderAdapter::getName() const
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
     auto &server = Singleton<EndstoneServer>::getInstance();
+    auto sender = CommandSenderAdapter(server, origin, output);
+
     auto &command_map = server.getCommandMap();
+    auto command_name = getCommandName();
     auto *command = command_map.getCommand(getCommandName());
     if (command) {
-        auto sender = CommandSenderAdapter(server, origin, output);
         bool success = command->execute(sender, {});
-        if (!success) {
-            // TODO: set output status code
+        if (success) {
+            output.success();
         }
     }
     else {
-        // TODO: shouldn't happen, what to do now? be silent or print error message?
+        sender.CommandSender::sendErrorMessage("Command {} was executed but not registered.", command_name);
     }
 }
 

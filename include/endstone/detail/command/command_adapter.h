@@ -25,6 +25,7 @@ class CommandSenderAdapter : public CommandSender {
 public:
     CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output);
     void sendMessage(const std::string &message) const override;
+    void sendErrorMessage(const std::string &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
 

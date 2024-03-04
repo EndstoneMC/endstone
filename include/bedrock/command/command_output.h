@@ -14,6 +14,50 @@
 
 #pragma once
 
-class CommandOutput {};
+#include <memory>
+#include <string>
+#include <vector>
+
+#include "bedrock/bedrock.h"
+
+enum class CommandOutputMessageType {
+    Success = 0,
+    Error = 1,
+};
+
+enum class CommandOutputType {
+    None = 0,
+    Message = 1,
+    Json = 4,
+};
+
+class CommandOutputMessage {
+public:
+    CommandOutputMessageType type;    // +0
+    std::string message_id;           // +8
+    std::vector<std::string> params;  // +40
+};
+
+class CommandOutputParameter {
+public:
+    std::string text;  // +0
+    int count;         // +32 - the number of targets returned by selector (e.g. actor / player)
+};
+
+class CommandOutput {
+public:
+    void success()
+    {
+        success_count++;
+    }
+    BEDROCK_API void forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
+    BEDROCK_API void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
+
+    CommandOutputType type;                          // +0
+    std::unique_ptr<class CommandPropertyBag> data;  // +8
+    std::vector<CommandOutputMessage> messages;      // +16
+    int success_count;                               // +40
+    bool has_player_text;                            // +44
+};
 
 class CommandOutputSender {};
