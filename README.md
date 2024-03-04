@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/EndstoneMC/endstone/releases">
     <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/43/End_Stone_JE3_BE2.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -12,9 +12,16 @@
 </p>
 </div>
 
+[![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml)
+[![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)
+[![Wheel](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml)
+[![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3-blue?logo=python&logoColor=white)
+![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)
+[![Codacy Badge](https://img.shields.io/codacy/grade/8877402fc70b40f5a8c4b325d890e3f7?logo=codacy)](https://app.codacy.com/gh/EndstoneMC/endstone/dashboard)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## 📄 Table of Contents
 
@@ -25,18 +32,9 @@
 
 ## 📖 Introduction [🔝](#-table-of-contents)
 
-Wre are excited to announce the Endstone project. Endstone offers a plugin API for Bedrock Dedicated Servers, supporting
+We are excited to announce the Endstone project. Endstone offers a plugin API for Bedrock Dedicated Servers, supporting
 both Python and C++ languages. This allows developers to enhance Bedrock Dedicated Servers with various features and
 functionalities.
-
-### Build Status
-
-| System         | Build Status                                                                                                                                                       |
-|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Windows x86_64 | [![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml) |
-| Linux x86_64   | [![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)       |
-| Wheel          | [![Wheel](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml)       |
-| Docker         | [![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)    |
 
 ## 🛠️ Installation [🔝](#-table-of-contents)
 
@@ -54,10 +52,12 @@ There are several ways to install Endstone:
 
 ### 🐍 PyPi
 
-Endstone can be installed from PyPi using pip. Open your terminal and execute the following command to install:
+Endstone can be installed from PyPi using pip. Open your terminal and execute the following command to install and start
+the Endstone server:
 
 ```shell
 pip install endstone
+endstone
 ```
 
 ### 🔨 Build locally from Source
@@ -94,6 +94,7 @@ Finally, you can build the wheel and install it on your local machine:
 
 ```shell
 pip install .
+endstone
 ```
 
 ### 🐳 Docker
