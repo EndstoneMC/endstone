@@ -58,17 +58,17 @@ RUN apt-get update -y -q \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash endstone \
-    && echo "endstone:endstone" | chpasswd \
+    && printf "endstone:endstone" | chpasswd \
     && adduser endstone sudo \
-    && echo "endstone ALL= NOPASSWD: ALL\\n" >> /etc/sudoers
+    && printf "endstone ALL= NOPASSWD: ALL\\n" >> /etc/sudoers
 
 WORKDIR /home/endstone
 
 COPY --from=builder /usr/src/endstone/wheelhouse .
 
 RUN python -m pip install --upgrade pip \
-    && pip install *.whl \
-    && rm *.whl
+    && pip install ./*.whl \
+    && rm ./*.whl
 
 USER endstone
 
