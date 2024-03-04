@@ -59,7 +59,7 @@ jobs:
         run: |
           pip install gcovr
           ctest --test-dir build/Debug
-          gcovr -r . --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
+          gcovr -r . --filter src/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
 
       - name: Upload Coverage Reports to Codecov
         uses: codecov/codecov-action@v3
