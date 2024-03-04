@@ -88,7 +88,7 @@ class Bootstrap:
         Returns:
             Path: The path to the installation directory.
         """
-        return self._install_path
+        return self._install_path / self.target_system
 
     @property
     def server_path(self) -> Path:
@@ -128,15 +128,12 @@ class Bootstrap:
             NotImplementedError: If the current platform system is not supported by this bootstrap.
             FileNotFoundError: If either the executable_path or _endstone_runtime_path do not exist.
         """
-        assert platform.system() == self.target_system, NotImplementedError(
-            f"{platform.system()} is not supported by this bootstrap."
-        )
-        assert self.executable_path.exists(), FileNotFoundError(
-            errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path)
-        )
-        assert self._endstone_runtime_path.exists(), FileNotFoundError(
-            errno.ENOENT, os.strerror(errno.ENOENT), str(self._endstone_runtime_path)
-        )
+        if platform.system().lower() != self.target_system:
+            raise NotImplementedError(f"{platform.system()} is not supported by this bootstrap.")
+        if not self.executable_path.exists():
+            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(self.executable_path))
+        if not self._endstone_runtime_path.exists():
+            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(self._endstone_runtime_path))
 
     def _download(self, dst: Union[str, os.PathLike], url: str, sha256: str) -> None:
         """

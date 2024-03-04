@@ -77,7 +77,7 @@ class WindowsBootstrap(Bootstrap):
 
     @property
     def target_system(self) -> str:
-        return "Windows"
+        return "windows"
 
     @property
     def executable_filename(self) -> str:
