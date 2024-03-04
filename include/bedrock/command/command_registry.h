@@ -128,6 +128,11 @@ public:
         return &signature->overloads.back();
     }
 
+    std::string describe(const CommandRegistry::Signature &signature, const CommandRegistry::Overload &overload)
+    {
+        return describe(signature, signature.name, overload, 0, nullptr, nullptr);
+    }
+
     std::function<void(class Packet const &)> network_update_callback;                      // +0
     std::function<int(bool &, std::string const &, class Actor const &)> score_callback;    // +56
     std::vector<void *> unknown1;                                                           // +128
@@ -166,8 +171,12 @@ private:
                                                                      std::string &error_message,
                                                                      std::vector<std::string> &error_params) const;
     [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &) const;
-    BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
-                                              CommandRegistry::Overload &overload);
+    [[nodiscard]] BEDROCK_API std::string describe(const CommandRegistry::Signature &signature, const std::string &name,
+                                                   const CommandRegistry::Overload &overload, unsigned int a4,
+                                                   unsigned int *a5, unsigned int *a6) const;
+
+    BEDROCK_API
+    void registerOverloadInternal(CommandRegistry::Signature &signature, CommandRegistry::Overload &overload);
 };
 
 enum CommandParameterDataType : int;

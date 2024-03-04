@@ -44,8 +44,21 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
 
 std::string CommandRegistry::describe(const CommandParameterData &param) const
 {
+    std::string (CommandRegistry::*fp)(const CommandParameterData &param) const = &CommandRegistry::describe;
     std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::describe, result, this, param);
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, result, this, param);
+    return result;
+}
+
+std::string CommandRegistry::describe(const CommandRegistry::Signature &signature, const std::string &name,
+                                      const CommandRegistry::Overload &overload, unsigned int a4, unsigned int *a5,
+                                      unsigned int *a6) const
+{
+    std::string (CommandRegistry::*fp)(const CommandRegistry::Signature &, const std::string &,
+                                       const CommandRegistry::Overload &, unsigned int, unsigned int *, unsigned int *)
+        const = &CommandRegistry::describe;
+    std::string result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, result, this, signature, name, overload, a4, a5, a6);
     return result;
 }
 
