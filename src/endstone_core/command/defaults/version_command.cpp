@@ -17,6 +17,7 @@
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
+#include "endstone/util/color_format.h"
 
 endstone::detail::VersionCommand::VersionCommand() : Command("version")
 {
@@ -28,7 +29,7 @@ endstone::detail::VersionCommand::VersionCommand() : Command("version")
 bool endstone::detail::VersionCommand::execute(CommandSender &sender,
                                                const std::map<std::string, std::string> &args) const
 {
-    sender.sendMessage("This server is running Endstone version: {}",
+    sender.sendMessage(ColorFormat::GOLD + "This server is running Endstone version: {}",
                        Singleton<EndstoneServer>::getInstance().getVersion());
     return true;
 }
