@@ -189,6 +189,18 @@ class Bootstrap:
     def _download_finished(self) -> None:
         self.validate()
 
+        properties = self.server_path / "server.properties"
+        with properties.open("r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+        lines = [
+            "server-name=Endstone Server\n" if line.strip() == "server-name=Dedicated Server" else line
+            for line in lines
+        ]
+
+        with properties.open("w", encoding="utf-8") as file:
+            file.writelines(lines)
+
     def install(self) -> None:
         """
         Installs the server if not already installed.
