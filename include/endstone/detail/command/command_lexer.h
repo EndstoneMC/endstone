@@ -102,7 +102,7 @@ private:
         if (position_ >= value_.size()) {
             return '\0';
         }
-        return value_[++position_];
+        return value_[position_++];
     }
 
     std::string_view value_;
