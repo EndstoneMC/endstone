@@ -40,6 +40,7 @@ public:
     [[nodiscard]] MinecraftCommands &getMinecraftCommands();
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
+    PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const override;
 
     void loadPlugins();
     void enablePlugins() const;

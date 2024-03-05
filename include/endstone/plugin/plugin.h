@@ -114,6 +114,18 @@ public:
     };
 
     /**
+     * Registers a new PluginCommand.
+     *
+     * @tparam CommandType The custom command type. This class should extend the Command class.
+     * @return a pointer to the registered plugin command
+     */
+    template <typename CommandType>
+    PluginCommand *registerCommand()
+    {
+        return getServer().registerPluginCommand(std::make_unique<CommandType>());
+    }
+
+    /**
      * Gets the command with the given name, specific to this plugin.
      *
      * @param name name or alias of the command

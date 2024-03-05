@@ -56,7 +56,15 @@ public:
      * @param name the name of the command to retrieve
      * @return a plugin command if found, null otherwise
      */
-    [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const  = 0;
+    [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
+
+    /**
+     * Registers a new PluginCommand.
+     *
+     * @param command the command to be registered
+     * @return a pointer to the registered plugin command
+     */
+    [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const = 0;
 
     /**
      * Gets the version string of this server implementation.

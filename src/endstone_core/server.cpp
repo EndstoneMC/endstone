@@ -87,7 +87,18 @@ PluginManager &EndstoneServer::getPluginManager() const
 
 PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 {
-    // TODO:
+    auto *command = command_map_->getCommand(name);
+    // TODO: avoid dynamic_cast according to Google's guideline
+    // see https://google.github.io/styleguide/cppguide.html#Run-Time_Type_Information__RTTI_
+    return dynamic_cast<PluginCommand *>(command);
+}
+
+PluginCommand *EndstoneServer::registerPluginCommand(std::unique_ptr<PluginCommand> command) const
+{
+    auto name = command->getName();
+    if (command_map_->registerCommand(std::move(command))) {
+        return getPluginCommand(name);
+    }
     return nullptr;
 }
 
