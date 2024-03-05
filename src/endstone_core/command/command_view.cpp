@@ -14,8 +14,7 @@
 
 #include "endstone/detail/command/command_view.h"
 
-bool endstone::detail::CommandView::execute(endstone::CommandSender &sender,
-                                            const std::map<std::string, std::string> &args) const
+bool endstone::detail::CommandView::execute(endstone::CommandSender &sender, const std::vector<std::string> &args) const
 {
     return false;
 }

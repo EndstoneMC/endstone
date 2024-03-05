@@ -20,7 +20,7 @@ namespace endstone::detail {
 class PluginsCommand : public Command {
 public:
     PluginsCommand();
-    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override;
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 
 private:
     [[nodiscard]] std::string getPluginList() const;

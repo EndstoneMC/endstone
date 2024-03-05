@@ -30,7 +30,7 @@ PluginsCommand::PluginsCommand() : Command("plugins")
     setUsages("/plugins");
 }
 
-bool PluginsCommand::execute(CommandSender &sender, const std::map<std::string, std::string> &args) const
+bool PluginsCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     sender.sendMessage("Plugins {}", getPluginList());
     return true;

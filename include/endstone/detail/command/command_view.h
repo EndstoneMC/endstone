@@ -22,6 +22,6 @@ namespace endstone::detail {
 class CommandView : public Command {
 public:
     using Command::Command;
-    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override;
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 }  // namespace endstone::detail
