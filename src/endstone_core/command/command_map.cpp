@@ -23,6 +23,7 @@
 #include "bedrock/command/command_registry.h"
 #include "bedrock/i18n.h"
 #include "endstone/detail/command/command_adapter.h"
+#include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/command_view.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
@@ -125,8 +126,25 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         }
     }
 
-    // TODO: register the overloads from usage
-    registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX});
+    for (const auto &usage : command->getUsages()) {
+        auto parser = CommandUsageParser(usage);
+        std::string command_name;
+        std::vector<CommandUsageParser::Parameter> parameters;
+        std::string error_message;
+        if (parser.parse(command_name, parameters, error_message)) {
+            if (command_name != name) {
+                server_.getLogger().warning(
+                    "Unexpected command name when parsing the command usage. Expected: '{}', Found: '{}'.", name,
+                    command_name);
+            }
+            // TODO: register parameters
+            registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX});
+        }
+        else {
+            server_.getLogger().error("Error occurred when parsing the command usage '{}': {}", name, error_message);
+            continue;
+        }
+    }
 
     command->setAliases(registered_alias);
     command->registerTo(*this);
