@@ -22,6 +22,7 @@
 #include "bedrock/command/command.h"
 #include "bedrock/command/command_registry.h"
 #include "bedrock/i18n.h"
+#include "bedrock/type_id.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/command_view.h"
@@ -98,6 +99,26 @@ void EndstoneCommandMap::setMinecraftCommands()
     }
 }
 
+namespace {
+std::unordered_map<std::string, Bedrock::typeid_t<CommandRegistry>> gTypeLiterals = {
+    {"string", Bedrock::type_id<CommandRegistry, std::string>()},
+    {"int", Bedrock::type_id<CommandRegistry, int>()},
+    {"float", Bedrock::type_id<CommandRegistry, float>()},
+};
+
+template <typename Command, typename Type>
+int offsetOf(Type Command::*data)
+{
+    union {
+        Type Command::*in;
+        int out;
+    } caster;
+    caster.in = data;
+    return caster.out;
+}
+
+}  // namespace
+
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
@@ -107,9 +128,11 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     }
 
     auto name = command->getName();
-    auto it = known_commands_.find(name);
-    if (it != known_commands_.end() && it->second->getName() == it->first) {
-        return false;  // the name was registered and is not an alias, we don't replace it
+    {
+        auto it = known_commands_.find(name);
+        if (it != known_commands_.end() && it->second->getName() == it->first) {
+            return false;  // the name was registered and is not an alias, we don't replace it
+        }
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
@@ -136,8 +159,27 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 server_.getLogger().warning("Unexpected command name '{}' in usage '{}', do you mean '{}'?",
                                             command_name, usage, name);
             }
-            // TODO: register parameters
-            registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX});
+
+            std::vector<CommandParameterData> param_data;
+            for (const auto &parameter : parameters) {
+                auto it = gTypeLiterals.find(std::string(parameter.type));
+                if (it == gTypeLiterals.end()) {
+                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
+                                              usage, parameter.type);
+                    return false;
+                }
+                auto data = CommandParameterData::create(it->second, parameter.name, offsetOf(&CommandAdapter::args_),
+                                                         parameter.optional, offsetOf(&CommandAdapter::temp_));
+                if (data.offset_value == 0) {  // sanity check
+                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
+                                              usage, parameter.type);
+                    return false;
+                }
+                data.parse_rule = &parseRuleAdapter;
+                param_data.push_back(data);
+            }
+
+            registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
         }
         else {
             server_.getLogger().error("Error occurred when parsing usage '{}': {}", usage, error_message);

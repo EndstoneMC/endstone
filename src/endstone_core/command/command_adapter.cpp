@@ -59,4 +59,11 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     }
 }
 
+bool parseRuleAdapter(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
+                      std::string &, std::vector<std::string> &)
+{
+    // TODO: write args to the map
+    printf("hi!!!\n");
+    return true;
+}
 }  // namespace endstone::detail

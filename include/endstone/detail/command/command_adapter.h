@@ -37,6 +37,14 @@ private:
 
 class CommandAdapter : public ::Command {
     void execute(const CommandOrigin &origin, CommandOutput &output) const override;
+
+private:
+    friend class EndstoneCommandMap;
+    std::map<std::string, std::string> args_;
+    bool temp_;
 };
+
+bool parseRuleAdapter(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
+                      std::string &, std::vector<std::string> &);
 
 }  // namespace endstone::detail
