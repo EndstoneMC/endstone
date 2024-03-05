@@ -45,7 +45,10 @@ public:
      * @param args Arguments passed to the command
      * @return true if the execution was successful, otherwise false
      */
-    [[nodiscard]] virtual bool execute(CommandSender &sender, const std::vector<std::string> &args) const = 0;
+    [[nodiscard]] virtual bool execute(CommandSender &sender, const std::vector<std::string> &args) const
+    {
+        return false;
+    }
 
     /**
      * Returns the name of this command

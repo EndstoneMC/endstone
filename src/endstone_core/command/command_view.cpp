@@ -16,5 +16,6 @@
 
 bool endstone::detail::CommandView::execute(endstone::CommandSender &sender, const std::vector<std::string> &args) const
 {
+    sender.sendErrorMessage("Command view of '/{}' is not executable.", getName());
     return false;
 }
