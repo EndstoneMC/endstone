@@ -22,8 +22,8 @@ class PythonPluginLoader(PluginLoader):
             plugin._description = PluginDescription(
                 name=plugin_metadata["name"].replace("_", " ").replace("-", " ").title().replace(" ", ""),
                 version=plugin_metadata["version"],
-                description=plugin_metadata.get("description"),
-                authors=[f"{author['name']} <{author['email']}>" for author in plugin_metadata.get("authors", [])],
+                description=plugin_metadata.get("summary"),
+                authors=[plugin_metadata.get("author_email")],
             )
 
             self._plugins.append(plugin)
