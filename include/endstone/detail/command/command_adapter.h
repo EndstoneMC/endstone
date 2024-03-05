@@ -40,7 +40,7 @@ class CommandAdapter : public ::Command {
 
 private:
     friend class EndstoneCommandMap;
-    std::map<std::string, std::string> args_;
+    std::vector<std::string> args_;
     bool temp_;
 };
 

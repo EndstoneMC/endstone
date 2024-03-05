@@ -14,6 +14,10 @@
 
 #include "endstone/detail/command/command_adapter.h"
 
+#include <stack>
+#include <string>
+#include <vector>
+
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output)
     : server_(server), origin_(origin), output_(output)
@@ -59,11 +63,51 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     }
 }
 
-bool parseRuleAdapter(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
-                      std::string &, std::vector<std::string> &)
+bool parseRuleAdapter(CommandRegistry *, void *value, const CommandRegistry::ParseToken &parse_token,
+                      const CommandOrigin &, int, std::string &, std::vector<std::string> &)
 {
-    // TODO: write args to the map
-    printf("hi!!!\n");
+    auto &output = *reinterpret_cast<std::vector<std::string> *>(value);
+    if (!output.empty()) {
+        return true;
+    }
+
+    const auto *root = &parse_token;
+    while (root->parent != nullptr) {  // Find root
+        root = root->parent;
+    }
+
+    if (root->child == nullptr) {  // this shouldn't happen
+        return false;
+    }
+
+    // This is where the magic happen, we recreate the command args from the parse token!
+    for (auto *node = root->child.get(); node; node = node->next.get()) {
+        std::string result;
+        std::stack<CommandRegistry::ParseToken *> stack;
+        stack.push(node);
+
+        while (!stack.empty()) {
+            auto *top = stack.top();
+            stack.pop();
+
+            if (top->size > 0) {
+                if (!result.empty()) {
+                    result += " ";
+                }
+                result += std::string(top->data, top->size);
+            }
+
+            if (top != node && top->next != nullptr) {
+                stack.push(top->next.get());
+            }
+
+            if (top->child != nullptr) {
+                stack.push(top->child.get());
+            }
+        }
+
+        output.push_back(result);
+    }
     return true;
 }
 }  // namespace endstone::detail

@@ -74,7 +74,7 @@ std::unique_ptr<Command> CommandRegistry::createCommand(const CommandRegistry::P
                                                         std::string &error_message,
                                                         std::vector<std::string> &error_params) const
 {
-    spdlog::debug("ParseToken:\n{}", parse_token);
+    spdlog::info("ParseToken:\n{}", parse_token);
     std::unique_ptr<Command> result;
     ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::createCommand, result, this, parse_token, origin, version,
                                     error_message, error_params);
