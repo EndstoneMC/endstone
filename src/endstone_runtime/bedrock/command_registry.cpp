@@ -18,6 +18,7 @@
 #include <iostream>
 #include <memory>
 #include <stack>
+#include <utility>
 
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
@@ -125,7 +126,7 @@ std::ostream &operator<<(std::ostream &os, const CommandRegistry::ParseToken &to
     return os;
 }
 
-CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
+CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, std::string name,
                                                   int offset_value, bool optional, int offset_has_value)
 {
     auto it = gCommandParameterTemplate.find(type_id.id);
@@ -134,7 +135,7 @@ CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<Comman
     }
 
     auto data = it->second;
-    data.name = name;
+    data.name = std::move(name);
     data.offset_value = offset_value;
     data.optional = optional;
     data.offset_has_value = offset_has_value;

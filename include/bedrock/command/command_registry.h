@@ -112,8 +112,9 @@ public:
         return std::move(std::make_unique<CommandType>());
     }
 
-    template <typename CommandType, typename... Params>
-    const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version, const Params &...params)
+    template <typename CommandType>
+    const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version,
+                                                      const std::vector<CommandParameterData> &params)
     {
         auto *signature = const_cast<CommandRegistry::Signature *>(findCommand(name));
         if (!signature) {
@@ -121,7 +122,7 @@ public:
         }
 
         auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<CommandType>);
-        overload.params = {params...};
+        overload.params = params;
 
         signature->overloads.push_back(overload);
         registerOverloadInternal(*signature, overload);
@@ -196,6 +197,6 @@ struct CommandParameterData {
     bool optional;                               // +88
     CommandParameterOption option;               // +89
 
-    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
+    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, std::string name,
                                        int offset_value, bool optional, int offset_has_value);
 };
