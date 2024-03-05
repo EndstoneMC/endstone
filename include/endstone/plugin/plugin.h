@@ -99,6 +99,19 @@ public:
         return *server_;
     }
 
+    /**
+     * Returns the name of the plugin.
+     *
+     * This should return the bare name of the plugin and should be used for
+     * comparison.
+     *
+     * @return name of the plugin
+     */
+    [[nodiscard]] std::string getName() const
+    {
+        return getDescription().getName();
+    };
+
 private:
     friend class PluginLoader;
 

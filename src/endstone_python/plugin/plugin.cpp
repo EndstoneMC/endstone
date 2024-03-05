@@ -85,7 +85,8 @@ void def_plugin(py::module &m)
         .def_property_readonly("logger", &Plugin::getLogger, py::return_value_policy::reference)
         .def_property_readonly("plugin_loader", &Plugin::getPluginLoader, py::return_value_policy::reference)
         .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference)
-        .def_property_readonly("enabled", &Plugin::isEnabled);
+        .def_property_readonly("enabled", &Plugin::isEnabled)
+        .def_property_readonly("name", &Plugin::getName);
 }
 
 }  // namespace endstone::detail
