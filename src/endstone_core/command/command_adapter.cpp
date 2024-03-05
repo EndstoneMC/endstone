@@ -53,7 +53,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     auto command_name = getCommandName();
     auto *command = command_map.getCommand(command_name);
     if (command) {
-        bool success = command->execute(sender, {});
+        bool success = command->execute(sender, args_);
         if (success) {
             output.success();
         }
@@ -63,8 +63,8 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     }
 }
 
-bool parseRuleAdapter(CommandRegistry *, void *value, const CommandRegistry::ParseToken &parse_token,
-                      const CommandOrigin &, int, std::string &, std::vector<std::string> &)
+bool customParseRule(CommandRegistry *, void *value, const CommandRegistry::ParseToken &parse_token,
+                     const CommandOrigin &, int, std::string &, std::vector<std::string> &)
 {
     auto &output = *reinterpret_cast<std::vector<std::string> *>(value);
     if (!output.empty()) {
@@ -72,16 +72,21 @@ bool parseRuleAdapter(CommandRegistry *, void *value, const CommandRegistry::Par
     }
 
     const auto *root = &parse_token;
-    while (root->parent != nullptr) {  // Find root
+    while (root->parent != nullptr) {  // Find the root node
         root = root->parent;
     }
 
-    if (root->child == nullptr) {  // this shouldn't happen
+    const auto *command_name = root->child.get();  // Command name is always the first child
+    if (command_name == nullptr) {                 // No way this can happen, but just in case
         return false;
     }
 
+    if (command_name->next == nullptr) {  // No arguments, no problem
+        return true;
+    }
+
     // This is where the magic happen, we recreate the command args from the parse token!
-    for (auto *node = root->child.get(); node; node = node->next.get()) {
+    for (auto *node = command_name->next.get(); node; node = node->next.get()) {
         std::string result;
         std::stack<CommandRegistry::ParseToken *> stack;
         stack.push(node);
