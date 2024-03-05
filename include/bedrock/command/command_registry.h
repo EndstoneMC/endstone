@@ -99,8 +99,8 @@ public:
     class ParseTable;
     class Enum;
 
-    using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
-                                                std::string &, std::vector<std::string> &);
+    using ParseRule = bool (*)(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &,
+                               int, std::string &, std::vector<std::string> &);
 
     BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
@@ -183,15 +183,6 @@ enum CommandParameterDataType : int;
 enum CommandParameterOption : char;
 
 struct CommandParameterData {
-
-    CommandParameterData(const Bedrock::typeid_t<CommandRegistry> &type_id, CommandRegistry::ParseRule parse_rule,
-                         const char *name, CommandParameterDataType type, const char *enum_name,
-                         const char *postfix_name, int offset_value, bool optional, int offset_has_value)
-        : type_id(type_id), parse_rule(parse_rule), name(name), type(type), enum_name(enum_name),
-          postfix_name(postfix_name), offset_value(offset_value), optional(optional), offset_has_value(offset_has_value)
-    {
-    }
-
     Bedrock::typeid_t<CommandRegistry> type_id;  // +0
     CommandRegistry::ParseRule parse_rule;       // +8
     std::string name;                            // +16
@@ -204,4 +195,7 @@ struct CommandParameterData {
     int offset_has_value;                        // +84
     bool optional;                               // +88
     CommandParameterOption option;               // +89
+
+    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, const char *name,
+                                       int offset_value, bool optional, int offset_has_value);
 };
