@@ -133,15 +133,14 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         std::string error_message;
         if (parser.parse(command_name, parameters, error_message)) {
             if (command_name != name) {
-                server_.getLogger().warning(
-                    "Unexpected command name when parsing the command usage. Expected: '{}', Found: '{}'.", name,
-                    command_name);
+                server_.getLogger().warning("Unexpected command name '{}' in usage '{}', do you mean '{}'?",
+                                            command_name, usage, name);
             }
             // TODO: register parameters
             registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX});
         }
         else {
-            server_.getLogger().error("Error occurred when parsing the command usage '{}': {}", name, error_message);
+            server_.getLogger().error("Error occurred when parsing usage '{}': {}", usage, error_message);
             continue;
         }
     }
