@@ -23,7 +23,7 @@ namespace endstone::detail {
 VersionCommand::VersionCommand() : Command("version")
 {
     setDescription("Gets the version of this server including any plugins in use.");
-    setUsages("/version [plugin_name: string]");
+    setUsages("/version", "/version [plugin_name: string]");
     setAliases("ver", "about");
 }
 
