@@ -166,7 +166,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
             for (const auto &parameter : parameters) {
                 auto it = gTypeSymbols.find(std::string(parameter.type));
                 if (it == gTypeSymbols.end()) {
-                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
+                    server_.getLogger().error("Error occurred when registering usage '{}'. Unsupported type '{}'.",
                                               usage, parameter.type);
                     return false;
                 }
@@ -180,7 +180,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
             registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
         }
         else {
-            server_.getLogger().error("Error occurred when parsing usage '{}': {}", usage, error_message);
+            server_.getLogger().error("Error occurred when parsing usage '{}'. {}", usage, error_message);
             continue;
         }
     }
