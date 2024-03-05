@@ -100,10 +100,10 @@ void EndstoneCommandMap::setMinecraftCommands()
 }
 
 namespace {
-std::unordered_map<std::string, Bedrock::typeid_t<CommandRegistry>> gTypeLiterals = {
-    {"string", Bedrock::type_id<CommandRegistry, std::string>()},
-    {"int", Bedrock::type_id<CommandRegistry, int>()},
-    {"float", Bedrock::type_id<CommandRegistry, float>()},
+std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
+    // TODO: is there anyway we can populate this table?
+    {"string", {0x10002C}},
+    {"str", {0x10002C}},
 };
 
 template <typename Command, typename Type>
@@ -136,7 +136,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
-    // TODO: configure the permission level and flags
+    // TODO(permission): configure the permission level and flags
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, {128}, {0});
     known_commands_.emplace(name, command);
 
@@ -162,20 +162,19 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
-                auto it = gTypeLiterals.find(std::string(parameter.type));
-                if (it == gTypeLiterals.end()) {
-                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
-                                              usage, parameter.type);
-                    return false;
-                }
-                auto data = CommandParameterData::create(it->second, parameter.name, offsetOf(&CommandAdapter::args_),
-                                                         parameter.optional, offsetOf(&CommandAdapter::temp_));
-                if (data.offset_value == 0) {  // sanity check
-                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
-                                              usage, parameter.type);
-                    return false;
-                }
+                CommandParameterData data;
                 data.parse_rule = &parseRuleAdapter;
+                data.name = parameter.name;
+                auto it = gTypeSymbols.find(std::string(parameter.type));
+                if (it == gTypeSymbols.end()) {
+                    server_.getLogger().error("Error occurred when registering usage '{}': Unsupported type '{}'",
+                                              usage, parameter.type);
+                    return false;
+                }
+                data.fallback_symbol = it->second;
+                data.offset_value = offsetOf(&CommandAdapter::args_);
+                data.optional = parameter.optional;
+                data.offset_has_value = offsetOf(&CommandAdapter::temp_);
                 param_data.push_back(data);
             }
 

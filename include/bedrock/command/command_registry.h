@@ -20,6 +20,7 @@
 #include <memory>
 #include <optional>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -114,7 +115,7 @@ public:
 
     template <typename CommandType>
     const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version,
-                                                      const std::vector<CommandParameterData> &params)
+                                                      std::vector<CommandParameterData> params)
     {
         auto *signature = const_cast<CommandRegistry::Signature *>(findCommand(name));
         if (!signature) {
@@ -122,7 +123,7 @@ public:
         }
 
         auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<CommandType>);
-        overload.params = params;
+        overload.params = std::move(params);
 
         signature->overloads.push_back(overload);
         registerOverloadInternal(*signature, overload);
@@ -187,16 +188,13 @@ struct CommandParameterData {
     Bedrock::typeid_t<CommandRegistry> type_id;  // +0
     CommandRegistry::ParseRule parse_rule;       // +8
     std::string name;                            // +16
-    const char *enum_name;                       // +48
-    CommandRegistry::Symbol enum_symbol;         // +56
-    const char *postfix_name;                    // +64
-    CommandRegistry::Symbol postfix_symbol;      // +72
+    const char *type_name;                       // +48
+    CommandRegistry::Symbol symbol;              // +56
+    const char *fallback_typename;               // +64
+    CommandRegistry::Symbol fallback_symbol;     // +72
     CommandParameterDataType type;               // +76
     int offset_value;                            // +80
     int offset_has_value;                        // +84
     bool optional;                               // +88
     CommandParameterOption option;               // +89
-
-    static CommandParameterData create(const Bedrock::typeid_t<CommandRegistry> &type_id, std::string name,
-                                       int offset_value, bool optional, int offset_has_value);
 };

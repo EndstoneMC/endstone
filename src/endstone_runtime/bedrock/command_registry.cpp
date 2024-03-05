@@ -27,10 +27,6 @@
 #include "bedrock/type_id.h"
 #include "endstone/detail/hook.h"
 
-namespace {
-std::unordered_map<uint16_t, CommandParameterData> gCommandParameterTemplate;
-}
-
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,
                                       CommandFlag flag1, CommandFlag flag2)
 {
@@ -71,12 +67,6 @@ void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signa
                                                CommandRegistry::Overload &overload)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::registerOverloadInternal, this, signature, overload);
-
-    for (const auto &param : overload.params) {
-        // NOTE: Retrieve the typeid_t after game updates and fix values in `type_id.cpp`.
-        spdlog::debug("Bedrock::typeid_t<CommandRegistry> = {}, Description = {}", param.type_id.id, describe(param));
-        gCommandParameterTemplate.emplace(param.type_id.id, param);
-    }
 }
 
 std::unique_ptr<Command> CommandRegistry::createCommand(const CommandRegistry::ParseToken &parse_token,
@@ -124,20 +114,4 @@ std::ostream &operator<<(std::ostream &os, const CommandRegistry::ParseToken &to
         }
     }
     return os;
-}
-
-CommandParameterData CommandParameterData::create(const Bedrock::typeid_t<CommandRegistry> &type_id, std::string name,
-                                                  int offset_value, bool optional, int offset_has_value)
-{
-    auto it = gCommandParameterTemplate.find(type_id.id);
-    if (it == gCommandParameterTemplate.end()) {
-        return {};
-    }
-
-    auto data = it->second;
-    data.name = std::move(name);
-    data.offset_value = offset_value;
-    data.optional = optional;
-    data.offset_has_value = offset_has_value;
-    return data;
 }

@@ -30,20 +30,3 @@ template <typename Context, typename Type>
 typeid_t<Context> type_id();
 
 }  // namespace Bedrock
-
-#define DEFINE_BEDROCK_TYPE_ID(Context, Type, Value)  \
-    namespace Bedrock {                               \
-    template <>                                       \
-    inline typeid_t<Context> type_id<Context, Type>() \
-    {                                                 \
-        return {Value};                               \
-    }                                                 \
-    }
-
-class CommandRegistry;
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, std::string, 1);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, bool, 2);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, int, 5);
-DEFINE_BEDROCK_TYPE_ID(CommandRegistry, float, 6);
-
-#undef DEFINE_BEDROCK_TYPE_ID
