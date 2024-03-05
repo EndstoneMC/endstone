@@ -21,6 +21,7 @@
 #include <filesystem>
 #include <memory>
 
+#include "endstone/command/plugin_command.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/plugin_manager.h"
@@ -65,6 +66,15 @@ public:
     void disablePlugins() const
     {
         plugin_manager_->disablePlugins();
+    }
+
+    [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override
+    {
+        return nullptr;
+    }
+    [[nodiscard]] PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const override
+    {
+        return nullptr;
     }
 
     [[nodiscard]] std::string_view getVersion() const override
