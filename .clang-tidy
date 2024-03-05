@@ -8,17 +8,18 @@ Checks: >
   performance-*,
   portability-*,
   readability-*,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-exception-escape,
+  -bugprone-implicit-widening-of-multiplication-result,
   -misc-non-private-member-variables-in-classes,
   -misc-const-correctness,
   -modernize-use-trailing-return-type,
   -modernize-avoid-c-arrays,
+  -performance-enum-size,
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
   -readability-magic-numbers,
-  -readability-named-parameter,
-  -bugprone-easily-swappable-parameters,
-  -bugprone-exception-escape,
-  -bugprone-implicit-widening-of-multiplication-result
+  -readability-named-parameter
 
 WarningsAsErrors: "*"
 HeaderFilterRegex: "(include/|src/).*"
