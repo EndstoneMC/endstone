@@ -122,7 +122,8 @@ public:
     template <typename CommandType>
     PluginCommand *registerCommand()
     {
-        return getServer().registerPluginCommand(std::make_unique<CommandType>());
+        CommandType command;
+        return getServer().registerPluginCommand(std::make_unique<PluginCommand>(command, *this));
     }
 
     /**
