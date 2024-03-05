@@ -24,6 +24,7 @@
 #include "bedrock/i18n.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_view.h"
+#include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
 #include "endstone/detail/server.h"
 
@@ -59,6 +60,7 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 
 void EndstoneCommandMap::setDefaultCommands()
 {
+    registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<VersionCommand>());
 }
 

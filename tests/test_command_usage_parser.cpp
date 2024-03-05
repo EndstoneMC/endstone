@@ -168,7 +168,7 @@ TEST_F(ParserTest, ParseCommandWithoutSlash)
     ASSERT_EQ(error_message, "Syntax Error: expect '/', got 'command' at position 7.");
 }
 
-TEST_F(ParserTest, ParseCommandWithMismatchBracket)
+TEST_F(ParserTest, ParseCommandWithUnexpectedBracket)
 {
     std::string command_name;
     std::vector<CommandUsageParser::Parameter> parameters;

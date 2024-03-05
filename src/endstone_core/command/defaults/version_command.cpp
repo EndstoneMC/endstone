@@ -19,17 +19,19 @@
 #include "endstone/detail/singleton.h"
 #include "endstone/util/color_format.h"
 
-endstone::detail::VersionCommand::VersionCommand() : Command("version")
+namespace endstone::detail {
+VersionCommand::VersionCommand() : Command("version")
 {
     setDescription("Gets the version of this server");
     setUsages("/version");
     setAliases("ver", "about");
 }
 
-bool endstone::detail::VersionCommand::execute(CommandSender &sender,
-                                               const std::map<std::string, std::string> &args) const
+bool VersionCommand::execute(CommandSender &sender, const std::map<std::string, std::string> &args) const
 {
     sender.sendMessage(ColorFormat::GOLD + "This server is running Endstone version: {}",
                        Singleton<EndstoneServer>::getInstance().getVersion());
     return true;
 }
+
+};  // namespace endstone::detail
