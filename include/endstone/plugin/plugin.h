@@ -169,16 +169,16 @@ private:
 
 #ifndef ENDSTONE_PLUGIN
 #if defined(WIN32)
-#define ENDSTONE_PLUGIN(ClassName)                                \
-    extern "C" __declspec(dllexport) Plugin *EndstonePluginInit() \
-    {                                                             \
-        return new ClassName();                                   \
+#define ENDSTONE_PLUGIN(ClassName)                                          \
+    extern "C" __declspec(dllexport) endstone::Plugin *EndstonePluginInit() \
+    {                                                                       \
+        return new ClassName();                                             \
     }
 #else
-#define ENDSTONE_PLUGIN(ClassName)                                                 \
-    extern "C" __attribute__((visibility("default"))) Plugin *EndstonePluginInit() \
-    {                                                                              \
-        return new ClassName();                                                    \
+#define ENDSTONE_PLUGIN(ClassName)                                                           \
+    extern "C" __attribute__((visibility("default"))) endstone::Plugin *EndstonePluginInit() \
+    {                                                                                        \
+        return new ClassName();                                                              \
     }
 #endif
 #endif
