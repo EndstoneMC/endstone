@@ -163,7 +163,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
                 CommandParameterData data;
-                data.parse_rule = &parseRuleAdapter;
+                data.parse_rule = &customParseRule;
                 data.name = parameter.name;
                 auto it = gTypeSymbols.find(std::string(parameter.type));
                 if (it == gTypeSymbols.end()) {

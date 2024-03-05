@@ -44,7 +44,7 @@ private:
     bool temp_;
 };
 
-bool parseRuleAdapter(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
+bool customParseRule(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                       std::string &, std::vector<std::string> &);
 
 }  // namespace endstone::detail
