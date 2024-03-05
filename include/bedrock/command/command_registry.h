@@ -41,8 +41,7 @@ enum class CommandPermissionLevel : std::uint8_t {
     Internal = 5
 };
 
-enum SemanticConstraint {
-};
+enum SemanticConstraint : uint8_t;
 
 class Command;
 class CommandParameterData;
@@ -99,6 +98,7 @@ public:
 
     class ParseTable;
     class Enum;
+    class SoftEnum;
 
     using ParseRule = bool (*)(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &,
                                int, std::string &, std::vector<std::string> &);
@@ -139,17 +139,17 @@ public:
     std::function<int(bool &, std::string const &, class Actor const &)> score_callback;    // +56
     std::vector<void *> unknown1;                                                           // +128
     std::map<uint32_t, CommandRegistry::ParseTable> parse_tables;                           // +152
-    std::vector<void *> unknown2;                                                           // +168
-    std::vector<std::string> enums;                                                         // +192
-    std::vector<CommandRegistry::Enum> enum_data;                                           // +216
+    std::vector<void *> optionals;                                                          // +168
+    std::vector<std::string> literals;                                                      // +192
+    std::vector<CommandRegistry::Enum> enums;                                               // +216
     std::vector<std::string> subcommands;                                                   // +240
-    std::vector<CommandRegistry::Enum> subcommand_data;                                     // +264
-    std::vector<void *> unknown3;                                                           // +288
+    std::vector<CommandRegistry::Enum> chained_subcommands;                                 // +264
+    std::vector<CommandRegistry::Symbol> symbols;                                           // +288
     std::vector<std::string> postfixes;                                                     // +312
-    std::map<std::string, uint32_t> unknown4;                                               // +336
+    std::map<std::string, int> enum_symbol_index;                                           // +336
     std::map<std::string, CommandRegistry::Symbol> enum_symbols;                            // +352
-    std::map<std::string, uint32_t> unknown5;                                               // +368
-    std::map<std::string, uint64_t> unknown6;                                               // +384
+    std::map<std::string, int> subcommand_symbol_index;                                     // +368
+    std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                      // +384
     std::vector<void *> unknown7;                                                           // +400
     std::map<std::string, CommandRegistry::Signature> commands;                             // +424
     std::map<Bedrock::typeid_t<CommandRegistry>, int> type_ids;                             // +440
@@ -158,8 +158,8 @@ public:
     std::map<SemanticConstraint, unsigned char> constrained_values;                         // +496
     std::vector<void *> constrained_value_data;                                             // +512
     std::map<std::pair<uint64_t, uint32_t>, uint32_t> unknown8;                             // +536
-    std::vector<void *> soft_enum_data;                                                     // +552
-    std::map<std::string, uint32_t> unknown9;                                               // +576
+    std::vector<CommandRegistry::SoftEnum> soft_enums;                                      // +552
+    std::map<std::string, int> soft_enum_symbol_index;                                      // +576
     std::vector<void *> unknown10;                                                          // +592
     char param_symbols[96];                                                                 // +616
     std::unordered_map<unsigned char, unsigned char> unknown11;                             // +712
@@ -185,8 +185,7 @@ enum CommandParameterDataType : int {
     Default
 };
 
-enum CommandParameterOption : char {
-};
+enum CommandParameterOption : char;
 
 struct CommandParameterData {
     CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_id, CommandRegistry::ParseRule parse_rule,
