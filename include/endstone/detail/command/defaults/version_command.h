@@ -15,12 +15,13 @@
 #pragma once
 
 #include "endstone/command/command.h"
+#include "endstone/plugin/plugin.h"
 
 namespace endstone::detail {
 class VersionCommand : public Command {
 public:
     VersionCommand();
-    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override;
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 
 }  // namespace endstone::detail

@@ -27,11 +27,37 @@ VersionCommand::VersionCommand() : Command("version")
     setAliases("ver", "about");
 }
 
-bool VersionCommand::execute(CommandSender &sender, const std::map<std::string, std::string> &args) const
+bool VersionCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
-    sender.sendMessage(ColorFormat::GOLD + "This server is running Endstone version: {}",
-                       Singleton<EndstoneServer>::getInstance().getVersion());
+    if (args.empty()) {
+        sender.sendMessage(ColorFormat::GOLD + "This server is running Endstone version: {}",
+                           Singleton<EndstoneServer>::getInstance().getVersion());
+    }
+    else {
+        auto target_name = args[0];
+        std::transform(target_name.begin(), target_name.end(), target_name.begin(),
+                       [](unsigned char c) { return std::tolower(c); });
+
+        auto &server = Singleton<EndstoneServer>::getInstance();
+        auto plugins = server.getPluginManager().getPlugins();
+        for (auto *plugin : plugins) {
+            auto name = plugin->getName();
+            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+
+            if (name == target_name) {
+                const auto &desc = plugin->getDescription();
+                sender.sendMessage(ColorFormat::GREEN + desc.getName() + ColorFormat::WHITE + " v" + desc.getVersion());
+                return true;
+            }
+        }
+
+        sender.sendErrorMessage("This server is not running any plugin by that name.");
+        sender.sendMessage("Use /plugins to get a list of plugins.");
+        return false;
+    }
+
     return true;
 }
+
 
 };  // namespace endstone::detail
