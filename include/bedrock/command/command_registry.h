@@ -58,11 +58,11 @@ public:
         CommandVersion version;                    // +0
         std::unique_ptr<Command> (*factory)();     // +8
         std::vector<CommandParameterData> params;  // +16
-        uint8_t unknown1 = 0;                      // +40
-        uint16_t unknown2 = -1;
-        uint64_t unknown3 = 0;
-        uint64_t unknown4 = 0;
-        uint64_t unknown5 = 0;
+        int32_t unknown1{-1};                      // +40
+        int8_t unknown2{0};                        // +44
+        uint64_t unknown3{0};                      // +48
+        uint64_t unknown4{0};                      // +56
+        uint64_t unknown5{0};                      // +64
     };
 
     struct Symbol {
@@ -73,7 +73,7 @@ public:
         std::string name;                                  // +0
         std::string description;                           // +32
         std::vector<CommandRegistry::Overload> overloads;  // +64
-        char pad1[24];                                     // +88
+        char unknown1[24];                                 // +88
         CommandPermissionLevel permission_level;           // +112
         CommandRegistry::Symbol symbol;                    // +116
         int32_t unknown2;                                  // +120
@@ -181,20 +181,36 @@ private:
     void registerOverloadInternal(CommandRegistry::Signature &signature, CommandRegistry::Overload &overload);
 };
 
-enum CommandParameterDataType : int;
-enum CommandParameterOption : char;
+enum CommandParameterDataType : int {
+    Default
+};
+
+enum CommandParameterOption : char {
+};
 
 struct CommandParameterData {
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_id, CommandRegistry::ParseRule parse_rule,
+                         char const *name, CommandParameterDataType type, char const *type_name,
+                         char const *fallback_typename, int offset_value, bool optional, int offset_has_value)
+        : type_id(type_id), parse_rule(parse_rule), name(name), type_name(type_name),
+          fallback_typename(fallback_typename), type(type), offset_value(offset_value),
+          offset_has_value(offset_has_value), optional(optional)
+    {
+    }
+
     Bedrock::typeid_t<CommandRegistry> type_id;  // +0
     CommandRegistry::ParseRule parse_rule;       // +8
-    std::string name;                            // +16
-    const char *type_name;                       // +48
-    CommandRegistry::Symbol symbol;              // +56
-    const char *fallback_typename;               // +64
-    CommandRegistry::Symbol fallback_symbol;     // +72
-    CommandParameterDataType type;               // +76
-    int offset_value;                            // +80
-    int offset_has_value;                        // +84
-    bool optional;                               // +88
-    CommandParameterOption option;               // +89
+#ifdef __linux__
+    uint64_t unknown1{0};  // TODO: wtf mojang - this is so weird
+#endif
+    std::string name;                             // +16
+    const char *type_name;                        // +48
+    CommandRegistry::Symbol symbol{-1};           // +56
+    const char *fallback_typename;                // +64
+    CommandRegistry::Symbol fallback_symbol{-1};  // +72
+    CommandParameterDataType type;                // +76
+    int offset_value;                             // +80
+    int offset_has_value;                         // +84
+    bool optional;                                // +88
+    CommandParameterOption option{0};             // +89
 };
