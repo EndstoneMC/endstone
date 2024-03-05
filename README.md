@@ -26,6 +26,7 @@
 ## 📄 Table of Contents
 
 - [📖 Introduction](#-introduction-)
+- [🎯 Features](#-features-)
 - [🛠️ Installation](#%EF%B8%8F-installation-)
 - [🙌 Contributing](#-contributing-)
 - [🎫 License](#-license-)
@@ -35,6 +36,21 @@
 We are excited to announce the Endstone project. Endstone offers a plugin API for Bedrock Dedicated Servers, supporting
 both Python and C++ languages. This allows developers to enhance Bedrock Dedicated Servers with various features and
 functionalities.
+
+## 🎯 Features [🔝](#-table-of-contents)
+
+- **Cross-platform**: We have dedicated efforts to support both Windows and Linux. Proudly, we are the only
+  BDS-based server software sporting native support for both platforms without the need for an emulator.
+- **Feature-rich**: All up-to-date Minecraft features are at your fingertips! We make sure to keep Endstone aligned with
+  the latest game updates.
+- **Hassle-free**: Ready to use right out of the box. Start the Endstone server with just one line of command. No extra
+  tools required.
+- **High-level API**: We provide a high-level friendly API akin to Bukkit plugin developers. Save yourself the hassle of
+  dealing with the dot-and-cross of the low-level system API and hooks, we've done the difficult part for you!
+- **Starter-friendly**: No C++ knowledge? No problem! Craft your plugins using Python, your favourite.
+- **Performance-in-mind**: For the performance savants, you can, of course, write (or rewrite) your plugins in C++ to
+  squeeze out
+  every bit of performance.
 
 ## 🛠️ Installation [🔝](#-table-of-contents)
 
