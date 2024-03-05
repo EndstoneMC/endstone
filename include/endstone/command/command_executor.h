@@ -37,7 +37,7 @@ public:
      * @return true if the execution is successful, otherwise false
      */
     virtual bool onCommand(const CommandSender &sender, const Command &command,
-                           const std::map<std::string, std::string> &args)
+                           const std::vector<std::string> &args)
     {
         return false;
     }

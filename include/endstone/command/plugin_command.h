@@ -29,10 +29,10 @@ class PluginCommand : public Command {
 public:
     PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
 
-    bool execute(CommandSender &sender, const std::map<std::string, std::string> &args) const override
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override
     {
         if (!owner_.isEnabled()) {
-            sender.sendMessage("Cannot execute command '{}' in plugin {} - plugin is disabled.", getName(),
+            sender.sendMessage("Cannot execute command '{}' in plugin {}. Plugin is disabled.", getName(),
                                getPlugin().getDescription().getFullName());
             return false;
         }
@@ -41,7 +41,7 @@ public:
             return getExecutor().onCommand(sender, *this, args);
         }
         catch (std::exception &e) {
-            getPlugin().getLogger().error("Cannot execute command '{}' - {}", getName(), e.what());
+            getPlugin().getLogger().error("Cannot execute command '{}'. {}", getName(), e.what());
             return false;
         }
     }

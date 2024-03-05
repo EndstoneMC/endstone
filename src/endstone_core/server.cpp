@@ -19,6 +19,7 @@
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
@@ -82,6 +83,12 @@ MinecraftCommands &EndstoneServer::getMinecraftCommands()
 PluginManager &EndstoneServer::getPluginManager() const
 {
     return *plugin_manager_;
+}
+
+PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
+{
+    // TODO:
+    return nullptr;
 }
 
 std::string_view EndstoneServer::getVersion() const

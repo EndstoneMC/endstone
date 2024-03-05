@@ -22,6 +22,7 @@
 
 namespace endstone {
 
+class PluginCommand;
 class PluginManager;
 
 /**
@@ -48,6 +49,14 @@ public:
      * @return a plugin manager for this Server instance
      */
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
+
+    /**
+     * Gets a PluginCommand with the given name or alias.
+     *
+     * @param name the name of the command to retrieve
+     * @return a plugin command if found, null otherwise
+     */
+    [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const  = 0;
 
     /**
      * Gets the version string of this server implementation.

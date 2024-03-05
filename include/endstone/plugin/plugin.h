@@ -26,6 +26,7 @@
 
 namespace endstone {
 
+class PluginCommand;
 class PluginLoader;
 
 class Plugin : public CommandExecutor {
@@ -111,6 +112,18 @@ public:
     {
         return getDescription().getName();
     };
+
+    /**
+     * Gets the command with the given name, specific to this plugin.
+     *
+     * @param name name or alias of the command
+     * @return the plugin command if found, otherwise null
+     */
+    [[nodiscard]] PluginCommand *getCommand(std::string name) const
+    {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        return getServer().getPluginCommand(name);
+    }
 
 private:
     friend class PluginLoader;

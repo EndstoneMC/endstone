@@ -39,6 +39,7 @@ public:
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const noexcept;
     [[nodiscard]] MinecraftCommands &getMinecraftCommands();
     [[nodiscard]] PluginManager &getPluginManager() const override;
+    [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
 
     void loadPlugins();
     void enablePlugins() const;
