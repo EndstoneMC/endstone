@@ -45,8 +45,7 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
             std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
 
             if (name == target_name) {
-                const auto &desc = plugin->getDescription();
-                sender.sendMessage(ColorFormat::GREEN + desc.getName() + ColorFormat::WHITE + " v" + desc.getVersion());
+                describeToSender(*plugin, sender);
                 return true;
             }
         }
@@ -59,5 +58,60 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
     return true;
 }
 
+void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) const
+{
+    const auto &desc = plugin.getDescription();
+    sender.sendMessage(ColorFormat::GREEN + desc.getName() + ColorFormat::WHITE + " v" + desc.getVersion());
+
+    auto description = desc.getDescription();
+    if (description.has_value()) {
+        sender.sendMessage(description.value());
+    }
+
+    // TODO: make plugin names an enum for auto-completion
+
+    // TODO: print website
+    // if (!desc.getWebsite().empty()) {
+    //     sender.sendMessage("Website: " + std::string(ChatColor::GREEN + desc.getWebsite()));
+    // }
+
+    auto authors = desc.getAuthors();
+    if (authors.has_value()) {
+        if (authors.value().size() == 1) {
+            sender.sendMessage("Author: " + getNameList(authors.value()));
+        }
+        else {
+            sender.sendMessage("Authors: " + getNameList(authors.value()));
+        }
+    }
+
+    // TODO: print contributors
+    // if (!desc.getContributors().empty()) {
+    //     sender.sendMessage("Contributors: " + getNameList(desc.getContributors()));
+    // }
+}
+
+std::string VersionCommand::getNameList(const std::vector<std::string> &names) const
+{
+    std::string result;
+
+    for (auto it = names.begin(); it != names.end(); ++it) {
+        if (!result.empty()) {
+            result += std::string(ColorFormat::WHITE);
+
+            if (std::next(it) != names.end()) {
+                result += ", ";
+            }
+            else {
+                result += " and ";
+            }
+        }
+
+        result += std::string(ColorFormat::GREEN);
+        result += *it;
+    }
+
+    return result;
+}
 
 };  // namespace endstone::detail

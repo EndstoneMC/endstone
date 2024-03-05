@@ -22,6 +22,10 @@ class VersionCommand : public Command {
 public:
     VersionCommand();
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+
+private:
+    void describeToSender(Plugin &plugin, CommandSender &sender) const;
+    [[nodiscard]] std::string getNameList(const std::vector<std::string> &names) const;
 };
 
 }  // namespace endstone::detail
