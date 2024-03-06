@@ -29,19 +29,22 @@ namespace py = pybind11;
 namespace endstone::detail {
 
 namespace {
-PluginDescription createPluginDescription(std::string name, std::string version, std::string description,
-                                          std::vector<std::string> authors, std::string prefix,
-                                          const py::args & /*args*/, const py::kwargs & /*kwargs*/)
+PluginDescription createPluginDescription(std::string name, std::string version,
+                                          const std::optional<std::string> &description,
+                                          const std::optional<std::vector<std::string>> &authors,
+                                          const std::optional<std::string> &prefix, const py::args & /*args*/,
+                                          const py::kwargs & /*kwargs*/)
 {
-    return {std::move(name), std::move(version), std::move(description), std::move(authors), std::move(prefix)};
+    return {std::move(name), std::move(version), description.value_or(""), authors.value_or(std::vector<std::string>()),
+            prefix.value_or("")};
 }
 }  // namespace
 
 void def_plugin_description(py::module &m)
 {
     py::class_<PluginDescription>(m, "PluginDescription")
-        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"), py::arg("description") = "",
-             py::arg("authors") = py::list(), py::arg("prefix") = "")
+        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
+             py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
         .def_property_readonly("name", &PluginDescription::getName)
         .def_property_readonly("version", &PluginDescription::getVersion)
         .def_property_readonly("full_name", &PluginDescription::getFullName)
