@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/util/color_format.h"
+#include <pybind11/pybind11.h>
 
-#include "endstone/detail/python.h"
+#include "endstone/util/color_format.h"
 
 namespace py = pybind11;
 
@@ -22,7 +22,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void def_color_format(py::module &m)
+void init_util(py::module &m)
 {
     py::class_<ColorFormat>(m, "ColorFormat")
         .ADD_COLOR_FORMAT(BLACK)

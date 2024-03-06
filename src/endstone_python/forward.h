@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,12 +18,11 @@
 
 namespace endstone::detail {
 
-void def_color_format(pybind11::module &m);
-void def_logger(pybind11::module &m);
-void def_server(pybind11::module &m);
-void def_plugin(pybind11::module &m);
-void def_plugin_description(pybind11::module &m);
-void def_plugin_loader(pybind11::module &m);
-void def_plugin_manager(pybind11::module &m);
+template <typename Type, typename... Options>
+pybind11::class_<Type, Options...> py_class(pybind11::handle scope, const char *name)
+{
+    static pybind11::class_<Type, Options...> instance = pybind11::class_<Type, Options...>(scope, name);
+    return instance;
+}
 
 }  // namespace endstone::detail

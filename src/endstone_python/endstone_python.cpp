@@ -14,19 +14,21 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/detail/python.h"
+namespace py = pybind11;
 
 namespace endstone::detail {
 
+void init_logger(py::module_ &);
+void init_server(py::module_ &);
+void init_plugin(py::module_ &);
+void init_util(py::module_ &);
+
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
-    def_color_format(m);
-    def_logger(m);
-    def_plugin(m);
-    def_plugin_description(m);
-    def_plugin_loader(m);
-    def_plugin_manager(m);
-    def_server(m);
+    init_logger(m);
+    init_util(m);
+    init_server(m);
+    init_plugin(m);
 }
 
 }  // namespace endstone::detail

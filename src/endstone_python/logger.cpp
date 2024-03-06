@@ -16,36 +16,13 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/detail/python.h"
-
 namespace py = pybind11;
 
 namespace endstone::detail {
 
-void def_logger(py::module &m)
+void init_logger(py::module &m)
 {
-    auto logger =  //
-        py::class_<Logger>(m, "Logger")
-            .def("set_level", &Logger::setLevel, py::arg("level"))
-            .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
-            .def(
-                "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); },
-                py::arg("msg"))
-            .def(
-                "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); },
-                py::arg("msg"))
-            .def(
-                "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("msg"))
-            .def(
-                "warning", [](const Logger &logger, const std::string &message) { logger.warning(message); },
-                py::arg("msg"))
-            .def(
-                "error", [](const Logger &logger, const std::string &message) { logger.error(message); },
-                py::arg("msg"))
-            .def(
-                "critical", [](const Logger &logger, const std::string &message) { logger.critical(message); },
-                py::arg("msg"))
-            .def_property_readonly("name", &Logger::getName);
+    auto logger = py::class_<Logger>(m, "Logger");
 
     py::enum_<Logger::Level>(logger, "Level")
         .value("TRACE", Logger::Level::Trace)
@@ -55,6 +32,24 @@ void def_logger(py::module &m)
         .value("ERROR", Logger::Level::Error)
         .value("CRITICAL", Logger::Level::Critical)
         .export_values();
+
+    logger.def("set_level", &Logger::setLevel, py::arg("level"))
+        .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
+        .def(
+            "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); }, py::arg("msg"))
+        .def(
+            "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); }, py::arg("msg"))
+        .def(
+            "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("msg"))
+        .def(
+            "warning", [](const Logger &logger, const std::string &message) { logger.warning(message); },
+            py::arg("msg"))
+        .def(
+            "error", [](const Logger &logger, const std::string &message) { logger.error(message); }, py::arg("msg"))
+        .def(
+            "critical", [](const Logger &logger, const std::string &message) { logger.critical(message); },
+            py::arg("msg"))
+        .def_property_readonly("name", &Logger::getName);
 }
 
 }  // namespace endstone::detail
