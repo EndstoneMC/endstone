@@ -27,7 +27,7 @@
 
 - [📖 Introduction](#-introduction-)
 - [🎯 Features](#-features-)
-- [🛠️ Get started](#-get-started-)
+- [🛠️ Get started](#%EF%B8%8F-get-started-)
 - [🌟 Plugins](#-plugins-)
 - [🙌 Contributing](#-contributing-)
 - [🎫 License](#-license-)
