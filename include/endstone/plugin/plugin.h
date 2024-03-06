@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "endstone/command/command_executor.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
@@ -165,6 +166,66 @@ private:
     Server *server_ = nullptr;
     Logger *logger_ = nullptr;
 };
+
+class PluginCommand : public Command {
+public:
+    PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
+
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override
+    {
+        if (!owner_.isEnabled()) {
+            sender.sendMessage("Cannot execute command '{}' in plugin {}. Plugin is disabled.", getName(),
+                               getPlugin().getDescription().getFullName());
+            return false;
+        }
+
+        try {
+            return getExecutor().onCommand(sender, *this, args);
+        }
+        catch (std::exception &e) {
+            getPlugin().getLogger().error("Cannot execute command '{}'. {}", getName(), e.what());
+            return false;
+        }
+    }
+
+    /**
+     * Sets the CommandExecutor to run when parsing this command
+     *
+     * @param executor New executor to run
+     */
+    void setExecutor(std::shared_ptr<CommandExecutor> executor)
+    {
+        executor_ = std::move(executor);
+    }
+
+    /**
+     * Gets the CommandExecutor associated with this command
+     *
+     * @return CommandExecutor object linked to this command
+     */
+    [[nodiscard]] CommandExecutor &getExecutor() const
+    {
+        if (executor_) {
+            return *executor_;
+        }
+        return owner_;
+    }
+
+    /**
+     * Gets the owner of this PluginCommand
+     *
+     * @return Plugin that owns this command
+     */
+    [[maybe_unused]] [[nodiscard]] Plugin &getPlugin() const
+    {
+        return owner_;
+    }
+
+private:
+    Plugin &owner_;
+    std::shared_ptr<CommandExecutor> executor_;
+};
+
 }  // namespace endstone
 
 #ifndef ENDSTONE_PLUGIN
