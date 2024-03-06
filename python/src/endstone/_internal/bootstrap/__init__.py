@@ -8,7 +8,11 @@ import sys
 import click
 from endstone._internal.version import __version__, __version_tuple__
 
-logging.basicConfig(level=logging.INFO, format="[%(asctime)s %(levelname)s] [%(name)s] %(message)s")
+logging.basicConfig(
+    level=logging.INFO,
+    format="[%(asctime)s.%(msecs)03d %(levelname)s] [%(name)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 logger = logging.getLogger(__name__)
 
 __all__ = ["cli"]
