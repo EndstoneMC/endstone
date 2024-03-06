@@ -31,8 +31,9 @@ VersionCommand::VersionCommand() : Command("version")
 bool VersionCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     if (args.empty()) {
-        sender.sendMessage(ColorFormat::GOLD + "This server is running Endstone version: {}",
-                           Singleton<EndstoneServer>::getInstance().getVersion());
+        auto &server = Singleton<EndstoneServer>::getInstance();
+        sender.sendMessage(ColorFormat::GOLD + "This server is running {} version: {} (Minecraft: {})",
+                           server.getName(), server.getVersion(), server.getMinecraftVersion());
     }
     else {
         auto target_name = args[0];

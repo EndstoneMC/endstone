@@ -18,7 +18,9 @@
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
+#include "endstone/util/color_format.h"
 
+using endstone::ColorFormat;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 using endstone::detail::Singleton;
@@ -28,7 +30,9 @@ void ServerInstance::startServerThread()
     Singleton<EndstoneServer>::setInstance(std::make_unique<EndstoneServer>(*this));
     auto &server = Singleton<EndstoneServer>::getInstance();
     server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
-    server.getLogger().info("Version: {} (Minecraft: {})", server.getVersion(), server.getMinecraftVersion());
+    server.getLogger().info(ColorFormat::DARK_AQUA + ColorFormat::BOLD +
+                                "This server is running {} version: {} (Minecraft: {})",
+                            server.getName(), server.getVersion(), server.getMinecraftVersion());
     server.loadPlugins();
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
 }

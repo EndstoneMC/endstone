@@ -31,7 +31,7 @@ namespace fs = std::filesystem;
 namespace endstone::detail {
 
 EndstoneServer::EndstoneServer(ServerInstance &server_instance)
-    : server_instance_(server_instance), logger_(LoggerFactory::getLogger("EndstoneServer"))
+    : server_instance_(server_instance), logger_(LoggerFactory::getLogger("Server"))
 {
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
@@ -102,7 +102,12 @@ PluginCommand *EndstoneServer::registerPluginCommand(std::unique_ptr<PluginComma
     return nullptr;
 }
 
-std::string_view EndstoneServer::getVersion() const
+std::string EndstoneServer::getName() const
+{
+    return "Endstone";
+}
+
+std::string EndstoneServer::getVersion() const
 {
     return ENDSTONE_VERSION;
 }

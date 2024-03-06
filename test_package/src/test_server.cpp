@@ -77,7 +77,12 @@ public:
         return nullptr;
     }
 
-    [[nodiscard]] std::string_view getVersion() const override
+    [[nodiscard]] std::string getName() const override
+    {
+        return "TestServer";
+    }
+
+    [[nodiscard]] std::string getVersion() const override
     {
         return "test(endstone)";
     }

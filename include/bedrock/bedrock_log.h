@@ -35,7 +35,7 @@ enum class LogAreaID {
     Animation,
     Input,
     Level,
-    DedicatedServer,
+    Server,
     DLC,
     Physics,
     File,

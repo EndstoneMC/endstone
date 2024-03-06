@@ -67,11 +67,18 @@ public:
     [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const = 0;
 
     /**
+     * Gets the name of this server implementation.
+     *
+     * @return name of this server implementation
+     */
+    [[nodiscard]] virtual std::string getName() const = 0;
+
+    /**
      * Gets the version string of this server implementation.
      *
      * @return version of this server implementation
      */
-    [[nodiscard]] virtual std::string_view getVersion() const = 0;
+    [[nodiscard]] virtual std::string getVersion() const = 0;
 
     /**
      * Gets the Minecraft version that this server is running.

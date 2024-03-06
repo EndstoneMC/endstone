@@ -40,13 +40,14 @@ public:
     [[nodiscard]] MinecraftCommands &getMinecraftCommands();
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
-    PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const override;
+    [[nodiscard]] PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const override;
 
     void loadPlugins();
     void enablePlugins() const;
     void disablePlugins() const;
 
-    [[nodiscard]] std::string_view getVersion() const override;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
