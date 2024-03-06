@@ -18,11 +18,10 @@
 
 namespace endstone::detail {
 
-template <typename Type, typename... Options, typename... Extra>
-pybind11::class_<Type, Options...> py_class(pybind11::handle scope, const char *name, Extra &&...extra)
+template <typename Type, typename... Options>
+pybind11::class_<Type, Options...> py_class(pybind11::handle scope, const char *name)
 {
-    static pybind11::class_<Type, Options...> instance =
-        pybind11::class_<Type, Options...>(scope, name, std::forward<Extra>(extra)...);
+    static pybind11::class_<Type, Options...> instance = pybind11::class_<Type, Options...>(scope, name);
     return instance;
 }
 

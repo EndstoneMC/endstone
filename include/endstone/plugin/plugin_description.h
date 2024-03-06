@@ -36,31 +36,60 @@ public:
         prefix_ = std::move(prefix);
     }
 
+    /**
+     * Gives the name of the plugin. This name is a unique identifier for plugins.
+     *
+     * @return the name of the plugin
+     */
     [[nodiscard]] const std::string &getName() const
     {
         return name_;
     }
 
+    /**
+     * Gives the version of the plugin.
+     *
+     * @return the version of the plugin
+     */
     [[nodiscard]] const std::string &getVersion() const
     {
         return version_;
     }
 
+    /**
+     * Returns the name of a plugin, including the version.
+     *
+     * @return a descriptive name of the plugin and respective version
+     */
     [[nodiscard]] const std::string &getFullName() const
     {
         return full_name_;
     }
 
+    /**
+     * Gives a human-friendly description of the functionality the plugin provides.
+     * @return description of this plugin, or null if not specified
+     */
     [[nodiscard]] std::string getDescription() const
     {
         return description_;
     }
 
+    /**
+     * Gives the list of authors for the plugin.
+     *
+     * @return a list of the plugin's authors
+     */
     [[nodiscard]] std::vector<std::string> getAuthors() const
     {
         return authors_;
     }
 
+    /**
+     * Gives the token to prefix plugin-specific logging messages with.
+     *
+     * @return the prefixed logging token, or null if not specified
+     */
     [[nodiscard]] std::string getPrefix() const
     {
         return prefix_;

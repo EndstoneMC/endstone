@@ -18,6 +18,9 @@
 
 namespace endstone {
 
+/**
+ * @brief All supported color and format codes
+ */
 struct ColorFormat {
     // Escape
     inline static const std::string ESCAPE = "§";

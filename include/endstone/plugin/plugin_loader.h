@@ -31,8 +31,21 @@ public:
     PluginLoader &operator=(const PluginLoader &) = delete;
 
     virtual ~PluginLoader() = default;
+
+    /**
+     * Loads the plugin contained within the specified directory
+     *
+     * @param directory Directory to check for plugins
+     * @return A list of all plugins loaded
+     */
     [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
 
+    /**
+     * Enables the specified plugin
+     * Attempting to enable a plugin that is already enabled will have no effect
+     *
+     * @param plugin Plugin to enable
+     */
     virtual void enablePlugin(Plugin &plugin) const
     {
         if (!plugin.isEnabled()) {
@@ -41,17 +54,18 @@ public:
         }
     }
 
+    /**
+     * Disables the specified plugin
+     * Attempting to disable a plugin that is not enabled will have no effect
+     *
+     * @param plugin Plugin to disable
+     */
     virtual void disablePlugin(Plugin &plugin) const
     {
         if (plugin.isEnabled()) {
             plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
             plugin.setEnabled(false);
         }
-    }
-
-    [[nodiscard]] virtual Server &getServer() const
-    {
-        return server_;
     }
 
 protected:
@@ -62,7 +76,6 @@ protected:
         plugin.logger_ = &logger;
     }
 
-private:
     Server &server_;
 };
 

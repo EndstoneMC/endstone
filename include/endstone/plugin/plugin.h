@@ -37,6 +37,10 @@ public:
 
     ~Plugin() override = default;
 
+    /**
+     * Returns the details of this plugin
+     * @return Details of this plugin
+     */
     [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
 
     /**

@@ -21,6 +21,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Logger class which can format and output varies levels of logs.
+ */
 class Logger {
 public:
     /**
@@ -39,9 +42,34 @@ public:
     Logger() = default;
 
     virtual ~Logger() = default;
+    /**
+     * @brief Set the logging level for this Logger instance.
+     *
+     * @param level The desired log level
+     */
     virtual void setLevel(Level level) = 0;
+
+    /**
+     * @brief Check if the Logger instance is enabled for the given log Level.
+     *
+     * @param level The log level to check
+     * @return true if the logger is enabled for the Level, false otherwise.
+     */
     [[nodiscard]] virtual bool isEnabledFor(Level level) const = 0;
+
+    /**
+     * @brief Get the name of this Logger instance.
+     *
+     * @return The name of this Logger instance.
+     */
     [[nodiscard]] virtual std::string_view getName() const = 0;
+
+    /**
+     * @brief Log a message at the given level.
+     *
+     * @param level The level at which the message should be logged.
+     * @param message The message to log.
+     */
     virtual void log(Level level, const std::string &message) const = 0;
 
     template <typename... Args>

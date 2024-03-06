@@ -29,16 +29,84 @@ public:
     PluginManager(PluginManager const &) = delete;
     PluginManager &operator=(PluginManager const &) = delete;
     virtual ~PluginManager() = default;
+
+    /**
+     * Registers the specified plugin loader
+     *
+     * @param loader PluginLoader to register
+     */
     virtual void registerLoader(std::unique_ptr<PluginLoader> loader) = 0;
+
+    /**
+     * Checks if the given plugin is loaded and returns it when applicable.
+     * Please note that the name of the plugin is case-sensitive
+     *
+     * @param name Name of the plugin to check
+     * @return Plugin if it exists, otherwise nullptr
+     */
     [[nodiscard]] virtual Plugin *getPlugin(const std::string &name) const = 0;
+
+    /**
+     * Gets a list of all currently loaded plugins
+     *
+     * @return List of Plugins
+     */
     [[nodiscard]] virtual std::vector<Plugin *> getPlugins() const = 0;
+
+    /**
+     * Checks if the given plugin is enabled or not
+     * Please note that the name of the plugin is case-sensitive.
+     *
+     * @param name Name of the plugin to check
+     * @return true if the plugin is enabled, otherwise false
+     */
     [[nodiscard]] virtual bool isPluginEnabled(const std::string &name) const = 0;
+
+    /**
+     * Checks if the given plugin is enabled or not
+     *
+     * @param plugin Plugin to check
+     * @return true if the plugin is enabled, otherwise false
+     */
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
+
+    /**
+     * Loads the plugin contained within the specified directory
+     *
+     * @param directory Directory to check for plugins
+     * @return A list of all plugins loaded
+     */
     [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
+
+    /**
+     * Enables the specified plugin
+     * Attempting to enable a plugin that is already enabled will have no effect
+     *
+     * @param plugin Plugin to enable
+     */
     virtual void enablePlugin(Plugin &plugin) const = 0;
+
+    /**
+     * Enable all the loaded plugins
+     */
     virtual void enablePlugins() const = 0;
+
+    /**
+     * Disables the specified plugin
+     * Attempting to disable a plugin that is not enabled will have no effect
+     *
+     * @param plugin Plugin to disable
+     */
     virtual void disablePlugin(Plugin &plugin) const = 0;
+
+    /**
+     * Disables all the loaded plugins
+     */
     virtual void disablePlugins() const = 0;
+
+    /**
+     * Disables and removes all plugins
+     */
     virtual void clearPlugins() = 0;
 };
 
