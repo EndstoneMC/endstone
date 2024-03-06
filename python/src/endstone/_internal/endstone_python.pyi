@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -33,10 +33,62 @@ class ColorFormat:
     RESET: typing.ClassVar[str] = '§r'
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
+class Command:
+    def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None) -> None:
+        ...
+    def execute(self, sender: CommandSender, args: list[str]) -> bool:
+        """
+        Executes the command, returning its success
+        """
+    def register_to(self, command_map: ...) -> bool:
+        """
+        Registers this command to a CommandMap
+        """
+    def unregister_from(self, command_map: ...) -> bool:
+        """
+        Unregisters this command from a CommandMap
+        """
+    @property
+    def aliases(self) -> list[str]:
+        """
+        List of aliases of this command
+        """
+    @aliases.setter
+    def aliases(self, arg1: list[str]) -> None:
+        ...
+    @property
+    def description(self) -> str:
+        """
+        Brief description of this command
+        """
+    @description.setter
+    def description(self, arg1: str) -> Command:
+        ...
+    @property
+    def name(self) -> str:
+        """
+        Name of this command.
+        """
+    @name.setter
+    def name(self, arg1: str) -> bool:
+        ...
+    @property
+    def registered(self) -> bool:
+        """
+        Returns the current registered state of this command
+        """
+    @property
+    def usages(self) -> list[str]:
+        """
+        List of usages of this command
+        """
+    @usages.setter
+    def usages(self, arg1: list[str]) -> None:
+        ...
 class CommandExecutor:
     def __init__(self) -> None:
         ...
-    def on_command(self, sender: CommandSender, command: ..., args: list[str]) -> bool:
+    def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
         """
         Executes the given command, returning its success.
         """

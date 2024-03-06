@@ -38,6 +38,16 @@ public:
     }
 };
 
+namespace {
+Command createCommand(std::string name, const std::optional<std::string> &description,
+                      const std::optional<std::vector<std::string>> &usages,
+                      const std::optional<std::vector<std::string>> &aliases)
+{
+    return Command(std::move(name), description.value_or(""), usages.value_or(std::vector<std::string>()),
+                   aliases.value_or(std::vector<std::string>()));
+}
+}  // namespace
+
 void init_command(py::module &m)
 {
     py_class<Server>(m, "Server");
@@ -50,6 +60,29 @@ void init_command(py::module &m)
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
+
+    py::class_<Command>(m, "Command")
+        .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
+             py::arg("usages") = py::none(), py::arg("aliases") = py::none())
+        .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
+             "Executes the command, returning its success")
+        .def_property("name", &Command::getName, &Command::setName, "Name of this command.")
+        .def_property("description", &Command::getDescription, &Command::setDescription,
+                      "Brief description of this command")
+        .def_property(
+            "aliases", &Command::getAliases,
+            [](Command &self, const std::vector<std::string> &aliases) { self.setAliases(aliases); },
+            "List of aliases of this command")
+        .def_property(
+            "usages", &Command::getUsages,
+            [](Command &self, const std::vector<std::string> &usages) { self.setUsages(usages); },
+            "List of usages of this command")
+        .def("register_to", &endstone::Command::registerTo, py::arg("command_map"),
+             "Registers this command to a CommandMap")
+        .def("unregister_from", &endstone::Command::unregisterFrom, py::arg("command_map"),
+             "Unregisters this command from a CommandMap")
+        .def_property_readonly("registered", &endstone::Command::isRegistered,
+                               "Returns the current registered state of this command");
 
     py_class<CommandExecutor, PyCommandExecutor>(m, "CommandExecutor")
         .def(py::init<>())
