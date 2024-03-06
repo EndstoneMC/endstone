@@ -40,14 +40,6 @@ class Command:
         """
         Executes the command, returning its success
         """
-    def register_to(self, command_map: ...) -> bool:
-        """
-        Registers this command to a CommandMap
-        """
-    def unregister_from(self, command_map: ...) -> bool:
-        """
-        Unregisters this command from a CommandMap
-        """
     @property
     def aliases(self) -> list[str]:
         """
