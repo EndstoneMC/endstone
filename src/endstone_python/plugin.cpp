@@ -122,8 +122,6 @@ void init_plugin(py::module &m)
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
-    py_class<PluginCommand, Command>(m, "PluginCommand");
-
     py_class<Plugin, CommandExecutor, PyPlugin>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
@@ -142,7 +140,7 @@ void init_plugin(py::module &m)
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.");
 
-    py_class<PluginCommand, Command>(m, "PluginCommand")
+    py_class<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
         .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
         .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
                       "The CommandExecutor to run when parsing this command")

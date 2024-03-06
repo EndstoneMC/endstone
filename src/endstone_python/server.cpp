@@ -29,13 +29,19 @@ void init_server(py::module &m)
 {
     py_class<PluginManager>(m, "PluginManager");
 
+    py_class<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
+
     py_class<Server>(m, "Server")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "Gets the plugin manager for interfacing with plugins.")
+        .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
+             "Gets a PluginCommand with the given name or alias.")
+        .def("register_plugin_command", &Server::registerPluginCommand, py::arg("command"),
+             "Registers a new PluginCommand.")
         .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
-        .def_property_readonly("version", &Server::getVersion, "Gets the name of this server implementation.")
+        .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.");
 }

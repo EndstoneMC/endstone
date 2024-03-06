@@ -347,6 +347,14 @@ class PluginManager:
         Gets a list of all currently loaded plugins
         """
 class Server:
+    def get_plugin_command(self, name: str) -> PluginCommand:
+        """
+        Gets a PluginCommand with the given name or alias.
+        """
+    def register_plugin_command(self, command: PluginCommand) -> PluginCommand:
+        """
+        Registers a new PluginCommand.
+        """
     @property
     def logger(self) -> Logger:
         """
@@ -370,5 +378,5 @@ class Server:
     @property
     def version(self) -> str:
         """
-        Gets the name of this server implementation.
+        Gets the version of this server implementation.
         """

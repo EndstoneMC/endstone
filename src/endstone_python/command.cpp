@@ -61,7 +61,7 @@ void init_command(py::module &m)
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
-    py_class<Command>(m, "Command")
+    py_class<Command, std::shared_ptr<Command>>(m, "Command")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
              py::arg("usages") = py::none(), py::arg("aliases") = py::none())
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),

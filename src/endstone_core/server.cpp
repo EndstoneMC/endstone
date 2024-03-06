@@ -93,10 +93,10 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
     return dynamic_cast<PluginCommand *>(command);
 }
 
-PluginCommand *EndstoneServer::registerPluginCommand(std::unique_ptr<PluginCommand> command) const
+PluginCommand *EndstoneServer::registerPluginCommand(std::shared_ptr<PluginCommand> command) const
 {
     auto name = command->getName();
-    if (command_map_->registerCommand(std::move(command))) {
+    if (command_map_->registerCommand(command)) {
         return getPluginCommand(name);
     }
     return nullptr;

@@ -64,7 +64,7 @@ public:
      * @param command the command to be registered
      * @return a pointer to the registered plugin command
      */
-    [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const = 0;
+    [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const = 0;
 
     /**
      * Gets the name of this server implementation.
