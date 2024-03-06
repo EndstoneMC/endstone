@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -33,21 +33,36 @@ class ColorFormat:
     RESET: typing.ClassVar[str] = '§r'
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
+class CommandSender:
+    def send_message(self, message: str) -> None:
+        """
+        Sends this sender a message
+        """
+    @property
+    def name(self) -> str:
+        """
+        Gets the name of this command sender
+        """
+    @property
+    def server(self) -> Server:
+        """
+        Returns the server instance that this command is running on
+        """
 class Logger:
     class Level:
         """
         Members:
-        
+
           TRACE
-        
+
           DEBUG
-        
+
           INFO
-        
+
           WARNING
-        
+
           ERROR
-        
+
           CRITICAL
         """
         CRITICAL: typing.ClassVar[Logger.Level]  # value = <Level.CRITICAL: 5>
@@ -89,19 +104,19 @@ class Logger:
     INFO: typing.ClassVar[Logger.Level]  # value = <Level.INFO: 2>
     TRACE: typing.ClassVar[Logger.Level]  # value = <Level.TRACE: 0>
     WARNING: typing.ClassVar[Logger.Level]  # value = <Level.WARNING: 3>
-    def critical(self, msg: str) -> None:
+    def critical(self, message: str) -> None:
         """
         Log a message at the CRITICAL level.
         """
-    def debug(self, msg: str) -> None:
+    def debug(self, message: str) -> None:
         """
         Log a message at the DEBUG level.
         """
-    def error(self, msg: str) -> None:
+    def error(self, message: str) -> None:
         """
         Log a message at the ERROR level.
         """
-    def info(self, msg: str) -> None:
+    def info(self, message: str) -> None:
         """
         Log a message at the INFO level.
         """
@@ -113,11 +128,11 @@ class Logger:
         """
         Set the logging level for this Logger instance.
         """
-    def trace(self, msg: str) -> None:
+    def trace(self, message: str) -> None:
         """
         Log a message at the TRACE level.
         """
-    def warning(self, msg: str) -> None:
+    def warning(self, message: str) -> None:
         """
         Log a message at the WARNING level.
         """
@@ -146,7 +161,7 @@ class Plugin:
     @property
     def enabled(self) -> bool:
         """
-        Returns a value indicating whether or not this plugin is currently enabled
+        Returns a value indicating whether this plugin is currently enabled
         """
     @property
     def logger(self) -> Logger:

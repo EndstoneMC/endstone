@@ -18,6 +18,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
+void init_command(py::module_ &);
 void init_logger(py::module_ &);
 void init_server(py::module_ &);
 void init_plugin(py::module_ &);
@@ -25,6 +26,7 @@ void init_util(py::module_ &);
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
+    init_command(m);
     init_logger(m);
     init_server(m);
     init_plugin(m);

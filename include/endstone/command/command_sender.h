@@ -24,6 +24,7 @@ class Server;
 class CommandSender {
 public:
     CommandSender() = default;
+    virtual ~CommandSender() = default;
 
     /**
      * Sends this sender a message

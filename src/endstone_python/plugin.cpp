@@ -135,7 +135,7 @@ void init_plugin(py::module &m)
         .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference,
                                "Returns the Server instance currently running this plugin")
         .def_property_readonly("enabled", &Plugin::isEnabled,
-                               "Returns a value indicating whether or not this plugin is currently enabled")
+                               "Returns a value indicating whether this plugin is currently enabled")
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")
