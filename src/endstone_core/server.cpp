@@ -19,10 +19,10 @@
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
-#include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/plugin/plugin.h"
 
 #if !defined(ENDSTONE_VERSION)
 #error ENDSTONE_VERSION is not defined

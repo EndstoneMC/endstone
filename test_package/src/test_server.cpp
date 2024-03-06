@@ -21,7 +21,6 @@
 #include <filesystem>
 #include <memory>
 
-#include "endstone/command/plugin_command.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/plugin_manager.h"
