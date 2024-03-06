@@ -27,7 +27,8 @@
 
 - [📖 Introduction](#-introduction-)
 - [🎯 Features](#-features-)
-- [🛠️ Installation](#%EF%B8%8F-installation-)
+- [🛠️ Installation](#-installation-)
+- [🎉 Milestones](#-milestones-)
 - [🙌 Contributing](#-contributing-)
 - [🎫 License](#-license-)
 
@@ -135,6 +136,33 @@ endstone
 ```
 
 </details>
+
+## 🎉 Milestones [🔝](#-table-of-contents)
+
+Currently, the Endstone project is under active development, and we invite you to review our roadmap. While you wait,
+why not take a sneaky peek of our example plugins which illustrate the friendliness of the plugin API. If you have
+previous experience with Bukkit, you should find the API particularly intuitive to work with:
+
+- [C++ Example Plugin](https://github.com/EndstoneMC/cpp-plugin-template)
+- [Python Example Plugin](https://github.com/EndstoneMC/python-plugin-template)
+
+| Milestone                                | Duration   | Core | C++ API | Python API |
+|------------------------------------------|------------|------|---------|------------|
+| **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          |
+| **⌨️ Command System**                    | 2-3 months | 🚧   | 🚧      | ⏳          |
+| **🔐 Permission System**                 | 2-3 months | ⏳    | ⏳       | ⏳          |
+| **🎈 Event System**                      | 2-3 months | ⏳    | ⏳       | ⏳          |
+| **🛠 Minecraft Core Features**           | 4-5 months | ⏳    | ⏳       | ⏳          |
+| **🖼 GUI & Inventory System**            | 3-4 months | ⏳    | ⏳       | ⏳          |
+| **🌟 Advanced Features & Refinements**   | 4-6 months | ⏳    | ⏳       | ⏳          |
+| **🧪 Beta Testing & Community Feedback** | 3 months   | ⏳    | ⏳       | ⏳          |
+| **🚀 Official Release & Support**        | -          | ⏳    | ⏳       | ⏳          |
+
+Here's a legend to guide you:
+
+- ✅: Task is completed. Woohoo! 🎉
+- 🚧: Task is under way. We're on it! 💪
+- ⏳: Task is up next. Exciting things are coming! 🌠
 
 ## 🙌 Contributing [🔝](#-table-of-contents)
 
