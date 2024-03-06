@@ -16,7 +16,8 @@ class PythonPluginLoader(PluginLoader):
         for ep in eps:
             cls = ep.load()
             plugin = cls()
-            assert isinstance(plugin, Plugin), f"Main class {ep.value} does not extend endstone.plugin.Plugin"
+            if not isinstance(plugin, Plugin):
+                raise TypeError("Main class {ep.value} does not extend endstone.plugin.Plugin")
 
             plugin_metadata = metadata(ep.name.replace("-", "_")).json
             plugin._description = PluginDescription(

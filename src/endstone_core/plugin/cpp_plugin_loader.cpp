@@ -31,7 +31,7 @@ namespace endstone::detail {
 
 std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
 {
-    auto &logger = getServer().getLogger();
+    auto &logger = server_.getLogger();
 
     auto dir = fs::path(directory);
     if (!exists(dir)) {
@@ -76,7 +76,7 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
 
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
-    auto &logger = getServer().getLogger();
+    auto &logger = server_.getLogger();
     auto path = fs::path(file);
     if (!exists(path)) {
         logger.error("Could not load plugin from '{}': Provided file does not exist.", path.string());
@@ -117,7 +117,7 @@ std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
-    auto &logger = getServer().getLogger();
+    auto &logger = server_.getLogger();
     auto path = fs::path(file);
     if (!exists(path)) {
         logger.error("Could not load plugin from '{}': Provided file does not exist.", path.string());

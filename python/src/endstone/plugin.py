@@ -19,5 +19,8 @@ class Plugin(_Plugin):
 
     @property
     def description(self) -> PluginDescription:
+        """
+        Returns the details of this plugin
+        """
         # noinspection PyUnresolvedReferences
         return self._get_description()

@@ -30,11 +30,14 @@ void init_server(py::module &m)
     py_class<PluginManager>(m, "PluginManager");
 
     py_class<Server>(m, "Server")
-        .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference)
-        .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference)
-        .def_property_readonly("name", &Server::getVersion)
-        .def_property_readonly("version", &Server::getVersion)
-        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion);
+        .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
+                               "Returns the primary logger associated with this server instance.")
+        .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
+                               "Gets the plugin manager for interfacing with plugins.")
+        .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+        .def_property_readonly("version", &Server::getVersion, "Gets the name of this server implementation.")
+        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
+                               "Gets the Minecraft version that this server is running.");
 }
 
 }  // namespace endstone::detail

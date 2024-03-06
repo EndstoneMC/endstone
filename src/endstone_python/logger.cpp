@@ -36,23 +36,28 @@ void init_logger(py::module &m)
         .export_values();
 
     py_class<Logger>(m, "Logger")
-        .def("set_level", &Logger::setLevel, py::arg("level"))
-        .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
+        .def("set_level", &Logger::setLevel, py::arg("level"), "Set the logging level for this Logger instance.")
+        .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
+             "Check if the Logger instance is enabled for the given log Level.")
         .def(
-            "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); }, py::arg("msg"))
+            "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); }, py::arg("msg"),
+            "Log a message at the TRACE level.")
         .def(
-            "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); }, py::arg("msg"))
+            "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); }, py::arg("msg"),
+            "Log a message at the DEBUG level.")
         .def(
-            "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("msg"))
+            "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("msg"),
+            "Log a message at the INFO level.")
         .def(
             "warning", [](const Logger &logger, const std::string &message) { logger.warning(message); },
-            py::arg("msg"))
+            py::arg("msg"), "Log a message at the WARNING level.")
         .def(
-            "error", [](const Logger &logger, const std::string &message) { logger.error(message); }, py::arg("msg"))
+            "error", [](const Logger &logger, const std::string &message) { logger.error(message); }, py::arg("msg"),
+            "Log a message at the ERROR level.")
         .def(
             "critical", [](const Logger &logger, const std::string &message) { logger.critical(message); },
-            py::arg("msg"))
-        .def_property_readonly("name", &Logger::getName);
+            py::arg("msg"), "Log a message at the CRITICAL level.")
+        .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
 }  // namespace endstone::detail

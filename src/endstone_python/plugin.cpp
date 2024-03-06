@@ -98,8 +98,7 @@ public:
                                         std::ref(directory));
         }
         catch (std::exception &e) {
-            getServer().getLogger().error("Error occurred when trying to load plugins in '{}': {}", directory,
-                                          e.what());
+            server_.getLogger().error("Error occurred when trying to load plugins in '{}': {}", directory, e.what());
             return {};
         }
     }
@@ -110,48 +109,57 @@ void init_plugin(py::module &m)
     py_class<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
-        .def_property_readonly("name", &PluginDescription::getName)
-        .def_property_readonly("version", &PluginDescription::getVersion)
-        .def_property_readonly("full_name", &PluginDescription::getFullName)
-        .def_property_readonly("description", &PluginDescription::getDescription)
-        .def_property_readonly("authors", &PluginDescription::getAuthors)
-        .def_property_readonly("prefix", &PluginDescription::getPrefix);
+        .def_property_readonly("name", &PluginDescription::getName,
+                               "Gives the name of the plugin. This name is a unique identifier for plugins.")
+        .def_property_readonly("version", &PluginDescription::getVersion, "Gives the version of the plugin.")
+        .def_property_readonly("full_name", &PluginDescription::getFullName,
+                               "Returns the name of a plugin, including the version.")
+        .def_property_readonly("description", &PluginDescription::getDescription,
+                               "Gives a human-friendly description of the functionality the plugin provides.")
+        .def_property_readonly("authors", &PluginDescription::getAuthors, "Gives the list of authors for the plugin.")
+        .def_property_readonly("prefix", &PluginDescription::getPrefix,
+                               "Gives the token to prefix plugin-specific logging messages with.");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
     py_class<Plugin, PyPlugin>(m, "Plugin")
         .def(py::init<>())
-        .def("on_load", &Plugin::onLoad)
-        .def("on_enable", &Plugin::onEnable)
-        .def("on_disable", &Plugin::onDisable)
+        .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
+        .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled")
+        .def("on_disable", &Plugin::onDisable, "Called when this plugin is disabled")
         .def("_get_description", &Plugin::getDescription, py::return_value_policy::reference)
-        .def_property_readonly("logger", &Plugin::getLogger, py::return_value_policy::reference)
-        .def_property_readonly("plugin_loader", &Plugin::getPluginLoader, py::return_value_policy::reference)
-        .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference)
-        .def_property_readonly("enabled", &Plugin::isEnabled)
-        .def_property_readonly("name", &Plugin::getName);
+        .def_property_readonly("logger", &Plugin::getLogger, py::return_value_policy::reference,
+                               "Returns the plugin logger associated with this server's logger.")
+        .def_property_readonly("plugin_loader", &Plugin::getPluginLoader, py::return_value_policy::reference,
+                               "Gets the associated PluginLoader responsible for this plugin")
+        .def_property_readonly("server", &Plugin::getServer, py::return_value_policy::reference,
+                               "Returns the Server instance currently running this plugin")
+        .def_property_readonly("enabled", &Plugin::isEnabled,
+                               "Returns a value indicating whether or not this plugin is currently enabled")
+        .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
-             py::return_value_policy::reference_internal)
-        .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
-        .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))
-        .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference);
+             py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")
+        .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
+        .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Disables the specified plugin");
 
     py_class<PluginManager>(m, "PluginManager")
-        .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference)
-        .def_property_readonly("plugins", &PluginManager::getPlugins)
+        .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference,
+             "Checks if the given plugin is loaded and returns it when applicable.")
+        .def_property_readonly("plugins", &PluginManager::getPlugins, "Gets a list of all currently loaded plugins")
         .def("is_plugin_enabled", py::overload_cast<const std::string &>(&PluginManager::isPluginEnabled, py::const_),
-             py::arg("plugin"))
+             py::arg("plugin"), "Checks if the given plugin is enabled or not")
         .def("is_plugin_enabled", py::overload_cast<Plugin *>(&PluginManager::isPluginEnabled, py::const_),
-             py::arg("plugin"))
-        .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"))
-        .def("enable_plugin", &PluginManager::enablePlugin, py::arg("plugin"))
-        .def("enable_plugins", &PluginManager::enablePlugins)
-        .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"))
-        .def("disable_plugins", &PluginManager::disablePlugins)
-        .def("clear_plugins", &PluginManager::clearPlugins);
+             py::arg("plugin"), "Checks if the given plugin is enabled or not")
+        .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"),
+             "Loads the plugin contained within the specified directory")
+        .def("enable_plugin", &PluginManager::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
+        .def("enable_plugins", &PluginManager::enablePlugins, "Enable all the loaded plugins")
+        .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"), "Disables the specified plugin")
+        .def("disable_plugins", &PluginManager::disablePlugins, "Disables all the loaded plugins")
+        .def("clear_plugins", &PluginManager::clearPlugins, "Disables and removes all plugins");
 }
 
 }  // namespace endstone::detail
