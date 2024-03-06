@@ -40,8 +40,8 @@ PluginDescription createPluginDescription(std::string name, std::string version,
 void def_plugin_description(py::module &m)
 {
     py::class_<PluginDescription>(m, "PluginDescription")
-        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
-             py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
+        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"), py::arg("description") = "",
+             py::arg("authors") = py::list(), py::arg("prefix") = "")
         .def_property_readonly("name", &PluginDescription::getName)
         .def_property_readonly("version", &PluginDescription::getVersion)
         .def_property_readonly("full_name", &PluginDescription::getFullName)
