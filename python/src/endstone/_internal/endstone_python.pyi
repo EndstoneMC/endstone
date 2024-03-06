@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -33,6 +33,13 @@ class ColorFormat:
     RESET: typing.ClassVar[str] = '§r'
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
+class CommandExecutor:
+    def __init__(self) -> None:
+        ...
+    def on_command(self, sender: CommandSender, command: ..., args: list[str]) -> bool:
+        """
+        Executes the given command, returning its success.
+        """
 class CommandSender:
     def send_message(self, message: str) -> None:
         """

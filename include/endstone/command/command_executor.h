@@ -29,7 +29,7 @@ public:
     virtual ~CommandExecutor() = default;
 
     /**
-     * Executes the given command, returning its forceOutput.
+     * Executes the given command, returning its success.
      *
      * @param sender Source of the command
      * @param command Command which was executed

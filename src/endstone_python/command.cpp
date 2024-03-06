@@ -15,7 +15,9 @@
 #include "endstone/command/command.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
+#include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/detail/python.h"
 #include "endstone/logger.h"
@@ -24,6 +26,17 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
+
+class PyCommandExecutor : public CommandExecutor {
+public:
+    using CommandExecutor::CommandExecutor;
+
+    bool onCommand(const endstone::CommandSender &sender, const endstone::Command &command,
+                   const std::vector<std::string> &args) override
+    {
+        PYBIND11_OVERRIDE(bool, endstone::CommandExecutor, onCommand, sender, command, args);
+    }
+};
 
 void init_command(py::module &m)
 {
@@ -37,6 +50,11 @@ void init_command(py::module &m)
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
+
+    py_class<CommandExecutor, PyCommandExecutor>(m, "CommandExecutor")
+        .def(py::init<>())
+        .def("on_command", &endstone::CommandExecutor::onCommand, py::arg("sender"), py::arg("command"),
+             py::arg("args"), "Executes the given command, returning its success.");
 }
 
 }  // namespace endstone::detail
