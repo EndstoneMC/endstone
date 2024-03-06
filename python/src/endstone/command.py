@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import CommandSender, CommandExecutor
+from endstone._internal.endstone_python import Command, CommandExecutor, CommandSender
 
-__all__ = ["CommandSender", "CommandExecutor"]
+__all__ = ["Command", "CommandExecutor", "CommandSender"]
