@@ -64,8 +64,8 @@ void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) con
     sender.sendMessage(ColorFormat::GREEN + desc.getName() + ColorFormat::WHITE + " v" + desc.getVersion());
 
     auto description = desc.getDescription();
-    if (description.has_value()) {
-        sender.sendMessage(description.value());
+    if (!description.empty()) {
+        sender.sendMessage(description);
     }
 
     // TODO: make plugin names an enum for auto-completion
@@ -76,12 +76,12 @@ void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) con
     // }
 
     auto authors = desc.getAuthors();
-    if (authors.has_value()) {
-        if (authors.value().size() == 1) {
-            sender.sendMessage("Author: " + getNameList(authors.value()));
+    if (authors.empty()) {
+        if (authors.size() == 1) {
+            sender.sendMessage("Author: " + getNameList(authors));
         }
         else {
-            sender.sendMessage("Authors: " + getNameList(authors.value()));
+            sender.sendMessage("Authors: " + getNameList(authors));
         }
     }
 

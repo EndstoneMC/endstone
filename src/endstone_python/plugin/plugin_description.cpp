@@ -29,10 +29,9 @@ namespace py = pybind11;
 namespace endstone::detail {
 
 namespace {
-PluginDescription createPluginDescription(std::string name, std::string version, std::optional<std::string> description,
-                                          std::optional<std::vector<std::string>> authors,
-                                          std::optional<std::string> prefix, const py::args & /*args*/,
-                                          const py::kwargs & /*kwargs*/)
+PluginDescription createPluginDescription(std::string name, std::string version, std::string description,
+                                          std::vector<std::string> authors, std::string prefix,
+                                          const py::args & /*args*/, const py::kwargs & /*kwargs*/)
 {
     return {std::move(name), std::move(version), std::move(description), std::move(authors), std::move(prefix)};
 }

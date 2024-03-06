@@ -14,12 +14,8 @@
 
 #pragma once
 
-#include <memory>
-#include <mutex>
-#include <optional>
 #include <regex>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include <fmt/format.h>
@@ -28,9 +24,8 @@ namespace endstone {
 
 class PluginDescription {
 public:
-    PluginDescription(std::string name, std::string version, std::optional<std::string> description = std::nullopt,
-                      std::optional<std::vector<std::string>> authors = std::nullopt,
-                      std::optional<std::string> prefix = std::nullopt)
+    PluginDescription(std::string name, std::string version, std::string description = "",
+                      std::vector<std::string> authors = {}, std::string prefix = "")
     {
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
@@ -56,17 +51,17 @@ public:
         return full_name_;
     }
 
-    [[nodiscard]] std::optional<std::string> getDescription() const
+    [[nodiscard]] std::string getDescription() const
     {
         return description_;
     }
 
-    [[nodiscard]] std::optional<std::vector<std::string>> getAuthors() const
+    [[nodiscard]] std::vector<std::string> getAuthors() const
     {
         return authors_;
     }
 
-    [[nodiscard]] std::optional<std::string> getPrefix() const
+    [[nodiscard]] std::string getPrefix() const
     {
         return prefix_;
     }
@@ -77,9 +72,9 @@ private:
     std::string name_;
     std::string version_;
     std::string full_name_;
-    std::optional<std::string> description_;
-    std::optional<std::vector<std::string>> authors_;
-    std::optional<std::string> prefix_;
+    std::string description_;
+    std::vector<std::string> authors_;
+    std::string prefix_;
 };
 
 }  // namespace endstone
