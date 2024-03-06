@@ -122,6 +122,8 @@ void init_plugin(py::module &m)
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
+    py_class<PluginCommand, Command>(m, "PluginCommand");
+
     py_class<Plugin, CommandExecutor, PyPlugin>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
@@ -136,7 +138,15 @@ void init_plugin(py::module &m)
                                "Returns the Server instance currently running this plugin")
         .def_property_readonly("enabled", &Plugin::isEnabled,
                                "Returns a value indicating whether this plugin is currently enabled")
-        .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.");
+        .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
+        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
+             "Gets the command with the given name, specific to this plugin.");
+
+    py_class<PluginCommand, Command>(m, "PluginCommand")
+        .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
+        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
+                      "The CommandExecutor to run when parsing this command")
+        .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))

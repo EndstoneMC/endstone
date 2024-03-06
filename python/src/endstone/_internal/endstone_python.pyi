@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -197,6 +197,10 @@ class Plugin(CommandExecutor):
         ...
     def _get_description(self) -> PluginDescription:
         ...
+    def get_command(self, name: str) -> PluginCommand:
+        """
+        Gets the command with the given name, specific to this plugin.
+        """
     def on_disable(self) -> None:
         """
         Called when this plugin is disabled
@@ -233,6 +237,22 @@ class Plugin(CommandExecutor):
     def server(self) -> Server:
         """
         Returns the Server instance currently running this plugin
+        """
+class PluginCommand(Command):
+    def __init__(self, command: Command, owner: Plugin) -> None:
+        ...
+    @property
+    def executor(self) -> CommandExecutor:
+        """
+        The CommandExecutor to run when parsing this command
+        """
+    @executor.setter
+    def executor(self, arg1: CommandExecutor) -> None:
+        ...
+    @property
+    def plugin(self) -> Plugin:
+        """
+        Gets the owner of this PluginCommand
         """
 class PluginDescription:
     def __init__(self, name: str, version: str, description: str | None = None, authors: list[str] | None = None, prefix: str | None = None, *args, **kwargs) -> None:

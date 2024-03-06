@@ -34,7 +34,7 @@ public:
     bool onCommand(const endstone::CommandSender &sender, const endstone::Command &command,
                    const std::vector<std::string> &args) override
     {
-        PYBIND11_OVERRIDE(bool, endstone::CommandExecutor, onCommand, sender, command, args);
+        PYBIND11_OVERRIDE_NAME(bool, endstone::CommandExecutor, "on_command", onCommand, sender, command, args);
     }
 };
 
