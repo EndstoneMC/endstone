@@ -9,7 +9,7 @@ def cls():
     return getattr(module, "ColorFormat")
 
 
-def test_chat_colors(cls):
+def test_color_format(cls):
     assert getattr(cls, "BLACK") == "§0"
     assert getattr(cls, "DARK_BLUE") == "§1"
     assert getattr(cls, "DARK_GREEN") == "§2"
