@@ -76,43 +76,6 @@ pip install endstone
 endstone
 ```
 
-### 🔨 Build locally from Source
-
-You also have the option to build Endstone locally from the source.
-
-First, clone the repository:
-
-```shell
-git clone https://github.com/EndstoneMC/endstone.git
-cd endstone
-```
-
-The Endstone project uses Conan as the package manager. After successfully cloning the repository to your local system,
-the next step will involve the installation of conan.
-
-```shell
-pip install conan
-conan export third_party/funchook --version 1.1.3
-conan install . --build=missing
-```
-
-**Please note that building from source requires toolchains to be installed on your system.**
-
-|                                  | Windows                       | Linux    |
-|----------------------------------|-------------------------------|----------|
-| Build System                     | CMake                         | CMake    |
-| Generator                        | Ninja                         | Ninja    |
-| C/C++ Compiler **(Recommended)** | MSVC 193 (Visual Studio 2022) | Clang 15 |
-| C/C++ Compiler (Minimum)         | MSVC 191 (Visual Studio 2017) | Clang 5  |
-| Standard Library                 | MSVC STL                      | libc++   |
-
-Finally, you can build the wheel and install it on your local machine:
-
-```shell
-pip install .
-endstone
-```
-
 ### 🐳 Docker
 
 To try Endstone from a Docker image, use the following command:
@@ -130,6 +93,48 @@ docker run --rm -it -p 19132:19132/udp ghcr.io/endstonemc/endstone
 ```
 
 This will pull the latest Endstone image and run it interactively in your terminal.
+
+### 🔨 Build locally from Source
+
+For advanced users, you may build Endstone locally from the source.
+
+**Please note that building from source requires toolchains to be installed on your system.**
+
+|                                  | Windows                       | Linux    |
+|----------------------------------|-------------------------------|----------|
+| Build System                     | CMake                         | CMake    |
+| Generator                        | Ninja                         | Ninja    |
+| C/C++ Compiler **(Recommended)** | MSVC 193 (Visual Studio 2022) | Clang 15 |
+| C/C++ Compiler (Minimum)         | MSVC 191 (Visual Studio 2017) | Clang 5  |
+| Standard Library                 | MSVC STL                      | libc++   |
+
+<details>
+<summary>Click to toggle the detailed instructions</summary>
+
+First, clone the repository:
+
+```shell
+git clone https://github.com/EndstoneMC/endstone.git
+cd endstone
+```
+
+The Endstone project uses Conan as the package manager. The next step will involve the installation of conan and
+dependencies.
+
+```shell
+pip install conan
+conan export third_party/funchook --version 1.1.3
+conan install . --build=missing -s compiler.cppstd=17 -c tools.cmake.cmaketoolchain:generator=Ninja
+```
+
+Finally, you can build the wheel and install it on your local machine:
+
+```shell
+pip install .
+endstone
+```
+
+</details>
 
 ## 🙌 Contributing [🔝](#-table-of-contents)
 
