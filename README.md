@@ -28,7 +28,7 @@
 - [📖 Introduction](#-introduction-)
 - [🎯 Features](#-features-)
 - [🛠️ Installation](#-installation-)
-- [🎉 Milestones](#-milestones-)
+- [🎉 Get Started with Plugins](#-get-started-with-plugins-)
 - [🙌 Contributing](#-contributing-)
 - [🎫 License](#-license-)
 
@@ -137,7 +137,7 @@ endstone
 
 </details>
 
-## 🎉 Milestones [🔝](#-table-of-contents)
+## 🎉 Get Started with Plugins [🔝](#-table-of-contents)
 
 Currently, the Endstone project is under active development, and we invite you to review our roadmap. While you wait,
 why not take a sneaky peek of our example plugins which illustrate the friendliness of the plugin API. If you have
