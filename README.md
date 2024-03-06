@@ -18,8 +18,8 @@
 [![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
-![Python](https://img.shields.io/badge/Python-3-blue?logo=python&logoColor=white)
-![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)
+[![Python](https://img.shields.io/badge/Python-3-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)](LICENSE)
 [![Codacy Badge](https://img.shields.io/codacy/grade/8877402fc70b40f5a8c4b325d890e3f7?logo=codacy)](https://app.codacy.com/gh/EndstoneMC/endstone/dashboard)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -27,8 +27,8 @@
 
 - [📖 Introduction](#-introduction-)
 - [🎯 Features](#-features-)
-- [🛠️ Installation](#-installation-)
-- [🎉 Get Started with Plugins](#-get-started-with-plugins-)
+- [🛠️ Get started](#-get-started-)
+- [🌟 Plugins](#-plugins-)
 - [🙌 Contributing](#-contributing-)
 - [🎫 License](#-license-)
 
@@ -53,10 +53,9 @@ functionalities.
   squeeze out
   every bit of performance.
 
-## 🛠️ Installation [🔝](#-table-of-contents)
+## 🛠️ Get started [🔝](#-table-of-contents)
 
-Before proceeding with the installation process, verify that you are using one of the following compatible operating
-systems:
+Before getting started, verify that you are using one of the following compatible operating systems:
 
 - Windows 10 or higher
 - Windows Server 2019 or higher
@@ -69,7 +68,7 @@ There are several ways to install Endstone:
 
 ### 🐍 PyPi
 
-Endstone can be installed from PyPi using pip. Open your terminal and execute the following command to install and start
+Endstone can be installed directly from PyPi using pip. Open your terminal and execute the following command to install and start
 the Endstone server:
 
 ```shell
@@ -137,7 +136,7 @@ endstone
 
 </details>
 
-## 🎉 Get Started with Plugins [🔝](#-table-of-contents)
+## 🌟 Plugins [🔝](#-table-of-contents)
 
 Currently, the Endstone project is under active development, and we invite you to review our roadmap. While you wait,
 why not take a sneaky peek of our example plugins which illustrate the friendliness of the plugin API. If you have
