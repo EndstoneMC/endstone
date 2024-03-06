@@ -26,9 +26,9 @@ void init_util(py::module_ &);
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
     init_logger(m);
-    init_util(m);
     init_server(m);
     init_plugin(m);
+    init_util(m);
 }
 
 }  // namespace endstone::detail

@@ -16,13 +16,15 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/detail/python.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {
 
 void init_logger(py::module &m)
 {
-    auto logger = py::class_<Logger>(m, "Logger");
+    auto logger = py_class<Logger>(m, "Logger");
 
     py::enum_<Logger::Level>(logger, "Level")
         .value("TRACE", Logger::Level::Trace)
@@ -33,7 +35,8 @@ void init_logger(py::module &m)
         .value("CRITICAL", Logger::Level::Critical)
         .export_values();
 
-    logger.def("set_level", &Logger::setLevel, py::arg("level"))
+    py_class<Logger>(m, "Logger")
+        .def("set_level", &Logger::setLevel, py::arg("level"))
         .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"))
         .def(
             "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); }, py::arg("msg"))

@@ -17,11 +17,11 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
-#include "forward.h"
 
 namespace py = pybind11;
 
@@ -107,7 +107,7 @@ public:
 
 void init_plugin(py::module &m)
 {
-    py::class_<PluginDescription>(m, "PluginDescription")
+    py_class<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
         .def_property_readonly("name", &PluginDescription::getName)
@@ -119,7 +119,7 @@ void init_plugin(py::module &m)
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
-    py::class_<Plugin, PyPlugin>(m, "Plugin")
+    py_class<Plugin, PyPlugin>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad)
         .def("on_enable", &Plugin::onEnable)
@@ -131,7 +131,8 @@ void init_plugin(py::module &m)
         .def_property_readonly("enabled", &Plugin::isEnabled)
         .def_property_readonly("name", &Plugin::getName);
 
-    py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader").def(py::init<Server &>(), py::arg("server"))
+    py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")
+        .def(py::init<Server &>(), py::arg("server"))
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal)
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"))

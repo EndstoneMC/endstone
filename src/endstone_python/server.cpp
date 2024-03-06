@@ -17,9 +17,9 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_manager.h"
-#include "forward.h"
 
 namespace py = pybind11;
 
@@ -29,7 +29,7 @@ void init_server(py::module &m)
 {
     py_class<PluginManager>(m, "PluginManager");
 
-    py::class_<Server>(m, "Server")
+    py_class<Server>(m, "Server")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference)
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference)
         .def_property_readonly("name", &Server::getVersion)

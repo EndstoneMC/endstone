@@ -14,6 +14,7 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/detail/python.h"
 #include "endstone/util/color_format.h"
 
 namespace py = pybind11;
@@ -24,7 +25,7 @@ namespace endstone::detail {
 
 void init_util(py::module &m)
 {
-    py::class_<ColorFormat>(m, "ColorFormat")
+    py_class<ColorFormat>(m, "ColorFormat")
         .ADD_COLOR_FORMAT(BLACK)
         .ADD_COLOR_FORMAT(DARK_BLUE)
         .ADD_COLOR_FORMAT(DARK_GREEN)
