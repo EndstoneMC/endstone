@@ -122,7 +122,7 @@ void init_plugin(py::module &m)
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
-    py_class<Plugin, PyPlugin>(m, "Plugin")
+    py_class<Plugin, CommandExecutor, PyPlugin>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled")

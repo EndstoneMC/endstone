@@ -148,7 +148,7 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
-class Plugin:
+class Plugin(CommandExecutor):
     def __init__(self) -> None:
         ...
     def _get_description(self) -> PluginDescription:
