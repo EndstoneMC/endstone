@@ -31,11 +31,10 @@ class PyCommandExecutor : public CommandExecutor {
 public:
     using CommandExecutor::CommandExecutor;
 
-    bool onCommand(const endstone::CommandSender &sender, const endstone::Command &command,
-                   const std::vector<std::string> &args) override
+    bool onCommand(const CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
-        PYBIND11_OVERRIDE_NAME(bool, endstone::CommandExecutor, "on_command", onCommand, std::ref(sender),
-                               std::ref(command), std::ref(args));
+        PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
+                               std::ref(args));
     }
 };
 
@@ -78,13 +77,13 @@ void init_command(py::module &m)
             "usages", &Command::getUsages,
             [](Command &self, const std::vector<std::string> &usages) { self.setUsages(usages); },
             "List of usages of this command")
-        .def_property_readonly("registered", &endstone::Command::isRegistered,
+        .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
     py_class<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
         .def(py::init<>())
-        .def("on_command", &endstone::CommandExecutor::onCommand, py::arg("sender"), py::arg("command"),
-             py::arg("args"), "Executes the given command, returning its success.");
+        .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
+             "Executes the given command, returning its success.");
 }
 
 }  // namespace endstone::detail

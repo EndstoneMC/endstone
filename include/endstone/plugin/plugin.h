@@ -186,7 +186,9 @@ public:
             return getExecutor().onCommand(sender, *this, args);
         }
         catch (std::exception &e) {
-            getPlugin().getLogger().error("Cannot execute command '{}'. {}", getName(), e.what());
+            getPlugin().getLogger().error("Unhandled exception executing command '{}' in plugin {}", getName(),
+                                          owner_.getDescription().getFullName());
+            getPlugin().getLogger().error(e.what());
             return false;
         }
     }
