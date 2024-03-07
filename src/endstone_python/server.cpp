@@ -17,7 +17,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_manager.h"
 
@@ -27,9 +26,7 @@ namespace endstone::detail {
 
 void init_server(py::module &m)
 {
-    py_class<PluginManager>(m, "PluginManager");
-
-    py_class<Server>(m, "Server")
+    py::class_<Server>(m, "Server")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,

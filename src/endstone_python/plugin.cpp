@@ -17,7 +17,6 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -127,7 +126,7 @@ public:
 
 void init_plugin(py::module &m)
 {
-    py_class<PluginDescription>(m, "PluginDescription")
+    py::class_<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
         .def_property_readonly("name", &PluginDescription::getName,
@@ -141,10 +140,7 @@ void init_plugin(py::module &m)
         .def_property_readonly("prefix", &PluginDescription::getPrefix,
                                "Gives the token to prefix plugin-specific logging messages with.");
 
-    py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
-    py_class<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
-
-    py_class<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
+    py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled")
@@ -162,20 +158,20 @@ void init_plugin(py::module &m)
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.");
 
-    py_class<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
+    py::class_<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
         .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
         .def("_get_executor", &PluginCommand::getExecutor, py::return_value_policy::reference)
         .def("_set_executor", &PluginCommand::setExecutor, py::arg("executor"))
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");
 
-    py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")
+    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
         .def(py::init<Server &>(), py::arg("server"))
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
         .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Disables the specified plugin");
 
-    py_class<PluginManager>(m, "PluginManager")
+    py::class_<PluginManager>(m, "PluginManager")
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference,
              "Checks if the given plugin is loaded and returns it when applicable.")
         .def_property_readonly("plugins", &PluginManager::getPlugins, "Gets a list of all currently loaded plugins")

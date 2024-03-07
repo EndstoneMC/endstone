@@ -14,6 +14,8 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/server.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {

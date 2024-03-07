@@ -19,7 +19,6 @@
 
 #include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
-#include "endstone/detail/python.h"
 #include "endstone/logger.h"
 #include "endstone/server.h"
 
@@ -50,9 +49,7 @@ Command createCommand(std::string name, const std::optional<std::string> &descri
 
 void init_command(py::module &m)
 {
-    py_class<Server>(m, "Server");
-
-    py_class<CommandSender>(m, "CommandSender")
+    py::class_<CommandSender>(m, "CommandSender")
         .def(
             "send_message",
             [](const CommandSender &sender, const std::string &message) { sender.sendMessage(message); },
@@ -61,7 +58,7 @@ void init_command(py::module &m)
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
-    py_class<Command, std::shared_ptr<Command>>(m, "Command")
+    py::class_<Command, std::shared_ptr<Command>>(m, "Command")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
              py::arg("usages") = py::none(), py::arg("aliases") = py::none())
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
@@ -80,7 +77,7 @@ void init_command(py::module &m)
         .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
-    py_class<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
+    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
              "Executes the given command, returning its success.");

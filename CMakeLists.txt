@@ -14,7 +14,6 @@ endif ()
 
 
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
-add_compile_definitions(PYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF)
 
 
 # ========
