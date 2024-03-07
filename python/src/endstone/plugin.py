@@ -17,10 +17,13 @@ __all__ = [
 class PluginCommand(_PluginCommand):
     def __init__(self, command: Command, owner: _Plugin):
         _PluginCommand.__init__(self, command, owner)
-        self._executor: CommandExecutor = owner  # keep it alive
+        self._executor: CommandExecutor | None = None
 
     def _get_executor(self):
-        return self._executor
+        if self._executor:
+            return self._executor
+        else:
+            return self.plugin
 
     def _set_executor(self, executor):
         self._executor = executor

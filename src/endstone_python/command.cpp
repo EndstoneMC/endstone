@@ -81,7 +81,7 @@ void init_command(py::module &m)
         .def_property_readonly("registered", &endstone::Command::isRegistered,
                                "Returns the current registered state of this command");
 
-    py_class<CommandExecutor, PyCommandExecutor>(m, "CommandExecutor")
+    py_class<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
         .def(py::init<>())
         .def("on_command", &endstone::CommandExecutor::onCommand, py::arg("sender"), py::arg("command"),
              py::arg("args"), "Executes the given command, returning its success.");
