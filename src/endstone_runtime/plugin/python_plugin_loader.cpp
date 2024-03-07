@@ -39,6 +39,7 @@ PythonPluginLoader::~PythonPluginLoader()
 {
     py::gil_scoped_acquire gil{};
     obj_.dec_ref();
+    obj_.release();
 }
 
 std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory)
