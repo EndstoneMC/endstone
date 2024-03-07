@@ -71,7 +71,7 @@ public:
     {
         return nullptr;
     }
-    [[nodiscard]] PluginCommand *registerPluginCommand(std::unique_ptr<PluginCommand> command) const override
+    [[nodiscard]] PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const override
     {
         return nullptr;
     }
