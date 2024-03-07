@@ -126,6 +126,10 @@ public:
 
 void init_plugin(py::module &m)
 {
+    auto plugin_command =
+        py::class_<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
+    auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
+
     py::class_<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
@@ -158,13 +162,13 @@ void init_plugin(py::module &m)
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.");
 
-    py::class_<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
+    plugin_command  //
         .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
         .def("_get_executor", &PluginCommand::getExecutor, py::return_value_policy::reference)
         .def("_set_executor", &PluginCommand::setExecutor, py::arg("executor"))
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");
 
-    py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader")
+    plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")

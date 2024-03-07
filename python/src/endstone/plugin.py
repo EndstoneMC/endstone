@@ -47,6 +47,9 @@ class Plugin(_Plugin):
         self._plugin_commands: list[PluginCommand] = []  # keep them alive
 
     def register_command(self, command_type: typing.Type[Command]) -> PluginCommand:
+        """
+        Registers a new PluginCommand.
+        """
         command = PluginCommand(command_type(), self)
         self._plugin_commands.append(command)
         return self.server.register_plugin_command(command)
