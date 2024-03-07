@@ -41,11 +41,12 @@ class Plugin(_Plugin):
     def __init__(self):
         _Plugin.__init__(self)
         self._description: PluginDescription | None = None
-        self._plugin_command: PluginCommand | None = None
+        self._plugin_commands: list[PluginCommand] = []  # keep them alive
 
     def register_command(self, command_type: typing.Type[Command]) -> PluginCommand:
-        self._plugin_command = PluginCommand(command_type(), self)
-        return self.server.register_plugin_command(self._plugin_command)
+        command = PluginCommand(command_type(), self)
+        self._plugin_commands.append(command)
+        return self.server.register_plugin_command(command)
 
     def _get_description(self) -> PluginDescription:
         return self._description
