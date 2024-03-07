@@ -196,7 +196,7 @@ public:
      *
      * @param executor New executor to run
      */
-    void setExecutor(std::shared_ptr<CommandExecutor> executor)
+    virtual void setExecutor(std::shared_ptr<CommandExecutor> executor)
     {
         executor_ = std::move(executor);
     }
@@ -206,7 +206,7 @@ public:
      *
      * @return CommandExecutor object linked to this command
      */
-    [[nodiscard]] CommandExecutor &getExecutor() const
+    [[nodiscard]] virtual CommandExecutor &getExecutor() const
     {
         if (executor_) {
             return *executor_;

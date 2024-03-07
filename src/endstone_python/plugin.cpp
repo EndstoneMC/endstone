@@ -104,6 +104,21 @@ public:
     }
 };
 
+class PyPluginCommand : public PluginCommand {
+public:
+    using PluginCommand::PluginCommand;
+
+    void setExecutor(std::shared_ptr<CommandExecutor> executor) override
+    {
+        PYBIND11_OVERRIDE_NAME(void, PluginCommand, "_set_executor", setExecutor, executor);
+    }
+
+    [[nodiscard]] CommandExecutor &getExecutor() const override
+    {
+        PYBIND11_OVERRIDE_NAME(CommandExecutor &, PluginCommand, "_get_executor", getExecutor);
+    }
+};
+
 void init_plugin(py::module &m)
 {
     py_class<PluginDescription>(m, "PluginDescription")
@@ -121,6 +136,7 @@ void init_plugin(py::module &m)
                                "Gives the token to prefix plugin-specific logging messages with.");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader");
+    py_class<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
 
     py_class<Plugin, CommandExecutor, PyPlugin>(m, "Plugin")
         .def(py::init<>())
@@ -140,10 +156,10 @@ void init_plugin(py::module &m)
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.");
 
-    py_class<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
+    py_class<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
         .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
-        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
-                      "The CommandExecutor to run when parsing this command")
+        .def("_get_executor", &PluginCommand::getExecutor, py::return_value_policy::reference)
+        .def("_set_executor", &PluginCommand::setExecutor, py::arg("executor"))
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");
 
     py_class<PluginLoader, PyPluginLoader>(m, "PluginLoader")

@@ -29,8 +29,6 @@ void init_server(py::module &m)
 {
     py_class<PluginManager>(m, "PluginManager");
 
-    py_class<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
-
     py_class<Server>(m, "Server")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")

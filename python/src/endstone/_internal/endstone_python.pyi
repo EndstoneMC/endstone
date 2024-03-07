@@ -241,13 +241,9 @@ class Plugin(CommandExecutor):
 class PluginCommand(Command):
     def __init__(self, command: Command, owner: Plugin) -> None:
         ...
-    @property
-    def executor(self) -> CommandExecutor:
-        """
-        The CommandExecutor to run when parsing this command
-        """
-    @executor.setter
-    def executor(self, arg1: CommandExecutor) -> None:
+    def _get_executor(self) -> CommandExecutor:
+        ...
+    def _set_executor(self, executor: CommandExecutor) -> None:
         ...
     @property
     def plugin(self) -> Plugin:
