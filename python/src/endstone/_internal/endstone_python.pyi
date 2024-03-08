@@ -34,8 +34,6 @@ class ColorFormat:
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
 class Command:
-    def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None) -> None:
-        ...
     def execute(self, sender: CommandSender, args: list[str]) -> bool:
         """
         Executes the command, returning its success
@@ -239,7 +237,7 @@ class Plugin(CommandExecutor):
         Returns the Server instance currently running this plugin
         """
 class PluginCommand(Command):
-    def __init__(self, command: Command, owner: Plugin) -> None:
+    def __init__(self, plugin: Plugin, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None) -> None:
         ...
     def _get_executor(self) -> CommandExecutor:
         ...

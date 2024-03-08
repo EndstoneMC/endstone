@@ -124,6 +124,16 @@ public:
     }
 };
 
+namespace {
+PluginCommand createPluginCommand(Plugin &owner, std::string name, const std::optional<std::string> &description,
+                                  const std::optional<std::vector<std::string>> &usages,
+                                  const std::optional<std::vector<std::string>> &aliases)
+{
+    return {owner, std::move(name), description.value_or(""), usages.value_or(std::vector<std::string>()),
+            aliases.value_or(std::vector<std::string>())};
+}
+}  // namespace
+
 void init_plugin(py::module &m)
 {
     auto plugin_command =
@@ -163,7 +173,8 @@ void init_plugin(py::module &m)
              "Gets the command with the given name, specific to this plugin.");
 
     plugin_command  //
-        .def(py::init<const Command &, Plugin &>(), py::arg("command"), py::arg("owner"))
+        .def(py::init(&createPluginCommand), py::arg("plugin"), py::arg("name"), py::arg("description") = py::none(),
+             py::arg("usages") = py::none(), py::arg("aliases") = py::none())
         .def("_get_executor", &PluginCommand::getExecutor, py::return_value_policy::reference)
         .def("_set_executor", &PluginCommand::setExecutor, py::arg("executor"))
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");

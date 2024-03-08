@@ -27,7 +27,7 @@ namespace endstone {
  * Represents a Command, which executes various tasks upon user input
  */
 class Command {
-public:
+protected:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
                      std::vector<std::string> aliases = {})
     {
@@ -36,6 +36,8 @@ public:
         setUsages(std::move(usages));
         setAliases(std::move(aliases));
     }
+
+public:
     virtual ~Command() = default;
 
     /**

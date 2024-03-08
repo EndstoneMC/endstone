@@ -20,6 +20,7 @@
 #include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
 #include "endstone/logger.h"
+#include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
 
 namespace py = pybind11;
@@ -37,16 +38,6 @@ public:
     }
 };
 
-namespace {
-Command createCommand(std::string name, const std::optional<std::string> &description,
-                      const std::optional<std::vector<std::string>> &usages,
-                      const std::optional<std::vector<std::string>> &aliases)
-{
-    return Command(std::move(name), description.value_or(""), usages.value_or(std::vector<std::string>()),
-                   aliases.value_or(std::vector<std::string>()));
-}
-}  // namespace
-
 void init_command(py::module &m)
 {
     py::class_<CommandSender>(m, "CommandSender")
@@ -59,8 +50,6 @@ void init_command(py::module &m)
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
-        .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
-             py::arg("usages") = py::none(), py::arg("aliases") = py::none())
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
              "Executes the command, returning its success")
         .def_property("name", &Command::getName, &Command::setName, "Name of this command.")

@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/command/command_executor.h"
@@ -120,14 +121,18 @@ public:
     /**
      * Registers a new PluginCommand.
      *
-     * @tparam CommandType The custom command type. This class should extend the Command class.
+     * @param name The name of the command.
+     * @param description The description of the command. Default is an empty string.
+     * @param usages A vector containing different usage examples of the command. Default is an empty vector.
+     * @param aliases A vector containing different aliases for the command. Default is an empty vector.
+     * @return A pointer to the registered PluginCommand.
      * @return a pointer to the registered plugin command
      */
     PluginCommand *registerCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
                                    std::vector<std::string> aliases = {})
     {
         return getServer().registerPluginCommand(std::make_unique<PluginCommand>(
-            Command(std::move(name), std::move(description), std::move(usages), std::move(aliases)), *this));
+            *this, std::move(name), std::move(description), std::move(usages), std::move(aliases)));
     }
 
     /**
@@ -172,7 +177,11 @@ private:
 
 class PluginCommand : public Command {
 public:
-    PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
+    PluginCommand(Plugin &owner, std::string name, std::string description = "", std::vector<std::string> usages = {},
+                  std::vector<std::string> aliases = {})
+        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases)), owner_(owner)
+    {
+    }
 
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override
     {

@@ -21,7 +21,11 @@ namespace endstone::detail {
  */
 class CommandView : public Command {
 public:
-    using Command::Command;
+    explicit CommandView(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                         std::vector<std::string> aliases = {})
+        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases))
+    {
+    }
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 }  // namespace endstone::detail
