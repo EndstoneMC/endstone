@@ -38,6 +38,11 @@ public:
         return *mInstance;
     }
 
+    static void reset()
+    {
+        mInstance.reset();
+    }
+
 private:
     inline static std::unique_ptr<T> mInstance = nullptr;
 };

@@ -14,11 +14,15 @@
 
 #include "bedrock/server/server_instance.h"
 
+#include <pybind11/pybind11.h>
+
 #include "endstone/detail/hook.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
 #include "endstone/util/color_format.h"
+
+namespace py = pybind11;
 
 using endstone::ColorFormat;
 using endstone::detail::EndstoneServer;
@@ -54,6 +58,9 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
 {
+    py::gil_scoped_acquire acquire{};
     Singleton<EndstoneServer>::getInstance().disablePlugins();
+    Singleton<EndstoneServer>::reset();  // we need to explicitly acquire GIL and destroy the server instance as the
+                                         // command map and the plugin manager hold shared_ptrs to python objects
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
 }

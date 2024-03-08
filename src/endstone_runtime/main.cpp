@@ -15,7 +15,6 @@
 #include <exception>
 
 #include <pybind11/embed.h>
-#include <spdlog/spdlog.h>
 
 #include "endstone/detail/hook.h"
 #include "endstone/detail/logger_factory.h"
@@ -26,21 +25,26 @@
 #define ENDSTONE_RUNTIME_CTOR
 #endif
 
-[[maybe_unused]] pybind11::scoped_interpreter gInterpreter;
-[[maybe_unused]] pybind11::gil_scoped_release gRelease;
+namespace py = pybind11;
 
 ENDSTONE_RUNTIME_CTOR int main()
 {
     auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
+        py::initialize_interpreter();
+        py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
+        py::gil_scoped_release release{};
+        release.disarm();
+
+        // Install hooks
         endstone::detail::hook::install();
         return 0;
     }
     catch (const std::exception &e) {
         logger.error("An exception occurred while initialising Endstone runtime.");
         logger.error("{}", e.what());
-        std::terminate();
+        throw e;
     }
 }
 
@@ -49,7 +53,7 @@ ENDSTONE_RUNTIME_CTOR int main()
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
                                      _In_ DWORD reason,          // reason for calling function
-                                     _In_ LPVOID /*reserved*/)   // reserved
+                                     _In_ LPVOID reserved)       // reserved
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {
@@ -59,7 +63,7 @@ ENDSTONE_RUNTIME_CTOR int main()
         break;
     }
     case DLL_PROCESS_DETACH: {
-        std::exit(0);  // TODO: without this, the server won't exit on Windows for unknown reason.
+        break;
     }
     default:
         break;
