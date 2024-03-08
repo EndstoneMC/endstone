@@ -1,3 +1,5 @@
+from typing import Optional
+
 from endstone._internal.endstone_python import Plugin as _Plugin
 from endstone._internal.endstone_python import PluginCommand as _PluginCommand
 from endstone._internal.endstone_python import PluginDescription, PluginLoader, PluginManager
@@ -17,9 +19,9 @@ class PluginCommand(_PluginCommand):
         self,
         plugin: _Plugin,
         name: str,
-        description: str | None = None,
-        usages: list[str] | None = None,
-        aliases: list[str] | None = None,
+        description: Optional[str] = None,
+        usages: list[str] = None,
+        aliases: list[str] = None,
     ) -> None:
         _PluginCommand.__init__(self, plugin, name, description, usages, aliases)
         self._executor: CommandExecutor | None = None
