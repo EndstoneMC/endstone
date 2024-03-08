@@ -1,4 +1,5 @@
 import ctypes
+import subprocess
 from ctypes import get_last_error
 from ctypes.wintypes import (
     BOOL,
@@ -87,7 +88,22 @@ class WindowsBootstrap(Bootstrap):
     def _endstone_runtime_filename(self) -> str:
         return "endstone_runtime.dll"
 
+    def _add_loopback_exemption(self) -> bool:
+        sid = "S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436"
+        ret = subprocess.run(
+            ["CheckNetIsolation", "LoopbackExempt", "-s", f"-p={sid}"], check=True, capture_output=True
+        )
+        if sid not in ret.stdout.decode():
+            ret = ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", "CheckNetIsolation", " ".join(["LoopbackExempt", "-a", f"-p={sid}"]), None, 1
+            )
+            return ret > 32
+        else:
+            return True
+
     def _create_process(self, *args, **kwargs) -> None:
+        self._add_loopback_exemption()
+
         # Create the process is a suspended state
         super()._create_process(creationflags=CREATE_SUSPENDED)
         handle_proc = int(self._process._handle)
