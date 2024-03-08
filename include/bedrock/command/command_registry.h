@@ -96,12 +96,18 @@ public:
     };
     static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
-    class ParseTable;
-    class Enum;
-    class SoftEnum;
-
     using ParseRule = bool (*)(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &,
                                int, std::string &, std::vector<std::string> &);
+
+    class ParseTable;
+    class Enum {
+    public:
+        std::string name;                            // +0
+        Bedrock::typeid_t<CommandRegistry> type_id;  // +32
+        ParseRule parse_rule;                        // +40
+        std::vector<std::string> values;             // +48
+    };
+    class SoftEnum;
 
     BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
