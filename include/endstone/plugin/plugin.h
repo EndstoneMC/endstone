@@ -123,11 +123,11 @@ public:
      * @tparam CommandType The custom command type. This class should extend the Command class.
      * @return a pointer to the registered plugin command
      */
-    template <typename CommandType>
-    PluginCommand *registerCommand()
+    PluginCommand *registerCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                                   std::vector<std::string> aliases = {})
     {
-        CommandType command;
-        return getServer().registerPluginCommand(std::make_unique<PluginCommand>(command, *this));
+        return getServer().registerPluginCommand(std::make_unique<PluginCommand>(
+            Command(std::move(name), std::move(description), std::move(usages), std::move(aliases)), *this));
     }
 
     /**

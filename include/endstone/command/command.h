@@ -29,12 +29,12 @@ namespace endstone {
 class Command {
 public:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                     const std::vector<std::string> &aliases = {})
+                     std::vector<std::string> aliases = {})
     {
         setName(std::move(name));
         setDescription(std::move(description));
         setUsages(std::move(usages));
-        setAliases(aliases);
+        setAliases(std::move(aliases));
     }
     virtual ~Command() = default;
 
