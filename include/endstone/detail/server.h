@@ -36,7 +36,7 @@ public:
     ~EndstoneServer() override = default;
 
     [[nodiscard]] Logger &getLogger() const override;
-    [[nodiscard]] EndstoneCommandMap &getCommandMap() const noexcept;
+    [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     [[nodiscard]] MinecraftCommands &getMinecraftCommands();
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;

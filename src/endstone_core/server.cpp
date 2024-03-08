@@ -70,7 +70,7 @@ Logger &EndstoneServer::getLogger() const
     return logger_;
 }
 
-EndstoneCommandMap &EndstoneServer::getCommandMap() const noexcept
+EndstoneCommandMap &EndstoneServer::getCommandMap() const
 {
     return *command_map_;
 }

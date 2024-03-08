@@ -29,7 +29,7 @@ namespace endstone {
 class Command {
 public:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                     const std::vector<std::string> &aliases = {}) noexcept
+                     const std::vector<std::string> &aliases = {})
     {
         setName(std::move(name));
         setDescription(std::move(description));
@@ -68,7 +68,7 @@ public:
      * @param name New command name
      * @return returns true if the name is changed, false otherwise
      */
-    bool setName(std::string name) noexcept
+    bool setName(std::string name)
     {
         if (!isRegistered()) {
             std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
@@ -95,7 +95,7 @@ public:
      * @param description new command description
      * @return this command object, for chaining
      */
-    Command &setDescription(std::string description) noexcept
+    Command &setDescription(std::string description)
     {
         if (!isRegistered()) {
             description_ = std::move(description);
@@ -121,7 +121,7 @@ public:
      * @return this command object, for chaining
      */
     template <typename... Alias>
-    Command &setAliases(Alias... aliases) noexcept
+    Command &setAliases(Alias... aliases)
     {
         std::vector<std::string> all_aliases = {aliases...};
         if (!isRegistered()) {
@@ -152,7 +152,7 @@ public:
      * @return this command object, for chaining
      */
     template <typename... Usage>
-    Command &setUsages(Usage... usages) noexcept
+    Command &setUsages(Usage... usages)
     {
         std::vector<std::string> all_usages = {usages...};
         if (!isRegistered()) {
@@ -170,7 +170,7 @@ public:
      * @param command_map the CommandMap to register to
      * @return true if the registration was successful, false otherwise
      */
-    bool registerTo(CommandMap &command_map) noexcept
+    bool registerTo(CommandMap &command_map)
     {
         if (allowChangesFrom(command_map)) {
             command_map_ = &command_map;
@@ -186,7 +186,7 @@ public:
      * @param command_map the CommandMap to unregister from
      * @return true if the unregistration was successful, false otherwise
      */
-    bool unregisterFrom(CommandMap &command_map) noexcept
+    bool unregisterFrom(CommandMap &command_map)
     {
         if (allowChangesFrom(command_map)) {
             command_map_ = nullptr;
@@ -201,13 +201,13 @@ public:
      *
      * @return true if this command is currently registered false otherwise
      */
-    [[nodiscard]] bool isRegistered() const noexcept
+    [[nodiscard]] bool isRegistered() const
     {
         return command_map_ != nullptr;
     }
 
 private:
-    bool allowChangesFrom(CommandMap &command_map) noexcept
+    bool allowChangesFrom(CommandMap &command_map)
     {
         return (!isRegistered() || command_map_ == &command_map);
     }

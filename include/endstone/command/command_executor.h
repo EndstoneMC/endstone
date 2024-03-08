@@ -36,8 +36,7 @@ public:
      * @param args Passed command arguments
      * @return true if the execution is successful, otherwise false
      */
-    virtual bool onCommand(const CommandSender &sender, const Command &command,
-                           const std::vector<std::string> &args)
+    virtual bool onCommand(const CommandSender &sender, const Command &command, const std::vector<std::string> &args)
     {
         return false;
     }
