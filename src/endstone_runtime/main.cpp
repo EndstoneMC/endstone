@@ -53,7 +53,7 @@ ENDSTONE_RUNTIME_CTOR int main()
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
                                      _In_ DWORD reason,          // reason for calling function
-                                     _In_ LPVOID reserved)       // reserved
+                                     _In_ LPVOID /*reserved*/)   // reserved
 {
     switch (reason) {
     case DLL_PROCESS_ATTACH: {

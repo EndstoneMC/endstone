@@ -57,10 +57,10 @@ functionalities.
 
 Before getting started, verify that you are using one of the following compatible operating systems:
 
-- Windows 10 or higher
-- Windows Server 2019 or higher
-- Debian 11 or higher
-- Ubuntu 20.04 or higher
+- Windows 10 version 10.0.15063 or later
+- Windows Server 2016 or later
+- Debian 11 or later
+- Ubuntu 20.04 or later
 
 Please also ensure you have **Python 3.9 or higher** installed on your system.
 
@@ -68,7 +68,8 @@ There are several ways to install Endstone:
 
 ### 🐍 PyPi
 
-Endstone can be installed directly from PyPi using pip. Open your terminal and execute the following command to install and start
+Endstone can be installed directly from PyPi using pip. Open your terminal and execute the following command to install
+and start
 the Endstone server:
 
 ```shell
@@ -148,8 +149,8 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 | Milestone                                | Duration   | Core | C++ API | Python API |
 |------------------------------------------|------------|------|---------|------------|
 | **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          |
-| **⌨️ Command System**                    | 2-3 months | 🚧   | 🚧      | ⏳          |
-| **🔐 Permission System**                 | 2-3 months | ⏳    | ⏳       | ⏳          |
+| **⌨️ Command System**                    | 2-3 months | 🚧   | ✅       | ✅          |
+| **🔐 Permission System**                 | 2-3 months | 🚧   | ⏳       | ⏳          |
 | **🎈 Event System**                      | 2-3 months | ⏳    | ⏳       | ⏳          |
 | **🛠 Minecraft Core Features**           | 4-5 months | ⏳    | ⏳       | ⏳          |
 | **🖼 GUI & Inventory System**            | 3-4 months | ⏳    | ⏳       | ⏳          |
