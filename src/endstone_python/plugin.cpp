@@ -125,9 +125,9 @@ public:
 };
 
 namespace {
-PluginCommand createPluginCommand(Plugin &owner, std::string name, const std::optional<std::string> &description,
-                                  const std::optional<std::vector<std::string>> &usages,
-                                  const std::optional<std::vector<std::string>> &aliases)
+PyPluginCommand createPluginCommand(Plugin &owner, std::string name, const std::optional<std::string> &description,
+                                    const std::optional<std::vector<std::string>> &usages,
+                                    const std::optional<std::vector<std::string>> &aliases)
 {
     return {owner, std::move(name), description.value_or(""), usages.value_or(std::vector<std::string>()),
             aliases.value_or(std::vector<std::string>())};
