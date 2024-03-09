@@ -62,9 +62,10 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
         sender.CommandSender::sendErrorMessage("Command '{}' was executed but not registered.", command_name);
     }
 }
+}  // namespace endstone::detail
 
-bool customParseRule(CommandRegistry *, void *value, const CommandRegistry::ParseToken &parse_token,
-                     const CommandOrigin &, int, std::string &, std::vector<std::string> &)
+bool CommandRegistry::customParseRule(void *value, const CommandRegistry::ParseToken &parse_token,
+                                      const CommandOrigin &, int, std::string &, std::vector<std::string> &)
 {
     auto &output = *reinterpret_cast<std::vector<std::string> *>(value);
     if (!output.empty()) {
@@ -115,4 +116,3 @@ bool customParseRule(CommandRegistry *, void *value, const CommandRegistry::Pars
     }
     return true;
 }
-}  // namespace endstone::detail

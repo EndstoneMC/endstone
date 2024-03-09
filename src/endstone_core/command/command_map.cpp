@@ -170,9 +170,10 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                               usage, parameter.type);
                     return false;
                 }
-                auto data = CommandParameterData(
-                    {0}, &customParseRule, parameter.name.c_str(), CommandParameterDataType::Default, nullptr, nullptr,
-                    offsetOf(&CommandAdapter::args_), parameter.optional, offsetOf(&CommandAdapter::temp_));
+                auto data = CommandParameterData({0}, &CommandRegistry::customParseRule, parameter.name.c_str(),
+                                                 CommandParameterDataType::Default, nullptr, nullptr,
+                                                 offsetOf(&CommandAdapter::args_), parameter.optional,
+                                                 offsetOf(&CommandAdapter::temp_));
                 data.fallback_symbol = it->second;
                 param_data.push_back(data);
             }

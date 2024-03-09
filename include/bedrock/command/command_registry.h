@@ -96,8 +96,12 @@ public:
     };
     static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
-    using ParseRule = bool (*)(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &,
-                               int, std::string &, std::vector<std::string> &);
+    using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
+                                                std::string &, std::vector<std::string> &);
+
+    // NOTE: This is declared specifically for Endstone's command system. It is not a part of the Bedrock API.
+    bool customParseRule(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int,
+                         std::string &, std::vector<std::string> &);
 
     class ParseTable;
     class Enum {
@@ -203,11 +207,8 @@ struct CommandParameterData {
     {
     }
 
-    Bedrock::typeid_t<CommandRegistry> type_id;  // +0
-    CommandRegistry::ParseRule parse_rule;       // +8
-#ifdef __linux__
-    uint64_t unknown1{0};  // TODO: wtf mojang - this is so weird
-#endif
+    Bedrock::typeid_t<CommandRegistry> type_id;   // +0
+    CommandRegistry::ParseRule parse_rule;        // +8
     std::string name;                             // +16
     const char *type_name;                        // +48
     CommandRegistry::Symbol symbol{-1};           // +56
