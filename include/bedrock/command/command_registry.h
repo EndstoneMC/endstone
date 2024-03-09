@@ -102,10 +102,10 @@ public:
     class ParseTable;
     class Enum {
     public:
-        std::string name;                            // +0
-        Bedrock::typeid_t<CommandRegistry> type_id;  // +32
-        ParseRule parse_rule;                        // +40
-        std::vector<std::string> values;             // +48
+        std::string name;                                   // +0
+        Bedrock::typeid_t<CommandRegistry> type_id;         // +32
+        ParseRule parse_rule;                               // +40
+        std::vector<std::pair<uint64_t, uint64_t>> values;  // +48
     };
     class SoftEnum;
 
