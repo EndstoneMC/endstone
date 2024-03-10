@@ -107,18 +107,6 @@ std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
     {"string", {0x10002C}},
     {"str", {0x10002C}},
 };
-
-template <typename Command, typename Type>
-int offsetOf(Type Command::*data)
-{
-    union {
-        Type Command::*in;
-        int out;
-    } caster;
-    caster.in = data;
-    return caster.out;
-}
-
 }  // namespace
 
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
@@ -170,10 +158,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                               usage, parameter.type);
                     return false;
                 }
-                auto data = CommandParameterData({0}, &CommandRegistry::customParseRule, parameter.name.c_str(),
-                                                 CommandParameterDataType::Default, nullptr, nullptr,
-                                                 offsetOf(&CommandAdapter::args_), parameter.optional,
-                                                 offsetOf(&CommandAdapter::temp_));
+                auto data = CommandParameterData({0}, &CommandRegistry::parse<CommandAdapter>, parameter.name.c_str(),
+                                                 CommandParameterDataType::Default, nullptr, nullptr, 0,
+                                                 parameter.optional, -1);
                 data.fallback_symbol = it->second;
                 param_data.push_back(data);
             }

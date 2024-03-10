@@ -36,10 +36,12 @@ private:
 };
 
 class CommandAdapter : public ::Command {
+public:
     void execute(const CommandOrigin &origin, CommandOutput &output) const override;
 
 private:
     friend class EndstoneCommandMap;
+    friend class ::CommandRegistry;
     std::vector<std::string> args_;
     bool temp_;
 };

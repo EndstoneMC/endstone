@@ -99,9 +99,9 @@ public:
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &);
 
-    // NOTE: This is declared specifically for Endstone's command system. It is not a part of the Bedrock API.
-    bool customParseRule(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int,
-                         std::string &, std::vector<std::string> &);
+    template <typename T>
+    bool parse(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int, std::string &,
+               std::vector<std::string> &);
 
     class ParseTable;
     class Enum {
