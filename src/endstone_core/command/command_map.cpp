@@ -110,8 +110,9 @@ std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
     {"str", CommandRegistry::Symbol::STRING},
     {"block_pos", CommandRegistry::Symbol::POSITION},
     {"vec3i", CommandRegistry::Symbol::POSITION},
-    {"pos", CommandRegistry::Symbol::POSITION},
+    {"pos", CommandRegistry::Symbol::POSITION_FLOAT},
     {"vec3", CommandRegistry::Symbol::POSITION_FLOAT},
+    {"vec3f", CommandRegistry::Symbol::POSITION_FLOAT},
     {"message", CommandRegistry::Symbol::MESSAGE},
     {"json", CommandRegistry::Symbol::JSON},
 };
