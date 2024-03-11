@@ -52,7 +52,7 @@ TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command <text : string>");
+    CommandUsageParser parser("/command <text: string>");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, true);
@@ -61,6 +61,7 @@ TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
     ASSERT_EQ(parameters[0].name, "text");
     ASSERT_EQ(parameters[0].type, "string");
     ASSERT_EQ(parameters[0].optional, false);
+    ASSERT_EQ(parameters[0].is_enum, false);
 }
 
 TEST_F(ParserTest, ParseCommandWithOptionalParameter)
@@ -69,7 +70,7 @@ TEST_F(ParserTest, ParseCommandWithOptionalParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command [text:string]");
+    CommandUsageParser parser("/command [text: string]");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, true);
@@ -78,42 +79,83 @@ TEST_F(ParserTest, ParseCommandWithOptionalParameter)
     ASSERT_EQ(parameters[0].name, "text");
     ASSERT_EQ(parameters[0].type, "string");
     ASSERT_EQ(parameters[0].optional, true);
+    ASSERT_EQ(parameters[0].is_enum, false);
 }
 
-TEST_F(ParserTest, ParseCommandWithEnumMandatoryParameter)
+TEST_F(ParserTest, ParseCommandWithMandatoryEnumParameter)
 {
     std::string command_name;
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command <mode: (add  | set|query)>");
+    CommandUsageParser parser("/command <(add | set | query): EnumType>");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
-    ASSERT_EQ(parameters[0].name, "mode");
-    ASSERT_EQ(parameters[0].type, "enum");
+    ASSERT_EQ(parameters[0].name, "enum");
+    ASSERT_EQ(parameters[0].type, "EnumType");
     ASSERT_EQ(parameters[0].values, std::vector<std::string>({"add", "set", "query"}));
     ASSERT_EQ(parameters[0].optional, false);
+    ASSERT_EQ(parameters[0].is_enum, true);
 }
 
-TEST_F(ParserTest, ParseCommandWithEnumOptionalParameter)
+TEST_F(ParserTest, ParseCommandWithOptionalEnumParameter)
 {
     std::string command_name;
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command [mode: (add | set | query)]");
+    CommandUsageParser parser("/command [(add | set | query): EnumType]");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
-    ASSERT_EQ(parameters[0].name, "mode");
-    ASSERT_EQ(parameters[0].type, "enum");
+    ASSERT_EQ(parameters[0].name, "enum");
+    ASSERT_EQ(parameters[0].type, "EnumType");
     ASSERT_EQ(parameters[0].values, std::vector<std::string>({"add", "set", "query"}));
     ASSERT_EQ(parameters[0].optional, true);
+    ASSERT_EQ(parameters[0].is_enum, true);
+}
+
+TEST_F(ParserTest, ParseCommandWithEmptyEnumParameter)
+{
+    std::string command_name;
+    std::vector<CommandUsageParser::Parameter> parameters;
+    std::string error_message;
+
+    CommandUsageParser parser("/command [(): EnumType]");
+    bool result = parser.parse(command_name, parameters, error_message);
+
+    ASSERT_EQ(result, true);
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+    ASSERT_EQ(parameters[0].name, "enum");
+    ASSERT_EQ(parameters[0].type, "EnumType");
+    ASSERT_EQ(parameters[0].values.empty(), true);
+    ASSERT_EQ(parameters[0].optional, true);
+    ASSERT_EQ(parameters[0].is_enum, true);
+}
+
+TEST_F(ParserTest, ParseCommandWithOneEnumParameter)
+{
+    std::string command_name;
+    std::vector<CommandUsageParser::Parameter> parameters;
+    std::string error_message;
+
+    CommandUsageParser parser("/command [(set): EnumType]");
+    bool result = parser.parse(command_name, parameters, error_message);
+
+    ASSERT_EQ(result, true);
+    ASSERT_EQ(command_name, "command");
+    ASSERT_EQ(parameters.size(), 1);
+    ASSERT_EQ(parameters[0].name, "enum");
+    ASSERT_EQ(parameters[0].type, "EnumType");
+    ASSERT_EQ(parameters[0].values, std::vector<std::string>({"set"}));
+    ASSERT_EQ(parameters[0].optional, true);
+    ASSERT_EQ(parameters[0].is_enum, true);
 }
 
 TEST_F(ParserTest, ParseCommandWithError)
@@ -135,11 +177,11 @@ TEST_F(ParserTest, ParseCommandWithUnfinishedEnum)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command <mode: (add|set|");
+    CommandUsageParser parser("/command <(add|set|) : EnumType>");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect identifier, got '' at position 25.");
+    ASSERT_EQ(error_message, "Syntax Error: expect identifier, got ')' at position 20.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutEndingToken)
@@ -204,5 +246,5 @@ TEST_F(ParserTest, ParseCommandWithUnexpectedToken)
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect identifier, got '<' at position 11.");
+    ASSERT_EQ(error_message, "Syntax Error: expect enums or identifier, got '<' at position 11.");
 }

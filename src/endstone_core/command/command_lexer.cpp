@@ -18,11 +18,11 @@ namespace endstone::detail {
 
 CommandLexer::Token CommandLexer::next()
 {
-    while (isSpace(peek())) {
-        get();
+    while (isSpace(peekChar())) {
+        getChar();
     }
 
-    char c = peek();
+    char c = peekChar();
     if (isIdentifierCharacter(c) && !isDigit(c)) {
         return nextIdentifier();
     }
@@ -82,24 +82,25 @@ CommandLexer::Token CommandLexer::next()
 
 CommandLexer::Token CommandLexer::next(CommandLexer::TokenType type)
 {
-    return CommandLexer::Token{type, value.substr(position++, 1)};
+    return CommandLexer::Token{type, value_.substr(position_++, 1)};
 }
 
 CommandLexer::Token CommandLexer::nextIdentifier()
 {
-    auto start = position;
+    auto start = position_;
     do {
-        get();
-    } while (isIdentifierCharacter(peek()));
-    return CommandLexer::Token{CommandLexer::TokenType::Identifier, value.substr(start, position - start)};
+        getChar();
+    } while (isIdentifierCharacter(peekChar()));
+    return CommandLexer::Token{CommandLexer::TokenType::Identifier, value_.substr(start, position_ - start)};
 }
 
 CommandLexer::Token CommandLexer::nextNumber()
 {
-    auto start = position;
+    auto start = position_;
     do {
-        get();
-    } while (isDigit(peek()));
-    return CommandLexer::Token{CommandLexer::TokenType::Number, value.substr(start, position - start)};
+        getChar();
+    } while (isDigit(peekChar()));
+    return CommandLexer::Token{CommandLexer::TokenType::Number, value_.substr(start, position_ - start)};
 }
+
 }  // namespace endstone::detail

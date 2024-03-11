@@ -71,28 +71,34 @@ public:
         }
     };
 
-    explicit CommandLexer(std::string_view value) : value{value} {}
-    Token next();
+    explicit CommandLexer(std::string_view value) : value_{value} {}
 
+    Token next();
     void reset()
     {
-        position = 0;
+        position_ = 0;
     }
 
-    [[nodiscard]] char peek() const
+    [[nodiscard]] size_t getPosition() const
     {
-        if (position >= value.size()) {
-            return '\0';
-        }
-        return value[position];
+        return position_;
     }
 
-    char get()
+private:
+    [[nodiscard]] char peekChar() const
     {
-        if (position >= value.size()) {
+        if (position_ >= value_.size()) {
             return '\0';
         }
-        return value[position++];
+        return value_[position_];
+    }
+
+    char getChar()
+    {
+        if (position_ >= value_.size()) {
+            return '\0';
+        }
+        return value_[position_++];
     }
 
     Token next(CommandLexer::TokenType type);
@@ -114,7 +120,7 @@ public:
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || isDigit(c) || c == '_';
     }
 
-    std::string_view value;
-    size_t position = 0;
+    std::string_view value_;
+    size_t position_ = 0;
 };
 }  // namespace endstone::detail

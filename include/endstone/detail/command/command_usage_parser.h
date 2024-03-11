@@ -28,6 +28,7 @@ public:
         std::string name;
         std::string type;
         bool optional;
+        bool is_enum;
         std::vector<std::string> values;
     };
 
