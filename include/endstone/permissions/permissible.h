@@ -17,6 +17,7 @@
 #include <string>
 #include <unordered_set>
 
+#include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/server_operator.h"
 
 namespace endstone {
@@ -25,7 +26,6 @@ namespace endstone {
 class Plugin;
 class Permission;
 class PermissionAttachment;
-class PermissionAttachmentInfo;
 
 /**
  * Represents an object that may be assigned permissions
