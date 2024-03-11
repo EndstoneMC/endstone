@@ -1,1 +1,13 @@
-site_name: My Docs
+site_name: Endstone
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/endstonemc
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/endstone
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/u/endstone
+
+theme:
+  name: 'material'
