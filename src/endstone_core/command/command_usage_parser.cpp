@@ -14,144 +14,125 @@
 
 #include "endstone/detail/command/command_usage_parser.h"
 
+#include <utility>
+
 #include <fmt/format.h>
 
 namespace endstone::detail {
 
 bool CommandUsageParser::parse(std::string &command_name, std::vector<Parameter> &parameters,
-                               std::string &error_message)
+                               std::string &error_message) noexcept
 {
-    lexer_.reset();
-
-    auto token = lexer_.next();
-    if (!token.is(CommandLexer::TokenType::Slash)) {
-        error_message =
-            fmt::format("Syntax Error: expect '/', got '{}' at position {}.", token.value, lexer_.getPosition());
+    try {
+        lexer_.reset();
+        parseToken(CommandLexer::TokenType::Slash, "/");
+        command_name = parseIdentifier("command name");
+        do {
+            auto token = lexer_.peek();
+            switch (token.type) {
+            case CommandLexer::TokenType::LeftParen:
+                parameters.push_back(parseEnum());
+                break;
+            case CommandLexer::TokenType::LeftSquare:
+            case CommandLexer::TokenType::LessThan:
+                parameters.push_back(parseParameter());
+                break;
+            case CommandLexer::TokenType::End:
+                return true;
+            default:
+                throw std::runtime_error(fmt::format("Syntax Error: expect '(', '<' or '[', got '{}' at position {}.",
+                                                     token.value, lexer_.getPosition()));
+            }
+        } while (true);
+    }
+    catch (std::exception &e) {
+        error_message = e.what();
         return false;
     }
-
-    if (!parseIdentifier(command_name, error_message)) {
-        return false;
-    }
-
-    do {
-        token = lexer_.next();
-        if (token.is(CommandLexer::TokenType::End)) {
-            return true;
-        }
-
-        if (!token.is(CommandLexer::TokenType::LessThan) && !token.is(CommandLexer::TokenType::LeftSquare)) {
-            error_message = fmt::format("Syntax Error: expect '<' or '[', got '{}' at position {}.", token.value,
-                                        lexer_.getPosition());
-            return false;
-        }
-
-        bool optional = token.type == CommandLexer::TokenType::LeftSquare;
-        if (!parseParameter(parameters, optional, error_message)) {
-            return false;
-        }
-    } while (true);
 }
 
-bool CommandUsageParser::parseIdentifier(std::string &id, std::string &error_message)
+std::string_view CommandUsageParser::parseToken(CommandLexer::TokenType type, std::string what)
 {
     auto token = lexer_.next();
-    if (token.type != CommandLexer::TokenType::Identifier) {
-        error_message =
-            fmt::format("Syntax Error: expect identifier, got '{}' at position {}.", token.value, lexer_.getPosition());
-        return false;
+    if (token.type != type) {
+        throw std::runtime_error(fmt::format("Syntax Error: expect '{}', got '{}' at position {}.", what, token.value,
+                                             lexer_.getPosition()));
     }
-    id = std::string(token.value);
-    return true;
+    return token.value;
 }
 
-bool CommandUsageParser::parseParameter(std::vector<Parameter> &parameters, bool optional, std::string &error_message)
+std::string_view CommandUsageParser::parseIdentifier(std::string what)
 {
-    std::string name;
-    std::string type;
-    bool is_enum = false;
+    return parseToken(CommandLexer::TokenType::Identifier, std::move(what));
+}
+
+CommandUsageParser::Parameter CommandUsageParser::parseParameter()
+{
+    auto param = CommandUsageParser::Parameter();
+    auto token = lexer_.next();
+    switch (token.type) {
+    case CommandLexer::TokenType::LeftSquare:
+        param.optional = true;
+        break;
+    case CommandLexer::TokenType::LessThan:
+        param.optional = false;
+        break;
+    default:
+        throw std::runtime_error(fmt::format("Syntax Error: expect '<' or '[', got '{}' at position {}.", token.value,
+                                             lexer_.getPosition()));
+    };
+
+    param.name = parseIdentifier("parameter name");
+    parseToken(CommandLexer::TokenType::Colon, ":");
+    param.type = parseIdentifier("parameter type");
+
+    if (param.optional) {
+        parseToken(CommandLexer::TokenType::RightSquare, "]");
+    }
+    else {
+        parseToken(CommandLexer::TokenType::GreaterThan, ">");
+    }
+
+    return param;
+}
+
+CommandUsageParser::Parameter CommandUsageParser::parseEnum()
+{
+    parseToken(CommandLexer::TokenType::LeftParen, "(");
     std::vector<std::string> values;
 
-    auto token = lexer_.next();
-    if (token.is(CommandLexer::TokenType::Identifier)) {
-        name = token.value;
+    auto token = lexer_.peek();
+    switch (token.type) {
+    case CommandLexer::TokenType::RightParen:
+        parseToken(CommandLexer::TokenType::RightParen, ")");
+        break;
+    case CommandLexer::TokenType::Identifier: {
+        bool finished = false;
+        do {
+            values.emplace_back(parseIdentifier("enum value"));
+            token = lexer_.next();
+            switch (token.type) {
+            case CommandLexer::TokenType::RightParen:
+                finished = true;
+                break;
+            case CommandLexer::TokenType::Pipe:
+                break;
+            default:
+                throw std::runtime_error(fmt::format("Syntax Error: expect ')' or '|', got '{}' at position {}.",
+                                                     token.value, lexer_.getPosition()));
+            }
+        } while (!finished);
+        break;
     }
-    else if (token.is(CommandLexer::TokenType::LeftParen)) {
-        name = "enum";
-        is_enum = true;
+    default:
+        throw std::runtime_error(fmt::format("Syntax Error: expect ')' or 'enum values', got '{}' at position {}.",
+                                             token.value, lexer_.getPosition()));
+    };
 
-        token = lexer_.next();
-        bool should_read = false;
-
-        if (token.is(CommandLexer::TokenType::Identifier)) {
-            do {
-                if (should_read) {
-                    token = lexer_.next();
-                }
-                should_read = true;
-
-                if (token.is(CommandLexer::TokenType::Identifier)) {
-                    values.emplace_back(token.value);
-                    token = lexer_.next();
-
-                    if (token.is(CommandLexer::TokenType::RightParen)) {
-                        break;
-                    }
-
-                    if (!token.is(CommandLexer::TokenType::Pipe)) {
-                        error_message = fmt::format("Syntax Error: expect ')' or '|', got '{}' at position {}.",
-                                                    token.value, lexer_.getPosition());
-                        return false;
-                    }
-                }
-                else {
-                    error_message = fmt::format("Syntax Error: expect identifier, got '{}' at position {}.",
-                                                token.value, lexer_.getPosition());
-                    return false;
-                }
-            } while (true);
-        }
-        else if (!token.is(CommandLexer::TokenType::RightParen)) {
-            error_message = fmt::format("Syntax Error: expect identifier or ')', got '{}' at position {}.", token.value,
-                                        lexer_.getPosition());
-            return false;
-        }
-    }
-    else {
-        error_message = fmt::format("Syntax Error: expect enums or identifier, got '{}' at position {}.", token.value,
-                                    lexer_.getPosition());
-        return false;
-    }
-
-    token = lexer_.next();
-    if (!token.is(CommandLexer::TokenType::Colon)) {
-        error_message =
-            fmt::format("Syntax Error: expect ':', got '{}' at position {}.", token.value, lexer_.getPosition());
-        return false;
-    }
-
-    if (!parseIdentifier(type, error_message)) {
-        return false;
-    }
-
-    token = lexer_.next();
-    if (optional) {
-        if (!token.is(CommandLexer::TokenType::RightSquare)) {
-            error_message =
-                fmt::format("Syntax Error: expect ']', got '{}' at position {}.", token.value, lexer_.getPosition());
-            return false;
-        }
-    }
-    else {
-        if (!token.is(CommandLexer::TokenType::GreaterThan)) {
-            error_message =
-                fmt::format("Syntax Error: expect '>', got '{}' at position {}.", token.value, lexer_.getPosition());
-            return false;
-        }
-    }
-
-    parameters.push_back({name, type, optional, is_enum, values});
-    return true;
+    auto param = parseParameter();
+    param.is_enum = true;
+    param.values = values;
+    return param;
 }
 
 }  // namespace endstone::detail

@@ -204,7 +204,7 @@ struct CommandParameterData {
     CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_id, CommandRegistry::ParseRule parse_rule,
                          char const *name, CommandParameterDataType type, char const *type_name,
                          char const *fallback_typename, int offset_value, bool optional, int offset_has_value)
-        : type_id(type_id), parse_rule(parse_rule), name(name), type_name(type_name),
+        : type_id(type_id), parse_rule(parse_rule), name(name), enum_name(type_name),
           fallback_typename(fallback_typename), type(type), offset_value(offset_value),
           offset_has_value(offset_has_value), optional(optional)
     {
@@ -213,8 +213,8 @@ struct CommandParameterData {
     Bedrock::typeid_t<CommandRegistry> type_id;   // +0
     CommandRegistry::ParseRule parse_rule;        // +8
     std::string name;                             // +16
-    const char *type_name;                        // +48
-    CommandRegistry::Symbol symbol{-1};           // +56
+    const char *enum_name;                        // +48
+    CommandRegistry::Symbol enum_symbol{-1};      // +56
     const char *fallback_typename;                // +64
     CommandRegistry::Symbol fallback_symbol{-1};  // +72
     CommandParameterDataType type;                // +76

@@ -80,6 +80,14 @@ CommandLexer::Token CommandLexer::next()
     }
 }
 
+CommandLexer::Token CommandLexer::peek()
+{
+    auto position = position_;
+    auto result = next();
+    position_ = position;
+    return result;
+}
+
 CommandLexer::Token CommandLexer::next(CommandLexer::TokenType type)
 {
     return CommandLexer::Token{type, value_.substr(position_++, 1)};

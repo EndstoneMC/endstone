@@ -74,6 +74,8 @@ public:
     explicit CommandLexer(std::string_view value) : value_{value} {}
 
     Token next();
+    Token peek();
+
     void reset()
     {
         position_ = 0;

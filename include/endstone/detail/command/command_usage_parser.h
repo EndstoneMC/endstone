@@ -25,22 +25,23 @@ namespace endstone::detail {
 class CommandUsageParser {
 public:
     struct Parameter {
-        std::string name;
-        std::string type;
-        bool optional;
-        bool is_enum;
-        std::vector<std::string> values;
+        std::string name{};
+        std::string type{};
+        bool optional{false};
+        bool is_enum{false};
+        std::vector<std::string> values{};
     };
 
     explicit CommandUsageParser(std::string_view input) : lexer_(input) {}
 
-    bool parse(std::string &command_name, std::vector<Parameter> &parameters, std::string &error_message);
+    bool parse(std::string &command_name, std::vector<Parameter> &parameters, std::string &error_message) noexcept;
 
 private:
     CommandLexer lexer_;
-
-    bool parseIdentifier(std::string &id, std::string &error_message);
-    bool parseParameter(std::vector<Parameter> &parameters, bool optional, std::string &error_message);
+    std::string_view parseToken(CommandLexer::TokenType type, std::string what);
+    std::string_view parseIdentifier(std::string what);
+    Parameter parseParameter();
+    Parameter parseEnum();
 };
 
 }  // namespace endstone::detail

@@ -44,6 +44,7 @@ TEST_F(ParserTest, ParseCommandWithoutParameters)
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 0);
+    ASSERT_EQ(error_message, "");
 }
 
 TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
@@ -55,6 +56,7 @@ TEST_F(ParserTest, ParseCommandWithMandatoryParameter)
     CommandUsageParser parser("/command <text: string>");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -73,6 +75,7 @@ TEST_F(ParserTest, ParseCommandWithOptionalParameter)
     CommandUsageParser parser("/command [text: string]");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -88,9 +91,10 @@ TEST_F(ParserTest, ParseCommandWithMandatoryEnumParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command <(add | set | query): EnumType>");
+    CommandUsageParser parser("/command (add | set | query)<enum: EnumType>");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -107,9 +111,10 @@ TEST_F(ParserTest, ParseCommandWithOptionalEnumParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command [(add | set | query): EnumType]");
+    CommandUsageParser parser("/command (add | set | query)[enum: EnumType]");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -126,9 +131,10 @@ TEST_F(ParserTest, ParseCommandWithEmptyEnumParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command [(): EnumType]");
+    CommandUsageParser parser("/command ()[enum: EnumType]");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -145,9 +151,10 @@ TEST_F(ParserTest, ParseCommandWithOneEnumParameter)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command [(set): EnumType]");
+    CommandUsageParser parser("/command (set)[enum: EnumType]");
     bool result = parser.parse(command_name, parameters, error_message);
 
+    ASSERT_EQ(error_message, "");
     ASSERT_EQ(result, true);
     ASSERT_EQ(command_name, "command");
     ASSERT_EQ(parameters.size(), 1);
@@ -177,11 +184,11 @@ TEST_F(ParserTest, ParseCommandWithUnfinishedEnum)
     std::vector<CommandUsageParser::Parameter> parameters;
     std::string error_message;
 
-    CommandUsageParser parser("/command <(add|set|) : EnumType>");
+    CommandUsageParser parser("/command (add|set|)<enum : EnumType>");
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect identifier, got ')' at position 20.");
+    ASSERT_EQ(error_message, "Syntax Error: expect 'enum value', got ')' at position 19.");
 }
 
 TEST_F(ParserTest, ParseCommandWithoutEndingToken)
@@ -246,5 +253,5 @@ TEST_F(ParserTest, ParseCommandWithUnexpectedToken)
     bool result = parser.parse(command_name, parameters, error_message);
 
     ASSERT_EQ(result, false);
-    ASSERT_EQ(error_message, "Syntax Error: expect enums or identifier, got '<' at position 11.");
+    ASSERT_EQ(error_message, "Syntax Error: expect 'parameter name', got '<' at position 11.");
 }
