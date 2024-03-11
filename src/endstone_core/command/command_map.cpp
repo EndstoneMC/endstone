@@ -152,16 +152,31 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
-                auto it = gTypeSymbols.find(std::string(parameter.type));
-                if (it == gTypeSymbols.end()) {
-                    server_.getLogger().error("Error occurred when registering usage '{}'. Unsupported type '{}'.",
-                                              usage, parameter.type);
-                    return false;
-                }
                 auto data = CommandParameterData({0}, &CommandRegistry::parse<CommandAdapter>, parameter.name.c_str(),
                                                  CommandParameterDataType::Default, nullptr, nullptr, 0,
                                                  parameter.optional, -1);
-                data.fallback_symbol = it->second;
+
+                if (parameter.is_enum) {
+                    auto symbol = registry.addEnumValues(parameter.type, parameter.values);
+                    auto it = registry.enum_symbol_index.find(parameter.type);
+                    if (it == registry.enum_symbol_index.end()) {
+                        server_.getLogger().error("Unable to register enum '{}'.", parameter.type);
+                        return false;
+                    }
+                    data.type = CommandParameterDataType::Enum;
+                    data.enum_name = it->first.c_str();
+                    data.enum_symbol = {symbol};
+                }
+                else {
+                    auto it = gTypeSymbols.find(std::string(parameter.type));
+                    if (it == gTypeSymbols.end()) {
+                        server_.getLogger().error("Error occurred when registering usage '{}'. Unsupported type '{}'.",
+                                                  usage, parameter.type);
+                        return false;
+                    }
+                    data.fallback_symbol = it->second;
+                }
+
                 param_data.push_back(data);
             }
 
@@ -176,6 +191,11 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     command->setAliases(registered_alias);
     command->registerTo(*this);
     return true;
+}
+
+void EndstoneCommandMap::addEnumValues(const std::string &name, const std::vector<std::string> &values)
+{
+    server_.getMinecraftCommands().getRegistry().addEnumValues(name, values);
 }
 
 }  // namespace endstone::detail

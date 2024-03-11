@@ -23,9 +23,8 @@ namespace endstone::detail {
 VersionCommand::VersionCommand() : Command("version")
 {
     setDescription("Gets the version of this server including any plugins in use.");
-    setUsages("/version", "/version [plugin_name: string]");
+    setUsages("/version", "/version ()[plugin: PluginName]");
     setAliases("ver", "about");
-    // TODO: register plugin names to enum PluginName for auto-completion
 }
 
 bool VersionCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const

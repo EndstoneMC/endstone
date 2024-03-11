@@ -43,7 +43,6 @@ private:
     friend class EndstoneCommandMap;
     friend class ::CommandRegistry;
     std::vector<std::string> args_;
-    bool temp_;
 };
 
 bool customParseRule(CommandRegistry *, void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,

@@ -43,7 +43,16 @@ void EndstoneServer::loadPlugins()
     auto plugin_dir = fs::current_path() / "plugins";
 
     if (exists(plugin_dir)) {
-        plugin_manager_->loadPlugins(plugin_dir.string());
+        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
+
+        std::vector<std::string> plugin_names;
+        plugin_names.reserve(plugins.size());
+        std::transform(plugins.begin(), plugins.end(), std::back_inserter(plugin_names), [](const auto &plugin) {
+            std::string name = plugin->getName();
+            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+            return name;
+        });
+        command_map_->addEnumValues("PluginName", plugin_names);
     }
     else {
         create_directories(plugin_dir);
