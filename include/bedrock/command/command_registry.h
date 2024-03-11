@@ -77,6 +77,7 @@ public:
         static const Symbol WILDCARD_ACTOR_SELECTOR;
         static const Symbol FILE_PATH;
         static const Symbol INTEGER_RANGE;
+        static const Symbol EQUIPMENT_SLOT;
         static const Symbol STRING;
         static const Symbol POSITION;
         static const Symbol POSITION_FLOAT;

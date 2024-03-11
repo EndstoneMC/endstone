@@ -131,6 +131,7 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::SELECTOR{0x100008};
 const CommandRegistry::Symbol CommandRegistry::Symbol::WILDCARD_ACTOR_SELECTOR{0x10000a};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FILE_PATH{0x100011};
 const CommandRegistry::Symbol CommandRegistry::Symbol::INTEGER_RANGE{0x100017};
+const CommandRegistry::Symbol CommandRegistry::Symbol::EQUIPMENT_SLOT{0x10002b};
 const CommandRegistry::Symbol CommandRegistry::Symbol::STRING{0x10002c};
 const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION{0x100034};
 const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION_FLOAT{0x100035};
