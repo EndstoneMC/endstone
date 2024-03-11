@@ -1,13 +1,36 @@
 site_name: Endstone
+repo_url: https://github.com/EndstoneMC/endstone
 
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/endstonemc
+      link: https://github.com/EndstoneMC
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/endstone
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/u/endstone
 
+  version:
+    provider: mike
+
+plugins:
+  - search
+
 theme:
   name: 'material'
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.tabs
+    - navigation.path
+    - search.suggest
