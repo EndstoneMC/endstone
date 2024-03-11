@@ -100,12 +100,20 @@ void EndstoneCommandMap::setMinecraftCommands()
 }
 
 namespace {
-// TODO: is there anyway we can populate this table?
 std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
-    {"int", {0x100001}},
-    {"float", {0x100002}},
-    {"string", {0x10002C}},
-    {"str", {0x10002C}},
+    {"int", CommandRegistry::Symbol::INT},
+    {"float", CommandRegistry::Symbol::FLOAT},
+    {"actor", CommandRegistry::Symbol::SELECTOR},
+    {"player", CommandRegistry::Symbol::SELECTOR},
+    {"target", CommandRegistry::Symbol::SELECTOR},
+    {"string", CommandRegistry::Symbol::STRING},
+    {"str", CommandRegistry::Symbol::STRING},
+    {"block_pos", CommandRegistry::Symbol::POSITION},
+    {"vec3i", CommandRegistry::Symbol::POSITION},
+    {"pos", CommandRegistry::Symbol::POSITION},
+    {"vec3", CommandRegistry::Symbol::POSITION_FLOAT},
+    {"message", CommandRegistry::Symbol::MESSAGE},
+    {"json", CommandRegistry::Symbol::JSON},
 };
 }  // namespace
 

@@ -120,3 +120,22 @@ int CommandRegistry::addEnumValues(const std::string &name, const std::vector<st
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::addEnumValues, this, name, values);
 }
+
+const CommandRegistry::Symbol CommandRegistry::Symbol::INT{0x100001};
+const CommandRegistry::Symbol CommandRegistry::Symbol::FLOAT{0x100003};
+const CommandRegistry::Symbol CommandRegistry::Symbol::RELATIVE_FLOAT{0x100004};
+const CommandRegistry::Symbol CommandRegistry::Symbol::WILDCARD_INT{0x100005};
+const CommandRegistry::Symbol CommandRegistry::Symbol::OPERATOR{0x100006};
+const CommandRegistry::Symbol CommandRegistry::Symbol::COMPARE_OPERATOR{0x100007};
+const CommandRegistry::Symbol CommandRegistry::Symbol::SELECTOR{0x100008};
+const CommandRegistry::Symbol CommandRegistry::Symbol::WILDCARD_ACTOR_SELECTOR{0x10000a};
+const CommandRegistry::Symbol CommandRegistry::Symbol::FILE_PATH{0x100011};
+const CommandRegistry::Symbol CommandRegistry::Symbol::INTEGER_RANGE{0x100017};
+const CommandRegistry::Symbol CommandRegistry::Symbol::STRING{0x10002c};
+const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION{0x100034};
+const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION_FLOAT{0x100035};
+const CommandRegistry::Symbol CommandRegistry::Symbol::MESSAGE{0x100038};
+const CommandRegistry::Symbol CommandRegistry::Symbol::RAW_TEXT{0x10003a};
+const CommandRegistry::Symbol CommandRegistry::Symbol::JSON{0x10003e};
+const CommandRegistry::Symbol CommandRegistry::Symbol::BLOCK_STATE{0x100048};
+const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x10004b};

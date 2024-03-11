@@ -67,6 +67,24 @@ public:
     class Symbol {
     public:
         int value = -1;
+        static const Symbol INT;
+        static const Symbol FLOAT;
+        static const Symbol RELATIVE_FLOAT;
+        static const Symbol WILDCARD_INT;
+        static const Symbol OPERATOR;
+        static const Symbol COMPARE_OPERATOR;
+        static const Symbol SELECTOR;
+        static const Symbol WILDCARD_ACTOR_SELECTOR;
+        static const Symbol FILE_PATH;
+        static const Symbol INTEGER_RANGE;
+        static const Symbol STRING;
+        static const Symbol POSITION;
+        static const Symbol POSITION_FLOAT;
+        static const Symbol MESSAGE;
+        static const Symbol RAW_TEXT;
+        static const Symbol JSON;
+        static const Symbol BLOCK_STATE;
+        static const Symbol COMMAND;
     };
 
     struct Signature {
