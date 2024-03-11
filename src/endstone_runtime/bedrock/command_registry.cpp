@@ -115,3 +115,8 @@ std::ostream &operator<<(std::ostream &os, const CommandRegistry::ParseToken &to
     }
     return os;
 }
+
+int CommandRegistry::addEnumValues(const std::string &name, const std::vector<std::string> &values)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::addEnumValues, this, name, values);
+}

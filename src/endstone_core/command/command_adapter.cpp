@@ -69,7 +69,7 @@ template <>
 bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value,
                                                               const CommandRegistry::ParseToken &parse_token,
                                                               const CommandOrigin &, int, std::string &,
-                                                              std::vector<std::string> &)
+                                                              std::vector<std::string> &) const
 {
     auto &output = reinterpret_cast<endstone::detail::CommandAdapter *>(value)->args_;
     if (!output.empty()) {

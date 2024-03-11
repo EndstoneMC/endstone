@@ -64,7 +64,8 @@ public:
         uint64_t unknown5{0};                      // +64
     };
 
-    struct Symbol {
+    class Symbol {
+    public:
         int value = -1;
     };
 
@@ -97,11 +98,11 @@ public:
     static_assert(sizeof(CommandRegistry::ParseToken) == 40);
 
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
-                                                std::string &, std::vector<std::string> &);
+                                                std::string &, std::vector<std::string> &) const;
 
     template <typename T>
     bool parse(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int, std::string &,
-               std::vector<std::string> &);
+               std::vector<std::string> &) const;
 
     class ParseTable;
     class Enum {
@@ -116,6 +117,7 @@ public:
     BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
+    BEDROCK_API int addEnumValues(const std::string &name, const std::vector<std::string> &values);
 
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
@@ -187,12 +189,13 @@ private:
                                                    const CommandRegistry::Overload &overload, unsigned int a4,
                                                    unsigned int *a5, unsigned int *a6) const;
 
-    BEDROCK_API
-    void registerOverloadInternal(CommandRegistry::Signature &signature, CommandRegistry::Overload &overload);
+    BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
+                                              CommandRegistry::Overload &overload);
 };
 
 enum CommandParameterDataType : int {
-    Default
+    Default = 0,
+    Enum = 1,
 };
 
 enum CommandParameterOption : char;
