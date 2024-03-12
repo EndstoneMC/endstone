@@ -169,7 +169,7 @@ Permission *EndstonePluginManager::addPermission(std::shared_ptr<Permission> per
 
     perm->init(*this);
     auto it = permissions_.emplace(name, std::move(perm)).first;
-    calculatePermissionDefault(*perm);
+    calculatePermissionDefault(*it->second);
     return it->second.get();
 }
 
