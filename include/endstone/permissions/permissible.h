@@ -32,7 +32,7 @@ class PermissionAttachment;
  */
 class Permissible : public ServerOperator {
 public:
-    virtual ~Permissible() override = default;
+    ~Permissible() override = default;
 
     /**
      * Checks if this object contains an override for the specified permission, by fully qualified name
@@ -105,6 +105,6 @@ public:
      *
      * @return Set of currently effective permissions
      */
-    virtual std::unordered_set<PermissionAttachmentInfo> getEffectivePermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo*> getEffectivePermissions() const = 0;
 };
 }  // namespace endstone

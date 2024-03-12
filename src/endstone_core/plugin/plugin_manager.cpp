@@ -25,7 +25,10 @@
 
 namespace endstone::detail {
 
-EndstonePluginManager::EndstonePluginManager(Server &server) : server_(server) {}
+EndstonePluginManager::EndstonePluginManager(Server &server)
+    : server_(server), default_perms_({{true, {}}, {false, {}}})
+{
+}
 
 void EndstonePluginManager::registerLoader(std::unique_ptr<PluginLoader> loader)
 {
@@ -134,6 +137,161 @@ void EndstonePluginManager::clearPlugins()
     disablePlugins();
     plugins_.clear();
     lookup_names_.clear();
+    plugin_loaders_.clear();
+    permissions_.clear();
+    default_perms_[true].clear();
+    default_perms_[false].clear();
+}
+
+Permission *EndstonePluginManager::getPermission(std::string name) const
+{
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto it = permissions_.find(name);
+    if (it == permissions_.end()) {
+        return nullptr;
+    }
+    return it->second.get();
+}
+
+Permission *EndstonePluginManager::addPermission(std::shared_ptr<Permission> perm)
+{
+    auto name = perm->getName();
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    if (getPermission(name) != nullptr) {
+        server_.getLogger().error("The permission {} is already defined!", name);
+        return nullptr;
+    }
+
+    perm->init(*this);
+    auto it = permissions_.emplace(name, std::move(perm)).first;
+    calculatePermissionDefault(*perm);
+    return it->second.get();
+}
+
+void EndstonePluginManager::removePermission(Permission &perm)
+{
+    removePermission(perm.getName());
+}
+
+void EndstonePluginManager::removePermission(std::string name)
+{
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    permissions_.erase(name);
+}
+
+std::unordered_set<Permission *> EndstonePluginManager::getDefaultPermissions(bool op) const
+{
+    return default_perms_.at(op);
+}
+
+void EndstonePluginManager::recalculatePermissionDefaults(Permission &perm)
+{
+    if (getPermission(perm.getName()) != nullptr) {
+        default_perms_.at(true).erase(&perm);
+        default_perms_.at(false).erase(&perm);
+        calculatePermissionDefault(perm);
+    }
+}
+
+void EndstonePluginManager::calculatePermissionDefault(Permission &perm)
+{
+    if (perm.getDefault() == PermissionDefault::Operator || perm.getDefault() == PermissionDefault::True) {
+        default_perms_.at(true).insert(&perm);
+        dirtyPermissibles(true);
+    }
+
+    if (perm.getDefault() == PermissionDefault::NotOperator || perm.getDefault() == PermissionDefault::True) {
+        default_perms_.at(false).insert(&perm);
+        dirtyPermissibles(false);
+    }
+}
+
+void EndstonePluginManager::dirtyPermissibles(bool op) const
+{
+    auto permissibles = getDefaultPermSubscriptions(op);
+    for (auto *p : permissibles) {
+        p->recalculatePermissions();
+    }
+}
+
+void EndstonePluginManager::subscribeToPermission(std::string permission, Permissible &permissible)
+{
+    auto &name = permission;
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto map = perm_subs_.emplace(name, std::unordered_map<Permissible *, bool>()).first->second;
+    map[&permissible] = true;
+}
+
+void EndstonePluginManager::unsubscribeFromPermission(std::string permission, Permissible &permissible)
+{
+    auto &name = permission;
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto it = perm_subs_.find(name);
+    if (it != perm_subs_.end()) {
+        auto &map = it->second;
+        map.erase(&permissible);
+        if (map.empty()) {
+            perm_subs_.erase(name);
+        }
+    }
+}
+
+std::unordered_set<Permissible *> EndstonePluginManager::getPermissionSubscriptions(std::string permission) const
+{
+    auto &name = permission;
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+
+    auto it = perm_subs_.find(name);
+    if (it != perm_subs_.end()) {
+        std::unordered_set<Permissible *> subs;
+        const auto &map = it->second;
+        for (const auto &entry : map) {
+            subs.insert(entry.first);
+        }
+        return subs;
+    }
+    return {};
+}
+
+void EndstonePluginManager::subscribeToDefaultPerms(bool op, Permissible &permissible)
+{
+    auto map = def_subs_.emplace(op, std::unordered_map<Permissible *, bool>()).first->second;
+    map[&permissible] = true;
+}
+
+void EndstonePluginManager::unsubscribeFromDefaultPerms(bool op, Permissible &permissible)
+{
+    auto it = def_subs_.find(op);
+    if (it != def_subs_.end()) {
+        auto &map = it->second;
+        map.erase(&permissible);
+        if (map.empty()) {
+            def_subs_.erase(op);
+        }
+    }
+}
+
+std::unordered_set<Permissible *> EndstonePluginManager::getDefaultPermSubscriptions(bool op) const
+{
+    auto it = def_subs_.find(op);
+    if (it != def_subs_.end()) {
+        std::unordered_set<Permissible *> subs;
+        const auto &map = it->second;
+        for (const auto &entry : map) {
+            subs.insert(entry.first);
+        }
+        return subs;
+    }
+    return {};
+}
+
+std::unordered_set<Permission *> EndstonePluginManager::getPermissions() const
+{
+    std::unordered_set<Permission *> perms;
+    for (const auto &entry : permissions_) {
+        perms.insert(entry.second.get());
+    }
+    return perms;
 }
 
 }  // namespace endstone::detail

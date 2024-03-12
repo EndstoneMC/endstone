@@ -17,6 +17,7 @@
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
+#include <utility>
 
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission_default.h"
@@ -29,14 +30,15 @@ namespace endstone {
  */
 class Permission {
 public:
-    static const PermissionDefault DEFAULT_PERMISSION = PermissionDefault::OP;
+    static const PermissionDefault DEFAULT_PERMISSION = PermissionDefault::Operator;
 
-    Permission(std::string name, std::string description = "", PermissionDefault defaultValue = DEFAULT_PERMISSION,
-               std::unordered_map<std::string, bool> children = {})
+    explicit Permission(std::string name, std::string description = "",
+                        PermissionDefault default_value = DEFAULT_PERMISSION,
+                        std::unordered_map<std::string, bool> children = {})
     {
         this->name_ = std::move(name);
         this->description_ = std::move(description);
-        this->defaultValue_ = std::move(defaultValue);
+        this->default_value_ = default_value;
         this->children_ = std::move(children);
     }
 
@@ -45,7 +47,7 @@ public:
      *
      * @return Fully qualified name
      */
-    std::string getName() const
+    [[nodiscard]] std::string getName() const
     {
         return name_;
     }
@@ -66,9 +68,9 @@ public:
      *
      * @return Default value of this permission.
      */
-    PermissionDefault getDefault() const
+    [[nodiscard]] PermissionDefault getDefault() const
     {
-        return defaultValue_;
+        return default_value_;
     }
 
     /**
@@ -81,7 +83,7 @@ public:
      */
     void setDefault(PermissionDefault value)
     {
-        defaultValue_ = value;
+        default_value_ = value;
         recalculatePermissibles();
     }
 
@@ -90,7 +92,7 @@ public:
      *
      * @return Brief description of this permission
      */
-    std::string getDescription() const
+    [[nodiscard]] std::string getDescription() const
     {
         return description_;
     }
@@ -104,7 +106,7 @@ public:
      */
     void setDescription(std::string value)
     {
-        description_ = value;
+        description_ = std::move(value);
     }
 
     /**
@@ -113,7 +115,7 @@ public:
      *
      * @return Set containing permissibles with this permission
      */
-    std::unordered_set<Permissible *> getPermissibles() const
+    [[nodiscard]] std::unordered_set<Permissible *> getPermissibles() const
     {
         if (!plugin_manager_) {
             return {};
@@ -163,7 +165,7 @@ public:
             perm = plugin_manager_->addPermission(std::make_unique<Permission>(name));
         }
 
-        addParent(perm, value);
+        addParent(*perm, value);
         return perm;
     }
 
@@ -173,16 +175,21 @@ public:
      * @param perm Parent permission to register with
      * @param value The value to set this permission to
      */
-    void addParent(Permission &perm, bool value)
+    void addParent(Permission &perm, bool value) const
     {
         perm.getChildren()[getName()] = value;
         perm.recalculatePermissibles();
     }
 
+    void init(PluginManager &plugin_manager)
+    {
+        plugin_manager_ = &plugin_manager;
+    }
+
 private:
     std::string name_;
     std::unordered_map<std::string, bool> children_;
-    PermissionDefault defaultValue_ = DEFAULT_PERMISSION;
+    PermissionDefault default_value_ = DEFAULT_PERMISSION;
     std::string description_;
     PluginManager *plugin_manager_;
 };

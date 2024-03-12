@@ -27,7 +27,7 @@ public:
      *
      * @return true if this is an operator, otherwise false
      */
-    virtual bool isOp() const = 0;
+    [[nodiscard]] virtual bool isOp() const = 0;
 
     /**
      * @brief Sets the operator status of this object

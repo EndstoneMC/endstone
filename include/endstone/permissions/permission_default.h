@@ -17,10 +17,10 @@
 namespace endstone {
 
 enum class PermissionDefault {
-    TRUE,
-    FALSE,
-    OP,
-    NOT_OP,
+    True,
+    False,
+    Operator,
+    NotOperator,
 };
 
 }  // namespace endstone

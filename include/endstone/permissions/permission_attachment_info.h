@@ -15,6 +15,7 @@
 #pragma once
 
 #include <string>
+#include <utility>
 
 namespace endstone {
 
@@ -29,7 +30,7 @@ class PermissionAttachmentInfo {
 public:
     PermissionAttachmentInfo(Permissible &permissible, std::string permission, PermissionAttachment *attachment,
                              bool value)
-        : permissible_(permissible), permission_(permission), attachment_(attachment), value_(value)
+        : permissible_(permissible), permission_(std::move(permission)), attachment_(attachment), value_(value)
     {
     }
 
@@ -38,7 +39,7 @@ public:
      *
      * @return Permissible this permission is for
      */
-    Permissible &getPermissible()
+    [[nodiscard]] Permissible &getPermissible() const
     {
         return permissible_;
     }
@@ -48,17 +49,18 @@ public:
      *
      * @return Name of the permission
      */
-    std::string getPermission()
+    [[nodiscard]] std::string getPermission() const
     {
         return permission_;
     }
 
     /**
-     * Gets the attachment providing this permission. This may be null for default permissions (usually parent permissions).
+     * Gets the attachment providing this permission. This may be null for default permissions (usually parent
+     * permissions).
      *
      * @return Attachment
      */
-    PermissionAttachment *getAttachment()
+    [[nodiscard]] PermissionAttachment *getAttachment() const
     {
         return attachment_;
     }
@@ -68,7 +70,7 @@ public:
      *
      * @return Value of the permission
      */
-    bool getValue()
+    [[nodiscard]] bool getValue() const
     {
         return value_;
     }

@@ -18,10 +18,13 @@
 #include <string>
 #include <vector>
 
+#include "endstone/permissions/permissible.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 
 namespace endstone {
+
+class Permission;
 
 class PluginManager {
 public:
@@ -108,6 +111,120 @@ public:
      * Disables and removes all plugins
      */
     virtual void clearPlugins() = 0;
+
+    /**
+     * Gets a Permission from its fully qualified name
+     *
+     * @param name Name of the permission
+     * @return Permission, or null if none
+     */
+    [[nodiscard]] virtual Permission *getPermission(std::string name) const = 0;
+
+    /**
+     * Adds a Permission to this plugin manager.
+     *
+     * @param perm Permission to add
+     * @return Permission, or nullptr if a permission is already defined with the given name of the new permission
+     */
+    virtual Permission *addPermission(std::shared_ptr<Permission> perm) = 0;
+
+    /**
+     * Removes a Permission registration from this plugin manager.
+     *
+     * If the specified permission does not exist in this plugin manager, nothing will happen.
+     * Removing a permission registration will <b>not</b> remove the permission from any Permissibles that have it.
+     *
+     * @param perm Permission to remove
+     */
+    virtual void removePermission(Permission &perm) = 0;
+
+    /**
+     * Removes a Permission registration from this plugin manager.
+     *
+     * If the specified permission does not exist in this plugin manager, nothing will happen.
+     * Removing a permission registration will <b>not</b> remove the permission from any Permissibles that have it.
+     *
+     * @param name Permission to remove
+     */
+    virtual void removePermission(std::string name) = 0;
+
+    /**
+     * Gets the default permissions for the given op status
+     *
+     * @param op Which set of default permissions to get
+     * @return The default permissions
+     */
+    [[nodiscard]] virtual std::unordered_set<Permission *> getDefaultPermissions(bool op) const = 0;
+
+    /**
+     * Recalculates the defaults for the given {@link Permission}.
+     *
+     * This will have no effect if the specified permission is not registered here.
+     *
+     * @param perm Permission to recalculate
+     */
+    virtual void recalculatePermissionDefaults(Permission &perm) = 0;
+
+    /**
+     * Subscribes the given Permissible for information about the requested Permission, by name.
+     * If the specified Permission changes in any form, the Permissible will be asked to recalculate.
+     *
+     * @param permission Permission to subscribe to
+     * @param permissible Permissible subscribing
+     */
+    virtual void subscribeToPermission(std::string permission, Permissible &permissible) = 0;
+
+    /**
+     * Unsubscribes the given Permissible for information about the requested Permission, by name.
+     *
+     * @param permission Permission to unsubscribe from
+     * @param permissible Permissible subscribing
+     */
+    virtual void unsubscribeFromPermission(std::string permission, Permissible &permissible) = 0;
+
+    /**
+     * Gets a set containing all subscribed Permissibles to the given permission, by name
+     *
+     * @param permission Permission to query for
+     * @return Set containing all subscribed permissions
+     */
+    [[nodiscard]] virtual std::unordered_set<Permissible *> getPermissionSubscriptions(
+        std::string permission) const = 0;
+
+    /**
+     * Subscribes to the given Default permissions by operator status
+     *
+     * If the specified defaults change in any form, the Permissible will be asked to recalculate.
+     *
+     * @param op Default list to subscribe to
+     * @param permissible Permissible subscribing
+     */
+    virtual void subscribeToDefaultPerms(bool op, Permissible &permissible) = 0;
+
+    /**
+     * Unsubscribes from the given Default permissions by operator status
+     *
+     * @param op Default list to unsubscribe from
+     * @param permissible Permissible subscribing
+     */
+    virtual void unsubscribeFromDefaultPerms(bool op, Permissible &permissible) = 0;
+
+    /**
+     * Gets a set containing all subscribed {@link Permissible}s to the given default list, by op status
+     *
+     * @param op Default list to query for
+     * @return Set containing all subscribed permissions
+     */
+    [[nodiscard]] virtual std::unordered_set<Permissible *> getDefaultPermSubscriptions(bool op) const = 0;
+
+    /**
+     * Gets a set of all registered permissions.
+     *
+     * This set is a copy and will not be modified live.
+     *
+     * @return Set containing all current registered permissions
+     */
+    [[nodiscard]] virtual std::unordered_set<Permission *> getPermissions() const = 0;
 };
 
 }  // namespace endstone

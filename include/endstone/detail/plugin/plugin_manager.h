@@ -19,6 +19,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -29,6 +30,7 @@ class EndstonePluginManager : public PluginManager {
 public:
     explicit EndstonePluginManager(Server &server);
 
+    /** Plugin loading */
     void registerLoader(std::unique_ptr<PluginLoader> loader) override;
     [[nodiscard]] Plugin *getPlugin(const std::string &name) const override;
     [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
@@ -41,11 +43,32 @@ public:
     void disablePlugins() const override;
     void clearPlugins() override;
 
+    /** Permission system */
+    [[nodiscard]] Permission *getPermission(std::string name) const override;
+    Permission *addPermission(std::shared_ptr<Permission> perm) override;
+    void removePermission(Permission &perm) override;
+    void removePermission(std::string name) override;
+    [[nodiscard]] std::unordered_set<Permission *> getDefaultPermissions(bool op) const override;
+    void recalculatePermissionDefaults(Permission &perm) override;
+    void subscribeToPermission(std::string permission, Permissible &permissible) override;
+    void unsubscribeFromPermission(std::string permission, Permissible &permissible) override;
+    [[nodiscard]] std::unordered_set<Permissible *> getPermissionSubscriptions(std::string permission) const override;
+    void subscribeToDefaultPerms(bool op, Permissible &permissible) override;
+    void unsubscribeFromDefaultPerms(bool op, Permissible &permissible) override;
+    [[nodiscard]] std::unordered_set<Permissible *> getDefaultPermSubscriptions(bool op) const override;
+    [[nodiscard]] std::unordered_set<Permission *> getPermissions() const override;
+
 private:
+    void calculatePermissionDefault(Permission &perm);
+    void dirtyPermissibles(bool op) const;
     Server &server_;
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
+    std::unordered_map<std::string, std::shared_ptr<Permission>> permissions_;
+    std::unordered_map<bool, std::unordered_set<Permission *>> default_perms_;
+    std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> perm_subs_;
+    std::unordered_map<bool, std::unordered_map<Permissible *, bool>> def_subs_;
 };
 
 }  // namespace endstone::detail
