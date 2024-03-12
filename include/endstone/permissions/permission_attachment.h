@@ -53,8 +53,7 @@ public:
     }
 
     /**
-     * Gets the class that was previously set to be called when this attachment was removed from a {@link Permissible}.
-     * May be empty.
+     * Gets the class that was previously set to be called when this attachment was removed from a Permissible. May be empty.
      *
      * @return Executor to be called when this is removed
      */
@@ -133,7 +132,7 @@ public:
     }
 
     /**
-     * Removes this attachment from its registered {@link Permissible}
+     * Removes this attachment from its registered Permissible
      *
      * @return true if the permissible was removed successfully, false if it did not exist
      */
