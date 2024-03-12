@@ -25,10 +25,10 @@ namespace endstone::detail {
 
 bool PermissibleBase::isOp() const
 {
-    if (opable_ == nullptr) {
-        return false;
+    if (opable_) {
+        return opable_->isOp();
     }
-    return opable_->isOp();
+    return false;
 }
 
 void PermissibleBase::setOp(bool value)

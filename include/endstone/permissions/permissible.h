@@ -22,7 +22,6 @@
 
 namespace endstone {
 
-// TODO: remove unnecessary forward declaration
 class Plugin;
 class Permission;
 class PermissionAttachment;
@@ -105,6 +104,6 @@ public:
      *
      * @return Set of currently effective permissions
      */
-    [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo*> getEffectivePermissions() const = 0;
+    [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 };
 }  // namespace endstone

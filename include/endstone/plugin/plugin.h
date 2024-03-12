@@ -235,6 +235,11 @@ public:
         return owner_;
     }
 
+    [[nodiscard]] PluginCommand *asPluginCommand() override
+    {
+        return this;
+    }
+
 private:
     Plugin &owner_;
     std::shared_ptr<CommandExecutor> executor_;

@@ -23,6 +23,9 @@
 #include "endstone/command/command_sender.h"
 
 namespace endstone {
+
+class PluginCommand;
+
 /**
  * Represents a Command, which executes various tasks upon user input
  */
@@ -206,6 +209,11 @@ public:
     [[nodiscard]] bool isRegistered() const
     {
         return command_map_ != nullptr;
+    }
+
+    [[nodiscard]] virtual PluginCommand *asPluginCommand()
+    {
+        return nullptr;
     }
 
 private:
