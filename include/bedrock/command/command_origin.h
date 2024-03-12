@@ -16,6 +16,25 @@
 
 #include "bedrock/uuid.h"
 
+enum class CommandOriginType : char {
+    Player = 0,
+    Block = 1,
+    MinecartBlock = 2,
+    DevConsole = 3,
+    Test = 4,
+    AutomationPlayer = 5,
+    ClientAutomation = 6,
+    Server = 7,
+    Actor = 8,
+    Virtual = 9,
+    GameArgument = 10,
+    ActorServer = 11,
+    PrecompiledCommand = 12,
+    GameDirectorEntity = 13,
+    Script = 14,
+    ExecuteContext = 15,
+};
+
 class CommandOrigin {
 public:
     CommandOrigin() = default;

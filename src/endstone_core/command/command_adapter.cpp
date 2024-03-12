@@ -22,7 +22,7 @@
 
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output)
-    : server_(server), origin_(origin), output_(output)
+    : server_(server), origin_(origin), output_(output), perm_(this)
 {
 }
 
@@ -44,6 +44,61 @@ Server &CommandSenderAdapter::getServer() const
 std::string CommandSenderAdapter::getName() const
 {
     return origin_.getName();
+}
+
+bool CommandSenderAdapter::isPermissionSet(std::string name) const
+{
+    return perm_.isPermissionSet(name);
+}
+
+bool CommandSenderAdapter::isPermissionSet(const Permission &perm) const
+{
+    return perm_.isPermissionSet(perm);
+}
+
+bool CommandSenderAdapter::hasPermission(std::string name) const
+{
+    return perm_.hasPermission(name);
+}
+
+bool CommandSenderAdapter::hasPermission(const Permission &perm) const
+{
+    return perm_.hasPermission(perm);
+}
+
+PermissionAttachment *CommandSenderAdapter::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return perm_.addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *CommandSenderAdapter::addAttachment(Plugin &plugin)
+{
+    return perm_.addAttachment(plugin);
+}
+
+bool CommandSenderAdapter::removeAttachment(PermissionAttachment &attachment)
+{
+    return perm_.removeAttachment(attachment);
+}
+
+void CommandSenderAdapter::recalculatePermissions()
+{
+    perm_.recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> CommandSenderAdapter::getEffectivePermissions() const
+{
+    return perm_.getEffectivePermissions();
+}
+
+bool CommandSenderAdapter::isOp() const
+{
+    // TODO:
+    return false;
+}
+
+void CommandSenderAdapter::setOp(bool value) {
+    // TODO:
 }
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
