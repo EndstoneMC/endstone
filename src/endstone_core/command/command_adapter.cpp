@@ -97,7 +97,8 @@ bool CommandSenderAdapter::isOp() const
     return false;
 }
 
-void CommandSenderAdapter::setOp(bool value) {
+void CommandSenderAdapter::setOp(bool value)
+{
     // TODO:
 }
 

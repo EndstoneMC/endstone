@@ -25,8 +25,8 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"
-#include "bedrock/command/command_version.h"
 #include "bedrock/command/command_permission_level.h"
+#include "bedrock/command/command_version.h"
 #include "bedrock/type_id.h"
 
 struct CommandFlag {
