@@ -40,6 +40,7 @@ public:
 
 void init_command(py::module &m)
 {
+    // TODO: add base class Permissible
     py::class_<CommandSender>(m, "CommandSender")
         .def(
             "send_message",

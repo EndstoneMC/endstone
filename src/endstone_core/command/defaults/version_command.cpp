@@ -25,6 +25,7 @@ VersionCommand::VersionCommand() : Command("version")
     setDescription("Gets the version of this server including any plugins in use.");
     setUsages("/version", "/version ()[plugin: PluginName]");
     setAliases("ver", "about");
+    setPermission("endstone.command.version");
 }
 
 bool VersionCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const

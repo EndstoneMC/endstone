@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <optional>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/command/command_map.h"
@@ -151,9 +152,9 @@ public:
     }
 
     /**
-     * Sets the example usage of this command
+     * Sets the usages of this command
      *
-     * @param usages new example usage
+     * @param usages List of usages
      * @return this command object, for chaining
      */
     template <typename... Usage>
@@ -167,6 +168,61 @@ public:
             usages_ = std::move(all_usages);
         }
         return *this;
+    }
+
+    /**
+     * Gets the permissions required by users to be able to perform this command
+     *
+     * @return List of permission names, or empty if none
+     */
+    [[nodiscard]] std::vector<std::string> getPermissions() const
+    {
+        return permissions_;
+    }
+
+    /**
+     * Sets the permissions required by users to be able to perform this command
+     *
+     * @param permissions List of permission names
+     */
+    template <typename... Permission>
+    void setPermission(Permission... permissions)
+    {
+        permissions_ = std::move(std::vector<std::string>{permissions...});
+    }
+
+    /**
+     * Tests the given CommandSender to see if they can perform this command.
+     * If they do not have permission, they will be informed that they cannot do this.
+     *
+     * @param target User to test
+     * @return true if they can use it, otherwise false
+     */
+    bool testPermission(CommandSender &target)
+    {
+        if (testPermissionSilently(target)) {
+            return true;
+        }
+
+        target.sendErrorMessage("You do not have permission to perform this command.");
+        return false;
+    }
+
+    /**
+     * Tests the given CommandSender to see if they can perform this command.
+     * No error is sent to the sender.
+     *
+     * @param target User to test
+     * @return true if they can use it, otherwise false
+     */
+    bool testPermissionSilently(CommandSender &target)
+    {
+        if (permissions_.empty()) {
+            return true;
+        }
+
+        return std::any_of(permissions_.begin(), permissions_.end(),
+                           [&target](const auto &p) { return target.hasPermission(p); });
     }
 
     /**
@@ -226,6 +282,7 @@ private:
     std::string description_;
     std::vector<std::string> aliases_;
     std::vector<std::string> usages_;
+    std::vector<std::string> permissions_;
     CommandMap *command_map_ = nullptr;
 };
 }  // namespace endstone

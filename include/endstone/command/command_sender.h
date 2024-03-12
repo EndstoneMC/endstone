@@ -18,13 +18,15 @@
 
 #include <fmt/format.h>
 
+#include "endstone/permissions/permissible.h"
+
 namespace endstone {
 
 class Server;
-class CommandSender {
+class CommandSender : public Permissible {
 public:
     CommandSender() = default;
-    virtual ~CommandSender() = default;
+    ~CommandSender() override = default;
 
     /**
      * Sends this sender a message
