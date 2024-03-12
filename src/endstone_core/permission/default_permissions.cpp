@@ -1,0 +1,53 @@
+// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#include "endstone/detail/permission/default_permissions.h"
+
+namespace endstone::detail {
+
+Permission *DefaultPermissions::registerPermission(const std::shared_ptr<Permission> &perm, Permission *parent)
+{
+    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto *result = server.getPluginManager().addPermission(perm);
+    if (parent != nullptr) {
+        parent->getChildren()[perm->getName()] = true;
+    }
+    return result;
+}
+
+Permission *DefaultPermissions::registerPermission(const std::string &name, Permission *parent, const std::string &desc,
+                                                   PermissionDefault default_value,
+                                                   const std::unordered_map<std::string, bool> &children)
+{
+    return registerPermission(std::make_shared<Permission>(name, desc, default_value, children), parent);
+}
+
+void DefaultPermissions::registerCorePermissions()
+{
+    auto *endstone = registerPermission("endstone", nullptr,
+                                        "Gives the user the ability to use all Endstone utilities and commands");
+    registerCommandPermissions(endstone);
+}
+
+void DefaultPermissions::registerCommandPermissions(Permission *parent)
+{
+    auto *command =
+        registerPermission("endstone.command", parent, "Gives the user the ability to use all Endstone command");
+    registerPermission("endstone.command.plugins", command,
+                       "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
+    registerPermission("endstone.command.version", command, "Allows the user to view the version of the server",
+                       PermissionDefault::True);
+}
+
+}  // namespace endstone::detail

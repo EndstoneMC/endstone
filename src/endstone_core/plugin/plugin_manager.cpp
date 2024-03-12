@@ -155,6 +155,11 @@ Permission *EndstonePluginManager::getPermission(std::string name) const
 
 Permission *EndstonePluginManager::addPermission(std::shared_ptr<Permission> perm)
 {
+    if (perm == nullptr) {
+        server_.getLogger().error("The permission cannot be nullptr");
+        return nullptr;
+    }
+
     auto name = perm->getName();
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
     if (getPermission(name) != nullptr) {

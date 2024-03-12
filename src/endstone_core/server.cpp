@@ -21,6 +21,7 @@ namespace fs = std::filesystem;
 #include "bedrock/common.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/permission/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/plugin/plugin.h"
 
@@ -62,6 +63,7 @@ void EndstoneServer::loadPlugins()
 void EndstoneServer::enablePlugins() const
 {
     plugin_manager_->enablePlugins();
+    DefaultPermissions::registerCorePermissions();
 }
 
 void EndstoneServer::enablePlugin(Plugin &plugin) const
