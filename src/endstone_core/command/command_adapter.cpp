@@ -93,13 +93,14 @@ std::unordered_set<PermissionAttachmentInfo *> CommandSenderAdapter::getEffectiv
 
 bool CommandSenderAdapter::isOp() const
 {
-    // TODO:
+    // TODO: server always return true, player returns if CommandPermissionLevel >=2, block always return true, other
+    // always false
     return false;
 }
 
 void CommandSenderAdapter::setOp(bool value)
 {
-    // TODO:
+    // TODO: player call player.setPermissions(2), other dont support
 }
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
