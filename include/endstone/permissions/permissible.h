@@ -40,7 +40,7 @@ public:
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
      */
-    virtual bool isPermissionSet(const std::string &name) = 0;
+    [[nodiscard]] virtual bool isPermissionSet(std::string name) const = 0;
 
     /**
      * Checks if this object contains an override for the specified Permission
@@ -48,7 +48,7 @@ public:
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    virtual bool isPermissionSet(const Permission &perm) = 0;
+    [[nodiscard]] virtual bool isPermissionSet(const Permission &perm) const = 0;
 
     /**
      * Gets the value of the specified permission, if set.
@@ -57,7 +57,7 @@ public:
      * @param name Name of the permission
      * @return Value of the permission
      */
-    virtual bool hasPermission(const std::string &name) = 0;
+    [[nodiscard]] virtual bool hasPermission(std::string name) const = 0;
 
     /**
      * Gets the value of the specified permission, if set.
@@ -66,7 +66,7 @@ public:
      * @param perm Permission to get
      * @return Value of the permission
      */
-    virtual bool hasPermission(const Permission &perm) = 0;
+    [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
 
     /**
      * Adds a new PermissionAttachment with a single permission by name and value

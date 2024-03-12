@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "endstone/detail/permissions/permissible_base.h"
+
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output)
     : server_(server), origin_(origin), output_(output)

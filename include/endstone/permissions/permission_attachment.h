@@ -18,8 +18,10 @@
 #include <functional>
 #include <string>
 #include <unordered_map>
+#include <utility>
 
 #include "endstone/permissions/permissible.h"
+#include "endstone/permissions/permission.h"
 
 namespace endstone {
 
@@ -37,7 +39,7 @@ public:
      *
      * @return Plugin responsible for this permission attachment
      */
-    Plugin &getPlugin() const
+    [[nodiscard]] Plugin &getPlugin() const
     {
         return plugin_;
     }
@@ -49,15 +51,16 @@ public:
      */
     void setRemovalCallback(PermissionRemovedExecutor ex)
     {
-        removed_ = ex;
+        removed_ = std::move(ex);
     }
 
     /**
-     * Gets the class that was previously set to be called when this attachment was removed from a Permissible. May be empty.
+     * Gets the class that was previously set to be called when this attachment was removed from a Permissible. May be
+     * empty.
      *
      * @return Executor to be called when this is removed
      */
-    PermissionRemovedExecutor getRemovalCallback() const
+    [[nodiscard]] PermissionRemovedExecutor getRemovalCallback() const
     {
         return removed_;
     }
@@ -67,7 +70,7 @@ public:
      *
      * @return Permissible containing this attachment
      */
-    Permissible &getPermissible() const
+    [[nodiscard]] Permissible &getPermissible() const
     {
         return permissible_;
     }
@@ -78,7 +81,7 @@ public:
      *
      * @return Copy of all permissions and values expressed by this attachment
      */
-    std::unordered_map<std::string, bool> getPermissions() const
+    [[nodiscard]] std::unordered_map<std::string, bool> getPermissions() const
     {
         return permissions_;
     }
