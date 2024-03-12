@@ -26,19 +26,11 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_version.h"
+#include "bedrock/command/command_permission_level.h"
 #include "bedrock/type_id.h"
 
 struct CommandFlag {
     uint16_t value;
-};
-
-enum class CommandPermissionLevel : std::uint8_t {
-    Any = 0,
-    GameDirectors = 1,
-    Admin = 2,
-    Host = 3,
-    Owner = 4,
-    Internal = 5
 };
 
 enum SemanticConstraint : uint8_t;
