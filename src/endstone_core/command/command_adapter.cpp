@@ -21,8 +21,8 @@
 #include "endstone/detail/permissions/permissible_base.h"
 
 namespace endstone::detail {
-CommandSenderAdapter::CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output)
-    : server_(server), origin_(origin), output_(output), perm_(this)
+CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
+    : origin_(origin), output_(output)
 {
 }
 
@@ -36,71 +36,27 @@ void CommandSenderAdapter::sendErrorMessage(const std::string &message) const
     output_.error(message, {});
 }
 
-Server &CommandSenderAdapter::getServer() const
-{
-    return server_;
-}
-
 std::string CommandSenderAdapter::getName() const
 {
     return origin_.getName();
 }
 
-bool CommandSenderAdapter::isPermissionSet(std::string name) const
-{
-    return perm_.isPermissionSet(name);
-}
-
-bool CommandSenderAdapter::isPermissionSet(const Permission &perm) const
-{
-    return perm_.isPermissionSet(perm);
-}
-
-bool CommandSenderAdapter::hasPermission(std::string name) const
-{
-    return perm_.hasPermission(name);
-}
-
-bool CommandSenderAdapter::hasPermission(const Permission &perm) const
-{
-    return perm_.hasPermission(perm);
-}
-
-PermissionAttachment *CommandSenderAdapter::addAttachment(Plugin &plugin, const std::string &name, bool value)
-{
-    return perm_.addAttachment(plugin, name, value);
-}
-
-PermissionAttachment *CommandSenderAdapter::addAttachment(Plugin &plugin)
-{
-    return perm_.addAttachment(plugin);
-}
-
-bool CommandSenderAdapter::removeAttachment(PermissionAttachment &attachment)
-{
-    return perm_.removeAttachment(attachment);
-}
-
-void CommandSenderAdapter::recalculatePermissions()
-{
-    perm_.recalculatePermissions();
-}
-
-std::unordered_set<PermissionAttachmentInfo *> CommandSenderAdapter::getEffectivePermissions() const
-{
-    return perm_.getEffectivePermissions();
-}
-
 bool CommandSenderAdapter::isOp() const
 {
-    // TODO: server always return true, player returns if CommandPermissionLevel >=2, block always return true, other
-    // always false
-    return false;
+    switch (origin_.getPermissionsLevel()) {
+    case CommandPermissionLevel::Admin:
+    case CommandPermissionLevel::Host:
+    case CommandPermissionLevel::Owner:
+    case CommandPermissionLevel::Internal:
+        return true;
+    default:
+        return false;
+    }
 }
 
 void CommandSenderAdapter::setOp(bool value)
 {
-    // TODO: player call player.setPermissions(2), other dont support
+    getServer().getLogger().error("Changing the operator status of CommandSenderAdapter is not supported.");
 }
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
@@ -118,7 +74,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     bool success;
     switch (origin.getOriginType()) {
     case CommandOriginType::Server:
-        success = command->execute(server.getConsoleSender(), args_);
+        success = command->execute(server.getCommandSender(), args_);
         break;
     case CommandOriginType::Player:
     case CommandOriginType::Actor:
@@ -126,7 +82,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     case CommandOriginType::MinecartBlock:
         // TODO: add BlockCommandSender, Player, Entity and CommandMinecart
     default:
-        auto sender = CommandSenderAdapter(server, origin, output);
+        auto sender = CommandSenderAdapter(origin, output);
         success = command->execute(sender, args_);
         break;
     }

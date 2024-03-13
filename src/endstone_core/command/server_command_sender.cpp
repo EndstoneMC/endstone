@@ -14,65 +14,31 @@
 
 #include "endstone/detail/command/server_command_sender.h"
 
-#include <utility>
-
-#include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
-
 namespace endstone::detail {
 
-ServerCommandSender::ServerCommandSender() : perm_(this) {}
-
-ServerCommandSender::ServerCommandSender(PermissibleBase perm) : perm_(std::move(perm)) {}
-
-Server &ServerCommandSender::getServer() const
+void ServerCommandSender::sendMessage(const std::string &message) const
 {
-    return Singleton<EndstoneServer>::getInstance();
+    getServer().getLogger().info(message);
 }
 
-bool ServerCommandSender::isPermissionSet(std::string name) const
+void ServerCommandSender::sendErrorMessage(const std::string &message) const
 {
-    return perm_.isPermissionSet(name);
+    getServer().getLogger().error(message);
 }
 
-bool ServerCommandSender::isPermissionSet(const Permission &perm) const
+std::string ServerCommandSender::getName() const
 {
-    return perm_.isPermissionSet(perm);
+    return "Server";
 }
 
-bool ServerCommandSender::hasPermission(std::string name) const
+bool ServerCommandSender::isOp() const
 {
-    return perm_.hasPermission(name);
+    return true;
 }
 
-bool ServerCommandSender::hasPermission(const Permission &perm) const
+void ServerCommandSender::setOp(bool value)
 {
-    return perm_.hasPermission(perm);
-}
-
-PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
-{
-    return perm_.addAttachment(plugin, name, value);
-}
-
-PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin)
-{
-    return perm_.addAttachment(plugin);
-}
-
-bool ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
-{
-    return perm_.removeAttachment(attachment);
-}
-
-void ServerCommandSender::recalculatePermissions()
-{
-    perm_.recalculatePermissions();
-}
-
-std::unordered_set<PermissionAttachmentInfo *> ServerCommandSender::getEffectivePermissions() const
-{
-    return perm_.getEffectivePermissions();
+    getServer().getLogger().error("Cannot change operator status of server console");
 }
 
 }  // namespace endstone::detail

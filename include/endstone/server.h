@@ -72,7 +72,7 @@ public:
      *
      * @return a console command sender
      */
-    [[nodiscard]] virtual CommandSender &getConsoleSender() const = 0;
+    [[nodiscard]] virtual CommandSender &getCommandSender() const = 0;
 
     /**
      * Gets the name of this server implementation.

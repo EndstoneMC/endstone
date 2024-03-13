@@ -22,30 +22,18 @@
 
 namespace endstone::detail {
 
-class CommandSenderAdapter : public CommandSender {
+class CommandSenderAdapter : public BaseCommandSender {
 public:
-    CommandSenderAdapter(EndstoneServer &server, const CommandOrigin &origin, CommandOutput &output);
+    CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output);
     void sendMessage(const std::string &message) const override;
     void sendErrorMessage(const std::string &message) const override;
-    [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isPermissionSet(std::string name) const override;
-    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
-    [[nodiscard]] bool hasPermission(std::string name) const override;
-    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    bool removeAttachment(PermissionAttachment &attachment) override;
-    void recalculatePermissions() override;
-    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
 
 private:
-    EndstoneServer &server_;
     const CommandOrigin &origin_;
     CommandOutput &output_;
-    PermissibleBase perm_;
 };
 
 class CommandAdapter : public ::Command {
