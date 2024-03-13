@@ -66,11 +66,6 @@ void EndstoneServer::enablePlugins() const
     DefaultPermissions::registerCorePermissions();
 }
 
-void EndstoneServer::enablePlugin(Plugin &plugin) const
-{
-    plugin_manager_->enablePlugin(plugin);
-}
-
 void EndstoneServer::disablePlugins() const
 {
     plugin_manager_->disablePlugins();

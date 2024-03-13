@@ -51,8 +51,6 @@ public:
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
-    void enablePlugin(Plugin &plugin) const;
-
     ServerInstance &server_instance_;
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
