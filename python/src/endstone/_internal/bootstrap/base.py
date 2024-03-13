@@ -171,7 +171,7 @@ class Bootstrap:
                     f.write(data)
                     m.update(data)
 
-            self._logger.info(f"Download complete. Verifying integrity...")
+            self._logger.info("Download complete. Verifying integrity...")
             if m.hexdigest() != sha256:
                 raise ValueError("SHA256 mismatch: the downloaded file may be corrupted or tampered with.")
 
