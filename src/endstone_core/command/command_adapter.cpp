@@ -106,19 +106,33 @@ void CommandSenderAdapter::setOp(bool value)
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
     auto &server = Singleton<EndstoneServer>::getInstance();
-    auto sender = CommandSenderAdapter(server, origin, output);
-
     auto &command_map = server.getCommandMap();
     auto command_name = getCommandName();
     auto *command = command_map.getCommand(command_name);
-    if (command) {
-        bool success = command->execute(sender, args_);
-        if (success) {
-            output.success();
-        }
+
+    if (!command) {
+        server.getLogger().error("Command '{}' was executed by {} but not registered.", origin.getName(), command_name);
+        return;
     }
-    else {
-        sender.CommandSender::sendErrorMessage("Command '{}' was executed but not registered.", command_name);
+
+    bool success;
+    switch (origin.getOriginType()) {
+    case CommandOriginType::Server:
+        success = command->execute(server.getConsoleSender(), args_);
+        break;
+    case CommandOriginType::Player:
+    case CommandOriginType::Actor:
+    case CommandOriginType::Block:
+    case CommandOriginType::MinecartBlock:
+        // TODO: add BlockCommandSender, Player, Entity and CommandMinecart
+    default:
+        auto sender = CommandSenderAdapter(server, origin, output);
+        success = command->execute(sender, args_);
+        break;
+    }
+
+    if (success) {
+        output.success();
     }
 }
 

@@ -105,6 +105,11 @@ PluginCommand *EndstoneServer::registerPluginCommand(std::shared_ptr<PluginComma
     return nullptr;
 }
 
+CommandSender &EndstoneServer::getConsoleSender() const
+{
+    return console_sender_;
+}
+
 std::string EndstoneServer::getName() const
 {
     return "Endstone";

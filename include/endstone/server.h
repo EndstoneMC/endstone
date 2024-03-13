@@ -22,6 +22,7 @@
 
 namespace endstone {
 
+class CommandSender;
 class PluginCommand;
 class PluginManager;
 
@@ -65,6 +66,13 @@ public:
      * @return a pointer to the registered plugin command
      */
     [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const = 0;
+
+    /**
+     * Gets a CommandSender for this server.
+     *
+     * @return a console command sender
+     */
+    [[nodiscard]] virtual CommandSender &getConsoleSender() const = 0;
 
     /**
      * Gets the name of this server implementation.

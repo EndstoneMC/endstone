@@ -20,6 +20,7 @@
 
 #include "bedrock/server/server_instance.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -41,6 +42,7 @@ public:
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const override;
+    [[nodiscard]] CommandSender &getConsoleSender() const override;
 
     void loadPlugins();
     void enablePlugins() const;
@@ -55,6 +57,7 @@ private:
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
+    mutable ConsoleCommandSender console_sender_;
 };
 
 }  // namespace endstone::detail
