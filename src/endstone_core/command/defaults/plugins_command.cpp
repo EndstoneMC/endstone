@@ -33,6 +33,10 @@ PluginsCommand::PluginsCommand() : Command("plugins")
 
 bool PluginsCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
+    if (!testPermission(sender)) {
+        return true;
+    }
+
     sender.sendMessage("Plugins {}", getPluginList());
     return true;
 }

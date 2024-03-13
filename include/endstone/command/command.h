@@ -198,7 +198,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    bool testPermission(CommandSender &target)
+    bool testPermission(CommandSender &target) const
     {
         if (testPermissionSilently(target)) {
             return true;
@@ -215,7 +215,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    bool testPermissionSilently(CommandSender &target)
+    bool testPermissionSilently(CommandSender &target) const
     {
         if (permissions_.empty()) {
             return true;
