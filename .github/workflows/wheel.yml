@@ -8,6 +8,8 @@ on:
       - '*'
   workflow_dispatch:
 
+permissions: read-all
+
 jobs:
   build_wheels_windows:
     name: Build Wheels for Python ${{ matrix.python }} on Windows

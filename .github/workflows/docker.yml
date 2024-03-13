@@ -9,6 +9,8 @@ on:
     tags:
       - '*'
 
+permissions: read-all
+
 jobs:
   build-push:
     name: Build and Publish Docker Image
