@@ -207,10 +207,9 @@ class Bootstrap:
             return
 
         if self.server_path.exists() and any(self.server_path.iterdir()):
-            raise AssertionError(
+            raise FileNotFoundError(
                 f"Server directory {self.server_path} exists and is not empty but the server executable "
-                f"{self.executable_filename} for the current system can not be found. Are you using the same "
-                f"directory for both Windows and Linux platform?"
+                f"{self.executable_filename} for the current system can not be found."
             )
 
         self.server_path.mkdir(parents=True, exist_ok=True)
@@ -220,7 +219,9 @@ class Bootstrap:
         response.raise_for_status()
         server_data = response.json()
 
-        assert self._version in server_data["binary"], f"Version v{self._version} is not found in the remote server."
+        if self._version not in server_data["binary"]:
+            raise ValueError(f"Version v{self._version} is not found in the remote server.")
+
         self._download(self.server_path, **server_data["binary"][self._version][self.target_system.lower()])
 
     def run(self) -> int:
@@ -264,6 +265,7 @@ class Bootstrap:
             stdin=sys.stdin,
             stdout=sys.stdout,
             stderr=subprocess.STDOUT,
+            shell=False,
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),
