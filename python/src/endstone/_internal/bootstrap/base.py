@@ -265,7 +265,6 @@ class Bootstrap:
             stdin=sys.stdin,
             stdout=sys.stdout,
             stderr=subprocess.STDOUT,
-            shell=False,
             text=True,
             encoding="utf-8",
             cwd=str(self.server_path.absolute()),
