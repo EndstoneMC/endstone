@@ -32,7 +32,15 @@ ENDSTONE_RUNTIME_CTOR int main()
     auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
-        py::initialize_interpreter();
+
+        // Initialise an isolated Python environment to avoid installing signal handlers
+        // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf
+        PyConfig config;
+        PyConfig_InitIsolatedConfig(&config);
+        config.isolated = 0;
+        config.use_environment = 1;
+        config.install_signal_handlers = 0;
+        py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
         py::gil_scoped_release release{};
         release.disarm();
