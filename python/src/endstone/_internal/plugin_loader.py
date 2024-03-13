@@ -19,13 +19,16 @@ class PythonPluginLoader(PluginLoader):
             if not isinstance(plugin, Plugin):
                 raise TypeError("Main class {ep.value} does not extend endstone.plugin.Plugin")
 
-            plugin_metadata = metadata(ep.name.replace("-", "_")).json
+            ep_name = ep.name.replace("-", "_")
+            dist_name = "endstone_" + ep_name
+            plugin_metadata = metadata(dist_name).json
             plugin._description = PluginDescription(
-                name=plugin_metadata["name"].replace("_", " ").replace("-", " ").title().replace(" ", ""),
+                name=ep_name.replace("_", " ").title().replace(" ", ""),
                 version=plugin_metadata["version"],
                 description=plugin_metadata.get("summary"),
                 authors=[plugin_metadata.get("author_email")],
             )
+            # TODO: pass plugin_metadata.get("project_url") to PluginDescription
 
             self._plugins.append(plugin)
             loaded_plugins.append(plugin)
