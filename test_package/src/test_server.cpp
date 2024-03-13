@@ -21,6 +21,7 @@
 #include <filesystem>
 #include <memory>
 
+#include "endstone/detail/command/server_command_sender.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/plugin_manager.h"
@@ -74,6 +75,12 @@ public:
     [[nodiscard]] PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const override
     {
         return nullptr;
+    }
+
+    [[nodiscard]] virtual CommandSender &getCommandSender() const override
+    {
+        static ServerCommandSender sender;
+        return sender;
     }
 
     [[nodiscard]] std::string getName() const override
