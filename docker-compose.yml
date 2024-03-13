@@ -1,0 +1,14 @@
+version: '3'
+services:
+  endstone:
+    build: .
+    container_name: endstone
+    command: endstone --install
+    image: endstone/endstone:latest
+    ports:
+      - "19132:19132/udp"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./bedrock_server:/home/endstone/bedrock_server:rw
