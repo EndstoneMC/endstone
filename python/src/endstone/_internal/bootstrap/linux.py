@@ -60,8 +60,8 @@ class LinuxBootstrap(Bootstrap):
 
         dlinfo = DlInfo()
         retcode = libdl.dladdr(ctypes.cast(ctypes.pythonapi.Py_GetVersion, ctypes.c_void_p), ctypes.pointer(dlinfo))
-        assert retcode != 0, ValueError(
-            "dladdr cannot match the address of ctypes.pythonapi.Py_GetVersion to a shared object"
-        )
+        if retcode == 0:
+            raise ValueError("dladdr cannot match the address of ctypes.pythonapi.Py_GetVersion to a shared object")
+
         path = Path(dlinfo.dli_fname.decode()).resolve()
         return path
