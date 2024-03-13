@@ -117,40 +117,46 @@ class WindowsBootstrap(Bootstrap):
             DWORD(MEM_COMMIT | MEM_RESERVE),  # flAllocationType
             DWORD(PAGE_READWRITE),  # flProtect
         )
-        assert address, f"VirtualAllocEx failed with error {get_last_error()}."
+        if not address:
+            raise ValueError(f"VirtualAllocEx failed with error {get_last_error()}.")
 
         # Write lib_path into the allocated memory
         size_written = SIZE_T(0)
         result = kernel32.WriteProcessMemory(
             handle_proc, address, lib_path, len(lib_path) * 2 + 1, ctypes.byref(size_written)
         )
-        assert result, f"WriteProcessMemory failed with error {get_last_error()}."
+        if not result:
+            raise ValueError(f"WriteProcessMemory failed with error {get_last_error()}.")
 
         # Get module handle of kernel32
         handle_kernel32 = kernel32.GetModuleHandleW("kernel32.dll")
-        assert handle_kernel32, f"GetModuleHandleW failed with error {get_last_error()}."
+        if not handle_kernel32:
+            raise ValueError(f"GetModuleHandleW failed with error {get_last_error()}.")
 
         # Get address of LoadLibraryW
         load_library = kernel32.GetProcAddress(handle_kernel32, b"LoadLibraryW")
-        assert load_library, f"GetProcAddress failed with error {get_last_error()}."
+        if not load_library:
+            raise ValueError(f"GetProcAddress failed with error {get_last_error()}.")
 
         # Start a new thread in the process, starting at LoadLibraryW with address as argument
         remote_thread = kernel32.CreateRemoteThread(handle_proc, None, 0, load_library, address, 0, None)
-        assert remote_thread, f"CreateRemoteThread failed with error {get_last_error()}."
+        if not remote_thread:
+            raise ValueError(f"CreateRemoteThread failed with error {get_last_error()}.")
 
         # Wait for the remote thread to finish
-        assert (
-            kernel32.WaitForSingleObject(remote_thread, INFINITE) != 0xFFFFFFFF
-        ), f"WaitForSingleObject failed with error {get_last_error()}."
+        if kernel32.WaitForSingleObject(remote_thread, INFINITE) == 0xFFFFFFFF:
+            raise ValueError(f"WaitForSingleObject failed with error {get_last_error()}.")
 
         # Reopen the handle to process thread (which was closed by subprocess.Popen)
         snapshot = kernel32.CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0)
-        assert snapshot != INVALID_HANDLE_VALUE, f"CreateToolhelp32Snapshot failed with error {get_last_error()}."
+        if snapshot == INVALID_HANDLE_VALUE:
+            raise ValueError(f"CreateToolhelp32Snapshot failed with error {get_last_error()}.")
 
         thread_entry = THREADENTRY32()
         thread_entry.dwSize = ctypes.sizeof(thread_entry)
         success = kernel32.Thread32First(snapshot, ctypes.byref(thread_entry))
-        assert success, f"Thread32First failed with error {get_last_error()}."
+        if not success:
+            raise ValueError(f"Thread32First failed with error {get_last_error()}.")
 
         handle_thread = None
         while success:
@@ -160,7 +166,8 @@ class WindowsBootstrap(Bootstrap):
 
             success = kernel32.Thread32Next(snapshot, ctypes.byref(thread_entry))
 
-        assert handle_thread is not None, f"OpenThread failed with error {get_last_error()}."
+        if handle_thread is None:
+            raise ValueError(f"OpenThread failed with error {get_last_error()}.")
 
         # Resume main thread execution
         kernel32.ResumeThread(handle_thread)
