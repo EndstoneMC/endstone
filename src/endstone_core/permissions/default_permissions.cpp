@@ -38,6 +38,8 @@ void DefaultPermissions::registerCorePermissions()
     auto *endstone = registerPermission("endstone", nullptr,
                                         "Gives the user the ability to use all Endstone utilities and commands");
     registerCommandPermissions(endstone);
+    // TODO(permission): registerBroadcastPermissions (endstone.broadcast)
+    endstone->recalculatePermissibles();
 }
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)
@@ -48,6 +50,7 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
     registerPermission("endstone.command.version", command, "Allows the user to view the version of the server",
                        PermissionDefault::True);
+    command->recalculatePermissibles();
 }
 
 }  // namespace endstone::detail
