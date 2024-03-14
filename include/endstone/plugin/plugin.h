@@ -151,9 +151,9 @@ public:
      * unordered_map.
      * @return A pointer to the registered Permission.
      */
-    [[nodiscard]] Permission *registerPermission(const std::string &name, const std::string &description = "",
-                                                 PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
-                                                 const std::unordered_map<std::string, bool> &children = {}) const
+    Permission *registerPermission(const std::string &name, const std::string &description = "",
+                                   PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
+                                   const std::unordered_map<std::string, bool> &children = {}) const
     {
         return registerPermission(nullptr, name, description, default_value, children);
     }
@@ -169,13 +169,12 @@ public:
      * unordered_map.
      * @return A pointer to the registered Permission.
      */
-    [[nodiscard]] Permission *registerPermission(Permission *parent, const std::string &name,
-                                                 const std::string &description = "",
-                                                 PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
-                                                 const std::unordered_map<std::string, bool> &children = {}) const
+    Permission *registerPermission(Permission *parent, const std::string &name, const std::string &description = "",
+                                   PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
+                                   const std::unordered_map<std::string, bool> &children = {}) const
     {
         auto *perm = getServer().getPluginManager().addPermission(
-            std::make_shared<Permission>(name, description, default_value, children));
+            std::make_unique<Permission>(name, description, default_value, children));
         if (parent != nullptr && perm != nullptr) {
             parent->getChildren()[perm->getName()] = true;
         }
