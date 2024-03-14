@@ -18,18 +18,18 @@
 struct CommandFlag {
     uint16_t value;
     static const CommandFlag NONE;
-    static const CommandFlag HIDE_FROM_BLOCK;
-    static const CommandFlag HIDE_FROM_PLAYER;
-    static const CommandFlag HIDE_FROM_AUTOMATION;
+    static const CommandFlag HIDDEN_FROM_BLOCK;
+    static const CommandFlag HIDDEN_FROM_PLAYER;
+    static const CommandFlag HIDDEN_FROM_AUTOMATION;
     static const CommandFlag LOCAL_ONLY;          // Will not send the command to clients
     static const CommandFlag COMMUNICATION;       // Will check if the executor has permission to chat
     static const CommandFlag NOT_REQUIRE_CHEAT;   // Will be usable in a level with require-cheats enabled
     static const CommandFlag DISABLED_IN_EDITOR;  // Will be disabled if inside a level editor
 };
 inline const CommandFlag CommandFlag::NONE = {0};
-inline const CommandFlag CommandFlag::HIDE_FROM_BLOCK = {1 << 1};
-inline const CommandFlag CommandFlag::HIDE_FROM_PLAYER = {1 << 2};
-inline const CommandFlag CommandFlag::HIDE_FROM_AUTOMATION = {1 << 3};
+inline const CommandFlag CommandFlag::HIDDEN_FROM_BLOCK = {1 << 1};
+inline const CommandFlag CommandFlag::HIDDEN_FROM_PLAYER = {1 << 2};
+inline const CommandFlag CommandFlag::HIDDEN_FROM_AUTOMATION = {1 << 3};
 inline const CommandFlag CommandFlag::LOCAL_ONLY = {1 << 4};
 inline const CommandFlag CommandFlag::COMMUNICATION = {1 << 6};
 inline const CommandFlag CommandFlag::NOT_REQUIRE_CHEAT = {1 << 7};
