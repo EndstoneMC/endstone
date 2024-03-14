@@ -24,14 +24,11 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/command/command_flag.h"
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/command/command_version.h"
 #include "bedrock/type_id.h"
-
-struct CommandFlag {
-    uint16_t value;
-};
 
 enum SemanticConstraint : uint8_t;
 
@@ -84,14 +81,14 @@ public:
         std::string name;                                  // +0
         std::string description;                           // +32
         std::vector<CommandRegistry::Overload> overloads;  // +64
-        char unknown1[24];                                 // +88
+        std::vector<int> subcommand_values;                // +88
         CommandPermissionLevel permission_level;           // +112
         CommandRegistry::Symbol symbol;                    // +116
-        int32_t unknown2;                                  // +120
+        CommandRegistry::Symbol enum_symbol;               // +120
         CommandFlag command_flag;                          // +124
-        int32_t unknown3;                                  // +128
-        int32_t unknown4;                                  // +132
-        int32_t unknown5;                                  // +136
+        int unknown3;                                      // +128
+        int symbol_index;                                  // +132
+        int optional_index;                                // +136
         char unknown6;                                     // +140
         int64_t unknown7;                                  // +144
     };

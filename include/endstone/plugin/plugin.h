@@ -191,6 +191,10 @@ public:
             return false;
         }
 
+        if (!testPermission(sender)) {
+            return true;
+        }
+
         try {
             return getExecutor().onCommand(sender, *this, args);
         }
