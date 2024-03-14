@@ -23,8 +23,8 @@
 
 #include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
-#include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_default.h"
+#include "endstone/permissions/permissions.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
 

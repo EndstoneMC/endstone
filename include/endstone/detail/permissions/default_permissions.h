@@ -20,13 +20,13 @@
 
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
-#include "endstone/permissions/permission.h"
+#include "endstone/permissions/permissions.h"
 
 namespace endstone::detail {
 
 class DefaultPermissions {
 public:
-    static Permission *registerPermission(const std::shared_ptr<Permission> &perm, Permission *parent = nullptr);
+    static Permission *registerPermission(std::unique_ptr<Permission> perm, Permission *parent = nullptr);
 
     static Permission *registerPermission(const std::string &name, Permission *parent = nullptr,
                                           const std::string &desc = "",

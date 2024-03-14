@@ -16,10 +16,10 @@
 
 namespace endstone::detail {
 
-Permission *DefaultPermissions::registerPermission(const std::shared_ptr<Permission> &perm, Permission *parent)
+Permission *DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm, Permission *parent)
 {
     auto &server = Singleton<EndstoneServer>::getInstance();
-    auto *result = server.getPluginManager().addPermission(perm);
+    auto *result = server.getPluginManager().addPermission(std::move(perm));
     if (parent != nullptr && result != nullptr) {
         parent->getChildren()[result->getName()] = true;
     }
@@ -30,7 +30,7 @@ Permission *DefaultPermissions::registerPermission(const std::string &name, Perm
                                                    PermissionDefault default_value,
                                                    const std::unordered_map<std::string, bool> &children)
 {
-    return registerPermission(std::make_shared<Permission>(name, desc, default_value, children), parent);
+    return registerPermission(std::make_unique<Permission>(name, desc, default_value, children), parent);
 }
 
 void DefaultPermissions::registerCorePermissions()

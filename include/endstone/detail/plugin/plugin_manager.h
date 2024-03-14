@@ -19,7 +19,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "endstone/permissions/permission.h"
+#include "endstone/permissions/permissions.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -45,7 +45,7 @@ public:
 
     /** Permission system */
     [[nodiscard]] Permission *getPermission(std::string name) const override;
-    Permission *addPermission(std::shared_ptr<Permission> perm) override;
+    Permission *addPermission(std::unique_ptr<Permission> perm) override;
     void removePermission(Permission &perm) override;
     void removePermission(std::string name) override;
     [[nodiscard]] std::unordered_set<Permission *> getDefaultPermissions(bool op) const override;
@@ -65,7 +65,7 @@ private:
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
-    std::unordered_map<std::string, std::shared_ptr<Permission>> permissions_;
+    std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
     std::unordered_map<bool, std::unordered_set<Permission *>> default_perms_;
     std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> perm_subs_;
     std::unordered_map<bool, std::unordered_map<Permissible *, bool>> def_subs_;
