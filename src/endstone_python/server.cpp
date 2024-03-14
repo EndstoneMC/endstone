@@ -18,6 +18,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/logger.h"
+#include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_manager.h"
 
 namespace py = pybind11;

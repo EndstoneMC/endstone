@@ -17,11 +17,14 @@
 #include <algorithm>
 #include <memory>
 #include <string>
+#include <unordered_map>
 #include <utility>
 #include <vector>
 
 #include "endstone/command/command_executor.h"
 #include "endstone/logger.h"
+#include "endstone/permissions/permission.h"
+#include "endstone/permissions/permission_default.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
 
@@ -136,6 +139,47 @@ public:
         return getServer().registerPluginCommand(
             std::make_unique<PluginCommand>(*this, std::move(name), std::move(description), std::move(usages),
                                             std::move(aliases), std::move(permissions)));
+    }
+
+    /**
+     * Registers a new Permission.
+     *
+     * @param name The name of the permission.
+     * @param description The description of the permission. Default is an empty string.
+     * @param default_value The default value of the permission. Default is DEFAULT_PERMISSION.
+     * @param children An unordered_map containing child permissions and their bool values. Default is an empty
+     * unordered_map.
+     * @return A pointer to the registered Permission.
+     */
+    [[nodiscard]] Permission *registerPermission(const std::string &name, const std::string &description = "",
+                                                 PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
+                                                 const std::unordered_map<std::string, bool> &children = {}) const
+    {
+        return registerPermission(nullptr, name, description, default_value, children);
+    }
+
+    /**
+     * Registers a new Permission.
+     *
+     * @param parent A pointer to the parent Permission.
+     * @param name The name of the permission.
+     * @param description The description of the permission. Default is an empty string.
+     * @param default_value The default value of the permission. Default is DEFAULT_PERMISSION.
+     * @param children An unordered_map containing child permissions and their bool values. Default is an empty
+     * unordered_map.
+     * @return A pointer to the registered Permission.
+     */
+    [[nodiscard]] Permission *registerPermission(Permission *parent, const std::string &name,
+                                                 const std::string &description = "",
+                                                 PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
+                                                 const std::unordered_map<std::string, bool> &children = {}) const
+    {
+        auto *perm = getServer().getPluginManager().addPermission(
+            std::make_shared<Permission>(name, description, default_value, children));
+        if (parent != nullptr && perm != nullptr) {
+            parent->getChildren()[perm->getName()] = true;
+        }
+        return perm;
     }
 
     /**

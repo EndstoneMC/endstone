@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "endstone/detail/command/server_command_sender.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 

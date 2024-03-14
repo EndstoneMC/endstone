@@ -20,8 +20,8 @@ Permission *DefaultPermissions::registerPermission(const std::shared_ptr<Permiss
 {
     auto &server = Singleton<EndstoneServer>::getInstance();
     auto *result = server.getPluginManager().addPermission(perm);
-    if (parent != nullptr) {
-        parent->getChildren()[perm->getName()] = true;
+    if (parent != nullptr && result != nullptr) {
+        parent->getChildren()[result->getName()] = true;
     }
     return result;
 }

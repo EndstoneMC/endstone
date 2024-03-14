@@ -18,13 +18,12 @@
 #include <string>
 #include <vector>
 
-#include "endstone/permissions/permissible.h"
-#include "endstone/plugin/plugin.h"
-#include "endstone/plugin/plugin_loader.h"
-
 namespace endstone {
 
 class Permission;
+class Permissible;
+class Plugin;
+class PluginLoader;
 
 class PluginManager {
 public:
