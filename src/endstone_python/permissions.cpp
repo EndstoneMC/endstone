@@ -21,18 +21,14 @@
 #include "endstone/permissions/permission_attachment.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_default.h"
-#include "endstone/permissions/server_operator.h"
 #include "endstone/plugin/plugin.h"
 
 namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_permissions(py::module &m)
+void init_permissions(py::module &m, py::class_<Permissible> &permissible)
 {
-    py::class_<ServerOperator>(m, "ServerOperator")
-        .def_property("op", &ServerOperator::isOp, &ServerOperator::setOp, "The operator status of this object");
-
     py::enum_<PermissionDefault>(m, "PermissionDefault")
         .value("TRUE", PermissionDefault::True)
         .value("FALSE", PermissionDefault::False)
@@ -41,7 +37,7 @@ void init_permissions(py::module &m)
         .value("NOT_OP", PermissionDefault::Operator)
         .value("NOT_OPERATOR", PermissionDefault::NotOperator);
 
-    py::class_<Permissible, ServerOperator>(m, "Permissible")
+    permissible.def_property("op", &Permissible::isOp, &Permissible::setOp, "The operator status of this object")
         .def("is_permission_set", py::overload_cast<std::string>(&Permissible::isPermissionSet, py::const_),
              py::arg("name"), "Checks if a permissions is set by name.")
         .def("is_permission_set", py::overload_cast<const Permission &>(&Permissible::isPermissionSet, py::const_),

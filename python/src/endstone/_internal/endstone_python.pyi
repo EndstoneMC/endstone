@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server', 'ServerOperator']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -98,7 +98,7 @@ class CommandExecutor:
         """
         Executes the given command, returning its success.
         """
-class CommandSender:
+class CommandSender(Permissible):
     def send_message(self, message: str) -> None:
         """
         Sends this sender a message
@@ -206,7 +206,7 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
-class Permissible(ServerOperator):
+class Permissible:
     @typing.overload
     def add_attachment(self, plugin: Plugin, name: str, value: bool) -> ...:
         """
@@ -250,6 +250,14 @@ class Permissible(ServerOperator):
         """
         Gets effective permissions.
         """
+    @property
+    def op(self) -> bool:
+        """
+        The operator status of this object
+        """
+    @op.setter
+    def op(self, arg1: bool) -> None:
+        ...
 class PermissionDefault:
     """
     Members:
@@ -483,12 +491,3 @@ class Server:
         """
         Gets the version of this server implementation.
         """
-class ServerOperator:
-    @property
-    def op(self) -> bool:
-        """
-        The operator status of this object
-        """
-    @op.setter
-    def op(self, arg1: bool) -> None:
-        ...

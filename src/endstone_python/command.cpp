@@ -40,8 +40,7 @@ public:
 
 void init_command(py::module &m)
 {
-    // TODO: add base class Permissible
-    py::class_<CommandSender>(m, "CommandSender")
+    py::class_<CommandSender, Permissible>(m, "CommandSender")
         .def(
             "send_message",
             [](const CommandSender &sender, const std::string &message) { sender.sendMessage(message); },

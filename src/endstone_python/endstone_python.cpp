@@ -14,6 +14,7 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/permissions/permissible.h"
 #include "endstone/server.h"
 
 namespace py = pybind11;
@@ -23,7 +24,7 @@ namespace endstone::detail {
 void init_command(py::module_ &);
 void init_logger(py::module_ &);
 void init_plugin(py::module_ &);
-void init_permissions(py::module_ &);
+void init_permissions(py::module_ &, py::class_<Permissible> &permissible);
 void init_server(py::class_<Server> &server);
 void init_util(py::module_ &);
 
@@ -33,10 +34,12 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
     auto server = py::class_<Server>(m, "Server");
+    auto permissible = py::class_<Permissible>(m, "Permissible");
+
     init_command(m);
     init_logger(m);
     init_plugin(m);
-    init_permissions(m);
+    init_permissions(m, permissible);
     init_server(server);
     init_util(m);
 }
