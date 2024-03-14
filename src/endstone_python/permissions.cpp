@@ -37,6 +37,16 @@ void init_permissions(py::module &m, py::class_<Permissible> &permissible)
         .value("NOT_OP", PermissionDefault::Operator)
         .value("NOT_OPERATOR", PermissionDefault::NotOperator);
 
+    py::class_<PermissionAttachmentInfo>(m, "PermissionAttachmentInfo")
+        .def(py::init<Permissible &, std::string, PermissionAttachment *, bool>(), py::arg("permissible"),
+             py::arg("permission"), py::arg("attachment"), py::arg("value"))
+        .def_property_readonly("permissible", &PermissionAttachmentInfo::getPermissible,
+                               py::return_value_policy::reference, "Get the permissible this is attached to")
+        .def_property_readonly("permission", &PermissionAttachmentInfo::getPermission, "Gets the permission being set")
+        .def_property_readonly("attachment", &PermissionAttachmentInfo::getAttachment,
+                               py::return_value_policy::reference, "Gets the attachment providing this permission.")
+        .def_property_readonly("value", &PermissionAttachmentInfo::getValue, "Gets the value of this permission");
+
     permissible.def_property("op", &Permissible::isOp, &Permissible::setOp, "The operator status of this object")
         .def("is_permission_set", py::overload_cast<std::string>(&Permissible::isPermissionSet, py::const_),
              py::arg("name"), "Checks if a permissions is set by name.")

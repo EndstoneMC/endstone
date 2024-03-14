@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -246,7 +246,7 @@ class Permissible:
         Removes a given PermissionAttachment.
         """
     @property
-    def effective_permissions(self) -> set[...]:
+    def effective_permissions(self) -> set[PermissionAttachmentInfo]:
         """
         Gets effective permissions.
         """
@@ -258,6 +258,29 @@ class Permissible:
     @op.setter
     def op(self, arg1: bool) -> None:
         ...
+class PermissionAttachmentInfo:
+    def __init__(self, permissible: Permissible, permission: str, attachment: ..., value: bool) -> None:
+        ...
+    @property
+    def attachment(self) -> ...:
+        """
+        Gets the attachment providing this permission.
+        """
+    @property
+    def permissible(self) -> Permissible:
+        """
+        Get the permissible this is attached to
+        """
+    @property
+    def permission(self) -> str:
+        """
+        Gets the permission being set
+        """
+    @property
+    def value(self) -> bool:
+        """
+        Gets the value of this permission
+        """
 class PermissionDefault:
     """
     Members:
