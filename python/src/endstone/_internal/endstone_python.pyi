@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server', 'ServerOperator']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server', 'ServerOperator']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -205,6 +205,50 @@ class Logger:
     def name(self) -> str:
         """
         Get the name of this Logger instance.
+        """
+class Permissible(ServerOperator):
+    @typing.overload
+    def add_attachment(self, plugin: Plugin, name: str, value: bool) -> ...:
+        """
+        Adds a new PermissionAttachment.
+        """
+    @typing.overload
+    def add_attachment(self, plugin: Plugin) -> ...:
+        """
+        Adds a new PermissionAttachment.
+        """
+    @typing.overload
+    def has_permission(self, name: str) -> bool:
+        """
+        Checks if a permissions is available by name.
+        """
+    @typing.overload
+    def has_permission(self, perm: ...) -> bool:
+        """
+        Checks if a permissions is available by permission.
+        """
+    @typing.overload
+    def is_permission_set(self, name: str) -> bool:
+        """
+        Checks if a permissions is set by name.
+        """
+    @typing.overload
+    def is_permission_set(self, perm: ...) -> bool:
+        """
+        Checks if a permissions is set by permission.
+        """
+    def recalculate_permissions(self) -> None:
+        """
+        Recalculates the permissions.
+        """
+    def remove_attachment(self, attachment: ...) -> bool:
+        """
+        Removes a given PermissionAttachment.
+        """
+    @property
+    def effective_permissions(self) -> set[...]:
+        """
+        Gets effective permissions.
         """
 class PermissionDefault:
     """
