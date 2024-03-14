@@ -125,14 +125,17 @@ public:
      * @param description The description of the command. Default is an empty string.
      * @param usages A vector containing different usage examples of the command. Default is an empty vector.
      * @param aliases A vector containing different aliases for the command. Default is an empty vector.
+     * @param permissions A vector containing permissions required by users to be able to perform this command.
+     * Default is an empty vector.
      * @return A pointer to the registered PluginCommand.
      * @return a pointer to the registered plugin command
      */
     PluginCommand *registerCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                                   std::vector<std::string> aliases = {})
+                                   std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
     {
-        return getServer().registerPluginCommand(std::make_unique<PluginCommand>(
-            *this, std::move(name), std::move(description), std::move(usages), std::move(aliases)));
+        return getServer().registerPluginCommand(
+            std::make_unique<PluginCommand>(*this, std::move(name), std::move(description), std::move(usages),
+                                            std::move(aliases), std::move(permissions)));
     }
 
     /**
@@ -178,8 +181,10 @@ private:
 class PluginCommand : public Command {
 public:
     PluginCommand(Plugin &owner, std::string name, std::string description = "", std::vector<std::string> usages = {},
-                  std::vector<std::string> aliases = {})
-        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases)), owner_(owner)
+                  std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
+        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases),
+                  std::move(permissions)),
+          owner_(owner)
     {
     }
 

@@ -33,12 +33,13 @@ class PluginCommand;
 class Command {
 protected:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                     std::vector<std::string> aliases = {})
+                     std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
     {
         setName(std::move(name));
         setDescription(std::move(description));
         setUsages(std::move(usages));
         setAliases(std::move(aliases));
+        setPermission(std::move(permissions));
     }
 
 public:
