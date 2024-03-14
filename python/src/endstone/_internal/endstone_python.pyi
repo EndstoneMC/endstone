@@ -38,6 +38,14 @@ class Command:
         """
         Executes the command, returning its success
         """
+    def test_permission(self, target: CommandSender) -> bool:
+        """
+        Tests the given CommandSender to see if they can perform this command.
+        """
+    def test_permission_silently(self, target: CommandSender) -> bool:
+        """
+        Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.
+        """
     @property
     def aliases(self) -> list[str]:
         """
@@ -61,6 +69,14 @@ class Command:
         """
     @name.setter
     def name(self, arg1: str) -> bool:
+        ...
+    @property
+    def permissions(self) -> list[str]:
+        """
+        The permissions required by users to be able to perform this command
+        """
+    @permissions.setter
+    def permissions(self, arg1: list[str]) -> None:
         ...
     @property
     def registered(self) -> bool:
@@ -237,7 +253,7 @@ class Plugin(CommandExecutor):
         Returns the Server instance currently running this plugin
         """
 class PluginCommand(Command):
-    def __init__(self, plugin: Plugin, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None) -> None:
+    def __init__(self, plugin: Plugin, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None) -> None:
         ...
     def _get_executor(self) -> CommandExecutor:
         ...

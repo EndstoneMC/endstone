@@ -22,8 +22,9 @@ class PluginCommand(_PluginCommand):
         description: Optional[str] = None,
         usages: list[str] = None,
         aliases: list[str] = None,
+        permissions: list[str] = None,
     ) -> None:
-        _PluginCommand.__init__(self, plugin, name, description, usages, aliases)
+        _PluginCommand.__init__(self, plugin, name, description, usages, aliases, permissions)
         self._executor: CommandExecutor | None = None
 
     def _get_executor(self):
@@ -54,12 +55,17 @@ class Plugin(_Plugin):
         self._plugin_commands: list[PluginCommand] = []  # keep them alive
 
     def register_command(
-        self, name: str, description: str = "", usages: list[str] = None, aliases: list[str] = None
+        self,
+        name: str,
+        description: str = "",
+        usages: list[str] = None,
+        aliases: list[str] = None,
+        permissions: list[str] = None,
     ) -> PluginCommand:
         """
         Registers a new PluginCommand.
         """
-        command = PluginCommand(self, name, description, usages, aliases)
+        command = PluginCommand(self, name, description, usages, aliases, permissions)
         self._plugin_commands.append(command)
         return self.server.register_plugin_command(command)
 

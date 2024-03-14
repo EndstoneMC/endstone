@@ -53,6 +53,10 @@ void init_command(py::module &m)
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
              "Executes the command, returning its success")
+        .def("test_permission", &Command::testPermission, py::arg("target"),
+             "Tests the given CommandSender to see if they can perform this command.")
+        .def("test_permission_silently", &Command::testPermissionSilently, py::arg("target"),
+             "Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.")
         .def_property("name", &Command::getName, &Command::setName, "Name of this command.")
         .def_property("description", &Command::getDescription, &Command::setDescription,
                       "Brief description of this command")
@@ -64,6 +68,10 @@ void init_command(py::module &m)
             "usages", &Command::getUsages,
             [](Command &self, const std::vector<std::string> &usages) { self.setUsages(usages); },
             "List of usages of this command")
+        .def_property(
+            "permissions", &Command::getPermissions,
+            [](Command &self, const std::vector<std::string> &permissions) { self.setPermission(permissions); },
+            "The permissions required by users to be able to perform this command")
         .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
