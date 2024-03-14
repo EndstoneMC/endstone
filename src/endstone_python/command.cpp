@@ -31,7 +31,7 @@ class PyCommandExecutor : public CommandExecutor {
 public:
     using CommandExecutor::CommandExecutor;
 
-    bool onCommand(const CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
+    bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
         PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
                                std::ref(args));

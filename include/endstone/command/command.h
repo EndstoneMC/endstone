@@ -199,7 +199,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    bool testPermission(CommandSender &target) const
+    [[nodiscard]] bool testPermission(const CommandSender &target) const
     {
         if (testPermissionSilently(target)) {
             return true;
@@ -216,7 +216,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    bool testPermissionSilently(CommandSender &target) const
+    bool testPermissionSilently(const CommandSender &target) const
     {
         if (permissions_.empty()) {
             return true;
