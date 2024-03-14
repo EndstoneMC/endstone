@@ -25,9 +25,9 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_server(py::module &m, py::class_<Server> &server)
+void init_server(py::class_<Server> &server)
 {
-    server  //
+    server
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,

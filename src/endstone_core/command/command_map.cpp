@@ -135,9 +135,8 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
-    // TODO(permission): configure the permission level and flags
-    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any, CommandFlag::NONE,
-                             CommandFlag::NONE);
+    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
+                             CommandFlag::NOT_REQUIRE_CHEAT, CommandFlag::NONE);
     known_commands_.emplace(name, command);
 
     std::vector<std::string> registered_alias;
