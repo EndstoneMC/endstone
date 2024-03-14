@@ -14,10 +14,25 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/permissions/permission_default.h"
+#include "endstone/permissions/server_operator.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_permissions(py::module &m) {}
+void init_permissions(py::module &m)
+{
+    py::class_<ServerOperator, std::shared_ptr<ServerOperator>>(m, "ServerOperator")
+        .def_property("op", &ServerOperator::isOp, &ServerOperator::setOp, "The operator status of this object");
+
+    py::enum_<PermissionDefault>(m, "PermissionDefault")
+        .value("TRUE", PermissionDefault::True)
+        .value("FALSE", PermissionDefault::False)
+        .value("OP", PermissionDefault::Operator)
+        .value("OPERATOR", PermissionDefault::Operator)
+        .value("NOT_OP", PermissionDefault::Operator)
+        .value("NOT_OPERATOR", PermissionDefault::NotOperator);
+}
 
 }  // namespace endstone::detail

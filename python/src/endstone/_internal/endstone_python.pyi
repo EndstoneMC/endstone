@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server', 'ServerOperator']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -206,6 +206,55 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
+class PermissionDefault:
+    """
+    Members:
+
+      TRUE
+
+      FALSE
+
+      OP
+
+      OPERATOR
+
+      NOT_OP
+
+      NOT_OPERATOR
+    """
+    FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
+    NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
+    NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OPERATOR: 3>
+    OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
+    OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
+    TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
+    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.OP: 2>, 'NOT_OPERATOR': <PermissionDefault.NOT_OPERATOR: 3>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Plugin(CommandExecutor):
     def __init__(self) -> None:
         ...
@@ -390,3 +439,12 @@ class Server:
         """
         Gets the version of this server implementation.
         """
+class ServerOperator:
+    @property
+    def op(self) -> bool:
+        """
+        The operator status of this object
+        """
+    @op.setter
+    def op(self, arg1: bool) -> None:
+        ...
