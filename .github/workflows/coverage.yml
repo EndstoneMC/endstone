@@ -64,6 +64,6 @@ jobs:
           gcovr -r . --filter src/ --gcov-executable "llvm-cov gcov" --xml coverage.xml build/Debug
 
       - name: Upload Coverage Reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
