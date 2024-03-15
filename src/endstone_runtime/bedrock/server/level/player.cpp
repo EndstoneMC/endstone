@@ -30,5 +30,6 @@ void Player::setPermissions(CommandPermissionLevel level)
     auto &server = Singleton<EndstoneServer>::getInstance();
     auto &registry = server.getMinecraftCommands().getRegistry();
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
+    // TODO: use virtual function Player::sendNetworkPacket instead of this
     getPacketSender().send(packet);
 }

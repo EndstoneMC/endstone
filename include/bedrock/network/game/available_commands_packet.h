@@ -17,15 +17,26 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/command/command_flag.h"
 #include "bedrock/network/packet.h"
 
 class AvailableCommandsPacket : public Packet {
 public:
-    class CommandData;
-    class ChainedSubcommandData;
-    class EnumData;
-    class SoftEnumData;
-    class ConstrainedValueData;
+    struct OverloadData;
+    struct ChainedSubcommandData;
+    struct EnumData;
+    struct SoftEnumData;
+    struct ConstrainedValueData;
+    struct CommandData {
+        std::string name;                         // +0
+        std::string description;                  // +32
+        CommandFlag command_flag;                 // +64
+        CommandPermissionLevel permission_level;  // +66
+        std::vector<void *> overloads;            // +72 std::vector<OverloadData>
+        std::vector<int> subcommand_values;       // +96
+        int enum_symbol_index = -1;               // +120
+    };
+    // static_assert(sizeof(CommandData) == 128);
 
     ~AvailableCommandsPacket() override = default;
 
@@ -37,10 +48,10 @@ public:
     int unknown6;                               // +40
     std::vector<std::string> enum_names;        // +48
     std::vector<std::string> subcommand_names;  // +72
-    char enums[24];                             // +96  std::vector<EnumData>
+    std::vector<void *> enums;                  // +96  std::vector<EnumData>
     std::vector<std::string> postfixes;         // +120
-    char chained_subcommands[24];               // +144 std::vector<ChainedSubcommandData>
-    char commands[24];                          // +168 std::vector<CommandData>
-    char soft_enums[24];                        // +192 std::vector<SoftEnumData>
-    char constrained_values[24];                // +216 std::vector<ConstrainedValueData>
+    std::vector<void *> chained_subcommands;    // +144 std::vector<ChainedSubcommandData>
+    std::vector<CommandData> commands;          // +168 std::vector<CommandData>
+    std::vector<void *> soft_enums;             // +192 std::vector<SoftEnumData>
+    std::vector<void *> constrained_values;     // +216 std::vector<ConstrainedValueData>
 };
