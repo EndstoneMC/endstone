@@ -14,9 +14,12 @@
 
 #include "endstone/detail/command/bedrock_command.h"
 
-bool endstone::detail::BedrockCommand::execute(endstone::CommandSender &sender,
-                                               const std::vector<std::string> &args) const
+namespace endstone::detail {
+
+bool BedrockCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     sender.sendErrorMessage("Command '/{}' is provided by Bedrock Dedicated Server and is not executable.", getName());
     return false;
 }
+
+}  // namespace endstone::detail
