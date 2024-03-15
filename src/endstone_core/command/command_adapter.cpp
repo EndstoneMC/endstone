@@ -44,19 +44,16 @@ std::string CommandSenderAdapter::getName() const
 bool CommandSenderAdapter::isOp() const
 {
     switch (origin_.getPermissionsLevel()) {
-    case CommandPermissionLevel::Admin:
-    case CommandPermissionLevel::Host:
-    case CommandPermissionLevel::Owner:
-    case CommandPermissionLevel::Internal:
-        return true;
-    default:
+    case CommandPermissionLevel::Any:
         return false;
+    default:
+        return true;
     }
 }
 
 void CommandSenderAdapter::setOp(bool value)
 {
-    getServer().getLogger().error("Changing the operator status of CommandSenderAdapter is not supported.");
+    getServer().getLogger().error("Changing the operator status of {} is not supported.", getName());
 }
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
