@@ -63,9 +63,9 @@ jobs:
           pytest python/tests
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: artifact
+          name: endstone-wheels-windows-python${{ matrix.python }}
           path: ./wheelhouse/*.whl
 
   build_wheels_linux:
@@ -133,9 +133,9 @@ jobs:
           pytest python/tests
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: artifact
+          name: endstone-wheels-linux-python${{ matrix.python }}
           path: ./wheelhouse/*.whl
 
   build_sdist:
@@ -151,9 +151,9 @@ jobs:
         run: pipx run build --sdist
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: artifact
+          name: endstone-sdist
           path: dist/*.tar.gz
 
   publish:
@@ -168,10 +168,11 @@ jobs:
 
     steps:
       - name: Restore Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: artifact
+          pattern: endstone-*
           path: dist
+          merge-multiple: true
 
       - name: Create a Release
         uses: softprops/action-gh-release@v1
