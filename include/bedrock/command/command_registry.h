@@ -28,6 +28,7 @@
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/command/command_version.h"
+#include "bedrock/network/game/available_commands_packet.h"
 #include "bedrock/type_id.h"
 
 enum SemanticConstraint : uint8_t;
@@ -126,6 +127,7 @@ public:
                                      CommandFlag flag1, CommandFlag flag2);
     BEDROCK_API void registerAlias(std::string name, std::string alias);
     BEDROCK_API int addEnumValues(const std::string &name, const std::vector<std::string> &values);
+    [[nodiscard]] BEDROCK_API AvailableCommandsPacket serializeAvailableCommands() const;
 
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
@@ -170,7 +172,7 @@ public:
     std::map<std::string, CommandRegistry::Symbol> enum_symbols;                            // +352
     std::map<std::string, int> subcommand_symbol_index;                                     // +368
     std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                      // +384
-    std::vector<void *> unknown7;                                                           // +400
+    std::vector<CommandRegistry::Symbol> command_symbols;                                   // +400
     std::map<std::string, CommandRegistry::Signature> commands;                             // +424
     std::map<Bedrock::typeid_t<CommandRegistry>, int> type_ids;                             // +440
     std::map<std::string, std::string> aliases;                                             // +456
