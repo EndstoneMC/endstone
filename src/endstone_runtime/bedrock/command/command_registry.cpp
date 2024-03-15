@@ -121,6 +121,13 @@ int CommandRegistry::addEnumValues(const std::string &name, const std::vector<st
     return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::addEnumValues, this, name, values);
 }
 
+AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
+{
+    AvailableCommandsPacket result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::serializeAvailableCommands, result, this);
+    return result;
+}
+
 const CommandRegistry::Symbol CommandRegistry::Symbol::INT{0x100001};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FLOAT{0x100003};
 const CommandRegistry::Symbol CommandRegistry::Symbol::RELATIVE_FLOAT{0x100004};
