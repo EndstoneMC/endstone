@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstddef>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/network/packet_sender.h"
