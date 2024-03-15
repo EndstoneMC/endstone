@@ -14,6 +14,7 @@
 
 #include "endstone/permissions/permissions.h"
 
+#include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -36,6 +37,28 @@ void init_permissions(py::module &m, py::class_<Permissible> &permissible)
         .value("OPERATOR", PermissionDefault::Operator)
         .value("NOT_OP", PermissionDefault::Operator)
         .value("NOT_OPERATOR", PermissionDefault::NotOperator);
+
+    py::class_<PermissionAttachment>(m, "PermissionAttachment")
+        .def(py::init<Plugin &, Permissible &>(), py::arg("plugin"), py::arg("permissible"))
+        .def_property_readonly("plugin", &PermissionAttachment::getPlugin, py::return_value_policy::reference,
+                               "Gets the plugin responsible for this attachment.")
+        .def("remove", &PermissionAttachment::remove, "Removes this attachment from its registered Permissible.")
+        .def_property_readonly("permissible", &PermissionAttachment::getPermissible, py::return_value_policy::reference,
+                               "Gets the Permissible that this is attached to.")
+        .def_property_readonly("permissions", &PermissionAttachment::getPermissions,
+                               py::return_value_policy::reference_internal,
+                               "Gets a copy of all set permissions and values contained within this attachment.")
+        .def("set_permission", py::overload_cast<std::string, bool>(&PermissionAttachment::setPermission),
+             py::arg("name"), py::arg("value"), "Sets a permission to the given value, by its fully qualified name.")
+        .def("set_permission", py::overload_cast<Permission &, bool>(&PermissionAttachment::setPermission),
+             py::arg("perm"), py::arg("value"), "Sets a permission to the given value.")
+        .def("unset_permission", py::overload_cast<std::string>(&PermissionAttachment::unsetPermission),
+             py::arg("name"), "Removes the specified permission from this attachment by name.")
+        .def("unset_permission", py::overload_cast<Permission &>(&PermissionAttachment::unsetPermission),
+             py::arg("perm"), "Removes the specified permission from this attachment.")
+        .def_property("removal_callback", &PermissionAttachment::getRemovalCallback,
+                      &PermissionAttachment::setRemovalCallback,
+                      "The callback to be called when this attachment is removed.");
 
     py::class_<PermissionAttachmentInfo>(m, "PermissionAttachmentInfo")
         .def(py::init<Permissible &, std::string, PermissionAttachment *, bool>(), py::arg("permissible"),

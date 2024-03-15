@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -208,12 +208,12 @@ class Logger:
         """
 class Permissible:
     @typing.overload
-    def add_attachment(self, plugin: Plugin, name: str, value: bool) -> ...:
+    def add_attachment(self, plugin: Plugin, name: str, value: bool) -> PermissionAttachment:
         """
         Adds a new PermissionAttachment.
         """
     @typing.overload
-    def add_attachment(self, plugin: Plugin) -> ...:
+    def add_attachment(self, plugin: Plugin) -> PermissionAttachment:
         """
         Adds a new PermissionAttachment.
         """
@@ -241,7 +241,7 @@ class Permissible:
         """
         Recalculates the permissions.
         """
-    def remove_attachment(self, attachment: ...) -> bool:
+    def remove_attachment(self, attachment: PermissionAttachment) -> bool:
         """
         Removes a given PermissionAttachment.
         """
@@ -258,11 +258,61 @@ class Permissible:
     @op.setter
     def op(self, arg1: bool) -> None:
         ...
+class PermissionAttachment:
+    def __init__(self, plugin: Plugin, permissible: Permissible) -> None:
+        ...
+    def remove(self) -> bool:
+        """
+        Removes this attachment from its registered Permissible.
+        """
+    @typing.overload
+    def set_permission(self, name: str, value: bool) -> None:
+        """
+        Sets a permission to the given value, by its fully qualified name.
+        """
+    @typing.overload
+    def set_permission(self, perm: ..., value: bool) -> None:
+        """
+        Sets a permission to the given value.
+        """
+    @typing.overload
+    def unset_permission(self, name: str) -> None:
+        """
+        Removes the specified permission from this attachment by name.
+        """
+    @typing.overload
+    def unset_permission(self, perm: ...) -> None:
+        """
+        Removes the specified permission from this attachment.
+        """
+    @property
+    def permissible(self) -> Permissible:
+        """
+        Gets the Permissible that this is attached to.
+        """
+    @property
+    def permissions(self) -> dict[str, bool]:
+        """
+        Gets a copy of all set permissions and values contained within this attachment.
+        """
+    @property
+    def plugin(self) -> Plugin:
+        """
+        Gets the plugin responsible for this attachment.
+        """
+    @property
+    def removal_callback(self) -> typing.Callable[[PermissionAttachment], None]:
+        """
+        The callback to be called when this attachment is removed.
+        """
+    @removal_callback.setter
+    def removal_callback(self, arg1: typing.Callable[[PermissionAttachment], None]) -> None:
+        ...
 class PermissionAttachmentInfo:
-    def __init__(self, permissible: Permissible, permission: str, attachment: ..., value: bool) -> None:
+    def __init__(self, permissible: Permissible, permission: str, attachment: PermissionAttachment, value: bool) -> None:
         ...
     @property
-    def attachment(self) -> ...:
+    def attachment(self) -> PermissionAttachment:
         """
         Gets the attachment providing this permission.
         """
