@@ -25,11 +25,10 @@ void Player::setPermissions(CommandPermissionLevel level)
     using endstone::detail::Singleton;
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
+    // TODO: refactor this into endstone::Player::sendCommands or endstone::Server::syncCommands
     // TODO: set command flags (hidden) based on testPermissionSilently results
     auto &server = Singleton<EndstoneServer>::getInstance();
     auto &registry = server.getMinecraftCommands().getRegistry();
-    printf("Sending AvailableCommandsPacket\n");
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
     getPacketSender().send(packet);
-    printf("Sent AvailableCommandsPacket\n");
 }
