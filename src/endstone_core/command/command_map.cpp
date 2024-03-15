@@ -38,15 +38,20 @@ EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
     setDefaultCommands();
 }
 
-// void EndstoneCommandMap::clearCommands()
-// {
-//     std::lock_guard lock(mutex_);
-//     for (const auto &item : known_commands_) {
-//         item.second->unregisterFrom(*this);
-//     }
-//     known_commands_.clear();
-//     setDefaultCommands();
-// }
+void EndstoneCommandMap::clearCommands()
+{
+    std::lock_guard lock(mutex_);
+    for (auto it = known_commands_.begin(); it != known_commands_.end();) {
+        // Only remove plugin commands
+        if (it->second->asPluginCommand() != nullptr) {
+            it->second->unregisterFrom(*this);
+            it = known_commands_.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+}
 
 Command *EndstoneCommandMap::getCommand(std::string name) const
 {
@@ -127,11 +132,8 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     }
 
     auto name = command->getName();
-    {
-        auto it = known_commands_.find(name);
-        if (it != known_commands_.end() && it->second->getName() == it->first) {
-            return false;  // the name was registered and is not an alias, we don't replace it
-        }
+    if (auto it = known_commands_.find(name); it != known_commands_.end() && it->second->getName() == it->first) {
+        return false;  // the name was registered and is not an alias, we don't replace it
     }
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
