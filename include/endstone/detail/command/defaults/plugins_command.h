@@ -14,10 +14,10 @@
 
 #pragma once
 
-#include "endstone/command/command.h"
+#include "endstone/detail/command/endstone_command.h"
 
 namespace endstone::detail {
-class PluginsCommand : public Command {
+class PluginsCommand : public EndstoneCommand {
 public:
     PluginsCommand();
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;

@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/command_view.h"
+#include "endstone/detail/command/bedrock_command.h"
 
-bool endstone::detail::CommandView::execute(endstone::CommandSender &sender, const std::vector<std::string> &args) const
+bool endstone::detail::BedrockCommand::execute(endstone::CommandSender &sender,
+                                               const std::vector<std::string> &args) const
 {
-    sender.sendErrorMessage("Command view of '/{}' is not executable.", getName());
+    sender.sendErrorMessage("Command '/{}' is provided by Bedrock Dedicated Server and is not executable.", getName());
     return false;
 }

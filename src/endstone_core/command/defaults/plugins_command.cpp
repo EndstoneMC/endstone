@@ -24,7 +24,8 @@
 #include "endstone/util/color_format.h"
 
 namespace endstone::detail {
-PluginsCommand::PluginsCommand() : Command("plugins")
+
+PluginsCommand::PluginsCommand() : EndstoneCommand("plugins")
 {
     setDescription("Gets a list of plugins running on the server");
     setUsages("/plugins");

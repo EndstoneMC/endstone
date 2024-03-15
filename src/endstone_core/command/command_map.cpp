@@ -23,9 +23,9 @@
 #include "bedrock/command/command_registry.h"
 #include "bedrock/i18n.h"
 #include "bedrock/type_id.h"
+#include "endstone/detail/command/bedrock_command.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
-#include "endstone/detail/command/command_view.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
 #include "endstone/detail/server.h"
@@ -92,7 +92,7 @@ void EndstoneCommandMap::setMinecraftCommands()
             aliases.insert(aliases.end(), it->second.begin(), it->second.end());
         }
 
-        auto command = std::make_unique<CommandView>(command_name, description, usages, aliases);
+        auto command = std::make_unique<BedrockCommand>(command_name, description, usages, aliases);
         command->registerTo(*this);
 
         known_commands_.emplace(signature.name, std::move(command));

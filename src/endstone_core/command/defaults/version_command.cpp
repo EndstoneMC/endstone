@@ -20,7 +20,8 @@
 #include "endstone/util/color_format.h"
 
 namespace endstone::detail {
-VersionCommand::VersionCommand() : Command("version")
+
+VersionCommand::VersionCommand() : EndstoneCommand("version")
 {
     setDescription("Gets the version of this server including any plugins in use.");
     setUsages("/version", "/version ()[plugin: PluginName]");

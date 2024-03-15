@@ -16,16 +16,8 @@
 
 #include "endstone/command/command.h"
 namespace endstone::detail {
-/**
- * Represents a view of a Command that is not defined by us, typically the vanilla command
- */
-class CommandView : public Command {
-public:
-    explicit CommandView(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                         std::vector<std::string> aliases = {})
-        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases))
-    {
-    }
-    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+class EndstoneCommand : public Command {
+protected:
+    using Command::Command;
 };
 }  // namespace endstone::detail

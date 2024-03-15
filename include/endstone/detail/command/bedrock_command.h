@@ -14,19 +14,18 @@
 
 #pragma once
 
-#include "endstone/detail/command/endstone_command.h"
-#include "endstone/plugin/plugin.h"
-
+#include "endstone/command/command.h"
 namespace endstone::detail {
-
-class VersionCommand : public EndstoneCommand {
+/**
+ * Represents a view of a Command provided by Bedrock Dedicated Server
+ */
+class BedrockCommand : public Command {
 public:
-    VersionCommand();
+    explicit BedrockCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                            std::vector<std::string> aliases = {})
+        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases))
+    {
+    }
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
-
-private:
-    void describeToSender(Plugin &plugin, CommandSender &sender) const;
-    [[nodiscard]] std::string getNameList(const std::vector<std::string> &names) const;
 };
-
 }  // namespace endstone::detail
