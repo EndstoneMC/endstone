@@ -17,6 +17,45 @@
 
 struct CommandFlag {
     uint16_t value;
+    // bitwise OR
+    CommandFlag operator|(const CommandFlag &flag) const
+    {
+        return CommandFlag{static_cast<uint16_t>(value | flag.value)};
+    }
+    // bitwise AND
+    CommandFlag operator&(const CommandFlag &flag) const
+    {
+        return CommandFlag{static_cast<uint16_t>(value & flag.value)};
+    }
+    // bitwise XOR
+    CommandFlag operator^(const CommandFlag &flag) const
+    {
+        return CommandFlag{static_cast<uint16_t>(value ^ flag.value)};
+    }
+    // bitwise NOT
+    CommandFlag operator~() const
+    {
+        return CommandFlag{static_cast<uint16_t>(~value)};
+    }
+    // assignment OR
+    CommandFlag &operator|=(const CommandFlag &flag)
+    {
+        value |= flag.value;
+        return *this;
+    }
+    // assignment AND
+    CommandFlag &operator&=(const CommandFlag &flag)
+    {
+        value &= flag.value;
+        return *this;
+    }
+    // assignment XOR
+    CommandFlag &operator^=(const CommandFlag &flag)
+    {
+        value ^= flag.value;
+        return *this;
+    }
+
     static const CommandFlag NONE;
     static const CommandFlag HIDDEN_FROM_BLOCK;
     static const CommandFlag HIDDEN_FROM_PLAYER;
