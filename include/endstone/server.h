@@ -60,14 +60,6 @@ public:
     [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
 
     /**
-     * Registers a new PluginCommand.
-     *
-     * @param command the command to be registered
-     * @return a pointer to the registered plugin command
-     */
-    [[nodiscard]] virtual PluginCommand *registerPluginCommand(std::shared_ptr<PluginCommand> command) const = 0;
-
-    /**
      * Gets a CommandSender for this server.
      *
      * @return a console command sender

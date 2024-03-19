@@ -19,6 +19,7 @@
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
@@ -94,15 +95,6 @@ PluginManager &EndstoneServer::getPluginManager() const
 PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 {
     return command_map_->getCommand(name)->asPluginCommand();
-}
-
-PluginCommand *EndstoneServer::registerPluginCommand(std::shared_ptr<PluginCommand> command) const
-{
-    auto name = command->getName();
-    if (command_map_->registerCommand(command)) {
-        return getPluginCommand(name);
-    }
-    return nullptr;
 }
 
 CommandSender &EndstoneServer::getCommandSender() const
