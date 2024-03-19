@@ -17,6 +17,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/command/plugin_command.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -34,8 +35,6 @@ void init_server(py::class_<Server> &server)
                                "Gets the plugin manager for interfacing with plugins.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
              "Gets a PluginCommand with the given name or alias.")
-        .def("register_plugin_command", &Server::registerPluginCommand, py::arg("command"),
-             "Registers a new PluginCommand.")
         .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,

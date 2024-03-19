@@ -17,6 +17,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/command/plugin_command.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -109,40 +110,8 @@ public:
     }
 };
 
-class PyPluginCommand : public PluginCommand {
-public:
-    using PluginCommand::PluginCommand;
-
-    void setExecutor(std::shared_ptr<CommandExecutor> executor) override
-    {
-        PYBIND11_OVERRIDE_NAME(void, PluginCommand, "_set_executor", setExecutor, executor);
-    }
-
-    [[nodiscard]] CommandExecutor &getExecutor() const override
-    {
-        PYBIND11_OVERRIDE_NAME(CommandExecutor &, PluginCommand, "_get_executor", getExecutor);
-    }
-};
-
-namespace {
-PyPluginCommand createPluginCommand(Plugin &owner, std::string name, const std::optional<std::string> &description,
-                                    const std::optional<std::vector<std::string>> &usages,
-                                    const std::optional<std::vector<std::string>> &aliases,
-                                    const std::optional<std::vector<std::string>> &permissions)
-{
-    return {owner,
-            std::move(name),
-            description.value_or(""),
-            usages.value_or(std::vector<std::string>()),
-            aliases.value_or(std::vector<std::string>()),
-            permissions.value_or(std::vector<std::string>())};
-}
-}  // namespace
-
 void init_plugin(py::module &m)
 {
-    auto plugin_command =
-        py::class_<PluginCommand, Command, PyPluginCommand, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
     auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
     py::class_<PluginDescription>(m, "PluginDescription")
@@ -176,13 +145,6 @@ void init_plugin(py::module &m)
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.");
-
-    plugin_command  //
-        .def(py::init(&createPluginCommand), py::arg("plugin"), py::arg("name"), py::arg("description") = py::none(),
-             py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
-        .def("_get_executor", &PluginCommand::getExecutor, py::return_value_policy::reference)
-        .def("_set_executor", &PluginCommand::setExecutor, py::arg("executor"))
-        .def_property_readonly("plugin", &PluginCommand::getPlugin, "Gets the owner of this PluginCommand");
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
