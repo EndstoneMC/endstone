@@ -128,6 +128,7 @@ AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
     return result;
 }
 
+// TODO(game-update): check CommandRegistry::describe(CommandParameterData const &) for IDs
 const CommandRegistry::Symbol CommandRegistry::Symbol::INT{0x100001};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FLOAT{0x100003};
 const CommandRegistry::Symbol CommandRegistry::Symbol::RELATIVE_FLOAT{0x100004};
@@ -138,12 +139,12 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::SELECTOR{0x100008};
 const CommandRegistry::Symbol CommandRegistry::Symbol::WILDCARD_ACTOR_SELECTOR{0x10000a};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FILE_PATH{0x100011};
 const CommandRegistry::Symbol CommandRegistry::Symbol::INTEGER_RANGE{0x100017};
-const CommandRegistry::Symbol CommandRegistry::Symbol::EQUIPMENT_SLOT{0x10002b};
-const CommandRegistry::Symbol CommandRegistry::Symbol::STRING{0x10002c};
-const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION{0x100034};
-const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION_FLOAT{0x100035};
-const CommandRegistry::Symbol CommandRegistry::Symbol::MESSAGE{0x100038};
-const CommandRegistry::Symbol CommandRegistry::Symbol::RAW_TEXT{0x10003a};
-const CommandRegistry::Symbol CommandRegistry::Symbol::JSON{0x10003e};
-const CommandRegistry::Symbol CommandRegistry::Symbol::BLOCK_STATE{0x100048};
-const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x10004b};
+const CommandRegistry::Symbol CommandRegistry::Symbol::EQUIPMENT_SLOT{0x10002f};
+const CommandRegistry::Symbol CommandRegistry::Symbol::STRING{0x100038};
+const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION{0x100040};
+const CommandRegistry::Symbol CommandRegistry::Symbol::POSITION_FLOAT{0x100041};
+const CommandRegistry::Symbol CommandRegistry::Symbol::MESSAGE{0x100044};
+const CommandRegistry::Symbol CommandRegistry::Symbol::RAW_TEXT{0x100046};
+const CommandRegistry::Symbol CommandRegistry::Symbol::JSON{0x10004a};
+const CommandRegistry::Symbol CommandRegistry::Symbol::BLOCK_STATE{0x100054};
+const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x100057};
