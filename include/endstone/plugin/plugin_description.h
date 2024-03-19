@@ -20,20 +20,18 @@
 
 #include <fmt/format.h>
 
+#include "endstone/endstone.h"
+
 namespace endstone {
 
 class PluginDescription {
 public:
-    PluginDescription(std::string name, std::string version, std::string description = "",
-                      std::vector<std::string> authors = {}, std::string prefix = "")
+    PluginDescription(std::string name, std::string version)
     {
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
         full_name_ = fmt::format("{} v{}", name_, version_);
-        description_ = std::move(description);
-        authors_ = std::move(authors);
-        prefix_ = std::move(prefix);
     }
 
     /**
@@ -41,7 +39,7 @@ public:
      *
      * @return the name of the plugin
      */
-    [[nodiscard]] const std::string &getName() const
+    [[nodiscard]] std::string getName() const
     {
         return name_;
     }
@@ -51,7 +49,7 @@ public:
      *
      * @return the version of the plugin
      */
-    [[nodiscard]] const std::string &getVersion() const
+    [[nodiscard]] std::string getVersion() const
     {
         return version_;
     }
@@ -61,9 +59,19 @@ public:
      *
      * @return a descriptive name of the plugin and respective version
      */
-    [[nodiscard]] const std::string &getFullName() const
+    [[nodiscard]] std::string getFullName() const
     {
         return full_name_;
+    }
+
+    /**
+     * Gives the API version which this plugin is designed to support.
+     *
+     * @return the API version supported by the plugin
+     */
+    [[nodiscard]] std::string getAPIVersion() const
+    {
+        return ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
     }
 
     /**
@@ -72,7 +80,7 @@ public:
      */
     [[nodiscard]] std::string getDescription() const
     {
-        return description_;
+        return description;
     }
 
     /**
@@ -82,7 +90,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getAuthors() const
     {
-        return authors_;
+        return authors;
     }
 
     /**
@@ -92,7 +100,7 @@ public:
      */
     [[nodiscard]] std::string getPrefix() const
     {
-        return prefix_;
+        return prefix;
     }
 
     inline const static std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
@@ -101,9 +109,11 @@ private:
     std::string name_;
     std::string version_;
     std::string full_name_;
-    std::string description_;
-    std::vector<std::string> authors_;
-    std::string prefix_;
+
+public:
+    std::string description;
+    std::vector<std::string> authors;
+    std::string prefix;
 };
 
 }  // namespace endstone

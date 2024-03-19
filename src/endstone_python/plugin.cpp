@@ -26,17 +26,6 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
-namespace {
-PluginDescription createPluginDescription(std::string name, std::string version,
-                                          const std::optional<std::string> &description,
-                                          const std::optional<std::vector<std::string>> &authors,
-                                          const std::optional<std::string> &prefix, const py::args & /*args*/,
-                                          const py::kwargs & /*kwargs*/)
-{
-    return {std::move(name), std::move(version), description.value_or(""), authors.value_or(std::vector<std::string>()),
-            prefix.value_or("")};
-}
-}  // namespace
 
 class PyPlugin : public Plugin {
 public:
@@ -115,8 +104,7 @@ void init_plugin(py::module &m)
     auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
     py::class_<PluginDescription>(m, "PluginDescription")
-        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
-             py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("prefix") = py::none())
+        .def(py::init<std::string, std::string>(), py::arg("name"), py::arg("version"))
         .def_property_readonly("name", &PluginDescription::getName,
                                "Gives the name of the plugin. This name is a unique identifier for plugins.")
         .def_property_readonly("version", &PluginDescription::getVersion, "Gives the version of the plugin.")
