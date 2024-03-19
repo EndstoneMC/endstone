@@ -208,7 +208,12 @@ enum CommandParameterDataType : int {
     Enum = 1,
 };
 
-enum CommandParameterOption : char;
+enum class CommandParameterOption : char {
+    None = 0,
+    EnumAutocompleteExpansion = 0x01,
+    HasSemanticConstraint = 0x02,
+    EnumAsChainedCommand = 0x04
+};
 
 struct CommandParameterData {
     CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_id, CommandRegistry::ParseRule parse_rule,

@@ -27,8 +27,10 @@ enum class CommandOutputMessageType {
 
 enum class CommandOutputType {
     None = 0,
-    Message = 1,
-    Json = 4,
+    LastOutput = 1,
+    Silent = 2,
+    AllOutput = 3,
+    DataSet = 4,
 };
 
 class CommandOutputMessage {

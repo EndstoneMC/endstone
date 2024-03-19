@@ -19,6 +19,7 @@
 
 namespace mce {
 struct UUID {
-    std::array<int32_t, 4> data;
+    uint64_t msb;  // most significant bits
+    uint64_t lsb;  // least significant bits
 };
 }  // namespace mce

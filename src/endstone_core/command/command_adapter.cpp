@@ -70,13 +70,13 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
 
     bool success;
     switch (origin.getOriginType()) {
-    case CommandOriginType::Server:
+    case CommandOriginType::DedicatedServer:
         success = command->execute(server.getCommandSender(), args_);
         break;
     case CommandOriginType::Player:
-    case CommandOriginType::Actor:
-    case CommandOriginType::Block:
-    case CommandOriginType::MinecartBlock:
+    case CommandOriginType::Entity:
+    case CommandOriginType::CommandBlock:
+    case CommandOriginType::MinecartCommandBlock:
         // TODO: add BlockCommandSender, Player, Entity and CommandMinecart
     default:
         auto sender = CommandSenderAdapter(origin, output);
