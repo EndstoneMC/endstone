@@ -113,6 +113,6 @@ protected:
 public:
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
 
-private:
+protected:
     void sendCommands();  // TODO: move to endstone::Player
 };
