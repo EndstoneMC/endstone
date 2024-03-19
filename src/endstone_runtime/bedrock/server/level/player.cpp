@@ -69,6 +69,7 @@ void sendCommands(Player &player, CommandPermissionLevel level)
 
 void Player::setPermissions(CommandPermissionLevel level)
 {
+    // TODO: also send commands on ServerNetworkHandler::createNewPlayer
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
     sendCommands(*this, level);
 }

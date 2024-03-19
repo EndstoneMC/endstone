@@ -19,9 +19,12 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/network/packet_sender.h"
+#include "bedrock/world/actor/mob.h"
 
-class Player {
+class Player : public Mob {
 public:
+    ~Player() override = 0;
+
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
 
     PacketSender &getPacketSender()
