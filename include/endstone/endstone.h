@@ -14,6 +14,13 @@
 
 #pragma once
 
+#define ENDSTONE_VERSION_MAJOR 0
+#define ENDSTONE_VERSION_MINOR 2
+#define ENDSTONE_VERSION_PATCH 0
+
+#define ENDSTONE_STRINGIFY(x) #x
+#define ENDSTONE_TOSTRING(x) ENDSTONE_STRINGIFY(x)
+
 #if !defined(ENDSTONE_EXPORT)
 #if defined(WIN32) || defined(_WIN32)
 #define ENDSTONE_EXPORT __declspec(dllexport)
