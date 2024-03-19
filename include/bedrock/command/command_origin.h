@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/command/command_permission_level.h"
+#include "bedrock/forward.h"
 #include "bedrock/uuid.h"
 
 enum class CommandOriginType : char {
@@ -34,23 +35,6 @@ enum class CommandOriginType : char {
     GameDirectorEntity = 13,
     Script = 14,
     ExecuteContext = 15,
-};
-
-class BlockPos;
-class Vec2;
-class Vec3;
-class Level;
-class Dimension;
-class Actor;
-class NetworkIdentifier;
-struct CommandOriginIdentity;
-struct CommandOriginData;
-class CommandPositionFloat;
-class CompoundTag;
-
-enum AbilitiesIndex {
-};
-enum SubClientId {
 };
 
 class CommandOrigin {
@@ -87,7 +71,9 @@ public:
     [[nodiscard]] virtual const Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                           // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                                    // 30
-    virtual void _setUUID(const mce::UUID &uuid) = 0;                                                  // 31
+
+protected:
+    virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
 
 private:
     mce::UUID uuid_;
