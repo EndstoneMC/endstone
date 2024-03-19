@@ -68,7 +68,6 @@ void Player::sendCommands()
             continue;
         }
         data.command_flag |= (CommandFlag::HIDDEN_FROM_PLAYER | CommandFlag::HIDDEN_FROM_BLOCK);
-        data.command_flag &= ~CommandFlag::NOT_REQUIRE_CHEAT;
     }
 
     sendNetworkPacket(packet);
