@@ -25,7 +25,9 @@ class Actor {
 public:
     virtual bool getStatusFlag(ActorFlags flags) = 0;
     virtual void setStatusFlag(ActorFlags flags, bool value) = 0;
+#ifdef _WIN32
     virtual bool hasComponent(HashedString const &) = 0;
+#endif
     virtual void outOfWorld() = 0;
     virtual void reloadHardcoded(ActorInitializationMethod, VariantParameterList const &) = 0;
     virtual void reloadHardcodedClient(ActorInitializationMethod, VariantParameterList const &) = 0;
@@ -37,6 +39,9 @@ protected:
     virtual void _doInitialMove() = 0;
 
 public:
+#ifdef __linux__
+    virtual bool hasComponent(HashedString const &) = 0;
+#endif
     virtual ~Actor() = 0;
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
