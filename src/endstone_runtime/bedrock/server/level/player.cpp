@@ -14,6 +14,8 @@
 
 #include "bedrock/server/level/player.h"
 
+#include <magic_enum/magic_enum.hpp>
+
 #include "bedrock/network/game/available_commands_packet.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
@@ -39,9 +41,16 @@ public:
 private:
     CommandPermissionLevel level_;
 };
+}  // namespace
 
-// TODO: refactor this into endstone::Player::sendCommands or endstone::Server::syncCommands
-void sendCommands(Player &player, CommandPermissionLevel level)
+void Player::setPermissions(CommandPermissionLevel level)
+{
+    // TODO: also send commands on ServerNetworkHandler::createNewPlayer
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
+    sendCommands();
+}
+
+void Player::sendCommands()
 {
     using endstone::detail::EndstoneServer;
     using endstone::detail::Singleton;
@@ -51,8 +60,7 @@ void sendCommands(Player &player, CommandPermissionLevel level)
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
     auto &command_map = server.getCommandMap();
-    // TODO: use endstone::Player instead
-    auto perm = DummyPlayerSender(level);
+    auto perm = DummyPlayerSender(getCommandPermissionLevel());
     for (auto &data : packet.commands) {
         auto name = data.name;
         auto *command = command_map.getCommand(name);
@@ -60,16 +68,8 @@ void sendCommands(Player &player, CommandPermissionLevel level)
             continue;
         }
         data.command_flag |= (CommandFlag::HIDDEN_FROM_PLAYER | CommandFlag::HIDDEN_FROM_BLOCK);
+        data.command_flag &= ~CommandFlag::NOT_REQUIRE_CHEAT;
     }
 
-    // TODO: use virtual function Player::sendNetworkPacket instead
-    player.getPacketSender().send(packet);
-}
-}  // namespace
-
-void Player::setPermissions(CommandPermissionLevel level)
-{
-    // TODO: also send commands on ServerNetworkHandler::createNewPlayer
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    sendCommands(*this, level);
+    sendNetworkPacket(packet);
 }
