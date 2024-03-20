@@ -14,9 +14,7 @@
 
 #include "endstone/plugin/plugin.h"
 
-using namespace endstone;
-
-class TestPlugin : public Plugin {
+class TestPlugin : public endstone::Plugin {
 public:
     void onLoad() override
     {
@@ -39,6 +37,6 @@ ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin)
     plugin.description = "This is a test plugin";
     plugin.website = "https://github.com/EndstoneMC/endstone";
     plugin.authors = {"Endstone Developers <hello@endstone.dev>"};
-    plugin.load = PluginLoadOrder::PostWorld;
+    plugin.load = endstone::PluginLoadOrder::PostWorld;
     plugin.prefix = "TestPlugin";
 }

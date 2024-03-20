@@ -22,6 +22,7 @@
 #include <vector>
 
 #include "endstone/command/command_executor.h"
+#include "endstone/detail/plugin/plugin_metadata.h"
 #include "endstone/logger.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_default.h"
@@ -167,26 +168,26 @@ private:
 }  // namespace endstone
 
 #ifndef ENDSTONE_PLUGIN
-#define ENDSTONE_PLUGIN(Name, Version, MainClass)                                         \
-    static endstone::detail::PluginDetail endstone_plugin_detail;                         \
-    [[maybe_unused]] static void init_plugin_detail(endstone::detail::PluginDetail &);    \
-    class EndstonePluginImpl : public MainClass {                                         \
-    public:                                                                               \
-        EndstonePluginImpl() = default;                                                   \
-        const endstone::PluginDescription &getDescription() const override                \
-        {                                                                                 \
-            return description_;                                                          \
-        }                                                                                 \
-                                                                                          \
-    private:                                                                              \
-        endstone::PluginDescription description_{Name, Version, endstone_plugin_detail};  \
-    };                                                                                    \
-    extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin(); \
-    extern "C" ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()                   \
-    {                                                                                     \
-        init_plugin_detail(endstone_plugin_detail);                                       \
-        auto *p = new EndstonePluginImpl();                                               \
-        return p;                                                                         \
-    }                                                                                     \
-    void init_plugin_detail(endstone::detail::PluginDetail &plugin)
+#define ENDSTONE_PLUGIN(Name, Version, MainClass)                                          \
+    static endstone::detail::PluginMetadata metadata;                                      \
+    [[maybe_unused]] static void init_plugin_metadata(endstone::detail::PluginMetadata &); \
+    class EndstonePluginImpl : public MainClass {                                          \
+    public:                                                                                \
+        EndstonePluginImpl() = default;                                                    \
+        const endstone::PluginDescription &getDescription() const override                 \
+        {                                                                                  \
+            return description_;                                                           \
+        }                                                                                  \
+                                                                                           \
+    private:                                                                               \
+        endstone::PluginDescription description_{Name, Version, metadata};                 \
+    };                                                                                     \
+    extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin();  \
+    extern "C" ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()                    \
+    {                                                                                      \
+        init_plugin_metadata(metadata);                                                    \
+        auto *p = new EndstonePluginImpl();                                                \
+        return p;                                                                          \
+    }                                                                                      \
+    void init_plugin_metadata(endstone::detail::PluginMetadata &plugin)
 #endif

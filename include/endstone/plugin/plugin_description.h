@@ -19,31 +19,23 @@
 
 #include <fmt/format.h>
 
+#include "endstone/command/command.h"
+#include "endstone/detail/plugin/plugin_metadata.h"
 #include "endstone/endstone.h"
+#include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_load_order.h"
 
 namespace endstone {
 
-namespace detail {
-struct PluginDetail {
-    std::string description;
-    std::vector<std::string> authors;
-    std::vector<std::string> contributors;
-    std::string website;
-    std::string prefix;
-    PluginLoadOrder load = PluginLoadOrder::PostWorld;
-};
-}  // namespace detail
-
 class PluginDescription {
 public:
-    PluginDescription(std::string name, std::string version, detail::PluginDetail detail = {})
+    PluginDescription(std::string name, std::string version, const detail::PluginMetadata &metadata = {})
     {
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
         full_name_ = fmt::format("{} v{}", name_, version_);
-        detail_ = std::move(detail);
+        metadata_ = metadata;
     }
 
     /**
@@ -92,7 +84,7 @@ public:
      */
     [[nodiscard]] std::string getDescription() const
     {
-        return detail_.description;
+        return metadata_.description;
     }
 
     /**
@@ -102,7 +94,7 @@ public:
      */
     [[nodiscard]] PluginLoadOrder getLoad() const
     {
-        return detail_.load;
+        return metadata_.load;
     }
 
     /**
@@ -112,7 +104,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getAuthors() const
     {
-        return detail_.authors;
+        return metadata_.authors;
     }
 
     /**
@@ -122,7 +114,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getContributors() const
     {
-        return detail_.contributors;
+        return metadata_.contributors;
     }
 
     /**
@@ -132,7 +124,7 @@ public:
      */
     [[nodiscard]] std::string getWebsite() const
     {
-        return detail_.website;
+        return metadata_.website;
     }
 
     /**
@@ -142,14 +134,14 @@ public:
      */
     [[nodiscard]] std::string getPrefix() const
     {
-        return detail_.prefix;
+        return metadata_.prefix;
     }
 
 private:
     std::string name_;
     std::string version_;
     std::string full_name_;
-    detail::PluginDetail detail_;
+    detail::PluginMetadata metadata_;
 };
 
 }  // namespace endstone
