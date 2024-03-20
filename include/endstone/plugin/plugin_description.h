@@ -15,12 +15,13 @@
 #pragma once
 
 #include <string>
+#include <utility>
 #include <vector>
 
 #include <fmt/format.h>
 
 #include "endstone/command/command.h"
-#include "endstone/detail/plugin/plugin_metadata.h"
+#include "endstone/detail/plugin/plugin_description_builder.h"
 #include "endstone/endstone.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_load_order.h"
@@ -29,14 +30,24 @@ namespace endstone {
 
 class PluginDescription {
 public:
-    PluginDescription(std::string name, std::string version, const detail::PluginMetadata &metadata = {})
+    PluginDescription(std::string name, std::string version, std::string description = "",
+                      PluginLoadOrder load = PluginLoadOrder::PostWorld, std::vector<std::string> authors = {},
+                      std::vector<std::string> contributors = {}, std::string website = "", std::string prefix = "",
+                      std::vector<std::string> provides = {}, std::vector<std::string> depend = {},
+                      std::vector<std::string> soft_depend = {}, std::vector<std::string> load_before = {},
+                      PermissionDefault default_permission = PermissionDefault::Operator,
+                      std::vector<Command> commands = {}, std::vector<Permission> permissions = {})
+        : description_(std::move(description)), load_(load), authors_(std::move(authors)),
+          contributors_(std::move(contributors)), website_(std::move(website)), prefix_(std::move(prefix)),
+          provides_(std::move(provides)), depend_(std::move(depend)), soft_depend_(std::move(soft_depend)),
+          load_before_(std::move(load_before)), default_permission_(default_permission), commands_(std::move(commands)),
+          permissions_(std::move(permissions))
     {
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
         full_name_ = fmt::format("{} v{}", name_, version_);
         api_version_ = ENDSTONE_API_VERSION;
-        metadata_ = metadata;
     }
 
     /**
@@ -85,7 +96,7 @@ public:
      */
     [[nodiscard]] std::string getDescription() const
     {
-        return metadata_.description;
+        return description_;
     }
 
     /**
@@ -95,7 +106,7 @@ public:
      */
     [[nodiscard]] PluginLoadOrder getLoad() const
     {
-        return metadata_.load;
+        return load_;
     }
 
     /**
@@ -105,7 +116,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getAuthors() const
     {
-        return metadata_.authors;
+        return authors_;
     }
 
     /**
@@ -115,7 +126,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getContributors() const
     {
-        return metadata_.contributors;
+        return contributors_;
     }
 
     /**
@@ -125,7 +136,7 @@ public:
      */
     [[nodiscard]] std::string getWebsite() const
     {
-        return metadata_.website;
+        return website_;
     }
 
     /**
@@ -135,7 +146,7 @@ public:
      */
     [[nodiscard]] std::string getPrefix() const
     {
-        return metadata_.prefix;
+        return prefix_;
     }
 
     /**
@@ -145,7 +156,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getProvides() const
     {
-        return metadata_.provides;
+        return provides_;
     }
 
     /**
@@ -155,7 +166,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getDepend() const
     {
-        return metadata_.depend;
+        return depend_;
     }
 
     /**
@@ -165,7 +176,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getSoftDepend() const
     {
-        return metadata_.soft_depend;
+        return soft_depend_;
     }
 
     /**
@@ -175,7 +186,7 @@ public:
      */
     [[nodiscard]] std::vector<std::string> getLoadBefore() const
     {
-        return metadata_.load_before;
+        return load_before_;
     }
 
     /**
@@ -185,7 +196,7 @@ public:
      */
     [[nodiscard]] PermissionDefault getDefaultPermission() const
     {
-        return metadata_.default_permission;
+        return default_permission_;
     }
 
     /**
@@ -195,7 +206,7 @@ public:
      */
     [[nodiscard]] std::vector<Command> getCommands() const
     {
-        return metadata_.getCommands();
+        return commands_;
     }
 
     /**
@@ -205,7 +216,7 @@ public:
      */
     [[nodiscard]] std::vector<Permission> getPermissions() const
     {
-        return metadata_.getPermissions();
+        return permissions_;
     }
 
 private:
@@ -213,7 +224,19 @@ private:
     std::string version_;
     std::string full_name_;
     std::string api_version_;
-    detail::PluginMetadata metadata_;
+    std::string description_;
+    PluginLoadOrder load_ = PluginLoadOrder::PostWorld;
+    std::vector<std::string> authors_;
+    std::vector<std::string> contributors_;
+    std::string website_;
+    std::string prefix_;
+    std::vector<std::string> provides_;
+    std::vector<std::string> depend_;
+    std::vector<std::string> soft_depend_;
+    std::vector<std::string> load_before_;
+    PermissionDefault default_permission_ = PermissionDefault::Operator;
+    std::vector<Command> commands_;
+    std::vector<Permission> permissions_;
 };
 
 }  // namespace endstone
