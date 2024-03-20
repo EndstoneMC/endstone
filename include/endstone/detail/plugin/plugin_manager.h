@@ -59,6 +59,7 @@ public:
     [[nodiscard]] std::unordered_set<Permission *> getPermissions() const override;
 
 private:
+    friend class EndstoneServer;
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(bool op) const;
     Server &server_;

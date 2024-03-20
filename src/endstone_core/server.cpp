@@ -45,8 +45,25 @@ void EndstoneServer::loadPlugins()
     auto plugin_dir = fs::current_path() / "plugins";
 
     if (exists(plugin_dir)) {
-        auto plugins = plugin_manager_->loadPlugins(plugin_dir.string());
+        plugin_manager_->loadPlugins(plugin_dir.string());
+    }
+    else {
+        create_directories(plugin_dir);
+    }
+}
 
+void EndstoneServer::enablePlugins(PluginLoadOrder type)
+{
+    auto plugins = plugin_manager_->getPlugins();
+    for (auto *plugin : plugins) {
+        if (!plugin->isEnabled() && plugin->getDescription().getLoad() == type) {
+            enablePlugin(*plugin);
+        }
+    }
+
+    if (type == PluginLoadOrder::PostWorld) {
+        command_map_->setMinecraftCommands();
+        command_map_->setDefaultCommands();
         std::vector<std::string> plugin_names;
         plugin_names.reserve(plugins.size());
         std::transform(plugins.begin(), plugins.end(), std::back_inserter(plugin_names), [](const auto &plugin) {
@@ -55,16 +72,22 @@ void EndstoneServer::loadPlugins()
             return name;
         });
         command_map_->addEnumValues("PluginName", plugin_names);
-    }
-    else {
-        create_directories(plugin_dir);
+        DefaultPermissions::registerCorePermissions();
     }
 }
 
-void EndstoneServer::enablePlugins() const
+void EndstoneServer::enablePlugin(Plugin &plugin)
 {
-    plugin_manager_->enablePlugins();
-    DefaultPermissions::registerCorePermissions();
+    auto perms = plugin.getDescription().getPermissions();
+    for (const auto &perm : perms) {
+        if (plugin_manager_->addPermission(std::make_unique<Permission>(perm)) == nullptr) {
+            getLogger().warning("Plugin {} tried to register permission '{}' that was already registered.",
+                                plugin.getDescription().getFullName(), perm.getName());
+        }
+    }
+    plugin_manager_->dirtyPermissibles(true);
+    plugin_manager_->dirtyPermissibles(false);
+    plugin_manager_->enablePlugin(plugin);
 }
 
 void EndstoneServer::disablePlugins() const

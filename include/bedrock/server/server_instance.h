@@ -19,12 +19,12 @@
 
 class ServerInstance {
 public:
-    BEDROCK_API void startServerThread();
     Minecraft &getMinecraft();
 };
 
 class ServerInstanceEventCoordinator {
 public:
+    BEDROCK_API void sendServerInitializeStart(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
 };

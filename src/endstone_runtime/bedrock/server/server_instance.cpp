@@ -25,21 +25,10 @@
 namespace py = pybind11;
 
 using endstone::ColorFormat;
+using endstone::PluginLoadOrder;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 using endstone::detail::Singleton;
-
-void ServerInstance::startServerThread()
-{
-    Singleton<EndstoneServer>::setInstance(std::make_unique<EndstoneServer>(*this));
-    auto &server = Singleton<EndstoneServer>::getInstance();
-    server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
-    server.getLogger().info(ColorFormat::DARK_AQUA + ColorFormat::BOLD +
-                                "This server is running {} version: {} (Minecraft: {})",
-                            server.getName(), server.getVersion(), server.getMinecraftVersion());
-    server.loadPlugins();
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstance::startServerThread, this);
-}
 
 Minecraft &ServerInstance::getMinecraft()
 {
@@ -50,9 +39,23 @@ Minecraft &ServerInstance::getMinecraft()
 #endif
 }
 
+void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
+{
+    Singleton<EndstoneServer>::setInstance(std::make_unique<EndstoneServer>(instance));
+    auto &server = Singleton<EndstoneServer>::getInstance();
+    server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
+    server.getLogger().info(ColorFormat::DARK_AQUA + ColorFormat::BOLD +
+                                "This server is running {} version: {} (Minecraft: {})",
+                            server.getName(), server.getVersion(), server.getMinecraftVersion());
+
+    server.loadPlugins();
+    server.enablePlugins(PluginLoadOrder::Startup);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerInitializeStart, this, instance);
+}
+
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    Singleton<EndstoneServer>::getInstance().enablePlugins();
+    Singleton<EndstoneServer>::getInstance().enablePlugins(PluginLoadOrder::PostWorld);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
 }
 

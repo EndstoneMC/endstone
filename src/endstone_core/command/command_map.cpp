@@ -32,11 +32,7 @@
 
 namespace endstone::detail {
 
-EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
-{
-    setMinecraftCommands();
-    setDefaultCommands();
-}
+EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server) {}
 
 void EndstoneCommandMap::clearCommands()
 {

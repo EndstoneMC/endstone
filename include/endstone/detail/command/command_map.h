@@ -32,6 +32,7 @@ public:
     void addEnumValues(const std::string &name, const std::vector<std::string> &values);
 
 private:
+    friend class EndstoneServer;
     void setDefaultCommands();
     void setMinecraftCommands();
 

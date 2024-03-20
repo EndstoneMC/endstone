@@ -44,7 +44,7 @@ public:
     [[nodiscard]] CommandSender &getCommandSender() const override;
 
     void loadPlugins();
-    void enablePlugins() const;
+    void enablePlugins(PluginLoadOrder type);
     void disablePlugins() const;
 
     [[nodiscard]] std::string getName() const override;
@@ -52,6 +52,7 @@ public:
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
 private:
+    void enablePlugin(Plugin &plugin);
     ServerInstance &server_instance_;
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
