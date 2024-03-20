@@ -18,8 +18,6 @@ using namespace endstone;
 
 class TestPlugin : public Plugin {
 public:
-    TestPlugin() = default;
-
     void onLoad() override
     {
         getLogger().info("onLoad is called");
@@ -36,7 +34,7 @@ public:
     }
 };
 
-ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin, p)
+ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin)
 {
-    p.prefix = "TestPlugin";
+    plugin.prefix = "TestPlugin";
 }
