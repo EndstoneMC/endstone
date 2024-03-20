@@ -47,7 +47,7 @@ public:
      */
     [[nodiscard]] virtual const PluginDescription &getDescription() const
     {
-        return *description_;
+        return *description;
     }
 
     /**
@@ -138,7 +138,6 @@ public:
 
 private:
     friend class PluginLoader;
-    friend Plugin *init_endstone_plugin();
 
     /**
      * Sets the enabled state of this plugin
@@ -159,8 +158,11 @@ private:
         }
     }
 
+public:
+    PluginDescription *description{nullptr};
+
+private:
     bool enabled_{false};
-    PluginDescription *description_{nullptr};
     PluginLoader *loader_{nullptr};
     Server *server_{nullptr};
     Logger *logger_{nullptr};
@@ -168,7 +170,7 @@ private:
 }  // namespace endstone
 
 #ifndef ENDSTONE_PLUGIN
-#define ENDSTONE_PLUGIN(Name, Version, MainClass)                                         \
+#define ENDSTONE_PLUGIN(Name, Version, MainClass, Variable)                               \
     static endstone::PluginDescription plugin_description{Name, Version};                 \
     [[maybe_unused]] static void init_plugin_description(endstone::PluginDescription &);  \
     extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin(); \
@@ -176,8 +178,8 @@ private:
     {                                                                                     \
         init_plugin_description(plugin_description);                                      \
         auto *p = new MainClass();                                                        \
-        p->description_ = &plugin_description;                                            \
+        p->description = &plugin_description;                                            \
         return p;                                                                         \
     }                                                                                     \
-    void init_plugin_description(endstone::PluginDescription &)
+    void init_plugin_description(endstone::PluginDescription &Variable)
 #endif

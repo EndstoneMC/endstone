@@ -20,11 +20,6 @@ class TestPlugin : public Plugin {
 public:
     TestPlugin() = default;
 
-    [[nodiscard]] const PluginDescription &getDescription() const override
-    {
-        return description_;
-    }
-
     void onLoad() override
     {
         getLogger().info("onLoad is called");
@@ -39,9 +34,9 @@ public:
     {
         getLogger().info("onDisable is called");
     }
-
-private:
-    PluginDescription description_{"TestPlugin", "1.0.0"};
 };
 
-ENDSTONE_PLUGIN(TestPlugin)
+ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin, p)
+{
+    p.prefix = "TestPlugin";
+}

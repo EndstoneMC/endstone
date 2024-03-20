@@ -89,15 +89,15 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    using PluginInit = Plugin *(*)();
-    auto plugin_init = GetProcAddress(module, "EndstonePluginInit");
-    if (!plugin_init) {
+    using InitPlugin = Plugin *(*)();
+    auto init_plugin = GetProcAddress(module, "init_endstone_plugin");
+    if (!init_plugin) {
         FreeLibrary(module);
         logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", file);
         return nullptr;
     }
 
-    auto *plugin = reinterpret_cast<PluginInit>(plugin_init)();
+    auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
     if (!plugin) {
         FreeLibrary(module);
         logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
@@ -130,15 +130,15 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    using PluginInit = Plugin *(*)();
-    auto plugin_init = dlsym(module, "EndstonePluginInit");
-    if (!plugin_init) {
+    using InitPlugin = Plugin *(*)();
+    auto init_plugin = dlsym(module, "init_endstone_plugin");
+    if (!init_plugin) {
         dlclose(module);
         logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", file);
         return nullptr;
     }
 
-    auto *plugin = reinterpret_cast<PluginInit>(plugin_init)();
+    auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
     if (!plugin) {
         dlclose(module);
         logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
