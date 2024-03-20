@@ -75,7 +75,7 @@ public:
      */
     [[nodiscard]] std::string getAPIVersion() const
     {
-        return ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
+        return ENDSTONE_API_VERSION;
     }
 
     /**

@@ -47,8 +47,7 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
         return {};
     }
 
-    static const std::string supported_api_version =
-        ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
+    static const std::string supported_api_version = ENDSTONE_API_VERSION;
     std::vector<Plugin *> loaded_plugins;
 
     for (const auto &entry : fs::directory_iterator(dir)) {
