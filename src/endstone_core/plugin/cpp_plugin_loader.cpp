@@ -16,8 +16,16 @@
 
 #ifdef _WIN32
 #include <Windows.h>
+#define LOAD_LIBRARY(file)             LoadLibraryA(file)
+#define GET_FUNCTION(module, function) GetProcAddress(module, function)
+#define GET_ERROR()                    GetLastError()
+#define CLOSE_LIBRARY(module)          FreeLibrary(module)
 #elif __linux__
 #include <dlfcn.h>
+#define LOAD_LIBRARY(file)             dlopen(file, RTLD_NOW)
+#define GET_FUNCTION(module, function) dlsym(module, function)
+#define GET_ERROR()                    dlerror()
+#define CLOSE_LIBRARY(module)          dlclose(module)
 #endif
 
 #include <filesystem>
@@ -47,7 +55,6 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
         return {};
     }
 
-    static const std::string supported_api_version = ENDSTONE_API_VERSION;
     std::vector<Plugin *> loaded_plugins;
 
     for (const auto &entry : fs::directory_iterator(dir)) {
@@ -64,13 +71,6 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
             if (std::regex_search(file.string(), r)) {
                 auto plugin = loadPlugin(file.string());
                 if (plugin) {
-                    if (plugin->getDescription().getAPIVersion() != supported_api_version) {
-                        logger.error("Error occurred when trying to load plugin '{}': plugin was compiled for Endstone "
-                                     "API version: {}, but the server has an incompatible API version: {}.",
-                                     plugin->getDescription().getName(), plugin->getDescription().getAPIVersion(),
-                                     supported_api_version);
-                        continue;
-                    }
                     loaded_plugins.push_back(plugin.get());
                     plugins_.push_back(std::move(plugin));
                 }
@@ -81,8 +81,6 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
     return loaded_plugins;
 }
 
-#ifdef _WIN32
-
 std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 {
     auto &logger = server_.getLogger();
@@ -92,24 +90,33 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    auto *module = LoadLibraryA(file.c_str());
+    auto *module = LOAD_LIBRARY(file.c_str());
     if (!module) {
-        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", file, GetLastError());
+        logger.error("Failed to load c++ plugin from {}: LoadLibrary failed with code {}.", file, GET_ERROR());
         return nullptr;
     }
 
     using InitPlugin = Plugin *(*)();
-    auto init_plugin = GetProcAddress(module, "init_endstone_plugin");
+    auto init_plugin = GET_FUNCTION(module, "init_endstone_plugin");
     if (!init_plugin) {
-        FreeLibrary(module);
+        CLOSE_LIBRARY(module);
         logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", file);
         return nullptr;
     }
 
     auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
     if (!plugin) {
-        FreeLibrary(module);
+        CLOSE_LIBRARY(module);
         logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
+        return nullptr;
+    }
+
+    static const std::string supported_api_version = ENDSTONE_API_VERSION;
+    if (plugin->getDescription().getAPIVersion() != supported_api_version) {
+        logger.error("Error occurred when trying to load plugin '{}': plugin was compiled for Endstone "
+                     "API version: {}, but the server has an incompatible API version: {}.",
+                     plugin->getDescription().getName(), plugin->getDescription().getAPIVersion(),
+                     supported_api_version);
         return nullptr;
     }
 
@@ -123,50 +130,16 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 {
+#ifdef _WIN32
     return {"\\.dll$"};
-}
-
 #elif __linux__
-
-std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
-{
-    auto &logger = server_.getLogger();
-    auto path = fs::path(file);
-    if (!exists(path)) {
-        logger.error("Could not load plugin from '{}': Provided file does not exist.", path.string());
-        return nullptr;
-    }
-
-    auto *module = dlopen(file.c_str(), RTLD_NOW);
-    if (!module) {
-        logger.error("Failed to load c++ plugin from {}: dlopen failed with code {}.", file, dlerror());
-        return nullptr;
-    }
-
-    using InitPlugin = Plugin *(*)();
-    auto init_plugin = dlsym(module, "init_endstone_plugin");
-    if (!init_plugin) {
-        dlclose(module);
-        logger.error("Failed to load c++ plugin from {}: No entry point. Did you forget ENDSTONE_PLUGIN?", file);
-        return nullptr;
-    }
-
-    auto *plugin = reinterpret_cast<InitPlugin>(init_plugin)();
-    if (!plugin) {
-        dlclose(module);
-        logger.error("Failed to load c++ plugin from {}: Invalid plugin instance.", file);
-        return nullptr;
-    }
-
-    initPlugin(*plugin, LoggerFactory::getLogger(plugin->getDescription().getName()));
-    return std::unique_ptr<Plugin>(plugin);
-}
-
-std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
-{
     return {"\\.so$"};
-}
-
 #endif
+}
 
 }  // namespace endstone::detail
+
+#undef LOAD_LIBRARY
+#undef GET_FUNCTION
+#undef GET_ERROR
+#undef CLOSE_LIBRARY
