@@ -15,6 +15,7 @@
 #pragma once
 
 #include <algorithm>
+#include <set>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -39,35 +40,37 @@ public:
     template <typename... Usage>
     CommandBuilder &usages(Usage... usages)
     {
-        usages_ = {usages...};
+        (usages_.insert(usages), ...);
         return *this;
     }
 
     template <typename... Alias>
     CommandBuilder &aliases(Alias... aliases)
     {
-        aliases_ = {aliases...};
+        (aliases_.insert(aliases), ...);
         return *this;
     }
 
     template <typename... Permissions>
     CommandBuilder &permissions(Permissions... permissions)
     {
-        permissions_ = {permissions...};
+        (permissions_.insert(permissions), ...);
         return *this;
     }
 
     [[nodiscard]] Command build() const
     {
-        return Command(name_, description_, usages_, aliases_, permissions_);
+        return Command(name_, description_, std::vector<std::string>(usages_.begin(), usages_.end()),
+                       std::vector<std::string>(aliases_.begin(), aliases_.end()),
+                       std::vector<std::string>(permissions_.begin(), permissions_.end()));
     }
 
 private:
     std::string name_;
     std::string description_;
-    std::vector<std::string> usages_;
-    std::vector<std::string> aliases_;
-    std::vector<std::string> permissions_;
+    std::set<std::string> usages_;
+    std::set<std::string> aliases_;
+    std::set<std::string> permissions_;
 };
 
 class PermissionBuilder {
