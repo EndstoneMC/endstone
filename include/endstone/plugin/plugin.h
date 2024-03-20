@@ -138,6 +138,7 @@ public:
 
 private:
     friend class PluginLoader;
+    friend Plugin *init_endstone_plugin();
 
     /**
      * Sets the enabled state of this plugin
