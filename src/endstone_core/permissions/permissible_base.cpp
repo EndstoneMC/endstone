@@ -18,8 +18,8 @@
 
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
+#include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
-#include "endstone/permissions/permissions.h"
 
 namespace endstone::detail {
 

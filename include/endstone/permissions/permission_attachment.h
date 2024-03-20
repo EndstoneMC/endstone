@@ -21,7 +21,7 @@
 #include <utility>
 
 #include "endstone/permissions/permissible.h"
-#include "endstone/permissions/permissions.h"
+#include "endstone/permissions/permission.h"
 
 namespace endstone {
 

@@ -19,7 +19,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "endstone/permissions/permissions.h"
+#include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"

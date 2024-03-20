@@ -12,13 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/permissions/permissions.h"
-
 #include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 #include "endstone/permissions/permissible.h"
+#include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment.h"
 #include "endstone/permissions/permission_attachment_info.h"
 #include "endstone/permissions/permission_default.h"

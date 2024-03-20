@@ -20,7 +20,7 @@
 
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
-#include "endstone/permissions/permissions.h"
+#include "endstone/permissions/permission.h"
 
 namespace endstone::detail {
 
