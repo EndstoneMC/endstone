@@ -47,6 +47,8 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
         return {};
     }
 
+    static const std::string supported_api_version =
+        ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
     std::vector<Plugin *> loaded_plugins;
 
     for (const auto &entry : fs::directory_iterator(dir)) {
@@ -63,6 +65,12 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
             if (std::regex_search(file.string(), r)) {
                 auto plugin = loadPlugin(file.string());
                 if (plugin) {
+                    if (plugin->getDescription().getAPIVersion() != supported_api_version) {
+                        logger.error("API version mismatch: plugin was compiled for Endstone v{}, "
+                                     "but the server's api version is incompatible: v{}.",
+                                     plugin->getDescription().getAPIVersion(), supported_api_version);
+                        continue;
+                    }
                     loaded_plugins.push_back(plugin.get());
                     plugins_.push_back(std::move(plugin));
                 }
