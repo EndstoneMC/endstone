@@ -102,26 +102,29 @@ public:
 namespace {
 PluginDescription createPluginDescription(
     std::string name, std::string version, const std::optional<std::string> &description,
-    const std::optional<std::vector<std::string>> &authors, const std::optional<std::vector<std::string>> &contributors,
-    const std::optional<std::string> &website, const std::optional<std::string> &prefix,
-    std::optional<PluginLoadOrder> load, const std::optional<std::vector<std::string>> &provides,
+    std::optional<PluginLoadOrder> load, const std::optional<std::vector<std::string>> &authors,
+    const std::optional<std::vector<std::string>> &contributors, const std::optional<std::string> &website,
+    const std::optional<std::string> &prefix, const std::optional<std::vector<std::string>> &provides,
     const std::optional<std::vector<std::string>> &depend, const std::optional<std::vector<std::string>> &soft_depend,
     const std::optional<std::vector<std::string>> &load_before, std::optional<PermissionDefault> default_permission,
+    const std::optional<std::vector<Command>> &commands, const std::optional<std::vector<Permission>> &permissions,
     const py::args & /*args*/, const py::kwargs & /*kwargs*/)
 {
-    std::vector<std::string> empty = {};
-    auto metadata = detail::PluginMetadata{description.value_or(""),
-                                           authors.value_or(empty),
-                                           contributors.value_or(empty),
-                                           website.value_or(""),
-                                           prefix.value_or(""),
-                                           load.value_or(PluginLoadOrder::PostWorld),
-                                           provides.value_or(empty),
-                                           depend.value_or(empty),
-                                           soft_depend.value_or(empty),
-                                           load_before.value_or(empty),
-                                           default_permission.value_or(PermissionDefault::Operator)};
-    return {std::move(name), std::move(version), metadata};
+    return {std::move(name),
+            std::move(version),
+            description.value_or(""),
+            load.value_or(PluginLoadOrder::PostWorld),
+            authors.value_or(std::vector<std::string>{}),
+            contributors.value_or(std::vector<std::string>{}),
+            website.value_or(""),
+            prefix.value_or(""),
+            provides.value_or(std::vector<std::string>{}),
+            depend.value_or(std::vector<std::string>{}),
+            soft_depend.value_or(std::vector<std::string>{}),
+            load_before.value_or(std::vector<std::string>{}),
+            default_permission.value_or(PermissionDefault::Operator),
+            commands.value_or(std::vector<Command>{}),
+            permissions.value_or(std::vector<Permission>{})};
 }
 }  // namespace
 
@@ -135,10 +138,11 @@ void init_plugin(py::module &m)
 
     py::class_<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
-             py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("contributors") = py::none(),
-             py::arg("website") = py::none(), py::arg("prefix") = py::none(), py::arg("load") = py::none(),
+             py::arg("description") = py::none(), py::arg("load") = py::none(), py::arg("authors") = py::none(),
+             py::arg("contributors") = py::none(), py::arg("website") = py::none(), py::arg("prefix") = py::none(),
              py::arg("provides") = py::none(), py::arg("depend") = py::none(), py::arg("soft_depend") = py::none(),
-             py::arg("load_before") = py::none(), py::arg("default_permission") = py::none())
+             py::arg("load_before") = py::none(), py::arg("default_permission") = py::none(),
+             py::arg("commands") = py::none(), py::arg("permissions") = py::none())
         .def_property_readonly("name", &PluginDescription::getName,
                                "Gives the name of the plugin. This name is a unique identifier for plugins.")
         .def_property_readonly("version", &PluginDescription::getVersion, "Gives the version of the plugin.")
