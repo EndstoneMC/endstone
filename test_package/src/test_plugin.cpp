@@ -39,4 +39,16 @@ ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin)
     plugin.authors = {"Endstone Developers <hello@endstone.dev>"};
     plugin.load = endstone::PluginLoadOrder::PostWorld;
     plugin.prefix = "TestPlugin";
+
+    plugin.permission("test_plugin.command.test").description("Allow users to use the test command");
+
+    plugin.permission("test_plugin.command")
+        .description("Allow users to use all commands provided by this example plugin")
+        .children("test_plugin.command.test", true);
+
+    plugin.command("test")
+        .description("Test command")
+        .usages("/test")
+        .aliases("tryme")
+        .permissions("test_plugin.command.test");
 }
