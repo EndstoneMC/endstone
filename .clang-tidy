@@ -16,7 +16,6 @@ Checks: >
   -modernize-use-trailing-return-type,
   -modernize-avoid-c-arrays,
   -performance-enum-size,
-  -readability-convert-member-functions-to-static,
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
   -readability-magic-numbers,

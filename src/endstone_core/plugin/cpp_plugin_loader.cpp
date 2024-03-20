@@ -65,9 +65,11 @@ std::vector<Plugin *> CppPluginLoader::loadPlugins(const std::string &directory)
                 auto plugin = loadPlugin(file.string());
                 if (plugin) {
                     if (plugin->getDescription().getAPIVersion() != supported_api_version) {
-                        logger.error("API version mismatch: plugin was compiled for Endstone v{}, "
-                                     "but the server's api version is incompatible: v{}.",
-                                     plugin->getDescription().getAPIVersion(), supported_api_version);
+                        logger.error(
+                            "Error occurred when trying to load plugin '{}': plugin was compiled for Endstone v{}, "
+                            "but the server is implementing an incompatible API version: v{}.",
+                            plugin->getDescription().getName(), plugin->getDescription().getAPIVersion(),
+                            supported_api_version);
                         continue;
                     }
                     loaded_plugins.push_back(plugin.get());

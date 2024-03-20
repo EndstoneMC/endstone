@@ -35,6 +35,7 @@ public:
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
         full_name_ = fmt::format("{} v{}", name_, version_);
+        api_version_ = ENDSTONE_API_VERSION;
         metadata_ = metadata;
     }
 
@@ -75,7 +76,7 @@ public:
      */
     [[nodiscard]] std::string getAPIVersion() const
     {
-        return ENDSTONE_API_VERSION;
+        return api_version_;
     }
 
     /**
@@ -211,6 +212,7 @@ private:
     std::string name_;
     std::string version_;
     std::string full_name_;
+    std::string api_version_;
     detail::PluginMetadata metadata_;
 };
 
