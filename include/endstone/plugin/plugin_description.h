@@ -27,11 +27,11 @@ namespace endstone {
 namespace detail {
 struct PluginDetail {
     std::string description;
-    PluginLoadOrder load = PluginLoadOrder::PostWorld;
     std::vector<std::string> authors;
     std::vector<std::string> contributors;
     std::string website;
     std::string prefix;
+    PluginLoadOrder load = PluginLoadOrder::PostWorld;
 };
 }  // namespace detail
 
