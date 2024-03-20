@@ -21,6 +21,7 @@
 #endif
 
 #include <filesystem>
+#include <regex>
 namespace fs = std::filesystem;
 
 #include "endstone/detail/logger_factory.h"

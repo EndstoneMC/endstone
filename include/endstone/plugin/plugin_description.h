@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <regex>
 #include <string>
 #include <vector>
 
@@ -24,14 +23,25 @@
 
 namespace endstone {
 
+namespace detail {
+struct PluginDetail {
+    std::string description;
+    std::vector<std::string> authors;
+    std::vector<std::string> contributors;
+    std::string website;
+    std::string prefix;
+};
+}  // namespace detail
+
 class PluginDescription {
 public:
-    PluginDescription(std::string name, std::string version)
+    PluginDescription(std::string name, std::string version, detail::PluginDetail detail = {})
     {
         name_ = std::move(name);
         std::replace(name_.begin(), name_.end(), ' ', '_');
         version_ = std::move(version);
         full_name_ = fmt::format("{} v{}", name_, version_);
+        detail_ = std::move(detail);
     }
 
     /**
@@ -76,44 +86,58 @@ public:
 
     /**
      * Gives a human-friendly description of the functionality the plugin provides.
-     * @return description of this plugin, or null if not specified
+     * @return description of this plugin, or empty if not specified
      */
     [[nodiscard]] std::string getDescription() const
     {
-        return description;
+        return detail_.description;
     }
 
     /**
      * Gives the list of authors for the plugin.
      *
-     * @return a list of the plugin's authors
+     * @return an immutable list of the plugin's authors
      */
     [[nodiscard]] std::vector<std::string> getAuthors() const
     {
-        return authors;
+        return detail_.authors;
+    }
+
+    /**
+     * Gives the list of contributors for the plugin.
+     *
+     * @return an immutable list of the plugin's contributions
+     */
+    [[nodiscard]] std::vector<std::string> getContributors() const
+    {
+        return detail_.contributors;
+    }
+
+    /**
+     * Gives the plugin's or plugin's author's website.
+     *
+     * @return the website of this plugin, or empty if not specified
+     */
+    [[nodiscard]] std::string getWebsite() const
+    {
+        return detail_.website;
     }
 
     /**
      * Gives the token to prefix plugin-specific logging messages with.
      *
-     * @return the prefixed logging token, or null if not specified
+     * @return the prefixed logging token, or empty if not specified
      */
     [[nodiscard]] std::string getPrefix() const
     {
-        return prefix;
+        return detail_.prefix;
     }
-
-    inline const static std::regex VALID_NAME{"^[A-Za-z0-9 _.-]+$"};
 
 private:
     std::string name_;
     std::string version_;
     std::string full_name_;
-
-public:
-    std::string description;
-    std::vector<std::string> authors;
-    std::string prefix;
+    detail::PluginDetail detail_;
 };
 
 }  // namespace endstone

@@ -165,22 +165,25 @@ private:
 
 #ifndef ENDSTONE_PLUGIN
 #define ENDSTONE_PLUGIN(Name, Version, MainClass)                                         \
-    static endstone::PluginDescription plugin_description{Name, Version};                 \
-    [[maybe_unused]] static void init_plugin_description(endstone::PluginDescription &);  \
+    static endstone::detail::PluginDetail endstone_plugin_detail;                         \
+    [[maybe_unused]] static void init_plugin_detail(endstone::detail::PluginDetail &);    \
     class EndstonePluginImpl : public MainClass {                                         \
     public:                                                                               \
         EndstonePluginImpl() = default;                                                   \
-        const PluginDescription &getDescription() const override                          \
+        const endstone::PluginDescription &getDescription() const override                \
         {                                                                                 \
-            return plugin_description;                                                    \
+            return description_;                                                          \
         }                                                                                 \
+                                                                                          \
+    private:                                                                              \
+        endstone::PluginDescription description_{Name, Version, endstone_plugin_detail};  \
     };                                                                                    \
     extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin(); \
     extern "C" ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()                   \
     {                                                                                     \
-        init_plugin_description(plugin_description);                                      \
+        init_plugin_detail(endstone_plugin_detail);                                       \
         auto *p = new EndstonePluginImpl();                                               \
         return p;                                                                         \
     }                                                                                     \
-    void init_plugin_description(endstone::PluginDescription &plugin)
+    void init_plugin_detail(endstone::detail::PluginDetail &plugin)
 #endif
