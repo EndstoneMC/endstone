@@ -14,14 +14,97 @@
 
 #pragma once
 
+#include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <utility>
+#include <vector>
+
 #include "endstone/command/command.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_load_order.h"
 
 namespace endstone::detail {
 
-struct PluginMetadata {
+class CommandBuilder {
 public:
+    explicit CommandBuilder(std::string name) : name_(std::move(name)) {}
+
+    CommandBuilder &description(std::string description)
+    {
+        description_ = std::move(description);
+        return *this;
+    }
+
+    template <typename... Usage>
+    CommandBuilder &usages(Usage... usages)
+    {
+        usages_ = {usages...};
+        return *this;
+    }
+
+    template <typename... Alias>
+    CommandBuilder &aliases(Alias... aliases)
+    {
+        aliases_ = {aliases...};
+        return *this;
+    }
+
+    template <typename... Permissions>
+    CommandBuilder &permissions(Permissions... permissions)
+    {
+        permissions_ = {permissions...};
+        return *this;
+    }
+
+    [[nodiscard]] Command build() const
+    {
+        return Command(name_, description_, usages_, aliases_, permissions_);
+    }
+
+private:
+    std::string name_;
+    std::string description_;
+    std::vector<std::string> usages_;
+    std::vector<std::string> aliases_;
+    std::vector<std::string> permissions_;
+};
+
+class PermissionBuilder {
+public:
+    explicit PermissionBuilder(std::string name) : name_(std::move(name)) {}
+
+    PermissionBuilder &description(std::string description)
+    {
+        description_ = std::move(description);
+        return *this;
+    }
+
+    PermissionBuilder &default_(PermissionDefault default_value)  // NOLINT(*-identifier-naming)
+    {
+        default_value_ = default_value;
+        return *this;
+    }
+
+    PermissionBuilder &children(const std::string &name, bool value)
+    {
+        children_[name] = value;
+        return *this;
+    }
+
+    [[nodiscard]] Permission build() const
+    {
+        return Permission(name_, description_, default_value_, children_);
+    }
+
+private:
+    std::string name_;
+    std::string description_;
+    PermissionDefault default_value_ = Permission::DEFAULT_PERMISSION;
+    std::unordered_map<std::string, bool> children_ = {};
+};
+
+struct PluginMetadata {
     std::string description;
     std::vector<std::string> authors;
     std::vector<std::string> contributors;
@@ -31,11 +114,40 @@ public:
     std::vector<std::string> depends;
     std::vector<std::string> soft_depends;
     std::vector<std::string> load_before;
+    std::unordered_map<std::string, CommandBuilder> commands;
+    std::unordered_map<std::string, PermissionBuilder> permissions;
 
+    CommandBuilder &command(std::string name)
+    {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        return commands.emplace(name, name).first->second;
+    }
 
-private:
-    std::vector<Command> commands_;
-    std::vector<Permission> permissions_;
+    PermissionBuilder &permission(std::string name)
+    {
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        return permissions.emplace(name, name).first->second;
+    }
+
+    std::vector<Command> getCommands()
+    {
+        std::vector<Command> result;
+        result.reserve(commands.size());
+        for (auto &pair : commands) {
+            result.push_back(pair.second.build());
+        }
+        return result;
+    }
+
+    std::vector<Permission> getPermissions()
+    {
+        std::vector<Permission> result;
+        result.reserve(permissions.size());
+        for (auto &pair : permissions) {
+            result.push_back(pair.second.build());
+        }
+        return result;
+    }
 };
 
 }  // namespace endstone::detail
