@@ -74,10 +74,9 @@ void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) con
         sender.sendMessage(desc.getDescription());
     }
 
-    // TODO: print website
-    // if (!desc.getWebsite().empty()) {
-    //     sender.sendMessage("Website: " + std::string(ChatColor::GREEN + desc.getWebsite()));
-    // }
+    if (!desc.getWebsite().empty()) {
+        sender.sendMessage("Website: " + ColorFormat::GREEN + desc.getWebsite());
+    }
 
     if (!desc.getAuthors().empty()) {
         if (desc.getAuthors().size() == 1) {
@@ -88,10 +87,9 @@ void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) con
         }
     }
 
-    // TODO: print contributors
-    // if (!desc.getContributors().empty()) {
-    //     sender.sendMessage("Contributors: " + getNameList(desc.getContributors()));
-    // }
+     if (!desc.getContributors().empty()) {
+         sender.sendMessage("Contributors: " + getNameList(desc.getContributors()));
+     }
 }
 
 std::string VersionCommand::getNameList(const std::vector<std::string> &names) const
