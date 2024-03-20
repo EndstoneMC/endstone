@@ -105,7 +105,7 @@ PluginDescription createPluginDescription(
     const std::optional<std::vector<std::string>> &authors, const std::optional<std::vector<std::string>> &contributors,
     const std::optional<std::string> &website, const std::optional<std::string> &prefix,
     std::optional<PluginLoadOrder> load, const std::optional<std::vector<std::string>> &provides,
-    const std::optional<std::vector<std::string>> &depends, const std::optional<std::vector<std::string>> &soft_depends,
+    const std::optional<std::vector<std::string>> &depend, const std::optional<std::vector<std::string>> &soft_depend,
     const std::optional<std::vector<std::string>> &load_before, std::optional<PermissionDefault> default_permission,
     const py::args & /*args*/, const py::kwargs & /*kwargs*/)
 {
@@ -117,8 +117,8 @@ PluginDescription createPluginDescription(
                                            prefix.value_or(""),
                                            load.value_or(PluginLoadOrder::PostWorld),
                                            provides.value_or(empty),
-                                           depends.value_or(empty),
-                                           soft_depends.value_or(empty),
+                                           depend.value_or(empty),
+                                           soft_depend.value_or(empty),
                                            load_before.value_or(empty),
                                            default_permission.value_or(PermissionDefault::Operator)};
     return {std::move(name), std::move(version), metadata};
@@ -137,7 +137,7 @@ void init_plugin(py::module &m)
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("contributors") = py::none(),
              py::arg("website") = py::none(), py::arg("prefix") = py::none(), py::arg("load") = py::none(),
-             py::arg("provides") = py::none(), py::arg("depends") = py::none(), py::arg("soft_depends") = py::none(),
+             py::arg("provides") = py::none(), py::arg("depend") = py::none(), py::arg("soft_depend") = py::none(),
              py::arg("load_before") = py::none(), py::arg("default_permission") = py::none())
         .def_property_readonly("name", &PluginDescription::getName,
                                "Gives the name of the plugin. This name is a unique identifier for plugins.")

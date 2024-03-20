@@ -115,8 +115,8 @@ struct PluginMetadata {
     std::string prefix;
     PluginLoadOrder load = PluginLoadOrder::PostWorld;
     std::vector<std::string> provides;
-    std::vector<std::string> depends;
-    std::vector<std::string> soft_depends;
+    std::vector<std::string> depend;
+    std::vector<std::string> soft_depend;
     std::vector<std::string> load_before;
     PermissionDefault default_permission = PermissionDefault::Operator;
     std::unordered_map<std::string, CommandBuilder> commands;

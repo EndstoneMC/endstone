@@ -153,9 +153,9 @@ public:
      *
      * @return immutable list of the plugin's dependencies
      */
-    [[nodiscard]] std::vector<std::string> getDepends() const
+    [[nodiscard]] std::vector<std::string> getDepend() const
     {
-        return metadata_.depends;
+        return metadata_.depend;
     }
 
     /**
@@ -163,9 +163,9 @@ public:
      *
      * @return immutable list of the plugin's preferred dependencies
      */
-    [[nodiscard]] std::vector<std::string> getSoftDepends() const
+    [[nodiscard]] std::vector<std::string> getSoftDepend() const
     {
-        return metadata_.soft_depends;
+        return metadata_.soft_depend;
     }
 
     /**
