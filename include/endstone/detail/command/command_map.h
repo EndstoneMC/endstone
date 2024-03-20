@@ -33,6 +33,7 @@ public:
 
 private:
     friend class EndstoneServer;
+    void initialise();
     void setDefaultCommands();
     void setMinecraftCommands();
 

@@ -54,25 +54,16 @@ void EndstoneServer::loadPlugins()
 
 void EndstoneServer::enablePlugins(PluginLoadOrder type)
 {
+    if (type == PluginLoadOrder::PostWorld) {
+        command_map_->initialise();
+        DefaultPermissions::registerCorePermissions();
+    }
+
     auto plugins = plugin_manager_->getPlugins();
     for (auto *plugin : plugins) {
         if (!plugin->isEnabled() && plugin->getDescription().getLoad() == type) {
             enablePlugin(*plugin);
         }
-    }
-
-    if (type == PluginLoadOrder::PostWorld) {
-        command_map_->setMinecraftCommands();
-        command_map_->setDefaultCommands();
-        std::vector<std::string> plugin_names;
-        plugin_names.reserve(plugins.size());
-        std::transform(plugins.begin(), plugins.end(), std::back_inserter(plugin_names), [](const auto &plugin) {
-            std::string name = plugin->getName();
-            std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-            return name;
-        });
-        command_map_->addEnumValues("PluginName", plugin_names);
-        DefaultPermissions::registerCorePermissions();
     }
 }
 

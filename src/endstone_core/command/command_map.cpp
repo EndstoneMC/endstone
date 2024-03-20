@@ -23,6 +23,7 @@
 #include "bedrock/command/command_registry.h"
 #include "bedrock/i18n.h"
 #include "bedrock/type_id.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/bedrock_command.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
@@ -203,6 +204,24 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 void EndstoneCommandMap::addEnumValues(const std::string &name, const std::vector<std::string> &values)
 {
     server_.getMinecraftCommands().getRegistry().addEnumValues(name, values);
+}
+
+void EndstoneCommandMap::initialise()
+{
+    setMinecraftCommands();
+    setDefaultCommands();
+
+    auto plugins = server_.getPluginManager().getPlugins();
+    for (auto *plugin : plugins) {
+        auto name = plugin->getName();
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        addEnumValues("PluginName", {name});
+
+        auto commands = plugin->getDescription().getCommands();
+        for (const auto &command : commands) {
+            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
+        }
+    }
 }
 
 }  // namespace endstone::detail

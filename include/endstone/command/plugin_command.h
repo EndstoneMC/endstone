@@ -22,13 +22,7 @@ namespace endstone {
 
 class PluginCommand : public Command {
 public:
-    PluginCommand(Plugin &owner, std::string name, std::string description = "", std::vector<std::string> usages = {},
-                  std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
-        : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases),
-                  std::move(permissions)),
-          owner_(owner)
-    {
-    }
+    PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}
 
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override
     {
