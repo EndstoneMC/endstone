@@ -99,12 +99,35 @@ public:
     }
 };
 
+namespace {
+PluginDescription createPluginDescription(std::string name, std::string version,
+                                          const std::optional<std::string> &description,
+                                          const std::optional<std::vector<std::string>> &authors,
+                                          const std::optional<std::vector<std::string>> &contributors,
+                                          const std::optional<std::string> &website,
+                                          const std::optional<std::string> &prefix, std::optional<PluginLoadOrder> load,
+                                          const py::args & /*args*/, const py::kwargs & /*kwargs*/)
+{
+    std::vector<std::string> empty = {};
+    return {std::move(name),
+            std::move(version),
+            {description.value_or(""), authors.value_or(empty), contributors.value_or(empty), website.value_or(""),
+             prefix.value_or(""), load.value_or(PluginLoadOrder::PostWorld)}};
+}
+}  // namespace
+
 void init_plugin(py::module &m)
 {
+    py::enum_<PluginLoadOrder>(m, "PluginLoadOrder")
+        .value("STARTUP", PluginLoadOrder::Startup)
+        .value("POSTWORLD", PluginLoadOrder::PostWorld);
+
     auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
 
     py::class_<PluginDescription>(m, "PluginDescription")
-        .def(py::init<std::string, std::string>(), py::arg("name"), py::arg("version"))
+        .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
+             py::arg("description") = py::none(), py::arg("authors") = py::none(), py::arg("contributors") = py::none(),
+             py::arg("website") = py::none(), py::arg("prefix") = py::none(), py::arg("load") = py::none())
         .def_property_readonly("name", &PluginDescription::getName,
                                "Gives the name of the plugin. This name is a unique identifier for plugins.")
         .def_property_readonly("version", &PluginDescription::getVersion, "Gives the version of the plugin.")
