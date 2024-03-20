@@ -23,6 +23,7 @@
 
 #include "endstone/command/command.h"
 #include "endstone/permissions/permission.h"
+#include "endstone/plugin/plugin_description.h"
 #include "endstone/plugin/plugin_load_order.h"
 
 namespace endstone::detail {
@@ -107,13 +108,13 @@ private:
     std::unordered_map<std::string, bool> children_ = {};
 };
 
-struct PluginMetadata {
+struct PluginDescriptionBuilder {
     std::string description;
+    PluginLoadOrder load = PluginLoadOrder::PostWorld;
     std::vector<std::string> authors;
     std::vector<std::string> contributors;
     std::string website;
     std::string prefix;
-    PluginLoadOrder load = PluginLoadOrder::PostWorld;
     std::vector<std::string> provides;
     std::vector<std::string> depend;
     std::vector<std::string> soft_depend;
@@ -134,7 +135,27 @@ struct PluginMetadata {
         return permissions.emplace(name, name).first->second;
     }
 
-    [[nodiscard]] std::vector<Command> getCommands() const
+    [[nodiscard]] PluginDescription build(std::string name, std::string version) const
+    {
+        return {std::move(name),
+                std::move(version),
+                description,
+                load,
+                authors,
+                contributors,
+                website,
+                prefix,
+                provides,
+                depend,
+                soft_depend,
+                load_before,
+                default_permission,
+                buildCommands(),
+                buildPermissions()};
+    }
+
+private:
+    [[nodiscard]] std::vector<Command> buildCommands() const
     {
         std::vector<Command> result;
         result.reserve(commands.size());
@@ -144,7 +165,7 @@ struct PluginMetadata {
         return result;
     }
 
-    [[nodiscard]] std::vector<Permission> getPermissions() const
+    [[nodiscard]] std::vector<Permission> buildPermissions() const
     {
         std::vector<Permission> result;
         result.reserve(permissions.size());
