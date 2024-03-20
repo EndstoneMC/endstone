@@ -66,7 +66,7 @@ CheckOptions:
   readability-identifier-naming.PrivateMemberCase: lower_case
   readability-identifier-naming.PrivateMemberSuffix: '_'
   readability-identifier-naming.PrivateMethodCase: camelBack
-  readability-identifier-naming.ProtectedMemberCase: camelBack
+  readability-identifier-naming.ProtectedMemberCase: lower_case
   readability-identifier-naming.ProtectedMemberSuffix: '_'
   readability-identifier-naming.ProtectedMethodCase: camelBack
   readability-identifier-naming.PublicMemberCase: lower_case
