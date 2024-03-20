@@ -137,6 +137,76 @@ public:
         return metadata_.prefix;
     }
 
+    /**
+     * Gives the list of other plugin APIs which this plugin provides. These are usable for other plugins to depend on.
+     *
+     * @return immutable list of the plugin APIs which this plugin provides
+     */
+    [[nodiscard]] std::vector<std::string> getProvides() const
+    {
+        return metadata_.provides;
+    }
+
+    /**
+     * Gives a list of other plugins that the plugin requires.
+     *
+     * @return immutable list of the plugin's dependencies
+     */
+    [[nodiscard]] std::vector<std::string> getDepends() const
+    {
+        return metadata_.depends;
+    }
+
+    /**
+     * Gives a list of other plugins that the plugin requires for full functionality.
+     *
+     * @return immutable list of the plugin's preferred dependencies
+     */
+    [[nodiscard]] std::vector<std::string> getSoftDepends() const
+    {
+        return metadata_.soft_depends;
+    }
+
+    /**
+     * Gets the list of plugins that should consider this plugin a soft-dependency.
+     *
+     * @return immutable list of plugins that should consider this plugin a soft-dependency
+     */
+    [[nodiscard]] std::vector<std::string> getLoadBefore() const
+    {
+        return metadata_.load_before;
+    }
+
+    /**
+     * Gives the default value of permissions registered for the plugin.
+     *
+     * @return the default value for the plugin's permissions
+     */
+    [[nodiscard]] PermissionDefault getDefaultPermission() const
+    {
+        return metadata_.default_permission;
+    }
+
+    /**
+     * Gives the list of commands the plugin will register at runtime, immediately proceeding enabling.
+     *
+     * @return the commands this plugin will register
+     */
+    [[nodiscard]] std::vector<Command> getCommands() const
+    {
+        return metadata_.getCommands();
+    }
+
+    /**
+     * Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.
+     *
+     * @return the permissions this plugin will register
+     */
+    [[nodiscard]] std::vector<Permission> getPermissions() const
+    {
+        return metadata_.getPermissions();
+    }
+
 private:
     std::string name_;
     std::string version_;

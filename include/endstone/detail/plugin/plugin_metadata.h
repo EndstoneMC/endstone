@@ -114,9 +114,11 @@ struct PluginMetadata {
     std::string website;
     std::string prefix;
     PluginLoadOrder load = PluginLoadOrder::PostWorld;
+    std::vector<std::string> provides;
     std::vector<std::string> depends;
     std::vector<std::string> soft_depends;
     std::vector<std::string> load_before;
+    PermissionDefault default_permission = PermissionDefault::Operator;
     std::unordered_map<std::string, CommandBuilder> commands;
     std::unordered_map<std::string, PermissionBuilder> permissions;
 
@@ -132,21 +134,21 @@ struct PluginMetadata {
         return permissions.emplace(name, name).first->second;
     }
 
-    std::vector<Command> getCommands()
+    [[nodiscard]] std::vector<Command> getCommands() const
     {
         std::vector<Command> result;
         result.reserve(commands.size());
-        for (auto &pair : commands) {
+        for (const auto &pair : commands) {
             result.push_back(pair.second.build());
         }
         return result;
     }
 
-    std::vector<Permission> getPermissions()
+    [[nodiscard]] std::vector<Permission> getPermissions() const
     {
         std::vector<Permission> result;
         result.reserve(permissions.size());
-        for (auto &pair : permissions) {
+        for (const auto &pair : permissions) {
             result.push_back(pair.second.build());
         }
         return result;
