@@ -17,7 +17,7 @@
 #include "endstone/command/command.h"
 namespace endstone::detail {
 class EndstoneCommand : public Command {
-protected:
+public:
     using Command::Command;
 };
 }  // namespace endstone::detail

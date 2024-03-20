@@ -29,7 +29,7 @@ PluginsCommand::PluginsCommand() : EndstoneCommand("plugins")
 {
     setDescription("Gets a list of plugins running on the server");
     setUsages("/plugins");
-    setPermission("endstone.command.plugins");
+    setPermissions("endstone.command.plugins");
 }
 
 bool PluginsCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const

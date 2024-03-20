@@ -31,7 +31,7 @@ class PluginCommand;
  * Represents a Command, which executes various tasks upon user input
  */
 class Command {
-protected:
+public:
     explicit Command(std::string name, std::string description = "", std::vector<std::string> usages = {},
                      std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {})
     {
@@ -39,10 +39,9 @@ protected:
         setDescription(std::move(description));
         setUsages(std::move(usages));
         setAliases(std::move(aliases));
-        setPermission(std::move(permissions));
+        setPermissions(std::move(permissions));
     }
 
-public:
     virtual ~Command() = default;
 
     /**
@@ -187,7 +186,7 @@ public:
      * @param permissions List of permission names
      */
     template <typename... Permission>
-    void setPermission(Permission... permissions)
+    void setPermissions(Permission... permissions)
     {
         permissions_ = std::move(std::vector<std::string>{permissions...});
     }
@@ -216,7 +215,7 @@ public:
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    bool testPermissionSilently(const CommandSender &target) const
+    [[nodiscard]] bool testPermissionSilently(const CommandSender &target) const
     {
         if (permissions_.empty()) {
             return true;
