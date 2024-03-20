@@ -20,12 +20,14 @@
 #include <fmt/format.h>
 
 #include "endstone/endstone.h"
+#include "endstone/plugin/plugin_load_order.h"
 
 namespace endstone {
 
 namespace detail {
 struct PluginDetail {
     std::string description;
+    PluginLoadOrder load = PluginLoadOrder::PostWorld;
     std::vector<std::string> authors;
     std::vector<std::string> contributors;
     std::string website;
@@ -91,6 +93,16 @@ public:
     [[nodiscard]] std::string getDescription() const
     {
         return detail_.description;
+    }
+
+    /**
+     * Gives the phase of server startup that the plugin should be loaded.
+     *
+     * @return the phase when the plugin should be loaded
+     */
+    [[nodiscard]] PluginLoadOrder getLoad() const
+    {
+        return detail_.load;
     }
 
     /**

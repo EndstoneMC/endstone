@@ -33,6 +33,9 @@ namespace endstone {
 class PluginCommand;
 class PluginLoader;
 
+/**
+ * Represents a Plugin
+ */
 class Plugin : public CommandExecutor {
 public:
     Plugin() = default;
