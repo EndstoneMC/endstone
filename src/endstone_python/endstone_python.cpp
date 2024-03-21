@@ -15,6 +15,7 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/permissions/permissible.h"
+#include "endstone/permissions/permission_default.h"
 #include "endstone/server.h"
 
 namespace py = pybind11;
@@ -24,7 +25,8 @@ namespace endstone::detail {
 void init_command(py::module_ &);
 void init_logger(py::module_ &);
 void init_plugin(py::module_ &);
-void init_permissions(py::module_ &, py::class_<Permissible> &permissible);
+void init_permissions(py::module_ &, py::class_<Permissible> &permissible,
+                      pybind11::enum_<PermissionDefault> &permission_default);
 void init_server(py::class_<Server> &server);
 void init_util(py::module_ &);
 
@@ -35,11 +37,12 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
     auto server = py::class_<Server>(m, "Server");
     auto permissible = py::class_<Permissible>(m, "Permissible");
+    auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
 
     init_command(m);
     init_logger(m);
     init_plugin(m);
-    init_permissions(m, permissible);
+    init_permissions(m, permissible, permission_default);
     init_server(server);
     init_util(m);
 }

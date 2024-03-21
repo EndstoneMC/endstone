@@ -135,6 +135,7 @@ void init_plugin(py::module &m)
         .value("POSTWORLD", PluginLoadOrder::PostWorld);
 
     auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
+    auto plugin_command = py::class_<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
 
     py::class_<PluginDescription>(m, "PluginDescription")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
@@ -194,6 +195,11 @@ void init_plugin(py::module &m)
         .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"), "Disables the specified plugin")
         .def("disable_plugins", &PluginManager::disablePlugins, "Disables all the loaded plugins")
         .def("clear_plugins", &PluginManager::clearPlugins, "Disables and removes all plugins");
+
+    plugin_command
+        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
+                      py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
+        .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
 }
 
 }  // namespace endstone::detail

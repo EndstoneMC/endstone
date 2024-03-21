@@ -21,7 +21,6 @@
 
 #include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
-#include "endstone/command/plugin_command.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
@@ -95,11 +94,6 @@ void init_command(py::module &m)
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
              "Executes the given command, returning its success.");
-
-    py::class_<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand")
-        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
-                      py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
-        .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
 }
 
 }  // namespace endstone::detail

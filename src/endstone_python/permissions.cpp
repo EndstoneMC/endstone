@@ -27,9 +27,10 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_permissions(py::module &m, py::class_<Permissible> &permissible)
+void init_permissions(py::module_ &m, py::class_<Permissible> &permissible,
+                      pybind11::enum_<PermissionDefault> &permission_default)
 {
-    py::enum_<PermissionDefault>(m, "PermissionDefault")
+    permission_default  //
         .value("TRUE", PermissionDefault::True)
         .value("FALSE", PermissionDefault::False)
         .value("OP", PermissionDefault::Operator)

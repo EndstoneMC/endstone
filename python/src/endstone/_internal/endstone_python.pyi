@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -34,6 +34,8 @@ class ColorFormat:
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
 class Command:
+    def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None, *args, **kwargs) -> None:
+        ...
     def execute(self, sender: CommandSender, args: list[str]) -> bool:
         """
         Executes the command, returning its success
@@ -427,19 +429,21 @@ class Plugin(CommandExecutor):
         Returns the Server instance currently running this plugin
         """
 class PluginCommand(Command):
-    def __init__(self, plugin: Plugin, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None) -> None:
-        ...
-    def _get_executor(self) -> CommandExecutor:
-        ...
-    def _set_executor(self, executor: CommandExecutor) -> None:
+    @property
+    def executor(self) -> CommandExecutor:
+        """
+        The CommandExecutor to run when parsing this command
+        """
+    @executor.setter
+    def executor(self, arg1: CommandExecutor) -> None:
         ...
     @property
     def plugin(self) -> Plugin:
         """
-        Gets the owner of this PluginCommand
+        The owner of this PluginCommand
         """
 class PluginDescription:
-    def __init__(self, name: str, version: str, description: str | None = None, authors: list[str] | None = None, prefix: str | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[...] | None = None, *args, **kwargs) -> None:
         ...
     @property
     def authors(self) -> list[str]:
@@ -471,6 +475,43 @@ class PluginDescription:
         """
         Gives the version of the plugin.
         """
+class PluginLoadOrder:
+    """
+    Members:
+
+      STARTUP
+
+      POSTWORLD
+    """
+    POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
+    STARTUP: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.STARTUP: 0>
+    __members__: typing.ClassVar[dict[str, PluginLoadOrder]]  # value = {'STARTUP': <PluginLoadOrder.STARTUP: 0>, 'POSTWORLD': <PluginLoadOrder.POSTWORLD: 1>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class PluginLoader:
     def __init__(self, server: Server) -> None:
         ...
@@ -535,9 +576,10 @@ class Server:
         """
         Gets a PluginCommand with the given name or alias.
         """
-    def register_plugin_command(self, command: PluginCommand) -> PluginCommand:
+    @property
+    def command_sender(self) -> CommandSender:
         """
-        Registers a new PluginCommand.
+        Gets a CommandSender for this server.
         """
     @property
     def logger(self) -> Logger:
