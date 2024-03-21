@@ -68,7 +68,7 @@ def cli(install_folder: str, install: bool, remote: str) -> None:
         NotImplementedError: If the operating system is not supported.
         FileNotFoundError: If the server executable is not found and install is set to False.
     """
-    server_version = "1.20.72"
+    from endstone import __minecraft__version__ as minecraft_version
 
     system = platform.system()
     if system == "Windows":
@@ -83,12 +83,12 @@ def cli(install_folder: str, install: bool, remote: str) -> None:
     else:
         raise NotImplementedError(f"{system} is not supported.")
 
-    bootstrap = cls(install_path=install_folder, version=server_version, remote=remote)
+    bootstrap = cls(install_path=install_folder, version=minecraft_version, remote=remote)
 
     if not bootstrap.executable_path.exists():
         if not install:
             download = click.confirm(
-                f"Bedrock Dedicated Server (v{server_version}) "
+                f"Bedrock Dedicated Server (v{minecraft_version}) "
                 f"is not found in {str(bootstrap.executable_path.parent)}. "
                 f"Would you like to download it now?",
                 default=True,
