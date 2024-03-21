@@ -149,17 +149,17 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 - [C++ Example Plugin](https://github.com/EndstoneMC/cpp-plugin-template)
 - [Python Example Plugin](https://github.com/EndstoneMC/python-plugin-template)
 
-| Milestone                                | Duration   | Core | C++ API | Python API |
-|------------------------------------------|------------|------|---------|------------|
-| **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          |
-| **⌨️ Command System**                    | 2-3 months | ✅    | ✅       | ✅          |
-| **🔐 Permission System**                 | 2-3 months | ✅    | ✅       | ✅          |
-| **🎈 Event System**                      | 2-3 months | 🚧   | ⏳       | ⏳          |
-| **🛠 Minecraft Core Features**           | 4-5 months | ⏳    | ⏳       | ⏳          |
-| **🖼 GUI & Inventory System**            | 3-4 months | ⏳    | ⏳       | ⏳          |
-| **🌟 Advanced Features & Refinements**   | 4-6 months | ⏳    | ⏳       | ⏳          |
-| **🧪 Beta Testing & Community Feedback** | 3 months   | ⏳    | ⏳       | ⏳          |
-| **🚀 Official Release & Support**        | -          | ⏳    | ⏳       | ⏳          |
+| Milestone                                | Duration   | Core | C++ API | Python API | Since  |
+|------------------------------------------|------------|------|---------|------------|--------|
+| **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          | v0.1.0 |
+| **⌨️ Command System**                    | 2-3 months | ✅    | ✅       | ✅          | v0.2.0 |
+| **🔐 Permission System**                 | 2-3 months | ✅    | ✅       | ✅          | v0.3.0 |
+| **🎈 Event System**                      | 2-3 months | 🚧   | ⏳       | ⏳          |        |
+| **🛠 Minecraft Core Features**           | 4-5 months | ⏳    | ⏳       | ⏳          |        |
+| **🖼 GUI & Inventory System**            | 3-4 months | ⏳    | ⏳       | ⏳          |        |
+| **🌟 Advanced Features & Refinements**   | 4-6 months | ⏳    | ⏳       | ⏳          |        |
+| **🧪 Beta Testing & Community Feedback** | 3 months   | ⏳    | ⏳       | ⏳          |        |
+| **🚀 Official Release & Support**        | -          | ⏳    | ⏳       | ⏳          |        |
 
 Here's a legend to guide you:
 
