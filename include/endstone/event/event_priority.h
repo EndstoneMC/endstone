@@ -18,14 +18,15 @@ namespace endstone {
 
 /**
  * Represents an event's priority in execution.
- * 
+ *
  * Listeners with lower priority are called first will listeners with higher priority are called last.
  * Listeners are called in following order:
  * LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
  */
 enum class EventPriority {
     /**
-     * Event call is of very low importance and should be run first, to allow other plugins to further customise the outcome
+     * Event call is of very low importance and should be run first, to allow other plugins to further customise the
+     * outcome
      */
     LOWEST = 0,
     /**
