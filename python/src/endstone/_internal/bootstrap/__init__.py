@@ -68,7 +68,7 @@ def cli(install_folder: str, install: bool, remote: str) -> None:
         NotImplementedError: If the operating system is not supported.
         FileNotFoundError: If the server executable is not found and install is set to False.
     """
-    server_version = "1.20.71"
+    server_version = "1.20.72"
 
     system = platform.system()
     if system == "Windows":
