@@ -446,9 +446,34 @@ class PluginDescription:
     def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[...] | None = None, *args, **kwargs) -> None:
         ...
     @property
+    def api_version(self) -> str:
+        """
+        Gives the API version which this plugin is designed to support.
+        """
+    @property
     def authors(self) -> list[str]:
         """
         Gives the list of authors for the plugin.
+        """
+    @property
+    def commands(self) -> list[Command]:
+        """
+        Gives the list of commands the plugin will register at runtime.
+        """
+    @property
+    def contributors(self) -> list[str]:
+        """
+        Gives the list of contributors for the plugin.
+        """
+    @property
+    def default_permission(self) -> PermissionDefault:
+        """
+        Gives the default value of permissions registered for the plugin.
+        """
+    @property
+    def depend(self) -> list[str]:
+        """
+        Gives a list of other plugins that the plugin requires.
         """
     @property
     def description(self) -> str:
@@ -461,9 +486,24 @@ class PluginDescription:
         Returns the name of a plugin, including the version.
         """
     @property
+    def load(self) -> PluginLoadOrder:
+        """
+        Gives the phase of server startup that the plugin should be loaded.
+        """
+    @property
+    def load_before(self) -> list[str]:
+        """
+        Gets the list of plugins that should consider this plugin a soft-dependency.
+        """
+    @property
     def name(self) -> str:
         """
         Gives the name of the plugin. This name is a unique identifier for plugins.
+        """
+    @property
+    def permissions(self) -> list[...]:
+        """
+        Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.
         """
     @property
     def prefix(self) -> str:
@@ -471,9 +511,24 @@ class PluginDescription:
         Gives the token to prefix plugin-specific logging messages with.
         """
     @property
+    def provides(self) -> list[str]:
+        """
+        Gives the list of other plugin APIs which this plugin provides. These are usable for other plugins to depend on.
+        """
+    @property
+    def soft_depend(self) -> list[str]:
+        """
+        Gives a list of other plugins that the plugin requires for full functionality.
+        """
+    @property
     def version(self) -> str:
         """
         Gives the version of the plugin.
+        """
+    @property
+    def website(self) -> str:
+        """
+        Gives the plugin's or plugin's author's website.
         """
 class PluginLoadOrder:
     """

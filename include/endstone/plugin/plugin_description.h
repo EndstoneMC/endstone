@@ -200,7 +200,7 @@ public:
     }
 
     /**
-     * Gives the list of commands the plugin will register at runtime, immediately proceeding enabling.
+     * Gives the list of commands the plugin will register at runtime.
      *
      * @return the commands this plugin will register
      */

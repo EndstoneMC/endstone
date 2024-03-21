@@ -149,11 +149,35 @@ void init_plugin(py::module &m)
         .def_property_readonly("version", &PluginDescription::getVersion, "Gives the version of the plugin.")
         .def_property_readonly("full_name", &PluginDescription::getFullName,
                                "Returns the name of a plugin, including the version.")
+        .def_property_readonly("api_version", &PluginDescription::getAPIVersion,
+                               "Gives the API version which this plugin is designed to support.")
         .def_property_readonly("description", &PluginDescription::getDescription,
                                "Gives a human-friendly description of the functionality the plugin provides.")
+        .def_property_readonly("load", &PluginDescription::getLoad,
+                               "Gives the phase of server startup that the plugin should be loaded.")
         .def_property_readonly("authors", &PluginDescription::getAuthors, "Gives the list of authors for the plugin.")
+        .def_property_readonly("contributors", &PluginDescription::getContributors,
+                               "Gives the list of contributors for the plugin.")
+        .def_property_readonly("website", &PluginDescription::getWebsite,
+                               "Gives the plugin's or plugin's author's website.")
         .def_property_readonly("prefix", &PluginDescription::getPrefix,
-                               "Gives the token to prefix plugin-specific logging messages with.");
+                               "Gives the token to prefix plugin-specific logging messages with.")
+        .def_property_readonly("provides", &PluginDescription::getProvides,
+                               "Gives the list of other plugin APIs which this plugin provides. These are usable for "
+                               "other plugins to depend on.")
+        .def_property_readonly("depend", &PluginDescription::getDepend,
+                               "Gives a list of other plugins that the plugin requires.")
+        .def_property_readonly("soft_depend", &PluginDescription::getSoftDepend,
+                               "Gives a list of other plugins that the plugin requires for full functionality.")
+        .def_property_readonly("load_before", &PluginDescription::getLoadBefore,
+                               "Gets the list of plugins that should consider this plugin a soft-dependency.")
+        .def_property_readonly("default_permission", &PluginDescription::getDefaultPermission,
+                               "Gives the default value of permissions registered for the plugin.")
+        .def_property_readonly("commands", &PluginDescription::getCommands,
+                               "Gives the list of commands the plugin will register at runtime.")
+        .def_property_readonly(
+            "permissions", &PluginDescription::getPermissions,
+            "Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.");
 
     py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
         .def(py::init<>())
