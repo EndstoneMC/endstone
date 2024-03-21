@@ -148,7 +148,10 @@ void EndstonePluginManager::clearPlugins()
 
 void EndstonePluginManager::callEvent(Event &event)
 {
-    // TODO(event): we need more detailed implementation here
+    // TODO(event): check event.isAsynchronous() and isServerThread() to avoid
+    //  1. Asynchronous event cannot be triggered asynchronously from inside synchronized code.
+    //  2. Asynchronous event cannot be triggered asynchronously from primary server thread.
+    //  3. Synchronous event cannot be triggered asynchronously from another thread.
     event.dispatch();
 }
 
