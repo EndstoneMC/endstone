@@ -33,6 +33,8 @@ void init_server(py::class_<Server> &server)
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "Gets the plugin manager for interfacing with plugins.")
+        .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
+                               "Gets a CommandSender for this server.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
              "Gets a PluginCommand with the given name or alias.")
         .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
