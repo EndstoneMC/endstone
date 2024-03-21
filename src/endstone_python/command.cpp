@@ -14,6 +14,8 @@
 
 #include "endstone/command/command.h"
 
+#include <utility>
+
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -39,6 +41,18 @@ public:
     }
 };
 
+namespace {
+Command createCommand(std::string name, const std::optional<std::string> &description,
+                      const std::optional<std::vector<std::string>> &usages,
+                      const std::optional<std::vector<std::string>> &aliases,
+                      const std::optional<std::vector<std::string>> &permissions, const py::args & /*args*/,
+                      const py::kwargs & /*kwargs*/)
+{
+    return Command(std::move(name), description.value_or(""), usages.value_or(std::vector<std::string>{}),
+                   aliases.value_or(std::vector<std::string>{}), permissions.value_or(std::vector<std::string>{}));
+}
+}  // namespace
+
 void init_command(py::module &m)
 {
     py::class_<CommandSender, Permissible>(m, "CommandSender")
@@ -51,6 +65,8 @@ void init_command(py::module &m)
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
+        .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
+             py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
              "Executes the command, returning its success")
         .def("test_permission", &Command::testPermission, py::arg("target"),
