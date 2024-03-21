@@ -23,9 +23,10 @@ namespace endstone {
  */
 class Event {
 public:
-    enum class Result{
+    enum class Result {
         /**
-         * Deny the event. Depending on the event, the action indicated by the event will either not take place or will be reverted. Some actions may not be denied.
+         * Deny the event. Depending on the event, the action indicated by the event will either not take place or will
+         * be reverted. Some actions may not be denied.
          */
         DENY,
         /**
@@ -33,7 +34,8 @@ public:
          */
         DEFAULT,
         /**
-         * Allow / Force the event. The action indicated by the event will take place if possible, even if the server would not normally allow the action. Some actions may not be allowed.
+         * Allow / Force the event. The action indicated by the event will take place if possible, even if the server
+         * would not normally allow the action. Some actions may not be allowed.
          */
         ALLOW
     };
@@ -42,25 +44,60 @@ public:
 
     virtual ~Event() = default;
 
+    virtual void dispatch() = 0;
+
     /**
      * Gets a user-friendly identifier for this event.
      *
      * @return name of this event
      */
-    virtual std::string getEventName() const = 0;
+    [[nodiscard]] virtual std::string getEventName() const = 0;
+
+    [[nodiscard]] virtual bool isCancellable() const
+    {
+        return false;
+    }
+
+    /**
+     * Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still
+     * pass to other plugins
+     *
+     * @return true if this event is cancelled
+     */
+    [[nodiscard]] bool isCancelled() const
+    {
+        if (!isCancellable()) {
+            return false;
+        }
+        return cancelled_;
+    };
+
+    /**
+     * Sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still
+     * pass to other plugins.
+     *
+     * @param cancel true if you wish to cancel this event
+     */
+    void setCancelled(bool cancel)
+    {
+        if (isCancellable()) {
+            cancelled_ = cancel;
+        }
+    }
 
     /**
      * Any custom event that should not by synchronized with other events must use the specific constructor.
      *
      * @return false by default, true if the event fires asynchronously
      */
-    virtual bool isAsynchronous() const
+    [[nodiscard]] bool isAsynchronous() const
     {
         return async_;
     }
 
 private:
     bool async_;
+    bool cancelled_{false};
 };
 
 }  // namespace endstone
