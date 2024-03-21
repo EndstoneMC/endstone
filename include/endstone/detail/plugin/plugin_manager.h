@@ -43,6 +43,9 @@ public:
     void disablePlugins() const override;
     void clearPlugins() override;
 
+    /** Event system */
+    void callEvent(Event &event) override;
+
     /** Permission system */
     [[nodiscard]] Permission *getPermission(std::string name) const override;
     Permission *addPermission(std::unique_ptr<Permission> perm) override;

@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "endstone/event/event.h"
+
 namespace endstone {
 
 class Permission;
@@ -110,6 +112,13 @@ public:
      * Disables and removes all plugins
      */
     virtual void clearPlugins() = 0;
+
+    /**
+     * Calls an event which will be passed to plugins.
+     *
+     * @param event Event to be called
+     */
+    virtual void callEvent(Event &event) = 0;
 
     /**
      * Gets a Permission from its fully qualified name

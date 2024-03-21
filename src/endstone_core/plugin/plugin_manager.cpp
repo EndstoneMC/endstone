@@ -146,6 +146,12 @@ void EndstonePluginManager::clearPlugins()
     default_perms_[false].clear();
 }
 
+void EndstonePluginManager::callEvent(Event &event)
+{
+    // TODO(event): we need more detailed implementation here
+    event.dispatch();
+}
+
 Permission *EndstonePluginManager::getPermission(std::string name) const
 {
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
