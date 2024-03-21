@@ -72,17 +72,13 @@ public:
      * May only be used before registering the command.
      *
      * @param name New command name
-     * @return returns true if the name is changed, false otherwise
      */
-    bool setName(std::string name)
+    void setName(std::string name)
     {
         if (!isRegistered()) {
             std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
             name_ = std::move(name);
-            return true;
         }
-
-        return false;
     }
 
     /**
@@ -99,15 +95,12 @@ public:
      * Sets a brief description of this command.
      *
      * @param description new command description
-     * @return this command object, for chaining
      */
-    Command &setDescription(std::string description)
+    void setDescription(std::string description)
     {
         if (!isRegistered()) {
             description_ = std::move(description);
         }
-
-        return *this;
     }
 
     /**
@@ -124,13 +117,12 @@ public:
      * Sets the list of aliases to request on registration for this command.
      *
      * @param aliases aliases to register to this command
-     * @return this command object, for chaining
      */
     template <typename... Alias>
-    Command &setAliases(Alias... aliases)
+    void setAliases(Alias... aliases)
     {
-        std::vector<std::string> all_aliases = {aliases...};
         if (!isRegistered()) {
+            std::vector<std::string> all_aliases = {aliases...};
             aliases_.clear();
             for (auto alias : all_aliases) {
                 std::transform(alias.begin(), alias.end(), alias.begin(),
@@ -138,7 +130,6 @@ public:
                 aliases_.push_back(alias);
             }
         }
-        return *this;
     }
 
     /**
@@ -155,19 +146,17 @@ public:
      * Sets the usages of this command
      *
      * @param usages List of usages
-     * @return this command object, for chaining
      */
     template <typename... Usage>
-    Command &setUsages(Usage... usages)
+    void setUsages(Usage... usages)
     {
-        std::vector<std::string> all_usages = {usages...};
         if (!isRegistered()) {
+            std::vector<std::string> all_usages = {usages...};
             if (all_usages.empty()) {
                 all_usages.push_back("/" + getName());
             }
             usages_ = std::move(all_usages);
         }
-        return *this;
     }
 
     /**
