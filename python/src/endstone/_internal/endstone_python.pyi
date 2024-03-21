@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -225,7 +225,7 @@ class Permissible:
         Checks if a permissions is available by name.
         """
     @typing.overload
-    def has_permission(self, perm: ...) -> bool:
+    def has_permission(self, perm: Permission) -> bool:
         """
         Checks if a permissions is available by permission.
         """
@@ -235,7 +235,7 @@ class Permissible:
         Checks if a permissions is set by name.
         """
     @typing.overload
-    def is_permission_set(self, perm: ...) -> bool:
+    def is_permission_set(self, perm: Permission) -> bool:
         """
         Checks if a permissions is set by permission.
         """
@@ -260,6 +260,54 @@ class Permissible:
     @op.setter
     def op(self, arg1: bool) -> None:
         ...
+class Permission:
+    def __init__(self, name: str, description: str | None = None, default_value: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
+        ...
+    @typing.overload
+    def add_parent(self, name: str, value: bool) -> Permission:
+        """
+        Adds this permission to the specified parent permission.
+        """
+    @typing.overload
+    def add_parent(self, perm: Permission, value: bool) -> None:
+        """
+        Adds this permission to the specified parent permission.
+        """
+    def recalculate_permissibles(self) -> None:
+        """
+        Recalculates all Permissibles that contain this permission.
+        """
+    @property
+    def children(self) -> dict[str, bool]:
+        """
+        Gets the children of this permission.
+        """
+    @property
+    def default_value(self) -> PermissionDefault:
+        """
+        The default value of this permission.
+        """
+    @default_value.setter
+    def default_value(self, arg1: PermissionDefault) -> None:
+        ...
+    @property
+    def description(self) -> str:
+        """
+        The brief description of this permission
+        """
+    @description.setter
+    def description(self, arg1: str) -> None:
+        ...
+    @property
+    def name(self) -> str:
+        """
+        Gets the unique fully qualified name of this Permission.
+        """
+    @property
+    def permissibles(self) -> set[Permissible]:
+        """
+        Gets a set containing every Permissible that has this permission.
+        """
 class PermissionAttachment:
     def __init__(self, plugin: Plugin, permissible: Permissible) -> None:
         ...
@@ -273,7 +321,7 @@ class PermissionAttachment:
         Sets a permission to the given value, by its fully qualified name.
         """
     @typing.overload
-    def set_permission(self, perm: ..., value: bool) -> None:
+    def set_permission(self, perm: Permission, value: bool) -> None:
         """
         Sets a permission to the given value.
         """
@@ -283,7 +331,7 @@ class PermissionAttachment:
         Removes the specified permission from this attachment by name.
         """
     @typing.overload
-    def unset_permission(self, perm: ...) -> None:
+    def unset_permission(self, perm: Permission) -> None:
         """
         Removes the specified permission from this attachment.
         """
@@ -443,7 +491,7 @@ class PluginCommand(Command):
         The owner of this PluginCommand
         """
 class PluginDescription:
-    def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[...] | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[Permission] | None = None, *args, **kwargs) -> None:
         ...
     @property
     def api_version(self) -> str:
@@ -501,7 +549,7 @@ class PluginDescription:
         Gives the name of the plugin. This name is a unique identifier for plugins.
         """
     @property
-    def permissions(self) -> list[...]:
+    def permissions(self) -> list[Permission]:
         """
         Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.
         """
