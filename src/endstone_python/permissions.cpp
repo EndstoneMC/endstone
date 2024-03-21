@@ -51,11 +51,11 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
 
     permission  //
         .def(py::init(&createPermission), py::arg("name"), py::arg("description") = py::none(),
-             py::arg("default_value") = py::none(), py::arg("children") = py::none())
+             py::arg("default") = py::none(), py::arg("children") = py::none())
         .def_property_readonly("name", &Permission::getName, "Gets the unique fully qualified name of this Permission.")
         .def_property_readonly("children", &Permission::getChildren, py::return_value_policy::reference_internal,
                                "Gets the children of this permission.")
-        .def_property("default_value", &endstone::Permission::getDefault, &endstone::Permission::setDefault,
+        .def_property("default", &endstone::Permission::getDefault, &endstone::Permission::setDefault,
                       "The default value of this permission.")
         .def_property("description", &endstone::Permission::getDescription, &endstone::Permission::setDescription,
                       "The brief description of this permission")
