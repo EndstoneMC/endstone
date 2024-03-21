@@ -1,7 +1,5 @@
 import typing
 
-from endstone._internal.endstone_python import Plugin as _Plugin
-from endstone._internal.endstone_python import PluginCommand as _PluginCommand
 from endstone._internal.endstone_python import (
     Command,
     CommandSender,
@@ -10,6 +8,8 @@ from endstone._internal.endstone_python import (
     PluginLoadOrder,
     PluginManager,
 )
+from endstone._internal.endstone_python import Plugin as _Plugin
+from endstone._internal.endstone_python import PluginCommand as _PluginCommand
 from endstone.command import CommandExecutor
 
 __all__ = [
@@ -108,6 +108,7 @@ class Plugin(_Plugin):
     # Metadata
     name = None
     version = None
+    api_version = None
 
     # Optional metadata
     description = None

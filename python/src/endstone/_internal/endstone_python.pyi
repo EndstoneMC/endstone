@@ -630,6 +630,11 @@ class PluginLoader:
         """
         Loads the plugin contained within the specified directory
         """
+    @property
+    def server(self) -> Server:
+        """
+        Retrieves the Server object associated with the PluginLoader.
+        """
 class PluginManager:
     def clear_plugins(self) -> None:
         """

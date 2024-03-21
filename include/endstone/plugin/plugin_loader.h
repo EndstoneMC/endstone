@@ -68,6 +68,18 @@ public:
         }
     }
 
+    /**
+     * @brief Retrieves the Server object associated with the PluginLoader.
+     *
+     * This function returns a reference to the Server object that the PluginLoader is associated with.
+     *
+     * @return The Server reference.
+     */
+    [[nodiscard]] Server &getServer() const
+    {
+        return server_;
+    }
+
 protected:
     void initPlugin(Plugin &plugin, Logger &logger)
     {

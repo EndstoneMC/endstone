@@ -202,7 +202,9 @@ void init_plugin(py::module &m)
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
-        .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Disables the specified plugin");
+        .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Disables the specified plugin")
+        .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
+                               "Retrieves the Server object associated with the PluginLoader.");
 
     py::class_<PluginManager>(m, "PluginManager")
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference,
