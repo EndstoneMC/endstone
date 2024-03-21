@@ -261,7 +261,7 @@ class Permissible:
     def op(self, arg1: bool) -> None:
         ...
 class Permission:
-    def __init__(self, name: str, description: str | None = None, default_value: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
+    def __init__(self, name: str, description: str | None = None, default: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
         ...
     @typing.overload
     def add_parent(self, name: str, value: bool) -> Permission:
@@ -283,12 +283,12 @@ class Permission:
         Gets the children of this permission.
         """
     @property
-    def default_value(self) -> PermissionDefault:
+    def default(self) -> PermissionDefault:
         """
         The default value of this permission.
         """
-    @default_value.setter
-    def default_value(self, arg1: PermissionDefault) -> None:
+    @default.setter
+    def default(self, arg1: PermissionDefault) -> None:
         ...
     @property
     def description(self) -> str:
