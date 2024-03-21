@@ -62,7 +62,7 @@ class Command:
         Brief description of this command
         """
     @description.setter
-    def description(self, arg1: str) -> Command:
+    def description(self, arg1: str) -> None:
         ...
     @property
     def name(self) -> str:
@@ -70,7 +70,7 @@ class Command:
         Name of this command.
         """
     @name.setter
-    def name(self, arg1: str) -> bool:
+    def name(self, arg1: str) -> None:
         ...
     @property
     def permissions(self) -> list[str]:
