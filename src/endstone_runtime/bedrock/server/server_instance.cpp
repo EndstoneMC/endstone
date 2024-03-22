@@ -20,12 +20,14 @@
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
+#include "endstone/event/server/server_load_event.h"
 #include "endstone/util/color_format.h"
 
 namespace py = pybind11;
 
 using endstone::ColorFormat;
 using endstone::PluginLoadOrder;
+using endstone::ServerLoadEvent;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 using endstone::detail::Singleton;
@@ -55,7 +57,10 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    Singleton<EndstoneServer>::getInstance().enablePlugins(PluginLoadOrder::PostWorld);
+    auto &server = Singleton<EndstoneServer>::getInstance();
+    server.enablePlugins(PluginLoadOrder::PostWorld);
+    ServerLoadEvent event{ServerLoadEvent::LoadType::STARTUP};
+    server.getPluginManager().callEvent(event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
 }
 
