@@ -751,6 +751,10 @@ class PluginLoader:
         Retrieves the Server object associated with the PluginLoader.
         """
 class PluginManager:
+    def call_event(self, event: Event) -> None:
+        """
+        Calls an event which will be passed to plugins.
+        """
     def clear_plugins(self) -> None:
         """
         Disables and removes all plugins
@@ -788,6 +792,10 @@ class PluginManager:
     def load_plugins(self, directory: str) -> list[Plugin]:
         """
         Loads the plugin contained within the specified directory
+        """
+    def register_event(self, name: str, executor: typing.Callable[[Event], None], priority: EventPriority, plugin: Plugin, ignore_cancelled: bool) -> None:
+        """
+        Registers the given event
         """
     @property
     def plugins(self) -> list[Plugin]:
