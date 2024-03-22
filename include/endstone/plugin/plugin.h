@@ -138,7 +138,7 @@ public:
     }
 
     template <typename EventType, typename T>
-    void registerEventHandler(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::NORMAL,
+    void registerEventHandler(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
                               bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
@@ -147,7 +147,7 @@ public:
     }
 
     template <typename EventType>
-    void registerEventHandler(std::function<void(EventType &)> func, EventPriority priority = EventPriority::NORMAL,
+    void registerEventHandler(std::function<void(EventType &)> func, EventPriority priority = EventPriority::Normal,
                               bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(

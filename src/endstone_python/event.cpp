@@ -31,16 +31,16 @@ void init_event(py::module &m)
     py::enum_<EventPriority>(
         m, "EventPriority",
         "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
-        .value("LOWEST", EventPriority::LOWEST,
+        .value("LOWEST", EventPriority::Lowest,
                "Event call is of very low importance and should be run first, to allow other plugins to further "
                "customise the outcome")
-        .value("LOW", EventPriority::LOW, "Event call is of low importance")
-        .value("NORMAL", EventPriority::NORMAL,
+        .value("LOW", EventPriority::Low, "Event call is of low importance")
+        .value("NORMAL", EventPriority::Normal,
                " Event call is neither important nor unimportant, and may be run normally")
-        .value("HIGH", EventPriority::HIGH, "Event call is of high importance")
-        .value("HIGHEST", EventPriority::HIGHEST,
+        .value("HIGH", EventPriority::High, "Event call is of high importance")
+        .value("HIGHEST", EventPriority::Highest,
                "Event call is critical and must have the final say in what happens to the event")
-        .value("MONITOR", EventPriority::MONITOR,
+        .value("MONITOR", EventPriority::Monitor,
                "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
                "should be made under this priority.");
 

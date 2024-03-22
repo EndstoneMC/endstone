@@ -184,7 +184,7 @@ void init_plugin(py::module &m)
 #define DEF_EVENT_HANDLER(EVENT)                                                                                    \
     def("register_event_handler",                                                                                   \
         py::overload_cast<std::function<void(EVENT &)>, EventPriority, bool>(&Plugin::registerEventHandler<EVENT>), \
-        py::arg("func"), py::arg("priority"), py::arg("ignore_cancelled"))
+        py::arg("func"), py::arg("priority") = EventPriority::Normal, py::arg("ignore_cancelled") = false)
 
     py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
         .def(py::init<>())
