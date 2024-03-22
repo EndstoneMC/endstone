@@ -17,6 +17,7 @@
 #include <functional>
 #include <map>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/event/event_priority.h"
@@ -25,8 +26,10 @@ namespace endstone {
 
 class EventHandler {
 public:
-    EventHandler(std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin, bool ignore_cancelled)
-        : executor_(executor), priority_(priority), plugin_(plugin), ignore_cancelled_(ignore_cancelled)
+    EventHandler(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
+                 bool ignore_cancelled)
+        : event_(std::move(event)), executor_(std::move(executor)), priority_(priority), plugin_(plugin),
+          ignore_cancelled_(ignore_cancelled)
     {
     }
 
@@ -47,6 +50,9 @@ public:
 
     void callEvent(Event &event)
     {
+        if (event.getName() != event_) {
+            return;
+        }
         if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {
             return;
         }
@@ -54,6 +60,7 @@ public:
     };
 
 private:
+    std::string event_;
     std::function<void(Event &)> executor_;
     EventPriority priority_;
     Plugin &plugin_;
