@@ -15,30 +15,108 @@
 #pragma once
 
 #include <map>
+#include <mutex>
 #include <string>
 #include <vector>
 
-#include "endstone/event/event_listener.h"
+#include "endstone/event/event_handler.h"
 #include "endstone/event/event_priority.h"
 
 namespace endstone {
 
-template <typename Event>
+/**
+ * A list of event handlers. Should be instantiated on a per event basis.
+ */
 class HandlerList {
 public:
     HandlerList() = default;
 
-    void callEvent(Event &event)
+    /**
+     * Register a new handler
+     *
+     * @param handler Event handler to register
+     * @return the pointer to the registered handler
+     */
+    EventHandler *registerHandler(std::unique_ptr<EventHandler> handler)
     {
-        for (auto &[priority, listeners] : listeners_) {
-            for (auto &listener : listeners) {
-                listener.callEvent(event);
-            }
+        std::lock_guard lock(mtx_);
+        valid_ = false;
+        auto &vector =
+            handlers_.emplace(handler->getPriority(), std::vector<std::unique_ptr<EventHandler>>{}).first->second;
+        auto &it = vector.emplace_back(std::move(handler));
+        return it.get();
+    }
+
+    /**
+     * Remove a handler from a specific order slot
+     *
+     * @param handler Event handler to remove
+     */
+    void unregister(EventHandler &handler)
+    {
+        std::lock_guard lock(mtx_);
+        auto &vector =
+            handlers_.emplace(handler.getPriority(), std::vector<std::unique_ptr<EventHandler>>{}).first->second;
+        auto it = std::find_if(vector.begin(), vector.end(),
+                               [&](const std::unique_ptr<EventHandler> &h) { return h.get() == &handler; });
+        if (it != vector.end()) {
+            valid_ = false;
+            vector.erase(it);
         }
     }
 
+    /**
+     * Remove a specific plugin's handlers from this handler
+     *
+     * @param plugin Plugin to remove
+     */
+    void unregister(Plugin &plugin)
+    {
+        std::lock_guard lock(mtx_);
+        for (auto &[priority, vector] : handlers_) {
+            vector.erase(
+                std::remove_if(vector.begin(), vector.end(),
+                               [&](const std::unique_ptr<EventHandler> &h) { return &h->getPlugin() == &plugin; }),
+                vector.end());
+            valid_ = false;
+        }
+    }
+
+    /**
+     * Get the baked registered handlers associated with this handler list
+     *
+     * @return the array of registered handlers
+     */
+    std::vector<EventHandler *> getHandlers() const
+    {
+        std::lock_guard lock(mtx_);
+        if (!valid_) {
+            bake();
+        }
+        return baked_handlers_;
+    }
+
+protected:
+    void bake() const
+    {
+        if (valid_) {
+            return;
+        }
+
+        baked_handlers_.clear();
+        for (const auto &[priority, vector] : handlers_) {
+            for (const auto &handler : vector) {
+                baked_handlers_.push_back(handler.get());
+            }
+        }
+        valid_ = true;
+    }
+
 private:
-    std::map<EventPriority, std::vector<EventListener<Event>>, std::greater<>> listeners_;
+    mutable std::mutex mtx_;
+    std::map<EventPriority, std::vector<std::unique_ptr<EventHandler>>> handlers_;
+    mutable std::vector<EventHandler *> baked_handlers_;
+    mutable bool valid_{false};
 };
 
 }  // namespace endstone
