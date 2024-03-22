@@ -138,11 +138,11 @@ public:
     }
 
     template <typename EventType, typename T>
-    void registerEventHandler(void (T::*func)(EventType &), T &instance,
-                               EventPriority priority = EventPriority::NORMAL, bool ignore_cancelled = false)
+    void registerEventHandler(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::NORMAL,
+                              bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::name, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
+            EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
             *this, ignore_cancelled);
     }
 
@@ -151,7 +151,7 @@ public:
                               bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::name, [func](Event &e) { (*func)(static_cast<EventType &>(e)); }, priority, *this,
+            EventType::NAME, [func](Event &e) { (*func)(static_cast<EventType &>(e)); }, priority, *this,
             ignore_cancelled);
     }
 
