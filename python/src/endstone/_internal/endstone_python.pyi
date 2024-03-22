@@ -566,6 +566,8 @@ class Plugin(CommandExecutor):
         """
         Called after a plugin is loaded but before it has been enabled.
         """
+    def register_event_handler(self, func: typing.Callable[[ServerLoadEvent], None], priority: EventPriority, ignore_cancelled: bool) -> None:
+        ...
     @property
     def enabled(self) -> bool:
         """

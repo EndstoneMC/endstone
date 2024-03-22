@@ -147,11 +147,11 @@ public:
     }
 
     template <typename EventType>
-    void registerEventHandler(void (*func)(EventType &), EventPriority priority = EventPriority::NORMAL,
+    void registerEventHandler(std::function<void(EventType &)> func, EventPriority priority = EventPriority::NORMAL,
                               bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
-            EventType::NAME, [func](Event &e) { (*func)(static_cast<EventType &>(e)); }, priority, *this,
+            EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, *this,
             ignore_cancelled);
     }
 
