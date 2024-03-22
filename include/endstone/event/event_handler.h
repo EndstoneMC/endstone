@@ -52,7 +52,7 @@ public:
 
     void callEvent(Event &event)
     {
-        if (event.getName() != event_) {
+        if (event.getEventName() != event_) {
             return;
         }
         if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {

@@ -49,7 +49,7 @@ public:
      *
      * @return name of this event
      */
-    [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] virtual std::string getEventName() const = 0;
 
     /**
      * Whether the event may be cancelled by a plugin or the server.

@@ -27,9 +27,10 @@ public:
     // TODO: shall we use endstone::Command instead of std::string?
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 
-    [[nodiscard]] std::string getName() const override
+    inline static const std::string name = "ServerCommandEvent";
+    [[nodiscard]] std::string getEventName() const override
     {
-        return "ServerCommandEvent";
+        return name;
     }
 
     [[nodiscard]] bool isCancellable() const override

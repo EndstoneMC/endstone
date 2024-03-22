@@ -157,7 +157,7 @@ void EndstonePluginManager::callEvent(Event &event)
     //  2. Asynchronous event cannot be triggered asynchronously from primary server thread.
     //  3. Synchronous event cannot be triggered asynchronously from another thread.
 
-    auto &handler_list = event_handlers_.emplace(event.getName(), event.getName()).first->second;
+    auto &handler_list = event_handlers_.emplace(event.getEventName(), event.getEventName()).first->second;
     for (const auto &handler : handler_list.getHandlers()) {
         auto &plugin = handler->getPlugin();
         if (!plugin.isEnabled()) {
@@ -168,7 +168,7 @@ void EndstonePluginManager::callEvent(Event &event)
             handler->callEvent(event);
         }
         catch (std::exception &e) {
-            server_.getLogger().critical("Could not pass event {} to plugin {}. {}", event.getName(),
+            server_.getLogger().critical("Could not pass event {} to plugin {}. {}", event.getEventName(),
                                          plugin.getDescription().getFullName(), e.what());
         }
     }
