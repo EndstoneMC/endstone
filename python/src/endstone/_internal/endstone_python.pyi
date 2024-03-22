@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -115,21 +115,87 @@ class CommandSender(Permissible):
         """
         Returns the server instance that this command is running on
         """
+class Event:
+    class Result:
+        """
+        Members:
+        
+          DENY
+        
+          DEFAULT
+        
+          ALLOW
+        """
+        ALLOW: typing.ClassVar[Event.Result]  # value = <Result.ALLOW: 2>
+        DEFAULT: typing.ClassVar[Event.Result]  # value = <Result.DEFAULT: 1>
+        DENY: typing.ClassVar[Event.Result]  # value = <Result.DENY: 0>
+        __members__: typing.ClassVar[dict[str, Event.Result]]  # value = {'DENY': <Result.DENY: 0>, 'DEFAULT': <Result.DEFAULT: 1>, 'ALLOW': <Result.ALLOW: 2>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    ALLOW: typing.ClassVar[Event.Result]  # value = <Result.ALLOW: 2>
+    DEFAULT: typing.ClassVar[Event.Result]  # value = <Result.DEFAULT: 1>
+    DENY: typing.ClassVar[Event.Result]  # value = <Result.DENY: 0>
+    def asynchronous(self) -> bool:
+        ...
+    @property
+    def cancellable(self) -> bool:
+        """
+        Whether the event can be cancelled by a plugin or the server.
+        """
+    @property
+    def cancelled(self) -> bool:
+        """
+        The cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins
+        """
+    @cancelled.setter
+    def cancelled(self, arg1: bool) -> None:
+        ...
+    @property
+    def event_name(self) -> str:
+        """
+        Gets a user-friendly identifier for this event.
+        """
 class EventPriority:
     """
+    Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
+    
     Members:
     
-      LOWEST
+      LOWEST : Event call is of very low importance and should be run first, to allow other plugins to further customise the outcome
     
-      LOW
+      LOW : Event call is of low importance
     
-      NORMAL
+      NORMAL :  Event call is neither important nor unimportant, and may be run normally
     
-      HIGH
+      HIGH : Event call is of high importance
     
-      HIGHEST
+      HIGHEST : Event call is critical and must have the final say in what happens to the event
     
-      MONITOR
+      MONITOR : Event is listened to purely for monitoring the outcome of an event. No modifications to the event should be made under this priority.
     """
     HIGH: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGH: 3>
     HIGHEST: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGHEST: 4>

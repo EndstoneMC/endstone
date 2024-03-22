@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "endstone/event/event.h"
+
 #include <utility>
 
 #include <pybind11/pybind11.h>
@@ -25,13 +27,37 @@ namespace endstone::detail {
 
 void init_event(py::module &m)
 {
-    py::enum_<EventPriority>(m, "EventPriority")
-        .value("LOWEST", EventPriority::LOWEST)
-        .value("LOW", EventPriority::LOW)
-        .value("NORMAL", EventPriority::NORMAL)
-        .value("HIGH", EventPriority::HIGH)
-        .value("HIGHEST", EventPriority::HIGHEST)
-        .value("MONITOR", EventPriority::MONITOR);
+    py::enum_<EventPriority>(
+        m, "EventPriority",
+        "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR")
+        .value("LOWEST", EventPriority::LOWEST,
+               "Event call is of very low importance and should be run first, to allow other plugins to further "
+               "customise the outcome")
+        .value("LOW", EventPriority::LOW, "Event call is of low importance")
+        .value("NORMAL", EventPriority::NORMAL,
+               " Event call is neither important nor unimportant, and may be run normally")
+        .value("HIGH", EventPriority::HIGH, "Event call is of high importance")
+        .value("HIGHEST", EventPriority::HIGHEST,
+               "Event call is critical and must have the final say in what happens to the event")
+        .value("MONITOR", EventPriority::MONITOR,
+               "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
+               "should be made under this priority.");
+
+    auto event = py::class_<Event>(m, "Event")
+                     .def_property_readonly("event_name", &Event::getEventName,
+                                            "Gets a user-friendly identifier for this event.")
+                     .def_property_readonly("cancellable", &Event::isCancellable,
+                                            "Whether the event can be cancelled by a plugin or the server.")
+                     .def_property("cancelled", &Event::isCancelled, &Event::setCancelled,
+                                   "The cancellation state of this event. A cancelled event will not be executed in "
+                                   "the server, but will still pass to other plugins")
+                     .def("asynchronous", &Event::isAsynchronous);
+
+    py::enum_<Event::Result>(event, "Result")
+        .value("DENY", Event::Result::DENY)
+        .value("DEFAULT", Event::Result::DEFAULT)
+        .value("ALLOW", Event::Result::ALLOW)
+        .export_values();
 }
 
 }  // namespace endstone::detail
