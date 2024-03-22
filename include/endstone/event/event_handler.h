@@ -23,10 +23,9 @@
 
 namespace endstone {
 
-template <typename Event>
-class EventListener {
+class EventHandler {
 public:
-    EventListener(std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+    EventHandler(std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin, bool ignore_cancelled)
         : executor_(executor), priority_(priority), plugin_(plugin), ignore_cancelled_(ignore_cancelled)
     {
     }
