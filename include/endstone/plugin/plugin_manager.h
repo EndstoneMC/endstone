@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <string>
 #include <vector>
 
 #include "endstone/event/event.h"
+#include "endstone/event/event_priority.h"
 
 namespace endstone {
 
@@ -119,6 +121,19 @@ public:
      * @param event Event to be called
      */
     virtual void callEvent(Event &event) = 0;
+
+    /**
+     * Registers the given event
+     *
+     * @param event Event name to register
+     * @param executor EventExecutor to register
+     * @param priority Priority of this event
+     * @param plugin Plugin to register
+     * @param ignore_cancelled Do not call executor if event was already
+     *     cancelled
+     */
+    virtual void registerEvent(std::string event, std::function<void(Event(&))> executor, EventPriority priority,
+                               Plugin &plugin, bool ignore_cancelled) = 0;
 
     /**
      * Gets a Permission from its fully qualified name

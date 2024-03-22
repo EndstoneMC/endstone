@@ -21,6 +21,9 @@
 #include <utility>
 #include <vector>
 
+#include "endstone/event/event.h"
+#include "endstone/event/event_listener.h"
+#include "endstone/event/handler_list.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
@@ -153,6 +156,12 @@ void EndstonePluginManager::callEvent(Event &event)
     //  2. Asynchronous event cannot be triggered asynchronously from primary server thread.
     //  3. Synchronous event cannot be triggered asynchronously from another thread.
     event.dispatch();
+}
+
+void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
+                                          EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+{
+    // TODO(event): implement this
 }
 
 Permission *EndstonePluginManager::getPermission(std::string name) const

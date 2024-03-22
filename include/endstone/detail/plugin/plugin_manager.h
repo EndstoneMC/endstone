@@ -45,6 +45,8 @@ public:
 
     /** Event system */
     void callEvent(Event &event) override;
+    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
+                       bool ignore_cancelled) override;
 
     /** Permission system */
     [[nodiscard]] Permission *getPermission(std::string name) const override;
