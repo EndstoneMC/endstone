@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <map>
 #include <string>
 #include <vector>
@@ -25,9 +26,39 @@ namespace endstone {
 template <typename Event>
 class EventListener {
 public:
-    void onEvent(Event &event){
-        // TODO: we need to have a plugin and a lambda / function
+    EventListener(std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+        : executor_(executor), priority_(priority), plugin_(plugin), ignore_cancelled_(ignore_cancelled)
+    {
+    }
+
+    [[nodiscard]] EventPriority getPriority() const
+    {
+        return priority_;
+    }
+
+    [[nodiscard]] Plugin &getPlugin() const
+    {
+        return plugin_;
+    }
+
+    [[nodiscard]] bool isIgnoreCancelled() const
+    {
+        return ignore_cancelled_;
+    }
+
+    void callEvent(Event &event)
+    {
+        if (event.isCancellable() && event.isCancelled() && isIgnoreCancelled()) {
+            return;
+        }
+        executor_(event);
     };
+
+private:
+    std::function<void(Event &)> executor_;
+    EventPriority priority_;
+    Plugin &plugin_;
+    bool ignore_cancelled_;
 };
 
 }  // namespace endstone

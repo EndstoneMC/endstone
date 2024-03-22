@@ -53,10 +53,12 @@ public:
      */
     [[nodiscard]] virtual std::string getEventName() const = 0;
 
-    [[nodiscard]] virtual bool isCancellable() const
-    {
-        return false;
-    }
+    /**
+     * Whether the event may be cancelled by a plugin or the server.
+     *
+     * @return true if this event can be cancelled
+     */
+    [[nodiscard]] virtual bool isCancellable() const = 0;
 
     /**
      * Gets the cancellation state of this event. A cancelled event will not be executed in the server, but will still
