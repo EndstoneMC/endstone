@@ -181,10 +181,9 @@ void init_plugin(py::module &m)
             "permissions", &PluginDescription::getPermissions,
             "Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.");
 
-#define DEF_EVENT_HANDLER(EVENT)                                                                                    \
-    def("register_event_handler",                                                                                   \
-        py::overload_cast<std::function<void(EVENT &)>, EventPriority, bool>(&Plugin::registerEventHandler<EVENT>), \
-        py::arg("func"), py::arg("priority") = EventPriority::Normal, py::arg("ignore_cancelled") = false)
+#define DEF_EVENT_HANDLER(EVENT)                                                         \
+    def("register_event_handler", &Plugin::registerEventHandler<EVENT>, py::arg("func"), \
+        py::arg("priority") = EventPriority::Normal, py::arg("ignore_cancelled") = false)
 
     py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
         .def(py::init<>())
