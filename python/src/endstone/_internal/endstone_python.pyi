@@ -775,6 +775,22 @@ class PluginManager:
         """
         Enable all the loaded plugins
         """
+    def get_default_perm_subscriptions(self, op: bool) -> set[Permissible]:
+        """
+        Gets a set containing all subscribed Permissibles to the given default list, by op status.
+        """
+    def get_default_permissions(self, op: bool) -> set[Permission]:
+        """
+        Gets the default permissions for the given op status.
+        """
+    def get_permission(self, name: str) -> Permission:
+        """
+        Gets a Permission from its fully qualified name.
+        """
+    def get_permission_subscriptions(self, permission: str) -> set[Permissible]:
+        """
+        Gets a set containing all subscribed Permissibles to the given permission.
+        """
     def get_plugin(self, name: str) -> Plugin:
         """
         Checks if the given plugin is loaded and returns it when applicable.
@@ -793,9 +809,44 @@ class PluginManager:
         """
         Loads the plugin contained within the specified directory
         """
+    def recalculate_permission_defaults(self, perm: Permission) -> None:
+        """
+        Recalculates the defaults for the given Permission.
+        """
     def register_event(self, name: str, executor: typing.Callable[[Event], None], priority: EventPriority, plugin: Plugin, ignore_cancelled: bool) -> None:
         """
         Registers the given event
+        """
+    @typing.overload
+    def remove_permission(self, perm: Permission) -> None:
+        """
+        Removes a Permission registration from this plugin manager by permission object.
+        """
+    @typing.overload
+    def remove_permission(self, name: str) -> None:
+        """
+        Removes a Permission registration from this plugin manager by name.
+        """
+    def subscribe_to_default_perms(self, op: bool, permissible: Permissible) -> None:
+        """
+        Subscribes to the given Default permissions by operator status.
+        """
+    def subscribe_to_permission(self, permission: str, permissible: Permissible) -> None:
+        """
+        Subscribes the given Permissible for information about the requested Permission.
+        """
+    def unsubscribe_from_default_perms(self, op: bool, permissible: Permissible) -> None:
+        """
+        Unsubscribes from the given Default permissions by operator status.
+        """
+    def unsubscribe_from_permission(self, permission: str, permissible: Permissible) -> None:
+        """
+        Unsubscribes the given Permissible for information about the requested Permission.
+        """
+    @property
+    def permissions(self) -> set[Permission]:
+        """
+        Gets a set of all registered permissions.
         """
     @property
     def plugins(self) -> list[Plugin]:
