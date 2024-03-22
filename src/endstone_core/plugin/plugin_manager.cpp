@@ -22,7 +22,7 @@
 #include <vector>
 
 #include "endstone/event/event.h"
-#include "endstone/event/event_listener.h"
+#include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
@@ -151,11 +151,11 @@ void EndstonePluginManager::clearPlugins()
 
 void EndstonePluginManager::callEvent(Event &event)
 {
-    // TODO(event): check event.isAsynchronous() and isServerThread() to avoid
+    // TODO(event): implement this
+    //  check event.isAsynchronous() and isServerThread() to avoid
     //  1. Asynchronous event cannot be triggered asynchronously from inside synchronized code.
     //  2. Asynchronous event cannot be triggered asynchronously from primary server thread.
     //  3. Synchronous event cannot be triggered asynchronously from another thread.
-    event.dispatch();
 }
 
 void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,

@@ -44,8 +44,6 @@ public:
 
     virtual ~Event() = default;
 
-    virtual void dispatch() = 0;
-
     /**
      * Gets a user-friendly identifier for this event.
      *

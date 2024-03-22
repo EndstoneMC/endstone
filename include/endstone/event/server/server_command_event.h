@@ -27,12 +27,7 @@ public:
     // TODO: shall we use endstone::Command instead of std::string?
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 
-    void dispatch() override
-    {
-        handler_.callEvent(*this);
-    }
-
-    [[nodiscard]] std::string getEventName() const override
+    [[nodiscard]] std::string getName() const override
     {
         return "ServerCommandEvent";
     }
@@ -75,7 +70,6 @@ public:
 private:
     CommandSender &sender_;
     std::string command_;
-    HandlerList<ServerCommandEvent> handler_;
 };
 
 }  // namespace endstone
