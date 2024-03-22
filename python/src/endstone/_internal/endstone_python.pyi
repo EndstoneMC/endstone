@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -115,21 +115,70 @@ class CommandSender(Permissible):
         """
         Returns the server instance that this command is running on
         """
+class EventPriority:
+    """
+    Members:
+    
+      LOWEST
+    
+      LOW
+    
+      NORMAL
+    
+      HIGH
+    
+      HIGHEST
+    
+      MONITOR
+    """
+    HIGH: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGH: 3>
+    HIGHEST: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGHEST: 4>
+    LOW: typing.ClassVar[EventPriority]  # value = <EventPriority.LOW: 1>
+    LOWEST: typing.ClassVar[EventPriority]  # value = <EventPriority.LOWEST: 0>
+    MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
+    NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
+    __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Logger:
     class Level:
         """
         Members:
-
+        
           TRACE
-
+        
           DEBUG
-
+        
           INFO
-
+        
           WARNING
-
+        
           ERROR
-
+        
           CRITICAL
         """
         CRITICAL: typing.ClassVar[Logger.Level]  # value = <Level.CRITICAL: 5>
@@ -384,17 +433,17 @@ class PermissionAttachmentInfo:
 class PermissionDefault:
     """
     Members:
-
+    
       TRUE
-
+    
       FALSE
-
+    
       OP
-
+    
       OPERATOR
-
+    
       NOT_OP
-
+    
       NOT_OPERATOR
     """
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
@@ -581,9 +630,9 @@ class PluginDescription:
 class PluginLoadOrder:
     """
     Members:
-
+    
       STARTUP
-
+    
       POSTWORLD
     """
     POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
