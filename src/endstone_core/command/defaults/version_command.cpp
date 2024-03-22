@@ -87,9 +87,9 @@ void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) con
         }
     }
 
-     if (!desc.getContributors().empty()) {
-         sender.sendMessage("Contributors: " + getNameList(desc.getContributors()));
-     }
+    if (!desc.getContributors().empty()) {
+        sender.sendMessage("Contributors: " + getNameList(desc.getContributors()));
+    }
 }
 
 std::string VersionCommand::getNameList(const std::vector<std::string> &names) const
