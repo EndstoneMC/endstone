@@ -17,6 +17,7 @@
 #include <map>
 #include <mutex>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/event/event_handler.h"
@@ -29,7 +30,7 @@ namespace endstone {
  */
 class HandlerList {
 public:
-    HandlerList() = default;
+    explicit HandlerList(std::string event) : event_(std::move(event)) {}
 
     /**
      * Register a new handler
@@ -39,6 +40,10 @@ public:
      */
     EventHandler *registerHandler(std::unique_ptr<EventHandler> handler)
     {
+        if (handler->getEventType() != event_) {
+            return nullptr;
+        }
+
         std::lock_guard lock(mtx_);
         valid_ = false;
         auto &vector =
@@ -117,6 +122,7 @@ private:
     std::map<EventPriority, std::vector<std::unique_ptr<EventHandler>>> handlers_;
     mutable std::vector<EventHandler *> baked_handlers_;
     mutable bool valid_{false};
+    std::string event_;
 };
 
 }  // namespace endstone

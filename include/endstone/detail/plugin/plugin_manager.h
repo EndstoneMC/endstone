@@ -19,6 +19,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "endstone/event/handler_list.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -71,6 +72,7 @@ private:
     std::vector<std::unique_ptr<PluginLoader>> plugin_loaders_;
     std::vector<Plugin *> plugins_;
     std::unordered_map<std::string, Plugin *> lookup_names_;
+    std::unordered_map<std::string, HandlerList> event_handlers_;
     std::unordered_map<std::string, std::unique_ptr<Permission>> permissions_;
     std::unordered_map<bool, std::unordered_set<Permission *>> default_perms_;
     std::unordered_map<std::string, std::unordered_map<Permissible *, bool>> perm_subs_;

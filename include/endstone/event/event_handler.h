@@ -20,7 +20,9 @@
 #include <utility>
 #include <vector>
 
+#include "endstone/event/event.h"
 #include "endstone/event/event_priority.h"
+#include "endstone/plugin/plugin.h"
 
 namespace endstone {
 
@@ -58,6 +60,11 @@ public:
         }
         executor_(event);
     };
+
+    [[nodiscard]] std::string getEventType() const
+    {
+        return event_;
+    }
 
 private:
     std::string event_;

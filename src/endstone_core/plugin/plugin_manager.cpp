@@ -24,6 +24,7 @@
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
+#include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
 
@@ -151,17 +152,42 @@ void EndstonePluginManager::clearPlugins()
 
 void EndstonePluginManager::callEvent(Event &event)
 {
-    // TODO(event): implement this
-    //  check event.isAsynchronous() and isServerThread() to avoid
+    // TODO(event): check event.isAsynchronous() and isServerThread() to avoid
     //  1. Asynchronous event cannot be triggered asynchronously from inside synchronized code.
     //  2. Asynchronous event cannot be triggered asynchronously from primary server thread.
     //  3. Synchronous event cannot be triggered asynchronously from another thread.
+
+    auto &handler_list = event_handlers_.emplace(event.getName(), event.getName()).first->second;
+    for (const auto &handler : handler_list.getHandlers()) {
+        auto &plugin = handler->getPlugin();
+        if (!plugin.isEnabled()) {
+            continue;
+        }
+
+        try {
+            handler->callEvent(event);
+        }
+        catch (std::exception &e) {
+            server_.getLogger().critical("Could not pass event {} to plugin {}. {}", event.getName(),
+                                         plugin.getDescription().getFullName(), e.what());
+        }
+    }
 }
 
 void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
                                           EventPriority priority, Plugin &plugin, bool ignore_cancelled)
 {
-    // TODO(event): implement this
+    if (!plugin.isEnabled()) {
+        server_.getLogger().error("Plugin {} attempted to register listener for event {} while not enabled.",
+                                  plugin.getDescription().getFullName(), event);
+        return;
+    }
+
+    auto &handler_list = event_handlers_.emplace(event, event).first->second;
+    if (handler_list.registerHandler(
+            std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled)) == nullptr) {
+        server_.getLogger().error("Plugin {} failed to register listener for event {}.", event);
+    }
 }
 
 Permission *EndstonePluginManager::getPermission(std::string name) const
