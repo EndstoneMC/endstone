@@ -20,6 +20,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/event/event_priority.h"
+#include "endstone/event/server/server_load_event.h"
 
 namespace py = pybind11;
 
@@ -58,6 +59,15 @@ void init_event(py::module &m)
         .value("DEFAULT", Event::Result::DEFAULT)
         .value("ALLOW", Event::Result::ALLOW)
         .export_values();
+
+    auto server_load_event = py::class_<ServerLoadEvent, Event>(m, "ServerLoadEvent");
+    py::enum_<ServerLoadEvent::LoadType>(server_load_event, "LoadType")
+        .value("STARTUP", ServerLoadEvent::LoadType::Startup)
+        .export_values();
+    server_load_event.def(py::init<ServerLoadEvent::LoadType>())
+        .def_property_readonly("type", &ServerLoadEvent::getType)
+        .def_property_readonly("event_name", &ServerLoadEvent::getEventName)
+        .def_property_readonly("cancellable", &ServerLoadEvent::isCancellable);
 }
 
 }  // namespace endstone::detail

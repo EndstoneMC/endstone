@@ -59,7 +59,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
 {
     auto &server = Singleton<EndstoneServer>::getInstance();
     server.enablePlugins(PluginLoadOrder::PostWorld);
-    ServerLoadEvent event{ServerLoadEvent::LoadType::STARTUP};
+    ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
 }
