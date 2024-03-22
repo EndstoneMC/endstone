@@ -32,7 +32,7 @@ public:
     {
         for (auto &[priority, listeners] : listeners_) {
             for (auto &listener : listeners) {
-                listener.onEvent(event);
+                listener.callEvent(event);
             }
         }
     }
