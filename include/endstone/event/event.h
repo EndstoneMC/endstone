@@ -41,6 +41,8 @@ public:
     };
 
     explicit Event(bool async = false) : async_(async){};
+    Event(const Event &) = delete;             // deleted copy constructor
+    Event &operator=(const Event &) = delete;  // deleted copy assignment operator
 
     virtual ~Event() = default;
 

@@ -14,6 +14,8 @@
 
 #include "endstone/plugin/plugin.h"
 
+#include <utility>
+
 #include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -225,8 +227,15 @@ void init_plugin(py::module &m)
         .def("clear_plugins", &PluginManager::clearPlugins, "Disables and removes all plugins")
         .def("call_event", &PluginManager::callEvent, py::arg("event"),
              "Calls an event which will be passed to plugins.")
-        .def("register_event", &PluginManager::registerEvent, py::arg("name"), py::arg("executor"), py::arg("priority"),
-             py::arg("plugin"), py::arg("ignore_cancelled"), "Registers the given event")
+        .def(
+            "register_event",
+            [](PluginManager &self, std::string event, const std::function<void(Event *)> &executor,
+               EventPriority priority, Plugin &plugin, bool ignore_cancelled) {
+                self.registerEvent(
+                    std::move(event), [executor](Event &e) { executor(&e); }, priority, plugin, ignore_cancelled);
+            },
+            py::arg("name"), py::arg("executor"), py::arg("priority"), py::arg("plugin"), py::arg("ignore_cancelled"),
+            "Registers the given event")
         .def("get_permission", &PluginManager::getPermission, py::arg("name"), py::return_value_policy::reference,
              "Gets a Permission from its fully qualified name.")
         .def("remove_permission", py::overload_cast<Permission &>(&PluginManager::removePermission), py::arg("perm"),
