@@ -66,8 +66,7 @@ void init_event(py::module &m)
         .export_values();
     server_load_event.def(py::init<ServerLoadEvent::LoadType>())
         .def_property_readonly("type", &ServerLoadEvent::getType)
-        .def_property_readonly("event_name", &ServerLoadEvent::getEventName)
-        .def_property_readonly("cancellable", &ServerLoadEvent::isCancellable);
+        .def_property_readonly("event_name", &ServerLoadEvent::getEventName);
 }
 
 }  // namespace endstone::detail

@@ -927,9 +927,6 @@ class ServerLoadEvent(Event):
     def __init__(self, arg0: ServerLoadEvent.LoadType) -> None:
         ...
     @property
-    def cancellable(self) -> bool:
-        ...
-    @property
     def event_name(self) -> str:
         ...
     @property

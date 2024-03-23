@@ -12,7 +12,7 @@ from endstone._internal.endstone_python import (
 from endstone._internal.endstone_python import Plugin as _Plugin
 from endstone._internal.endstone_python import PluginCommand as _PluginCommand
 from endstone.command import CommandExecutor
-from endstone.event import EventPriority
+from endstone.event import Event
 
 __all__ = [
     "Plugin",
@@ -154,23 +154,33 @@ class Plugin(_Plugin):
         return wrapped_command
 
     def register_events(self, listener: object) -> None:
+        if not self.enabled:
+            raise RuntimeError(f"Plugin {self.name} attempted to register events while not enabled")
+
+        if listener is None:
+            raise ValueError("Listener cannot be None")
+
         for attr_name in dir(listener):
             func = getattr(listener, attr_name)
-            if callable(func) and getattr(func, "_is_event_handler", False):
-                sig = inspect.signature(func)
-                params = list(sig.parameters.values())
-                # TODO: check param is inherited from Event
-                if len(params) != 1 or not inspect.isclass(params[0].annotation):
-                    self.logger.error(f"Invalid event handler signature for {attr_name}: {sig}")
-                    continue
+            if not callable(func) or not getattr(func, "_is_event_handler", False):
+                continue
 
-                priority = getattr(func, "_priority", EventPriority.NORMAL)
-                ignore_cancelled = getattr(func, "_ignore_cancelled", False)
-                self.server.plugin_manager.register_event(
-                    # TODO: use NAME instead of __name__
-                    params[0].annotation.__name__,
-                    func,
-                    priority,
-                    self,
-                    ignore_cancelled,
+            sig = inspect.signature(func)
+            params = list(sig.parameters.values())
+            if (
+                len(params) != 1
+                or not inspect.isclass(params[0].annotation)
+                or not issubclass(params[0].annotation, Event)
+            ):
+                self.logger.error(
+                    f"Plugin {self.name} attempted to register an invalid "
+                    f"event handler signature: {attr_name}: {sig}"
                 )
+                continue
+
+            event_cls = params[0].annotation
+            priority = getattr(func, "_priority")
+            ignore_cancelled = getattr(func, "_ignore_cancelled")
+            self.server.plugin_manager.register_event(
+                getattr(event_cls, "NAME", event_cls.__name__), func, priority, self, ignore_cancelled
+            )
