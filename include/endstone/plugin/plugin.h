@@ -138,7 +138,7 @@ public:
     }
 
     template <typename EventType, typename T>
-    void registerEvent(void (T::**func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
+    void registerEvent(void (T::*func)(EventType &), T &instance, EventPriority priority = EventPriority::Normal,
                        bool ignore_cancelled = false)
     {
         getServer().getPluginManager().registerEvent(
