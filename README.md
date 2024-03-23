@@ -154,7 +154,7 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 | **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          | v0.1.0 |
 | **⌨️ Command System**                    | 2-3 months | ✅    | ✅       | ✅          | v0.2.0 |
 | **🔐 Permission System**                 | 2-3 months | ✅    | ✅       | ✅          | v0.3.0 |
-| **🎈 Event System**                      | 2-3 months | 🚧   | ✅       | 🚧         |        |
+| **🎈 Event System**                      | 2-3 months | 🚧   | ✅       | ✅          |        |
 | **🛠 Minecraft Core Features**           | 4-5 months | ⏳    | ⏳       | ⏳          |        |
 | **🖼 GUI & Inventory System**            | 3-4 months | ⏳    | ⏳       | ⏳          |        |
 | **🌟 Advanced Features & Refinements**   | 4-6 months | ⏳    | ⏳       | ⏳          |        |
