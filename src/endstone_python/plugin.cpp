@@ -181,10 +181,6 @@ void init_plugin(py::module &m)
             "permissions", &PluginDescription::getPermissions,
             "Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.");
 
-#define DEF_EVENT_HANDLER(EVENT)                                                         \
-    def("register_event_handler", &Plugin::registerEventHandler<EVENT>, py::arg("func"), \
-        py::arg("priority") = EventPriority::Normal, py::arg("ignore_cancelled") = false)
-
     py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
@@ -201,10 +197,7 @@ void init_plugin(py::module &m)
                                "Returns a value indicating whether this plugin is currently enabled")
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
-             "Gets the command with the given name, specific to this plugin.")
-        .DEF_EVENT_HANDLER(ServerLoadEvent);
-
-#undef DEF_EVENT_HANDLER
+             "Gets the command with the given name, specific to this plugin.");
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
