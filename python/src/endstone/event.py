@@ -1,6 +1,19 @@
-from endstone._internal.endstone_python import Event, EventPriority, ServerLoadEvent
+from endstone._internal.endstone_python import (
+    Event,
+    EventPriority,
+    PluginEnableEvent,
+    PluginDisableEvent,
+    ServerLoadEvent,
+)
 
-__all__ = ["Event", "EventPriority", "ServerLoadEvent", "event_handler"]
+__all__ = [
+    "event_handler",
+    "Event",
+    "EventPriority",
+    "PluginEnableEvent",
+    "PluginDisableEvent",
+    "ServerLoadEvent",
+]
 
 
 def event_handler(func=None, *, priority: EventPriority = EventPriority.NORMAL, ignore_cancelled: bool = False):

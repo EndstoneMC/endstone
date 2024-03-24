@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerLoadEvent']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerLoadEvent']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -693,6 +693,18 @@ class PluginDescription:
         """
         Gives the plugin's or plugin's author's website.
         """
+class PluginDisableEvent(Event):
+    def __init__(self, plugin: Plugin) -> None:
+        ...
+    @property
+    def plugin(self) -> Plugin:
+        ...
+class PluginEnableEvent(Event):
+    def __init__(self, plugin: Plugin) -> None:
+        ...
+    @property
+    def plugin(self) -> Plugin:
+        ...
 class PluginLoadOrder:
     """
     Members:
@@ -925,9 +937,6 @@ class ServerLoadEvent(Event):
             ...
     STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
     def __init__(self, arg0: ServerLoadEvent.LoadType) -> None:
-        ...
-    @property
-    def event_name(self) -> str:
         ...
     @property
     def type(self) -> ServerLoadEvent.LoadType:
