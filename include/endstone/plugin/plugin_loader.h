@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "endstone/event/server/plugin_disable_event.h"
+#include "endstone/event/server/plugin_enable_event.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
@@ -51,6 +53,8 @@ public:
         if (!plugin.isEnabled()) {
             plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
             plugin.setEnabled(true);
+            PluginEnableEvent event(plugin);
+            server_.getPluginManager().callEvent(event);
         }
     }
 
@@ -65,6 +69,8 @@ public:
         if (plugin.isEnabled()) {
             plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
             plugin.setEnabled(false);
+            PluginDisableEvent event(plugin);
+            server_.getPluginManager().callEvent(event);
         }
     }
 

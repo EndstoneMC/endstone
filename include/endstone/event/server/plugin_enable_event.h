@@ -14,27 +14,29 @@
 
 #pragma once
 
-#include <string>
-
-#include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
+#include "endstone/plugin/plugin.h"
 
 namespace endstone {
 
-class ServerLoadEvent : public Event {
+/**
+ * Called when a plugin is enabled.
+ */
+class PluginEnableEvent : public Event {
 public:
-    enum class LoadType {
-        Startup,  // TODO: add RELOAD
-    };
+    explicit PluginEnableEvent(Plugin &plugin) : plugin_(plugin) {}
 
-    explicit ServerLoadEvent(LoadType type) : type_(type) {}
-
-    [[nodiscard]] LoadType getType() const
+    /**
+     * Gets the plugin involved in this event
+     *
+     * @return Plugin for this event
+     */
+    [[nodiscard]] Plugin &getPlugin() const
     {
-        return type_;
+        return plugin_;
     }
 
-    inline static const std::string NAME = "ServerLoadEvent";
+    inline static const std::string NAME = "PluginEnableEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
@@ -46,7 +48,6 @@ public:
     }
 
 private:
-    LoadType type_;
+    Plugin &plugin_;
 };
-
 }  // namespace endstone
