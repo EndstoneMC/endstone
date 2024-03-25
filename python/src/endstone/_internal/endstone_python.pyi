@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerListPingEvent', 'ServerLoadEvent']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -942,6 +942,22 @@ class Server:
     def version(self) -> str:
         """
         Gets the version of this server implementation.
+        """
+class ServerCommandEvent(Event):
+    def __init__(self, sender: CommandSender, command: str) -> None:
+        ...
+    @property
+    def command(self) -> str:
+        """
+        The command that the server will execute
+        """
+    @command.setter
+    def command(self, arg1: str) -> None:
+        ...
+    @property
+    def sender(self) -> CommandSender:
+        """
+        Get the command sender.
         """
 class ServerListPingEvent(Event):
     @property

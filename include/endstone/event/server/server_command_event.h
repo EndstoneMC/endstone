@@ -15,13 +15,21 @@
 #pragma once
 
 #include <string>
-#include <utility>
 
 #include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
 #include "endstone/event/handler_list.h"
+
 namespace endstone {
 
+/**
+ * Called when the console runs a command, early in the process
+ *
+ * You should not use this except for a few cases like logging commands, blocking commands on certain places, or
+ * applying modifiers.
+ *
+ * The command message contains a slash at the start
+ */
 class ServerCommandEvent : public Event {
 public:
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
@@ -42,7 +50,7 @@ public:
      *
      * @return Command the user is attempting to execute
      */
-    [[nodiscard]] const std::string &getCommand() const
+    [[nodiscard]] std::string getCommand() const
     {
         return command_;
     }
@@ -52,9 +60,9 @@ public:
      *
      * @param message New message that the server will execute
      */
-    void setCommand(const std::string &command)
+    void setCommand(std::string message)
     {
-        command_ = command;
+        command_ = std::move(message);
     }
 
     /**

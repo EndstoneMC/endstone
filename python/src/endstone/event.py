@@ -3,6 +3,7 @@ from endstone._internal.endstone_python import (
     EventPriority,
     PluginEnableEvent,
     PluginDisableEvent,
+    ServerCommandEvent,
     ServerListPingEvent,
     ServerLoadEvent,
 )
@@ -13,6 +14,7 @@ __all__ = [
     "EventPriority",
     "PluginEnableEvent",
     "PluginDisableEvent",
+    "ServerCommandEvent",
     "ServerListPingEvent",
     "ServerLoadEvent",
 ]

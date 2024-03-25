@@ -22,6 +22,7 @@
 #include "endstone/event/event_priority.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
+#include "endstone/event/server/server_command_event.h"
 #include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/event/server/server_load_event.h"
 
@@ -65,6 +66,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .export_values();
     server_load_event.def(py::init<ServerLoadEvent::LoadType>())
         .def_property_readonly("type", &ServerLoadEvent::getType);
+
+    py::class_<ServerCommandEvent, Event>(m, "ServerCommandEvent")
+        .def(py::init<CommandSender &, std::string>(), py::arg("sender"), py::arg("command"))
+        .def_property_readonly("sender", &ServerCommandEvent::getSender, "Get the command sender.")
+        .def_property("command", &ServerCommandEvent::getCommand, &ServerCommandEvent::setCommand,
+                      "The command that the server will execute");
 
     py::class_<ServerListPingEvent, Event>(m, "ServerListPingEvent")
         .def_property_readonly("remote_host", &ServerListPingEvent::getRemoteHost,
