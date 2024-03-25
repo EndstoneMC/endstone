@@ -33,7 +33,6 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
     auto &server = Singleton<EndstoneServer>::getInstance();
     endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommandLine());
     server.getPluginManager().callEvent(event);
-    printf("%s\n", event.getCommand().c_str());
 
     if (event.isCancelled()) {
         result = MCRESULT_CommandsDisabled;
