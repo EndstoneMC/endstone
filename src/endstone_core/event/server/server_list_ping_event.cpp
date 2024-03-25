@@ -26,29 +26,32 @@ bool ServerListPingEvent::deserialize()
     try {
         std::istringstream iss(ping_response_);
         std::string tmp;
-        std::getline(iss, tmp, ';');  // MCPE
-        std::getline(iss, motd_, ';');
-        std::getline(iss, tmp, ';');
-        network_protocol_version_ = std::stoi(tmp);
-        std::getline(iss, minecraft_version_network_, ';');
-        std::getline(iss, tmp, ';');
-        num_players_ = std::stoi(tmp);
-        std::getline(iss, tmp, ';');
-        max_players_ = std::stoi(tmp);
-        std::getline(iss, server_guid_, ';');
-        std::getline(iss, level_name_, ';');
-        std::getline(iss, tmp, ';');
-        auto game_mode = magic_enum::enum_cast<GameMode>(tmp);
+        std::vector<std::string> parts;
+        while (std::getline(iss, tmp, ';')) {
+            parts.push_back(tmp);
+        }
+
+        if (parts.size() < 12) {
+            return false;
+        }
+
+        motd_ = parts[1];
+        network_protocol_version_ = std::stoi(parts[2]);
+        minecraft_version_network_ = parts[3];
+        num_players_ = std::stoi(parts[4]);
+        max_players_ = std::stoi(parts[5]);
+        server_guid_ = parts[6];
+        level_name_ = parts[7];
+
+        auto game_mode = magic_enum::enum_cast<GameMode>(parts[8]);
         if (!game_mode.has_value()) {
             return false;
         }
         game_mode_ = game_mode.value();
-        std::getline(iss, tmp, ';');  // unknown - 1
-        std::getline(iss, tmp, ';');
-        local_port_ = std::stoi(tmp);
-        std::getline(iss, tmp, ';');
-        local_port_v6_ = std::stoi(tmp);
-        std::getline(iss, tmp, ';');  // unknown - 0
+
+        local_port_ = std::stoi(parts[10]);
+        local_port_v6_ = std::stoi(parts[11]);
+
         return true;
     }
     catch (std::exception &e) {
