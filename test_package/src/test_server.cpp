@@ -94,6 +94,11 @@ public:
         return "test(minecraft)";
     }
 
+    [[nodiscard]] bool isPrimaryThread() const override
+    {
+        return true;
+    }
+
 private:
     Logger &logger_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;

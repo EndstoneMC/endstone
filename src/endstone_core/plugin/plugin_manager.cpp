@@ -21,7 +21,6 @@
 #include <utility>
 #include <vector>
 
-#include "bedrock/threading.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
@@ -153,14 +152,12 @@ void EndstonePluginManager::clearPlugins()
 
 void EndstonePluginManager::callEvent(Event &event)
 {
-    auto server_thread = Bedrock::Threading::getServerThread();
-
-    if (event.isAsynchronous() && server_thread.isOnThread()) {
+    if (event.isAsynchronous() && server_.isPrimaryThread()) {
         server_.getLogger().error("{} cannot be triggered asynchronously from server thread.", event.getEventName());
         return;
     }
 
-    if (!event.isAsynchronous() && !server_thread.isOnThread()) {
+    if (!event.isAsynchronous() && !server_.isPrimaryThread()) {
         server_.getLogger().error("{} must be triggered synchronously from server thread.", event.getEventName());
         return;
     }

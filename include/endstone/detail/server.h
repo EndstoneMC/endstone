@@ -50,6 +50,7 @@ public:
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
+    bool isPrimaryThread() const override;
 
 private:
     void enablePlugin(Plugin &plugin);

@@ -19,6 +19,7 @@
 namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
+#include "bedrock/threading.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/logger_factory.h"
@@ -132,6 +133,11 @@ std::string EndstoneServer::getVersion() const
 std::string EndstoneServer::getMinecraftVersion() const
 {
     return Common::getGameVersionString();
+}
+
+bool EndstoneServer::isPrimaryThread() const
+{
+    return Bedrock::Threading::getServerThread().isOnThread();
 }
 
 }  // namespace endstone::detail

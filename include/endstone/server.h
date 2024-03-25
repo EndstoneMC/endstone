@@ -86,6 +86,13 @@ public:
      * @return version of Minecraft
      */
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
+
+    /**
+     * Checks the current thread against the expected primary server thread
+     *
+     * @return true if the current thread matches the expected primary thread, false otherwise
+     */
+    [[nodiscard]] virtual bool isPrimaryThread() const = 0;
 };
 
 }  // namespace endstone
