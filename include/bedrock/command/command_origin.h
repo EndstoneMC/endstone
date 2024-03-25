@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <optional>
+
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/uuid.h"

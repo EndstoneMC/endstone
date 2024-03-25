@@ -24,13 +24,12 @@ namespace endstone {
 
 class ServerCommandEvent : public Event {
 public:
-    // TODO: shall we use endstone::Command instead of std::string?
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 
-    inline static const std::string name = "ServerCommandEvent";
+    inline static const std::string NAME = "ServerCommandEvent";
     [[nodiscard]] std::string getEventName() const override
     {
-        return name;
+        return NAME;
     }
 
     [[nodiscard]] bool isCancellable() const override

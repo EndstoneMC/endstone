@@ -14,8 +14,17 @@
 
 #pragma once
 
+#include "bedrock/command/command_context.h"
 #include "bedrock/command/command_output.h"
 #include "bedrock/command/command_registry.h"
+
+struct MCRESULT {
+    bool is_success;
+    uint8_t category;
+    uint16_t error_code;
+};
+inline MCRESULT const MCRESULT_Success{true};                  // NOLINT
+inline MCRESULT const MCRESULT_CommandsDisabled{false, 0, 7};  // NOLINT
 
 class MinecraftCommands {
 public:
@@ -31,8 +40,11 @@ public:
         return *registry_;
     }
 
+    BEDROCK_API MCRESULT executeCommand(CommandContext &ctx, bool flag) const;
+
 private:
     std::unique_ptr<CommandOutputSender> output_sender_;  // +8
     std::unique_ptr<CommandRegistry> registry_;           // +16
 };
+
 static_assert(sizeof(MinecraftCommands) == 24);
