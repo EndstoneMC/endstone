@@ -34,7 +34,7 @@ bool ServerListPingEvent::deserialize()
         std::getline(iss, tmp, ';');
         num_players_ = std::stoi(tmp);
         std::getline(iss, tmp, ';');
-        max_player_ = std::stoi(tmp);
+        max_players_ = std::stoi(tmp);
         std::getline(iss, server_guid_, ';');
         std::getline(iss, level_name_, ';');
         std::getline(iss, tmp, ';');
@@ -59,7 +59,7 @@ bool ServerListPingEvent::deserialize()
 std::string ServerListPingEvent::serialize()
 {
     return fmt::format("MCPE;{};{};{};{};{};{};{};{};1;{};{};0;", motd_, network_protocol_version_,
-                       minecraft_version_network_, num_players_, max_player_, server_guid_, level_name_,
+                       minecraft_version_network_, num_players_, max_players_, server_guid_, level_name_,
                        magic_enum::enum_name(game_mode_), local_port_, local_port_v6_);
 }
 

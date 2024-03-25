@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import ColorFormat
+from endstone._internal.endstone_python import ColorFormat, GameMode
 
-__all__ = ["ColorFormat"]
+__all__ = ["ColorFormat", "GameMode"]

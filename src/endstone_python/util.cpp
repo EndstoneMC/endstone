@@ -15,6 +15,7 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/util/color_format.h"
+#include "endstone/util/game_mode.h"
 
 namespace py = pybind11;
 
@@ -56,6 +57,12 @@ void init_util(py::module &m)
         .ADD_COLOR_FORMAT(BOLD)
         .ADD_COLOR_FORMAT(ITALIC)
         .ADD_COLOR_FORMAT(RESET);
+
+    py::enum_<GameMode>(m, "GameMode")
+        .value("SURVIVAL", GameMode::Survival)
+        .value("CREATIVE", GameMode::Creative)
+        .value("ADVENTURE", GameMode::Adventure)
+        .value("SPECTATOR", GameMode::Spectator);
 }
 
 }  // namespace endstone::detail

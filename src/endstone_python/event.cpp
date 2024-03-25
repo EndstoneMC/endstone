@@ -22,6 +22,7 @@
 #include "endstone/event/event_priority.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
+#include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/event/server/server_load_event.h"
 
 namespace py = pybind11;
@@ -64,6 +65,32 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .export_values();
     server_load_event.def(py::init<ServerLoadEvent::LoadType>())
         .def_property_readonly("type", &ServerLoadEvent::getType);
+
+    py::class_<ServerListPingEvent, Event>(m, "ServerListPingEvent")
+        .def_property_readonly("remote_host", &ServerListPingEvent::getRemoteHost,
+                               "Get the host the ping is coming from.")
+        .def_property_readonly("remote_port", &ServerListPingEvent::getRemotePort,
+                               "Get the port the ping is coming from.")
+        .def_property_readonly("server_guid", &ServerListPingEvent::getServerGuid,
+                               "Get the unique identifier of the server.")
+        .def_property_readonly("local_port", &ServerListPingEvent::getLocalPort, "Get the local port of the server.")
+        .def_property_readonly("local_port_v6", &ServerListPingEvent::getLocalPortV6,
+                               "Get the local port of the server for IPv6 support")
+        .def_property("motd", &ServerListPingEvent::getMotd, &ServerListPingEvent::setMotd,
+                      "The message of the day message.")
+        .def_property_readonly("network_protocol_version", &ServerListPingEvent::getNetworkProtocolVersion,
+                               "Get the network protocol version of this server")
+        .def_property("minecraft_version_network", &ServerListPingEvent::getMinecraftVersionNetwork,
+                      &ServerListPingEvent::setMinecraftVersionNetwork,
+                      "The network version of Minecraft that is supported by this server")
+        .def_property("num_players", &ServerListPingEvent::getNumPlayers, &ServerListPingEvent::setNumPlayers,
+                      "The number of players online.")
+        .def_property("max_players", &ServerListPingEvent::getMaxPlayers, &ServerListPingEvent::setMaxPlayers,
+                      "The maximum number of players allowed.")
+        .def_property("level_name", &ServerListPingEvent::getLevelName, &ServerListPingEvent::setLevelName,
+                      "The level name.")
+        .def_property("game_mode", &ServerListPingEvent::getGameMode, &ServerListPingEvent::setGameMode,
+                      "The current game mode.");
 
     py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent")
         .def(py::init<Plugin &>(), py::arg("plugin"))

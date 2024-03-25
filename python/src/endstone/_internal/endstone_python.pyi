@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerLoadEvent']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerListPingEvent', 'ServerLoadEvent']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -204,6 +204,49 @@ class EventPriority:
     MONITOR: typing.ClassVar[EventPriority]  # value = <EventPriority.MONITOR: 5>
     NORMAL: typing.ClassVar[EventPriority]  # value = <EventPriority.NORMAL: 2>
     __members__: typing.ClassVar[dict[str, EventPriority]]  # value = {'LOWEST': <EventPriority.LOWEST: 0>, 'LOW': <EventPriority.LOW: 1>, 'NORMAL': <EventPriority.NORMAL: 2>, 'HIGH': <EventPriority.HIGH: 3>, 'HIGHEST': <EventPriority.HIGHEST: 4>, 'MONITOR': <EventPriority.MONITOR: 5>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class GameMode:
+    """
+    Members:
+    
+      SURVIVAL
+    
+      CREATIVE
+    
+      ADVENTURE
+    
+      SPECTATOR
+    """
+    ADVENTURE: typing.ClassVar[GameMode]  # value = <GameMode.ADVENTURE: 2>
+    CREATIVE: typing.ClassVar[GameMode]  # value = <GameMode.CREATIVE: 1>
+    SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 6>
+    SURVIVAL: typing.ClassVar[GameMode]  # value = <GameMode.SURVIVAL: 0>
+    __members__: typing.ClassVar[dict[str, GameMode]]  # value = {'SURVIVAL': <GameMode.SURVIVAL: 0>, 'CREATIVE': <GameMode.CREATIVE: 1>, 'ADVENTURE': <GameMode.ADVENTURE: 2>, 'SPECTATOR': <GameMode.SPECTATOR: 6>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -899,6 +942,85 @@ class Server:
     def version(self) -> str:
         """
         Gets the version of this server implementation.
+        """
+class ServerListPingEvent(Event):
+    @property
+    def game_mode(self) -> GameMode:
+        """
+        The current game mode.
+        """
+    @game_mode.setter
+    def game_mode(self, arg1: GameMode) -> None:
+        ...
+    @property
+    def level_name(self) -> str:
+        """
+        The level name.
+        """
+    @level_name.setter
+    def level_name(self, arg1: str) -> None:
+        ...
+    @property
+    def local_port(self) -> int:
+        """
+        Get the local port of the server.
+        """
+    @property
+    def local_port_v6(self) -> int:
+        """
+        Get the local port of the server for IPv6 support
+        """
+    @property
+    def max_players(self) -> int:
+        """
+        The maximum number of players allowed.
+        """
+    @max_players.setter
+    def max_players(self, arg1: int) -> None:
+        ...
+    @property
+    def minecraft_version_network(self) -> str:
+        """
+        The network version of Minecraft that is supported by this server
+        """
+    @minecraft_version_network.setter
+    def minecraft_version_network(self, arg1: str) -> None:
+        ...
+    @property
+    def motd(self) -> str:
+        """
+        The message of the day message.
+        """
+    @motd.setter
+    def motd(self, arg1: str) -> None:
+        ...
+    @property
+    def network_protocol_version(self) -> int:
+        """
+        Get the network protocol version of this server
+        """
+    @property
+    def num_players(self) -> int:
+        """
+        The number of players online.
+        """
+    @num_players.setter
+    def num_players(self, arg1: int) -> None:
+        ...
+    @property
+    def remote_host(self) -> str:
+        """
+        Get the host the ping is coming from.
+        """
+    @property
+    def remote_port(self) -> int:
+        """
+        Get the port the ping is coming from.
+        """
+    @property
+    def server_guid(self) -> str:
+        """
+        Get the unique identifier of the server.
         """
 class ServerLoadEvent(Event):
     class LoadType:

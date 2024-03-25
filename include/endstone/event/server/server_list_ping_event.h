@@ -134,7 +134,7 @@ public:
     }
 
     /**
-     * Get the number of players shown
+     * Get the number of players online
      *
      * @return the number of players
      */
@@ -144,7 +144,7 @@ public:
     }
 
     /**
-     * Set the number of players shown.
+     * Set the number of players online.
      *
      * @param num_players the number of players
      */
@@ -154,23 +154,23 @@ public:
     }
 
     /**
-     * Get the maximum number of players shown.
+     * Get the maximum number of players allowed.
      *
      * @return the maximum number of players
      */
-    [[nodiscard]] int getMaxPlayer() const
+    [[nodiscard]] int getMaxPlayers() const
     {
-        return max_player_;
+        return max_players_;
     }
 
     /**
-     * Set the maximum number of players shown.
+     * Set the maximum number of players allowed.
      *
-     * @param max_player the maximum number of players
+     * @param max_players the maximum number of players
      */
-    void setMaxPlayer(int max_player)
+    void setMaxPlayers(int max_players)
     {
-        max_player_ = max_player;
+        max_players_ = max_players;
     }
 
     /**
@@ -235,7 +235,7 @@ private:
     int network_protocol_version_;
     std::string minecraft_version_network_;
     int num_players_;
-    int max_player_;
+    int max_players_;
     std::string server_guid_;
     std::string level_name_;
     GameMode game_mode_;

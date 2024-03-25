@@ -23,6 +23,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
+void init_util(py::module_ &);
 void init_command(py::module_ &);
 void init_logger(py::module_ &);
 void init_plugin(py::module_ &);
@@ -30,7 +31,6 @@ void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::c
                       py::enum_<PermissionDefault> &permission_default);
 void init_server(py::class_<Server> &server);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
-void init_util(py::module_ &);
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
@@ -46,13 +46,13 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission = py::class_<Permission>(m, "Permission");
     auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
 
+    init_util(m);
     init_command(m);
     init_logger(m);
     init_plugin(m);
     init_permissions(m, permissible, permission, permission_default);
     init_server(server);
     init_event(m, event, event_priority);
-    init_util(m);
 }
 
 }  // namespace endstone::detail
