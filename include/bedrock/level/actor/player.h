@@ -19,8 +19,8 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
-#include "bedrock/network/packet_sender.h"
 #include "bedrock/level/actor/mob.h"
+#include "bedrock/network/packet_sender.h"
 
 class Player : public Mob {
 public:
