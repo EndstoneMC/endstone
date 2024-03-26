@@ -26,7 +26,11 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
 {
     MCRESULT result;
     if (ctx.getOrigin().getOriginType() != CommandOriginType::DedicatedServer) {
+#ifdef _WIN32
         ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
+#else
+        result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
+#endif
         return result;
     }
 
@@ -38,7 +42,11 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
         result = MCRESULT_CommandsDisabled;
     }
     else {
+#ifdef _WIN32
         ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
+#else
+        result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
+#endif
     }
     return result;
 }
