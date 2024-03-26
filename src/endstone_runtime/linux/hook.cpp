@@ -70,12 +70,9 @@ std::unordered_map<std::string, void *> get_targets()
 
         auto name = symbol.name();
         auto offset = symbol.value();
-        auto it = detours.find(name);
-        if (it != detours.end()) {
-            spdlog::debug("{} -> 0x{:x}", name, offset);
-            auto *target = static_cast<char *>(executable_base) + offset;
-            targets.emplace(name, target);
-        }
+        spdlog::debug("{} -> 0x{:x}", name, offset);
+        auto *target = static_cast<char *>(executable_base) + offset;
+        targets.emplace(name, target);
     }
 
     return targets;
