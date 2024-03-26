@@ -15,11 +15,34 @@
 #include "bedrock/event/script_gameplay_handler.h"
 
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+#include "endstone/detail/singleton.h"
+#include "endstone/event/weather/thunder_change_event.h"
+#include "endstone/event/weather/weather_change_event.h"
+
+using endstone::detail::EndstoneServer;
+using endstone::detail::Singleton;
 
 GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {
-    GameplayHandlerResult<CoordinatorResult> result{true, CoordinatorResult::Success};
-    // TODO: call event
+    auto &server = Singleton<EndstoneServer>::getInstance();
+    if (event.from_rain != event.to_rain) {
+        endstone::WeatherChangeEvent e(event.to_rain);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            event.to_rain = event.from_rain;
+        }
+    }
+
+    if (event.from_lightning != event.to_lightning) {
+        endstone::ThunderChangeEvent e(event.to_lightning);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            event.to_lightning = event.from_lightning;
+        }
+    }
+
+    GameplayHandlerResult<CoordinatorResult> result;
 #ifdef _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptLevelGameplayHandler::handleEvent, __FUNCDNAME__, result, this, event);
 #else
