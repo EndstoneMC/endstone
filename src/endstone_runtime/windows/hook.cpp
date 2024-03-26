@@ -21,11 +21,10 @@
 #include <DbgHelp.h>
 
 #include <random>
+#include <string>
 #include <system_error>
 #include <unordered_map>
 
-#include <fmt/format.h>
-#include <funchook/funchook.h>
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/os.h"
@@ -33,14 +32,12 @@
 namespace endstone::detail::hook {
 
 namespace {
-std::unordered_map<void *, void *> gOriginals;
-
 void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<size_t> dist(1, static_cast<size_t>(-1));
-    auto *handle = reinterpret_cast<HANDLE>(dist(gen));
+    HANDLE handle = reinterpret_cast<HANDLE>(dist(gen));  // NOLINT
 
     if (!SymInitialize(handle, nullptr, FALSE)) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
@@ -72,26 +69,14 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 
     SymCleanup(handle);
 }
-
 }  // namespace
 
-void *get_original(void *detour)
+std::unordered_map<std::string, void *> get_detours()
 {
-    auto it = gOriginals.find(detour);
-    if (it == gOriginals.end()) {
-        return nullptr;
-    }
-    return it->second;
-}
-
-void install()
-{
-
-    // Find detours
     auto *module_base = os::get_module_base();
-    auto module_pathname = os::get_module_pathname();
-
+    const auto module_pathname = os::get_module_pathname();
     std::unordered_map<std::string, void *> detours;
+
     enumerate_symbols(  //
         module_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
             spdlog::debug("{} -> 0x{:x}", name, offset);
@@ -99,99 +84,25 @@ void install()
             detours.emplace(name, detour);
             return true;
         });
+    return detours;
+}
 
-    // Find targets
+std::unordered_map<std::string, void *> get_targets()
+{
     auto *executable_base = os::get_executable_base();
-    std::unordered_map<std::string, void *> targets;
-
     const auto executable_pathname = os::get_executable_pathname();
+
+    std::unordered_map<std::string, void *> targets;
     enumerate_symbols(  //
         executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
-            auto it = detours.find(name);
-            if (it != detours.end()) {
-                spdlog::debug("{} -> 0x{:x}", name, offset);
-                auto *target = static_cast<char *>(executable_base) + offset;
-                targets.emplace(name, target);
-            }
+            spdlog::debug("{} -> 0x{:x}", name, offset);
+            auto *target = static_cast<char *>(executable_base) + offset;
+            targets.emplace(name, target);
             return true;
         });
-
-    // Install hooks
-    for (const auto &[name, detour] : detours) {
-        auto it = targets.find(name);
-        if (it != targets.end()) {
-            void *target = it->second;
-            void *original = target;
-
-            spdlog::debug("{}: T = 0x{:p}", name, target);
-            spdlog::debug("{}: D = 0x{:p}", name, detour);
-
-            funchook_t *hook = funchook_create();
-            int status;
-            status = funchook_prepare(hook, &original, detour);
-            if (status != 0) {
-                throw std::system_error(status, hook_error_category());
-            }
-
-            status = funchook_install(hook, 0);
-            if (status != 0) {
-                throw std::system_error(status, hook_error_category());
-            }
-
-            spdlog::debug("{}: O = 0x{:p}", name, original);
-            gOriginals.emplace(detour, original);
-        }
-        else {
-            throw std::runtime_error(fmt::format("Unable to find target function {} in the executable", name));
-        }
-    }
+    return targets;
 }
 
-const std::error_category &hook_error_category()
-{
-    static const class HookErrorCategory : public std::error_category {
-    public:
-        [[nodiscard]] const char *name() const noexcept override
-        {
-            return "HookError";
-        }
-
-        [[nodiscard]] std::string message(int err_val) const override
-        {
-            switch (err_val) {
-            case FUNCHOOK_ERROR_INTERNAL_ERROR:
-                return "FUNCHOOK_ERROR_INTERNAL_ERROR";
-            case FUNCHOOK_ERROR_SUCCESS:
-                return "FUNCHOOK_ERROR_SUCCESS";
-            case FUNCHOOK_ERROR_OUT_OF_MEMORY:
-                return "FUNCHOOK_ERROR_OUT_OF_MEMORY";
-            case FUNCHOOK_ERROR_ALREADY_INSTALLED:
-                return "FUNCHOOK_ERROR_ALREADY_INSTALLED";
-            case FUNCHOOK_ERROR_DISASSEMBLY:
-                return "FUNCHOOK_ERROR_DISASSEMBLY";
-            case FUNCHOOK_ERROR_IP_RELATIVE_OFFSET:
-                return "FUNCHOOK_ERROR_IP_RELATIVE_OFFSET";
-            case FUNCHOOK_ERROR_CANNOT_FIX_IP_RELATIVE:
-                return "FUNCHOOK_ERROR_CANNOT_FIX_IP_RELATIVE";
-            case FUNCHOOK_ERROR_FOUND_BACK_JUMP:
-                return "FUNCHOOK_ERROR_FOUND_BACK_JUMP";
-            case FUNCHOOK_ERROR_TOO_SHORT_INSTRUCTIONS:
-                return "FUNCHOOK_ERROR_TOO_SHORT_INSTRUCTIONS";
-            case FUNCHOOK_ERROR_MEMORY_ALLOCATION:
-                return "FUNCHOOK_ERROR_MEMORY_ALLOCATION";
-            case FUNCHOOK_ERROR_MEMORY_FUNCTION:
-                return "FUNCHOOK_ERROR_MEMORY_FUNCTION";
-            case FUNCHOOK_ERROR_NOT_INSTALLED:
-                return "FUNCHOOK_ERROR_NOT_INSTALLED";
-            case FUNCHOOK_ERROR_NO_AVAILABLE_REGISTERS:
-                return "FUNCHOOK_ERROR_NO_AVAILABLE_REGISTERS";
-            default:
-                return "Unknown error.";
-            }
-        }
-    } category;
-    return category;
-}
 }  // namespace endstone::detail::hook
 
 #endif

@@ -92,7 +92,12 @@ void *fp_cast(Return (Class::*fp)(Args...) const)
 
 namespace endstone::detail::hook {
 void *get_original(void *detour);
-}
+void *get_original(const char *name);
+
+std::unordered_map<std::string, void *> get_targets();
+std::unordered_map<std::string, void *> get_detours();
+
+}  // namespace endstone::detail::hook
 
 namespace endstone::detail::hook {
 /**
