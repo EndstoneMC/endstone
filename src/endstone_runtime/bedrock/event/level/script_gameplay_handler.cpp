@@ -23,9 +23,9 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
 #ifdef _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptLevelGameplayHandler::handleEvent, __FUNCDNAME__, result, this, event);
 #else
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptLevelGameplayHandler::handleEvent,
-                                         "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent",
-                                         result, this, event);
+    result = ENDSTONE_HOOK_CALL_ORIGINAL_NAME(
+        &ScriptLevelGameplayHandler::handleEvent,
+        "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent", this, event);
 #endif
     return result;
 }
