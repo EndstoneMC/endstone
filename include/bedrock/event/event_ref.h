@@ -14,11 +14,7 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/event/gameplay_handler.h"
-#include "bedrock/event/level/weather_changed_event.h"
-
-class ScriptLevelGameplayHandler {
-public:
-    virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+template <typename E>
+struct EventRef {
+    E reference;
 };

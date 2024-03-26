@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/event/script_gameplay_handler.h"
-
+#include "bedrock/event/coordinator_result.h"
+#include "bedrock/event/gameplay_handler.h"
+#include "bedrock/event/level_events.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
