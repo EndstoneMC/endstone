@@ -15,6 +15,7 @@
 #pragma once
 
 #include <functional>
+#include <optional>
 #include <system_error>
 
 namespace endstone::detail::hook {
@@ -114,9 +115,11 @@ inline std::function<Return(Arg...)> get_original(Return (*fp)(Arg...))
  * @brief Construct a std::function from a class method (non-const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(Class *, Arg...)> get_original(Return (Class::*fp)(Arg...))
+inline std::function<Return(Class *, Arg...)> get_original(Return (Class::*fp)(Arg...),
+                                                           std::optional<std::string> name = std::nullopt)
 {
-    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(get_original(fp_cast(fp)));
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(original);
     return [func](Class *obj, Arg... args) -> Return {
         return func(obj, std::forward<Arg>(args)...);
     };
@@ -126,15 +129,18 @@ inline std::function<Return(Class *, Arg...)> get_original(Return (Class::*fp)(A
  * @brief Construct a std::function from a class method (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return(const Class *, Arg...)> get_original(Return (Class::*fp)(Arg...) const)
+inline std::function<Return(const Class *, Arg...)> get_original(Return (Class::*fp)(Arg...) const,
+                                                                 std::optional<std::string> name = std::nullopt)
 {
-    auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(get_original(fp_cast(fp)));
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    auto func = reinterpret_cast<Return (*)(const Class *, Arg...)>(original);
     return [func](const Class *obj, Arg... args) -> Return {
         return func(obj, std::forward<Arg>(args)...);
     };
 }
 }  // namespace endstone::detail::hook
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) endstone::detail::hook::get_original(fp)(__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...)            endstone::detail::hook::get_original(fp)(__VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) endstone::detail::hook::get_original(fp, name)(__VA_ARGS__)
 
 namespace endstone::detail::hook {
 /**
@@ -142,9 +148,11 @@ namespace endstone::detail::hook {
  * with Return Value Optimization (RVO).
  */
 template <typename Return, typename... Arg>
-inline std::function<Return *(Return *, Arg...)> get_original_rvo(Return (*fp)(Arg...))
+inline std::function<Return *(Return *, Arg...)> get_original_rvo(Return (*fp)(Arg...),
+                                                                  std::optional<std::string> name = std::nullopt)
 {
-    return reinterpret_cast<Return *(*)(Return *, Arg...)>(get_original(fp_cast(fp)));
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    return reinterpret_cast<Return *(*)(Return *, Arg...)>(original);
 }
 
 /**
@@ -152,15 +160,17 @@ inline std::function<Return *(Return *, Arg...)> get_original_rvo(Return (*fp)(A
  * with Return Value Optimization (RVO).
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return *(Return *, Class *, Arg...)> get_original_rvo(Return (Class::*fp)(Arg...))
+inline std::function<Return *(Return *, Class *, Arg...)> get_original_rvo(
+    Return (Class::*fp)(Arg...), std::optional<std::string> name = std::nullopt)
 {
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
 #ifdef _WIN32
-    auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(get_original(fp_cast(fp)));
+    auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(original);
     return [func](Return *ret, Class *obj, Arg... args) -> Return * {
         return func(obj, ret, std::forward<Arg>(args)...);
     };
 #elif __linux__
-    auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(get_original(fp_cast(fp)));
+    auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(original);
     return [func](Return *ret, Class *obj, Arg... args) -> Return * {
         return func(ret, obj, std::forward<Arg>(args)...);
     };
@@ -172,15 +182,17 @@ inline std::function<Return *(Return *, Class *, Arg...)> get_original_rvo(Retur
  * with Return Value Optimization (RVO).
  */
 template <typename Return, typename Class, typename... Arg>
-inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo(Return (Class::*fp)(Arg...) const)
+inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo(
+    Return (Class::*fp)(Arg...) const, std::optional<std::string> name = std::nullopt)
 {
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
 #ifdef _WIN32
-    auto func = reinterpret_cast<Return *(*)(const Class *, Return *, Arg...)>(get_original(fp_cast(fp)));
+    auto func = reinterpret_cast<Return *(*)(const Class *, Return *, Arg...)>(original);
     return [func](Return *ret, const Class *obj, Arg... args) -> Return * {
         return func(obj, ret, std::forward<Arg>(args)...);
     };
 #elif __linux__
-    auto func = reinterpret_cast<Return *(*)(Return *, const Class *, Arg...)>(get_original(fp_cast(fp)));
+    auto func = reinterpret_cast<Return *(*)(Return *, const Class *, Arg...)>(original);
     return [func](Return *ret, const Class *obj, Arg... args) -> Return * {
         return func(ret, obj, std::forward<Arg>(args)...);
     };
@@ -189,3 +201,5 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
 }  // namespace endstone::detail::hook
 
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) *endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(fp, name, ret, ...) \
+    *endstone::detail::hook::get_original_rvo(fp, name)(&ret, __VA_ARGS__)
