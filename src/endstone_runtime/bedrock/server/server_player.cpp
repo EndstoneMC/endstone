@@ -12,13 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/server/server_player.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/server/level/player.h"
+#include "endstone/detail/hook.h"
 
-class ServerPlayer : public Player {
-public:
-    ~ServerPlayer() override = 0;
-    BEDROCK_API void doInitialSpawn();
-};
+void ServerPlayer::doInitialSpawn()
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
+    sendCommands();
+}

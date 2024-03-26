@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/level/player.h"
+#include "bedrock/level/actor/player.h"
 
 #include <magic_enum/magic_enum.hpp>
 
