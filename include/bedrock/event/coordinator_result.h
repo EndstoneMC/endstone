@@ -15,6 +15,6 @@
 #pragma once
 
 enum class CoordinatorResult {
-    Failed = 0,
-    Success = 1
+    Reject = 0,
+    Default = 1
 };
