@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -737,14 +737,10 @@ class PluginDescription:
         Gives the plugin's or plugin's author's website.
         """
 class PluginDisableEvent(Event):
-    def __init__(self, plugin: Plugin) -> None:
-        ...
     @property
     def plugin(self) -> Plugin:
         ...
 class PluginEnableEvent(Event):
-    def __init__(self, plugin: Plugin) -> None:
-        ...
     @property
     def plugin(self) -> Plugin:
         ...
@@ -944,8 +940,6 @@ class Server:
         Gets the version of this server implementation.
         """
 class ServerCommandEvent(Event):
-    def __init__(self, sender: CommandSender, command: str) -> None:
-        ...
     @property
     def command(self) -> str:
         """
@@ -1074,8 +1068,18 @@ class ServerLoadEvent(Event):
         def value(self) -> int:
             ...
     STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
-    def __init__(self, arg0: ServerLoadEvent.LoadType) -> None:
-        ...
     @property
     def type(self) -> ServerLoadEvent.LoadType:
         ...
+class ThunderChangeEvent(Event):
+    @property
+    def to_thunder_state(self) -> bool:
+        """
+        Gets the state of thunder that the world is being set to
+        """
+class WeatherChangeEvent(Event):
+    @property
+    def to_weather_state(self) -> bool:
+        """
+        Gets the state of weather that the world is being set to
+        """

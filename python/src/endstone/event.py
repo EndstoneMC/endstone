@@ -6,6 +6,8 @@ from endstone._internal.endstone_python import (
     ServerCommandEvent,
     ServerListPingEvent,
     ServerLoadEvent,
+    ThunderChangeEvent,
+    WeatherChangeEvent,
 )
 
 __all__ = [
@@ -17,6 +19,8 @@ __all__ = [
     "ServerCommandEvent",
     "ServerListPingEvent",
     "ServerLoadEvent",
+    "ThunderChangeEvent",
+    "WeatherChangeEvent",
 ]
 
 

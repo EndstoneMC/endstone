@@ -25,6 +25,8 @@
 #include "endstone/event/server/server_command_event.h"
 #include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/event/server/server_load_event.h"
+#include "endstone/event/weather/thunder_change_event.h"
+#include "endstone/event/weather/weather_change_event.h"
 
 namespace py = pybind11;
 
@@ -64,11 +66,9 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::enum_<ServerLoadEvent::LoadType>(server_load_event, "LoadType")
         .value("STARTUP", ServerLoadEvent::LoadType::Startup)
         .export_values();
-    server_load_event.def(py::init<ServerLoadEvent::LoadType>())
-        .def_property_readonly("type", &ServerLoadEvent::getType);
+    server_load_event.def_property_readonly("type", &ServerLoadEvent::getType);
 
     py::class_<ServerCommandEvent, Event>(m, "ServerCommandEvent")
-        .def(py::init<CommandSender &, std::string>(), py::arg("sender"), py::arg("command"))
         .def_property_readonly("sender", &ServerCommandEvent::getSender, "Get the command sender.")
         .def_property("command", &ServerCommandEvent::getCommand, &ServerCommandEvent::setCommand,
                       "The command that the server will execute");
@@ -100,12 +100,20 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                       "The current game mode.");
 
     py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent")
-        .def(py::init<Plugin &>(), py::arg("plugin"))
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin);
 
     py::class_<PluginDisableEvent, Event>(m, "PluginDisableEvent")
-        .def(py::init<Plugin &>(), py::arg("plugin"))
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin);
+
+    py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent")
+        // TODO: add property world
+        .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,
+                               "Gets the state of weather that the world is being set to");
+
+    py::class_<ThunderChangeEvent, Event>(m, "ThunderChangeEvent")
+        // TODO: add property world
+        .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
+                               "Gets the state of thunder that the world is being set to");
 }
 
 }  // namespace endstone::detail
