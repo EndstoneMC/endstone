@@ -14,4 +14,11 @@
 
 #pragma once
 
-struct LevelWeatherChangedEvent {};
+struct LevelWeatherChangedEvent {
+    bool from_rain;
+    bool from_lightning;
+    bool to_rain;
+    bool to_lightning;
+    int rain_time;
+    int lightning_time;
+};
