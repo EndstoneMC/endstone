@@ -32,7 +32,7 @@ public:
 class BlockEventCoordinator {
 public:
     void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
-    CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
 };
 
 class LevelEventCoordinator {

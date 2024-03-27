@@ -16,3 +16,53 @@
 
 template <typename Return>
 struct BlockGameplayEvent;
+
+struct BlockPatternPostEvent {};
+
+template <>
+struct BlockGameplayEvent<void> {
+    std::variant<Details::ValueOrRef<BlockPatternPostEvent const>,
+#ifdef _WIN32
+                 Details::ValueOrRef<ActorEventPlaceHolder<224> const>>
+#else
+                 Details::ValueOrRef<ActorEventPlaceHolder<192> const>>
+#endif
+        event;
+};
+
+struct ActorInsideBlockEvent {};
+struct ActorStandOnBlockEvent {};
+struct BlockPatternPreEvent {};
+struct BlockRandomTickEvent {};
+struct ChestBlockTryPairEvent {};
+struct PistonActionEvent {};
+struct LeverActionEvent {};
+struct ButtonPushEvent {};
+struct PressurePlatePushEvent {};
+struct PressurePlatePopEvent {};
+struct TargetBlockHitEvent {};
+struct TripWireTripEvent {};
+struct BlockTryPlaceByPlayerEvent {};
+
+template <>
+struct BlockGameplayEvent<CoordinatorResult> {
+    std::variant<Details::ValueOrRef<ActorInsideBlockEvent const>,       // 0
+                 Details::ValueOrRef<ActorStandOnBlockEvent const>,      // 1
+                 Details::ValueOrRef<BlockPatternPreEvent const>,        // 2
+                 Details::ValueOrRef<BlockRandomTickEvent const>,        // 3
+                 Details::ValueOrRef<ChestBlockTryPairEvent const>,      // 4
+                 Details::ValueOrRef<PistonActionEvent const>,           // 5
+                 Details::ValueOrRef<LeverActionEvent const>,            // 6
+                 Details::ValueOrRef<ButtonPushEvent const>,             // 7
+                 Details::ValueOrRef<PressurePlatePushEvent const>,      // 8
+                 Details::ValueOrRef<PressurePlatePopEvent const>,       // 9
+                 Details::ValueOrRef<TargetBlockHitEvent const>,         // 10
+                 Details::ValueOrRef<TripWireTripEvent const>,           // 11
+                 Details::ValueOrRef<BlockTryPlaceByPlayerEvent const>,  // 12
+#ifdef _WIN32
+                 Details::ValueOrRef<ActorEventPlaceHolder<232> const>>
+#else
+                 Details::ValueOrRef<ActorEventPlaceHolder<192> const>>
+#endif
+        event;
+};
