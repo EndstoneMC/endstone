@@ -19,6 +19,18 @@
 namespace Details {
 
 template <typename T>
-using ValueOrRef = std::variant<T *, T>;
+class ValueOrRef {
+public:
+    T &get() noexcept
+    {
+        if (std::holds_alternative<T>(value_or_ref_)) {
+            return std::get<T>(value_or_ref_);
+        }
+        return *std::get<T *>(value_or_ref_);
+    }
 
-}
+private:
+    std::variant<T *, T> value_or_ref_;
+};
+
+}  // namespace Details
