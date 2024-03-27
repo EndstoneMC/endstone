@@ -15,9 +15,25 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/event/actor_event.h"
+#include "bedrock/event/block_event.h"
+#include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
-#include "bedrock/event/level_events.h"
-#include "bedrock/event/player_events.h"
+#include "bedrock/event/level_event.h"
+#include "bedrock/event/player_event.h"
+#include "bedrock/server/server_instance.h"
+
+class ActorEventCoordinator {
+public:
+    BEDROCK_API  void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
+    CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+};
+
+class BlockEventCoordinator {
+public:
+    void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
+    CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
+};
 
 class LevelEventCoordinator {
 public:
@@ -28,4 +44,11 @@ class PlayerEventCoordinator {
 public:
     BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
     BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
+};
+
+class ServerInstanceEventCoordinator {
+public:
+    BEDROCK_API void sendServerInitializeStart(ServerInstance &instance);
+    BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
+    BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
 };

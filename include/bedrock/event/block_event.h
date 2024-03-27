@@ -12,13 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/server_instance.h"
+#pragma once
 
-Minecraft &ServerInstance::getMinecraft()
-{
-#ifdef __linux__
-    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 16);
-#elif _WIN32
-    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 21);
-#endif
-}
+template <typename Return>
+struct BlockGameplayEvent;

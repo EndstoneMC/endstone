@@ -17,8 +17,8 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
-#include "bedrock/event/level_events.h"
-#include "bedrock/event/player_events.h"
+#include "bedrock/event/level_event.h"
+#include "bedrock/event/player_event.h"
 
 template <typename Result>
 struct GameplayHandlerResult {
