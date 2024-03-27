@@ -44,7 +44,7 @@ struct PlayerInteractWithEntityAfterEvent {};
 struct PlayerInteractWithBlockAfterEvent {};
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
 #ifdef _WIN32
-    char pad[352];
+    char pad[368];
 #else
     char pad[376];
 #endif

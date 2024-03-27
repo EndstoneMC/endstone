@@ -50,7 +50,6 @@ class NetworkIdentifier;
 class NewInteractionModel;
 class Options;
 class Player;
-class PlayerEventCoordinator;
 class PlayerMovementSettings;
 class RenderParams;
 class ResolvedTextObject;

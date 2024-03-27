@@ -19,6 +19,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
+#include "bedrock/event/event_coordinator.h"
 #include "bedrock/level/actor/mob.h"
 #include "bedrock/network/packet_sender.h"
 

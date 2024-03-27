@@ -41,15 +41,15 @@ struct LevelGameplayEvent;
 
 template <>
 struct LevelGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<LevelAddedActorEvent const>,      //
-                 Details::ValueOrRef<LevelBroadcastEvent const>,       //
-                 Details::ValueOrRef<LevelSoundBroadcastEvent const>,  //
-                 Details::ValueOrRef<LevelDayCycleEvent const>,        //
-                 Details::ValueOrRef<LevelStartLeaveGameEvent const>,  //
+    std::variant<Details::ValueOrRef<LevelAddedActorEvent const>,      // 0
+                 Details::ValueOrRef<LevelBroadcastEvent const>,       // 1
+                 Details::ValueOrRef<LevelSoundBroadcastEvent const>,  // 2
+                 Details::ValueOrRef<LevelDayCycleEvent const>,        // 3
+                 Details::ValueOrRef<LevelStartLeaveGameEvent const>,  // 4
 #ifdef _WIN32
-                 Details::ValueOrRef<LevelGameRuleChangeEvent const>,  // what is going on Mojang?
+                 Details::ValueOrRef<LevelGameRuleChangeEvent const>,  // 5 (windows) what is going on Mojang?
 #endif
-                 Details::ValueOrRef<ScriptingInitializeEvent const>,  //
+                 Details::ValueOrRef<ScriptingInitializeEvent const>,  // 6 (windows) or 5 (linux)
                  Details::ValueOrRef<LevelEventPlaceHolder const>>     //
         event;
 };

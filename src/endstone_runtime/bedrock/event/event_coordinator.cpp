@@ -14,6 +14,9 @@
 
 #include "bedrock/event/event_coordinator.h"
 
+#include <iomanip>
+#include <sstream>
+
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/hook.h"
@@ -25,12 +28,53 @@ struct Overloaded : Ts... {
 };
 template <class... Ts>
 Overloaded(Ts...) -> Overloaded<Ts...>;
+
+template <typename T>
+std::string hexDump(T &obj)
+{
+    const auto *ptr = reinterpret_cast<const unsigned char *>(&obj);
+    std::ostringstream oss;
+    for (std::size_t i = 0; i < sizeof(obj) + 16; ++i) {
+        if (i == sizeof(obj)) {
+            oss << " | ";
+        }
+
+        if (i % 16 == 0) {
+            oss << reinterpret_cast<const void *>(ptr + i) << ": ";
+        }
+        oss << std::setw(2) << std::setfill('0') << std::hex << static_cast<int>(ptr[i]) << " ";
+        if (i % 16 == 15) {
+            oss << "\n";
+        }
+    }
+    oss << "\n";
+    return oss.str();
+}
+
 }  // namespace
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
-    spdlog::info("LevelEventCoordinator::sendEvent");
-    spdlog::info("Index: {}", ref.reference.event.index());
-    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
+    try {
+        std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
+    }
+    catch (std::bad_variant_access &e) {
+        spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
+                         "report this issue on Github and include the following memory dump: {}",
+                         hexDump(ref));
+    }
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
+}
+
+void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
+{
+    try {
+        std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
+    }
+    catch (std::bad_variant_access &e) {
+        spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
+                         "report this issue on Github and include the following memory dump: {}",
+                         hexDump(ref));
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&PlayerEventCoordinator::sendEvent, this, ref);
 }

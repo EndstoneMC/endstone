@@ -17,8 +17,14 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/event/event_ref.h"
 #include "bedrock/event/level_events.h"
+#include "bedrock/event/player_events.h"
 
 class LevelEventCoordinator {
 public:
-    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &);
+    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
+};
+
+class PlayerEventCoordinator {
+public:
+    BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
 };
