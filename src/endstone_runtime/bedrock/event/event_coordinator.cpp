@@ -18,7 +18,5 @@
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
-    printf("LevelEventCoordinator::sendEvent\n");
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
-    printf("Index: %zu\n", ref.reference.event.index());
 }
