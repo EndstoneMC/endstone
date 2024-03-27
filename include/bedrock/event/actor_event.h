@@ -66,7 +66,11 @@ struct ActorGameplayEvent<void> {
                  Details::ValueOrRef<ActorUseItemEvent const>,              // 16
                  Details::ValueOrRef<KnockBackEvent const>,                 // 17
                  Details::ValueOrRef<MountTamingEvent const>,               // 18
+#ifdef _WIN32
                  Details::ValueOrRef<ActorEventPlaceHolder<304> const>>
+#else
+                 Details::ValueOrRef<ActorEventPlaceHolder<320> const>>
+#endif
         event;
 };
 

@@ -72,9 +72,11 @@ std::string hexDump(T &obj)
 void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &ref)
 {
     void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) = &ActorEventCoordinator::sendEvent;
-    //    printf("%s\n", hexDump(ref).c_str());
-    //    printf("%zu\n", ref.reference.event.index());
-    //    std::visit([](auto &&arg) { spdlog::info("{}", typeid(arg).name()); }, ref.reference.event);
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
 
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
