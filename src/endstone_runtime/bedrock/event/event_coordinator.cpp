@@ -98,19 +98,30 @@ CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayE
 {
     CoordinatorResult (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<CoordinatorResult>> &) =
         &BlockEventCoordinator::sendEvent;
-//    printf("%s\n", hexDump(ref).c_str());
-//    printf("%zu\n", ref.reference.event.index());
 
     std::visit(
         [](auto &&arg) {
-            using T = std::decay_t<decltype(arg)>;
-            if constexpr (!std::is_same_v<T, BlockRandomTickEvent>) {
-//                printf("%s\n", typeid(arg).name());
-            }
+            // TODO:
         },
         ref.reference.event);
 
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &ref)
+{
+    void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) = &BlockEventCoordinator::sendEvent;
+
+    //    printf("%s\n", hexDump(ref).c_str());
+    //    printf("%zu\n", ref.reference.event.index());
+    std::visit(
+        [](auto &&arg) {
+            //            printf("%s\n", typeid(arg).name());
+            // TODO:
+        },
+        ref.reference.event);
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
