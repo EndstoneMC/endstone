@@ -26,7 +26,7 @@
 class ActorEventCoordinator {
 public:
     BEDROCK_API  void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
-    CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
 };
 
 class BlockEventCoordinator {

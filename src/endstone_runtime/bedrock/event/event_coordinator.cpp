@@ -81,6 +81,19 @@ void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
+CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<CoordinatorResult>> &ref)
+{
+    CoordinatorResult (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<CoordinatorResult>> &) =
+        &ActorEventCoordinator::sendEvent;
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
     std::visit(
