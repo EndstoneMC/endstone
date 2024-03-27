@@ -55,26 +55,13 @@ std::string hexDump(T &obj)
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
-    try {
-        std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
-    }
-    catch (std::bad_variant_access &e) {
-        spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
-                         "report this issue on GitHub and include the following memory dump: {}",
-                         hexDump(ref));
-    }
+    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
+
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
 {
-    try {
-        std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
-    }
-    catch (std::bad_variant_access &e) {
-        spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
-                         "report this issue on GitHub and include the following memory dump: {}",
-                         hexDump(ref));
-    }
+    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&PlayerEventCoordinator::sendEvent, this, ref);
 }
