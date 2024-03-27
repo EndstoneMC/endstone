@@ -42,8 +42,24 @@ struct PlayerDimensionChangeBeforeEvent {};
 struct PlayerDimensionChangeAfterEvent {};
 struct PlayerInteractWithEntityAfterEvent {};
 struct PlayerInteractWithBlockAfterEvent {};
-struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
+
+template <typename Result>
+struct PlayerEventPlaceHolder;
+
+template <>
+struct PlayerEventPlaceHolder<void> {  // To ensure our variant is initialised with correct storage size
     char pad[368];
+};
+
+struct PlayerSayCommandEvent {};
+struct PlayerGetExperienceOrbEvent {};
+struct PlayerInteractEvent {};
+struct PlayerInteractWithEntityBeforeEvent {};
+struct PlayerInteractWithBlockBeforeEvent {};
+
+template <>
+struct PlayerEventPlaceHolder<CoordinatorResult> {  // To ensure our variant is initialised with correct storage size
+    char pad[216];
 };
 
 template <typename Return>
@@ -75,6 +91,17 @@ struct PlayerGameplayEvent<void> {
                  Details::ValueOrRef<PlayerDimensionChangeAfterEvent const>,     // 21
                  Details::ValueOrRef<PlayerInteractWithEntityAfterEvent const>,  // 22
                  Details::ValueOrRef<PlayerInteractWithBlockAfterEvent const>,   // 23
-                 Details::ValueOrRef<PlayerEventPlaceHolder const>>
+                 Details::ValueOrRef<PlayerEventPlaceHolder<void> const>>
+        event;
+};
+
+template <>
+struct PlayerGameplayEvent<CoordinatorResult> {
+    std::variant<Details::ValueOrRef<PlayerSayCommandEvent const>,                // 1
+                 Details::ValueOrRef<PlayerGetExperienceOrbEvent const>,          // 2
+                 Details::ValueOrRef<PlayerInteractEvent const>,                  // 3
+                 Details::ValueOrRef<PlayerInteractWithEntityBeforeEvent const>,  // 4
+                 Details::ValueOrRef<PlayerInteractWithBlockBeforeEvent const>,   // 5
+                 Details::ValueOrRef<PlayerEventPlaceHolder<CoordinatorResult> const>>
         event;
 };

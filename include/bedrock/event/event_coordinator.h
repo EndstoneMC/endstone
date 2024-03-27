@@ -27,4 +27,5 @@ public:
 class PlayerEventCoordinator {
 public:
     BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
 };

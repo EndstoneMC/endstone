@@ -55,13 +55,23 @@ std::string hexDump(T &obj)
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
-    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
+    std::visit([](auto &&arg) { spdlog::info("Level Event: {}", typeid(arg).name()); }, ref.reference.event);
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
 {
-    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&PlayerEventCoordinator::sendEvent, this, ref);
+    void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
+        &PlayerEventCoordinator::sendEvent;
+    std::visit([](auto &&arg) { spdlog::info("Player Event: {}", typeid(arg).name()); }, ref.reference.event);
+    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &ref)
+{
+    CoordinatorResult (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &) =
+        &PlayerEventCoordinator::sendEvent;
+    std::visit([](auto &&arg) { spdlog::info("Player Event: {}", typeid(arg).name()); }, ref.reference.event);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
