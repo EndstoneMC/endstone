@@ -60,7 +60,7 @@ void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &
     }
     catch (std::bad_variant_access &e) {
         spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
-                         "report this issue on Github and include the following memory dump: {}",
+                         "report this issue on GitHub and include the following memory dump: {}",
                          hexDump(ref));
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
@@ -73,7 +73,7 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
     }
     catch (std::bad_variant_access &e) {
         spdlog::critical("A bad variant access error has occurred. This is likely due to an update in the game. Please "
-                         "report this issue on Github and include the following memory dump: {}",
+                         "report this issue on GitHub and include the following memory dump: {}",
                          hexDump(ref));
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&PlayerEventCoordinator::sendEvent, this, ref);

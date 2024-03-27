@@ -29,11 +29,7 @@ struct LevelStartLeaveGameEvent {};
 struct LevelGameRuleChangeEvent {};
 struct ScriptingInitializeEvent {};
 struct LevelEventPlaceHolder {
-#ifdef _WIN32
     char pad[56];
-#else
-    char pad[64];
-#endif
 };
 
 template <typename Return>
