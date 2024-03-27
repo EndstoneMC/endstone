@@ -112,11 +112,8 @@ void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &
 {
     void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) = &BlockEventCoordinator::sendEvent;
 
-    //    printf("%s\n", hexDump(ref).c_str());
-    //    printf("%zu\n", ref.reference.event.index());
     std::visit(
         [](auto &&arg) {
-            //            printf("%s\n", typeid(arg).name());
             // TODO:
         },
         ref.reference.event);
