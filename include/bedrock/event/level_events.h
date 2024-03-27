@@ -17,29 +17,42 @@
 #include <variant>
 
 #include "bedrock/details.h"
+#include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
+#include "bedrock/forward.h"
 
 // TODO: check the size
 struct LevelAddedActorEvent {
-    char pad[40];
+    char pad[32];
 };
+
 struct LevelBroadcastEvent {
-    char pad[64];
+    LevelEvent level_event;
+    int x;
+    int z;
+    int known;
 };
+
 struct LevelSoundBroadcastEvent {
-    char pad[64];
+    Puv::Legacy::LevelSoundEvent sound_event;
+    int x;
+    int z;
+    int known;
 };
+
+class DayCycleEventComponent;
+
 struct LevelDayCycleEvent {
-    char pad[64];
+    DayCycleEventComponent &component;
 };
-struct LevelStartLeaveGameEvent {
-    char pad[64];
-};
+
+struct LevelStartLeaveGameEvent {};
+
 struct LevelGameRuleChangeEvent {
-    char pad[64];
+    char pad[56];
 };
 struct ScriptingInitializeEvent {
-    char pad[56];
+    char pad[48];
 };
 
 template <typename Return>
@@ -47,13 +60,18 @@ struct LevelGameplayEvent;
 
 template <>
 struct LevelGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<LevelAddedActorEvent const>, Details::ValueOrRef<LevelBroadcastEvent const>,
-                 Details::ValueOrRef<LevelSoundBroadcastEvent const>, Details::ValueOrRef<LevelDayCycleEvent const>,
-                 Details::ValueOrRef<LevelStartLeaveGameEvent const>,
-                 Details::ValueOrRef<LevelGameRuleChangeEvent const>,
-                 Details::ValueOrRef<ScriptingInitializeEvent const>>
+    std::variant<Details::ValueOrRef<LevelAddedActorEvent const>,      //
+                 Details::ValueOrRef<LevelBroadcastEvent const>,       //
+                 Details::ValueOrRef<LevelSoundBroadcastEvent const>,  //
+                 Details::ValueOrRef<LevelDayCycleEvent const>,        //
+                 Details::ValueOrRef<LevelStartLeaveGameEvent const>,  //
+#ifdef _WIN32
+                 Details::ValueOrRef<LevelGameRuleChangeEvent const>,  // what is going on Mojang?
+#endif
+                 Details::ValueOrRef<ScriptingInitializeEvent const>>  //
         event;
 };
+static_assert(sizeof(LevelGameplayEvent<void>) == 72);
 
 struct LevelWeatherChangedEvent {
     bool from_rain;

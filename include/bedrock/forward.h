@@ -69,6 +69,7 @@ enum class ArmorTextureType;
 enum class ArmorSlot;
 enum class BedSleepingResult;
 enum class GameType;
+enum class LevelEvent;
 enum class MaterialType;
 enum class StructureFeatureType;
 enum class SubClientId;
@@ -78,5 +79,5 @@ class Color;
 }
 
 namespace Puv::Legacy {
-class LevelSoundEvent;
+enum class LevelSoundEvent : int;
 }

@@ -12,10 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/event/event_coordinator.h"
 
-template <typename E>
-class EventRef {
-public:
-    E reference;
-};
+#include "endstone/detail/hook.h"
+
+void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
+{
+    printf("LevelEventCoordinator::sendEvent\n");
+    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
+    printf("Index: %zu\n", ref.reference.event.index());
+}

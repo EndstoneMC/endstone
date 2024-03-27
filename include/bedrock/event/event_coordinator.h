@@ -14,8 +14,11 @@
 
 #pragma once
 
-template <typename E>
-class EventRef {
+#include "bedrock/bedrock.h"
+#include "bedrock/event/event_ref.h"
+#include "bedrock/event/level_events.h"
+
+class LevelEventCoordinator {
 public:
-    E reference;
+    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &);
 };
