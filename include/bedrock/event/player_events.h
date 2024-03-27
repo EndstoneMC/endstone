@@ -18,6 +18,13 @@
 
 #include "bedrock/details.h"
 
+template <typename Result>
+struct PlayerEventPlaceHolder;  // To ensure our variant is initialised with correct storage size
+
+template <>
+struct PlayerEventPlaceHolder<void> {
+    char pad[368];
+};
 struct PlayerSkinLoadedClientEvent {};
 struct PlayerAddEvent {};
 struct PlayerAddExpEvent {};
@@ -43,27 +50,18 @@ struct PlayerDimensionChangeAfterEvent {};
 struct PlayerInteractWithEntityAfterEvent {};
 struct PlayerInteractWithBlockAfterEvent {};
 
-template <typename Result>
-struct PlayerEventPlaceHolder;
-
 template <>
-struct PlayerEventPlaceHolder<void> {  // To ensure our variant is initialised with correct storage size
-    char pad[368];
+struct PlayerEventPlaceHolder<CoordinatorResult> {
+    char pad[216];
 };
-
 struct PlayerSayCommandEvent {};
 struct PlayerGetExperienceOrbEvent {};
 struct PlayerInteractEvent {};
 struct PlayerInteractWithEntityBeforeEvent {};
 struct PlayerInteractWithBlockBeforeEvent {};
 
-template <>
-struct PlayerEventPlaceHolder<CoordinatorResult> {  // To ensure our variant is initialised with correct storage size
-    char pad[216];
-};
-
 template <typename Return>
-struct PlayerGameplayEvent {};
+struct PlayerGameplayEvent;
 
 template <>
 struct PlayerGameplayEvent<void> {
@@ -104,4 +102,16 @@ struct PlayerGameplayEvent<CoordinatorResult> {
                  Details::ValueOrRef<PlayerInteractWithBlockBeforeEvent const>,   // 5
                  Details::ValueOrRef<PlayerEventPlaceHolder<CoordinatorResult> const>>
         event;
+};
+
+struct PlayerGameModeChangeEvent {
+    char pad[32];
+};
+
+template <typename Return>
+struct MutablePlayerGameplayEvent;
+
+template <>
+struct MutablePlayerGameplayEvent<CoordinatorResult> {
+    std::variant<Details::ValueOrRef<PlayerGameModeChangeEvent>> event;
 };
