@@ -20,6 +20,7 @@
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
 #include "bedrock/event/level_event.h"
+#include "bedrock/event/item_event.h"
 #include "bedrock/event/player_event.h"
 #include "bedrock/server/server_instance.h"
 
