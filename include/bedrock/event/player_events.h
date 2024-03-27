@@ -18,13 +18,11 @@
 
 #include "bedrock/details.h"
 
-template <typename Result>
-struct PlayerEventPlaceHolder;  // To ensure our variant is initialised with correct storage size
-
-template <>
-struct PlayerEventPlaceHolder<void> {
-    char pad[368];
+template <size_t n>
+struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
+    char pad[n];
 };
+
 struct PlayerSkinLoadedClientEvent {};
 struct PlayerAddEvent {};
 struct PlayerAddExpEvent {};
@@ -50,10 +48,6 @@ struct PlayerDimensionChangeAfterEvent {};
 struct PlayerInteractWithEntityAfterEvent {};
 struct PlayerInteractWithBlockAfterEvent {};
 
-template <>
-struct PlayerEventPlaceHolder<CoordinatorResult> {
-    char pad[216];
-};
 struct PlayerSayCommandEvent {};
 struct PlayerGetExperienceOrbEvent {};
 struct PlayerInteractEvent {};
@@ -89,7 +83,7 @@ struct PlayerGameplayEvent<void> {
                  Details::ValueOrRef<PlayerDimensionChangeAfterEvent const>,     // 21
                  Details::ValueOrRef<PlayerInteractWithEntityAfterEvent const>,  // 22
                  Details::ValueOrRef<PlayerInteractWithBlockAfterEvent const>,   // 23
-                 Details::ValueOrRef<PlayerEventPlaceHolder<void> const>>
+                 Details::ValueOrRef<PlayerEventPlaceHolder<368> const>>
         event;
 };
 
@@ -100,7 +94,7 @@ struct PlayerGameplayEvent<CoordinatorResult> {
                  Details::ValueOrRef<PlayerInteractEvent const>,                  // 3
                  Details::ValueOrRef<PlayerInteractWithEntityBeforeEvent const>,  // 4
                  Details::ValueOrRef<PlayerInteractWithBlockBeforeEvent const>,   // 5
-                 Details::ValueOrRef<PlayerEventPlaceHolder<CoordinatorResult> const>>
+                 Details::ValueOrRef<PlayerEventPlaceHolder<216> const>>
         event;
 };
 

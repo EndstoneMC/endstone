@@ -21,6 +21,10 @@
 #include "bedrock/event/event_ref.h"
 #include "bedrock/forward.h"
 
+struct LevelEventPlaceHolder {
+    char pad[56];
+};
+
 struct LevelAddedActorEvent {};
 struct LevelBroadcastEvent {};
 struct LevelSoundBroadcastEvent {};
@@ -28,9 +32,6 @@ struct LevelDayCycleEvent {};
 struct LevelStartLeaveGameEvent {};
 struct LevelGameRuleChangeEvent {};
 struct ScriptingInitializeEvent {};
-struct LevelEventPlaceHolder {
-    char pad[56];
-};
 
 template <typename Return>
 struct LevelGameplayEvent;
