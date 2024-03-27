@@ -14,9 +14,23 @@
 
 #include "bedrock/event/event_coordinator.h"
 
+#include <spdlog/spdlog.h>
+
 #include "endstone/detail/hook.h"
+
+namespace {
+template <class... Ts>
+struct Overloaded : Ts... {
+    using Ts::operator()...;
+};
+template <class... Ts>
+Overloaded(Ts...) -> Overloaded<Ts...>;
+}  // namespace
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
+    spdlog::info("LevelEventCoordinator::sendEvent");
+    spdlog::info("Index: {}", ref.reference.event.index());
+    std::visit([](auto &&arg) { spdlog::info("Event: {}", typeid(arg).name()); }, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }

@@ -18,78 +18,36 @@
 
 #include "bedrock/details.h"
 
-// TODO: check the size
-struct PlayerSkinLoadedClientEvent {
-    char pad[24];
-};
-struct PlayerAddEvent {
-    char pad[24];
-};
-struct PlayerAddExpEvent {
-    char pad[32];
-};
-struct PlayerAddLevelEvent {
-    char pad[32];
-};
-struct PlayerArmorExchangeEvent {
-    char pad[360];
-};
-struct PlayerDestroyBlockEvent {
-    char pad[32];
-};
-struct PlayerUseNameTagEvent {
-    char pad[184];
-};
-struct PlayerDropItemEvent {
-    char pad[48];
-};
-struct PlayerEatFoodEvent {
-    char pad[184];
-};
-struct PlayerDamageEvent {
-    char pad[32];
-};
-struct PlayerDisconnectEvent {
-    char pad[24];
-};
-struct PlayerFormCloseEvent {
-    char pad[32];
-};
-struct PlayerFormResponseEvent {
-    char pad[48];
-};
-struct PlayerInitialSpawnEvent {
-    char pad[24];
-};
-struct PlayerOpenContainerEvent {
-    char pad[48];
-};
-struct PlayerShootArrowEvent {
-    char pad[368];
-};
-struct PlayerRespawnEvent {
-    char pad[24];
-};
-struct PlayerStopLoadingEvent {
-    char pad[24];
-};
-struct PlayerUpdateInteractionEvent {
-    char pad[56];
-};
-struct PlayerSelectedItemChangedEvent {
-    char pad[160];
-};
-struct PlayerDimensionChangeBeforeEvent {
-    char pad[56];
-};
-struct PlayerDimensionChangeAfterEvent {
-    char pad[56];
-};
-struct PlayerInteractWithEntityAfterEvent {
-    char pad[208];
-};
-struct PlayerInteractWithBlockAfterEvent {
-    char pad[208];
+struct PlayerSkinLoadedClientEvent {};
+struct PlayerAddEvent {};
+struct PlayerAddExpEvent {};
+struct PlayerAddLevelEvent {};
+struct PlayerArmorExchangeEvent {};
+struct PlayerDestroyBlockEvent {};
+struct PlayerUseNameTagEvent {};
+struct PlayerDropItemEvent {};
+struct PlayerEatFoodEvent {};
+struct PlayerDamageEvent {};
+struct PlayerDisconnectEvent {};
+struct PlayerFormCloseEvent {};
+struct PlayerFormResponseEvent {};
+struct PlayerInitialSpawnEvent {};
+struct PlayerOpenContainerEvent {};
+struct PlayerShootArrowEvent {};
+struct PlayerRespawnEvent {};
+struct PlayerStopLoadingEvent {};
+struct PlayerUpdateInteractionEvent {};
+struct PlayerSelectedItemChangedEvent {};
+struct PlayerDimensionChangeBeforeEvent {};
+struct PlayerDimensionChangeAfterEvent {};
+struct PlayerInteractWithEntityAfterEvent {};
+struct PlayerInteractWithBlockAfterEvent {};
+struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
+#ifdef _WIN32
+    char pad[352];
+#else
+    char pad[376];
+#endif
 };
 
 template <typename Return>
@@ -97,21 +55,30 @@ struct PlayerGameplayEvent {};
 
 template <>
 struct PlayerGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<PlayerSkinLoadedClientEvent const>, Details::ValueOrRef<PlayerAddEvent const>,
-                 Details::ValueOrRef<PlayerAddExpEvent const>, Details::ValueOrRef<PlayerAddLevelEvent const>,
-                 Details::ValueOrRef<PlayerArmorExchangeEvent const>,
-                 Details::ValueOrRef<PlayerDestroyBlockEvent const>, Details::ValueOrRef<PlayerUseNameTagEvent const>,
-                 Details::ValueOrRef<PlayerDropItemEvent const>, Details::ValueOrRef<PlayerEatFoodEvent const>,
-                 Details::ValueOrRef<PlayerDamageEvent const>, Details::ValueOrRef<PlayerDisconnectEvent const>,
-                 Details::ValueOrRef<PlayerFormCloseEvent const>, Details::ValueOrRef<PlayerFormResponseEvent const>,
-                 Details::ValueOrRef<PlayerInitialSpawnEvent const>,
-                 Details::ValueOrRef<PlayerOpenContainerEvent const>, Details::ValueOrRef<PlayerShootArrowEvent const>,
-                 Details::ValueOrRef<PlayerRespawnEvent const>, Details::ValueOrRef<PlayerStopLoadingEvent const>,
-                 Details::ValueOrRef<PlayerUpdateInteractionEvent const>,
-                 Details::ValueOrRef<PlayerSelectedItemChangedEvent const>,
-                 Details::ValueOrRef<PlayerDimensionChangeBeforeEvent const>,
-                 Details::ValueOrRef<PlayerDimensionChangeAfterEvent const>,
-                 Details::ValueOrRef<PlayerInteractWithEntityAfterEvent const>,
-                 Details::ValueOrRef<PlayerInteractWithBlockAfterEvent const>>
+    std::variant<Details::ValueOrRef<PlayerSkinLoadedClientEvent const>,         // 0
+                 Details::ValueOrRef<PlayerAddEvent const>,                      // 1
+                 Details::ValueOrRef<PlayerAddExpEvent const>,                   // 2
+                 Details::ValueOrRef<PlayerAddLevelEvent const>,                 // 3
+                 Details::ValueOrRef<PlayerArmorExchangeEvent const>,            // 4
+                 Details::ValueOrRef<PlayerDestroyBlockEvent const>,             // 5
+                 Details::ValueOrRef<PlayerUseNameTagEvent const>,               // 6
+                 Details::ValueOrRef<PlayerDropItemEvent const>,                 // 7
+                 Details::ValueOrRef<PlayerEatFoodEvent const>,                  // 8
+                 Details::ValueOrRef<PlayerDamageEvent const>,                   // 9
+                 Details::ValueOrRef<PlayerDisconnectEvent const>,               // 10
+                 Details::ValueOrRef<PlayerFormCloseEvent const>,                // 11
+                 Details::ValueOrRef<PlayerFormResponseEvent const>,             // 12
+                 Details::ValueOrRef<PlayerInitialSpawnEvent const>,             // 13
+                 Details::ValueOrRef<PlayerOpenContainerEvent const>,            // 14
+                 Details::ValueOrRef<PlayerShootArrowEvent const>,               // 15
+                 Details::ValueOrRef<PlayerRespawnEvent const>,                  // 16
+                 Details::ValueOrRef<PlayerStopLoadingEvent const>,              // 17
+                 Details::ValueOrRef<PlayerUpdateInteractionEvent const>,        // 18
+                 Details::ValueOrRef<PlayerSelectedItemChangedEvent const>,      // 19
+                 Details::ValueOrRef<PlayerDimensionChangeBeforeEvent const>,    // 20
+                 Details::ValueOrRef<PlayerDimensionChangeAfterEvent const>,     // 21
+                 Details::ValueOrRef<PlayerInteractWithEntityAfterEvent const>,  // 22
+                 Details::ValueOrRef<PlayerInteractWithBlockAfterEvent const>,   // 23
+                 Details::ValueOrRef<PlayerEventPlaceHolder const>>
         event;
 };

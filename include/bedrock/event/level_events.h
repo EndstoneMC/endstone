@@ -21,38 +21,19 @@
 #include "bedrock/event/event_ref.h"
 #include "bedrock/forward.h"
 
-// TODO: check the size
-struct LevelAddedActorEvent {
-    char pad[32];
-};
-
-struct LevelBroadcastEvent {
-    LevelEvent level_event;
-    int x;
-    int z;
-    int known;
-};
-
-struct LevelSoundBroadcastEvent {
-    Puv::Legacy::LevelSoundEvent sound_event;
-    int x;
-    int z;
-    int known;
-};
-
-class DayCycleEventComponent;
-
-struct LevelDayCycleEvent {
-    DayCycleEventComponent &component;
-};
-
+struct LevelAddedActorEvent {};
+struct LevelBroadcastEvent {};
+struct LevelSoundBroadcastEvent {};
+struct LevelDayCycleEvent {};
 struct LevelStartLeaveGameEvent {};
-
-struct LevelGameRuleChangeEvent {
+struct LevelGameRuleChangeEvent {};
+struct ScriptingInitializeEvent {};
+struct LevelEventPlaceHolder {
+#ifdef _WIN32
     char pad[56];
-};
-struct ScriptingInitializeEvent {
-    char pad[48];
+#else
+    char pad[64];
+#endif
 };
 
 template <typename Return>
@@ -68,10 +49,10 @@ struct LevelGameplayEvent<void> {
 #ifdef _WIN32
                  Details::ValueOrRef<LevelGameRuleChangeEvent const>,  // what is going on Mojang?
 #endif
-                 Details::ValueOrRef<ScriptingInitializeEvent const>>  //
+                 Details::ValueOrRef<ScriptingInitializeEvent const>,  //
+                 Details::ValueOrRef<LevelEventPlaceHolder const>>     //
         event;
 };
-static_assert(sizeof(LevelGameplayEvent<void>) == 72);
 
 struct LevelWeatherChangedEvent {
     bool from_rain;
