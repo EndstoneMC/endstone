@@ -14,20 +14,7 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/event/coordinator_result.h"
-#include "bedrock/event/event_ref.h"
-#include "bedrock/event/level_event.h"
-#include "bedrock/event/player_event.h"
-#include "event_result.h"
-
-template <typename Type>
-struct GameplayHandlerResult {
-    Type value;
-    EventResult result;
-};
-
-class ScriptLevelGameplayHandler {
-public:
-    virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+enum class EventResult : int {
+    Deny = 0,
+    Default = 1
 };
