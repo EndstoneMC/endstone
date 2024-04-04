@@ -20,7 +20,7 @@ enum class GameMode {
     Survival = 0,
     Creative = 1,
     Adventure = 2,
-    Spectator = 6,
+    Spectator = 3,
 };
 
 }  // namespace endstone
