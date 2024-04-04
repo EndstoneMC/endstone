@@ -14,22 +14,24 @@
 
 #pragma once
 
+#include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/level_event.h"
 #include "bedrock/gameplay_handler.h"
 #include "endstone/detail/virtual_table.h"
 
 namespace endstone::detail {
 
-class EndstoneLevelGameplayHandler {
+class EndstoneGameplayHandlerAdapter {
 public:
-    explicit EndstoneLevelGameplayHandler(ScriptLevelGameplayHandler &target);;
-    EndstoneLevelGameplayHandler(const EndstoneLevelGameplayHandler &) = delete;
-    EndstoneLevelGameplayHandler &operator=(const EndstoneLevelGameplayHandler &) = delete;
+    explicit EndstoneGameplayHandlerAdapter(ScriptLevelGameplayHandler &script_handler);
+    EndstoneGameplayHandlerAdapter(const EndstoneGameplayHandlerAdapter &) = delete;
+    EndstoneGameplayHandlerAdapter &operator=(const EndstoneGameplayHandlerAdapter &) = delete;
 
-    GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+    // Level event handlers
+    GameplayHandlerResult<CoordinatorResult> onLevelWeatherChanged(LevelWeatherChangedEvent &event);
 
 private:
-    VirtualTable<ScriptLevelGameplayHandler> vtable_;
+    VirtualTable<ScriptLevelGameplayHandler> level_handler_;
 };
 
 }  // namespace endstone::detail

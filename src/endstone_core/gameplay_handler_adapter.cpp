@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/gameplay_handler.h"
+#include "endstone/detail/gameplay_handler_adapter.h"
 
 #include "bedrock/event/coordinator_result.h"
+#include "bedrock/event/event_result.h"
 #include "bedrock/event/level_event.h"
+#include "bedrock/gameplay_handler.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
@@ -27,13 +29,20 @@ using endstone::detail::Singleton;
 
 namespace endstone::detail {
 
-EndstoneLevelGameplayHandler::EndstoneLevelGameplayHandler(ScriptLevelGameplayHandler &target) : vtable_(target)
+EndstoneGameplayHandlerAdapter::EndstoneGameplayHandlerAdapter(ScriptLevelGameplayHandler &script_handler)
+    : level_handler_(script_handler)
 {
-    vtable_.hook<3>(&EndstoneLevelGameplayHandler::handleEvent);
+    level_handler_.hook<3, 4>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
 }
 
-GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
+GameplayHandlerResult<CoordinatorResult> EndstoneGameplayHandlerAdapter::onLevelWeatherChanged(
+    LevelWeatherChangedEvent &event)
 {
+    auto result = level_handler_.callOriginal(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged, event);
+    if (result.value == CoordinatorResult::Deny || result.result == EventResult::Deny) {
+        return result;
+    }
+
     auto &server = Singleton<EndstoneServer>::getInstance();
     if (event.from_rain != event.to_rain) {
         endstone::WeatherChangeEvent e(event.to_rain);
@@ -51,8 +60,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
         }
     }
 
-    GameplayHandlerResult<CoordinatorResult> result;
-    return vtable_.callOriginal(&EndstoneLevelGameplayHandler::handleEvent, event);
+    return result;
 }
 
 }  // namespace endstone::detail

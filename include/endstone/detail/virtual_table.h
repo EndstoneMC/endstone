@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <cstddef>
+#include <cstdint>
 #include <functional>
 #include <unordered_map>
 
@@ -52,25 +52,26 @@ public:
         delete[] copy_;
     }
 
-    template <size_t index, typename Return, typename Class, typename... Arg>
+    template <size_t index_win, size_t index_linux, typename Return, typename Class, typename... Arg>
     void hook(Return (Class::*fp)(Arg...))
     {
-        hook<index>(fp_cast(fp));
+        hook<index_win, index_linux>(fp_cast(fp));
     }
 
-    template <size_t index, typename Return, typename Class, typename... Arg>
+    template <size_t index_win, size_t index_linux, typename Return, typename Class, typename... Arg>
     void hook(Return (Class::*fp)(Arg...) const)
     {
-        hook<index>(fp_cast(fp));
+        hook<index_win, index_linux>(fp_cast(fp));
     }
 
-    template <size_t index>
-    void unhook()
+    void unhook(void *detour)
     {
-        if (index >= size_) {
-            spdlog::critical("VMT unhook failed. Invalid index: {}. Size: {}", index, size_);
+        auto it = index_lookup_.find(detour);
+        if (it == index_lookup_.end()) {
+            spdlog::critical("VMT unhook failed. No index found for {}.", detour);
             std::terminate();
         }
+        auto index = it->second;
         copy_[index] = original_[index];
     }
 
@@ -89,11 +90,16 @@ public:
     }
 
 private:
-    template <size_t index>
+    template <size_t index_win, size_t index_linux>
     void hook(void *detour)
     {
+#if _WIN32
+        auto index = index_win;
+#elif __linux__
+        auto index = index_linux;
+#endif
         if (index >= size_) {
-            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}", index, size_);
+            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}.", index, size_);
             std::terminate();
         }
         index_lookup_[detour] = index;
@@ -104,7 +110,7 @@ private:
     {
         auto it = index_lookup_.find(detour);
         if (it == index_lookup_.end()) {
-            spdlog::critical("No original function can be found for {}!!", detour);
+            spdlog::critical("No original function can be found for {}.", detour);
             std::terminate();
         }
         return reinterpret_cast<void *>(original_[it->second]);  // NOLINT(*-no-int-to-ptr)
