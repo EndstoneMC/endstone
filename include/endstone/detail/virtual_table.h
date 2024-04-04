@@ -18,6 +18,8 @@
 #include <functional>
 #include <unordered_map>
 
+#include <spdlog/spdlog.h>
+
 #include "endstone/detail/cast.h"
 
 namespace endstone::detail {
@@ -51,25 +53,24 @@ public:
     }
 
     template <size_t index, typename Return, typename Class, typename... Arg>
-    bool hook(Return (Class::*fp)(Arg...))
+    void hook(Return (Class::*fp)(Arg...))
     {
-        return hook<index>(fp_cast(fp));
+        hook<index>(fp_cast(fp));
     }
 
     template <size_t index, typename Return, typename Class, typename... Arg>
-    bool hook(Return (Class::*fp)(Arg...) const)
+    void hook(Return (Class::*fp)(Arg...) const)
     {
-        return hook<index>(fp_cast(fp));
+        hook<index>(fp_cast(fp));
     }
 
     template <size_t index>
-    bool unhook()
+    void unhook()
     {
         if (index >= size_) {
-            return false;
+            spdlog::critical("VMT unhook failed. Invalid index: {}. Size: {}", index, size_);
         }
         copy_[index] = original_[index];
-        return true;
     }
 
     template <typename Return, typename Class, typename... Arg>
@@ -88,28 +89,30 @@ public:
 
 private:
     template <size_t index>
-    bool hook(void *detour)
+    void hook(void *detour)
     {
         if (index >= size_) {
-            return false;
+            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}", index, size_);
+            std::terminate();
         }
+        index_lookup_[detour] = index;
         copy_[index] = reinterpret_cast<uintptr_t>(detour);
-        return true;
     }
 
     void *getOriginal(void *detour) const
     {
-        auto it = hooks_.find(detour);
-        if (it == hooks_.end()) {
-            return nullptr;
+        auto it = index_lookup_.find(detour);
+        if (it == index_lookup_.end()) {
+            spdlog::critical("No original function can be found for {}!!", detour);
+            std::terminate();
         }
-        return it->second;
+        return reinterpret_cast<void *>(original_[it->second]);  // NOLINT(*-no-int-to-ptr)
     }
 
     T &target_;
     uintptr_t *copy_;
     uintptr_t *original_;
-    std::unordered_map<void *, void *> hooks_;
+    std::unordered_map<void *, size_t> index_lookup_;
     size_t size_;
 };
 
