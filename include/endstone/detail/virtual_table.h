@@ -69,6 +69,7 @@ public:
     {
         if (index >= size_) {
             spdlog::critical("VMT unhook failed. Invalid index: {}. Size: {}", index, size_);
+            std::terminate();
         }
         copy_[index] = original_[index];
     }
