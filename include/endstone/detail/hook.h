@@ -203,3 +203,74 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) *endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(fp, name, ret, ...) \
     *endstone::detail::hook::get_original_rvo(fp, name)(&ret, __VA_ARGS__)
+
+namespace endstone::detail::hook {
+
+template <typename T>
+class VmtHook {
+public:
+    explicit VmtHook(T &target) : target_(target)
+    {
+        original_ = *(reinterpret_cast<uintptr_t **>(&target_));
+        size_ = 0;
+        while (original_[size_]) {
+            ++size_;
+        }
+
+        copy_ = new uintptr_t[size_ + 1];
+        std::copy(original_, original_ + size_, copy_);
+        copy_[size_] = 0;
+        *reinterpret_cast<uintptr_t **>(&target_) = copy_;
+    };
+
+    VmtHook(const VmtHook &) = delete;
+    VmtHook &operator=(const VmtHook &) = delete;
+    VmtHook(VmtHook &&) = delete;
+    VmtHook &operator=(VmtHook &&) = delete;
+
+    ~VmtHook()
+    {
+        *reinterpret_cast<uintptr_t **>(&target_) = original_;
+        delete[] copy_;
+    }
+
+    template <size_t index>
+    void install(void *detour)
+    {
+        if (index < size_) {
+            copy_[index] = reinterpret_cast<uintptr_t>(detour);
+        }
+    }
+
+    template <size_t index>
+    void uninstall()
+    {
+        copy_[index] = original_[index];
+    }
+
+    template <size_t index, typename Return, typename... Arg>
+    std::function<Return(T *, Arg...)> getOriginal(Return (T::*)(Arg...))
+    {
+        auto func = reinterpret_cast<Return (*)(T *, Arg...)>(original_[index]);
+        return [func](T *obj, Arg... args) -> Return {
+            return func(obj, std::forward<Arg>(args)...);
+        };
+    }
+
+    template <size_t index, typename Return, typename... Arg>
+    std::function<Return(const T *, Arg...)> getOriginal(Return (T::*)(Arg...) const)
+    {
+        auto func = reinterpret_cast<Return (*)(const T *, Arg...)>(original_[index]);
+        return [func](const T *obj, Arg... args) -> Return {
+            return func(obj, std::forward<Arg>(args)...);
+        };
+    }
+
+private:
+    T &target_;
+    uintptr_t *copy_;
+    uintptr_t *original_;
+    size_t size_;
+};
+
+}  // namespace endstone::detail::hook
