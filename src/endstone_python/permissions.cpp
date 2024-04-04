@@ -46,7 +46,7 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
         .value("FALSE", PermissionDefault::False)
         .value("OP", PermissionDefault::Operator)
         .value("OPERATOR", PermissionDefault::Operator)
-        .value("NOT_OP", PermissionDefault::Operator)
+        .value("NOT_OP", PermissionDefault::NotOperator)
         .value("NOT_OPERATOR", PermissionDefault::NotOperator);
 
     permission  //
