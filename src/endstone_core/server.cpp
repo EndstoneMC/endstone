@@ -120,6 +120,37 @@ CommandSender &EndstoneServer::getCommandSender() const
     return command_sender_;
 }
 
+std::vector<Level *> EndstoneServer::getLevels() const
+{
+    std::vector<Level *> levels;
+    levels.reserve(levels_.size());
+    for (const auto &it : levels_) {
+        levels.push_back(it.second.get());
+    }
+    return levels;
+}
+
+Level *EndstoneServer::getLevel(std::string name) const
+{
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto it = levels_.find(name);
+    if (it == levels_.end()) {
+        return nullptr;
+    }
+    return it->second.get();
+}
+
+void EndstoneServer::addLevel(std::unique_ptr<Level> level)
+{
+    auto name = level->getName();
+    if (getLevel(name) != nullptr) {
+        getLogger().error("Level {} is a duplicate of another level and has been prevented from loading.", name);
+        return;
+    }
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    levels_[name] = std::move(level);
+}
+
 std::string EndstoneServer::getName() const
 {
     return "Endstone";

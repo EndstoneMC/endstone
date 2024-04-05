@@ -22,6 +22,7 @@
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/server_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
+#include "endstone/level/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
@@ -47,6 +48,10 @@ public:
     void enablePlugins(PluginLoadOrder type);
     void disablePlugins() const;
 
+    std::vector<Level *> getLevels() const override;
+    Level *getLevel(std::string name) const override;
+    void addLevel(std::unique_ptr<Level> level);
+
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;
@@ -59,6 +64,7 @@ private:
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
     mutable ServerCommandSender command_sender_;
+    std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
 };
 
 }  // namespace endstone::detail

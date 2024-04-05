@@ -17,7 +17,9 @@
 #include <memory>
 #include <string>
 #include <string_view>
+#include <vector>
 
+#include "endstone/level/level.h"
 #include "endstone/logger.h"
 
 namespace endstone {
@@ -65,6 +67,21 @@ public:
      * @return a console command sender
      */
     [[nodiscard]] virtual CommandSender &getCommandSender() const = 0;
+
+    /**
+     * Gets a list of all levels on this server.
+     *
+     * @return a list of levels
+     */
+    [[nodiscard]] virtual std::vector<Level *> getLevels() const = 0;
+
+    /**
+     * Gets the level with the given name.
+     *
+     * @param name the name of the world to retrieve
+     * @return a level with the given name, or nullptr if none exists
+     */
+    [[nodiscard]] virtual Level *getLevel(std::string name) const = 0;
 
     /**
      * Gets the name of this server implementation.
