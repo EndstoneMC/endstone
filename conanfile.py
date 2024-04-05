@@ -154,7 +154,7 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["spdlog::spdlog", "EnTT::EnTT"]
+        self.cpp_info.components["core"].requires = ["spdlog::spdlog", "entt::entt"]
         self.cpp_info.components["core"].defines = ["PYBIND11_USE_SMART_HOLDER_AS_DEFAULT"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
