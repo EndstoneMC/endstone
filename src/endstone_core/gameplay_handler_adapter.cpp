@@ -19,6 +19,7 @@
 #include "bedrock/event/level_event.h"
 #include "bedrock/gameplay_handler.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
 #include "endstone/event/weather/thunder_change_event.h"
@@ -29,8 +30,9 @@ using endstone::detail::Singleton;
 
 namespace endstone::detail {
 
-EndstoneGameplayHandlerAdapter::EndstoneGameplayHandlerAdapter(ScriptLevelGameplayHandler &script_handler)
-    : level_handler_(script_handler)
+EndstoneGameplayHandlerAdapter::EndstoneGameplayHandlerAdapter(EndstoneLevel &level)
+    : level_handler_(static_cast<ScriptLevelGameplayHandler &>(
+          level.getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()))
 {
     level_handler_.hook<3, 4>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
 }

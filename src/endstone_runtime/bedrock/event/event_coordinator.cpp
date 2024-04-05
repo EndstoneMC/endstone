@@ -138,6 +138,15 @@ void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }
 
+LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
+{
+#ifdef __linux__
+    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + 15);
+#elif _WIN32
+    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + 14);
+#endif
+}
+
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
 {
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =

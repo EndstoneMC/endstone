@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/level/level.h"
+#include "endstone/detail/gameplay_handler_adapter.h"
 #include "endstone/level/level.h"
 
 using BedrockLevel = ::Level;
@@ -29,8 +30,11 @@ public:
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
 
+    [[nodiscard]] BedrockLevel &getBedrockLevel() const;
+
 private:
     BedrockLevel &level_;
+    EndstoneGameplayHandlerAdapter gameplay_handler_;
 };
 
 }  // namespace endstone::detail

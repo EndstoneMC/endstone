@@ -27,4 +27,6 @@ struct GameplayHandlerResult {
     EventResult result;
 };
 
-class ScriptLevelGameplayHandler {};
+class LevelGameplayHandler {};
+
+class ScriptLevelGameplayHandler : public LevelGameplayHandler {};

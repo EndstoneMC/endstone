@@ -24,6 +24,7 @@
 #include "bedrock/event/player_event.h"
 #include "bedrock/event/server_event.h"
 #include "bedrock/forward.h"
+#include "bedrock/gameplay_handler.h"
 #include "bedrock/server/server_instance.h"
 
 class ActorEventCoordinator {
@@ -40,8 +41,10 @@ public:
 
 class ItemEventCoordinator;
 
-class LevelEventCoordinator {
+class LevelEventCoordinator : public Bedrock::EnableNonOwnerReferences {
 public:
+    ~LevelEventCoordinator() override = default;
+    LevelGameplayHandler &getLevelGameplayHandler();
     BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
 };
 

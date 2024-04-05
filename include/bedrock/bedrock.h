@@ -24,6 +24,14 @@
 
 namespace Bedrock {
 
+class EnableNonOwnerReferences {
+public:
+    virtual ~EnableNonOwnerReferences() = default;
+
+private:
+    std::shared_ptr<EnableNonOwnerReferences> ref_;
+};
+
 template <class T>
 using NonOwnerPointer = std::shared_ptr<T>;
 

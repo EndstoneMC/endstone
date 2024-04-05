@@ -17,13 +17,18 @@
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/level_event.h"
 #include "bedrock/gameplay_handler.h"
+#include "bedrock/level/level.h"
 #include "endstone/detail/virtual_table.h"
+
+using BedrockLevel = ::Level;
 
 namespace endstone::detail {
 
+class EndstoneLevel;
+
 class EndstoneGameplayHandlerAdapter {
 public:
-    explicit EndstoneGameplayHandlerAdapter(ScriptLevelGameplayHandler &script_handler);
+    explicit EndstoneGameplayHandlerAdapter(EndstoneLevel &level);
     EndstoneGameplayHandlerAdapter(const EndstoneGameplayHandlerAdapter &) = delete;
     EndstoneGameplayHandlerAdapter &operator=(const EndstoneGameplayHandlerAdapter &) = delete;
 
