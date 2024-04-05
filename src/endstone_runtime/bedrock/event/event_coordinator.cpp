@@ -20,12 +20,15 @@
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
+#include "bedrock/event/coordinator_result.h"
+#include "bedrock/level/level.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
 #include "endstone/event/server/server_load_event.h"
+#include "endstone/plugin/plugin_load_order.h"
 #include "endstone/util/color_format.h"
 
 namespace py = pybind11;
@@ -186,4 +189,9 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
     Singleton<EndstoneServer>::reset();  // we need to explicitly acquire GIL and destroy the server instance as the
                                          // command map and the plugin manager hold shared_ptrs to python objects
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
+}
+
+void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }

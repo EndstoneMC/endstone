@@ -23,6 +23,7 @@
 #include "bedrock/event/level_event.h"
 #include "bedrock/event/player_event.h"
 #include "bedrock/event/server_event.h"
+#include "bedrock/forward.h"
 #include "bedrock/server/server_instance.h"
 
 class ActorEventCoordinator {
@@ -58,6 +59,7 @@ public:
     BEDROCK_API void sendServerInitializeStart(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
+    BEDROCK_API void sendServerLevelInitialized(ServerInstance &instance, Level &level);
 };
 
 class ServerNetworkEventCoordinator;
