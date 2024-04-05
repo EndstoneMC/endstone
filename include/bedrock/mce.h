@@ -23,6 +23,12 @@ struct UUID {
     uint64_t lsb;  // least significant bits
 };
 
-class Color;
+class Color {
+public:
+    float r;
+    float g;
+    float b;
+    float a;
+};
 
 }  // namespace mce
