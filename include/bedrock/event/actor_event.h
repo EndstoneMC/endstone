@@ -16,6 +16,7 @@
 
 #include "bedrock/details.h"
 #include "bedrock/event/coordinator_result.h"
+#include "endstone/endstone.h"
 
 template <size_t n>
 struct ActorEventPlaceHolder {
@@ -66,11 +67,7 @@ struct ActorGameplayEvent<void> {
                  Details::ValueOrRef<ActorUseItemEvent const>,              // 16
                  Details::ValueOrRef<KnockBackEvent const>,                 // 17
                  Details::ValueOrRef<MountTamingEvent const>,               // 18
-#ifdef _WIN32
-                 Details::ValueOrRef<ActorEventPlaceHolder<304> const>>
-#else
-                 Details::ValueOrRef<ActorEventPlaceHolder<320> const>>
-#endif
+                 Details::ValueOrRef<ActorEventPlaceHolder<_WIN32_LINUX_(304, 320)> const>>
         event;
 };
 

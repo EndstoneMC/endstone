@@ -140,11 +140,7 @@ void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &
 
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
-#ifdef __linux__
-    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + 15);
-#elif _WIN32
-    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + 14);
-#endif
+    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(14, 15));
 }
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
@@ -192,6 +188,9 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
+    for (auto *level : server.getLevels()) {
+        static_cast<EndstoneLevel *>(level)->initGameplayHandlerAdapter();
+    }
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)

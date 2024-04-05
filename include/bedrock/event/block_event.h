@@ -22,11 +22,7 @@ struct BlockPatternPostEvent {};
 template <>
 struct BlockGameplayEvent<void> {
     std::variant<Details::ValueOrRef<BlockPatternPostEvent const>,
-#ifdef _WIN32
-                 Details::ValueOrRef<ActorEventPlaceHolder<224> const>>
-#else
-                 Details::ValueOrRef<ActorEventPlaceHolder<192> const>>
-#endif
+                 Details::ValueOrRef<ActorEventPlaceHolder<_WIN32_LINUX_(224, 192)> const>>
         event;
 };
 

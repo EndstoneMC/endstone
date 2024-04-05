@@ -21,5 +21,3 @@ class ServerInstance {
 public:
     Minecraft &getMinecraft();
 };
-
-

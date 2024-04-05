@@ -16,7 +16,7 @@
 
 namespace endstone::detail {
 
-EndstoneLevel::EndstoneLevel(BedrockLevel &level) : level_(level), gameplay_handler_(*this) {}
+EndstoneLevel::EndstoneLevel(BedrockLevel &level) : level_(level) {}
 
 std::string EndstoneLevel::getName() const
 {
@@ -36,6 +36,11 @@ void EndstoneLevel::setTime(int time)
 BedrockLevel &EndstoneLevel::getBedrockLevel() const
 {
     return level_;
+}
+
+void EndstoneLevel::initGameplayHandlerAdapter()
+{
+    gameplay_handler_ = std::make_unique<EndstoneGameplayHandlerAdapter>(*this);
 }
 
 };  // namespace endstone::detail

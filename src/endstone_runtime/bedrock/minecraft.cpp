@@ -14,11 +14,9 @@
 
 #include "bedrock/minecraft.h"
 
+#include "endstone/endstone.h"
+
 MinecraftCommands &Minecraft::getCommands()
 {
-#ifdef __linux__
-    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<size_t *>(this) + 22);
-#elif _WIN32
-    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<size_t *>(this) + 23);
-#endif
+    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(23, 22));
 }

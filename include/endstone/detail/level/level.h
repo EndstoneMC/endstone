@@ -31,10 +31,11 @@ public:
     void setTime(int time) override;
 
     [[nodiscard]] BedrockLevel &getBedrockLevel() const;
+    void initGameplayHandlerAdapter();
 
 private:
     BedrockLevel &level_;
-    EndstoneGameplayHandlerAdapter gameplay_handler_;
+    std::unique_ptr<EndstoneGameplayHandlerAdapter> gameplay_handler_;
 };
 
 }  // namespace endstone::detail

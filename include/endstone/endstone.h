@@ -28,4 +28,11 @@
 #else
 #define ENDSTONE_EXPORT __attribute__((visibility("default")))
 #endif
+
+#ifdef _WIN32
+#define _WIN32_LINUX_(win32, linux) win32
+#elif __linux__
+#define _WIN32_LINUX_(win32, linux) linux
+#endif
+
 #endif

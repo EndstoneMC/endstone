@@ -14,11 +14,12 @@
 
 #include "endstone/detail/gameplay_handler_adapter.h"
 
+#include <entt/locator/locator.hpp>
+
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_result.h"
 #include "bedrock/event/level_event.h"
 #include "bedrock/gameplay_handler.h"
-#include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
@@ -31,16 +32,24 @@ using endstone::detail::Singleton;
 namespace endstone::detail {
 
 EndstoneGameplayHandlerAdapter::EndstoneGameplayHandlerAdapter(EndstoneLevel &level)
-    : level_handler_(static_cast<ScriptLevelGameplayHandler &>(
-          level.getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()))
 {
-    level_handler_.hook<3, 4>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
+    auto &target = static_cast<ScriptLevelGameplayHandler &>(
+        level.getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler());
+    auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value_or(target, _WIN32_LINUX_(11, 12));
+    vtable.swap(target);
+    vtable.hook<_WIN32_LINUX_(3, 4)>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneGameplayHandlerAdapter::onLevelWeatherChanged(
     LevelWeatherChangedEvent &event)
 {
-    auto result = level_handler_.callOriginal(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged, event);
+    auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value();
+    GameplayHandlerResult<CoordinatorResult> result;
+
+    _WIN32_LINUX_(
+        vtable.callOriginalRvo<3>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged, &result, this, event),
+        result = vtable.callOriginal<4>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged, this, event));
+
     if (result.value == CoordinatorResult::Deny || result.result == EventResult::Deny) {
         return result;
     }

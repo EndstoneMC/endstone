@@ -14,11 +14,9 @@
 
 #include "bedrock/server/server_instance.h"
 
+#include "endstone/endstone.h"
+
 Minecraft &ServerInstance::getMinecraft()
 {
-#ifdef __linux__
-    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 16);
-#elif _WIN32
-    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + 21);
-#endif
+    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(21, 16));
 }

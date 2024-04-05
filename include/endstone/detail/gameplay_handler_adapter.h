@@ -34,9 +34,6 @@ public:
 
     // Level event handlers
     GameplayHandlerResult<CoordinatorResult> onLevelWeatherChanged(LevelWeatherChangedEvent &event);
-
-private:
-    VirtualTable<ScriptLevelGameplayHandler> level_handler_;
 };
 
 }  // namespace endstone::detail

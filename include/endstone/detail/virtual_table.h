@@ -21,105 +21,97 @@
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/cast.h"
+#include "singleton.h"
 
 namespace endstone::detail {
 
 template <typename T>
 class VirtualTable {
 public:
-    explicit VirtualTable(T &target) : target_(target)
-    {
-        original_ = *(reinterpret_cast<uintptr_t **>(&target_));
-        size_ = 0;
-        while (original_[size_]) {
-            ++size_;
-        }
+    VirtualTable(T &target, size_t size) : VirtualTable(*reinterpret_cast<uintptr_t **>(&target), size) {}
 
-        copy_ = new uintptr_t[size_ + 1];
-        std::copy(original_, original_ + size_, copy_);
-        copy_[size_] = 0;
-        *reinterpret_cast<uintptr_t **>(&target_) = copy_;
+    VirtualTable(uintptr_t *original, size_t size) : original_(original), size_(size)
+    {
+        copy_ = std::make_unique<uintptr_t[]>(size + type_info_size);
+        std::copy(original_ - type_info_size, original_ + size, copy_.get());
     };
 
-    VirtualTable(const VirtualTable &) = delete;
-    VirtualTable &operator=(const VirtualTable &) = delete;
-    VirtualTable(VirtualTable &&) = delete;
-    VirtualTable &operator=(VirtualTable &&) = delete;
-
-    ~VirtualTable()
+    [[nodiscard]] uintptr_t *original() const
     {
-        *reinterpret_cast<uintptr_t **>(&target_) = original_;
-        delete[] copy_;
+        return original_;
     }
 
-    template <size_t index_win, size_t index_linux, typename Return, typename Class, typename... Arg>
+    [[nodiscard]] uintptr_t *copy() const
+    {
+        return copy_.get() + type_info_size;
+    }
+
+    [[nodiscard]] size_t size() const
+    {
+        return size_;
+    }
+
+    void swap(T &target)
+    {
+        *reinterpret_cast<uintptr_t **>(&target) = copy();
+    }
+
+    void reset(T &target)
+    {
+        *reinterpret_cast<uintptr_t **>(&target) = original();
+    }
+
+    template <size_t index, typename Return, typename Class, typename... Arg>
     void hook(Return (Class::*fp)(Arg...))
     {
-        hook<index_win, index_linux>(fp_cast(fp));
+        hook<index>(fp_cast(fp));
     }
 
-    template <size_t index_win, size_t index_linux, typename Return, typename Class, typename... Arg>
-    void hook(Return (Class::*fp)(Arg...) const)
+    template <size_t index, typename Return, typename Class, typename... Arg>
+    Return callOriginal(Return (Class::*)(Arg...), Class *obj, Arg &&...args)
     {
-        hook<index_win, index_linux>(fp_cast(fp));
+        auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(getOriginalVirtualMethod<index>());
+        return func(obj, std::forward<Arg>(args)...);
     }
 
-    void unhook(void *detour)
+    template <size_t index, typename Return, typename Class, typename... Arg>
+    Return *callOriginalRvo(Return (Class::*)(Arg...), Return *ret, Class *obj, Arg &&...args)
     {
-        auto it = index_lookup_.find(detour);
-        if (it == index_lookup_.end()) {
-            spdlog::critical("VMT unhook failed. No index found for {}.", detour);
-            std::terminate();
-        }
-        auto index = it->second;
-        copy_[index] = original_[index];
+#ifdef _WIN32
+        auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(getOriginalVirtualMethod<index>());
+        return func(obj, ret, std::forward<Arg>(args)...);
+#elif __linux__
+        auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(getOriginalVirtualMethod<index>());
+        return func(ret, obj, std::forward<Arg>(args)...);
+#endif
     }
 
-    template <typename Return, typename Class, typename... Arg>
-    Return callOriginal(Return (Class::*fp)(Arg...), Arg &&...args)
-    {
-        auto func = reinterpret_cast<Return (*)(T *, Arg...)>(getOriginal(fp_cast(fp)));
-        return func(&target_, std::forward<Arg>(args)...);
-    }
-
-    template <typename Return, typename Class, typename... Arg>
-    Return callOriginal(Return (Class::*fp)(Arg...) const, Arg &&...args)
-    {
-        auto func = reinterpret_cast<Return (*)(const T *, Arg...)>(getOriginal(fp_cast(fp)));
-        return func(&target_, std::forward<Arg>(args)...);
-    }
-
-private:
-    template <size_t index_win, size_t index_linux>
+protected:
+    template <size_t index>
     void hook(void *detour)
     {
-#if _WIN32
-        auto index = index_win;
-#elif __linux__
-        auto index = index_linux;
-#endif
         if (index >= size_) {
             spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}.", index, size_);
             std::terminate();
         }
-        index_lookup_[detour] = index;
+        // TODO: check if already hooked
         copy_[index] = reinterpret_cast<uintptr_t>(detour);
     }
 
-    void *getOriginal(void *detour) const
+    template <size_t index>
+    uintptr_t getOriginalVirtualMethod()
     {
-        auto it = index_lookup_.find(detour);
-        if (it == index_lookup_.end()) {
-            spdlog::critical("No original function can be found for {}.", detour);
+        if (index >= size_) {
+            spdlog::critical("Invalid index: {}. Size: {}.", index, size_);
             std::terminate();
         }
-        return reinterpret_cast<void *>(original_[it->second]);  // NOLINT(*-no-int-to-ptr)
+        return original_[index];
     }
 
-    T &target_;
-    uintptr_t *copy_;
+private:
+    constexpr static size_t type_info_size = _WIN32_LINUX_(1, 2);
     uintptr_t *original_;
-    std::unordered_map<void *, size_t> index_lookup_;
+    std::unique_ptr<uintptr_t[]> copy_;
     size_t size_;
 };
 
