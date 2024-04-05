@@ -24,10 +24,12 @@
 #include "bedrock/level/level.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/singleton.h"
 #include "endstone/event/server/server_load_event.h"
+#include "endstone/level/level.h"
 #include "endstone/plugin/plugin_load_order.h"
 #include "endstone/util/color_format.h"
 
@@ -36,6 +38,7 @@ namespace py = pybind11;
 using endstone::ColorFormat;
 using endstone::PluginLoadOrder;
 using endstone::ServerLoadEvent;
+using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 using endstone::detail::Singleton;
@@ -193,5 +196,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
 
 void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
 {
+    auto &server = Singleton<EndstoneServer>::getInstance();
+    server.addLevel(std::make_unique<EndstoneLevel>(level));
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }
