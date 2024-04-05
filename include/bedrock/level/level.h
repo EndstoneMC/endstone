@@ -14,12 +14,6 @@
 
 #pragma once
 
-#include <array>
-#include <cstdint>
+#include "bedrock/level/level_interface.h"
 
-namespace mce {
-struct UUID {
-    uint64_t msb;  // most significant bits
-    uint64_t lsb;  // least significant bits
-};
-}  // namespace mce
+class Level : public ILevel {};

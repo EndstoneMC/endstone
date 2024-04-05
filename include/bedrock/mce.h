@@ -14,17 +14,15 @@
 
 #pragma once
 
-#include <memory>
+#include <array>
+#include <cstdint>
 
-#if _WIN32
-#define BEDROCK_API __declspec(dllexport)
-#elif __linux__
-#define BEDROCK_API __attribute__((visibility("default")))
-#endif
+namespace mce {
+struct UUID {
+    uint64_t msb;  // most significant bits
+    uint64_t lsb;  // least significant bits
+};
 
-namespace Bedrock {
+class Color;
 
-template <class T>
-using NonOwnerPointer = std::shared_ptr<T>;
-
-}  // namespace Bedrock
+}  // namespace mce

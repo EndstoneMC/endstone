@@ -16,4 +16,7 @@
 
 namespace Core {
 class FilePathManager;
-}
+
+template <typename T>
+class PathBuffer;
+}  // namespace Core

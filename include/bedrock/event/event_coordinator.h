@@ -19,10 +19,10 @@
 #include "bedrock/event/block_event.h"
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
-#include "bedrock/event/level_event.h"
 #include "bedrock/event/item_event.h"
-#include "bedrock/event/server_event.h"
+#include "bedrock/event/level_event.h"
 #include "bedrock/event/player_event.h"
+#include "bedrock/event/server_event.h"
 #include "bedrock/server/server_instance.h"
 
 class ActorEventCoordinator {
@@ -37,6 +37,8 @@ public:
     BEDROCK_API CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
 };
 
+class ItemEventCoordinator;
+
 class LevelEventCoordinator {
 public:
     BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
@@ -48,9 +50,16 @@ public:
     BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
 };
 
+class ServerPlayerEventCoordinator;
+class ClientPlayerEventCoordinator;
+
 class ServerInstanceEventCoordinator {
 public:
     BEDROCK_API void sendServerInitializeStart(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
     BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
 };
+
+class ServerNetworkEventCoordinator;
+class ScriptingEventCoordinator;
+class ScriptDeferredEventCoordinator;
