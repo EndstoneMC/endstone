@@ -14,6 +14,10 @@
 
 #include "endstone/detail/level/level.h"
 
+#include <entt/entt.hpp>
+
+#include "endstone/detail/virtual_table.h"
+
 namespace endstone::detail {
 
 EndstoneLevel::EndstoneLevel(BedrockLevel &level) : level_(level) {}
@@ -33,14 +37,15 @@ void EndstoneLevel::setTime(int time)
     level_.setTime(time);
 }
 
-BedrockLevel &EndstoneLevel::getBedrockLevel() const
+void EndstoneLevel::hookEventHandlers()
 {
-    return level_;
-}
-
-void EndstoneLevel::initGameplayHandlerAdapter()
-{
-    gameplay_handler_ = std::make_unique<EndstoneGameplayHandlerAdapter>(*this);
+    {
+        auto &target =
+            static_cast<ScriptLevelGameplayHandler &>(level_.getLevelEventCoordinator().getLevelGameplayHandler());
+        auto &hook =
+            entt::locator<VirtualTableHook<ScriptLevelGameplayHandler>>::value_or(target, _WIN32_LINUX_(11, 12));
+        hook.hook(target);
+    }
 }
 
 };  // namespace endstone::detail

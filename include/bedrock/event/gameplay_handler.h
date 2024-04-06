@@ -14,26 +14,24 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/event/coordinator_result.h"
+#include "bedrock/event/event_ref.h"
+#include "bedrock/event/event_result.h"
 #include "bedrock/event/level_event.h"
-#include "bedrock/gameplay_handler.h"
-#include "bedrock/level/level.h"
-#include "endstone/detail/virtual_table.h"
+#include "bedrock/event/player_event.h"
 
-using BedrockLevel = ::Level;
-
-namespace endstone::detail {
-
-class EndstoneLevel;
-
-class EndstoneGameplayHandlerAdapter {
-public:
-    explicit EndstoneGameplayHandlerAdapter(EndstoneLevel &level);
-    EndstoneGameplayHandlerAdapter(const EndstoneGameplayHandlerAdapter &) = delete;
-    EndstoneGameplayHandlerAdapter &operator=(const EndstoneGameplayHandlerAdapter &) = delete;
-
-    // Level event handlers
-    GameplayHandlerResult<CoordinatorResult> onLevelWeatherChanged(LevelWeatherChangedEvent &event);
+template <typename Type>
+struct GameplayHandlerResult {
+    Type value;
+    EventResult result;
 };
 
-}  // namespace endstone::detail
+class LevelGameplayHandler {};
+class ScriptLevelGameplayHandler : public LevelGameplayHandler {};
+
+class EndstoneLevelGameplayHandler {
+public:
+    static GameplayHandlerResult<CoordinatorResult> onLevelWeatherChanged(ScriptLevelGameplayHandler &self,
+                                                                          LevelWeatherChangedEvent &event);
+};

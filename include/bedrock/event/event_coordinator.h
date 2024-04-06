@@ -19,24 +19,16 @@
 #include "bedrock/event/block_event.h"
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_ref.h"
+#include "bedrock/event/gameplay_handler.h"
 #include "bedrock/event/item_event.h"
 #include "bedrock/event/level_event.h"
 #include "bedrock/event/player_event.h"
 #include "bedrock/event/server_event.h"
 #include "bedrock/forward.h"
-#include "bedrock/gameplay_handler.h"
 #include "bedrock/server/server_instance.h"
 
 template <typename Listener>
-class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
-private:
-    std::vector<Listener *> unknown1_;                              // +24
-    std::vector<std::function<EventResult(Listener &)>> unknown2_;  // +48
-    std::vector<Listener *> unknown3_;                              // +72
-    bool unknown4_;                                                 // +96
-    int unknown5_;                                                  // +100
-};
-static_assert(sizeof(EventCoordinatorPimpl<class T>) == 104);
+class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {};
 
 class ActorEventCoordinator;
 class BlockEventCoordinator;
@@ -45,16 +37,7 @@ class ItemEventCoordinator;
 class LevelEventCoordinator : public EventCoordinatorPimpl<class LevelEventListener> {
 public:
     ~LevelEventCoordinator() override = default;
-
-private:
-#ifdef __linux__
-    std::int64_t unknown6_;
-#endif
-    bool unknown7_;  // +104
-    int unknown8_;   // +108
-
-public:
-    std::unique_ptr<LevelGameplayHandler> gameplay_handler;  // +112
+    LevelGameplayHandler &getLevelGameplayHandler();
 };
 
 class PlayerEventCoordinator;

@@ -27,91 +27,76 @@ namespace endstone::detail {
 template <typename T>
 class VirtualTable {
 public:
-    VirtualTable(T &target, std::size_t size) : VirtualTable(*reinterpret_cast<std::uintptr_t **>(&target), size) {}
+    constexpr VirtualTable(std::uintptr_t *original, std::size_t size) : original_(original), size_(size){};
 
-    VirtualTable(std::uintptr_t *original, std::size_t size) : original_(original), size_(size)
-    {
-        copy_ = std::make_unique<std::uintptr_t[]>(size + type_info_size);
-        std::copy(original_ - type_info_size, original_ + size, copy_.get());
-    };
-
-    [[nodiscard]] std::uintptr_t *original() const
+    [[nodiscard]] constexpr std::uintptr_t *begin() const
     {
         return original_;
     }
 
-    [[nodiscard]] std::uintptr_t *copy() const
+    [[nodiscard]] constexpr std::uintptr_t *end() const
     {
-        return copy_.get() + type_info_size;
+        return original_ + size_;
     }
 
-    [[nodiscard]] std::size_t size() const
+    [[nodiscard]] constexpr std::uintptr_t at(size_t index) const
+    {
+        return original_[index];
+    }
+
+    [[nodiscard]] constexpr std::size_t size() const
     {
         return size_;
     }
 
-    void swap(T &target)
+    template <std::size_t Index, typename Return, typename... Arg>
+    constexpr Return call(Arg &&...args) const
     {
-        *reinterpret_cast<std::uintptr_t **>(&target) = copy();
+        spdlog::info("{}", reinterpret_cast<void *>(at(Index)));
+        auto func = reinterpret_cast<Return (*)(Arg...)>(at(Index));
+        return func(std::forward<Arg>(args)...);
+    }
+
+private:
+    std::uintptr_t *original_;
+    std::size_t size_;
+};
+
+template <typename T>
+class VirtualTableHook {
+public:
+    VirtualTableHook(T &target, std::size_t size)
+        : original_(entt::locator<VirtualTable<T>>::value_or(*reinterpret_cast<std::uintptr_t **>(&target), size))
+    {
+        if (!mCopy) {
+            mCopy = std::make_unique<std::uintptr_t[]>(size + TYPEINFO_SIZE);
+            std::copy(original_.begin() - TYPEINFO_SIZE, original_.end(), mCopy.get());
+            init();
+        }
+    }
+
+    void hook(T &target)
+    {
+        *reinterpret_cast<std::uintptr_t **>(&target) = mCopy.get() + TYPEINFO_SIZE;
     }
 
     void reset(T &target)
     {
-        *reinterpret_cast<std::uintptr_t **>(&target) = original();
-    }
-
-    template <std::size_t Index, typename Return, typename Class, typename... Arg>
-    void hook(Return (Class::*fp)(Arg...))
-    {
-        hook<Index>(fp_cast(fp));
-    }
-
-    template <std::size_t Index, typename Return, typename Class, typename... Arg>
-    Return callOriginal(Return (Class::*)(Arg...), Class *obj, Arg &&...args)
-    {
-        auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(getOriginalVirtualMethod<Index>());
-        return func(obj, std::forward<Arg>(args)...);
-    }
-
-    template <std::size_t Index, typename Return, typename Class, typename... Arg>
-    Return *callOriginalRvo(Return (Class::*)(Arg...), Return *ret, Class *obj, Arg &&...args)
-    {
-#ifdef _WIN32
-        auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(getOriginalVirtualMethod<Index>());
-        return func(obj, ret, std::forward<Arg>(args)...);
-#elif __linux__
-        auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(getOriginalVirtualMethod<Index>());
-        return func(ret, obj, std::forward<Arg>(args)...);
-#endif
-    }
-
-protected:
-    template <std::size_t Index>
-    void hook(void *detour)
-    {
-        if (Index >= size_) {
-            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}.", Index, size_);
-            std::terminate();
-        }
-        // TODO: check if already hooked
-        copy_[Index] = reinterpret_cast<std::uintptr_t>(detour);
-    }
-
-    template <std::size_t Index>
-    std::uintptr_t getOriginalVirtualMethod()
-    {
-        if (Index >= size_) {
-            spdlog::critical("Invalid index: {}. Size: {}.", Index, size_);
-            std::terminate();
-        }
-        return original_[Index];
+        *reinterpret_cast<std::uintptr_t **>(&target) = original_.begin();
     }
 
 private:
-    constexpr static std::size_t type_info_size = _WIN32_LINUX_(1, 2);
-    std::uintptr_t *original_;
-    std::unique_ptr<std::uintptr_t[]> copy_;
-    std::size_t size_;
+    void init();
+
+    template <std::size_t Index, typename Return, typename... Arg>
+    void hook(Return (*fp)(Arg...))
+    {
+        mCopy[Index] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
+    }
+
+    inline static constexpr std::size_t TYPEINFO_SIZE = _WIN32_LINUX_(0, 2);
+    inline static std::unique_ptr<std::uintptr_t[]> mCopy;
+    VirtualTable<T> &original_;
 };
 
 }  // namespace endstone::detail

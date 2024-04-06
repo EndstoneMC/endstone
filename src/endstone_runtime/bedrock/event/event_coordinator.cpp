@@ -42,6 +42,11 @@ using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 
+LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
+{
+    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(14, 15));
+}
+
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
     auto &server = entt::locator<EndstoneServer>::value_or(instance);
@@ -63,7 +68,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
     server.getPluginManager().callEvent(event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
     for (auto *level : server.getLevels()) {
-        static_cast<EndstoneLevel *>(level)->initGameplayHandlerAdapter();
+        static_cast<EndstoneLevel *>(level)->hookEventHandlers();
     }
 }
 
