@@ -20,7 +20,7 @@
 
 #include "bedrock/bedrock.h"
 
-using LogLevel = uint32_t;
+using LogLevel = std::uint32_t;
 
 enum class LogAreaID {
     All,

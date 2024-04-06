@@ -96,7 +96,7 @@ public:
     [[nodiscard]] virtual std::string getXuid() const = 0;
     [[nodiscard]] virtual PlayerMovementSettings getMovementSettings() const = 0;
     virtual void requestMissingSubChunk(SubChunkPos const &) = 0;
-    [[nodiscard]] virtual uint8_t getMaxChunkBuildRadius() const = 0;
+    [[nodiscard]] virtual std::uint8_t getMaxChunkBuildRadius() const = 0;
     virtual void onMovePlayerPacketNormal(Vec3 const &, Vec2 const &, float) = 0;
 
 protected:

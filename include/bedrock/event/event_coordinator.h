@@ -48,7 +48,7 @@ public:
 
 private:
 #ifdef __linux__
-    int64_t unknown6_;
+    std::int64_t unknown6_;
 #endif
     bool unknown7_;  // +104
     int unknown8_;   // +108

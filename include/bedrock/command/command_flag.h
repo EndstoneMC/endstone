@@ -16,26 +16,26 @@
 #pragma once
 
 struct CommandFlag {
-    uint16_t value;
+    std::uint16_t value;
     // bitwise OR
     CommandFlag operator|(const CommandFlag &flag) const
     {
-        return CommandFlag{static_cast<uint16_t>(value | flag.value)};
+        return CommandFlag{static_cast<std::uint16_t>(value | flag.value)};
     }
     // bitwise AND
     CommandFlag operator&(const CommandFlag &flag) const
     {
-        return CommandFlag{static_cast<uint16_t>(value & flag.value)};
+        return CommandFlag{static_cast<std::uint16_t>(value & flag.value)};
     }
     // bitwise XOR
     CommandFlag operator^(const CommandFlag &flag) const
     {
-        return CommandFlag{static_cast<uint16_t>(value ^ flag.value)};
+        return CommandFlag{static_cast<std::uint16_t>(value ^ flag.value)};
     }
     // bitwise NOT
     CommandFlag operator~() const
     {
-        return CommandFlag{static_cast<uint16_t>(~value)};
+        return CommandFlag{static_cast<std::uint16_t>(~value)};
     }
     // assignment OR
     CommandFlag &operator|=(const CommandFlag &flag)

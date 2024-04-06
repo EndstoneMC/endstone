@@ -20,8 +20,8 @@
 
 struct MCRESULT {
     bool is_success;
-    uint8_t category;
-    uint16_t error_code;
+    std::uint8_t category;
+    std::uint16_t error_code;
 };
 inline MCRESULT const MCRESULT_Success{true};                  // NOLINT
 inline MCRESULT const MCRESULT_CommandsDisabled{false, 0, 7};  // NOLINT

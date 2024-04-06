@@ -149,7 +149,7 @@ public:
     virtual void buildDebugInfo(std::string &) const = 0;
     [[nodiscard]] virtual CommandPermissionLevel getCommandPermissionLevel() const = 0;
     [[nodiscard]] virtual int getDeathTime() const = 0;
-    [[nodiscard]] virtual bool canBeAffected(uint32_t) const = 0;
+    [[nodiscard]] virtual bool canBeAffected(std::uint32_t) const = 0;
     [[nodiscard]] virtual bool canBeAffectedByArrow(MobEffectInstance const &) const = 0;
     virtual void onEffectRemoved(MobEffectInstance &) = 0;
     [[nodiscard]] virtual bool canObstructSpawningAndBlockPlacement() const = 0;

@@ -18,7 +18,7 @@
 
 namespace RakNet {
 
-uint16_t SystemAddress::GetPort() const
+std::uint16_t SystemAddress::GetPort() const
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::GetPort, this);
 }

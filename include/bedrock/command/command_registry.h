@@ -31,7 +31,7 @@
 #include "bedrock/network/game/available_commands_packet.h"
 #include "bedrock/type_id.h"
 
-enum SemanticConstraint : uint8_t;
+enum SemanticConstraint : std::uint8_t;
 
 class Command;
 class CommandParameterData;
@@ -47,11 +47,11 @@ public:
         CommandVersion version;                    // +0
         std::unique_ptr<Command> (*factory)();     // +8
         std::vector<CommandParameterData> params;  // +16
-        int32_t unknown1{-1};                      // +40
-        int8_t unknown2{0};                        // +44
-        uint64_t unknown3{0};                      // +48
-        uint64_t unknown4{0};                      // +56
-        uint64_t unknown5{0};                      // +64
+        std::int32_t unknown1{-1};                 // +40
+        std::int8_t unknown2{0};                   // +44
+        std::uint64_t unknown3{0};                 // +48
+        std::uint64_t unknown4{0};                 // +56
+        std::uint64_t unknown5{0};                 // +64
     };
 
     class Symbol {
@@ -91,7 +91,7 @@ public:
         int symbol_index;                                  // +132
         int optional_index;                                // +136
         char unknown6;                                     // +140
-        int64_t unknown7;                                  // +144
+        std::int64_t unknown7;                             // +144
     };
 
     struct ParseToken {
@@ -99,7 +99,7 @@ public:
         std::unique_ptr<ParseToken> next;   // +8
         ParseToken *parent;                 // +16
         char const *data;                   // +24
-        uint32_t size;                      // +32
+        std::uint32_t size;                 // +32
         Symbol symbol;                      // +36
 
         friend std::ostream &operator<<(std::ostream &os, const ParseToken &token);
@@ -116,10 +116,10 @@ public:
     class ParseTable;
     class Enum {
     public:
-        std::string name;                                   // +0
-        Bedrock::typeid_t<CommandRegistry> type_id;         // +32
-        ParseRule parse_rule;                               // +40
-        std::vector<std::pair<uint64_t, uint64_t>> values;  // +48
+        std::string name;                                             // +0
+        Bedrock::typeid_t<CommandRegistry> type_id;                   // +32
+        ParseRule parse_rule;                                         // +40
+        std::vector<std::pair<std::uint64_t, std::uint64_t>> values;  // +48
     };
     class SoftEnum;
 
@@ -160,7 +160,7 @@ public:
     std::function<void(class Packet const &)> network_update_callback;                      // +0
     std::function<int(bool &, std::string const &, class Actor const &)> score_callback;    // +56
     std::vector<void *> unknown1;                                                           // +128
-    std::map<uint32_t, CommandRegistry::ParseTable> parse_tables;                           // +152
+    std::map<std::uint32_t, CommandRegistry::ParseTable> parse_tables;                      // +152
     std::vector<void *> optionals;                                                          // +168
     std::vector<std::string> literals;                                                      // +192
     std::vector<CommandRegistry::Enum> enums;                                               // +216
@@ -179,7 +179,7 @@ public:
     std::vector<SemanticConstraint> semantic_constraints;                                   // +472
     std::map<SemanticConstraint, unsigned char> constrained_values;                         // +496
     std::vector<void *> constrained_value_data;                                             // +512
-    std::map<std::pair<uint64_t, uint32_t>, uint32_t> unknown8;                             // +536
+    std::map<std::pair<std::uint64_t, std::uint32_t>, std::uint32_t> unknown8;              // +536
     std::vector<CommandRegistry::SoftEnum> soft_enums;                                      // +552
     std::map<std::string, int> soft_enum_symbol_index;                                      // +576
     std::vector<void *> unknown10;                                                          // +592

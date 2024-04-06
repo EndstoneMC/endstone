@@ -22,7 +22,7 @@ namespace endstone::detail {
 
 class CommandLexer {
 public:
-    enum class TokenType : uint8_t {
+    enum class TokenType : std::uint8_t {
         Number,
         Identifier,
         LeftParen,

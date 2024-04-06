@@ -40,7 +40,7 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
                                            send_parameters, file, line);
     }
 
-    constexpr static int head_size = sizeof(char) + sizeof(uint64_t) + sizeof(uint64_t) + 16;
+    constexpr static int head_size = sizeof(char) + sizeof(std::uint64_t) + sizeof(std::uint64_t) + 16;
     const char *data = send_parameters->data;
     std::size_t strlen = data[head_size] << 8 | data[head_size + 1];
     std::string ping_response{data + head_size + 2, strlen};

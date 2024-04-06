@@ -19,8 +19,8 @@
 
 namespace mce {
 struct UUID {
-    uint64_t msb;  // most significant bits
-    uint64_t lsb;  // least significant bits
+    std::uint64_t msb;  // most significant bits
+    std::uint64_t lsb;  // least significant bits
 };
 
 class Color {

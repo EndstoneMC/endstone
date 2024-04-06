@@ -29,7 +29,7 @@ public:
     /**
      * @brief Specifies the log level.
      */
-    enum Level : uint8_t {
+    enum Level : std::uint8_t {
         Trace = 0,
         Debug = 1,
         Info = 2,

@@ -27,20 +27,20 @@ namespace endstone::detail {
 template <typename T>
 class VirtualTable {
 public:
-    VirtualTable(T &target, std::size_t size) : VirtualTable(*reinterpret_cast<uintptr_t **>(&target), size) {}
+    VirtualTable(T &target, std::size_t size) : VirtualTable(*reinterpret_cast<std::uintptr_t **>(&target), size) {}
 
-    VirtualTable(uintptr_t *original, std::size_t size) : original_(original), size_(size)
+    VirtualTable(std::uintptr_t *original, std::size_t size) : original_(original), size_(size)
     {
-        copy_ = std::make_unique<uintptr_t[]>(size + type_info_size);
+        copy_ = std::make_unique<std::uintptr_t[]>(size + type_info_size);
         std::copy(original_ - type_info_size, original_ + size, copy_.get());
     };
 
-    [[nodiscard]] uintptr_t *original() const
+    [[nodiscard]] std::uintptr_t *original() const
     {
         return original_;
     }
 
-    [[nodiscard]] uintptr_t *copy() const
+    [[nodiscard]] std::uintptr_t *copy() const
     {
         return copy_.get() + type_info_size;
     }
@@ -52,12 +52,12 @@ public:
 
     void swap(T &target)
     {
-        *reinterpret_cast<uintptr_t **>(&target) = copy();
+        *reinterpret_cast<std::uintptr_t **>(&target) = copy();
     }
 
     void reset(T &target)
     {
-        *reinterpret_cast<uintptr_t **>(&target) = original();
+        *reinterpret_cast<std::uintptr_t **>(&target) = original();
     }
 
     template <std::size_t index, typename Return, typename Class, typename... Arg>
@@ -94,11 +94,11 @@ protected:
             std::terminate();
         }
         // TODO: check if already hooked
-        copy_[index] = reinterpret_cast<uintptr_t>(detour);
+        copy_[index] = reinterpret_cast<std::uintptr_t>(detour);
     }
 
     template <std::size_t index>
-    uintptr_t getOriginalVirtualMethod()
+    std::uintptr_t getOriginalVirtualMethod()
     {
         if (index >= size_) {
             spdlog::critical("Invalid index: {}. Size: {}.", index, size_);
@@ -109,8 +109,8 @@ protected:
 
 private:
     constexpr static std::size_t type_info_size = _WIN32_LINUX_(1, 2);
-    uintptr_t *original_;
-    std::unique_ptr<uintptr_t[]> copy_;
+    std::uintptr_t *original_;
+    std::unique_ptr<std::uintptr_t[]> copy_;
     std::size_t size_;
 };
 

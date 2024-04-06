@@ -47,7 +47,7 @@ public:
     virtual void forEachDimension(std::function<bool(Dimension const &)>) const = 0;
     virtual DimensionManager const &getDimensionManager() = 0;
     [[nodiscard]] virtual DimensionManager const &getDimensionManager() const = 0;
-    [[nodiscard]] virtual uint32_t getChunkTickRange() const = 0;
+    [[nodiscard]] virtual std::uint32_t getChunkTickRange() const = 0;
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
@@ -149,7 +149,7 @@ public:
     virtual void spawnParticleEffect(std::string const &, Vec3 const &, Dimension *) = 0;
     virtual void denyEffect(BlockSource &, Vec3 const &) = 0;
     virtual void potionSplash(Vec3 const &, mce::Color const &, bool) = 0;
-    virtual bool extinguishFire(BlockSource &, BlockPos const &, uint8_t, Actor *) = 0;
+    virtual bool extinguishFire(BlockSource &, BlockPos const &, std::uint8_t, Actor *) = 0;
     virtual std::unique_ptr<Path> findPath(Actor &, Actor &, NavigationComponent &) = 0;
     virtual std::unique_ptr<Path> findPath(Actor &, int, int, int, NavigationComponent &) = 0;
     virtual void updateSleepingPlayerList() = 0;
@@ -157,7 +157,7 @@ public:
     [[nodiscard]] virtual PlayerSleepStatus getSleepStatus() const = 0;
     [[nodiscard]] virtual int getTime() const = 0;
     virtual void setTime(int) = 0;
-    virtual uint32_t getSeed() = 0;
+    virtual std::uint32_t getSeed() = 0;
     [[nodiscard]] virtual BlockPos const &getSharedSpawnPos() const = 0;
     virtual void setDefaultSpawn(BlockPos const &) = 0;
     [[nodiscard]] virtual BlockPos const &getDefaultSpawn() const = 0;
@@ -264,7 +264,7 @@ public:
     [[nodiscard]] virtual std::vector<OwnerPtr<EntityContext>> const &getEntities() const = 0;
 
 private:
-    virtual void onSubChunkLoaded(ChunkSource &, LevelChunk &, int16_t, bool) = 0;
+    virtual void onSubChunkLoaded(ChunkSource &, LevelChunk &, std::int16_t, bool) = 0;
 
 public:
     virtual void onChunkLoaded(ChunkSource &, LevelChunk &) = 0;
@@ -360,7 +360,7 @@ public:
     virtual void loadBlockDefinitionGroup(Experiments const &) = 0;
     virtual void initializeBlockDefinitionGroup() = 0;
     virtual Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry> getUnknownBlockTypeRegistry() = 0;
-    virtual void setServerTickOffset(int32_t) = 0;
+    virtual void setServerTickOffset(std::int32_t) = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
     virtual std::unordered_map<mce::UUID, PlayerListEntry> &getPlayerList() = 0;
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;

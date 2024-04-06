@@ -43,8 +43,8 @@ public:
     int unknown1;                               // +8
     int unknown2;                               // +12
     int unknown3;                               // +16
-    int64_t unknown4;                           // +24
-    int64_t unknown5;                           // +32
+    std::int64_t unknown4;                      // +24
+    std::int64_t unknown5;                      // +32
     int unknown6;                               // +40
     std::vector<std::string> enum_names;        // +48
     std::vector<std::string> subcommand_names;  // +72
