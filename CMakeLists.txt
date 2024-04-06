@@ -108,7 +108,7 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
     set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
 
-    file(GLOB ENDSTONE_TEST_FILES "tests/*.cpp")
+    file(GLOB_RECURSE ENDSTONE_TEST_FILES CONFIGURE_DEPENDS "tests/*.cpp")
     add_executable(endstone_test ${ENDSTONE_TEST_FILES})
     target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
 
