@@ -23,7 +23,7 @@ namespace endstone {
  */
 class ThunderChangeEvent : public WeatherEvent {
 public:
-    explicit ThunderChangeEvent(bool to) : to_(to) {}
+    ThunderChangeEvent(Level &level, bool to) : WeatherEvent(level), to_(to) {}
     ~ThunderChangeEvent() override = default;
 
     /**

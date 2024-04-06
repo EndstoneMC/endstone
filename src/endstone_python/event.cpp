@@ -106,12 +106,14 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin);
 
     py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent")
-        // TODO: add property world
+        .def_property_readonly("level", &WeatherChangeEvent::getLevel,
+                               "Returns the Level where this event is occurring")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,
                                "Gets the state of weather that the world is being set to");
 
     py::class_<ThunderChangeEvent, Event>(m, "ThunderChangeEvent")
-        // TODO: add property world
+        .def_property_readonly("level", &WeatherChangeEvent::getLevel,
+                               "Returns the Level where this event is occurring")
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
                                "Gets the state of thunder that the world is being set to");
 }

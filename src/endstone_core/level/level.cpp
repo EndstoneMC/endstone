@@ -47,6 +47,11 @@ void hookEventHandler(Any &handler, std::size_t vmt_size)
 }
 }  // namespace
 
+BedrockLevel &EndstoneLevel::getBedrockLevel() const
+{
+    return level_;
+}
+
 void EndstoneLevel::hookEventHandlers()
 {
     hookEventHandler<ScriptLevelGameplayHandler>(level_.getLevelEventCoordinator().getLevelGameplayHandler(),

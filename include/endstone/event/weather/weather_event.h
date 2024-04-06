@@ -15,13 +15,27 @@
 #pragma once
 
 #include "endstone/event/event.h"
+#include "endstone/level/level.h"
 
 namespace endstone {
 
 class WeatherEvent : public Event {
 public:
-    WeatherEvent() = default;  // TODO: add World& world to constructor
+    explicit WeatherEvent(Level &level) : level_(level){};
     ~WeatherEvent() override = default;
+
+    /**
+     * Returns the Level where this event is occurring
+     *
+     * @return Level this event is occurring in
+     */
+    [[nodiscard]] Level &getLevel() const
+    {
+        return level_;
+    }
+
+private:
+    Level &level_;
 };
 
 }  // namespace endstone

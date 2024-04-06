@@ -29,6 +29,7 @@ public:
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
 
+    [[nodiscard]] BedrockLevel& getBedrockLevel() const;
     void hookEventHandlers();
 
 private:

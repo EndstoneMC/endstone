@@ -30,7 +30,7 @@ struct GameplayHandlerResult {
 class LevelGameplayHandler {};
 class ScriptLevelGameplayHandler : public LevelGameplayHandler {};
 
-class EndstoneLevelGameplayHandler {
+class EndstoneLevelGameplayHandler  : public LevelGameplayHandler{
 public:
     GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };

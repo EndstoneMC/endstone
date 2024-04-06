@@ -16,11 +16,14 @@
 
 #include <entt/entt.hpp>
 
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/virtual_table.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
+#include "endstone/level/level.h"
 
+using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 using endstone::detail::VirtualTable;
 
@@ -47,11 +50,24 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
         return result;
     }
 
+    // Find out the level where this event is occurring
     auto &server = entt::locator<EndstoneServer>::value();
+    auto levels = server.getLevels();
+    auto it = std::find_if(begin(levels), end(levels), [this](auto *level) {
+        return &(static_cast<EndstoneLevel *>(level)
+                     ->getBedrockLevel()
+                     .getLevelEventCoordinator()
+                     .getLevelGameplayHandler()) == this;
+    });
+    if (it == levels.end()) {
+        server.getLogger().critical("Event {} called on unknown level.", typeid(event).name());
+        std::terminate();
+    }
+    auto &level = **it;
 
     if (event.from_rain != event.to_rain) {
-        server.getLogger().debug("WeatherChangeEvent");
-        endstone::WeatherChangeEvent e(event.to_rain);
+        server.getLogger().debug("WeatherChangeEvent was called on level: {}", level.getName());
+        endstone::WeatherChangeEvent e(level, event.to_rain);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             event.to_rain = event.from_rain;
@@ -59,8 +75,8 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
     }
 
     if (event.from_lightning != event.to_lightning) {
-        server.getLogger().debug("ThunderChangeEvent");
-        endstone::ThunderChangeEvent e(event.to_lightning);
+        server.getLogger().debug("ThunderChangeEvent was called on level: {}", level.getName());
+        endstone::ThunderChangeEvent e(level, event.to_lightning);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             event.to_lightning = event.from_lightning;
