@@ -103,9 +103,15 @@ install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT end
 # tests
 # =====
 if (NOT BUILD_TESTING STREQUAL OFF)
+    add_library(test_plugin SHARED tests/test_plugin.cpp)
+    target_link_libraries(test_plugin PRIVATE endstone::headers)
+    set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")
+    set_target_properties(test_plugin PROPERTIES RUNTIME_OUTPUT_DIRECTORY "plugins")
+
     file(GLOB ENDSTONE_TEST_FILES "tests/*.cpp")
     add_executable(endstone_test ${ENDSTONE_TEST_FILES})
-    target_link_libraries(endstone_test PRIVATE GTest::gtest_main endstone::core)
+    target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
+
     include(GoogleTest)
     gtest_discover_tests(endstone_test)
 endif ()

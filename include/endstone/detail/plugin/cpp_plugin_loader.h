@@ -20,8 +20,7 @@
 
 #include "endstone/plugin/plugin_loader.h"
 
-namespace endstone {
-namespace detail {
+namespace endstone::detail {
 
 class CppPluginLoader : public PluginLoader {
 public:
@@ -35,5 +34,4 @@ private:
     std::vector<std::unique_ptr<Plugin>> plugins_;
 };
 
-}  // namespace detail
-}  // namespace endstone
+}  // namespace endstone::detail
