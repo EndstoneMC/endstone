@@ -186,26 +186,27 @@ private:
 }  // namespace endstone
 
 #ifndef ENDSTONE_PLUGIN
-#define ENDSTONE_PLUGIN(Name, Version, MainClass)                                                       \
-    static endstone::detail::PluginDescriptionBuilder builder;                                          \
-    [[maybe_unused]] static void init_plugin_description(endstone::detail::PluginDescriptionBuilder &); \
-    class EndstonePluginImpl : public MainClass {                                                       \
-    public:                                                                                             \
-        EndstonePluginImpl() = default;                                                                 \
-        const endstone::PluginDescription &getDescription() const override                              \
-        {                                                                                               \
-            return description_;                                                                        \
-        }                                                                                               \
-                                                                                                        \
-    private:                                                                                            \
-        endstone::PluginDescription description_ = builder.build(Name, Version);                        \
-    };                                                                                                  \
-    extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin();               \
-    extern "C" ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()                                 \
-    {                                                                                                   \
-        init_plugin_description(builder);                                                               \
-        auto *p = new EndstonePluginImpl();                                                             \
-        return p;                                                                                       \
-    }                                                                                                   \
-    void init_plugin_description(endstone::detail::PluginDescriptionBuilder &plugin)
+#define ENDSTONE_PLUGIN(Name, Version, MainClass)                                            \
+    class PluginDescriptionBuilderImpl : public endstone::detail::PluginDescriptionBuilder { \
+    public:                                                                                  \
+        PluginDescriptionBuilderImpl();                                                      \
+    };                                                                                       \
+    static PluginDescriptionBuilderImpl builder;                                             \
+    class EndstonePluginImpl : public MainClass {                                            \
+    public:                                                                                  \
+        EndstonePluginImpl() = default;                                                      \
+        const endstone::PluginDescription &getDescription() const override                   \
+        {                                                                                    \
+            return description_;                                                             \
+        }                                                                                    \
+                                                                                             \
+    private:                                                                                 \
+        endstone::PluginDescription description_ = builder.build(Name, Version);             \
+    };                                                                                       \
+    extern "C" [[maybe_unused]] ENDSTONE_EXPORT endstone::Plugin *init_endstone_plugin()     \
+    {                                                                                        \
+        auto *p = new EndstonePluginImpl();                                                  \
+        return p;                                                                            \
+    }                                                                                        \
+    PluginDescriptionBuilderImpl::PluginDescriptionBuilderImpl()
 #endif

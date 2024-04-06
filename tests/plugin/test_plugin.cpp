@@ -34,19 +34,19 @@ public:
 
 ENDSTONE_PLUGIN("TestPlugin", "1.0.0", TestPlugin)
 {
-    plugin.description = "This is a test plugin";
-    plugin.website = "https://github.com/EndstoneMC/endstone";
-    plugin.authors = {"Endstone Developers <hello@endstone.dev>"};
-    plugin.load = endstone::PluginLoadOrder::PostWorld;
-    plugin.prefix = "TestPlugin";
+    description = "This is a test plugin";
+    website = "https://github.com/EndstoneMC/endstone";
+    authors = {"Endstone Developers <hello@endstone.dev>"};
+    load = endstone::PluginLoadOrder::PostWorld;
+    prefix = "TestPlugin";
 
-    plugin.permission("test_plugin.command.test").description("Allow users to use the test command");
-
-    plugin.permission("test_plugin.command")
+    permission("test_plugin.command.test")  //
+        .description("Allow users to use the test command");
+    permission("test_plugin.command")  //
         .description("Allow users to use all commands provided by this example plugin")
         .children("test_plugin.command.test", true);
 
-    plugin.command("test")
+    command("test")
         .description("Test command")
         .usages("/test")
         .aliases("tryme")

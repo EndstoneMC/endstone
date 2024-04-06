@@ -83,7 +83,10 @@ TEST_F(CppPluginLoaderTest, TestLoadPlugin)
 TEST_F(CppPluginLoaderTest, TestLoadPluginsFromDirectory)
 {
     EXPECT_CALL(*mock_server_, getLogger()).Times(2);
-    ASSERT_EQ(1, loader_->loadPlugins(plugin_dir_.string()).size());
+    auto plugins = loader_->loadPlugins(plugin_dir_.string());
+    ASSERT_EQ(1, plugins.size());
+    ASSERT_EQ(plugins[0]->getName(), "TestPlugin");
+    ASSERT_EQ(plugins[0]->getDescription().getVersion(), "1.0.0");
 }
 
 TEST_F(CppPluginLoaderTest, TestGetPluginFileFilters)
