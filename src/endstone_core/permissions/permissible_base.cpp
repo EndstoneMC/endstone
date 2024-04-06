@@ -16,8 +16,9 @@
 
 #include <memory>
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
@@ -56,7 +57,7 @@ bool PermissibleBase::hasPermission(std::string name) const
         return permissions_.find(name)->second->getValue();
     }
 
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto *perm = server.getPluginManager().getPermission(name);
     if (perm != nullptr) {
         return hasPermission(perm->getDefault(), isOp());
@@ -122,14 +123,14 @@ bool PermissibleBase::removeAttachment(PermissionAttachment &attachment)
         return true;
     }
 
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     server.getLogger().error("Given attachment is not part of Permissible object.");
     return false;
 }
 
 void PermissibleBase::recalculatePermissions()
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto &plugin_manager = server.getPluginManager();
 
     // Clear permissions
@@ -157,10 +158,11 @@ void PermissibleBase::recalculatePermissions()
     }
 }
 
+// NOLINTNEXTLINE(*-no-recursion)
 void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                                 PermissionAttachment *attachment)
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto &plugin_manager = server.getPluginManager();
 
     for (const auto &entry : children) {

@@ -14,13 +14,13 @@
 
 #include "bedrock/command/minecraft_commands.h"
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/event/server/server_command_event.h"
 
 using endstone::detail::EndstoneServer;
-using endstone::detail::Singleton;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
 {
@@ -34,7 +34,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
         return result;
     }
 
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommandLine());
     server.getPluginManager().callEvent(event);
 

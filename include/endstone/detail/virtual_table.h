@@ -21,7 +21,6 @@
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/cast.h"
-#include "singleton.h"
 
 namespace endstone::detail {
 

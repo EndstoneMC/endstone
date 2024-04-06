@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/permissions/permissible_base.h"
 
 namespace endstone::detail {
@@ -58,7 +60,7 @@ void CommandSenderAdapter::setOp(bool value)
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto &command_map = server.getCommandMap();
     auto command_name = getCommandName();
     auto *command = command_map.getCommand(command_name);

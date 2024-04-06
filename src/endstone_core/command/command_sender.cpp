@@ -16,8 +16,9 @@
 
 #include <utility>
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 
 namespace endstone::detail {
 
@@ -27,7 +28,7 @@ BaseCommandSender::BaseCommandSender(PermissibleBase perm) : perm_(std::move(per
 
 Server &BaseCommandSender::getServer() const
 {
-    return Singleton<EndstoneServer>::getInstance();
+    return entt::locator<EndstoneServer>::value();
 }
 
 bool BaseCommandSender::isPermissionSet(std::string name) const

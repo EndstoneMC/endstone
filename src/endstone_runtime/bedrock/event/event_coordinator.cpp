@@ -17,6 +17,7 @@
 #include <iomanip>
 #include <sstream>
 
+#include <entt/entt.hpp>
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
@@ -27,7 +28,6 @@
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/level/level.h"
 #include "endstone/plugin/plugin_load_order.h"
@@ -41,12 +41,10 @@ using endstone::ServerLoadEvent;
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
-using endstone::detail::Singleton;
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
-    Singleton<EndstoneServer>::setInstance(std::make_unique<EndstoneServer>(instance));
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value_or(instance);
     server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
     server.getLogger().info(ColorFormat::DARK_AQUA + ColorFormat::BOLD +
                                 "This server is running {} version: {} (Minecraft: {})",
@@ -59,7 +57,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);
@@ -72,15 +70,15 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
 {
     py::gil_scoped_acquire acquire{};
-    Singleton<EndstoneServer>::getInstance().disablePlugins();
-    Singleton<EndstoneServer>::reset();  // we need to explicitly acquire GIL and destroy the server instance as the
-                                         // command map and the plugin manager hold shared_ptrs to python objects
+    entt::locator<EndstoneServer>::value().disablePlugins();
+    entt::locator<EndstoneServer>::reset();  // we need to explicitly acquire GIL and destroy the server instance as the
+                                             // command map and the plugin manager hold shared_ptrs to python objects
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
 }
 
 void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     server.addLevel(std::make_unique<EndstoneLevel>(level));
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }

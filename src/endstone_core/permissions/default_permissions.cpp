@@ -14,11 +14,13 @@
 
 #include "endstone/detail/permissions/default_permissions.h"
 
+#include <entt/entt.hpp>
+
 namespace endstone::detail {
 
 Permission *DefaultPermissions::registerPermission(std::unique_ptr<Permission> perm, Permission *parent)
 {
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto *result = server.getPluginManager().addPermission(std::move(perm));
     if (parent != nullptr && result != nullptr) {
         parent->getChildren()[result->getName()] = true;

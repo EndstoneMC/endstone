@@ -14,9 +14,10 @@
 
 #include "endstone/detail/command/defaults/version_command.h"
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/util/color_format.h"
 
 namespace endstone::detail {
@@ -35,8 +36,8 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
         return true;
     }
 
+    auto &server = entt::locator<EndstoneServer>::value();
     if (args.empty()) {
-        auto &server = Singleton<EndstoneServer>::getInstance();
         sender.sendMessage(ColorFormat::GOLD + "This server is running {} version: {} (Minecraft: {})",
                            server.getName(), server.getVersion(), server.getMinecraftVersion());
     }
@@ -45,7 +46,6 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
         std::transform(target_name.begin(), target_name.end(), target_name.begin(),
                        [](unsigned char c) { return std::tolower(c); });
 
-        auto &server = Singleton<EndstoneServer>::getInstance();
         auto plugins = server.getPluginManager().getPlugins();
         for (auto *plugin : plugins) {
             auto name = plugin->getName();

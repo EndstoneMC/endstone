@@ -18,7 +18,6 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/detail/permissions/permissible_base.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 
 namespace endstone::detail {
 

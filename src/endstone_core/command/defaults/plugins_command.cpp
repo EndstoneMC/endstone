@@ -18,9 +18,10 @@
 #include <string>
 #include <vector>
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/util/color_format.h"
 
 namespace endstone::detail {
@@ -45,7 +46,7 @@ bool PluginsCommand::execute(CommandSender &sender, const std::vector<std::strin
 std::string PluginsCommand::getPluginList() const
 {
     std::stringstream ss;
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto plugins = server.getPluginManager().getPlugins();
 
     int i = 0;

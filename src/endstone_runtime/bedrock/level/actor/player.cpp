@@ -14,12 +14,12 @@
 
 #include "bedrock/level/actor/player.h"
 
+#include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/network/game/available_commands_packet.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 
 namespace {
 
@@ -52,8 +52,7 @@ void Player::setPermissions(CommandPermissionLevel level)
 void Player::sendCommands()
 {
     using endstone::detail::EndstoneServer;
-    using endstone::detail::Singleton;
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     auto &registry = server.getMinecraftCommands().getRegistry();
 
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();

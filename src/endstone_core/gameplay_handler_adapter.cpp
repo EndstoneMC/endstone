@@ -14,7 +14,7 @@
 
 #include "endstone/detail/gameplay_handler_adapter.h"
 
-#include <entt/locator/locator.hpp>
+#include <entt/entt.hpp>
 
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/event/event_result.h"
@@ -22,12 +22,10 @@
 #include "bedrock/gameplay_handler.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
 
 using endstone::detail::EndstoneServer;
-using endstone::detail::Singleton;
 
 namespace endstone::detail {
 
@@ -54,7 +52,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneGameplayHandlerAdapter::onLevel
         return result;
     }
 
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     if (event.from_rain != event.to_rain) {
         endstone::WeatherChangeEvent e(event.to_rain);
         server.getPluginManager().callEvent(e);

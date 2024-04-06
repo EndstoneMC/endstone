@@ -14,18 +14,16 @@
 
 #include "bedrock/raknet/socket2.h"
 
-#include <cstdio>
 #include <sstream>
 
-#include "bedrock/threading.h"
+#include <entt/entt.hpp>
+
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/singleton.h"
 #include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/plugin/plugin_manager.h"
 
 using endstone::detail::EndstoneServer;
-using endstone::detail::Singleton;
 
 namespace RakNet {
 
@@ -47,7 +45,7 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
     size_t strlen = data[head_size] << 8 | data[head_size + 1];
     std::string ping_response{data + head_size + 2, strlen};
 
-    auto &server = Singleton<EndstoneServer>::getInstance();
+    auto &server = entt::locator<EndstoneServer>::value();
     char buffer[64];
     send_parameters->system_address.ToString(false, buffer);
     endstone::ServerListPingEvent event(std::string(buffer), send_parameters->system_address.GetPort(), ping_response);
