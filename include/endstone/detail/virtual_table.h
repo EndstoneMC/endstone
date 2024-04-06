@@ -49,10 +49,10 @@ public:
         return size_;
     }
 
-    template <std::size_t Index, typename Return, typename... Arg>
+    template <std::size_t Index, typename Return, std::size_t Offset = _WIN32_LINUX_(0, 1), typename... Arg>
     constexpr Return call(Arg &&...args) const
     {
-        auto func = reinterpret_cast<Return (*)(Arg...)>(at(Index));
+        auto func = reinterpret_cast<Return (*)(Arg...)>(at(Index + Offset));
         return func(std::forward<Arg>(args)...);
     }
 
@@ -85,10 +85,11 @@ public:
 private:
     void init();
 
-    template <std::size_t Index, typename... Arg, typename Return, typename Class>
+    template <std::size_t Index, typename... Arg, std::size_t Offset = _WIN32_LINUX_(0, 1), typename Return,
+              typename Class>
     void hook(Return (Class::*fp)(Arg...))
     {
-        copy_[Index + typeinfo_size] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
+        copy_[Index + Offset + typeinfo_size] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
     }
 
     inline static constexpr std::size_t typeinfo_size = _WIN32_LINUX_(0, 2);

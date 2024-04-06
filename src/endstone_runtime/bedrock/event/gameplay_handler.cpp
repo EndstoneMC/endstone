@@ -31,7 +31,7 @@ namespace endstone::detail {
 template <>
 void VirtualTableHook<ScriptLevelGameplayHandler>::init()
 {
-    hook<_WIN32_LINUX_(3, 4), LevelWeatherChangedEvent &>(&EndstoneLevelGameplayHandler::handleEvent);
+    hook<3, LevelWeatherChangedEvent &>(&EndstoneLevelGameplayHandler::handleEvent);
 }
 }  // namespace endstone::detail
 
@@ -43,7 +43,7 @@ GameplayHandlerResult<CoordinatorResult> EndstoneLevelGameplayHandler::handleEve
     GameplayHandlerResult<CoordinatorResult> result;
     vtable.call<3, GameplayHandlerResult<CoordinatorResult>>(this, &result, event);
 #else
-    auto result = vtable.call<4, GameplayHandlerResult<CoordinatorResult>>(this, event);
+    auto result = vtable.call<3, GameplayHandlerResult<CoordinatorResult>>(this, event);
 #endif
 
     if (result.value == CoordinatorResult::Deny || result.result == EventResult::Deny) {
