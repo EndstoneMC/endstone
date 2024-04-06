@@ -82,6 +82,6 @@ CheckOptions:
   readability-identifier-naming.TypedefCase: CamelCase
   readability-identifier-naming.TypeTemplateParameterCase: CamelCase
   readability-identifier-naming.UnionCase: CamelCase
-  readability-identifier-naming.ValueTemplateParameterCase: lower_case
+  readability-identifier-naming.ValueTemplateParameterCase: CamelCase
   readability-identifier-naming.VariableCase: lower_case
   readability-identifier-naming.VirtualMethodCase: camelBack

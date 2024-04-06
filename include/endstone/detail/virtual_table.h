@@ -60,51 +60,51 @@ public:
         *reinterpret_cast<std::uintptr_t **>(&target) = original();
     }
 
-    template <std::size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t Index, typename Return, typename Class, typename... Arg>
     void hook(Return (Class::*fp)(Arg...))
     {
-        hook<index>(fp_cast(fp));
+        hook<Index>(fp_cast(fp));
     }
 
-    template <std::size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t Index, typename Return, typename Class, typename... Arg>
     Return callOriginal(Return (Class::*)(Arg...), Class *obj, Arg &&...args)
     {
-        auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(getOriginalVirtualMethod<index>());
+        auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(getOriginalVirtualMethod<Index>());
         return func(obj, std::forward<Arg>(args)...);
     }
 
-    template <std::size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t Index, typename Return, typename Class, typename... Arg>
     Return *callOriginalRvo(Return (Class::*)(Arg...), Return *ret, Class *obj, Arg &&...args)
     {
 #ifdef _WIN32
-        auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(getOriginalVirtualMethod<index>());
+        auto func = reinterpret_cast<Return *(*)(Class *, Return *, Arg...)>(getOriginalVirtualMethod<Index>());
         return func(obj, ret, std::forward<Arg>(args)...);
 #elif __linux__
-        auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(getOriginalVirtualMethod<index>());
+        auto func = reinterpret_cast<Return *(*)(Return *, Class *, Arg...)>(getOriginalVirtualMethod<Index>());
         return func(ret, obj, std::forward<Arg>(args)...);
 #endif
     }
 
 protected:
-    template <std::size_t index>
+    template <std::size_t Index>
     void hook(void *detour)
     {
-        if (index >= size_) {
-            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}.", index, size_);
+        if (Index >= size_) {
+            spdlog::critical("VMT hook failed. Invalid index: {}. Size: {}.", Index, size_);
             std::terminate();
         }
         // TODO: check if already hooked
-        copy_[index] = reinterpret_cast<std::uintptr_t>(detour);
+        copy_[Index] = reinterpret_cast<std::uintptr_t>(detour);
     }
 
-    template <std::size_t index>
+    template <std::size_t Index>
     std::uintptr_t getOriginalVirtualMethod()
     {
-        if (index >= size_) {
-            spdlog::critical("Invalid index: {}. Size: {}.", index, size_);
+        if (Index >= size_) {
+            spdlog::critical("Invalid index: {}. Size: {}.", Index, size_);
             std::terminate();
         }
-        return original_[index];
+        return original_[Index];
     }
 
 private:
