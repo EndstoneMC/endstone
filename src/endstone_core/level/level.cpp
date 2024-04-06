@@ -37,15 +37,20 @@ void EndstoneLevel::setTime(int time)
     level_.setTime(time);
 }
 
+namespace {
+template <typename T, typename Any>
+void hookEventHandler(Any &handler, std::size_t vmt_size)
+{
+    auto &target = static_cast<T &>(handler);
+    auto &hook = entt::locator<VirtualTableHook<T>>::value_or(target, vmt_size);
+    hook.install(target);
+}
+}  // namespace
+
 void EndstoneLevel::hookEventHandlers()
 {
-    {
-        auto &target =
-            static_cast<ScriptLevelGameplayHandler &>(level_.getLevelEventCoordinator().getLevelGameplayHandler());
-        auto &hook =
-            entt::locator<VirtualTableHook<ScriptLevelGameplayHandler>>::value_or(target, _WIN32_LINUX_(11, 12));
-        hook.hook(target);
-    }
+    hookEventHandler<ScriptLevelGameplayHandler>(level_.getLevelEventCoordinator().getLevelGameplayHandler(),
+                                                 _WIN32_LINUX_(11, 12));
 }
 
 };  // namespace endstone::detail

@@ -72,12 +72,12 @@ public:
         init();
     }
 
-    void hook(T &target)
+    void install(T &target)
     {
         *reinterpret_cast<std::uintptr_t **>(&target) = copy_.get() + typeinfo_size;
     }
 
-    void reset(T &target)
+    void uninstall(T &target)
     {
         *reinterpret_cast<std::uintptr_t **>(&target) = original_.begin();
     }
@@ -88,7 +88,7 @@ private:
     template <std::size_t Index, typename... Arg, typename Return, typename Class>
     void hook(Return (Class::*fp)(Arg...))
     {
-        copy_[Index] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
+        copy_[Index + typeinfo_size] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
     }
 
     inline static constexpr std::size_t typeinfo_size = _WIN32_LINUX_(0, 2);
