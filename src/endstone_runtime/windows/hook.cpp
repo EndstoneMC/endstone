@@ -32,11 +32,11 @@
 namespace endstone::detail::hook {
 
 namespace {
-void enumerate_symbols(const char *path, std::function<bool(const std::string &, size_t)> callback)
+void enumerate_symbols(const char *path, std::function<bool(const std::string &, std::size_t)> callback)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<size_t> dist(1, static_cast<size_t>(-1));
+    std::uniform_int_distribution<std::size_t> dist(1, static_cast<std::size_t>(-1));
     HANDLE handle = reinterpret_cast<HANDLE>(dist(gen));  // NOLINT
 
     if (!SymInitialize(handle, nullptr, FALSE)) {
@@ -51,8 +51,8 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
     }
 
     struct UserContext {
-        size_t module_base;
-        std::function<bool(const std::string &, size_t)> callback;
+        std::size_t module_base;
+        std::function<bool(const std::string &, std::size_t)> callback;
     };
     auto user_context = UserContext{module_base, std::move(callback)};
 
@@ -78,7 +78,7 @@ std::unordered_map<std::string, void *> get_detours()
     std::unordered_map<std::string, void *> detours;
 
     enumerate_symbols(  //
-        module_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
+        module_pathname.c_str(), [&](const std::string &name, std::size_t offset) -> bool {
             spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *detour = static_cast<char *>(module_base) + offset;
             detours.emplace(name, detour);
@@ -94,7 +94,7 @@ std::unordered_map<std::string, void *> get_targets()
 
     std::unordered_map<std::string, void *> targets;
     enumerate_symbols(  //
-        executable_pathname.c_str(), [&](const std::string &name, size_t offset) -> bool {
+        executable_pathname.c_str(), [&](const std::string &name, std::size_t offset) -> bool {
             spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *target = static_cast<char *>(executable_base) + offset;
             targets.emplace(name, target);

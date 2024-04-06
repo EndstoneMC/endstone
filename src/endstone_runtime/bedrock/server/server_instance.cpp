@@ -18,5 +18,5 @@
 
 Minecraft &ServerInstance::getMinecraft()
 {
-    return **reinterpret_cast<Minecraft **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(21, 16));
+    return **reinterpret_cast<Minecraft **>(reinterpret_cast<std::size_t *>(this) + _WIN32_LINUX_(21, 16));
 }

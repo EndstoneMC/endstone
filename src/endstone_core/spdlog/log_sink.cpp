@@ -70,7 +70,7 @@ void LogSink::sink_it_(const spdlog::details::log_msg &msg)
         // before color range
         printRange(formatted, 0, msg.color_range_start);
         // in color range
-        printColorCode(colors_.at(static_cast<size_t>(msg.level)));
+        printColorCode(colors_.at(static_cast<std::size_t>(msg.level)));
         printRange(formatted, msg.color_range_start, msg.color_range_end);
         printColorCode(reset);
         // after color range
@@ -93,7 +93,7 @@ void LogSink::printColorCode(const spdlog::string_view_t &color_code)
     fwrite(color_code.data(), sizeof(char), color_code.size(), target_file_);
 }
 
-void LogSink::printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end)
+void LogSink::printRange(const spdlog::memory_buf_t &formatted, std::size_t start, std::size_t end)
 {
     fwrite(formatted.data() + start, sizeof(char), end - start, target_file_);
 }

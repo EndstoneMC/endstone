@@ -81,7 +81,7 @@ public:
         position_ = 0;
     }
 
-    [[nodiscard]] size_t getPosition() const
+    [[nodiscard]] std::size_t getPosition() const
     {
         return position_;
     }
@@ -123,6 +123,6 @@ private:
     }
 
     std::string_view value_;
-    size_t position_ = 0;
+    std::size_t position_ = 0;
 };
 }  // namespace endstone::detail

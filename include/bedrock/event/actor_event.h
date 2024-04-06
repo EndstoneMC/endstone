@@ -18,7 +18,7 @@
 #include "bedrock/event/coordinator_result.h"
 #include "endstone/endstone.h"
 
-template <size_t n>
+template <std::size_t n>
 struct ActorEventPlaceHolder {
     char pad[n];
 };

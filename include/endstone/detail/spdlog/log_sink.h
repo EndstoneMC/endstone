@@ -71,7 +71,7 @@ public:
 
 private:
     void printColorCode(const spdlog::string_view_t &color_code);
-    void printRange(const spdlog::memory_buf_t &formatted, size_t start, size_t end);
+    void printRange(const spdlog::memory_buf_t &formatted, std::size_t start, std::size_t end);
     static std::string toString(const spdlog::string_view_t &sv);
 
     FILE *target_file_;

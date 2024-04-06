@@ -30,12 +30,12 @@ struct ModuleInfo {
 };
 
 struct MmapRegion {
-    size_t begin;
-    size_t end;
+    std::size_t begin;
+    std::size_t end;
     char perms[4 + 1];  // rwxp(4) + \0(1)
-    size_t offset;
+    std::size_t offset;
     char device[255 + 1];
-    size_t inode;
+    std::size_t inode;
     char pathname[PATH_MAX + 1];
 };
 
@@ -55,7 +55,7 @@ ModuleInfo get_module_info(const char *module_name)
         }
 
         auto pathname = std::string(region.pathname);
-        size_t pos = pathname.find_last_of('/');
+        std::size_t pos = pathname.find_last_of('/');
         if (pos != std::string::npos) {
             pathname = pathname.substr(pos + 1);
         }

@@ -47,15 +47,15 @@ void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*f
     va_copy(args_copy, args);
     std::vector<char> buf(1 + std::vsnprintf(nullptr, 0, format, args));
     va_end(args);
-    size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
+    std::size_t len = std::vsnprintf(buf.data(), buf.size(), format, args_copy);
     va_end(args_copy);
 
     std::string message(buf.data(), len);
     message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
 
     std::string_view sv(message);
-    size_t start = 0;
-    size_t end;
+    std::size_t start = 0;
+    std::size_t end;
 
     while ((end = sv.find('\n', start)) != std::string::npos) {
         logger.log(log_level, sv.substr(start, end - start));

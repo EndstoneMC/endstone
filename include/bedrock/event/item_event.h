@@ -17,7 +17,7 @@
 #include "bedrock/details.h"
 #include "bedrock/event/coordinator_result.h"
 
-template <size_t n>
+template <std::size_t n>
 struct ItemEventPlaceHolder {
     char pad[n];
 };

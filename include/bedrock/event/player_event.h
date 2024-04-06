@@ -18,7 +18,7 @@
 
 #include "bedrock/details.h"
 
-template <size_t n>
+template <std::size_t n>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
     char pad[n];
 };

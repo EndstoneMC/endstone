@@ -27,9 +27,9 @@ namespace endstone::detail {
 template <typename T>
 class VirtualTable {
 public:
-    VirtualTable(T &target, size_t size) : VirtualTable(*reinterpret_cast<uintptr_t **>(&target), size) {}
+    VirtualTable(T &target, std::size_t size) : VirtualTable(*reinterpret_cast<uintptr_t **>(&target), size) {}
 
-    VirtualTable(uintptr_t *original, size_t size) : original_(original), size_(size)
+    VirtualTable(uintptr_t *original, std::size_t size) : original_(original), size_(size)
     {
         copy_ = std::make_unique<uintptr_t[]>(size + type_info_size);
         std::copy(original_ - type_info_size, original_ + size, copy_.get());
@@ -45,7 +45,7 @@ public:
         return copy_.get() + type_info_size;
     }
 
-    [[nodiscard]] size_t size() const
+    [[nodiscard]] std::size_t size() const
     {
         return size_;
     }
@@ -60,20 +60,20 @@ public:
         *reinterpret_cast<uintptr_t **>(&target) = original();
     }
 
-    template <size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t index, typename Return, typename Class, typename... Arg>
     void hook(Return (Class::*fp)(Arg...))
     {
         hook<index>(fp_cast(fp));
     }
 
-    template <size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t index, typename Return, typename Class, typename... Arg>
     Return callOriginal(Return (Class::*)(Arg...), Class *obj, Arg &&...args)
     {
         auto func = reinterpret_cast<Return (*)(Class *, Arg...)>(getOriginalVirtualMethod<index>());
         return func(obj, std::forward<Arg>(args)...);
     }
 
-    template <size_t index, typename Return, typename Class, typename... Arg>
+    template <std::size_t index, typename Return, typename Class, typename... Arg>
     Return *callOriginalRvo(Return (Class::*)(Arg...), Return *ret, Class *obj, Arg &&...args)
     {
 #ifdef _WIN32
@@ -86,7 +86,7 @@ public:
     }
 
 protected:
-    template <size_t index>
+    template <std::size_t index>
     void hook(void *detour)
     {
         if (index >= size_) {
@@ -97,7 +97,7 @@ protected:
         copy_[index] = reinterpret_cast<uintptr_t>(detour);
     }
 
-    template <size_t index>
+    template <std::size_t index>
     uintptr_t getOriginalVirtualMethod()
     {
         if (index >= size_) {
@@ -108,10 +108,10 @@ protected:
     }
 
 private:
-    constexpr static size_t type_info_size = _WIN32_LINUX_(1, 2);
+    constexpr static std::size_t type_info_size = _WIN32_LINUX_(1, 2);
     uintptr_t *original_;
     std::unique_ptr<uintptr_t[]> copy_;
-    size_t size_;
+    std::size_t size_;
 };
 
 }  // namespace endstone::detail

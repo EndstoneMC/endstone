@@ -31,11 +31,11 @@ namespace endstone::detail {
 
 EndstoneGameplayHandlerAdapter::EndstoneGameplayHandlerAdapter(EndstoneLevel &level)
 {
-//    auto &target = static_cast<ScriptLevelGameplayHandler &>(
-//        level.getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler());
-//    auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value_or(target, _WIN32_LINUX_(11, 12));
-//    vtable.swap(target);
-//    vtable.hook<_WIN32_LINUX_(3, 4)>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
+    //    auto &target = static_cast<ScriptLevelGameplayHandler &>(
+    //        level.getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler());
+    //    auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value_or(target, _WIN32_LINUX_(11,
+    //    12)); vtable.swap(target); vtable.hook<_WIN32_LINUX_(3,
+    //    4)>(&EndstoneGameplayHandlerAdapter::onLevelWeatherChanged);
 }
 
 GameplayHandlerResult<CoordinatorResult> EndstoneGameplayHandlerAdapter::onLevelWeatherChanged(

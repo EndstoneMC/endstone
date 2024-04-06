@@ -26,7 +26,7 @@
 namespace RakNet {
 
 struct SystemAddress {
-    size_t pad[136 / 8];
+    std::size_t pad[136 / 8];
     [[nodiscard]] BEDROCK_API uint16_t GetPort() const;                                       // NOLINT
     BEDROCK_API void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
 };

@@ -22,7 +22,7 @@ void TextFormatter::format(const spdlog::details::log_msg &msg, const tm &, spdl
 {
 
     const auto &input = msg.payload;
-    for (size_t i = 0; i < input.size(); i++) {
+    for (std::size_t i = 0; i < input.size(); i++) {
         // Check for the § character in UTF-8 (0xC2A7) and ensure there's a following character
         if (i + 2 < input.size() && static_cast<unsigned char>(input[i]) == 0xC2 &&
             static_cast<unsigned char>(input[i + 1]) == 0xA7) {
