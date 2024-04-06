@@ -37,6 +37,10 @@ void init_server(py::class_<Server> &server)
                                "Gets a CommandSender for this server.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
              "Gets a PluginCommand with the given name or alias.")
+        .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,
+                               "Gets a list of all levels on this server.")
+        .def("get_level", &Server::getLevel, py::arg("name"), py::return_value_policy::reference,
+             "Gets the level with the given name.")
         .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,

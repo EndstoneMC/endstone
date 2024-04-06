@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -244,9 +244,9 @@ class GameMode:
     """
     ADVENTURE: typing.ClassVar[GameMode]  # value = <GameMode.ADVENTURE: 2>
     CREATIVE: typing.ClassVar[GameMode]  # value = <GameMode.CREATIVE: 1>
-    SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 6>
+    SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 3>
     SURVIVAL: typing.ClassVar[GameMode]  # value = <GameMode.SURVIVAL: 0>
-    __members__: typing.ClassVar[dict[str, GameMode]]  # value = {'SURVIVAL': <GameMode.SURVIVAL: 0>, 'CREATIVE': <GameMode.CREATIVE: 1>, 'ADVENTURE': <GameMode.ADVENTURE: 2>, 'SPECTATOR': <GameMode.SPECTATOR: 6>}
+    __members__: typing.ClassVar[dict[str, GameMode]]  # value = {'SURVIVAL': <GameMode.SURVIVAL: 0>, 'CREATIVE': <GameMode.CREATIVE: 1>, 'ADVENTURE': <GameMode.ADVENTURE: 2>, 'SPECTATOR': <GameMode.SPECTATOR: 3>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -272,6 +272,20 @@ class GameMode:
         ...
     @property
     def value(self) -> int:
+        ...
+class Level:
+    @property
+    def name(self) -> str:
+        """
+        Gets the unique name of this level
+        """
+    @property
+    def time(self) -> int:
+        """
+        Gets and sets the relative in-game time on the server
+        """
+    @time.setter
+    def time(self, arg1: int) -> None:
         ...
 class Logger:
     class Level:
@@ -556,12 +570,12 @@ class PermissionDefault:
       NOT_OPERATOR
     """
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
-    NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
-    NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OPERATOR: 3>
+    NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
+    NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.OP: 2>
     TRUE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.TRUE: 0>
-    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.OP: 2>, 'NOT_OPERATOR': <PermissionDefault.NOT_OPERATOR: 3>}
+    __members__: typing.ClassVar[dict[str, PermissionDefault]]  # value = {'TRUE': <PermissionDefault.TRUE: 0>, 'FALSE': <PermissionDefault.FALSE: 1>, 'OP': <PermissionDefault.OP: 2>, 'OPERATOR': <PermissionDefault.OP: 2>, 'NOT_OP': <PermissionDefault.NOT_OP: 3>, 'NOT_OPERATOR': <PermissionDefault.NOT_OP: 3>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -905,6 +919,10 @@ class PluginManager:
         Gets a list of all currently loaded plugins
         """
 class Server:
+    def get_level(self, name: str) -> Level:
+        """
+        Gets the level with the given name.
+        """
     def get_plugin_command(self, name: str) -> PluginCommand:
         """
         Gets a PluginCommand with the given name or alias.
@@ -913,6 +931,11 @@ class Server:
     def command_sender(self) -> CommandSender:
         """
         Gets a CommandSender for this server.
+        """
+    @property
+    def levels(self) -> list[Level]:
+        """
+        Gets a list of all levels on this server.
         """
     @property
     def logger(self) -> Logger:
@@ -1073,11 +1096,21 @@ class ServerLoadEvent(Event):
         ...
 class ThunderChangeEvent(Event):
     @property
+    def level(self) -> Level:
+        """
+        Returns the Level where this event is occurring
+        """
+    @property
     def to_thunder_state(self) -> bool:
         """
         Gets the state of thunder that the world is being set to
         """
 class WeatherChangeEvent(Event):
+    @property
+    def level(self) -> Level:
+        """
+        Returns the Level where this event is occurring
+        """
     @property
     def to_weather_state(self) -> bool:
         """

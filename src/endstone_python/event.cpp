@@ -14,10 +14,7 @@
 
 #include "endstone/event/event.h"
 
-#include <utility>
-
 #include <pybind11/pybind11.h>
-#include <pybind11/stl.h>
 
 #include "endstone/event/event_priority.h"
 #include "endstone/event/server/plugin_disable_event.h"
