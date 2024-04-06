@@ -21,6 +21,11 @@
 #include "bedrock/event/level_event.h"
 #include "bedrock/event/player_event.h"
 
+enum class HandlerResult : int {
+    Deny = 0,
+    Default = 1
+};
+
 template <typename Type>
 struct GameplayHandlerResult {
     Type value;
@@ -29,8 +34,3 @@ struct GameplayHandlerResult {
 
 class LevelGameplayHandler {};
 class ScriptLevelGameplayHandler : public LevelGameplayHandler {};
-
-class EndstoneLevelGameplayHandler  : public LevelGameplayHandler{
-public:
-    GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
-};
