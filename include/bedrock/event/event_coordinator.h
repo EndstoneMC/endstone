@@ -27,33 +27,37 @@
 #include "bedrock/gameplay_handler.h"
 #include "bedrock/server/server_instance.h"
 
-class ActorEventCoordinator {
-public:
-    BEDROCK_API void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+template <typename Listener>
+class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
+private:
+    std::vector<Listener *> unknown1_;                              // +24
+    std::vector<std::function<EventResult(Listener &)>> unknown2_;  // +48
+    std::vector<Listener *> unknown3_;                              // +72
+    bool unknown4_;                                                 // +96
+    int unknown5_;                                                  // +100
 };
+static_assert(sizeof(EventCoordinatorPimpl<class T>) == 104);
 
-class BlockEventCoordinator {
-public:
-    BEDROCK_API void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
-};
-
+class ActorEventCoordinator;
+class BlockEventCoordinator;
 class ItemEventCoordinator;
 
-class LevelEventCoordinator : public Bedrock::EnableNonOwnerReferences {
+class LevelEventCoordinator : public EventCoordinatorPimpl<class LevelEventListener> {
 public:
     ~LevelEventCoordinator() override = default;
-    LevelGameplayHandler &getLevelGameplayHandler();
-    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
-};
 
-class PlayerEventCoordinator {
+private:
+#ifdef __linux__
+    int64_t unknown6_;
+#endif
+    bool unknown7_;  // +104
+    int unknown8_;   // +108
+
 public:
-    BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
+    std::unique_ptr<LevelGameplayHandler> gameplay_handler;  // +112
 };
 
+class PlayerEventCoordinator;
 class ServerPlayerEventCoordinator;
 class ClientPlayerEventCoordinator;
 
