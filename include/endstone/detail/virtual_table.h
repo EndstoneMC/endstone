@@ -52,7 +52,6 @@ public:
     template <std::size_t Index, typename Return, typename... Arg>
     constexpr Return call(Arg &&...args) const
     {
-        spdlog::info("{}", reinterpret_cast<void *>(at(Index)));
         auto func = reinterpret_cast<Return (*)(Arg...)>(at(Index));
         return func(std::forward<Arg>(args)...);
     }
@@ -68,16 +67,14 @@ public:
     VirtualTableHook(T &target, std::size_t size)
         : original_(entt::locator<VirtualTable<T>>::value_or(*reinterpret_cast<std::uintptr_t **>(&target), size))
     {
-        if (!mCopy) {
-            mCopy = std::make_unique<std::uintptr_t[]>(size + TYPEINFO_SIZE);
-            std::copy(original_.begin() - TYPEINFO_SIZE, original_.end(), mCopy.get());
-            init();
-        }
+        copy_ = std::make_unique<std::uintptr_t[]>(size + typeinfo_size);
+        std::copy(original_.begin() - typeinfo_size, original_.end(), copy_.get());
+        init();
     }
 
     void hook(T &target)
     {
-        *reinterpret_cast<std::uintptr_t **>(&target) = mCopy.get() + TYPEINFO_SIZE;
+        *reinterpret_cast<std::uintptr_t **>(&target) = copy_.get() + typeinfo_size;
     }
 
     void reset(T &target)
@@ -88,14 +85,14 @@ public:
 private:
     void init();
 
-    template <std::size_t Index, typename Return, typename... Arg>
-    void hook(Return (*fp)(Arg...))
+    template <std::size_t Index, typename... Arg, typename Return, typename Class>
+    void hook(Return (Class::*fp)(Arg...))
     {
-        mCopy[Index] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
+        copy_[Index] = reinterpret_cast<std::uintptr_t>(fp_cast(fp));
     }
 
-    inline static constexpr std::size_t TYPEINFO_SIZE = _WIN32_LINUX_(0, 2);
-    inline static std::unique_ptr<std::uintptr_t[]> mCopy;
+    inline static constexpr std::size_t typeinfo_size = _WIN32_LINUX_(0, 2);
+    std::unique_ptr<std::uintptr_t[]> copy_;
     VirtualTable<T> &original_;
 };
 

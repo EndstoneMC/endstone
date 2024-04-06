@@ -32,6 +32,5 @@ class ScriptLevelGameplayHandler : public LevelGameplayHandler {};
 
 class EndstoneLevelGameplayHandler {
 public:
-    static GameplayHandlerResult<CoordinatorResult> onLevelWeatherChanged(ScriptLevelGameplayHandler &self,
-                                                                          LevelWeatherChangedEvent &event);
+    GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };
