@@ -23,24 +23,20 @@
 #include "endstone/event/weather/weather_change_event.h"
 #include "endstone/level/level.h"
 
-using endstone::detail::EndstoneLevel;
-using endstone::detail::EndstoneServer;
-using endstone::detail::VirtualTable;
-
 namespace endstone::detail {
 
 class EndstoneLevelGameplayHandler : public ::LevelGameplayHandler {
 
-    static Level &getLevel(LevelGameplayHandler &handler_)
+    static Level &getLevel(LevelGameplayHandler &handler)
     {
         // Find out the level where this event is occurring
         auto &server = entt::locator<EndstoneServer>::value();
         auto levels = server.getLevels();
-        auto it = std::find_if(begin(levels), end(levels), [&handler_](auto *level) {
+        auto it = std::find_if(begin(levels), end(levels), [&handler](auto *level) {
             return &(static_cast<EndstoneLevel *>(level)
                          ->getBedrockLevel()
                          .getLevelEventCoordinator()
-                         .getLevelGameplayHandler()) == &handler_;
+                         .getLevelGameplayHandler()) == &handler;
         });
         if (it == levels.end()) {
             server.getLogger().critical("Unable to find level associated with the provided LevelGameplayHandler");
