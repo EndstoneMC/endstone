@@ -66,6 +66,7 @@ private:
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
     mutable ServerCommandSender command_sender_;
+    std::unordered_map<endstone::UUID, std::unique_ptr<Player>> players_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
 };
 

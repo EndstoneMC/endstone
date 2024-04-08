@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <array>
+#include <algorithm>
 #include <cstddef>
 #include <cstdint>
 
@@ -27,77 +27,56 @@ namespace endstone {
  */
 class UUID {
 public:
-    typedef std::uint8_t value_type;
-    typedef std::uint8_t &reference;
-    typedef std::uint8_t const &const_reference;
-    typedef std::uint8_t *iterator;
-    typedef uint8_t const *const_iterator;
-    typedef std::size_t size_type;
-    typedef std::ptrdiff_t difference_type;
+    std::uint8_t *begin() noexcept
+    {
+        return data;
+    }
 
-    static constexpr size_type static_size() noexcept
+    [[nodiscard]] const uint8_t *begin() const noexcept
+    {
+        return data;
+    }
+
+    std::uint8_t *end() noexcept
+    {
+        return data + size();
+    }
+
+    [[nodiscard]] const uint8_t *end() const noexcept
+    {
+        return data + size();
+    }
+
+    [[nodiscard]] static constexpr std::size_t size() noexcept
     {
         return 16;
     }
 
-public:
-    iterator begin() noexcept
+    [[nodiscard]] bool isNil() const noexcept
     {
-        return data;
+        return std::all_of(std::begin(data), std::end(data), [](const auto &val) { return val == 0U; });
     }
 
-    const_iterator begin() const noexcept
-    {
-        return data;
-    }
-
-    iterator end() noexcept
-    {
-        return data + size();
-    }
-
-    const_iterator end() const noexcept
-    {
-        return data + size();
-    }
-
-    constexpr size_type size() const noexcept
-    {
-        return static_size();
-    }
-
-    bool is_nil() const noexcept
-    {
-        for (std::size_t i = 0; i < sizeof(data); ++i) {
-            if (data[i] != 0U) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    int version() const noexcept
+    [[nodiscard]] int version() const noexcept
     {
         // version is stored in octet 9 which is index 6, since indexes count backwards
         uint8_t octet9 = data[6];
         if ((octet9 & 0xF0) == 0x10) {
             return 1;
         }
-        else if ((octet9 & 0xF0) == 0x20) {
+        if ((octet9 & 0xF0) == 0x20) {
             return 2;
         }
-        else if ((octet9 & 0xF0) == 0x30) {
+        if ((octet9 & 0xF0) == 0x30) {
             return 3;
         }
-        else if ((octet9 & 0xF0) == 0x40) {
+        if ((octet9 & 0xF0) == 0x40) {
             return 4;
         }
-        else if ((octet9 & 0xF0) == 0x50) {
+        if ((octet9 & 0xF0) == 0x50) {
             return 5;
         }
-        else {
-            return -1;
-        }
+        return -1;
     }
 
     void swap(UUID &rhs) noexcept
@@ -107,13 +86,22 @@ public:
         rhs = tmp;
     }
 
-public:
     std::uint8_t data[16];
 };
+
+inline bool operator==(UUID const &lhs, UUID const &rhs) noexcept
+{
+    return memcmp(lhs.data, rhs.data, sizeof(lhs.data)) == 0;
+}
 
 inline bool operator<(UUID const &lhs, UUID const &rhs) noexcept
 {
     return memcmp(lhs.data, rhs.data, sizeof(lhs.data)) < 0;
+}
+
+inline bool operator!=(UUID const &lhs, UUID const &rhs) noexcept
+{
+    return !(lhs == rhs);
 }
 
 inline bool operator>(UUID const &lhs, UUID const &rhs) noexcept
@@ -138,8 +126,8 @@ inline void swap(UUID &lhs, UUID &rhs) noexcept
 inline std::size_t hash_value(UUID const &u) noexcept
 {
     std::size_t seed = 0;
-    for (UUID::const_iterator i = u.begin(), e = u.end(); i != e; ++i) {
-        seed ^= static_cast<std::size_t>(*i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+    for (unsigned char i : u) {
+        seed ^= static_cast<std::size_t>(i) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
     }
 
     return seed;

@@ -153,8 +153,11 @@ void EndstoneServer::addLevel(std::unique_ptr<Level> level)
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
 {
-    // TODO(player): implement this
-    return nullptr;
+    auto it = players_.find(id);
+    if (it == players_.end()) {
+        return nullptr;
+    }
+    return it->second.get();
 }
 
 std::string EndstoneServer::getName() const
