@@ -14,14 +14,11 @@
 
 #pragma once
 
-#include "endstone/actor/human.h"
-
 namespace endstone {
 
-class Player : public HumanActor {
+class Actor {
 public:
-    ~Player() override = default;
-    std::string getName() const override = 0;
+    virtual ~Actor() = default;
 };
 
 }  // namespace endstone

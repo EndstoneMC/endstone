@@ -17,6 +17,7 @@
 #include <variant>
 
 #include "bedrock/details.h"
+#include "bedrock/event/coordinator_result.h"
 
 template <std::size_t n>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
