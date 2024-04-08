@@ -22,13 +22,13 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/actor/mob.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_registry.h"
 #include "bedrock/core.h"
 #include "bedrock/event/event_coordinator.h"
 #include "bedrock/forward.h"
-#include "bedrock/level/actor/mob.h"
 #include "bedrock/mce.h"
 #include "bedrock/network/packet_sender.h"
 

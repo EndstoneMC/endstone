@@ -14,12 +14,10 @@
 
 #pragma once
 
+#include "bedrock/actor/server_player.h"
 #include "bedrock/bedrock.h"
-#include "bedrock/level/actor/player.h"
 
-class ServerPlayer : public Player {
-public:
-    ~ServerPlayer() override = 0;
-    BEDROCK_API void doInitialSpawn();
-    BEDROCK_API void disconnect();
+class ServerNetworkHandler {
+private:
+    BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool);  // NOLINT(*-identifier-naming)
 };

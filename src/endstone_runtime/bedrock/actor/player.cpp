@@ -12,10 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/level/actor/player.h"
+#include "bedrock/actor/player.h"
 
 #include <entt/entt.hpp>
-#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/network/game/available_commands_packet.h"
 #include "endstone/detail/hook.h"

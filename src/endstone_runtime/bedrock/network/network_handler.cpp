@@ -12,19 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/actor/server_player.h"
+#include "bedrock/network/network_handler.h"
+
+#include <entt/entt.hpp>
 
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
 
-void ServerPlayer::doInitialSpawn()
+bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &player, bool flag)
 {
-    // TODO(event): send PlayerJoinEvent
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
-    sendCommands();
-}
-
-void ServerPlayer::disconnect()
-{
-    // TODO(event): send PlayerQuitEvent
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
+    using endstone::detail::EndstoneServer;
+    auto &server = entt::locator<EndstoneServer>::value();
+    // TODO(player): create Player object from ServerPlayer& and add to server
+    // TODO(event): call PlayerLoginEvent
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, player, flag);
 }

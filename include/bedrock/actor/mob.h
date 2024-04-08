@@ -16,7 +16,7 @@
 
 #include <bitset>
 
-#include "bedrock/level/actor/actor.h"
+#include "bedrock/actor/actor.h"
 
 class Mob : public Actor {
 public:

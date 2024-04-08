@@ -19,7 +19,9 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
+#include "bedrock/mce.h"
 
 class Actor {
 public:
