@@ -113,7 +113,6 @@ class MobEffectInstance;
 class MolangVariableMap;
 class NavigationComponent;
 class NetEventCallback;
-class NetworkIdentifier;
 class NewInteractionModel;
 class Options;
 class Particle;
@@ -180,7 +179,6 @@ enum class MaterialType;
 enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class StructureFeatureType;
-enum class SubClientId;
 
 // Nested Classes and Namespaces
 class PlayerCapabilities {

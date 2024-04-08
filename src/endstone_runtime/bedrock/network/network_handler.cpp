@@ -16,6 +16,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/actor/components/user_entity_identifier_component.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 
@@ -23,6 +24,7 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &player, bool flag)
 {
     using endstone::detail::EndstoneServer;
     auto &server = entt::locator<EndstoneServer>::value();
+    auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     // TODO(player): create Player object from ServerPlayer& and add to server
     // TODO(event): call PlayerLoginEvent
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, player, flag);

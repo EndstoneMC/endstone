@@ -20,6 +20,8 @@
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+#include "bedrock/network/network_identifier.h"
+#include "bedrock/network/sub_client_id.h"
 
 class Level;
 
