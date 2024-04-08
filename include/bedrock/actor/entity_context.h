@@ -24,8 +24,14 @@ public:
     EntityContext(EntityRegistry &registry, std::uint32_t entity_id)
         : registry_(registry), entt_registry_(registry.registry_), entity_id_(entity_id){};
 
+    template <typename Component>
+    Component *tryGetComponent()
+    {
+        return entt_registry_.try_get<Component>(entity_id_);
+    }
+
 private:
-    EntityRegistry &registry_;
-    entt::basic_registry<EntityId> &entt_registry_;
-    EntityId entity_id_;
+    EntityRegistry &registry_;                       // +0
+    entt::basic_registry<EntityId> &entt_registry_;  // +8
+    EntityId entity_id_;                             // +16
 };

@@ -19,6 +19,8 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/actor/entity_context.h"
+#include "bedrock/actor/entity_registry.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
@@ -203,4 +205,16 @@ public:
 protected:
     virtual void _playStepSound(BlockPos const &, Block const &) = 0;
     virtual void _doAutoAttackOnTouch(Actor &) = 0;
+
+public:
+    template <typename Component>
+    Component *tryGetComponent()
+    {
+        return context.tryGetComponent<Component>();
+    }
+
+private:
+    EntityContext context;  // +8
+    bool unknown_;          // +32
+    std::string name_;      // +40
 };

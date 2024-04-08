@@ -74,8 +74,6 @@ class Dimension;
 class DimensionConversionData;
 class DimensionManager;
 class EducationLevelSettings;
-class EntityContext;
-class EntityRegistry;
 class EntitySystems;
 class EquipmentSlot;
 class Experiments;
