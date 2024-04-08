@@ -44,12 +44,10 @@ using endstone::detail::PythonPluginLoader;
 void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &ref)
 {
     void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) = &ActorEventCoordinator::sendEvent;
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
-
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -57,12 +55,10 @@ CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayE
 {
     CoordinatorResult (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<CoordinatorResult>> &) =
         &ActorEventCoordinator::sendEvent;
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
-
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -70,37 +66,29 @@ CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayE
 {
     CoordinatorResult (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<CoordinatorResult>> &) =
         &BlockEventCoordinator::sendEvent;
-
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
-
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
 void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &ref)
 {
     void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) = &BlockEventCoordinator::sendEvent;
-
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
-
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
 void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
 {
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
-
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }
 
@@ -113,11 +101,16 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
 {
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
         &PlayerEventCoordinator::sendEvent;
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
+    auto visitor = entt::overloaded{
+        [](Details::ValueOrRef<PlayerInitialSpawnEvent const> value) {
+            // TODO(event): call PlayerJoinEvent
         },
-        ref.reference.event);
+        [](Details::ValueOrRef<PlayerDisconnectEvent const> value) {
+            // TODO(event): call PlayerQuitEvent
+        },
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -125,11 +118,10 @@ CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGamepla
 {
     CoordinatorResult (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &) =
         &PlayerEventCoordinator::sendEvent;
-    std::visit(
-        [](auto &&arg) {
-            // TODO:
-        },
-        ref.reference.event);
+    auto visitor = entt::overloaded{
+        [](auto ignored) {},
+    };
+    std::visit(visitor, ref.reference.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -159,8 +151,8 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
 {
     py::gil_scoped_acquire acquire{};
     entt::locator<EndstoneServer>::value().disablePlugins();
-    entt::locator<EndstoneServer>::reset();  // we need to explicitly acquire GIL and destroy the server instance as the
-                                             // command map and the plugin manager hold shared_ptrs to python objects
+    entt::locator<EndstoneServer>::reset();  // we explicitly acquire GIL and destroy the server instance as the command
+                                             // map and the plugin manager hold shared_ptrs to python objects
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
 }
 

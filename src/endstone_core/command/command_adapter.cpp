@@ -79,7 +79,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     case CommandOriginType::Entity:
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
-        // TODO: add BlockCommandSender, Player, Entity and CommandMinecart
+        // TODO(permission): add BlockCommandSender, Player, Entity and CommandMinecart
     default:
         auto sender = CommandSenderAdapter(origin, output);
         success = command->execute(sender, args_);

@@ -27,16 +27,16 @@ using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 
 namespace {
-endstone::Level &getLevel(LevelGameplayHandler &handler)
+endstone::Level &getLevel(LevelGameplayHandler *handler)
 {
     // Find out the level where this event is occurring
     auto &server = entt::locator<EndstoneServer>::value();
     auto levels = server.getLevels();
-    auto it = std::find_if(begin(levels), end(levels), [&handler](auto *level) {
+    auto it = std::find_if(begin(levels), end(levels), [handler](auto *level) {
         return &(static_cast<EndstoneLevel *>(level)
                      ->getBedrockLevel()
                      .getLevelEventCoordinator()
-                     .getLevelGameplayHandler()) == &handler;
+                     .getLevelGameplayHandler()) == handler;
     });
     if (it == levels.end()) {
         server.getLogger().critical("Unable to find level associated with the provided LevelGameplayHandler");
@@ -50,8 +50,11 @@ endstone::Level &getLevel(LevelGameplayHandler &handler)
 GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {
     auto &server = entt::locator<EndstoneServer>::value();
+    // TODO(improvement): this - 1 is bit hacky. Any better workaround for multiple inheritance?
+    auto &level = getLevel(this - 1);
+
     if (event.from_rain != event.to_rain) {
-        endstone::WeatherChangeEvent e(getLevel(*this), event.to_rain);
+        endstone::WeatherChangeEvent e(level, event.to_rain);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             event.to_rain = event.from_rain;
@@ -59,7 +62,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     }
 
     if (event.from_lightning != event.to_lightning) {
-        endstone::ThunderChangeEvent e(getLevel(*this), event.to_lightning);
+        endstone::ThunderChangeEvent e(level, event.to_lightning);
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             event.to_lightning = event.from_lightning;

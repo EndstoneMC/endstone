@@ -32,7 +32,7 @@ template <>
 struct ItemGameplayEvent<void> {
     std::variant<Details::ValueOrRef<ShapedRecipeTriggeredEvent const>,        // 0
                  Details::ValueOrRef<CraftUpdateResultItemClientEvent const>,  // 1
-                 Details::ValueOrRef<ItemEventPlaceHolder<160> const>>         // TODO: unchecked size on Windows
+                 Details::ValueOrRef<ItemEventPlaceHolder<160> const>>         // TODO(fixme): check size on Windows
         event;
 };
 

@@ -24,7 +24,7 @@ namespace endstone {
 class ServerLoadEvent : public Event {
 public:
     enum class LoadType {
-        Startup,  // TODO: add RELOAD
+        Startup,  // TODO(event): add Reload
     };
 
     explicit ServerLoadEvent(LoadType type) : type_(type) {}
