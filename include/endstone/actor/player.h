@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/level/actor/server_player.h"
+#include "bedrock/actor/server_player.h"
 #include "endstone/actor/human.h"
 
 namespace endstone {
@@ -23,7 +23,7 @@ class Player : public HumanActor {
 public:
     explicit Player(ServerPlayer &player) : player_(player){};
     ~Player() override = default;
-    std::string getName() const override = 0;
+    [[nodiscard]] std::string getName() const override = 0;
 
 private:
     ServerPlayer &player_;

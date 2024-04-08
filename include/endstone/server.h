@@ -19,8 +19,10 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/actor/player.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
+#include "endstone/util/uuid.h"
 
 namespace endstone {
 
@@ -82,6 +84,14 @@ public:
      * @return a level with the given name, or nullptr if none exists
      */
     [[nodiscard]] virtual Level *getLevel(std::string name) const = 0;
+
+    /**
+     * Gets the player with the given UUID.
+     *
+     * @param id UUID of the player to retrieve
+     * @return a player object if one was found, null otherwise
+     */
+    [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
      * Gets the name of this server implementation.

@@ -52,6 +52,8 @@ public:
     Level *getLevel(std::string name) const override;
     void addLevel(std::unique_ptr<Level> level);
 
+    [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
+
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
     [[nodiscard]] std::string getMinecraftVersion() const override;

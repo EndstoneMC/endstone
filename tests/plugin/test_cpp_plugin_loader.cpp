@@ -32,6 +32,7 @@ public:
     MOCK_METHOD(endstone::CommandSender &, getCommandSender, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
+    MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));
     MOCK_METHOD(std::string, getName, (), (const, override));
     MOCK_METHOD(std::string, getVersion, (), (const, override));
     MOCK_METHOD(std::string, getMinecraftVersion, (), (const, override));

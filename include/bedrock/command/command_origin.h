@@ -16,9 +16,12 @@
 
 #include <optional>
 
+#include "bedrock/actor/actor.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+
+class Level;
 
 enum class CommandOriginType : char {
     Player = 0,

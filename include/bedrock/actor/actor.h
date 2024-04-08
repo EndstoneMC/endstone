@@ -23,6 +23,8 @@
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
 
+class Player;
+
 class Actor {
 public:
     virtual bool getStatusFlag(ActorFlags flags) = 0;

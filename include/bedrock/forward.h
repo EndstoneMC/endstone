@@ -17,7 +17,6 @@
 // Classes
 class AABB;
 class Abilities;
-class Actor;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorDamageCause;
@@ -103,7 +102,6 @@ class ItemStack;
 class ItemStackBase;
 class JigsawStructureRegistry;
 class LayeredAbilities;
-class Level;
 class LevelChunk;
 class LevelData;
 class LevelListener;
@@ -125,7 +123,6 @@ class Path;
 class PauseManager;
 class PermissionsHandler;
 class PhotoStorage;
-class Player;
 class PlayerListEntry;
 class PlayerMovementSettings;
 class PortalForcer;
