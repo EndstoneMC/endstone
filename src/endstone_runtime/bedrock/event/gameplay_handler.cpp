@@ -16,106 +16,63 @@
 
 #include <entt/entt.hpp>
 
+#include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
-#include "endstone/detail/virtual_table.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
 #include "endstone/level/level.h"
 
-namespace endstone::detail {
+using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstoneServer;
 
-class EndstoneLevelGameplayHandler : public ::LevelGameplayHandler {
-
-    static Level &getLevel(LevelGameplayHandler &handler)
-    {
-        // Find out the level where this event is occurring
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto levels = server.getLevels();
-        auto it = std::find_if(begin(levels), end(levels), [&handler](auto *level) {
-            return &(static_cast<EndstoneLevel *>(level)
-                         ->getBedrockLevel()
-                         .getLevelEventCoordinator()
-                         .getLevelGameplayHandler()) == &handler;
-        });
-        if (it == levels.end()) {
-            server.getLogger().critical("Unable to find level associated with the provided LevelGameplayHandler");
-            std::terminate();
-        }
-        auto &level = **it;
-        return level;
-    }
-
-public:
-    GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event)
-    {
-        auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value();
-
-#ifdef _WIN32
-        GameplayHandlerResult<CoordinatorResult> result;
-        vtable.call<3, GameplayHandlerResult<CoordinatorResult>>(this, &result, event);
-#else
-        auto result = vtable.call<3, GameplayHandlerResult<CoordinatorResult>>(this, event);
-#endif
-
-        if (result.value == CoordinatorResult::Deny || result.result == EventResult::Deny) {
-            return result;
-        }
-
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto &level = getLevel(*this);
-
-        if (event.from_rain != event.to_rain) {
-            server.getLogger().debug("Weather state was changed in level: {}", level.getName());
-            endstone::WeatherChangeEvent e(level, event.to_rain);
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                event.to_rain = event.from_rain;
-            }
-        }
-
-        if (event.from_lightning != event.to_lightning) {
-            server.getLogger().debug("Thunder state was changed in level: {}", level.getName());
-            endstone::ThunderChangeEvent e(level, event.to_lightning);
-            server.getPluginManager().callEvent(e);
-            if (e.isCancelled()) {
-                event.to_lightning = event.from_lightning;
-            }
-        }
-
-        return result;
-    }
-
-    HandlerResult handleEvent(LevelStartLeaveGameEvent const &event)
-    {
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto &level = getLevel(*this);
-        server.getLogger().debug("Unloading level: {}. Game is being shut down.", level.getName());
-        auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value();
-        return vtable.call<6, HandlerResult>(this, event);
-    }
-
-    HandlerResult handleEvent(LevelAddedActorEvent const &event)
-    {
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto &level = getLevel(*this);
-        server.getLogger().debug("An actor has been added to level: {}.", level.getName());
-        auto &vtable = entt::locator<VirtualTable<ScriptLevelGameplayHandler>>::value();
-        return vtable.call<10, HandlerResult>(this, event);
-    }
-};
-
-template <>
-void VirtualTableHook<ScriptLevelGameplayHandler>::init()
+namespace {
+endstone::Level &getLevel(LevelGameplayHandler &handler)
 {
-    hook<3, LevelWeatherChangedEvent &>(&EndstoneLevelGameplayHandler::handleEvent);
-    // 4: handleEvent(ScriptingInitializeEvent const&)
-    // 5: handleEvent(LevelGameRuleChangeEvent const&)
-    hook<6, LevelStartLeaveGameEvent const &>(&EndstoneLevelGameplayHandler::handleEvent);
-    // 7: handleEvent(LevelDayCycleEvent const&)
-    // 8: handleEvent(LevelSoundBroadcastEvent const&)
-    // 9: handleEvent(LevelBroadcastEvent const&)
-    hook<10, LevelAddedActorEvent const &>(&EndstoneLevelGameplayHandler::handleEvent);
+    // Find out the level where this event is occurring
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto levels = server.getLevels();
+    auto it = std::find_if(begin(levels), end(levels), [&handler](auto *level) {
+        return &(static_cast<EndstoneLevel *>(level)
+                     ->getBedrockLevel()
+                     .getLevelEventCoordinator()
+                     .getLevelGameplayHandler()) == &handler;
+    });
+    if (it == levels.end()) {
+        server.getLogger().critical("Unable to find level associated with the provided LevelGameplayHandler");
+        std::terminate();
+    }
+    auto &level = **it;
+    return level;
 }
+}  // namespace
 
-}  // namespace endstone::detail
+GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    if (event.from_rain != event.to_rain) {
+        endstone::WeatherChangeEvent e(getLevel(*this), event.to_rain);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            event.to_rain = event.from_rain;
+        }
+    }
+
+    if (event.from_lightning != event.to_lightning) {
+        endstone::ThunderChangeEvent e(getLevel(*this), event.to_lightning);
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            event.to_lightning = event.from_lightning;
+        }
+    }
+
+    GameplayHandlerResult<CoordinatorResult> result;
+#ifdef _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptLevelGameplayHandler::handleEvent, __FUNCDNAME__, result, this, event);
+#else
+    result = ENDSTONE_HOOK_CALL_ORIGINAL_NAME(
+        &ScriptLevelGameplayHandler::handleEvent,
+        "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent", this, event);
+#endif
+    return result;
+}

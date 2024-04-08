@@ -27,22 +27,32 @@
 #include "bedrock/forward.h"
 #include "bedrock/server/server_instance.h"
 
-template <typename Listener>
-class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {};
+class ActorEventCoordinator {
+public:
+    BEDROCK_API void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+};
 
-class ActorEventCoordinator;
-class BlockEventCoordinator;
+class BlockEventCoordinator {
+public:
+    BEDROCK_API void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
+};
 class ItemEventCoordinator;
 
-class LevelEventCoordinator : public EventCoordinatorPimpl<class LevelEventListener> {
+class LevelEventCoordinator {
 public:
-    ~LevelEventCoordinator() override = default;
+    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
     LevelGameplayHandler &getLevelGameplayHandler();
 };
 
-class PlayerEventCoordinator;
-class ServerPlayerEventCoordinator;
-class ClientPlayerEventCoordinator;
+class PlayerEventCoordinator {
+public:
+    BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
+    BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
+};
+class ServerPlayerEventCoordinator : public PlayerEventCoordinator {};
+class ClientPlayerEventCoordinator : public PlayerEventCoordinator {};
 
 class ServerInstanceEventCoordinator {
 public:

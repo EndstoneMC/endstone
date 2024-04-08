@@ -14,7 +14,6 @@
 
 #include "bedrock/event/event_coordinator.h"
 
-#include <iomanip>
 #include <sstream>
 
 #include <entt/entt.hpp>
@@ -42,9 +41,96 @@ using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 
+void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &ref)
+{
+    void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) = &ActorEventCoordinator::sendEvent;
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<CoordinatorResult>> &ref)
+{
+    CoordinatorResult (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<CoordinatorResult>> &) =
+        &ActorEventCoordinator::sendEvent;
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<CoordinatorResult>> &ref)
+{
+    CoordinatorResult (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<CoordinatorResult>> &) =
+        &BlockEventCoordinator::sendEvent;
+
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &ref)
+{
+    void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) = &BlockEventCoordinator::sendEvent;
+
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
+{
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
+}
+
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
     return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(14, 15));
+}
+
+void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
+{
+    void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
+        &PlayerEventCoordinator::sendEvent;
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+}
+
+CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &ref)
+{
+    CoordinatorResult (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &) =
+        &PlayerEventCoordinator::sendEvent;
+    std::visit(
+        [](auto &&arg) {
+            // TODO:
+        },
+        ref.reference.event);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
@@ -67,9 +153,6 @@ void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &ins
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStarted, this, instance);
-    for (auto *level : server.getLevels()) {
-        static_cast<EndstoneLevel *>(level)->hookEventHandlers();
-    }
 }
 
 void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &instance)
