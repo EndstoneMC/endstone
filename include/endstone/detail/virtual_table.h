@@ -19,6 +19,7 @@
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
+#include <entt/entt.hpp>
 
 #include "endstone/detail/cast.h"
 #include "endstone/endstone.h"
