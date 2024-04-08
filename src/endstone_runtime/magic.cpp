@@ -13,6 +13,9 @@
 // limitations under the License.
 
 #include "bedrock/command/command_registry.h"
+#include "bedrock/event/gameplay_handler.h"
+#include "endstone/detail/virtual_table.h"
+#include "endstone/endstone.h"
 
 /**
  * NOTE for endstone developers:
@@ -23,7 +26,11 @@
  * These values need to be checked and updated on each game update.
  */
 
-// Check CommandRegistry::describe(CommandParameterData const &) for symbol ids
+/**
+ * Symbols for CommandRegistry
+ *
+ * The values can be determined from CommandRegistry::describe(CommandParameterData const &)
+ */
 const CommandRegistry::Symbol CommandRegistry::Symbol::INT{0x100001};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FLOAT{0x100003};
 const CommandRegistry::Symbol CommandRegistry::Symbol::RELATIVE_FLOAT{0x100004};
@@ -43,3 +50,10 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::RAW_TEXT{0x100046};
 const CommandRegistry::Symbol CommandRegistry::Symbol::JSON{0x10004a};
 const CommandRegistry::Symbol CommandRegistry::Symbol::BLOCK_STATE{0x100054};
 const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x100057};
+
+/**
+ * Virtual Table Sizes
+ */
+namespace endstone::detail {
+template <> const std::size_t VirtualTable<ScriptLevelGameplayHandler>::SIZE = _WIN32_LINUX_(11, 12);
+}  // namespace endstone::detail

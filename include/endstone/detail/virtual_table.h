@@ -24,10 +24,9 @@
 
 namespace endstone::detail {
 
-template <typename T>
-class VirtualTable {
+template <typename T> class VirtualTable {
 public:
-    constexpr VirtualTable(std::uintptr_t *original, std::size_t size) : original_(original), size_(size){};
+    constexpr explicit VirtualTable(std::uintptr_t *original) : original_(original) {}
 
     [[nodiscard]] constexpr std::uintptr_t *begin() const
     {
@@ -36,7 +35,7 @@ public:
 
     [[nodiscard]] constexpr std::uintptr_t *end() const
     {
-        return original_ + size_;
+        return original_ + SIZE;
     }
 
     [[nodiscard]] constexpr std::uintptr_t at(size_t index) const
@@ -46,7 +45,7 @@ public:
 
     [[nodiscard]] constexpr std::size_t size() const
     {
-        return size_;
+        return SIZE;
     }
 
     template <std::size_t Index, typename Return, std::size_t Offset = _WIN32_LINUX_(0, 1), typename... Arg>
@@ -56,18 +55,18 @@ public:
         return func(std::forward<Arg>(args)...);
     }
 
+    static const std::size_t SIZE;
+
 private:
     std::uintptr_t *original_;
-    std::size_t size_;
 };
 
-template <typename T>
-class VirtualTableHook {
+template <typename T> class VirtualTableHook {
 public:
-    VirtualTableHook(T &target, std::size_t size)
-        : original_(entt::locator<VirtualTable<T>>::value_or(*reinterpret_cast<std::uintptr_t **>(&target), size))
+    explicit VirtualTableHook(T &target)
+        : original_(entt::locator<VirtualTable<T>>::value_or(*reinterpret_cast<std::uintptr_t **>(&target)))
     {
-        copy_ = std::make_unique<std::uintptr_t[]>(size + typeinfo_size);
+        copy_ = std::make_unique<std::uintptr_t[]>(original_.size() + typeinfo_size);
         std::copy(original_.begin() - typeinfo_size, original_.end(), copy_.get());
         init();
     }

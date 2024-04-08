@@ -38,11 +38,10 @@ void EndstoneLevel::setTime(int time)
 }
 
 namespace {
-template <typename T, typename Any>
-void hookEventHandler(Any &handler, std::size_t vmt_size)
+template <typename T, typename Any> void hookEventHandler(Any &handler)
 {
     auto &target = static_cast<T &>(handler);
-    auto &hook = entt::locator<VirtualTableHook<T>>::value_or(target, vmt_size);
+    auto &hook = entt::locator<VirtualTableHook<T>>::value_or(target);
     hook.install(target);
 }
 }  // namespace
@@ -54,8 +53,7 @@ BedrockLevel &EndstoneLevel::getBedrockLevel() const
 
 void EndstoneLevel::hookEventHandlers()
 {
-    hookEventHandler<ScriptLevelGameplayHandler>(level_.getLevelEventCoordinator().getLevelGameplayHandler(),
-                                                 _WIN32_LINUX_(11, 12));
+    hookEventHandler<ScriptLevelGameplayHandler>(level_.getLevelEventCoordinator().getLevelGameplayHandler());
 }
 
 };  // namespace endstone::detail
