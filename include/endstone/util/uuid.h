@@ -86,8 +86,15 @@ public:
         rhs = tmp;
     }
 
-    std::uint8_t data[16];
+    union {
+        std::uint8_t data[16];
+        struct {
+            std::int64_t msb;
+            std::int64_t lsb;
+        } parts;
+    };
 };
+static_assert(sizeof(endstone::UUID) == endstone::UUID::size());
 
 inline bool operator==(UUID const &lhs, UUID const &rhs) noexcept
 {

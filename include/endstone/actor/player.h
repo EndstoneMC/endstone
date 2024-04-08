@@ -16,6 +16,7 @@
 
 #include "bedrock/actor/server_player.h"
 #include "endstone/actor/human.h"
+#include "endstone/util/uuid.h"
 
 namespace endstone {
 
@@ -24,6 +25,7 @@ public:
     explicit Player(ServerPlayer &player) : player_(player){};
     ~Player() override = default;
     [[nodiscard]] std::string getName() const override = 0;
+    [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
 
 private:
     ServerPlayer &player_;

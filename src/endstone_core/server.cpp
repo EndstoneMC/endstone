@@ -160,6 +160,21 @@ Player *EndstoneServer::getPlayer(endstone::UUID id) const
     return it->second.get();
 }
 
+void EndstoneServer::addPlayer(std::unique_ptr<Player> player)
+{
+    auto id = player->getUniqueId();
+    if (getPlayer(id) != nullptr) {
+        getLogger().error("Unable to add player {}. Player already exists.", player->getName());
+        return;
+    }
+    players_[id] = std::move(player);
+}
+
+void EndstoneServer::removePlayer(endstone::UUID id)
+{
+    players_.erase(id);
+}
+
 std::string EndstoneServer::getName() const
 {
     return "Endstone";

@@ -53,6 +53,8 @@ public:
     void addLevel(std::unique_ptr<Level> level);
 
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
+    void addPlayer(std::unique_ptr<Player> player);
+    void removePlayer(endstone::UUID id);
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
