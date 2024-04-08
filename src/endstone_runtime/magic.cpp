@@ -55,5 +55,6 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x100057};
  * Virtual Table Sizes
  */
 namespace endstone::detail {
-template <> const std::size_t VirtualTable<ScriptLevelGameplayHandler>::SIZE = _WIN32_LINUX_(11, 12);
+template <>
+const std::size_t VirtualTable<ScriptLevelGameplayHandler>::SIZE = _WIN32_LINUX_(11, 12);
 }  // namespace endstone::detail

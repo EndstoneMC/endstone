@@ -38,7 +38,8 @@ void EndstoneLevel::setTime(int time)
 }
 
 namespace {
-template <typename T, typename Any> void hookEventHandler(Any &handler)
+template <typename T, typename Any>
+void hookEventHandler(Any &handler)
 {
     auto &target = static_cast<T &>(handler);
     auto &hook = entt::locator<VirtualTableHook<T>>::value_or(target);

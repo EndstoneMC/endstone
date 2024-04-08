@@ -24,7 +24,8 @@
 
 namespace endstone::detail {
 
-template <typename T> class VirtualTable {
+template <typename T>
+class VirtualTable {
 public:
     constexpr explicit VirtualTable(std::uintptr_t *original) : original_(original) {}
 
@@ -61,7 +62,8 @@ private:
     std::uintptr_t *original_;
 };
 
-template <typename T> class VirtualTableHook {
+template <typename T>
+class VirtualTableHook {
 public:
     explicit VirtualTableHook(T &target)
         : original_(entt::locator<VirtualTable<T>>::value_or(*reinterpret_cast<std::uintptr_t **>(&target)))
