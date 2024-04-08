@@ -12,12 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/server_player.h"
+#include "bedrock/level/actor/server_player.h"
 
 #include "endstone/detail/hook.h"
 
 void ServerPlayer::doInitialSpawn()
 {
+    // TODO(event): send PlayerJoinEvent
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
     sendCommands();
+}
+
+void ServerPlayer::disconnect()
+{
+    // TODO(event): send PlayerQuitEvent
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }

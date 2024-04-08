@@ -102,12 +102,8 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
         &PlayerEventCoordinator::sendEvent;
     auto visitor = entt::overloaded{
-        [](Details::ValueOrRef<PlayerInitialSpawnEvent const> value) {
-            // TODO(event): call PlayerJoinEvent
-        },
-        [](Details::ValueOrRef<PlayerDisconnectEvent const> value) {
-            // TODO(event): call PlayerQuitEvent
-        },
+        [](Details::ValueOrRef<PlayerInitialSpawnEvent const> value) {},
+        [](Details::ValueOrRef<PlayerDisconnectEvent const> value) {},
         [](auto ignored) {},
     };
     std::visit(visitor, ref.reference.event);
