@@ -15,6 +15,7 @@
 #include "endstone/detail/actor/player.h"
 
 #include "bedrock/actor/components/user_entity_identifier.h"
+#include "bedrock/network/game/text_packet.h"
 #include "endstone/detail/server.h"
 #include "endstone/util/color_format.h"
 
