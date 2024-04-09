@@ -17,6 +17,8 @@
 #include "bedrock/actor/components/user_entity_identifier.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_quit_event.h"
 #include "endstone/util/uuid.h"
 
 using endstone::detail::EndstoneServer;
@@ -31,10 +33,11 @@ endstone::UUID getPlayerUniqueId(ServerPlayer &player)
 
 void ServerPlayer::doInitialSpawn()
 {
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
     auto &server = entt::locator<EndstoneServer>::value();
     auto *player = server.getPlayer(getPlayerUniqueId(*this));
-    // TODO(event): send PlayerJoinEvent
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
+    endstone::PlayerJoinEvent e{*player};
+    server.getPluginManager().callEvent(e);
     sendCommands();
 }
 
@@ -42,7 +45,8 @@ void ServerPlayer::disconnect()
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto *player = server.getPlayer(getPlayerUniqueId(*this));
-    // TODO(event): send PlayerQuitEvent
+    endstone::PlayerQuitEvent e{*player};
+    server.getPluginManager().callEvent(e);
     server.removePlayer(player->getUniqueId());
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }
