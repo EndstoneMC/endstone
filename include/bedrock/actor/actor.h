@@ -210,11 +210,11 @@ public:
     template <typename Component>
     Component *tryGetComponent()
     {
-        return context.tryGetComponent<Component>();
+        return context_.tryGetComponent<Component>();
     }
 
 private:
-    EntityContext context;  // +8
-    bool unknown_;          // +32
-    std::string name_;      // +40
+    EntityContext context_;  // +8
+    bool unknown_;           // +32
+    std::string name_;       // +40
 };
