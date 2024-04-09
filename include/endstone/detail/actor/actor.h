@@ -28,11 +28,13 @@ public:
     EndstoneActor(EndstoneServer &server, BedrockActor &actor) : server_(server), actor_(actor) {}
     ~EndstoneActor() override = default;
 
+    // CommandSender
     void sendMessage(const std::string &message) const override;
     void sendErrorMessage(const std::string &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
 
+    // Permissible
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;

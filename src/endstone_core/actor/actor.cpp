@@ -85,17 +85,6 @@ void EndstoneActor::setOp(bool value)
     mPerm.setOp(value);
 }
 
-namespace {
-class ActorServerOperator : public ServerOperator {
-public:
-    [[nodiscard]] bool isOp() const override
-    {
-        return false;
-    }
-    void setOp(bool value) override {}
-};
-ActorServerOperator gActorServerOperator;
-}  // namespace
-PermissibleBase EndstoneActor::mPerm{&gActorServerOperator};
+PermissibleBase EndstoneActor::mPerm(nullptr);
 
 }  // namespace endstone::detail
