@@ -16,8 +16,8 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/actor/components/abilities.h"
 #include "bedrock/network/game/available_commands_packet.h"
-#include "endstone/actor/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 

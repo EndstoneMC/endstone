@@ -98,8 +98,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
 
 bool EndstonePlayer::isOp() const
 {
-    // TODO(fixme): tryGetComponent<AbilitiesComponent>()
-    return false;
+    return player_.getCommandPermissionLevel() != CommandPermissionLevel::Any;
 }
 
 void EndstonePlayer::setOp(bool value)
