@@ -27,6 +27,12 @@ namespace endstone {
  */
 class UUID {
 public:
+    UUID(std::int64_t msb, std::int64_t lsb)
+    {
+        bits.most_significant = msb;
+        bits.least_significant = lsb;
+    }
+
     std::uint8_t *begin() noexcept
     {
         return data;
@@ -86,12 +92,30 @@ public:
         rhs = tmp;
     }
 
+    [[nodiscard]] std::string str() const
+    {
+        std::string result;
+        result.reserve(36);
+
+        static const char *chars = "0123456789abcdef";
+
+        for (size_t i = 0; i < 16; ++i) {
+            result.push_back(chars[(data[i] >> 4) & 0x0F]);
+            result.push_back(chars[data[i] & 0x0F]);
+            if (i == 3 || i == 5 || i == 7 || i == 9) {
+                result.push_back('-');
+            }
+        }
+
+        return result;
+    }
+
     union {
         std::uint8_t data[16];
         struct {
-            std::int64_t msb;
-            std::int64_t lsb;
-        } parts;
+            std::int64_t most_significant;
+            std::int64_t least_significant;
+        } bits;
     };
 };
 static_assert(sizeof(endstone::UUID) == endstone::UUID::size());

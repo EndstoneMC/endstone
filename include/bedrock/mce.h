@@ -18,9 +18,10 @@
 #include <cstdint>
 
 namespace mce {
-struct UUID {
-    std::uint64_t msb;  // most significant bits
-    std::uint64_t lsb;  // least significant bits
+class UUID {
+public:
+    std::int64_t msb;  // most significant bits
+    std::int64_t lsb;  // least significant bits
 };
 
 class Color {
