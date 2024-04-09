@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
 #include "bedrock/actor/player.h"
+#include "bedrock/bedrock.h"
 
 class ServerPlayer : public Player {
 public:

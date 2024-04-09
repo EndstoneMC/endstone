@@ -20,7 +20,7 @@
 
 class EntityId {
 public:
-    using entity_type = std::uint32_t;                   // NOLINT(*-identifier-naming)
+    using entity_type = std::uint32_t;  // NOLINT(*-identifier-naming)
     explicit constexpr EntityId(entity_type id) : value_(id){};
     explicit constexpr operator entity_type() const
     {

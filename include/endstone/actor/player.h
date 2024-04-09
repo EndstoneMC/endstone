@@ -14,7 +14,6 @@
 
 #pragma once
 
-
 #include "endstone/actor/human.h"
 #include "endstone/util/uuid.h"
 

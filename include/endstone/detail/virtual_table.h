@@ -18,8 +18,8 @@
 #include <functional>
 #include <unordered_map>
 
-#include <spdlog/spdlog.h>
 #include <entt/entt.hpp>
+#include <spdlog/spdlog.h>
 
 #include "endstone/detail/cast.h"
 #include "endstone/endstone.h"

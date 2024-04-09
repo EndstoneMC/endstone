@@ -29,7 +29,7 @@ public:
 
 private:
     ServerPlayer &player_;
-    UUID uuid_{0, 0};
+    UUID uuid_;
 };
 
 }  // namespace endstone::detail

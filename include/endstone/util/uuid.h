@@ -27,6 +27,7 @@ namespace endstone {
  */
 class UUID {
 public:
+    UUID() : data{0} {}
     UUID(std::int64_t msb, std::int64_t lsb)
     {
         bits.most_significant = msb;
