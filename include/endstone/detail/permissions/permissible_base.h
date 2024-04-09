@@ -30,7 +30,6 @@ namespace endstone::detail {
  */
 class PermissibleBase : public Permissible {
 public:
-    explicit PermissibleBase(ServerOperator *opable) : opable_(opable), parent_(*this) {}
     explicit PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
 
     [[nodiscard]] bool isOp() const override;
@@ -49,7 +48,7 @@ private:
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
                                    PermissionAttachment *attachment);
     [[nodiscard]] static bool hasPermission(PermissionDefault default_value, bool op);
-    ServerOperator *opable_;
+    Permissible *opable_;
     Permissible &parent_;
     std::vector<std::unique_ptr<PermissionAttachment>> attachments_{};
     std::unordered_map<std::string, std::unique_ptr<PermissionAttachmentInfo>> permissions_{};

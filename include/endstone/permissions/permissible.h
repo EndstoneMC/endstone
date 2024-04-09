@@ -18,7 +18,6 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
-#include "endstone/permissions/server_operator.h"
 
 namespace endstone {
 
@@ -27,11 +26,25 @@ class Permission;
 class PermissionAttachment;
 
 /**
- * Represents an object that may be assigned permissions
+ * Represents an object that may become a server operator and can be assigned permissions.
  */
-class Permissible : public ServerOperator {
+class Permissible{
 public:
-    ~Permissible() override = default;
+    virtual ~Permissible() = default;
+
+    /**
+     * @brief Checks if this object is a server operator
+     *
+     * @return true if this is an operator, otherwise false
+     */
+    [[nodiscard]] virtual bool isOp() const = 0;
+
+    /**
+     * @brief Sets the operator status of this object
+     *
+     * @param value New operator value
+     */
+    virtual void setOp(bool value) = 0;
 
     /**
      * Checks if this object contains an override for the specified permission, by fully qualified name
