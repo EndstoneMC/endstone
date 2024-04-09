@@ -21,9 +21,6 @@
 class EntityId {
 public:
     using entity_type = std::uint32_t;                   // NOLINT(*-identifier-naming)
-    static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
-    static constexpr entity_type version_mask = 0x7FF;   // 11b
-
     explicit constexpr EntityId(entity_type id) : value_(id){};
     explicit constexpr operator entity_type() const
     {
