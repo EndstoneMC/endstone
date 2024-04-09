@@ -23,7 +23,6 @@ namespace endstone {
 class HumanActor : public Actor {
 public:
     ~HumanActor() override = default;
-    virtual std::string getName() const = 0;
 };
 
 }  // namespace endstone
