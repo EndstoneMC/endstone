@@ -33,7 +33,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
 
 void EndstonePlayer::sendMessage(const std::string &message) const
 {
-    // TODO: create a TextPacket and send it through player_.sendNetworkPacket();
+    // TODO(fixme): create a TextPacket and send it through player_.sendNetworkPacket();
 }
 
 void EndstonePlayer::sendErrorMessage(const std::string &message) const
@@ -98,7 +98,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
 
 bool EndstonePlayer::isOp() const
 {
-    // TODO: tryGetComponent<AbilitiesComponent>()
+    // TODO(fixme): tryGetComponent<AbilitiesComponent>()
     return false;
 }
 
