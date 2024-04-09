@@ -20,6 +20,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/actor/components/user_entity_identifier.h"
 #include "endstone/detail/permissions/permissible_base.h"
 
 namespace endstone::detail {
@@ -66,7 +67,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     auto *command = command_map.getCommand(command_name);
 
     if (!command) {
-        server.getLogger().error("Command '{}' was executed by {} but not registered.", command_name, origin.getName());
+        server.getLogger().error("An unregistered command '{}' was executed by {}.", command_name, origin.getName());
         return;
     }
 
@@ -77,7 +78,9 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
         break;
     }
     case CommandOriginType::Player: {
-        endstone::UUID uuid{origin.getUUID().msb, origin.getUUID().lsb};
+        auto *entity = origin.getEntity();
+        auto *component = entity->tryGetComponent<UserEntityIdentifierComponent>();
+        endstone::UUID uuid{component->uuid.msb, component->uuid.lsb};
         auto *player = server.getPlayer(uuid);
         if (!player) {
             server.getLogger().error("Command '{}' was executed by an unknown player with UUID {}", command_name,
@@ -90,7 +93,7 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     case CommandOriginType::Entity:
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
-        // TODO(permission): add BlockCommandSender, Player, Entity and CommandMinecart
+        // TODO(permission): add BlockCommandSender, Entity and CommandMinecart
     default: {
         auto sender = CommandSenderAdapter(origin, output);
         success = command->execute(sender, args_);
