@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/actor/components/user_entity_identifier.h"
 #include "bedrock/actor/mob.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"

@@ -16,7 +16,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/actor/components/user_entity_identifier_component.h"
+#include "bedrock/actor/components/user_entity_identifier.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 

@@ -156,7 +156,6 @@ class TickingAreasManager;
 class TrackedPacketDataContainer;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
-class UserEntityIdentifierComponent;
 class VariantParameterList;
 class Vec2;
 class Vec3;
