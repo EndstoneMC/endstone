@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include "endstone/command/command_sender.h"
+
 namespace endstone {
 
-class Actor {
+class Actor : public CommandSender {
 public:
-    virtual ~Actor() = default;
+    ~Actor() override = default;
 };
 
 }  // namespace endstone
