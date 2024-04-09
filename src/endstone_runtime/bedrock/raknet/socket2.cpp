@@ -43,8 +43,12 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
     constexpr static int head_size = sizeof(char) + sizeof(std::uint64_t) + sizeof(std::uint64_t) + 16;
     const char *data = send_parameters->data;
     std::size_t strlen = data[head_size] << 8 | data[head_size + 1];
-    std::string ping_response{data + head_size + 2, strlen};
+    if (strlen == 0) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP, socket,
+                                           send_parameters, file, line);
+    }
 
+    std::string ping_response{data + head_size + 2, strlen};
     auto &server = entt::locator<EndstoneServer>::value();
     char buffer[64];
     send_parameters->system_address.ToString(false, buffer);
