@@ -14,7 +14,8 @@ endif ()
 
 
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
-
+add_compile_definitions(ENTT_SPARSE_PAGE=2048)
+add_compile_definitions(ENTT_PACKED_PAGE=128)
 
 # ========
 # packages

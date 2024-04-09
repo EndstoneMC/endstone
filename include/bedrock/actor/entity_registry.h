@@ -18,14 +18,40 @@
 
 #include <entt/entt.hpp>
 
-using EntityId = std::uint32_t;
+class EntityId {
+public:
+    using entity_type = std::uint32_t;                   // NOLINT(*-identifier-naming)
+    static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
+    static constexpr entity_type version_mask = 0x7FF;   // 11b
 
-namespace entt {
-template <>
-struct storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
-    using type = basic_storage<EntityId, EntityId, std::allocator<EntityId>>;  // NOLINT(*-identifier-naming)
+    explicit constexpr EntityId(entity_type id) : value_(id){};
+    explicit constexpr operator entity_type() const
+    {
+        return value_;
+    }
+
+private:
+    entity_type value_;
 };
-}  // namespace entt
+
+struct EntityTraits {
+    using value_type = EntityId;                         // NOLINT(*-identifier-naming)
+    using entity_type = uint32_t;                        // NOLINT(*-identifier-naming)
+    using version_type = uint16_t;                       // NOLINT(*-identifier-naming)
+    static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
+    static constexpr entity_type version_mask = 0x3FFF;  // 14b
+};
+
+template <>
+struct entt::entt_traits<EntityId> : entt::basic_entt_traits<EntityTraits> {
+    static constexpr auto page_size = ENTT_SPARSE_PAGE;
+};
+static_assert(entt::entt_traits<EntityId>::page_size == 2048);
+
+template <>
+struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
+    using type = entt::basic_storage<EntityId, EntityId, std::allocator<EntityId>>;  // NOLINT(*-identifier-naming)
+};
 
 class EntityRegistry : public std::enable_shared_from_this<EntityRegistry> {
 public:
