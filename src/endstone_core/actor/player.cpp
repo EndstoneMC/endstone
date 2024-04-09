@@ -16,23 +16,95 @@
 
 #include "bedrock/actor/components/user_entity_identifier.h"
 #include "endstone/detail/server.h"
+#include "endstone/util/color_format.h"
 
 namespace endstone::detail {
 
-EndstonePlayer::EndstonePlayer(ServerPlayer &player) : player_(player)
+EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
+    : EndstoneHumanActor(server, player), player_(player)
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     if (!component) {
-        auto &server = entt::locator<EndstoneServer>::value();
         server.getLogger().critical("UserEntityIdentifierComponent is not valid when initialising Player.");
         std::terminate();
     }
     uuid_ = {component->uuid.msb, component->uuid.lsb};
 }
 
+void EndstonePlayer::sendMessage(const std::string &message) const
+{
+    // TODO: create a TextPacket and send it through player_.sendNetworkPacket();
+}
+
+void EndstonePlayer::sendErrorMessage(const std::string &message) const
+{
+    sendMessage(ColorFormat::RED + message);
+}
+
+Server &EndstonePlayer::getServer() const
+{
+    return EndstoneHumanActor::getServer();
+}
+
 std::string EndstonePlayer::getName() const
 {
-    return player_.getName();
+    return EndstoneHumanActor::getName();
+}
+
+bool EndstonePlayer::isPermissionSet(std::string name) const
+{
+    return EndstoneHumanActor::isPermissionSet(name);
+}
+
+bool EndstonePlayer::isPermissionSet(const Permission &perm) const
+{
+    return EndstoneHumanActor::isPermissionSet(perm);
+}
+
+bool EndstonePlayer::hasPermission(std::string name) const
+{
+    return EndstoneHumanActor::hasPermission(name);
+}
+
+bool EndstonePlayer::hasPermission(const Permission &perm) const
+{
+    return EndstoneHumanActor::hasPermission(perm);
+}
+
+PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return EndstoneHumanActor::addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin)
+{
+    return EndstoneHumanActor::addAttachment(plugin);
+}
+
+bool EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
+{
+    return EndstoneHumanActor::removeAttachment(attachment);
+}
+
+void EndstonePlayer::recalculatePermissions()
+{
+    EndstoneHumanActor::recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermissions() const
+{
+    return EndstoneHumanActor::getEffectivePermissions();
+}
+
+bool EndstonePlayer::isOp() const
+{
+    // TODO: tryGetComponent<AbilitiesComponent>()
+    return false;
+}
+
+void EndstonePlayer::setOp(bool value)
+{
+    player_.setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
 }
 
 UUID EndstonePlayer::getUniqueId() const

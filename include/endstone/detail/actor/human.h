@@ -22,7 +22,7 @@ using BedrockPlayer = ::Player;
 
 namespace endstone::detail {
 
-class EndstoneHumanActor : public HumanActor, public EndstoneActor {
+class EndstoneHumanActor : public EndstoneActor, public HumanActor {
 public:
     EndstoneHumanActor(EndstoneServer &server, BedrockPlayer &player);
     ~EndstoneHumanActor() override = default;
