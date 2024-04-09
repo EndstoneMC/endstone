@@ -40,12 +40,6 @@ public:
 
     ~AvailableCommandsPacket() override = default;
 
-    int unknown1;                               // +8
-    int unknown2;                               // +12
-    int unknown3;                               // +16
-    std::int64_t unknown4;                      // +24
-    std::int64_t unknown5;                      // +32
-    int unknown6;                               // +40
     std::vector<std::string> enum_names;        // +48
     std::vector<std::string> subcommand_names;  // +72
     std::vector<void *> enums;                  // +96  std::vector<EnumData>

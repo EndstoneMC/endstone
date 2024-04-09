@@ -17,4 +17,13 @@
 class Packet {
 public:
     virtual ~Packet() = default;
+
+private:
+    int unknown1_;           // +8
+    int unknown2_;           // +12
+    int unknown3_;           // +16
+    std::int64_t unknown4_;  // +24
+    std::int64_t unknown5_;  // +32
+    int unknown6_;           // +40
 };
+static_assert(sizeof(Packet) == 48);
