@@ -14,17 +14,22 @@
 
 #pragma once
 
+#include "bedrock/actor/server_player.h"
+#include "endstone/actor/player.h"
 
-#include "endstone/actor/human.h"
-#include "endstone/util/uuid.h"
+namespace endstone::detail {
 
-namespace endstone {
-
-class Player : public HumanActor {
+class EndstonePlayer : public Player {
 public:
-    ~Player() override = default;
-    [[nodiscard]] std::string getName() const override = 0;
-    [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
+    explicit EndstonePlayer(ServerPlayer &player);
+
+    ~EndstonePlayer() override = default;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] UUID getUniqueId() const override;
+
+private:
+    ServerPlayer &player_;
+    UUID uuid_{0, 0};
 };
 
-}  // namespace endstone
+}  // namespace endstone::detail

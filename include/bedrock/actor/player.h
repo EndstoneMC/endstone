@@ -17,10 +17,10 @@
 #include <cstddef>
 #include <memory>
 
+#include "bedrock/actor/mob.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/event/event_coordinator.h"
-#include "bedrock/actor/mob.h"
 #include "bedrock/network/packet_sender.h"
 
 class Player : public Mob {
@@ -113,6 +113,7 @@ protected:
 
 public:
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
+    BEDROCK_API const std::string &getName() const;
 
 protected:
     void sendCommands();  // TODO(player): move to endstone::Player

@@ -17,6 +17,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/network/game/available_commands_packet.h"
+#include "endstone/actor/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 
@@ -46,6 +47,11 @@ void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
     sendCommands();
+}
+
+const std::string &Player::getName() const
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
 void Player::sendCommands()

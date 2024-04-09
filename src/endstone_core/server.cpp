@@ -172,6 +172,10 @@ void EndstoneServer::addPlayer(std::unique_ptr<Player> player)
 
 void EndstoneServer::removePlayer(endstone::UUID id)
 {
+    if (getPlayer(id) == nullptr) {
+        getLogger().error("Unable to remove player with UUID {}. Player does not exist.", id.str());
+        return;
+    }
     players_.erase(id);
 }
 

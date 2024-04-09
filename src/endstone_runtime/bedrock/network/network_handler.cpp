@@ -17,15 +17,21 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/actor/components/user_entity_identifier.h"
+#include "endstone/detail/actor/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 
-bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &player, bool flag)
+bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
 {
+    using endstone::detail::EndstonePlayer;
     using endstone::detail::EndstoneServer;
+
     auto &server = entt::locator<EndstoneServer>::value();
-    auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
-    // TODO(player): create Player object from ServerPlayer& and add to server
+    auto new_player = std::make_unique<EndstonePlayer>(server_player);
+    server.addPlayer(std::move(new_player));
+    auto *component = server_player.tryGetComponent<UserEntityIdentifierComponent>();
+    endstone::UUID uuid = {component->uuid.msb, component->uuid.lsb};
+    auto *player = server.getPlayer(uuid);
     // TODO(event): call PlayerLoginEvent
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, player, flag);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
 }
