@@ -2,16 +2,8 @@ import importlib
 
 
 def test_import_endstone():
-    importlib.import_module("endstone")
-
-
-def test_import_server():
-    module = importlib.import_module("endstone.server")
+    module = importlib.import_module("endstone")
     getattr(module, "Server")
-
-
-def test_import_logger():
-    module = importlib.import_module("endstone.logger")
     getattr(module, "Logger")
 
 
