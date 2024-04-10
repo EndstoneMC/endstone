@@ -98,9 +98,11 @@ install(TARGETS endstone_runtime
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
+if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
     if (MSVC)
         install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+    elseif (UNIX)
+        add_custom_command(TARGET endstone_python POST_BUILD COMMAND ${CMAKE_STRIP} --strip-debug --strip-unneeded $<TARGET_FILE:endstone_python>)
     endif ()
 endif ()
 
