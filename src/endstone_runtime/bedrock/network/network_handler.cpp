@@ -29,9 +29,7 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag
     auto &server = entt::locator<EndstoneServer>::value();
     auto new_player = std::make_unique<EndstonePlayer>(server, server_player);
     server.addPlayer(std::move(new_player));
-    auto *component = server_player.tryGetComponent<UserEntityIdentifierComponent>();
-    endstone::UUID uuid = {component->uuid.msb, component->uuid.lsb};
-    auto *player = server.getPlayer(uuid);
+    auto *player = server_player.getEndstonePlayer();
     // TODO(event): call PlayerLoginEvent
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
 }

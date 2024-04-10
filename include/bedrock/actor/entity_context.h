@@ -30,6 +30,12 @@ public:
         return entt_registry_.try_get<Component>(entity_id_);
     }
 
+    template <typename Component>
+    Component *tryGetComponent() const
+    {
+        return entt_registry_.try_get<Component>(entity_id_);
+    }
+
 private:
     EntityRegistry &registry_;                       // +0
     entt::basic_registry<EntityId> &entt_registry_;  // +8

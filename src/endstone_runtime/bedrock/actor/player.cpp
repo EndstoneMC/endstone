@@ -17,6 +17,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/actor/components/abilities.h"
+#include "bedrock/actor/components/user_entity_identifier.h"
 #include "bedrock/network/game/available_commands_packet.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
@@ -52,6 +53,13 @@ void Player::setPermissions(CommandPermissionLevel level)
 const std::string &Player::getName() const
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
+}
+
+endstone::Player *Player::getEndstonePlayer() const
+{
+    auto &server = entt::locator<endstone::detail::EndstoneServer>::value();
+    auto *component = tryGetComponent<UserEntityIdentifierComponent>();
+    return server.getPlayer({component->uuid.msb, component->uuid.lsb});
 }
 
 void Player::sendCommands()

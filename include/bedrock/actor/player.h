@@ -22,6 +22,7 @@
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/event/event_coordinator.h"
 #include "bedrock/network/packet_sender.h"
+#include "endstone/player.h"
 
 class Player : public Mob {
 public:
@@ -114,6 +115,9 @@ protected:
 public:
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
     [[nodiscard]] BEDROCK_API const std::string &getName() const;
+
+public:
+    [[nodiscard]] endstone::Player *getEndstonePlayer() const;  // Endstone
 
 protected:
     void sendCommands();  // Endstone

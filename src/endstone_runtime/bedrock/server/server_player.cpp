@@ -23,19 +23,11 @@
 
 using endstone::detail::EndstoneServer;
 
-namespace {
-endstone::UUID getPlayerUniqueId(ServerPlayer &player)
-{
-    auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
-    return {component->uuid.msb, component->uuid.lsb};
-}
-}  // namespace
-
 void ServerPlayer::doInitialSpawn()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
     auto &server = entt::locator<EndstoneServer>::value();
-    auto *player = server.getPlayer(getPlayerUniqueId(*this));
+    auto *player = getEndstonePlayer();
     endstone::PlayerJoinEvent e{*player};
     server.getPluginManager().callEvent(e);
     sendCommands();
@@ -44,7 +36,7 @@ void ServerPlayer::doInitialSpawn()
 void ServerPlayer::disconnect()
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto *player = server.getPlayer(getPlayerUniqueId(*this));
+    auto *player = getEndstonePlayer();
     endstone::PlayerQuitEvent e{*player};
     server.getPluginManager().callEvent(e);
     server.removePlayer(player->getUniqueId());

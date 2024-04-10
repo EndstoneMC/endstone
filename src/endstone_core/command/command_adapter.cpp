@@ -20,8 +20,10 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/actor/components/user_entity_identifier.h"
+#include "bedrock/actor/player.h"
 #include "endstone/detail/permissions/permissible_base.h"
+
+using BedrockPlayer = ::Player;
 
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
@@ -79,12 +81,13 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     }
     case CommandOriginType::Player: {
         auto *entity = origin.getEntity();
-        auto *component = entity->tryGetComponent<UserEntityIdentifierComponent>();
-        endstone::UUID uuid{component->uuid.msb, component->uuid.lsb};
-        auto *player = server.getPlayer(uuid);
+        if (!entity->isPlayer()) {
+            server.getLogger().error("Command '{}' was executed by an non-player entity", command_name);
+            return;
+        }
+        auto *player = static_cast<BedrockPlayer *>(entity)->getEndstonePlayer();
         if (!player) {
-            server.getLogger().error("Command '{}' was executed by an unknown player with UUID {}", command_name,
-                                     uuid.str());
+            server.getLogger().error("Command '{}' was executed by an unknown player", command_name);
             return;
         }
         success = command->execute(*player, args_);

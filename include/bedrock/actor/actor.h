@@ -213,6 +213,12 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
+    template <typename Component>
+    Component *tryGetComponent() const
+    {
+        return context_.tryGetComponent<Component>();
+    }
+
 private:
     EntityContext context_;  // +8
     bool unknown_;           // +32
