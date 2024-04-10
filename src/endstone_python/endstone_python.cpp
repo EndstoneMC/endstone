@@ -14,6 +14,8 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/color_format.h"
+#include "endstone/game_mode.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_default.h"
@@ -22,7 +24,7 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
-
+void init_(py::module_ &);  // NOLINT(*-identifier-naming)
 void init_util(py::module_ &);
 void init_command(py::module_ &);
 void init_logger(py::module_ &);
@@ -35,7 +37,6 @@ void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
-
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
     auto event = py::class_<Event>(m, "Event");
@@ -47,6 +48,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission = py::class_<Permission>(m, "Permission");
     auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
 
+    init_(m);
     init_util(m);
     init_command(m);
     init_logger(m);
@@ -55,6 +57,55 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_level(m);
     init_server(server);
     init_event(m, event, event_priority);
+}
+
+void init_(py::module_ &m)
+{
+    py::class_<ColorFormat>(m, "ColorFormat")
+        .def_property_readonly_static("BLACK", [](const py::object &) { return ColorFormat::BLACK; })
+        .def_property_readonly_static("DARK_BLUE", [](const py::object &) { return ColorFormat::DARK_BLUE; })
+        .def_property_readonly_static("DARK_GREEN", [](const py::object &) { return ColorFormat::DARK_GREEN; })
+        .def_property_readonly_static("DARK_AQUA", [](const py::object &) { return ColorFormat::DARK_AQUA; })
+        .def_property_readonly_static("DARK_RED", [](const py::object &) { return ColorFormat::DARK_RED; })
+        .def_property_readonly_static("DARK_PURPLE", [](const py::object &) { return ColorFormat::DARK_PURPLE; })
+        .def_property_readonly_static("GOLD", [](const py::object &) { return ColorFormat::GOLD; })
+        .def_property_readonly_static("GRAY", [](const py::object &) { return ColorFormat::GRAY; })
+        .def_property_readonly_static("DARK_GRAY", [](const py::object &) { return ColorFormat::DARK_GRAY; })
+        .def_property_readonly_static("BLUE", [](const py::object &) { return ColorFormat::BLUE; })
+        .def_property_readonly_static("GREEN", [](const py::object &) { return ColorFormat::GREEN; })
+        .def_property_readonly_static("AQUA", [](const py::object &) { return ColorFormat::AQUA; })
+        .def_property_readonly_static("RED", [](const py::object &) { return ColorFormat::RED; })
+        .def_property_readonly_static("LIGHT_PURPLE", [](const py::object &) { return ColorFormat::LIGHT_PURPLE; })
+        .def_property_readonly_static("YELLOW", [](const py::object &) { return ColorFormat::YELLOW; })
+        .def_property_readonly_static("WHITE", [](const py::object &) { return ColorFormat::WHITE; })
+        .def_property_readonly_static("MINECOIN_GOLD", [](const py::object &) { return ColorFormat::MINECOIN_GOLD; })
+        .def_property_readonly_static("MATERIAL_QUARTZ",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_QUARTZ; })
+        .def_property_readonly_static("MATERIAL_IRON", [](const py::object &) { return ColorFormat::MATERIAL_IRON; })
+        .def_property_readonly_static("MATERIAL_NETHERITE",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_NETHERITE; })
+        .def_property_readonly_static("MATERIAL_REDSTONE",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_REDSTONE; })
+        .def_property_readonly_static("MATERIAL_COPPER",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_COPPER; })
+        .def_property_readonly_static("MATERIAL_GOLD", [](const py::object &) { return ColorFormat::MATERIAL_GOLD; })
+        .def_property_readonly_static("MATERIAL_EMERALD",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_EMERALD; })
+        .def_property_readonly_static("MATERIAL_DIAMOND",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_DIAMOND; })
+        .def_property_readonly_static("MATERIAL_LAPIS", [](const py::object &) { return ColorFormat::MATERIAL_LAPIS; })
+        .def_property_readonly_static("MATERIAL_AMETHYST",
+                                      [](const py::object &) { return ColorFormat::MATERIAL_AMETHYST; })
+        .def_property_readonly_static("OBFUSCATED", [](const py::object &) { return ColorFormat::OBFUSCATED; })
+        .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::BOLD; })
+        .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::ITALIC; })
+        .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::RESET; });
+
+    py::enum_<GameMode>(m, "GameMode")
+        .value("SURVIVAL", GameMode::Survival)
+        .value("CREATIVE", GameMode::Creative)
+        .value("ADVENTURE", GameMode::Adventure)
+        .value("SPECTATOR", GameMode::Spectator);
 }
 
 }  // namespace endstone::detail

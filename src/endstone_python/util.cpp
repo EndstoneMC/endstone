@@ -14,55 +14,10 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/color_format.h"
-#include "endstone/game_mode.h"
-
 namespace py = pybind11;
-
-#define ADD_COLOR_FORMAT(Name) def_property_readonly_static(#Name, [](const py::object &) { return ColorFormat::Name; })
 
 namespace endstone::detail {
 
-void init_util(py::module &m)
-{
-    py::class_<ColorFormat>(m, "ColorFormat")
-        .ADD_COLOR_FORMAT(BLACK)
-        .ADD_COLOR_FORMAT(DARK_BLUE)
-        .ADD_COLOR_FORMAT(DARK_GREEN)
-        .ADD_COLOR_FORMAT(DARK_AQUA)
-        .ADD_COLOR_FORMAT(DARK_RED)
-        .ADD_COLOR_FORMAT(DARK_PURPLE)
-        .ADD_COLOR_FORMAT(GOLD)
-        .ADD_COLOR_FORMAT(GRAY)
-        .ADD_COLOR_FORMAT(DARK_GRAY)
-        .ADD_COLOR_FORMAT(BLUE)
-        .ADD_COLOR_FORMAT(GREEN)
-        .ADD_COLOR_FORMAT(AQUA)
-        .ADD_COLOR_FORMAT(RED)
-        .ADD_COLOR_FORMAT(LIGHT_PURPLE)
-        .ADD_COLOR_FORMAT(YELLOW)
-        .ADD_COLOR_FORMAT(WHITE)
-        .ADD_COLOR_FORMAT(MINECOIN_GOLD)
-        .ADD_COLOR_FORMAT(MATERIAL_QUARTZ)
-        .ADD_COLOR_FORMAT(MATERIAL_IRON)
-        .ADD_COLOR_FORMAT(MATERIAL_NETHERITE)
-        .ADD_COLOR_FORMAT(MATERIAL_REDSTONE)
-        .ADD_COLOR_FORMAT(MATERIAL_COPPER)
-        .ADD_COLOR_FORMAT(MATERIAL_GOLD)
-        .ADD_COLOR_FORMAT(MATERIAL_EMERALD)
-        .ADD_COLOR_FORMAT(MATERIAL_DIAMOND)
-        .ADD_COLOR_FORMAT(MATERIAL_LAPIS)
-        .ADD_COLOR_FORMAT(MATERIAL_AMETHYST)
-        .ADD_COLOR_FORMAT(OBFUSCATED)
-        .ADD_COLOR_FORMAT(BOLD)
-        .ADD_COLOR_FORMAT(ITALIC)
-        .ADD_COLOR_FORMAT(RESET);
-
-    py::enum_<GameMode>(m, "GameMode")
-        .value("SURVIVAL", GameMode::Survival)
-        .value("CREATIVE", GameMode::Creative)
-        .value("ADVENTURE", GameMode::Adventure)
-        .value("SPECTATOR", GameMode::Spectator);
-}
+void init_util(py::module &m) {}
 
 }  // namespace endstone::detail
