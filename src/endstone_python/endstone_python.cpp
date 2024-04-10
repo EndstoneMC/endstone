@@ -13,9 +13,13 @@
 // limitations under the License.
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/color_format.h"
+#include "endstone/command/plugin_command.h"
 #include "endstone/game_mode.h"
+#include "endstone/level.h"
+#include "endstone/logger.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_default.h"
@@ -24,14 +28,16 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
-void init_(py::module_ &);  // NOLINT(*-identifier-naming)
+void init_color_format(py::module_ &);
+void init_game_mode(py::module_ &);
+void init_logger(py::module_ &);
+void init_level(py::module_ &);
+
 void init_util(py::module_ &);
 void init_command(py::module_ &);
-void init_logger(py::module_ &);
 void init_plugin(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
-void init_level(py::module_ &);
 void init_server(py::class_<Server> &server);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 
@@ -48,18 +54,21 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission = py::class_<Permission>(m, "Permission");
     auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
 
-    init_(m);
+    init_color_format(m);
+    init_game_mode(m);
+    init_logger(m);
+    init_level(m);
+
     init_util(m);
     init_command(m);
-    init_logger(m);
+
     init_plugin(m);
     init_permissions(m, permissible, permission, permission_default);
-    init_level(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
 
-void init_(py::module_ &m)
+void init_color_format(py::module_ &m)
 {
     py::class_<ColorFormat>(m, "ColorFormat")
         .def_property_readonly_static("BLACK", [](const py::object &) { return ColorFormat::BLACK; })
@@ -100,12 +109,81 @@ void init_(py::module_ &m)
         .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::BOLD; })
         .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::ITALIC; })
         .def_property_readonly_static("RESET", [](const py::object &) { return ColorFormat::RESET; });
+}
 
+void init_game_mode(py::module_ &m)
+{
     py::enum_<GameMode>(m, "GameMode")
         .value("SURVIVAL", GameMode::Survival)
         .value("CREATIVE", GameMode::Creative)
         .value("ADVENTURE", GameMode::Adventure)
         .value("SPECTATOR", GameMode::Spectator);
+}
+
+void init_level(py::module_ &m)
+{
+    py::class_<Level>(m, "Level")
+        .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
+        .def_property("time", &Level::getTime, &Level::setTime,
+                      "Gets and sets the relative in-game time on the server");
+}
+
+void init_logger(py::module &m)
+{
+    auto logger = py::class_<Logger>(m, "Logger");
+
+    py::enum_<Logger::Level>(logger, "Level")
+        .value("TRACE", Logger::Level::Trace)
+        .value("DEBUG", Logger::Level::Debug)
+        .value("INFO", Logger::Level::Info)
+        .value("WARNING", Logger::Level::Warning)
+        .value("ERROR", Logger::Level::Error)
+        .value("CRITICAL", Logger::Level::Critical)
+        .export_values();
+
+    logger.def("set_level", &Logger::setLevel, py::arg("level"), "Set the logging level for this Logger instance.")
+        .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
+             "Check if the Logger instance is enabled for the given log Level.")
+        .def(
+            "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); },
+            py::arg("message"), "Log a message at the TRACE level.")
+        .def(
+            "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); },
+            py::arg("message"), "Log a message at the DEBUG level.")
+        .def(
+            "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("message"),
+            "Log a message at the INFO level.")
+        .def(
+            "warning", [](const Logger &logger, const std::string &message) { logger.warning(message); },
+            py::arg("message"), "Log a message at the WARNING level.")
+        .def(
+            "error", [](const Logger &logger, const std::string &message) { logger.error(message); },
+            py::arg("message"), "Log a message at the ERROR level.")
+        .def(
+            "critical", [](const Logger &logger, const std::string &message) { logger.critical(message); },
+            py::arg("message"), "Log a message at the CRITICAL level.")
+        .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
+}
+
+void init_server(py::class_<Server> &server)
+{
+    server
+        .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
+                               "Returns the primary logger associated with this server instance.")
+        .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
+                               "Gets the plugin manager for interfacing with plugins.")
+        .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
+                               "Gets a CommandSender for this server.")
+        .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
+             "Gets a PluginCommand with the given name or alias.")
+        .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,
+                               "Gets a list of all levels on this server.")
+        .def("get_level", &Server::getLevel, py::arg("name"), py::return_value_policy::reference,
+             "Gets the level with the given name.")
+        .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+        .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
+        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
+                               "Gets the Minecraft version that this server is running.");
 }
 
 }  // namespace endstone::detail
