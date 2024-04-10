@@ -113,8 +113,8 @@ protected:
 
 public:
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
-    BEDROCK_API const std::string &getName() const;
+    [[nodiscard]] BEDROCK_API const std::string &getName() const;
 
 protected:
-    void sendCommands();  // TODO(player): move to endstone::Player
+    void sendCommands();  // Endstone
 };
