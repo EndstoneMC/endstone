@@ -47,6 +47,9 @@ public:
 
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
+    void sendRawMessage(std::string message) const override;
+    void sendPopup(std::string message) const override;
+    void sendTip(std::string message) const override;
 
 private:
     ServerPlayer &player_;

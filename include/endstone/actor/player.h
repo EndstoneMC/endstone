@@ -24,6 +24,9 @@ public:
     ~Player() override = default;
     [[nodiscard]] std::string getName() const override = 0;
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
+    virtual void sendRawMessage(std::string message) const = 0;
+    virtual void sendPopup(std::string message) const = 0;
+    virtual void sendTip(std::string message) const = 0;
 };
 
 }  // namespace endstone

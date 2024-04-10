@@ -35,11 +35,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
 
 void EndstonePlayer::sendMessage(const std::string &message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
-    text_packet->type = TextPacketType::SystemMessage;
-    text_packet->message = message;
-    player_.sendNetworkPacket(*packet);
+    sendRawMessage(message);
 }
 
 void EndstonePlayer::sendErrorMessage(const std::string &message) const
@@ -115,6 +111,33 @@ void EndstonePlayer::setOp(bool value)
 UUID EndstonePlayer::getUniqueId() const
 {
     return uuid_;
+}
+
+void EndstonePlayer::sendRawMessage(std::string message) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
+    text_packet->type = TextPacketType::Raw;
+    text_packet->message = message;
+    player_.sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::sendPopup(std::string message) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
+    text_packet->type = TextPacketType::Popup;
+    text_packet->message = message;
+    player_.sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::sendTip(std::string message) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
+    text_packet->type = TextPacketType::Tip;
+    text_packet->message = message;
+    player_.sendNetworkPacket(*packet);
 }
 
 }  // namespace endstone::detail
