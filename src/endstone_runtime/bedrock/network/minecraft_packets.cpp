@@ -12,18 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/network/minecraft_packets.h"
 
-class Packet {
-public:
-    virtual ~Packet() = default;
+#include "endstone/detail/hook.h"
 
-private:
-    int unknown1_{2};           // +8
-    int unknown2_{1};           // +12
-    int unknown3_{0};           // +16
-    std::int64_t unknown4_{0};  // +24
-    std::int64_t unknown5_{0};  // +32
-    int unknown6_{0};           // +40
-};
-static_assert(sizeof(Packet) == 48);
+std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
+{
+    std::shared_ptr<Packet> result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftPackets::createPacket, result, id);
+    return result;
+}

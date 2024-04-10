@@ -16,6 +16,7 @@
 
 #include "bedrock/actor/components/user_entity_identifier.h"
 #include "bedrock/network/game/text_packet.h"
+#include "bedrock/network/minecraft_packets.h"
 #include "endstone/detail/server.h"
 #include "endstone/util/color_format.h"
 
@@ -34,7 +35,11 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
 
 void EndstonePlayer::sendMessage(const std::string &message) const
 {
-    // TODO(fixme): create a TextPacket and send it through player_.sendNetworkPacket();
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
+    text_packet->type = TextPacketType::SystemMessage;
+    text_packet->message = message;
+    player_.sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendErrorMessage(const std::string &message) const

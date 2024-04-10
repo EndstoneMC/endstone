@@ -14,16 +14,16 @@
 
 #pragma once
 
-class Packet {
-public:
-    virtual ~Packet() = default;
+#include <memory>
 
-private:
-    int unknown1_{2};           // +8
-    int unknown2_{1};           // +12
-    int unknown3_{0};           // +16
-    std::int64_t unknown4_{0};  // +24
-    std::int64_t unknown5_{0};  // +32
-    int unknown6_{0};           // +40
+#include "bedrock/bedrock.h"
+#include "bedrock/network/packet.h"
+
+enum class MinecraftPacketIds {
+    Text = 9,
 };
-static_assert(sizeof(Packet) == 48);
+
+class MinecraftPackets {
+public:
+    BEDROCK_API static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+};
