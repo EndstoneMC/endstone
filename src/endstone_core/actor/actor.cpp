@@ -14,6 +14,8 @@
 
 #include "endstone/detail/actor/actor.h"
 
+#include "bedrock/command/command_utils.h"
+
 namespace endstone::detail {
 
 void EndstoneActor::sendMessage(const std::string &message) const {}
@@ -27,7 +29,7 @@ Server &EndstoneActor::getServer() const
 
 std::string EndstoneActor::getName() const
 {
-    return "actor";  // TODO(fixme): use CommandUtils::getActorName to get actor name
+    return CommandUtils::getActorName(actor_);
 }
 
 bool EndstoneActor::isPermissionSet(std::string name) const
