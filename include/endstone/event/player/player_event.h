@@ -15,7 +15,7 @@
 #pragma once
 
 #include "endstone/event/event.h"
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 #include "endstone/player.h"
 
 namespace endstone {

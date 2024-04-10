@@ -25,11 +25,11 @@
 #include "bedrock/server/server_instance.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
+#include "endstone/detail/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/server_load_event.h"
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 #include "endstone/plugin/plugin_load_order.h"
 
 namespace py = pybind11;

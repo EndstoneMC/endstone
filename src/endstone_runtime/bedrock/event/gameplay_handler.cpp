@@ -17,11 +17,11 @@
 #include <entt/entt.hpp>
 
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
+#include "endstone/detail/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;

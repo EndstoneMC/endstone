@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/level/level.h"
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 
 using BedrockLevel = ::Level;
 

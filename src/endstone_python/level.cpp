@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 
 #include <pybind11/pybind11.h>
 

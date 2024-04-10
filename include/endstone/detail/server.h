@@ -22,7 +22,7 @@
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/server_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
-#include "endstone/level/level.h"
+#include "endstone/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 

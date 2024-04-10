@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/level/level.h"
+#include "endstone/detail/level.h"
 
 #include <entt/entt.hpp>
 
