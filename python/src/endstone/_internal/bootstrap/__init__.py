@@ -6,7 +6,7 @@ import platform
 import sys
 
 import click
-from endstone._internal.version import __version__, __version_tuple__
+from endstone._internal.version import __version__
 
 logging.basicConfig(
     level=logging.INFO,
@@ -68,7 +68,7 @@ def cli(install_folder: str, install: bool, remote: str) -> None:
         NotImplementedError: If the operating system is not supported.
         FileNotFoundError: If the server executable is not found and install is set to False.
     """
-    from endstone import __minecraft__version__ as minecraft_version
+    from endstone import __minecraft_version__ as minecraft_version
 
     system = platform.system()
     if system == "Windows":
