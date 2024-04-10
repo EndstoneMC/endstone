@@ -46,7 +46,7 @@ Issues = "https://github.com/EndstoneMC/endstone/issues"
 endstone = "endstone._internal.bootstrap:cli"
 
 [tool.scikit-build]
-cmake.args = ["-G Ninja", "--preset conan-release"]
+cmake.args = ["-G Ninja", "--preset conan-relwithdebinfo"]
 cmake.define = { BUILD_TESTING = "OFF" }
 wheel.packages = ["python/src/endstone"]
 wheel.license-files = ["LICENSE"]

@@ -32,7 +32,8 @@
 namespace endstone::detail::hook {
 
 namespace {
-void enumerate_symbols(const char *path, std::function<bool(const std::string &, std::size_t)> callback)
+void enumerate_symbols(const char *path, std::function<bool(const std::string &, std::size_t, std::uint32_t)> callback,
+                       bool load_symbol)
 {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -45,14 +46,15 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 
     SymSetOptions(NULL);  // do not undecorate symbols by default
 
-    auto module_base = SymLoadModuleEx(handle, nullptr, path, nullptr, 0, 0, nullptr, 0);
+    auto module_base =
+        SymLoadModuleEx(handle, nullptr, path, nullptr, 0, 0, nullptr, load_symbol ? 0 : SLMFLAG_NO_SYMBOLS);
     if (!module_base) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymLoadModuleEx failed");
     }
 
     struct UserContext {
         std::size_t module_base;
-        std::function<bool(const std::string &, std::size_t)> callback;
+        std::function<bool(const std::string &, std::size_t, std::uint32_t)> callback;
     };
     auto user_context = UserContext{module_base, std::move(callback)};
 
@@ -60,7 +62,7 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
         handle, module_base, "*" /*Mask*/,
         [](PSYMBOL_INFO info /*pSymInfo*/, ULONG /*SymbolSize*/, PVOID user_context /*UserContext*/) -> BOOL {
             auto *ctx = static_cast<UserContext *>(user_context);
-            if (!(ctx->callback)(info->Name, info->Address - ctx->module_base)) {
+            if (!(ctx->callback)(info->Name, info->Address - ctx->module_base, info->Flags)) {
                 return FALSE;
             }
             return TRUE;
@@ -78,12 +80,17 @@ std::unordered_map<std::string, void *> get_detours()
     std::unordered_map<std::string, void *> detours;
 
     enumerate_symbols(  //
-        module_pathname.c_str(), [&](const std::string &name, std::size_t offset) -> bool {
-            spdlog::debug("{} -> 0x{:x}", name, offset);
-            auto *detour = static_cast<char *>(module_base) + offset;
-            detours.emplace(name, detour);
+        module_pathname.c_str(),
+        [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
+            if (flags & SYMFLAG_EXPORT) {
+                spdlog::info("{} -> 0x{:x}", name, offset);
+                auto *detour = static_cast<char *>(module_base) + offset;
+                detours.emplace(name, detour);
+            }
             return true;
-        });
+        },
+        false);  // set load_symbol to false so symbols are limited to the export table
+    spdlog::info("{}", detours.size());
     return detours;
 }
 
@@ -94,12 +101,14 @@ std::unordered_map<std::string, void *> get_targets()
 
     std::unordered_map<std::string, void *> targets;
     enumerate_symbols(  //
-        executable_pathname.c_str(), [&](const std::string &name, std::size_t offset) -> bool {
+        executable_pathname.c_str(),
+        [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
             spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *target = static_cast<char *>(executable_base) + offset;
             targets.emplace(name, target);
             return true;
-        });
+        },
+        true);
     return targets;
 }
 

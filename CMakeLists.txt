@@ -98,7 +98,11 @@ install(TARGETS endstone_runtime
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-
+if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
+    if (MSVC)
+        install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
+    endif ()
+endif ()
 
 # =====
 # tests
