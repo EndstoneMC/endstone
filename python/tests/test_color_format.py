@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture
 def cls():
-    module = importlib.import_module("endstone.util")
+    module = importlib.import_module("endstone")
     return getattr(module, "ColorFormat")
 
 
