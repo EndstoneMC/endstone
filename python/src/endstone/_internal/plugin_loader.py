@@ -1,10 +1,10 @@
 from importlib.metadata import entry_points, metadata
 from typing import List
 
+from endstone import Server
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadOrder
-from endstone.server import Server
 
 
 class PythonPluginLoader(PluginLoader):
