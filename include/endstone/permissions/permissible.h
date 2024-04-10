@@ -28,7 +28,7 @@ class PermissionAttachment;
 /**
  * Represents an object that may become a server operator and can be assigned permissions.
  */
-class Permissible{
+class Permissible {
 public:
     virtual ~Permissible() = default;
 

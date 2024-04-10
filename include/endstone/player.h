@@ -22,10 +22,33 @@ namespace endstone {
 class Player : public HumanActor {
 public:
     ~Player() override = default;
-    [[nodiscard]] std::string getName() const override = 0;
+
+    /**
+     * Returns the UUID of this player
+     *
+     * @return Player UUID
+     */
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
+
+    /**
+     * Sends this player a raw message
+     *
+     * @param message Message to be displayed
+     */
     virtual void sendRawMessage(std::string message) const = 0;
+
+    /**
+     * Sends this player a popup message
+     *
+     * @param message Message to be displayed
+     */
     virtual void sendPopup(std::string message) const = 0;
+
+    /**
+     * Sends this player a tip message
+     *
+     * @param message Message to be displayed
+     */
     virtual void sendTip(std::string message) const = 0;
 };
 

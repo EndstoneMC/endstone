@@ -23,6 +23,7 @@
 #include "bedrock/event/coordinator_result.h"
 #include "bedrock/level/level.h"
 #include "bedrock/server/server_instance.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
@@ -30,7 +31,6 @@
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/level/level.h"
 #include "endstone/plugin/plugin_load_order.h"
-#include "endstone/util/color_format.h"
 
 namespace py = pybind11;
 

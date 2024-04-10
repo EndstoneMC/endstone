@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/actor/player.h"
+#include "endstone/detail/player.h"
 
 #include "bedrock/actor/components/user_entity_identifier.h"
 #include "bedrock/network/game/text_packet.h"
 #include "bedrock/network/minecraft_packets.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/server.h"
-#include "endstone/util/color_format.h"
 
 namespace endstone::detail {
 

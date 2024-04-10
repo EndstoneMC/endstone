@@ -16,10 +16,29 @@
 
 namespace endstone {
 
+/**
+ * Represents the various type of game modes that HumanActors may have
+ */
 enum class GameMode {
+    /**
+     * Survival mode is the "normal" gameplay type, with no special features.
+     */
     Survival = 0,
+
+    /**
+     * Creative mode may fly, build instantly, become invulnerable and create free items.
+     */
     Creative = 1,
+
+    /**
+     * Adventure mode cannot break blocks without the correct tools.
+     */
     Adventure = 2,
+
+    /**
+     * Spectator mode cannot interact with the world in anyway and is invisible to normal players. This grants the
+     * player the ability to no-clip through the world.
+     */
     Spectator = 3,
 };
 

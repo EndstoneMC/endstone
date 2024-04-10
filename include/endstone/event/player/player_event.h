@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include "endstone/actor/player.h"
 #include "endstone/event/event.h"
 #include "endstone/level/level.h"
+#include "endstone/player.h"
 
 namespace endstone {
 

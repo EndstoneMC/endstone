@@ -18,7 +18,7 @@
 #include <utility>
 
 #include "endstone/event/event.h"
-#include "endstone/util/game_mode.h"
+#include "endstone/game_mode.h"
 
 namespace endstone {
 

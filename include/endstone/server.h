@@ -19,9 +19,9 @@
 #include <string_view>
 #include <vector>
 
-#include "endstone/actor/player.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
+#include "endstone/player.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {

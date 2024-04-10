@@ -17,7 +17,7 @@
 #include <spdlog/pattern_formatter.h>
 #include <spdlog/spdlog.h>
 
-#include "endstone/util/color_format.h"
+#include "endstone/color_format.h"
 
 namespace endstone::detail {
 

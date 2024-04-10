@@ -20,9 +20,8 @@
 
 #include <entt/entt.hpp>
 
-#include "endstone/detail/command/command_map.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/server.h"
-#include "endstone/util/color_format.h"
 
 namespace endstone::detail {
 

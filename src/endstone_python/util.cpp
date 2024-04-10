@@ -14,8 +14,8 @@
 
 #include <pybind11/pybind11.h>
 
-#include "endstone/util/color_format.h"
-#include "endstone/util/game_mode.h"
+#include "endstone/color_format.h"
+#include "endstone/game_mode.h"
 
 namespace py = pybind11;
 

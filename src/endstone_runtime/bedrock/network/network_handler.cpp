@@ -17,8 +17,8 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/actor/components/user_entity_identifier.h"
-#include "endstone/detail/actor/player.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
 
 bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
