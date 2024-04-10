@@ -29,7 +29,7 @@ namespace endstone::detail {
 DebugCommand::DebugCommand() : EndstoneCommand("debug")
 {
     setDescription("Toggle the debug mode");
-    setUsages("/debug ()<toggle: Boolean>");
+    setUsages("/debug <toggle: bool>");
     setPermissions("endstone.command.debug");
 }
 

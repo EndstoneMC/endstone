@@ -177,6 +177,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     data.enum_name = it->first.c_str();
                     data.enum_symbol = {symbol};
                 }
+                else if (parameter.type == "bool") {
+                    static auto symbol = registry.addEnumValues("Boolean", {});
+                    data.type = CommandParameterDataType::Enum;
+                    data.enum_name = "Boolean";
+                    data.enum_symbol = {symbol};
+                }
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
                     if (it == gTypeSymbols.end()) {
