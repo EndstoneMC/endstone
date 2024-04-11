@@ -29,6 +29,12 @@
 #define ENDSTONE_EXPORT __attribute__((visibility("default")))
 #endif
 
+#if defined(_MSC_VER)
+#define ENDSTONE_NOINLINE __declspec(noinline) inline
+#else
+#define ENDSTONE_NOINLINE __attribute__((noinline)) inline
+#endif
+
 #ifdef _WIN32
 #define _WIN32_LINUX_(win32, linux) win32
 #elif __linux__
