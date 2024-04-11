@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
 class ColorFormat:
@@ -624,6 +624,18 @@ class Player(HumanActor):
     def unique_id(self) -> uuid.UUID:
         """
         Returns the UUID of this player
+        """
+class PlayerJoinEvent(Event):
+    @property
+    def player(self) -> Player:
+        """
+        Returns the Player who joins the server
+        """
+class PlayerQuitEvent(Event):
+    @property
+    def player(self) -> Player:
+        """
+        Returns the Player who leaves the server
         """
 class Plugin(CommandExecutor):
     def __init__(self) -> None:

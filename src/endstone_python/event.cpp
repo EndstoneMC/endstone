@@ -17,6 +17,8 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/event/event_priority.h"
+#include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
 #include "endstone/event/server/server_command_event.h"
@@ -97,22 +99,30 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                       "The current game mode.");
 
     py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent")
-        .def_property_readonly("plugin", &PluginEnableEvent::getPlugin);
+        .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);
 
     py::class_<PluginDisableEvent, Event>(m, "PluginDisableEvent")
-        .def_property_readonly("plugin", &PluginDisableEvent::getPlugin);
+        .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference);
 
     py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent")
-        .def_property_readonly("level", &WeatherChangeEvent::getLevel,
+        .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
                                "Returns the Level where this event is occurring")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,
                                "Gets the state of weather that the world is being set to");
 
     py::class_<ThunderChangeEvent, Event>(m, "ThunderChangeEvent")
-        .def_property_readonly("level", &WeatherChangeEvent::getLevel,
+        .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
                                "Returns the Level where this event is occurring")
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
                                "Gets the state of thunder that the world is being set to");
+
+    py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent")
+        .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the Player who joins the server");
+
+    py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent")
+        .def_property_readonly("player", &PlayerQuitEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the Player who leaves the server");
 }
 
 }  // namespace endstone::detail
