@@ -113,6 +113,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
         self.requires("entt/3.13.0")
+        self.requires("cpptrace/0.5.2")
         if self.settings.os == "Linux":
             self.requires("lief/0.10.1")
 
@@ -166,6 +167,7 @@ class EndstoneRecipe(ConanFile):
             "funchook::funchook",
             "magic_enum::magic_enum",
             "pybind11::pybind11",
+            "cpptrace::cpptrace",
         ]
         if self.settings.os == "Linux":
             self.cpp_info.components["runtime"].requires.extend(["lief::lief"])

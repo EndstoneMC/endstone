@@ -1,4 +1,5 @@
 import ctypes
+import os
 import subprocess
 from ctypes import get_last_error
 from ctypes.wintypes import (
@@ -104,8 +105,18 @@ class WindowsBootstrap(Bootstrap):
     def _create_process(self, *args, **kwargs) -> None:
         self._add_loopback_exemption()
 
+        # Add paths for symbol lookup
+        env = os.environ.copy()
+        symbol_path = env.get("_NT_SYMBOL_PATH", "")
+        symbol_path_list = symbol_path.split(os.pathsep)
+        symbol_path_list = [
+            str(self._endstone_runtime_path.parent.absolute()),
+            str(self.plugin_path.absolute()),
+        ] + symbol_path_list
+        env["_NT_SYMBOL_PATH"] = os.pathsep.join(symbol_path_list)
+
         # Create the process is a suspended state
-        super()._create_process(creationflags=CREATE_SUSPENDED)
+        super()._create_process(creationflags=CREATE_SUSPENDED, env=env)
         handle_proc = int(self._process._handle)
         lib_path = str(self._endstone_runtime_path.absolute())
 
