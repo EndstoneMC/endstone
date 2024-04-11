@@ -16,6 +16,7 @@
 
 #ifdef _MSC_VER
 
+#include <csignal>
 #include <iostream>
 
 #include <cpptrace/cpptrace.hpp>
@@ -35,13 +36,20 @@ void print_crash_dump()
 void terminate_handler()
 {
     print_crash_dump();
-    std::abort();
+    std::quick_exit(1);
 }
 
 void purecall_handler()
 {
+    printf("Pure virtual function called!\n");
     print_crash_dump();
-    std::abort();
+    std::quick_exit(1);
+}
+
+void signal_handler(int)
+{
+    print_crash_dump();
+    std::quick_exit(1);
 }
 
 LONG WINAPI exception_filter(EXCEPTION_POINTERS *info)
@@ -56,6 +64,7 @@ void register_signal_handler()
 {
     std::set_terminate(terminate_handler);
     _set_purecall_handler(purecall_handler);
+    signal(SIGABRT, signal_handler);
     _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
     SetUnhandledExceptionFilter(exception_filter);
 }
