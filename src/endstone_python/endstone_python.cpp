@@ -17,6 +17,7 @@
 
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/game_mode.h"
 #include "endstone/level.h"
 #include "endstone/logger.h"
@@ -38,6 +39,8 @@ void init_command(py::module_ &);
 void init_plugin(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
+void init_actor(py::module_ &);
+void init_player(py::module_ &);
 void init_server(py::class_<Server> &server);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 
@@ -64,6 +67,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     init_plugin(m);
     init_permissions(m, permissible, permission, permission_default);
+    init_actor(m);
+    init_player(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
@@ -184,6 +189,15 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
         .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
                                "Gets the Minecraft version that this server is running.");
+}
+
+void init_player(py::module_ &m)
+{
+    py::class_<Player, HumanActor>(m, "Player")
+        .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
+        .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")
+        .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a raw message")
+        .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a raw message");
 }
 
 }  // namespace endstone::detail

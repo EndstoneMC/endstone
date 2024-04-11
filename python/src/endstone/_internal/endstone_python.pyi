@@ -1,6 +1,9 @@
 from __future__ import annotations
 import typing
-__all__ = ['ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+import uuid
+__all__ = ['Actor', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+class Actor(CommandSender):
+    pass
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -273,6 +276,8 @@ class GameMode:
     @property
     def value(self) -> int:
         ...
+class HumanActor(Actor):
+    pass
 class Level:
     @property
     def name(self) -> str:
@@ -602,6 +607,24 @@ class PermissionDefault:
     @property
     def value(self) -> int:
         ...
+class Player(HumanActor):
+    def send_popup(self, message: str) -> None:
+        """
+        Sends this player a raw message
+        """
+    def send_raw_message(self, message: str) -> None:
+        """
+        Sends this player a raw message
+        """
+    def send_tip(self, message: str) -> None:
+        """
+        Sends this player a raw message
+        """
+    @property
+    def unique_id(self) -> uuid.UUID:
+        """
+        Returns the UUID of this player
+        """
 class Plugin(CommandExecutor):
     def __init__(self) -> None:
         ...
