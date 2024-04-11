@@ -42,7 +42,7 @@ public:
         }
         catch (std::exception &e) {
             getLogger().error(e.what());
-            std::terminate();
+            throw e;
         }
     }
 

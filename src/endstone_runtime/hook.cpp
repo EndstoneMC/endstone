@@ -32,8 +32,7 @@ void *get_original(void *detour)
 {
     auto it = gOriginalsByDetour.find(detour);
     if (it == gOriginalsByDetour.end()) {
-        spdlog::critical("No original function can be found for {}!!", detour);
-        std::terminate();
+        throw std::runtime_error(fmt::format("No original function can be found for address {}", detour));
     }
     return it->second;
 }
@@ -42,8 +41,7 @@ void *get_original(const std::string &name)
 {
     auto it = gOriginalsByName.find(name);
     if (it == gOriginalsByName.end()) {
-        spdlog::critical("No original function can be found for {}!!", name);
-        std::terminate();
+        throw std::runtime_error(fmt::format("No original function can be found for name {}", name));
     }
     return it->second;
 }

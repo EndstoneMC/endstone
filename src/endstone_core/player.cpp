@@ -27,8 +27,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     if (!component) {
-        server.getLogger().critical("UserEntityIdentifierComponent is not valid when initialising Player.");
-        std::terminate();
+        throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
     uuid_ = {component->uuid.msb, component->uuid.lsb};
 }

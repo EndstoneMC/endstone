@@ -39,8 +39,7 @@ endstone::Level &getLevel(LevelGameplayHandler *handler)
                      .getLevelGameplayHandler()) == handler;
     });
     if (it == levels.end()) {
-        server.getLogger().critical("Unable to find level associated with the provided LevelGameplayHandler");
-        std::terminate();
+        throw std::runtime_error("Unable to find level associated with the provided LevelGameplayHandler");
     }
     auto &level = **it;
     return level;
