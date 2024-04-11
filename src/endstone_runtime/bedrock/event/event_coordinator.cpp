@@ -28,8 +28,8 @@
 #include "endstone/detail/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/signal_handler.h"
 #include "endstone/event/server/server_load_event.h"
-#include "endstone/level.h"
 #include "endstone/plugin/plugin_load_order.h"
 
 namespace py = pybind11;
@@ -136,6 +136,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
+    endstone::detail::register_signal_handler();
     auto &server = entt::locator<EndstoneServer>::value();
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
