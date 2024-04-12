@@ -20,7 +20,7 @@
 // DbgHelp.h must be included after Windows.h
 #include <DbgHelp.h>
 
-#include <random>
+#include <chrono>
 #include <string>
 #include <system_error>
 #include <unordered_map>
@@ -31,14 +31,21 @@
 
 namespace endstone::detail::hook {
 
+enum SymTagEnum {
+    SymTagPublicSymbol = 10,
+};
+
 namespace {
 void enumerate_symbols(const char *path, std::function<bool(const std::string &, std::size_t, std::uint32_t)> callback,
                        bool load_symbol)
 {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<std::size_t> dist(1, static_cast<std::size_t>(-1));
-    HANDLE handle = reinterpret_cast<HANDLE>(dist(gen));  // NOLINT
+    auto start = std::chrono::high_resolution_clock::now();
+
+    HANDLE current_process = GetCurrentProcess();
+    HANDLE handle;
+    if (!DuplicateHandle(current_process, current_process, current_process, &handle, 0, FALSE, DUPLICATE_SAME_ACCESS)) {
+        throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "DuplicateHandle failed");
+    }
 
     if (!SymInitialize(handle, nullptr, FALSE)) {
         throw std::system_error(static_cast<int>(GetLastError()), std::system_category(), "SymInitialize failed");
@@ -58,8 +65,8 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
     };
     auto user_context = UserContext{module_base, std::move(callback)};
 
-    SymEnumSymbols(
-        handle, module_base, "*" /*Mask*/,
+    SymSearch(
+        handle, module_base, 0, SymTagPublicSymbol, "*", 0,
         [](PSYMBOL_INFO info /*pSymInfo*/, ULONG /*SymbolSize*/, PVOID user_context /*UserContext*/) -> BOOL {
             auto *ctx = static_cast<UserContext *>(user_context);
             if (!(ctx->callback)(info->Name, info->Address - ctx->module_base, info->Flags)) {
@@ -67,9 +74,13 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
             }
             return TRUE;
         },
-        &user_context);
+        &user_context, SYMSEARCH_GLOBALSONLY);
 
     SymCleanup(handle);
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    spdlog::debug("enumerate_symbols(): time elapsed: {}ms", duration.count());
 }
 }  // namespace
 
@@ -106,7 +117,7 @@ const std::unordered_map<std::string, void *> &get_targets()
 
     auto *executable_base = os::get_executable_base();
     const auto executable_pathname = os::get_executable_pathname();
-    auto &detours = get_detours();
+    const auto &detours = get_detours();
 
     enumerate_symbols(  //
         executable_pathname.c_str(),
