@@ -73,11 +73,15 @@ void enumerate_symbols(const char *path, std::function<bool(const std::string &,
 }
 }  // namespace
 
-std::unordered_map<std::string, void *> get_detours()
+const std::unordered_map<std::string, void *> &get_detours()
 {
+    static std::unordered_map<std::string, void *> detours;
+    if (!detours.empty()) {
+        return detours;
+    }
+
     auto *module_base = os::get_module_base();
     const auto module_pathname = os::get_module_pathname();
-    std::unordered_map<std::string, void *> detours;
 
     enumerate_symbols(  //
         module_pathname.c_str(),
@@ -93,15 +97,24 @@ std::unordered_map<std::string, void *> get_detours()
     return detours;
 }
 
-std::unordered_map<std::string, void *> get_targets()
+const std::unordered_map<std::string, void *> &get_targets()
 {
+    static std::unordered_map<std::string, void *> targets;
+    if (!targets.empty()) {
+        return targets;
+    }
+
     auto *executable_base = os::get_executable_base();
     const auto executable_pathname = os::get_executable_pathname();
+    auto &detours = get_detours();
 
-    std::unordered_map<std::string, void *> targets;
     enumerate_symbols(  //
         executable_pathname.c_str(),
         [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
+            if (detours.find(name) == detours.end()) {
+                return true;
+            }
+
             spdlog::debug("{} -> 0x{:x}", name, offset);
             auto *target = static_cast<char *>(executable_base) + offset;
             targets.emplace(name, target);

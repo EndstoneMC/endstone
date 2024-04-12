@@ -115,7 +115,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("entt/3.13.0")
         self.requires("cpptrace/0.5.2")
         if self.settings.os == "Linux":
-            self.requires("lief/0.10.1")
+            self.requires("libelf/0.8.13")
 
         self.test_requires("gtest/1.14.0")
 
@@ -170,6 +170,6 @@ class EndstoneRecipe(ConanFile):
             "cpptrace::cpptrace",
         ]
         if self.settings.os == "Linux":
-            self.cpp_info.components["runtime"].requires.extend(["lief::lief"])
+            self.cpp_info.components["runtime"].requires.extend(["libelf::libelf"])
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp"])

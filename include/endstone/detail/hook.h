@@ -30,8 +30,8 @@ namespace endstone::detail::hook {
 void *get_original(void *detour);
 void *get_original(const std::string &name);
 
-std::unordered_map<std::string, void *> get_targets();
-std::unordered_map<std::string, void *> get_detours();
+const std::unordered_map<std::string, void *> &get_targets();
+const std::unordered_map<std::string, void *> &get_detours();
 
 }  // namespace endstone::detail::hook
 

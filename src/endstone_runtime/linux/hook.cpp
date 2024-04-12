@@ -16,64 +16,125 @@
 
 #include "endstone/detail/hook.h"
 
+#include <fcntl.h>
+#include <gelf.h>
+#include <libelf.h>
+#include <unistd.h>
+
+#include <string>
 #include <unordered_map>
 
-#include <LIEF/LIEF.hpp>
-#include <funchook/funchook.h>
 #include <spdlog/spdlog.h>
 
 #include "endstone/detail/os.h"
 
-namespace endstone::detail::hook {
-
-std::unordered_map<std::string, void *> get_detours()
+namespace {
+void read_elf(const std::string &module_pathname, uint32_t section_type,
+              const std::function<void(Elf *, GElf_Shdr &, GElf_Sym &)> &sym_handler)
 {
-    // Find detours
-    auto *module_base = os::get_module_base();
-    auto module_pathname = os::get_module_pathname();
-
-    std::unordered_map<std::string, void *> detours;
-
-    spdlog::debug("{}", module_pathname);
-    auto elf = LIEF::ELF::Parser::parse(module_pathname);
-    for (const auto &symbol : elf->static_symbols()) {
-        if (!symbol.is_exported()) {
-            continue;
-        }
-
-        if (symbol.binding() != LIEF::ELF::SYMBOL_BINDINGS::STB_GLOBAL) {
-            continue;
-        }
-
-        auto name = symbol.name();
-        auto offset = symbol.value();
-        spdlog::debug("{} -> 0x{:x}", name, offset);
-        auto *detour = static_cast<char *>(module_base) + offset;
-        detours.emplace(symbol.name(), detour);
+    if (elf_version(EV_CURRENT) == EV_NONE) {
+        throw std::runtime_error("ELF library initialization failed");
     }
 
+    int fd = open(module_pathname.c_str(), O_RDONLY);
+    if (fd < 0) {
+        throw std::runtime_error("Failed to open file: " + module_pathname);
+    }
+
+    Elf *elf = elf_begin(fd, ELF_C_READ, nullptr);
+    if (!elf) {
+        throw std::runtime_error("elf_begin() failed.");
+    }
+
+    Elf_Scn *scn = nullptr;
+    while ((scn = elf_nextscn(elf, scn)) != nullptr) {
+        GElf_Shdr shdr;
+        if (gelf_getshdr(scn, &shdr) != &shdr) {
+            throw std::runtime_error("gelf_getshdr() failed.");
+        }
+
+        if (shdr.sh_type == section_type) {
+            // Found the dynamic symbol table. Read it.
+            Elf_Data *data = elf_getdata(scn, nullptr);
+            const auto symbol_count = shdr.sh_size / shdr.sh_entsize;
+
+            for (auto i = 0; i < symbol_count; ++i) {
+                GElf_Sym sym;
+                if (gelf_getsym(data, i, &sym) != &sym) {
+                    throw std::runtime_error("gelf_getsym() failed.");
+                }
+
+                sym_handler(elf, shdr, sym);
+            }
+
+            break;  // No need to check further sections
+        }
+    }
+
+    elf_end(elf);
+    close(fd);
+}
+}  // namespace
+
+namespace endstone::detail::hook {
+
+const std::unordered_map<std::string, void *> &get_detours()
+{
+    static std::unordered_map<std::string, void *> detours;
+    if (!detours.empty()) {
+        return detours;
+    }
+
+    auto *module_base = os::get_module_base();
+    auto module_pathname = os::get_module_pathname();
+    spdlog::debug("{}", module_pathname);
+
+    read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
+        if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
+            GELF_ST_BIND(sym.st_info) != STB_GLOBAL) {
+            return;
+        }
+
+        char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
+        if (name == nullptr) {
+            return;
+        }
+        spdlog::debug("{} -> 0x{:x}", name, sym.st_value);
+        detours[name] = reinterpret_cast<char *>(module_base) + sym.st_value;
+    });
     return detours;
 }
 
-std::unordered_map<std::string, void *> get_targets()
+const std::unordered_map<std::string, void *> &get_targets()
 {
-    // Find targets
-    auto *executable_base = os::get_executable_base();
-    std::unordered_map<std::string, void *> targets;
-    const auto executable_pathname = os::get_executable_pathname() + "_symbols.debug";
+    static std::unordered_map<std::string, void *> targets;
+    if (!targets.empty()) {
+        return targets;
+    }
 
-    auto elf = LIEF::ELF::Parser::parse(executable_pathname);
-    for (const auto &symbol : elf->symbols()) {
-        if (symbol.binding() != LIEF::ELF::SYMBOL_BINDINGS::STB_LOCAL) {
-            continue;
+    auto *executable_base = os::get_executable_base();
+    const auto executable_pathname = os::get_executable_pathname() + "_symbols.debug";
+    const auto &detours = get_detours();
+    spdlog::debug("{}", executable_pathname);
+
+    read_elf(executable_pathname, SHT_SYMTAB, [&](auto *elf, auto &shdr, auto &sym) {
+        if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
+            GELF_ST_BIND(sym.st_info) != STB_LOCAL) {
+            return;
         }
 
-        auto name = symbol.name();
-        auto offset = symbol.value();
-        spdlog::debug("{} -> 0x{:x}", name, offset);
-        auto *target = static_cast<char *>(executable_base) + offset;
-        targets.emplace(name, target);
-    }
+        char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
+        if (name == nullptr) {
+            return;
+        }
+
+        if (detours.find(name) == detours.end()) {
+            return;
+        }
+
+        spdlog::debug("{} -> 0x{:x}", name, sym.st_value);
+        targets[name] = reinterpret_cast<char *>(executable_base) + sym.st_value;
+    });
 
     return targets;
 }

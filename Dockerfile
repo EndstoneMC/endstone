@@ -10,7 +10,7 @@ FROM base AS builder
 ARG LLVM_VERSION=15
 
 RUN apt-get update -y -q \
-    && apt-get install -y -q lsb-release wget software-properties-common gnupg \
+    && apt-get install -y -q build-essential lsb-release wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
     && chmod +x llvm.sh \
     && ./llvm.sh ${LLVM_VERSION} \
