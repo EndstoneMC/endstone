@@ -56,12 +56,17 @@ class EndstoneRecipe(ConanFile):
         import re
 
         tag, num_commits, commit_hash = re.match(r"^v?(\S+)-(\d+)-g([a-f0-9]+)$", tag).groups()
+        num_commits = int(num_commits)
         version = Version(tag)
+
+        if num_commits > 0:
+            version = version.bump(len(version._items) - 1)
+
         value = ".".join(str(i) for i in version.main)
         if version.pre:
             value += f"-{version.pre}"
 
-        if (num_commits := int(num_commits)) > 0:
+        if num_commits > 0:
             value += f".dev{num_commits}"
 
         if version.build:
