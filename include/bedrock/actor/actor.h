@@ -21,6 +21,7 @@
 
 #include "bedrock/actor/entity_context.h"
 #include "bedrock/actor/entity_registry.h"
+#include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
@@ -51,7 +52,7 @@ public:
     virtual ~Actor() = 0;
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
-    virtual void remove() = 0;
+    BEDROCK_API virtual void remove();
     virtual bool isRuntimePredictedMovementEnabled() = 0;
     [[nodiscard]] virtual Vec3 getFiringPos() const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyRot(float) const = 0;

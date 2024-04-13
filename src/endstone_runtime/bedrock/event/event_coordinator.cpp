@@ -46,6 +46,7 @@ void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &
 {
     void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) = &ActorEventCoordinator::sendEvent;
     auto visitor = entt::overloaded{
+        // [](Details::ValueOrRef<ActorRemovedEvent const> value) { cpptrace::generate_trace().print(); },
         [](auto ignored) {},
     };
     std::visit(visitor, ref.reference.event);
