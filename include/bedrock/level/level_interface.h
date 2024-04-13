@@ -24,6 +24,7 @@
 
 #include "bedrock/actor/components/user_entity_identifier.h"
 #include "bedrock/actor/mob.h"
+#include "bedrock/actor/permissions_handler.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_registry.h"
