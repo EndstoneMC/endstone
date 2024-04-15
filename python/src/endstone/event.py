@@ -1,6 +1,7 @@
 from endstone._internal.endstone_python import (
     Event,
     EventPriority,
+    ActorSpawnEvent,
     PlayerJoinEvent,
     PlayerQuitEvent,
     PluginEnableEvent,
@@ -16,6 +17,7 @@ __all__ = [
     "event_handler",
     "Event",
     "EventPriority",
+    "ActorSpawnEvent",
     "PlayerJoinEvent",
     "PlayerQuitEvent",
     "PluginEnableEvent",

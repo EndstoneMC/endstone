@@ -1,9 +1,15 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorSpawnEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
+class ActorSpawnEvent(Event):
+    @property
+    def actor(self) -> Actor:
+        """
+        Returns the Actor being spawned
+        """
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
@@ -610,7 +616,7 @@ class PermissionDefault:
 class Player(HumanActor):
     def send_popup(self, message: str) -> None:
         """
-        Sends this player a raw message
+        Sends this player a popup message
         """
     def send_raw_message(self, message: str) -> None:
         """
@@ -618,7 +624,7 @@ class Player(HumanActor):
         """
     def send_tip(self, message: str) -> None:
         """
-        Sends this player a raw message
+        Sends this player a tip message
         """
     @property
     def unique_id(self) -> uuid.UUID:

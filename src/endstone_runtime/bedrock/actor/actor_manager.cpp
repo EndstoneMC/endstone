@@ -43,7 +43,7 @@ Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<Entity
     auto endstone_actor = std::make_unique<EndstoneActor>(server, *actor);
     endstone::ActorSpawnEvent e{*endstone_actor};
     server.getPluginManager().callEvent(e);
-    e.setCancelled(true);
+
     if (e.isCancelled()) {
         actor->despawn();
     }
