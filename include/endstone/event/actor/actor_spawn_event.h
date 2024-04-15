@@ -14,28 +14,30 @@
 
 #pragma once
 
-#include "endstone/event/event.h"
-#include "endstone/player.h"
+#include "endstone/event/actor/actor_event.h"
 
 namespace endstone {
 
-class PlayerEvent : public Event {
+/**
+ * Called when an Actor is spawned into a world.
+ * <p>
+ * If an Actor Spawn event is cancelled, the actor will not spawn.
+ */
+class ActorSpawnEvent : public ActorEvent {
 public:
-    explicit PlayerEvent(Player &player) : player_(player){};
-    ~PlayerEvent() override = default;
+    explicit ActorSpawnEvent(Actor &actor) : ActorEvent(actor) {}
+    ~ActorSpawnEvent() override = default;
 
-    /**
-     * Returns the player involved in this event
-     *
-     * @return Player who is involved in this event
-     */
-    [[nodiscard]] Player &getPlayer() const
+    inline static const std::string NAME = "ActorSpawnEvent";
+    [[nodiscard]] std::string getEventName() const override
     {
-        return player_;
+        return NAME;
     }
 
-private:
-    Player &player_;
+    [[nodiscard]] bool isCancellable() const override
+    {
+        return true;
+    }
 };
 
 }  // namespace endstone

@@ -20,6 +20,7 @@
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_spawn_event.h"
 
 using endstone::detail::EndstoneActor;
 using endstone::detail::EndstoneLevel;
@@ -27,20 +28,32 @@ using endstone::detail::EndstoneServer;
 
 Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<EntityContext> ctx)
 {
-    auto *actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
+    if (!ctx.storage.context.has_value()) {
+        return nullptr;
+    }
+
+    auto *actor = Actor::tryGetFromEntity(ctx.storage.context.value(), true);
+    if (!actor || actor->isPlayer()) {
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
+    }
+
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto endstone_actor = std::make_unique<EndstoneActor>(server, *actor);
+    endstone::ActorSpawnEvent e{*endstone_actor};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return nullptr;
+    }
+
+    actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
     if (actor) {
-        auto &server = entt::locator<EndstoneServer>::value();
         auto &bedrock_level = actor->getLevel();
         auto *level = static_cast<EndstoneLevel *>(server.getLevel(bedrock_level.getLevelId()));
         if (!level) {
             throw std::runtime_error("Unable to find the level associated with the actor.");
         }
 
-        if (!actor->isPlayer()) {
-            // TODO(event): call ActorSpawnEvent (except for Player)
-            //  if cancelled, return nullptr
-            level->addActor(std::make_unique<EndstoneActor>(server, *actor));
-        }
+        level->addActor(std::make_unique<EndstoneActor>(server, *actor));
     }
     return actor;
 }

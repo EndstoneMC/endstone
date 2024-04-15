@@ -14,28 +14,30 @@
 
 #pragma once
 
+#include "endstone/actor/actor.h"
 #include "endstone/event/event.h"
-#include "endstone/player.h"
 
 namespace endstone {
 
-class PlayerEvent : public Event {
+class ActorEvent : public Event {
 public:
-    explicit PlayerEvent(Player &player) : player_(player){};
-    ~PlayerEvent() override = default;
+    explicit ActorEvent(Actor &actor) : actor_(actor){};
+    ~ActorEvent() override = default;
 
     /**
-     * Returns the player involved in this event
+     * Returns the Actor involved in this event
      *
-     * @return Player who is involved in this event
+     * @return Actor which is involved in this event
      */
-    [[nodiscard]] Player &getPlayer() const
+    [[nodiscard]] Actor &getActor() const
     {
-        return player_;
+        return actor_;
     }
 
+    // TODO: add getActorType method
+
 private:
-    Player &player_;
+    Actor &actor_;
 };
 
 }  // namespace endstone
