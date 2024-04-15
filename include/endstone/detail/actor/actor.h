@@ -47,6 +47,9 @@ public:
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
 
+    // Actor
+    int64_t getRuntimeId() override;
+
 private:
     EndstoneServer &server_;
     BedrockActor &actor_;

@@ -97,4 +97,9 @@ void EndstoneHumanActor::setOp(bool value)
     perm_.recalculatePermissions();
 }
 
+int64_t EndstoneHumanActor::getRuntimeId()
+{
+    return EndstoneActor::getRuntimeId();
+}
+
 }  // namespace endstone::detail

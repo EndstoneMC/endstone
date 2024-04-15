@@ -45,6 +45,9 @@ public:
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
 
+    // Actor
+    int64_t getRuntimeId() override;
+
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
     void sendRawMessage(std::string message) const override;

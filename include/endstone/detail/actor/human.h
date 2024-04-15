@@ -46,6 +46,9 @@ public:
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
 
+    // Actor
+    int64_t getRuntimeId() override;
+
 private:
     BedrockPlayer &player_;
     bool op_;
