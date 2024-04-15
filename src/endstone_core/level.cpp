@@ -37,7 +37,7 @@ std::vector<Actor *> EndstoneLevel::getActors() const
     return result;
 }
 
-Actor *EndstoneLevel::getActor(std::int64_t runtime_id) const
+Actor *EndstoneLevel::getActor(std::uint64_t runtime_id) const
 {
     auto it = actors_.find(runtime_id);
     if (it != actors_.end()) {
@@ -56,7 +56,7 @@ void EndstoneLevel::addActor(std::unique_ptr<Actor> actor)
     actors_[id] = std::move(actor);
 }
 
-void EndstoneLevel::removeActor(std::int64_t runtime_id)
+void EndstoneLevel::removeActor(std::uint64_t runtime_id)
 {
     if (getActor(runtime_id) == nullptr) {
         server_.getLogger().error("Unable to remove actor with runtime id {}. Actor does not exist.", runtime_id);

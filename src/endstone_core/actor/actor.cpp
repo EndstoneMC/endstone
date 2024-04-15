@@ -88,7 +88,7 @@ void EndstoneActor::setOp(bool value)
     mPerm.setOp(value);
 }
 
-int64_t EndstoneActor::getRuntimeId()
+std::uint64_t EndstoneActor::getRuntimeId()
 {
     return actor_.getRuntimeID().id;
 }

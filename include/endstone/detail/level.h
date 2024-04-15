@@ -33,9 +33,9 @@ public:
     [[nodiscard]] std::string getName() const override;
 
     [[nodiscard]] std::vector<Actor *> getActors() const override;
-    [[nodiscard]] Actor *getActor(std::int64_t runtime_id) const;
+    [[nodiscard]] Actor *getActor(std::uint64_t runtime_id) const;
     void addActor(std::unique_ptr<Actor> actor);
-    void removeActor(std::int64_t runtime_id);
+    void removeActor(std::uint64_t runtime_id);
 
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
@@ -45,7 +45,7 @@ public:
 private:
     EndstoneServer &server_;
     BedrockLevel &level_;
-    std::unordered_map<std::int64_t, std::unique_ptr<Actor>> actors_;
+    std::unordered_map<std::uint64_t, std::unique_ptr<Actor>> actors_;
 };
 
 }  // namespace endstone::detail

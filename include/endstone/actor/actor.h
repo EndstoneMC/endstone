@@ -21,7 +21,7 @@ namespace endstone {
 class Actor : public CommandSender {
 public:
     ~Actor() override = default;
-    virtual std::int64_t getRuntimeId() = 0;
+    virtual std::uint64_t getRuntimeId() = 0;
 };
 
 }  // namespace endstone

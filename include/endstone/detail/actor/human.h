@@ -47,7 +47,7 @@ public:
     void setOp(bool value) override;
 
     // Actor
-    int64_t getRuntimeId() override;
+    std::uint64_t getRuntimeId() override;
 
 private:
     BedrockPlayer &player_;

@@ -107,7 +107,7 @@ void EndstonePlayer::setOp(bool value)
     player_.setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
 }
 
-int64_t EndstonePlayer::getRuntimeId()
+std::uint64_t EndstonePlayer::getRuntimeId()
 {
     return EndstoneHumanActor::getRuntimeId();
 }
