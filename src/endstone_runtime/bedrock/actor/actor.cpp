@@ -32,8 +32,9 @@ void Actor::remove()
         throw std::runtime_error("Unable to find the level associated with the actor.");
     }
 
-    if (!isPlayer()) {
-        level->removeActor(getRuntimeID().id);
+    if (auto *actor = level->getActor(getRuntimeID().id)) {
+        // TODO(event): call ActorRemoveEvent
+        level->removeActor(actor->getRuntimeId());
     }
 
 #if _WIN32
