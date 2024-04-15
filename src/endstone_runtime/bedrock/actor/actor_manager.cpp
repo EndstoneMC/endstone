@@ -16,14 +16,31 @@
 
 #include "bedrock/actor/components/actor_identifier.h"
 #include "bedrock/actor/entity_context.h"
+#include "endstone/detail/actor/actor.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/level.h"
+#include "endstone/detail/server.h"
+
+using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstoneServer;
 
 Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<EntityContext> ctx)
 {
     auto *actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
-    // TODO(event): call ActorSpawnEvent (except for Player)
-    //  if cancelled, return nullptr to prevent the spawn,
-    //  otherwise call the original function and return the result
-    // TODO(actor): create endstone::Actor and add to endstone::Level
+    if (actor) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto &bedrock_level = actor->getLevel();
+        auto *level = static_cast<EndstoneLevel *>(server.getLevel(bedrock_level.getLevelId()));
+        if (!level) {
+            throw std::runtime_error("Unable to find the level associated with the actor.");
+        }
+
+        if (!actor->isPlayer()) {
+            // TODO(event): call ActorSpawnEvent (except for Player)
+            //  if cancelled, return nullptr
+            level->addActor(std::make_unique<EndstoneActor>(server, *actor));
+        }
+    }
     return actor;
 }

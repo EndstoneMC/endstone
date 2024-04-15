@@ -16,16 +16,35 @@
 
 #include "bedrock/actor/components/actor_identifier.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/level.h"
+#include "endstone/detail/server.h"
+
+using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstoneServer;
 
 void Actor::remove()
 {
-    // TODO(event): call ActorRemoveEvent (except for Player)
-    // TODO(actor): remove endstone::Actor from endstone::Level
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &bedrock_level = getLevel();
+    auto *level = static_cast<EndstoneLevel *>(server.getLevel(bedrock_level.getLevelId()));
+    if (!level) {
+        throw std::runtime_error("Unable to find the level associated with the actor.");
+    }
+
+    if (!isPlayer()) {
+        level->removeActor(getRuntimeID().id);
+    }
+
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
 #else
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, "_ZN5Actor6removeEv", this);
 #endif
+}
+
+Level &Actor::getLevel() const
+{
+    return *level_;
 }
 
 ActorRuntimeID Actor::getRuntimeID() const

@@ -27,6 +27,7 @@
 #include "bedrock/mce.h"
 
 class Player;
+class Level;
 
 class ActorUniqueID {
 public:
@@ -230,10 +231,16 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
+    Level &getLevel() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
 private:
-    EntityContext context_;  // +8
-    bool unknown_;           // +32
-    std::string name_;       // +40
+    EntityContext context_;                            // +8
+    ActorInitializationMethod initialization_method_;  // +32
+    std::string unknown2_;                             // +40
+    std::array<char[16], 10> unknown3_;                // +72
+    std::int16_t unknown4_;                            // +232
+    ActorDefinitionGroup *actor_definitions_;          // +240
+    char pad_[352];                                    // +248 TODO: figure out the structure
+    Level *level_;                                     // +600
 };

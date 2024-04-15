@@ -25,7 +25,6 @@ class ActorDefinitionGroup;
 class ActorDefinitionIdentifier;
 class ActorEvent;
 class ActorFactory;
-class ActorInitializationMethod;
 class ActorInteraction;
 class AddActorBasePacket;
 class AdventureSettings;
@@ -162,6 +161,7 @@ class _TickPtr;  // NOLINT
 
 // Enums
 enum class AbilitiesIndex;
+enum class ActorInitializationMethod : char;
 enum class ActorFlags;
 enum class ActorType;
 enum class ArmorMaterialType;
