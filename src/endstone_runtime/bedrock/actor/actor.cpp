@@ -19,6 +19,7 @@
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_remove_event.h"
 
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
@@ -33,7 +34,8 @@ void Actor::remove()
     }
 
     if (auto *actor = level->getActor(getRuntimeID().id)) {
-        // TODO(event): call ActorRemoveEvent
+        endstone::ActorRemoveEvent e{*actor};
+        server.getPluginManager().callEvent(e);
         level->removeActor(actor->getRuntimeId());
     }
 

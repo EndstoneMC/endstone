@@ -34,7 +34,7 @@ public:
         return actor_;
     }
 
-    // TODO: add getActorType method
+    // TODO(event): add getActorType method
 
 private:
     Actor &actor_;

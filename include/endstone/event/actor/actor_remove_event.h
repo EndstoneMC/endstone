@@ -19,16 +19,17 @@
 namespace endstone {
 
 /**
- * Called when an Actor is spawned into a world.
+ * Called when an Actor is removed.
  *
- * If an Actor Spawn event is cancelled, the actor will not spawn.
+ * This event should only be used for monitoring. Modifying the actor during or after this event is an undefined behaviour.
+ * This event will not be called for Players.
  */
-class ActorSpawnEvent : public ActorEvent {
+class ActorRemoveEvent : public ActorEvent {
 public:
-    explicit ActorSpawnEvent(Actor &actor) : ActorEvent(actor) {}
-    ~ActorSpawnEvent() override = default;
+    explicit ActorRemoveEvent(Actor &actor) : ActorEvent(actor) {}
+    ~ActorRemoveEvent() override = default;
 
-    inline static const std::string NAME = "ActorSpawnEvent";
+    inline static const std::string NAME = "ActorRemoveEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
@@ -36,10 +37,10 @@ public:
 
     [[nodiscard]] bool isCancellable() const override
     {
-        return true;
+        return false;
     }
 
-    // TODO(event): add spawn cause
+    // TODO(event): add remove cause
 };
 
 }  // namespace endstone

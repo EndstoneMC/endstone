@@ -16,6 +16,7 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/event/player/player_join_event.h"
@@ -61,6 +62,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .value("DEFAULT", Event::Result::DEFAULT)
         .value("ALLOW", Event::Result::ALLOW)
         .export_values();
+
+    py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent")
+        .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
+                               "Returns the Actor being removed");
 
     py::class_<ActorSpawnEvent, Event>(m, "ActorSpawnEvent")
         .def_property_readonly("actor", &ActorSpawnEvent::getActor, py::return_value_policy::reference,
