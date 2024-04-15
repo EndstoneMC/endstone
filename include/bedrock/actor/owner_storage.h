@@ -18,6 +18,6 @@
 
 class OwnerStorageEntity {
 public:
-    std::optional<EntityContext> context_;
+    std::optional<EntityContext> context;
 };
 static_assert(sizeof(OwnerStorageEntity) == 32);

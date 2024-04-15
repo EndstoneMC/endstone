@@ -77,9 +77,9 @@ struct ActorStopRidingEvent {};
 
 template <>
 struct ActorGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<ProjectileHitEvent const>,       // 1
-                 Details::ValueOrRef<ActorGriefingBlockEvent const>,  // 2
-                 Details::ValueOrRef<ActorStopRidingEvent const>,     // 3
+    std::variant<Details::ValueOrRef<ProjectileHitEvent const>,       // 0
+                 Details::ValueOrRef<ActorGriefingBlockEvent const>,  // 1
+                 Details::ValueOrRef<ActorStopRidingEvent const>,     // 2
                  Details::ValueOrRef<ActorEventPlaceHolder<120> const>>
         event;
 };
