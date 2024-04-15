@@ -15,6 +15,7 @@
 #include "bedrock/actor/actor.h"
 
 #include "bedrock/actor/components/actor_identifier.h"
+#include "bedrock/actor/components/actor_owner.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level.h"
 #include "endstone/detail/server.h"
@@ -50,4 +51,19 @@ Level &Actor::getLevel() const
 ActorRuntimeID Actor::getRuntimeID() const
 {
     return tryGetComponent<RuntimeIDComponent>()->id;
+}
+
+Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
+{
+    auto *component = ctx.tryGetComponent<ActorOwnerComponent>();
+    if (!component) {
+        return nullptr;
+    }
+
+    auto *actor = component->owner;
+    // TODO(fixme): this should be !actor->isRemoved() instead of actor->isAlive() though they are equivalent for now
+    if (actor->isAlive() || include_removed) {
+        return actor;
+    }
+    return nullptr;
 }

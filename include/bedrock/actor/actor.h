@@ -31,12 +31,12 @@ class Level;
 
 class ActorUniqueID {
 public:
-    std::int64_t id;
+    std::int64_t id{-1};
 };
 
 class ActorRuntimeID {
 public:
-    std::int64_t id;
+    std::uint64_t id{0};
 };
 
 class Actor {
@@ -233,6 +233,8 @@ public:
 
     Level &getLevel() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
+
+    static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
 private:
     EntityContext context_;                            // +8
