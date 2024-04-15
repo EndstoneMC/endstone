@@ -230,6 +230,8 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
+    [[nodiscard]] ActorRuntimeID getRuntimeID() const;
+
 private:
     EntityContext context_;  // +8
     bool unknown_;           // +32
