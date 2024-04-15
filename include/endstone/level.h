@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "endstone/actor/actor.h"
+
 namespace endstone {
 
 class Level {
@@ -28,6 +30,13 @@ public:
      * @return Name of this level
      */
     [[nodiscard]] virtual std::string getName() const = 0;
+
+    /**
+     * Get a list of all actors in this World
+     *
+     * @return A List of all Actors currently residing in this world
+     */
+    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 
     /**
      * Gets the relative in-game time of this level.

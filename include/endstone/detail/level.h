@@ -14,7 +14,11 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/level/level.h"
+#include "endstone/actor/actor.h"
+#include "endstone/detail/server.h"
 #include "endstone/level.h"
 
 using BedrockLevel = ::Level;
@@ -25,14 +29,23 @@ class EndstoneLevel : public endstone::Level {
 public:
     explicit EndstoneLevel(BedrockLevel &level);
     ~EndstoneLevel() override = default;
+
     [[nodiscard]] std::string getName() const override;
+
+    [[nodiscard]] std::vector<Actor *> getActors() const override;
+    [[nodiscard]] Actor *getActor(std::int64_t runtime_id) const;
+    void addActor(std::unique_ptr<Actor> actor);
+    void removeActor(std::int64_t runtime_id);
+
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
 
     [[nodiscard]] BedrockLevel &getBedrockLevel() const;
 
 private:
+    EndstoneServer &server_;
     BedrockLevel &level_;
+    std::unordered_map<std::int64_t, std::unique_ptr<Actor>> actors_;
 };
 
 }  // namespace endstone::detail

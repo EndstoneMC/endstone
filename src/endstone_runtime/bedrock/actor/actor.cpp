@@ -15,6 +15,18 @@
 #include "bedrock/actor/actor.h"
 
 #include "bedrock/actor/components/actor_identifier.h"
+#include "endstone/detail/hook.h"
+
+void Actor::remove()
+{
+    // TODO(event): call ActorRemoveEvent (except for Player)
+    // TODO(actor): remove endstone::Actor from endstone::Level
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, "_ZN5Actor6removeEv", this);
+#endif
+}
 
 ActorRuntimeID Actor::getRuntimeID() const
 {
