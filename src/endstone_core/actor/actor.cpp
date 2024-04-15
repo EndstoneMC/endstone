@@ -14,8 +14,8 @@
 
 #include "endstone/detail/actor/actor.h"
 
-#include "bedrock/actor/actor.h"
 #include "bedrock/command/command_utils.h"
+#include "bedrock/world/actor/actor.h"
 
 namespace endstone::detail {
 

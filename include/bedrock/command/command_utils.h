@@ -16,8 +16,8 @@
 
 #include <string>
 
-#include "bedrock/actor/actor.h"
 #include "bedrock/bedrock.h"
+#include "bedrock/world/actor/actor.h"
 
 namespace CommandUtils {
 BEDROCK_API std::string getActorName(Actor const &actor);

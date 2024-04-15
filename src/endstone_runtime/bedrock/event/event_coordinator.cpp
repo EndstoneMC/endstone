@@ -22,8 +22,8 @@
 #include <spdlog/spdlog.h>
 
 #include "bedrock/event/coordinator_result.h"
-#include "bedrock/level/level.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level.h"

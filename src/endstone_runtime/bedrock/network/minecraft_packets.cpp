@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/protocol/minecraft_packets.h"
 
 #include "endstone/detail/hook.h"
 

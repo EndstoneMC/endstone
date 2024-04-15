@@ -12,11 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/network_handler.h"
-
 #include <entt/entt.hpp>
 
-#include "bedrock/actor/components/user_entity_identifier.h"
+#include "bedrock/server/network/server_network_handler.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/player.h"
 #include "endstone/detail/server.h"

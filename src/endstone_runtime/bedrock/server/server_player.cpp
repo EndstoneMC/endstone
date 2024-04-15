@@ -12,14 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/actor/server_player.h"
+#include "bedrock/server/level/server_player.h"
 
-#include "bedrock/actor/components/user_entity_identifier.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
-#include "endstone/util/uuid.h"
 
 using endstone::detail::EndstoneServer;
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/raknet/socket2.h"
+#include "bedrock/network/raknet/socket2.h"
 
 #include <sstream>
 

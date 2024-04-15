@@ -28,7 +28,7 @@
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/command/command_version.h"
-#include "bedrock/network/game/available_commands_packet.h"
+#include "bedrock/network/protocol/game/available_commands_packet.h"
 #include "bedrock/type_id.h"
 
 enum SemanticConstraint : std::uint8_t;

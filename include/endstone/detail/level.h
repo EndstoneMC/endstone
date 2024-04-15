@@ -16,7 +16,7 @@
 
 #include <unordered_map>
 
-#include "bedrock/level/level.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/server.h"
 #include "endstone/level.h"

@@ -12,20 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#pragma once
+
+#include "bedrock/bedrock.h"
 #include "bedrock/network/raknet/types.h"
 
-#include "endstone/detail/hook.h"
+/**
+ * https://github.com/facebookarchive/RakNet/blob/master/Source/RakNetSocket2.h
+ */
 
 namespace RakNet {
 
-std::uint16_t SystemAddress::GetPort() const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::GetPort, this);
-}
+using RNS2SendResult = int;
+using RNS2Socket = int;
 
-void SystemAddress::ToString(bool write_port, char *dest, char port_delimiter) const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
-}
+struct RNS2_SendParameters {  // NOLINT
+    RNS2_SendParameters()
+    {
+        ttl = 0;
+    }
+    char *data;
+    int length;
+    SystemAddress system_address;
+    int ttl;
+};
+
+class RNS2_Windows_Linux_360 {  // NOLINT
+protected:
+    // NOLINTNEXTLINE
+    BEDROCK_API static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
+                                                                  RNS2_SendParameters *send_parameters,
+                                                                  const char *file, unsigned int line);
+};
 
 }  // namespace RakNet

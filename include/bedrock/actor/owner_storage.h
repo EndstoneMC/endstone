@@ -16,6 +16,8 @@
 
 #include <optional>
 
+#include "bedrock/world/actor/registry/entity_context.h"
+
 class OwnerStorageEntity {
 public:
     std::optional<EntityContext> context;

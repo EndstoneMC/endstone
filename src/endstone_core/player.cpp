@@ -14,9 +14,9 @@
 
 #include "endstone/detail/player.h"
 
-#include "bedrock/actor/components/user_entity_identifier.h"
-#include "bedrock/network/game/text_packet.h"
-#include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/protocol/game/text_packet.h"
+#include "bedrock/network/protocol/minecraft_packets.h"
+#include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/server.h"
 

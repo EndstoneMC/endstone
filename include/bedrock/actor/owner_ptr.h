@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/actor/entity_context.h"
 #include "bedrock/actor/owner_storage.h"
+#include "bedrock/world/actor/registry/entity_context.h"
 
 template <typename T>
 class OwnerPtr;

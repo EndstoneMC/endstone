@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/actor/player.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/actor/human.h"
 #include "endstone/detail/actor/actor.h"
 

@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/actor/actor.h"
+#include "bedrock/world/actor/actor.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/permissions/permissible_base.h"
 #include "endstone/detail/server.h"

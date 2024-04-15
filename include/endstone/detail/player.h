@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/actor/server_player.h"
+#include "bedrock/server/level/server_player.h"
 #include "endstone/detail/actor/human.h"
 #include "endstone/player.h"
 

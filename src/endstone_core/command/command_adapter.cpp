@@ -20,7 +20,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/actor/player.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/permissions/permissible_base.h"
 
 using BedrockPlayer = ::Player;

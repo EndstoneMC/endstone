@@ -12,20 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/types.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/server/level/server_player.h"
 
-namespace RakNet {
-
-std::uint16_t SystemAddress::GetPort() const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::GetPort, this);
-}
-
-void SystemAddress::ToString(bool write_port, char *dest, char port_delimiter) const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
-}
-
-}  // namespace RakNet
+class ServerNetworkHandler {
+private:
+    BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool);  // NOLINT(*-identifier-naming)
+};
