@@ -14,13 +14,23 @@
 
 #include "bedrock/actor/actor_manager.h"
 
+#include "bedrock/actor/components/actor_identifier.h"
+#include "bedrock/actor/entity_context.h"
 #include "endstone/detail/hook.h"
 
 Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<EntityContext> ctx)
 {
-    // TODO(event): call ActorSpawnEvent
+    auto *ret = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
+    // TODO(event): call ActorSpawnEvent (except for Player)
     //  if cancelled, return nullptr to prevent the spawn,
     //  otherwise call the original function and return the result
     // TODO(actor): create endstone::Actor and add to endstone::Level
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
+    return ret;
+}
+
+void ActorManager::removeActorEntityReferencesForDeletion(Actor &actor)
+{
+    // TODO(event): call ActorRemoveEvent (except for Player)
+    // TODO(actor): remove endstone::Actor from endstone::Level
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::removeActorEntityReferencesForDeletion, this, actor);
 }

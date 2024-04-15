@@ -28,6 +28,16 @@
 
 class Player;
 
+class ActorUniqueID {
+public:
+    std::int64_t id;
+};
+
+class ActorRuntimeID {
+public:
+    std::int64_t id;
+};
+
 class Actor {
 public:
     virtual bool getStatusFlag(ActorFlags flags) = 0;
@@ -52,7 +62,7 @@ public:
     virtual ~Actor() = 0;
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
-    BEDROCK_API virtual void remove();
+    virtual void remove() = 0;
     virtual bool isRuntimePredictedMovementEnabled() = 0;
     [[nodiscard]] virtual Vec3 getFiringPos() const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyRot(float) const = 0;

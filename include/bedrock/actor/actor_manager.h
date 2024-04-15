@@ -22,4 +22,5 @@
 class ActorManager {
 public:
     BEDROCK_API Actor *addActorEntity(IAddActorEntityProxy &, OwnerPtr<EntityContext>);
+    BEDROCK_API void removeActorEntityReferencesForDeletion(Actor &);
 };

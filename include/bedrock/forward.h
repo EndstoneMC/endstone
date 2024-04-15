@@ -27,8 +27,6 @@ class ActorEvent;
 class ActorFactory;
 class ActorInitializationMethod;
 class ActorInteraction;
-class ActorRuntimeID;
-class ActorUniqueID;
 class AddActorBasePacket;
 class AdventureSettings;
 class AnimationComponent;

@@ -12,16 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#pragma once
+
 #include "bedrock/actor/actor.h"
 
-#include "endstone/detail/hook.h"
+struct RuntimeIDComponent {
+    ActorRuntimeID id;
+};
 
-void Actor::remove()
-{
-    // TODO: call ActorRemoveEvent if not player
-#if _WIN32
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, "_ZN5Actor6removeEv", this);
-#endif
-}
+struct ActorUniqueIDComponent {
+    ActorUniqueID id;
+};
