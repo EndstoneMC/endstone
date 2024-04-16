@@ -29,6 +29,7 @@
 #include "bedrock/event/event_coordinator.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+#include "bedrock/memory.h"
 #include "bedrock/network/protocol/packet_sender.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/mob/mob.h"

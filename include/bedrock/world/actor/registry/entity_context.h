@@ -41,3 +41,15 @@ private:
     entt::basic_registry<EntityId> &entt_registry_;  // +8
     EntityId entity_id_;                             // +16
 };
+
+class OwnerStorageEntity {
+public:
+    std::optional<EntityContext> context;
+};
+static_assert(sizeof(OwnerStorageEntity) == 32);
+
+template <>
+class OwnerPtr<EntityContext> {
+public:
+    OwnerStorageEntity storage;
+};

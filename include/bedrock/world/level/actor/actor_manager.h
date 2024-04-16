@@ -14,9 +14,9 @@
 
 #pragma once
 
-#include "bedrock/actor/owner_ptr.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
+#include "bedrock/memory.h"
 #include "bedrock/world/actor/actor.h"
 
 class ActorManager {

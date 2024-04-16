@@ -14,25 +14,8 @@
 
 #pragma once
 
-#include <memory>
-
 #if _WIN32
 #define BEDROCK_API __declspec(dllexport)
 #elif __linux__
 #define BEDROCK_API __attribute__((visibility("default")))
 #endif
-
-namespace Bedrock {
-
-class EnableNonOwnerReferences {
-public:
-    virtual ~EnableNonOwnerReferences() = default;
-
-private:
-    std::shared_ptr<EnableNonOwnerReferences> ref_;
-};
-
-template <class T>
-using NonOwnerPointer = std::shared_ptr<T>;
-
-}  // namespace Bedrock

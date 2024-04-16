@@ -14,12 +14,22 @@
 
 #pragma once
 
-#include <optional>
+#include <memory>
 
-#include "bedrock/world/actor/registry/entity_context.h"
+template <typename T>
+class OwnerPtr;
 
-class OwnerStorageEntity {
+namespace Bedrock {
+
+class EnableNonOwnerReferences {
 public:
-    std::optional<EntityContext> context;
+    virtual ~EnableNonOwnerReferences() = default;
+
+private:
+    std::shared_ptr<EnableNonOwnerReferences> ref_;
 };
-static_assert(sizeof(OwnerStorageEntity) == 32);
+
+template <class T>
+using NonOwnerPointer = std::shared_ptr<T>;
+
+}  // namespace Bedrock
