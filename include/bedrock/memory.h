@@ -19,6 +19,39 @@
 template <typename T>
 class OwnerPtr;
 
+template <typename T>
+class WeakRef {
+public:
+    T &operator()() const
+    {
+        if (auto lock = ref.lock()) {
+            return *lock;
+        }
+        throw std::bad_weak_ptr();
+    }
+
+    T &operator*() const
+    {
+        if (auto lock = ref.lock()) {
+            return *lock;
+        }
+        throw std::bad_weak_ptr();
+    }
+
+    T *operator->() const noexcept
+    {
+        return ref.lock().get();
+    }
+
+    [[nodiscard]] bool expired() const noexcept
+    {
+        return ref.expired();
+    }
+
+private:
+    std::weak_ptr<T> ref;
+};
+
 namespace Bedrock {
 
 class EnableNonOwnerReferences {

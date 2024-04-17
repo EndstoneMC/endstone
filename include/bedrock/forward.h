@@ -203,8 +203,6 @@ template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename T>
 class StackRefResult;
-template <typename T>
-class WeakRef;
 template <typename A, typename B, typename C>
 class Factory;
 template <typename A, typename B>
