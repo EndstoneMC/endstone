@@ -25,6 +25,7 @@
 #include "bedrock/mce.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
+#include "bedrock/world/math/vec3.h"
 
 class Player;
 class Level;
@@ -231,7 +232,8 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
-    Level &getLevel() const;
+    [[nodiscard]] Level &getLevel() const;
+    [[nodiscard]] Vec3 const &getPosition() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
@@ -245,4 +247,6 @@ private:
     ActorDefinitionGroup *actor_definitions_;          // +240
     char pad_[352];                                    // +248 TODO: figure out the structure
     Level *level_;                                     // +600
+    char pad2_[56];                                    // +608
+    Vec3 position_;                                    // +664
 };

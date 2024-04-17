@@ -155,7 +155,6 @@ class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class VariantParameterList;
 class Vec2;
-class Vec3;
 class WeakEntityRef;
 class _TickPtr;  // NOLINT
 
