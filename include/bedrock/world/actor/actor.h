@@ -19,26 +19,20 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+#include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
+#include "bedrock/world/level/dimension.h"
 #include "bedrock/world/math/vec3.h"
 
 class Player;
 class Level;
-
-class ActorUniqueID {
-public:
-    std::int64_t id{-1};
-};
-
-class ActorRuntimeID {
-public:
-    std::uint64_t id{0};
-};
 
 class Actor {
 public:

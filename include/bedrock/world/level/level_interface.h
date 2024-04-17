@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_registry.h"

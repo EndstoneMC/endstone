@@ -197,8 +197,6 @@ enum class LevelSoundEvent : int;
 }
 
 // Template Classes
-template <typename Type, typename IdType>
-class AutomaticID;
 template <typename T>
 class OwnerPtr;
 template <typename A, typename B, typename C>
