@@ -15,11 +15,11 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/event/coordinator_result.h"
-#include "bedrock/event/event_ref.h"
-#include "bedrock/event/event_result.h"
-#include "bedrock/event/level_event.h"
-#include "bedrock/event/player_event.h"
+#include "bedrock/world/level/event/coordinator_result.h"
+#include "bedrock/world/level/event/event_ref.h"
+#include "bedrock/world/level/event/event_result.h"
+#include "bedrock/world/level/event/level_event.h"
+#include "bedrock/world/level/event/player_event.h"
 
 template <typename Type>
 struct GameplayHandlerResult {

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/event/event_coordinator.h"
+#include "bedrock/world/level/event/event_coordinator.h"
 
 #include <sstream>
 
@@ -21,8 +21,8 @@
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
-#include "bedrock/event/coordinator_result.h"
 #include "bedrock/server/server_instance.h"
+#include "bedrock/world/level/event/coordinator_result.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/hook.h"

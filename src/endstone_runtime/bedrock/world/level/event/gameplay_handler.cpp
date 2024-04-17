@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/event/gameplay_handler.h"
+#include "bedrock/world/level/event/gameplay_handler.h"
 
 #include <entt/entt.hpp>
 

@@ -26,7 +26,6 @@
 #include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_registry.h"
 #include "bedrock/core.h"
-#include "bedrock/event/event_coordinator.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
@@ -34,6 +33,7 @@
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
+#include "bedrock/world/level/event/event_coordinator.h"
 
 class ILevel {
 public:

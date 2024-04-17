@@ -15,12 +15,12 @@
 #pragma once
 
 #include "bedrock/details.h"
-#include "bedrock/event/coordinator_result.h"
+#include "bedrock/world/level/event/coordinator_result.h"
 #include "endstone/endstone.h"
 
-template <std::size_t n>
+template <std::size_t N>
 struct ActorEventPlaceHolder {
-    char pad[n];
+    char pad[N];
 };
 
 template <typename Return>

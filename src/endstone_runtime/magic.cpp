@@ -13,9 +13,6 @@
 // limitations under the License.
 
 #include "bedrock/command/command_registry.h"
-#include "bedrock/event/gameplay_handler.h"
-#include "endstone/detail/virtual_table.h"
-#include "endstone/endstone.h"
 
 /**
  * NOTE for endstone developers:

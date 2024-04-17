@@ -17,9 +17,9 @@
 #include <variant>
 
 #include "bedrock/details.h"
-#include "bedrock/event/coordinator_result.h"
-#include "bedrock/event/event_ref.h"
 #include "bedrock/forward.h"
+#include "bedrock/world/level/event/coordinator_result.h"
+#include "bedrock/world/level/event/event_ref.h"
 
 struct LevelEventPlaceHolder {
     char pad[56];

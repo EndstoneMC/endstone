@@ -17,11 +17,11 @@
 #include <variant>
 
 #include "bedrock/details.h"
-#include "bedrock/event/coordinator_result.h"
+#include "bedrock/world/level/event/coordinator_result.h"
 
-template <std::size_t n>
+template <std::size_t N>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
-    char pad[n];
+    char pad[N];
 };
 
 struct PlayerSkinLoadedClientEvent {};
