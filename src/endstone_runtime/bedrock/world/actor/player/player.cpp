@@ -77,7 +77,7 @@ void Player::sendCommands()
         if (command && command->isRegistered() && command->testPermissionSilently(perm)) {
             continue;
         }
-        data.command_flag |= (CommandFlag::HIDDEN_FROM_PLAYER | CommandFlag::HIDDEN_FROM_BLOCK);
+        data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
     }
 
     sendNetworkPacket(packet);

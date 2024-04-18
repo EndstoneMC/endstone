@@ -33,7 +33,7 @@ Permission createPermission(std::string name, const std::optional<std::string> &
                             const std::optional<std::unordered_map<std::string, bool>> &children,
                             const py::args & /*args*/, const py::kwargs & /*kwargs*/)
 {
-    return Permission(std::move(name), description.value_or(""), default_value.value_or(Permission::DEFAULT_PERMISSION),
+    return Permission(std::move(name), description.value_or(""), default_value.value_or(Permission::DefaultPermission),
                       children.value_or(std::unordered_map<std::string, bool>{}));
 }
 }  // namespace

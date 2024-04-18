@@ -62,7 +62,7 @@ bool PermissibleBase::hasPermission(std::string name) const
     if (perm != nullptr) {
         return hasPermission(perm->getDefault(), isOp());
     }
-    return hasPermission(Permission::DEFAULT_PERMISSION, isOp());
+    return hasPermission(Permission::DefaultPermission, isOp());
 }
 
 bool PermissibleBase::hasPermission(const Permission &perm) const

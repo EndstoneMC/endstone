@@ -38,7 +38,7 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
 
     auto &server = entt::locator<EndstoneServer>::value();
     if (args.empty()) {
-        sender.sendMessage(ColorFormat::GOLD + "This server is running {} version: {} (Minecraft: {})",
+        sender.sendMessage(ColorFormat::Gold + "This server is running {} version: {} (Minecraft: {})",
                            server.getName(), server.getVersion(), server.getMinecraftVersion());
     }
     else {
@@ -68,14 +68,14 @@ bool VersionCommand::execute(CommandSender &sender, const std::vector<std::strin
 void VersionCommand::describeToSender(Plugin &plugin, CommandSender &sender) const
 {
     const auto &desc = plugin.getDescription();
-    sender.sendMessage(ColorFormat::GREEN + desc.getName() + ColorFormat::WHITE + " v" + desc.getVersion());
+    sender.sendMessage(ColorFormat::Green + desc.getName() + ColorFormat::White + " v" + desc.getVersion());
 
     if (!desc.getDescription().empty()) {
         sender.sendMessage(desc.getDescription());
     }
 
     if (!desc.getWebsite().empty()) {
-        sender.sendMessage("Website: " + ColorFormat::GREEN + desc.getWebsite());
+        sender.sendMessage("Website: " + ColorFormat::Green + desc.getWebsite());
     }
 
     if (!desc.getAuthors().empty()) {
@@ -97,7 +97,7 @@ std::string VersionCommand::getNameList(const std::vector<std::string> &names) c
     std::string result;
     for (const auto &name : names) {
         if (!result.empty()) {
-            result += ColorFormat::WHITE;
+            result += ColorFormat::White;
             if (names.size() == 2) {
                 result += ", ";
             }
@@ -106,7 +106,7 @@ std::string VersionCommand::getNameList(const std::vector<std::string> &names) c
             }
         }
 
-        result += ColorFormat::GREEN;
+        result += ColorFormat::Green;
         result += name;
     }
 

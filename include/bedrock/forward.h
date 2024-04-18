@@ -67,7 +67,6 @@ class Container;
 class CurrentCmdVersion;
 class DataLoadHelper;
 class Difficulty;
-class Dimension;
 class DimensionConversionData;
 class DimensionManager;
 class EducationLevelSettings;

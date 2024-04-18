@@ -51,11 +51,11 @@ std::string PluginsCommand::getPluginList() const
     int i = 0;
     for (auto *plugin : plugins) {
         if (i > 0) {
-            ss << ColorFormat::WHITE;
+            ss << ColorFormat::White;
             ss << ", ";
         }
 
-        ss << (plugin->isEnabled() ? ColorFormat::GREEN : ColorFormat::RED);
+        ss << (plugin->isEnabled() ? ColorFormat::Green : ColorFormat::Red);
         ss << plugin->getDescription().getName();
         i++;
     }

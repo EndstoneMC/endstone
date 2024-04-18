@@ -22,6 +22,7 @@
 #include <spdlog/spdlog.h>
 
 #include "bedrock/server/server_instance.h"
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/event/coordinator_result.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
@@ -128,7 +129,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 {
     auto &server = entt::locator<EndstoneServer>::value_or(instance);
     server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
-    server.getLogger().info(ColorFormat::DARK_AQUA + ColorFormat::BOLD +
+    server.getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
                                 "This server is running {} version: {} (Minecraft: {})",
                             server.getName(), server.getVersion(), server.getMinecraftVersion());
 
@@ -159,8 +160,8 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
 void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    const static AutomaticID<Dimension, int> dimension_ids[] = {Dimension::OVERWORLD, Dimension::NETHER,
-                                                                Dimension::THE_END};
+    const static AutomaticID<Dimension, int> dimension_ids[] = {VanillaDimensions::Overworld, VanillaDimensions::Nether,
+                                                                VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
         auto dimension = level.getOrCreateDimension(dimension_id);
         auto endstone_level = std::make_unique<EndstoneLevel>(level, *dimension);

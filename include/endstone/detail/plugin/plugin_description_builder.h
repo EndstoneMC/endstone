@@ -104,7 +104,7 @@ public:
 private:
     std::string name_;
     std::string description_;
-    PermissionDefault default_value_ = Permission::DEFAULT_PERMISSION;
+    PermissionDefault default_value_ = Permission::DefaultPermission;
     std::unordered_map<std::string, bool> children_ = {};
 };
 

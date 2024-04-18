@@ -23,42 +23,42 @@ namespace endstone {
  */
 struct ColorFormat {
     // Escape
-    inline static const std::string ESCAPE = "§";
+    inline static const std::string Escape = "§";
 
     // Color code
-    inline static const std::string BLACK = ESCAPE + '0';
-    inline static const std::string DARK_BLUE = ESCAPE + '1';
-    inline static const std::string DARK_GREEN = ESCAPE + '2';
-    inline static const std::string DARK_AQUA = ESCAPE + '3';
-    inline static const std::string DARK_RED = ESCAPE + '4';
-    inline static const std::string DARK_PURPLE = ESCAPE + '5';
-    inline static const std::string GOLD = ESCAPE + '6';
-    inline static const std::string GRAY = ESCAPE + '7';
-    inline static const std::string DARK_GRAY = ESCAPE + '8';
-    inline static const std::string BLUE = ESCAPE + '9';
-    inline static const std::string GREEN = ESCAPE + 'a';
-    inline static const std::string AQUA = ESCAPE + 'b';
-    inline static const std::string RED = ESCAPE + 'c';
-    inline static const std::string LIGHT_PURPLE = ESCAPE + 'd';
-    inline static const std::string YELLOW = ESCAPE + 'e';
-    inline static const std::string WHITE = ESCAPE + 'f';
-    inline static const std::string MINECOIN_GOLD = ESCAPE + 'g';
-    inline static const std::string MATERIAL_QUARTZ = ESCAPE + 'h';
-    inline static const std::string MATERIAL_IRON = ESCAPE + 'i';
-    inline static const std::string MATERIAL_NETHERITE = ESCAPE + 'j';
-    inline static const std::string MATERIAL_REDSTONE = ESCAPE + 'm';
-    inline static const std::string MATERIAL_COPPER = ESCAPE + 'n';
-    inline static const std::string MATERIAL_GOLD = ESCAPE + 'p';
-    inline static const std::string MATERIAL_EMERALD = ESCAPE + 'q';
-    inline static const std::string MATERIAL_DIAMOND = ESCAPE + 's';
-    inline static const std::string MATERIAL_LAPIS = ESCAPE + 't';
-    inline static const std::string MATERIAL_AMETHYST = ESCAPE + 'u';
+    inline static const std::string Black = Escape + '0';
+    inline static const std::string DarkBlue = Escape + '1';
+    inline static const std::string DarkGreen = Escape + '2';
+    inline static const std::string DarkAqua = Escape + '3';
+    inline static const std::string DarkRed = Escape + '4';
+    inline static const std::string DarkPurple = Escape + '5';
+    inline static const std::string Gold = Escape + '6';
+    inline static const std::string Gray = Escape + '7';
+    inline static const std::string DarkGray = Escape + '8';
+    inline static const std::string Blue = Escape + '9';
+    inline static const std::string Green = Escape + 'a';
+    inline static const std::string Aqua = Escape + 'b';
+    inline static const std::string Red = Escape + 'c';
+    inline static const std::string LightPurple = Escape + 'd';
+    inline static const std::string Yellow = Escape + 'e';
+    inline static const std::string White = Escape + 'f';
+    inline static const std::string MinecoinGold = Escape + 'g';
+    inline static const std::string MaterialQuartz = Escape + 'h';
+    inline static const std::string MaterialIron = Escape + 'i';
+    inline static const std::string MaterialNetherite = Escape + 'j';
+    inline static const std::string MaterialRedstone = Escape + 'm';
+    inline static const std::string MaterialCopper = Escape + 'n';
+    inline static const std::string MaterialGold = Escape + 'p';
+    inline static const std::string MaterialEmerald = Escape + 'q';
+    inline static const std::string MaterialDiamond = Escape + 's';
+    inline static const std::string MaterialLapis = Escape + 't';
+    inline static const std::string MaterialAmethyst = Escape + 'u';
 
     // Format code
-    inline static const std::string OBFUSCATED = ESCAPE + 'k';
-    inline static const std::string BOLD = ESCAPE + 'l';
-    inline static const std::string ITALIC = ESCAPE + 'o';
-    inline static const std::string RESET = ESCAPE + 'r';
-};
+    inline static const std::string Obfuscated = Escape + 'k';
+    inline static const std::string Bold = Escape + 'l';
+    inline static const std::string Italic = Escape + 'o';
+    inline static const std::string Reset = Escape + 'r';
+};  // namespace ColorFormat
 
 }  // namespace endstone

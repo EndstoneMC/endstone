@@ -24,7 +24,7 @@ class WeakRef {
 public:
     T &operator()() const
     {
-        if (auto lock = ref.lock()) {
+        if (auto lock = ref_.lock()) {
             return *lock;
         }
         throw std::bad_weak_ptr();
@@ -32,7 +32,7 @@ public:
 
     T &operator*() const
     {
-        if (auto lock = ref.lock()) {
+        if (auto lock = ref_.lock()) {
             return *lock;
         }
         throw std::bad_weak_ptr();
@@ -40,16 +40,16 @@ public:
 
     T *operator->() const noexcept
     {
-        return ref.lock().get();
+        return ref_.lock().get();
     }
 
     [[nodiscard]] bool expired() const noexcept
     {
-        return ref.expired();
+        return ref_.expired();
     }
 
 private:
-    std::weak_ptr<T> ref;
+    std::weak_ptr<T> ref_;
 };
 
 namespace Bedrock {

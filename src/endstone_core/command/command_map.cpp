@@ -105,20 +105,20 @@ void EndstoneCommandMap::setMinecraftCommands()
 
 namespace {
 std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
-    {"int", CommandRegistry::Symbol::INT},
-    {"float", CommandRegistry::Symbol::FLOAT},
-    {"actor", CommandRegistry::Symbol::SELECTOR},
-    {"player", CommandRegistry::Symbol::SELECTOR},
-    {"target", CommandRegistry::Symbol::SELECTOR},
-    {"string", CommandRegistry::Symbol::STRING},
-    {"str", CommandRegistry::Symbol::STRING},
-    {"block_pos", CommandRegistry::Symbol::POSITION},
-    {"vec3i", CommandRegistry::Symbol::POSITION},
-    {"pos", CommandRegistry::Symbol::POSITION_FLOAT},
-    {"vec3", CommandRegistry::Symbol::POSITION_FLOAT},
-    {"vec3f", CommandRegistry::Symbol::POSITION_FLOAT},
-    {"message", CommandRegistry::Symbol::MESSAGE},
-    {"json", CommandRegistry::Symbol::JSON},
+    {"int", CommandRegistry::Symbol::Int},
+    {"float", CommandRegistry::Symbol::Float},
+    {"actor", CommandRegistry::Symbol::Selector},
+    {"player", CommandRegistry::Symbol::Selector},
+    {"target", CommandRegistry::Symbol::Selector},
+    {"string", CommandRegistry::Symbol::String},
+    {"str", CommandRegistry::Symbol::String},
+    {"block_pos", CommandRegistry::Symbol::Position},
+    {"vec3i", CommandRegistry::Symbol::Position},
+    {"pos", CommandRegistry::Symbol::PositionFloat},
+    {"vec3", CommandRegistry::Symbol::PositionFloat},
+    {"vec3f", CommandRegistry::Symbol::PositionFloat},
+    {"message", CommandRegistry::Symbol::Message},
+    {"json", CommandRegistry::Symbol::Json},
 };
 }  // namespace
 
@@ -137,7 +137,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
-                             CommandFlag::WITHOUT_CHEATS_ENABLED, CommandFlag::NONE);
+                             CommandFlag::WithoutCheatEnabled, CommandFlag::None);
     known_commands_.emplace(name, command);
 
     std::vector<std::string> registered_alias;

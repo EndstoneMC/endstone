@@ -29,7 +29,7 @@ public:
 
     static Permission *registerPermission(const std::string &name, Permission *parent = nullptr,
                                           const std::string &desc = "",
-                                          PermissionDefault default_value = Permission::DEFAULT_PERMISSION,
+                                          PermissionDefault default_value = Permission::DefaultPermission,
                                           const std::unordered_map<std::string, bool> &children = {});
     static void registerCorePermissions();
     static void registerCommandPermissions(Permission *parent);

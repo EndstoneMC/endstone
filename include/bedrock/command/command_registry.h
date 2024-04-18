@@ -57,25 +57,25 @@ public:
     class Symbol {
     public:
         int value = -1;
-        static const Symbol INT;
-        static const Symbol FLOAT;
-        static const Symbol RELATIVE_FLOAT;
-        static const Symbol WILDCARD_INT;
-        static const Symbol OPERATOR;
-        static const Symbol COMPARE_OPERATOR;
-        static const Symbol SELECTOR;
-        static const Symbol WILDCARD_ACTOR_SELECTOR;
-        static const Symbol FILE_PATH;
-        static const Symbol INTEGER_RANGE;
-        static const Symbol EQUIPMENT_SLOT;
-        static const Symbol STRING;
-        static const Symbol POSITION;
-        static const Symbol POSITION_FLOAT;
-        static const Symbol MESSAGE;
-        static const Symbol RAW_TEXT;
-        static const Symbol JSON;
-        static const Symbol BLOCK_STATE;
-        static const Symbol COMMAND;
+        static const Symbol Int;
+        static const Symbol Float;
+        static const Symbol RelativeFloat;
+        static const Symbol WildcardInt;
+        static const Symbol Operator;
+        static const Symbol CompareOperator;
+        static const Symbol Selector;
+        static const Symbol WildcardActorSelector;
+        static const Symbol FilePath;
+        static const Symbol IntegerRange;
+        static const Symbol EquipmentSlot;
+        static const Symbol String;
+        static const Symbol Position;
+        static const Symbol PositionFloat;
+        static const Symbol Message;
+        static const Symbol RawText;
+        static const Symbol Json;
+        static const Symbol BlockState;
+        static const Symbol Command;
     };
 
     struct Signature {

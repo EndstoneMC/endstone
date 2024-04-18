@@ -31,10 +31,10 @@ namespace endstone {
  */
 class Permission {
 public:
-    static const PermissionDefault DEFAULT_PERMISSION = PermissionDefault::Operator;
+    static const PermissionDefault DefaultPermission = PermissionDefault::Operator;
 
     explicit Permission(std::string name, std::string description = "",
-                        PermissionDefault default_value = DEFAULT_PERMISSION,
+                        PermissionDefault default_value = DefaultPermission,
                         std::unordered_map<std::string, bool> children = {})
     {
         this->name_ = std::move(name);
@@ -190,7 +190,7 @@ public:
 private:
     std::string name_;
     std::unordered_map<std::string, bool> children_;
-    PermissionDefault default_value_ = DEFAULT_PERMISSION;
+    PermissionDefault default_value_ = DefaultPermission;
     std::string description_;
     PluginManager *plugin_manager_;
 };

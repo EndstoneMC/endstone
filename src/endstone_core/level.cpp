@@ -16,6 +16,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/virtual_table.h"
 
 namespace endstone::detail {
@@ -27,13 +28,13 @@ EndstoneLevel::EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension)
 
 std::string EndstoneLevel::getName() const
 {
-    if (dimension_.getDimensionId() == Dimension::OVERWORLD) {
+    if (dimension_.getDimensionId() == VanillaDimensions::Overworld) {
         return level_.getLevelId();
     }
-    if (dimension_.getDimensionId() == Dimension::NETHER) {
+    if (dimension_.getDimensionId() == VanillaDimensions::Nether) {
         return level_.getLevelId() + " (Nether)";
     }
-    if (dimension_.getDimensionId() == Dimension::THE_END) {
+    if (dimension_.getDimensionId() == VanillaDimensions::TheEnd) {
         return level_.getLevelId() + " (TheEnd)";
     }
     throw std::runtime_error("Unknown dimension");

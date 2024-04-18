@@ -39,7 +39,7 @@ void EndstonePlayer::sendMessage(const std::string &message) const
 
 void EndstonePlayer::sendErrorMessage(const std::string &message) const
 {
-    sendMessage(ColorFormat::RED + message);
+    sendMessage(ColorFormat::Red + message);
 }
 
 Server &EndstonePlayer::getServer() const
