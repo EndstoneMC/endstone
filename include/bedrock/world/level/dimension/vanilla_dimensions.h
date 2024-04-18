@@ -21,5 +21,4 @@ public:
     static const AutomaticID<Dimension, int> Overworld;
     static const AutomaticID<Dimension, int> Nether;
     static const AutomaticID<Dimension, int> TheEnd;
-    static std::string const VanillaDimensions::toString(AutomaticID<Dimension, int> const &);
 };
