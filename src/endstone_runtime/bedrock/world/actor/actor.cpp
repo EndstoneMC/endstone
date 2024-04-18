@@ -47,6 +47,12 @@ void Actor::remove()
 #endif
 }
 
+void Actor::setDimension(WeakRef<Dimension> dimension)
+{
+    // TODO(fixme): remove me from current endstone level and add to another
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::setDimension, this, std::move(dimension));
+}
+
 Level &Actor::getLevel() const
 {
     return *level_;

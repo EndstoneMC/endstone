@@ -24,6 +24,7 @@
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+#include "bedrock/memory.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/registry/entity_context.h"
@@ -226,6 +227,8 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
+    BEDROCK_API void setDimension(WeakRef<Dimension>);
+    
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
