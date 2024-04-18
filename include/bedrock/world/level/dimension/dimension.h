@@ -14,14 +14,31 @@
 
 #pragma once
 
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
 #include "bedrock/automatic_id.h"
+#include "bedrock/forward.h"
 #include "bedrock/memory.h"
+#include "bedrock/world/level/dimension/dimension_height_range.h"
 #include "bedrock/world/level/dimension/dimension_interface.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/storage/saved_data.h"
 
-class ILevel;
+class Level;
 
-class Dimension : public IDimension, public LevelListener, public SavedData, public Bedrock::EnableNonOwnerReferences {
+class Dimension : public IDimension,
+                  public LevelListener,
+                  public SavedData,
+                  public Bedrock::EnableNonOwnerReferences,
+                  public std::enable_shared_from_this<Dimension> {
 public:
+    [[nodiscard]] Level &getLevel() const;
+
+private:
+    std::vector<void *> unknown_;                                                                 // +104
+    std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>> chunk_transfers_;  // +128
+    Level &level_;                                                                                // +192 (+160)
+    DimensionHeightRange height_range_;                                                           // +200 (+168)
 };
