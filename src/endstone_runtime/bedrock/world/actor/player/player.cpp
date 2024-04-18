@@ -35,11 +35,7 @@ const std::string &Player::getName() const
 
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer()
 {
-    if (!isPlayer()) {
-        throw std::runtime_error("Player::isPlayer() returns false.");
-    }
-    auto &server = entt::locator<EndstoneServer>::value();
-    return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *this);
+    return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());
 }
 
 void Player::sendCommands()

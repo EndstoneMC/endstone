@@ -16,6 +16,7 @@
 
 #include "bedrock/world/actor/components/actor_owner_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/actor/actor.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/player.h"
@@ -86,10 +87,11 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
 
 endstone::detail::EndstoneActor &Actor::getEndstoneActor()
 {
-    if (isPlayer()) {
-        throw std::runtime_error("Use Player::getEndstonePlayer() instead of Actor::getEndstoneActor()");
-    }
     auto &server = entt::locator<EndstoneServer>::value();
+    if (isPlayer()) {
+        auto *self = static_cast<Player *>(this);
+        return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *self);
+    }
+    // TODO(actor): add factory method for other actors
     return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *this);
 }
-
