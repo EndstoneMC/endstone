@@ -50,6 +50,11 @@ bool Actor::isRemoved() const
     return !isAlive();
 }
 
+Dimension &Actor::getDimension() const
+{
+    return *dimension_;
+}
+
 Level &Actor::getLevel() const
 {
     return *level_;
@@ -87,3 +92,4 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor()
     auto &server = entt::locator<EndstoneServer>::value();
     return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *this);
 }
+

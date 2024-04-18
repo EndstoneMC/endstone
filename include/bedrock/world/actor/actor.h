@@ -231,6 +231,7 @@ public:
     BEDROCK_API void setDimension(WeakRef<Dimension>);
 
     [[nodiscard]] bool isRemoved() const;
+    [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
@@ -244,7 +245,8 @@ protected:
     std::array<char[16], 10> unknown3_;                // +72
     std::int16_t unknown4_;                            // +232
     ActorDefinitionGroup *actor_definitions_;          // +240
-    char pad_[352];                                    // +248 TODO: figure out the structure
+    char pad_[336];                                    // +248 TODO: figure out the structure
+    WeakRef<Dimension> dimension_;                     // +584
     Level *level_;                                     // +600
     char pad2_[56];                                    // +608
     Vec3 position_;                                    // +664
