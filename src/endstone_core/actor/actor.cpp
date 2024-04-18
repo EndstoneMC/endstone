@@ -19,6 +19,8 @@
 
 namespace endstone::detail {
 
+EndstoneActor::EndstoneActor(EndstoneServer &server, BedrockActor &actor) : server_(server), actor_(actor) {}
+
 void EndstoneActor::sendMessage(const std::string &message) const {}
 
 void EndstoneActor::sendErrorMessage(const std::string &message) const {}

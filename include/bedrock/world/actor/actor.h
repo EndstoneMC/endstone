@@ -31,6 +31,7 @@
 #include "bedrock/world/actor/registry/entity_registry.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/math/vec3.h"
+#include "endstone/detail/actor/actor.h"
 
 class Player;
 class Level;
@@ -228,7 +229,8 @@ public:
     }
 
     BEDROCK_API void setDimension(WeakRef<Dimension>);
-    
+
+    [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
@@ -246,4 +248,7 @@ private:
     Level *level_;                                     // +600
     char pad2_[56];                                    // +608
     Vec3 position_;                                    // +664
+
+public:
+    endstone::detail::EndstoneActor &getEndstoneActor();
 };

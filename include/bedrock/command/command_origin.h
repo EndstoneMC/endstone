@@ -21,8 +21,10 @@
 #include "bedrock/mce.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/protocol/sub_client_id.h"
-#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/math/vec3.h"
 
+class Actor;
 class Level;
 
 enum class CommandOriginType : char {

@@ -36,40 +36,8 @@ std::string EndstoneLevel::getName() const
 
 std::vector<Actor *> EndstoneLevel::getActors() const
 {
-    std::vector<Actor *> result;
-    result.reserve(actors_.size());
-    for (const auto &pair : actors_) {
-        result.push_back(pair.second.get());
-    }
-    return result;
-}
-
-Actor *EndstoneLevel::getActor(std::uint64_t runtime_id) const
-{
-    auto it = actors_.find(runtime_id);
-    if (it != actors_.end()) {
-        return it->second.get();
-    }
-    return nullptr;
-}
-
-void EndstoneLevel::addActor(std::unique_ptr<Actor> actor)
-{
-    auto id = actor->getRuntimeId();
-    if (getActor(id) != nullptr) {
-        server_.getLogger().error("Unable to add actor with runtime id {}. Actor already exists.", id);
-        return;
-    }
-    actors_[id] = std::move(actor);
-}
-
-void EndstoneLevel::removeActor(std::uint64_t runtime_id)
-{
-    if (getActor(runtime_id) == nullptr) {
-        server_.getLogger().error("Unable to remove actor with runtime id {}. Actor does not exist.", runtime_id);
-        return;
-    }
-    actors_.erase(runtime_id);
+    // TODO(actor): implement this using Level::getEntities() and filter by dimension
+    return {};
 }
 
 int EndstoneLevel::getTime() const

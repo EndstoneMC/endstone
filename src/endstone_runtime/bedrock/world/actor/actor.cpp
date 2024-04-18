@@ -16,28 +16,20 @@
 
 #include "bedrock/world/actor/components/actor_owner_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
+#include "endstone/detail/actor/actor.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_remove_event.h"
 
-using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 
 void Actor::remove()
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &bedrock_level = getLevel();
-    // TODO(fixme): find level by level and dimension
-    auto *level = static_cast<EndstoneLevel *>(server.getLevel(bedrock_level.getLevelId()));
-    if (!level) {
-        throw std::runtime_error("Unable to find the level associated with the actor.");
-    }
-
-    if (auto *actor = level->getActor(getRuntimeID().id)) {
-        endstone::ActorRemoveEvent e{*actor};
+    if (!isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        endstone::ActorRemoveEvent e{getEndstoneActor()};
         server.getPluginManager().callEvent(e);
-        level->removeActor(actor->getRuntimeId());
     }
 
 #if _WIN32
@@ -49,8 +41,13 @@ void Actor::remove()
 
 void Actor::setDimension(WeakRef<Dimension> dimension)
 {
-    // TODO(fixme): remove me from current endstone level and add to another
+    // TODO(event): call PlayerChangedLevelEvent for player??
     ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::setDimension, this, std::move(dimension));
+}
+
+bool Actor::isRemoved() const
+{
+    return !isAlive();
 }
 
 Level &Actor::getLevel() const
@@ -76,9 +73,17 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
     }
 
     auto *actor = component->owner;
-    // TODO(fixme): this should be !actor->isRemoved() instead of actor->isAlive() though they are equivalent for now
-    if (actor->isAlive() || include_removed) {
+    if (actor && (!actor->isRemoved() || include_removed)) {
         return actor;
     }
     return nullptr;
+}
+
+endstone::detail::EndstoneActor &Actor::getEndstoneActor()
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    if (isPlayer()) {
+        throw std::runtime_error("use getEndstonePlayer() instead");
+    }
+    return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *this);
 }

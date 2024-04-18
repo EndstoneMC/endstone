@@ -14,18 +14,18 @@
 
 #pragma once
 
-#include "bedrock/world/actor/actor.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/permissions/permissible_base.h"
 #include "endstone/detail/server.h"
 
-using BedrockActor = ::Actor;
+class Actor;
+using BedrockActor = Actor;
 
 namespace endstone::detail {
 
-class EndstoneActor : public Actor {
+class EndstoneActor : public endstone::Actor {
 public:
-    EndstoneActor(EndstoneServer &server, BedrockActor &actor) : server_(server), actor_(actor) {}
+    EndstoneActor(EndstoneServer &server, BedrockActor &actor);
     ~EndstoneActor() override = default;
 
     // CommandSender
