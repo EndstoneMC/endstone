@@ -25,8 +25,7 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag
     using endstone::detail::EndstoneServer;
 
     auto &server = entt::locator<EndstoneServer>::value();
-    server.addPlayer(std::move(std::make_unique<EndstonePlayer>(server, server_player)));
-    auto *player = server_player.getEndstonePlayer();
+    auto &player = server_player.getEndstonePlayer();
     // TODO(event): call PlayerLoginEvent
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
 }
