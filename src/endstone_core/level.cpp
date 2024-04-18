@@ -36,8 +36,25 @@ std::string EndstoneLevel::getName() const
 
 std::vector<Actor *> EndstoneLevel::getActors() const
 {
-    // TODO(actor): implement this using Level::getEntities() and filter by dimension
-    return {};
+    std::vector<Actor *> result;
+    for (const auto &e : level_.getEntities()) {
+        const auto &ctx = e.storage.context;
+        if (!ctx.has_value()) {
+            continue;
+        }
+
+        auto *actor = ::Actor::tryGetFromEntity(ctx.value(), false);
+        if (!actor) {
+            continue;
+        }
+
+        if (&actor->getDimension() != &dimension_) {
+            continue;
+        }
+
+        result.push_back(&actor->getEndstoneActor());
+    }
+    return result;
 }
 
 int EndstoneLevel::getTime() const
