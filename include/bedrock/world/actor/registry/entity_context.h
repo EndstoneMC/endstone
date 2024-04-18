@@ -36,6 +36,12 @@ public:
         return entt_registry_.try_get<Component>(entity_id_);
     }
 
+    template <typename Component, typename... Args>
+    Component &getOrAddComponent(Args &&...args) const
+    {
+        return entt_registry_.get_or_emplace<Component>(entity_id_, std::forward<Args>(args)...);
+    }
+
 private:
     EntityRegistry &registry_;                       // +0
     entt::basic_registry<EntityId> &entt_registry_;  // +8
