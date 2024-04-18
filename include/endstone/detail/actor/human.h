@@ -18,13 +18,13 @@
 #include "endstone/actor/human.h"
 #include "endstone/detail/actor/actor.h"
 
-using BedrockPlayer = ::Player;
+using BedrockActor = ::Actor;
 
 namespace endstone::detail {
 
 class EndstoneHumanActor : public EndstoneActor, public HumanActor {
 public:
-    EndstoneHumanActor(EndstoneServer &server, BedrockPlayer &player);
+    EndstoneHumanActor(EndstoneServer &server, BedrockActor &player);
     ~EndstoneHumanActor() override = default;
 
     // CommandSender
@@ -50,7 +50,6 @@ public:
     std::uint64_t getRuntimeId() override;
 
 private:
-    BedrockPlayer &player_;
     bool op_;
     PermissibleBase perm_;
 };

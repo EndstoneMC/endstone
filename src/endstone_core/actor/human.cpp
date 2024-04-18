@@ -16,8 +16,8 @@
 
 namespace endstone::detail {
 
-EndstoneHumanActor::EndstoneHumanActor(EndstoneServer &server, BedrockPlayer &player)
-    : EndstoneActor(server, player), player_(player), perm_(static_cast<HumanActor *>(this))
+EndstoneHumanActor::EndstoneHumanActor(EndstoneServer &server, BedrockActor &player)
+    : EndstoneActor(server, player), perm_(static_cast<HumanActor *>(this))
 {
 }
 
@@ -38,7 +38,7 @@ Server &EndstoneHumanActor::getServer() const
 
 std::string EndstoneHumanActor::getName() const
 {
-    return player_.getName();
+    return EndstoneActor::getName();
 }
 
 bool EndstoneHumanActor::isPermissionSet(std::string name) const
