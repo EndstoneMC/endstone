@@ -14,14 +14,15 @@
 
 #pragma once
 
-#include "bedrock/automatic_id.h"
-#include "bedrock/memory.h"
-#include "bedrock/world/level/dimension/dimension_interface.h"
-#include "bedrock/world/level/level_listener.h"
-#include "bedrock/world/level/storage/saved_data.h"
+#include <string>
 
-class ILevel;
-
-class Dimension : public IDimension, public LevelListener, public SavedData, public Bedrock::EnableNonOwnerReferences {
+class SavedData {
 public:
+    virtual ~SavedData() = 0;
+    virtual void deserialize(CompoundTag const &) = 0;
+    virtual void serialize(CompoundTag const &) = 0;
+
+private:
+    bool unknown1_;
+    std::string unknown2_;
 };

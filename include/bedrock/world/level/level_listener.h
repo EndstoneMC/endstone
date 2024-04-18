@@ -14,14 +14,7 @@
 
 #pragma once
 
-#include "bedrock/automatic_id.h"
-#include "bedrock/memory.h"
-#include "bedrock/world/level/dimension/dimension_interface.h"
-#include "bedrock/world/level/level_listener.h"
-#include "bedrock/world/level/storage/saved_data.h"
-
-class ILevel;
-
-class Dimension : public IDimension, public LevelListener, public SavedData, public Bedrock::EnableNonOwnerReferences {
+class LevelListener {
 public:
+    virtual ~LevelListener() = default;
 };
