@@ -153,30 +153,8 @@ void EndstoneServer::addLevel(std::unique_ptr<Level> level)
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
 {
-    auto it = players_.find(id);
-    if (it == players_.end()) {
-        return nullptr;
-    }
-    return it->second.get();
-}
-
-void EndstoneServer::addPlayer(std::unique_ptr<Player> player)
-{
-    auto id = player->getUniqueId();
-    if (getPlayer(id) != nullptr) {
-        getLogger().error("Unable to add player {}. Player already exists.", player->getName());
-        return;
-    }
-    players_[id] = std::move(player);
-}
-
-void EndstoneServer::removePlayer(endstone::UUID id)
-{
-    if (getPlayer(id) == nullptr) {
-        getLogger().error("Unable to remove player with UUID {}. Player does not exist.", id.str());
-        return;
-    }
-    players_.erase(id);
+    // TODO:
+    return nullptr;
 }
 
 std::string EndstoneServer::getName() const
