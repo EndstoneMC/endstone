@@ -16,8 +16,8 @@
 
 namespace endstone::detail {
 
-EndstoneHumanActor::EndstoneHumanActor(EndstoneServer &server, BedrockActor &player)
-    : EndstoneActor(server, player), perm_(static_cast<HumanActor *>(this))
+EndstoneHumanActor::EndstoneHumanActor(EndstoneServer &server, ::Actor &actor)
+    : EndstoneActor(server, actor), perm_(static_cast<HumanActor *>(this))
 {
 }
 

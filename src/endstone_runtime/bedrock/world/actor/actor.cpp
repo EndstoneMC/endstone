@@ -81,9 +81,9 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
 
 endstone::detail::EndstoneActor &Actor::getEndstoneActor()
 {
-    auto &server = entt::locator<EndstoneServer>::value();
     if (isPlayer()) {
-        throw std::runtime_error("use getEndstonePlayer() instead");
+        throw std::runtime_error("Use Player::getEndstonePlayer() instead of Actor::getEndstoneActor()");
     }
+    auto &server = entt::locator<EndstoneServer>::value();
     return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *this);
 }

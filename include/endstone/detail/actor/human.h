@@ -14,17 +14,14 @@
 
 #pragma once
 
-#include "bedrock/world/actor/player/player.h"
 #include "endstone/actor/human.h"
 #include "endstone/detail/actor/actor.h"
-
-using BedrockActor = ::Actor;
 
 namespace endstone::detail {
 
 class EndstoneHumanActor : public EndstoneActor, public HumanActor {
 public:
-    EndstoneHumanActor(EndstoneServer &server, BedrockActor &player);
+    EndstoneHumanActor(EndstoneServer &server, ::Actor &actor);
     ~EndstoneHumanActor() override = default;
 
     // CommandSender

@@ -19,13 +19,12 @@
 #include "endstone/detail/server.h"
 
 class Actor;
-using BedrockActor = Actor;
 
 namespace endstone::detail {
 
 class EndstoneActor : public endstone::Actor {
 public:
-    EndstoneActor(EndstoneServer &server, BedrockActor &actor);
+    EndstoneActor(EndstoneServer &server, ::Actor &actor);
     ~EndstoneActor() override = default;
 
     // CommandSender
@@ -52,7 +51,7 @@ public:
 
 private:
     EndstoneServer &server_;
-    BedrockActor &actor_;
+    ::Actor &actor_;
     static PermissibleBase mPerm;
 };
 

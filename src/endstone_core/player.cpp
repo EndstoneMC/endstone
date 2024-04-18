@@ -17,12 +17,13 @@
 #include "bedrock/network/protocol/game/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
-EndstonePlayer::EndstonePlayer(EndstoneServer &server, ServerPlayer &player)
+EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     : EndstoneHumanActor(server, player), player_(player)
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();

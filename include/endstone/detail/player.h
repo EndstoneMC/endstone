@@ -14,16 +14,16 @@
 
 #pragma once
 
-#include "bedrock/server/level/server_player.h"
 #include "endstone/detail/actor/human.h"
 #include "endstone/player.h"
 
+class Player;
+
 namespace endstone::detail {
 
-class EndstonePlayer : public EndstoneHumanActor, public Player {
+class EndstonePlayer : public EndstoneHumanActor, public endstone::Player {
 public:
-    explicit EndstonePlayer(EndstoneServer &server, ServerPlayer &player);
-
+    explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
     ~EndstonePlayer() override = default;
 
     // CommandSender
@@ -55,7 +55,7 @@ public:
     void sendTip(std::string message) const override;
 
 private:
-    ServerPlayer &player_;
+    ::Player &player_;
     UUID uuid_;
 };
 

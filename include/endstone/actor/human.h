@@ -22,6 +22,12 @@ namespace endstone {
 
 class HumanActor : public Actor {
 public:
+    HumanActor() = default;
+    HumanActor(const HumanActor &) = delete;
+    HumanActor &operator=(const HumanActor &) = delete;
+    HumanActor(HumanActor &&) = delete;
+    HumanActor &operator=(HumanActor &&) = delete;
+
     ~HumanActor() override = default;
 };
 

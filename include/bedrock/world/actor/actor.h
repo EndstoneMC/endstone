@@ -237,7 +237,7 @@ public:
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
-private:
+protected:
     EntityContext context_;                            // +8
     ActorInitializationMethod initialization_method_;  // +32
     std::string unknown2_;                             // +40

@@ -23,8 +23,6 @@
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/permissions/permissible_base.h"
 
-using BedrockPlayer = ::Player;
-
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
     : origin_(origin), output_(output)
@@ -82,15 +80,10 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     case CommandOriginType::Player: {
         auto *entity = origin.getEntity();
         if (!entity->isPlayer()) {
-            server.getLogger().error("Command '{}' was executed by an non-player entity", command_name);
-            return;
+            throw std::runtime_error("Command was executed by an non-player entity");
         }
-        auto *player = static_cast<BedrockPlayer *>(entity)->getEndstonePlayer();
-        if (!player) {
-            server.getLogger().error("Command '{}' was executed by an unknown player", command_name);
-            return;
-        }
-        success = command->execute(*player, args_);
+        endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
+        success = command->execute(player, args_);
         break;
     }
     case CommandOriginType::Entity:
