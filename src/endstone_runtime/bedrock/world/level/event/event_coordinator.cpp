@@ -16,7 +16,6 @@
 
 #include <sstream>
 
-#include <cpptrace/cpptrace.hpp>
 #include <entt/entt.hpp>
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
