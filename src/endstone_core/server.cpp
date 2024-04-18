@@ -20,8 +20,10 @@ namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
 #include "bedrock/threading.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
@@ -153,7 +155,13 @@ void EndstoneServer::addLevel(std::unique_ptr<Level> level)
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
 {
-    // TODO(player): use Level::getPlayer
+    for (const auto *level : getLevels()) {
+        auto uuid = mce::UUID{id.bits.most_significant, id.bits.least_significant};
+        auto *player = static_cast<const EndstoneLevel *>(level)->getBedrockLevel().getPlayer(uuid);
+        if (player) {
+            return &player->getEndstonePlayer();
+        }
+    }
     return nullptr;
 }
 
