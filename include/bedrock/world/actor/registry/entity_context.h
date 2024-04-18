@@ -50,6 +50,11 @@ private:
 
 class OwnerStorageEntity {
 public:
+    OwnerStorageEntity(const OwnerStorageEntity &) = delete;
+    OwnerStorageEntity &operator=(const OwnerStorageEntity &) = delete;
+    OwnerStorageEntity(OwnerStorageEntity &&) noexcept = default;
+    OwnerStorageEntity &operator=(OwnerStorageEntity &&) noexcept = delete;
+
     std::optional<EntityContext> context;
 };
 static_assert(sizeof(OwnerStorageEntity) == 32);
@@ -57,5 +62,10 @@ static_assert(sizeof(OwnerStorageEntity) == 32);
 template <>
 class OwnerPtr<EntityContext> {
 public:
+    OwnerPtr(const OwnerPtr &) = delete;
+    OwnerPtr &operator=(const OwnerPtr &) = delete;
+    OwnerPtr(OwnerPtr &&) noexcept = default;
+    OwnerPtr &operator=(OwnerPtr &&) noexcept = delete;
+
     OwnerStorageEntity storage;
 };

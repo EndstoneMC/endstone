@@ -23,7 +23,7 @@ using endstone::detail::EndstoneServer;
 
 Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<EntityContext> ctx)
 {
-    auto *actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, ctx);
+    auto *actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, std::move(ctx));
     if (!actor || actor->isPlayer()) {
         return actor;
     }

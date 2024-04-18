@@ -198,8 +198,7 @@ enum class LevelSoundEvent : int;
 }
 
 // Template Classes
-template <typename T>
-class OwnerPtr;
+
 template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename T>
