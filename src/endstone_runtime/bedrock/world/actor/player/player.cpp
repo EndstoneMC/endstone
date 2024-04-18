@@ -17,31 +17,10 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/network/protocol/game/available_commands_packet.h"
-#include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 
-namespace {
-
-class DummyPlayerSender : public endstone::detail::BaseCommandSender {
-public:
-    explicit DummyPlayerSender(CommandPermissionLevel level) : level_(level) {}
-    [[nodiscard]] bool isOp() const override
-    {
-        return level_ != CommandPermissionLevel::Any;
-    }
-    void setOp(bool value) override {}
-    void sendMessage(const std::string &message) const override {}
-    void sendErrorMessage(const std::string &message) const override {}
-    [[nodiscard]] std::string getName() const override
-    {
-        return "";
-    }
-
-private:
-    CommandPermissionLevel level_;
-};
-}  // namespace
+using endstone::detail::EndstoneServer;
 
 void Player::setPermissions(CommandPermissionLevel level)
 {
@@ -54,27 +33,28 @@ const std::string &Player::getName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
-endstone::Player *Player::getEndstonePlayer() const
+endstone::detail::EndstonePlayer &Player::getEndstonePlayer()
 {
-    auto &server = entt::locator<endstone::detail::EndstoneServer>::value();
-    auto *component = tryGetComponent<UserEntityIdentifierComponent>();
-    return server.getPlayer({component->uuid.msb, component->uuid.lsb});
+    if (!isPlayer()) {
+        throw std::runtime_error("Player::isPlayer() returns false.");
+    }
+    auto &server = entt::locator<EndstoneServer>::value();
+    return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *this);
 }
 
 void Player::sendCommands()
 {
-    using endstone::detail::EndstoneServer;
     auto &server = entt::locator<EndstoneServer>::value();
     auto &registry = server.getMinecraftCommands().getRegistry();
 
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
     auto &command_map = server.getCommandMap();
-    auto perm = DummyPlayerSender(getCommandPermissionLevel());
     for (auto &data : packet.commands) {
         auto name = data.name;
         auto *command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(perm)) {
+        endstone::Player &endstone_player = getEndstonePlayer();
+        if (command && command->isRegistered() && command->testPermissionSilently(endstone_player)) {
             continue;
         }
         data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
