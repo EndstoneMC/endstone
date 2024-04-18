@@ -31,13 +31,7 @@ std::string EndstoneLevel::getName() const
     if (dimension_.getDimensionId() == VanillaDimensions::Overworld) {
         return level_.getLevelId();
     }
-    if (dimension_.getDimensionId() == VanillaDimensions::Nether) {
-        return level_.getLevelId() + " (Nether)";
-    }
-    if (dimension_.getDimensionId() == VanillaDimensions::TheEnd) {
-        return level_.getLevelId() + " (TheEnd)";
-    }
-    throw std::runtime_error("Unknown dimension");
+    return fmt::format("{} ({})", level_.getLevelId(), VanillaDimensions::toString(dimension_.getDimensionId()));
 }
 
 std::vector<Actor *> EndstoneLevel::getActors() const

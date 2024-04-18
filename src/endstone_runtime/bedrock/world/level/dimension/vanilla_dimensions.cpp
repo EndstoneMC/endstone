@@ -12,16 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 
-#include "bedrock/automatic_id.h"
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/detail/hook.h"
 
-class VanillaDimensions {
-public:
-    static const AutomaticID<Dimension, int> Overworld;
-    static const AutomaticID<Dimension, int> Nether;
-    static const AutomaticID<Dimension, int> TheEnd;
-    BEDROCK_API static std::string const toString(AutomaticID<Dimension, int> const &);
-};
+std::string const VanillaDimensions::toString(const AutomaticID<Dimension, int> &dimension_id)
+{
+    std::string result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&VanillaDimensions::toString, result, dimension_id);
+    return result;
+}
