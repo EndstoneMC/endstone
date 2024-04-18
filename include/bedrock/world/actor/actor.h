@@ -28,7 +28,7 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
-#include "bedrock/world/level/dimension.h"
+#include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/math/vec3.h"
 
 class Player;

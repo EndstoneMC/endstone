@@ -47,3 +47,13 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::RAW_TEXT{0x100046};
 const CommandRegistry::Symbol CommandRegistry::Symbol::JSON{0x10004a};
 const CommandRegistry::Symbol CommandRegistry::Symbol::BLOCK_STATE{0x100054};
 const CommandRegistry::Symbol CommandRegistry::Symbol::COMMAND{0x100057};
+
+/**
+ * Ids for Dimension
+ *
+ * See VanillaDimensions::fromSerializedInt
+ */
+// TODO(fixme): move these to VanillaDimensions
+const AutomaticID<Dimension, int> Dimension::OVERWORLD{0};
+const AutomaticID<Dimension, int> Dimension::NETHER{1};
+const AutomaticID<Dimension, int> Dimension::THE_END{2};

@@ -14,18 +14,13 @@
 
 #pragma once
 
-template <typename Type, typename Value>
-class AutomaticID {
+#include "bedrock/automatic_id.h"
+
+class Dimension;
+
+class IDimension {
 public:
-    Value id;
-
-    bool operator==(const AutomaticID &other) const
-    {
-        return id == other.id;
-    }
-
-    bool operator!=(const AutomaticID &other) const
-    {
-        return !(*this == other);
-    }
+    virtual ~IDimension() = 0;
+    [[nodiscard]] virtual bool isNaturalDimension() const = 0;
+    [[nodiscard]] virtual AutomaticID<Dimension, int> getDimensionId() const = 0;
 };

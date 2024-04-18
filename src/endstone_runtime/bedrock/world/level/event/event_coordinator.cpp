@@ -159,6 +159,13 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
 void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    server.addLevel(std::make_unique<EndstoneLevel>(level));
+    const static AutomaticID<Dimension, int> dimension_ids[] = {Dimension::OVERWORLD, Dimension::NETHER,
+                                                                Dimension::THE_END};
+    for (const auto &dimension_id : dimension_ids) {
+        auto dimension = level.getOrCreateDimension(dimension_id);
+        auto endstone_level = std::make_unique<EndstoneLevel>(level, *dimension);
+        server.addLevel(std::move(endstone_level));
+    }
+
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }

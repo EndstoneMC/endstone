@@ -16,18 +16,20 @@
 
 #include <unordered_map>
 
+#include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/server.h"
 #include "endstone/level.h"
 
 using BedrockLevel = ::Level;
+using BedrockDimension = ::Dimension;
 
 namespace endstone::detail {
 
 class EndstoneLevel : public endstone::Level {
 public:
-    explicit EndstoneLevel(BedrockLevel &level);
+    explicit EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension);
     ~EndstoneLevel() override = default;
 
     [[nodiscard]] std::string getName() const override;
@@ -45,6 +47,7 @@ public:
 private:
     EndstoneServer &server_;
     BedrockLevel &level_;
+    BedrockDimension &dimension_;
     std::unordered_map<std::uint64_t, std::unique_ptr<Actor>> actors_;
 };
 

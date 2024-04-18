@@ -28,6 +28,7 @@ void Actor::remove()
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto &bedrock_level = getLevel();
+    // TODO(fixme): find level by level and dimension
     auto *level = static_cast<EndstoneLevel *>(server.getLevel(bedrock_level.getLevelId()));
     if (!level) {
         throw std::runtime_error("Unable to find the level associated with the actor.");

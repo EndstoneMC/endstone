@@ -14,8 +14,14 @@
 
 #pragma once
 
+#include "bedrock/automatic_id.h"
+#include "bedrock/world/level/dimension/dimension_interface.h"
+
 class ILevel;
 
-class Dimension {
+class Dimension : public IDimension {
 public:
+    static const AutomaticID<Dimension, int> OVERWORLD;
+    static const AutomaticID<Dimension, int> NETHER;
+    static const AutomaticID<Dimension, int> THE_END;
 };

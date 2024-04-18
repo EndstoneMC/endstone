@@ -20,11 +20,23 @@
 
 namespace endstone::detail {
 
-EndstoneLevel::EndstoneLevel(BedrockLevel &level) : server_(entt::locator<EndstoneServer>::value()), level_(level) {}
+EndstoneLevel::EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension)
+    : server_(entt::locator<EndstoneServer>::value()), level_(level), dimension_(dimension)
+{
+}
 
 std::string EndstoneLevel::getName() const
 {
-    return level_.getLevelId();
+    if (dimension_.getDimensionId() == Dimension::OVERWORLD) {
+        return level_.getLevelId();
+    }
+    if (dimension_.getDimensionId() == Dimension::NETHER) {
+        return level_.getLevelId() + " (Nether)";
+    }
+    if (dimension_.getDimensionId() == Dimension::THE_END) {
+        return level_.getLevelId() + " (TheEnd)";
+    }
+    throw std::runtime_error("Unknown dimension");
 }
 
 std::vector<Actor *> EndstoneLevel::getActors() const
