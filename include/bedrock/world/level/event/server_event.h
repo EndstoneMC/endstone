@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include "bedrock/details.h"
+#include "bedrock/world/actor/registry/entity_context.h"
+
 template <typename Return>
 struct ServerInstanceGameplayEvent;
 
@@ -32,7 +35,13 @@ template <typename Return>
 struct MutableServerNetworkGameplayEvent;
 
 struct ChatEvent {
-    char pad[128];
+    std::string message;                             // +0
+    WeakRef<EntityContext> sender;                   // +32
+    std::vector<WeakRef<EntityContext>> recipients;  // +56
+    bool unknown1{false};                            // +80
+    std::string player_name;                         // +88
+    bool unknown2{true};                             // +120
+    bool unknown3{true};                             // +121
 };
 
 template <>

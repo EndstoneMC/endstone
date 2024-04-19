@@ -22,14 +22,6 @@ class OwnerPtr;
 template <typename T>
 class WeakRef {
 public:
-    T &operator()() const
-    {
-        if (auto lock = ref_.lock()) {
-            return *lock;
-        }
-        throw std::bad_weak_ptr();
-    }
-
     T &operator*() const
     {
         if (auto lock = ref_.lock()) {
@@ -41,11 +33,6 @@ public:
     T *operator->() const noexcept
     {
         return ref_.lock().get();
-    }
-
-    [[nodiscard]] bool expired() const noexcept
-    {
-        return ref_.expired();
     }
 
 private:

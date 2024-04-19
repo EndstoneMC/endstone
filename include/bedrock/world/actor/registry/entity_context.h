@@ -60,6 +60,13 @@ public:
 };
 static_assert(sizeof(OwnerStorageEntity) == 32);
 
+class WeakStorageEntity {
+public:
+    WeakRef<EntityRegistry> registry;
+    EntityId entity_id;
+};
+static_assert(sizeof(WeakStorageEntity) == 24);
+
 template <>
 class OwnerPtr<EntityContext> {
 public:
@@ -69,4 +76,10 @@ public:
     OwnerPtr &operator=(OwnerPtr &&) noexcept = delete;
 
     OwnerStorageEntity storage;
+};
+
+template <>
+class WeakRef<EntityContext> {
+public:
+    WeakStorageEntity storage;
 };
