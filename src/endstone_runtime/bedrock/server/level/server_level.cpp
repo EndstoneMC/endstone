@@ -14,6 +14,7 @@
 
 #include "bedrock/server/level/server_level.h"
 
+#include "bedrock/world/actor/actor_initialization_method.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
@@ -22,7 +23,6 @@ using endstone::detail::EndstoneServer;
 
 void ServerLevel::_postReloadActorAdded(Actor &actor, ActorInitializationMethod method)
 {
-    printf("_postReloadActorAdded for %s\n", actor.getEndstoneActor().getName().c_str());
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerLevel::_postReloadActorAdded, this, actor, method);
 
     if (actor.isPlayer()) {

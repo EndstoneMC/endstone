@@ -101,7 +101,6 @@ class JigsawStructureRegistry;
 class LayeredAbilities;
 class LevelChunk;
 class LevelData;
-class LevelListener;
 class LevelSettings;
 class LevelSoundManager;
 class LevelStorage;
@@ -161,7 +160,6 @@ class _TickPtr;  // NOLINT
 
 // Enums
 enum class AbilitiesIndex;
-enum class ActorInitializationMethod : char;
 enum class ActorFlags;
 enum class ActorType;
 enum class ArmorMaterialType;

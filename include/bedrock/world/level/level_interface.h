@@ -35,6 +35,7 @@
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 #include "bedrock/world/level/event/event_coordinator.h"
+#include "bedrock/world/level/level_listener.h"
 
 class ILevel {
 public:

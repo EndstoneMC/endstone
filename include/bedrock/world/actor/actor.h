@@ -25,6 +25,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
+#include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/registry/entity_context.h"

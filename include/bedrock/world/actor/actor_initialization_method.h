@@ -14,13 +14,13 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
-#include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_initialization_method.h"
-#include "bedrock/world/level/level.h"
-
-class ServerLevel : public Level {
-private:
-    BEDROCK_API void _postReloadActorAdded(Actor &, ActorInitializationMethod);
+enum class ActorInitializationMethod : char {
+    Invalid = 0,
+    Loaded = 1,
+    Spawned = 2,
+    Born = 3,
+    Transformed = 4,
+    Updated = 5,
+    Event = 6,
+    Legacy = 7
 };
