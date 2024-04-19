@@ -19,6 +19,7 @@
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/event_priority.h"
+#include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
@@ -70,6 +71,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<ActorSpawnEvent, Event>(m, "ActorSpawnEvent")
         .def_property_readonly("actor", &ActorSpawnEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor being spawned");
+
+    py::class_<PlayerChatEvent, Event>(m, "PlayerChatEvent")
+        .def_property_readonly("player", &PlayerChatEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the Player who joins the server")
+        .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
+                      "The message that the player will send.");
 
     py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent")
         .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,

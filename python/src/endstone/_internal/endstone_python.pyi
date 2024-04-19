@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
 class ActorRemoveEvent(Event):
@@ -636,6 +636,20 @@ class Player(HumanActor):
     def unique_id(self) -> uuid.UUID:
         """
         Returns the UUID of this player
+        """
+class PlayerChatEvent(Event):
+    @property
+    def message(self) -> str:
+        """
+        The message that the player will send.
+        """
+    @message.setter
+    def message(self, arg1: str) -> None:
+        ...
+    @property
+    def player(self) -> Player:
+        """
+        Returns the Player who joins the server
         """
 class PlayerJoinEvent(Event):
     @property
