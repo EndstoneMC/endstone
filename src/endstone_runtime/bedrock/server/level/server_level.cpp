@@ -12,29 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/actor/actor_manager.h"
+#include "bedrock/server/level/server_level.h"
 
-#include "bedrock/world/actor/registry/entity_context.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 
 using endstone::detail::EndstoneServer;
 
-Actor *ActorManager::addActorEntity(IAddActorEntityProxy &proxy, OwnerPtr<EntityContext> ctx)
+void ServerLevel::_postReloadActorAdded(Actor &actor, ActorInitializationMethod method)
 {
-    auto *actor = ENDSTONE_HOOK_CALL_ORIGINAL(&ActorManager::addActorEntity, this, proxy, std::move(ctx));
-    if (!actor || actor->isPlayer()) {
-        return actor;
+    printf("_postReloadActorAdded for %s\n", actor.getEndstoneActor().getName().c_str());
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerLevel::_postReloadActorAdded, this, actor, method);
+
+    if (actor.isPlayer()) {
+        return;
     }
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorSpawnEvent e{actor->getEndstoneActor()};
+    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
-        actor->despawn();
+        actor.despawn();
     }
-
-    return actor;
 }

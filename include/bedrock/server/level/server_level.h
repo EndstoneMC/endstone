@@ -16,10 +16,10 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
-#include "bedrock/memory.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/level/level.h"
 
-class ActorManager {
-public:
-    BEDROCK_API Actor *addActorEntity(IAddActorEntityProxy &, OwnerPtr<EntityContext>);
+class ServerLevel : public Level {
+private:
+    BEDROCK_API void _postReloadActorAdded(Actor &, ActorInitializationMethod);
 };

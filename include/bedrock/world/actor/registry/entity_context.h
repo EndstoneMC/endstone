@@ -17,6 +17,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/memory.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
 
 class EntityContext {
