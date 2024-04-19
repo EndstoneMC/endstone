@@ -47,7 +47,7 @@ RUN python -m pip install --upgrade pip \
     && pip install wheel auditwheel setuptools "patchelf>=0.14" pytest \
     && python -m pip wheel . --no-deps --wheel-dir=wheelhouse --verbose \
     && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w wheelhouse wheelhouse/*.whl \
-    && pip install wheelhouse/*.whl \
+    && pip install wheelhouse/*-manylinux_2_31_x86_64.whl \
     && pytest python/tests
 
 FROM base AS final
@@ -67,7 +67,7 @@ WORKDIR /home/endstone
 COPY --from=builder /usr/src/endstone/wheelhouse .
 
 RUN python -m pip install --upgrade pip \
-    && pip install ./*.whl \
+    && pip install ./*-manylinux_2_31_x86_64.whl \
     && rm ./*.whl
 
 USER endstone

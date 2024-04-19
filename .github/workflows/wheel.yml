@@ -129,7 +129,7 @@ jobs:
       - name: Test Wheels
         run: |
           pip install pytest
-          pip install wheelhouse/*.whl
+          pip install wheelhouse/*-manylinux_2_31_x86_64.whl
           pytest python/tests
 
       - name: Upload Artifacts
