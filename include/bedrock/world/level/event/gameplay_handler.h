@@ -20,6 +20,7 @@
 #include "bedrock/world/level/event/event_result.h"
 #include "bedrock/world/level/event/level_event.h"
 #include "bedrock/world/level/event/player_event.h"
+#include "bedrock/world/level/event/server_event.h"
 
 template <typename Type>
 struct GameplayHandlerResult {
@@ -30,6 +31,10 @@ struct GameplayHandlerResult {
 class LevelGameplayHandler {};
 class ScriptLevelGameplayHandler : public LevelGameplayHandler {
 public:
-    virtual ~ScriptLevelGameplayHandler() = 0;
     virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+};
+
+class ScriptServerNetworkEventHandler {
+public:
+    virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &);
 };

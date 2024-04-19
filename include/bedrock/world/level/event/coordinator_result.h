@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class CoordinatorResult {
+enum class CoordinatorResult : int {
     Deny = 0,
     Default = 1
 };

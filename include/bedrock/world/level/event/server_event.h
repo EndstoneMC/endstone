@@ -23,11 +23,15 @@ struct ServerInstanceGameplayEvent;
 struct ServerInstanceLeaveGameDoneEvent {};
 struct ServerInstanceRequestResourceReload {};
 
+struct ServerInstanceEventPlaceHolder {
+    char pad[16];
+};
+
 template <>
 struct ServerInstanceGameplayEvent<void> {
     std::variant<Details::ValueOrRef<ServerInstanceLeaveGameDoneEvent const>,     // 0
                  Details::ValueOrRef<ServerInstanceRequestResourceReload const>,  // 1
-                 Details::ValueOrRef<ItemEventPlaceHolder<16> const>>
+                 Details::ValueOrRef<ServerInstanceEventPlaceHolder const>>
         event;
 };
 
@@ -35,13 +39,12 @@ template <typename Return>
 struct MutableServerNetworkGameplayEvent;
 
 struct ChatEvent {
-    std::string message;                             // +0
-    WeakRef<EntityContext> sender;                   // +32
-    std::vector<WeakRef<EntityContext>> recipients;  // +56
-    bool unknown1{false};                            // +80
-    std::string player_name;                         // +88
-    bool unknown2{true};                             // +120
-    bool unknown3{true};                             // +121
+    std::string message;                                         // +0
+    WeakRef<EntityContext> sender;                               // +32
+    std::optional<std::vector<WeakRef<EntityContext>>> exclude;  // +56
+    std::string player_name;                                     // +88
+    bool unknown2{true};                                         // +120
+    bool unknown3{true};                                         // +121
 };
 
 template <>

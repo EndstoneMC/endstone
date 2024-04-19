@@ -13,7 +13,9 @@
 // limitations under the License.
 
 #pragma once
+
 #include <cstdint>
+#include <optional>
 
 #include <entt/entt.hpp>
 
@@ -22,7 +24,7 @@
 
 class EntityContext {
 public:
-    EntityContext(EntityRegistry &registry, std::uint32_t entity_id)
+    EntityContext(EntityRegistry &registry, EntityId entity_id)
         : registry_(registry), entt_registry_(registry.registry_), entity_id_(entity_id){};
 
     template <typename Component>

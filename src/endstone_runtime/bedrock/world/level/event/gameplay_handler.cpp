@@ -16,9 +16,13 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/threading.h"
+#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
 #include "endstone/level.h"
@@ -75,6 +79,35 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     result = ENDSTONE_HOOK_CALL_ORIGINAL_NAME(
         &ScriptLevelGameplayHandler::handleEvent,
         "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent", this, event);
+#endif
+    return result;
+}
+
+GameplayHandlerResult<CoordinatorResult> ScriptServerNetworkEventHandler::handleEvent(ChatEvent &event)
+{
+    EntityContext ctx = {*event.sender.storage.registry, event.sender.storage.entity_id};
+    auto *actor = Actor::tryGetFromEntity(ctx, false);
+    if (actor && actor->isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto *player = static_cast<Player *>(actor);
+        endstone::PlayerChatEvent e{player->getEndstonePlayer(), event.message};
+        server.getPluginManager().callEvent(e);
+
+        if (e.isCancelled()) {
+            return {CoordinatorResult::Deny, EventResult::Deny};
+        }
+
+        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
+    }
+
+    GameplayHandlerResult<CoordinatorResult> result;
+#ifdef _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptServerNetworkEventHandler::handleEvent, __FUNCDNAME__, result, this,
+                                         event);
+#else
+    result =
+        ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ScriptLevelGameplayHandler::handleEvent,
+                                         "_ZN31ScriptServerNetworkEventHandler11handleEventER9ChatEvent", this, event);
 #endif
     return result;
 }
