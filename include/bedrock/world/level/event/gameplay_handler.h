@@ -33,8 +33,3 @@ class ScriptLevelGameplayHandler : public LevelGameplayHandler {
 public:
     virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };
-
-class ScriptServerNetworkEventHandler {
-public:
-    virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(ChatEvent &);
-};

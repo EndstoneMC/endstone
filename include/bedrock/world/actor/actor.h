@@ -253,5 +253,5 @@ protected:
     Vec3 position_;                                    // +664
 
 public:
-    endstone::detail::EndstoneActor &getEndstoneActor();
+    [[nodiscard]] endstone::detail::EndstoneActor &getEndstoneActor() const;
 };

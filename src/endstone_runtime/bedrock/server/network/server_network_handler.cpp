@@ -17,16 +17,31 @@
 #include <entt/entt.hpp>
 
 #include "endstone/detail/hook.h"
-#include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_chat_event.h"
+
+using endstone::detail::EndstoneServer;
 
 bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
 {
-    using endstone::detail::EndstonePlayer;
-    using endstone::detail::EndstoneServer;
-
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = server_player.getEndstonePlayer();
+    auto &endstone_player = server_player.getEndstonePlayer();
     // TODO(event): call PlayerLoginEvent
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
+}
+
+void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    endstone::PlayerChatEvent e{player.getEndstonePlayer(), event.message};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        return;
+    }
+
+    event.message = std::move(e.getMessage());
+    server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
+
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_displayGameMessage, this, player, event);
 }

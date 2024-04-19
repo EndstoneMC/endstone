@@ -85,13 +85,15 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
     return nullptr;
 }
 
-endstone::detail::EndstoneActor &Actor::getEndstoneActor()
+endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
 {
     auto &server = entt::locator<EndstoneServer>::value();
+    auto *self = const_cast<Actor *>(this);
+
     if (isPlayer()) {
-        auto *self = static_cast<Player *>(this);
-        return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *self);
+        auto *player = static_cast<Player *>(self);
+        return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }
     // TODO(actor): add factory method for other actors
-    return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *this);
+    return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
 }

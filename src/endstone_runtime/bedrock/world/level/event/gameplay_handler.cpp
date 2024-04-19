@@ -82,32 +82,3 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
 #endif
     return result;
 }
-
-GameplayHandlerResult<CoordinatorResult> ScriptServerNetworkEventHandler::handleEvent(ChatEvent &event)
-{
-    EntityContext ctx = {*event.sender.storage.registry, event.sender.storage.entity_id};
-    auto *actor = Actor::tryGetFromEntity(ctx, false);
-    if (actor && actor->isPlayer()) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        auto *player = static_cast<Player *>(actor);
-        endstone::PlayerChatEvent e{player->getEndstonePlayer(), event.message};
-        server.getPluginManager().callEvent(e);
-
-        if (e.isCancelled()) {
-            return {CoordinatorResult::Deny, EventResult::Deny};
-        }
-
-        server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
-    }
-
-    GameplayHandlerResult<CoordinatorResult> result;
-#ifdef _WIN32
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&ScriptServerNetworkEventHandler::handleEvent, __FUNCDNAME__, result, this,
-                                         event);
-#else
-    result =
-        ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ScriptLevelGameplayHandler::handleEvent,
-                                         "_ZN31ScriptServerNetworkEventHandler11handleEventER9ChatEvent", this, event);
-#endif
-    return result;
-}

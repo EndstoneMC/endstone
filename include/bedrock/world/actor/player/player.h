@@ -119,8 +119,8 @@ public:
 
 private:
 public:
-    [[nodiscard]] endstone::detail::EndstonePlayer &getEndstonePlayer();  // Endstone
+    [[nodiscard]] endstone::detail::EndstonePlayer &getEndstonePlayer() const;  // Endstone
 
 protected:
-    void sendCommands();  // Endstone
+    void sendCommands() const;  // Endstone
 };

@@ -33,12 +33,12 @@ const std::string &Player::getName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
-endstone::detail::EndstonePlayer &Player::getEndstonePlayer()
+endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
 {
     return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());
 }
 
-void Player::sendCommands()
+void Player::sendCommands() const
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto &registry = server.getMinecraftCommands().getRegistry();
