@@ -8,7 +8,7 @@ from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadO
 
 
 class PythonPluginLoader(PluginLoader):
-    SUPPORTED_API = ["0.2", "0.3"]
+    SUPPORTED_API = ["0.2", "0.3", "0.4"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)

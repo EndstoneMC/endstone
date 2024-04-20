@@ -57,7 +57,7 @@ jobs:
       - name: Test Wheels
         run: |
           pip install pytest
-          Get-ChildItem ./wheelhouse/ -Filter *.whl | ForEach-Object {
+          Get-ChildItem ./wheelhouse/ -Filter *-win_amd64.whl | ForEach-Object {
               pip install $_.FullName
           }
           pytest python/tests
@@ -66,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: endstone-wheels-windows-python${{ matrix.python }}
-          path: ./wheelhouse/*.whl
+          path: ./wheelhouse/*-win_amd64.whl
 
   build_wheels_linux:
     name: Build Wheels for Python ${{ matrix.python }} on Ubuntu
@@ -136,7 +136,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: endstone-wheels-linux-python${{ matrix.python }}
-          path: ./wheelhouse/*.whl
+          path: ./wheelhouse/*-manylinux_2_31_x86_64.whl
 
   build_sdist:
     name: Build Source Distribution
