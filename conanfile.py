@@ -33,15 +33,6 @@ class EndstoneRecipe(ConanFile):
         "capstone/*:tms320c64x": False,
         "capstone/*:m680x": False,
         "capstone/*:evm": False,
-        "lief/*:with_frozen": False,
-        "lief/*:with_json": False,
-        "lief/*:with_c_api": False,
-        "lief/*:with_art": False,
-        "lief/*:with_dex": False,
-        "lief/*:with_macho": False,
-        "lief/*:with_oat": False,
-        "lief/*:with_pe": False,
-        "lief/*:with_vdex": False,
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
@@ -161,7 +152,6 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
         self.cpp_info.components["core"].requires = ["spdlog::spdlog"]
-        self.cpp_info.components["core"].defines = ["PYBIND11_USE_SMART_HOLDER_AS_DEFAULT"]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
