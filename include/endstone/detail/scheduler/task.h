@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <functional>
 
 #include "endstone/plugin/plugin.h"
@@ -22,8 +23,12 @@
 namespace endstone::detail {
 
 class EndstoneTask : public Task {
+private:
+    using TaskClock = std::chrono::steady_clock;
+
 public:
-    explicit EndstoneTask(Plugin &plugin, std::function<void()> runnable, std::uint32_t task_id);
+    using CreatedAt = std::chrono::time_point<TaskClock>;
+    explicit EndstoneTask(Plugin &plugin, std::function<void()> runnable, TaskId task_id, std::uint64_t period);
 
     ~EndstoneTask() override = default;
 
@@ -32,13 +37,25 @@ public:
     bool isSync() override;
     bool isCancelled() override;
     void cancel() override;
+
     void run() const;
+    [[nodiscard]] CreatedAt getCreatedAt() const;
+    [[nodiscard]] std::uint64_t getPeriod() const;
+    void setPeriod(std::uint64_t period);
+    [[nodiscard]] std::uint64_t getNextRun() const;
+    void setNextRun(std::uint64_t next_run);
+    [[nodiscard]] const std::shared_ptr<EndstoneTask> &getNext() const;
+    void setNext(std::shared_ptr<EndstoneTask> next);
 
 private:
     Plugin &plugin_;
     std::function<void()> runnable_;
-    std::uint32_t task_id_;
-    bool cancelled_{false};
+    TaskId task_id_;
+
+    CreatedAt created_at_{TaskClock::now()};
+    std::uint64_t period_;
+    std::uint64_t next_run_;
+    std::shared_ptr<EndstoneTask> next_;
 };
 
 }  // namespace endstone::detail
