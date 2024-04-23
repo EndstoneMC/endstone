@@ -16,6 +16,8 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/server_command_event.h"
@@ -24,29 +26,37 @@ using endstone::detail::EndstoneServer;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
 {
-    MCRESULT result;
-    if (ctx.getOrigin().getOriginType() != CommandOriginType::DedicatedServer) {
-#ifdef _WIN32
-        ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
-#else
-        result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
-#endif
-        return result;
-    }
-
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommandLine());
-    server.getPluginManager().callEvent(event);
 
-    if (event.isCancelled()) {
-        result = MCRESULT_CommandsDisabled;
+    switch (ctx.getOrigin().getOriginType()) {
+    case CommandOriginType::Player: {
+        auto *entity = ctx.getOrigin().getEntity();
+        if (!entity->isPlayer()) {
+            throw std::runtime_error("Command was executed by an non-player entity");
+        }
+        endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
+        server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommandLine());
+        // TODO(event): add PlayerCommandPreprocessEvent
+        break;
     }
-    else {
+    case CommandOriginType::DedicatedServer: {
+        endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommandLine());
+        server.getPluginManager().callEvent(event);
+
+        if (event.isCancelled()) {
+            return MCRESULT_CommandsDisabled;
+        }
+        break;
+    }
+    default:
+        break;
+    }
+
+    MCRESULT result;
 #ifdef _WIN32
-        ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
 #else
-        result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
+    result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
 #endif
-    }
     return result;
 }
