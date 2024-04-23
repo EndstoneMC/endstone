@@ -46,9 +46,11 @@ public:
     // Actor
     std::uint64_t getRuntimeId() override;
 
+protected:
+    PermissibleBase perm_;
+
 private:
     bool op_;
-    PermissibleBase perm_;
 };
 
 }  // namespace endstone::detail

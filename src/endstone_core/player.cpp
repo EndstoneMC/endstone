@@ -105,7 +105,12 @@ bool EndstonePlayer::isOp() const
 
 void EndstonePlayer::setOp(bool value)
 {
+    if (value == isOp()) {
+        return;
+    }
+
     player_.setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
+    perm_.recalculatePermissions();
 }
 
 std::uint64_t EndstonePlayer::getRuntimeId()

@@ -25,6 +25,7 @@ using endstone::detail::EndstoneServer;
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
+    getEndstonePlayer().recalculatePermissions();
     sendCommands();
 }
 
