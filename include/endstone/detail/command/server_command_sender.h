@@ -14,16 +14,29 @@
 
 #pragma once
 
-#include "command_sender.h"
+#include "endstone/command/command_sender.h"
+#include "endstone/detail/permissions/permissible_base.h"
+
 namespace endstone::detail {
 
-class ServerCommandSender : public BaseCommandSender {
+class ServerCommandSender : public CommandSender {
+
 public:
-    void sendMessage(const std::string &message) const override;
-    void sendErrorMessage(const std::string &message) const override;
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isOp() const override;
-    void setOp(bool value) override;
+    ServerCommandSender();
+    explicit ServerCommandSender(PermissibleBase perm);
+    [[nodiscard]] Server &getServer() const override;
+    [[nodiscard]] bool isPermissionSet(std::string name) const override;
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool hasPermission(std::string name) const override;
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
+    bool removeAttachment(PermissionAttachment &attachment) override;
+    void recalculatePermissions() override;
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+
+private:
+    PermissibleBase perm_;
 };
 
 }  // namespace endstone::detail

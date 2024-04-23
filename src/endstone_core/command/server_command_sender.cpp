@@ -14,33 +14,66 @@
 
 #include "endstone/detail/command/server_command_sender.h"
 
+#include <utility>
+
+#include <entt/entt.hpp>
+
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
-void ServerCommandSender::sendMessage(const std::string &message) const
+ServerCommandSender::ServerCommandSender() : perm_(this) {}
+
+ServerCommandSender::ServerCommandSender(PermissibleBase perm) : perm_(std::move(perm)) {}
+
+Server &ServerCommandSender::getServer() const
 {
-    getServer().getLogger().info(message);
+    return entt::locator<EndstoneServer>::value();
 }
 
-void ServerCommandSender::sendErrorMessage(const std::string &message) const
+bool ServerCommandSender::isPermissionSet(std::string name) const
 {
-    getServer().getLogger().error(message);
+    return perm_.isPermissionSet(name);
 }
 
-std::string ServerCommandSender::getName() const
+bool ServerCommandSender::isPermissionSet(const Permission &perm) const
 {
-    return "Server";
+    return perm_.isPermissionSet(perm);
 }
 
-bool ServerCommandSender::isOp() const
+bool ServerCommandSender::hasPermission(std::string name) const
 {
-    return true;
+    return perm_.hasPermission(name);
 }
 
-void ServerCommandSender::setOp(bool value)
+bool ServerCommandSender::hasPermission(const Permission &perm) const
 {
-    getServer().getLogger().error("Cannot change operator status of server console");
+    return perm_.hasPermission(perm);
+}
+
+PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return perm_.addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin)
+{
+    return perm_.addAttachment(plugin);
+}
+
+bool ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
+{
+    return perm_.removeAttachment(attachment);
+}
+
+void ServerCommandSender::recalculatePermissions()
+{
+    perm_.recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> ServerCommandSender::getEffectivePermissions() const
+{
+    return perm_.getEffectivePermissions();
 }
 
 }  // namespace endstone::detail
