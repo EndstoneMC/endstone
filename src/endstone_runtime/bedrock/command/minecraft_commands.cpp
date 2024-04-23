@@ -20,6 +20,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
 
 using endstone::detail::EndstoneServer;
@@ -36,7 +37,13 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
         }
         endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
         server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommandLine());
-        // TODO(event): add PlayerCommandPreprocessEvent
+
+        endstone::PlayerCommandEvent event(player, ctx.getCommandLine());
+        server.getPluginManager().callEvent(event);
+        event.setCancelled(true);
+        if (event.isCancelled()) {
+            return MCRESULT_CommandsDisabled;
+        }
         break;
     }
     case CommandOriginType::DedicatedServer: {
