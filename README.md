@@ -82,21 +82,24 @@ endstone
 
 ### 🐳 Docker
 
-To try Endstone from a Docker image, use the following command:
+To try Endstone from the latest Docker image, use the following command:
 
 ```shell
 docker pull endstone/endstone
 docker run --rm -it -p 19132:19132/udp endstone/endstone
 ```
 
-or
+This will pull the latest Endstone image and run it interactively in your terminal.
+
+### 🕋 Docker Compose
+
+You can also use Docker Compose to run Endstone in a production environment.
 
 ```shell
-docker pull ghcr.io/endstonemc/endstone
-docker run --rm -it -p 19132:19132/udp ghcr.io/endstonemc/endstone
+docker compose build
+docker compose up -d
+docker attach endstone
 ```
-
-This will pull the latest Endstone image and run it interactively in your terminal.
 
 ### 🔨 Build locally from Source
 
