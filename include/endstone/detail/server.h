@@ -20,7 +20,7 @@
 
 #include "bedrock/server/server_instance.h"
 #include "endstone/detail/command/command_map.h"
-#include "endstone/detail/command/server_command_sender.h"
+#include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/level.h"
 #include "endstone/plugin/plugin_manager.h"
@@ -65,7 +65,7 @@ private:
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
-    mutable ServerCommandSender command_sender_;
+    mutable ConsoleCommandSender command_sender_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
 };
 

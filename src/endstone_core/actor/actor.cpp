@@ -97,8 +97,12 @@ std::uint64_t EndstoneActor::getRuntimeId()
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static PermissibleBase perm(nullptr);
-    return perm;
+    static std::unique_ptr<PermissibleBase> perm = []() {
+        auto instance = std::make_unique<PermissibleBase>(nullptr);
+        instance->recalculatePermissions();
+        return instance;
+    }();
+    return *perm;
 }
 
 }  // namespace endstone::detail

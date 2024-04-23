@@ -21,7 +21,7 @@
 
 namespace endstone::detail {
 
-class CommandSenderAdapter : public BaseCommandSender {
+class CommandSenderAdapter : public ServerCommandSender {
 public:
     CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output);
     void sendMessage(const std::string &message) const override;

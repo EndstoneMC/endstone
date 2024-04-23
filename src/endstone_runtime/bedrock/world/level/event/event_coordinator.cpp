@@ -128,6 +128,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 {
     auto &server = entt::locator<EndstoneServer>::value_or(instance);
     server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
+    server.getCommandSender().recalculatePermissions();
     server.getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
                                 "This server is running {} version: {} (Minecraft: {})",
                             server.getName(), server.getVersion(), server.getMinecraftVersion());

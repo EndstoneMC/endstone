@@ -27,6 +27,7 @@ void ServerPlayer::doInitialSpawn()
     auto &server = entt::locator<EndstoneServer>::value();
     endstone::PlayerJoinEvent e{getEndstonePlayer()};
     server.getPluginManager().callEvent(e);
+    getEndstonePlayer().recalculatePermissions();
     sendCommands();
 }
 
