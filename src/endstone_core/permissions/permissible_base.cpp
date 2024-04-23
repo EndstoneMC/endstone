@@ -138,15 +138,7 @@ void PermissibleBase::recalculatePermissions()
     auto &server = entt::locator<EndstoneServer>::value();
     auto &plugin_manager = server.getPluginManager();
 
-    // Clear permissions
-    for (const auto &[name, perm] : permissions_) {
-        plugin_manager.unsubscribeFromPermission(name, parent_);
-    }
-    plugin_manager.unsubscribeFromDefaultPerms(false, parent_);
-    plugin_manager.unsubscribeFromDefaultPerms(true, parent_);
-    permissions_.clear();
-
-    // Recalculate permissions
+    clearPermissions();
     auto defaults = plugin_manager.getDefaultPermissions(isOp());
     plugin_manager.subscribeToDefaultPerms(isOp(), parent_);
 
@@ -191,6 +183,20 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
         result.insert(entry.second.get());
     }
     return result;
+}
+
+void PermissibleBase::clearPermissions()
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &plugin_manager = server.getPluginManager();
+
+    // Clear permissions
+    for (const auto &[name, perm] : permissions_) {
+        plugin_manager.unsubscribeFromPermission(name, parent_);
+    }
+    plugin_manager.unsubscribeFromDefaultPerms(false, parent_);
+    plugin_manager.unsubscribeFromDefaultPerms(true, parent_);
+    permissions_.clear();
 }
 
 }  // namespace endstone::detail

@@ -32,6 +32,7 @@ void ServerPlayer::doInitialSpawn()
 
 void ServerPlayer::disconnect()
 {
+    getEndstonePlayer().disconnect();
     auto &server = entt::locator<EndstoneServer>::value();
     endstone::PlayerQuitEvent e{getEndstonePlayer()};
     server.getPluginManager().callEvent(e);

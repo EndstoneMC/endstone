@@ -149,4 +149,9 @@ void EndstonePlayer::sendTip(std::string message) const
     player_.sendNetworkPacket(*packet);
 }
 
+void EndstonePlayer::disconnect()
+{
+    perm_.clearPermissions();
+}
+
 }  // namespace endstone::detail

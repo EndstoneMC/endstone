@@ -54,6 +54,8 @@ public:
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
 
+    void disconnect();
+
 private:
     ::Player &player_;
     UUID uuid_;

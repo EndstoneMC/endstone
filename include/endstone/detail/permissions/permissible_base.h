@@ -43,6 +43,7 @@ public:
     bool removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    void clearPermissions();
 
 private:
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,
