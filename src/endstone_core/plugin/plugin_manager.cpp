@@ -275,7 +275,7 @@ void EndstonePluginManager::subscribeToPermission(std::string permission, Permis
 {
     auto &name = permission;
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-    auto map = perm_subs_.emplace(name, std::unordered_map<Permissible *, bool>()).first->second;
+    auto &map = perm_subs_.emplace(name, std::unordered_map<Permissible *, bool>()).first->second;
     map[&permissible] = true;
 }
 
@@ -312,7 +312,7 @@ std::unordered_set<Permissible *> EndstonePluginManager::getPermissionSubscripti
 
 void EndstonePluginManager::subscribeToDefaultPerms(bool op, Permissible &permissible)
 {
-    auto map = def_subs_.emplace(op, std::unordered_map<Permissible *, bool>()).first->second;
+    auto &map = def_subs_.emplace(op, std::unordered_map<Permissible *, bool>()).first->second;
     map[&permissible] = true;
 }
 
