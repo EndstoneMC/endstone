@@ -46,9 +46,9 @@ public:
     }
 
     /**
-     * Gets the command that the user is attempting to execute from the console
+     * Gets the command that the server is attempting to execute from the console
      *
-     * @return Command the user is attempting to execute
+     * @return Command the server is attempting to execute
      */
     [[nodiscard]] std::string getCommand() const
     {
