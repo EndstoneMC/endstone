@@ -58,8 +58,8 @@ public:
 
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
 
-    void broadcast(std::string message, std::string permission) const override;
-    void broadcastMessage(std::string message) const override;
+    void broadcast(const std::string &message, const std::string &permission) const override;
+    void broadcastMessage(const std::string &message) const override;
 
     bool isPrimaryThread() const override;
 

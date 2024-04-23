@@ -180,17 +180,26 @@ Player *EndstoneServer::getPlayer(endstone::UUID id) const
     return nullptr;
 }
 
-void EndstoneServer::broadcast(std::string message, std::string permission) const
+void EndstoneServer::broadcast(const std::string &message, const std::string &permission) const
 {
-    std::unordered_set<CommandSender *> recipients;
+    std::unordered_set<const CommandSender *> recipients;
     for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
-        // TODO: check hasPermission and get as CommandSender
+        const auto *sender = permissible->asCommandSender();
+        if (sender != nullptr && sender->hasPermission(permission)) {
+            recipients.insert(sender);
+        }
+    }
+
+    // TODO(event): call BroadcastMessageEvent
+
+    for (const auto &recipient : recipients) {
+        recipient->sendMessage(message);
     }
 }
 
-void EndstoneServer::broadcastMessage(std::string message) const
+void EndstoneServer::broadcastMessage(const std::string &message) const
 {
-    broadcast(std::move(message), "endstone.broadcast.user");
+    broadcast(message, "endstone.broadcast.user");
 }
 
 bool EndstoneServer::isPrimaryThread() const

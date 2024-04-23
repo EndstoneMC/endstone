@@ -120,14 +120,20 @@ public:
      * @param message message to broadcast
      * @param permission the required permission Permissibles must have to receive the broadcast
      */
-    virtual void broadcast(std::string message, std::string permission) const = 0;
+    virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
 
     /**
      * Broadcasts the specified message to every user with permission endstone.broadcast.user
      *
      * @param message the message
      */
-    virtual void broadcastMessage(std::string message) const = 0;
+    virtual void broadcastMessage(const std::string &message) const = 0;
+
+    template <typename... Args>
+    void broadcastMessage(const fmt::format_string<Args...> format, Args &&...args) const
+    {
+        broadcastMessage(fmt::format(format, std::forward<Args>(args)...));
+    }
 
     /**
      * Checks the current thread against the expected primary server thread

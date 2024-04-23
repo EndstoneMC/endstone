@@ -36,8 +36,8 @@ public:
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));
-    MOCK_METHOD(void, broadcast, (std::string, std::string), (const, override));
-    MOCK_METHOD(void, broadcastMessage, (std::string), (const, override));
+    MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));
+    MOCK_METHOD(void, broadcastMessage, (const std::string &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MockServer()
     {
