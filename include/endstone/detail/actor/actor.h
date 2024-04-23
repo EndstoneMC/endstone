@@ -52,7 +52,7 @@ public:
 private:
     EndstoneServer &server_;
     ::Actor &actor_;
-    static PermissibleBase mPerm;
+    static PermissibleBase& getPermissibleBase();
 };
 
 }  // namespace endstone::detail

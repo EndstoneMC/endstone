@@ -37,57 +37,57 @@ std::string EndstoneActor::getName() const
 
 bool EndstoneActor::isPermissionSet(std::string name) const
 {
-    return mPerm.isPermissionSet(name);
+    return getPermissibleBase().isPermissionSet(name);
 }
 
 bool EndstoneActor::isPermissionSet(const Permission &perm) const
 {
-    return mPerm.isPermissionSet(perm);
+    return getPermissibleBase().isPermissionSet(perm);
 }
 
 bool EndstoneActor::hasPermission(std::string name) const
 {
-    return mPerm.hasPermission(name);
+    return getPermissibleBase().hasPermission(name);
 }
 
 bool EndstoneActor::hasPermission(const Permission &perm) const
 {
-    return mPerm.hasPermission(perm);
+    return getPermissibleBase().hasPermission(perm);
 }
 
 PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    return mPerm.addAttachment(plugin, name, value);
+    return getPermissibleBase().addAttachment(plugin, name, value);
 }
 
 PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin)
 {
-    return mPerm.addAttachment(plugin);
+    return getPermissibleBase().addAttachment(plugin);
 }
 
 bool EndstoneActor::removeAttachment(PermissionAttachment &attachment)
 {
-    return mPerm.removeAttachment(attachment);
+    return getPermissibleBase().removeAttachment(attachment);
 }
 
 void EndstoneActor::recalculatePermissions()
 {
-    mPerm.recalculatePermissions();
+    getPermissibleBase().recalculatePermissions();
 }
 
 std::unordered_set<PermissionAttachmentInfo *> EndstoneActor::getEffectivePermissions() const
 {
-    return mPerm.getEffectivePermissions();
+    return getPermissibleBase().getEffectivePermissions();
 }
 
 bool EndstoneActor::isOp() const
 {
-    return mPerm.isOp();
+    return getPermissibleBase().isOp();
 }
 
 void EndstoneActor::setOp(bool value)
 {
-    mPerm.setOp(value);
+    getPermissibleBase().setOp(value);
 }
 
 std::uint64_t EndstoneActor::getRuntimeId()
@@ -95,6 +95,10 @@ std::uint64_t EndstoneActor::getRuntimeId()
     return actor_.getRuntimeID().id;
 }
 
-PermissibleBase EndstoneActor::mPerm(nullptr);
+PermissibleBase &EndstoneActor::getPermissibleBase()
+{
+    static PermissibleBase perm(nullptr);
+    return perm;
+}
 
 }  // namespace endstone::detail
