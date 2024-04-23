@@ -48,8 +48,6 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
     auto *command =
         registerPermission("endstone.command", parent, "Gives the user the ability to use all Endstone command");
-    registerPermission("endstone.command.debug", command, "Allows the user to toggle the debug mode of this server",
-                       PermissionDefault::Operator);
     registerPermission("endstone.command.plugins", command,
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
     registerPermission("endstone.command.version", command, "Allows the user to view the version of the server",
