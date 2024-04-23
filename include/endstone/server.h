@@ -42,6 +42,27 @@ public:
     virtual ~Server() = default;
 
     /**
+     * Gets the name of this server implementation.
+     *
+     * @return name of this server implementation
+     */
+    [[nodiscard]] virtual std::string getName() const = 0;
+
+    /**
+     * Gets the version string of this server implementation.
+     *
+     * @return version of this server implementation
+     */
+    [[nodiscard]] virtual std::string getVersion() const = 0;
+
+    /**
+     * Gets the Minecraft version that this server is running.
+     *
+     * @return version of Minecraft
+     */
+    [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
+
+    /**
      * Returns the primary logger associated with this server instance.
      *
      * @return Logger associated with this server
@@ -94,25 +115,19 @@ public:
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
-     * Gets the name of this server implementation.
+     * Broadcasts the specified message to every user with the given permission name.
      *
-     * @return name of this server implementation
+     * @param message message to broadcast
+     * @param permission the required permission Permissibles must have to receive the broadcast
      */
-    [[nodiscard]] virtual std::string getName() const = 0;
+    virtual void broadcast(std::string message, std::string permission) const = 0;
 
     /**
-     * Gets the version string of this server implementation.
+     * Broadcasts the specified message to every user with permission endstone.broadcast.user
      *
-     * @return version of this server implementation
+     * @param message the message
      */
-    [[nodiscard]] virtual std::string getVersion() const = 0;
-
-    /**
-     * Gets the Minecraft version that this server is running.
-     *
-     * @return version of Minecraft
-     */
-    [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
+    virtual void broadcastMessage(std::string message) const = 0;
 
     /**
      * Checks the current thread against the expected primary server thread

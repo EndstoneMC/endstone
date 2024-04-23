@@ -26,6 +26,9 @@ namespace fs = std::filesystem;
 
 class MockServer : public endstone::Server {
 public:
+    MOCK_METHOD(std::string, getName, (), (const, override));
+    MOCK_METHOD(std::string, getVersion, (), (const, override));
+    MOCK_METHOD(std::string, getMinecraftVersion, (), (const, override));
     MOCK_METHOD(endstone::Logger &, getLogger, (), (const, override));
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));
     MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string name), (const, override));
@@ -33,9 +36,8 @@ public:
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));
-    MOCK_METHOD(std::string, getName, (), (const, override));
-    MOCK_METHOD(std::string, getVersion, (), (const, override));
-    MOCK_METHOD(std::string, getMinecraftVersion, (), (const, override));
+    MOCK_METHOD(void, broadcast, (std::string, std::string), (const, override));
+    MOCK_METHOD(void, broadcastMessage, (std::string), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MockServer()
     {

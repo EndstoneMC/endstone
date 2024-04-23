@@ -43,6 +43,54 @@ EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
 }
 
+std::string EndstoneServer::getName() const
+{
+    return "Endstone";
+}
+
+std::string EndstoneServer::getVersion() const
+{
+    return ENDSTONE_VERSION;
+}
+
+std::string EndstoneServer::getMinecraftVersion() const
+{
+    return Common::getGameVersionString();
+}
+
+Logger &EndstoneServer::getLogger() const
+{
+    return logger_;
+}
+
+EndstoneCommandMap &EndstoneServer::getCommandMap() const
+{
+    return *command_map_;
+}
+
+MinecraftCommands &EndstoneServer::getMinecraftCommands()
+{
+    return server_instance_.getMinecraft().getCommands();
+}
+
+PluginManager &EndstoneServer::getPluginManager() const
+{
+    return *plugin_manager_;
+}
+
+PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
+{
+    if (auto *command = command_map_->getCommand(name)) {
+        return command->asPluginCommand();
+    }
+    return nullptr;
+}
+
+CommandSender &EndstoneServer::getCommandSender() const
+{
+    return command_sender_;
+}
+
 void EndstoneServer::loadPlugins()
 {
     auto plugin_dir = fs::current_path() / "plugins";
@@ -89,39 +137,6 @@ void EndstoneServer::disablePlugins() const
     plugin_manager_->disablePlugins();
 }
 
-Logger &EndstoneServer::getLogger() const
-{
-    return logger_;
-}
-
-EndstoneCommandMap &EndstoneServer::getCommandMap() const
-{
-    return *command_map_;
-}
-
-MinecraftCommands &EndstoneServer::getMinecraftCommands()
-{
-    return server_instance_.getMinecraft().getCommands();
-}
-
-PluginManager &EndstoneServer::getPluginManager() const
-{
-    return *plugin_manager_;
-}
-
-PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
-{
-    if (auto *command = command_map_->getCommand(name)) {
-        return command->asPluginCommand();
-    }
-    return nullptr;
-}
-
-CommandSender &EndstoneServer::getCommandSender() const
-{
-    return command_sender_;
-}
-
 std::vector<Level *> EndstoneServer::getLevels() const
 {
     std::vector<Level *> levels;
@@ -165,19 +180,17 @@ Player *EndstoneServer::getPlayer(endstone::UUID id) const
     return nullptr;
 }
 
-std::string EndstoneServer::getName() const
+void EndstoneServer::broadcast(std::string message, std::string permission) const
 {
-    return "Endstone";
+    std::unordered_set<CommandSender *> recipients;
+    for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
+        // TODO: check hasPermission and get as CommandSender
+    }
 }
 
-std::string EndstoneServer::getVersion() const
+void EndstoneServer::broadcastMessage(std::string message) const
 {
-    return ENDSTONE_VERSION;
-}
-
-std::string EndstoneServer::getMinecraftVersion() const
-{
-    return Common::getGameVersionString();
+    broadcast(std::move(message), "endstone.broadcast.user");
 }
 
 bool EndstoneServer::isPrimaryThread() const

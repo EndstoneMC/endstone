@@ -19,7 +19,10 @@
 
 namespace endstone::detail {
 
-EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor) {}
+EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor)
+{
+    getPermissibleBase();
+}
 
 void EndstoneActor::sendMessage(const std::string &message) const {}
 

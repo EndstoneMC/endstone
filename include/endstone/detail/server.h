@@ -37,6 +37,10 @@ public:
     EndstoneServer &operator=(EndstoneServer &&) = delete;
     ~EndstoneServer() override = default;
 
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] std::string getVersion() const override;
+    [[nodiscard]] std::string getMinecraftVersion() const override;
+
     [[nodiscard]] Logger &getLogger() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     [[nodiscard]] MinecraftCommands &getMinecraftCommands();
@@ -54,9 +58,9 @@ public:
 
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
 
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] std::string getVersion() const override;
-    [[nodiscard]] std::string getMinecraftVersion() const override;
+    void broadcast(std::string message, std::string permission) const override;
+    void broadcastMessage(std::string message) const override;
+
     bool isPrimaryThread() const override;
 
 private:
