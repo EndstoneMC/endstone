@@ -28,6 +28,12 @@ public:
     CommandSender() = default;
     ~CommandSender() override = default;
 
+    // Permissible
+    [[nodiscard]] const CommandSender *asCommandSender() const override
+    {
+        return this;
+    }
+
     /**
      * Sends this sender a message
      *

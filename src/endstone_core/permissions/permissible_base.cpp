@@ -182,6 +182,14 @@ std::unordered_set<PermissionAttachmentInfo *> PermissibleBase::getEffectivePerm
     return result;
 }
 
+const CommandSender *PermissibleBase::asCommandSender() const
+{
+    if (opable_) {
+        return opable_->asCommandSender();
+    }
+    return nullptr;
+}
+
 void PermissibleBase::clearPermissions()
 {
     auto &server = entt::locator<EndstoneServer>::value();
