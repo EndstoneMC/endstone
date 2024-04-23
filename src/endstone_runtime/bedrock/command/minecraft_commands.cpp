@@ -40,7 +40,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
 
         endstone::PlayerCommandEvent event(player, ctx.getCommandLine());
         server.getPluginManager().callEvent(event);
-        event.setCancelled(true);
+
         if (event.isCancelled()) {
             return MCRESULT_CommandsDisabled;
         }
