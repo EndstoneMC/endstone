@@ -27,6 +27,7 @@ namespace fs = std::filesystem;
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/plugin/plugin.h"
 
 #if !defined(ENDSTONE_VERSION)
@@ -190,10 +191,15 @@ void EndstoneServer::broadcast(const std::string &message, const std::string &pe
         }
     }
 
-    // TODO(event): call BroadcastMessageEvent
+    BroadcastMessageEvent event{!isPrimaryThread(), message, recipients};
+    getPluginManager().callEvent(event);
+
+    if (event.isCancelled()) {
+        return;
+    }
 
     for (const auto &recipient : recipients) {
-        recipient->sendMessage(message);
+        recipient->sendMessage(event.getMessage());
     }
 }
 

@@ -15,6 +15,7 @@
 #include "endstone/event/event.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
@@ -23,6 +24,7 @@
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
+#include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
 #include "endstone/event/server/server_command_event.h"
@@ -92,6 +94,13 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent")
         .def_property_readonly("player", &PlayerQuitEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who leaves the server");
+
+    py::class_<BroadcastMessageEvent, Event>(m, "BroadcastMessageEvent")
+        .def_property("message", &BroadcastMessageEvent::getMessage, &BroadcastMessageEvent::setMessage,
+                      "The message to broadcast.")
+        .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
+                               py::return_value_policy::reference_internal,
+                               "Gets a set of recipients that this broadcast message will be displayed to.");
 
     py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);

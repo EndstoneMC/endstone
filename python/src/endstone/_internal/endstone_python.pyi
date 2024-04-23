@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
 class ActorRemoveEvent(Event):
@@ -15,6 +15,20 @@ class ActorSpawnEvent(Event):
     def actor(self) -> Actor:
         """
         Returns the Actor being spawned
+        """
+class BroadcastMessageEvent(Event):
+    @property
+    def message(self) -> str:
+        """
+        The message to broadcast.
+        """
+    @message.setter
+    def message(self, arg1: str) -> None:
+        ...
+    @property
+    def recipients(self) -> set[CommandSender]:
+        """
+        Gets a set of recipients that this broadcast message will be displayed to.
         """
 class ColorFormat:
     AQUA: typing.ClassVar[str] = '§b'
