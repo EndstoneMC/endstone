@@ -37,22 +37,33 @@ Permission *DefaultPermissions::registerPermission(const std::string &name, Perm
 
 void DefaultPermissions::registerCorePermissions()
 {
-    auto *endstone = registerPermission("endstone", nullptr,
-                                        "Gives the user the ability to use all Endstone utilities and commands");
-    registerCommandPermissions(endstone);
-    // TODO(permission): registerBroadcastPermissions (endstone.broadcast)
-    endstone->recalculatePermissibles();
+    auto *root = registerPermission("endstone", nullptr,
+                                    "Gives the user the ability to use all Endstone utilities and commands");
+    registerCommandPermissions(root);
+    registerBroadcastPermissions(root);
+    root->recalculatePermissibles();
 }
 
 void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
-    auto *command =
-        registerPermission("endstone.command", parent, "Gives the user the ability to use all Endstone command");
-    registerPermission("endstone.command.plugins", command,
+    auto *root = registerPermission(parent->getName() + ".command", parent,
+                                    "Gives the user the ability to use all Endstone command");
+    registerPermission(root->getName() + ".plugins", root,
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
-    registerPermission("endstone.command.version", command, "Allows the user to view the version of the server",
-                       PermissionDefault::True);
-    command->recalculatePermissibles();
+    registerPermission(root->getName() + ".version", root,  //
+                       "Allows the user to view the version of the server", PermissionDefault::True);
+    root->recalculatePermissibles();
+}
+
+void DefaultPermissions::registerBroadcastPermissions(Permission *parent)
+{
+    auto *root = registerPermission(parent->getName() + ".broadcast", parent,
+                                    "Allows the user to receive all broadcast messages");
+    registerPermission(root->getName() + ".admin", root,  //
+                       "Allows the user to receive administrative broadcasts", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".user", root,  //
+                       "Allows the user to receive user broadcasts", PermissionDefault::True);
+    root->recalculatePermissibles();
 }
 
 }  // namespace endstone::detail

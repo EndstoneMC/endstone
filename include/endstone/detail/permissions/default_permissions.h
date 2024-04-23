@@ -33,6 +33,7 @@ public:
                                           const std::unordered_map<std::string, bool> &children = {});
     static void registerCorePermissions();
     static void registerCommandPermissions(Permission *parent);
+    static void registerBroadcastPermissions(Permission *parent);
 };
 
 }  // namespace endstone::detail
