@@ -30,7 +30,7 @@ namespace endstone::detail {
  */
 class PermissibleBase : public Permissible {
 public:
-    explicit PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
+    explicit PermissibleBase(Permissible *opable);
 
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;

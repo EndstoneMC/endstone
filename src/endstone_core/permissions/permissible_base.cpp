@@ -24,6 +24,11 @@
 
 namespace endstone::detail {
 
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this)
+{
+    recalculatePermissions();
+}
+
 bool PermissibleBase::isOp() const
 {
     if (opable_) {

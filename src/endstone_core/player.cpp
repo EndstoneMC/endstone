@@ -110,7 +110,6 @@ void EndstonePlayer::setOp(bool value)
     }
 
     player_.setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
-    perm_.recalculatePermissions();
 }
 
 std::uint64_t EndstonePlayer::getRuntimeId()
