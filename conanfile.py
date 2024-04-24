@@ -110,6 +110,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("magic_enum/0.9.5")
         self.requires("entt/3.13.0")
         self.requires("cpptrace/0.5.2")
+        self.requires("ms-gsl/4.0.0")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
@@ -147,11 +148,16 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["headers"].libs = []
         self.cpp_info.components["headers"].libdirs = []
         self.cpp_info.components["headers"].set_property("cmake_target_name", "endstone::headers")
-        self.cpp_info.components["headers"].requires = ["fmt::fmt", "entt::entt"]
+        self.cpp_info.components["headers"].requires = ["fmt::fmt"]
 
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
-        self.cpp_info.components["core"].requires = ["spdlog::spdlog"]
+        self.cpp_info.components["core"].requires = [
+            "spdlog::spdlog",
+            "magic_enum::magic_enum",
+            "entt::entt",
+            "ms-gsl::ms-gsl",
+        ]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
@@ -160,7 +166,6 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["runtime"].requires = [
             "core",
             "funchook::funchook",
-            "magic_enum::magic_enum",
             "pybind11::pybind11",
             "cpptrace::cpptrace",
         ]
