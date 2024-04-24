@@ -14,23 +14,18 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
-
-#include "bedrock/mce.h"
-#include "bedrock/network/network_identifier.h"
-#include "bedrock/network/protocol/certificate.h"
-#include "bedrock/network/protocol/sub_client_id.h"
-
-class UserEntityIdentifierComponent {
+template <typename ComponentFlag>
+class FlagComponent {
 public:
-    NetworkIdentifier network_id;              // +0
-    SubClientId sub_client_id;                 // +160
-    mce::UUID uuid;                            // +168
-    std::string pfid;                          // +184
-    std::unique_ptr<Certificate> certificate;  // +216
+    ComponentFlag flag;
 };
+
+struct PlayerComponentFlag {
+public:
+};
+
 #if defined __clang__ || defined __GNUC__
-static_assert(entt::type_hash<UserEntityIdentifierComponent>::value() == 0xB845379);
+static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x356FFFCA);
 #elif defined _MSC_VER
-static_assert(entt::type_hash<UserEntityIdentifierComponent>::value() == 0x7CF39851);
+static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x600FBE1D);
 #endif
