@@ -97,10 +97,10 @@ public:
     [[nodiscard]] virtual Actor *fetchEntity(ActorUniqueID, bool) const = 0;
     [[nodiscard]] virtual Actor *getRuntimeEntity(ActorRuntimeID, bool) const = 0;
     [[nodiscard]] virtual Mob *getMob(ActorUniqueID) const = 0;
-    [[nodiscard]] virtual Player *getPlayer(ActorUniqueID) const = 0;
-    [[nodiscard]] virtual Player *getPlayer(mce::UUID const &) const = 0;
     [[nodiscard]] virtual Player *getPlayer(std::string const &) const = 0;
+    [[nodiscard]] virtual Player *getPlayer(mce::UUID const &) const = 0;
     [[nodiscard]] virtual Player *getPlayerByXuid(std::string const &) const = 0;
+    [[nodiscard]] virtual Player *getPlayer(ActorUniqueID) const = 0;
     [[nodiscard]] virtual Player *getPlatformPlayer(std::string const &) const = 0;
     [[nodiscard]] virtual Player *getPlayerFromServerId(std::string const &) const = 0;
     [[nodiscard]] virtual Player *getRuntimePlayer(ActorRuntimeID) const = 0;
@@ -133,7 +133,6 @@ public:
     [[nodiscard]] virtual Factory<BaseLightTextureImageBuilder, Level &, Scheduler &> const &
     getLightTextureImageBuilderFactory() const = 0;
     virtual Factory<BaseLightTextureImageBuilder, Level &, Scheduler &> &getLightTextureImageBuilderFactory() = 0;
-
     [[nodiscard]] virtual void *getWorldRegistriesProvider() const = 0;
     virtual void *getWorldRegistriesProvider() = 0;
     virtual void addListener(LevelListener &) = 0;
@@ -144,19 +143,14 @@ public:
     [[nodiscard]] virtual StackRefResult<PauseManager const> getPauseManager() const = 0;
     virtual void onPlayerDeath(Player &, ActorDamageSource const &) = 0;
     virtual void tick() = 0;
-
-private:
-    virtual void directTickEntities(BlockSource &) = 0;
-
-public:
-    virtual bool explode(Explosion &) = 0;
     virtual bool explode(BlockSource &, Actor *, Vec3 const &, float, bool, bool, float, bool) = 0;
+    virtual bool explode(Explosion &) = 0;
     virtual void spawnParticleEffect(std::string const &, Vec3 const &, Dimension *) = 0;
     virtual void denyEffect(BlockSource &, Vec3 const &) = 0;
     virtual void potionSplash(Vec3 const &, mce::Color const &, bool) = 0;
     virtual bool extinguishFire(BlockSource &, BlockPos const &, std::uint8_t, Actor *) = 0;
-    virtual std::unique_ptr<Path> findPath(Actor &, Actor &, NavigationComponent &) = 0;
     virtual std::unique_ptr<Path> findPath(Actor &, int, int, int, NavigationComponent &) = 0;
+    virtual std::unique_ptr<Path> findPath(Actor &, Actor &, NavigationComponent &) = 0;
     virtual void updateSleepingPlayerList() = 0;
     virtual void setSleepStatus(PlayerSleepStatus const &) = 0;
     [[nodiscard]] virtual PlayerSleepStatus getSleepStatus() const = 0;
@@ -209,47 +203,37 @@ public:
     virtual TickingAreasManager &getTickingAreasMgr() = 0;
     virtual void addTickingAreaList(AutomaticID<Dimension, int>, std::shared_ptr<TickingAreaList> const &) = 0;
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
-    virtual void playSound(AutomaticID<Dimension, int>, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorDefinitionIdentifier const &, bool, bool) = 0;
-    virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
-                           ActorDefinitionIdentifier const &, bool, bool) = 0;
-    virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
-    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, float, float) = 0;
     virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorDefinitionIdentifier const &, bool,
                            bool) = 0;
-    virtual void registerEventCoordinators() = 0;
-    virtual void setRemotePlayerEventCoordinator(std::unique_ptr<PlayerEventCoordinator> &&) = 0;
+    virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, float, float) = 0;
+    virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
+    virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
+                           ActorDefinitionIdentifier const &, bool, bool) = 0;
+    virtual void playSound(AutomaticID<Dimension, int>, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
+                           ActorDefinitionIdentifier const &, bool, bool) = 0;
     virtual PlayerEventCoordinator &getRemotePlayerEventCoordinator() = 0;
-    virtual void setServerPlayerEventCoordinator(std::unique_ptr<ServerPlayerEventCoordinator> &&) = 0;
     virtual ServerPlayerEventCoordinator &getServerPlayerEventCoordinator() = 0;
-    virtual void setClientPlayerEventCoordinator(std::unique_ptr<ClientPlayerEventCoordinator> &&) = 0;
     virtual ClientPlayerEventCoordinator &getClientPlayerEventCoordinator() = 0;
-    virtual void setActorEventCoordinator(std::unique_ptr<ActorEventCoordinator> &&) = 0;
     virtual ActorEventCoordinator &getActorEventCoordinator() = 0;
-    virtual void setBlockEventCoordinator(std::unique_ptr<BlockEventCoordinator> &&) = 0;
     virtual BlockEventCoordinator &getBlockEventCoordinator() = 0;
-    virtual void setItemEventCoordinator(std::unique_ptr<ItemEventCoordinator> &&) = 0;
     virtual ItemEventCoordinator &getItemEventCoordinator() = 0;
-    virtual void setServerNetworkEventCoordinator(std::unique_ptr<ServerNetworkEventCoordinator> &&) = 0;
     virtual ServerNetworkEventCoordinator &getServerNetworkEventCoordinator() = 0;
-    virtual void setScriptingEventCoordinator(std::unique_ptr<ScriptingEventCoordinator> &&) = 0;
     virtual ScriptingEventCoordinator &getScriptingEventCoordinator() = 0;
-    virtual void setScriptDeferredEventCoordinator(std::unique_ptr<ScriptDeferredEventCoordinator> &&) = 0;
     virtual ScriptDeferredEventCoordinator &getScriptDeferredEventCoordinator() = 0;
     virtual LevelEventCoordinator &getLevelEventCoordinator() = 0;
-    virtual void handleLevelEvent(LevelEvent, CompoundTag const &) = 0;
     virtual void handleLevelEvent(LevelEvent, Vec3 const &, int) = 0;
+    virtual void handleLevelEvent(LevelEvent, CompoundTag const &) = 0;
     virtual void handleStopSoundEvent(std::string const &) = 0;
     virtual void handleStopAllSounds() = 0;
-    virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLevelEvent(LevelEvent, Vec3 const &, int, UserEntityIdentifierComponent const *) = 0;
-    virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
+    virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
-    virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
+    virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, Block const &) = 0;
+    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, Block const &,
                                      ActorDefinitionIdentifier const &, bool, bool) = 0;
     virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
                                      ActorDefinitionIdentifier const &, bool, bool) = 0;
-    virtual void broadcastSoundEvent(BlockSource &, Puv::Legacy::LevelSoundEvent, Vec3 const &, Block const &,
+    virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
                                      ActorDefinitionIdentifier const &, bool, bool) = 0;
     virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
@@ -257,12 +241,12 @@ public:
     virtual void onChunkReloaded(ChunkSource &, LevelChunk &) = 0;
     [[nodiscard]] virtual int getActivePlayerCount() const = 0;
     [[nodiscard]] virtual int getActiveUsersCount() const = 0;
-    virtual void forEachPlayer(std::function<bool(Player const &)>) const = 0;
     virtual void forEachPlayer(std::function<bool(Player &)>) = 0;
-    virtual void forEachUser(std::function<bool(EntityContext const &)>) const = 0;
+    virtual void forEachPlayer(std::function<bool(Player const &)>) const = 0;
     virtual void forEachUser(std::function<bool(EntityContext &)>) = 0;
-    virtual Player *findPlayer(std::function<bool(WeakEntityRef const &)>) const = 0;
+    virtual void forEachUser(std::function<bool(EntityContext const &)>) const = 0;
     virtual Player *findPlayer(std::function<bool(Player const &)>) const = 0;
+    virtual Player *findPlayer(std::function<bool(WeakEntityRef const &)>) const = 0;
     [[nodiscard]] virtual int getUserCount() const = 0;
     [[nodiscard]] virtual int countUsersWithMatchingNetworkId(NetworkIdentifier const &) const = 0;
     [[nodiscard]] virtual std::vector<OwnerPtr<EntityContext>> const &getUsers() const = 0;
@@ -280,8 +264,8 @@ private:
 
 public:
     virtual void queueEntityDestruction(OwnerPtr<EntityContext>) = 0;
-    virtual OwnerPtr<EntityContext> removeEntity(WeakEntityRef) = 0;
     virtual OwnerPtr<EntityContext> removeEntity(Actor &) = 0;
+    virtual OwnerPtr<EntityContext> removeEntity(WeakEntityRef) = 0;
     virtual void forceRemoveEntity(Actor &) = 0;
     virtual void forceRemoveEntityfromWorld(Actor &) = 0;
     virtual void forceFlushRemovedPlayers() = 0;
@@ -306,12 +290,14 @@ public:
     virtual ActorRuntimeID getNextRuntimeID() = 0;
     [[nodiscard]] virtual std::vector<ChunkPos> const &getTickingOffsets() const = 0;
     [[nodiscard]] virtual std::vector<ChunkPos> const &getClientTickingOffsets() const = 0;
+    [[nodiscard]] virtual std::vector<ChunkPos> getSortedPositionsFromClientOffsets(
+        std::vector<ChunkPos> const &) const = 0;
     [[nodiscard]] virtual bool isExporting() const = 0;
     virtual void setIsExporting(bool) = 0;
     virtual SavedDataStorage &getSavedData() = 0;
+    virtual MapItemSavedData *getMapSavedData(ActorUniqueID) = 0;
     virtual MapItemSavedData *getMapSavedData(CompoundTag const &) = 0;
     virtual MapItemSavedData *getMapSavedData(CompoundTag const *) = 0;
-    virtual MapItemSavedData *getMapSavedData(ActorUniqueID) = 0;
     virtual void requestMapInfo(ActorUniqueID, bool) = 0;
     virtual ActorUniqueID expandMapByID(ActorUniqueID, bool) = 0;
     virtual bool copyAndLockMap(ActorUniqueID, ActorUniqueID) = 0;
