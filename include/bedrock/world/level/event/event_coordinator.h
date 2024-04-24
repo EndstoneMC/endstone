@@ -29,27 +29,27 @@
 
 class ActorEventCoordinator {
 public:
-    BEDROCK_API void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+    void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
+    CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
 };
 
 class BlockEventCoordinator {
 public:
-    BEDROCK_API void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
+    void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
+    CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
 };
 class ItemEventCoordinator;
 
 class LevelEventCoordinator {
 public:
-    BEDROCK_API void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
+    void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
     LevelGameplayHandler &getLevelGameplayHandler();
 };
 
 class PlayerEventCoordinator {
 public:
-    BEDROCK_API void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
-    BEDROCK_API CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
+    void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
+    CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
 };
 class ServerPlayerEventCoordinator : public PlayerEventCoordinator {};
 class ClientPlayerEventCoordinator : public PlayerEventCoordinator {};

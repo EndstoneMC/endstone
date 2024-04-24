@@ -126,6 +126,7 @@ CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGamepla
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
+    endstone::detail::register_signal_handler();
     auto &server = entt::locator<EndstoneServer>::value_or(instance);
     server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
     server.getCommandSender().recalculatePermissions();
@@ -140,7 +141,6 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
-    endstone::detail::register_signal_handler();
     auto &server = entt::locator<EndstoneServer>::value();
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
