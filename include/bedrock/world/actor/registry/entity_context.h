@@ -28,6 +28,12 @@ public:
         : registry_(registry), entt_registry_(registry.registry_), entity_id_(entity_id){};
 
     template <typename Component>
+    [[nodiscard]] bool hasComponent() const
+    {
+        return entt_registry_.all_of<Component>(entity_id_);
+    }
+
+    template <typename Component>
     Component *tryGetComponent()
     {
         return entt_registry_.try_get<Component>(entity_id_);

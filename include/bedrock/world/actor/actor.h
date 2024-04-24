@@ -216,7 +216,7 @@ public:
     template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
-        return tryGetComponent<Component>() != nullptr;
+        return context_.hasComponent<Component>();
     }
 
     template <typename Component>
