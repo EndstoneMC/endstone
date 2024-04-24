@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/actor.h"
 
 #include "bedrock/world/actor/components/actor_owner_component.h"
+#include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/actor/actor.h"
@@ -44,6 +45,11 @@ void Actor::setDimension(WeakRef<Dimension> dimension)
 {
     // TODO(event): call PlayerChangedLevelEvent for player??
     ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::setDimension, this, std::move(dimension));
+}
+
+bool Actor::isPlayer() const
+{
+    return hasComponent<FlagComponent<PlayerComponentFlag>>();
 }
 
 bool Actor::isRemoved() const

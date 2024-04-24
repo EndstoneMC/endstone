@@ -62,14 +62,12 @@ public:
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
     BEDROCK_API virtual void remove();
-    virtual bool isRuntimePredictedMovementEnabled() = 0;
     [[nodiscard]] virtual Vec3 getFiringPos() const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyRot(float) const = 0;
     [[nodiscard]] virtual float getInterpolatedHeadRot(float) const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyYaw(float) const = 0;
     [[nodiscard]] virtual float getYawSpeedInDegreesPerSecond() const = 0;
     [[nodiscard]] virtual Vec3 getInterpolatedRidingOffset(float, int) const = 0;
-    virtual void resetInterpolated() = 0;
     [[nodiscard]] virtual bool isFireImmune() const = 0;
     virtual void blockedByShield(ActorDamageSource const &, Actor &) = 0;
     virtual bool canDisableShield() = 0;
@@ -105,8 +103,6 @@ public:
     [[nodiscard]] virtual bool isOnFire() const = 0;
     [[nodiscard]] virtual bool isSurfaceMob() const = 0;
     [[nodiscard]] virtual bool isTargetable() const = 0;
-    [[nodiscard]] virtual bool isLocalPlayer() const = 0;
-    [[nodiscard]] virtual bool isPlayer() const = 0;
     virtual bool canAttack(Actor *, bool) const = 0;
     virtual void setTarget(Actor *) = 0;
     virtual bool isValidTarget(Actor *) const = 0;
@@ -218,6 +214,12 @@ protected:
 
 public:
     template <typename Component>
+    [[nodiscard]] bool hasComponent() const
+    {
+        return tryGetComponent<Component>() != nullptr;
+    }
+
+    template <typename Component>
     Component *tryGetComponent()
     {
         return context_.tryGetComponent<Component>();
@@ -231,6 +233,7 @@ public:
 
     BEDROCK_API void setDimension(WeakRef<Dimension>);
 
+    [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;

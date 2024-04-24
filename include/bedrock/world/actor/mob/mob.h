@@ -24,7 +24,6 @@ public:
     virtual void knockback(Actor *, int, float, float, float, float, float) = 0;
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
-    virtual Puv::Legacy::LevelSoundEvent getHurtSound() = 0;
     virtual Puv::Legacy::LevelSoundEvent getDeathSound() = 0;
     [[nodiscard]] virtual float getSpeed() const = 0;
     virtual void setSpeed(float) = 0;
@@ -46,8 +45,8 @@ public:
     virtual void sendArmor(std::bitset<4>) = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllHand() const = 0;
     [[nodiscard]] virtual std::vector<ItemStack const *> getAllEquipment() const = 0;
-    virtual void dropEquipmentOnDeath() = 0;
     virtual void dropEquipmentOnDeath(ActorDamageSource const &, int) = 0;
+    virtual void dropEquipmentOnDeath() = 0;
     virtual void clearVanishEnchantedItemsOnDeath() = 0;
     virtual void sendInventory(bool) = 0;
     [[nodiscard]] virtual float getDamageAfterEnchantReduction(ActorDamageSource const &, float) const = 0;
