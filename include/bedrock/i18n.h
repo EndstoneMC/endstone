@@ -14,13 +14,56 @@
 
 #pragma once
 
+#include <map>
 #include <string>
+#include <unordered_map>
 #include <vector>
 
+#include <gsl/gsl>
+
 #include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
+#include "bedrock/memory.h"
 
 class I18n {
 public:
-    BEDROCK_API static std::string get(const std::string &message_id, const std::vector<std::string> &params,
-                                       const class Localization *localization);
+    virtual ~I18n() = 0;
+    virtual void clearLanguages() = 0;
+    virtual std::vector<std::string> findAvailableLanguages(ResourcePackManager &) = 0;
+    virtual std::unordered_map<std::string, std::string> findAvailableLanguageNames(ResourcePackManager &) = 0;
+    virtual void loadLanguages(ResourcePackManager &, gsl::not_null<Bedrock::NonOwnerPointer<ResourceLoadManager>>,
+                               std::string const &) = 0;
+    virtual void loadAllLanguages(ResourcePackManager &) = 0;
+    virtual std::vector<std::string> getLanguageCodesFromPack(PackAccessStrategy const &) = 0;
+    virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &) = 0;
+    virtual void loadLanguageKeywordsFromPack(PackManifest const &, PackAccessStrategy const &,
+                                              std::vector<std::string> const &) = 0;
+    virtual void appendLanguageStringsFromPack(
+        PackManifest const &, std::multimap<std::string, std::pair<std::string, std::string>> const &) = 0;
+    virtual std::unordered_map<std::string, std::string> getLanguageKeywordsFromPack(PackManifest const &,
+                                                                                     std::string const &) = 0;
+    virtual void loadLanguagesByLocale(
+        std::unordered_multimap<std::string, std::pair<std::string, std::string>> const &) = 0;
+    virtual void appendAdditionalTranslations(std::unordered_map<std::string, std::string> const &,
+                                              std::string const &) = 0;
+    virtual void appendLanguageStrings(PackAccessStrategy *) = 0;
+    virtual void appendTranslations(std::string const &, std::unordered_map<std::string, std::string> const &) = 0;
+    virtual void addI18nObserver(I18nObserver &) = 0;
+    virtual void chooseLanguage(std::string const &) = 0;
+    virtual void chooseLanguage(Localization const &) = 0;
+    virtual std::string get(std::string const &, std::vector<std::string> const &, std::shared_ptr<Localization>) = 0;
+    virtual std::string get(std::string const &, std::shared_ptr<Localization>) = 0;
+    virtual std::string getPackKeywordValue(PackManifest const &, std::string const &) = 0;
+    virtual std::string getPackKeywordValueForTelemetry(PackManifest const &, std::string const &) = 0;
+    virtual bool hasPackKeyEntry(PackManifest const &, std::string const &) = 0;
+    [[nodiscard]] virtual std::string const &getSupportedLanguageCodes() const = 0;
+    virtual std::string const &getLanguageName(std::string const &) = 0;
+    virtual std::shared_ptr<Localization> getLocaleFor(std::string const &) = 0;
+    virtual std::string const &getLocaleCodeFor(std::string const &) = 0;
+    virtual optional_ref<Localization const> getCurrentLanguage() = 0;
+    virtual bool languageSupportsHypenSplitting() = 0;
+    virtual std::string getLocalizedAssetFileWithFallback(std::string const &, std::string const &) = 0;
+    virtual bool isPackKeyword(std::string const &) = 0;
 };
+
+BEDROCK_API I18n &getI18n();

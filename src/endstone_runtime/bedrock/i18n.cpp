@@ -16,10 +16,7 @@
 
 #include "endstone/detail/hook.h"
 
-std::string I18n::get(const std::string &message_id, const std::vector<std::string> &params,
-                      const Localization *localization)
+I18n &getI18n()
 {
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&I18n::get, result, message_id, params, localization);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&getI18n);
 }

@@ -78,7 +78,7 @@ void EndstoneCommandMap::setMinecraftCommands()
     }
 
     for (const auto &[command_name, signature] : registry.commands) {
-        auto description = I18n::get(signature.description, {}, nullptr);
+        auto description = getI18n().get(signature.description, {}, nullptr);
 
         std::vector<std::string> usages;
         usages.reserve(signature.overloads.size());

@@ -83,6 +83,7 @@ class GameRules;
 class HandSlot;
 class HashedString;
 class HitResult;
+class I18nObserver;
 class IAddActorEntityProxy;
 class IConstBlockSource;
 class IContainerManager;
@@ -104,6 +105,7 @@ class LevelData;
 class LevelSettings;
 class LevelSoundManager;
 class LevelStorage;
+class Localization;
 class LootTables;
 class MapItemSavedData;
 class MaterialTypeHelper;
@@ -113,6 +115,8 @@ class NavigationComponent;
 class NetEventCallback;
 class NewInteractionModel;
 class Options;
+class PackAccessStrategy;
+class PackManifest;
 class Particle;
 class Path;
 class PauseManager;
@@ -130,6 +134,8 @@ class Recipes;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
+class ResourceLoadManager;
+class ResourcePackManager;
 class SavedDataStorage;
 class Scheduler;
 class Scoreboard;
@@ -207,3 +213,5 @@ template <typename A, typename B>
 class TagRegistry;
 template <typename T>
 class IDType;
+template <typename T>
+using optional_ref = T *; // NOLINT(*-identifier-naming)
