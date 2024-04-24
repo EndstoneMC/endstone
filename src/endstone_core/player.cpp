@@ -30,7 +30,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     if (!component) {
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
-    uuid_ = {component->uuid.msb, component->uuid.lsb};
+    uuid_ = component->uuid.toEndstone();
 }
 
 void EndstonePlayer::sendMessage(const std::string &message) const

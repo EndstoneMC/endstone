@@ -27,13 +27,6 @@ namespace endstone {
  */
 class UUID {
 public:
-    UUID() : data{0} {}
-    UUID(std::int64_t msb, std::int64_t lsb)
-    {
-        bits.most_significant = msb;
-        bits.least_significant = lsb;
-    }
-
     std::uint8_t *begin() noexcept
     {
         return data;
@@ -110,14 +103,7 @@ public:
 
         return result;
     }
-
-    union {
-        std::uint8_t data[16];
-        struct {
-            std::int64_t most_significant;
-            std::int64_t least_significant;
-        } bits;
-    };
+    std::uint8_t data[16];
 };
 static_assert(sizeof(endstone::UUID) == endstone::UUID::size());
 

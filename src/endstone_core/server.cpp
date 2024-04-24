@@ -172,7 +172,7 @@ void EndstoneServer::addLevel(std::unique_ptr<Level> level)
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
 {
     for (const auto *level : getLevels()) {
-        auto uuid = mce::UUID{id.bits.most_significant, id.bits.least_significant};
+        auto uuid = mce::UUID::fromEndstone(id);
         auto *player = static_cast<const EndstoneLevel *>(level)->getBedrockLevel().getPlayer(uuid);
         if (player) {
             return &player->getEndstonePlayer();
