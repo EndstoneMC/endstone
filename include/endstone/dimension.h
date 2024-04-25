@@ -16,8 +16,8 @@
 
 namespace endstone {
 enum class Dimension {
-    OVERWORLD = 0,
-    NETHER = 1,
-    THE_END = 2
+    Overworld = 0,
+    Nether = 1,
+    TheEnd = 2
 };
 }  // namespace endstone
