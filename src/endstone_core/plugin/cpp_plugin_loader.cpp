@@ -130,7 +130,11 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
 
 std::vector<std::string> CppPluginLoader::getPluginFileFilters() const
 {
-    return {_WIN32_LINUX_("\\.dll$", "\\.so$")};
+#ifdef _WIN32
+    return {"\\.dll$"};
+#elif __linux__
+    return {"\\.so$"};
+#endif
 }
 
 }  // namespace endstone::detail
