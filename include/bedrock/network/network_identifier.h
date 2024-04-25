@@ -14,7 +14,19 @@
 
 #pragma once
 
+#include "bedrock/network/raknet/types.h"
+
 class NetworkIdentifier {
 public:
-    char pad[160];  // TODO(fixme): find out the class structure
+    enum class Type : std::uint32_t;
+
+    std::uint32_t nether_net_id;     // +0
+    RakNet::RakNetGUID raknet_guid;  // +8
+    union {                          //
+        sockaddr_storage sa_stor;    //
+        sockaddr_in6 addr6;          //
+        sockaddr_in addr4;           //
+    } address;                       // +24
+    Type type;                       // +152
 };
+static_assert(sizeof(NetworkIdentifier) == 160);

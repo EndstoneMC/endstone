@@ -14,6 +14,14 @@
 
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 
+#include <filesystem>
+#include <regex>
+namespace fs = std::filesystem;
+
+#include "endstone/detail/logger_factory.h"
+#include "endstone/detail/server.h"
+#include "endstone/plugin/plugin.h"
+
 #ifdef _WIN32
 #include <Windows.h>
 #define LOAD_LIBRARY(file)             LoadLibraryA(file)
@@ -27,14 +35,6 @@
 #define GET_ERROR()                    dlerror()
 #define CLOSE_LIBRARY(module)          dlclose(module)
 #endif
-
-#include <filesystem>
-#include <regex>
-namespace fs = std::filesystem;
-
-#include "endstone/detail/logger_factory.h"
-#include "endstone/detail/server.h"
-#include "endstone/plugin/plugin.h"
 
 namespace endstone::detail {
 
