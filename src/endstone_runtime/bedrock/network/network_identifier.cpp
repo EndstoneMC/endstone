@@ -12,20 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/types.h"
+#include "bedrock/network/network_identifier.h"
 
-#include "endstone/detail/hook.h"
+#include <string>
 
-namespace RakNet {
+std::string NetworkIdentifier::getAddress() const
+{
+    char str[INET6_ADDRSTRLEN] = {0};
+    if (address.addr4.sin_family == AF_INET) {
+        if (!inet_ntop(AF_INET, &(address.addr4.sin_addr), str, INET6_ADDRSTRLEN)) {
+            return "0.0.0.0";
+        }
+    }
+    else {
+        if (!inet_ntop(AF_INET6, &(address.addr6.sin6_addr), str, INET6_ADDRSTRLEN)) {
+            return "::";
+        }
+    }
+    return str;
+}
 
-std::uint16_t SystemAddress::GetPort() const
+std::uint16_t NetworkIdentifier::getPort() const
 {
     return ntohs(address.addr4.sin_port);
 }
-
-void SystemAddress::ToString(bool write_port, char *dest, char port_delimiter) const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
-}
-
-}  // namespace RakNet

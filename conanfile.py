@@ -172,4 +172,4 @@ class EndstoneRecipe(ConanFile):
         if self.settings.os == "Linux":
             self.cpp_info.components["runtime"].requires.extend(["libelf::libelf"])
         if self.settings.os == "Windows":
-            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp"])
+            self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])

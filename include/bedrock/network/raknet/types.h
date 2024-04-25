@@ -37,7 +37,7 @@ struct SystemAddress {
     } address;
     std::uint16_t debug_port;
 
-    [[nodiscard]] BEDROCK_API std::uint16_t GetPort() const;                                  // NOLINT
+    [[nodiscard]] std::uint16_t GetPort() const;                                              // NOLINT
     BEDROCK_API void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
 };
 static_assert(sizeof(SystemAddress) == 136);

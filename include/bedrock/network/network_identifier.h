@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <cstdint>
+#include <string>
+
 #include "bedrock/network/raknet/types.h"
 
 class NetworkIdentifier {
@@ -28,5 +31,8 @@ public:
         sockaddr_in addr4;           //
     } address;                       // +24
     Type type;                       // +152
+
+    [[nodiscard]] std::string getAddress() const;
+    [[nodiscard]] std::uint16_t getPort() const;
 };
 static_assert(sizeof(NetworkIdentifier) == 160);
