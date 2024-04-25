@@ -18,5 +18,5 @@
 
 MinecraftCommands &Minecraft::getCommands()
 {
-    return **reinterpret_cast<MinecraftCommands **>(reinterpret_cast<std::size_t *>(this) + _WIN32_LINUX_(23, 22));
+    return *commands_;
 }

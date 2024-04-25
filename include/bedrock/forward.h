@@ -29,6 +29,7 @@ class ActorFactory;
 class ActorInteraction;
 class AddActorBasePacket;
 class AdventureSettings;
+class AllowList;
 class AnimationComponent;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
@@ -79,6 +80,8 @@ class Explosion;
 class FeatureRegistry;
 class FeatureTypeFactory;
 class FrameUpdateContextBase;
+class GameCallbacks;
+class GameModuleServer;
 class GameRules;
 class HandSlot;
 class HashedString;
@@ -120,12 +123,14 @@ class PackManifest;
 class Particle;
 class Path;
 class PauseManager;
+class PermissionsFile;
 class PhotoStorage;
 class PlayerListEntry;
 class PlayerMovementSettings;
 class PortalForcer;
 class PositionTrackingDBClient;
 class PositionTrackingDBServer;
+class PrivateKeyManager;
 class PropertyGroupManager;
 class PropertiesSettings;
 class ProjectileFactory;
@@ -143,6 +148,7 @@ class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
 class SerializedSkin;
+class ServerMetrics;
 class SoundPlayerInterface;
 class Spawner;
 class StorageVersion;
@@ -214,4 +220,4 @@ class TagRegistry;
 template <typename T>
 class IDType;
 template <typename T>
-using optional_ref = T *; // NOLINT(*-identifier-naming)
+using optional_ref = T *;  // NOLINT(*-identifier-naming)
