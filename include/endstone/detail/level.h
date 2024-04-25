@@ -33,6 +33,7 @@ public:
     ~EndstoneLevel() override = default;
 
     [[nodiscard]] std::string getName() const override;
+    Dimension getDimension() const override;
 
     [[nodiscard]] std::vector<Actor *> getActors() const override;
 
@@ -44,7 +45,8 @@ public:
 private:
     EndstoneServer &server_;
     BedrockLevel &level_;
-    BedrockDimension &dimension_;
+    BedrockDimension &handle_;
+    Dimension dimension_;
 };
 
 }  // namespace endstone::detail

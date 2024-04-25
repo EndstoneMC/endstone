@@ -15,6 +15,7 @@
 #include "endstone/detail/level.h"
 
 #include <entt/entt.hpp>
+#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/virtual_table.h"
@@ -22,16 +23,28 @@
 namespace endstone::detail {
 
 EndstoneLevel::EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension)
-    : server_(entt::locator<EndstoneServer>::value()), level_(level), dimension_(dimension)
+    : server_(entt::locator<EndstoneServer>::value()), level_(level), handle_(dimension)
 {
+    dimension_ = []() {
+        auto dim = magic_enum::enum_cast<Dimension>(handle_.getDimensionId().id);
+        if (!dim.has_value()) {
+            throw std::runtime_error("Invalid dimension");
+        }
+        return dim.value();
+    }();
 }
 
 std::string EndstoneLevel::getName() const
 {
-    if (dimension_.getDimensionId() == VanillaDimensions::Overworld) {
+    if (getDimension() == Dimension::Overworld) {
         return level_.getLevelId();
     }
-    return fmt::format("{} ({})", level_.getLevelId(), VanillaDimensions::toString(dimension_.getDimensionId()));
+    return fmt::format("{} ({})", level_.getLevelId(), magic_enum::enum_name(getDimension()));
+}
+
+Dimension EndstoneLevel::getDimension() const
+{
+    return dimension_;
 }
 
 std::vector<Actor *> EndstoneLevel::getActors() const
@@ -48,7 +61,7 @@ std::vector<Actor *> EndstoneLevel::getActors() const
             continue;
         }
 
-        if (&actor->getDimension() != &dimension_) {
+        if (&actor->getDimension() != &handle_) {
             continue;
         }
 
