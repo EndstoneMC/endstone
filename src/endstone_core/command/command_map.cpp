@@ -133,7 +133,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
     auto &registry = server_.getMinecraftCommands().getRegistry();
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
-                             CommandFlag::WithoutCheatEnabled, CommandFlag::None);
+                             CommandFlag::NotCheat, CommandFlag::None);
     known_commands_.emplace(name, command);
 
     std::vector<std::string> registered_alias;

@@ -36,7 +36,7 @@ const CommandRegistry::Symbol CommandRegistry::Symbol::WildcardInt{0x100005};
 const CommandRegistry::Symbol CommandRegistry::Symbol::Operator{0x100006};
 const CommandRegistry::Symbol CommandRegistry::Symbol::CompareOperator{0x100007};
 const CommandRegistry::Symbol CommandRegistry::Symbol::Selector{0x100008};
-const CommandRegistry::Symbol CommandRegistry::Symbol::WildcardActorSelector{0x10000a};
+const CommandRegistry::Symbol CommandRegistry::Symbol::WildcardSelector{0x10000a};
 const CommandRegistry::Symbol CommandRegistry::Symbol::FilePath{0x100011};
 const CommandRegistry::Symbol CommandRegistry::Symbol::IntegerRange{0x100017};
 const CommandRegistry::Symbol CommandRegistry::Symbol::EquipmentSlot{0x10002f};
@@ -58,7 +58,7 @@ const CommandFlag CommandFlag::HiddenFromPlayer = {1 << 2};      // CommandRegis
 const CommandFlag CommandFlag::HiddenFromAutomation = {1 << 3};  // CommandRegistry::checkOriginCommandFlags
 const CommandFlag CommandFlag::LocalOnly = {1 << 4};             // CommandRegistry::serializeAvailableCommands
 const CommandFlag CommandFlag::Communication = {1 << 6};         // MinecraftCommands::requestCommandExecution
-const CommandFlag CommandFlag::WithoutCheatEnabled = {1 << 7};   // Command::run
+const CommandFlag CommandFlag::NotCheat = {1 << 7};              // Command::run
 const CommandFlag CommandFlag::DisabledInEditor = {1 << 9};      // CommandRegistry::enabledInEditor
 
 /**

@@ -62,6 +62,6 @@ struct CommandFlag {
     static const CommandFlag HiddenFromAutomation;
     static const CommandFlag LocalOnly;
     static const CommandFlag Communication;
-    static const CommandFlag WithoutCheatEnabled;
+    static const CommandFlag NotCheat;
     static const CommandFlag DisabledInEditor;
 };

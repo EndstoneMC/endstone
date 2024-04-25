@@ -64,7 +64,7 @@ public:
         static const Symbol Operator;
         static const Symbol CompareOperator;
         static const Symbol Selector;
-        static const Symbol WildcardActorSelector;
+        static const Symbol WildcardSelector;
         static const Symbol FilePath;
         static const Symbol IntegerRange;
         static const Symbol EquipmentSlot;
