@@ -28,8 +28,11 @@ struct GameplayHandlerResult {
     EventResult result;
 };
 
-class LevelGameplayHandler {};
+class LevelGameplayHandler {
+    virtual ~LevelGameplayHandler() = 0;
+};
 class ScriptLevelGameplayHandler : public LevelGameplayHandler {
 public:
+    ~ScriptLevelGameplayHandler() override = 0;
     virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };

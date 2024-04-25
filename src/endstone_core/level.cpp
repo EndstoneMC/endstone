@@ -25,13 +25,11 @@ namespace endstone::detail {
 EndstoneLevel::EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension)
     : server_(entt::locator<EndstoneServer>::value()), level_(level), handle_(dimension)
 {
-    dimension_ = []() {
-        auto dim = magic_enum::enum_cast<Dimension>(handle_.getDimensionId().id);
-        if (!dim.has_value()) {
-            throw std::runtime_error("Invalid dimension");
-        }
-        return dim.value();
-    }();
+    auto dim = magic_enum::enum_cast<Dimension>(handle_.getDimensionId().id);
+    if (!dim.has_value()) {
+        throw std::runtime_error("Invalid dimension");
+    }
+    dimension_ = dim.value();
 }
 
 std::string EndstoneLevel::getName() const

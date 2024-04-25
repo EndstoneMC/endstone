@@ -30,31 +30,21 @@
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 
-namespace {
-endstone::Level &getLevel(LevelGameplayHandler *handler)
+GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {
-    // Find out the level where this event is occurring
     auto &server = entt::locator<EndstoneServer>::value();
+
+    // Find out the level where this event is occurring
     auto levels = server.getLevels();
-    auto it = std::find_if(begin(levels), end(levels), [handler](auto *level) {
-        return &(static_cast<EndstoneLevel *>(level)
-                     ->getBedrockLevel()
-                     .getLevelEventCoordinator()
-                     .getLevelGameplayHandler()) == handler;
+    auto it = std::find_if(begin(levels), end(levels), [this](auto *level) {
+        auto *endstone_level = static_cast<EndstoneLevel *>(level);
+        return endstone_level->getDimension() == endstone::Dimension::Overworld &&
+             &(endstone_level->getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
     });
     if (it == levels.end()) {
         throw std::runtime_error("Unable to find level associated with the provided LevelGameplayHandler");
     }
     auto &level = **it;
-    return level;
-}
-}  // namespace
-
-GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    // TODO(improvement): this - 1 is bit hacky. Any better workaround for multiple inheritance?
-    auto &level = getLevel(this - 1);
 
     if (event.from_rain != event.to_rain) {
         endstone::WeatherChangeEvent e(level, event.to_rain);
