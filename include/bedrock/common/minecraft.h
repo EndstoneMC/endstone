@@ -17,9 +17,9 @@
 #include <chrono>
 
 #include "bedrock/command/minecraft_commands.h"
+#include "bedrock/core.h"
 #include "bedrock/forward.h"
 #include "bedrock/memory.h"
-#include "core.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:

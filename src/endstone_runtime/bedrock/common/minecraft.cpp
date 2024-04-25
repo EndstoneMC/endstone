@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/server_instance.h"
+#include "bedrock/common/minecraft.h"
 
-Minecraft &ServerInstance::getMinecraft()
+MinecraftCommands &Minecraft::getCommands()
 {
-    return *minecraft_;
+    return *commands_;
 }

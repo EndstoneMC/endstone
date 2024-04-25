@@ -12,11 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/minecraft.h"
+#pragma once
 
-#include "endstone/endstone.h"
-
-MinecraftCommands &Minecraft::getCommands()
-{
-    return *commands_;
-}
+class GameCallbacks {
+public:
+    virtual ~GameCallbacks() = 0;
+};
+static_assert(sizeof(GameCallbacks) == 8);

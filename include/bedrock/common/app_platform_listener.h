@@ -12,9 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/server_instance.h"
+#pragma once
 
-Minecraft &ServerInstance::getMinecraft()
-{
-    return *minecraft_;
-}
+class AppPlatformListener {
+public:
+    virtual ~AppPlatformListener() = 0;
+
+private:
+    bool initialized_;  // +8
+};
+static_assert(sizeof(AppPlatformListener) == 16);

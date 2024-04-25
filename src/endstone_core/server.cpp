@@ -18,7 +18,7 @@
 #include <memory>
 namespace fs = std::filesystem;
 
-#include "bedrock/common.h"
+#include "bedrock/common/common.h"
 #include "bedrock/threading.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/plugin_command.h"

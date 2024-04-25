@@ -15,9 +15,21 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/minecraft.h"
+#include "bedrock/common/app_platform_listener.h"
+#include "bedrock/common/game_callbacks.h"
+#include "bedrock/common/minecraft.h"
+#include "bedrock/forward.h"
+#include "bedrock/memory.h"
 
-class ServerInstance {
+class ServerInstance : public Bedrock::EnableNonOwnerReferences,
+                       public AppPlatformListener,
+                       public GameCallbacks,
+                       public Core::StorageAreaStateListener {
 public:
     Minecraft &getMinecraft();
+
+private:
+    void *unk1_;                            // +152
+    IMinecraftApp &app_;                    // +160
+    std::unique_ptr<Minecraft> minecraft_;  // +168
 };

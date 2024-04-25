@@ -14,9 +14,21 @@
 
 #pragma once
 
+#include <mutex>
+
 namespace Core {
 class FilePathManager;
 
 template <typename T>
 class PathBuffer;
+
+class StorageAreaStateListener : public std::enable_shared_from_this<StorageAreaStateListener> {
+public:
+    virtual ~StorageAreaStateListener() = 0;
+
+private:
+    std::mutex mtx_;  // +24
+};
+// static_assert(sizeof(StorageAreaStateListener) == 104);
+
 }  // namespace Core

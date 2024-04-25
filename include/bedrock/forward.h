@@ -90,6 +90,7 @@ class I18nObserver;
 class IAddActorEntityProxy;
 class IConstBlockSource;
 class IContainerManager;
+class IMinecraftApp;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
