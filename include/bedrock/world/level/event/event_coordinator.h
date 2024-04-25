@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <thread>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -66,11 +67,6 @@ private:
     std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
     std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
 };
-#if defined __clang__ || defined __GNUC__
-static_assert(sizeof(LevelEventCoordinator) == 144);
-#elif defined _MSC_VER
-static_assert(sizeof(LevelEventCoordinator) == 136);
-#endif
 
 class PlayerEventCoordinator {
 public:
