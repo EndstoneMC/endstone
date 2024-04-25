@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <vector>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/forward.h"
 #include "bedrock/server/server_instance.h"
@@ -26,6 +28,21 @@
 #include "bedrock/world/level/event/level_event.h"
 #include "bedrock/world/level/event/player_event.h"
 #include "bedrock/world/level/event/server_event.h"
+
+template <typename ListenerType>
+class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
+public:
+    ~EventCoordinatorPimpl() override = 0;
+
+private:
+    std::vector<ListenerType *> unk1_;                              // +24
+    std::vector<std::function<EventResult(ListenerType &)>> unk2_;  // +48
+    std::vector<ListenerType *> unk3_;                              // +72
+    bool unk4_;                                                     // +96
+    std::thread::id unk5_;                                          // +100 (+104)
+    bool unk6_;                                                     // +104 (+112)
+    std::int32_t unk7_;                                             // +112 (+116)
+};
 
 class ActorEventCoordinator {
 public:
@@ -40,11 +57,20 @@ public:
 };
 class ItemEventCoordinator;
 
-class LevelEventCoordinator {
+class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
 public:
     void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
     LevelGameplayHandler &getLevelGameplayHandler();
+
+private:
+    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
+    std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
 };
+#if defined __clang__ || defined __GNUC__
+static_assert(sizeof(LevelEventCoordinator) == 144);
+#elif defined _MSC_VER
+static_assert(sizeof(LevelEventCoordinator) == 136);
+#endif
 
 class PlayerEventCoordinator {
 public:

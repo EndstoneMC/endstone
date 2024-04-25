@@ -106,6 +106,7 @@ class JigsawStructureRegistry;
 class LayeredAbilities;
 class LevelChunk;
 class LevelData;
+class LevelEventListener;
 class LevelSettings;
 class LevelSoundManager;
 class LevelStorage;
@@ -201,6 +202,11 @@ public:
 namespace cg {
 class ImageBuffer;
 }
+namespace Bedrock {
+namespace PubSub {
+class SubscriptionBase;
+}
+}  // namespace Bedrock
 namespace Social {
 class GamePublishSetting;
 }

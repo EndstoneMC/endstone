@@ -97,7 +97,7 @@ void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &
 
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
-    return **reinterpret_cast<LevelGameplayHandler **>(reinterpret_cast<size_t *>(this) + _WIN32_LINUX_(14, 15));
+    return *level_gameplay_handler_;
 }
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
