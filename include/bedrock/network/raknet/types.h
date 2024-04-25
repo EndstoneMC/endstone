@@ -18,6 +18,7 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/network/raknet/socket_includes.h"
 
 /**
  * https://github.com/facebookarchive/RakNet/blob/master/Source/RakNetTypes.h
@@ -25,10 +26,26 @@
 
 namespace RakNet {
 
+using SystemIndex = std::uint16_t;
+
 struct SystemAddress {
-    std::size_t pad[136 / 8];
+    union  // In6OrIn4
+    {
+        sockaddr_storage sa_stor;
+        sockaddr_in6 addr6;
+        sockaddr_in addr4;
+    } address;
+    std::uint16_t debug_port;
+
     [[nodiscard]] BEDROCK_API std::uint16_t GetPort() const;                                  // NOLINT
     BEDROCK_API void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
 };
+static_assert(sizeof(SystemAddress) == 136);
+
+struct RakNetGUID {
+    std::uint64_t g;
+    SystemIndex system_index;
+};
+static_assert(sizeof(RakNetGUID) == 16);
 
 }  // namespace RakNet
