@@ -26,6 +26,21 @@
 
 namespace RakNet {
 
+enum class StartupResult {
+    RAKNET_STARTED,
+    RAKNET_ALREADY_STARTED,
+    INVALID_SOCKET_DESCRIPTORS,
+    INVALID_MAX_CONNECTIONS,
+    SOCKET_FAMILY_NOT_SUPPORTED,
+    SOCKET_PORT_ALREADY_IN_USE,
+    SOCKET_FAILED_TO_BIND,
+    SOCKET_FAILED_TEST_SEND,
+    PORT_CANNOT_BE_ZERO,
+    FAILED_TO_CREATE_NETWORK_THREAD,
+    COULD_NOT_GENERATE_GUID,
+    STARTUP_OTHER_FAILURE
+};
+
 using SystemIndex = std::uint16_t;
 
 struct SystemAddress {
@@ -47,5 +62,10 @@ struct RakNetGUID {
     SystemIndex system_index;
 };
 static_assert(sizeof(RakNetGUID) == 16);
+
+struct AddressOrGUID {
+    RakNetGUID raknet_guid;
+    SystemAddress system_addr;
+};
 
 }  // namespace RakNet
