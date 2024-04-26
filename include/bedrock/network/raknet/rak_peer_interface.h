@@ -92,7 +92,7 @@ public:
     virtual int GetLastPing(AddressOrGUID) const = 0;
     virtual int GetLowestPing(AddressOrGUID) const = 0;
     virtual void SetOccasionalPing(bool) = 0;
-    virtual unsigned __int64 GetClockDifferential(AddressOrGUID) = 0;
+    virtual std::uint64_t GetClockDifferential(AddressOrGUID) = 0;
     virtual void SetOfflinePingResponse(char const *, unsigned int) = 0;
     virtual void GetOfflinePingResponse(char **, unsigned int *) = 0;
     virtual SystemAddress GetInternalID(SystemAddress, int) const = 0;
