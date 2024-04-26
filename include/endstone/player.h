@@ -37,6 +37,20 @@ public:
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
 
     /**
+     * Gets the socket address of this player
+     *
+     * @return the player's address
+     */
+    [[nodiscard]] virtual std::string getAddress() const = 0;
+
+    /**
+     * Gets the socket port of this player
+     *
+     * @return the player's port
+     */
+    [[nodiscard]] virtual std::uint32_t getPort() const = 0;
+
+    /**
      * Sends this player a raw message
      *
      * @param message Message to be displayed
