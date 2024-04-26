@@ -647,6 +647,16 @@ class Player(HumanActor):
         Sends this player a tip message
         """
     @property
+    def address(self) -> str:
+        """
+        Gets the socket address of this player
+        """
+    @property
+    def port(self) -> int:
+        """
+        Gets the socket port of this player
+        """
+    @property
     def unique_id(self) -> uuid.UUID:
         """
         Returns the UUID of this player
