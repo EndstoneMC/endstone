@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <chrono>
 #include <exception>
 
 #include <pybind11/embed.h>
+#include <spdlog/spdlog.h>
 
 #include "endstone/detail/hook.h"
 #include "endstone/detail/logger_factory.h"
@@ -29,6 +31,7 @@ namespace py = pybind11;
 
 ENDSTONE_RUNTIME_CTOR int main()
 {
+    spdlog::flush_every(std::chrono::seconds(5));
     auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
