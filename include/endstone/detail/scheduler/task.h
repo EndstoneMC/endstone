@@ -18,6 +18,7 @@
 #include <functional>
 
 #include "endstone/plugin/plugin.h"
+#include "endstone/scheduler/scheduler.h"
 #include "endstone/scheduler/task.h"
 
 namespace endstone::detail {
@@ -34,10 +35,9 @@ public:
     using TaskClock = std::chrono::steady_clock;
     using CreatedAt = std::chrono::time_point<TaskClock>;
 
-    explicit EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId task_id, std::uint64_t period);
+    EndstoneTask(Scheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period);
 
     ~EndstoneTask() override = default;
-
     [[nodiscard]] TaskId getTaskId() const override;
     [[nodiscard]] Plugin &getOwner() const override;
     [[nodiscard]] bool isSync() const override;
@@ -61,12 +61,13 @@ public:
     void setStatus(Status status);
 
 private:
+    Scheduler &scheduler_;
     Plugin &plugin_;
     std::function<void()> task_;
-    TaskId task_id_;
-    CreatedAt createdAt_ = TaskClock::now();
+    TaskId id_;
+    CreatedAt created_at_{TaskClock::now()};
     std::uint64_t period_;
-    std::uint64_t nextRun_;
+    std::uint64_t next_run_;
     std::shared_ptr<EndstoneTask> next_;
     Status status_{Status::Pending};
 };
