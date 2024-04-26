@@ -23,36 +23,36 @@ public:
     virtual ~Scheduler() = default;
 
     /**
-     * Schedules a once off task to be executed synchronously as soon as possible.
+     * Returns a task that will be executed synchronously on the next server tick.
      *
-     * @param plugin Plugin that owns the task
-     * @param task Task to be executed
-     * @return Task id number (std::nullopt_t if scheduling failed)
+     * @param plugin the reference to the plugin scheduling task
+     * @param task the task to be run
+     * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual std::optional<TaskId> scheduleTask(Plugin &plugin, std::function<void()> task) = 0;
+    virtual Task *runTask(Plugin &plugin, std::function<void()> task) = 0;
 
     /**
-     * Schedules a once off task to be executed synchronously after a delay.
+     * Returns a task that will be executed synchronously after the specified number of server ticks.
      *
-     * @param plugin Plugin that owns the task
-     * @param task Task to be executed
-     * @param delay Delay in server ticks before executing task
-     * @return Task id number (std::nullopt_t if scheduling failed)
+     * @param plugin the reference to the plugin scheduling task
+     * @param task the task to be run
+     * @param delay the ticks to wait before running the task
+     * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual std::optional<TaskId> scheduleDelayedTask(Plugin &plugin, std::function<void()> task,
-                                                      std::uint64_t delay) = 0;
+    virtual Task *runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
     /**
-     * Schedules a repeating task to be executed synchronously .
+     * Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the
+     * specified number of server ticks.
      *
-     * @param plugin Plugin that owns the task
-     * @param task Task to be executed
-     * @param delay Delay in server ticks before executing first repeat
-     * @param period Period in server ticks of the task
-     * @return Task id number (std::nullopt_t if scheduling failed)
+     * @param plugin the reference to the plugin scheduling task
+     * @param task the task to be run
+     * @param delay the ticks to wait before running the task
+     * @param period the ticks to wait between runs
+     * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual std::optional<TaskId> scheduleRepeatingTask(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                                        std::uint64_t period) = 0;
+    virtual Task *runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                               std::uint64_t period) = 0;
 
     /**
      * Removes task from scheduler.
@@ -87,7 +87,14 @@ public:
      */
     virtual bool isQueued(TaskId id) = 0;
 
-    // TODO(scheduler): add asynchronous task support
+    /**
+     * Returns a vector of all pending tasks.
+     *
+     * The ordering of the tasks is NOT related to their order of execution.
+     *
+     * @return Pending tasks
+     */
+    virtual std::vector<Task *> getPendingTasks() = 0;
 };
 
 }  // namespace endstone
