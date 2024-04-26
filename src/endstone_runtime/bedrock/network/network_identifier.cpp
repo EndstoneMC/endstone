@@ -36,3 +36,8 @@ std::uint16_t NetworkIdentifier::getPort() const
 {
     return ntohs(address.addr4.sin_port);
 }
+
+NetworkIdentifier::Type NetworkIdentifier::getType() const
+{
+    return type;
+}

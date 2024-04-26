@@ -21,7 +21,13 @@
 
 class NetworkIdentifier {
 public:
-    enum class Type : std::uint32_t;
+    enum class Type : std::uint32_t {
+        RakNet = 0,
+        Address = 1,
+        Address6 = 2,
+        NetherNet = 3,
+        Generic = 4,
+    };
 
     std::uint32_t nether_net_id;     // +0
     RakNet::RakNetGUID raknet_guid;  // +8
@@ -34,5 +40,6 @@ public:
 
     [[nodiscard]] std::string getAddress() const;
     [[nodiscard]] std::uint16_t getPort() const;
+    [[nodiscard]] Type getType() const;
 };
 static_assert(sizeof(NetworkIdentifier) == 160);
