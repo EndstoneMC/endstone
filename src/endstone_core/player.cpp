@@ -16,6 +16,7 @@
 
 #include "bedrock/network/protocol/game/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
+#include "bedrock/network/raknet/rak_peer_interface.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/color_format.h"
@@ -31,6 +32,23 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
     uuid_ = component->uuid.toEndstone();
+
+    switch (component->network_id.getType()) {
+    case NetworkIdentifier::Type::RakNet: {
+        auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
+        auto addr = peer->GetSystemAddressFromGuid(component->network_id.raknet_guid);
+        component->network_id.address.sa_stor = addr.address.sa_stor;
+    }
+    case NetworkIdentifier::Type::Address:
+    case NetworkIdentifier::Type::Address6: {
+        address_ = component->network_id.getAddress();
+        port_ = component->network_id.getPort();
+        break;
+    }
+    case NetworkIdentifier::Type::NetherNet:
+    case NetworkIdentifier::Type::Generic:
+        throw std::runtime_error("Unsupported type of NetworkIdentifier");
+    }
 }
 
 void EndstonePlayer::sendMessage(const std::string &message) const
