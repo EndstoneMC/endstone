@@ -18,45 +18,51 @@
 
 namespace endstone::detail {
 
-EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> runnable, TaskId task_id, std::uint64_t period)
-    : plugin_(plugin), runnable_(std::move(runnable)), task_id_(task_id)
+EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId task_id, std::uint64_t period)
+    : plugin_(plugin), task_(std::move(task)), task_id_(task_id), period_(period)
 {
 }
 
-std::uint32_t EndstoneTask::getTaskId()
+TaskId EndstoneTask::getTaskId() const
 {
     return task_id_;
 }
 
-Plugin &EndstoneTask::getOwner()
+Plugin &EndstoneTask::getOwner() const
 {
     return plugin_;
 }
 
-bool EndstoneTask::isSync()
+bool EndstoneTask::isSync() const
 {
     return true;
 }
 
-bool EndstoneTask::isCancelled()
+bool EndstoneTask::isCancelled() const
 {
-    // TODO(scheduler): implement this
-    return false;
-}
-
-void EndstoneTask::run() const
-{
-    runnable_();
+    return (status_ == Status::Cancelled);
 }
 
 void EndstoneTask::cancel()
 {
-    // TODO(scheduler): implement this
+    // TODO:
+}
+
+void EndstoneTask::run() const
+{
+    if (task_) {
+        task_();
+    }
+}
+
+void EndstoneTask::cancel0()
+{
+    status_ = Status::Cancelled;
 }
 
 EndstoneTask::CreatedAt EndstoneTask::getCreatedAt() const
 {
-    return created_at_;
+    return createdAt_;
 }
 
 std::uint64_t EndstoneTask::getPeriod() const
@@ -71,15 +77,15 @@ void EndstoneTask::setPeriod(std::uint64_t period)
 
 std::uint64_t EndstoneTask::getNextRun() const
 {
-    return next_run_;
+    return nextRun_;
 }
 
 void EndstoneTask::setNextRun(std::uint64_t next_run)
 {
-    next_run_ = next_run;
+    nextRun_ = next_run;
 }
 
-const std::shared_ptr<EndstoneTask> &EndstoneTask::getNext() const
+std::shared_ptr<EndstoneTask> EndstoneTask::getNext() const
 {
     return next_;
 }
@@ -87,6 +93,16 @@ const std::shared_ptr<EndstoneTask> &EndstoneTask::getNext() const
 void EndstoneTask::setNext(std::shared_ptr<EndstoneTask> next)
 {
     next_ = std::move(next);
+}
+
+EndstoneTask::Status EndstoneTask::getStatus() const
+{
+    return status_;
+}
+
+void EndstoneTask::setStatus(EndstoneTask::Status status)
+{
+    status_ = status;
 }
 
 }  // namespace endstone::detail

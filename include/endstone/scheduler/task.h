@@ -34,28 +34,28 @@ public:
      *
      * @return Task id number
      */
-    virtual TaskId getTaskId() = 0;
+    [[nodiscard]] virtual TaskId getTaskId() const = 0;
 
     /**
      * Returns the Plugin that owns this task.
      *
      * @return The Plugin that owns the task
      */
-    virtual Plugin &getOwner() = 0;
+    [[nodiscard]] virtual Plugin &getOwner() const = 0;
 
     /**
      * Returns true if the Task is a sync task.
      *
      * @return true if the task is run by server thread
      */
-    virtual bool isSync() = 0;
+    [[nodiscard]] virtual bool isSync() const = 0;
 
     /**
      * Returns true if this task has been cancelled.
      *
      * @return true if the task has been cancelled
      */
-    virtual bool isCancelled() = 0;
+    [[nodiscard]] virtual bool isCancelled() const = 0;
 
     /**
      * Attempts to cancel this task.

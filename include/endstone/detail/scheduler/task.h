@@ -23,39 +23,52 @@
 namespace endstone::detail {
 
 class EndstoneTask : public Task {
-private:
-    using TaskClock = std::chrono::steady_clock;
-
 public:
+    enum class Status {
+        Pending,
+        Cancelled,
+        Processing,
+        Done
+    };
+
+    using TaskClock = std::chrono::steady_clock;
     using CreatedAt = std::chrono::time_point<TaskClock>;
-    explicit EndstoneTask(Plugin &plugin, std::function<void()> runnable, TaskId task_id, std::uint64_t period);
+
+    explicit EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId task_id, std::uint64_t period);
 
     ~EndstoneTask() override = default;
 
-    std::uint32_t getTaskId() override;
-    Plugin &getOwner() override;
-    bool isSync() override;
-    bool isCancelled() override;
+    [[nodiscard]] TaskId getTaskId() const override;
+    [[nodiscard]] Plugin &getOwner() const override;
+    [[nodiscard]] bool isSync() const override;
+    [[nodiscard]] bool isCancelled() const override;
     void cancel() override;
 
-    void run() const;
+    virtual void run() const;
+
+protected:
+    virtual void cancel0();
+
+public:
     [[nodiscard]] CreatedAt getCreatedAt() const;
     [[nodiscard]] std::uint64_t getPeriod() const;
     void setPeriod(std::uint64_t period);
     [[nodiscard]] std::uint64_t getNextRun() const;
     void setNextRun(std::uint64_t next_run);
-    [[nodiscard]] const std::shared_ptr<EndstoneTask> &getNext() const;
+    [[nodiscard]] std::shared_ptr<EndstoneTask> getNext() const;
     void setNext(std::shared_ptr<EndstoneTask> next);
+    [[nodiscard]] Status getStatus() const;
+    void setStatus(Status status);
 
 private:
     Plugin &plugin_;
-    std::function<void()> runnable_;
+    std::function<void()> task_;
     TaskId task_id_;
-
-    CreatedAt created_at_{TaskClock::now()};
+    CreatedAt createdAt_ = TaskClock::now();
     std::uint64_t period_;
-    std::uint64_t next_run_;
+    std::uint64_t nextRun_;
     std::shared_ptr<EndstoneTask> next_;
+    Status status_{Status::Pending};
 };
 
 }  // namespace endstone::detail
