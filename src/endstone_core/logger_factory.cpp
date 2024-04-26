@@ -20,7 +20,7 @@
 
 #include <spdlog/spdlog.h>
 
-#include "endstone/detail/spdlog/log_sink.h"
+#include "endstone/detail/spdlog/console_log_sink.h"
 #include "endstone/detail/spdlog/spdlog_adapter.h"
 
 namespace endstone::detail {
@@ -36,7 +36,7 @@ Logger &LoggerFactory::getLogger(const std::string &name)
         return it->second;
     }
 
-    spdlog::sink_ptr console_sink = std::make_shared<LogSink>(stdout);
+    spdlog::sink_ptr console_sink = std::make_shared<ConsoleLogSink>(stdout);
     auto console = std::make_shared<spdlog::logger>(name, console_sink);
     spdlog::register_logger(console);
     it = loggers.emplace(name, SpdLogAdapter(console)).first;

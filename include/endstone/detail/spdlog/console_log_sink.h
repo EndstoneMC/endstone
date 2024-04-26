@@ -24,9 +24,9 @@
 
 namespace endstone::detail {
 
-class LogSink : public spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t> {
+class ConsoleLogSink : public spdlog::sinks::base_sink<spdlog::details::console_mutex::mutex_t> {
 public:
-    explicit LogSink(FILE *target_file, spdlog::color_mode mode = spdlog::color_mode::automatic);
+    explicit ConsoleLogSink(FILE *target_file, spdlog::color_mode mode = spdlog::color_mode::automatic);
     void setColorMode(spdlog::color_mode mode);
 
 protected:
