@@ -20,7 +20,7 @@ namespace endstone::detail {
 
 EndstoneTask::EndstoneTask(Scheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
                            std::uint64_t period)
-    : scheduler_(scheduler), plugin_(&plugin), task_(std::move(task)), id_(id), period_(period)
+    : plugin_(plugin), task_(std::move(task)), id_(id), period_(period)
 {
 }
 
@@ -31,7 +31,7 @@ TaskId EndstoneTask::getTaskId() const
 
 Plugin &EndstoneTask::getOwner() const
 {
-    return *plugin_;
+    return plugin_;
 }
 
 bool EndstoneTask::isSync() const
@@ -41,12 +41,12 @@ bool EndstoneTask::isSync() const
 
 bool EndstoneTask::isCancelled() const
 {
-    return (status_ == Status::Cancelled);
+    return cancelled_;
 }
 
 void EndstoneTask::cancel()
 {
-    scheduler_.cancelTask(id_);
+    cancelled_ = true;
 }
 
 void EndstoneTask::run() const
@@ -54,16 +54,6 @@ void EndstoneTask::run() const
     if (task_) {
         task_();
     }
-}
-
-EndstoneTask::EndstoneTask(Scheduler &scheduler, std::function<void()> task)
-    : scheduler_(scheduler), task_(std::move(task)), id_(0), period_(0)
-{
-}
-
-void EndstoneTask::cancel0()
-{
-    status_ = Status::Cancelled;
 }
 
 EndstoneTask::CreatedAt EndstoneTask::getCreatedAt() const
@@ -89,26 +79,6 @@ std::uint64_t EndstoneTask::getNextRun() const
 void EndstoneTask::setNextRun(std::uint64_t next_run)
 {
     next_run_ = next_run;
-}
-
-std::shared_ptr<EndstoneTask> EndstoneTask::getNext() const
-{
-    return next_;
-}
-
-void EndstoneTask::setNext(std::shared_ptr<EndstoneTask> next)
-{
-    next_ = std::move(next);
-}
-
-EndstoneTask::Status EndstoneTask::getStatus() const
-{
-    return status_;
-}
-
-void EndstoneTask::setStatus(EndstoneTask::Status status)
-{
-    status_ = status;
 }
 
 }  // namespace endstone::detail

@@ -25,13 +25,6 @@ namespace endstone::detail {
 
 class EndstoneTask : public Task {
 public:
-    enum class Status {
-        Pending,
-        Cancelled,
-        Processing,
-        Done
-    };
-
     using TaskClock = std::chrono::steady_clock;
     using CreatedAt = std::chrono::time_point<TaskClock>;
 
@@ -42,35 +35,22 @@ public:
     [[nodiscard]] bool isSync() const override;
     [[nodiscard]] bool isCancelled() const override;
     void cancel() override;
-
     virtual void run() const;
 
-protected:
-    friend class EndstoneScheduler;
-    EndstoneTask(Scheduler &scheduler, std::function<void()> task);
-    virtual void cancel0();
-
-public:
     [[nodiscard]] CreatedAt getCreatedAt() const;
     [[nodiscard]] std::uint64_t getPeriod() const;
     void setPeriod(std::uint64_t period);
     [[nodiscard]] std::uint64_t getNextRun() const;
     void setNextRun(std::uint64_t next_run);
-    [[nodiscard]] std::shared_ptr<EndstoneTask> getNext() const;
-    void setNext(std::shared_ptr<EndstoneTask> next);
-    [[nodiscard]] Status getStatus() const;
-    void setStatus(Status status);
 
 private:
-    Scheduler &scheduler_;
-    Plugin *plugin_;
+    Plugin &plugin_;
     std::function<void()> task_;
     TaskId id_;
     CreatedAt created_at_{TaskClock::now()};
     std::uint64_t period_;
     std::uint64_t next_run_;
-    std::shared_ptr<EndstoneTask> next_;
-    Status status_{Status::Pending};
+    bool cancelled_{false};
 };
 
 }  // namespace endstone::detail
