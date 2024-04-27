@@ -134,12 +134,15 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
                 continue;
             }
 
+            current_task_ = task->getTaskId();
             try {
                 task->run();
             }
             catch (std::exception &e) {
                 server_.getLogger().critical("Could not execute task with id {}: {}", task->getTaskId(), e.what());
             }
+
+            current_task_ = 0;
 
             if (task->getPeriod() > 0) {  // repeating task
                 task->setNextRun(current_tick + task->getPeriod());
@@ -159,10 +162,15 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 
 TaskId EndstoneScheduler::nextId()
 {
-    if (ids_ >= std::numeric_limits<std::uint32_t>::max()) {
-        ids_ = 1;
-    }
-    return ids_++;
+    TaskId id;
+    std::lock_guard lock{tasks_mtx_};
+    do {
+        if (ids_ >= std::numeric_limits<std::uint32_t>::max()) {
+            ids_ = 1;
+        }
+        id = ids_++;
+    } while (tasks_.find(id) != tasks_.end());
+    return id;
 }
 
 bool EndstoneScheduler::TaskComparator::operator()(const EndstoneTask *lhs, const EndstoneTask *rhs)
