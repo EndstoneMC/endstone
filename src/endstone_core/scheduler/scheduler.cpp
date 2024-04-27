@@ -41,195 +41,120 @@ Task *EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task
         return nullptr;
     }
 
-    return handle(std::make_shared<EndstoneTask>(*this, plugin, task, nextId(), period), delay);
+    auto t = std::make_shared<EndstoneTask>(plugin, task, nextId(), period);
+    t->setNextRun(current_tick_ + delay);
+    if (!pending_.enqueue(t)) {
+        return nullptr;
+    }
+    std::lock_guard lock{tasks_mtx_};
+    tasks_[t->getTaskId()] = t;
+    return t.get();
 }
 
 void EndstoneScheduler::cancelTask(TaskId id)
 {
-    if (id == 0) {
+    std::lock_guard lock{tasks_mtx_};
+    auto it = tasks_.find(id);
+    if (it == tasks_.end()) {
         return;
     }
-    {
-        std::scoped_lock lock{runners_mtx_};
-        auto it = runners_.find(id);
-        if (it != runners_.end()) {
-            it->second->cancel0();
-        }
-    }
-
-    std::shared_ptr<EndstoneTask> cancel_task{new EndstoneTask(*this, [this, id]() { cancelTaskById(id); })};
-    handle(cancel_task, 0);
-    for (auto task = head_->getNext(); task != nullptr; task = task->getNext()) {
-        if (task == cancel_task) {
-            return;
-        }
-        if (task->getTaskId() == id) {
-            task->cancel0();
-        }
-    }
-}
-
-void EndstoneScheduler::cancelTaskById(TaskId id)
-{
-    auto it = std::remove_if(std::begin(temp_), std::end(temp_), [this, id](const auto &task) {
-        if (task->getTaskId() == id) {
-            task->cancel0();
-            if (task->isSync()) {
-                std::scoped_lock lock{runners_mtx_};
-                runners_.erase(id);
-            }
-            return true;
-        }
-        return false;
-    });
-    if (it != temp_.end()) {
-        temp_.erase(it);
-        return;
-    }
-
-    it = std::remove_if(std::begin(pending_), std::end(pending_), [this, id](const auto &task) {
-        if (task->getTaskId() == id) {
-            task->cancel0();
-            if (task->isSync()) {
-                std::scoped_lock lock{runners_mtx_};
-                runners_.erase(id);
-            }
-            return true;
-        }
-        return false;
-    });
-    pending_.erase(it);
+    it->second->cancel();
+    tasks_.erase(it);
 }
 
 void EndstoneScheduler::cancelTasks(Plugin &plugin)
 {
-    std::shared_ptr<EndstoneTask> cancel_task{
-        new EndstoneTask(*this, [this, &plugin]() { cancelTaskByPlugin(plugin); })};
-    handle(cancel_task, 0);
-    for (auto task = head_->getNext(); task != nullptr; task = task->getNext()) {
-        if (task == cancel_task) {
-            break;
+    std::lock_guard lock{tasks_mtx_};
+    for (auto it = tasks_.begin(); it != tasks_.end();) {
+        if (&it->second->getOwner() != &plugin) {
+            ++it;
         }
-        if (task->getTaskId() != 0 && &task->getOwner() == &plugin) {
-            task->cancel0();
-        }
-    }
-
-    std::scoped_lock lock{runners_mtx_};
-    for (const auto &[id, task] : runners_) {
-        if (&task->getOwner() == &plugin) {
-            task->cancel0();
+        else {
+            it->second->cancel();
+            it = tasks_.erase(it);
         }
     }
-}
-
-void EndstoneScheduler::cancelTaskByPlugin(Plugin &plugin)
-{
-    auto it = std::remove_if(std::begin(pending_), std::end(pending_), [this, &plugin](const auto &task) {
-        if (&task->getOwner() == &plugin) {
-            task->cancel0();
-            if (task->isSync()) {
-                std::scoped_lock lock{runners_mtx_};
-                runners_.erase(task->getTaskId());
-            }
-            return true;
-        }
-        return false;
-    });
-    pending_.erase(it);
-
-    it = std::remove_if(std::begin(temp_), std::end(temp_), [this, &plugin](const auto &task) {
-        if (&task->getOwner() == &plugin) {
-            task->cancel0();
-            if (task->isSync()) {
-                std::scoped_lock lock{runners_mtx_};
-                runners_.erase(task->getTaskId());
-            }
-            return true;
-        }
-        return false;
-    });
-    temp_.erase(it);
 }
 
 bool EndstoneScheduler::isRunning(TaskId id)
 {
-    std::scoped_lock lock{runners_mtx_};
-    auto it = runners_.find(id);
-    if (it == runners_.end()) {
+    if (!isQueued(id)) {
         return false;
     }
-    auto *task = it->second;
-
-    if (task->isSync()) {
-        return task == current_task_.get();
-    }
-    return false;
+    return current_task_ == id;
 }
 
 bool EndstoneScheduler::isQueued(TaskId id)
 {
-    if (id == 0) {
-        return false;
-    }
-
-    for (auto task = head_->getNext(); task != nullptr; task = task->getNext()) {
-        if (task->getTaskId() == id) {
-            return task->getStatus() == EndstoneTask::Status::Pending;
-        }
-    }
-
-    std::scoped_lock lock{runners_mtx_};
-    auto it = runners_.find(id);
-    return it != runners_.end() && it->second->getStatus() == EndstoneTask::Status::Pending;
+    std::lock_guard lock{tasks_mtx_};
+    return tasks_.find(id) != tasks_.end();
 }
 
 std::vector<Task *> EndstoneScheduler::getPendingTasks()
 {
-    std::vector<EndstoneTask *> true_pending;
-    for (auto task = head_->getNext(); task != nullptr; task = task->getNext()) {
-        if (task->getTaskId() != 0) {
-            true_pending.push_back(task.get());
-        }
-    }
-
     std::vector<Task *> pending;
-    {
-        std::scoped_lock lock{runners_mtx_};
-        for (const auto &[id, task] : runners_) {
-            if (task->getStatus() == EndstoneTask::Status::Pending) {
-                pending.push_back(task);
-            }
+    std::lock_guard lock{tasks_mtx_};
+    for (const auto &[id, task] : tasks_) {
+        if (task->isCancelled()) {
+            continue;
         }
-    }
-
-    for (auto *task : true_pending) {
-        if (task->getStatus() == EndstoneTask::Status::Pending &&
-            std::find(pending.begin(), pending.end(), task) == pending.end()) {
-            pending.push_back(task);
-        }
+        pending.push_back(task.get());
     }
     return pending;
 }
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
 {
-    // TODO(scheduler): remember push_back, push_heap, pop_heap, pop_back
-}
+    // Consume the tasks in the pending queue
+    std::shared_ptr<EndstoneTask> pending_task;
+    while (pending_.try_dequeue(pending_task)) {
+        if (pending_task->isCancelled()) {
+            continue;
+        }
 
-void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
-{
-    auto *tail_task = tail_.load();
-    while (!tail_.compare_exchange_weak(tail_task, task.get())) {
+        auto tick = std::max(current_tick, pending_task->getNextRun());
+        auto &queue = queue_.emplace(tick, std::vector<std::shared_ptr<EndstoneTask>>{}).first->second;
+        queue.push_back(pending_task);
+        std::push_heap(queue.begin(), queue.end());
     }
-    tail_task->setNext(std::move(task));
-}
 
-Task *EndstoneScheduler::handle(std::shared_ptr<EndstoneTask> task, std::uint64_t delay)
-{
-    task->setNextRun(current_tick_ + delay);
-    addTask(std::move(task));
-    return task.get();
+    auto it = queue_.begin();
+    while (it != queue_.end()) {
+        auto tick = it->first;
+        auto &queue = it->second;
+
+        if (tick > current_tick) {
+            break;
+        }
+
+        for (const auto &task : queue) {
+            if (task->isCancelled()) {
+                std::lock_guard lock{tasks_mtx_};
+                tasks_.erase(task->getTaskId());
+                continue;
+            }
+
+            try {
+                task->run();
+            }
+            catch (std::exception &e) {
+                server_.getLogger().critical("Could not execute task with id {}: {}", task->getTaskId(), e.what());
+            }
+
+            if (task->getPeriod() > 0) {  // repeating task
+                task->setNextRun(current_tick + task->getPeriod());
+                pending_.enqueue(task);
+                continue;
+            }
+
+            std::lock_guard lock{tasks_mtx_};
+            tasks_.erase(task->getTaskId());
+            task->cancel();
+        }
+
+        it = queue_.erase(it);
+    }
+    current_tick_ = current_tick;
 }
 
 TaskId EndstoneScheduler::nextId()
@@ -240,12 +165,11 @@ TaskId EndstoneScheduler::nextId()
     return ids_++;
 }
 
-bool EndstoneScheduler::PendingTaskComparator::operator()(const EndstoneTask &lhs, const EndstoneTask &rhs)
+bool EndstoneScheduler::TaskComparator::operator()(const EndstoneTask *lhs, const EndstoneTask *rhs)
 {
-    if (lhs.getNextRun() != rhs.getNextRun()) {
-        return lhs.getNextRun() > rhs.getNextRun();
+    if (lhs->getNextRun() != rhs->getNextRun()) {
+        return lhs->getNextRun() > rhs->getNextRun();
     }
-    return lhs.getCreatedAt() > rhs.getCreatedAt();
+    return lhs->getCreatedAt() > rhs->getCreatedAt();
 }
-
 }  // namespace endstone::detail

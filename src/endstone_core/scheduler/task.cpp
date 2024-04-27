@@ -18,8 +18,7 @@
 
 namespace endstone::detail {
 
-EndstoneTask::EndstoneTask(Scheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
-                           std::uint64_t period)
+EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period)
     : plugin_(plugin), task_(std::move(task)), id_(id), period_(period)
 {
 }

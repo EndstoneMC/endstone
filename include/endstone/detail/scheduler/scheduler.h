@@ -18,6 +18,8 @@
 #include <mutex>
 #include <queue>
 
+#include <moodycamel/concurrentqueue.h>
+
 #include "endstone/detail/scheduler/task.h"
 #include "endstone/scheduler/scheduler.h"
 
@@ -39,26 +41,20 @@ public:
     void mainThreadHeartbeat(std::uint64_t current_tick);
 
 private:
-    void addTask(std::shared_ptr<EndstoneTask> task);
-    Task *handle(std::shared_ptr<EndstoneTask> task, std::uint64_t delay);
     TaskId nextId();
-    void cancelTaskById(TaskId id);
-    void cancelTaskByPlugin(Plugin &plugin);
 
-    struct PendingTaskComparator {
-        bool operator()(const EndstoneTask &lhs, const EndstoneTask &rhs);
+    struct TaskComparator {
+        bool operator()(const EndstoneTask *lhs, const EndstoneTask *rhs);
     };
 
     Server &server_;
     std::atomic<TaskId> ids_{1};
-    std::shared_ptr<EndstoneTask> head_{new EndstoneTask(*this, {})};
-    std::atomic<EndstoneTask *> tail_{head_.get()};
-    std::vector<std::shared_ptr<EndstoneTask>> pending_;
-    std::vector<std::shared_ptr<EndstoneTask>> temp_;
-    std::unordered_map<TaskId, EndstoneTask *> runners_;
-    std::mutex runners_mtx_;
-    std::shared_ptr<EndstoneTask> current_task_;
+    moodycamel::ConcurrentQueue<std::shared_ptr<EndstoneTask>> pending_;
+    std::unordered_map<TaskId, std::shared_ptr<EndstoneTask>> tasks_;
+    std::mutex tasks_mtx_;
+    std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_;
     std::uint64_t current_tick_;
+    std::atomic<TaskId> current_task_;
 };
 
 }  // namespace endstone::detail
