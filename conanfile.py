@@ -111,6 +111,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("entt/3.13.0")
         self.requires("cpptrace/0.5.2")
         self.requires("ms-gsl/4.0.0")
+        self.requires("concurrentqueue/1.0.4")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
@@ -157,6 +158,7 @@ class EndstoneRecipe(ConanFile):
             "magic_enum::magic_enum",
             "entt::entt",
             "ms-gsl::ms-gsl",
+            "concurrentqueue::concurrentqueue",
         ]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
