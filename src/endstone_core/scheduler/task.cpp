@@ -20,7 +20,7 @@ namespace endstone::detail {
 
 EndstoneTask::EndstoneTask(Scheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
                            std::uint64_t period)
-    : scheduler_(scheduler), plugin_(plugin), task_(std::move(task)), id_(id), period_(period)
+    : scheduler_(scheduler), plugin_(&plugin), task_(std::move(task)), id_(id), period_(period)
 {
 }
 
@@ -31,7 +31,7 @@ TaskId EndstoneTask::getTaskId() const
 
 Plugin &EndstoneTask::getOwner() const
 {
-    return plugin_;
+    return *plugin_;
 }
 
 bool EndstoneTask::isSync() const
@@ -54,6 +54,11 @@ void EndstoneTask::run() const
     if (task_) {
         task_();
     }
+}
+
+EndstoneTask::EndstoneTask(Scheduler &scheduler, std::function<void()> task)
+    : scheduler_(scheduler), task_(std::move(task)), id_(0), period_(0)
+{
 }
 
 void EndstoneTask::cancel0()

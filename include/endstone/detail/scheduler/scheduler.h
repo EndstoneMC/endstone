@@ -15,6 +15,7 @@
 #pragma once
 
 #include <atomic>
+#include <mutex>
 #include <queue>
 
 #include "endstone/detail/scheduler/task.h"
@@ -22,25 +23,42 @@
 
 namespace endstone::detail {
 
-class EndstoneScheduler {
+class EndstoneScheduler : public Scheduler {
+public:
+    explicit EndstoneScheduler(Server &server);
+    ~EndstoneScheduler() override = default;
+    Task *runTask(Plugin &plugin, std::function<void()> task) override;
+    Task *runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
+    Task *runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay, std::uint64_t period) override;
+    void cancelTask(TaskId id) override;
+    void cancelTasks(Plugin &plugin) override;
+    bool isRunning(TaskId id) override;
+    bool isQueued(TaskId id) override;
+    std::vector<Task *> getPendingTasks() override;
+
+    void mainThreadHeartbeat(std::uint64_t current_tick);
+
 private:
+    void addTask(std::shared_ptr<EndstoneTask> task);
+    Task *handle(std::shared_ptr<EndstoneTask> task, std::uint64_t delay);
+    TaskId nextId();
+    void cancelTaskById(TaskId id);
+    void cancelTaskByPlugin(Plugin &plugin);
+
     struct PendingTaskComparator {
-        bool operator()(const EndstoneTask &lhs, const EndstoneTask &rhs)
-        {
-            if (lhs.getNextRun() != rhs.getNextRun()) {
-                return lhs.getNextRun() > rhs.getNextRun();
-            }
-            return lhs.getCreatedAt() > rhs.getCreatedAt();
-        }
+        bool operator()(const EndstoneTask &lhs, const EndstoneTask &rhs);
     };
 
-public:
-protected:
-    TaskId incrementIds();
-
-private:
+    Server &server_;
     std::atomic<TaskId> ids_{1};
-    std::priority_queue<EndstoneTask, std::vector<EndstoneTask>, PendingTaskComparator> pending_;
+    std::shared_ptr<EndstoneTask> head_{new EndstoneTask(*this, {})};
+    std::atomic<EndstoneTask *> tail_{head_.get()};
+    std::vector<std::shared_ptr<EndstoneTask>> pending_;
+    std::vector<std::shared_ptr<EndstoneTask>> temp_;
+    std::unordered_map<TaskId, EndstoneTask *> runners_;
+    std::mutex runners_mtx_;
+    std::shared_ptr<EndstoneTask> current_task_;
+    std::uint64_t current_tick_;
 };
 
 }  // namespace endstone::detail
