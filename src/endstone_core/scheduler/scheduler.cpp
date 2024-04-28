@@ -115,7 +115,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
         auto tick = std::max(current_tick, pending_task->getNextRun());
         auto &queue = queue_.emplace(tick, std::vector<std::shared_ptr<EndstoneTask>>{}).first->second;
         queue.push_back(pending_task);
-        std::push_heap(queue.begin(), queue.end());
+        std::push_heap(queue.begin(), queue.end(), cmp_);
     }
 
     auto it = queue_.begin();
@@ -173,7 +173,8 @@ TaskId EndstoneScheduler::nextId()
     return id;
 }
 
-bool EndstoneScheduler::TaskComparator::operator()(const EndstoneTask *lhs, const EndstoneTask *rhs)
+bool EndstoneScheduler::TaskComparator::operator()(const std::shared_ptr<EndstoneTask> &lhs,
+                                                   const std::shared_ptr<EndstoneTask> &rhs)
 {
     if (lhs->getNextRun() != rhs->getNextRun()) {
         return lhs->getNextRun() > rhs->getNextRun();

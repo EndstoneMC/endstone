@@ -44,7 +44,7 @@ private:
     TaskId nextId();
 
     struct TaskComparator {
-        bool operator()(const EndstoneTask *lhs, const EndstoneTask *rhs);
+        bool operator()(const std::shared_ptr<EndstoneTask> &lhs, const std::shared_ptr<EndstoneTask> &rhs);
     };
 
     Server &server_;
@@ -55,6 +55,7 @@ private:
     std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_;
     std::uint64_t current_tick_;
     std::atomic<TaskId> current_task_;
+    TaskComparator cmp_;
 };
 
 }  // namespace endstone::detail
