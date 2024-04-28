@@ -20,6 +20,7 @@
 
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/scheduler/scheduler.h"
 #include "endstone/server.h"
 
 namespace fs = std::filesystem;
@@ -33,6 +34,7 @@ public:
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));
     MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string name), (const, override));
     MOCK_METHOD(endstone::CommandSender &, getCommandSender, (), (const, override));
+    MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));

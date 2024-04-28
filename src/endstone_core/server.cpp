@@ -42,6 +42,8 @@ EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    command_sender_ = std::make_unique<ConsoleCommandSender>();
+    scheduler_ = std::make_unique<EndstoneScheduler>(*this);
 }
 
 std::string EndstoneServer::getName() const
@@ -89,7 +91,7 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 
 CommandSender &EndstoneServer::getCommandSender() const
 {
-    return command_sender_;
+    return *command_sender_;
 }
 
 void EndstoneServer::loadPlugins()
@@ -136,6 +138,11 @@ void EndstoneServer::enablePlugin(Plugin &plugin)
 void EndstoneServer::disablePlugins() const
 {
     plugin_manager_->disablePlugins();
+}
+
+Scheduler &EndstoneServer::getScheduler() const
+{
+    return *scheduler_;
 }
 
 std::vector<Level *> EndstoneServer::getLevels() const

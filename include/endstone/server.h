@@ -27,6 +27,7 @@
 namespace endstone {
 
 class CommandSender;
+class Scheduler;
 class PluginCommand;
 class PluginManager;
 
@@ -90,6 +91,13 @@ public:
      * @return a console command sender
      */
     [[nodiscard]] virtual CommandSender &getCommandSender() const = 0;
+
+    /**
+     * Gets the scheduler for managing scheduled events.
+     *
+     * @return a scheduling service for this server
+     */
+    [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
     /**
      * Gets a list of all levels on this server.

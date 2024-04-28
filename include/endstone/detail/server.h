@@ -22,6 +22,7 @@
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
+#include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -52,8 +53,10 @@ public:
     void enablePlugins(PluginLoadOrder type);
     void disablePlugins() const;
 
-    std::vector<Level *> getLevels() const override;
-    Level *getLevel(std::string name) const override;
+    [[nodiscard]] Scheduler &getScheduler() const override;
+
+    [[nodiscard]] std::vector<Level *> getLevels() const override;
+    [[nodiscard]] Level *getLevel(std::string name) const override;
     void addLevel(std::unique_ptr<Level> level);
 
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
@@ -61,7 +64,7 @@ public:
     void broadcast(const std::string &message, const std::string &permission) const override;
     void broadcastMessage(const std::string &message) const override;
 
-    bool isPrimaryThread() const override;
+    [[nodiscard]] bool isPrimaryThread() const override;
 
 private:
     void enablePlugin(Plugin &plugin);
@@ -69,7 +72,8 @@ private:
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
-    mutable ConsoleCommandSender command_sender_;
+    std::unique_ptr<ConsoleCommandSender> command_sender_;
+    std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
 };
 
