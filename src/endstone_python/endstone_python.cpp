@@ -24,6 +24,7 @@
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_default.h"
+#include "endstone/scheduler/scheduler.h"
 #include "endstone/server.h"
 
 namespace py = pybind11;
@@ -37,6 +38,7 @@ void init_level(py::module_ &);
 void init_util(py::module_ &);
 void init_command(py::module_ &);
 void init_plugin(py::module_ &);
+void init_scheduler(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
 void init_actor(py::module_ &);
@@ -66,6 +68,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_command(m);
 
     init_plugin(m);
+    init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default);
     init_actor(m);
     init_player(m);
@@ -170,23 +173,33 @@ void init_logger(py::module &m)
 
 void init_server(py::class_<Server> &server)
 {
-    server
+    server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
+        .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
+        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
+                               "Gets the Minecraft version that this server is running.")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "Gets the plugin manager for interfacing with plugins.")
-        .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
-                               "Gets a CommandSender for this server.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,
              "Gets a PluginCommand with the given name or alias.")
+        .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
+                               "Gets a CommandSender for this server.")
+        .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
+                               "Gets the scheduler for managing scheduled events.")
         .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,
                                "Gets a list of all levels on this server.")
         .def("get_level", &Server::getLevel, py::arg("name"), py::return_value_policy::reference,
              "Gets the level with the given name.")
-        .def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
-        .def_property_readonly("version", &Server::getVersion, "Gets the version of this server implementation.")
-        .def_property_readonly("minecraft_version", &Server::getMinecraftVersion,
-                               "Gets the Minecraft version that this server is running.");
+        .def("get_player", &Server::getPlayer, py::arg("unique_id"), py::return_value_policy::reference,
+             "Gets the player with the given UUID.")
+        .def("broadcast", &Server::broadcast, py::arg("message"), py::arg("permission"),
+             "Broadcasts the specified message to every user with the given permission name.")
+        .def(
+            "broadcast_message",
+            [](const Server &server, const std::string &message) { server.broadcastMessage(message); },
+            py::arg("message"),
+            "Broadcasts the specified message to every user with permission endstone.broadcast.user");
 }
 
 void init_player(py::module_ &m)

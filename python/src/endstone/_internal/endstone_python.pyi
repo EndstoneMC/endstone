@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
 class ActorRemoveEvent(Event):
@@ -1017,10 +1017,55 @@ class PluginManager:
         """
         Gets a list of all currently loaded plugins
         """
+class Scheduler:
+    def cancel_task(self, id: int) -> None:
+        """
+        Removes task from scheduler.
+        """
+    def cancel_tasks(self, plugin: Plugin) -> None:
+        """
+        Removes all tasks associated with a particular plugin from the scheduler.
+        """
+    def get_pending_tasks(self) -> list[Task]:
+        """
+        Returns a vector of all pending tasks.
+        """
+    def is_queued(self, id: int) -> bool:
+        """
+        Check if the task queued to be run later.
+        """
+    def is_running(self, id: int) -> bool:
+        """
+        Check if the task currently running.
+        """
+    def run_task(self, plugin: Plugin, task: typing.Callable[[], None]) -> Task:
+        """
+        Returns a task that will be executed synchronously on the next server tick.
+        """
+    def run_task_later(self, plugin: Plugin, task: typing.Callable[[], None], delay: int) -> Task:
+        """
+        Returns a task that will be executed synchronously after the specified number of server ticks.
+        """
+    def run_task_timer(self, plugin: Plugin, task: typing.Callable[[], None], delay: int, period: int) -> Task:
+        """
+        Returns a task that will be executed repeatedly until cancelled, starting after the specified number of server ticks.
+        """
 class Server:
+    def broadcast(self, message: str, permission: str) -> None:
+        """
+        Broadcasts the specified message to every user with the given permission name.
+        """
+    def broadcast_message(self, message: str) -> None:
+        """
+        Broadcasts the specified message to every user with permission endstone.broadcast.user
+        """
     def get_level(self, name: str) -> Level:
         """
         Gets the level with the given name.
+        """
+    def get_player(self, unique_id: uuid.UUID) -> Player:
+        """
+        Gets the player with the given UUID.
         """
     def get_plugin_command(self, name: str) -> PluginCommand:
         """
@@ -1055,6 +1100,11 @@ class Server:
     def plugin_manager(self) -> PluginManager:
         """
         Gets the plugin manager for interfacing with plugins.
+        """
+    @property
+    def scheduler(self) -> Scheduler:
+        """
+        Gets the scheduler for managing scheduled events.
         """
     @property
     def version(self) -> str:
@@ -1193,6 +1243,31 @@ class ServerLoadEvent(Event):
     @property
     def type(self) -> ServerLoadEvent.LoadType:
         ...
+class Task:
+    def cancel(self) -> None:
+        """
+        Attempts to cancel this task.
+        """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Returns true if the task has been cancelled.
+        """
+    @property
+    def is_sync(self) -> bool:
+        """
+        Returns true if the task is run by server thread.
+        """
+    @property
+    def owner(self) -> Plugin:
+        """
+        Returns the Plugin that owns the task.
+        """
+    @property
+    def task_id(self) -> int:
+        """
+        Returns the task id.
+        """
 class ThunderChangeEvent(Event):
     @property
     def level(self) -> Level:
