@@ -16,7 +16,7 @@
 
 ## [0.4.1] - 2024-04-24
 
-This release focus on the support of game version v1.20.80 which adds a number of new features to the game.
+This release focuses on supporting game version v1.20.80, which adds several new features.
 Additionally, we add a few useful functions to `Player` and `Server`.
 
 ### Added
