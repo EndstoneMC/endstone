@@ -54,6 +54,7 @@ public:
     void disablePlugins() const;
 
     [[nodiscard]] Scheduler &getScheduler() const override;
+    void tick();
 
     [[nodiscard]] std::vector<Level *> getLevels() const override;
     [[nodiscard]] Level *getLevel(std::string name) const override;
@@ -75,6 +76,7 @@ private:
     std::unique_ptr<ConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
+    std::uint64_t tick_count_;
 };
 
 }  // namespace endstone::detail

@@ -220,4 +220,10 @@ bool EndstoneServer::isPrimaryThread() const
     return Bedrock::Threading::getServerThread().isOnThread();
 }
 
+void EndstoneServer::tick()
+{
+    ++tick_count_;
+    scheduler_->mainThreadHeartbeat(tick_count_);
+}
+
 }  // namespace endstone::detail

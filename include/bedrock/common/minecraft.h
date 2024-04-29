@@ -27,6 +27,8 @@ public:
     MinecraftCommands &getCommands();
 
 private:
+    BEDROCK_API void tickSimtime(int, int);
+
     GameCallbacks &callbacks_;                                           // +24
     IMinecraftEventing &eventing_;                                       // +32
     std::unique_ptr<ResourcePackManager> resource_pack_manager_;         // +40

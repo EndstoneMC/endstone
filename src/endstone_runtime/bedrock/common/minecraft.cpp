@@ -14,7 +14,20 @@
 
 #include "bedrock/common/minecraft.h"
 
+#include <entt/entt.hpp>
+
+#include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+
 MinecraftCommands &Minecraft::getCommands()
 {
     return *commands_;
+}
+
+void Minecraft::tickSimtime(int a, int b)
+{
+    using endstone::detail::EndstoneServer;
+    auto &server = entt::locator<EndstoneServer>::value();
+    server.tick();
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Minecraft::tickSimtime, this, a, b);
 }
