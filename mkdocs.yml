@@ -18,6 +18,7 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          paths: [ python/src ]
           options:
             annotations_path: brief
             filters:
