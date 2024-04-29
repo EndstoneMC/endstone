@@ -1,5 +1,12 @@
 site_name: Endstone
+site_url: https://https://endstone.readthedocs.io/
+site_author: Vincent Wu
+
+repo_name: EndstoneMC/endstone
 repo_url: https://github.com/EndstoneMC/endstone
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2023 - 2024 Vincent Wu
 
 extra:
   social:
@@ -15,6 +22,11 @@ extra:
 
 plugins:
   - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - git-committers:
+      repository: EndstoneMC/endstone
+      branch: main
   - mkdocstrings:
       handlers:
         python:
@@ -33,6 +45,26 @@ plugins:
 theme:
   name: 'material'
   custom_dir: docs/overrides
+  features:
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - toc.follow
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -45,22 +77,18 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-  features:
-    - navigation.tabs
-    - navigation.path
-    - search.suggest
-
 nav:
   - Home: index.md
   - Getting Started:
       - Installation: getting-started.md
   - Reference:
+      - reference/index.md
       - Python:
-        - reference/python/index.md
-        - Actor: reference/python/actor.md
-        - Command: reference/python/command.md
-        - Event: reference/python/event.md
-        - Permissions: reference/python/permissions.md
-        - Plugin: reference/python/plugin.md
-        - Scheduler: reference/python/scheduler.md
+          - reference/python/index.md
+          - Actor: reference/python/actor.md
+          - Command: reference/python/command.md
+          - Event: reference/python/event.md
+          - Permissions: reference/python/permissions.md
+          - Plugin: reference/python/plugin.md
+          - Scheduler: reference/python/scheduler.md
   - Changelog: changelog/index.md
