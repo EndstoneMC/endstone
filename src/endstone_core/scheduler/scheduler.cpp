@@ -18,18 +18,18 @@ namespace endstone::detail {
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
 
-Task *EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
+std::shared_ptr<Task> EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
 {
     return runTaskLater(plugin, task, 0);
 }
 
-Task *EndstoneScheduler::runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay)
+std::shared_ptr<Task> EndstoneScheduler::runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay)
 {
     return runTaskTimer(plugin, task, delay, 0);
 }
 
-Task *EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                                      std::uint64_t period)
+std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                                      std::uint64_t period)
 {
     if (!task) {
         server_.getLogger().error("Plugin {} attempted to register an empty task", plugin.getName());
@@ -48,7 +48,7 @@ Task *EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task
     }
     std::lock_guard lock{tasks_mtx_};
     tasks_[t->getTaskId()] = t;
-    return t.get();
+    return t;
 }
 
 void EndstoneScheduler::cancelTask(TaskId id)

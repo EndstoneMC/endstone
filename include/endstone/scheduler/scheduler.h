@@ -29,7 +29,7 @@ public:
      * @param task the task to be run
      * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual Task *runTask(Plugin &plugin, std::function<void()> task) = 0;
+    virtual std::shared_ptr<Task> runTask(Plugin &plugin, std::function<void()> task) = 0;
 
     /**
      * Returns a task that will be executed synchronously after the specified number of server ticks.
@@ -39,7 +39,7 @@ public:
      * @param delay the ticks to wait before running the task
      * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual Task *runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
+    virtual std::shared_ptr<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) = 0;
 
     /**
      * Returns a task that will be executed repeatedly (and synchronously) until cancelled, starting after the
@@ -51,8 +51,8 @@ public:
      * @param period the ticks to wait between runs
      * @return a Task that contains the id number (nullptr if task is empty)
      */
-    virtual Task *runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
-                               std::uint64_t period) = 0;
+    virtual std::shared_ptr<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                               std::uint64_t period) = 0;
 
     /**
      * Removes task from scheduler.

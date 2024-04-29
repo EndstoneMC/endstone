@@ -29,9 +29,10 @@ class EndstoneScheduler : public Scheduler {
 public:
     explicit EndstoneScheduler(Server &server);
     ~EndstoneScheduler() override = default;
-    Task *runTask(Plugin &plugin, std::function<void()> task) override;
-    Task *runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
-    Task *runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay, std::uint64_t period) override;
+    std::shared_ptr<Task> runTask(Plugin &plugin, std::function<void()> task) override;
+    std::shared_ptr<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
+    std::shared_ptr<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                       std::uint64_t period) override;
     void cancelTask(TaskId id) override;
     void cancelTasks(Plugin &plugin) override;
     bool isRunning(TaskId id) override;

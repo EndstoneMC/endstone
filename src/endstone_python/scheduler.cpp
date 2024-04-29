@@ -26,7 +26,7 @@ namespace endstone::detail {
 
 void init_scheduler(py::module &m)
 {
-    py::class_<Task>(m, "Task")
+    py::class_<Task, std::shared_ptr<Task>>(m, "Task")
         .def_property_readonly("task_id", &Task::getTaskId, "Returns the task id.")
         .def_property_readonly("owner", &Task::getOwner, py::return_value_policy::reference,
                                "Returns the Plugin that owns the task.")

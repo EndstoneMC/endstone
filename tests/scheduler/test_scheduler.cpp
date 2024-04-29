@@ -77,7 +77,7 @@ protected:
 TEST_F(SchedulerTest, RunTask)
 {
     bool executed = false;
-    auto *task = scheduler_->runTask(*plugin_, [&]() { executed = true; });
+    auto task = scheduler_->runTask(*plugin_, [&]() { executed = true; });
     ASSERT_TRUE(task != nullptr);
     EXPECT_FALSE(executed);
     scheduler_->mainThreadHeartbeat(++tick_count_);
@@ -88,7 +88,7 @@ TEST_F(SchedulerTest, RunTask)
 TEST_F(SchedulerTest, RunTaskLater)
 {
     bool executed = false;
-    auto *task = scheduler_->runTaskLater(*plugin_, [&]() { executed = true; }, 5);
+    auto task = scheduler_->runTaskLater(*plugin_, [&]() { executed = true; }, 5);
     ASSERT_TRUE(task != nullptr);
     for (int i = 0; i < 4; ++i) {
         scheduler_->mainThreadHeartbeat(++tick_count_);
@@ -102,7 +102,7 @@ TEST_F(SchedulerTest, RunTaskLater)
 TEST_F(SchedulerTest, RunTaskTimer)
 {
     int execution_count = 0;
-    auto *task = scheduler_->runTaskTimer(*plugin_, [&]() { ++execution_count; }, 10, 5);
+    auto task = scheduler_->runTaskTimer(*plugin_, [&]() { ++execution_count; }, 10, 5);
     for (int i = 0; i < 25; ++i) {
         scheduler_->mainThreadHeartbeat(++tick_count_);
         if (i == 10 || i == 15 || i == 20) {
@@ -116,7 +116,7 @@ TEST_F(SchedulerTest, RunTaskTimer)
 TEST_F(SchedulerTest, CancelTask)
 {
     bool executed = false;
-    auto *task = scheduler_->runTaskLater(*plugin_, [&]() { executed = true; }, 5);
+    auto task = scheduler_->runTaskLater(*plugin_, [&]() { executed = true; }, 5);
     scheduler_->cancelTask(task->getTaskId());
     scheduler_->mainThreadHeartbeat(++tick_count_);
     EXPECT_FALSE(executed);
@@ -125,9 +125,9 @@ TEST_F(SchedulerTest, CancelTask)
 // Test the cancellation of all tasks associated with a specific plugin
 TEST_F(SchedulerTest, CancelTasks)
 {
-    auto *task1 = scheduler_->runTask(*plugin_, []() {});
-    auto *task2 = scheduler_->runTaskLater(*plugin_, []() {}, 5);
-    auto *task3 = scheduler_->runTaskTimer(*plugin_, []() {}, 10, 5);
+    auto task1 = scheduler_->runTask(*plugin_, []() {});
+    auto task2 = scheduler_->runTaskLater(*plugin_, []() {}, 5);
+    auto task3 = scheduler_->runTaskTimer(*plugin_, []() {}, 10, 5);
     scheduler_->cancelTasks(*plugin_);
     EXPECT_FALSE(scheduler_->isQueued(task1->getTaskId()));
     EXPECT_FALSE(scheduler_->isQueued(task2->getTaskId()));
@@ -138,12 +138,11 @@ TEST_F(SchedulerTest, CancelTasks)
 TEST_F(SchedulerTest, TaskIsRunning)
 {
     bool executed = false;
-    constexpr TaskId task_id = 1;
-    auto *task = scheduler_->runTask(*plugin_, [&]() {
+    std::shared_ptr<Task> task;
+    task = scheduler_->runTask(*plugin_, [&]() {
         executed = true;
-        EXPECT_TRUE(scheduler_->isRunning(task_id));
+        EXPECT_TRUE(scheduler_->isRunning(task->getTaskId()));
     });
-    EXPECT_EQ(task->getTaskId(), task_id);
     scheduler_->mainThreadHeartbeat(++tick_count_);
     EXPECT_TRUE(executed);
     EXPECT_FALSE(scheduler_->isRunning(task->getTaskId()));
@@ -152,7 +151,7 @@ TEST_F(SchedulerTest, TaskIsRunning)
 // Test to check if a task is queued
 TEST_F(SchedulerTest, TaskIsQueued)
 {
-    auto *task = scheduler_->runTaskLater(*plugin_, []() {}, 5);
+    auto task = scheduler_->runTaskLater(*plugin_, []() {}, 5);
     EXPECT_TRUE(scheduler_->isQueued(task->getTaskId()));
 
     for (int i = 0; i < 4; ++i) {
@@ -166,9 +165,9 @@ TEST_F(SchedulerTest, TaskIsQueued)
 // Test to verify that getPendingTasks returns all currently queued tasks
 TEST_F(SchedulerTest, GetPendingTasks)
 {
-    auto *task1 = scheduler_->runTaskLater(*plugin_, []() {}, 2);
-    auto *task2 = scheduler_->runTaskLater(*plugin_, []() {}, 3);
-    auto *task3 = scheduler_->runTaskLater(*plugin_, []() {}, 5);
+    auto task1 = scheduler_->runTaskLater(*plugin_, []() {}, 2);
+    auto task2 = scheduler_->runTaskLater(*plugin_, []() {}, 3);
+    auto task3 = scheduler_->runTaskLater(*plugin_, []() {}, 5);
 
     auto tasks = scheduler_->getPendingTasks();
     std::vector<TaskId> task_ids;
