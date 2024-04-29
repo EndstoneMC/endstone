@@ -21,11 +21,11 @@ plugins:
           paths: [ python/src ]
           options:
             annotations_path: brief
-            filters:
-              - "!^_"
             show_bases: false
+            show_source: false
             show_symbol_type_heading: true
             show_symbol_type_toc: true
+            show_root_heading: true
             separate_signature: true
             show_signature_annotations: true
             signature_crossrefs: true
