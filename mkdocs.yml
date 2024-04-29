@@ -16,6 +16,8 @@ extra:
       link: https://pypi.org/project/endstone
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/u/endstone
+    - icon: fontawesome/brands/x-twitter
+      link: https://twitter.com/endstone_mc
 
   version:
     provider: mike
