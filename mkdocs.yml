@@ -52,8 +52,9 @@ theme:
 
 nav:
   - Home: index.md
-  - Changelog: changelog/index.md
-  - API Reference:
+  - Getting Started:
+      - Installation: getting-started.md
+  - Reference:
       - Python:
         - reference/python/index.md
         - Actor: reference/python/actor.md
@@ -62,3 +63,4 @@ nav:
         - Permissions: reference/python/permissions.md
         - Plugin: reference/python/plugin.md
         - Scheduler: reference/python/scheduler.md
+  - Changelog: changelog/index.md
