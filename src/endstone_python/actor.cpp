@@ -24,7 +24,9 @@ namespace endstone::detail {
 
 void init_actor(py::module &m)
 {
-    py::class_<Actor, CommandSender>(m, "Actor");
+    py::class_<Actor, CommandSender>(m, "Actor")
+        .def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.");
+
     py::class_<HumanActor, Actor>(m, "HumanActor");
 }
 

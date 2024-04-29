@@ -27,6 +27,12 @@ public:
     Actor &operator=(Actor &&) = delete;
 
     ~Actor() override = default;
+
+    /**
+     * Returns the runtime id for this actor
+     *
+     * @return Runtime id for this actor
+     */
     virtual std::uint64_t getRuntimeId() = 0;
 };
 
