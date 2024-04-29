@@ -34,3 +34,7 @@ theme:
     - navigation.tabs
     - navigation.path
     - search.suggest
+
+nav:
+  - Home: index.md
+  - Changelog: changelog/index.md
