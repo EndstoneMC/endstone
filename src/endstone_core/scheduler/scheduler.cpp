@@ -25,7 +25,7 @@ Task *EndstoneScheduler::runTask(Plugin &plugin, std::function<void()> task)
 
 Task *EndstoneScheduler::runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay)
 {
-    return runTaskTimer(plugin, task, 0, 0);
+    return runTaskTimer(plugin, task, delay, 0);
 }
 
 Task *EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,

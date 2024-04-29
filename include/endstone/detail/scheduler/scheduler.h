@@ -49,13 +49,13 @@ private:
 
     Server &server_;
     std::atomic<TaskId> ids_{1};
-    moodycamel::ConcurrentQueue<std::shared_ptr<EndstoneTask>> pending_;
-    std::unordered_map<TaskId, std::shared_ptr<EndstoneTask>> tasks_;
-    std::mutex tasks_mtx_;
-    std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_;
-    std::uint64_t current_tick_;
-    std::atomic<TaskId> current_task_;
-    TaskComparator cmp_;
+    moodycamel::ConcurrentQueue<std::shared_ptr<EndstoneTask>> pending_{};
+    std::unordered_map<TaskId, std::shared_ptr<EndstoneTask>> tasks_{};
+    std::mutex tasks_mtx_{};
+    std::map<std::uint64_t, std::vector<std::shared_ptr<EndstoneTask>>> queue_{};
+    std::uint64_t current_tick_{0};
+    std::atomic<TaskId> current_task_{0};
+    TaskComparator cmp_{};
 };
 
 }  // namespace endstone::detail

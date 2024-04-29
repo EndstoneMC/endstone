@@ -155,7 +155,7 @@ public:
             ignore_cancelled);
     }
 
-private:
+protected:
     friend class PluginLoader;
 
     /**
@@ -177,6 +177,7 @@ private:
         }
     }
 
+private:
     bool enabled_{false};
     PluginLoader *loader_{nullptr};
     Server *server_{nullptr};
