@@ -15,7 +15,7 @@
 #pragma once
 
 class Connection {
-
+public:
     enum class DisconnectFailReason {
         Unknown = 0,
         CantConnectNoInternet = 1,

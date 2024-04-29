@@ -15,11 +15,17 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/network/protocol/connection.h"
 #include "bedrock/server/level/server_player.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/event/server_event.h"
 
 class ServerNetworkHandler {
+public:
+    BEDROCK_API void disconnectClient(NetworkIdentifier const &, SubClientId,
+                                                            Connection::DisconnectFailReason, std::string const &,
+                                                            bool);
+
 private:
     BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool);              // NOLINT(*-identifier-naming)
     BEDROCK_API void _displayGameMessage(Player const &, ChatEvent &);  // NOLINT(*-identifier-naming)

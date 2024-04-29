@@ -14,4 +14,6 @@
 
 #pragma once
 
-enum class SubClientId : char;
+enum class SubClientId : std::uint8_t {
+    Primary = 0,
+};

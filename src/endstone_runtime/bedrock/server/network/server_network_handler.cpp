@@ -16,17 +16,33 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_chat_event.h"
+#include "endstone/event/player/player_login_event.h"
 
 using endstone::detail::EndstoneServer;
+
+void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
+                                            Connection::DisconnectFailReason reason, const std::string &message,
+                                            bool skip_message)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
+                                message, skip_message);
+}
 
 bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstonePlayer();
-    // TODO(event): call PlayerLoginEvent
+    endstone::PlayerLoginEvent e{server_player.getEndstonePlayer()};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        auto *component = server_player.tryGetComponent<UserEntityIdentifierComponent>();
+        disconnectClient(component->network_id, component->sub_client_id, Connection::DisconnectFailReason::NoReason,
+                         e.getKickMessage(), e.getKickMessage().empty());
+    }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
 }
 
