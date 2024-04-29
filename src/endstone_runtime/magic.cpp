@@ -25,31 +25,6 @@
  */
 
 /**
- * Symbols for CommandRegistry
- *
- * The values can be determined from CommandRegistry::describe(CommandParameterData const &)
- */
-const CommandRegistry::Symbol CommandRegistry::Symbol::Int{0x100001};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Float{0x100003};
-const CommandRegistry::Symbol CommandRegistry::Symbol::RelativeFloat{0x100004};
-const CommandRegistry::Symbol CommandRegistry::Symbol::WildcardInt{0x100005};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Operator{0x100006};
-const CommandRegistry::Symbol CommandRegistry::Symbol::CompareOperator{0x100007};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Selector{0x100008};
-const CommandRegistry::Symbol CommandRegistry::Symbol::WildcardSelector{0x10000a};
-const CommandRegistry::Symbol CommandRegistry::Symbol::FilePath{0x100011};
-const CommandRegistry::Symbol CommandRegistry::Symbol::IntegerRange{0x100017};
-const CommandRegistry::Symbol CommandRegistry::Symbol::EquipmentSlot{0x10002f};
-const CommandRegistry::Symbol CommandRegistry::Symbol::String{0x100038};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Position{0x100040};
-const CommandRegistry::Symbol CommandRegistry::Symbol::PositionFloat{0x100041};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Message{0x100044};
-const CommandRegistry::Symbol CommandRegistry::Symbol::RawText{0x100046};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Json{0x10004a};
-const CommandRegistry::Symbol CommandRegistry::Symbol::BlockState{0x100054};
-const CommandRegistry::Symbol CommandRegistry::Symbol::Command{0x100057};
-
-/**
  * CommandFlags
  */
 const CommandFlag CommandFlag::None = {0};

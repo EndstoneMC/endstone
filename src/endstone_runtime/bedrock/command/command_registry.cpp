@@ -97,7 +97,7 @@ std::ostream &operator<<(std::ostream &os, const CommandRegistry::ParseToken &to
         os << std::string(level * 4, ' ');
 
         if (node) {
-            os << "Symbol: 0x" << std::hex << node->symbol.value << std::dec;
+            os << "Symbol: 0x" << std::hex << node->symbol.value() << std::dec;
             if (node->size > 0) {
                 os << ", Data: " << std::string(node->data, node->size);
             }

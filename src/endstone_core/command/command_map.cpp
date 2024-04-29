@@ -100,21 +100,21 @@ void EndstoneCommandMap::setMinecraftCommands()
 }
 
 namespace {
-std::unordered_map<std::string, CommandRegistry::Symbol> gTypeSymbols = {
-    {"int", CommandRegistry::Symbol::Int},
-    {"float", CommandRegistry::Symbol::Float},
-    {"actor", CommandRegistry::Symbol::Selector},
-    {"player", CommandRegistry::Symbol::Selector},
-    {"target", CommandRegistry::Symbol::Selector},
-    {"string", CommandRegistry::Symbol::String},
-    {"str", CommandRegistry::Symbol::String},
-    {"block_pos", CommandRegistry::Symbol::Position},
-    {"vec3i", CommandRegistry::Symbol::Position},
-    {"pos", CommandRegistry::Symbol::PositionFloat},
-    {"vec3", CommandRegistry::Symbol::PositionFloat},
-    {"vec3f", CommandRegistry::Symbol::PositionFloat},
-    {"message", CommandRegistry::Symbol::Message},
-    {"json", CommandRegistry::Symbol::Json},
+std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols = {
+    {"int", CommandRegistry::HardNonTerminal::Int},
+    {"float", CommandRegistry::HardNonTerminal::Val},
+    {"actor", CommandRegistry::HardNonTerminal::Selection},
+    {"player", CommandRegistry::HardNonTerminal::Selection},
+    {"target", CommandRegistry::HardNonTerminal::Selection},
+    {"string", CommandRegistry::HardNonTerminal::Id},
+    {"str", CommandRegistry::HardNonTerminal::Id},
+    {"block_pos", CommandRegistry::HardNonTerminal::Position},
+    {"vec3i", CommandRegistry::HardNonTerminal::Position},
+    {"pos", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
+    {"message", CommandRegistry::HardNonTerminal::MessageRoot},
+    {"json", CommandRegistry::HardNonTerminal::JsonObject},
 };
 }  // namespace
 
@@ -163,7 +163,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                                  parameter.optional, -1);
 
                 if (parameter.is_enum) {
-                    auto symbol = registry.addEnumValues(parameter.type, parameter.values);
+                    auto symbol = static_cast<std::uint32_t>(registry.addEnumValues(parameter.type, parameter.values));
                     auto it = registry.enum_symbol_index.find(parameter.type);
                     if (it == registry.enum_symbol_index.end()) {
                         server_.getLogger().error("Unable to register enum '{}'.", parameter.type);
@@ -171,13 +171,13 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     }
                     data.type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
-                    data.enum_symbol = {symbol};
+                    data.enum_symbol = CommandRegistry::Symbol{symbol};
                 }
                 else if (parameter.type == "bool") {
-                    static auto symbol = registry.addEnumValues("Boolean", {});
+                    static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
                     data.type = CommandParameterDataType::Enum;
                     data.enum_name = "Boolean";
-                    data.enum_symbol = {symbol};
+                    data.enum_symbol = CommandRegistry::Symbol{symbol};
                 }
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
@@ -186,7 +186,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                                   usage, parameter.type);
                         return false;
                     }
-                    data.fallback_symbol = it->second;
+                    data.fallback_symbol = CommandRegistry::Symbol{it->second};
                 }
 
                 param_data.push_back(data);
