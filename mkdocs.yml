@@ -54,10 +54,11 @@ nav:
   - Home: index.md
   - Changelog: changelog/index.md
   - API Reference:
-      - reference/index.md
-      - Actor: reference/actor.md
-      - Command: reference/command.md
-      - Event: reference/event.md
-      - Permissions: reference/permissions.md
-      - Plugin: reference/plugin.md
-      - Scheduler: reference/scheduler.md
+      - Python:
+        - reference/python/index.md
+        - Actor: reference/python/actor.md
+        - Command: reference/python/command.md
+        - Event: reference/python/event.md
+        - Permissions: reference/python/permissions.md
+        - Plugin: reference/python/plugin.md
+        - Scheduler: reference/python/scheduler.md
