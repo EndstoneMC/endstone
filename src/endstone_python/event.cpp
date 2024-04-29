@@ -23,6 +23,7 @@
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
@@ -90,6 +91,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent")
         .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who joins the server");
+
+    py::class_<PlayerLoginEvent, Event>(m, "PlayerLoginEvent")
+        .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
+                      "The kick message to display if event is cancelled")
+        .def_property_readonly("player", &PlayerLoginEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the Player who attempts to login in.");
 
     py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent")
         .def_property_readonly("player", &PlayerQuitEvent::getPlayer, py::return_value_policy::reference,

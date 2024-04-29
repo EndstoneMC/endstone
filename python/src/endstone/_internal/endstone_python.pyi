@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     pass
 class ActorRemoveEvent(Event):
@@ -694,6 +694,20 @@ class PlayerJoinEvent(Event):
     def player(self) -> Player:
         """
         Returns the Player who joins the server
+        """
+class PlayerLoginEvent(Event):
+    @property
+    def kick_message(self) -> str:
+        """
+        The kick message to display if event is cancelled
+        """
+    @kick_message.setter
+    def kick_message(self, arg1: str) -> None:
+        ...
+    @property
+    def player(self) -> Player:
+        """
+        Returns the Player who attempts to login in.
         """
 class PlayerQuitEvent(Event):
     @property
