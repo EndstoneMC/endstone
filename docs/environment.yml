@@ -1,0 +1,14 @@
+name: readthedocs
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.12
+  - doxygen
+  - pip
+  - pip:
+      - mkdocs-material
+      - mkdocstrings[python]
+      - mkdocs-git-revision-date-localized-plugin
+      - mkdocs-git-committers-plugin-2
+      - black

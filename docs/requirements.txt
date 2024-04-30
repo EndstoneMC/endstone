@@ -1,5 +1,0 @@
-mkdocs-material
-mkdocstrings[python]
-mkdocs-git-revision-date-localized-plugin
-mkdocs-git-committers-plugin-2
-black
