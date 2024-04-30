@@ -133,7 +133,8 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting Started:
-      - Installation: getting-started.md
+      - Installation: getting-started/installation.md
+      - Start the server: getting-started/start-the-server.md
   - Tutorials:
       - Create your first plugin: tutorials/create-your-first-plugin.md
       - Install your plugin: tutorials/install-your-plugin.md

@@ -1,10 +1,8 @@
 ![endstone](https://socialify.git.ci/endstonemc/endstone/image?description=1&font=Jost&forks=1&issues=1&logo=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fminecraft_gamepedia%2Fimages%2F4%2F43%2FEnd_Stone_JE3_BE2.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light#only-light)
 ![endstone](https://socialify.git.ci/endstonemc/endstone/image?description=1&font=Jost&forks=1&issues=1&logo=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fminecraft_gamepedia%2Fimages%2F4%2F43%2FEnd_Stone_JE3_BE2.png&name=1&owner=1&pulls=1&stargazers=1&theme=Dark#only-dark)
 
-# 👋 Welcome to Endstone  
-Endstone offers a powerful plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
-empowers developers with the tools to modify and enhance the Bedrock Dedicated Servers with custom features and
-functionality, letting them design innovative and bespoke player experiences.
+Write you plugins in Python or C++ and enhance the Bedrock Dedicated Servers in minutes - add custom features and
+functionality, design innovative and bespoke player experiences.
 
 ## 🚀 Ready to Start?
 
@@ -16,7 +14,7 @@ functionality, letting them design innovative and bespoke player experiences.
   
     Follow the comprehensive guide to install and configure your Endstone server.
   
-    [:octicons-arrow-right-24: Getting Started](getting-started.md)
+    [:octicons-arrow-right-24: Getting Started](getting-started/installation.md)
   
 -   **Write your first plugin**
   
