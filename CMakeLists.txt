@@ -4,6 +4,7 @@ project(endstone)
 # Check if the project is being used as dependency
 if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
     list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+    include(EndstoneHeaders)
     return()
 endif ()
 
