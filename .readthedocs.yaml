@@ -1,12 +1,17 @@
+# .readthedocs.yaml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
 version: 2
 
 build:
-  os: "ubuntu-22.04"
+  os: ubuntu-22.04
   tools:
-    python: "mambaforge-22.9"
+    python: "3.12"
 
 mkdocs:
   configuration: mkdocs.yml
 
-conda:
-  environment: docs/environment.yml
+python:
+  install:
+    - requirements: docs/requirements.txt

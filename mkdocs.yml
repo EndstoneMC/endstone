@@ -26,6 +26,8 @@ plugins:
   - search
   - git-revision-date-localized:
       enable_creation_date: true
+      exclude:
+        - reference/cpp/*
   - git-committers:
       repository: EndstoneMC/endstone
       branch: main
@@ -44,6 +46,16 @@ plugins:
             show_signature_annotations: true
             signature_crossrefs: true
             inherited_members: true
+  - mkdoxy:
+      doxygen-bin-path: /usr/bin/doxygen
+      projects:
+        "reference/cpp":
+          src-dirs: include/endstone/
+          full-doc: True
+          doxy-cfg:
+            FILE_PATTERNS: "*.h"
+            EXCLUDE_PATTERNS: "*/detail/*"
+            RECURSIVE: YES
 
 theme:
   name: 'material'
@@ -152,4 +164,28 @@ nav:
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scheduler: reference/python/scheduler.md
+      - C++:
+          - reference/cpp/index.md
+          - Classes:
+              - Class List: reference/cpp/annotated.md
+              - Class Index: reference/cpp/classes.md
+              - Class Hierarchy: reference/cpp/hierarchy.md
+              - Class Members: reference/cpp/class_members.md
+              - Class Member Functions: reference/cpp/class_member_functions.md
+              - Class Member Variables: reference/cpp/class_member_variables.md
+              - Class Member Typedefs: reference/cpp/class_member_typedefs.md
+              - Class Member Enumerations: reference/cpp/class_member_enums.md
+          - Namespaces:
+              - Namespace List: reference/cpp/namespaces.md
+              - Namespace Members: reference/cpp/namespace_members.md
+              - Namespace Member Functions: reference/cpp/namespace_member_functions.md
+              - Namespace Member Variables: reference/cpp/namespace_member_variables.md
+              - Namespace Member Typedefs: reference/cpp/namespace_member_typedefs.md
+              - Namespace Member Enumerations: reference/cpp/namespace_member_enums.md
+          - Files:
+              - File List: reference/cpp/files.md
+              - File Functions: reference/cpp/functions.md
+              - File Variables: reference/cpp/variables.md
+              - File Macros: reference/cpp/macros.md
+
   - Changelog: changelog.md

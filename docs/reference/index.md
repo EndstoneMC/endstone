@@ -15,10 +15,12 @@ documentation.
 
     [:octicons-arrow-right-24: Reference](python/index.md)
 
--   > :simple-cplusplus:{ .lg .middle } __C++ API__
+-   :simple-cplusplus:{ .lg .middle } __C++ API__
 
     ---
 
     Write your plugins using the C++ API for maximum performance.
+
+    [:octicons-arrow-right-24: Reference](cpp/links.md)
 
 </div>
