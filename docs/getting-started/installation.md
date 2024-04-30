@@ -45,7 +45,7 @@ just delete and recreate the environment. It's trivial to set up:
 
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
-Endstone is published as a [Python package] and can be installed with `pip`, ideally by using a [virtual environment] 
+Endstone is published as a [Python package] and can be installed with `pip`, ideally by using the [virtual environment](#environment) 
 from the last step. Open up a terminal and install Endstone with:
 
 === "Latest"
