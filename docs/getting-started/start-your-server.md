@@ -52,7 +52,7 @@ It will take a few seconds to extract the server and start the server.
 [2024-04-30 11:16:57.637 INFO] [Server] Game mode: 0 Survival
 [2024-04-30 11:16:57.637 INFO] [Server] Difficulty: 1 EASY
 [2024-04-30 11:16:57.643 INFO] [Server] Content logging to console is enabled.
-[2024-04-30 11:17:10.554 INFO] [Server] This server is running Endstone version: 0.4.2.dev39 (Minecraft: v1.20.80)
+[2024-04-30 11:17:10.554 INFO] [Server] This server is running Endstone version: 0.4.1 (Minecraft: v1.20.80)
 [2024-04-30 11:17:10.567 INFO] [Database] Opening level 'worlds/Bedrock level/db'
 [2024-04-30 11:17:30.732 INFO] [Network] IPv4 supported, port: 19132: Used for gameplay and LAN discovery
 [2024-04-30 11:17:30.732 INFO] [Network] IPv6 not supported
