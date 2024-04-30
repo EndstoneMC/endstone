@@ -1,4 +1,4 @@
-# Start the server
+# Start your server
 
 After you've [installed] Endstone, you can bootstrap your server using the `endstone` executable. Go to the directory
 where you want your server to be located and enter:
@@ -7,7 +7,7 @@ where you want your server to be located and enter:
 endstone
 ```
 
-Alternatively, if you're running Material for MkDocs from within Docker, use:
+Alternatively, if you're running Endstone from within Docker, use:
 
 === ":material-linux: Linux / :fontawesome-brands-windows: Powershell"
 
