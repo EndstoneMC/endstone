@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-<small>[Compare with 0.4.1](https://github.com/EndstoneMC/endstone/compare/v0.4.1...HEAD)</small>
+<small>[Compare with 0.4.2](https://github.com/EndstoneMC/endstone/compare/v0.4.2...HEAD)</small>
+
+## [0.4.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.2) - 2024-04-30
+
+<small>[Compare with 0.4.1](https://github.com/EndstoneMC/endstone/compare/v0.4.1...v0.4.2)</small>
 
 ### Added
 
@@ -16,6 +20,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Logs are now written to `logs/latest.log` with rotations.
 - Basic scheduler implementation, currently supporting only synchronized task execution.
 - `PlayerLoginEvent` is called when a player attempts to log in.
+
+### Changed
+
+- Support for Minecraft v1.20.82 (Bedrock)
 
 ### Fixed
 
