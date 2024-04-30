@@ -2,7 +2,7 @@
 # Compiler Check
 # ===============
 if (WIN32)
-    if (NOT MSVC)
+    if (NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
         message(FATAL_ERROR "MSVC is required on Windows.")
     endif ()
     add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
@@ -10,8 +10,6 @@ elseif (UNIX)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         message(FATAL_ERROR "Clang is required on Linux.")
     endif ()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC")
-    link_libraries(-static-libgcc -static-libstdc++ libc++.a libc++abi.a)
 else ()
     message(FATAL_ERROR "${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
 endif ()

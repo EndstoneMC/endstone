@@ -1,32 +1,5 @@
-![endstone](https://socialify.git.ci/endstonemc/endstone/image?description=1&font=Jost&forks=1&issues=1&logo=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fminecraft_gamepedia%2Fimages%2F4%2F43%2FEnd_Stone_JE3_BE2.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
-
-<!-- Synchronize Socialify URL theme with palette -->
-<script>
-    var imageUrl = document.querySelector("img[src*='socialify']");
-
-    var palette = __md_get("__palette");
-    if (palette && typeof palette.color === "object") {
-        var theme = palette.color.scheme === "slate"
-            ? "Dark"
-            : "Light";
-
-        imageUrl.src = imageUrl.src.replace(/&theme=.*$/, '&theme=' + theme);
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        var ref = document.querySelector("[data-md-component=palette]");
-        ref.addEventListener("change", function () {
-            var palette = __md_get("__palette");
-            if (palette && typeof palette.color === "object") {
-                var theme = palette.color.scheme === "slate"
-                    ? "Dark"
-                    : "Light";
-
-                imageUrl.src = imageUrl.src.replace(/&theme=.*$/, '&theme=' + theme);
-            }
-        })
-    })
-</script>
+![endstone](https://socialify.git.ci/endstonemc/endstone/image?description=1&font=Jost&forks=1&issues=1&logo=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fminecraft_gamepedia%2Fimages%2F4%2F43%2FEnd_Stone_JE3_BE2.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light#only-light)
+![endstone](https://socialify.git.ci/endstonemc/endstone/image?description=1&font=Jost&forks=1&issues=1&logo=https%3A%2F%2Fstatic.wikia.nocookie.net%2Fminecraft_gamepedia%2Fimages%2F4%2F43%2FEnd_Stone_JE3_BE2.png&name=1&owner=1&pulls=1&stargazers=1&theme=Dark#only-dark)
 
 # 👋 Welcome to Endstone  
 Endstone offers a powerful plugin API for Bedrock Dedicated Servers, supporting both Python and C++ languages. This
