@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Getting started
 
 Endstone offers a powerful plugin API for Bedrock Dedicated Servers, the official server software for Minecraft: Bedrock

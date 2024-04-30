@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Start your server
 
 After you've [installed] Endstone, you can bootstrap your server using the `endstone` executable. Go to the directory

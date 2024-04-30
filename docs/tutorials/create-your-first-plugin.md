@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # Create your first plugin
 
 ## Create a new project
