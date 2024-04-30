@@ -13,7 +13,7 @@
 
 ## Namespaces
 
-- [Namespace ListNamespace List](namespaces.md)
+- [Namespace List](namespaces.md)
 - [Namespace Members](namespace_members.md)
 - [Namespace Member Functions](namespace_member_functions.md)
 - [Namespace Member Variables](namespace_member_variables.md)

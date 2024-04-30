@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * Represents an Actor-related event
+ * @brief Represents an Actor-related event
  */
 class ActorEvent : public Event {
 public:

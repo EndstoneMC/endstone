@@ -21,6 +21,6 @@ documentation.
 
     Write your plugins using the C++ API for maximum performance.
 
-    [:octicons-arrow-right-24: Reference](cpp/links.md)
+    [:octicons-arrow-right-24: Reference](cpp/index.md)
 
 </div>
