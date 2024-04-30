@@ -45,7 +45,7 @@
     ```
 
     1.  :warning: This will use the latest development version of Endstone. Consider use a release tag (e.g. `v0.4.0`) instead of `main`.
-    2.  :information_source: The following lines are necessary for ensuring ABI compatability with the Bedrock Dedicated Server (BDS).
+    2.  :information_source: The following lines are necessary for ensuring ABI compatibility with the Bedrock Dedicated Server (BDS).
 
 ## Create the main plugin class
 

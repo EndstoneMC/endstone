@@ -151,4 +151,4 @@ nav:
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scheduler: reference/python/scheduler.md
-  - Changelog: changelog/index.md
+  - Changelog: changelog.md

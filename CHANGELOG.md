@@ -1,6 +1,13 @@
 # Changelog
 
-## [Unreleased]
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## Unreleased
+
+<small>[Compare with 0.4.1](https://github.com/EndstoneMC/endstone/compare/v0.4.1...HEAD)</small>
 
 ### Added
 
@@ -14,7 +21,9 @@
 
 - Server no longer crashes when the weather is changed on Linux.
 
-## [0.4.1] - 2024-04-24
+## [0.4.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.1) - 2024-04-24
+
+<small>[Compare with 0.4.0](https://github.com/EndstoneMC/endstone/compare/v0.4.0...v0.4.1)</small>
 
 This release focuses on supporting game version v1.20.80, which adds several new features.
 Additionally, we add a few useful functions to `Player` and `Server`.
@@ -36,7 +45,9 @@ Additionally, we add a few useful functions to `Player` and `Server`.
 - Player permissions are recalculated when the op status is changed.
 - Incorrect UUID for Players corrected.
 
-## [0.4.0] - 2024-04-20
+## [0.4.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.0) - 2024-04-20
+
+<small>[Compare with 0.3.0](https://github.com/EndstoneMC/endstone/compare/v0.3.0...v0.4.0)</small>
 
 In this release, we added an event system and several basic interfaces for game objects like `Level`, `Actor`
 and `Player`.
@@ -74,7 +85,9 @@ and `Player`.
 
 - Server no longer crashes when `/listd` command is executed.
 
-## [0.3.0] - 2024-03-21
+## [0.3.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.3.0) - 2024-03-21
+
+<small>[Compare with 0.2.0](https://github.com/EndstoneMC/endstone/compare/v0.2.0...v0.3.0)</small>
 
 This is the second release of Endstone with a focus on the permission system and improving the plugin loading
 mechanisms.
@@ -98,7 +111,7 @@ mechanisms.
 
 - C++ plugin loader now respects the `prefix` property of a plugin.
 
-## [0.2.0] - 2024-03-19
+## [0.2.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.2.0) - 2024-03-19
 
 Hello World! This is the first release of Endstone.
 
@@ -106,13 +119,3 @@ Hello World! This is the first release of Endstone.
 
 - Basic plugin loader for C++ and Python plugins.
 - Basic command system that allows plugins to register custom commands.
-
-[unreleased]: https://github.com/EndstoneMC/endstone/compare/v0.4.1...HEAD
-
-[0.4.1]: https://github.com/EndstoneMC/endstone/compare/v0.4.0...v0.4.1
-
-[0.4.0]: https://github.com/EndstoneMC/endstone/compare/v0.3.0...v0.4.0
-
-[0.3.0]: https://github.com/EndstoneMC/endstone/compare/v0.2.0...v0.3.0
-
-[0.2.0]: https://github.com/EndstoneMC/endstone/releases/tag/v0.2.0
