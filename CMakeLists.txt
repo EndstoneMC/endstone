@@ -1,7 +1,15 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone)
 
+# Check if the project is being used as dependency
+if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
+    list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+    return()
+endif ()
 
+# =======
+# options
+# =======
 option(CODE_COVERAGE "Enable code coverage reporting" false)
 if (NOT BUILD_TESTING STREQUAL OFF)
     enable_testing()
@@ -12,7 +20,9 @@ if (NOT BUILD_TESTING STREQUAL OFF)
     endif ()
 endif ()
 
-
+# ===================
+# compile definitions
+# ===================
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 add_compile_definitions(ENTT_SPARSE_PAGE=2048)
 add_compile_definitions(ENTT_PACKED_PAGE=128)
