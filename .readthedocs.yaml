@@ -8,6 +8,9 @@ build:
   os: ubuntu-22.04
   tools:
     python: "3.12"
+  commands: # workaround due to https://github.com/JakubAndrysek/MkDoxy/issues/75
+    - pip install -r docs/requirements.txt
+    - mkdocs build --clean --site-dir $READTHEDOCS_OUTPUT/html
 
 mkdocs:
   configuration: mkdocs.yml
