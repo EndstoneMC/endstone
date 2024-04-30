@@ -21,6 +21,10 @@
 namespace endstone {
 
 class Command;
+
+/**
+ * @brief Represents a command map that manages all commands of the Server.
+ */
 class CommandMap {
 public:
     CommandMap() = default;

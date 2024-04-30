@@ -20,6 +20,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a human entity, such as an NPC or a player
+ */
 class HumanActor : public Actor {
 public:
     HumanActor() = default;

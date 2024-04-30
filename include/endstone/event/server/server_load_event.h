@@ -21,6 +21,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Called when either the server startup or reload has completed.
+ */
 class ServerLoadEvent : public Event {
 public:
     enum class LoadType {

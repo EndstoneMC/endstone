@@ -19,6 +19,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a Weather-related event
+ */
 class WeatherEvent : public Event {
 public:
     explicit WeatherEvent(Level &level) : level_(level){};

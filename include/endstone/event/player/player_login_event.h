@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when a player attempts to login in.
+ * @brief Called when a player attempts to login in.
  */
 class PlayerLoginEvent : public PlayerEvent {
 public:

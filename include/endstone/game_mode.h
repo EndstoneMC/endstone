@@ -17,7 +17,7 @@
 namespace endstone {
 
 /**
- * Represents the various type of game modes that HumanActors may have
+ * @brief Represents the various type of game modes that HumanActors may have
  */
 enum class GameMode {
     /**

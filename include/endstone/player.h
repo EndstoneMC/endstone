@@ -19,6 +19,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a player.
+ */
 class Player : public HumanActor {
 public:
     Player() = default;

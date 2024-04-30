@@ -20,7 +20,7 @@
 namespace endstone {
 
 /**
- * Called when a plugin is enabled.
+ * @brief Called when a plugin is enabled.
  */
 class PluginEnableEvent : public Event {
 public:

@@ -15,6 +15,10 @@
 #pragma once
 
 namespace endstone {
+
+/**
+ * @brief Represents dimension types that a level may be
+ */
 enum class Dimension {
     Overworld = 0,
     Nether = 1,

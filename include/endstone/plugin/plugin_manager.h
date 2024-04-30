@@ -29,6 +29,9 @@ class Permissible;
 class Plugin;
 class PluginLoader;
 
+/**
+ * @brief Represents a plugin manager that handles all plugins from the Server
+ */
 class PluginManager {
 public:
     PluginManager() = default;

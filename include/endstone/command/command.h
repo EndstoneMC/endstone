@@ -28,7 +28,7 @@ namespace endstone {
 class PluginCommand;
 
 /**
- * Represents a Command, which executes various tasks upon user input
+ * @brief Represents a Command, which executes various tasks upon user input
  */
 class Command {
 public:

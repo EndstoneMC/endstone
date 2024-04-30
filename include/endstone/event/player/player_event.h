@@ -19,6 +19,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a player related event
+ */
 class PlayerEvent : public Event {
 public:
     explicit PlayerEvent(Player &player) : player_(player){};

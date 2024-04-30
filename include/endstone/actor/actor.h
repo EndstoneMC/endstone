@@ -18,6 +18,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a base actor in the level
+ */
 class Actor : public CommandSender {
 public:
     Actor() = default;

@@ -27,7 +27,7 @@ class Permission;
 class PermissionAttachment;
 
 /**
- * Represents an object that may become a server operator and can be assigned permissions.
+ * @brief Represents an object that may become a server operator and can be assigned permissions.
  */
 class Permissible {
 public:

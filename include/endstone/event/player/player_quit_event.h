@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when a player leaves a server
+ * @brief Called when a player leaves a server
  */
 class PlayerQuitEvent : public PlayerEvent {
 public:

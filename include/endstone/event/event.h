@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Represents an event.
+ * @brief Represents an event.
  */
 class Event {
 public:

@@ -16,6 +16,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents the possible default values for permissions
+ */
 enum class PermissionDefault {
     True,
     False,

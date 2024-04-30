@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when the thunder state in a world is changing
+ * @brief Called when the thunder state in a world is changing
  */
 class ThunderChangeEvent : public WeatherEvent {
 public:

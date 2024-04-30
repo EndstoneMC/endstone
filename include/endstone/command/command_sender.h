@@ -23,6 +23,10 @@
 namespace endstone {
 
 class Server;
+
+/**
+ * @brief Represents a command sender
+ */
 class CommandSender : public Permissible {
 public:
     CommandSender() = default;

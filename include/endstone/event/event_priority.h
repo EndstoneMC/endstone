@@ -17,7 +17,7 @@
 namespace endstone {
 
 /**
- * Represents an event's priority in execution.
+ * @brief Represents an event's priority in execution.
  *
  * Listeners with lower priority are called first will listeners with higher priority are called last.
  * Listeners are called in following order:

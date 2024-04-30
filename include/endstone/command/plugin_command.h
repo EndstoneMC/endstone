@@ -20,6 +20,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a Command belonging to a Plugin
+ */
 class PluginCommand : public Command {
 public:
     PluginCommand(const Command &command, Plugin &owner) : Command(command), owner_(owner) {}

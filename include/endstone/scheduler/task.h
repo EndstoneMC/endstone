@@ -23,7 +23,7 @@ namespace endstone {
 using TaskId = std::uint32_t;
 
 /**
- * Represents a task being executed by the scheduler
+ * @brief Represents a task being executed by the scheduler
  */
 class Task {
 public:

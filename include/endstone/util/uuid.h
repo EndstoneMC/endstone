@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * Implementation of Universally Unique Identifier (UUID)
+ * @brief Implementation of Universally Unique Identifier (UUID)
  *
  * Adapted from https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp
  */

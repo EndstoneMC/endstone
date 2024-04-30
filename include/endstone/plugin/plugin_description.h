@@ -28,6 +28,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents the basic information about a plugin that the plugin loader needs to know.
+ */
 class PluginDescription {
 public:
     PluginDescription(std::string name, std::string version, std::string description = "",

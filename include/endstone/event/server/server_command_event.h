@@ -23,7 +23,7 @@
 namespace endstone {
 
 /**
- * Called when the console runs a command, early in the process
+ * @brief Called when the console runs a command, early in the process
  *
  * You should not use this except for a few cases like logging commands, blocking commands on certain places, or
  * applying modifiers.

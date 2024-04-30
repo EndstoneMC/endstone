@@ -26,7 +26,7 @@
 namespace endstone {
 
 /**
- * A list of event handlers. Should be instantiated on a per event basis.
+ * @brief A list of event handlers. Should be instantiated on a per event basis.
  */
 class HandlerList {
 public:

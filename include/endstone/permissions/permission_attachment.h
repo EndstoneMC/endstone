@@ -28,7 +28,7 @@ namespace endstone {
 using PermissionRemovedExecutor = std::function<void(const PermissionAttachment &)>;
 
 /**
- * Holds information about a permission attachment on a Permissible object
+ * @brief Holds information about a permission attachment on a Permissible object
  */
 class PermissionAttachment {
 public:

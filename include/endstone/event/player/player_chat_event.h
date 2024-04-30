@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when a player sends a chat message
+ * @brief Called when a player sends a chat message
  */
 class PlayerChatEvent : public PlayerEvent {
 public:

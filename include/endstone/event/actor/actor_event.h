@@ -19,6 +19,9 @@
 
 namespace endstone {
 
+/**
+ * Represents an Actor-related event
+ */
 class ActorEvent : public Event {
 public:
     explicit ActorEvent(Actor &actor) : actor_(actor){};

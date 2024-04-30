@@ -21,6 +21,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a level, which may contain actors, chunks and blocks
+ */
 class Level {
 public:
     virtual ~Level() = default;

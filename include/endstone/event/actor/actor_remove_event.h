@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when an Actor is removed.
+ * @brief Called when an Actor is removed.
  *
  * This event should only be used for monitoring. Modifying the actor during or after this event leads to undefined
  * behaviours. This event will not be called for Players.

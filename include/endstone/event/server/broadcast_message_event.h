@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * Event triggered for server broadcast messages such as from Server::broadcast
+ * @brief Event triggered for server broadcast messages such as from Server::broadcast
  *
  * This event should be async if fired from an async thread.
  */

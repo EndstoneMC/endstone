@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * This event is called whenever a player runs a command.
+ * @brief Called whenever a player runs a command.
  */
 class PlayerCommandEvent : public PlayerEvent {
 public:

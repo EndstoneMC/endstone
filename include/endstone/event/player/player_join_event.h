@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * Called when a player joins a server
+ * @brief Called when a player joins a server
  */
 class PlayerJoinEvent : public PlayerEvent {
 public:

@@ -18,6 +18,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a scheduler that executes various tasks
+ */
 class Scheduler {
 public:
     virtual ~Scheduler() = default;

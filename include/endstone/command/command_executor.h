@@ -22,7 +22,7 @@
 
 namespace endstone {
 /**
- * Represents a class which contains a single method for executing commands
+ * @brief Represents a class which contains a single method for executing commands
  */
 class CommandExecutor {
 public:
