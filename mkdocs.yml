@@ -35,6 +35,8 @@ plugins:
       handlers:
         python:
           paths: [ python/src ]
+          import:
+            - https://docs.python.org/3/objects.inv
           options:
             annotations_path: brief
             show_bases: false
