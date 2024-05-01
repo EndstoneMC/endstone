@@ -100,7 +100,7 @@
     --md-default-fg-color: var(--md-sys-color-on-surface);
     --md-default-fg-color--light: var(--md-sys-color-on-surface-variant);
     --md-default-fg-color--lighter: var(--md-sys-color-outline);
-    --md-default-fg-color--lightest: var(--md-sys-color-outline-variant);
+    --md-default-fg-color--lightest: var(--md-sys-color-surface-container-high);
     --md-default-bg-color: var(--md-sys-color-surface);
     --md-default-bg-color--light: var(--md-sys-color-surface);
     --md-default-bg-color--lighter: var(--md-sys-color-surface);
@@ -184,7 +184,7 @@
     --md-default-fg-color: var(--md-sys-color-on-surface);
     --md-default-fg-color--light: var(--md-sys-color-on-surface-variant);
     --md-default-fg-color--lighter: var(--md-sys-color-outline);
-    --md-default-fg-color--lightest: var(--md-sys-color-outline-variant);
+    --md-default-fg-color--lightest: var(--md-sys-color-surface-container-high);
     --md-default-bg-color: var(--md-sys-color-surface);
     --md-default-bg-color--light: var(--md-sys-color-surface);
     --md-default-bg-color--lighter: var(--md-sys-color-surface);
