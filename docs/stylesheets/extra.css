@@ -3,6 +3,10 @@
     background-color: var(--md-sys-color-surface-container);
 }
 
+.md-header__inner {
+    height: 3.2rem;
+}
+
 .md-header--shadow {
     box-shadow: none;
     transition: transform .25s cubic-bezier(.1, .7, .1, 1), background-color .25s
