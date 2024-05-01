@@ -1,0 +1,14 @@
+[
+  {
+    "version": "latest",
+    "title": "latest",
+    "aliases": []
+  },
+  {
+    "version": "v0.4.2",
+    "title": "v0.4.2",
+    "aliases": [
+      "stable"
+    ]
+  }
+]

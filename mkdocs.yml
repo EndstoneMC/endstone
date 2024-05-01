@@ -47,7 +47,6 @@ plugins:
             signature_crossrefs: true
             inherited_members: true
   - mkdoxy:
-      doxygen-bin-path: /usr/bin/doxygen
       projects:
         "reference/cpp":
           src-dirs: include/endstone/
