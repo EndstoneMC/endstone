@@ -1,5 +1,5 @@
 site_name: Endstone
-site_url: https://https://endstone.readthedocs.io/
+site_url: https://endstone.readthedocs.io/
 site_author: Vincent Wu
 
 repo_name: EndstoneMC/endstone
@@ -61,6 +61,8 @@ plugins:
 theme:
   name: 'material'
   custom_dir: docs/overrides
+  logo: assets/logo.png
+  favicon: assets/logo.png
   features:
     - content.action.edit
     - content.action.view
