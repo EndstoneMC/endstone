@@ -18,6 +18,11 @@
     border-bottom: solid var(--md-sys-color-surface-container-highest) 0.1em;
 }
 
+[data-md-toggle=search]:checked ~ .md-header .md-search__form {
+    background-color: var(--md-sys-color-surface-container);
+    box-shadow: none;
+}
+
 /* Show tabs */
 @media screen and (min-width: 76.25em) {
     .md-header {
