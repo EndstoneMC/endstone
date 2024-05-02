@@ -17,11 +17,14 @@
 namespace endstone {
 
 /**
- * @brief Represents dimension types that a level may be
+ * @brief Represents a dimension within a Level
  */
-enum class Dimension {
-    Overworld = 0,
-    Nether = 1,
-    TheEnd = 2
+class Dimension {
+public:
+    enum class Type {
+        Overworld = 0,
+        Nether = 1,
+        TheEnd = 2
+    };
 };
 }  // namespace endstone

@@ -17,15 +17,12 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/threading.h"
-#include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
-#include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"
-#include "endstone/level/level.h"
 
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
@@ -38,8 +35,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     auto levels = server.getLevels();
     auto it = std::find_if(begin(levels), end(levels), [this](auto *level) {
         auto *endstone_level = static_cast<EndstoneLevel *>(level);
-        return endstone_level->getDimension() == endstone::Dimension::Overworld &&
-             &(endstone_level->getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
+        return &(endstone_level->getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
     });
     if (it == levels.end()) {
         throw std::runtime_error("Unable to find level associated with the provided LevelGameplayHandler");

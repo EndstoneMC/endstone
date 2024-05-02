@@ -23,17 +23,15 @@
 #include "endstone/level/level.h"
 
 using BedrockLevel = ::Level;
-using BedrockDimension = ::Dimension;
 
 namespace endstone::detail {
 
 class EndstoneLevel : public endstone::Level {
 public:
-    explicit EndstoneLevel(BedrockLevel &level, BedrockDimension &dimension);
+    explicit EndstoneLevel(BedrockLevel &level);
     ~EndstoneLevel() override = default;
 
     [[nodiscard]] std::string getName() const override;
-    Dimension getDimension() const override;
 
     [[nodiscard]] std::vector<Actor *> getActors() const override;
 
@@ -45,8 +43,6 @@ public:
 private:
     EndstoneServer &server_;
     BedrockLevel &level_;
-    BedrockDimension &handle_;
-    Dimension dimension_;
 };
 
 }  // namespace endstone::detail

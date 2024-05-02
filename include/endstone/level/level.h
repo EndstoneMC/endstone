@@ -16,8 +16,8 @@
 
 #include <string>
 
+#include "dimension.h"
 #include "endstone/actor/actor.h"
-#include "endstone/dimension.h"
 
 namespace endstone {
 
@@ -34,13 +34,6 @@ public:
      * @return Name of this level
      */
     [[nodiscard]] virtual std::string getName() const = 0;
-
-    /**
-     * Gets the dimension of this level
-     *
-     * @return Dimension of this level
-     */
-    [[nodiscard]] virtual Dimension getDimension() const = 0;
 
     /**
      * Get a list of all actors in this World
