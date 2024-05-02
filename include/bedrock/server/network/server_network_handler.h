@@ -22,9 +22,8 @@
 
 class ServerNetworkHandler {
 public:
-    BEDROCK_API void disconnectClient(NetworkIdentifier const &, SubClientId,
-                                                            Connection::DisconnectFailReason, std::string const &,
-                                                            bool);
+    BEDROCK_API void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
+                                      std::string const &, bool);
 
 private:
     BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool);              // NOLINT(*-identifier-naming)
