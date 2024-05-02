@@ -40,6 +40,14 @@ namespace endstone::detail {
 
 void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriority> &event_priority)
 {
+    event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
+        .def_property_readonly("cancellable", &Event::isCancellable,
+                               "Whether the event can be cancelled by a plugin or the server.")
+        .def_property("cancelled", &Event::isCancelled, &Event::setCancelled,
+                      "The cancellation state of this event. A cancelled event will not be executed in "
+                      "the server, but will still pass to other plugins")
+        .def("asynchronous", &Event::isAsynchronous);
+
     event_priority
         .value("LOWEST", EventPriority::Lowest,
                "Event call is of very low importance and should be run first, to allow other plugins to further "
@@ -53,20 +61,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .value("MONITOR", EventPriority::Monitor,
                "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
                "should be made under this priority.");
-
-    event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
-        .def_property_readonly("cancellable", &Event::isCancellable,
-                               "Whether the event can be cancelled by a plugin or the server.")
-        .def_property("cancelled", &Event::isCancelled, &Event::setCancelled,
-                      "The cancellation state of this event. A cancelled event will not be executed in "
-                      "the server, but will still pass to other plugins")
-        .def("asynchronous", &Event::isAsynchronous);
-
-    py::enum_<Event::Result>(event, "Result")
-        .value("DENY", Event::Result::DENY)
-        .value("DEFAULT", Event::Result::DEFAULT)
-        .value("ALLOW", Event::Result::ALLOW)
-        .export_values();
 
     py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent")
         .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
