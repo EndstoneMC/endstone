@@ -14,41 +14,17 @@
 
 #pragma once
 
+#include "endstone/actor/actor.h"
 #include "endstone/event/event.h"
-#include "endstone/event/server/server_event.h"
-#include "endstone/plugin/plugin.h"
 
 namespace endstone {
 
 /**
- * @brief Called when a plugin is disabled.
+ * @brief Represents an Server-related event
  */
-class PluginDisableEvent : public ServerEvent {
+class ServerEvent : public Event {
 public:
-    explicit PluginDisableEvent(Plugin &plugin) : plugin_(plugin) {}
-
-    /**
-     * Gets the plugin involved in this event
-     *
-     * @return Plugin for this event
-     */
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
-
-    inline static const std::string NAME = "PluginDisableEvent";
-    [[nodiscard]] std::string getEventName() const override
-    {
-        return NAME;
-    }
-
-    [[nodiscard]] bool isCancellable() const override
-    {
-        return false;
-    }
-
-private:
-    Plugin &plugin_;
+    using Event::Event;
 };
+
 }  // namespace endstone

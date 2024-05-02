@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/event/event.h"
+#include "endstone/event/server/server_event.h"
 #include "endstone/plugin/plugin.h"
 
 namespace endstone {
@@ -22,7 +23,7 @@ namespace endstone {
 /**
  * @brief Called when a plugin is enabled.
  */
-class PluginEnableEvent : public Event {
+class PluginEnableEvent : public ServerEvent {
 public:
     explicit PluginEnableEvent(Plugin &plugin) : plugin_(plugin) {}
 

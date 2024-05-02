@@ -18,13 +18,14 @@
 
 #include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
+#include "endstone/event/server/server_event.h"
 
 namespace endstone {
 
 /**
  * @brief Called when either the server startup or reload has completed.
  */
-class ServerLoadEvent : public Event {
+class ServerLoadEvent : public ServerEvent {
 public:
     enum class LoadType {
         Startup,  // TODO(event): add Reload

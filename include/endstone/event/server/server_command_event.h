@@ -19,6 +19,7 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
 #include "endstone/event/handler_list.h"
+#include "endstone/event/server/server_event.h"
 
 namespace endstone {
 
@@ -30,7 +31,7 @@ namespace endstone {
  *
  * The command message contains a slash at the start
  */
-class ServerCommandEvent : public Event {
+class ServerCommandEvent : public ServerEvent {
 public:
     ServerCommandEvent(CommandSender &sender, std::string command) : sender_(sender), command_(std::move(command)) {}
 

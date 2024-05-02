@@ -20,6 +20,7 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/event/event.h"
 #include "endstone/event/handler_list.h"
+#include "endstone/event/server/server_event.h"
 
 namespace endstone {
 
@@ -28,10 +29,10 @@ namespace endstone {
  *
  * This event should be async if fired from an async thread.
  */
-class BroadcastMessageEvent : public Event {
+class BroadcastMessageEvent : public ServerEvent {
 public:
     BroadcastMessageEvent(bool async, std::string message, std::unordered_set<const CommandSender *> recipients)
-        : Event(async), message_(std::move(message)), recipients_(std::move(recipients))
+        : ServerEvent(async), message_(std::move(message)), recipients_(std::move(recipients))
     {
     }
 
@@ -51,7 +52,7 @@ public:
      *
      * @return Message to broadcast
      */
-    [[nodiscard]] const std::string& getMessage() const
+    [[nodiscard]] const std::string &getMessage() const
     {
         return message_;
     }

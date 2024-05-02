@@ -18,6 +18,7 @@
 #include <utility>
 
 #include "endstone/event/event.h"
+#include "endstone/event/server/server_event.h"
 #include "endstone/game_mode.h"
 
 namespace endstone {
@@ -25,10 +26,10 @@ namespace endstone {
 /**
  * @brief  Called when a server ping is coming in.
  */
-class ServerListPingEvent : public Event {
+class ServerListPingEvent : public ServerEvent {
 public:
     ServerListPingEvent(std::string remote_host, int remote_port, std::string ping_response)
-        : Event(true), ping_response_(std::move(ping_response)), remote_host_(std::move(remote_host)),
+        : ServerEvent(true), ping_response_(std::move(ping_response)), remote_host_(std::move(remote_host)),
           remote_port_(remote_port)
     {
     }
