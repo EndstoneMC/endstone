@@ -151,8 +151,8 @@ li.md-tabs__item.md-tabs__item--active {
     --md-primary-bg-color: var(--md-sys-color-on-surface);
     --md-primary-bg-color--light: var(--md-sys-color-primary-container);
 
-    --md-accent-fg-color: var(--md-sys-color-tertiary);
-    --md-accent-bg-color: var(--md-sys-color-on-tertiary);
+    --md-accent-fg-color: var(--md-sys-color-on-primary-container);
+    --md-accent-bg-color: var(--md-sys-color-primary-container);
 
     --md-code-fg-color: var(--md-sys-color-on-surface);
     --md-code-bg-color: var(--md-sys-color-surface-container);
@@ -235,8 +235,8 @@ li.md-tabs__item.md-tabs__item--active {
     --md-primary-bg-color: var(--md-sys-color-on-surface);
     --md-primary-bg-color--light: var(--md-sys-color-primary-container);
 
-    --md-accent-fg-color: var(--md-sys-color-tertiary);
-    --md-accent-bg-color: var(--md-sys-color-on-tertiary);
+    --md-accent-fg-color: var(--md-sys-color-on-primary-container);
+    --md-accent-bg-color: var(--md-sys-color-primary-container);
 
     --md-code-fg-color: var(--md-sys-color-on-surface);
     --md-code-bg-color: var(--md-sys-color-surface-container);
