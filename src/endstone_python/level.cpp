@@ -15,6 +15,7 @@
 #include "endstone/level/level.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 namespace py = pybind11;
 
@@ -24,6 +25,7 @@ void init_level(py::module_ &m)
 {
     py::class_<Level>(m, "Level")
         .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
+        .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level")
         .def_property("time", &Level::getTime, &Level::setTime,
                       "Gets and sets the relative in-game time on the server");
 }
