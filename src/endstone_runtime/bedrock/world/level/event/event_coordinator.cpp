@@ -26,7 +26,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/signal_handler.h"

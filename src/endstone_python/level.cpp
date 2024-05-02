@@ -12,33 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include "endstone/event/event.h"
 #include "endstone/level/level.h"
 
-namespace endstone {
+#include <pybind11/pybind11.h>
 
-/**
- * @brief Represents a Weather-related event
- */
-class WeatherEvent : public Event {
-public:
-    explicit WeatherEvent(Level &level) : level_(level){};
-    ~WeatherEvent() override = default;
+namespace py = pybind11;
 
-    /**
-     * Returns the Level where this event is occurring
-     *
-     * @return Level this event is occurring in
-     */
-    [[nodiscard]] Level &getLevel() const
-    {
-        return level_;
-    }
+namespace endstone::detail {
 
-private:
-    Level &level_;
-};
+void init_level(py::module_ &m)
+{
+    py::class_<Level>(m, "Level")
+        .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
+        .def_property("time", &Level::getTime, &Level::setTime,
+                      "Gets and sets the relative in-game time on the server");
+}
 
-}  // namespace endstone
+}  // namespace endstone::detail

@@ -23,7 +23,7 @@ namespace fs = std::filesystem;
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
-#include "endstone/detail/level.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"

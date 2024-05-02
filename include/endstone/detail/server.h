@@ -23,7 +23,7 @@
 #include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
-#include "endstone/level.h"
+#include "endstone/level/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 

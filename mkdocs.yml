@@ -172,6 +172,7 @@ nav:
           - Actor: reference/python/actor.md
           - Command: reference/python/command.md
           - Event: reference/python/event.md
+          - Level: reference/python/level.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scheduler: reference/python/scheduler.md

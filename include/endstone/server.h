@@ -19,7 +19,7 @@
 #include <string_view>
 #include <vector>
 
-#include "endstone/level.h"
+#include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
 #include "endstone/util/uuid.h"

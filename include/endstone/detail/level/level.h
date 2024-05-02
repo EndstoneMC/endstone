@@ -20,7 +20,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/server.h"
-#include "endstone/level.h"
+#include "endstone/level/level.h"
 
 using BedrockLevel = ::Level;
 using BedrockDimension = ::Dimension;

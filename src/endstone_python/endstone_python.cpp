@@ -19,7 +19,7 @@
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/pybind_type_caster.h"
 #include "endstone/game_mode.h"
-#include "endstone/level.h"
+#include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission.h"
@@ -124,14 +124,6 @@ void init_game_mode(py::module_ &m)
         .value("CREATIVE", GameMode::Creative)
         .value("ADVENTURE", GameMode::Adventure)
         .value("SPECTATOR", GameMode::Spectator);
-}
-
-void init_level(py::module_ &m)
-{
-    py::class_<Level>(m, "Level")
-        .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
-        .def_property("time", &Level::getTime, &Level::setTime,
-                      "Gets and sets the relative in-game time on the server");
 }
 
 void init_logger(py::module &m)
