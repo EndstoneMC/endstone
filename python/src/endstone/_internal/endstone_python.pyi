@@ -1115,6 +1115,11 @@ class Server:
         Gets the name of this server implementation.
         """
     @property
+    def online_players(self) -> list[Player]:
+        """
+        Gets a list of all currently online players.
+        """
+    @property
     def plugin_manager(self) -> PluginManager:
         """
         Gets the plugin manager for interfacing with plugins.

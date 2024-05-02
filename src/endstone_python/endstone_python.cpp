@@ -181,6 +181,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the scheduler for managing scheduled events.")
         .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,
                                "Gets a list of all levels on this server.")
+        .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
+                               "Gets a list of all currently online players.")
         .def("get_level", &Server::getLevel, py::arg("name"), py::return_value_policy::reference,
              "Gets the level with the given name.")
         .def("get_player", &Server::getPlayer, py::arg("unique_id"), py::return_value_policy::reference,
