@@ -14,10 +14,25 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/util/socket_address.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_util(py::module &m) {}
+void init_util(py::module &m)
+{
+    py::class_<SocketAddress>(m, "SocketAddress")
+        .def(py::init<>())
+        .def(py::init<std::string, std::uint32_t>(), py::arg("hostname"), py::arg("port"))
+        .def_property_readonly("hostname", &SocketAddress::getHostname, "Gets the hostname.")
+        .def_property_readonly("port", &SocketAddress::getPort, "Gets the port number.")
+        .def("__repr__",
+             [](const SocketAddress &self) {
+                 return "<SockAddr hostname='" + self.getHostname() + "' port=" + std::to_string(self.getPort()) + ">";
+             })
+        .def("__str__",
+             [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
+}
 
 }  // namespace endstone::detail

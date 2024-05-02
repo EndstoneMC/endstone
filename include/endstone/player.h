@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/actor/human.h"
+#include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -42,16 +43,9 @@ public:
     /**
      * Gets the socket address of this player
      *
-     * @return the player's address
+     * @return the player's socket address
      */
-    [[nodiscard]] virtual std::string getAddress() const = 0;
-
-    /**
-     * Gets the socket port of this player
-     *
-     * @return the player's port
-     */
-    [[nodiscard]] virtual std::uint32_t getPort() const = 0;
+    [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
     /**
      * Sends this player a raw message

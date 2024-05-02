@@ -33,7 +33,6 @@ namespace endstone::detail {
 void init_color_format(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_logger(py::module_ &);
-void init_level(py::module_ &);
 
 void init_util(py::module_ &);
 void init_command(py::module_ &);
@@ -43,6 +42,7 @@ void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::c
                       py::enum_<PermissionDefault> &permission_default);
 void init_actor(py::module_ &);
 void init_player(py::module_ &);
+void init_level(py::module_ &);
 void init_server(py::class_<Server> &server);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 
@@ -62,7 +62,6 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_color_format(m);
     init_game_mode(m);
     init_logger(m);
-    init_level(m);
 
     init_util(m);
     init_command(m);
@@ -72,6 +71,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_permissions(m, permissible, permission, permission_default);
     init_actor(m);
     init_player(m);
+    init_level(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
@@ -201,7 +201,6 @@ void init_player(py::module_ &m)
     py::class_<Player, HumanActor>(m, "Player")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
-        .def_property_readonly("port", &Player::getPort, "Gets the socket port of this player")
         .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message");

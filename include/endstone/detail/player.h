@@ -50,8 +50,7 @@ public:
 
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
-    [[nodiscard]] std::string getAddress() const override;
-    [[nodiscard]] std::uint32_t getPort() const override;
+    [[nodiscard]] const SocketAddress &getAddress() const override;
     void sendRawMessage(std::string message) const override;
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
@@ -61,8 +60,7 @@ public:
 private:
     ::Player &player_;
     UUID uuid_;
-    std::string address_;
-    std::uint32_t port_;
+    SocketAddress address_;
 };
 
 }  // namespace endstone::detail

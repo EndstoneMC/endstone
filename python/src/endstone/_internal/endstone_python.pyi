@@ -1,7 +1,7 @@
 from __future__ import annotations
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
     def runtime_id(self) -> int:
@@ -149,49 +149,6 @@ class CommandSender(Permissible):
         Returns the server instance that this command is running on
         """
 class Event:
-    class Result:
-        """
-        Members:
-        
-          DENY
-        
-          DEFAULT
-        
-          ALLOW
-        """
-        ALLOW: typing.ClassVar[Event.Result]  # value = <Result.ALLOW: 2>
-        DEFAULT: typing.ClassVar[Event.Result]  # value = <Result.DEFAULT: 1>
-        DENY: typing.ClassVar[Event.Result]  # value = <Result.DENY: 0>
-        __members__: typing.ClassVar[dict[str, Event.Result]]  # value = {'DENY': <Result.DENY: 0>, 'DEFAULT': <Result.DEFAULT: 1>, 'ALLOW': <Result.ALLOW: 2>}
-        def __eq__(self, other: typing.Any) -> bool:
-            ...
-        def __getstate__(self) -> int:
-            ...
-        def __hash__(self) -> int:
-            ...
-        def __index__(self) -> int:
-            ...
-        def __init__(self, value: int) -> None:
-            ...
-        def __int__(self) -> int:
-            ...
-        def __ne__(self, other: typing.Any) -> bool:
-            ...
-        def __repr__(self) -> str:
-            ...
-        def __setstate__(self, state: int) -> None:
-            ...
-        def __str__(self) -> str:
-            ...
-        @property
-        def name(self) -> str:
-            ...
-        @property
-        def value(self) -> int:
-            ...
-    ALLOW: typing.ClassVar[Event.Result]  # value = <Result.ALLOW: 2>
-    DEFAULT: typing.ClassVar[Event.Result]  # value = <Result.DEFAULT: 1>
-    DENY: typing.ClassVar[Event.Result]  # value = <Result.DENY: 0>
     def asynchronous(self) -> bool:
         ...
     @property
@@ -309,6 +266,11 @@ class GameMode:
 class HumanActor(Actor):
     pass
 class Level:
+    @property
+    def actors(self) -> list[Actor]:
+        """
+        Get a list of all actors in this level
+        """
     @property
     def name(self) -> str:
         """
@@ -651,14 +613,9 @@ class Player(HumanActor):
         Sends this player a tip message
         """
     @property
-    def address(self) -> str:
+    def address(self) -> SocketAddress:
         """
         Gets the socket address of this player
-        """
-    @property
-    def port(self) -> int:
-        """
-        Gets the socket port of this player
         """
     @property
     def unique_id(self) -> uuid.UUID:
@@ -1266,6 +1223,27 @@ class ServerLoadEvent(Event):
     @property
     def type(self) -> ServerLoadEvent.LoadType:
         ...
+class SocketAddress:
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    @typing.overload
+    def __init__(self, hostname: str, port: int) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def hostname(self) -> str:
+        """
+        Gets the hostname.
+        """
+    @property
+    def port(self) -> int:
+        """
+        Gets the port number.
+        """
 class Task:
     def cancel(self) -> None:
         """

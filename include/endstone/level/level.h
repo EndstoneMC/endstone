@@ -36,14 +36,14 @@ public:
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * Get a list of all actors in this World
+     * Get a list of all actors in this Level
      *
-     * @return A List of all Actors currently residing in this world
+     * @return A List of all actors currently residing in this level
      */
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 
     /**
-     * Gets the relative in-game time of this level.
+     * Gets the relative in-game time of this Level.
      *
      * @return The current relative time
      */

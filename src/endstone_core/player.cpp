@@ -41,8 +41,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     }
     case NetworkIdentifier::Type::Address:
     case NetworkIdentifier::Type::Address6: {
-        address_ = component->network_id.getAddress();
-        port_ = component->network_id.getPort();
+        address_ = {component->network_id.getAddress(), component->network_id.getPort()};
         break;
     }
     case NetworkIdentifier::Type::NetherNet:
@@ -147,14 +146,9 @@ UUID EndstonePlayer::getUniqueId() const
     return uuid_;
 }
 
-std::string EndstonePlayer::getAddress() const
+const SocketAddress &EndstonePlayer::getAddress() const
 {
     return address_;
-}
-
-uint32_t EndstonePlayer::getPort() const
-{
-    return port_;
 }
 
 void EndstonePlayer::sendRawMessage(std::string message) const
