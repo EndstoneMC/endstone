@@ -69,6 +69,8 @@ public:
     [[nodiscard]] bool isPrimaryThread() const override;
 
 private:
+    friend class EndstonePlayer;
+
     void enablePlugin(Plugin &plugin);
     ServerInstance &server_instance_;
     Logger &logger_;
@@ -77,6 +79,7 @@ private:
     std::unique_ptr<ConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
+    std::unordered_map<UUID, Player *> players_;
     std::uint64_t tick_count_;
 };
 

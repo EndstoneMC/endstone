@@ -49,8 +49,10 @@ public:
     // Actor
     std::uint64_t getRuntimeId() override;
 
-private:
+protected:
     EndstoneServer &server_;
+
+private:
     ::Actor &actor_;
     static PermissibleBase &getPermissibleBase();
 };

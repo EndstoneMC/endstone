@@ -179,23 +179,17 @@ void EndstoneServer::addLevel(std::unique_ptr<Level> level)
 std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 {
     std::vector<Player *> result;
-    for (const auto *level : getLevels()) {
-        const auto *endstone_level = static_cast<const EndstoneLevel *>(level);
-        auto &players = endstone_level->getBedrockLevel().getPlayerList();
-        for (const auto &[uuid, entry] : players) {
-            result.push_back(&entry.player.getEndstonePlayer());
-        }
+    for (const auto &[id, player] : players_) {
+        result.push_back(player);
     }
-
     return result;
 }
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
 {
-    auto players = getOnlinePlayers();
-    auto it = std::find_if(players.begin(), players.end(), [&id](auto *player) { return player->getUniqueId() == id; });
-    if (it != players.end()) {
-        return *it;
+    auto it = players_.find(id);
+    if (it != players_.end()) {
+        return it->second;
     }
     return nullptr;
 }

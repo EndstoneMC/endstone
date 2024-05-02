@@ -24,7 +24,7 @@ namespace endstone::detail {
 class EndstonePlayer : public EndstoneHumanActor, public endstone::Player {
 public:
     explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
-    ~EndstonePlayer() override = default;
+    ~EndstonePlayer() override;
 
     // CommandSender
     void sendMessage(const std::string &message) const override;

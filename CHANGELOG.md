@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.4.2](https://github.com/EndstoneMC/endstone/compare/v0.4.2...HEAD)</small>
 
+### Added
+
+- `Server::getOnlinePlayers` for getting all online players.
+
 ### Changed
 
 - `Level` is no longer created for each `Dimension` in a Minecraft world. Instead, one `Level` now manages multiple

@@ -49,6 +49,13 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     case NetworkIdentifier::Type::Generic:
         throw std::runtime_error("Unsupported type of NetworkIdentifier");
     }
+
+    server_.players_.emplace(uuid_, this);
+}
+
+EndstonePlayer::~EndstonePlayer()
+{
+    server_.players_.erase(uuid_);
 }
 
 void EndstonePlayer::sendMessage(const std::string &message) const

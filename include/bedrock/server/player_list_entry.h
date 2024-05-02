@@ -17,11 +17,12 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/player/player.h"
 
 class PlayerListEntry {
 public:
-    const Player &player;                           // +0
+    ActorUniqueID unique_id;                        // +0
     mce::UUID uuid;                                 // +8
     std::string name;                               // +24
     std::string xuid;                               // +56
