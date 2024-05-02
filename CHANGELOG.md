@@ -32,7 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Support for Minecraft v1.20.82 (Bedrock)
+- Support for Minecraft v1.20.81 (Bedrock)
 
 ### Fixed
 
