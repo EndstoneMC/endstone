@@ -115,6 +115,13 @@ public:
     [[nodiscard]] virtual Level *getLevel(std::string name) const = 0;
 
     /**
+     * Gets a list of all currently online players.
+     *
+     * @return a list of currently online players.
+     */
+    [[nodiscard]] virtual std::vector<Player *> getOnlinePlayers() const = 0;
+
+    /**
      * Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve

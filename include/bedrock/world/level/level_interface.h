@@ -31,6 +31,7 @@
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
 #include "bedrock/network/protocol/packet_sender.h"
+#include "bedrock/server/player_list_entry.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"

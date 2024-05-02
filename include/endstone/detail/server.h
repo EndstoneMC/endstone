@@ -60,6 +60,7 @@ public:
     [[nodiscard]] Level *getLevel(std::string name) const override;
     void addLevel(std::unique_ptr<Level> level);
 
+    [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
 
     void broadcast(const std::string &message, const std::string &permission) const override;
