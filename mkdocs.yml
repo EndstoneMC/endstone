@@ -166,15 +166,16 @@ nav:
       - Publish your plugin: tutorials/publish-your-plugin.md
   - Reference:
       - reference/index.md
-      - Python:
+      - Python API:
           - reference/python/index.md
+          - General: reference/python/general.md
           - Actor: reference/python/actor.md
           - Command: reference/python/command.md
           - Event: reference/python/event.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scheduler: reference/python/scheduler.md
-      - C++:
+      - C++ API:
           - reference/cpp/index.md
           - Classes:
               - Class List: reference/cpp/annotated.md

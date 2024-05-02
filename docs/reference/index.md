@@ -13,7 +13,7 @@ documentation.
 
     Craft your plugins using the Python API for a quick start.
 
-    [:octicons-arrow-right-24: Reference](python/index.md)
+    [**:octicons-arrow-right-24: Learn more**](python/index.md)
 
 -   :simple-cplusplus:{ .lg .middle } __C++ API__
 
@@ -21,6 +21,6 @@ documentation.
 
     Write your plugins using the C++ API for maximum performance.
 
-    [:octicons-arrow-right-24: Reference](cpp/index.md)
+    [**:octicons-arrow-right-24: Learn more**](cpp/index.md)
 
 </div>

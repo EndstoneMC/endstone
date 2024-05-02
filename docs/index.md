@@ -14,7 +14,7 @@ functionality, design innovative and bespoke player experiences.
   
     Follow the comprehensive guide to install and configure your Endstone server.
   
-    [:octicons-arrow-right-24: Getting Started](getting-started/installation.md)
+    [**:octicons-arrow-right-24: Getting Started**](getting-started/installation.md)
   
 -   **Write your first plugin**
   
@@ -22,6 +22,6 @@ functionality, design innovative and bespoke player experiences.
   
     Our step-by-step tutorial takes you from zero to hero as you create your first plugin.
   
-    [:octicons-arrow-right-24: Tutorials](tutorials/create-your-first-plugin.md)
+    [**:octicons-arrow-right-24: Tutorials**](tutorials/create-your-first-plugin.md)
 
 </div>

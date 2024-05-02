@@ -18,9 +18,39 @@
     border-bottom: solid var(--md-sys-color-surface-container-highest) 0.1em;
 }
 
+li.md-tabs__item.md-tabs__item--active {
+    border-bottom: .1rem solid var(--md-sys-color-primary);
+    font-weight: 700;
+}
+
 [data-md-toggle=search]:checked ~ .md-header .md-search__form {
     background-color: var(--md-sys-color-surface-container);
     box-shadow: none;
+}
+
+.md-typeset .grid.cards > ol > li, .md-typeset .grid.cards > ul > li, .md-typeset .grid > .card {
+    border: .05rem solid var(--md-sys-color-outline-variant);
+    border-radius: 1rem;
+}
+
+.md-typeset .md-button {
+    border: .08rem solid;
+    border-radius: 1.5rem;
+    color: var(--md-sys-color-primary);
+    border-color: var(--md-sys-color-outline);
+    padding: .5em 1.5em;
+}
+
+.md-typeset .md-button--primary {
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-primary);
+    border-color: var(--md-sys-color-primary);
+}
+
+.md-typeset .md-button--tonal {
+    color: var(--md-sys-color-on-secondary-container);
+    background-color: var(--md-sys-color-secondary-container);
+    border-color: var(--md-sys-color-secondary-container);
 }
 
 /* Show tabs */
