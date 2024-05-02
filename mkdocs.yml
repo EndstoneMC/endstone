@@ -167,8 +167,8 @@ nav:
   - Reference:
       - reference/index.md
       - Python API:
-          - reference/python/index.md
-          - General: reference/python/general.md
+          - Server: reference/python/server.md
+          - Player: reference/python/player.md
           - Actor: reference/python/actor.md
           - Command: reference/python/command.md
           - Event: reference/python/event.md
@@ -176,8 +176,8 @@ nav:
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scheduler: reference/python/scheduler.md
+          - Miscellaneous: reference/python/misc.md
       - C++ API:
-          - reference/cpp/index.md
           - Classes:
               - Class List: reference/cpp/annotated.md
               - Class Index: reference/cpp/classes.md
