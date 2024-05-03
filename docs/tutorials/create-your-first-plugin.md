@@ -1,28 +1,101 @@
 ---
 comments: true
+toc_depth: 2
 ---
 
 # Create your first plugin
 
 ## Create a new project
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
+    
+    ### Prerequisites
 
-    TODO
+    To develop your first plugin with the Python API, you will have to install the following prerequisites:
+    
+    -   [Jetbrains PyCharm]
+    -   [Python] (>= 3.9)
+    -   [endstone Python package]
 
-    ``` toml title="pyproject.toml" linenums="1" hl_lines="9-10"
+    ### Creating a PyCharm project
+
+    When you start up PyCharm, you will see this welcome screen:
+    ![Welcome to PyCharm](screenshots/pycharm-welcome.png)
+
+    Click on **New Project**
+
+    ![New PyCharm Project](screenshots/pycharm-create-project.png)
+
+    Let's say you want to name your plugin **MyPlugin**. In Endstone plugin development, we follow the following 
+    naming convention:
+
+    1. Use `lower-case-with-dash` for project name
+    2. Prefix your project name with `endstone-`
+
+    Hence, you should put `endstone-my-plugin` in the **Name** field.
+
+    Then, in the **Interpreter type**, select *Custom environment*. Select **Select existing**, and set the path to 
+    where you previously installed `endstone` as stated in the prerequisites.
+
+    Finally, click on **Create**. The PyCharm workspace will pop up and you will see this.
+    ![PyCharm Workspace](screenshots/pycharm-workspace.png)
+
+    !!! tip
+        Endstone server requires its plugins to be installed in the same Python environment. A virtual environment is
+        **strongly recommanded**.
+
+    ### Check your dependencies
+
+    In the last step, you selected the existing interpreter where `endstone` package is installed. For now, that's the
+    only dependency we need for a simple plugin. To check its installation, click on the :octicons-terminal-16: icon on
+    the side bar to open the terminal and type:
+    ```
+    pip show endstone
+    ```
+
+    You show see something like this:
+    ```
+    Name: endstone
+    Version: 0.4.2
+    Summary: Endstone offers a plugin API for Bedrock Dedicated Servers, supporting both Python and C++.
+    Home-page:
+    Author:
+    Author-email: Vincent Wu <magicdroidx@gmail.com>
+    License: Apache License
+    ```
+
+    ### Create `pyproject.toml`
+
+    Modern Python packages can contain a `pyproject.toml` file, first introduced in [PEP 518]. This file contains build 
+    system requirements and information, which are used by pip to build the package.
+    
+    Now, right click on the project folder and select **New > File** to create a `pyproject.toml`. 
+    ![Create pyproject.toml](screenshots/pycharm-create-pyproject-toml.png)    
+
+    Copy the following content and paste into the file.
+    ``` toml title="pyproject.toml" linenums="1"
     [build-system]
     requires = ["setuptools >= 61.0"]
     build-backend = "setuptools.build_meta"
     
     [project]
-    name = "endstone-example"
-    version = "0.4.0"
+    name = "endstone-my-plugin"
+    version = "0.1.0"
     ```
 
-=== "C++"
+    !!! notice
+        The name field should always be the project name. It must start with `endstone-` which is **enforced** by the 
+        plugin loader. The name should also use `lower-case-with-dash` style.
 
-    TODO
+    [Jetbrains PyCharm]: https://www.jetbrains.com/pycharm/
+    [Python]: https://www.python.org/downloads/
+    [endstone Python package]: ../getting-started/installation.md#with-pip
+    [PEP 518]: https://peps.python.org/pep-0518/
+    
+
+=== ":simple-cplusplus: C++"
+
+    ### Create `CMakeLists.txt`
 
     ``` CMake title="CMakeLists.txt" linenums="1"
     cmake_minimum_required(VERSION 3.15)
@@ -200,3 +273,4 @@ comments: true
     1.  :abc: This is the plugin name!
     2.  :hash: This is the plugin version!
     3.  :white_check_mark: This is the main class of the plugin!
+
