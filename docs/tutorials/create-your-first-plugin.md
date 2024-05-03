@@ -158,7 +158,7 @@ toc_depth: 2
 
 ## Create the main plugin class
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     Now, right click on the project folder and select **New > Directory** to create a `src` directory. 
 
@@ -194,7 +194,7 @@ toc_depth: 2
     __all__ = ["MyPlugin"]
     ```
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     ``` c++ title="include/example_plugin.h" linenums="1" 
     #include "endstone/plugin/plugin.h"
@@ -236,7 +236,7 @@ toc_depth: 2
 
 ## Add methods
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     Now we want to add a few methods:
     
@@ -260,7 +260,7 @@ toc_depth: 2
             self.logger.info("on_disable is called!")
     ```
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     ``` c++ title="include/example_plugin.h" linenums="1" hl_lines="4-8 10-13 15-18"
     #include "endstone/plugin/plugin.h"
@@ -286,7 +286,7 @@ toc_depth: 2
 
 ## Configure plugin metadata
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     Now, the plugin is almost finished. One more thing, we must tell the server multiple things including name, version,
     description and the compatible API version.
@@ -331,7 +331,7 @@ toc_depth: 2
         our project name is `endstone-my-plugin` so the entry point's name should be `my-plugin`. The value is simply 
         `{module}:{class}`.
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     ``` c++ title="src/example_plugin.cpp" linenums="1" hl_lines="3-6"
     #include "example_plugin.h"
