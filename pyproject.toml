@@ -36,7 +36,7 @@ dynamic = ["version"]
 test = ["pytest"]
 
 [project.urls]
-#Changelog = "https://endstone.readthedocs.io/en/latest/changelog.html"
+Changelog = "https://endstone.readthedocs.io/en/latest/changelog"
 Discussions = "https://github.com/orgs/EndstoneMC/discussions"
 Documentation = "https://endstone.readthedocs.io"
 Homepage = "https://github.com/EndstoneMC/endstone"
