@@ -30,6 +30,7 @@ toc_depth: 2
 === ":fontawesome-brands-python: Python"
 
     When you start up PyCharm, you will see this welcome screen:
+
     ![Welcome to PyCharm](screenshots/pycharm-welcome.png)
 
     Click on **New Project**
@@ -48,6 +49,7 @@ toc_depth: 2
     where you previously installed `endstone` as stated in the prerequisites.
 
     Finally, click on **Create**. The PyCharm workspace will pop up and you will see this.
+
     ![PyCharm Workspace](screenshots/pycharm-workspace.png)
 
     !!! tip
@@ -80,6 +82,7 @@ toc_depth: 2
     system requirements and information, which are used by pip to build the package.
     
     Now, right click on the project folder and select **New > File** to create a `pyproject.toml`. 
+
     ![Create pyproject.toml](screenshots/pycharm-create-pyproject-toml.png)    
 
     Copy the following content and paste into the file.
@@ -100,6 +103,7 @@ toc_depth: 2
 === ":simple-cplusplus: C++"
 
      When you start up CLion, you will see this welcome screen:
+
     ![Welcome to CLion](screenshots/clion-welcome.png)
 
     Click on **New Project**
@@ -108,6 +112,7 @@ toc_depth: 2
 
     In the side bar, select **C++ Library**. Select **C++ 17** for **Language standard**. 
     Select **shared** for **Library type**. Click on **Create**. The CLion workspace will pop up and you will see this.
+
     ![CLion Workspace](screenshots/clion-workspace.png)
 
     ### File structure
@@ -168,7 +173,8 @@ toc_depth: 2
     Since my project name is `endstone-my-plugin`, I will name the package `endstone_my_plugin`.
     
     You should have something similar to this:
-    ![Create Python Pcakge](screenshots/pycharm-create-package.png)
+
+    ![Create Python Package](screenshots/pycharm-create-package.png)
     
     !!! tip
         For Python packages, it is a common practice to use `lower-case-with-dash` for project name and 
@@ -188,7 +194,7 @@ toc_depth: 2
     to the `__all__` variable.
 
     ``` python title="src/endstone_my_plugin/__init__.py" linenums="1"
-    from enstone_my_plugin.my_plugin import MyPlugin
+    from endstone_my_plugin.my_plugin import MyPlugin
 
     __all__ = ["MyPlugin"]
     ```
@@ -227,12 +233,16 @@ toc_depth: 2
     target_link_libraries(${PROJECT_NAME} PRIVATE endstone::headers)
     ```
 
+    You should have something similar to this:
+
+    ![Update CMakeLists](screenshots/clion-update-cmakelists.png)
+
     Open `include/my_plugin.h` and add a new class `MyPlugin` which extends the `endstone::Plugin` class.
 
     ``` c++ title="include/my_plugin.h" linenums="1" 
     #include "endstone/plugin/plugin.h"
 
-    class MyPlugin : public endstone::Plugin {}
+    class MyPlugin : public endstone::Plugin {};
     ```
 
     Then, in `src/my_plugin.cpp`, include the header file.
@@ -296,7 +306,7 @@ toc_depth: 2
         {
             getLogger().info("onDisable is called");
         }
-    }
+    };
     ```
 
 ## Configure plugin metadata
@@ -351,7 +361,7 @@ toc_depth: 2
     Now, the plugin is almost finished. Let's tell the server about our name, version, main class and the description.
 
     ``` c++ title="src/my_plugin.cpp" linenums="1" hl_lines="3-6"
-    #include "example_plugin.h"
+    #include "my_plugin.h"
 
     ENDSTONE_PLUGIN(/*(1)!*/"MyPlugin", /*(2)!*/"0.1.0", /*(3)!*/MyPlugin)
     {
