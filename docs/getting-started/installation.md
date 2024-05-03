@@ -31,7 +31,7 @@ just delete and recreate the environment. It's trivial to set up:
         . venv/Scripts/activate
         ```
 
-    === ":material-linux: Linux"
+    === ":fontawesome-brands-linux: Linux"
 
         ``` sh
         . venv/bin/activate

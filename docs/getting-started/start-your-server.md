@@ -13,7 +13,7 @@ endstone
 
 Alternatively, if you're running Endstone from within Docker, use:
 
-=== ":material-linux: Linux / :fontawesome-brands-windows: Powershell"
+=== ":fontawesome-brands-linux: Linux / :fontawesome-brands-windows: Powershell"
 
     ```
     docker run --rm -it -v ${PWD}:/home/endstone -p 19132:19132/udp endstone/endstone

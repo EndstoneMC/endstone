@@ -5,19 +5,29 @@ toc_depth: 2
 
 # Create your first plugin
 
-## Create a new project
+## Prerequisites
 
 === ":fontawesome-brands-python: Python"
-    
-    ### Prerequisites
 
     To develop your first plugin with the Python API, you will have to install the following prerequisites:
     
-    -   [Jetbrains PyCharm]
+    -   [JetBrains PyCharm]
     -   [Python] (>= 3.9)
     -   [endstone Python package]
 
-    ### Creating a PyCharm project
+=== ":simple-cplusplus: C++"
+    
+    To develop your first plugin with the C++ API, you will have to install the following prerequisites:
+
+    -   [JetBrains CLion]
+    -   [CMake] (>= 3.15)
+    -   C++ Compiler
+        -   **:fontawesome-brands-windows: Windows**: [Visual Studio] 2017 or newer
+        -   **:fontawesome-brands-linux: Linux**: [LLVM Toolchain] 5 or newer with Clang and libc++
+
+## Create a new project
+
+=== ":fontawesome-brands-python: Python"
 
     When you start up PyCharm, you will see this welcome screen:
     ![Welcome to PyCharm](screenshots/pycharm-welcome.png)
@@ -34,7 +44,7 @@ toc_depth: 2
 
     Hence, you should put `endstone-my-plugin` in the **Name** field.
 
-    Then, in the **Interpreter type**, select *Custom environment*. Select **Select existing**, and set the path to 
+    Then, in the **Interpreter type**, select **Custom environment**. Select **Select existing**, and set the path to 
     where you previously installed `endstone` as stated in the prerequisites.
 
     Finally, click on **Create**. The PyCharm workspace will pop up and you will see this.
@@ -86,16 +96,36 @@ toc_depth: 2
     !!! notice
         The name field should always be the project name. It must start with `endstone-` which is **enforced** by the 
         plugin loader. The name should also use `lower-case-with-dash` style.
-
-    [Jetbrains PyCharm]: https://www.jetbrains.com/pycharm/
-    [Python]: https://www.python.org/downloads/
-    [endstone Python package]: ../getting-started/installation.md#with-pip
-    [PEP 518]: https://peps.python.org/pep-0518/
     
 
 === ":simple-cplusplus: C++"
 
-    ### Create `CMakeLists.txt`
+     When you start up CLion, you will see this welcome screen:
+    ![Welcome to CLion](screenshots/clion-welcome.png)
+
+    Click on **New Project**
+
+    ![New CLion Project](screenshots/clion-create-project.png)
+
+    In the side bar, select **C++ Library**. Select **C++ 17** for **Language standard**. 
+    Select **shared** for **Library type**. Click on **Create**. The CLion workspace will pop up and you will see this.
+    ![CLion Workspace](screenshots/clion-workspace.png)
+
+    ### File structure
+    From the project view in the side bar, you will notice that CLion created a few files for us.
+
+    -   `.clang-format`: The configuration file for ClangFormat
+    -   `CMakeLists.txt`: The manifest file for CMake build system
+    -   `library.cpp`: Source file
+    -   `library.h`: Header file
+    
+    **Delete** `library.cpp` and `library.h` as they are not required for Endstone plugins. You can keep the 
+    `.clang-format` and `CMakeLists.txt`.
+
+    ### Update `CMakeLists.txt`
+
+    Now, open the `CMakeLists.txt` in the side bar and delete all the existing content. 
+    Then, copy and paste the following into your `CMakeLists.txt`.
 
     ``` CMake title="CMakeLists.txt" linenums="1"
     cmake_minimum_required(VERSION 3.15)
@@ -123,6 +153,8 @@ toc_depth: 2
 
     1.  :warning: This will use the latest development version of Endstone. Consider use a release tag (e.g. `v0.4.0`) instead of `main`.
     2.  :information_source: The following lines are necessary for ensuring ABI compatibility with the Bedrock Dedicated Server (BDS).
+
+    [JetBrains CLion]: https://www.jetbrains.com/clion/
 
 ## Create the main plugin class
 
@@ -274,3 +306,12 @@ toc_depth: 2
     2.  :hash: This is the plugin version!
     3.  :white_check_mark: This is the main class of the plugin!
 
+
+[JetBrains PyCharm]: https://www.jetbrains.com/pycharm/
+[JetBrains CLion]: https://www.jetbrains.com/clion/
+[Python]: https://www.python.org/downloads/
+[endstone Python package]: ../getting-started/installation.md#with-pip
+[CMake]: https://cmake.org/
+[PEP 518]: https://peps.python.org/pep-0518/
+[Visual Studio]: https://visualstudio.microsoft.com/
+[LLVM Toolchain]: https://apt.llvm.org/
