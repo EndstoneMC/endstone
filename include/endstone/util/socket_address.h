@@ -18,16 +18,29 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents an IP Socket Address (hostname + port number).
+ */
 class SocketAddress {
 public:
-    SocketAddress() {}
+    SocketAddress() = default;
     SocketAddress(std::string hostname, std::uint32_t port) : hostname_(std::move(hostname)), port_(port) {}
 
+    /**
+     * Gets the hostname.
+     *
+     * @return The hostname of this socket address
+     */
     [[nodiscard]] const std::string &getHostname() const
     {
         return hostname_;
     }
 
+    /**
+     * Gets the port number.
+     *
+     * @return The port number of this socket address
+     */
     [[nodiscard]] std::uint32_t getPort() const
     {
         return port_;
