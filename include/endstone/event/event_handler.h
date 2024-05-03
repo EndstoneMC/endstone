@@ -26,6 +26,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a registered EventHandler which associates with a Plugin
+ */
 class EventHandler {
 public:
     EventHandler(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
@@ -35,21 +38,40 @@ public:
     {
     }
 
+    /**
+     * Gets the plugin for this registration
+     *
+     * @return Registered Plugin
+     */
+    [[nodiscard]] Plugin &getPlugin() const
+    {
+        return plugin_;
+    }
+    /**
+     * Gets the priority for this registration
+     *
+     * @return Registered Priority
+     */
     [[nodiscard]] EventPriority getPriority() const
     {
         return priority_;
     }
 
-    [[nodiscard]] Plugin &getPlugin() const
-    {
-        return plugin_;
-    }
-
+    /**
+     * Whether this listener accepts cancelled events
+     *
+     * @return True when ignoring cancelled events
+     */
     [[nodiscard]] bool isIgnoreCancelled() const
     {
         return ignore_cancelled_;
     }
 
+    /**
+     * Calls the event executor
+     *
+     * @param event The event
+     */
     void callEvent(Event &event)
     {
         if (event.getEventName() != event_) {
@@ -61,6 +83,11 @@ public:
         executor_(event);
     };
 
+    /**
+     * Gets the event type for this registration
+     *
+     * @return Registered event type
+     */
     [[nodiscard]] std::string getEventType() const
     {
         return event_;
