@@ -16,7 +16,7 @@ toc_depth: 2
     -   [endstone Python package]
 
 === ":simple-cplusplus: C++"
-    
+
     To develop your first plugin with the C++ API, you will have to install the following prerequisites:
 
     -   [JetBrains CLion]
@@ -96,7 +96,6 @@ toc_depth: 2
     !!! notice
         The name field should always be the project name. It must start with `endstone-` which is **enforced** by the 
         plugin loader. The name should also use `lower-case-with-dash` style.
-    
 
 === ":simple-cplusplus: C++"
 
@@ -119,8 +118,8 @@ toc_depth: 2
     -   `library.cpp`: Source file
     -   `library.h`: Header file
     
-    **Delete** `library.cpp` and `library.h` as they are not required for Endstone plugins. You can keep the 
-    `.clang-format` and `CMakeLists.txt`.
+    **Delete** `library.cpp` and `library.h` as we don't need them. You can keep the `.clang-format` and 
+    `CMakeLists.txt`.
 
     ### Update `CMakeLists.txt`
 
@@ -130,7 +129,7 @@ toc_depth: 2
     ``` CMake title="CMakeLists.txt" linenums="1"
     cmake_minimum_required(VERSION 3.15)
     
-    project(endstone_example_plugin CXX)
+    project(endstone_my_plugin CXX)
     
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -188,7 +187,7 @@ toc_depth: 2
     Then, open the `__init__.py` under the same folder and import the `MyPlugin` class from the Python file and add it 
     to the `__all__` variable.
 
-    ``` python title="src/enstone_my_plugin/__init__.py" linenums="1"
+    ``` python title="src/endstone_my_plugin/__init__.py" linenums="1"
     from enstone_my_plugin.my_plugin import MyPlugin
 
     __all__ = ["MyPlugin"]
@@ -196,20 +195,14 @@ toc_depth: 2
 
 === ":simple-cplusplus: C++"
 
-    ``` c++ title="include/example_plugin.h" linenums="1" 
-    #include "endstone/plugin/plugin.h"
+    Now, create two files: `src/my_plugin.cpp` and `include/my_plugin.h`.
 
-    class ExamplePlugin : public endstone::Plugin {}
-    ```
-
-    ``` c++ title="src/example_plugin.cpp" linenums="1"
-    #include "example_plugin.h"
-    ```
+    Open `CMakeLists.txt` and add a new target.
 
     ``` CMake title="CMakeLists.txt" linenums="1" hl_lines="23-25"
     cmake_minimum_required(VERSION 3.15)
     
-    project(endstone_example_plugin CXX)
+    project(endstone_my_plugin CXX)
     
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -229,16 +222,30 @@ toc_depth: 2
         link_libraries(-static-libgcc -static-libstdc++ libc++.a libc++abi.a)
     endif ()
 
-    add_library(${PROJECT_NAME} SHARED src/example_plugin.cpp)
+    add_library(${PROJECT_NAME} SHARED src/my_plugin.cpp)
     target_include_directories(${PROJECT_NAME} PUBLIC include)
     target_link_libraries(${PROJECT_NAME} PRIVATE endstone::headers)
+    ```
+
+    Open `include/my_plugin.h` and add a new class `MyPlugin` which extends the `endstone::Plugin` class.
+
+    ``` c++ title="include/my_plugin.h" linenums="1" 
+    #include "endstone/plugin/plugin.h"
+
+    class MyPlugin : public endstone::Plugin {}
+    ```
+
+    Then, in `src/my_plugin.cpp`, include the header file.
+
+    ``` c++ title="src/my_plugin.cpp" linenums="1"
+    #include "my_plugin.h"
     ```
 
 ## Add methods
 
 === ":fontawesome-brands-python: Python"
 
-    Now we want to add a few methods:
+    Now we want to override a few methods from the base class:
     
     - `on_load`: this will be called when the plugin is loaded by the server
     - `on_enable`: this will be called when the plugin is enabled
@@ -246,10 +253,10 @@ toc_depth: 2
 
     You can use the logger to log a message when the plugin is loaded, enabled and disabled like below:
 
-    ``` python title="src/endstone_example/example_plugin.py" linenums="1" hl_lines="4-5 7-8 10-11"
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="4-5 7-8 10-11"
     from endstone.plugin import Plugin
 
-    class ExamplePlugin(Plugin):
+    class MyPlugin(Plugin):
         def on_load(self) -> None:
             self.logger.info("on_load is called!")
 
@@ -262,10 +269,18 @@ toc_depth: 2
 
 === ":simple-cplusplus: C++"
 
-    ``` c++ title="include/example_plugin.h" linenums="1" hl_lines="4-8 10-13 15-18"
+    Now we want to override a few methods from the base class:
+    
+    - `onLoad`: this will be called when the plugin is loaded by the server
+    - `onEnable`: this will be called when the plugin is enabled
+    - `onDisable`: this will be called when the plugin is disabled (e.g. during server shutdown)
+
+    You can use the logger to log a message when the plugin is loaded, enabled and disabled like below:
+
+    ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="4-8 10-13 15-18"
     #include "endstone/plugin/plugin.h"
 
-    class ExamplePlugin : public endstone::Plugin {
+    class MyPlugin : public endstone::Plugin {
     public:
         void onLoad() override
         {
@@ -288,8 +303,8 @@ toc_depth: 2
 
 === ":fontawesome-brands-python: Python"
 
-    Now, the plugin is almost finished. One more thing, we must tell the server multiple things including name, version,
-    description and the compatible API version.
+    Now, the plugin is almost finished. Let's tell the server about our name, version, description and the compatible 
+    API version.
 
     ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="4-7"
     from endstone.plugin import Plugin
@@ -298,7 +313,7 @@ toc_depth: 2
         name = "MyPlugin"
         version = "0.1.0"
         api_version = "0.4"
-        description = "My first plugin for Endstone servers!"
+        description = "My first Python plugin for Endstone servers!"
 
         def on_load(self) -> None:
             self.logger.info("on_load is called!")
@@ -333,12 +348,14 @@ toc_depth: 2
 
 === ":simple-cplusplus: C++"
 
-    ``` c++ title="src/example_plugin.cpp" linenums="1" hl_lines="3-6"
+    Now, the plugin is almost finished. Let's tell the server about our name, version, main class and the description.
+
+    ``` c++ title="src/my_plugin.cpp" linenums="1" hl_lines="3-6"
     #include "example_plugin.h"
 
-    ENDSTONE_PLUGIN(/*(1)!*/"CppExamplePlugin", /*(2)!*/"0.4.0", /*(3)!*/ExamplePlugin)
+    ENDSTONE_PLUGIN(/*(1)!*/"MyPlugin", /*(2)!*/"0.1.0", /*(3)!*/MyPlugin)
     {
-        description = "C++ example plugin for Endstone servers";
+        description = "My first C++ plugin for Endstone servers";
     }
     ```
 
@@ -346,13 +363,20 @@ toc_depth: 2
     2.  :hash: This is the plugin version!
     3.  :white_check_mark: This is the main class of the plugin!
 
-
 [JetBrains PyCharm]: https://www.jetbrains.com/pycharm/
+
 [JetBrains CLion]: https://www.jetbrains.com/clion/
+
 [Python]: https://www.python.org/downloads/
+
 [endstone Python package]: ../getting-started/installation.md#with-pip
+
 [CMake]: https://cmake.org/
+
 [PEP 8]: https://peps.python.org/pep-0008/
+
 [PEP 518]: https://peps.python.org/pep-0518/
+
 [Visual Studio]: https://visualstudio.microsoft.com/
+
 [LLVM Toolchain]: https://apt.llvm.org/
