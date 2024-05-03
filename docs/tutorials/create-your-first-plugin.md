@@ -160,17 +160,38 @@ toc_depth: 2
 
 === "Python"
 
-    ``` python title="src/endstone_example/example_plugin.py" linenums="1" 
+    Now, right click on the project folder and select **New > Directory** to create a `src` directory. 
+
+    Right click on the `src` directory you just created and select **Mark Directory as > Sources Root**. You will notice
+    the colour of the icon changes to blue.
+
+    Right click again on the `src` directory and select **New > Python Package** to create a package for our plugin. 
+    Since my project name is `endstone-my-plugin`, I will name the package `endstone_my_plugin`.
+    
+    You should have something similar to this:
+    ![Create Python Pcakge](screenshots/pycharm-create-package.png)
+    
+    !!! tip
+        For Python packages, it is a common practice to use `lower-case-with-dash` for project name and 
+        `lower_case_with_underscore` for the package name. See [PEP 8] for the style guide for Python.
+
+    Right click on the package you just created and select **New > Python File** to create a `my_plugin.py`. Create a
+    class named `MyPlugin` which extends the `Plugin` class from `endstone.plugin`.
+
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" 
     from endstone.plugin import Plugin
 
-    class ExamplePlugin(Plugin):
+    class MyPlugin(Plugin):
         pass
     ```
 
-    ``` python title="src/endstone_example/__init__.py" linenums="1"
-    from endstone_example.example_plugin import ExamplePlugin
+    Then, open the `__init__.py` under the same folder and import the `MyPlugin` class from the Python file and add it 
+    to the `__all__` variable.
 
-    __all__ = ["ExamplePlugin"]
+    ``` python title="src/enstone_my_plugin/__init__.py" linenums="1"
+    from enstone_my_plugin.my_plugin import MyPlugin
+
+    __all__ = ["MyPlugin"]
     ```
 
 === "C++"
@@ -217,6 +238,14 @@ toc_depth: 2
 
 === "Python"
 
+    Now we want to add a few methods:
+    
+    - `on_load`: this will be called when the plugin is loaded by the server
+    - `on_enable`: this will be called when the plugin is enabled
+    - `on_disable`: this will be called when the plugin is disabled (e.g. during server shutdown)
+
+    You can use the logger to log a message when the plugin is loaded, enabled and disabled like below:
+
     ``` python title="src/endstone_example/example_plugin.py" linenums="1" hl_lines="4-5 7-8 10-11"
     from endstone.plugin import Plugin
 
@@ -259,14 +288,17 @@ toc_depth: 2
 
 === "Python"
 
-    ``` python title="src/endstone_example/example_plugin.py" linenums="1" hl_lines="4-7"
+    Now, the plugin is almost finished. One more thing, we must tell the server multiple things including name, version,
+    description and the compatible API version.
+
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="4-7"
     from endstone.plugin import Plugin
 
-    class ExamplePlugin(Plugin):
-        name = "PythonExamplePlugin"
-        version = "0.4.0"
+    class MyPlugin(Plugin):
+        name = "MyPlugin"
+        version = "0.1.0"
         api_version = "0.4"
-        description = "Python example plugin for Endstone servers"
+        description = "My first plugin for Endstone servers!"
 
         def on_load(self) -> None:
             self.logger.info("on_load is called!")
@@ -277,6 +309,8 @@ toc_depth: 2
         def on_disable(self) -> None:
             self.logger.info("on_disable is called!")
     ```
+    
+    Lastly, to have the plugin discoverable by the server, you must specify an entry point in `pyproject.toml`.
 
     ``` toml title="pyproject.toml" linenums="1" hl_lines="9-10"
     [build-system]
@@ -284,12 +318,18 @@ toc_depth: 2
     build-backend = "setuptools.build_meta"
     
     [project]
-    name = "endstone-example"
-    version = "0.4.0"
+    name = "endstone-my-plugin"
+    version = "0.1.0"
 
     [project.entry-points."endstone"]
-    example = "endstone_example:ExamplePlugin"
+    my-plugin = "endstone_my_plugin:MyPlugin"
     ```
+
+    !!! notice
+    
+        For the entry point, the name **must** be the name of your project **without** the `endstone-` prefix. For example,
+        our project name is `endstone-my-plugin` so the entry point's name should be `my-plugin`. The value is simply 
+        `{module}:{class}`.
 
 === "C++"
 
@@ -312,6 +352,7 @@ toc_depth: 2
 [Python]: https://www.python.org/downloads/
 [endstone Python package]: ../getting-started/installation.md#with-pip
 [CMake]: https://cmake.org/
+[PEP 8]: https://peps.python.org/pep-0008/
 [PEP 518]: https://peps.python.org/pep-0518/
 [Visual Studio]: https://visualstudio.microsoft.com/
 [LLVM Toolchain]: https://apt.llvm.org/
