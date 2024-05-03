@@ -29,7 +29,7 @@ void init_util(py::module &m)
         .def_property_readonly("port", &SocketAddress::getPort, "Gets the port number.")
         .def("__repr__",
              [](const SocketAddress &self) {
-                 return "<SockAddr hostname='" + self.getHostname() + "' port=" + std::to_string(self.getPort()) + ">";
+                 return "<SocketAddress hostname='" + self.getHostname() + "' port=" + std::to_string(self.getPort()) + ">";
              })
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });

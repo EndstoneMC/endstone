@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Level` is no longer created for each `Dimension` in a Minecraft world. Instead, one `Level` now manages multiple
   `Dimension`s.
-- `Player::getAddress` now returns a `SocketAddress` instead of `std::string`. `Player::getHost` was removed, use `SocketAddress::getPort` instead.
+- `Player::getAddress` now returns a `SocketAddress` instead of `std::string`. `Player::getPort` was removed, use `SocketAddress::getPort` instead.
 
 ## [0.4.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.2) - 2024-04-30
 
