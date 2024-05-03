@@ -1,9 +1,8 @@
 ---
 comments: true
-toc_depth: 2
 ---
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     To install your first plugin in Python, click on the :octicons-terminal-16: icon on
     the side bar to open the terminal and type:
@@ -33,7 +32,7 @@ toc_depth: 2
     Successfully installed endstone-my-plugin-0.1.0
     ```
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     Before installing your first plugin, you will need to build it.
 

@@ -1,9 +1,9 @@
 # Register event listeners
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     TODO
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     TODO

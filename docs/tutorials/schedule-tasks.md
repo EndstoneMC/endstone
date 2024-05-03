@@ -1,9 +1,9 @@
 # Schedule tasks
 
-=== "Python"
+=== ":fontawesome-brands-python: Python"
 
     TODO
 
-=== "C++"
+=== ":simple-cplusplus: C++"
 
     TODO
