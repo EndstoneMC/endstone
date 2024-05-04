@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 import typing
 import uuid
 __all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
@@ -624,10 +625,19 @@ class Player(HumanActor):
         """
         Sends this player a tip message
         """
+    def update_commands(self) -> None:
+        """
+        Send the list of commands to the client.
+        """
     @property
     def address(self) -> SocketAddress:
         """
         Gets the socket address of this player
+        """
+    @property
+    def ping(self) -> datetime.timedelta:
+        """
+        Gets the player's average ping.
         """
     @property
     def unique_id(self) -> uuid.UUID:

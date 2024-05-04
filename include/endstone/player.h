@@ -84,17 +84,16 @@ public:
     virtual void kick(std::string message) const = 0;
 
     /**
-     * Gets the player's average ping in milliseconds.
+     * Gets the player's average ping
      *
      * @return player ping
      */
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     /**
-     * Update the list of commands sent to the client.
+     * Send the list of commands to the client.
      *
-     * Generally useful to ensure the client has a complete list of commands
-     * after permission changes are done.
+     * Generally useful to ensure the client has a complete list of commands after permission changes are done.
      */
     virtual void updateCommands() const = 0;
 };

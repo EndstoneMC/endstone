@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -206,7 +207,9 @@ void init_player(py::module_ &m)
         .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
-        .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.");
+        .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
+        .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
+        .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.");
 }
 
 }  // namespace endstone::detail
