@@ -56,6 +56,8 @@ public:
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
     void kick(std::string message) const override;
+    [[nodiscard]] std::chrono::milliseconds getPing() const override;
+    void updateCommands() const override;
 
     void disconnect();
 

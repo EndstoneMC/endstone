@@ -120,7 +120,4 @@ public:
 private:
 public:
     [[nodiscard]] endstone::detail::EndstonePlayer &getEndstonePlayer() const;  // Endstone
-
-protected:
-    void sendCommands() const;  // Endstone
 };

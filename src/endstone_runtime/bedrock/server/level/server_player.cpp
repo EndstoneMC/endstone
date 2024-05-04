@@ -25,17 +25,19 @@ void ServerPlayer::doInitialSpawn()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerJoinEvent e{getEndstonePlayer()};
+    auto &endstone_player = getEndstonePlayer();
+    endstone::PlayerJoinEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
-    getEndstonePlayer().recalculatePermissions();
-    sendCommands();
+    endstone_player.recalculatePermissions();
+    endstone_player.updateCommands();
 }
 
 void ServerPlayer::disconnect()
 {
-    getEndstonePlayer().disconnect();
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerQuitEvent e{getEndstonePlayer()};
+    auto &endstone_player = getEndstonePlayer();
+    endstone_player.disconnect();
+    endstone::PlayerQuitEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }

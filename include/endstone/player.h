@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <chrono>
+
 #include "endstone/actor/human.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
@@ -80,6 +82,21 @@ public:
      * @param message kick message
      */
     virtual void kick(std::string message) const = 0;
+
+    /**
+     * Gets the player's average ping in milliseconds.
+     *
+     * @return player ping
+     */
+    [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
+
+    /**
+     * Update the list of commands sent to the client.
+     *
+     * Generally useful to ensure the client has a complete list of commands
+     * after permission changes are done.
+     */
+    virtual void updateCommands() const = 0;
 };
 
 }  // namespace endstone

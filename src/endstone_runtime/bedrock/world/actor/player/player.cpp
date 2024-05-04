@@ -25,8 +25,9 @@ using endstone::detail::EndstoneServer;
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    getEndstonePlayer().recalculatePermissions();
-    sendCommands();
+    auto &player = getEndstonePlayer();
+    player.recalculatePermissions();
+    player.updateCommands();
 }
 
 const std::string &Player::getName() const
@@ -37,25 +38,4 @@ const std::string &Player::getName() const
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
 {
     return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());
-}
-
-void Player::sendCommands() const
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &registry = server.getMinecraftCommands().getRegistry();
-
-    AvailableCommandsPacket packet = registry.serializeAvailableCommands();
-
-    auto &command_map = server.getCommandMap();
-    for (auto &data : packet.commands) {
-        auto name = data.name;
-        auto *command = command_map.getCommand(name);
-        endstone::Player &endstone_player = getEndstonePlayer();
-        if (command && command->isRegistered() && command->testPermissionSilently(endstone_player)) {
-            continue;
-        }
-        data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
-    }
-
-    sendNetworkPacket(packet);
 }

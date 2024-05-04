@@ -191,4 +191,29 @@ void EndstonePlayer::kick(std::string message) const
                                        Connection::DisconnectFailReason::NoReason, message, message.empty());
 }
 
+std::chrono::milliseconds EndstonePlayer::getPing() const
+{
+    auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
+    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
+    return std::chrono::milliseconds(peer->GetAveragePing({component->network_id.raknet_guid}));
+}
+
+void EndstonePlayer::updateCommands() const
+{
+    auto &registry = server_.getMinecraftCommands().getRegistry();
+    AvailableCommandsPacket packet = registry.serializeAvailableCommands();
+
+    auto &command_map = server_.getCommandMap();
+    for (auto &data : packet.commands) {
+        auto name = data.name;
+        auto *command = command_map.getCommand(name);
+        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
+            continue;
+        }
+        data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
+    }
+
+    player_.sendNetworkPacket(packet);
+}
+
 }  // namespace endstone::detail
