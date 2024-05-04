@@ -45,7 +45,7 @@ plugins:
             - https://docs.python.org/3/objects.inv
           options:
             annotations_path: brief
-            show_bases: false
+            show_bases: true
             show_source: false
             show_symbol_type_heading: true
             show_symbol_type_toc: true
@@ -53,7 +53,7 @@ plugins:
             separate_signature: true
             show_signature_annotations: true
             signature_crossrefs: true
-            inherited_members: true
+            inherited_members: false
   - mkdoxy:
       enabled: !ENV [CI, false]
       projects:
