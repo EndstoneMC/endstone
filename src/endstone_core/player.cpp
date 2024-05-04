@@ -17,6 +17,7 @@
 #include "bedrock/network/protocol/game/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
+#include "bedrock/server/network/server_network_handler.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/color_format.h"
@@ -181,6 +182,13 @@ void EndstonePlayer::sendTip(std::string message) const
 void EndstonePlayer::disconnect()
 {
     perm_.clearPermissions();
+}
+
+void EndstonePlayer::kick(std::string message) const
+{
+    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
+    network_handler_->disconnectClient(component->network_id, component->sub_client_id,
+                                       Connection::DisconnectFailReason::NoReason, message, message.empty());
 }
 
 }  // namespace endstone::detail

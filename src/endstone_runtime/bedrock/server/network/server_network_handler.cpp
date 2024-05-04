@@ -35,13 +35,14 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
 bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerLoginEvent e{server_player.getEndstonePlayer()};
+    auto &endstone_player = server_player.getEndstonePlayer();
+    endstone_player.network_handler_ = this;
+
+    endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
-        auto *component = server_player.tryGetComponent<UserEntityIdentifierComponent>();
-        disconnectClient(component->network_id, component->sub_client_id, Connection::DisconnectFailReason::NoReason,
-                         e.getKickMessage(), e.getKickMessage().empty());
+        endstone_player.kick(e.getKickMessage());
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
 }

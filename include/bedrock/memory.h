@@ -50,6 +50,25 @@ private:
 };
 
 template <class T>
-using NonOwnerPointer = std::shared_ptr<T>;
+class NonOwnerPointer {
+public:
+    T &operator*() const
+    {
+        return *ptr_;
+    }
+
+    T *operator->() const
+    {
+        return ptr_.get();
+    }
+
+    explicit operator bool() const noexcept
+    {
+        return ptr_ != nullptr;
+    }
+
+private:
+    std::shared_ptr<T> ptr_;
+};
 
 }  // namespace Bedrock

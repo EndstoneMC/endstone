@@ -67,6 +67,13 @@ public:
      * @param message Message to be displayed
      */
     virtual void sendTip(std::string message) const = 0;
+
+    /**
+     * Kicks player with custom kick message.
+     *
+     * @param message kick message
+     */
+    virtual void kick(std::string message) const = 0;
 };
 
 }  // namespace endstone

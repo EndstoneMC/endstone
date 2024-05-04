@@ -18,6 +18,7 @@
 #include "endstone/player.h"
 
 class Player;
+class ServerNetworkHandler;
 
 namespace endstone::detail {
 
@@ -54,11 +55,15 @@ public:
     void sendRawMessage(std::string message) const override;
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
+    void kick(std::string message) const override;
 
     void disconnect();
 
 private:
+    friend class ::ServerNetworkHandler;
+
     ::Player &player_;
+    ::ServerNetworkHandler *network_handler_;
     UUID uuid_;
     SocketAddress address_;
 };

@@ -29,17 +29,17 @@ public:
 private:
     BEDROCK_API void tickSimtime(int, int);
 
-    GameCallbacks &callbacks_;                                           // +24
-    IMinecraftEventing &eventing_;                                       // +32
+    GameCallbacks *callbacks_;                                           // +24
+    IMinecraftEventing *eventing_;                                       // +32
     std::unique_ptr<ResourcePackManager> resource_pack_manager_;         // +40
     std::unique_ptr<StructureManager> structure_manager_;                // +48
     std::shared_ptr<GameModuleServer> game_module_server_;               // +56
-    AllowList &allow_list_;                                              // +72
+    AllowList *allow_list_;                                              // +72
     PermissionsFile *permissions_file_;                                  // +80
     std::unique_ptr<PrivateKeyManager> private_key_manager_;             // +88
     std::string unk3_;                                                   // +96
     Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;  // +128
-    ServerMetrics &metrics_;                                             // +144
+    ServerMetrics *metrics_;                                             // +144
     bool unk4_;                                                          // +152
     bool unk5_;                                                          // +153
     double elapsed_time_seconds_;                                        // +160
