@@ -43,7 +43,7 @@ public:
     bool removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
-    [[nodiscard]] const CommandSender *asCommandSender() const override;
+    [[nodiscard]] CommandSender *asCommandSender() const override;
     void clearPermissions();
 
 private:

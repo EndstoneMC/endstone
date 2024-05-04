@@ -23,6 +23,7 @@
 namespace endstone {
 
 class Server;
+class Player;
 
 /**
  * @brief Represents a command sender
@@ -33,9 +34,24 @@ public:
     ~CommandSender() override = default;
 
     // Permissible
-    [[nodiscard]] const CommandSender *asCommandSender() const override
+    /**
+     * Cast a Permissible to CommandSender
+     *
+     * @return CommandSender, nullptr if not a CommandSender
+     */
+    [[nodiscard]] CommandSender *asCommandSender() const override
     {
-        return this;
+        return const_cast<CommandSender *>(this);
+    }
+
+    /**
+     * Cast a CommandSender to Player
+     *
+     * @return Player, nullptr if not a Player
+     */
+    [[nodiscard]] virtual Player *asPlayer() const
+    {
+        return nullptr;
     }
 
     /**

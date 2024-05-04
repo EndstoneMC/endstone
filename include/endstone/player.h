@@ -33,6 +33,12 @@ public:
 
     ~Player() override = default;
 
+    // CommandSender
+    [[nodiscard]] Player *asPlayer() const override
+    {
+        return const_cast<Player *>(this);
+    }
+
     /**
      * Returns the UUID of this player
      *

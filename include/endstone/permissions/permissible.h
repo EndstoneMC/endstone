@@ -120,6 +120,6 @@ public:
      */
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 
-    [[nodiscard]] virtual const CommandSender *asCommandSender() const = 0;
+    [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
 };
 }  // namespace endstone
