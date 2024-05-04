@@ -16,6 +16,8 @@
 
 #include <cmath>
 
+namespace endstone {
+
 template <typename T>
 class Vector {
 public:
@@ -96,3 +98,5 @@ private:
     T y_;
     T z_;
 };
+
+}  // namespace endstone
