@@ -134,14 +134,17 @@ class CommandExecutor:
         Executes the given command, returning its success.
         """
 class CommandSender(Permissible):
+    def as_player(self) -> Player:
+        """
+        Cast to a Player instance
+        """
+    def send_error_message(self, message: str) -> None:
+        """
+        Sends this sender an error message
+        """
     def send_message(self, message: str) -> None:
         """
         Sends this sender a message
-        """
-    @property
-    def as_player(self) -> Player:
-        """
-        Cast to a Player
         """
     @property
     def name(self) -> str:
