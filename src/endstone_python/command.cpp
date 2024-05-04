@@ -66,7 +66,7 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender")
-        .def("as_player", &CommandSender::asPlayer, "Cast to a Player instance");
+        .def("as_player", &CommandSender::asPlayer, "Cast to a Player instance", py::return_value_policy::reference);
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
