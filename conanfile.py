@@ -23,6 +23,7 @@ class EndstoneRecipe(ConanFile):
     default_options = {
         "shared": False,
         "fPIC": True,
+        "boost/*:header_only": True,
         "capstone/*:arm": False,
         "capstone/*:m68k": False,
         "capstone/*:mips": False,
@@ -103,15 +104,17 @@ class EndstoneRecipe(ConanFile):
             raise ConanInvalidConfiguration(f"{self.ref} can only not be built on {self.settings.os}.")
 
     def requirements(self):
-        self.requires("spdlog/1.12.0")
+        self.requires("boost/1.85.0")
+        self.requires("concurrentqueue/1.0.4")
+        self.requires("cpptrace/0.5.2")
+        self.requires("eigen/3.4.0")
+        self.requires("entt/3.13.0")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
-        self.requires("pybind11/2.11.1")
         self.requires("funchook/1.1.3")
         self.requires("magic_enum/0.9.5")
-        self.requires("entt/3.13.0")
-        self.requires("cpptrace/0.5.2")
         self.requires("ms-gsl/4.0.0")
-        self.requires("concurrentqueue/1.0.4")
+        self.requires("pybind11/2.11.1")
+        self.requires("spdlog/1.12.0")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
