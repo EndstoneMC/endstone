@@ -139,6 +139,11 @@ class CommandSender(Permissible):
         Sends this sender a message
         """
     @property
+    def as_player(self) -> Player:
+        """
+        Cast to a Player
+        """
+    @property
     def name(self) -> str:
         """
         Gets the name of this command sender
@@ -600,6 +605,10 @@ class PermissionDefault:
     def value(self) -> int:
         ...
 class Player(HumanActor):
+    def kick(self, message: str) -> None:
+        """
+        Kicks player with custom kick message.
+        """
     def send_popup(self, message: str) -> None:
         """
         Sends this player a popup message

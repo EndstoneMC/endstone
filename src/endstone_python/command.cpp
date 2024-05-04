@@ -52,16 +52,17 @@ Command createCommand(std::string name, const std::optional<std::string> &descri
 }
 }  // namespace
 
-void init_command(py::module &m)
+void init_command(py::module &m, py::class_<CommandSender, Permissible> &command_sender)
 {
-    py::class_<CommandSender, Permissible>(m, "CommandSender")
+    command_sender
         .def(
             "send_message",
             [](const CommandSender &sender, const std::string &message) { sender.sendMessage(message); },
             py::arg("message"), "Sends this sender a message")
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
-        .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
+        .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender")
+        .def_property_readonly("as_player", &CommandSender::asPlayer, "Cast to a Player");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
