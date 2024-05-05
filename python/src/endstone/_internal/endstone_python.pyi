@@ -5,6 +5,16 @@ import uuid
 __all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
+    def level(self) -> Level:
+        """
+        Gets the current Level this actor resides in.
+        """
+    @property
+    def location(self) -> Location:
+        """
+        Gets the actor's current position.
+        """
+    @property
     def runtime_id(self) -> int:
         """
         Returns the runtime id for this actor.

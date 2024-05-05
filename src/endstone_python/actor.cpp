@@ -17,15 +17,17 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/actor/human.h"
+#include "endstone/level/level.h"
 
 namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_actor(py::module &m)
+void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
 {
-    py::class_<Actor, CommandSender>(m, "Actor")
-        .def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.");
+    actor.def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
+        .def_property_readonly("location", &Actor::getLocation, "Gets the actor's current position.")
+        .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.");
 
     py::class_<HumanActor, Actor>(m, "HumanActor");
 }

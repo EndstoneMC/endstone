@@ -41,7 +41,7 @@ void init_plugin(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
-void init_actor(py::module_ &);
+void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor);
 void init_player(py::module_ &);
 void init_level(py::module_ &);
 void init_server(py::class_<Server> &server);
@@ -61,6 +61,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission = py::class_<Permission>(m, "Permission");
     auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
     auto server = py::class_<Server>(m, "Server");
+    auto actor = py::class_<Actor, CommandSender>(m, "Actor");
 
     init_color_format(m);
     init_game_mode(m);
@@ -68,13 +69,13 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     init_util(m);
 
-    init_actor(m);
+    init_level(m);
+    init_actor(m, actor);
     init_player(m);
     init_command(m, command_sender);
     init_plugin(m);
     init_scheduler(m);
     init_permissions(m, permissible, permission, permission_default);
-    init_level(m);
     init_server(server);
     init_event(m, event, event_priority);
 }
