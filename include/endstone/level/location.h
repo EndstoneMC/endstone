@@ -26,8 +26,8 @@ namespace endstone {
  */
 class Location : public Position {
 public:
-    Location(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y, double z,
-             float pitch = 0.0, float yaw = 0.0)
+    Location(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y,
+             double z, float pitch = 0.0, float yaw = 0.0)
         : Position(level, dimension, x, y, z), pitch_(pitch), yaw_(yaw)
     {
     }

@@ -104,9 +104,9 @@ Location EndstoneActor::getLocation() const
 {
     const auto &position = actor_.getPosition();
     const auto &rotation = actor_.getRotation();
-    // TODO(fixme): add getDimension and pass it to the constructor
+
     return {static_cast<EndstoneLevel &>(getLevel()).shared_from_this(),
-            {},
+            nullptr,  // TODO(fixme): add getDimension and pass it to the constructor
             position.x,
             position.y,
             position.z,

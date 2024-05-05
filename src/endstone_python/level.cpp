@@ -35,15 +35,24 @@ void init_level(py::module_ &m)
 
     py::class_<Dimension, std::shared_ptr<Dimension>>(m, "Dimension");
 
-    py::class_<endstone::Position, endstone::Vector<double>>(m, "Position")
-        .def(py::init<const std::shared_ptr<endstone::Level> &, const std::shared_ptr<endstone::Dimension> &, double,
-                      double, double>(),
+    py::class_<Position, Vector<double>>(m, "Position")
+        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, double, double, double>(),
              py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
-        .def_property("level", &endstone::Position::getLevel, &endstone::Position::setLevel,
-                      py::return_value_policy::reference, "The Level that contains this position")
-        .def_property("dimension", &endstone::Position::getDimension, &endstone::Position::setDimension,
-                      py::return_value_policy::reference,
-                      "The Dimension that contains this position");  // TODO(fixme): add __repr__
+        .def_property("level", &Position::getLevel, &Position::setLevel, py::return_value_policy::reference,
+                      "The Level that contains this position")
+        .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
+                      "The Dimension that contains this position");
+    // TODO(fixme): add __repr__
+
+    py::class_<Location, Position>(m, "Location")
+        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, double, double, double, float,
+                      float>(),
+             py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
+             py::arg("yaw") = 0.0)
+        .def_property("pitch", &Location::getPitch, &Location::setPitch,
+                      "The pitch of this location, measured in degrees.")
+        .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.");
+    // TODO(fixme): add __repr__
 }
 
 }  // namespace endstone::detail

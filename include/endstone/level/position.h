@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <optional>
 
 #include "endstone/util/vector.h"
 
@@ -30,8 +31,14 @@ class Position : public Vector<double> {
 public:
     Position(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y,
              double z)
-        : Vector(x, y, z), level_(level), dimension_(dimension)
+        : Vector(x, y, z)
     {
+        if (level) {
+            level_ = level;
+        }
+        if (dimension) {
+            dimension_ = dimension;
+        }
     }
 
     /**
@@ -39,12 +46,16 @@ public:
      *
      * @return Level that contains this position
      */
-    [[nodiscard]] Level &getLevel() const
+    [[nodiscard]] std::shared_ptr<Level> getLevel() const
     {
-        if (level_.expired()) {
+        if (!level_.has_value()) {
+            return nullptr;
+        }
+
+        if (level_.value().expired()) {
             throw std::runtime_error("Level unloaded");
         }
-        return *level_.lock();
+        return level_.value().lock();
     }
 
     /**
@@ -62,12 +73,16 @@ public:
      *
      * @return Dimension that contains this position
      */
-    [[nodiscard]] Dimension &getDimension() const
+    [[nodiscard]] std::shared_ptr<Dimension> getDimension() const
     {
-        if (dimension_.expired()) {
+        if (!dimension_.has_value()) {
+            return nullptr;
+        }
+
+        if (dimension_.value().expired()) {
             throw std::runtime_error("Dimension unloaded");
         }
-        return *dimension_.lock();
+        return dimension_.value().lock();
     }
 
     /**
@@ -81,8 +96,8 @@ public:
     }
 
 private:
-    std::weak_ptr<Level> level_;
-    std::weak_ptr<Dimension> dimension_;
+    std::optional<std::weak_ptr<Level>> level_;
+    std::optional<std::weak_ptr<Dimension>> dimension_;
 };
 
 }  // namespace endstone
