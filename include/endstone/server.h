@@ -104,7 +104,7 @@ public:
      *
      * @return a list of levels
      */
-    [[nodiscard]] virtual std::vector<Level *> getLevels() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Level>> getLevels() const = 0;
 
     /**
      * Gets the level with the given name.
@@ -112,7 +112,7 @@ public:
      * @param name the name of the world to retrieve
      * @return a level with the given name, or nullptr if none exists
      */
-    [[nodiscard]] virtual Level *getLevel(std::string name) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Level> getLevel(std::string name) const = 0;
 
     /**
      * Gets a list of all currently online players.

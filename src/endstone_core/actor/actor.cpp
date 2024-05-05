@@ -105,18 +105,14 @@ Location EndstoneActor::getLocation() const
     const auto &position = actor_.getPosition();
     const auto &rotation = actor_.getRotation();
 
-    return {static_cast<EndstoneLevel &>(getLevel()).shared_from_this(),
+    return {getLevel(),
             nullptr,  // TODO(fixme): add getDimension and pass it to the constructor
-            position.x,
-            position.y,
-            position.z,
-            rotation.x,
-            rotation.y};
+            position.x, position.y, position.z, rotation.x, rotation.y};
 }
 
-Level &EndstoneActor::getLevel() const
+std::shared_ptr<Level> EndstoneActor::getLevel() const
 {
-    return *server_.getLevel(actor_.getLevel().getLevelId());
+    return std::move(server_.getLevel(actor_.getLevel().getLevelId()));
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()

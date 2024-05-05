@@ -49,7 +49,7 @@ public:
     // Actor
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     Location getLocation() const override;
-    Level &getLevel() const override;
+    std::shared_ptr<Level> getLevel() const override;
 
     // Player
     [[nodiscard]] UUID getUniqueId() const override;

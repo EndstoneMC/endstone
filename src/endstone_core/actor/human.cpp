@@ -107,7 +107,7 @@ Location EndstoneHumanActor::getLocation() const
     return EndstoneActor::getLocation();
 }
 
-Level &EndstoneHumanActor::getLevel() const
+std::shared_ptr<Level> EndstoneHumanActor::getLevel() const
 {
     return EndstoneActor::getLevel();
 }

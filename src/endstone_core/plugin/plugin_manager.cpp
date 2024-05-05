@@ -173,8 +173,8 @@ void EndstonePluginManager::callEvent(Event &event)
             handler->callEvent(event);
         }
         catch (std::exception &e) {
-            server_.getLogger().critical("Could not pass event {} to plugin {}. {}", event.getEventName(),
-                                         plugin.getDescription().getFullName(), e.what());
+            server_.getLogger().error("Could not pass event {} to plugin {}. {}", event.getEventName(),
+                                      plugin.getDescription().getFullName(), e.what());
         }
     }
 }

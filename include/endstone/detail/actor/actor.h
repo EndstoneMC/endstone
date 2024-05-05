@@ -51,7 +51,7 @@ public:
     // Actor
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;
-    [[nodiscard]] Level &getLevel() const override;
+    [[nodiscard]] std::shared_ptr<Level> getLevel() const override;
 
 protected:
     EndstoneServer &server_;

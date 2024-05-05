@@ -44,18 +44,11 @@ public:
     /**
      * Gets the level that this position resides in
      *
-     * @return Level that contains this position
+     * @return Level that contains this position, or nullptr if the level is not set or is unloaded.
      */
     [[nodiscard]] std::shared_ptr<Level> getLevel() const
     {
-        if (!level_.has_value()) {
-            return nullptr;
-        }
-
-        if (level_.value().expired()) {
-            throw std::runtime_error("Level unloaded");
-        }
-        return level_.value().lock();
+        return level_.lock();
     }
 
     /**
@@ -71,18 +64,11 @@ public:
     /**
      * Gets the dimension that this position resides in
      *
-     * @return Dimension that contains this position
+     * @return Dimension that contains this position, or nullptr if the level is not set or is unloaded.
      */
     [[nodiscard]] std::shared_ptr<Dimension> getDimension() const
     {
-        if (!dimension_.has_value()) {
-            return nullptr;
-        }
-
-        if (dimension_.value().expired()) {
-            throw std::runtime_error("Dimension unloaded");
-        }
-        return dimension_.value().lock();
+        return dimension_.lock();
     }
 
     /**
@@ -96,8 +82,8 @@ public:
     }
 
 private:
-    std::optional<std::weak_ptr<Level>> level_;
-    std::optional<std::weak_ptr<Dimension>> dimension_;
+    std::weak_ptr<Level> level_;
+    std::weak_ptr<Dimension> dimension_;
 };
 
 }  // namespace endstone

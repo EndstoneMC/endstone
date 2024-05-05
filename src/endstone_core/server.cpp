@@ -145,24 +145,24 @@ Scheduler &EndstoneServer::getScheduler() const
     return *scheduler_;
 }
 
-std::vector<Level *> EndstoneServer::getLevels() const
+std::vector<std::shared_ptr<Level>> EndstoneServer::getLevels() const
 {
-    std::vector<Level *> levels;
+    std::vector<std::shared_ptr<Level>> levels;
     levels.reserve(levels_.size());
     for (const auto &it : levels_) {
-        levels.push_back(it.second.get());
+        levels.push_back(it.second);
     }
     return levels;
 }
 
-Level *EndstoneServer::getLevel(std::string name) const
+std::shared_ptr<Level> EndstoneServer::getLevel(std::string name) const
 {
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
     auto it = levels_.find(name);
     if (it == levels_.end()) {
         return nullptr;
     }
-    return it->second.get();
+    return it->second;
 }
 
 void EndstoneServer::addLevel(std::unique_ptr<Level> level)

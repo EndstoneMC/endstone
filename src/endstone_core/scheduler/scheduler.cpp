@@ -139,7 +139,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
                 task->run();
             }
             catch (std::exception &e) {
-                server_.getLogger().critical("Could not execute task with id {}: {}", task->getTaskId(), e.what());
+                server_.getLogger().error("Could not execute task with id {}: {}", task->getTaskId(), e.what());
             }
 
             current_task_ = 0;

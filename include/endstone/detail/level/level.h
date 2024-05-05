@@ -26,7 +26,7 @@ using BedrockLevel = ::Level;
 
 namespace endstone::detail {
 
-class EndstoneLevel : public endstone::Level, public std::enable_shared_from_this<EndstoneLevel> {
+class EndstoneLevel : public endstone::Level {
 public:
     explicit EndstoneLevel(BedrockLevel &level);
     ~EndstoneLevel() override = default;
