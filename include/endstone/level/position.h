@@ -23,6 +23,9 @@ namespace endstone {
 class Level;
 class Dimension;
 
+/**
+ * @brief Represents a 3-dimensional position in a dimension within a level.
+ */
 class Position : Vector<double> {
 public:
     Position(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
@@ -31,21 +34,41 @@ public:
     {
     }
 
+    /**
+     * Gets the level that this position resides in
+     *
+     * @return Level that contains this position
+     */
     [[nodiscard]] const std::weak_ptr<Level> &getLevel() const
     {
         return level_;
     }
 
+    /**
+     * Sets the level that this position resides in
+     *
+     * @param level New level that this position resides in
+     */
     void setLevel(const std::weak_ptr<Level> &level)
     {
         level_ = level;
     }
 
+    /**
+     * Gets the dimension that this position resides in
+     *
+     * @return Dimension that contains this position
+     */
     [[nodiscard]] const std::weak_ptr<Dimension> &getDimension() const
     {
         return dimension_;
     }
 
+    /**
+     * Sets the dimension that this position resides in
+     *
+     * @param dimension New dimension that this position resides in
+     */
     void setDimension(const std::weak_ptr<Dimension> &dimension)
     {
         dimension_ = dimension;

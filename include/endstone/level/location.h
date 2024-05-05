@@ -21,6 +21,9 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a 3-dimensional location in a dimension within a level.
+ */
 class Location : Position {
 public:
     Location(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
@@ -29,21 +32,57 @@ public:
     {
     }
 
+    /**
+     * Gets the pitch of this location, measured in degrees.
+     *
+     * @return the incline's pitch
+     */
     [[nodiscard]] float getPitch() const
     {
         return pitch_;
     }
 
+    /**
+     * Sets the pitch of this location, measured in degrees.
+     * <ul>
+     * <li>A pitch of 0 represents level forward facing.
+     * <li>A pitch of 90 represents downward facing, or negative y
+     *     direction.
+     * <li>A pitch of -90 represents upward facing, or positive y direction.
+     * </ul>
+     * Increasing pitch values the equivalent of looking down.
+     *
+     * @param pitch new incline's pitch
+     */
     void setPitch(float pitch)
     {
         pitch_ = pitch;
     }
 
+    /**
+     * Gets the yaw of this location, measured in degrees.
+     *
+     * @return the rotation's yaw
+     */
     [[nodiscard]] float getYaw() const
     {
         return yaw_;
     }
 
+    /**
+     * Sets the yaw of this location, measured in degrees.
+     * <ul>
+     * <li>A yaw of 0 or 360 represents the positive z direction.
+     * <li>A yaw of 180 represents the negative z direction.
+     * <li>A yaw of 90 represents the negative x direction.
+     * <li>A yaw of 270 represents the positive x direction.
+     * </ul>
+     * Increasing yaw values are the equivalent of turning to your
+     * right-facing, increasing the scale of the next respective axis, and
+     * decreasing the scale of the previous axis.
+     *
+     * @param yaw new rotation's yaw
+     */
     void setYaw(float yaw)
     {
         yaw_ = yaw;

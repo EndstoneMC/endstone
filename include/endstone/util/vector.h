@@ -18,36 +18,73 @@
 
 namespace endstone {
 
+/**
+ * @brief Represents a 3-dimensional vector.
+ */
 template <typename T>
 class Vector {
 public:
+    constexpr Vector() : x_(0), y_(0), z_(0) {}
     constexpr Vector(T x, T y, T z) : x_(x), y_(y), z_(z) {}
 
+    /**
+     * Gets the X component.
+     *
+     * @return The X component.
+     */
     constexpr T getX() const
     {
         return x_;
     }
 
+    /**
+     * Set the X component.
+     *
+     * @param x The new X component.
+     * @return This vector.
+     */
     constexpr void setX(T x)
     {
         x_ = x;
     }
 
+    /**
+     * Gets the Y component.
+     *
+     * @return The Y component.
+     */
     constexpr T getY() const
     {
         return y_;
     }
 
+    /**
+     * Set the Y component.
+     *
+     * @param y The new Y component.
+     * @return This vector.
+     */
     constexpr void setY(T y)
     {
         y_ = y;
     }
 
+    /**
+     * Gets the Z component.
+     *
+     * @return The Z component.
+     */
     constexpr T getZ() const
     {
         return z_;
     }
 
+    /**
+     * Set the Z component.
+     *
+     * @param z The new Z component.
+     * @return This vector.
+     */
     constexpr void setZ(T z)
     {
         z_ = z;
@@ -73,24 +110,47 @@ public:
         return Vector(x_ / other.x_, y_ / other.y_, z_ / other.z_);
     }
 
+    /**
+     * Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
+     *
+     * @return the magnitude
+     */
     [[nodiscard]] constexpr double length() const
     {
         return std::sqrt(lengthSquared());
     }
 
+    /**
+     * Gets the magnitude of the vector squared.
+     *
+     * @return the magnitude
+     */
     [[nodiscard]] constexpr double lengthSquared() const
     {
-        return std::pow(x_, 2) + std::pow(y_, 2) + std::pow(z_, 2);
+        return x_ * x_ + y_ * y_ + z_ * z_;
     }
 
+    /**
+     * Get the distance between this vector and another.
+     *
+     * @param other The other vector
+     * @return the distance
+     */
     [[nodiscard]] constexpr double distance(const Vector<T> &other) const
     {
         return std::sqrt(distanceSquared(other));
     }
 
+    /**
+     * Get the squared distance between this vector and another.
+     *
+     * @param other The other vector
+     * @return the distance
+     */
     [[nodiscard]] constexpr double distanceSquared(const Vector<T> &other) const
     {
-        return std::pow(x_ - other.x_, 2) + std::pow(y_ - other.y_, 2) + std::pow(z_ - other.z_, 2);
+        return (x_ - other.x_) * (x_ - other.x_) + (y_ - other.y_) * (y_ - other.y_) +
+               (z_ - other.z_) * (z_ - other.z_);
     }
 
 private:
