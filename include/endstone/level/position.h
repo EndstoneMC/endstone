@@ -26,9 +26,9 @@ class Dimension;
 /**
  * @brief Represents a 3-dimensional position in a dimension within a level.
  */
-class Position : Vector<double> {
+class Position : public Vector<double> {
 public:
-    Position(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
+    Position(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y,
              double z)
         : Vector(x, y, z), level_(level), dimension_(dimension)
     {
@@ -39,9 +39,12 @@ public:
      *
      * @return Level that contains this position
      */
-    [[nodiscard]] const std::weak_ptr<Level> &getLevel() const
+    [[nodiscard]] Level &getLevel() const
     {
-        return level_;
+        if (level_.expired()) {
+            throw std::runtime_error("Level unloaded");
+        }
+        return *level_.lock();
     }
 
     /**
@@ -49,7 +52,7 @@ public:
      *
      * @param level New level that this position resides in
      */
-    void setLevel(const std::weak_ptr<Level> &level)
+    void setLevel(const std::shared_ptr<Level> &level)
     {
         level_ = level;
     }
@@ -59,9 +62,12 @@ public:
      *
      * @return Dimension that contains this position
      */
-    [[nodiscard]] const std::weak_ptr<Dimension> &getDimension() const
+    [[nodiscard]] Dimension &getDimension() const
     {
-        return dimension_;
+        if (dimension_.expired()) {
+            throw std::runtime_error("Dimension unloaded");
+        }
+        return *dimension_.lock();
     }
 
     /**
@@ -69,7 +75,7 @@ public:
      *
      * @param dimension New dimension that this position resides in
      */
-    void setDimension(const std::weak_ptr<Dimension> &dimension)
+    void setDimension(const std::shared_ptr<Dimension> &dimension)
     {
         dimension_ = dimension;
     }

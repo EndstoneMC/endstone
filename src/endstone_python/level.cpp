@@ -17,17 +17,33 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/level/dimension.h"
+#include "endstone/level/location.h"
+#include "endstone/level/position.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {
 
 void init_level(py::module_ &m)
 {
-    py::class_<Level>(m, "Level")
+    py::class_<Level, std::shared_ptr<Level>>(m, "Level")
         .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level")
         .def_property("time", &Level::getTime, &Level::setTime,
                       "Gets and sets the relative in-game time on the server");
+
+    py::class_<Dimension, std::shared_ptr<Dimension>>(m, "Dimension");
+
+    py::class_<endstone::Position, endstone::Vector<double>>(m, "Position")
+        .def(py::init<const std::shared_ptr<endstone::Level> &, const std::shared_ptr<endstone::Dimension> &, double,
+                      double, double>(),
+             py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
+        .def_property("level", &endstone::Position::getLevel, &endstone::Position::setLevel,
+                      py::return_value_policy::reference, "The Level that contains this position")
+        .def_property("dimension", &endstone::Position::getDimension, &endstone::Position::setDimension,
+                      py::return_value_policy::reference,
+                      "The Dimension that contains this position");  // TODO(fixme): add __repr__
 }
 
 }  // namespace endstone::detail

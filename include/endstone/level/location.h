@@ -24,10 +24,10 @@ namespace endstone {
 /**
  * @brief Represents a 3-dimensional location in a dimension within a level.
  */
-class Location : Position {
+class Location : public Position {
 public:
-    Location(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
-             double z, float pitch = 0.0, float yaw = 0.0)
+    Location(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y, double z,
+             float pitch = 0.0, float yaw = 0.0)
         : Position(level, dimension, x, y, z), pitch_(pitch), yaw_(yaw)
     {
     }

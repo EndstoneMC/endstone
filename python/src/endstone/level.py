@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import Level
+from endstone._internal.endstone_python import Level, Position
 
-__all__ = ["Level"]
+__all__ = ["Level", "Position"]

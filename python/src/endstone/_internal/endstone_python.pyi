@@ -2,7 +2,7 @@ from __future__ import annotations
 import datetime
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
     def runtime_id(self) -> int:
@@ -157,6 +157,8 @@ class CommandSender(Permissible):
         """
         Returns the server instance that this command is running on
         """
+class Dimension:
+    pass
 class Event:
     def asynchronous(self) -> bool:
         ...
@@ -1014,6 +1016,25 @@ class PluginManager:
         """
         Gets a list of all currently loaded plugins
         """
+class Position(Vector):
+    def __init__(self, level: Level, dimension: Dimension, x: float, y: float, z: float) -> None:
+        ...
+    @property
+    def dimension(self) -> Dimension:
+        """
+        The Dimension that contains this position
+        """
+    @dimension.setter
+    def dimension(self, arg1: Dimension) -> None:
+        ...
+    @property
+    def level(self) -> Level:
+        """
+        The Level that contains this position
+        """
+    @level.setter
+    def level(self, arg1: Level) -> None:
+        ...
 class Scheduler:
     def cancel_task(self, id: int) -> None:
         """

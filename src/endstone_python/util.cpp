@@ -48,10 +48,7 @@ void init_util(py::module &m)
                  return "<Vector x: " + std::to_string(v.getX()) + " y: " + std::to_string(v.getY()) +
                         " z: " + std::to_string(v.getZ()) + ">";
              })
-        .def("__str__",
-             [](const Vector<double> &v) {
-                 return std::to_string(v.getX()) + "," + std::to_string(v.getY()) + "," + std::to_string(v.getZ());
-             })
+        .def("__str__", &Vector<double>::toString)
         .def(py::self + py::self)
         .def(py::self - py::self)
         .def(py::self * py::self)
