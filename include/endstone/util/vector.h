@@ -110,6 +110,78 @@ public:
         return Vector(x_ / other.x_, y_ / other.y_, z_ / other.z_);
     }
 
+    Vector<T> &operator+=(const Vector<T> &other)
+    {
+        x_ += other.x_;
+        y_ += other.y_;
+        z_ += other.z_;
+        return *this;
+    }
+
+    Vector<T> &operator-=(const Vector<T> &other)
+    {
+        x_ -= other.x_;
+        y_ -= other.y_;
+        z_ -= other.z_;
+        return *this;
+    }
+
+    Vector<T> &operator*=(const Vector<T> &other)
+    {
+        x_ *= other.x_;
+        y_ *= other.y_;
+        z_ *= other.z_;
+        return *this;
+    }
+
+    Vector<T> &operator/=(const Vector<T> &other)
+    {
+        x_ /= other.x_;
+        y_ /= other.y_;
+        z_ /= other.z_;
+        return *this;
+    }
+
+    Vector<T> operator+(T scalar) const
+    {
+        return Vector<T>(x_ + scalar, y_ + scalar, z_ + scalar);
+    }
+
+    Vector<T> operator-(T scalar) const
+    {
+        return Vector<T>(x_ - scalar, y_ - scalar, z_ - scalar);
+    }
+
+    Vector<T> operator*(T scalar) const
+    {
+        return Vector<T>(x_ * scalar, y_ * scalar, z_ * scalar);
+    }
+
+    Vector<T> operator/(T scalar) const
+    {
+        return Vector<T>(x_ / scalar, y_ / scalar, z_ / scalar);
+    }
+
+    friend Vector<T> operator+(T scalar, const Vector<T> &v)
+    {
+        return Vector<T>(scalar + v.x_, scalar + v.y_, scalar + v.z_);
+    }
+
+    friend Vector<T> operator-(T scalar, const Vector<T> &v)
+    {
+        return Vector<T>(scalar - v.x_, scalar - v.y_, scalar - v.z_);
+    }
+
+    friend Vector<T> operator*(T scalar, const Vector<T> &v)
+    {
+        return Vector<T>(scalar * v.x_, scalar * v.y_, scalar * v.z_);
+    }
+
+    friend Vector<T> operator/(T scalar, const Vector<T> &v)
+    {
+        return Vector<T>(scalar / v.x_, scalar / v.y_, scalar / v.z_);
+    }
+
     /**
      * Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
      *

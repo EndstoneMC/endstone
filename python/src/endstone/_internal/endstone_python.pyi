@@ -2,7 +2,7 @@ from __future__ import annotations
 import datetime
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
     def runtime_id(self) -> int:
@@ -1302,6 +1302,99 @@ class ThunderChangeEvent(Event):
         """
         Gets the state of thunder that the world is being set to
         """
+class Vector:
+    @typing.overload
+    def __add__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __add__(self, arg0: float) -> Vector:
+        ...
+    def __iadd__(self, arg0: Vector) -> Vector:
+        ...
+    def __imul__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    @typing.overload
+    def __init__(self, arg0: float, arg1: float, arg2: float) -> None:
+        ...
+    def __isub__(self, arg0: Vector) -> Vector:
+        ...
+    def __itruediv__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __mul__(self, arg0: float) -> Vector:
+        ...
+    def __radd__(self, arg0: float) -> Vector:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __rmul__(self, arg0: float) -> Vector:
+        ...
+    def __rsub__(self, arg0: float) -> Vector:
+        ...
+    def __rtruediv__(self, arg0: float) -> Vector:
+        ...
+    def __str__(self) -> str:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __sub__(self, arg0: float) -> Vector:
+        ...
+    @typing.overload
+    def __truediv__(self, arg0: Vector) -> Vector:
+        ...
+    @typing.overload
+    def __truediv__(self, arg0: float) -> Vector:
+        ...
+    def distance(self, arg0: Vector) -> float:
+        """
+        The distance between this Vector and another
+        """
+    def distanceSquared(self, arg0: Vector) -> float:
+        """
+        The squared distance between this Vector and another
+        """
+    @property
+    def length(self) -> float:
+        """
+        The magnitude of the Vector
+        """
+    @property
+    def lengthSquared(self) -> float:
+        """
+        The squared magnitude of the Vector
+        """
+    @property
+    def x(self) -> float:
+        """
+        The X component of the vector
+        """
+    @x.setter
+    def x(self, arg1: float) -> None:
+        ...
+    @property
+    def y(self) -> float:
+        """
+        The Y component of the vector
+        """
+    @y.setter
+    def y(self, arg1: float) -> None:
+        ...
+    @property
+    def z(self) -> float:
+        """
+        The Z component of the vector
+        """
+    @z.setter
+    def z(self, arg1: float) -> None:
+        ...
 class WeatherChangeEvent(Event):
     @property
     def level(self) -> Level:

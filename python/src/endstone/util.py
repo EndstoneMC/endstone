@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import SocketAddress
+from endstone._internal.endstone_python import SocketAddress, Vector
 
-__all__ = ["SocketAddress"]
+__all__ = ["SocketAddress", "Vector"]
