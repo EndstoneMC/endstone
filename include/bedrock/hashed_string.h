@@ -14,10 +14,12 @@
 
 #pragma once
 
-class Vec3 {
+#include <cstdint>
+#include <string>
+
+class HashedString {
 public:
-    float x;
-    float y;
-    float z;
+    std::uint64_t hash;
+    std::string str;
+    void *unknown;
 };
-static_assert(sizeof(Vec3) == 12);

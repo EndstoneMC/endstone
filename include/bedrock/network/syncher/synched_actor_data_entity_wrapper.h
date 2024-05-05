@@ -14,10 +14,11 @@
 
 #pragma once
 
-class Vec3 {
+#include <memory>
+
+class SynchedActorDataEntityWrapper {
 public:
-    float x;
-    float y;
-    float z;
+    char pad[24];
+    std::weak_ptr<void *> ptr;
 };
-static_assert(sizeof(Vec3) == 12);
+static_assert(sizeof(SynchedActorDataEntityWrapper) == 40);

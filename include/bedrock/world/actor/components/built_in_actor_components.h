@@ -14,10 +14,28 @@
 
 #pragma once
 
-class Vec3 {
-public:
-    float x;
-    float y;
-    float z;
+#include "bedrock/world/math/vec2.h"
+#include "bedrock/world/math/vec3.h"
+
+struct StateVectorComponent {
+    Vec3 position;
+    Vec3 position_delta;
+    Vec3 position_prev;
 };
-static_assert(sizeof(Vec3) == 12);
+
+struct AABBShapeComponent {};
+
+struct ActorRotationComponent {
+    Vec2 rotation;
+    Vec2 rotation_prev;
+};
+
+struct ActorWalkAnimationComponent {};
+
+struct BuiltInActorComponents {
+    StateVectorComponent *state_vector;
+    AABBShapeComponent *aabb;
+    ActorRotationComponent *rotation;
+    ActorWalkAnimationComponent *walk_animation;
+};
+static_assert(sizeof(BuiltInActorComponents) == 32);

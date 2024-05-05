@@ -69,7 +69,7 @@ Level &Actor::getLevel() const
 
 Vec3 const &Actor::getPosition() const
 {
-    return position_;
+    return components_.state_vector->position;
 }
 
 ActorRuntimeID Actor::getRuntimeID() const

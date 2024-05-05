@@ -107,10 +107,10 @@ class EndstoneRecipe(ConanFile):
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/0.5.2")
-        self.requires("eigen/3.4.0")
         self.requires("entt/3.13.0")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
+        self.requires("glm/cci.20230113")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
@@ -160,7 +160,7 @@ class EndstoneRecipe(ConanFile):
             "boost::boost",
             "concurrentqueue::concurrentqueue",
             "entt::entt",
-            "eigen::eigen",
+            "glm::glm",
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",

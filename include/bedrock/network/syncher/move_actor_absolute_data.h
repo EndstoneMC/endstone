@@ -14,10 +14,19 @@
 
 #pragma once
 
-class Vec3 {
+#include <cstdint>
+
+#include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/math/vec3.h"
+
+class MoveActorAbsoluteData {
 public:
-    float x;
-    float y;
-    float z;
+    ActorRuntimeID runtime_id;    // +0
+    std::int8_t flag;             // +8
+    Vec3 position;                // +12
+    std::int8_t x_rot_byte;       // +24
+    std::int8_t z_rot_byte;       // +25
+    std::int8_t y_head_rot_byte;  // +26
+    std::int8_t y_body_rot_byte;  // +27
 };
-static_assert(sizeof(Vec3) == 12);
+static_assert(sizeof(MoveActorAbsoluteData) == 32);

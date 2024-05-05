@@ -22,6 +22,7 @@ class ActorAnimationGroup;
 class ActorUnloadedChunkTransferEntry;
 class ActorDamageCause;
 class ActorDamageSource;
+class ActorDefinitionDescriptor;
 class ActorDefinitionGroup;
 class ActorDefinitionIdentifier;
 class ActorEvent;

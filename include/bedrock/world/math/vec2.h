@@ -14,10 +14,9 @@
 
 #pragma once
 
-class Vec3 {
+class Vec2 {
 public:
-    float x;
-    float y;
-    float z;
+    float rot_x;
+    float rot_y;
 };
-static_assert(sizeof(Vec3) == 12);
+static_assert(sizeof(Vec2) == 8);

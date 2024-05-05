@@ -19,18 +19,25 @@
 #include <string>
 #include <vector>
 
+#include <glm/glm.hpp>
+
 #include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
+#include "bedrock/hashed_string.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
+#include "bedrock/network/syncher/spatial_actor_network_data.h"
+#include "bedrock/network/syncher/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/components/built_in_actor_components.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
 #include "endstone/detail/actor/actor.h"
 
@@ -243,17 +250,26 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
 protected:
-    EntityContext context_;                            // +8
-    ActorInitializationMethod initialization_method_;  // +32
-    std::string unknown2_;                             // +40
-    std::array<char[16], 10> unknown3_;                // +72
-    std::int16_t unknown4_;                            // +232
-    ActorDefinitionGroup *actor_definitions_;          // +240
-    char pad_[336];                                    // +248 TODO: figure out the structure
-    WeakRef<Dimension> dimension_;                     // +584
-    Level *level_;                                     // +600
-    char pad2_[56];                                    // +608
-    Vec3 position_;                                    // +664
+    EntityContext context_;                                                   // +8
+    ActorInitializationMethod initialization_method_;                         // +32
+    std::string unknown2_;                                                    // +40
+    std::array<char[16], 10> unknown3_;                                       // +72  (+64)
+    std::int16_t unknown4_;                                                   // +232 (+224)
+    ActorDefinitionGroup *actor_definitions_;                                 // +240 (+232)
+    std::unique_ptr<ActorDefinitionDescriptor> actor_definition_desc_;        // +248 (+240)
+    std::shared_ptr<void *> unknown5_;                                        // +256 (+248)
+    std::string unknown6_;                                                    // +272 (+264)
+    char unknown7_[72];                                                       // +304 (+288)
+    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;  // +376 (+360)
+    std::int32_t unknown9_;                                                   // +392 (+384)
+    SynchedActorDataEntityWrapper data_;                                      // +400 (+392)
+    SpatialActorNetworkData spatial_data_;                                    // +448 (+432)
+    WeakRef<Dimension> dimension_;                                            // +584 (+576)
+    Level *level_;                                                            // +600 (+592)
+    HashedString unknown10_;                                                  // +608 (+600)
+    std::int32_t unknown11_;                                                  // +656 (+640)
+    BuiltInActorComponents components_;                                       // +664 (+648)
+    HashedString unknown12_;                                                  // +696 (+680)
 
 public:
     [[nodiscard]] endstone::detail::EndstoneActor &getEndstoneActor() const;
