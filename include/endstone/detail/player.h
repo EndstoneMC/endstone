@@ -47,7 +47,9 @@ public:
     void setOp(bool value) override;
 
     // Actor
-    std::uint64_t getRuntimeId() override;
+    [[nodiscard]] std::uint64_t getRuntimeId() const override;
+    Location getLocation() const override;
+    Level &getLevel() const override;
 
     // Player
     [[nodiscard]] UUID getUniqueId() const override;

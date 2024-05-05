@@ -97,9 +97,19 @@ void EndstoneHumanActor::setOp(bool value)
     perm_.recalculatePermissions();
 }
 
-std::uint64_t EndstoneHumanActor::getRuntimeId()
+std::uint64_t EndstoneHumanActor::getRuntimeId() const
 {
     return EndstoneActor::getRuntimeId();
+}
+
+Location EndstoneHumanActor::getLocation() const
+{
+    return EndstoneActor::getLocation();
+}
+
+Level &EndstoneHumanActor::getLevel() const
+{
+    return EndstoneActor::getLevel();
 }
 
 }  // namespace endstone::detail

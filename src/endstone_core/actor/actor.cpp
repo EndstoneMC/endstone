@@ -16,6 +16,8 @@
 
 #include "bedrock/command/command_utils.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/level/level.h"
+#include "endstone/detail/level/level.h"
 
 namespace endstone::detail {
 
@@ -93,9 +95,28 @@ void EndstoneActor::setOp(bool value)
     getPermissibleBase().setOp(value);
 }
 
-std::uint64_t EndstoneActor::getRuntimeId()
+std::uint64_t EndstoneActor::getRuntimeId() const
 {
     return actor_.getRuntimeID().id;
+}
+
+Location EndstoneActor::getLocation() const
+{
+    const auto &position = actor_.getPosition();
+    const auto &rotation = actor_.getRotation();
+    // TODO(fixme): add getDimension and pass it to the constructor
+    return {static_cast<EndstoneLevel &>(getLevel()).weak_from_this(),
+            {},
+            position.x,
+            position.y,
+            position.z,
+            rotation.x,
+            rotation.y};
+}
+
+Level &EndstoneActor::getLevel() const
+{
+    return *server_.getLevel(actor_.getLevel().getLevelId());
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()

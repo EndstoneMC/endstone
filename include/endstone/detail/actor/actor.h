@@ -22,6 +22,8 @@ class Actor;
 
 namespace endstone::detail {
 
+class EndstoneLevel;
+
 class EndstoneActor : public endstone::Actor {
 public:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
@@ -47,7 +49,9 @@ public:
     void setOp(bool value) override;
 
     // Actor
-    std::uint64_t getRuntimeId() override;
+    [[nodiscard]] std::uint64_t getRuntimeId() const override;
+    [[nodiscard]] Location getLocation() const override;
+    [[nodiscard]] Level &getLevel() const override;
 
 protected:
     EndstoneServer &server_;

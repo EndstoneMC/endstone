@@ -16,8 +16,6 @@
 
 #include <memory>
 
-#include "endstone/level/dimension.h"
-#include "endstone/level/level.h"
 #include "endstone/level/position.h"
 #include "endstone/util/vector.h"
 
@@ -25,7 +23,13 @@ namespace endstone {
 
 class Location : Position {
 public:
-    float getPitch() const
+    Location(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
+             double z, float pitch = 0.0, float yaw = 0.0)
+        : Position(level, dimension, x, y, z), pitch_(pitch), yaw_(yaw)
+    {
+    }
+
+    [[nodiscard]] float getPitch() const
     {
         return pitch_;
     }
@@ -35,7 +39,7 @@ public:
         pitch_ = pitch;
     }
 
-    float getYaw() const
+    [[nodiscard]] float getYaw() const
     {
         return yaw_;
     }

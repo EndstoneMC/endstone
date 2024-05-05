@@ -16,7 +16,7 @@
 
 class Vec2 {
 public:
-    float rot_x;
-    float rot_y;
+    float x;
+    float y;
 };
 static_assert(sizeof(Vec2) == 8);

@@ -16,7 +16,6 @@
 
 #include <string>
 
-#include "dimension.h"
 #include "endstone/actor/actor.h"
 
 namespace endstone {

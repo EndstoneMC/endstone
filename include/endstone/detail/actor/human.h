@@ -44,7 +44,9 @@ public:
     void setOp(bool value) override;
 
     // Actor
-    std::uint64_t getRuntimeId() override;
+    [[nodiscard]] std::uint64_t getRuntimeId() const override;
+    Location getLocation() const override;
+    Level &getLevel() const override;
 
 protected:
     PermissibleBase perm_;

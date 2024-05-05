@@ -16,20 +16,27 @@
 
 #include <memory>
 
-#include "endstone/level/dimension.h"
-#include "endstone/level/level.h"
 #include "endstone/util/vector.h"
 
 namespace endstone {
 
+class Level;
+class Dimension;
+
 class Position : Vector<double> {
 public:
+    Position(const std::weak_ptr<Level> &level, const std::weak_ptr<Dimension> &dimension, double x, double y,
+             double z)
+        : Vector(x, y, z), level_(level), dimension_(dimension)
+    {
+    }
+
     [[nodiscard]] const std::weak_ptr<Level> &getLevel() const
     {
         return level_;
     }
 
-    void setLevel(const std::shared_ptr<Level> &level)
+    void setLevel(const std::weak_ptr<Level> &level)
     {
         level_ = level;
     }
@@ -39,7 +46,7 @@ public:
         return dimension_;
     }
 
-    void setDimension(const std::shared_ptr<Dimension> &dimension)
+    void setDimension(const std::weak_ptr<Dimension> &dimension)
     {
         dimension_ = dimension;
     }

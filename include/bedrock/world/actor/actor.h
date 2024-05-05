@@ -245,6 +245,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;
+    [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);

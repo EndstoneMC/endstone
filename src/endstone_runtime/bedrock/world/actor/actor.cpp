@@ -72,6 +72,11 @@ Vec3 const &Actor::getPosition() const
     return components_.state_vector->position;
 }
 
+Vec2 const &Actor::getRotation() const
+{
+    return components_.rotation->rotation;
+}
+
 ActorRuntimeID Actor::getRuntimeID() const
 {
     return tryGetComponent<RuntimeIDComponent>()->id;

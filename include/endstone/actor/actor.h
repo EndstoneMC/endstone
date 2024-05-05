@@ -15,6 +15,8 @@
 #pragma once
 
 #include "endstone/command/command_sender.h"
+#include "endstone/level/location.h"
+#include "endstone/level/position.h"
 
 namespace endstone {
 
@@ -36,7 +38,21 @@ public:
      *
      * @return Runtime id for this actor
      */
-    virtual std::uint64_t getRuntimeId() = 0;
+    [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
+
+    /**
+     * Gets the actor's current position
+     *
+     * @return a new copy of Location containing the position of this actor
+     */
+    [[nodiscard]] virtual Location getLocation() const = 0;
+
+    /**
+     * Gets the current Level this actor resides in
+     *
+     * @return The current Level this actor resides in
+     */
+    [[nodiscard]] virtual Level &getLevel() const = 0;
 };
 
 }  // namespace endstone
