@@ -47,6 +47,17 @@ void Actor::setDimension(WeakRef<Dimension> dimension)
     ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::setDimension, this, std::move(dimension));
 }
 
+Vec3 Actor::getAttachPos(ActorLocation location, float alpha) const
+{
+#if _WIN32
+    Vec3 ret;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Actor::getAttachPos, ret, this, location, alpha);
+    return ret;
+#else
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::getAttachPos, this, location, alpha);
+#endif
+}
+
 bool Actor::isPlayer() const
 {
     return hasComponent<FlagComponent<PlayerComponentFlag>>();

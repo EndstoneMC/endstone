@@ -14,28 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/math/vec2.h"
-#include "bedrock/world/math/vec3.h"
-
-struct StateVectorComponent {
-    Vec3 position;        // +0
-    Vec3 position_prev;   // +12
-    Vec3 position_delta;  // +24
+enum class ActorLocation {
+    Feet = 0,
+    Eyes = 6
 };
-
-struct AABBShapeComponent {};
-
-struct ActorRotationComponent {
-    Vec2 rotation;
-    Vec2 rotation_prev;
-};
-
-struct ActorWalkAnimationComponent {};
-
-struct BuiltInActorComponents {
-    StateVectorComponent *state_vector;
-    AABBShapeComponent *aabb;
-    ActorRotationComponent *rotation;
-    ActorWalkAnimationComponent *walk_animation;
-};
-static_assert(sizeof(BuiltInActorComponents) == 32);

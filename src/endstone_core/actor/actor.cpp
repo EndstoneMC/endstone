@@ -102,7 +102,7 @@ std::uint64_t EndstoneActor::getRuntimeId() const
 
 Location EndstoneActor::getLocation() const
 {
-    const auto &position = actor_.getPosition();
+    const auto &position = actor_.getAttachPos(ActorLocation::Feet, 1.0);  // 0.0 = previous pos, 1.0 = current pos
     const auto &rotation = actor_.getRotation();
 
     return {getLevel(),

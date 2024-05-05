@@ -31,6 +31,7 @@
 #include "bedrock/network/syncher/spatial_actor_network_data.h"
 #include "bedrock/network/syncher/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
+#include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/components/built_in_actor_components.h"
@@ -240,11 +241,12 @@ public:
 
     BEDROCK_API void setDimension(WeakRef<Dimension>);
 
+    [[nodiscard]] BEDROCK_API Vec3 getAttachPos(ActorLocation location, float alpha) const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
-    [[nodiscard]] Vec3 const &getPosition() const;
+    [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
