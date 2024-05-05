@@ -39,7 +39,7 @@ void init_util(py::module &m)
 
     py::class_<Vector<double>>(m, "Vector")
         .def(py::init<>())
-        .def(py::init<double, double, double>())
+        .def(py::init<double, double, double>(), py::arg("x"), py::arg("y"), py::arg("z"))
         .def_property("x", &Vector<double>::getX, &Vector<double>::setX, "The X component of the vector")
         .def_property("y", &Vector<double>::getY, &Vector<double>::setY, "The Y component of the vector")
         .def_property("z", &Vector<double>::getZ, &Vector<double>::setZ, "The Z component of the vector")
@@ -69,9 +69,9 @@ void init_util(py::module &m)
         .def(double() * py::self)
         .def(double() / py::self)
         .def_property_readonly("length", &Vector<double>::length, "The magnitude of the Vector")
-        .def_property_readonly("lengthSquared", &Vector<double>::lengthSquared, "The squared magnitude of the Vector")
-        .def("distance", &Vector<double>::distance, "The distance between this Vector and another")
-        .def("distanceSquared", &Vector<double>::distanceSquared,
+        .def_property_readonly("length_squared", &Vector<double>::lengthSquared, "The squared magnitude of the Vector")
+        .def("distance", &Vector<double>::distance, py::arg("other"), "The distance between this Vector and another")
+        .def("distance_squared", &Vector<double>::distanceSquared, py::arg("other"),
              "The squared distance between this Vector and another");
 }
 

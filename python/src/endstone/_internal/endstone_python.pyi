@@ -1317,7 +1317,7 @@ class Vector:
     def __init__(self) -> None:
         ...
     @typing.overload
-    def __init__(self, arg0: float, arg1: float, arg2: float) -> None:
+    def __init__(self, x: float, y: float, z: float) -> None:
         ...
     def __isub__(self, arg0: Vector) -> Vector:
         ...
@@ -1353,11 +1353,11 @@ class Vector:
     @typing.overload
     def __truediv__(self, arg0: float) -> Vector:
         ...
-    def distance(self, arg0: Vector) -> float:
+    def distance(self, other: Vector) -> float:
         """
         The distance between this Vector and another
         """
-    def distanceSquared(self, arg0: Vector) -> float:
+    def distance_squared(self, other: Vector) -> float:
         """
         The squared distance between this Vector and another
         """
@@ -1367,7 +1367,7 @@ class Vector:
         The magnitude of the Vector
         """
     @property
-    def lengthSquared(self) -> float:
+    def length_squared(self) -> float:
         """
         The squared magnitude of the Vector
         """
