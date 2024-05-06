@@ -38,7 +38,7 @@ WORKDIR /usr/src/endstone
 RUN git clone https://github.com/EndstoneMC/endstone.git .
 
 RUN python -m pip install --upgrade pip \
-    && pip install conan \
+    && pip install "conan==2.2.3" \
     && conan profile detect --force \
     && conan export third_party/funchook --version 1.1.3 \
     && conan install . --build=missing -s build_type=RelWithDebInfo -pr:a .github/conan_profiles/linux
