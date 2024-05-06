@@ -244,9 +244,11 @@ public:
     [[nodiscard]] BEDROCK_API Vec3 getAttachPos(ActorLocation location, float alpha) const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
+    [[nodiscard]] bool isOnGround() const;
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
+    [[nodiscard]] Vec3 const &getPosPrev() const;
     [[nodiscard]] Vec3 const &getPosDelta() const;
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;

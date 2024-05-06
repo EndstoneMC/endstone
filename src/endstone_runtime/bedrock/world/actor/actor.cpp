@@ -14,6 +14,7 @@
 
 #include "bedrock/world/actor/actor.h"
 
+#include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/components/actor_owner_component.h"
 #include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
@@ -68,6 +69,11 @@ bool Actor::isRemoved() const
     return !isAlive();
 }
 
+bool Actor::isOnGround() const
+{
+    return ActorCollision::isOnGround(context_);
+}
+
 Dimension &Actor::getDimension() const
 {
     return *dimension_;
@@ -81,6 +87,11 @@ Level &Actor::getLevel() const
 Vec3 const &Actor::getPosition() const
 {
     return components_.state_vector->position;
+}
+
+Vec3 const &Actor::getPosPrev() const
+{
+    return components_.state_vector->position_prev;
 }
 
 Vec3 const &Actor::getPosDelta() const

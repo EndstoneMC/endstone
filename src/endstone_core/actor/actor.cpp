@@ -16,6 +16,7 @@
 
 #include "bedrock/command/command_utils.h"
 #include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/level/level.h"
 
@@ -112,8 +113,8 @@ Location EndstoneActor::getLocation() const
 
 Vector<float> EndstoneActor::getVelocity() const
 {
-    const auto &position_delta = actor_.getPosDelta();
-    return {position_delta.x, position_delta.y, position_delta.z};
+    const auto &delta = actor_.getPosDelta();
+    return {delta.x, actor_.isOnGround() ? 0 : delta.y, delta.z};
 }
 
 std::shared_ptr<Level> EndstoneActor::getLevel() const
