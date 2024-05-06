@@ -27,6 +27,7 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
 {
     actor.def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
         .def_property_readonly("location", &Actor::getLocation, "Gets the actor's current position.")
+        .def_property_readonly("velocity", &Actor::getVelocity, "Gets this actor's current velocity.")
         .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.");
 
     py::class_<HumanActor, Actor>(m, "HumanActor");

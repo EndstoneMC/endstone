@@ -19,6 +19,11 @@ class Actor(CommandSender):
         """
         Returns the runtime id for this actor.
         """
+    @property
+    def velocity(self) -> Vector:
+        """
+        Gets this actor's current velocity.
+        """
 class ActorRemoveEvent(Event):
     @property
     def actor(self) -> Actor:
