@@ -52,6 +52,7 @@ public:
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;
     [[nodiscard]] Vector<float> getVelocity() const override;
+    [[nodiscard]] bool isOnGround() const override;
     [[nodiscard]] std::shared_ptr<Level> getLevel() const override;
 
 protected:

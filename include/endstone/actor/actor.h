@@ -55,6 +55,13 @@ public:
     [[nodiscard]] virtual Vector<float> getVelocity() const = 0;
 
     /**
+     * Returns true if the actor is supported by a block.
+     *
+     * @return True if actor is on ground.
+     */
+    [[nodiscard]] virtual bool isOnGround() const = 0;
+
+    /**
      * Gets the current Level this actor resides in
      *
      * @return The current Level this actor resides in

@@ -114,7 +114,12 @@ Location EndstoneActor::getLocation() const
 Vector<float> EndstoneActor::getVelocity() const
 {
     const auto &delta = actor_.getPosDelta();
-    return {delta.x, actor_.isOnGround() ? 0 : delta.y, delta.z};
+    return {delta.x, isOnGround() ? 0 : delta.y, delta.z};
+}
+
+bool EndstoneActor::isOnGround() const
+{
+    return actor_.isOnGround();
 }
 
 std::shared_ptr<Level> EndstoneActor::getLevel() const

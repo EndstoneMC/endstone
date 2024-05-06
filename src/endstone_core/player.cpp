@@ -152,6 +152,11 @@ Vector<float> EndstonePlayer::getVelocity() const
     return EndstoneHumanActor::getVelocity();
 }
 
+bool EndstonePlayer::isOnGround() const
+{
+    return EndstoneHumanActor::isOnGround();
+}
+
 std::shared_ptr<Level> EndstonePlayer::getLevel() const
 {
     return EndstoneHumanActor::getLevel();
