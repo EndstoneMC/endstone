@@ -27,10 +27,10 @@ class Dimension;
 /**
  * @brief Represents a 3-dimensional position in a dimension within a level.
  */
-class Position : public Vector<double> {
+class Position : public Vector<float> {
 public:
-    Position(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, double x, double y,
-             double z)
+    Position(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, float x, float y,
+             float z)
         : Vector(x, y, z)
     {
         if (level) {

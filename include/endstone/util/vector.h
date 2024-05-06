@@ -187,7 +187,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr double length() const
+    [[nodiscard]] constexpr T length() const
     {
         return std::sqrt(lengthSquared());
     }
@@ -197,7 +197,7 @@ public:
      *
      * @return the magnitude
      */
-    [[nodiscard]] constexpr double lengthSquared() const
+    [[nodiscard]] constexpr T lengthSquared() const
     {
         return x_ * x_ + y_ * y_ + z_ * z_;
     }
@@ -208,7 +208,7 @@ public:
      * @param other The other vector
      * @return the distance
      */
-    [[nodiscard]] constexpr double distance(const Vector<T> &other) const
+    [[nodiscard]] constexpr T distance(const Vector<T> &other) const
     {
         return std::sqrt(distanceSquared(other));
     }
@@ -219,7 +219,7 @@ public:
      * @param other The other vector
      * @return the distance
      */
-    [[nodiscard]] constexpr double distanceSquared(const Vector<T> &other) const
+    [[nodiscard]] constexpr T distanceSquared(const Vector<T> &other) const
     {
         return (x_ - other.x_) * (x_ - other.x_) + (y_ - other.y_) * (y_ - other.y_) +
                (z_ - other.z_) * (z_ - other.z_);

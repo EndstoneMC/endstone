@@ -35,8 +35,8 @@ void init_level(py::module_ &m)
 
     py::class_<Dimension, std::shared_ptr<Dimension>>(m, "Dimension");
 
-    py::class_<Position, Vector<double>>(m, "Position")
-        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, double, double, double>(),
+    py::class_<Position, Vector<float>>(m, "Position")
+        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, float, float, float>(),
              py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
         .def_property("level", &Position::getLevel, &Position::setLevel, py::return_value_policy::reference,
                       "The Level that contains this position")
@@ -45,7 +45,7 @@ void init_level(py::module_ &m)
     // TODO(fixme): add __repr__
 
     py::class_<Location, Position>(m, "Location")
-        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, double, double, double, float,
+        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, float, float, float, float,
                       float>(),
              py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
              py::arg("yaw") = 0.0)

@@ -37,18 +37,18 @@ void init_util(py::module &m)
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
 
-    py::class_<Vector<double>>(m, "Vector")
+    py::class_<Vector<float>>(m, "Vector")
         .def(py::init<>())
-        .def(py::init<double, double, double>(), py::arg("x"), py::arg("y"), py::arg("z"))
-        .def_property("x", &Vector<double>::getX, &Vector<double>::setX, "The X component of the vector")
-        .def_property("y", &Vector<double>::getY, &Vector<double>::setY, "The Y component of the vector")
-        .def_property("z", &Vector<double>::getZ, &Vector<double>::setZ, "The Z component of the vector")
+        .def(py::init<float, float, float>(), py::arg("x"), py::arg("y"), py::arg("z"))
+        .def_property("x", &Vector<float>::getX, &Vector<float>::setX, "The X component of the vector")
+        .def_property("y", &Vector<float>::getY, &Vector<float>::setY, "The Y component of the vector")
+        .def_property("z", &Vector<float>::getZ, &Vector<float>::setZ, "The Z component of the vector")
         .def("__repr__",
-             [](const Vector<double> &v) {
+             [](const Vector<float> &v) {
                  return "<Vector x: " + std::to_string(v.getX()) + " y: " + std::to_string(v.getY()) +
                         " z: " + std::to_string(v.getZ()) + ">";
              })
-        .def("__str__", &Vector<double>::toString)
+        .def("__str__", &Vector<float>::toString)
         .def(py::self + py::self)
         .def(py::self - py::self)
         .def(py::self * py::self)
@@ -65,10 +65,10 @@ void init_util(py::module &m)
         .def(double() - py::self)
         .def(double() * py::self)
         .def(double() / py::self)
-        .def_property_readonly("length", &Vector<double>::length, "The magnitude of the Vector")
-        .def_property_readonly("length_squared", &Vector<double>::lengthSquared, "The squared magnitude of the Vector")
-        .def("distance", &Vector<double>::distance, py::arg("other"), "The distance between this Vector and another")
-        .def("distance_squared", &Vector<double>::distanceSquared, py::arg("other"),
+        .def_property_readonly("length", &Vector<float>::length, "The magnitude of the Vector")
+        .def_property_readonly("length_squared", &Vector<float>::lengthSquared, "The squared magnitude of the Vector")
+        .def("distance", &Vector<float>::distance, py::arg("other"), "The distance between this Vector and another")
+        .def("distance_squared", &Vector<float>::distanceSquared, py::arg("other"),
              "The squared distance between this Vector and another");
 }
 
