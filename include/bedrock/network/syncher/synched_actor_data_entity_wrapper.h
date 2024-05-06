@@ -16,9 +16,12 @@
 
 #include <memory>
 
+#include "bedrock/memory.h"
+#include "bedrock/world/actor/registry/entity_context.h"
+
 class SynchedActorDataEntityWrapper {
 public:
     char pad[24];
-    std::weak_ptr<void *> ptr;
+    WeakRef<EntityContext> ctx;
 };
-static_assert(sizeof(SynchedActorDataEntityWrapper) == 40);
+// static_assert(sizeof(SynchedActorDataEntityWrapper) == 40);

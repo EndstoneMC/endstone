@@ -266,13 +266,15 @@ protected:
     std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;  // +376 (+360)
     std::int32_t unknown9_;                                                   // +392 (+384)
     SynchedActorDataEntityWrapper data_;                                      // +400 (+392)
-    SpatialActorNetworkData spatial_data_;                                    // +448 (+432)
+    std::unique_ptr<SpatialActorNetworkData> spatial_data_;                   // +448 (+440)
+    Vec3 unknown10_;                                                          // +456 (+448)
+    char unknown11_[116];                                                     // +468 (+460)
     WeakRef<Dimension> dimension_;                                            // +584 (+576)
     Level *level_;                                                            // +600 (+592)
-    HashedString unknown10_;                                                  // +608 (+600)
-    std::int32_t unknown11_;                                                  // +656 (+640)
+    HashedString renderer_id_;                                                // +608 (+600)
+    ActorCategory categories_;                                                // +656 (+640)
     BuiltInActorComponents components_;                                       // +664 (+648)
-    HashedString unknown12_;                                                  // +696 (+680)
+    HashedString unknown13_;                                                  // +696 (+680)
 
 public:
     [[nodiscard]] endstone::detail::EndstoneActor &getEndstoneActor() const;

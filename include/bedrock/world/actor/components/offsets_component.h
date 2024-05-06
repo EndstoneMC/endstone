@@ -15,5 +15,5 @@
 #pragma once
 
 struct OffsetsComponent {
-    float y_offset;
+    float height_offset;
 };
