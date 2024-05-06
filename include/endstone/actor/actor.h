@@ -48,6 +48,13 @@ public:
     [[nodiscard]] virtual Location getLocation() const = 0;
 
     /**
+     * Gets this actor's current velocity
+     *
+     * @return Current traveling velocity of this actor
+     */
+    [[nodiscard]] virtual Vector<float> getVelocity() const = 0;
+
+    /**
      * Gets the current Level this actor resides in
      *
      * @return The current Level this actor resides in

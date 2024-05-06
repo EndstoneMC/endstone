@@ -107,6 +107,11 @@ Location EndstoneHumanActor::getLocation() const
     return EndstoneActor::getLocation();
 }
 
+Vector<float> EndstoneHumanActor::getVelocity() const
+{
+    return EndstoneActor::getVelocity();
+}
+
 std::shared_ptr<Level> EndstoneHumanActor::getLevel() const
 {
     return EndstoneActor::getLevel();

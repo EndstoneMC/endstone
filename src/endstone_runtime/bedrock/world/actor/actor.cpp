@@ -83,6 +83,11 @@ Vec3 const &Actor::getPosition() const
     return components_.state_vector->position;
 }
 
+Vec3 const &Actor::getPosDelta() const
+{
+    return components_.state_vector->position_delta;
+}
+
 Vec2 const &Actor::getRotation() const
 {
     return components_.rotation->rotation;

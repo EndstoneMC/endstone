@@ -110,6 +110,12 @@ Location EndstoneActor::getLocation() const
             position.x, position.y, position.z, rotation.x, rotation.y};
 }
 
+Vector<float> EndstoneActor::getVelocity() const
+{
+    const auto &position_delta = actor_.getPosDelta();
+    return {position_delta.x, position_delta.y, position_delta.z};
+}
+
 std::shared_ptr<Level> EndstoneActor::getLevel() const
 {
     return std::move(server_.getLevel(actor_.getLevel().getLevelId()));

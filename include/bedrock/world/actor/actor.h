@@ -247,6 +247,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const;
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
+    [[nodiscard]] Vec3 const &getPosDelta() const;
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
