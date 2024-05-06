@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/actor.h"
 
 #include "bedrock/world/actor/actor_collision.h"
+#include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/components/actor_owner_component.h"
 #include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
@@ -72,6 +73,16 @@ bool Actor::isRemoved() const
 bool Actor::isOnGround() const
 {
     return ActorCollision::isOnGround(context_);
+}
+
+bool Actor::isInWater() const
+{
+    return ActorEnvironment::getIsInWater(context_);
+}
+
+bool Actor::isInLava() const
+{
+    return ActorEnvironment::getIsInLava(context_);
 }
 
 Dimension &Actor::getDimension() const

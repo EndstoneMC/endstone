@@ -62,6 +62,20 @@ public:
     [[nodiscard]] virtual bool isOnGround() const = 0;
 
     /**
+     * Returns true if the actor is in water.
+     *
+     * @return True if the actor is in water.
+     */
+    [[nodiscard]] virtual bool isInWater() const = 0;
+
+    /**
+     * Returns true if the actor is in lava.
+     *
+     * @return True if the actor is in lava.
+     */
+    [[nodiscard]] virtual bool isInLava() const = 0;
+
+    /**
      * Gets the current Level this actor resides in
      *
      * @return The current Level this actor resides in

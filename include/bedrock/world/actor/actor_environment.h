@@ -14,20 +14,9 @@
 
 #pragma once
 
-template <typename ComponentFlag>
-class FlagComponent {
-public:
-    ComponentFlag flag;
-};
+#include "bedrock/world/actor/registry/entity_context.h"
 
-struct PlayerComponentFlag {};
-struct OnGroundFlag {};
-struct WasOnGroundFlag {};
-struct InWaterFlag {};
-struct InLavaFlag {};
-
-#if defined __clang__ || defined __GNUC__
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x356FFFCA);
-#elif defined _MSC_VER
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x600FBE1D);
-#endif
+namespace ActorEnvironment {
+bool getIsInWater(EntityContext const &);
+bool getIsInLava(EntityContext const &);
+}

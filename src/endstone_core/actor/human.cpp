@@ -117,6 +117,16 @@ bool EndstoneHumanActor::isOnGround() const
     return EndstoneActor::isOnGround();
 }
 
+bool EndstoneHumanActor::isInWater() const
+{
+    return EndstoneActor::isInWater();
+}
+
+bool EndstoneHumanActor::isInLava() const
+{
+    return EndstoneActor::isInLava();
+}
+
 std::shared_ptr<Level> EndstoneHumanActor::getLevel() const
 {
     return EndstoneActor::getLevel();

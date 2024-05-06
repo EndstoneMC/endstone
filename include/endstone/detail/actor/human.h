@@ -48,6 +48,8 @@ public:
     [[nodiscard]] Location getLocation() const override;
     [[nodiscard]] Vector<float> getVelocity() const override;
     [[nodiscard]] bool isOnGround() const override;
+    [[nodiscard]] bool isInWater() const override;
+    [[nodiscard]] bool isInLava() const override;
     [[nodiscard]] std::shared_ptr<Level> getLevel() const override;
 
 protected:

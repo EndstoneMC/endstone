@@ -122,6 +122,16 @@ bool EndstoneActor::isOnGround() const
     return actor_.isOnGround();
 }
 
+bool EndstoneActor::isInWater() const
+{
+    return actor_.isInWater();
+}
+
+bool EndstoneActor::isInLava() const
+{
+    return actor_.isInWater();
+}
+
 std::shared_ptr<Level> EndstoneActor::getLevel() const
 {
     return std::move(server_.getLevel(actor_.getLevel().getLevelId()));

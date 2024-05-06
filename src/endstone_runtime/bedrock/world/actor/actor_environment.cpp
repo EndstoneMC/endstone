@@ -12,22 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/actor/actor_collision.h"
+#include "bedrock/world/actor/components/flag_component.h"
 
-template <typename ComponentFlag>
-class FlagComponent {
-public:
-    ComponentFlag flag;
-};
+namespace ActorEnvironment {
 
-struct PlayerComponentFlag {};
-struct OnGroundFlag {};
-struct WasOnGroundFlag {};
-struct InWaterFlag {};
-struct InLavaFlag {};
+bool getIsInWater(const EntityContext &ctx)
+{
+    return ctx.hasComponent<FlagComponent<InWaterFlag>>();
+}
 
-#if defined __clang__ || defined __GNUC__
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x356FFFCA);
-#elif defined _MSC_VER
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x600FBE1D);
-#endif
+bool getIsInLava(const EntityContext &ctx)
+{
+    return ctx.hasComponent<FlagComponent<InLavaFlag>>();
+}
+
+}  // namespace ActorEnvironment
