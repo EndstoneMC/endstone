@@ -29,8 +29,8 @@ public:
     virtual void reinit(BlockLegacy const &, int) = 0;
     virtual void reinit(std::string_view, int, int) = 0;
     virtual void setNull(std::optional<std::string>) = 0;
-    virtual std::string toString() const = 0;
-    virtual std::string toDebugString() const = 0;
+    [[nodiscard]] virtual std::string toString() const = 0;
+    [[nodiscard]] virtual std::string toDebugString() const = 0;
 
 private:
     WeakPtr<Item> item_;                                  // +8

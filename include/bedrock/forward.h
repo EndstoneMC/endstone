@@ -186,7 +186,6 @@ enum class GameType;
 enum class LevelEvent;
 enum class LevelTagIDType;
 enum class LevelTagSetIDType;
-enum class MaterialType;
 enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class StructureFeatureType;

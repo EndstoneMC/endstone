@@ -39,6 +39,7 @@
 #include "bedrock/world/actor/registry/entity_registry.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/material/material_type.h"
 #include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
 #include "endstone/detail/actor/actor.h"
