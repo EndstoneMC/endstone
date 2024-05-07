@@ -18,6 +18,8 @@ extra:
       link: https://hub.docker.com/u/endstone
     - icon: fontawesome/brands/x-twitter
       link: https://twitter.com/endstone_mc
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/qTeFwcK8
 
   version:
     provider: mike
