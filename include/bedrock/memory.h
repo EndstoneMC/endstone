@@ -72,3 +72,8 @@ private:
 };
 
 }  // namespace Bedrock
+
+template <typename T>
+class WeakPtr {
+    void *rep_;  // reference counter block
+};

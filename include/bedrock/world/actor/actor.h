@@ -37,6 +37,7 @@
 #include "bedrock/world/actor/components/built_in_actor_components.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
+#include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
