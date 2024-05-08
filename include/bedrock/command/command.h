@@ -17,6 +17,7 @@
 
 #include <cstdint>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/command/command_output.h"
 #include "bedrock/command/command_registry.h"
 
@@ -39,4 +40,4 @@ private:
     CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
     CommandFlag flag_ = CommandFlag::None;                                        // +30
 };
-static_assert(sizeof(Command) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(Command, 32, 32);

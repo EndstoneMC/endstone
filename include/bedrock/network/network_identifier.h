@@ -17,6 +17,7 @@
 #include <cstdint>
 #include <string>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/network/raknet/types.h"
 
 class NetworkIdentifier {
@@ -42,4 +43,4 @@ public:
     [[nodiscard]] std::uint16_t getPort() const;
     [[nodiscard]] Type getType() const;
 };
-static_assert(sizeof(NetworkIdentifier) == 160);
+BEDROCK_STATIC_ASSERT_SIZE(NetworkIdentifier, 160, 160);

@@ -185,7 +185,7 @@ public:
 
         friend std::ostream &operator<<(std::ostream &os, const ParseToken &token);
     };
-    static_assert(sizeof(CommandRegistry::ParseToken) == 40);
+    BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
 
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &) const;

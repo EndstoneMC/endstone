@@ -19,4 +19,4 @@
 namespace ActorEnvironment {
 bool getIsInWater(EntityContext const &);
 bool getIsInLava(EntityContext const &);
-}
+}  // namespace ActorEnvironment

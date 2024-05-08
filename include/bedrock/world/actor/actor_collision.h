@@ -19,4 +19,4 @@
 namespace ActorCollision {
 bool isOnGround(EntityContext const &);
 bool wasOnGround(EntityContext const &);
-}
+}  // namespace ActorCollision

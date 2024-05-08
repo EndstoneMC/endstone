@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/command/command_context.h"
 #include "bedrock/command/command_output.h"
 #include "bedrock/command/command_registry.h"
@@ -46,5 +47,4 @@ private:
     std::unique_ptr<CommandOutputSender> output_sender_;  // +8
     std::unique_ptr<CommandRegistry> registry_;           // +16
 };
-
-static_assert(sizeof(MinecraftCommands) == 24);
+BEDROCK_STATIC_ASSERT_SIZE(MinecraftCommands, 24, 24);

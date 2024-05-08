@@ -55,13 +55,13 @@ struct SystemAddress {
     [[nodiscard]] std::uint16_t GetPort() const;                                              // NOLINT
     BEDROCK_API void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
 };
-static_assert(sizeof(SystemAddress) == 136);
+BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 
 struct RakNetGUID {
     std::uint64_t g;
     SystemIndex system_index;
 };
-static_assert(sizeof(RakNetGUID) == 16);
+BEDROCK_STATIC_ASSERT_SIZE(RakNetGUID, 16, 16);
 
 struct AddressOrGUID {
     RakNetGUID raknet_guid;

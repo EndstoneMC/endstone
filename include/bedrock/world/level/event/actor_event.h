@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/details.h"
 #include "bedrock/world/level/event/coordinator_result.h"
 #include "endstone/endstone.h"
@@ -67,7 +68,7 @@ struct ActorGameplayEvent<void> {
                  Details::ValueOrRef<ActorUseItemEvent const>,              // 16
                  Details::ValueOrRef<KnockBackEvent const>,                 // 17
                  Details::ValueOrRef<MountTamingEvent const>,               // 18
-                 Details::ValueOrRef<ActorEventPlaceHolder<_WIN32_LINUX_(304, 320)> const>>
+                 Details::ValueOrRef<ActorEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(304, 320)> const>>
         event;
 };
 

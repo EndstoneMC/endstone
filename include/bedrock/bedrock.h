@@ -19,3 +19,15 @@
 #elif __linux__
 #define BEDROCK_API __attribute__((visibility("default")))
 #endif
+
+#ifdef NDEBUG
+#ifdef _WIN32
+#define BEDROCK_STATIC_ASSERT_SIZE(className, sizeWindows, sizeLinux) \
+    static_assert(sizeof(className) == sizeWindows, "Size of " #className " does not match expected size.")
+#else
+#define BEDROCK_STATIC_ASSERT_SIZE(className, sizeWindows, sizeLinux) \
+    static_assert(sizeof(className) == sizeLinux, "Size of " #className " does not match expected size.")
+#endif
+#else
+#define BEDROCK_STATIC_ASSERT_SIZE(className, sizeWindows, sizeLinux)
+#endif

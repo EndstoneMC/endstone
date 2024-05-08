@@ -19,6 +19,7 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/memory.h"
 #include "bedrock/world/actor/registry/entity_registry.h"
 
@@ -66,14 +67,14 @@ public:
 
     std::optional<EntityContext> context;
 };
-static_assert(sizeof(OwnerStorageEntity) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(OwnerStorageEntity, 32, 32);
 
 class WeakStorageEntity {
 public:
     WeakRef<EntityRegistry> registry;
     EntityId entity_id;
 };
-static_assert(sizeof(WeakStorageEntity) == 24);
+BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);
 
 template <>
 class OwnerPtr<EntityContext> {

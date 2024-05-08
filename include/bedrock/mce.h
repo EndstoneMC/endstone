@@ -17,6 +17,7 @@
 #include <array>
 #include <cstdint>
 
+#include "bedrock/bedrock.h"
 #include "endstone/util/uuid.h"
 
 namespace mce {
@@ -53,7 +54,7 @@ public:
         return out;
     }
 };
-static_assert(sizeof(mce::UUID) == 16);
+BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
 
 class Color {
 public:

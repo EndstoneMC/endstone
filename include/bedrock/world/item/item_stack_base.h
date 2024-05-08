@@ -49,4 +49,4 @@ private:
     Tick blocking_tick_;                                  // +120
     std::unique_ptr<ItemInstance> charged_item_;          // +128
 };
-static_assert(sizeof(ItemStackBase) == 136);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 136, 136);

@@ -14,8 +14,10 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 class GameCallbacks {
 public:
     virtual ~GameCallbacks() = 0;
 };
-static_assert(sizeof(GameCallbacks) == 8);
+BEDROCK_STATIC_ASSERT_SIZE(GameCallbacks, 8, 8);

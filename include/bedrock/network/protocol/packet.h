@@ -26,4 +26,4 @@ private:
     std::int64_t unknown5_{0};  // +32
     int unknown6_{0};           // +40
 };
-static_assert(sizeof(Packet) == 48);
+BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);

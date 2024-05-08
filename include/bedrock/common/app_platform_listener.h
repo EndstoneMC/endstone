@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 class AppPlatformListener {
 public:
     virtual ~AppPlatformListener() = 0;
@@ -21,4 +23,4 @@ public:
 private:
     bool initialized_;  // +8
 };
-static_assert(sizeof(AppPlatformListener) == 16);
+BEDROCK_STATIC_ASSERT_SIZE(AppPlatformListener, 16, 16);

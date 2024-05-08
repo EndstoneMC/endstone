@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 template <typename Return>
 struct BlockGameplayEvent;
 
@@ -22,7 +24,7 @@ struct BlockPatternPostEvent {};
 template <>
 struct BlockGameplayEvent<void> {
     std::variant<Details::ValueOrRef<BlockPatternPostEvent const>,
-                 Details::ValueOrRef<ActorEventPlaceHolder<_WIN32_LINUX_(224, 192)> const>>
+                 Details::ValueOrRef<ActorEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(224, 192)> const>>
         event;
 };
 

@@ -22,14 +22,14 @@
 
 class PlayerListEntry {
 public:
-    ActorUniqueID unique_id;                        // +0
-    mce::UUID uuid;                                 // +8
-    std::string name;                               // +24
-    std::string xuid;                               // +56
-    std::string platform_id;                        // +88
-    BuildPlatform platform;                         // +120
-    size_t serialized_skin[_WIN32_LINUX_(76, 63)];  // +128 // TODO(fixme): figure out the structure
-    bool is_teacher;                                // +736
-    bool is_hosting_player;                         // +737
-    bool is_sub_client;                             // +738
+    ActorUniqueID unique_id;                                       // +0
+    mce::UUID uuid;                                                // +8
+    std::string name;                                              // +24
+    std::string xuid;                                              // +56
+    std::string platform_id;                                       // +88
+    BuildPlatform platform;                                        // +120
+    size_t serialized_skin[ENDSTONE_VARIANT_WIN32_LINUX(76, 63)];  // +128 // TODO(fixme): figure out the structure
+    bool is_teacher;                                               // +736
+    bool is_hosting_player;                                        // +737
+    bool is_sub_client;                                            // +738
 };

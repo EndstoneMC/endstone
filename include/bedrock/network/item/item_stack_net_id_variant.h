@@ -16,6 +16,8 @@
 
 #include <variant>
 
+#include "bedrock/bedrock.h"
+
 template <typename Tag, typename Type = int, Type Default = 0>
 class TypedServerNetId {
 public:
@@ -38,4 +40,4 @@ public:
                  TypedClientNetId<ItemStackLegacyRequestIdTag>>
         network_id;
 };
-static_assert(sizeof(ItemStackNetIdVariant) == 24);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackNetIdVariant, 24, 24);

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
 
@@ -38,4 +39,4 @@ struct BuiltInActorComponents {
     ActorRotationComponent *rotation;
     ActorWalkAnimationComponent *walk_animation;
 };
-static_assert(sizeof(BuiltInActorComponents) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(BuiltInActorComponents, 32, 32);

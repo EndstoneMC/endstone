@@ -16,6 +16,7 @@
 
 #include <cstdint>
 
+#include "bedrock/bedrock.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/math/vec3.h"
 
@@ -29,4 +30,4 @@ public:
     std::int8_t y_head_rot_byte;  // +26
     std::int8_t y_body_rot_byte;  // +27
 };
-static_assert(sizeof(MoveActorAbsoluteData) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(MoveActorAbsoluteData, 32, 32);

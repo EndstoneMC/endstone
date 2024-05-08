@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
 #include "bedrock/network/item/item_stack_net_id_variant.h"
 #include "bedrock/world/item/item_stack_base.h"
 
@@ -22,4 +23,4 @@ public:
 private:
     ItemStackNetIdVariant network_id_;
 };
-static_assert(sizeof(ItemStack) == 160);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 160, 160);

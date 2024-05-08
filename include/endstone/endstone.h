@@ -22,7 +22,6 @@
 #define ENDSTONE_VERSION_PATCH 2
 #define ENDSTONE_API_VERSION   ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
 
-#if !defined(ENDSTONE_EXPORT)
 #if defined(WIN32) || defined(_WIN32)
 #define ENDSTONE_EXPORT __declspec(dllexport)
 #else
@@ -36,9 +35,7 @@
 #endif
 
 #ifdef _WIN32
-#define _WIN32_LINUX_(win32, linux) win32
+#define ENDSTONE_VARIANT_WIN32_LINUX(win32, linux) win32
 #elif __linux__
-#define _WIN32_LINUX_(win32, linux) linux
-#endif
-
+#define ENDSTONE_VARIANT_WIN32_LINUX(win32, linux) linux
 #endif

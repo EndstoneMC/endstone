@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 class Vec3 {
 public:
     float x;
@@ -40,4 +42,4 @@ public:
         return {x / other.x, y / other.y, z / other.z};
     }
 };
-static_assert(sizeof(Vec3) == 12);
+BEDROCK_STATIC_ASSERT_SIZE(Vec3, 12, 12);

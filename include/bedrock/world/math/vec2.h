@@ -14,9 +14,12 @@
 
 #pragma once
 
+#include "bedrock/bedrock.h"
+
 class Vec2 {
 public:
     float x;
     float y;
 };
-static_assert(sizeof(Vec2) == 8);
+
+BEDROCK_STATIC_ASSERT_SIZE(Vec2, 8, 8);
