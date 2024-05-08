@@ -1,6 +1,6 @@
 [build-system]
-requires = ["scikit-build-core"]
-build-backend = "scikit_build_core.build"
+requires = ["scikit-build-core-conan"]
+build-backend = "scikit_build_core_conan.build"
 
 [project]
 name = "endstone"
@@ -46,8 +46,8 @@ Issues = "https://github.com/EndstoneMC/endstone/issues"
 endstone = "endstone._internal.bootstrap:cli"
 
 [tool.scikit-build]
-build-dir = "build/RelWithDebInfo"
-cmake.args = ["-G Ninja", "--preset conan-relwithdebinfo"]
+cmake.args = ["-G Ninja"]
+cmake.build-type = "RelWithDebInfo"
 cmake.define = { BUILD_TESTING = "OFF" }
 wheel.packages = ["python/src/endstone"]
 wheel.license-files = ["LICENSE"]
@@ -55,6 +55,14 @@ install.components = ["endstone_wheel"]
 install.strip = false
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["python/src/endstone/_internal/version.py"]
+
+[[tool.scikit-build-core-conan.overrides]]
+if.platform-system = "win32"
+profile = ".github/conan_profiles/windows"
+
+[[tool.scikit-build-core-conan.overrides]]
+if.platform-system = "linux"
+profile = ".github/conan_profiles/linux"
 
 [tool.setuptools_scm]
 write_to = "python/src/endstone/_internal/version.py"

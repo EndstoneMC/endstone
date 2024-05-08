@@ -40,8 +40,7 @@ RUN git clone https://github.com/EndstoneMC/endstone.git .
 RUN python -m pip install --upgrade pip \
     && pip install conan \
     && conan profile detect --force \
-    && conan export third_party/funchook --version 1.1.3 \
-    && conan install . --build=missing -s build_type=RelWithDebInfo -pr:a .github/conan_profiles/linux
+    && conan export third_party/funchook --version 1.1.3
 
 RUN python -m pip install --upgrade pip \
     && pip install wheel auditwheel setuptools "patchelf>=0.14" pytest \
