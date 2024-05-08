@@ -17,6 +17,8 @@ RUN apt-get update -y -q \
     && apt-get install -y -q libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
+    && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${LLVM_VERSION} 100 \
+    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 
@@ -45,8 +47,8 @@ RUN python -m pip install --upgrade pip \
 RUN python -m pip install --upgrade pip \
     && pip install wheel auditwheel setuptools "patchelf>=0.14" pytest \
     && python -m pip wheel . --no-deps --wheel-dir=wheelhouse --verbose \
-    && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w wheelhouse wheelhouse/*.whl \
-    && pip install wheelhouse/*-manylinux_2_31_x86_64.whl \
+    && python -m auditwheel --verbose repair --plat manylinux_2_31_x86_64 -w dist wheelhouse/*.whl \
+    && pip install dist/*-manylinux_2_31_x86_64.whl \
     && pytest python/tests
 
 FROM base AS final
@@ -63,7 +65,7 @@ RUN useradd -m -s /bin/bash endstone \
 
 WORKDIR /home/endstone
 
-COPY --from=builder /usr/src/endstone/wheelhouse .
+COPY --from=builder /usr/src/endstone/dist .
 
 RUN python -m pip install --upgrade pip \
     && pip install ./*-manylinux_2_31_x86_64.whl \
