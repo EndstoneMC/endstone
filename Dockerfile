@@ -17,8 +17,6 @@ RUN apt-get update -y -q \
     && apt-get install -y -q libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 
@@ -38,11 +36,6 @@ RUN apt-get update -y -q \
 WORKDIR /usr/src/endstone
 
 RUN git clone https://github.com/EndstoneMC/endstone.git .
-
-RUN python -m pip install --upgrade pip \
-    && pip install conan \
-    && conan profile detect --force \
-    && conan export third_party/funchook --version 1.1.3
 
 RUN python -m pip install --upgrade pip \
     && pip install wheel auditwheel setuptools "patchelf>=0.14" pytest \

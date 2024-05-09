@@ -1,5 +1,5 @@
 [build-system]
-requires = ["scikit-build-core-conan >= 0.2.1"]
+requires = ["scikit-build-core-conan >= 0.3.0"]
 build-backend = "scikit_build_core_conan.build"
 
 [project]
@@ -55,6 +55,10 @@ install.components = ["endstone_wheel"]
 install.strip = false
 metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
 sdist.include = ["python/src/endstone/_internal/version.py"]
+
+[[tool.scikit-build-core-conan.local-recipes]]
+path = "third_party/funchook"
+version = "1.1.3"
 
 [[tool.scikit-build-core-conan.overrides]]
 if.platform-system = "win32"
