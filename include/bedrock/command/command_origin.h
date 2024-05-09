@@ -22,6 +22,7 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/protocol/sub_client_id.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
 
 class Actor;

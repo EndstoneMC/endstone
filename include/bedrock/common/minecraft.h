@@ -17,13 +17,14 @@
 #include <chrono>
 
 #include "bedrock/command/minecraft_commands.h"
+#include "bedrock/common/game_callbacks.h"
 #include "bedrock/core.h"
 #include "bedrock/forward.h"
 #include "bedrock/memory.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~Minecraft() = 0;
+    ~Minecraft() override = 0;
     MinecraftCommands &getCommands();
 
 private:

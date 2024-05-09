@@ -81,11 +81,9 @@ class Explosion;
 class FeatureRegistry;
 class FeatureTypeFactory;
 class FrameUpdateContextBase;
-class GameCallbacks;
 class GameModuleServer;
 class GameRules;
 class HandSlot;
-class HashedString;
 class HitResult;
 class I18nObserver;
 class IAddActorEntityProxy;
@@ -161,14 +159,12 @@ class SubChunkPos;
 class SurfaceBuilderRegistry;
 class TextObjectRoot;
 class TaskGroup;
-class Tick;
 class TickingAreaList;
 class TickingAreasManager;
 class TrackedPacketDataContainer;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class VariantParameterList;
-class Vec2;
 class WeakEntityRef;
 class _TickPtr;  // NOLINT
 
