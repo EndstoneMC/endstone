@@ -50,7 +50,7 @@ jobs:
       - name: Test Wheels
         run: |
           pip install pytest
-          Get-ChildItem ./wheelhouse/ -Filter *-win_amd64.whl | ForEach-Object {
+          Get-ChildItem ./dist/ -Filter *-win_amd64.whl | ForEach-Object {
               pip install $_.FullName
           }
           pytest python/tests
@@ -114,7 +114,7 @@ jobs:
       - name: Test Wheels
         run: |
           pip install pytest
-          pip install wheelhouse/*-manylinux_2_31_x86_64.whl
+          pip install dist/*-manylinux_2_31_x86_64.whl
           pytest python/tests
 
       - name: Upload Artifacts

@@ -9,12 +9,12 @@ FROM base AS builder
 
 ARG LLVM_VERSION=15
 
-RUN apt-get update -y -q \
-    && apt-get install -y -q build-essential lsb-release wget software-properties-common gnupg \
+RUN apt-get update -y -qq \
+    && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
     && chmod +x llvm.sh \
     && ./llvm.sh ${LLVM_VERSION} \
-    && apt-get install -y -q libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev \
+    && apt-get install -y -qq libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
@@ -24,14 +24,14 @@ ARG CMAKE_VERSION=3.26.6
 
 ARG CMAKE_SH=cmake-${CMAKE_VERSION}-linux-x86_64.sh
 
-RUN apt-get update -y -q \
-    && apt-get install -y -q wget \
+RUN apt-get update -y -qq \
+    && apt-get install -y -qq wget \
     && wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_SH} \
     && chmod +x ${CMAKE_SH} \
     && ./${CMAKE_SH} --skip-license --exclude-subdir --prefix=/usr/local
 
-RUN apt-get update -y -q \
-    && apt-get install -y -q git ninja-build
+RUN apt-get update -y -qq \
+    && apt-get install -y -qq git ninja-build
 
 WORKDIR /usr/src/endstone
 
@@ -46,9 +46,9 @@ RUN python -m pip install --upgrade pip \
 
 FROM base AS final
 
-RUN apt-get update -y -q \
-    && apt-get install -y -q curl \
-    && apt-get clean -y -q \
+RUN apt-get update -y -qq \
+    && apt-get install -y -qq curl \
+    && apt-get clean -y -qq \
     && rm -rf /var/lib/apt/lists/*
 
 RUN useradd -m -s /bin/bash endstone \
