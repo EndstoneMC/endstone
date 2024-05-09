@@ -8,6 +8,7 @@ compiler.version=15
 os=Linux
 [conf]
 tools.cmake.cmaketoolchain:generator=Ninja
+tools.build:compiler_executables={"c": "clang", "cpp": "clang++"}
 [buildenv]
 CC=clang
 CXX=clang++
