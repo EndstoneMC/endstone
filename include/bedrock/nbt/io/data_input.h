@@ -17,17 +17,19 @@
 #include <cstdint>
 #include <string>
 
+#include "bedrock/result.h"
+
 class IDataInput {
 public:
     virtual ~IDataInput() = default;
-    virtual class Bedrock::Result<std::string> readStringResult() = 0;
-    virtual class Bedrock::Result<std::string> readLongStringResult() = 0;
-    virtual class Bedrock::Result<float> readFloatResult() = 0;
-    virtual class Bedrock::Result<double> readDoubleResult() = 0;
-    virtual class Bedrock::Result<char> readByteResult() = 0;
-    virtual class Bedrock::Result<short> readShortResult() = 0;
-    virtual class Bedrock::Result<int> readIntResult() = 0;
-    virtual class Bedrock::Result<std::int64_t> readLongLongResult() = 0;
-    virtual class Bedrock::Result<void> readBytesResult(void *, std::uint64_t) = 0;
+    virtual Bedrock::Result<std::string> readStringResult() = 0;
+    virtual Bedrock::Result<std::string> readLongStringResult() = 0;
+    virtual Bedrock::Result<float> readFloatResult() = 0;
+    virtual Bedrock::Result<double> readDoubleResult() = 0;
+    virtual Bedrock::Result<std::int8_t> readByteResult() = 0;
+    virtual Bedrock::Result<std::int16_t> readShortResult() = 0;
+    virtual Bedrock::Result<std::int32_t> readIntResult() = 0;
+    virtual Bedrock::Result<std::int64_t> readLongLongResult() = 0;
+    virtual Bedrock::Result<void> readBytesResult(void *, std::uint64_t) = 0;
     virtual std::uint64_t numBytesLeft() const = 0;
 };

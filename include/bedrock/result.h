@@ -14,19 +14,18 @@
 
 #pragma once
 
-#include <cstdint>
-#include <string>
+#include <system_error>
 
-class IDataOutput {
+#include <nonstd/expected.hpp>
+
+#include "bedrock/forward.h"
+
+namespace Bedrock {
+
+template <typename T, typename E = std::error_code>
+class Result : public nonstd::expected<T, ErrorInfo<E>> {
 public:
-    virtual ~IDataOutput() = default;
-    virtual void writeString(std::string_view v) = 0;
-    virtual void writeLongString(std::string_view v) = 0;
-    virtual void writeFloat(float v) = 0;
-    virtual void writeDouble(double v) = 0;
-    virtual void writeByte(std::int8_t v) = 0;
-    virtual void writeShort(std::int16_t v) = 0;
-    virtual void writeInt(std::int32_t v) = 0;
-    virtual void writeLongLong(std::int64_t v) = 0;
-    virtual void writeBytes(void const *data, std::uint64_t bytes) = 0;
+    using nonstd::expected<T, ErrorInfo<E>>::expected;
 };
+
+}  // namespace Bedrock
