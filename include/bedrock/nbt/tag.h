@@ -14,8 +14,10 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
+#include "bedrock/io/data_input.h"
+#include "bedrock/io/data_output.h"
 #include "bedrock/io/print_stream.h"
+#include "bedrock/result.h"
 
 class Tag {
 public:
@@ -35,13 +37,13 @@ public:
         NumTagTypes = 12,
     };
 
-    virtual ~Tag() = 0;
+    virtual ~Tag() = default;
     virtual void deleteChildren();
     virtual void write(IDataOutput &) const = 0;
     virtual Bedrock::Result<void, std::error_code> load(IDataInput &) = 0;
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual Type getId() const = 0;
-    [[nodiscard]] virtual bool equals(Tag const &) const = 0;
+    [[nodiscard]] virtual bool equals(Tag const &) const;
     virtual void print(std::string const &, PrintStream &) const;
     virtual void print(PrintStream &) const;
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;

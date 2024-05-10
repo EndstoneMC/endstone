@@ -16,6 +16,11 @@
 
 void Tag::deleteChildren() {}
 
+bool Tag::equals(const Tag &other) const
+{
+    return getId() == other.getId();
+}
+
 void Tag::print(const std::string &, PrintStream &stream) const
 {
     stream.print(Tag::getTagName(getId()));
