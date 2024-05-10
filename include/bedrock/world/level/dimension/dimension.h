@@ -39,6 +39,6 @@ public:
 private:
     std::vector<void *> unknown_;                                                                 // +104
     std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>> chunk_transfers_;  // +128
-    Level &level_;                                                                                // +192 (+160)
+    Level *level_;                                                                                // +192 (+160)
     DimensionHeightRange height_range_;                                                           // +200 (+168)
 };

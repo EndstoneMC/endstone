@@ -30,6 +30,6 @@ public:
 
 private:
     void *unk1_;                            // +152
-    IMinecraftApp &app_;                    // +160
+    IMinecraftApp *app_;                    // +160
     std::unique_ptr<Minecraft> minecraft_;  // +168
 };
