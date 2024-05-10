@@ -12,19 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/nbt/end_tag.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/nbt/tag.h"
+#include "bedrock/io/data_input.h"
+#include "bedrock/io/data_output.h"
+#include "bedrock/result.h"
 
-class EndTag : public Tag {
-public:
-    void write(IDataOutput &output) const override;
-    Bedrock::Result<void, std::error_code> load(IDataInput &input) override;
-    [[nodiscard]] std::string toString() const override;
-    [[nodiscard]] Type getId() const override;
-    [[nodiscard]] bool equals(const Tag &tag) const override;
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override;
-    [[nodiscard]] uint64_t hash() const override;
-};
-BEDROCK_STATIC_ASSERT_SIZE(EndTag, 8, 8);
+void EndTag::write(IDataOutput &output) const {}
+
+Bedrock::Result<void, std::error_code> EndTag::load(IDataInput &input)
+{
+    return {};
+}
+
+std::string EndTag::toString() const
+{
+    return "END";
+}
+
+Tag::Type EndTag::getId() const
+{
+    return Type::End;
+}
+
+bool EndTag::equals(const Tag &tag) const
+{
+    return Tag::equals(tag);
+}
+
+std::unique_ptr<Tag> EndTag::copy() const
+{
+    return std::unique_ptr<EndTag>();
+}
+
+uint64_t EndTag::hash() const
+{
+    return 0;
+}
