@@ -16,5 +16,5 @@
 
 Level &Dimension::getLevel() const
 {
-    return level_;
+    return *level_;
 }
