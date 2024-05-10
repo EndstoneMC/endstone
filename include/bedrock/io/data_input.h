@@ -26,10 +26,10 @@ public:
     virtual Bedrock::Result<std::string> readLongStringResult() = 0;
     virtual Bedrock::Result<float> readFloatResult() = 0;
     virtual Bedrock::Result<double> readDoubleResult() = 0;
-    virtual Bedrock::Result<std::int8_t> readByteResult() = 0;
+    virtual Bedrock::Result<std::uint8_t> readByteResult() = 0;
     virtual Bedrock::Result<std::int16_t> readShortResult() = 0;
     virtual Bedrock::Result<std::int32_t> readIntResult() = 0;
     virtual Bedrock::Result<std::int64_t> readLongLongResult() = 0;
     virtual Bedrock::Result<void> readBytesResult(void *, std::uint64_t) = 0;
-    virtual std::uint64_t numBytesLeft() const = 0;
+    [[nodiscard]] virtual std::uint64_t numBytesLeft() const = 0;
 };
