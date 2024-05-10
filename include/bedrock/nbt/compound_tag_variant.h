@@ -19,6 +19,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/byte_array_tag.h"
 #include "bedrock/nbt/byte_tag.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/nbt/double_tag.h"
 #include "bedrock/nbt/end_tag.h"
 #include "bedrock/nbt/float_tag.h"

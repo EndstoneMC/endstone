@@ -212,11 +212,6 @@ enum class LevelSoundEvent : int;
 }
 
 // Template Classes
-
-namespace Bedrock {
-template <typename E>
-class ErrorInfo;
-}
 template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename T>

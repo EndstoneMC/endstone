@@ -15,9 +15,12 @@
 #pragma once
 
 #include <map>
+#include <string>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/nbt/compound_tag_variant.h"
+#include "bedrock/nbt/tag.h"
+
+class CompoundTagVariant;
 
 class CompoundTag : public Tag {
 public:

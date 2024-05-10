@@ -12,22 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include <system_error>
-
-#include <nonstd/expected.hpp>
-
-#include "bedrock/bedrock.h"
-#include "bedrock/error_info.h"
-
-namespace Bedrock {
-
-template <typename T, typename E = std::error_code>
-class Result : public nonstd::expected<T, ErrorInfo<E>> {
-public:
-    using nonstd::expected<T, ErrorInfo<E>>::expected;
-};
-BEDROCK_STATIC_ASSERT_SIZE(Result<unsigned char>, 72, 72);
-
-}  // namespace Bedrock
+#include "bedrock/nbt/string_tag.h"
