@@ -24,13 +24,13 @@
 #include "endstone/logger.h"
 
 void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*flags*/, BedrockLog::LogRule /*rule*/,
-                        LogAreaID area, LogLevel level, const char * /*function*/, int /*line*/, const char *format,
-                        va_list args)
+                        LogAreaID area, Bedrock::LogLevel level, const char * /*function*/, int /*line*/,
+                        const char *format, va_list args)
 {
     auto name = magic_enum::enum_name(area);
     auto &logger = endstone::detail::LoggerFactory::getLogger(std::string(name));
 
-    static const std::unordered_map<LogLevel, endstone::Logger::Level> log_levels = {
+    static const std::unordered_map<Bedrock::LogLevel, endstone::Logger::Level> log_levels = {
         {1, endstone::Logger::Level::Debug},
         {2, endstone::Logger::Level::Info},
         {4, endstone::Logger::Level::Warning},
