@@ -12,13 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/io/print_stream.h"
 
-#include <string>
-
-class PrintStream {
-public:
-    virtual ~PrintStream() = 0;
-    virtual void print(std::string const &) = 0;
-    void println(std::string const&);
-};
+void PrintStream::println(const std::string &str)
+{
+    print(str);
+    print("\n");
+}

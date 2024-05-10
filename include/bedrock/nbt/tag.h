@@ -36,14 +36,16 @@ public:
     };
 
     virtual ~Tag() = 0;
-    virtual void deleteChildren() = 0;
+    virtual void deleteChildren();
     virtual void write(IDataOutput &) const = 0;
     virtual Bedrock::Result<void, std::error_code> load(IDataInput &) = 0;
-    virtual std::string toString() const = 0;
-    virtual Type getId() const = 0;
-    virtual bool equals(Tag const &) const = 0;
-    virtual void print(std::string const &, PrintStream &) const = 0;
-    virtual void print(PrintStream &) const = 0;
-    virtual std::unique_ptr<Tag> copy() const = 0;
-    virtual std::uint64_t hash() const = 0;
+    [[nodiscard]] virtual std::string toString() const = 0;
+    [[nodiscard]] virtual Type getId() const = 0;
+    [[nodiscard]] virtual bool equals(Tag const &) const = 0;
+    virtual void print(std::string const &, PrintStream &) const;
+    virtual void print(PrintStream &) const;
+    [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
+    [[nodiscard]] virtual std::uint64_t hash() const = 0;
+
+    static std::string getTagName(Type type);
 };
