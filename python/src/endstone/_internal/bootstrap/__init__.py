@@ -104,7 +104,3 @@ def cli(install_folder: str, no_confirm: bool, remote: str) -> None:
 
     exit_code = bootstrap.run()
     sys.exit(exit_code)
-
-
-if __name__ == "__main__":
-    cli()
