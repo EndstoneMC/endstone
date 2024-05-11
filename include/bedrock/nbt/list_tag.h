@@ -24,7 +24,7 @@
 class ListTag : public Tag {
 public:
 private:
-    std::vector<std::unique_ptr<Tag>> data_;
-    Tag::Type type_;
+    std::vector<std::unique_ptr<Tag>> data_;  // +8
+    Tag::Type type_;                          // +32
 };
 BEDROCK_STATIC_ASSERT_SIZE(ListTag, 40, 40);

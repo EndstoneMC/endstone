@@ -13,3 +13,30 @@
 // limitations under the License.
 
 #include "bedrock/nbt/compound_tag.h"
+
+#include "endstone/detail/hook.h"
+
+void CompoundTag::putBoolean(std::string key, bool value)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&CompoundTag::putBoolean, this, std::move(key), value);
+}
+
+std::uint8_t &CompoundTag::putByte(std::string key, std::uint8_t value)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CompoundTag::putByte, this, std::move(key), value);
+}
+
+std::int16_t &CompoundTag::putShort(std::string key, std::int16_t value)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CompoundTag::putShort, this, std::move(key), value);
+}
+
+std::int32_t &CompoundTag::putInt(std::string key, std::int32_t value)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CompoundTag::putInt, this, std::move(key), value);
+}
+
+std::int64_t &CompoundTag::putInt64(std::string key, std::int64_t value)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CompoundTag::putInt64, this, std::move(key), value);
+}

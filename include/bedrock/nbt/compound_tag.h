@@ -24,6 +24,12 @@ class CompoundTagVariant;
 
 class CompoundTag : public Tag {
 public:
+    BEDROCK_API void putBoolean(std::string, bool);
+    BEDROCK_API std::uint8_t &putByte(std::string, std::uint8_t);
+    BEDROCK_API std::int16_t &putShort(std::string, std::int16_t);
+    BEDROCK_API std::int32_t &putInt(std::string, std::int32_t);
+    BEDROCK_API std::int64_t &putInt64(std::string, std::int64_t);
+
 private:
     std::map<std::string, CompoundTagVariant> tags_;  // +8
 };

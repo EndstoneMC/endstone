@@ -19,12 +19,5 @@
 
 class EndTag : public Tag {
 public:
-    void write(IDataOutput &output) const override;
-    Bedrock::Result<void, std::error_code> load(IDataInput &input) override;
-    [[nodiscard]] std::string toString() const override;
-    [[nodiscard]] Type getId() const override;
-    [[nodiscard]] bool equals(const Tag &tag) const override;
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override;
-    [[nodiscard]] uint64_t hash() const override;
 };
 BEDROCK_STATIC_ASSERT_SIZE(EndTag, 8, 8);

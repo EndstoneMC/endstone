@@ -20,5 +20,4 @@ class PrintStream {
 public:
     virtual ~PrintStream() = 0;
     virtual void print(std::string const &) = 0;
-    void println(std::string const&);
 };

@@ -30,11 +30,18 @@
 #include "bedrock/nbt/short_tag.h"
 #include "bedrock/nbt/string_tag.h"
 
-class CompoundTagVariant : public EndTag {
+class CompoundTagVariant : public std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
+                                               ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag> {
 public:
-private:
-    std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag, StringTag, ListTag,
-                 CompoundTag, IntArrayTag>
-        tag_;
+    CompoundTagVariant() = delete;
+    CompoundTagVariant(const CompoundTagVariant &other) = default;
+    CompoundTagVariant &operator=(const CompoundTagVariant &other) = default;
+    CompoundTagVariant(CompoundTagVariant &&other) = default;
+    CompoundTagVariant &operator=(CompoundTagVariant &&other) = default;
+
+    [[nodiscard]] const Tag *get() const
+    {
+        return std::visit([](auto &&arg) -> const Tag * { return &arg; }, *this);
+    }
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTagVariant, 48, 48);

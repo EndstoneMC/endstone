@@ -20,7 +20,6 @@
 #include "bedrock/nbt/tag.h"
 
 class ByteTag : public Tag {
-public:
 private:
     std::uint8_t data_;
 };
