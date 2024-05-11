@@ -3,7 +3,7 @@ services:
   endstone:
     build: .
     container_name: endstone
-    command: endstone --install
+    command: endstone -y
     image: endstone/endstone:latest
     ports:
       - "19132:19132/udp"

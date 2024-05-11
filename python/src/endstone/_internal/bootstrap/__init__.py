@@ -40,12 +40,13 @@ def catch_exceptions(func):
     help="Specify the folder for installing the bedrock server. Defaults to 'bedrock_server'.",
 )
 @click.option(
-    "-i",
-    "--install",
+    "-y",
+    "--no-confirm",
+    "--yes",
     default=False,
     is_flag=True,
     show_default=True,
-    help="Install the bedrock server if one is not already installed under the install folder",
+    help="Assume yes as answer to all prompts",
 )
 @click.option(
     "-r",
@@ -55,13 +56,13 @@ def catch_exceptions(func):
 )
 @click.version_option(__version__)
 @catch_exceptions
-def cli(install_folder: str, install: bool, remote: str) -> None:
+def cli(install_folder: str, no_confirm: bool, remote: str) -> None:
     """
     Starts an Endstone server.
 
     Args:
         install_folder (str): The directory where the bedrock server files will be installed.
-        install (bool): Whether to install the bedrock server if not already installed.
+        no_confirm (bool): Assume yes as answer to all prompts.
         remote (str): The remote URL to retrieve bedrock server data from.
 
     Raises:
@@ -86,7 +87,7 @@ def cli(install_folder: str, install: bool, remote: str) -> None:
     bootstrap = cls(install_path=install_folder, version=minecraft_version, remote=remote)
 
     if not bootstrap.executable_path.exists():
-        if not install:
+        if not no_confirm:
             download = click.confirm(
                 f"Bedrock Dedicated Server (v{minecraft_version}) "
                 f"is not found in {str(bootstrap.executable_path.parent)}. "
