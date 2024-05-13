@@ -1,6 +1,12 @@
+import glob
+import importlib.util
+import os.path
+import site
+import sys
+from pathlib import Path
+import pip._internal.cli.main as pip
 from importlib.metadata import entry_points, metadata
 from typing import List
-
 from endstone import Server
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
@@ -39,18 +45,47 @@ class PythonPluginLoader(PluginLoader):
             results.append(permission)
         return results
 
+    @staticmethod
+    def _load_module(module_name: str, path: str) -> None:
+        path = Path(path)
+        module_parts = module_name.split(".")
+        spec = None
+
+        # Check for package
+        package_location = path.joinpath(*module_parts, "__init__.py")
+        if package_location.exists():
+            spec = importlib.util.spec_from_file_location(module_name, package_location)
+
+        # Check for module file
+        module_file = module_parts.pop() + ".py"
+        module_location = path.joinpath(*module_parts, module_file)
+        if module_location.exists():
+            spec = importlib.util.spec_from_file_location(module_name, module_location)
+
+        if spec is None:
+            raise ModuleNotFoundError(module_name)
+
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
+
     def load_plugins(self, directory) -> List[Plugin]:
+        for file in glob.glob(os.path.join(directory, "*.whl")):
+            pip.main(["install", file, "--user", "--quiet"])
+
         loaded_plugins = []
         eps = entry_points(group="endstone")
         for ep in eps:
-            cls = ep.load()
-
             # get distribution metadata, use as fallback for name and version
             ep_name = ep.name.replace("-", "_")
             dist_name = "endstone_" + ep_name
             plugin_metadata = metadata(dist_name).json
+            module_name = ep.module
+            if module_name not in sys.modules:
+                self._load_module(module_name, site.USER_SITE)
 
             # prepare plugin description
+            cls = ep.load()
             cls_attr = dict(cls.__dict__)
             name = cls_attr.pop("name", ep_name.replace("_", " ").title().replace(" ", ""))
             version = cls_attr.pop("version", plugin_metadata["version"])

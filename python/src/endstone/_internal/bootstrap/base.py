@@ -3,6 +3,8 @@ import hashlib
 import logging
 import os
 import platform
+import shutil
+import site
 import subprocess
 import sys
 import zipfile
@@ -207,9 +209,14 @@ class Bootstrap:
             **kwargs: Arbitrary keyword arguments.
 
         """
+        user_base = str((self.plugin_path / ".local").resolve().absolute())
+        shutil.rmtree(user_base, ignore_errors=True)
+        user_site = site._get_path(user_base)
+
         env = kwargs.pop("env", os.environ.copy())
-        env["PATH"] = os.pathsep.join(sys.path)
-        env["PYTHONPATH"] = os.pathsep.join(sys.path)
+        env["PYTHONUSERBASE"] = user_base
+        env["PATH"] = os.pathsep.join([user_site] + sys.path)
+        env["PYTHONPATH"] = os.pathsep.join([user_site] + sys.path)
         self._process = subprocess.Popen(
             [str(self.executable_path.absolute())],
             stdin=sys.stdin,
