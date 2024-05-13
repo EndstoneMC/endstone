@@ -23,6 +23,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
   `Dimension`s.
 - `Player::getAddress` now returns a `SocketAddress` instead of `std::string`. `Player::getPort` was removed,
   use `SocketAddress::getPort` instead.
+- Executable `endstone` now accepts `--server-folder` instead of `--install-folder`, and `--no-confirm` instead
+  of `--install`.
+- Endstone server will now ask the user whether to update the Bedrock Dedicated Server if an older version is found.
 
 ## [0.4.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.2) - 2024-04-30
 
