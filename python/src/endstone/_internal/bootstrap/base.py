@@ -3,121 +3,54 @@ import hashlib
 import logging
 import os
 import platform
+import shutil
 import subprocess
 import sys
 import zipfile
 from pathlib import Path
-from tempfile import TemporaryFile
+import tempfile
 from typing import Union
-
+import click
 import requests
+from packaging.version import Version
 from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TimeRemainingColumn
+from endstone import __minecraft_version__ as minecraft_version
 
 
 class Bootstrap:
-    """
-    Handles the setup and execution of a bedrock server.
 
-    This class is responsible for managing the installation, validation, and execution of bedrock server.
-    It supports downloading the server binaries, verifying their integrity, installing them, and running the server.
-    The class is designed to be extended for specific platform, where methods like `target_system` and
-    `executable_filename` are expected to be implemented.
-
-    Methods:
-    validate: Validates if the current platform is supported.
-    download: Downloads and extracts the server binaries from a remote URL.
-    install: Installs the server if not already installed.
-    run: Runs the server application.
-    """
-
-    def __init__(self, server_folder: str, version: str, remote: str) -> None:
-        """
-        Initializes the Bootstrap class with installation path, version, installation flag, and remote URL.
-
-        Args:
-            server_folder (str): The folder where the server is installed.
-            version (str): The version of the server.
-            remote (str): The URL of the remote server for downloading server binaries.
-
-        """
-        self._server_path = Path(server_folder.format(system=self.target_system, version=version)).absolute()
-        self._version = version
+    def __init__(self, server_folder: str, no_confirm: bool, remote: str) -> None:
+        self._server_path = Path(server_folder).absolute()
+        self._no_confirm = no_confirm
         self._remote = remote
         self._logger = logging.getLogger(self.name)
         self._process: subprocess.Popen
 
     @property
     def name(self) -> str:
-        """
-        Provides the name of the class.
-
-        Returns:
-            str: The name of the class.
-        """
         return __name__
 
     @property
     def target_system(self) -> str:
-        """
-        Returns the target system for which the server is intended.
-
-        This method should be implemented in a subclass.
-
-        Returns:
-            str: The name of the target system (e.g., 'Windows', 'Linux').
-        """
         raise NotImplementedError
 
     @property
     def executable_filename(self) -> str:
-        """
-        Returns the filename of the server executable.
-
-        This method should be implemented in a subclass.
-
-        Returns:
-            str: The filename of the server executable (e.g., 'bedrock_server').
-        """
         raise NotImplementedError
 
     @property
     def server_path(self) -> Path:
-        """
-        The path to the specific version of the server.
-
-        Returns:
-            Path: The path to the server's version-specific directory.
-        """
         return self._server_path
 
     @property
     def executable_path(self) -> Path:
-        """
-        The path to the server executable.
-
-        Returns:
-            Path: The full path to the server's executable file.
-        """
         return self.server_path / self.executable_filename
 
     @property
     def plugin_path(self) -> Path:
-        """
-        The path to the server's plugins directory.
-
-        Returns:
-            Path: The path to the server's plugins directory.
-        """
         return self.server_path / "plugins"
 
-    def validate(self) -> None:
-        """
-        Validate if the current platform is supported by this bootstrap, and if the necessary paths exist.
-
-        Raises:
-            NotImplementedError: If the current platform system is not supported by this bootstrap.
-            FileNotFoundError: If either the executable_path or _endstone_runtime_path do not exist.
-        """
+    def _validate(self) -> None:
         if platform.system().lower() != self.target_system:
             raise NotImplementedError(f"{platform.system()} is not supported by this bootstrap.")
         if not self.executable_path.exists():
@@ -125,24 +58,20 @@ class Bootstrap:
         if not self._endstone_runtime_path.exists():
             raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(self._endstone_runtime_path))
 
-    def _download(self, dst: Union[str, os.PathLike], url: str, sha256: str) -> None:
-        """
-        Downloads and extracts the server binaries from a given URL.
+    def _download(self, dst: Union[str, os.PathLike]) -> None:
+        dst = Path(dst)
 
-        This method downloads a file from the specified URL, computes its SHA256 checksum, and compares it
-        against the provided checksum to ensure the file's integrity. If the checksum matches, the file is
-        extracted to the specified destination.
+        self._logger.info("Loading index from the remote server...")
+        response = requests.get(self._remote)
+        response.raise_for_status()
+        server_data = response.json()
 
-        Args:
-            dst (Union[str, os.PathLike]): The destination path for the extracted server.
-            url (str): The URL from which to download the server binaries.
-            sha256 (str): The expected SHA256 checksum of the downloaded file.
+        if minecraft_version not in server_data["binary"]:
+            raise ValueError(f"Version v{minecraft_version} is not found in the remote server.")
 
-        Raises:
-            ValueError: If the SHA256 checksum of the downloaded file does not match the expected checksum.
-        """
-
-        with TemporaryFile(dir=self.server_path) as f:
+        with tempfile.TemporaryFile(dir=dst) as f:
+            metadata = server_data["binary"][minecraft_version][self.target_system.lower()]
+            url = metadata["url"]
             response = requests.get(url, stream=True)
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
@@ -162,21 +91,15 @@ class Bootstrap:
                     m.update(data)
 
             self._logger.info("Download complete. Verifying integrity...")
-            if m.hexdigest() != sha256:
+            if m.hexdigest() != metadata["sha256"]:
                 raise ValueError("SHA256 mismatch: the downloaded file may be corrupted or tampered with.")
 
             self._logger.info(f"Integrity check passed. Extracting to {dst}...")
-            dst = Path(dst)
             dst.mkdir(parents=True, exist_ok=True)
             with zipfile.ZipFile(f) as zip_ref:
                 zip_ref.extractall(str(dst))
 
-        self._download_finished()
-
-    def _download_finished(self) -> None:
-        self.validate()
-
-        properties = self.server_path / "server.properties"
+        properties = dst / "server.properties"
         with properties.open("r", encoding="utf-8") as file:
             lines = file.readlines()
 
@@ -188,41 +111,82 @@ class Bootstrap:
         with properties.open("w", encoding="utf-8") as file:
             file.writelines(lines)
 
-    def install(self) -> None:
+    def _prepare(self) -> None:
+        self.plugin_path.mkdir(parents=True, exist_ok=True)
+
+        version_file = self.server_path / "version.txt"
+        with version_file.open("w", encoding="utf-8") as file:
+            file.writelines(minecraft_version)
+
+    def _install(self) -> None:
         """
         Installs the server if not already installed.
         """
 
         if self.executable_path.exists():
+            self._update()
             return
 
-        if self.server_path.exists() and any(self.server_path.iterdir()):
-            raise FileNotFoundError(
-                f"Server directory {self.server_path} exists and is not empty but the server executable "
-                f"{self.executable_filename} for the current system can not be found."
+        if not self._no_confirm:
+            download = click.confirm(
+                f"Bedrock Dedicated Server (v{minecraft_version}) "
+                f"is not found in {str(self.executable_path.parent)}. "
+                f"Would you like to download it now?",
+                default=True,
             )
+        else:
+            download = True
+
+        if not download:
+            sys.exit(1)
 
         self.server_path.mkdir(parents=True, exist_ok=True)
+        self._download(self.server_path)
 
-        self._logger.info("Loading index from the remote server...")
-        response = requests.get(self._remote)
-        response.raise_for_status()
-        server_data = response.json()
+    def _update(self) -> None:
+        current_version = Version("0.0.0")
+        supported_version = Version(minecraft_version)
 
-        if self._version not in server_data["binary"]:
-            raise ValueError(f"Version v{self._version} is not found in the remote server.")
+        version_file = self.server_path / "version.txt"
+        if version_file.exists():
+            with version_file.open("r", encoding="utf-8") as file:
+                current_version = Version(file.readline())
 
-        self._download(self.server_path, **server_data["binary"][self._version][self.target_system.lower()])
+        if current_version == supported_version:
+            return
+
+        if current_version > supported_version:
+            raise RuntimeError(
+                f"A newer version of Bedrock Dedicated Server (v{current_version}) "
+                f"is found in {str(self.executable_path.parent)}. Please update your Endstone server."
+            )
+
+        if not self._no_confirm:
+            update = click.confirm(
+                f"An older version of Bedrock Dedicated Server (v{current_version}) "
+                f"is found in {str(self.executable_path.parent)}. "
+                f"Would you like to update to v{minecraft_version} now?",
+                default=True,
+            )
+        else:
+            update = True
+
+        if not update:
+            sys.exit(1)
+
+        self._logger.info(f"Updating server from v{current_version} to v{minecraft_version}...")
+        with tempfile.TemporaryDirectory(dir=self.server_path) as temp:
+            temp_path = Path(temp)
+            self._download(temp_path)
+            (temp_path / "allowlist.json").unlink()
+            (temp_path / "permissions.json").unlink()
+            (temp_path / "server.properties").unlink()
+            shutil.copytree(temp_path, self.server_path, dirs_exist_ok=True)
 
     def run(self) -> int:
-        """
-        Runs the server application and returns its exit code.
-
-        Returns:
-            int: The exit code of the server process. A zero value typically indicates successful termination.
-        """
-        self.validate()
-        self.plugin_path.mkdir(parents=True, exist_ok=True)
+        self._install()
+        self._validate()
+        self._prepare()
         self._create_process()
         return self._wait_for_server()
 
@@ -232,7 +196,7 @@ class Bootstrap:
 
     @property
     def _endstone_runtime_path(self) -> Path:
-        p = Path(__file__).parent / ".." / self._endstone_runtime_filename
+        p = Path(__file__).parent.parent / self._endstone_runtime_filename
         return p.resolve().absolute()
 
     def _create_process(self, *args, **kwargs) -> None:

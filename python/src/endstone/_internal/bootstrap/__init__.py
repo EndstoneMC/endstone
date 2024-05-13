@@ -36,8 +36,8 @@ def catch_exceptions(func):
 @click.option(
     "-s",
     "--server-folder",
-    default="bedrock_server/{system}/{version}",
-    help="Specify the folder for the bedrock server. Defaults to 'bedrock_server/{system}/{version}'.",
+    default="bedrock_server",
+    help="Specify the folder for the bedrock server. Defaults to 'bedrock_server'.",
 )
 @click.option(
     "-y",
@@ -69,7 +69,6 @@ def cli(server_folder: str, no_confirm: bool, remote: str) -> None:
         NotImplementedError: If the operating system is not supported.
         FileNotFoundError: If the server executable is not found and install is set to False.
     """
-    from endstone import __minecraft_version__ as minecraft_version
 
     system = platform.system()
     if system == "Windows":
@@ -84,23 +83,6 @@ def cli(server_folder: str, no_confirm: bool, remote: str) -> None:
     else:
         raise NotImplementedError(f"{system} is not supported.")
 
-    bootstrap = cls(server_folder=server_folder, version=minecraft_version, remote=remote)
-
-    if not bootstrap.executable_path.exists():
-        if not no_confirm:
-            download = click.confirm(
-                f"Bedrock Dedicated Server (v{minecraft_version}) "
-                f"is not found in {str(bootstrap.executable_path.parent)}. "
-                f"Would you like to download it now?",
-                default=True,
-            )
-        else:
-            download = True
-
-        if not download:
-            raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), str(bootstrap.executable_path))
-
-        bootstrap.install()
-
+    bootstrap = cls(server_folder=server_folder, no_confirm=no_confirm, remote=remote)
     exit_code = bootstrap.run()
     sys.exit(exit_code)

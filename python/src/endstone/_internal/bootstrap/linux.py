@@ -23,8 +23,8 @@ class LinuxBootstrap(Bootstrap):
     def _endstone_runtime_filename(self) -> str:
         return "libendstone_runtime.so"
 
-    def _download_finished(self) -> None:
-        super()._download_finished()
+    def _prepare(self) -> None:
+        super()._prepare()
         st = os.stat(self.executable_path)
         os.chmod(self.executable_path, st.st_mode | stat.S_IEXEC)
 
