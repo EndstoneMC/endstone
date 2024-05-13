@@ -1,4 +1,4 @@
-name: Wheel
+name: CD
 
 on:
   push:
@@ -197,11 +197,6 @@ jobs:
           pattern: endstone-wheels-*
           path: dist
           merge-multiple: true
-
-      - name: Create a Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/*
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
