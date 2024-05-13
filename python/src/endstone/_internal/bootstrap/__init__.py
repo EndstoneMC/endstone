@@ -57,19 +57,6 @@ def catch_exceptions(func):
 @click.version_option(__version__)
 @catch_exceptions
 def cli(server_folder: str, no_confirm: bool, remote: str) -> None:
-    """
-    Starts an Endstone server.
-
-    Args:
-        server_folder (str): The directory where the bedrock server is installed.
-        no_confirm (bool): Assume yes as answer to all prompts.
-        remote (str): The remote URL to retrieve bedrock server data from.
-
-    Raises:
-        NotImplementedError: If the operating system is not supported.
-        FileNotFoundError: If the server executable is not found and install is set to False.
-    """
-
     system = platform.system()
     if system == "Windows":
         from endstone._internal.bootstrap.windows import WindowsBootstrap

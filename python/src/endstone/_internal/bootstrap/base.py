@@ -3,7 +3,6 @@ import hashlib
 import logging
 import os
 import platform
-import shutil
 import subprocess
 import sys
 import zipfile
@@ -18,7 +17,6 @@ from endstone import __minecraft_version__ as minecraft_version
 
 
 class Bootstrap:
-
     def __init__(self, server_folder: str, no_confirm: bool, remote: str) -> None:
         self._server_path = Path(server_folder).absolute()
         self._no_confirm = no_confirm
@@ -97,7 +95,11 @@ class Bootstrap:
             self._logger.info(f"Integrity check passed. Extracting to {dst}...")
             dst.mkdir(parents=True, exist_ok=True)
             with zipfile.ZipFile(f) as zip_ref:
-                zip_ref.extractall(str(dst))
+                for file in zip_ref.namelist():
+                    if file in ["allowlist.json", "permissions.json", "server.properties"] and (dst / file).exists():
+                        self._logger.info(f"{file} already exists, skipping.")
+                        continue
+                    zip_ref.extract(file, dst)
 
         properties = dst / "server.properties"
         with properties.open("r", encoding="utf-8") as file:
@@ -111,12 +113,12 @@ class Bootstrap:
         with properties.open("w", encoding="utf-8") as file:
             file.writelines(lines)
 
-    def _prepare(self) -> None:
-        self.plugin_path.mkdir(parents=True, exist_ok=True)
-
-        version_file = self.server_path / "version.txt"
+        version_file = dst / "version.txt"
         with version_file.open("w", encoding="utf-8") as file:
             file.writelines(minecraft_version)
+
+    def _prepare(self) -> None:
+        self.plugin_path.mkdir(parents=True, exist_ok=True)
 
     def _install(self) -> None:
         """
@@ -175,13 +177,7 @@ class Bootstrap:
             sys.exit(1)
 
         self._logger.info(f"Updating server from v{current_version} to v{minecraft_version}...")
-        with tempfile.TemporaryDirectory(dir=self.server_path) as temp:
-            temp_path = Path(temp)
-            self._download(temp_path)
-            (temp_path / "allowlist.json").unlink()
-            (temp_path / "permissions.json").unlink()
-            (temp_path / "server.properties").unlink()
-            shutil.copytree(temp_path, self.server_path, dirs_exist_ok=True)
+        self._download(self.server_path)
 
     def run(self) -> int:
         self._install()
