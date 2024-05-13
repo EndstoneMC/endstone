@@ -30,17 +30,17 @@ class Bootstrap:
     run: Runs the server application.
     """
 
-    def __init__(self, install_path: Union[str, os.PathLike], version: str, remote: str) -> None:
+    def __init__(self, server_folder: str, version: str, remote: str) -> None:
         """
         Initializes the Bootstrap class with installation path, version, installation flag, and remote URL.
 
         Args:
-            install_path (Union[str, os.PathLike]): The path where the server is to be installed.
+            server_folder (str): The folder where the server is installed.
             version (str): The version of the server.
             remote (str): The URL of the remote server for downloading server binaries.
 
         """
-        self._install_path = Path(install_path).absolute()
+        self._server_path = Path(server_folder.format(system=self.target_system, version=version)).absolute()
         self._version = version
         self._remote = remote
         self._logger = logging.getLogger(self.name)
@@ -81,16 +81,6 @@ class Bootstrap:
         raise NotImplementedError
 
     @property
-    def install_path(self) -> Path:
-        """
-        The base path where the bedrock servers with different versions are installed.
-
-        Returns:
-            Path: The path to the installation directory.
-        """
-        return self._install_path / self.target_system
-
-    @property
     def server_path(self) -> Path:
         """
         The path to the specific version of the server.
@@ -98,7 +88,7 @@ class Bootstrap:
         Returns:
             Path: The path to the server's version-specific directory.
         """
-        return self.install_path / self._version
+        return self._server_path
 
     @property
     def executable_path(self) -> Path:
@@ -152,7 +142,7 @@ class Bootstrap:
             ValueError: If the SHA256 checksum of the downloaded file does not match the expected checksum.
         """
 
-        with TemporaryFile() as f:
+        with TemporaryFile(dir=self.server_path) as f:
             response = requests.get(url, stream=True)
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
