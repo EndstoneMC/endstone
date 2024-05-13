@@ -163,11 +163,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: endstone-wheels-windows-python3.12
-          path: build
+          path: dist
 
       - name: Install Endstone Package
         run: |
-          Get-ChildItem build/ -Filter *-win_amd64.whl | ForEach-Object {
+          Get-ChildItem dist/ -Filter *-win_amd64.whl | ForEach-Object {
               build/bin/python/python.exe -m pip install $_.FullName
           }
 
