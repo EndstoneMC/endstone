@@ -7,7 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-<small>[Compare with 0.4.2](https://github.com/EndstoneMC/endstone/compare/v0.4.2...HEAD)</small>
+<small>[Compare with 0.4.3](https://github.com/EndstoneMC/endstone/compare/v0.4.3...HEAD)</small>
+
+
+## [0.4.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.3) - 2024-05-13
+
+<small>[Compare with 0.4.2](https://github.com/EndstoneMC/endstone/compare/v0.4.2...v0.4.3)</small>
 
 ### Added
 
