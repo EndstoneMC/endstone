@@ -80,12 +80,15 @@ class PythonPluginLoader(PluginLoader):
             ep_name = ep.name.replace("-", "_")
             dist_name = "endstone_" + ep_name
             plugin_metadata = metadata(dist_name).json
-            module_name = ep.module
-            if module_name not in sys.modules:
-                self._load_module(module_name, site.USER_SITE)
+
+            # load module
+            try:
+                cls = ep.load()
+            except ModuleNotFoundError:
+                self._load_module(ep.module, site.USER_SITE)
+                cls = ep.load()
 
             # prepare plugin description
-            cls = ep.load()
             cls_attr = dict(cls.__dict__)
             name = cls_attr.pop("name", ep_name.replace("_", " ").title().replace(" ", ""))
             version = cls_attr.pop("version", plugin_metadata["version"])
