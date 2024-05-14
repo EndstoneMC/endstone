@@ -2,8 +2,8 @@ import glob
 import importlib.util
 import os.path
 import site
+import subprocess
 import sys
-import pip._internal.cli.main as pip
 from pathlib import Path
 from importlib.metadata import entry_points, metadata
 from typing import List
@@ -11,6 +11,20 @@ from endstone import Server
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadOrder
+
+__all__ = ["PythonPluginLoader"]
+
+
+def find_python():
+    if sys.platform != "win32":
+        return sys.executable
+
+    for path in sys.path:
+        assumed_path = os.path.join(path, "python.exe")
+        if os.path.isfile(assumed_path):
+            return assumed_path
+
+    raise Exception("Python executable not found")
 
 
 class PythonPluginLoader(PluginLoader):
@@ -71,7 +85,18 @@ class PythonPluginLoader(PluginLoader):
 
     def load_plugins(self, directory) -> List[Plugin]:
         for file in glob.glob(os.path.join(directory, "*.whl")):
-            pip.main(["install", file, "--user", "--quiet"])
+            subprocess.run(
+                [
+                    find_python(),
+                    "-m",
+                    "pip",
+                    "install",
+                    file,
+                    "--user",
+                    "--quiet",
+                ],
+                env=os.environ.copy(),
+            )
 
         loaded_plugins = []
         eps = entry_points(group="endstone")
