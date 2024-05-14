@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.4.3](https://github.com/EndstoneMC/endstone/compare/v0.4.3...HEAD)</small>
 
+### Added
+
+- Bootstrap now protects specific files from overwriting during update.
+- Python plugin loader now loads all `*.whl` plugins under the `plguins` folder and their dependencies during server
+  start up.
+
+### Fixed
+
+- Scheduler now works on Linux.
 
 ## [0.4.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.3) - 2024-05-13
 
