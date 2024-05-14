@@ -14,15 +14,15 @@ __all__ = ["PythonPluginLoader"]
 
 
 def find_python():
-    if sys.platform != "win32":
-        return sys.executable
+    if sys.platform == "win32":
+        path = os.path.join(sys.prefix, "python.exe")
+    else:
+        path = os.path.join(sys.prefix, "bin", "python")
 
-    for path in sys.path:
-        assumed_path = os.path.join(path, "python.exe")
-        if os.path.isfile(assumed_path):
-            return assumed_path
+    if os.path.isfile(path):
+        return path
 
-    raise Exception("Python executable not found")
+    raise RuntimeError("Unable to find Python executable")
 
 
 class PythonPluginLoader(PluginLoader):
