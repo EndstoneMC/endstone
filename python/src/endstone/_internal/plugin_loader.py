@@ -3,8 +3,8 @@ import importlib.util
 import os.path
 import site
 import sys
-from pathlib import Path
 import pip._internal.cli.main as pip
+from pathlib import Path
 from importlib.metadata import entry_points, metadata
 from typing import List
 from endstone import Server
@@ -113,13 +113,11 @@ class PythonPluginLoader(PluginLoader):
                 elif not isinstance(load, PluginLoadOrder):
                     raise TypeError(f"Invalid value for load order: {load}")
 
-            commands = cls_attr.pop("commands", None)
-            if commands is not None:
-                commands = self._build_commands(commands)
+            commands = cls_attr.pop("commands", {})
+            commands = self._build_commands(commands)
 
-            permissions = cls_attr.pop("permissions", None)
-            if permissions is not None:
-                permissions = self._build_permissions(permissions)
+            permissions = cls_attr.pop("permissions", {})
+            permissions = self._build_permissions(permissions)
 
             plugin_description = PluginDescription(
                 name=name, version=version, load=load, commands=commands, permissions=permissions, **cls_attr
