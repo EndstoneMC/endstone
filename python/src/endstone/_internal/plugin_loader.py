@@ -94,6 +94,7 @@ class PythonPluginLoader(PluginLoader):
                     file,
                     "--user",
                     "--quiet",
+                    "--no-warn-script-location",
                 ],
                 env=os.environ.copy(),
             )
