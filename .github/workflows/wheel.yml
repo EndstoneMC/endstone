@@ -1,4 +1,4 @@
-name: CD
+name: Wheel
 
 on:
   push:
@@ -123,63 +123,6 @@ jobs:
           name: endstone-wheels-linux-python${{ matrix.python }}
           path: dist/*-manylinux_2_31_x86_64.whl
 
-  build_bundle_windows:
-    name: Build Bundle for Windows
-    runs-on: windows-latest
-    needs: [ build_wheels_windows ]
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Download WinPython
-        run: curl -L "https://github.com/winpython/winpython/releases/download/7.5.20240410final/Winpython64-3.12.3.0dot.exe" -o "Winpython64-3.12.3.0dot.exe"
-
-      - name: Verify SHA256 Checksum
-        run: |
-          $expected = "beef54eba558559255a73e59ae1986e8d06a6b12b55e78645ab42b4d6974e124"
-          $actual = Get-FileHash -Path "Winpython64-3.12.3.0dot.exe" -Algorithm SHA256
-          if ($actual.Hash -ne $expected) {
-            Write-Error "SHA256 checksum verification failed!"
-            exit 1
-          }
-
-      - name: Extract the WinPython Executable
-        run: ./Winpython64-3.12.3.0dot.exe -otemp -y
-
-      - name: Copy Python to Target Directory
-        run: |
-          New-Item -Path build/bin -Name python -ItemType Directory
-          Copy-Item -Path temp/WPy64-31230/python-3.12.3.amd64/* -Destination build/bin/python -Recurse -Force
-
-      - name: Copy Start Scripts
-        run: |
-          Copy-Item -Path scripts/start.cmd -Destination build
-          Copy-Item -Path scripts/start.ps1 -Destination build
-
-      - name: Download Endstone Package
-        uses: actions/download-artifact@v4
-        with:
-          name: endstone-wheels-windows-python3.12
-          path: dist
-
-      - name: Install Endstone Package
-        run: |
-          Get-ChildItem dist/ -Filter *-win_amd64.whl | ForEach-Object {
-              build/bin/python/python.exe -m pip install $_.FullName
-          }
-
-      - name: Create the Distribution
-        run: Compress-Archive -Path build/* -Destination dist/endstone_server_windows.zip
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: endstone-server-windows
-          path: dist/endstone_server_windows.zip
-
   publish:
     name: Publish Wheels to PyPI
     if: contains(github.ref, 'refs/tags/')
@@ -198,27 +141,8 @@ jobs:
           path: dist
           merge-multiple: true
 
-      - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-
-  release:
-    name: Release
-    if: contains(github.ref, 'refs/tags/')
-    runs-on: ubuntu-latest
-    needs: [ build_bundle_windows ]
-    permissions:
-      id-token: write
-      contents: write
-
-    steps:
-      - name: Restore Artifacts
-        uses: actions/download-artifact@v4
-        with:
-          pattern: endstone-server-*
-          path: dist
-          merge-multiple: true
-
       - name: Create a Release
         uses: softprops/action-gh-release@v2
-        with:
-          files: dist/*
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
