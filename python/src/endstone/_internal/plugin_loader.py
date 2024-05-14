@@ -1,10 +1,8 @@
 import glob
-import importlib.util
 import os.path
 import site
 import subprocess
 import sys
-from pathlib import Path
 from importlib.metadata import entry_points, metadata
 from typing import List
 from endstone import Server
@@ -59,30 +57,6 @@ class PythonPluginLoader(PluginLoader):
             results.append(permission)
         return results
 
-    @staticmethod
-    def _load_module(module_name: str, path: str) -> None:
-        path = Path(path)
-        module_parts = module_name.split(".")
-        spec = None
-
-        # Check for package
-        package_location = path.joinpath(*module_parts, "__init__.py")
-        if package_location.exists():
-            spec = importlib.util.spec_from_file_location(module_name, package_location)
-
-        # Check for module file
-        module_file = module_parts.pop() + ".py"
-        module_location = path.joinpath(*module_parts, module_file)
-        if module_location.exists():
-            spec = importlib.util.spec_from_file_location(module_name, module_location)
-
-        if spec is None:
-            raise ModuleNotFoundError(module_name)
-
-        module = importlib.util.module_from_spec(spec)
-        sys.modules[spec.name] = module
-        spec.loader.exec_module(module)
-
     def load_plugins(self, directory) -> List[Plugin]:
         env = os.environ.copy()
         env.pop("LD_PRELOAD", "")
@@ -102,6 +76,10 @@ class PythonPluginLoader(PluginLoader):
                 env=env,
             )
 
+        user_site_packages = site.getusersitepackages()
+        if user_site_packages not in sys.path:
+            sys.path.insert(0, user_site_packages)
+
         loaded_plugins = []
         eps = entry_points(group="endstone")
         for ep in eps:
@@ -111,11 +89,7 @@ class PythonPluginLoader(PluginLoader):
             plugin_metadata = metadata(dist_name).json
 
             # load module
-            try:
-                cls = ep.load()
-            except ModuleNotFoundError:
-                self._load_module(ep.module, site.USER_SITE)
-                cls = ep.load()
+            cls = ep.load()
 
             # prepare plugin description
             cls_attr = dict(cls.__dict__)

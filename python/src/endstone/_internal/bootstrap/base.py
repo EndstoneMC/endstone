@@ -211,12 +211,11 @@ class Bootstrap:
         """
         user_base = str((self.plugin_path / ".local").resolve().absolute())
         shutil.rmtree(user_base, ignore_errors=True)
-        user_site = site._get_path(user_base)
 
         env = kwargs.pop("env", os.environ.copy())
         env["PYTHONUSERBASE"] = user_base
-        env["PATH"] = os.pathsep.join([user_site] + sys.path)
-        env["PYTHONPATH"] = os.pathsep.join([user_site] + sys.path)
+        env["PATH"] = os.pathsep.join(sys.path)
+        env["PYTHONPATH"] = os.pathsep.join(sys.path)
         self._process = subprocess.Popen(
             [str(self.executable_path.absolute())],
             stdin=sys.stdin,
