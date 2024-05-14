@@ -84,6 +84,9 @@ class PythonPluginLoader(PluginLoader):
         spec.loader.exec_module(module)
 
     def load_plugins(self, directory) -> List[Plugin]:
+        env = os.environ.copy()
+        env.pop("LD_PRELOAD", "")
+
         for file in glob.glob(os.path.join(directory, "*.whl")):
             subprocess.run(
                 [
@@ -96,7 +99,7 @@ class PythonPluginLoader(PluginLoader):
                     "--quiet",
                     "--no-warn-script-location",
                 ],
-                env=os.environ.copy(),
+                env=env,
             )
 
         loaded_plugins = []
