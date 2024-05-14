@@ -54,7 +54,6 @@ public:
     void disablePlugins() const;
 
     [[nodiscard]] Scheduler &getScheduler() const override;
-    void tick();
 
     [[nodiscard]] std::vector<std::shared_ptr<Level>> getLevels() const override;
     [[nodiscard]] std::shared_ptr<Level> getLevel(std::string name) const override;
@@ -80,7 +79,6 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unordered_map<std::string, std::shared_ptr<Level>> levels_;
     std::unordered_map<UUID, Player *> players_;
-    std::uint64_t tick_count_;
 };
 
 }  // namespace endstone::detail

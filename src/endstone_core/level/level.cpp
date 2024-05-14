@@ -20,6 +20,7 @@
 #include "bedrock/automatic_id.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "bedrock/world/level/level.h"
 
 using BedrockDimension = ::Dimension;
 

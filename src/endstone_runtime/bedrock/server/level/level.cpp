@@ -12,14 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/minecraft.h"
+#include "bedrock/world/level/level.h"
 
-#include <entt/entt.hpp>
+#include <cpptrace/cpptrace.hpp>
 
 #include "endstone/detail/hook.h"
+#include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/server.h"
 
-MinecraftCommands &Minecraft::getCommands()
+void Level::tick()
 {
-    return *commands_;
+    using endstone::detail::EndstoneScheduler;
+    using endstone::detail::EndstoneServer;
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
+    scheduler.mainThreadHeartbeat(getCurrentServerTick().value());
+
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, __FUNCDNAME__, this);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, "_ZN5Level4tickEv", this);
+#endif
 }

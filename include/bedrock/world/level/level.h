@@ -16,4 +16,7 @@
 
 #include "bedrock/world/level/level_interface.h"
 
-class Level : public ILevel {};
+class Level : public ILevel {
+public:
+    BEDROCK_API void tick() override;
+};

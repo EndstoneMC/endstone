@@ -18,5 +18,11 @@
 
 class Tick {
 public:
-    std::uint64_t t;
+    [[nodiscard]] std::uint64_t value() const
+    {
+        return t_;
+    }
+
+private:
+    std::uint64_t t_;
 };
