@@ -112,6 +112,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
         self.requires("glm/cci.20230113")
+        self.requires("jsoncpp/1.9.5")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
@@ -163,6 +164,7 @@ class EndstoneRecipe(ConanFile):
             "entt::entt",
             "expected-lite::expected-lite",
             "glm::glm",
+            "jsoncpp::jsoncpp",
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",
