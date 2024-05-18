@@ -103,7 +103,7 @@ public:
      * @param command Command to perform
      * @return true if the command was successful, otherwise false
      */
-    [[nodiscard]] virtual bool performCommand(std::string command) const = 0;
+    virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
 };
 
 }  // namespace endstone

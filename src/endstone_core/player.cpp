@@ -22,6 +22,7 @@
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/color_format.h"
+#include "endstone/detail/command/plugin_command_origin.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -249,8 +250,8 @@ void EndstonePlayer::updateCommands() const
 
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    auto ctx =
-        CommandContext{command, std::unique_ptr<CommandOrigin>(command_origin_.get()), CommandVersion::CurrentVersion};
+    CommandContext ctx{command, std::make_unique<PluginCommandOrigin>(player_.getLevel(), player_.getDimension()),
+                       CommandVersion::CurrentVersion};
     auto result = server_.getMinecraftCommands().executeCommand(ctx, false);
     return result.is_success;
 }
@@ -258,10 +259,6 @@ bool EndstonePlayer::performCommand(std::string command) const
 void EndstonePlayer::init(ServerNetworkHandler &network_handler)
 {
     network_handler_ = &network_handler;
-    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
-    auto origin_data = CommandOriginData{CommandOriginType::Player};
-    command_origin_ = CommandOrigin::fromCommandOriginData(origin_data, network_handler_->getLevel(),
-                                                           component->network_id, component->sub_client_id);
 }
 
 }  // namespace endstone::detail

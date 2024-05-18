@@ -64,7 +64,7 @@ public:
     void kick(std::string message) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
-    [[nodiscard]] bool performCommand(std::string command) const override;
+    bool performCommand(std::string command) const override; // NOLINT(*-use-nodiscard)
 
     void init(::ServerNetworkHandler &network_handler);
     void disconnect();
@@ -72,7 +72,6 @@ public:
 private:
     ::Player &player_;
     ::ServerNetworkHandler *network_handler_;
-    std::unique_ptr<::CommandOrigin> command_origin_;
     UUID uuid_;
     SocketAddress address_;
 };
