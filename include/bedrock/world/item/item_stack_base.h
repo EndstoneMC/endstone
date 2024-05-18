@@ -20,6 +20,7 @@
 #include <string_view>
 
 #include "bedrock/forward.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/tick.h"
 
 class ItemStackBase {

@@ -61,12 +61,10 @@ class ChunkPos;
 class ChunkSource;
 class ChunkTickRangeManager;
 class ChunkViewSource;
-class CommandOriginData;
 class CommandOriginIdentity;
 class CommandOriginSystem;
 class CommandPositionFloat;
 class ComplexInventoryTransaction;
-class CompoundTag;
 class Container;
 class CurrentCmdVersion;
 class DataLoadHelper;
@@ -199,11 +197,11 @@ public:
 namespace cg {
 class ImageBuffer;
 }
-namespace Bedrock {
-namespace PubSub {
+
+namespace Bedrock::PubSub {
 class SubscriptionBase;
 }
-}  // namespace Bedrock
+
 namespace Social {
 class GamePublishSetting;
 }

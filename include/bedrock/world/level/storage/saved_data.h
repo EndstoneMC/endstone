@@ -16,6 +16,8 @@
 
 #include <string>
 
+#include "bedrock/nbt/compound_tag.h"
+
 class SavedData {
 public:
     virtual ~SavedData() = 0;
