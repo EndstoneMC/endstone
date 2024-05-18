@@ -41,5 +41,9 @@ public:
     {
         return {x / other.x, y / other.y, z / other.z};
     }
+
+    static const Vec3 ZERO;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Vec3, 12, 12);
+
+inline const Vec3 Vec3::ZERO{0, 0, 0};
