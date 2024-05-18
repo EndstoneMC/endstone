@@ -14,34 +14,22 @@
 
 #pragma once
 
-#include <thread>
+namespace Social {
 
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
-
-namespace Bedrock::Threading {
-
-class AssignedThread {
+class MultiplayerServiceObserver {
 public:
-    bool isOnThread()
-    {
-        return std::this_thread::get_id() == assigned_id_;
-    }
+    virtual ~MultiplayerServiceObserver() = 0;
 
 private:
-    std::thread::id assigned_id_;
+    void *unknown_;
 };
 
-class EnableQueueForThread {
+class XboxLiveUserObserver {
 public:
-    virtual ~EnableQueueForThread() = 0;
+    virtual ~XboxLiveUserObserver() = 0;
 
 private:
-    std::unique_ptr<TaskGroup> task_group_;  // +8
+    void *unknown_;
 };
 
-class EnableQueueForMainThread : public EnableQueueForThread {};
-
-BEDROCK_API AssignedThread &getServerThread();
-
-}  // namespace Bedrock::Threading
+}  // namespace Social

@@ -36,7 +36,7 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
-    endstone_player.network_handler_ = this;
+    endstone_player.init(*this);
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
@@ -61,4 +61,9 @@ void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &
     server.getLogger().info("<{}> {}", e.getPlayer().getName(), e.getMessage());
 
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_displayGameMessage, this, player, event);
+}
+
+const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const
+{
+    return level_;
 }
