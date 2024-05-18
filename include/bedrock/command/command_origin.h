@@ -16,7 +16,10 @@
 
 #include <optional>
 
+#include <json/json.h>
+
 #include "bedrock/command/command_origin_data.h"
+#include "bedrock/command/command_origin_type.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
@@ -60,19 +63,13 @@ public:
     [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                                 // 23
     [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                           // 24
     [[nodiscard]] virtual const mce::UUID &getUUID() const = 0;                                        // 25
-    virtual void handleCommandOutputCallback(int, std::string &&, void *) const = 0;                   // 26
+    virtual void handleCommandOutputCallback(int, std::string &&, Json::Value &&) const = 0;           // 26
     virtual void updateValues() = 0;                                                                   // 27
     [[nodiscard]] virtual const Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                           // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                                    // 30
-
-    BEDROCK_API static std::unique_ptr<CommandOrigin> fromCommandOriginData(CommandOriginData const &,
-                                                                            Bedrock::NonOwnerPointer<ILevel> const &,
-                                                                            NetworkIdentifier const &, SubClientId);
-
 protected:
     virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
 
-private:
     mce::UUID uuid_;
 };
