@@ -44,3 +44,8 @@ const CommandFlag CommandFlag::DisabledInEditor = {1 << 9};      // CommandRegis
 const AutomaticID<Dimension, int> VanillaDimensions::Overworld{0};
 const AutomaticID<Dimension, int> VanillaDimensions::Nether{1};
 const AutomaticID<Dimension, int> VanillaDimensions::TheEnd{2};
+
+/**
+ * CommandVersion
+ */
+const int CommandVersion::CurrentVersion = 38;

@@ -17,4 +17,6 @@
 struct CommandVersion {
     int min;
     int max;
+
+    static const int CurrentVersion;
 };
