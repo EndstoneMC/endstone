@@ -40,9 +40,10 @@ namespace endstone::detail::hook {
  * @brief Construct a std::function from a function pointer
  */
 template <typename Return, typename... Arg>
-inline std::function<Return(Arg...)> get_original(Return (*fp)(Arg...))
+inline std::function<Return(Arg...)> get_original(Return (*fp)(Arg...), std::optional<std::string> name = std::nullopt)
 {
-    return reinterpret_cast<Return (*)(Arg...)>(get_original(fp_cast(fp)));
+    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    return reinterpret_cast<Return (*)(Arg...)>(original);
 }
 
 /**
