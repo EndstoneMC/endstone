@@ -16,11 +16,17 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "bedrock/command/command_origin.h"
 
 class CommandContext {
 public:
+    CommandContext(std::string command_line, std::unique_ptr<CommandOrigin> origin, int version)
+        : command_line_(std::move(command_line)), origin_(std::move(origin)), version_(version)
+    {
+    }
+
     [[nodiscard]] std::string getCommandLine() const
     {
         return command_line_;
@@ -34,6 +40,6 @@ public:
 private:
     std::string command_line_;               // +0
     std::unique_ptr<CommandOrigin> origin_;  // +32
-    int command_version_;                    // +40
+    int version_;                            // +40
 };
 // static_assert(sizeof(CommandContext) == 48);
