@@ -16,9 +16,11 @@
 
 #include <optional>
 
+#include "bedrock/command/command_origin_data.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
+#include "bedrock/memory.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/protocol/sub_client_id.h"
 #include "bedrock/world/level/dimension/dimension.h"
@@ -27,25 +29,7 @@
 
 class Actor;
 class Level;
-
-enum class CommandOriginType : char {
-    Player = 0,
-    CommandBlock = 1,
-    MinecartCommandBlock = 2,
-    DevConsole = 3,
-    Test = 4,
-    AutomationPlayer = 5,
-    ClientAutomation = 6,
-    DedicatedServer = 7,
-    Entity = 8,
-    Virtual = 9,
-    GameArgument = 10,
-    EntityServer = 11,
-    Precompiled = 12,
-    GameDirectorEntityServer = 13,
-    Script = 14,
-    ExecuteContext = 15,
-};
+class ILevel;
 
 class CommandOrigin {
 public:
@@ -81,6 +65,10 @@ public:
     [[nodiscard]] virtual const Vec3 getExecutePosition(int, const CommandPositionFloat &) const = 0;  // 28
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                           // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                                    // 30
+
+    BEDROCK_API static std::unique_ptr<CommandOrigin> fromCommandOriginData(CommandOriginData const &,
+                                                                            Bedrock::NonOwnerPointer<ILevel> const &,
+                                                                            NetworkIdentifier const &, SubClientId);
 
 protected:
     virtual void _setUUID(const mce::UUID &uuid) = 0;  // 31
