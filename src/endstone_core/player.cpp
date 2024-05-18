@@ -14,6 +14,7 @@
 
 #include "endstone/detail/player.h"
 
+#include "bedrock/command/command_origin_data.h"
 #include "bedrock/network/protocol/game/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
@@ -244,6 +245,23 @@ void EndstonePlayer::updateCommands() const
     }
 
     player_.sendNetworkPacket(packet);
+}
+
+bool EndstonePlayer::performCommand(std::string command) const
+{
+    auto ctx =
+        CommandContext{command, std::unique_ptr<CommandOrigin>(command_origin_.get()), CommandVersion::CurrentVersion};
+    auto result = server_.getMinecraftCommands().executeCommand(ctx, false);
+    return result.is_success;
+}
+
+void EndstonePlayer::init(ServerNetworkHandler &network_handler)
+{
+    network_handler_ = &network_handler;
+    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
+    auto origin_data = CommandOriginData{CommandOriginType::Player};
+    command_origin_ = CommandOrigin::fromCommandOriginData(origin_data, network_handler_->getLevel(),
+                                                           component->network_id, component->sub_client_id);
 }
 
 }  // namespace endstone::detail

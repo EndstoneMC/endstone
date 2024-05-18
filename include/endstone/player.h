@@ -96,6 +96,14 @@ public:
      * Generally useful to ensure the client has a complete list of commands after permission changes are done.
      */
     virtual void updateCommands() const = 0;
+
+    /**
+     * Makes the player perform the given command
+     *
+     * @param command Command to perform
+     * @return true if the command was successful, otherwise false
+     */
+    [[nodiscard]] virtual bool performCommand(std::string command) const = 0;
 };
 
 }  // namespace endstone

@@ -64,14 +64,15 @@ public:
     void kick(std::string message) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
+    [[nodiscard]] bool performCommand(std::string command) const override;
 
+    void init(::ServerNetworkHandler &network_handler);
     void disconnect();
 
 private:
-    friend class ::ServerNetworkHandler;
-
     ::Player &player_;
     ::ServerNetworkHandler *network_handler_;
+    std::unique_ptr<::CommandOrigin> command_origin_;
     UUID uuid_;
     SocketAddress address_;
 };
