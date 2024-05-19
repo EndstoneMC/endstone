@@ -28,15 +28,12 @@
 
 class Level;
 
-class Dimension : public IDimension,
-                  public LevelListener,
-                  public SavedData,
-                  public Bedrock::EnableNonOwnerReferences,
-                  public std::enable_shared_from_this<Dimension> {
+class Dimension : public IDimension, public LevelListener, public SavedData, public Bedrock::EnableNonOwnerReferences {
 public:
     [[nodiscard]] Level &getLevel() const;
 
 private:
+    WeakRef<Dimension> weak_ref_;
     std::vector<void *> unknown_;                                                                 // +104
     std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>> chunk_transfers_;  // +128
     Level *level_;                                                                                // +192 (+160)
