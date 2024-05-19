@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/world/math/aabb.h"
 #include "bedrock/world/math/vec2.h"
 #include "bedrock/world/math/vec3.h"
 
@@ -24,7 +25,9 @@ struct StateVectorComponent {
     Vec3 position_delta;  // +24
 };
 
-struct AABBShapeComponent {};
+struct AABBShapeComponent {
+    AABB aabb;
+};
 
 struct ActorRotationComponent {
     Vec2 rotation;
