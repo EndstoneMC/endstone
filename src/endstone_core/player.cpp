@@ -21,8 +21,9 @@
 #include "bedrock/server/network/server_network_handler.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/command/plugin_command_origin.h"
+#include "endstone/detail/command/command_origin_adapter.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -211,6 +212,11 @@ void EndstonePlayer::sendTip(std::string message) const
     player_.sendNetworkPacket(*packet);
 }
 
+void EndstonePlayer::init(ServerNetworkHandler &network_handler)
+{
+    network_handler_ = &network_handler;
+}
+
 void EndstonePlayer::disconnect()
 {
     perm_.clearPermissions();
@@ -248,17 +254,44 @@ void EndstonePlayer::updateCommands() const
     player_.sendNetworkPacket(packet);
 }
 
+namespace {
+class PlayerCommandOriginAdapter : public CommandOriginAdapter {
+public:
+    explicit PlayerCommandOriginAdapter(::Player &player) : CommandOriginAdapter(nullptr)
+    {
+        auto level = std::static_pointer_cast<ILevel>(player.getLevel().ptr);
+        auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
+        CommandOriginData data{CommandOriginType::Player, component->uuid};
+        pimpl_ = CommandOrigin::fromCommandOriginData(data, level, component->network_id, component->sub_client_id);
+    }
+    [[nodiscard]] CommandPermissionLevel getPermissionsLevel() const override
+    {
+        return CommandPermissionLevel::GameDirectors;
+    }
+    [[nodiscard]] bool hasChatPerms() const override
+    {
+        return true;
+    }
+    [[nodiscard]] bool hasTellPerms() const override
+    {
+        return true;
+    }
+    [[nodiscard]] bool canUseCommandsWithoutCheatsEnabled() const override
+    {
+        return true;
+    }
+    [[nodiscard]] bool isSelectorExpansionAllowed() const override
+    {
+        return true;
+    }
+};
+}  // namespace
+
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    CommandContext ctx{command, std::make_unique<PluginCommandOrigin>(player_.getLevel(), player_.getDimension()),
-                       CommandVersion::CurrentVersion};
-    auto result = server_.getMinecraftCommands().executeCommand(ctx, false);
+    CommandContext ctx{command, std::make_unique<PlayerCommandOriginAdapter>(player_), CommandVersion::CurrentVersion};
+    auto result = server_.getMinecraftCommands().executeCommand(ctx, true);
     return result.is_success;
-}
-
-void EndstonePlayer::init(ServerNetworkHandler &network_handler)
-{
-    network_handler_ = &network_handler;
 }
 
 }  // namespace endstone::detail
