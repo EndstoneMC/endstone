@@ -115,6 +115,11 @@ Vec2 const &Actor::getRotation() const
     return components_.rotation->rotation;
 }
 
+AABB const &Actor::getAABB() const
+{
+    return components_.aabb->aabb;
+}
+
 ActorRuntimeID Actor::getRuntimeID() const
 {
     return tryGetComponent<RuntimeIDComponent>()->id;

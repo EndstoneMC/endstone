@@ -255,6 +255,7 @@ public:
     [[nodiscard]] Vec3 const &getPosPrev() const;
     [[nodiscard]] Vec3 const &getPosDelta() const;
     [[nodiscard]] Vec2 const &getRotation() const;
+    [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
