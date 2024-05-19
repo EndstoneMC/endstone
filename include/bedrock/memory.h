@@ -41,34 +41,43 @@ private:
 
 namespace Bedrock {
 
-class EnableNonOwnerReferences {
-public:
-    virtual ~EnableNonOwnerReferences() = default;
-
-private:
-    std::shared_ptr<EnableNonOwnerReferences> ref_;
-};
-
 template <class T>
 class NonOwnerPointer {
 public:
-    T &operator*() const
+    using ElementType = std::remove_extent_t<T>;
+
+    NonOwnerPointer(){};
+    explicit NonOwnerPointer(ElementType &obj) : ptr(&obj){};
+
+    T &operator*() const noexcept
     {
-        return *ptr_;
+        return *get();
     }
 
-    T *operator->() const
+    T *operator->() const noexcept
     {
-        return ptr_.get();
+        return get();
     }
 
     explicit operator bool() const noexcept
     {
-        return ptr_ != nullptr;
+        return get() != nullptr;
     }
 
-private:
-    std::shared_ptr<T> ptr_;
+    [[nodiscard]] ElementType *get() const noexcept
+    {
+        return ptr.get();
+    }
+
+    std::shared_ptr<ElementType> ptr;
+};
+
+class EnableNonOwnerReferences {
+public:
+    EnableNonOwnerReferences() : ptr(*this) {}
+    virtual ~EnableNonOwnerReferences() = default;
+
+    NonOwnerPointer<EnableNonOwnerReferences> ptr;  // +8
 };
 
 }  // namespace Bedrock
@@ -77,3 +86,14 @@ template <typename T>
 class WeakPtr {
     void *rep_;  // reference counter block
 };
+
+namespace std {
+template <class T1, class T2>
+[[nodiscard]] Bedrock::NonOwnerPointer<T1> static_pointer_cast(const Bedrock::NonOwnerPointer<T2> &other) noexcept
+{
+    auto obj = static_cast<typename Bedrock::NonOwnerPointer<T1>::ElementType *>(other.get());
+    auto result = Bedrock::NonOwnerPointer<T1>();
+    result.ptr = std::shared_ptr<T1>(other.ptr, obj);
+    return result;
+}
+}  // namespace std
