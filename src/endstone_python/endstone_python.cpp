@@ -210,7 +210,9 @@ void init_player(py::module_ &m)
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
         .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
         .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
-        .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.");
+        .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
+        .def("perform_command", &Player::performCommand, py::arg("command"),
+             "Makes the player perform the given command.");
 }
 
 }  // namespace endstone::detail

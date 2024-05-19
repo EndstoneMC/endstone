@@ -664,6 +664,10 @@ class Player(HumanActor):
         """
         Kicks player with custom kick message.
         """
+    def perform_command(self, command: str) -> bool:
+        """
+        Makes the player perform the given command.
+        """
     def send_popup(self, message: str) -> None:
         """
         Sends this player a popup message
