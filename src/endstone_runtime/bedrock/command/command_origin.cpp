@@ -16,3 +16,14 @@
 
 #include "bedrock/command/command_origin_data.h"
 #include "endstone/detail/hook.h"
+
+std::unique_ptr<CommandOrigin> CommandOrigin::fromCommandOriginData(const CommandOriginData &data,
+                                                                    const Bedrock::NonOwnerPointer<ILevel> &level,
+                                                                    const NetworkIdentifier &network_id,
+                                                                    SubClientId sub_client_id)
+{
+    std::unique_ptr<CommandOrigin> result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandOrigin::fromCommandOriginData, result, data, level, network_id,
+                                    sub_client_id);
+    return result;
+}
