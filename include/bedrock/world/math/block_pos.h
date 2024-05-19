@@ -14,11 +14,16 @@
 
 #pragma once
 
+#include "bedrock/world/math/vec3.h"
+
 class BlockPos {
 public:
     int x;
     int y;
     int z;
+
+    BlockPos(double x, double y, double z) : x(std::floor(x)), y(std::floor(y)), z(std::floor(z)){};
+    explicit BlockPos(const Vec3 &vec) : x(std::floorf(vec.x)), y(std::floorf(vec.y)), z(std::floorf(vec.z)){};
 
     static const BlockPos ZERO;
 };
