@@ -38,9 +38,9 @@
 #include "bedrock/world/level/event/event_coordinator.h"
 #include "bedrock/world/level/level_listener.h"
 
-class ILevel {
+class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~ILevel() = default;
+    ~ILevel() override = default;
     virtual bool initialize(std::string const &, LevelSettings const &, LevelData *, Experiments const &,
                             std::string const *) = 0;
     virtual void startLeaveGame() = 0;
