@@ -18,9 +18,9 @@
 
 namespace endstone::detail {
 
-class PluginCommandOrigin : public CommandOrigin {
+class CommandOriginAdapter : public CommandOrigin {
 public:
-    PluginCommandOrigin(::Level &level, ::Dimension &dimension);
+    explicit CommandOriginAdapter(std::unique_ptr<CommandOrigin> pimpl);
 
     [[nodiscard]] const std::string &getRequestId() const override;
     [[nodiscard]] std::string getName() const override;
@@ -49,16 +49,13 @@ public:
     [[nodiscard]] const mce::UUID &getUUID() const override;
     void handleCommandOutputCallback(int, std::string &&, Json::Value &&) const override;
     void updateValues() override;
-    [[nodiscard]] const Vec3 getExecutePosition(int i, const CommandPositionFloat &) const override;
+    [[nodiscard]] Vec3 getExecutePosition(int i, const CommandPositionFloat &) const override;
     [[nodiscard]] CompoundTag serialize() const override;
     [[nodiscard]] bool isValid() const override;
+    void setUUID(const mce::UUID &uuid) override;
 
 protected:
-    void _setUUID(const mce::UUID &uuid) override;
-
-private:
-    ::Level &level_;
-    ::Dimension &dimension_;
+    std::unique_ptr<CommandOrigin> pimpl_;
 };
 
 }  // namespace endstone::detail
