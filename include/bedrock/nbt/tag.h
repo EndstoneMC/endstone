@@ -37,12 +37,6 @@ public:
         NumTagTypes = 12,
     };
 
-    Tag() = delete;
-    Tag(const Tag &other) = default;
-    Tag &operator=(const Tag &other) = default;
-    Tag(Tag &&other) = default;
-    Tag &operator=(Tag &&other) = default;
-
     virtual ~Tag() = default;
     virtual void deleteChildren(){};
     virtual void write(IDataOutput &) const = 0;
