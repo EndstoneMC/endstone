@@ -20,6 +20,38 @@
 #include "bedrock/nbt/tag.h"
 
 class ByteTag : public Tag {
+public:
+    explicit ByteTag(uint8_t data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override {}
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readByteResult();
+        if (result) {
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Byte;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const ByteTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<ByteTag>(data_);
+    }
+    [[nodiscard]] uint64_t hash() const override
+    {
+        return data_;
+    }
+
 private:
     std::uint8_t data_;
 };
