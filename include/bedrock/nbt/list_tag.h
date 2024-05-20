@@ -18,11 +18,76 @@
 #include <memory>
 #include <vector>
 
+#include <boost/container_hash/detail/hash_range.hpp>
+#include <fmt/format.h>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
 
 class ListTag : public Tag {
 public:
+    ListTag() = default;
+    void write(IDataOutput &output) const override
+    {
+        output.writeByte(static_cast<std::uint8_t>(type_));
+        output.writeInt(static_cast<std::int32_t>(data_.size()));
+        for (const auto &data : data_) {
+            data->write(output);
+        }
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readByteResult();
+        if (!result) {
+            return nonstd::make_unexpected(result.error());
+        }
+        type_ = static_cast<Type>(result.value());
+
+        auto result2 = input.readIntResult();
+        if (!result2) {
+            return nonstd::make_unexpected(result2.error());
+        }
+
+        auto size = result2.value();
+        data_.clear();
+        data_.reserve(size);
+        for (int i = 0; i < size; ++i) {
+            auto result3 = Tag::newTag(type_);
+            if (!result3) {
+                return nonstd::make_unexpected(result3.error());
+            }
+            auto tag = std::move(result3.value());
+            tag->load(input);
+            data_.push_back(std::move(tag));
+        }
+        return {};
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return fmt::format("{} entries of type {}", data_.size(), Tag::getTagName(type_));
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::List;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const ListTag &>(other).data_ &&
+               type_ == static_cast<const ListTag &>(other).type_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        auto copy = std::make_unique<ListTag>();
+        for (const auto &data : data_) {
+            copy->data_.push_back(data->copy());
+        }
+        return copy;
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return boost::hash_range(data_.begin(), data_.end());
+    }
+
 private:
     std::vector<std::unique_ptr<Tag>> data_;  // +8
     Tag::Type type_;                          // +32

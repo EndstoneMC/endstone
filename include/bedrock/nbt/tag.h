@@ -61,6 +61,7 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
     [[nodiscard]] virtual std::uint64_t hash() const = 0;
 
+    inline static Bedrock::Result<std::unique_ptr<Tag>> newTag(Type);
     inline static std::string getTagName(Type type);
 };
 
@@ -95,4 +96,10 @@ std::string Tag::getTagName(Tag::Type type)
     default:
         return "UNKNOWN";
     }
+}
+
+Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Tag::Type)
+{
+    // TODO(nbt): fix me
+    throw std::runtime_error("Not implemented");
 }
