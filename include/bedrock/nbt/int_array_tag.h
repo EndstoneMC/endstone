@@ -22,6 +22,54 @@
 
 class IntArrayTag : public Tag {
 public:
+    explicit IntArrayTag(std::vector<std::int32_t> data = {}) : data_(std::move(data)) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeInt(static_cast<std::int32_t>(data_.size()));
+        for (int i : data_) {
+            output.writeInt(i);
+        }
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readIntResult();
+        if (!result) {
+            return nonstd::make_unexpected(result.error());
+        }
+
+        auto size = result.value();
+        data_.clear();
+        data_.reserve(size);
+        for (int i = 0; i < size; ++i) {
+            auto result2 = input.readIntResult();
+            if (!result2) {
+                return nonstd::make_unexpected(result2.error());
+            }
+            data_.push_back(result2.value());
+        }
+        return {};
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return fmt::format("[{} ints]", data_.size());
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::IntArray;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const IntArrayTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<IntArrayTag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return boost::hash_range(data_.begin(), data_.end());
+    }
+
 private:
     std::vector<std::int32_t> data_;
 };
