@@ -36,18 +36,47 @@ class CompoundTagVariant;
 
 class CompoundTag : public Tag {
 public:
-    BEDROCK_API void putBoolean(std::string, bool);
-    BEDROCK_API std::uint8_t &putByte(std::string, std::uint8_t);
-    BEDROCK_API std::int16_t &putShort(std::string, std::int16_t);
-    BEDROCK_API std::int32_t &putInt(std::string, std::int32_t);
-    BEDROCK_API std::int64_t &putInt64(std::string, std::int64_t);
+    CompoundTag() = default;
+    void write(IDataOutput &output) const override
+    {
+        // TODO(nbt): fixme
+        throw std::runtime_error("Not implemented");
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        // TODO(nbt): fixme
+        throw std::runtime_error("Not implemented");
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return fmt::format("{} entries", tags_.size());
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Compound;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        // TODO(nbt): fixme
+        throw std::runtime_error("Not implemented");
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        // TODO(nbt): fixme
+        throw std::runtime_error("Not implemented");
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        // TODO(nbt): fixme
+        throw std::runtime_error("Not implemented");
+    }
 
 private:
     std::map<std::string, CompoundTagVariant> tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 
-class CompoundTagVariant : public std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
+class CompoundTagVariant : public std::variant<EndTag, CompoundTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
                                                ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag> {
 public:
     CompoundTagVariant() = delete;
