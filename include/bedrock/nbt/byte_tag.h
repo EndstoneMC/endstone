@@ -30,6 +30,7 @@ public:
     {
         auto result = input.readByteResult();
         if (result) {
+            data_ = result.value();
             return {};
         }
         return nonstd::make_unexpected(result.error());

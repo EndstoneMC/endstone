@@ -21,6 +21,41 @@
 
 class FloatTag : public Tag {
 public:
+    explicit FloatTag(float data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeFloat(data_);
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readFloatResult();
+        if (result) {
+            data_ = result.value();
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Float;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const FloatTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<FloatTag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return std::hash<float>{}(data_);
+    }
+
 private:
     float data_;
 };

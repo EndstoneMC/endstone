@@ -21,6 +21,41 @@
 
 class DoubleTag : public Tag {
 public:
+    explicit DoubleTag(double data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeDouble(data_);
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readDoubleResult();
+        if (result) {
+            data_ = result.value();
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Double;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const DoubleTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<DoubleTag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return std::hash<double>{}(data_);
+    }
+
 private:
     double data_;
 };
