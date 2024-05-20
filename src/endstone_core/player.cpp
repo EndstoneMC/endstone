@@ -256,6 +256,8 @@ void EndstonePlayer::updateCommands() const
 
 namespace {
 class PlayerCommandOriginAdapter : public CommandOriginAdapter {
+    using CommandOriginAdapter::CommandOriginAdapter;
+
 public:
     explicit PlayerCommandOriginAdapter(::Player &player) : CommandOriginAdapter(nullptr)
     {
@@ -283,6 +285,10 @@ public:
     [[nodiscard]] bool isSelectorExpansionAllowed() const override
     {
         return true;
+    }
+    [[nodiscard]] std::unique_ptr<CommandOrigin> clone() const override
+    {
+        return std::make_unique<PlayerCommandOriginAdapter>(pimpl_->clone());
     }
 };
 }  // namespace

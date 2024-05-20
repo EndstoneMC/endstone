@@ -71,7 +71,7 @@ CommandPermissionLevel CommandOriginAdapter::getPermissionsLevel() const
 
 std::unique_ptr<CommandOrigin> CommandOriginAdapter::clone() const
 {
-    return pimpl_->clone();
+    return std::make_unique<CommandOriginAdapter>(pimpl_->clone());
 }
 
 std::optional<BlockPos> CommandOriginAdapter::getCursorHitBlockPos() const
