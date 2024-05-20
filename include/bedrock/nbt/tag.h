@@ -21,7 +21,7 @@
 
 class Tag {
 public:
-    enum  Type : char {
+    enum Type : char {
         End = 0,
         Byte = 1,
         Short = 2,
@@ -44,77 +44,61 @@ public:
     Tag &operator=(Tag &&other) = default;
 
     virtual ~Tag() = default;
-    virtual void deleteChildren()
+    virtual void deleteChildren(){};
+    virtual void write(IDataOutput &) const = 0;
+    virtual Bedrock::Result<void> load(IDataInput &) = 0;
+    [[nodiscard]] virtual std::string toString() const = 0;
+    [[nodiscard]] virtual Type getId() const = 0;
+    [[nodiscard]] virtual bool equals(Tag const &other) const
     {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    virtual void write(IDataOutput &) const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    virtual Bedrock::Result<void> load(IDataInput &)
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    [[nodiscard]] virtual std::string toString() const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    [[nodiscard]] virtual Type getId() const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    [[nodiscard]] virtual bool equals(Tag const &) const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    virtual void print(std::string const &, PrintStream &) const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    virtual void print(PrintStream &) const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    [[nodiscard]] virtual std::unique_ptr<Tag> copy() const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-    [[nodiscard]] virtual std::uint64_t hash() const
-    {
-        throw std::runtime_error("Pure virtual function called!");
-    };
-
-    inline static std::string getTagName(Type type)
-    {
-        switch (type) {
-        case Type::End:
-            return "TAG_End";
-        case Type::Byte:
-            return "TAG_Byte";
-        case Type::Short:
-            return "TAG_Short";
-        case Type::Int:
-            return "TAG_Int";
-        case Type::Int64:
-            return "TAG_Long";
-        case Type::Float:
-            return "TAG_Float";
-        case Type::Double:
-            return "TAG_Double";
-        case Type::ByteArray:
-            return "TAG_Byte_Array";
-        case Type::String:
-            return "TAG_String";
-        case Type::List:
-            return "TAG_List";
-        case Type::Compound:
-            return "TAG_Compound";
-        case Type::IntArray:
-            return "TAG_Int_Array";
-        case Type::NumTagTypes:
-        default:
-            return "UNKNOWN";
-        }
+        return getId() == other.getId();
     }
+    virtual void print(std::string const &, PrintStream &stream) const
+    {
+        stream.print(getTagName(getId()));
+        stream.print(": ");
+        stream.print(toString());
+        stream.print("\n");
+    }
+    virtual void print(PrintStream &stream) const
+    {
+        print("", stream);
+    }
+    [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
+    [[nodiscard]] virtual std::uint64_t hash() const = 0;
+
+    inline static std::string getTagName(Type type);
 };
+
+std::string Tag::getTagName(Tag::Type type)
+{
+    switch (type) {
+    case Type::End:
+        return "TAG_End";
+    case Type::Byte:
+        return "TAG_Byte";
+    case Type::Short:
+        return "TAG_Short";
+    case Type::Int:
+        return "TAG_Int";
+    case Type::Int64:
+        return "TAG_Long";
+    case Type::Float:
+        return "TAG_Float";
+    case Type::Double:
+        return "TAG_Double";
+    case Type::ByteArray:
+        return "TAG_Byte_Array";
+    case Type::String:
+        return "TAG_String";
+    case Type::List:
+        return "TAG_List";
+    case Type::Compound:
+        return "TAG_Compound";
+    case Type::IntArray:
+        return "TAG_Int_Array";
+    case Type::NumTagTypes:
+    default:
+        return "UNKNOWN";
+    }
+}
