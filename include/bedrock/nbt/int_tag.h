@@ -21,6 +21,40 @@
 
 class IntTag : public Tag {
 public:
+    explicit IntTag(std::int32_t data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeInt(data_);
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readIntResult();
+        if (result) {
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Int;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const IntTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<IntTag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return data_;
+    }
+
 private:
     std::int32_t data_;
 };

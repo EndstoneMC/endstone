@@ -21,6 +21,40 @@
 
 class Int64Tag : public Tag {
 public:
+    explicit Int64Tag(std::int64_t data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeLongLong(data_);
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readLongLongResult();
+        if (result) {
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Int64;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const Int64Tag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<Int64Tag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return data_;
+    }
+
 private:
     std::int64_t data_;
 };
