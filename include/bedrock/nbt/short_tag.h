@@ -21,6 +21,40 @@
 
 class ShortTag : public Tag {
 public:
+    explicit ShortTag(std::int16_t data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeShort(data_);
+    }
+    Bedrock::Result<void> load(IDataInput &input) override
+    {
+        auto result = input.readShortResult();
+        if (result) {
+            return {};
+        }
+        return nonstd::make_unexpected(result.error());
+    }
+    [[nodiscard]] std::string toString() const override
+    {
+        return std::to_string(data_);
+    }
+    [[nodiscard]] Type getId() const override
+    {
+        return Type::Short;
+    }
+    [[nodiscard]] bool equals(const Tag &other) const override
+    {
+        return Tag::equals(other) && data_ == static_cast<const ShortTag &>(other).data_;
+    }
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override
+    {
+        return std::make_unique<ShortTag>(data_);
+    }
+    [[nodiscard]] std::uint64_t hash() const override
+    {
+        return data_;
+    }
+
 private:
     std::int16_t data_;
 };

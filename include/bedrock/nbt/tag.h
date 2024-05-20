@@ -21,7 +21,7 @@
 
 class Tag {
 public:
-    enum Type : char {
+    enum class Type : char {
         End = 0,
         Byte = 1,
         Short = 2,

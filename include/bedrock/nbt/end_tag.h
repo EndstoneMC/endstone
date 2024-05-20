@@ -30,7 +30,7 @@ public:
     }
     [[nodiscard]] Type getId() const override
     {
-        return End;
+        return Type::End;
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
@@ -40,7 +40,7 @@ public:
     {
         return std::make_unique<EndTag>();
     }
-    [[nodiscard]] uint64_t hash() const override
+    [[nodiscard]] std::uint64_t hash() const override
     {
         return 0;
     }

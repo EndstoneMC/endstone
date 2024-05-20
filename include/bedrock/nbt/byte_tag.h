@@ -21,8 +21,11 @@
 
 class ByteTag : public Tag {
 public:
-    explicit ByteTag(uint8_t data = 0) : data_(data) {}
-    void write(IDataOutput &output) const override {}
+    explicit ByteTag(std::uint8_t data = 0) : data_(data) {}
+    void write(IDataOutput &output) const override
+    {
+        output.writeByte(data_);
+    }
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readByteResult();
@@ -37,7 +40,7 @@ public:
     }
     [[nodiscard]] Type getId() const override
     {
-        return Byte;
+        return Type::Byte;
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
@@ -47,7 +50,7 @@ public:
     {
         return std::make_unique<ByteTag>(data_);
     }
-    [[nodiscard]] uint64_t hash() const override
+    [[nodiscard]] std::uint64_t hash() const override
     {
         return data_;
     }
