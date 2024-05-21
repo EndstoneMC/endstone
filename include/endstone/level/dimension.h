@@ -25,7 +25,10 @@ public:
         Overworld = 0,
         Nether = 1,
         TheEnd = 2,
+        Custom = 999
     };
+
+    virtual ~Dimension() = default;
 
     /**
      * @brief Gets the name of this dimension
