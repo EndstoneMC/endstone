@@ -18,7 +18,7 @@
 class Abilities;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
-class ActorUnloadedChunkTransferEntry;
+class ActorChunkTransferEntry;
 class ActorDamageCause;
 class ActorDamageSource;
 class ActorDefinitionDescriptor;
@@ -27,6 +27,7 @@ class ActorDefinitionIdentifier;
 class ActorEvent;
 class ActorFactory;
 class ActorInteraction;
+class ActorUnloadedChunkTransferEntry;
 class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;

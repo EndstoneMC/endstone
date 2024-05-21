@@ -18,3 +18,8 @@ Level &Dimension::getLevel() const
 {
     return *level_;
 }
+
+const std::string &Dimension::getName() const
+{
+    return name_;
+}
