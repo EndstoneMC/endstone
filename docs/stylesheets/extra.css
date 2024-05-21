@@ -1,3 +1,7 @@
+img {
+    border-radius: .25rem;
+}
+
 .md-header {
     color: var(--md-sys-color-primary);
     background-color: var(--md-sys-color-surface-container);
@@ -30,7 +34,7 @@ li.md-tabs__item.md-tabs__item--active {
 
 .md-typeset .grid.cards > ol > li, .md-typeset .grid.cards > ul > li, .md-typeset .grid > .card {
     border: .05rem solid var(--md-sys-color-outline-variant);
-    border-radius: 1rem;
+    border-radius: .5rem;
 }
 
 .md-typeset .md-button {
@@ -51,6 +55,10 @@ li.md-tabs__item.md-tabs__item--active {
     color: var(--md-sys-color-on-secondary-container);
     background-color: var(--md-sys-color-secondary-container);
     border-color: var(--md-sys-color-secondary-container);
+}
+
+.md-typeset .admonition, .md-typeset details {
+    border-radius: .5rem;
 }
 
 /* Show tabs */
