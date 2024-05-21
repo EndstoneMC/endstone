@@ -25,14 +25,13 @@
 #include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_permission_level.h"
-#include "bedrock/forward.h"
 #include "bedrock/hashed_string.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
 #include "bedrock/network/syncher/spatial_actor_network_data.h"
 #include "bedrock/network/syncher/synched_actor_data_entity_wrapper.h"
+#include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
-#include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/components/built_in_actor_components.h"
@@ -264,6 +263,9 @@ public:
     [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
+    [[nodiscard]] Actor *getVehicle() const;
+    [[nodiscard]] bool isRiding() const;
+    [[nodiscard]] bool hasCategory(ActorCategory) const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
