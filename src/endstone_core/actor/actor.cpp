@@ -17,6 +17,7 @@
 #include "bedrock/command/command_utils.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_collision.h"
+#include "bedrock/world/actor/components/offsets_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/level/level.h"
 
@@ -103,7 +104,8 @@ std::uint64_t EndstoneActor::getRuntimeId() const
 
 Location EndstoneActor::getLocation() const
 {
-    const auto &position = actor_.getAttachPos(ActorLocation::Feet, 1.0);  // 0.0 = previous pos, 1.0 = current pos
+    auto position = actor_.getPosition();
+    position.y -= actor_.getPersistentComponent<OffsetsComponent>()->height_offset;
     const auto &rotation = actor_.getRotation();
 
     return {getLevel(),

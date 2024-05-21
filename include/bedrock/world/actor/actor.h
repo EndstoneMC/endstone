@@ -250,7 +250,6 @@ public:
 
     BEDROCK_API void setDimension(WeakRef<Dimension>);
 
-    [[nodiscard]] BEDROCK_API Vec3 getAttachPos(ActorLocation location, float alpha) const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;

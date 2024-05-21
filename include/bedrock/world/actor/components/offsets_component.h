@@ -15,5 +15,11 @@
 #pragma once
 
 struct OffsetsComponent {
-    float height_offset;
+    float height_offset;     // +0
+    float explosion_offset;  // +4
+    Vec3 head_offset;        // +8
+    Vec3 drop_offset;        // +20
+    Vec3 eye_offset;         // +32
+    Vec3 mouth_offset;       // +44
+    Vec3 breathing_offset;   // +56
 };
