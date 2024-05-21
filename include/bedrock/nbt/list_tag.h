@@ -27,6 +27,13 @@
 class ListTag : public Tag {
 public:
     ListTag() = default;
+    void deleteChildren() override
+    {
+        while (!data_.empty()) {
+            data_.back()->deleteChildren();
+            data_.pop_back();
+        }
+    }
     void write(IDataOutput &output) const override
     {
         output.writeByte(static_cast<std::uint8_t>(type_));
