@@ -88,8 +88,8 @@ toc_depth: 2
     Copy the following content and paste into the file.
     ``` toml title="pyproject.toml" linenums="1"
     [build-system]
-    requires = ["setuptools >= 61.0"]
-    build-backend = "setuptools.build_meta"
+    requires = ["hatchling"]
+    build-backend = "hatchling.build"
     
     [project]
     name = "endstone-my-plugin"
@@ -339,8 +339,8 @@ toc_depth: 2
 
     ``` toml title="pyproject.toml" linenums="1" hl_lines="9-10"
     [build-system]
-    requires = ["setuptools >= 61.0"]
-    build-backend = "setuptools.build_meta"
+    requires = ["hatchling"]
+    build-backend = "hatchling.build"
     
     [project]
     name = "endstone-my-plugin"
