@@ -20,6 +20,7 @@
 #include <vector>
 
 #include <glm/glm.hpp>
+#include <gsl/gsl>
 
 #include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
@@ -241,6 +242,12 @@ public:
         return context_.tryGetComponent<Component>();
     }
 
+    template <typename Component>
+    gsl::not_null<Component *> getPersistentComponent() const
+    {
+        return context_.tryGetComponent<Component>();
+    };
+
     BEDROCK_API void setDimension(WeakRef<Dimension>);
 
     [[nodiscard]] BEDROCK_API Vec3 getAttachPos(ActorLocation location, float alpha) const;
@@ -257,6 +264,7 @@ public:
     [[nodiscard]] Vec2 const &getRotation() const;
     [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
+    [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 

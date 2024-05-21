@@ -17,9 +17,11 @@
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/components/actor_owner_component.h"
+#include "bedrock/world/actor/components/actor_unique_id_component.h"
 #include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/detail/actor/actor.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/player.h"
@@ -123,6 +125,16 @@ AABB const &Actor::getAABB() const
 ActorRuntimeID Actor::getRuntimeID() const
 {
     return tryGetComponent<RuntimeIDComponent>()->id;
+}
+
+ActorUniqueID Actor::getOrCreateUniqueID() const
+{
+    auto component = getPersistentComponent<ActorUniqueIDComponent const>();
+    if (component->id.id != -1) {
+        return component->id;
+    }
+    auto unique_id = level_->getNewUniqueID();
+    return context_.getOrAddComponent<ActorUniqueIDComponent>(unique_id).id;
 }
 
 Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
