@@ -18,6 +18,7 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/components/offsets_component.h"
+#include "bedrock/world/actor/components/post_tick_position_delta_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/level/level.h"
 
@@ -115,8 +116,20 @@ Location EndstoneActor::getLocation() const
 
 Vector<float> EndstoneActor::getVelocity() const
 {
+    if (actor_.hasCategory(ActorCategory::Mob) || actor_.hasCategory(ActorCategory::Ridable)) {
+        auto *actor = actor_.getVehicle();
+        if (!actor) {
+            actor = &actor_;
+        }
+        auto *component = actor->tryGetComponent<PostTickPositionDeltaComponent>();
+        if (component) {
+            const auto &delta = component->position_delta_;
+            return {delta.x, delta.y, delta.z};
+        }
+    }
+
     const auto &delta = actor_.getPosDelta();
-    return {delta.x, isOnGround() ? 0 : delta.y, delta.z};
+    return {delta.x, delta.y, delta.z};
 }
 
 bool EndstoneActor::isOnGround() const
