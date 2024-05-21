@@ -25,9 +25,9 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/command/command_flag.h"
+#include "bedrock/command/command_origin.h"
 #include "bedrock/command/command_permission_level.h"
 #include "bedrock/command/command_version.h"
-#include "bedrock/command/command_origin.h"
 #include "bedrock/network/protocol/game/available_commands_packet.h"
 #include "bedrock/type_id.h"
 

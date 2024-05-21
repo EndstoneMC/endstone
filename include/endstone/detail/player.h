@@ -64,7 +64,7 @@ public:
     void kick(std::string message) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
-    bool performCommand(std::string command) const override; // NOLINT(*-use-nodiscard)
+    bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
 
     void init(::ServerNetworkHandler &network_handler);
     void disconnect();
