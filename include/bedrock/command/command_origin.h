@@ -70,10 +70,6 @@ public:
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
     virtual void setUUID(const mce::UUID &uuid) = 0;                                             // 31
 
-    BEDROCK_API static std::unique_ptr<CommandOrigin> fromCommandOriginData(CommandOriginData const &,
-                                                                            Bedrock::NonOwnerPointer<ILevel> const &,
-                                                                            NetworkIdentifier const &, SubClientId);
-
 protected:
     mce::UUID uuid_;
 };
