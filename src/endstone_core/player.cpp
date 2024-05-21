@@ -15,6 +15,8 @@
 #include "endstone/detail/player.h"
 
 #include "bedrock/command/command_origin_data.h"
+#include "bedrock/command/command_origin_loader.h"
+#include "bedrock/command/command_position.h"
 #include "bedrock/network/protocol/game/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
@@ -23,7 +25,6 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
-#include "endstone/detail/command/command_origin_adapter.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -254,48 +255,32 @@ void EndstonePlayer::updateCommands() const
     player_.sendNetworkPacket(packet);
 }
 
-namespace {
-class PlayerCommandOriginAdapter : public CommandOriginAdapter {
-    using CommandOriginAdapter::CommandOriginAdapter;
-
-public:
-    explicit PlayerCommandOriginAdapter(::Player &player) : CommandOriginAdapter(nullptr)
-    {
-        auto level = std::static_pointer_cast<ILevel>(player.getLevel().ptr);
-        auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
-        CommandOriginData data{CommandOriginType::Player, component->uuid};
-        pimpl_ = CommandOrigin::fromCommandOriginData(data, level, component->network_id, component->sub_client_id);
-    }
-    [[nodiscard]] CommandPermissionLevel getPermissionsLevel() const override
-    {
-        return CommandPermissionLevel::GameDirectors;
-    }
-    [[nodiscard]] bool hasChatPerms() const override
-    {
-        return true;
-    }
-    [[nodiscard]] bool hasTellPerms() const override
-    {
-        return true;
-    }
-    [[nodiscard]] bool canUseCommandsWithoutCheatsEnabled() const override
-    {
-        return true;
-    }
-    [[nodiscard]] bool isSelectorExpansionAllowed() const override
-    {
-        return true;
-    }
-    [[nodiscard]] std::unique_ptr<CommandOrigin> clone() const override
-    {
-        return std::make_unique<PlayerCommandOriginAdapter>(pimpl_->clone());
-    }
-};
-}  // namespace
-
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    CommandContext ctx{command, std::make_unique<PlayerCommandOriginAdapter>(player_), CommandVersion::CurrentVersion};
+    CompoundTag tag;
+    {
+        auto origin_type = CommandOriginType::GameDirectorEntityServer;
+        auto entity_id = player_.getOrCreateUniqueID();
+        CompoundTag origin;
+        {
+            origin.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
+            origin.putInt64("EntityId", entity_id.id);
+        }
+        CompoundTag output_receiver;
+        {
+            output_receiver.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
+            output_receiver.putInt64("EntityId", entity_id.id);
+        }
+        CommandPosition command_pos;
+        tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Virtual));
+        tag.putCompound("Origin", std::move(origin));
+        tag.putCompound("OutputReceiver", std::move(output_receiver));
+        tag.putCompound("CommandPosition", std::move(command_pos.serialize()));
+        tag.putInt("Version", CommandVersion::CurrentVersion);
+    }
+
+    auto origin = CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player_.getLevel()));
+    CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
     auto result = server_.getMinecraftCommands().executeCommand(ctx, true);
     return result.is_success;
 }

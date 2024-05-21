@@ -71,12 +71,12 @@ public:
         throw std::runtime_error("Not implemented");
     }
 
-    std::uint8_t &putByte(std::string name, std::uint8_t value);
-    void putBoolean(std::string name, bool value);
-    float &putFloat(std::string name, float value);
-    std::int32_t &putInt(std::string name, std::int32_t value);
-    std::int64_t &putInt64(std::string name, std::int64_t value);
-    CompoundTag &putCompound(std::string name, CompoundTag value);
+    inline std::uint8_t &putByte(std::string name, std::uint8_t value);
+    inline void putBoolean(std::string name, bool value);
+    inline float &putFloat(std::string name, float value);
+    inline std::int32_t &putInt(std::string name, std::int32_t value);
+    inline std::int64_t &putInt64(std::string name, std::int64_t value);
+    inline CompoundTag &putCompound(std::string name, CompoundTag value);
 
 private:
     std::map<std::string, CompoundTagVariant> tags_;  // +8
@@ -128,7 +128,6 @@ std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
     it = Int64Tag(value);
     return std::get<Int64Tag>(it).data_;
 }
-
 
 CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
 {
