@@ -57,6 +57,7 @@ public:
     }
 
 private:
+    friend class CompoundTag;
     float data_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(FloatTag, 16, 16);

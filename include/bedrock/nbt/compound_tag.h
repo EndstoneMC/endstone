@@ -71,23 +71,68 @@ public:
         throw std::runtime_error("Not implemented");
     }
 
+    std::uint8_t &putByte(std::string name, std::uint8_t value);
+    void putBoolean(std::string name, bool value);
+    float &putFloat(std::string name, float value);
+    std::int32_t &putInt(std::string name, std::int32_t value);
+    std::int64_t &putInt64(std::string name, std::int64_t value);
+    CompoundTag &putCompound(std::string name, CompoundTag value);
+
 private:
     std::map<std::string, CompoundTagVariant> tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 
-class CompoundTagVariant : public std::variant<EndTag, CompoundTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
+class CompoundTagVariant : public std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
                                                ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag> {
 public:
-    CompoundTagVariant() = delete;
-    CompoundTagVariant(const CompoundTagVariant &other) = default;
-    CompoundTagVariant &operator=(const CompoundTagVariant &other) = default;
-    CompoundTagVariant(CompoundTagVariant &&other) = default;
-    CompoundTagVariant &operator=(CompoundTagVariant &&other) = default;
-
+    using Type = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag, StringTag,
+                              ListTag, CompoundTag, IntArrayTag>;
+    using Type::Type;
     [[nodiscard]] const Tag *get() const
     {
         return std::visit([](auto &&arg) -> const Tag * { return &arg; }, *this);
     }
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTagVariant, 48, 48);
+
+std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
+{
+    auto &it = tags_[name];
+    it = ByteTag(value);
+    return std::get<ByteTag>(it).data_;
+}
+
+void CompoundTag::putBoolean(std::string name, bool value)
+{
+    tags_[name] = ByteTag(value ? 1 : 0);
+}
+
+float &CompoundTag::putFloat(std::string name, float value)
+{
+    auto &it = tags_[name];
+    it = FloatTag(value);
+    return std::get<FloatTag>(it).data_;
+}
+
+std::int32_t &CompoundTag::putInt(std::string name, std::int32_t value)
+{
+    auto &it = tags_[name];
+    it = IntTag(value);
+    return std::get<IntTag>(it).data_;
+}
+
+std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
+{
+    auto &it = tags_[name];
+    it = Int64Tag(value);
+    return std::get<Int64Tag>(it).data_;
+}
+
+
+CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
+{
+    auto &it = tags_[name];
+    it = std::move(value);
+    return std::get<CompoundTag>(it);
+}
