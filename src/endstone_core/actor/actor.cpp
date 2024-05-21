@@ -109,9 +109,9 @@ Location EndstoneActor::getLocation() const
     position.y -= actor_.getPersistentComponent<OffsetsComponent>()->height_offset;
     const auto &rotation = actor_.getRotation();
 
-    return {getLevel(),
+    return {&getLevel(),
             nullptr,  // TODO(fixme): add getDimension and pass it to the constructor
-            position.x, position.y, position.z, rotation.x, rotation.y};
+            position.x,  position.y, position.z, rotation.x, rotation.y};
 }
 
 Vector<float> EndstoneActor::getVelocity() const
@@ -147,9 +147,9 @@ bool EndstoneActor::isInLava() const
     return actor_.isInWater();
 }
 
-std::shared_ptr<Level> EndstoneActor::getLevel() const
+Level &EndstoneActor::getLevel() const
 {
-    return std::move(server_.getLevel(actor_.getLevel().getLevelId()));
+    return *server_.getLevel(actor_.getLevel().getLevelId());
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()

@@ -80,7 +80,7 @@ public:
      *
      * @return The current Level this actor resides in
      */
-    [[nodiscard]] virtual std::shared_ptr<Level> getLevel() const = 0;
+    [[nodiscard]] virtual Level &getLevel() const = 0;
 };
 
 }  // namespace endstone

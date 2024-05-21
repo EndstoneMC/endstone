@@ -29,26 +29,19 @@ class Dimension;
  */
 class Position : public Vector<float> {
 public:
-    Position(const std::shared_ptr<Level> &level, const std::shared_ptr<Dimension> &dimension, float x, float y,
-             float z)
-        : Vector(x, y, z)
+    Position(Level *level, const std::shared_ptr<Dimension> &dimension, float x, float y, float z)
+        : Vector(x, y, z), level_(level), dimension_(dimension)
     {
-        if (level) {
-            level_ = level;
-        }
-        if (dimension) {
-            dimension_ = dimension;
-        }
     }
 
     /**
      * Gets the level that this position resides in
      *
-     * @return Level that contains this position, or nullptr if the level is not set or is unloaded.
+     * @return Level that contains this position, or nullptr if the level is not set.
      */
-    [[nodiscard]] std::shared_ptr<Level> getLevel() const
+    [[nodiscard]] Level *getLevel() const
     {
-        return level_.lock();
+        return level_;
     }
 
     /**
@@ -56,15 +49,15 @@ public:
      *
      * @param level New level that this position resides in
      */
-    void setLevel(const std::shared_ptr<Level> &level)
+    void setLevel(Level &level)
     {
-        level_ = level;
+        level_ = &level;
     }
 
     /**
      * Gets the dimension that this position resides in
      *
-     * @return Dimension that contains this position, or nullptr if the level is not set or is unloaded.
+     * @return Dimension that contains this position, or nullptr if the dimension is not set.
      */
     [[nodiscard]] std::shared_ptr<Dimension> getDimension() const
     {
@@ -82,7 +75,7 @@ public:
     }
 
 private:
-    std::weak_ptr<Level> level_;
+    Level *level_;
     std::weak_ptr<Dimension> dimension_;
 };
 

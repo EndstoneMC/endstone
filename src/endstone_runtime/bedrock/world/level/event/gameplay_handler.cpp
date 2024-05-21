@@ -34,7 +34,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     // Find out the level where this event is occurring
     auto levels = server.getLevels();
     auto it = std::find_if(begin(levels), end(levels), [this](auto level) {
-        auto endstone_level = std::static_pointer_cast<EndstoneLevel>(level);
+        auto *endstone_level = static_cast<EndstoneLevel *>(level);
         return &(endstone_level->getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
     });
     if (it == levels.end()) {

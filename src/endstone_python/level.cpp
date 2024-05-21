@@ -27,7 +27,7 @@ namespace endstone::detail {
 
 void init_level(py::module_ &m)
 {
-    py::class_<Level, std::shared_ptr<Level>>(m, "Level")
+    py::class_<Level>(m, "Level")
         .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level")
         .def_property("time", &Level::getTime, &Level::setTime,
@@ -36,8 +36,8 @@ void init_level(py::module_ &m)
     py::class_<Dimension, std::shared_ptr<Dimension>>(m, "Dimension");
 
     py::class_<Position, Vector<float>>(m, "Position")
-        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, float, float, float>(),
-             py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
+        .def(py::init<Level *, const std::shared_ptr<Dimension> &, float, float, float>(), py::arg("level"),
+             py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
         .def_property("level", &Position::getLevel, &Position::setLevel, py::return_value_policy::reference,
                       "The Level that contains this position")
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
@@ -45,8 +45,7 @@ void init_level(py::module_ &m)
     // TODO(fixme): add __repr__
 
     py::class_<Location, Position>(m, "Location")
-        .def(py::init<const std::shared_ptr<Level> &, const std::shared_ptr<Dimension> &, float, float, float, float,
-                      float>(),
+        .def(py::init<Level *, const std::shared_ptr<Dimension> &, float, float, float, float, float>(),
              py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
              py::arg("yaw") = 0.0)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,

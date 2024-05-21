@@ -18,6 +18,7 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include "bedrock/world/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/scheduler/scheduler.h"
@@ -35,8 +36,8 @@ public:
     MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string name), (const, override));
     MOCK_METHOD(endstone::CommandSender &, getCommandSender, (), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
-    MOCK_METHOD(std::vector<std::shared_ptr<endstone::Level>>, getLevels, (), (const, override));
-    MOCK_METHOD(std::shared_ptr<endstone::Level>, getLevel, (std::string name), (const, override));
+    MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
+    MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));
     MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));

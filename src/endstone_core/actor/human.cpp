@@ -127,7 +127,7 @@ bool EndstoneHumanActor::isInLava() const
     return EndstoneActor::isInLava();
 }
 
-std::shared_ptr<Level> EndstoneHumanActor::getLevel() const
+Level &EndstoneHumanActor::getLevel() const
 {
     return EndstoneActor::getLevel();
 }

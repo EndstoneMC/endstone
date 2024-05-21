@@ -55,7 +55,7 @@ public:
     [[nodiscard]] bool isOnGround() const override;
     [[nodiscard]] bool isInWater() const override;
     [[nodiscard]] bool isInLava() const override;
-    [[nodiscard]] std::shared_ptr<Level> getLevel() const override;
+    [[nodiscard]] Level &getLevel() const override;
 
 protected:
     EndstoneServer &server_;
