@@ -87,6 +87,18 @@ public:
     {
         return boost::hash_range(data_.begin(), data_.end());
     }
+    void print(const std::string &string, PrintStream &stream) const override
+    {
+        Tag::print(string, stream);
+        stream.print(string);
+        stream.print("{\n");
+        stream.print("   ");
+        for (const auto &data : data_) {
+            data->print(string, stream);
+        }
+        stream.print(string);
+        stream.print("}\n");
+    }
 
 private:
     std::vector<std::unique_ptr<Tag>> data_;  // +8

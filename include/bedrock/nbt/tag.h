@@ -61,45 +61,6 @@ public:
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
     [[nodiscard]] virtual std::uint64_t hash() const = 0;
 
-    inline static Bedrock::Result<std::unique_ptr<Tag>> newTag(Type);
-    inline static std::string getTagName(Type type);
+    static Bedrock::Result<std::unique_ptr<Tag>> newTag(Type);
+    static std::string getTagName(Type type);
 };
-
-std::string Tag::getTagName(Tag::Type type)
-{
-    switch (type) {
-    case Type::End:
-        return "TAG_End";
-    case Type::Byte:
-        return "TAG_Byte";
-    case Type::Short:
-        return "TAG_Short";
-    case Type::Int:
-        return "TAG_Int";
-    case Type::Int64:
-        return "TAG_Long";
-    case Type::Float:
-        return "TAG_Float";
-    case Type::Double:
-        return "TAG_Double";
-    case Type::ByteArray:
-        return "TAG_Byte_Array";
-    case Type::String:
-        return "TAG_String";
-    case Type::List:
-        return "TAG_List";
-    case Type::Compound:
-        return "TAG_Compound";
-    case Type::IntArray:
-        return "TAG_Int_Array";
-    case Type::NumTagTypes:
-    default:
-        return "UNKNOWN";
-    }
-}
-
-Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Tag::Type)
-{
-    // TODO(nbt): fix me
-    throw std::runtime_error("Not implemented");
-}
