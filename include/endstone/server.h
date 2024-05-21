@@ -43,42 +43,42 @@ public:
     virtual ~Server() = default;
 
     /**
-     * Gets the name of this server implementation.
+     * @brief Gets the name of this server implementation.
      *
      * @return name of this server implementation
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * Gets the version string of this server implementation.
+     * @brief Gets the version string of this server implementation.
      *
      * @return version of this server implementation
      */
     [[nodiscard]] virtual std::string getVersion() const = 0;
 
     /**
-     * Gets the Minecraft version that this server is running.
+     * @brief Gets the Minecraft version that this server is running.
      *
      * @return version of Minecraft
      */
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
     /**
-     * Returns the primary logger associated with this server instance.
+     * @brief Returns the primary logger associated with this server instance.
      *
      * @return Logger associated with this server
      */
     [[nodiscard]] virtual Logger &getLogger() const = 0;
 
     /**
-     * Gets the plugin manager for interfacing with plugins.
+     * @brief Gets the plugin manager for interfacing with plugins.
      *
      * @return a plugin manager for this Server instance
      */
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
 
     /**
-     * Gets a PluginCommand with the given name or alias.
+     * @brief Gets a PluginCommand with the given name or alias.
      *
      * @param name the name of the command to retrieve
      * @return a plugin command if found, null otherwise
@@ -86,43 +86,43 @@ public:
     [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
 
     /**
-     * Gets a CommandSender for this server.
+     * @brief Gets a CommandSender for this server.
      *
      * @return a console command sender
      */
     [[nodiscard]] virtual CommandSender &getCommandSender() const = 0;
 
     /**
-     * Gets the scheduler for managing scheduled events.
+     * @brief Gets the scheduler for managing scheduled events.
      *
      * @return a scheduling service for this server
      */
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
     /**
-     * Gets a list of all levels on this server.
+     * @brief Gets a list of all levels on this server.
      *
      * @return a list of levels
      */
     [[nodiscard]] virtual std::vector<std::shared_ptr<Level>> getLevels() const = 0;
 
     /**
-     * Gets the level with the given name.
+     * @brief Gets the level with the given name.
      *
-     * @param name the name of the world to retrieve
+     * @param name the name of the level to retrieve
      * @return a level with the given name, or nullptr if none exists
      */
     [[nodiscard]] virtual std::shared_ptr<Level> getLevel(std::string name) const = 0;
 
     /**
-     * Gets a list of all currently online players.
+     * @brief Gets a list of all currently online players.
      *
      * @return a list of currently online players.
      */
     [[nodiscard]] virtual std::vector<Player *> getOnlinePlayers() const = 0;
 
     /**
-     * Gets the player with the given UUID.
+     * @brief Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve
      * @return a player object if one was found, null otherwise
@@ -130,7 +130,7 @@ public:
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
-     * Broadcasts the specified message to every user with the given permission name.
+     * @brief Broadcasts the specified message to every user with the given permission name.
      *
      * @param message message to broadcast
      * @param permission the required permission Permissibles must have to receive the broadcast
@@ -138,7 +138,7 @@ public:
     virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
 
     /**
-     * Broadcasts the specified message to every user with permission endstone.broadcast.user
+     * @brief Broadcasts the specified message to every user with permission endstone.broadcast.user
      *
      * @param message the message
      */
@@ -151,7 +151,7 @@ public:
     }
 
     /**
-     * Checks the current thread against the expected primary server thread
+     * @brief Checks the current thread against the expected primary server thread
      *
      * @return true if the current thread matches the expected primary thread, false otherwise
      */

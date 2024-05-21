@@ -28,32 +28,47 @@ public:
     virtual ~Level() = default;
 
     /**
-     * Gets the unique name of this level
+     * @brief Gets the unique name of this level
      *
      * @return Name of this level
      */
     [[nodiscard]] virtual std::string getName() const = 0;
 
     /**
-     * Get a list of all actors in this Level
+     * @brief Get a list of all actors in this level
      *
      * @return A List of all actors currently residing in this level
      */
     [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
 
     /**
-     * Gets the relative in-game time of this Level.
+     * @brief Gets the relative in-game time of this level.
      *
      * @return The current relative time
      */
     [[nodiscard]] virtual int getTime() const = 0;
 
     /**
-     * Sets the relative in-game time on the server.
+     * @brief Sets the relative in-game time on the server.
      *
      * @param time The new relative time to set the in-game time to
      */
     virtual void setTime(int time) = 0;
+
+    /**
+     * @brief Gets a list of all dimensions within this level.
+     *
+     * @return a list of dimensions
+     */
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Dimension>> getDimensions() const = 0;
+
+    /**
+     * @brief Gets the dimension with the given name.
+     *
+     * @param name the name of the dimension to retrieve
+     * @return The Dimension with the given name, or nullptr if none exists
+     */
+    [[nodiscard]] virtual std::shared_ptr<Dimension> getDimension(std::string name) const = 0;
 };
 
 }  // namespace endstone

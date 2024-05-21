@@ -74,6 +74,26 @@ void EndstoneLevel::setTime(int time)
     level_.setTime(time);
 }
 
+std::vector<std::shared_ptr<Dimension>> EndstoneLevel::getDimensions() const
+{
+    std::vector<std::shared_ptr<Dimension>> dimensions;
+    dimensions.reserve(dimensions_.size());
+    for (const auto &it : dimensions_) {
+        dimensions.push_back(it.second);
+    }
+    return dimensions;
+}
+
+std::shared_ptr<Dimension> EndstoneLevel::getDimension(std::string name) const
+{
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    auto it = dimensions_.find(name);
+    if (it == dimensions_.end()) {
+        return nullptr;
+    }
+    return it->second;
+}
+
 BedrockLevel &EndstoneLevel::getBedrockLevel() const
 {
     return level_;
