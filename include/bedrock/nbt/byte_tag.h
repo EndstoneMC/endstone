@@ -57,6 +57,7 @@ public:
     }
 
 private:
+    friend class CompoundTag;
     std::uint8_t data_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ByteTag, 16, 16);
