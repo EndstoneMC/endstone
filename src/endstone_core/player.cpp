@@ -271,11 +271,9 @@ bool EndstonePlayer::performCommand(std::string command) const
             output_receiver.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
             output_receiver.putInt64("EntityId", entity_id.id);
         }
-        CommandPosition command_pos;
         tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Virtual));
         tag.putCompound("Origin", std::move(origin));
         tag.putCompound("OutputReceiver", std::move(output_receiver));
-        tag.putCompound("CommandPosition", std::move(command_pos.serialize()));
         tag.putInt("Version", CommandVersion::CurrentVersion);
     }
 
