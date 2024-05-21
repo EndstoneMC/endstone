@@ -24,7 +24,28 @@ public:
     enum class Type {
         Overworld = 0,
         Nether = 1,
-        TheEnd = 2
+        TheEnd = 2,
     };
+
+    /**
+     * @brief Gets the name of this dimension
+     *
+     * @return Name of this dimension
+     */
+    [[nodiscard]] virtual std::string getName() const = 0;
+
+    /**
+     * @brief Gets the type of this dimension
+     *
+     * @return Type of this dimension
+     */
+    [[nodiscard]] virtual Type getType() const = 0;
+
+    /**
+     * @brief Gets the level to which this dimension belongs
+     *
+     * @return Level containing this dimension.
+     */
+    [[nodiscard]] virtual Level &getLevel() const = 0;
 };
 }  // namespace endstone
