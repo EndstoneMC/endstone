@@ -37,15 +37,6 @@ const CommandFlag CommandFlag::NotCheat = {1 << 7};              // Command::run
 const CommandFlag CommandFlag::DisabledInEditor = {1 << 9};      // CommandRegistry::enabledInEditor
 
 /**
- * Ids for VanillaDimensions
- *
- * See VanillaDimensions::fromSerializedInt
- */
-const AutomaticID<Dimension, int> VanillaDimensions::Overworld{0};
-const AutomaticID<Dimension, int> VanillaDimensions::Nether{1};
-const AutomaticID<Dimension, int> VanillaDimensions::TheEnd{2};
-
-/**
  * CommandVersion
  */
 const int CommandVersion::CurrentVersion = 38;

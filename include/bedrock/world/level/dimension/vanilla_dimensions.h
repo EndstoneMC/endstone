@@ -20,8 +20,7 @@
 
 class VanillaDimensions {
 public:
-    static const AutomaticID<Dimension, int> Overworld;
-    static const AutomaticID<Dimension, int> Nether;
-    static const AutomaticID<Dimension, int> TheEnd;
-    BEDROCK_API static std::string const toString(AutomaticID<Dimension, int> const &);
+    constexpr static AutomaticID<Dimension, int> Overworld{0};
+    constexpr static AutomaticID<Dimension, int> Nether{1};
+    constexpr static AutomaticID<Dimension, int> TheEnd{2};
 };
