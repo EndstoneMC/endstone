@@ -15,7 +15,6 @@
 #pragma once
 
 // Classes
-class AABB;
 class Abilities;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
@@ -61,7 +60,6 @@ class ChunkPos;
 class ChunkSource;
 class ChunkTickRangeManager;
 class ChunkViewSource;
-class CommandOriginIdentity;
 class CommandOriginSystem;
 class CommandPositionFloat;
 class ComplexInventoryTransaction;
@@ -114,7 +112,6 @@ class MaterialTypeHelper;
 class MobEffectInstance;
 class MolangVariableMap;
 class NavigationComponent;
-class NetEventCallback;
 class NewInteractionModel;
 class Options;
 class PackAccessStrategy;
@@ -150,7 +147,6 @@ class ServerMetrics;
 class SoundPlayerInterface;
 class Spawner;
 class StorageVersion;
-class StrictEntityContext;
 class StructureManager;
 class SubChunkPacket;
 class SubChunkPos;
@@ -168,7 +164,6 @@ class _TickPtr;  // NOLINT
 
 // Enums
 enum class AbilitiesIndex;
-enum class ActorCategory;
 enum class ActorFlags;
 enum class ActorType;
 enum class ArmorMaterialType;

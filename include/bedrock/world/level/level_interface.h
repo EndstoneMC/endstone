@@ -30,11 +30,13 @@
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
+#include "bedrock/network/protocol/net_event_callback.h"
 #include "bedrock/network/protocol/packet_sender.h"
 #include "bedrock/server/player_list_entry.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
+#include "bedrock/world/actor/registry/strict_entity_context.h"
 #include "bedrock/world/level/event/event_coordinator.h"
 #include "bedrock/world/level/level_listener.h"
 
