@@ -2,7 +2,7 @@ from __future__ import annotations
 import datetime
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'HumanActor', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
     def is_in_lava(self) -> bool:
@@ -304,8 +304,6 @@ class GameMode:
     @property
     def value(self) -> int:
         ...
-class HumanActor(Actor):
-    pass
 class Level:
     @property
     def actors(self) -> list[Actor]:
@@ -326,7 +324,7 @@ class Level:
     def time(self, arg1: int) -> None:
         ...
 class Location(Position):
-    def __init__(self, level: Level, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
+    def __init__(self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
         ...
     @property
     def pitch(self) -> float:
@@ -659,7 +657,7 @@ class PermissionDefault:
     @property
     def value(self) -> int:
         ...
-class Player(HumanActor):
+class Player(Actor):
     def kick(self, message: str) -> None:
         """
         Kicks player with custom kick message.
@@ -689,6 +687,14 @@ class Player(HumanActor):
         """
         Gets the socket address of this player
         """
+    @property
+    def game_mode(self) -> GameMode:
+        """
+        The player's current game mode.
+        """
+    @game_mode.setter
+    def game_mode(self, arg1: GameMode) -> None:
+        ...
     @property
     def ping(self) -> datetime.timedelta:
         """
@@ -1070,7 +1076,7 @@ class PluginManager:
         Gets a list of all currently loaded plugins
         """
 class Position(Vector):
-    def __init__(self, level: Level, dimension: Dimension, x: float, y: float, z: float) -> None:
+    def __init__(self, dimension: Dimension, x: float, y: float, z: float) -> None:
         ...
     @property
     def dimension(self) -> Dimension:
@@ -1079,14 +1085,6 @@ class Position(Vector):
         """
     @dimension.setter
     def dimension(self, arg1: Dimension) -> None:
-        ...
-    @property
-    def level(self) -> Level:
-        """
-        The Level that contains this position
-        """
-    @level.setter
-    def level(self, arg1: Level) -> None:
         ...
 class Scheduler:
     def cancel_task(self, id: int) -> None:
