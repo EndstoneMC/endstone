@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `Player::performCommand` allows a player to execute a given command. During the command execution, the player is
   temporarily granted the operator permission.
+- `Level::getDimension` and `Level::getDimensions` for getting dimensions within a specific level.
+- `Actor::getDimension` for getting the dimension that an actor resides in.
+- `Player::getGameMode` and `Player::setGameMode` for getting and setting a player's game mode.
+
+### Fixed
+
+- `Actor::getVelocity` now returns the correct velocity when the actor rides a vehicle.
 
 ## [0.4.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.6) - 2024-05-15
 
