@@ -13,12 +13,10 @@
 
 [![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml)
 [![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)
-[![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)
 [![Documentation](https://img.shields.io/readthedocs/endstone)](https://endstone.readthedocs.io/)
 [![Minecraft - Version](https://img.shields.io/badge/minecraft-v1.20.81%20(Bedrock)-green)](https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
-[![Python](https://img.shields.io/badge/Python-3-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![Python](https://img.shields.io/pypi/pyversions/endstone?logo=python&logoColor=white)](https://www.python.org/)
 [![GitHub License](https://img.shields.io/github/license/endstonemc/endstone)](LICENSE)
 [![Codacy Badge](https://img.shields.io/codacy/grade/8877402fc70b40f5a8c4b325d890e3f7?logo=codacy)](https://app.codacy.com/gh/EndstoneMC/endstone/dashboard)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -72,6 +70,9 @@ There are several ways to install Endstone:
 
 ### 🐍 PyPi
 
+[![Wheel](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/wheel.yml)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/endstone)](https://pypi.org/project/endstone)
+
 Endstone can be installed directly from PyPi using pip. Open your terminal and execute the following command to install
 and start
 the Endstone server:
@@ -83,6 +84,10 @@ endstone
 
 ### 🐳 Docker
 
+[![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)
+[![Docker - Pulls](https://img.shields.io/docker/pulls/endstone/endstone)](https://hub.docker.com/r/endstone/endstone)
+[![Docker - Image Size](https://img.shields.io/docker/image-size/endstone/endstone)](https://hub.docker.com/r/endstone/endstone)
+
 To try Endstone from the latest Docker image, use the following command:
 
 ```shell
@@ -91,16 +96,6 @@ docker run --rm -it -p 19132:19132/udp endstone/endstone
 ```
 
 This will pull the latest Endstone image and run it interactively in your terminal.
-
-### 🕋 Docker Compose
-
-You can also use Docker Compose to run Endstone in a production environment.
-
-```shell
-docker compose build
-docker compose up -d
-docker attach endstone
-```
 
 ### 🔨 Build locally from Source
 
