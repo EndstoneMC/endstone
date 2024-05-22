@@ -202,7 +202,7 @@ void init_server(py::class_<Server> &server)
 
 void init_player(py::module_ &m)
 {
-    py::class_<Player, HumanActor>(m, "Player")
+    py::class_<Player, Actor>(m, "Player")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")

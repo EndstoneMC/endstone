@@ -33,21 +33,18 @@ void init_level(py::module_ &m)
         .def_property("time", &Level::getTime, &Level::setTime,
                       "Gets and sets the relative in-game time on the server");
 
-    py::class_<Dimension, std::shared_ptr<Dimension>>(m, "Dimension");
+    py::class_<Dimension>(m, "Dimension");
 
     py::class_<Position, Vector<float>>(m, "Position")
-        .def(py::init<Level *, const std::shared_ptr<Dimension> &, float, float, float>(), py::arg("level"),
-             py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"))
-        .def_property("level", &Position::getLevel, &Position::setLevel, py::return_value_policy::reference,
-                      "The Level that contains this position")
+        .def(py::init<Dimension *, float, float, float>(), py::arg("dimension"), py::arg("x"), py::arg("y"),
+             py::arg("z"))
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
                       "The Dimension that contains this position");
     // TODO(fixme): add __repr__
 
     py::class_<Location, Position>(m, "Location")
-        .def(py::init<Level *, const std::shared_ptr<Dimension> &, float, float, float, float, float>(),
-             py::arg("level"), py::arg("dimension"), py::arg("x"), py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0,
-             py::arg("yaw") = 0.0)
+        .def(py::init<Dimension *, float, float, float, float, float>(), py::arg("dimension"), py::arg("x"),
+             py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
         .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.");

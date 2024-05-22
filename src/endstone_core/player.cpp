@@ -30,7 +30,7 @@
 namespace endstone::detail {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneHumanActor(server, player), player_(player)
+    : EndstoneActor(server, player), player_(player), perm_(static_cast<Player *>(this))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     if (!component) {
@@ -74,57 +74,57 @@ void EndstonePlayer::sendErrorMessage(const std::string &message) const
 
 Server &EndstonePlayer::getServer() const
 {
-    return EndstoneHumanActor::getServer();
+    return EndstoneActor::getServer();
 }
 
 std::string EndstonePlayer::getName() const
 {
-    return EndstoneHumanActor::getName();
+    return EndstoneActor::getName();
 }
 
 bool EndstonePlayer::isPermissionSet(std::string name) const
 {
-    return EndstoneHumanActor::isPermissionSet(name);
+    return perm_.isPermissionSet(name);
 }
 
 bool EndstonePlayer::isPermissionSet(const Permission &perm) const
 {
-    return EndstoneHumanActor::isPermissionSet(perm);
+    return perm_.isPermissionSet(perm);
 }
 
 bool EndstonePlayer::hasPermission(std::string name) const
 {
-    return EndstoneHumanActor::hasPermission(name);
+    return perm_.hasPermission(name);
 }
 
 bool EndstonePlayer::hasPermission(const Permission &perm) const
 {
-    return EndstoneHumanActor::hasPermission(perm);
+    return perm_.hasPermission(perm);
 }
 
 PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    return EndstoneHumanActor::addAttachment(plugin, name, value);
+    return perm_.addAttachment(plugin, name, value);
 }
 
 PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin)
 {
-    return EndstoneHumanActor::addAttachment(plugin);
+    return perm_.addAttachment(plugin);
 }
 
 bool EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
 {
-    return EndstoneHumanActor::removeAttachment(attachment);
+    return perm_.removeAttachment(attachment);
 }
 
 void EndstonePlayer::recalculatePermissions()
 {
-    EndstoneHumanActor::recalculatePermissions();
+    perm_.recalculatePermissions();
 }
 
 std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermissions() const
 {
-    return EndstoneHumanActor::getEffectivePermissions();
+    return perm_.getEffectivePermissions();
 }
 
 bool EndstonePlayer::isOp() const
@@ -143,37 +143,42 @@ void EndstonePlayer::setOp(bool value)
 
 std::uint64_t EndstonePlayer::getRuntimeId() const
 {
-    return EndstoneHumanActor::getRuntimeId();
+    return EndstoneActor::getRuntimeId();
 }
 
 Location EndstonePlayer::getLocation() const
 {
-    return EndstoneHumanActor::getLocation();
+    return EndstoneActor::getLocation();
 }
 
 Vector<float> EndstonePlayer::getVelocity() const
 {
-    return EndstoneHumanActor::getVelocity();
+    return EndstoneActor::getVelocity();
 }
 
 bool EndstonePlayer::isOnGround() const
 {
-    return EndstoneHumanActor::isOnGround();
+    return EndstoneActor::isOnGround();
 }
 
 bool EndstonePlayer::isInWater() const
 {
-    return EndstoneHumanActor::isInWater();
+    return EndstoneActor::isInWater();
 }
 
 bool EndstonePlayer::isInLava() const
 {
-    return EndstoneHumanActor::isInLava();
+    return EndstoneActor::isInLava();
 }
 
 Level &EndstonePlayer::getLevel() const
 {
-    return EndstoneHumanActor::getLevel();
+    return EndstoneActor::getLevel();
+}
+
+Dimension &EndstonePlayer::getDimension() const
+{
+    return EndstoneActor::getDimension();
 }
 
 UUID EndstonePlayer::getUniqueId() const

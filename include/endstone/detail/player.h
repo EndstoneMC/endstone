@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/detail/actor/human.h"
+#include "endstone/detail/actor/actor.h"
 #include "endstone/player.h"
 
 class Player;
@@ -22,7 +22,7 @@ class ServerNetworkHandler;
 
 namespace endstone::detail {
 
-class EndstonePlayer : public EndstoneHumanActor, public endstone::Player {
+class EndstonePlayer : public EndstoneActor, public endstone::Player {
 public:
     explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
     ~EndstonePlayer() override;
@@ -54,6 +54,7 @@ public:
     [[nodiscard]] bool isInWater() const override;
     [[nodiscard]] bool isInLava() const override;
     [[nodiscard]] Level &getLevel() const override;
+    [[nodiscard]] Dimension &getDimension() const override;
 
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
@@ -74,6 +75,7 @@ private:
     ::ServerNetworkHandler *network_handler_;
     UUID uuid_;
     SocketAddress address_;
+    PermissibleBase perm_;
 };
 
 }  // namespace endstone::detail

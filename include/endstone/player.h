@@ -16,7 +16,7 @@
 
 #include <chrono>
 
-#include "endstone/actor/human.h"
+#include "endstone/actor/actor.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
 
@@ -25,7 +25,7 @@ namespace endstone {
 /**
  * @brief Represents a player.
  */
-class Player : public HumanActor {
+class Player : public Actor {
 public:
     Player() = default;
     Player(const Player &) = delete;
