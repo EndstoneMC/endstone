@@ -21,6 +21,8 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/detail/level/dimension.h"
+#include "endstone/level/dimension.h"
 
 using BedrockDimension = ::Dimension;
 
@@ -32,7 +34,8 @@ EndstoneLevel::EndstoneLevel(BedrockLevel &level) : server_(entt::locator<Endsto
         VanillaDimensions::Overworld, VanillaDimensions::Nether, VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
         // Load all dimensions when the level is loaded
-        level.getOrCreateDimension(dimension_id);
+        auto dimension = level.getOrCreateDimension(dimension_id);
+        addDimension(std::make_unique<EndstoneDimension>(*dimension, *this));
     }
 }
 
@@ -74,24 +77,36 @@ void EndstoneLevel::setTime(int time)
     level_.setTime(time);
 }
 
-std::vector<std::shared_ptr<Dimension>> EndstoneLevel::getDimensions() const
+std::vector<Dimension *> EndstoneLevel::getDimensions() const
 {
-    std::vector<std::shared_ptr<Dimension>> dimensions;
+    std::vector<Dimension *> dimensions;
     dimensions.reserve(dimensions_.size());
     for (const auto &it : dimensions_) {
-        dimensions.push_back(it.second);
+        dimensions.push_back(it.second.get());
     }
     return dimensions;
 }
 
-std::shared_ptr<Dimension> EndstoneLevel::getDimension(std::string name) const
+Dimension *EndstoneLevel::getDimension(std::string name) const
 {
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
     auto it = dimensions_.find(name);
     if (it == dimensions_.end()) {
         return nullptr;
     }
-    return it->second;
+    return it->second.get();
+}
+
+void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
+{
+    auto name = dimension->getName();
+    std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+    if (dimensions_.find(name) != dimensions_.end()) {
+        server_.getLogger().error(
+            "Dimension {} is a duplicate of another dimension and has been prevented from loading.", name);
+        return;
+    }
+    dimensions_[name] = std::move(dimension);
 }
 
 BedrockLevel &EndstoneLevel::getBedrockLevel() const

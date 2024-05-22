@@ -60,7 +60,7 @@ public:
      *
      * @return a list of dimensions
      */
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Dimension>> getDimensions() const = 0;
+    [[nodiscard]] virtual std::vector<Dimension *> getDimensions() const = 0;
 
     /**
      * @brief Gets the dimension with the given name.
@@ -68,7 +68,7 @@ public:
      * @param name the name of the dimension to retrieve
      * @return The Dimension with the given name, or nullptr if none exists
      */
-    [[nodiscard]] virtual std::shared_ptr<Dimension> getDimension(std::string name) const = 0;
+    [[nodiscard]] virtual Dimension *getDimension(std::string name) const = 0;
 };
 
 }  // namespace endstone

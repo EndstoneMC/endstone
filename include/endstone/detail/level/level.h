@@ -35,15 +35,16 @@ public:
     [[nodiscard]] std::vector<Actor *> getActors() const override;
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
-    [[nodiscard]] std::vector<std::shared_ptr<Dimension>> getDimensions() const override;
-    [[nodiscard]] std::shared_ptr<Dimension> getDimension(std::string name) const override;
+    [[nodiscard]] std::vector<Dimension *> getDimensions() const override;
+    [[nodiscard]] Dimension *getDimension(std::string name) const override;
+    void addDimension(std::unique_ptr<Dimension> dimension);
 
     [[nodiscard]] BedrockLevel &getBedrockLevel() const;
 
 private:
     EndstoneServer &server_;
     BedrockLevel &level_;
-    std::unordered_map<std::string, std::shared_ptr<Dimension>> dimensions_;
+    std::unordered_map<std::string, std::unique_ptr<Dimension>> dimensions_;
 };
 
 }  // namespace endstone::detail
