@@ -188,7 +188,68 @@ class CommandSender(Permissible):
         Returns the server instance that this command is running on
         """
 class Dimension:
-    pass
+    class Type:
+        """
+        Members:
+        
+          OVERWORLD
+        
+          NETHER
+        
+          THE_END
+        
+          CUSTOM
+        """
+        CUSTOM: typing.ClassVar[Dimension.Type]  # value = <Type.CUSTOM: 999>
+        NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
+        OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
+        THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
+        __members__: typing.ClassVar[dict[str, Dimension.Type]]  # value = {'OVERWORLD': <Type.OVERWORLD: 0>, 'NETHER': <Type.NETHER: 1>, 'THE_END': <Type.THE_END: 2>, 'CUSTOM': <Type.CUSTOM: 999>}
+        def __eq__(self, other: typing.Any) -> bool:
+            ...
+        def __getstate__(self) -> int:
+            ...
+        def __hash__(self) -> int:
+            ...
+        def __index__(self) -> int:
+            ...
+        def __init__(self, value: int) -> None:
+            ...
+        def __int__(self) -> int:
+            ...
+        def __ne__(self, other: typing.Any) -> bool:
+            ...
+        def __repr__(self) -> str:
+            ...
+        def __setstate__(self, state: int) -> None:
+            ...
+        def __str__(self) -> str:
+            ...
+        @property
+        def name(self) -> str:
+            ...
+        @property
+        def value(self) -> int:
+            ...
+    CUSTOM: typing.ClassVar[Dimension.Type]  # value = <Type.CUSTOM: 999>
+    NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
+    OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
+    THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
+    @property
+    def level(self) -> Level:
+        """
+        Gets the level to which this dimension belongs
+        """
+    @property
+    def name(self) -> str:
+        """
+        Gets the name of this dimension
+        """
+    @property
+    def type(self) -> Dimension.Type:
+        """
+        Gets the type of this dimension
+        """
 class Event:
     def asynchronous(self) -> bool:
         ...
@@ -305,10 +366,19 @@ class GameMode:
     def value(self) -> int:
         ...
 class Level:
+    def get_dimension(self, name: str) -> Dimension:
+        """
+        Gets the dimension with the given name.
+        """
     @property
     def actors(self) -> list[Actor]:
         """
         Get a list of all actors in this level
+        """
+    @property
+    def dimensions(self) -> list[Dimension]:
+        """
+        Gets a list of all dimensions within this level.
         """
     @property
     def name(self) -> str:

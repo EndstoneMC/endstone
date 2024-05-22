@@ -27,13 +27,29 @@ namespace endstone::detail {
 
 void init_level(py::module_ &m)
 {
-    py::class_<Level>(m, "Level")
-        .def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
-        .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level")
-        .def_property("time", &Level::getTime, &Level::setTime,
-                      "Gets and sets the relative in-game time on the server");
+    auto level = py::class_<Level>(m, "Level");
+    auto dimension = py::class_<Dimension>(m, "Dimension");
 
-    py::class_<Dimension>(m, "Dimension");
+    py::enum_<Dimension::Type>(dimension, "Type")
+        .value("OVERWORLD", Dimension::Type::Overworld)
+        .value("NETHER", Dimension::Type::Nether)
+        .value("THE_END", Dimension::Type::TheEnd)
+        .value("CUSTOM", Dimension::Type::Custom)
+        .export_values();
+
+    dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
+        .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
+        .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
+                               py::return_value_policy::reference);
+
+    level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
+        .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",
+                               py::return_value_policy::reference_internal)
+        .def_property("time", &Level::getTime, &Level::setTime, "Gets and sets the relative in-game time on the server")
+        .def_property_readonly("dimensions", &Level::getDimensions, "Gets a list of all dimensions within this level.",
+                               py::return_value_policy::reference_internal)
+        .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
+             py::return_value_policy::reference);
 
     py::class_<Position, Vector<float>>(m, "Position")
         .def(py::init<Dimension *, float, float, float>(), py::arg("dimension"), py::arg("x"), py::arg("y"),
