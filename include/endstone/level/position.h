@@ -29,39 +29,16 @@ class Dimension;
  */
 class Position : public Vector<float> {
 public:
-    Position(Level *level, const std::shared_ptr<Dimension> &dimension, float x, float y, float z)
-        : Vector(x, y, z), level_(level), dimension_(dimension)
-    {
-    }
-
-    /**
-     * Gets the level that this position resides in
-     *
-     * @return Level that contains this position, or nullptr if the level is not set.
-     */
-    [[nodiscard]] Level *getLevel() const
-    {
-        return level_;
-    }
-
-    /**
-     * Sets the level that this position resides in
-     *
-     * @param level New level that this position resides in
-     */
-    void setLevel(Level &level)
-    {
-        level_ = &level;
-    }
+    Position(Dimension *dimension, float x, float y, float z) : Vector(x, y, z), dimension_(dimension) {}
 
     /**
      * Gets the dimension that this position resides in
      *
      * @return Dimension that contains this position, or nullptr if the dimension is not set.
      */
-    [[nodiscard]] std::shared_ptr<Dimension> getDimension() const
+    [[nodiscard]] Dimension *getDimension() const
     {
-        return dimension_.lock();
+        return dimension_;
     }
 
     /**
@@ -69,14 +46,13 @@ public:
      *
      * @param dimension New dimension that this position resides in
      */
-    void setDimension(const std::shared_ptr<Dimension> &dimension)
+    void setDimension(Dimension &dimension)
     {
-        dimension_ = dimension;
+        dimension_ = &dimension;
     }
 
 private:
-    Level *level_;
-    std::weak_ptr<Dimension> dimension_;
+    Dimension *dimension_;
 };
 
 }  // namespace endstone
