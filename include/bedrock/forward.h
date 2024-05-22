@@ -172,7 +172,6 @@ enum class ArmorSlot;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
 enum class BuildPlatform;
-enum class GameType;
 enum class LevelEvent;
 enum class LevelTagIDType;
 enum class LevelTagSetIDType;

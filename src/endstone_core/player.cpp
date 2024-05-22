@@ -23,6 +23,7 @@
 #include "bedrock/server/network/server_network_handler.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/server.h"
@@ -286,6 +287,40 @@ bool EndstonePlayer::performCommand(std::string command) const
     CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
     auto result = server_.getMinecraftCommands().executeCommand(ctx, true);
     return result.is_success;
+}
+
+GameMode EndstonePlayer::getGameMode() const
+{
+    auto game_type = player_.getPlayerGameType();
+    switch (game_type) {
+    case GameType::Creative:
+        return GameMode::Creative;
+    case GameType::Adventure:
+        return GameMode::Adventure;
+    case GameType::Spectator:
+        return GameMode::Spectator;
+    default:
+        break;
+    }
+    return GameMode::Survival;
+}
+
+void EndstonePlayer::setGameMode(GameMode mode)
+{
+    switch (mode) {
+    case GameMode::Survival:
+        player_.setPlayerGameType(GameType::Survival);
+        break;
+    case GameMode::Creative:
+        player_.setPlayerGameType(GameType::Creative);
+        break;
+    case GameMode::Adventure:
+        player_.setPlayerGameType(GameType::Adventure);
+        break;
+    case GameMode::Spectator:
+        player_.setPlayerGameType(GameType::Spectator);
+        break;
+    }
 }
 
 }  // namespace endstone::detail

@@ -66,6 +66,8 @@ public:
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
+    [[nodiscard]] GameMode getGameMode() const override;
+    void setGameMode(GameMode mode) override;
 
     void init(::ServerNetworkHandler &network_handler);
     void disconnect();

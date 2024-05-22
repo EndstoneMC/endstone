@@ -17,10 +17,10 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/network/protocol/game/available_commands_packet.h"
+#include "bedrock/world/actor/components/actor_game_type_component.h"
+#include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
-
-using endstone::detail::EndstoneServer;
 
 void Player::setPermissions(CommandPermissionLevel level)
 {
@@ -38,4 +38,16 @@ const std::string &Player::getName() const
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
 {
     return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());
+}
+
+GameType Player::getPlayerGameType() const
+{
+    auto game_type = GameType::Undefined;
+    if (auto *component = tryGetComponent<ActorGameTypeComponent>(); component) {
+        game_type = component->game_type;
+    }
+    if (game_type == GameType::Default) {
+        game_type = getLevel().getDefaultGameType();
+    }
+    return game_type;
 }

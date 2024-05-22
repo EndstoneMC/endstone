@@ -17,6 +17,7 @@
 #include <chrono>
 
 #include "endstone/actor/actor.h"
+#include "endstone/game_mode.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
 
@@ -42,68 +43,82 @@ public:
     }
 
     /**
-     * Returns the UUID of this player
+     * @brief Returns the UUID of this player
      *
      * @return Player UUID
      */
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
 
     /**
-     * Gets the socket address of this player
+     * @brief Gets the socket address of this player
      *
      * @return the player's socket address
      */
     [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
     /**
-     * Sends this player a raw message
+     * @brief Sends this player a raw message
      *
      * @param message Message to be displayed
      */
     virtual void sendRawMessage(std::string message) const = 0;
 
     /**
-     * Sends this player a popup message
+     * @brief Sends this player a popup message
      *
      * @param message Message to be displayed
      */
     virtual void sendPopup(std::string message) const = 0;
 
     /**
-     * Sends this player a tip message
+     * @brief Sends this player a tip message
      *
      * @param message Message to be displayed
      */
     virtual void sendTip(std::string message) const = 0;
 
     /**
-     * Kicks player with custom kick message.
+     * @brief Kicks player with custom kick message.
      *
      * @param message kick message
      */
     virtual void kick(std::string message) const = 0;
 
     /**
-     * Gets the player's average ping
+     * @brief Gets the player's average ping
      *
      * @return player ping
      */
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     /**
-     * Send the list of commands to the client.
+     * @brief Send the list of commands to the client.
      *
      * Generally useful to ensure the client has a complete list of commands after permission changes are done.
      */
     virtual void updateCommands() const = 0;
 
     /**
-     * Makes the player perform the given command
+     * @brief Makes the player perform the given command
      *
      * @param command Command to perform
      * @return true if the command was successful, otherwise false
      */
     virtual bool performCommand(std::string command) const = 0;  // NOLINT(*-use-nodiscard)
+
+    /**
+     * @brief Gets this player's current GameMode
+     *
+     * @return Current game mode
+     */
+    [[nodiscard]] virtual GameMode getGameMode() const = 0;
+
+    /**
+     * Sets this player's current GameMode
+     *
+     * @param mode New game mode
+     */
+    virtual void setGameMode(GameMode mode) = 0;
 };
 
 }  // namespace endstone
