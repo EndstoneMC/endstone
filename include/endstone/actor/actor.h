@@ -81,6 +81,13 @@ public:
      * @return The current Level this actor resides in
      */
     [[nodiscard]] virtual Level &getLevel() const = 0;
+
+    /**
+     * Gets the current Dimension this actor resides in
+     *
+     * @return The current Dimension this actor resides in
+     */
+    [[nodiscard]] virtual Dimension &getDimension() const = 0;
 };
 
 }  // namespace endstone

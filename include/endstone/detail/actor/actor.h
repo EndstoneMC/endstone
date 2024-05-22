@@ -56,6 +56,7 @@ public:
     [[nodiscard]] bool isInWater() const override;
     [[nodiscard]] bool isInLava() const override;
     [[nodiscard]] Level &getLevel() const override;
+    [[nodiscard]] Dimension &getDimension() const override;
 
 protected:
     EndstoneServer &server_;

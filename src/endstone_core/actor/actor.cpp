@@ -109,9 +109,7 @@ Location EndstoneActor::getLocation() const
     position.y -= actor_.getPersistentComponent<OffsetsComponent>()->height_offset;
     const auto &rotation = actor_.getRotation();
 
-    return {&getLevel(),
-            nullptr,  // TODO(fixme): add getDimension and pass it to the constructor
-            position.x,  position.y, position.z, rotation.x, rotation.y};
+    return {&getDimension(), position.x, position.y, position.z, rotation.x, rotation.y};
 }
 
 Vector<float> EndstoneActor::getVelocity() const
@@ -150,6 +148,11 @@ bool EndstoneActor::isInLava() const
 Level &EndstoneActor::getLevel() const
 {
     return *server_.getLevel(actor_.getLevel().getLevelId());
+}
+
+Dimension &EndstoneActor::getDimension() const
+{
+    return *getLevel().getDimension(actor_.getDimension().getName());
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
