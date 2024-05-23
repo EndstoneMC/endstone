@@ -21,6 +21,7 @@
 #include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/components/passenger_component.h"
 #include "bedrock/world/actor/components/runtime_id_component.h"
+#include "bedrock/world/actor/mob/mob_jump.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/actor/actor.h"
@@ -171,4 +172,9 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
     }
     // TODO(actor): add factory method for other actors
     return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
+}
+
+bool Actor::isJumping() const
+{
+    return MobJump::isJumping(context_);
 }

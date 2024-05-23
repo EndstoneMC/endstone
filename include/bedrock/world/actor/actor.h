@@ -267,6 +267,7 @@ public:
     [[nodiscard]] Actor *getVehicle() const;
     [[nodiscard]] bool isRiding() const;
     [[nodiscard]] bool hasCategory(ActorCategory) const;
+    [[nodiscard]] bool isJumping() const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
