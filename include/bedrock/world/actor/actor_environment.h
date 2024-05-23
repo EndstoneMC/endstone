@@ -14,9 +14,17 @@
 
 #pragma once
 
+#include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 
 namespace ActorEnvironment {
-bool getIsInWater(EntityContext const &);
-bool getIsInLava(EntityContext const &);
+inline bool getIsInWater(EntityContext const &ctx)
+{
+    return ctx.hasComponent<FlagComponent<InWaterFlag>>();
+}
+
+inline bool getIsInLava(EntityContext const &ctx)
+{
+    return ctx.hasComponent<FlagComponent<InLavaFlag>>();
+}
 }  // namespace ActorEnvironment

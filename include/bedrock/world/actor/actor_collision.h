@@ -14,9 +14,17 @@
 
 #pragma once
 
+#include "bedrock/world/actor/components/flag_component.h"
 #include "bedrock/world/actor/registry/entity_context.h"
 
 namespace ActorCollision {
-bool isOnGround(EntityContext const &);
-bool wasOnGround(EntityContext const &);
+inline bool isOnGround(EntityContext const &ctx)
+{
+    return ctx.hasComponent<FlagComponent<OnGroundFlag>>();
+}
+
+inline bool wasOnGround(EntityContext const &ctx)
+{
+    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
+}
 }  // namespace ActorCollision
