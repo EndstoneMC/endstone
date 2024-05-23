@@ -164,8 +164,6 @@ class WeakEntityRef;
 class _TickPtr;  // NOLINT
 
 // Enums
-enum class AbilitiesIndex;
-enum class ActorFlags;
 enum class ActorType;
 enum class ArmorMaterialType;
 enum class ArmorSlot;

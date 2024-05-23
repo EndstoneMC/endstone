@@ -31,6 +31,7 @@
 #include "bedrock/network/syncher/spatial_actor_network_data.h"
 #include "bedrock/network/syncher/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/actor/actor_category.h"
+#include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
@@ -49,7 +50,7 @@ class Level;
 
 class Actor {
 public:
-    virtual bool getStatusFlag(ActorFlags flags) = 0;
+    virtual bool getStatusFlag(ActorFlags flags) const = 0;
     virtual void setStatusFlag(ActorFlags flags, bool value) = 0;
 #ifdef _WIN32
     virtual bool hasComponent(HashedString const &) = 0;
