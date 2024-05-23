@@ -14,19 +14,13 @@ jobs:
     env:
       WP_URL: https://github.com/winpython/winpython/releases/download/7.5.20240410final/Winpython64-3.12.3.0dot.exe
       WP_SHA256: beef54eba558559255a73e59ae1986e8d06a6b12b55e78645ab42b4d6974e124
-      WP_DIR_NAME: WPy64-31230\python-3.12.3.amd64
+      WP_BINARY_DIR: WPy64-31230\python-3.12.3.amd64
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip'
 
       - name: Set up MSVC
         uses: ilammy/msvc-dev-cmd@v1
@@ -35,12 +29,6 @@ jobs:
 
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
-
-      - name: Build Wheel
-        run: |
-          python -m pip install -U pip
-          pip install pipx
-          pipx run build --wheel
 
       - name: Download Winpython
         run: |
@@ -52,13 +40,47 @@ jobs:
         run: .\winpython.exe -y
 
       - name: Install Endstone
-        run: ${{ env.WP_DIR_NAME }}\python.exe -m pip install --find-links=dist endstone
+        run: ${{ env.WP_BINARY_DIR }}\python.exe -m pip install .
 
-      - name: Create installer
-        run: 7z -mx5 -sfx a endstone-amd64-portable.exe ${{ env.WP_DIR_NAME }}
+      - name: Clean Up
+        run: |
+          ${{ env.WP_BINARY_DIR }}\python.exe -m pip install pyclean
+          ${{ env.WP_BINARY_DIR }}\python.exe -m pyclean ${{ env.WP_BINARY_DIR }}
+
+      - name: Create Bundle
+        run: |
+          New-Item dist\endstone-win_amd64-portable\bin\python -ItemType Directory
+          Copy-Item -Path ${{ env.WP_BINARY_DIR }}\* -Destination dist\endstone-win_amd64-portable\bin\python -Recurse
+          Copy-Item -Path scripts\start.cmd -Destination dist\endstone-win_amd64-portable
+          Copy-Item -Path CHANGELOG.md -Destination dist\endstone-win_amd64-portable
+          Copy-Item -Path LICENSE -Destination dist\endstone-win_amd64-portable
+
+      - name: Create Zip
+        run: 7z a endstone-win_amd64-portable.zip .\dist\endstone-win_amd64-portable\*
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          path: endstone-amd64-portable.exe
-          name: endstone-amd64-portable.exe
+          path: endstone-win_amd64-portable.zip
+          name: endstone-win_amd64-portable.zip
+
+  release:
+    if: contains(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      - name: Restore Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: endstone-*
+          path: dist
+          merge-multiple: true
+
+      - name: Create a Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
