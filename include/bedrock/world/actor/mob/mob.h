@@ -66,4 +66,7 @@ public:
 
 protected:
     [[nodiscard]] virtual AABB _getAdjustedAABBForSpawnCheck(AABB const &, Vec3 const &) const = 0;
+
+public:
+    [[nodiscard]] bool isGliding() const;
 };
