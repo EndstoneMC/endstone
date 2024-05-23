@@ -17,6 +17,7 @@
 #include <entt/entt.hpp>
 
 #include "bedrock/network/protocol/game/available_commands_packet.h"
+#include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/components/actor_game_type_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
@@ -50,4 +51,9 @@ GameType Player::getPlayerGameType() const
         game_type = getLevel().getDefaultGameType();
     }
     return game_type;
+}
+
+bool Player::isEmoting() const
+{
+    return getStatusFlag(ActorFlags::EMOTING);
 }

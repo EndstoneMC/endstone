@@ -118,6 +118,7 @@ public:
     BEDROCK_API void setPermissions(CommandPermissionLevel level);
     [[nodiscard]] BEDROCK_API const std::string &getName() const;
     [[nodiscard]] GameType getPlayerGameType() const;
+    [[nodiscard]] bool isEmoting() const;
 
 private:
 public:
