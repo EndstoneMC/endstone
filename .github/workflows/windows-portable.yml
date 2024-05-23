@@ -1,0 +1,64 @@
+name: Windows (Portable)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: windows-2022
+    env:
+      WP_URL: https://github.com/winpython/winpython/releases/download/7.5.20240410final/Winpython64-3.12.3.0dot.exe
+      WP_SHA256: beef54eba558559255a73e59ae1986e8d06a6b12b55e78645ab42b4d6974e124
+      WP_DIR_NAME: WPy64-31230\python-3.12.3.amd64
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86_64
+
+      - name: Set up CMake and Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Build Wheel
+        run: |
+          python -m pip install -U pip
+          pip install pipx
+          pipx run build --wheel
+
+      - name: Download Winpython
+        run: |
+          Invoke-WebRequest -OutFile winpython.exe ${{ env.WP_URL }}
+          $file_hash = (Get-FileHash winpython.exe ).Hash
+          if ($file_hash -ne "${{ env.WP_SHA256 }}") { exit(1) }
+
+      - name: Install Winpython
+        run: .\winpython.exe -y
+
+      - name: Install Endstone
+        run: ${{ env.WP_DIR_NAME }}\python.exe -m pip install --find-links=dist endstone
+
+      - name: Create installer
+        run: 7z -mx5 -sfx a endstone-amd64-portable.exe ${{ env.WP_DIR_NAME }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: endstone-amd64-portable.exe
+          name: endstone-amd64-portable.exe
