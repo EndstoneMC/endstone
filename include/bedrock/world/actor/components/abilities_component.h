@@ -14,9 +14,9 @@
 
 #pragma once
 
+#include "bedrock/world/actor/player/abilities/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 
-class AbilitiesComponent {
-public:
-    PermissionsHandler permissions_handler;
+struct AbilitiesComponent {
+    LayeredAbilities abilities;
 };

@@ -30,6 +30,21 @@ public:
 
     Ability() = default;
 
+    [[nodiscard]] Type getType() const
+    {
+        return type_;
+    }
+
+    [[nodiscard]] bool getBool() const
+    {
+        return type_ == Type::Bool ? value_.b : false;
+    }
+
+    [[nodiscard]] float getFloat() const
+    {
+        return type_ == Type::Float ? value_.f : 0.0F;
+    }
+
 private:
     Type type_;
     union {

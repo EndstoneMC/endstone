@@ -22,6 +22,11 @@
 
 class Abilities {
 public:
+    [[nodiscard]] const Ability &getAbility(AbilitiesIndex index) const
+    {
+        return abilities_.at(static_cast<std::size_t>(index));
+    }
+
 private:
     std::array<Ability, static_cast<std::size_t>(AbilitiesIndex::AbilityCount)> abilities_;
 };

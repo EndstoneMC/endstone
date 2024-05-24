@@ -22,6 +22,29 @@
 
 class LayeredAbilities {
 public:
+    [[nodiscard]] const Ability &getAbility(AbilitiesIndex index) const
+    {
+        const Ability *ability;
+        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+            const auto &abilities = layers_[i];
+            ability = &abilities.getAbility(index);
+            if (ability->getType() != Ability::Type::NotSet) {
+                break;
+            }
+        }
+        return *ability;
+    }
+
+    [[nodiscard]] bool getBool(AbilitiesIndex index) const
+    {
+        return getAbility(index).getBool();
+    }
+
+    [[nodiscard]] float getFloat(AbilitiesIndex index) const
+    {
+        return getAbility(index).getFloat();
+    }
+
 private:
     PermissionsHandler permissions_;
     std::array<Abilities, static_cast<std::size_t>(AbilitiesLayer::LayerCount)> layers_;

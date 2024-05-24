@@ -18,6 +18,7 @@
 
 #include "bedrock/network/protocol/game/available_commands_packet.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "bedrock/world/actor/components/abilities_component.h"
 #include "bedrock/world/actor/components/actor_game_type_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
@@ -56,4 +57,10 @@ GameType Player::getPlayerGameType() const
 bool Player::isEmoting() const
 {
     return getStatusFlag(ActorFlags::EMOTING);
+}
+
+bool Player::isFlying() const
+{
+    auto component = getPersistentComponent<AbilitiesComponent>();
+    return component->abilities.getBool(AbilitiesIndex::Flying);
 }

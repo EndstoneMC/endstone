@@ -119,6 +119,7 @@ public:
     [[nodiscard]] BEDROCK_API const std::string &getName() const;
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] bool isEmoting() const;
+    [[nodiscard]] bool isFlying() const;
 
 private:
 public:
