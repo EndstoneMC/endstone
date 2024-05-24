@@ -1,6 +1,10 @@
 import inspect
+import os
+import shutil
 import typing
-
+import importlib_resources
+from pathlib import Path
+import tomlkit
 from endstone._internal.endstone_python import (
     Command,
     CommandSender,
@@ -137,6 +141,7 @@ class Plugin(_Plugin):
         _Plugin.__init__(self)
         self._description: PluginDescription | None = None
         self._plugin_commands: dict[_PluginCommand, PluginCommand] = {}
+        self._config = None
 
     def _get_description(self) -> PluginDescription:
         return self._description
@@ -161,6 +166,9 @@ class Plugin(_Plugin):
             raise ValueError("Listener cannot be None")
 
         for attr_name in dir(listener):
+            if attr_name == "config":
+                continue
+
             func = getattr(listener, attr_name)
             if not callable(func) or not getattr(func, "_is_event_handler", False):
                 continue
@@ -184,3 +192,39 @@ class Plugin(_Plugin):
             self.server.plugin_manager.register_event(
                 getattr(event_cls, "NAME", event_cls.__name__), func, priority, self, ignore_cancelled
             )
+
+    @property
+    def config(self) -> dict:
+        if self._config is None:
+            self._config = self.reload_config()
+
+        return self._config
+
+    def reload_config(self) -> dict:
+        with (Path(self.data_folder) / "config.toml").open("r") as f:
+            self._config = tomlkit.load(f)
+
+        return self._config
+
+    def save_config(self) -> None:
+        if self._config is None:
+            return
+
+        with (Path(self.data_folder) / "config.toml").open("w") as f:
+            tomlkit.dump(self._config, f)
+
+    def save_default_config(self) -> None:
+        if not (Path(self.data_folder) / "config.toml").exists():
+            self.save_resources("config.toml", False)
+
+    def save_resources(self, path: str, replace: bool = False) -> None:
+        path = path.replace(os.pathsep, "/")
+        out_path = Path(self.data_folder) / path
+        if not out_path.exists() or replace:
+            out_path.parent.mkdir(exist_ok=True)
+            resource = importlib_resources.files().joinpath(path)
+            with importlib_resources.as_file(resource) as f:
+                shutil.copy(f, out_path)
+        else:
+            self.logger.warning(f"Could not save {out_path.name} to {out_path}: file already exists.")
+            return

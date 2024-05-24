@@ -25,10 +25,11 @@ classifiers = [
 ]
 dependencies = [
     "click",
+    "importlib_resources",
+    "packaging",
     "requests",
     "rich",
-    "tomli; python_version < '3.11'",
-    "packaging"
+    "tomlkit",
 ]
 dynamic = ["version"]
 

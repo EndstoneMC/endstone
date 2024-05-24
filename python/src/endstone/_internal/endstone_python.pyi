@@ -840,10 +840,6 @@ class Plugin(CommandExecutor):
         ...
     def _get_description(self) -> PluginDescription:
         ...
-    def data_folder(self) -> os.PathLike:
-        """
-        Returns the folder that the plugin data's files are located in.
-        """
     def get_command(self, name: str) -> PluginCommand:
         """
         Gets the command with the given name, specific to this plugin.
@@ -859,6 +855,11 @@ class Plugin(CommandExecutor):
     def on_load(self) -> None:
         """
         Called after a plugin is loaded but before it has been enabled.
+        """
+    @property
+    def data_folder(self) -> os.PathLike:
+        """
+        Returns the folder that the plugin data's files are located in.
         """
     @property
     def enabled(self) -> bool:

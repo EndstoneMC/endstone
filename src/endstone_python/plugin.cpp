@@ -201,7 +201,8 @@ void init_plugin(py::module &m)
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
              "Gets the command with the given name, specific to this plugin.")
-        .def("data_folder", &Plugin::getDataFolder, "Returns the folder that the plugin data's files are located in.");
+        .def_property_readonly("data_folder", &Plugin::getDataFolder,
+                               "Returns the folder that the plugin data's files are located in.");
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
