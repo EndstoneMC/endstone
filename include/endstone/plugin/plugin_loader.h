@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <cctype>
 #include <filesystem>
 #include <memory>
 #include <string>
@@ -102,5 +103,20 @@ protected:
 
     Server &server_;
 };
+
+namespace detail {
+inline std::string toSnake(const std::string &camel_case)
+{
+    std::string snake;
+    for (size_t i = 0; i < camel_case.length(); ++i) {
+        unsigned char ch = camel_case[i];
+        if (std::isupper(ch) && i > 0) {
+            snake.push_back('_');
+        }
+        snake.push_back(static_cast<char>(std::tolower(ch)));
+    }
+    return snake;
+}
+}  // namespace detail
 
 }  // namespace endstone
