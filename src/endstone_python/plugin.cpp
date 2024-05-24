@@ -19,6 +19,7 @@
 #include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <pybind11/stl/filesystem.h>
 
 #include "endstone/command/plugin_command.h"
 #include "endstone/event/server/server_load_event.h"
@@ -199,7 +200,8 @@ void init_plugin(py::module &m)
                                "Returns a value indicating whether this plugin is currently enabled")
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
         .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
-             "Gets the command with the given name, specific to this plugin.");
+             "Gets the command with the given name, specific to this plugin.")
+        .def("data_folder", &Plugin::getDataFolder, "Returns the folder that the plugin data's files are located in.");
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))

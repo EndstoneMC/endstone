@@ -14,8 +14,10 @@
 
 #pragma once
 
+#include <filesystem>
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "endstone/event/server/plugin_disable_event.h"
@@ -90,11 +92,12 @@ public:
     }
 
 protected:
-    void initPlugin(Plugin &plugin, Logger &logger)
+    void initPlugin(Plugin &plugin, Logger &logger, std::filesystem::path data_folder)
     {
         plugin.loader_ = this;
         plugin.server_ = &server_;
         plugin.logger_ = &logger;
+        plugin.data_folder_ = std::move(data_folder);
     }
 
     Server &server_;

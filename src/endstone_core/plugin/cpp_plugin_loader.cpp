@@ -124,7 +124,8 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
     if (logger_name.empty()) {
         logger_name = plugin->getDescription().getName();
     }
-    initPlugin(*plugin, LoggerFactory::getLogger(logger_name));
+    initPlugin(*plugin, LoggerFactory::getLogger(logger_name),
+               std::filesystem::path(file).parent_path() / plugin->getDescription().getName());
     return std::unique_ptr<Plugin>(plugin);
 }
 

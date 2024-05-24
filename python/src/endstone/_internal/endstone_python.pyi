@@ -1,5 +1,6 @@
 from __future__ import annotations
 import datetime
+import os
 import typing
 import uuid
 __all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
@@ -839,6 +840,10 @@ class Plugin(CommandExecutor):
         ...
     def _get_description(self) -> PluginDescription:
         ...
+    def data_folder(self) -> os.PathLike:
+        """
+        Returns the folder that the plugin data's files are located in.
+        """
     def get_command(self, name: str) -> PluginCommand:
         """
         Gets the command with the given name, specific to this plugin.

@@ -15,6 +15,7 @@
 #pragma once
 
 #include <algorithm>
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -25,7 +26,6 @@
 #include "endstone/detail/plugin/plugin_description_builder.h"
 #include "endstone/logger.h"
 #include "endstone/permissions/permission.h"
-#include "endstone/permissions/permission_default.h"
 #include "endstone/plugin/plugin_description.h"
 #include "endstone/server.h"
 
@@ -46,13 +46,14 @@ public:
     ~Plugin() override = default;
 
     /**
-     * Returns the details of this plugin
+     * @brief Returns the details of this plugin
+     *
      * @return Details of this plugin
      */
     [[nodiscard]] virtual const PluginDescription &getDescription() const = 0;
 
     /**
-     * Called after a plugin is loaded but before it has been enabled.
+     * @brief Called after a plugin is loaded but before it has been enabled.
      *
      * When multiple plugins are loaded, the onLoad() for all plugins is
      * called before any onEnable() is called.
@@ -60,17 +61,17 @@ public:
     virtual void onLoad() {}
 
     /**
-     * Called when this plugin is enabled
+     * @brief Called when this plugin is enabled
      */
     virtual void onEnable() {}
 
     /**
-     * Called when this plugin is disabled
+     * @brief Called when this plugin is disabled
      */
     virtual void onDisable() {}
 
     /**
-     * Returns the plugin logger associated with this server's logger. The
+     * @brief Returns the plugin logger associated with this server's logger. The
      * returned logger automatically tags all log messages with the plugin's
      * name.
      *
@@ -82,7 +83,7 @@ public:
     }
 
     /**
-     * Returns a value indicating whether this plugin is currently
+     * @brief Returns a value indicating whether this plugin is currently
      * enabled
      *
      * @return true if this plugin is enabled, otherwise false
@@ -93,7 +94,7 @@ public:
     }
 
     /**
-     * Gets the associated PluginLoader responsible for this plugin
+     * @brief Gets the associated PluginLoader responsible for this plugin
      *
      * @return PluginLoader that controls this plugin
      */
@@ -103,7 +104,7 @@ public:
     }
 
     /**
-     * Returns the Server instance currently running this plugin
+     * @brief Returns the Server instance currently running this plugin
      *
      * @return Server running this plugin
      */
@@ -113,7 +114,7 @@ public:
     }
 
     /**
-     * Returns the name of the plugin.
+     * @brief Returns the name of the plugin.
      *
      * This should return the bare name of the plugin and should be used for
      * comparison.
@@ -126,7 +127,7 @@ public:
     };
 
     /**
-     * Gets the command with the given name, specific to this plugin.
+     * @brief Gets the command with the given name, specific to this plugin.
      *
      * @param name name or alias of the command
      * @return the plugin command if found, otherwise null
@@ -135,6 +136,17 @@ public:
     {
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         return getServer().getPluginCommand(name);
+    }
+
+    /**
+     * @brief Returns the folder that the plugin data's files are located in.
+     * The folder may not yet exist.
+     *
+     * @return The folder
+     */
+    [[nodiscard]] const std::filesystem::path &getDataFolder() const
+    {
+        return data_folder_;
     }
 
     template <typename EventType, typename T>
@@ -182,6 +194,7 @@ private:
     PluginLoader *loader_{nullptr};
     Server *server_{nullptr};
     Logger *logger_{nullptr};
+    std::filesystem::path data_folder_;
 };
 
 }  // namespace endstone
