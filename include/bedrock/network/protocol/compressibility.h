@@ -13,11 +13,7 @@
 // limitations under the License.
 #pragma once
 
-
-enum class PacketPriority {
-  IMMEDIATE_PRIORITY = 0x0,
-  HIGH_PRIORITY = 0x1,
-  MEDIUM_PRIORITY = 0x2,
-  LOW_PRIORITY = 0x3,
-  NUMBER_OF_PRIORITIES = 0x4,
+enum class Compressibility {
+    Compressible = 0x0,
+    Incompressible = 0x1,
 };

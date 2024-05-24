@@ -13,21 +13,21 @@
 // limitations under the License.
 
 #pragma once
-#include "bedrock/network/packet_priority.h"
 #include "bedrock/network/network_peer.h"
+#include "bedrock/network/protocol/compressibility.h"
 #include "bedrock/network/protocol/sub_client_id.h"
-#include "bedrock/network/compressibility.h"
+#include "bedrock/network/raknet/packet_priority.h"
 class Packet {
 public:
     virtual ~Packet() = default;
 
 private:
-    PacketPriority mPriority;                           // + 8
-    NetworkPeer::Reliability mReliability;              // + 12
-    SubClientId mSubClientId;                           // + 16
-    bool mIsHandled;                                    // + 17  
-    NetworkPeer::PacketRecvTimepoint mReceiveTimepoint; // + 24
-    void* mHandler;                                     // + 32
-    Compressibility mCompressible;                      // + 40
+    PacketPriority priority_;                          // + 8
+    NetworkPeer::Reliability reliability_;             // + 12
+    SubClientId sub_client_id_;                        // + 16
+    bool is_handled_;                                  // + 17
+    NetworkPeer::PacketRecvTimepoint recv_timepoint_;  // + 24
+    void *handler_;                                    // + 32
+    Compressibility compressibility_;                  // + 40
 };
 BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);

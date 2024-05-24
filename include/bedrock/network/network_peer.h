@@ -14,7 +14,6 @@
 #pragma once
 #include <chrono>
 
-// Only defined as a class to make sure that name mangling happens the same 
 class NetworkPeer {
 public:
     enum class Reliability {
@@ -23,6 +22,6 @@ public:
         Unreliable = 0x2,
         UnreliableSequenced = 0x3,
     };
-    
+
     using PacketRecvTimepoint = std::chrono::steady_clock::time_point;
 };

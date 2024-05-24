@@ -21,5 +21,5 @@ class HashedString {
 public:
     std::uint64_t hash;
     std::string str;
-    const HashedString* mLastMatch;
+    const HashedString *last_match;
 };

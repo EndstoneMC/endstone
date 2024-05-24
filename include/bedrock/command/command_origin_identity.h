@@ -17,6 +17,6 @@
 #include <string>
 
 struct CommandOriginIdentity {
-    std::string mXuid;
-    std::string mPlatformOnlineId;
+    std::string xuid;
+    std::string platform_id;
 };
