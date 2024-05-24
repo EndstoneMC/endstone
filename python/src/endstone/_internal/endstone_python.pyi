@@ -766,6 +766,11 @@ class Player(Actor):
     def game_mode(self, arg1: GameMode) -> None:
         ...
     @property
+    def is_flying(self) -> bool:
+        """
+        Checks to see if this player is currently flying or not.
+        """
+    @property
     def ping(self) -> datetime.timedelta:
         """
         Gets the player's average ping.

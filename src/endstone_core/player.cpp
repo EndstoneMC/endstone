@@ -219,21 +219,16 @@ void EndstonePlayer::sendTip(std::string message) const
     player_.sendNetworkPacket(*packet);
 }
 
-void EndstonePlayer::init(ServerNetworkHandler &network_handler)
-{
-    network_handler_ = &network_handler;
-}
-
-void EndstonePlayer::disconnect()
-{
-    perm_.clearPermissions();
-}
-
 void EndstonePlayer::kick(std::string message) const
 {
     auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
     network_handler_->disconnectClient(component->network_id, component->sub_client_id,
                                        Connection::DisconnectFailReason::NoReason, message, message.empty());
+}
+
+bool EndstonePlayer::isFlying() const
+{
+    return player_.isFlying();
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
@@ -321,6 +316,16 @@ void EndstonePlayer::setGameMode(GameMode mode)
         player_.setPlayerGameType(GameType::Spectator);
         break;
     }
+}
+
+void EndstonePlayer::init(ServerNetworkHandler &network_handler)
+{
+    network_handler_ = &network_handler;
+}
+
+void EndstonePlayer::disconnect()
+{
+    perm_.clearPermissions();
 }
 
 }  // namespace endstone::detail

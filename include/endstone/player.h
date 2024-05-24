@@ -85,6 +85,13 @@ public:
     virtual void kick(std::string message) const = 0;
 
     /**
+     * @brief Checks to see if this player is currently flying or not.
+     *
+     * @return True if the player is flying, else false.
+     */
+    [[nodiscard]] virtual bool isFlying() const = 0;
+
+    /**
      * @brief Gets the player's average ping
      *
      * @return player ping

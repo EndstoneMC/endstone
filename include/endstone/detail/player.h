@@ -63,6 +63,7 @@ public:
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
     void kick(std::string message) const override;
+    [[nodiscard]] bool isFlying() const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
