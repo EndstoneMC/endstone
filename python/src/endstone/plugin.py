@@ -222,7 +222,7 @@ class Plugin(_Plugin):
         out_path = Path(self.data_folder) / path
         if not out_path.exists() or replace:
             out_path.parent.mkdir(exist_ok=True)
-            resource = importlib_resources.files().joinpath(path)
+            resource = importlib_resources.files(self.__class__.__module__).joinpath(path)
             with importlib_resources.as_file(resource) as f:
                 shutil.copy(f, out_path)
         else:
