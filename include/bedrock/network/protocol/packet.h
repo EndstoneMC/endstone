@@ -13,10 +13,10 @@
 // limitations under the License.
 
 #pragma once
-#include "bedrock\network\packet_priority.h"
-#include "bedrock\network\network_peer.h"
-#include "bedrock\network\protocol\sub_client_id.h"
-#include "bedrock\network\compressibility.h"
+#include "bedrock/network/packet_priority.h"
+#include "bedrock/network/network_peer.h"
+#include "bedrock/network/protocol/sub_client_id.h"
+#include "bedrock/network/compressibility.h"
 class Packet {
 public:
     virtual ~Packet() = default;
