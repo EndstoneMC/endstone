@@ -11,15 +11,13 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #pragma once
 
-#include <cstdint>
-#include <string>
 
-class HashedString {
-public:
-    std::uint64_t hash;
-    std::string str;
-    const HashedString* mLastMatch;
+enum class PacketPriority {
+  IMMEDIATE_PRIORITY = 0x0,
+  HIGH_PRIORITY = 0x1,
+  MEDIUM_PRIORITY = 0x2,
+  LOW_PRIORITY = 0x3,
+  NUMBER_OF_PRIORITIES = 0x4,
 };

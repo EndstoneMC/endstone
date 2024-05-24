@@ -11,15 +11,18 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #pragma once
+#include <chrono>
 
-#include <cstdint>
-#include <string>
-
-class HashedString {
+// Only defined as a class to make sure that name mangling happens the same 
+class NetworkPeer {
 public:
-    std::uint64_t hash;
-    std::string str;
-    const HashedString* mLastMatch;
+    enum class Reliability {
+        Reliable = 0x0,
+        ReliableOrdered = 0x1,
+        Unreliable = 0x2,
+        UnreliableSequenced = 0x3,
+    };
+    
+    using PacketRecvTimepoint = std::chrono::steady_clock::time_point;
 };

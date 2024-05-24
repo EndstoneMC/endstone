@@ -21,7 +21,8 @@ public:
     virtual ~MultiplayerServiceObserver() = 0;
 
 private:
-    void *unknown_;
+    void *mpSubject; 
+    // Real type of this is Core::Observer<Social::MultiplayerServiceObserver,Core::SingleThreadedLock>::SubjectType
 };
 
 class XboxLiveUserObserver {
@@ -29,7 +30,8 @@ public:
     virtual ~XboxLiveUserObserver() = 0;
 
 private:
-    void *unknown_;
+    void *mpSubject;
+    // Real type of this is Core::Observer<Social::XboxLiveUserObserver,Core::SingleThreadedLock>::SubjectType ;
 };
 
 }  // namespace Social
