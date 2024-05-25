@@ -29,18 +29,21 @@ void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*f
 {
     auto name = magic_enum::enum_name(area);
     auto &logger = endstone::detail::LoggerFactory::getLogger(std::string(name));
-
-    static const std::unordered_map<Bedrock::LogLevel, endstone::Logger::Level> log_levels = {
-        {1, endstone::Logger::Level::Debug},
-        {2, endstone::Logger::Level::Info},
-        {4, endstone::Logger::Level::Warning},
-        {8, endstone::Logger::Level::Error},
-    };
-
     endstone::Logger::Level log_level = endstone::Logger::Level::Critical;
-    auto iter = log_levels.find(level);
-    if (iter != log_levels.end()) {
-        log_level = iter->second;
+    switch ((std::uint32_t)level)
+    {
+    case 1:
+        log_level = endstone::Logger::Level::Debug;
+        break;
+    case 2:
+        log_level = endstone::Logger::Level::Info;
+        break;
+    case 4:
+        log_level = endstone::Logger::Level::Warning;
+        break;
+    case 8:
+        log_level = endstone::Logger::Level::Error;
+        break;
     }
 
     std::va_list args_copy;
