@@ -13,28 +13,13 @@
 // limitations under the License.
 
 #pragma once
-
 #include "bedrock/bedrock.h"
-#include "bedrock/world/level/storage/level_seed.h"
 
-class LevelSettings {
+class SyncedPlayerMovementSettings {
 public:
-    [[nodiscard]] LevelSeed64 getSeed() const
-    {
-        return seed_;
-    }
-
-    void setRandomSeed(LevelSeed64 seed)
-    {
-        seed_ = std::move(seed);
-    }
-
 private:
-    LevelSeed64 seed_;
-#ifdef _WIN32
-    size_t pad_[1248 / 8 - 1];
-#else
-    size_t pad_[1072 / 8 - 1];
-#endif
+    char authority_mode_;
+    int rewind_history_size_;
+    bool server_auth_block_breaking_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1072);
+BEDROCK_STATIC_ASSERT_SIZE(SyncedPlayerMovementSettings, 12, 12);

@@ -15,26 +15,12 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/world/level/storage/level_seed.h"
+#include "bedrock/mce.h"
 
-class LevelSettings {
+class ContentIdentity {
 public:
-    [[nodiscard]] LevelSeed64 getSeed() const
-    {
-        return seed_;
-    }
-
-    void setRandomSeed(LevelSeed64 seed)
-    {
-        seed_ = std::move(seed);
-    }
-
 private:
-    LevelSeed64 seed_;
-#ifdef _WIN32
-    size_t pad_[1248 / 8 - 1];
-#else
-    size_t pad_[1072 / 8 - 1];
-#endif
+    mce::UUID uuid_;
+    bool is_valid_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1072);
+BEDROCK_STATIC_ASSERT_SIZE(ContentIdentity, 24, 24);

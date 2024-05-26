@@ -96,6 +96,7 @@ class InternalComponentRegistry;
 class InventoryTransaction;
 class Item;
 class ItemComponentPacket;
+class ItemData;
 class ItemInstance;
 class ItemRegistryRef;
 class ItemUseMethod;

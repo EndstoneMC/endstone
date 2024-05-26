@@ -12,29 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/network/protocol/game/start_game_packet.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/storage/level_seed.h"
+#include "endstone/detail/hook.h"
 
-class LevelSettings {
-public:
-    [[nodiscard]] LevelSeed64 getSeed() const
-    {
-        return seed_;
+void StartGamePacket::write(BinaryStream &stream) const
+{
+    if (!server_enabled_client_side_generation_) {
+        settings_.setRandomSeed({0});
     }
 
-    void setRandomSeed(LevelSeed64 seed)
-    {
-        seed_ = std::move(seed);
-    }
-
-private:
-    LevelSeed64 seed_;
-#ifdef _WIN32
-    size_t pad_[1248 / 8 - 1];
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&StartGamePacket::write, __FUNCDNAME__, this, stream);
 #else
-    size_t pad_[1072 / 8 - 1];
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&StartGamePacket::write, "_ZNK15StartGamePacket5writeER12BinaryStream", this,
+                                     stream);
 #endif
-};
-BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1072);
+}
