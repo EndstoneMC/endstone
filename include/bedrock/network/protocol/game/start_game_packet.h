@@ -56,7 +56,7 @@ private:
     std::uint64_t level_current_time_;                                   // +1456
     int enchantment_seed_;                                               // +1464
     std::string multiplayer_correlation_id_;                             // +1472
-    std::vector<ItemData> item_data_;                                    // +1504
+    std::vector<void *> item_data_;                                      // +1504
     bool enable_item_stack_net_manager_;                                 // +1528
     std::string server_version_;                                         // +1536
     CompoundTag player_property_data_;                                   // +1568
