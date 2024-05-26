@@ -26,7 +26,7 @@ public:
 
     void setRandomSeed(LevelSeed64 seed)
     {
-        seed_ = std::move(seed);
+        seed_ = seed;
     }
 
 private:
@@ -34,7 +34,7 @@ private:
 #ifdef _WIN32
     size_t pad_[1248 / 8 - 1];
 #else
-    size_t pad_[1072 / 8 - 1];
+    size_t pad_[1024 / 8 - 1];
 #endif
 };
-BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1072);
+BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1024);

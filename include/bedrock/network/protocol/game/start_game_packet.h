@@ -42,9 +42,9 @@ public:
 
 private:
     mutable LevelSettings settings_;                                     // +48
-    ActorUniqueID entity_id_;                                            // +1296
-    ActorRuntimeID runtime_id_;                                          // +1304
-    GameType game_type_;                                                 // +1312
+    ActorUniqueID entity_id_;                                            // +1296 (+1072)
+    ActorRuntimeID runtime_id_;                                          // +1304 (+1080)
+    GameType game_type_;                                                 // +1312 (+1088)
     Vec3 position_;                                                      // +1316
     Vec2 rotation_;                                                      // +1328
     std::string level_id_;                                               // +1336
@@ -61,8 +61,8 @@ private:
     std::string server_version_;                                         // +1536
     CompoundTag player_property_data_;                                   // +1568
     std::uint64_t server_block_type_registry_checksum_;                  // +1592
-    bool server_enabled_client_side_generation_;                         // +1600
-    bool block_network_ids_are_hashes_;                                  // +1601
-    NetworkPermissions network_permissions_;                             // +1602
-    std::vector<std::pair<std::string, CompoundTag>> block_properties_;  // +1608
+    bool server_enabled_client_side_generation_;                         // +1600 (+1352)
+    bool block_network_ids_are_hashes_;                                  // +1601 (+1353)
+    NetworkPermissions network_permissions_;                             // +1602 (+1354)
+    std::vector<std::pair<std::string, CompoundTag>> block_properties_;  // +1608 (+1360)
 };
