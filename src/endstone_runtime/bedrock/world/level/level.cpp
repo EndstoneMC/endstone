@@ -26,7 +26,7 @@ void Level::tick()
     using endstone::detail::EndstoneServer;
     auto &server = entt::locator<EndstoneServer>::value();
     auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
-    scheduler.mainThreadHeartbeat(getCurrentServerTick().value());
+    scheduler.mainThreadHeartbeat(getCurrentServerTick().tick_id);
 
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, __FUNCDNAME__, this);

@@ -17,5 +17,5 @@
 #include "bedrock/world/actor/actor.h"
 
 struct RuntimeIDComponent {
-    ActorRuntimeID id;
+    ActorRuntimeID runtime_id;
 };

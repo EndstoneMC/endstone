@@ -16,5 +16,12 @@
 
 enum class ActorLocation {
     Feet = 0,
-    Eyes = 6
+    Body = 1,
+    WeaponAttachPoint = 2,
+    Head = 3,
+    DropAttachPoint = 4,
+    ExplosionPoint = 5,
+    Eyes = 6,
+    BreathingPoint = 7,
+    Mouth = 8
 };

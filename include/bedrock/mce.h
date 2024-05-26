@@ -23,14 +23,14 @@
 namespace mce {
 class UUID {
 public:
-    std::int64_t msb;  // most significant bits
-    std::int64_t lsb;  // least significant bits
+    std::int64_t data_0;  // most significant bits
+    std::int64_t data_1;  // least significant bits
 
     static mce::UUID fromEndstone(const endstone::UUID &in)
     {
         mce::UUID out;
-        auto *ms = reinterpret_cast<uint8_t *>(&out.msb);
-        auto *ls = reinterpret_cast<uint8_t *>(&out.lsb);
+        auto *ms = reinterpret_cast<uint8_t *>(&out.data_0);
+        auto *ls = reinterpret_cast<uint8_t *>(&out.data_1);
         std::reverse_copy(in.data + 0, in.data + 4, ms + 4);
         std::reverse_copy(in.data + 4, in.data + 6, ms + 2);
         std::reverse_copy(in.data + 6, in.data + 8, ms + 0);
@@ -43,8 +43,8 @@ public:
     [[nodiscard]] endstone::UUID toEndstone() const
     {
         auto out = endstone::UUID{};
-        const auto *ms = reinterpret_cast<const uint8_t *>(&msb);
-        const auto *ls = reinterpret_cast<const uint8_t *>(&lsb);
+        const auto *ms = reinterpret_cast<const uint8_t *>(&data_0);
+        const auto *ls = reinterpret_cast<const uint8_t *>(&data_1);
         std::reverse_copy(ms + 4, ms + 8, out.data + 0);
         std::reverse_copy(ms + 2, ms + 4, out.data + 4);
         std::reverse_copy(ms + 0, ms + 2, out.data + 6);

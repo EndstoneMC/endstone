@@ -139,6 +139,7 @@ class ResolvedItemIconInfo;
 class ResolvedTextObject;
 class ResourceLoadManager;
 class ResourcePackManager;
+class RopeSystem;
 class SavedDataStorage;
 class Scheduler;
 class Scoreboard;

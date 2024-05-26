@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/world/level/game_type.h"
+
 struct ActorGameTypeComponent {
     GameType game_type;
 };

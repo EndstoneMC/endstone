@@ -18,5 +18,5 @@
 
 class ActorUniqueID {
 public:
-    std::int64_t id{-1};
+    std::int64_t raw_id{-1};
 };

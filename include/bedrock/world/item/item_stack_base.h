@@ -43,9 +43,9 @@ private:
     std::chrono::steady_clock::time_point pick_up_time_;  // +40
     bool show_pick_up_;                                   // +48
     bool was_picked_up_;                                  // +49
-    std::vector<BlockLegacy const *> can_place_on_;       // +56
+    std::vector<const BlockLegacy *> can_place_on_;       // +56
     std::uint64_t can_place_on_hash_;                     // +80
-    std::vector<BlockLegacy const *> can_destroy_;        // +88
+    std::vector<const BlockLegacy *> can_destroy_;        // +88
     std::uint64_t can_destroy_hash_;                      // +112
     Tick blocking_tick_;                                  // +120
     std::unique_ptr<ItemInstance> charged_item_;          // +128

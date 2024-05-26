@@ -19,5 +19,5 @@
 
 class ActorRuntimeID {
 public:
-    std::uint64_t id{0};
+    std::uint64_t raw_id{0};
 };

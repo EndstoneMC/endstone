@@ -14,9 +14,8 @@
 
 #pragma once
 
-struct CommandVersion {
-    int from;
-    int to;
+#include "bedrock/world/math/vec3.h"
 
-    static const int CurrentVersion;
+struct Vec3Component {
+    Vec3 value;
 };

@@ -17,5 +17,5 @@
 template <typename E>
 class EventRef {
 public:
-    E reference;
+    E variant;
 };

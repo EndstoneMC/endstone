@@ -49,7 +49,7 @@ void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &
         // [](Details::ValueOrRef<ActorRemovedEvent const> value) { cpptrace::generate_trace().print(); },
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -60,7 +60,7 @@ CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayE
     auto visitor = entt::overloaded{
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -71,7 +71,7 @@ CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayE
     auto visitor = entt::overloaded{
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -81,7 +81,7 @@ void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &
     auto visitor = entt::overloaded{
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -91,7 +91,7 @@ void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &
         // [](Details::ValueOrRef<LevelAddedActorEvent const> value) { cpptrace::generate_trace().print(); },
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
 }
 
@@ -109,7 +109,7 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
         // [](Details::ValueOrRef<PlayerDisconnectEvent const> value) {},
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
@@ -120,7 +120,7 @@ CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGamepla
     auto visitor = entt::overloaded{
         [](auto ignored) {},
     };
-    std::visit(visitor, ref.reference.event);
+    std::visit(visitor, ref.variant.event);
     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 

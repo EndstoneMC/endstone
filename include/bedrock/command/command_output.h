@@ -42,8 +42,8 @@ public:
 
 class CommandOutputParameter {
 public:
-    std::string text;  // +0
-    int count;         // +32
+    std::string string;  // +0
+    int count;           // +32
 };
 
 class CommandOutput {

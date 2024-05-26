@@ -19,7 +19,7 @@
 
 class HashedString {
 public:
-    std::uint64_t hash;
+    std::uint64_t str_hash;
     std::string str;
     const HashedString *last_match;
 };

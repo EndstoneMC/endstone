@@ -22,14 +22,14 @@
 
 class CommandContext {
 public:
-    CommandContext(std::string command_line, std::unique_ptr<CommandOrigin> origin, int version)
-        : command_line_(std::move(command_line)), origin_(std::move(origin)), version_(version)
+    CommandContext(std::string command, std::unique_ptr<CommandOrigin> origin, int version)
+        : command_(std::move(command)), origin_(std::move(origin)), version_(version)
     {
     }
 
-    [[nodiscard]] std::string getCommandLine() const
+    [[nodiscard]] std::string getCommand() const
     {
-        return command_line_;
+        return command_;
     }
 
     [[nodiscard]] CommandOrigin &getOrigin() const
@@ -38,7 +38,7 @@ public:
     }
 
 private:
-    std::string command_line_;               // +0
+    std::string command_;                    // +0
     std::unique_ptr<CommandOrigin> origin_;  // +32
     int version_;                            // +40
 };

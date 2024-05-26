@@ -17,5 +17,5 @@
 #include "bedrock/world/actor/actor.h"
 
 struct ActorUniqueIDComponent {
-    ActorUniqueID id;
+    ActorUniqueID unique_id;
 };

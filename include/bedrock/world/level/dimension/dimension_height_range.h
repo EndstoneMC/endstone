@@ -18,6 +18,6 @@
 
 class DimensionHeightRange {
 public:
-    std::int16_t min_height;
-    std::int16_t max_height;
+    std::int16_t min;
+    std::int16_t max;
 };

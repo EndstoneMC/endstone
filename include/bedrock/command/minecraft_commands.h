@@ -47,4 +47,3 @@ private:
     std::unique_ptr<CommandOutputSender> output_sender_;  // +8
     std::unique_ptr<CommandRegistry> registry_;           // +16
 };
-BEDROCK_STATIC_ASSERT_SIZE(MinecraftCommands, 24, 24);

@@ -30,19 +30,18 @@ public:
 private:
     GameCallbacks *callbacks_;                                           // +24
     IMinecraftEventing *eventing_;                                       // +32
-    std::unique_ptr<ResourcePackManager> resource_pack_manager_;         // +40
+    std::unique_ptr<ResourcePackManager> resource_loader_;               // +40
     std::unique_ptr<StructureManager> structure_manager_;                // +48
     std::shared_ptr<GameModuleServer> game_module_server_;               // +56
     AllowList *allow_list_;                                              // +72
     PermissionsFile *permissions_file_;                                  // +80
-    std::unique_ptr<PrivateKeyManager> private_key_manager_;             // +88
-    std::string unk3_;                                                   // +96
+    std::unique_ptr<PrivateKeyManager> server_keys_;                     // +88
+    std::string save_game_path_;                                         // +96
     Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;  // +128
-    ServerMetrics *metrics_;                                             // +144
-    bool unk4_;                                                          // +152
-    bool unk5_;                                                          // +153
-    double elapsed_time_seconds_;                                        // +160
-    double last_update_seconds_;                                         // +168
-    std::chrono::seconds unk6_;                                          // +176
+    ServerMetrics *server_metrics_;                                      // +144
+    bool corruption_detected_;                                           // +152
+    double frame_duration_;                                              // +160
+    double last_update_;                                                 // +168
+    std::chrono::seconds max_player_idle_time_;                          // +176
     std::unique_ptr<MinecraftCommands> commands_;                        // +184
 };

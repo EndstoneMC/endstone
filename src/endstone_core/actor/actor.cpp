@@ -100,7 +100,7 @@ void EndstoneActor::setOp(bool value)
 
 std::uint64_t EndstoneActor::getRuntimeId() const
 {
-    return actor_.getRuntimeID().id;
+    return actor_.getRuntimeID().raw_id;
 }
 
 Location EndstoneActor::getLocation() const
@@ -121,7 +121,7 @@ Vector<float> EndstoneActor::getVelocity() const
         }
         auto *component = actor->tryGetComponent<PostTickPositionDeltaComponent>();
         if (component) {
-            const auto &delta = component->position_delta_;
+            const auto &delta = component->value;
             return {delta.x, delta.y, delta.z};
         }
     }

@@ -30,14 +30,14 @@ public:
         Generic = 4,
     };
 
-    std::uint32_t nether_net_id;     // +0
-    RakNet::RakNetGUID raknet_guid;  // +8
-    union {                          //
-        sockaddr_storage sa_stor;    //
-        sockaddr_in6 addr6;          //
-        sockaddr_in addr4;           //
-    } address;                       // +24
-    Type type;                       // +152
+    std::uint32_t nether_net_id;   // +0
+    RakNet::RakNetGUID guid;       // +8
+    union {                        //
+        sockaddr_storage sa_stor;  //
+        sockaddr_in6 addr6;        //
+        sockaddr_in addr4;         //
+    } sock;                        // +24
+    Type type;                     // +152
 
     [[nodiscard]] std::string getAddress() const;
     [[nodiscard]] std::uint16_t getPort() const;

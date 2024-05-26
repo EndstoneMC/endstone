@@ -227,25 +227,25 @@ public:
     template <typename Component>
     [[nodiscard]] bool hasComponent() const
     {
-        return context_.hasComponent<Component>();
+        return entity_context_.hasComponent<Component>();
     }
 
     template <typename Component>
     Component *tryGetComponent()
     {
-        return context_.tryGetComponent<Component>();
+        return entity_context_.tryGetComponent<Component>();
     }
 
     template <typename Component>
     Component *tryGetComponent() const
     {
-        return context_.tryGetComponent<Component>();
+        return entity_context_.tryGetComponent<Component>();
     }
 
     template <typename Component>
     gsl::not_null<Component *> getPersistentComponent() const
     {
-        return context_.tryGetComponent<Component>();
+        return entity_context_.tryGetComponent<Component>();
     };
 
     BEDROCK_API void setDimension(WeakRef<Dimension>);
@@ -272,28 +272,29 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
 protected:
-    EntityContext context_;                                                   // +8
-    ActorInitializationMethod initialization_method_;                         // +32
-    std::string unknown2_;                                                    // +40
-    std::array<char[16], 10> unknown3_;                                       // +72  (+64)
-    std::int16_t unknown4_;                                                   // +232 (+224)
-    ActorDefinitionGroup *actor_definitions_;                                 // +240 (+232)
-    std::unique_ptr<ActorDefinitionDescriptor> actor_definition_desc_;        // +248 (+240)
-    std::shared_ptr<void *> unknown5_;                                        // +256 (+248)
-    std::string unknown6_;                                                    // +272 (+264)
-    char unknown7_[72];                                                       // +304 (+288)
-    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;  // +376 (+360)
-    std::int32_t unknown9_;                                                   // +392 (+384)
-    SynchedActorDataEntityWrapper data_;                                      // +400 (+392)
-    std::unique_ptr<SpatialActorNetworkData> spatial_data_;                   // +448 (+440)
-    Vec3 unknown10_;                                                          // +456 (+448)
-    char unknown11_[116];                                                     // +468 (+460)
-    WeakRef<Dimension> dimension_;                                            // +584 (+576)
-    Level *level_;                                                            // +600 (+592)
-    HashedString renderer_id_;                                                // +608 (+600)
-    ActorCategory categories_;                                                // +656 (+640)
-    BuiltInActorComponents components_;                                       // +664 (+648)
-    HashedString unknown13_;                                                  // +696 (+680)
+    EntityContext entity_context_;                                                  // +8
+    ActorInitializationMethod init_method_;                                         // +32
+    std::string custom_init_event_name_;                                            // +40
+    std::array<char[16], 10> unknown3_;                                             // +72  (+64)
+    bool force_init_method_to_spawn_on_reload_;                                     // +232 (+224)
+    bool added_;                                                                    // +233 (+225)
+    ActorDefinitionGroup *definitions_;                                             // +240 (+232)
+    std::unique_ptr<ActorDefinitionDescriptor> current_description_;                // +248 (+240)
+    std::shared_ptr<RopeSystem> leash_rope_system_;                                 // +256 (+248)
+    std::string unknown6_;                                                          // +272 (+264)
+    char unknown7_[72];                                                             // +304 (+288)
+    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;        // +376 (+360)
+    std::int32_t unknown9_;                                                         // +392 (+384)
+    SynchedActorDataEntityWrapper entity_data_;                                     // +400 (+392)
+    std::unique_ptr<SpatialActorNetworkData> network_data_;                         // +448 (+440)
+    Vec3 sent_delta_;                                                               // +456 (+448)
+    char unknown11_[116];                                                           // +468 (+460)
+    WeakRef<Dimension> dimension_;                                                  // +584 (+576)
+    Level *level_;                                                                  // +600 (+592)
+    HashedString actor_renderer_id_;                                                // +608 (+600)
+    ActorCategory categories_;                                                      // +656 (+640)
+    BuiltInActorComponents built_in_components_;                                    // +664 (+648)
+    HashedString actor_renderer_id_that_animation_component_was_initialized_with_;  // +696 (+680)
 
 public:
     [[nodiscard]] endstone::detail::EndstoneActor &getEndstoneActor() const;

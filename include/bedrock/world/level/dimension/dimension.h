@@ -28,19 +28,23 @@
 
 class Level;
 
-class Dimension : public IDimension, public LevelListener, public SavedData, public Bedrock::EnableNonOwnerReferences {
+class Dimension : public IDimension,
+                  public LevelListener,
+                  public SavedData,
+                  public Bedrock::EnableNonOwnerReferences,
+                  public std::enable_shared_from_this<Dimension> {
 public:
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] const std::string &getName() const;  // Endstone
 
 private:
-    WeakRef<Dimension> weak_ref_;                                                                    // +88  (+80)
-    std::vector<ActorChunkTransferEntry> chunk_transfers_;                                           // +104 (+96)
-    std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>> unloaded_transfers_;  // +128 (+120)
-    Level *level_;                                                                                   // +192 (+160)
-    DimensionHeightRange height_range_;                                                              // +200 (+168)
-    BlockSource *block_source_;                                                                      // +208 (+176)
-    size_t pad_[14];                                                                                 //
-    std::string name_;                                                                               // +328 (+296)
-    AutomaticID<Dimension, int> id_;                                                                 // +360 (+320)
+    std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;           // +104 (+96)
+    std::unordered_map<ChunkKey, std::vector<ActorUnloadedChunkTransferEntry>>  //
+        actor_unloaded_chunk_transfer_queue_;                                   // +128 (+120)
+    Level *level_;                                                              // +192 (+160)
+    DimensionHeightRange height_range_;                                         // +200 (+168)
+    BlockSource *block_source_;                                                 // +208 (+176)
+    size_t pad_[14];                                                            //
+    std::string name_;                                                          // +328 (+296)
+    AutomaticID<Dimension, int> id_;                                            // +360 (+320)
 };

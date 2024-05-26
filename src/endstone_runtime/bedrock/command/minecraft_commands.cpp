@@ -36,9 +36,9 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
             throw std::runtime_error("Command was executed by an non-player entity");
         }
         endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
-        server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommandLine());
+        server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommand());
 
-        endstone::PlayerCommandEvent event(player, ctx.getCommandLine());
+        endstone::PlayerCommandEvent event(player, ctx.getCommand());
         server.getPluginManager().callEvent(event);
 
         if (event.isCancelled()) {
@@ -47,7 +47,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
         break;
     }
     case CommandOriginType::DedicatedServer: {
-        endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommandLine());
+        endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommand());
         server.getPluginManager().callEvent(event);
 
         if (event.isCancelled()) {

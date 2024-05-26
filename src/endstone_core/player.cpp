@@ -42,8 +42,8 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     switch (component->network_id.getType()) {
     case NetworkIdentifier::Type::RakNet: {
         auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-        auto addr = peer->GetSystemAddressFromGuid(component->network_id.raknet_guid);
-        component->network_id.address.sa_stor = addr.address.sa_stor;
+        auto addr = peer->GetSystemAddressFromGuid(component->network_id.guid);
+        component->network_id.sock.sa_stor = addr.address.sa_stor;
     }
     case NetworkIdentifier::Type::Address:
     case NetworkIdentifier::Type::Address6: {
@@ -235,7 +235,7 @@ std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
     auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
-    return std::chrono::milliseconds(peer->GetAveragePing({component->network_id.raknet_guid}));
+    return std::chrono::milliseconds(peer->GetAveragePing({component->network_id.guid}));
 }
 
 void EndstonePlayer::updateCommands() const
@@ -265,12 +265,12 @@ bool EndstonePlayer::performCommand(std::string command) const
         CompoundTag origin;
         {
             origin.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-            origin.putInt64("EntityId", entity_id.id);
+            origin.putInt64("EntityId", entity_id.raw_id);
         }
         CompoundTag output_receiver;
         {
             output_receiver.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-            output_receiver.putInt64("EntityId", entity_id.id);
+            output_receiver.putInt64("EntityId", entity_id.raw_id);
         }
         tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Virtual));
         tag.putCompound("Origin", std::move(origin));

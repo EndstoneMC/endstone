@@ -65,17 +65,17 @@ bool Actor::isRemoved() const
 
 bool Actor::isOnGround() const
 {
-    return ActorCollision::isOnGround(context_);
+    return ActorCollision::isOnGround(entity_context_);
 }
 
 bool Actor::isInWater() const
 {
-    return ActorEnvironment::getIsInWater(context_);
+    return ActorEnvironment::getIsInWater(entity_context_);
 }
 
 bool Actor::isInLava() const
 {
-    return ActorEnvironment::getIsInLava(context_);
+    return ActorEnvironment::getIsInLava(entity_context_);
 }
 
 Dimension &Actor::getDimension() const
@@ -90,42 +90,42 @@ Level &Actor::getLevel() const
 
 Vec3 const &Actor::getPosition() const
 {
-    return components_.state_vector->position;
+    return built_in_components_.state_vector->position;
 }
 
 Vec3 const &Actor::getPosPrev() const
 {
-    return components_.state_vector->position_prev;
+    return built_in_components_.state_vector->position_prev;
 }
 
 Vec3 const &Actor::getPosDelta() const
 {
-    return components_.state_vector->position_delta;
+    return built_in_components_.state_vector->position_delta;
 }
 
 Vec2 const &Actor::getRotation() const
 {
-    return components_.rotation->rotation;
+    return built_in_components_.rotation->rotation;
 }
 
 AABB const &Actor::getAABB() const
 {
-    return components_.aabb->aabb;
+    return built_in_components_.aabb->aabb;
 }
 
 ActorRuntimeID Actor::getRuntimeID() const
 {
-    return tryGetComponent<RuntimeIDComponent>()->id;
+    return tryGetComponent<RuntimeIDComponent>()->runtime_id;
 }
 
 ActorUniqueID Actor::getOrCreateUniqueID() const
 {
     auto component = getPersistentComponent<ActorUniqueIDComponent const>();
-    if (component->id.id != -1) {
-        return component->id;
+    if (component->unique_id.raw_id != -1) {
+        return component->unique_id;
     }
     auto unique_id = level_->getNewUniqueID();
-    return context_.getOrAddComponent<ActorUniqueIDComponent>(unique_id).id;
+    return entity_context_.getOrAddComponent<ActorUniqueIDComponent>(unique_id).unique_id;
 }
 
 Actor *Actor::getVehicle() const
@@ -154,9 +154,9 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
         return nullptr;
     }
 
-    auto *actor = component->owner;
+    auto &actor = component->actor;
     if (actor && (!actor->isRemoved() || include_removed)) {
-        return actor;
+        return actor.get();
     }
     return nullptr;
 }
@@ -168,13 +168,13 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
 
     if (isPlayer()) {
         auto *player = static_cast<Player *>(self);
-        return context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
+        return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }
     // TODO(actor): add factory method for other actors
-    return context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
+    return entity_context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
 }
 
 bool Actor::isJumping() const
 {
-    return MobJump::isJumping(context_);
+    return MobJump::isJumping(entity_context_);
 }

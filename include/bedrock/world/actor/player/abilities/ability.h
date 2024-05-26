@@ -24,8 +24,14 @@ public:
         Bool = 2,
         Float = 3,
     };
+
     enum class Options {
         Default = 0
+    };
+
+    union Value {
+        bool bool_val;
+        float float_val;
     };
 
     Ability() = default;
@@ -37,20 +43,17 @@ public:
 
     [[nodiscard]] bool getBool() const
     {
-        return type_ == Type::Bool ? value_.b : false;
+        return type_ == Type::Bool ? value_.bool_val : false;
     }
 
     [[nodiscard]] float getFloat() const
     {
-        return type_ == Type::Float ? value_.f : 0.0F;
+        return type_ == Type::Float ? value_.float_val : 0.0F;
     }
 
 private:
     Type type_;
-    union {
-        bool b;
-        float f;
-    } value_;
+    Value value_;
     Options options_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Ability, 12, 12);

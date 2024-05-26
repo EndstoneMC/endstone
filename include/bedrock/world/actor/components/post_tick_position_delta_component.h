@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include "bedrock/world/math/vec3.h"
+#include "bedrock/world/actor/components/vec3_component.h"
 
-struct PostTickPositionDeltaComponent {
-    Vec3 position_delta_;
-};
+struct PostTickPositionDeltaComponent : public Vec3Component {};

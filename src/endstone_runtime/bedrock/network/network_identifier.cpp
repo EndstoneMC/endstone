@@ -19,13 +19,13 @@
 std::string NetworkIdentifier::getAddress() const
 {
     char str[INET6_ADDRSTRLEN] = {0};
-    if (address.addr4.sin_family == AF_INET) {
-        if (!inet_ntop(AF_INET, &(address.addr4.sin_addr), str, INET6_ADDRSTRLEN)) {
+    if (sock.addr4.sin_family == AF_INET) {
+        if (!inet_ntop(AF_INET, &(sock.addr4.sin_addr), str, INET6_ADDRSTRLEN)) {
             return "0.0.0.0";
         }
     }
     else {
-        if (!inet_ntop(AF_INET6, &(address.addr6.sin6_addr), str, INET6_ADDRSTRLEN)) {
+        if (!inet_ntop(AF_INET6, &(sock.addr6.sin6_addr), str, INET6_ADDRSTRLEN)) {
             return "::";
         }
     }
@@ -34,7 +34,7 @@ std::string NetworkIdentifier::getAddress() const
 
 std::uint16_t NetworkIdentifier::getPort() const
 {
-    return ntohs(address.addr4.sin_port);
+    return ntohs(sock.addr4.sin_port);
 }
 
 NetworkIdentifier::Type NetworkIdentifier::getType() const
