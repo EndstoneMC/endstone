@@ -19,12 +19,12 @@
 #include "bedrock/network/raknet/types.h"
 
 struct ConnectionDefinition {
-    std::uint16_t port;                      // +0
-    std::uint16_t port_v6;                   // +2
-    std::uint32_t unk1;                      // +4
-    std::uint32_t max_incoming_connections;  // +8
-    std::uint32_t max_connections;           // +12
-    bool unk3;                               // +16
+    std::uint16_t port;                       // +0
+    std::uint16_t port_v6;                    // +2
+    std::uint32_t fallback;                   // +4
+    std::uint32_t max_num_players;            // +8
+    std::uint32_t max_num_connections;        // +12
+    bool is_server_visible_to_lan_discovery;  // +16
 };
 
 class RakPeerHelper {

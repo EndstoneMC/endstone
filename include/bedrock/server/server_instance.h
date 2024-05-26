@@ -29,7 +29,7 @@ public:
     Minecraft &getMinecraft();
 
 private:
-    void *unk1_;                            // +152
-    IMinecraftApp *app_;                    // +160
-    std::unique_ptr<Minecraft> minecraft_;  // +168
+    std::chrono::steady_clock::time_point last_sync_time_;  // +152
+    IMinecraftApp *app_;                                    // +160
+    std::unique_ptr<Minecraft> minecraft_;                  // +168
 };

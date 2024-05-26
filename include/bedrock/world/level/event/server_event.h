@@ -42,9 +42,9 @@ struct ChatEvent {
     std::string message;                                         // +0
     WeakRef<EntityContext> sender;                               // +32
     std::optional<std::vector<WeakRef<EntityContext>>> exclude;  // +56
-    std::string player_name;                                     // +88
-    bool unknown2{true};                                         // +120
-    bool unknown3{true};                                         // +121
+    std::string author;                                          // +88
+    bool message_valid{true};                                    // +120
+    bool allow_filtering{true};                                  // +121
 };
 
 template <>

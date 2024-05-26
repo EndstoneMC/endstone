@@ -36,13 +36,13 @@ public:
     ~EventCoordinatorPimpl() override = 0;
 
 private:
-    std::vector<ListenerType *> unk1_;                              // +24
-    std::vector<std::function<EventResult(ListenerType &)>> unk2_;  // +48
-    std::vector<ListenerType *> unk3_;                              // +72
-    bool unk4_;                                                     // +96
-    std::thread::id unk5_;                                          // +100 (+104)
-    bool unk6_;                                                     // +104 (+112)
-    std::int32_t unk7_;                                             // +112 (+116)
+    std::vector<ListenerType *> listeners_;                                      // +24
+    std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +48
+    std::vector<ListenerType *> unk3_;                                           // +72
+    bool unk4_;                                                                  // +96
+    std::thread::id unk5_;                                                       // +100 (+104)
+    bool unk6_;                                                                  // +104 (+112)
+    std::int32_t unk7_;                                                          // +112 (+116)
 };
 
 class ActorEventCoordinator {

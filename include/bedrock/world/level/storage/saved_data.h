@@ -25,6 +25,6 @@ public:
     virtual void serialize(CompoundTag const &) = 0;
 
 private:
-    bool unknown1_;
-    std::string unknown2_;
+    bool dirty_;
+    std::string id_;
 };
