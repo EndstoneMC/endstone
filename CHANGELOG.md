@@ -16,6 +16,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Level::getDimension` and `Level::getDimensions` for getting dimensions within a specific level.
 - `Actor::getDimension` for getting the dimension that an actor resides in.
 - `Player::getGameMode` and `Player::setGameMode` for getting and setting a player's game mode.
+- Plugin configuration for Python plugins.
+- Added more struct info by [@Duckos-Mods](https://github.com/Duckos-Mods)
+  in [#11](https://github.com/EndstoneMC/endstone/pull/11).
+
+### Changed
+
+- Changed logging level look up from using a hashmap to using a switch by [@Duckos-Mods](https://github.com/Duckos-Mods)
+  in [#12](https://github.com/EndstoneMC/endstone/pull/12)
 
 ### Fixed
 
