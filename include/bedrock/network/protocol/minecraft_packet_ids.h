@@ -14,12 +14,6 @@
 
 #pragma once
 
-#include <memory>
-
-#include "bedrock/bedrock.h"
-#include "bedrock/network/protocol/packet.h"
-
-class MinecraftPackets {
-public:
-    BEDROCK_API static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+enum class MinecraftPacketIds {
+    Text = 9,
 };

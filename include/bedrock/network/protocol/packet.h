@@ -13,15 +13,28 @@
 // limitations under the License.
 
 #pragma once
+
+#include "bedrock/forward.h"
 #include "bedrock/network/network_peer.h"
 #include "bedrock/network/protocol/compressibility.h"
+#include "bedrock/network/protocol/minecraft_packet_ids.h"
 #include "bedrock/network/protocol/sub_client_id.h"
 #include "bedrock/network/raknet/packet_priority.h"
+
 class Packet {
 public:
     virtual ~Packet() = default;
+    //    [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
+    //    [[nodiscard]] virtual std::string getName() const = 0;
+    //    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const = 0;
+    //    virtual void write(BinaryStream &) const = 0;
+    //    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &) = 0;
+    //    [[nodiscard]] virtual bool disallowBatching() const = 0;
+    //    [[nodiscard]] virtual bool isValid() const = 0;
 
 private:
+    //    [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
+
     PacketPriority priority_;                          // + 8
     NetworkPeer::Reliability reliability_;             // + 12
     SubClientId sub_client_id_;                        // + 16
