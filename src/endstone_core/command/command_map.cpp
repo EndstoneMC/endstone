@@ -77,7 +77,7 @@ void EndstoneCommandMap::setMinecraftCommands()
         it->second.push_back(alias);
     }
 
-    for (const auto &[command_name, signature] : registry.commands) {
+    for (const auto &[command_name, signature] : registry.signatures) {
         auto description = getI18n().get(signature.description, {}, nullptr);
 
         std::vector<std::string> usages;
@@ -158,9 +158,9 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
-                auto data = CommandParameterData({0}, &CommandRegistry::parse<CommandAdapter>, parameter.name.c_str(),
-                                                 CommandParameterDataType::Default, nullptr, nullptr, 0,
-                                                 parameter.optional, -1);
+                auto data =
+                    CommandParameterData({0}, &CommandRegistry::parse<CommandAdapter>, parameter.name.c_str(),
+                                         CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional, -1);
 
                 if (parameter.is_enum) {
                     auto symbol = static_cast<std::uint32_t>(registry.addEnumValues(parameter.type, parameter.values));
@@ -169,13 +169,13 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                         server_.getLogger().error("Unable to register enum '{}'.", parameter.type);
                         return false;
                     }
-                    data.type = CommandParameterDataType::Enum;
+                    data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
                 }
                 else if (parameter.type == "bool") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
-                    data.type = CommandParameterDataType::Enum;
+                    data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = "Boolean";
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
                 }

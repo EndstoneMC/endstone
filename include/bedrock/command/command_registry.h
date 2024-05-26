@@ -129,22 +129,6 @@ public:
         SlashCommand = 0x100057,
     };
 
-    struct Overload {
-        Overload(const CommandVersion &version, std::unique_ptr<Command> (*factory)())
-            : version(version), factory(factory)
-        {
-        }
-
-        CommandVersion version;                    // +0
-        std::unique_ptr<Command> (*factory)();     // +8
-        std::vector<CommandParameterData> params;  // +16
-        std::int32_t unknown1{-1};                 // +40
-        std::int8_t unknown2{0};                   // +44
-        std::uint64_t unknown3{0};                 // +48
-        std::uint64_t unknown4{0};                 // +56
-        std::uint64_t unknown5{0};                 // +64
-    };
-
     class Symbol {
     public:
         explicit Symbol(std::uint32_t value = 0) : value_(value){};
@@ -159,19 +143,32 @@ public:
         std::uint32_t value_;
     };
 
+    struct Overload {
+        Overload(const CommandVersion &version, std::unique_ptr<Command> (*factory)())
+            : version(version), factory(factory)
+        {
+        }
+
+        CommandVersion version;                    // +0
+        std::unique_ptr<Command> (*factory)();     // +8
+        std::vector<CommandParameterData> params;  // +16
+        std::int32_t version_offset{-1};           // +40
+        std::vector<Symbol> params_symbol;         // +48
+    };
+
     struct Signature {
         std::string name;                                  // +0
         std::string description;                           // +32
         std::vector<CommandRegistry::Overload> overloads;  // +64
         std::vector<int> subcommand_values;                // +88
         CommandPermissionLevel permission_level;           // +112
-        CommandRegistry::Symbol symbol;                    // +116
-        CommandRegistry::Symbol enum_symbol;               // +120
-        CommandFlag command_flag;                          // +124
-        int unknown3;                                      // +128
-        int symbol_index;                                  // +132
-        int optional_index;                                // +136
-        char unknown6;                                     // +140
+        CommandRegistry::Symbol command_symbol;            // +116
+        CommandRegistry::Symbol command_alias_symbol;      // +120
+        CommandFlag flags;                                 // +124
+        int first_rule;                                    // +128
+        int first_factorization;                           // +132
+        int first_optional;                                // +136
+        bool runnable;                                     // +140
         std::int64_t unknown7;                             // +144
     };
 
@@ -189,6 +186,7 @@ public:
 
     using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
                                                 std::string &, std::vector<std::string> &) const;
+    using CommandOverrideFunctor = std::function<void(CommandFlag &, std::string const &)>;
 
     template <typename T>
     bool parse(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int, std::string &,
@@ -198,11 +196,14 @@ public:
     class Enum {
     public:
         std::string name;                                             // +0
-        Bedrock::typeid_t<CommandRegistry> type_id;                   // +32
-        ParseRule parse_rule;                                         // +40
+        Bedrock::typeid_t<CommandRegistry> type;                      // +32
+        ParseRule parse;                                              // +40
         std::vector<std::pair<std::uint64_t, std::uint64_t>> values;  // +48
     };
     class SoftEnum;
+    class OptionalParameterChain;
+    class ConstrainedValue;
+    class RegistryState;
 
     BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
@@ -238,36 +239,36 @@ public:
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
     }
 
-    std::function<void(class Packet const &)> network_update_callback;                      // +0
-    std::function<int(bool &, std::string const &, class Actor const &)> score_callback;    // +56
-    std::vector<void *> unknown1;                                                           // +128
-    std::map<std::uint32_t, CommandRegistry::ParseTable> parse_tables;                      // +152
-    std::vector<void *> optionals;                                                          // +168
-    std::vector<std::string> literals;                                                      // +192
-    std::vector<CommandRegistry::Enum> enums;                                               // +216
-    std::vector<std::string> subcommands;                                                   // +240
-    std::vector<CommandRegistry::Enum> chained_subcommands;                                 // +264
-    std::vector<CommandRegistry::Symbol> symbols;                                           // +288
-    std::vector<std::string> postfixes;                                                     // +312
-    std::map<std::string, int> enum_symbol_index;                                           // +336
-    std::map<std::string, CommandRegistry::Symbol> enum_symbols;                            // +352
-    std::map<std::string, int> subcommand_symbol_index;                                     // +368
-    std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                      // +384
-    std::vector<CommandRegistry::Symbol> command_symbols;                                   // +400
-    std::map<std::string, CommandRegistry::Signature> commands;                             // +424
-    std::map<Bedrock::typeid_t<CommandRegistry>, int> type_ids;                             // +440
-    std::map<std::string, std::string> aliases;                                             // +456
-    std::vector<SemanticConstraint> semantic_constraints;                                   // +472
-    std::map<SemanticConstraint, unsigned char> constrained_values;                         // +496
-    std::vector<void *> constrained_value_data;                                             // +512
-    std::map<std::pair<std::uint64_t, std::uint32_t>, std::uint32_t> unknown8;              // +536
-    std::vector<CommandRegistry::SoftEnum> soft_enums;                                      // +552
-    std::map<std::string, int> soft_enum_symbol_index;                                      // +576
-    std::vector<void *> unknown10;                                                          // +592
-    char param_symbols[96];                                                                 // +616
-    std::unordered_map<unsigned char, unsigned char> unknown11;                             // +712
-    std::unordered_map<unsigned char, unsigned char> unknown12;                             // +776
-    std::function<void(CommandFlag &, std::string const &)> command_registration_override;  // +840
+    std::function<void(class Packet const &)> network_update_callback;                             // +0
+    std::function<int(bool &, std::string const &, class Actor const &)> get_score_for_objective;  // +56
+    std::vector<CommandRegistry::ParseRule> rules;                                                 // +128
+    std::map<std::uint32_t, CommandRegistry::ParseTable> parse_tables;                             // +152
+    std::vector<CommandRegistry::OptionalParameterChain> optionals;                                // +168
+    std::vector<std::string> enum_values;                                                          // +192
+    std::vector<CommandRegistry::Enum> enums;                                                      // +216
+    std::vector<std::string> subcommands;                                                          // +240
+    std::vector<CommandRegistry::Enum> chained_subcommands;                                        // +264
+    std::vector<CommandRegistry::Symbol> symbols;                                                  // +288
+    std::vector<std::string> postfixes;                                                            // +312
+    std::map<std::string, std::uint32_t> enum_symbol_index;                                        // +336
+    std::map<std::string, CommandRegistry::Symbol> enum_symbols;                                   // +352
+    std::map<std::string, std::uint32_t> subcommand_symbol_index;                                  // +368
+    std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                             // +384
+    std::vector<CommandRegistry::Symbol> command_symbols;                                          // +400
+    std::map<std::string, CommandRegistry::Signature> signatures;                                  // +424
+    std::map<Bedrock::typeid_t<CommandRegistry>, int> type_lookup;                                 // +440
+    std::map<std::string, std::string> aliases;                                                    // +456
+    std::vector<SemanticConstraint> semantic_constraints;                                          // +472
+    std::map<SemanticConstraint, unsigned char> semantic_constraint_lookup;                        // +496
+    std::vector<CommandRegistry::ConstrainedValue> constrained_values;                             // +512
+    std::map<std::pair<std::uint64_t, std::uint32_t>, std::uint32_t> constrained_value_lookup;     // +536
+    std::vector<CommandRegistry::SoftEnum> soft_enums;                                             // +552
+    std::map<std::string, std::uint32_t> soft_enum_lookup;                                         // +576
+    std::vector<CommandRegistry::RegistryState> state_stack;                                       // +592
+    char param_symbols[96];                                                                        // +616
+    std::unordered_map<unsigned char, unsigned char> unknown11;                                    // +712
+    std::unordered_map<unsigned char, unsigned char> unknown12;                                    // +776
+    CommandOverrideFunctor command_override_functor;                                               // +840
 
 private:
     [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
@@ -283,39 +284,41 @@ private:
     BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
 };
+BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry, 904, 896);
 
-enum CommandParameterDataType : int {
-    Default = 0,
+enum class CommandParameterDataType : int {
+    Basic = 0,
     Enum = 1,
+    SoftEnum = 2,
+    Postfix = 3
 };
 
 enum class CommandParameterOption : char {
     None = 0,
-    EnumAutocompleteExpansion = 0x01,
-    HasSemanticConstraint = 0x02,
-    EnumAsChainedCommand = 0x04
+    EnumAutocompleteExpansion = 1,
+    HasSemanticConstraint = 2,
+    EnumAsChainedCommand = 4
 };
 
 struct CommandParameterData {
-    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type_id, CommandRegistry::ParseRule parse_rule,
-                         char const *name, CommandParameterDataType type, char const *type_name,
-                         char const *fallback_typename, int offset_value, bool optional, int offset_has_value)
-        : type_id(type_id), parse_rule(parse_rule), name(name), enum_name(type_name),
-          fallback_typename(fallback_typename), type(type), offset_value(offset_value),
-          offset_has_value(offset_has_value), optional(optional)
+    CommandParameterData(Bedrock::typeid_t<CommandRegistry> type, CommandRegistry::ParseRule parse, char const *name,
+                         CommandParameterDataType param_type, char const *enum_name, char const *fallback_typename,
+                         int offset, bool is_optional, int set_offset)
+        : type(type), parse(parse), name(name), enum_name(enum_name), fallback_typename(fallback_typename),
+          param_type(param_type), offset(offset), set_offset(set_offset), is_optional(is_optional)
     {
     }
 
-    Bedrock::typeid_t<CommandRegistry> type_id;                          // +0
-    CommandRegistry::ParseRule parse_rule;                               // +8
+    Bedrock::typeid_t<CommandRegistry> type;                             // +0
+    CommandRegistry::ParseRule parse;                                    // +8
     std::string name;                                                    // +16
     const char *enum_name;                                               // +48
     CommandRegistry::Symbol enum_symbol{static_cast<uint32_t>(-1)};      // +56
     const char *fallback_typename;                                       // +64
     CommandRegistry::Symbol fallback_symbol{static_cast<uint32_t>(-1)};  // +72
-    CommandParameterDataType type;                                       // +76
-    int offset_value;                                                    // +80
-    int offset_has_value;                                                // +84
-    bool optional;                                                       // +88
-    CommandParameterOption option{0};                                    // +89
+    CommandParameterDataType param_type;                                 // +76
+    int offset;                                                          // +80
+    int set_offset;                                                      // +84
+    bool is_optional;                                                    // +88
+    CommandParameterOption options{0};                                   // +89
 };
