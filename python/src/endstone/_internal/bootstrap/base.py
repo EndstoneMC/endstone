@@ -4,7 +4,6 @@ import logging
 import os
 import platform
 import shutil
-import site
 import subprocess
 import sys
 import zipfile
@@ -69,6 +68,8 @@ class Bootstrap:
         if minecraft_version not in server_data["binary"]:
             raise ValueError(f"Version v{minecraft_version} is not found in the remote server.")
 
+        should_modify_server_properties = True
+
         with tempfile.TemporaryFile(dir=dst) as f:
             metadata = server_data["binary"][minecraft_version][self.target_system.lower()]
             url = metadata["url"]
@@ -100,20 +101,27 @@ class Bootstrap:
                 for file in zip_ref.namelist():
                     if file in ["allowlist.json", "permissions.json", "server.properties"] and (dst / file).exists():
                         self._logger.info(f"{file} already exists, skipping.")
+                        should_modify_server_properties = False
                         continue
+
                     zip_ref.extract(file, dst)
 
-        properties = dst / "server.properties"
-        with properties.open("r", encoding="utf-8") as file:
-            lines = file.readlines()
+        if should_modify_server_properties:
+            properties = dst / "server.properties"
+            with properties.open("r", encoding="utf-8") as file:
+                in_lines = file.readlines()
 
-        lines = [
-            "server-name=Endstone Server\n" if line.strip() == "server-name=Dedicated Server" else line
-            for line in lines
-        ]
+            out_lines = []
+            for line in in_lines:
+                if line.strip() == "server-name=Dedicated Server":
+                    out_lines.append("server-name=Endstone Server\n")
+                elif line.strip() == "client-side-chunk-generation-enabled=true":
+                    out_lines.append("client-side-chunk-generation-enabled=false\n")
+                else:
+                    out_lines.append(line)
 
-        with properties.open("w", encoding="utf-8") as file:
-            file.writelines(lines)
+            with properties.open("w", encoding="utf-8") as file:
+                file.writelines(out_lines)
 
         version_file = dst / "version.txt"
         with version_file.open("w", encoding="utf-8") as file:
