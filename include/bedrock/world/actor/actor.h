@@ -27,7 +27,7 @@
 #include "bedrock/hashed_string.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
-#include "bedrock/network/syncher/spatial_actor_network_data.h"
+#include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/network/syncher/synched_actor_data_entity_wrapper.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/actor_category.h"

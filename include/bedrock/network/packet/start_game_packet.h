@@ -21,7 +21,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/mce.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/network/protocol/packet.h"
+#include "bedrock/network/packet.h"
 #include "bedrock/network/syncher/synced_player_movement_settings.h"
 #include "bedrock/server/packs/content_identity.h"
 #include "bedrock/world/actor/actor_runtime_id.h"

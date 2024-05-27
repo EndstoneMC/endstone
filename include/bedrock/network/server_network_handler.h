@@ -16,8 +16,8 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/memory.h"
-#include "bedrock/network/protocol/connection.h"
-#include "bedrock/network/protocol/net_event_callback.h"
+#include "bedrock/network/connection.h"
+#include "bedrock/network/net_event_callback.h"
 #include "bedrock/server/level/server_player.h"
 #include "bedrock/social.h"
 #include "bedrock/threading.h"

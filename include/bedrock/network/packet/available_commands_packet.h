@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/network/protocol/packet.h"
+#include "bedrock/network/packet.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_permission_level.h"
 

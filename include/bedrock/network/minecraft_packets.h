@@ -17,7 +17,7 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/protocol/packet.h"
+#include "bedrock/network/packet.h"
 
 class MinecraftPackets {
 public:

@@ -15,11 +15,11 @@
 #pragma once
 
 #include "bedrock/forward.h"
+#include "bedrock/network/compressibility.h"
+#include "bedrock/network/minecraft_packet_ids.h"
 #include "bedrock/network/network_peer.h"
-#include "bedrock/network/protocol/compressibility.h"
-#include "bedrock/network/protocol/minecraft_packet_ids.h"
-#include "bedrock/network/protocol/sub_client_id.h"
 #include "bedrock/network/raknet/packet_priority.h"
+#include "bedrock/network/sub_client_id.h"
 
 class Packet {
 public:

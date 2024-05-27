@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/network/protocol/packet.h"
+#include "bedrock/network/packet.h"
 
 enum class TextPacketType : char {
     Raw = 0,

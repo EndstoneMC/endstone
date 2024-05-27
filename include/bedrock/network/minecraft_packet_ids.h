@@ -14,21 +14,6 @@
 
 #pragma once
 
-#include <cstdint>
-#include <unordered_set>
-
-#include "bedrock/network/syncher/move_actor_absolute_data.h"
-#include "bedrock/world/actor/actor_unique_id.h"
-
-class Actor;
-
-class SpatialActorNetworkData {
-public:
-    Actor *actor;                                         // +0
-    bool initialised;                                     // +8
-    bool auto_send;                                       // +9
-    MoveActorAbsoluteData last_sent;                      // +16
-    MoveActorAbsoluteData current;                        // +48
-    std::unordered_set<ActorUniqueID> last_spatial_tick;  // +80
+enum class MinecraftPacketIds {
+    Text = 9,
 };
-// static_assert(sizeof(SpatialActorNetworkData) == 144);

@@ -16,10 +16,10 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/certificates/certificate.h"
 #include "bedrock/mce.h"
 #include "bedrock/network/network_identifier.h"
-#include "bedrock/network/protocol/certificate.h"
-#include "bedrock/network/protocol/sub_client_id.h"
+#include "bedrock/network/sub_client_id.h"
 
 class UserEntityIdentifierComponent {
 public:

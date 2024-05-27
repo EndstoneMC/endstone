@@ -14,6 +14,10 @@
 
 #pragma once
 
-enum class MinecraftPacketIds {
-    Text = 9,
+#include "bedrock/network/packet.h"
+
+class PacketSender {
+public:
+    virtual ~PacketSender() = default;
+    virtual void send(Packet &packet) = 0;
 };

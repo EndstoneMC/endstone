@@ -18,7 +18,7 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/protocol/packet_sender.h"
+#include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/level/event/event_coordinator.h"

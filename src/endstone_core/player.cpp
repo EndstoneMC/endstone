@@ -14,13 +14,13 @@
 
 #include "endstone/detail/player.h"
 
+#include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/text_packet.h"
-#include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
+#include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/server/commands/command_position.h"
-#include "bedrock/server/network/server_network_handler.h"
 #include "bedrock/world/actor/components/user_entity_identifier_component.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/game_type.h"
