@@ -61,6 +61,14 @@ li.md-tabs__item.md-tabs__item--active {
     border-radius: .5rem;
 }
 
+.center-table {
+    text-align: center;
+}
+
+.md-typeset .center-table :is(td,th):not([align]) {
+    text-align: initial;
+}
+
 /* Show tabs */
 @media screen and (min-width: 76.25em) {
     .md-header {
