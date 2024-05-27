@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/minecraft.h"
+#include "bedrock/world/minecraft.h"
 
 #include <entt/entt.hpp>
 
