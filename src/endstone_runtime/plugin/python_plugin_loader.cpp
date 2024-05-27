@@ -52,7 +52,7 @@ std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directo
                 logger_name = plugin->getDescription().getName();
             }
             initPlugin(*plugin, LoggerFactory::getLogger(logger_name),
-                       std::filesystem::path(directory) / detail::toSnake(plugin->getDescription().getName()));
+                       std::filesystem::path(directory) / plugin->getDescription().getName());
         }
     }
     return plugins;
