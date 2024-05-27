@@ -16,7 +16,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/network/protocol/game/available_commands_packet.h"
+#include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/components/abilities_component.h"
 #include "bedrock/world/actor/components/actor_game_type_component.h"

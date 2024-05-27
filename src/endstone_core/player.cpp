@@ -14,7 +14,7 @@
 
 #include "endstone/detail/player.h"
 
-#include "bedrock/network/protocol/game/text_packet.h"
+#include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/protocol/minecraft_packets.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
 #include "bedrock/server/commands/command_origin_data.h"

@@ -24,7 +24,7 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/protocol/game/available_commands_packet.h"
+#include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_permission_level.h"

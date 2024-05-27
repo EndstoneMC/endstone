@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/protocol/game/start_game_packet.h"
+#include "bedrock/network/packet/start_game_packet.h"
 
 #include "endstone/detail/hook.h"
 
