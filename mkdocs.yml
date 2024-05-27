@@ -30,16 +30,16 @@ extra_css:
 plugins:
   - search
   - git-revision-date-localized:
-      enabled: !ENV [CI, false]
+      enabled: !ENV [ CI, false ]
       enable_creation_date: true
       exclude:
         - reference/cpp/*
   - git-committers:
-      enabled: !ENV [CI, false]
+      enabled: !ENV [ CI, false ]
       repository: EndstoneMC/endstone
       branch: main
   - mkdocstrings:
-      enabled: !ENV [CI, false]
+      enabled: !ENV [ CI, false ]
       handlers:
         python:
           paths: [ python/src ]
@@ -57,7 +57,7 @@ plugins:
             signature_crossrefs: true
             inherited_members: false
   - mkdoxy:
-      enabled: !ENV [CI, false]
+      enabled: !ENV [ CI, false ]
       projects:
         "reference/cpp":
           src-dirs: include/endstone/
@@ -166,10 +166,12 @@ nav:
   - Tutorials:
       - Create your first plugin: tutorials/create-your-first-plugin.md
       - Install your plugin: tutorials/install-your-plugin.md
+      - Use color codes: tutorials/use-color-codes.md
       - Register commands: tutorials/register-commands.md
       - Register event listeners: tutorials/register-event-listeners.md
       - Schedule tasks: tutorials/schedule-tasks.md
       - Publish your plugin: tutorials/publish-your-plugin.md
+
   - Reference:
       - reference/index.md
       - Python API:
