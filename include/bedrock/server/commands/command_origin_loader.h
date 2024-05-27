@@ -19,7 +19,7 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/server/commands/command_origin.h"
-#include "bedrock/server/level/server_level.h"
+#include "bedrock/server/server_level.h"
 
 class CommandOriginLoader {
 public:

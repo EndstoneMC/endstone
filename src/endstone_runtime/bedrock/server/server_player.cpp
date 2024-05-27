@@ -12,28 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/level/server_level.h"
+#include "bedrock/server/server_player.h"
 
-#include "bedrock/world/actor/actor_initialization_method.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
-#include "endstone/event/actor/actor_spawn_event.h"
+#include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_quit_event.h"
 
 using endstone::detail::EndstoneServer;
 
-void ServerLevel::_postReloadActorAdded(Actor &actor, ActorInitializationMethod method)
+void ServerPlayer::doInitialSpawn()
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerLevel::_postReloadActorAdded, this, actor, method);
-
-    if (actor.isPlayer()) {
-        return;
-    }
-
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
+    auto &endstone_player = getEndstonePlayer();
+    endstone::PlayerJoinEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
+    endstone_player.recalculatePermissions();
+    endstone_player.updateCommands();
+}
 
-    if (e.isCancelled()) {
-        actor.despawn();
-    }
+void ServerPlayer::disconnect()
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &endstone_player = getEndstonePlayer();
+    endstone_player.disconnect();
+    endstone::PlayerQuitEvent e{endstone_player};
+    server.getPluginManager().callEvent(e);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }
