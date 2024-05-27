@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command_registry.h"
+#include "bedrock/server/commands/command_registry.h"
 
 #include <iostream>
 #include <memory>
@@ -22,7 +22,7 @@
 #include <spdlog/fmt/ostr.h>
 #include <spdlog/spdlog.h>
 
-#include "bedrock/command/command.h"
+#include "bedrock/server/commands/command.h"
 #include "endstone/detail/hook.h"
 
 void CommandRegistry::registerCommand(const std::string &name, const char *description, CommandPermissionLevel level,

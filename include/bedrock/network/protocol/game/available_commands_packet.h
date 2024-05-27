@@ -17,8 +17,9 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/command/command_flag.h"
 #include "bedrock/network/protocol/packet.h"
+#include "bedrock/server/commands/command_flag.h"
+#include "bedrock/server/commands/command_permission_level.h"
 
 class AvailableCommandsPacket : public Packet {
 public:

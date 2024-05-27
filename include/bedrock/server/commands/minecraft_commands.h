@@ -15,9 +15,9 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/command/command_context.h"
-#include "bedrock/command/command_output.h"
-#include "bedrock/command/command_registry.h"
+#include "bedrock/server/commands/command_context.h"
+#include "bedrock/server/commands/command_output.h"
+#include "bedrock/server/commands/command_registry.h"
 
 struct MCRESULT {
     bool is_success;

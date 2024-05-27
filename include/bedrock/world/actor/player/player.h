@@ -18,8 +18,8 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/command/command_permission_level.h"
 #include "bedrock/network/protocol/packet_sender.h"
+#include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/mob/mob.h"
 #include "bedrock/world/level/event/event_coordinator.h"
 #include "bedrock/world/level/game_type.h"

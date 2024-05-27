@@ -18,14 +18,14 @@
 
 #include <json/json.h>
 
-#include "bedrock/command/command_origin_data.h"
-#include "bedrock/command/command_origin_identity.h"
-#include "bedrock/command/command_origin_type.h"
-#include "bedrock/command/command_permission_level.h"
 #include "bedrock/mce.h"
 #include "bedrock/memory.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/protocol/sub_client_id.h"
+#include "bedrock/server/commands/command_origin_data.h"
+#include "bedrock/server/commands/command_origin_identity.h"
+#include "bedrock/server/commands/command_origin_type.h"
+#include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/player/abilities/abilities_index.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/math/vec2.h"

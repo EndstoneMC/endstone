@@ -14,7 +14,7 @@
 
 #include "endstone/detail/actor/actor.h"
 
-#include "bedrock/command/command_utils.h"
+#include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/components/offsets_component.h"

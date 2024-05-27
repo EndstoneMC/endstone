@@ -18,8 +18,8 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/command/command_output.h"
-#include "bedrock/command/command_registry.h"
+#include "bedrock/server/commands/command_output.h"
+#include "bedrock/server/commands/command_registry.h"
 
 class Command {
 public:

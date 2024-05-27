@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command_output.h"
+#include "bedrock/server/commands/command_output.h"
 
 #include "endstone/detail/hook.h"
 

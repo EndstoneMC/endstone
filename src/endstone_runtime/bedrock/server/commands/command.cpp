@@ -12,20 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/command/say_command.h"
+#include "bedrock/server/commands/command.h"
 
-#include <entt/entt.hpp>
-
-#include "bedrock/i18n.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/server.h"
 
-using endstone::detail::EndstoneServer;
-
-void SayCommand::_sendMessage(const std::string &message, const std::string &sender_name,
-                              const CommandOriginIdentity &origin_identity, Level &level)
+std::string Command::getCommandName() const
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&SayCommand::_sendMessage, message, sender_name, origin_identity, level);
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.getLogger().info(getI18n().get("chat.type.announcement", {sender_name, message}, nullptr));
+    std::string result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Command::getCommandName, result, this);
+    return result;
 }

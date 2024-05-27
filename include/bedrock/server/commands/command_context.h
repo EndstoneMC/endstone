@@ -18,7 +18,7 @@
 #include <string>
 #include <utility>
 
-#include "bedrock/command/command_origin.h"
+#include "bedrock/server/commands/command_origin.h"
 
 class CommandContext {
 public:

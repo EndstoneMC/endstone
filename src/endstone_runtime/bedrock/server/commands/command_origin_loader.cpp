@@ -12,16 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-#include <cstdint>
-#include <string>
+#include "bedrock/server/commands/command_origin_loader.h"
 
-#include "bedrock/command/command_origin_type.h"
-#include "bedrock/mce.h"
+#include "endstone/detail/hook.h"
 
-struct CommandOriginData {
-    CommandOriginType type;   // +0
-    mce::UUID uuid;           // +8
-    std::string request_id;   // +24
-    std::uint64_t player_id;  // +56 (+48)
-};
+class std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level) {
+    std::unique_ptr<CommandOrigin> result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandOriginLoader::load, result, tag, level);
+    return result;
+}

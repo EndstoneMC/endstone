@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command_registry.h"
+#include "bedrock/server/commands/command_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 
 /**

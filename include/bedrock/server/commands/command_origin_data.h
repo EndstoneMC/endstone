@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command_utils.h"
+#pragma once
+#include <cstdint>
+#include <string>
 
-#include "endstone/detail/hook.h"
+#include "bedrock/mce.h"
+#include "bedrock/server/commands/command_origin_type.h"
 
-std::string CommandUtils::getActorName(const Actor &actor)
-{
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandUtils::getActorName, result, actor);
-    return result;
-}
+struct CommandOriginData {
+    CommandOriginType type;   // +0
+    mce::UUID uuid;           // +8
+    std::string request_id;   // +24
+    std::uint64_t player_id;  // +56 (+48)
+};

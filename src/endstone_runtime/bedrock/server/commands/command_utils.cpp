@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command.h"
+#include "bedrock/server/commands/command_utils.h"
 
 #include "endstone/detail/hook.h"
 
-std::string Command::getCommandName() const
+std::string CommandUtils::getActorName(const Actor &actor)
 {
     std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Command::getCommandName, result, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandUtils::getActorName, result, actor);
     return result;
 }

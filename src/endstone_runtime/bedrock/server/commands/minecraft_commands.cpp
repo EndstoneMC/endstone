@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/minecraft_commands.h"
+#include "bedrock/server/commands/minecraft_commands.h"
 
 #include <entt/entt.hpp>
 

@@ -19,8 +19,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/command/command_registry.h"
 #include "bedrock/i18n.h"
+#include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/bedrock_command.h"
 #include "endstone/detail/command/command_adapter.h"

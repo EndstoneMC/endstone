@@ -12,12 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/command/command_origin_loader.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
+#include <memory>
 
-class std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level) {
-    std::unique_ptr<CommandOrigin> result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandOriginLoader::load, result, tag, level);
-    return result;
-}
+#include "bedrock/bedrock.h"
+#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/server/commands/command_origin.h"
+#include "bedrock/server/level/server_level.h"
+
+class CommandOriginLoader {
+public:
+    BEDROCK_API static class std::unique_ptr<CommandOrigin> load(CompoundTag const &, ServerLevel &);
+};
