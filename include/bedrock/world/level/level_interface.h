@@ -22,23 +22,24 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
-#include "bedrock/core.h"
+#include "bedrock/core/automatic_id.h"
+#include "bedrock/core/file.h"
+#include "bedrock/core/memory.h"
+#include "bedrock/core/utility/uuid.h"
+#include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/entity/strict_entity_context.h"
 #include "bedrock/forward.h"
-#include "bedrock/mce.h"
-#include "bedrock/memory.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/player_list_entry.h"
-#include "bedrock/world/actor/components/user_entity_identifier_component.h"
-#include "bedrock/world/actor/mob/mob.h"
+#include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
-#include "bedrock/world/actor/registry/strict_entity_context.h"
-#include "bedrock/world/level/event/event_coordinator.h"
+#include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/level/level_listener.h"
+#include "bedrock/world/level/level_settings.h"
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:

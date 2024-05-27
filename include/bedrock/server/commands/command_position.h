@@ -14,8 +14,8 @@
 
 #pragma once
 
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/math/vec3.h"
 
 class CommandPosition {
 public:

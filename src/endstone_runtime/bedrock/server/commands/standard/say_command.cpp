@@ -16,7 +16,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/i18n.h"
+#include "bedrock/locale/i18n.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 

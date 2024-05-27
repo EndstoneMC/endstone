@@ -19,7 +19,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/i18n.h"
+#include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/bedrock_command.h"

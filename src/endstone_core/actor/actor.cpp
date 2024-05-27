@@ -14,11 +14,11 @@
 
 #include "endstone/detail/actor/actor.h"
 
+#include "bedrock/entity/components/offsets_component.h"
+#include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_collision.h"
-#include "bedrock/world/actor/components/offsets_component.h"
-#include "bedrock/world/actor/components/post_tick_position_delta_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/level/level.h"
 

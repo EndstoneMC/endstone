@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/world/actor/components/flag_component.h"
-#include "bedrock/world/actor/registry/entity_context.h"
+#include "bedrock/entity/components/flag_component.h"
+#include "bedrock/entity/entity_context.h"
 
 namespace ActorEnvironment {
 inline bool getIsInWater(EntityContext const &ctx)

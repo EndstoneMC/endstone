@@ -16,8 +16,8 @@
 
 #include <memory>
 
-#include "bedrock/memory.h"
-#include "bedrock/world/actor/registry/entity_context.h"
+#include "bedrock/core/memory.h"
+#include "bedrock/entity/entity_context.h"
 
 class SynchedActorDataEntityWrapper {
 public:

@@ -22,11 +22,17 @@
 #include <glm/glm.hpp>
 #include <gsl/gsl>
 
-#include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
-#include "bedrock/hashed_string.h"
-#include "bedrock/mce.h"
-#include "bedrock/memory.h"
+#include "bedrock/core/automatic_id.h"
+#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/math/color.h"
+#include "bedrock/core/math/vec2.h"
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/core/memory.h"
+#include "bedrock/core/utility/uuid.h"
+#include "bedrock/entity/components/built_in_actor_components.h"
+#include "bedrock/entity/entity_context.h"
+#include "bedrock/entity/entity_registry.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/actor_category.h"
@@ -34,15 +40,10 @@
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
-#include "bedrock/world/actor/components/built_in_actor_components.h"
-#include "bedrock/world/actor/registry/entity_context.h"
-#include "bedrock/world/actor/registry/entity_registry.h"
 #include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/dimension/dimension.h"
-#include "bedrock/world/material/material_type.h"
-#include "bedrock/world/math/vec2.h"
-#include "bedrock/world/math/vec3.h"
+#include "bedrock/world/level/material/material_type.h"
 #include "endstone/detail/actor/actor.h"
 
 class Player;

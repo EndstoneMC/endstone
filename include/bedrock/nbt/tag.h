@@ -14,10 +14,9 @@
 
 #pragma once
 
-#include "bedrock/io/data_input.h"
-#include "bedrock/io/data_output.h"
-#include "bedrock/io/print_stream.h"
-#include "bedrock/result.h"
+#include "bedrock/core/result.h"
+#include "bedrock/core/utility/data_io.h"
+#include "bedrock/core/utility/print_stream.h"
 
 class Tag {
 public:

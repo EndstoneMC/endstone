@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-#include "bedrock/mce.h"
+#include "bedrock/core/utility/uuid.h"
 #include "endstone/util/uuid.h"
 
 TEST(UUIDTest, ConvertToAndFromEndstone)

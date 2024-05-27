@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/automatic_id.h"
 #include "bedrock/bedrock.h"
+#include "bedrock/core/automatic_id.h"
 #include "bedrock/world/level/dimension/dimension.h"
 
 class VanillaDimensions {

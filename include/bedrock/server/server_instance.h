@@ -15,10 +15,10 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/common/app_platform_listener.h"
-#include "bedrock/common/game_callbacks.h"
+#include "bedrock/core/app_platform_listener.h"
+#include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
-#include "bedrock/memory.h"
+#include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/minecraft.h"
 
 class ServerInstance : public Bedrock::EnableNonOwnerReferences,

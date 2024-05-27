@@ -15,7 +15,6 @@
 #pragma once
 
 // Classes
-class Abilities;
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorChunkTransferEntry;
@@ -45,7 +44,6 @@ class BlockClimberDefinition;
 class BlockComponentFactory;
 class BlockDefinitionGroup;
 class BlockLegacy;
-class BlockPos;
 class BlockPalette;
 class BlockReducer;
 class BlockSource;
@@ -101,11 +99,9 @@ class ItemInstance;
 class ItemRegistryRef;
 class ItemUseMethod;
 class JigsawStructureRegistry;
-class LayeredAbilities;
 class LevelChunk;
 class LevelData;
 class LevelEventListener;
-class LevelSettings;
 class LevelSoundManager;
 class LevelStorage;
 class Localization;

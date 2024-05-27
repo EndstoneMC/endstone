@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/automatic_id.h"
+#include "bedrock/core/automatic_id.h"
 
 class Dimension;
 

@@ -18,13 +18,14 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/automatic_id.h"
+#include "bedrock/core/automatic_id.h"
+#include "bedrock/core/memory.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
-#include "bedrock/memory.h"
 #include "bedrock/world/level/dimension/dimension_height_range.h"
 #include "bedrock/world/level/dimension/dimension_interface.h"
 #include "bedrock/world/level/level_listener.h"
-#include "bedrock/world/level/storage/saved_data.h"
+#include "bedrock/world/level/saveddata/saved_data.h"
 
 class Level;
 

@@ -24,12 +24,12 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/server/commands/command_version.h"
-#include "bedrock/type_id.h"
 
 enum SemanticConstraint : std::uint8_t;
 

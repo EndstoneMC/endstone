@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/mce.h"
+#include "bedrock/core/utility/uuid.h"
 
 class ContentIdentity {
 public:

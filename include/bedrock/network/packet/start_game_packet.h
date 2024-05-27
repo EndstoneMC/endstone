@@ -18,8 +18,10 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/math/vec2.h"
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/core/utility/uuid.h"
 #include "bedrock/forward.h"
-#include "bedrock/mce.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/server/packs/content_identity.h"
@@ -27,9 +29,7 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/player/synced_player_movement_settings.h"
 #include "bedrock/world/level/game_type.h"
-#include "bedrock/world/level/storage/level_settings.h"
-#include "bedrock/world/math/vec2.h"
-#include "bedrock/world/math/vec3.h"
+#include "bedrock/world/level/level_settings.h"
 
 class NetworkPermissions {
 public:

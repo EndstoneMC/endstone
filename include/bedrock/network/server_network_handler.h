@@ -15,14 +15,14 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/memory.h"
+#include "bedrock/core/memory.h"
+#include "bedrock/core/threading.h"
+#include "bedrock/core/utility/observer.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/server/server_player.h"
-#include "bedrock/social.h"
-#include "bedrock/threading.h"
 #include "bedrock/world/actor/player/player.h"
-#include "bedrock/world/level/event/server_event.h"
+#include "bedrock/world/events/server_event.h"
 #include "bedrock/world/level/level_listener.h"
 
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,

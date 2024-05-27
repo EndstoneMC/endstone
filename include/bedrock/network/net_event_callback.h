@@ -14,6 +14,6 @@
 
 #pragma once
 
-#include "bedrock/memory.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 
 class NetEventCallback : public Bedrock::EnableNonOwnerReferences {};

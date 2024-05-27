@@ -16,11 +16,11 @@
 
 #include <chrono>
 
-#include "bedrock/common/game_callbacks.h"
-#include "bedrock/core.h"
+#include "bedrock/core/file.h"
+#include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
-#include "bedrock/memory.h"
 #include "bedrock/server/commands/minecraft_commands.h"
+#include "game_callbacks.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:

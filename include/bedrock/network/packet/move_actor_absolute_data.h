@@ -17,8 +17,8 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
-#include "bedrock/world/math/vec3.h"
 
 class MoveActorAbsoluteData {
 public:

@@ -16,10 +16,10 @@
 
 #include <entt/entt.hpp>
 
+#include "bedrock/entity/components/abilities_component.h"
+#include "bedrock/entity/components/actor_game_type_component.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/world/actor/actor_flags.h"
-#include "bedrock/world/actor/components/abilities_component.h"
-#include "bedrock/world/actor/components/actor_game_type_component.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
