@@ -25,7 +25,7 @@
 
 using endstone::detail::EndstoneServer;
 
-MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
+MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
     auto &server = entt::locator<EndstoneServer>::value();
 
@@ -61,9 +61,9 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool flag) const
 
     MCRESULT result;
 #ifdef _WIN32
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, flag);
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftCommands::executeCommand, result, this, ctx, suppress_output);
 #else
-    result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, flag);
+    result = ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
 #endif
     return result;
 }

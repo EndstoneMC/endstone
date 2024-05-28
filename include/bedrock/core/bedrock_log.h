@@ -78,7 +78,7 @@ namespace BedrockLog {
 enum class LogCategory;
 enum class LogRule;
 
-BEDROCK_API void log_va(BedrockLog::LogCategory category, std::bitset<3> flags, BedrockLog::LogRule rule,
-                        LogAreaID area, Bedrock::LogLevel level, char const *function, int line, char const *format,
+BEDROCK_API void log_va(BedrockLog::LogCategory category, std::bitset<3> channel_mask, BedrockLog::LogRule rule,
+                        LogAreaID area, std::uint32_t priority, char const *function, int line, char const *format,
                         va_list args);
 }  // namespace BedrockLog

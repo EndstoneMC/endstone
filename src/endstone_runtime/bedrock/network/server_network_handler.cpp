@@ -32,7 +32,7 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                 message, skip_message);
 }
 
-bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag)
+bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool is_xbox_live)
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
@@ -44,7 +44,7 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool flag
     if (e.isCancelled()) {
         endstone_player.kick(e.getKickMessage());
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, flag);
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, is_xbox_live);
 }
 
 void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)

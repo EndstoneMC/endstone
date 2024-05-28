@@ -23,14 +23,14 @@
 #include "endstone/detail/logger_factory.h"
 #include "endstone/logger.h"
 
-void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*flags*/, BedrockLog::LogRule /*rule*/,
-                        LogAreaID area, Bedrock::LogLevel level, const char * /*function*/, int /*line*/,
-                        const char *format, va_list args)
+void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*channel_mask*/,
+                        BedrockLog::LogRule /*rule*/, LogAreaID area, std::uint32_t priority, const char * /*function*/,
+                        int /*line*/, const char *format, va_list args)
 {
     auto name = magic_enum::enum_name(area);
     auto &logger = endstone::detail::LoggerFactory::getLogger(std::string(name));
     endstone::Logger::Level log_level;
-    switch (static_cast<std::uint8_t>(level)) {
+    switch (priority) {
     case 1:
         log_level = endstone::Logger::Level::Debug;
         break;

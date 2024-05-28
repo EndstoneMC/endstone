@@ -40,6 +40,7 @@
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
+#include "bedrock/world/level/saveddata/maps/map_data_manager.h"
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:
@@ -432,7 +433,7 @@ public:
 
 private:
     virtual void *getPlayerDeathManager() = 0;
-    virtual void *getMapDataManager() = 0;
+    virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
