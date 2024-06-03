@@ -30,7 +30,7 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
         .def_property_readonly("is_on_ground", &Actor::isOnGround,
                                "Returns true if the actor is supported by a block, i.e. on ground.")
         .def_property_readonly("is_in_water", &Actor::isInWater, "Returns true if the actor is in water.")
-        .def_property_readonly("is_in_lava", &Actor::isInLava, "Returns true if the actor is in java.")
+        .def_property_readonly("is_in_lava", &Actor::isInLava, "Returns true if the actor is in lava.")
         .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.",
                                py::return_value_policy::reference);
 }

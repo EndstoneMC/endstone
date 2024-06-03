@@ -142,7 +142,7 @@ bool EndstoneActor::isInWater() const
 
 bool EndstoneActor::isInLava() const
 {
-    return actor_.isInWater();
+    return actor_.isInLava();
 }
 
 Level &EndstoneActor::getLevel() const
