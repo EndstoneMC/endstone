@@ -106,6 +106,7 @@ class LevelSoundManager;
 class LevelStorage;
 class Localization;
 class LootTables;
+class MapDataManager;
 class MapItemSavedData;
 class MaterialTypeHelper;
 class MobEffectInstance;

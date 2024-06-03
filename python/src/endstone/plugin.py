@@ -2,12 +2,10 @@ import inspect
 import os
 import shutil
 import typing
-import importlib_resources
+from importlib_resources import files, as_file
 from pathlib import Path
 import tomlkit
 from endstone._internal.endstone_python import (
-    Command,
-    CommandSender,
     PluginDescription,
     PluginLoader,
     PluginLoadOrder,
@@ -15,7 +13,7 @@ from endstone._internal.endstone_python import (
 )
 from endstone._internal.endstone_python import Plugin as _Plugin
 from endstone._internal.endstone_python import PluginCommand as _PluginCommand
-from endstone.command import CommandExecutor
+from endstone.command import Command, CommandExecutor, CommandSender
 from endstone.event import Event
 
 __all__ = [
@@ -32,7 +30,7 @@ class PluginCommand(Command):
     def __init__(self, impl: _PluginCommand) -> None:
         Command.__init__(self, impl.name)
         self._impl = impl
-        self._executor: CommandExecutor | None = None
+        self._executor: typing.Optional[CommandExecutor] = None
 
     @property
     def executor(self) -> CommandExecutor:
@@ -139,7 +137,7 @@ class Plugin(_Plugin):
 
     def __init__(self):
         _Plugin.__init__(self)
-        self._description: PluginDescription | None = None
+        self._description: typing.Optional[PluginDescription] = None
         self._plugin_commands: dict[_PluginCommand, PluginCommand] = {}
         self._config = None
 
@@ -222,8 +220,8 @@ class Plugin(_Plugin):
         out_path = Path(self.data_folder) / path
         if not out_path.exists() or replace:
             out_path.parent.mkdir(exist_ok=True)
-            resource = importlib_resources.files(self.__class__.__module__).joinpath(path)
-            with importlib_resources.as_file(resource) as f:
+            resource = files(self.__class__.__module__).joinpath(path)
+            with as_file(resource) as f:
                 shutil.copy(f, out_path)
         else:
             self.logger.warning(f"Could not save {out_path.name} to {out_path}: file already exists.")

@@ -40,7 +40,6 @@
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
-#include "bedrock/world/level/saveddata/maps/map_data_manager.h"
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:

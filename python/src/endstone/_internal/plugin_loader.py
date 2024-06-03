@@ -3,7 +3,7 @@ import os.path
 import site
 import subprocess
 import sys
-from importlib.metadata import entry_points, metadata
+from importlib_metadata import entry_points, metadata
 from typing import List
 from endstone import Server
 from endstone.command import Command

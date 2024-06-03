@@ -25,6 +25,7 @@ classifiers = [
 ]
 dependencies = [
     "click",
+    "importlib_metadata",
     "importlib_resources",
     "packaging",
     "requests",
