@@ -251,6 +251,7 @@ void EndstonePlayer::updateCommands() const
             continue;
         }
         data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
+        data.permission_level = CommandPermissionLevel::Internal;
     }
 
     player_.sendNetworkPacket(packet);
