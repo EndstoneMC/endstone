@@ -104,6 +104,7 @@ std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols =
     {"int", CommandRegistry::HardNonTerminal::Int},
     {"float", CommandRegistry::HardNonTerminal::Val},
     {"actor", CommandRegistry::HardNonTerminal::Selection},
+    {"entity", CommandRegistry::HardNonTerminal::Selection},
     {"player", CommandRegistry::HardNonTerminal::Selection},
     {"target", CommandRegistry::HardNonTerminal::Selection},
     {"string", CommandRegistry::HardNonTerminal::Id},
