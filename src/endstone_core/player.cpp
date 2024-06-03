@@ -329,4 +329,9 @@ void EndstonePlayer::disconnect()
     perm_.clearPermissions();
 }
 
+::Player &EndstonePlayer::getHandle() const
+{
+    return player_;
+}
+
 }  // namespace endstone::detail

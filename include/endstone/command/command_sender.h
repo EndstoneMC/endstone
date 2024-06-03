@@ -35,7 +35,7 @@ public:
 
     // Permissible
     /**
-     * Cast a Permissible to CommandSender
+     * @brief Casts a Permissible as CommandSender
      *
      * @return CommandSender, nullptr if not a CommandSender
      */
@@ -45,7 +45,17 @@ public:
     }
 
     /**
-     * Cast a CommandSender to Player
+     * @brief Gets a CommandSender as Console
+     *
+     * @return CommandSender, nullptr if not a Console
+     */
+    [[nodiscard]] virtual CommandSender *asConsole() const
+    {
+        return nullptr;
+    }
+
+    /**
+     * @brief Gets a CommandSender as Player
      *
      * @return Player, nullptr if not a Player
      */
@@ -55,7 +65,7 @@ public:
     }
 
     /**
-     * Sends this sender a message
+     * @brief Sends this sender a message
      *
      * @param message Message to be displayed
      */
@@ -68,7 +78,7 @@ public:
     }
 
     /**
-     * Sends this sender a error message
+     * @brief Sends this sender a error message
      *
      * @param message Error message to be displayed
      */
@@ -81,14 +91,14 @@ public:
     }
 
     /**
-     * Returns the server instance that this command is running on
+     * @brief Returns the server instance that this command is running on
      *
      * @return Server instance
      */
     [[nodiscard]] virtual Server &getServer() const = 0;
 
     /**
-     * Gets the name of this command sender
+     * @brief Gets the name of this command sender
      *
      * @return Name of the sender
      */

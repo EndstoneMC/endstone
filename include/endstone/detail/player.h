@@ -72,6 +72,7 @@ public:
 
     void init(::ServerNetworkHandler &network_handler);
     void disconnect();
+    [[nodiscard]] ::Player &getHandle() const;
 
 private:
     ::Player &player_;

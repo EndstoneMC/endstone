@@ -18,6 +18,11 @@
 
 namespace endstone::detail {
 
+CommandSender *ConsoleCommandSender::asConsole() const
+{
+    return const_cast<ConsoleCommandSender *>(this);
+}
+
 void ConsoleCommandSender::sendMessage(const std::string &message) const
 {
     getServer().getLogger().info(message);
