@@ -24,14 +24,12 @@
 #include "endstone/detail/level/dimension.h"
 #include "endstone/level/dimension.h"
 
-using BedrockDimension = ::Dimension;
-
 namespace endstone::detail {
 
-EndstoneLevel::EndstoneLevel(BedrockLevel &level) : server_(entt::locator<EndstoneServer>::value()), level_(level)
+EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneServer>::value()), level_(level)
 {
-    const static AutomaticID<BedrockDimension, int> dimension_ids[] = {
-        VanillaDimensions::Overworld, VanillaDimensions::Nether, VanillaDimensions::TheEnd};
+    const static AutomaticID<::Dimension, int> dimension_ids[] = {VanillaDimensions::Overworld,
+                                                                  VanillaDimensions::Nether, VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
         // Load all dimensions when the level is loaded
         auto dimension = level.getOrCreateDimension(dimension_id);
@@ -109,7 +107,7 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
     dimensions_[name] = std::move(dimension);
 }
 
-BedrockLevel &EndstoneLevel::getBedrockLevel() const
+::Level &EndstoneLevel::getHandle() const
 {
     return level_;
 }

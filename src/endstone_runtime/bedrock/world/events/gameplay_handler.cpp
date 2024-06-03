@@ -35,7 +35,7 @@ GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent
     auto levels = server.getLevels();
     auto it = std::find_if(begin(levels), end(levels), [this](auto level) {
         auto *endstone_level = static_cast<EndstoneLevel *>(level);
-        return &(endstone_level->getBedrockLevel().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
+        return &(endstone_level->getHandle().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
     });
     if (it == levels.end()) {
         throw std::runtime_error("Unable to find level associated with the provided LevelGameplayHandler");
