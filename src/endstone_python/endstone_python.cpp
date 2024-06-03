@@ -181,6 +181,8 @@ void init_server(py::class_<Server> &server)
              "Gets a PluginCommand with the given name or alias.")
         .def_property_readonly("command_sender", &Server::getCommandSender, py::return_value_policy::reference,
                                "Gets a CommandSender for this server.")
+        .def("dispatch_command", &Server::dispatchCommand, py::arg("sender"), py::arg("command"),
+             "Dispatches a command on this server, and executes it if found.")
         .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
                                "Gets the scheduler for managing scheduled events.")
         .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,

@@ -8,7 +8,7 @@ class Actor(CommandSender):
     @property
     def is_in_lava(self) -> bool:
         """
-        Returns true if the actor is in java.
+        Returns true if the actor is in lava.
         """
     @property
     def is_in_water(self) -> bool:
@@ -1208,6 +1208,10 @@ class Server:
     def broadcast_message(self, message: str) -> None:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
+        """
+    def dispatch_command(self, sender: CommandSender, command: str) -> bool:
+        """
+        Dispatches a command on this server, and executes it if found.
         """
     def get_level(self, name: str) -> Level:
         """

@@ -94,10 +94,10 @@ CommandSender &EndstoneServer::getCommandSender() const
     return *command_sender_;
 }
 
-bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const
+bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command) const
 {
     auto origin = CommandOrigin::fromEndstone(sender);
-    CommandContext ctx{command_line, std::move(origin), CommandVersion::CurrentVersion};
+    CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
     auto result = getMinecraftCommands().executeCommand(ctx, true);
     return result.success;
 }
