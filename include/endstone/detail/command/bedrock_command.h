@@ -21,7 +21,8 @@ namespace endstone::detail {
  */
 class BedrockCommand : public Command {
 public:
-    using Command::Command;
+    explicit BedrockCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                            std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {});
     bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
 }  // namespace endstone::detail
