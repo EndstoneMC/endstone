@@ -16,6 +16,7 @@
 
 #include <map>
 #include <string>
+#include <utility>
 #include <variant>
 
 #include "bedrock/bedrock.h"
@@ -76,6 +77,7 @@ public:
     inline float &putFloat(std::string name, float value);
     inline std::int32_t &putInt(std::string name, std::int32_t value);
     inline std::int64_t &putInt64(std::string name, std::int64_t value);
+    inline std::string &putString(std::string name, std::string value);
     inline CompoundTag &putCompound(std::string name, CompoundTag value);
 
 private:
@@ -127,6 +129,13 @@ std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
     auto &it = tags_[name];
     it = Int64Tag(value);
     return std::get<Int64Tag>(it).data_;
+}
+
+std::string &CompoundTag::putString(std::string name, std::string value)
+{
+    auto &it = tags_[name];
+    it = StringTag(std::move(value));
+    return std::get<StringTag>(it).data_;
 }
 
 CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
