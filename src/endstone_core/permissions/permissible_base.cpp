@@ -96,13 +96,23 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
 PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     auto *result = addAttachment(plugin);
-    result->setPermission(name, value);
-    recalculatePermissions();
+    if (result) {
+        result->setPermission(name, value);
+        recalculatePermissions();
+    }
+
     return result;
 }
 
 PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
 {
+    if (!plugin.isEnabled()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.getLogger().error("Could not add PermissionAttachment: Plugin {} is disabled",
+                                 plugin.getDescription().getFullName());
+        return nullptr;
+    }
+
     auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
     auto *result = it.get();
     recalculatePermissions();
