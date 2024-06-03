@@ -281,7 +281,7 @@ bool EndstonePlayer::performCommand(std::string command) const
     auto origin = CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player_.getLevel()));
     CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
     auto result = server_.getMinecraftCommands().executeCommand(ctx, true);
-    return result.is_success;
+    return result.success;
 }
 
 GameMode EndstonePlayer::getGameMode() const

@@ -31,6 +31,7 @@
 #include "bedrock/world/actor/player/abilities/abilities_index.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/command/command_sender.h"
 
 class Actor;
 class Level;
@@ -71,6 +72,8 @@ public:
     [[nodiscard]] virtual CompoundTag serialize() const = 0;                                     // 29
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
     virtual void setUUID(const mce::UUID &uuid) = 0;                                             // 31
+
+    [[nodiscard]] endstone::CommandSender *toEndstone() const;  // Endstone
 
 protected:
     mce::UUID uuid_;

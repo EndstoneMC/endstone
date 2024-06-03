@@ -20,12 +20,12 @@
 #include "bedrock/server/commands/command_registry.h"
 
 struct MCRESULT {
-    bool is_success;
-    std::uint8_t category;
-    std::uint16_t error_code;
+    bool success{false};
+    std::uint8_t category{0};
+    std::uint16_t code{0};
 };
-inline MCRESULT const MCRESULT_Success{true};                  // NOLINT
-inline MCRESULT const MCRESULT_CommandsDisabled{false, 0, 7};  // NOLINT
+inline MCRESULT const MCRESULT_Success{true};                 // NOLINT
+inline MCRESULT const MCRESULT_CommandNotFound{false, 0, 1};  // NOLINT
 
 class MinecraftCommands {
 public:

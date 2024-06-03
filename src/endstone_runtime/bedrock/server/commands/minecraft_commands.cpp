@@ -28,21 +28,18 @@ using endstone::detail::EndstoneServer;
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
     auto &server = entt::locator<EndstoneServer>::value();
+    auto *sender = ctx.getOrigin().toEndstone();
 
     switch (ctx.getOrigin().getOriginType()) {
     case CommandOriginType::Player: {
-        auto *entity = ctx.getOrigin().getEntity();
-        if (!entity->isPlayer()) {
-            throw std::runtime_error("Command was executed by an non-player entity");
-        }
-        endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
+        endstone::Player &player = *static_cast<endstone::Player *>(sender);
         server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommand());
 
         endstone::PlayerCommandEvent event(player, ctx.getCommand());
         server.getPluginManager().callEvent(event);
 
         if (event.isCancelled()) {
-            return MCRESULT_CommandsDisabled;
+            return MCRESULT_CommandNotFound;
         }
         break;
     }
@@ -51,12 +48,22 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         server.getPluginManager().callEvent(event);
 
         if (event.isCancelled()) {
-            return MCRESULT_CommandsDisabled;
+            return MCRESULT_CommandNotFound;
         }
         break;
     }
     default:
         break;
+    }
+
+    auto command_line = ctx.getCommand();
+    if (!command_line.empty() && command_line[0] == '/') {
+        command_line = command_line.substr(1);
+    }
+    auto command_name = command_line.substr(0, command_line.find_first_of(' '));
+    auto *command = server.getCommandMap().getCommand(std::string(command_name));
+    if (!command || !sender || !command->testPermissionSilently(*sender)) {
+        return MCRESULT_CommandNotFound;
     }
 
     MCRESULT result;

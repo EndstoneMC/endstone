@@ -72,29 +72,12 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
     }
 
     bool success;
-    switch (origin.getOriginType()) {
-    case CommandOriginType::DedicatedServer: {
-        success = command->execute(server.getCommandSender(), args_);
-        break;
+    if (auto *sender = origin.toEndstone(); sender) {
+        success = command->execute(*sender, args_);
     }
-    case CommandOriginType::Player: {
-        auto *entity = origin.getEntity();
-        if (!entity->isPlayer()) {
-            throw std::runtime_error("Command was executed by an non-player entity");
-        }
-        endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
-        success = command->execute(player, args_);
-        break;
-    }
-    case CommandOriginType::Entity:
-    case CommandOriginType::CommandBlock:
-    case CommandOriginType::MinecartCommandBlock:
-        // TODO(permission): add BlockCommandSender, Entity and CommandMinecart
-    default: {
-        auto sender = CommandSenderAdapter(origin, output);
-        success = command->execute(sender, args_);
-        break;
-    }
+    else {
+        auto dummy_sender = CommandSenderAdapter(origin, output);
+        success = command->execute(dummy_sender, args_);
     }
 
     if (success) {
