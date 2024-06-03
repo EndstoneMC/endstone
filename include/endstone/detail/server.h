@@ -44,10 +44,11 @@ public:
 
     [[nodiscard]] Logger &getLogger() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
-    [[nodiscard]] MinecraftCommands &getMinecraftCommands();
+    [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] CommandSender &getCommandSender() const override;
+    [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command_line) const override;
 
     void loadPlugins();
     void enablePlugins(PluginLoadOrder type);

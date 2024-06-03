@@ -71,7 +71,7 @@ EndstoneCommandMap &EndstoneServer::getCommandMap() const
     return *command_map_;
 }
 
-MinecraftCommands &EndstoneServer::getMinecraftCommands()
+MinecraftCommands &EndstoneServer::getMinecraftCommands() const
 {
     return server_instance_.getMinecraft().getCommands();
 }
@@ -92,6 +92,14 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
 CommandSender &EndstoneServer::getCommandSender() const
 {
     return *command_sender_;
+}
+
+bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const
+{
+    auto origin = CommandOrigin::fromEndstone(sender);
+    CommandContext ctx{command_line, std::move(origin), CommandVersion::CurrentVersion};
+    auto result = getMinecraftCommands().executeCommand(ctx, true);
+    return result.success;
 }
 
 void EndstoneServer::loadPlugins()

@@ -18,8 +18,6 @@
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/scheduler/scheduler.h"
 
-namespace endstone {
-
 class MockServer : public endstone::Server {
 public:
     MOCK_METHOD(std::string, getName, (), (const, override));
@@ -29,6 +27,7 @@ public:
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));
     MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string name), (const, override));
     MOCK_METHOD(endstone::CommandSender &, getCommandSender, (), (const, override));
+    MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
@@ -41,7 +40,7 @@ public:
 
 class MockPlugin : public endstone::Plugin {
 public:
-    MOCK_METHOD(const PluginDescription &, getDescription, (), (const, override));
+    MOCK_METHOD(const endstone::PluginDescription &, getDescription, (), (const, override));
     MockPlugin()
     {
         setEnabled(true);
@@ -139,7 +138,7 @@ TEST_F(SchedulerTest, CancelTasks)
 TEST_F(SchedulerTest, TaskIsRunning)
 {
     bool executed = false;
-    std::shared_ptr<Task> task;
+    std::shared_ptr<endstone::Task> task;
     task = scheduler_->runTask(*plugin_, [&]() {
         executed = true;
         EXPECT_TRUE(scheduler_->isRunning(task->getTaskId()));
@@ -171,7 +170,7 @@ TEST_F(SchedulerTest, GetPendingTasks)
     auto task3 = scheduler_->runTaskLater(*plugin_, []() {}, 5);
 
     auto tasks = scheduler_->getPendingTasks();
-    std::vector<TaskId> task_ids;
+    std::vector<endstone::TaskId> task_ids;
     task_ids.reserve(tasks.size());
     for (const auto &task : tasks) {
         task_ids.push_back(task->getTaskId());
@@ -182,5 +181,3 @@ TEST_F(SchedulerTest, GetPendingTasks)
     EXPECT_NE(std::find(task_ids.begin(), task_ids.end(), task2->getTaskId()), task_ids.end());
     EXPECT_NE(std::find(task_ids.begin(), task_ids.end(), task3->getTaskId()), task_ids.end());
 }
-
-}  // namespace endstone

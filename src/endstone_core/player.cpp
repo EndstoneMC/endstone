@@ -259,30 +259,7 @@ void EndstonePlayer::updateCommands() const
 
 bool EndstonePlayer::performCommand(std::string command) const
 {
-    CompoundTag tag;
-    {
-        auto origin_type = CommandOriginType::GameDirectorEntityServer;
-        auto entity_id = player_.getOrCreateUniqueID();
-        CompoundTag origin;
-        {
-            origin.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-            origin.putInt64("EntityId", entity_id.raw_id);
-        }
-        CompoundTag output_receiver;
-        {
-            output_receiver.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-            output_receiver.putInt64("EntityId", entity_id.raw_id);
-        }
-        tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Virtual));
-        tag.putCompound("Origin", std::move(origin));
-        tag.putCompound("OutputReceiver", std::move(output_receiver));
-        tag.putInt("Version", CommandVersion::CurrentVersion);
-    }
-
-    auto origin = CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player_.getLevel()));
-    CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
-    auto result = server_.getMinecraftCommands().executeCommand(ctx, true);
-    return result.success;
+    return server_.dispatchCommand(*Player::asPlayer(), command);
 }
 
 GameMode EndstonePlayer::getGameMode() const

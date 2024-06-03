@@ -93,6 +93,15 @@ public:
     [[nodiscard]] virtual CommandSender &getCommandSender() const = 0;
 
     /**
+     * @brief Dispatches a command on this server, and executes it if found.
+     *
+     * @param sender the apparent sender of the command
+     * @param command_line the command + arguments.
+     * @return true if execution is successful, false otherwise
+     */
+    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
+
+    /**
      * @brief Gets the scheduler for managing scheduled events.
      *
      * @return a scheduling service for this server
