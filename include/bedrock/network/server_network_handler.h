@@ -35,6 +35,7 @@ public:
                                       std::string const &, bool);
 
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
+    [[nodiscard]] int getMaxPlayers() const;                                 // Endstone
 
 private:
     BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool is_xbox_live);  // NOLINT(*-identifier-naming)
@@ -42,4 +43,10 @@ private:
 
     GameCallbacks *callbacks_;                // +80
     Bedrock::NonOwnerPointer<ILevel> level_;  // +88
+#ifdef _WIN32
+    std::size_t pad_[87];  // +104
+#else
+    std::size_t pad_[70];  // +104
+#endif
+    int max_players_;  // +800 (+664)
 };

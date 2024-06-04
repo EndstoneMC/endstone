@@ -66,3 +66,8 @@ const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const
 {
     return level_;
 }
+
+int ServerNetworkHandler::getMaxPlayers() const
+{
+    return max_players_;
+}
