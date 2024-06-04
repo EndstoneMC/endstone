@@ -68,6 +68,8 @@ public:
 
     [[nodiscard]] bool isPrimaryThread() const override;
 
+    [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
+
 private:
     friend class EndstonePlayer;
 

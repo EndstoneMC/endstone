@@ -222,8 +222,9 @@ void EndstonePlayer::sendTip(std::string message) const
 void EndstonePlayer::kick(std::string message) const
 {
     auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
-    network_handler_->disconnectClient(component->network_id, component->sub_client_id,
-                                       Connection::DisconnectFailReason::NoReason, message, message.empty());
+    server_.getServerNetworkHandler().disconnectClient(component->network_id, component->sub_client_id,
+                                                       Connection::DisconnectFailReason::NoReason, message,
+                                                       message.empty());
 }
 
 bool EndstonePlayer::isFlying() const
@@ -294,11 +295,6 @@ void EndstonePlayer::setGameMode(GameMode mode)
         player_.setPlayerGameType(GameType::Spectator);
         break;
     }
-}
-
-void EndstonePlayer::init(ServerNetworkHandler &network_handler)
-{
-    network_handler_ = &network_handler;  // TODO(fixme): move this to server.getNetworkHandler()
 }
 
 void EndstonePlayer::disconnect()

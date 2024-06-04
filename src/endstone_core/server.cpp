@@ -235,4 +235,9 @@ bool EndstoneServer::isPrimaryThread() const
     return Bedrock::Threading::getServerThread().isOnThread();
 }
 
+::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
+{
+    return *server_instance_.getMinecraft().getServerNetworkHandler();
+}
+
 }  // namespace endstone::detail

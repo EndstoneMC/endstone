@@ -70,13 +70,11 @@ public:
     [[nodiscard]] GameMode getGameMode() const override;
     void setGameMode(GameMode mode) override;
 
-    void init(::ServerNetworkHandler &network_handler);
     void disconnect();
     [[nodiscard]] ::Player &getHandle() const;
 
 private:
     ::Player &player_;
-    ::ServerNetworkHandler *network_handler_;
     UUID uuid_;
     SocketAddress address_;
     PermissibleBase perm_;

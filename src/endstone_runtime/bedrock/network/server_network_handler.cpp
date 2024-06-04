@@ -36,7 +36,6 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool is_x
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
-    endstone_player.init(*this);
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
