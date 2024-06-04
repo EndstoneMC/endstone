@@ -49,6 +49,9 @@ void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
+    py::options options;
+    options.disable_enum_members_docstring();
+
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
     auto event = py::class_<Event>(m, "Event");

@@ -190,17 +190,6 @@ class CommandSender(Permissible):
         """
 class Dimension:
     class Type:
-        """
-        Members:
-        
-          OVERWORLD
-        
-          NETHER
-        
-          THE_END
-        
-          CUSTOM
-        """
         CUSTOM: typing.ClassVar[Dimension.Type]  # value = <Type.CUSTOM: 999>
         NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
         OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
@@ -275,20 +264,6 @@ class Event:
 class EventPriority:
     """
     Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
-    
-    Members:
-    
-      LOWEST : Event call is of very low importance and should be run first, to allow other plugins to further customise the outcome
-    
-      LOW : Event call is of low importance
-    
-      NORMAL :  Event call is neither important nor unimportant, and may be run normally
-    
-      HIGH : Event call is of high importance
-    
-      HIGHEST : Event call is critical and must have the final say in what happens to the event
-    
-      MONITOR : Event is listened to purely for monitoring the outcome of an event. No modifications to the event should be made under this priority.
     """
     HIGH: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGH: 3>
     HIGHEST: typing.ClassVar[EventPriority]  # value = <EventPriority.HIGHEST: 4>
@@ -324,17 +299,6 @@ class EventPriority:
     def value(self) -> int:
         ...
 class GameMode:
-    """
-    Members:
-    
-      SURVIVAL
-    
-      CREATIVE
-    
-      ADVENTURE
-    
-      SPECTATOR
-    """
     ADVENTURE: typing.ClassVar[GameMode]  # value = <GameMode.ADVENTURE: 2>
     CREATIVE: typing.ClassVar[GameMode]  # value = <GameMode.CREATIVE: 1>
     SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 3>
@@ -415,21 +379,6 @@ class Location(Position):
         ...
 class Logger:
     class Level:
-        """
-        Members:
-        
-          TRACE
-        
-          DEBUG
-        
-          INFO
-        
-          WARNING
-        
-          ERROR
-        
-          CRITICAL
-        """
         CRITICAL: typing.ClassVar[Logger.Level]  # value = <Level.CRITICAL: 5>
         DEBUG: typing.ClassVar[Logger.Level]  # value = <Level.DEBUG: 1>
         ERROR: typing.ClassVar[Logger.Level]  # value = <Level.ERROR: 4>
@@ -680,21 +629,6 @@ class PermissionAttachmentInfo:
         Gets the value of this permission
         """
 class PermissionDefault:
-    """
-    Members:
-    
-      TRUE
-    
-      FALSE
-    
-      OP
-    
-      OPERATOR
-    
-      NOT_OP
-    
-      NOT_OPERATOR
-    """
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
@@ -997,13 +931,6 @@ class PluginEnableEvent(Event):
     def plugin(self) -> Plugin:
         ...
 class PluginLoadOrder:
-    """
-    Members:
-    
-      STARTUP
-    
-      POSTWORLD
-    """
     POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
     STARTUP: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.STARTUP: 0>
     __members__: typing.ClassVar[dict[str, PluginLoadOrder]]  # value = {'STARTUP': <PluginLoadOrder.STARTUP: 0>, 'POSTWORLD': <PluginLoadOrder.POSTWORLD: 1>}
@@ -1371,11 +1298,6 @@ class ServerListPingEvent(Event):
         """
 class ServerLoadEvent(Event):
     class LoadType:
-        """
-        Members:
-        
-          STARTUP
-        """
         STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
         __members__: typing.ClassVar[dict[str, ServerLoadEvent.LoadType]]  # value = {'STARTUP': <LoadType.STARTUP: 0>}
         def __eq__(self, other: typing.Any) -> bool:

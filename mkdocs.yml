@@ -54,7 +54,7 @@ plugins:
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             # member options
-            inherited_members: false
+            inherited_members: true
             filters: ["!^_"]
             # docstrings options
             show_if_no_docstring: true
