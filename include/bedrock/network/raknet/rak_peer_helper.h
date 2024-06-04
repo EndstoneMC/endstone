@@ -29,7 +29,11 @@ struct ConnectionDefinition {
 
 class RakPeerHelper {
 public:
-    enum class PeerPurpose;
+    enum class PeerPurpose {
+        Gameplay = 0,
+        LanDiscovery = 1,
+        Count = 2
+    };
 
     BEDROCK_API RakNet::StartupResult peerStartup(RakNet::RakPeerInterface *, ConnectionDefinition const &,
                                                   RakPeerHelper::PeerPurpose);

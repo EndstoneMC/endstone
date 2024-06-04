@@ -22,7 +22,7 @@ RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer,
                                                  RakPeerHelper::PeerPurpose purpose)
 {
     auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, def, purpose);
-    if (result == RakNet::StartupResult::RAKNET_STARTED && def.max_num_players > 0) {
+    if (result == RakNet::StartupResult::RAKNET_STARTED && purpose == RakPeerHelper::PeerPurpose::Gameplay) {
         if (entt::locator<RakNet::RakPeerInterface *>::has_value()) {
             throw std::runtime_error("Server RakPeer is already defined.");
         }
