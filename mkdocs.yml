@@ -46,16 +46,25 @@ plugins:
           import:
             - https://docs.python.org/3/objects.inv
           options:
-            annotations_path: brief
+            # general options
             show_bases: true
             show_source: false
+            # headings options
+            show_root_heading: true
             show_symbol_type_heading: true
             show_symbol_type_toc: true
-            show_root_heading: true
-            separate_signature: true
+            # member options
+            inherited_members: false
+            filters: ["!^_"]
+            # docstrings options
+            show_if_no_docstring: true
+            # signature/annotations options:
+            annotations_path: brief
             show_signature_annotations: true
             signature_crossrefs: true
-            inherited_members: false
+            separate_signature: true
+            modernize_annotations: true
+
   - mkdoxy:
       enabled: !ENV [ CI, false ]
       projects:

@@ -11,8 +11,7 @@ from endstone._internal.endstone_python import (
     PluginLoadOrder,
     PluginManager,
 )
-from endstone._internal.endstone_python import Plugin as _Plugin
-from endstone._internal.endstone_python import PluginCommand as _PluginCommand
+from endstone._internal import endstone_python
 from endstone.command import Command, CommandExecutor, CommandSender
 from endstone.event import Event
 
@@ -27,7 +26,7 @@ __all__ = [
 
 
 class PluginCommand(Command):
-    def __init__(self, impl: _PluginCommand) -> None:
+    def __init__(self, impl: endstone_python.PluginCommand) -> None:
         Command.__init__(self, impl.name)
         self._impl = impl
         self._executor: typing.Optional[CommandExecutor] = None
@@ -48,7 +47,7 @@ class PluginCommand(Command):
         self._impl.executor = executor
 
     @property
-    def plugin(self) -> _Plugin:
+    def plugin(self) -> endstone_python.Plugin:
         """
         The owner of this PluginCommand
         """
@@ -108,7 +107,7 @@ class PluginCommand(Command):
         self._impl.usages = usages
 
 
-class Plugin(_Plugin):
+class Plugin(endstone_python.Plugin):
     # Metadata
     name = None
     version = None
@@ -136,16 +135,16 @@ class Plugin(_Plugin):
     permissions = None
 
     def __init__(self):
-        _Plugin.__init__(self)
+        endstone_python.Plugin.__init__(self)
         self._description: typing.Optional[PluginDescription] = None
-        self._plugin_commands: dict[_PluginCommand, PluginCommand] = {}
+        self._plugin_commands: dict[endstone_python.PluginCommand, PluginCommand] = {}
         self._config = None
 
     def _get_description(self) -> PluginDescription:
         return self._description
 
     def get_command(self, name) -> typing.Optional[PluginCommand]:
-        command = _Plugin.get_command(self, name)
+        command = endstone_python.Plugin.get_command(self, name)
         if command is None:
             return None
 
