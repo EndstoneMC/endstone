@@ -27,6 +27,7 @@
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
+#include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -77,6 +78,11 @@ void EndstoneCommandMap::setMinecraftCommands()
         it->second.push_back(alias);
     }
 
+    auto *root = DefaultPermissions::registerPermission(
+        "minecraft", nullptr, "Gives the user the ability to use all vanilla utilities and commands");
+    auto *parent = DefaultPermissions::registerPermission(
+        root->getName() + ".command", root, "Gives the user the ability to use all vanilla minecraft commands");
+
     for (const auto &[command_name, signature] : registry.signatures) {
         auto description = getI18n().get(signature.description, {}, nullptr);
 
@@ -99,7 +105,16 @@ void EndstoneCommandMap::setMinecraftCommands()
         for (const auto &alias : aliases) {
             known_commands_.emplace(alias, command);
         }
+
+        DefaultPermissions::registerPermission(parent->getName() + "." + command_name, parent,
+                                               "Gives the user the ability to use the /" + command_name + " command",
+                                               signature.permission_level > CommandPermissionLevel::Any
+                                                   ? PermissionDefault::Operator
+                                                   : PermissionDefault::True);
     }
+
+    parent->recalculatePermissibles();
+    root->recalculatePermissibles();
 }
 
 namespace {
