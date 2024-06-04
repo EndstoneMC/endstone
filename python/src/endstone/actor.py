@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import Actor, HumanActor
+from endstone._internal.endstone_python import Actor
 
-__all__ = ["Actor", "HumanActor"]
+__all__ = ["Actor"]
