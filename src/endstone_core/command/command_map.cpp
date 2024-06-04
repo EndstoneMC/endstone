@@ -92,10 +92,13 @@ void EndstoneCommandMap::setMinecraftCommands()
             aliases.insert(aliases.end(), it->second.begin(), it->second.end());
         }
 
-        auto command = std::make_unique<BedrockCommand>(command_name, description, usages, aliases);
+        auto command = std::make_shared<BedrockCommand>(command_name, description, usages, aliases);
         command->registerTo(*this);
 
-        known_commands_.emplace(signature.name, std::move(command));
+        known_commands_.emplace(signature.name, command);
+        for (const auto &alias : aliases) {
+            known_commands_.emplace(alias, command);
+        }
     }
 }
 

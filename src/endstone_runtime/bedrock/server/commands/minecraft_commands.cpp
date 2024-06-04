@@ -29,22 +29,15 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
 {
     auto &server = entt::locator<EndstoneServer>::value();
 
-    // Remove the leading slash
     auto command_line = ctx.getCommand();
     if (!command_line.empty() && command_line[0] == '/') {
         command_line = command_line.substr(1);
     }
 
-    // Find command by name
     auto command_name = command_line.substr(0, command_line.find_first_of(' '));
     auto *command = server.getCommandMap().getCommand(std::string(command_name));
-    if (!command) {
-        return MCRESULT_CommandNotFound;
-    }
-
-    // Check sender permissions
     auto *sender = ctx.getOrigin().toEndstone();
-    if (sender) {
+    if (command && sender) {
         if (!command->testPermission(*sender)) {
             return MCRESULT_NotEnoughPermission;
         }
