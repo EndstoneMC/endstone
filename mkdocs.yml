@@ -43,12 +43,15 @@ plugins:
       handlers:
         python:
           paths: [ python/src ]
+          load_external_modules: true
           import:
             - https://docs.python.org/3/objects.inv
           options:
             # general options
+            find_stubs_package: true
             show_bases: true
             show_source: false
+            allow_inspection: false
             # headings options
             show_root_heading: true
             show_symbol_type_heading: true
@@ -56,6 +59,7 @@ plugins:
             # member options
             inherited_members: true
             filters: ["!^_"]
+            merge_init_into_class: true
             # docstrings options
             show_if_no_docstring: true
             # signature/annotations options:
@@ -64,6 +68,7 @@ plugins:
             signature_crossrefs: true
             separate_signature: true
             modernize_annotations: true
+            summary: true
 
   - mkdoxy:
       enabled: !ENV [ CI, false ]
