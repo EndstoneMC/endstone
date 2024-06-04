@@ -20,7 +20,8 @@
 #include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
 #include "bedrock/server/commands/minecraft_commands.h"
-#include "game_callbacks.h"
+#include "bedrock/world/game_callbacks.h"
+#include "bedrock/world/game_session.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:
@@ -44,4 +45,5 @@ private:
     double last_update_;                                                 // +168
     std::chrono::seconds max_player_idle_time_;                          // +176
     std::unique_ptr<MinecraftCommands> commands_;                        // +184
+    std::unique_ptr<GameSession> game_session_;                          // +192
 };
