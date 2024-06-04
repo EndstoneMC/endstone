@@ -24,8 +24,10 @@ struct MCRESULT {
     std::uint8_t category{0};
     std::uint16_t code{0};
 };
-inline MCRESULT const MCRESULT_Success{true};                 // NOLINT
-inline MCRESULT const MCRESULT_CommandNotFound{false, 0, 1};  // NOLINT
+inline MCRESULT const MCRESULT_Success{true};                     // NOLINT
+inline MCRESULT const MCRESULT_CommandNotFound{false, 0, 1};      // NOLINT
+inline MCRESULT const MCRESULT_NotEnoughPermission{false, 0, 2};  // NOLINT
+inline MCRESULT const MCRESULT_CommandsDisabled{false, 0, 7};     // NOLINT
 
 class MinecraftCommands {
 public:

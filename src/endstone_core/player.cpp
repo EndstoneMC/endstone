@@ -298,7 +298,7 @@ void EndstonePlayer::setGameMode(GameMode mode)
 
 void EndstonePlayer::init(ServerNetworkHandler &network_handler)
 {
-    network_handler_ = &network_handler;
+    network_handler_ = &network_handler;  // TODO(fixme): move this to server.getNetworkHandler()
 }
 
 void EndstonePlayer::disconnect()

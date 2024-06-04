@@ -23,6 +23,8 @@
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 
+using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 endstone::CommandSender *CommandOrigin::toEndstone() const
@@ -59,12 +61,11 @@ std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSend
             tag.putString("DimensionId", "overworld");
         }
 
-        auto *level = static_cast<endstone::detail::EndstoneLevel *>(server.getLevels()[0]);
-
+        auto *level = static_cast<EndstoneLevel *>(server.getLevels()[0]);
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (auto *player = static_cast<endstone::detail::EndstonePlayer *>(sender.asPlayer()); player) {
+    if (auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
         CompoundTag tag;
         {
             auto origin_type = CommandOriginType::GameDirectorEntityServer;
@@ -87,5 +88,6 @@ std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSend
 
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getHandle().getLevel()));
     }
+
     return nullptr;
 }

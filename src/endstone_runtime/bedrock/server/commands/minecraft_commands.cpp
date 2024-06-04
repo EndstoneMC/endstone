@@ -29,41 +29,45 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
 {
     auto &server = entt::locator<EndstoneServer>::value();
 
+    // Remove the leading slash
     auto command_line = ctx.getCommand();
     if (!command_line.empty() && command_line[0] == '/') {
         command_line = command_line.substr(1);
     }
+
+    // Find command by name
     auto command_name = command_line.substr(0, command_line.find_first_of(' '));
     auto *command = server.getCommandMap().getCommand(std::string(command_name));
-    auto *sender = ctx.getOrigin().toEndstone();
-    if (!command || !sender || !command->testPermission(*sender)) {
+    if (!command) {
         return MCRESULT_CommandNotFound;
     }
 
-    switch (ctx.getOrigin().getOriginType()) {
-    case CommandOriginType::Player: {
-        endstone::Player &player = *static_cast<endstone::Player *>(sender);
-        server.getLogger().info("{} issued server command: {}", player.getName(), ctx.getCommand());
-
-        endstone::PlayerCommandEvent event(player, ctx.getCommand());
-        server.getPluginManager().callEvent(event);
-
-        if (event.isCancelled()) {
-            return MCRESULT_CommandNotFound;
+    // Check sender permissions
+    auto *sender = ctx.getOrigin().toEndstone();
+    if (sender) {
+        if (!command->testPermission(*sender)) {
+            return MCRESULT_NotEnoughPermission;
         }
-        break;
-    }
-    case CommandOriginType::DedicatedServer: {
-        endstone::ServerCommandEvent event(server.getCommandSender(), ctx.getCommand());
-        server.getPluginManager().callEvent(event);
 
-        if (event.isCancelled()) {
-            return MCRESULT_CommandNotFound;
+        if (auto *player = sender->asPlayer(); player) {
+            server.getLogger().info("{} issued server command: {}", player->getName(), ctx.getCommand());
+
+            endstone::PlayerCommandEvent event(*player, ctx.getCommand());
+            server.getPluginManager().callEvent(event);
+
+            if (event.isCancelled()) {
+                return MCRESULT_CommandsDisabled;
+            }
         }
-        break;
-    }
-    default:
-        break;
+
+        if (auto *console = sender->asConsole(); console) {
+            endstone::ServerCommandEvent event(*console, ctx.getCommand());
+            server.getPluginManager().callEvent(event);
+
+            if (event.isCancelled()) {
+                return MCRESULT_CommandsDisabled;
+            }
+        }
     }
 
     MCRESULT result;
