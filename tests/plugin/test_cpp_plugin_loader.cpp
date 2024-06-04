@@ -33,14 +33,15 @@ public:
     MOCK_METHOD(std::string, getMinecraftVersion, (), (const, override));
     MOCK_METHOD(endstone::Logger &, getLogger, (), (const, override));
     MOCK_METHOD(endstone::PluginManager &, getPluginManager, (), (const, override));
-    MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string name), (const, override));
+    MOCK_METHOD(endstone::PluginCommand *, getPluginCommand, (std::string), (const, override));
     MOCK_METHOD(endstone::CommandSender &, getCommandSender, (), (const, override));
     MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
-    MOCK_METHOD(endstone::Level *, getLevel, (std::string name), (const, override));
+    MOCK_METHOD(endstone::Level *, getLevel, (std::string), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
-    MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID id), (const, override));
+    MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
+    MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
     MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));
     MOCK_METHOD(void, broadcastMessage, (const std::string &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));

@@ -139,6 +139,14 @@ public:
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
+     * @brief Gets the player with the exact given name, case insensitive.
+     *
+     * @param name Exact name of the player to retrieve
+     * @return a player object if one was found, null otherwise
+     */
+    [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
+
+    /**
      * @brief Broadcasts the specified message to every user with the given permission name.
      *
      * @param message message to broadcast

@@ -18,6 +18,8 @@
 #include <memory>
 namespace fs = std::filesystem;
 
+#include <boost/algorithm/string.hpp>
+
 #include "bedrock/common.h"
 #include "bedrock/core/threading.h"
 #include "bedrock/world/actor/player/player.h"
@@ -199,6 +201,16 @@ Player *EndstoneServer::getPlayer(endstone::UUID id) const
     auto it = players_.find(id);
     if (it != players_.end()) {
         return it->second;
+    }
+    return nullptr;
+}
+
+Player *EndstoneServer::getPlayer(std::string name) const
+{
+    for (const auto &[_, player] : players_) {
+        if (boost::iequals(player->getName(), name)) {
+            return player;
+        }
     }
     return nullptr;
 }
