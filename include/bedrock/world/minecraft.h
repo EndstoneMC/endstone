@@ -28,6 +28,14 @@ public:
     ~Minecraft() override = 0;
     MinecraftCommands &getCommands();
 
+    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const
+    {
+        if (game_session_) {
+            return game_session_->getServerNetworkHandler();
+        }
+        return nullptr;
+    }
+
 private:
     GameCallbacks *callbacks_;                                           // +24
     IMinecraftEventing *eventing_;                                       // +32

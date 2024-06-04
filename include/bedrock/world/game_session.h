@@ -14,7 +14,27 @@
 
 #pragma once
 
+#include "bedrock/entity/entity_context.h"
+#include "bedrock/network/net_event_callback.h"
+
+class ServerNetworkSystem;
+class ServerNetworkHandler;
+class LoopbackPacketSender;
+
 class GameSession {
 public:
+    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const
+    {
+        return server_network_handler_;
+    }
+
 private:
+    ServerNetworkSystem *network_system_;                                    // +0
+    int unknown1_;                                                           // +8
+    OwnerStorageEntity entity_;                                              // +16
+    char unknown2_[16];                                                      // +48
+    Bedrock::NonOwnerPointer<ServerNetworkHandler> server_network_handler_;  // +64
+    std::unique_ptr<NetEventCallback> net_event_callback_;                   // +80
+    LoopbackPacketSender *loopback_packet_sender_;                           // +88
+    SubClientId sub_client_id_;                                              // +96
 };

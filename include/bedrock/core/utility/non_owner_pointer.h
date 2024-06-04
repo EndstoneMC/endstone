@@ -23,7 +23,8 @@ class NonOwnerPointer {
 public:
     using ElementType = std::remove_extent_t<T>;
 
-    NonOwnerPointer(){};
+    constexpr NonOwnerPointer() noexcept = default;
+    constexpr NonOwnerPointer(nullptr_t) noexcept {}
     explicit NonOwnerPointer(ElementType &obj) : ptr(&obj){};
 
     T &operator*() const noexcept
@@ -46,7 +47,7 @@ public:
         return ptr.get();
     }
 
-    std::shared_ptr<ElementType> ptr;
+    std::shared_ptr<ElementType> ptr{nullptr};
 };
 
 class EnableNonOwnerReferences {
