@@ -36,7 +36,6 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1
         with:
           arch: x86_64
-          toolset: 14.3
 
       - name: Set up CMake and Ninja
         uses: lukka/get-cmake@latest
