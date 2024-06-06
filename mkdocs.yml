@@ -40,6 +40,7 @@ plugins:
       branch: main
   - mkdocstrings:
       enabled: !ENV [ CI, false ]
+      custom_templates: docs/templates
       handlers:
         python:
           paths: [ python/src ]
@@ -58,7 +59,7 @@ plugins:
             show_symbol_type_toc: true
             # member options
             inherited_members: true
-            filters: ["!^_"]
+            filters: [ "!^_" ]
             merge_init_into_class: true
             # docstrings options
             show_if_no_docstring: true
@@ -69,17 +70,21 @@ plugins:
             separate_signature: true
             modernize_annotations: true
             summary: true
+            # griffe extensions
+            extensions:
+              - griffe_endstone
 
   - mkdoxy:
       enabled: !ENV [ CI, false ]
       projects:
         "reference/cpp":
           src-dirs: include/endstone/
-          full-doc: True
+          full-doc: true
           doxy-cfg:
             FILE_PATTERNS: "*.h"
             EXCLUDE_PATTERNS: "*/detail/*"
             RECURSIVE: YES
+            STRIP_FROM_INC_PATH: "include/"
 
 theme:
   name: 'material'

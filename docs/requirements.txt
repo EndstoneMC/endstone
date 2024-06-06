@@ -1,6 +1,7 @@
 black
+griffe-endstone
 mkdocs-material
 mkdocs-git-committers-plugin-2
 mkdocs-git-revision-date-localized-plugin
-git+https://${GH_TOKEN}@github.com/pawamoy-insiders/mkdocstrings-python.git
-mkdoxy>=1.2.3
+mkdocstrings-python
+mkdoxy
