@@ -1145,14 +1145,14 @@ class Server:
         Gets the level with the given name.
         """
     @typing.overload
-    def get_player(self, unique_id: uuid.UUID) -> Player:
-        """
-        Gets the player with the given UUID.
-        """
-    @typing.overload
     def get_player(self, name: str) -> Player:
         """
         Gets the player with the exact given name, case insensitive.
+        """
+    @typing.overload
+    def get_player(self, unique_id: uuid.UUID) -> Player:
+        """
+        Gets the player with the given UUID.
         """
     def get_plugin_command(self, name: str) -> PluginCommand:
         """
