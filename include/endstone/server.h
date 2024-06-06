@@ -131,6 +131,13 @@ public:
     [[nodiscard]] virtual std::vector<Player *> getOnlinePlayers() const = 0;
 
     /**
+     * @brief Get the maximum amount of players which can login to this server.
+     *
+     * @return the amount of players this server allows
+     */
+    [[nodiscard]] virtual int getMaxPlayers() const = 0;
+
+    /**
      * @brief Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve

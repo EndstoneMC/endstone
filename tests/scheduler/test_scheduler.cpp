@@ -32,6 +32,7 @@ public:
     MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
     MOCK_METHOD(endstone::Level *, getLevel, (std::string), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
+    MOCK_METHOD(int, getMaxPlayers, (), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
     MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));

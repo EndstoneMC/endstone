@@ -1177,6 +1177,11 @@ class Server:
         Returns the primary logger associated with this server instance.
         """
     @property
+    def max_players(self) -> int:
+        """
+        Get the maximum amount of players which can login to this server.
+        """
+    @property
     def minecraft_version(self) -> str:
         """
         Gets the Minecraft version that this server is running.

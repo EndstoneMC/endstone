@@ -22,6 +22,7 @@ namespace fs = std::filesystem;
 
 #include "bedrock/common.h"
 #include "bedrock/core/threading.h"
+#include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
@@ -194,6 +195,11 @@ std::vector<Player *> EndstoneServer::getOnlinePlayers() const
         result.push_back(player);
     }
     return result;
+}
+
+int EndstoneServer::getMaxPlayers() const
+{
+    return getServerNetworkHandler().getMaxPlayers();
 }
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const
