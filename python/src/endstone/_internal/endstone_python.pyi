@@ -241,8 +241,11 @@ class Dimension:
         Gets the type of this dimension
         """
 class Event:
+    @property
     def asynchronous(self) -> bool:
-        ...
+        """
+        Whether the event fires asynchronously.
+        """
     @property
     def cancellable(self) -> bool:
         """

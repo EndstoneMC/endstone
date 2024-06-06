@@ -46,7 +46,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("cancelled", &Event::isCancelled, &Event::setCancelled,
                       "The cancellation state of this event. A cancelled event will not be executed in "
                       "the server, but will still pass to other plugins")
-        .def("asynchronous", &Event::isAsynchronous);
+        .def_property_readonly("asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
 
     event_priority
         .value("LOWEST", EventPriority::Lowest,
