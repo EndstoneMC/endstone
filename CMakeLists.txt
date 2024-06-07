@@ -45,6 +45,7 @@ find_package(Microsoft.GSL CONFIG REQUIRED)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
+find_package(tomlplusplus CONFIG REQUIRED)
 if (UNIX)
     find_package(libelf CONFIG REQUIRED)
 endif ()
@@ -82,7 +83,9 @@ install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT ends
 file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_core/*.cpp")
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
-target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT nonstd::expected-lite glm::glm JsonCpp::JsonCpp magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog)
+target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
+        nonstd::expected-lite glm::glm JsonCpp::JsonCpp magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog
+        tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
 endif ()

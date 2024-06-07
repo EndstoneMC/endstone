@@ -117,6 +117,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
         self.requires("spdlog/1.12.0")
+        self.requires("tomlplusplus/3.4.0")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
@@ -168,6 +169,7 @@ class EndstoneRecipe(ConanFile):
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",
+            "tomlplusplus::tomlplusplus"
         ]
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
