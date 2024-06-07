@@ -47,12 +47,15 @@ std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directo
     auto plugins = pimpl()->loadPlugins(directory);
     for (const auto &plugin : plugins) {
         if (plugin) {
+            auto plugin_name = plugin->getDescription().getName();
             auto logger_name = plugin->getDescription().getPrefix();
             if (logger_name.empty()) {
-                logger_name = plugin->getDescription().getName();
+                logger_name = plugin_name;
             }
-            initPlugin(*plugin, LoggerFactory::getLogger(logger_name),
-                       std::filesystem::path(directory) / plugin->getDescription().getName());
+
+            std::transform(plugin_name.begin(), plugin_name.end(), plugin_name.begin(),
+                           [](unsigned char c) { return std::tolower(c); });
+            initPlugin(*plugin, LoggerFactory::getLogger(logger_name), std::filesystem::path(directory) / plugin_name);
         }
     }
     return plugins;
