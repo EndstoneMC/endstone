@@ -20,6 +20,6 @@
 class ServerPlayer : public Player {
 public:
     ~ServerPlayer() override = 0;
-    BEDROCK_API void doInitialSpawn();
-    BEDROCK_API void disconnect();
+    ENDSTONE_HOOK void doInitialSpawn();
+    ENDSTONE_HOOK void disconnect();
 };

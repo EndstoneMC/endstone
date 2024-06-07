@@ -19,5 +19,5 @@
 #include "bedrock/bedrock.h"
 
 namespace Common {
-BEDROCK_API std::string getGameVersionString();
+ENDSTONE_HOOK std::string getGameVersionString();
 }

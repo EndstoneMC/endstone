@@ -38,7 +38,7 @@ public:
 
 class StartGamePacket : public Packet {
 public:
-    BEDROCK_API virtual void write(BinaryStream &) const;
+    ENDSTONE_HOOK virtual void write(BinaryStream &) const;
 
 private:
     mutable LevelSettings settings_;                                     // +48

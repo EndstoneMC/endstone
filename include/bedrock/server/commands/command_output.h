@@ -53,7 +53,7 @@ public:
     void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
 
 private:
-    BEDROCK_API void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
+    ENDSTONE_HOOK void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
                                 enum CommandOutputMessageType);
 
     CommandOutputType type_;                          // +0

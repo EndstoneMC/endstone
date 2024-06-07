@@ -20,6 +20,6 @@
 
 class SayCommand {
 private:
-    BEDROCK_API static void _sendMessage(std::string const &, std::string const &,  // NOLINT(*-identifier-naming)
+    ENDSTONE_HOOK static void _sendMessage(std::string const &, std::string const &,  // NOLINT(*-identifier-naming)
                                          struct CommandOriginIdentity const &, class Level &);
 };

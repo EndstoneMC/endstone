@@ -21,5 +21,5 @@
 
 class MinecraftPackets {
 public:
-    BEDROCK_API static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
+    ENDSTONE_HOOK static std::shared_ptr<Packet> createPacket(MinecraftPacketIds id);
 };

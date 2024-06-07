@@ -31,15 +31,15 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public Social::MultiplayerServiceObserver,
                              public Social::XboxLiveUserObserver {
 public:
-    BEDROCK_API void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
+    ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                       std::string const &, bool);
 
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
     [[nodiscard]] int getMaxPlayers() const;                                 // Endstone
 
 private:
-    BEDROCK_API bool _loadNewPlayer(ServerPlayer &, bool is_xbox_live);  // NOLINT(*-identifier-naming)
-    BEDROCK_API void _displayGameMessage(Player const &, ChatEvent &);   // NOLINT(*-identifier-naming)
+    ENDSTONE_HOOK bool _loadNewPlayer(ServerPlayer &, bool is_xbox_live);  // NOLINT(*-identifier-naming)
+    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);   // NOLINT(*-identifier-naming)
 
     GameCallbacks *callbacks_;                // +80
     Bedrock::NonOwnerPointer<ILevel> level_;  // +88

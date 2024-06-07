@@ -78,10 +78,10 @@ class ClientPlayerEventCoordinator : public PlayerEventCoordinator {};
 
 class ServerInstanceEventCoordinator {
 public:
-    BEDROCK_API void sendServerInitializeStart(ServerInstance &instance);
-    BEDROCK_API void sendServerThreadStarted(ServerInstance &instance);
-    BEDROCK_API void sendServerThreadStopped(ServerInstance &instance);
-    BEDROCK_API void sendServerLevelInitialized(ServerInstance &instance, Level &level);
+    ENDSTONE_HOOK void sendServerInitializeStart(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerThreadStarted(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerThreadStopped(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerLevelInitialized(ServerInstance &instance, Level &level);
 };
 
 class ServerNetworkEventCoordinator;

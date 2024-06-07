@@ -34,5 +34,5 @@ class LevelGameplayHandler {
 class ScriptLevelGameplayHandler : public LevelGameplayHandler {
 public:
     ~ScriptLevelGameplayHandler() override = 0;
-    virtual BEDROCK_API GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+    virtual ENDSTONE_HOOK GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };

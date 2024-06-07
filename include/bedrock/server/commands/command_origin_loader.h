@@ -23,5 +23,5 @@
 
 class CommandOriginLoader {
 public:
-    BEDROCK_API static class std::unique_ptr<CommandOrigin> load(CompoundTag const &, ServerLevel &);
+    ENDSTONE_HOOK static class std::unique_ptr<CommandOrigin> load(CompoundTag const &, ServerLevel &);
 };

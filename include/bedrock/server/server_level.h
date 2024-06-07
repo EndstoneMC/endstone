@@ -22,5 +22,5 @@
 
 class ServerLevel : public Level {
 private:
-    BEDROCK_API void _postReloadActorAdded(Actor &, ActorInitializationMethod);
+    ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
 };

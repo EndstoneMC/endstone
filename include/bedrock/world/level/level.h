@@ -18,5 +18,5 @@
 
 class Level : public ILevel {
 public:
-    BEDROCK_API void tick() override;
+    ENDSTONE_HOOK void tick() override;
 };

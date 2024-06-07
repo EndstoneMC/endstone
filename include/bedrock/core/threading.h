@@ -42,6 +42,6 @@ private:
 
 class EnableQueueForMainThread : public EnableQueueForThread {};
 
-BEDROCK_API AssignedThread &getServerThread();
+ENDSTONE_HOOK AssignedThread &getServerThread();
 
 }  // namespace Bedrock::Threading

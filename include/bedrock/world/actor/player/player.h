@@ -116,8 +116,8 @@ protected:
     virtual void updateChunkPublisherView(Vec3 const &, float) = 0;
 
 public:
-    BEDROCK_API void setPermissions(CommandPermissionLevel level);
-    [[nodiscard]] BEDROCK_API const std::string &getName() const;
+    ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
+    [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;

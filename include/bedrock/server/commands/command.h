@@ -25,7 +25,7 @@ class Command {
 public:
     Command() = default;
     virtual ~Command() = default;
-    [[nodiscard]] BEDROCK_API std::string getCommandName() const;
+    [[nodiscard]] ENDSTONE_HOOK std::string getCommandName() const;
 
     virtual bool collectOptionalArguments()
     {

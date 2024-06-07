@@ -73,7 +73,7 @@ public:
     virtual ~Actor() = 0;
     virtual void resetUserPos(bool) = 0;
     virtual ActorType getOwnerEntityType() = 0;
-    BEDROCK_API virtual void remove();
+    ENDSTONE_HOOK virtual void remove();
     [[nodiscard]] virtual Vec3 getFiringPos() const = 0;
     [[nodiscard]] virtual float getInterpolatedBodyRot(float) const = 0;
     [[nodiscard]] virtual float getInterpolatedHeadRot(float) const = 0;
@@ -249,7 +249,7 @@ public:
         return entity_context_.tryGetComponent<Component>();
     };
 
-    BEDROCK_API void setDimension(WeakRef<Dimension>);
+    ENDSTONE_HOOK void setDimension(WeakRef<Dimension>);
 
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;

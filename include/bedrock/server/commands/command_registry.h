@@ -205,11 +205,11 @@ public:
     class ConstrainedValue;
     class RegistryState;
 
-    BEDROCK_API void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
+    ENDSTONE_HOOK void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                      CommandFlag flag1, CommandFlag flag2);
-    BEDROCK_API void registerAlias(std::string name, std::string alias);
-    BEDROCK_API int addEnumValues(const std::string &name, const std::vector<std::string> &values);
-    [[nodiscard]] BEDROCK_API AvailableCommandsPacket serializeAvailableCommands() const;
+    ENDSTONE_HOOK void registerAlias(std::string name, std::string alias);
+    ENDSTONE_HOOK int addEnumValues(const std::string &name, const std::vector<std::string> &values);
+    [[nodiscard]] ENDSTONE_HOOK AvailableCommandsPacket serializeAvailableCommands() const;
 
     template <typename CommandType>
     static std::unique_ptr<Command> allocateCommand()
@@ -271,17 +271,17 @@ public:
     CommandOverrideFunctor command_override_functor;                                               // +840
 
 private:
-    [[nodiscard]] BEDROCK_API const CommandRegistry::Signature *findCommand(const std::string &name) const;
-    [[nodiscard]] BEDROCK_API std::unique_ptr<Command> createCommand(const CommandRegistry::ParseToken &parse_token,
+    [[nodiscard]] ENDSTONE_HOOK const CommandRegistry::Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] ENDSTONE_HOOK std::unique_ptr<Command> createCommand(const CommandRegistry::ParseToken &parse_token,
                                                                      const CommandOrigin &origin, int version,
                                                                      std::string &error_message,
                                                                      std::vector<std::string> &error_params) const;
-    [[nodiscard]] BEDROCK_API std::string describe(CommandParameterData const &) const;
-    [[nodiscard]] BEDROCK_API std::string describe(const CommandRegistry::Signature &signature, const std::string &name,
+    [[nodiscard]] ENDSTONE_HOOK std::string describe(CommandParameterData const &) const;
+    [[nodiscard]] ENDSTONE_HOOK std::string describe(const CommandRegistry::Signature &signature, const std::string &name,
                                                    const CommandRegistry::Overload &overload, unsigned int a4,
                                                    unsigned int *a5, unsigned int *a6) const;
 
-    BEDROCK_API void registerOverloadInternal(CommandRegistry::Signature &signature,
+    ENDSTONE_HOOK void registerOverloadInternal(CommandRegistry::Signature &signature,
                                               CommandRegistry::Overload &overload);
 };
 BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry, 904, 896);

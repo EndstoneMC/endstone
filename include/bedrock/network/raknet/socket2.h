@@ -40,7 +40,7 @@ struct RNS2_SendParameters {  // NOLINT
 class RNS2_Windows_Linux_360 {  // NOLINT
 protected:
     // NOLINTNEXTLINE
-    BEDROCK_API static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
+    ENDSTONE_HOOK static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
                                                                   RNS2_SendParameters *send_parameters,
                                                                   const char *file, unsigned int line);
 };

@@ -43,7 +43,7 @@ public:
         return *registry_;
     }
 
-    BEDROCK_API MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
+    ENDSTONE_HOOK MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
 
 private:
     std::unique_ptr<CommandOutputSender> output_sender_;  // +8

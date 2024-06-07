@@ -35,6 +35,6 @@ public:
         Count = 2
     };
 
-    BEDROCK_API RakNet::StartupResult peerStartup(RakNet::RakPeerInterface *, ConnectionDefinition const &,
+    ENDSTONE_HOOK RakNet::StartupResult peerStartup(RakNet::RakPeerInterface *, ConnectionDefinition const &,
                                                   RakPeerHelper::PeerPurpose);
 };

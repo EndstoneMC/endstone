@@ -15,9 +15,9 @@
 #pragma once
 
 #if _WIN32
-#define BEDROCK_API __declspec(dllexport)
+#define ENDSTONE_HOOK __declspec(dllexport)
 #elif __linux__
-#define BEDROCK_API __attribute__((visibility("default")))
+#define ENDSTONE_HOOK __attribute__((visibility("default")))
 #endif
 
 #ifdef NDEBUG
