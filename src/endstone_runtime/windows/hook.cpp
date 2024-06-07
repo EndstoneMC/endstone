@@ -21,11 +21,14 @@
 #include <DbgHelp.h>
 
 #include <chrono>
+#include <filesystem>
+#include <iostream>
 #include <string>
 #include <system_error>
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
+#include <toml++/toml.h>
 
 #include "endstone/detail/os.h"
 
@@ -93,12 +96,14 @@ const std::unordered_map<std::string, void *> &get_detours()
 
     auto *module_base = os::get_module_base();
     const auto module_pathname = os::get_module_pathname();
+    const auto &targets = get_targets();
 
     enumerate_symbols(  //
         module_pathname.c_str(),
         [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
-            if (flags & SYMFLAG_EXPORT) {
-                spdlog::debug("{} -> 0x{:x}", name, offset);
+            auto it = targets.find(name);
+            if (it != targets.end()) {
+                spdlog::debug("D: {} -> 0x{:x}", name, offset);
                 auto *detour = static_cast<char *>(module_base) + offset;
                 detours.emplace(name, detour);
             }
@@ -116,22 +121,18 @@ const std::unordered_map<std::string, void *> &get_targets()
     }
 
     auto *executable_base = os::get_executable_base();
-    const auto executable_pathname = os::get_executable_pathname();
-    const auto &detours = get_detours();
-
-    enumerate_symbols(  //
-        executable_pathname.c_str(),
-        [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
-            if (detours.find(name) == detours.end()) {
-                return true;
-            }
-
-            spdlog::debug("{} -> 0x{:x}", name, offset);
+    const auto module_pathname = os::get_module_pathname();
+    auto symbol_path = std::filesystem::path{module_pathname}.parent_path() / "symbols.toml";
+    auto tbl = toml::parse_file(symbol_path.string());
+    tbl["windows"].as_table()->for_each([executable_base](const toml::key &key, auto &&val) {
+        if constexpr (toml::is_integer<decltype(val)>) {
+            auto offset = val.get();
+            spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
             auto *target = static_cast<char *>(executable_base) + offset;
-            targets.emplace(name, target);
-            return true;
-        },
-        true);
+            targets.emplace(key.data(), target);
+        }
+    });
+
     return targets;
 }
 

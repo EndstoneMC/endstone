@@ -117,7 +117,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
         self.requires("spdlog/1.12.0")
-        self.requires("tomlplusplus/3.4.0")
+        self.requires("tomlplusplus/3.3.0")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
