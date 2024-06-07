@@ -25,6 +25,7 @@
 #include <unordered_map>
 
 #include <spdlog/spdlog.h>
+#include <toml++/toml.h>
 
 #include "endstone/detail/os.h"
 
@@ -87,20 +88,21 @@ const std::unordered_map<std::string, void *> &get_detours()
 
     auto *module_base = os::get_module_base();
     auto module_pathname = os::get_module_pathname();
-    spdlog::debug("{}", module_pathname);
+    const auto &targets = get_targets();
 
     read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
-        if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
-            GELF_ST_BIND(sym.st_info) != STB_GLOBAL) {
-            return;
-        }
-
         char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
         if (name == nullptr) {
             return;
         }
-        spdlog::debug("{} -> 0x{:x}", name, sym.st_value);
-        detours[name] = reinterpret_cast<char *>(module_base) + sym.st_value;
+
+        auto it = targets.find(name);
+        if (it != targets.end()) {
+            auto offset = sym.st_value;
+            spdlog::debug("D: {} -> 0x{:x}", name, offset);
+            auto *detour = static_cast<char *>(module_base) + offset;
+            detours.emplace(name, detour);
+        }
     });
     return detours;
 }
@@ -113,27 +115,16 @@ const std::unordered_map<std::string, void *> &get_targets()
     }
 
     auto *executable_base = os::get_executable_base();
-    const auto executable_pathname = os::get_executable_pathname() + "_symbols.debug";
-    const auto &detours = get_detours();
-    spdlog::debug("{}", executable_pathname);
-
-    read_elf(executable_pathname, SHT_SYMTAB, [&](auto *elf, auto &shdr, auto &sym) {
-        if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
-            GELF_ST_BIND(sym.st_info) != STB_LOCAL) {
-            return;
+    const auto module_pathname = os::get_module_pathname();
+    auto symbol_path = std::filesystem::path{module_pathname}.parent_path() / "symbols.toml";
+    auto tbl = toml::parse_file(symbol_path.string());
+    tbl["linux"].as_table()->for_each([executable_base](const toml::key &key, auto &&val) {
+        if constexpr (toml::is_integer<decltype(val)>) {
+            auto offset = val.get();
+            spdlog::debug("T: {} -> 0x{:x}", key.data(), offset);
+            auto *target = static_cast<char *>(executable_base) + offset;
+            targets.emplace(key.data(), target);
         }
-
-        char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
-        if (name == nullptr) {
-            return;
-        }
-
-        if (detours.find(name) == detours.end()) {
-            return;
-        }
-
-        spdlog::debug("{} -> 0x{:x}", name, sym.st_value);
-        targets[name] = reinterpret_cast<char *>(executable_base) + sym.st_value;
     });
 
     return targets;
