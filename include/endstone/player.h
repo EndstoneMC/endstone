@@ -18,6 +18,7 @@
 
 #include "endstone/actor/actor.h"
 #include "endstone/game_mode.h"
+#include "endstone/inventory/player_inventory.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
 
@@ -121,11 +122,18 @@ public:
     [[nodiscard]] virtual GameMode getGameMode() const = 0;
 
     /**
-     * Sets this player's current GameMode
+     * @brief Sets this player's current GameMode
      *
      * @param mode New game mode
      */
     virtual void setGameMode(GameMode mode) = 0;
+
+    /**
+     * @brief Get the player's inventory.
+     *
+     * @return The inventory of the player, this also contains the armor slots.
+     */
+    [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 };
 
 }  // namespace endstone
