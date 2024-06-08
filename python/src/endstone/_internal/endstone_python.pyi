@@ -1179,8 +1179,11 @@ class Server:
     @property
     def max_players(self) -> int:
         """
-        Get the maximum amount of players which can login to this server.
+        The maximum amount of players which can login to this server.
         """
+    @max_players.setter
+    def max_players(self, arg1: int) -> None:
+        ...
     @property
     def minecraft_version(self) -> str:
         """

@@ -194,8 +194,8 @@ void init_server(py::class_<Server> &server)
              "Gets the level with the given name.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
                                "Gets a list of all currently online players.")
-        .def_property_readonly("max_players", &Server::getMaxPlayers,
-                               "Get the maximum amount of players which can login to this server.")
+        .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,
+                      "The maximum amount of players which can login to this server.")
         .def("get_player", py::overload_cast<std::string>(&Server::getPlayer, py::const_), py::arg("name"),
              py::return_value_policy::reference, "Gets the player with the exact given name, case insensitive.")
         .def("get_player", py::overload_cast<endstone::UUID>(&Server::getPlayer, py::const_),
