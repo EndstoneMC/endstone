@@ -25,6 +25,10 @@
 #include "bedrock/world/events/server_event.h"
 #include "bedrock/world/level/level_listener.h"
 
+namespace endstone::detail {
+class EndstoneServer;
+}
+
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,
                              public LevelListener,
@@ -32,12 +36,14 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public Social::XboxLiveUserObserver {
 public:
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
-                                      std::string const &, bool);
+                                        std::string const &, bool);
+    ENDSTONE_HOOK void updateServerAnnouncement();
 
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone
-    [[nodiscard]] int getMaxPlayers() const;                                 // Endstone
 
 private:
+    friend class endstone::detail::EndstoneServer;
+
     ENDSTONE_HOOK bool _loadNewPlayer(ServerPlayer &, bool is_xbox_live);  // NOLINT(*-identifier-naming)
     ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);   // NOLINT(*-identifier-naming)
 

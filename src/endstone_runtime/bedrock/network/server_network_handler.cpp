@@ -32,6 +32,11 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                 message, skip_message);
 }
 
+void ServerNetworkHandler::updateServerAnnouncement()
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
+}
+
 bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool is_xbox_live)
 {
     auto &server = entt::locator<EndstoneServer>::value();
@@ -65,9 +70,4 @@ void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &
 const Bedrock::NonOwnerPointer<ILevel> &ServerNetworkHandler::getLevel() const
 {
     return level_;
-}
-
-int ServerNetworkHandler::getMaxPlayers() const
-{
-    return max_players_;
 }
