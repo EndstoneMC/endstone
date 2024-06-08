@@ -21,7 +21,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a Command belonging to a Plugin
+ * @brief Represents a Command belonging to a Plugin.
  */
 class PluginCommand : public Command {
 public:

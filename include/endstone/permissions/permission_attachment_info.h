@@ -23,7 +23,7 @@ class Permissible;
 class PermissionAttachment;
 
 /**
- * @brief Holds information on a permission and which PermissionAttachment provides it
+ * @brief Holds information on a permission and which PermissionAttachment provides it.
  */
 class PermissionAttachmentInfo {
 

@@ -30,7 +30,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a plugin loader, which handles direct access to specific types of plugins
+ * @brief Represents a plugin loader, which handles direct access to specific types of plugins.
  */
 class PluginLoader {
 public:

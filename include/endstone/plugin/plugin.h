@@ -35,7 +35,7 @@ class PluginCommand;
 class PluginLoader;
 
 /**
- * @brief Represents a Plugin
+ * @brief Represents a Plugin.
  */
 class Plugin : public CommandExecutor {
 public:

@@ -5,6 +5,9 @@ import typing
 import uuid
 __all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
+    """
+    Represents a base actor in the level.
+    """
     @property
     def is_in_lava(self) -> bool:
         """
@@ -41,18 +44,27 @@ class Actor(CommandSender):
         Gets this actor's current velocity.
         """
 class ActorRemoveEvent(Event):
+    """
+    Called when an Actor is removed.
+    """
     @property
     def actor(self) -> Actor:
         """
         Returns the Actor being removed
         """
 class ActorSpawnEvent(Event):
+    """
+    Called when an Actor is spawned into a world.
+    """
     @property
     def actor(self) -> Actor:
         """
         Returns the Actor being spawned
         """
 class BroadcastMessageEvent(Event):
+    """
+    Event triggered for server broadcast messages such as from Server.broadcast
+    """
     @property
     def message(self) -> str:
         """
@@ -67,6 +79,9 @@ class BroadcastMessageEvent(Event):
         Gets a set of recipients that this broadcast message will be displayed to.
         """
 class ColorFormat:
+    """
+    All supported color and format codes.
+    """
     AQUA: typing.ClassVar[str] = '§b'
     BLACK: typing.ClassVar[str] = '§0'
     BLUE: typing.ClassVar[str] = '§9'
@@ -99,6 +114,9 @@ class ColorFormat:
     WHITE: typing.ClassVar[str] = '§f'
     YELLOW: typing.ClassVar[str] = '§e'
 class Command:
+    """
+    Represents a Command, which executes various tasks upon user input
+    """
     def __init__(self, name: str, description: str | None = None, usages: list[str] | None = None, aliases: list[str] | None = None, permissions: list[str] | None = None, *args, **kwargs) -> None:
         ...
     def execute(self, sender: CommandSender, args: list[str]) -> bool:
@@ -159,6 +177,9 @@ class Command:
     def usages(self, arg1: list[str]) -> None:
         ...
 class CommandExecutor:
+    """
+    Represents a class which contains a single method for executing commands
+    """
     def __init__(self) -> None:
         ...
     def on_command(self, sender: CommandSender, command: Command, args: list[str]) -> bool:
@@ -166,6 +187,9 @@ class CommandExecutor:
         Executes the given command, returning its success.
         """
 class CommandSender(Permissible):
+    """
+    Represents a command sender.
+    """
     def as_player(self) -> Player:
         """
         Cast to a Player instance
@@ -189,7 +213,13 @@ class CommandSender(Permissible):
         Returns the server instance that this command is running on
         """
 class Dimension:
+    """
+    Represents a dimension within a Level.
+    """
     class Type:
+        """
+        Represents various dimension types.
+        """
         CUSTOM: typing.ClassVar[Dimension.Type]  # value = <Type.CUSTOM: 999>
         NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
         OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
@@ -241,6 +271,9 @@ class Dimension:
         Gets the type of this dimension
         """
 class Event:
+    """
+    Represents an event.
+    """
     @property
     def asynchronous(self) -> bool:
         """
@@ -302,6 +335,9 @@ class EventPriority:
     def value(self) -> int:
         ...
 class GameMode:
+    """
+    Represents the various type of game modes that Players may have.
+    """
     ADVENTURE: typing.ClassVar[GameMode]  # value = <GameMode.ADVENTURE: 2>
     CREATIVE: typing.ClassVar[GameMode]  # value = <GameMode.CREATIVE: 1>
     SPECTATOR: typing.ClassVar[GameMode]  # value = <GameMode.SPECTATOR: 3>
@@ -376,6 +412,9 @@ class Level:
     def time(self, arg1: int) -> None:
         ...
 class Location(Position):
+    """
+    Represents a 3-dimensional location in a dimension within a level.
+    """
     def __init__(self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
         ...
     @property
@@ -395,7 +434,13 @@ class Location(Position):
     def yaw(self, arg1: float) -> None:
         ...
 class Logger:
+    """
+    Logger class which can format and output varies levels of logs.
+    """
     class Level:
+        """
+        Specifies the log level.
+        """
         CRITICAL: typing.ClassVar[Logger.Level]  # value = <Level.CRITICAL: 5>
         DEBUG: typing.ClassVar[Logger.Level]  # value = <Level.DEBUG: 1>
         ERROR: typing.ClassVar[Logger.Level]  # value = <Level.ERROR: 4>
@@ -473,6 +518,9 @@ class Logger:
         Get the name of this Logger instance.
         """
 class Permissible:
+    """
+    Represents an object that may become a server operator and can be assigned permissions.
+    """
     @typing.overload
     def add_attachment(self, plugin: Plugin, name: str, value: bool) -> PermissionAttachment:
         """
@@ -525,6 +573,9 @@ class Permissible:
     def op(self, arg1: bool) -> None:
         ...
 class Permission:
+    """
+    Represents a unique permission that may be attached to a Permissible
+    """
     def __init__(self, name: str, description: str | None = None, default: PermissionDefault | None = None, children: dict[str, bool] | None = None, *args, **kwargs) -> None:
         ...
     @typing.overload
@@ -573,6 +624,9 @@ class Permission:
         Gets a set containing every Permissible that has this permission.
         """
 class PermissionAttachment:
+    """
+    Holds information about a permission attachment on a Permissible object
+    """
     def __init__(self, plugin: Plugin, permissible: Permissible) -> None:
         ...
     def remove(self) -> bool:
@@ -623,6 +677,9 @@ class PermissionAttachment:
     def removal_callback(self, arg1: typing.Callable[[PermissionAttachment], None]) -> None:
         ...
 class PermissionAttachmentInfo:
+    """
+    Holds information on a permission and which PermissionAttachment provides it
+    """
     def __init__(self, permissible: Permissible, permission: str, attachment: PermissionAttachment, value: bool) -> None:
         ...
     @property
@@ -646,6 +703,9 @@ class PermissionAttachmentInfo:
         Gets the value of this permission
         """
 class PermissionDefault:
+    """
+    Represents the possible default values for permissions
+    """
     FALSE: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.FALSE: 1>
     NOT_OP: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
     NOT_OPERATOR: typing.ClassVar[PermissionDefault]  # value = <PermissionDefault.NOT_OP: 3>
@@ -680,6 +740,9 @@ class PermissionDefault:
     def value(self) -> int:
         ...
 class Player(Actor):
+    """
+    Represents a player.
+    """
     def kick(self, message: str) -> None:
         """
         Kicks player with custom kick message.
@@ -738,6 +801,9 @@ class Player(Actor):
         Returns the UUID of this player
         """
 class PlayerChatEvent(Event):
+    """
+    Called when a player sends a chat message.
+    """
     @property
     def message(self) -> str:
         """
@@ -752,6 +818,9 @@ class PlayerChatEvent(Event):
         Returns the Player who sends the message
         """
 class PlayerCommandEvent(Event):
+    """
+    Called whenever a player runs a command.
+    """
     @property
     def command(self) -> str:
         """
@@ -770,12 +839,18 @@ class PlayerInventory(Inventory):
     Interface to the inventory of a Player, including the four armor slots and any extra slots.
     """
 class PlayerJoinEvent(Event):
+    """
+    Called when a player joins a server
+    """
     @property
     def player(self) -> Player:
         """
         Returns the Player who joins the server
         """
 class PlayerLoginEvent(Event):
+    """
+    Called when a player attempts to login in.
+    """
     @property
     def kick_message(self) -> str:
         """
@@ -790,12 +865,18 @@ class PlayerLoginEvent(Event):
         Returns the Player who attempts to login in.
         """
 class PlayerQuitEvent(Event):
+    """
+    Called when a player leaves a server.
+    """
     @property
     def player(self) -> Player:
         """
         Returns the Player who leaves the server
         """
 class Plugin(CommandExecutor):
+    """
+    Represents a Plugin
+    """
     def __init__(self) -> None:
         ...
     def _get_description(self) -> PluginDescription:
@@ -847,6 +928,9 @@ class Plugin(CommandExecutor):
         Returns the Server instance currently running this plugin
         """
 class PluginCommand(Command):
+    """
+    Represents a Command belonging to a Plugin
+    """
     @property
     def executor(self) -> CommandExecutor:
         """
@@ -861,6 +945,9 @@ class PluginCommand(Command):
         The owner of this PluginCommand
         """
 class PluginDescription:
+    """
+    Represents the basic information about a plugin that the plugin loader needs to know.
+    """
     def __init__(self, name: str, version: str, description: str | None = None, load: PluginLoadOrder | None = None, authors: list[str] | None = None, contributors: list[str] | None = None, website: str | None = None, prefix: str | None = None, provides: list[str] | None = None, depend: list[str] | None = None, soft_depend: list[str] | None = None, load_before: list[str] | None = None, default_permission: PermissionDefault | None = None, commands: list[Command] | None = None, permissions: list[Permission] | None = None, *args, **kwargs) -> None:
         ...
     @property
@@ -949,14 +1036,23 @@ class PluginDescription:
         Gives the plugin's or plugin's author's website.
         """
 class PluginDisableEvent(Event):
+    """
+    Called when a plugin is disabled.
+    """
     @property
     def plugin(self) -> Plugin:
         ...
 class PluginEnableEvent(Event):
+    """
+    Called when a plugin is enabled.
+    """
     @property
     def plugin(self) -> Plugin:
         ...
 class PluginLoadOrder:
+    """
+    Represents the order in which a plugin should be initialized and enabled.
+    """
     POSTWORLD: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.POSTWORLD: 1>
     STARTUP: typing.ClassVar[PluginLoadOrder]  # value = <PluginLoadOrder.STARTUP: 0>
     __members__: typing.ClassVar[dict[str, PluginLoadOrder]]  # value = {'STARTUP': <PluginLoadOrder.STARTUP: 0>, 'POSTWORLD': <PluginLoadOrder.POSTWORLD: 1>}
@@ -987,6 +1083,9 @@ class PluginLoadOrder:
     def value(self) -> int:
         ...
 class PluginLoader:
+    """
+    Represents a plugin loader, which handles direct access to specific types of plugins
+    """
     def __init__(self, server: Server) -> None:
         ...
     def disable_plugin(self, plugin: Plugin) -> None:
@@ -1007,6 +1106,9 @@ class PluginLoader:
         Retrieves the Server object associated with the PluginLoader.
         """
 class PluginManager:
+    """
+    Represents a plugin manager that handles all plugins from the Server
+    """
     def call_event(self, event: Event) -> None:
         """
         Calls an event which will be passed to plugins.
@@ -1110,6 +1212,9 @@ class PluginManager:
         Gets a list of all currently loaded plugins
         """
 class Position(Vector):
+    """
+    Represents a 3-dimensional position in a dimension within a level.
+    """
     def __init__(self, dimension: Dimension, x: float, y: float, z: float) -> None:
         ...
     @property
@@ -1121,6 +1226,9 @@ class Position(Vector):
     def dimension(self, arg1: Dimension) -> None:
         ...
 class Scheduler:
+    """
+    Represents a scheduler that executes various tasks
+    """
     def cancel_task(self, id: int) -> None:
         """
         Removes task from scheduler.
@@ -1154,6 +1262,9 @@ class Scheduler:
         Returns a task that will be executed repeatedly until cancelled, starting after the specified number of server ticks.
         """
 class Server:
+    """
+    Represents a server implementation.
+    """
     def broadcast(self, message: str, permission: str) -> None:
         """
         Broadcasts the specified message to every user with the given permission name.
@@ -1238,6 +1349,9 @@ class Server:
         Gets the version of this server implementation.
         """
 class ServerCommandEvent(Event):
+    """
+    Called when the console runs a command, early in the process.
+    """
     @property
     def command(self) -> str:
         """
@@ -1252,6 +1366,9 @@ class ServerCommandEvent(Event):
         Get the command sender.
         """
 class ServerListPingEvent(Event):
+    """
+    Called when a server ping is coming in.
+    """
     @property
     def game_mode(self) -> GameMode:
         """
@@ -1331,6 +1448,9 @@ class ServerListPingEvent(Event):
         Get the unique identifier of the server.
         """
 class ServerLoadEvent(Event):
+    """
+    Called when either the server startup or reload has completed.
+    """
     class LoadType:
         STARTUP: typing.ClassVar[ServerLoadEvent.LoadType]  # value = <LoadType.STARTUP: 0>
         __members__: typing.ClassVar[dict[str, ServerLoadEvent.LoadType]]  # value = {'STARTUP': <LoadType.STARTUP: 0>}
@@ -1365,6 +1485,9 @@ class ServerLoadEvent(Event):
     def type(self) -> ServerLoadEvent.LoadType:
         ...
 class SocketAddress:
+    """
+    Represents an IP Socket Address (hostname + port number).
+    """
     @typing.overload
     def __init__(self) -> None:
         ...
@@ -1386,6 +1509,9 @@ class SocketAddress:
         Gets the port number.
         """
 class Task:
+    """
+    Represents a task being executed by the scheduler
+    """
     def cancel(self) -> None:
         """
         Attempts to cancel this task.
@@ -1411,6 +1537,9 @@ class Task:
         Returns the task id.
         """
 class ThunderChangeEvent(Event):
+    """
+    Called when the thunder state in a world is changing.
+    """
     @property
     def level(self) -> Level:
         """
@@ -1422,6 +1551,9 @@ class ThunderChangeEvent(Event):
         Gets the state of thunder that the world is being set to
         """
 class Vector:
+    """
+    Represents a 3-dimensional vector.
+    """
     @typing.overload
     def __add__(self, arg0: Vector) -> Vector:
         ...
@@ -1515,6 +1647,9 @@ class Vector:
     def z(self, arg1: float) -> None:
         ...
 class WeatherChangeEvent(Event):
+    """
+    Called when the weather (rain) state in a world is changing.
+    """
     @property
     def level(self) -> Level:
         """

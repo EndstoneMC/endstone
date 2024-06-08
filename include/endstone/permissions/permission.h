@@ -27,7 +27,7 @@
 namespace endstone {
 
 /**
- * @brief Represents a unique permission that may be attached to a Permissible
+ * @brief Represents a unique permission that may be attached to a Permissible.
  */
 class Permission {
 public:

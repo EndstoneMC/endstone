@@ -19,7 +19,7 @@
 namespace endstone {
 
 /**
- * @brief Called when the weather (rain) state in a world is changing
+ * @brief Called when the weather (rain) state in a world is changing.
  */
 class WeatherChangeEvent : public WeatherEvent {
 public:

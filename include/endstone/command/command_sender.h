@@ -26,7 +26,7 @@ class Server;
 class Player;
 
 /**
- * @brief Represents a command sender
+ * @brief Represents a command sender.
  */
 class CommandSender : public Permissible {
 public:

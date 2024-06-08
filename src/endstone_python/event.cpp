@@ -62,59 +62,61 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
                "should be made under this priority.");
 
-    py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent")
+    py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent", "Called when an Actor is removed.")
         .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor being removed");
 
-    py::class_<ActorSpawnEvent, Event>(m, "ActorSpawnEvent")
+    py::class_<ActorSpawnEvent, Event>(m, "ActorSpawnEvent", "Called when an Actor is spawned into a world.")
         .def_property_readonly("actor", &ActorSpawnEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor being spawned");
 
-    py::class_<PlayerChatEvent, Event>(m, "PlayerChatEvent")
+    py::class_<PlayerChatEvent, Event>(m, "PlayerChatEvent", "Called when a player sends a chat message.")
         .def_property_readonly("player", &PlayerChatEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who sends the message")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
                       "The message that the player will send.");
 
-    py::class_<PlayerCommandEvent, Event>(m, "PlayerCommandEvent")
+    py::class_<PlayerCommandEvent, Event>(m, "PlayerCommandEvent", "Called whenever a player runs a command.")
         .def_property_readonly("player", &PlayerCommandEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who sends the command")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
                       "The command that the player will send.");
 
-    py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent")
+    py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who joins the server");
 
-    py::class_<PlayerLoginEvent, Event>(m, "PlayerLoginEvent")
+    py::class_<PlayerLoginEvent, Event>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "The kick message to display if event is cancelled")
         .def_property_readonly("player", &PlayerLoginEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who attempts to login in.");
 
-    py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent")
+    py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
         .def_property_readonly("player", &PlayerQuitEvent::getPlayer, py::return_value_policy::reference,
                                "Returns the Player who leaves the server");
 
-    py::class_<BroadcastMessageEvent, Event>(m, "BroadcastMessageEvent")
+    py::class_<BroadcastMessageEvent, Event>(
+        m, "BroadcastMessageEvent", "Event triggered for server broadcast messages such as from Server.broadcast")
         .def_property("message", &BroadcastMessageEvent::getMessage, &BroadcastMessageEvent::setMessage,
                       "The message to broadcast.")
         .def_property_readonly("recipients", &BroadcastMessageEvent::getRecipients,
                                py::return_value_policy::reference_internal,
                                "Gets a set of recipients that this broadcast message will be displayed to.");
 
-    py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent")
+    py::class_<PluginEnableEvent, Event>(m, "PluginEnableEvent", "Called when a plugin is enabled.")
         .def_property_readonly("plugin", &PluginEnableEvent::getPlugin, py::return_value_policy::reference);
 
-    py::class_<PluginDisableEvent, Event>(m, "PluginDisableEvent")
+    py::class_<PluginDisableEvent, Event>(m, "PluginDisableEvent", "Called when a plugin is disabled.")
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference);
 
-    py::class_<ServerCommandEvent, Event>(m, "ServerCommandEvent")
+    py::class_<ServerCommandEvent, Event>(m, "ServerCommandEvent",
+                                          "Called when the console runs a command, early in the process.")
         .def_property_readonly("sender", &ServerCommandEvent::getSender, "Get the command sender.")
         .def_property("command", &ServerCommandEvent::getCommand, &ServerCommandEvent::setCommand,
                       "The command that the server will execute");
 
-    py::class_<ServerListPingEvent, Event>(m, "ServerListPingEvent")
+    py::class_<ServerListPingEvent, Event>(m, "ServerListPingEvent", "Called when a server ping is coming in.")
         .def_property_readonly("remote_host", &ServerListPingEvent::getRemoteHost,
                                "Get the host the ping is coming from.")
         .def_property_readonly("remote_port", &ServerListPingEvent::getRemotePort,
@@ -140,19 +142,21 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("game_mode", &ServerListPingEvent::getGameMode, &ServerListPingEvent::setGameMode,
                       "The current game mode.");
 
-    auto server_load_event = py::class_<ServerLoadEvent, Event>(m, "ServerLoadEvent");
+    auto server_load_event = py::class_<ServerLoadEvent, Event>(
+        m, "ServerLoadEvent", "Called when either the server startup or reload has completed.");
     py::enum_<ServerLoadEvent::LoadType>(server_load_event, "LoadType")
         .value("STARTUP", ServerLoadEvent::LoadType::Startup)
         .export_values();
     server_load_event.def_property_readonly("type", &ServerLoadEvent::getType);
 
-    py::class_<ThunderChangeEvent, Event>(m, "ThunderChangeEvent")
+    py::class_<ThunderChangeEvent, Event>(m, "ThunderChangeEvent",
+                                          "Called when the thunder state in a world is changing.")
         .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
                                "Returns the Level where this event is occurring")
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
                                "Gets the state of thunder that the world is being set to");
 
-    py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent")
+    py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent", "Called when the weather (rain) state in a world is changing.")
         .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
                                "Returns the Level where this event is occurring")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,

@@ -24,7 +24,7 @@ namespace endstone::detail {
 
 void init_util(py::module &m)
 {
-    py::class_<SocketAddress>(m, "SocketAddress")
+    py::class_<SocketAddress>(m, "SocketAddress", "Represents an IP Socket Address (hostname + port number).")
         .def(py::init<>())
         .def(py::init<std::string, std::uint32_t>(), py::arg("hostname"), py::arg("port"))
         .def_property_readonly("hostname", &SocketAddress::getHostname, "Gets the hostname.")
@@ -37,7 +37,7 @@ void init_util(py::module &m)
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
 
-    py::class_<Vector<float>>(m, "Vector")
+    py::class_<Vector<float>>(m, "Vector", "Represents a 3-dimensional vector.")
         .def(py::init<>())
         .def(py::init<float, float, float>(), py::arg("x"), py::arg("y"), py::arg("z"))
         .def_property("x", &Vector<float>::getX, &Vector<float>::setX, "The X component of the vector")

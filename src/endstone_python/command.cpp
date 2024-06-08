@@ -68,7 +68,8 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender")
         .def("as_player", &CommandSender::asPlayer, "Cast to a Player instance", py::return_value_policy::reference);
 
-    py::class_<Command, std::shared_ptr<Command>>(m, "Command")
+    py::class_<Command, std::shared_ptr<Command>>(m, "Command",
+                                                  "Represents a Command, which executes various tasks upon user input")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
              py::arg("usages") = py::none(), py::arg("aliases") = py::none(), py::arg("permissions") = py::none())
         .def("execute", &Command::execute, py::arg("sender"), py::arg("args"),
@@ -95,7 +96,8 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
         .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
-    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(m, "CommandExecutor")
+    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(
+        m, "CommandExecutor", "Represents a class which contains a single method for executing commands")
         .def(py::init<>())
         .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
              "Executes the given command, returning its success.");

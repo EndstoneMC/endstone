@@ -69,7 +69,8 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
         .def("add_parent", py::overload_cast<Permission &, bool>(&endstone::Permission::addParent, py::const_),
              py::arg("perm"), py::arg("value"), "Adds this permission to the specified parent permission.");
 
-    py::class_<PermissionAttachment>(m, "PermissionAttachment")
+    py::class_<PermissionAttachment>(m, "PermissionAttachment",
+                                     "Holds information about a permission attachment on a Permissible object")
         .def(py::init<Plugin &, Permissible &>(), py::arg("plugin"), py::arg("permissible"))
         .def_property_readonly("plugin", &PermissionAttachment::getPlugin, py::return_value_policy::reference,
                                "Gets the plugin responsible for this attachment.")
@@ -91,7 +92,8 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
                       &PermissionAttachment::setRemovalCallback,
                       "The callback to be called when this attachment is removed.");
 
-    py::class_<PermissionAttachmentInfo>(m, "PermissionAttachmentInfo")
+    py::class_<PermissionAttachmentInfo>(m, "PermissionAttachmentInfo",
+                                         "Holds information on a permission and which PermissionAttachment provides it")
         .def(py::init<Permissible &, std::string, PermissionAttachment *, bool>(), py::arg("permissible"),
              py::arg("permission"), py::arg("attachment"), py::arg("value"))
         .def_property_readonly("permissible", &PermissionAttachmentInfo::getPermissible,

@@ -55,17 +55,20 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 
     // Forward declaration, see:
     // https://pybind11.readthedocs.io/en/stable/advanced/misc.html#avoiding-c-types-in-docstrings
-    auto event = py::class_<Event>(m, "Event");
+    auto event = py::class_<Event>(m, "Event", "Represents an event.");
     auto event_priority = py::enum_<EventPriority>(
         m, "EventPriority",
         "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
 
-    auto permissible = py::class_<Permissible>(m, "Permissible");
-    auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender");
-    auto permission = py::class_<Permission>(m, "Permission");
-    auto permission_default = py::enum_<PermissionDefault>(m, "PermissionDefault");
-    auto server = py::class_<Server>(m, "Server");
-    auto actor = py::class_<Actor, CommandSender>(m, "Actor");
+    auto permissible = py::class_<Permissible>(
+        m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
+    auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
+    auto permission =
+        py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
+    auto permission_default =
+        py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
+    auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
+    auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
 
     init_color_format(m);
     init_game_mode(m);
@@ -87,7 +90,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 
 void init_color_format(py::module_ &m)
 {
-    py::class_<ColorFormat>(m, "ColorFormat")
+    py::class_<ColorFormat>(m, "ColorFormat", "All supported color and format codes.")
         .def_property_readonly_static("BLACK", [](const py::object &) { return ColorFormat::Black; })
         .def_property_readonly_static("DARK_BLUE", [](const py::object &) { return ColorFormat::DarkBlue; })
         .def_property_readonly_static("DARK_GREEN", [](const py::object &) { return ColorFormat::DarkGreen; })
@@ -128,7 +131,7 @@ void init_color_format(py::module_ &m)
 
 void init_game_mode(py::module_ &m)
 {
-    py::enum_<GameMode>(m, "GameMode")
+    py::enum_<GameMode>(m, "GameMode", "Represents the various type of game modes that Players may have.")
         .value("SURVIVAL", GameMode::Survival)
         .value("CREATIVE", GameMode::Creative)
         .value("ADVENTURE", GameMode::Adventure)
@@ -137,9 +140,9 @@ void init_game_mode(py::module_ &m)
 
 void init_logger(py::module &m)
 {
-    auto logger = py::class_<Logger>(m, "Logger");
+    auto logger = py::class_<Logger>(m, "Logger", "Logger class which can format and output varies levels of logs.");
 
-    py::enum_<Logger::Level>(logger, "Level")
+    py::enum_<Logger::Level>(logger, "Level", "Specifies the log level.")
         .value("TRACE", Logger::Level::Trace)
         .value("DEBUG", Logger::Level::Debug)
         .value("INFO", Logger::Level::Info)
@@ -214,7 +217,7 @@ void init_server(py::class_<Server> &server)
 
 void init_player(py::module_ &m)
 {
-    py::class_<Player, Actor>(m, "Player")
+    py::class_<Player, Actor>(m, "Player", "Represents a player.")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")
@@ -228,7 +231,8 @@ void init_player(py::module_ &m)
         .def("perform_command", &Player::performCommand, py::arg("command"),
              "Makes the player perform the given command.")
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
-        .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference, "Get the player's inventory.");
+        .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
+                               "Get the player's inventory.");
 }
 
 }  // namespace endstone::detail

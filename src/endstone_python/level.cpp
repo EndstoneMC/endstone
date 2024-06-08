@@ -28,9 +28,9 @@ namespace endstone::detail {
 void init_level(py::module_ &m)
 {
     auto level = py::class_<Level>(m, "Level");
-    auto dimension = py::class_<Dimension>(m, "Dimension");
+    auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
 
-    py::enum_<Dimension::Type>(dimension, "Type")
+    py::enum_<Dimension::Type>(dimension, "Type", "Represents various dimension types.")
         .value("OVERWORLD", Dimension::Type::Overworld)
         .value("NETHER", Dimension::Type::Nether)
         .value("THE_END", Dimension::Type::TheEnd)
@@ -51,14 +51,15 @@ void init_level(py::module_ &m)
         .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
              py::return_value_policy::reference);
 
-    py::class_<Position, Vector<float>>(m, "Position")
+    py::class_<Position, Vector<float>>(m, "Position",
+                                        "Represents a 3-dimensional position in a dimension within a level.")
         .def(py::init<Dimension *, float, float, float>(), py::arg("dimension"), py::arg("x"), py::arg("y"),
              py::arg("z"))
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
                       "The Dimension that contains this position");
     // TODO(fixme): add __repr__
 
-    py::class_<Location, Position>(m, "Location")
+    py::class_<Location, Position>(m, "Location", "Represents a 3-dimensional location in a dimension within a level.")
         .def(py::init<Dimension *, float, float, float, float, float>(), py::arg("dimension"), py::arg("x"),
              py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,

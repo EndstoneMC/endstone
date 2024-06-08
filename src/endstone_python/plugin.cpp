@@ -135,14 +135,18 @@ PluginDescription createPluginDescription(
 
 void init_plugin(py::module &m)
 {
-    py::enum_<PluginLoadOrder>(m, "PluginLoadOrder")
+    py::enum_<PluginLoadOrder>(m, "PluginLoadOrder",
+                               "Represents the order in which a plugin should be initialized and enabled.")
         .value("STARTUP", PluginLoadOrder::Startup)
         .value("POSTWORLD", PluginLoadOrder::PostWorld);
 
-    auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(m, "PluginLoader");
-    auto plugin_command = py::class_<PluginCommand, Command, std::shared_ptr<PluginCommand>>(m, "PluginCommand");
+    auto plugin_loader = py::class_<PluginLoader, PyPluginLoader>(
+        m, "PluginLoader", "Represents a plugin loader, which handles direct access to specific types of plugins");
+    auto plugin_command = py::class_<PluginCommand, Command, std::shared_ptr<PluginCommand>>(
+        m, "PluginCommand", "Represents a Command belonging to a Plugin");
 
-    py::class_<PluginDescription>(m, "PluginDescription")
+    py::class_<PluginDescription>(
+        m, "PluginDescription", "Represents the basic information about a plugin that the plugin loader needs to know.")
         .def(py::init(&createPluginDescription), py::arg("name"), py::arg("version"),
              py::arg("description") = py::none(), py::arg("load") = py::none(), py::arg("authors") = py::none(),
              py::arg("contributors") = py::none(), py::arg("website") = py::none(), py::arg("prefix") = py::none(),
@@ -184,7 +188,7 @@ void init_plugin(py::module &m)
             "permissions", &PluginDescription::getPermissions,
             "Gives the list of permissions the plugin will register at runtime, immediately proceeding enabling.");
 
-    py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin")
+    py::class_<Plugin, CommandExecutor, PyPlugin, std::shared_ptr<Plugin>>(m, "Plugin", "Represents a Plugin")
         .def(py::init<>())
         .def("on_load", &Plugin::onLoad, "Called after a plugin is loaded but before it has been enabled.")
         .def("on_enable", &Plugin::onEnable, "Called when this plugin is enabled")
@@ -213,7 +217,8 @@ void init_plugin(py::module &m)
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
                                "Retrieves the Server object associated with the PluginLoader.");
 
-    py::class_<PluginManager>(m, "PluginManager")
+    py::class_<PluginManager>(m, "PluginManager",
+                              "Represents a plugin manager that handles all plugins from the Server")
         .def("get_plugin", &PluginManager::getPlugin, py::arg("name"), py::return_value_policy::reference,
              "Checks if the given plugin is loaded and returns it when applicable.")
         .def_property_readonly("plugins", &PluginManager::getPlugins, "Gets a list of all currently loaded plugins")

@@ -24,7 +24,7 @@
 namespace endstone {
 
 /**
- * @brief  Called when a server ping is coming in.
+ * @brief Called when a server ping is coming in.
  */
 class ServerListPingEvent : public ServerEvent {
 public:

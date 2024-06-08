@@ -17,7 +17,7 @@
 namespace endstone {
 
 /**
- * @brief Represents the order in which a plugin should be initialized and enabled
+ * @brief Represents the order in which a plugin should be initialized and enabled.
  */
 enum class PluginLoadOrder {
     /**

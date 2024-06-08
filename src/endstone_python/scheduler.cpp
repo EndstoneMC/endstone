@@ -26,7 +26,7 @@ namespace endstone::detail {
 
 void init_scheduler(py::module &m)
 {
-    py::class_<Task, std::shared_ptr<Task>>(m, "Task")
+    py::class_<Task, std::shared_ptr<Task>>(m, "Task", "Represents a task being executed by the scheduler")
         .def_property_readonly("task_id", &Task::getTaskId, "Returns the task id.")
         .def_property_readonly("owner", &Task::getOwner, py::return_value_policy::reference,
                                "Returns the Plugin that owns the task.")
@@ -34,7 +34,7 @@ void init_scheduler(py::module &m)
         .def_property_readonly("is_cancelled", &Task::isCancelled, "Returns true if the task has been cancelled.")
         .def("cancel", &Task::cancel, "Attempts to cancel this task.");
 
-    py::class_<Scheduler>(m, "Scheduler")
+    py::class_<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks")
         .def("run_task", &Scheduler::runTask, py::arg("plugin"), py::arg("task"),
              "Returns a task that will be executed synchronously on the next server tick.",
              py::return_value_policy::reference)
