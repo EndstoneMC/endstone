@@ -39,6 +39,7 @@ version = "1.20.81"
 # Player
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 0x18e2350
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 0x18ee4e0
+"?getInventory@Player@@QEAAAEAVContainer@@XZ" = 0x18e1c30
 # RakNet
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 0x2230bd0
 "?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 0x220f350
@@ -104,6 +105,7 @@ version = "1.20.81"
 # Player
 "_ZNK6Player7getNameEv" = 0x61cbf40
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 0x61d1d50
+"_ZN6Player12getInventoryEv" = 0x61ddab0
 # RakNet
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 0x7ae5260
 "_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 0x7aed400

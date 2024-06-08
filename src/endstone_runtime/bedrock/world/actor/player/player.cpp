@@ -37,6 +37,11 @@ const std::string &Player::getName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
+Container &Player::getInventory()
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getInventory, this);
+}
+
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
 {
     return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());

@@ -118,6 +118,7 @@ protected:
 public:
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
     [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
+    [[nodiscard]] ENDSTONE_HOOK Container & Player::getInventory();
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;
