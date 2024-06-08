@@ -63,7 +63,7 @@ class ChunkViewSource;
 class CommandOriginSystem;
 class CommandPositionFloat;
 class ComplexInventoryTransaction;
-class Container;
+class ContainerContentChangeListener;
 class CurrentCmdVersion;
 class DataLoadHelper;
 class Difficulty;

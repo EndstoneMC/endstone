@@ -16,14 +16,16 @@
 
 namespace endstone::detail {
 
+EndstoneInventory::EndstoneInventory(Container &container) : container_(container) {}
+
 int EndstoneInventory::getSize() const
 {
-    return 0;  // TODO(fixme): implement using Container::getContainerSize
+    return container_.getContainerSize();
 }
 
 int EndstoneInventory::getMaxStackSize() const
 {
-    return 0;  // TODO(fixme): implement using Container::getMaxStackSize
+    return container_.getMaxStackSize();
 }
 
 }  // namespace endstone::detail

@@ -31,7 +31,8 @@
 namespace endstone::detail {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneActor(server, player), player_(player), perm_(static_cast<Player *>(this))
+    : EndstoneActor(server, player), player_(player), perm_(static_cast<Player *>(this)),
+      inventory_(std::make_unique<EndstonePlayerInventory>(player.getInventory()))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     if (!component) {

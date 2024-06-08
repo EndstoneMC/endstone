@@ -19,6 +19,7 @@ namespace endstone {
  * @brief Interface to the various inventories.
  */
 class Inventory {
+public:
     /**
      * @brief Returns the size of the inventory
      *

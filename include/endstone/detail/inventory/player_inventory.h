@@ -19,6 +19,19 @@
 
 namespace endstone::detail {
 
-class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory {};
+class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory {
+public:
+    using EndstoneInventory::EndstoneInventory;
+
+    int getSize() const override
+    {
+        return EndstoneInventory::getSize();
+    }
+
+    int getMaxStackSize() const override
+    {
+        return EndstoneInventory::getMaxStackSize();
+    }
+};
 
 }  // namespace endstone::detail

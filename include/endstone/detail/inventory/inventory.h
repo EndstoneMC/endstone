@@ -14,13 +14,19 @@
 
 #pragma once
 
+#include "bedrock/world/container.h"
 #include "endstone/inventory/inventory.h"
 
 namespace endstone::detail {
 
 class EndstoneInventory : public Inventory {
+public:
+    explicit EndstoneInventory(::Container &container);
     [[nodiscard]] int getSize() const override;
     [[nodiscard]] int getMaxStackSize() const override;
+
+private:
+    ::Container &container_;
 };
 
 }  // namespace endstone::detail

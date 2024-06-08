@@ -22,6 +22,7 @@
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/abilities/layered_abilities.h"
+#include "bedrock/world/container.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/level/game_type.h"
 #include "endstone/detail/player.h"
@@ -118,7 +119,7 @@ protected:
 public:
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
     [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
-    [[nodiscard]] ENDSTONE_HOOK Container & Player::getInventory();
+    [[nodiscard]] ENDSTONE_HOOK Container &Player::getInventory();
     [[nodiscard]] GameType getPlayerGameType() const;
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;
