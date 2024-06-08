@@ -14,6 +14,32 @@
 
 #pragma once
 
+#include <functional>
+
+#include "bedrock/core/math/vec3.h"
+#include "bedrock/forward.h"
+#include "bedrock/world/item/item_stack.h"
+
 class Container {
 public:
+    virtual ~Container() = 0;
+    virtual void init() = 0;
+    virtual void serverInitItemStackIds(int, int, std::function<void(int, ItemStack const &)>) = 0;
+    virtual void addContentChangeListener(ContainerContentChangeListener *) = 0;
+    virtual void removeContentChangeListener(ContainerContentChangeListener *) = 0;
+    [[nodiscard]] virtual ItemStack const &getItem(int) const = 0;
+    virtual bool hasRoomForItem(ItemStack const &) = 0;
+    virtual bool addItem(ItemStack &) = 0;
+    virtual bool addItemWithForceBalance(ItemStack &) = 0;
+    virtual bool addItemToFirstEmptySlot(ItemStack const &) = 0;
+    virtual void setItem(int, ItemStack const &) = 0;
+    virtual void setItemWithForceBalance(int, ItemStack const &, bool) = 0;
+    virtual void removeItem(int, int) = 0;
+    virtual void removeAllItems() = 0;
+    virtual void removeAllItemsWithForceBalance() = 0;
+    virtual void dropSlotContent(BlockSource &, Vec3 const &, bool, int) = 0;
+    virtual void dropContents(BlockSource &, Vec3 const &, bool) = 0;
+    [[nodiscard]] virtual int getContainerSize() const = 0;
+    [[nodiscard]] virtual int getMaxStackSize() const = 0;
+    // ...
 };
