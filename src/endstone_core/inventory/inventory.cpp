@@ -12,25 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/inventory/inventory.h"
 
-namespace endstone {
-/**
- * @brief Interface to the various inventories.
- */
-class Inventory {
-    /**
-     * @brief Returns the size of the inventory
-     *
-     * @return The size of the inventory
-     */
-    [[nodiscard]] virtual int getSize() const = 0;
+namespace endstone::detail {
 
-    /**
-     * @brief Returns the maximum stack size for an ItemStack in this inventory.
-     *
-     * @return The maximum size for an ItemStack in this inventory.
-     */
-    [[nodiscard]] virtual int getMaxStackSize() const = 0;
-};
-}  // namespace endstone
+int EndstoneInventory::getSize() const
+{
+    return 0;  // TODO(fixme): implement using Container::getContainerSize
+}
+
+int EndstoneInventory::getMaxStackSize() const
+{
+    return 0;  // TODO(fixme): implement using Container::getMaxStackSize
+}
+
+}  // namespace endstone::detail

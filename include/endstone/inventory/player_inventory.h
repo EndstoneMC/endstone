@@ -16,7 +16,11 @@
 
 #include "endstone/inventory/inventory.h"
 
+namespace endstone {
+
 /**
  * @brief Interface to the inventory of a Player, including the four armor slots and any extra slots.
  */
 class PlayerInventory : public Inventory {};
+
+}  // namespace endstone

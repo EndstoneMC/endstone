@@ -297,6 +297,11 @@ void EndstonePlayer::setGameMode(GameMode mode)
     }
 }
 
+PlayerInventory &EndstonePlayer::getInventory() const
+{
+    return *inventory_;
+}
+
 void EndstonePlayer::disconnect()
 {
     perm_.clearPermissions();

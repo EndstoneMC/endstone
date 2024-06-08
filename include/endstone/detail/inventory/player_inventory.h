@@ -14,23 +14,11 @@
 
 #pragma once
 
-namespace endstone {
-/**
- * @brief Interface to the various inventories.
- */
-class Inventory {
-    /**
-     * @brief Returns the size of the inventory
-     *
-     * @return The size of the inventory
-     */
-    [[nodiscard]] virtual int getSize() const = 0;
+#include "endstone/detail/inventory/inventory.h"
+#include "endstone/inventory/player_inventory.h"
 
-    /**
-     * @brief Returns the maximum stack size for an ItemStack in this inventory.
-     *
-     * @return The maximum size for an ItemStack in this inventory.
-     */
-    [[nodiscard]] virtual int getMaxStackSize() const = 0;
-};
-}  // namespace endstone
+namespace endstone::detail {
+
+class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory {};
+
+}  // namespace endstone::detail

@@ -14,7 +14,10 @@
 
 #pragma once
 
+#include <memory>
+
 #include "endstone/detail/actor/actor.h"
+#include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/player.h"
 
 class Player;
@@ -69,6 +72,7 @@ public:
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
     [[nodiscard]] GameMode getGameMode() const override;
     void setGameMode(GameMode mode) override;
+    [[nodiscard]] PlayerInventory &getInventory() const override;
 
     void disconnect();
     [[nodiscard]] ::Player &getHandle() const;
@@ -78,6 +82,7 @@ private:
     UUID uuid_;
     SocketAddress address_;
     PermissibleBase perm_;
+    std::unique_ptr<EndstonePlayerInventory> inventory_;
 };
 
 }  // namespace endstone::detail
