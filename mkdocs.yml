@@ -39,7 +39,7 @@ plugins:
       repository: EndstoneMC/endstone
       branch: main
   - mkdocstrings:
-      enabled: !ENV [ CI, true ]
+      enabled: !ENV [ CI, false ]
       custom_templates: docs/templates
       handlers:
         python:
