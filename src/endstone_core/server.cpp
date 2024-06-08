@@ -199,7 +199,22 @@ std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 
 int EndstoneServer::getMaxPlayers() const
 {
-    return getServerNetworkHandler().getMaxPlayers();
+    return getServerNetworkHandler().max_players_;
+}
+
+void EndstoneServer::setMaxPlayers(int max_players)
+{
+    if (max_players < 0) {
+        getLogger().error("Unable to set the max number of players to a negative value: {}.", max_players);
+        return;
+    }
+    if (max_players > ENDSTONE_MAX_PLAYERS) {
+        getLogger().warning("Unable to set the max number of players to a value greater than {}.",
+                            ENDSTONE_MAX_PLAYERS);
+        return;
+    }
+    getServerNetworkHandler().max_players_ = max_players;
+    getServerNetworkHandler().updateServerAnnouncement();
 }
 
 Player *EndstoneServer::getPlayer(endstone::UUID id) const

@@ -138,6 +138,13 @@ public:
     [[nodiscard]] virtual int getMaxPlayers() const = 0;
 
     /**
+     * @brief  Set the maximum amount of players allowed to be logged in at once.
+     *
+     * @param maxPlayers The maximum amount of concurrent players
+     */
+    virtual void setMaxPlayers(int max_players) = 0;
+
+    /**
      * @brief Gets the player with the given UUID.
      *
      * @param id UUID of the player to retrieve

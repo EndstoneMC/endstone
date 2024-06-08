@@ -61,7 +61,8 @@ public:
     void addLevel(std::unique_ptr<Level> level);
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
-    int getMaxPlayers() const override;
+    [[nodiscard]] int getMaxPlayers() const override;
+    void setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 

@@ -17,11 +17,15 @@
 #include <entt/entt.hpp>
 
 #include "endstone/detail/hook.h"
+#include "endstone/endstone.h"
 
 RakNet::StartupResult RakPeerHelper::peerStartup(RakNet::RakPeerInterface *peer, const ConnectionDefinition &def,
                                                  RakPeerHelper::PeerPurpose purpose)
 {
-    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, def, purpose);
+    auto new_def = def;
+    new_def.max_num_connections = ENDSTONE_MAX_PLAYERS;
+
+    auto result = ENDSTONE_HOOK_CALL_ORIGINAL(&RakPeerHelper::peerStartup, this, peer, new_def, purpose);
     if (result == RakNet::StartupResult::RAKNET_STARTED && purpose == RakPeerHelper::PeerPurpose::Gameplay) {
         if (entt::locator<RakNet::RakPeerInterface *>::has_value()) {
             throw std::runtime_error("Server RakPeer is already defined.");
