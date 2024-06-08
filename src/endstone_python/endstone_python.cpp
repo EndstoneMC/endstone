@@ -34,6 +34,7 @@ namespace endstone::detail {
 void init_color_format(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_logger(py::module_ &);
+void init_inventory(py::module_ &);
 
 void init_util(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
@@ -69,6 +70,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_color_format(m);
     init_game_mode(m);
     init_logger(m);
+    init_inventory(m);
 
     init_util(m);
 
@@ -225,7 +227,8 @@ void init_player(py::module_ &m)
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
         .def("perform_command", &Player::performCommand, py::arg("command"),
              "Makes the player perform the given command.")
-        .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.");
+        .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
+        .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference, "Get the player's inventory.");
 }
 
 }  // namespace endstone::detail

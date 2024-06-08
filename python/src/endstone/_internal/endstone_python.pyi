@@ -3,7 +3,7 @@ import datetime
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     @property
     def is_in_lava(self) -> bool:
@@ -333,6 +333,20 @@ class GameMode:
     @property
     def value(self) -> int:
         ...
+class Inventory:
+    """
+    Interface to the various inventories.
+    """
+    @property
+    def max_stack_size(self) -> int:
+        """
+        Returns the maximum stack size for an ItemStack in this inventory.
+        """
+    @property
+    def size(self) -> int:
+        """
+        Returns the size of the inventory
+        """
 class Level:
     def get_dimension(self, name: str) -> Dimension:
         """
@@ -704,6 +718,11 @@ class Player(Actor):
     def game_mode(self, arg1: GameMode) -> None:
         ...
     @property
+    def inventory(self) -> PlayerInventory:
+        """
+        Get the player's inventory.
+        """
+    @property
     def is_flying(self) -> bool:
         """
         Checks to see if this player is currently flying or not.
@@ -746,6 +765,10 @@ class PlayerCommandEvent(Event):
         """
         Returns the Player who sends the command
         """
+class PlayerInventory(Inventory):
+    """
+    Interface to the inventory of a Player, including the four armor slots and any extra slots.
+    """
 class PlayerJoinEvent(Event):
     @property
     def player(self) -> Player:

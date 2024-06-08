@@ -20,6 +20,7 @@ namespace endstone {
  */
 class Inventory {
 public:
+    virtual ~Inventory() = default;
     /**
      * @brief Returns the size of the inventory
      *
