@@ -54,7 +54,7 @@ public:
 
 private:
     ENDSTONE_HOOK void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
-                                enum CommandOutputMessageType);
+                                  enum CommandOutputMessageType);
 
     CommandOutputType type_;                          // +0
     std::unique_ptr<class CommandPropertyBag> data_;  // +8

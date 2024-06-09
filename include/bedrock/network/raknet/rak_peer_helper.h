@@ -36,5 +36,5 @@ public:
     };
 
     ENDSTONE_HOOK RakNet::StartupResult peerStartup(RakNet::RakPeerInterface *, ConnectionDefinition const &,
-                                                  RakPeerHelper::PeerPurpose);
+                                                    RakPeerHelper::PeerPurpose);
 };

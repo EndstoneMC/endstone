@@ -156,7 +156,8 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("to_thunder_state", &ThunderChangeEvent::toThunderState,
                                "Gets the state of thunder that the world is being set to");
 
-    py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent", "Called when the weather (rain) state in a world is changing.")
+    py::class_<WeatherChangeEvent, Event>(m, "WeatherChangeEvent",
+                                          "Called when the weather (rain) state in a world is changing.")
         .def_property_readonly("level", &WeatherChangeEvent::getLevel, py::return_value_policy::reference,
                                "Returns the Level where this event is occurring")
         .def_property_readonly("to_weather_state", &WeatherChangeEvent::toWeatherState,

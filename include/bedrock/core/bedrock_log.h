@@ -79,6 +79,6 @@ enum class LogCategory;
 enum class LogRule;
 
 ENDSTONE_HOOK void log_va(BedrockLog::LogCategory category, std::bitset<3> channel_mask, BedrockLog::LogRule rule,
-                        LogAreaID area, std::uint32_t priority, char const *function, int line, char const *format,
-                        va_list args);
+                          LogAreaID area, std::uint32_t priority, char const *function, int line, char const *format,
+                          va_list args);
 }  // namespace BedrockLog

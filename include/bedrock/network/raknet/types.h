@@ -52,7 +52,7 @@ struct SystemAddress {
     } address;
     std::uint16_t debug_port;
 
-    [[nodiscard]] std::uint16_t GetPort() const;                                              // NOLINT
+    [[nodiscard]] std::uint16_t GetPort() const;                                                // NOLINT
     ENDSTONE_HOOK void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
 };
 BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);

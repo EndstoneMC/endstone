@@ -21,5 +21,5 @@
 class SayCommand {
 private:
     ENDSTONE_HOOK static void _sendMessage(std::string const &, std::string const &,  // NOLINT(*-identifier-naming)
-                                         struct CommandOriginIdentity const &, class Level &);
+                                           struct CommandOriginIdentity const &, class Level &);
 };

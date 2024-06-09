@@ -139,6 +139,11 @@ public:
             return value_;
         }
 
+        [[nodiscard]] std::uint64_t toIndex() const
+        {
+            return value_ & 0xE00FFFFF;
+        }
+
     private:
         std::uint32_t value_;
     };
@@ -206,7 +211,7 @@ public:
     class RegistryState;
 
     ENDSTONE_HOOK void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
-                                     CommandFlag flag1, CommandFlag flag2);
+                                       CommandFlag flag1, CommandFlag flag2);
     ENDSTONE_HOOK void registerAlias(std::string name, std::string alias);
     ENDSTONE_HOOK int addEnumValues(const std::string &name, const std::vector<std::string> &values);
     [[nodiscard]] ENDSTONE_HOOK AvailableCommandsPacket serializeAvailableCommands() const;
@@ -273,16 +278,16 @@ public:
 private:
     [[nodiscard]] ENDSTONE_HOOK const CommandRegistry::Signature *findCommand(const std::string &name) const;
     [[nodiscard]] ENDSTONE_HOOK std::unique_ptr<Command> createCommand(const CommandRegistry::ParseToken &parse_token,
-                                                                     const CommandOrigin &origin, int version,
-                                                                     std::string &error_message,
-                                                                     std::vector<std::string> &error_params) const;
+                                                                       const CommandOrigin &origin, int version,
+                                                                       std::string &error_message,
+                                                                       std::vector<std::string> &error_params) const;
     [[nodiscard]] ENDSTONE_HOOK std::string describe(CommandParameterData const &) const;
-    [[nodiscard]] ENDSTONE_HOOK std::string describe(const CommandRegistry::Signature &signature, const std::string &name,
-                                                   const CommandRegistry::Overload &overload, unsigned int a4,
-                                                   unsigned int *a5, unsigned int *a6) const;
+    [[nodiscard]] ENDSTONE_HOOK std::string describe(const CommandRegistry::Signature &signature,
+                                                     const std::string &name, const CommandRegistry::Overload &overload,
+                                                     unsigned int a4, unsigned int *a5, unsigned int *a6) const;
 
     ENDSTONE_HOOK void registerOverloadInternal(CommandRegistry::Signature &signature,
-                                              CommandRegistry::Overload &overload);
+                                                CommandRegistry::Overload &overload);
 };
 BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry, 904, 896);
 

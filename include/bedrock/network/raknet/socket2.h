@@ -41,8 +41,8 @@ class RNS2_Windows_Linux_360 {  // NOLINT
 protected:
     // NOLINTNEXTLINE
     ENDSTONE_HOOK static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
-                                                                  RNS2_SendParameters *send_parameters,
-                                                                  const char *file, unsigned int line);
+                                                                    RNS2_SendParameters *send_parameters,
+                                                                    const char *file, unsigned int line);
 };
 
 }  // namespace RakNet
