@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ActorSpawnEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ActorSpawnEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1ActorEvent" prot="public" virt="non-virtual">endstone::ActorEvent</basecompoundref>
+    <includes refid="actor__spawn__event_8h" local="no">endstone/event/actor/actor_spawn_event.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ActorSpawnEvent_1adf1259b01a63a9cf4453ec0f7c99b7db" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ActorSpawnEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;ActorSpawnEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="31" column="37" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1a97220eb48dd782f724751748da0be5e6" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorSpawnEvent::ActorSpawnEvent</definition>
+        <argsstring>(Actor &amp;actor)</argsstring>
+        <name>ActorSpawnEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+          <declname>actor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="28" column="14" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1ac524be66b9fb6427fec2fab4dca9c7c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ActorSpawnEvent::~ActorSpawnEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~ActorSpawnEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::ActorSpawnEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="32" column="18" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ActorSpawnEvent_1a4b36f15fe95c316b1589bbf5314c60d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::ActorSpawnEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/actor/actor_spawn_event.h" line="37" column="11" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="37" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Called when an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> is spawned into a world. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>If an <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> Spawn event is cancelled, the actor will not spawn. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ActorSpawnEvent</label>
+        <link refid="classendstone_1_1ActorSpawnEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ActorSpawnEvent</label>
+        <link refid="classendstone_1_1ActorSpawnEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ActorEvent</label>
+        <link refid="classendstone_1_1ActorEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/actor/actor_spawn_event.h" line="26" column="1" bodyfile="include/endstone/event/actor/actor_spawn_event.h" bodystart="26" bodyend="43"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ActorEvent_1a1d431f4b3c7cc2db417684a97029c386" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorSpawnEvent_1a97220eb48dd782f724751748da0be5e6" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>ActorSpawnEvent</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ActorEvent_1af8c9cbdbfc0c7e3fcb4a5ec566e0d1d4" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>getActor</name></member>
+      <member refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" prot="public" virt="virtual"><scope>endstone::ActorSpawnEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1ActorSpawnEvent_1a4b36f15fe95c316b1589bbf5314c60d6" prot="public" virt="virtual"><scope>endstone::ActorSpawnEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1ActorSpawnEvent_1adf1259b01a63a9cf4453ec0f7c99b7db" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1ActorEvent_1a3cf15029246f7add54e99e9e417b1c75" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>~ActorEvent</name></member>
+      <member refid="classendstone_1_1ActorSpawnEvent_1ac524be66b9fb6427fec2fab4dca9c7c9" prot="public" virt="non-virtual"><scope>endstone::ActorSpawnEvent</scope><name>~ActorSpawnEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ActorSpawnEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

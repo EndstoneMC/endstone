@@ -1,0 +1,517 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Player" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Player</compoundname>
+    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
+    <includes refid="player_8h" local="no">endstone/player.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Player::Player</definition>
+        <argsstring>()=default</argsstring>
+        <name>Player</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="32" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Player::Player</definition>
+        <argsstring>(const Player &amp;)=delete</argsstring>
+        <name>Player</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+        <definition>Player&amp; endstone::Player::operator=</definition>
+        <argsstring>(const Player &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="34" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1adf03a1a7668477bc13b7f51805fa69a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Player::Player</definition>
+        <argsstring>(Player &amp;&amp;)=delete</argsstring>
+        <name>Player</name>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="35" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a02acf696396f354a6caacc2a115c7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+        <definition>Player&amp; endstone::Player::operator=</definition>
+        <argsstring>(Player &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="36" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a2c633b6166a107cb9a75ba2e2dc758de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Player::~Player</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Player</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *</type>
+        <definition>Player* endstone::Player::asPlayer</definition>
+        <argsstring>() const override</argsstring>
+        <name>asPlayer</name>
+        <reimplements refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6">asPlayer</reimplements>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, nullptr if not a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="41" column="13" bodyfile="include/endstone/player.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
+        <definition>virtual endstone::UUID endstone::Player::getUniqueId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getUniqueId</name>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of this player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="51" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classendstone_1_1SocketAddress" kindref="compound">SocketAddress</ref> &amp;</type>
+        <definition>virtual const SocketAddress&amp; endstone::Player::getAddress</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getAddress</name>
+        <briefdescription>
+<para>Gets the socket address of this player. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s socket address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="58" column="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a3da573d0fba8fe10620307d803c4c358" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::sendRawMessage</definition>
+        <argsstring>(std::string message) const =0</argsstring>
+        <name>sendRawMessage</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Sends this player a raw message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to be displayed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="65" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::sendPopup</definition>
+        <argsstring>(std::string message) const =0</argsstring>
+        <name>sendPopup</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Sends this player a popup message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to be displayed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="72" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::sendTip</definition>
+        <argsstring>(std::string message) const =0</argsstring>
+        <name>sendTip</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Sends this player a tip message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message to be displayed </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="79" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::kick</definition>
+        <argsstring>(std::string message) const =0</argsstring>
+        <name>kick</name>
+        <param>
+          <type>std::string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+<para>Kicks player with custom kick message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>kick message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="86" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Player::isFlying</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isFlying</name>
+        <briefdescription>
+<para>Checks to see if this player is currently flying or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the player is flying, else false. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="93" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::chrono::milliseconds</type>
+        <definition>virtual std::chrono::milliseconds endstone::Player::getPing</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPing</name>
+        <briefdescription>
+<para>Gets the player&apos;s average ping. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>player ping </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="100" column="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::updateCommands</definition>
+        <argsstring>() const =0</argsstring>
+        <name>updateCommands</name>
+        <briefdescription>
+<para>Send the list of commands to the client. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Generally useful to ensure the client has a complete list of commands after permission changes are done. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="107" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Player::performCommand</definition>
+        <argsstring>(std::string command) const =0</argsstring>
+        <name>performCommand</name>
+        <param>
+          <type>std::string</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+<para>Makes the player perform the given command. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> to perform </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the command was successful, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="115" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>GameMode</type>
+        <definition>virtual GameMode endstone::Player::getGameMode</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getGameMode</name>
+        <briefdescription>
+<para>Gets this player&apos;s current GameMode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current game mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="122" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::setGameMode</definition>
+        <argsstring>(GameMode mode)=0</argsstring>
+        <name>setGameMode</name>
+        <param>
+          <type>GameMode</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Sets this player&apos;s current GameMode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New game mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="129" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref> &amp;</type>
+        <definition>virtual PlayerInventory&amp; endstone::Player::getInventory</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getInventory</name>
+        <briefdescription>
+<para>Get the player&apos;s inventory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The inventory of the player, this also contains the armor slots. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="136" column="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a player. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="137"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Actor_1a87d53d3bf300ae2ec479300c153dd1db" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>
+      <member refid="classendstone_1_1CommandSender_1a8de210424ed3b3a27a5a1a7f49065187" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>CommandSender</name></member>
+      <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
+      <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getGameMode</name></member>
+      <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getInventory</name></member>
+      <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getPing</name></member>
+      <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getRuntimeId</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
+      <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isFlying</name></member>
+      <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInLava</name></member>
+      <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOnGround</name></member>
+      <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOp</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>kick</name></member>
+      <member refid="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Player_1a02acf696396f354a6caacc2a115c7992" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" prot="public" virt="non-virtual" ambiguityscope="endstone::Actor::"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" virt="non-virtual" ambiguityscope="endstone::Actor::"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>performCommand</name></member>
+      <member refid="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
+      <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
+      <member refid="classendstone_1_1Player_1adf03a1a7668477bc13b7f51805fa69a8" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendPopup</name></member>
+      <member refid="classendstone_1_1Player_1a3da573d0fba8fe10620307d803c4c358" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendRawMessage</name></member>
+      <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTip</name></member>
+      <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
+      <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
+      <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>updateCommands</name></member>
+      <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~Actor</name></member>
+      <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~CommandSender</name></member>
+      <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Player</scope><name>~Permissible</name></member>
+      <member refid="classendstone_1_1Player_1a2c633b6166a107cb9a75ba2e2dc758de" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~Player</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
