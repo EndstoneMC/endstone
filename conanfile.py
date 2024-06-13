@@ -107,7 +107,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/0.5.2")
-        self.requires("entt/3.13.0")
+        # self.requires("entt/3.13.0")
         self.requires("expected-lite/0.6.3")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")

@@ -57,5 +57,5 @@ private:
 
     std::string name_;                         // +16
     entt::basic_registry<EntityId> registry_;  // +48
-    std::uint32_t id_;                         // +336
+    std::uint32_t id_;                         // +352
 };
