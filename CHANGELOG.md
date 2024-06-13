@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.4.7](https://github.com/EndstoneMC/endstone/compare/v0.4.6...v0.4.7)</small>
 
-## [0.4.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7) - 2024-05-15
+## [0.4.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7) - 2024-06-13
 
 <small>[Compare with 0.4.6](https://github.com/EndstoneMC/endstone/compare/v0.4.6...v0.4.7)</small>
 
