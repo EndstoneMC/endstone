@@ -19,15 +19,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Plugin configuration for Python plugins.
 - Added more struct info by [@Duckos-Mods](https://github.com/Duckos-Mods)
   in [#11](https://github.com/EndstoneMC/endstone/pull/11).
+- World seed will no longer be sent to the client when `client-side-chunk-generation-enabled` is disabled
+  in `server.properties`.
+- Command permissions are now checked before its parsing.
+- `Server::dispatchCommand` allows one to dispatch a command on the server.
+- `Server::getMaxPlayers` and `Server::setMaxPlayers` for getting and setting the maximum amount of players allowed to
+  be logged in.
+- `Server::getPlayer` now also accepts a string argument to get a player by name instead of UUID.
 
 ### Changed
 
-- Changed logging level look up from using a hashmap to using a switch by [@Duckos-Mods](https://github.com/Duckos-Mods)
+- Changed logging level look-up from using a hashmap to using a switch by [@Duckos-Mods](https://github.com/Duckos-Mods)
   in [#12](https://github.com/EndstoneMC/endstone/pull/12)
+- Endstone no longer requires the presence of debug symbols at runtime.
 
 ### Fixed
 
 - `Actor::getVelocity` now returns the correct velocity when the actor rides a vehicle.
+- Python plugin loader now works correctly with Python 3.9.
 
 ## [0.4.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.6) - 2024-05-15
 
