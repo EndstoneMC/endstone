@@ -162,7 +162,7 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["core"].requires = [
             "boost::boost",
             "concurrentqueue::concurrentqueue",
-            "entt::entt",
+            # "entt::entt",
             "expected-lite::expected-lite",
             "glm::glm",
             "jsoncpp::jsoncpp",
