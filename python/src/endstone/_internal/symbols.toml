@@ -1,134 +1,134 @@
-timestamp = 1717750224
+timestamp = 1718277242
 version = "1.20.81"
 
 [windows]
-"?getI18n@@YAAEAVI18n@@XZ" = 0x83eeb0
+"?getI18n@@YAAEAVI18n@@XZ" = 8646320
 # Actor
-"?remove@Actor@@UEAAXXZ" = 0x18a4ac0
-"?setDimension@Actor@@QEAAXV?$WeakRef@VDimension@@@@@Z" = 0x18a84d0
+"?remove@Actor@@UEAAXXZ" = 25840320
+"?setDimension@Actor@@QEAAXV?$WeakRef@VDimension@@@@@Z" = 25855184
 # Bedrock
-"?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 0x285df50
+"?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 42327888
 # BedrockLog
-"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 0x264c2a0
+"?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 40157856
 # Command
-"?getCommandName@Command@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 0xbb9a50
+"?getCommandName@Command@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 12294736
 # CommandOriginLoader
-"?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z" = 0xb97b30
+"?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z" = 12155696
 # CommandOutput
-"?addMessage@CommandOutput@@AEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@VCommandOutputParameter@@V?$allocator@VCommandOutputParameter@@@std@@@3@W4CommandOutputMessageType@@@Z" = 0xbb2a70
+"?addMessage@CommandOutput@@AEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@VCommandOutputParameter@@V?$allocator@VCommandOutputParameter@@@std@@@3@W4CommandOutputMessageType@@@Z" = 12266096
 # CommandRegistry
-"?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 0xc6a220
-"?createCommand@CommandRegistry@@AEBA?AV?$unique_ptr@VCommand@@U?$default_delete@VCommand@@@std@@@std@@AEBUParseToken@1@AEBVCommandOrigin@@HAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 0xc6e820
-"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z" = 0xc6efb0
-"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBUSignature@1@AEBV23@AEBUOverload@1@IPEAI3@Z" = 0xc6ed30
-"?findCommand@CommandRegistry@@AEBAPEBUSignature@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 0xc70b50
-"?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z" = 0xc76f30
-"?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z" = 0xc774f0
-"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z" = 0xc77d50
-"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ" = 0xc79030
+"?addEnumValues@CommandRegistry@@QEAAHAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 13017632
+"?createCommand@CommandRegistry@@AEBA?AV?$unique_ptr@VCommand@@U?$default_delete@VCommand@@@std@@@std@@AEBUParseToken@1@AEBVCommandOrigin@@HAEAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@AEAV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@3@@Z" = 13035552
+"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVCommandParameterData@@@Z" = 13037488
+"?describe@CommandRegistry@@AEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBUSignature@1@AEBV23@AEBUOverload@1@IPEAI3@Z" = 13036848
+"?findCommand@CommandRegistry@@AEBAPEBUSignature@1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z" = 13044560
+"?registerAlias@CommandRegistry@@QEAAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z" = 13070128
+"?registerCommand@CommandRegistry@@QEAAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PEBDW4CommandPermissionLevel@@UCommandFlag@@3@Z" = 13071600
+"?registerOverloadInternal@CommandRegistry@@AEAAXAEAUSignature@1@AEAUOverload@1@@Z" = 13073744
+"?serializeAvailableCommands@CommandRegistry@@QEBA?AVAvailableCommandsPacket@@XZ" = 13078576
 # CommandUtils
-"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z" = 0xbb9430
+"?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z" = 12293168
 # Common
-"?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 0x540900
+"?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 5507328
 # Level
-"?tick@Level@@UEAAXXZ" = 0x1a41380
+"?tick@Level@@UEAAXXZ" = 27530112
 # MinecraftCommands
-"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 0xc01440
+"?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 12588096
 # MinecraftPackets
-"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 0x7e67f0
+"?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 8284144
 # Player
-"?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 0x18e2350
-"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 0x18ee4e0
-"?getInventory@Player@@QEAAAEAVContainer@@XZ" = 0x18e1c30
+"?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 26092368
+"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 26141920
+"?getInventory@Player@@QEAAAEAVContainer@@XZ" = 26090544
 # RakNet
-"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 0x2230bd0
-"?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 0x220f350
+"?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 35851216
+"?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 35713872
 # RakPeerHelper
-"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 0x7f7ff0
+"?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 8355824
 # SayCommand
-"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 0x1575fb0
+"?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 22503344
 # ScriptLevelGameplayHandler
-"?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 0xb174f0
+"?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 11629808
 # ServerInstanceEventCoordinator
-"?sendServerInitializeStart@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 0x17b9510
-"?sendServerLevelInitialized@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@AEAVLevel@@@Z" = 0x17b9540
-"?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 0x17b9660
-"?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 0x17b9690
+"?sendServerInitializeStart@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 24876304
+"?sendServerLevelInitialized@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@AEAVLevel@@@Z" = 24876352
+"?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 24876640
+"?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 24876688
 # ServerLevel
-"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 0xb7cd80
+"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 12045696
 # ServerNetworkHandler
-"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z" = 0x88f970
-"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 0x8a0e20
-"?_displayGameMessage@ServerNetworkHandler@@AEAAXAEBVPlayer@@AEAUChatEvent@@@Z" = 0x876920
-"?_loadNewPlayer@ServerNetworkHandler@@AEAA_NAEAVServerPlayer@@_N@Z" = 0x878250
+"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z" = 8976752
+"?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 9047584
+"?_displayGameMessage@ServerNetworkHandler@@AEAAXAEBVPlayer@@AEAUChatEvent@@@Z" = 8874272
+"?_loadNewPlayer@ServerNetworkHandler@@AEAA_NAEAVServerPlayer@@_N@Z" = 8880720
 # ServerPlayer
-"?disconnect@ServerPlayer@@QEAAXXZ" = 0xbb6d10
-"?doInitialSpawn@ServerPlayer@@QEAAXXZ" = 0xbb74d0
+"?disconnect@ServerPlayer@@QEAAXXZ" = 12283152
+"?doInitialSpawn@ServerPlayer@@QEAAXXZ" = 12285136
 # StartGamePacket
-"?write@StartGamePacket@@UEBAXAEAVBinaryStream@@@Z" = 0x8e2570
+"?write@StartGamePacket@@UEBAXAEAVBinaryStream@@@Z" = 9315696
 
 [linux]
-"_Z7getI18nv" = 0x47fdd70
+"_Z7getI18nv" = 75488624
 # Actor
-"_ZN5Actor12setDimensionE7WeakRefI9DimensionE" = 0x693b190
-"_ZN5Actor6removeEv" = 0x6931bf0
+"_ZN5Actor12setDimensionE7WeakRefI9DimensionE" = 110342544
+"_ZN5Actor6removeEv" = 110304240
 # Bedrock
-"_ZN7Bedrock9Threading15getServerThreadEv" = 0x845d3d0
+"_ZN7Bedrock9Threading15getServerThreadEv" = 138793936
 # BedrockLog
-"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 0x80ec280
+"_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 135185024
 # Command
-"_ZNK7Command14getCommandNameEv" = 0x4e1ae70
+"_ZNK7Command14getCommandNameEv" = 81899120
 # CommandOriginLoader
-"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel" = 0x4e72ab0
+"_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel" = 82258608
 # CommandOutput
-"_ZN13CommandOutput10addMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorI22CommandOutputParameterNS4_ISA_EEEE24CommandOutputMessageType" = 0x4e293c0
+"_ZN13CommandOutput10addMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorI22CommandOutputParameterNS4_ISA_EEEE24CommandOutputMessageType" = 81957824
 # CommandRegistry
-"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE" = 0x5df9660
-"_ZNK15CommandRegistry13createCommandERKNS_10ParseTokenERK13CommandOriginiRNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEERNS6_6vectorISC_NSA_ISC_EEEE" = 0x5dde4d0
-"_ZNK15CommandRegistry8describeERK20CommandParameterData" = 0x5e0bdd0
-"_ZNK15CommandRegistry8describeERKNS_9SignatureERKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEERKNS_8OverloadEjPjSF_" = 0x5e0c440
-"_ZNK15CommandRegistry11findCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 0x5de09b0
-"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_" = 0x5dfb580
-"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_" = 0x5dfa090
-"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE" = 0x5dfe280
-"_ZNK15CommandRegistry26serializeAvailableCommandsEv" = 0x5e10740
+"_ZN15CommandRegistry13addEnumValuesERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEERKNS0_6vectorIS6_NS4_IS6_EEEE" = 98539104
+"_ZNK15CommandRegistry13createCommandERKNS_10ParseTokenERK13CommandOriginiRNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEERNS6_6vectorISC_NSA_ISC_EEEE" = 98428112
+"_ZNK15CommandRegistry8describeERK20CommandParameterData" = 98614736
+"_ZNK15CommandRegistry8describeERKNS_9SignatureERKNSt3__112basic_stringIcNS3_11char_traitsIcEENS3_9allocatorIcEEEERKNS_8OverloadEjPjSF_" = 98616384
+"_ZNK15CommandRegistry11findCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEE" = 98437552
+"_ZN15CommandRegistry13registerAliasENSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES6_" = 98547072
+"_ZN15CommandRegistry15registerCommandERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEEPKc22CommandPermissionLevel11CommandFlagSC_" = 98541712
+"_ZN15CommandRegistry24registerOverloadInternalERNS_9SignatureERNS_8OverloadE" = 98558592
+"_ZNK15CommandRegistry26serializeAvailableCommandsEv" = 98633536
 # CommandUtils
-"_ZN12CommandUtils12getActorNameERK5Actor" = 0x4e1d7a0
+"_ZN12CommandUtils12getActorNameERK5Actor" = 81909664
 # Common
-"_ZN6Common20getGameVersionStringEv" = 0x3d72140
+"_ZN6Common20getGameVersionStringEv" = 64430400
 # Level
-"_ZN5Level4tickEv" = 0x714b360
+"_ZN5Level4tickEv" = 118797152
 # MinecraftCommands
-"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 0x4f24fa0
+"_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 82988960
 # MinecraftPackets
-"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 0x46c1ba0
+"_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 74193824
 # Player
-"_ZNK6Player7getNameEv" = 0x61cbf40
-"_ZN6Player14setPermissionsE22CommandPermissionLevel" = 0x61d1d50
-"_ZN6Player12getInventoryEv" = 0x61ddab0
+"_ZNK6Player7getNameEv" = 102547264
+"_ZN6Player14setPermissionsE22CommandPermissionLevel" = 102571344
+"_ZN6Player12getInventoryEv" = 102619824
 # RakNet
-"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 0x7ae5260
-"_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 0x7aed400
+"_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 128864864
+"_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 128898048
 # RakPeerHelper
-"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 0x46cc770
-# ScriptLevelGameplayHandler
-"_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 0x4dccb40
-# ServerInstanceEventCoordinator
-"_ZN30ServerInstanceEventCoordinator25sendServerInitializeStartER14ServerInstance" = 0x68298b0
-"_ZN30ServerInstanceEventCoordinator26sendServerLevelInitializedER14ServerInstanceR5Level" = 0x6829a60
-"_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 0x6829d30
-"_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 0x6829dc0
-# ServerLevel
-"_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 0x4e69490
-# ServerNetworkHandler
-"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 0x4929650
-"_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 0x492f700
-"_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 0x4927d50
-"_ZN20ServerNetworkHandler14_loadNewPlayerER12ServerPlayerb" = 0x49385b0
-# ServerPlayer
-"_ZN12ServerPlayer10disconnectEv" = 0x4e18250
-"_ZN12ServerPlayer14doInitialSpawnEv" = 0x4e140c0
-# StartGamePacket
-"_ZNK15StartGamePacket5writeER12BinaryStream" = 0x4aa6bd0
+"_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 74237808
 # SayCommand
-"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_RK21CommandOriginIdentityR5Level" = 0x5689b40
+"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_RK21CommandOriginIdentityR5Level" = 90741568
+# ScriptLevelGameplayHandler
+"_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 81578816
+# ServerInstanceEventCoordinator
+"_ZN30ServerInstanceEventCoordinator25sendServerInitializeStartER14ServerInstance" = 109222064
+"_ZN30ServerInstanceEventCoordinator26sendServerLevelInitializedER14ServerInstanceR5Level" = 109222496
+"_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 109223216
+"_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 109223360
+# ServerLevel
+"_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 82220176
+# ServerNetworkHandler
+"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 76715600
+"_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 76740352
+"_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 76709200
+"_ZN20ServerNetworkHandler14_loadNewPlayerER12ServerPlayerb" = 76776880
+# ServerPlayer
+"_ZN12ServerPlayer10disconnectEv" = 81887824
+"_ZN12ServerPlayer14doInitialSpawnEv" = 81871040
+# StartGamePacket
+"_ZNK15StartGamePacket5writeER12BinaryStream" = 78277584
