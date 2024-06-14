@@ -165,4 +165,5 @@ enum class ActorType {
     Armadillo = 142 | Animal,
     WindChargeProjectile = 143 | Projectile,
     Bogged = 144 | SkeletonMonster,
+    OminousItemSpawner = 145
 };
