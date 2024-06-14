@@ -250,7 +250,7 @@ public:
 
     std::function<void(class Packet const &)> network_update_callback;                             // +0
     std::function<int(bool &, std::string const &, class Actor const &)> get_score_for_objective;  // +56
-    bool unknown1_;                                                                                // +128
+    bool edu_mode;                                                                                 // +128
     std::vector<CommandRegistry::ParseRule> rules;                                                 // +136
     std::map<std::uint32_t, CommandRegistry::ParseTable> parse_tables;                             // +160
     std::vector<CommandRegistry::OptionalParameterChain> optionals;                                // +176
