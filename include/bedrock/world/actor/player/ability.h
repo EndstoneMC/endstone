@@ -20,13 +20,13 @@ class Ability {
 public:
     enum class Type {
         Invalid = 0,
-        NotSet = 1,
+        Unset = 1,
         Bool = 2,
         Float = 3,
     };
 
     enum class Options {
-        Default = 0
+        None = 0
     };
 
     union Value {

@@ -28,7 +28,7 @@ public:
         for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
             const auto &abilities = layers_[i];
             ability = &abilities.getAbility(index);
-            if (ability->getType() != Ability::Type::NotSet) {
+            if (ability->getType() != Ability::Type::Unset) {
                 break;
             }
         }
