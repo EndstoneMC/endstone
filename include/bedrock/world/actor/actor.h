@@ -105,7 +105,6 @@ public:
     virtual void playerTouch(Player &) = 0;
     [[nodiscard]] virtual bool isImmobile() const = 0;
     virtual bool isSilentObserver() = 0;
-    virtual bool isPickable() = 0;
     [[nodiscard]] virtual bool isSleeping() const = 0;
     virtual void setSleeping(bool) = 0;
     virtual void setSneaking(bool) = 0;
@@ -136,12 +135,11 @@ public:
     virtual void onLightningHit() = 0;
     virtual void feed(int) = 0;
     virtual void handleEntityEvent(ActorEvent, int) = 0;
-    virtual float getPickRadius() = 0;
     [[nodiscard]] virtual HashedString const &getActorRendererId() const = 0;
     virtual void despawn() = 0;
     virtual void setArmor(ArmorSlot, ItemStack const &) = 0;
     [[nodiscard]] virtual ArmorMaterialType getArmorMaterialTypeInSlot(ArmorSlot) const = 0;
-    [[nodiscard]] virtual ArmorTextureType getArmorMaterialTextureTypeInSlot(ArmorSlot) const = 0;
+    [[nodiscard]] virtual int getArmorTextureIndexInSlot(ArmorSlot) const = 0;
     [[nodiscard]] virtual float getArmorColorInSlot(ArmorSlot, int) const = 0;
     virtual void setEquippedSlot(EquipmentSlot, ItemStack const &) = 0;
     virtual void setCarriedItem(ItemStack const &) = 0;
@@ -273,29 +271,29 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
 protected:
-    EntityContext entity_context_;                                                  // +8
-    ActorInitializationMethod init_method_;                                         // +32
-    std::string custom_init_event_name_;                                            // +40
-    std::array<char[16], 10> unknown3_;                                             // +72  (+64)
-    bool force_init_method_to_spawn_on_reload_;                                     // +232 (+224)
-    bool added_;                                                                    // +233 (+225)
-    ActorDefinitionGroup *definitions_;                                             // +240 (+232)
-    std::unique_ptr<ActorDefinitionDescriptor> current_description_;                // +248 (+240)
-    std::shared_ptr<RopeSystem> leash_rope_system_;                                 // +256 (+248)
-    std::string unknown6_;                                                          // +272 (+264)
-    char unknown7_[72];                                                             // +304 (+288)
-    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;        // +376 (+360)
-    std::int32_t unknown9_;                                                         // +392 (+384)
-    SynchedActorDataEntityWrapper entity_data_;                                     // +400 (+392)
-    std::unique_ptr<SpatialActorNetworkData> network_data_;                         // +448 (+440)
-    Vec3 sent_delta_;                                                               // +456 (+448)
-    char unknown11_[116];                                                           // +468 (+460)
-    WeakRef<Dimension> dimension_;                                                  // +584 (+576)
-    Level *level_;                                                                  // +600 (+592)
-    HashedString actor_renderer_id_;                                                // +608 (+600)
-    ActorCategory categories_;                                                      // +656 (+640)
-    BuiltInActorComponents built_in_components_;                                    // +664 (+648)
-    HashedString actor_renderer_id_that_animation_component_was_initialized_with_;  // +696 (+680)
+    EntityContext entity_context_;                                            // +8
+    ActorInitializationMethod init_method_;                                   // +32
+    std::string custom_init_event_name_;                                      // +40
+    std::array<char[16], 10> unknown3_;                                       // +72  (+64)
+    bool force_init_method_to_spawn_on_reload_;                               // +232 (+224)
+    bool added_;                                                              // +233 (+225)
+    ActorDefinitionGroup *definitions_;                                       // +240 (+232)
+    std::unique_ptr<ActorDefinitionDescriptor> current_description_;          // +248 (+240)
+    std::shared_ptr<RopeSystem> leash_rope_system_;                           // +256 (+248)
+    std::string unknown6_;                                                    // +272 (+264)
+    char unknown7_[72];                                                       // +304 (+288)
+    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;  // +376 (+360)
+    std::int32_t unknown9_;                                                   // +392 (+384)
+    SynchedActorDataEntityWrapper entity_data_;                               // +400 (+392)
+    std::unique_ptr<SpatialActorNetworkData> network_data_;                   // +448 (+440)
+    Vec3 sent_delta_;                                                         // +456 (+448)
+    char unknown11_[108];                                                     // +468 (+460)
+    WeakRef<Dimension> dimension_;                                            // +576 (+568)
+    Level *level_;                                                            // +592 (+584)
+    HashedString actor_renderer_id_;                                          // +600 (+592)
+    ActorCategory categories_;                                                // +648 (+632)
+    BuiltInActorComponents built_in_components_;                              // +656 (+640)
+    // ...
 
 public:
     [[nodiscard]] endstone::detail::EndstoneActor &getEndstoneActor() const;

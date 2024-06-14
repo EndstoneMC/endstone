@@ -285,7 +285,7 @@ public:
     virtual void upgradeStorageVersion(StorageVersion) = 0;
     virtual void suspendAndSave() = 0;
     virtual Particle *addParticle(ParticleType, Vec3 const &, Vec3 const &, int, CompoundTag const *, bool) = 0;
-    virtual void destroyEffect(BlockPos const &, Block const &, int) = 0;
+    virtual void _destroyEffect(BlockPos const &, Block const &, int) = 0;
     virtual void addParticleEffect(HashedString const &, Vec3 const &, MolangVariableMap const &) = 0;
     virtual void addTerrainParticleEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
     virtual void addTerrainSlideEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
@@ -355,7 +355,6 @@ public:
     virtual void loadBlockDefinitionGroup(Experiments const &) = 0;
     virtual void initializeBlockDefinitionGroup() = 0;
     virtual Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry> getUnknownBlockTypeRegistry() = 0;
-    virtual void setServerTickOffset(std::int32_t) = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
     virtual std::unordered_map<mce::UUID, PlayerListEntry> &getPlayerList() = 0;
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;
@@ -431,7 +430,7 @@ public:
     virtual void pauseAndFlushTaskGroups() = 0;
 
 private:
-    virtual void *getPlayerDeathManager() = 0;
+    virtual void *_getPlayerDeathManager() = 0;
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
@@ -442,6 +441,6 @@ private:
 #endif
 
 protected:
-    virtual void subTick() = 0;
-    virtual void initializeMapDataManager() = 0;
+    virtual void _subTick() = 0;
+    virtual void _initializeMapDataManager() = 0;
 };
