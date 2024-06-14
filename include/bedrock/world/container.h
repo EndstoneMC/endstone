@@ -27,6 +27,8 @@ public:
     virtual void serverInitItemStackIds(int, int, std::function<void(int, ItemStack const &)>) = 0;
     virtual void addContentChangeListener(ContainerContentChangeListener *) = 0;
     virtual void removeContentChangeListener(ContainerContentChangeListener *) = 0;
+    virtual void addRemovedListener(ContainerRemovedListener *) = 0;
+    virtual void removeRemovedListener(ContainerRemovedListener *) = 0;
     [[nodiscard]] virtual ItemStack const &getItem(int) const = 0;
     virtual bool hasRoomForItem(ItemStack const &) = 0;
     virtual bool addItem(ItemStack &) = 0;
@@ -37,6 +39,7 @@ public:
     virtual void removeItem(int, int) = 0;
     virtual void removeAllItems() = 0;
     virtual void removeAllItemsWithForceBalance() = 0;
+    virtual void containerRemoved() = 0;
     virtual void dropSlotContent(BlockSource &, Vec3 const &, bool, int) = 0;
     virtual void dropContents(BlockSource &, Vec3 const &, bool) = 0;
     [[nodiscard]] virtual int getContainerSize() const = 0;

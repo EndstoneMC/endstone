@@ -64,6 +64,7 @@ class CommandOriginSystem;
 class CommandPositionFloat;
 class ComplexInventoryTransaction;
 class ContainerContentChangeListener;
+class ContainerRemovedListener;
 class CurrentCmdVersion;
 class DataLoadHelper;
 class Difficulty;
