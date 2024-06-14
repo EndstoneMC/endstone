@@ -21,7 +21,7 @@
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/mob.h"
-#include "bedrock/world/actor/player/abilities/layered_abilities.h"
+#include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/container.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/level/game_type.h"

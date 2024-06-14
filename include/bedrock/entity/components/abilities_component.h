@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/actor/player/abilities/layered_abilities.h"
+#include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 
 struct AbilitiesComponent {

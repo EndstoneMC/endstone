@@ -16,8 +16,8 @@
 
 #include <array>
 
-#include "bedrock/world/actor/player/abilities/abilities.h"
-#include "bedrock/world/actor/player/abilities/abilities_layer.h"
+#include "bedrock/world/actor/player/abilities.h"
+#include "bedrock/world/actor/player/abilities_layer.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 
 class LayeredAbilities {
