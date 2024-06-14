@@ -18,14 +18,14 @@
 
 class Ability {
 public:
-    enum class Type {
+    enum class Type : std::uint8_t {
         Invalid = 0,
         Unset = 1,
         Bool = 2,
         Float = 3,
     };
 
-    enum class Options {
+    enum class Options : std::uint8_t {
         None = 0
     };
 
@@ -43,12 +43,12 @@ public:
 
     [[nodiscard]] bool getBool() const
     {
-        return type_ == Type::Bool ? value_.bool_val : false;
+        return value_.bool_val;
     }
 
     [[nodiscard]] float getFloat() const
     {
-        return type_ == Type::Float ? value_.float_val : 0.0F;
+        return value_.float_val;
     }
 
 private:
