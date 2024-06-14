@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstddef>
 #include <cstdint>
 
@@ -27,6 +28,7 @@
 namespace RakNet {
 
 enum class StartupResult {
+    // NOLINTBEGIN
     RAKNET_STARTED,
     RAKNET_ALREADY_STARTED,
     INVALID_SOCKET_DESCRIPTORS,
@@ -39,11 +41,20 @@ enum class StartupResult {
     FAILED_TO_CREATE_NETWORK_THREAD,
     COULD_NOT_GENERATE_GUID,
     STARTUP_OTHER_FAILURE
+    // NOLINTEND
 };
 
 using SystemIndex = std::uint16_t;
 
 struct SystemAddress {
+    SystemAddress() : system_index(-1), debug_port(0)
+    {
+        address = {0};
+        address.addr4.sin_family = AF_INET;
+    }
+    [[nodiscard]] std::uint16_t GetPort() const;                                                // NOLINT
+    ENDSTONE_HOOK void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
+
     union  // In6OrIn4
     {
         sockaddr_storage sa_stor;
@@ -51,21 +62,56 @@ struct SystemAddress {
         sockaddr_in addr4;
     } address;
     std::uint16_t debug_port;
-
-    [[nodiscard]] std::uint16_t GetPort() const;                                                // NOLINT
-    ENDSTONE_HOOK void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
+    SystemIndex system_index;
 };
 BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 
 struct RakNetGUID {
+    RakNetGUID() : g(-1), system_index(-1) {}
+    explicit RakNetGUID(uint64_t g) : g(g), system_index(-1) {}
+
     std::uint64_t g;
     SystemIndex system_index;
 };
 BEDROCK_STATIC_ASSERT_SIZE(RakNetGUID, 16, 16);
 
+const RakNetGUID UNASSIGNED_RAKNET_GUID(static_cast<uint64_t>(-1));
+const SystemAddress UNASSIGNED_SYSTEM_ADDRESS;
+
 struct AddressOrGUID {
+    AddressOrGUID() = default;
+    AddressOrGUID(const AddressOrGUID &input)
+    {
+        raknet_guid = input.raknet_guid;
+        system_address = input.system_address;
+    }
+    explicit AddressOrGUID(const SystemAddress &input)
+    {
+        raknet_guid = UNASSIGNED_RAKNET_GUID;
+        system_address = input;
+    }
+    explicit AddressOrGUID(const RakNetGUID &input)
+    {
+        raknet_guid = input;
+        system_address = UNASSIGNED_SYSTEM_ADDRESS;
+    }
+
+    AddressOrGUID &operator=(const AddressOrGUID &input) = default;
+    AddressOrGUID &operator=(const SystemAddress &input)
+    {
+        raknet_guid = UNASSIGNED_RAKNET_GUID;
+        system_address = input;
+        return *this;
+    }
+    AddressOrGUID &operator=(const RakNetGUID &input)
+    {
+        raknet_guid = input;
+        system_address = UNASSIGNED_SYSTEM_ADDRESS;
+        return *this;
+    }
+
     RakNetGUID raknet_guid;
-    SystemAddress system_addr;
+    SystemAddress system_address;
 };
 
 }  // namespace RakNet
