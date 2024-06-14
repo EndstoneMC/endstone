@@ -20,7 +20,7 @@
 namespace ActorCollision {
 inline bool isOnGround(EntityContext const &ctx)
 {
-    return ctx.hasComponent<FlagComponent<OnGroundFlag>>();
+    return ctx.hasComponent<OnGroundFlagComponent>();
 }
 
 inline bool wasOnGround(EntityContext const &ctx)

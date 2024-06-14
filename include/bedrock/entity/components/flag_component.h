@@ -21,7 +21,7 @@ public:
 };
 
 struct PlayerComponentFlag {};
-struct OnGroundFlag {};
+struct OnGroundFlagComponent {};
 struct WasOnGroundFlag {};
 struct InWaterFlag {};
 struct InLavaFlag {};
@@ -31,4 +31,5 @@ struct MobIsJumpingFlag {};
 static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x356FFFCA);
 #elif defined _MSC_VER
 static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x600FBE1D);
+static_assert(entt::type_hash<OnGroundFlagComponent>::value() == 0xC3E299A3);
 #endif
