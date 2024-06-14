@@ -14,11 +14,24 @@
 
 #include "bedrock/network/packet/start_game_packet.h"
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/hook.h"
+#include "endstone/detail/level/level.h"
+#include "endstone/detail/server.h"
+
+using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstoneServer;
 
 void StartGamePacket::write(BinaryStream &stream) const
 {
-    if (!server_enabled_client_side_generation_) {
+    static bool client_side_generation_enabled = []() {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto *level = static_cast<EndstoneLevel *>(server.getLevels()[0]);
+        return level->getHandle().isClientSideGenerationEnabled();
+    }();
+
+    if (!client_side_generation_enabled) {
         settings_.setRandomSeed({0});
     }
 

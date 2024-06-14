@@ -31,10 +31,4 @@ public:
 
 private:
     LevelSeed64 seed_;
-#ifdef _WIN32
-    size_t pad_[1248 / 8 - 1];
-#else
-    size_t pad_[1024 / 8 - 1];
-#endif
 };
-BEDROCK_STATIC_ASSERT_SIZE(LevelSettings, 1248, 1024);
