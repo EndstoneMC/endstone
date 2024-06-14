@@ -106,7 +106,7 @@ public:
         NetherNetNegotiationTimeout = 86,
         NetherNetInactivityTimeout = 87,
         StaleConnectionBeingReplaced = 88,
-        RealmsSessionNotFound = 89,
+        RealmsSessionNotFound_DEPRECATED = 89,
         BadPacket = 90,
         NetherNetFailedToCreateOffer = 91,
         NetherNetFailedToCreateAnswer = 92,
