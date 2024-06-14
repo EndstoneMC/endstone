@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class AbilitiesLayer {
+#include <cstdint>
+
+enum class AbilitiesLayer : std::uint16_t {
     CustomCache = 0,
     Base = 1,
     Spectator = 2,

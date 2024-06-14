@@ -14,7 +14,9 @@
 
 #pragma once
 
-enum class AbilitiesIndex {
+#include <cstdint>
+
+enum class AbilitiesIndex : std::int16_t {
     Invalid = -1,
     Build = 0,
     Mine = 1,
