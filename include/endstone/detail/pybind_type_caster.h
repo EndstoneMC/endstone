@@ -39,7 +39,7 @@ public:
         }
 
         /* Now try to convert into C++ object */
-        PyObject *bytes = PyObject_CallMethod(source, "bytes", NULL);
+        PyObject *bytes = PyObject_GetAttrString(source, "bytes");
         if (PyBytes_GET_SIZE(bytes) != 16) {
             PyErr_SetString(PyExc_ValueError, "UUID bytes size must be 16");
             Py_XDECREF(bytes);
@@ -57,7 +57,7 @@ public:
         Py_XDECREF(bytes);
         Py_XDECREF(uuid_module);
         Py_XDECREF(uuid_class);
-        return PyErr_Occurred() != nullptr;
+        return PyErr_Occurred() == nullptr;
     }
 
     // C++ -> Python
