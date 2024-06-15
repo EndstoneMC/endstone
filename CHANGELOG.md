@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-<small>[Compare with 0.4.8](https://github.com/EndstoneMC/endstone/compare/v0.4.8...HEAD)</small>
+<small>[Compare with 0.4.8.1](https://github.com/EndstoneMC/endstone/compare/v0.4.8.1...HEAD)</small>
 
-## [0.4.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.8) - 2024-06-15
+## [0.4.8.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.8.1) - 2024-06-15
 
-<small>[Compare with 0.4.7](https://github.com/EndstoneMC/endstone/compare/v0.4.7...v0.4.8)</small>
+<small>[Compare with 0.4.7](https://github.com/EndstoneMC/endstone/compare/v0.4.7...v0.4.8.1)</small>
 
 ### Added
 
@@ -22,6 +22,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Player::getPing` now returns correct value instead of -1 on Linux.
 - `Player::isFlying` now works correctly in all conditions.
 - Calling python binding of `Server::getPlayer` with uuid no longer crashes.
+- Fixed a regression in vanilla command permissions.
+- Permission attachment now works as expected.
 
 ## [0.4.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7) - 2024-06-13
 
