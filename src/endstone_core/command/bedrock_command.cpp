@@ -22,7 +22,7 @@ BedrockCommand::BedrockCommand(std::string name, std::string description, std::v
                                std::vector<std::string> aliases, std::vector<std::string> permissions)
     : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases), std::move(permissions))
 {
-    setPermissions("minecraft.commands." + getName());
+    setPermissions("minecraft.command." + getName());
 }
 
 bool BedrockCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
