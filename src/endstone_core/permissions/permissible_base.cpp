@@ -152,7 +152,7 @@ void PermissibleBase::recalculatePermissions()
     for (auto *perm : defaults) {
         auto name = perm->getName();
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        permissions_.emplace(name, std::make_unique<PermissionAttachmentInfo>(parent_, name, nullptr, true));
+        permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, nullptr, true);
         plugin_manager.subscribeToPermission(name, parent_);
         calculateChildPermissions(perm->getChildren(), false, nullptr);
     }
@@ -173,7 +173,7 @@ void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::st
         auto name = entry.first;
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         bool value = entry.second ^ invert;
-        permissions_.emplace(name, std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value));
+        permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value);
         plugin_manager.subscribeToPermission(name, parent_);
 
         auto *perm = plugin_manager.getPermission(name);
