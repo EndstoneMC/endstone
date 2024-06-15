@@ -7,9 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-<small>[Compare with 0.4.7](https://github.com/EndstoneMC/endstone/compare/v0.4.6...v0.4.7)</small>
+<small>[Compare with 0.4.8](https://github.com/EndstoneMC/endstone/compare/v0.4.8...HEAD)</small>
 
-## [0.4.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7) - 2024-06-13
+## [0.4.8](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.7) - 2024-06-15
+
+<small>[Compare with 0.4.7](https://github.com/EndstoneMC/endstone/compare/v0.4.7...v0.4.8)</small>
+
+### Added
+
+- Support Minecraft v1.21 (Tricky Trials)
+
+### Fixed
+
+- `Player::getPing` now returns correct value instead of -1 on Linux.
+- `Player::isFlying` now works correctly in all conditions.
+- Calling python binding of `Server::getPlayer` with uuid no longer crashes.
 
 <small>[Compare with 0.4.6](https://github.com/EndstoneMC/endstone/compare/v0.4.6...v0.4.7)</small>
 
