@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1ActorEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::ActorEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorDeathEvent" prot="public" virt="non-virtual">endstone::ActorDeathEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorRemoveEvent" prot="public" virt="non-virtual">endstone::ActorRemoveEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorSpawnEvent" prot="public" virt="non-virtual">endstone::ActorSpawnEvent</derivedcompoundref>
     <includes refid="actor__event_8h" local="no">endstone/event/actor/actor_event.h</includes>
@@ -77,6 +78,18 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="4">
+        <label>endstone::PlayerDeathEvent</label>
+        <link refid="classendstone_1_1PlayerDeathEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::ActorDeathEvent</label>
+        <link refid="classendstone_1_1ActorDeathEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
         <label>endstone::ActorSpawnEvent</label>
         <link refid="classendstone_1_1ActorSpawnEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -92,7 +105,7 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="5">
         <label>endstone::ActorRemoveEvent</label>
         <link refid="classendstone_1_1ActorRemoveEvent"/>
         <childnode refid="1" relation="public-inheritance">

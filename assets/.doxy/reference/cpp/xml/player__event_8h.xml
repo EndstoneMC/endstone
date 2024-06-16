@@ -6,6 +6,7 @@
     <includes refid="player_8h" local="yes">endstone/player.h</includes>
     <includedby refid="player__chat__event_8h" local="yes">include/endstone/event/player/player_chat_event.h</includedby>
     <includedby refid="player__command__event_8h" local="yes">include/endstone/event/player/player_command_event.h</includedby>
+    <includedby refid="player__death__event_8h" local="yes">include/endstone/event/player/player_death_event.h</includedby>
     <includedby refid="player__join__event_8h" local="yes">include/endstone/event/player/player_join_event.h</includedby>
     <includedby refid="player__login__event_8h" local="yes">include/endstone/event/player/player_login_event.h</includedby>
     <includedby refid="player__quit__event_8h" local="yes">include/endstone/event/player/player_quit_event.h</includedby>
@@ -173,15 +174,19 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5">
+      <node id="4">
+        <label>include/endstone/event/player/player_death_event.h</label>
+        <link refid="player__death__event_8h_source"/>
+      </node>
+      <node id="6">
         <label>include/endstone/event/player/player_login_event.h</label>
         <link refid="player__login__event_8h_source"/>
       </node>
-      <node id="4">
+      <node id="5">
         <label>include/endstone/event/player/player_join_event.h</label>
         <link refid="player__join__event_8h_source"/>
       </node>
-      <node id="6">
+      <node id="7">
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
@@ -201,6 +206,8 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="2">

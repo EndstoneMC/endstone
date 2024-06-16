@@ -16,6 +16,13 @@
     <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" kind="function"><name>getDimension</name></member>
   </compound>
+  <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
+    <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1ab6ba282a877e6725cd87f725d73aa81f" kind="function"><name>ActorDeathEvent</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1ae058d993784b23cc32eedb37b1864611" kind="function"><name>~ActorDeathEvent</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1ad3572783702cd3e40447a3d6344a8094" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1ActorDeathEvent_1a9844748807c4fd2b83fe9d8c3cfc892e" kind="function"><name>isCancellable</name></member>
+  </compound>
   <compound refid="classendstone_1_1ActorEvent" kind="class"><name>endstone::ActorEvent</name>
     <member refid="classendstone_1_1ActorEvent_1a64d37ca9b81a48ec1ec3d1fd6f0975cc" kind="variable"><name>actor_</name></member>
     <member refid="classendstone_1_1ActorEvent_1a1d431f4b3c7cc2db417684a97029c386" kind="function"><name>ActorEvent</name></member>
@@ -340,6 +347,13 @@
     <member refid="classendstone_1_1PlayerCommandEvent_1a4e37eb524b310112fe13d174aaab874e" kind="function"><name>isCancellable</name></member>
     <member refid="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" kind="function"><name>getCommand</name></member>
     <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" kind="function"><name>setCommand</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
+    <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1ad07de18f86387bcccf449a7d344a9a52" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a36e03de2f0aa795bdf14438f73e4607d" kind="function"><name>isCancellable</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
     <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>
@@ -758,6 +772,8 @@
     <member refid="endstone_8h_1a730919a6d09c2036dc1159779092ee86" kind="define"><name>ENDSTONE_EXPORT</name></member>
     <member refid="endstone_8h_1ab82ab1fabc0fdd70997b22e6526a8d19" kind="define"><name>ENDSTONE_NOINLINE</name></member>
   </compound>
+  <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
+  </compound>
   <compound refid="actor__event_8h" kind="file"><name>actor_event.h</name>
   </compound>
   <compound refid="actor__remove__event_8h" kind="file"><name>actor_remove_event.h</name>
@@ -775,6 +791,8 @@
   <compound refid="player__chat__event_8h" kind="file"><name>player_chat_event.h</name>
   </compound>
   <compound refid="player__command__event_8h" kind="file"><name>player_command_event.h</name>
+  </compound>
+  <compound refid="player__death__event_8h" kind="file"><name>player_death_event.h</name>
   </compound>
   <compound refid="player__event_8h" kind="file"><name>player_event.h</name>
   </compound>

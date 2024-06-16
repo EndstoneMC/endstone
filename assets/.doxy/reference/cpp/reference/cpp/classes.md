@@ -6,6 +6,8 @@
 
 * [**Actor**](classendstone_1_1Actor.md)
 ([**endstone**](namespaceendstone.md))
+* [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**ActorEvent**](classendstone_1_1ActorEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md)
@@ -87,6 +89,8 @@
 * [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerEvent**](classendstone_1_1PlayerEvent.md)
 ([**endstone**](namespaceendstone.md))
