@@ -58,7 +58,7 @@ plugins:
             show_symbol_type_heading: true
             show_symbol_type_toc: true
             # member options
-            inherited_members: true
+            inherited_members: false
             filters: [ "!^_" ]
             merge_init_into_class: true
             # docstrings options
