@@ -1,4 +1,4 @@
-timestamp = 1718299082
+timestamp = 1718559241
 version = "1.21.0"
 
 [windows]
@@ -36,6 +36,8 @@ version = "1.21.0"
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 13655968
 # MinecraftPackets
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 8465008
+# Mob
+"?die@Mob@@UEAAXAEBVActorDamageSource@@@Z" = 26256400
 # Player
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27113568
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27152672
@@ -62,6 +64,7 @@ version = "1.21.0"
 "?_displayGameMessage@ServerNetworkHandler@@AEAAXAEBVPlayer@@AEAUChatEvent@@@Z" = 8835152
 "?_loadNewPlayer@ServerNetworkHandler@@AEAA_NAEAVServerPlayer@@_N@Z" = 8842112
 # ServerPlayer
+"?die@ServerPlayer@@UEAAXAEBVActorDamageSource@@@Z" = 13382448
 "?disconnect@ServerPlayer@@QEAAXXZ" = 13382608
 "?doInitialSpawn@ServerPlayer@@QEAAXXZ" = 13384096
 # StartGamePacket
@@ -102,6 +105,8 @@ version = "1.21.0"
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 81685920
 # MinecraftPackets
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 77567472
+# Mob
+"_ZN3Mob3dieERK17ActorDamageSource" = 109007552
 # Player
 "_ZNK6Player7getNameEv" = 109665776
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109689856
@@ -128,6 +133,7 @@ version = "1.21.0"
 "_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 79075120
 "_ZN20ServerNetworkHandler14_loadNewPlayerER12ServerPlayerb" = 79144624
 # ServerPlayer
+"_ZN12ServerPlayer3dieERK17ActorDamageSource" = 98620560
 "_ZN12ServerPlayer10disconnectEv" = 98641808
 "_ZN12ServerPlayer14doInitialSpawnEv" = 98624736
 # StartGamePacket

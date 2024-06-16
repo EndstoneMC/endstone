@@ -21,6 +21,14 @@
 
 using endstone::detail::EndstoneServer;
 
+void ServerPlayer::die(const ActorDamageSource &source) {
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, "_ZN12ServerPlayer3dieERK17ActorDamageSource", this, source);
+#endif
+}
+
 void ServerPlayer::doInitialSpawn()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
@@ -41,3 +49,4 @@ void ServerPlayer::disconnect()
     server.getPluginManager().callEvent(e);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }
+

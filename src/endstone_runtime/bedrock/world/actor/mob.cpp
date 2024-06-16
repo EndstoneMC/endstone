@@ -15,6 +15,16 @@
 #include "bedrock/world/actor/mob.h"
 
 #include "bedrock/world/actor/actor_flags.h"
+#include "endstone/detail/hook.h"
+
+void Mob::die(const ActorDamageSource &source)
+{
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::die, __FUNCDNAME__, this, source);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::die, "_ZN3Mob3dieERK17ActorDamageSource", this, source);
+#endif
+}
 
 bool Mob::isGliding() const
 {
