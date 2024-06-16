@@ -51,6 +51,24 @@ public:
         return value_.float_val;
     }
 
+    void setBool(bool value)
+    {
+        if (type_ == Type::Unset) {
+            type_ = Type::Bool;
+            value_ = {};
+        }
+        value_.bool_val = value;
+    }
+
+    void setFloat(float value)
+    {
+        if (type_ == Type::Unset) {
+            type_ = Type::Float;
+            value_ = {};
+        }
+        value_.float_val = value;
+    }
+
 private:
     Type type_;
     Value value_;

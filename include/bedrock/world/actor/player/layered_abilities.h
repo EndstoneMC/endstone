@@ -45,6 +45,16 @@ public:
         return getAbility(index).getFloat();
     }
 
+    void setAbility(AbilitiesIndex index, bool value)
+    {
+        layers_.at(static_cast<std::size_t>(AbilitiesLayer::Base)).setAbility(index, value);
+    }
+
+    void setAbility(AbilitiesIndex index, float value)
+    {
+        layers_.at(static_cast<std::size_t>(AbilitiesLayer::Base)).setAbility(index, value);
+    }
+
 private:
     PermissionsHandler permissions_;
     std::array<Abilities, static_cast<std::size_t>(AbilitiesLayer::LayerCount)> layers_;

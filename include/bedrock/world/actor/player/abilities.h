@@ -27,6 +27,16 @@ public:
         return abilities_.at(static_cast<std::size_t>(index));
     }
 
+    void setAbility(AbilitiesIndex index, bool value)
+    {
+        abilities_.at(static_cast<std::size_t>(index)).setBool(value);
+    }
+
+    void setAbility(AbilitiesIndex index, float value)
+    {
+        abilities_.at(static_cast<std::size_t>(index)).setFloat(value);
+    }
+
 private:
     std::array<Ability, static_cast<std::size_t>(AbilitiesIndex::AbilityCount)> abilities_;
 };
