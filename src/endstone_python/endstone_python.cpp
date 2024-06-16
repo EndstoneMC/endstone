@@ -224,6 +224,9 @@ void init_player(py::module_ &m)
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
         .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
+        .def("give_exp", &Player::giveExp, py::arg("amount"), "Gives the player the amount of experience specified.")
+        .def("give_exp_levels", &Player::giveExpLevels, py::arg("amount"),
+             "Gives the player the amount of experience levels specified.")
         .def_property_readonly("is_flying", &Player::isFlying,
                                "Checks to see if this player is currently flying or not.")
         .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")

@@ -86,6 +86,21 @@ public:
     virtual void kick(std::string message) const = 0;
 
     /**
+     * @brief Gives the player the amount of experience specified.
+     *
+     * @param amount Exp amount to give
+     */
+    virtual void giveExp(int amount) = 0;
+
+
+    /**
+     * @brief Gives the player the amount of experience levels specified.
+     *
+     * @param amount amount of experience levels to give or take
+     */
+    virtual void giveExpLevels(int amount) = 0;
+
+    /**
      * @brief Checks to see if this player is currently flying or not.
      *
      * @return True if the player is flying, else false.

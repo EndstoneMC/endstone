@@ -131,7 +131,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
 
 bool EndstonePlayer::isOp() const
 {
-    return player_.getCommandPermissionLevel() != CommandPermissionLevel::Any;
+    return getHandle().getCommandPermissionLevel() != CommandPermissionLevel::Any;
 }
 
 void EndstonePlayer::setOp(bool value)
@@ -140,7 +140,7 @@ void EndstonePlayer::setOp(bool value)
         return;
     }
 
-    player_.setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
+    getHandle().setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::GameDirectors);
 }
 
 std::uint64_t EndstonePlayer::getRuntimeId() const
@@ -199,7 +199,7 @@ void EndstonePlayer::sendRawMessage(std::string message) const
     std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
     text_packet->type = TextPacketType::Raw;
     text_packet->message = message;
-    player_.sendNetworkPacket(*packet);
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
@@ -208,7 +208,7 @@ void EndstonePlayer::sendPopup(std::string message) const
     std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
     text_packet->type = TextPacketType::Popup;
     text_packet->message = message;
-    player_.sendNetworkPacket(*packet);
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
@@ -217,26 +217,36 @@ void EndstonePlayer::sendTip(std::string message) const
     std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
     text_packet->type = TextPacketType::Tip;
     text_packet->message = message;
-    player_.sendNetworkPacket(*packet);
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::kick(std::string message) const
 {
-    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
+    auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServerNetworkHandler().disconnectClient(component->network_id, component->sub_client_id,
                                                        Connection::DisconnectFailReason::NoReason, message,
                                                        message.empty());
 }
 
+void EndstonePlayer::giveExp(int amount)
+{
+    getHandle().addExperience(amount);
+}
+
+void EndstonePlayer::giveExpLevels(int amount)
+{
+    getHandle().addLevels(amount);
+}
+
 bool EndstonePlayer::isFlying() const
 {
-    return player_.isFlying();
+    return getHandle().isFlying();
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
-    auto *component = player_.tryGetComponent<UserEntityIdentifierComponent>();
+    auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
     auto guid = RakNet::AddressOrGUID(component->network_id.guid);
     return std::chrono::milliseconds(peer->GetAveragePing(guid));
 }
@@ -257,7 +267,7 @@ void EndstonePlayer::updateCommands() const
         data.permission_level = CommandPermissionLevel::Internal;
     }
 
-    player_.sendNetworkPacket(packet);
+    getHandle().sendNetworkPacket(packet);
 }
 
 bool EndstonePlayer::performCommand(std::string command) const
@@ -267,7 +277,7 @@ bool EndstonePlayer::performCommand(std::string command) const
 
 GameMode EndstonePlayer::getGameMode() const
 {
-    auto game_type = player_.getPlayerGameType();
+    auto game_type = getHandle().getPlayerGameType();
     switch (game_type) {
     case GameType::Creative:
         return GameMode::Creative;
@@ -285,16 +295,16 @@ void EndstonePlayer::setGameMode(GameMode mode)
 {
     switch (mode) {
     case GameMode::Survival:
-        player_.setPlayerGameType(GameType::Survival);
+        getHandle().setPlayerGameType(GameType::Survival);
         break;
     case GameMode::Creative:
-        player_.setPlayerGameType(GameType::Creative);
+        getHandle().setPlayerGameType(GameType::Creative);
         break;
     case GameMode::Adventure:
-        player_.setPlayerGameType(GameType::Adventure);
+        getHandle().setPlayerGameType(GameType::Adventure);
         break;
     case GameMode::Spectator:
-        player_.setPlayerGameType(GameType::Spectator);
+        getHandle().setPlayerGameType(GameType::Spectator);
         break;
     }
 }

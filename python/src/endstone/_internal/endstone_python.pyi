@@ -746,6 +746,14 @@ class Player(Actor):
     """
     Represents a player.
     """
+    def give_exp(self, amount: int) -> None:
+        """
+        Gives the player the amount of experience specified.
+        """
+    def give_exp_levels(self, amount: int) -> None:
+        """
+        Gives the player the amount of experience levels specified.
+        """
     def kick(self, message: str) -> None:
         """
         Kicks player with custom kick message.
