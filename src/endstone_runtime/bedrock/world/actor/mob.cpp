@@ -23,9 +23,11 @@ using endstone::detail::EndstoneServer;
 
 void Mob::die(const ActorDamageSource &source)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorDeathEvent e{getEndstoneActor()};
-    server.getPluginManager().callEvent(e);
+    if (!isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        endstone::ActorDeathEvent e{getEndstoneActor()};
+        server.getPluginManager().callEvent(e);
+    }
 
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::die, __FUNCDNAME__, this, source);
