@@ -68,8 +68,10 @@ public:
     void kick(std::string message) const override;
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
-    [[nodiscard]] bool isFlying() const override;
     [[nodiscard]] bool getAllowFlight() const override;
+    void setAllowFlight(bool flight) override;
+    [[nodiscard]] bool isFlying() const override;
+    void setFlying(bool value) override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)

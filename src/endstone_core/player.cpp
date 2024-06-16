@@ -239,15 +239,35 @@ void EndstonePlayer::giveExpLevels(int amount)
     getHandle().addLevels(amount);
 }
 
+bool EndstonePlayer::getAllowFlight() const
+{
+    return getHandle().getAbilities().getBool(AbilitiesIndex::MayFly);
+}
+
+void EndstonePlayer::setAllowFlight(bool flight)
+{
+    if (!isFlying() && !flight) {
+        getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, false);
+    }
+
+    getHandle().getAbilities().setAbility(AbilitiesIndex::MayFly, flight);
+    // TODO(fixme): resend the abilities
+}
+
 bool EndstonePlayer::isFlying() const
 {
     return getHandle().isFlying();
 }
 
-bool EndstonePlayer::getAllowFlight() const
+void EndstonePlayer::setFlying(bool value)
 {
-    auto component = getHandle().getPersistentComponent<AbilitiesComponent>();
-    return component->abilities.getBool(AbilitiesIndex::MayFly);
+    if (!getAllowFlight()) {
+        server_.getLogger().error("Player {} is not allowed to fly.", getName());
+        return;
+    }
+
+    getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, value);
+    // TODO(fixme): resend the abilities
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const

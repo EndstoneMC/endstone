@@ -100,6 +100,20 @@ public:
     virtual void giveExpLevels(int amount) = 0;
 
     /**
+     * @brief Determines if the Player is allowed to fly via jump key double-tap.
+     *
+     * @return True if the player is allowed to fly.
+     */
+    [[nodiscard]] virtual bool getAllowFlight() const = 0;
+
+    /**
+     * @brief Sets if the Player is allowed to fly via jump key double-tap.
+     *
+     * @param flight If flight should be allowed.
+     */
+    virtual void setAllowFlight(bool flight) = 0;
+
+    /**
      * @brief Checks to see if this player is currently flying or not.
      *
      * @return True if the player is flying, else false.
@@ -107,11 +121,11 @@ public:
     [[nodiscard]] virtual bool isFlying() const = 0;
 
     /**
-     * @brief Determines if the Player is allowed to fly via jump key double-tap.
+     * @brief Makes this player start or stop flying.
      *
-     * @return True if the player is allowed to fly.
+     * @param value True to fly.
      */
-    [[nodiscard]] virtual bool getAllowFlight() const = 0;
+    virtual void setFlying(bool value) = 0;
 
     /**
      * @brief Gets the player's average ping

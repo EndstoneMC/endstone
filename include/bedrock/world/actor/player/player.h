@@ -121,6 +121,7 @@ public:
     [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
     [[nodiscard]] ENDSTONE_HOOK Container &getInventory();
     [[nodiscard]] GameType getPlayerGameType() const;
+    [[nodiscard]] LayeredAbilities &getAbilities();
     [[nodiscard]] LayeredAbilities const &getAbilities() const;
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;

@@ -786,8 +786,11 @@ class Player(Actor):
     @property
     def allow_flight(self) -> bool:
         """
-        Determines if the Player is allowed to fly via jump key double-tap.
+        If the Player is allowed to fly via jump key double-tap.
         """
+    @allow_flight.setter
+    def allow_flight(self, arg1: bool) -> None:
+        ...
     @property
     def game_mode(self) -> GameMode:
         """
@@ -804,8 +807,11 @@ class Player(Actor):
     @property
     def is_flying(self) -> bool:
         """
-        Checks to see if this player is currently flying or not.
+        If the player is currently flying or not.
         """
+    @is_flying.setter
+    def is_flying(self, arg1: bool) -> None:
+        ...
     @property
     def ping(self) -> datetime.timedelta:
         """
