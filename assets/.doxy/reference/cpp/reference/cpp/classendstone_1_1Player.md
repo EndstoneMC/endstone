@@ -118,6 +118,7 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 |   | [**Player**](#function-player-33) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual const [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
+| virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
@@ -392,6 +393,31 @@ virtual const SocketAddress & endstone::Player::getAddress () const = 0
 **Returns:**
 
 the player's socket address 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getAllowFlight 
+
+_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._
+```C++
+virtual bool endstone::Player::getAllowFlight () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if the player is allowed to fly. 
 
 
 
