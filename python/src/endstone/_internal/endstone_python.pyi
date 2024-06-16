@@ -568,12 +568,12 @@ class Permissible:
         Gets effective permissions.
         """
     @property
-    def op(self) -> bool:
+    def is_op(self) -> bool:
         """
         The operator status of this object
         """
-    @op.setter
-    def op(self, arg1: bool) -> None:
+    @is_op.setter
+    def is_op(self, arg1: bool) -> None:
         ...
 class Permission:
     """

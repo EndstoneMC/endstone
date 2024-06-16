@@ -103,7 +103,7 @@ void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::
                                py::return_value_policy::reference, "Gets the attachment providing this permission.")
         .def_property_readonly("value", &PermissionAttachmentInfo::getValue, "Gets the value of this permission");
 
-    permissible.def_property("op", &Permissible::isOp, &Permissible::setOp, "The operator status of this object")
+    permissible.def_property("is_op", &Permissible::isOp, &Permissible::setOp, "The operator status of this object")
         .def("is_permission_set", py::overload_cast<std::string>(&Permissible::isPermissionSet, py::const_),
              py::arg("name"), "Checks if a permissions is set by name.")
         .def("is_permission_set", py::overload_cast<const Permission &>(&Permissible::isPermissionSet, py::const_),
