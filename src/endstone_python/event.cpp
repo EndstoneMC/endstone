@@ -18,12 +18,14 @@
 #include <pybind11/stl.h>
 
 #include "endstone/event/actor/actor_death_event.h"
+#include "endstone/event/actor/actor_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/player/player_death_event.h"
+#include "endstone/event/player/player_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
@@ -64,47 +66,28 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
                "should be made under this priority.");
 
-    py::class_<ActorDeathEvent, Event>(m, "ActorDeathEvent", "Called when an Actor dies.")
+    py::class_<ActorEvent, Event>(m, "ActorEvent", "Represents an Actor-related event.")
         .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
-                               "Returns the Actor that dies");
+                               "Returns the Actor involved in this event");
+    py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
+    py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
+    py::class_<ActorSpawnEvent, ActorEvent>(m, "ActorSpawnEvent", "Called when an Actor is spawned into a world.");
 
-    py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent", "Called when an Actor is removed.")
-        .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
-                               "Returns the Actor being removed");
-
-    py::class_<ActorSpawnEvent, Event>(m, "ActorSpawnEvent", "Called when an Actor is spawned into a world.")
-        .def_property_readonly("actor", &ActorSpawnEvent::getActor, py::return_value_policy::reference,
-                               "Returns the Actor being spawned");
-
-    py::class_<PlayerChatEvent, Event>(m, "PlayerChatEvent", "Called when a player sends a chat message.")
-        .def_property_readonly("player", &PlayerChatEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who sends the message")
+    py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
+        .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the player involved in this event.");
+    py::class_<PlayerChatEvent, PlayerEvent>(m, "PlayerChatEvent", "Called when a player sends a chat message.")
         .def_property("message", &PlayerChatEvent::getMessage, &PlayerChatEvent::setMessage,
                       "The message that the player will send.");
-
-    py::class_<PlayerCommandEvent, Event>(m, "PlayerCommandEvent", "Called whenever a player runs a command.")
-        .def_property_readonly("player", &PlayerCommandEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who sends the command")
+    py::class_<PlayerCommandEvent, PlayerEvent>(m, "PlayerCommandEvent", "Called whenever a player runs a command.")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
                       "The command that the player will send.");
-
-    py::class_<PlayerDeathEvent, ActorDeathEvent>(m, "PlayerDeathEvent", "Called when a player dies")
-        .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who dies.");
-
-    py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent", "Called when a player joins a server")
-        .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who joins the server");
-
-    py::class_<PlayerLoginEvent, Event>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
+    py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies");
+    py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server");
+    py::class_<PlayerLoginEvent, PlayerEvent>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
-                      "The kick message to display if event is cancelled")
-        .def_property_readonly("player", &PlayerLoginEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who attempts to login in.");
-
-    py::class_<PlayerQuitEvent, Event>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
-        .def_property_readonly("player", &PlayerQuitEvent::getPlayer, py::return_value_policy::reference,
-                               "Returns the Player who leaves the server");
+                      "The kick message to display if event is cancelled");
+    py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.");
 
     py::class_<BroadcastMessageEvent, Event>(
         m, "BroadcastMessageEvent", "Event triggered for server broadcast messages such as from Server.broadcast")

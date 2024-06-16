@@ -3,7 +3,7 @@ import datetime
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -43,24 +43,27 @@ class Actor(CommandSender):
         """
         Gets this actor's current velocity.
         """
-class ActorRemoveEvent(Event):
+class ActorDeathEvent(ActorEvent):
+    """
+    Called when an Actor dies.
+    """
+class ActorEvent(Event):
+    """
+    Represents an Actor-related event.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        Returns the Actor involved in this event
+        """
+class ActorRemoveEvent(ActorEvent):
     """
     Called when an Actor is removed.
     """
-    @property
-    def actor(self) -> Actor:
-        """
-        Returns the Actor being removed
-        """
-class ActorSpawnEvent(Event):
+class ActorSpawnEvent(ActorEvent):
     """
     Called when an Actor is spawned into a world.
     """
-    @property
-    def actor(self) -> Actor:
-        """
-        Returns the Actor being spawned
-        """
 class BroadcastMessageEvent(Event):
     """
     Event triggered for server broadcast messages such as from Server.broadcast
@@ -800,7 +803,7 @@ class Player(Actor):
         """
         Returns the UUID of this player
         """
-class PlayerChatEvent(Event):
+class PlayerChatEvent(PlayerEvent):
     """
     Called when a player sends a chat message.
     """
@@ -812,12 +815,7 @@ class PlayerChatEvent(Event):
     @message.setter
     def message(self, arg1: str) -> None:
         ...
-    @property
-    def player(self) -> Player:
-        """
-        Returns the Player who sends the message
-        """
-class PlayerCommandEvent(Event):
+class PlayerCommandEvent(PlayerEvent):
     """
     Called whenever a player runs a command.
     """
@@ -829,25 +827,28 @@ class PlayerCommandEvent(Event):
     @command.setter
     def command(self, arg1: str) -> None:
         ...
+class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
+    """
+    Called when a player dies
+    """
+class PlayerEvent(Event):
+    """
+    Represents a player related event
+    """
     @property
     def player(self) -> Player:
         """
-        Returns the Player who sends the command
+        Returns the player involved in this event.
         """
 class PlayerInventory(Inventory):
     """
     Interface to the inventory of a Player, including the four armor slots and any extra slots.
     """
-class PlayerJoinEvent(Event):
+class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
     """
-    @property
-    def player(self) -> Player:
-        """
-        Returns the Player who joins the server
-        """
-class PlayerLoginEvent(Event):
+class PlayerLoginEvent(PlayerEvent):
     """
     Called when a player attempts to login in.
     """
@@ -859,20 +860,10 @@ class PlayerLoginEvent(Event):
     @kick_message.setter
     def kick_message(self, arg1: str) -> None:
         ...
-    @property
-    def player(self) -> Player:
-        """
-        Returns the Player who attempts to login in.
-        """
-class PlayerQuitEvent(Event):
+class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
     """
-    @property
-    def player(self) -> Player:
-        """
-        Returns the Player who leaves the server
-        """
 class Plugin(CommandExecutor):
     """
     Represents a Plugin
