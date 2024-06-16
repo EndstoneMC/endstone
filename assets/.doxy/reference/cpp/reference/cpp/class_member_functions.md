@@ -109,6 +109,8 @@
 * **getInventory** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getPing** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getUniqueId** ([**endstone::Player**](classendstone_1_1Player.md))
+* **giveExp** ([**endstone::Player**](classendstone_1_1Player.md))
+* **giveExpLevels** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getPlayer** ([**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **getDataFolder** ([**endstone::Plugin**](classendstone_1_1Plugin.md))

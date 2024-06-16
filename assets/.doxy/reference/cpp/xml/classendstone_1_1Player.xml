@@ -259,6 +259,62 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="86" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::giveExp</definition>
+        <argsstring>(int amount)=0</argsstring>
+        <name>giveExp</name>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+<para>Gives the player the amount of experience specified. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exp amount to give </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="93" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::giveExpLevels</definition>
+        <argsstring>(int amount)=0</argsstring>
+        <name>giveExpLevels</name>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+<para>Gives the player the amount of experience levels specified. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>amount of experience levels to give or take </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="101" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool endstone::Player::isFlying</definition>
@@ -274,7 +330,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="93" column="19"/>
+        <location file="include/endstone/player.h" line="108" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::chrono::milliseconds</type>
@@ -291,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="100" column="40"/>
+        <location file="include/endstone/player.h" line="115" column="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -306,7 +362,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="107" column="18"/>
+        <location file="include/endstone/player.h" line="122" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -336,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="115" column="18"/>
+        <location file="include/endstone/player.h" line="130" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>GameMode</type>
@@ -353,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="122" column="23"/>
+        <location file="include/endstone/player.h" line="137" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -381,7 +437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="129" column="18"/>
+        <location file="include/endstone/player.h" line="144" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref> &amp;</type>
@@ -398,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="136" column="30"/>
+        <location file="include/endstone/player.h" line="151" column="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -454,7 +510,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="137"/>
+    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="152"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -478,6 +534,8 @@
       <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
       <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
+      <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExp</name></member>
+      <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExpLevels</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isFlying</name></member>

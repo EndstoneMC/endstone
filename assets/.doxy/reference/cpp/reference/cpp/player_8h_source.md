@@ -62,6 +62,11 @@ public:
 
     virtual void kick(std::string message) const = 0;
 
+    virtual void giveExp(int amount) = 0;
+
+
+    virtual void giveExpLevels(int amount) = 0;
+
     [[nodiscard]] virtual bool isFlying() const = 0;
 
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;

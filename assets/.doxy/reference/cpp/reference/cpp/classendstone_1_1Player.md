@@ -122,6 +122,8 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
+| virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
+| virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
 | virtual void | [**kick**](#function-kick) (std::string message) const = 0<br>_Kicks player with custom kick message._  |
 |  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator) (const [**Player**](classendstone_1_1Player.md) &) = delete<br> |
@@ -491,6 +493,60 @@ virtual endstone::UUID endstone::Player::getUniqueId () const = 0
 
 [**Player**](classendstone_1_1Player.md) [**UUID**](classendstone_1_1UUID.md) 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function giveExp 
+
+_Gives the player the amount of experience specified._ 
+```C++
+virtual void endstone::Player::giveExp (
+    int amount
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `amount` Exp amount to give 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function giveExpLevels 
+
+_Gives the player the amount of experience levels specified._ 
+```C++
+virtual void endstone::Player::giveExpLevels (
+    int amount
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `amount` amount of experience levels to give or take 
 
 
 
