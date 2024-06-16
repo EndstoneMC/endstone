@@ -69,6 +69,7 @@ public:
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
     [[nodiscard]] bool isFlying() const override;
+    [[nodiscard]] bool getAllowFlight() const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)

@@ -92,7 +92,6 @@ public:
      */
     virtual void giveExp(int amount) = 0;
 
-
     /**
      * @brief Gives the player the amount of experience levels specified.
      *
@@ -106,6 +105,13 @@ public:
      * @return True if the player is flying, else false.
      */
     [[nodiscard]] virtual bool isFlying() const = 0;
+
+    /**
+     * @brief Determines if the Player is allowed to fly via jump key double-tap.
+     *
+     * @return True if the player is allowed to fly.
+     */
+    [[nodiscard]] virtual bool getAllowFlight() const = 0;
 
     /**
      * @brief Gets the player's average ping

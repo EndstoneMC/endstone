@@ -14,6 +14,7 @@
 
 #include "endstone/detail/player.h"
 
+#include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -241,6 +242,12 @@ void EndstonePlayer::giveExpLevels(int amount)
 bool EndstonePlayer::isFlying() const
 {
     return getHandle().isFlying();
+}
+
+bool EndstonePlayer::getAllowFlight() const
+{
+    auto component = getHandle().getPersistentComponent<AbilitiesComponent>();
+    return component->abilities.getBool(AbilitiesIndex::MayFly);
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const

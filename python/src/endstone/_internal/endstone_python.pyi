@@ -784,6 +784,11 @@ class Player(Actor):
         Gets the socket address of this player
         """
     @property
+    def allow_flight(self) -> bool:
+        """
+        Determines if the Player is allowed to fly via jump key double-tap.
+        """
+    @property
     def game_mode(self) -> GameMode:
         """
         The player's current game mode.

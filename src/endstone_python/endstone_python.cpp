@@ -229,6 +229,8 @@ void init_player(py::module_ &m)
              "Gives the player the amount of experience levels specified.")
         .def_property_readonly("is_flying", &Player::isFlying,
                                "Checks to see if this player is currently flying or not.")
+        .def_property_readonly("allow_flight", &Player::getAllowFlight,
+                               "Determines if the Player is allowed to fly via jump key double-tap.")
         .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
         .def("perform_command", &Player::performCommand, py::arg("command"),
