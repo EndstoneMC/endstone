@@ -16,12 +16,18 @@
 
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
 
 using endstone::detail::EndstoneServer;
 
-void ServerPlayer::die(const ActorDamageSource &source) {
+void ServerPlayer::die(const ActorDamageSource &source)
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto e = std::make_unique<endstone::PlayerDeathEvent>(getEndstonePlayer());
+    server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
+
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
 #else
@@ -49,4 +55,3 @@ void ServerPlayer::disconnect()
     server.getPluginManager().callEvent(e);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }
-

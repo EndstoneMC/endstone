@@ -16,9 +16,17 @@
 
 #include "bedrock/world/actor/actor_flags.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_death_event.h"
+
+using endstone::detail::EndstoneServer;
 
 void Mob::die(const ActorDamageSource &source)
 {
+    auto &server = entt::locator<EndstoneServer>::value();
+    endstone::ActorDeathEvent e{getEndstoneActor()};
+    server.getPluginManager().callEvent(e);
+
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Mob::die, __FUNCDNAME__, this, source);
 #else
