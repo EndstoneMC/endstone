@@ -59,6 +59,12 @@ GameType Player::getPlayerGameType() const
     return game_type;
 }
 
+LayeredAbilities &Player::getAbilities()
+{
+    auto component = getPersistentComponent<AbilitiesComponent>();
+    return component->abilities;
+}
+
 LayeredAbilities const &Player::getAbilities() const
 {
     auto component = getPersistentComponent<AbilitiesComponent>();

@@ -22,6 +22,19 @@
 
 class LayeredAbilities {
 public:
+    [[nodiscard]] Ability &getAbility(AbilitiesIndex index)
+    {
+        Ability *ability;
+        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+            auto &abilities = layers_[i];
+            ability = &abilities.getAbility(index);
+            if (ability->getType() != Ability::Type::Unset) {
+                break;
+            }
+        }
+        return *ability;
+    }
+
     [[nodiscard]] const Ability &getAbility(AbilitiesIndex index) const
     {
         const Ability *ability;
