@@ -17,11 +17,13 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_command_event.h"
+#include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
@@ -62,6 +64,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                "Event is listened to purely for monitoring the outcome of an event. No modifications to the event "
                "should be made under this priority.");
 
+    py::class_<ActorDeathEvent, Event>(m, "ActorDeathEvent", "Called when an Actor dies.")
+        .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
+                               "Returns the Actor that dies");
+
     py::class_<ActorRemoveEvent, Event>(m, "ActorRemoveEvent", "Called when an Actor is removed.")
         .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor being removed");
@@ -81,6 +87,10 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Returns the Player who sends the command")
         .def_property("command", &PlayerCommandEvent::getCommand, &PlayerCommandEvent::setCommand,
                       "The command that the player will send.");
+
+    py::class_<PlayerDeathEvent, ActorDeathEvent>(m, "PlayerDeathEvent", "Called when a player dies")
+        .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
+                               "Returns the Player who dies.");
 
     py::class_<PlayerJoinEvent, Event>(m, "PlayerJoinEvent", "Called when a player joins a server")
         .def_property_readonly("player", &PlayerJoinEvent::getPlayer, py::return_value_policy::reference,
