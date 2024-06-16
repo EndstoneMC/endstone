@@ -59,6 +59,12 @@ GameType Player::getPlayerGameType() const
     return game_type;
 }
 
+LayeredAbilities const &Player::getAbilities() const
+{
+    auto component = getPersistentComponent<AbilitiesComponent>();
+    return component->abilities;
+}
+
 bool Player::isEmoting() const
 {
     return getStatusFlag(ActorFlags::EMOTING);
@@ -66,6 +72,5 @@ bool Player::isEmoting() const
 
 bool Player::isFlying() const
 {
-    auto component = getPersistentComponent<AbilitiesComponent>();
-    return component->abilities.getBool(AbilitiesIndex::Flying);
+    return getAbilities().getBool(AbilitiesIndex::Flying);
 }
