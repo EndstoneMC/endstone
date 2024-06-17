@@ -260,7 +260,7 @@ void EndstoneServer::broadcast(const std::string &message, const std::string &pe
 
 void EndstoneServer::broadcastMessage(const std::string &message) const
 {
-    broadcast(message, "endstone.broadcast.user");
+    broadcast(message, BroadcastChannelUser);
 }
 
 bool EndstoneServer::isPrimaryThread() const

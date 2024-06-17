@@ -19,7 +19,6 @@ class ActorAnimationControllerGroup;
 class ActorAnimationGroup;
 class ActorChunkTransferEntry;
 class ActorDamageCause;
-class ActorDamageSource;
 class ActorDefinitionDescriptor;
 class ActorDefinitionGroup;
 class ActorDefinitionIdentifier;

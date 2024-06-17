@@ -14,6 +14,7 @@
 
 #include "bedrock/server/server_player.h"
 
+#include "bedrock/locale/i18n.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_death_event.h"
@@ -24,9 +25,24 @@ using endstone::detail::EndstoneServer;
 
 void ServerPlayer::die(const ActorDamageSource &source)
 {
+    auto death_cause_message = source.getDeathMessage(getName(), this);
+    auto death_message = getI18n().get(death_cause_message.first, death_cause_message.second, nullptr);
+
     auto &server = entt::locator<EndstoneServer>::value();
-    auto e = std::make_unique<endstone::PlayerDeathEvent>(getEndstonePlayer());
+    endstone::Player &endstone_player = getEndstonePlayer();
+    auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
     server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
+    if (!e->getDeathMessage().empty()) {
+        // TODO(fixme): if the death message is not changed, send raw message to everyone (i.e. no translation).
+        for (const auto *permissible :
+             server.getPluginManager().getPermissionSubscriptions(EndstoneServer::BroadcastChannelUser)) {
+            const auto *sender = permissible->asCommandSender();
+            if (sender != nullptr && sender != &endstone_player &&
+                sender->hasPermission(EndstoneServer::BroadcastChannelUser)) {
+                sender->sendMessage(e->getDeathMessage());
+            }
+        }
+    }
 
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);

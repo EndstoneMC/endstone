@@ -41,6 +41,7 @@
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
+#include "bedrock/world/damagesource/actor_damage_source.h"
 #include "bedrock/world/item/item_stack.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/material/material_type.h"

@@ -187,6 +187,16 @@ public:
      * @return true if the current thread matches the expected primary thread, false otherwise
      */
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
+
+    /**
+     * @brief Used for all administrative messages, such as an operator using a command.
+     */
+    inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
+
+    /**
+     * @brief Used for all announcement messages, such as informing users that a player has joined.
+     */
+    inline static const std::string BroadcastChannelUser = "endstone.broadcast.user";
 };
 
 }  // namespace endstone
