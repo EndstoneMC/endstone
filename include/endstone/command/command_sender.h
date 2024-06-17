@@ -19,6 +19,7 @@
 #include <fmt/format.h>
 
 #include "endstone/permissions/permissible.h"
+#include "endstone/translatable.h"
 
 namespace endstone {
 
@@ -71,6 +72,13 @@ public:
      */
     virtual void sendMessage(const std::string &message) const = 0;
 
+    /**
+     * @brief Sends this sender a translatable message
+     *
+     * @param message Message to be displayed
+     */
+    virtual void sendMessage(const Translatable& message) const =0;
+
     template <typename... Args>
     void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const
     {
@@ -83,6 +91,13 @@ public:
      * @param message Error message to be displayed
      */
     virtual void sendErrorMessage(const std::string &message) const = 0;
+
+    /**
+     * @brief Sends this sender a translatable error message
+     *
+     * @param message Error message to be displayed
+     */
+    virtual void sendErrorMessage(const Translatable& message) const = 0;
 
     template <typename... Args>
     void sendErrorMessage(const fmt::format_string<Args...> format, Args &&...args) const
