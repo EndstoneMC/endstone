@@ -20,8 +20,8 @@
 class BaseAttributeMap;
 class AttributeInstance {
 public:
-    virtual ~AttributeInstance() = 0;
-    virtual void tick() = 0;
+    virtual ~AttributeInstance() = default;
+    // virtual void tick() = 0;
 
     [[nodiscard]] float getCurrentValue() const
     {

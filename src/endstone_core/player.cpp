@@ -251,6 +251,16 @@ void EndstonePlayer::giveExpLevels(int amount)
     getHandle().addLevels(amount);
 }
 
+float EndstonePlayer::getExp() const
+{
+    return getHandle().getLevelProgress();
+}
+
+int EndstonePlayer::getExpLevel() const
+{
+    return getHandle().getPlayerLevel();
+}
+
 bool EndstonePlayer::getAllowFlight() const
 {
     return getHandle().getAbilities().getBool(AbilitiesIndex::MayFly);

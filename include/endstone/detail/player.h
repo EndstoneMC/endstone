@@ -69,6 +69,8 @@ public:
     void kick(std::string message) const override;
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;
+    [[nodiscard]] float getExp() const override;
+    [[nodiscard]] int getExpLevel() const override;
     [[nodiscard]] bool getAllowFlight() const override;
     void setAllowFlight(bool flight) override;
     [[nodiscard]] bool isFlying() const override;

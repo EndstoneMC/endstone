@@ -800,6 +800,16 @@ class Player(Actor):
     def allow_flight(self, arg1: bool) -> None:
         ...
     @property
+    def exp(self) -> float:
+        """
+        Gets the players current percentage towards the next level.
+        """
+    @property
+    def exp_level(self) -> int:
+        """
+        Gets the players current experience level
+        """
+    @property
     def game_mode(self) -> GameMode:
         """
         The player's current game mode.
