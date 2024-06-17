@@ -18,6 +18,7 @@
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/text_packet.h"
+#include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/command_origin_data.h"
@@ -197,27 +198,27 @@ const SocketAddress &EndstonePlayer::getAddress() const
 void EndstonePlayer::sendRawMessage(std::string message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
-    text_packet->type = TextPacketType::Raw;
-    text_packet->message = message;
+    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    pk->type = TextPacketType::Raw;
+    pk->message = message;
     getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendPopup(std::string message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
-    text_packet->type = TextPacketType::Popup;
-    text_packet->message = message;
+    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    pk->type = TextPacketType::Popup;
+    pk->message = message;
     getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendTip(std::string message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> text_packet = std::static_pointer_cast<TextPacket>(packet);
-    text_packet->type = TextPacketType::Tip;
-    text_packet->message = message;
+    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    pk->type = TextPacketType::Tip;
+    pk->message = message;
     getHandle().sendNetworkPacket(*packet);
 }
 
@@ -251,7 +252,7 @@ void EndstonePlayer::setAllowFlight(bool flight)
     }
 
     getHandle().getAbilities().setAbility(AbilitiesIndex::MayFly, flight);
-    // TODO(fixme): resend the abilities
+    updateAbilities();
 }
 
 bool EndstonePlayer::isFlying() const
@@ -267,7 +268,7 @@ void EndstonePlayer::setFlying(bool value)
     }
 
     getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, value);
-    // TODO(fixme): resend the abilities
+    updateAbilities();
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
@@ -344,6 +345,14 @@ PlayerInventory &EndstonePlayer::getInventory() const
 void EndstonePlayer::disconnect()
 {
     perm_.clearPermissions();
+}
+
+void EndstonePlayer::updateAbilities() const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<UpdateAbilitiesPacket> pk = std::static_pointer_cast<UpdateAbilitiesPacket>(packet);
+    pk->data = {getHandle().getOrCreateUniqueID(), getHandle().getAbilities()};
+    getHandle().sendNetworkPacket(*packet);
 }
 
 ::Player &EndstonePlayer::getHandle() const

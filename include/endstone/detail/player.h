@@ -80,6 +80,7 @@ public:
     [[nodiscard]] PlayerInventory &getInventory() const override;
 
     void disconnect();
+    void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
 
 private:

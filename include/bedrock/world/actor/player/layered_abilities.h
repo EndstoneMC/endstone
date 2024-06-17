@@ -68,6 +68,30 @@ public:
         layers_.at(static_cast<std::size_t>(AbilitiesLayer::Base)).setAbility(index, value);
     }
 
+    PermissionsHandler &getPermissionHandler()
+    {
+        return permissions_;
+    }
+
+    [[nodiscard]] const PermissionsHandler &getPermissionHandler() const
+    {
+        return permissions_;
+    }
+
+    void forEachLayer(const std::function<void(AbilitiesLayer, Abilities &)> &callback)
+    {
+        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+            callback(static_cast<AbilitiesLayer>(i), layers_.at(i));
+        }
+    }
+
+    void forEachLayer(const std::function<void(AbilitiesLayer, const Abilities &)> &callback) const
+    {
+        for (auto i = static_cast<int>(AbilitiesLayer::LayerCount) - 1; i >= 0; i--) {
+            callback(static_cast<AbilitiesLayer>(i), layers_.at(i));
+        }
+    }
+
 private:
     PermissionsHandler permissions_;
     std::array<Abilities, static_cast<std::size_t>(AbilitiesLayer::LayerCount)> layers_;
