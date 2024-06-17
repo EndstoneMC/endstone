@@ -19,16 +19,47 @@
 
 class HashedString {
 public:
-    HashedString(std::nullptr_t) {}                   // NOLINT(*-explicit-constructor)
-    HashedString(const std::string &str) : str_(str)  // NOLINT(*-explicit-constructor)
+    HashedString(std::nullptr_t) {}                                                   // NOLINT(*-explicit-constructor)
+    HashedString(const std::string &str) : str_(str), str_hash_(computeHash(str)) {}  // NOLINT(*-explicit-constructor)
+    HashedString(char const *str) : str_(str), str_hash_(computeHash(str)) {}         // NOLINT(*-explicit-constructor)
+
+    HashedString(const HashedString &other) : str_(other.str_), str_hash_(other.str_hash_), last_match_(nullptr) {}
+    HashedString(HashedString &&other) noexcept
+        : str_(std::move(other.str_)), str_hash_(other.str_hash_), last_match_(nullptr)
     {
-        str_hash_ = std::hash<std::string>()(str);
     }
-    HashedString(char const *str) : HashedString(std::string(str)) {}  // NOLINT(*-explicit-constructor)
+
+    HashedString &operator=(const HashedString &other)
+    {
+        if (this != &other) {
+            str_ = other.str_;
+            str_hash_ = other.str_hash_;
+            last_match_ = nullptr;
+        }
+        return *this;
+    }
+
+    HashedString &operator=(HashedString &&other) noexcept
+    {
+        str_ = other.str_;
+        str_hash_ = other.str_hash_;
+        last_match_ = nullptr;
+        return *this;
+    }
 
     [[nodiscard]] std::size_t getHash() const
     {
         return str_hash_;
+    }
+
+    [[nodiscard]] const std::string &getString() const
+    {
+        return str_;
+    }
+
+    [[nodiscard]] const char *c_str() const  // NOLINT(*-identifier-naming)
+    {
+        return str_.c_str();
     }
 
     bool constexpr operator==(const HashedString &other) const
@@ -50,6 +81,40 @@ public:
     bool constexpr operator!=(const HashedString &other) const
     {
         return !(*this == other);
+    }
+
+    static std::size_t computeHash(const std::string &str)
+    {
+        constexpr uint64_t offset_basis = 0xCBF29CE484222325;
+        constexpr uint64_t prime = 0x100000001B3;
+
+        if (str.empty()) {
+            return 0;
+        }
+
+        std::size_t hash = offset_basis;
+        for (char c : str) {
+            hash *= prime;
+            hash ^= static_cast<unsigned char>(c);
+        }
+        return hash;
+    }
+
+    static std::size_t computeHash(const char *str)
+    {
+        constexpr uint64_t offset_basis = 0xCBF29CE484222325;
+        constexpr uint64_t prime = 0x100000001B3;
+
+        if (!str || str[0] == '\0') {
+            return 0;
+        }
+
+        std::size_t hash = offset_basis;
+        for (int i = 0; str[i] != '\0'; i++) {
+            hash *= prime;
+            hash ^= static_cast<unsigned char>(str[i]);
+        }
+        return hash;
     }
 
 private:
