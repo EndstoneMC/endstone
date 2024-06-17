@@ -3,6 +3,38 @@
   <compounddef id="classendstone_1_1Server" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Server</compoundname>
     <includes refid="server_8h" local="no">endstone/server.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Server::BroadcastChannelAdmin</definition>
+        <argsstring></argsstring>
+        <name>BroadcastChannelAdmin</name>
+        <initializer>= &quot;endstone.broadcast.admin&quot;</initializer>
+        <briefdescription>
+<para>Used for all administrative messages, such as an operator using a command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="194" column="37" bodyfile="include/endstone/server.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::Server::BroadcastChannelUser</definition>
+        <argsstring></argsstring>
+        <name>BroadcastChannelUser</name>
+        <initializer>= &quot;endstone.broadcast.user&quot;</initializer>
+        <briefdescription>
+<para>Used for all announcement messages, such as informing users that a player has joined. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="199" column="37" bodyfile="include/endstone/server.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Server_1a2dee067a586bcea2355896f716fc3375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -541,9 +573,11 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="37" column="1" bodyfile="include/endstone/server.h" bodystart="37" bodyend="190"/>
+    <location file="include/endstone/server.h" line="37" column="1" bodyfile="include/endstone/server.h" bodystart="37" bodyend="200"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
+      <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
+      <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelUser</name></member>
       <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>

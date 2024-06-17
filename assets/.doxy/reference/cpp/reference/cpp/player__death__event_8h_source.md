@@ -31,7 +31,10 @@ namespace endstone {
 
 class PlayerDeathEvent : public ActorDeathEvent, public PlayerEvent {
 public:
-    explicit PlayerDeathEvent(Player &player) : ActorDeathEvent(player), PlayerEvent(player) {}
+    explicit PlayerDeathEvent(Player &player, std::string death_message)
+        : ActorDeathEvent(player), PlayerEvent(player), death_message_(std::move(death_message))
+    {
+    }
     ~PlayerDeathEvent() override = default;
 
     inline static const std::string NAME = "PlayerDeathEvent";
@@ -44,6 +47,19 @@ public:
     {
         return false;
     }
+
+    [[nodiscard]] const std::string &getDeathMessage() const
+    {
+        return death_message_;
+    }
+
+    void setDeathMessage(const std::string &death_message)
+    {
+        death_message_ = death_message;
+    }
+
+private:
+    std::string death_message_;
 
     // TODO(event): add death message, new exp, new level, new total exp, keep level, keep inventory
 };

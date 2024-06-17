@@ -165,9 +165,11 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::string death\_message) <br> |
+|  const std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
+|  void | [**setDeathMessage**](#function-setdeathmessage) (const std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 |   | [**~PlayerDeathEvent**](#function-playerdeathevent) () override<br> |
 
 
@@ -419,12 +421,38 @@ const std::string endstone::PlayerDeathEvent::NAME;
 
 ```C++
 inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
-    Player & player
+    Player & player,
+    std::string death_message
 ) 
 ```
 
 
 
+
+<hr>
+
+
+
+### function getDeathMessage 
+
+_Get the death message that will appear to everyone on the server._ 
+```C++
+inline const std::string & endstone::PlayerDeathEvent::getDeathMessage () const
+```
+
+
+
+
+
+**Returns:**
+
+Message to appear to other players on the server. 
+
+
+
+
+
+        
 
 <hr>
 
@@ -485,6 +513,33 @@ true if this event can be cancelled
         
 Implements [*endstone::ActorDeathEvent::isCancellable*](classendstone_1_1ActorDeathEvent.md#function-iscancellable)
 
+
+<hr>
+
+
+
+### function setDeathMessage 
+
+_Set the death message that will appear to everyone on the server._ 
+```C++
+inline void endstone::PlayerDeathEvent::setDeathMessage (
+    const std::string & death_message
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `death_message` Message to appear to other players on the server. 
+
+
+
+
+        
 
 <hr>
 

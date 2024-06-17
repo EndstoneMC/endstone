@@ -34,6 +34,12 @@ _Represents a server implementation._
 
 
 
+## Public Static Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  const std::string | [**BroadcastChannelAdmin**](#variable-broadcastchanneladmin)   = = "endstone.broadcast.admin"<br>_Used for all administrative messages, such as an operator using a command._  |
+|  const std::string | [**BroadcastChannelUser**](#variable-broadcastchanneluser)   = = "endstone.broadcast.user"<br>_Used for all announcement messages, such as informing users that a player has joined._  |
 
 
 
@@ -104,6 +110,34 @@ _Represents a server implementation._
 
 
 
+## Public Static Attributes Documentation
+
+
+
+
+### variable BroadcastChannelAdmin 
+
+```C++
+const std::string endstone::Server::BroadcastChannelAdmin;
+```
+
+
+
+
+<hr>
+
+
+
+### variable BroadcastChannelUser 
+
+```C++
+const std::string endstone::Server::BroadcastChannelUser;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 

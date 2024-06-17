@@ -355,10 +355,13 @@
   </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1ad07de18f86387bcccf449a7d344a9a52" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" kind="variable"><name>death_message_</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" kind="function"><name>PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a36e03de2f0aa795bdf14438f73e4607d" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a9c83eb1c19d1f3bc66c5618721db1766" kind="function"><name>getDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" kind="function"><name>setDeathMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
     <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>
@@ -543,6 +546,8 @@
     <member refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" kind="function"><name>getPendingTasks</name></member>
   </compound>
   <compound refid="classendstone_1_1Server" kind="class"><name>endstone::Server</name>
+    <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" kind="variable"><name>BroadcastChannelAdmin</name></member>
+    <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" kind="variable"><name>BroadcastChannelUser</name></member>
     <member refid="classendstone_1_1Server_1a2dee067a586bcea2355896f716fc3375" kind="function"><name>Server</name></member>
     <member refid="classendstone_1_1Server_1ab38f521ee3c088261a6448d3bf9d4dbd" kind="function"><name>Server</name></member>
     <member refid="classendstone_1_1Server_1a82eb8fae56d70312309a13c558171eae" kind="function"><name>operator=</name></member>

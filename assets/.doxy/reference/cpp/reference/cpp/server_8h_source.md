@@ -92,6 +92,10 @@ public:
     }
 
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
+
+    inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
+
+    inline static const std::string BroadcastChannelUser = "endstone.broadcast.user";
 };
 
 }  // namespace endstone
