@@ -22,6 +22,20 @@
 class Attribute;
 class AttributeCollection {
 public:
+    [[nodiscard]] Attribute *getAttribute(const HashedString &name) const
+    {
+        auto it = attributes_map_.find(name);
+        if (it == attributes_map_.end()) {
+            return nullptr;
+        }
+        return it->second;
+    }
+
+    [[nodiscard]] bool hasAttribute(const HashedString &name) const
+    {
+        return attributes_map_.find(name) != attributes_map_.end();
+    }
+
 private:
     friend class Attribute;
     ENDSTONE_HOOK static AttributeCollection &instance();

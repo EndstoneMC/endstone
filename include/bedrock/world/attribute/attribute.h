@@ -17,6 +17,7 @@
 #include <cstdint>
 
 #include "bedrock/core/hashed_string.h"
+#include "bedrock/world/attribute/attribute_collection.h"
 #include "bedrock/world/attribute/redefinition_mode.h"
 
 class Attribute {
@@ -35,6 +36,7 @@ public:
     {
         return id_value_;
     }
+
     [[nodiscard]] const HashedString &getName() const
     {
         return name_;
