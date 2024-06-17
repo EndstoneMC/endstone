@@ -349,7 +349,7 @@ void EndstonePlayer::disconnect()
 
 void EndstonePlayer::updateAbilities() const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::UpdateAbilitiesPacket);
     std::shared_ptr<UpdateAbilitiesPacket> pk = std::static_pointer_cast<UpdateAbilitiesPacket>(packet);
     pk->data = {getHandle().getOrCreateUniqueID(), getHandle().getAbilities()};
     getHandle().sendNetworkPacket(*packet);
