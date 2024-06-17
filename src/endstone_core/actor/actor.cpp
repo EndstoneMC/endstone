@@ -30,8 +30,10 @@ EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(s
 }
 
 void EndstoneActor::sendMessage(const std::string &message) const {}
+void EndstoneActor::sendMessage(const Translatable &message) const {}
 
 void EndstoneActor::sendErrorMessage(const std::string &message) const {}
+void EndstoneActor::sendErrorMessage(const Translatable &message) const {}
 
 Server &EndstoneActor::getServer() const
 {

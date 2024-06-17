@@ -58,13 +58,6 @@ public:
     [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
     /**
-     * @brief Sends this player a raw message
-     *
-     * @param message Message to be displayed
-     */
-    virtual void sendRawMessage(std::string message) const = 0;
-
-    /**
      * @brief Sends this player a popup message
      *
      * @param message Message to be displayed

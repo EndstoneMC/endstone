@@ -21,7 +21,9 @@ class ConsoleCommandSender : public ServerCommandSender {
 public:
     [[nodiscard]] CommandSender *asConsole() const override;
     void sendMessage(const std::string &message) const override;
+    void sendMessage(const Translatable &message) const override;
     void sendErrorMessage(const std::string &message) const override;
+    void sendErrorMessage(const Translatable &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;

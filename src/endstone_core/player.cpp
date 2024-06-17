@@ -68,12 +68,32 @@ EndstonePlayer::~EndstonePlayer()
 
 void EndstonePlayer::sendMessage(const std::string &message) const
 {
-    sendRawMessage(message);
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    pk->type = TextPacketType::Raw;
+    pk->message = message;
+    getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::sendMessage(const Translatable &message) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
+    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    pk->type = TextPacketType::Translate;
+    pk->message = message.getTranslationKey();
+    pk->params = message.getParameters();
+    pk->localize = true;
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendErrorMessage(const std::string &message) const
 {
     sendMessage(ColorFormat::Red + message);
+}
+
+void EndstonePlayer::sendErrorMessage(const Translatable &message) const
+{
+    sendMessage(message);
 }
 
 Server &EndstonePlayer::getServer() const
@@ -193,15 +213,6 @@ UUID EndstonePlayer::getUniqueId() const
 const SocketAddress &EndstonePlayer::getAddress() const
 {
     return address_;
-}
-
-void EndstonePlayer::sendRawMessage(std::string message) const
-{
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Raw;
-    pk->message = message;
-    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::sendPopup(std::string message) const

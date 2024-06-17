@@ -34,9 +34,27 @@ void CommandSenderAdapter::sendMessage(const std::string &message) const
     output_.forceOutput(message, {});
 }
 
+void CommandSenderAdapter::sendMessage(const Translatable &message) const
+{
+    std::vector<CommandOutputParameter> params;
+    for (const auto &param : message.getParameters()) {
+        params.emplace_back(param);
+    }
+    output_.forceOutput(message.getTranslationKey(), params);
+}
+
 void CommandSenderAdapter::sendErrorMessage(const std::string &message) const
 {
     output_.error(message, {});
+}
+
+void CommandSenderAdapter::sendErrorMessage(const Translatable &message) const
+{
+    std::vector<CommandOutputParameter> params;
+    for (const auto &param : message.getParameters()) {
+        params.emplace_back(param);
+    }
+    output_.error(message.getTranslationKey(), params);
 }
 
 std::string CommandSenderAdapter::getName() const

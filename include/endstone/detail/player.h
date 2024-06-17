@@ -32,6 +32,8 @@ public:
 
     // CommandSender
     void sendMessage(const std::string &message) const override;
+    void sendMessage(const Translatable &message) const override;
+    void sendErrorMessage(const Translatable &message) const override;
     void sendErrorMessage(const std::string &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
@@ -62,7 +64,6 @@ public:
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
     [[nodiscard]] const SocketAddress &getAddress() const override;
-    void sendRawMessage(std::string message) const override;
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
     void kick(std::string message) const override;
