@@ -19,7 +19,15 @@
 
 class HashedString {
 public:
-    std::uint64_t str_hash;
-    std::string str;
-    const HashedString *last_match;
+    HashedString(std::nullptr_t) {}  // NOLINT(*-explicit-constructor)
+    explicit HashedString(const std::string &str) : str_(str)
+    {
+        str_hash_ = std::hash<std::string>()(str);
+    }
+    explicit HashedString(char const *str) : HashedString(std::string(str)) {}
+
+private:
+    std::uint64_t str_hash_{0};
+    std::string str_;
+    const HashedString *last_match_;
 };
