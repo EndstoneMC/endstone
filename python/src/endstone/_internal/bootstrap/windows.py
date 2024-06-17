@@ -61,6 +61,11 @@ CreateRemoteThread = kernel32.CreateRemoteThread
 CreateRemoteThread.restype = HANDLE
 CreateRemoteThread.argtypes = (HANDLE, LPVOID, SIZE_T, LPVOID, LPVOID, DWORD, LPDWORD)
 
+# https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getexitcodethread
+GetExitCodeThread = kernel32.GetExitCodeThread
+GetExitCodeThread.restype = BOOL
+GetExitCodeThread.argtypes = (HANDLE, LPDWORD)
+
 # https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getmodulehandlew
 GetModuleHandle = kernel32.GetModuleHandleW
 GetModuleHandle.restype = HMODULE
@@ -157,6 +162,12 @@ class WindowsBootstrap(Bootstrap):
         # Wait for the remote thread to finish
         if kernel32.WaitForSingleObject(remote_thread, INFINITE) == 0xFFFFFFFF:
             raise ValueError(f"WaitForSingleObject failed with error {get_last_error()}.")
+
+        # Check dll load result
+        exit_code = DWORD()
+        result = kernel32.GetExitCodeThread(remote_thread, ctypes.byref(exit_code))
+        if result == 0:
+            raise ValueError(f"LoadLibrary failed with thread exit code: {exit_code.value}")
 
         # Reopen the handle to process thread (which was closed by subprocess.Popen)
         snapshot = kernel32.CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, 0)
