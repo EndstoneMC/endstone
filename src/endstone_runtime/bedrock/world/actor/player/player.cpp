@@ -80,3 +80,15 @@ bool Player::isFlying() const
 {
     return getAbilities().getBool(AbilitiesIndex::Flying);
 }
+
+const AttributeInstance &Player::getAttribute(const Attribute &attribute) const
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getInstance(attribute);
+}
+
+int Player::getPlayerLevel() const
+{
+    static Attribute *level = AttributeCollection::getAttribute("minecraft:player.level");
+    return static_cast<int>(getAttribute(*level).getCurrentValue());
+}

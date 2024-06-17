@@ -121,10 +121,15 @@ public:
     [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
     [[nodiscard]] ENDSTONE_HOOK Container &getInventory();
     [[nodiscard]] GameType getPlayerGameType() const;
+
+    // Abilities
     [[nodiscard]] LayeredAbilities &getAbilities();
     [[nodiscard]] LayeredAbilities const &getAbilities() const;
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;
+    // Attributes
+    [[nodiscard]] const AttributeInstance &getAttribute(const Attribute &) const;
+    [[nodiscard]] int getPlayerLevel() const;
 
 private:
 public:
