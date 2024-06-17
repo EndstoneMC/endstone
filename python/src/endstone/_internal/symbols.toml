@@ -1,4 +1,4 @@
-timestamp = 1718559241
+timestamp = 1718657749
 version = "1.21.0"
 
 [windows]
@@ -6,6 +6,8 @@ version = "1.21.0"
 # Actor
 "?remove@Actor@@UEAAXXZ" = 26994832
 "?setDimension@Actor@@QEAAXV?$WeakRef@VDimension@@@@@Z" = 27009728
+# AttributeCollection
+"?instance@AttributeCollection@@CAAEAV1@XZ" = 27631696
 # Bedrock
 "?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 43442976
 # BedrockLog
@@ -75,6 +77,8 @@ version = "1.21.0"
 # Actor
 "_ZN5Actor12setDimensionE7WeakRefI9DimensionE" = 110315696
 "_ZN5Actor6removeEv" = 110277056
+# AttributeCollection
+"_ZN19AttributeCollection8instanceEv" = 111792336
 # Bedrock
 "_ZN7Bedrock9Threading15getServerThreadEv" = 141215456
 # BedrockLog
