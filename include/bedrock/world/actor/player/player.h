@@ -130,6 +130,7 @@ public:
     // Attributes
     [[nodiscard]] const AttributeInstance &getAttribute(const Attribute &) const;
     [[nodiscard]] int getPlayerLevel() const;
+    [[nodiscard]] float getLevelProgress() const;
 
 private:
 public:
