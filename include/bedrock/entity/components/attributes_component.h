@@ -14,10 +14,13 @@
 
 #pragma once
 
-#include "bedrock/world/actor/player/layered_abilities.h"
-#include "bedrock/world/actor/player/permissions_handler.h"
+#include <entt/entt.hpp>
+
 #include "bedrock/world/attribute/base_attribute_map.h"
 
 struct AttributesComponent {
     BaseAttributeMap attributes;
 };
+#ifdef _WIN32
+static_assert(entt::type_hash<AttributesComponent>::value() == 0xB6B29444);
+#endif

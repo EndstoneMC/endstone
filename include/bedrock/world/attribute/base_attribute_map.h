@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <system_error>
 #include <unordered_map>
 
 #include "bedrock/world/attribute/attribute.h"
@@ -28,7 +29,11 @@ public:
 
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const
     {
-        return instance_map_.at(id_value);
+        auto it = instance_map_.find(id_value);
+        if (it == instance_map_.end()) {
+            throw std::runtime_error("Invalid attribute id.");
+        }
+        return it->second;
     }
 
 private:
