@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <entt/entt.hpp>
+
 #include "bedrock/bedrock.h"
 
 class Ability {
@@ -26,7 +28,11 @@ public:
     };
 
     enum class Options : std::uint8_t {
-        None = 0
+        None = 0,
+        NoSave = 1,
+        CommandExposed = 2,
+        PermissionsInterfaceExposed = 4,
+        _entt_enum_as_bitmask  // NOLINT(*-identifier-naming)
     };
 
     union Value {
@@ -67,6 +73,16 @@ public:
             value_ = {};
         }
         value_.float_val = value;
+    }
+
+    [[nodiscard]] bool hasOptions(Options options) const
+    {
+        return !!(options & options_);
+    }
+
+    [[nodiscard]] bool isSet() const
+    {
+        return type_ != Type::Unset;
     }
 
 private:

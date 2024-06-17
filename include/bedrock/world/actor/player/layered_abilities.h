@@ -60,12 +60,12 @@ public:
 
     void setAbility(AbilitiesIndex index, bool value)
     {
-        layers_.at(static_cast<std::size_t>(AbilitiesLayer::Base)).setAbility(index, value);
+        layers_.at(static_cast<int>(AbilitiesLayer::Base)).setAbility(index, value);
     }
 
     void setAbility(AbilitiesIndex index, float value)
     {
-        layers_.at(static_cast<std::size_t>(AbilitiesLayer::Base)).setAbility(index, value);
+        layers_.at(static_cast<int>(AbilitiesLayer::Base)).setAbility(index, value);
     }
 
     PermissionsHandler &getPermissionHandler()
@@ -94,5 +94,5 @@ public:
 
 private:
     PermissionsHandler permissions_;
-    std::array<Abilities, static_cast<std::size_t>(AbilitiesLayer::LayerCount)> layers_;
+    std::array<Abilities, static_cast<int>(AbilitiesLayer::LayerCount)> layers_;
 };
