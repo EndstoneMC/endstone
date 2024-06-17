@@ -71,7 +71,7 @@ class BroadcastMessageEvent(Event):
     @property
     def message(self) -> str:
         """
-        The message to broadcast.
+        Gets or sets the message to broadcast.
         """
     @message.setter
     def message(self, arg1: str) -> None:
@@ -290,7 +290,7 @@ class Event:
     @property
     def cancelled(self) -> bool:
         """
-        The cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins
         """
     @cancelled.setter
     def cancelled(self, arg1: bool) -> None:
@@ -829,7 +829,7 @@ class PlayerChatEvent(PlayerEvent):
     @property
     def message(self) -> str:
         """
-        The message that the player will send.
+        Gets or sets the message that the player will send.
         """
     @message.setter
     def message(self, arg1: str) -> None:
@@ -841,7 +841,7 @@ class PlayerCommandEvent(PlayerEvent):
     @property
     def command(self) -> str:
         """
-        The command that the player will send.
+        Gets or sets the command that the player will send.
         """
     @command.setter
     def command(self, arg1: str) -> None:
@@ -850,6 +850,14 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     """
     Called when a player dies
     """
+    @property
+    def death_message(self) -> str:
+        """
+        Gets or sets the death message that will appear to everyone on the server.
+        """
+    @death_message.setter
+    def death_message(self, arg1: str) -> None:
+        ...
 class PlayerEvent(Event):
     """
     Represents a player related event
@@ -874,7 +882,7 @@ class PlayerLoginEvent(PlayerEvent):
     @property
     def kick_message(self) -> str:
         """
-        The kick message to display if event is cancelled
+        Gets or sets kick message to display if event is cancelled
         """
     @kick_message.setter
     def kick_message(self, arg1: str) -> None:
@@ -1365,7 +1373,7 @@ class ServerCommandEvent(Event):
     @property
     def command(self) -> str:
         """
-        The command that the server will execute
+        Gets or sets the command that the server will execute
         """
     @command.setter
     def command(self, arg1: str) -> None:
@@ -1382,7 +1390,7 @@ class ServerListPingEvent(Event):
     @property
     def game_mode(self) -> GameMode:
         """
-        The current game mode.
+        Gets or sets the current game mode.
         """
     @game_mode.setter
     def game_mode(self, arg1: GameMode) -> None:
@@ -1390,7 +1398,7 @@ class ServerListPingEvent(Event):
     @property
     def level_name(self) -> str:
         """
-        The level name.
+        Gets or sets the level name.
         """
     @level_name.setter
     def level_name(self, arg1: str) -> None:
@@ -1408,7 +1416,7 @@ class ServerListPingEvent(Event):
     @property
     def max_players(self) -> int:
         """
-        The maximum number of players allowed.
+        Gets or sets the maximum number of players allowed.
         """
     @max_players.setter
     def max_players(self, arg1: int) -> None:
@@ -1416,7 +1424,7 @@ class ServerListPingEvent(Event):
     @property
     def minecraft_version_network(self) -> str:
         """
-        The network version of Minecraft that is supported by this server
+        Gets or sets the network version of Minecraft that is supported by this server
         """
     @minecraft_version_network.setter
     def minecraft_version_network(self, arg1: str) -> None:
@@ -1424,7 +1432,7 @@ class ServerListPingEvent(Event):
     @property
     def motd(self) -> str:
         """
-        The message of the day message.
+        Gets or sets the message of the day message.
         """
     @motd.setter
     def motd(self, arg1: str) -> None:
@@ -1437,7 +1445,7 @@ class ServerListPingEvent(Event):
     @property
     def num_players(self) -> int:
         """
-        The number of players online.
+        Gets or sets the number of players online.
         """
     @num_players.setter
     def num_players(self, arg1: int) -> None:
