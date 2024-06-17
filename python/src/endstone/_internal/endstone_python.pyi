@@ -3,7 +3,7 @@ import datetime
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -197,13 +197,25 @@ class CommandSender(Permissible):
         """
         Cast to a Player instance
         """
+    @typing.overload
     def send_error_message(self, message: str) -> None:
         """
         Sends this sender an error message
         """
+    @typing.overload
+    def send_error_message(self, message: Translatable) -> None:
+        """
+        Sends this sender a translatable error message
+        """
+    @typing.overload
     def send_message(self, message: str) -> None:
         """
         Sends this sender a message
+        """
+    @typing.overload
+    def send_message(self, message: Translatable) -> None:
+        """
+        Sends this sender a translatable message
         """
     @property
     def name(self) -> str:
@@ -765,10 +777,6 @@ class Player(Actor):
     def send_popup(self, message: str) -> None:
         """
         Sends this player a popup message
-        """
-    def send_raw_message(self, message: str) -> None:
-        """
-        Sends this player a raw message
         """
     def send_tip(self, message: str) -> None:
         """
@@ -1567,6 +1575,19 @@ class ThunderChangeEvent(Event):
     def to_thunder_state(self) -> bool:
         """
         Gets the state of thunder that the world is being set to
+        """
+class Translatable:
+    def __init__(self, translate: str, params: list[str] | None) -> None:
+        ...
+    @property
+    def parameters(self) -> list[str]:
+        """
+        Get the translation parameters.
+        """
+    @property
+    def translation_key(self) -> str:
+        """
+        Get the translation key for use in a translation component.
         """
 class Vector:
     """

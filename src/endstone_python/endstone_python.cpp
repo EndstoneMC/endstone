@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <utility>
+
 #include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -34,6 +36,7 @@ namespace endstone::detail {
 void init_color_format(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_logger(py::module_ &);
+void init_translatable(py::module_ &);
 void init_inventory(py::module_ &);
 
 void init_util(py::module_ &);
@@ -73,6 +76,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_color_format(m);
     init_game_mode(m);
     init_logger(m);
+    init_translatable(m);
     init_inventory(m);
 
     init_util(m);
@@ -175,6 +179,21 @@ void init_logger(py::module &m)
         .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
+namespace {
+Translatable createTranslatable(std::string translate, const std::optional<std::vector<std::string>> &with)
+{
+    return {std::move(translate), with.value_or(std::vector<std::string>{})};
+}
+}  // namespace
+void init_translatable(py::module_ &m)
+{
+    py::class_<Translatable>(m, "Translatable")
+        .def(py::init(&createTranslatable), py::arg("translate"), py::arg("params"))
+        .def_property_readonly("translation_key", &Translatable::getTranslationKey,
+                               "Get the translation key for use in a translation component.")
+        .def_property_readonly("parameters", &Translatable::getParameters, "Get the translation parameters.");
+}
+
 void init_server(py::class_<Server> &server)
 {
     server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
@@ -220,7 +239,6 @@ void init_player(py::module_ &m)
     py::class_<Player, Actor>(m, "Player", "Represents a player.")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
-        .def("send_raw_message", &Player::sendRawMessage, py::arg("message"), "Sends this player a raw message")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
         .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
