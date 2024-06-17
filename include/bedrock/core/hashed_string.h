@@ -26,8 +26,44 @@ public:
     }
     explicit HashedString(char const *str) : HashedString(std::string(str)) {}
 
+    [[nodiscard]] std::size_t getHash() const
+    {
+        return str_hash_;
+    }
+
+    bool constexpr operator==(const HashedString &other) const
+    {
+        if (str_hash_ == other.str_hash_) {
+            if (last_match_ == &other && other.last_match_ == this) {
+                return true;
+            }
+            if (str_ == other.str_) {
+                last_match_ = &other;
+                other.last_match_ = this;
+                return true;
+            }
+        }
+        last_match_ = nullptr;
+        return false;
+    }
+
+    bool constexpr operator!=(const HashedString &other) const
+    {
+        return !(*this == other);
+    }
+
 private:
-    std::uint64_t str_hash_{0};
-    std::string str_;
-    const HashedString *last_match_;
+    std::size_t str_hash_{0};                 // +0
+    std::string str_;                         // +8
+    mutable const HashedString *last_match_;  // +40
 };
+
+namespace std {
+template <>
+struct hash<HashedString> {
+    std::size_t operator()(const HashedString &value) const noexcept
+    {
+        return value.getHash();
+    }
+};
+}  // namespace std
