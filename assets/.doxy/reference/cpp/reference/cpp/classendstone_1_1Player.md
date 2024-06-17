@@ -119,6 +119,8 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual const [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
+| virtual float | [**getExp**](#function-getexp) () const = 0<br>_Gets the players current percentage towards the next level._  |
+| virtual int | [**getExpLevel**](#function-getexplevel) () const = 0<br>_Gets the players current experience level._  |
 | virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
@@ -421,6 +423,59 @@ virtual bool endstone::Player::getAllowFlight () const = 0
 **Returns:**
 
 True if the player is allowed to fly. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getExp 
+
+_Gets the players current percentage towards the next level._ 
+```C++
+virtual float endstone::Player::getExp () const = 0
+```
+
+
+
+This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+
+
+
+
+**Returns:**
+
+Current experience points 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getExpLevel 
+
+_Gets the players current experience level._ 
+```C++
+virtual int endstone::Player::getExpLevel () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+Current experience level 
 
 
 

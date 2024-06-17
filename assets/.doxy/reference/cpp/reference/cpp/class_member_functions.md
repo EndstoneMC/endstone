@@ -106,6 +106,8 @@
 * **getValue** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **getAddress** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
+* **getExp** ([**endstone::Player**](classendstone_1_1Player.md))
+* **getExpLevel** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getGameMode** ([**endstone::Player**](classendstone_1_1Player.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getInventory** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getPing** ([**endstone::Player**](classendstone_1_1Player.md))
