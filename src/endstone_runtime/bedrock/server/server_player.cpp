@@ -32,14 +32,19 @@ void ServerPlayer::die(const ActorDamageSource &source)
     endstone::Player &endstone_player = getEndstonePlayer();
     auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
     server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
+
     if (!e->getDeathMessage().empty()) {
-        // TODO(fixme): if the death message is not changed, send raw message to everyone (i.e. no translation).
-        for (const auto *permissible :
-             server.getPluginManager().getPermissionSubscriptions(EndstoneServer::BroadcastChannelUser)) {
-            const auto *sender = permissible->asCommandSender();
-            if (sender != nullptr && sender != &endstone_player &&
-                sender->hasPermission(EndstoneServer::BroadcastChannelUser)) {
-                sender->sendMessage(e->getDeathMessage());
+        server.getLogger().info(e->getDeathMessage());
+        bool dirty = (e->getDeathMessage() != death_message);
+        for (const auto &player : server.getOnlinePlayers()) {
+            if (player == &endstone_player || !player->hasPermission(EndstoneServer::BroadcastChannelUser)) {
+                continue;
+            }
+            if (dirty) {
+                player->sendMessage(e->getDeathMessage());
+            }
+            else {
+                player->sendMessage({death_cause_message.first, death_cause_message.second});
             }
         }
     }
