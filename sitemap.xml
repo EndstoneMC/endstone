@@ -376,6 +376,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.readthedocs.io/reference/cpp/classendstone_1_1Translatable/</loc>
+         <lastmod>2024-06-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.readthedocs.io/reference/cpp/classendstone_1_1UUID/</loc>
          <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
@@ -1057,6 +1062,16 @@
     </url>
     <url>
          <loc>https://endstone.readthedocs.io/reference/cpp/server_8h_source/</loc>
+         <lastmod>2024-06-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.readthedocs.io/reference/cpp/translatable_8h/</loc>
+         <lastmod>2024-06-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.readthedocs.io/reference/cpp/translatable_8h_source/</loc>
          <lastmod>2024-06-17</lastmod>
          <changefreq>daily</changefreq>
     </url>

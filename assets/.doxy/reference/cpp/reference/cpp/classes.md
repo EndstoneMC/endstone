@@ -144,6 +144,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**Translatable**](classendstone_1_1Translatable.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## u

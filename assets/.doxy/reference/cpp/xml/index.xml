@@ -138,8 +138,10 @@
     <member refid="classendstone_1_1CommandSender_1a8de210424ed3b3a27a5a1a7f49065187" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" kind="function"><name>sendMessage</name></member>
+    <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" kind="function"><name>sendErrorMessage</name></member>
+    <member refid="classendstone_1_1CommandSender_1a8e3992eae0fee7e733685451a8e31b8d" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kind="function"><name>getName</name></member>
@@ -316,7 +318,6 @@
     <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" kind="function"><name>getUniqueId</name></member>
     <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" kind="function"><name>getAddress</name></member>
-    <member refid="classendstone_1_1Player_1a3da573d0fba8fe10620307d803c4c358" kind="function"><name>sendRawMessage</name></member>
     <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
     <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
@@ -662,6 +663,13 @@
     <member refid="classendstone_1_1ThunderChangeEvent_1a65d8e1b242cf7929f5f56a7b625d1e83" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1a5418071ef24c08f489f42c11d2eeba10" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1Translatable" kind="class"><name>endstone::Translatable</name>
+    <member refid="classendstone_1_1Translatable_1a625cc1a0ddb1b943cca1a7fa03db0507" kind="variable"><name>translate_</name></member>
+    <member refid="classendstone_1_1Translatable_1ac12b172c158ca6e902d142fab0ea0ec7" kind="variable"><name>with_</name></member>
+    <member refid="classendstone_1_1Translatable_1a974d2848a33fee44a130c1fc6466ef4a" kind="function"><name>Translatable</name></member>
+    <member refid="classendstone_1_1Translatable_1aa0555700c838c423900ac0c7ada2c056" kind="function"><name>getTranslationKey</name></member>
+    <member refid="classendstone_1_1Translatable_1a302745a0e6b396f97c941981fa535856" kind="function"><name>getParameters</name></member>
+  </compound>
   <compound refid="classendstone_1_1UUID" kind="class"><name>endstone::UUID</name>
     <member refid="classendstone_1_1UUID_1a1364e6289755ab27da41bf19976530d1" kind="variable"><name>data</name></member>
     <member refid="classendstone_1_1UUID_1ac0e4eb7a3bf6976c61013a8a44681431" kind="function"><name>begin</name></member>
@@ -876,6 +884,8 @@
   <compound refid="task_8h" kind="file"><name>task.h</name>
   </compound>
   <compound refid="server_8h" kind="file"><name>server.h</name>
+  </compound>
+  <compound refid="translatable_8h" kind="file"><name>translatable.h</name>
   </compound>
   <compound refid="socket__address_8h" kind="file"><name>socket_address.h</name>
   </compound>

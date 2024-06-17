@@ -208,6 +208,8 @@
 * **getPort** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getOwner** ([**endstone::Task**](classendstone_1_1Task.md))
 * **getTaskId** ([**endstone::Task**](classendstone_1_1Task.md))
+* **getParameters** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **getTranslationKey** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getX** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **getY** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **getZ** ([**endstone::Vector**](classendstone_1_1Vector.md))
@@ -403,7 +405,6 @@
 * **setPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **setRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **sendPopup** ([**endstone::Player**](classendstone_1_1Player.md))
-* **sendRawMessage** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setFlying** ([**endstone::Player**](classendstone_1_1Player.md))
@@ -449,6 +450,8 @@
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **to\_** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **Translatable** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **toString** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **toWeatherState** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 
@@ -478,6 +481,7 @@
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **warning** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **with\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **WeatherChangeEvent** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **WeatherEvent** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 

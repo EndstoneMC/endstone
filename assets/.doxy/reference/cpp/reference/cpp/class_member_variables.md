@@ -171,6 +171,7 @@
 
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **to\_** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## u
@@ -189,6 +190,7 @@
 
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **with\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## x

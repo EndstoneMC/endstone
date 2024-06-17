@@ -80,10 +80,12 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
-| virtual void | [**sendErrorMessage**](#function-senderrormessage-12) (const std::string & message) const = 0<br>_Sends this sender a error message._  |
-|  void | [**sendErrorMessage**](#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-| virtual void | [**sendMessage**](#function-sendmessage-12) (const std::string & message) const = 0<br>_Sends this sender a message._  |
-|  void | [**sendMessage**](#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendErrorMessage**](#function-senderrormessage-13) (const std::string & message) const = 0<br>_Sends this sender a error message._  |
+| virtual void | [**sendErrorMessage**](#function-senderrormessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable error message._  |
+|  void | [**sendErrorMessage**](#function-senderrormessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendMessage**](#function-sendmessage-13) (const std::string & message) const = 0<br>_Sends this sender a message._  |
+| virtual void | [**sendMessage**](#function-sendmessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable message._  |
+|  void | [**sendMessage**](#function-sendmessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 |   | [**~CommandSender**](#function-commandsender) () override<br> |
 
 
@@ -305,7 +307,7 @@ virtual Server & endstone::CommandSender::getServer () const = 0
 
 
 
-### function sendErrorMessage [1/2]
+### function sendErrorMessage [1/3]
 
 _Sends this sender a error message._ 
 ```C++
@@ -332,7 +334,34 @@ virtual void endstone::CommandSender::sendErrorMessage (
 
 
 
-### function sendErrorMessage [2/2]
+### function sendErrorMessage [2/3]
+
+_Sends this sender a translatable error message._ 
+```C++
+virtual void endstone::CommandSender::sendErrorMessage (
+    const Translatable & message
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `message` Error message to be displayed 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendErrorMessage [3/3]
 
 ```C++
 template<typename... Args>
@@ -349,7 +378,7 @@ inline void endstone::CommandSender::sendErrorMessage (
 
 
 
-### function sendMessage [1/2]
+### function sendMessage [1/3]
 
 _Sends this sender a message._ 
 ```C++
@@ -376,7 +405,34 @@ virtual void endstone::CommandSender::sendMessage (
 
 
 
-### function sendMessage [2/2]
+### function sendMessage [2/3]
+
+_Sends this sender a translatable message._ 
+```C++
+virtual void endstone::CommandSender::sendMessage (
+    const Translatable & message
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `message` Message to be displayed 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendMessage [3/3]
 
 ```C++
 template<typename... Args>

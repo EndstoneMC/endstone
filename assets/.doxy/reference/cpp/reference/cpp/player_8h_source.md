@@ -54,8 +54,6 @@ public:
 
     [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
-    virtual void sendRawMessage(std::string message) const = 0;
-
     virtual void sendPopup(std::string message) const = 0;
 
     virtual void sendTip(std::string message) const = 0;

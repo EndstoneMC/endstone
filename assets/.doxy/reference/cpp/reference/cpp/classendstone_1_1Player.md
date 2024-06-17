@@ -131,7 +131,6 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 |  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator_1) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual void | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
-| virtual void | [**sendRawMessage**](#function-sendrawmessage) (std::string message) const = 0<br>_Sends this player a raw message._  |
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
 | virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual void | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
@@ -174,10 +173,12 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](classendstone_1_1CommandSender.md#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](classendstone_1_1CommandSender.md#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
-| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-12) (const std::string & message) const = 0<br>_Sends this sender a error message._  |
-|  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) (const std::string & message) const = 0<br>_Sends this sender a message._  |
-|  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-13) (const std::string & message) const = 0<br>_Sends this sender a error message._  |
+| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable error message._  |
+|  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-13) (const std::string & message) const = 0<br>_Sends this sender a message._  |
+| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable message._  |
+|  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 |   | [**~CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () override<br> |
 
 
@@ -706,33 +707,6 @@ true if the command was successful, otherwise false
 _Sends this player a popup message._ 
 ```C++
 virtual void endstone::Player::sendPopup (
-    std::string message
-) const = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `message` Message to be displayed 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function sendRawMessage 
-
-_Sends this player a raw message._ 
-```C++
-virtual void endstone::Player::sendRawMessage (
     std::string message
 ) const = 0
 ```

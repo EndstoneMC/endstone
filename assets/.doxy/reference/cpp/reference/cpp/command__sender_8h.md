@@ -13,6 +13,7 @@
 * `#include <string>`
 * `#include <fmt/format.h>`
 * `#include "endstone/permissions/permissible.h"`
+* `#include "endstone/translatable.h"`
 
 
 

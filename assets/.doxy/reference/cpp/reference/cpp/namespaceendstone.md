@@ -78,6 +78,7 @@
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
 | class | [**Task**](classendstone_1_1Task.md) <br>_Represents a task being executed by the scheduler._  |
 | class | [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) <br>_Called when the thunder state in a world is changing._  |
+| class | [**Translatable**](classendstone_1_1Translatable.md) <br>_Represents an object with a text representation that can be translated by the Minecraft client._  |
 | class | [**UUID**](classendstone_1_1UUID.md) <br>_Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_ |
 | class | [**Vector**](classendstone_1_1Vector.md) &lt;typename T&gt;<br>_Represents a 3-dimensional vector._  |
 | class | [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) <br>_Called when the weather (rain) state in a world is changing._  |
