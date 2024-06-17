@@ -133,6 +133,8 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual void | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual void | [**sendRawMessage**](#function-sendrawmessage) (std::string message) const = 0<br>_Sends this player a raw message._  |
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
+| virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
+| virtual void | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
 |   | [**~Player**](#function-player) () override<br> |
@@ -770,6 +772,60 @@ virtual void endstone::Player::sendTip (
 
 
 * `message` Message to be displayed 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setAllowFlight 
+
+_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._
+```C++
+virtual void endstone::Player::setAllowFlight (
+    bool flight
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `flight` If flight should be allowed. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setFlying 
+
+_Makes this player start or stop flying._ 
+```C++
+virtual void endstone::Player::setFlying (
+    bool value
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `value` True to fly. 
 
 
 

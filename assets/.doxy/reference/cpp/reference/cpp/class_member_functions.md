@@ -294,6 +294,8 @@
 * **sendPopup** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendRawMessage** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
+* **setAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
+* **setFlying** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setGameMode** ([**endstone::Player**](classendstone_1_1Player.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **setCommand** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **setKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))

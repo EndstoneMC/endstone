@@ -66,9 +66,13 @@ public:
 
     virtual void giveExpLevels(int amount) = 0;
 
+    [[nodiscard]] virtual bool getAllowFlight() const = 0;
+
+    virtual void setAllowFlight(bool flight) = 0;
+
     [[nodiscard]] virtual bool isFlying() const = 0;
 
-    [[nodiscard]] virtual bool getAllowFlight() const = 0;
+    virtual void setFlying(bool value) = 0;
 
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
