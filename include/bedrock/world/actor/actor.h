@@ -30,6 +30,7 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/memory.h"
 #include "bedrock/core/utility/uuid.h"
+#include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/entity/components/built_in_actor_components.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/entity/entity_registry.h"
