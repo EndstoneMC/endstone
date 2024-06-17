@@ -12,7 +12,7 @@ permissions: read-all
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: windows-2019
     env:
       WP_URL: https://github.com/winpython/winpython/releases/download/7.5.20240410final/Winpython64-3.12.3.0dot.exe
       WP_SHA256: beef54eba558559255a73e59ae1986e8d06a6b12b55e78645ab42b4d6974e124

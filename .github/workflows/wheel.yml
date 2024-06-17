@@ -19,7 +19,7 @@ jobs:
       matrix:
         python: [ "3.9", "3.10", "3.11", "3.12" ]
 
-    runs-on: windows-2022
+    runs-on: windows-2019
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -91,8 +91,8 @@ jobs:
           sudo chmod +x llvm.sh
           sudo ./llvm.sh ${LLVM_VERSION}
           sudo apt-get install -y -q libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev
-          sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100
-          sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100
+          sudo update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${LLVM_VERSION} 100
+          sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${LLVM_VERSION} 100
           sudo update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100
           sudo update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 
