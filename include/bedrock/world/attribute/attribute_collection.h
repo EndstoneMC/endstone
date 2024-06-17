@@ -22,18 +22,20 @@
 class Attribute;
 class AttributeCollection {
 public:
-    [[nodiscard]] Attribute *getAttribute(const HashedString &name) const
+    static Attribute *getAttribute(const HashedString &name)
     {
-        auto it = attributes_map_.find(name);
-        if (it == attributes_map_.end()) {
+        auto &inst = instance();
+        auto it = inst.attributes_map_.find(name);
+        if (it == inst.attributes_map_.end()) {
             return nullptr;
         }
         return it->second;
     }
 
-    [[nodiscard]] bool hasAttribute(const HashedString &name) const
+    static bool hasAttribute(const HashedString &name)
     {
-        return attributes_map_.find(name) != attributes_map_.end();
+        auto &inst = instance();
+        return inst.attributes_map_.find(name) != inst.attributes_map_.end();
     }
 
 private:

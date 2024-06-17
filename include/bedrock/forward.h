@@ -30,6 +30,7 @@ class AddActorBasePacket;
 class AdventureSettings;
 class AllowList;
 class AnimationComponent;
+class AttributeInstanceDelegate;
 class AutomationBehaviorTreeGroup;
 class BaseLightTextureImageBuilder;
 class BehaviorFactory;

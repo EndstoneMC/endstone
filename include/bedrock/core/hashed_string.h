@@ -19,12 +19,12 @@
 
 class HashedString {
 public:
-    HashedString(std::nullptr_t) {}  // NOLINT(*-explicit-constructor)
-    explicit HashedString(const std::string &str) : str_(str)
+    HashedString(std::nullptr_t) {}                   // NOLINT(*-explicit-constructor)
+    HashedString(const std::string &str) : str_(str)  // NOLINT(*-explicit-constructor)
     {
         str_hash_ = std::hash<std::string>()(str);
     }
-    explicit HashedString(char const *str) : HashedString(std::string(str)) {}
+    HashedString(char const *str) : HashedString(std::string(str)) {}  // NOLINT(*-explicit-constructor)
 
     [[nodiscard]] std::size_t getHash() const
     {

@@ -21,8 +21,16 @@
 
 class BaseAttributeMap {
 public:
-    const AttributeInstance &getInstance(const Attribute &attribute) const;
+    [[nodiscard]] const AttributeInstance &getInstance(const Attribute &attribute) const
+    {
+        return getInstance(attribute.getIDValue());
+    }
+
+    [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const
+    {
+        return instance_map_.at(id_value);
+    }
 
 private:
-    std::unordered_map<unsigned int, AttributeInstance> instance_map_;
+    std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;
 };

@@ -14,4 +14,41 @@
 
 #pragma once
 
-class AttributeInstance {};
+#include "bedrock/forward.h"
+#include "bedrock/world/attribute/attribute.h"
+
+class BaseAttributeMap;
+class AttributeInstance {
+public:
+    virtual ~AttributeInstance() = 0;
+    virtual void tick() = 0;
+
+    [[nodiscard]] float getCurrentValue() const
+    {
+        return current_.default_value;
+    }
+
+private:
+    BaseAttributeMap *attribute_map_;                      // +8
+    Attribute *attribute_;                                 // +16
+    std::vector<void *> modifier_list_;                    // +24 std::vector<AttributeModifier>
+    std::vector<void *> temporal_buffs_;                   // +48 std::vector<TemporalAttributeBuff>
+    std::vector<void *> listeners_;                        // +72 std::vector<AttributeInstanceHandle>
+    std::shared_ptr<AttributeInstanceDelegate> delegate_;  // +96
+    union {
+        float default_values[3];
+        struct {
+            float min_value;
+            float max_value;
+            float default_value;
+        };
+    } default_;
+    union {
+        float default_values[3];
+        struct {
+            float min_value;
+            float max_value;
+            float default_value;
+        };
+    } current_;
+};
