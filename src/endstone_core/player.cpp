@@ -247,7 +247,7 @@ bool EndstonePlayer::getAllowFlight() const
 
 void EndstonePlayer::setAllowFlight(bool flight)
 {
-    if (!isFlying() && !flight) {
+    if (isFlying() && !flight) {
         getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, false);
     }
 
