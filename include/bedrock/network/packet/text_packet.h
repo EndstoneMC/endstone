@@ -36,12 +36,13 @@ enum class TextPacketType : char {
 
 class TextPacket : public Packet {
 public:
-    TextPacketType type{TextPacketType::Raw};  // +48
-    std::string player_name;                   // +56
-    std::string message;                       // +88
-    std::vector<std::string> params;           // +120
-    bool localize;                             // +144
-    std::string xuid;                          // +152
-    std::string platform_id;                   // +184
+    TextPacketType type{TextPacketType::Raw};     // +48
+    std::string player_name;                      // +56
+    std::string message;                          // +88
+    std::optional<std::string> filtered_message;  // +120
+    std::vector<std::string> params;              // +160
+    bool localize;                                // +184
+    std::string xuid;                             // +192
+    std::string platform_id;                      // +224
 };
 // static_assert(sizeof(TextPacket) == 216);
