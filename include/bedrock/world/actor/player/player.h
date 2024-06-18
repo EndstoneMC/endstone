@@ -128,7 +128,6 @@ public:
     [[nodiscard]] bool isEmoting() const;
     [[nodiscard]] bool isFlying() const;
     // Attributes
-    [[nodiscard]] const AttributeInstance &getAttribute(const Attribute &) const;
     [[nodiscard]] int getPlayerLevel() const;
     [[nodiscard]] float getLevelProgress() const;
 

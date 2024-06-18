@@ -178,3 +178,9 @@ bool Actor::isJumping() const
 {
     return MobJump::isJumping(entity_context_);
 }
+
+const AttributeInstance &Actor::getAttribute(const Attribute &attribute) const
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getInstance(attribute);
+}

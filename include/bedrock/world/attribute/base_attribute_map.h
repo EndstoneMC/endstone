@@ -39,6 +39,6 @@ public:
 
 private:
     std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;  // +0
-    std::vector<void *> dirty_attributes_;  //+64 (+56) std::vector<AttributeInstanceHandle>
+    std::vector<void *> dirty_attributes_;  //+64 (+40) std::vector<AttributeInstanceHandle>
 };
-BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 88, 80);
+BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 88, 64);

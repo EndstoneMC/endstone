@@ -269,6 +269,7 @@ public:
     [[nodiscard]] bool isRiding() const;
     [[nodiscard]] bool hasCategory(ActorCategory) const;
     [[nodiscard]] bool isJumping() const;
+    [[nodiscard]] const AttributeInstance &getAttribute(const Attribute &) const;
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
