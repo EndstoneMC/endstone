@@ -14,7 +14,22 @@
 
 #pragma once
 
+#include <cpptrace/cpptrace.hpp>
+
+#include "endstone/detail/os.h"
+#include "endstone/endstone.h"
+
 namespace endstone::detail {
+
+inline void print_crash_dump(const std::string &message, std::size_t skip = 0)
+{
+    printf("=== ENDSTONE CRASHED! - PLEASE REPORT THIS AS AN ISSUE ON GITHUB ===\n");
+    printf("Os: %s\n", os::get_name().c_str());
+    printf("Endstone version: %s\n", ENDSTONE_VERSION);
+    printf("Api version: %s\n", ENDSTONE_API_VERSION);
+    printf("Description: %s\n", message.c_str());
+    cpptrace::generate_trace(skip + 1).print_with_snippets();
+}
 
 void register_signal_handler();
 

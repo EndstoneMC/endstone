@@ -93,6 +93,11 @@ std::string get_executable_pathname()
     return module_info.pathname;
 }
 
+std::string get_name()
+{
+    return "Linux";
+}
+
 }  // namespace endstone::detail::os
 
 #endif

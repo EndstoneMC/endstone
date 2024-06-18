@@ -14,6 +14,8 @@
 
 #ifdef _MSC_VER
 
+#include "endstone/detail/signal_handler.h"
+
 #include <csignal>
 #include <iostream>
 
@@ -25,34 +27,27 @@ namespace endstone::detail {
 
 namespace {
 
-void print_crash_dump()
-{
-    // TODO(crash_dump): add more info here, such as endstone version
-    cpptrace::generate_trace(2).print_with_snippets();
-}
-
 void terminate_handler()
 {
-    print_crash_dump();
+    print_crash_dump("Program terminated.");
     std::quick_exit(1);
 }
 
 void purecall_handler()
 {
-    printf("Pure virtual function called!\n");
-    print_crash_dump();
+    print_crash_dump("Pure virtual function called!");
     std::quick_exit(1);
 }
 
-void signal_handler(int)
+void signal_handler(int signal)
 {
-    print_crash_dump();
+    print_crash_dump("Signal received: " + std::to_string(signal));
     std::quick_exit(1);
 }
 
 LONG WINAPI exception_filter(EXCEPTION_POINTERS *info)
 {
-    print_crash_dump();
+    print_crash_dump("Exception unhandled: " + std::to_string(info->ExceptionRecord->ExceptionCode));
     return EXCEPTION_CONTINUE_SEARCH;
 }
 
@@ -62,6 +57,7 @@ void register_signal_handler()
 {
     std::set_terminate(terminate_handler);
     _set_purecall_handler(purecall_handler);
+    signal(SIGSEGV, signal_handler);
     signal(SIGABRT, signal_handler);
     _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
     SetUnhandledExceptionFilter(exception_filter);

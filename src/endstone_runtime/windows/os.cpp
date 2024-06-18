@@ -18,6 +18,7 @@
 // Psapi.h must be included after Windows.h
 #include <Psapi.h>
 
+#include <sstream>
 #include <system_error>
 
 #include "endstone/detail/os.h"
@@ -78,6 +79,10 @@ std::string get_executable_pathname()
     return file_name;
 }
 
+std::string get_name()
+{
+    return "Windows";
+}
 }  // namespace endstone::detail::os
 
 #endif

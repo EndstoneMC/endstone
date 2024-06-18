@@ -24,8 +24,7 @@ namespace {
 
 void signal_handler(int signum, siginfo_t *info, void *ctx)
 {
-    // TODO(crash_dump): add more info here, such as endstone version
-    cpptrace::generate_trace(1).print_with_snippets();
+    print_crash_dump("Signal received: " + std::to_string(signum));
     std::quick_exit(1);
 }
 

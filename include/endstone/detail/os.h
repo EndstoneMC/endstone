@@ -23,5 +23,5 @@ void *get_module_base();
 std::string get_module_pathname();
 void *get_executable_base();
 std::string get_executable_pathname();
-
+std::string get_name();
 }  // namespace endstone::detail::os
