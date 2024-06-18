@@ -14,6 +14,8 @@
 
 #ifdef __linux__
 
+#include "endstone/detail/signal_handler.h"
+
 #include <csignal>
 
 #include <cpptrace/cpptrace.hpp>
