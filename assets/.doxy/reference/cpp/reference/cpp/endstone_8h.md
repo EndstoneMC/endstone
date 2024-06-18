@@ -78,7 +78,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| define  | [**ENDSTONE\_API\_VERSION**](endstone_8h.md#define-endstone_api_version)  ENDSTONE\_TOSTRING(ENDSTONE\_VERSION\_MAJOR) "." ENDSTONE\_TOSTRING(ENDSTONE\_VERSION\_MINOR);<br> |
+| define  | [**ENDSTONE\_API\_VERSION**](endstone_8h.md#define-endstone_api_version)  ENDSTONE\_TOSTRING(ENDSTONE\_VERSION\_MAJOR) "." ENDSTONE\_TOSTRING(ENDSTONE\_VERSION\_MINOR)<br> |
 | define  | [**ENDSTONE\_EXPORT**](endstone_8h.md#define-endstone_export)  \_\_attribute\_\_((visibility("default")))<br> |
 | define  | [**ENDSTONE\_MAX\_PLAYERS**](endstone_8h.md#define-endstone_max_players)  200<br> |
 | define  | [**ENDSTONE\_NOINLINE**](endstone_8h.md#define-endstone_noinline)  \_\_attribute\_\_((noinline)) inline<br> |
@@ -97,7 +97,7 @@
 ### define ENDSTONE\_API\_VERSION 
 
 ```C++
-#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR);
+#define ENDSTONE_API_VERSION ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
 ```
 
 
