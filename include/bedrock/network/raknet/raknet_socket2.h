@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include <future>
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/raknet/types.h"
-// must be included after types.h
+#include "bedrock/network/raknet/raknet_defines.h"
+#include "bedrock/network/raknet/raknet_types.h"
+// must be included after raknet_types.h
 #include "bedrock/network/raknet/lockless_types.h"
 
 /**
@@ -29,7 +31,6 @@ namespace RakNet {
 
 using RNS2SendResult = int;
 using RNS2Socket = int;
-class RNS2EventHandler;
 enum class RNS2Type;
 
 struct RNS2_SendParameters {  // NOLINT
@@ -41,6 +42,23 @@ struct RNS2_SendParameters {  // NOLINT
     int length;
     SystemAddress system_address;
     int ttl;
+};
+
+class RakNetSocket2;
+struct RNS2RecvStruct {
+    char data[MAXIMUM_MTU_SIZE];   // +0
+    int bytes_read;                // +1600
+    SystemAddress system_address;  // +1608
+    RakNet::TimeUS time_read;      // +1744
+    RakNetSocket2 *socket;         // +1752
+};
+
+class RNS2EventHandler {
+public:
+    virtual ~RNS2EventHandler() = 0;
+    virtual void OnRNS2Recv(RNS2RecvStruct *recv_struct) = 0;                                        // NOLINT
+    virtual void DeallocRNS2RecvStruct(RNS2RecvStruct *s, const char *file, unsigned int line) = 0;  // NOLINT
+    virtual RNS2RecvStruct *AllocRNS2RecvStruct(const char *file, unsigned int line) = 0;            // NOLINT
 };
 
 struct RNS2_BerkleyBindParameters {  // NOLINT
@@ -78,19 +96,23 @@ protected:
     unsigned int user_connection_socket_index_;  // +176
 };
 
-class IRNS2_Berkley : public RakNetSocket2 {};  // NOLINT
+class IRNS2_Berkley : public RakNetSocket2 {  // NOLINT
+public:
+    virtual ~IRNS2_Berkley() override = 0;
+};
 
 class RNS2_Berkley : public IRNS2_Berkley {  // NOLINT
 public:
-    virtual ~RNS2_Berkley() = 0;
+    virtual ~RNS2_Berkley() override = 0;
 
 protected:
+    void RecvFromBlocking(RNS2RecvStruct *recvFromStruct) const;
     ENDSTONE_HOOK unsigned int RecvFromLoopInt();
 
-    RNS2Socket rns2_socket_;
-    RNS2_BerkleyBindParameters binding_;
-    RakNet::LocklessUint32_t is_recv_from_loop_thread_active_;
-    volatile bool end_threads_;
+    RNS2Socket rns2_socket_;                                    // +184 (+180)
+    RNS2_BerkleyBindParameters binding_;                        // +192 (+184)
+    RakNet::LocklessUint32_t is_recv_from_loop_thread_active_;  // +256 (+248)
+    volatile bool end_threads_;                                 // +260 (+252)
 };
 
 }  // namespace RakNet
