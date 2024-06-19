@@ -16,7 +16,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/network/raknet/rak_peer_interface.h"
-#include "bedrock/network/raknet/types.h"
+#include "bedrock/network/raknet/raknet_types.h"
 
 struct ConnectionDefinition {
     std::uint16_t port;                       // +0

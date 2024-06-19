@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/types.h"
+#include "bedrock/network/raknet/raknet_types.h"
 
 #include "endstone/detail/hook.h"
 

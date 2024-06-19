@@ -27,6 +27,10 @@
 
 namespace RakNet {
 
+using Time = std::uint64_t;
+using TimeMS = std::uint32_t;
+using TimeUS = std::uint64_t;
+
 enum class StartupResult {
     // NOLINTBEGIN
     RAKNET_STARTED,
