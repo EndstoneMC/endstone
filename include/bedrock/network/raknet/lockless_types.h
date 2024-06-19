@@ -31,7 +31,7 @@ public:
 #ifdef _WIN32
         return static_cast<uint32_t>(InterlockedIncrement(&value_));
 #else
-        return __sync_fetch_and_add(&value, (uint32_t)1);
+        return __sync_fetch_and_add(&value_, static_cast<std::uint32_t>(1));
 #endif
     }
 
@@ -40,7 +40,7 @@ public:
 #ifdef _WIN32
         return static_cast<uint32_t>(InterlockedDecrement(&value_));
 #else
-        return __sync_fetch_and_add(&value, (uint32_t)-1);
+        return __sync_fetch_and_add(&value_, static_cast<std::uint32_t>(-1));
 #endif
     }
 
