@@ -12,12 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/socket2.h"
+#include "bedrock/network/raknet/raknet_socket2.h"
 
 #include <sstream>
 
 #include <entt/entt.hpp>
 
+#include "bedrock/network/raknet/message_identifiers.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/server_list_ping_event.h"
@@ -31,10 +32,6 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
                                                                    RNS2_SendParameters *send_parameters,
                                                                    const char *file, unsigned int line)
 {
-    enum MessageIdentifiers : unsigned char {
-        UnconnectedPong = 28
-    };
-
     if (send_parameters->data[0] != MessageIdentifiers::UnconnectedPong) {
         return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP, socket,
                                            send_parameters, file, line);
@@ -76,4 +73,10 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
     return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP, socket, send_parameters,
                                        file, line);
 }
+
+unsigned int RNS2_Berkley::RecvFromLoopInt()
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&RNS2_Berkley::RecvFromLoopInt, this);
+}
+
 }  // namespace RakNet

@@ -14,8 +14,12 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/network/raknet/types.h"
+// must be included after types.h
+#include "bedrock/network/raknet/lockless_types.h"
 
 /**
  * https://github.com/facebookarchive/RakNet/blob/master/Source/RakNetSocket2.h
@@ -25,6 +29,8 @@ namespace RakNet {
 
 using RNS2SendResult = int;
 using RNS2Socket = int;
+class RNS2EventHandler;
+enum class RNS2Type;
 
 struct RNS2_SendParameters {  // NOLINT
     RNS2_SendParameters()
@@ -37,12 +43,54 @@ struct RNS2_SendParameters {  // NOLINT
     int ttl;
 };
 
+struct RNS2_BerkleyBindParameters {  // NOLINT
+    unsigned short port;
+    char *host_address;
+    std::uint16_t address_family;  // AF_INET or AF_INET6
+    int type;                      // SOCK_DGRAM
+    int protocol;                  // 0
+    bool non_blocking_socket;
+    int set_broadcast;
+    int set_ip_hdr_incl;
+    int do_not_fragment;
+    int polling_thread_priority;
+    RNS2EventHandler *event_handler;
+    std::uint16_t remote_port_raknet_was_started_on_ps3_ps4_psp2;
+};
+
 class RNS2_Windows_Linux_360 {  // NOLINT
 protected:
     // NOLINTNEXTLINE
     ENDSTONE_HOOK static RNS2SendResult Send_Windows_Linux_360NoVDP(RNS2Socket socket,
                                                                     RNS2_SendParameters *send_parameters,
                                                                     const char *file, unsigned int line);
+};
+
+class RakNetSocket2 : std::enable_shared_from_this<RakNetSocket2> {
+public:
+    virtual ~RakNetSocket2() = 0;
+
+protected:
+    RNS2EventHandler *event_handler_;            // +24
+    RNS2Type socket_type_;                       // +32
+    int socket_protocol_type_;                   // +36
+    SystemAddress bound_address_;                // +40
+    unsigned int user_connection_socket_index_;  // +176
+};
+
+class IRNS2_Berkley : public RakNetSocket2 {};  // NOLINT
+
+class RNS2_Berkley : public IRNS2_Berkley {  // NOLINT
+public:
+    virtual ~RNS2_Berkley() = 0;
+
+protected:
+    ENDSTONE_HOOK unsigned int RecvFromLoopInt();
+
+    RNS2Socket rns2_socket_;
+    RNS2_BerkleyBindParameters binding_;
+    RakNet::LocklessUint32_t is_recv_from_loop_thread_active_;
+    volatile bool end_threads_;
 };
 
 }  // namespace RakNet

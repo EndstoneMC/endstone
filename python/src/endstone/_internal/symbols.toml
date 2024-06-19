@@ -1,4 +1,4 @@
-timestamp = 1718657749
+timestamp = 1718784891
 version = "1.21.0"
 
 [windows]
@@ -45,6 +45,7 @@ version = "1.21.0"
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27152672
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27111728
 # RakNet
+"?RecvFromLoopInt@RNS2_Berkley@RakNet@@IEAAIXZ" = 36832576
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 36833504
 "?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 36696464
 # RakPeerHelper
@@ -116,6 +117,7 @@ version = "1.21.0"
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109689856
 "_ZN6Player12getInventoryEv" = 109738560
 # RakNet
+"_ZN6RakNet12RNS2_Berkley15RecvFromLoopIntEv" = 131019440
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 131014720
 "_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 131047904
 # RakPeerHelper
