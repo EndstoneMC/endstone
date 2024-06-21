@@ -84,7 +84,11 @@ public:
 
     [[nodiscard]] virtual float getFlySpeed() const = 0;
 
-    [[nodiscard]]   virtual float getWalkSpeed() const = 0;
+    virtual void setFlySpeed(float value) const = 0;
+
+    [[nodiscard]] virtual float getWalkSpeed() const = 0;
+
+    virtual void setWalkSpeed(float value) const = 0;
 
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 

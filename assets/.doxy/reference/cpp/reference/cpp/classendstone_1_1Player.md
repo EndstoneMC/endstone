@@ -140,8 +140,10 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual void | [**setExpLevel**](#function-setexplevel) (int level) = 0<br>_Sets the players current experience level._  |
 | virtual void | [**setExpProgress**](#function-setexpprogress) (float progress) = 0<br>_Sets the players current experience progress towards the next level._  |
+| virtual void | [**setFlySpeed**](#function-setflyspeed) (float value) const = 0<br> |
 | virtual void | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
+| virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
 |   | [**~Player**](#function-player) () override<br> |
 
@@ -505,7 +507,7 @@ virtual float endstone::Player::getFlySpeed () const = 0
 
 **Returns:**
 
-The current allowed speed, default is 0.1. 
+The current allowed speed, default is 0.05. 
 
 
 
@@ -658,7 +660,7 @@ virtual float endstone::Player::getWalkSpeed () const = 0
 
 **Returns:**
 
-The current allowed speed, default is 0.05. 
+The current allowed speed, default is 0.10. 
 
 
 
@@ -978,6 +980,36 @@ This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
 
 
 
+### function setFlySpeed 
+
+
+```C++
+virtual void endstone::Player::setFlySpeed (
+    float value
+) const = 0
+```
+
+
+
+Sets the speed at which a client will fly.
+
+
+
+
+**Parameters:**
+
+
+* `value` The new speed. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setFlying 
 
 _Makes this player start or stop flying._ 
@@ -1022,6 +1054,36 @@ virtual void endstone::Player::setGameMode (
 
 
 * `mode` New game mode 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setWalkSpeed 
+
+
+```C++
+virtual void endstone::Player::setWalkSpeed (
+    float value
+) const = 0
+```
+
+
+
+Sets the speed at which a client will walk.
+
+
+
+
+**Parameters:**
+
+
+* `value` The new speed. 
 
 
 

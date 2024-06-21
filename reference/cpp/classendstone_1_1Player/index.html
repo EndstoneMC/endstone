@@ -2130,6 +2130,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-setflyspeed" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setFlySpeed
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-setflying" class="md-nav__link">
       <span class="md-ellipsis">
         function setFlying
@@ -2146,6 +2159,19 @@
     <a href="#function-setgamemode" class="md-nav__link">
       <span class="md-ellipsis">
         function setGameMode
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-setwalkspeed" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setWalkSpeed
       </span>
     </a>
 
@@ -2342,11 +2368,19 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setflyspeed"><strong>setFlySpeed</strong></a> (float value) const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setflying"><strong>setFlying</strong></a> (bool value) = 0<br><em>Makes this player start or stop flying.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setgamemode"><strong>setGameMode</strong></a> (GameMode mode) = 0<br><em>Sets this player's current GameMode.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setwalkspeed"><strong>setWalkSpeed</strong></a> (float value) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2621,7 +2655,7 @@
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">getFlySpeed</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The current allowed speed, default is 0.1. </p>
+<p>The current allowed speed, default is 0.05. </p>
 <hr>
 
 <h3 id="function-getgamemode">function getGameMode<a class="headerlink" href="#function-getgamemode" title="Permanent link">&para;</a></h3>
@@ -2670,7 +2704,7 @@
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">getWalkSpeed</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The current allowed speed, default is 0.05. </p>
+<p>The current allowed speed, default is 0.10. </p>
 <hr>
 
 <h3 id="function-giveexp">function giveExp<a class="headerlink" href="#function-giveexp" title="Permanent link">&para;</a></h3>
@@ -2806,11 +2840,23 @@
 </ul>
 <hr>
 
+<h3 id="function-setflyspeed">function setFlySpeed<a class="headerlink" href="#function-setflyspeed" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlySpeed</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p>Sets the speed at which a client will fly.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> The new speed. </li>
+</ul>
+<hr>
+
 <h3 id="function-setflying">function setFlying<a class="headerlink" href="#function-setflying" title="Permanent link">&para;</a></h3>
 <p><em>Makes this player start or stop flying.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2820,9 +2866,9 @@
 
 <h3 id="function-setgamemode">function setGameMode<a class="headerlink" href="#function-setgamemode" title="Permanent link">&para;</a></h3>
 <p><em>Sets this player's current GameMode.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">mode</span>
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">mode</span>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2830,15 +2876,27 @@
 </ul>
 <hr>
 
+<h3 id="function-setwalkspeed">function setWalkSpeed<a class="headerlink" href="#function-setwalkspeed" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setWalkSpeed</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p>Sets the speed at which a client will walk.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> The new speed. </li>
+</ul>
+<hr>
+
 <h3 id="function-updatecommands">function updateCommands<a class="headerlink" href="#function-updatecommands" title="Permanent link">&para;</a></h3>
 <p><em>Send the list of commands to the client.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Generally useful to ensure the client has a complete list of commands after permission changes are done. </p>
 <hr>
 
 <h3 id="function-player">function ~Player<a class="headerlink" href="#function-player" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 
