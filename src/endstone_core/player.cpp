@@ -320,6 +320,16 @@ void EndstonePlayer::setFlying(bool value)
     updateAbilities();
 }
 
+float EndstonePlayer::getFlySpeed() const
+{
+    return getHandle().getAbilities().getFloat(AbilitiesIndex::FlySpeed);
+}
+
+float EndstonePlayer::getWalkSpeed() const
+{
+    return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
+}
+
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();

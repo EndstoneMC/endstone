@@ -816,6 +816,11 @@ class Player(Actor):
     def exp_progress(self, arg1: float) -> None:
         ...
     @property
+    def fly_speed(self) -> float:
+        """
+        Gets the current allowed speed that a client can fly.
+        """
+    @property
     def game_mode(self) -> GameMode:
         """
         The player's current game mode.
@@ -850,6 +855,11 @@ class Player(Actor):
     def unique_id(self) -> uuid.UUID:
         """
         Returns the UUID of this player
+        """
+    @property
+    def walk_speed(self) -> float:
+        """
+        Gets the current allowed speed that a client can walk.
         """
 class PlayerChatEvent(PlayerEvent):
     """

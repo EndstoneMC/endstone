@@ -163,6 +163,20 @@ public:
     virtual void setFlying(bool value) = 0;
 
     /**
+     * @brief Gets the current allowed speed that a client can fly.
+     *
+     * @return The current allowed speed, default is 0.1.
+     */
+    [[nodiscard]] virtual float getFlySpeed() const = 0;
+
+    /**
+     * @brief Gets the current allowed speed that a client can walk.
+     *
+     * @return The current allowed speed, default is 0.05.
+     */
+    [[nodiscard]]   virtual float getWalkSpeed() const = 0;
+
+    /**
      * @brief Gets the player's average ping
      *
      * @return player ping
