@@ -121,11 +121,13 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual int | [**getExpLevel**](#function-getexplevel) () const = 0<br>_Gets the players current experience level._  |
 | virtual float | [**getExpProgress**](#function-getexpprogress) () const = 0<br>_Gets the players current experience progress towards the next level._  |
+| virtual float | [**getFlySpeed**](#function-getflyspeed) () const = 0<br>_Gets the current allowed speed that a client can fly._  |
 | virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
 | virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
+| virtual float | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
 | virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
@@ -490,6 +492,31 @@ Current experience points
 
 
 
+### function getFlySpeed 
+
+_Gets the current allowed speed that a client can fly._ 
+```C++
+virtual float endstone::Player::getFlySpeed () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+The current allowed speed, default is 0.1. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getGameMode 
 
 _Gets this player's current GameMode._ 
@@ -607,6 +634,31 @@ virtual endstone::UUID endstone::Player::getUniqueId () const = 0
 **Returns:**
 
 [**Player**](classendstone_1_1Player.md) [**UUID**](classendstone_1_1UUID.md) 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getWalkSpeed 
+
+_Gets the current allowed speed that a client can walk._ 
+```C++
+virtual float endstone::Player::getWalkSpeed () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+The current allowed speed, default is 0.05. 
 
 
 

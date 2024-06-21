@@ -82,6 +82,10 @@ public:
 
     virtual void setFlying(bool value) = 0;
 
+    [[nodiscard]] virtual float getFlySpeed() const = 0;
+
+    [[nodiscard]]   virtual float getWalkSpeed() const = 0;
+
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     virtual void updateCommands() const = 0;

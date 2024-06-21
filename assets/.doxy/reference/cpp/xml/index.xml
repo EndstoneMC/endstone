@@ -332,6 +332,8 @@
     <member refid="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" kind="function"><name>setAllowFlight</name></member>
     <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" kind="function"><name>isFlying</name></member>
     <member refid="classendstone_1_1Player_1abf6427a0a0b922254c7a151c05531176" kind="function"><name>setFlying</name></member>
+    <member refid="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" kind="function"><name>getFlySpeed</name></member>
+    <member refid="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" kind="function"><name>getWalkSpeed</name></member>
     <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" kind="function"><name>getPing</name></member>
     <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" kind="function"><name>updateCommands</name></member>
     <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" kind="function"><name>performCommand</name></member>
