@@ -93,20 +93,36 @@ public:
     virtual void giveExpLevels(int amount) = 0;
 
     /**
-     * @brief Gets the players current percentage towards the next level.
+     * @brief Gets the players current experience progress towards the next level.
      *
      * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
      *
      * @return Current experience points
      */
-    [[nodiscard]] virtual float getExp() const = 0;
+    [[nodiscard]] virtual float getExpProgress() const = 0;
+
+    /**
+     * @brief Sets the players current experience progress towards the next level
+     *
+     * This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
+     *
+     * @param progress New experience progress
+     */
+    virtual void setExpProgress(float progress) = 0;
 
     /**
      * @brief Gets the players current experience level
      *
      * @return Current experience level
      */
-    [[nodiscard]]  virtual int getExpLevel() const = 0;
+    [[nodiscard]] virtual int getExpLevel() const = 0;
+
+    /**
+     * @brief Sets the players current experience level
+     *
+     * @param level New experience level
+     */
+    virtual void setExpLevel(int level) = 0;
 
     /**
      * @brief Determines if the Player is allowed to fly via jump key double-tap.

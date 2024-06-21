@@ -251,14 +251,34 @@ void EndstonePlayer::giveExpLevels(int amount)
     getHandle().addLevels(amount);
 }
 
-float EndstonePlayer::getExp() const
+float EndstonePlayer::getExpProgress() const
 {
     return getHandle().getLevelProgress();
+}
+
+void EndstonePlayer::setExpProgress(float progress)
+{
+    if (progress < 0.0 || progress > 1.0) {
+        server_.getLogger().error("Experience progress must be between 0.0 and 1.0 (%s)");
+        return;
+    }
+    auto diff = progress - getExpProgress();
+    auto xp_for_next_level = static_cast<float>(::Player::getXpNeededForLevelRange(getExpLevel(), getExpLevel() + 1));
+    giveExp(static_cast<int>(std::round(diff * xp_for_next_level)));
 }
 
 int EndstonePlayer::getExpLevel() const
 {
     return getHandle().getPlayerLevel();
+}
+
+void EndstonePlayer::setExpLevel(int level)
+{
+    if (level < 0) {
+        server_.getLogger().error("Experience level must not be negative (%s)");
+        return;
+    }
+    giveExpLevels(level - getExpLevel());
 }
 
 bool EndstonePlayer::getAllowFlight() const
