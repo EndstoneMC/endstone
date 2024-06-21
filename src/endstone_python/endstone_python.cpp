@@ -253,10 +253,10 @@ void init_player(py::module_ &m)
         .def_property("is_flying", &Player::isFlying, &Player::setFlying, "If the player is currently flying or not.")
         .def_property("allow_flight", &Player::getAllowFlight, &Player::setAllowFlight,
                       "If the Player is allowed to fly via jump key double-tap.")
-        .def_property_readonly("fly_speed", &Player::getFlySpeed,
-                               "Gets the current allowed speed that a client can fly.")
-        .def_property_readonly("walk_speed", &Player::getWalkSpeed,
-                               "Gets the current allowed speed that a client can walk.")
+        .def_property("fly_speed", &Player::getFlySpeed, &Player::setFlySpeed,
+                      "Gets or sets the current allowed speed that a client can fly.")
+        .def_property("walk_speed", &Player::getWalkSpeed, &Player::setWalkSpeed,
+                      "Gets or sets the current allowed speed that a client can walk.")
         .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
         .def("perform_command", &Player::performCommand, py::arg("command"),

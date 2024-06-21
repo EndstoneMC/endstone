@@ -79,7 +79,9 @@ public:
     [[nodiscard]] bool isFlying() const override;
     void setFlying(bool value) override;
     [[nodiscard]] float getFlySpeed() const override;
+    void setFlySpeed(float value) const override;
     [[nodiscard]] float getWalkSpeed() const override;
+    void setWalkSpeed(float value) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)

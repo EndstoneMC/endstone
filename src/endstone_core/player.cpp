@@ -325,9 +325,21 @@ float EndstonePlayer::getFlySpeed() const
     return getHandle().getAbilities().getFloat(AbilitiesIndex::FlySpeed);
 }
 
+void EndstonePlayer::setFlySpeed(float value) const
+{
+    getHandle().getAbilities().setAbility(AbilitiesIndex::FlySpeed, value);
+    updateAbilities();
+}
+
 float EndstonePlayer::getWalkSpeed() const
 {
     return getHandle().getAbilities().getFloat(AbilitiesIndex::WalkSpeed);
+}
+
+void EndstonePlayer::setWalkSpeed(float value) const
+{
+    getHandle().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
+    updateAbilities();
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const

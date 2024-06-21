@@ -818,8 +818,11 @@ class Player(Actor):
     @property
     def fly_speed(self) -> float:
         """
-        Gets the current allowed speed that a client can fly.
+        Gets or sets the current allowed speed that a client can fly.
         """
+    @fly_speed.setter
+    def fly_speed(self, arg1: float) -> None:
+        ...
     @property
     def game_mode(self) -> GameMode:
         """
@@ -859,8 +862,11 @@ class Player(Actor):
     @property
     def walk_speed(self) -> float:
         """
-        Gets the current allowed speed that a client can walk.
+        Gets or sets the current allowed speed that a client can walk.
         """
+    @walk_speed.setter
+    def walk_speed(self, arg1: float) -> None:
+        ...
 class PlayerChatEvent(PlayerEvent):
     """
     Called when a player sends a chat message.
