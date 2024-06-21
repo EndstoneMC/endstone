@@ -6,8 +6,9 @@ on:
     paths:
       - '.github/workflows/*'
       - 'docs/**'
-      - 'include/**'
+      - 'include/endstone/**'
       - 'python/**'
+      - '*.md'
 
 permissions:
   contents: write

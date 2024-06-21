@@ -5,9 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## v0.4.9 (Unreleased)
 
 <small>[Compare with 0.4.8.1](https://github.com/EndstoneMC/endstone/compare/v0.4.8.1...HEAD)</small>
+
+### Added
+
+- Support for Minecraft v1.21.1.
+- `ActorDeathEvent` and `PlayerDeathEvent` triggers when an actor or a player dies.
+- `Player::giveExp` and `Player::giveExpLevels` functionality for adding experience points/levels added.
+- `Player::getAllowFlight` and `Player::setAllowFlight` to check or grant the ability for players not in creative mode
+  to fly.
+- `Player::setFlying` to toggle a player's flying status.
+- An overload of `sendMessage` to allow sending of translatable messages with parameters that will be localized on the
+  client side.
+- `Player::getExpProgress` and `Player::setExpProgress` to get or set a player's progress towards the next level.
+- `Player::getExpLevel` and `Player::setExpLevel` to get or set a player's current experience level.
+- `Player::getTotalExp` to get the total amount of experiences a player has collected.
+
+### Changed
+
+- `Permissible.op` property in the python binding is renamed to `Permissible.is_op`.
+- Crash dumps will now print system and version info in addition to stacktraces.
+
+### Fixed
+
+- Suppressed warning message about empty UDP packets from the output.
 
 ## [0.4.8.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.8.1) - 2024-06-15
 
