@@ -97,3 +97,22 @@ float Player::getLevelProgress() const
     static Attribute *experience = AttributeCollection::getAttribute("minecraft:player.experience");
     return getAttribute(*experience).getCurrentValue();
 }
+
+int Player::getXpNeededForLevelRange(int start, int end)
+{
+    auto xp = 0;
+    auto current = start;
+    while (current < end) {
+        if (current > 30) {
+            xp += (9 * current - 138);
+        }
+        else if (current > 15) {
+            xp += (5 * current - 38);
+        }
+        else {
+            xp += (2 * current + 7);
+        }
+        ++current;
+    }
+    return xp;
+}
