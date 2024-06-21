@@ -117,9 +117,11 @@ protected:
     virtual void updateChunkPublisherView(Vec3 const &, float) = 0;
 
 public:
-    ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
-    [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
     [[nodiscard]] ENDSTONE_HOOK Container &getInventory();
+    [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
+    ENDSTONE_HOOK void resetPlayerLevel();
+    ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
+
     [[nodiscard]] GameType getPlayerGameType() const;
 
     // Abilities

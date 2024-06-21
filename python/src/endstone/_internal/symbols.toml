@@ -1,4 +1,4 @@
-timestamp = 1718883555
+timestamp = 1718960247
 version = "1.21.1"
 
 [windows]
@@ -41,9 +41,10 @@ version = "1.21.1"
 # Mob
 "?die@Mob@@UEAAXAEBVActorDamageSource@@@Z" = 26257600
 # Player
-"?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27114768
-"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27153872
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27112928
+"?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27114768
+"?resetPlayerLevel@Player@@QEAAXXZ" = 27146336
+"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27153872
 # RakNet
 "?RecvFromLoopInt@RNS2_Berkley@RakNet@@IEAAIXZ" = 36833824
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 36834752
@@ -113,9 +114,10 @@ version = "1.21.1"
 # Mob
 "_ZN3Mob3dieERK17ActorDamageSource" = 109008560
 # Player
-"_ZNK6Player7getNameEv" = 109666784
-"_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109690864
 "_ZN6Player12getInventoryEv" = 109739568
+"_ZNK6Player7getNameEv" = 109666784
+"_ZN6Player16resetPlayerLevelEv" = 109654240
+"_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109690864
 # RakNet
 "_ZN6RakNet12RNS2_Berkley15RecvFromLoopIntEv" = 131020448
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 131015728

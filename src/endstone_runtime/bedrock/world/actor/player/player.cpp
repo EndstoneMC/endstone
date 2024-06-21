@@ -24,12 +24,9 @@
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 
-void Player::setPermissions(CommandPermissionLevel level)
+Container &Player::getInventory()
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    auto &player = getEndstonePlayer();
-    player.recalculatePermissions();
-    player.updateCommands();
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getInventory, this);
 }
 
 const std::string &Player::getName() const
@@ -37,9 +34,17 @@ const std::string &Player::getName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
-Container &Player::getInventory()
+void Player::resetPlayerLevel()
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getInventory, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::resetPlayerLevel, this);
+}
+
+void Player::setPermissions(CommandPermissionLevel level)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
+    auto &player = getEndstonePlayer();
+    player.recalculatePermissions();
+    player.updateCommands();
 }
 
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
