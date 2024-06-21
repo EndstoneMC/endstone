@@ -281,6 +281,14 @@ void EndstonePlayer::setExpLevel(int level)
     giveExpLevels(level - getExpLevel());
 }
 
+int EndstonePlayer::getTotalExp() const
+{
+    auto progress = getExpProgress();
+    auto base = ::Player::getXpNeededForLevelRange(0, getExpLevel());
+    auto xp_for_next_level = static_cast<float>(::Player::getXpNeededForLevelRange(getExpLevel(), getExpLevel() + 1));
+    return base + static_cast<int>(std::round(progress * xp_for_next_level));
+}
+
 bool EndstonePlayer::getAllowFlight() const
 {
     return getHandle().getAbilities().getBool(AbilitiesIndex::MayFly);

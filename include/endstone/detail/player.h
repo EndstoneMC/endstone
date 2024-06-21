@@ -73,6 +73,7 @@ public:
     void setExpProgress(float progress) override;
     [[nodiscard]] int getExpLevel() const override;
     void setExpLevel(int level) override;
+    [[nodiscard]] int getTotalExp() const override;
     [[nodiscard]] bool getAllowFlight() const override;
     void setAllowFlight(bool flight) override;
     [[nodiscard]] bool isFlying() const override;

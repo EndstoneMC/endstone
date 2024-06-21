@@ -249,6 +249,7 @@ void init_player(py::module_ &m)
                       "Gets or sets the players current experience progress towards the next level.")
         .def_property("exp_level", &Player::getExpLevel, &Player::setExpLevel,
                       "Gets or sets the players current experience level.")
+        .def_property_readonly("total_exp", &Player::getTotalExp, "Gets the players total experience points.")
         .def_property("is_flying", &Player::isFlying, &Player::setFlying, "If the player is currently flying or not.")
         .def_property("allow_flight", &Player::getAllowFlight, &Player::setAllowFlight,
                       "If the Player is allowed to fly via jump key double-tap.")

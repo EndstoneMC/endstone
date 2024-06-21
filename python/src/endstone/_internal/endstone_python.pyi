@@ -842,6 +842,11 @@ class Player(Actor):
         Gets the player's average ping.
         """
     @property
+    def total_exp(self) -> int:
+        """
+        Gets the players total experience points.
+        """
+    @property
     def unique_id(self) -> uuid.UUID:
         """
         Returns the UUID of this player

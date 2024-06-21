@@ -125,6 +125,16 @@ public:
     virtual void setExpLevel(int level) = 0;
 
     /**
+     * @brief Gets the players total experience points.
+     *
+     * This refers to the total amount of experience the player has collected
+     * over time and is not currently displayed to the client.
+     *
+     * @return Current total experience points
+     */
+    [[nodiscard]] virtual int getTotalExp() const = 0;
+
+    /**
      * @brief Determines if the Player is allowed to fly via jump key double-tap.
      *
      * @return True if the player is allowed to fly.
