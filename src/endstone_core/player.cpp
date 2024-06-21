@@ -259,7 +259,7 @@ float EndstonePlayer::getExpProgress() const
 void EndstonePlayer::setExpProgress(float progress)
 {
     if (progress < 0.0 || progress > 1.0) {
-        server_.getLogger().error("Experience progress must be between 0.0 and 1.0 (%s)");
+        server_.getLogger().error("Experience progress must be between 0.0 and 1.0 ({})", progress);
         return;
     }
     auto diff = progress - getExpProgress();
@@ -275,7 +275,7 @@ int EndstonePlayer::getExpLevel() const
 void EndstonePlayer::setExpLevel(int level)
 {
     if (level < 0) {
-        server_.getLogger().error("Experience level must not be negative (%s)");
+        server_.getLogger().error("Experience level must not be negative ({})", level);
         return;
     }
     giveExpLevels(level - getExpLevel());
