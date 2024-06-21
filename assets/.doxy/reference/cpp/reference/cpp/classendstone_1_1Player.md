@@ -124,6 +124,7 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
+| virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
 | virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
@@ -553,6 +554,34 @@ virtual std::chrono::milliseconds endstone::Player::getPing () const = 0
 **Returns:**
 
 player ping 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getTotalExp 
+
+_Gets the players total experience points._ 
+```C++
+virtual int endstone::Player::getTotalExp () const = 0
+```
+
+
+
+This refers to the total amount of experience the player has collected over time and is not currently displayed to the client.
+
+
+
+
+**Returns:**
+
+Current total experience points 
 
 
 

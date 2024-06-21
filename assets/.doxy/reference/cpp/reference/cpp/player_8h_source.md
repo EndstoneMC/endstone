@@ -72,6 +72,8 @@ public:
 
     virtual void setExpLevel(int level) = 0;
 
+    [[nodiscard]] virtual int getTotalExp() const = 0;
+
     [[nodiscard]] virtual bool getAllowFlight() const = 0;
 
     virtual void setAllowFlight(bool flight) = 0;
