@@ -64,9 +64,13 @@ public:
 
     virtual void giveExpLevels(int amount) = 0;
 
-    [[nodiscard]] virtual float getExp() const = 0;
+    [[nodiscard]] virtual float getExpProgress() const = 0;
 
-    [[nodiscard]]  virtual int getExpLevel() const = 0;
+    virtual void setExpProgress(float progress) = 0;
+
+    [[nodiscard]] virtual int getExpLevel() const = 0;
+
+    virtual void setExpLevel(int level) = 0;
 
     [[nodiscard]] virtual bool getAllowFlight() const = 0;
 

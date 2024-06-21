@@ -323,8 +323,10 @@
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" kind="function"><name>giveExp</name></member>
     <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" kind="function"><name>giveExpLevels</name></member>
-    <member refid="classendstone_1_1Player_1a1622f5e54e4a0e7b53a2a364d5fa4caa" kind="function"><name>getExp</name></member>
+    <member refid="classendstone_1_1Player_1aefef97a98e1c193a0eeaf710f417b835" kind="function"><name>getExpProgress</name></member>
+    <member refid="classendstone_1_1Player_1a97b5f5e159340ddab9622c6f16176d6e" kind="function"><name>setExpProgress</name></member>
     <member refid="classendstone_1_1Player_1af38317c0a52ffc820eb751388ebbb7b3" kind="function"><name>getExpLevel</name></member>
+    <member refid="classendstone_1_1Player_1a7816ae526469ef35cd741f992804ae0e" kind="function"><name>setExpLevel</name></member>
     <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" kind="function"><name>getAllowFlight</name></member>
     <member refid="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" kind="function"><name>setAllowFlight</name></member>
     <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" kind="function"><name>isFlying</name></member>
