@@ -14,18 +14,12 @@
 
 #pragma once
 
-class SubClientConnectionRequest {
-public:
-    [[nodiscard]] Json::Value getData(const std::string &key) const
-    {
-        if (raw_token_ && raw_token_->data_info) {
-            return raw_token_->data_info.get(key, Json::nullValue);
-        }
-        return Json::nullValue;
-    }
+#include <json/json.h>
 
-private:
-    std::unique_ptr<void *> certificate_data_;  // +0 std::unique_ptr<UnverifiedCertificate>
-    std::unique_ptr<void *> certificate_;       // +8 std::unique_ptr<Certificate>
-    std::unique_ptr<WebToken> raw_token_;       // +16
+struct WebToken {
+    std::string header;
+    Json::Value header_info;
+    std::string data;
+    Json::Value data_info;
+    std::string signature;
 };
