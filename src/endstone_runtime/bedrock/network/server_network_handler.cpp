@@ -37,8 +37,10 @@ void ServerNetworkHandler::updateServerAnnouncement()
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
 }
 
-bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool is_xbox_live)
+bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
 {
+    auto new_player =
+        ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
 
@@ -48,7 +50,25 @@ bool ServerNetworkHandler::_loadNewPlayer(ServerPlayer &server_player, bool is_x
     if (e.isCancelled()) {
         endstone_player.kick(e.getKickMessage());
     }
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_loadNewPlayer, this, server_player, is_xbox_live);
+    return new_player;
+}
+
+ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &network_id,
+                                                     const SubClientConnectionRequest &sub_client_connection_request,
+                                                     SubClientId sub_client_id)
+{
+    auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
+                                                      sub_client_connection_request, sub_client_id);
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &endstone_player = server_player.getEndstonePlayer();
+
+    endstone::PlayerLoginEvent e{endstone_player};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        endstone_player.kick(e.getKickMessage());
+    }
+    return server_player;
 }
 
 void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)

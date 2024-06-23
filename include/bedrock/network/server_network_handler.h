@@ -20,6 +20,8 @@
 #include "bedrock/core/utility/observer.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
+#include "bedrock/network/packet/types/connection_request.h"
+#include "bedrock/network/packet/types/sub_client_connection_request.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/server_event.h"
@@ -35,6 +37,7 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public Social::MultiplayerServiceObserver,
                              public Social::XboxLiveUserObserver {
 public:
+    ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, bool);
     ENDSTONE_HOOK void updateServerAnnouncement();
@@ -43,9 +46,9 @@ public:
 
 private:
     friend class endstone::detail::EndstoneServer;
-
-    ENDSTONE_HOOK bool _loadNewPlayer(ServerPlayer &, bool is_xbox_live);  // NOLINT(*-identifier-naming)
-    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);   // NOLINT(*-identifier-naming)
+    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &,  // NOLINT(*-identifier-naming)
+                                                 SubClientConnectionRequest const &, SubClientId);
+    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);  // NOLINT(*-identifier-naming)
 
     GameCallbacks *callbacks_;                // +80
     Bedrock::NonOwnerPointer<ILevel> level_;  // +88
