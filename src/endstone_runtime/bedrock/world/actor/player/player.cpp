@@ -34,11 +34,6 @@ const std::string &Player::getName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Player::getName, this);
 }
 
-void Player::resetPlayerLevel()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Player::resetPlayerLevel, this);
-}
-
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);

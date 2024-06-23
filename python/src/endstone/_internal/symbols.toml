@@ -43,7 +43,6 @@ version = "1.21.1"
 # Player
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27112928
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27114768
-"?resetPlayerLevel@Player@@QEAAXXZ" = 27146336
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27153872
 # RakNet
 "?RecvFromLoopInt@RNS2_Berkley@RakNet@@IEAAIXZ" = 36833824
@@ -116,7 +115,6 @@ version = "1.21.1"
 # Player
 "_ZN6Player12getInventoryEv" = 109739568
 "_ZNK6Player7getNameEv" = 109666784
-"_ZN6Player16resetPlayerLevelEv" = 109654240
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109690864
 # RakNet
 "_ZN6RakNet12RNS2_Berkley15RecvFromLoopIntEv" = 131020448

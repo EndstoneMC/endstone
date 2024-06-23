@@ -119,7 +119,6 @@ protected:
 public:
     [[nodiscard]] ENDSTONE_HOOK Container &getInventory();
     [[nodiscard]] ENDSTONE_HOOK const std::string &getName() const;
-    ENDSTONE_HOOK void resetPlayerLevel();
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
 
     [[nodiscard]] GameType getPlayerGameType() const;
