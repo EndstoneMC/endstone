@@ -18,7 +18,7 @@ class SubClientConnectionRequest {
 public:
     [[nodiscard]] Json::Value getData(const std::string &key) const
     {
-        if (raw_token_ && raw_token_->data_info) {
+        if (certificate_ && raw_token_) {
             return raw_token_->data_info.get(key, Json::nullValue);
         }
         return Json::nullValue;

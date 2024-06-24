@@ -17,9 +17,9 @@
 #include <json/json.h>
 
 struct WebToken {
-    std::string header;
-    Json::Value header_info;
-    std::string data;
-    Json::Value data_info;
-    std::string signature;
+    std::string header;       // +0
+    Json::Value header_info;  // +32
+    std::string data;         // +48
+    Json::Value data_info;    // +80
+    std::string signature;    // +96
 };

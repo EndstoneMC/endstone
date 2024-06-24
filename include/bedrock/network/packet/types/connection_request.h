@@ -25,7 +25,7 @@ class ConnectionRequest {
 public:
     [[nodiscard]] Json::Value getData(const std::string &key) const
     {
-        if (raw_token_ && raw_token_->data_info) {
+        if (certificate_ && raw_token_) {
             return raw_token_->data_info.get(key, Json::nullValue);
         }
         return Json::nullValue;
@@ -35,5 +35,5 @@ private:
     std::unique_ptr<void *> certificate_data_;  // +0 std::unique_ptr<UnverifiedCertificate>
     std::unique_ptr<void *> certificate_;       // +8 std::unique_ptr<Certificate>
     std::unique_ptr<WebToken> raw_token_;       // +16
-    SubClientId sub_client_id_;
+    SubClientId sub_client_id_;                 // +24
 };
