@@ -44,6 +44,10 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
 
+    if (auto locale = connection_request.getData("LanguageCode").asString(); !locale.empty()) {
+        endstone_player.locale_ = locale;
+    }
+
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
 

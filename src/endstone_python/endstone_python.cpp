@@ -263,7 +263,8 @@ void init_player(py::module_ &m)
              "Makes the player perform the given command.")
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
-                               "Get the player's inventory.");
+                               "Get the player's inventory.")
+        .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.");
 }
 
 }  // namespace endstone::detail

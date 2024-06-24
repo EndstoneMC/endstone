@@ -413,6 +413,11 @@ PlayerInventory &EndstonePlayer::getInventory() const
     return *inventory_;
 }
 
+std::string EndstonePlayer::getLocale() const
+{
+    return locale_;
+}
+
 void EndstonePlayer::disconnect()
 {
     perm_.clearPermissions();

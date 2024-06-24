@@ -845,6 +845,11 @@ class Player(Actor):
     def is_flying(self, arg1: bool) -> None:
         ...
     @property
+    def locale(self) -> str:
+        """
+        Get the player's current locale.
+        """
+    @property
     def ping(self) -> datetime.timedelta:
         """
         Gets the player's average ping.

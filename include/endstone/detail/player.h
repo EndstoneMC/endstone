@@ -88,17 +88,21 @@ public:
     [[nodiscard]] GameMode getGameMode() const override;
     void setGameMode(GameMode mode) override;
     [[nodiscard]] PlayerInventory &getInventory() const override;
+    [[nodiscard]] std::string getLocale() const override;
 
     void disconnect();
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
 
 private:
+    friend class ::ServerNetworkHandler;
+
     ::Player &player_;
     UUID uuid_;
     SocketAddress address_;
     PermissibleBase perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
+    std::string locale_ = "en-US";
 };
 
 }  // namespace endstone::detail

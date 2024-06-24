@@ -232,6 +232,13 @@ public:
      * @return The inventory of the player, this also contains the armor slots.
      */
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
+
+    /**
+     * @brief Gets the player's current locale.
+     *
+     * @return the player's locale
+     */
+    [[nodiscard]] virtual std::string getLocale() const = 0;
 };
 
 }  // namespace endstone
