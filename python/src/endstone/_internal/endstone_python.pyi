@@ -800,6 +800,16 @@ class Player(Actor):
     def allow_flight(self, arg1: bool) -> None:
         ...
     @property
+    def device_id(self) -> uuid.UUID:
+        """
+        Get the player's current device id.
+        """
+    @property
+    def device_os(self) -> str:
+        """
+        Get the player's current device's operation system (OS).
+        """
+    @property
     def exp_level(self) -> int:
         """
         Gets or sets the players current experience level.

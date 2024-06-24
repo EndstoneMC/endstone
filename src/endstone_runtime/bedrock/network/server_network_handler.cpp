@@ -14,7 +14,10 @@
 
 #include "bedrock/network/server_network_handler.h"
 
+#include <variant>
+
 #include <entt/entt.hpp>
+#include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "endstone/detail/hook.h"
@@ -43,10 +46,7 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
         ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
-
-    if (auto locale = connection_request.getData("LanguageCode").asString(); !locale.empty()) {
-        endstone_player.locale_ = locale;
-    }
+    endstone_player.initFromConnectionRequest(&connection_request);
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
@@ -65,6 +65,7 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
                                                       sub_client_connection_request, sub_client_id);
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstonePlayer();
+    endstone_player.initFromConnectionRequest(&sub_client_connection_request);
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);

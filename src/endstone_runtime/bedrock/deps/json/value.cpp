@@ -14,6 +14,7 @@
 
 #include "bedrock/deps/jsoncpp/value.h"
 
+#include <cmath>
 #include <limits>
 
 namespace Json {
@@ -170,6 +171,24 @@ std::string Value::asString() const
         return std::to_string(value_.real_);
     default:
         return "";
+    }
+}
+
+int Value::asInt() const
+{
+    switch (type_) {
+    case intValue:
+        return static_cast<int>(value_.int_);
+    case uintValue:
+        return static_cast<int>(value_.uint_);
+    case realValue:
+        return static_cast<int>(std::round(value_.real_));
+    case nullValue:
+        return 0;
+    case booleanValue:
+        return value_.bool_ ? 1 : 0;
+    default:
+        return 0;
     }
 }
 

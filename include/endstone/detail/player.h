@@ -16,6 +16,9 @@
 
 #include <memory>
 
+#include "bedrock/network/packet/types/connection_request.h"
+#include "bedrock/network/packet/types/sub_client_connection_request.h"
+#include "bedrock/world/actor/player/build_platform.h"
 #include "endstone/detail/actor/actor.h"
 #include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/player.h"
@@ -89,7 +92,11 @@ public:
     void setGameMode(GameMode mode) override;
     [[nodiscard]] PlayerInventory &getInventory() const override;
     [[nodiscard]] std::string getLocale() const override;
+    [[nodiscard]] std::string getDeviceOS() const override;
+    [[nodiscard]] endstone::UUID getDeviceId() const override;
 
+    void initFromConnectionRequest(
+        std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
@@ -103,6 +110,8 @@ private:
     PermissibleBase perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::string locale_ = "en-US";
+    std::string device_os_ = "unknown";
+    endstone::UUID device_id_;
 };
 
 }  // namespace endstone::detail

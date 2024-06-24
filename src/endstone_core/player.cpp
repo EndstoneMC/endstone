@@ -14,6 +14,9 @@
 
 #include "endstone/detail/player.h"
 
+#include <boost/uuid/string_generator.hpp>
+#include <magic_enum/magic_enum.hpp>
+
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
@@ -416,6 +419,39 @@ PlayerInventory &EndstonePlayer::getInventory() const
 std::string EndstonePlayer::getLocale() const
 {
     return locale_;
+}
+
+std::string EndstonePlayer::getDeviceOS() const
+{
+    return device_os_;
+}
+
+endstone::UUID EndstonePlayer::getDeviceId() const
+{
+    return device_id_;
+}
+
+void EndstonePlayer::initFromConnectionRequest(
+    std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request)
+{
+    std::visit(
+        [&](auto &&request) {
+            if (auto locale = request->getData("LanguageCode").asString(); !locale.empty()) {
+                locale_ = locale;
+            }
+
+            if (auto device_os = request->getData("DeviceOS").asInt(); device_os > 0) {
+                auto platform = magic_enum::enum_cast<BuildPlatform>(device_os).value_or(BuildPlatform::Unknown);
+                device_os_ = magic_enum::enum_name(platform);
+            }
+
+            if (auto device_id = request->getData("DeviceId").asString(); !device_id.empty()) {
+                boost::uuids::string_generator gen;
+                auto boost_uuid = gen(device_id);
+                std::copy(std::begin(boost_uuid.data), std::end(boost_uuid.data), std::begin(device_id_.data));
+            }
+        },
+        request);
 }
 
 void EndstonePlayer::disconnect()

@@ -264,7 +264,10 @@ void init_player(py::module_ &m)
         .def_property("game_mode", &Player::getGameMode, &Player::setGameMode, "The player's current game mode.")
         .def_property_readonly("inventory", &Player::getInventory, py::return_value_policy::reference,
                                "Get the player's inventory.")
-        .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.");
+        .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.")
+        .def_property_readonly("device_os", &Player::getDeviceOS,
+                               "Get the player's current device's operation system (OS).")
+        .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.");
 }
 
 }  // namespace endstone::detail

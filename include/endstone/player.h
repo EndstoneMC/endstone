@@ -239,6 +239,20 @@ public:
      * @return the player's locale
      */
     [[nodiscard]] virtual std::string getLocale() const = 0;
+
+    /**
+     * @brief Gets the player's current device's operation system (OS).
+     *
+     * @return the player's device OS
+     */
+    [[nodiscard]] virtual std::string getDeviceOS() const = 0;
+
+    /**
+     * @brief Gets the player's current device id.
+     *
+     * @return the player's device id
+     */
+    [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
 };
 
 }  // namespace endstone
