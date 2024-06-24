@@ -1,0 +1,27 @@
+name: Closing Stale Issues and PRs
+
+permissions:
+  issues: write
+  pull-requests: write
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    if: ${{ github.repository_owner == 'EndstoneMC' }}
+    steps:
+      - name: Close Stale Issues
+        uses: actions/stale@v9
+        with:
+          days-before-stale: 30
+          days-before-close: 7
+          stale-issue-label: stale
+          stale-pr-label: stale
+          stale-issue-message: 'This issue has been automatically marked as stale because it did not have recent activity. It will be closed in 7 days if no further activity occurs. If you wish not to mark it as stale, please leave a comment in this issue.'
+          close-issue-message: 'This issue has been automatically closed because it did not have recent activity. If this remains to be a problem with the latest version of Endstone, please open a new issue and link this to it. Thanks!'
+          close-issue-reason: 'not_planned'
+          stale-pr-message: 'This PR has been automatically marked as stale because it has not had recent activity. It will be closed in 7 days if no further activity occurs. If you wish not to mark it as stale, please leave a comment in this PR. Thanks for your contribution.'
+          close-pr-message: 'This PR has been automatically closed because it has not had recent activity. We are looking forward to your next contribution.'
