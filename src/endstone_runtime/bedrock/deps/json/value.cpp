@@ -17,11 +17,12 @@
 #include <limits>
 
 namespace Json {
-static const unsigned char gNull[sizeof(Value)] = {0};
-const unsigned char &gNullRef = gNull[0];
-const Value &Value::null = reinterpret_cast<const Value &>(gNullRef);
 
 namespace {
+
+const unsigned char kNull[sizeof(Value)] = {0};
+const unsigned char &kNullRef = kNull[0];
+
 char *duplicateStringValue(const char *value, unsigned int length = -1)
 {
     if (length == -1) {
@@ -48,6 +49,8 @@ void releaseStringValue(char *value)
 }
 
 }  // namespace
+
+const Value &Value::null = reinterpret_cast<const Value &>(kNullRef);
 
 Value::CZString::CZString(const char *cstr) : cstr_(duplicateStringValue(cstr)) {}
 
@@ -147,7 +150,7 @@ ValueType Value::type() const
 
 const char *Value::asCString() const
 {
-    return value_.string_;
+    return *value_.string_;
 }
 
 std::string Value::asString() const
@@ -156,7 +159,7 @@ std::string Value::asString() const
     case nullValue:
         return "";
     case stringValue:
-        return value_.string_ ? value_.string_ : "";
+        return value_.string_ ? *value_.string_ : "";
     case booleanValue:
         return value_.bool_ ? "true" : "false";
     case intValue:

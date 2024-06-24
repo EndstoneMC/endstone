@@ -20,7 +20,7 @@
 
 namespace Json {
 
-enum ValueType {
+enum ValueType {    // NOLINTBEGIN
     nullValue = 0,  ///< 'null' value
     intValue,       ///< signed integer value
     uintValue,      ///< unsigned integer value
@@ -29,18 +29,19 @@ enum ValueType {
     booleanValue,   ///< bool value
     arrayValue,     ///< array value (ordered list)
     objectValue     ///< object value (collection of name/value pairs).
-};
+};                  // NOLINTEND
 
 class Value {
     static const Value &null;
 
     class CZString {
     public:
-        CZString(const char* cstr);
+        CZString(const char *cstr);  // NOLINT(*-explicit-constructor)
         ~CZString();
-        bool operator<(const CZString& other) const;
-        bool operator==(const CZString& other) const;
-        [[nodiscard]] const char* c_str() const;
+        bool operator<(const CZString &other) const;
+        bool operator==(const CZString &other) const;
+        [[nodiscard]] const char *c_str() const;
+
     private:
         const char *cstr_;
     };
@@ -50,32 +51,31 @@ public:
     using ObjectValues = std::map<CZString, Value>;
     using ArrayValues = std::vector<Value>;
 
-    Value(ValueType type = nullValue);
+    Value(ValueType type = nullValue);  // NOLINT(*-explicit-constructor)
 
-    [[nodiscard]]  ValueType type() const;
-    [[nodiscard]]  const char* asCString() const;
+    [[nodiscard]] ValueType type() const;
+    [[nodiscard]] const char *asCString() const;
     [[nodiscard]] std::string asString() const;
 
     /// Access an object value by name, returns null if there is no member with that name.
-    const Value& operator[](const char* key) const;
+    const Value &operator[](const char *key) const;
     /// Return the member named key if it exist, defaultValue otherwise.
     Value get(const char *key, const Value &default_value) const;
     /// Return the member named key if it exist, defaultValue otherwise.
-    [[nodiscard]]  Value get(const std::string &key, const Value &default_value) const;
-
+    [[nodiscard]] Value get(const std::string &key, const Value &default_value) const;
 
 private:
     void initBasic(ValueType type, bool allocated = false);
 
-    union ValueHolder {
+    union ValueHolder {  // NOLINTBEGIN
         std::int64_t int_;
         std::uint64_t uint_;
         double real_;
         bool bool_;
-        char *string_;
+        char **string_;
         ArrayValues *array_;
         ObjectValues *map_;
-    } value_;
+    } value_;  // NOLINTEND
     ValueType type_ : 8;
     int allocated_ : 1;  // Notes: if declared as bool, bitfield is useless.
 };
