@@ -12,16 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/raknet_socket2.h"
+#include "bedrock/deps/raknet/raknet_socket2.h"
 
 #include <sstream>
 
 #include <entt/entt.hpp>
 
-#include "bedrock/network/raknet/get_time.h"
-#include "bedrock/network/raknet/message_identifiers.h"
-#include "bedrock/network/raknet/raknet_defines.h"
-#include "bedrock/network/raknet/socket_defines.h"
+#include "bedrock/deps/raknet/get_time.h"
+#include "bedrock/deps/raknet/message_identifiers.h"
+#include "bedrock/deps/raknet/raknet_defines.h"
+#include "bedrock/deps/raknet/socket_defines.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/server_list_ping_event.h"

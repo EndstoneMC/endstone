@@ -18,7 +18,7 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/raknet/raknet_types.h"
+#include "bedrock/deps/raknet/raknet_types.h"
 
 class NetworkIdentifier {
 public:

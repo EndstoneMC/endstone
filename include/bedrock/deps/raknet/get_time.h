@@ -12,20 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/raknet_types.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
+#include "bedrock/deps/raknet/raknet_types.h"
 
 namespace RakNet {
-
-std::uint16_t SystemAddress::GetPort() const
-{
-    return ntohs(address.addr4.sin_port);
-}
-
-void SystemAddress::ToString(bool write_port, char *dest, char port_delimiter) const
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
-}
-
+RakNet::TimeUS GetTimeUS();
 }  // namespace RakNet

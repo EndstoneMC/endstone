@@ -14,12 +14,12 @@
 
 #include "endstone/detail/player.h"
 
+#include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
-#include "bedrock/network/raknet/rak_peer_interface.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_origin_loader.h"

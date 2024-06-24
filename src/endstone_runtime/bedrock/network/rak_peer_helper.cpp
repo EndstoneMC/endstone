@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/rak_peer_helper.h"
+#include "bedrock/network/rak_peer_helper.h"
 
 #include <entt/entt.hpp>
 

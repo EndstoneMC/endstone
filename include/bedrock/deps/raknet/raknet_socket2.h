@@ -18,10 +18,10 @@
 #include <memory>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/raknet/raknet_defines.h"
-#include "bedrock/network/raknet/raknet_types.h"
+#include "bedrock/deps/raknet/raknet_defines.h"
+#include "bedrock/deps/raknet/raknet_types.h"
 // must be included after raknet_types.h
-#include "bedrock/network/raknet/lockless_types.h"
+#include "bedrock/deps/raknet/lockless_types.h"
 
 /**
  * https://github.com/facebookarchive/RakNet/blob/master/Source/RakNetSocket2.h

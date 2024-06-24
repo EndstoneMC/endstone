@@ -15,7 +15,7 @@
 #pragma once
 
 #ifdef _WIN32
-#include <windows.h>
+#include <Windows.h>
 #endif
 
 #include <cstdint>

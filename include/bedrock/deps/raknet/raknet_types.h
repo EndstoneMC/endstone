@@ -19,7 +19,7 @@
 #include <cstdint>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/raknet/socket_includes.h"
+#include "bedrock/deps/raknet/socket_includes.h"
 
 /**
  * https://github.com/facebookarchive/RakNet/blob/master/Source/RakNetTypes.h

@@ -14,8 +14,11 @@
 
 #pragma once
 
-#include "bedrock/network/raknet/raknet_types.h"
-
-namespace RakNet {
-RakNet::TimeUS GetTimeUS();
-}  // namespace RakNet
+#ifdef _WIN32
+#include <WS2tcpip.h>
+#include <WinSock2.h>
+#else
+#include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#endif

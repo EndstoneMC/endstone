@@ -15,8 +15,8 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/network/raknet/rak_peer_interface.h"
-#include "bedrock/network/raknet/raknet_types.h"
+#include "bedrock/deps/raknet/rak_peer_interface.h"
+#include "bedrock/deps/raknet/raknet_types.h"
 
 struct ConnectionDefinition {
     std::uint16_t port;                       // +0

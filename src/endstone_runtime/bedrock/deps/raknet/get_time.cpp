@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/network/raknet/get_time.h"
+#include "bedrock/deps/raknet/get_time.h"
 
 static bool initialized = false;  // NOLINT
 

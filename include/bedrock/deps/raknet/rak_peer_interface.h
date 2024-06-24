@@ -16,7 +16,7 @@
 
 #include <memory>
 
-#include "bedrock/network/raknet/raknet_types.h"
+#include "bedrock/deps/raknet/raknet_types.h"
 
 namespace RakNet {
 
