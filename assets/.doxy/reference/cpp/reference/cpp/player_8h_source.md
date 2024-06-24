@@ -103,6 +103,10 @@ public:
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
 
     [[nodiscard]] virtual std::string getLocale() const = 0;
+
+    [[nodiscard]] virtual std::string getDeviceOS() const = 0;
+
+    [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
 };
 
 }  // namespace endstone

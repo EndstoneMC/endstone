@@ -119,6 +119,8 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual const [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
+| virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getDeviceId**](#function-getdeviceid) () const = 0<br>_Gets the player's current device id._  |
+| virtual std::string | [**getDeviceOS**](#function-getdeviceos) () const = 0<br>_Gets the player's current device's operation system (OS)._  |
 | virtual int | [**getExpLevel**](#function-getexplevel) () const = 0<br>_Gets the players current experience level._  |
 | virtual float | [**getExpProgress**](#function-getexpprogress) () const = 0<br>_Gets the players current experience progress towards the next level._  |
 | virtual float | [**getFlySpeed**](#function-getflyspeed) () const = 0<br>_Gets the current allowed speed that a client can fly._  |
@@ -431,6 +433,56 @@ virtual bool endstone::Player::getAllowFlight () const = 0
 **Returns:**
 
 True if the player is allowed to fly. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getDeviceId 
+
+_Gets the player's current device id._ 
+```C++
+virtual endstone::UUID endstone::Player::getDeviceId () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the player's device id 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getDeviceOS 
+
+_Gets the player's current device's operation system (OS)._ 
+```C++
+virtual std::string endstone::Player::getDeviceOS () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the player's device OS 
 
 
 

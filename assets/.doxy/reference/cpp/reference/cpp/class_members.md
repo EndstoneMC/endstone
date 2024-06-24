@@ -152,6 +152,8 @@
 * **getValue** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **getAddress** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
+* **getDeviceId** ([**endstone::Player**](classendstone_1_1Player.md))
+* **getDeviceOS** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getExpLevel** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getExpProgress** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getFlySpeed** ([**endstone::Player**](classendstone_1_1Player.md))

@@ -718,6 +718,40 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="241" column="26"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Player::getDeviceOS</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDeviceOS</name>
+        <briefdescription>
+<para>Gets the player&apos;s current device&apos;s operation system (OS). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s device OS </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="248" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
+        <definition>virtual endstone::UUID endstone::Player::getDeviceId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDeviceId</name>
+        <briefdescription>
+<para>Gets the player&apos;s current device id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s device id </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="255" column="29"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a player. </para>
@@ -772,7 +806,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="242"/>
+    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="256"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -785,6 +819,8 @@
       <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>CommandSender</name></member>
       <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAllowFlight</name></member>
+      <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceId</name></member>
+      <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceOS</name></member>
       <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Player_1af38317c0a52ffc820eb751388ebbb7b3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getExpLevel</name></member>
