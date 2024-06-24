@@ -701,6 +701,23 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="234" column="30"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Player::getLocale</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLocale</name>
+        <briefdescription>
+<para>Gets the player&apos;s current locale. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s locale </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="241" column="26"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a player. </para>
@@ -755,7 +772,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="235"/>
+    <location file="include/endstone/player.h" line="30" column="1" bodyfile="include/endstone/player.h" bodystart="30" bodyend="242"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -776,6 +793,7 @@
       <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getGameMode</name></member>
       <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getInventory</name></member>
       <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocale</name></member>
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getName</name></member>
       <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getPing</name></member>

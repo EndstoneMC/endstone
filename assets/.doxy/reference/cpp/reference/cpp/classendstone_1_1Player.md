@@ -124,6 +124,7 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual float | [**getFlySpeed**](#function-getflyspeed) () const = 0<br>_Gets the current allowed speed that a client can fly._  |
 | virtual GameMode | [**getGameMode**](#function-getgamemode) () const = 0<br>_Gets this player's current GameMode._  |
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
+| virtual std::string | [**getLocale**](#function-getlocale) () const = 0<br>_Gets the player's current locale._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
 | virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
@@ -558,6 +559,31 @@ virtual PlayerInventory & endstone::Player::getInventory () const = 0
 **Returns:**
 
 The inventory of the player, this also contains the armor slots. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getLocale 
+
+_Gets the player's current locale._ 
+```C++
+virtual std::string endstone::Player::getLocale () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the player's locale 
 
 
 

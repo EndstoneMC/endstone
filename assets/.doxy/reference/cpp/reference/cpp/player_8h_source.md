@@ -101,6 +101,8 @@ public:
     virtual void setGameMode(GameMode mode) = 0;
 
     [[nodiscard]] virtual PlayerInventory &getInventory() const = 0;
+
+    [[nodiscard]] virtual std::string getLocale() const = 0;
 };
 
 }  // namespace endstone

@@ -400,9 +400,11 @@
 <codeline lineno="227" refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" kindref="member">setGameMode</ref>(GameMode<sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"></highlight></codeline>
 <codeline lineno="234" refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref><sp/>&amp;<ref refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" kindref="member">getInventory</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="235"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="236"><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kindref="member">getLocale</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/player.h"/>
   </compounddef>

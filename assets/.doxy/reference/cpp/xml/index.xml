@@ -342,6 +342,7 @@
     <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" kind="function"><name>getGameMode</name></member>
     <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" kind="function"><name>setGameMode</name></member>
     <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" kind="function"><name>getInventory</name></member>
+    <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
