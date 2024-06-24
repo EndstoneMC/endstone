@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <json/json.h>
+#include "bedrock/deps/jsoncpp/value.h"
 
 struct WebToken {
     std::string header;       // +0

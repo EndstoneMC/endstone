@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cmath>
+
 #include "bedrock/core/math/vec3.h"
 
 class BlockPos {

@@ -15,9 +15,9 @@
 #pragma once
 
 #include <memory>
+#include <string>
 
-#include <json/json.h>
-
+#include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/network/packet/types/web_token.h"
 #include "bedrock/network/sub_client_id.h"
 

@@ -16,12 +16,11 @@
 
 #include <optional>
 
-#include <json/json.h>
-
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/core/memory.h"
 #include "bedrock/core/utility/uuid.h"
+#include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/sub_client_id.h"
 #include "bedrock/server/commands/command_origin_data.h"
