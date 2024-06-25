@@ -57,6 +57,7 @@ public:
     }
 
 private:
+    friend class CompoundTag;
     double data_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(DoubleTag, 16, 16);

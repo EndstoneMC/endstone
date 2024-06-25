@@ -57,6 +57,7 @@ public:
     }
 
 private:
+    friend class CompoundTag;
     std::int16_t data_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ShortTag, 16, 16);

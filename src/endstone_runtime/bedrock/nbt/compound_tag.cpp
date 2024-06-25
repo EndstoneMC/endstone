@@ -58,7 +58,7 @@ bool CompoundTag::equals(const Tag &other) const
 std::unique_ptr<Tag> CompoundTag::copy() const
 {
     auto new_tag = std::make_unique<CompoundTag>();
-    deepCopy(*new_tag);
+    new_tag->deepCopy(*this);
     return new_tag;
 }
 
@@ -73,10 +73,12 @@ std::uint64_t CompoundTag::hash() const
     return seed;
 }
 
-void CompoundTag::deepCopy(const CompoundTag &other) const
+void CompoundTag::deepCopy(const CompoundTag &other)
 {
-    // TODO(nbt): fixme
-    throw std::runtime_error("Not implemented");
+    tags_.clear();
+    for (const auto &[key, value] : other.tags_) {
+        tags_[key].emplace(std::move(*value.get()->copy()));
+    }
 }
 
 bool CompoundTag::contains(std::string_view key) const
@@ -101,10 +103,17 @@ const Tag *CompoundTag::get(std::string_view key) const
     return nullptr;
 }
 
-std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
+Tag &CompoundTag::put(std::string name, Tag &&tag)
 {
-    auto &tag = tags_[name].emplace(ByteTag(value));
-    return static_cast<ByteTag &>(tag).data_;
+    return tags_[name].emplace(std::forward<Tag>(tag));
+}
+
+Tag *CompoundTag::put(std::string name, std::unique_ptr<Tag> tag)
+{
+    if (!tag) {
+        return nullptr;
+    }
+    return &tags_[name].emplace(std::move(*tag));
 }
 
 void CompoundTag::putBoolean(std::string name, bool value)
@@ -112,10 +121,16 @@ void CompoundTag::putBoolean(std::string name, bool value)
     tags_[name].emplace(ByteTag(value ? 1 : 0));
 }
 
-float &CompoundTag::putFloat(std::string name, float value)
+std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
 {
-    auto &tag = tags_[name].emplace(FloatTag(value));
-    return static_cast<FloatTag &>(tag).data_;
+    auto &tag = tags_[name].emplace(ByteTag(value));
+    return static_cast<ByteTag &>(tag).data_;
+}
+
+std::int16_t &CompoundTag::putShort(std::string name, std::int16_t value)
+{
+    auto &tag = tags_[name].emplace(ShortTag(value));
+    return static_cast<ShortTag &>(tag).data_;
 }
 
 std::int32_t &CompoundTag::putInt(std::string name, std::int32_t value)
@@ -128,6 +143,18 @@ std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
 {
     auto &tag = tags_[name].emplace(Int64Tag(value));
     return static_cast<Int64Tag &>(tag).data_;
+}
+
+float &CompoundTag::putFloat(std::string name, float value)
+{
+    auto &tag = tags_[name].emplace(FloatTag(value));
+    return static_cast<FloatTag &>(tag).data_;
+}
+
+double &CompoundTag::putDouble(std::string name, double value)
+{
+    auto &tag = tags_[name].emplace(DoubleTag(value));
+    return static_cast<DoubleTag &>(tag).data_;
 }
 
 std::string &CompoundTag::putString(std::string name, std::string value)

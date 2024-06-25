@@ -48,15 +48,19 @@ public:
     [[nodiscard]] std::unique_ptr<Tag> copy() const override;
     [[nodiscard]] std::uint64_t hash() const override;
 
-    void deepCopy(CompoundTag const &other) const;
+    void deepCopy(const CompoundTag &other);
     [[nodiscard]] bool contains(std::string_view key) const;
     [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
     [[nodiscard]] const Tag *get(std::string_view key) const;
-    std::uint8_t &putByte(std::string name, std::uint8_t value);
+    Tag &put(std::string name, Tag &&tag);
+    Tag *put(std::string name, std::unique_ptr<Tag> tag);
     void putBoolean(std::string name, bool value);
-    float &putFloat(std::string name, float value);
+    std::uint8_t &putByte(std::string name, std::uint8_t value);
+    std::int16_t &putShort(std::string name, std::int16_t value);
     std::int32_t &putInt(std::string name, std::int32_t value);
     std::int64_t &putInt64(std::string name, std::int64_t value);
+    float &putFloat(std::string name, float value);
+    double &putDouble(std::string name, double value);
     std::string &putString(std::string name, std::string value);
     CompoundTag &putCompound(std::string name, CompoundTag value);
 
