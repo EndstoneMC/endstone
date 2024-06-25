@@ -28,6 +28,16 @@ using BlockRuntimeId = std::uint32_t;
 
 class Block : public BlockComponentStorage {
 public:
+    [[nodiscard]] const CompoundTag &getSerializationId() const
+    {
+        return serialization_id_;
+    }
+
+    [[nodiscard]] BlockRuntimeId getRuntimeId() const
+    {
+        return runtime_id_;
+    }
+
 private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
