@@ -42,21 +42,9 @@ public:
     virtual Bedrock::Result<void> load(IDataInput &) = 0;
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual Type getId() const = 0;
-    [[nodiscard]] virtual bool equals(Tag const &other) const
-    {
-        return getId() == other.getId();
-    }
-    virtual void print(std::string const &, PrintStream &stream) const
-    {
-        stream.print(getTagName(getId()));
-        stream.print(": ");
-        stream.print(toString());
-        stream.print("\n");
-    }
-    virtual void print(PrintStream &stream) const
-    {
-        print("", stream);
-    }
+    [[nodiscard]] virtual bool equals(Tag const &other) const;
+    virtual void print(std::string const &, PrintStream &stream) const;
+    virtual void print(PrintStream &stream) const;
     [[nodiscard]] virtual std::unique_ptr<Tag> copy() const = 0;
     [[nodiscard]] virtual std::uint64_t hash() const = 0;
 

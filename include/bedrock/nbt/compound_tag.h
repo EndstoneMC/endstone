@@ -14,7 +14,9 @@
 
 #pragma once
 
+#include <algorithm>
 #include <map>
+#include <numeric>
 #include <string>
 #include <utility>
 #include <variant>
@@ -38,109 +40,39 @@ class CompoundTagVariant;
 class CompoundTag : public Tag {
 public:
     CompoundTag() = default;
-    void write(IDataOutput &output) const override
-    {
-        // TODO(nbt): fixme
-        throw std::runtime_error("Not implemented");
-    }
-    Bedrock::Result<void> load(IDataInput &input) override
-    {
-        // TODO(nbt): fixme
-        throw std::runtime_error("Not implemented");
-    }
-    [[nodiscard]] std::string toString() const override
-    {
-        return fmt::format("{} entries", tags_.size());
-    }
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::Compound;
-    }
-    [[nodiscard]] bool equals(const Tag &other) const override
-    {
-        // TODO(nbt): fixme
-        throw std::runtime_error("Not implemented");
-    }
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        // TODO(nbt): fixme
-        throw std::runtime_error("Not implemented");
-    }
-    [[nodiscard]] std::uint64_t hash() const override
-    {
-        // TODO(nbt): fixme
-        throw std::runtime_error("Not implemented");
-    }
+    void write(IDataOutput &output) const override;
+    Bedrock::Result<void> load(IDataInput &input) override;
+    [[nodiscard]] std::string toString() const override;
+    [[nodiscard]] Type getId() const override;
+    [[nodiscard]] bool equals(const Tag &other) const override;
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override;
+    [[nodiscard]] std::uint64_t hash() const override;
 
-    inline std::uint8_t &putByte(std::string name, std::uint8_t value);
-    inline void putBoolean(std::string name, bool value);
-    inline float &putFloat(std::string name, float value);
-    inline std::int32_t &putInt(std::string name, std::int32_t value);
-    inline std::int64_t &putInt64(std::string name, std::int64_t value);
-    inline std::string &putString(std::string name, std::string value);
-    inline CompoundTag &putCompound(std::string name, CompoundTag value);
+    [[nodiscard]] bool contains(std::string_view key) const;
+    [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
+    [[nodiscard]] const Tag *get(std::string_view key) const;
+    std::uint8_t &putByte(std::string name, std::uint8_t value);
+    void putBoolean(std::string name, bool value);
+    float &putFloat(std::string name, float value);
+    std::int32_t &putInt(std::string name, std::int32_t value);
+    std::int64_t &putInt64(std::string name, std::int64_t value);
+    std::string &putString(std::string name, std::string value);
+    CompoundTag &putCompound(std::string name, CompoundTag value);
 
 private:
-    std::map<std::string, CompoundTagVariant> tags_;  // +8
+    std::map<std::string, CompoundTagVariant, std::less<>> tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 
-class CompoundTagVariant : public std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
-                                               ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag> {
+using CompoundTagVariantType = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
+                                            ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag>;
+
+class CompoundTagVariant : public CompoundTagVariantType {
 public:
-    using Type = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag, StringTag,
-                              ListTag, CompoundTag, IntArrayTag>;
-    using Type::Type;
+    using CompoundTagVariantType::CompoundTagVariantType;
     [[nodiscard]] const Tag *get() const
     {
         return std::visit([](auto &&arg) -> const Tag * { return &arg; }, *this);
     }
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTagVariant, 48, 48);
-
-std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
-{
-    auto &it = tags_[name];
-    it = ByteTag(value);
-    return std::get<ByteTag>(it).data_;
-}
-
-void CompoundTag::putBoolean(std::string name, bool value)
-{
-    tags_[name] = ByteTag(value ? 1 : 0);
-}
-
-float &CompoundTag::putFloat(std::string name, float value)
-{
-    auto &it = tags_[name];
-    it = FloatTag(value);
-    return std::get<FloatTag>(it).data_;
-}
-
-std::int32_t &CompoundTag::putInt(std::string name, std::int32_t value)
-{
-    auto &it = tags_[name];
-    it = IntTag(value);
-    return std::get<IntTag>(it).data_;
-}
-
-std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
-{
-    auto &it = tags_[name];
-    it = Int64Tag(value);
-    return std::get<Int64Tag>(it).data_;
-}
-
-std::string &CompoundTag::putString(std::string name, std::string value)
-{
-    auto &it = tags_[name];
-    it = StringTag(std::move(value));
-    return std::get<StringTag>(it).data_;
-}
-
-CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
-{
-    auto &it = tags_[name];
-    it = std::move(value);
-    return std::get<CompoundTag>(it);
-}

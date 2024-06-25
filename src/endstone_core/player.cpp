@@ -26,7 +26,6 @@
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_origin_loader.h"
-#include "bedrock/server/commands/command_position.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"

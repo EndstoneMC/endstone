@@ -19,7 +19,6 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/uuid.h"
-#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/server/packs/content_identity.h"
 #include "bedrock/world/level/level_settings.h"
@@ -29,5 +28,5 @@ public:
     ENDSTONE_HOOK virtual void write(BinaryStream &) const;
 
 private:
-    mutable LevelSettings settings_;                                     // +48
+    mutable LevelSettings settings_;  // +48
 };

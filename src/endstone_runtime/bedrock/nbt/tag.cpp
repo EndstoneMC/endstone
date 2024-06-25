@@ -27,6 +27,24 @@
 #include "bedrock/nbt/short_tag.h"
 #include "bedrock/nbt/string_tag.h"
 
+bool Tag::equals(const Tag &other) const
+{
+    return getId() == other.getId();
+}
+
+void Tag::print(const std::string &, PrintStream &stream) const
+{
+    stream.print(getTagName(getId()));
+    stream.print(": ");
+    stream.print(toString());
+    stream.print("\n");
+}
+
+void Tag::print(PrintStream &stream) const
+{
+    print("", stream);
+}
+
 Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Tag::Type type)
 {
     switch (type) {
