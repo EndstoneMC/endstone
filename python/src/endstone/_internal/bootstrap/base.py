@@ -224,6 +224,7 @@ class Bootstrap:
         env["PYTHONUSERBASE"] = user_base
         env["PATH"] = os.pathsep.join(sys.path)
         env["PYTHONPATH"] = os.pathsep.join(sys.path)
+        env["PYTHONIOENCODING"] = "UTF-8"
         self._process = subprocess.Popen(
             [str(self.executable_path.absolute())],
             stdin=sys.stdin,
