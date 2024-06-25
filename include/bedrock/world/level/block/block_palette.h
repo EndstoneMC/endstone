@@ -14,37 +14,20 @@
 
 #pragma once
 
-#include <mutex>
-#include <thread>
+#include <map>
+#include <set>
+#include <string>
 
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
+#include "bedrock/core/threading.h"
+#include "bedrock/world/level/block/block_legacy.h"
 
-namespace Bedrock::Threading {
-
-using Mutex = std::mutex;
-
-class AssignedThread {
+class BlockPalette {
 public:
-    bool isOnThread()
-    {
-        return std::this_thread::get_id() == assigned_id_;
-    }
+    virtual ~BlockPalette() = 0;
 
 private:
-    std::thread::id assigned_id_;
+    Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;  // +8
+    std::map<std::string, const BlockLegacy *> name_lookup_;                  // +88
+    std::vector<Block *> block_from_runtime_id_;                              // +104
+    Level *level_;                                                            // +128
 };
-
-class EnableQueueForThread {
-public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> task_group_;  // +8
-};
-
-class EnableQueueForMainThread : public EnableQueueForThread {};
-
-ENDSTONE_HOOK AssignedThread &getServerThread();
-
-}  // namespace Bedrock::Threading

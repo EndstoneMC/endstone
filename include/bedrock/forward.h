@@ -44,7 +44,6 @@ class BlockActor;
 class BlockClimberDefinition;
 class BlockComponentFactory;
 class BlockDefinitionGroup;
-class BlockPalette;
 class BlockReducer;
 class BlockSource;
 class BlockTypeRegistry;
