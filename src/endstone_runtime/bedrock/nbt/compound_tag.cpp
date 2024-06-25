@@ -16,10 +16,14 @@
 
 #include <utility>
 
+#include "bedrock/nbt/nbt_io.h"
+
 void CompoundTag::write(IDataOutput &output) const
 {
-    // TODO(nbt): fixme
-    throw std::runtime_error("Not implemented");
+    for (const auto &[key, value] : tags_) {
+        NbtIo::writeNamedTag(key, *value.get(), output);
+    }
+    output.writeByte(static_cast<std::uint8_t>(Tag::Type::End));
 }
 
 Bedrock::Result<void> CompoundTag::load(IDataInput &input)
