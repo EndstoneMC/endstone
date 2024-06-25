@@ -48,6 +48,7 @@ public:
     [[nodiscard]] std::unique_ptr<Tag> copy() const override;
     [[nodiscard]] std::uint64_t hash() const override;
 
+    void deepCopy(CompoundTag const &other) const;
     [[nodiscard]] bool contains(std::string_view key) const;
     [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
     [[nodiscard]] const Tag *get(std::string_view key) const;
@@ -64,15 +65,15 @@ private:
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 
-using CompoundTagVariantType = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag,
-                                            ByteArrayTag, StringTag, ListTag, CompoundTag, IntArrayTag>;
+class CompoundTagVariant {
+    using Variant = std::variant<EndTag, ByteTag, ShortTag, IntTag, Int64Tag, FloatTag, DoubleTag, ByteArrayTag,
+                                 StringTag, ListTag, CompoundTag, IntArrayTag>;
 
-class CompoundTagVariant : public CompoundTagVariantType {
 public:
-    using CompoundTagVariantType::CompoundTagVariantType;
-    [[nodiscard]] const Tag *get() const
-    {
-        return std::visit([](auto &&arg) -> const Tag * { return &arg; }, *this);
-    }
+    [[nodiscard]] const Tag *get() const;
+    Tag &emplace(Tag &&tag);
+
+private:
+    Variant tag_storage_;
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTagVariant, 48, 48);

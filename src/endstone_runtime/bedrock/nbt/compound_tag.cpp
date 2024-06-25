@@ -14,6 +14,8 @@
 
 #include "bedrock/nbt/compound_tag.h"
 
+#include <utility>
+
 void CompoundTag::write(IDataOutput &output) const
 {
     // TODO(nbt): fixme
@@ -51,8 +53,9 @@ bool CompoundTag::equals(const Tag &other) const
 
 std::unique_ptr<Tag> CompoundTag::copy() const
 {
-    // TODO(nbt): fixme
-    throw std::runtime_error("Not implemented");
+    auto new_tag = std::make_unique<CompoundTag>();
+    deepCopy(*new_tag);
+    return new_tag;
 }
 
 std::uint64_t CompoundTag::hash() const
@@ -64,6 +67,12 @@ std::uint64_t CompoundTag::hash() const
         seed ^= value.get()->hash() + 0x9e3779b9 + (seed << 6) + (seed >> 2);
     }
     return seed;
+}
+
+void CompoundTag::deepCopy(const CompoundTag &other) const
+{
+    // TODO(nbt): fixme
+    throw std::runtime_error("Not implemented");
 }
 
 bool CompoundTag::contains(std::string_view key) const
@@ -90,47 +99,89 @@ const Tag *CompoundTag::get(std::string_view key) const
 
 std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
 {
-    auto &it = tags_[name];
-    it = ByteTag(value);
-    return std::get<ByteTag>(it).data_;
+    auto &tag = tags_[name].emplace(ByteTag(value));
+    return static_cast<ByteTag &>(tag).data_;
 }
 
 void CompoundTag::putBoolean(std::string name, bool value)
 {
-    tags_[name] = ByteTag(value ? 1 : 0);
+    tags_[name].emplace(ByteTag(value ? 1 : 0));
 }
 
 float &CompoundTag::putFloat(std::string name, float value)
 {
-    auto &it = tags_[name];
-    it = FloatTag(value);
-    return std::get<FloatTag>(it).data_;
+    auto &tag = tags_[name].emplace(FloatTag(value));
+    return static_cast<FloatTag &>(tag).data_;
 }
 
 std::int32_t &CompoundTag::putInt(std::string name, std::int32_t value)
 {
-    auto &it = tags_[name];
-    it = IntTag(value);
-    return std::get<IntTag>(it).data_;
+    auto &tag = tags_[name].emplace(IntTag(value));
+    return static_cast<IntTag &>(tag).data_;
 }
 
 std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
 {
-    auto &it = tags_[name];
-    it = Int64Tag(value);
-    return std::get<Int64Tag>(it).data_;
+    auto &tag = tags_[name].emplace(Int64Tag(value));
+    return static_cast<Int64Tag &>(tag).data_;
 }
 
 std::string &CompoundTag::putString(std::string name, std::string value)
 {
-    auto &it = tags_[name];
-    it = StringTag(std::move(value));
-    return std::get<StringTag>(it).data_;
+    auto &tag = tags_[name].emplace(StringTag(std::move(value)));
+    return static_cast<StringTag &>(tag).data_;
 }
 
 CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
 {
-    auto &it = tags_[name];
-    it = std::move(value);
-    return std::get<CompoundTag>(it);
+    auto &tag = tags_[name].emplace(std::move(value));
+    return static_cast<CompoundTag &>(tag);
+}
+
+const Tag *CompoundTagVariant::get() const
+{
+    return std::visit([](auto &&arg) -> const Tag * { return &arg; }, tag_storage_);
+}
+
+Tag &CompoundTagVariant::emplace(Tag &&tag)
+{
+    switch (tag.getId()) {
+    case Tag::Type::Byte:
+        tag_storage_ = static_cast<ByteTag &&>(tag);
+        return std::get<ByteTag>(tag_storage_);
+    case Tag::Type::Short:
+        tag_storage_ = static_cast<ShortTag &&>(tag);
+        return std::get<ShortTag>(tag_storage_);
+    case Tag::Type::Int:
+        tag_storage_ = static_cast<IntTag &&>(tag);
+        return std::get<IntTag>(tag_storage_);
+    case Tag::Type::Int64:
+        tag_storage_ = static_cast<Int64Tag &&>(tag);
+        return std::get<Int64Tag>(tag_storage_);
+    case Tag::Type::Float:
+        tag_storage_ = static_cast<FloatTag &&>(tag);
+        return std::get<FloatTag>(tag_storage_);
+    case Tag::Type::Double:
+        tag_storage_ = static_cast<DoubleTag &&>(tag);
+        return std::get<DoubleTag>(tag_storage_);
+    case Tag::Type::ByteArray:
+        tag_storage_ = static_cast<ByteArrayTag &&>(tag);
+        return std::get<ByteArrayTag>(tag_storage_);
+    case Tag::Type::String:
+        tag_storage_ = static_cast<StringTag &&>(tag);
+        return std::get<StringTag>(tag_storage_);
+    case Tag::Type::List:
+        tag_storage_ = static_cast<ListTag &&>(tag);
+        return std::get<ListTag>(tag_storage_);
+    case Tag::Type::Compound:
+        tag_storage_ = static_cast<CompoundTag &&>(tag);
+        return std::get<CompoundTag>(tag_storage_);
+    case Tag::Type::IntArray:
+        tag_storage_ = static_cast<IntArrayTag &&>(tag);
+        return std::get<IntArrayTag>(tag_storage_);
+    case Tag::Type::End:
+    default:
+        tag_storage_ = static_cast<EndTag &&>(tag);
+        return std::get<EndTag>(tag_storage_);
+    }
 }
