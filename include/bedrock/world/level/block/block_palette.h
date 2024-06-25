@@ -19,11 +19,24 @@
 #include <string>
 
 #include "bedrock/core/threading.h"
+#include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
 class BlockPalette {
 public:
     virtual ~BlockPalette() = 0;
+    [[nodiscard]] virtual int getPaletteType() const = 0;
+    virtual void appendBlock(const Block &) = 0;
+    [[nodiscard]] virtual const Block &getBlock(const BlockRuntimeId &) const = 0;
+
+protected:
+    virtual void assignBlockNetworkId(const Block &, BlockRuntimeId) const = 0;
+
+public:
+    [[nodiscard]] std::size_t getNumBlockNetworkIds() const
+    {
+        return block_from_runtime_id_.size();
+    }
 
 private:
     Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;  // +8
