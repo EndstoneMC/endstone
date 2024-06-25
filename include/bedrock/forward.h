@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <cstdint>
+
 // Classes
 class ActorAnimationControllerGroup;
 class ActorAnimationGroup;

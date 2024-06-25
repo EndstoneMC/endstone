@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/math/color.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 

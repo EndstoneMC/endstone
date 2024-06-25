@@ -20,7 +20,7 @@ namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
 
-#include "bedrock/common.h"
+#include "bedrock/common/game_version.h"
 #include "bedrock/core/threading.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/player/player.h"
