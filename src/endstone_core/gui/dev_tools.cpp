@@ -15,6 +15,7 @@
 #include "endstone/detail/gui/dev_tools.h"
 
 #include <imgui.h>
+#include <imgui_internal.h>
 
 #include <cstdio>
 #include <filesystem>
@@ -32,11 +33,17 @@ namespace endstone::detail {
 namespace {
 
 auto &gLogger = endstone::detail::LoggerFactory::getLogger("EndstoneGUI");
-bool gShow = false;
+GLFWwindow *gWindow;
 
 void onError(int error, const char *description)
 {
     gLogger.error("GLFW Error {}: {}", error, description);
+}
+
+void onWindowClose(GLFWwindow *window)
+{
+    glfwSetWindowShouldClose(window, GLFW_FALSE);
+    glfwHideWindow(window);
 }
 
 }  // namespace
@@ -56,13 +63,14 @@ void DevTools::render()
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
     // Create window with graphics context
-    GLFWwindow *window = glfwCreateWindow(100, 100, "Endstone - DevTools", nullptr, nullptr);
-    if (window == nullptr) {
+    gWindow = glfwCreateWindow(1280, 720, "Endstone - DevTools", nullptr, nullptr);
+    if (gWindow == nullptr) {
         gLogger.error("glfwCreateWindow failed!");
         return;
     }
 
-    glfwMakeContextCurrent(window);
+    glfwSetWindowCloseCallback(gWindow, onWindowClose);
+    glfwMakeContextCurrent(gWindow);
     glfwSwapInterval(1);  // Enable vsync
 
     if (glewInit() != GLEW_OK) {
@@ -76,7 +84,6 @@ void DevTools::render()
     ImGuiIO &io = ImGui::GetIO();
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
     // Load Fonts
     auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
@@ -87,10 +94,10 @@ void DevTools::render()
     ImGui::StyleColorsDark();
 
     // Setup Platform/Renderer backends
-    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplGlfw_InitForOpenGL(gWindow, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(gWindow)) {
         // Poll and handle events (inputs, window resize, etc.)
         glfwPollEvents();
 
@@ -99,25 +106,23 @@ void DevTools::render()
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        if (gShow) {
-            ImGui::ShowDemoWindow(&gShow);
-        }
+        // Set default position
+        const ImGuiViewport *viewport = ImGui::GetMainViewport();
+        ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + 650, viewport->WorkPos.y + 20), ImGuiCond_FirstUseEver);
+        ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
+
+        ImGui::ShowDemoWindow();
 
         // Rendering
         ImGui::Render();
-        int display_w, display_h;
-        glfwGetFramebufferSize(window, &display_w, &display_h);
+        int display_w;
+        int display_h;
+        glfwGetFramebufferSize(gWindow, &display_w, &display_h);
         glViewport(0, 0, display_w, display_h);
         glClearColor(0.1F, 0.1F, 0.1F, 1.0F);
         glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        glfwSwapBuffers(window);
-
-        // Update and Render additional Platform Windows
-        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
-            ImGui::UpdatePlatformWindows();
-            ImGui::RenderPlatformWindowsDefault();
-        }
+        glfwSwapBuffers(gWindow);
     }
 
     // Cleanup
@@ -125,18 +130,22 @@ void DevTools::render()
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 
-    glfwDestroyWindow(window);
+    glfwDestroyWindow(gWindow);
     glfwTerminate();
 }
 
 void DevTools::show()
 {
-    gShow = true;
+    if (gWindow) {
+        glfwShowWindow(gWindow);
+    }
 }
 
 void DevTools::hide()
 {
-    gShow = false;
+    if (gWindow) {
+        glfwHideWindow(gWindow);
+    }
 }
 
 }  // namespace endstone::detail
