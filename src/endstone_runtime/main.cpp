@@ -53,10 +53,11 @@ ENDSTONE_RUNTIME_CTOR int main()
         // Install hooks
         endstone::detail::hook::install();
 
+#ifndef ENDSTONE_DISABLE_DEVTOOLS
         // Create devtools window
         auto thread = std::thread(&endstone::detail::DevTools::render);
         thread.detach();
-
+#endif
         return 0;
     }
     catch (const std::exception &e) {
@@ -67,7 +68,7 @@ ENDSTONE_RUNTIME_CTOR int main()
 }
 
 #ifdef _WIN32
-#include <Windows.h>
+#include <windows.h>
 
 [[maybe_unused]] BOOL WINAPI DllMain(_In_ HINSTANCE /*module*/,  // handle to DLL module
                                      _In_ DWORD reason,          // reason for calling function

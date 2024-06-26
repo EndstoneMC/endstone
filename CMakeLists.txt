@@ -90,10 +90,12 @@ file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_cor
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
-        nonstd::expected-lite GLEW::GLEW glfw glm::glm imgui::imgui magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog
-        tomlplusplus::tomlplusplus)
-if (UNIX)
+        nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog tomlplusplus::tomlplusplus)
+if (WIN32)
+    target_link_libraries(endstone_core PUBLIC GLEW::GLEW glfw imgui::imgui)
+elseif (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
+    target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
 endif ()
 target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${ENDSTONE_VERSION}")
 

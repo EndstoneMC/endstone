@@ -34,10 +34,6 @@ class EndstoneRecipe(ConanFile):
         "capstone/*:tms320c64x": False,
         "capstone/*:m680x": False,
         "capstone/*:evm": False,
-        "glfw/*:with_x11": False,
-        "glfw/*:with_wayland": False,
-        "libglvnd/*:x11": False,
-        "libglvnd/*:glx": False,
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
@@ -115,15 +111,16 @@ class EndstoneRecipe(ConanFile):
         self.requires("expected-lite/0.6.3")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
-        self.requires("glew/2.2.0")
-        self.requires("glfw/3.4")
         self.requires("glm/1.0.1")
-        self.requires("imgui/1.90.8-docking")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
         self.requires("spdlog/1.12.0")
         self.requires("tomlplusplus/3.3.0")
+        if self.settings.os == "Windows":
+            self.requires("glew/2.2.0")
+            self.requires("glfw/3.4")
+            self.requires("imgui/1.90.8-docking")
         if self.settings.os == "Linux":
             self.requires("libelf/0.8.13")
 
@@ -170,15 +167,14 @@ class EndstoneRecipe(ConanFile):
             "concurrentqueue::concurrentqueue",
             # "entt::entt",
             "expected-lite::expected-lite",
-            "glew::glew",
-            "glfw::glfw",
             "glm::glm",
-            "imgui::imgui",
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",
             "tomlplusplus::tomlplusplus"
         ]
+        if self.settings.os == "Windows":
+            self.cpp_info.components["core"].requires.extend(["glew::glew", "glfw::glfw", "imgui::imgui"])
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
 
@@ -190,7 +186,7 @@ class EndstoneRecipe(ConanFile):
             "pybind11::pybind11",
             "cpptrace::cpptrace",
         ]
-        if self.settings.os == "Linux":
-            self.cpp_info.components["runtime"].requires.extend(["libelf::libelf"])
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])
+        if self.settings.os == "Linux":
+            self.cpp_info.components["runtime"].requires.extend(["libelf::libelf"])

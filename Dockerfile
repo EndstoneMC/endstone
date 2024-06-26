@@ -10,15 +10,13 @@ FROM base AS builder
 ARG LLVM_VERSION=15
 
 RUN apt-get update -y -qq \
-    && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg pkg-config libgl-dev libgl1-mesa-dev \
+    && apt-get install -y -qq build-essential lsb-release wget software-properties-common gnupg \
     && wget https://apt.llvm.org/llvm.sh \
     && chmod +x llvm.sh \
     && ./llvm.sh ${LLVM_VERSION} \
     && apt-get install -y -qq libc++-${LLVM_VERSION}-dev libc++abi-${LLVM_VERSION}-dev \
     && update-alternatives --install /usr/bin/cc cc /usr/bin/clang-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang++-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-${LLVM_VERSION} 100 \
-    && update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/llvm-cov llvm-cov /usr/bin/llvm-cov-${LLVM_VERSION} 100 \
     && update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-${LLVM_VERSION} 100
 

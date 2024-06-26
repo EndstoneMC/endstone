@@ -36,7 +36,11 @@ bool DebugCommand::execute(CommandSender &sender, const std::vector<std::string>
         return true;
     }
 
+#ifndef ENDSTONE_DISABLE_DEVTOOLS
     DevTools::show();
+#else
+    sender.sendErrorMessage("DevTools is disabled on this platform.");
+#endif
     return true;
 }
 

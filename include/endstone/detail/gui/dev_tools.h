@@ -14,6 +14,8 @@
 
 #pragma once
 
+#ifndef ENDSTONE_DISABLE_DEVTOOLS
+
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -26,7 +28,9 @@ public:
 private:
     static void showAboutWindow(bool *open);
     static void showBlockWindow(bool *open, EndstoneServer *server);
-    static void showCommandWindow(bool *open, EndstoneServer *server);
-    static void showItemWindow(bool *open, EndstoneServer *server);
+    // static void showCommandWindow(bool *open, EndstoneServer *server);
+    // static void showItemWindow(bool *open, EndstoneServer *server);
 };
 }  // namespace endstone::detail
+
+#endif

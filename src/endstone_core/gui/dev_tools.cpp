@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef ENDSTONE_DISABLE_DEVTOOLS
+
 #include "endstone/detail/gui/dev_tools.h"
 
 #include <imgui.h>
@@ -32,9 +34,7 @@
 #include "entt/locator/locator.hpp"
 
 namespace endstone::detail {
-
 namespace {
-
 auto &gLogger = endstone::detail::LoggerFactory::getLogger("EndstoneGUI");
 GLFWwindow *gWindow;
 
@@ -48,7 +48,6 @@ void onWindowClose(GLFWwindow *window)
     glfwSetWindowShouldClose(window, GLFW_FALSE);
     glfwHideWindow(window);
 }
-
 }  // namespace
 
 void DevTools::render()
@@ -266,5 +265,6 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server)
 
     ImGui::End();
 }
-
 }  // namespace endstone::detail
+
+#endif
