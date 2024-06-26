@@ -146,13 +146,6 @@ class EndstoneRecipe(ConanFile):
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
         tc.generate()
-        if self.settings.os == "Windows":
-            copy(
-                self,
-                "*",
-                os.path.join(self.dependencies["imgui"].package_folder, "res", "bindings"),
-                os.path.join(self.source_folder, "third_party", "imgui"),
-            )
 
     def build(self):
         cmake = CMake(self)

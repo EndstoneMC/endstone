@@ -113,7 +113,7 @@ void DevTools::render()
         if (x_scale != prev_scale) {
             prev_scale = x_scale;
             io.Fonts->Clear();
-            io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(13 * x_scale));
+            io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
             ImGui_ImplOpenGL3_DestroyFontsTexture();
             ImGui_ImplOpenGL3_CreateFontsTexture();
