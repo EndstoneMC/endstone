@@ -111,7 +111,10 @@ class EndstoneRecipe(ConanFile):
         self.requires("expected-lite/0.6.3")
         self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
-        self.requires("glm/cci.20230113")
+        self.requires("glew/2.2.0")
+        self.requires("glfw/3.4")
+        self.requires("glm/1.0.1")
+        self.requires("imgui/1.90.8-docking")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
         self.requires("pybind11/2.11.1")
@@ -163,7 +166,10 @@ class EndstoneRecipe(ConanFile):
             "concurrentqueue::concurrentqueue",
             # "entt::entt",
             "expected-lite::expected-lite",
+            "glew::glew",
+            "glfw::glfw",
             "glm::glm",
+            "imgui::imgui",
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",

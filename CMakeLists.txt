@@ -24,6 +24,7 @@ endif ()
 # ===================
 # compile definitions
 # ===================
+add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLEW)
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 add_compile_definitions(ENTT_SPARSE_PAGE=2048)
 add_compile_definitions(ENTT_PACKED_PAGE=128)
@@ -41,7 +42,10 @@ FetchContent_MakeAvailable(EnTT)
 find_package(expected-lite REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 find_package(funchook CONFIG REQUIRED)
+find_package(glew REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 find_package(glm CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(Microsoft.GSL CONFIG REQUIRED)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
@@ -86,7 +90,8 @@ file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_cor
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
-        nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog tomlplusplus::tomlplusplus)
+        nonstd::expected-lite GLEW::GLEW glfw glm::glm imgui::imgui magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog
+        tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
 endif ()
