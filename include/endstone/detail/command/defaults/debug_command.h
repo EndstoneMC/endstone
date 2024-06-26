@@ -14,11 +14,13 @@
 
 #pragma once
 
+#include "endstone/detail/command/endstone_command.h"
+
 namespace endstone::detail {
-class DevTools {
+class DebugCommand : public EndstoneCommand {
 public:
-    static void render();
-    static void show();
-    static void hide();
+    DebugCommand();
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
 };
+
 }  // namespace endstone::detail

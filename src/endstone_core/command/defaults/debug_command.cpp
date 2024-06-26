@@ -12,13 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/command/defaults/debug_command.h"
+
+#include "endstone/detail/gui/dev_tools.h"
 
 namespace endstone::detail {
-class DevTools {
-public:
-    static void render();
-    static void show();
-    static void hide();
-};
-}  // namespace endstone::detail
+
+DebugCommand::DebugCommand() : EndstoneCommand("debug")
+{
+    setDescription("Opens the DevTools window.");
+    setUsages("/debug");
+    setPermissions("endstone.command.debug");
+}
+
+bool DebugCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
+{
+    if (!testPermission(sender)) {
+        return true;
+    }
+
+    if (!sender.asConsole()) {
+        sender.sendErrorMessage("Only console can execute this command.");
+        return true;
+    }
+
+    DevTools::show();
+    return true;
+}
+
+};  // namespace endstone::detail

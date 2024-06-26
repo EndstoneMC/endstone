@@ -48,6 +48,8 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
     auto *root = registerPermission(parent->getName() + ".command", parent,
                                     "Gives the user the ability to use all Endstone command");
+    registerPermission(root->getName() + ".debug", root, "Allows the user to open the DevTools window.",
+                       PermissionDefault::Operator);
     registerPermission(root->getName() + ".plugins", root,
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
     registerPermission(root->getName() + ".version", root,  //

@@ -32,11 +32,13 @@ namespace endstone::detail {
 namespace {
 
 auto &gLogger = endstone::detail::LoggerFactory::getLogger("EndstoneGUI");
+bool gShow = false;
 
 void onError(int error, const char *description)
 {
     gLogger.error("GLFW Error {}: {}", error, description);
 }
+
 }  // namespace
 
 void DevTools::render()
@@ -77,9 +79,9 @@ void DevTools::render()
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
     // Load Fonts
-    const auto module_pathname = os::get_module_pathname();
-    auto font_path = std::filesystem::path{module_pathname}.parent_path() / "fonts" / "DroidSans.ttf";
-    io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), 13);
+    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
+    io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(13 * 1.5F));
+    ImGui::GetStyle().ScaleAllSizes(1.5F);
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -97,7 +99,9 @@ void DevTools::render()
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        ImGui::ShowDemoWindow();
+        if (gShow) {
+            ImGui::ShowDemoWindow(&gShow);
+        }
 
         // Rendering
         ImGui::Render();
@@ -124,4 +128,15 @@ void DevTools::render()
     glfwDestroyWindow(window);
     glfwTerminate();
 }
+
+void DevTools::show()
+{
+    gShow = true;
+}
+
+void DevTools::hide()
+{
+    gShow = false;
+}
+
 }  // namespace endstone::detail
