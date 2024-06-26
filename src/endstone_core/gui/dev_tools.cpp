@@ -17,6 +17,7 @@
 #include <imgui.h>
 
 #include <cstdio>
+#include <filesystem>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -24,6 +25,7 @@
 #include "endstone/detail/gui/imgui_impl_glfw.h"
 #include "endstone/detail/gui/imgui_impl_opengl3.h"
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/os.h"
 
 namespace endstone::detail {
 
@@ -39,7 +41,6 @@ void onError(int error, const char *description)
 
 void DevTools::render()
 {
-    gLogger.info("DevTools::render called once");
     glfwSetErrorCallback(onError);
     if (!glfwInit()) {
         gLogger.error("glfwInit failed!");
@@ -74,6 +75,11 @@ void DevTools::render()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+
+    // Load Fonts
+    const auto module_pathname = os::get_module_pathname();
+    auto font_path = std::filesystem::path{module_pathname}.parent_path() / "fonts" / "DroidSans.ttf";
+    io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), 13);
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
