@@ -9,7 +9,7 @@ AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeBraces: Stroustrup
 IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '^<[a-z_]+\.h>' # C system headers
+  - Regex: '^<[a-zA-Z0-9_]+\.h>' # C system headers
     Priority: 1
     SortPriority: 0
     CaseSensitive: false

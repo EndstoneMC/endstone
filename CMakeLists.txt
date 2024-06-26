@@ -87,12 +87,17 @@ install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT ends
 # endstone::core
 # ==============
 file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_core/*.cpp")
+if (WIN32)
+    list(APPEND ENDSTONE_CORE_SOURCE_FILES "third_party/imgui/imgui_impl_glfw.cpp")
+    list(APPEND ENDSTONE_CORE_SOURCE_FILES "third_party/imgui/imgui_impl_opengl3.cpp")
+endif ()
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
         nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL spdlog::spdlog tomlplusplus::tomlplusplus)
 if (WIN32)
     target_link_libraries(endstone_core PUBLIC GLEW::GLEW glfw imgui::imgui)
+    target_include_directories(endstone_core PUBLIC third_party/imgui)
 elseif (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)

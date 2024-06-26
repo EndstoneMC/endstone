@@ -1,6 +1,9 @@
+import os
+
 from conan import ConanFile
 from conan.tools.build import check_min_cppstd
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
+from conan.tools.files import copy
 from conan.tools.scm import Git
 from conans.errors import ConanInvalidConfiguration
 from conans.model.version import Version
@@ -143,6 +146,13 @@ class EndstoneRecipe(ConanFile):
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
         tc.generate()
+        if self.settings.os == "Windows":
+            copy(
+                self,
+                "*",
+                os.path.join(self.dependencies["imgui"].package_folder, "res", "bindings"),
+                os.path.join(self.source_folder, "third_party", "imgui"),
+            )
 
     def build(self):
         cmake = CMake(self)
@@ -171,7 +181,7 @@ class EndstoneRecipe(ConanFile):
             "magic_enum::magic_enum",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",
-            "tomlplusplus::tomlplusplus"
+            "tomlplusplus::tomlplusplus",
         ]
         if self.settings.os == "Windows":
             self.cpp_info.components["core"].requires.extend(["glew::glew", "glfw::glfw", "imgui::imgui"])

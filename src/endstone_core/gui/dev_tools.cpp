@@ -17,6 +17,8 @@
 #include "endstone/detail/gui/dev_tools.h"
 
 #include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
 #include <imgui_internal.h>
 
 #include <cstdio>
@@ -25,8 +27,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "endstone/detail/gui/imgui_impl_glfw.h"
-#include "endstone/detail/gui/imgui_impl_opengl3.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
