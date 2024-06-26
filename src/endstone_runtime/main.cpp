@@ -14,10 +14,12 @@
 
 #include <chrono>
 #include <exception>
+#include <thread>
 
 #include <pybind11/embed.h>
 #include <spdlog/spdlog.h>
 
+#include "endstone/detail/gui/dev_tools.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/logger_factory.h"
 
@@ -50,6 +52,11 @@ ENDSTONE_RUNTIME_CTOR int main()
 
         // Install hooks
         endstone::detail::hook::install();
+
+        // Create devtools window
+        auto thread = std::thread(&endstone::detail::DevTools::render);
+        thread.detach();
+
         return 0;
     }
     catch (const std::exception &e) {
