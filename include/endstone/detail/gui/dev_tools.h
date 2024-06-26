@@ -14,11 +14,19 @@
 
 #pragma once
 
+#include "endstone/detail/server.h"
+
 namespace endstone::detail {
 class DevTools {
 public:
     static void render();
     static void show();
     static void hide();
+
+private:
+    static void showAboutWindow(bool *open);
+    static void showBlockWindow(bool *open, EndstoneServer *server);
+    static void showCommandWindow(bool *open, EndstoneServer *server);
+    static void showItemWindow(bool *open, EndstoneServer *server);
 };
 }  // namespace endstone::detail

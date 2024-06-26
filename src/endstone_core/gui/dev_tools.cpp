@@ -25,8 +25,11 @@
 
 #include "endstone/detail/gui/imgui_impl_glfw.h"
 #include "endstone/detail/gui/imgui_impl_opengl3.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
+#include "endstone/detail/server.h"
+#include "entt/locator/locator.hpp"
 
 namespace endstone::detail {
 
@@ -60,7 +63,7 @@ void DevTools::render()
     const char *glsl_version = "#version 130";
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
-    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+    glfwWindowHint(GLFW_VISIBLE, GLFW_TRUE);
 
     // Create window with graphics context
     gWindow = glfwCreateWindow(1280, 720, "Endstone - DevTools", nullptr, nullptr);
@@ -85,11 +88,6 @@ void DevTools::render()
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-    // Load Fonts
-    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
-    io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(13 * 1.5F));
-    ImGui::GetStyle().ScaleAllSizes(1.5F);
-
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
 
@@ -97,21 +95,81 @@ void DevTools::render()
     ImGui_ImplGlfw_InitForOpenGL(gWindow, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
+    float prev_scale = 0.0F;
+    bool server_ready = false;
+    bool first_time = true;
+    bool show_about_window = true;
+    bool show_block_window = true;
+    bool show_demo_window = true;
+    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
+
     while (!glfwWindowShouldClose(gWindow)) {
         // Poll and handle events (inputs, window resize, etc.)
         glfwPollEvents();
+
+        // Handle DPI scaling
+        // https://github.com/ocornut/imgui/blob/master/docs/FAQ.md#q-how-should-i-handle-dpi-in-my-application
+        float x_scale, y_scale;
+        glfwGetWindowContentScale(gWindow, &x_scale, &y_scale);
+        if (x_scale != prev_scale) {
+            prev_scale = x_scale;
+            io.Fonts->Clear();
+            io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(13 * x_scale));
+            io.Fonts->Build();
+            ImGui_ImplOpenGL3_DestroyFontsTexture();
+            ImGui_ImplOpenGL3_CreateFontsTexture();
+            auto style = ImGuiStyle();
+            style.ScaleAllSizes(x_scale);
+        }
 
         // Start the Dear ImGui frame
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
-        // Set default position
-        const ImGuiViewport *viewport = ImGui::GetMainViewport();
-        ImGui::SetNextWindowPos(ImVec2(viewport->WorkPos.x + 650, viewport->WorkPos.y + 20), ImGuiCond_FirstUseEver);
-        ImGui::SetNextWindowSize(ImVec2(550, 680), ImGuiCond_FirstUseEver);
+        auto dockspace_id = ImGui::DockSpaceOverViewport();
+        if (ImGui::BeginMainMenuBar()) {
+            if (ImGui::BeginMenu("View")) {
+                ImGui::SeparatorText("Data");
+                ImGui::MenuItem("Blocks", nullptr, &show_block_window);
+                ImGui::MenuItem("Commands");
+                ImGui::MenuItem("Items");
+                ImGui::SeparatorText("Tools");
+                ImGui::MenuItem("ImGui Demo", nullptr, &show_demo_window);
+                ImGui::EndMenu();
+            }
+            if (ImGui::BeginMenu("Help")) {
+                if (ImGui::MenuItem("About")) {
+                    show_about_window = true;
+                }
+                ImGui::EndMenu();
+            }
+            ImGui::EndMainMenuBar();
+        }
 
-        ImGui::ShowDemoWindow();
+        if (first_time) {
+            first_time = false;
+            ImGui::DockBuilderDockWindow("About", dockspace_id);
+            ImGui::DockBuilderDockWindow("Blocks", dockspace_id);
+            ImGui::DockBuilderFinish(dockspace_id);
+        }
+
+        EndstoneServer *server = nullptr;
+        if (entt::locator<EndstoneServer>::has_value()) {
+            server = &entt::locator<EndstoneServer>::value();
+        }
+
+        if (show_about_window) {
+            showAboutWindow(&show_about_window);
+        }
+
+        if (show_block_window) {
+            showBlockWindow(&show_block_window, server);
+        }
+
+        if (show_demo_window) {
+            ImGui::ShowDemoWindow(&show_demo_window);
+        }
 
         // Rendering
         ImGui::Render();
@@ -146,6 +204,67 @@ void DevTools::hide()
     if (gWindow) {
         glfwHideWindow(gWindow);
     }
+}
+
+void DevTools::showAboutWindow(bool *open)
+{
+    if (!ImGui::Begin("About", open)) {
+        ImGui::End();
+        return;
+    }
+
+    ImGui::Text("Welcome to Endstone DevTools!");
+    ImGui::Separator();
+    ImGui::Text("By all Endstone contributors.");
+    ImGui::Text("Endstone is licensed under the Apache License, see LICENSE for more information.");
+    ImGui::Spacing();
+    ImGui::Text("Built with Dear ImGui %s (%d)", IMGUI_VERSION, IMGUI_VERSION_NUM);
+    ImGui::End();
+}
+
+void DevTools::showBlockWindow(bool *open, EndstoneServer *server)
+{
+    if (!ImGui::Begin("Blocks", open)) {
+        ImGui::End();
+        return;
+    }
+
+    if (!server) {
+        ImGui::Text("Wait for server to be ready...");
+        ImGui::End();
+        return;
+    }
+
+    if (server->getLevels().empty()) {
+        ImGui::Text("Wait for level to be loaded...");
+        ImGui::End();
+        return;
+    }
+
+    auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
+    ImGui::Text("Num of Blocks: %zu", palette.getNumBlockNetworkIds());
+
+    if (ImGui::TreeNode("Block Palette")) {
+        for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
+            const auto &block = palette.getBlock(i);
+
+            if (ImGui::TreeNode(std::to_string(i).c_str())) {
+                ImGui::Text("Name: %s", block.getSerializationId().get("name")->toString().c_str());
+                ImGui::Text("RuntimeId: %d", block.getRuntimeId());
+                if (ImGui::TreeNode("SerializationId")) {
+                    const auto &serialization_id = block.getSerializationId();
+                    for (const auto &[key, value] : serialization_id) {
+                        ImGui::Text("%s: %s", key.c_str(), value.get()->toString().c_str());
+                    }
+                    ImGui::TreePop();
+                }
+                ImGui::TreePop();
+            }
+        }
+        ImGui::TreePop();
+    }
+
+    ImGui::End();
 }
 
 }  // namespace endstone::detail

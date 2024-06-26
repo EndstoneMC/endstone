@@ -38,6 +38,10 @@
 class CompoundTagVariant;
 
 class CompoundTag : public Tag {
+    using map_type = std::map<std::string, CompoundTagVariant, std::less<>>;
+    using iterator = map_type::iterator;
+    using const_iterator = map_type::const_iterator;
+
 public:
     CompoundTag() = default;
     void write(IDataOutput &output) const override;
@@ -64,8 +68,28 @@ public:
     std::string &putString(std::string name, std::string value);
     CompoundTag &putCompound(std::string name, CompoundTag value);
 
+    iterator begin()
+    {
+        return tags_.begin();
+    }
+
+    iterator end()
+    {
+        return tags_.end();
+    }
+
+    const_iterator begin() const
+    {
+        return tags_.cbegin();
+    }
+
+    const_iterator end() const
+    {
+        return tags_.cend();
+    }
+
 private:
-    std::map<std::string, CompoundTagVariant, std::less<>> tags_;  // +8
+    map_type tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 

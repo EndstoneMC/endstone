@@ -19,6 +19,7 @@ Checks: >
   -modernize-avoid-c-arrays,
   -performance-enum-size,
   -readability-identifier-length,
+  -readability-isolate-declaration,
   -readability-function-cognitive-complexity,
   -readability-magic-numbers,
   -readability-named-parameter
