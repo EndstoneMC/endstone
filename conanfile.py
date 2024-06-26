@@ -34,6 +34,10 @@ class EndstoneRecipe(ConanFile):
         "capstone/*:tms320c64x": False,
         "capstone/*:m680x": False,
         "capstone/*:evm": False,
+        "glfw/*:with_x11": False,
+        "glfw/*:with_wayland": False,
+        "libglvnd/*:x11": False,
+        "libglvnd/*:glx": False,
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
