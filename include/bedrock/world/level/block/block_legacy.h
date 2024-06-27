@@ -20,11 +20,13 @@
 #include "bedrock/world/level/block/block_property.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/material/material.h"
+#include "bedrock/world/phys/aabb.h"
 
 using Brightness = std::uint8_t;
 using FacingID = std::uint8_t;
 using NewBlockID = std::uint16_t;
 
+class Actor;
 class Block;
 class BlockLegacy : public BlockComponentStorage {
     struct NameInfo {

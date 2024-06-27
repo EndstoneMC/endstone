@@ -391,7 +391,6 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             const auto &block = palette.getBlock(i);
             const auto &material = block.getMaterial();
             json.push_back({
-                {"name", block.getSerializationId().get("name")->toString().c_str()},
                 {"runtimeId", block.getRuntimeId()},
                 {"serializationId", toJson(block.getSerializationId())},
                 {"burnOdds", block.getBurnOdds()},
@@ -401,6 +400,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"explosionResistance", block.getExplosionResistance()},
                 {"friction", block.getFriction()},
                 {"destroySpeed", block.getDestroySpeed()},
+                {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
                 {"material",
                  {
                      {"type",
