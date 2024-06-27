@@ -117,6 +117,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
+        self.requires("nlohmann_json/3.11.3")
         self.requires("pybind11/2.11.1")
         self.requires("spdlog/1.12.0")
         self.requires("tomlplusplus/3.3.0")
@@ -172,6 +173,7 @@ class EndstoneRecipe(ConanFile):
             "expected-lite::expected-lite",
             "glm::glm",
             "magic_enum::magic_enum",
+            "nlohmann_json::nlohmann_json",
             "ms-gsl::ms-gsl",
             "spdlog::spdlog",
             "tomlplusplus::tomlplusplus",
