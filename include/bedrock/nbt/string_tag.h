@@ -23,23 +23,23 @@
 
 class StringTag : public Tag {
 public:
-    explicit StringTag(std::string data = "") : data_(std::move(data)) {}
+    explicit StringTag(std::string data = "") : data(std::move(data)) {}
     void write(IDataOutput &output) const override
     {
-        output.writeString(data_);
+        output.writeString(data);
     }
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readStringResult();
         if (result) {
-            data_ = result.value();
+            data = result.value();
             return {};
         }
         return nonstd::make_unexpected(result.error());
     }
     [[nodiscard]] std::string toString() const override
     {
-        return data_;
+        return data;
     }
     [[nodiscard]] Type getId() const override
     {
@@ -47,20 +47,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const StringTag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const StringTag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<StringTag>(data_);
+        return std::make_unique<StringTag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return std::hash<std::string>{}(data_);
+        return std::hash<std::string>{}(data);
     }
 
-private:
-    friend class CompoundTag;
-
-    std::string data_;
+    std::string data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(StringTag, 40, 32);

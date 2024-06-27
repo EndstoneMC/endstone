@@ -38,9 +38,9 @@
 class CompoundTagVariant;
 
 class CompoundTag : public Tag {
-    using map_type = std::map<std::string, CompoundTagVariant, std::less<>>;
-    using iterator = map_type::iterator;
-    using const_iterator = map_type::const_iterator;
+    using storage_type = std::map<std::string, CompoundTagVariant, std::less<>>;
+    using iterator = storage_type::iterator;
+    using const_iterator = storage_type::const_iterator;
 
 public:
     CompoundTag() = default;
@@ -78,18 +78,18 @@ public:
         return tags_.end();
     }
 
-    const_iterator begin() const
+    [[nodiscard]] const_iterator begin() const
     {
         return tags_.cbegin();
     }
 
-    const_iterator end() const
+    [[nodiscard]] const_iterator end() const
     {
         return tags_.cend();
     }
 
 private:
-    map_type tags_;  // +8
+    storage_type tags_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(CompoundTag, 24, 32);
 

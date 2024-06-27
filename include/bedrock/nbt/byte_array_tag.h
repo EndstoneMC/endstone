@@ -27,11 +27,11 @@
 
 class ByteArrayTag : public Tag {
 public:
-    explicit ByteArrayTag(std::vector<std::uint8_t> data = {}) : data_(std::move(data)) {}
+    explicit ByteArrayTag(std::vector<std::uint8_t> data = {}) : data(std::move(data)) {}
     void write(IDataOutput &output) const override
     {
-        output.writeInt(static_cast<std::int32_t>(data_.size()));
-        output.writeBytes(data_.data(), data_.size());
+        output.writeInt(static_cast<std::int32_t>(data.size()));
+        output.writeBytes(data.data(), data.size());
     }
     Bedrock::Result<void> load(IDataInput &input) override
     {
@@ -45,8 +45,8 @@ public:
                 Bedrock::ErrorInfo<std::error_code>{std::make_error_code(std::errc::bad_message)});
         }
 
-        data_.resize(size);
-        auto result2 = input.readBytesResult(data_.data(), size);
+        data.resize(size);
+        auto result2 = input.readBytesResult(data.data(), size);
         if (!result2) {
             return nonstd::make_unexpected(result2.error());
         }
@@ -54,7 +54,7 @@ public:
     }
     [[nodiscard]] std::string toString() const override
     {
-        return fmt::format("[{} bytes]", data_.size());
+        return fmt::format("[{} bytes]", data.size());
     }
     [[nodiscard]] Type getId() const override
     {
@@ -62,18 +62,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const ByteArrayTag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const ByteArrayTag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<ByteArrayTag>(data_);
+        return std::make_unique<ByteArrayTag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return boost::hash_range(data_.begin(), data_.end());
+        return boost::hash_range(data.begin(), data.end());
     }
 
-private:
-    std::vector<std::uint8_t> data_;
+    std::vector<std::uint8_t> data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ByteArrayTag, 32, 32);

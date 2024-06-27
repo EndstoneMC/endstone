@@ -21,23 +21,23 @@
 
 class ShortTag : public Tag {
 public:
-    explicit ShortTag(std::int16_t data = 0) : data_(data) {}
+    explicit ShortTag(std::int16_t data = 0) : data(data) {}
     void write(IDataOutput &output) const override
     {
-        output.writeShort(data_);
+        output.writeShort(data);
     }
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readShortResult();
         if (result) {
-            data_ = result.value();
+            data = result.value();
             return {};
         }
         return nonstd::make_unexpected(result.error());
     }
     [[nodiscard]] std::string toString() const override
     {
-        return std::to_string(data_);
+        return std::to_string(data);
     }
     [[nodiscard]] Type getId() const override
     {
@@ -45,19 +45,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const ShortTag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const ShortTag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<ShortTag>(data_);
+        return std::make_unique<ShortTag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return data_;
+        return data;
     }
 
-private:
-    friend class CompoundTag;
-    std::int16_t data_;
+    std::int16_t data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ShortTag, 16, 16);

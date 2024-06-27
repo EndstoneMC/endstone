@@ -21,23 +21,23 @@
 
 class Int64Tag : public Tag {
 public:
-    explicit Int64Tag(std::int64_t data = 0) : data_(data) {}
+    explicit Int64Tag(std::int64_t data = 0) : data(data) {}
     void write(IDataOutput &output) const override
     {
-        output.writeLongLong(data_);
+        output.writeLongLong(data);
     }
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readLongLongResult();
         if (result) {
-            data_ = result.value();
+            data = result.value();
             return {};
         }
         return nonstd::make_unexpected(result.error());
     }
     [[nodiscard]] std::string toString() const override
     {
-        return std::to_string(data_);
+        return std::to_string(data);
     }
     [[nodiscard]] Type getId() const override
     {
@@ -45,19 +45,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const Int64Tag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const Int64Tag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<Int64Tag>(data_);
+        return std::make_unique<Int64Tag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return data_;
+        return data;
     }
 
-private:
-    friend class CompoundTag;
-    std::int64_t data_;
+    std::int64_t data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Int64Tag, 16, 16);

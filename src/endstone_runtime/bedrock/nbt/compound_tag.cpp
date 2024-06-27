@@ -124,43 +124,43 @@ void CompoundTag::putBoolean(std::string name, bool value)
 std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
 {
     auto &tag = tags_[name].emplace(ByteTag(value));
-    return static_cast<ByteTag &>(tag).data_;
+    return static_cast<ByteTag &>(tag).data;
 }
 
 std::int16_t &CompoundTag::putShort(std::string name, std::int16_t value)
 {
     auto &tag = tags_[name].emplace(ShortTag(value));
-    return static_cast<ShortTag &>(tag).data_;
+    return static_cast<ShortTag &>(tag).data;
 }
 
 std::int32_t &CompoundTag::putInt(std::string name, std::int32_t value)
 {
     auto &tag = tags_[name].emplace(IntTag(value));
-    return static_cast<IntTag &>(tag).data_;
+    return static_cast<IntTag &>(tag).data;
 }
 
 std::int64_t &CompoundTag::putInt64(std::string name, std::int64_t value)
 {
     auto &tag = tags_[name].emplace(Int64Tag(value));
-    return static_cast<Int64Tag &>(tag).data_;
+    return static_cast<Int64Tag &>(tag).data;
 }
 
 float &CompoundTag::putFloat(std::string name, float value)
 {
     auto &tag = tags_[name].emplace(FloatTag(value));
-    return static_cast<FloatTag &>(tag).data_;
+    return static_cast<FloatTag &>(tag).data;
 }
 
 double &CompoundTag::putDouble(std::string name, double value)
 {
     auto &tag = tags_[name].emplace(DoubleTag(value));
-    return static_cast<DoubleTag &>(tag).data_;
+    return static_cast<DoubleTag &>(tag).data;
 }
 
 std::string &CompoundTag::putString(std::string name, std::string value)
 {
     auto &tag = tags_[name].emplace(StringTag(std::move(value)));
-    return static_cast<StringTag &>(tag).data_;
+    return static_cast<StringTag &>(tag).data;
 }
 
 CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)

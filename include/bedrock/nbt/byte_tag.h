@@ -21,23 +21,23 @@
 
 class ByteTag : public Tag {
 public:
-    explicit ByteTag(std::uint8_t data = 0) : data_(data) {}
+    explicit ByteTag(std::uint8_t data = 0) : data(data) {}
     void write(IDataOutput &output) const override
     {
-        output.writeByte(data_);
+        output.writeByte(data);
     }
     Bedrock::Result<void> load(IDataInput &input) override
     {
         auto result = input.readByteResult();
         if (result) {
-            data_ = result.value();
+            data = result.value();
             return {};
         }
         return nonstd::make_unexpected(result.error());
     }
     [[nodiscard]] std::string toString() const override
     {
-        return std::to_string(data_);
+        return std::to_string(data);
     }
     [[nodiscard]] Type getId() const override
     {
@@ -45,19 +45,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const ByteTag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const ByteTag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<ByteTag>(data_);
+        return std::make_unique<ByteTag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return data_;
+        return data;
     }
 
-private:
-    friend class CompoundTag;
-    std::uint8_t data_;
+    std::uint8_t data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ByteTag, 16, 16);

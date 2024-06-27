@@ -106,6 +106,14 @@ public:
         stream.print(string);
         stream.print("}\n");
     }
+    [[nodiscard]] std::size_t size() const
+    {
+        return data_.size();
+    }
+    [[nodiscard]] Tag *get(std::size_t index) const
+    {
+        return data_[index].get();
+    }
 
 private:
     std::vector<std::unique_ptr<Tag>> data_;  // +8

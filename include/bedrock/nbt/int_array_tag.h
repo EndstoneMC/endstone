@@ -22,11 +22,11 @@
 
 class IntArrayTag : public Tag {
 public:
-    explicit IntArrayTag(std::vector<std::int32_t> data = {}) : data_(std::move(data)) {}
+    explicit IntArrayTag(std::vector<std::int32_t> data = {}) : data(std::move(data)) {}
     void write(IDataOutput &output) const override
     {
-        output.writeInt(static_cast<std::int32_t>(data_.size()));
-        for (int i : data_) {
+        output.writeInt(static_cast<std::int32_t>(data.size()));
+        for (int i : data) {
             output.writeInt(i);
         }
     }
@@ -38,20 +38,20 @@ public:
         }
 
         auto size = result.value();
-        data_.clear();
-        data_.reserve(size);
+        data.clear();
+        data.reserve(size);
         for (int i = 0; i < size; ++i) {
             auto result2 = input.readIntResult();
             if (!result2) {
                 return nonstd::make_unexpected(result2.error());
             }
-            data_.push_back(result2.value());
+            data.push_back(result2.value());
         }
         return {};
     }
     [[nodiscard]] std::string toString() const override
     {
-        return fmt::format("[{} ints]", data_.size());
+        return fmt::format("[{} ints]", data.size());
     }
     [[nodiscard]] Type getId() const override
     {
@@ -59,18 +59,17 @@ public:
     }
     [[nodiscard]] bool equals(const Tag &other) const override
     {
-        return Tag::equals(other) && data_ == static_cast<const IntArrayTag &>(other).data_;
+        return Tag::equals(other) && data == static_cast<const IntArrayTag &>(other).data;
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        return std::make_unique<IntArrayTag>(data_);
+        return std::make_unique<IntArrayTag>(data);
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
-        return boost::hash_range(data_.begin(), data_.end());
+        return boost::hash_range(data.begin(), data.end());
     }
 
-private:
-    std::vector<std::int32_t> data_;
+    std::vector<std::int32_t> data;
 };
 BEDROCK_STATIC_ASSERT_SIZE(IntArrayTag, 32, 32);
