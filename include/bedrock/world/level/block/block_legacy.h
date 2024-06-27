@@ -17,11 +17,15 @@
 #include "bedrock/core/math/color.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/level/block/block_component_storage.h"
+#include "bedrock/world/level/block/block_property.h"
+#include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/material/material.h"
 
 using Brightness = std::uint8_t;
+using FacingID = std::uint8_t;
 using NewBlockID = std::uint16_t;
 
+class Block;
 class BlockLegacy : public BlockComponentStorage {
     struct NameInfo {
         HashedString raw_name;             // +0
@@ -31,6 +35,77 @@ class BlockLegacy : public BlockComponentStorage {
     };
 
 public:
+    ~BlockLegacy() override = 0;
+    [[nodiscard]] virtual std::shared_ptr<BlockActor> newBlockEntity(BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual Block const *getNextBlockPermutation(Block const &) const = 0;
+    [[nodiscard]] virtual bool hasTag(BlockSource &, BlockPos const &, Block const &, std::string const &) const = 0;
+    [[nodiscard]] virtual HitResult clip(Block const &, BlockSource const &, BlockPos const &, Vec3 const &,
+                                         Vec3 const &, ShapeType,
+                                         optional_ref<GetCollisionShapeInterface const>) const = 0;
+    [[nodiscard]] virtual AABB getCollisionShape(Block const &, IConstBlockSource const &, BlockPos const &,
+                                                 optional_ref<GetCollisionShapeInterface const>) const = 0;
+    [[nodiscard]] virtual bool getCollisionShapeForCamera(AABB &, Block const &, IConstBlockSource const &,
+                                                          BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool addCollisionShapes(Block const &, IConstBlockSource const &, BlockPos const &,
+                                                  AABB const *, std::vector<AABB> &,
+                                                  optional_ref<GetCollisionShapeInterface const>) = 0;
+    virtual void addAABBs(Block const &, IConstBlockSource const &, BlockPos const &, AABB const *,
+                          std::vector<AABB> &) const = 0;
+    [[nodiscard]] virtual AABB const &getOutline(Block const &, IConstBlockSource const &, BlockPos const &,
+                                                 AABB &) const = 0;
+    [[nodiscard]] virtual AABB const &getVisualShapeInWorld(Block const &, IConstBlockSource const &, BlockPos const &,
+                                                            AABB &) const = 0;
+    [[nodiscard]] virtual AABB const &getVisualShape(Block const &, AABB &) const = 0;
+    [[nodiscard]] virtual AABB const &getUIShape(Block const &, AABB &) const = 0;
+    [[nodiscard]] virtual bool getLiquidClipVolume(Block const &, BlockSource &, BlockPos const &, AABB &) const = 0;
+    [[nodiscard]] virtual bool isObstructingChests(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual Vec3 randomlyModifyPosition(BlockPos const &, int &) const = 0;
+    [[nodiscard]] virtual Vec3 randomlyModifyPosition(BlockPos const &) const = 0;
+    virtual void onProjectileHit(BlockSource &, BlockPos const &, Actor const &) const = 0;
+    virtual void onLightningHit(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool liquidCanFlowIntoFromDirection(FacingID,
+                                                              std::function<Block const &(BlockPos const &)> const &,
+                                                              BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool hasVariableLighting() const = 0;
+    [[nodiscard]] virtual bool isStrippable(Block const &) const = 0;
+    [[nodiscard]] virtual Block const &getStrippedBlock(Block const &) const = 0;
+    [[nodiscard]] virtual bool canProvideSupport(Block const &, FacingID, BlockSupportType type) const = 0;
+    [[nodiscard]] virtual bool canProvideMultifaceSupport(Block const &, FacingID) const = 0;
+    [[nodiscard]] virtual bool canConnect(Block const &, FacingID, Block const &) const = 0;
+    [[nodiscard]] virtual bool isMovingBlock() const = 0;
+    [[nodiscard]] virtual CopperBehavior const *tryGetCopperBehavior() const = 0;
+    [[nodiscard]] virtual bool canDamperVibrations() const = 0;
+    [[nodiscard]] virtual bool canOccludeVibrations() const = 0;
+    [[nodiscard]] virtual bool isStemBlock() const = 0;
+    [[nodiscard]] virtual bool isContainerBlock() const = 0;
+    [[nodiscard]] virtual bool isCraftingBlock() const = 0;
+    [[nodiscard]] virtual bool isWaterBlocking() const = 0;
+    [[nodiscard]] virtual bool isFenceBlock() const = 0;
+    [[nodiscard]] virtual bool isFenceGateBlock() const = 0;
+    [[nodiscard]] virtual bool isThinFenceBlock() const = 0;
+    [[nodiscard]] virtual bool isWallBlock() const = 0;
+    [[nodiscard]] virtual bool isStairBlock() const = 0;
+    [[nodiscard]] virtual bool isSlabBlock() const = 0;
+    [[nodiscard]] virtual bool isDoubleSlabBlock() const = 0;
+    [[nodiscard]] virtual bool isDoorBlock() const = 0;
+    [[nodiscard]] virtual bool isRailBlock() const = 0;
+    [[nodiscard]] virtual bool isButtonBlock() const = 0;
+    [[nodiscard]] virtual bool isLeverBlock() const = 0;
+    [[nodiscard]] virtual bool isCandleCakeBlock() const = 0;
+    [[nodiscard]] virtual bool isMultifaceBlock() const = 0;
+    [[nodiscard]] virtual bool isSignalSource() const = 0;
+    [[nodiscard]] virtual bool canBeOriginalSurface() const = 0;
+    [[nodiscard]] virtual bool isSilentWhenJumpingOff() const = 0;
+    [[nodiscard]] virtual bool isValidAuxValue(int) const = 0;
+    [[nodiscard]] virtual bool canFillAtPos(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual Block const &sanitizeFillBlock(Block const &) const = 0;
+    virtual void onFillBlock(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual int getDirectSignal(BlockSource &, BlockPos const &, int dir) const = 0;
+    [[nodiscard]] virtual bool canBeDestroyedByWaterSpread() const = 0;
+    [[nodiscard]] virtual bool waterSpreadCausesSpawn() const = 0;
+    [[nodiscard]] virtual bool canContainLiquid() const = 0;
+    // ...
+
     [[nodiscard]] float getThickness() const
     {
         return thickness_;

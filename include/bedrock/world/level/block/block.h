@@ -84,6 +84,11 @@ public:
         return legacy_block_->getThickness();
     }
 
+    [[nodiscard]] const BlockLegacy &getLegacyBlock() const
+    {
+        return *legacy_block_;
+    }
+
 private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
