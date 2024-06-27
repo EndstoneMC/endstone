@@ -28,6 +28,7 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
 #include "endstone/detail/level/level.h"
@@ -388,6 +389,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
+            const auto &material = block.getMaterial();
             json.push_back({
                 {"name", block.getSerializationId().get("name")->toString().c_str()},
                 {"runtimeId", block.getRuntimeId()},
@@ -399,15 +401,31 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"explosionResistance", block.getExplosionResistance()},
                 {"friction", block.getFriction()},
                 {"destroySpeed", block.getDestroySpeed()},
+                {"material",
+                 {
+                     {"type",
+                      {
+                          {"id", material.getType()},
+                          {"name", magic_enum::enum_name(material.getType())},
+                      }},
+                     {"isNeverBuildable", material.isNeverBuildable()},
+                     {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
+                     {"isReplaceable", material.isReplaceable()},
+                     {"isLiquid", material.isLiquid()},
+                     {"translucency", material.getTranslucency()},
+                     {"blocksMotion", material.getBlocksMotion()},
+                     {"blocksPrecipitation", material.getBlocksPrecipitation()},
+                     {"isSolid", material.isSolid()},
+                     {"isSuperHot", material.isSuperHot()},
+                 }},
             });
         }
     }
 
     ImGui::Text("Num of Blocks: %zu", json.size());
-    if (ImGui::TreeNode("Block Palette")) {
-        ImGui::Json(json);
-        ImGui::TreePop();
-    }
+    ImGui::BeginChild("Blocks");
+    ImGui::Json(json);
+    ImGui::EndChild();
     ImGui::End();
 }
 
