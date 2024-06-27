@@ -89,6 +89,13 @@ public:
         return *legacy_block_;
     }
 
+    bool getCollisionShape(AABB &outAABB, IConstBlockSource const &region, BlockPos const &pos,
+                           optional_ref<GetCollisionShapeInterface const> entity) const
+    {
+        outAABB = legacy_block_->getCollisionShape(*this, region, pos, entity);
+        return outAABB.min.x < outAABB.max.x && outAABB.min.y < outAABB.max.y && outAABB.min.z < outAABB.max.z;
+    }
+
 private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)

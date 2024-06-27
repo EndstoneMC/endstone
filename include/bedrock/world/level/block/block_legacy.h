@@ -19,6 +19,8 @@
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_property.h"
 #include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/block_source.h"
+#include "bedrock/world/level/block_source_interface.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 

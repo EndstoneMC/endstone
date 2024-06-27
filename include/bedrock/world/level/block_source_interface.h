@@ -12,19 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+class IConstBlockSource {
+public:
+    virtual ~IConstBlockSource() = 0;
+};
 
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+class IBlockSource : public IConstBlockSource {
+public:
+    ~IBlockSource() override = 0;
+};

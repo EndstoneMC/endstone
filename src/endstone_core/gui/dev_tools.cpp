@@ -31,6 +31,7 @@
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
+#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
@@ -60,7 +61,7 @@ void Json(const nlohmann::json &json)  // NOLINT(*-no-recursion)
         for (const auto &el : json) {
             auto key = std::to_string(index);
             if (el.is_primitive()) {
-                ImGui::Text("%s: %s", key.c_str(), json.dump().c_str());
+                ImGui::Text("%s: %s", key.c_str(), el.dump().c_str());
             }
             else if (ImGui::TreeNode(key.c_str())) {
                 ImGui::Json(el);
@@ -386,10 +387,16 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             return;
         }
 
-        auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
+        auto &level = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle();
+        auto overworld = level.getDimension(VanillaDimensions::Overworld);
+        auto &palette = level.getBlockPalette();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
             const auto &material = block.getMaterial();
+            AABB collision_shape = {0};
+            block.getCollisionShape(collision_shape, overworld->getBlockSourceFromMainChunkSource(), BlockPos(0, 0, 0),
+                                    {});
+
             json.push_back({
                 {"runtimeId", block.getRuntimeId()},
                 {"serializationId", toJson(block.getSerializationId())},
@@ -417,6 +424,15 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                      {"blocksPrecipitation", material.getBlocksPrecipitation()},
                      {"isSolid", material.isSolid()},
                      {"isSuperHot", material.isSuperHot()},
+                 }},
+                {"collisionShape",
+                 {
+                     collision_shape.min.x,
+                     collision_shape.min.y,
+                     collision_shape.min.z,
+                     collision_shape.max.x,
+                     collision_shape.max.y,
+                     collision_shape.max.z,
                  }},
             });
         }
