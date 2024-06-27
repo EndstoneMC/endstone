@@ -17,12 +17,14 @@
 #include "endstone/detail/gui/dev_tools.h"
 
 #include <imgui.h>
+#include <imgui_file_browser.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
 #include <imgui_internal.h>
 
 #include <cstdio>
 #include <filesystem>
+#include <fstream>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -33,6 +35,8 @@
 #include "endstone/detail/os.h"
 #include "endstone/detail/server.h"
 #include "entt/locator/locator.hpp"
+
+namespace fs = std::filesystem;
 
 namespace ImGui {
 void Json(const nlohmann::json &json)  // NOLINT(*-no-recursion)
@@ -141,8 +145,11 @@ void DevTools::render()
     bool show_about_window = true;
     bool show_block_window = true;
     bool show_demo_window = true;
-    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
+    auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
     nlohmann::json blocks;
+    nlohmann::json *json_to_save = nullptr;
+
+    ImGui::FileBrowser save_dialog(ImGuiFileBrowserFlags_EnterNewFilename | ImGuiFileBrowserFlags_CreateNewDir);
 
     while (!glfwWindowShouldClose(gWindow)) {
         // Poll and handle events (inputs, window resize, etc.)
@@ -171,6 +178,14 @@ void DevTools::render()
         auto dockspace_id = ImGui::DockSpaceOverViewport();
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
+                ImGui::SeparatorText("Export");
+                if (ImGui::MenuItem("Save Blocks", nullptr, false, !blocks.empty())) {
+                    json_to_save = &blocks;
+                    save_dialog.SetTitle("Save Blocks");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.SetInputName("blocks.json");
+                    save_dialog.Open();
+                }
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("View")) {
@@ -214,6 +229,20 @@ void DevTools::render()
 
         if (show_demo_window) {
             ImGui::ShowDemoWindow(&show_demo_window);
+        }
+
+        save_dialog.Display();
+        if (save_dialog.HasSelected()) {
+            auto path = save_dialog.GetSelected();
+            if (json_to_save && !json_to_save->empty()) {
+                std::ofstream file(path);
+                file << *json_to_save;
+            }
+            else {
+                gLogger.error("Unable to save json to {}: Empty json.", path.string());
+            }
+            json_to_save = nullptr;
+            save_dialog.ClearSelected();
         }
 
         // Rendering
@@ -313,6 +342,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
 
     ImGui::End();
 }
+
 }  // namespace endstone::detail
 
 #endif

@@ -14,22 +14,20 @@
 
 #pragma once
 
-#include "bedrock/world/level/block/components/block_property_component.h"
-
 struct CachedComponentData {
     Brightness emissive_brightness;     // +0
     bool is_solid;                      // +1
     BlockOcclusionType occlusion_type;  // +4
-    char pad[40];
-    bool is_full_block_geometry;     // +48
-    bool use_new_tessellation;       // +49
-    bool needs_legacy_top_rotation;  // +50
-    bool is_opaque_full_block;       // +51
-    Brightness light_emission;       // +52
-    Brightness light;                // +53
-    float explosion_resistance;      // +56
-    BurnOdds burn_odds;              // +60
-    FlameOdds flame_odds;            // +64
-    float friction;                  // +68
-    float destroy_speed;             // +72
+    char pad[40];                       // +8
+    bool is_full_block_geometry;        // +48
+    bool use_new_tessellation;          // +49
+    bool needs_legacy_top_rotation;     // +50
+    bool is_opaque_full_block;          // +51
+    Brightness light_emission;          // +52
+    Brightness light;                   // +53
+    float explosion_resistance;         // +56
+    BurnOdds burn_odds;                 // +60
+    FlameOdds flame_odds;               // +64
+    float friction;                     // +68
+    float destroy_speed;                // +72
 };
