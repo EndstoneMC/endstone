@@ -372,19 +372,19 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         return;
     }
 
-    if (!server) {
-        ImGui::Text("Wait for server to be ready...");
-        ImGui::End();
-        return;
-    }
-
-    if (server->getLevels().empty()) {
-        ImGui::Text("Wait for level to be loaded...");
-        ImGui::End();
-        return;
-    }
-
     if (json.empty()) {
+        if (!server) {
+            ImGui::Text("Wait for server to be ready...");
+            ImGui::End();
+            return;
+        }
+
+        if (server->getLevels().empty()) {
+            ImGui::Text("Wait for level to be loaded...");
+            ImGui::End();
+            return;
+        }
+
         auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
@@ -404,12 +404,10 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     }
 
     ImGui::Text("Num of Blocks: %zu", json.size());
-
     if (ImGui::TreeNode("Block Palette")) {
         ImGui::Json(json);
         ImGui::TreePop();
     }
-
     ImGui::End();
 }
 
