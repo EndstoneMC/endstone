@@ -141,7 +141,7 @@ void DevTools::render()
     bool show_about_window = true;
     bool show_block_window = true;
     bool show_demo_window = true;
-    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
+    auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
     nlohmann::json blocks;
 
     while (!glfwWindowShouldClose(gWindow)) {
@@ -293,6 +293,13 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             json.push_back({
                 {"name", block.getSerializationId().get("name")->toString().c_str()},
                 {"runtimeId", block.getRuntimeId()},
+                {"burnOdds", block.getBurnOdds()},
+                {"flameOdds", block.getFlameOdds()},
+                {"light", block.getLight()},
+                {"lightEmission", block.getLightEmission()},
+                {"explosionResistance", block.getExplosionResistance()},
+                {"friction", block.getFriction()},
+                {"destroySpeed", block.getDestroySpeed()},
             });
         }
     }
