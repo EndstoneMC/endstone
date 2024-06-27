@@ -26,12 +26,52 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <nlohmann/json.hpp>
 
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
 #include "endstone/detail/server.h"
 #include "entt/locator/locator.hpp"
+
+namespace ImGui {
+void Json(const nlohmann::json &json)  // NOLINT(*-no-recursion)
+{
+    switch (json.type()) {
+    case nlohmann::json::value_t::object: {
+        for (const auto &el : json.items()) {
+            if (el.value().is_primitive()) {
+                ImGui::Text("%s: %s", el.key().c_str(), el.value().dump().c_str());
+            }
+            else if (ImGui::TreeNode(el.key().c_str())) {
+                ImGui::Json(el.value());
+                ImGui::TreePop();
+            }
+        }
+        break;
+    }
+    case nlohmann::json::value_t::array: {
+        int index = 0;
+        for (const auto &el : json) {
+            auto key = std::to_string(index);
+            if (el.is_primitive()) {
+                ImGui::Text("%s: %s", key.c_str(), json.dump().c_str());
+            }
+            else if (ImGui::TreeNode(key.c_str())) {
+                ImGui::Json(el);
+                ImGui::TreePop();
+            }
+            ++index;
+        }
+        break;
+    }
+    default: {
+        ImGui::Text("%s", json.dump().c_str());
+        break;
+    }
+    }
+}
+}  // namespace ImGui
 
 namespace endstone::detail {
 namespace {
@@ -48,6 +88,7 @@ void onWindowClose(GLFWwindow *window)
     glfwSetWindowShouldClose(window, GLFW_FALSE);
     glfwHideWindow(window);
 }
+
 }  // namespace
 
 void DevTools::render()
@@ -101,6 +142,7 @@ void DevTools::render()
     bool show_block_window = true;
     bool show_demo_window = true;
     auto font_path = std::filesystem::path{os::get_module_pathname()}.parent_path() / "fonts" / "DroidSans.ttf";
+    nlohmann::json blocks;
 
     while (!glfwWindowShouldClose(gWindow)) {
         // Poll and handle events (inputs, window resize, etc.)
@@ -128,8 +170,12 @@ void DevTools::render()
 
         auto dockspace_id = ImGui::DockSpaceOverViewport();
         if (ImGui::BeginMainMenuBar()) {
+            if (ImGui::BeginMenu("File")) {
+                ImGui::EndMenu();
+            }
             if (ImGui::BeginMenu("View")) {
                 ImGui::SeparatorText("Data");
+                ImGui::MenuItem("Biomes");
                 ImGui::MenuItem("Blocks", nullptr, &show_block_window);
                 ImGui::MenuItem("Commands");
                 ImGui::MenuItem("Items");
@@ -163,7 +209,7 @@ void DevTools::render()
         }
 
         if (show_block_window) {
-            showBlockWindow(&show_block_window, server);
+            showBlockWindow(&show_block_window, server, blocks);
         }
 
         if (show_demo_window) {
@@ -221,7 +267,7 @@ void DevTools::showAboutWindow(bool *open)
     ImGui::End();
 }
 
-void DevTools::showBlockWindow(bool *open, EndstoneServer *server)
+void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &json)
 {
     if (!ImGui::Begin("Blocks", open)) {
         ImGui::End();
@@ -240,26 +286,21 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server)
         return;
     }
 
-    auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
-    ImGui::Text("Num of Blocks: %zu", palette.getNumBlockNetworkIds());
-
-    if (ImGui::TreeNode("Block Palette")) {
+    if (json.empty()) {
+        auto &palette = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle().getBlockPalette();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
-
-            if (ImGui::TreeNode(std::to_string(i).c_str())) {
-                ImGui::Text("Name: %s", block.getSerializationId().get("name")->toString().c_str());
-                ImGui::Text("RuntimeId: %d", block.getRuntimeId());
-                if (ImGui::TreeNode("SerializationId")) {
-                    const auto &serialization_id = block.getSerializationId();
-                    for (const auto &[key, value] : serialization_id) {
-                        ImGui::Text("%s: %s", key.c_str(), value.get()->toString().c_str());
-                    }
-                    ImGui::TreePop();
-                }
-                ImGui::TreePop();
-            }
+            json.push_back({
+                {"name", block.getSerializationId().get("name")->toString().c_str()},
+                {"runtimeId", block.getRuntimeId()},
+            });
         }
+    }
+
+    ImGui::Text("Num of Blocks: %zu", json.size());
+
+    if (ImGui::TreeNode("Block Palette")) {
+        ImGui::Json(json);
         ImGui::TreePop();
     }
 

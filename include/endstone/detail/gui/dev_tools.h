@@ -16,6 +16,8 @@
 
 #ifndef ENDSTONE_DISABLE_DEVTOOLS
 
+#include <nlohmann/json.hpp>
+
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -27,7 +29,7 @@ public:
 
 private:
     static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server);
+    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json_abi_v3_11_3::basic_json<> &json);
     // static void showCommandWindow(bool *open, EndstoneServer *server);
     // static void showItemWindow(bool *open, EndstoneServer *server);
 };
