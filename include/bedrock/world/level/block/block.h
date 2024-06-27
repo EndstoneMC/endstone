@@ -22,6 +22,7 @@
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/block/cached_component_data.h"
 
 using DataID = std::uint16_t;
 using BlockRuntimeId = std::uint32_t;
@@ -38,10 +39,50 @@ public:
         return runtime_id_;
     }
 
+    [[nodiscard]] BurnOdds getBurnOdds() const
+    {
+        return cached_component_data_.burn_odds;
+    }
+
+    [[nodiscard]] float getDestroySpeed() const
+    {
+        return cached_component_data_.destroy_speed;
+    }
+
+    [[nodiscard]] float getExplosionResistance() const
+    {
+        return cached_component_data_.explosion_resistance;
+    }
+
+    [[nodiscard]] FlameOdds getFlameOdds() const
+    {
+        return cached_component_data_.flame_odds;
+    }
+
+    [[nodiscard]] float getFriction() const
+    {
+        return cached_component_data_.friction;
+    }
+
+    [[nodiscard]] Brightness getLight() const
+    {
+        return cached_component_data_.light;
+    }
+
+    [[nodiscard]] Brightness getLightEmission() const
+    {
+        return cached_component_data_.light_emission;
+    }
+
+    [[nodiscard]] float getThickness() const
+    {
+        return legacy_block_->getThickness();
+    }
+
 private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
-    char cached_component_data_[80];                       // +56 (+48)
+    CachedComponentData cached_component_data_;            // +56 (+48)
     std::vector<HashedString> tags_;                       // +136 (+128)
     CompoundTag serialization_id_;                         // +160 (+152)
     std::size_t serialization_id_hash_;                    // +184

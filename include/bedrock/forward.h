@@ -172,6 +172,7 @@ enum class ArmorSlot;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
 enum class BlockActorType;
+enum class BlockOcclusionType;
 enum class BlockProperty : std::uint64_t;
 enum class BlockRenderLayer;
 enum class BlockTintType;

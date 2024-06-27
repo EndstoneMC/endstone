@@ -30,6 +30,11 @@ class BlockLegacy : public BlockComponentStorage {
     };
 
 public:
+    [[nodiscard]] float getThickness() const
+    {
+        return thickness_;
+    }
+
 private:
     std::string description_id_;                    // +40
     NameInfo name_info_;                            // +72
