@@ -108,7 +108,6 @@ class Localization;
 class LootTables;
 class MapDataManager;
 class MapItemSavedData;
-class Material;
 class MaterialTypeHelper;
 class MobEffectInstance;
 class MolangVariableMap;

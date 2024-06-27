@@ -17,6 +17,7 @@
 #include "bedrock/core/math/color.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/level/block/block_component_storage.h"
+#include "bedrock/world/level/material/material.h"
 
 using Brightness = std::uint8_t;
 using NewBlockID = std::uint16_t;
@@ -33,6 +34,11 @@ public:
     [[nodiscard]] float getThickness() const
     {
         return thickness_;
+    }
+
+    [[nodiscard]] const Material &getMaterial() const
+    {
+        return *material_;
     }
 
 private:

@@ -74,6 +74,11 @@ public:
         return cached_component_data_.light_emission;
     }
 
+    [[nodiscard]] const Material &getMaterial() const
+    {
+        return legacy_block_->getMaterial();
+    }
+
     [[nodiscard]] float getThickness() const
     {
         return legacy_block_->getThickness();
