@@ -59,7 +59,7 @@ public:
 
     virtual void sendMessage(const std::string &message) const = 0;
 
-    virtual void sendMessage(const Translatable& message) const =0;
+    virtual void sendMessage(const Translatable &message) const = 0;
 
     template <typename... Args>
     void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const
@@ -69,7 +69,7 @@ public:
 
     virtual void sendErrorMessage(const std::string &message) const = 0;
 
-    virtual void sendErrorMessage(const Translatable& message) const = 0;
+    virtual void sendErrorMessage(const Translatable &message) const = 0;
 
     template <typename... Args>
     void sendErrorMessage(const fmt::format_string<Args...> format, Args &&...args) const
