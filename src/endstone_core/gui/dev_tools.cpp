@@ -342,6 +342,10 @@ void DevTools::render()
             showBlockWindow(&show_block_window, server, block_types, block_states, block_tags, materials);
         }
 
+        if (show_item_window) {
+            showItemWindow(&show_item_window, server);
+        }
+
         ImGui::ShowDemoWindow();
 
         save_dialog.Display();
@@ -439,8 +443,9 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             const auto &name = block_legacy.getFullNameId();
 
             const auto &material = block_legacy.getMaterial();
-            materials[std::to_string(static_cast<int>(material.getType()))] = {
-                {"name", magic_enum::enum_name(material.getType())},
+            auto material_name = magic_enum::enum_name(material.getType());
+            materials[material_name] = {
+                {"type", material.getType()},
                 {"isNeverBuildable", material.isNeverBuildable()},
                 {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
                 {"isReplaceable", material.isReplaceable()},
@@ -522,7 +527,17 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     ImGui::End();
 }
 
-void DevTools::showItemWindow(bool *open, EndstoneServer *server) {}
+void DevTools::showItemWindow(bool *open, EndstoneServer *server)
+{
+    if (!ImGui::Begin("Items", open)) {
+        ImGui::End();
+        return;
+    }
+
+    // TODO:
+    ImGui::Text("TODO: item data will be displayed here.");
+    ImGui::End();
+}
 
 }  // namespace endstone::detail
 
