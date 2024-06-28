@@ -22,6 +22,7 @@
 #include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/item/item.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/tick.h"

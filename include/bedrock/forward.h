@@ -95,7 +95,6 @@ class IUnknownBlockTypeRegistry;
 class InputMode;
 class InternalComponentRegistry;
 class InventoryTransaction;
-class Item;
 class ItemComponentPacket;
 class ItemData;
 class ItemInstance;

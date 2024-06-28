@@ -239,6 +239,7 @@ void DevTools::render()
     nlohmann::json block_states;
     nlohmann::json block_tags;
     nlohmann::json materials;
+    nlohmann::json items;
     nlohmann::json *json_to_save = nullptr;
 
     ImGui::FileBrowser save_dialog(ImGuiFileBrowserFlags_EnterNewFilename | ImGuiFileBrowserFlags_CreateNewDir);
@@ -343,7 +344,7 @@ void DevTools::render()
         }
 
         if (show_item_window) {
-            showItemWindow(&show_item_window, server);
+            showItemWindow(&show_item_window, server, items);
         }
 
         ImGui::ShowDemoWindow();
@@ -527,15 +528,36 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     ImGui::End();
 }
 
-void DevTools::showItemWindow(bool *open, EndstoneServer *server)
+void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items)
 {
     if (!ImGui::Begin("Items", open)) {
         ImGui::End();
         return;
     }
 
-    // TODO:
-    ImGui::Text("TODO: item data will be displayed here.");
+    if (items.empty()) {
+        if (!server) {
+            ImGui::Text("Wait for server to be ready...");
+            ImGui::End();
+            return;
+        }
+
+        if (server->getLevels().empty()) {
+            ImGui::Text("Wait for level to be loaded...");
+            ImGui::End();
+            return;
+        }
+
+        auto &level = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle();
+        auto item_registry = level.getItemRegistry().weak_registry.lock();
+        for (const auto &[key, value] : item_registry->getNameToItemMap()) {
+            items[key.getString()] = {};
+        }
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Items", items.size()).c_str())) {
+        ImGui::Json(items);
+    }
     ImGui::End();
 }
 

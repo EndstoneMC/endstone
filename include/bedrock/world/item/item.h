@@ -14,25 +14,12 @@
 
 #pragma once
 
-#ifndef ENDSTONE_DISABLE_DEVTOOLS
+#include <string>
 
-#include <nlohmann/json.hpp>
-
-#include "endstone/detail/server.h"
-
-namespace endstone::detail {
-class DevTools {
+class Item {
 public:
-    static void render();
-    static void show();
-    static void hide();
+    virtual ~Item() = 0;
 
 private:
-    static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_types,
-                                nlohmann::json &block_states, nlohmann::json &block_tags, nlohmann::json &materials);
-    static void showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items);
+    std::string texture_atlas_file_;  // +8
 };
-}  // namespace endstone::detail
-
-#endif
