@@ -29,10 +29,10 @@ public:
 
 private:
     static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                                nlohmann::json &block_tags, nlohmann::json &materials);
+    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_types,
+                                nlohmann::json &block_states, nlohmann::json &block_tags, nlohmann::json &materials);
     // static void showCommandWindow(bool *open, EndstoneServer *server);
-    // static void showItemWindow(bool *open, EndstoneServer *server);
+    static void showItemWindow(bool *open, EndstoneServer *server);
 };
 }  // namespace endstone::detail
 

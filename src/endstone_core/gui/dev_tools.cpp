@@ -231,11 +231,11 @@ void DevTools::render()
     ImGui_ImplGlfw_InitForOpenGL(gWindow, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
-    float prev_scale = 0.0F;
-    bool first_time = true;
     bool show_about_window = true;
     bool show_block_window = true;
-    auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
+    bool show_item_window = true;
+
+    nlohmann::json block_types;
     nlohmann::json block_states;
     nlohmann::json block_tags;
     nlohmann::json materials;
@@ -249,10 +249,12 @@ void DevTools::render()
 
         // Handle DPI scaling
         // https://github.com/ocornut/imgui/blob/master/docs/FAQ.md#q-how-should-i-handle-dpi-in-my-application
+        static float prev_scale = 0.0F;
         float x_scale, y_scale;
         glfwGetWindowContentScale(gWindow, &x_scale, &y_scale);
         if (x_scale != prev_scale) {
             prev_scale = x_scale;
+            auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
             io.Fonts->Clear();
             io.Fonts->AddFontFromFileTTF(font_path.string().c_str(), std::round(15 * x_scale));
             io.Fonts->Build();
@@ -271,6 +273,13 @@ void DevTools::render()
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
                 ImGui::SeparatorText("Export");
+                if (ImGui::MenuItem("Save Block Types", nullptr, false, !block_types.empty())) {
+                    json_to_save = &block_types;
+                    save_dialog.SetTitle("Save Block Types");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.Open();
+                    save_dialog.SetInputName("block_types.json");
+                }
                 if (ImGui::MenuItem("Save Block States", nullptr, false, !block_states.empty())) {
                     json_to_save = &block_states;
                     save_dialog.SetTitle("Save Block States");
@@ -296,10 +305,10 @@ void DevTools::render()
             }
             if (ImGui::BeginMenu("View")) {
                 ImGui::SeparatorText("Vanilla Data");
-                ImGui::MenuItem("Biomes");
+                // ImGui::MenuItem("Biomes");
                 ImGui::MenuItem("Blocks", nullptr, &show_block_window);
-                ImGui::MenuItem("Commands");
-                ImGui::MenuItem("Items");
+                // ImGui::MenuItem("Commands");
+                ImGui::MenuItem("Items", nullptr, &show_item_window);
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Help")) {
@@ -311,10 +320,12 @@ void DevTools::render()
             ImGui::EndMainMenuBar();
         }
 
+        static bool first_time = true;
         if (first_time) {
             first_time = false;
             ImGui::DockBuilderDockWindow("About", dockspace_id);
             ImGui::DockBuilderDockWindow("Blocks", dockspace_id);
+            ImGui::DockBuilderDockWindow("Items", dockspace_id);
             ImGui::DockBuilderFinish(dockspace_id);
         }
 
@@ -328,7 +339,7 @@ void DevTools::render()
         }
 
         if (show_block_window) {
-            showBlockWindow(&show_block_window, server, block_states, block_tags, materials);
+            showBlockWindow(&show_block_window, server, block_types, block_states, block_tags, materials);
         }
 
         ImGui::ShowDemoWindow();
@@ -398,8 +409,8 @@ void DevTools::showAboutWindow(bool *open)
     ImGui::End();
 }
 
-void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                               nlohmann::json &block_tags, nlohmann::json &materials)
+void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_types,
+                               nlohmann::json &block_states, nlohmann::json &block_tags, nlohmann::json &materials)
 {
     if (!ImGui::Begin("Blocks", open)) {
         ImGui::End();
@@ -426,15 +437,6 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
             nlohmann::json tags;
             const auto &name = block_legacy.getFullNameId();
-            for (const auto &tag : block_legacy.getTags()) {
-                auto tag_name = tag.getString();
-                tags.push_back(tag_name);
-
-                if (!block_tags.contains(tag_name)) {
-                    block_tags[tag_name] = {};
-                }
-                block_tags[tag_name].push_back(name);
-            }
 
             const auto &material = block_legacy.getMaterial();
             materials[std::to_string(static_cast<int>(material.getType()))] = {
@@ -448,6 +450,25 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"blocksPrecipitation", material.getBlocksPrecipitation()},
                 {"isSolid", material.isSolid()},
                 {"isSuperHot", material.isSuperHot()},
+            };
+
+            for (const auto &tag : block_legacy.getTags()) {
+                auto tag_name = tag.getString();
+                tags.push_back(tag_name);
+
+                if (!block_tags.contains(tag_name)) {
+                    block_tags[tag_name] = {};
+                }
+                block_tags[tag_name].push_back(name);
+            }
+
+            block_types[name] = {
+                {"material",
+                 {
+                     {"type", material.getType()},
+                     {"name", magic_enum::enum_name(material.getType())},
+                 }},
+                {"tags", tags},
             };
 
             block_legacy.forEachBlockPermutation([&](const Block &block) {
@@ -466,13 +487,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                     {"friction", block.getFriction()},
                     {"destroySpeed", block.getDestroySpeed()},
                     {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
-                    {"material",
-                     {
-                         {"type", material.getType()},
-                         {"name", magic_enum::enum_name(material.getType())},
-                     }},
                     {"mapColor", map_color.toHexString()},
-                    {"tags", tags},
                     {"collisionShape",
                      {
                          collision_shape.min.x,
@@ -489,6 +504,10 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         });
     }
 
+    if (ImGui::CollapsingHeader(fmt::format("{} Block Types", block_types.size()).c_str())) {
+        ImGui::Json(block_types);
+    }
+
     if (ImGui::CollapsingHeader(fmt::format("{} Block States", block_states.size()).c_str())) {
         ImGui::Json(block_states);
     }
@@ -502,6 +521,8 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     }
     ImGui::End();
 }
+
+void DevTools::showItemWindow(bool *open, EndstoneServer *server) {}
 
 }  // namespace endstone::detail
 
