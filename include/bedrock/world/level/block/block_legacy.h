@@ -15,7 +15,10 @@
 #pragma once
 
 #include "bedrock/core/math/color.h"
+#include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
+#include "bedrock/world/direction.h"
+#include "bedrock/world/flip.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_property.h"
 #include "bedrock/world/level/block_pos.h"
@@ -27,9 +30,14 @@
 using Brightness = std::uint8_t;
 using FacingID = std::uint8_t;
 using NewBlockID = std::uint16_t;
+using DataID = std::uint16_t;
 
 class Actor;
 class Block;
+class Container;
+class ItemStack;
+class Player;
+
 class BlockLegacy : public BlockComponentStorage {
     struct NameInfo {
         HashedString raw_name;             // +0
@@ -108,7 +116,131 @@ public:
     [[nodiscard]] virtual bool canBeDestroyedByWaterSpread() const = 0;
     [[nodiscard]] virtual bool waterSpreadCausesSpawn() const = 0;
     [[nodiscard]] virtual bool canContainLiquid() const = 0;
-    // ...
+    [[nodiscard]] virtual std::optional<HashedString> getRequiredMedium() const = 0;
+    [[nodiscard]] virtual bool shouldConnectToRedstone(BlockSource &, BlockPos const &, Direction::Type) const = 0;
+    virtual void handlePrecipitation(BlockSource &, BlockPos const &, float, float) const = 0;
+    [[nodiscard]] virtual bool canBeUsedInCommands(BaseGameVersion const &) const = 0;
+    [[nodiscard]] virtual bool checkIsPathable(Actor &, BlockPos const &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool shouldDispense(BlockSource &, Container &) const = 0;
+    [[nodiscard]] virtual bool dispense(BlockSource &, Container &, int, Vec3 const &, FacingID) const = 0;
+    virtual void transformOnFall(BlockSource &, BlockPos const &, Actor *, float) const = 0;
+    virtual void onRedstoneUpdate(BlockSource &, BlockPos const &, int, bool) const = 0;
+    virtual void onMove(BlockSource &, BlockPos const &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool detachesOnPistonMove(BlockSource &, BlockPos const &) const = 0;
+    virtual void movedByPiston(BlockSource &, BlockPos const &) const = 0;
+    virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
+    virtual void onStructureNeighborBlockPlace(BlockSource &, BlockPos const &) const = 0;
+    virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual ::BlockProperty getRedstoneProperty(BlockSource &, BlockPos const &) const = 0;
+    virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
+    [[nodiscard]] virtual bool isBounceBlock() const = 0;
+    [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockLegacy const *) const = 0;
+    [[nodiscard]] virtual bool isFilteredOut(BlockRenderLayer) const = 0;
+    [[nodiscard]] virtual bool canRenderSelectionOverlay(BlockRenderLayer) const = 0;
+    [[nodiscard]] virtual bool ignoreEntitiesOnPistonMove(Block const &) const = 0;
+    [[nodiscard]] virtual bool onFertilized(BlockSource &, BlockPos const &, Actor *, FertilizerType) const = 0;
+    [[nodiscard]] virtual bool mayConsumeFertilizer(BlockSource &) const = 0;
+    [[nodiscard]] virtual bool canBeFertilized(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual bool mayPick() const = 0;
+    [[nodiscard]] virtual bool mayPick(BlockSource const &region, Block const &, bool liquid) const = 0;
+    [[nodiscard]] virtual bool mayPlace(BlockSource &, BlockPos const &, FacingID) const = 0;
+    [[nodiscard]] virtual bool mayPlace(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool mayPlaceOn(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool tryToPlace(BlockSource &, BlockPos const &, Block const &,
+                                          ActorBlockSyncMessage const *) const = 0;
+    [[nodiscard]] virtual bool tryToTill(BlockSource &, BlockPos const &, Actor &, ItemStack &) const = 0;
+    [[nodiscard]] virtual bool breaksFallingBlocks(Block const &, BaseGameVersion) const = 0;
+    virtual void destroy(BlockSource &, BlockPos const &, Block const &, Actor *) const = 0;
+    [[nodiscard]] virtual bool getIgnoresDestroyPermissions(Actor &, BlockPos const &) const = 0;
+    virtual void neighborChanged(BlockSource &, BlockPos const &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool getSecondPart(IConstBlockSource const &region, BlockPos const &,
+                                             BlockPos &out) const = 0;
+    [[nodiscard]] virtual Block const *playerWillDestroy(Player &player, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual ItemInstance asItemInstance(Block const &, BlockActor const *) const = 0;
+    virtual void spawnAfterBreak(BlockSource &, Block const &, BlockPos const &,
+                                 ResourceDropsContext const &) const = 0;
+    [[nodiscard]] virtual Block const &getPlacementBlock(Actor const &by, BlockPos const &, FacingID,
+                                                         Vec3 const &clickPos, int itemValue) const = 0;
+    [[nodiscard]] virtual int calcVariant(BlockSource &, BlockPos const &, mce::Color const &baseColor) const = 0;
+    [[nodiscard]] virtual bool isAttachedTo(BlockSource &, BlockPos const &, BlockPos &outAttachedTo) const = 0;
+    [[nodiscard]] virtual bool attack(Player *player, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool shouldTriggerEntityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
+    [[nodiscard]] virtual bool canBeBuiltOver(BlockSource &, BlockPos const &, BlockItem const &newItem) const = 0;
+    [[nodiscard]] virtual bool canBeBuiltOver(BlockSource &, BlockPos const &) const = 0;
+    virtual void triggerEvent(BlockSource &, BlockPos const &, int b0, int b1) const = 0;
+    virtual void executeEvent(BlockSource &, BlockPos const &, Block const &, std::string const &eventName,
+                              Actor &sourceEntity) const = 0;
+    [[nodiscard]] virtual MobSpawnerData const *getMobToSpawn(SpawnConditions const &conditions,
+                                                              BlockSource &) const = 0;
+    [[nodiscard]] virtual bool shouldStopFalling(Actor &) const = 0;
+    [[nodiscard]] virtual bool pushesUpFallingBlocks() const = 0;
+    [[nodiscard]] virtual bool canHaveExtraData() const = 0;
+    [[nodiscard]] virtual bool hasComparatorSignal() const = 0;
+    [[nodiscard]] virtual int getComparatorSignal(BlockSource &, BlockPos const &, Block const &, FacingID) const = 0;
+    [[nodiscard]] virtual bool canSlide(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool canInstatick() const = 0;
+    [[nodiscard]] virtual bool canSpawnAt(BlockSource const &region, BlockPos const &) const = 0;
+    virtual void notifySpawnedAt(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool causesFreezeEffect() const = 0;
+    [[nodiscard]] virtual int getIconYOffset() const = 0;
+    [[nodiscard]] virtual std::string buildDescriptionId(Block const &) const = 0;
+    [[nodiscard]] virtual bool isAuxValueRelevantForPicking() const = 0;
+    [[nodiscard]] virtual int getColor(Block const &) const = 0;
+    [[nodiscard]] virtual int getColor(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual int getColorAtPos(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual int getColorForParticle(BlockSource &, BlockPos const &, Block const &) const = 0;
+    [[nodiscard]] virtual bool isSeasonTinted(Block const &, BlockSource &, BlockPos const &) const = 0;
+    virtual void onGraphicsModeChanged(BlockGraphicsModeChangeContext const &) = 0;
+    [[nodiscard]] virtual float getShadeBrightness(Block const &) const = 0;
+    [[nodiscard]] virtual int telemetryVariant(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual int getVariant(Block const &) const = 0;
+    [[nodiscard]] virtual bool canSpawnOn(Actor *) const = 0;
+    [[nodiscard]] virtual Block const &getRenderBlock() const = 0;
+    [[nodiscard]] virtual FacingID getMappedFace(FacingID, Block const &) const = 0;
+    [[nodiscard]] virtual Flip getFaceFlip(FacingID, Block const &) const = 0;
+    virtual void animateTickBedrockLegacy(BlockSource &, BlockPos const &, Random &) const = 0;
+    virtual void animateTick(BlockSource &, BlockPos const &, Random &) const = 0;
+    [[nodiscard]] virtual BlockLegacy &init() = 0;
+    [[nodiscard]] virtual Brightness getLightEmission(Block const &) const = 0;
+    [[nodiscard]] virtual Block const *tryLegacyUpgrade(DataID) const = 0;
+    [[nodiscard]] virtual bool dealsContactDamage(Actor const &, Block const &, bool) const = 0;
+    [[nodiscard]] virtual Block const *tryGetInfested(Block const &) const = 0;
+    [[nodiscard]] virtual Block const *tryGetUninfested(Block const &) const = 0;
+    virtual void _addHardCodedBlockComponents(Experiments const &) = 0;
+    virtual void onRemove(BlockSource &, BlockPos const &) const = 0;
+    virtual void onExploded(BlockSource &, BlockPos const &, Actor *) const = 0;
+    virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
+    virtual void onPlace(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
+    virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
+    virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
+    [[nodiscard]] virtual bool isInteractiveBlock() const = 0;
+    [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID, std::optional<Vec3>) const = 0;
+    [[nodiscard]] virtual bool use(Player &, BlockPos const &, FacingID) const = 0;
+    [[nodiscard]] virtual bool allowStateMismatchOnPlacement(Block const &, Block const &) const = 0;
+    [[nodiscard]] virtual bool canSurvive(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual ::BlockRenderLayer getRenderLayer() const = 0;
+    [[nodiscard]] virtual ::BlockRenderLayer getRenderLayer(Block const &, BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual int getExtraRenderLayers() const = 0;
+    [[nodiscard]] virtual Brightness getLight(Block const &) const = 0;
+    [[nodiscard]] virtual Brightness getEmissiveBrightness(Block const &) const = 0;
+    [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
+    virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
+    virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
+    [[nodiscard]] virtual mce::Color getDustColor(Block const &) const = 0;
+    virtual void _iterateCandles(Block const &, BlockPos const &, std::function<void(Vec3 const &, int)>) const = 0;
+    [[nodiscard]] virtual ItemInstance const getBaseSeed() const = 0;
+    virtual void onLand(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool isFreeToFall(BlockSource &, BlockPos const &) const = 0;
+    virtual void startFalling(BlockSource &, BlockPos const &, Block const &, bool) const = 0;
+    [[nodiscard]] virtual int getInputSignal(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool isAlternateInput(Block const &) const = 0;
+    [[nodiscard]] virtual int getAlternateSignal(BlockSource &, BlockPos const &) const = 0;
+    [[nodiscard]] virtual int getOutputSignal(Block const &) const = 0;
+    [[nodiscard]] virtual int getTurnOffDelay(Block const &) const = 0;
+    [[nodiscard]] virtual int getTurnOnDelay(Block const &) const = 0;
+    [[nodiscard]] virtual Block const *getOnBlock(Block const *) const = 0;
+    [[nodiscard]] virtual Block const *getOffBlock(Block const *) const = 0;
 
     [[nodiscard]] float getThickness() const
     {

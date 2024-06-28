@@ -14,26 +14,11 @@
 
 #pragma once
 
-#ifndef ENDSTONE_DISABLE_DEVTOOLS
-
-#include <nlohmann/json.hpp>
-
-#include "endstone/detail/server.h"
-
-namespace endstone::detail {
-class DevTools {
-public:
-    static void render();
-    static void show();
-    static void hide();
-
-private:
-    static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                                nlohmann::json &materials);
-    // static void showCommandWindow(bool *open, EndstoneServer *server);
-    // static void showItemWindow(bool *open, EndstoneServer *server);
+enum class Flip {
+    None = 0,
+    RotateCW = 1,
+    RotateCCW = 2,
+    Rotate180 = 3,
+    MirrorX = 4,
+    DontRotate = 5
 };
-}  // namespace endstone::detail
-
-#endif

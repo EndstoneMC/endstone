@@ -24,7 +24,6 @@
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block/cached_component_data.h"
 
-using DataID = std::uint16_t;
 using BlockRuntimeId = std::uint32_t;
 
 class Block : public BlockComponentStorage {

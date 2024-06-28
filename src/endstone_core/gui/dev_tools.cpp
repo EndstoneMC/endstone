@@ -25,6 +25,8 @@
 #include <cstdio>
 #include <filesystem>
 #include <fstream>
+#include <map>
+#include <regex>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -40,46 +42,6 @@
 
 namespace fs = std::filesystem;
 
-namespace ImGui {
-void Json(const nlohmann::json &json)  // NOLINT(*-no-recursion)
-{
-    switch (json.type()) {
-    case nlohmann::json::value_t::object: {
-        for (const auto &el : json.items()) {
-            if (el.value().is_primitive()) {
-                ImGui::Text("%s: %s", el.key().c_str(), el.value().dump().c_str());
-            }
-            else if (ImGui::TreeNode(el.key().c_str())) {
-                ImGui::Json(el.value());
-                ImGui::TreePop();
-            }
-        }
-        break;
-    }
-    case nlohmann::json::value_t::array: {
-        int index = 0;
-        for (const auto &el : json) {
-            auto key = std::to_string(index);
-            if (el.is_primitive()) {
-                ImGui::Text("%s: %s", key.c_str(), el.dump().c_str());
-            }
-            else if (ImGui::TreeNode(key.c_str())) {
-                ImGui::Json(el);
-                ImGui::TreePop();
-            }
-            ++index;
-        }
-        break;
-    }
-    default: {
-        ImGui::Text("%s", json.dump().c_str());
-        break;
-    }
-    }
-}
-}  // namespace ImGui
-
-namespace endstone::detail {
 namespace {
 auto &gLogger = endstone::detail::LoggerFactory::getLogger("EndstoneGUI");
 GLFWwindow *gWindow;
@@ -164,8 +126,66 @@ nlohmann::json toJson(const Tag &tag)
     }
 }
 
+bool isColor(const std::string &str)
+{
+    static std::regex pattern("^#([A-Fa-f0-9]{8})$");
+    return std::regex_match(str, pattern);
+}
+
 }  // namespace
 
+namespace ImGui {
+void Json(const nlohmann::json &json)  // NOLINT(*-no-recursion)
+{
+    switch (json.type()) {
+    case nlohmann::json::value_t::object: {
+        for (const auto &el : json.items()) {
+            if (el.value().is_primitive()) {
+                ImGui::Text("%s: ", el.key().c_str());
+                ImGui::SameLine();
+                ImGui::Json(el.value());
+            }
+            else if (ImGui::TreeNode(el.key().c_str())) {
+                ImGui::Json(el.value());
+                ImGui::TreePop();
+            }
+        }
+        break;
+    }
+    case nlohmann::json::value_t::array: {
+        int index = 0;
+        for (const auto &el : json) {
+            auto key = std::to_string(index);
+            if (el.is_primitive()) {
+                ImGui::Text("%s: ", key.c_str());
+                ImGui::SameLine();
+                ImGui::Json(el);
+            }
+            else if (ImGui::TreeNode(key.c_str())) {
+                ImGui::Json(el);
+                ImGui::TreePop();
+            }
+            ++index;
+        }
+        break;
+    }
+    default: {
+        ImGui::Text("%s", json.dump().c_str());
+        if (json.is_string()) {
+            auto value = json.get<std::string>();
+            if (isColor(value)) {
+                ImGui::SameLine();
+                auto color = mce::Color::fromHexString(value.substr(1));
+                ImGui::ColorButton("Color", {color.r, color.g, color.b, color.a});
+            }
+        }
+        break;
+    }
+    }
+}
+}  // namespace ImGui
+
+namespace endstone::detail {
 void DevTools::render()
 {
     glfwSetErrorCallback(onError);
@@ -211,7 +231,6 @@ void DevTools::render()
     ImGui_ImplOpenGL3_Init(glsl_version);
 
     float prev_scale = 0.0F;
-    bool server_ready = false;
     bool first_time = true;
     bool show_about_window = true;
     bool show_block_window = true;
@@ -250,11 +269,18 @@ void DevTools::render()
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
                 ImGui::SeparatorText("Export");
-                if (ImGui::MenuItem("Save Blocks", nullptr, false, !block_states.empty())) {
+                if (ImGui::MenuItem("Save Block States", nullptr, false, !block_states.empty())) {
                     json_to_save = &block_states;
-                    save_dialog.SetTitle("Save Blocks");
+                    save_dialog.SetTitle("Save Block States");
                     save_dialog.SetTypeFilters({".json"});
-                    save_dialog.SetInputName("blocks.json");
+                    save_dialog.SetInputName("block_states.json");
+                    save_dialog.Open();
+                }
+                if (ImGui::MenuItem("Save Materials", nullptr, false, !materials.empty())) {
+                    json_to_save = &materials;
+                    save_dialog.SetTitle("Save Materials");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.SetInputName("materials.json");
                     save_dialog.Open();
                 }
                 ImGui::EndMenu();
@@ -293,7 +319,7 @@ void DevTools::render()
         }
 
         if (show_block_window) {
-            showBlockWindow(&show_block_window, server, block_states);
+            showBlockWindow(&show_block_window, server, block_states, materials);
         }
 
         ImGui::ShowDemoWindow();
@@ -363,7 +389,8 @@ void DevTools::showAboutWindow(bool *open)
     ImGui::End();
 }
 
-void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states)
+void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
+                               nlohmann::json &materials)
 {
     if (!ImGui::Begin("Blocks", open)) {
         ImGui::End();
@@ -386,12 +413,26 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         auto &level = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle();
         auto overworld = level.getDimension(VanillaDimensions::Overworld);
         auto &palette = level.getBlockPalette();
+        auto &region = overworld->getBlockSourceFromMainChunkSource();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
             const auto &material = block.getMaterial();
             AABB collision_shape = {0};
-            block.getCollisionShape(collision_shape, overworld->getBlockSourceFromMainChunkSource(), BlockPos(0, 0, 0),
-                                    {});
+            block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
+            auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
+
+            materials[std::to_string(static_cast<int>(material.getType()))] = {
+                {"name", magic_enum::enum_name(material.getType())},
+                {"isNeverBuildable", material.isNeverBuildable()},
+                {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
+                {"isReplaceable", material.isReplaceable()},
+                {"isLiquid", material.isLiquid()},
+                {"translucency", material.getTranslucency()},
+                {"blocksMotion", material.getBlocksMotion()},
+                {"blocksPrecipitation", material.getBlocksPrecipitation()},
+                {"isSolid", material.isSolid()},
+                {"isSuperHot", material.isSuperHot()},
+            };
 
             block_states.push_back({
                 {"runtimeId", block.getRuntimeId()},
@@ -404,23 +445,8 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"friction", block.getFriction()},
                 {"destroySpeed", block.getDestroySpeed()},
                 {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
-                {"material",
-                 {
-                     {"type",
-                      {
-                          {"id", material.getType()},
-                          {"name", magic_enum::enum_name(material.getType())},
-                      }},
-                     {"isNeverBuildable", material.isNeverBuildable()},
-                     {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
-                     {"isReplaceable", material.isReplaceable()},
-                     {"isLiquid", material.isLiquid()},
-                     {"translucency", material.getTranslucency()},
-                     {"blocksMotion", material.getBlocksMotion()},
-                     {"blocksPrecipitation", material.getBlocksPrecipitation()},
-                     {"isSolid", material.isSolid()},
-                     {"isSuperHot", material.isSuperHot()},
-                 }},
+                {"material", material.getType()},
+                {"mapColor", map_color.toHexString()},
                 {"collisionShape",
                  {
                      collision_shape.min.x,
@@ -437,6 +463,11 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     ImGui::Text("Num of Block States: %zu", block_states.size());
     if (ImGui::CollapsingHeader("Block States")) {
         ImGui::Json(block_states);
+    }
+
+    ImGui::Text("Num of Materials: %zu", materials.size());
+    if (ImGui::CollapsingHeader("Materials")) {
+        ImGui::Json(materials);
     }
     ImGui::End();
 }

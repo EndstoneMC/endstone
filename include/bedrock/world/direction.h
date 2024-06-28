@@ -14,26 +14,13 @@
 
 #pragma once
 
-#ifndef ENDSTONE_DISABLE_DEVTOOLS
-
-#include <nlohmann/json.hpp>
-
-#include "endstone/detail/server.h"
-
-namespace endstone::detail {
-class DevTools {
+class Direction {
 public:
-    static void render();
-    static void show();
-    static void hide();
-
-private:
-    static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                                nlohmann::json &materials);
-    // static void showCommandWindow(bool *open, EndstoneServer *server);
-    // static void showItemWindow(bool *open, EndstoneServer *server);
+    enum class Type : std::int8_t {
+        Undefined = -1,
+        South = 0,
+        West = 1,
+        North = 2,
+        East = 3,
+    };
 };
-}  // namespace endstone::detail
-
-#endif
