@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/common/game_version.h"
+#include "bedrock/core/hashed_string.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"

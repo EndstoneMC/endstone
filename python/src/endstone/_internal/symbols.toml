@@ -1,4 +1,4 @@
-timestamp = 1719140621
+timestamp = 1719583973
 version = "1.21.1"
 
 [windows]
@@ -12,6 +12,8 @@ version = "1.21.1"
 "?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 43444272
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 41267200
+# BlockTypeRegistry
+"?forEachBlock@BlockTypeRegistry@@SAXV?$function@$$A6A_NAEBVBlockLegacy@@@Z@std@@@Z" = 33776832
 # Command
 "?getCommandName@Command@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 13396640
 # CommandOriginLoader
@@ -85,6 +87,8 @@ version = "1.21.1"
 "_ZN7Bedrock9Threading15getServerThreadEv" = 141216480
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 138178320
+# BlockTypeRegistry
+"_ZN17BlockTypeRegistry12forEachBlockENSt3__18functionIFbRK11BlockLegacyEEE" = 125397648
 # Command
 "_ZNK7Command14getCommandNameEv" = 98684096
 # CommandOriginLoader

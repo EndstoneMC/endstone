@@ -33,6 +33,7 @@
 #include <magic_enum/magic_enum.hpp>
 #include <nlohmann/json.hpp>
 
+#include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
