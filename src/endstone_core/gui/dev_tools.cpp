@@ -236,6 +236,7 @@ void DevTools::render()
     bool show_block_window = true;
     auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
     nlohmann::json block_states;
+    nlohmann::json block_tags;
     nlohmann::json materials;
     nlohmann::json *json_to_save = nullptr;
 
@@ -273,15 +274,22 @@ void DevTools::render()
                     json_to_save = &block_states;
                     save_dialog.SetTitle("Save Block States");
                     save_dialog.SetTypeFilters({".json"});
-                    save_dialog.SetInputName("block_states.json");
                     save_dialog.Open();
+                    save_dialog.SetInputName("block_states.json");
+                }
+                if (ImGui::MenuItem("Save Block Tags", nullptr, false, !block_tags.empty())) {
+                    json_to_save = &block_tags;
+                    save_dialog.SetTitle("Save Block Tags");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.Open();
+                    save_dialog.SetInputName("block_tags.json");
                 }
                 if (ImGui::MenuItem("Save Materials", nullptr, false, !materials.empty())) {
                     json_to_save = &materials;
                     save_dialog.SetTitle("Save Materials");
                     save_dialog.SetTypeFilters({".json"});
-                    save_dialog.SetInputName("materials.json");
                     save_dialog.Open();
+                    save_dialog.SetInputName("materials.json");
                 }
                 ImGui::EndMenu();
             }
@@ -319,7 +327,7 @@ void DevTools::render()
         }
 
         if (show_block_window) {
-            showBlockWindow(&show_block_window, server, block_states, materials);
+            showBlockWindow(&show_block_window, server, block_states, block_tags, materials);
         }
 
         ImGui::ShowDemoWindow();
@@ -390,7 +398,7 @@ void DevTools::showAboutWindow(bool *open)
 }
 
 void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                               nlohmann::json &materials)
+                               nlohmann::json &block_tags, nlohmann::json &materials)
 {
     if (!ImGui::Begin("Blocks", open)) {
         ImGui::End();
@@ -416,13 +424,26 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         auto &region = overworld->getBlockSourceFromMainChunkSource();
         for (auto i = 0; i < palette.getNumBlockNetworkIds(); i++) {
             const auto &block = palette.getBlock(i);
+            const auto &sid = block.getSerializationId();
+            auto name = sid.getString("name");
             const auto &material = block.getMaterial();
             AABB collision_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
+
             nlohmann::json tags;
             for (const auto &tag : block.getTags()) {
-                tags.push_back(tag.getString());
+                auto tag_name = tag.getString();
+                tags.push_back(tag_name);
+
+                if (!block_tags.contains(tag_name)) {
+                    block_tags[tag_name] = {};
+                }
+
+                auto &arr = block_tags[tag_name];
+                if (std::find(arr.begin(), arr.end(), name) == arr.end()) {
+                    block_tags[tag_name].push_back(name);
+                }
             }
 
             materials[std::to_string(static_cast<int>(material.getType()))] = {
@@ -439,6 +460,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             };
 
             block_states.push_back({
+                {"name", name},
                 {"runtimeId", block.getRuntimeId()},
                 {"serializationId", toJson(block.getSerializationId())},
                 {"burnOdds", block.getBurnOdds()},
@@ -449,7 +471,11 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"friction", block.getFriction()},
                 {"destroySpeed", block.getDestroySpeed()},
                 {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
-                {"material", material.getType()},
+                {"material",
+                 {
+                     {"type", material.getType()},
+                     {"name", magic_enum::enum_name(material.getType())},
+                 }},
                 {"mapColor", map_color.toHexString()},
                 {"tags", tags},
                 {"collisionShape",
@@ -465,13 +491,15 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         }
     }
 
-    ImGui::Text("Num of Block States: %zu", block_states.size());
-    if (ImGui::CollapsingHeader("Block States")) {
+    if (ImGui::CollapsingHeader(fmt::format("{} Block States", block_states.size()).c_str())) {
         ImGui::Json(block_states);
     }
 
-    ImGui::Text("Num of Materials: %zu", materials.size());
-    if (ImGui::CollapsingHeader("Materials")) {
+    if (ImGui::CollapsingHeader(fmt::format("{} Block Tags", block_tags.size()).c_str())) {
+        ImGui::Json(block_tags);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Materials", materials.size()).c_str())) {
         ImGui::Json(materials);
     }
     ImGui::End();

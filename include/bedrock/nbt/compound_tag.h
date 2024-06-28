@@ -56,6 +56,7 @@ public:
     [[nodiscard]] bool contains(std::string_view key) const;
     [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
     [[nodiscard]] const Tag *get(std::string_view key) const;
+    [[nodiscard]] const std::string &getString(std::string_view key) const;
     Tag &put(std::string name, Tag &&tag);
     Tag *put(std::string name, std::unique_ptr<Tag> tag);
     void putBoolean(std::string name, bool value);

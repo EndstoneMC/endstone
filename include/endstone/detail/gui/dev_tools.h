@@ -30,7 +30,7 @@ public:
 private:
     static void showAboutWindow(bool *open);
     static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states,
-                                nlohmann::json &materials);
+                                nlohmann::json &block_tags, nlohmann::json &materials);
     // static void showCommandWindow(bool *open, EndstoneServer *server);
     // static void showItemWindow(bool *open, EndstoneServer *server);
 };
