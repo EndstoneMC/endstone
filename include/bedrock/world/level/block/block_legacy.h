@@ -260,16 +260,38 @@ public:
         return tags_;
     }
 
+    [[nodiscard]] const std::string &getDescriptionId() const
+    {
+        return description_id_;
+    }
+
+    [[nodiscard]] const std::string &getFullNameId() const
+    {
+        return name_info_.full_name.getString();
+    }
+
+    [[nodiscard]] const std::string &getRawNameId() const
+    {
+        return name_info_.raw_name.getString();
+    }
+
+    [[nodiscard]] const std::string &getNamespace() const
+    {
+        return name_info_.namespace_name;
+    }
+
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const
     {
         for (const auto &block_permutation : block_permutations_) {
-            callback(*block_permutation);
+            if (block_permutation) {
+                callback(*block_permutation);
+            }
         }
     }
 
 private:
     std::string description_id_;                                      // +40
-    NameInfo name_info_;                                              // +72
+    NameInfo name_info_;                                              // +72  (+64)
     BlockProperty properties_;                                        // +248 (+208)
     bool fancy_;                                                      // +256
     BlockRenderLayer render_layer_;                                   // +260 (+220)
