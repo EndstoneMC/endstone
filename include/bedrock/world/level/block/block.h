@@ -78,6 +78,14 @@ public:
         return legacy_block_->getMaterial();
     }
 
+    [[nodiscard]] const std::vector<HashedString> &getTags() const
+    {
+        if (!tags_.empty()) {
+            return tags_;
+        }
+        return legacy_block_->getTags();
+    }
+
     [[nodiscard]] float getThickness() const
     {
         return legacy_block_->getThickness();

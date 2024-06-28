@@ -21,3 +21,23 @@
 namespace Common {
 ENDSTONE_HOOK std::string getGameVersionString();
 }
+
+class SemVersion {
+public:
+private:
+    std::uint16_t major_;
+    std::uint16_t minor_;
+    std::uint16_t patch_;
+    std::string pre_release_;
+    std::string build_meta_;
+    std::string full_version_string_;
+    bool valid_version_;
+    bool any_version_;
+};
+
+class BaseGameVersion {
+public:
+private:
+    SemVersion sem_version_;
+    bool never_compatible_;
+};

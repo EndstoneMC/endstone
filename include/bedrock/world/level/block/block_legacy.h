@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/common/game_version.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
@@ -252,6 +253,11 @@ public:
         return *material_;
     }
 
+    [[nodiscard]] const std::vector<HashedString> &getTags() const
+    {
+        return tags_;
+    }
+
 private:
     std::string description_id_;                    // +40
     NameInfo name_info_;                            // +72
@@ -300,5 +306,8 @@ private:
     BlockTintType block_tint_type_;                 // +416 (+368)
     bool unknown_;                                  // +420
     NewBlockID id_;                                 // +422 (+374)
+    BaseGameVersion min_required_game_version_;     // +424 (+376)
+    bool is_vanilla_;                               // +544 (+472)
+    std::vector<HashedString> tags_;                // +552 (+480)
     // ...
 };

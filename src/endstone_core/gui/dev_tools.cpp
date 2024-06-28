@@ -420,6 +420,10 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             AABB collision_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
+            nlohmann::json tags;
+            for (const auto &tag : block.getTags()) {
+                tags.push_back(tag.getString());
+            }
 
             materials[std::to_string(static_cast<int>(material.getType()))] = {
                 {"name", magic_enum::enum_name(material.getType())},
@@ -447,6 +451,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
                 {"material", material.getType()},
                 {"mapColor", map_color.toHexString()},
+                {"tags", tags},
                 {"collisionShape",
                  {
                      collision_shape.min.x,
