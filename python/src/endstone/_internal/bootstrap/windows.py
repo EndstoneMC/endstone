@@ -97,13 +97,9 @@ class WindowsBootstrap(Bootstrap):
     def _add_loopback_exemption(self) -> bool:
         sid = "S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436"
         ret = subprocess.run(
-            ["CheckNetIsolation", "LoopbackExempt", "-s", f"-p={sid}"],
-            check=True,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
+            ["CheckNetIsolation", "LoopbackExempt", "-s", f"-p={sid}"], check=True, capture_output=True
         )
-        if sid not in ret.stdout:
+        if sid not in str(ret.stdout):
             ret = ctypes.windll.shell32.ShellExecuteW(
                 None, "runas", "CheckNetIsolation", " ".join(["LoopbackExempt", "-a", f"-p={sid}"]), None, 1
             )
