@@ -14,7 +14,24 @@
 
 #pragma once
 
-class ItemRegistry {
+#include <memory>
+
+class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
+    [[nodiscard]] int getItemCount() const
+    {
+        return items_.size();
+    }
+
+    [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const
+    {
+        return name_to_item_map_;
+    }
+
 private:
+    std::vector<SharedPtr<Item>> items_;                                // +16
+    std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;             // +40
+    std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;  // +104 (+80)
+    std::unordered_map<HashedString, WeakPtr<Item>> unknown2_;          // +168 (+120)
+    std::unordered_map<HashedString, WeakPtr<Item>> unknown3_;          // +232 (+160)
 };

@@ -20,6 +20,25 @@ template <typename T>
 class OwnerPtr;
 
 template <typename T>
+struct SharedCounter {
+    T *ptr;
+    std::atomic<int> share_count;
+    std::atomic<int> weak_count;
+};
+
+template <typename T>
+class SharedPtr {
+public:
+    SharedCounter<T> *pc;
+};
+
+template <typename T>
+class WeakPtr {
+public:
+    SharedCounter<T> *pc;
+};
+
+template <typename T>
 class WeakRef {
 public:
     T &operator*() const
@@ -37,9 +56,4 @@ public:
 
 private:
     std::weak_ptr<T> ref_;
-};
-
-template <typename T>
-class WeakPtr {
-    void *rep_;  // reference counter block
 };
