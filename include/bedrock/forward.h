@@ -49,6 +49,7 @@ class BlockDefinitionGroup;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
+class BlockState;
 class BlockTypeRegistry;
 class BodyControl;
 class BossEventSubscriptionManager;
