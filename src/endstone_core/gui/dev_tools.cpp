@@ -215,9 +215,9 @@ void DevTools::render()
     bool first_time = true;
     bool show_about_window = true;
     bool show_block_window = true;
-    bool show_demo_window = true;
     auto font_path = fs::path{os::get_module_pathname()}.parent_path() / "fonts" / "JetBrainsMono-Regular.ttf";
-    nlohmann::json blocks;
+    nlohmann::json block_states;
+    nlohmann::json materials;
     nlohmann::json *json_to_save = nullptr;
 
     ImGui::FileBrowser save_dialog(ImGuiFileBrowserFlags_EnterNewFilename | ImGuiFileBrowserFlags_CreateNewDir);
@@ -250,8 +250,8 @@ void DevTools::render()
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
                 ImGui::SeparatorText("Export");
-                if (ImGui::MenuItem("Save Blocks", nullptr, false, !blocks.empty())) {
-                    json_to_save = &blocks;
+                if (ImGui::MenuItem("Save Blocks", nullptr, false, !block_states.empty())) {
+                    json_to_save = &block_states;
                     save_dialog.SetTitle("Save Blocks");
                     save_dialog.SetTypeFilters({".json"});
                     save_dialog.SetInputName("blocks.json");
@@ -260,13 +260,11 @@ void DevTools::render()
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("View")) {
-                ImGui::SeparatorText("Data");
+                ImGui::SeparatorText("Vanilla Data");
                 ImGui::MenuItem("Biomes");
                 ImGui::MenuItem("Blocks", nullptr, &show_block_window);
                 ImGui::MenuItem("Commands");
                 ImGui::MenuItem("Items");
-                ImGui::SeparatorText("Tools");
-                ImGui::MenuItem("ImGui Demo", nullptr, &show_demo_window);
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Help")) {
@@ -295,12 +293,10 @@ void DevTools::render()
         }
 
         if (show_block_window) {
-            showBlockWindow(&show_block_window, server, blocks);
+            showBlockWindow(&show_block_window, server, block_states);
         }
 
-        if (show_demo_window) {
-            ImGui::ShowDemoWindow(&show_demo_window);
-        }
+        ImGui::ShowDemoWindow();
 
         save_dialog.Display();
         if (save_dialog.HasSelected()) {
@@ -367,14 +363,14 @@ void DevTools::showAboutWindow(bool *open)
     ImGui::End();
 }
 
-void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &json)
+void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_states)
 {
     if (!ImGui::Begin("Blocks", open)) {
         ImGui::End();
         return;
     }
 
-    if (json.empty()) {
+    if (block_states.empty()) {
         if (!server) {
             ImGui::Text("Wait for server to be ready...");
             ImGui::End();
@@ -397,7 +393,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             block.getCollisionShape(collision_shape, overworld->getBlockSourceFromMainChunkSource(), BlockPos(0, 0, 0),
                                     {});
 
-            json.push_back({
+            block_states.push_back({
                 {"runtimeId", block.getRuntimeId()},
                 {"serializationId", toJson(block.getSerializationId())},
                 {"burnOdds", block.getBurnOdds()},
@@ -438,10 +434,10 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         }
     }
 
-    ImGui::Text("Num of Blocks: %zu", json.size());
-    ImGui::BeginChild("Blocks");
-    ImGui::Json(json);
-    ImGui::EndChild();
+    ImGui::Text("Num of Block States: %zu", block_states.size());
+    if (ImGui::CollapsingHeader("Block States")) {
+        ImGui::Json(block_states);
+    }
     ImGui::End();
 }
 
