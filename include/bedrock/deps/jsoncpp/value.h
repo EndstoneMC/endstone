@@ -56,7 +56,7 @@ public:
     [[nodiscard]] ValueType type() const;
     [[nodiscard]] const char *asCString() const;
     [[nodiscard]] std::string asString() const;
-    [[nodiscard]]   int asInt() const;
+    [[nodiscard]] int asInt() const;
 
     /// Access an object value by name, returns null if there is no member with that name.
     const Value &operator[](const char *key) const;

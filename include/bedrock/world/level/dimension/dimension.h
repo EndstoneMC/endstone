@@ -23,10 +23,10 @@
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
+#include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension_height_range.h"
 #include "bedrock/world/level/dimension/dimension_interface.h"
 #include "bedrock/world/level/level_listener.h"
-#include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/saveddata/saved_data.h"
 
 class Level;
@@ -39,7 +39,7 @@ class Dimension : public IDimension,
 public:
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] const std::string &getName() const;  // Endstone
-    BlockSource & getBlockSourceFromMainChunkSource() const;
+    BlockSource &getBlockSourceFromMainChunkSource() const;
 
 private:
     std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;           // +104 (+96)
