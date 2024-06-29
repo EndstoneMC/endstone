@@ -114,6 +114,9 @@ public:
     }
 
 private:
+    template <typename T1>
+    friend class WeakPtr;
+
     T *get() const noexcept
     {
         return pc_ ? pc_->ptr : nullptr;
@@ -197,7 +200,7 @@ public:
     SharedPtr<T> lock() const noexcept
     {
         SharedPtr<T> ret;
-        if (pc_ && pc_->share_count > 0) {
+        if (pc_ && pc_->ptr != nullptr) {
             pc_->share_count++;
             ret.pc_ = pc_;
         }

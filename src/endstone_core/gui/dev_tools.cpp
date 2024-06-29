@@ -295,6 +295,13 @@ void DevTools::render()
                     save_dialog.Open();
                     save_dialog.SetInputName("block_tags.json");
                 }
+                if (ImGui::MenuItem("Save Items", nullptr, false, !items.empty())) {
+                    json_to_save = &items;
+                    save_dialog.SetTitle("Save Items");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.Open();
+                    save_dialog.SetInputName("items.json");
+                }
                 if (ImGui::MenuItem("Save Materials", nullptr, false, !materials.empty())) {
                     json_to_save = &materials;
                     save_dialog.SetTitle("Save Materials");
@@ -347,7 +354,7 @@ void DevTools::render()
             showItemWindow(&show_item_window, server, items);
         }
 
-        ImGui::ShowDemoWindow();
+        // ImGui::ShowDemoWindow();
 
         save_dialog.Display();
         if (save_dialog.HasSelected()) {
@@ -546,7 +553,13 @@ void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json
         auto &level = static_cast<EndstoneLevel *>(server->getLevels()[0])->getHandle();
         auto item_registry = level.getItemRegistry().weak_registry.lock();
         for (const auto &[key, value] : item_registry->getNameToItemMap()) {
-            items[key.getString()] = {};
+            auto item = value.lock();
+            items[key.getString()] = {
+                {"id", item->getId()},
+                {"name", item->getFullItemName()},
+                {"maxDamage", item->getMaxDamage()},
+                {"maxStackSize", item->getMaxStackSize()},
+            };
         }
     }
 

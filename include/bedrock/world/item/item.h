@@ -39,6 +39,11 @@ public:
         return max_damage_;
     }
 
+    [[nodiscard]] const std::string &getFullItemName() const
+    {
+        return full_name_.getString();
+    }
+
 private:
     std::string texture_atlas_file_;                  // +8
     int frame_count_;                                 // +40
