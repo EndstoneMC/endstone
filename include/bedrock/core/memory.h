@@ -21,21 +21,111 @@ class OwnerPtr;
 
 template <typename T>
 struct SharedCounter {
-    T *ptr;
-    std::atomic<int> share_count;
-    std::atomic<int> weak_count;
+    T *ptr{nullptr};
+    std::atomic<int> share_count{1};
+    std::atomic<int> weak_count{0};
 };
 
 template <typename T>
 class SharedPtr {
 public:
-    SharedCounter<T> *pc;
+    constexpr SharedPtr() noexcept = default;
+    constexpr SharedPtr(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
+    explicit SharedPtr(T *ptr)
+    {
+        if (ptr) {
+            pc_ = new SharedCounter<T>();
+            pc_->ptr = ptr;
+        }
+    }
+
+    ~SharedPtr() noexcept
+    {
+        if (pc_) {
+            if (--pc_->share_count <= 0) {
+                delete pc_->ptr;
+                pc_->ptr = nullptr;
+
+                if (pc_->weak_count <= 0) {
+                    delete pc_;
+                }
+            }
+        }
+    }
+
+    // copy constructor
+    SharedPtr(const SharedPtr &other) noexcept
+    {
+        if (other.pc_) {
+            other.pc_->share_count++;
+        }
+        pc_ = other.pc_;
+    }
+
+    // move constructor
+    SharedPtr(SharedPtr &&other) noexcept
+    {
+        pc_ = other.pc_;
+        other.pc_ = nullptr;
+    }
+
+    // copy assignment operator
+    SharedPtr &operator=(const SharedPtr &other) noexcept
+    {
+        SharedPtr(other).swap(*this);
+        return *this;
+    }
+
+    // move assignment operator
+    SharedPtr &operator=(SharedPtr &&other) noexcept
+    {
+        SharedPtr(std::move(other)).swap(*this);
+        return *this;
+    }
+
+    void reset() noexcept
+    {
+        SharedPtr().swap(*this);
+    }
+
+    void reset(T *ptr) noexcept
+    {
+        SharedPtr(ptr).swap(*this);
+    }
+
+    T *operator->() const noexcept
+    {
+        return get();
+    }
+
+    T &operator*() const noexcept
+    {
+        return *get();
+    }
+
+    explicit operator bool() const
+    {
+        return get() != nullptr;
+    }
+
+private:
+    void swap(SharedPtr &other) noexcept
+    {
+        std::swap(pc_, other.pc_);
+    }
+
+    T *get() const noexcept
+    {
+        return pc_ ? pc_->ptr : nullptr;
+    }
+
+    SharedCounter<T> *pc_{nullptr};
 };
 
 template <typename T>
 class WeakPtr {
-public:
-    SharedCounter<T> *pc;
+private:
+    SharedCounter<T> *pc_;
 };
 
 template <typename T>
