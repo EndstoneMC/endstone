@@ -496,6 +496,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                     {"serializationId", toJson(block.getSerializationId())},
                     {"burnOdds", block.getBurnOdds()},
                     {"flameOdds", block.getFlameOdds()},
+                    {"thickness", block.getThickness()},
                     {"light", block.getLight()},
                     {"lightEmission", block.getLightEmission()},
                     {"explosionResistance", block.getExplosionResistance()},
@@ -577,8 +578,12 @@ void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json
             items[key.getString()] = {
                 {"id", item->getId()},
                 {"name", name},
+                {"attackDamage", item->getAttackDamage()},
+                {"armorValue", item->getArmorValue()},
+                {"toughnessValue", item->getToughnessValue()},
                 {"maxDamage", item->getMaxDamage()},
-                {"maxStackSize", item->getMaxStackSize()},
+                {"isDamageable", item->isDamageable()},
+                // {"maxStackSize", item->getMaxStackSize()},
                 {"tags", tags},
             };
         }
