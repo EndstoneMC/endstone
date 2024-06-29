@@ -446,7 +446,6 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             const auto &material = block_legacy.getMaterial();
             auto material_name = magic_enum::enum_name(material.getType());
             materials[material_name] = {
-                {"type", material.getType()},
                 {"isNeverBuildable", material.isNeverBuildable()},
                 {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
                 {"isReplaceable", material.isReplaceable()},
@@ -469,11 +468,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
             }
 
             block_types[name] = {
-                {"material",
-                 {
-                     {"type", material.getType()},
-                     {"name", magic_enum::enum_name(material.getType())},
-                 }},
+                {"material", magic_enum::enum_name(material.getType())},
                 {"tags", tags},
             };
 
