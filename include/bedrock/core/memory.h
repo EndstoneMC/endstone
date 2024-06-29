@@ -108,12 +108,12 @@ public:
         return get() != nullptr;
     }
 
-private:
     void swap(SharedPtr &other) noexcept
     {
         std::swap(pc_, other.pc_);
     }
 
+private:
     T *get() const noexcept
     {
         return pc_ ? pc_->ptr : nullptr;
@@ -124,6 +124,86 @@ private:
 
 template <typename T>
 class WeakPtr {
+public:
+    constexpr WeakPtr() noexcept = default;
+    constexpr WeakPtr(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
+                                              // Constructor from SharedPtr
+    explicit WeakPtr(const SharedPtr<T> &shared_ptr) noexcept : pc_(shared_ptr.pc_)
+    {
+        if (pc_) {
+            pc_->weak_count++;
+        }
+    }
+
+    ~WeakPtr()
+    {
+        if (pc_) {
+            if (--pc_->weak_count <= 0 && pc_->ptr == nullptr) {
+                delete pc_;
+            }
+        }
+    }
+
+    // copy constructor
+    WeakPtr(const WeakPtr &other) noexcept
+    {
+        if (other.pc_) {
+            other.pc_->weak_count++;
+        }
+        pc_ = other.pc_;
+    }
+
+    // move constructor
+    WeakPtr(WeakPtr &&other) noexcept
+    {
+        pc_ = other.pc_;
+        other.pc_ = nullptr;
+    }
+
+    // copy assignment operator
+    WeakPtr &operator=(const WeakPtr &other) noexcept
+    {
+        WeakPtr(other).swap(*this);
+        return *this;
+    }
+
+    // move assignment operator
+    WeakPtr &operator=(WeakPtr &&other) noexcept
+    {
+        WeakPtr(std::move(other)).swap(*this);
+        return *this;
+    }
+
+    void reset() noexcept
+    {
+        WeakPtr().swap(*this);
+    }
+
+    void reset(T *ptr) noexcept
+    {
+        WeakPtr(ptr).swap(*this);
+    }
+
+    void swap(WeakPtr &other) noexcept
+    {
+        std::swap(pc_, other.pc_);
+    }
+
+    [[nodiscard]] bool expired() const noexcept
+    {
+        return pc_ ? pc_->ptr == nullptr : true;
+    }
+
+    SharedPtr<T> lock() const noexcept
+    {
+        SharedPtr<T> ret;
+        if (pc_ && pc_->share_count > 0) {
+            pc_->share_count++;
+            ret.pc_ = pc_;
+        }
+        return ret;
+    }
+
 private:
     SharedCounter<T> *pc_;
 };
