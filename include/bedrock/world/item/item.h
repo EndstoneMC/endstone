@@ -44,6 +44,11 @@ public:
         return full_name_.getString();
     }
 
+    [[nodiscard]] const std::vector<ItemTag> &getTags() const
+    {
+        return tags_;
+    }
+
 private:
     std::string texture_atlas_file_;                  // +8
     int frame_count_;                                 // +40

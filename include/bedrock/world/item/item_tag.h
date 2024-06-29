@@ -14,4 +14,6 @@
 
 #pragma once
 
-class ItemTag {};
+#include "bedrock/core/hashed_string.h"
+
+class ItemTag : public HashedString {};

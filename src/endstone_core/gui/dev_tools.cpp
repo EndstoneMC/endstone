@@ -240,6 +240,7 @@ void DevTools::render()
     nlohmann::json block_tags;
     nlohmann::json materials;
     nlohmann::json items;
+    nlohmann::json item_tags;
     nlohmann::json *json_to_save = nullptr;
 
     ImGui::FileBrowser save_dialog(ImGuiFileBrowserFlags_EnterNewFilename | ImGuiFileBrowserFlags_CreateNewDir);
@@ -302,6 +303,13 @@ void DevTools::render()
                     save_dialog.Open();
                     save_dialog.SetInputName("items.json");
                 }
+                if (ImGui::MenuItem("Save Item Tags", nullptr, false, !item_tags.empty())) {
+                    json_to_save = &item_tags;
+                    save_dialog.SetTitle("Save Item Tags");
+                    save_dialog.SetTypeFilters({".json"});
+                    save_dialog.Open();
+                    save_dialog.SetInputName("item_tags.json");
+                }
                 if (ImGui::MenuItem("Save Materials", nullptr, false, !materials.empty())) {
                     json_to_save = &materials;
                     save_dialog.SetTitle("Save Materials");
@@ -351,7 +359,7 @@ void DevTools::render()
         }
 
         if (show_item_window) {
-            showItemWindow(&show_item_window, server, items);
+            showItemWindow(&show_item_window, server, items, item_tags);
         }
 
         // ImGui::ShowDemoWindow();
@@ -447,9 +455,6 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
         auto &region = overworld->getBlockSourceFromMainChunkSource();
 
         BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
-            nlohmann::json tags;
-            const auto &name = block_legacy.getFullNameId();
-
             const auto &material = block_legacy.getMaterial();
             auto material_name = magic_enum::enum_name(material.getType());
             materials[material_name] = {
@@ -464,6 +469,8 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"isSuperHot", material.isSuperHot()},
             };
 
+            const auto &name = block_legacy.getFullNameId();
+            nlohmann::json tags;
             for (const auto &tag : block_legacy.getTags()) {
                 auto tag_name = tag.getString();
                 tags.push_back(tag_name);
@@ -530,7 +537,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
     ImGui::End();
 }
 
-void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items)
+void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items, nlohmann::json &item_tags)
 {
     if (!ImGui::Begin("Items", open)) {
         ImGui::End();
@@ -554,17 +561,35 @@ void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json
         auto item_registry = level.getItemRegistry().weak_registry.lock();
         for (const auto &[key, value] : item_registry->getNameToItemMap()) {
             auto item = value.lock();
+
+            const auto &name = item->getFullItemName();
+            nlohmann::json tags;
+            for (const auto &tag : item->getTags()) {
+                auto tag_name = tag.getString();
+                tags.push_back(tag_name);
+
+                if (!item_tags.contains(tag_name)) {
+                    item_tags[tag_name] = {};
+                }
+                item_tags[tag_name].push_back(name);
+            }
+
             items[key.getString()] = {
                 {"id", item->getId()},
-                {"name", item->getFullItemName()},
+                {"name", name},
                 {"maxDamage", item->getMaxDamage()},
                 {"maxStackSize", item->getMaxStackSize()},
+                {"tags", tags},
             };
         }
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Items", items.size()).c_str())) {
         ImGui::Json(items);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", item_tags.size()).c_str())) {
+        ImGui::Json(item_tags);
     }
     ImGui::End();
 }

@@ -31,7 +31,7 @@ private:
     static void showAboutWindow(bool *open);
     static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_types,
                                 nlohmann::json &block_states, nlohmann::json &block_tags, nlohmann::json &materials);
-    static void showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items);
+    static void showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items, nlohmann::json &item_tags);
 };
 }  // namespace endstone::detail
 
