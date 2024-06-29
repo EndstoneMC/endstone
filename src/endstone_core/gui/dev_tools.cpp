@@ -133,6 +133,20 @@ bool isColor(const std::string &str)
     return std::regex_match(str, pattern);
 }
 
+template <int decimal>
+double roundValue(double d)
+{
+    double pow_of_ten = std::pow(10, decimal);
+    d *= pow_of_ten;
+    if (d >= 0) {
+        d += 0.5;
+    }
+    else {
+        d -= 0.5;
+    }
+    return static_cast<int>(d) / pow_of_ten;
+}
+
 }  // namespace
 
 namespace ImGui {
@@ -496,22 +510,22 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                     {"serializationId", toJson(block.getSerializationId())},
                     {"burnOdds", block.getBurnOdds()},
                     {"flameOdds", block.getFlameOdds()},
-                    {"thickness", block.getThickness()},
+                    {"thickness", roundValue<6>(block.getThickness())},
                     {"light", block.getLight()},
                     {"lightEmission", block.getLightEmission()},
-                    {"explosionResistance", block.getExplosionResistance()},
-                    {"friction", block.getFriction()},
-                    {"destroySpeed", block.getDestroySpeed()},
+                    {"explosionResistance", roundValue<6>(block.getExplosionResistance())},
+                    {"friction", roundValue<6>(block.getFriction())},
+                    {"destroySpeed", roundValue<6>(block.getDestroySpeed())},
                     {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
                     {"mapColor", map_color.toHexString()},
                     {"collisionShape",
                      {
-                         collision_shape.min.x,
-                         collision_shape.min.y,
-                         collision_shape.min.z,
-                         collision_shape.max.x,
-                         collision_shape.max.y,
-                         collision_shape.max.z,
+                         roundValue<6>(collision_shape.min.x),
+                         roundValue<6>(collision_shape.min.y),
+                         roundValue<6>(collision_shape.min.z),
+                         roundValue<6>(collision_shape.max.x),
+                         roundValue<6>(collision_shape.max.y),
+                         roundValue<6>(collision_shape.max.z),
                      }},
                 });
                 return true;
