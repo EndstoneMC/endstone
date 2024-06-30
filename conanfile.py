@@ -85,6 +85,10 @@ class EndstoneRecipe(ConanFile):
         # but it should be ABI compatible with Clang 5
         return 5
 
+    @property
+    def _devtools_enabled(self):
+        return self.settings.os == "Windows"
+
     def validate(self):
         check_min_cppstd(self, self._min_cppstd)
 
@@ -121,12 +125,14 @@ class EndstoneRecipe(ConanFile):
         self.requires("pybind11/2.11.1")
         self.requires("spdlog/1.12.0")
         self.requires("tomlplusplus/3.3.0")
-        if self.settings.os == "Windows":
+
+        if self.settings.os == "Linux":
+            self.requires("libelf/0.8.13")
+
+        if self._devtools_enabled:
             self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.90.8-docking")
-        if self.settings.os == "Linux":
-            self.requires("libelf/0.8.13")
 
         self.test_requires("gtest/1.14.0")
 
@@ -146,6 +152,7 @@ class EndstoneRecipe(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.variables["ENDSTONE_VERSION"] = self.version
+        tc.variables["ENDSTONE_DEVTOOLS_ENABLED"] = self._devtools_enabled
         tc.generate()
 
     def build(self):
@@ -178,10 +185,18 @@ class EndstoneRecipe(ConanFile):
             "spdlog::spdlog",
             "tomlplusplus::tomlplusplus",
         ]
-        if self.settings.os == "Windows":
-            self.cpp_info.components["core"].requires.extend(["glew::glew", "glfw::glfw", "imgui::imgui"])
         if self.settings.os == "Linux":
             self.cpp_info.components["core"].system_libs.extend(["dl", "stdc++fs"])
+
+        if self._devtools_enabled:
+            self.cpp_info.components["devtools"].libs = ["endstone_devtools"]
+            self.cpp_info.components["devtools"].set_property("cmake_target_name", "endstone::devtools")
+            self.cpp_info.components["devtools"].requires = [
+                "core",
+                "glew::glew",
+                "glfw::glfw",
+                "imgui::imgui",
+            ]
 
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
@@ -191,6 +206,8 @@ class EndstoneRecipe(ConanFile):
             "pybind11::pybind11",
             "cpptrace::cpptrace",
         ]
+        if self._devtools_enabled:
+            self.cpp_info.components["runtime"].requires.extend(["devtools"])
         if self.settings.os == "Windows":
             self.cpp_info.components["runtime"].system_libs.extend(["dbghelp", "ws2_32"])
         if self.settings.os == "Linux":
