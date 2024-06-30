@@ -24,10 +24,12 @@ endif ()
 # ===================
 # compile definitions
 # ===================
-add_compile_definitions(IMGUI_IMPL_OPENGL_LOADER_GLEW)
 add_compile_definitions(PYBIND11_DETAILED_ERROR_MESSAGES)
 add_compile_definitions(ENTT_SPARSE_PAGE=2048)
 add_compile_definitions(ENTT_PACKED_PAGE=128)
+if (ENDSTONE_DEVTOOLS_ENABLED)
+    add_compile_definitions(ENDSTONE_DEVTOOLS)
+endif ()
 
 # ========
 # packages
@@ -50,11 +52,7 @@ find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
-if (WIN32)
-    find_package(glew REQUIRED)
-    find_package(glfw3 CONFIG REQUIRED)
-    find_package(imgui CONFIG REQUIRED)
-elseif (UNIX)
+if (UNIX)
     find_package(libelf CONFIG REQUIRED)
 endif ()
 
@@ -89,19 +87,12 @@ install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT ends
 # endstone::core
 # ==============
 file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_core/*.cpp")
-if (WIN32)
-    list(APPEND ENDSTONE_CORE_SOURCE_FILES "src/imgui/imgui_impl_glfw.cpp")
-    list(APPEND ENDSTONE_CORE_SOURCE_FILES "src/imgui/imgui_impl_opengl3.cpp")
-endif ()
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
         nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
         spdlog::spdlog tomlplusplus::tomlplusplus)
-if (WIN32)
-    target_link_libraries(endstone_core PUBLIC GLEW::GLEW glfw imgui::imgui)
-    target_include_directories(endstone_core PUBLIC "include/imgui")
-elseif (UNIX)
+if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
 endif ()
@@ -113,6 +104,26 @@ install(TARGETS endstone_core
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 
+# ==================
+# endstone::devtools
+# ==================
+if (ENDSTONE_DEVTOOLS_ENABLED)
+    find_package(glew CONFIG REQUIRED)
+    find_package(glfw3 CONFIG REQUIRED)
+    find_package(imgui CONFIG REQUIRED)
+
+    file(GLOB_RECURSE ENDSTONE_DEVTOOLS_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_devtools/*.cpp")
+    add_library(endstone_devtools ${ENDSTONE_DEVTOOLS_SOURCE_FILES})
+    add_library(endstone::devtools ALIAS endstone_devtools)
+
+    target_link_libraries(endstone_devtools PUBLIC endstone::core GLEW::GLEW glfw imgui::imgui)
+
+    include(GNUInstallDirs)
+    install(TARGETS endstone_devtools
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+            RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endif ()
 
 # =================
 # endstone::runtime
@@ -121,9 +132,13 @@ file(GLOB_RECURSE ENDSTONE_RUNTIME_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_
 add_library(endstone_runtime SHARED ${ENDSTONE_RUNTIME_SOURCE_FILES})
 add_library(endstone::runtime ALIAS endstone_runtime)
 target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook pybind11::embed cpptrace::cpptrace)
+if (ENDSTONE_DEVTOOLS_ENABLED)
+    target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
+endif ()
 if (WIN32)
     target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
-elseif (UNIX)
+endif ()
+if (UNIX)
     target_link_libraries(endstone_runtime PRIVATE libelf::libelf)
     target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden")
