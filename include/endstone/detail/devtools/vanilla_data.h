@@ -15,9 +15,17 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+namespace endstone::detail::devtools {
 
-#include "bedrock/nbt/compound_tag.h"
+struct VanillaData {
+    nlohmann::json block_types;
+    nlohmann::json block_states;
+    nlohmann::json block_tags;
+    nlohmann::json materials;
+    nlohmann::json items;
+    nlohmann::json item_tags;
 
-namespace ImGui {
-void Json(const nlohmann::json &json);
-}  // namespace ImGui
+    static VanillaData &get();
+};
+
+}  // namespace endstone::detail::devtools
