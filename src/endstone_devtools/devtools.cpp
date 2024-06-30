@@ -52,6 +52,7 @@ void onWindowClose(GLFWwindow *window)
 }  // namespace
 
 // Forward declaration
+void showAboutWindow(bool *open);
 void showBlockWindow(bool *open);
 void showItemWindow(bool *open);
 
@@ -134,12 +135,12 @@ void render()
         auto dockspace_id = ImGui::DockSpaceOverViewport();
         static std::once_flag first_time;
         std::call_once(first_time, [&] {
-            ImGui::DockBuilderDockWindow("About", dockspace_id);
             ImGui::DockBuilderDockWindow("Blocks", dockspace_id);
             ImGui::DockBuilderDockWindow("Items", dockspace_id);
             ImGui::DockBuilderFinish(dockspace_id);
         });
 
+        static bool show_about_window = false;
         static bool show_block_window = true;
         static bool show_item_window = true;
 
@@ -154,11 +155,15 @@ void render()
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Help")) {
+                ImGui::MenuItem("About", nullptr, &show_about_window);
                 ImGui::EndMenu();
             }
             ImGui::EndMainMenuBar();
         }
 
+        if (show_about_window) {
+            showAboutWindow(&show_about_window);
+        }
         if (show_block_window) {
             showBlockWindow(&show_block_window);
         }
@@ -201,6 +206,23 @@ void hide()
         gLogger.info(ColorFormat::DarkAqua +
                      "DevTools has been hidden. Use the command /devtools to display it again.");
     }
+}
+
+void showAboutWindow(bool *open)
+{
+    if (!ImGui::Begin("About", open)) {
+        ImGui::End();
+        return;
+    }
+
+    ImGui::Text("Endstone DevTools");
+    ImGui::Text("v%s", ENDSTONE_VERSION);
+    ImGui::Separator();
+    ImGui::Text("By all Endstone contributors.");
+    ImGui::Text("Endstone is licensed under the Apache License, see LICENSE for more information.");
+    ImGui::Spacing();
+    ImGui::Text("Built with Dear ImGui %s (%d)", IMGUI_VERSION, IMGUI_VERSION_NUM);
+    ImGui::End();
 }
 
 void showBlockWindow(bool *open)
