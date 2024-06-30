@@ -12,15 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/devtools/devtools.h"
 
-#include "endstone/detail/command/endstone_command.h"
+namespace endstone::detail::devtools {
 
-namespace endstone::detail {
-class DebugCommand : public EndstoneCommand {
-public:
-    DebugCommand();
-    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
-};
+void render() {}
 
-}  // namespace endstone::detail
+void show() {}
+
+void hide() {}
+
+}

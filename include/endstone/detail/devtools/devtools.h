@@ -14,25 +14,8 @@
 
 #pragma once
 
-#ifndef ENDSTONE_DISABLE_DEVTOOLS
-
-#include <nlohmann/json.hpp>
-
-#include "endstone/detail/server.h"
-
-namespace endstone::detail {
-class DevTools {
-public:
-    static void render();
-    static void show();
-    static void hide();
-
-private:
-    static void showAboutWindow(bool *open);
-    static void showBlockWindow(bool *open, EndstoneServer *server, nlohmann::json &block_types,
-                                nlohmann::json &block_states, nlohmann::json &block_tags, nlohmann::json &materials);
-    static void showItemWindow(bool *open, EndstoneServer *server, nlohmann::json &items, nlohmann::json &item_tags);
-};
-}  // namespace endstone::detail
-
-#endif
+namespace endstone::detail::devtools {
+void render();
+void show();
+void hide();
+}  // namespace endstone::detail::devtools

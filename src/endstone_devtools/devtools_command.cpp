@@ -12,35 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/defaults/debug_command.h"
+#include "endstone/detail/devtools/devtools_command.h"
 
-#include "endstone/detail/gui/dev_tools.h"
+#include "endstone/detail/devtools/devtools.h"
 
 namespace endstone::detail {
 
-DebugCommand::DebugCommand() : EndstoneCommand("debug")
+DevToolsCommand::DevToolsCommand() : EndstoneCommand("devtools")
 {
-    setDescription("Opens the DevTools window.");
-    setUsages("/debug");
-    setPermissions("endstone.command.debug");
+    setDescription("Opens the DevTools.");
+    setUsages("/devtools");
+    setAliases("/dev");
+    setPermissions("endstone.command.devtools");
 }
 
-bool DebugCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
+bool DevToolsCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     if (!testPermission(sender)) {
         return true;
     }
 
     if (!sender.asConsole()) {
-        sender.sendErrorMessage("Only console can execute this command.");
+        sender.sendErrorMessage("This command can only be executed from the console.");
         return true;
     }
 
-#ifndef ENDSTONE_DISABLE_DEVTOOLS
-    DevTools::show();
-#else
-    sender.sendErrorMessage("DevTools is disabled on this platform.");
-#endif
+    devtools::show();
     return true;
 }
 

@@ -116,6 +116,7 @@ if (ENDSTONE_DEVTOOLS_ENABLED)
     add_library(endstone_devtools ${ENDSTONE_DEVTOOLS_SOURCE_FILES})
     add_library(endstone::devtools ALIAS endstone_devtools)
 
+    target_include_directories(endstone_devtools PRIVATE "include/endstone/detail/devtools/imgui")
     target_link_libraries(endstone_devtools PUBLIC endstone::core GLEW::GLEW glfw imgui::imgui)
 
     include(GNUInstallDirs)

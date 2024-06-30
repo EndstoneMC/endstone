@@ -25,9 +25,9 @@
 #include "endstone/detail/command/bedrock_command.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
-#include "endstone/detail/command/defaults/debug_command.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
+#include "endstone/detail/devtools/devtools_command.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/server.h"
 
@@ -64,9 +64,11 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 
 void EndstoneCommandMap::setDefaultCommands()
 {
-    registerCommand(std::make_unique<DebugCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<VersionCommand>());
+#ifdef ENDSTONE_DEVTOOLS
+    registerCommand(std::make_unique<DevToolsCommand>());
+#endif
 }
 
 void EndstoneCommandMap::setMinecraftCommands()
