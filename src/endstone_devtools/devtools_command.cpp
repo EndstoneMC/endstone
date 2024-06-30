@@ -22,7 +22,7 @@ DevToolsCommand::DevToolsCommand() : EndstoneCommand("devtools")
 {
     setDescription("Opens the DevTools.");
     setUsages("/devtools");
-    setAliases("/dev");
+    setAliases("dev");
     setPermissions("endstone.command.devtools");
 }
 
