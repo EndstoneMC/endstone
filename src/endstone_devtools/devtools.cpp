@@ -21,6 +21,7 @@
 #include <imgui_internal.h>
 
 #include <filesystem>
+#include <mutex>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -37,7 +38,7 @@ namespace endstone::detail::devtools {
 
 namespace {
 auto &gLogger = LoggerFactory::getLogger("DevTools");
-GLFWwindow *gWindow;
+GLFWwindow *gWindow = nullptr;
 
 void onError(int error, const char *description)
 {
