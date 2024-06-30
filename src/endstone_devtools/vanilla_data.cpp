@@ -213,20 +213,19 @@ void dumpItemData(VanillaData &data, ::Level &level)
 
 }  // namespace
 
-VanillaData &VanillaData::get()
+VanillaData *VanillaData::get()
 {
     if (entt::locator<VanillaData>::has_value()) {
-        return entt::locator<VanillaData>::value();
+        return &entt::locator<VanillaData>::value();
     }
 
-    static VanillaData empty_data{};
     if (!entt::locator<EndstoneServer>::has_value()) {
-        return empty_data;
+        return nullptr;
     }
 
     auto &server = entt::locator<EndstoneServer>::value();
     if (server.getLevels().empty()) {
-        return empty_data;
+        return nullptr;
     }
 
     auto &data = entt::locator<VanillaData>::emplace();
@@ -234,7 +233,8 @@ VanillaData &VanillaData::get()
 
     dumpBlockData(data, level);
     dumpItemData(data, level);
-    return data;
+
+    return &data;
 }
 
 }  // namespace endstone::detail::devtools

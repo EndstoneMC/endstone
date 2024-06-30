@@ -25,7 +25,7 @@ struct VanillaData {
     nlohmann::json items;
     nlohmann::json item_tags;
 
-    static VanillaData &get();
+    static VanillaData *get();
 };
 
 }  // namespace endstone::detail::devtools

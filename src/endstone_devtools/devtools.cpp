@@ -26,6 +26,8 @@
 #include <GLFW/glfw3.h>
 
 #include "endstone/color_format.h"
+#include "endstone/detail/devtools/imgui/imgui_json.h"
+#include "endstone/detail/devtools/vanilla_data.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
 
@@ -48,6 +50,10 @@ void onWindowClose(GLFWwindow *window)
     hide();
 }
 }  // namespace
+
+// Forward declaration
+void showBlockWindow(bool *open);
+void showItemWindow(bool *open);
 
 void render()
 {
@@ -126,6 +132,13 @@ void render()
         ImGui::NewFrame();
 
         auto dockspace_id = ImGui::DockSpaceOverViewport();
+        static std::once_flag first_time;
+        std::call_once(first_time, [&] {
+            ImGui::DockBuilderDockWindow("About", dockspace_id);
+            ImGui::DockBuilderDockWindow("Blocks", dockspace_id);
+            ImGui::DockBuilderDockWindow("Items", dockspace_id);
+            ImGui::DockBuilderFinish(dockspace_id);
+        });
 
         static bool show_block_window = true;
         static bool show_item_window = true;
@@ -144,6 +157,13 @@ void render()
                 ImGui::EndMenu();
             }
             ImGui::EndMainMenuBar();
+        }
+
+        if (show_block_window) {
+            showBlockWindow(&show_block_window);
+        }
+        if (show_item_window) {
+            showItemWindow(&show_item_window);
         }
 
         // Rendering
@@ -181,6 +201,62 @@ void hide()
         gLogger.info(ColorFormat::DarkAqua +
                      "DevTools has been hidden. Use the command /devtools to display it again.");
     }
+}
+
+void showBlockWindow(bool *open)
+{
+    if (!ImGui::Begin("Blocks", open)) {
+        ImGui::End();
+        return;
+    }
+
+    auto *data = VanillaData::get();
+    if (!data) {
+        ImGui::Text("Wait for server to be ready...");
+        ImGui::End();
+        return;
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Block Types", data->block_types.size()).c_str())) {
+        ImGui::Json(data->block_types);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Block States", data->block_states.size()).c_str())) {
+        ImGui::Json(data->block_states);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Block Tags", data->block_tags.size()).c_str())) {
+        ImGui::Json(data->block_tags);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Materials", data->materials.size()).c_str())) {
+        ImGui::Json(data->materials);
+    }
+    ImGui::End();
+}
+
+void showItemWindow(bool *open)
+{
+    if (!ImGui::Begin("Items", open)) {
+        ImGui::End();
+        return;
+    }
+
+    auto *data = VanillaData::get();
+    if (!data) {
+        ImGui::Text("Wait for server to be ready...");
+        ImGui::End();
+        return;
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Items", data->items.size()).c_str())) {
+        ImGui::Json(data->items);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
+        ImGui::Json(data->item_tags);
+    }
+    ImGui::End();
 }
 
 }  // namespace endstone::detail::devtools
