@@ -597,7 +597,7 @@ void DevTools::showItemWindow(bool *open, EndstoneServer *server, nlohmann::json
                 {"toughnessValue", item->getToughnessValue()},
                 {"maxDamage", item->getMaxDamage()},
                 {"isDamageable", item->isDamageable()},
-                // {"maxStackSize", item->getMaxStackSize()},
+                {"maxStackSize", item->getMaxStackSize({})},
                 {"tags", tags},
             };
         }

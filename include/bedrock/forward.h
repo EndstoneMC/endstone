@@ -99,7 +99,6 @@ class InventoryTransaction;
 class ItemComponent;
 class ItemComponentPacket;
 class ItemData;
-class ItemDescriptor;
 class ItemInstance;
 class ItemUseMethod;
 class JigsawStructureRegistry;

@@ -20,6 +20,7 @@
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_location.h"
+#include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
