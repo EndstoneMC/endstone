@@ -518,6 +518,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                     {"friction", roundValue<6>(block.getFriction())},
                     {"destroySpeed", roundValue<6>(block.getDestroySpeed())},
                     {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
+                    {"canDropWithAnyTool", block.canDropWithAnyTool()},
                     {"mapColor", map_color.toHexString()},
                     {"collisionShape",
                      {

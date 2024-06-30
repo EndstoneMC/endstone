@@ -28,6 +28,11 @@ using BlockRuntimeId = std::uint32_t;
 
 class Block : public BlockComponentStorage {
 public:
+    [[nodiscard]] bool canDropWithAnyTool() const
+    {
+        return legacy_block_->canDropWithAnyTool();
+    }
+
     [[nodiscard]] const CompoundTag &getSerializationId() const
     {
         return serialization_id_;

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <shared_mutex>
+
 #include "bedrock/common/game_version.h"
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/core/math/color.h"
@@ -245,6 +247,11 @@ public:
     [[nodiscard]] virtual Block const *getOnBlock(Block const *) const = 0;
     [[nodiscard]] virtual Block const *getOffBlock(Block const *) const = 0;
 
+    [[nodiscard]] bool canDropWithAnyTool() const
+    {
+        return can_drop_with_any_tool_;
+    }
+
     [[nodiscard]] float getThickness() const
     {
         return thickness_;
@@ -349,6 +356,18 @@ private:
     BlockState *creative_enum_state_;                                 // +760 (+648)
     std::vector<std::unique_ptr<Block>> block_permutations_;          // +768 (+656)
     Block *default_state_;                                            // +792 (+680)
+    std::vector<void *> unknown4_;                                    // +800 (+688)
+#ifdef __linux__                                                      //
+    std::shared_timed_mutex mutex_;                                   //      (+712)
+#endif                                                                //
+    std::int64_t unknown5_;                                           // +824 (+848)
+    std::unordered_map<void *, void *> unknown6_;                     // +832 (+856)
+    std::unique_ptr<void *> block_state_group_;                       // +896        void* BlockStateGroup
+    std::unique_ptr<void *> unknown7_;                                // +904
+    std::int64_t unknown8_;                                           // +912
+    bool can_drop_with_any_tool_;                                     // +920
+    std::vector<void *> unknown9_;                                    // +928
+    std::vector<void *> unknown10_;                                   // +952
     // ...
     // TODO(fixme): check offsets on Linux
 };
