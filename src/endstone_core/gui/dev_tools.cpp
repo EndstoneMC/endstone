@@ -481,6 +481,7 @@ void DevTools::showBlockWindow(bool *open, EndstoneServer *server, nlohmann::jso
                 {"blocksPrecipitation", material.getBlocksPrecipitation()},
                 {"isSolid", material.isSolid()},
                 {"isSuperHot", material.isSuperHot()},
+                {"isSolidBlocking", material.isSolidBlocking()},
             };
 
             const auto &name = block_legacy.getFullNameId();

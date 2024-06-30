@@ -59,6 +59,10 @@ public:
     {
         return super_hot_;
     }
+    [[nodiscard]] bool isSolidBlocking() const
+    {
+        return !never_buildable_ && blocks_motion_;
+    }
 
 private:
     MaterialType type_;          // +0
