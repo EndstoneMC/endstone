@@ -19,6 +19,7 @@
 #include "bedrock/common/game_version.h"
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/core/math/color.h"
+#include "bedrock/core/math/int_range.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/direction.h"
@@ -348,7 +349,7 @@ private:
     bool is_vanilla_;                                                 // +544 (+472)
     std::vector<HashedString> tags_;                                  // +552 (+480)
     std::unordered_map<std::string, void *> event_handlers_;          // +576 (+504) void* = DefinitionEvent
-    int unknown2_;                                                    // +640 (+544)
+    bool enable_data_driven_vanilla_blocks_and_items_;                // +640 (+544)
     AABB visual_shape_;                                               // +644 (+548)
     std::int64_t unknown3_;                                           // +672 (+576)
     std::map<std::uint64_t, BlockStateInstance> states_;              // +680 (+584) void* = BlockStateInstance
@@ -362,9 +363,9 @@ private:
 #endif                                                                //
     std::int64_t unknown5_;                                           // +824 (+848)
     std::unordered_map<void *, void *> unknown6_;                     // +832 (+856)
-    std::unique_ptr<void *> block_state_group_;                       // +896        void* BlockStateGroup
-    std::unique_ptr<void *> unknown7_;                                // +904
-    std::int64_t unknown8_;                                           // +912
+    std::unique_ptr<void *> block_state_group_;                       // +896        void* = BlockStateGroup
+    std::unique_ptr<void *> resource_drops_strategy_;                 // +904        void* = IResourceDropsStrategy
+    IntRange experience_drop_;                                        // +912
     bool can_drop_with_any_tool_;                                     // +920
     std::vector<void *> unknown9_;                                    // +928
     std::vector<void *> unknown10_;                                   // +952
