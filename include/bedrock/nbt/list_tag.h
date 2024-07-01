@@ -114,6 +114,11 @@ public:
     {
         return data_[index].get();
     }
+    void add(std::unique_ptr<Tag> tag)
+    {
+        type_ = tag->getId();
+        data_.push_back(std::move(tag));
+    }
 
 private:
     std::vector<std::unique_ptr<Tag>> data_;  // +8
