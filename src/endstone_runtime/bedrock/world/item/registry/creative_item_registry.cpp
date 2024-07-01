@@ -14,6 +14,7 @@
 
 #include "bedrock/world/item/registry/creative_item_registry.h"
 
+#include "bedrock/world/item/item_instance.h"
 #include "endstone/detail/hook.h"
 
 void CreativeItemRegistry::forEachCreativeItemInstance(std::function<bool(ItemInstance &)> callback)

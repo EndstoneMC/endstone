@@ -42,6 +42,7 @@ class Actor;
 class Block;
 class Container;
 class ItemStack;
+class ItemInstance;
 class Player;
 
 class BlockLegacy : public BlockComponentStorage {

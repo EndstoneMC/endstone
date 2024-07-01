@@ -17,7 +17,6 @@
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
@@ -231,10 +230,10 @@ void dumpItemData(VanillaData &data, ::Level &level)
     });
 }
 
-void dumpCraftingData(VanillaData &data, ::Level &level)
+void dumpRecipes(VanillaData &data, ::Level &level)
 {
-    auto crafting_data_packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
-    // TODO...
+    auto &recipes = level.getRecipes();
+    // TODO: ...
 }
 
 }  // namespace
@@ -255,7 +254,7 @@ VanillaData *VanillaData::get()
                 VanillaData data;
                 dumpBlockData(data, level);
                 dumpItemData(data, level);
-                dumpCraftingData(data, level);
+                dumpRecipes(data, level);
                 entt::locator<VanillaData>::emplace(data);
             });
         }
