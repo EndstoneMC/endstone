@@ -21,10 +21,13 @@
 #include <imgui_internal.h>
 
 #include <filesystem>
+#include <fstream>
 #include <mutex>
+#include <utility>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
+#include <entt/entt.hpp>
 
 #include "endstone/color_format.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
@@ -39,6 +42,7 @@ namespace endstone::detail::devtools {
 namespace {
 auto &gLogger = LoggerFactory::getLogger("DevTools");
 GLFWwindow *gWindow = nullptr;
+ImGui::FileBrowser *gFileBrowser = nullptr;
 
 void onError(int error, const char *description)
 {
@@ -56,6 +60,7 @@ void onWindowClose(GLFWwindow *window)
 void showAboutWindow(bool *open);
 void showBlockWindow(bool *open);
 void showItemWindow(bool *open);
+void openFileBrowser(std::string title, const std::string &input_name);
 
 void render()
 {
@@ -76,7 +81,7 @@ void render()
         float x_scale, y_scale;
         GLFWmonitor *monitor = glfwGetPrimaryMonitor();
         glfwGetMonitorContentScale(monitor, &x_scale, &y_scale);
-        gWindow = glfwCreateWindow(x_scale * 360, y_scale * 640, "Endstone - DevTools", nullptr, nullptr);
+        gWindow = glfwCreateWindow(x_scale * 640, y_scale * 360, "Endstone - DevTools", nullptr, nullptr);
     }
 
     if (gWindow == nullptr) {
@@ -106,6 +111,14 @@ void render()
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(gWindow, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
+
+    // File browser
+    gFileBrowser = new ImGui::FileBrowser(ImGuiFileBrowserFlags_EnterNewFilename | ImGuiFileBrowserFlags_CreateNewDir);
+    auto data_dir = fs::current_path() / "data";
+    if (!exists(data_dir)) {
+        create_directories(data_dir);
+    }
+    gFileBrowser->SetPwd(data_dir);
 
     while (!glfwWindowShouldClose(gWindow)) {
         // Poll and handle events (inputs, window resize, etc.)
@@ -144,9 +157,49 @@ void render()
         static bool show_about_window = false;
         static bool show_block_window = true;
         static bool show_item_window = true;
+        static std::variant<std::monostate, nlohmann::json> file_to_save;
 
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
+                ImGui::SeparatorText("Export");
+                auto *data = VanillaData::get();
+                if (ImGui::BeginMenu("JSON files", data != nullptr)) {
+                    if (ImGui::MenuItem("Block Types")) {
+                        file_to_save = data->block_types;
+                        openFileBrowser("Save Block Types", "block_types.json");
+                    }
+                    if (ImGui::MenuItem("Block States")) {
+                        file_to_save = data->block_states;
+                        openFileBrowser("Save Block States", "block_states.json");
+                    }
+                    if (ImGui::MenuItem("Block Tags")) {
+                        file_to_save = data->block_tags;
+                        openFileBrowser("Save Block Tags", "block_tags.json");
+                    }
+                    if (ImGui::MenuItem("Materials")) {
+                        file_to_save = data->materials;
+                        openFileBrowser("Save Materials", "materials.json");
+                    }
+                    if (ImGui::MenuItem("Items")) {
+                        file_to_save = data->items;
+                        openFileBrowser("Save Items", "items.json");
+                    }
+                    if (ImGui::MenuItem("Creative Items")) {
+                        file_to_save = data->creative_items;
+                        openFileBrowser("Save Creative Items", "creative_items.json");
+                    }
+                    if (ImGui::MenuItem("Item Tags")) {
+                        file_to_save = data->item_tags;
+                        openFileBrowser("Save Item Tags", "item_tags.json");
+                    }
+                    ImGui::EndMenu();
+                }
+                if (ImGui::BeginMenu("NBT files")) {
+                    if (ImGui::MenuItem("Block Palette", nullptr, false, data != nullptr)) {
+                        // TODO: ...
+                    }
+                    ImGui::EndMenu();
+                }
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("View")) {
@@ -172,6 +225,21 @@ void render()
             showItemWindow(&show_item_window);
         }
 
+        // Handle file browser
+        gFileBrowser->Display();
+        if (gFileBrowser->HasSelected()) {
+            auto path = gFileBrowser->GetSelected();
+            std::visit(entt::overloaded{
+                           [&](std::monostate) { gLogger.error("Unable to save to {}: Empty json.", path.string()); },
+                           [&](const nlohmann::json &arg) {
+                               std::ofstream file(path);
+                               file << arg;
+                           }},
+                       file_to_save);
+            file_to_save = std::monostate();
+            gFileBrowser->ClearSelected();
+        }
+
         // Rendering
         ImGui::Render();
         int display_w;
@@ -185,11 +253,15 @@ void render()
     }
 
     // Cleanup
+    delete gFileBrowser;
+    gFileBrowser = nullptr;
+
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
 
     glfwDestroyWindow(gWindow);
+    gWindow = nullptr;
     glfwTerminate();
 }
 
@@ -284,6 +356,18 @@ void showItemWindow(bool *open)
         ImGui::Json(data->item_tags);
     }
     ImGui::End();
+}
+
+void openFileBrowser(std::string title, const std::string &input_name)
+{
+    if (!gFileBrowser) {
+        return;
+    }
+
+    gFileBrowser->Open();
+    gFileBrowser->SetTitle(std::move(title));
+    gFileBrowser->SetTypeFilters({fs::path(input_name).extension().string()});
+    gFileBrowser->SetInputName(input_name);
 }
 
 }  // namespace endstone::detail::devtools
