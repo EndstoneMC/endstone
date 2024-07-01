@@ -101,11 +101,11 @@ public:
         return *legacy_block_;
     }
 
-    bool getCollisionShape(AABB &outAABB, IConstBlockSource const &region, BlockPos const &pos,
+    bool getCollisionShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos,
                            optional_ref<GetCollisionShapeInterface const> entity) const
     {
-        outAABB = legacy_block_->getCollisionShape(*this, region, pos, entity);
-        return outAABB.min.x < outAABB.max.x && outAABB.min.y < outAABB.max.y && outAABB.min.z < outAABB.max.z;
+        out_aabb = legacy_block_->getCollisionShape(*this, region, pos, entity);
+        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
     }
 
 private:

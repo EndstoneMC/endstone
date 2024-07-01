@@ -76,7 +76,7 @@ void render()
         float x_scale, y_scale;
         GLFWmonitor *monitor = glfwGetPrimaryMonitor();
         glfwGetMonitorContentScale(monitor, &x_scale, &y_scale);
-        gWindow = glfwCreateWindow(x_scale * 720, y_scale * 480, "Endstone - DevTools", nullptr, nullptr);
+        gWindow = glfwCreateWindow(x_scale * 360, y_scale * 640, "Endstone - DevTools", nullptr, nullptr);
     }
 
     if (gWindow == nullptr) {
@@ -274,6 +274,10 @@ void showItemWindow(bool *open)
 
     if (ImGui::CollapsingHeader(fmt::format("{} Items", data->items.size()).c_str())) {
         ImGui::Json(data->items);
+    }
+
+    if (ImGui::CollapsingHeader(fmt::format("{} Creative Items", data->creative_items.size()).c_str())) {
+        ImGui::Json(data->creative_items);
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {

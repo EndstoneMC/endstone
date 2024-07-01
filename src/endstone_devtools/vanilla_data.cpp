@@ -183,9 +183,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
 void dumpItemData(VanillaData &data, ::Level &level)
 {
     auto item_registry = level.getItemRegistry().weak_registry.lock();
-    for (const auto &[key, value] : item_registry->getNameToItemMap()) {
-        auto item = value.lock();
-
+    for (const auto &[key, item] : item_registry->getNameToItemMap()) {
         const auto &name = item->getFullItemName();
         nlohmann::json tags;
         for (const auto &tag : item->getTags()) {
@@ -211,11 +209,21 @@ void dumpItemData(VanillaData &data, ::Level &level)
         };
     }
 
-    CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item) {
-        data.creative_items.push_back({
-            {"name", item.getName()},
-            {"auxValue", item.getAuxValue()},
-        });
+    CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item_instance) {
+        nlohmann::json json = {
+            {"name", item_instance.getItem()->getFullItemName()},
+            {"damage", item_instance.getAuxValue()},
+        };
+
+        if (const auto *user_data = item_instance.getUserData(); user_data) {
+            json["tag"] = toJson(*user_data);
+        }
+
+        if (item_instance.isBlock()) {
+            json["blockRuntimeId"] = item_instance.getBlock()->getRuntimeId();
+        }
+
+        data.creative_items.push_back(json);
         return true;
     });
 }

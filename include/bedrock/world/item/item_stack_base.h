@@ -74,17 +74,40 @@ public:
         if (hasCustomHoverName()) {
             return getCustomName();
         }
-
-        if (item_.expired()) {
+        if (!item_) {
             return "";
         }
+        return item_->buildDescriptionName(*this);  // TODO(fixme): calling this will lead to crash
+    }
 
-        return item_.lock()->buildDescriptionName(*this);
+    [[nodiscard]] const Item *getItem() const
+    {
+        return item_.get();
+    }
+
+    [[nodiscard]] bool hasUserData() const
+    {
+        return user_data_ != nullptr;
+    }
+
+    [[nodiscard]] const CompoundTag *getUserData() const
+    {
+        return user_data_.get();
+    }
+
+    [[nodiscard]] bool isBlock() const
+    {
+        return item_ && item_->getLegacyBlock();
+    }
+
+    [[nodiscard]] const Block *getBlock() const
+    {
+        return block_;
     }
 
 private:
-    inline static std::string TAG_DISPLAY = "display";
-    inline static std::string TAG_DISPLAY_NAME = "Name";
+    inline const static std::string TAG_DISPLAY = "display";    // NOLINT(*-identifier-naming)
+    inline const static std::string TAG_DISPLAY_NAME = "Name";  // NOLINT(*-identifier-naming)
 
     WeakPtr<Item> item_;                                  // +8
     std::unique_ptr<CompoundTag> user_data_;              // +16

@@ -113,14 +113,14 @@ public:
         std::swap(pc_, other.pc_);
     }
 
-private:
-    template <typename T1>
-    friend class WeakPtr;
-
     T *get() const noexcept
     {
         return pc_ ? pc_->ptr : nullptr;
     }
+
+private:
+    template <typename T1>
+    friend class WeakPtr;
 
     SharedCounter<T> *pc_{nullptr};
 };
@@ -192,19 +192,24 @@ public:
         std::swap(pc_, other.pc_);
     }
 
-    [[nodiscard]] bool expired() const noexcept
+    T *operator->() const noexcept
     {
-        return pc_ ? pc_->ptr == nullptr : true;
+        return get();
     }
 
-    SharedPtr<T> lock() const noexcept
+    T &operator*() const noexcept
     {
-        SharedPtr<T> ret;
-        if (pc_ && pc_->ptr != nullptr) {
-            pc_->share_count++;
-            ret.pc_ = pc_;
-        }
-        return ret;
+        return *get();
+    }
+
+    explicit operator bool() const
+    {
+        return get() != nullptr;
+    }
+
+    T *get() const noexcept
+    {
+        return pc_ ? pc_->ptr : nullptr;
     }
 
 private:

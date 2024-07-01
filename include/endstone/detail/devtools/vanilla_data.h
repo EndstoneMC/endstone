@@ -23,8 +23,8 @@ struct VanillaData {
     nlohmann::json block_tags;
     nlohmann::json materials;
     nlohmann::json items;
-    nlohmann::json item_tags;
     nlohmann::json creative_items;
+    nlohmann::json item_tags;
 
     static VanillaData *get();
 };

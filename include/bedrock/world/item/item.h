@@ -169,6 +169,11 @@ public:
         return tags_;
     }
 
+    [[nodiscard]] const WeakPtr<BlockLegacy> &getLegacyBlock() const
+    {
+        return legacy_block_;
+    }
+
 private:
     std::string texture_atlas_file_;                  // +8
     int frame_count_;                                 // +40
