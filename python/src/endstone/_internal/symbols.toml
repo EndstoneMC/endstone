@@ -1,4 +1,4 @@
-timestamp = 1719822103
+timestamp = 1719830932
 version = "1.21.1"
 
 [windows]
@@ -34,6 +34,8 @@ version = "1.21.1"
 "?getActorName@CommandUtils@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEBVActor@@@Z" = 13660416
 # Common
 "?getGameVersionString@Common@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 5416864
+# CraftingDataPacket
+"?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 8985280
 # CreativeItemRegistry
 "?forEachCreativeItemInstance@CreativeItemRegistry@@SAXV?$function@$$A6A_NAEAVItemInstance@@@Z@std@@@Z" = 28172608
 # Level
@@ -111,6 +113,8 @@ version = "1.21.1"
 "_ZN12CommandUtils12getActorNameERK5Actor" = 81667760
 # Common
 "_ZN6Common20getGameVersionStringEv" = 65104592
+# CraftingDataPacket
+"_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 79181520
 # CreativeItemRegistry
 "_ZN20CreativeItemRegistry27forEachCreativeItemInstanceENSt3__18functionIFbR12ItemInstanceEEE" = 120599952
 # Level
