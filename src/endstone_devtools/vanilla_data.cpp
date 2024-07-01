@@ -140,10 +140,10 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             data.block_tags[tag_name].push_back(name);
         }
 
-        data.block_types[name] = {
-            {"material", magic_enum::enum_name(material.getType())},
-            {"tags", tags},
-        };
+        data.block_types[name] = {{"material", magic_enum::enum_name(material.getType())}};
+        if (!tags.is_null()) {
+            data.block_types[name]["tags"] = tags;
+        }
 
         block_legacy.forEachBlockPermutation([&](const Block &block) {
             AABB collision_shape = {0};
@@ -205,8 +205,10 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"maxDamage", item->getMaxDamage()},
             {"isDamageable", item->isDamageable()},
             {"maxStackSize", item->getMaxStackSize({})},
-            {"tags", tags},
         };
+        if (!tags.is_null()) {
+            data.items[key.getString()]["tags"] = tags;
+        }
     }
 
     CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item_instance) {
