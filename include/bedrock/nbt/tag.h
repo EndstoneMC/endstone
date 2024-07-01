@@ -14,8 +14,8 @@
 
 #pragma once
 
+#include "bedrock/common/util/data_io.h"
 #include "bedrock/core/result.h"
-#include "bedrock/core/utility/data_io.h"
 #include "bedrock/core/utility/print_stream.h"
 
 class Tag {
