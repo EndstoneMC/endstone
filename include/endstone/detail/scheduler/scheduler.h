@@ -39,6 +39,7 @@ public:
     bool isQueued(TaskId id) override;
     std::vector<Task *> getPendingTasks() override;
 
+    std::shared_ptr<Task> runTask(std::function<void()> task);
     void addTask(std::shared_ptr<EndstoneTask> task);
     void mainThreadHeartbeat(std::uint64_t current_tick);
 

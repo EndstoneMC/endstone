@@ -28,6 +28,7 @@ public:
     using TaskClock = std::chrono::steady_clock;
     using CreatedAt = std::chrono::time_point<TaskClock>;
 
+    EndstoneTask(std::function<void()> task, TaskId id, std::uint64_t period);
     EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period);
     ~EndstoneTask() override = default;
     [[nodiscard]] TaskId getTaskId() const override;
@@ -44,7 +45,7 @@ public:
     void setNextRun(std::uint64_t next_run);
 
 private:
-    Plugin &plugin_;
+    Plugin *plugin_;
     std::function<void()> task_;
     TaskId id_;
     CreatedAt created_at_{TaskClock::now()};

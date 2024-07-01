@@ -99,6 +99,17 @@ std::vector<Task *> EndstoneScheduler::getPendingTasks()
     return pending;
 }
 
+std::shared_ptr<Task> EndstoneScheduler::runTask(std::function<void()> task)
+{
+    if (!task) {
+        return nullptr;
+    }
+    auto t = std::make_shared<EndstoneTask>(task, nextId(), 0);
+    t->setNextRun(current_tick_);
+    addTask(t);
+    return t;
+}
+
 void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
 {
     pending_.enqueue(task);

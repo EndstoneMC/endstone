@@ -18,9 +18,15 @@
 
 namespace endstone::detail {
 
-EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period)
-    : plugin_(plugin), task_(std::move(task)), id_(id), period_(period)
+EndstoneTask::EndstoneTask(std::function<void()> task, TaskId id, std::uint64_t period)
+    : task_(std::move(task)), id_(id), period_(period)
 {
+}
+
+EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period)
+    : EndstoneTask(std::move(task), id, period)
+{
+    plugin_ = &plugin;
 }
 
 TaskId EndstoneTask::getTaskId() const
@@ -30,7 +36,7 @@ TaskId EndstoneTask::getTaskId() const
 
 Plugin &EndstoneTask::getOwner() const
 {
-    return plugin_;
+    return *plugin_;
 }
 
 bool EndstoneTask::isSync() const
