@@ -133,6 +133,7 @@ class EndstoneRecipe(ConanFile):
             self.requires("glew/2.2.0")
             self.requires("glfw/3.4")
             self.requires("imgui/1.90.8-docking")
+            self.requires("zstr/1.0.7")
 
         self.test_requires("gtest/1.14.0")
 
@@ -196,6 +197,7 @@ class EndstoneRecipe(ConanFile):
                 "glew::glew",
                 "glfw::glfw",
                 "imgui::imgui",
+                "zstr::zstr",
             ]
 
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]

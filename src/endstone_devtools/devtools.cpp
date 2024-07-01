@@ -24,6 +24,7 @@
 #include <fstream>
 #include <mutex>
 #include <utility>
+#include <zstr.hpp>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -232,19 +233,19 @@ void render()
         gFileBrowser->Display();
         if (gFileBrowser->HasSelected()) {
             auto path = gFileBrowser->GetSelected();
-            std::visit(entt::overloaded{
-                           [&](std::monostate) { gLogger.error("Unable to save to {}: Empty json.", path.string()); },
-                           [&](const nlohmann::json &arg) {
-                               std::ofstream file(path);
-                               file << arg;
-                           },
-                           [&](CompoundTag *arg) {
-                               BigEndianStringByteOutput output;
-                               NbtIo::writeNamedTag("", *arg, output);
-                               std::ofstream file(path, std::ios::binary);
-                               file << output.buffer;
-                           }},
-                       file_to_save);
+            std::visit(
+                entt::overloaded{[&](std::monostate) { gLogger.error("Unable to save to {}: Empty.", path.string()); },
+                                 [&](const nlohmann::json &arg) {
+                                     std::ofstream file(path);
+                                     file << arg;
+                                 },
+                                 [&](CompoundTag *arg) {
+                                     BigEndianStringByteOutput output;
+                                     NbtIo::writeNamedTag("", *arg, output);
+                                     zstr::ofstream file(path.string(), std::ios::binary);
+                                     file << output.buffer;
+                                 }},
+                file_to_save);
             file_to_save = std::monostate();
             gFileBrowser->ClearSelected();
         }
