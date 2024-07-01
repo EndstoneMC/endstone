@@ -242,7 +242,7 @@ void render()
                                  [&](CompoundTag *arg) {
                                      BigEndianStringByteOutput output;
                                      NbtIo::writeNamedTag("", *arg, output);
-                                     zstr::ofstream file(path.string(), std::ios::binary);
+                                     zstr::ofstream file(path.string(), std::ios::out | std::ios::binary);
                                      file << output.buffer;
                                  }},
                 file_to_save);

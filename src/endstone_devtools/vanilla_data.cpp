@@ -111,6 +111,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
 {
     auto overworld = level.getDimension(VanillaDimensions::Overworld);
     auto &region = overworld->getBlockSourceFromMainChunkSource();
+    auto item_registry = level.getItemRegistry().weak_registry.lock();
 
     ::ListTag blocks;
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
@@ -144,6 +145,16 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         data.block_types[name] = {{"material", magic_enum::enum_name(material.getType())}};
         if (!tags.is_null()) {
             data.block_types[name]["tags"] = tags;
+        }
+
+        nlohmann::json special_tools;
+        for (const auto &[key, item] : item_registry->getNameToItemMap()) {
+            if (item->canDestroySpecial(*block_legacy.getDefaultState())) {
+                special_tools.push_back(item->getFullItemName());
+            }
+        }
+        if (!special_tools.is_null()) {
+            data.block_types[name]["specialTools"] = special_tools;
         }
 
         block_legacy.forEachBlockPermutation([&](const Block &block) {

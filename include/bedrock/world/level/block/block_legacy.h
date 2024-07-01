@@ -289,6 +289,11 @@ public:
         return name_info_.namespace_name;
     }
 
+    [[nodiscard]] const Block *getDefaultState() const
+    {
+        return default_state_;
+    }
+
     void forEachBlockPermutation(std::function<bool(Block const &)> callback) const
     {
         for (const auto &block_permutation : block_permutations_) {
