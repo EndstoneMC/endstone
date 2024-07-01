@@ -119,7 +119,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
             {"isReplaceable", material.isReplaceable()},
             {"isLiquid", material.isLiquid()},
-            {"translucency", material.getTranslucency()},
+            {"translucency", round(material.getTranslucency())},
             {"blocksMotion", material.getBlocksMotion()},
             {"blocksPrecipitation", material.getBlocksPrecipitation()},
             {"isSolid", material.isSolid()},

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/result.h"
 #include "bedrock/deps/raknet/packet_priority.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/compressibility.h"
@@ -24,23 +25,23 @@
 class Packet {
 public:
     virtual ~Packet() = default;
-    //    [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
-    //    [[nodiscard]] virtual std::string getName() const = 0;
-    //    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const = 0;
-    //    virtual void write(BinaryStream &) const = 0;
-    //    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &) = 0;
-    //    [[nodiscard]] virtual bool disallowBatching() const = 0;
-    //    [[nodiscard]] virtual bool isValid() const = 0;
+    // [[nodiscard]] virtual MinecraftPacketIds getId() const = 0;
+    // [[nodiscard]] virtual std::string getName() const = 0;
+    // [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const = 0;
+    // virtual void write(BinaryStream &) const = 0;
+    // [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &) = 0;
+    // [[nodiscard]] virtual bool disallowBatching() const = 0;
+    // [[nodiscard]] virtual bool isValid() const = 0;
 
 private:
-    //    [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
+    // [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &) = 0;
 
-    PacketPriority priority_;                          // + 8
-    NetworkPeer::Reliability reliability_;             // + 12
-    SubClientId sub_client_id_;                        // + 16
-    bool is_handled_;                                  // + 17
-    NetworkPeer::PacketRecvTimepoint recv_timepoint_;  // + 24
-    void *handler_;                                    // + 32
-    Compressibility compressibility_;                  // + 40
+    PacketPriority priority_{PacketPriority::MEDIUM_PRIORITY};                         // + 8
+    NetworkPeer::Reliability reliability_{NetworkPeer::Reliability::ReliableOrdered};  // + 12
+    SubClientId sub_client_id_{SubClientId::PrimaryClient};                            // + 16
+    bool is_handled_{false};                                                           // + 17
+    NetworkPeer::PacketRecvTimepoint recv_timepoint_{};                                // + 24
+    void *handler_{nullptr};                                                           // + 32
+    Compressibility compressibility_{Compressibility::Compressible};                   // + 40
 };
 BEDROCK_STATIC_ASSERT_SIZE(Packet, 48, 48);
