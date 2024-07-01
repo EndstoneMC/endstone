@@ -17,6 +17,7 @@
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/level/level.h"
@@ -209,6 +210,14 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"tags", tags},
         };
     }
+
+    CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item) {
+        data.creative_items.push_back({
+            {"name", item.getName()},
+            {"auxValue", item.getAuxValue()},
+        });
+        return true;
+    });
 }
 
 }  // namespace

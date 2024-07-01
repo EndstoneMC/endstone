@@ -24,6 +24,7 @@ struct VanillaData {
     nlohmann::json materials;
     nlohmann::json items;
     nlohmann::json item_tags;
+    nlohmann::json creative_items;
 
     static VanillaData *get();
 };
