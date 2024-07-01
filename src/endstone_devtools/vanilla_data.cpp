@@ -231,6 +231,12 @@ void dumpItemData(VanillaData &data, ::Level &level)
     });
 }
 
+void dumpCraftingData(VanillaData &data, ::Level &level)
+{
+    auto crafting_data_packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
+    // TODO...
+}
+
 }  // namespace
 
 VanillaData *VanillaData::get()
@@ -239,22 +245,22 @@ VanillaData *VanillaData::get()
         return &entt::locator<VanillaData>::value();
     }
 
-    if (!entt::locator<EndstoneServer>::has_value()) {
-        return nullptr;
+    if (entt::locator<EndstoneServer>::has_value()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        if (!server.getLevels().empty()) {
+            auto &level = static_cast<EndstoneLevel *>(server.getLevels()[0])->getHandle();
+            auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
+            scheduler.runTask([&]() {
+                // run on the server thread instead of UI thread
+                VanillaData data;
+                dumpBlockData(data, level);
+                dumpItemData(data, level);
+                dumpCraftingData(data, level);
+                entt::locator<VanillaData>::emplace(data);
+            });
+        }
     }
-
-    auto &server = entt::locator<EndstoneServer>::value();
-    if (server.getLevels().empty()) {
-        return nullptr;
-    }
-
-    auto &data = entt::locator<VanillaData>::emplace();
-    auto &level = static_cast<EndstoneLevel *>(server.getLevels()[0])->getHandle();
-
-    dumpBlockData(data, level);
-    dumpItemData(data, level);
-
-    return &data;
+    return nullptr;
 }
 
 }  // namespace endstone::detail::devtools

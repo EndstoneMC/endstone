@@ -77,7 +77,7 @@ public:
         if (!item_) {
             return "";
         }
-        return item_->buildDescriptionName(*this);  // TODO(fixme): calling this will lead to crash
+        return item_->buildDescriptionName(*this);
     }
 
     [[nodiscard]] const Item *getItem() const
