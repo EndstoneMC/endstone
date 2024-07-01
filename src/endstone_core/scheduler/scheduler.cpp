@@ -43,11 +43,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::funct
 
     auto t = std::make_shared<EndstoneTask>(plugin, task, nextId(), period);
     t->setNextRun(current_tick_ + delay);
-    if (!pending_.enqueue(t)) {
-        return nullptr;
-    }
-    std::lock_guard lock{tasks_mtx_};
-    tasks_[t->getTaskId()] = t;
+    addTask(t);
     return t;
 }
 
@@ -101,6 +97,13 @@ std::vector<Task *> EndstoneScheduler::getPendingTasks()
         pending.push_back(task.get());
     }
     return pending;
+}
+
+void EndstoneScheduler::addTask(std::shared_ptr<EndstoneTask> task)
+{
+    pending_.enqueue(task);
+    std::lock_guard lock{tasks_mtx_};
+    tasks_[task->getTaskId()] = task;
 }
 
 void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
