@@ -114,6 +114,16 @@ const std::string &CompoundTag::getString(std::string_view key) const
     return empty;
 }
 
+const CompoundTag *CompoundTag::getCompound(std::string_view key) const
+{
+    if (const auto *tag = get(key); tag) {
+        if (tag->getId() == Tag::Type::Compound) {
+            return static_cast<const CompoundTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
 Tag &CompoundTag::put(std::string name, Tag &&tag)
 {
     return tags_[name].emplace(std::forward<Tag>(tag));
