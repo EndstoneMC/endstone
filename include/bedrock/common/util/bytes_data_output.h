@@ -68,11 +68,9 @@ public:
     ~StringByteOutput() override = default;
     void writeBytes(const void *data, std::uint64_t bytes) override
     {
-        buffer_.append(static_cast<const char *>(data), bytes);
+        buffer.append(static_cast<const char *>(data), bytes);
     }
-
-private:
-    std::string buffer_;
+    std::string buffer;
 };
 
 class BigEndianStringByteOutput : public StringByteOutput {

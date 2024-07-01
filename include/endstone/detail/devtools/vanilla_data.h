@@ -15,12 +15,18 @@
 #pragma once
 
 #include <nlohmann/json.hpp>
+
+#include "bedrock/nbt/compound_tag.h"
+
 namespace endstone::detail::devtools {
+
+nlohmann::json toJson(const Tag &tag);
 
 struct VanillaData {
     nlohmann::json block_types;
     nlohmann::json block_states;
     nlohmann::json block_tags;
+    ::CompoundTag block_palette;
     nlohmann::json materials;
     nlohmann::json items;
     nlohmann::json creative_items;

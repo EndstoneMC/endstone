@@ -29,6 +29,8 @@
 #include <GLFW/glfw3.h>
 #include <entt/entt.hpp>
 
+#include "bedrock/common/util/bytes_data_output.h"
+#include "bedrock/nbt/nbt_io.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/devtools/vanilla_data.h"
@@ -157,7 +159,7 @@ void render()
         static bool show_about_window = false;
         static bool show_block_window = true;
         static bool show_item_window = true;
-        static std::variant<std::monostate, nlohmann::json> file_to_save;
+        static std::variant<std::monostate, nlohmann::json, CompoundTag *> file_to_save;
 
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
@@ -196,7 +198,8 @@ void render()
                 }
                 if (ImGui::BeginMenu("NBT files")) {
                     if (ImGui::MenuItem("Block Palette", nullptr, false, data != nullptr)) {
-                        // TODO: ...
+                        file_to_save = &data->block_palette;
+                        openFileBrowser("Save Block Palette", "block_palette.nbt");
                     }
                     ImGui::EndMenu();
                 }
@@ -234,6 +237,12 @@ void render()
                            [&](const nlohmann::json &arg) {
                                std::ofstream file(path);
                                file << arg;
+                           },
+                           [&](CompoundTag *arg) {
+                               BigEndianStringByteOutput output;
+                               NbtIo::writeNamedTag("", *arg, output);
+                               std::ofstream file(path);
+                               file << output.buffer;
                            }},
                        file_to_save);
             file_to_save = std::monostate();

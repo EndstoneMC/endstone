@@ -25,19 +25,6 @@
 
 namespace endstone::detail::devtools {
 
-namespace {
-double round(double d)
-{
-    d *= 1000000.0;
-    if (d >= 0) {
-        d += 0.5;
-    }
-    else {
-        d -= 0.5;
-    }
-    return static_cast<int>(d) / 1000000.0;
-}
-
 nlohmann::json toJson(const Tag &tag)  // NOLINT(*-no-recursion)
 {
     switch (tag.getId()) {
@@ -107,11 +94,25 @@ nlohmann::json toJson(const Tag &tag)  // NOLINT(*-no-recursion)
     }
 }
 
+namespace {
+double round(double d)
+{
+    d *= 1000000.0;
+    if (d >= 0) {
+        d += 0.5;
+    }
+    else {
+        d -= 0.5;
+    }
+    return static_cast<int>(d) / 1000000.0;
+}
+
 void dumpBlockData(VanillaData &data, ::Level &level)
 {
     auto overworld = level.getDimension(VanillaDimensions::Overworld);
     auto &region = overworld->getBlockSourceFromMainChunkSource();
 
+    ::ListTag blocks;
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
         const auto &material = block_legacy.getMaterial();
         auto material_name = magic_enum::enum_name(material.getType());
@@ -174,10 +175,12 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                      round(collision_shape.max.z),
                  }},
             });
+            blocks.add(block.getSerializationId().copy());
             return true;
         });
         return true;
     });
+    data.block_palette.put("blocks", std::move(blocks));
 }
 
 void dumpItemData(VanillaData &data, ::Level &level)
@@ -240,7 +243,9 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 
 VanillaData *VanillaData::get()
 {
-    if (entt::locator<VanillaData>::has_value()) {
+    static std::atomic<bool> ready = false;
+
+    if (ready) {
         return &entt::locator<VanillaData>::value();
     }
 
@@ -255,7 +260,8 @@ VanillaData *VanillaData::get()
                 dumpBlockData(data, level);
                 dumpItemData(data, level);
                 dumpRecipes(data, level);
-                entt::locator<VanillaData>::emplace(data);
+                entt::locator<VanillaData>::emplace(std::move(data));
+                ready = true;
             });
         }
     }
