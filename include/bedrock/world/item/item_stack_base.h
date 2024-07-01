@@ -37,7 +37,55 @@ public:
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual std::string toDebugString() const = 0;
 
+    [[nodiscard]] bool hasCustomHoverName() const
+    {
+        if (!user_data_) {
+            return false;
+        }
+        const auto *tag = user_data_->getCompound(TAG_DISPLAY);
+        if (!tag) {
+            return false;
+        }
+        return tag->contains(TAG_DISPLAY_NAME);
+    };
+
+    [[nodiscard]] std::string getCustomName() const
+    {
+        if (user_data_) {
+            if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
+                if (tag->contains(TAG_DISPLAY_NAME)) {
+                    return tag->getString(TAG_DISPLAY_NAME);
+                }
+            }
+        }
+        return "";
+    }
+
+    [[nodiscard]] std::uint16_t getAuxValue() const
+    {
+        if (!block_ || aux_value_ == 0x7fff) {
+            return aux_value_;
+        }
+        return block_->data_;
+    }
+
+    [[nodiscard]] std::string getName() const
+    {
+        if (hasCustomHoverName()) {
+            return getCustomName();
+        }
+
+        if (item_.expired()) {
+            return "";
+        }
+
+        return item_.lock()->buildDescriptionName(*this);
+    }
+
 private:
+    inline static std::string TAG_DISPLAY = "display";
+    inline static std::string TAG_DISPLAY_NAME = "Name";
+
     WeakPtr<Item> item_;                                  // +8
     std::unique_ptr<CompoundTag> user_data_;              // +16
     Block *block_;                                        // +24

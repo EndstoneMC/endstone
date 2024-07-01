@@ -109,6 +109,8 @@ public:
     }
 
 private:
+    friend class ItemStackBase;
+
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
     CachedComponentData cached_component_data_;            // +56 (+48)
