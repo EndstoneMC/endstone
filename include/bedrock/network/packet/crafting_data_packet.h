@@ -17,7 +17,32 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/core/hashed_string.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/world/item/network_item_instance_descriptor.h"
+
+enum CraftingDataEntryType {
+    ShapelessRecipe = 0,
+    ShapedRecipe = 1,
+    FurnaceRecipe = 2,
+    FurnaceAuxRecipe = 3,
+    MultiRecipe = 4,
+    ShulkerBoxRecipe = 5,
+    ShapelessChemistryRecipe = 6,
+    ShapedChemistryRecipe = 7,
+    SmithingTransformRecipe = 8,
+    SmithingTrimRecipe = 9,
+    COUNT = 10,
+};
+
+struct CraftingDataEntry {
+    std::unique_ptr<Recipe> recipe;
+    int item_data;
+    int item_aux;
+    HashedString tag;
+    NetworkItemInstanceDescriptor item_result;
+    CraftingDataEntryType entry_type;
+};
 
 struct PotionMixDataEntry {
     int from_item_id;

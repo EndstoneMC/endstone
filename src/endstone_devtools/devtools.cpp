@@ -391,24 +391,18 @@ void showRecipeWindow(bool *open)
         return;
     }
 
-    auto &crafting = data->recipes["crafting"];
-    if (ImGui::CollapsingHeader(fmt::format("{} Crafting Recipes", crafting.size()).c_str())) {
-        ImGui::Json(crafting);
+    if (ImGui::CollapsingHeader(fmt::format("{} Potion Mix Recipes", data->recipes.potion_mixes.size()).c_str())) {
+        ImGui::Json(data->recipes.potion_mixes);
     }
 
-    auto &potion_mixes = data->recipes["potionMixes"];
-    if (ImGui::CollapsingHeader(fmt::format("{} Potion Mixes", potion_mixes.size()).c_str())) {
-        ImGui::Json(potion_mixes);
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} Container Mix Recipes", data->recipes.container_mixes.size()).c_str())) {
+        ImGui::Json(data->recipes.container_mixes);
     }
 
-    auto &container_mixes = data->recipes["containerMixes"];
-    if (ImGui::CollapsingHeader(fmt::format("{} Container Mixes", container_mixes.size()).c_str())) {
-        ImGui::Json(container_mixes);
-    }
-
-    auto &material_reducer = data->recipes["materialReducer"];
-    if (ImGui::CollapsingHeader(fmt::format("{} Material Reducer Recipes", material_reducer.size()).c_str())) {
-        ImGui::Json(material_reducer);
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} Material Reducer Recipes", data->recipes.material_reducer.size()).c_str())) {
+        ImGui::Json(data->recipes.material_reducer);
     }
 
     ImGui::End();

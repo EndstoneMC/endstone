@@ -20,6 +20,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/hashed_string.h"
+#include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block/cached_component_data.h"

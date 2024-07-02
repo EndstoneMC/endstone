@@ -14,31 +14,12 @@
 
 #pragma once
 
-#include <nlohmann/json.hpp>
+#include <cstdint>
 
-#include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/item/item_descriptor.h"
 
-namespace endstone::detail::devtools {
-
-nlohmann::json toJson(const Tag &tag);
-
-struct VanillaData {
-    nlohmann::json block_types;
-    nlohmann::json block_states;
-    nlohmann::json block_tags;
-    ::ListTag block_palette;
-    nlohmann::json materials;
-    nlohmann::json items;
-    ::ListTag creative_items;
-    nlohmann::json item_tags;
-    struct {
-        nlohmann::json item_tags;
-        nlohmann::json potion_mixes;
-        nlohmann::json container_mixes;
-        nlohmann::json material_reducer;
-    } recipes;
-
-    static VanillaData *get();
+class ItemDescriptorCount : public ItemDescriptor {
+public:
+private:
+    std::int16_t stack_size_;
 };
-
-}  // namespace endstone::detail::devtools
