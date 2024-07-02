@@ -19,6 +19,8 @@
 
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/network/packet.h"
+#include "bedrock/world/item/crafting/recipe.h"
+#include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/network_item_instance_descriptor.h"
 
 enum CraftingDataEntryType {
@@ -75,7 +77,7 @@ public:
 
     ENDSTONE_HOOK static std::unique_ptr<CraftingDataPacket> prepareFromRecipes(Recipes const &, bool);
 
-    std::vector<void *> crafting_entries;                            // +48 void* = CraftingDataEntry
+    std::vector<CraftingDataEntry> crafting_entries;                 // +48
     std::vector<PotionMixDataEntry> potion_mix_entries;              // +72
     std::vector<ContainerMixDataEntry> container_mix_entries;        // +96
     std::vector<MaterialReducerDataEntry> material_reducer_entries;  // +120

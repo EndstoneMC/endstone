@@ -38,6 +38,7 @@
 #include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 #include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/registry/item_registry_ref.h"
 #include "bedrock/world/level/block/block_palette.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"

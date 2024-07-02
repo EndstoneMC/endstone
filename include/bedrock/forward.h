@@ -134,8 +134,6 @@ class PropertiesSettings;
 class ProjectileFactory;
 class Random;
 class ReadOnlyBinaryStream;
-class Recipe;
-class Recipes;
 class RenderParams;
 class ResolvedItemIconInfo;
 class ResolvedTextObject;
