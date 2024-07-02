@@ -52,6 +52,7 @@ public:
     [[nodiscard]] std::unique_ptr<Tag> copy() const override;
     [[nodiscard]] std::uint64_t hash() const override;
 
+    [[nodiscard]] std::unique_ptr<CompoundTag> clone() const;
     void deepCopy(const CompoundTag &other);
     [[nodiscard]] bool contains(std::string_view key) const;
     [[nodiscard]] bool contains(std::string_view key, Tag::Type type) const;
@@ -69,6 +70,7 @@ public:
     double &putDouble(std::string name, double value);
     std::string &putString(std::string name, std::string value);
     CompoundTag &putCompound(std::string name, CompoundTag value);
+    CompoundTag *putCompound(std::string name, std::unique_ptr<CompoundTag> value);
 
     iterator begin()
     {

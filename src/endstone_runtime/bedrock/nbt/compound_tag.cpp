@@ -57,9 +57,7 @@ bool CompoundTag::equals(const Tag &other) const
 
 std::unique_ptr<Tag> CompoundTag::copy() const
 {
-    auto new_tag = std::make_unique<CompoundTag>();
-    new_tag->deepCopy(*this);
-    return new_tag;
+    return clone();
 }
 
 std::uint64_t CompoundTag::hash() const
@@ -71,6 +69,13 @@ std::uint64_t CompoundTag::hash() const
         seed ^= value.get()->hash() + 0x9e3779b9 + (seed << 6) + (seed >> 2);
     }
     return seed;
+}
+
+std::unique_ptr<CompoundTag> CompoundTag::clone() const
+{
+    auto new_tag = std::make_unique<CompoundTag>();
+    new_tag->deepCopy(*this);
+    return new_tag;
 }
 
 void CompoundTag::deepCopy(const CompoundTag &other)
@@ -188,6 +193,14 @@ CompoundTag &CompoundTag::putCompound(std::string name, CompoundTag value)
 {
     auto &tag = tags_[name].emplace(std::move(value));
     return static_cast<CompoundTag &>(tag);
+}
+
+CompoundTag *CompoundTag::putCompound(std::string name, std::unique_ptr<CompoundTag> value)
+{
+    if (!value) {
+        return nullptr;
+    }
+    return static_cast<CompoundTag *>(&tags_[name].emplace(std::move(*value)));
 }
 
 const Tag *CompoundTagVariant::get() const
