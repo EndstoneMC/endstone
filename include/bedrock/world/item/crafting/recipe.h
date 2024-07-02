@@ -14,4 +14,92 @@
 
 #pragma once
 
-class Recipe {};
+#include "bedrock/common/game_version.h"
+#include "bedrock/core/utility/uuid.h"
+#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
+#include "bedrock/world/item/crafting/recipe_ingredient.h"
+#include "bedrock/world/item/item_instance.h"
+#include "recipe_unlocking_requirement.h"
+
+struct RecipeNetIdTag {};
+
+class Recipe {
+public:
+    class Result {
+    public:
+        [[nodiscard]] const std::vector<ItemInstance> &getItems() const
+        {
+            return items_;
+        }
+
+    private:
+        bool unknown_;                     // +0
+        std::vector<ItemInstance> items_;  // +8
+    };
+
+    virtual ~Recipe() = 0;
+
+    [[nodiscard]] const std::string &getRecipeId() const
+    {
+        return recipe_id_;
+    }
+
+    [[nodiscard]] const mce::UUID &getId() const
+    {
+        return id_;
+    }
+
+    [[nodiscard]] int getWidth() const
+    {
+        return width_;
+    }
+
+    [[nodiscard]] int getHeight() const
+    {
+        return height_;
+    }
+
+    [[nodiscard]] int getPriority() const
+    {
+        return priority_;
+    }
+
+    [[nodiscard]] const TypedServerNetId<RecipeNetIdTag, unsigned int> &getNetId() const
+    {
+        return recipe_net_id_;
+    }
+
+    [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const
+    {
+        return ingredients_;
+    }
+
+    [[nodiscard]] const std::vector<ItemInstance> &getResultItems() const
+    {
+        return result_.getItems();
+    }
+
+    [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const
+    {
+        return unlocking_requirement_;
+    }
+
+    [[nodiscard]] const HashedString &getTag() const
+    {
+        return tag_;
+    }
+
+private:
+    std::string recipe_id_;                                         // +8
+    mce::UUID id_;                                                  // +40  (+32)
+    int width_;                                                     // +56  (+48)
+    int height_;                                                    // +60  (+52)
+    int priority_;                                                  // +64  (+56)
+    TypedServerNetId<RecipeNetIdTag, unsigned int> recipe_net_id_;  // +68  (+60)
+    std::vector<RecipeIngredient> ingredients_;                     // +72  (+64)
+    Result result_;                                                 // +96  (+88)
+    char pad_[24];                                                  // +104 (+96)
+    RecipeUnlockingRequirement unlocking_requirement_;              // +152 (+144)
+    SemVersion version_;                                            // +184 (+176)
+    HashedString tag_;                                              // +296 (+264)
+};

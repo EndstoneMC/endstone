@@ -21,14 +21,13 @@
 template <typename Tag, typename Type = int, Type Default = 0>
 class TypedServerNetId {
 public:
-    virtual ~TypedServerNetId() = default;
-    Type value = Default;
+    Type raw_id = Default;
 };
 template <typename Tag, typename Type = int, Type Default = 0>
 class TypedClientNetId {
 public:
     virtual ~TypedClientNetId() = default;
-    Type value = Default;
+    Type raw_id = Default;
 };
 
 class ItemStackNetIdTag;
