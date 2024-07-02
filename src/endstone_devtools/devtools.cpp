@@ -63,6 +63,7 @@ void onWindowClose(GLFWwindow *window)
 void showAboutWindow(bool *open);
 void showBlockWindow(bool *open);
 void showItemWindow(bool *open);
+void showRecipeWindow(bool *open);
 void openFileBrowser(std::string title, const std::string &input_name);
 
 void render()
@@ -154,12 +155,14 @@ void render()
         std::call_once(first_time, [&] {
             ImGui::DockBuilderDockWindow("Blocks", dockspace_id);
             ImGui::DockBuilderDockWindow("Items", dockspace_id);
+            ImGui::DockBuilderDockWindow("Recipes", dockspace_id);
             ImGui::DockBuilderFinish(dockspace_id);
         });
 
         static bool show_about_window = false;
         static bool show_block_window = true;
         static bool show_item_window = true;
+        static bool show_recipe_window = true;
         static std::variant<std::monostate, nlohmann::json, CompoundTag> file_to_save;
 
         if (ImGui::BeginMainMenuBar()) {
@@ -212,6 +215,7 @@ void render()
                 ImGui::SeparatorText("Vanilla Data");
                 ImGui::MenuItem("Blocks", nullptr, &show_block_window);
                 ImGui::MenuItem("Items", nullptr, &show_item_window);
+                ImGui::MenuItem("Recipes", nullptr, &show_recipe_window);
                 ImGui::EndMenu();
             }
             if (ImGui::BeginMenu("Help")) {
@@ -229,6 +233,9 @@ void render()
         }
         if (show_item_window) {
             showItemWindow(&show_item_window);
+        }
+        if (show_recipe_window) {
+            showRecipeWindow(&show_recipe_window);
         }
 
         // Handle file browser
@@ -367,6 +374,43 @@ void showItemWindow(bool *open)
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
         ImGui::Json(data->item_tags);
     }
+    ImGui::End();
+}
+
+void showRecipeWindow(bool *open)
+{
+    if (!ImGui::Begin("Recipes", open)) {
+        ImGui::End();
+        return;
+    }
+
+    auto *data = VanillaData::get();
+    if (!data) {
+        ImGui::Text("Wait for server to be ready...");
+        ImGui::End();
+        return;
+    }
+
+    auto &crafting = data->recipes["crafting"];
+    if (ImGui::CollapsingHeader(fmt::format("{} Crafting Recipes", crafting.size()).c_str())) {
+        ImGui::Json(crafting);
+    }
+
+    auto &potion_mixes = data->recipes["potionMixes"];
+    if (ImGui::CollapsingHeader(fmt::format("{} Potion Mixes", potion_mixes.size()).c_str())) {
+        ImGui::Json(potion_mixes);
+    }
+
+    auto &container_mixes = data->recipes["containerMixes"];
+    if (ImGui::CollapsingHeader(fmt::format("{} Container Mixes", container_mixes.size()).c_str())) {
+        ImGui::Json(container_mixes);
+    }
+
+    auto &material_reducer = data->recipes["materialReducer"];
+    if (ImGui::CollapsingHeader(fmt::format("{} Material Reducer Recipes", material_reducer.size()).c_str())) {
+        ImGui::Json(material_reducer);
+    }
+
     ImGui::End();
 }
 

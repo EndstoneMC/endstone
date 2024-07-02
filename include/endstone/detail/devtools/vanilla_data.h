@@ -31,6 +31,7 @@ struct VanillaData {
     nlohmann::json items;
     ::ListTag creative_items;
     nlohmann::json item_tags;
+    nlohmann::json recipes;
 
     static VanillaData *get();
 };

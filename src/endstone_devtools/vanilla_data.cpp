@@ -244,8 +244,51 @@ void dumpItemData(VanillaData &data, ::Level &level)
 
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
-    auto &recipes = level.getRecipes();
-    // TODO: ...
+    auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
+    auto getFullItemName = [&level](int id) {
+        return level.getItemRegistry().weak_registry.lock()->getItem(id)->getFullItemName();
+    };
+
+    data.recipes["crafting"] = {};  // TODO:
+
+    nlohmann::json potion_mixes;
+    for (const auto &entry : packet->potion_mix_entries) {
+        potion_mixes.push_back({
+            {"input", getFullItemName(entry.from_item_id)},
+            {"inputMeta", entry.from_item_aux},
+            {"reagent", getFullItemName(entry.reagent_item_id)},
+            {"reagentMeta", entry.reagent_item_aux},
+            {"output", getFullItemName(entry.to_item_id)},
+            {"outputMeta", entry.to_item_aux},
+        });
+    }
+    data.recipes["potionMixes"] = potion_mixes;
+
+    nlohmann::json container_mixes;
+    for (const auto &entry : packet->container_mix_entries) {
+        container_mixes.push_back({
+            {"input", getFullItemName(entry.from_item_id)},
+            {"reagent", getFullItemName(entry.reagent_item_id)},
+            {"output", getFullItemName(entry.to_item_id)},
+        });
+    }
+    data.recipes["containerMixes"] = container_mixes;
+
+    nlohmann::json material_reducer;
+    for (const auto &entry : packet->material_reducer_entries) {
+        nlohmann::json json = {
+            {"input", entry.from_item_key},
+            {"outputs", {}},
+        };
+        for (const auto &item : entry.to_item_ids_and_counts) {
+            json["outputs"].push_back({
+                {"output", getFullItemName(item.to_item_id)},
+                {"outputMeta", item.to_item_count},
+            });
+        }
+        material_reducer.push_back(json);
+    }
+    data.recipes["materialReducer"] = material_reducer;
 }
 
 }  // namespace

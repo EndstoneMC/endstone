@@ -15,9 +15,19 @@
 #pragma once
 
 #include <memory>
+#include <unordered_map>
+#include <vector>
+
+#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/memory.h"
 
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
+    [[nodiscard]] WeakPtr<Item> getItem(int id) const
+    {
+        return id_to_item_map_.at(id);
+    }
+
     [[nodiscard]] int getItemCount() const
     {
         return items_.size();
