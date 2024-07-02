@@ -242,82 +242,136 @@ void dumpItemData(VanillaData &data, ::Level &level)
     });
 }
 
+void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &out)
+{
+    out.erase("input");
+    char next_key = 'A';
+    std::unordered_map<std::string, char> ingredient_key;
+    for (int i = 0; i < recipe.getHeight(); i++) {
+        std::string pattern;
+        for (int j = 0; j < recipe.getWidth(); j++) {
+            const auto &ingredient = recipe.getIngredient(j, i);
+            const auto &name = ingredient.getFullName();
+            if (name.empty() || ingredient.getStackSize() == 0) {
+                pattern.push_back(' ');
+                continue;
+            }
+            if (ingredient_key.find(name) == ingredient_key.end()) {
+                out["input"][std::string{next_key}] = {
+                    {"id", name},
+                    {"count", ingredient.getStackSize()},
+                };
+                ingredient_key[name] = next_key++;
+            }
+            pattern.push_back(ingredient_key[name]);
+        }
+        out["pattern"].push_back(pattern);
+    }
+    out["width"] = recipe.getWidth();
+    out["height"] = recipe.getHeight();
+}
+
 void dumpRecipes(VanillaData &data, ::Level &level)
 {
     auto packet = CraftingDataPacket::prepareFromRecipes(level.getRecipes(), false);
-    auto getFullItemName = [&level](int id) {
+    auto id_to_name = [&level](int id) {
         return level.getItemRegistry().weak_registry.lock()->getItem(id)->getFullItemName();
     };
 
     // NOTE: check CraftingDataEntry::write
     for (const auto &entry : packet->crafting_entries) {
-        switch (entry.entry_type) {
-        case ShapelessRecipe: {
-            nlohmann::json input;
+        nlohmann::json recipe;
+        if (entry.recipe) {
+            recipe["id"] = entry.recipe->getRecipeId();
+            recipe["netId"] = entry.recipe->getNetId().raw_id;
+            recipe["uuid"] = entry.recipe->getId().toEndstone().str();
+            recipe["tag"] = entry.recipe->getTag().getString();
+            recipe["priority"] = entry.recipe->getPriority();
             for (const auto &ingredient : entry.recipe->getIngredients()) {
-                nlohmann::json json = {
-                    {"id", ingredient.getFullName()},
+                recipe["input"].push_back({
+                    {"item", ingredient.getFullName()},
                     {"count", ingredient.getStackSize()},
-                };
-                if (ingredient.getAuxValue() != 0x7FFF) {
-                    json["damage"] = ingredient.getAuxValue();
+                });
+                if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != 0x7fff) {
+                    recipe["input"].back()["data"] = ingredient.getAuxValue();
                 }
-                input.push_back(json);
             }
-
-            nlohmann::json output;
             for (const auto &result_item : entry.recipe->getResultItems()) {
-                output.push_back({
-                    {"id", result_item.getItem()->getFullItemName()},
+                recipe["output"].push_back({
+                    {"item", result_item.getItem()->getFullItemName()},
                     {"count", result_item.getCount()},
                 });
+                if (result_item.getAuxValue() != 0 && result_item.getAuxValue() != 0x7fff) {
+                    recipe["output"].back()["data"] = result_item.getAuxValue();
+                }
             }
+        }
+        else {
+            recipe["tag"] = entry.tag.getString();
+            recipe["input"] = {
+                {"item", id_to_name(entry.item_data)},
+            };
+            if (entry.item_aux != 0 && entry.item_aux != 0x7fff) {
+                recipe["input"]["data"] = entry.item_aux;
+            }
+            recipe["output"] = {
+                {"item", entry.item_result.getFullName()},
+                {"count", entry.item_result.getStackSize()},
+            };
+            if (entry.item_result.getAuxValue() != 0 && entry.item_result.getAuxValue() != 0x7fff) {
+                recipe["output"]["data"] = entry.item_result.getAuxValue();
+            }
+        }
 
-            data.recipes.shapeless.push_back({
-                {"id", entry.recipe->getRecipeId()},
-                {"netId", entry.recipe->getNetId().raw_id},
-                {"input", input},
-                {"output", output},
-                {"uuid", entry.recipe->getId().toEndstone().str()},
-                {"tag", entry.recipe->getTag().getString()},
-                {"priority", entry.recipe->getPriority()},
-            });
+        switch (entry.entry_type) {
+        case ShapelessRecipe: {
+            data.recipes.shapeless.push_back(recipe);
             break;
         }
         case ShapedRecipe: {
-            data.recipes.shaped.push_back({});
+            dumpShapedRecipe(*entry.recipe, recipe);
+            data.recipes.shaped.push_back(recipe);
             break;
         }
         case FurnaceRecipe: {
-            data.recipes.furnace.push_back({});
+            data.recipes.furnace.push_back(recipe);
             break;
         }
         case FurnaceAuxRecipe: {
-            data.recipes.furnace_aux.push_back({});
+            data.recipes.furnace_aux.push_back(recipe);
             break;
         }
         case MultiRecipe: {
-            data.recipes.multi.push_back({});
+            data.recipes.multi.push_back(recipe);
             break;
         }
         case ShulkerBoxRecipe: {
-            data.recipes.shulker_box.push_back({});
+            data.recipes.shulker_box.push_back(recipe);
             break;
         }
         case ShapelessChemistryRecipe: {
-            data.recipes.shapeless_chemistry.push_back({});
+            data.recipes.shapeless_chemistry.push_back(recipe);
             break;
         }
         case ShapedChemistryRecipe: {
-            data.recipes.shaped_chemistry.push_back({});
+            dumpShapedRecipe(*entry.recipe, recipe);
+            data.recipes.shaped_chemistry.push_back(recipe);
             break;
         }
         case SmithingTransformRecipe: {
-            data.recipes.smithing_transform.push_back({});
+            recipe["template"] = recipe["input"][0];
+            recipe["base"] = recipe["input"][1];
+            recipe["addition"] = recipe["input"][2];
+            recipe.erase("input");
+            data.recipes.smithing_transform.push_back(recipe);
             break;
         }
         case SmithingTrimRecipe: {
-            data.recipes.smithing_trim.push_back({});
+            recipe["template"] = recipe["input"][0];
+            recipe["base"] = recipe["input"][1];
+            recipe["addition"] = recipe["input"][2];
+            //            recipe.erase("input");
+            data.recipes.smithing_trim.push_back(recipe);
             break;
         }
         default:
@@ -328,20 +382,20 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 
     for (const auto &entry : packet->potion_mix_entries) {
         data.recipes.potion_mixes.push_back({
-            {"input", getFullItemName(entry.from_item_id)},
+            {"input", id_to_name(entry.from_item_id)},
             {"inputMeta", entry.from_item_aux},
-            {"reagent", getFullItemName(entry.reagent_item_id)},
+            {"reagent", id_to_name(entry.reagent_item_id)},
             {"reagentMeta", entry.reagent_item_aux},
-            {"output", getFullItemName(entry.to_item_id)},
+            {"output", id_to_name(entry.to_item_id)},
             {"outputMeta", entry.to_item_aux},
         });
     }
 
     for (const auto &entry : packet->container_mix_entries) {
         data.recipes.container_mixes.push_back({
-            {"input", getFullItemName(entry.from_item_id)},
-            {"reagent", getFullItemName(entry.reagent_item_id)},
-            {"output", getFullItemName(entry.to_item_id)},
+            {"input", id_to_name(entry.from_item_id)},
+            {"reagent", id_to_name(entry.reagent_item_id)},
+            {"output", id_to_name(entry.to_item_id)},
         });
     }
 
@@ -352,8 +406,8 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         };
         for (const auto &item : entry.to_item_ids_and_counts) {
             json["outputs"].push_back({
-                {"output", getFullItemName(item.to_item_id)},
-                {"outputMeta", item.to_item_count},
+                {"id", id_to_name(item.to_item_id)},
+                {"count", item.to_item_count},
             });
         }
         data.recipes.material_reducer.push_back(json);

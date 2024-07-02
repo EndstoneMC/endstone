@@ -39,15 +39,24 @@ public:
     };
 
     virtual ~Recipe() = 0;
+    virtual std::vector<ItemInstance> const &assemble(CraftingContainer &, CraftingContext &) const = 0;
+    virtual int getCraftingSize() const = 0;
+    virtual RecipeIngredient const &getIngredient(int, int) const = 0;
+    virtual bool isShapeless() const = 0;
+    virtual bool matches(CraftingContainer const &, CraftingContext const &) const = 0;
+    virtual int size() const = 0;
+    virtual mce::UUID const &getId() const = 0;
+    virtual std::vector<ItemInstance> const &getResultItems() const = 0;
+    virtual bool isMultiRecipe() const = 0;
+    virtual bool hasDataDrivenResult() const = 0;
+    virtual bool itemValidForRecipe(ItemDescriptor const &, ItemStack const &) const = 0;
+    virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &) const = 0;
+    virtual bool itemsMatch(ItemDescriptor const &, ItemDescriptor const &, CompoundTag const *) const = 0;
+    virtual std::size_t getIngredientsHash() const = 0;
 
     [[nodiscard]] const std::string &getRecipeId() const
     {
         return recipe_id_;
-    }
-
-    [[nodiscard]] const mce::UUID &getId() const
-    {
-        return id_;
     }
 
     [[nodiscard]] int getWidth() const
@@ -73,11 +82,6 @@ public:
     [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const
     {
         return ingredients_;
-    }
-
-    [[nodiscard]] const std::vector<ItemInstance> &getResultItems() const
-    {
-        return result_.getItems();
     }
 
     [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const

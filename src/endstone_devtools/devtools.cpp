@@ -194,6 +194,24 @@ void render()
                         file_to_save = data->item_tags;
                         openFileBrowser("Save Item Tags", "item_tags.json");
                     }
+                    if (ImGui::MenuItem("Recipes")) {
+                        file_to_save = nlohmann::json{
+                            {"shapeless", data->recipes.shapeless},
+                            {"shaped", data->recipes.shaped},
+                            {"furnace", data->recipes.furnace},
+                            {"furnaceAux", data->recipes.furnace_aux},
+                            {"multi", data->recipes.multi},
+                            {"shulkerBox", data->recipes.shulker_box},
+                            {"shapelessChemistry", data->recipes.shapeless_chemistry},
+                            {"shapedChemistry", data->recipes.shaped_chemistry},
+                            {"smithingTransform", data->recipes.smithing_transform},
+                            {"smithingTrim", data->recipes.smithing_trim},
+                            {"potionMixes", data->recipes.potion_mixes},
+                            {"containerMixes", data->recipes.container_mixes},
+                            {"materialReducer", data->recipes.material_reducer},
+                        };
+                        openFileBrowser("Save Recipes", "recipes.json");
+                    }
                     ImGui::EndMenu();
                 }
                 if (ImGui::BeginMenu("NBT files")) {
