@@ -105,6 +105,11 @@ public:
         return block_;
     }
 
+    [[nodiscard]] std::uint8_t getCount() const  // Endstone
+    {
+        return count_;
+    }
+
 private:
     inline const static std::string TAG_DISPLAY = "display";    // NOLINT(*-identifier-naming)
     inline const static std::string TAG_DISPLAY_NAME = "Name";  // NOLINT(*-identifier-naming)

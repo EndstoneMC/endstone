@@ -14,14 +14,77 @@
 
 #pragma once
 
+#include <map>
+#include <optional>
+
+#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/nbt/compound_tag.h"
+
+class Item;
+
 class ItemDescriptor {
-    class BaseDescriptor {};
+    enum class InternalType;
 
 public:
-    ItemDescriptor() = default;
+    struct ItemEntry {
+        const Item *item;
+        std::int16_t aux_value;
+    };
 
+    class BaseDescriptor {
+    public:
+        [[nodiscard]] virtual std::unique_ptr<ItemDescriptor::BaseDescriptor> clone() const = 0;
+        [[nodiscard]] virtual bool sameItems(ItemDescriptor::BaseDescriptor const &, bool) const = 0;
+        [[nodiscard]] virtual bool sameItem(ItemDescriptor::ItemEntry const &, bool) const = 0;
+        [[nodiscard]] virtual std::string const &getFullName() const = 0;
+        [[nodiscard]] virtual ItemDescriptor::ItemEntry getItem() const = 0;
+        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, short)> func) const = 0;
+        [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;
+        [[nodiscard]] virtual std::optional<CompoundTag> save() const = 0;
+        virtual void serialize(Json::Value &val) const = 0;
+        virtual void serialize(BinaryStream &stream) const = 0;
+        [[nodiscard]] virtual ItemDescriptor::InternalType getType() const = 0;
+        [[nodiscard]] virtual bool isValid() const = 0;
+        [[nodiscard]] virtual std::size_t getHash() const = 0;
+        [[nodiscard]] virtual bool shouldResolve() const = 0;
+        [[nodiscard]] virtual std::unique_ptr<ItemDescriptor::BaseDescriptor> resolve() const = 0;
+        virtual ~BaseDescriptor() = 0;
+    };
+
+    ItemDescriptor() = default;
     virtual ~ItemDescriptor() = default;
 
+    [[nodiscard]] std::string const &getFullName() const
+    {
+        static std::string empty;
+        if (!impl_) {
+            return empty;
+        }
+        return impl_->getFullName();
+    }
+
+    [[nodiscard]] const Item *getItem() const
+    {
+        if (!impl_) {
+            return nullptr;
+        }
+        if (impl_->shouldResolve()) {
+            impl_ = std::move(impl_->resolve());
+        }
+        return impl_->getItem().item;
+    }
+
+    [[nodiscard]] std::int16_t getAuxValue() const
+    {
+        if (!impl_) {
+            return 0x7FFF;
+        }
+        if (impl_->shouldResolve()) {
+            impl_ = std::move(impl_->resolve());
+        }
+        return impl_->getItem().aux_value;
+    }
+
 private:
-    std::unique_ptr<ItemDescriptor::BaseDescriptor> impl_;
+    mutable std::unique_ptr<ItemDescriptor::BaseDescriptor> impl_;
 };

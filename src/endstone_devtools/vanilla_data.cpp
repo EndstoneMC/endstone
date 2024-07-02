@@ -255,24 +255,27 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         case ShapelessRecipe: {
             nlohmann::json input;
             for (const auto &ingredient : entry.recipe->getIngredients()) {
-                input.push_back({
-                    // {"id"},
-                    // {"count"},
-                    // {"type"},
-                    // {"auxValue"},
-                });  // TODO: ...
+                nlohmann::json json = {
+                    {"id", ingredient.getFullName()},
+                    {"count", ingredient.getStackSize()},
+                };
+                if (ingredient.getAuxValue() != 0x7FFF) {
+                    json["damage"] = ingredient.getAuxValue();
+                }
+                input.push_back(json);
             }
 
             nlohmann::json output;
             for (const auto &result_item : entry.recipe->getResultItems()) {
                 output.push_back({
                     {"id", result_item.getItem()->getFullItemName()},
-                    // {"count", }, // TODO: ...
+                    {"count", result_item.getCount()},
                 });
             }
 
             data.recipes.shapeless.push_back({
                 {"id", entry.recipe->getRecipeId()},
+                {"netId", entry.recipe->getNetId().raw_id},
                 {"input", input},
                 {"output", output},
                 {"uuid", entry.recipe->getId().toEndstone().str()},
