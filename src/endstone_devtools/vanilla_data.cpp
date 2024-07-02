@@ -249,6 +249,54 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         return level.getItemRegistry().weak_registry.lock()->getItem(id)->getFullItemName();
     };
 
+    for (const auto &entry : packet->crafting_entries) {
+        switch (entry.entry_type) {
+        case ShapelessRecipe: {
+            data.recipes.shapeless.push_back({});
+            break;
+        }
+        case ShapedRecipe: {
+            data.recipes.shaped.push_back({});
+            break;
+        }
+        case FurnaceRecipe: {
+            data.recipes.furnace.push_back({});
+            break;
+        }
+        case FurnaceAuxRecipe: {
+            data.recipes.furnace_aux.push_back({});
+            break;
+        }
+        case MultiRecipe: {
+            data.recipes.multi.push_back({});
+            break;
+        }
+        case ShulkerBoxRecipe: {
+            data.recipes.shulker_box.push_back({});
+            break;
+        }
+        case ShapelessChemistryRecipe: {
+            data.recipes.shapeless_chemistry.push_back({});
+            break;
+        }
+        case ShapedChemistryRecipe: {
+            data.recipes.shaped_chemistry.push_back({});
+            break;
+        }
+        case SmithingTransformRecipe: {
+            data.recipes.smithing_transform.push_back({});
+            break;
+        }
+        case SmithingTrimRecipe: {
+            data.recipes.smithing_trim.push_back({});
+            break;
+        }
+        default:
+        case COUNT:
+            throw std::runtime_error("Unknown craft data type");
+        }
+    }
+
     for (const auto &entry : packet->potion_mix_entries) {
         data.recipes.potion_mixes.push_back({
             {"input", getFullItemName(entry.from_item_id)},

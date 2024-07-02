@@ -391,15 +391,46 @@ void showRecipeWindow(bool *open)
         return;
     }
 
+    if (ImGui::CollapsingHeader(fmt::format("{} Shapeless Recipes", data->recipes.shapeless.size()).c_str())) {
+        ImGui::Json(data->recipes.shapeless);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Shaped Recipes", data->recipes.shaped.size()).c_str())) {
+        ImGui::Json(data->recipes.shaped);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Furnace Recipes", data->recipes.furnace.size()).c_str())) {
+        ImGui::Json(data->recipes.furnace);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Furnace Aux Recipes", data->recipes.furnace_aux.size()).c_str())) {
+        ImGui::Json(data->recipes.furnace_aux);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Multi Recipes", data->recipes.multi.size()).c_str())) {
+        ImGui::Json(data->recipes.multi);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Shulker Box Recipes", data->recipes.shulker_box.size()).c_str())) {
+        ImGui::Json(data->recipes.shulker_box);
+    }
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} Shapeless Chemistry Recipes", data->recipes.shapeless_chemistry.size()).c_str())) {
+        ImGui::Json(data->recipes.shapeless_chemistry);
+    }
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} Shaped Chemistry Recipes", data->recipes.shaped_chemistry.size()).c_str())) {
+        ImGui::Json(data->recipes.shaped_chemistry);
+    }
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} Smithing Transform Recipes", data->recipes.smithing_transform.size()).c_str())) {
+        ImGui::Json(data->recipes.smithing_transform);
+    }
+    if (ImGui::CollapsingHeader(fmt::format("{} Smithing Trim Recipes", data->recipes.smithing_trim.size()).c_str())) {
+        ImGui::Json(data->recipes.smithing_trim);
+    }
     if (ImGui::CollapsingHeader(fmt::format("{} Potion Mix Recipes", data->recipes.potion_mixes.size()).c_str())) {
         ImGui::Json(data->recipes.potion_mixes);
     }
-
     if (ImGui::CollapsingHeader(
             fmt::format("{} Container Mix Recipes", data->recipes.container_mixes.size()).c_str())) {
         ImGui::Json(data->recipes.container_mixes);
     }
-
     if (ImGui::CollapsingHeader(
             fmt::format("{} Material Reducer Recipes", data->recipes.material_reducer.size()).c_str())) {
         ImGui::Json(data->recipes.material_reducer);

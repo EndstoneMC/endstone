@@ -32,7 +32,16 @@ struct VanillaData {
     ::ListTag creative_items;
     nlohmann::json item_tags;
     struct {
-        nlohmann::json item_tags;
+        nlohmann::json shapeless;
+        nlohmann::json shaped;
+        nlohmann::json furnace;
+        nlohmann::json furnace_aux;
+        nlohmann::json multi;
+        nlohmann::json shulker_box;
+        nlohmann::json shapeless_chemistry;
+        nlohmann::json shaped_chemistry;
+        nlohmann::json smithing_transform;
+        nlohmann::json smithing_trim;
         nlohmann::json potion_mixes;
         nlohmann::json container_mixes;
         nlohmann::json material_reducer;
