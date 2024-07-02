@@ -84,11 +84,7 @@ public:
     }
     [[nodiscard]] std::unique_ptr<Tag> copy() const override
     {
-        auto copy = std::make_unique<ListTag>();
-        for (const auto &data : data_) {
-            copy->data_.push_back(data->copy());
-        }
-        return copy;
+        return copyList();
     }
     [[nodiscard]] std::uint64_t hash() const override
     {
@@ -118,6 +114,15 @@ public:
     {
         type_ = tag->getId();
         data_.push_back(std::move(tag));
+    }
+    [[nodiscard]] std::unique_ptr<ListTag> copyList() const
+    {
+        auto copy = std::make_unique<ListTag>();
+        copy->type_ = type_;
+        for (const auto &data : data_) {
+            copy->data_.push_back(data->copy());
+        }
+        return copy;
     }
 
 private:

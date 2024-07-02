@@ -175,7 +175,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
                 {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
-                {"canDropWithAnyTool", block.canDropWithAnyTool()},
+                // {"canDropWithAnyTool", block.canDropWithAnyTool()},
                 {"mapColor", map_color.toHexString()},
                 {"collisionShape",
                  {
@@ -236,6 +236,7 @@ void dumpItemData(VanillaData &data, ::Level &level)
         if (item_instance.isBlock()) {
             tag.putInt("blockStateHash", static_cast<std::int32_t>(item_instance.getBlock()->getRuntimeId()));
         }
+        data.creative_items.add(tag.copy());
         return true;
     });
 }

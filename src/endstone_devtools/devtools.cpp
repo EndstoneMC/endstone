@@ -160,7 +160,7 @@ void render()
         static bool show_about_window = false;
         static bool show_block_window = true;
         static bool show_item_window = true;
-        static std::variant<std::monostate, nlohmann::json, CompoundTag *> file_to_save;
+        static std::variant<std::monostate, nlohmann::json, CompoundTag> file_to_save;
 
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
@@ -187,10 +187,6 @@ void render()
                         file_to_save = data->items;
                         openFileBrowser("Save Items", "items.json");
                     }
-                    if (ImGui::MenuItem("Creative Items")) {
-                        file_to_save = data->creative_items;
-                        openFileBrowser("Save Creative Items", "creative_items.json");
-                    }
                     if (ImGui::MenuItem("Item Tags")) {
                         file_to_save = data->item_tags;
                         openFileBrowser("Save Item Tags", "item_tags.json");
@@ -199,8 +195,14 @@ void render()
                 }
                 if (ImGui::BeginMenu("NBT files")) {
                     if (ImGui::MenuItem("Block Palette", nullptr, false, data != nullptr)) {
-                        file_to_save = &data->block_palette;
+                        file_to_save = CompoundTag();
+                        std::get<CompoundTag>(file_to_save).put("blocks", data->block_palette.copy());
                         openFileBrowser("Save Block Palette", "block_palette.nbt");
+                    }
+                    if (ImGui::MenuItem("Creative Items")) {
+                        file_to_save = CompoundTag();
+                        std::get<CompoundTag>(file_to_save).put("items", data->creative_items.copy());
+                        openFileBrowser("Save Creative Items", "creative_items.nbt");
                     }
                     ImGui::EndMenu();
                 }
@@ -239,9 +241,9 @@ void render()
                                      std::ofstream file(path);
                                      file << arg;
                                  },
-                                 [&](CompoundTag *arg) {
+                                 [&](const CompoundTag &arg) {
                                      BigEndianStringByteOutput output;
-                                     NbtIo::writeNamedTag("", *arg, output);
+                                     NbtIo::writeNamedTag("", arg, output);
                                      zstr::ofstream file(path.string(), std::ios::out | std::ios::binary);
                                      file << output.buffer;
                                  }},
@@ -359,7 +361,7 @@ void showItemWindow(bool *open)
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Creative Items", data->creative_items.size()).c_str())) {
-        ImGui::Json(data->creative_items);
+        ImGui::Json(toJson(data->creative_items));
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {
