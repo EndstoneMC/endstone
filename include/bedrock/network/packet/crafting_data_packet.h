@@ -19,9 +19,40 @@
 
 #include "bedrock/network/packet.h"
 
+struct PotionMixDataEntry {
+    int from_item_id;
+    int from_item_aux;
+    int reagent_item_id;
+    int reagent_item_aux;
+    int to_item_id;
+    int to_item_aux;
+};
+
+struct ContainerMixDataEntry {
+    int from_item_id;
+    int reagent_item_id;
+    int to_item_id;
+};
+
+struct MaterialReducerEntryOutput {
+    int to_item_id;
+    int to_item_count;
+};
+
+struct MaterialReducerDataEntry {
+    int from_item_key;
+    std::vector<MaterialReducerEntryOutput> to_item_ids_and_counts;
+};
+
 class CraftingDataPacket : public Packet {
 public:
     ~CraftingDataPacket() override = default;
 
     ENDSTONE_HOOK static std::unique_ptr<CraftingDataPacket> prepareFromRecipes(Recipes const &, bool);
+
+    std::vector<void *> crafting_entries;                            // +48 void* = CraftingDataEntry
+    std::vector<PotionMixDataEntry> potion_mix_entries;              // +72
+    std::vector<ContainerMixDataEntry> container_mix_entries;        // +96
+    std::vector<MaterialReducerDataEntry> material_reducer_entries;  // +120
+    bool clear_recipes;                                              // +144
 };
