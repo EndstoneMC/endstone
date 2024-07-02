@@ -22,6 +22,7 @@
 #include "recipe_unlocking_requirement.h"
 
 struct RecipeNetIdTag {};
+using RecipeNetId = TypedServerNetId<RecipeNetIdTag, unsigned int>;
 
 class Recipe {
 public:
@@ -64,7 +65,7 @@ public:
         return priority_;
     }
 
-    [[nodiscard]] const TypedServerNetId<RecipeNetIdTag, unsigned int> &getNetId() const
+    [[nodiscard]] const RecipeNetId &getNetId() const
     {
         return recipe_net_id_;
     }
@@ -90,16 +91,16 @@ public:
     }
 
 private:
-    std::string recipe_id_;                                         // +8
-    mce::UUID id_;                                                  // +40  (+32)
-    int width_;                                                     // +56  (+48)
-    int height_;                                                    // +60  (+52)
-    int priority_;                                                  // +64  (+56)
-    TypedServerNetId<RecipeNetIdTag, unsigned int> recipe_net_id_;  // +68  (+60)
-    std::vector<RecipeIngredient> ingredients_;                     // +72  (+64)
-    Result result_;                                                 // +96  (+88)
-    char pad_[24];                                                  // +104 (+96)
-    RecipeUnlockingRequirement unlocking_requirement_;              // +152 (+144)
-    SemVersion version_;                                            // +184 (+176)
-    HashedString tag_;                                              // +296 (+264)
+    std::string recipe_id_;                             // +8
+    mce::UUID id_;                                      // +40  (+32)
+    int width_;                                         // +56  (+48)
+    int height_;                                        // +60  (+52)
+    int priority_;                                      // +64  (+56)
+    RecipeNetId recipe_net_id_;                         // +68  (+60)
+    std::vector<RecipeIngredient> ingredients_;         // +72  (+64)
+    Result result_;                                     // +96  (+88)
+    char pad_[24];                                      // +104 (+96)
+    RecipeUnlockingRequirement unlocking_requirement_;  // +152 (+144)
+    SemVersion version_;                                // +184 (+176)
+    HashedString tag_;                                  // +296 (+264)
 };

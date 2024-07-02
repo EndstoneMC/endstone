@@ -249,10 +249,36 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         return level.getItemRegistry().weak_registry.lock()->getItem(id)->getFullItemName();
     };
 
+    // NOTE: check CraftingDataEntry::write
     for (const auto &entry : packet->crafting_entries) {
         switch (entry.entry_type) {
         case ShapelessRecipe: {
-            data.recipes.shapeless.push_back({});
+            nlohmann::json input;
+            for (const auto &ingredient : entry.recipe->getIngredients()) {
+                input.push_back({
+                    // {"id"},
+                    // {"count"},
+                    // {"type"},
+                    // {"auxValue"},
+                });  // TODO: ...
+            }
+
+            nlohmann::json output;
+            for (const auto &result_item : entry.recipe->getResultItems()) {
+                output.push_back({
+                    {"id", result_item.getItem()->getFullItemName()},
+                    // {"count", }, // TODO: ...
+                });
+            }
+
+            data.recipes.shapeless.push_back({
+                {"id", entry.recipe->getRecipeId()},
+                {"input", input},
+                {"output", output},
+                {"uuid", entry.recipe->getId().toEndstone().str()},
+                {"tag", entry.recipe->getTag().getString()},
+                {"priority", entry.recipe->getPriority()},
+            });
             break;
         }
         case ShapedRecipe: {

@@ -14,4 +14,6 @@
 
 #pragma once
 
-class RecipeIngredient {};
+#include "bedrock/world/item/item_descriptor_count.h"
+
+class RecipeIngredient : public ItemDescriptorCount {};
