@@ -113,7 +113,6 @@ void dumpBlockData(VanillaData &data, ::Level &level)
     auto &region = overworld->getBlockSourceFromMainChunkSource();
     auto item_registry = level.getItemRegistry().weak_registry.lock();
 
-    ::ListTag blocks;
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
         const auto &material = block_legacy.getMaterial();
         auto material_name = magic_enum::enum_name(material.getType());
@@ -134,6 +133,9 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         nlohmann::json tags;
         for (const auto &tag : block_legacy.getTags()) {
             auto tag_name = tag.getString();
+            if (tag_name.rfind("minecraft:", 0) == std::string::npos) {
+                tag_name = "minecraft:" + tag_name;
+            }
             tags.push_back(tag_name);
 
             if (!data.block_tags.contains(tag_name)) {
@@ -163,8 +165,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
-                {"runtimeId", block.getRuntimeId()},
-                {"serializationId", toJson(block.getSerializationId())},
+                {"blockStateHash", block.getRuntimeId()},
                 {"burnOdds", block.getBurnOdds()},
                 {"flameOdds", block.getFlameOdds()},
                 {"thickness", round(block.getThickness())},
@@ -172,7 +173,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"lightEmission", block.getLightEmission()},
                 {"explosionResistance", round(block.getExplosionResistance())},
                 {"friction", round(block.getFriction())},
-                {"destroySpeed", round(block.getDestroySpeed())},
+                {"hardness", round(block.getDestroySpeed())},
                 {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
                 {"canDropWithAnyTool", block.canDropWithAnyTool()},
                 {"mapColor", map_color.toHexString()},
@@ -186,12 +187,11 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                      round(collision_shape.max.z),
                  }},
             });
-            blocks.add(block.getSerializationId().copy());
+            data.block_palette.add(block.getSerializationId().copy());
             return true;
         });
         return true;
     });
-    data.block_palette.put("blocks", std::move(blocks));
 }
 
 void dumpItemData(VanillaData &data, ::Level &level)
@@ -210,9 +210,8 @@ void dumpItemData(VanillaData &data, ::Level &level)
             data.item_tags[tag_name].push_back(name);
         }
 
-        data.items[key.getString()] = {
+        data.items[name] = {
             {"id", item->getId()},
-            {"name", name},
             {"attackDamage", item->getAttackDamage()},
             {"armorValue", item->getArmorValue()},
             {"toughnessValue", item->getToughnessValue()},
@@ -221,25 +220,22 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"maxStackSize", item->getMaxStackSize({})},
         };
         if (!tags.is_null()) {
-            data.items[key.getString()]["tags"] = tags;
+            data.items[name]["tags"] = tags;
         }
     }
 
     CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item_instance) {
-        nlohmann::json json = {
-            {"name", item_instance.getItem()->getFullItemName()},
-            {"damage", item_instance.getAuxValue()},
-        };
+        CompoundTag tag;
+        tag.putString("name", item_instance.getItem()->getFullItemName());
+        tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));
 
         if (const auto *user_data = item_instance.getUserData(); user_data) {
-            json["tag"] = toJson(*user_data);
+            tag.putCompound("tag", user_data->clone());
         }
 
         if (item_instance.isBlock()) {
-            json["blockRuntimeId"] = item_instance.getBlock()->getRuntimeId();
+            tag.putInt("blockStateHash", static_cast<std::int32_t>(item_instance.getBlock()->getRuntimeId()));
         }
-
-        data.creative_items.push_back(json);
         return true;
     });
 }

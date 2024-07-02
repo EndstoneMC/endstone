@@ -26,10 +26,10 @@ struct VanillaData {
     nlohmann::json block_types;
     nlohmann::json block_states;
     nlohmann::json block_tags;
-    ::CompoundTag block_palette;
+    ::ListTag block_palette;
     nlohmann::json materials;
     nlohmann::json items;
-    nlohmann::json creative_items;
+    ::ListTag creative_items;
     nlohmann::json item_tags;
 
     static VanillaData *get();
