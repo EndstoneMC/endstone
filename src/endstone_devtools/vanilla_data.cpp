@@ -278,7 +278,6 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         return level.getItemRegistry().weak_registry.lock()->getItem(id)->getFullItemName();
     };
 
-    // NOTE: check CraftingDataEntry::write
     for (const auto &entry : packet->crafting_entries) {
         nlohmann::json recipe;
         if (entry.recipe) {
@@ -287,15 +286,21 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             recipe["uuid"] = entry.recipe->getId().toEndstone().str();
             recipe["tag"] = entry.recipe->getTag().getString();
             recipe["priority"] = entry.recipe->getPriority();
+
             for (const auto &ingredient : entry.recipe->getIngredients()) {
-                recipe["input"].push_back({
-                    {"item", ingredient.getFullName()},
-                    {"count", ingredient.getStackSize()},
-                });
+                recipe["input"].push_back({{"count", ingredient.getStackSize()}});
+                if (ingredient.impl && ingredient.impl->getType() == ItemDescriptor::InternalType::ItemTag) {
+                    recipe["input"].back()["tag"] =
+                        static_cast<ItemDescriptor::ItemTagDescriptor *>(ingredient.impl.get())->item_tag.getString();
+                }
+                else {
+                    recipe["input"].back()["item"] = ingredient.getFullName();
+                }
                 if (ingredient.getAuxValue() != 0 && ingredient.getAuxValue() != 0x7fff) {
                     recipe["input"].back()["data"] = ingredient.getAuxValue();
                 }
             }
+
             for (const auto &result_item : entry.recipe->getResultItems()) {
                 recipe["output"].push_back({
                     {"item", result_item.getItem()->getFullItemName()},
@@ -370,7 +375,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             recipe["template"] = recipe["input"][0];
             recipe["base"] = recipe["input"][1];
             recipe["addition"] = recipe["input"][2];
-            //            recipe.erase("input");
+            recipe.erase("input");
             data.recipes.smithing_trim.push_back(recipe);
             break;
         }
@@ -382,12 +387,9 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 
     for (const auto &entry : packet->potion_mix_entries) {
         data.recipes.potion_mixes.push_back({
-            {"input", id_to_name(entry.from_item_id)},
-            {"inputMeta", entry.from_item_aux},
-            {"reagent", id_to_name(entry.reagent_item_id)},
-            {"reagentMeta", entry.reagent_item_aux},
-            {"output", id_to_name(entry.to_item_id)},
-            {"outputMeta", entry.to_item_aux},
+            {"input", {{"item", id_to_name(entry.from_item_id)}, {"data", entry.from_item_aux}}},
+            {"reagent", {{"item", id_to_name(entry.reagent_item_id)}, {"data", entry.reagent_item_aux}}},
+            {"output", {{"item", id_to_name(entry.to_item_id)}, {"data", entry.to_item_aux}}},
         });
     }
 
@@ -419,6 +421,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
 VanillaData *VanillaData::get()
 {
     static std::atomic<bool> ready = false;
+    static std::atomic<bool> should_run = true;
 
     if (ready) {
         return &entt::locator<VanillaData>::value();
@@ -429,15 +432,18 @@ VanillaData *VanillaData::get()
         if (!server.getLevels().empty()) {
             auto &level = static_cast<EndstoneLevel *>(server.getLevels()[0])->getHandle();
             auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
-            scheduler.runTask([&]() {
-                // run on the server thread instead of UI thread
-                VanillaData data;
-                dumpBlockData(data, level);
-                dumpItemData(data, level);
-                dumpRecipes(data, level);
-                entt::locator<VanillaData>::emplace(std::move(data));
-                ready = true;
-            });
+            if (should_run) {
+                scheduler.runTask([&]() {
+                    // run on the server thread instead of UI thread
+                    VanillaData data;
+                    dumpBlockData(data, level);
+                    dumpItemData(data, level);
+                    dumpRecipes(data, level);
+                    entt::locator<VanillaData>::emplace(std::move(data));
+                    ready = true;
+                });
+                should_run = false;
+            }
         }
     }
     return nullptr;

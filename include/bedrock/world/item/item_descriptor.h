@@ -19,13 +19,21 @@
 
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/nbt/compound_tag.h"
+#include "bedrock/world/item/item_tag.h"
 
 class Item;
 
 class ItemDescriptor {
-    enum class InternalType;
-
 public:
+    enum class InternalType : std::uint8_t {
+        Invalid = 0,
+        Default = 1,
+        Molang = 2,
+        ItemTag = 3,
+        Deferred = 4,
+        ComplexAlias = 5,
+    };
+
     struct ItemEntry {
         const Item *item;
         std::int16_t aux_value;
@@ -38,7 +46,7 @@ public:
         [[nodiscard]] virtual bool sameItem(ItemDescriptor::ItemEntry const &, bool) const = 0;
         [[nodiscard]] virtual std::string const &getFullName() const = 0;
         [[nodiscard]] virtual ItemDescriptor::ItemEntry getItem() const = 0;
-        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, short)> func) const = 0;
+        [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const = 0;
         [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;
         [[nodiscard]] virtual std::optional<CompoundTag> save() const = 0;
         virtual void serialize(Json::Value &val) const = 0;
@@ -51,40 +59,44 @@ public:
         virtual ~BaseDescriptor() = 0;
     };
 
+    class ItemTagDescriptor : public BaseDescriptor {
+    public:
+        ItemTag item_tag;
+    };
+
     ItemDescriptor() = default;
     virtual ~ItemDescriptor() = default;
 
     [[nodiscard]] std::string const &getFullName() const
     {
         static std::string empty;
-        if (!impl_) {
+        if (!impl) {
             return empty;
         }
-        return impl_->getFullName();
+        return impl->getFullName();
     }
 
     [[nodiscard]] const Item *getItem() const
     {
-        if (!impl_) {
+        if (!impl) {
             return nullptr;
         }
-        if (impl_->shouldResolve()) {
-            impl_ = std::move(impl_->resolve());
+        if (impl->shouldResolve()) {
+            impl = std::move(impl->resolve());
         }
-        return impl_->getItem().item;
+        return impl->getItem().item;
     }
 
     [[nodiscard]] std::int16_t getAuxValue() const
     {
-        if (!impl_) {
+        if (!impl) {
             return 0x7FFF;
         }
-        if (impl_->shouldResolve()) {
-            impl_ = std::move(impl_->resolve());
+        if (impl->shouldResolve()) {
+            impl = std::move(impl->resolve());
         }
-        return impl_->getItem().aux_value;
+        return impl->getItem().aux_value;
     }
 
-private:
-    mutable std::unique_ptr<ItemDescriptor::BaseDescriptor> impl_;
+    mutable std::unique_ptr<ItemDescriptor::BaseDescriptor> impl;
 };
