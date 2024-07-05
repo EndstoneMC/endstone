@@ -22,6 +22,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `Player::getExpProgress` and `Player::setExpProgress` to get or set a player's progress towards the next level.
 - `Player::getExpLevel` and `Player::setExpLevel` to get or set a player's current experience level.
 - `Player::getTotalExp` to get the total amount of experiences a player has collected.
+- `Player::getLocale` to get the player's current locale.
+- `Player::getDeviceId` and `Player::getDeviceOS` to get information related to player's device.
+- A DevTools to help community projects get necessary data from BDS (currently only available on Windows). To open the
+  DevTools, use command `/devtools` in the console.
 
 ### Changed
 
