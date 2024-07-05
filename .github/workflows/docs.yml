@@ -9,6 +9,8 @@ on:
       - 'include/endstone/**'
       - 'python/**'
       - '*.md'
+  release:
+    types: [ published ]
 
 permissions:
   contents: write
@@ -39,4 +41,7 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install -r docs/requirements.txt
-      - run: mkdocs gh-deploy --force
+      - if: github.event_name == 'push'
+        run: mike deploy --push latest
+      - if: github.event_name == 'release'
+        run: mike deploy --push --update-aliases ${{ github.event.release.tag_name }} stable
