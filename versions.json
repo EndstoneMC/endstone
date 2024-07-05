@@ -1,12 +1,12 @@
 [
   {
-    "version": "latest",
-    "title": "latest",
+    "version": "stable",
+    "title": "stable",
     "aliases": []
   },
   {
-    "version": "stable",
-    "title": "stable",
+    "version": "latest",
+    "title": "latest",
     "aliases": []
   }
 ]

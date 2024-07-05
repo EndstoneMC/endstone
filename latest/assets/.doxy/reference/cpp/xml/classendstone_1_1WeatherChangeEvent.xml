@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1WeatherChangeEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::WeatherChangeEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1WeatherEvent" prot="public" virt="non-virtual">endstone::WeatherEvent</basecompoundref>
+    <includes refid="weather__change__event_8h" local="no">endstone/event/weather/weather_change_event.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::WeatherChangeEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;WeatherChangeEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="39" column="37" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool endstone::WeatherChangeEvent::to_</definition>
+        <argsstring></argsstring>
+        <name>to_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="51" column="10" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a8da88cc7137935e95a8382598519dfba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::WeatherChangeEvent::WeatherChangeEvent</definition>
+        <argsstring>(Level &amp;level, bool to)</argsstring>
+        <name>WeatherChangeEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="26" column="5" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a2654b155b5ca461dd93f90348142c3f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::WeatherChangeEvent::~WeatherChangeEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~WeatherChangeEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="27" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::WeatherChangeEvent::toWeatherState</definition>
+        <argsstring>() const</argsstring>
+        <name>toWeatherState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the state of weather that the world is being set to</para>
+<para><simplesect kind="return"><para>true if the weather is being set to raining, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="34" column="11" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="34" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1aed5ffb1d7cab8026df5c6b2529f95f24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::WeatherChangeEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="40" column="18" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherChangeEvent_1a3064843c4e4f138266ca6c6028c8ef15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::WeatherChangeEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_change_event.h" line="45" column="11" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="45" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Called when the weather (rain) state in a world is changing. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::WeatherEvent</label>
+        <link refid="classendstone_1_1WeatherEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::WeatherEvent</label>
+        <link refid="classendstone_1_1WeatherEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/weather/weather_change_event.h" line="24" column="1" bodyfile="include/endstone/event/weather/weather_change_event.h" bodystart="24" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1aed5ffb1d7cab8026df5c6b2529f95f24" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1aa7d9b8544131dfb728d5af0d65f1e064" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1a3064843c4e4f138266ca6c6028c8ef15" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1af684c3b39e6a91f4453f14e46ade558e" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1a2bde9420885bad855573e4557f771a8d" prot="private" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>to_</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1a6f1a7f2b0be3478b85737c52f35da02e" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>toWeatherState</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1a8da88cc7137935e95a8382598519dfba" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>WeatherChangeEvent</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1a5016b66f28a6173b04490eedc800c809" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>WeatherEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::WeatherChangeEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1WeatherChangeEvent_1a2654b155b5ca461dd93f90348142c3f3" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>~WeatherChangeEvent</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1a2fd933d4e6cb075fcfaeccf58344b742" prot="public" virt="non-virtual"><scope>endstone::WeatherChangeEvent</scope><name>~WeatherEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

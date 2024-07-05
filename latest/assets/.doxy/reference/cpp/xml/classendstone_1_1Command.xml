@@ -1,0 +1,647 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Command" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Command</compoundname>
+    <derivedcompoundref refid="classendstone_1_1PluginCommand" prot="public" virt="non-virtual">endstone::PluginCommand</derivedcompoundref>
+    <includes refid="command_8h" local="no">endstone/command/command.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Command_1a38260b8e8868c4008945a050adddd89d" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Command::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="270" column="17" bodyfile="include/endstone/command/command.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Command_1a402ad7e2575662204296a8a7c8a02c46" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Command::description_</definition>
+        <argsstring></argsstring>
+        <name>description_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="271" column="17" bodyfile="include/endstone/command/command.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::aliases_</definition>
+        <argsstring></argsstring>
+        <name>aliases_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="272" column="17" bodyfile="include/endstone/command/command.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Command_1a1cb2033591a7c1015ad86df7418059c7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::usages_</definition>
+        <argsstring></argsstring>
+        <name>usages_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="273" column="17" bodyfile="include/endstone/command/command.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::permissions_</definition>
+        <argsstring></argsstring>
+        <name>permissions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="274" column="17" bodyfile="include/endstone/command/command.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Command_1a8737004d405dc53b54f3517fe2661d2e" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> *</type>
+        <definition>CommandMap* endstone::Command::command_map_</definition>
+        <argsstring></argsstring>
+        <name>command_map_</name>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="275" column="16" bodyfile="include/endstone/command/command.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Command::Command</definition>
+        <argsstring>(std::string name, std::string description=&quot;&quot;, std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={})</argsstring>
+        <name>Command</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>usages</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>aliases</declname>
+          <defval>{}</defval>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>permissions</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="35" column="14" bodyfile="include/endstone/command/command.h" bodystart="35" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Command::~Command</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Command</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="45" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Command::execute</definition>
+        <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const</argsstring>
+        <name>execute</name>
+        <reimplementedby refid="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc">execute</reimplementedby>
+        <param>
+          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Executes the command, returning its success</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source of the command </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments passed to the command </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the execution was successful, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="54" column="19" bodyfile="include/endstone/command/command.h" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::Command::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the name of this command</para>
+<para><simplesect kind="return"><para>Name of this command </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="64" column="18" bodyfile="include/endstone/command/command.h" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Command::setName</definition>
+        <argsstring>(std::string name)</argsstring>
+        <name>setName</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the name of this command.</para>
+<para>May only be used before registering the command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New command name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="76" column="10" bodyfile="include/endstone/command/command.h" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::Command::getDescription</definition>
+        <argsstring>() const</argsstring>
+        <name>getDescription</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a brief description of this command</para>
+<para><simplesect kind="return"><para>Description of this command </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="89" column="18" bodyfile="include/endstone/command/command.h" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Command::setDescription</definition>
+        <argsstring>(std::string description)</argsstring>
+        <name>setDescription</name>
+        <param>
+          <type>std::string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets a brief description of this command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>new command description </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="99" column="10" bodyfile="include/endstone/command/command.h" bodystart="99" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a962debbad31b2ac387877fdf82dbbdc3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::getAliases</definition>
+        <argsstring>() const</argsstring>
+        <name>getAliases</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a list of aliases of this command</para>
+<para><simplesect kind="return"><para>List of aliases </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="111" column="18" bodyfile="include/endstone/command/command.h" bodystart="111" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Alias</declname>
+            <defname>Alias</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void endstone::Command::setAliases</definition>
+        <argsstring>(Alias... aliases)</argsstring>
+        <name>setAliases</name>
+        <param>
+          <type>Alias...</type>
+          <declname>aliases</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the list of aliases to request on registration for this command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>aliases</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>aliases to register to this command </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="122" column="10" bodyfile="include/endstone/command/command.h" bodystart="122" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a612208b29154d4c412bcd327d7a42106" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::getUsages</definition>
+        <argsstring>() const</argsstring>
+        <name>getUsages</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns a list of usages of this command</para>
+<para><simplesect kind="return"><para>List of usages </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="140" column="18" bodyfile="include/endstone/command/command.h" bodystart="140" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Usage</declname>
+            <defname>Usage</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void endstone::Command::setUsages</definition>
+        <argsstring>(Usage... usages)</argsstring>
+        <name>setUsages</name>
+        <param>
+          <type>Usage...</type>
+          <declname>usages</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the usages of this command</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>usages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of usages </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="151" column="10" bodyfile="include/endstone/command/command.h" bodystart="151" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a82f4bc4bf5bbce299310b1523019bb99" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Command::getPermissions</definition>
+        <argsstring>() const</argsstring>
+        <name>getPermissions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the permissions required by users to be able to perform this command</para>
+<para><simplesect kind="return"><para>List of permission names, or empty if none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="167" column="18" bodyfile="include/endstone/command/command.h" bodystart="167" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Permission</declname>
+            <defname>Permission</defname>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void endstone::Command::setPermissions</definition>
+        <argsstring>(Permission... permissions)</argsstring>
+        <name>setPermissions</name>
+        <param>
+          <type>Permission...</type>
+          <declname>permissions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the permissions required by users to be able to perform this command</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>permissions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of permission names </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="178" column="10" bodyfile="include/endstone/command/command.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::testPermission</definition>
+        <argsstring>(const CommandSender &amp;target) const</argsstring>
+        <name>testPermission</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. If they do not have permission, they will be informed that they cannot do this.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User to test </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if they can use it, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="190" column="11" bodyfile="include/endstone/command/command.h" bodystart="190" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::testPermissionSilently</definition>
+        <argsstring>(const CommandSender &amp;target) const</argsstring>
+        <name>testPermissionSilently</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Tests the given <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> to see if they can perform this command. No error is sent to the sender.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User to test </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if they can use it, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="207" column="11" bodyfile="include/endstone/command/command.h" bodystart="207" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::registerTo</definition>
+        <argsstring>(CommandMap &amp;command_map)</argsstring>
+        <name>registerTo</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <declname>command_map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers this command to a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> to register to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the registration was successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="223" column="10" bodyfile="include/endstone/command/command.h" bodystart="223" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1ac162a2899386e5a0de4c523522324e1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::unregisterFrom</definition>
+        <argsstring>(CommandMap &amp;command_map)</argsstring>
+        <name>unregisterFrom</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <declname>command_map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unregisters this command from a <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command_map</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> to unregister from </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the unregistration was successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="239" column="10" bodyfile="include/endstone/command/command.h" bodystart="239" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::isRegistered</definition>
+        <argsstring>() const</argsstring>
+        <name>isRegistered</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the current registered state of this command</para>
+<para><simplesect kind="return"><para>true if this command is currently registered false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="254" column="11" bodyfile="include/endstone/command/command.h" bodystart="254" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Command_1aaddbe8b0920daa59207a39fad880bf47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
+        <definition>virtual PluginCommand* endstone::Command::asPluginCommand</definition>
+        <argsstring>()</argsstring>
+        <name>asPluginCommand</name>
+        <reimplementedby refid="classendstone_1_1PluginCommand_1a5111f2a962276060d100c46daef6fd71">asPluginCommand</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="259" column="28" bodyfile="include/endstone/command/command.h" bodystart="259" bodyend="262"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classendstone_1_1Command_1a403d11862caed467be923652aabff55a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Command::allowChangesFrom</definition>
+        <argsstring>(CommandMap &amp;command_map)</argsstring>
+        <name>allowChangesFrom</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+          <declname>command_map</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command.h" line="265" column="10" bodyfile="include/endstone/command/command.h" bodystart="265" bodyend="268"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a <ref refid="classendstone_1_1Command" kindref="compound">Command</ref>, which executes various tasks upon user input. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::PluginCommand</label>
+        <link refid="classendstone_1_1PluginCommand"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::Command</label>
+        <link refid="classendstone_1_1Command"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/command/command.h" line="33" column="1" bodyfile="include/endstone/command/command.h" bodystart="33" bodyend="276"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Command_1abe0ff7e4cf40cad6b6dcb7e1a9c4bef2" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>aliases_</name></member>
+      <member refid="classendstone_1_1Command_1a403d11862caed467be923652aabff55a" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>allowChangesFrom</name></member>
+      <member refid="classendstone_1_1Command_1aaddbe8b0920daa59207a39fad880bf47" prot="public" virt="virtual"><scope>endstone::Command</scope><name>asPluginCommand</name></member>
+      <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>Command</name></member>
+      <member refid="classendstone_1_1Command_1a8737004d405dc53b54f3517fe2661d2e" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>command_map_</name></member>
+      <member refid="classendstone_1_1Command_1a402ad7e2575662204296a8a7c8a02c46" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>description_</name></member>
+      <member refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737" prot="public" virt="virtual"><scope>endstone::Command</scope><name>execute</name></member>
+      <member refid="classendstone_1_1Command_1a962debbad31b2ac387877fdf82dbbdc3" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getAliases</name></member>
+      <member refid="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getDescription</name></member>
+      <member refid="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Command_1a82f4bc4bf5bbce299310b1523019bb99" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getPermissions</name></member>
+      <member refid="classendstone_1_1Command_1a612208b29154d4c412bcd327d7a42106" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>getUsages</name></member>
+      <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>isRegistered</name></member>
+      <member refid="classendstone_1_1Command_1a38260b8e8868c4008945a050adddd89d" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>name_</name></member>
+      <member refid="classendstone_1_1Command_1a787227a863a60818990e90ccf2a898f7" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>permissions_</name></member>
+      <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>registerTo</name></member>
+      <member refid="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setAliases</name></member>
+      <member refid="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setDescription</name></member>
+      <member refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setName</name></member>
+      <member refid="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setPermissions</name></member>
+      <member refid="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>setUsages</name></member>
+      <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>testPermission</name></member>
+      <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>testPermissionSilently</name></member>
+      <member refid="classendstone_1_1Command_1ac162a2899386e5a0de4c523522324e1f" prot="public" virt="non-virtual"><scope>endstone::Command</scope><name>unregisterFrom</name></member>
+      <member refid="classendstone_1_1Command_1a1cb2033591a7c1015ad86df7418059c7" prot="private" virt="non-virtual"><scope>endstone::Command</scope><name>usages_</name></member>
+      <member refid="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" prot="public" virt="virtual"><scope>endstone::Command</scope><name>~Command</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
