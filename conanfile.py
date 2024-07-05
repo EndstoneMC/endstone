@@ -113,17 +113,17 @@ class EndstoneRecipe(ConanFile):
     def requirements(self):
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
-        self.requires("cpptrace/0.5.2")
+        self.requires("cpptrace/0.6.2")
         # self.requires("entt/3.13.0")
         self.requires("expected-lite/0.6.3")
-        self.requires("fmt/[>=10.1.1]", transitive_headers=True, transitive_libs=True)
+        self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
         self.requires("nlohmann_json/3.11.3")
-        self.requires("pybind11/2.11.1")
-        self.requires("spdlog/1.12.0")
+        self.requires("pybind11/2.13.1")
+        self.requires("spdlog/1.14.1")
         self.requires("tomlplusplus/3.3.0")
 
         if self.settings.os == "Linux":
