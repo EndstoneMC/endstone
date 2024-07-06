@@ -17,9 +17,12 @@
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/common/util/bytes_data_output.h"
+#include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "endstone/detail/base64.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
@@ -306,6 +309,11 @@ void dumpRecipes(VanillaData &data, ::Level &level)
                 });
                 if (result_item.getAuxValue() != 0 && result_item.getAuxValue() != 0x7fff) {
                     recipe["output"].back()["data"] = result_item.getAuxValue();
+                }
+                if (result_item.hasUserData()) {
+                    BigEndianStringByteOutput output;
+                    NbtIo::writeNamedTag("", *result_item.getUserData(), output);
+                    recipe["output"].back()["nbt"] = base64_encode(output.buffer);
                 }
             }
         }
