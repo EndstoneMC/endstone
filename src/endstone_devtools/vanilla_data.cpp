@@ -242,33 +242,31 @@ void dumpItemData(VanillaData &data, ::Level &level)
     });
 }
 
-void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &out)
+void dumpShapedRecipe(const Recipe &recipe, nlohmann::json &json)
 {
-    out.erase("input");
+    auto input = json["input"];
+    json.erase("input");
     char next_key = 'A';
     std::unordered_map<std::string, char> ingredient_key;
     for (int i = 0; i < recipe.getHeight(); i++) {
         std::string pattern;
         for (int j = 0; j < recipe.getWidth(); j++) {
-            const auto &ingredient = recipe.getIngredient(j, i);
-            const auto &name = ingredient.getFullName();
-            if (name.empty() || ingredient.getStackSize() == 0) {
+            const auto &ingredient = input[j + i * recipe.getWidth()];
+            if (ingredient["count"] == 0) {
                 pattern.push_back(' ');
                 continue;
             }
-            if (ingredient_key.find(name) == ingredient_key.end()) {
-                out["input"][std::string{next_key}] = {
-                    {"id", name},
-                    {"count", ingredient.getStackSize()},
-                };
-                ingredient_key[name] = next_key++;
+            auto name_or_tag = ingredient.contains("tag") ? ingredient["tag"] : ingredient["item"];
+            if (ingredient_key.find(name_or_tag) == ingredient_key.end()) {
+                json["input"][std::string{next_key}] = ingredient;
+                ingredient_key[name_or_tag] = next_key++;
             }
-            pattern.push_back(ingredient_key[name]);
+            pattern.push_back(ingredient_key[name_or_tag]);
         }
-        out["pattern"].push_back(pattern);
+        json["pattern"].push_back(pattern);
     }
-    out["width"] = recipe.getWidth();
-    out["height"] = recipe.getHeight();
+    json["width"] = recipe.getWidth();
+    json["height"] = recipe.getHeight();
 }
 
 void dumpRecipes(VanillaData &data, ::Level &level)
@@ -408,7 +406,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         };
         for (const auto &item : entry.to_item_ids_and_counts) {
             json["outputs"].push_back({
-                {"id", id_to_name(item.to_item_id)},
+                {"item", id_to_name(item.to_item_id)},
                 {"count", item.to_item_count},
             });
         }
