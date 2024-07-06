@@ -111,6 +111,7 @@ class EndstoneRecipe(ConanFile):
             raise ConanInvalidConfiguration(f"{self.ref} can only not be built on {self.settings.os}.")
 
     def requirements(self):
+        self.requires("base64/0.5.2")
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/0.6.2")
@@ -175,6 +176,7 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
         self.cpp_info.components["core"].requires = [
+            "base64::base64",
             "boost::boost",
             "concurrentqueue::concurrentqueue",
             # "entt::entt",

@@ -34,6 +34,7 @@ endif ()
 # ========
 # packages
 # ========
+find_package(base64 CONFIG REQUIRED)
 find_package(Boost CONFIG REQUIRED)
 find_package(concurrentqueue CONFIG REQUIRED)
 find_package(cpptrace CONFIG REQUIRED)
@@ -89,8 +90,8 @@ install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT ends
 file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_core/*.cpp")
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
-target_link_libraries(endstone_core PUBLIC endstone::headers boost::boost concurrentqueue::concurrentqueue EnTT::EnTT
-        nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
+target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
+        EnTT::EnTT nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
         spdlog::spdlog tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
