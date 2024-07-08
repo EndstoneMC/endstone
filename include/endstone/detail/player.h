@@ -94,6 +94,7 @@ public:
     [[nodiscard]] std::string getLocale() const override;
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] endstone::UUID getDeviceId() const override;
+    const Skin &getSkin() const override;
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
@@ -112,6 +113,7 @@ private:
     std::string locale_ = "en-US";
     std::string device_os_ = "unknown";
     endstone::UUID device_id_;
+    Skin skin_;
 };
 
 }  // namespace endstone::detail

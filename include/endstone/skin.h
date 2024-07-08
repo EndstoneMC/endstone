@@ -24,6 +24,8 @@ namespace endstone {
  */
 class Skin {
 public:
+    Skin() = default;
+
     Skin(std::string skin_id, std::string skin_data, std::string cape_id = "", std::string cape_data = "")
         : skin_id_(std::move(skin_id)), skin_data_(std::move(skin_data)), cape_id_(std::move(cape_id)),
           cape_data_(std::move(cape_data))

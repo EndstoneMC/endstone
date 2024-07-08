@@ -30,6 +30,7 @@
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
+#include "endstone/detail/base64.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -430,6 +431,11 @@ endstone::UUID EndstonePlayer::getDeviceId() const
     return device_id_;
 }
 
+const Skin &EndstonePlayer::getSkin() const
+{
+    return skin_;
+}
+
 void EndstonePlayer::initFromConnectionRequest(
     std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request)
 {
@@ -448,6 +454,14 @@ void EndstonePlayer::initFromConnectionRequest(
                 boost::uuids::string_generator gen;
                 auto boost_uuid = gen(device_id);
                 std::copy(std::begin(boost_uuid.data), std::end(boost_uuid.data), std::begin(device_id_.data));
+            }
+
+            {
+                auto skin_id = request->getData("SkinId").asString();
+                auto skin_data = base64_decode(request->getData("SkinData").asString()).value_or("");
+                auto cape_id = request->getData("CapeId").asString();
+                auto cape_data = base64_decode(request->getData("CapeData").asString()).value_or("");
+                skin_ = Skin(skin_id, skin_data, cape_id, cape_data);
             }
         },
         request);
