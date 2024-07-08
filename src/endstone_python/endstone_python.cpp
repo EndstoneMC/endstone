@@ -237,14 +237,22 @@ void init_server(py::class_<Server> &server)
 void init_player(py::module_ &m)
 {
     py::class_<Skin>(m, "Skin")
-        .def(py::init<std::string, std::string, std::string, std::string>(), py::arg("skin_id"), py::arg("skin_data"),
-             py::arg("cape_id"), py::arg("cape_data"))
+        .def(py::init<std::string, py::bytes, std::optional<std::string>, std::optional<py::bytes>>(),
+             py::arg("skin_id"), py::arg("skin_data"), py::arg("cape_id") = py::none(),
+             py::arg("cape_data") = py::none())
         .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
         .def_property_readonly(
             "skin_data", [](const Skin &self) { return py::bytes(self.getSkinData()); }, "Get the Skin data.")
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
         .def_property_readonly(
-            "cape_data", [](const Skin &self) { return py::bytes(self.getCapeData()); }, "Get the Cape data.");
+            "cape_data",
+            [](const Skin &self) -> std::optional<py::bytes> {
+                if (self.getCapeData().has_value()) {
+                    return py::bytes(self.getCapeData().value());
+                }
+                return py::none();
+            },
+            "Get the Cape data.");
 
     py::class_<Player, Actor>(m, "Player", "Represents a player.")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")

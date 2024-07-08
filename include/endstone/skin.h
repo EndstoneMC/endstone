@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 #include <utility>
 
@@ -26,7 +27,8 @@ class Skin {
 public:
     Skin() = default;
 
-    Skin(std::string skin_id, std::string skin_data, std::string cape_id, std::string cape_data)
+    Skin(std::string skin_id, std::string skin_data, std::optional<std::string> cape_id = std::nullopt,
+         std::optional<std::string> cape_data = std::nullopt)
         : skin_id_(std::move(skin_id)), skin_data_(std::move(skin_data)), cape_id_(std::move(cape_id)),
           cape_data_(std::move(cape_data))
     {
@@ -57,7 +59,7 @@ public:
      *
      * @return the cape id.
      */
-    [[nodiscard]] const std::string &getCapeId() const
+    [[nodiscard]] const std::optional<std::string> &getCapeId() const
     {
         return cape_id_;
     }
@@ -67,7 +69,7 @@ public:
      *
      * @return the cape data.
      */
-    [[nodiscard]] const std::string &getCapeData() const
+    [[nodiscard]] const std::optional<std::string> &getCapeData() const
     {
         return cape_data_;
     }
@@ -75,8 +77,8 @@ public:
 private:
     std::string skin_id_;
     std::string skin_data_;
-    std::string cape_id_;
-    std::string cape_data_;
+    std::optional<std::string> cape_id_;
+    std::optional<std::string> cape_data_;
 };
 
 }  // namespace endstone

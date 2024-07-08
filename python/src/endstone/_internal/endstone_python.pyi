@@ -1568,15 +1568,15 @@ class ServerLoadEvent(Event):
     def type(self) -> ServerLoadEvent.LoadType:
         ...
 class Skin:
-    def __init__(self, skin_id: str, skin_data: str, cape_id: str, cape_data: str) -> None:
+    def __init__(self, skin_id: str, skin_data: bytes, cape_id: str | None = None, cape_data: bytes | None = None) -> None:
         ...
     @property
-    def cape_data(self) -> bytes:
+    def cape_data(self) -> bytes | None:
         """
         Get the Cape data.
         """
     @property
-    def cape_id(self) -> str:
+    def cape_id(self) -> str | None:
         """
         Get the Cape ID.
         """
