@@ -458,10 +458,15 @@ void EndstonePlayer::initFromConnectionRequest(
 
             {
                 auto skin_id = request->getData("SkinId").asString();
+                auto skin_width = request->getData("SkinImageWidth").asInt();
+                auto skin_height = request->getData("SkinImageHeight").asInt();
                 auto skin_data = base64_decode(request->getData("SkinData").asString()).value_or("");
                 auto cape_id = request->getData("CapeId").asString();
+                auto cape_width = request->getData("CapeImageWidth").asInt();
+                auto cape_height = request->getData("CapeImageHeight").asInt();
                 auto cape_data = base64_decode(request->getData("CapeData").asString()).value_or("");
-                skin_ = Skin(skin_id, skin_data, cape_id, cape_data);
+                skin_ = Skin(skin_id, Skin::ImageData{skin_width, skin_height, skin_data}, cape_id,
+                             Skin::ImageData{cape_width, cape_height, cape_data});
             }
         },
         request);

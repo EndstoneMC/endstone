@@ -15,6 +15,7 @@
 #include <utility>
 
 #include <pybind11/chrono.h>
+#include <pybind11/numpy.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -237,20 +238,51 @@ void init_server(py::class_<Server> &server)
 void init_player(py::module_ &m)
 {
     py::class_<Skin>(m, "Skin")
-        .def(py::init<std::string, py::bytes, std::optional<std::string>, std::optional<py::bytes>>(),
+        .def(py::init([](std::string skin_id, py::array_t<std::uint8_t> skin_data, std::optional<std::string> cape_id,
+                         std::optional<py::array_t<std::uint8_t>> cape_data) {
+                 py::buffer_info info1 = skin_data.request();
+                 if (info1.ndim != 3 || info1.shape[2] != 4) {
+                     throw std::runtime_error("Incompatible shape. Expected (w, h, 4)");
+                 }
+                 Skin::ImageData sd = {static_cast<int>(info1.shape[0]), static_cast<int>(info1.shape[1]),
+                                       std::string(static_cast<char *>(info1.ptr), info1.size)};
+
+                 std::optional<Skin::ImageData> cd = std::nullopt;
+                 if (cape_data.has_value()) {
+                     py::buffer_info info2 = cape_data.value().request();
+                     if (info2.ndim != 3 || info2.shape[2] != 4) {
+                         throw std::runtime_error("Incompatible shape. Expected (w, h, 4)");
+                     }
+                     cd = {static_cast<int>(info2.shape[0]), static_cast<int>(info2.shape[1]),
+                           std::string(static_cast<char *>(info2.ptr), info2.size)};
+                 }
+                 return Skin(std::move(skin_id), sd, std::move(cape_id), cd);
+             }),
              py::arg("skin_id"), py::arg("skin_data"), py::arg("cape_id") = py::none(),
              py::arg("cape_data") = py::none())
         .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
         .def_property_readonly(
-            "skin_data", [](const Skin &self) { return py::bytes(self.getSkinData()); }, "Get the Skin data.")
+            "skin_data",
+            [](const Skin &self) {
+                const auto &data = self.getSkinData();
+                return py::array_t<std::uint8_t>(py::buffer_info(
+                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
+                    py::format_descriptor<std::uint8_t>::format(), 3, {data.width, data.height, 4},
+                    {sizeof(std::uint8_t) * data.height * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
+            },
+            "Get the Skin data.")
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
         .def_property_readonly(
             "cape_data",
-            [](const Skin &self) -> std::optional<py::bytes> {
-                if (self.getCapeData().has_value()) {
-                    return py::bytes(self.getCapeData().value());
+            [](const Skin &self) -> std::optional<py::array_t<std::uint8_t>> {
+                if (!self.getCapeData().has_value()) {
+                    return py::none();
                 }
-                return py::none();
+                const auto &data = self.getCapeData().value();
+                return py::array_t<std::uint8_t>(py::buffer_info(
+                    const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
+                    py::format_descriptor<std::uint8_t>::format(), 3, {data.width, data.height, 4},
+                    {sizeof(std::uint8_t) * data.height * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
             },
             "Get the Cape data.");
 

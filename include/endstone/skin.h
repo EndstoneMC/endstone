@@ -25,10 +25,16 @@ namespace endstone {
  */
 class Skin {
 public:
+    struct ImageData {
+        int width;
+        int height;
+        std::string data;
+    };
+
     Skin() = default;
 
-    Skin(std::string skin_id, std::string skin_data, std::optional<std::string> cape_id = std::nullopt,
-         std::optional<std::string> cape_data = std::nullopt)
+    Skin(std::string skin_id, ImageData skin_data, std::optional<std::string> cape_id = std::nullopt,
+         std::optional<ImageData> cape_data = std::nullopt)
         : skin_id_(std::move(skin_id)), skin_data_(std::move(skin_data)), cape_id_(std::move(cape_id)),
           cape_data_(std::move(cape_data))
     {
@@ -49,7 +55,7 @@ public:
      *
      * @return the skin data.
      */
-    [[nodiscard]] const std::string &getSkinData() const
+    [[nodiscard]] const ImageData &getSkinData() const
     {
         return skin_data_;
     }
@@ -69,16 +75,16 @@ public:
      *
      * @return the cape data.
      */
-    [[nodiscard]] const std::optional<std::string> &getCapeData() const
+    [[nodiscard]] const std::optional<ImageData> &getCapeData() const
     {
         return cape_data_;
     }
 
 private:
     std::string skin_id_;
-    std::string skin_data_;
+    ImageData skin_data_;
     std::optional<std::string> cape_id_;
-    std::optional<std::string> cape_data_;
+    std::optional<ImageData> cape_data_;
 };
 
 }  // namespace endstone

@@ -27,6 +27,7 @@ dependencies = [
     "click",
     "importlib_metadata",
     "importlib_resources",
+    "numpy",
     "packaging",
     "requests",
     "rich",

@@ -1,5 +1,6 @@
 from __future__ import annotations
 import datetime
+import numpy
 import os
 import typing
 import uuid
@@ -1568,10 +1569,10 @@ class ServerLoadEvent(Event):
     def type(self) -> ServerLoadEvent.LoadType:
         ...
 class Skin:
-    def __init__(self, skin_id: str, skin_data: bytes, cape_id: str | None = None, cape_data: bytes | None = None) -> None:
+    def __init__(self, skin_id: str, skin_data: numpy.ndarray[numpy.uint8], cape_id: str | None = None, cape_data: numpy.ndarray[numpy.uint8] | None = None) -> None:
         ...
     @property
-    def cape_data(self) -> bytes | None:
+    def cape_data(self) -> numpy.ndarray[numpy.uint8] | None:
         """
         Get the Cape data.
         """
@@ -1581,7 +1582,7 @@ class Skin:
         Get the Cape ID.
         """
     @property
-    def skin_data(self) -> bytes:
+    def skin_data(self) -> numpy.ndarray[numpy.uint8]:
         """
         Get the Skin data.
         """
