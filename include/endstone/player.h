@@ -19,6 +19,7 @@
 #include "endstone/actor/actor.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
 
@@ -253,6 +254,13 @@ public:
      * @return the player's device id
      */
     [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
+
+    /**
+     * @brief Gets the player's current skin.
+     *
+     * @return the player's skin
+     */
+    [[nodiscard]] virtual const Skin &getSkin() const = 0;
 };
 
 }  // namespace endstone
