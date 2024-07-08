@@ -24,6 +24,10 @@ namespace endstone::detail {
 template <class OutputBuffer, class InputIterator>
 inline OutputBuffer base64_encode(InputIterator begin, InputIterator end)
 {
+    static OutputBuffer empty_buffer;
+    if (begin == end) {
+        return empty_buffer;
+    }
     const std::size_t size = end - begin;
     const std::size_t buffer_size = (size / 3 + (size % 3 > 0)) << 2;
     OutputBuffer encoded(buffer_size, '=');

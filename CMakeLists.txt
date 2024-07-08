@@ -172,6 +172,7 @@ if (NOT BUILD_TESTING STREQUAL OFF)
 
     file(GLOB_RECURSE ENDSTONE_TEST_FILES CONFIGURE_DEPENDS "tests/*.cpp")
     add_executable(endstone_test ${ENDSTONE_TEST_FILES})
+    add_dependencies(endstone_test test_plugin)
     target_link_libraries(endstone_test PRIVATE endstone::core GTest::gtest_main GTest::gmock_main)
 
     include(GoogleTest)
