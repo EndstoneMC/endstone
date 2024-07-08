@@ -85,7 +85,7 @@
 * **dimension\_** ([**endstone::Position**](classendstone_1_1Position.md))
 * **dispatchCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **deserialize** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
-* **data** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 * **distance** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **distanceSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
@@ -235,6 +235,7 @@
 * **HandlerList** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **hasPermission** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
+* **height** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
 * **hostname\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 
 
@@ -503,6 +504,7 @@
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **warning** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **width** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
 * **with\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **WeatherChangeEvent** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **WeatherEvent** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))

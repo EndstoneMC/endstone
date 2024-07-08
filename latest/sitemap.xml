@@ -366,6 +366,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1Skin_1_1ImageData/</loc>
+         <lastmod>2024-07-08</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SocketAddress/</loc>
          <lastmod>2024-07-08</lastmod>
          <changefreq>daily</changefreq>

@@ -52,7 +52,7 @@
 * **default\_permission\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **dimension\_** ([**endstone::Position**](classendstone_1_1Position.md))
-* **data** ([**endstone::UUID**](classendstone_1_1UUID.md))
+* **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
 
 
 ## e
@@ -79,6 +79,7 @@
 ## h
 
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **height** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
 * **hostname\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 
 
@@ -194,6 +195,7 @@
 
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **width** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
 * **with\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 

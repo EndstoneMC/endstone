@@ -1722,6 +1722,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#classes" class="md-nav__link">
+      <span class="md-ellipsis">
+        Classes
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -1864,6 +1875,21 @@
 <ul>
 <li><code>#include &lt;endstone/skin.h&gt;</code></li>
 </ul>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structendstone_1_1Skin_1_1ImageData/"><strong>ImageData</strong></a> <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1879,10 +1905,10 @@
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-skin-22"><strong>Skin</strong></a> (std::string skin_id, std::string skin_data, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; std::string &gt; cape_data=std::nullopt) <br></td>
+<td style="text-align: left;"><a href="#function-skin-22"><strong>Skin</strong></a> (std::string skin_id, <a href="../structendstone_1_1Skin_1_1ImageData/"><strong>ImageData</strong></a> skin_data, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; <a href="../structendstone_1_1Skin_1_1ImageData/"><strong>ImageData</strong></a> &gt; cape_data=std::nullopt) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">const std::optional&lt; std::string &gt; &amp;</td>
+<td style="text-align: right;">const std::optional&lt; <a href="../structendstone_1_1Skin_1_1ImageData/"><strong>ImageData</strong></a> &gt; &amp;</td>
 <td style="text-align: left;"><a href="#function-getcapedata"><strong>getCapeData</strong></a> () const<br><em>Gets the cape data.</em></td>
 </tr>
 <tr>
@@ -1890,7 +1916,7 @@
 <td style="text-align: left;"><a href="#function-getcapeid"><strong>getCapeId</strong></a> () const<br><em>Gets the cape id.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">const std::string &amp;</td>
+<td style="text-align: right;">const <a href="../structendstone_1_1Skin_1_1ImageData/"><strong>ImageData</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getskindata"><strong>getSkinData</strong></a> () const<br><em>Gets the skin data.</em></td>
 </tr>
 <tr>
@@ -1908,16 +1934,16 @@
 <h3 id="function-skin-22">function Skin [2/2]<a class="headerlink" href="#function-skin-22" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">Skin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">skin_id</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">skin_data</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">ImageData</span><span class="w"> </span><span class="n">skin_data</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_id</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">,</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_data</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ImageData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">cape_data</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getcapedata">function getCapeData<a class="headerlink" href="#function-getcapedata" title="Permanent link">&para;</a></h3>
 <p><em>Gets the cape data.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ImageData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getCapeData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the cape data. </p>
@@ -1933,7 +1959,7 @@
 
 <h3 id="function-getskindata">function getSkinData<a class="headerlink" href="#function-getskindata" title="Permanent link">&para;</a></h3>
 <p><em>Gets the skin data.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getSkinData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ImageData</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Skin</span><span class="o">::</span><span class="n">getSkinData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the skin data. </p>

@@ -199,6 +199,11 @@
   <compound refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4" kind="struct"><name>std::hash&lt; endstone::UUID &gt;</name>
     <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" kind="function"><name>operator()</name></member>
   </compound>
+  <compound refid="structendstone_1_1Skin_1_1ImageData" kind="struct"><name>endstone::Skin::ImageData</name>
+    <member refid="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" kind="variable"><name>width</name></member>
+    <member refid="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" kind="variable"><name>height</name></member>
+    <member refid="structendstone_1_1Skin_1_1ImageData_1a0d40ddd60a74155b22f5ac0af6238f2c" kind="variable"><name>data</name></member>
+  </compound>
   <compound refid="classendstone_1_1Inventory" kind="class"><name>endstone::Inventory</name>
     <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" kind="function"><name>~Inventory</name></member>
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
@@ -653,15 +658,15 @@
   </compound>
   <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
     <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" kind="variable"><name>skin_id_</name></member>
-    <member refid="classendstone_1_1Skin_1ad57b1093ec20f32bb2c9ea190cad2df8" kind="variable"><name>skin_data_</name></member>
+    <member refid="classendstone_1_1Skin_1aaad023e4790ab3bb235ce881cb3a5e05" kind="variable"><name>skin_data_</name></member>
     <member refid="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" kind="variable"><name>cape_id_</name></member>
-    <member refid="classendstone_1_1Skin_1a3dba700b0c52e1b67d210ae5941bfb4e" kind="variable"><name>cape_data_</name></member>
+    <member refid="classendstone_1_1Skin_1ad5c1ff963e353b17b1b1b819e16ec0e2" kind="variable"><name>cape_data_</name></member>
     <member refid="classendstone_1_1Skin_1a632d137848165fa41e2a6e2d0b1bd860" kind="function"><name>Skin</name></member>
-    <member refid="classendstone_1_1Skin_1a2289291049b4952c3e9421a220e837db" kind="function"><name>Skin</name></member>
+    <member refid="classendstone_1_1Skin_1a3ffe17c5145118e1c2e83c4ca3e0669a" kind="function"><name>Skin</name></member>
     <member refid="classendstone_1_1Skin_1a648fbc52816f06c865fa3ff35d9171c8" kind="function"><name>getSkinId</name></member>
-    <member refid="classendstone_1_1Skin_1af97fd59cd183dd7a89dcc5f4096b2503" kind="function"><name>getSkinData</name></member>
+    <member refid="classendstone_1_1Skin_1a347494dbdbbb3d36578f3251d4517024" kind="function"><name>getSkinData</name></member>
     <member refid="classendstone_1_1Skin_1aa5a5f981e3390ab64790adec3fed83f2" kind="function"><name>getCapeId</name></member>
-    <member refid="classendstone_1_1Skin_1a4ca1d18d9c2531b912c5d6c507d54217" kind="function"><name>getCapeData</name></member>
+    <member refid="classendstone_1_1Skin_1ace02c5b2aed36091ed4b6760f3036e11" kind="function"><name>getCapeData</name></member>
   </compound>
   <compound refid="classendstone_1_1SocketAddress" kind="class"><name>endstone::SocketAddress</name>
     <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" kind="variable"><name>hostname_</name></member>

@@ -26,6 +26,11 @@ _Represents a player skin._
 
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| struct | [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) <br> |
 
 
 
@@ -53,10 +58,10 @@ _Represents a player skin._
 | Type | Name |
 | ---: | :--- |
 |   | [**Skin**](#function-skin-12) () = default<br> |
-|   | [**Skin**](#function-skin-22) (std::string skin\_id, std::string skin\_data, std::optional&lt; std::string &gt; cape\_id=std::nullopt, std::optional&lt; std::string &gt; cape\_data=std::nullopt) <br> |
-|  const std::optional&lt; std::string &gt; & | [**getCapeData**](#function-getcapedata) () const<br>_Gets the cape data._  |
+|   | [**Skin**](#function-skin-22) (std::string skin\_id, [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) skin\_data, std::optional&lt; std::string &gt; cape\_id=std::nullopt, std::optional&lt; [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) &gt; cape\_data=std::nullopt) <br> |
+|  const std::optional&lt; [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) &gt; & | [**getCapeData**](#function-getcapedata) () const<br>_Gets the cape data._  |
 |  const std::optional&lt; std::string &gt; & | [**getCapeId**](#function-getcapeid) () const<br>_Gets the cape id._  |
-|  const std::string & | [**getSkinData**](#function-getskindata) () const<br>_Gets the skin data._  |
+|  const [**ImageData**](structendstone_1_1Skin_1_1ImageData.md) & | [**getSkinData**](#function-getskindata) () const<br>_Gets the skin data._  |
 |  const std::string & | [**getSkinId**](#function-getskinid) () const<br>_Gets the skin id._  |
 
 
@@ -109,9 +114,9 @@ endstone::Skin::Skin () = default
 ```C++
 inline endstone::Skin::Skin (
     std::string skin_id,
-    std::string skin_data,
+    ImageData skin_data,
     std::optional< std::string > cape_id=std::nullopt,
-    std::optional< std::string > cape_data=std::nullopt
+    std::optional< ImageData > cape_data=std::nullopt
 ) 
 ```
 
@@ -126,7 +131,7 @@ inline endstone::Skin::Skin (
 
 _Gets the cape data._ 
 ```C++
-inline const std::optional< std::string > & endstone::Skin::getCapeData () const
+inline const std::optional< ImageData > & endstone::Skin::getCapeData () const
 ```
 
 
@@ -176,7 +181,7 @@ the cape id.
 
 _Gets the skin data._ 
 ```C++
-inline const std::string & endstone::Skin::getSkinData () const
+inline const ImageData & endstone::Skin::getSkinData () const
 ```
 
 

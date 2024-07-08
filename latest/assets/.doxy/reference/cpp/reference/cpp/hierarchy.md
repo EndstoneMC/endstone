@@ -58,5 +58,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
+* **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
 

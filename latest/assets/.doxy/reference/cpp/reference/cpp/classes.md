@@ -60,6 +60,8 @@
 
 ## i
 
+* [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)
+([**endstone::Skin**](classendstone_1_1Skin.md))
 * [**Inventory**](classendstone_1_1Inventory.md)
 ([**endstone**](namespaceendstone.md))
 
