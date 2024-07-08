@@ -49,6 +49,7 @@ plugins:
           load_external_modules: true
           import:
             - https://docs.python.org/3/objects.inv
+            - https://numpy.org/doc/stable/objects.inv
           options:
             # general options
             find_stubs_package: true
