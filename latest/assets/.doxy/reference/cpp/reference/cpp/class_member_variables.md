@@ -32,6 +32,8 @@
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **contributors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **cape\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **cape\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 
 
 ## d
@@ -165,6 +167,8 @@
 * **soft\_depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **sender\_** ([**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **server\_guid\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **skin\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **skin\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 
 
 ## t

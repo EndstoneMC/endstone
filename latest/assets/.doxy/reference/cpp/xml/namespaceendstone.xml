@@ -52,6 +52,7 @@
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>
     <innerclass refid="classendstone_1_1Server" prot="public">endstone::Server</innerclass>
+    <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
     <innerclass refid="classendstone_1_1Translatable" prot="public">endstone::Translatable</innerclass>
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
     <innerclass refid="classendstone_1_1UUID" prot="public">endstone::UUID</innerclass>

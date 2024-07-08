@@ -14,6 +14,7 @@
 * `#include "endstone/actor/actor.h"`
 * `#include "endstone/game_mode.h"`
 * `#include "endstone/inventory/player_inventory.h"`
+* `#include "endstone/skin.h"`
 * `#include "endstone/util/socket_address.h"`
 * `#include "endstone/util/uuid.h"`
 

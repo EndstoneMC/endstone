@@ -51,6 +51,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents an Server-related event._     
     * **class** [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) _Called when a server ping is coming in._     
     * **class** [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._     
+    * **class** [**Skin**](classendstone_1_1Skin.md) _Represents a player skin._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
     * **class** [**Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._     
     * **class** [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._     

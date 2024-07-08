@@ -128,6 +128,7 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | virtual [**PlayerInventory**](classendstone_1_1PlayerInventory.md) & | [**getInventory**](#function-getinventory) () const = 0<br>_Get the player's inventory._  |
 | virtual std::string | [**getLocale**](#function-getlocale) () const = 0<br>_Gets the player's current locale._  |
 | virtual std::chrono::milliseconds | [**getPing**](#function-getping) () const = 0<br>_Gets the player's average ping._  |
+| virtual const [**Skin**](classendstone_1_1Skin.md) & | [**getSkin**](#function-getskin) () const = 0<br>_Gets the player's skin._  |
 | virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
 | virtual float | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
@@ -661,6 +662,31 @@ virtual std::chrono::milliseconds endstone::Player::getPing () const = 0
 **Returns:**
 
 player ping 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getSkin 
+
+_Gets the player's skin._ 
+```C++
+virtual const Skin & endstone::Player::getSkin () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the player's skin 
 
 
 

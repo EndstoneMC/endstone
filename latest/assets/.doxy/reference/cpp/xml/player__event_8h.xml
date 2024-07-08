@@ -37,10 +37,12 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="26">
         <label>cstdint</label>
       </node>
       <node id="13">
@@ -72,12 +74,22 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="25">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
-        <childnode refid="25" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>endstone/skin.h</label>
+        <link refid="skin_8h_source"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -151,7 +163,7 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>cstddef</label>
       </node>
       <node id="1">
@@ -162,14 +174,14 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
-        <childnode refid="27" relation="include">
-        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -177,7 +189,7 @@
       <node id="5">
         <label>chrono</label>
       </node>
-      <node id="27">
+      <node id="28">
         <label>algorithm</label>
       </node>
       <node id="16">

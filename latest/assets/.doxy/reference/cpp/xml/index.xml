@@ -345,6 +345,7 @@
     <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
     <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kind="function"><name>getDeviceId</name></member>
+    <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
@@ -650,6 +651,18 @@
     <member refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1Skin" kind="class"><name>endstone::Skin</name>
+    <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" kind="variable"><name>skin_id_</name></member>
+    <member refid="classendstone_1_1Skin_1ad57b1093ec20f32bb2c9ea190cad2df8" kind="variable"><name>skin_data_</name></member>
+    <member refid="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" kind="variable"><name>cape_id_</name></member>
+    <member refid="classendstone_1_1Skin_1a3dba700b0c52e1b67d210ae5941bfb4e" kind="variable"><name>cape_data_</name></member>
+    <member refid="classendstone_1_1Skin_1a632d137848165fa41e2a6e2d0b1bd860" kind="function"><name>Skin</name></member>
+    <member refid="classendstone_1_1Skin_1a2289291049b4952c3e9421a220e837db" kind="function"><name>Skin</name></member>
+    <member refid="classendstone_1_1Skin_1a648fbc52816f06c865fa3ff35d9171c8" kind="function"><name>getSkinId</name></member>
+    <member refid="classendstone_1_1Skin_1af97fd59cd183dd7a89dcc5f4096b2503" kind="function"><name>getSkinData</name></member>
+    <member refid="classendstone_1_1Skin_1aa5a5f981e3390ab64790adec3fed83f2" kind="function"><name>getCapeId</name></member>
+    <member refid="classendstone_1_1Skin_1a4ca1d18d9c2531b912c5d6c507d54217" kind="function"><name>getCapeData</name></member>
+  </compound>
   <compound refid="classendstone_1_1SocketAddress" kind="class"><name>endstone::SocketAddress</name>
     <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" kind="variable"><name>hostname_</name></member>
     <member refid="classendstone_1_1SocketAddress_1af8cb55476a46c083d6656eb0b8f9b22c" kind="variable"><name>port_</name></member>
@@ -896,6 +909,8 @@
   <compound refid="task_8h" kind="file"><name>task.h</name>
   </compound>
   <compound refid="server_8h" kind="file"><name>server.h</name>
+  </compound>
+  <compound refid="skin_8h" kind="file"><name>skin.h</name>
   </compound>
   <compound refid="translatable_8h" kind="file"><name>translatable.h</name>
   </compound>

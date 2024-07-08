@@ -134,6 +134,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**Skin**](classendstone_1_1Skin.md)
+([**endstone**](namespaceendstone.md))
 * [**SocketAddress**](classendstone_1_1SocketAddress.md)
 ([**endstone**](namespaceendstone.md))
 

@@ -77,5 +77,6 @@ Here is a list of all files with brief descriptions:
         * **file** [**logger.h**](logger_8h.md)     
         * **file** [**player.h**](player_8h.md)     
         * **file** [**server.h**](server_8h.md)     
+        * **file** [**skin.h**](skin_8h.md)     
         * **file** [**translatable.h**](translatable_8h.md)     
 

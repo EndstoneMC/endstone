@@ -17,6 +17,7 @@
     <innerfile refid="logger_8h">logger.h</innerfile>
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="server_8h">server.h</innerfile>
+    <innerfile refid="skin_8h">skin.h</innerfile>
     <innerfile refid="translatable_8h">translatable.h</innerfile>
     <briefdescription>
     </briefdescription>
