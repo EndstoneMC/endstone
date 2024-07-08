@@ -3,7 +3,7 @@ import datetime
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'Dimension', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -865,6 +865,11 @@ class Player(Actor):
         Gets the player's average ping.
         """
     @property
+    def skin(self) -> Skin:
+        """
+        Get the player's skin.
+        """
+    @property
     def total_exp(self) -> int:
         """
         Gets the players total experience points.
@@ -1562,6 +1567,29 @@ class ServerLoadEvent(Event):
     @property
     def type(self) -> ServerLoadEvent.LoadType:
         ...
+class Skin:
+    def __init__(self, skin_id: str, skin_data: str, cape_id: str, cape_data: str) -> None:
+        ...
+    @property
+    def cape_data(self) -> bytes:
+        """
+        Get the Cape data.
+        """
+    @property
+    def cape_id(self) -> str:
+        """
+        Get the Cape ID.
+        """
+    @property
+    def skin_data(self) -> bytes:
+        """
+        Get the Skin data.
+        """
+    @property
+    def skin_id(self) -> str:
+        """
+        Get the Skin ID.
+        """
 class SocketAddress:
     """
     Represents an IP Socket Address (hostname + port number).

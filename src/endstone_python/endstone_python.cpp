@@ -236,6 +236,16 @@ void init_server(py::class_<Server> &server)
 
 void init_player(py::module_ &m)
 {
+    py::class_<Skin>(m, "Skin")
+        .def(py::init<std::string, std::string, std::string, std::string>(), py::arg("skin_id"), py::arg("skin_data"),
+             py::arg("cape_id"), py::arg("cape_data"))
+        .def_property_readonly("skin_id", &Skin::getSkinId, "Get the Skin ID.")
+        .def_property_readonly(
+            "skin_data", [](const Skin &self) { return py::bytes(self.getSkinData()); }, "Get the Skin data.")
+        .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
+        .def_property_readonly(
+            "cape_data", [](const Skin &self) { return py::bytes(self.getCapeData()); }, "Get the Cape data.");
+
     py::class_<Player, Actor>(m, "Player", "Represents a player.")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
@@ -267,7 +277,8 @@ void init_player(py::module_ &m)
         .def_property_readonly("locale", &Player::getLocale, "Get the player's current locale.")
         .def_property_readonly("device_os", &Player::getDeviceOS,
                                "Get the player's current device's operation system (OS).")
-        .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.");
+        .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.")
+        .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.");
 }
 
 }  // namespace endstone::detail

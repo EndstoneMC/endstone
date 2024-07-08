@@ -94,7 +94,7 @@ public:
     [[nodiscard]] std::string getLocale() const override;
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] endstone::UUID getDeviceId() const override;
-    const Skin &getSkin() const override;
+    [[nodiscard]] const Skin &getSkin() const override;
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);

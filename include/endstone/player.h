@@ -256,7 +256,7 @@ public:
     [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
 
     /**
-     * @brief Gets the player's current skin.
+     * @brief Gets the player's skin.
      *
      * @return the player's skin
      */

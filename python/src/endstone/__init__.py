@@ -1,4 +1,4 @@
-from endstone._internal.endstone_python import ColorFormat, GameMode, Logger, Player, Server, Translatable
+from endstone._internal.endstone_python import ColorFormat, GameMode, Logger, Player, Server, Skin, Translatable
 from endstone._internal.version import __version__
 
 __minecraft_version__ = "1.21.1"
@@ -11,5 +11,6 @@ __all__ = [
     "Logger",
     "Player",
     "Server",
+    "Skin",
     "Translatable",
 ]
