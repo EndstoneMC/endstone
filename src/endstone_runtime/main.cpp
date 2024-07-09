@@ -47,6 +47,7 @@ ENDSTONE_RUNTIME_CTOR int main()
         config.install_signal_handlers = 0;
         py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
+        py::module_::import("numpy");  // https://github.com/numpy/numpy/issues/24833
         py::gil_scoped_release release{};
         release.disarm();
 
