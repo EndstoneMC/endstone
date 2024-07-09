@@ -242,7 +242,7 @@ void init_player(py::module_ &m)
                          std::optional<py::array_t<std::uint8_t>> cape_data) {
                  py::buffer_info info1 = skin_data.request();
                  if (info1.ndim != 3 || info1.shape[2] != 4) {
-                     throw std::runtime_error("Incompatible shape. Expected (w, h, 4)");
+                     throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
                  }
                  Skin::ImageData sd = {static_cast<int>(info1.shape[0]), static_cast<int>(info1.shape[1]),
                                        std::string(static_cast<char *>(info1.ptr), info1.size)};
@@ -251,7 +251,7 @@ void init_player(py::module_ &m)
                  if (cape_data.has_value()) {
                      py::buffer_info info2 = cape_data.value().request();
                      if (info2.ndim != 3 || info2.shape[2] != 4) {
-                         throw std::runtime_error("Incompatible shape. Expected (w, h, 4)");
+                         throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
                      }
                      cd = {static_cast<int>(info2.shape[0]), static_cast<int>(info2.shape[1]),
                            std::string(static_cast<char *>(info2.ptr), info2.size)};
@@ -267,8 +267,8 @@ void init_player(py::module_ &m)
                 const auto &data = self.getSkinData();
                 return py::array_t<std::uint8_t>(py::buffer_info(
                     const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.width, data.height, 4},
-                    {sizeof(std::uint8_t) * data.height * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
+                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
+                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
             },
             "Get the Skin data.")
         .def_property_readonly("cape_id", &Skin::getCapeId, "Get the Cape ID.")
@@ -281,8 +281,8 @@ void init_player(py::module_ &m)
                 const auto &data = self.getCapeData().value();
                 return py::array_t<std::uint8_t>(py::buffer_info(
                     const_cast<char *>(data.data.data()), sizeof(std::uint8_t),
-                    py::format_descriptor<std::uint8_t>::format(), 3, {data.width, data.height, 4},
-                    {sizeof(std::uint8_t) * data.height * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
+                    py::format_descriptor<std::uint8_t>::format(), 3, {data.height, data.width, 4},
+                    {sizeof(std::uint8_t) * data.width * 4, sizeof(std::uint8_t) * 4, sizeof(std::uint8_t)}));
             },
             "Get the Cape data.");
 
