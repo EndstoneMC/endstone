@@ -200,8 +200,8 @@
     <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" kind="function"><name>operator()</name></member>
   </compound>
   <compound refid="structendstone_1_1Skin_1_1ImageData" kind="struct"><name>endstone::Skin::ImageData</name>
-    <member refid="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" kind="variable"><name>width</name></member>
     <member refid="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" kind="variable"><name>height</name></member>
+    <member refid="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" kind="variable"><name>width</name></member>
     <member refid="structendstone_1_1Skin_1_1ImageData_1a0d40ddd60a74155b22f5ac0af6238f2c" kind="variable"><name>data</name></member>
   </compound>
   <compound refid="classendstone_1_1Inventory" kind="class"><name>endstone::Inventory</name>

@@ -33,8 +33,8 @@ namespace endstone {
 class Skin {
 public:
     struct ImageData {
-        int width;
         int height;
+        int width;
         std::string data;
     };
 

@@ -3,11 +3,11 @@
   <compounddef id="structendstone_1_1Skin_1_1ImageData" kind="struct" language="C++" prot="public">
     <compoundname>endstone::Skin::ImageData</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" prot="public" static="no" mutable="no">
         <type>int</type>
-        <definition>int endstone::Skin::ImageData::width</definition>
+        <definition>int endstone::Skin::ImageData::height</definition>
         <argsstring></argsstring>
-        <name>width</name>
+        <name>height</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -16,11 +16,11 @@
         </inbodydescription>
         <location file="include/endstone/skin.h" line="29" column="13" bodyfile="include/endstone/skin.h" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" prot="public" static="no" mutable="no">
         <type>int</type>
-        <definition>int endstone::Skin::ImageData::height</definition>
+        <definition>int endstone::Skin::ImageData::width</definition>
         <argsstring></argsstring>
-        <name>height</name>
+        <name>width</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
