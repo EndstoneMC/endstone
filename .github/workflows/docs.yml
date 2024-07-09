@@ -9,6 +9,7 @@ on:
       - 'include/endstone/**'
       - 'python/**'
       - '*.md'
+      - 'mkdocs.yml'
   release:
     types: [ published ]
 
