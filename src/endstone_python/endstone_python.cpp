@@ -276,7 +276,7 @@ void init_player(py::module_ &m)
             "cape_data",
             [](const Skin &self) -> std::optional<py::array_t<std::uint8_t>> {
                 if (!self.getCapeData().has_value()) {
-                    return py::none();
+                    return std::nullopt;
                 }
                 const auto &data = self.getCapeData().value();
                 return py::array_t<std::uint8_t>(py::buffer_info(
