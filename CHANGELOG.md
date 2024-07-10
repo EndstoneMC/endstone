@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.4.9](https://github.com/EndstoneMC/endstone/compare/v0.4.9...HEAD)</small>
 
+### Added
+
+- Support for Minecraft v1.21.2.
+- `Player::getSkin` method to retrieve the current skin of a player.
+- Support for recipes with output items possessing NBT (Named Binary Tag) tags. These tags are now also included
+  in the dumped data.
+
+### Fixed
+
+- Issue with shaped recipes. Recipes that have item tags as input (instead of item names) can now be dumped correctly.
+
 ## [0.4.9](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.9) - 2024-07-05
 
 <small>[Compare with 0.4.8.1](https://github.com/EndstoneMC/endstone/compare/v0.4.8.1...v0.4.9)</small>
