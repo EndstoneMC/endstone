@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_53ee43673b2467e53c4cb8c30a2e7d89" kind="dir">
+    <compoundname>include/endstone/plugin</compoundname>
+    <innerfile refid="plugin_8h">plugin.h</innerfile>
+    <innerfile refid="plugin__description_8h">plugin_description.h</innerfile>
+    <innerfile refid="plugin__load__order_8h">plugin_load_order.h</innerfile>
+    <innerfile refid="plugin__loader_8h">plugin_loader.h</innerfile>
+    <innerfile refid="plugin__manager_8h">plugin_manager.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/plugin/"/>
+  </compounddef>
+</doxygen>

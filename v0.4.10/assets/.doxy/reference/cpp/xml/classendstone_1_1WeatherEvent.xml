@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1WeatherEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::WeatherEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1ThunderChangeEvent" prot="public" virt="non-virtual">endstone::ThunderChangeEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1WeatherChangeEvent" prot="public" virt="non-virtual">endstone::WeatherChangeEvent</derivedcompoundref>
+    <includes refid="weather__event_8h" local="no">endstone/event/weather/weather_event.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1WeatherEvent_1adb82c6d960c79dfe381ef94b8ef07b85" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>Level&amp; endstone::WeatherEvent::level_</definition>
+        <argsstring></argsstring>
+        <name>level_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_event.h" line="41" column="11" bodyfile="include/endstone/event/weather/weather_event.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1WeatherEvent_1a5016b66f28a6173b04490eedc800c809" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::WeatherEvent::WeatherEvent</definition>
+        <argsstring>(Level &amp;level)</argsstring>
+        <name>WeatherEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_event.h" line="27" column="14" bodyfile="include/endstone/event/weather/weather_event.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherEvent_1a2fd933d4e6cb075fcfaeccf58344b742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::WeatherEvent::~WeatherEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~WeatherEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_event.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1WeatherEvent_1aa7d9b8544131dfb728d5af0d65f1e064" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>Level&amp; endstone::WeatherEvent::getLevel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> where this event is occurring</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> this event is occurring in </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/weather/weather_event.h" line="35" column="12" bodyfile="include/endstone/event/weather/weather_event.h" bodystart="35" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a Weather-related event. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>endstone::ThunderChangeEvent</label>
+        <link refid="classendstone_1_1ThunderChangeEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>endstone::WeatherEvent</label>
+        <link refid="classendstone_1_1WeatherEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::WeatherChangeEvent</label>
+        <link refid="classendstone_1_1WeatherChangeEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::WeatherEvent</label>
+        <link refid="classendstone_1_1WeatherEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/weather/weather_event.h" line="25" column="1" bodyfile="include/endstone/event/weather/weather_event.h" bodystart="25" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb" prot="public" virt="pure-virtual"><scope>endstone::WeatherEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1aa7d9b8544131dfb728d5af0d65f1e064" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9" prot="public" virt="pure-virtual"><scope>endstone::WeatherEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1adb82c6d960c79dfe381ef94b8ef07b85" prot="private" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>level_</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1a5016b66f28a6173b04490eedc800c809" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>WeatherEvent</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::WeatherEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1WeatherEvent_1a2fd933d4e6cb075fcfaeccf58344b742" prot="public" virt="non-virtual"><scope>endstone::WeatherEvent</scope><name>~WeatherEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
