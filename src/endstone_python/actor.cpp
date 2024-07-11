@@ -16,6 +16,7 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/actor/mob.h"
 #include "endstone/level/level.h"
 
 namespace py = pybind11;
@@ -33,6 +34,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
         .def_property_readonly("is_in_lava", &Actor::isInLava, "Returns true if the actor is in lava.")
         .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.",
                                py::return_value_policy::reference);
+
+    py::class_<Mob, Actor>(m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
 }
 
 }  // namespace endstone::detail

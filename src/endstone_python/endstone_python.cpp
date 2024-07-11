@@ -286,7 +286,7 @@ void init_player(py::module_ &m)
             },
             "Get the Cape data.");
 
-    py::class_<Player, Actor>(m, "Player", "Represents a player.")
+    py::class_<Player, Mob>(m, "Player", "Represents a player.")
         .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
