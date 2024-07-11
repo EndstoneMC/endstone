@@ -21,5 +21,12 @@ namespace endstone::detail {
 class EndstoneMob : public EndstoneActor, public Mob {
 public:
     explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
+
+    [[nodiscard]] bool isGliding() const override;
+
+    [[nodiscard]] ::Mob &getHandle() const;
+
+private:
+    ::Mob &mob_;
 };
 }  // namespace endstone::detail

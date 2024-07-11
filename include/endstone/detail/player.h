@@ -64,6 +64,9 @@ public:
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] Dimension &getDimension() const override;
 
+    // Mob
+    [[nodiscard]] bool isGliding() const override;
+
     // Player
     [[nodiscard]] UUID getUniqueId() const override;
     [[nodiscard]] const SocketAddress &getAddress() const override;

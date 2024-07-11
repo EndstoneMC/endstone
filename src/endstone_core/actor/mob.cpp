@@ -16,6 +16,16 @@
 
 namespace endstone::detail {
 
-EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob) {}
+EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
+
+bool EndstoneMob::isGliding() const
+{
+    return getHandle().isGliding();
+}
+
+::Mob &EndstoneMob::getHandle() const
+{
+    return mob_;
+}
 
 }  // namespace endstone::detail

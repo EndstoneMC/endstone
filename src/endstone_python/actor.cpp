@@ -35,7 +35,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
         .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.",
                                py::return_value_policy::reference);
 
-    py::class_<Mob, Actor>(m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    py::class_<Mob, Actor>(m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.")
+    .def_property_readonly("is_gliding", &Mob::isGliding, "");
 }
 
 }  // namespace endstone::detail

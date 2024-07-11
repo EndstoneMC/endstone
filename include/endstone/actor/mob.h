@@ -20,5 +20,12 @@ namespace endstone {
 /**
  * @brief Represents a mobile entity (i.e. living entity), such as a monster or player.
  */
-class Mob : public Actor {};
+class Mob : public Actor {
+public:
+    /**
+     * @brief Checks to see if an actor is gliding, such as using an Elytra.
+     * @return True if this actor is gliding.
+     */
+    virtual bool isGliding() const = 0;
+};
 }  // namespace endstone

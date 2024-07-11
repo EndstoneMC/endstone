@@ -208,6 +208,11 @@ Dimension &EndstonePlayer::getDimension() const
     return EndstoneActor::getDimension();
 }
 
+bool EndstonePlayer::isGliding() const
+{
+    return EndstoneMob::isGliding();
+}
+
 UUID EndstonePlayer::getUniqueId() const
 {
     return uuid_;
