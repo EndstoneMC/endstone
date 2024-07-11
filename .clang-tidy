@@ -29,6 +29,7 @@ HeaderFilterRegex: "(include/|src/).*"
 
 CheckOptions:
   misc-unused-parameters.IgnoreVirtual: true
+  modernize-type-traits.IgnoreMacros: true
   readability-implicit-bool-conversion.AllowPointerConditions: true
   readability-implicit-bool-conversion.AllowIntegerConditions: true
   readability-identifier-naming.AbstractClassCase: CamelCase
