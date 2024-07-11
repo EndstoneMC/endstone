@@ -26,6 +26,7 @@ namespace fs = std::filesystem;
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
@@ -45,7 +46,7 @@ EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
-    command_sender_ = std::make_unique<ConsoleCommandSender>();
+    command_sender_ = std::make_unique<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
 }
 
@@ -92,7 +93,7 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
     return nullptr;
 }
 
-CommandSender &EndstoneServer::getCommandSender() const
+ConsoleCommandSender &EndstoneServer::getCommandSender() const
 {
     return *command_sender_;
 }

@@ -21,9 +21,11 @@
 #include <pybind11/stl.h>
 #include <pybind11/stl/filesystem.h>
 
+#include "endstone/command/console_command_sender.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/logger.h"
+#include "endstone/player.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"

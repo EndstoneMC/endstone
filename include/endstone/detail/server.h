@@ -19,8 +19,8 @@
 #include <string_view>
 
 #include "bedrock/server/server_instance.h"
+#include "endstone/command/console_command_sender.h"
 #include "endstone/detail/command/command_map.h"
-#include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/level/level.h"
@@ -47,7 +47,7 @@ public:
     [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
-    [[nodiscard]] CommandSender &getCommandSender() const override;
+    [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
     [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command) const override;
 
     void loadPlugins();

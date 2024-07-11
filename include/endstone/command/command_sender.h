@@ -23,6 +23,7 @@
 
 namespace endstone {
 
+class ConsoleCommandSender;
 class Server;
 class Player;
 
@@ -50,7 +51,7 @@ public:
      *
      * @return CommandSender, nullptr if not a Console
      */
-    [[nodiscard]] virtual CommandSender *asConsole() const
+    [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
     {
         return nullptr;
     }

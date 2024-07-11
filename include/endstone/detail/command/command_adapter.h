@@ -16,6 +16,7 @@
 
 #include "bedrock/server/commands/command.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/detail/command/server_command_sender.h"
 #include "endstone/detail/permissions/permissible_base.h"
 #include "endstone/detail/server.h"
 

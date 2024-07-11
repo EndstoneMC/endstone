@@ -14,19 +14,31 @@
 
 #pragma once
 
-#include "server_command_sender.h"
+#include "endstone/command/console_command_sender.h"
+#include "endstone/detail/command/server_command_sender.h"
+
 namespace endstone::detail {
 
-class ConsoleCommandSender : public ServerCommandSender {
+class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
 public:
-    [[nodiscard]] CommandSender *asConsole() const override;
+    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
     void sendMessage(const std::string &message) const override;
     void sendMessage(const Translatable &message) const override;
     void sendErrorMessage(const std::string &message) const override;
     void sendErrorMessage(const Translatable &message) const override;
+    [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
+    [[nodiscard]] bool isPermissionSet(std::string name) const override;
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool hasPermission(std::string name) const override;
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
+    bool removeAttachment(PermissionAttachment &attachment) override;
+    void recalculatePermissions() override;
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 };
 
 }  // namespace endstone::detail

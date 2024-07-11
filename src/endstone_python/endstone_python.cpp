@@ -20,6 +20,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/color_format.h"
+#include "endstone/command/console_command_sender.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/pybind_type_caster.h"
 #include "endstone/game_mode.h"

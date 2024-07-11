@@ -19,44 +19,94 @@
 
 namespace endstone::detail {
 
-CommandSender *ConsoleCommandSender::asConsole() const
+ConsoleCommandSender *EndstoneConsoleCommandSender::asConsole() const
 {
-    return const_cast<ConsoleCommandSender *>(this);
+    return const_cast<EndstoneConsoleCommandSender *>(this);
 }
 
-void ConsoleCommandSender::sendMessage(const std::string &message) const
+void EndstoneConsoleCommandSender::sendMessage(const std::string &message) const
 {
     getServer().getLogger().info(message);
 }
 
-void ConsoleCommandSender::sendMessage(const Translatable &message) const
+void EndstoneConsoleCommandSender::sendMessage(const Translatable &message) const
 {
     getServer().getLogger().info(getI18n().get(message.getTranslationKey(), message.getParameters(), nullptr));
 }
 
-void ConsoleCommandSender::sendErrorMessage(const std::string &message) const
+void EndstoneConsoleCommandSender::sendErrorMessage(const std::string &message) const
 {
     getServer().getLogger().error(message);
 }
 
-void ConsoleCommandSender::sendErrorMessage(const Translatable &message) const
+void EndstoneConsoleCommandSender::sendErrorMessage(const Translatable &message) const
 {
     getServer().getLogger().error(getI18n().get(message.getTranslationKey(), message.getParameters(), nullptr));
 }
 
-std::string ConsoleCommandSender::getName() const
+Server &EndstoneConsoleCommandSender::getServer() const
+{
+    return ServerCommandSender::getServer();
+}
+
+std::string EndstoneConsoleCommandSender::getName() const
 {
     return "Server";
 }
 
-bool ConsoleCommandSender::isOp() const
+bool EndstoneConsoleCommandSender::isOp() const
 {
     return true;
 }
 
-void ConsoleCommandSender::setOp(bool value)
+void EndstoneConsoleCommandSender::setOp(bool value)
 {
     getServer().getLogger().error("Cannot change operator status of server console");
+}
+
+bool EndstoneConsoleCommandSender::isPermissionSet(std::string name) const
+{
+    return ServerCommandSender::isPermissionSet(name);
+}
+
+bool EndstoneConsoleCommandSender::isPermissionSet(const Permission &perm) const
+{
+    return ServerCommandSender::isPermissionSet(perm);
+}
+
+bool EndstoneConsoleCommandSender::hasPermission(std::string name) const
+{
+    return ServerCommandSender::hasPermission(name);
+}
+
+bool EndstoneConsoleCommandSender::hasPermission(const Permission &perm) const
+{
+    return ServerCommandSender::hasPermission(perm);
+}
+
+PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return ServerCommandSender::addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin)
+{
+    return ServerCommandSender::addAttachment(plugin);
+}
+
+bool EndstoneConsoleCommandSender::removeAttachment(PermissionAttachment &attachment)
+{
+    return ServerCommandSender::removeAttachment(attachment);
+}
+
+void EndstoneConsoleCommandSender::recalculatePermissions()
+{
+    ServerCommandSender::recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> EndstoneConsoleCommandSender::getEffectivePermissions() const
+{
+    return ServerCommandSender::getEffectivePermissions();
 }
 
 }  // namespace endstone::detail
