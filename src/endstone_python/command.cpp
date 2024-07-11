@@ -21,6 +21,7 @@
 
 #include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/command/console_command_sender.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/server.h"
@@ -28,6 +29,25 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
+
+class PyCommandExecutor : public CommandExecutor {
+public:
+    using CommandExecutor::CommandExecutor;
+
+    bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
+    {
+        if (auto *player = sender.asPlayer(); player) {
+            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*player), std::ref(command),
+                                   std::ref(args));
+        }
+        if (auto *console = sender.asConsole(); console) {
+            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*console),
+                                   std::ref(command), std::ref(args));
+        }
+        PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
+                               std::ref(args));
+    }
+};
 
 namespace {
 Command createCommand(std::string name, const std::optional<std::string> &description,
@@ -64,6 +84,8 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
+    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
+
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")
         .def(py::init(&createCommand), py::arg("name"), py::arg("description") = py::none(),
@@ -91,6 +113,12 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
             "The permissions required by users to be able to perform this command")
         .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
+
+    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(
+        m, "CommandExecutor", "Represents a class which contains a single method for executing commands")
+        .def(py::init<>())
+        .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
+             "Executes the given command, returning its success.");
 }
 
 }  // namespace endstone::detail

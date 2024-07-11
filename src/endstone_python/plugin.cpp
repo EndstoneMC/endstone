@@ -34,27 +34,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-class PyCommandExecutor : public CommandExecutor {
-public:
-    using CommandExecutor::CommandExecutor;
-
-    bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
-    {
-        if (auto *player = sender.asPlayer(); player) {
-            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*player), std::ref(command),
-                                   std::ref(args));
-        }
-        if (auto *console = sender.asConsole(); console) {
-            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*console),
-                                   std::ref(command), std::ref(args));
-        }
-
-        PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
-                               std::ref(args));
-    }
-};
-
-class PyPlugin : public Plugin, public PyCommandExecutor {
+class PyPlugin : public Plugin {
 public:
     using Plugin::Plugin;
 
@@ -100,6 +80,20 @@ public:
             getLogger().error("Error occurred when disabling {}.", getDescription().getFullName());
             getLogger().error(e.what());
         }
+    }
+
+    bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
+    {
+        if (auto *player = sender.asPlayer(); player) {
+            PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(*player), std::ref(command),
+                                   std::ref(args));
+        }
+        if (auto *console = sender.asConsole(); console) {
+            PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(*console), std::ref(command),
+                                   std::ref(args));
+        }
+        PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
+                               std::ref(args));
     }
 };
 
@@ -151,12 +145,6 @@ PluginDescription createPluginDescription(
 
 void init_plugin(py::module &m)
 {
-    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(
-        m, "CommandExecutor", "Represents a class which contains a single method for executing commands")
-        .def(py::init<>())
-        .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
-             "Executes the given command, returning its success.");
-
     py::enum_<PluginLoadOrder>(m, "PluginLoadOrder",
                                "Represents the order in which a plugin should be initialized and enabled.")
         .value("STARTUP", PluginLoadOrder::Startup)
