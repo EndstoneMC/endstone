@@ -158,10 +158,10 @@
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -212,6 +212,10 @@
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
+      <node id="39">
+        <label>include/endstone/command/console_command_sender.h</label>
+        <link refid="console__command__sender_8h_source"/>
+      </node>
       <node id="2">
         <label>include/endstone/command/command_sender.h</label>
         <link refid="command__sender_8h_source"/>
@@ -220,6 +224,8 @@
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -233,9 +239,9 @@
         <link refid="permissible_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
         <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -286,7 +292,7 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>

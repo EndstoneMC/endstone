@@ -1,23 +1,22 @@
 
 
-# Class endstone::Mob
+# Class endstone::ConsoleCommandSender
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Mob**](classendstone_1_1Mob.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
 
 
 
-_Represents a mobile entity (i.e. living entity), such as a monster or player._ 
+_Represents a console command sender._ 
 
-* `#include <endstone/actor/mob.h>`
+* `#include <endstone/command/console_command_sender.h>`
 
 
 
-Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
+Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 
-Inherited by the following classes: [endstone::Player](classendstone_1_1Player.md)
 
 
 
@@ -90,53 +89,6 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions
-
-| Type | Name |
-| ---: | :--- |
-| virtual bool | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
-
-
-## Public Functions inherited from endstone::Actor
-
-See [endstone::Actor](classendstone_1_1Actor.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-13) () = default<br> |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
-| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1Actor.md#function-getlevel) () const = 0<br> |
-| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](classendstone_1_1Actor.md#function-getlocation) () const = 0<br> |
-| virtual std::uint64\_t | [**getRuntimeId**](classendstone_1_1Actor.md#function-getruntimeid) () const = 0<br> |
-| virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](classendstone_1_1Actor.md#function-getvelocity) () const = 0<br> |
-| virtual bool | [**isInLava**](classendstone_1_1Actor.md#function-isinlava) () const = 0<br> |
-| virtual bool | [**isInWater**](classendstone_1_1Actor.md#function-isinwater) () const = 0<br> |
-| virtual bool | [**isOnGround**](classendstone_1_1Actor.md#function-isonground) () const = 0<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
-|   | [**~Actor**](classendstone_1_1Actor.md#function-actor) () override<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -260,59 +212,6 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Public Functions Documentation
-
-
-
-
-### function isGliding 
-
-_Checks to see if an actor is gliding, such as using an Elytra._ 
-```C++
-virtual bool endstone::Mob::isGliding () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-True if this actor is gliding. 
-
-
-
-
-
-        
-
-<hr>
-
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/actor/mob.h`
+The documentation for this class was generated from the following file `include/endstone/command/console_command_sender.h`
 

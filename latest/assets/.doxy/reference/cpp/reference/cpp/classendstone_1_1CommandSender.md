@@ -17,7 +17,7 @@ _Represents a command sender._
 Inherits the following classes: [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
-Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
+Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md)
 
 
 
@@ -76,7 +76,7 @@ Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 | ---: | :--- |
 |   | [**CommandSender**](#function-commandsender) () = default<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
-| virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
+| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
@@ -211,7 +211,7 @@ Implements [*endstone::Permissible::asCommandSender*](classendstone_1_1Permissib
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._
 ```C++
-inline virtual CommandSender * endstone::CommandSender::asConsole () const
+inline virtual ConsoleCommandSender * endstone::CommandSender::asConsole () const
 ```
 
 

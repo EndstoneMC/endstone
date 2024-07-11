@@ -34,6 +34,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**CommandSender**](classendstone_1_1CommandSender.md)
 ([**endstone**](namespaceendstone.md))
+* [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## d

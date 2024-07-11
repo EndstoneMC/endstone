@@ -40,6 +40,7 @@
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
 | class | [**CommandMap**](classendstone_1_1CommandMap.md) <br>_Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**CommandSender**](classendstone_1_1CommandSender.md) <br>_Represents a command sender._  |
+| class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |

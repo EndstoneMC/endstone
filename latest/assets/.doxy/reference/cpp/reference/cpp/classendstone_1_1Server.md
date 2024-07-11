@@ -64,7 +64,7 @@ _Represents a server implementation._
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
-| virtual [**CommandSender**](classendstone_1_1CommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
+| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) (std::string name) const = 0<br>_Gets the level with the given name._  |
 | virtual std::vector&lt; [**Level**](classendstone_1_1Level.md) \* &gt; | [**getLevels**](#function-getlevels) () const = 0<br>_Gets a list of all levels on this server._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
@@ -284,7 +284,7 @@ true if execution is successful, false otherwise
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._
 ```C++
-virtual CommandSender & endstone::Server::getCommandSender () const = 0
+virtual ConsoleCommandSender & endstone::Server::getCommandSender () const = 0
 ```
 
 

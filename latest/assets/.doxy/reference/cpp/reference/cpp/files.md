@@ -17,6 +17,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**command\_executor.h**](command__executor_8h.md)     
             * **file** [**command\_map.h**](command__map_8h.md)     
             * **file** [**command\_sender.h**](command__sender_8h.md)     
+            * **file** [**console\_command\_sender.h**](console__command__sender_8h.md)     
             * **file** [**plugin\_command.h**](plugin__command_8h.md)     
         * **dir** [**event**](dir_f1d783c0ad83ee143d16e768ebca51c8.md)     
             * **file** [**event.h**](event_8h.md)     

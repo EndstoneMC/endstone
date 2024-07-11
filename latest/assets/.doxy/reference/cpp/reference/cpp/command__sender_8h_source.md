@@ -33,6 +33,7 @@
 
 namespace endstone {
 
+class ConsoleCommandSender;
 class Server;
 class Player;
 
@@ -47,7 +48,7 @@ public:
         return const_cast<CommandSender *>(this);
     }
 
-    [[nodiscard]] virtual CommandSender *asConsole() const
+    [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
     {
         return nullptr;
     }

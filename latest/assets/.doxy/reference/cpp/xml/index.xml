@@ -135,7 +135,7 @@
     <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" kind="function"><name>CommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" kind="function"><name>~CommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kind="function"><name>asCommandSender</name></member>
-    <member refid="classendstone_1_1CommandSender_1a8de210424ed3b3a27a5a1a7f49065187" kind="function"><name>asConsole</name></member>
+    <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" kind="function"><name>sendMessage</name></member>
@@ -145,6 +145,8 @@
     <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kind="function"><name>getName</name></member>
+  </compound>
+  <compound refid="classendstone_1_1ConsoleCommandSender" kind="class"><name>endstone::ConsoleCommandSender</name>
   </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
@@ -580,7 +582,7 @@
     <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" kind="function"><name>getLogger</name></member>
     <member refid="classendstone_1_1Server_1a612846abaf6bd84f56d1cb81a3c0aa95" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ad65f8ef9b0f8f4af5d56788af89c5367" kind="function"><name>getPluginCommand</name></member>
-    <member refid="classendstone_1_1Server_1aaa9adeb8b18d1944314e83375418f1b1" kind="function"><name>getCommandSender</name></member>
+    <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
     <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1aee8ec47d389d77f2a36ed49777a77621" kind="function"><name>getScheduler</name></member>
     <member refid="classendstone_1_1Server_1a6efe35e1a4eb79e433dbf17edf07fe1b" kind="function"><name>getLevels</name></member>
@@ -811,6 +813,8 @@
   <compound refid="command__map_8h" kind="file"><name>command_map.h</name>
   </compound>
   <compound refid="command__sender_8h" kind="file"><name>command_sender.h</name>
+  </compound>
+  <compound refid="console__command__sender_8h" kind="file"><name>console_command_sender.h</name>
   </compound>
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
   </compound>

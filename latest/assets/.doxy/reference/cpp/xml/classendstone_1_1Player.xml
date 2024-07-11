@@ -843,7 +843,7 @@
       <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>
-      <member refid="classendstone_1_1CommandSender_1a8de210424ed3b3a27a5a1a7f49065187" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
       <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>CommandSender</name></member>
       <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>

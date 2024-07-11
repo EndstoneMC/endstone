@@ -209,9 +209,9 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="86" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1aaa9adeb8b18d1944314e83375418f1b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
-        <definition>virtual CommandSender&amp; endstone::Server::getCommandSender</definition>
+      <memberdef kind="function" id="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> &amp;</type>
+        <definition>virtual ConsoleCommandSender&amp; endstone::Server::getCommandSender</definition>
         <argsstring>() const =0</argsstring>
         <name>getCommandSender</name>
         <briefdescription>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="93" column="28"/>
+        <location file="include/endstone/server.h" line="93" column="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -581,7 +581,7 @@
       <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
-      <member refid="classendstone_1_1Server_1aaa9adeb8b18d1944314e83375418f1b1" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
+      <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
       <member refid="classendstone_1_1Server_1a0a736709b490c346ade02b1462f5fb55" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Server_1a6efe35e1a4eb79e433dbf17edf07fe1b" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLevels</name></member>
       <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLogger</name></member>

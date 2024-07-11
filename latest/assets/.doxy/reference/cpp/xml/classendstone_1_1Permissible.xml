@@ -349,6 +349,12 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="6">
+        <label>endstone::ConsoleCommandSender</label>
+        <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
