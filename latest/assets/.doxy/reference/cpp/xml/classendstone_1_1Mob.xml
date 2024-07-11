@@ -1,10 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
-  <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public">
+  <compounddef id="classendstone_1_1Mob" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Mob</compoundname>
     <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
     <includes refid="mob_8h" local="no">endstone/actor/mob.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Mob::isGliding</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isGliding</name>
+        <briefdescription>
+<para>Checks to see if an actor is gliding, such as using an Elytra. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if this actor is gliding. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/mob.h" line="29" column="19"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
 <para>Represents a mobile entity (i.e. living entity), such as a monster or player. </para>
     </briefdescription>
@@ -64,7 +83,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="23"/>
+    <location file="include/endstone/actor/mob.h" line="23" column="1" bodyfile="include/endstone/actor/mob.h" bodystart="23" bodyend="30"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>Actor</name></member>
@@ -85,6 +104,7 @@
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isGliding</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isInWater</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>isOnGround</name></member>

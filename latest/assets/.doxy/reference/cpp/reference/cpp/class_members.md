@@ -253,6 +253,7 @@
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **info** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isEnabledFor** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **isGliding** ([**endstone::Mob**](classendstone_1_1Mob.md))
 * **isOp** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **isPermissionSet** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **init** ([**endstone::Permission**](classendstone_1_1Permission.md))

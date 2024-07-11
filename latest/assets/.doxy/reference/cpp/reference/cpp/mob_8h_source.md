@@ -27,7 +27,10 @@
 #include "endstone/actor/actor.h"
 
 namespace endstone {
-class Mob : public Actor {};
+class Mob : public Actor {
+public:
+    [[nodiscard]] virtual bool isGliding() const = 0;
+};
 }  // namespace endstone
 ```
 

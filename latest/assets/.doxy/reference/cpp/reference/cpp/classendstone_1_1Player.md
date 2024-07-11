@@ -172,6 +172,13 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 |   | [**~Player**](#function-player) () override<br> |
 
 
+## Public Functions inherited from endstone::Mob
+
+See [endstone::Mob](classendstone_1_1Mob.md)
+
+| Type | Name |
+| ---: | :--- |
+| virtual bool | [**isGliding**](classendstone_1_1Mob.md#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 
 
 ## Public Functions inherited from endstone::Actor

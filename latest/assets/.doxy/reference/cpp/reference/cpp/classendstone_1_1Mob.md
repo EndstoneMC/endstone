@@ -110,6 +110,11 @@ Inherited by the following classes: [endstone::Player](classendstone_1_1Player.m
 
 
 
+## Public Functions
+
+| Type | Name |
+| ---: | :--- |
+| virtual bool | [**isGliding**](#function-isgliding) () const = 0<br>_Checks to see if an actor is gliding, such as using an Elytra._  |
 
 
 ## Public Functions inherited from endstone::Actor
@@ -280,6 +285,33 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Public Functions Documentation
+
+
+
+
+### function isGliding 
+
+_Checks to see if an actor is gliding, such as using an Elytra._ 
+```C++
+virtual bool endstone::Mob::isGliding () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if this actor is gliding. 
+
+
+
+
+
+        
+
+<hr>
 
 ------------------------------
 The documentation for this class was generated from the following file `include/endstone/actor/mob.h`
