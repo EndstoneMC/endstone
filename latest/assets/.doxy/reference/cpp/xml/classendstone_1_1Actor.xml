@@ -3,7 +3,7 @@
   <compounddef id="classendstone_1_1Actor" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Actor</compoundname>
     <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
-    <derivedcompoundref refid="classendstone_1_1Player" prot="public" virt="non-virtual">endstone::Player</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</derivedcompoundref>
     <includes refid="actor_8h" local="no">endstone/actor/actor.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -246,9 +246,15 @@
         </childnode>
       </node>
       <node id="4">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
-        <childnode refid="1" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">

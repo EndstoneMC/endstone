@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1Player" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Player</compoundname>
-    <basecompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</basecompoundref>
+    <basecompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</basecompoundref>
     <includes refid="player_8h" local="no">endstone/player.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -776,9 +776,15 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="2">
+      <node id="3">
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
@@ -788,21 +794,27 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::CommandSender</label>
         <link refid="classendstone_1_1CommandSender"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="2">
+      <node id="3">
         <label>endstone::Actor</label>
         <link refid="classendstone_1_1Actor"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
@@ -812,13 +824,13 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
+      <node id="4">
         <label>endstone::CommandSender</label>
         <link refid="classendstone_1_1CommandSender"/>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
       </node>
@@ -871,8 +883,8 @@
       <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>kick</name></member>
       <member refid="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Player_1a02acf696396f354a6caacc2a115c7992" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" prot="public" virt="non-virtual" ambiguityscope="endstone::Actor::"><scope>endstone::Player</scope><name>operator=</name></member>
-      <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" virt="non-virtual" ambiguityscope="endstone::Actor::"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" prot="public" virt="non-virtual" ambiguityscope="endstone::Mob::"><scope>endstone::Player</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" virt="non-virtual" ambiguityscope="endstone::Mob::"><scope>endstone::Player</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>performCommand</name></member>
       <member refid="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
       <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>

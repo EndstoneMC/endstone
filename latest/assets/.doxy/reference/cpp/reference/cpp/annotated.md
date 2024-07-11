@@ -24,6 +24,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._     
     * **class** [**Location**](classendstone_1_1Location.md) _Represents a 3-dimensional location in a dimension within a level._     
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
+    * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._ 
     * **class** [**Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
     * **class** [**Permission**](classendstone_1_1Permission.md) _Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._    
     * **class** [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) _Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._    

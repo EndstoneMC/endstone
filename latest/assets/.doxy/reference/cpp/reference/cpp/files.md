@@ -11,6 +11,7 @@ Here is a list of all files with brief descriptions:
         * **file** [**game\_mode.h**](game__mode_8h.md)     
         * **dir** [**actor**](dir_dd7779a583e02d88c9a89a2c881c3946.md)     
             * **file** [**actor.h**](actor_8h.md)     
+            * **file** [**mob.h**](mob_8h.md)     
         * **dir** [**command**](dir_5c7b2dbfabcd1115569d1e20a260545c.md)     
             * **file** [**command.h**](command_8h.md)     
             * **file** [**command\_executor.h**](command__executor_8h.md)     

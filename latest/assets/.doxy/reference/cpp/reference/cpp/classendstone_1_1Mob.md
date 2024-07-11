@@ -1,23 +1,23 @@
 
 
-# Class endstone::Actor
+# Class endstone::Mob
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Actor**](classendstone_1_1Actor.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Mob**](classendstone_1_1Mob.md)
 
 
 
-_Represents a base actor in the level._ 
+_Represents a mobile entity (i.e. living entity), such as a monster or player._ 
 
-* `#include <endstone/actor/actor.h>`
+* `#include <endstone/actor/mob.h>`
 
 
 
-Inherits the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
+Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 
 
-Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
+Inherited by the following classes: [endstone::Player](classendstone_1_1Player.md)
 
 
 
@@ -90,24 +90,48 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 
 
-## Public Functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Public Functions inherited from endstone::Actor
+
+See [endstone::Actor](classendstone_1_1Actor.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Actor**](#function-actor-13) () = default<br> |
-|   | [**Actor**](#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|   | [**Actor**](#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
-| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
-| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
-| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
-| virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
-| virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](#function-getvelocity) () const = 0<br> |
-| virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
-| virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
-| virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
-|   | [**~Actor**](#function-actor) () override<br> |
+|   | [**Actor**](classendstone_1_1Actor.md#function-actor-13) () = default<br> |
+|   | [**Actor**](classendstone_1_1Actor.md#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
+|   | [**Actor**](classendstone_1_1Actor.md#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
+| virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
+| virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1Actor.md#function-getlevel) () const = 0<br> |
+| virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](classendstone_1_1Actor.md#function-getlocation) () const = 0<br> |
+| virtual std::uint64\_t | [**getRuntimeId**](classendstone_1_1Actor.md#function-getruntimeid) () const = 0<br> |
+| virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](classendstone_1_1Actor.md#function-getvelocity) () const = 0<br> |
+| virtual bool | [**isInLava**](classendstone_1_1Actor.md#function-isinlava) () const = 0<br> |
+| virtual bool | [**isInWater**](classendstone_1_1Actor.md#function-isinwater) () const = 0<br> |
+| virtual bool | [**isOnGround**](classendstone_1_1Actor.md#function-isonground) () const = 0<br> |
+|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
+|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
+|   | [**~Actor**](classendstone_1_1Actor.md#function-actor) () override<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -230,319 +254,33 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
-## Public Functions Documentation
 
 
 
 
-### function Actor [1/3]
 
-```C++
-endstone::Actor::Actor () = default
-```
 
 
 
 
-<hr>
 
 
 
-### function Actor [2/3]
 
-```C++
-endstone::Actor::Actor (
-    const Actor &
-) = delete
-```
 
 
 
 
-<hr>
 
 
 
-### function Actor [3/3]
 
-```C++
-endstone::Actor::Actor (
-    Actor &&
-) = delete
-```
 
 
 
 
-<hr>
 
-
-
-### function getDimension 
-
-
-```C++
-virtual Dimension & endstone::Actor::getDimension () const = 0
-```
-
-
-
-Gets the current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in
-
-
-
-
-**Returns:**
-
-The current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getLevel 
-
-
-```C++
-virtual Level & endstone::Actor::getLevel () const = 0
-```
-
-
-
-Gets the current [**Level**](classendstone_1_1Level.md) this actor resides in
-
-
-
-
-**Returns:**
-
-The current [**Level**](classendstone_1_1Level.md) this actor resides in 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getLocation 
-
-
-```C++
-virtual Location endstone::Actor::getLocation () const = 0
-```
-
-
-
-Gets the actor's current position
-
-
-
-
-**Returns:**
-
-a new copy of [**Location**](classendstone_1_1Location.md) containing the position of this actor 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getRuntimeId 
-
-
-```C++
-virtual std::uint64_t endstone::Actor::getRuntimeId () const = 0
-```
-
-
-
-Returns the runtime id for this actor
-
-
-
-
-**Returns:**
-
-Runtime id for this actor 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getVelocity 
-
-
-```C++
-virtual Vector < float > endstone::Actor::getVelocity () const = 0
-```
-
-
-
-Gets this actor's current velocity
-
-
-
-
-**Returns:**
-
-Current traveling velocity of this actor 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function isInLava 
-
-
-```C++
-virtual bool endstone::Actor::isInLava () const = 0
-```
-
-
-
-Returns true if the actor is in lava.
-
-
-
-
-**Returns:**
-
-True if the actor is in lava. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function isInWater 
-
-
-```C++
-virtual bool endstone::Actor::isInWater () const = 0
-```
-
-
-
-Returns true if the actor is in water.
-
-
-
-
-**Returns:**
-
-True if the actor is in water. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function isOnGround 
-
-
-```C++
-virtual bool endstone::Actor::isOnGround () const = 0
-```
-
-
-
-Returns true if the actor is supported by a block.
-
-
-
-
-**Returns:**
-
-True if actor is on ground. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function operator= 
-
-```C++
-Actor & endstone::Actor::operator= (
-    const Actor &
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function operator= 
-
-```C++
-Actor & endstone::Actor::operator= (
-    Actor &&
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function ~Actor 
-
-```C++
-endstone::Actor::~Actor () override
-```
-
-
-
-
-<hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/actor/actor.h`
+The documentation for this class was generated from the following file `include/endstone/actor/mob.h`
 

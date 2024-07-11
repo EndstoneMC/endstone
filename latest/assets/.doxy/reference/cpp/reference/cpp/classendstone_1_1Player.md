@@ -14,7 +14,27 @@ _Represents a player._
 
 
 
-Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
+Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,6 +172,8 @@ Inherits the following classes: [endstone::Actor](classendstone_1_1Actor.md)
 |   | [**~Player**](#function-player) () override<br> |
 
 
+
+
 ## Public Functions inherited from endstone::Actor
 
 See [endstone::Actor](classendstone_1_1Actor.md)
@@ -214,6 +236,32 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual bool | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

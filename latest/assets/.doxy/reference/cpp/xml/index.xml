@@ -250,6 +250,8 @@
     <member refid="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" kind="function"><name>error</name></member>
     <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" kind="function"><name>critical</name></member>
   </compound>
+  <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
+  </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" kind="function"><name>isOp</name></member>
@@ -796,6 +798,8 @@
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>
   <compound refid="actor_8h" kind="file"><name>actor.h</name>
+  </compound>
+  <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="color__format_8h" kind="file"><name>color_format.h</name>
   </compound>
