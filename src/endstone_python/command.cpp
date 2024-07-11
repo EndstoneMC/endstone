@@ -29,17 +29,6 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-class PyCommandExecutor : public CommandExecutor {
-public:
-    using CommandExecutor::CommandExecutor;
-
-    bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
-    {
-        PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
-                               std::ref(args));
-    }
-};
-
 namespace {
 Command createCommand(std::string name, const std::optional<std::string> &description,
                       const std::optional<std::vector<std::string>> &usages,
@@ -73,8 +62,7 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
             py::arg("message"), "Sends this sender a translatable error message")
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
-        .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender")
-        .def("as_player", &CommandSender::asPlayer, "Cast to a Player instance", py::return_value_policy::reference);
+        .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")
@@ -103,12 +91,6 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
             "The permissions required by users to be able to perform this command")
         .def_property_readonly("registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
-
-    py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(
-        m, "CommandExecutor", "Represents a class which contains a single method for executing commands")
-        .def(py::init<>())
-        .def("on_command", &CommandExecutor::onCommand, py::arg("sender"), py::arg("command"), py::arg("args"),
-             "Executes the given command, returning its success.");
 }
 
 }  // namespace endstone::detail
