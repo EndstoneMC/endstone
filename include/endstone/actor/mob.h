@@ -26,6 +26,6 @@ public:
      * @brief Checks to see if an actor is gliding, such as using an Elytra.
      * @return True if this actor is gliding.
      */
-    virtual bool isGliding() const = 0;
+    [[nodiscard]] virtual bool isGliding() const = 0;
 };
 }  // namespace endstone

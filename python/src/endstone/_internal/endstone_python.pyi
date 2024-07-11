@@ -537,6 +537,11 @@ class Mob(Actor):
     """
     Represents a mobile entity (i.e. living entity), such as a monster or player.
     """
+    @property
+    def is_gliding(self) -> bool:
+        """
+        Checks to see if an actor is gliding, such as using an Elytra.
+        """
 class Permissible:
     """
     Represents an object that may become a server operator and can be assigned permissions.
