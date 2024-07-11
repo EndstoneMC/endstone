@@ -24,7 +24,7 @@ namespace endstone::detail {
 
 class EndstoneLevel;
 
-class EndstoneActor : public endstone::Actor {
+class EndstoneActor : public Actor {
 public:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
     ~EndstoneActor() override = default;

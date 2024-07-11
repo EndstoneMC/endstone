@@ -16,7 +16,7 @@
 
 #include <chrono>
 
-#include "endstone/actor/actor.h"
+#include "endstone/actor/mob.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/skin.h"
@@ -28,7 +28,7 @@ namespace endstone {
 /**
  * @brief Represents a player.
  */
-class Player : public Actor {
+class Player : public Mob {
 public:
     Player() = default;
     Player(const Player &) = delete;

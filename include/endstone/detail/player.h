@@ -19,7 +19,7 @@
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
 #include "bedrock/world/actor/player/build_platform.h"
-#include "endstone/detail/actor/actor.h"
+#include "endstone/detail/actor/mob.h"
 #include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/player.h"
 
@@ -28,7 +28,7 @@ class ServerNetworkHandler;
 
 namespace endstone::detail {
 
-class EndstonePlayer : public EndstoneActor, public endstone::Player {
+class EndstonePlayer : public EndstoneMob, public Player {
 public:
     explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
     ~EndstonePlayer() override;
