@@ -6,6 +6,7 @@
     <derivedcompoundref refid="classendstone_1_1ActorDeathEvent" prot="public" virt="non-virtual">endstone::ActorDeathEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorRemoveEvent" prot="public" virt="non-virtual">endstone::ActorRemoveEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorSpawnEvent" prot="public" virt="non-virtual">endstone::ActorSpawnEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorTeleportEvent" prot="public" virt="non-virtual">endstone::ActorTeleportEvent</derivedcompoundref>
     <includes refid="actor__event_8h" local="no">endstone/event/actor/actor_event.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1ActorEvent_1a64d37ca9b81a48ec1ec3d1fd6f0975cc" prot="private" static="no" mutable="no">
@@ -108,6 +109,12 @@
       <node id="5">
         <label>endstone::ActorRemoveEvent</label>
         <link refid="classendstone_1_1ActorRemoveEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::ActorTeleportEvent</label>
+        <link refid="classendstone_1_1ActorTeleportEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

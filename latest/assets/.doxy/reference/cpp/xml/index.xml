@@ -43,6 +43,19 @@
     <member refid="classendstone_1_1ActorSpawnEvent_1a3121b34be728eb087186a20be395032f" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ActorSpawnEvent_1a4b36f15fe95c316b1589bbf5314c60d6" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1ActorTeleportEvent" kind="class"><name>endstone::ActorTeleportEvent</name>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a2f7ffbf56f181255a139b024ba509783" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a2b90f3e377a4f13cb09f7ce4c26a45a8" kind="variable"><name>from_</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a57f1bfdf09d6f173e5fe1d34f2a2c3c6" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a6c419a38acb7baf7091376bac7bb44d7" kind="function"><name>ActorTeleportEvent</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a05d22c8898cc980d69767e36c70d2248" kind="function"><name>~ActorTeleportEvent</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a60979e7b5222885d3b072c8dde7185d2" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a66f845e674c7790e54896f66104b063c" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a3b69559bbec06825c26a58ac568c0e11" kind="function"><name>getFrom</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1ac71b31960417257ca1b2abaf7fc3e5e2" kind="function"><name>setFrom</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1a04e8968e9384a64661f04baefe5f886a" kind="function"><name>getTo</name></member>
+    <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
+  </compound>
   <compound refid="classendstone_1_1BroadcastMessageEvent" kind="class"><name>endstone::BroadcastMessageEvent</name>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a46c6014d11f209582bf2839fec0dea35" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a2efd1a69db19322c0611bc0a97e0aa8d" kind="variable"><name>message_</name></member>
@@ -839,6 +852,8 @@
   <compound refid="actor__remove__event_8h" kind="file"><name>actor_remove_event.h</name>
   </compound>
   <compound refid="actor__spawn__event_8h" kind="file"><name>actor_spawn_event.h</name>
+  </compound>
+  <compound refid="actor__teleport__event_8h" kind="file"><name>actor_teleport_event.h</name>
   </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
   </compound>

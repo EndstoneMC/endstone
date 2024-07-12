@@ -14,6 +14,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## b
