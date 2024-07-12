@@ -308,6 +308,14 @@ void init_player(py::module_ &m)
                       "Gets or sets the current allowed speed that a client can fly.")
         .def_property("walk_speed", &Player::getWalkSpeed, &Player::setWalkSpeed,
                       "Gets or sets the current allowed speed that a client can walk.")
+        .def("send_title", py::overload_cast<std::string, std::string, int, int, int>(&Player::sendTitle, py::const_),
+             "Sends a title and a subtitle message to the player. If they are empty strings, the display will be "
+             "updated as such.",
+             py::arg("title"), py::arg("subtitle"), py::arg("fade_in") = 10, py::arg("stay") = 70,
+             py::arg("fade_out") = 20)
+        .def("reset_title", &Player::resetTitle,
+             "Resets the title displayed to the player. This will clear the displayed title / subtitle and reset "
+             "timings to their default values.")
         .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
         .def("perform_command", &Player::performCommand, py::arg("command"),

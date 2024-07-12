@@ -198,7 +198,7 @@ public:
      * @param title Title text
      * @param subtitle Subtitle text
      */
-    virtual void sendTitle(std::string title, std::string subtitle) = 0;
+    virtual void sendTitle(std::string title, std::string subtitle) const = 0;
 
     /**
      * @brief Sends a title and a subtitle message to the player. If they are empty strings, the display will be
@@ -210,13 +210,13 @@ public:
      * @param stay time in ticks for titles to stay. Defaults to 70.
      * @param fade_out time in ticks for titles to fade out. Defaults to 20.
      */
-    virtual void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) = 0;
+    virtual void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const = 0;
 
     /**
      * @brief Resets the title displayed to the player. This will clear the displayed title / subtitle and reset
      * timings to their default values.
      */
-    virtual void resetTitle() = 0;
+    virtual void resetTitle() const = 0;
 
     /**
      * @brief Gets the player's average ping

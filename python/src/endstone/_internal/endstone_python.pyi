@@ -784,6 +784,10 @@ class Player(Mob):
         """
         Makes the player perform the given command.
         """
+    def reset_title(self) -> None:
+        """
+        Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
+        """
     def send_popup(self, message: str) -> None:
         """
         Sends this player a popup message
@@ -791,6 +795,10 @@ class Player(Mob):
     def send_tip(self, message: str) -> None:
         """
         Sends this player a tip message
+        """
+    def send_title(self, title: str, subtitle: str, fade_in: int = 10, stay: int = 70, fade_out: int = 20) -> None:
+        """
+        Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
         """
     def update_commands(self) -> None:
         """

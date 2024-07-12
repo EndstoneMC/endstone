@@ -351,12 +351,12 @@ void EndstonePlayer::setWalkSpeed(float value) const
     updateAbilities();
 }
 
-void EndstonePlayer::sendTitle(std::string title, std::string subtitle)
+void EndstonePlayer::sendTitle(std::string title, std::string subtitle) const
 {
     sendTitle(std::move(title), std::move(subtitle), 10, 70, 20);
 }
 
-void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out)
+void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const
 {
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
@@ -380,7 +380,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
     }
 }
 
-void EndstonePlayer::resetTitle()
+void EndstonePlayer::resetTitle() const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
     auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
