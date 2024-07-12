@@ -360,7 +360,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
 {
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
-        auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+        auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
         pk->type = SetTitlePacket::TitleType::Title;
         pk->title_text = title;
         pk->fade_in_time = fade_in;
@@ -370,7 +370,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
     }
     {
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
-        auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+        auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
         pk->type = SetTitlePacket::TitleType::Subtitle;
         pk->title_text = subtitle;
         pk->fade_in_time = fade_in;
@@ -383,7 +383,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
 void EndstonePlayer::resetTitle() const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
-    auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+    auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
     pk->type = SetTitlePacket::TitleType::Reset;
     getHandle().sendNetworkPacket(*packet);
 }
