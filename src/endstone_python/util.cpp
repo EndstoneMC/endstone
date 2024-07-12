@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fmt/format.h>
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 
@@ -31,8 +32,7 @@ void init_util(py::module &m)
         .def_property_readonly("port", &SocketAddress::getPort, "Gets the port number.")
         .def("__repr__",
              [](const SocketAddress &self) {
-                 return "<SocketAddress hostname='" + self.getHostname() + "' port=" + std::to_string(self.getPort()) +
-                        ">";
+                 return fmt::format("SocketAddress(hostname='{}', port={})", self.getHostname(), self.getPort());
              })
         .def("__str__",
              [](const SocketAddress &self) { return self.getHostname() + ":" + std::to_string(self.getPort()); });
@@ -45,10 +45,9 @@ void init_util(py::module &m)
         .def_property("z", &Vector<float>::getZ, &Vector<float>::setZ, "The Z component of the vector")
         .def("__repr__",
              [](const Vector<float> &v) {
-                 return "<Vector x: " + std::to_string(v.getX()) + " y: " + std::to_string(v.getY()) +
-                        " z: " + std::to_string(v.getZ()) + ">";
+                 return fmt::format("Vector(x={}, y={}, z={})", v.getX(), v.getY(), v.getZ());
              })
-        .def("__str__", &Vector<float>::toString)
+        .def("__str__", [](const Vector<float> &v) { return fmt::format("{},{},{}", v.getX(), v.getY(), v.getZ()); })
         .def(py::self + py::self)
         .def(py::self - py::self)
         .def(py::self * py::self)

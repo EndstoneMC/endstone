@@ -51,21 +51,32 @@ void init_level(py::module_ &m)
         .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
              py::return_value_policy::reference);
 
+    auto position_to_string = [](const Position &p) {
+        return fmt::format("Position(dimension={}, x={}, y={}, z={})",
+                           p.getDimension() ? p.getDimension()->getName() : "None", p.getX(), p.getY(), p.getZ());
+    };
     py::class_<Position, Vector<float>>(m, "Position",
                                         "Represents a 3-dimensional position in a dimension within a level.")
         .def(py::init<Dimension *, float, float, float>(), py::arg("dimension"), py::arg("x"), py::arg("y"),
              py::arg("z"))
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
-                      "The Dimension that contains this position");
-    // TODO(fixme): add __repr__
+                      "The Dimension that contains this position")
+        .def("__repr__", position_to_string)
+        .def("__str__", position_to_string);
 
+    auto location_to_string = [](const Location &l) {
+        return fmt::format("Location(dimension={}, x={}, y={}, z={}, pitch={}, yaw={})",
+                           l.getDimension() ? l.getDimension()->getName() : "None", l.getX(), l.getY(), l.getZ(),
+                           l.getPitch(), l.getYaw());
+    };
     py::class_<Location, Position>(m, "Location", "Represents a 3-dimensional location in a dimension within a level.")
         .def(py::init<Dimension *, float, float, float, float, float>(), py::arg("dimension"), py::arg("x"),
              py::arg("y"), py::arg("z"), py::arg("pitch") = 0.0, py::arg("yaw") = 0.0)
         .def_property("pitch", &Location::getPitch, &Location::setPitch,
                       "The pitch of this location, measured in degrees.")
-        .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.");
-    // TODO(fixme): add __repr__
+        .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")
+        .def("__repr__", location_to_string)
+        .def("__str__", location_to_string);
 }
 
 }  // namespace endstone::detail
