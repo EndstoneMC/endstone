@@ -28,9 +28,5 @@ void Level::tick()
     auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
     scheduler.mainThreadHeartbeat(getCurrentServerTick().tick_id);
 
-#if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, __FUNCDNAME__, this);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, "_ZN5Level4tickEv", this);
-#endif
 }
