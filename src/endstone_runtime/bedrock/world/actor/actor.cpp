@@ -58,7 +58,7 @@ label:
             return;
         }
 
-        // TODO(event): pass to to the origin function
+        // TODO(event): pass toLocation to the origin function, setRotation as the original function only takes vec3
     }
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, pos, should_stop_riding, cause,
                                      entity_type, keep_velocity);
@@ -181,7 +181,6 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
         auto *player = static_cast<Player *>(self);
         return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }
-    // TODO(actor): add factory method for other actors
     return entity_context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
 }
 
