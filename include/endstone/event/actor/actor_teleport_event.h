@@ -40,21 +40,41 @@ public:
         return true;
     }
 
+    /**
+     * @brief Gets the location that this actor moved from
+     *
+     * @return Location this actor moved from
+     */
     [[nodiscard]] const Location &getFrom() const
     {
         return from_;
     }
 
+    /**
+     * @brief Sets the location that this actor moved from
+     *
+     * @param from New location this actor moved from
+     */
     void setFrom(const Location &from)
     {
         from_ = from;
     }
 
+    /**
+     * @brief Gets the location that this actor moved to
+     *
+     * @return Location this actor moved to
+     */
     [[nodiscard]] const Location &getTo() const
     {
         return to_;
     }
 
+    /**
+     * @brief Sets the location that this actor moved to
+     *
+     * @param to New Location this actor moved to
+     */
     void setTo(const Location &to)
     {
         to_ = to;

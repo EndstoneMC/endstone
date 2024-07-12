@@ -21,6 +21,7 @@
 #include "endstone/event/actor/actor_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
+#include "endstone/event/actor/actor_teleport_event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_command_event.h"
@@ -72,6 +73,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
     py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
     py::class_<ActorSpawnEvent, ActorEvent>(m, "ActorSpawnEvent", "Called when an Actor is spawned into a world.");
+    py::class_<ActorTeleportEvent, ActorEvent>(
+        m, "ActorTeleportEvent", "Called when a non-player entity is teleported from one location to another.")
+        .def_property("from_location", &ActorTeleportEvent::getFrom, &ActorTeleportEvent::setFrom,
+                      "Gets or sets the location that this actor moved from.")
+        .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
+                      "Gets or sets the location that this actor moved to.");
 
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
