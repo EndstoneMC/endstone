@@ -39,4 +39,4 @@ const CommandFlag CommandFlag::DisabledInEditor = {1 << 9};      // CommandRegis
 /**
  * CommandVersion
  */
-const int CommandVersion::CurrentVersion = 38;
+const int CommandVersion::CurrentVersion = 39;
