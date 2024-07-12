@@ -360,7 +360,6 @@
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **Translatable** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **toString** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **toWeatherState** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 
 

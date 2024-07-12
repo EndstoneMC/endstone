@@ -761,7 +761,6 @@
     <member refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" kind="function"><name>lengthSquared</name></member>
     <member refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" kind="function"><name>distance</name></member>
     <member refid="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" kind="function"><name>distanceSquared</name></member>
-    <member refid="classendstone_1_1Vector_1a99fe1704d404fe992b5c517433681511" kind="function"><name>toString</name></member>
     <member refid="classendstone_1_1Vector_1a478b4f59b88f6d64889608c053969de6" kind="friend"><name>operator+</name></member>
     <member refid="classendstone_1_1Vector_1a16f34bea284e41dc34177ef54cd4a56b" kind="friend"><name>operator-</name></member>
     <member refid="classendstone_1_1Vector_1a62a4ad73522b697dbaa77be9c41320ac" kind="friend"><name>operator*</name></member>

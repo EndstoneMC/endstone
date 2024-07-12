@@ -262,7 +262,6 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
       <member refid="classendstone_1_1Vector_1a9a871a7080fc93e201885582a54a6b19" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>setY</name></member>
       <member refid="classendstone_1_1Location_1adc5ba432e8d7e277ad1a004f51fe5e5d" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>setYaw</name></member>
       <member refid="classendstone_1_1Vector_1a5b519c6680b0fc7b1ec2e20c85429fc2" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>setZ</name></member>
-      <member refid="classendstone_1_1Vector_1a99fe1704d404fe992b5c517433681511" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>toString</name></member>
       <member refid="classendstone_1_1Vector_1af7abc6d458ecf1f7f0498ee1c8357c6a" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>Vector</name></member>
       <member refid="classendstone_1_1Vector_1a245e605b53217c5d4d681e0e1b77c63f" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>Vector</name></member>
       <member refid="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>yaw_</name></member>

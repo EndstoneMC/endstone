@@ -177,11 +177,6 @@ public:
                (z_ - other.z_) * (z_ - other.z_);
     }
 
-    [[nodiscard]] std::string toString() const
-    {
-        return std::to_string(x_) + "," + std::to_string(y_) + "," + std::to_string(z_);
-    }
-
 private:
     T x_;
     T y_;

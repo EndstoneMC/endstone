@@ -1837,11 +1837,11 @@
 </tr>
 <tr>
 <td style="text-align: right;">const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getfrom"><strong>getFrom</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getfrom"><strong>getFrom</strong></a> () const<br><em>Gets the location that this actor moved from.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-getto"><strong>getTo</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="#function-getto"><strong>getTo</strong></a> () const<br><em>Gets the location that this actor moved to.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
@@ -1849,11 +1849,11 @@
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setfrom"><strong>setFrom</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; from) <br></td>
+<td style="text-align: left;"><a href="#function-setfrom"><strong>setFrom</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; from) <br><em>Sets the location that this actor moved from.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setto"><strong>setTo</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; to) <br></td>
+<td style="text-align: left;"><a href="#function-setto"><strong>setTo</strong></a> (const <a href="../classendstone_1_1Location/"><strong>Location</strong></a> &amp; to) <br><em>Sets the location that this actor moved to.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -1960,13 +1960,19 @@
 <hr>
 
 <h3 id="function-getfrom">function getFrom<a class="headerlink" href="#function-getfrom" title="Permanent link">&para;</a></h3>
+<p><em>Gets the location that this actor moved from.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorTeleportEvent</span><span class="o">::</span><span class="n">getFrom</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Location/"><strong>Location</strong></a> this actor moved from </p>
 <hr>
 
 <h3 id="function-getto">function getTo<a class="headerlink" href="#function-getto" title="Permanent link">&para;</a></h3>
+<p><em>Gets the location that this actor moved to.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorTeleportEvent</span><span class="o">::</span><span class="n">getTo</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Location/"><strong>Location</strong></a> this actor moved to </p>
 <hr>
 
 <h3 id="function-iscancellable">function isCancellable<a class="headerlink" href="#function-iscancellable" title="Permanent link">&para;</a></h3>
@@ -1979,17 +1985,27 @@
 <hr>
 
 <h3 id="function-setfrom">function setFrom<a class="headerlink" href="#function-setfrom" title="Permanent link">&para;</a></h3>
+<p><em>Sets the location that this actor moved from.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorTeleportEvent</span><span class="o">::</span><span class="n">setFrom</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">from</span>
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>from</code> New location this actor moved from </li>
+</ul>
 <hr>
 
 <h3 id="function-setto">function setTo<a class="headerlink" href="#function-setto" title="Permanent link">&para;</a></h3>
+<p><em>Sets the location that this actor moved to.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActorTeleportEvent</span><span class="o">::</span><span class="n">setTo</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">to</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>to</code> New <a href="../classendstone_1_1Location/"><strong>Location</strong></a> this actor moved to </li>
+</ul>
 <hr>
 
 <h3 id="function-actorteleportevent_1">function ~ActorTeleportEvent<a class="headerlink" href="#function-actorteleportevent_1" title="Permanent link">&para;</a></h3>

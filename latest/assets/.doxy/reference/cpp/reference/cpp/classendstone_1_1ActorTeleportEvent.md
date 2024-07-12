@@ -100,11 +100,11 @@ Inherits the following classes: [endstone::ActorEvent](classendstone_1_1ActorEve
 | ---: | :--- |
 |   | [**ActorTeleportEvent**](#function-actorteleportevent) ([**Actor**](classendstone_1_1Actor.md) & actor, [**Location**](classendstone_1_1Location.md) from, [**Location**](classendstone_1_1Location.md) to) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
-|  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br> |
-|  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br> |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getFrom**](#function-getfrom) () const<br>_Gets the location that this actor moved from._  |
+|  const [**Location**](classendstone_1_1Location.md) & | [**getTo**](#function-getto) () const<br>_Gets the location that this actor moved to._  |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
-|  void | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br> |
-|  void | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br> |
+|  void | [**setFrom**](#function-setfrom) (const [**Location**](classendstone_1_1Location.md) & from) <br>_Sets the location that this actor moved from._  |
+|  void | [**setTo**](#function-setto) (const [**Location**](classendstone_1_1Location.md) & to) <br>_Sets the location that this actor moved to._  |
 |   | [**~ActorTeleportEvent**](#function-actorteleportevent) () override<br> |
 
 
@@ -290,6 +290,7 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getFrom 
 
+_Gets the location that this actor moved from._ 
 ```C++
 inline const Location & endstone::ActorTeleportEvent::getFrom () const
 ```
@@ -297,18 +298,41 @@ inline const Location & endstone::ActorTeleportEvent::getFrom () const
 
 
 
+
+**Returns:**
+
+[**Location**](classendstone_1_1Location.md) this actor moved from 
+
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function getTo 
 
+_Gets the location that this actor moved to._ 
 ```C++
 inline const Location & endstone::ActorTeleportEvent::getTo () const
 ```
 
 
 
+
+
+**Returns:**
+
+[**Location**](classendstone_1_1Location.md) this actor moved to 
+
+
+
+
+
+        
 
 <hr>
 
@@ -346,6 +370,7 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 ### function setFrom 
 
+_Sets the location that this actor moved from._ 
 ```C++
 inline void endstone::ActorTeleportEvent::setFrom (
     const Location & from
@@ -355,12 +380,24 @@ inline void endstone::ActorTeleportEvent::setFrom (
 
 
 
+
+**Parameters:**
+
+
+* `from` New location this actor moved from 
+
+
+
+
+        
+
 <hr>
 
 
 
 ### function setTo 
 
+_Sets the location that this actor moved to._ 
 ```C++
 inline void endstone::ActorTeleportEvent::setTo (
     const Location & to
@@ -369,6 +406,17 @@ inline void endstone::ActorTeleportEvent::setTo (
 
 
 
+
+
+**Parameters:**
+
+
+* `to` New [**Location**](classendstone_1_1Location.md) this actor moved to 
+
+
+
+
+        
 
 <hr>
 
