@@ -16,7 +16,8 @@
 
 #include "endstone/detail/hook.h"
 
-class std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level) {
+class std::unique_ptr<CommandOrigin> CommandOriginLoader::load(const CompoundTag &tag, ServerLevel &level)
+{
     std::unique_ptr<CommandOrigin> result;
     ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandOriginLoader::load, result, tag, level);
     return result;
