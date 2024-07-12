@@ -49,11 +49,7 @@ void ServerPlayer::die(const ActorDamageSource &source)
         }
     }
 
-#if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, "_ZN12ServerPlayer3dieERK17ActorDamageSource", this, source);
-#endif
 }
 
 void ServerPlayer::doInitialSpawn()

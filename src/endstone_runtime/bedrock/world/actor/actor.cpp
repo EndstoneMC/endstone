@@ -41,11 +41,7 @@ void Actor::remove()
         server.getPluginManager().callEvent(e);
     }
 
-#if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, __FUNCDNAME__, this);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::remove, "_ZN5Actor6removeEv", this);
-#endif
 }
 
 void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
@@ -64,13 +60,8 @@ label:
 
         // TODO(event): pass to to the origin function
     }
-#if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, pos, should_stop_riding, cause,
                                      entity_type, keep_velocity);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, "_ZN5Actor10teleportToERK4Vec3biib", this, pos,
-                                     should_stop_riding, cause, entity_type, keep_velocity);
-#endif
 }
 
 bool Actor::isPlayer() const

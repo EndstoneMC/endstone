@@ -35,10 +35,5 @@ void StartGamePacket::write(BinaryStream &stream) const
         settings_.setRandomSeed({0});
     }
 
-#if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&StartGamePacket::write, __FUNCDNAME__, this, stream);
-#else
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&StartGamePacket::write, "_ZNK15StartGamePacket5writeER12BinaryStream", this,
-                                     stream);
-#endif
 }
