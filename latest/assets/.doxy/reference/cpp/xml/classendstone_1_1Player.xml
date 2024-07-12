@@ -577,6 +577,136 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="192" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a8d5283dfea450c42458778ee059ccfe6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::sendTitle</definition>
+        <argsstring>(std::string title, std::string subtitle) const =0</argsstring>
+        <name>sendTitle</name>
+        <param>
+          <type>std::string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>subtitle</declname>
+        </param>
+        <briefdescription>
+<para>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Title text </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subtitle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Subtitle text </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="201" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a8294c943551a0e2fa0e31362d332f41e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::sendTitle</definition>
+        <argsstring>(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const =0</argsstring>
+        <name>sendTitle</name>
+        <param>
+          <type>std::string</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>subtitle</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fade_in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>stay</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fade_out</declname>
+        </param>
+        <briefdescription>
+<para>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Title text </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>subtitle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Subtitle text </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fade_in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in ticks for titles to fade in. Defaults to 10. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stay</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in ticks for titles to stay. Defaults to 70. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fade_out</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>time in ticks for titles to fade out. Defaults to 20. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="213" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::resetTitle</definition>
+        <argsstring>() const =0</argsstring>
+        <name>resetTitle</name>
+        <briefdescription>
+<para>Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="219" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::chrono::milliseconds</type>
         <definition>virtual std::chrono::milliseconds endstone::Player::getPing</definition>
@@ -592,7 +722,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="199" column="40"/>
+        <location file="include/endstone/player.h" line="226" column="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -607,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="206" column="18"/>
+        <location file="include/endstone/player.h" line="233" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -637,7 +767,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="214" column="18"/>
+        <location file="include/endstone/player.h" line="241" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>GameMode</type>
@@ -654,7 +784,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="221" column="23"/>
+        <location file="include/endstone/player.h" line="248" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -682,7 +812,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="228" column="18"/>
+        <location file="include/endstone/player.h" line="255" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1PlayerInventory" kindref="compound">PlayerInventory</ref> &amp;</type>
@@ -699,7 +829,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="235" column="30"/>
+        <location file="include/endstone/player.h" line="262" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -716,7 +846,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="242" column="26"/>
+        <location file="include/endstone/player.h" line="269" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -733,7 +863,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="249" column="26"/>
+        <location file="include/endstone/player.h" line="276" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
@@ -750,7 +880,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="256" column="29"/>
+        <location file="include/endstone/player.h" line="283" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const <ref refid="classendstone_1_1Skin" kindref="compound">Skin</ref> &amp;</type>
@@ -767,7 +897,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="263" column="25"/>
+        <location file="include/endstone/player.h" line="290" column="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -835,7 +965,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="31" column="1" bodyfile="include/endstone/player.h" bodystart="31" bodyend="264"/>
+    <location file="include/endstone/player.h" line="31" column="1" bodyfile="include/endstone/player.h" bodystart="31" bodyend="291"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -892,6 +1022,7 @@
       <member refid="classendstone_1_1Player_1adf03a1a7668477bc13b7f51805fa69a8" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>resetTitle</name></member>
       <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a8e3992eae0fee7e733685451a8e31b8d" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
@@ -900,6 +1031,8 @@
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendPopup</name></member>
       <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTip</name></member>
+      <member refid="classendstone_1_1Player_1a8d5283dfea450c42458778ee059ccfe6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTitle</name></member>
+      <member refid="classendstone_1_1Player_1a8294c943551a0e2fa0e31362d332f41e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTitle</name></member>
       <member refid="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setAllowFlight</name></member>
       <member refid="classendstone_1_1Player_1a7816ae526469ef35cd741f992804ae0e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpLevel</name></member>
       <member refid="classendstone_1_1Player_1a97b5f5e159340ddab9622c6f16176d6e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpProgress</name></member>

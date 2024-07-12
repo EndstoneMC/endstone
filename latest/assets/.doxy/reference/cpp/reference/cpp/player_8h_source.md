@@ -91,6 +91,12 @@ public:
 
     virtual void setWalkSpeed(float value) const = 0;
 
+    virtual void sendTitle(std::string title, std::string subtitle) const = 0;
+
+    virtual void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const = 0;
+
+    virtual void resetTitle() const = 0;
+
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     virtual void updateCommands() const = 0;

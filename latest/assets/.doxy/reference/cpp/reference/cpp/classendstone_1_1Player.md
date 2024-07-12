@@ -159,8 +159,11 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 |  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator) (const [**Player**](classendstone_1_1Player.md) &) = delete<br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator_1) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
+| virtual void | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual void | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
+| virtual void | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._  |
+| virtual void | [**sendTitle**](#function-sendtitle-22) (std::string title, std::string subtitle, int fade\_in, int stay, int fade\_out) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such._  |
 | virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual void | [**setExpLevel**](#function-setexplevel) (int level) = 0<br>_Sets the players current experience level._  |
 | virtual void | [**setExpProgress**](#function-setexpprogress) (float progress) = 0<br>_Sets the players current experience progress towards the next level._  |
@@ -1001,6 +1004,19 @@ true if the command was successful, otherwise false
 
 
 
+### function resetTitle 
+
+```C++
+virtual void endstone::Player::resetTitle () const = 0
+```
+
+
+
+
+<hr>
+
+
+
 ### function sendPopup 
 
 _Sends this player a popup message._ 
@@ -1045,6 +1061,70 @@ virtual void endstone::Player::sendTip (
 
 
 * `message` Message to be displayed 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendTitle [1/2]
+
+_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._ 
+```C++
+virtual void endstone::Player::sendTitle (
+    std::string title,
+    std::string subtitle
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `title` Title text 
+* `subtitle` Subtitle text 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendTitle [2/2]
+
+_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such._ 
+```C++
+virtual void endstone::Player::sendTitle (
+    std::string title,
+    std::string subtitle,
+    int fade_in,
+    int stay,
+    int fade_out
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `title` Title text 
+* `subtitle` Subtitle text 
+* `fade_in` time in ticks for titles to fade in. Defaults to 10. 
+* `stay` time in ticks for titles to stay. Defaults to 70. 
+* `fade_out` time in ticks for titles to fade out. Defaults to 20. 
 
 
 
