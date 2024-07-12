@@ -20,7 +20,7 @@
 
 class VanillaDimensions {
 public:
-    constexpr static AutomaticID<Dimension, int> Overworld{0};
-    constexpr static AutomaticID<Dimension, int> Nether{1};
-    constexpr static AutomaticID<Dimension, int> TheEnd{2};
+    constexpr static DimensionType Overworld{0};
+    constexpr static DimensionType Nether{1};
+    constexpr static DimensionType TheEnd{2};
 };

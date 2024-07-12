@@ -40,12 +40,12 @@ protected:
     virtual void _fireDimensionChanged() = 0;
 
 public:
-    virtual void changeDimensionWithCredits(AutomaticID<Dimension, int>) = 0;
+    virtual void changeDimensionWithCredits(DimensionType) = 0;
     virtual void tickWorld(Tick const &) = 0;
     virtual void frameUpdate(FrameUpdateContextBase &) = 0;
     [[nodiscard]] virtual std::vector<ChunkPos> const &getTickingOffsets() const = 0;
     virtual void moveView() = 0;
-    virtual void moveSpawnView(Vec3 const &, AutomaticID<Dimension, int>) = 0;
+    virtual void moveSpawnView(Vec3 const &, DimensionType) = 0;
     virtual void checkMovementStats(Vec3 const &) = 0;
     [[nodiscard]] virtual StructureFeatureType getCurrentStructureFeature() const = 0;
     virtual bool isAutoJumpEnabled() = 0;

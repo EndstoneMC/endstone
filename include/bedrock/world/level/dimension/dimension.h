@@ -50,5 +50,5 @@ private:
     BlockSource *block_source_;                                                 // +208 (+176)
     size_t pad_[14];                                                            //
     std::string name_;                                                          // +328 (+296)
-    AutomaticID<Dimension, int> id_;                                            // +360 (+320)
+    DimensionType id_;                                                          // +360 (+320)
 };

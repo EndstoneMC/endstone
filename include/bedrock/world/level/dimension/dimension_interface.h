@@ -18,9 +18,11 @@
 
 class Dimension;
 
+using DimensionType = AutomaticID<Dimension, int>;
+
 class IDimension {
 public:
     virtual ~IDimension() = 0;
     [[nodiscard]] virtual bool isNaturalDimension() const = 0;
-    [[nodiscard]] virtual AutomaticID<Dimension, int> getDimensionId() const = 0;
+    [[nodiscard]] virtual DimensionType getDimensionId() const = 0;
 };

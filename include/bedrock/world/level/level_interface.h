@@ -42,6 +42,7 @@
 #include "bedrock/world/item/registry/item_registry_ref.h"
 #include "bedrock/world/level/block/block_palette.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
+#include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
 
@@ -52,10 +53,9 @@ public:
                             std::string const *) = 0;
     virtual void startLeaveGame() = 0;
     virtual bool isLeaveGameDone() = 0;
-    virtual WeakRef<Dimension> getOrCreateDimension(AutomaticID<Dimension, int>) = 0;
-    [[nodiscard]] virtual WeakRef<Dimension> getDimension(AutomaticID<Dimension, int>) const = 0;
-    [[nodiscard]] virtual AutomaticID<Dimension, int> getLastOrDefaultSpawnDimensionId(
-        AutomaticID<Dimension, int>) const = 0;
+    virtual WeakRef<Dimension> getOrCreateDimension(DimensionType) = 0;
+    [[nodiscard]] virtual WeakRef<Dimension> getDimension(DimensionType) const = 0;
+    [[nodiscard]] virtual DimensionType getLastOrDefaultSpawnDimensionId(DimensionType) const = 0;
     virtual void forEachDimension(std::function<bool(Dimension &)>) = 0;
     virtual void forEachDimension(std::function<bool(Dimension const &)>) const = 0;
     virtual DimensionManager const &getDimensionManager() = 0;
@@ -64,7 +64,7 @@ public:
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
-    virtual void entityChangeDimension(Actor &, AutomaticID<Dimension, int>, std::optional<Vec3>) = 0;
+    virtual void entityChangeDimension(Actor &, DimensionType, std::optional<Vec3>) = 0;
     [[nodiscard]] virtual Spawner &getSpawner() const = 0;
     virtual Bedrock::NonOwnerPointer<BossEventSubscriptionManager> getBossEventSubscriptionManager() = 0;
     [[nodiscard]] virtual ProjectileFactory &getProjectileFactory() const = 0;
@@ -85,7 +85,7 @@ public:
     [[nodiscard]] virtual Difficulty getDifficulty() const = 0;
     [[nodiscard]] virtual InternalComponentRegistry &getInternalComponentRegistry() const = 0;
     [[nodiscard]] virtual DimensionConversionData getDimensionConversionData() const = 0;
-    [[nodiscard]] virtual float getSpecialMultiplier(AutomaticID<Dimension, int>) const = 0;
+    [[nodiscard]] virtual float getSpecialMultiplier(DimensionType) const = 0;
     [[nodiscard]] virtual bool hasCommandsEnabled() const = 0;
     [[nodiscard]] virtual bool useMsaGamertagsOnly() const = 0;
     virtual void setMsaGamertagsOnly(bool) = 0;
@@ -209,7 +209,7 @@ public:
     virtual void saveGameData() = 0;
     virtual std::shared_ptr<void *> requestTimedStorageDeferment() = 0;
     virtual TickingAreasManager &getTickingAreasMgr() = 0;
-    virtual void addTickingAreaList(AutomaticID<Dimension, int>, std::shared_ptr<TickingAreaList> const &) = 0;
+    virtual void addTickingAreaList(DimensionType, std::shared_ptr<TickingAreaList> const &) = 0;
     virtual void sendServerLegacyParticle(ParticleType, Vec3 const &, Vec3 const &, int) = 0;
     virtual void playSound(Puv::Legacy::LevelSoundEvent, Vec3 const &, int, ActorDefinitionIdentifier const &, bool,
                            bool) = 0;
@@ -217,7 +217,7 @@ public:
     virtual void playSound(std::string const &, Vec3 const &, float, float) = 0;
     virtual void playSound(IConstBlockSource const &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
                            ActorDefinitionIdentifier const &, bool, bool) = 0;
-    virtual void playSound(AutomaticID<Dimension, int>, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
+    virtual void playSound(DimensionType, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
                            ActorDefinitionIdentifier const &, bool, bool) = 0;
     virtual PlayerEventCoordinator &getRemotePlayerEventCoordinator() = 0;
     virtual ServerPlayerEventCoordinator &getServerPlayerEventCoordinator() = 0;
@@ -309,10 +309,9 @@ public:
     virtual void requestMapInfo(ActorUniqueID, bool) = 0;
     virtual ActorUniqueID expandMapByID(ActorUniqueID, bool) = 0;
     virtual bool copyAndLockMap(ActorUniqueID, ActorUniqueID) = 0;
-    virtual MapItemSavedData &createMapSavedData(std::vector<ActorUniqueID> const &, BlockPos const &,
-                                                 AutomaticID<Dimension, int>, int) = 0;
-    virtual MapItemSavedData &createMapSavedData(ActorUniqueID const &, BlockPos const &, AutomaticID<Dimension, int>,
+    virtual MapItemSavedData &createMapSavedData(std::vector<ActorUniqueID> const &, BlockPos const &, DimensionType,
                                                  int) = 0;
+    virtual MapItemSavedData &createMapSavedData(ActorUniqueID const &, BlockPos const &, DimensionType, int) = 0;
     [[nodiscard]] virtual Core::PathBuffer<std::string> getScreenshotsFolder() const = 0;
     [[nodiscard]] virtual std::string getLevelId() const = 0;
     virtual void setLevelId(std::string) = 0;

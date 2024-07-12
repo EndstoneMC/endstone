@@ -157,7 +157,7 @@ public:
     [[nodiscard]] virtual AABB getLiquidAABB(MaterialType) const = 0;
     virtual void handleInsidePortal(BlockPos const &) = 0;
     [[nodiscard]] virtual bool canChangeDimensionsUsingPortal() const = 0;
-    virtual void changeDimension(AutomaticID<Dimension, int>) = 0;
+    virtual void changeDimension(DimensionType) = 0;
     virtual void changeDimension(ChangeDimensionPacket const &) = 0;
     [[nodiscard]] virtual ActorUniqueID getControllingPlayer() const = 0;
     virtual float causeFallDamageToActor(float, float, ActorDamageSource) = 0;
@@ -199,7 +199,7 @@ public:
     virtual float getNextStep(float) = 0;
     virtual void onPush(Actor &) = 0;
     [[nodiscard]] virtual std::optional<BlockPos> getLastDeathPos() const = 0;
-    [[nodiscard]] virtual std::optional<AutomaticID<Dimension, int>> getLastDeathDimension() const = 0;
+    [[nodiscard]] virtual std::optional<DimensionType> getLastDeathDimension() const = 0;
     [[nodiscard]] virtual bool hasDiedBefore() const = 0;
     virtual void doEnterWaterSplashEffect() = 0;
     virtual void doExitWaterSplashEffect() = 0;
