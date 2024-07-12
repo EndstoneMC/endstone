@@ -1,11 +1,11 @@
-timestamp = 1720569309
+timestamp = 1720797371
 version = "1.21.2"
 
 [windows]
 "?getI18n@@YAAEAVI18n@@XZ" = 8650352
 # Actor
 "?remove@Actor@@UEAAXXZ" = 27009712
-"?setDimension@Actor@@QEAAXV?$WeakRef@VDimension@@@@@Z" = 27024608
+"?teleportTo@Actor@@UEAAXAEBVVec3@@_NHH1@Z" = 27040064
 # AttributeCollection
 "?instance@AttributeCollection@@CAAEAV1@XZ" = 27646576
 # Bedrock
@@ -83,8 +83,8 @@ version = "1.21.2"
 [linux]
 "_Z7getI18nv" = 74169216
 # Actor
-"_ZN5Actor12setDimensionE7WeakRefI9DimensionE" = 110310992
 "_ZN5Actor6removeEv" = 110272352
+"_ZN5Actor10teleportToERK4Vec3biib" = 110298864
 # AttributeCollection
 "_ZN19AttributeCollection8instanceEv" = 111829040
 # Bedrock

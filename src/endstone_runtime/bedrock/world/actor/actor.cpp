@@ -29,6 +29,7 @@
 #include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_remove_event.h"
+#include "endstone/event/actor/actor_teleport_event.h"
 
 using endstone::detail::EndstoneServer;
 
@@ -47,10 +48,29 @@ void Actor::remove()
 #endif
 }
 
-void Actor::setDimension(WeakRef<Dimension> dimension)
+void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
-    // TODO(event): call PlayerChangedLevelEvent for player??
-    ENDSTONE_HOOK_CALL_ORIGINAL(&Actor::setDimension, this, std::move(dimension));
+label:
+    if (!isPlayer()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        auto &actor = getEndstoneActor();
+        endstone::Location to{&actor.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+        endstone::ActorTeleportEvent e{actor, actor.getLocation(), to};
+        server.getPluginManager().callEvent(e);
+
+        if (e.isCancelled()) {
+            return;
+        }
+
+        // TODO(event): pass to to the origin function
+    }
+#if _WIN32
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, pos, should_stop_riding, cause,
+                                     entity_type, keep_velocity);
+#else
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, "_ZN5Actor10teleportToERK4Vec3biib", this, pos,
+                                     should_stop_riding, cause, entity_type, keep_velocity);
+#endif
 }
 
 bool Actor::isPlayer() const

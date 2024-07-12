@@ -85,7 +85,7 @@ public:
     [[nodiscard]] virtual bool isFireImmune() const = 0;
     virtual void blockedByShield(ActorDamageSource const &, Actor &) = 0;
     virtual bool canDisableShield() = 0;
-    virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
+    ENDSTONE_HOOK virtual void teleportTo(Vec3 const &, bool, int, int, bool) = 0;
     virtual Vec3 lerpMotion(Vec3 const &) = 0;
     virtual std::unique_ptr<AddActorBasePacket> tryCreateAddActorPacket() = 0;
     virtual void normalTick() = 0;
@@ -248,8 +248,6 @@ public:
     {
         return entity_context_.tryGetComponent<Component>();
     };
-
-    ENDSTONE_HOOK void setDimension(WeakRef<Dimension>);
 
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
