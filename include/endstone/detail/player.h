@@ -88,6 +88,9 @@ public:
     void setFlySpeed(float value) const override;
     [[nodiscard]] float getWalkSpeed() const override;
     void setWalkSpeed(float value) const override;
+    void sendTitle(std::string title, std::string subtitle) override;
+    void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) override;
+    void resetTitle() override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)

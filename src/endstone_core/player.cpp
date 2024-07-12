@@ -21,6 +21,7 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
@@ -72,7 +73,7 @@ EndstonePlayer::~EndstonePlayer()
 void EndstonePlayer::sendMessage(const std::string &message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Raw;
     pk->message = message;
     getHandle().sendNetworkPacket(*packet);
@@ -81,7 +82,7 @@ void EndstonePlayer::sendMessage(const std::string &message) const
 void EndstonePlayer::sendMessage(const Translatable &message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Translate;
     pk->message = message.getTranslationKey();
     pk->params = message.getParameters();
@@ -226,7 +227,7 @@ const SocketAddress &EndstonePlayer::getAddress() const
 void EndstonePlayer::sendPopup(std::string message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Popup;
     pk->message = message;
     getHandle().sendNetworkPacket(*packet);
@@ -235,7 +236,7 @@ void EndstonePlayer::sendPopup(std::string message) const
 void EndstonePlayer::sendTip(std::string message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    std::shared_ptr<TextPacket> pk = std::static_pointer_cast<TextPacket>(packet);
+    auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Tip;
     pk->message = message;
     getHandle().sendNetworkPacket(*packet);
@@ -348,6 +349,43 @@ void EndstonePlayer::setWalkSpeed(float value) const
 {
     getHandle().getAbilities().setAbility(AbilitiesIndex::WalkSpeed, value);
     updateAbilities();
+}
+
+void EndstonePlayer::sendTitle(std::string title, std::string subtitle)
+{
+    sendTitle(std::move(title), std::move(subtitle), 10, 70, 20);
+}
+
+void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out)
+{
+    {
+        auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
+        auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+        pk->type = SetTitlePacket::TitleType::Title;
+        pk->title_text = title;
+        pk->fade_in_time = fade_in;
+        pk->stay_time = stay;
+        pk->fade_out_time = fade_out;
+        getHandle().sendNetworkPacket(*packet);
+    }
+    {
+        auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
+        auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+        pk->type = SetTitlePacket::TitleType::Subtitle;
+        pk->title_text = subtitle;
+        pk->fade_in_time = fade_in;
+        pk->stay_time = stay;
+        pk->fade_out_time = fade_out;
+        getHandle().sendNetworkPacket(*packet);
+    }
+}
+
+void EndstonePlayer::resetTitle()
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
+    auto pk = std::dynamic_pointer_cast<SetTitlePacket>(packet);
+    pk->type = SetTitlePacket::TitleType::Reset;
+    getHandle().sendNetworkPacket(*packet);
 }
 
 std::chrono::milliseconds EndstonePlayer::getPing() const
