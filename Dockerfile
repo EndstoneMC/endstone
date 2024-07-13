@@ -63,8 +63,8 @@ WORKDIR /home/endstone
 
 COPY --from=builder /usr/src/endstone/dist .
 
-RUN python -m pip install --upgrade pip \
-    && pip install ./*-manylinux_2_31_x86_64.whl \
+RUN python -m pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir ./*-manylinux_2_31_x86_64.whl \
     && rm ./*.whl
 
 USER endstone

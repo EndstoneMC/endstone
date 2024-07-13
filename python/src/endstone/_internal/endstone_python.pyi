@@ -453,6 +453,10 @@ class Location(Position):
     """
     def __init__(self, dimension: Dimension, x: float, y: float, z: float, pitch: float = 0.0, yaw: float = 0.0) -> None:
         ...
+    def __repr__(self) -> str:
+        ...
+    def __str__(self) -> str:
+        ...
     @property
     def pitch(self) -> float:
         """
@@ -1337,6 +1341,10 @@ class Position(Vector):
     Represents a 3-dimensional position in a dimension within a level.
     """
     def __init__(self, dimension: Dimension, x: float, y: float, z: float) -> None:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __str__(self) -> str:
         ...
     @property
     def dimension(self) -> Dimension:
