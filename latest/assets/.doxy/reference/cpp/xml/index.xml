@@ -372,6 +372,7 @@
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
     <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
+    <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kind="function"><name>transfer</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>

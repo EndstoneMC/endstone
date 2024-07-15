@@ -357,6 +357,7 @@
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **transfer** ([**endstone::Player**](classendstone_1_1Player.md))
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **Translatable** ([**endstone::Translatable**](classendstone_1_1Translatable.md))

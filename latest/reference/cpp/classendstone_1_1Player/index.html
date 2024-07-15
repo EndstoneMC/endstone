@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2284,6 +2284,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-transfer" class="md-nav__link">
+      <span class="md-ellipsis">
+        function transfer
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-updatecommands" class="md-nav__link">
       <span class="md-ellipsis">
         function updateCommands
@@ -2511,6 +2524,10 @@
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setwalkspeed"><strong>setWalkSpeed</strong></a> (float value) const = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-transfer"><strong>transfer</strong></a> (std::string address, int port) const = 0<br><em>Transfers the player to another server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -3105,15 +3122,29 @@
 </ul>
 <hr>
 
+<h3 id="function-transfer">function transfer<a class="headerlink" href="#function-transfer" title="Permanent link">&para;</a></h3>
+<p><em>Transfers the player to another server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">transfer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">address</span><span class="p">,</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>address</code> <a href="../classendstone_1_1Server/"><strong>Server</strong></a> address to transfer the player to. </li>
+<li><code>port</code> <a href="../classendstone_1_1Server/"><strong>Server</strong></a> port to transfer the player to </li>
+</ul>
+<hr>
+
 <h3 id="function-updatecommands">function updateCommands<a class="headerlink" href="#function-updatecommands" title="Permanent link">&para;</a></h3>
 <p><em>Send the list of commands to the client.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Generally useful to ensure the client has a complete list of commands after permission changes are done. </p>
 <hr>
 
 <h3 id="function-player">function ~Player<a class="headerlink" href="#function-player" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

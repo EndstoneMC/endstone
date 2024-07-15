@@ -899,6 +899,46 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="290" column="25"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::transfer</definition>
+        <argsstring>(std::string address, int port) const =0</argsstring>
+        <name>transfer</name>
+        <param>
+          <type>std::string</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Transfers the player to another server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> address to transfer the player to. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> port to transfer the player to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="298" column="18"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a player. </para>
@@ -965,7 +1005,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="31" column="1" bodyfile="include/endstone/player.h" bodystart="31" bodyend="291"/>
+    <location file="include/endstone/player.h" line="31" column="1" bodyfile="include/endstone/player.h" bodystart="31" bodyend="299"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -1041,6 +1081,7 @@
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setWalkSpeed</name></member>
+      <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>transfer</name></member>
       <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>updateCommands</name></member>
       <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~Actor</name></member>
       <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~CommandSender</name></member>

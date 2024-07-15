@@ -434,9 +434,11 @@
 <codeline lineno="283" refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref><sp/><ref refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kindref="member">getDeviceId</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"></highlight></codeline>
 <codeline lineno="290" refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Skin" kindref="compound">Skin</ref><sp/>&amp;<ref refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kindref="member">getSkin</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="291"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kindref="member">transfer</ref>(std::string<sp/>address,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>port)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/player.h"/>
   </compounddef>

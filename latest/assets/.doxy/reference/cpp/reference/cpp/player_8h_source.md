@@ -116,6 +116,8 @@ public:
     [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
 
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
+
+    virtual void transfer(std::string address, int port) const = 0;
 };
 
 }  // namespace endstone

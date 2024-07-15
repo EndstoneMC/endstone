@@ -479,6 +479,7 @@
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **Type** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **transfer** ([**endstone::Player**](classendstone_1_1Player.md))
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))

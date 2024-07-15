@@ -171,6 +171,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
+| virtual void | [**transfer**](#function-transfer) (std::string address, int port) const = 0<br>_Transfers the player to another server._  |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
 |   | [**~Player**](#function-player) () override<br> |
 
@@ -1323,6 +1324,35 @@ Sets the speed at which a client will walk.
 
 
 * `value` The new speed. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function transfer 
+
+_Transfers the player to another server._ 
+```C++
+virtual void endstone::Player::transfer (
+    std::string address,
+    int port
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `address` [**Server**](classendstone_1_1Server.md) address to transfer the player to. 
+* `port` [**Server**](classendstone_1_1Server.md) port to transfer the player to 
 
 
 
