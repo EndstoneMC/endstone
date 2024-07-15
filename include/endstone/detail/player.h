@@ -101,6 +101,7 @@ public:
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] endstone::UUID getDeviceId() const override;
     [[nodiscard]] const Skin &getSkin() const override;
+    void transfer(std::string address, int port) const override;
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);

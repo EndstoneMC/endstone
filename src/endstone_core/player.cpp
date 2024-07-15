@@ -23,6 +23,7 @@
 #include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
+#include "bedrock/network/packet/transfer_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/command_origin_data.h"
@@ -477,6 +478,15 @@ endstone::UUID EndstonePlayer::getDeviceId() const
 const Skin &EndstonePlayer::getSkin() const
 {
     return skin_;
+}
+
+void EndstonePlayer::transfer(std::string address, int port) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
+    auto pk = std::static_pointer_cast<TransferPacket>(packet);
+    pk->address = std::move(address);
+    pk->port = port;
+    getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::initFromConnectionRequest(

@@ -288,6 +288,14 @@ public:
      * @return the player's skin
      */
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
+
+    /**
+     * @brief Transfers the player to another server
+     *
+     * @param address Server address to transfer the player to.
+     * @param port Server port to transfer the player to
+     */
+    virtual void transfer(std::string address, int port) const = 0;
 };
 
 }  // namespace endstone
