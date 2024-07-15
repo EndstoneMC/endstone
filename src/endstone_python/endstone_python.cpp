@@ -327,7 +327,9 @@ void init_player(py::module_ &m)
         .def_property_readonly("device_os", &Player::getDeviceOS,
                                "Get the player's current device's operation system (OS).")
         .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.")
-        .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.");
+        .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
+        .def("transfer", &Player::transfer, "Transfers the player to another server.", py::arg("address"),
+             py::arg("port") = 19132);
 }
 
 }  // namespace endstone::detail

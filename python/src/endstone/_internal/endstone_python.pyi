@@ -824,6 +824,10 @@ class Player(Mob):
         """
         Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
         """
+    def transfer(self, address: str, port: int = 19132) -> None:
+        """
+        Transfers the player to another server.
+        """
     def update_commands(self) -> None:
         """
         Send the list of commands to the client.
