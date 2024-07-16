@@ -63,6 +63,7 @@ public:
     [[nodiscard]] bool isInLava() const override;
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] Dimension &getDimension() const override;
+    void setRotation(float pitch, float yaw) override;
 
     // Mob
     [[nodiscard]] bool isGliding() const override;

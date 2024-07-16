@@ -103,12 +103,12 @@ void EndstonePlayer::sendErrorMessage(const Translatable &message) const
 
 Server &EndstonePlayer::getServer() const
 {
-    return EndstoneActor::getServer();
+    return EndstoneMob::getServer();
 }
 
 std::string EndstonePlayer::getName() const
 {
-    return EndstoneActor::getName();
+    return EndstoneMob::getName();
 }
 
 bool EndstonePlayer::isPermissionSet(std::string name) const
@@ -172,42 +172,47 @@ void EndstonePlayer::setOp(bool value)
 
 std::uint64_t EndstonePlayer::getRuntimeId() const
 {
-    return EndstoneActor::getRuntimeId();
+    return EndstoneMob::getRuntimeId();
 }
 
 Location EndstonePlayer::getLocation() const
 {
-    return EndstoneActor::getLocation();
+    return EndstoneMob::getLocation();
 }
 
 Vector<float> EndstonePlayer::getVelocity() const
 {
-    return EndstoneActor::getVelocity();
+    return EndstoneMob::getVelocity();
 }
 
 bool EndstonePlayer::isOnGround() const
 {
-    return EndstoneActor::isOnGround();
+    return EndstoneMob::isOnGround();
 }
 
 bool EndstonePlayer::isInWater() const
 {
-    return EndstoneActor::isInWater();
+    return EndstoneMob::isInWater();
 }
 
 bool EndstonePlayer::isInLava() const
 {
-    return EndstoneActor::isInLava();
+    return EndstoneMob::isInLava();
 }
 
 Level &EndstonePlayer::getLevel() const
 {
-    return EndstoneActor::getLevel();
+    return EndstoneMob::getLevel();
 }
 
 Dimension &EndstonePlayer::getDimension() const
 {
-    return EndstoneActor::getDimension();
+    return EndstoneMob::getDimension();
+}
+
+void EndstonePlayer::setRotation(float pitch, float yaw)
+{
+    EndstoneMob::setRotation(pitch, yaw);
 }
 
 bool EndstonePlayer::isGliding() const

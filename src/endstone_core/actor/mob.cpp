@@ -18,14 +18,140 @@ namespace endstone::detail {
 
 EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
 
-bool EndstoneMob::isGliding() const
+void EndstoneMob::sendMessage(const std::string &message) const
 {
-    return getHandle().isGliding();
+    EndstoneActor::sendMessage(message);
 }
 
-::Mob &EndstoneMob::getHandle() const
+void EndstoneMob::sendMessage(const Translatable &message) const
 {
-    return mob_;
+    EndstoneActor::sendMessage(message);
+}
+
+void EndstoneMob::sendErrorMessage(const Translatable &message) const
+{
+    EndstoneActor::sendErrorMessage(message);
+}
+
+void EndstoneMob::sendErrorMessage(const std::string &message) const
+{
+    EndstoneActor::sendErrorMessage(message);
+}
+
+Server &EndstoneMob::getServer() const
+{
+    return EndstoneActor::getServer();
+}
+
+std::string EndstoneMob::getName() const
+{
+    return EndstoneActor::getName();
+}
+
+bool EndstoneMob::isPermissionSet(std::string name) const
+{
+    return EndstoneActor::isPermissionSet(name);
+}
+
+bool EndstoneMob::isPermissionSet(const Permission &perm) const
+{
+    return EndstoneActor::isPermissionSet(perm);
+}
+
+bool EndstoneMob::hasPermission(std::string name) const
+{
+    return EndstoneActor::hasPermission(name);
+}
+
+bool EndstoneMob::hasPermission(const Permission &perm) const
+{
+    return EndstoneActor::hasPermission(perm);
+}
+
+PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return EndstoneActor::addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin)
+{
+    return EndstoneActor::addAttachment(plugin);
+}
+
+bool EndstoneMob::removeAttachment(PermissionAttachment &attachment)
+{
+    return EndstoneActor::removeAttachment(attachment);
+}
+
+void EndstoneMob::recalculatePermissions()
+{
+    EndstoneActor::recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> EndstoneMob::getEffectivePermissions() const
+{
+    return EndstoneActor::getEffectivePermissions();
+}
+
+bool EndstoneMob::isOp() const
+{
+    return EndstoneActor::isOp();
+}
+
+void EndstoneMob::setOp(bool value)
+{
+    EndstoneActor::setOp(value);
+}
+
+std::uint64_t EndstoneMob::getRuntimeId() const
+{
+    return EndstoneActor::getRuntimeId();
+}
+
+Location EndstoneMob::getLocation() const
+{
+    return EndstoneActor::getLocation();
+}
+
+Vector<float> EndstoneMob::getVelocity() const
+{
+    return EndstoneActor::getVelocity();
+}
+
+bool EndstoneMob::isOnGround() const
+{
+    return EndstoneActor::isOnGround();
+}
+
+bool EndstoneMob::isInWater() const
+{
+    return EndstoneActor::isInWater();
+}
+
+bool EndstoneMob::isInLava() const
+{
+    return EndstoneActor::isInLava();
+}
+
+Level &EndstoneMob::getLevel() const
+{
+    return EndstoneActor::getLevel();
+}
+
+Dimension &EndstoneMob::getDimension() const
+{
+    return EndstoneActor::getDimension();
+}
+
+void EndstoneMob::setRotation(float pitch, float yaw)
+{
+    EndstoneActor::setRotation(pitch, yaw);
+    mob_.setYBodyRotation(yaw);
+}
+
+bool EndstoneMob::isGliding() const
+{
+    return mob_.isGliding();
 }
 
 }  // namespace endstone::detail

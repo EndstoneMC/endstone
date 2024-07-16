@@ -22,9 +22,40 @@ class EndstoneMob : public EndstoneActor, public Mob {
 public:
     explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
 
-    [[nodiscard]] bool isGliding() const override;
+    // CommandSender
+    void sendMessage(const std::string &message) const override;
+    void sendMessage(const Translatable &message) const override;
+    void sendErrorMessage(const Translatable &message) const override;
+    void sendErrorMessage(const std::string &message) const override;
+    [[nodiscard]] Server &getServer() const override;
+    [[nodiscard]] std::string getName() const override;
 
-    [[nodiscard]] ::Mob &getHandle() const;
+    // Permissible
+    [[nodiscard]] bool isPermissionSet(std::string name) const override;
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool hasPermission(std::string name) const override;
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
+    bool removeAttachment(PermissionAttachment &attachment) override;
+    void recalculatePermissions() override;
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] bool isOp() const override;
+    void setOp(bool value) override;
+
+    // Actor
+    [[nodiscard]] std::uint64_t getRuntimeId() const override;
+    [[nodiscard]] Location getLocation() const override;
+    [[nodiscard]] Vector<float> getVelocity() const override;
+    [[nodiscard]] bool isOnGround() const override;
+    [[nodiscard]] bool isInWater() const override;
+    [[nodiscard]] bool isInLava() const override;
+    [[nodiscard]] Level &getLevel() const override;
+    [[nodiscard]] Dimension &getDimension() const override;
+    void setRotation(float pitch, float yaw) override;
+
+    // Mob
+    [[nodiscard]] bool isGliding() const override;
 
 private:
     ::Mob &mob_;
