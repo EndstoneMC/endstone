@@ -46,7 +46,7 @@ void Actor::remove()
 
 void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
-label:
+    Vec3 position = pos;
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
         auto &actor = getEndstoneActor();
@@ -58,9 +58,10 @@ label:
             return;
         }
 
-        // TODO(event): pass toLocation to the origin function, setRotation as the original function only takes vec3
+        position = {e.getTo().getZ(), e.getTo().getY(), e.getTo().getZ()};
+        // TODO(event): setRotation
     }
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, pos, should_stop_riding, cause,
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
                                      entity_type, keep_velocity);
 }
 
