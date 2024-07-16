@@ -40,6 +40,7 @@
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
+#include "bedrock/world/actor/actor_type.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/damagesource/actor_damage_source.h"
@@ -249,6 +250,7 @@ public:
         return entity_context_.tryGetComponent<Component>();
     };
 
+    [[nodiscard]] bool hasType(ActorType type) const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;

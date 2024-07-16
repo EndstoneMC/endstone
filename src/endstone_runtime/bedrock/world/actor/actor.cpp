@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/actor.h"
 
 #include "bedrock/entity/components/actor_owner_component.h"
+#include "bedrock/entity/components/actor_type_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
 #include "bedrock/entity/components/flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
@@ -63,6 +64,12 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
     }
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
                                      entity_type, keep_velocity);
+}
+
+bool Actor::hasType(ActorType type) const
+{
+    auto component = getPersistentComponent<ActorTypeComponent>();
+    return !!(component->type & type);
 }
 
 bool Actor::isPlayer() const

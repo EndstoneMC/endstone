@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <entt/entt.hpp>
+
 enum class ActorType {
     Undefined = 1,
     TypeMask = 0x000000ff,
@@ -165,5 +167,6 @@ enum class ActorType {
     Armadillo = 142 | Animal,
     WindChargeProjectile = 143 | Projectile,
     Bogged = 144 | SkeletonMonster,
-    OminousItemSpawner = 145
+    OminousItemSpawner = 145,
+    _entt_enum_as_bitmask
 };
