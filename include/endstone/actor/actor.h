@@ -94,10 +94,10 @@ public:
      * <p>
      * Note that if the entity is affected by AI, it may override this rotation.
      *
-     * @param pitch Rotation around the right axis (X axis)
      * @param yaw Rotation around the up axis (Y axis)
+     * @param pitch Rotation around the right axis (X axis)
      */
-    virtual void setRotation(float pitch, float yaw) = 0;
+    virtual void setRotation(float yaw, float pitch) = 0;
 };
 
 }  // namespace endstone

@@ -143,9 +143,9 @@ Dimension &EndstoneMob::getDimension() const
     return EndstoneActor::getDimension();
 }
 
-void EndstoneMob::setRotation(float pitch, float yaw)
+void EndstoneMob::setRotation(float yaw, float pitch)
 {
-    EndstoneActor::setRotation(pitch, yaw);
+    EndstoneActor::setRotation(yaw, pitch);
     mob_.setYBodyRotation(yaw);
 }
 

@@ -157,9 +157,9 @@ Dimension &EndstoneActor::getDimension() const
     return *getLevel().getDimension(actor_.getDimension().getName());
 }
 
-void EndstoneActor::setRotation(float pitch, float yaw)
+void EndstoneActor::setRotation(float yaw, float pitch)
 {
-    actor_.setRotationWrapped({yaw, pitch});
+    actor_.setRotationWrapped({pitch, yaw});
 }
 
 PermissibleBase &EndstoneActor::getPermissibleBase()

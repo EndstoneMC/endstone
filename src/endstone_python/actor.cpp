@@ -17,6 +17,7 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/actor/mob.h"
+#include "endstone/level/dimension.h"
 #include "endstone/level/level.h"
 
 namespace py = pybind11;
@@ -33,7 +34,10 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
         .def_property_readonly("is_in_water", &Actor::isInWater, "Returns true if the actor is in water.")
         .def_property_readonly("is_in_lava", &Actor::isInLava, "Returns true if the actor is in lava.")
         .def_property_readonly("level", &Actor::getLevel, "Gets the current Level this actor resides in.",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def_property_readonly("dimension", &Actor::getDimension, "Gets the current Dimension this actor resides in.",
+                               py::return_value_policy::reference)
+        .def("set_rotation", &Actor::setRotation, "Sets the entity's rotation.", py::arg("yaw"), py::arg("pitch"));
 
     py::class_<Mob, Actor>(m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.")
         .def_property_readonly("is_gliding", &Mob::isGliding,

@@ -210,9 +210,9 @@ Dimension &EndstonePlayer::getDimension() const
     return EndstoneMob::getDimension();
 }
 
-void EndstonePlayer::setRotation(float pitch, float yaw)
+void EndstonePlayer::setRotation(float yaw, float pitch)
 {
-    EndstoneMob::setRotation(pitch, yaw);
+    EndstoneMob::setRotation(yaw, pitch);
 }
 
 bool EndstonePlayer::isGliding() const

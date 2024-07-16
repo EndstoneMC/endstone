@@ -9,6 +9,15 @@ class Actor(CommandSender):
     """
     Represents a base actor in the level.
     """
+    def set_rotation(self, yaw: float, pitch: float) -> None:
+        """
+        Sets the entity's rotation.
+        """
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Gets the current Dimension this actor resides in.
+        """
     @property
     def is_in_lava(self) -> bool:
         """
