@@ -20,6 +20,7 @@
 #include "bedrock/entity/components/flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
+#include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
 #include "bedrock/world/actor/mob_jump.h"
@@ -125,6 +126,11 @@ Vec3 const &Actor::getPosDelta() const
 Vec2 const &Actor::getRotation() const
 {
     return built_in_components_.rotation->rotation;
+}
+
+void Actor::setRotationWrapped(const Vec2 &rot)
+{
+    RotationUtility::setRot(rot, built_in_components_.rotation->rotation, built_in_components_.rotation->rotation_prev);
 }
 
 AABB const &Actor::getAABB() const

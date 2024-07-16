@@ -262,6 +262,7 @@ public:
     [[nodiscard]] Vec3 const &getPosPrev() const;
     [[nodiscard]] Vec3 const &getPosDelta() const;
     [[nodiscard]] Vec2 const &getRotation() const;
+    void setRotationWrapped(const Vec2 &);
     [[nodiscard]] AABB const &getAABB() const;
     [[nodiscard]] ActorRuntimeID getRuntimeID() const;
     [[nodiscard]] ActorUniqueID getOrCreateUniqueID() const;
