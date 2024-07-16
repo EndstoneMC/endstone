@@ -105,7 +105,13 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
 
     for (const auto &plugin : loaded_plugins) {
         plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
-        plugin->onLoad();
+        try {
+            plugin->onLoad();
+        }
+        catch (std::exception &e) {
+            plugin->getLogger().error("Error occurred when loading {}", plugin->getDescription().getFullName());
+            plugin->getLogger().error(e.what());
+        }
     }
 
     return loaded_plugins;

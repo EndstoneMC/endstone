@@ -40,46 +40,22 @@ public:
 
     [[nodiscard]] const PluginDescription &getDescription() const override
     {
-        try {
-            PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
-        }
-        catch (std::exception &e) {
-            getLogger().error(e.what());
-            throw e;
-        }
+        PYBIND11_OVERRIDE_PURE_NAME(const PluginDescription &, Plugin, "_get_description", getDescription);
     }
 
     void onLoad() override
     {
-        try {
-            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
-        }
-        catch (std::exception &e) {
-            getLogger().error("Error occurred when loading {}", getDescription().getFullName());
-            getLogger().error(e.what());
-        }
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_load", onLoad);
     }
 
     void onEnable() override
     {
-        try {
-            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
-        }
-        catch (std::exception &e) {
-            getLogger().error("Error occurred when enabling {}.", getDescription().getFullName());
-            getLogger().error(e.what());
-        }
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_enable", onEnable);
     }
 
     void onDisable() override
     {
-        try {
-            PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
-        }
-        catch (std::exception &e) {
-            getLogger().error("Error occurred when disabling {}.", getDescription().getFullName());
-            getLogger().error(e.what());
-        }
+        PYBIND11_OVERRIDE_NAME(void, Plugin, "on_disable", onDisable);
     }
 
     bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override

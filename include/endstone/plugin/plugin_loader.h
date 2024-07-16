@@ -58,7 +58,14 @@ public:
     {
         if (!plugin.isEnabled()) {
             plugin.getLogger().info("Enabling {}", plugin.getDescription().getFullName());
-            plugin.setEnabled(true);
+            try {
+                plugin.setEnabled(true);
+            }
+            catch (std::exception &e) {
+                plugin.getLogger().error("Error occurred when enabling {}.", plugin.getDescription().getFullName());
+                plugin.getLogger().error(e.what());
+                return;
+            }
             PluginEnableEvent event(plugin);
             server_.getPluginManager().callEvent(event);
         }
@@ -74,7 +81,14 @@ public:
     {
         if (plugin.isEnabled()) {
             plugin.getLogger().info("Disabling {}", plugin.getDescription().getFullName());
-            plugin.setEnabled(false);
+            try {
+                plugin.setEnabled(false);
+            }
+            catch (std::exception &e) {
+                plugin.getLogger().error("Error occurred when disabling {}.", plugin.getDescription().getFullName());
+                plugin.getLogger().error(e.what());
+                return;
+            }
             PluginDisableEvent event(plugin);
             server_.getPluginManager().callEvent(event);
         }
