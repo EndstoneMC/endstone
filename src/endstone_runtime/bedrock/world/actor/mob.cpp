@@ -14,6 +14,7 @@
 
 #include "bedrock/world/actor/mob.h"
 
+#include "bedrock/entity/components/mob_body_rotation_component.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
@@ -35,4 +36,9 @@ void Mob::die(const ActorDamageSource &source)
 bool Mob::isGliding() const
 {
     return getStatusFlag(ActorFlags::GLIDING);
+}
+
+void Mob::setYBodyRotation(float rotation)
+{
+    getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;
 }

@@ -71,4 +71,5 @@ protected:
 
 public:
     [[nodiscard]] bool isGliding() const;
+    void setYBodyRotation(float rotation);
 };
