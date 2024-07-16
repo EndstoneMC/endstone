@@ -88,6 +88,16 @@ public:
      * @return The current Dimension this actor resides in
      */
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
+
+    /**
+     * @return Sets the entity's rotation.
+     * <p>
+     * Note that if the entity is affected by AI, it may override this rotation.
+     *
+     * @param yaw the yaw
+     * @param pitch the pitch
+     */
+    virtual void setRotation(float yaw, float pitch) = 0;
 };
 
 }  // namespace endstone

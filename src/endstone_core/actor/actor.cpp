@@ -157,6 +157,11 @@ Dimension &EndstoneActor::getDimension() const
     return *getLevel().getDimension(actor_.getDimension().getName());
 }
 
+void EndstoneActor::setRotation(float yaw, float pitch)
+{
+    actor_.setRotationWrapped({yaw, pitch});
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::unique_ptr<PermissibleBase> perm = []() {
