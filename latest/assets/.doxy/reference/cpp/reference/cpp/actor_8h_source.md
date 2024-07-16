@@ -55,6 +55,8 @@ public:
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
+
+    virtual void setRotation(float yaw, float pitch) = 0;
 };
 
 }  // namespace endstone

@@ -107,6 +107,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
+| virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
 |   | [**~Actor**](#function-actor) () override<br> |
 
 
@@ -527,6 +528,45 @@ Actor & endstone::Actor::operator= (
 
 
 
+
+<hr>
+
+
+
+### function setRotation 
+
+
+```C++
+virtual void endstone::Actor::setRotation (
+    float yaw,
+    float pitch
+) = 0
+```
+
+
+
+
+
+**Returns:**
+
+Sets the entity's rotation. 
+
+
+Note that if the entity is affected by AI, it may override this rotation.
+
+
+
+
+**Parameters:**
+
+
+* `yaw` Rotation around the up axis (Y axis) 
+* `pitch` Rotation around the right axis (X axis) 
+
+
+
+
+        
 
 <hr>
 

@@ -387,9 +387,11 @@
 <codeline lineno="83" refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90" refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kindref="member">setRotation</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>yaw,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>pitch)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/actor/actor.h"/>
   </compounddef>

@@ -409,6 +409,7 @@
 
 ## s
 
+* **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))

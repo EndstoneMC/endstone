@@ -15,6 +15,7 @@
     <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" kind="function"><name>isInLava</name></member>
     <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kind="function"><name>setRotation</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
     <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>

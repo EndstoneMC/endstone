@@ -232,6 +232,48 @@
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="90" column="24"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::setRotation</definition>
+        <argsstring>(float yaw, float pitch)=0</argsstring>
+        <name>setRotation</name>
+        <param>
+          <type>float</type>
+          <declname>yaw</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pitch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Sets the entity&apos;s rotation. </para>
+</simplesect>
+Note that if the entity is affected by AI, it may override this rotation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>yaw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation around the up axis (Y axis) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pitch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation around the right axis (X axis) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="100" column="18"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a base actor in the level. </para>
@@ -286,7 +328,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="91"/>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="101"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
@@ -324,6 +366,7 @@
       <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
+      <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~Actor</name></member>
       <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~CommandSender</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Permissible</name></member>

@@ -1080,6 +1080,7 @@
       <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
+      <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setWalkSpeed</name></member>
       <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>transfer</name></member>
       <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>updateCommands</name></member>
