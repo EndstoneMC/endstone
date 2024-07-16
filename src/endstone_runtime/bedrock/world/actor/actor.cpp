@@ -59,9 +59,7 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
         if (e.isCancelled()) {
             return;
         }
-
-        position = {e.getTo().getZ(), e.getTo().getY(), e.getTo().getZ()};
-        // TODO(event): setRotation
+        position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
     }
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Actor::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
                                      entity_type, keep_velocity);
