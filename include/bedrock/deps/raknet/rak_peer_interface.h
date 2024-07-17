@@ -16,6 +16,7 @@
 
 #include <memory>
 
+#include "bedrock/deps/raknet/raknet_socket2.h"
 #include "bedrock/deps/raknet/raknet_types.h"
 
 namespace RakNet {
@@ -25,8 +26,9 @@ class Packet;
 struct PublicKey;
 class RakNetSocket2;
 class ShadowBanList;
+class RakNetStatistics;
 class SocketDescriptor;
-
+class PluginInterface2;
 enum class ConnectionAttemptResult;
 enum class ConnectionState;
 enum class PacketPriority;
@@ -102,7 +104,39 @@ public:
     virtual void resetMyGUID() = 0;
     virtual SystemAddress GetMyBoundAddress(int) = 0;
     virtual RakNetGUID const &GetGuidFromSystemAddress(SystemAddress) const = 0;
-    virtual SystemAddress GetSystemAddressFromGuid(RakNetGUID) const = 0;
+    virtual SystemAddress GetSystemAddressFromGuid(const RakNetGUID) const = 0;
+    virtual bool GetClientPublicKeyFromSystemAddress(const SystemAddress, char *) const = 0;
+    virtual void SetTimeoutTime(RakNet::TimeMS, const SystemAddress) = 0;
+    virtual RakNet::TimeMS GetTimeoutTime(const SystemAddress) = 0;
+    virtual int GetMTUSize(const SystemAddress) const = 0;
+    virtual unsigned GetNumberOfAddresses() = 0;
+    virtual const char *GetLocalIP(unsigned int) = 0;
+    virtual bool IsLocalIP(const char *) = 0;
+    virtual void AllowConnectionResponseIPMigration(bool allow) = 0;
+    virtual bool AdvertiseSystem(const char *, unsigned short, const char *, int, unsigned = 0) = 0;
+    virtual void SetSplitMessageProgressInterval(int) = 0;
+    virtual int GetSplitMessageProgressInterval() const = 0;
+    virtual void SetUnreliableTimeout(RakNet::TimeMS) = 0;
+    virtual void SendTTL(const char *, unsigned short, int, unsigned = 0) = 0;
+    virtual void AttachPlugin(PluginInterface2 *) = 0;
+    virtual void DetachPlugin(PluginInterface2 *) = 0;
+    virtual void PushBackPacket(Packet *, bool) = 0;
+    virtual void ChangeSystemAddress(RakNetGUID, const SystemAddress &) = 0;
+    virtual Packet *AllocatePacket(unsigned) = 0;
+    virtual RakNetSocket2 *GetSocket(const SystemAddress) = 0;
+    virtual void GetSockets(DataStructures::List<RakNetSocket2 *> &) = 0;
+    virtual void ReleaseSockets(DataStructures::List<RakNetSocket2 *> &) = 0;
+    virtual void WriteOutOfBandHeader(RakNet::BitStream *) = 0;
+    virtual void SetUserUpdateThread(void (*)(RakPeerInterface *, void *), void *) = 0;
+    virtual void SetIncomingDatagramEventHandler(bool (*)(RNS2RecvStruct *)) = 0;
+    virtual void ApplyNetworkSimulator(float, unsigned short, unsigned short) = 0;
+    virtual void SetPerConnectionOutgoingBandwidthLimit(unsigned) = 0;
+    virtual bool IsNetworkSimulatorActive() = 0;
+    virtual RakNetStatistics *GetStatistics(const SystemAddress, RakNetStatistics * = 0) = 0;
+    virtual bool GetStatistics(const unsigned int, RakNetStatistics *) = 0;
+    virtual void GetStatisticsList(DataStructures::List<SystemAddress> &, DataStructures::List<RakNetGUID> &,
+                                   DataStructures::List<RakNetStatistics> &) = 0;
+    virtual unsigned int GetReceiveBufferSize() = 0;
 };
 // NOLINTEND
 
