@@ -45,6 +45,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
+#include "bedrock/world/level/storage/level_storage.h"
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:

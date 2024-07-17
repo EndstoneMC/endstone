@@ -14,40 +14,21 @@
 
 #pragma once
 
-#include <mutex>
-#include <thread>
-
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
-
-namespace Bedrock::Threading {
-
-using Mutex = std::mutex;
-
-class AssignedThread {
+class DBHelpers {
 public:
-    bool isOnThread()
-    {
-        return std::this_thread::get_id() == assigned_id_;
-    }
-
-private:
-    std::thread::id assigned_id_;
+    enum class Category {
+        Uncategorized = 0,
+        Actor = 1,
+        Block = 3,
+        Chunk = 4,
+        EDU = 5,
+        Item = 6,
+        Player = 7,
+        TickingArea = 8,
+        VolumeArea = 9,
+        WorldFeature = 10,
+        ForcedCorruption = 11,
+        Count = 12,
+        All = 13,
+    };
 };
-
-class EnableQueueForThread {
-public:
-    virtual ~EnableQueueForThread() = 0;
-
-private:
-    std::unique_ptr<TaskGroup> task_group_;  // +8
-};
-
-class EnableQueueForMainThread : public EnableQueueForThread {};
-
-ENDSTONE_HOOK AssignedThread &getServerThread();
-
-template <typename T>
-class IAsyncResult;
-
-}  // namespace Bedrock::Threading

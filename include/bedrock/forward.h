@@ -63,6 +63,7 @@ class ChunkTickRangeManager;
 class ChunkViewSource;
 class CommandOriginSystem;
 class CommandPositionFloat;
+class CompactionStatus;
 class ComplexInventoryTransaction;
 class ContainerContentChangeListener;
 class ContainerRemovedListener;
@@ -107,7 +108,8 @@ class LevelChunk;
 class LevelData;
 class LevelEventListener;
 class LevelSoundManager;
-class LevelStorage;
+class LevelStorageObserver;
+class LevelStorageWriteBatch;
 class Localization;
 class LootTables;
 class MapDataManager;
@@ -151,6 +153,7 @@ class ScreenshotOptions;
 class SearchQuery;
 class SerializedSkin;
 class ServerMetrics;
+class SnapshotFilenameAndLength;
 class SoundPlayerInterface;
 class SpawnConditions;
 class Spawner;
@@ -209,6 +212,9 @@ public:
 };
 namespace cg {
 class ImageBuffer;
+}
+namespace Core {
+class LevelStorageResult;
 }
 
 namespace Bedrock::PubSub {
