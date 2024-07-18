@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -1487,6 +1487,39 @@ class Scheduler:
     def run_task_timer(self, plugin: Plugin, task: typing.Callable[[], None], delay: int, period: int) -> Task:
         """
         Returns a task that will be executed repeatedly until cancelled, starting after the specified number of server ticks.
+        """
+class Scoreboard:
+    def add_objective(self, name: str, criteria: Criteria, display_name: str | None = None) -> None:
+        """
+        Registers an Objective on this Scoreboard with a name displayed to players
+        """
+    def clear_slot(self, slot: DisplaySlot) -> None:
+        """
+        Clears any objective in the specified slot
+        """
+    @typing.overload
+    def get_objective(self, name: str) -> Objective:
+        """
+        Gets an Objective on this Scoreboard by name
+        """
+    @typing.overload
+    def get_objective(self, slot: DisplaySlot) -> Objective:
+        """
+        Gets the Objective currently displayed in a DisplaySlot on this Scoreboard
+        """
+    def get_objectives_by_criteria(self, criteria: Criteria) -> set[Objective]:
+        """
+        Gets all Objectives of a Criteria on the Scoreboard
+        """
+    @property
+    def entries(self) -> set[str]:
+        """
+        Gets all entries tracked by this Scoreboard
+        """
+    @property
+    def objectives(self) -> set[Objective]:
+        """
+        Gets all Objectives on this Scoreboard
         """
 class Server:
     """

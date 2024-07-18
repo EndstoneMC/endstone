@@ -1,0 +1,95 @@
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#pragma once
+
+#include <unordered_set>
+
+namespace endstone {
+
+/**
+ * @brief Represents a scoreboard
+ */
+class Scoreboard {
+public:
+    virtual ~Scoreboard() = default;
+
+    /**
+     * @brief Registers an Objective on this Scoreboard
+     *
+     * @param name Name of the Objective
+     * @param criteria Criteria for the Objective
+     * @return A reference to the newly registered Objective. If an Objective with the given name already exists,
+     * a reference to that existing Objective is returned instead.
+     */
+    virtual Objective &addObjective(std::string name, Criteria criteria) = 0;
+
+    /**
+     * @brief Registers an Objective on this Scoreboard
+     *
+     * @param name Name of the Objective
+     * @param criteria Criteria for the Objective
+     * @param display_name Name displayed to players for the Objective.
+     * @return A reference to the newly registered Objective. If an Objective with the given name already exists,
+     * a reference to that existing Objective is returned instead.
+     */
+    virtual Objective &addObjective(std::string name, Criteria criteria, std::string display_name) = 0;
+
+    /**
+     * @brief Gets an Objective on this Scoreboard by name
+     *
+     * @param name Name of the Objective
+     * @return the Objective or <code>nullptr</code> if it does not exist
+     */
+    [[nodiscard]] virtual Objective *getObjective(std::string name) const = 0;
+
+    /**
+     * @brief Gets the Objective currently displayed in a DisplaySlot on this Scoreboard
+     *
+     * @param slot The DisplaySlot
+     * @return the Objective currently displayed or <code>nullptr</code> if nothing is displayed in that DisplaySlot
+     */
+    [[nodiscard]] virtual Objective *getObjective(DisplaySlot slot) const = 0;
+
+    /**
+     * @brief Gets all Objectives on this Scoreboard
+     *
+     * @return A copy of set of all Objectives on this Scoreboard
+     */
+    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectives() const = 0;
+
+    /**
+     * @brief Gets all Objectives of a Criteria on the Scoreboard
+     *
+     * @param criteria Criteria to search by
+     * @return A copy of set of Objectives using the specified Criteria
+     */
+    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
+
+    /**
+     * @brief Gets all entries tracked by this Scoreboard
+     *
+     * @return A copy of set of all tracked entries
+     */
+    [[nodiscard]] virtual std::unordered_set<std::string> getEntries() const = 0;
+
+    /**
+     * @brief Clears any objective in the specified slot.
+     *
+     * @param slot the slot to remove objectives
+     */
+    virtual void clearSlot(DisplaySlot slot) = 0;
+};
+
+}  // namespace endstone

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
@@ -38,6 +39,25 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("display_name", &Objective::getDisplayName,
                                "Gets the name displayed to players for this objective")
         .def_property_readonly("is_valid", &Objective::isValid, "Determines if the Objective is valid.");
+
+    py::class_<Scoreboard>(m, "Scoreboard")
+        .def(
+            "add_objective",
+            [](Scoreboard &self, const std::string &name, Criteria criteria,
+               const std::optional<std::string> &display_name) {
+                self.addObjective(name, criteria, display_name.value_or(name));
+            },
+            "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
+            py::arg("criteria"), py::arg("display_name") = py::none())
+        .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
+             "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert())
+        .def("get_objective", py::overload_cast<DisplaySlot>(&Scoreboard::getObjective, py::const_),
+             "Gets the Objective currently displayed in a DisplaySlot on this Scoreboard", py::arg("slot").noconvert())
+        .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard")
+        .def("get_objectives_by_criteria", &Scoreboard::getObjectivesByCriteria,
+             "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"))
+        .def_property_readonly("entries", &Scoreboard::getEntries, "Gets all entries tracked by this Scoreboard")
+        .def("clear_slot", &Scoreboard::clearSlot, "Clears any objective in the specified slot", py::arg("slot"));
 }
 
 }  // namespace endstone::detail
