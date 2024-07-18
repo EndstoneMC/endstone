@@ -2,6 +2,11 @@
 # Class Member Typedefs
 
 
-Nothing related to **Class Member Typedefs** found.
+
+## e
+
+* **Entry** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+
+
 
 

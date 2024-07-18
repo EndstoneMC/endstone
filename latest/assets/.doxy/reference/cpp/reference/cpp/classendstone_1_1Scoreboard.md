@@ -28,6 +28,11 @@ _Represents a scoreboard._
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**Entry**](#typedef-entry)  <br> |
 
 
 
@@ -55,11 +60,11 @@ _Represents a scoreboard._
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-12) (std::string name, Criteria criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-22) (std::string name, Criteria criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual void | [**clearSlot**](#function-clearslot) (DisplaySlot slot) = 0<br>_Clears any objective in the specified slot._  |
-| virtual std::unordered\_set&lt; std::string &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; Entry &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-12) (std::string name) const = 0<br>_Gets an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _by name._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-22) (DisplaySlot slot) const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a DisplaySlot on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual std::unordered\_set&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectives**](#function-getobjectives) () const = 0<br>_Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual std::unordered\_set&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) (Criteria criteria) const = 0<br>_Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectives**](#function-getobjectives) () const = 0<br>_Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) (Criteria criteria) const = 0<br>_Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Scoreboard**](#function-scoreboard) () = default<br> |
 
 
@@ -89,6 +94,21 @@ _Represents a scoreboard._
 
 
 
+## Public Types Documentation
+
+
+
+
+### typedef Entry 
+
+```C++
+using endstone::Scoreboard::Entry =  std::variant<Player *, Actor *, std::string>;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -199,7 +219,7 @@ virtual void endstone::Scoreboard::clearSlot (
 
 _Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual std::unordered_set< std::string > endstone::Scoreboard::getEntries () const = 0
+virtual std::vector< Entry > endstone::Scoreboard::getEntries () const = 0
 ```
 
 
@@ -208,7 +228,7 @@ virtual std::unordered_set< std::string > endstone::Scoreboard::getEntries () co
 
 **Returns:**
 
-A copy of set of all tracked entries 
+A list of all tracked entries 
 
 
 
@@ -292,7 +312,7 @@ the [**Objective**](classendstone_1_1Objective.md) currently displayed or `nullp
 
 _Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual std::unordered_set< Objective * > endstone::Scoreboard::getObjectives () const = 0
+virtual std::vector< Objective * > endstone::Scoreboard::getObjectives () const = 0
 ```
 
 
@@ -301,7 +321,7 @@ virtual std::unordered_set< Objective * > endstone::Scoreboard::getObjectives ()
 
 **Returns:**
 
-A copy of set of all Objectives on this [**Scoreboard**](classendstone_1_1Scoreboard.md) 
+A list of all Objectives on this [**Scoreboard**](classendstone_1_1Scoreboard.md) 
 
 
 
@@ -317,7 +337,7 @@ A copy of set of all Objectives on this [**Scoreboard**](classendstone_1_1Scoreb
 
 _Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual std::unordered_set< Objective * > endstone::Scoreboard::getObjectivesByCriteria (
+virtual std::vector< Objective * > endstone::Scoreboard::getObjectivesByCriteria (
     Criteria criteria
 ) const = 0
 ```
@@ -335,7 +355,7 @@ virtual std::unordered_set< Objective * > endstone::Scoreboard::getObjectivesByC
 
 **Returns:**
 
-A copy of set of Objectives using the specified Criteria 
+A list of Objectives using the specified Criteria 
 
 
 

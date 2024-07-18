@@ -105,6 +105,7 @@
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **Entry** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 

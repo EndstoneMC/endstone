@@ -594,14 +594,15 @@
     <member refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" kind="function"><name>getPendingTasks</name></member>
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
+    <member refid="classendstone_1_1Scoreboard_1a34642b03a583d5c2ef7582dfd6de400c" kind="typedef"><name>Entry</name></member>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
     <member refid="classendstone_1_1Scoreboard_1a16b4b1f8358eb3abae0449b4abe027af" kind="function"><name>addObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a71289eb1bc542dd6619acabafa5a81ee" kind="function"><name>addObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a98ebece3a5334d51925b622a489b953e" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a9f491cf1b01c405c861b95e1167ae756" kind="function"><name>getObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a3224fc16d20cea5d9682aea9c79e1607" kind="function"><name>getObjectives</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a9de8a6dcb42257ccd5017ea294ddacf4" kind="function"><name>getObjectivesByCriteria</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a973c704e107eb7fa6e4af994ce37d337" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a04f09d0524072058cfe2faea46e9f34e" kind="function"><name>getObjectives</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a9a3c74356f12b3f6d9c528adc05a57e0" kind="function"><name>getObjectivesByCriteria</name></member>
+    <member refid="classendstone_1_1Scoreboard_1aead22e21db9fd2e8807988004482559b" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" kind="function"><name>clearSlot</name></member>
   </compound>
   <compound refid="classendstone_1_1Server" kind="class"><name>endstone::Server</name>

@@ -24,12 +24,19 @@
 
 #pragma once
 
-#include <unordered_set>
+#include <string>
+#include <variant>
+#include <vector>
+
+class Player;
+class Actor;
 
 namespace endstone {
 
 class Scoreboard {
 public:
+    using Entry = std::variant<Player *, Actor *, std::string>;
+
     virtual ~Scoreboard() = default;
 
     virtual Objective &addObjective(std::string name, Criteria criteria) = 0;
@@ -40,11 +47,11 @@ public:
 
     [[nodiscard]] virtual Objective *getObjective(DisplaySlot slot) const = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectives() const = 0;
 
-    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
 
-    [[nodiscard]] virtual std::unordered_set<std::string> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<Entry> getEntries() const = 0;
 
     virtual void clearSlot(DisplaySlot slot) = 0;
 };
