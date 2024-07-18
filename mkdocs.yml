@@ -206,6 +206,7 @@ nav:
           - Inventory: reference/python/inventory.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
+          - Scoreboard: reference/python/scoreboard.md
           - Scheduler: reference/python/scheduler.md
           - Miscellaneous: reference/python/misc.md
       - C++ API:
