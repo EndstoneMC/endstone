@@ -19,6 +19,7 @@
 * **addAttachment** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addParent** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **addPermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **addObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 
 
 ## b
@@ -41,6 +42,7 @@
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **cancel** ([**endstone::Task**](classendstone_1_1Task.md))
 
 
@@ -81,7 +83,7 @@
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
 * **getAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **getDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
-* **getName** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Logger**](classendstone_1_1Logger.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::Server**](classendstone_1_1Server.md))
+* **getName** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Logger**](classendstone_1_1Logger.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getPermissions** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getUsages** ([**endstone::Command**](classendstone_1_1Command.md))
 * **getCommand** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
@@ -98,6 +100,7 @@
 * **getTime** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getPitch** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
+* **getDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getEffectivePermissions** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getChildren** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **getDefault** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -150,6 +153,10 @@
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPendingTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **getEntries** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getObjectives** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getObjectivesByCriteria** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getCommandSender** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLevels** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -203,6 +210,7 @@
 * **info** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isEnabledFor** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isGliding** ([**endstone::Mob**](classendstone_1_1Mob.md))
+* **isValid** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **isOp** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **isPermissionSet** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **init** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -405,6 +413,7 @@
 * **~Inventory** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **~Level** ([**endstone::Level**](classendstone_1_1Level.md))
 * **~Logger** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **~Objective** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **~Permissible** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **~Player** ([**endstone::Player**](classendstone_1_1Player.md))
 * **~PlayerChatEvent** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
@@ -418,6 +427,7 @@
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))
 * **~ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))

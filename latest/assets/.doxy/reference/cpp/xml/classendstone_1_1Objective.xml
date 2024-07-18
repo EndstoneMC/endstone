@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Objective" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Objective</compoundname>
+    <includes refid="objective_8h" local="no">endstone/scoreboard/objective.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Objective::~Objective</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Objective</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective.h" line="26" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Objective::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Gets the name of this <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>this objective&apos;s name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective.h" line="33" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Objective::getDisplayName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDisplayName</name>
+        <briefdescription>
+<para>Gets the name displayed to players for this objective. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>this objective&apos;s display name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective.h" line="40" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Objective_1a88aefe827638185f51a2c6786eaa51a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Objective::isValid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isValid</name>
+        <briefdescription>
+<para>Determines if the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective.h" line="47" column="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an objective on a scoreboard that can show scores specific to entries. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/scoreboard/objective.h" line="24" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="24" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplayName</name></member>
+      <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Objective_1a88aefe827638185f51a2c6786eaa51a4" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>isValid</name></member>
+      <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" prot="public" virt="virtual"><scope>endstone::Objective</scope><name>~Objective</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

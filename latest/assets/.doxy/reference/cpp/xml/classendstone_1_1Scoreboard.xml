@@ -1,0 +1,287 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Scoreboard" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Scoreboard</compoundname>
+    <includes refid="scoreboard_8h" local="no">endstone/scoreboard/scoreboard.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Scoreboard::~Scoreboard</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Scoreboard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="26" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a16b4b1f8358eb3abae0449b4abe027af" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
+        <definition>virtual Objective&amp; endstone::Scoreboard::addObjective</definition>
+        <argsstring>(std::string name, Criteria criteria)=0</argsstring>
+        <name>addObjective</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>Criteria</type>
+          <declname>criteria</declname>
+        </param>
+        <briefdescription>
+<para>Registers an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>criteria</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Criteria for the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. If an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> with the given name already exists, a reference to that existing <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is returned instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="36" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a71289eb1bc542dd6619acabafa5a81ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
+        <definition>virtual Objective&amp; endstone::Scoreboard::addObjective</definition>
+        <argsstring>(std::string name, Criteria criteria, std::string display_name)=0</argsstring>
+        <name>addObjective</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>Criteria</type>
+          <declname>criteria</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>display_name</declname>
+        </param>
+        <briefdescription>
+<para>Registers an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>criteria</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Criteria for the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>display_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name displayed to players for the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the newly registered <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref>. If an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> with the given name already exists, a reference to that existing <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is returned instead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="47" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a98ebece3a5334d51925b622a489b953e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> *</type>
+        <definition>virtual Objective* endstone::Scoreboard::getObjective</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getObjective</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> by name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> or <computeroutput>nullptr</computeroutput> if it does not exist </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="55" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a9f491cf1b01c405c861b95e1167ae756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> *</type>
+        <definition>virtual Objective* endstone::Scoreboard::getObjective</definition>
+        <argsstring>(DisplaySlot slot) const =0</argsstring>
+        <name>getObjective</name>
+        <param>
+          <type>DisplaySlot</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+<para>Gets the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> currently displayed in a DisplaySlot on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The DisplaySlot </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> currently displayed or <computeroutput>nullptr</computeroutput> if nothing is displayed in that DisplaySlot </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="63" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a3224fc16d20cea5d9682aea9c79e1607" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Objective *&gt; endstone::Scoreboard::getObjectives</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getObjectives</name>
+        <briefdescription>
+<para>Gets all Objectives on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A copy of set of all Objectives on this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="70" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a9de8a6dcb42257ccd5017ea294ddacf4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Objective *&gt; endstone::Scoreboard::getObjectivesByCriteria</definition>
+        <argsstring>(Criteria criteria) const =0</argsstring>
+        <name>getObjectivesByCriteria</name>
+        <param>
+          <type>Criteria</type>
+          <declname>criteria</declname>
+        </param>
+        <briefdescription>
+<para>Gets all Objectives of a Criteria on the <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>criteria</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Criteria to search by </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A copy of set of Objectives using the specified Criteria </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="78" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1a973c704e107eb7fa6e4af994ce37d337" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; std::string &gt;</type>
+        <definition>virtual std::unordered_set&lt;std::string&gt; endstone::Scoreboard::getEntries</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getEntries</name>
+        <briefdescription>
+<para>Gets all entries tracked by this <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A copy of set of all tracked entries </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="85" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Scoreboard::clearSlot</definition>
+        <argsstring>(DisplaySlot slot)=0</argsstring>
+        <name>clearSlot</name>
+        <param>
+          <type>DisplaySlot</type>
+          <declname>slot</declname>
+        </param>
+        <briefdescription>
+<para>Clears any objective in the specified slot. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>slot</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the slot to remove objectives </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/scoreboard.h" line="92" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a scoreboard. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/scoreboard/scoreboard.h" line="24" column="1" bodyfile="include/endstone/scoreboard/scoreboard.h" bodystart="24" bodyend="93"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Scoreboard_1a16b4b1f8358eb3abae0449b4abe027af" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a71289eb1bc542dd6619acabafa5a81ee" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>clearSlot</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a973c704e107eb7fa6e4af994ce37d337" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a98ebece3a5334d51925b622a489b953e" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a9f491cf1b01c405c861b95e1167ae756" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getObjective</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a3224fc16d20cea5d9682aea9c79e1607" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getObjectives</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a9de8a6dcb42257ccd5017ea294ddacf4" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>getObjectivesByCriteria</name></member>
+      <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" prot="public" virt="virtual"><scope>endstone::Scoreboard</scope><name>~Scoreboard</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

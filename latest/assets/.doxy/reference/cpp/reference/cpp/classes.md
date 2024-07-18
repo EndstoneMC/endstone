@@ -86,6 +86,12 @@
 ([**endstone**](namespaceendstone.md))
 
 
+## o
+
+* [**Objective**](classendstone_1_1Objective.md)
+([**endstone**](namespaceendstone.md))
+
+
 ## p
 
 * [**Permissible**](classendstone_1_1Permissible.md)
@@ -135,6 +141,8 @@
 ## s
 
 * [**Scheduler**](classendstone_1_1Scheduler.md)
+([**endstone**](namespaceendstone.md))
+* [**Scoreboard**](classendstone_1_1Scoreboard.md)
 ([**endstone**](namespaceendstone.md))
 * [**Server**](classendstone_1_1Server.md)
 ([**endstone**](namespaceendstone.md))

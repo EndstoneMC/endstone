@@ -3,6 +3,11 @@
 
 
 
+## c
+
+* **Criteria** ([**endstone**](namespaceendstone.md))
+
+
 ## d
 
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))

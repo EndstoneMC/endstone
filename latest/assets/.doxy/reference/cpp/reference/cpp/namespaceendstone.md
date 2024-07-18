@@ -51,6 +51,7 @@
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
+| class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |
 | class | [**Permission**](classendstone_1_1Permission.md) <br>_Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
 | class | [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) <br>_Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._ |
@@ -73,6 +74,7 @@
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
+| class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |
 | class | [**Server**](classendstone_1_1Server.md) <br>_Represents a server implementation._  |
 | class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when the console runs a command, early in the process._  |
 | class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents an Server-related event._  |
@@ -93,6 +95,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| enum  | [**Criteria**](#enum-criteria)  <br>_Represents a scoreboard criteria._  |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -162,6 +165,21 @@
 
 ## Public Types Documentation
 
+
+
+
+### enum Criteria 
+
+```C++
+enum endstone::Criteria {
+    Dummy
+};
+```
+
+
+
+
+<hr>
 
 
 
