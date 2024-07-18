@@ -45,7 +45,16 @@ void init_scoreboard(py::module_ &m)
     auto objective = py::class_<Objective>(
         m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
 
-    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.");
+    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
+        .def_property_readonly("entry", &Score::getEntry, "Gets the entry being tracked by this Score",
+                               py::return_value_policy::reference_internal)
+        .def_property("score", &Score::getScore, &Score::setScore, "Gets or sets the current score.")
+        .def_property_readonly("is_score_set", &Score::isScoreSet,
+                               "Shows if this score has been set at any point in time.")
+        .def_property_readonly("objective", &Score::getObjective, "Gets the Objective being tracked by this Score.",
+                               py::return_value_policy::reference)
+        .def_property_readonly("scoreboard", &Score::getScoreboard, "Gets the scoreboard for the associated objective.",
+                               py::return_value_policy::reference);
 
     objective.def_property_readonly("name", &Objective::getName, "Gets the name of this Objective")
         .def_property("display_name", &Objective::getDisplayName, &Objective::setDisplayName,

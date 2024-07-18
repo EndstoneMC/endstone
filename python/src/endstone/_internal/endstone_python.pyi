@@ -1558,6 +1558,34 @@ class Score:
     """
     Represents a score for an objective on a scoreboard.
     """
+    @property
+    def entry(self) -> Player | Actor | str:
+        """
+        Gets the entry being tracked by this Score
+        """
+    @property
+    def is_score_set(self) -> bool:
+        """
+        Shows if this score has been set at any point in time.
+        """
+    @property
+    def objective(self) -> Objective:
+        """
+        Gets the Objective being tracked by this Score.
+        """
+    @property
+    def score(self) -> int:
+        """
+        Gets or sets the current score.
+        """
+    @score.setter
+    def score(self, arg1: int) -> None:
+        ...
+    @property
+    def scoreboard(self) -> Scoreboard:
+        """
+        Gets the scoreboard for the associated objective.
+        """
 class Scoreboard:
     """
     Represents a scoreboard

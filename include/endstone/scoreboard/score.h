@@ -18,12 +18,58 @@
 
 namespace endstone {
 
+class Scoreboard;
+class Objective;
+
 /**
  * @brief Represents a score for an objective on a scoreboard.
  */
 class Score {
 public:
     virtual ~Score() = default;
+
+    /**
+     * @brief Gets the entry being tracked by this Score
+     *
+     * @return this Score's tracked entry
+     */
+    [[nodiscard]] virtual ScoreEntry getEntry() const = 0;
+
+    /**
+     * @brief Gets the current score
+     *
+     * @return the current score
+     */
+    [[nodiscard]] virtual int getScore() const = 0;
+
+    /**
+     * @brief Sets the current score.
+     *
+     * @param score New score
+     */
+    virtual void setScore(int score) = 0;
+
+    /**
+     * @brief Shows if this score has been set at any point in time.
+     *
+     * @return if this score has been set before
+     */
+
+    [[nodiscard]] virtual bool isScoreSet() const = 0;
+
+    /**
+     * @brief Gets the Objective being tracked by this Score.
+     *
+     * @return the owning objective's scoreboard
+     */
+    [[nodiscard]] virtual Objective &getObjective() const = 0;
+
+    /**
+     * @brief Gets the scoreboard for the associated objective.
+     *
+     * @return the owning objective's scoreboard
+     */
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 };
 
 }  // namespace endstone
