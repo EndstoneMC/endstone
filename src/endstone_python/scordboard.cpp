@@ -14,8 +14,10 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
+#include "endstone/scoreboard/scoreboard.h"
 
 namespace py = pybind11;
 
@@ -23,11 +25,12 @@ namespace endstone::detail {
 
 void init_scoreboard(py::module_ &m)
 {
-    py::enum_<endstone::DisplaySlot>(m, "DisplaySlot", "Locations for displaying objectives to the player")
-        .value("BELOW_NAME", endstone::DisplaySlot::BelowName, "Displays the score below the player's name.")
-        .value("PLAYER_LIST", endstone::DisplaySlot::PlayerList,
-               "Displays the score in the player list on the pause screen.")
-        .value("SIDE_BAR", endstone::DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
+    py::enum_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.").value("DUMMY", Criteria::Dummy);
+
+    py::enum_<DisplaySlot>(m, "DisplaySlot", "Locations for displaying objectives to the player")
+        .value("BELOW_NAME", DisplaySlot::BelowName, "Displays the score below the player's name.")
+        .value("PLAYER_LIST", DisplaySlot::PlayerList, "Displays the score in the player list on the pause screen.")
+        .value("SIDE_BAR", DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
 
     py::class_<Objective>(m, "Objective",
                           "Represents an objective on a scoreboard that can show scores specific to entries.")

@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -257,6 +257,38 @@ class ConsoleCommandSender(CommandSender):
     """
     Represents a console command sender.
     """
+class Criteria:
+    """
+    Represents a scoreboard criteria.
+    """
+    DUMMY: typing.ClassVar[Criteria]  # value = <Criteria.DUMMY: 0>
+    __members__: typing.ClassVar[dict[str, Criteria]]  # value = {'DUMMY': <Criteria.DUMMY: 0>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Dimension:
     """
     Represents a dimension within a Level.
