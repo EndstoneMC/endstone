@@ -1769,6 +1769,84 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-getentry" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getEntry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-getobjective" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getObjective
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-getscore" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getScore
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-getscoreboard" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getScoreboard
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-isscoreset" class="md-nav__link">
+      <span class="md-ellipsis">
+        function isScoreSet
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-setscore" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setScore
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-score" class="md-nav__link">
       <span class="md-ellipsis">
         function ~Score
@@ -1832,14 +1910,90 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual ScoreEntry</td>
+<td style="text-align: left;"><a href="#function-getentry"><strong>getEntry</strong></a> () const = 0<br><em>Gets the entry being tracked by this</em> <a href="./"><em><strong>Score</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getobjective"><strong>getObjective</strong></a> () const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>being tracked by this</em><a href="./"><em><strong>Score</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-getscore"><strong>getScore</strong></a> () const = 0<br><em>Gets the current score.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getscoreboard"><strong>getScoreboard</strong></a> () const = 0<br><em>Gets the scoreboard for the associated objective.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="#function-isscoreset"><strong>isScoreSet</strong></a> () const = 0<br><em>Shows if this score has been set at any point in time.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setscore"><strong>setScore</strong></a> (int score) = 0<br><em>Sets the current score.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual</td>
 <td style="text-align: left;"><a href="#function-score"><strong>~Score</strong></a> () = default<br></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-getentry">function getEntry<a class="headerlink" href="#function-getentry" title="Permanent link">&para;</a></h3>
+<p><em>Gets the entry being tracked by this</em> <a href="./"><em><strong>Score</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getEntry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>this <a href="./"><strong>Score</strong></a>'s tracked entry </p>
+<hr>
+
+<h3 id="function-getobjective">function getObjective<a class="headerlink" href="#function-getobjective" title="Permanent link">&para;</a></h3>
+<p><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>being tracked by this</em><a href="./"><em><strong>Score</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getObjective</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the owning objective's scoreboard </p>
+<hr>
+
+<h3 id="function-getscore">function getScore<a class="headerlink" href="#function-getscore" title="Permanent link">&para;</a></h3>
+<p><em>Gets the current score.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the current score </p>
+<hr>
+
+<h3 id="function-getscoreboard">function getScoreboard<a class="headerlink" href="#function-getscoreboard" title="Permanent link">&para;</a></h3>
+<p><em>Gets the scoreboard for the associated objective.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the owning objective's scoreboard </p>
+<hr>
+
+<h3 id="function-isscoreset">function isScoreSet<a class="headerlink" href="#function-isscoreset" title="Permanent link">&para;</a></h3>
+<p><em>Shows if this score has been set at any point in time.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">isScoreSet</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>if this score has been set before </p>
+<hr>
+
+<h3 id="function-setscore">function setScore<a class="headerlink" href="#function-setscore" title="Permanent link">&para;</a></h3>
+<p><em>Sets the current score.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">setScore</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>score</code> New score </li>
+</ul>
+<hr>
+
 <h3 id="function-score">function ~Score<a class="headerlink" href="#function-score" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::~</span><span class="n">Score</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::~</span><span class="n">Score</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

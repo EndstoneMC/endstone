@@ -603,6 +603,12 @@
   </compound>
   <compound refid="classendstone_1_1Score" kind="class"><name>endstone::Score</name>
     <member refid="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" kind="function"><name>~Score</name></member>
+    <member refid="classendstone_1_1Score_1ad4f90b17d4d35334a1732bf428649368" kind="function"><name>getEntry</name></member>
+    <member refid="classendstone_1_1Score_1ae3d6af4292145362694b1558ade98658" kind="function"><name>getScore</name></member>
+    <member refid="classendstone_1_1Score_1a10f25d9687471201e5fc828666e9c6a7" kind="function"><name>setScore</name></member>
+    <member refid="classendstone_1_1Score_1a1bdd66c862ca7134a12b4abbcc81c52e" kind="function"><name>isScoreSet</name></member>
+    <member refid="classendstone_1_1Score_1a6a5beac3078fe4b7f2087d287f365e42" kind="function"><name>getObjective</name></member>
+    <member refid="classendstone_1_1Score_1ab71fa7b59912d982530710ceb1d690ab" kind="function"><name>getScoreboard</name></member>
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>

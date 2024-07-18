@@ -28,9 +28,24 @@
 
 namespace endstone {
 
+class Scoreboard;
+class Objective;
+
 class Score {
 public:
     virtual ~Score() = default;
+
+    [[nodiscard]] virtual ScoreEntry getEntry() const = 0;
+
+    [[nodiscard]] virtual int getScore() const = 0;
+
+    virtual void setScore(int score) = 0;
+
+    [[nodiscard]] virtual bool isScoreSet() const = 0;
+
+    [[nodiscard]] virtual Objective &getObjective() const = 0;
+
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 };
 
 }  // namespace endstone
