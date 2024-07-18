@@ -20,6 +20,7 @@
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
+#include "endstone/scoreboard/objective_sort_order.h"
 #include "endstone/scoreboard/score.h"
 #include "endstone/scoreboard/scoreboard.h"
 
@@ -36,16 +37,33 @@ void init_scoreboard(py::module_ &m)
         .value("PLAYER_LIST", DisplaySlot::PlayerList, "Displays the score in the player list on the pause screen.")
         .value("SIDE_BAR", DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
 
+    py::enum_<ObjectiveSortOrder>(m, "ObjectiveSortOrder", "Represents the sort order of objectives on a DisplaySlot.")
+        .value("ASCENDING", ObjectiveSortOrder::Ascending, "Sorts the objectives in the ascending order")
+        .value("DESCENDING", ObjectiveSortOrder::Descending, "Sorts the objectives in the descending order");
+
+    auto scoreboard = py::class_<Scoreboard>(m, "Scoreboard", "Represents a scoreboard");
+    auto objective = py::class_<Objective>(
+        m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
+
     py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.");
 
-    py::class_<Objective>(m, "Objective",
-                          "Represents an objective on a scoreboard that can show scores specific to entries.")
-        .def_property_readonly("name", &Objective::getName, "Gets the name of this Objective")
-        .def_property_readonly("display_name", &Objective::getDisplayName,
-                               "Gets the name displayed to players for this objective")
-        .def_property_readonly("is_valid", &Objective::isValid, "Determines if the Objective is valid.");
+    objective.def_property_readonly("name", &Objective::getName, "Gets the name of this Objective")
+        .def_property("display_name", &Objective::getDisplayName, &Objective::setDisplayName,
+                      "Gets or sets the name displayed to players for this objective")
+        .def_property_readonly("criteria", &Objective::getCriteria, "Gets the criteria this objective tracks")
+        .def_property_readonly("modifiable", &Objective::isModifiable,
+                               "Gets if the objective's scores can be modified directly by a plugin")
+        .def_property_readonly("scoreboard", &Objective::getScoreboard,
+                               "Gets the scoreboard to which this objective is attached",
+                               py::return_value_policy::reference)
+        .def_property("display_slot", &Objective::getDisplaySlot, &Objective::setDisplaySlot,
+                      "Gets and sets the display slot this objective is displayed at")
+        .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
+                      "Gets and sets the sort order for this objective")
+        .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"),
+             py::return_value_policy::reference);
 
-    py::class_<Scoreboard>(m, "Scoreboard")
+    scoreboard
         .def(
             "add_objective",
             [](Scoreboard &self, const std::string &name, Criteria criteria,

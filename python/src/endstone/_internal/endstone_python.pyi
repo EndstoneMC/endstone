@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -645,21 +645,87 @@ class Objective:
     """
     Represents an objective on a scoreboard that can show scores specific to entries.
     """
+    def get_score(self, entry: Player | Actor | str) -> Score:
+        """
+        Gets an entry's Score for this objective
+        """
+    @property
+    def criteria(self) -> Criteria:
+        """
+        Gets the criteria this objective tracks
+        """
     @property
     def display_name(self) -> str:
         """
-        Gets the name displayed to players for this objective
+        Gets or sets the name displayed to players for this objective
         """
+    @display_name.setter
+    def display_name(self, arg1: str) -> None:
+        ...
     @property
-    def is_valid(self) -> bool:
+    def display_slot(self) -> DisplaySlot:
         """
-        Determines if the Objective is valid.
+        Gets and sets the display slot this objective is displayed at
+        """
+    @display_slot.setter
+    def display_slot(self, arg1: DisplaySlot) -> None:
+        ...
+    @property
+    def modifiable(self) -> bool:
+        """
+        Gets if the objective's scores can be modified directly by a plugin
         """
     @property
     def name(self) -> str:
         """
         Gets the name of this Objective
         """
+    @property
+    def scoreboard(self) -> Scoreboard:
+        """
+        Gets the scoreboard to which this objective is attached
+        """
+    @property
+    def sort_order(self) -> ObjectiveSortOrder:
+        """
+        Gets and sets the sort order for this objective
+        """
+    @sort_order.setter
+    def sort_order(self, arg1: ObjectiveSortOrder) -> None:
+        ...
+class ObjectiveSortOrder:
+    """
+    Represents the sort order of objectives on a DisplaySlot.
+    """
+    ASCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.ASCENDING: 0>
+    DESCENDING: typing.ClassVar[ObjectiveSortOrder]  # value = <ObjectiveSortOrder.DESCENDING: 1>
+    __members__: typing.ClassVar[dict[str, ObjectiveSortOrder]]  # value = {'ASCENDING': <ObjectiveSortOrder.ASCENDING: 0>, 'DESCENDING': <ObjectiveSortOrder.DESCENDING: 1>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Permissible:
     """
     Represents an object that may become a server operator and can be assigned permissions.
@@ -1493,6 +1559,9 @@ class Score:
     Represents a score for an objective on a scoreboard.
     """
 class Scoreboard:
+    """
+    Represents a scoreboard
+    """
     def add_objective(self, name: str, criteria: Criteria, display_name: str | None = None) -> None:
         """
         Registers an Objective on this Scoreboard with a name displayed to players

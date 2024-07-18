@@ -16,7 +16,12 @@
 
 #include <string>
 
+#include "endstone/scoreboard/objective_sort_order.h"
+#include "endstone/scoreboard/score.h"
+
 namespace endstone {
+
+class Scoreboard;
 
 /**
  * @brief Represents an objective on a scoreboard that can show scores specific to entries.
@@ -40,11 +45,69 @@ public:
     [[nodiscard]] virtual std::string getDisplayName() const = 0;
 
     /**
-     * @brief Determines if the Objective is valid.
+     * @brief Sets the name displayed to players for this objective.
      *
-     * @return true if the Objective is valid, false otherwise
+     * @param displayName Display name to set
      */
-    [[nodiscard]] virtual bool isValid() const = 0;
+    virtual void setDisplayName(std::string display_name) = 0;
+
+    /**
+     * @brief Gets the criteria this objective tracks.
+     *
+     * @return this objective's criteria
+     */
+    [[nodiscard]] virtual Criteria getCriteria() const = 0;
+
+    /**
+     * @brief Gets if the objective's scores can be modified directly by a plugin.
+     *
+     * @return true if scores are modifiable
+     */
+    [[nodiscard]] virtual bool isModifiable() const = 0;
+
+    /**
+     * @brief Gets the scoreboard to which this objective is attached.
+     *
+     * @return Owning scoreboard
+     */
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+
+    /**
+     * @brief Gets the display slot this objective is displayed at.
+     *
+     * @return the display slot for this objective
+     */
+    [[nodiscard]] virtual DisplaySlot getDisplaySlot() const = 0;
+
+    /**
+     * @brief Sets this objective to display on the specified slot for the scoreboard, removing it from any other
+     * display slot.
+     *
+     * @param slot display slot to change
+     */
+    virtual void setDisplaySlot(DisplaySlot slot) = 0;
+
+    /**
+     * @brief Gets the sort order for this objective.
+     *
+     * @return The sort order for this objective.
+     */
+    [[nodiscard]] virtual ObjectiveSortOrder getSortOrder() const = 0;
+
+    /**
+     * @brief Sets the sort order for this objective.
+     *
+     * @param order The sort order to set.
+     */
+    virtual void setSortOrder(ObjectiveSortOrder order) = 0;
+
+    /**
+     * @brief Gets an entry's Score for this objective.
+     *
+     * @param entry Entry for the Score
+     * @return Score tracking the Objective and entry specified
+     */
+    [[nodiscard]] virtual Score &getScore(ScoreEntry entry) const = 0;
 };
 
 }  // namespace endstone
