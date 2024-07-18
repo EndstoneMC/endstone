@@ -15,6 +15,7 @@
 #include <pybind11/pybind11.h>
 
 #include "endstone/scoreboard/display_slot.h"
+#include "endstone/scoreboard/objective.h"
 
 namespace py = pybind11;
 
@@ -27,6 +28,13 @@ void init_scoreboard(py::module_ &m)
         .value("PLAYER_LIST", endstone::DisplaySlot::PlayerList,
                "Displays the score in the player list on the pause screen.")
         .value("SIDE_BAR", endstone::DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
+
+    py::class_<Objective>(m, "Objective",
+                          "Represents an objective on a scoreboard that can show scores specific to entries.")
+        .def_property_readonly("name", &Objective::getName, "Gets the name of this Objective")
+        .def_property_readonly("display_name", &Objective::getDisplayName,
+                               "Gets the name displayed to players for this objective")
+        .def_property_readonly("is_valid", &Objective::isValid, "Determines if the Objective is valid.");
 }
 
 }  // namespace endstone::detail

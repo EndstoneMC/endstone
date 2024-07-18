@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import DisplaySlot
+from endstone._internal.endstone_python import DisplaySlot, Objective
 
-__all__ = ["DisplaySlot"]
+__all__ = ["DisplaySlot", "Objective"]
