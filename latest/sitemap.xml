@@ -76,6 +76,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/python/scoreboard/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/python/server/</loc>
          <lastmod>2024-07-18</lastmod>
          <changefreq>daily</changefreq>
