@@ -100,6 +100,7 @@
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
+| enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
@@ -235,6 +236,22 @@ enum endstone::GameMode {
     Creative = 1,
     Adventure = 2,
     Spectator = 3
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum ObjectiveSortOrder 
+
+```C++
+enum endstone::ObjectiveSortOrder {
+    Ascending,
+    Descending
 };
 ```
 

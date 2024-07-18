@@ -3,6 +3,7 @@
   <compounddef id="score_8h" kind="file" language="C++">
     <compoundname>score.h</compoundname>
     <includes refid="score__entry_8h" local="yes">endstone/scoreboard/score_entry.h</includes>
+    <includedby refid="objective_8h" local="yes">include/endstone/scoreboard/objective.h</includedby>
     <incdepgraph>
       <node id="4">
         <label>variant</label>
@@ -30,6 +31,18 @@
         </childnode>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/scoreboard/objective.h</label>
+        <link refid="objective_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/scoreboard/score.h</label>
+        <link refid="score_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>

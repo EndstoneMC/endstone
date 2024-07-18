@@ -26,7 +26,12 @@
 
 #include <string>
 
+#include "endstone/scoreboard/objective_sort_order.h"
+#include "endstone/scoreboard/score.h"
+
 namespace endstone {
+
+class Scoreboard;
 
 class Objective {
 public:
@@ -36,7 +41,23 @@ public:
 
     [[nodiscard]] virtual std::string getDisplayName() const = 0;
 
-    [[nodiscard]] virtual bool isValid() const = 0;
+    virtual void setDisplayName(std::string display_name) = 0;
+
+    [[nodiscard]] virtual Criteria getCriteria() const = 0;
+
+    [[nodiscard]] virtual bool isModifiable() const = 0;
+
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+
+    [[nodiscard]] virtual DisplaySlot getDisplaySlot() const = 0;
+
+    virtual void setDisplaySlot(DisplaySlot slot) = 0;
+
+    [[nodiscard]] virtual ObjectiveSortOrder getSortOrder() const = 0;
+
+    virtual void setSortOrder(ObjectiveSortOrder order) = 0;
+
+    [[nodiscard]] virtual Score &getScore(ScoreEntry entry) const = 0;
 };
 
 }  // namespace endstone

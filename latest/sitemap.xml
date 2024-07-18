@@ -1111,6 +1111,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/objective__sort__order_8h/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/objective__sort__order_8h_source/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/score_8h/</loc>
          <lastmod>2024-07-18</lastmod>
          <changefreq>daily</changefreq>

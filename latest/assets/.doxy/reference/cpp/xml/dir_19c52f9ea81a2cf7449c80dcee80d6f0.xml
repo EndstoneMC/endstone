@@ -5,6 +5,7 @@
     <innerfile refid="criteria_8h">criteria.h</innerfile>
     <innerfile refid="display__slot_8h">display_slot.h</innerfile>
     <innerfile refid="objective_8h">objective.h</innerfile>
+    <innerfile refid="objective__sort__order_8h">objective_sort_order.h</innerfile>
     <innerfile refid="score_8h">score.h</innerfile>
     <innerfile refid="score__entry_8h">score_entry.h</innerfile>
     <innerfile refid="scoreboard_8h">scoreboard.h</innerfile>

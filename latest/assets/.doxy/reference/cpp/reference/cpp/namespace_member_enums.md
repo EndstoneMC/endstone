@@ -23,6 +23,11 @@
 * **GameMode** ([**endstone**](namespaceendstone.md))
 
 
+## o
+
+* **ObjectiveSortOrder** ([**endstone**](namespaceendstone.md))
+
+
 ## p
 
 * **PermissionDefault** ([**endstone**](namespaceendstone.md))

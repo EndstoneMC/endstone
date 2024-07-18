@@ -273,7 +273,15 @@
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
     <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" kind="function"><name>getDisplayName</name></member>
-    <member refid="classendstone_1_1Objective_1a88aefe827638185f51a2c6786eaa51a4" kind="function"><name>isValid</name></member>
+    <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kind="function"><name>setDisplayName</name></member>
+    <member refid="classendstone_1_1Objective_1a1788ef888cdbc409659fe8821261e6fb" kind="function"><name>getCriteria</name></member>
+    <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
+    <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" kind="function"><name>getScoreboard</name></member>
+    <member refid="classendstone_1_1Objective_1a5ba8ad7b4349b1f947fe62e591364e3d" kind="function"><name>getDisplaySlot</name></member>
+    <member refid="classendstone_1_1Objective_1a50fd3cc9094d724a19cd2b7cbe653124" kind="function"><name>setDisplaySlot</name></member>
+    <member refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" kind="function"><name>getSortOrder</name></member>
+    <member refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kind="function"><name>setSortOrder</name></member>
+    <member refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" kind="function"><name>getScore</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
@@ -832,6 +840,9 @@
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" kind="enumvalue"><name>SideBar</name></member>
+    <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9f" kind="enum"><name>ObjectiveSortOrder</name></member>
+    <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9facf3fb1ff52ea1eed3347ac5401ee7f0c" kind="enumvalue"><name>Ascending</name></member>
+    <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" kind="enumvalue"><name>Descending</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
@@ -975,6 +986,8 @@
   <compound refid="display__slot_8h" kind="file"><name>display_slot.h</name>
   </compound>
   <compound refid="objective_8h" kind="file"><name>objective.h</name>
+  </compound>
+  <compound refid="objective__sort__order_8h" kind="file"><name>objective_sort_order.h</name>
   </compound>
   <compound refid="score_8h" kind="file"><name>score.h</name>
   </compound>

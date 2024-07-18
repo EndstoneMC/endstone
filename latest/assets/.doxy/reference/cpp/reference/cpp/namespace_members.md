@@ -30,6 +30,7 @@
 
 ## o
 
+* **ObjectiveSortOrder** ([**endstone**](namespaceendstone.md))
 * **operator!=** ([**endstone**](namespaceendstone.md))
 * **operator&lt;** ([**endstone**](namespaceendstone.md))
 * **operator&lt;=** ([**endstone**](namespaceendstone.md))

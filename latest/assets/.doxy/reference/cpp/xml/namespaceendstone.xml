@@ -303,6 +303,34 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/display_slot.h" line="22" column="1" bodyfile="include/endstone/scoreboard/display_slot.h" bodystart="22" bodyend="35"/>
       </memberdef>
+      <memberdef kind="enum" id="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9f" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ObjectiveSortOrder</name>
+        <enumvalue id="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9facf3fb1ff52ea1eed3347ac5401ee7f0c" prot="public">
+          <name>Ascending</name>
+          <briefdescription>
+<para>Sorts the objectives in the ascending order. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" prot="public">
+          <name>Descending</name>
+          <briefdescription>
+<para>Sorts the objectives in the descending order. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Represents the sort order of objectives on a DisplaySlot. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective_sort_order.h" line="22" column="1" bodyfile="include/endstone/scoreboard/objective_sort_order.h" bodystart="22" bodyend="31"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
