@@ -15,6 +15,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/actor/actor.h"
+#include "endstone/player.h"
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
@@ -48,15 +50,19 @@ void init_scoreboard(py::module_ &m)
                 self.addObjective(name, criteria, display_name.value_or(name));
             },
             "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
-            py::arg("criteria"), py::arg("display_name") = py::none())
+            py::arg("criteria"), py::arg("display_name") = py::none(), py::return_value_policy::reference)
         .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
-             "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert())
+             "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert(),
+             py::return_value_policy::reference)
         .def("get_objective", py::overload_cast<DisplaySlot>(&Scoreboard::getObjective, py::const_),
-             "Gets the Objective currently displayed in a DisplaySlot on this Scoreboard", py::arg("slot").noconvert())
-        .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard")
+             "Gets the Objective currently displayed in a DisplaySlot on this Scoreboard", py::arg("slot").noconvert(),
+             py::return_value_policy::reference)
+        .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard",
+                               py::return_value_policy::reference_internal)
         .def("get_objectives_by_criteria", &Scoreboard::getObjectivesByCriteria,
              "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"))
-        .def_property_readonly("entries", &Scoreboard::getEntries, "Gets all entries tracked by this Scoreboard")
+        .def_property_readonly("entries", &Scoreboard::getEntries, "Gets all entries tracked by this Scoreboard",
+                               py::return_value_policy::reference_internal)
         .def("clear_slot", &Scoreboard::clearSlot, "Clears any objective in the specified slot", py::arg("slot"));
 }
 

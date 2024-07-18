@@ -1507,17 +1507,17 @@ class Scoreboard:
         """
         Gets the Objective currently displayed in a DisplaySlot on this Scoreboard
         """
-    def get_objectives_by_criteria(self, criteria: Criteria) -> set[Objective]:
+    def get_objectives_by_criteria(self, criteria: Criteria) -> list[Objective]:
         """
         Gets all Objectives of a Criteria on the Scoreboard
         """
     @property
-    def entries(self) -> set[str]:
+    def entries(self) -> list[Player | Actor | str]:
         """
         Gets all entries tracked by this Scoreboard
         """
     @property
-    def objectives(self) -> set[Objective]:
+    def objectives(self) -> list[Objective]:
         """
         Gets all Objectives on this Scoreboard
         """

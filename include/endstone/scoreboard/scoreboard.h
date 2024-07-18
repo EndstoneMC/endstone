@@ -14,7 +14,12 @@
 
 #pragma once
 
-#include <unordered_set>
+#include <string>
+#include <variant>
+#include <vector>
+
+class Player;
+class Actor;
 
 namespace endstone {
 
@@ -23,6 +28,8 @@ namespace endstone {
  */
 class Scoreboard {
 public:
+    using Entry = std::variant<Player *, Actor *, std::string>;
+
     virtual ~Scoreboard() = default;
 
     /**
@@ -65,24 +72,24 @@ public:
     /**
      * @brief Gets all Objectives on this Scoreboard
      *
-     * @return A copy of set of all Objectives on this Scoreboard
+     * @return A list of all Objectives on this Scoreboard
      */
-    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectives() const = 0;
 
     /**
      * @brief Gets all Objectives of a Criteria on the Scoreboard
      *
      * @param criteria Criteria to search by
-     * @return A copy of set of Objectives using the specified Criteria
+     * @return A list of Objectives using the specified Criteria
      */
-    [[nodiscard]] virtual std::unordered_set<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
 
     /**
      * @brief Gets all entries tracked by this Scoreboard
      *
-     * @return A copy of set of all tracked entries
+     * @return A list of all tracked entries
      */
-    [[nodiscard]] virtual std::unordered_set<std::string> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<Entry> getEntries() const = 0;
 
     /**
      * @brief Clears any objective in the specified slot.

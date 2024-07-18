@@ -75,22 +75,22 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
 
-    init_color_format(m);
-    init_game_mode(m);
-    init_logger(m);
-    init_translatable(m);
-    init_inventory(m);
-    init_scoreboard(m);
-    init_util(m);
-    init_level(m);
     init_actor(m, actor);
-    init_player(m);
     init_command(m, command_sender);
-    init_plugin(m);
-    init_scheduler(m);
-    init_permissions(m, permissible, permission, permission_default);
-    init_server(server);
+    init_color_format(m);
     init_event(m, event, event_priority);
+    init_game_mode(m);
+    init_inventory(m);
+    init_level(m);
+    init_logger(m);
+    init_permissions(m, permissible, permission, permission_default);
+    init_player(m);
+    init_plugin(m);
+    init_scoreboard(m);
+    init_scheduler(m);
+    init_server(server);
+    init_translatable(m);
+    init_util(m);
 }
 
 void init_color_format(py::module_ &m)
