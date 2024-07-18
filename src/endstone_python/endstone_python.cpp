@@ -35,23 +35,23 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
+void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor);
 void init_color_format(py::module_ &);
-void init_game_mode(py::module_ &);
-void init_logger(py::module_ &);
-void init_translatable(py::module_ &);
-void init_inventory(py::module_ &);
-void init_scoreboard(py::module_ &m);
-void init_util(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
-void init_plugin(py::module_ &);
-void init_scheduler(py::module_ &);
+void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
+void init_game_mode(py::module_ &);
+void init_inventory(py::module_ &);
+void init_level(py::module_ &);
+void init_logger(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
-void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor);
 void init_player(py::module_ &);
-void init_level(py::module_ &);
+void init_plugin(py::module_ &);
+void init_scheduler(py::module_ &);
+void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
-void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
+void init_translatable(py::module_ &);
+void init_util(py::module_ &);
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
 {
@@ -75,22 +75,22 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
 
-    init_actor(m, actor);
-    init_command(m, command_sender);
     init_color_format(m);
-    init_event(m, event, event_priority);
     init_game_mode(m);
-    init_inventory(m);
-    init_level(m);
     init_logger(m);
-    init_permissions(m, permissible, permission, permission_default);
-    init_player(m);
-    init_plugin(m);
-    init_scoreboard(m);
-    init_scheduler(m);
-    init_server(server);
     init_translatable(m);
+    init_inventory(m);
     init_util(m);
+    init_level(m);
+    init_actor(m, actor);
+    init_player(m);
+    init_scoreboard(m);
+    init_command(m, command_sender);
+    init_plugin(m);
+    init_scheduler(m);
+    init_permissions(m, permissible, permission, permission_default);
+    init_server(server);
+    init_event(m, event, event_priority);
 }
 
 void init_color_format(py::module_ &m)

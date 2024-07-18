@@ -20,6 +20,7 @@
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
+#include "endstone/scoreboard/score.h"
 #include "endstone/scoreboard/scoreboard.h"
 
 namespace py = pybind11;
@@ -34,6 +35,8 @@ void init_scoreboard(py::module_ &m)
         .value("BELOW_NAME", DisplaySlot::BelowName, "Displays the score below the player's name.")
         .value("PLAYER_LIST", DisplaySlot::PlayerList, "Displays the score in the player list on the pause screen.")
         .value("SIDE_BAR", DisplaySlot::SideBar, "Displays the score on the side of the player's screen.");
+
+    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.");
 
     py::class_<Objective>(m, "Objective",
                           "Represents an objective on a scoreboard that can show scores specific to entries.")
@@ -60,7 +63,12 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard",
                                py::return_value_policy::reference_internal)
         .def("get_objectives_by_criteria", &Scoreboard::getObjectivesByCriteria,
-             "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"))
+             "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"),
+             py::return_value_policy::reference_internal)
+        .def("get_scores", &Scoreboard::getScores, "Gets all scores for an entry on this Scoreboard", py::arg("entry"),
+             py::return_value_policy::reference_internal)
+        .def("reset_scores", &Scoreboard::resetScores, "Removes all scores for an entry on this Scoreboard",
+             py::arg("entry"))
         .def_property_readonly("entries", &Scoreboard::getEntries, "Gets all entries tracked by this Scoreboard",
                                py::return_value_policy::reference_internal)
         .def("clear_slot", &Scoreboard::clearSlot, "Clears any objective in the specified slot", py::arg("slot"));

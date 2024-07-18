@@ -15,11 +15,8 @@
 #pragma once
 
 #include <string>
-#include <variant>
-#include <vector>
 
-class Player;
-class Actor;
+#include "endstone/scoreboard/score_entry.h"
 
 namespace endstone {
 
@@ -28,8 +25,6 @@ namespace endstone {
  */
 class Scoreboard {
 public:
-    using Entry = std::variant<Player *, Actor *, std::string>;
-
     virtual ~Scoreboard() = default;
 
     /**
@@ -85,11 +80,26 @@ public:
     [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
 
     /**
+     * @brief Gets all scores for an entry on this Scoreboard
+     *
+     * @param entry the entry whose scores are being retrieved
+     * @return a list of all scores tracked for the entry
+     */
+    [[nodiscard]] virtual std::vector<Score *> getScores(ScoreEntry entry) const = 0;
+
+    /**
+     * @brief Removes all scores for an entry on this Scoreboard
+     *
+     * @param entry the entry to drop all current scores for
+     */
+    virtual void resetScores(ScoreEntry entry) = 0;
+
+    /**
      * @brief Gets all entries tracked by this Scoreboard
      *
      * @return A list of all tracked entries
      */
-    [[nodiscard]] virtual std::vector<Entry> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<ScoreEntry> getEntries() const = 0;
 
     /**
      * @brief Clears any objective in the specified slot.
