@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Score" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Score</compoundname>
+    <includes refid="score_8h" local="no">endstone/scoreboard/score.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Score::~Score</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Score</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/score.h" line="26" column="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a score for an objective on a scoreboard. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/scoreboard/score.h" line="24" column="1" bodyfile="include/endstone/scoreboard/score.h" bodystart="24" bodyend="27"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" prot="public" virt="virtual"><scope>endstone::Score</scope><name>~Score</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

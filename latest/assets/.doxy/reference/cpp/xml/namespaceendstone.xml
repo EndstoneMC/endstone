@@ -55,6 +55,7 @@
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>
     <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
+    <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>
     <innerclass refid="classendstone_1_1Scoreboard" prot="public">endstone::Scoreboard</innerclass>
     <innerclass refid="classendstone_1_1Server" prot="public">endstone::Server</innerclass>
     <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
@@ -329,6 +330,20 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/scheduler/task.h" line="23" column="1" bodyfile="include/endstone/scheduler/task.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> *, std::string &gt;</type>
+        <definition>using endstone::ScoreEntry = typedef std::variant&lt;Player *, Actor *, std::string&gt;</definition>
+        <argsstring></argsstring>
+        <name>ScoreEntry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>An entry for a score. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/score_entry.h" line="29" column="1" bodyfile="include/endstone/scoreboard/score_entry.h" bodystart="29" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">

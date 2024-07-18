@@ -25,18 +25,13 @@
 #pragma once
 
 #include <string>
-#include <variant>
-#include <vector>
 
-class Player;
-class Actor;
+#include "endstone/scoreboard/score_entry.h"
 
 namespace endstone {
 
 class Scoreboard {
 public:
-    using Entry = std::variant<Player *, Actor *, std::string>;
-
     virtual ~Scoreboard() = default;
 
     virtual Objective &addObjective(std::string name, Criteria criteria) = 0;
@@ -51,7 +46,11 @@ public:
 
     [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
 
-    [[nodiscard]] virtual std::vector<Entry> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<Score *> getScores(ScoreEntry entry) const = 0;
+
+    virtual void resetScores(ScoreEntry entry) = 0;
+
+    [[nodiscard]] virtual std::vector<ScoreEntry> getEntries() const = 0;
 
     virtual void clearSlot(DisplaySlot slot) = 0;
 };

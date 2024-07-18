@@ -11,8 +11,7 @@
 
 
 * `#include <string>`
-* `#include <variant>`
-* `#include <vector>`
+* `#include "endstone/scoreboard/score_entry.h"`
 
 
 

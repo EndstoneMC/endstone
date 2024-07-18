@@ -74,6 +74,7 @@
 | class | [**PluginManager**](classendstone_1_1PluginManager.md) <br>_Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**Position**](classendstone_1_1Position.md) <br>_Represents a 3-dimensional position in a dimension within a level._  |
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
+| class | [**Score**](classendstone_1_1Score.md) <br>_Represents a score for an objective on a scoreboard._  |
 | class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |
 | class | [**Server**](classendstone_1_1Server.md) <br>_Represents a server implementation._  |
 | class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when the console runs a command, early in the process._  |
@@ -102,6 +103,7 @@
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
+| typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
 
 
@@ -285,6 +287,24 @@ enum endstone::PluginLoadOrder {
 
 
 
+
+<hr>
+
+
+
+### typedef ScoreEntry 
+
+
+```C++
+using endstone::ScoreEntry = typedef std::variant<Player *, Actor *, std::string>;
+```
+
+
+
+An entry for a score. 
+
+
+        
 
 <hr>
 

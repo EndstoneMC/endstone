@@ -157,6 +157,7 @@
 * **getObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getObjectives** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getObjectivesByCriteria** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getCommandSender** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLevels** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -299,6 +300,7 @@
 * **runTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskLater** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskTimer** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **resetScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 
 
 ## s
@@ -427,6 +429,7 @@
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))

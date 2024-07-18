@@ -55,6 +55,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md) _Represents a plugin loader, which handles direct access to specific types of plugins._ 
 * **class** [**endstone::PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 
+* **class** [**endstone::Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._ 
 * **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 
 * **class** [**endstone::Server**](classendstone_1_1Server.md) _Represents a server implementation._ 
 * **class** [**endstone::Skin**](classendstone_1_1Skin.md) _Represents a player skin._ 

@@ -77,6 +77,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**criteria.h**](criteria_8h.md)     
             * **file** [**display\_slot.h**](display__slot_8h.md)     
             * **file** [**objective.h**](objective_8h.md)     
+            * **file** [**score.h**](score_8h.md)     
+            * **file** [**score\_entry.h**](score__entry_8h.md)     
             * **file** [**scoreboard.h**](scoreboard_8h.md)     
         * **dir** [**util**](dir_89b85071337bf933dea6c29b4c6a4410.md)     
             * **file** [**socket\_address.h**](socket__address_8h.md)     

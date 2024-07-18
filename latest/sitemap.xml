@@ -361,6 +361,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Score/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Scoreboard/</loc>
          <lastmod>2024-07-18</lastmod>
          <changefreq>daily</changefreq>
@@ -1102,6 +1107,26 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/objective_8h_source/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/score_8h/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/score_8h_source/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/score__entry_8h/</loc>
+         <lastmod>2024-07-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/score__entry_8h_source/</loc>
          <lastmod>2024-07-18</lastmod>
          <changefreq>daily</changefreq>
     </url>

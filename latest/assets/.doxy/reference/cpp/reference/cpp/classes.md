@@ -142,6 +142,8 @@
 
 * [**Scheduler**](classendstone_1_1Scheduler.md)
 ([**endstone**](namespaceendstone.md))
+* [**Score**](classendstone_1_1Score.md)
+([**endstone**](namespaceendstone.md))
 * [**Scoreboard**](classendstone_1_1Scoreboard.md)
 ([**endstone**](namespaceendstone.md))
 * [**Server**](classendstone_1_1Server.md)

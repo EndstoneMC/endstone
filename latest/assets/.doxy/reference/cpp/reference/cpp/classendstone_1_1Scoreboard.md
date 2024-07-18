@@ -28,11 +28,6 @@ _Represents a scoreboard._
 
 
 
-## Public Types
-
-| Type | Name |
-| ---: | :--- |
-| typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**Entry**](#typedef-entry)  <br> |
 
 
 
@@ -60,11 +55,13 @@ _Represents a scoreboard._
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-12) (std::string name, Criteria criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-22) (std::string name, Criteria criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual void | [**clearSlot**](#function-clearslot) (DisplaySlot slot) = 0<br>_Clears any objective in the specified slot._  |
-| virtual std::vector&lt; Entry &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; ScoreEntry &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-12) (std::string name) const = 0<br>_Gets an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _by name._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-22) (DisplaySlot slot) const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a DisplaySlot on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectives**](#function-getobjectives) () const = 0<br>_Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) (Criteria criteria) const = 0<br>_Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; [**Score**](classendstone_1_1Score.md) \* &gt; | [**getScores**](#function-getscores) (ScoreEntry entry) const = 0<br>_Gets all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual void | [**resetScores**](#function-resetscores) (ScoreEntry entry) = 0<br>_Removes all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Scoreboard**](#function-scoreboard) () = default<br> |
 
 
@@ -94,21 +91,6 @@ _Represents a scoreboard._
 
 
 
-## Public Types Documentation
-
-
-
-
-### typedef Entry 
-
-```C++
-using endstone::Scoreboard::Entry =  std::variant<Player *, Actor *, std::string>;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -219,7 +201,7 @@ virtual void endstone::Scoreboard::clearSlot (
 
 _Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
-virtual std::vector< Entry > endstone::Scoreboard::getEntries () const = 0
+virtual std::vector< ScoreEntry > endstone::Scoreboard::getEntries () const = 0
 ```
 
 
@@ -357,6 +339,67 @@ virtual std::vector< Objective * > endstone::Scoreboard::getObjectivesByCriteria
 
 A list of Objectives using the specified Criteria 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getScores 
+
+_Gets all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
+```C++
+virtual std::vector< Score * > endstone::Scoreboard::getScores (
+    ScoreEntry entry
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `entry` the entry whose scores are being retrieved 
+
+
+
+**Returns:**
+
+a list of all scores tracked for the entry 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function resetScores 
+
+_Removes all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
+```C++
+virtual void endstone::Scoreboard::resetScores (
+    ScoreEntry entry
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `entry` the entry to drop all current scores for 
 
 
 

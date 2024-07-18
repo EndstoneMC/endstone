@@ -47,6 +47,7 @@
 
 ## s
 
+* **ScoreEntry** ([**endstone**](namespaceendstone.md))
 * **swap** ([**endstone**](namespaceendstone.md))
 
 

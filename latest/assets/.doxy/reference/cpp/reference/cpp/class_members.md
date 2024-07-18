@@ -105,7 +105,6 @@
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **Entry** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 
@@ -207,6 +206,7 @@
 * **getObjective** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getObjectives** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getObjectivesByCriteria** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **getScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getCommandSender** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getLevels** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -412,6 +412,7 @@
 * **runTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskLater** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskTimer** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **resetScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **remote\_host\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **remote\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 
@@ -577,6 +578,7 @@
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **~Server** ([**endstone::Server**](classendstone_1_1Server.md))
 * **~Task** ([**endstone::Task**](classendstone_1_1Task.md))

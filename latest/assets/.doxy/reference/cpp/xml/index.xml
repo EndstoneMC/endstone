@@ -593,8 +593,10 @@
     <member refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" kind="function"><name>isQueued</name></member>
     <member refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" kind="function"><name>getPendingTasks</name></member>
   </compound>
+  <compound refid="classendstone_1_1Score" kind="class"><name>endstone::Score</name>
+    <member refid="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" kind="function"><name>~Score</name></member>
+  </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
-    <member refid="classendstone_1_1Scoreboard_1a34642b03a583d5c2ef7582dfd6de400c" kind="typedef"><name>Entry</name></member>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
     <member refid="classendstone_1_1Scoreboard_1a16b4b1f8358eb3abae0449b4abe027af" kind="function"><name>addObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a71289eb1bc542dd6619acabafa5a81ee" kind="function"><name>addObjective</name></member>
@@ -602,7 +604,9 @@
     <member refid="classendstone_1_1Scoreboard_1a9f491cf1b01c405c861b95e1167ae756" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a04f09d0524072058cfe2faea46e9f34e" kind="function"><name>getObjectives</name></member>
     <member refid="classendstone_1_1Scoreboard_1a9a3c74356f12b3f6d9c528adc05a57e0" kind="function"><name>getObjectivesByCriteria</name></member>
-    <member refid="classendstone_1_1Scoreboard_1aead22e21db9fd2e8807988004482559b" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a9c8c74535fa8b7347977c4b29cd632fd" kind="function"><name>getScores</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" kind="function"><name>resetScores</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a34423dec12f04dfc311a2d52ab2da93a" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" kind="function"><name>clearSlot</name></member>
   </compound>
   <compound refid="classendstone_1_1Server" kind="class"><name>endstone::Server</name>
@@ -830,6 +834,7 @@
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" kind="enumvalue"><name>SideBar</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
+    <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
     <member refid="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="uuid_8h_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="uuid_8h_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>
@@ -970,6 +975,10 @@
   <compound refid="display__slot_8h" kind="file"><name>display_slot.h</name>
   </compound>
   <compound refid="objective_8h" kind="file"><name>objective.h</name>
+  </compound>
+  <compound refid="score_8h" kind="file"><name>score.h</name>
+  </compound>
+  <compound refid="score__entry_8h" kind="file"><name>score_entry.h</name>
   </compound>
   <compound refid="scoreboard_8h" kind="file"><name>scoreboard.h</name>
   </compound>

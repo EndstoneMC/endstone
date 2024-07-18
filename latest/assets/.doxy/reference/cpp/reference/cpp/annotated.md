@@ -50,6 +50,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._    
     * **class** [**Position**](classendstone_1_1Position.md) _Represents a 3-dimensional position in a dimension within a level._     
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     
+    * **class** [**Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._     
     * **class** [**Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._     
     * **class** [**Server**](classendstone_1_1Server.md) _Represents a server implementation._     
     * **class** [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when the console runs a command, early in the process._     
