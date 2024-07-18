@@ -51,10 +51,14 @@ enum class StartupResult {
 using SystemIndex = std::uint16_t;
 
 struct SystemAddress {
-    SystemAddress() : system_index(-1), debug_port(0)
+    SystemAddress()
     {
-        address = {0};
         address.addr4.sin_family = AF_INET;
+        // used for operator ==
+        memset(&address, 0, sizeof(address));
+        address.addr4.sin_family = AF_INET;
+        system_index = -1;
+        debug_port = 0;
     }
     [[nodiscard]] std::uint16_t GetPort() const;                                                // NOLINT
     ENDSTONE_HOOK void ToString(bool write_port, char *dest, char port_delimiter = '|') const;  // NOLINT
