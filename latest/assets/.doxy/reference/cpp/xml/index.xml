@@ -804,6 +804,10 @@
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6b" kind="enum"><name>PluginLoadOrder</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kind="enumvalue"><name>PostWorld</name></member>
+    <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" kind="enum"><name>DisplaySlot</name></member>
+    <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
+    <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
+    <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" kind="enumvalue"><name>SideBar</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
@@ -941,6 +945,8 @@
   </compound>
   <compound refid="task_8h" kind="file"><name>task.h</name>
   </compound>
+  <compound refid="display__slot_8h" kind="file"><name>display_slot.h</name>
+  </compound>
   <compound refid="server_8h" kind="file"><name>server.h</name>
   </compound>
   <compound refid="skin_8h" kind="file"><name>skin.h</name>
@@ -976,6 +982,8 @@
   <compound refid="dir_53ee43673b2467e53c4cb8c30a2e7d89" kind="dir"><name>include/endstone/plugin</name>
   </compound>
   <compound refid="dir_3a50fadda3c7cdc27c965a478a3f7d27" kind="dir"><name>include/endstone/scheduler</name>
+  </compound>
+  <compound refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0" kind="dir"><name>include/endstone/scoreboard</name>
   </compound>
   <compound refid="dir_77022909323d5ad872c4820a738a5429" kind="dir"><name>include/endstone/event/server</name>
   </compound>

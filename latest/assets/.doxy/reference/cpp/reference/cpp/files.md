@@ -73,6 +73,8 @@ Here is a list of all files with brief descriptions:
         * **dir** [**scheduler**](dir_3a50fadda3c7cdc27c965a478a3f7d27.md)     
             * **file** [**scheduler.h**](scheduler_8h.md)     
             * **file** [**task.h**](task_8h.md)     
+        * **dir** [**scoreboard**](dir_19c52f9ea81a2cf7449c80dcee80d6f0.md)     
+            * **file** [**display\_slot.h**](display__slot_8h.md)     
         * **dir** [**util**](dir_89b85071337bf933dea6c29b4c6a4410.md)     
             * **file** [**socket\_address.h**](socket__address_8h.md)     
             * **file** [**uuid.h**](uuid_8h.md)     

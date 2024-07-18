@@ -93,6 +93,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
@@ -161,6 +162,23 @@
 
 ## Public Types Documentation
 
+
+
+
+### enum DisplaySlot 
+
+```C++
+enum endstone::DisplaySlot {
+    BelowName,
+    PlayerList,
+    SideBar
+};
+```
+
+
+
+
+<hr>
 
 
 

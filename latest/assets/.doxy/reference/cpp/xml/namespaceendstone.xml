@@ -244,6 +244,42 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="32"/>
       </memberdef>
+      <memberdef kind="enum" id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>DisplaySlot</name>
+        <enumvalue id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" prot="public">
+          <name>BelowName</name>
+          <briefdescription>
+<para>Displays the score below the player&apos;s name. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" prot="public">
+          <name>PlayerList</name>
+          <briefdescription>
+<para>Displays the score in the player list on the pause screen. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" prot="public">
+          <name>SideBar</name>
+          <briefdescription>
+<para>Displays the score on the side of the player&apos;s screen. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Locations for displaying objectives to the player. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/display_slot.h" line="22" column="1" bodyfile="include/endstone/scoreboard/display_slot.h" bodystart="22" bodyend="35"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
