@@ -40,7 +40,7 @@ void init_game_mode(py::module_ &);
 void init_logger(py::module_ &);
 void init_translatable(py::module_ &);
 void init_inventory(py::module_ &);
-
+void init_scoreboard(py::module_ &m);
 void init_util(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_plugin(py::module_ &);
@@ -80,9 +80,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_logger(m);
     init_translatable(m);
     init_inventory(m);
-
+    init_scoreboard(m);
     init_util(m);
-
     init_level(m);
     init_actor(m, actor);
     init_player(m);
