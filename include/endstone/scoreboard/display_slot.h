@@ -31,7 +31,7 @@ enum class DisplaySlot {
     /**
      * @brief Displays the score on the side of the player's screen.
      */
-    SideBar
+    SideBar,
 };
 
 }  // namespace endstone

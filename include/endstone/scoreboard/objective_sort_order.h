@@ -27,7 +27,7 @@ enum class ObjectiveSortOrder {
     /**
      * @brief Sorts the objectives in the descending order
      */
-    Descending
+    Descending,
 };
 
 }  // namespace endstone

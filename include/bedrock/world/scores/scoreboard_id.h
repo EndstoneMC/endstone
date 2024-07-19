@@ -20,7 +20,18 @@
 
 class ScoreboardId {
 public:
-private:
-    std::int64_t raw_id_;
-    IdentityDefinition *identity_def_;
+    ScoreboardId() = default;
+    explicit ScoreboardId(int64_t id) : raw_id(id) {}
+    [[nodiscard]] bool isValid() const;
+
+    static const ScoreboardId INVALID;
+    std::int64_t raw_id{-1};
+    IdentityDefinition *identity_def{nullptr};
 };
+
+inline bool ScoreboardId::isValid() const
+{
+    return raw_id != ScoreboardId::INVALID.raw_id;
+}
+
+inline const ScoreboardId ScoreboardId::INVALID;

@@ -14,6 +14,11 @@
 
 #include "endstone/detail/scoreboard/objective.h"
 
+#include <optional>
+#include <string>
+
+#include <magic_enum/magic_enum.hpp>
+
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
 
@@ -24,26 +29,27 @@ EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective
 {
 }
 
-std::string EndstoneObjective::getName() const
+std::optional<std::string> EndstoneObjective::getName() const
 {
     if (checkState()) {
         return objective_.getName();
     }
-    return "";
+    return std::nullopt;
 }
 
-std::string EndstoneObjective::getDisplayName() const
+std::optional<std::string> EndstoneObjective::getDisplayName() const
 {
     if (checkState()) {
         return objective_.getDisplayName();
     }
-    return "";
+    return std::nullopt;
 }
 
 void EndstoneObjective::setDisplayName(std::string display_name)
 {
     if (checkState()) {
         objective_.setDisplayName(display_name);
+        // TODO(scoreboard): probably we need to mark it as dirty, check this later
     }
 }
 
@@ -68,9 +74,20 @@ Scoreboard &EndstoneObjective::getScoreboard() const
     return scoreboard_;
 }
 
-DisplaySlot EndstoneObjective::getDisplaySlot() const
+std::optional<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
-    throw std::runtime_error("Not implemented.");
+    if (!checkState()) {
+        return std::nullopt;
+    }
+
+    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
+        if (const auto *display = scoreboard_.board_.getDisplayObjective(toBedrock(slot)); display) {
+            if (display->getObjective() == &objective_) {
+                return slot;
+            }
+        }
+    }
+    return std::nullopt;
 }
 
 void EndstoneObjective::setDisplaySlot(DisplaySlot slot)
@@ -78,9 +95,12 @@ void EndstoneObjective::setDisplaySlot(DisplaySlot slot)
     throw std::runtime_error("Not implemented.");
 }
 
-RenderType EndstoneObjective::getRenderType() const
+std::optional<RenderType> EndstoneObjective::getRenderType() const
 {
-    throw std::runtime_error("Not implemented.");
+    if (checkState()) {
+        return static_cast<RenderType>(objective_.getRenderType());
+    }
+    return std::nullopt;
 }
 
 void EndstoneObjective::setRenderType(RenderType render_type)
@@ -88,9 +108,20 @@ void EndstoneObjective::setRenderType(RenderType render_type)
     throw std::runtime_error("Not implemented.");
 }
 
-ObjectiveSortOrder EndstoneObjective::getSortOrder() const
+std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
 {
-    throw std::runtime_error("Not implemented.");
+    if (!checkState()) {
+        return std::nullopt;
+    }
+
+    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
+        if (const auto *display = scoreboard_.board_.getDisplayObjective(toBedrock(slot)); display) {
+            if (display->getObjective() == &objective_) {
+                return static_cast<ObjectiveSortOrder>(display->getSortOrder());
+            }
+        }
+    }
+    return std::nullopt;
 }
 
 void EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
@@ -111,6 +142,19 @@ bool EndstoneObjective::checkState() const
         return false;
     }
     return true;
+}
+
+std::string EndstoneObjective::toBedrock(DisplaySlot slot)
+{
+    switch (slot) {
+    case DisplaySlot::BelowName:
+        return "belowname";
+    case DisplaySlot::PlayerList:
+        return "list";
+    case DisplaySlot::SideBar:
+        return "sidebar";
+    }
+    throw std::runtime_error("You should never be here");
 }
 
 }  // namespace endstone::detail

@@ -35,14 +35,14 @@ public:
      *
      * @return this objective's name
      */
-    [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getName() const = 0;
 
     /**
      * @brief Gets the name displayed to players for this objective
      *
      * @return this objective's display name
      */
-    [[nodiscard]] virtual std::string getDisplayName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const = 0;
 
     /**
      * @brief Sets the name displayed to players for this objective.
@@ -77,7 +77,7 @@ public:
      *
      * @return the display slot for this objective
      */
-    [[nodiscard]] virtual DisplaySlot getDisplaySlot() const = 0;
+    [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
     /**
      * @brief Sets this objective to display on the specified slot for the scoreboard, removing it from any other
@@ -92,7 +92,7 @@ public:
      *
      * @return the render type
      */
-    [[nodiscard]] virtual RenderType getRenderType() const = 0;
+    [[nodiscard]] virtual std::optional<RenderType> getRenderType() const = 0;
 
     /**
      * @brief Sets manner in which this objective will be rendered.
@@ -106,7 +106,7 @@ public:
      *
      * @return The sort order for this objective.
      */
-    [[nodiscard]] virtual ObjectiveSortOrder getSortOrder() const = 0;
+    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
 
     /**
      * @brief Sets the sort order for this objective.

@@ -669,7 +669,7 @@ class Objective:
         Gets the criteria this objective tracks
         """
     @property
-    def display_name(self) -> str:
+    def display_name(self) -> str | None:
         """
         Gets or sets the name displayed to players for this objective
         """
@@ -677,7 +677,7 @@ class Objective:
     def display_name(self, arg1: str) -> None:
         ...
     @property
-    def display_slot(self) -> DisplaySlot:
+    def display_slot(self) -> DisplaySlot | None:
         """
         Gets and sets the display slot this objective is displayed at
         """
@@ -685,17 +685,17 @@ class Objective:
     def display_slot(self, arg1: DisplaySlot) -> None:
         ...
     @property
-    def modifiable(self) -> bool:
+    def is_modifiable(self) -> bool:
         """
         Gets if the objective's scores can be modified directly by a plugin
         """
     @property
-    def name(self) -> str:
+    def name(self) -> str | None:
         """
         Gets the name of this Objective
         """
     @property
-    def render_type(self) -> RenderType:
+    def render_type(self) -> RenderType | None:
         """
         Gets and sets the manner in which this objective will be rendered.
         """
@@ -708,7 +708,7 @@ class Objective:
         Gets the scoreboard to which this objective is attached
         """
     @property
-    def sort_order(self) -> ObjectiveSortOrder:
+    def sort_order(self) -> ObjectiveSortOrder | None:
         """
         Gets and sets the sort order for this objective
         """

@@ -30,7 +30,7 @@ public:
         Dummy,
     };
 
-    virtual ~Criteria() = 0;
+    virtual ~Criteria() = default;
 
     /**
      * @brief Get the name of this criteria (its unique id).
