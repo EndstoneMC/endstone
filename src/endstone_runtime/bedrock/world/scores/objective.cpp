@@ -12,22 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/scores/objective.h"
 
-#include "bedrock/world/scores/objective_criteria.h"
-#include "endstone/scoreboard/criteria.h"
+const std::unordered_map<ScoreboardId, int> &Objective::getScores() const
+{
+    return scores_;
+}
 
-namespace endstone::detail {
+const std::string &Objective::getName() const
+{
+    return name_;
+}
 
-class EndstoneCriteria : public Criteria {
-public:
-    explicit EndstoneCriteria(const ObjectiveCriteria &criteria);
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isReadOnly() const override;
-    [[nodiscard]] RenderType getDefaultRenderType() const override;
+const std::string &Objective::getDisplayName() const
+{
+    return display_name_;
+}
 
-private:
-    const  ObjectiveCriteria &criteria_;
-};
+const ObjectiveCriteria *Objective::getCriteria() const
+{
+    return criteria_;
+}
 
-}  // namespace endstone::detail
+ObjectiveRenderType Objective::getRenderType() const
+{
+    return criteria_->getRenderType();
+}
+
+void Objective::setDisplayName(const std::string &display_name)
+{
+    display_name_ = display_name;
+}

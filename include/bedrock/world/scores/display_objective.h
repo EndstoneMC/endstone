@@ -14,20 +14,32 @@
 
 #pragma once
 
-#include "bedrock/world/scores/objective_criteria.h"
-#include "endstone/scoreboard/criteria.h"
+#include "bedrock/world/scores/objective.h"
+#include "bedrock/world/scores/objective_sort_order.h"
 
-namespace endstone::detail {
-
-class EndstoneCriteria : public Criteria {
+class DisplayObjective {
 public:
-    explicit EndstoneCriteria(const ObjectiveCriteria &criteria);
-    [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] bool isReadOnly() const override;
-    [[nodiscard]] RenderType getDefaultRenderType() const override;
+    [[nodiscard]] bool isDisplaying(const Objective &objective) const
+    {
+        return objective_ == &objective;
+    }
+
+    [[nodiscard]] bool isValid() const
+    {
+        return objective_ != nullptr;
+    }
+
+    [[nodiscard]] const Objective *getObjective() const
+    {
+        return objective_;
+    }
+
+    [[nodiscard]] ObjectiveSortOrder getSortOrder() const
+    {
+        return sort_order_;
+    }
 
 private:
-    const  ObjectiveCriteria &criteria_;
+    const Objective *objective_;
+    ObjectiveSortOrder sort_order_;
 };
-
-}  // namespace endstone::detail

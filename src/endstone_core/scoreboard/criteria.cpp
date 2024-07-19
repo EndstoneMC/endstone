@@ -16,7 +16,7 @@
 
 namespace endstone::detail {
 
-EndstoneCriteria::EndstoneCriteria(ObjectiveCriteria &criteria) : criteria_(criteria) {}
+EndstoneCriteria::EndstoneCriteria(const ObjectiveCriteria &criteria) : criteria_(criteria) {}
 
 std::string EndstoneCriteria::getName() const
 {

@@ -23,6 +23,13 @@
 
 class Objective : public Bedrock::EnableNonOwnerReferences {
 public:
+    [[nodiscard]] const std::unordered_map<ScoreboardId, int> &getScores() const;
+    [[nodiscard]] const std::string &getName() const;
+    [[nodiscard]] const std::string &getDisplayName() const;
+    [[nodiscard]] const ObjectiveCriteria *getCriteria() const;
+    [[nodiscard]] ObjectiveRenderType getRenderType() const;
+    void setDisplayName(const std::string &display_name);
+
 private:
     std::unordered_map<ScoreboardId, int> scores_;  // +24
     std::string name_;                              // +88

@@ -54,9 +54,9 @@ public:
     /**
      * @brief Gets the criteria this objective tracks.
      *
-     * @return this objective's criteria
+     * @return this objective's criteria, or <code>nullptr</code> if this objective has been unregistered.
      */
-    [[nodiscard]] virtual Criteria &getCriteria() const = 0;
+    [[nodiscard]] virtual const Criteria *getCriteria() const = 0;
 
     /**
      * @brief Gets if the objective's scores can be modified directly by a plugin.

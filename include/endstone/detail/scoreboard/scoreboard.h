@@ -40,6 +40,8 @@ public:
     void clearSlot(DisplaySlot slot) override;
 
 private:
+    friend class EndstoneObjective;
+
     ::Scoreboard &board_;
 };
 

@@ -22,3 +22,12 @@ Objective *Scoreboard::getObjective(const std::string &name) const
     }
     return it->second.get();
 }
+
+const DisplayObjective *Scoreboard::getDisplayObjective(const std::string &name) const
+{
+    auto it = display_objectives_.find(name);
+    if (it == display_objectives_.end()) {
+        return nullptr;
+    }
+    return &it->second;
+}

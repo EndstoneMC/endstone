@@ -22,6 +22,7 @@
 #include "bedrock/server/commands/command_soft_enum_registry.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/scores/display_objective.h"
 #include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/objective_sort_order.h"
 #include "bedrock/world/scores/scoreboard_id.h"
@@ -50,6 +51,7 @@ public:
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
     [[nodiscard]] Objective *getObjective(const std::string &name) const;
+    [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
 
 private:
     CommandSoftEnumRegistry registry_;                                                          // +8

@@ -75,7 +75,6 @@ class DataLoadHelper;
 class Difficulty;
 class DimensionConversionData;
 class DimensionManager;
-class DisplayObjective;
 class EducationLevelSettings;
 class EntitySystems;
 class EquipmentSlot;

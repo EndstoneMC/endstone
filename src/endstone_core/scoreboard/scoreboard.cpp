@@ -18,6 +18,7 @@
 
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
+#include "endstone/detail/scoreboard/objective.h"
 
 namespace endstone::detail {
 
@@ -42,7 +43,10 @@ std::shared_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Cr
 
 std::shared_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) const
 {
-    throw std::runtime_error("Not implemented.");
+    if (auto *objective = board_.getObjective(name); objective) {
+        return std::make_shared<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), *objective);
+    }
+    return nullptr;
 }
 
 std::shared_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const

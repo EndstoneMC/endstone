@@ -73,7 +73,7 @@ void init_scoreboard(py::module_ &m)
         .def_property("display_name", &Objective::getDisplayName, &Objective::setDisplayName,
                       "Gets or sets the name displayed to players for this objective")
         .def_property_readonly("criteria", &Objective::getCriteria, "Gets the criteria this objective tracks")
-        .def_property_readonly("modifiable", &Objective::isModifiable,
+        .def_property_readonly("is_modifiable", &Objective::isModifiable,
                                "Gets if the objective's scores can be modified directly by a plugin")
         .def_property_readonly("scoreboard", &Objective::getScoreboard,
                                "Gets the scoreboard to which this objective is attached",
