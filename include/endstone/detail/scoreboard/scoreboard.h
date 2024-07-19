@@ -22,9 +22,9 @@ namespace endstone::detail {
 class EndstoneScoreboard : public Scoreboard {
 public:
     explicit EndstoneScoreboard(::Scoreboard &board);
-    Objective &addObjective(std::string name, Criteria::Type criteria) override;
-    Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name) override;
-    Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+    Objective *addObjective(std::string name, Criteria::Type criteria) override;
+    Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name) override;
+    Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name,
                             RenderType render_type) override;
     [[nodiscard]] Objective *getObjective(std::string name) const override;
     [[nodiscard]] Objective *getObjective(DisplaySlot slot) const override;

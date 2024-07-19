@@ -22,17 +22,17 @@ namespace endstone::detail {
 
 EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
 
-Objective &EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
+Objective *EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);
 }
 
-Objective &EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name)
+Objective *EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name)
 {
     return addObjective(name, criteria, name, RenderType::Integer);
 }
 
-Objective &EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+Objective *EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria, std::string display_name,
                                             RenderType render_type)
 {
     throw std::runtime_error("Not implemented.");
