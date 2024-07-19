@@ -43,7 +43,7 @@ public:
 
     virtual void setDisplayName(std::string display_name) = 0;
 
-    [[nodiscard]] virtual Criteria &getCriteria() const = 0;
+    [[nodiscard]] virtual const Criteria *getCriteria() const = 0;
 
     [[nodiscard]] virtual bool isModifiable() const = 0;
 

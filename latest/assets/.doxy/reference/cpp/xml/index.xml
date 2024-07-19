@@ -282,7 +282,7 @@
     <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" kind="function"><name>getDisplayName</name></member>
     <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kind="function"><name>setDisplayName</name></member>
-    <member refid="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" kind="function"><name>getCriteria</name></member>
+    <member refid="classendstone_1_1Objective_1abdbe48ffec8d1ef2aef0ce347cbf0727" kind="function"><name>getCriteria</name></member>
     <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
     <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Objective_1a5ba8ad7b4349b1f947fe62e591364e3d" kind="function"><name>getDisplaySlot</name></member>

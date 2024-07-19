@@ -52,7 +52,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Criteria**](classendstone_1_1Criteria.md) & | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
+| virtual const [**Criteria**](classendstone_1_1Criteria.md) \* | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
 | virtual DisplaySlot | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
@@ -103,7 +103,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 _Gets the criteria this objective tracks._ 
 ```C++
-virtual Criteria & endstone::Objective::getCriteria () const = 0
+virtual const Criteria * endstone::Objective::getCriteria () const = 0
 ```
 
 
@@ -112,7 +112,7 @@ virtual Criteria & endstone::Objective::getCriteria () const = 0
 
 **Returns:**
 
-this objective's criteria 
+this objective's criteria, or `nullptr` if this objective has been unregistered. 
 
 
 

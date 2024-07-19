@@ -79,22 +79,22 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/objective.h" line="52" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref> &amp;</type>
-        <definition>virtual Criteria&amp; endstone::Objective::getCriteria</definition>
+      <memberdef kind="function" id="classendstone_1_1Objective_1abdbe48ffec8d1ef2aef0ce347cbf0727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref> *</type>
+        <definition>virtual const Criteria* endstone::Objective::getCriteria</definition>
         <argsstring>() const =0</argsstring>
         <name>getCriteria</name>
         <briefdescription>
 <para>Gets the criteria this objective tracks. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>this objective&apos;s criteria </para>
+<para><simplesect kind="return"><para>this objective&apos;s criteria, or <computeroutput>nullptr</computeroutput> if this objective has been unregistered. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="59" column="23"/>
+        <location file="include/endstone/scoreboard/objective.h" line="59" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -303,7 +303,7 @@
     </detaileddescription>
     <location file="include/endstone/scoreboard/objective.h" line="29" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="29" bodyend="125"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getCriteria</name></member>
+      <member refid="classendstone_1_1Objective_1abdbe48ffec8d1ef2aef0ce347cbf0727" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getCriteria</name></member>
       <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplayName</name></member>
       <member refid="classendstone_1_1Objective_1a5ba8ad7b4349b1f947fe62e591364e3d" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplaySlot</name></member>
       <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getName</name></member>
