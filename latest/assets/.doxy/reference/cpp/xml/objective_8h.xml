@@ -5,6 +5,7 @@
     <includes local="no">string</includes>
     <includes refid="objective__sort__order_8h" local="yes">endstone/scoreboard/objective_sort_order.h</includes>
     <includes refid="score_8h" local="yes">endstone/scoreboard/score.h</includes>
+    <includedby refid="scoreboard_8h" local="yes">include/endstone/scoreboard/scoreboard.h</includedby>
     <incdepgraph>
       <node id="6">
         <label>variant</label>
@@ -46,6 +47,18 @@
         <link refid="objective__sort__order_8h_source"/>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/scoreboard/scoreboard.h</label>
+        <link refid="scoreboard_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/scoreboard/objective.h</label>
+        <link refid="objective_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
@@ -88,7 +101,7 @@
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52" refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kindref="member">setDisplayName</ref>(std::string<sp/>display_name)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="classendstone_1_1Objective_1a1788ef888cdbc409659fe8821261e6fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Criteria<sp/><ref refid="classendstone_1_1Objective_1a1788ef888cdbc409659fe8821261e6fb" kindref="member">getCriteria</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59" refid="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Criteria" kindref="compound">Criteria</ref>&amp;<sp/><ref refid="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" kindref="member">getCriteria</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66" refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kindref="member">isModifiable</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
@@ -98,14 +111,18 @@
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88" refid="classendstone_1_1Objective_1a50fd3cc9094d724a19cd2b7cbe653124" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1a50fd3cc9094d724a19cd2b7cbe653124" kindref="member">setDisplaySlot</ref>(DisplaySlot<sp/>slot)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95" refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>ObjectiveSortOrder<sp/><ref refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" kindref="member">getSortOrder</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95" refid="classendstone_1_1Objective_1aceaf61f35e4299fd342ef68b086e7371" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>RenderType<sp/><ref refid="classendstone_1_1Objective_1aceaf61f35e4299fd342ef68b086e7371" kindref="member">getRenderType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102" refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kindref="member">setSortOrder</ref>(ObjectiveSortOrder<sp/>order)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="102" refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kindref="member">setRenderType</ref>(RenderType<sp/>render_type)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110" refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Score" kindref="compound">Score</ref><sp/>&amp;<ref refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" kindref="member">getScore</ref>(ScoreEntry<sp/>entry)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>ObjectiveSortOrder<sp/><ref refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" kindref="member">getSortOrder</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kindref="member">setSortOrder</ref>(ObjectiveSortOrder<sp/>order)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Score" kindref="compound">Score</ref><sp/>&amp;<ref refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" kindref="member">getScore</ref>(ScoreEntry<sp/>entry)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/scoreboard/objective.h"/>
   </compounddef>

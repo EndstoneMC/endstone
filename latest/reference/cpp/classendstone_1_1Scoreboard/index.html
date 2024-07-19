@@ -1769,9 +1769,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-addobjective-12" class="md-nav__link">
+    <a href="#function-addobjective-13" class="md-nav__link">
       <span class="md-ellipsis">
-        function addObjective [&frac12;]
+        function addObjective [&#8531;]
       </span>
     </a>
 
@@ -1782,9 +1782,22 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-addobjective-22" class="md-nav__link">
+    <a href="#function-addobjective-23" class="md-nav__link">
       <span class="md-ellipsis">
-        function addObjective [2/2]
+        function addObjective [&#8532;]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-addobjective-33" class="md-nav__link">
+      <span class="md-ellipsis">
+        function addObjective [3/3]
       </span>
     </a>
 
@@ -1963,11 +1976,15 @@
 <tbody>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addobjective-12"><strong>addObjective</strong></a> (std::string name, Criteria criteria) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-addobjective-13"><strong>addObjective</strong></a> (std::string name, <a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addobjective-22"><strong>addObjective</strong></a> (std::string name, Criteria criteria, std::string display_name) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-addobjective-23"><strong>addObjective</strong></a> (std::string name, <a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria, std::string display_name) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-addobjective-33"><strong>addObjective</strong></a> (std::string name, <a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria, std::string display_name, RenderType render_type) = 0<br><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -1991,7 +2008,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-getobjectivesbycriteria"><strong>getObjectivesByCriteria</strong></a> (Criteria criteria) const = 0<br><em>Gets all Objectives of a Criteria on the</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-getobjectivesbycriteria"><strong>getObjectivesByCriteria</strong></a> (<a href="../classendstone_1_1Criteria/#enum-type"><strong>Criteria::Type</strong></a> criteria) const = 0<br><em>Gets all Objectives of a</em> <a href="../classendstone_1_1Criteria/"><em><strong>Criteria</strong></em></a> <em>on the</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> * &gt;</td>
@@ -2008,35 +2025,55 @@
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-addobjective-12">function addObjective [&frac12;]<a class="headerlink" href="#function-addobjective-12" title="Permanent link">&para;</a></h3>
+<h3 id="function-addobjective-13">function addObjective [&#8531;]<a class="headerlink" href="#function-addobjective-13" title="Permanent link">&para;</a></h3>
 <p><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">addObjective</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Criteria</span><span class="w"> </span><span class="n">criteria</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">Criteria</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">criteria</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
-<li><code>criteria</code> Criteria for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
+<li><code>criteria</code> <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>A reference to the newly registered <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a>. If an <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> with the given name already exists, a reference to that existing <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> is returned instead. </p>
 <hr>
 
-<h3 id="function-addobjective-22">function addObjective [2/2]<a class="headerlink" href="#function-addobjective-22" title="Permanent link">&para;</a></h3>
+<h3 id="function-addobjective-23">function addObjective [&#8532;]<a class="headerlink" href="#function-addobjective-23" title="Permanent link">&para;</a></h3>
 <p><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">addObjective</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Criteria</span><span class="w"> </span><span class="n">criteria</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Criteria</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">criteria</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>name</code> Name of the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
-<li><code>criteria</code> Criteria for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
+<li><code>criteria</code> <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> type for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
 <li><code>display_name</code> Name displayed to players for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a>. </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A reference to the newly registered <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a>. If an <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> with the given name already exists, a reference to that existing <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> is returned instead. </p>
+<hr>
+
+<h3 id="function-addobjective-33">function addObjective [3/3]<a class="headerlink" href="#function-addobjective-33" title="Permanent link">&para;</a></h3>
+<p><em>Registers an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">addObjective</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Criteria</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">criteria</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">RenderType</span><span class="w"> </span><span class="n">render_type</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>name</code> Name of the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
+<li><code>criteria</code> <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> type for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
+<li><code>display_name</code> Name displayed to players for the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a>. </li>
+<li><code>render_type</code> Manner of rendering the <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>A reference to the newly registered <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a>. If an <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> with the given name already exists, a reference to that existing <a href="../classendstone_1_1Objective/"><strong>Objective</strong></a> is returned instead. </p>
@@ -2044,9 +2081,9 @@
 
 <h3 id="function-clearslot">function clearSlot<a class="headerlink" href="#function-clearslot" title="Permanent link">&para;</a></h3>
 <p><em>Clears any objective in the specified slot.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">clearSlot</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">clearSlot</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2056,7 +2093,7 @@
 
 <h3 id="function-getentries">function getEntries<a class="headerlink" href="#function-getentries" title="Permanent link">&para;</a></h3>
 <p><em>Gets all entries tracked by this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getEntries</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A list of all tracked entries </p>
@@ -2064,9 +2101,9 @@
 
 <h3 id="function-getobjective-12">function getObjective [&frac12;]<a class="headerlink" href="#function-getobjective-12" title="Permanent link">&para;</a></h3>
 <p><em>Gets an</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>by name.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjective</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjective</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2078,9 +2115,9 @@
 
 <h3 id="function-getobjective-22">function getObjective [2/2]<a class="headerlink" href="#function-getobjective-22" title="Permanent link">&para;</a></h3>
 <p><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>currently displayed in a DisplaySlot on this</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjective</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjective</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2092,31 +2129,31 @@
 
 <h3 id="function-getobjectives">function getObjectives<a class="headerlink" href="#function-getobjectives" title="Permanent link">&para;</a></h3>
 <p><em>Gets all Objectives on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjectives</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjectives</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A list of all Objectives on this <a href="./"><strong>Scoreboard</strong></a> </p>
 <hr>
 
 <h3 id="function-getobjectivesbycriteria">function getObjectivesByCriteria<a class="headerlink" href="#function-getobjectivesbycriteria" title="Permanent link">&para;</a></h3>
-<p><em>Gets all Objectives of a Criteria on the</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjectivesByCriteria</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Criteria</span><span class="w"> </span><span class="n">criteria</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<p><em>Gets all Objectives of a</em> <a href="../classendstone_1_1Criteria/"><em><strong>Criteria</strong></em></a> <em>on the</em><a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Objective</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getObjectivesByCriteria</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Criteria</span><span class="o">::</span><span class="n">Type</span><span class="w"> </span><span class="n">criteria</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>criteria</code> Criteria to search by </li>
+<li><code>criteria</code> <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> type to search by </li>
 </ul>
 <p><strong>Returns:</strong></p>
-<p>A list of Objectives using the specified Criteria </p>
+<p>A list of Objectives using the specified <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> </p>
 <hr>
 
 <h3 id="function-getscores">function getScores<a class="headerlink" href="#function-getscores" title="Permanent link">&para;</a></h3>
 <p><em>Gets all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getScores</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">getScores</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2128,9 +2165,9 @@
 
 <h3 id="function-resetscores">function resetScores<a class="headerlink" href="#function-resetscores" title="Permanent link">&para;</a></h3>
 <p><em>Removes all scores for an entry on this</em> <a href="./"><em><strong>Scoreboard</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">resetScores</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::</span><span class="n">resetScores</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2139,7 +2176,7 @@
 <hr>
 
 <h3 id="function-scoreboard">function ~Scoreboard<a class="headerlink" href="#function-scoreboard" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::~</span><span class="n">Scoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Scoreboard</span><span class="o">::~</span><span class="n">Scoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

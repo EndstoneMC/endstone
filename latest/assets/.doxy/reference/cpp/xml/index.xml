@@ -162,6 +162,14 @@
   </compound>
   <compound refid="classendstone_1_1ConsoleCommandSender" kind="class"><name>endstone::ConsoleCommandSender</name>
   </compound>
+  <compound refid="classendstone_1_1Criteria" kind="class"><name>endstone::Criteria</name>
+    <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" kind="enum"><name>Type</name></member>
+    <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1abcf036b6f33e182d4705f4f5b1af13ac" kind="enumvalue"><name>Dummy</name></member>
+    <member refid="classendstone_1_1Criteria_1a05256b1f8fcebea2b0763ad97ef0aa13" kind="function"><name>~Criteria</name></member>
+    <member refid="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" kind="function"><name>isReadOnly</name></member>
+    <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" kind="function"><name>getDefaultRenderType</name></member>
+  </compound>
   <compound refid="classendstone_1_1Dimension" kind="class"><name>endstone::Dimension</name>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356b" kind="enum"><name>Type</name></member>
     <member refid="classendstone_1_1Dimension_1a5dbe2e9365112e8c0f883978fae1356ba50181b144eb2554dc2e45cd3d437e92f" kind="enumvalue"><name>Overworld</name></member>
@@ -274,11 +282,13 @@
     <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" kind="function"><name>getName</name></member>
     <member refid="classendstone_1_1Objective_1acb6e56a84b0ceb4b96069977a10a1335" kind="function"><name>getDisplayName</name></member>
     <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kind="function"><name>setDisplayName</name></member>
-    <member refid="classendstone_1_1Objective_1a1788ef888cdbc409659fe8821261e6fb" kind="function"><name>getCriteria</name></member>
+    <member refid="classendstone_1_1Objective_1a28ff1d7878483625f25e589932549e94" kind="function"><name>getCriteria</name></member>
     <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
     <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Objective_1a5ba8ad7b4349b1f947fe62e591364e3d" kind="function"><name>getDisplaySlot</name></member>
     <member refid="classendstone_1_1Objective_1a50fd3cc9094d724a19cd2b7cbe653124" kind="function"><name>setDisplaySlot</name></member>
+    <member refid="classendstone_1_1Objective_1aceaf61f35e4299fd342ef68b086e7371" kind="function"><name>getRenderType</name></member>
+    <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kind="function"><name>setRenderType</name></member>
     <member refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" kind="function"><name>getSortOrder</name></member>
     <member refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kind="function"><name>setSortOrder</name></member>
     <member refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" kind="function"><name>getScore</name></member>
@@ -612,12 +622,13 @@
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a16b4b1f8358eb3abae0449b4abe027af" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a71289eb1bc542dd6619acabafa5a81ee" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a9a2c034ebe47dd1b9dd09044e5d3d88c" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a52f7fbe53b358c533f08f16d08aca8b9" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1ad13a301b949a41a396a4469505c9eaf4" kind="function"><name>addObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a98ebece3a5334d51925b622a489b953e" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a9f491cf1b01c405c861b95e1167ae756" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a04f09d0524072058cfe2faea46e9f34e" kind="function"><name>getObjectives</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a9a3c74356f12b3f6d9c528adc05a57e0" kind="function"><name>getObjectivesByCriteria</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a9243e23ad59ce3ce6f797e9254041a42" kind="function"><name>getObjectivesByCriteria</name></member>
     <member refid="classendstone_1_1Scoreboard_1a9c8c74535fa8b7347977c4b29cd632fd" kind="function"><name>getScores</name></member>
     <member refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" kind="function"><name>resetScores</name></member>
     <member refid="classendstone_1_1Scoreboard_1a34423dec12f04dfc311a2d52ab2da93a" kind="function"><name>getEntries</name></member>
@@ -840,8 +851,6 @@
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6b" kind="enum"><name>PluginLoadOrder</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kind="enumvalue"><name>PostWorld</name></member>
-    <member refid="criteria_8h_1ae95ddef37d5cac653e9a9b3e10ac433a" kind="enum"><name>Criteria</name></member>
-    <member refid="criteria_8h_1ae95ddef37d5cac653e9a9b3e10ac433aabcf036b6f33e182d4705f4f5b1af13ac" kind="enumvalue"><name>Dummy</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" kind="enum"><name>DisplaySlot</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
@@ -849,6 +858,8 @@
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9f" kind="enum"><name>ObjectiveSortOrder</name></member>
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9facf3fb1ff52ea1eed3347ac5401ee7f0c" kind="enumvalue"><name>Ascending</name></member>
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" kind="enumvalue"><name>Descending</name></member>
+    <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
+    <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
@@ -994,6 +1005,8 @@
   <compound refid="objective_8h" kind="file"><name>objective.h</name>
   </compound>
   <compound refid="objective__sort__order_8h" kind="file"><name>objective_sort_order.h</name>
+  </compound>
+  <compound refid="render__type_8h" kind="file"><name>render_type.h</name>
   </compound>
   <compound refid="score_8h" kind="file"><name>score.h</name>
   </compound>

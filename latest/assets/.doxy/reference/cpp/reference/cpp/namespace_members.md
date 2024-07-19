@@ -3,11 +3,6 @@
 
 
 
-## c
-
-* **Criteria** ([**endstone**](namespaceendstone.md))
-
-
 ## d
 
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))
@@ -44,6 +39,11 @@
 * **PermissionDefault** ([**endstone**](namespaceendstone.md))
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))
+
+
+## r
+
+* **RenderType** ([**endstone**](namespaceendstone.md))
 
 
 ## s

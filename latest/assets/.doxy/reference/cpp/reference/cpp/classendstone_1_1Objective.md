@@ -52,16 +52,18 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 | Type | Name |
 | ---: | :--- |
-| virtual Criteria | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
+| virtual [**Criteria**](classendstone_1_1Criteria.md) & | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
 | virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
 | virtual DisplaySlot | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
+| virtual RenderType | [**getRenderType**](#function-getrendertype) () const = 0<br> |
 | virtual [**Score**](classendstone_1_1Score.md) & | [**getScore**](#function-getscore) (ScoreEntry entry) const = 0<br>_Gets an entry's_ [_**Score**_](classendstone_1_1Score.md) _for this objective._ |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual ObjectiveSortOrder | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual bool | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
 | virtual void | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
 | virtual void | [**setDisplaySlot**](#function-setdisplayslot) (DisplaySlot slot) = 0<br>_Sets this objective to display on the specified slot for the scoreboard, removing it from any other display slot._  |
+| virtual void | [**setRenderType**](#function-setrendertype) (RenderType render\_type) = 0<br>_Sets manner in which this objective will be rendered._  |
 | virtual void | [**setSortOrder**](#function-setsortorder) (ObjectiveSortOrder order) = 0<br>_Sets the sort order for this objective._  |
 | virtual  | [**~Objective**](#function-objective) () = default<br> |
 
@@ -101,7 +103,7 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 
 _Gets the criteria this objective tracks._ 
 ```C++
-virtual Criteria endstone::Objective::getCriteria () const = 0
+virtual Criteria & endstone::Objective::getCriteria () const = 0
 ```
 
 
@@ -186,6 +188,34 @@ virtual std::string endstone::Objective::getName () const = 0
 **Returns:**
 
 this objective's name 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getRenderType 
+
+
+```C++
+virtual RenderType endstone::Objective::getRenderType () const = 0
+```
+
+
+
+Gets manner in which this objective will be rendered.
+
+
+
+
+**Returns:**
+
+the render type 
 
 
 
@@ -350,6 +380,33 @@ virtual void endstone::Objective::setDisplaySlot (
 
 
 * `slot` display slot to change 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setRenderType 
+
+_Sets manner in which this objective will be rendered._ 
+```C++
+virtual void endstone::Objective::setRenderType (
+    RenderType render_type
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `render_type` new render type 
 
 
 

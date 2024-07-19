@@ -26,6 +26,9 @@
 
 #include <string>
 
+#include "endstone/scoreboard/criteria.h"
+#include "endstone/scoreboard/display_slot.h"
+#include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/score_entry.h"
 
 namespace endstone {
@@ -34,9 +37,12 @@ class Scoreboard {
 public:
     virtual ~Scoreboard() = default;
 
-    virtual Objective &addObjective(std::string name, Criteria criteria) = 0;
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria) = 0;
 
-    virtual Objective &addObjective(std::string name, Criteria criteria, std::string display_name) = 0;
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
+
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                    RenderType render_type) = 0;
 
     [[nodiscard]] virtual Objective *getObjective(std::string name) const = 0;
 
@@ -44,7 +50,7 @@ public:
 
     [[nodiscard]] virtual std::vector<Objective *> getObjectives() const = 0;
 
-    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria::Type criteria) const = 0;
 
     [[nodiscard]] virtual std::vector<Score *> getScores(ScoreEntry entry) const = 0;
 

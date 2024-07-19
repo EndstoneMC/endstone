@@ -52,14 +52,15 @@ _Represents a scoreboard._
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-12) (std::string name, Criteria criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-22) (std::string name, Criteria criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-13) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-23) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual [**Objective**](classendstone_1_1Objective.md) & | [**addObjective**](#function-addobjective-33) (std::string name, [**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria, std::string display\_name, RenderType render\_type) = 0<br>_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual void | [**clearSlot**](#function-clearslot) (DisplaySlot slot) = 0<br>_Clears any objective in the specified slot._  |
 | virtual std::vector&lt; ScoreEntry &gt; | [**getEntries**](#function-getentries) () const = 0<br>_Gets all entries tracked by this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-12) (std::string name) const = 0<br>_Gets an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _by name._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) \* | [**getObjective**](#function-getobjective-22) (DisplaySlot slot) const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _currently displayed in a DisplaySlot on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectives**](#function-getobjectives) () const = 0<br>_Gets all Objectives on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
-| virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) (Criteria criteria) const = 0<br>_Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
+| virtual std::vector&lt; [**Objective**](classendstone_1_1Objective.md) \* &gt; | [**getObjectivesByCriteria**](#function-getobjectivesbycriteria) ([**Criteria::Type**](classendstone_1_1Criteria.md#enum-type) criteria) const = 0<br>_Gets all Objectives of a_ [_**Criteria**_](classendstone_1_1Criteria.md) _on the_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual std::vector&lt; [**Score**](classendstone_1_1Score.md) \* &gt; | [**getScores**](#function-getscores) (ScoreEntry entry) const = 0<br>_Gets all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual void | [**resetScores**](#function-resetscores) (ScoreEntry entry) = 0<br>_Removes all scores for an entry on this_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Scoreboard**](#function-scoreboard) () = default<br> |
@@ -96,13 +97,13 @@ _Represents a scoreboard._
 
 
 
-### function addObjective [1/2]
+### function addObjective [1/3]
 
 _Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
 virtual Objective & endstone::Scoreboard::addObjective (
     std::string name,
-    Criteria criteria
+    Criteria::Type criteria
 ) = 0
 ```
 
@@ -114,7 +115,7 @@ virtual Objective & endstone::Scoreboard::addObjective (
 
 
 * `name` Name of the [**Objective**](classendstone_1_1Objective.md) 
-* `criteria` Criteria for the [**Objective**](classendstone_1_1Objective.md) 
+* `criteria` [**Criteria**](classendstone_1_1Criteria.md) for the [**Objective**](classendstone_1_1Objective.md) 
 
 
 
@@ -132,13 +133,13 @@ A reference to the newly registered [**Objective**](classendstone_1_1Objective.m
 
 
 
-### function addObjective [2/2]
+### function addObjective [2/3]
 
 _Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
 virtual Objective & endstone::Scoreboard::addObjective (
     std::string name,
-    Criteria criteria,
+    Criteria::Type criteria,
     std::string display_name
 ) = 0
 ```
@@ -151,8 +152,48 @@ virtual Objective & endstone::Scoreboard::addObjective (
 
 
 * `name` Name of the [**Objective**](classendstone_1_1Objective.md) 
-* `criteria` Criteria for the [**Objective**](classendstone_1_1Objective.md) 
+* `criteria` [**Criteria**](classendstone_1_1Criteria.md) type for the [**Objective**](classendstone_1_1Objective.md) 
 * `display_name` Name displayed to players for the [**Objective**](classendstone_1_1Objective.md). 
+
+
+
+**Returns:**
+
+A reference to the newly registered [**Objective**](classendstone_1_1Objective.md). If an [**Objective**](classendstone_1_1Objective.md) with the given name already exists, a reference to that existing [**Objective**](classendstone_1_1Objective.md) is returned instead. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function addObjective [3/3]
+
+_Registers an_ [_**Objective**_](classendstone_1_1Objective.md) _on this_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
+```C++
+virtual Objective & endstone::Scoreboard::addObjective (
+    std::string name,
+    Criteria::Type criteria,
+    std::string display_name,
+    RenderType render_type
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` Name of the [**Objective**](classendstone_1_1Objective.md) 
+* `criteria` [**Criteria**](classendstone_1_1Criteria.md) type for the [**Objective**](classendstone_1_1Objective.md) 
+* `display_name` Name displayed to players for the [**Objective**](classendstone_1_1Objective.md). 
+* `render_type` Manner of rendering the [**Objective**](classendstone_1_1Objective.md) 
 
 
 
@@ -317,10 +358,10 @@ A list of all Objectives on this [**Scoreboard**](classendstone_1_1Scoreboard.md
 
 ### function getObjectivesByCriteria 
 
-_Gets all Objectives of a Criteria on the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
+_Gets all Objectives of a_ [_**Criteria**_](classendstone_1_1Criteria.md) _on the_[_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
 virtual std::vector< Objective * > endstone::Scoreboard::getObjectivesByCriteria (
-    Criteria criteria
+    Criteria::Type criteria
 ) const = 0
 ```
 
@@ -331,13 +372,13 @@ virtual std::vector< Objective * > endstone::Scoreboard::getObjectivesByCriteria
 **Parameters:**
 
 
-* `criteria` Criteria to search by 
+* `criteria` [**Criteria**](classendstone_1_1Criteria.md) type to search by 
 
 
 
 **Returns:**
 
-A list of Objectives using the specified Criteria 
+A list of Objectives using the specified [**Criteria**](classendstone_1_1Criteria.md) 
 
 
 

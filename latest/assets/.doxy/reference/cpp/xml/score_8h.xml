@@ -32,9 +32,15 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>include/endstone/scoreboard/scoreboard.h</label>
+        <link refid="scoreboard_8h_source"/>
+      </node>
       <node id="2">
         <label>include/endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/scoreboard/score.h</label>

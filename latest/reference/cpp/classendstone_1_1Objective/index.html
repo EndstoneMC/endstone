@@ -1821,6 +1821,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-getrendertype" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getRenderType
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-getscore" class="md-nav__link">
       <span class="md-ellipsis">
         function getScore
@@ -1889,6 +1902,19 @@
     <a href="#function-setdisplayslot" class="md-nav__link">
       <span class="md-ellipsis">
         function setDisplaySlot
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-setrendertype" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setRenderType
       </span>
     </a>
 
@@ -1975,7 +2001,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual Criteria</td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Criteria/"><strong>Criteria</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getcriteria"><strong>getCriteria</strong></a> () const = 0<br><em>Gets the criteria this objective tracks.</em></td>
 </tr>
 <tr>
@@ -1989,6 +2015,10 @@
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this</em> <a href="./"><em><strong>Objective</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual RenderType</td>
+<td style="text-align: left;"><a href="#function-getrendertype"><strong>getRenderType</strong></a> () const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &amp;</td>
@@ -2016,6 +2046,10 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setrendertype"><strong>setRenderType</strong></a> (RenderType render_type) = 0<br><em>Sets manner in which this objective will be rendered.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setsortorder"><strong>setSortOrder</strong></a> (ObjectiveSortOrder order) = 0<br><em>Sets the sort order for this objective.</em></td>
 </tr>
 <tr>
@@ -2027,7 +2061,7 @@
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getcriteria">function getCriteria<a class="headerlink" href="#function-getcriteria" title="Permanent link">&para;</a></h3>
 <p><em>Gets the criteria this objective tracks.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Criteria</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getCriteria</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Criteria</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getCriteria</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>this objective's criteria </p>
@@ -2057,11 +2091,19 @@
 <p>this objective's name </p>
 <hr>
 
+<h3 id="function-getrendertype">function getRenderType<a class="headerlink" href="#function-getrendertype" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">RenderType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getRenderType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p>Gets manner in which this objective will be rendered.</p>
+<p><strong>Returns:</strong></p>
+<p>the render type </p>
+<hr>
+
 <h3 id="function-getscore">function getScore<a class="headerlink" href="#function-getscore" title="Permanent link">&para;</a></h3>
 <p><em>Gets an entry's</em> <a href="../classendstone_1_1Score/"><em><strong>Score</strong></em></a> <em>for this objective.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2073,7 +2115,7 @@
 
 <h3 id="function-getscoreboard">function getScoreboard<a class="headerlink" href="#function-getscoreboard" title="Permanent link">&para;</a></h3>
 <p><em>Gets the scoreboard to which this objective is attached.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Owning scoreboard </p>
@@ -2081,7 +2123,7 @@
 
 <h3 id="function-getsortorder">function getSortOrder<a class="headerlink" href="#function-getsortorder" title="Permanent link">&para;</a></h3>
 <p><em>Gets the sort order for this objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getSortOrder</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getSortOrder</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The sort order for this objective. </p>
@@ -2089,7 +2131,7 @@
 
 <h3 id="function-ismodifiable">function isModifiable<a class="headerlink" href="#function-ismodifiable" title="Permanent link">&para;</a></h3>
 <p><em>Gets if the objective's scores can be modified directly by a plugin.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">isModifiable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">isModifiable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>true if scores are modifiable </p>
@@ -2097,9 +2139,9 @@
 
 <h3 id="function-setdisplayname">function setDisplayName<a class="headerlink" href="#function-setdisplayname" title="Permanent link">&para;</a></h3>
 <p><em>Sets the name displayed to players for this objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2109,9 +2151,9 @@
 
 <h3 id="function-setdisplayslot">function setDisplaySlot<a class="headerlink" href="#function-setdisplayslot" title="Permanent link">&para;</a></h3>
 <p><em>Sets this objective to display on the specified slot for the scoreboard, removing it from any other display slot.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplaySlot</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplaySlot</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2119,11 +2161,23 @@
 </ul>
 <hr>
 
+<h3 id="function-setrendertype">function setRenderType<a class="headerlink" href="#function-setrendertype" title="Permanent link">&para;</a></h3>
+<p><em>Sets manner in which this objective will be rendered.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setRenderType</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">RenderType</span><span class="w"> </span><span class="n">render_type</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>render_type</code> new render type </li>
+</ul>
+<hr>
+
 <h3 id="function-setsortorder">function setSortOrder<a class="headerlink" href="#function-setsortorder" title="Permanent link">&para;</a></h3>
 <p><em>Sets the sort order for this objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setSortOrder</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">order</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setSortOrder</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">order</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2132,7 +2186,7 @@
 <hr>
 
 <h3 id="function-objective">function ~Objective<a class="headerlink" href="#function-objective" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::~</span><span class="n">Objective</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::~</span><span class="n">Objective</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

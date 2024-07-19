@@ -10,6 +10,7 @@
 
 
 
+* `#include "endstone/scoreboard/render_type.h"`
 
 
 
@@ -30,6 +31,11 @@
 | namespace | [**endstone**](namespaceendstone.md) <br> |
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 
 
 

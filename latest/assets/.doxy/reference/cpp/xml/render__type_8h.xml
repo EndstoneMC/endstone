@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
-  <compounddef id="objective__sort__order_8h" kind="file" language="C++">
-    <compoundname>objective_sort_order.h</compoundname>
-    <includedby refid="objective_8h" local="yes">include/endstone/scoreboard/objective.h</includedby>
+  <compounddef id="render__type_8h" kind="file" language="C++">
+    <compoundname>render_type.h</compoundname>
+    <includedby refid="criteria_8h" local="yes">include/endstone/scoreboard/criteria.h</includedby>
     <invincdepgraph>
+      <node id="1">
+        <label>include/endstone/scoreboard/render_type.h</label>
+        <link refid="render__type_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
       <node id="3">
         <label>include/endstone/scoreboard/scoreboard.h</label>
         <link refid="scoreboard_8h_source"/>
       </node>
       <node id="2">
-        <label>include/endstone/scoreboard/objective.h</label>
-        <link refid="objective_8h_source"/>
+        <label>include/endstone/scoreboard/criteria.h</label>
+        <link refid="criteria_8h_source"/>
         <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/endstone/scoreboard/objective_sort_order.h</label>
-        <link refid="objective__sort__order_8h"/>
-        <childnode refid="2" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -45,13 +45,12 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>ObjectiveSortOrder<sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Ascending,</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>Descending</highlight></codeline>
-<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/>RenderType<sp/>:<sp/>std::uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>Integer,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
-    <location file="include/endstone/scoreboard/objective_sort_order.h"/>
+    <location file="include/endstone/scoreboard/render_type.h"/>
   </compounddef>
 </doxygen>

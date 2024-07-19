@@ -38,6 +38,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md)
 ([**endstone**](namespaceendstone.md))
+* [**Criteria**](classendstone_1_1Criteria.md)
+([**endstone**](namespaceendstone.md))
 
 
 ## d

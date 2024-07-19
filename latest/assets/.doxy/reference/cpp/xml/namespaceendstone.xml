@@ -54,6 +54,7 @@
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>
+    <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
     <innerclass refid="classendstone_1_1Objective" prot="public">endstone::Objective</innerclass>
     <innerclass refid="classendstone_1_1Score" prot="public">endstone::Score</innerclass>
     <innerclass refid="classendstone_1_1Scoreboard" prot="public">endstone::Scoreboard</innerclass>
@@ -247,26 +248,6 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_load_order.h" line="22" column="1" bodyfile="include/endstone/plugin/plugin_load_order.h" bodystart="22" bodyend="32"/>
       </memberdef>
-      <memberdef kind="enum" id="criteria_8h_1ae95ddef37d5cac653e9a9b3e10ac433a" prot="public" static="no" strong="yes">
-        <type></type>
-        <name>Criteria</name>
-        <enumvalue id="criteria_8h_1ae95ddef37d5cac653e9a9b3e10ac433aabcf036b6f33e182d4705f4f5b1af13ac" prot="public">
-          <name>Dummy</name>
-          <briefdescription>
-<para>The dummy criteria. Not changed by the server. </para>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-<para>Represents a scoreboard criteria. </para>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/scoreboard/criteria.h" line="22" column="1" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="22" bodyend="27"/>
-      </memberdef>
       <memberdef kind="enum" id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" prot="public" static="no" strong="yes">
         <type></type>
         <name>DisplaySlot</name>
@@ -330,6 +311,26 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/scoreboard/objective_sort_order.h" line="22" column="1" bodyfile="include/endstone/scoreboard/objective_sort_order.h" bodystart="22" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="enum" id="render__type_8h_1ae444241ed516d06f778078ee798db9e9" prot="public" static="no" strong="yes">
+        <type>std::uint8_t</type>
+        <name>RenderType</name>
+        <enumvalue id="render__type_8h_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" prot="public">
+          <name>Integer</name>
+          <briefdescription>
+<para>Display integer value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Controls the way in which an <ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> is rendered on the client side. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/render_type.h" line="22" column="1" bodyfile="include/endstone/scoreboard/render_type.h" bodystart="22" bodyend="27"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">

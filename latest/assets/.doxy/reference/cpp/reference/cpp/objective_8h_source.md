@@ -43,7 +43,7 @@ public:
 
     virtual void setDisplayName(std::string display_name) = 0;
 
-    [[nodiscard]] virtual Criteria getCriteria() const = 0;
+    [[nodiscard]] virtual Criteria& getCriteria() const = 0;
 
     [[nodiscard]] virtual bool isModifiable() const = 0;
 
@@ -52,6 +52,10 @@ public:
     [[nodiscard]] virtual DisplaySlot getDisplaySlot() const = 0;
 
     virtual void setDisplaySlot(DisplaySlot slot) = 0;
+
+    [[nodiscard]] virtual RenderType getRenderType() const = 0;
+
+    virtual void setRenderType(RenderType render_type) = 0;
 
     [[nodiscard]] virtual ObjectiveSortOrder getSortOrder() const = 0;
 

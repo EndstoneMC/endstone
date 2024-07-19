@@ -42,6 +42,7 @@
 | class | [**CommandMap**](classendstone_1_1CommandMap.md) <br>_Represents a command map that manages all commands of the_ [_**Server**_](classendstone_1_1Server.md) _._ |
 | class | [**CommandSender**](classendstone_1_1CommandSender.md) <br>_Represents a command sender._  |
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
+| class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
@@ -96,7 +97,6 @@
 
 | Type | Name |
 | ---: | :--- |
-| enum  | [**Criteria**](#enum-criteria)  <br>_Represents a scoreboard criteria._  |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -104,6 +104,7 @@
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
+| enum std::uint8\_t | [**RenderType**](#enum-rendertype)  <br>_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._ |
 | typedef std::variant&lt; [**Player**](classendstone_1_1Player.md) \*, [**Actor**](classendstone_1_1Actor.md) \*, std::string &gt; | [**ScoreEntry**](#typedef-scoreentry)  <br> |
 | typedef std::uint32\_t | [**TaskId**](#typedef-taskid)  <br> |
 
@@ -168,21 +169,6 @@
 
 ## Public Types Documentation
 
-
-
-
-### enum Criteria 
-
-```C++
-enum endstone::Criteria {
-    Dummy
-};
-```
-
-
-
-
-<hr>
 
 
 
@@ -299,6 +285,21 @@ using endstone::PermissionRemovedExecutor = typedef std::function<void(const Per
 enum endstone::PluginLoadOrder {
     Startup,
     PostWorld
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum RenderType 
+
+```C++
+enum endstone::RenderType {
+    Integer
 };
 ```
 

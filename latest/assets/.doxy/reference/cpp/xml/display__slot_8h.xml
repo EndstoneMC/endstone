@@ -2,6 +2,19 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="display__slot_8h" kind="file" language="C++">
     <compoundname>display_slot.h</compoundname>
+    <includedby refid="scoreboard_8h" local="yes">include/endstone/scoreboard/scoreboard.h</includedby>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/scoreboard/scoreboard.h</label>
+        <link refid="scoreboard_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/scoreboard/display_slot.h</label>
+        <link refid="display__slot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
     <briefdescription>
     </briefdescription>

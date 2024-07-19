@@ -1,10 +1,10 @@
 
 
-# File criteria.h
+# File render\_type.h
 
-[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**scoreboard**](dir_19c52f9ea81a2cf7449c80dcee80d6f0.md) **>** [**criteria.h**](criteria_8h.md)
+[**File List**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**scoreboard**](dir_19c52f9ea81a2cf7449c80dcee80d6f0.md) **>** [**render\_type.h**](render__type_8h.md)
 
-[Go to the documentation of this file](criteria_8h.md)
+[Go to the documentation of this file](render__type_8h.md)
 
 
 ```C++
@@ -24,23 +24,10 @@
 
 #pragma once
 
-#include "endstone/scoreboard/render_type.h"
-
 namespace endstone {
 
-class Criteria {
-public:
-    enum class Type {
-        Dummy,
-    };
-
-    virtual ~Criteria() = 0;
-
-    [[nodiscard]] virtual std::string getName() const = 0;
-
-    [[nodiscard]] virtual bool isReadOnly() const = 0;
-
-    [[nodiscard]] virtual RenderType getDefaultRenderType() const = 0;
+enum class RenderType : std::uint8_t {
+    Integer,
 };
 
 }  // namespace endstone

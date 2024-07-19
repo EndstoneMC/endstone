@@ -36,6 +36,8 @@
       <node id="3">
         <label>include/endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/scoreboard/score_entry.h</label>
