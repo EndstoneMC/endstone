@@ -265,9 +265,9 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/objective.h" line="116" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &amp;</type>
-        <definition>virtual Score&amp; endstone::Objective::getScore</definition>
+      <memberdef kind="function" id="classendstone_1_1Objective_1afbf9facb6cee28fe20f675c0d7e35ee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt;Score&gt; endstone::Objective::getScore</definition>
         <argsstring>(ScoreEntry entry) const =0</argsstring>
         <name>getScore</name>
         <param>
@@ -293,7 +293,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="124" column="20"/>
+        <location file="include/endstone/scoreboard/objective.h" line="124" column="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -308,7 +308,7 @@
       <member refid="classendstone_1_1Objective_1a5ba8ad7b4349b1f947fe62e591364e3d" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplaySlot</name></member>
       <member refid="classendstone_1_1Objective_1a04d9acb8c652c173e744b34e79bdaf12" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getName</name></member>
       <member refid="classendstone_1_1Objective_1aceaf61f35e4299fd342ef68b086e7371" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getRenderType</name></member>
-      <member refid="classendstone_1_1Objective_1acaa3267f7f446a10080aea8df19183cb" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScore</name></member>
+      <member refid="classendstone_1_1Objective_1afbf9facb6cee28fe20f675c0d7e35ee2" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScore</name></member>
       <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScoreboard</name></member>
       <member refid="classendstone_1_1Objective_1a487e1ac8bc0a0222f5a85b721f87ea05" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getSortOrder</name></member>
       <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>isModifiable</name></member>

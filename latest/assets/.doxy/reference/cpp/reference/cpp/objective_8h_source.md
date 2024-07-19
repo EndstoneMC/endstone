@@ -43,7 +43,7 @@ public:
 
     virtual void setDisplayName(std::string display_name) = 0;
 
-    [[nodiscard]] virtual Criteria& getCriteria() const = 0;
+    [[nodiscard]] virtual Criteria &getCriteria() const = 0;
 
     [[nodiscard]] virtual bool isModifiable() const = 0;
 
@@ -61,7 +61,7 @@ public:
 
     virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 
-    [[nodiscard]] virtual Score &getScore(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Score> getScore(ScoreEntry entry) const = 0;
 };
 
 }  // namespace endstone
