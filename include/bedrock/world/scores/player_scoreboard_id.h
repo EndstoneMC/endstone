@@ -14,40 +14,23 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/world/actor/actor_unique_id.h"
 
-#include "bedrock/forward.h"
-
-class ScoreboardId {
-public:
-    ScoreboardId() = default;
-    explicit ScoreboardId(int64_t id) : raw_id(id) {}
-
-    static const ScoreboardId INVALID;
-
-    [[nodiscard]] bool isValid() const
+struct PlayerScoreboardId {
+    bool operator==(const PlayerScoreboardId &other) const
     {
-        return raw_id != ScoreboardId::INVALID.raw_id;
+        return actor_unique_id == other.actor_unique_id;
     }
-
-    bool operator==(const ScoreboardId &other) const
-    {
-        return raw_id == other.raw_id;
-    }
-
-    std::int64_t raw_id{-1};
-    IdentityDefinition *identity_def{nullptr};
+    ActorUniqueID actor_unique_id;
 };
-
-inline const ScoreboardId ScoreboardId::INVALID;
 
 namespace std {
 template <>
-struct hash<ScoreboardId> {  // NOLINT
-    std::size_t operator()(const ScoreboardId &value) const noexcept
+struct hash<PlayerScoreboardId> {  // NOLINT
+    std::size_t operator()(const PlayerScoreboardId &value) const noexcept
     {
-        static std::hash<std::int64_t> hasher;
-        return hasher(value.raw_id);
+        static std::hash<ActorUniqueID> hasher;
+        return hasher(value.actor_unique_id);
     }
 };
 }  // namespace std

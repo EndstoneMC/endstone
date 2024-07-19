@@ -30,6 +30,9 @@ public:
     [[nodiscard]] ObjectiveRenderType getRenderType() const;
     void setDisplayName(const std::string &display_name);
 
+    [[nodiscard]] bool hasScore(const ScoreboardId &id) const;
+    [[nodiscard]] int getPlayerScore(const ScoreboardId &id) const;
+
 private:
     std::unordered_map<ScoreboardId, int> scores_;  // +24
     std::string name_;                              // +88

@@ -43,3 +43,17 @@ void Objective::setDisplayName(const std::string &display_name)
 {
     display_name_ = display_name;
 }
+
+bool Objective::hasScore(const ScoreboardId &id) const
+{
+    return scores_.find(id) != scores_.end();
+}
+
+int Objective::getPlayerScore(const ScoreboardId &id) const
+{
+    auto it = scores_.find(id);
+    if (it != scores_.end()) {
+        return it->second;
+    }
+    return 0;
+}

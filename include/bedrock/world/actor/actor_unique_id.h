@@ -18,5 +18,21 @@
 
 class ActorUniqueID {
 public:
+    bool operator==(const ActorUniqueID &other) const
+    {
+        return raw_id == other.raw_id;
+    }
+
     std::int64_t raw_id{-1};
 };
+
+namespace std {
+template <>
+struct hash<ActorUniqueID> {  // NOLINT
+    std::size_t operator()(const ActorUniqueID &value) const noexcept
+    {
+        static std::hash<std::int64_t> hasher;
+        return hasher(value.raw_id);
+    }
+};
+}  // namespace std

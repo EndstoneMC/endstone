@@ -130,7 +130,6 @@ class PauseManager;
 class PermissionsFile;
 class PhotoStorage;
 class PlayerMovementSettings;
-class PlayerScoreboardId;
 class PortalForcer;
 class PositionTrackingDBClient;
 class PositionTrackingDBServer;

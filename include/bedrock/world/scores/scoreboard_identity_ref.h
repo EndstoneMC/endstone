@@ -2,7 +2,7 @@
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+// You may obtain a copy ofo the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
@@ -18,7 +18,17 @@
 
 class ScoreboardIdentityRef {
 public:
+    [[nodiscard]] int getNumReferences() const
+    {
+        return num_references_;
+    }
+
+    [[nodiscard]] const ScoreboardId &getScoreboardId() const
+    {
+        return scoreboard_id_;
+    }
+
 private:
-    int num_objective_references_;
+    int num_references_;
     ScoreboardId scoreboard_id_;
 };

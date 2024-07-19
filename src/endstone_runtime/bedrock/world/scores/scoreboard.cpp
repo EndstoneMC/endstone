@@ -14,6 +14,8 @@
 
 #include "bedrock/world/scores/scoreboard.h"
 
+#include "bedrock/world/actor/player/player.h"
+
 Objective *Scoreboard::getObjective(const std::string &name) const
 {
     auto it = objectives_.find(name);
@@ -30,4 +32,47 @@ const DisplayObjective *Scoreboard::getDisplayObjective(const std::string &name)
         return nullptr;
     }
     return &it->second;
+}
+
+const ScoreboardId &Scoreboard::getScoreboardId(const Player &player) const
+{
+    return identity_dictionary_.getScoreboardId(PlayerScoreboardId{player.getOrCreateUniqueID()});
+}
+
+const ScoreboardId &Scoreboard::getScoreboardId(const Actor &actor) const
+{
+    if (actor.hasCategory(ActorCategory::Player)) {
+        return getScoreboardId(static_cast<const Player &>(actor));
+    }
+    return identity_dictionary_.getScoreboardId(actor.getOrCreateUniqueID());
+}
+
+const ScoreboardId &Scoreboard::getScoreboardId(const std::string &fake) const
+{
+    auto &id = identity_dictionary_.getScoreboardId(fake);
+    if (id.isValid()) {
+        return id;
+    }
+    try {
+        ActorUniqueID actor_unique_id;
+        actor_unique_id.raw_id = std::stoll(fake);
+        return identity_dictionary_.getScoreboardId(actor_unique_id);
+    }
+    catch (std::exception &) {
+        return id;
+    }
+}
+
+bool Scoreboard::hasIdentityFor(const ScoreboardId &id) const
+{
+    return identity_refs_.find(id) != identity_refs_.end();
+}
+
+ScoreboardIdentityRef *Scoreboard::getScoreboardIdentityRef(const ScoreboardId &id)
+{
+    auto it = identity_refs_.find(id);
+    if (it != identity_refs_.end()) {
+        return &it->second;
+    }
+    return nullptr;
 }

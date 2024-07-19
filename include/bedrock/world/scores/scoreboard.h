@@ -23,8 +23,10 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/scores/display_objective.h"
+#include "bedrock/world/scores/identity_dictionary.h"
 #include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/objective_sort_order.h"
+#include "bedrock/world/scores/player_scoreboard_id.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 #include "bedrock/world/scores/scoreboard_identity_ref.h"
 
@@ -52,14 +54,16 @@ public:
 
     [[nodiscard]] Objective *getObjective(const std::string &name) const;
     [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
+    [[nodiscard]] const ScoreboardId &getScoreboardId(const Player &player) const;
+    [[nodiscard]] const ScoreboardId &getScoreboardId(const Actor &actor) const;
+    [[nodiscard]] const ScoreboardId &getScoreboardId(const std::string &fake) const;
+    [[nodiscard]] bool hasIdentityFor(const ScoreboardId &id) const;
+    [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
 
 private:
     CommandSoftEnumRegistry registry_;                                                          // +8
     std::unordered_map<std::string, DisplayObjective> display_objectives_;                      // +16
-    std::unordered_map<PlayerScoreboardId, ScoreboardId> players_;                              // +80  (+56)
-    std::unordered_map<ActorUniqueID, ScoreboardId> entities_;                                  // +144 (+96)
-    std::unordered_map<std::string, ScoreboardId> fakes_;                                       // +208 (+136)
-    std::unordered_map<ScoreboardId, IdentityDefinition> identity_defs_;                        // +272 (+176)
+    IdentityDictionary identity_dictionary_;                                                    // +80
     std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;                     // +336 (+216)
     bool should_update_ui_;                                                                     // +400 (+256)
     std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;                    // +408 (+264)
