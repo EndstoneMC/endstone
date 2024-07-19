@@ -23,6 +23,7 @@
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
+#include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/level/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
@@ -71,6 +72,7 @@ public:
 
     [[nodiscard]] bool isPrimaryThread() const override;
 
+    void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
     [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
 
 private:
@@ -85,6 +87,7 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unordered_map<std::string, std::unique_ptr<Level>> levels_;
     std::unordered_map<UUID, Player *> players_;
+    std::unique_ptr<EndstoneScoreboard> scoreboard_;
 };
 
 }  // namespace endstone::detail

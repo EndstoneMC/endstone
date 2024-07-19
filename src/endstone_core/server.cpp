@@ -269,6 +269,11 @@ bool EndstoneServer::isPrimaryThread() const
     return Bedrock::Threading::getServerThread().isOnThread();
 }
 
+void EndstoneServer::setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard)
+{
+    scoreboard_ = std::move(scoreboard);
+}
+
 ::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
 {
     return *server_instance_.getMinecraft().getServerNetworkHandler();

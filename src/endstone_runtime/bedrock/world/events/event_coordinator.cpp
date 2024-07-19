@@ -28,6 +28,7 @@
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
+#include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/signal_handler.h"
 #include "endstone/event/server/server_load_event.h"
@@ -39,6 +40,7 @@ using endstone::ColorFormat;
 using endstone::PluginLoadOrder;
 using endstone::ServerLoadEvent;
 using endstone::detail::EndstoneLevel;
+using endstone::detail::EndstoneScoreboard;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 
@@ -161,5 +163,6 @@ void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &
 {
     auto &server = entt::locator<EndstoneServer>::value();
     server.addLevel(std::make_unique<EndstoneLevel>(level));
+    server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }
