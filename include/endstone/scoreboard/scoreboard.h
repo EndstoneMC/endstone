@@ -16,6 +16,9 @@
 
 #include <string>
 
+#include "endstone/scoreboard/criteria.h"
+#include "endstone/scoreboard/display_slot.h"
+#include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/score_entry.h"
 
 namespace endstone {
@@ -35,18 +38,18 @@ public:
      * @return A reference to the newly registered Objective. If an Objective with the given name already exists,
      * a reference to that existing Objective is returned instead.
      */
-    virtual Objective &addObjective(std::string name, Criteria criteria) = 0;
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
      *
      * @param name Name of the Objective
-     * @param criteria Criteria for the Objective
+     * @param criteria Criteria type for the Objective
      * @param display_name Name displayed to players for the Objective.
      * @return A reference to the newly registered Objective. If an Objective with the given name already exists,
      * a reference to that existing Objective is returned instead.
      */
-    virtual Objective &addObjective(std::string name, Criteria criteria, std::string display_name) = 0;
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
 
     /**
      * @brief Gets an Objective on this Scoreboard by name
@@ -74,10 +77,10 @@ public:
     /**
      * @brief Gets all Objectives of a Criteria on the Scoreboard
      *
-     * @param criteria Criteria to search by
+     * @param criteria Criteria type to search by
      * @return A list of Objectives using the specified Criteria
      */
-    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria criteria) const = 0;
+    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria::Type criteria) const = 0;
 
     /**
      * @brief Gets all scores for an entry on this Scoreboard

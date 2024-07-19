@@ -30,7 +30,8 @@ namespace endstone::detail {
 
 void init_scoreboard(py::module_ &m)
 {
-    py::enum_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.").value("DUMMY", Criteria::Dummy);
+    py::enum_<RenderType>(m, "RenderType", "Controls the way in which an Objective is rendered on the client side.")
+        .value("INTEGER", RenderType::Integer);
 
     py::enum_<DisplaySlot>(m, "DisplaySlot", "Locations for displaying objectives to the player")
         .value("BELOW_NAME", DisplaySlot::BelowName, "Displays the score below the player's name.")
@@ -44,6 +45,16 @@ void init_scoreboard(py::module_ &m)
     auto scoreboard = py::class_<Scoreboard>(m, "Scoreboard", "Represents a scoreboard");
     auto objective = py::class_<Objective>(
         m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
+
+    auto criteria = py::class_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.");
+
+    py::enum_<Criteria::Type>(criteria, "Type", "Represents a scoreboard criteria.")
+        .value("DUMMY", Criteria::Type::Dummy, "The dummy criteria. Not changed by the server.")
+        .export_values();
+
+    criteria.def_property_readonly("name", &Criteria::getName)
+        .def_property_readonly("is_read_only", &Criteria::isReadOnly)
+        .def_property_readonly("default_render_type", &Criteria::getDefaultRenderType);
 
     py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
         .def_property_readonly("entry", &Score::getEntry, "Gets the entry being tracked by this Score",
@@ -75,7 +86,7 @@ void init_scoreboard(py::module_ &m)
     scoreboard
         .def(
             "add_objective",
-            [](Scoreboard &self, const std::string &name, Criteria criteria,
+            [](Scoreboard &self, const std::string &name, Criteria::Type criteria,
                const std::optional<std::string> &display_name) {
                 self.addObjective(name, criteria, display_name.value_or(name));
             },

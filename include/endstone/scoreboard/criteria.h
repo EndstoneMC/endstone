@@ -14,16 +14,45 @@
 
 #pragma once
 
+#include "endstone/scoreboard/render_type.h"
+
 namespace endstone {
 
 /**
  * @brief Represents a scoreboard criteria.
  */
-enum class Criteria {
+class Criteria {
+public:
+    enum class Type {
+        /**
+         * @brief The dummy criteria. Not changed by the server.
+         */
+        Dummy,
+    };
+
+    virtual ~Criteria() = 0;
+
     /**
-     * @brief The dummy criteria. Not changed by the server.
+     * @brief Get the name of this criteria (its unique id).
+     *
+     * @return the name
      */
-    Dummy,
+    [[nodiscard]] virtual std::string getName() const = 0;
+
+    /**
+     * @brief Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have
+     * their scores changed.
+     *
+     * @return true if read only, false otherwise
+     */
+    [[nodiscard]] virtual bool isReadOnly() const = 0;
+
+    /**
+     * Get the RenderType used by default for this criteria.
+     *
+     * @return the default render type
+     */
+    [[nodiscard]] virtual RenderType getDefaultRenderType() const = 0;
 };
 
 }  // namespace endstone

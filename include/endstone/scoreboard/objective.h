@@ -56,7 +56,7 @@ public:
      *
      * @return this objective's criteria
      */
-    [[nodiscard]] virtual Criteria getCriteria() const = 0;
+    [[nodiscard]] virtual Criteria& getCriteria() const = 0;
 
     /**
      * @brief Gets if the objective's scores can be modified directly by a plugin.
