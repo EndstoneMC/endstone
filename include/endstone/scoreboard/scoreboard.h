@@ -52,6 +52,19 @@ public:
     virtual Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
 
     /**
+     * @brief Registers an Objective on this Scoreboard
+     *
+     * @param name Name of the Objective
+     * @param criteria Criteria type for the Objective
+     * @param display_name Name displayed to players for the Objective.
+     * @param render_type Manner of rendering the Objective
+     * @return A reference to the newly registered Objective. If an Objective with the given name already exists,
+     * a reference to that existing Objective is returned instead.
+     */
+    virtual Objective &addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                    RenderType render_type) = 0;
+
+    /**
      * @brief Gets an Objective on this Scoreboard by name
      *
      * @param name Name of the Objective

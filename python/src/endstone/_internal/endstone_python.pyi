@@ -695,6 +695,14 @@ class Objective:
         Gets the name of this Objective
         """
     @property
+    def render_type(self) -> RenderType:
+        """
+        Gets and sets the manner in which this objective will be rendered.
+        """
+    @render_type.setter
+    def render_type(self, arg1: RenderType) -> None:
+        ...
+    @property
     def scoreboard(self) -> Scoreboard:
         """
         Gets the scoreboard to which this objective is attached
@@ -1636,7 +1644,7 @@ class Scoreboard:
     """
     Represents a scoreboard
     """
-    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None) -> None:
+    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None, render_type: RenderType = RenderType.INTEGER) -> None:
         """
         Registers an Objective on this Scoreboard with a name displayed to players
         """

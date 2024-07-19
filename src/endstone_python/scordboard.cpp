@@ -78,6 +78,8 @@ void init_scoreboard(py::module_ &m)
                                py::return_value_policy::reference)
         .def_property("display_slot", &Objective::getDisplaySlot, &Objective::setDisplaySlot,
                       "Gets and sets the display slot this objective is displayed at")
+        .def_property("render_type", &Objective::getRenderType, &Objective::setRenderType,
+                      "Gets and sets the manner in which this objective will be rendered.")
         .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
                       "Gets and sets the sort order for this objective")
         .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"),
@@ -87,11 +89,11 @@ void init_scoreboard(py::module_ &m)
         .def(
             "add_objective",
             [](Scoreboard &self, const std::string &name, Criteria::Type criteria,
-               const std::optional<std::string> &display_name) {
-                self.addObjective(name, criteria, display_name.value_or(name));
-            },
+               const std::optional<std::string> &display_name,
+               RenderType render_type) { self.addObjective(name, criteria, display_name.value_or(name), render_type); },
             "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
-            py::arg("criteria"), py::arg("display_name") = py::none(), py::return_value_policy::reference)
+            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg("render_type") = RenderType::Integer,
+            py::return_value_policy::reference)
         .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
              "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert(),
              py::return_value_policy::reference)

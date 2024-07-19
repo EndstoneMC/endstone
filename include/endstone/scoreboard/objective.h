@@ -88,6 +88,20 @@ public:
     virtual void setDisplaySlot(DisplaySlot slot) = 0;
 
     /**
+     * Gets manner in which this objective will be rendered.
+     *
+     * @return the render type
+     */
+    [[nodiscard]] virtual RenderType getRenderType() const = 0;
+
+    /**
+     * @brief Sets manner in which this objective will be rendered.
+     *
+     * @param render_type new render type
+     */
+    virtual void setRenderType(RenderType render_type) = 0;
+
+    /**
      * @brief Gets the sort order for this objective.
      *
      * @return The sort order for this objective.
