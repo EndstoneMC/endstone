@@ -38,7 +38,7 @@ public:
      * @return A reference to the newly registered Objective,
      * or <code>nullptr</code> if an objective by that name already exists.
      */
-    virtual Objective *addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -49,7 +49,8 @@ public:
      * @return A reference to the newly registered Objective,
      * or <code>nullptr</code> if an objective by that name already exists.
      */
-    virtual Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name) = 0;
+    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
+                                                    std::string display_name) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -61,8 +62,8 @@ public:
      * @return A reference to the newly registered Objective,
      * or <code>nullptr</code> if an objective by that name already exists.
      */
-    virtual Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                    RenderType render_type) = 0;
+    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                                    RenderType render_type) = 0;
 
     /**
      * @brief Gets an Objective on this Scoreboard by name
@@ -70,7 +71,7 @@ public:
      * @param name Name of the Objective
      * @return the Objective or <code>nullptr</code> if it does not exist
      */
-    [[nodiscard]] virtual Objective *getObjective(std::string name) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Objective> getObjective(std::string name) const = 0;
 
     /**
      * @brief Gets the Objective currently displayed in a DisplaySlot on this Scoreboard
@@ -78,14 +79,14 @@ public:
      * @param slot The DisplaySlot
      * @return the Objective currently displayed or <code>nullptr</code> if nothing is displayed in that DisplaySlot
      */
-    [[nodiscard]] virtual Objective *getObjective(DisplaySlot slot) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
 
     /**
      * @brief Gets all Objectives on this Scoreboard
      *
      * @return A list of all Objectives on this Scoreboard
      */
-    [[nodiscard]] virtual std::vector<Objective *> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Objective>> getObjectives() const = 0;
 
     /**
      * @brief Gets all Objectives of a Criteria on the Scoreboard
@@ -93,7 +94,8 @@ public:
      * @param criteria Criteria type to search by
      * @return A list of Objectives using the specified Criteria
      */
-    [[nodiscard]] virtual std::vector<Objective *> getObjectivesByCriteria(Criteria::Type criteria) const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Objective>> getObjectivesByCriteria(
+        Criteria::Type criteria) const = 0;
 
     /**
      * @brief Gets all scores for an entry on this Scoreboard
@@ -101,7 +103,7 @@ public:
      * @param entry the entry whose scores are being retrieved
      * @return a list of all scores tracked for the entry
      */
-    [[nodiscard]] virtual std::vector<Score *> getScores(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Score>> getScores(ScoreEntry entry) const = 0;
 
     /**
      * @brief Removes all scores for an entry on this Scoreboard

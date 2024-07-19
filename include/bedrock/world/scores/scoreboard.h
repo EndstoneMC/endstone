@@ -49,6 +49,8 @@ public:
     virtual void writeToLevelStorage() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
+    [[nodiscard]] Objective *getObjective(const std::string &name) const;
+
 private:
     CommandSoftEnumRegistry registry_;                                                          // +8
     std::unordered_map<std::string, DisplayObjective> display_objectives_;                      // +16

@@ -15,6 +15,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+// must be included after pybind11
 #include "endstone/actor/actor.h"
 #include "endstone/player.h"
 #include "endstone/scoreboard/criteria.h"
@@ -22,6 +23,7 @@
 #include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/objective_sort_order.h"
 #include "endstone/scoreboard/score.h"
+#include "endstone/scoreboard/score_entry.h"
 #include "endstone/scoreboard/scoreboard.h"
 
 namespace py = pybind11;
@@ -43,7 +45,7 @@ void init_scoreboard(py::module_ &m)
         .value("DESCENDING", ObjectiveSortOrder::Descending, "Sorts the objectives in the descending order");
 
     auto scoreboard = py::class_<Scoreboard>(m, "Scoreboard", "Represents a scoreboard");
-    auto objective = py::class_<Objective>(
+    auto objective = py::class_<Objective, std::shared_ptr<Objective>>(
         m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
 
     auto criteria = py::class_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.");
@@ -56,7 +58,7 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("is_read_only", &Criteria::isReadOnly)
         .def_property_readonly("default_render_type", &Criteria::getDefaultRenderType);
 
-    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
+    py::class_<Score, std::shared_ptr<Score>>(m, "Score", "Represents a score for an objective on a scoreboard.")
         .def_property_readonly("entry", &Score::getEntry, "Gets the entry being tracked by this Score",
                                py::return_value_policy::reference_internal)
         .def_property("score", &Score::getScore, &Score::setScore, "Gets or sets the current score.")

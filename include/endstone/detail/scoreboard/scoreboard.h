@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/world/scores/scoreboard.h"
 #include "endstone/scoreboard/scoreboard.h"
 
@@ -22,15 +24,17 @@ namespace endstone::detail {
 class EndstoneScoreboard : public Scoreboard {
 public:
     explicit EndstoneScoreboard(::Scoreboard &board);
-    Objective *addObjective(std::string name, Criteria::Type criteria) override;
-    Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name) override;
-    Objective *addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                            RenderType render_type) override;
-    [[nodiscard]] Objective *getObjective(std::string name) const override;
-    [[nodiscard]] Objective *getObjective(DisplaySlot slot) const override;
-    [[nodiscard]] std::vector<Objective *> getObjectives() const override;
-    [[nodiscard]] std::vector<Objective *> getObjectivesByCriteria(Criteria::Type criteria) const override;
-    [[nodiscard]] std::vector<Score *> getScores(ScoreEntry entry) const override;
+    std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) override;
+    std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
+                                            std::string display_name) override;
+    std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                            RenderType render_type) override;
+    [[nodiscard]] std::shared_ptr<Objective> getObjective(std::string name) const override;
+    [[nodiscard]] std::shared_ptr<Objective> getObjective(DisplaySlot slot) const override;
+    [[nodiscard]] std::vector<std::shared_ptr<Objective>> getObjectives() const override;
+    [[nodiscard]] std::vector<std::shared_ptr<Objective>> getObjectivesByCriteria(
+        Criteria::Type criteria) const override;
+    [[nodiscard]] std::vector<std::shared_ptr<Score>> getScores(ScoreEntry entry) const override;
     void resetScores(ScoreEntry entry) override;
     [[nodiscard]] std::vector<ScoreEntry> getEntries() const override;
     void clearSlot(DisplaySlot slot) override;
