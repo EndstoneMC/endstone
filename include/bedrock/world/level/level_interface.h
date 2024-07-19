@@ -46,6 +46,7 @@
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/storage/level_storage.h"
+#include "bedrock/world/scores/scoreboard.h"
 
 class ILevel : public Bedrock::EnableNonOwnerReferences {
 public:
