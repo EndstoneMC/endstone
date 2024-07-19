@@ -40,9 +40,9 @@ private:
     std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +48
     std::vector<ListenerType *> unk3_;                                           // +72
     bool unk4_;                                                                  // +96
-    std::thread::id unk5_;                                                       // +100 (+104)
-    bool unk6_;                                                                  // +104 (+112)
-    std::int32_t unk7_;                                                          // +112 (+116)
+    std::thread::id thread_id_;                                                  // +100 (+104)
+    bool thread_id_initialized_;                                                 // +104 (+112)
+    std::int32_t thread_check_index_;                                            // +112 (+116)
 };
 
 class ActorEventCoordinator {
@@ -87,3 +87,6 @@ public:
 class ServerNetworkEventCoordinator;
 class ScriptingEventCoordinator;
 class ScriptDeferredEventCoordinator;
+
+class ScoreboardEventListener;
+class ScoreboardEventCoordinator : public EventCoordinatorPimpl<ScoreboardEventListener> {};

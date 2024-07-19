@@ -15,12 +15,17 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
 
 #include "bedrock/forward.h"
 #include "bedrock/network/packet_sender.h"
+#include "bedrock/server/commands/command_soft_enum_registry.h"
+#include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/objective_sort_order.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+#include "bedrock/world/scores/scoreboard_identity_ref.h"
 
 class Actor;
 class Player;
@@ -45,4 +50,17 @@ public:
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
 private:
+    CommandSoftEnumRegistry registry_;                                                          // +8
+    std::unordered_map<std::string, DisplayObjective> display_objectives_;                      // +16
+    std::unordered_map<PlayerScoreboardId, ScoreboardId> players_;                              // +80  (+56)
+    std::unordered_map<ActorUniqueID, ScoreboardId> entities_;                                  // +144 (+96)
+    std::unordered_map<std::string, ScoreboardId> fakes_;                                       // +208 (+136)
+    std::unordered_map<ScoreboardId, IdentityDefinition> identity_defs_;                        // +272 (+176)
+    std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;                     // +336 (+216)
+    bool should_update_ui_;                                                                     // +400 (+256)
+    std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;                    // +408 (+264)
+    std::unordered_map<std::uint64_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;  // +472 (+304)
+    std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;              // +536 (+344)
+    ScoreboardEventCoordinator scoreboard_event_coordinator_;                                   // +600 (+384)
+    // PlayerScoreboardEventListener player_listener_;                                          // +712 (+504)
 };
