@@ -25,10 +25,10 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Criteria_1a05256b1f8fcebea2b0763ad97ef0aa13" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a126b4b11c3322654f2e334c892a843ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
         <definition>virtual endstone::Criteria::~Criteria</definition>
-        <argsstring>()=0</argsstring>
+        <argsstring>()=default</argsstring>
         <name>~Criteria</name>
         <briefdescription>
         </briefdescription>
@@ -101,7 +101,7 @@
       <member refid="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>getName</name></member>
       <member refid="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>isReadOnly</name></member>
       <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" prot="public" virt="non-virtual"><scope>endstone::Criteria</scope><name>Type</name></member>
-      <member refid="classendstone_1_1Criteria_1a05256b1f8fcebea2b0763ad97ef0aa13" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>~Criteria</name></member>
+      <member refid="classendstone_1_1Criteria_1a126b4b11c3322654f2e334c892a843ff" prot="public" virt="virtual"><scope>endstone::Criteria</scope><name>~Criteria</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -37,9 +37,9 @@ class Objective {
 public:
     virtual ~Objective() = default;
 
-    [[nodiscard]] virtual std::string getName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getName() const = 0;
 
-    [[nodiscard]] virtual std::string getDisplayName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const = 0;
 
     virtual void setDisplayName(std::string display_name) = 0;
 
@@ -49,15 +49,15 @@ public:
 
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
-    [[nodiscard]] virtual DisplaySlot getDisplaySlot() const = 0;
+    [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
     virtual void setDisplaySlot(DisplaySlot slot) = 0;
 
-    [[nodiscard]] virtual RenderType getRenderType() const = 0;
+    [[nodiscard]] virtual std::optional<RenderType> getRenderType() const = 0;
 
     virtual void setRenderType(RenderType render_type) = 0;
 
-    [[nodiscard]] virtual ObjectiveSortOrder getSortOrder() const = 0;
+    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
 
     virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 

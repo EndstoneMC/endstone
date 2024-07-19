@@ -28,7 +28,7 @@ namespace endstone {
 
 enum class ObjectiveSortOrder {
     Ascending,
-    Descending
+    Descending,
 };
 
 }  // namespace endstone

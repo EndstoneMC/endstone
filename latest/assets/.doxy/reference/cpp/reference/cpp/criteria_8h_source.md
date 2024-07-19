@@ -34,7 +34,7 @@ public:
         Dummy,
     };
 
-    virtual ~Criteria() = 0;
+    virtual ~Criteria() = default;
 
     [[nodiscard]] virtual std::string getName() const = 0;
 

@@ -29,7 +29,7 @@ namespace endstone {
 enum class DisplaySlot {
     BelowName,
     PlayerList,
-    SideBar
+    SideBar,
 };
 
 }  // namespace endstone

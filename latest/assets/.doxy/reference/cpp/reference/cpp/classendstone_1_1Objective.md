@@ -53,13 +53,13 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | Type | Name |
 | ---: | :--- |
 | virtual const [**Criteria**](classendstone_1_1Criteria.md) \* | [**getCriteria**](#function-getcriteria) () const = 0<br>_Gets the criteria this objective tracks._  |
-| virtual std::string | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
-| virtual DisplaySlot | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
-| virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
-| virtual RenderType | [**getRenderType**](#function-getrendertype) () const = 0<br> |
+| virtual std::optional&lt; std::string &gt; | [**getDisplayName**](#function-getdisplayname) () const = 0<br>_Gets the name displayed to players for this objective._  |
+| virtual std::optional&lt; DisplaySlot &gt; | [**getDisplaySlot**](#function-getdisplayslot) () const = 0<br>_Gets the display slot this objective is displayed at._  |
+| virtual std::optional&lt; std::string &gt; | [**getName**](#function-getname) () const = 0<br>_Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._ |
+| virtual std::optional&lt; RenderType &gt; | [**getRenderType**](#function-getrendertype) () const = 0<br> |
 | virtual std::shared\_ptr&lt; [**Score**](classendstone_1_1Score.md) &gt; | [**getScore**](#function-getscore) (ScoreEntry entry) const = 0<br>_Gets an entry's_ [_**Score**_](classendstone_1_1Score.md) _for this objective._ |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
-| virtual ObjectiveSortOrder | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
+| virtual std::optional&lt; ObjectiveSortOrder &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual bool | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
 | virtual void | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
 | virtual void | [**setDisplaySlot**](#function-setdisplayslot) (DisplaySlot slot) = 0<br>_Sets this objective to display on the specified slot for the scoreboard, removing it from any other display slot._  |
@@ -128,7 +128,7 @@ this objective's criteria, or `nullptr` if this objective has been unregistered.
 
 _Gets the name displayed to players for this objective._ 
 ```C++
-virtual std::string endstone::Objective::getDisplayName () const = 0
+virtual std::optional< std::string > endstone::Objective::getDisplayName () const = 0
 ```
 
 
@@ -153,7 +153,7 @@ this objective's display name
 
 _Gets the display slot this objective is displayed at._ 
 ```C++
-virtual DisplaySlot endstone::Objective::getDisplaySlot () const = 0
+virtual std::optional< DisplaySlot > endstone::Objective::getDisplaySlot () const = 0
 ```
 
 
@@ -178,7 +178,7 @@ the display slot for this objective
 
 _Gets the name of this_ [_**Objective**_](classendstone_1_1Objective.md) _._
 ```C++
-virtual std::string endstone::Objective::getName () const = 0
+virtual std::optional< std::string > endstone::Objective::getName () const = 0
 ```
 
 
@@ -203,7 +203,7 @@ this objective's name
 
 
 ```C++
-virtual RenderType endstone::Objective::getRenderType () const = 0
+virtual std::optional< RenderType > endstone::Objective::getRenderType () const = 0
 ```
 
 
@@ -290,7 +290,7 @@ Owning scoreboard
 
 _Gets the sort order for this objective._ 
 ```C++
-virtual ObjectiveSortOrder endstone::Objective::getSortOrder () const = 0
+virtual std::optional< ObjectiveSortOrder > endstone::Objective::getSortOrder () const = 0
 ```
 
 
