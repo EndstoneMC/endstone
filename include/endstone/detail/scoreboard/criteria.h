@@ -14,16 +14,20 @@
 
 #pragma once
 
-namespace endstone {
+#include "bedrock/world/scores/objective_criteria.h"
+#include "endstone/scoreboard/criteria.h"
 
-/**
- * @brief Controls the way in which an Objective is rendered on the client side.
- */
-enum class RenderType : std::uint8_t {
-    /**
-     * @brief Display integer value.
-     */
-    Integer,
+namespace endstone::detail {
+
+class EndstoneCriteria : public Criteria {
+public:
+    explicit EndstoneCriteria(ObjectiveCriteria &criteria);
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] bool isReadOnly() const override;
+    [[nodiscard]] RenderType getDefaultRenderType() const override;
+
+private:
+    ObjectiveCriteria &criteria_;
 };
 
-}  // namespace endstone
+}  // namespace endstone::detail

@@ -12,18 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/scoreboard/criteria.h"
 
-namespace endstone {
+namespace endstone::detail {
 
-/**
- * @brief Controls the way in which an Objective is rendered on the client side.
- */
-enum class RenderType : std::uint8_t {
-    /**
-     * @brief Display integer value.
-     */
-    Integer,
-};
+EndstoneCriteria::EndstoneCriteria(ObjectiveCriteria &criteria) : criteria_(criteria) {}
 
-}  // namespace endstone
+std::string EndstoneCriteria::getName() const
+{
+    return criteria_.getName();
+}
+
+bool EndstoneCriteria::isReadOnly() const
+{
+    return criteria_.isReadOnly();
+}
+
+RenderType EndstoneCriteria::getDefaultRenderType() const
+{
+    return static_cast<RenderType>(criteria_.getRenderType());
+}
+
+}  // namespace endstone::detail
