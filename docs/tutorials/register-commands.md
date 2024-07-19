@@ -52,7 +52,8 @@ message to whoever execute this command.
 
 === ":fontawesome-brands-python: Python"
 
-    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="16-20"
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="1 17-21"
+    from endstone.command import Command, CommandSender
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
