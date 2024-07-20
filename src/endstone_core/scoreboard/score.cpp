@@ -25,8 +25,8 @@
 
 namespace endstone::detail {
 
-EndstoneScore::EndstoneScore(EndstoneObjective &objective, ScoreEntry entry)
-    : objective_(objective), entry_(std::move(entry))
+EndstoneScore::EndstoneScore(std::unique_ptr<EndstoneObjective> objective, ScoreEntry entry)
+    : objective_(std::move(objective)), entry_(std::move(entry))
 {
 }
 
@@ -37,10 +37,10 @@ ScoreEntry EndstoneScore::getEntry() const
 
 int EndstoneScore::getScore() const
 {
-    if (objective_.checkState()) {
+    if (objective_->checkState()) {
         auto id = getScoreboardId();
-        if (id.isValid() && objective_.objective_.hasScore(id)) {
-            return objective_.objective_.getPlayerScore(id);
+        if (id.isValid() && objective_->objective_.hasScore(id)) {
+            return objective_->objective_.getPlayerScore(id);
         }
     }
     return 0;
@@ -48,19 +48,19 @@ int EndstoneScore::getScore() const
 
 void EndstoneScore::setScore(int score)
 {
-    if (objective_.checkState()) {
+    if (objective_->checkState()) {
         auto id = getScoreboardId();
         if (!id.isValid()) {
             return;
         }
 
         auto &server = entt::locator<EndstoneServer>::value();
-        if (!objective_.isModifiable()) {
+        if (!objective_->isModifiable()) {
             server.getLogger().error("Cannot modify read-only score");
             return;
         }
 
-        if (!objective_.objective_.setPlayerScore(id, score)) {
+        if (!objective_->objective_.setPlayerScore(id, score)) {
             server.getLogger().error("Cannot modify score");
             return;
         }
@@ -69,27 +69,27 @@ void EndstoneScore::setScore(int score)
 
 bool EndstoneScore::isScoreSet() const
 {
-    if (objective_.checkState()) {
+    if (objective_->checkState()) {
         auto id = getScoreboardId();
-        return id.isValid() && objective_.objective_.hasScore(id);
+        return id.isValid() && objective_->objective_.hasScore(id);
     }
     return false;
 }
 
 Objective &EndstoneScore::getObjective() const
 {
-    return objective_;
+    return *objective_;
 }
 
 Scoreboard &EndstoneScore::getScoreboard() const
 {
-    return objective_.getScoreboard();
+    return objective_->getScoreboard();
 }
 
 ScoreboardId EndstoneScore::getScoreboardId() const
 {
-    if (objective_.checkState()) {
-        auto &board = objective_.scoreboard_.board_;
+    if (objective_->checkState()) {
+        auto &board = objective_->scoreboard_.board_;
         return std::visit(
             entt::overloaded{[&](Player *player) {
                                  return board.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());

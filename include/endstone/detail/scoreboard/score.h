@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/world/scores/scoreboard_id.h"
 #include "endstone/scoreboard/score.h"
 #include "endstone/scoreboard/score_entry.h"
@@ -24,7 +26,7 @@ class EndstoneObjective;
 
 class EndstoneScore : public Score {
 public:
-    EndstoneScore(EndstoneObjective &objective, ScoreEntry entry);
+    EndstoneScore(std::unique_ptr<EndstoneObjective> objective, ScoreEntry entry);
     [[nodiscard]] ScoreEntry getEntry() const override;
     [[nodiscard]] int getScore() const override;
     void setScore(int score) override;
@@ -35,7 +37,7 @@ public:
 private:
     [[nodiscard]] ScoreboardId getScoreboardId() const;
 
-    EndstoneObjective &objective_;
+    std::unique_ptr<EndstoneObjective> objective_;
     ScoreEntry entry_;
 };
 

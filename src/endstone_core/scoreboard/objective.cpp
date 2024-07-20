@@ -150,7 +150,7 @@ void EndstoneObjective::setRenderType(RenderType render_type)
 std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
 {
     if (checkState()) {
-        return std::make_unique<EndstoneScore>(const_cast<EndstoneObjective &>(*this), entry);
+        return std::make_unique<EndstoneScore>(copy(), entry);
     }
     return nullptr;
 }
@@ -197,6 +197,11 @@ std::string EndstoneObjective::getDisplaySlotName(DisplaySlot slot)
     default:
         throw std::runtime_error("Unknown DisplaySlot!");
     }
+}
+
+std::unique_ptr<EndstoneObjective> EndstoneObjective::copy() const
+{
+    return std::make_unique<EndstoneObjective>(scoreboard_, objective_);
 }
 
 }  // namespace endstone::detail

@@ -47,6 +47,7 @@ public:
     [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
 
     [[nodiscard]] bool checkState() const;
+    [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;
 
 private:
     friend class EndstoneScore;
