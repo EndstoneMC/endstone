@@ -78,12 +78,19 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("scoreboard", &Objective::getScoreboard,
                                "Gets the scoreboard to which this objective is attached",
                                py::return_value_policy::reference)
-        .def_property("display_slot", &Objective::getDisplaySlot, &Objective::setDisplaySlot,
-                      "Gets and sets the display slot this objective is displayed at")
+        .def_property_readonly("display_slot", &Objective::getDisplaySlot,
+                               "Gets the display slot this objective is displayed at")
+        .def_property_readonly("sort_order", &Objective::getSortOrder,
+                               "Gets and sets the sort order for this objective")
+        .def(
+            "set_display",
+            [](Objective &self, DisplaySlot slot, std::optional<ObjectiveSortOrder> order) {
+                self.setDisplay(slot, order.value_or(ObjectiveSortOrder::Ascending));
+            },
+            "Sets the display slot and sort order for this objective. This will remove it from any other display slot.",
+            py::arg("slot"), py::arg("order") = std::nullopt)
         .def_property("render_type", &Objective::getRenderType, &Objective::setRenderType,
                       "Gets and sets the manner in which this objective will be rendered.")
-        .def_property("sort_order", &Objective::getSortOrder, &Objective::setSortOrder,
-                      "Gets and sets the sort order for this objective")
         .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"),
              py::return_value_policy::reference);
 

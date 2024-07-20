@@ -663,6 +663,10 @@ class Objective:
         """
         Gets an entry's Score for this objective
         """
+    def set_display(self, slot: DisplaySlot, order: ObjectiveSortOrder | None = None) -> None:
+        """
+        Sets the display slot and sort order for this objective. This will remove it from any other display slot.
+        """
     @property
     def criteria(self) -> Criteria:
         """
@@ -679,11 +683,8 @@ class Objective:
     @property
     def display_slot(self) -> DisplaySlot | None:
         """
-        Gets and sets the display slot this objective is displayed at
+        Gets the display slot this objective is displayed at
         """
-    @display_slot.setter
-    def display_slot(self, arg1: DisplaySlot) -> None:
-        ...
     @property
     def is_modifiable(self) -> bool:
         """
@@ -712,9 +713,6 @@ class Objective:
         """
         Gets and sets the sort order for this objective
         """
-    @sort_order.setter
-    def sort_order(self, arg1: ObjectiveSortOrder) -> None:
-        ...
 class ObjectiveSortOrder:
     """
     Represents the sort order of objectives on a DisplaySlot.

@@ -77,23 +77,60 @@ Scoreboard &EndstoneObjective::getScoreboard() const
 
 std::optional<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
+    std::optional<DisplaySlot> result;
     if (!checkState()) {
-        return std::nullopt;
+        return result;
     }
 
-    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
-        if (const auto *display = scoreboard_.board_.getDisplayObjective(toBedrock(slot)); display) {
-            if (display->getObjective() == &objective_) {
-                return slot;
-            }
+    foreachDisplayObjective([&](auto slot, const auto &display) -> bool {
+        if (display.getObjective() == &objective_) {
+            result = slot;
+            return false;
         }
-    }
-    return std::nullopt;
+        return true;
+    });
+    return result;
 }
 
-void EndstoneObjective::setDisplaySlot(DisplaySlot slot)
+std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
 {
-    throw std::runtime_error("Not implemented.");
+    std::optional<ObjectiveSortOrder> result;
+    if (!checkState()) {
+        return result;
+    }
+
+    foreachDisplayObjective([&](auto /*slot*/, const auto &display) -> bool {
+        if (display.getObjective() == &objective_) {
+            result = static_cast<ObjectiveSortOrder>(display.getSortOrder());
+            return false;
+        }
+        return true;
+    });
+    return result;
+}
+
+void EndstoneObjective::setDisplay(DisplaySlot slot)
+{
+    setDisplay(slot, ObjectiveSortOrder::Ascending);
+}
+
+void EndstoneObjective::setDisplay(DisplaySlot slot, ObjectiveSortOrder order)
+{
+    if (!checkState()) {
+        return;
+    }
+
+    foreachDisplayObjective([this](auto i, const auto &display) -> bool {
+        if (display.getObjective() == &objective_) {
+            scoreboard_.board_.clearDisplayObjective(getDisplaySlotName(i));
+        }
+        return true;
+    });
+
+    if (slot != DisplaySlot::None) {
+        scoreboard_.board_.setDisplayObjective(getDisplaySlotName(slot), objective_,
+                                               static_cast<::ObjectiveSortOrder>(order));
+    }
 }
 
 std::optional<RenderType> EndstoneObjective::getRenderType() const
@@ -106,28 +143,8 @@ std::optional<RenderType> EndstoneObjective::getRenderType() const
 
 void EndstoneObjective::setRenderType(RenderType render_type)
 {
-    throw std::runtime_error("Not implemented.");
-}
-
-std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
-{
-    if (!checkState()) {
-        return std::nullopt;
-    }
-
-    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
-        if (const auto *display = scoreboard_.board_.getDisplayObjective(toBedrock(slot)); display) {
-            if (display->getObjective() == &objective_) {
-                return static_cast<ObjectiveSortOrder>(display->getSortOrder());
-            }
-        }
-    }
-    return std::nullopt;
-}
-
-void EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
-{
-    throw std::runtime_error("Not implemented.");
+    auto &server = entt::locator<EndstoneServer>::value();
+    server.getLogger().error("Objective::setRenderType is not supported.");
 }
 
 std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
@@ -148,7 +165,23 @@ bool EndstoneObjective::checkState() const
     return true;
 }
 
-std::string EndstoneObjective::toBedrock(DisplaySlot slot)
+void EndstoneObjective::foreachDisplayObjective(
+    const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const
+{
+    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
+        if (slot == DisplaySlot::None) {
+            continue;
+        }
+
+        if (const auto *display = scoreboard_.board_.getDisplayObjective(getDisplaySlotName(slot)); display) {
+            if (!callback(slot, *display)) {
+                return;
+            }
+        }
+    }
+}
+
+std::string EndstoneObjective::getDisplaySlotName(DisplaySlot slot)
 {
     switch (slot) {
     case DisplaySlot::BelowName:
@@ -157,8 +190,9 @@ std::string EndstoneObjective::toBedrock(DisplaySlot slot)
         return "list";
     case DisplaySlot::SideBar:
         return "sidebar";
+    default:
+        throw std::runtime_error("Unknown DisplaySlot!");
     }
-    throw std::runtime_error("You should never be here");
 }
 
 }  // namespace endstone::detail

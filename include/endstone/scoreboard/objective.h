@@ -80,12 +80,28 @@ public:
     [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
     /**
-     * @brief Sets this objective to display on the specified slot for the scoreboard, removing it from any other
-     * display slot.
+     * @brief Gets the sort order for this objective.
      *
-     * @param slot display slot to change
+     * @return The sort order for this objective.
      */
-    virtual void setDisplaySlot(DisplaySlot slot) = 0;
+    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
+
+    /**
+     * @brief Sets the display slot for this objective.
+     * This will remove it from any other display slot.
+     *
+     * @param slot The display slot where this objective should be displayed.
+     */
+    virtual void setDisplay(DisplaySlot slot) = 0;
+
+    /**
+     * @brief Sets the display slot and sort order for this objective.
+     * This will remove it from any other display slot.
+     *
+     * @param slot The display slot where this objective should be displayed.
+     * @param order The sort order for this objective in the display slot.
+     */
+    virtual void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) = 0;
 
     /**
      * Gets manner in which this objective will be rendered.
@@ -100,20 +116,6 @@ public:
      * @param render_type new render type
      */
     virtual void setRenderType(RenderType render_type) = 0;
-
-    /**
-     * @brief Gets the sort order for this objective.
-     *
-     * @return The sort order for this objective.
-     */
-    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
-
-    /**
-     * @brief Sets the sort order for this objective.
-     *
-     * @param order The sort order to set.
-     */
-    virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 
     /**
      * @brief Gets an entry's Score for this objective.

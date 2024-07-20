@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <memory>
 #include <optional>
 
@@ -38,11 +39,11 @@ public:
     [[nodiscard]] bool isModifiable() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
     [[nodiscard]] std::optional<DisplaySlot> getDisplaySlot() const override;
-    void setDisplaySlot(DisplaySlot slot) override;
+    [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
+    void setDisplay(DisplaySlot slot) override;
+    void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) override;
     [[nodiscard]] std::optional<RenderType> getRenderType() const override;
     void setRenderType(RenderType render_type) override;
-    [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
-    void setSortOrder(ObjectiveSortOrder order) override;
     [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
 
     [[nodiscard]] bool checkState() const;
@@ -50,7 +51,8 @@ public:
 private:
     friend class EndstoneScore;
 
-    static std::string toBedrock(DisplaySlot slot);
+    void foreachDisplayObjective(const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const;
+    static std::string getDisplaySlotName(DisplaySlot slot);
 
     std::string name_;
     EndstoneScoreboard &scoreboard_;
