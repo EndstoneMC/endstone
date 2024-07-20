@@ -43,10 +43,12 @@ public:
     void setRenderType(RenderType render_type) override;
     [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
     void setSortOrder(ObjectiveSortOrder order) override;
-    [[nodiscard]] std::shared_ptr<Score> getScore(ScoreEntry entry) const override;
+    [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
+
+    [[nodiscard]] bool checkState() const;
 
 private:
-    [[nodiscard]] bool checkState() const;
+    friend class EndstoneScore;
 
     static std::string toBedrock(DisplaySlot slot);
 

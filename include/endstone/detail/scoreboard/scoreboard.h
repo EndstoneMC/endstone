@@ -41,6 +41,7 @@ public:
 
 private:
     friend class EndstoneObjective;
+    friend class EndstoneScore;
 
     ::Scoreboard &board_;
 };

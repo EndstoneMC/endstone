@@ -58,7 +58,7 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("is_read_only", &Criteria::isReadOnly)
         .def_property_readonly("default_render_type", &Criteria::getDefaultRenderType);
 
-    py::class_<Score, std::shared_ptr<Score>>(m, "Score", "Represents a score for an objective on a scoreboard.")
+    py::class_<Score>(m, "Score", "Represents a score for an objective on a scoreboard.")
         .def_property_readonly("entry", &Score::getEntry, "Gets the entry being tracked by this Score",
                                py::return_value_policy::reference_internal)
         .def_property("score", &Score::getScore, &Score::setScore, "Gets or sets the current score.")

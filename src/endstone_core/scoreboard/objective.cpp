@@ -19,6 +19,7 @@
 
 #include <magic_enum/magic_enum.hpp>
 
+#include "endstone/detail/scoreboard/score.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
 
@@ -129,9 +130,12 @@ void EndstoneObjective::setSortOrder(ObjectiveSortOrder order)
     throw std::runtime_error("Not implemented.");
 }
 
-std::shared_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
+std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
 {
-    throw std::runtime_error("Not implemented.");
+    if (checkState()) {
+        return std::make_unique<EndstoneScore>(const_cast<EndstoneObjective &>(*this), entry);
+    }
+    return nullptr;
 }
 
 bool EndstoneObjective::checkState() const

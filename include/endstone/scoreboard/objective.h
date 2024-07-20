@@ -121,7 +121,7 @@ public:
      * @param entry Entry for the Score
      * @return Score tracking the Objective and entry specified
      */
-    [[nodiscard]] virtual std::shared_ptr<Score> getScore(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
 };
 
 }  // namespace endstone

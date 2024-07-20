@@ -15,13 +15,14 @@
 #pragma once
 
 #include <cstdint>
+#include <unordered_map>
 
 #include "bedrock/forward.h"
 
 class ScoreboardId {
 public:
     ScoreboardId() = default;
-    explicit ScoreboardId(int64_t id) : raw_id(id) {}
+    explicit ScoreboardId(std::int64_t id) : raw_id(id) {}
 
     static const ScoreboardId INVALID;
 

@@ -61,6 +61,9 @@ public:
     [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
 
+    // Internal use only
+    ::Actor &getActor() const;
+
 protected:
     EndstoneServer &server_;
 

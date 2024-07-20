@@ -18,10 +18,10 @@
 #include <variant>
 #include <vector>
 
+namespace endstone {
+
 class Player;
 class Actor;
-
-namespace endstone {
 
 /**
  * An entry for a score.

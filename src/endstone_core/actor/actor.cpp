@@ -172,4 +172,9 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
     return *perm;
 }
 
+::Actor &EndstoneActor::getActor() const
+{
+    return actor_;
+}
+
 }  // namespace endstone::detail
