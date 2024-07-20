@@ -48,7 +48,23 @@ int EndstoneScore::getScore() const
 
 void EndstoneScore::setScore(int score)
 {
-    throw std::runtime_error("Not implemented.");
+    if (objective_.checkState()) {
+        auto id = getScoreboardId();
+        if (!id.isValid()) {
+            return;
+        }
+
+        auto &server = entt::locator<EndstoneServer>::value();
+        if (!objective_.isModifiable()) {
+            server.getLogger().error("Cannot modify read-only score");
+            return;
+        }
+
+        if (!objective_.objective_.setPlayerScore(id, score)) {
+            server.getLogger().error("Cannot modify score");
+            return;
+        }
+    }
 }
 
 bool EndstoneScore::isScoreSet() const
@@ -86,6 +102,8 @@ ScoreboardId EndstoneScore::getScoreboardId() const
                              }},
             entry_);
     }
+    auto &server = entt::locator<EndstoneServer>::value();
+    server.getLogger().error("Entry is not currently tracked in the scoreboard.");
     return ScoreboardId::INVALID;
 }
 

@@ -14,6 +14,8 @@
 
 #include "bedrock/world/scores/objective.h"
 
+#include <stdexcept>
+
 const std::unordered_map<ScoreboardId, int> &Objective::getScores() const
 {
     return scores_;
@@ -56,4 +58,35 @@ int Objective::getPlayerScore(const ScoreboardId &id) const
         return it->second;
     }
     return 0;
+}
+
+bool Objective::setPlayerScore(const ScoreboardId &id, int value)
+{
+    int result;
+    return _modifyPlayerScore(result, id, value, PlayerScoreSetFunction::Set);
+}
+
+bool Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action)
+{
+    if (criteria_->isReadOnly()) {
+        result = 0;
+        return false;
+    }
+
+    auto &score = scores_[id];
+    switch (action) {
+    case PlayerScoreSetFunction::Set:
+        score = value;
+        break;
+    case PlayerScoreSetFunction::Add:
+        score += value;
+        break;
+    case PlayerScoreSetFunction::Subtract:
+        score -= value;
+        break;
+    default:
+        throw std::runtime_error("Unknown PlayerScoreSetFunction!");
+    }
+    result = score;
+    return true;
 }
