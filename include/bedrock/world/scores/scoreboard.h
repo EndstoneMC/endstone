@@ -52,6 +52,7 @@ public:
     virtual void writeToLevelStorage() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
+    bool removeObjective(Objective *);
     [[nodiscard]] Objective *getObjective(const std::string &name) const;
     [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
     [[nodiscard]] const ScoreboardId &getScoreboardId(const Player &player) const;

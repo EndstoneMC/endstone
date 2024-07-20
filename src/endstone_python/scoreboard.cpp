@@ -78,13 +78,14 @@ void init_scoreboard(py::module_ &m)
         .def_property_readonly("scoreboard", &Objective::getScoreboard,
                                "Gets the scoreboard to which this objective is attached",
                                py::return_value_policy::reference)
+        .def("unregister", &Objective::unregister, "Unregisters this objective from the associated Scoreboard.")
         .def_property_readonly("display_slot", &Objective::getDisplaySlot,
                                "Gets the display slot this objective is displayed at")
         .def_property_readonly("sort_order", &Objective::getSortOrder,
                                "Gets and sets the sort order for this objective")
         .def(
             "set_display",
-            [](Objective &self, DisplaySlot slot, std::optional<ObjectiveSortOrder> order) {
+            [](Objective &self, std::optional<DisplaySlot> slot, std::optional<ObjectiveSortOrder> order) {
                 self.setDisplay(slot, order.value_or(ObjectiveSortOrder::Ascending));
             },
             "Sets the display slot and sort order for this objective. This will remove it from any other display slot.",

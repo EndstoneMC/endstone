@@ -663,9 +663,13 @@ class Objective:
         """
         Gets an entry's Score for this objective
         """
-    def set_display(self, slot: DisplaySlot, order: ObjectiveSortOrder | None = None) -> None:
+    def set_display(self, slot: DisplaySlot | None, order: ObjectiveSortOrder | None = None) -> None:
         """
         Sets the display slot and sort order for this objective. This will remove it from any other display slot.
+        """
+    def unregister(self) -> None:
+        """
+        Unregisters this objective from the associated Scoreboard.
         """
     @property
     def criteria(self) -> Criteria:

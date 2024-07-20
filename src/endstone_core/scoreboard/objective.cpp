@@ -75,6 +75,13 @@ Scoreboard &EndstoneObjective::getScoreboard() const
     return scoreboard_;
 }
 
+void EndstoneObjective::unregister() const
+{
+    if (checkState()) {
+        scoreboard_.board_.removeObjective(&objective_);
+    }
+}
+
 std::optional<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
     std::optional<DisplaySlot> result;
@@ -109,12 +116,12 @@ std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
     return result;
 }
 
-void EndstoneObjective::setDisplay(DisplaySlot slot)
+void EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot)
 {
     setDisplay(slot, ObjectiveSortOrder::Ascending);
 }
 
-void EndstoneObjective::setDisplay(DisplaySlot slot, ObjectiveSortOrder order)
+void EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order)
 {
     if (!checkState()) {
         return;
@@ -127,8 +134,8 @@ void EndstoneObjective::setDisplay(DisplaySlot slot, ObjectiveSortOrder order)
         return true;
     });
 
-    if (slot != DisplaySlot::None) {
-        scoreboard_.board_.setDisplayObjective(getDisplaySlotName(slot), objective_,
+    if (slot.has_value()) {
+        scoreboard_.board_.setDisplayObjective(getDisplaySlotName(slot.value()), objective_,
                                                static_cast<::ObjectiveSortOrder>(order));
     }
 }
@@ -173,10 +180,6 @@ void EndstoneObjective::forEachDisplayObjective(
     }
 
     for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
-        if (slot == DisplaySlot::None) {
-            continue;
-        }
-
         if (const auto *display = scoreboard_.board_.getDisplayObjective(getDisplaySlotName(slot)); display) {
             if (!callback(slot, *display)) {
                 return;

@@ -38,10 +38,11 @@ public:
     [[nodiscard]] const Criteria *getCriteria() const override;
     [[nodiscard]] bool isModifiable() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
+    void unregister() const override;
     [[nodiscard]] std::optional<DisplaySlot> getDisplaySlot() const override;
     [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
-    void setDisplay(DisplaySlot slot) override;
-    void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) override;
+    void setDisplay(std::optional<DisplaySlot> slot) override;
+    void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
     [[nodiscard]] std::optional<RenderType> getRenderType() const override;
     void setRenderType(RenderType render_type) override;
     [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;

@@ -73,6 +73,11 @@ public:
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
     /**
+     * @brief Unregisters this objective from the associated Scoreboard.
+     */
+    virtual void unregister() const = 0;
+
+    /**
      * @brief Gets the display slot this objective is displayed at.
      *
      * @return the display slot for this objective
@@ -92,7 +97,7 @@ public:
      *
      * @param slot The display slot where this objective should be displayed.
      */
-    virtual void setDisplay(DisplaySlot slot) = 0;
+    virtual void setDisplay(std::optional<DisplaySlot> slot) = 0;
 
     /**
      * @brief Sets the display slot and sort order for this objective.
@@ -101,7 +106,7 @@ public:
      * @param slot The display slot where this objective should be displayed.
      * @param order The sort order for this objective in the display slot.
      */
-    virtual void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) = 0;
+    virtual void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) = 0;
 
     /**
      * Gets manner in which this objective will be rendered.

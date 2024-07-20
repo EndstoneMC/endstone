@@ -16,6 +16,32 @@
 
 #include "bedrock/world/actor/player/player.h"
 
+bool Scoreboard::removeObjective(Objective *objective)
+{
+    if (!objective) {
+        return false;
+    }
+
+    const auto &name = objective->getName();
+    {
+        auto it = objectives_.find(name);
+        if (it == objectives_.end()) {
+            return false;
+        }
+        onObjectiveRemoved(*objective);
+        objectives_.erase(it);
+    }
+
+    for (auto it = display_objectives_.begin(); it != display_objectives_.end();) {
+        if (it->second.getObjective() == objective) {
+            it = display_objectives_.erase(it);
+            continue;
+        }
+        ++it;
+    }
+    return true;
+}
+
 Objective *Scoreboard::getObjective(const std::string &name) const
 {
     auto it = objectives_.find(name);

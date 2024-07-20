@@ -21,10 +21,6 @@ namespace endstone {
  */
 enum class DisplaySlot {
     /**
-     * @brief Indicates that the score will not be displayed.
-     */
-    None,
-    /**
      * @brief Displays the score below the player's name.
      */
     BelowName,
