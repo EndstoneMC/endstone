@@ -24,47 +24,47 @@ namespace endstone::detail {
 
 EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
 
-std::shared_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);
 }
 
-std::shared_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
                                                             std::string display_name)
 {
     return addObjective(name, criteria, name, RenderType::Integer);
 }
 
-std::shared_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
                                                             std::string display_name, RenderType render_type)
 {
     throw std::runtime_error("Not implemented.");
 }
 
-std::shared_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) const
+std::unique_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) const
 {
     if (auto *objective = board_.getObjective(name); objective) {
-        return std::make_shared<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), *objective);
+        return std::make_unique<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), *objective);
     }
     return nullptr;
 }
 
-std::shared_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
+std::unique_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
 {
     throw std::runtime_error("Not implemented.");
 }
 
-std::vector<std::shared_ptr<Objective>> EndstoneScoreboard::getObjectives() const
+std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectives() const
 {
     throw std::runtime_error("Not implemented.");
 }
 
-std::vector<std::shared_ptr<Objective>> EndstoneScoreboard::getObjectivesByCriteria(Criteria::Type criteria) const
+std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectivesByCriteria(Criteria::Type criteria) const
 {
     throw std::runtime_error("Not implemented.");
 }
 
-std::vector<std::shared_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry entry) const
+std::vector<std::unique_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry entry) const
 {
     throw std::runtime_error("Not implemented.");
 }

@@ -45,7 +45,7 @@ void init_scoreboard(py::module_ &m)
         .value("DESCENDING", ObjectiveSortOrder::Descending, "Sorts the objectives in the descending order");
 
     auto scoreboard = py::class_<Scoreboard>(m, "Scoreboard", "Represents a scoreboard");
-    auto objective = py::class_<Objective, std::shared_ptr<Objective>>(
+    auto objective = py::class_<Objective>(
         m, "Objective", "Represents an objective on a scoreboard that can show scores specific to entries.");
 
     auto criteria = py::class_<Criteria>(m, "Criteria", "Represents a scoreboard criteria.");
