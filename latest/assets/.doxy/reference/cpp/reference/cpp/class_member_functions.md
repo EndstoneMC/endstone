@@ -392,7 +392,7 @@
 ## u
 
 * **unregisterFrom** ([**endstone::Command**](classendstone_1_1Command.md))
-* **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **unregister** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md), [**endstone::Objective**](classendstone_1_1Objective.md))
 * **unsetPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **updateCommands** ([**endstone::Player**](classendstone_1_1Player.md))
 * **unsubscribeFromDefaultPerms** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))

@@ -49,13 +49,15 @@ public:
 
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
+    virtual void unregister() const = 0;
+
     [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
     [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
 
-    virtual void setDisplay(DisplaySlot slot) = 0;
+    virtual void setDisplay(std::optional<DisplaySlot> slot) = 0;
 
-    virtual void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) = 0;
+    virtual void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) = 0;
 
     [[nodiscard]] virtual std::optional<RenderType> getRenderType() const = 0;
 

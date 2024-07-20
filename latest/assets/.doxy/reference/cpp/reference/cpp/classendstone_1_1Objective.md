@@ -61,10 +61,11 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual std::optional&lt; ObjectiveSortOrder &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual bool | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
-| virtual void | [**setDisplay**](#function-setdisplay-12) (DisplaySlot slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
-| virtual void | [**setDisplay**](#function-setdisplay-22) (DisplaySlot slot, ObjectiveSortOrder order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
+| virtual void | [**setDisplay**](#function-setdisplay-12) (std::optional&lt; DisplaySlot &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
+| virtual void | [**setDisplay**](#function-setdisplay-22) (std::optional&lt; DisplaySlot &gt; slot, ObjectiveSortOrder order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
 | virtual void | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
 | virtual void | [**setRenderType**](#function-setrendertype) (RenderType render\_type) = 0<br>_Sets manner in which this objective will be rendered._  |
+| virtual void | [**unregister**](#function-unregister) () const = 0<br>_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._ |
 | virtual  | [**~Objective**](#function-objective) () = default<br> |
 
 
@@ -341,7 +342,7 @@ true if scores are modifiable
 _Sets the display slot for this objective. This will remove it from any other display slot._ 
 ```C++
 virtual void endstone::Objective::setDisplay (
-    DisplaySlot slot
+    std::optional< DisplaySlot > slot
 ) = 0
 ```
 
@@ -368,7 +369,7 @@ virtual void endstone::Objective::setDisplay (
 _Sets the display slot and sort order for this objective. This will remove it from any other display slot._ 
 ```C++
 virtual void endstone::Objective::setDisplay (
-    DisplaySlot slot,
+    std::optional< DisplaySlot > slot,
     ObjectiveSortOrder order
 ) = 0
 ```
@@ -441,6 +442,19 @@ virtual void endstone::Objective::setRenderType (
 
 
         
+
+<hr>
+
+
+
+### function unregister 
+
+```C++
+virtual void endstone::Objective::unregister () const = 0
+```
+
+
+
 
 <hr>
 

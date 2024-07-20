@@ -130,6 +130,20 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/objective.h" line="73" column="25"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Objective_1aa121126c45b531b856e831ad2aa77722" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Objective::unregister</definition>
+        <argsstring>() const =0</argsstring>
+        <name>unregister</name>
+        <briefdescription>
+<para>Unregisters this objective from the associated <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/objective.h" line="78" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a3c685f112273da1b269825fa16f1c4d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; DisplaySlot &gt;</type>
         <definition>virtual std::optional&lt;DisplaySlot&gt; endstone::Objective::getDisplaySlot</definition>
@@ -145,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="80" column="28"/>
+        <location file="include/endstone/scoreboard/objective.h" line="85" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; ObjectiveSortOrder &gt;</type>
@@ -162,15 +176,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="87" column="28"/>
+        <location file="include/endstone/scoreboard/objective.h" line="92" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Objective_1a9d36cb4e3c5c0cf89b4cf94c11381b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Objective_1a2d69ba72027b6c837d46f668fbd36d8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Objective::setDisplay</definition>
-        <argsstring>(DisplaySlot slot)=0</argsstring>
+        <argsstring>(std::optional&lt; DisplaySlot &gt; slot)=0</argsstring>
         <name>setDisplay</name>
         <param>
-          <type>DisplaySlot</type>
+          <type>std::optional&lt; DisplaySlot &gt;</type>
           <declname>slot</declname>
         </param>
         <briefdescription>
@@ -190,15 +204,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="95" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="100" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Objective_1a294c941dafbb04ad76699c2652fe088e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Objective_1a62669bd4b8e423aa0d8842b6e338f335" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Objective::setDisplay</definition>
-        <argsstring>(DisplaySlot slot, ObjectiveSortOrder order)=0</argsstring>
+        <argsstring>(std::optional&lt; DisplaySlot &gt; slot, ObjectiveSortOrder order)=0</argsstring>
         <name>setDisplay</name>
         <param>
-          <type>DisplaySlot</type>
+          <type>std::optional&lt; DisplaySlot &gt;</type>
           <declname>slot</declname>
         </param>
         <param>
@@ -230,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="104" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="109" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a830e20a8ccef64f51dda91594b68f474" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; RenderType &gt;</type>
@@ -247,7 +261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="111" column="28"/>
+        <location file="include/endstone/scoreboard/objective.h" line="116" column="28"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -275,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="118" column="18"/>
+        <location file="include/endstone/scoreboard/objective.h" line="123" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &gt;</type>
@@ -305,7 +319,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/objective.h" line="126" column="30"/>
+        <location file="include/endstone/scoreboard/objective.h" line="131" column="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -313,7 +327,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/scoreboard/objective.h" line="29" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="29" bodyend="127"/>
+    <location file="include/endstone/scoreboard/objective.h" line="29" column="1" bodyfile="include/endstone/scoreboard/objective.h" bodystart="29" bodyend="132"/>
     <listofallmembers>
       <member refid="classendstone_1_1Objective_1abdbe48ffec8d1ef2aef0ce347cbf0727" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getCriteria</name></member>
       <member refid="classendstone_1_1Objective_1aca819a25cbcec968f0a20d56fe7d8919" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplayName</name></member>
@@ -324,10 +338,11 @@
       <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScoreboard</name></member>
       <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getSortOrder</name></member>
       <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>isModifiable</name></member>
-      <member refid="classendstone_1_1Objective_1a9d36cb4e3c5c0cf89b4cf94c11381b02" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setDisplay</name></member>
-      <member refid="classendstone_1_1Objective_1a294c941dafbb04ad76699c2652fe088e" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setDisplay</name></member>
+      <member refid="classendstone_1_1Objective_1a2d69ba72027b6c837d46f668fbd36d8d" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setDisplay</name></member>
+      <member refid="classendstone_1_1Objective_1a62669bd4b8e423aa0d8842b6e338f335" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setDisplay</name></member>
       <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setDisplayName</name></member>
       <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>setRenderType</name></member>
+      <member refid="classendstone_1_1Objective_1aa121126c45b531b856e831ad2aa77722" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>unregister</name></member>
       <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" prot="public" virt="virtual"><scope>endstone::Objective</scope><name>~Objective</name></member>
     </listofallmembers>
   </compounddef>
