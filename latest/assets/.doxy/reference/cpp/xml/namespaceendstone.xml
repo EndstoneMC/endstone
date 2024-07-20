@@ -251,6 +251,14 @@
       <memberdef kind="enum" id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" prot="public" static="no" strong="yes">
         <type></type>
         <name>DisplaySlot</name>
+        <enumvalue id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a6adf97f83acf6453d4a6a4b1070f3754" prot="public">
+          <name>None</name>
+          <briefdescription>
+<para>Indicates that the score will not be displayed. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" prot="public">
           <name>BelowName</name>
           <briefdescription>
@@ -282,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/display_slot.h" line="22" column="1" bodyfile="include/endstone/scoreboard/display_slot.h" bodystart="22" bodyend="35"/>
+        <location file="include/endstone/scoreboard/display_slot.h" line="22" column="1" bodyfile="include/endstone/scoreboard/display_slot.h" bodystart="22" bodyend="39"/>
       </memberdef>
       <memberdef kind="enum" id="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9f" prot="public" static="no" strong="yes">
         <type></type>

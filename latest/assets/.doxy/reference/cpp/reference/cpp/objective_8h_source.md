@@ -51,15 +51,15 @@ public:
 
     [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
 
-    virtual void setDisplaySlot(DisplaySlot slot) = 0;
+    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
+
+    virtual void setDisplay(DisplaySlot slot) = 0;
+
+    virtual void setDisplay(DisplaySlot slot, ObjectiveSortOrder order) = 0;
 
     [[nodiscard]] virtual std::optional<RenderType> getRenderType() const = 0;
 
     virtual void setRenderType(RenderType render_type) = 0;
-
-    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
-
-    virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
 };

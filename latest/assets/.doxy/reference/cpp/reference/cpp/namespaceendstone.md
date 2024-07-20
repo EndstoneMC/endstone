@@ -176,6 +176,7 @@
 
 ```C++
 enum endstone::DisplaySlot {
+    None,
     BelowName,
     PlayerList,
     SideBar

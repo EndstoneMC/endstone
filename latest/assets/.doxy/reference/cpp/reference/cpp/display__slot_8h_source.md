@@ -27,6 +27,7 @@
 namespace endstone {
 
 enum class DisplaySlot {
+    None,
     BelowName,
     PlayerList,
     SideBar,

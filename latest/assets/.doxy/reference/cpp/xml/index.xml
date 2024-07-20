@@ -286,11 +286,11 @@
     <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
     <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Objective_1a3c685f112273da1b269825fa16f1c4d7" kind="function"><name>getDisplaySlot</name></member>
-    <member refid="classendstone_1_1Objective_1a50fd3cc9094d724a19cd2b7cbe653124" kind="function"><name>setDisplaySlot</name></member>
+    <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" kind="function"><name>getSortOrder</name></member>
+    <member refid="classendstone_1_1Objective_1a9d36cb4e3c5c0cf89b4cf94c11381b02" kind="function"><name>setDisplay</name></member>
+    <member refid="classendstone_1_1Objective_1a294c941dafbb04ad76699c2652fe088e" kind="function"><name>setDisplay</name></member>
     <member refid="classendstone_1_1Objective_1a830e20a8ccef64f51dda91594b68f474" kind="function"><name>getRenderType</name></member>
     <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kind="function"><name>setRenderType</name></member>
-    <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" kind="function"><name>getSortOrder</name></member>
-    <member refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kind="function"><name>setSortOrder</name></member>
     <member refid="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" kind="function"><name>getScore</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
@@ -852,6 +852,7 @@
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6ba13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
     <member refid="plugin__load__order_8h_1acbd28364660dc397ef62ea1902defe6baabb0b493a9cbcc1b98b45c7e69f41a52" kind="enumvalue"><name>PostWorld</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4" kind="enum"><name>DisplaySlot</name></member>
+    <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a5b9ffa92c0234ccbdc123d9adc2ee438" kind="enumvalue"><name>BelowName</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4aec90d7579b8e9e4c97501a75500e109a" kind="enumvalue"><name>PlayerList</name></member>
     <member refid="display__slot_8h_1a5a0414cc6da27c764e22b6cb9b64aaa4a0618886ac5850cee7f454d1085a52574" kind="enumvalue"><name>SideBar</name></member>

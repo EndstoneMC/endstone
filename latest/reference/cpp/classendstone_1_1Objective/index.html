@@ -1886,6 +1886,32 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-setdisplay-12" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setDisplay [&frac12;]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-setdisplay-22" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setDisplay [2/2]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-setdisplayname" class="md-nav__link">
       <span class="md-ellipsis">
         function setDisplayName
@@ -1899,35 +1925,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-setdisplayslot" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setDisplaySlot
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
     <a href="#function-setrendertype" class="md-nav__link">
       <span class="md-ellipsis">
         function setRenderType
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
-    <a href="#function-setsortorder" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setSortOrder
       </span>
     </a>
 
@@ -2038,19 +2038,19 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setdisplay-12"><strong>setDisplay</strong></a> (DisplaySlot slot) = 0<br><em>Sets the display slot for this objective. This will remove it from any other display slot.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-setdisplay-22"><strong>setDisplay</strong></a> (DisplaySlot slot, ObjectiveSortOrder order) = 0<br><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setdisplayname"><strong>setDisplayName</strong></a> (std::string display_name) = 0<br><em>Sets the name displayed to players for this objective.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setdisplayslot"><strong>setDisplaySlot</strong></a> (DisplaySlot slot) = 0<br><em>Sets this objective to display on the specified slot for the scoreboard, removing it from any other display slot.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setrendertype"><strong>setRenderType</strong></a> (RenderType render_type) = 0<br><em>Sets manner in which this objective will be rendered.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setsortorder"><strong>setSortOrder</strong></a> (ObjectiveSortOrder order) = 0<br><em>Sets the sort order for this objective.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2137,11 +2137,37 @@
 <p>true if scores are modifiable </p>
 <hr>
 
+<h3 id="function-setdisplay-12">function setDisplay [&frac12;]<a class="headerlink" href="#function-setdisplay-12" title="Permanent link">&para;</a></h3>
+<p><em>Sets the display slot for this objective. This will remove it from any other display slot.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplay</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>slot</code> The display slot where this objective should be displayed. </li>
+</ul>
+<hr>
+
+<h3 id="function-setdisplay-22">function setDisplay [2/2]<a class="headerlink" href="#function-setdisplay-22" title="Permanent link">&para;</a></h3>
+<p><em>Sets the display slot and sort order for this objective. This will remove it from any other display slot.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplay</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span><span class="p">,</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">order</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>slot</code> The display slot where this objective should be displayed. </li>
+<li><code>order</code> The sort order for this objective in the display slot. </li>
+</ul>
+<hr>
+
 <h3 id="function-setdisplayname">function setDisplayName<a class="headerlink" href="#function-setdisplayname" title="Permanent link">&para;</a></h3>
 <p><em>Sets the name displayed to players for this objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplayName</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">display_name</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2149,39 +2175,15 @@
 </ul>
 <hr>
 
-<h3 id="function-setdisplayslot">function setDisplaySlot<a class="headerlink" href="#function-setdisplayslot" title="Permanent link">&para;</a></h3>
-<p><em>Sets this objective to display on the specified slot for the scoreboard, removing it from any other display slot.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setDisplaySlot</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">DisplaySlot</span><span class="w"> </span><span class="n">slot</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>slot</code> display slot to change </li>
-</ul>
-<hr>
-
 <h3 id="function-setrendertype">function setRenderType<a class="headerlink" href="#function-setrendertype" title="Permanent link">&para;</a></h3>
 <p><em>Sets manner in which this objective will be rendered.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setRenderType</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">RenderType</span><span class="w"> </span><span class="n">render_type</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>render_type</code> new render type </li>
-</ul>
-<hr>
-
-<h3 id="function-setsortorder">function setSortOrder<a class="headerlink" href="#function-setsortorder" title="Permanent link">&para;</a></h3>
-<p><em>Sets the sort order for this objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setSortOrder</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="n">order</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">setRenderType</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">RenderType</span><span class="w"> </span><span class="n">render_type</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>order</code> The sort order to set. </li>
+<li><code>render_type</code> new render type </li>
 </ul>
 <hr>
 
