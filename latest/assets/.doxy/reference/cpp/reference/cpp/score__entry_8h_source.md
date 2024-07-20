@@ -28,10 +28,10 @@
 #include <variant>
 #include <vector>
 
+namespace endstone {
+
 class Player;
 class Actor;
-
-namespace endstone {
 
 using ScoreEntry = std::variant<Player *, Actor *, std::string>;
 

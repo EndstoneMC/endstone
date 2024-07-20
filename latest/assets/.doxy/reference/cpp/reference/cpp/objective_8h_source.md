@@ -61,7 +61,7 @@ public:
 
     virtual void setSortOrder(ObjectiveSortOrder order) = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Score> getScore(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
 };
 
 }  // namespace endstone

@@ -37,24 +37,24 @@ class Scoreboard {
 public:
     virtual ~Scoreboard() = default;
 
-    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
 
-    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
                                                     std::string display_name) = 0;
 
-    virtual std::shared_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
                                                     RenderType render_type) = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Objective> getObjective(std::string name) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(std::string name) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Objective> getObjective(DisplaySlot slot) const = 0;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Objective>> getObjectives() const = 0;
+    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectives() const = 0;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Objective>> getObjectivesByCriteria(
+    [[nodiscard]] virtual std::vector<std::unique_ptr<Objective>> getObjectivesByCriteria(
         Criteria::Type criteria) const = 0;
 
-    [[nodiscard]] virtual std::vector<std::shared_ptr<Score>> getScores(ScoreEntry entry) const = 0;
+    [[nodiscard]] virtual std::vector<std::unique_ptr<Score>> getScores(ScoreEntry entry) const = 0;
 
     virtual void resetScores(ScoreEntry entry) = 0;
 

@@ -265,9 +265,9 @@
         </inbodydescription>
         <location file="include/endstone/scoreboard/objective.h" line="116" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Objective_1afbf9facb6cee28fe20f675c0d7e35ee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt;Score&gt; endstone::Objective::getScore</definition>
+      <memberdef kind="function" id="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Score" kindref="compound">Score</ref> &gt;</type>
+        <definition>virtual std::unique_ptr&lt;Score&gt; endstone::Objective::getScore</definition>
         <argsstring>(ScoreEntry entry) const =0</argsstring>
         <name>getScore</name>
         <param>
@@ -308,7 +308,7 @@
       <member refid="classendstone_1_1Objective_1a3c685f112273da1b269825fa16f1c4d7" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getDisplaySlot</name></member>
       <member refid="classendstone_1_1Objective_1a65fbf00ed3948df90e71f629a4445528" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getName</name></member>
       <member refid="classendstone_1_1Objective_1a830e20a8ccef64f51dda91594b68f474" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getRenderType</name></member>
-      <member refid="classendstone_1_1Objective_1afbf9facb6cee28fe20f675c0d7e35ee2" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScore</name></member>
+      <member refid="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScore</name></member>
       <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getScoreboard</name></member>
       <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>getSortOrder</name></member>
       <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" prot="public" virt="pure-virtual"><scope>endstone::Objective</scope><name>isModifiable</name></member>

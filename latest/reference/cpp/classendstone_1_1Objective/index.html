@@ -2021,7 +2021,7 @@
 <td style="text-align: left;"><a href="#function-getrendertype"><strong>getRenderType</strong></a> () const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &gt;</td>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1Score/"><strong>Score</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-getscore"><strong>getScore</strong></a> (ScoreEntry entry) const = 0<br><em>Gets an entry's</em> <a href="../classendstone_1_1Score/"><em><strong>Score</strong></em></a> <em>for this objective.</em></td>
 </tr>
 <tr>
@@ -2101,7 +2101,7 @@
 
 <h3 id="function-getscore">function getScore<a class="headerlink" href="#function-getscore" title="Permanent link">&para;</a></h3>
 <p><em>Gets an entry's</em> <a href="../classendstone_1_1Score/"><em><strong>Score</strong></em></a> <em>for this objective.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Objective</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">ScoreEntry</span><span class="w"> </span><span class="n">entry</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>

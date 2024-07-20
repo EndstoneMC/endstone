@@ -291,7 +291,7 @@
     <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kind="function"><name>setRenderType</name></member>
     <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" kind="function"><name>getSortOrder</name></member>
     <member refid="classendstone_1_1Objective_1a9ff84cbc24983fe08d512a246cff8d8f" kind="function"><name>setSortOrder</name></member>
-    <member refid="classendstone_1_1Objective_1afbf9facb6cee28fe20f675c0d7e35ee2" kind="function"><name>getScore</name></member>
+    <member refid="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" kind="function"><name>getScore</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
@@ -622,14 +622,14 @@
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a9e03b052e81fd9f85812411ff261365c" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1ae59977bfc7bb27d1a6bf98fe22c1aeb9" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a73683ede432d5457a38a7d371f52abcf" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1aedde1559cfcf812cf2f11a5809b1e893" kind="function"><name>getObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1ac4cecd313048f7cab2861f32e3900b5d" kind="function"><name>getObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a08ebf611c1c10ec4baadf6dda9f10efe" kind="function"><name>getObjectives</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a2a7a6c32e2e27deeba3a2dc372d819e2" kind="function"><name>getObjectivesByCriteria</name></member>
-    <member refid="classendstone_1_1Scoreboard_1afb3c89ff435da8e80054d546e4590b48" kind="function"><name>getScores</name></member>
+    <member refid="classendstone_1_1Scoreboard_1aeeea6d5b20650bc48f049facf5f09357" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a0710314f798f80efbb2935e9aeb7d3df" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a12c61fd2864f69f9735edcce7373ef30" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a86cf22c186e037101a1d5aae75b6ccca" kind="function"><name>getObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1aed806bf5dffdee9e8af5047b56301820" kind="function"><name>getObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1a3126ef103bead4d6caeccb06938dfec8" kind="function"><name>getObjectives</name></member>
+    <member refid="classendstone_1_1Scoreboard_1aa11169326d2b57a4230d48593a344448" kind="function"><name>getObjectivesByCriteria</name></member>
+    <member refid="classendstone_1_1Scoreboard_1acbde637e0ae14ca7a6ff49b582159e97" kind="function"><name>getScores</name></member>
     <member refid="classendstone_1_1Scoreboard_1a4fccb1898db7abf83738d9c2ffce27ba" kind="function"><name>resetScores</name></member>
     <member refid="classendstone_1_1Scoreboard_1a34423dec12f04dfc311a2d52ab2da93a" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" kind="function"><name>clearSlot</name></member>
