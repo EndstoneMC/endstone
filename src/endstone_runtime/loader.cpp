@@ -37,15 +37,15 @@ BOOL APIENTRY DllMain(HMODULE module, DWORD reason, LPVOID /*reserved*/)
         if (LoadLibraryA(dll_path) == nullptr) {
             DWORD error_code = GetLastError();
             LPVOID buffer;
-            DWORD len = FormatMessageA(
-                FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, nullptr,
-                error_code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), reinterpret_cast<LPTSTR>(&buffer), 0, nullptr);
+            FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+                           nullptr, error_code, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
+                           reinterpret_cast<LPTSTR>(&buffer), 0, nullptr);
 
-            if (len) {
-                printf("Failed to load DLL: %s, Error code: %lu, Message: %s\n", dll_path, error_code,
-                       static_cast<LPCSTR>(buffer));
-                LocalFree(buffer);
-            }
+            char message[512];
+            sprintf(message, "LoadLibrary failed to load %s with error %lu: %s", dll_path, error_code,
+                    reinterpret_cast<LPCSTR>(buffer));
+            MessageBoxA(nullptr, message, "Error", MB_OK | MB_ICONERROR);
+            LocalFree(buffer);
             ExitProcess(error_code);
         }
         break;
