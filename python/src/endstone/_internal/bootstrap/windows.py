@@ -45,6 +45,7 @@ INFINITE = 0xFFFFFFFF
 TH32CS_SNAPTHREAD = 0x00000004
 THREAD_ALL_ACCESS = 0x000F0000 | 0x00100000 | 0xFFFF
 INVALID_HANDLE_VALUE = ctypes.c_void_p(-1).value
+DONT_RESOLVE_DLL_REFERENCES = 0x00000001
 
 # https://learn.microsoft.com/en-us/windows/win32/api/memoryapi/nf-memoryapi-virtualallocex
 VirtualAllocEx = kernel32.VirtualAllocEx
@@ -75,6 +76,11 @@ GetModuleHandle.argtypes = (LPCWSTR,)
 GetProcAddress = kernel32.GetProcAddress
 GetProcAddress.restype = LPVOID
 GetProcAddress.argtypes = (HMODULE, LPCSTR)
+
+# https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-loadlibraryexw
+LoadLibraryExW = kernel32.LoadLibraryExW
+LoadLibraryExW.restype = HMODULE
+LoadLibraryExW.argtypes = (LPCWSTR, HANDLE, DWORD)
 
 
 class WindowsBootstrap(Bootstrap):
@@ -124,6 +130,11 @@ class WindowsBootstrap(Bootstrap):
         super()._create_process(creationflags=CREATE_SUSPENDED, env=env)
         handle_proc = int(self._process._handle)
         lib_path = str(self._endstone_runtime_path.absolute())
+
+        # Validate dll
+        dll = kernel32.LoadLibraryExW(lib_path, None, DONT_RESOLVE_DLL_REFERENCES)
+        if not dll:
+            raise ValueError(f"LoadLibraryExW failed with error {get_last_error()}.")
 
         # Allocate memory for lib_path
         address = kernel32.VirtualAllocEx(
