@@ -92,7 +92,7 @@ class WindowsBootstrap(Bootstrap):
 
     @property
     def _endstone_runtime_filename(self) -> str:
-        return "endstone_runtime.dll"
+        return "endstone_runtime_loader.dll"
 
     def _add_loopback_exemption(self) -> bool:
         sid = "S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436"

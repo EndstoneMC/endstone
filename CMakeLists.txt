@@ -148,6 +148,11 @@ if (UNIX)
     target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden" "-fms-extensions")
 endif ()
 
+if (WIN32)
+    add_library(endstone_runtime_loader SHARED "src/endstone_runtime/loader.cpp")
+    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS ENDSTONE_RUNTIME_LOADER)
+endif ()
+
 include(GNUInstallDirs)
 install(TARGETS endstone_runtime
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -160,6 +165,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
     elseif (UNIX)
         add_custom_command(TARGET endstone_python POST_BUILD COMMAND ${CMAKE_STRIP} --strip-debug --strip-unneeded $<TARGET_FILE:endstone_python>)
     endif ()
+endif ()
+
+if (WIN32)
+    install(TARGETS endstone_runtime_loader DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
 
 # =====
