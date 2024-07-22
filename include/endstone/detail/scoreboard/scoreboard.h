@@ -38,7 +38,8 @@ public:
     void resetScores(ScoreEntry entry) override;
     [[nodiscard]] std::vector<ScoreEntry> getEntries() const override;
     void clearSlot(DisplaySlot slot) override;
-    const ::ScoreboardId &getScoreboardId(ScoreEntry entry);
+    const ::ScoreboardId &getScoreboardId(ScoreEntry entry) const;
+    const ::ScoreboardId &getOrCreateScoreboardId(ScoreEntry entry);
 
     static std::string getCriteriaName(Criteria::Type type);
     static std::string getDisplaySlotName(DisplaySlot slot);

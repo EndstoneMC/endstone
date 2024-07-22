@@ -110,7 +110,10 @@ std::vector<std::unique_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry ent
 
 void EndstoneScoreboard::resetScores(ScoreEntry entry)
 {
-    board_.resetPlayerScore(getScoreboardId(entry));
+    const auto &scoreboard_id = getScoreboardId(entry);
+    if (scoreboard_id.isValid()) {
+        board_.resetPlayerScore(getScoreboardId(entry));
+    }
 }
 
 std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
@@ -181,7 +184,7 @@ std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
     }
 }
 
-const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry)
+const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const
 {
     return std::visit(
         entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
@@ -192,6 +195,25 @@ const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry)
                          },
                          [&](const std::string &fake) -> const ::ScoreboardId & {
                              return board_.getScoreboardId(fake);
+                         }},
+        entry);
+}
+
+const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry entry)
+{
+    const auto &scoreboard_id = getScoreboardId(entry);
+    if (scoreboard_id.isValid()) {
+        return scoreboard_id;
+    }
+    return std::visit(
+        entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                             return board_.createScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                         },
+                         [&](Actor *actor) -> const ::ScoreboardId & {
+                             return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                         },
+                         [&](const std::string &fake) -> const ::ScoreboardId & {
+                             return board_.createScoreboardId(fake);
                          }},
         entry);
 }

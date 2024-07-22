@@ -38,7 +38,7 @@ ScoreEntry EndstoneScore::getEntry() const
 int EndstoneScore::getScore() const
 {
     if (objective_->checkState()) {
-        auto id = getScoreboardId();
+        const auto &id = getScoreboardId();
         if (id.isValid() && objective_->objective_.hasScore(id)) {
             return objective_->objective_.getPlayerScore(id);
         }
@@ -49,9 +49,9 @@ int EndstoneScore::getScore() const
 void EndstoneScore::setScore(int score)
 {
     if (objective_->checkState()) {
-        auto id = getScoreboardId();
+        const auto &id = getOrCreateScoreboardId();
         if (!id.isValid()) {
-            return;
+            throw std::runtime_error("Invalid scoreboard id");
         }
 
         auto &server = entt::locator<EndstoneServer>::value();
@@ -70,7 +70,7 @@ void EndstoneScore::setScore(int score)
 bool EndstoneScore::isScoreSet() const
 {
     if (objective_->checkState()) {
-        auto id = getScoreboardId();
+        const auto &id = getScoreboardId();
         return id.isValid() && objective_->objective_.hasScore(id);
     }
     return false;
@@ -86,13 +86,19 @@ Scoreboard &EndstoneScore::getScoreboard() const
     return objective_->getScoreboard();
 }
 
-ScoreboardId EndstoneScore::getScoreboardId() const
+const ScoreboardId &EndstoneScore::getScoreboardId() const
 {
     if (objective_->checkState()) {
         return objective_->scoreboard_.getScoreboardId(entry_);
     }
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.getLogger().error("Entry is not currently tracked in the scoreboard.");
+    return ScoreboardId::INVALID;
+}
+
+const ScoreboardId &EndstoneScore::getOrCreateScoreboardId()
+{
+    if (objective_->checkState()) {
+        return objective_->scoreboard_.getOrCreateScoreboardId(entry_);
+    }
     return ScoreboardId::INVALID;
 }
 

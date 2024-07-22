@@ -35,7 +35,8 @@ public:
     [[nodiscard]] Scoreboard &getScoreboard() const override;
 
 private:
-    [[nodiscard]] ScoreboardId getScoreboardId() const;
+    [[nodiscard]] const ScoreboardId &getScoreboardId() const;
+    [[nodiscard]] const ScoreboardId &getOrCreateScoreboardId() ;
 
     std::unique_ptr<EndstoneObjective> objective_;
     ScoreEntry entry_;
