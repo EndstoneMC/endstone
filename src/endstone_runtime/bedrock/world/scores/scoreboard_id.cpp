@@ -33,3 +33,9 @@ bool ScoreboardId::operator==(const ScoreboardId &other) const
 {
     return raw_id == other.raw_id;
 }
+
+std::size_t ScoreboardId::getHash() const
+{
+    static std::hash<ActorUniqueID> hasher;
+    return hasher({raw_id});
+}

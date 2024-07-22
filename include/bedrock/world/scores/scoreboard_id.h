@@ -27,6 +27,7 @@ struct ScoreboardId {
     [[nodiscard]] bool isValid() const;
     [[nodiscard]] IdentityDefinition const &getIdentityDef() const;
     bool operator==(const ScoreboardId &other) const;
+    [[nodiscard]] std::size_t getHash() const;
 
     static const ScoreboardId INVALID;
 
@@ -41,8 +42,7 @@ template <>
 struct hash<ScoreboardId> {  // NOLINT
     std::size_t operator()(const ScoreboardId &value) const noexcept
     {
-        static std::hash<std::int32_t> hasher;
-        return hasher(value.raw_id);
+        return value.getHash();
     }
 };
 }  // namespace std
