@@ -39,6 +39,9 @@ public:
     [[nodiscard]] std::vector<ScoreEntry> getEntries() const override;
     void clearSlot(DisplaySlot slot) override;
 
+    static std::string getCriteriaName(Criteria::Type type);
+    static std::string getDisplaySlotName(DisplaySlot slot);
+
 private:
     friend class EndstoneObjective;
     friend class EndstoneScore;

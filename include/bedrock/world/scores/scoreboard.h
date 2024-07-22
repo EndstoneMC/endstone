@@ -62,6 +62,7 @@ public:
     [[nodiscard]] bool hasIdentityFor(const ScoreboardId &id) const;
     [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
     [[nodiscard]] ObjectiveCriteria *getCriteria(const std::string &name) const;
+    void forEachObjective(std::function<void(Objective &)> callback) const;
 
 private:
     CommandSoftEnumRegistry registry_;                                                        // +8

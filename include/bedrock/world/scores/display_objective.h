@@ -29,9 +29,9 @@ public:
         return objective_ != nullptr;
     }
 
-    [[nodiscard]] const Objective *getObjective() const
+    [[nodiscard]] const Objective &getObjective() const
     {
-        return objective_;
+        return *objective_;
     }
 
     [[nodiscard]] ObjectiveSortOrder getSortOrder() const

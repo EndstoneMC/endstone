@@ -49,7 +49,7 @@ bool Scoreboard::removeObjective(Objective *objective)
     }
 
     for (auto it = display_objectives_.begin(); it != display_objectives_.end();) {
-        if (it->second.getObjective() == objective) {
+        if (&it->second.getObjective() == objective) {
             it = display_objectives_.erase(it);
             continue;
         }
@@ -126,4 +126,11 @@ ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
         return it->second.get();
     }
     return nullptr;
+}
+
+void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) const
+{
+    for (auto &[key, value] : objectives_) {
+        callback(*value);
+    }
 }

@@ -19,21 +19,10 @@
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
 #include "endstone/detail/scoreboard/objective.h"
+#include "endstone/detail/scoreboard/score.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
-
-namespace {
-std::string getCriteriaName(Criteria::Type type)
-{
-    switch (type) {
-    case Criteria::Type::Dummy:
-        return "dummy";
-    default:
-        throw std::runtime_error("Unknown Criteria::Type!");
-    }
-}
-}  // namespace
 
 EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
 
@@ -77,22 +66,42 @@ std::unique_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) co
 
 std::unique_ptr<Objective> EndstoneScoreboard::getObjective(DisplaySlot slot) const
 {
-    throw std::runtime_error("Not implemented.");
+    const auto *display_objective = board_.getDisplayObjective(getDisplaySlotName(slot));
+    if (!display_objective) {
+        return nullptr;
+    }
+    return std::make_unique<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this),
+                                               const_cast<::Objective &>(display_objective->getObjective()));
 }
 
 std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectives() const
 {
-    throw std::runtime_error("Not implemented.");
+    std::vector<std::unique_ptr<Objective>> result;
+    board_.forEachObjective([&](auto &objective) {
+        result.push_back(std::make_unique<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), objective));
+    });
+    return result;
 }
 
 std::vector<std::unique_ptr<Objective>> EndstoneScoreboard::getObjectivesByCriteria(Criteria::Type criteria) const
 {
-    throw std::runtime_error("Not implemented.");
+    std::vector<std::unique_ptr<Objective>> result;
+    board_.forEachObjective([&](auto &objective) {
+        if (objective.getCriteria().getName() == EndstoneScoreboard::getCriteriaName(criteria)) {
+            result.push_back(std::make_unique<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), objective));
+        }
+    });
+    return result;
 }
 
 std::vector<std::unique_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry entry) const
 {
-    throw std::runtime_error("Not implemented.");
+    std::vector<std::unique_ptr<Score>> result;
+    board_.forEachObjective([&](auto &objective) {
+        auto obj = std::make_unique<EndstoneObjective>(const_cast<EndstoneScoreboard &>(*this), objective);
+        result.push_back(std::make_unique<EndstoneScore>(std::move(obj), entry));
+    });
+    return result;
 }
 
 void EndstoneScoreboard::resetScores(ScoreEntry entry)
@@ -107,7 +116,31 @@ std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
 
 void EndstoneScoreboard::clearSlot(DisplaySlot slot)
 {
-    throw std::runtime_error("Not implemented.");
+    board_.clearDisplayObjective(getDisplaySlotName(slot));
+}
+
+std::string EndstoneScoreboard::getCriteriaName(Criteria::Type type)
+{
+    switch (type) {
+    case Criteria::Type::Dummy:
+        return "dummy";
+    default:
+        throw std::runtime_error("Unknown Criteria::Type!");
+    }
+}
+
+std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
+{
+    switch (slot) {
+    case DisplaySlot::BelowName:
+        return "belowname";
+    case DisplaySlot::PlayerList:
+        return "list";
+    case DisplaySlot::SideBar:
+        return "sidebar";
+    default:
+        throw std::runtime_error("Unknown DisplaySlot!");
+    }
 }
 
 }  // namespace endstone::detail
