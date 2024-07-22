@@ -40,14 +40,14 @@ public:
      *
      * @return the current score
      */
-    [[nodiscard]] virtual int getScore() const = 0;
+    [[nodiscard]] virtual int getValue() const = 0;
 
     /**
      * @brief Sets the current score.
      *
      * @param score New score
      */
-    virtual void setScore(int score) = 0;
+    virtual void setValue(int score) = 0;
 
     /**
      * @brief Shows if this score has been set at any point in time.

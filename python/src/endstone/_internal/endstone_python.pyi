@@ -1630,18 +1630,18 @@ class Score:
         Gets the Objective being tracked by this Score.
         """
     @property
-    def score(self) -> int:
-        """
-        Gets or sets the current score.
-        """
-    @score.setter
-    def score(self, arg1: int) -> None:
-        ...
-    @property
     def scoreboard(self) -> Scoreboard:
         """
         Gets the scoreboard for the associated objective.
         """
+    @property
+    def value(self) -> int:
+        """
+        Gets or sets the current score.
+        """
+    @value.setter
+    def value(self, arg1: int) -> None:
+        ...
 class Scoreboard:
     """
     Represents a scoreboard

@@ -35,7 +35,7 @@ ScoreEntry EndstoneScore::getEntry() const
     return entry_;
 }
 
-int EndstoneScore::getScore() const
+int EndstoneScore::getValue() const
 {
     if (objective_->checkState()) {
         const auto &id = getScoreboardId();
@@ -46,7 +46,7 @@ int EndstoneScore::getScore() const
     return 0;
 }
 
-void EndstoneScore::setScore(int score)
+void EndstoneScore::setValue(int score)
 {
     if (objective_->checkState()) {
         const auto &id = getOrCreateScoreboardId();
