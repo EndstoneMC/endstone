@@ -232,7 +232,9 @@ void init_server(py::class_<Server> &server)
             "broadcast_message",
             [](const Server &server, const std::string &message) { server.broadcastMessage(message); },
             py::arg("message"),
-            "Broadcasts the specified message to every user with permission endstone.broadcast.user");
+            "Broadcasts the specified message to every user with permission endstone.broadcast.user")
+        .def_property_readonly("scoreboard", &Server::getScoreboard, "Gets the scoreboard.",
+                               py::return_value_policy::reference);
 }
 
 void init_player(py::module_ &m)

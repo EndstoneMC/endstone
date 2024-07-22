@@ -1769,6 +1769,11 @@ class Server:
         Gets the scheduler for managing scheduled events.
         """
     @property
+    def scoreboard(self) -> Scoreboard:
+        """
+        Gets the scoreboard.
+        """
+    @property
     def version(self) -> str:
         """
         Gets the version of this server implementation.

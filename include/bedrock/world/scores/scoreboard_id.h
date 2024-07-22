@@ -20,8 +20,8 @@
 #include "bedrock/forward.h"
 
 class IdentityDefinition;
-class ScoreboardId {
-public:
+
+struct ScoreboardId {
     ScoreboardId() = default;
     explicit ScoreboardId(std::int64_t id) : raw_id(id) {}
     [[nodiscard]] bool isValid() const;

@@ -22,6 +22,7 @@
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
+#include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -187,6 +188,15 @@ public:
      * @return true if the current thread matches the expected primary thread, false otherwise
      */
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
+
+    /**
+     * @brief Gets the scoreboard.
+     * <p>
+     * This will only exist after the first level has loaded.
+     *
+     * @return the scoreboard.
+     */
+    [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

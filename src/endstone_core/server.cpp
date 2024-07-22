@@ -269,6 +269,11 @@ bool EndstoneServer::isPrimaryThread() const
     return Bedrock::Threading::getServerThread().isOnThread();
 }
 
+Scoreboard *EndstoneServer::getScoreboard() const
+{
+    return scoreboard_.get();
+}
+
 void EndstoneServer::setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard)
 {
     scoreboard_ = std::move(scoreboard);

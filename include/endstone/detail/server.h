@@ -72,6 +72,7 @@ public:
 
     [[nodiscard]] bool isPrimaryThread() const override;
 
+    [[nodiscard]] Scoreboard *getScoreboard() const override;
     void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
     [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
 
