@@ -32,6 +32,7 @@
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
+#include "endstone/scoreboard/scoreboard.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -92,6 +93,8 @@ public:
     }
 
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
+
+    [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

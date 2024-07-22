@@ -155,7 +155,7 @@
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getScore** ([**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Score**](classendstone_1_1Score.md))
-* **getScoreboard** ([**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Score**](classendstone_1_1Score.md))
+* **getScoreboard** ([**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Score**](classendstone_1_1Score.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getSortOrder** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getEffectivePermissions** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **getChildren** ([**endstone::Permission**](classendstone_1_1Permission.md))
