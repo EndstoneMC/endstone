@@ -16,6 +16,8 @@
 
 #include <stdexcept>
 
+#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
 #include "endstone/detail/actor/actor.h"
@@ -113,7 +115,41 @@ void EndstoneScoreboard::resetScores(ScoreEntry entry)
 
 std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const
 {
-    throw std::runtime_error("Not implemented.");
+    std::vector<ScoreEntry> result;
+    auto &server = entt::locator<EndstoneServer>::value();
+    board_.forEachIdentityRef([&](auto &id_ref) {
+        switch (id_ref.getIdentityType()) {
+        case IdentityDefinition::Type::Player: {
+            auto players = server.getOnlinePlayers();
+            for (const auto &player : players) {
+                if (static_cast<EndstonePlayer *>(player)->getHandle().getOrCreateUniqueID() ==
+                    id_ref.getPlayerId().actor_unique_id) {
+                    result.emplace_back(player);
+                }
+            }
+            break;
+        }
+        case IdentityDefinition::Type::Entity: {
+            auto levels = server.getLevels();
+            for (const auto &level : levels) {
+                auto actors = level->getActors();
+                for (const auto &actor : actors) {
+                    if (static_cast<EndstoneActor *>(actor)->getActor().getOrCreateUniqueID() == id_ref.getEntityId()) {
+                        result.emplace_back(actor);
+                    }
+                }
+            }
+            break;
+        }
+        case IdentityDefinition::Type::FakePlayer: {
+            result.push_back(id_ref.getFakePlayerName());
+            break;
+        }
+        default:
+            throw std::runtime_error("Invalid IdentityDefinition::Type");
+        }
+    });
+    return result;
 }
 
 void EndstoneScoreboard::clearSlot(DisplaySlot slot)
