@@ -37,6 +37,14 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public Social::MultiplayerServiceObserver,
                              public Social::XboxLiveUserObserver {
 public:
+    ~ServerNetworkHandler() override = 0;
+
+protected:
+    virtual void completeHandshake(NetworkIdentifier const &) = 0;
+
+private:
+    virtual ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId) = 0;  // NOLINT
+
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, bool);
