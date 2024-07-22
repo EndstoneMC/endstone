@@ -16,6 +16,22 @@
 
 #include "bedrock/world/actor/player/player.h"
 
+Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
+                                    const ObjectiveCriteria &criteria)
+{
+    if (getObjective(name)) {
+        return nullptr;  // already exist
+    }
+
+    auto objective = std::make_unique<Objective>(name, criteria);
+    objectives_[name] = std::move(objective);
+    auto &ref = *objectives_[name];
+    objectives_lookup_.emplace(HashedString::computeHash(name), ref);
+    ref.setDisplayName(display_name);
+    onObjectiveAdded(ref);
+    return &ref;
+}
+
 bool Scoreboard::removeObjective(Objective *objective)
 {
     if (!objective) {
@@ -99,6 +115,15 @@ ScoreboardIdentityRef *Scoreboard::getScoreboardIdentityRef(const ScoreboardId &
     auto it = identity_refs_.find(id);
     if (it != identity_refs_.end()) {
         return &it->second;
+    }
+    return nullptr;
+}
+
+ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
+{
+    auto it = criteria_.find(name);
+    if (it != criteria_.end()) {
+        return it->second.get();
     }
     return nullptr;
 }

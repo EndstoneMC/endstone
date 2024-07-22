@@ -52,6 +52,7 @@ public:
     virtual void writeToLevelStorage() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
+    Objective *Scoreboard::addObjective(const std::string &, const std::string &, const ObjectiveCriteria &criteria);
     bool removeObjective(Objective *);
     [[nodiscard]] Objective *getObjective(const std::string &name) const;
     [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
@@ -60,16 +61,17 @@ public:
     [[nodiscard]] const ScoreboardId &getScoreboardId(const std::string &fake) const;
     [[nodiscard]] bool hasIdentityFor(const ScoreboardId &id) const;
     [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
+    [[nodiscard]] ObjectiveCriteria *getCriteria(const std::string &name) const;
 
 private:
-    CommandSoftEnumRegistry registry_;                                                          // +8
-    std::unordered_map<std::string, DisplayObjective> display_objectives_;                      // +16
-    IdentityDictionary identity_dictionary_;                                                    // +80
-    std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;                     // +336 (+216)
-    bool should_update_ui_;                                                                     // +400 (+256)
-    std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;                    // +408 (+264)
-    std::unordered_map<std::uint64_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;  // +472 (+304)
-    std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;              // +536 (+344)
-    ScoreboardEventCoordinator scoreboard_event_coordinator_;                                   // +600 (+384)
+    CommandSoftEnumRegistry registry_;                                                        // +8
+    std::unordered_map<std::string, DisplayObjective> display_objectives_;                    // +16
+    IdentityDictionary identity_dictionary_;                                                  // +80
+    std::unordered_map<ScoreboardId, ScoreboardIdentityRef> identity_refs_;                   // +336 (+216)
+    bool should_update_ui_;                                                                   // +400 (+256)
+    std::unordered_map<std::string, std::unique_ptr<Objective>> objectives_;                  // +408 (+264)
+    std::unordered_map<std::size_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;  // +472 (+304)
+    std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;            // +536 (+344)
+    ScoreboardEventCoordinator scoreboard_event_coordinator_;                                 // +600 (+384)
     // PlayerScoreboardEventListener player_listener_;                                          // +712 (+504)
 };

@@ -26,7 +26,7 @@
 namespace endstone::detail {
 
 EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective &objective)
-    : name_(objective.getName()), scoreboard_(scoreboard), objective_(objective), criteria_(*objective.getCriteria())
+    : name_(objective.getName()), scoreboard_(scoreboard), objective_(objective), criteria_(objective.getCriteria())
 {
 }
 

@@ -16,6 +16,11 @@
 
 #include <stdexcept>
 
+Objective::Objective(const std::string &name, const ObjectiveCriteria &criteria)
+    : name_(name), criteria_(criteria), display_name_(name)
+{
+}
+
 const std::unordered_map<ScoreboardId, int> &Objective::getScores() const
 {
     return scores_;
@@ -31,14 +36,14 @@ const std::string &Objective::getDisplayName() const
     return display_name_;
 }
 
-const ObjectiveCriteria *Objective::getCriteria() const
+const ObjectiveCriteria &Objective::getCriteria() const
 {
     return criteria_;
 }
 
 ObjectiveRenderType Objective::getRenderType() const
 {
-    return criteria_->getRenderType();
+    return criteria_.getRenderType();
 }
 
 void Objective::setDisplayName(const std::string &display_name)
@@ -68,7 +73,7 @@ bool Objective::setPlayerScore(const ScoreboardId &id, int value)
 
 bool Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action)
 {
-    if (criteria_->isReadOnly()) {
+    if (criteria_.isReadOnly()) {
         result = 0;
         return false;
     }
