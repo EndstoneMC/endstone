@@ -56,19 +56,19 @@ bool Objective::hasScore(const ScoreboardId &id) const
     return scores_.find(id) != scores_.end();
 }
 
-int Objective::getPlayerScore(const ScoreboardId &id) const
+ScoreInfo Objective::getPlayerScore(const ScoreboardId &id) const
 {
+    ScoreInfo result;
+    result.objective = this;
     auto it = scores_.find(id);
     if (it != scores_.end()) {
-        return it->second;
+        result.value = it->second;
+        result.valid = true;
     }
-    return 0;
-}
-
-bool Objective::setPlayerScore(const ScoreboardId &id, int value)
-{
-    int result;
-    return _modifyPlayerScore(result, id, value, PlayerScoreSetFunction::Set);
+    else {
+        result.valid = false;
+    }
+    return result;
 }
 
 bool Objective::_modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action)

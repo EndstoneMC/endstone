@@ -20,6 +20,7 @@
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/player_score_set_function.h"
+#include "bedrock/world/scores/score_info.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 
 class Objective : public Bedrock::EnableNonOwnerReferences {
@@ -34,9 +35,7 @@ public:
     void setDisplayName(const std::string &display_name);
 
     [[nodiscard]] bool hasScore(const ScoreboardId &id) const;
-    [[nodiscard]] int getPlayerScore(const ScoreboardId &id) const;
-
-    bool setPlayerScore(const ScoreboardId &id, int value);  // Endstone
+    [[nodiscard]] ScoreInfo getPlayerScore(const ScoreboardId &id) const;
 
 private:
     bool _modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action);  // NOLINT

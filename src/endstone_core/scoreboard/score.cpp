@@ -40,7 +40,7 @@ int EndstoneScore::getScore() const
     if (objective_->checkState()) {
         const auto &id = getScoreboardId();
         if (id.isValid() && objective_->objective_.hasScore(id)) {
-            return objective_->objective_.getPlayerScore(id);
+            return objective_->objective_.getPlayerScore(id).value;
         }
     }
     return 0;

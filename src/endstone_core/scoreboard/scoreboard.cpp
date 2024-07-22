@@ -205,6 +205,7 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
     if (scoreboard_id.isValid()) {
         return scoreboard_id;
     }
+
     return std::visit(
         entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
                              return board_.createScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
