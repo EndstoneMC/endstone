@@ -67,6 +67,7 @@ public:
     void forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const;
     void resetPlayerScore(const ScoreboardId &);
     ENDSTONE_HOOK bool resetPlayerScore(const ScoreboardId &, Objective &);
+    int modifyPlayerScore(bool &success, const ScoreboardId &, Objective &, int, PlayerScoreSetFunction);
 
 private:
     CommandSoftEnumRegistry registry_;                                                        // +8

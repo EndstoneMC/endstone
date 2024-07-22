@@ -41,7 +41,7 @@ template <>
 struct hash<ScoreboardId> {  // NOLINT
     std::size_t operator()(const ScoreboardId &value) const noexcept
     {
-        static std::hash<std::int64_t> hasher;
+        static std::hash<std::int32_t> hasher;
         return hasher(value.raw_id);
     }
 };

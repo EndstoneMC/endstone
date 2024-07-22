@@ -60,7 +60,10 @@ void EndstoneScore::setScore(int score)
             return;
         }
 
-        if (!objective_->objective_.setPlayerScore(id, score)) {
+        bool success = false;
+        objective_->scoreboard_.board_.modifyPlayerScore(success, id, objective_->objective_, score,
+                                                         PlayerScoreSetFunction::Set);
+        if (!success) {
             server.getLogger().error("Cannot modify score");
             return;
         }

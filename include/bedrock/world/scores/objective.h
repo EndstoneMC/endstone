@@ -38,6 +38,7 @@ public:
     [[nodiscard]] ScoreInfo getPlayerScore(const ScoreboardId &id) const;
 
 private:
+    friend class ScoreboardIdentityRef;
     bool _modifyPlayerScore(int &result, const ScoreboardId &id, int value, PlayerScoreSetFunction action);  // NOLINT
 
     std::unordered_map<ScoreboardId, int> scores_;  // +24

@@ -155,3 +155,20 @@ bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
     bool (Scoreboard::*func)(const ScoreboardId &, Objective &) = &Scoreboard::resetPlayerScore;
     return ENDSTONE_HOOK_CALL_ORIGINAL(func, this, id, objective);
 }
+
+int Scoreboard::modifyPlayerScore(bool &success, const ScoreboardId &id, Objective &objective, int score,
+                                  PlayerScoreSetFunction action)
+{
+    int result = 0;
+    auto *id_ref = getScoreboardIdentityRef(id);
+    if (!id_ref) {
+        success = false;
+        return result;
+    }
+
+    success = id_ref->modifyScoreInObjective(result, objective, score, action);
+    if (success) {
+        onScoreChanged(id, objective);
+    }
+    return result;
+}

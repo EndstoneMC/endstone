@@ -49,6 +49,16 @@ public:
         return scoreboard_id_.getIdentityDef().getIdentityType();
     }
 
+    bool modifyScoreInObjective(int &result, Objective &objective, int score, PlayerScoreSetFunction action)
+    {
+        bool was_set = objective.getPlayerScore(scoreboard_id_).valid;
+        auto success = objective._modifyPlayerScore(result, scoreboard_id_, score, action);
+        if (!was_set && success) {
+            ++num_references_;
+        }
+        return success;
+    }
+
 private:
     int num_references_;
     ScoreboardId scoreboard_id_;
