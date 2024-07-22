@@ -19,8 +19,21 @@
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
 #include "endstone/detail/scoreboard/objective.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
+
+namespace {
+std::string getCriteriaName(Criteria::Type type)
+{
+    switch (type) {
+    case Criteria::Type::Dummy:
+        return "dummy";
+    default:
+        throw std::runtime_error("Unknown Criteria::Type!");
+    }
+}
+}  // namespace
 
 EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
 
@@ -38,7 +51,20 @@ std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Cr
 std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
                                                             std::string display_name, RenderType render_type)
 {
-    throw std::runtime_error("Not implemented.");
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto *cr = board_.getCriteria(getCriteriaName(criteria));
+    if (!cr) {
+        server.getLogger().error("Unknown criteria: {}.", getCriteriaName(criteria));
+        return nullptr;
+    }
+
+    auto *objective = board_.addObjective(name, display_name, *cr);
+    if (!objective) {
+        server.getLogger().error("Objective {} already exists.", name);
+        return nullptr;
+    }
+
+    return std::make_unique<EndstoneObjective>(*this, *objective);
 }
 
 std::unique_ptr<Objective> EndstoneScoreboard::getObjective(std::string name) const

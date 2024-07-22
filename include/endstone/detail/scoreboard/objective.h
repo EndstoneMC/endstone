@@ -54,7 +54,6 @@ private:
     friend class EndstoneScore;
 
     void forEachDisplayObjective(const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const;
-    static std::string getDisplaySlotName(DisplaySlot slot);
 
     std::string name_;
     EndstoneScoreboard &scoreboard_;

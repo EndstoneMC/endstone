@@ -25,6 +25,22 @@
 
 namespace endstone::detail {
 
+namespace {
+std::string getDisplaySlotName(DisplaySlot slot)
+{
+    switch (slot) {
+    case DisplaySlot::BelowName:
+        return "belowname";
+    case DisplaySlot::PlayerList:
+        return "list";
+    case DisplaySlot::SideBar:
+        return "sidebar";
+    default:
+        throw std::runtime_error("Unknown DisplaySlot!");
+    }
+}
+}  // namespace
+
 EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective &objective)
     : name_(objective.getName()), scoreboard_(scoreboard), objective_(objective), criteria_(objective.getCriteria())
 {
@@ -185,20 +201,6 @@ void EndstoneObjective::forEachDisplayObjective(
                 return;
             }
         }
-    }
-}
-
-std::string EndstoneObjective::getDisplaySlotName(DisplaySlot slot)
-{
-    switch (slot) {
-    case DisplaySlot::BelowName:
-        return "belowname";
-    case DisplaySlot::PlayerList:
-        return "list";
-    case DisplaySlot::SideBar:
-        return "sidebar";
-    default:
-        throw std::runtime_error("Unknown DisplaySlot!");
     }
 }
 
