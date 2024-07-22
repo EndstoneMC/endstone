@@ -18,6 +18,8 @@
 
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
+#include "endstone/detail/actor/actor.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/scoreboard/objective.h"
 #include "endstone/detail/scoreboard/score.h"
 #include "endstone/detail/server.h"
@@ -141,6 +143,21 @@ std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
     default:
         throw std::runtime_error("Unknown DisplaySlot!");
     }
+}
+
+const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry)
+{
+    return std::visit(
+        entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                             return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                         },
+                         [&](Actor *actor) -> const ::ScoreboardId & {
+                             return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                         },
+                         [&](const std::string &fake) -> const ::ScoreboardId & {
+                             return board_.getScoreboardId(fake);
+                         }},
+        entry);
 }
 
 }  // namespace endstone::detail

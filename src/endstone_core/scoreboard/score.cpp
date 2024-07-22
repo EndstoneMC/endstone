@@ -89,18 +89,7 @@ Scoreboard &EndstoneScore::getScoreboard() const
 ScoreboardId EndstoneScore::getScoreboardId() const
 {
     if (objective_->checkState()) {
-        auto &board = objective_->scoreboard_.board_;
-        return std::visit(
-            entt::overloaded{[&](Player *player) {
-                                 return board.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
-                             },
-                             [&](Actor *actor) {  //
-                                 return board.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
-                             },
-                             [&](const std::string &fake) {
-                                 return board.getScoreboardId(fake);
-                             }},
-            entry_);
+        return objective_->scoreboard_.getScoreboardId(entry_);
     }
     auto &server = entt::locator<EndstoneServer>::value();
     server.getLogger().error("Entry is not currently tracked in the scoreboard.");
