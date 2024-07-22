@@ -14,23 +14,7 @@
 
 #pragma once
 
-#include <variant>
-
-namespace Details {
-
-template <typename T>
-class ValueOrRef {
-public:
-    T &value() noexcept
-    {
-        if (std::holds_alternative<T>(variant_)) {
-            return std::get<T>(variant_);
-        }
-        return *std::get<T *>(variant_);
-    }
-
-private:
-    std::variant<T *, T> variant_;
+enum class PlayerFormCloseReason {
+    UserClosed = 0,
+    UserBusy = 1
 };
-
-}  // namespace Details

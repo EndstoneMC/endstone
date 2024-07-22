@@ -47,20 +47,20 @@ private:
 
 class ActorEventCoordinator {
 public:
-    void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
-    CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
+    // void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
+    // CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
 };
 
 class BlockEventCoordinator {
 public:
-    void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
-    CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
+    // void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
+    // CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
 };
 class ItemEventCoordinator;
 
 class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
 public:
-    void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
+    // void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
     LevelGameplayHandler &getLevelGameplayHandler();
 
 private:
@@ -70,8 +70,8 @@ private:
 
 class PlayerEventCoordinator {
 public:
-    void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
-    CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
+    ENDSTONE_HOOK void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
+    // CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
 };
 class ServerPlayerEventCoordinator : public PlayerEventCoordinator {};
 class ClientPlayerEventCoordinator : public PlayerEventCoordinator {};

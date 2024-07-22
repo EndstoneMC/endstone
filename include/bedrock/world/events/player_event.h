@@ -17,7 +17,12 @@
 #include <variant>
 
 #include "bedrock/core/details.h"
+#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"
+#include "bedrock/world/events/event_ref.h"
+#include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/form/player_form_close_reason.h"
 
 template <std::size_t N>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
@@ -35,8 +40,16 @@ struct PlayerDropItemEvent {};
 struct PlayerEatFoodEvent {};
 struct PlayerDamageEvent {};
 struct PlayerDisconnectEvent {};
-struct PlayerFormCloseEvent {};
-struct PlayerFormResponseEvent {};
+struct PlayerFormCloseEvent {
+    WeakRef<EntityContext> player;
+    int form_id;
+    PlayerFormCloseReason form_close_reason;
+};
+struct PlayerFormResponseEvent {
+    WeakRef<EntityContext> player;
+    int form_id;
+    Json::Value form_response;
+};
 struct PlayerInitialSpawnEvent {};
 struct PlayerOpenContainerEvent {};
 struct PlayerShootArrowEvent {};
@@ -48,6 +61,7 @@ struct PlayerDimensionChangeBeforeEvent {};
 struct PlayerDimensionChangeAfterEvent {};
 struct PlayerInteractWithEntityAfterEvent {};
 struct PlayerInteractWithBlockAfterEvent {};
+struct PlayerInputPermissionCategoryChangeEvent {};
 
 struct PlayerSayCommandEvent {};
 struct PlayerGetExperienceOrbEvent {};
@@ -59,54 +73,26 @@ template <typename Return>
 struct PlayerGameplayEvent;
 
 template <>
-struct PlayerGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<PlayerSkinLoadedClientEvent const>,         // 0
-                 Details::ValueOrRef<PlayerAddEvent const>,                      // 1
-                 Details::ValueOrRef<PlayerAddExpEvent const>,                   // 2
-                 Details::ValueOrRef<PlayerAddLevelEvent const>,                 // 3
-                 Details::ValueOrRef<PlayerArmorExchangeEvent const>,            // 4
-                 Details::ValueOrRef<PlayerDestroyBlockEvent const>,             // 5
-                 Details::ValueOrRef<PlayerUseNameTagEvent const>,               // 6
-                 Details::ValueOrRef<PlayerDropItemEvent const>,                 // 7
-                 Details::ValueOrRef<PlayerEatFoodEvent const>,                  // 8
-                 Details::ValueOrRef<PlayerDamageEvent const>,                   // 9
-                 Details::ValueOrRef<PlayerDisconnectEvent const>,               // 10
-                 Details::ValueOrRef<PlayerFormCloseEvent const>,                // 11
-                 Details::ValueOrRef<PlayerFormResponseEvent const>,             // 12
-                 Details::ValueOrRef<PlayerInitialSpawnEvent const>,             // 13
-                 Details::ValueOrRef<PlayerOpenContainerEvent const>,            // 14
-                 Details::ValueOrRef<PlayerShootArrowEvent const>,               // 15
-                 Details::ValueOrRef<PlayerRespawnEvent const>,                  // 16
-                 Details::ValueOrRef<PlayerStopLoadingEvent const>,              // 17
-                 Details::ValueOrRef<PlayerUpdateInteractionEvent const>,        // 18
-                 Details::ValueOrRef<PlayerSelectedItemChangedEvent const>,      // 19
-                 Details::ValueOrRef<PlayerDimensionChangeBeforeEvent const>,    // 20
-                 Details::ValueOrRef<PlayerDimensionChangeAfterEvent const>,     // 21
-                 Details::ValueOrRef<PlayerInteractWithEntityAfterEvent const>,  // 22
-                 Details::ValueOrRef<PlayerInteractWithBlockAfterEvent const>,   // 23
-                 Details::ValueOrRef<PlayerEventPlaceHolder<368> const>>
-        event;
-};
+struct PlayerGameplayEvent<void>
+    : public ConstEventVariant<
+          PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
+          PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
+          PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInitialSpawnEvent,
+          PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
+          PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
+          PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
+          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<368>> {};
 
 template <>
-struct PlayerGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<PlayerSayCommandEvent const>,                // 1
-                 Details::ValueOrRef<PlayerGetExperienceOrbEvent const>,          // 2
-                 Details::ValueOrRef<PlayerInteractEvent const>,                  // 3
-                 Details::ValueOrRef<PlayerInteractWithEntityBeforeEvent const>,  // 4
-                 Details::ValueOrRef<PlayerInteractWithBlockBeforeEvent const>,   // 5
-                 Details::ValueOrRef<PlayerEventPlaceHolder<216> const>>
-        event;
-};
+struct PlayerGameplayEvent<CoordinatorResult>
+    : public ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
+                               PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent,
+                               PlayerEventPlaceHolder<216>> {};
 
-struct PlayerGameModeChangeEvent {
-    char pad[32];
-};
+struct PlayerGameModeChangeEvent {};
 
 template <typename Return>
 struct MutablePlayerGameplayEvent;
-
 template <>
-struct MutablePlayerGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<PlayerGameModeChangeEvent>> event;
-};
+struct MutablePlayerGameplayEvent<CoordinatorResult>
+    : public MutableEventVariant<PlayerGameModeChangeEvent, PlayerEventPlaceHolder<32>> {};

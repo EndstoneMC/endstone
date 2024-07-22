@@ -14,23 +14,22 @@
 
 #pragma once
 
+#include <type_traits>
 #include <variant>
 
-namespace Details {
+#include "bedrock/core/details.h"
 
-template <typename T>
-class ValueOrRef {
-public:
-    T &value() noexcept
-    {
-        if (std::holds_alternative<T>(variant_)) {
-            return std::get<T>(variant_);
-        }
-        return *std::get<T *>(variant_);
-    }
-
-private:
-    std::variant<T *, T> variant_;
+template <typename... Events>
+struct EventVariantImpl {
+    std::variant<Details::ValueOrRef<Events>...> variant;
 };
 
-}  // namespace Details
+template <typename... Events>
+struct ConstEventVariant {
+    EventVariantImpl<std::add_const_t<Events>...> variant;
+};
+
+template <typename... Events>
+struct MutableEventVariant {
+    EventVariantImpl<Events...> variant;
+};

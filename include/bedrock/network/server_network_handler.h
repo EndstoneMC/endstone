@@ -45,6 +45,7 @@ protected:
 private:
     virtual ServerPlayer *_getServerPlayer(const NetworkIdentifier &, SubClientId) = 0;  // NOLINT
 
+public:
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, bool);

@@ -20,6 +20,7 @@
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
+#include "bedrock/deps/jsoncpp/nlohmann_json.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -44,58 +45,58 @@ using endstone::detail::EndstoneScoreboard;
 using endstone::detail::EndstoneServer;
 using endstone::detail::PythonPluginLoader;
 
-void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &ref)
-{
-    void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) = &ActorEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
-        // [](Details::ValueOrRef<ActorRemovedEvent const> value) { cpptrace::generate_trace().print(); },
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
-}
+// void ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<void>> &ref)
+//{
+//     void (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<void>> &) =
+//     &ActorEventCoordinator::sendEvent; auto visitor = entt::overloaded{
+//         // [](Details::ValueOrRef<ActorRemovedEvent const> value) { cpptrace::generate_trace().print(); },
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+// }
+//
+// CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<CoordinatorResult>> &ref)
+//{
+//     CoordinatorResult (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<CoordinatorResult>> &) =
+//         &ActorEventCoordinator::sendEvent;
+//     auto visitor = entt::overloaded{
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+// }
+//
+// CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<CoordinatorResult>> &ref)
+//{
+//     CoordinatorResult (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<CoordinatorResult>> &) =
+//         &BlockEventCoordinator::sendEvent;
+//     auto visitor = entt::overloaded{
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+// }
+//
+// void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &ref)
+//{
+//     void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) =
+//     &BlockEventCoordinator::sendEvent; auto visitor = entt::overloaded{
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+// }
 
-CoordinatorResult ActorEventCoordinator::sendEvent(const EventRef<ActorGameplayEvent<CoordinatorResult>> &ref)
-{
-    CoordinatorResult (ActorEventCoordinator::*fp)(const EventRef<ActorGameplayEvent<CoordinatorResult>> &) =
-        &ActorEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
-}
-
-CoordinatorResult BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<CoordinatorResult>> &ref)
-{
-    CoordinatorResult (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<CoordinatorResult>> &) =
-        &BlockEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
-}
-
-void BlockEventCoordinator::sendEvent(const EventRef<BlockGameplayEvent<void>> &ref)
-{
-    void (BlockEventCoordinator::*fp)(const EventRef<BlockGameplayEvent<void>> &) = &BlockEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
-}
-
-void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
-{
-    auto visitor = entt::overloaded{
-        // [](Details::ValueOrRef<LevelAddedActorEvent const> value) { cpptrace::generate_trace().print(); },
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
-}
+// void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
+//{
+//     auto visitor = entt::overloaded{
+//         // [](Details::ValueOrRef<LevelAddedActorEvent const> value) { cpptrace::generate_trace().print(); },
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
+// }
 
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
@@ -107,24 +108,36 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
         &PlayerEventCoordinator::sendEvent;
     auto visitor = entt::overloaded{
-        // [](Details::ValueOrRef<PlayerInitialSpawnEvent const> value) {},
-        // [](Details::ValueOrRef<PlayerDisconnectEvent const> value) {},
-        [](auto ignored) {},
+        [](Details::ValueOrRef<PlayerFormCloseEvent const> value) {
+            const auto &event = value.value();
+            const auto &weak_ref = event.player;
+            EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
+            auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
+            player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
+        },
+        [](Details::ValueOrRef<PlayerFormResponseEvent const> value) {
+            const auto &event = value.value();
+            const auto &weak_ref = event.player;
+            EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
+            auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
+            player->getEndstonePlayer().onFormResponse(event.form_id, Json::to_nlohmann(event.form_response));
+        },
+        [](auto &&ignored) {},
     };
-    std::visit(visitor, ref.variant.event);
+    std::visit(visitor, ref.variant.variant.variant);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }
 
-CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &ref)
-{
-    CoordinatorResult (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &) =
-        &PlayerEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
-        [](auto ignored) {},
-    };
-    std::visit(visitor, ref.variant.event);
-    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
-}
+// CoordinatorResult PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &ref)
+//{
+//     CoordinatorResult (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<CoordinatorResult>> &) =
+//         &PlayerEventCoordinator::sendEvent;
+//     auto visitor = entt::overloaded{
+//         [](auto ignored) {},
+//     };
+//     std::visit(visitor, ref.variant.event);
+//     return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
+// }
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {

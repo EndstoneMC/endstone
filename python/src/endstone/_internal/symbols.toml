@@ -1,4 +1,4 @@
-timestamp = 1721649805
+timestamp = 1721687222
 version = "1.21.3"
 
 [windows]
@@ -50,6 +50,8 @@ version = "1.21.3"
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27126640
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27128480
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27167584
+# PlayerEventCoordinator
+"?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 25921088
 # RakNet
 "?RecvFromLoopInt@RNS2_Berkley@RakNet@@IEAAIXZ" = 36847696
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 36848624
@@ -131,6 +133,8 @@ version = "1.21.3"
 "_ZN6Player12getInventoryEv" = 109733856
 "_ZNK6Player7getNameEv" = 109661072
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109685152
+# PlayerEventCoordinator
+"_ZN22PlayerEventCoordinator9sendEventERK8EventRefI19PlayerGameplayEventIvEE" = 112181616
 # RakNet
 "_ZN6RakNet12RNS2_Berkley15RecvFromLoopIntEv" = 131056192
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 131051472

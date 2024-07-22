@@ -16,6 +16,8 @@
 
 #include <memory>
 
+#include <nlohmann/json.hpp>
+
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
 #include "bedrock/world/actor/player/build_platform.h"
@@ -109,6 +111,9 @@ public:
     void disconnect();
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
+
+    void onFormClose(int form_id, PlayerFormCloseReason reason) {};
+    void onFormResponse(int form_id, const nlohmann::json &json) {};
 
 private:
     friend class ::ServerNetworkHandler;
