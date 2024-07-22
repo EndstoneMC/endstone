@@ -23,6 +23,7 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/scores/display_objective.h"
+#include "bedrock/world/scores/identity_definition.h"
 #include "bedrock/world/scores/identity_dictionary.h"
 #include "bedrock/world/scores/objective.h"
 #include "bedrock/world/scores/objective_sort_order.h"
@@ -63,6 +64,7 @@ public:
     [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
     [[nodiscard]] ObjectiveCriteria *getCriteria(const std::string &name) const;
     void forEachObjective(std::function<void(Objective &)> callback) const;
+    void forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const;
     void resetPlayerScore(const ScoreboardId &);
     ENDSTONE_HOOK bool resetPlayerScore(const ScoreboardId &, Objective &);
 

@@ -2,7 +2,7 @@
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
-// You may obtain a copy ofo the License at
+// You may obtain a copy of the License at
 //
 //     http://www.apache.org/licenses/LICENSE-2.0
 //
@@ -14,42 +14,59 @@
 
 #pragma once
 
-#include "bedrock/world/scores/identity_definition.h"
+#include <string>
+
+#include "bedrock/world/scores/player_scoreboard_id.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 
-class ScoreboardIdentityRef {
+class IdentityDefinition {
 public:
-    [[nodiscard]] int getNumReferences() const
-    {
-        return num_references_;
-    }
+    enum class Type : std::uint8_t {
+        Invalid,
+        Player,
+        Entity,
+        FakePlayer
+    };
 
     [[nodiscard]] const ScoreboardId &getScoreboardId() const
     {
         return scoreboard_id_;
     }
 
+    [[nodiscard]] bool isHiddenFakePlayer() const
+    {
+        return is_hidden_fake_player_;
+    }
+
     [[nodiscard]] const PlayerScoreboardId &getPlayerId() const
     {
-        return scoreboard_id_.getIdentityDef().getPlayerId();
+        return player_id_;
     }
 
     [[nodiscard]] const ActorUniqueID &getEntityId() const
     {
-        return scoreboard_id_.getIdentityDef().getEntityId();
+        return entity_id_;
     }
 
     [[nodiscard]] const std::string &getFakePlayerName() const
     {
-        return scoreboard_id_.getIdentityDef().getFakePlayerName();
+        return player_name_;
     }
 
-    [[nodiscard]] IdentityDefinition::Type getIdentityType() const
+    [[nodiscard]] Type getIdentityType() const
     {
-        return scoreboard_id_.getIdentityDef().getIdentityType();
+        return identity_type_;
     }
+
+    static IdentityDefinition Invalid;
 
 private:
-    int num_references_;
     ScoreboardId scoreboard_id_;
+    bool is_hidden_fake_player_;
+    PlayerScoreboardId player_id_;
+    ActorUniqueID entity_id_;
+    std::string player_name_;
+    Type identity_type_;  // +72
 };
+
+inline IdentityDefinition IdentityDefinition::Invalid;

@@ -136,6 +136,13 @@ void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) con
     }
 }
 
+void Scoreboard::forEachIdentityRef(std::function<void(ScoreboardIdentityRef &)> callback) const
+{
+    for (const auto &[key, value] : identity_refs_) {
+        callback(const_cast<ScoreboardIdentityRef &>(value));
+    }
+}
+
 void Scoreboard::resetPlayerScore(const ScoreboardId &id)
 {
     for (auto &[key, value] : objectives_) {

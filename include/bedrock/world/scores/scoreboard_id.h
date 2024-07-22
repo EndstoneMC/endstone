@@ -19,22 +19,16 @@
 
 #include "bedrock/forward.h"
 
+class IdentityDefinition;
 class ScoreboardId {
 public:
     ScoreboardId() = default;
     explicit ScoreboardId(std::int64_t id) : raw_id(id) {}
+    [[nodiscard]] bool isValid() const;
+    [[nodiscard]] IdentityDefinition const &getIdentityDef() const;
+    bool operator==(const ScoreboardId &other) const;
 
     static const ScoreboardId INVALID;
-
-    [[nodiscard]] bool isValid() const
-    {
-        return raw_id != ScoreboardId::INVALID.raw_id;
-    }
-
-    bool operator==(const ScoreboardId &other) const
-    {
-        return raw_id == other.raw_id;
-    }
 
     std::int64_t raw_id{-1};
     IdentityDefinition *identity_def{nullptr};

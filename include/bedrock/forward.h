@@ -91,7 +91,6 @@ class HitResult;
 class I18nObserver;
 class IAddActorEntityProxy;
 class IContainerManager;
-class IdentityDefinition;
 class IFoodItemComponent;
 class IMinecraftApp;
 class IMinecraftEventing;
