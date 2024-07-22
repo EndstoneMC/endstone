@@ -52,7 +52,7 @@ public:
     virtual void writeToLevelStorage() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
 
-    Objective *Scoreboard::addObjective(const std::string &, const std::string &, const ObjectiveCriteria &criteria);
+    Objective *addObjective(const std::string &, const std::string &, const ObjectiveCriteria &criteria);
     bool removeObjective(Objective *);
     [[nodiscard]] Objective *getObjective(const std::string &name) const;
     [[nodiscard]] const DisplayObjective *getDisplayObjective(const std::string &name) const;
