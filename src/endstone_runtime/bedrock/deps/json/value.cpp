@@ -113,6 +113,18 @@ Json::Value::Value(Json::ValueType type)
     }
 }
 
+const Value &Value::operator[](int index) const
+{
+    if (type_ == nullValue) {
+        return null;
+    }
+
+    if (index < 0 || index >= value_.array_->size()) {
+        return null;
+    }
+    return value_.array_->at(index);
+}
+
 const Value &Value::operator[](const char *key) const
 {
     if (type_ != objectValue) {
@@ -182,11 +194,109 @@ int Value::asInt() const
     case uintValue:
         return static_cast<int>(value_.uint_);
     case realValue:
-        return static_cast<int>(std::round(value_.real_));
+        return static_cast<int>(value_.real_);
     case nullValue:
         return 0;
     case booleanValue:
         return value_.bool_ ? 1 : 0;
+    default:
+        return 0;
+    }
+}
+
+std::int64_t Value::asInt64() const
+{
+    switch (type_) {
+    case intValue:
+        return static_cast<std::int64_t>(value_.int_);
+    case uintValue:
+        return static_cast<std::int64_t>(value_.uint_);
+    case realValue:
+        return static_cast<std::int64_t>(value_.real_);
+    case nullValue:
+        return 0;
+    case booleanValue:
+        return value_.bool_ ? 1 : 0;
+    default:
+        return 0;
+    }
+}
+
+std::uint64_t Value::asUInt64() const
+{
+    switch (type_) {
+    case intValue:
+        return static_cast<std::uint64_t>(value_.int_);
+    case uintValue:
+        return static_cast<std::uint64_t>(value_.uint_);
+    case realValue:
+        return static_cast<std::uint64_t>(value_.real_);
+    case nullValue:
+        return 0;
+    case booleanValue:
+        return value_.bool_ ? 1 : 0;
+    default:
+        return 0;
+    }
+}
+
+double Value::asDouble() const
+{
+    switch (type_) {
+    case intValue:
+        return static_cast<double>(value_.int_);
+    case uintValue:
+        return static_cast<double>(value_.uint_);
+    case realValue:
+        return static_cast<double>(value_.real_);
+    case nullValue:
+        return 0;
+    case booleanValue:
+        return value_.bool_ ? 1.0 : 0.0;
+    default:
+        return 0.0;
+    }
+}
+
+bool Value::asBool() const
+{
+    switch (type_) {
+    case booleanValue:
+        return value_.bool_;
+    case nullValue:
+        return false;
+    case intValue:
+        return value_.int_ != 0;
+    case uintValue:
+        return value_.uint_ != 0;
+    case realValue:
+        return static_cast<bool>(value_.real_);
+    default:
+        return false;
+    }
+}
+
+std::vector<std::string> Value::getMemberNames() const
+{
+    std::vector<std::string> members;
+    if (type_ == nullValue) {
+        return members;
+    }
+
+    members.reserve(value_.map_->size());
+    for (auto &[key, value] : *value_.map_) {
+        members.emplace_back(key.c_str());
+    }
+    return members;
+}
+
+std::size_t Value::size() const
+{
+    switch (type_) {
+    case arrayValue:
+        return value_.array_->size();
+    case objectValue:
+        return value_.map_->size();
     default:
         return 0;
     }

@@ -57,7 +57,16 @@ public:
     [[nodiscard]] const char *asCString() const;
     [[nodiscard]] std::string asString() const;
     [[nodiscard]] int asInt() const;
+    [[nodiscard]] std::int64_t asInt64() const;
+    [[nodiscard]] std::uint64_t asUInt64() const;
+    [[nodiscard]] double asDouble() const;
+    [[nodiscard]] bool asBool() const;
 
+    [[nodiscard]] std::vector<std::string> getMemberNames() const;
+    [[nodiscard]] std::size_t size() const;
+
+    /// Access an array element (zero based index)
+    const Value &operator[](int index) const;
     /// Access an object value by name, returns null if there is no member with that name.
     const Value &operator[](const char *key) const;
     /// Return the member named key if it exist, defaultValue otherwise.
