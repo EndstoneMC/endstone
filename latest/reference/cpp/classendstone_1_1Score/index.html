@@ -1795,9 +1795,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-getscore" class="md-nav__link">
+    <a href="#function-getscoreboard" class="md-nav__link">
       <span class="md-ellipsis">
-        function getScore
+        function getScoreboard
       </span>
     </a>
 
@@ -1808,9 +1808,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-getscoreboard" class="md-nav__link">
+    <a href="#function-getvalue" class="md-nav__link">
       <span class="md-ellipsis">
-        function getScoreboard
+        function getValue
       </span>
     </a>
 
@@ -1834,9 +1834,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-setscore" class="md-nav__link">
+    <a href="#function-setvalue" class="md-nav__link">
       <span class="md-ellipsis">
-        function setScore
+        function setValue
       </span>
     </a>
 
@@ -1918,12 +1918,12 @@
 <td style="text-align: left;"><a href="#function-getobjective"><strong>getObjective</strong></a> () const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Objective/"><em><strong>Objective</strong></em></a> <em>being tracked by this</em><a href="./"><em><strong>Score</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual int</td>
-<td style="text-align: left;"><a href="#function-getscore"><strong>getScore</strong></a> () const = 0<br><em>Gets the current score.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getscoreboard"><strong>getScoreboard</strong></a> () const = 0<br><em>Gets the scoreboard for the associated objective.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-getvalue"><strong>getValue</strong></a> () const = 0<br><em>Gets the current score.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
@@ -1931,7 +1931,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setscore"><strong>setScore</strong></a> (int score) = 0<br><em>Sets the current score.</em></td>
+<td style="text-align: left;"><a href="#function-setvalue"><strong>setValue</strong></a> (int score) = 0<br><em>Sets the current score.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -1956,20 +1956,20 @@
 <p>the owning objective's scoreboard </p>
 <hr>
 
-<h3 id="function-getscore">function getScore<a class="headerlink" href="#function-getscore" title="Permanent link">&para;</a></h3>
-<p><em>Gets the current score.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getScore</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>the current score </p>
-<hr>
-
 <h3 id="function-getscoreboard">function getScoreboard<a class="headerlink" href="#function-getscoreboard" title="Permanent link">&para;</a></h3>
 <p><em>Gets the scoreboard for the associated objective.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the owning objective's scoreboard </p>
+<hr>
+
+<h3 id="function-getvalue">function getValue<a class="headerlink" href="#function-getvalue" title="Permanent link">&para;</a></h3>
+<p><em>Gets the current score.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">getValue</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the current score </p>
 <hr>
 
 <h3 id="function-isscoreset">function isScoreSet<a class="headerlink" href="#function-isscoreset" title="Permanent link">&para;</a></h3>
@@ -1980,9 +1980,9 @@
 <p>if this score has been set before </p>
 <hr>
 
-<h3 id="function-setscore">function setScore<a class="headerlink" href="#function-setscore" title="Permanent link">&para;</a></h3>
+<h3 id="function-setvalue">function setValue<a class="headerlink" href="#function-setvalue" title="Permanent link">&para;</a></h3>
 <p><em>Sets the current score.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">setScore</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Score</span><span class="o">::</span><span class="n">setValue</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">score</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>

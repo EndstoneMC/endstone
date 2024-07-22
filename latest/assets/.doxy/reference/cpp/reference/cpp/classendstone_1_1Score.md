@@ -54,10 +54,10 @@ _Represents a score for an objective on a scoreboard._
 | ---: | :--- |
 | virtual ScoreEntry | [**getEntry**](#function-getentry) () const = 0<br>_Gets the entry being tracked by this_ [_**Score**_](classendstone_1_1Score.md) _._ |
 | virtual [**Objective**](classendstone_1_1Objective.md) & | [**getObjective**](#function-getobjective) () const = 0<br>_Gets the_ [_**Objective**_](classendstone_1_1Objective.md) _being tracked by this_[_**Score**_](classendstone_1_1Score.md) _._ |
-| virtual int | [**getScore**](#function-getscore) () const = 0<br>_Gets the current score._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard for the associated objective._  |
+| virtual int | [**getValue**](#function-getvalue) () const = 0<br>_Gets the current score._  |
 | virtual bool | [**isScoreSet**](#function-isscoreset) () const = 0<br>_Shows if this score has been set at any point in time._  |
-| virtual void | [**setScore**](#function-setscore) (int score) = 0<br>_Sets the current score._  |
+| virtual void | [**setValue**](#function-setvalue) (int score) = 0<br>_Sets the current score._  |
 | virtual  | [**~Score**](#function-score) () = default<br> |
 
 
@@ -142,31 +142,6 @@ the owning objective's scoreboard
 
 
 
-### function getScore 
-
-_Gets the current score._ 
-```C++
-virtual int endstone::Score::getScore () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-the current score 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getScoreboard 
 
 _Gets the scoreboard for the associated objective._ 
@@ -181,6 +156,31 @@ virtual Scoreboard & endstone::Score::getScoreboard () const = 0
 **Returns:**
 
 the owning objective's scoreboard 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getValue 
+
+_Gets the current score._ 
+```C++
+virtual int endstone::Score::getValue () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the current score 
 
 
 
@@ -217,11 +217,11 @@ if this score has been set before
 
 
 
-### function setScore 
+### function setValue 
 
 _Sets the current score._ 
 ```C++
-virtual void endstone::Score::setScore (
+virtual void endstone::Score::setValue (
     int score
 ) = 0
 ```
