@@ -108,7 +108,7 @@ std::vector<std::unique_ptr<Score>> EndstoneScoreboard::getScores(ScoreEntry ent
 
 void EndstoneScoreboard::resetScores(ScoreEntry entry)
 {
-    throw std::runtime_error("Not implemented.");
+    board_.resetPlayerScore(getScoreboardId(entry));
 }
 
 std::vector<ScoreEntry> EndstoneScoreboard::getEntries() const

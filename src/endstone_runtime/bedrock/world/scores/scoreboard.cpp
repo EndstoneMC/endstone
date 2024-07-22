@@ -15,6 +15,7 @@
 #include "bedrock/world/scores/scoreboard.h"
 
 #include "bedrock/world/actor/player/player.h"
+#include "endstone/detail/hook.h"
 
 Objective *Scoreboard::addObjective(const std::string &name, const std::string &display_name,
                                     const ObjectiveCriteria &criteria)
@@ -130,7 +131,20 @@ ObjectiveCriteria *Scoreboard::getCriteria(const std::string &name) const
 
 void Scoreboard::forEachObjective(std::function<void(Objective &)> callback) const
 {
-    for (auto &[key, value] : objectives_) {
+    for (const auto &[key, value] : objectives_) {
         callback(*value);
     }
+}
+
+void Scoreboard::resetPlayerScore(const ScoreboardId &id)
+{
+    for (auto &[key, value] : objectives_) {
+        resetPlayerScore(id, *value);
+    }
+}
+
+bool Scoreboard::resetPlayerScore(const ScoreboardId &id, Objective &objective)
+{
+    bool (Scoreboard::*func)(const ScoreboardId &, Objective &) = &Scoreboard::resetPlayerScore;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(func, this, id, objective);
 }

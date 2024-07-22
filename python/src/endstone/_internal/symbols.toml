@@ -1,4 +1,4 @@
-timestamp = 1721162447
+timestamp = 1721649805
 version = "1.21.3"
 
 [windows]
@@ -58,6 +58,8 @@ version = "1.21.3"
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 8528128
 # SayCommand
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 17542672
+# Scoreboard
+"?resetPlayerScore@Scoreboard@@QEAA_NAEBUScoreboardId@@AEAVObjective@@@Z" = 36679488
 # ScriptLevelGameplayHandler
 "?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 10106160
 # ServerInstanceEventCoordinator
@@ -137,6 +139,8 @@ version = "1.21.3"
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 77649200
 # SayCommand
 "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_RK21CommandOriginIdentityR5Level" = 82777952
+# Scoreboard
+"_ZN10Scoreboard16resetPlayerScoreERK12ScoreboardIdR9Objective" = 130481120
 # ScriptLevelGameplayHandler
 "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 79981360
 # ServerInstanceEventCoordinator

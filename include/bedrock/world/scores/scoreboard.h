@@ -63,6 +63,8 @@ public:
     [[nodiscard]] ScoreboardIdentityRef *getScoreboardIdentityRef(const ScoreboardId &id);
     [[nodiscard]] ObjectiveCriteria *getCriteria(const std::string &name) const;
     void forEachObjective(std::function<void(Objective &)> callback) const;
+    void resetPlayerScore(const ScoreboardId &);
+    ENDSTONE_HOOK bool resetPlayerScore(const ScoreboardId &, Objective &);
 
 private:
     CommandSoftEnumRegistry registry_;                                                        // +8
