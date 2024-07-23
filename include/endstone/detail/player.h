@@ -20,7 +20,6 @@
 
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
-#include "bedrock/world/actor/player/build_platform.h"
 #include "endstone/detail/actor/mob.h"
 #include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/player.h"
@@ -105,6 +104,7 @@ public:
     [[nodiscard]] endstone::UUID getDeviceId() const override;
     [[nodiscard]] const Skin &getSkin() const override;
     void transfer(std::string address, int port) const override;
+    void sendForm(std::variant<MessageForm> form) const override;
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
@@ -112,8 +112,12 @@ public:
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
 
-    void onFormClose(int form_id, PlayerFormCloseReason reason) {};
-    void onFormResponse(int form_id, const nlohmann::json &json) {};
+    void onFormClose(int form_id, PlayerFormCloseReason reason) {
+        // TODO(form): handle form close
+    };
+    void onFormResponse(int form_id, const nlohmann::json &json) {
+        // TODO(form): handle form response
+    };
 
 private:
     friend class ::ServerNetworkHandler;

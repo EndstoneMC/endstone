@@ -18,6 +18,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/player/build_platform.h"
 #include "bedrock/world/actor/player/player.h"
 
 class PlayerListEntry {

@@ -17,6 +17,7 @@
 #include <chrono>
 
 #include "endstone/actor/mob.h"
+#include "endstone/form/message_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/skin.h"
@@ -296,6 +297,13 @@ public:
      * @param port Server port to transfer the player to
      */
     virtual void transfer(std::string address, int port) const = 0;
+
+    /**
+     * @brief Sends a form to the player.
+     *
+     * @param form The form to send
+     */
+    virtual void sendForm(std::variant<MessageForm> form) const = 0;
 };
 
 }  // namespace endstone

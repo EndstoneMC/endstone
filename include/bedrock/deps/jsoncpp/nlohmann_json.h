@@ -59,7 +59,7 @@ inline nlohmann::json to_nlohmann(const Json::Value &value)  // NOLINT
         break;
     }
     default:
-        throw std::runtime_error("Unhandled case in convertToJson");
+        throw std::runtime_error("Unexpected type of Json::Value");
     }
     return result;
 }

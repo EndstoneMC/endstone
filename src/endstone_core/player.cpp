@@ -21,6 +21,7 @@
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
 #include "bedrock/network/packet/transfer_packet.h"
@@ -546,6 +547,40 @@ void EndstonePlayer::updateAbilities() const
 ::Player &EndstonePlayer::getHandle() const
 {
     return player_;
+}
+
+namespace {
+nlohmann::json toJson(const std::variant<std::string, Translatable> &text)
+{
+    return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json { return arg; },
+                                       [&](const Translatable &arg) -> nlohmann::json {
+                                           return {{"translate", arg.getTranslationKey()},
+                                                   {"with", arg.getParameters()}};
+                                       }},
+                      text);
+}
+}  // namespace
+
+void EndstonePlayer::sendForm(std::variant<MessageForm> form) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
+    std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
+    static unsigned int form_id = 0x80000000;  // TODO(fixme): use a member variable instead
+    pk->form_id = form_id++;
+    pk->form_json = std::visit(
+                        entt::overloaded{//
+                                         [](const MessageForm &form) {
+                                             nlohmann::json json;
+                                             json["type"] = "modal";
+                                             json["title"] = toJson(form.getTitle());
+                                             json["content"] = toJson(form.getContent());
+                                             json["button1"] = toJson(form.getButton1());
+                                             json["button2"] = toJson(form.getButton2());
+                                             return json;
+                                         }},
+                        form)
+                        .dump();
+    getHandle().sendNetworkPacket(*packet);
 }
 
 }  // namespace endstone::detail
