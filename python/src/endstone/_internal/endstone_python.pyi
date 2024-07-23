@@ -2043,17 +2043,17 @@ class ThunderChangeEvent(Event):
         Gets the state of thunder that the world is being set to
         """
 class Translatable:
-    def __init__(self, translate: str, params: list[str] | None = None) -> None:
+    def __init__(self, translate: str, with_: list[str] | None = None) -> None:
         ...
     @property
-    def parameters(self) -> list[str]:
-        """
-        Get the translation parameters.
-        """
-    @property
-    def translation_key(self) -> str:
+    def translate(self) -> str:
         """
         Get the translation key for use in a translation component.
+        """
+    @property
+    def with_(self) -> list[str]:
+        """
+        Get the translation parameters.
         """
 class Vector:
     """

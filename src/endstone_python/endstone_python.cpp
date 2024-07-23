@@ -188,10 +188,10 @@ void init_translatable(py::module_ &m)
         .def(py::init([](std::string translate, const std::optional<std::vector<std::string>> &with) {
                  return Translatable(std::move(translate), with.value_or(std::vector<std::string>{}));
              }),
-             py::arg("translate"), py::arg("params") = py::none())
-        .def_property_readonly("translation_key", &Translatable::getTranslationKey,
+             py::arg("translate"), py::arg("with_") = py::none())
+        .def_property_readonly("translate", &Translatable::getTranslationKey,
                                "Get the translation key for use in a translation component.")
-        .def_property_readonly("parameters", &Translatable::getParameters, "Get the translation parameters.");
+        .def_property_readonly("with_", &Translatable::getParameters, "Get the translation parameters.");
 }
 
 void init_server(py::class_<Server> &server)
