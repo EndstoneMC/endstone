@@ -182,16 +182,13 @@ void init_logger(py::module &m)
         .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
-namespace {
-Translatable createTranslatable(std::string translate, const std::optional<std::vector<std::string>> &with)
-{
-    return {std::move(translate), with.value_or(std::vector<std::string>{})};
-}
-}  // namespace
 void init_translatable(py::module_ &m)
 {
     py::class_<Translatable>(m, "Translatable")
-        .def(py::init(&createTranslatable), py::arg("translate"), py::arg("params"))
+        .def(py::init([](std::string translate, const std::optional<std::vector<std::string>> &with) {
+                 return Translatable(std::move(translate), with.value_or(std::vector<std::string>{}));
+             }),
+             py::arg("translate"), py::arg("params") = py::none())
         .def_property_readonly("translation_key", &Translatable::getTranslationKey,
                                "Get the translation key for use in a translation component.")
         .def_property_readonly("parameters", &Translatable::getParameters, "Get the translation parameters.");

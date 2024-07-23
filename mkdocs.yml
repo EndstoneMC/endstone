@@ -202,6 +202,7 @@ nav:
           - Actor: reference/python/actor.md
           - Command: reference/python/command.md
           - Event: reference/python/event.md
+          - Form: reference/python/form.md
           - Level: reference/python/level.md
           - Inventory: reference/python/inventory.md
           - Permissions: reference/python/permissions.md

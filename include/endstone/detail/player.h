@@ -112,11 +112,15 @@ public:
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
 
-    void onFormClose(int form_id, PlayerFormCloseReason reason) {
+    void onFormClose(int form_id, PlayerFormCloseReason reason)
+    {
         // TODO(form): handle form close
+        printf("Close %d, %d\n", form_id, static_cast<int>(reason));
     };
-    void onFormResponse(int form_id, const nlohmann::json &json) {
+    void onFormResponse(int form_id, const nlohmann::json &json)
+    {
         // TODO(form): handle form response
+        printf("Response %d\n%s\n", form_id, json.dump().c_str());
     };
 
 private:

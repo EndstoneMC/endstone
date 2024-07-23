@@ -554,8 +554,12 @@ nlohmann::json toJson(const std::variant<std::string, Translatable> &text)
 {
     return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json { return arg; },
                                        [&](const Translatable &arg) -> nlohmann::json {
-                                           return {{"translate", arg.getTranslationKey()},
-                                                   {"with", arg.getParameters()}};
+                                           nlohmann::json json;
+                                           json["rawtext"].push_back({
+                                               {"translate", arg.getTranslationKey()},
+                                               {"with", arg.getParameters()},
+                                           });
+                                           return json;
                                        }},
                       text);
 }
@@ -567,18 +571,16 @@ void EndstonePlayer::sendForm(std::variant<MessageForm> form) const
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     static unsigned int form_id = 0x80000000;  // TODO(fixme): use a member variable instead
     pk->form_id = form_id++;
-    pk->form_json = std::visit(
-                        entt::overloaded{//
-                                         [](const MessageForm &form) {
-                                             nlohmann::json json;
-                                             json["type"] = "modal";
-                                             json["title"] = toJson(form.getTitle());
-                                             json["content"] = toJson(form.getContent());
-                                             json["button1"] = toJson(form.getButton1());
-                                             json["button2"] = toJson(form.getButton2());
-                                             return json;
-                                         }},
-                        form)
+    pk->form_json = std::visit(entt::overloaded{[](const MessageForm &form) {
+                                   nlohmann::json json;
+                                   json["type"] = "modal";
+                                   json["title"] = toJson(form.getTitle());
+                                   json["content"] = toJson(form.getContent());
+                                   json["button1"] = toJson(form.getButton1());
+                                   json["button2"] = toJson(form.getButton2());
+                                   return json;
+                               }},
+                               form)
                         .dump();
     getHandle().sendNetworkPacket(*packet);
 }
