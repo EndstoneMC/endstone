@@ -20,6 +20,7 @@
 // must be included after pybind11
 #include "endstone/form/form.h"
 #include "endstone/form/message_form.h"
+#include "endstone/message.h"
 
 namespace py = pybind11;
 
@@ -27,10 +28,8 @@ namespace endstone::detail {
 
 void init_form(py::module_ &m)
 {
-    using TextType = std::variant<std::string, Translatable>;
-
-    py::class_<endstone::MessageForm>(m, "MessageForm")
-        .def(py::init<>([](TextType title, TextType content, TextType button1, TextType button2) {
+    py::class_<endstone::MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
+        .def(py::init<>([](Message title, Message content, Message button1, Message button2) {
                  return MessageForm()
                      .setTitle(std::move(title))
                      .setContent(std::move(content))

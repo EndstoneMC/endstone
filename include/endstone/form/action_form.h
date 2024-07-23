@@ -16,14 +16,15 @@
 
 #include <utility>
 
+#include "endstone/form/controls/button.h"
 #include "endstone/form/form.h"
 
 namespace endstone {
 
 /**
- * @brief Represents a form with two buttons.
+ * @brief Represents a form with buttons that let the player take action.
  */
-class MessageForm : public Form<MessageForm> {
+class ActionForm : public Form<ActionForm> {
 public:
     /**
      * @brief Get the content of the form.
@@ -41,60 +42,38 @@ public:
      * @param text The text to set as the content.
      * @return A reference to the current form.
      */
-    MessageForm &setContent(Message text)
+    ActionForm &setContent(Message text)
     {
         content_ = std::move(text);
         return *this;
     }
 
     /**
-     * @brief Get the text of button1.
+     * @brief Adds a button to the form.
      *
-     * @return The text of button1.
-     */
-    [[nodiscard]] Message getButton1() const
-    {
-        return button1_text_;
-    }
-
-    /**
-     * @brief Set the text of button1.
-     *
-     * @param text The text to set as the button1 text.
+     * @param text The text of the button
+     * @param icon The path or URL to the icon image
      * @return A reference to the current form.
      */
-    MessageForm &setButton1(Message text)
+    ActionForm &addButton(const Message &text, const std::optional<std::string> &icon = std::nullopt)
     {
-        button1_text_ = std::move(text);
+        buttons_.emplace_back(text, icon);
         return *this;
     }
 
     /**
-     * @brief Get the text of button2.
+     * @brief Get the buttons of the action form.
      *
-     * @return The text of button2.
+     * @return A list of buttons in the action form.
      */
-    [[nodiscard]] Message getButton2() const
+    [[nodiscard]] const std::vector<Button> &getButtons() const
     {
-        return button2_text_;
-    }
-
-    /**
-     * @brief Set the text of button2.
-     *
-     * @param text The text to set as the button2 text.
-     * @return A reference to the current form.
-     */
-    MessageForm &setButton2(Message text)
-    {
-        button2_text_ = std::move(text);
-        return *this;
+        return buttons_;
     }
 
 private:
     Message content_;
-    Message button1_text_;
-    Message button2_text_;
+    std::vector<Button> buttons_;
 };
 
 }  // namespace endstone

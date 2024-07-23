@@ -34,7 +34,10 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/base64.h"
+#include "endstone/detail/form/form_serializer.h"
 #include "endstone/detail/server.h"
+#include "endstone/form/action_form.h"
+#include "endstone/form/message_form.h"
 
 namespace endstone::detail {
 
@@ -495,53 +498,37 @@ void EndstonePlayer::transfer(std::string address, int port) const
     getHandle().sendNetworkPacket(*packet);
 }
 
-namespace {
-nlohmann::json toJson(const std::variant<std::string, Translatable> &text)
-{
-    return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json { return arg; },
-                                       [&](const Translatable &arg) -> nlohmann::json {
-                                           nlohmann::json json;
-                                           json["rawtext"].push_back({
-                                               {"translate", arg.getTranslationKey()},
-                                               {"with", arg.getParameters()},
-                                           });
-                                           return json;
-                                       }},
-                      text);
-}
-}  // namespace
-
 void EndstonePlayer::sendForm(FormVariant form)
 {
+    static FormSerializer visitor;
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->form_id = ++form_ids_;
-    pk->form_json = std::visit(entt::overloaded{[](const MessageForm &form) {
-                                   nlohmann::json json;
-                                   json["type"] = "modal";
-                                   json["title"] = toJson(form.getTitle());
-                                   json["content"] = toJson(form.getContent());
-                                   json["button1"] = toJson(form.getButton1());
-                                   json["button2"] = toJson(form.getButton2());
-                                   return json;
-                               }},
-                               form)
-                        .dump();
-
+    pk->form_json = std::visit(visitor, form).dump();
     forms_.emplace(pk->form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }
 
 void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason reason)
 {
-    // TODO(form): handle form close
+    auto it = forms_.find(form_id);
+    if (it == forms_.end()) {
+        return;  // Could be a form created via the script api, do nothing
+    }
+    // TODO(form): call the callback function
     printf("Close %d, %d\n", form_id, static_cast<int>(reason));
+    forms_.erase(it);
 }
 
 void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
 {
+    auto it = forms_.find(form_id);
+    if (it == forms_.end()) {
+        return;  // Could be a form created via the script api, do nothing
+    }
     // TODO(form): handle form response
     printf("Response %d\n%s\n", form_id, json.dump().c_str());
+    forms_.erase(it);
 }
 
 void EndstonePlayer::initFromConnectionRequest(
