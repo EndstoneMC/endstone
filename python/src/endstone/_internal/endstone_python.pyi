@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -646,6 +646,41 @@ class Logger:
         """
         Get the name of this Logger instance.
         """
+class MessageForm:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '') -> None:
+        ...
+    @property
+    def button1(self) -> str | Translatable:
+        """
+        Gets or sets the text of button1.
+        """
+    @button1.setter
+    def button1(self, arg1: str | Translatable) -> MessageForm:
+        ...
+    @property
+    def button2(self) -> str | Translatable:
+        """
+        Gets or sets the text of button2.
+        """
+    @button2.setter
+    def button2(self, arg1: str | Translatable) -> MessageForm:
+        ...
+    @property
+    def content(self) -> str | Translatable:
+        """
+        Gets or sets the content of the form.
+        """
+    @content.setter
+    def content(self, arg1: str | Translatable) -> MessageForm:
+        ...
+    @property
+    def title(self) -> str | Translatable:
+        """
+        Gets or sets the title of the form.
+        """
+    @title.setter
+    def title(self, arg1: str | Translatable) -> MessageForm:
+        ...
 class Mob(Actor):
     """
     Represents a mobile entity (i.e. living entity), such as a monster or player.
@@ -995,6 +1030,10 @@ class Player(Mob):
     def reset_title(self) -> None:
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
+        """
+    def send_form(self, form: MessageForm) -> None:
+        """
+        Sends a form to the player.
         """
     def send_popup(self, message: str) -> None:
         """

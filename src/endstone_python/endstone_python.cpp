@@ -39,6 +39,7 @@ void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
+void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &);
 void init_level(py::module_ &);
@@ -79,6 +80,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_game_mode(m);
     init_logger(m);
     init_translatable(m);
+    init_form(m);
     init_inventory(m);
     init_util(m);
     init_level(m);
@@ -330,7 +332,8 @@ void init_player(py::module_ &m)
         .def_property_readonly("device_id", &Player::getDeviceId, "Get the player's current device id.")
         .def_property_readonly("skin", &Player::getSkin, "Get the player's skin.")
         .def("transfer", &Player::transfer, "Transfers the player to another server.", py::arg("address"),
-             py::arg("port") = 19132);
+             py::arg("port") = 19132)
+        .def("send_form", &Player::sendForm, "Sends a form to the player.", py::arg("form"));
 }
 
 }  // namespace endstone::detail

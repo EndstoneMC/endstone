@@ -34,7 +34,7 @@ class Form {
 public:
     using TextType = std::variant<std::string, Translatable>;
 
-    explicit Form(TextType title) : title_(std::move(title)) {}
+    explicit Form() {}
 
     /**
      * @brief Gets the title of the form.
