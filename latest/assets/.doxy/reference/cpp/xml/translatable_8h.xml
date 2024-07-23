@@ -6,6 +6,7 @@
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
     <includedby refid="command__sender_8h" local="yes">include/endstone/command/command_sender.h</includedby>
+    <includedby refid="form_8h" local="yes">include/endstone/form/form.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/endstone/translatable.h</label>
@@ -73,6 +74,8 @@
         <link refid="translatable_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
       </node>
       <node id="22">
         <label>include/endstone/event/server/plugin_enable_event.h</label>
@@ -110,6 +113,12 @@
         <label>include/endstone/event/event_handler.h</label>
         <link refid="event__handler_8h_source"/>
         <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>include/endstone/form/message_form.h</label>
+        <link refid="message__form_8h_source"/>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="27">
@@ -225,6 +234,12 @@
       <node id="15">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="41">
+        <label>include/endstone/form/form.h</label>
+        <link refid="form_8h_source"/>
+        <childnode refid="42" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>include/endstone/event/player/player_event.h</label>

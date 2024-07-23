@@ -27,6 +27,7 @@
 #include <chrono>
 
 #include "endstone/actor/mob.h"
+#include "endstone/form/message_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/skin.h"
@@ -118,6 +119,8 @@ public:
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
 
     virtual void transfer(std::string address, int port) const = 0;
+
+    virtual void sendForm(std::variant<MessageForm> form) const = 0;
 };
 
 }  // namespace endstone

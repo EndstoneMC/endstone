@@ -5,6 +5,7 @@
     <innerdir refid="dir_dd7779a583e02d88c9a89a2c881c3946">include/endstone/actor</innerdir>
     <innerdir refid="dir_5c7b2dbfabcd1115569d1e20a260545c">include/endstone/command</innerdir>
     <innerdir refid="dir_f1d783c0ad83ee143d16e768ebca51c8">include/endstone/event</innerdir>
+    <innerdir refid="dir_0fd3b458603af3963ebb9c312a9238ec">include/endstone/form</innerdir>
     <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
     <innerdir refid="dir_8e239ca1e5fd0d936d66a30330d3a329">include/endstone/level</innerdir>
     <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>

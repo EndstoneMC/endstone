@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1MessageForm" kind="class" language="C++" prot="public">
+    <compoundname>endstone::MessageForm</compoundname>
+    <basecompoundref refid="classendstone_1_1Form" prot="public" virt="non-virtual">endstone::Form&lt; MessageForm &gt;</basecompoundref>
+    <includes refid="message__form_8h" local="no">endstone/form/message_form.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1MessageForm_1ab95e4065fbf9c7d6c07df3d4a8686ae6" prot="private" static="no" mutable="no">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::content_</definition>
+        <argsstring></argsstring>
+        <name>content_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="95" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MessageForm_1a7f4647dadaa128bd165b37ae6ac49292" prot="private" static="no" mutable="no">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::button1_text_</definition>
+        <argsstring></argsstring>
+        <name>button1_text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="96" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1MessageForm_1a2a67c6366f1e1fa9e14871fe284a5c10" prot="private" static="no" mutable="no">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::button2_text_</definition>
+        <argsstring></argsstring>
+        <name>button2_text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="97" column="14" bodyfile="include/endstone/form/message_form.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::getContent</definition>
+        <argsstring>() const</argsstring>
+        <name>getContent</name>
+        <briefdescription>
+<para>Get the content of the <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The content of the <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="33" column="15" bodyfile="include/endstone/form/message_form.h" bodystart="33" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
+        <definition>MessageForm&amp; endstone::MessageForm::setContent</definition>
+        <argsstring>(TextType text)</argsstring>
+        <name>setContent</name>
+        <param>
+          <type>TextType</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Set the content of the <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to set as the content. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="44" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="44" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::getButton1</definition>
+        <argsstring>() const</argsstring>
+        <name>getButton1</name>
+        <briefdescription>
+<para>Get the text of button1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The text of button1. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="55" column="15" bodyfile="include/endstone/form/message_form.h" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
+        <definition>MessageForm&amp; endstone::MessageForm::setButton1</definition>
+        <argsstring>(TextType text)</argsstring>
+        <name>setButton1</name>
+        <param>
+          <type>TextType</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Set the text of button1. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to set as the button1 text. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="66" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TextType</type>
+        <definition>TextType endstone::MessageForm::getButton2</definition>
+        <argsstring>() const</argsstring>
+        <name>getButton2</name>
+        <briefdescription>
+<para>Get the text of button2. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The text of button2. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="77" column="15" bodyfile="include/endstone/form/message_form.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &amp;</type>
+        <definition>MessageForm&amp; endstone::MessageForm::setButton2</definition>
+        <argsstring>(TextType text)</argsstring>
+        <name>setButton2</name>
+        <param>
+          <type>TextType</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Set the text of button2. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to set as the button2 text. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/message_form.h" line="88" column="17" bodyfile="include/endstone/form/message_form.h" bodystart="88" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a form that consists of a message and two button. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Form&lt; MessageForm &gt;</label>
+        <link refid="classendstone_1_1Form"/>
+      </node>
+      <node id="1">
+        <label>endstone::MessageForm</label>
+        <link refid="classendstone_1_1MessageForm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Form&lt; MessageForm &gt;</label>
+        <link refid="classendstone_1_1Form"/>
+      </node>
+      <node id="1">
+        <label>endstone::MessageForm</label>
+        <link refid="classendstone_1_1MessageForm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/form/message_form.h" line="26" column="1" bodyfile="include/endstone/form/message_form.h" bodystart="26" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1MessageForm_1a7f4647dadaa128bd165b37ae6ac49292" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button1_text_</name></member>
+      <member refid="classendstone_1_1MessageForm_1a2a67c6366f1e1fa9e14871fe284a5c10" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button2_text_</name></member>
+      <member refid="classendstone_1_1MessageForm_1ab95e4065fbf9c7d6c07df3d4a8686ae6" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>content_</name></member>
+      <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>Form</name></member>
+      <member refid="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton1</name></member>
+      <member refid="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton2</name></member>
+      <member refid="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getContent</name></member>
+      <member refid="classendstone_1_1Form_1a255cd7776af87b8984e15c3c08ad6834" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton1</name></member>
+      <member refid="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton2</name></member>
+      <member refid="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setContent</name></member>
+      <member refid="classendstone_1_1Form_1af9121f780e97e572a3224a66b0e4e171" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setTitle</name></member>
+      <member refid="classendstone_1_1Form_1a996942f786c5e54f71e8e2b122ee6eb5" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>TextType</name></member>
+      <member refid="classendstone_1_1Form_1a6a2622c4f6187245754ad13b17fede40" prot="protected" virt="non-virtual"><scope>endstone::MessageForm</scope><name>title_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

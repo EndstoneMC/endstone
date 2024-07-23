@@ -68,6 +68,11 @@
 * **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 
+## f
+
+* **Form** ([**endstone::Form**](classendstone_1_1Form.md))
+
+
 ## g
 
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
@@ -93,6 +98,7 @@
 * **getEventType** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **getPlugin** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPriority** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
+* **getTitle** ([**endstone::Form**](classendstone_1_1Form.md))
 * **getHandlers** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **getMaxStackSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **getSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
@@ -101,6 +107,9 @@
 * **getTime** ([**endstone::Level**](classendstone_1_1Level.md))
 * **getPitch** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
+* **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **getContent** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -327,10 +336,14 @@
 * **sendErrorMessage** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **sendMessage** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **setCancelled** ([**endstone::Event**](classendstone_1_1Event.md))
+* **setTitle** ([**endstone::Form**](classendstone_1_1Form.md))
 * **setTime** ([**endstone::Level**](classendstone_1_1Level.md))
 * **setPitch** ([**endstone::Location**](classendstone_1_1Location.md))
 * **setYaw** ([**endstone::Location**](classendstone_1_1Location.md))
 * **setLevel** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **setButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **setButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **setContent** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setDisplay** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -338,6 +351,7 @@
 * **setDefault** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **setPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **setRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
+* **sendForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendPopup** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTitle** ([**endstone::Player**](classendstone_1_1Player.md))

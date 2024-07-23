@@ -207,6 +207,13 @@
     <member refid="classendstone_1_1EventHandler_1a0bf540c4b132dbb5cac4cfc7e6c0dc3b" kind="function"><name>callEvent</name></member>
     <member refid="classendstone_1_1EventHandler_1aa8bc3d7f90a485cefdf0cbae3f95ffc0" kind="function"><name>getEventType</name></member>
   </compound>
+  <compound refid="classendstone_1_1Form" kind="class"><name>endstone::Form</name>
+    <member refid="classendstone_1_1Form_1a996942f786c5e54f71e8e2b122ee6eb5" kind="typedef"><name>TextType</name></member>
+    <member refid="classendstone_1_1Form_1a6a2622c4f6187245754ad13b17fede40" kind="variable"><name>title_</name></member>
+    <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" kind="function"><name>Form</name></member>
+    <member refid="classendstone_1_1Form_1a255cd7776af87b8984e15c3c08ad6834" kind="function"><name>getTitle</name></member>
+    <member refid="classendstone_1_1Form_1af9121f780e97e572a3224a66b0e4e171" kind="function"><name>setTitle</name></member>
+  </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
     <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" kind="variable"><name>handlers_</name></member>
@@ -273,6 +280,17 @@
     <member refid="classendstone_1_1Logger_1a4537b8cb4a086be29beed8e5a44292cf" kind="function"><name>warning</name></member>
     <member refid="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" kind="function"><name>error</name></member>
     <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" kind="function"><name>critical</name></member>
+  </compound>
+  <compound refid="classendstone_1_1MessageForm" kind="class"><name>endstone::MessageForm</name>
+    <member refid="classendstone_1_1MessageForm_1ab95e4065fbf9c7d6c07df3d4a8686ae6" kind="variable"><name>content_</name></member>
+    <member refid="classendstone_1_1MessageForm_1a7f4647dadaa128bd165b37ae6ac49292" kind="variable"><name>button1_text_</name></member>
+    <member refid="classendstone_1_1MessageForm_1a2a67c6366f1e1fa9e14871fe284a5c10" kind="variable"><name>button2_text_</name></member>
+    <member refid="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" kind="function"><name>getContent</name></member>
+    <member refid="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" kind="function"><name>setContent</name></member>
+    <member refid="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" kind="function"><name>getButton1</name></member>
+    <member refid="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" kind="function"><name>setButton1</name></member>
+    <member refid="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" kind="function"><name>getButton2</name></member>
+    <member refid="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" kind="function"><name>setButton2</name></member>
   </compound>
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
@@ -399,6 +417,7 @@
     <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kind="function"><name>transfer</name></member>
+    <member refid="classendstone_1_1Player_1aeac3ed81f65ef5ef4df090e39e64dda3" kind="function"><name>sendForm</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
@@ -957,6 +976,10 @@
   </compound>
   <compound refid="weather__event_8h" kind="file"><name>weather_event.h</name>
   </compound>
+  <compound refid="form_8h" kind="file"><name>form.h</name>
+  </compound>
+  <compound refid="message__form_8h" kind="file"><name>message_form.h</name>
+  </compound>
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
@@ -1037,6 +1060,8 @@
   <compound refid="dir_6cf277b678674f97c7a2b6b3b2447b33" kind="dir"><name>include/endstone</name>
   </compound>
   <compound refid="dir_f1d783c0ad83ee143d16e768ebca51c8" kind="dir"><name>include/endstone/event</name>
+  </compound>
+  <compound refid="dir_0fd3b458603af3963ebb9c312a9238ec" kind="dir"><name>include/endstone/form</name>
   </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
   </compound>

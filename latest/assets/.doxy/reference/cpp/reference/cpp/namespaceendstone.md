@@ -46,11 +46,13 @@
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
+| class | [**Form**](classendstone_1_1Form.md) &lt;typename T&gt;<br>_Represents a generic form._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per event basis._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
+| class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form that consists of a message and two button._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |

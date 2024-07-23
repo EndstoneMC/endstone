@@ -56,6 +56,12 @@
 ([**endstone**](namespaceendstone.md))
 
 
+## f
+
+* [**Form**](classendstone_1_1Form.md)
+([**endstone**](namespaceendstone.md))
+
+
 ## h
 
 * [**HandlerList**](classendstone_1_1HandlerList.md)
@@ -84,6 +90,8 @@
 
 ## m
 
+* [**MessageForm**](classendstone_1_1MessageForm.md)
+([**endstone**](namespaceendstone.md))
 * [**Mob**](classendstone_1_1Mob.md)
 ([**endstone**](namespaceendstone.md))
 
