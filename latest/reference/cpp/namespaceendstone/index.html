@@ -1840,6 +1840,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#typedef-formvariant" class="md-nav__link">
+      <span class="md-ellipsis">
+        typedef FormVariant
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#enum-gamemode" class="md-nav__link">
       <span class="md-ellipsis">
         enum GameMode
@@ -2386,6 +2399,10 @@
 <td style="text-align: left;"><a href="#enum-eventpriority"><strong>EventPriority</strong></a>  <br><em>Represents an event's priority in execution.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">typedef std::variant&lt; class <a href="../classendstone_1_1MessageForm/"><strong>MessageForm</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#typedef-formvariant"><strong>FormVariant</strong></a>  <br></td>
+</tr>
+<tr>
 <td style="text-align: right;">enum</td>
 <td style="text-align: left;"><a href="#enum-gamemode"><strong>GameMode</strong></a>  <br><em>Represents the various type of game modes that Players may have.</em></td>
 </tr>
@@ -2486,125 +2503,130 @@
 <p>Listeners with lower priority are called first will listeners with higher priority are called last. Listeners are called in following order: LOWEST -&gt; LOW -&gt; NORMAL -&gt; HIGH -&gt; HIGHEST -&gt; MONITOR </p>
 <hr>
 
+<h3 id="typedef-formvariant">typedef FormVariant<a class="headerlink" href="#typedef-formvariant" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">FormVariant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">MessageForm</span><span class="o">&gt;</span><span class="p">;</span>
+</span></code></pre></div>
+<hr>
+
 <h3 id="enum-gamemode">enum GameMode<a class="headerlink" href="#enum-gamemode" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">GameMode</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Survival</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Creative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Adventure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Spectator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">GameMode</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Survival</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Creative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Adventure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">Spectator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="enum-objectivesortorder">enum ObjectiveSortOrder<a class="headerlink" href="#enum-objectivesortorder" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Ascending</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Descending</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">ObjectiveSortOrder</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">Ascending</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">Descending</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="enum-permissiondefault">enum PermissionDefault<a class="headerlink" href="#enum-permissiondefault" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">PermissionDefault</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">True</span><span class="p">,</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">False</span><span class="p">,</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">Operator</span><span class="p">,</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">NotOperator</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">PermissionDefault</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">True</span><span class="p">,</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="n">False</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="n">Operator</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">NotOperator</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="typedef-permissionremovedexecutor">typedef PermissionRemovedExecutor<a class="headerlink" href="#typedef-permissionremovedexecutor" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionRemovedExecutor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PermissionRemovedExecutor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PermissionAttachment</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="enum-pluginloadorder">enum PluginLoadOrder<a class="headerlink" href="#enum-pluginloadorder" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">PluginLoadOrder</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Startup</span><span class="p">,</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="n">PostWorld</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">PluginLoadOrder</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Startup</span><span class="p">,</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="n">PostWorld</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="enum-rendertype">enum RenderType<a class="headerlink" href="#enum-rendertype" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">RenderType</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">Integer</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">};</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">RenderType</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Integer</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="typedef-scoreentry">typedef ScoreEntry<a class="headerlink" href="#typedef-scoreentry" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ScoreEntry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">Actor</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <p>An entry for a score. </p>
 <hr>
 
 <h3 id="typedef-taskid">typedef TaskId<a class="headerlink" href="#typedef-taskid" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">TaskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">TaskId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-hash_value">function hash_value<a class="headerlink" href="#function-hash_value" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">hash_value</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">hash_value</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">u</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-operator">function operator!=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
-</span></code></pre></div>
-<hr>
-
-<h3 id="function-operator_1">function operator&lt;<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">!=</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-operator_2">function operator&lt;=<a class="headerlink" href="#function-operator_2" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-operator_1">function operator&lt;<a class="headerlink" href="#function-operator_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-operator_3">function operator==<a class="headerlink" href="#function-operator_3" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-operator_2">function operator&lt;=<a class="headerlink" href="#function-operator_2" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-operator_4">function operator&gt;<a class="headerlink" href="#function-operator_4" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-operator_3">function operator==<a class="headerlink" href="#function-operator_3" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">==</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-operator_5">function operator&gt;=<a class="headerlink" href="#function-operator_5" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span>
+<h3 id="function-operator_4">function operator&gt;<a class="headerlink" href="#function-operator_4" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
 </span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="function-swap">function swap<a class="headerlink" href="#function-swap" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+<h3 id="function-operator_5">function operator&gt;=<a class="headerlink" href="#function-operator_5" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="k">operator</span><span class="o">&gt;=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
 </span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-swap">function swap<a class="headerlink" href="#function-swap" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 

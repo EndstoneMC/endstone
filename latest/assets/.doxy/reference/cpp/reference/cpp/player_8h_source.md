@@ -120,7 +120,7 @@ public:
 
     virtual void transfer(std::string address, int port) const = 0;
 
-    virtual void sendForm(std::variant<MessageForm> form) const = 0;
+    virtual void sendForm(FormVariant form) = 0;
 };
 
 }  // namespace endstone

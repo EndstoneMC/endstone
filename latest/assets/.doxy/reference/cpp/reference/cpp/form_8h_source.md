@@ -32,6 +32,8 @@
 
 namespace endstone {
 
+using FormVariant = std::variant<class MessageForm>;
+
 template <typename T>
 class Form {
 public:

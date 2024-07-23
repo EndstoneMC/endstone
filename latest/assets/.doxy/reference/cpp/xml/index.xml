@@ -417,7 +417,7 @@
     <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kind="function"><name>transfer</name></member>
-    <member refid="classendstone_1_1Player_1aeac3ed81f65ef5ef4df090e39e64dda3" kind="function"><name>sendForm</name></member>
+    <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
@@ -881,6 +881,7 @@
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" kind="enumvalue"><name>Descending</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
+    <member refid="form_8h_1a4c410ee8379fa07d126dae0ea40d5bc5" kind="typedef"><name>FormVariant</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>

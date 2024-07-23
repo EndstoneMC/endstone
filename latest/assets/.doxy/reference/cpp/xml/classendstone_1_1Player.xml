@@ -939,13 +939,13 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="299" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1aeac3ed81f65ef5ef4df090e39e64dda3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Player::sendForm</definition>
-        <argsstring>(std::variant&lt; MessageForm &gt; form) const =0</argsstring>
+        <argsstring>(FormVariant form)=0</argsstring>
         <name>sendForm</name>
         <param>
-          <type>std::variant&lt; <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &gt;</type>
+          <type>FormVariant</type>
           <declname>form</declname>
         </param>
         <briefdescription>
@@ -1094,7 +1094,7 @@
       <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a8e3992eae0fee7e733685451a8e31b8d" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1Player_1aeac3ed81f65ef5ef4df090e39e64dda3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendForm</name></member>
+      <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendForm</name></member>
       <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendMessage</name></member>

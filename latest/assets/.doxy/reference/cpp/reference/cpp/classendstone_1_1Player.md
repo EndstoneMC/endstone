@@ -160,7 +160,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 |  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator_1) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual void | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
-| virtual void | [**sendForm**](#function-sendform) (std::variant&lt; [**MessageForm**](classendstone_1_1MessageForm.md) &gt; form) const = 0<br>_Sends a form to the player._  |
+| virtual void | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
 | virtual void | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
 | virtual void | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._  |
@@ -1025,8 +1025,8 @@ virtual void endstone::Player::resetTitle () const = 0
 _Sends a form to the player._ 
 ```C++
 virtual void endstone::Player::sendForm (
-    std::variant< MessageForm > form
-) const = 0
+    FormVariant form
+) = 0
 ```
 
 

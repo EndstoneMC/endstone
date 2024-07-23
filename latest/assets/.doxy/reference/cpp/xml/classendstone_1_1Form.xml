@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="35" column="5" bodyfile="include/endstone/form/form.h" bodystart="35" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="37" column="5" bodyfile="include/endstone/form/form.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="protected-attrib">
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="62" column="14" bodyfile="include/endstone/form/form.h" bodystart="62" bodyend="-1"/>
+        <location file="include/endstone/form/form.h" line="64" column="14" bodyfile="include/endstone/form/form.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="37" column="14" bodyfile="include/endstone/form/form.h" bodystart="37" bodyend="37"/>
+        <location file="include/endstone/form/form.h" line="39" column="14" bodyfile="include/endstone/form/form.h" bodystart="39" bodyend="39"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a255cd7776af87b8984e15c3c08ad6834" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>TextType</type>
@@ -67,7 +67,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="44" column="15" bodyfile="include/endstone/form/form.h" bodystart="44" bodyend="47"/>
+        <location file="include/endstone/form/form.h" line="46" column="15" bodyfile="include/endstone/form/form.h" bodystart="46" bodyend="49"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1af9121f780e97e572a3224a66b0e4e171" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>T &amp;</type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="55" column="7" bodyfile="include/endstone/form/form.h" bodystart="55" bodyend="59"/>
+        <location file="include/endstone/form/form.h" line="57" column="7" bodyfile="include/endstone/form/form.h" bodystart="57" bodyend="61"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -106,7 +106,7 @@
     <detaileddescription>
 <para>The <ref refid="classendstone_1_1Form" kindref="compound">Form</ref> class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. </para>
     </detaileddescription>
-    <location file="include/endstone/form/form.h" line="33" column="1" bodyfile="include/endstone/form/form.h" bodystart="33" bodyend="63"/>
+    <location file="include/endstone/form/form.h" line="35" column="1" bodyfile="include/endstone/form/form.h" bodystart="35" bodyend="65"/>
     <listofallmembers>
       <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
       <member refid="classendstone_1_1Form_1a255cd7776af87b8984e15c3c08ad6834" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getTitle</name></member>

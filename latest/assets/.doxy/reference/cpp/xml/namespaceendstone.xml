@@ -336,6 +336,19 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="form_8h_1a4c410ee8379fa07d126dae0ea40d5bc5" prot="public" static="no">
+        <type>std::variant&lt; class <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &gt;</type>
+        <definition>using endstone::FormVariant = typedef std::variant&lt;class MessageForm&gt;</definition>
+        <argsstring></argsstring>
+        <name>FormVariant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="25" column="1" bodyfile="include/endstone/form/form.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
         <type>std::function&lt; void(const <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>
         <definition>using endstone::PermissionRemovedExecutor = typedef std::function&lt;void(const PermissionAttachment &amp;)&gt;</definition>

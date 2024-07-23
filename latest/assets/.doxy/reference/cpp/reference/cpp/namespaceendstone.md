@@ -101,6 +101,7 @@
 | ---: | :--- |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
+| typedef std::variant&lt; class [**MessageForm**](classendstone_1_1MessageForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
@@ -211,6 +212,19 @@ Listeners with lower priority are called first will listeners with higher priori
 
 
         
+
+<hr>
+
+
+
+### typedef FormVariant 
+
+```C++
+using endstone::FormVariant = typedef std::variant<class MessageForm>;
+```
+
+
+
 
 <hr>
 
