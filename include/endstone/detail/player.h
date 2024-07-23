@@ -104,24 +104,15 @@ public:
     [[nodiscard]] endstone::UUID getDeviceId() const override;
     [[nodiscard]] const Skin &getSkin() const override;
     void transfer(std::string address, int port) const override;
-    void sendForm(std::variant<MessageForm> form) const override;
+    void sendForm(FormVariant form) override;
+    void onFormClose(int form_id, PlayerFormCloseReason reason);
+    void onFormResponse(int form_id, const nlohmann::json &json);
 
     void initFromConnectionRequest(
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
     [[nodiscard]] ::Player &getHandle() const;
-
-    void onFormClose(int form_id, PlayerFormCloseReason reason)
-    {
-        // TODO(form): handle form close
-        printf("Close %d, %d\n", form_id, static_cast<int>(reason));
-    };
-    void onFormResponse(int form_id, const nlohmann::json &json)
-    {
-        // TODO(form): handle form response
-        printf("Response %d\n%s\n", form_id, json.dump().c_str());
-    };
 
 private:
     friend class ::ServerNetworkHandler;
@@ -135,6 +126,8 @@ private:
     std::string device_os_ = "unknown";
     endstone::UUID device_id_;
     Skin skin_;
+    int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
+    std::unordered_map<int, FormVariant> forms_;
 };
 
 }  // namespace endstone::detail

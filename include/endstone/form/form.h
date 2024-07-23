@@ -22,6 +22,8 @@
 
 namespace endstone {
 
+using FormVariant = std::variant<class MessageForm>;
+
 /**
  * @brief Represents a generic form.
  *

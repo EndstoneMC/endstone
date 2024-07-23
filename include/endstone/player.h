@@ -303,7 +303,7 @@ public:
      *
      * @param form The form to send
      */
-    virtual void sendForm(std::variant<MessageForm> form) const = 0;
+    virtual void sendForm(FormVariant form) = 0;
 };
 
 }  // namespace endstone
