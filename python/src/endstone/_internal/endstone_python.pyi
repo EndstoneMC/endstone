@@ -4,7 +4,41 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'Button', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+class ActionForm:
+    """
+    Represents a form with buttons that let the player take action.
+    """
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[Button] | None = None) -> None:
+        ...
+    def add_button(self, text: str | Translatable, icon: str | None = None) -> ActionForm:
+        """
+        Adds a button to the form.
+        """
+    @property
+    def buttons(self) -> list[Button]:
+        """
+        Gets or sets the buttons of the action form.
+        """
+    @buttons.setter
+    def buttons(self, arg1: list[Button]) -> ActionForm:
+        ...
+    @property
+    def content(self) -> str | Translatable:
+        """
+        Gets or sets the content of the form.
+        """
+    @content.setter
+    def content(self, arg1: str | Translatable) -> ActionForm:
+        ...
+    @property
+    def title(self) -> str | Translatable:
+        """
+        Gets or sets the title of the form.
+        """
+    @title.setter
+    def title(self, arg1: str | Translatable) -> ActionForm:
+        ...
 class Actor(CommandSender):
     """
     Represents a base actor in the level.
@@ -111,6 +145,28 @@ class BroadcastMessageEvent(Event):
         """
         Gets a set of recipients that this broadcast message will be displayed to.
         """
+class Button:
+    """
+    Represents a button with text and an optional icon.
+    """
+    def __init__(self, text: str | Translatable = '', icon: str | None = None) -> None:
+        ...
+    @property
+    def icon(self) -> str | None:
+        """
+        Gets or sets the icon path or URL of the button
+        """
+    @icon.setter
+    def icon(self, arg1: str) -> None:
+        ...
+    @property
+    def text(self) -> str | Translatable:
+        """
+        Gets or sets the text of the button
+        """
+    @text.setter
+    def text(self, arg1: str | Translatable) -> None:
+        ...
 class ColorFormat:
     """
     All supported color and format codes.
@@ -647,6 +703,9 @@ class Logger:
         Get the name of this Logger instance.
         """
 class MessageForm:
+    """
+    Represents a form with two buttons.
+    """
     def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '') -> None:
         ...
     @property
@@ -1031,7 +1090,7 @@ class Player(Mob):
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
         """
-    def send_form(self, form: MessageForm) -> None:
+    def send_form(self, form: MessageForm | ActionForm) -> None:
         """
         Sends a form to the player.
         """

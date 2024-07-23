@@ -71,6 +71,18 @@ public:
         return buttons_;
     }
 
+    /**
+     * @brief Set the buttons of the action form.
+     *
+     * @param buttons The list of buttons to set.
+     * @return A reference to the current form.
+     */
+    ActionForm &setButtons(const std::vector<Button> &buttons)
+    {
+        buttons_ = buttons;
+        return *this;
+    }
+
 private:
     Message content_;
     std::vector<Button> buttons_;

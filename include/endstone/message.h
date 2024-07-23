@@ -22,6 +22,6 @@
 
 namespace endstone {
 
-class Message : public std::variant<std::string, Translatable> {};
+using Message = std::variant<std::string, Translatable>;
 
 }  // namespace endstone
