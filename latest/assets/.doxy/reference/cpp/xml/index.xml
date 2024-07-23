@@ -1,5 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="classendstone_1_1ActionForm" kind="class"><name>endstone::ActionForm</name>
+    <member refid="classendstone_1_1ActionForm_1a5a2382f4992f2611612841261e5c5255" kind="variable"><name>content_</name></member>
+    <member refid="classendstone_1_1ActionForm_1a6d636aeb18a37003ef44b1b30c82d0d2" kind="variable"><name>buttons_</name></member>
+    <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" kind="function"><name>getContent</name></member>
+    <member refid="classendstone_1_1ActionForm_1a3d4690491594fa31da97d5578c1bc7f9" kind="function"><name>setContent</name></member>
+    <member refid="classendstone_1_1ActionForm_1a5614202a3c82ded38502d4cbf06c0484" kind="function"><name>addButton</name></member>
+    <member refid="classendstone_1_1ActionForm_1a655f766116e4d39c838e37940a015471" kind="function"><name>getButtons</name></member>
+    <member refid="classendstone_1_1ActionForm_1a2cabeb959f3a06e7cfce29ae1037a52e" kind="function"><name>setButtons</name></member>
+  </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
     <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" kind="function"><name>Actor</name></member>
     <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" kind="function"><name>Actor</name></member>
@@ -67,6 +76,16 @@
     <member refid="classendstone_1_1BroadcastMessageEvent_1a8cbfb89d04d4a4510f944da2dec5a307" kind="function"><name>getMessage</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a7a73a014a95353346d4fb8b789c77998" kind="function"><name>setMessage</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a76737ffb8bc730b76b214d4d020a56db" kind="function"><name>getRecipients</name></member>
+  </compound>
+  <compound refid="classendstone_1_1Button" kind="class"><name>endstone::Button</name>
+    <member refid="classendstone_1_1Button_1a0966411688e4051e6ebd9e12e6a49bfc" kind="variable"><name>text_</name></member>
+    <member refid="classendstone_1_1Button_1a944174ff70825c631f1efe103a1f4857" kind="variable"><name>icon_</name></member>
+    <member refid="classendstone_1_1Button_1aa7bd604170d6b66a289e1fb1326605fd" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1Button_1abb57e00ae1adb514b666c4189585c0b6" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" kind="function"><name>getText</name></member>
+    <member refid="classendstone_1_1Button_1a2dbe6dfde1d7be34677658936c38899d" kind="function"><name>setText</name></member>
+    <member refid="classendstone_1_1Button_1abab67f381c4cbc7547b76c8e52c7fdb2" kind="function"><name>getIcon</name></member>
+    <member refid="classendstone_1_1Button_1a40c779049edaff8528122dc0fea588f1" kind="function"><name>setIcon</name></member>
   </compound>
   <compound refid="structendstone_1_1ColorFormat" kind="struct"><name>endstone::ColorFormat</name>
     <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" kind="variable"><name>Escape</name></member>
@@ -208,11 +227,10 @@
     <member refid="classendstone_1_1EventHandler_1aa8bc3d7f90a485cefdf0cbae3f95ffc0" kind="function"><name>getEventType</name></member>
   </compound>
   <compound refid="classendstone_1_1Form" kind="class"><name>endstone::Form</name>
-    <member refid="classendstone_1_1Form_1a996942f786c5e54f71e8e2b122ee6eb5" kind="typedef"><name>TextType</name></member>
-    <member refid="classendstone_1_1Form_1a6a2622c4f6187245754ad13b17fede40" kind="variable"><name>title_</name></member>
+    <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" kind="variable"><name>title_</name></member>
     <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" kind="function"><name>Form</name></member>
-    <member refid="classendstone_1_1Form_1a255cd7776af87b8984e15c3c08ad6834" kind="function"><name>getTitle</name></member>
-    <member refid="classendstone_1_1Form_1af9121f780e97e572a3224a66b0e4e171" kind="function"><name>setTitle</name></member>
+    <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" kind="function"><name>getTitle</name></member>
+    <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" kind="function"><name>setTitle</name></member>
   </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
@@ -282,15 +300,15 @@
     <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" kind="function"><name>critical</name></member>
   </compound>
   <compound refid="classendstone_1_1MessageForm" kind="class"><name>endstone::MessageForm</name>
-    <member refid="classendstone_1_1MessageForm_1ab95e4065fbf9c7d6c07df3d4a8686ae6" kind="variable"><name>content_</name></member>
-    <member refid="classendstone_1_1MessageForm_1a7f4647dadaa128bd165b37ae6ac49292" kind="variable"><name>button1_text_</name></member>
-    <member refid="classendstone_1_1MessageForm_1a2a67c6366f1e1fa9e14871fe284a5c10" kind="variable"><name>button2_text_</name></member>
-    <member refid="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" kind="function"><name>getContent</name></member>
-    <member refid="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" kind="function"><name>setContent</name></member>
-    <member refid="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" kind="function"><name>getButton1</name></member>
-    <member refid="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" kind="function"><name>setButton1</name></member>
-    <member refid="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" kind="function"><name>getButton2</name></member>
-    <member refid="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" kind="function"><name>setButton2</name></member>
+    <member refid="classendstone_1_1MessageForm_1abca52d7cf32aaab113aa3a0d65f1046f" kind="variable"><name>content_</name></member>
+    <member refid="classendstone_1_1MessageForm_1ad837135cec90cf369d35feaa1f598344" kind="variable"><name>button1_text_</name></member>
+    <member refid="classendstone_1_1MessageForm_1a9daa7ae62d33ecc513163c78f912de8a" kind="variable"><name>button2_text_</name></member>
+    <member refid="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" kind="function"><name>getContent</name></member>
+    <member refid="classendstone_1_1MessageForm_1aadbf6ab2f31ccd37eff55fb75bfa43f0" kind="function"><name>setContent</name></member>
+    <member refid="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" kind="function"><name>getButton1</name></member>
+    <member refid="classendstone_1_1MessageForm_1a5a25547323d4cb256bc49eed0e760403" kind="function"><name>setButton1</name></member>
+    <member refid="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" kind="function"><name>getButton2</name></member>
+    <member refid="classendstone_1_1MessageForm_1a22522e5fe63819819d1fbbfa735a80f2" kind="function"><name>setButton2</name></member>
   </compound>
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
@@ -376,6 +394,7 @@
     <member refid="classendstone_1_1PermissionAttachmentInfo_1a86e337719e9f2625f7a8a1760c630ecb" kind="function"><name>getValue</name></member>
   </compound>
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
+    <member refid="classendstone_1_1Player_1af68167194ea24df3226c2f8015444eed" kind="typedef"><name>FormVariant</name></member>
     <member refid="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" kind="function"><name>Player</name></member>
     <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" kind="function"><name>Player</name></member>
     <member refid="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" kind="function"><name>operator=</name></member>
@@ -881,7 +900,7 @@
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" kind="enumvalue"><name>Descending</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
-    <member refid="form_8h_1a4c410ee8379fa07d126dae0ea40d5bc5" kind="typedef"><name>FormVariant</name></member>
+    <member refid="message_8h_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
@@ -977,6 +996,10 @@
   </compound>
   <compound refid="weather__event_8h" kind="file"><name>weather_event.h</name>
   </compound>
+  <compound refid="action__form_8h" kind="file"><name>action_form.h</name>
+  </compound>
+  <compound refid="button_8h" kind="file"><name>button.h</name>
+  </compound>
   <compound refid="form_8h" kind="file"><name>form.h</name>
   </compound>
   <compound refid="message__form_8h" kind="file"><name>message_form.h</name>
@@ -996,6 +1019,8 @@
   <compound refid="position_8h" kind="file"><name>position.h</name>
   </compound>
   <compound refid="logger_8h" kind="file"><name>logger.h</name>
+  </compound>
+  <compound refid="message_8h" kind="file"><name>message.h</name>
   </compound>
   <compound refid="permissible_8h" kind="file"><name>permissible.h</name>
   </compound>
@@ -1057,6 +1082,8 @@
   <compound refid="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir"><name>include/endstone/event/actor</name>
   </compound>
   <compound refid="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir"><name>include/endstone/command</name>
+  </compound>
+  <compound refid="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir"><name>include/endstone/form/controls</name>
   </compound>
   <compound refid="dir_6cf277b678674f97c7a2b6b3b2447b33" kind="dir"><name>include/endstone</name>
   </compound>

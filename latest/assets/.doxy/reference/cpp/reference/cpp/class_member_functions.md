@@ -5,6 +5,7 @@
 
 ## a
 
+* **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **Actor** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
@@ -25,6 +26,7 @@
 ## b
 
 * **BroadcastMessageEvent** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
+* **Button** ([**endstone::Button**](classendstone_1_1Button.md))
 * **bake** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **broadcast** ([**endstone::Server**](classendstone_1_1Server.md))
 * **broadcastMessage** ([**endstone::Server**](classendstone_1_1Server.md))
@@ -75,6 +77,8 @@
 
 ## g
 
+* **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **getLevel** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Server**](classendstone_1_1Server.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -86,6 +90,8 @@
 * **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
+* **getIcon** ([**endstone::Button**](classendstone_1_1Button.md))
+* **getText** ([**endstone::Button**](classendstone_1_1Button.md))
 * **getAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **getDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **getName** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Logger**](classendstone_1_1Logger.md), [**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::Server**](classendstone_1_1Server.md))
@@ -109,7 +115,6 @@
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
-* **getContent** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -324,10 +329,14 @@
 
 ## s
 
+* **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
+* **setIcon** ([**endstone::Button**](classendstone_1_1Button.md))
+* **setText** ([**endstone::Button**](classendstone_1_1Button.md))
 * **setAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **setDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md))
 * **setName** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -343,7 +352,6 @@
 * **setLevel** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **setButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
-* **setContent** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setDisplay** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))

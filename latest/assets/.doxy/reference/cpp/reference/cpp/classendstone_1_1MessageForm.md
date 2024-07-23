@@ -8,7 +8,7 @@
 
 
 
-_Represents a form that consists of a message and two button._ 
+_Represents a form with two buttons._ 
 
 * `#include <endstone/form/message_form.h>`
 
@@ -31,13 +31,6 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 
 
 
-## Public Types inherited from endstone::Form
-
-See [endstone::Form](classendstone_1_1Form.md)
-
-| Type | Name |
-| ---: | :--- |
-| typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**TextType**](classendstone_1_1Form.md#typedef-texttype)  <br> |
 
 
 
@@ -80,12 +73,12 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|  TextType | [**getButton1**](#function-getbutton1) () const<br>_Get the text of button1._  |
-|  TextType | [**getButton2**](#function-getbutton2) () const<br>_Get the text of button2._  |
-|  TextType | [**getContent**](#function-getcontent) () const<br>_Get the content of the_ [_**MessageForm**_](classendstone_1_1MessageForm.md) _._ |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton1**](#function-setbutton1) (TextType text) <br>_Set the text of button1._  |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton2**](#function-setbutton2) (TextType text) <br>_Set the text of button2._  |
-|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setContent**](#function-setcontent) (TextType text) <br>_Set the content of the_ [_**MessageForm**_](classendstone_1_1MessageForm.md) _._ |
+|  Message | [**getButton1**](#function-getbutton1) () const<br>_Get the text of button1._  |
+|  Message | [**getButton2**](#function-getbutton2) () const<br>_Get the text of button2._  |
+|  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton1**](#function-setbutton1) (Message text) <br>_Set the text of button1._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setButton2**](#function-setbutton2) (Message text) <br>_Set the text of button2._  |
+|  [**MessageForm**](classendstone_1_1MessageForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Set the content of the form._  |
 
 
 ## Public Functions inherited from endstone::Form
@@ -95,8 +88,8 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**Form**](classendstone_1_1Form.md#function-form) () <br> |
-|  TextType | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
-|  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (TextType title) <br>_Sets the title of the form._  |
+|  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
+|  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
 
@@ -119,7 +112,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|  TextType | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
+|  Message | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
 
 
 
@@ -167,7 +160,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 _Get the text of button1._ 
 ```C++
-inline TextType endstone::MessageForm::getButton1 () const
+inline Message endstone::MessageForm::getButton1 () const
 ```
 
 
@@ -192,7 +185,7 @@ The text of button1.
 
 _Get the text of button2._ 
 ```C++
-inline TextType endstone::MessageForm::getButton2 () const
+inline Message endstone::MessageForm::getButton2 () const
 ```
 
 
@@ -215,9 +208,9 @@ The text of button2.
 
 ### function getContent 
 
-_Get the content of the_ [_**MessageForm**_](classendstone_1_1MessageForm.md) _._
+_Get the content of the form._ 
 ```C++
-inline TextType endstone::MessageForm::getContent () const
+inline Message endstone::MessageForm::getContent () const
 ```
 
 
@@ -226,7 +219,7 @@ inline TextType endstone::MessageForm::getContent () const
 
 **Returns:**
 
-The content of the [**MessageForm**](classendstone_1_1MessageForm.md). 
+The content of the form. 
 
 
 
@@ -243,7 +236,7 @@ The content of the [**MessageForm**](classendstone_1_1MessageForm.md).
 _Set the text of button1._ 
 ```C++
 inline MessageForm & endstone::MessageForm::setButton1 (
-    TextType text
+    Message text
 ) 
 ```
 
@@ -277,7 +270,7 @@ A reference to the current form.
 _Set the text of button2._ 
 ```C++
 inline MessageForm & endstone::MessageForm::setButton2 (
-    TextType text
+    Message text
 ) 
 ```
 
@@ -308,10 +301,10 @@ A reference to the current form.
 
 ### function setContent 
 
-_Set the content of the_ [_**MessageForm**_](classendstone_1_1MessageForm.md) _._
+_Set the content of the form._ 
 ```C++
 inline MessageForm & endstone::MessageForm::setContent (
-    TextType text
+    Message text
 ) 
 ```
 

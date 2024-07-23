@@ -32,43 +32,43 @@ namespace endstone {
 
 class MessageForm : public Form<MessageForm> {
 public:
-    [[nodiscard]] TextType getContent() const
+    [[nodiscard]] Message getContent() const
     {
         return content_;
     }
 
-    MessageForm &setContent(TextType text)
+    MessageForm &setContent(Message text)
     {
         content_ = std::move(text);
         return *this;
     }
 
-    [[nodiscard]] TextType getButton1() const
+    [[nodiscard]] Message getButton1() const
     {
         return button1_text_;
     }
 
-    MessageForm &setButton1(TextType text)
+    MessageForm &setButton1(Message text)
     {
         button1_text_ = std::move(text);
         return *this;
     }
 
-    [[nodiscard]] TextType getButton2() const
+    [[nodiscard]] Message getButton2() const
     {
         return button2_text_;
     }
 
-    MessageForm &setButton2(TextType text)
+    MessageForm &setButton2(Message text)
     {
         button2_text_ = std::move(text);
         return *this;
     }
 
 private:
-    TextType content_;
-    TextType button1_text_;
-    TextType button2_text_;
+    Message content_;
+    Message button1_text_;
+    Message button2_text_;
 };
 
 }  // namespace endstone

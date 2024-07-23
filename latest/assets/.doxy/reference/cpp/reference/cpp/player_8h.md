@@ -11,7 +11,9 @@
 
 
 * `#include <chrono>`
+* `#include <variant>`
 * `#include "endstone/actor/mob.h"`
+* `#include "endstone/form/action_form.h"`
 * `#include "endstone/form/message_form.h"`
 * `#include "endstone/game_mode.h"`
 * `#include "endstone/inventory/player_inventory.h"`

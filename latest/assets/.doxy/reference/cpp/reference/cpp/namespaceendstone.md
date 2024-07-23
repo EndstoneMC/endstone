@@ -29,6 +29,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| class | [**ActionForm**](classendstone_1_1ActionForm.md) <br>_Represents a form with buttons that let the player take action._  |
 | class | [**Actor**](classendstone_1_1Actor.md) <br>_Represents a base actor in the level._  |
 | class | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._ |
 | class | [**ActorEvent**](classendstone_1_1ActorEvent.md) <br>_Represents an Actor-related event._  |
@@ -36,6 +37,7 @@
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
+| class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
@@ -52,7 +54,7 @@
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
-| class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form that consists of a message and two button._  |
+| class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |
@@ -101,8 +103,8 @@
 | ---: | :--- |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
-| typedef std::variant&lt; class [**MessageForm**](classendstone_1_1MessageForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
+| typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
@@ -217,19 +219,6 @@ Listeners with lower priority are called first will listeners with higher priori
 
 
 
-### typedef FormVariant 
-
-```C++
-using endstone::FormVariant = typedef std::variant<class MessageForm>;
-```
-
-
-
-
-<hr>
-
-
-
 ### enum GameMode 
 
 ```C++
@@ -239,6 +228,19 @@ enum endstone::GameMode {
     Adventure = 2,
     Spectator = 3
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef Message 
+
+```C++
+using endstone::Message = typedef std::variant<std::string, Translatable>;
 ```
 
 

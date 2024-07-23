@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form that consists of a message and two button._  |
+| class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 
 
 

@@ -261,6 +261,11 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Protected Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::variant&lt; [**MessageForm**](classendstone_1_1MessageForm.md), [**ActionForm**](classendstone_1_1ActionForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
 
 
 
@@ -1414,6 +1419,21 @@ Generally useful to ensure the client has a complete list of commands after perm
 
 ```C++
 endstone::Player::~Player () override
+```
+
+
+
+
+<hr>
+## Protected Types Documentation
+
+
+
+
+### typedef FormVariant 
+
+```C++
+using endstone::Player::FormVariant =  std::variant<MessageForm, ActionForm>;
 ```
 
 

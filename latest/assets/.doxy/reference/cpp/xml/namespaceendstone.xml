@@ -36,6 +36,8 @@
     <innerclass refid="classendstone_1_1ThunderChangeEvent" prot="public">endstone::ThunderChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1WeatherChangeEvent" prot="public">endstone::WeatherChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1WeatherEvent" prot="public">endstone::WeatherEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActionForm" prot="public">endstone::ActionForm</innerclass>
+    <innerclass refid="classendstone_1_1Button" prot="public">endstone::Button</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
     <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
@@ -336,18 +338,18 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="form_8h_1a4c410ee8379fa07d126dae0ea40d5bc5" prot="public" static="no">
-        <type>std::variant&lt; class <ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref> &gt;</type>
-        <definition>using endstone::FormVariant = typedef std::variant&lt;class MessageForm&gt;</definition>
+      <memberdef kind="typedef" id="message_8h_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
+        <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
+        <definition>using endstone::Message = typedef std::variant&lt;std::string, Translatable&gt;</definition>
         <argsstring></argsstring>
-        <name>FormVariant</name>
+        <name>Message</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="25" column="1" bodyfile="include/endstone/form/form.h" bodystart="25" bodyend="-1"/>
+        <location file="include/endstone/message.h" line="25" column="1" bodyfile="include/endstone/message.h" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" prot="public" static="no">
         <type>std::function&lt; void(const <ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;)&gt;</type>

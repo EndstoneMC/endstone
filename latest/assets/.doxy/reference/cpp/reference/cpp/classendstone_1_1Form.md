@@ -30,11 +30,6 @@ _Represents a generic form._ [More...](#detailed-description)
 
 
 
-## Public Types
-
-| Type | Name |
-| ---: | :--- |
-| typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**TextType**](#typedef-texttype)  <br> |
 
 
 
@@ -60,8 +55,8 @@ _Represents a generic form._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**Form**](#function-form) () <br> |
-|  TextType | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
-|  T & | [**setTitle**](#function-settitle) (TextType title) <br>_Sets the title of the form._  |
+|  Message | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
+|  T & | [**setTitle**](#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
 
@@ -74,7 +69,7 @@ _Represents a generic form._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  TextType | [**title\_**](#variable-title_)  <br> |
+|  Message | [**title\_**](#variable-title_)  <br> |
 
 
 
@@ -102,21 +97,6 @@ The [**Form**](classendstone_1_1Form.md) class provides a base abstraction for d
 
 
     
-## Public Types Documentation
-
-
-
-
-### typedef TextType 
-
-```C++
-using endstone::Form< T >::TextType =  std::variant<std::string, Translatable>;
-```
-
-
-
-
-<hr>
 ## Public Functions Documentation
 
 
@@ -139,7 +119,7 @@ inline explicit endstone::Form::Form ()
 
 _Gets the title of the form._ 
 ```C++
-inline TextType endstone::Form::getTitle () const
+inline Message endstone::Form::getTitle () const
 ```
 
 
@@ -165,7 +145,7 @@ The title of the form.
 _Sets the title of the form._ 
 ```C++
 inline T & endstone::Form::setTitle (
-    TextType title
+    Message title
 ) 
 ```
 
@@ -199,7 +179,7 @@ A reference to the current form.
 ### variable title\_ 
 
 ```C++
-TextType endstone::Form< T >::title_;
+Message endstone::Form< T >::title_;
 ```
 
 

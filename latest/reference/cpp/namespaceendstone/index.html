@@ -1840,9 +1840,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#typedef-formvariant" class="md-nav__link">
+    <a href="#enum-gamemode" class="md-nav__link">
       <span class="md-ellipsis">
-        typedef FormVariant
+        enum GameMode
       </span>
     </a>
 
@@ -1853,9 +1853,9 @@
             
             
             <li class="md-nav__item">
-    <a href="#enum-gamemode" class="md-nav__link">
+    <a href="#typedef-message" class="md-nav__link">
       <span class="md-ellipsis">
-        enum GameMode
+        typedef Message
       </span>
     </a>
 
@@ -2125,6 +2125,10 @@
 <tbody>
 <tr>
 <td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1ActionForm/"><strong>ActionForm</strong></a> <br><em>Represents a form with buttons that let the player take action.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">class</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Actor/"><strong>Actor</strong></a> <br><em>Represents a base actor in the level.</em></td>
 </tr>
 <tr>
@@ -2150,6 +2154,10 @@
 <tr>
 <td style="text-align: right;">class</td>
 <td style="text-align: left;"><a href="../classendstone_1_1BroadcastMessageEvent/"><strong>BroadcastMessageEvent</strong></a> <br><a href="../classendstone_1_1Event/"><em><strong>Event</strong></em></a> <em>triggered for server broadcast messages such as from</em><a href="../classendstone_1_1Server/#function-broadcast"><em><strong>Server::broadcast</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">class</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Button/"><strong>Button</strong></a> <br><em>Represents a button with text and an optional icon.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">struct</td>
@@ -2217,7 +2225,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
-<td style="text-align: left;"><a href="../classendstone_1_1MessageForm/"><strong>MessageForm</strong></a> <br><em>Represents a form that consists of a message and two button.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1MessageForm/"><strong>MessageForm</strong></a> <br><em>Represents a form with two buttons.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">class</td>
@@ -2399,12 +2407,12 @@
 <td style="text-align: left;"><a href="#enum-eventpriority"><strong>EventPriority</strong></a>  <br><em>Represents an event's priority in execution.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">typedef std::variant&lt; class <a href="../classendstone_1_1MessageForm/"><strong>MessageForm</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#typedef-formvariant"><strong>FormVariant</strong></a>  <br></td>
-</tr>
-<tr>
 <td style="text-align: right;">enum</td>
 <td style="text-align: left;"><a href="#enum-gamemode"><strong>GameMode</strong></a>  <br><em>Represents the various type of game modes that Players may have.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">typedef std::variant&lt; std::string, <a href="../classendstone_1_1Translatable/"><strong>Translatable</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#typedef-message"><strong>Message</strong></a>  <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">enum</td>
@@ -2503,18 +2511,18 @@
 <p>Listeners with lower priority are called first will listeners with higher priority are called last. Listeners are called in following order: LOWEST -&gt; LOW -&gt; NORMAL -&gt; HIGH -&gt; HIGHEST -&gt; MONITOR </p>
 <hr>
 
-<h3 id="typedef-formvariant">typedef FormVariant<a class="headerlink" href="#typedef-formvariant" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">FormVariant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">MessageForm</span><span class="o">&gt;</span><span class="p">;</span>
+<h3 id="enum-gamemode">enum GameMode<a class="headerlink" href="#enum-gamemode" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">GameMode</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Survival</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">Creative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Adventure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">Spectator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="p">};</span>
 </span></code></pre></div>
 <hr>
 
-<h3 id="enum-gamemode">enum GameMode<a class="headerlink" href="#enum-gamemode" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">enum</span><span class="w"> </span><span class="nc">endstone</span><span class="o">::</span><span class="n">GameMode</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Survival</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">Creative</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">Adventure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">Spectator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="p">};</span>
+<h3 id="typedef-message">typedef Message<a class="headerlink" href="#typedef-message" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">typedef</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">Translatable</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

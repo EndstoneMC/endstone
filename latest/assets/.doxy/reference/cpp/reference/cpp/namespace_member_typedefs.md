@@ -3,9 +3,9 @@
 
 
 
-## f
+## m
 
-* **FormVariant** ([**endstone**](namespaceendstone.md))
+* **Message** ([**endstone**](namespaceendstone.md))
 
 
 ## p

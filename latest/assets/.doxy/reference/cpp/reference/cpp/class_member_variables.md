@@ -16,6 +16,7 @@
 
 ## b
 
+* **buttons\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -28,9 +29,9 @@
 
 ## c
 
+* **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
-* **content\_** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -89,6 +90,7 @@
 
 ## i
 
+* **icon\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 
@@ -179,6 +181,7 @@
 ## t
 
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **text\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))

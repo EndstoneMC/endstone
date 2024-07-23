@@ -6,20 +6,32 @@
     <includes refid="form_8h" local="yes">endstone/form/form.h</includes>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
-      <node id="6">
-        <label>endstone/translatable.h</label>
-        <link refid="translatable_8h_source"/>
-        <childnode refid="4" relation="include">
+      <node id="4">
+        <label>endstone/message.h</label>
+        <link refid="message_8h_source"/>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="7">
+        <label>endstone/translatable.h</label>
+        <link refid="translatable_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
         <label>variant</label>
       </node>
-      <node id="4">
+      <node id="5">
         <label>string</label>
       </node>
       <node id="1">
@@ -30,7 +42,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>vector</label>
       </node>
       <node id="2">
@@ -40,12 +52,6 @@
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -212,43 +218,43 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="classendstone_1_1MessageForm" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Form" kindref="compound">Form</ref>&lt;MessageForm&gt;<sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="33" refid="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>TextType<sp/><ref refid="classendstone_1_1MessageForm_1a51256b2b73cd522846084f4e65d76e27" kindref="member">getContent</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Message<sp/><ref refid="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" kindref="member">getContent</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="34"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>content_;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1a020bece269b60d263dbe6270068b7950" kindref="member">setContent</ref>(TextType<sp/>text)</highlight></codeline>
+<codeline lineno="44" refid="classendstone_1_1MessageForm_1aadbf6ab2f31ccd37eff55fb75bfa43f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1aadbf6ab2f31ccd37eff55fb75bfa43f0" kindref="member">setContent</ref>(Message<sp/>text)</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>content_<sp/>=<sp/>std::move(text);</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>TextType<sp/><ref refid="classendstone_1_1MessageForm_1a2090c8ec04573e3f94652494b761e719" kindref="member">getButton1</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Message<sp/><ref refid="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" kindref="member">getButton1</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="56"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>button1_text_;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1af226be8215902d5e6d7611f87d974f85" kindref="member">setButton1</ref>(TextType<sp/>text)</highlight></codeline>
+<codeline lineno="66" refid="classendstone_1_1MessageForm_1a5a25547323d4cb256bc49eed0e760403" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1a5a25547323d4cb256bc49eed0e760403" kindref="member">setButton1</ref>(Message<sp/>text)</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>button1_text_<sp/>=<sp/>std::move(text);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
-<codeline lineno="77" refid="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>TextType<sp/><ref refid="classendstone_1_1MessageForm_1a6fbd8e24c498309a5b0aceb81bcc0338" kindref="member">getButton2</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="77" refid="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Message<sp/><ref refid="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" kindref="member">getButton2</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="78"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>button2_text_;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88" refid="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1a161fc29862d9ca08b174fb0d773a539c" kindref="member">setButton2</ref>(TextType<sp/>text)</highlight></codeline>
+<codeline lineno="88" refid="classendstone_1_1MessageForm_1a22522e5fe63819819d1fbbfa735a80f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1MessageForm" kindref="compound">MessageForm</ref><sp/>&amp;<ref refid="classendstone_1_1MessageForm_1a22522e5fe63819819d1fbbfa735a80f2" kindref="member">setButton2</ref>(Message<sp/>text)</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>button2_text_<sp/>=<sp/>std::move(text);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>TextType<sp/>content_;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>TextType<sp/>button1_text_;</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>TextType<sp/>button2_text_;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>content_;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>button1_text_;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>Message<sp/>button2_text_;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

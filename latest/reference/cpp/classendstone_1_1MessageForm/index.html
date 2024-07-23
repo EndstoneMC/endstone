@@ -1768,17 +1768,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#public-types-inherited-from-endstoneform" class="md-nav__link">
-      <span class="md-ellipsis">
-        Public Types inherited from endstone::Form
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -1939,27 +1928,11 @@
 
 <h1 id="class-endstonemessageform">Class endstone::MessageForm<a class="headerlink" href="#class-endstonemessageform" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>MessageForm</strong></a></p>
-<p><em>Represents a form that consists of a message and two button.</em> </p>
+<p><em>Represents a form with two buttons.</em> </p>
 <ul>
 <li><code>#include &lt;endstone/form/message_form.h&gt;</code></li>
 </ul>
 <p>Inherits the following classes: <a href="../classendstone_1_1Form/">endstone::Form</a></p>
-<h2 id="public-types-inherited-from-endstoneform">Public Types inherited from endstone::Form<a class="headerlink" href="#public-types-inherited-from-endstoneform" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1Form/">endstone::Form</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">typedef std::variant&lt; std::string, <a href="../classendstone_1_1Translatable/"><strong>Translatable</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Form/#typedef-texttype"><strong>TextType</strong></a>  <br></td>
-</tr>
-</tbody>
-</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1970,28 +1943,28 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">TextType</td>
+<td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="#function-getbutton1"><strong>getButton1</strong></a> () const<br><em>Get the text of button1.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">TextType</td>
+<td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="#function-getbutton2"><strong>getButton2</strong></a> () const<br><em>Get the text of button2.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">TextType</td>
-<td style="text-align: left;"><a href="#function-getcontent"><strong>getContent</strong></a> () const<br><em>Get the content of the</em> <a href="./"><em><strong>MessageForm</strong></em></a> <em>.</em></td>
+<td style="text-align: right;">Message</td>
+<td style="text-align: left;"><a href="#function-getcontent"><strong>getContent</strong></a> () const<br><em>Get the content of the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>MessageForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-setbutton1"><strong>setButton1</strong></a> (TextType text) <br><em>Set the text of button1.</em></td>
+<td style="text-align: left;"><a href="#function-setbutton1"><strong>setButton1</strong></a> (Message text) <br><em>Set the text of button1.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>MessageForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-setbutton2"><strong>setButton2</strong></a> (TextType text) <br><em>Set the text of button2.</em></td>
+<td style="text-align: left;"><a href="#function-setbutton2"><strong>setButton2</strong></a> (Message text) <br><em>Set the text of button2.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>MessageForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-setcontent"><strong>setContent</strong></a> (TextType text) <br><em>Set the content of the</em> <a href="./"><em><strong>MessageForm</strong></em></a> <em>.</em></td>
+<td style="text-align: left;"><a href="#function-setcontent"><strong>setContent</strong></a> (Message text) <br><em>Set the content of the form.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2010,12 +1983,12 @@
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#function-form"><strong>Form</strong></a> () <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">TextType</td>
+<td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#function-gettitle"><strong>getTitle</strong></a> () const<br><em>Gets the title of the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">T &amp;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Form/#function-settitle"><strong>setTitle</strong></a> (TextType title) <br><em>Sets the title of the form.</em></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Form/#function-settitle"><strong>setTitle</strong></a> (Message title) <br><em>Sets the title of the form.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2030,7 +2003,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">TextType</td>
+<td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Form/#variable-title_"><strong>title_</strong></a>  <br></td>
 </tr>
 </tbody>
@@ -2038,7 +2011,7 @@
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getbutton1">function getButton1<a class="headerlink" href="#function-getbutton1" title="Permanent link">&para;</a></h3>
 <p><em>Get the text of button1.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">TextType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getButton1</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getButton1</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The text of button1. </p>
@@ -2046,24 +2019,24 @@
 
 <h3 id="function-getbutton2">function getButton2<a class="headerlink" href="#function-getbutton2" title="Permanent link">&para;</a></h3>
 <p><em>Get the text of button2.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">TextType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getButton2</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getButton2</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The text of button2. </p>
 <hr>
 
 <h3 id="function-getcontent">function getContent<a class="headerlink" href="#function-getcontent" title="Permanent link">&para;</a></h3>
-<p><em>Get the content of the</em> <a href="./"><em><strong>MessageForm</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">TextType</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getContent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<p><em>Get the content of the form.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">getContent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>The content of the <a href="./"><strong>MessageForm</strong></a>. </p>
+<p>The content of the form. </p>
 <hr>
 
 <h3 id="function-setbutton1">function setButton1<a class="headerlink" href="#function-setbutton1" title="Permanent link">&para;</a></h3>
 <p><em>Set the text of button1.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">MessageForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">setButton1</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">TextType</span><span class="w"> </span><span class="n">text</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2077,7 +2050,7 @@
 <h3 id="function-setbutton2">function setButton2<a class="headerlink" href="#function-setbutton2" title="Permanent link">&para;</a></h3>
 <p><em>Set the text of button2.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">MessageForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">setButton2</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">TextType</span><span class="w"> </span><span class="n">text</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2089,9 +2062,9 @@
 <hr>
 
 <h3 id="function-setcontent">function setContent<a class="headerlink" href="#function-setcontent" title="Permanent link">&para;</a></h3>
-<p><em>Set the content of the</em> <a href="./"><em><strong>MessageForm</strong></em></a> <em>.</em>
+<p><em>Set the content of the form.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">MessageForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">MessageForm</span><span class="o">::</span><span class="n">setContent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">TextType</span><span class="w"> </span><span class="n">text</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

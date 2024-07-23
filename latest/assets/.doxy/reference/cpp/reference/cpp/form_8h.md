@@ -10,10 +10,7 @@
 
 
 
-* `#include <string>`
-* `#include <utility>`
-* `#include <variant>`
-* `#include "endstone/translatable.h"`
+* `#include "endstone/message.h"`
 
 
 

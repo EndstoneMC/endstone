@@ -24,36 +24,28 @@
 
 #pragma once
 
-#include <string>
-#include <utility>
-#include <variant>
-
-#include "endstone/translatable.h"
+#include "endstone/message.h"
 
 namespace endstone {
-
-using FormVariant = std::variant<class MessageForm>;
 
 template <typename T>
 class Form {
 public:
-    using TextType = std::variant<std::string, Translatable>;
-
     explicit Form() {}
 
-    [[nodiscard]] TextType getTitle() const
+    [[nodiscard]] Message getTitle() const
     {
         return title_;
     }
 
-    T &setTitle(TextType title)
+    T &setTitle(Message title)
     {
         title_ = std::move(title);
         return *static_cast<T *>(this);
     }
 
 protected:
-    TextType title_;
+    Message title_;
 };
 
 }  // namespace endstone
