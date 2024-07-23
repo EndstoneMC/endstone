@@ -133,20 +133,20 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 - [C++ Example Plugin](https://github.com/EndstoneMC/cpp-plugin-template)
 - [Python Example Plugin](https://github.com/EndstoneMC/python-plugin-template)
 
-| Milestone                                | Duration   | Core | C++ API | Python API | Since  |
-|------------------------------------------|------------|------|---------|------------|--------|
-| **🔌 Plugin Loader**                     | 1-2 months | ✅    | ✅       | ✅          | v0.1.0 |
-| **⌨️ Command System**                    | 2-3 months | ✅    | ✅       | ✅          | v0.2.0 |
-| **🔐 Permission System**                 | 2-3 months | ✅    | ✅       | ✅          | v0.3.0 |
-| **🎈 Event System**                      | 2-3 months | ✅    | ✅       | ✅          | v0.4.0 |
-| **👤 Player & Actor API**                | 2-3 months | 🚧   | 🚧      | 🚧         |        |
-| **🔩 Item API**                          | 1-2 months | ⏳    | ⏳       | ⏳          |        |
-| **🧱 Block API**                         | 1-2 months | ⏳    | ⏳       | ⏳          |        |
-| **📦 Inventory API**                     | 2-3 months | ⏳    | ⏳       | ⏳          |        |
-| **🖼 Form & Scoreboard API**             | 2-3 months | ⏳    | ⏳       | ⏳          |        |
-| **⭐ Advanced Features & Refinements**    | 4-6 months | ⏳    | ⏳       | ⏳          |        |
-| **🔬 Beta Testing & Community Feedback** | 3 months   | ⏳    | ⏳       | ⏳          |        |
-| **🚀 Official Release & Support**        | -          | ⏳    | ⏳       | ⏳          |        |
+| Milestone                                | Duration   | Core | Since  |
+|------------------------------------------|------------|------|--------|
+| **🔌 Plugin Loader**                     | 1-2 months | ✅    | v0.1.0 |
+| **⌨️ Command System**                    | 2-3 months | ✅    | v0.2.0 |
+| **🔐 Permission System**                 | 2-3 months | ✅    | v0.3.0 |
+| **🎈 Event System**                      | 2-3 months | ✅    | v0.4.0 |
+| **🖼 Form & Scoreboard API**             | 1-2 months | 🚧   |        |
+| **👤 Player & Actor API**                | 2-3 months | 🚧   |        |
+| **🔩 Item API**                          | 1-2 months | ⏳    |        |
+| **🧱 Block API**                         | 1-2 months | ⏳    |        |
+| **📦 Inventory API**                     | 2-3 months | ⏳    |        |
+| **⭐ Advanced Features & Refinements**    | 4-6 months | ⏳    |        |
+| **🔬 Beta Testing & Community Feedback** | 3 months   | ⏳    |        |
+| **🚀 Official Release & Support**        | -          | ⏳    |        |
 
 Here's a legend to guide you:
 
