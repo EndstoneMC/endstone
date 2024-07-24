@@ -64,6 +64,16 @@ void EndstoneTask::run()
     }
 }
 
+void EndstoneTask::doCancel()
+{
+    cancelled_ = true;
+}
+
+EndstoneScheduler &EndstoneTask::getScheduler() const
+{
+    return scheduler_;
+}
+
 EndstoneTask::CreatedAt EndstoneTask::getCreatedAt() const
 {
     return created_at_;
@@ -87,11 +97,6 @@ std::uint64_t EndstoneTask::getNextRun() const
 void EndstoneTask::setNextRun(std::uint64_t next_run)
 {
     next_run_ = next_run;
-}
-
-void EndstoneTask::doCancel()
-{
-    cancelled_ = true;
 }
 
 }  // namespace endstone::detail

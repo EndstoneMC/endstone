@@ -81,7 +81,16 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::
 
 void EndstoneScheduler::cancelTask(TaskId id)
 {
-    removeTask(id, true);
+    std::lock_guard lock{tasks_mtx_};
+    auto it = tasks_.find(id);
+    if (it == tasks_.end()) {
+        return;
+    }
+    auto task = it->second;
+    task->doCancel();
+    if (task->isSync()) {
+        tasks_.erase(it);
+    }
 }
 
 void EndstoneScheduler::cancelTasks(Plugin &plugin)
@@ -92,8 +101,14 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
             ++it;
         }
         else {
-            it->second->cancel();
-            it = tasks_.erase(it);
+            auto task = it->second;
+            task->doCancel();
+            if (task->isSync()) {
+                it = tasks_.erase(it);
+            }
+            else {
+                ++it;
+            }
         }
     }
 }
@@ -109,7 +124,7 @@ bool EndstoneScheduler::isRunning(TaskId id)
     if (task->isSync()) {
         return current_task_ == id;
     }
-    return std::static_pointer_cast<EndstoneAsyncTask>(task)->isRunning();
+    return std::static_pointer_cast<EndstoneAsyncTask>(task)->getWorkers().empty();
 }
 
 bool EndstoneScheduler::isQueued(TaskId id)
@@ -176,7 +191,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
         for (const auto &task : queue) {
             if (task->isCancelled()) {
                 if (task->isSync()) {
-                    removeTask(task->getTaskId(), false);
+                    removeTask(task->getTaskId());
                 }
                 continue;
             }
@@ -202,7 +217,7 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
             }
 
             if (task->isSync()) {
-                removeTask(task->getTaskId(), false);
+                removeTask(task->getTaskId());
             }
         }
 
@@ -211,15 +226,12 @@ void EndstoneScheduler::mainThreadHeartbeat(std::uint64_t current_tick)
     current_tick_ = current_tick;
 }
 
-void EndstoneScheduler::removeTask(TaskId id, bool cancel)
+void EndstoneScheduler::removeTask(TaskId id)
 {
     std::lock_guard lock{tasks_mtx_};
     auto it = tasks_.find(id);
     if (it == tasks_.end()) {
         return;
-    }
-    if (cancel) {
-        it->second->cancel();
     }
     tasks_.erase(it);
 }

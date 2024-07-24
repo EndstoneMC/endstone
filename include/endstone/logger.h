@@ -18,6 +18,8 @@
 #include <utility>
 
 #include <fmt/format.h>
+#include <fmt/ostream.h>
+#include <fmt/std.h>
 
 namespace endstone {
 

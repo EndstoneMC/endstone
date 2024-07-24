@@ -40,13 +40,14 @@ public:
     [[nodiscard]] bool isCancelled() const override;
     void cancel() override;
     virtual void run();
+    virtual void doCancel();
 
+    EndstoneScheduler &getScheduler() const;
     [[nodiscard]] CreatedAt getCreatedAt() const;
     [[nodiscard]] std::uint64_t getPeriod() const;
     void setPeriod(std::uint64_t period);
     [[nodiscard]] std::uint64_t getNextRun() const;
     void setNextRun(std::uint64_t next_run);
-    void doCancel();
 
 private:
     EndstoneScheduler &scheduler_;

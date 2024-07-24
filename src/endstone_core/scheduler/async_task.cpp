@@ -14,6 +14,8 @@
 
 #include "endstone/detail/scheduler/async_task.h"
 
+#include "endstone/detail/scheduler/scheduler.h"
+
 namespace endstone::detail {
 
 bool EndstoneAsyncTask::isSync() const
@@ -23,23 +25,68 @@ bool EndstoneAsyncTask::isSync() const
 
 void EndstoneAsyncTask::run()
 {
-    if (!isCancelled()) {
-        is_running_ = true;
-        try {
-            EndstoneTask::run();
-        }
-        catch (std::exception &e) {
-            getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
-                                            getOwner()->getName(), getTaskId(), e.what());
-        }
-        is_running_ = false;
+    if (isCancelled()) {
+        return;
     }
-    // TODO: remove ourself from scheduler task queue
+
+    auto thread_id = std::this_thread::get_id();
+    {
+        std::lock_guard lock{mutex_};
+        workers_.push_back({thread_id, getTaskId(), getOwner()});
+    }
+
+    std::optional<std::exception> exception;
+    try {
+        EndstoneTask::run();
+    }
+    catch (std::exception &e) {
+        exception = e;
+        getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
+                                        getOwner()->getName(), getTaskId(), e.what());
+    }
+
+    {
+        std::lock_guard lock{mutex_};
+        bool removed = false;
+        for (auto it = workers_.begin(); it != workers_.end();) {
+            if (it->thread_id == thread_id) {
+                workers_.erase(it);
+                removed = true;
+                break;
+            }
+            ++it;
+        }
+
+        if (!removed) {
+            getOwner()->getLogger().error("Unable to remove worker {} on task {} for {}", thread_id, getTaskId(),
+                                          getOwner()->getDescription().getFullName());
+            if (exception.has_value()) {
+                getOwner()->getLogger().error("{}", exception);
+            }
+        }
+
+        if (getPeriod() == 0 && workers_.empty()) {
+            // The last worker is responsible for removing ourselves from the scheduler task list
+            getScheduler().removeTask(getTaskId());
+        }
+    }
 }
 
-bool EndstoneAsyncTask::isRunning() const
+void EndstoneAsyncTask::doCancel()
 {
-    return is_running_.load();
+    // Set cancelled flag to true to not accept new runs
+    EndstoneTask::doCancel();
+    std::lock_guard lock{mutex_};
+    // Do not remove the task unless we are idle
+    if (workers_.empty()) {
+        getScheduler().removeTask(getTaskId());
+    }
+}
+
+std::vector<EndstoneAsyncTask::Worker> EndstoneAsyncTask::getWorkers() const
+{
+    std::lock_guard lock{mutex_};
+    return workers_;
 }
 
 }  // namespace endstone::detail
