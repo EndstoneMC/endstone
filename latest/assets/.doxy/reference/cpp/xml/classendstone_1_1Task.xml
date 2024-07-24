@@ -34,9 +34,9 @@
         </inbodydescription>
         <location file="include/endstone/scheduler/task.h" line="37" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Task_1a8e4c44b3843cd271e9cead8b89778d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
-        <definition>virtual Plugin&amp; endstone::Task::getOwner</definition>
+      <memberdef kind="function" id="classendstone_1_1Task_1ac008c1494ed3429e4058b3967e79315b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
+        <definition>virtual Plugin* endstone::Task::getOwner</definition>
         <argsstring>() const =0</argsstring>
         <name>getOwner</name>
         <briefdescription>
@@ -108,7 +108,7 @@
     <location file="include/endstone/scheduler/task.h" line="28" column="1" bodyfile="include/endstone/scheduler/task.h" bodystart="28" bodyend="64"/>
     <listofallmembers>
       <member refid="classendstone_1_1Task_1a3455812d65cf5c8f173e5cf5ab8a1fd0" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>cancel</name></member>
-      <member refid="classendstone_1_1Task_1a8e4c44b3843cd271e9cead8b89778d49" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getOwner</name></member>
+      <member refid="classendstone_1_1Task_1ac008c1494ed3429e4058b3967e79315b" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getOwner</name></member>
       <member refid="classendstone_1_1Task_1ab08c9a5deee528abf87f8e827c420e30" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>getTaskId</name></member>
       <member refid="classendstone_1_1Task_1ab758d7bc88367c07f090b758496daada" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>isCancelled</name></member>
       <member refid="classendstone_1_1Task_1ad091016fe3fae7796852709bade2c079" prot="public" virt="pure-virtual"><scope>endstone::Task</scope><name>isSync</name></member>

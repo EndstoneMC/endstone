@@ -53,7 +53,7 @@ _Represents a task being executed by the scheduler._
 | Type | Name |
 | ---: | :--- |
 | virtual void | [**cancel**](#function-cancel) () = 0<br> |
-| virtual [**Plugin**](classendstone_1_1Plugin.md) & | [**getOwner**](#function-getowner) () const = 0<br> |
+| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**getOwner**](#function-getowner) () const = 0<br> |
 | virtual TaskId | [**getTaskId**](#function-gettaskid) () const = 0<br> |
 | virtual bool | [**isCancelled**](#function-iscancelled) () const = 0<br> |
 | virtual bool | [**isSync**](#function-issync) () const = 0<br> |
@@ -113,7 +113,7 @@ Attempts to cancel this task.
 
 
 ```C++
-virtual Plugin & endstone::Task::getOwner () const = 0
+virtual Plugin * endstone::Task::getOwner () const = 0
 ```
 
 

@@ -38,7 +38,7 @@ public:
 
     [[nodiscard]] virtual TaskId getTaskId() const = 0;
 
-    [[nodiscard]] virtual Plugin &getOwner() const = 0;
+    [[nodiscard]] virtual Plugin *getOwner() const = 0;
 
     [[nodiscard]] virtual bool isSync() const = 0;
 
