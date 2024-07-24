@@ -54,7 +54,7 @@ void EndstoneTask::cancel()
     cancelled_ = true;
 }
 
-void EndstoneTask::run() const
+void EndstoneTask::run()
 {
     if (task_) {
         task_();

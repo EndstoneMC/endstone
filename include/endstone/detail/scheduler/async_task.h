@@ -24,7 +24,12 @@ public:
 
     [[nodiscard]] bool isSync() const override;
 
-    void run() const override;
+    void run() override;
+
+    [[nodiscard]] bool isRunning() const;
+
+private:
+    std::atomic<bool> is_running_;
 };
 
 }  // namespace endstone::detail

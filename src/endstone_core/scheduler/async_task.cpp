@@ -21,9 +21,10 @@ bool EndstoneAsyncTask::isSync() const
     return false;
 }
 
-void EndstoneAsyncTask::run() const
+void EndstoneAsyncTask::run()
 {
     if (!isCancelled()) {
+        is_running_ = true;
         try {
             EndstoneTask::run();
         }
@@ -31,8 +32,14 @@ void EndstoneAsyncTask::run() const
             getOwner()->getLogger().warning("Plugin {} generated an exception while executing task {}: {}",
                                             getOwner()->getName(), getTaskId(), e.what());
         }
+        is_running_ = false;
     }
     // TODO: remove ourself from scheduler task queue
+}
+
+bool EndstoneAsyncTask::isRunning() const
+{
+    return is_running_.load();
 }
 
 }  // namespace endstone::detail

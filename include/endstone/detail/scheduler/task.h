@@ -36,7 +36,7 @@ public:
     [[nodiscard]] bool isSync() const override;
     [[nodiscard]] bool isCancelled() const override;
     void cancel() override;
-    virtual void run() const;
+    virtual void run();
 
     [[nodiscard]] CreatedAt getCreatedAt() const;
     [[nodiscard]] std::uint64_t getPeriod() const;
