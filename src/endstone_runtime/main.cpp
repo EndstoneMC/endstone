@@ -48,6 +48,14 @@ ENDSTONE_RUNTIME_CTOR int main()
         py::initialize_interpreter(&config);
         py::module_::import("threading");  // https://github.com/pybind/pybind11/issues/2197
         py::module_::import("numpy");      // https://github.com/numpy/numpy/issues/24833
+        py::exec(R"(
+        import os
+        import sys
+        if sys.platform == "win32":
+            sys.executable = os.path.join(sys.prefix, "python.exe")
+        else:
+            sys.executable = os.path.join(sys.prefix, "bin", "python")
+        )");
         py::gil_scoped_release release{};
         release.disarm();
 
