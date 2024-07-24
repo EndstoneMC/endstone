@@ -189,8 +189,8 @@ void init_plugin(py::module &m)
         .def_property_readonly("enabled", &Plugin::isEnabled,
                                "Returns a value indicating whether this plugin is currently enabled")
         .def_property_readonly("name", &Plugin::getName, "Returns the name of the plugin.")
-        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::arg("name"),
-             "Gets the command with the given name, specific to this plugin.")
+        .def("get_command", &Plugin::getCommand, py::return_value_policy::reference, py::keep_alive<1, 0>(),
+             py::arg("name"), "Gets the command with the given name, specific to this plugin.")
         .def_property_readonly("data_folder", &Plugin::getDataFolder,
                                "Returns the folder that the plugin data's files are located in.");
 
@@ -259,7 +259,8 @@ void init_plugin(py::module &m)
                                "Gets a set of all registered permissions.");
 
     plugin_command
-        .def_property("executor", &PluginCommand::getExecutor, &PluginCommand::setExecutor,
+        .def_property("executor", &PluginCommand::getExecutor,
+                      py::cpp_function(&PluginCommand::setExecutor, py::keep_alive<1, 2>()),
                       py::return_value_policy::reference, "The CommandExecutor to run when parsing this command")
         .def_property_readonly("plugin", &PluginCommand::getPlugin, "The owner of this PluginCommand");
 }
