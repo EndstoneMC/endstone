@@ -41,7 +41,7 @@ public:
      *
      * @return The Plugin that owns the task
      */
-    [[nodiscard]] virtual Plugin &getOwner() const = 0;
+    [[nodiscard]] virtual Plugin *getOwner() const = 0;
 
     /**
      * Returns true if the Task is a sync task.

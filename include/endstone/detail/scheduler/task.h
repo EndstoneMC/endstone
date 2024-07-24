@@ -32,7 +32,7 @@ public:
     EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period);
     ~EndstoneTask() override = default;
     [[nodiscard]] TaskId getTaskId() const override;
-    [[nodiscard]] Plugin &getOwner() const override;
+    [[nodiscard]] Plugin *getOwner() const override;
     [[nodiscard]] bool isSync() const override;
     [[nodiscard]] bool isCancelled() const override;
     void cancel() override;

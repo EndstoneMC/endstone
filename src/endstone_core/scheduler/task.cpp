@@ -34,9 +34,9 @@ TaskId EndstoneTask::getTaskId() const
     return id_;
 }
 
-Plugin &EndstoneTask::getOwner() const
+Plugin *EndstoneTask::getOwner() const
 {
-    return *plugin_;
+    return plugin_;
 }
 
 bool EndstoneTask::isSync() const

@@ -62,7 +62,7 @@ void EndstoneScheduler::cancelTasks(Plugin &plugin)
 {
     std::lock_guard lock{tasks_mtx_};
     for (auto it = tasks_.begin(); it != tasks_.end();) {
-        if (&it->second->getOwner() != &plugin) {
+        if (it->second->getOwner() != &plugin) {
             ++it;
         }
         else {
