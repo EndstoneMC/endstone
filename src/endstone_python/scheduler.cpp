@@ -35,16 +35,8 @@ void init_scheduler(py::module &m)
         .def("cancel", &Task::cancel, "Attempts to cancel this task.");
 
     py::class_<Scheduler>(m, "Scheduler", "Represents a scheduler that executes various tasks")
-        .def("run_task", &Scheduler::runTask, py::arg("plugin"), py::arg("task"),
-             "Returns a task that will be executed synchronously on the next server tick.",
-             py::return_value_policy::reference)
-        .def("run_task_later", &Scheduler::runTaskLater, py::arg("plugin"), py::arg("task"), py::arg("delay"),
-             "Returns a task that will be executed synchronously after the specified number of server ticks.",
-             py::return_value_policy::reference)
-        .def("run_task_timer", &Scheduler::runTaskTimer, py::arg("plugin"), py::arg("task"), py::arg("delay"),
-             py::arg("period"),
-             "Returns a task that will be executed repeatedly until cancelled, starting after the specified number of "
-             "server ticks.",
+        .def("run_task", &Scheduler::runTaskTimer, py::arg("plugin"), py::arg("task"), py::arg("delay") = 0,
+             py::arg("period") = 0, "Returns a task that will be executed synchronously",
              py::return_value_policy::reference)
         .def("cancel_task", &Scheduler::cancelTask, py::arg("id"), "Removes task from scheduler.")
         .def("cancel_tasks", &Scheduler::cancelTasks, py::arg("plugin"),

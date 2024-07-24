@@ -1696,17 +1696,9 @@ class Scheduler:
         """
         Check if the task currently running.
         """
-    def run_task(self, plugin: Plugin, task: typing.Callable[[], None]) -> Task:
+    def run_task(self, plugin: Plugin, task: typing.Callable[[], None], delay: int = 0, period: int = 0) -> Task:
         """
-        Returns a task that will be executed synchronously on the next server tick.
-        """
-    def run_task_later(self, plugin: Plugin, task: typing.Callable[[], None], delay: int) -> Task:
-        """
-        Returns a task that will be executed synchronously after the specified number of server ticks.
-        """
-    def run_task_timer(self, plugin: Plugin, task: typing.Callable[[], None], delay: int, period: int) -> Task:
-        """
-        Returns a task that will be executed repeatedly until cancelled, starting after the specified number of server ticks.
+        Returns a task that will be executed synchronously
         """
 class Score:
     """
