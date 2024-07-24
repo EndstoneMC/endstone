@@ -56,6 +56,7 @@ class Plugin(endstone_python.Plugin):
         endstone_python.Plugin.__init__(self)
         self._description: typing.Optional[PluginDescription] = None
         self._config = None
+        self._listeners = []
 
     def _get_description(self) -> PluginDescription:
         return self._description
@@ -66,6 +67,8 @@ class Plugin(endstone_python.Plugin):
 
         if listener is None:
             raise ValueError("Listener cannot be None")
+
+        self._listeners.append(listener)
 
         for attr_name in dir(listener):
             if attr_name == "config":
