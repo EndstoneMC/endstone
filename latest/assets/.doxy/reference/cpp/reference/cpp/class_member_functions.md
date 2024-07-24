@@ -322,8 +322,11 @@
 * **registerLoader** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **removePermission** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **runTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **runTaskAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskLater** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **runTaskLaterAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskTimer** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
+* **runTaskTimerAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **resetScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 
 

@@ -4,20 +4,20 @@
     <compoundname>scheduler.h</compoundname>
     <includes refid="task_8h" local="yes">endstone/scheduler/task.h</includes>
     <incdepgraph>
-      <node id="39">
+      <node id="41">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
       <node id="23">
         <label>endstone/detail/plugin/plugin_description_builder.h</label>
       </node>
-      <node id="28">
+      <node id="30">
         <label>functional</label>
       </node>
       <node id="16">
@@ -33,7 +33,7 @@
       <node id="18">
         <label>fmt/format.h</label>
       </node>
-      <node id="60">
+      <node id="62">
         <label>endstone/scoreboard/render_type.h</label>
         <link refid="render__type_8h_source"/>
       </node>
@@ -60,35 +60,35 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="44">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
         <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
         </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
         <childnode refid="54" relation="include">
         </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
         <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
         </childnode>
       </node>
       <node id="24">
@@ -100,40 +100,44 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="6">
         <label>filesystem</label>
       </node>
-      <node id="34">
+      <node id="36">
         <label>endstone/server.h</label>
         <link refid="server_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
       </node>
-      <node id="48">
+      <node id="50">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -151,45 +155,48 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="35">
         <label>endstone/plugin/plugin_load_order.h</label>
         <link refid="plugin__load__order_8h_source"/>
       </node>
-      <node id="53">
+      <node id="55">
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
       </node>
-      <node id="44">
+      <node id="46">
         <label>variant</label>
       </node>
-      <node id="46">
+      <node id="48">
         <label>endstone/form/action_form.h</label>
         <link refid="action__form_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
         <childnode refid="49" relation="include">
         </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
       </node>
-      <node id="41">
+      <node id="43">
         <label>cmath</label>
+      </node>
+      <node id="25">
+        <label>fmt/ostream.h</label>
       </node>
       <node id="8">
         <label>string</label>
       </node>
-      <node id="58">
+      <node id="60">
         <label>endstone/scoreboard/scoreboard.h</label>
         <link refid="scoreboard_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="59" relation="include">
-        </childnode>
         <childnode refid="61" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="63" relation="include">
         </childnode>
-        <childnode refid="65" relation="include">
+        <childnode refid="64" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -198,13 +205,13 @@
       <node id="20">
         <label>unordered_set</label>
       </node>
-      <node id="52">
+      <node id="54">
         <label>endstone/inventory/player_inventory.h</label>
         <link refid="player__inventory_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="55" relation="include">
         </childnode>
       </node>
-      <node id="55">
+      <node id="57">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
         <childnode refid="3" relation="include">
@@ -212,15 +219,15 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="52">
         <label>endstone/form/message_form.h</label>
         <link refid="message__form_8h_source"/>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="56">
         <label>endstone/skin.h</label>
         <link refid="skin_8h_source"/>
         <childnode refid="15" relation="include">
@@ -230,22 +237,22 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="59">
+      <node id="61">
         <label>endstone/scoreboard/criteria.h</label>
         <link refid="criteria_8h_source"/>
-        <childnode refid="60" relation="include">
+        <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="47">
         <label>endstone/actor/mob.h</label>
         <link refid="mob_8h_source"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="37">
         <label>string_view</label>
       </node>
-      <node id="25">
+      <node id="27">
         <label>endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
         <childnode refid="5" relation="include">
@@ -260,53 +267,56 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="32">
         <label>endstone/event/event_priority.h</label>
         <link refid="event__priority_8h_source"/>
       </node>
-      <node id="61">
+      <node id="63">
         <label>endstone/scoreboard/display_slot.h</label>
         <link refid="display__slot_8h_source"/>
       </node>
       <node id="15">
         <label>optional</label>
       </node>
-      <node id="62">
+      <node id="64">
         <label>endstone/scoreboard/objective.h</label>
         <link refid="objective_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="65" relation="include">
         </childnode>
-        <childnode refid="64" relation="include">
+        <childnode refid="66" relation="include">
         </childnode>
       </node>
-      <node id="36">
+      <node id="38">
         <label>endstone/level/level.h</label>
         <link refid="level_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="31">
         <label>endstone/event/event.h</label>
         <link refid="event_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="26">
+        <label>fmt/std.h</label>
+      </node>
       <node id="11">
         <label>vector</label>
       </node>
-      <node id="27">
+      <node id="29">
         <label>endstone/plugin/plugin_manager.h</label>
         <link refid="plugin__manager_8h_source"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -314,36 +324,36 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="10">
         <label>utility</label>
       </node>
-      <node id="38">
+      <node id="40">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="34">
         <label>endstone/endstone.h</label>
         <link refid="endstone_8h_source"/>
       </node>
-      <node id="37">
+      <node id="39">
         <label>endstone/actor/actor.h</label>
         <link refid="actor_8h_source"/>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="17">
@@ -368,23 +378,23 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="65">
+      <node id="67">
         <label>endstone/scoreboard/score_entry.h</label>
         <link refid="score__entry_8h_source"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="42">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="49">
         <label>endstone/form/controls/button.h</label>
         <link refid="button_8h_source"/>
         <childnode refid="15" relation="include">
@@ -393,19 +403,19 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="51">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="48" relation="include">
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
-      <node id="64">
+      <node id="66">
         <label>endstone/scoreboard/score.h</label>
         <link refid="score_8h_source"/>
-        <childnode refid="65" relation="include">
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="21">
@@ -416,18 +426,18 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="57">
+      <node id="59">
         <label>cstddef</label>
       </node>
       <node id="9">
         <label>unordered_map</label>
       </node>
-      <node id="56">
+      <node id="58">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="57" relation="include">
+        <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -440,10 +450,10 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="45">
         <label>chrono</label>
       </node>
-      <node id="31">
+      <node id="33">
         <label>endstone/plugin/plugin_description.h</label>
         <link refid="plugin__description_8h_source"/>
         <childnode refid="8" relation="include">
@@ -458,14 +468,14 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="63">
+      <node id="65">
         <label>endstone/scoreboard/objective_sort_order.h</label>
         <link refid="objective__sort__order_8h_source"/>
       </node>
@@ -483,7 +493,7 @@
       <node id="7">
         <label>memory</label>
       </node>
-      <node id="51">
+      <node id="53">
         <label>endstone/game_mode.h</label>
         <link refid="game__mode_8h_source"/>
       </node>
@@ -499,7 +509,7 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="28">
         <label>endstone/permissions/permission_default.h</label>
         <link refid="permission__default_8h_source"/>
       </node>
@@ -560,18 +570,25 @@
 <codeline lineno="57" refid="classendstone_1_1Scheduler_1acc3fd64126aaab053e72bbfd11639764" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Task&gt;<sp/><ref refid="classendstone_1_1Scheduler_1acc3fd64126aaab053e72bbfd11639764" kindref="member">runTaskTimer</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>task,<sp/>std::uint64_t<sp/>delay,</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/>period)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" kindref="member">cancelTask</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73" refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" kindref="member">cancelTasks</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="82" refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" kindref="member">isRunning</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91" refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" kindref="member">isQueued</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Task<sp/>*&gt;<sp/><ref refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" kindref="member">getPendingTasks</ref>()<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classendstone_1_1Scheduler_1a3a80514ff3b373b773acd543f54bf9fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Task&gt;<sp/><ref refid="classendstone_1_1Scheduler_1a3a80514ff3b373b773acd543f54bf9fd" kindref="member">runTaskAsync</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>task)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classendstone_1_1Scheduler_1a1632ffd2e5be0650d2d2e82de84fb4c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Task&gt;<sp/><ref refid="classendstone_1_1Scheduler_1a1632ffd2e5be0650d2d2e82de84fb4c7" kindref="member">runTaskLaterAsync</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>task,<sp/>std::uint64_t<sp/>delay)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="classendstone_1_1Scheduler_1a0019a125a94780327147d48e7de6380e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;Task&gt;<sp/><ref refid="classendstone_1_1Scheduler_1a0019a125a94780327147d48e7de6380e" kindref="member">runTaskTimerAsync</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin,<sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">()&gt;<sp/>task,<sp/>std::uint64_t<sp/>delay,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::uint64_t<sp/>period)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" kindref="member">cancelTask</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" kindref="member">cancelTasks</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" kindref="member">isRunning</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Scheduler_1ae47c4d2e864c797a41d33be6982e9a43" kindref="member">isQueued</ref>(TaskId<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;Task<sp/>*&gt;<sp/><ref refid="classendstone_1_1Scheduler_1ac90591dd536b5b463d2367c26b442ea3" kindref="member">getPendingTasks</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/scheduler/scheduler.h"/>
   </compounddef>

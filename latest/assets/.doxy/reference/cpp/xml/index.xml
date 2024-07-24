@@ -644,6 +644,9 @@
     <member refid="classendstone_1_1Scheduler_1a368d0e5279de7d5a77185021af91f7ba" kind="function"><name>runTask</name></member>
     <member refid="classendstone_1_1Scheduler_1a10751fd3b01aee874b9d3e09fcffd258" kind="function"><name>runTaskLater</name></member>
     <member refid="classendstone_1_1Scheduler_1acc3fd64126aaab053e72bbfd11639764" kind="function"><name>runTaskTimer</name></member>
+    <member refid="classendstone_1_1Scheduler_1a3a80514ff3b373b773acd543f54bf9fd" kind="function"><name>runTaskAsync</name></member>
+    <member refid="classendstone_1_1Scheduler_1a1632ffd2e5be0650d2d2e82de84fb4c7" kind="function"><name>runTaskLaterAsync</name></member>
+    <member refid="classendstone_1_1Scheduler_1a0019a125a94780327147d48e7de6380e" kind="function"><name>runTaskTimerAsync</name></member>
     <member refid="classendstone_1_1Scheduler_1ae1d4003f6f8035f2679b91c09441d53a" kind="function"><name>cancelTask</name></member>
     <member refid="classendstone_1_1Scheduler_1aff8ea940f0038a278a0d5f230280398c" kind="function"><name>cancelTasks</name></member>
     <member refid="classendstone_1_1Scheduler_1a8b427434811562ba2b4a49f1bd2e3e82" kind="function"><name>isRunning</name></member>
