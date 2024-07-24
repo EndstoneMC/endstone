@@ -21,7 +21,6 @@ namespace endstone::detail {
 class EndstoneAsyncTask : public EndstoneTask {
 public:
     using EndstoneTask::EndstoneTask;
-
     [[nodiscard]] bool isSync() const override;
 
     void run() override;

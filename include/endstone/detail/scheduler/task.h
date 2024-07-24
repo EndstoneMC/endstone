@@ -23,13 +23,16 @@
 
 namespace endstone::detail {
 
+class EndstoneScheduler;
+
 class EndstoneTask : public Task {
 public:
     using TaskClock = std::chrono::steady_clock;
     using CreatedAt = std::chrono::time_point<TaskClock>;
 
-    EndstoneTask(std::function<void()> task, TaskId id, std::uint64_t period);
-    EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period);
+    EndstoneTask(EndstoneScheduler &scheduler, std::function<void()> task, TaskId id, std::uint64_t period);
+    EndstoneTask(EndstoneScheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
+                 std::uint64_t period);
     ~EndstoneTask() override = default;
     [[nodiscard]] TaskId getTaskId() const override;
     [[nodiscard]] Plugin *getOwner() const override;
@@ -43,15 +46,17 @@ public:
     void setPeriod(std::uint64_t period);
     [[nodiscard]] std::uint64_t getNextRun() const;
     void setNextRun(std::uint64_t next_run);
+    void doCancel();
 
 private:
+    EndstoneScheduler &scheduler_;
     Plugin *plugin_;
     std::function<void()> task_;
     TaskId id_;
     CreatedAt created_at_{TaskClock::now()};
     std::uint64_t period_;
     std::uint64_t next_run_;
-    bool cancelled_{false};
+    std::atomic<bool> cancelled_{false};
 };
 
 }  // namespace endstone::detail

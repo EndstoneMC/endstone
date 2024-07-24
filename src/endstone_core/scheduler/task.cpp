@@ -16,15 +16,18 @@
 
 #include <utility>
 
+#include "endstone/detail/scheduler/scheduler.h"
+
 namespace endstone::detail {
 
-EndstoneTask::EndstoneTask(std::function<void()> task, TaskId id, std::uint64_t period)
-    : task_(std::move(task)), id_(id), period_(period)
+EndstoneTask::EndstoneTask(EndstoneScheduler &scheduler, std::function<void()> task, TaskId id, std::uint64_t period)
+    : scheduler_(scheduler), task_(std::move(task)), id_(id), period_(period)
 {
 }
 
-EndstoneTask::EndstoneTask(Plugin &plugin, std::function<void()> task, TaskId id, std::uint64_t period)
-    : EndstoneTask(std::move(task), id, period)
+EndstoneTask::EndstoneTask(EndstoneScheduler &scheduler, Plugin &plugin, std::function<void()> task, TaskId id,
+                           std::uint64_t period)
+    : EndstoneTask(scheduler, std::move(task), id, period)
 {
     plugin_ = &plugin;
 }
@@ -51,7 +54,7 @@ bool EndstoneTask::isCancelled() const
 
 void EndstoneTask::cancel()
 {
-    cancelled_ = true;
+    scheduler_.cancelTask(getTaskId());
 }
 
 void EndstoneTask::run()
@@ -84,6 +87,11 @@ std::uint64_t EndstoneTask::getNextRun() const
 void EndstoneTask::setNextRun(std::uint64_t next_run)
 {
     next_run_ = next_run;
+}
+
+void EndstoneTask::doCancel()
+{
+    cancelled_ = true;
 }
 
 }  // namespace endstone::detail

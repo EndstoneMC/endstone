@@ -43,7 +43,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::funct
         return nullptr;
     }
 
-    auto t = std::make_shared<EndstoneTask>(plugin, task, nextId(), period);
+    auto t = std::make_shared<EndstoneTask>(*this, plugin, task, nextId(), period);
     t->setNextRun(current_tick_ + delay);
     addTask(t);
     return t;
@@ -73,7 +73,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::
         return nullptr;
     }
 
-    auto t = std::make_shared<EndstoneAsyncTask>(plugin, task, nextId(), period);
+    auto t = std::make_shared<EndstoneAsyncTask>(*this, plugin, task, nextId(), period);
     t->setNextRun(current_tick_ + delay);
     addTask(t);
     return t;
@@ -136,7 +136,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTask(std::function<void()> task)
     if (!task) {
         return nullptr;
     }
-    auto t = std::make_shared<EndstoneTask>(task, nextId(), 0);
+    auto t = std::make_shared<EndstoneTask>(*this, task, nextId(), 0);
     t->setNextRun(current_tick_);
     addTask(t);
     return t;
