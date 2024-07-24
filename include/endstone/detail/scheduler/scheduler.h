@@ -22,6 +22,7 @@
 
 #include "endstone/detail/scheduler/task.h"
 #include "endstone/scheduler/scheduler.h"
+#include "thread_pool_executor.h"
 
 namespace endstone::detail {
 
@@ -33,6 +34,10 @@ public:
     std::shared_ptr<Task> runTaskLater(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
     std::shared_ptr<Task> runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
                                        std::uint64_t period) override;
+    std::shared_ptr<Task> runTaskAsync(Plugin &plugin, std::function<void()> task) override;
+    std::shared_ptr<Task> runTaskLaterAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay) override;
+    std::shared_ptr<Task> runTaskTimerAsync(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
+                                            std::uint64_t period) override;
     void cancelTask(TaskId id) override;
     void cancelTasks(Plugin &plugin) override;
     bool isRunning(TaskId id) override;
@@ -59,6 +64,7 @@ private:
     std::uint64_t current_tick_{0};
     std::atomic<TaskId> current_task_{0};
     TaskComparator cmp_{};
+    ThreadPoolExecutor executor_;
 };
 
 }  // namespace endstone::detail

@@ -14,6 +14,8 @@
 
 #include "endstone/detail/scheduler/scheduler.h"
 
+#include "endstone/detail/scheduler/async_task.h"
+
 namespace endstone::detail {
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
@@ -42,6 +44,36 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::funct
     }
 
     auto t = std::make_shared<EndstoneTask>(plugin, task, nextId(), period);
+    t->setNextRun(current_tick_ + delay);
+    addTask(t);
+    return t;
+}
+
+std::shared_ptr<Task> EndstoneScheduler::runTaskAsync(Plugin &plugin, std::function<void()> task)
+{
+    return runTaskLaterAsync(plugin, task, 0);
+}
+
+std::shared_ptr<Task> EndstoneScheduler::runTaskLaterAsync(Plugin &plugin, std::function<void()> task,
+                                                           std::uint64_t delay)
+{
+    return runTaskTimerAsync(plugin, task, delay, 0);
+}
+
+std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::function<void()> task,
+                                                           std::uint64_t delay, std::uint64_t period)
+{
+    if (!task) {
+        server_.getLogger().error("Plugin {} attempted to register an empty task", plugin.getName());
+        return nullptr;
+    }
+
+    if (!plugin.isEnabled()) {
+        server_.getLogger().error("Plugin {} attempted to register task while disabled", plugin.getName());
+        return nullptr;
+    }
+
+    auto t = std::make_shared<EndstoneAsyncTask>(plugin, task, nextId(), period);
     t->setNextRun(current_tick_ + delay);
     addTask(t);
     return t;
