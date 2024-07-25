@@ -45,11 +45,13 @@
 | class | [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) <br>_Represents a console command sender._  |
 | class | [**Criteria**](classendstone_1_1Criteria.md) <br>_Represents a scoreboard criteria._  |
 | class | [**Dimension**](classendstone_1_1Dimension.md) <br>_Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._ |
+| class | [**Dropdown**](classendstone_1_1Dropdown.md) <br>_Represents a dropdown with a set of predefined options._  |
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;typename T&gt;<br>_Represents a generic form._  |
 | class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per event basis._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
+| class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
@@ -87,8 +89,11 @@
 | class | [**ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) <br>_Called when a server ping is coming in._  |
 | class | [**ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) <br>_Called when either the server startup or reload has completed._  |
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
+| class | [**Slider**](classendstone_1_1Slider.md) <br>_Represents a slider with a label._  |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
+| class | [**StepSlider**](classendstone_1_1StepSlider.md) <br>_Represents a step slider with a set of predefined options._  |
 | class | [**Task**](classendstone_1_1Task.md) <br>_Represents a task being executed by the scheduler._  |
+| class | [**TextInput**](classendstone_1_1TextInput.md) <br>_Represents a text input field._  |
 | class | [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) <br>_Called when the thunder state in a world is changing._  |
 | class | [**Toggle**](classendstone_1_1Toggle.md) <br>_Represents a toggle button with a label._  |
 | class | [**Translatable**](classendstone_1_1Translatable.md) <br>_Represents an object with a text representation that can be translated by the Minecraft client._  |

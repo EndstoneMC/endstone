@@ -204,6 +204,20 @@
     <member refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" kind="function"><name>getLevel</name></member>
   </compound>
+  <compound refid="classendstone_1_1Dropdown" kind="class"><name>endstone::Dropdown</name>
+    <member refid="classendstone_1_1Dropdown_1a63178f8424835d566da0e3d6d62bb2b1" kind="variable"><name>label_</name></member>
+    <member refid="classendstone_1_1Dropdown_1aba40fb2b84bdf1702fe4b45677c88aa1" kind="variable"><name>options_</name></member>
+    <member refid="classendstone_1_1Dropdown_1a92741c2026b72e956d368414a076a6d0" kind="variable"><name>default_index_</name></member>
+    <member refid="classendstone_1_1Dropdown_1ad095868e59dd8f5cac7ce788c7038977" kind="function"><name>Dropdown</name></member>
+    <member refid="classendstone_1_1Dropdown_1ac91f43ee6f2a4a562564a4fa09d4090a" kind="function"><name>Dropdown</name></member>
+    <member refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" kind="function"><name>getLabel</name></member>
+    <member refid="classendstone_1_1Dropdown_1a73a8d33341dfc5da209028107553398a" kind="function"><name>setLabel</name></member>
+    <member refid="classendstone_1_1Dropdown_1a7f70f69c1ec1d3c891146079bd050934" kind="function"><name>addOption</name></member>
+    <member refid="classendstone_1_1Dropdown_1ada5b741131abbd0fab2b1757ea9a1cd6" kind="function"><name>getOptions</name></member>
+    <member refid="classendstone_1_1Dropdown_1a97df9914cf801c57571f99884a496921" kind="function"><name>setOptions</name></member>
+    <member refid="classendstone_1_1Dropdown_1ab9ff1b4c75b981ef0fc838bcba8f03fb" kind="function"><name>getDefaultIndex</name></member>
+    <member refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" kind="function"><name>setDefaultIndex</name></member>
+  </compound>
   <compound refid="classendstone_1_1Event" kind="class"><name>endstone::Event</name>
     <member refid="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" kind="variable"><name>async_</name></member>
     <member refid="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" kind="variable"><name>cancelled_</name></member>
@@ -266,6 +280,13 @@
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
   </compound>
+  <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
+    <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
+    <member refid="classendstone_1_1Label_1a8fd70587665fc80ab3c25e6fb4ff96fb" kind="function"><name>Label</name></member>
+    <member refid="classendstone_1_1Label_1a5e730c04ede620c30ceb354ddaa72d0a" kind="function"><name>Label</name></member>
+    <member refid="classendstone_1_1Label_1a902afec08369023430298fa311fb64cb" kind="function"><name>getText</name></member>
+    <member refid="classendstone_1_1Label_1ab829166df7f8cc0c8b9ba2b2119b5912" kind="function"><name>setText</name></member>
+  </compound>
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
     <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" kind="function"><name>getName</name></member>
@@ -326,7 +347,7 @@
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
-    <member refid="classendstone_1_1ModalForm_1af4cf63a22089a582e0cdb8c3cf27c0cf" kind="typedef"><name>Control</name></member>
+    <member refid="classendstone_1_1ModalForm_1acb80ded2d17319dd0e625566f36760d4" kind="typedef"><name>Control</name></member>
     <member refid="classendstone_1_1ModalForm_1a2c2064fad98d44e102b8e8745b74baed" kind="typedef"><name>OnSubmitCallback</name></member>
     <member refid="classendstone_1_1ModalForm_1ae93fb07234de5ad30f7204fc1b248180" kind="variable"><name>controls_</name></member>
     <member refid="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" kind="variable"><name>submit_button_text_</name></member>
@@ -810,6 +831,25 @@
     <member refid="classendstone_1_1Skin_1aa5a5f981e3390ab64790adec3fed83f2" kind="function"><name>getCapeId</name></member>
     <member refid="classendstone_1_1Skin_1ace02c5b2aed36091ed4b6760f3036e11" kind="function"><name>getCapeData</name></member>
   </compound>
+  <compound refid="classendstone_1_1Slider" kind="class"><name>endstone::Slider</name>
+    <member refid="classendstone_1_1Slider_1a6ab24261f08b33fd1b3476c7bd1a08bc" kind="variable"><name>label_</name></member>
+    <member refid="classendstone_1_1Slider_1a533faf19fbbacf7836946a8acf67098f" kind="variable"><name>min_</name></member>
+    <member refid="classendstone_1_1Slider_1a4e50207f6be325caace8ded16ac89433" kind="variable"><name>max_</name></member>
+    <member refid="classendstone_1_1Slider_1afaa5db51fe0b1a6692163439a4c709b6" kind="variable"><name>step_</name></member>
+    <member refid="classendstone_1_1Slider_1aa445d8623cf5c8e0e2fcdb09da3f5b4d" kind="variable"><name>default_value_</name></member>
+    <member refid="classendstone_1_1Slider_1a9747b93fdcc402378699b5d3d69dc81b" kind="function"><name>Slider</name></member>
+    <member refid="classendstone_1_1Slider_1aa4e6a206a483a5e859ea69a4b4c8e798" kind="function"><name>Slider</name></member>
+    <member refid="classendstone_1_1Slider_1ab8e94955a47d5eaedac0e06ab350f7f2" kind="function"><name>getLabel</name></member>
+    <member refid="classendstone_1_1Slider_1a66846362da9e8b5be0c428a1fe6170ed" kind="function"><name>setLabel</name></member>
+    <member refid="classendstone_1_1Slider_1a888e209ddf6c3e769b319e9728843a63" kind="function"><name>getMin</name></member>
+    <member refid="classendstone_1_1Slider_1a0d1e608ea17b2f49bf642172c077c10a" kind="function"><name>setMin</name></member>
+    <member refid="classendstone_1_1Slider_1a678964a83e4820871d4b99dd2c7a1b45" kind="function"><name>getMax</name></member>
+    <member refid="classendstone_1_1Slider_1aad37cf5d600d8ecb7641db16abdd9f64" kind="function"><name>setMax</name></member>
+    <member refid="classendstone_1_1Slider_1acc5394db6cb1a0c2750702f2473163ce" kind="function"><name>getStep</name></member>
+    <member refid="classendstone_1_1Slider_1a223b6c53d54d5a68b905ee95604b079b" kind="function"><name>setStep</name></member>
+    <member refid="classendstone_1_1Slider_1a97d18c5a9ba6db2360dd621c5e25bbd4" kind="function"><name>getDefaultValue</name></member>
+    <member refid="classendstone_1_1Slider_1abc4a50a38d0ac7eb17a9fc850170cf39" kind="function"><name>setDefaultValue</name></member>
+  </compound>
   <compound refid="classendstone_1_1SocketAddress" kind="class"><name>endstone::SocketAddress</name>
     <member refid="classendstone_1_1SocketAddress_1a4fe90c360d5406ed2edd091f1f707b57" kind="variable"><name>hostname_</name></member>
     <member refid="classendstone_1_1SocketAddress_1af8cb55476a46c083d6656eb0b8f9b22c" kind="variable"><name>port_</name></member>
@@ -818,6 +858,10 @@
     <member refid="classendstone_1_1SocketAddress_1a2db404be42026eada4592efa19e9a3da" kind="function"><name>getHostname</name></member>
     <member refid="classendstone_1_1SocketAddress_1aab52350c83757435fe655b07f9cb8496" kind="function"><name>getPort</name></member>
   </compound>
+  <compound refid="classendstone_1_1StepSlider" kind="class"><name>endstone::StepSlider</name>
+    <member refid="classendstone_1_1StepSlider_1ad095868e59dd8f5cac7ce788c7038977" kind="function"><name>Dropdown</name></member>
+    <member refid="classendstone_1_1StepSlider_1ac91f43ee6f2a4a562564a4fa09d4090a" kind="function"><name>Dropdown</name></member>
+  </compound>
   <compound refid="classendstone_1_1Task" kind="class"><name>endstone::Task</name>
     <member refid="classendstone_1_1Task_1ae40a9449683399a480b757911fb30ef4" kind="function"><name>~Task</name></member>
     <member refid="classendstone_1_1Task_1ab08c9a5deee528abf87f8e827c420e30" kind="function"><name>getTaskId</name></member>
@@ -825,6 +869,19 @@
     <member refid="classendstone_1_1Task_1ad091016fe3fae7796852709bade2c079" kind="function"><name>isSync</name></member>
     <member refid="classendstone_1_1Task_1ab758d7bc88367c07f090b758496daada" kind="function"><name>isCancelled</name></member>
     <member refid="classendstone_1_1Task_1a3455812d65cf5c8f173e5cf5ab8a1fd0" kind="function"><name>cancel</name></member>
+  </compound>
+  <compound refid="classendstone_1_1TextInput" kind="class"><name>endstone::TextInput</name>
+    <member refid="classendstone_1_1TextInput_1a4ee0deba99c54cabcf389ab0a672d89a" kind="variable"><name>label_</name></member>
+    <member refid="classendstone_1_1TextInput_1a4a9230a84959d6a2cb00b31b5afb8529" kind="variable"><name>placeholder_</name></member>
+    <member refid="classendstone_1_1TextInput_1ad07211ef414102b38a1c1736ed8c639a" kind="variable"><name>default_text_</name></member>
+    <member refid="classendstone_1_1TextInput_1aea76fc3cb5e535cda7b7539d5ce486cf" kind="function"><name>TextInput</name></member>
+    <member refid="classendstone_1_1TextInput_1ad58d0a3a7dd465cf7a4aa9054dc14167" kind="function"><name>TextInput</name></member>
+    <member refid="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" kind="function"><name>getLabel</name></member>
+    <member refid="classendstone_1_1TextInput_1a1ada248ddb24c43d7b69dad70c3f38e3" kind="function"><name>setLabel</name></member>
+    <member refid="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" kind="function"><name>getPlaceholder</name></member>
+    <member refid="classendstone_1_1TextInput_1aeabc41d53c80eb7e0939cf2fcc80d257" kind="function"><name>setPlaceholder</name></member>
+    <member refid="classendstone_1_1TextInput_1ade8c29b99bdd5fa4a51062e3a65ab37d" kind="function"><name>getDefaultValue</name></member>
+    <member refid="classendstone_1_1TextInput_1ae87a0a9ad2ac940289a531824ac2a5d0" kind="function"><name>setDefaultValue</name></member>
   </compound>
   <compound refid="classendstone_1_1ThunderChangeEvent" kind="class"><name>endstone::ThunderChangeEvent</name>
     <member refid="classendstone_1_1ThunderChangeEvent_1af5811528ec4395a5c8bb78e00815c4ab" kind="variable"><name>NAME</name></member>
@@ -837,7 +894,7 @@
   </compound>
   <compound refid="classendstone_1_1Toggle" kind="class"><name>endstone::Toggle</name>
     <member refid="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" kind="variable"><name>label_</name></member>
-    <member refid="classendstone_1_1Toggle_1ac6c7a0ddbdf6215659d75da8dffbc14f" kind="variable"><name>value_</name></member>
+    <member refid="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" kind="variable"><name>default_value_</name></member>
     <member refid="classendstone_1_1Toggle_1a1c470350b59df5562dcc97f5dd1385a1" kind="function"><name>Toggle</name></member>
     <member refid="classendstone_1_1Toggle_1a31ca9d6bea35c794ce39248ea7cecf28" kind="function"><name>Toggle</name></member>
     <member refid="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" kind="function"><name>getLabel</name></member>
@@ -1039,6 +1096,16 @@
   <compound refid="weather__event_8h" kind="file"><name>weather_event.h</name>
   </compound>
   <compound refid="action__form_8h" kind="file"><name>action_form.h</name>
+  </compound>
+  <compound refid="dropdown_8h" kind="file"><name>dropdown.h</name>
+  </compound>
+  <compound refid="label_8h" kind="file"><name>label.h</name>
+  </compound>
+  <compound refid="slider_8h" kind="file"><name>slider.h</name>
+  </compound>
+  <compound refid="step__slider_8h" kind="file"><name>step_slider.h</name>
+  </compound>
+  <compound refid="text__input_8h" kind="file"><name>text_input.h</name>
   </compound>
   <compound refid="toggle_8h" kind="file"><name>toggle.h</name>
   </compound>

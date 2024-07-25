@@ -15,20 +15,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="78" column="13" bodyfile="include/endstone/form/controls/toggle.h" bodystart="78" bodyend="-1"/>
+        <location file="include/endstone/form/controls/toggle.h" line="80" column="13" bodyfile="include/endstone/form/controls/toggle.h" bodystart="80" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Toggle_1ac6c7a0ddbdf6215659d75da8dffbc14f" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" static="no" mutable="no">
         <type>bool</type>
-        <definition>bool endstone::Toggle::value_</definition>
+        <definition>bool endstone::Toggle::default_value_</definition>
         <argsstring></argsstring>
-        <name>value_</name>
+        <name>default_value_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="79" column="10" bodyfile="include/endstone/form/controls/toggle.h" bodystart="79" bodyend="-1"/>
+        <location file="include/endstone/form/controls/toggle.h" line="81" column="10" bodyfile="include/endstone/form/controls/toggle.h" bodystart="81" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="31" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="31" bodyend="31"/>
+        <location file="include/endstone/form/controls/toggle.h" line="31" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="31" bodyend="33"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="38" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="38" bodyend="41"/>
+        <location file="include/endstone/form/controls/toggle.h" line="40" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="40" bodyend="43"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a191c27ea77eaa18dae2bb12d31f2d1ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="49" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="49" bodyend="53"/>
+        <location file="include/endstone/form/controls/toggle.h" line="51" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="51" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="60" column="11" bodyfile="include/endstone/form/controls/toggle.h" bodystart="60" bodyend="63"/>
+        <location file="include/endstone/form/controls/toggle.h" line="62" column="11" bodyfile="include/endstone/form/controls/toggle.h" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Toggle_1a1f6af05c285c7e62daaec4c0cdaf45da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/controls/toggle.h" line="71" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="71" bodyend="75"/>
+        <location file="include/endstone/form/controls/toggle.h" line="73" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="73" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -167,8 +167,9 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/controls/toggle.h" line="28" column="1" bodyfile="include/endstone/form/controls/toggle.h" bodystart="28" bodyend="80"/>
+    <location file="include/endstone/form/controls/toggle.h" line="28" column="1" bodyfile="include/endstone/form/controls/toggle.h" bodystart="28" bodyend="82"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>default_value_</name></member>
       <member refid="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>getDefaultValue</name></member>
       <member refid="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>getLabel</name></member>
       <member refid="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>label_</name></member>
@@ -176,7 +177,6 @@
       <member refid="classendstone_1_1Toggle_1a191c27ea77eaa18dae2bb12d31f2d1ce" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>setLabel</name></member>
       <member refid="classendstone_1_1Toggle_1a1c470350b59df5562dcc97f5dd1385a1" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>Toggle</name></member>
       <member refid="classendstone_1_1Toggle_1a31ca9d6bea35c794ce39248ea7cecf28" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>Toggle</name></member>
-      <member refid="classendstone_1_1Toggle_1ac6c7a0ddbdf6215659d75da8dffbc14f" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>value_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

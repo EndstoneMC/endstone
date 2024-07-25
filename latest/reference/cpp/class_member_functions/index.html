@@ -2314,6 +2314,7 @@
 <li><strong>asCommandSender</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>asConsole</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>)</li>
 <li><strong>asPlayer</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
+<li><strong>addOption</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>addControl</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>addAttachment</strong> (<a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>addParent</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
@@ -2345,6 +2346,7 @@
 </ul>
 <h2 id="d">d<a class="headerlink" href="#d" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>Dropdown</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>, <a href="../classendstone_1_1StepSlider/"><strong>endstone::StepSlider</strong></a>)</li>
 <li><strong>debug</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>disablePlugin</strong> (<a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>disablePlugins</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
@@ -2370,7 +2372,7 @@
 <h2 id="g">g<a class="headerlink" href="#g" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>getIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
-<li><strong>getText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
+<li><strong>getText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1Label/"><strong>endstone::Label</strong></a>)</li>
 <li><strong>getButtons</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>)</li>
 <li><strong>getContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>getOnSubmit</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
@@ -2394,6 +2396,9 @@
 <li><strong>getServer</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>, <a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>, <a href="../classendstone_1_1PluginLoader/"><strong>endstone::PluginLoader</strong></a>)</li>
 <li><strong>getDefaultRenderType</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
 <li><strong>getType</strong> (<a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
+<li><strong>getDefaultIndex</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
+<li><strong>getLabel</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>, <a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>getOptions</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>getEventType</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>getPlugin</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>, <a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>, <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>getPriority</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
@@ -2499,12 +2504,15 @@
 <li><strong>getCapeId</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>getSkinData</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
 <li><strong>getSkinId</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>getDefaultValue</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>getMax</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>getMin</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>getStep</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>getHostname</strong> (<a href="../classendstone_1_1SocketAddress/"><strong>endstone::SocketAddress</strong></a>)</li>
 <li><strong>getPort</strong> (<a href="../classendstone_1_1SocketAddress/"><strong>endstone::SocketAddress</strong></a>)</li>
 <li><strong>getOwner</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>getTaskId</strong> (<a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
-<li><strong>getDefaultValue</strong> (<a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
-<li><strong>getLabel</strong> (<a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>getPlaceholder</strong> (<a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>)</li>
 <li><strong>getParameters</strong> (<a href="../classendstone_1_1Translatable/"><strong>endstone::Translatable</strong></a>)</li>
 <li><strong>getTranslationKey</strong> (<a href="../classendstone_1_1Translatable/"><strong>endstone::Translatable</strong></a>)</li>
 <li><strong>getX</strong> (<a href="../classendstone_1_1Vector/"><strong>endstone::Vector</strong></a>)</li>
@@ -2551,6 +2559,7 @@
 </ul>
 <h2 id="l">l<a class="headerlink" href="#l" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>Label</strong> (<a href="../classendstone_1_1Label/"><strong>endstone::Label</strong></a>)</li>
 <li><strong>Location</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>Logger</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>log</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
@@ -2623,7 +2632,7 @@
 <h2 id="s">s<a class="headerlink" href="#s" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>setIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
-<li><strong>setText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
+<li><strong>setText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1Label/"><strong>endstone::Label</strong></a>)</li>
 <li><strong>setButtons</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>)</li>
 <li><strong>setContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>setOnSubmit</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
@@ -2638,6 +2647,9 @@
 <li><strong>setUsages</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>sendErrorMessage</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>)</li>
 <li><strong>sendMessage</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>)</li>
+<li><strong>setDefaultIndex</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
+<li><strong>setLabel</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>, <a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>setOptions</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>setCancelled</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>setOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>setTitle</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
@@ -2687,9 +2699,13 @@
 <li><strong>setNumPlayers</strong> (<a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
 <li><strong>ServerLoadEvent</strong> (<a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>)</li>
 <li><strong>Skin</strong> (<a href="../classendstone_1_1Skin/"><strong>endstone::Skin</strong></a>)</li>
+<li><strong>Slider</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>setDefaultValue</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>, <a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>, <a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>setMax</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>setMin</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
+<li><strong>setStep</strong> (<a href="../classendstone_1_1Slider/"><strong>endstone::Slider</strong></a>)</li>
 <li><strong>SocketAddress</strong> (<a href="../classendstone_1_1SocketAddress/"><strong>endstone::SocketAddress</strong></a>)</li>
-<li><strong>setDefaultValue</strong> (<a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
-<li><strong>setLabel</strong> (<a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>
+<li><strong>setPlaceholder</strong> (<a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>)</li>
 <li><strong>size</strong> (<a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a>)</li>
 <li><strong>str</strong> (<a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a>)</li>
 <li><strong>swap</strong> (<a href="../classendstone_1_1UUID/"><strong>endstone::UUID</strong></a>)</li>
@@ -2703,6 +2719,7 @@
 <li><strong>testPermissionSilently</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>trace</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>transfer</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
+<li><strong>TextInput</strong> (<a href="../classendstone_1_1TextInput/"><strong>endstone::TextInput</strong></a>)</li>
 <li><strong>ThunderChangeEvent</strong> (<a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>)</li>
 <li><strong>toThunderState</strong> (<a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>)</li>
 <li><strong>Toggle</strong> (<a href="../classendstone_1_1Toggle/"><strong>endstone::Toggle</strong></a>)</li>

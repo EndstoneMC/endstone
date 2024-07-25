@@ -226,6 +226,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Dropdown/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Event/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
@@ -247,6 +252,11 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Inventory/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Label/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -441,12 +451,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Slider/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SocketAddress/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1StepSlider/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Task/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1TextInput/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -937,6 +962,56 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_035306890ec6a3fa870e30b726ac5ffc/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h_source/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/label_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/label_8h_source/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/slider_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/slider_8h_source/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/step__slider_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/step__slider_8h_source/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/text__input_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/text__input_8h_source/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>

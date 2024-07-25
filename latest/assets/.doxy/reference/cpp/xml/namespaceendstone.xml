@@ -37,6 +37,11 @@
     <innerclass refid="classendstone_1_1WeatherChangeEvent" prot="public">endstone::WeatherChangeEvent</innerclass>
     <innerclass refid="classendstone_1_1WeatherEvent" prot="public">endstone::WeatherEvent</innerclass>
     <innerclass refid="classendstone_1_1ActionForm" prot="public">endstone::ActionForm</innerclass>
+    <innerclass refid="classendstone_1_1Dropdown" prot="public">endstone::Dropdown</innerclass>
+    <innerclass refid="classendstone_1_1Label" prot="public">endstone::Label</innerclass>
+    <innerclass refid="classendstone_1_1Slider" prot="public">endstone::Slider</innerclass>
+    <innerclass refid="classendstone_1_1StepSlider" prot="public">endstone::StepSlider</innerclass>
+    <innerclass refid="classendstone_1_1TextInput" prot="public">endstone::TextInput</innerclass>
     <innerclass refid="classendstone_1_1Toggle" prot="public">endstone::Toggle</innerclass>
     <innerclass refid="classendstone_1_1Form" prot="public">endstone::Form</innerclass>
     <innerclass refid="classendstone_1_1MessageForm" prot="public">endstone::MessageForm</innerclass>

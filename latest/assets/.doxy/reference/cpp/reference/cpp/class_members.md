@@ -20,6 +20,7 @@
 * **asCommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **asConsole** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Player**](classendstone_1_1Player.md))
+* **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **addControl** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **addAttachment** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
@@ -85,9 +86,11 @@
 * **DarkPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **Dropdown** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::StepSlider**](classendstone_1_1StepSlider.md))
+* **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **debug** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **DefaultPermission** ([**endstone::Permission**](classendstone_1_1Permission.md))
-* **default\_value\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
+* **default\_value\_** ([**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **death\_message\_** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
 * **data\_folder\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **default\_permission\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -98,6 +101,7 @@
 * **dispatchCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **deserialize** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
+* **default\_text\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **distance** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **distanceSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 
@@ -128,7 +132,7 @@
 ## g
 
 * **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
@@ -155,6 +159,9 @@
 * **getServer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **getDefaultRenderType** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
 * **getType** ([**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getEventType** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **getPlugin** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPriority** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
@@ -261,12 +268,15 @@
 * **getCapeId** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getSkinData** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **getSkinId** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **getDefaultValue** ([**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **getMax** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **getMin** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **getStep** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **getHostname** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getPort** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getOwner** ([**endstone::Task**](classendstone_1_1Task.md))
 * **getTaskId** ([**endstone::Task**](classendstone_1_1Task.md))
-* **getDefaultValue** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
-* **getLabel** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **getPlaceholder** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **getParameters** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getTranslationKey** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getX** ([**endstone::Vector**](classendstone_1_1Vector.md))
@@ -324,6 +334,8 @@
 ## l
 
 * **LightPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **label\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **Label** ([**endstone::Label**](classendstone_1_1Label.md))
 * **Location** ([**endstone::Location**](classendstone_1_1Location.md))
 * **Level** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **Logger** ([**endstone::Logger**](classendstone_1_1Logger.md))
@@ -337,7 +349,6 @@
 * **local\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_v6\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **LoadType** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
-* **label\_** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **level\_** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
@@ -361,6 +372,8 @@
 * **max\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **minecraft\_version\_network\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **motd\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **max\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **min\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
 
 
 ## n
@@ -378,6 +391,7 @@
 * **operator=** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Player**](classendstone_1_1Player.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
+* **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **OnCloseCallback** ([**endstone::Form**](classendstone_1_1Form.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **onDisable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -429,6 +443,7 @@
 * **Position** ([**endstone::Position**](classendstone_1_1Position.md))
 * **ping\_response\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **port\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
+* **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 
 
 ## r
@@ -463,7 +478,7 @@
 ## s
 
 * **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
@@ -478,6 +493,9 @@
 * **setUsages** ([**endstone::Command**](classendstone_1_1Command.md))
 * **sendErrorMessage** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **sendMessage** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
+* **setDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **setLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **setOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **setCancelled** ([**endstone::Event**](classendstone_1_1Event.md))
 * **setOnClose** ([**endstone::Form**](classendstone_1_1Form.md))
 * **setTitle** ([**endstone::Form**](classendstone_1_1Form.md))
@@ -534,9 +552,14 @@
 * **Skin** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **skin\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **skin\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
+* **Slider** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **setDefaultValue** ([**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **setMax** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **setMin** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **setStep** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **step\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **SocketAddress** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
-* **setDefaultValue** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
-* **setLabel** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **setPlaceholder** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **size** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **str** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **swap** ([**endstone::UUID**](classendstone_1_1UUID.md))
@@ -547,7 +570,7 @@
 
 ## t
 
-* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -556,6 +579,7 @@
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **transfer** ([**endstone::Player**](classendstone_1_1Player.md))
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **TextInput** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **Toggle** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
@@ -578,7 +602,7 @@
 ## v
 
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
-* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **version** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **Vector** ([**endstone::Vector**](classendstone_1_1Vector.md))
