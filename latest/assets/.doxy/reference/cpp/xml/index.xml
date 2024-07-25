@@ -228,9 +228,12 @@
   </compound>
   <compound refid="classendstone_1_1Form" kind="class"><name>endstone::Form</name>
     <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" kind="variable"><name>title_</name></member>
+    <member refid="classendstone_1_1Form_1afc6b38bbb49cfd63a4a31766f3e0261f" kind="variable"><name>on_close_</name></member>
     <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" kind="function"><name>Form</name></member>
     <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" kind="function"><name>getTitle</name></member>
     <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" kind="function"><name>setTitle</name></member>
+    <member refid="classendstone_1_1Form_1a46adb14cb3eb42fe96ab72d22e4be0e3" kind="function"><name>setOnClose</name></member>
+    <member refid="classendstone_1_1Form_1a26ff54865fb328a258234714ff52bfab" kind="function"><name>getOnClose</name></member>
   </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>

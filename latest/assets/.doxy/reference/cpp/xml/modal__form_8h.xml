@@ -9,6 +9,9 @@
     <includes refid="form_8h" local="yes">endstone/form/form.h</includes>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
+      <node id="11">
+        <label>functional</label>
+      </node>
       <node id="6">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
@@ -75,6 +78,8 @@
       <node id="10">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>

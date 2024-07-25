@@ -92,7 +92,9 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
+|  std::function&lt; void([**Player**](classendstone_1_1Player.md) &)&gt; | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
+|  T & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (std::function&lt; void([**Player**](classendstone_1_1Player.md) &)&gt; on\_close) <br>_Sets the on close callback of the form._  |
 |  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
@@ -116,6 +118,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
+|  std::function&lt; void([**Player**](classendstone_1_1Player.md) &)&gt; | [**on\_close\_**](classendstone_1_1Form.md#variable-on_close_)  <br> |
 |  Message | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
 
 

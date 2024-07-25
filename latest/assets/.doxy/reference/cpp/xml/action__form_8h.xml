@@ -8,28 +8,31 @@
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
       <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="6">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>variant</label>
       </node>
       <node id="1">
@@ -48,16 +51,18 @@
       <node id="2">
         <label>optional</label>
       </node>
-      <node id="9">
+      <node id="10">
         <label>vector</label>
       </node>
-      <node id="6">
+      <node id="7">
         <label>utility</label>
       </node>
       <node id="4">
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
         <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
     </incdepgraph>

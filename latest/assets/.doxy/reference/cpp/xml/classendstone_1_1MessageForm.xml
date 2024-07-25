@@ -226,10 +226,13 @@
       <member refid="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton1</name></member>
       <member refid="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton2</name></member>
       <member refid="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getContent</name></member>
+      <member refid="classendstone_1_1Form_1a26ff54865fb328a258234714ff52bfab" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getOnClose</name></member>
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1Form_1afc6b38bbb49cfd63a4a31766f3e0261f" prot="protected" virt="non-virtual"><scope>endstone::MessageForm</scope><name>on_close_</name></member>
       <member refid="classendstone_1_1MessageForm_1a5a25547323d4cb256bc49eed0e760403" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton1</name></member>
       <member refid="classendstone_1_1MessageForm_1a22522e5fe63819819d1fbbfa735a80f2" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setButton2</name></member>
       <member refid="classendstone_1_1MessageForm_1aadbf6ab2f31ccd37eff55fb75bfa43f0" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setContent</name></member>
+      <member refid="classendstone_1_1Form_1a46adb14cb3eb42fe96ab72d22e4be0e3" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setOnClose</name></member>
       <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::MessageForm</scope><name>title_</name></member>
     </listofallmembers>

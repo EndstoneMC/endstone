@@ -209,9 +209,12 @@
       <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>Form</name></member>
       <member refid="classendstone_1_1ActionForm_1a655f766116e4d39c838e37940a015471" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getButtons</name></member>
       <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getContent</name></member>
+      <member refid="classendstone_1_1Form_1a26ff54865fb328a258234714ff52bfab" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getOnClose</name></member>
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1Form_1afc6b38bbb49cfd63a4a31766f3e0261f" prot="protected" virt="non-virtual"><scope>endstone::ActionForm</scope><name>on_close_</name></member>
       <member refid="classendstone_1_1ActionForm_1a2cabeb959f3a06e7cfce29ae1037a52e" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setButtons</name></member>
       <member refid="classendstone_1_1ActionForm_1a3d4690491594fa31da97d5578c1bc7f9" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setContent</name></member>
+      <member refid="classendstone_1_1Form_1a46adb14cb3eb42fe96ab72d22e4be0e3" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setOnClose</name></member>
       <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" virt="non-virtual"><scope>endstone::ActionForm</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::ActionForm</scope><name>title_</name></member>
     </listofallmembers>

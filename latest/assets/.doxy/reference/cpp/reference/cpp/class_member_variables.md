@@ -141,6 +141,7 @@
 ## o
 
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 
 

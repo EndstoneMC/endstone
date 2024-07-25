@@ -7,31 +7,34 @@
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
     <incdepgraph>
       <node id="4">
+        <label>functional</label>
+      </node>
+      <node id="5">
         <label>endstone/message.h</label>
         <link refid="message_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>endstone/translatable.h</label>
-        <link refid="translatable_8h_source"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="6">
+      <node id="8">
+        <label>endstone/translatable.h</label>
+        <link refid="translatable_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>variant</label>
       </node>
-      <node id="5">
+      <node id="6">
         <label>string</label>
       </node>
       <node id="1">
@@ -42,7 +45,7 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>vector</label>
       </node>
       <node id="2">
@@ -52,6 +55,8 @@
         <label>endstone/form/form.h</label>
         <link refid="form_8h_source"/>
         <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </incdepgraph>
