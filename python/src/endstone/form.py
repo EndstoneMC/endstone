@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import ActionForm, MessageForm, Toggle
+from endstone._internal.endstone_python import ActionForm, MessageForm, ModalForm, Toggle
 
-__all__ = ["ActionForm", "MessageForm", "Toggle"]
+__all__ = ["ActionForm", "MessageForm", "ModalForm", "Toggle"]

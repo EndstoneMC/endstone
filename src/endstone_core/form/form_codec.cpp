@@ -20,6 +20,7 @@
 #include "endstone/form/action_form.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
+#include "endstone/form/modal_form.h"
 #include "endstone/message.h"
 
 namespace endstone::detail {
@@ -93,6 +94,39 @@ nlohmann::json FormCodec::toJson(const ActionForm &form)
     json["content"] = toJson(form.getContent());
     for (const auto &button : form.getButtons()) {
         json["buttons"].push_back(toJson(button));
+    }
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const ModalForm &form)
+{
+    nlohmann::json json;
+    json["type"] = "custom_form";
+    json["title"] = toJson(form.getTitle());
+    json["content"] = toJson(form.getContent());
+
+    for (const auto &control : form.getControls()) {
+        json["content"].push_back(std::visit(entt::overloaded{[](auto &&arg) {
+                                                 return toJson(arg);
+                                             }},
+                                             control));
+    }
+
+    auto submit_button = form.getSubmitButton();
+    if (submit_button.has_value()) {
+        json["submit"] = toJson(submit_button.value());
+    }
+
+    auto icon = form.getIcon();
+    if (icon.has_value()) {
+        if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
+            json["icon"]["type"] = "url";
+        }
+        else {
+            json["icon"]["type"] = "path";
+        }
+        json["icon"]["data"] = icon.value();
     }
     return json;
 }

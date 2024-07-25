@@ -21,6 +21,7 @@
 #include "endstone/form/action_form.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
+#include "endstone/form/modal_form.h"
 #include "endstone/message.h"
 
 namespace py = pybind11;
@@ -82,6 +83,27 @@ void init_form(py::module_ &m)
              py::arg("icon") = py::none(), py::return_value_policy::reference)
         .def_property("buttons", &ActionForm::getButtons, &ActionForm::setButtons,
                       "Gets or sets the buttons of the action form.", py::return_value_policy::reference);
+
+    py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
+        .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,
+                           std::optional<Message> submit_button, std::optional<std::string> icon) {
+                 return ModalForm()
+                     .setTitle(std::move(title))
+                     .setControls(controls.value_or(std::vector<ModalForm::Control>{}))
+                     .setSubmitButton(std::move(submit_button))
+                     .setIcon(std::move(icon));
+             }),
+             py::arg("title") = "", py::arg("controls") = py::none(), py::arg("submit_button") = py::none(),
+             py::arg("icon") = py::none())
+        .def_property("content", &ModalForm::getContent, &ModalForm::setContent,
+                      "Gets or sets the content of the form.", py::return_value_policy::reference)
+        .def_property("submit_button", &ModalForm::getSubmitButton, &ModalForm::setSubmitButton,
+                      "Gets or sets the submit button message of the form.", py::return_value_policy::reference)
+        .def_property("icon", &ModalForm::getIcon, &ModalForm::setIcon, "Gets or sets the icon of the form.",
+                      py::return_value_policy::reference)
+        .def("add_control", &ModalForm::addControl, "Adds a control to the form.", py::arg("control"))
+        .def_property("controls", &ModalForm::getControls, &ModalForm::setControls,
+                      "Gets or sets the controls of the modal form.", py::return_value_policy::reference);
 }
 
 }  // namespace endstone::detail

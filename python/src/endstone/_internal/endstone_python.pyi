@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -749,6 +749,48 @@ class Mob(Actor):
         """
         Checks to see if an actor is gliding, such as using an Elytra.
         """
+class ModalForm:
+    """
+    Represents a modal form with controls.
+    """
+    def __init__(self, title: str | Translatable = '', controls: list[Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None) -> None:
+        ...
+    def add_control(self, control: Toggle) -> ModalForm:
+        """
+        Adds a control to the form.
+        """
+    @property
+    def content(self) -> str | Translatable:
+        """
+        Gets or sets the content of the form.
+        """
+    @content.setter
+    def content(self, arg1: str | Translatable) -> ModalForm:
+        ...
+    @property
+    def controls(self) -> list[Toggle]:
+        """
+        Gets or sets the controls of the modal form.
+        """
+    @controls.setter
+    def controls(self, arg1: list[Toggle]) -> ModalForm:
+        ...
+    @property
+    def icon(self) -> str | None:
+        """
+        Gets or sets the icon of the form.
+        """
+    @icon.setter
+    def icon(self, arg1: str | None) -> ModalForm:
+        ...
+    @property
+    def submit_button(self) -> str | Translatable | None:
+        """
+        Gets or sets the submit button message of the form.
+        """
+    @submit_button.setter
+    def submit_button(self, arg1: str | Translatable | None) -> ModalForm:
+        ...
 class Objective:
     """
     Represents an objective on a scoreboard that can show scores specific to entries.
@@ -1090,7 +1132,7 @@ class Player(Mob):
         """
         Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values.
         """
-    def send_form(self, form: MessageForm | ActionForm) -> None:
+    def send_form(self, form: MessageForm | ActionForm | ModalForm) -> None:
         """
         Sends a form to the player.
         """
