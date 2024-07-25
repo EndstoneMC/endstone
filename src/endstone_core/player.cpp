@@ -34,7 +34,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/base64.h"
-#include "endstone/detail/form/form_serializer.h"
+#include "endstone/detail/form/form_codec.h"
 #include "endstone/detail/server.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -500,11 +500,14 @@ void EndstonePlayer::transfer(std::string address, int port) const
 
 void EndstonePlayer::sendForm(FormVariant form)
 {
-    static FormSerializer visitor;
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->form_id = ++form_ids_;
-    pk->form_json = std::visit(visitor, form).dump();
+    pk->form_json = std::visit(entt::overloaded{[](auto &&arg) {
+                                   return FormCodec::toJson(arg);
+                               }},
+                               form)
+                        .dump();
     forms_.emplace(pk->form_id, std::move(form));
     getHandle().sendNetworkPacket(*packet);
 }

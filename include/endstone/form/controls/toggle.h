@@ -14,46 +14,47 @@
 
 #pragma once
 
+#include <optional>
+#include <string>
+#include <utility>
+
 #include "endstone/message.h"
 
 namespace endstone {
 
 /**
- * @brief Represents a generic form.
- *
- * The Form class provides a base abstraction for different types of forms.
- * It supports three types of forms: Action, Message, and Modal.
- * Each form has a title, which can be a string or a translatable object.
+ * @brief Represents a toggle button with a label.
  */
-template <typename T>
-class Form {
+class Toggle {
 public:
-    explicit Form() = default;
-
-    /**
-     * @brief Gets the title of the form.
-     *
-     * @return The title of the form.
-     */
-    [[nodiscard]] Message getTitle() const
+    Toggle() = default;
+    explicit Toggle(Message label, bool default_value = false) : label_(std::move(label)), default_value_(default_value)
     {
-        return title_;
     }
 
     /**
-     * @brief Sets the title of the form.
+     * @brief Gets the label of the toggle.
      *
-     * @param title The title of the form to be set.
-     * @return A reference to the current form.
+     * @return The label of the toggle.
      */
-    T &setTitle(Message title)
+    [[nodiscard]] Message getLabel() const
     {
-        title_ = std::move(title);
-        return *static_cast<T *>(this);
+        return label_;
     }
 
-protected:
-    Message title_;
+    /**
+     * @brief Sets the label of the toggle.
+     *
+     * @param label The new label for the toggle.
+     */
+    void setText(Message label)
+    {
+        label_ = std::move(label);
+    }
+
+private:
+    Message label_;
+    bool default_value_;
 };
 
 }  // namespace endstone
