@@ -37,17 +37,6 @@ class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Toggle>;
 
-    [[nodiscard]] Message getContent() const
-    {
-        return content_;
-    }
-
-    ModalForm &setContent(Message text)
-    {
-        content_ = std::move(text);
-        return *this;
-    }
-
     ModalForm &addControl(const Control &control)
     {
         controls_.push_back(control);
@@ -88,7 +77,6 @@ public:
     }
 
 private:
-    Message content_;
     std::vector<Control> controls_;
     std::optional<Message> submit_button_text_;
     std::optional<std::string> icon_;

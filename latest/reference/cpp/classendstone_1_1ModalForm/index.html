@@ -1868,19 +1868,6 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-getcontent" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getContent
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
     <a href="#function-getcontrols" class="md-nav__link">
       <span class="md-ellipsis">
         function getControls
@@ -1910,19 +1897,6 @@
     <a href="#function-getsubmitbutton" class="md-nav__link">
       <span class="md-ellipsis">
         function getSubmitButton
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
-    <a href="#function-setcontent" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setContent
       </span>
     </a>
 
@@ -2042,10 +2016,6 @@
 <td style="text-align: left;"><a href="#function-addcontrol"><strong>addControl</strong></a> (const Control &amp; control) <br><em>Adds a control to the form.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">Message</td>
-<td style="text-align: left;"><a href="#function-getcontent"><strong>getContent</strong></a> () const<br><em>Gets the content of the form.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">std::vector&lt; Control &gt;</td>
 <td style="text-align: left;"><a href="#function-getcontrols"><strong>getControls</strong></a> () const<br><em>Gets the controls of the modal form.</em></td>
 </tr>
@@ -2056,10 +2026,6 @@
 <tr>
 <td style="text-align: right;">std::optional&lt; Message &gt;</td>
 <td style="text-align: left;"><a href="#function-getsubmitbutton"><strong>getSubmitButton</strong></a> () const<br><em>Gets the submit button text of the form.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;"><a href="./"><strong>ModalForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-setcontent"><strong>setContent</strong></a> (Message text) <br><em>Sets the content of the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>ModalForm</strong></a> &amp;</td>
@@ -2135,17 +2101,9 @@
 <p>A reference to the current form. </p>
 <hr>
 
-<h3 id="function-getcontent">function getContent<a class="headerlink" href="#function-getcontent" title="Permanent link">&para;</a></h3>
-<p><em>Gets the content of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getContent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>The content of the form. </p>
-<hr>
-
 <h3 id="function-getcontrols">function getControls<a class="headerlink" href="#function-getcontrols" title="Permanent link">&para;</a></h3>
 <p><em>Gets the controls of the modal form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getControls</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getControls</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A list of controls in the modal form. </p>
@@ -2153,7 +2111,7 @@
 
 <h3 id="function-geticon">function getIcon<a class="headerlink" href="#function-geticon" title="Permanent link">&para;</a></h3>
 <p><em>Get the icon of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getIcon</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getIcon</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The path or URL to the icon file </p>
@@ -2161,31 +2119,17 @@
 
 <h3 id="function-getsubmitbutton">function getSubmitButton<a class="headerlink" href="#function-getsubmitbutton" title="Permanent link">&para;</a></h3>
 <p><em>Gets the submit button text of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getSubmitButton</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">getSubmitButton</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The submit button text of the form. </p>
 <hr>
 
-<h3 id="function-setcontent">function setContent<a class="headerlink" href="#function-setcontent" title="Permanent link">&para;</a></h3>
-<p><em>Sets the content of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setContent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>text</code> The text to set as the content. </li>
-</ul>
-<p><strong>Returns:</strong></p>
-<p>A reference to the current form. </p>
-<hr>
-
 <h3 id="function-setcontrols">function setControls<a class="headerlink" href="#function-setcontrols" title="Permanent link">&para;</a></h3>
 <p><em>Sets the controls of the modal form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setControls</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">controls</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setControls</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">controls</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2197,9 +2141,9 @@
 
 <h3 id="function-seticon">function setIcon<a class="headerlink" href="#function-seticon" title="Permanent link">&para;</a></h3>
 <p><em>Sets the icon of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setIcon</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setIcon</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2211,9 +2155,9 @@
 
 <h3 id="function-setsubmitbutton">function setSubmitButton<a class="headerlink" href="#function-setsubmitbutton" title="Permanent link">&para;</a></h3>
 <p><em>Sets the submit button text of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setSubmitButton</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ModalForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ModalForm</span><span class="o">::</span><span class="n">setSubmitButton</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">text</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>

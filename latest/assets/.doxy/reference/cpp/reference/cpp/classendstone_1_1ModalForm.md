@@ -79,11 +79,9 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**addControl**](#function-addcontrol) (const Control & control) <br>_Adds a control to the form._  |
-|  Message | [**getContent**](#function-getcontent) () const<br>_Gets the content of the form._  |
 |  std::vector&lt; Control &gt; | [**getControls**](#function-getcontrols) () const<br>_Gets the controls of the modal form._  |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the form._  |
 |  std::optional&lt; Message &gt; | [**getSubmitButton**](#function-getsubmitbutton) () const<br>_Gets the submit button text of the form._  |
-|  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Sets the content of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setControls**](#function-setcontrols) (std::vector&lt; Control &gt; controls) <br>_Sets the controls of the modal form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setIcon**](#function-seticon) (std::optional&lt; std::string &gt; icon) <br>_Sets the icon of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setSubmitButton**](#function-setsubmitbutton) (std::optional&lt; Message &gt; text) <br>_Sets the submit button text of the form._  |
@@ -213,31 +211,6 @@ A reference to the current form.
 
 
 
-### function getContent 
-
-_Gets the content of the form._ 
-```C++
-inline Message endstone::ModalForm::getContent () const
-```
-
-
-
-
-
-**Returns:**
-
-The content of the form. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
 ### function getControls 
 
 _Gets the controls of the modal form._ 
@@ -302,40 +275,6 @@ inline std::optional< Message > endstone::ModalForm::getSubmitButton () const
 **Returns:**
 
 The submit button text of the form. 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setContent 
-
-_Sets the content of the form._ 
-```C++
-inline ModalForm & endstone::ModalForm::setContent (
-    Message text
-) 
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `text` The text to set as the content. 
-
-
-
-**Returns:**
-
-A reference to the current form. 
 
 
 
