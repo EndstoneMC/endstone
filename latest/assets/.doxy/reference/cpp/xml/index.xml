@@ -313,6 +313,22 @@
   <compound refid="classendstone_1_1Mob" kind="class"><name>endstone::Mob</name>
     <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" kind="function"><name>isGliding</name></member>
   </compound>
+  <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
+    <member refid="classendstone_1_1ModalForm_1af4cf63a22089a582e0cdb8c3cf27c0cf" kind="typedef"><name>Control</name></member>
+    <member refid="classendstone_1_1ModalForm_1a30b383f8f67603b9e0b788fb514105d3" kind="variable"><name>content_</name></member>
+    <member refid="classendstone_1_1ModalForm_1ae93fb07234de5ad30f7204fc1b248180" kind="variable"><name>controls_</name></member>
+    <member refid="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" kind="variable"><name>submit_button_text_</name></member>
+    <member refid="classendstone_1_1ModalForm_1adc2b552f970f23e0165a7209eb556160" kind="variable"><name>icon_</name></member>
+    <member refid="classendstone_1_1ModalForm_1a07baba1f8aa96d3c3c388f2475877d71" kind="function"><name>getContent</name></member>
+    <member refid="classendstone_1_1ModalForm_1af9b8e1c9440cf854c5b30b50c45d66fe" kind="function"><name>setContent</name></member>
+    <member refid="classendstone_1_1ModalForm_1a088ec6bda44aaba9124c3e16b7d2aa58" kind="function"><name>addControl</name></member>
+    <member refid="classendstone_1_1ModalForm_1a3f04549ae4e3841d315ab89f3fd6899f" kind="function"><name>getControls</name></member>
+    <member refid="classendstone_1_1ModalForm_1ab11e3d81f2ff8d80b9e7f32c5377e03f" kind="function"><name>setControls</name></member>
+    <member refid="classendstone_1_1ModalForm_1acb82246f433ddc5a7c963d299a06ab62" kind="function"><name>getSubmitButton</name></member>
+    <member refid="classendstone_1_1ModalForm_1a10dfa45d293d41020a581083efece0a9" kind="function"><name>setSubmitButton</name></member>
+    <member refid="classendstone_1_1ModalForm_1ac40916524243325614523a86115154a5" kind="function"><name>getIcon</name></member>
+    <member refid="classendstone_1_1ModalForm_1ab65fd73b51d3b4ace8ef40712863b308" kind="function"><name>setIcon</name></member>
+  </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
     <member refid="classendstone_1_1Objective_1a65fbf00ed3948df90e71f629a4445528" kind="function"><name>getName</name></member>
@@ -394,7 +410,7 @@
     <member refid="classendstone_1_1PermissionAttachmentInfo_1a86e337719e9f2625f7a8a1760c630ecb" kind="function"><name>getValue</name></member>
   </compound>
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
-    <member refid="classendstone_1_1Player_1af68167194ea24df3226c2f8015444eed" kind="typedef"><name>FormVariant</name></member>
+    <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
     <member refid="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" kind="function"><name>Player</name></member>
     <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" kind="function"><name>Player</name></member>
     <member refid="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" kind="function"><name>operator=</name></member>
@@ -1016,6 +1032,8 @@
   <compound refid="form_8h" kind="file"><name>form.h</name>
   </compound>
   <compound refid="message__form_8h" kind="file"><name>message_form.h</name>
+  </compound>
+  <compound refid="modal__form_8h" kind="file"><name>modal_form.h</name>
   </compound>
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
   </compound>

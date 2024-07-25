@@ -30,6 +30,7 @@
 #include "endstone/actor/mob.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
+#include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
 #include "endstone/skin.h"
@@ -40,7 +41,7 @@ namespace endstone {
 
 class Player : public Mob {
 protected:
-    using FormVariant = std::variant<MessageForm, ActionForm>;
+    using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
     Player() = default;

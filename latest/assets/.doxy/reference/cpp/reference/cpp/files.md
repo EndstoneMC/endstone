@@ -56,6 +56,7 @@ Here is a list of all files with brief descriptions:
             * **dir** [**controls**](dir_035306890ec6a3fa870e30b726ac5ffc.md)     
                 * **file** [**toggle.h**](toggle_8h.md)     
             * **file** [**message\_form.h**](message__form_8h.md)     
+            * **file** [**modal\_form.h**](modal__form_8h.md)     
         * **dir** [**inventory**](dir_d1e84b530b14f41e8b6f5ec1b5dee76c.md)     
             * **file** [**inventory.h**](inventory_8h.md)     
             * **file** [**player\_inventory.h**](player__inventory_8h.md)     

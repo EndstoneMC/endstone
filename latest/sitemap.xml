@@ -276,6 +276,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ModalForm/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Objective/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
@@ -952,6 +957,16 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message__form_8h_source/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/modal__form_8h/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/modal__form_8h_source/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>

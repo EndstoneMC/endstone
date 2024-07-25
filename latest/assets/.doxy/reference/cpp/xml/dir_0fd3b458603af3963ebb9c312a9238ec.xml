@@ -6,6 +6,7 @@
     <innerfile refid="action__form_8h">action_form.h</innerfile>
     <innerfile refid="form_8h">form.h</innerfile>
     <innerfile refid="message__form_8h">message_form.h</innerfile>
+    <innerfile refid="modal__form_8h">modal_form.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

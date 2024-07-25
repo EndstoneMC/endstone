@@ -5,6 +5,7 @@
     <includes refid="message_8h" local="yes">endstone/message.h</includes>
     <includedby refid="action__form_8h" local="yes">include/endstone/form/action_form.h</includedby>
     <includedby refid="message__form_8h" local="yes">include/endstone/form/message_form.h</includedby>
+    <includedby refid="modal__form_8h" local="yes">include/endstone/form/modal_form.h</includedby>
     <incdepgraph>
       <node id="2">
         <label>endstone/message.h</label>
@@ -128,6 +129,12 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="24">
+        <label>include/endstone/form/modal_form.h</label>
+        <link refid="modal__form_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
@@ -148,6 +155,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="4">

@@ -55,6 +55,7 @@
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |
 | class | [**MessageForm**](classendstone_1_1MessageForm.md) <br>_Represents a form with two buttons._  |
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
+| class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |
 | class | [**Permission**](classendstone_1_1Permission.md) <br>_Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |

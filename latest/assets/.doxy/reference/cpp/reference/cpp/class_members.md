@@ -21,6 +21,7 @@
 * **asConsole** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
+* **addControl** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **addAttachment** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addParent** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
@@ -51,7 +52,7 @@
 
 ## c
 
-* **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
@@ -60,6 +61,8 @@
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **Control** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **controls\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -124,10 +127,10 @@
 
 ## g
 
-* **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
-* **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
 * **getLevel** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Server**](classendstone_1_1Server.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -165,6 +168,8 @@
 * **getYaw** ([**endstone::Location**](classendstone_1_1Location.md))
 * **getButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **getControls** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **getSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getCriteria** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **getDisplaySlot** ([**endstone::Objective**](classendstone_1_1Objective.md))
@@ -278,7 +283,7 @@
 
 ## i
 
-* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isOnGround** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -451,10 +456,10 @@
 
 ## s
 
-* **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
-* **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
@@ -474,6 +479,9 @@
 * **setLevel** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **setButton1** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setButton2** ([**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **setControls** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **setSubmitButton** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setDisplay** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))

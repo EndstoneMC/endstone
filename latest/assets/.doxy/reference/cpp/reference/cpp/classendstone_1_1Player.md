@@ -265,7 +265,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::variant&lt; [**MessageForm**](classendstone_1_1MessageForm.md), [**ActionForm**](classendstone_1_1ActionForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
+| typedef std::variant&lt; [**MessageForm**](classendstone_1_1MessageForm.md), [**ActionForm**](classendstone_1_1ActionForm.md), [**ModalForm**](classendstone_1_1ModalForm.md) &gt; | [**FormVariant**](#typedef-formvariant)  <br> |
 
 
 
@@ -1433,7 +1433,7 @@ endstone::Player::~Player () override
 ### typedef FormVariant 
 
 ```C++
-using endstone::Player::FormVariant =  std::variant<MessageForm, ActionForm>;
+using endstone::Player::FormVariant =  std::variant<MessageForm, ActionForm, ModalForm>;
 ```
 
 

@@ -29,9 +29,10 @@
 
 ## c
 
-* **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **cancelled\_** ([**endstone::Event**](classendstone_1_1Event.md))
+* **controls\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **commands\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -90,7 +91,7 @@
 
 ## i
 
-* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 
@@ -171,6 +172,7 @@
 
 ## s
 
+* **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **soft\_depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **sender\_** ([**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))

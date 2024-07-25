@@ -2428,6 +2428,7 @@
 <li><strong>asConsole</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>)</li>
 <li><strong>asPlayer</strong> (<a href="../classendstone_1_1CommandSender/"><strong>endstone::CommandSender</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>async_</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
+<li><strong>addControl</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>addAttachment</strong> (<a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>addParent</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>attachment_</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>)</li>
@@ -2456,7 +2457,7 @@
 </ul>
 <h2 id="c">c<a class="headerlink" href="#c" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>content_</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>content_</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>Command</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>command_map_</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>CommandMap</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>)</li>
@@ -2465,6 +2466,8 @@
 <li><strong>cancelled_</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>callEvent</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>critical</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
+<li><strong>Control</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
+<li><strong>controls_</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>children_</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>command_</strong> (<a href="../classendstone_1_1PlayerCommandEvent/"><strong>endstone::PlayerCommandEvent</strong></a>, <a href="../classendstone_1_1ServerCommandEvent/"><strong>endstone::ServerCommandEvent</strong></a>)</li>
 <li><strong>commands_</strong> (<a href="../classendstone_1_1PluginDescription/"><strong>endstone::PluginDescription</strong></a>)</li>
@@ -2525,10 +2528,10 @@
 </ul>
 <h2 id="g">g<a class="headerlink" href="#g" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>getIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
+<li><strong>getIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>getText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
 <li><strong>getButtons</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>)</li>
-<li><strong>getContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>getContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>getDimension</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>, <a href="../classendstone_1_1Position/"><strong>endstone::Position</strong></a>)</li>
 <li><strong>getLevel</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>, <a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>, <a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>, <a href="../classendstone_1_1WeatherEvent/"><strong>endstone::WeatherEvent</strong></a>)</li>
 <li><strong>getLocation</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
@@ -2566,6 +2569,8 @@
 <li><strong>getYaw</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>getButton1</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>getButton2</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>getControls</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
+<li><strong>getSubmitButton</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>getCriteria</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>getDisplayName</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>getDisplaySlot</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
@@ -2677,7 +2682,7 @@
 </ul>
 <h2 id="i">i<a class="headerlink" href="#i" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>icon_</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
+<li><strong>icon_</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>isInLava</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isInWater</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isOnGround</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
@@ -2842,10 +2847,10 @@
 </ul>
 <h2 id="s">s<a class="headerlink" href="#s" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>setIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
+<li><strong>setIcon</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>setText</strong> (<a href="../classendstone_1_1ActionForm_1_1Button/"><strong>endstone::ActionForm::Button</strong></a>)</li>
 <li><strong>setButtons</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>)</li>
-<li><strong>setContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>setContent</strong> (<a href="../classendstone_1_1ActionForm/"><strong>endstone::ActionForm</strong></a>, <a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>, <a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>setRotation</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>setFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>)</li>
 <li><strong>setTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>)</li>
@@ -2865,6 +2870,9 @@
 <li><strong>setLevel</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>setButton1</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
 <li><strong>setButton2</strong> (<a href="../classendstone_1_1MessageForm/"><strong>endstone::MessageForm</strong></a>)</li>
+<li><strong>setControls</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
+<li><strong>setSubmitButton</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
+<li><strong>submit_button_text_</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>setDisplay</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>setDisplayName</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>setRenderType</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>

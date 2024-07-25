@@ -74,7 +74,7 @@
         <link refid="message_8h_source"/>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -95,7 +95,7 @@
         <label>include/endstone/event/server/server_list_ping_event.h</label>
         <link refid="server__list__ping__event_8h_source"/>
       </node>
-      <node id="44">
+      <node id="45">
         <label>include/endstone/form/action_form.h</label>
         <link refid="action__form_8h_source"/>
         <childnode refid="5" relation="include">
@@ -129,9 +129,15 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="46">
         <label>include/endstone/form/message_form.h</label>
         <link refid="message__form_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>include/endstone/form/modal_form.h</label>
+        <link refid="modal__form_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
@@ -180,6 +186,8 @@
       <node id="42">
         <label>include/endstone/form/controls/toggle.h</label>
         <link refid="toggle_8h_source"/>
+        <childnode refid="43" relation="include">
+        </childnode>
       </node>
       <node id="20">
         <label>include/endstone/event/server/plugin_disable_event.h</label>
@@ -253,12 +261,14 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
-      <node id="43">
+      <node id="44">
         <label>include/endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="44" relation="include">
-        </childnode>
         <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
       <node id="6">

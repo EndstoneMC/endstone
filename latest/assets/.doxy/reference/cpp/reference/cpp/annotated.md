@@ -32,6 +32,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Logger**](classendstone_1_1Logger.md) [_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._    
     * **class** [**MessageForm**](classendstone_1_1MessageForm.md) _Represents a form with two buttons._     
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+    * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
     * **class** [**Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
     * **class** [**Permission**](classendstone_1_1Permission.md) _Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._    
