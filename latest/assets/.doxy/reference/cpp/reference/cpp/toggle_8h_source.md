@@ -1,10 +1,10 @@
 
 
-# File button.h
+# File toggle.h
 
-[**File List**](files.md) **>** [**controls**](dir_035306890ec6a3fa870e30b726ac5ffc.md) **>** [**button.h**](button_8h.md)
+[**File List**](files.md) **>** [**controls**](dir_035306890ec6a3fa870e30b726ac5ffc.md) **>** [**toggle.h**](toggle_8h.md)
 
-[Go to the documentation of this file](button_8h.md)
+[Go to the documentation of this file](toggle_8h.md)
 
 
 ```C++
@@ -32,37 +32,36 @@
 
 namespace endstone {
 
-class Button {
+class Toggle {
 public:
-    Button() = default;
-    explicit Button(Message text, std::optional<std::string> icon = std::nullopt)
-        : text_(std::move(text)), icon_(std::move(icon))
+    Toggle() = default;
+    explicit Toggle(Message label, bool default_value = false) : label_(std::move(label)), value_(default_value) {}
+
+    [[nodiscard]] Message getLabel() const
     {
+        return label_;
     }
 
-    [[nodiscard]] Message getText() const
+    Toggle &setLabel(Message label)
     {
-        return text_;
+        label_ = std::move(label);
+        return *this;
     }
 
-    void setText(Message text)
+    [[nodiscard]] bool getDefaultValue() const
     {
-        text_ = std::move(text);
+        return value_;
     }
 
-    [[nodiscard]] std::optional<std::string> getIcon() const
+    Toggle &setDefaultValue(bool value)
     {
-        return icon_;
-    }
-
-    void setIcon(std::string icon)
-    {
-        icon_ = std::move(icon);
+        value_ = value;
+        return *this;
     }
 
 private:
-    Message text_;
-    std::optional<std::string> icon_;
+    Message label_;
+    bool value_;
 };
 
 }  // namespace endstone

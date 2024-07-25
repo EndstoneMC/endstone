@@ -146,6 +146,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActionForm_1_1Button/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Actor/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
@@ -177,11 +182,6 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BroadcastMessageEvent/</loc>
-         <lastmod>2024-07-25</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Button/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -447,6 +447,11 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ThunderChangeEvent/</loc>
+         <lastmod>2024-07-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Toggle/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -931,12 +936,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/button_8h/</loc>
+         <loc>https://endstone.dev/latest/reference/cpp/toggle_8h/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://endstone.dev/latest/reference/cpp/button_8h_source/</loc>
+         <loc>https://endstone.dev/latest/reference/cpp/toggle_8h_source/</loc>
          <lastmod>2024-07-25</lastmod>
          <changefreq>daily</changefreq>
     </url>

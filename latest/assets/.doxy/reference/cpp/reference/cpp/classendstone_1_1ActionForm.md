@@ -27,6 +27,11 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 
 
 
+## Classes
+
+| Type | Name |
+| ---: | :--- |
+| class | [**Button**](classendstone_1_1ActionForm_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 
 
 
@@ -74,9 +79,9 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) (const Message & text, const std::optional&lt; std::string &gt; & icon=std::nullopt) <br>_Adds a button to the form._  |
-|  const std::vector&lt; [**Button**](classendstone_1_1Button.md) &gt; & | [**getButtons**](#function-getbuttons) () const<br>_Get the buttons of the action form._  |
+|  const std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & | [**getButtons**](#function-getbuttons) () const<br>_Get the buttons of the action form._  |
 |  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setButtons**](#function-setbuttons) (const std::vector&lt; [**Button**](classendstone_1_1Button.md) &gt; & buttons) <br>_Set the buttons of the action form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setButtons**](#function-setbuttons) (const std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & buttons) <br>_Set the buttons of the action form._  |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**setContent**](#function-setcontent) (Message text) <br>_Set the content of the form._  |
 
 
@@ -86,7 +91,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Form**](classendstone_1_1Form.md#function-form) () <br> |
+|   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
 |  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 

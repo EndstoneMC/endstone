@@ -24,10 +24,10 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>endstone::Form&lt; T &gt;::Form</definition>
-        <argsstring>()</argsstring>
+        <argsstring>()=default</argsstring>
         <name>Form</name>
         <briefdescription>
         </briefdescription>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/form.h" line="31" column="14" bodyfile="include/endstone/form/form.h" bodystart="31" bodyend="31"/>
+        <location file="include/endstone/form/form.h" line="31" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -93,7 +93,7 @@
     </detaileddescription>
     <location file="include/endstone/form/form.h" line="29" column="1" bodyfile="include/endstone/form/form.h" bodystart="29" bodyend="57"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
+      <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
       <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getTitle</name></member>
       <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::Form</scope><name>title_</name></member>

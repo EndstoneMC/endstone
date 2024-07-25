@@ -77,15 +77,15 @@
     <member refid="classendstone_1_1BroadcastMessageEvent_1a7a73a014a95353346d4fb8b789c77998" kind="function"><name>setMessage</name></member>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a76737ffb8bc730b76b214d4d020a56db" kind="function"><name>getRecipients</name></member>
   </compound>
-  <compound refid="classendstone_1_1Button" kind="class"><name>endstone::Button</name>
-    <member refid="classendstone_1_1Button_1a0966411688e4051e6ebd9e12e6a49bfc" kind="variable"><name>text_</name></member>
-    <member refid="classendstone_1_1Button_1a944174ff70825c631f1efe103a1f4857" kind="variable"><name>icon_</name></member>
-    <member refid="classendstone_1_1Button_1aa7bd604170d6b66a289e1fb1326605fd" kind="function"><name>Button</name></member>
-    <member refid="classendstone_1_1Button_1abb57e00ae1adb514b666c4189585c0b6" kind="function"><name>Button</name></member>
-    <member refid="classendstone_1_1Button_1a9f4197b42dd6f09b47e77ed083a69b2b" kind="function"><name>getText</name></member>
-    <member refid="classendstone_1_1Button_1a2dbe6dfde1d7be34677658936c38899d" kind="function"><name>setText</name></member>
-    <member refid="classendstone_1_1Button_1abab67f381c4cbc7547b76c8e52c7fdb2" kind="function"><name>getIcon</name></member>
-    <member refid="classendstone_1_1Button_1a40c779049edaff8528122dc0fea588f1" kind="function"><name>setIcon</name></member>
+  <compound refid="classendstone_1_1ActionForm_1_1Button" kind="class"><name>endstone::ActionForm::Button</name>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a84c8cea3edd6cffb4b4336d6c4370d65" kind="variable"><name>text_</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1ad55412f067b599395d061269af34d97d" kind="variable"><name>icon_</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a5657f2f796d1d3f7642600bdb6cb2255" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1ada75738a9911b586061050026139338a" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a4810e6db896b645a950c372548f703c3" kind="function"><name>getText</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a2a0388f526040f2d506d79aa9a04662b" kind="function"><name>setText</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a2a51a41302b3ffff548d4227d58c2655" kind="function"><name>getIcon</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1aa3dd146dceef22e78cab106c2c307560" kind="function"><name>setIcon</name></member>
   </compound>
   <compound refid="structendstone_1_1ColorFormat" kind="struct"><name>endstone::ColorFormat</name>
     <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" kind="variable"><name>Escape</name></member>
@@ -228,7 +228,7 @@
   </compound>
   <compound refid="classendstone_1_1Form" kind="class"><name>endstone::Form</name>
     <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" kind="variable"><name>title_</name></member>
-    <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" kind="function"><name>Form</name></member>
+    <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" kind="function"><name>Form</name></member>
     <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" kind="function"><name>getTitle</name></member>
     <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" kind="function"><name>setTitle</name></member>
   </compound>
@@ -806,6 +806,16 @@
     <member refid="classendstone_1_1ThunderChangeEvent_1a65d8e1b242cf7929f5f56a7b625d1e83" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1ThunderChangeEvent_1a5418071ef24c08f489f42c11d2eeba10" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1Toggle" kind="class"><name>endstone::Toggle</name>
+    <member refid="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" kind="variable"><name>label_</name></member>
+    <member refid="classendstone_1_1Toggle_1ac6c7a0ddbdf6215659d75da8dffbc14f" kind="variable"><name>value_</name></member>
+    <member refid="classendstone_1_1Toggle_1a1c470350b59df5562dcc97f5dd1385a1" kind="function"><name>Toggle</name></member>
+    <member refid="classendstone_1_1Toggle_1a31ca9d6bea35c794ce39248ea7cecf28" kind="function"><name>Toggle</name></member>
+    <member refid="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" kind="function"><name>getLabel</name></member>
+    <member refid="classendstone_1_1Toggle_1a191c27ea77eaa18dae2bb12d31f2d1ce" kind="function"><name>setLabel</name></member>
+    <member refid="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" kind="function"><name>getDefaultValue</name></member>
+    <member refid="classendstone_1_1Toggle_1a1f6af05c285c7e62daaec4c0cdaf45da" kind="function"><name>setDefaultValue</name></member>
+  </compound>
   <compound refid="classendstone_1_1Translatable" kind="class"><name>endstone::Translatable</name>
     <member refid="classendstone_1_1Translatable_1a625cc1a0ddb1b943cca1a7fa03db0507" kind="variable"><name>translate_</name></member>
     <member refid="classendstone_1_1Translatable_1ac12b172c158ca6e902d142fab0ea0ec7" kind="variable"><name>with_</name></member>
@@ -1001,7 +1011,7 @@
   </compound>
   <compound refid="action__form_8h" kind="file"><name>action_form.h</name>
   </compound>
-  <compound refid="button_8h" kind="file"><name>button.h</name>
+  <compound refid="toggle_8h" kind="file"><name>toggle.h</name>
   </compound>
   <compound refid="form_8h" kind="file"><name>form.h</name>
   </compound>

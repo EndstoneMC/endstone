@@ -90,7 +90,7 @@
 
 ## i
 
-* **icon\_** ([**endstone::Button**](classendstone_1_1Button.md))
+* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 
@@ -105,6 +105,7 @@
 * **level\_name\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_v6\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **label\_** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **level\_** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 
 
@@ -180,8 +181,8 @@
 
 ## t
 
+* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
-* **text\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
@@ -195,7 +196,7 @@
 ## v
 
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
-* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
+* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 
 

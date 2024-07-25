@@ -54,7 +54,7 @@ _Represents a generic form._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Form**](#function-form) () <br> |
+|   | [**Form**](#function-form) () = default<br> |
 |  Message | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
 |  T & | [**setTitle**](#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
@@ -105,7 +105,7 @@ The [**Form**](classendstone_1_1Form.md) class provides a base abstraction for d
 ### function Form 
 
 ```C++
-inline explicit endstone::Form::Form () 
+explicit endstone::Form::Form () = default
 ```
 
 

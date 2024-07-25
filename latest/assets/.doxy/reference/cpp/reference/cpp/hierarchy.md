@@ -5,6 +5,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 
 
 * **class** [**endstone::Form**](classendstone_1_1Form.md) _Represents a generic form._ 
+* **class** [**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
     * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
         * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
@@ -35,7 +36,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
     * **class** [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
         * **class** [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._ 
         * **class** [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._ 
-* **class** [**endstone::Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._ 
 * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
@@ -64,6 +64,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::Skin**](classendstone_1_1Skin.md) _Represents a player skin._ 
 * **class** [**endstone::SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._ 
 * **class** [**endstone::Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._ 
+* **class** [**endstone::Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._ 
 * **class** [**endstone::Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._ 
 * **class** [**endstone::UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 

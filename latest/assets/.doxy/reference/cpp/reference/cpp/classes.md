@@ -24,8 +24,8 @@
 
 * [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)
 ([**endstone**](namespaceendstone.md))
-* [**Button**](classendstone_1_1Button.md)
-([**endstone**](namespaceendstone.md))
+* [**Button**](classendstone_1_1ActionForm_1_1Button.md)
+([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 
 
 ## c
@@ -181,6 +181,8 @@
 * [**Task**](classendstone_1_1Task.md)
 ([**endstone**](namespaceendstone.md))
 * [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**Toggle**](classendstone_1_1Toggle.md)
 ([**endstone**](namespaceendstone.md))
 * [**Translatable**](classendstone_1_1Translatable.md)
 ([**endstone**](namespaceendstone.md))

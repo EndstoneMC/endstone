@@ -10,8 +10,8 @@
 
 
 
-* `#include <utility>`
-* `#include "endstone/form/controls/button.h"`
+* `#include <optional>`
+* `#include <string>`
 * `#include "endstone/form/form.h"`
 
 
@@ -38,6 +38,7 @@
 | Type | Name |
 | ---: | :--- |
 | class | [**ActionForm**](classendstone_1_1ActionForm.md) <br>_Represents a form with buttons that let the player take action._  |
+| class | [**Button**](classendstone_1_1ActionForm_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 
 
 

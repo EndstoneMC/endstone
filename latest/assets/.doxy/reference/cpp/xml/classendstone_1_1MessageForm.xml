@@ -222,7 +222,7 @@
       <member refid="classendstone_1_1MessageForm_1ad837135cec90cf369d35feaa1f598344" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button1_text_</name></member>
       <member refid="classendstone_1_1MessageForm_1a9daa7ae62d33ecc513163c78f912de8a" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>button2_text_</name></member>
       <member refid="classendstone_1_1MessageForm_1abca52d7cf32aaab113aa3a0d65f1046f" prot="private" virt="non-virtual"><scope>endstone::MessageForm</scope><name>content_</name></member>
-      <member refid="classendstone_1_1Form_1ad0af2dade600f4cf56d5963c291f3e61" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>Form</name></member>
+      <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>Form</name></member>
       <member refid="classendstone_1_1MessageForm_1ab6620076abada4c6e93bbc1bc24ce62f" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton1</name></member>
       <member refid="classendstone_1_1MessageForm_1ac7b3d87630849182d65b4ae83ab6b0f8" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getButton2</name></member>
       <member refid="classendstone_1_1MessageForm_1a3eeebb5301611304a07f8a10d558ca04" prot="public" virt="non-virtual"><scope>endstone::MessageForm</scope><name>getContent</name></member>

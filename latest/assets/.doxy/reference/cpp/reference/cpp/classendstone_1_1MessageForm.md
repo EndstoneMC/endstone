@@ -87,7 +87,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Form**](classendstone_1_1Form.md#function-form) () <br> |
+|   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
 |  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 

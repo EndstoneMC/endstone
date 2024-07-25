@@ -54,7 +54,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**action\_form.h**](action__form_8h.md)     
             * **file** [**form.h**](form_8h.md)     
             * **dir** [**controls**](dir_035306890ec6a3fa870e30b726ac5ffc.md)     
-                * **file** [**button.h**](button_8h.md)     
+                * **file** [**toggle.h**](toggle_8h.md)     
             * **file** [**message\_form.h**](message__form_8h.md)     
         * **dir** [**inventory**](dir_d1e84b530b14f41e8b6f5ec1b5dee76c.md)     
             * **file** [**inventory.h**](inventory_8h.md)     

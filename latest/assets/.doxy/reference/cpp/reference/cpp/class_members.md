@@ -33,8 +33,8 @@
 ## b
 
 * **buttons\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **Button** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **BroadcastMessageEvent** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
-* **Button** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Black** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Blue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Bold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -124,6 +124,8 @@
 
 ## g
 
+* **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
@@ -137,8 +139,6 @@
 * **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
-* **getIcon** ([**endstone::Button**](classendstone_1_1Button.md))
-* **getText** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Gold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Gray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **Green** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
@@ -258,6 +258,8 @@
 * **getPort** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **getOwner** ([**endstone::Task**](classendstone_1_1Task.md))
 * **getTaskId** ([**endstone::Task**](classendstone_1_1Task.md))
+* **getDefaultValue** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **getLabel** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getParameters** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getTranslationKey** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **getX** ([**endstone::Vector**](classendstone_1_1Vector.md))
@@ -276,11 +278,11 @@
 
 ## i
 
+* **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isOnGround** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isCancellable** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
-* **icon\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **isRegistered** ([**endstone::Command**](classendstone_1_1Command.md))
 * **isReadOnly** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
@@ -328,6 +330,7 @@
 * **local\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_v6\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **LoadType** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **label\_** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **level\_** ([**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
@@ -448,14 +451,14 @@
 
 ## s
 
+* **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
+* **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
-* **setIcon** ([**endstone::Button**](classendstone_1_1Button.md))
-* **setText** ([**endstone::Button**](classendstone_1_1Button.md))
 * **setAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **setDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md))
 * **setName** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -516,6 +519,8 @@
 * **skin\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **skin\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **SocketAddress** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
+* **setDefaultValue** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
+* **setLabel** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **size** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **str** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **swap** ([**endstone::UUID**](classendstone_1_1UUID.md))
@@ -526,8 +531,8 @@
 
 ## t
 
+* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
-* **text\_** ([**endstone::Button**](classendstone_1_1Button.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
@@ -537,6 +542,7 @@
 * **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **ThunderChangeEvent** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
 * **toThunderState** ([**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md))
+* **Toggle** ([**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **Translatable** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **toWeatherState** ([**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
@@ -556,7 +562,7 @@
 ## v
 
 * **valid\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
-* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
+* **value\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **version** ([**endstone::UUID**](classendstone_1_1UUID.md))
 * **Vector** ([**endstone::Vector**](classendstone_1_1Vector.md))

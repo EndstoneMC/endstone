@@ -37,7 +37,6 @@
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
-| class | [**Button**](classendstone_1_1Button.md) <br>_Represents a button with text and an optional icon._  |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
 | class | [**CommandExecutor**](classendstone_1_1CommandExecutor.md) <br>_Represents a class which contains a single method for executing commands._  |
@@ -90,6 +89,7 @@
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
 | class | [**Task**](classendstone_1_1Task.md) <br>_Represents a task being executed by the scheduler._  |
 | class | [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) <br>_Called when the thunder state in a world is changing._  |
+| class | [**Toggle**](classendstone_1_1Toggle.md) <br>_Represents a toggle button with a label._  |
 | class | [**Translatable**](classendstone_1_1Translatable.md) <br>_Represents an object with a text representation that can be translated by the Minecraft client._  |
 | class | [**UUID**](classendstone_1_1UUID.md) <br>_Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_ |
 | class | [**Vector**](classendstone_1_1Vector.md) &lt;typename T&gt;<br>_Represents a 3-dimensional vector._  |

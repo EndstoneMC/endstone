@@ -24,15 +24,50 @@
 
 #pragma once
 
-#include <utility>
+#include <optional>
+#include <string>
 
-#include "endstone/form/controls/button.h"
 #include "endstone/form/form.h"
 
 namespace endstone {
 
 class ActionForm : public Form<ActionForm> {
 public:
+    class Button {
+    public:
+        Button() = default;
+        explicit Button(Message text, std::optional<std::string> icon = std::nullopt)
+            : text_(std::move(text)), icon_(std::move(icon))
+        {
+        }
+
+        [[nodiscard]] Message getText() const
+        {
+            return text_;
+        }
+
+        Button &setText(Message text)
+        {
+            text_ = std::move(text);
+            return *this;
+        }
+
+        [[nodiscard]] std::optional<std::string> getIcon() const
+        {
+            return icon_;
+        }
+
+        Button &setIcon(std::string icon)
+        {
+            icon_ = std::move(icon);
+            return *this;
+        }
+
+    private:
+        Message text_;
+        std::optional<std::string> icon_;
+    };
+
     [[nodiscard]] Message getContent() const
     {
         return content_;

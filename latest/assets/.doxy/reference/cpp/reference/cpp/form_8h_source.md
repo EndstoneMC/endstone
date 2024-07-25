@@ -31,7 +31,7 @@ namespace endstone {
 template <typename T>
 class Form {
 public:
-    explicit Form() {}
+    explicit Form() = default;
 
     [[nodiscard]] Message getTitle() const
     {

@@ -1,16 +1,16 @@
 
 
-# Class endstone::Button
+# Class endstone::ActionForm::Button
 
 
 
-[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**Button**](classendstone_1_1Button.md)
+[**ClassList**](annotated.md) **>** [**endstone**](namespaceendstone.md) **>** [**ActionForm**](classendstone_1_1ActionForm.md) **>** [**Button**](classendstone_1_1ActionForm_1_1Button.md)
 
 
 
 _Represents a button with text and an optional icon._ 
 
-* `#include <endstone/form/controls/button.h>`
+* `#include <endstone/form/action_form.h>`
 
 
 
@@ -56,8 +56,8 @@ _Represents a button with text and an optional icon._
 |   | [**Button**](#function-button-22) (Message text, std::optional&lt; std::string &gt; icon=std::nullopt) <br> |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the button._  |
 |  Message | [**getText**](#function-gettext) () const<br>_Gets the text of the button._  |
-|  void | [**setIcon**](#function-seticon) (std::string icon) <br>_Sets the icon for the button._  |
-|  void | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
+|  [**Button**](classendstone_1_1ActionForm_1_1Button.md) & | [**setIcon**](#function-seticon) (std::string icon) <br>_Sets the icon for the button._  |
+|  [**Button**](classendstone_1_1ActionForm_1_1Button.md) & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
 
 
 
@@ -94,7 +94,7 @@ _Represents a button with text and an optional icon._
 ### function Button [1/2]
 
 ```C++
-endstone::Button::Button () = default
+endstone::ActionForm::Button::Button () = default
 ```
 
 
@@ -107,7 +107,7 @@ endstone::Button::Button () = default
 ### function Button [2/2]
 
 ```C++
-inline explicit endstone::Button::Button (
+inline explicit endstone::ActionForm::Button::Button (
     Message text,
     std::optional< std::string > icon=std::nullopt
 ) 
@@ -124,7 +124,7 @@ inline explicit endstone::Button::Button (
 
 _Get the icon of the button._ 
 ```C++
-inline std::optional< std::string > endstone::Button::getIcon () const
+inline std::optional< std::string > endstone::ActionForm::Button::getIcon () const
 ```
 
 
@@ -149,7 +149,7 @@ The path or URL to the icon file
 
 _Gets the text of the button._ 
 ```C++
-inline Message endstone::Button::getText () const
+inline Message endstone::ActionForm::Button::getText () const
 ```
 
 
@@ -174,7 +174,7 @@ The text.
 
 _Sets the icon for the button._ 
 ```C++
-inline void endstone::Button::setIcon (
+inline Button & endstone::ActionForm::Button::setIcon (
     std::string icon
 ) 
 ```
@@ -190,6 +190,13 @@ inline void endstone::Button::setIcon (
 
 
 
+**Returns:**
+
+A reference to the current button. 
+
+
+
+
 
         
 
@@ -201,7 +208,7 @@ inline void endstone::Button::setIcon (
 
 _Sets the text of the button._ 
 ```C++
-inline void endstone::Button::setText (
+inline Button & endstone::ActionForm::Button::setText (
     Message text
 ) 
 ```
@@ -217,11 +224,18 @@ inline void endstone::Button::setText (
 
 
 
+**Returns:**
+
+A reference to the current button. 
+
+
+
+
 
         
 
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/form/controls/button.h`
+The documentation for this class was generated from the following file `include/endstone/form/action_form.h`
 

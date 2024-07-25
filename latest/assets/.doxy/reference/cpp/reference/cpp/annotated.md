@@ -6,6 +6,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
 
 * **namespace** [**endstone**](namespaceendstone.md)     
     * **class** [**ActionForm**](classendstone_1_1ActionForm.md) _Represents a form with buttons that let the player take action._     
+        * **class** [**Button**](classendstone_1_1ActionForm_1_1Button.md) _Represents a button with text and an optional icon._     
     * **class** [**Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
     * **class** [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._    
     * **class** [**ActorEvent**](classendstone_1_1ActorEvent.md) _Represents an Actor-related event._     
@@ -13,7 +14,6 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._    
     * **class** [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._     
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._    
-    * **class** [**Button**](classendstone_1_1Button.md) _Represents a button with text and an optional icon._     
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
     * **class** [**Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     
@@ -67,6 +67,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
     * **class** [**Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._     
     * **class** [**ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._     
+    * **class** [**Toggle**](classendstone_1_1Toggle.md) _Represents a toggle button with a label._     
     * **class** [**Translatable**](classendstone_1_1Translatable.md) _Represents an object with a text representation that can be translated by the Minecraft client._     
     * **class** [**UUID**](classendstone_1_1UUID.md) _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1_1UUID.md) _)_    
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
