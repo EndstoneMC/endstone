@@ -520,8 +520,14 @@ void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
     }
     std::visit(entt::overloaded{[this](auto &&arg) {
                    auto callback = arg.getOnClose();
-                   if (callback) {
-                       callback(*this);
+                   try {
+                       if (callback) {
+                           callback(this);
+                       }
+                   }
+                   catch (std::exception &e) {
+                       getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}",
+                                                     e.what());
                    }
                }},
                it->second);

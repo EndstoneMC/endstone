@@ -41,7 +41,7 @@ void init_form(py::module_ &m)
 
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
         .def(py::init<>([](Message title, Message content, Message button1, Message button2,
-                           std::function<void(Player &)> on_close) {
+                           std::function<void(Player *)> on_close) {
                  return MessageForm()
                      .setTitle(std::move(title))
                      .setContent(std::move(content))
@@ -75,7 +75,7 @@ void init_form(py::module_ &m)
     action_form
         .def(
             py::init<>([](Message title, Message content, const std::optional<std::vector<ActionForm::Button>> &buttons,
-                          std::function<void(Player &)> on_close) {
+                          std::function<void(Player *)> on_close) {
                 return ActionForm()
                     .setTitle(std::move(title))
                     .setContent(std::move(content))
@@ -98,7 +98,7 @@ void init_form(py::module_ &m)
     py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
         .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,
                            std::optional<Message> submit_button, std::optional<std::string> icon,
-                           std::function<void(Player &)> on_close) {
+                           std::function<void(Player *)> on_close) {
                  return ModalForm()
                      .setTitle(std::move(title))
                      .setControls(controls.value_or(std::vector<ModalForm::Control>{}))

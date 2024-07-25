@@ -62,7 +62,7 @@ public:
      * @param on_close The callback to be set.
      * @return A reference to the current form.
      */
-    T &setOnClose(std::function<void(Player &)> on_close)
+    T &setOnClose(std::function<void(Player *)> on_close)
     {
         on_close_ = std::move(on_close);
         return *static_cast<T *>(this);
@@ -73,14 +73,14 @@ public:
      *
      * @return The on close callback of the form.
      */
-    [[nodiscard]] std::function<void(Player &)> getOnClose() const
+    [[nodiscard]] std::function<void(Player *)> getOnClose() const
     {
         return on_close_;
     }
 
 protected:
     Message title_;
-    std::function<void(Player &)> on_close_;
+    std::function<void(Player *)> on_close_;
 };
 
 }  // namespace endstone
