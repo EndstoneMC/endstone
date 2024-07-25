@@ -32,6 +32,11 @@ namespace endstone::detail {
 
 void init_form(py::module_ &m)
 {
+    py::class_<Label>(m, "Label", "Represents a text label.")
+        .def(py::init<Message>(), py::arg("text") = "")
+        .def_property("text", &Label::getText, &Label::setText, "Gets or sets the text of the label.",
+                      py::return_value_policy::reference);
+
     py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
         .def(py::init<Message, bool>(), py::arg("label") = "", py::arg("default_value") = false)
         .def_property("label", &Toggle::getLabel, &Toggle::setLabel, "Gets or sets the label of the toggle.",

@@ -18,6 +18,7 @@
 #include <nlohmann/json.hpp>
 
 #include "endstone/form/action_form.h"
+#include "endstone/form/controls/label.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -49,6 +50,15 @@ nlohmann::json FormCodec::toJson(const Message &message)
 /**
  * Controls
  */
+template <>
+nlohmann::json FormCodec::toJson(const Label &label)
+{
+    nlohmann::json json;
+    json["type"] = "label";
+    json["text"] = toJson(label.getText());
+    return json;
+}
+
 template <>
 nlohmann::json FormCodec::toJson(const Toggle &toggle)
 {
