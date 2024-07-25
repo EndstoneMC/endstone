@@ -49,7 +49,7 @@ class Value {
 
 public:
     using ObjectValues = std::map<CZString, Value>;
-    using ArrayValues = std::vector<Value>;
+    using ArrayValues = std::vector<Value*>;
 
     Value(ValueType type = nullValue);  // NOLINT(*-explicit-constructor)
 

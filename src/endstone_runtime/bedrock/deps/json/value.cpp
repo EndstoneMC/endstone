@@ -122,7 +122,7 @@ const Value &Value::operator[](int index) const
     if (index < 0 || index >= value_.array_->size()) {
         return null;
     }
-    return value_.array_->at(index);
+    return *value_.array_->at(index);
 }
 
 const Value &Value::operator[](const char *key) const
