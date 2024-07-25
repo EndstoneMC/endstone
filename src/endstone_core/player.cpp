@@ -518,19 +518,18 @@ void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
-    std::visit(entt::overloaded{[this](auto &&arg) {
-                   auto callback = arg.getOnClose();
-                   try {
+    try {
+        std::visit(entt::overloaded{[this](auto &&arg) {
+                       auto callback = arg.getOnClose();
                        if (callback) {
                            callback(this);
                        }
-                   }
-                   catch (std::exception &e) {
-                       getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}",
-                                                     e.what());
-                   }
-               }},
-               it->second);
+                   }},
+                   it->second);
+    }
+    catch (std::exception &e) {
+        getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}", e.what());
+    }
     forms_.erase(it);
 }
 
@@ -540,8 +539,44 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
-    // TODO(form): handle form response
-    printf("Response %d\n%s\n", form_id, json.dump().c_str());
+    try {
+        std::visit(entt::overloaded{
+                       [&](const MessageForm &form) {
+                           auto callback = form.getOnSubmit();
+                           if (callback) {
+                               callback(this, json.get<bool>() ? 0 : 1);
+                           }
+                       },
+                       [&](const ActionForm &form) {
+                           auto callback = form.getOnSubmit();
+                           if (callback) {
+                               callback(this, json.get<int>());
+                           }
+                       },
+                       [&](const ModalForm &form) {
+                           auto callback = form.getOnSubmit();
+                           if (callback) {
+                               std::vector<std::variant<bool, int, std::string>> values;
+                               for (const auto &item : json) {
+                                   if (item.is_boolean()) {
+                                       values.emplace_back(item.get<bool>());
+                                   }
+                                   else if (item.is_number()) {
+                                       values.emplace_back(item.get<int>());
+                                   }
+                                   else {
+                                       values.emplace_back(item.get<std::string>());
+                                   }
+                               }
+                               callback(this, std::move(values));
+                           }
+                       },
+                   },
+                   it->second);
+    }
+    catch (std::exception &e) {
+        getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
+    }
     forms_.erase(it);
 }
 
