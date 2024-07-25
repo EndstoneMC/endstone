@@ -93,7 +93,7 @@ class PythonPluginLoader(PluginLoader):
 
             # prepare plugin description
             cls_attr = dict(cls.__dict__)
-            name = cls_attr.pop("name", plugin_metadata["name"])
+            name = cls_attr.pop("name", dist_name)
             version = cls_attr.pop("version", plugin_metadata["version"])
 
             api_version = cls_attr.pop("api_version", None)
