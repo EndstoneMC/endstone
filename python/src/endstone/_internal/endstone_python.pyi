@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -467,6 +467,40 @@ class DisplaySlot:
     @property
     def value(self) -> int:
         ...
+class Dropdown:
+    """
+    Represents a dropdown with a set of predefined options.
+    """
+    def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
+        ...
+    def add_option(self, option: str) -> Dropdown:
+        """
+        Adds a new option to the dropdown.
+        """
+    @property
+    def default_index(self) -> int | None:
+        """
+        Gets or sets the optional default index of the dropdown.
+        """
+    @default_index.setter
+    def default_index(self, arg1: int | None) -> Dropdown:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the dropdown.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> Dropdown:
+        ...
+    @property
+    def options(self) -> list[str]:
+        """
+        Gets or sets the options of the dropdown.
+        """
+    @options.setter
+    def options(self, arg1: list[str]) -> Dropdown:
+        ...
 class Event:
     """
     Represents an event.
@@ -799,19 +833,19 @@ class ModalForm:
     """
     Represents a modal form with controls.
     """
-    def __init__(self, title: str | Translatable = '', controls: list[Label | Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, list[bool | int | str]], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, list[bool | int | str]], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
-    def add_control(self, control: Label | Toggle) -> ModalForm:
+    def add_control(self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle) -> ModalForm:
         """
         Adds a control to the form.
         """
     @property
-    def controls(self) -> list[Label | Toggle]:
+    def controls(self) -> list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle]:
         """
         Gets or sets the controls of the modal form.
         """
     @controls.setter
-    def controls(self, arg1: list[Label | Toggle]) -> ModalForm:
+    def controls(self, arg1: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle]) -> ModalForm:
         ...
     @property
     def icon(self) -> str | None:
@@ -2131,6 +2165,52 @@ class Skin:
         """
         Get the Skin ID.
         """
+class Slider:
+    """
+    Represents a slider with a label.
+    """
+    def __init__(self, label: str | Translatable = '', min: float = 0, max: float = 100, step: float = 20, default_value: float | None = None) -> None:
+        ...
+    @property
+    def default_value(self) -> float | None:
+        """
+        Gets or sets the optional default value of the slider.
+        """
+    @default_value.setter
+    def default_value(self, arg1: float | None) -> Slider:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the slider.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> Slider:
+        ...
+    @property
+    def max(self) -> float:
+        """
+        Gets or sets the maximum value of the slider.
+        """
+    @max.setter
+    def max(self, arg1: float) -> Slider:
+        ...
+    @property
+    def min(self) -> float:
+        """
+        Gets or sets the minimum value of the slider.
+        """
+    @min.setter
+    def min(self, arg1: float) -> Slider:
+        ...
+    @property
+    def step(self) -> float:
+        """
+        Gets or sets the step size of the slider.
+        """
+    @step.setter
+    def step(self, arg1: float) -> Slider:
+        ...
 class SocketAddress:
     """
     Represents an IP Socket Address (hostname + port number).
@@ -2155,6 +2235,10 @@ class SocketAddress:
         """
         Gets the port number.
         """
+class StepSlider(Dropdown):
+    """
+    Represents a step slider with a set of predefined options.
+    """
 class Task:
     """
     Represents a task being executed by the scheduler
@@ -2183,6 +2267,40 @@ class Task:
         """
         Returns the task id.
         """
+class TextInput:
+    """
+    Represents a text input field.
+    """
+    @typing.overload
+    def __init__(self) -> None:
+        ...
+    @typing.overload
+    def __init__(self, label: str | Translatable = '', placeholder: str | Translatable = '', default_text: str | Translatable | None = None) -> None:
+        ...
+    @property
+    def default_text(self) -> str | Translatable | None:
+        """
+        Gets or sets the optional default text of the text input field.
+        """
+    @default_text.setter
+    def default_text(self, arg1: str | Translatable | None) -> TextInput:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the text input field.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> TextInput:
+        ...
+    @property
+    def placeholder(self) -> str | Translatable:
+        """
+        Gets or sets the placeholder of the text input field.
+        """
+    @placeholder.setter
+    def placeholder(self, arg1: str | Translatable) -> TextInput:
+        ...
 class ThunderChangeEvent(Event):
     """
     Called when the thunder state in a world is changing.

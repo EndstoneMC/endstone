@@ -24,6 +24,7 @@
 #include "endstone/form/controls/label.h"
 #include "endstone/form/controls/slider.h"
 #include "endstone/form/controls/step_slider.h"
+#include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -36,7 +37,6 @@ namespace endstone::detail {
 
 void init_form(py::module_ &m)
 {
-
     py::class_<Dropdown>(m, "Dropdown", "Represents a dropdown with a set of predefined options.")
         .def(py::init<>([](Message label, const std::optional<std::vector<std::string>> &options,
                            std::optional<int> default_index) {
@@ -55,17 +55,28 @@ void init_form(py::module_ &m)
         .def_property("text", &Label::getText, &Label::setText, "Gets or sets the text of the label.",
                       py::return_value_policy::reference);
 
-    py::class_<StepSlider, Dropdown>(m, "StepSlider", "Represents a step slider with a set of predefined options.");
-
     py::class_<Slider>(m, "Slider", "Represents a slider with a label.")
         .def(py::init<Message, float, float, float, std::optional<float>>(), py::arg("label") = "", py::arg("min") = 0,
-             py::arg("max") = 100, py::arg("step") = 20, py::arg("default_value") = std::nullopt)
+             py::arg("max") = 100, py::arg("step") = 20, py::arg("default_value") = py::none())
         .def_property("label", &Slider::getLabel, &Slider::setLabel, "Gets or sets the label of the slider.")
         .def_property("min", &Slider::getMin, &Slider::setMin, "Gets or sets the minimum value of the slider.")
         .def_property("max", &Slider::getMax, &Slider::setMax, "Gets or sets the maximum value of the slider.")
         .def_property("step", &Slider::getStep, &Slider::setStep, "Gets or sets the step size of the slider.")
         .def_property("default_value", &Slider::getDefaultValue, &Slider::setDefaultValue,
                       "Gets or sets the optional default value of the slider.");
+
+    py::class_<StepSlider, Dropdown>(m, "StepSlider", "Represents a step slider with a set of predefined options.");
+
+    py::class_<TextInput>(m, "TextInput", "Represents a text input field.")
+        .def(py::init<>())  // Default constructor
+        .def(py::init<Message, Message, std::optional<Message>>(), py::arg("label") = "", py::arg("placeholder") = "",
+             py::arg("default_text") = py::none())
+        .def_property("label", &TextInput::getLabel, &TextInput::setLabel,
+                      "Gets or sets the label of the text input field.")
+        .def_property("placeholder", &TextInput::getPlaceholder, &TextInput::setPlaceholder,
+                      "Gets or sets the placeholder of the text input field.")
+        .def_property("default_text", &TextInput::getDefaultValue, &TextInput::setDefaultValue,
+                      "Gets or sets the optional default text of the text input field.");
 
     py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
         .def(py::init<Message, bool>(), py::arg("label") = "", py::arg("default_value") = false)

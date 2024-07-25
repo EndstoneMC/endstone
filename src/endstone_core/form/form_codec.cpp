@@ -22,6 +22,7 @@
 #include "endstone/form/controls/label.h"
 #include "endstone/form/controls/slider.h"
 #include "endstone/form/controls/step_slider.h"
+#include "endstone/form/controls/text_input.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -76,6 +77,22 @@ nlohmann::json FormCodec::toJson(const Dropdown &dropdown)
 }
 
 template <>
+nlohmann::json FormCodec::toJson(const Slider &slider)
+{
+    nlohmann::json json;
+    json["type"] = "slider";
+    json["text"] = toJson(slider.getLabel());
+    json["min"] = slider.getMin();
+    json["max"] = slider.getMax();
+    json["step"] = slider.getStep();
+    auto default_value = slider.getDefaultValue();
+    if (default_value) {
+        json["default"] = default_value.value();
+    }
+    return json;
+}
+
+template <>
 nlohmann::json FormCodec::toJson(const StepSlider &slider)
 {
     nlohmann::json json;
@@ -89,17 +106,15 @@ nlohmann::json FormCodec::toJson(const StepSlider &slider)
 }
 
 template <>
-nlohmann::json FormCodec::toJson(const Slider &slider)
+nlohmann::json FormCodec::toJson(const TextInput &input)
 {
     nlohmann::json json;
-    json["type"] = "slider";
-    json["text"] = toJson(slider.getLabel());
-    json["min"] = slider.getMin();
-    json["max"] = slider.getMax();
-    json["step"] = slider.getStep();
-    auto default_value = slider.getDefaultValue();
+    json["type"] = "input";
+    json["text"] = toJson(input.getLabel());
+    json["placeholder"] = toJson(input.getPlaceholder());
+    auto default_value = input.getDefaultValue();
     if (default_value) {
-        json["default"] = default_value.value();
+        json["default"] = toJson(default_value.value());
     }
     return json;
 }
