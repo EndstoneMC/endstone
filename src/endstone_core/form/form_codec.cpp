@@ -28,7 +28,13 @@ namespace endstone::detail {
 template <>
 nlohmann::json FormCodec::toJson(const Message &message)
 {
-    return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json { return arg; },
+    return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json {
+                                           nlohmann::json json;
+                                           json["rawtext"].push_back({
+                                               {"text", arg},
+                                           });
+                                           return json;
+                                       },
                                        [&](const Translatable &arg) -> nlohmann::json {
                                            nlohmann::json json;
                                            json["rawtext"].push_back({
@@ -48,6 +54,7 @@ nlohmann::json FormCodec::toJson(const Toggle &toggle)
 {
     nlohmann::json json;
     json["type"] = "toggle";
+    json["text"] = toJson(toggle.getLabel());
     json["default"] = toggle.getDefaultValue();
     return json;
 }
@@ -104,8 +111,7 @@ nlohmann::json FormCodec::toJson(const ModalForm &form)
     nlohmann::json json;
     json["type"] = "custom_form";
     json["title"] = toJson(form.getTitle());
-    json["content"] = toJson(form.getContent());
-
+    json["content"] = nlohmann::json::array();
     for (const auto &control : form.getControls()) {
         json["content"].push_back(std::visit(entt::overloaded{[](auto &&arg) {
                                                  return toJson(arg);

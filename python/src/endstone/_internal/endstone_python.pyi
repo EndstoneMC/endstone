@@ -760,14 +760,6 @@ class ModalForm:
         Adds a control to the form.
         """
     @property
-    def content(self) -> str | Translatable:
-        """
-        Gets or sets the content of the form.
-        """
-    @content.setter
-    def content(self, arg1: str | Translatable) -> ModalForm:
-        ...
-    @property
     def controls(self) -> list[Toggle]:
         """
         Gets or sets the controls of the modal form.

@@ -95,15 +95,13 @@ void init_form(py::module_ &m)
              }),
              py::arg("title") = "", py::arg("controls") = py::none(), py::arg("submit_button") = py::none(),
              py::arg("icon") = py::none())
-        .def_property("content", &ModalForm::getContent, &ModalForm::setContent,
-                      "Gets or sets the content of the form.", py::return_value_policy::reference)
-        .def_property("submit_button", &ModalForm::getSubmitButton, &ModalForm::setSubmitButton,
-                      "Gets or sets the submit button message of the form.", py::return_value_policy::reference)
-        .def_property("icon", &ModalForm::getIcon, &ModalForm::setIcon, "Gets or sets the icon of the form.",
-                      py::return_value_policy::reference)
         .def("add_control", &ModalForm::addControl, "Adds a control to the form.", py::arg("control"))
         .def_property("controls", &ModalForm::getControls, &ModalForm::setControls,
-                      "Gets or sets the controls of the modal form.", py::return_value_policy::reference);
+                      "Gets or sets the controls of the modal form.", py::return_value_policy::reference)
+        .def_property("icon", &ModalForm::getIcon, &ModalForm::setIcon, "Gets or sets the icon of the form.",
+                      py::return_value_policy::reference)
+        .def_property("submit_button", &ModalForm::getSubmitButton, &ModalForm::setSubmitButton,
+                      "Gets or sets the submit button message of the form.", py::return_value_policy::reference);
 }
 
 }  // namespace endstone::detail

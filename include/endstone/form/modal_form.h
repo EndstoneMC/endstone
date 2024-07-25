@@ -31,28 +31,6 @@ public:
     using Control = std::variant<Toggle>;
 
     /**
-     * @brief Gets the content of the form.
-     *
-     * @return The content of the form.
-     */
-    [[nodiscard]] Message getContent() const
-    {
-        return content_;
-    }
-
-    /**
-     * @brief Sets the content of the form.
-     *
-     * @param text The text to set as the content.
-     * @return A reference to the current form.
-     */
-    ModalForm &setContent(Message text)
-    {
-        content_ = std::move(text);
-        return *this;
-    }
-
-    /**
      * @brief Adds a control to the form.
      *
      * @param control The control to add to the form.
@@ -131,7 +109,6 @@ public:
     }
 
 private:
-    Message content_;
     std::vector<Control> controls_;
     std::optional<Message> submit_button_text_;
     std::optional<std::string> icon_;
