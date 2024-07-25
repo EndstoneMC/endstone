@@ -18,8 +18,10 @@
 #include <nlohmann/json.hpp>
 
 #include "endstone/form/action_form.h"
+#include "endstone/form/controls/dropdown.h"
 #include "endstone/form/controls/label.h"
 #include "endstone/form/controls/slider.h"
+#include "endstone/form/controls/step_slider.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -57,6 +59,32 @@ nlohmann::json FormCodec::toJson(const Label &label)
     nlohmann::json json;
     json["type"] = "label";
     json["text"] = toJson(label.getText());
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const Dropdown &dropdown)
+{
+    nlohmann::json json;
+    json["type"] = "dropdown";
+    json["options"] = dropdown.getOptions();
+    auto default_index = dropdown.getDefaultIndex();
+    if (default_index) {
+        json["default"] = default_index.value();
+    }
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const StepSlider &slider)
+{
+    nlohmann::json json;
+    json["type"] = "step_slider";
+    json["options"] = slider.getOptions();
+    auto default_index = slider.getDefaultIndex();
+    if (default_index) {
+        json["default"] = default_index.value();
+    }
     return json;
 }
 

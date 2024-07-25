@@ -18,8 +18,10 @@
 #include <string>
 #include <utility>
 
+#include "endstone/form/controls/dropdown.h"
 #include "endstone/form/controls/label.h"
 #include "endstone/form/controls/slider.h"
+#include "endstone/form/controls/step_slider.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/form.h"
 
@@ -30,7 +32,7 @@ namespace endstone {
  */
 class ModalForm : public Form<ModalForm> {
 public:
-    using Control = std::variant<Label, Slider, Toggle>;
+    using Control = std::variant<Label, Dropdown, StepSlider, Slider, Toggle>;
     using OnSubmitCallback = std::function<void(Player *, std::vector<std::variant<bool, int, std::string>>)>;
 
     /**
