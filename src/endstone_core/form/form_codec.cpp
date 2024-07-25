@@ -18,7 +18,7 @@
 #include <nlohmann/json.hpp>
 
 #include "endstone/form/action_form.h"
-#include "endstone/form/controls/button.h"
+#include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/message.h"
 
@@ -43,21 +43,12 @@ nlohmann::json FormCodec::toJson(const Message &message)
  * Controls
  */
 template <>
-nlohmann::json FormCodec::toJson(const Button &button)
+nlohmann::json FormCodec::toJson(const Toggle &toggle)
 {
-    nlohmann::json btn;
-    btn["text"] = toJson(button.getText());
-    auto icon = button.getIcon();
-    if (icon.has_value()) {
-        if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
-            btn["image"]["type"] = "url";
-        }
-        else {
-            btn["image"]["type"] = "path";
-        }
-        btn["image"]["data"] = icon.value();
-    }
-    return btn;
+    nlohmann::json json;
+    json["type"] = "toggle";
+    json["default"] = toggle.getDefaultValue();
+    return json;
 }
 
 /**
@@ -72,6 +63,24 @@ nlohmann::json FormCodec::toJson(const MessageForm &form)
     json["content"] = toJson(form.getContent());
     json["button1"] = toJson(form.getButton1());
     json["button2"] = toJson(form.getButton2());
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const ActionForm::Button &button)
+{
+    nlohmann::json json;
+    json["text"] = toJson(button.getText());
+    auto icon = button.getIcon();
+    if (icon.has_value()) {
+        if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
+            json["image"]["type"] = "url";
+        }
+        else {
+            json["image"]["type"] = "path";
+        }
+        json["image"]["data"] = icon.value();
+    }
     return json;
 }
 

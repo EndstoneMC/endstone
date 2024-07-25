@@ -4,24 +4,46 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'Button', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'SocketAddress', 'Task', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
     """
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[Button] | None = None) -> None:
+    class Button:
+        """
+        Represents a button with text and an optional icon.
+        """
+        def __init__(self, text: str | Translatable = '', icon: str | None = None) -> None:
+            ...
+        @property
+        def icon(self) -> str | None:
+            """
+            Gets or sets the icon path or URL of the button
+            """
+        @icon.setter
+        def icon(self, arg1: str) -> ActionForm.Button:
+            ...
+        @property
+        def text(self) -> str | Translatable:
+            """
+            Gets or sets the text of the button
+            """
+        @text.setter
+        def text(self, arg1: str | Translatable) -> ActionForm.Button:
+            ...
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None) -> None:
         ...
     def add_button(self, text: str | Translatable, icon: str | None = None) -> ActionForm:
         """
         Adds a button to the form.
         """
     @property
-    def buttons(self) -> list[Button]:
+    def buttons(self) -> list[ActionForm.Button]:
         """
         Gets or sets the buttons of the action form.
         """
     @buttons.setter
-    def buttons(self, arg1: list[Button]) -> ActionForm:
+    def buttons(self, arg1: list[ActionForm.Button]) -> ActionForm:
         ...
     @property
     def content(self) -> str | Translatable:
@@ -145,28 +167,6 @@ class BroadcastMessageEvent(Event):
         """
         Gets a set of recipients that this broadcast message will be displayed to.
         """
-class Button:
-    """
-    Represents a button with text and an optional icon.
-    """
-    def __init__(self, text: str | Translatable = '', icon: str | None = None) -> None:
-        ...
-    @property
-    def icon(self) -> str | None:
-        """
-        Gets or sets the icon path or URL of the button
-        """
-    @icon.setter
-    def icon(self, arg1: str) -> None:
-        ...
-    @property
-    def text(self) -> str | Translatable:
-        """
-        Gets or sets the text of the button
-        """
-    @text.setter
-    def text(self, arg1: str | Translatable) -> None:
-        ...
 class ColorFormat:
     """
     All supported color and format codes.
@@ -2093,6 +2093,28 @@ class ThunderChangeEvent(Event):
         """
         Gets the state of thunder that the world is being set to
         """
+class Toggle:
+    """
+    Represents a toggle button with a label.
+    """
+    def __init__(self, label: str | Translatable = '', default_value: bool = False) -> None:
+        ...
+    @property
+    def default_value(self) -> bool:
+        """
+        Gets or sets the value of the toggle.
+        """
+    @default_value.setter
+    def default_value(self, arg1: bool) -> Toggle:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the toggle.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> Toggle:
+        ...
 class Translatable:
     def __init__(self, translate: str, with_: list[str] | None = None) -> None:
         ...

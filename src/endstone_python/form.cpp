@@ -19,8 +19,7 @@
 
 // must be included after pybind11
 #include "endstone/form/action_form.h"
-#include "endstone/form/controls/button.h"
-#include "endstone/form/form.h"
+#include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/message.h"
 
@@ -30,10 +29,13 @@ namespace endstone::detail {
 
 void init_form(py::module_ &m)
 {
-    py::class_<Button>(m, "Button", "Represents a button with text and an optional icon.")
-        .def(py::init<Message, std::optional<std::string>>(), py::arg("text") = "", py::arg("icon") = py::none())
-        .def_property("text", &Button::getText, &Button::setText, "Gets or sets the text of the button")
-        .def_property("icon", &Button::getIcon, &Button::setIcon, "Gets or sets the icon path or URL of the button");
+
+    py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
+        .def(py::init<Message, bool>(), py::arg("label") = "", py::arg("default_value") = false)
+        .def_property("label", &Toggle::getLabel, &Toggle::setLabel, "Gets or sets the label of the toggle.",
+                      py::return_value_policy::reference)
+        .def_property("default_value", &Toggle::getDefaultValue, &Toggle::setDefaultValue,
+                      "Gets or sets the value of the toggle.", py::return_value_policy::reference);
 
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
         .def(py::init<>([](Message title, Message content, Message button1, Message button2) {
@@ -53,13 +55,24 @@ void init_form(py::module_ &m)
         .def_property("button2", &MessageForm::getButton2, &MessageForm::setButton2,
                       "Gets or sets the text of button2.", py::return_value_policy::reference);
 
-    py::class_<ActionForm>(m, "ActionForm", "Represents a form with buttons that let the player take action.")
-        .def(py::init<>([](Message title, Message content, const std::optional<std::vector<Button>> &buttons) {
-                 return ActionForm()
-                     .setTitle(std::move(title))
-                     .setContent(std::move(content))
-                     .setButtons(buttons.value_or(std::vector<Button>{}));
-             }),
+    auto action_form =
+        py::class_<ActionForm>(m, "ActionForm", "Represents a form with buttons that let the player take action.");
+
+    py::class_<ActionForm::Button>(action_form, "Button", "Represents a button with text and an optional icon.")
+        .def(py::init<Message, std::optional<std::string>>(), py::arg("text") = "", py::arg("icon") = py::none())
+        .def_property("text", &ActionForm::Button::getText, &ActionForm::Button::setText,
+                      "Gets or sets the text of the button", py::return_value_policy::reference)
+        .def_property("icon", &ActionForm::Button::getIcon, &ActionForm::Button::setIcon,
+                      "Gets or sets the icon path or URL of the button", py::return_value_policy::reference);
+
+    action_form
+        .def(py::init<>(
+                 [](Message title, Message content, const std::optional<std::vector<ActionForm::Button>> &buttons) {
+                     return ActionForm()
+                         .setTitle(std::move(title))
+                         .setContent(std::move(content))
+                         .setButtons(buttons.value_or(std::vector<ActionForm::Button>{}));
+                 }),
              py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none())
         .def_property("title", &ActionForm::getTitle, &ActionForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)

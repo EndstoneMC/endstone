@@ -28,9 +28,7 @@ namespace endstone {
 class Toggle {
 public:
     Toggle() = default;
-    explicit Toggle(Message label, bool default_value = false) : label_(std::move(label)), default_value_(default_value)
-    {
-    }
+    explicit Toggle(Message label, bool default_value = false) : label_(std::move(label)), value_(default_value) {}
 
     /**
      * @brief Gets the label of the toggle.
@@ -46,15 +44,39 @@ public:
      * @brief Sets the label of the toggle.
      *
      * @param label The new label for the toggle.
+     * @return A reference to the current toggle.
      */
-    void setText(Message label)
+    Toggle &setLabel(Message label)
     {
         label_ = std::move(label);
+        return *this;
+    }
+
+    /**
+     * @brief Gets the default value of the toggle.
+     *
+     * @return The default value of the toggle.
+     */
+    [[nodiscard]] bool getDefaultValue() const
+    {
+        return value_;
+    }
+
+    /**
+     * @brief Sets the default value of the toggle.
+     *
+     * @param value The new default value for the toggle.
+     * @return A reference to the current toggle.
+     */
+    Toggle &setDefaultValue(bool value)
+    {
+        value_ = value;
+        return *this;
     }
 
 private:
     Message label_;
-    bool default_value_;
+    bool value_;
 };
 
 }  // namespace endstone
