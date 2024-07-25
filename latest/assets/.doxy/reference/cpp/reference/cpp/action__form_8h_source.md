@@ -33,6 +33,8 @@ namespace endstone {
 
 class ActionForm : public Form<ActionForm> {
 public:
+    using OnSubmitCallback = std::function<void(Player *, int)>;
+
     class Button {
     public:
         Button() = default;
@@ -96,9 +98,21 @@ public:
         return *this;
     }
 
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const
+    {
+        return on_submit_;
+    }
+
+    ActionForm &setOnSubmit(OnSubmitCallback on_submit)
+    {
+        on_submit_ = std::move(on_submit);
+        return *this;
+    }
+
 private:
     Message content_;
     std::vector<Button> buttons_;
+    OnSubmitCallback on_submit_;
 };
 
 }  // namespace endstone

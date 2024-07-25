@@ -1768,6 +1768,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-types" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -1827,6 +1838,21 @@
 <ul>
 <li><code>#include &lt;endstone/form/form.h&gt;</code></li>
 </ul>
+<h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">typedef std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
+<td style="text-align: left;"><a href="#typedef-onclosecallback"><strong>OnCloseCallback</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1841,7 +1867,7 @@
 <td style="text-align: left;"><a href="#function-form"><strong>Form</strong></a> () = default<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
+<td style="text-align: right;">OnCloseCallback</td>
 <td style="text-align: left;"><a href="#function-getonclose"><strong>getOnClose</strong></a> () const<br><em>Gets the on close callback of the form.</em></td>
 </tr>
 <tr>
@@ -1850,7 +1876,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">T &amp;</td>
-<td style="text-align: left;"><a href="#function-setonclose"><strong>setOnClose</strong></a> (std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt; on_close) <br><em>Sets the on close callback of the form.</em></td>
+<td style="text-align: left;"><a href="#function-setonclose"><strong>setOnClose</strong></a> (OnCloseCallback on_close) <br><em>Sets the on close callback of the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">T &amp;</td>
@@ -1868,7 +1894,7 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
+<td style="text-align: right;">OnCloseCallback</td>
 <td style="text-align: left;"><a href="#variable-on_close_"><strong>on_close_</strong></a>  <br></td>
 </tr>
 <tr>
@@ -1879,15 +1905,20 @@
 </table>
 <h1 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h1>
 <p>The <a href="./"><strong>Form</strong></a> class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. </p>
+<h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="typedef-onclosecallback">typedef OnCloseCallback<a class="headerlink" href="#typedef-onclosecallback" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">OnCloseCallback</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></code></pre></div>
+<hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-form">function Form<a class="headerlink" href="#function-form" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">Form</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">Form</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getonclose">function getOnClose<a class="headerlink" href="#function-getonclose" title="Permanent link">&para;</a></h3>
 <p><em>Gets the on close callback of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">getOnClose</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">OnCloseCallback</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">getOnClose</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The on close callback of the form. </p>
@@ -1895,7 +1926,7 @@
 
 <h3 id="function-gettitle">function getTitle<a class="headerlink" href="#function-gettitle" title="Permanent link">&para;</a></h3>
 <p><em>Gets the title of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">getTitle</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">getTitle</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The title of the form. </p>
@@ -1903,9 +1934,9 @@
 
 <h3 id="function-setonclose">function setOnClose<a class="headerlink" href="#function-setonclose" title="Permanent link">&para;</a></h3>
 <p><em>Sets the on close callback of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">setOnClose</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="p">(</span><span class="w"> </span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">on_close</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">setOnClose</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">OnCloseCallback</span><span class="w"> </span><span class="n">on_close</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -1917,9 +1948,9 @@
 
 <h3 id="function-settitle">function setTitle<a class="headerlink" href="#function-settitle" title="Permanent link">&para;</a></h3>
 <p><em>Sets the title of the form.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">setTitle</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">title</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">::</span><span class="n">setTitle</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">title</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -1930,12 +1961,12 @@
 <hr>
 <h2 id="protected-attributes-documentation">Protected Attributes Documentation<a class="headerlink" href="#protected-attributes-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="variable-on_close_">variable on_close_<a class="headerlink" href="#variable-on_close_" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">on_close_</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">OnCloseCallback</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">on_close_</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="variable-title_">variable title_<a class="headerlink" href="#variable-title_" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">title_</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Form</span><span class="o">&lt;</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&gt;::</span><span class="n">title_</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

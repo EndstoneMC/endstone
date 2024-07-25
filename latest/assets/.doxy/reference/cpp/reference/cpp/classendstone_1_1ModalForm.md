@@ -34,8 +34,16 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 | typedef std::variant&lt; [**Toggle**](classendstone_1_1Toggle.md) &gt; | [**Control**](#typedef-control)  <br> |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*, std::vector&lt; std::variant&lt; bool, int, std::string &gt; &gt;)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
+## Public Types inherited from endstone::Form
+
+See [endstone::Form](classendstone_1_1Form.md)
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](classendstone_1_1Form.md#typedef-onclosecallback)  <br> |
 
 
 
@@ -81,9 +89,11 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**addControl**](#function-addcontrol) (const Control & control) <br>_Adds a control to the form._  |
 |  std::vector&lt; Control &gt; | [**getControls**](#function-getcontrols) () const<br>_Gets the controls of the modal form._  |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the form._  |
+|  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
 |  std::optional&lt; Message &gt; | [**getSubmitButton**](#function-getsubmitbutton) () const<br>_Gets the submit button text of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setControls**](#function-setcontrols) (std::vector&lt; Control &gt; controls) <br>_Sets the controls of the modal form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setIcon**](#function-seticon) (std::optional&lt; std::string &gt; icon) <br>_Sets the icon of the form._  |
+|  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setOnSubmit**](#function-setonsubmit) (OnSubmitCallback on\_submit) <br>_Sets the on submit callback of the form._  |
 |  [**ModalForm**](classendstone_1_1ModalForm.md) & | [**setSubmitButton**](#function-setsubmitbutton) (std::optional&lt; Message &gt; text) <br>_Sets the submit button text of the form._  |
 
 
@@ -94,9 +104,9 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**Form**](classendstone_1_1Form.md#function-form) () = default<br> |
-|  std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
+|  OnCloseCallback | [**getOnClose**](classendstone_1_1Form.md#function-getonclose) () const<br>_Gets the on close callback of the form._  |
 |  Message | [**getTitle**](classendstone_1_1Form.md#function-gettitle) () const<br>_Gets the title of the form._  |
-|  T & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; on\_close) <br>_Sets the on close callback of the form._  |
+|  T & | [**setOnClose**](classendstone_1_1Form.md#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
 |  T & | [**setTitle**](classendstone_1_1Form.md#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
@@ -120,7 +130,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|  std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**on\_close\_**](classendstone_1_1Form.md#variable-on_close_)  <br> |
+|  OnCloseCallback | [**on\_close\_**](classendstone_1_1Form.md#variable-on_close_)  <br> |
 |  Message | [**title\_**](classendstone_1_1Form.md#variable-title_)  <br> |
 
 
@@ -169,6 +179,19 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 ```C++
 using endstone::ModalForm::Control =  std::variant<Toggle>;
+```
+
+
+
+
+<hr>
+
+
+
+### typedef OnSubmitCallback 
+
+```C++
+using endstone::ModalForm::OnSubmitCallback =  std::function<void(Player *, std::vector<std::variant<bool, int, std::string> >)>;
 ```
 
 
@@ -264,6 +287,31 @@ The path or URL to the icon file
 
 
 
+### function getOnSubmit 
+
+_Gets the on submit callback of the form._ 
+```C++
+inline OnSubmitCallback endstone::ModalForm::getOnSubmit () const
+```
+
+
+
+
+
+**Returns:**
+
+The on submit callback of the form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getSubmitButton 
 
 _Gets the submit button text of the form._ 
@@ -340,6 +388,40 @@ inline ModalForm & endstone::ModalForm::setIcon (
 
 
 * `icon` The path or URL to the icon file. 
+
+
+
+**Returns:**
+
+A reference to the current form. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setOnSubmit 
+
+_Sets the on submit callback of the form._ 
+```C++
+inline ModalForm & endstone::ModalForm::setOnSubmit (
+    OnSubmitCallback on_submit
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `on_submit` The callback to be set. 
 
 
 

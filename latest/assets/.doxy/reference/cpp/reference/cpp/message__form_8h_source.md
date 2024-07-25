@@ -32,6 +32,8 @@ namespace endstone {
 
 class MessageForm : public Form<MessageForm> {
 public:
+    using OnSubmitCallback = std::function<void(Player *, int)>;
+
     [[nodiscard]] Message getContent() const
     {
         return content_;
@@ -65,10 +67,22 @@ public:
         return *this;
     }
 
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const
+    {
+        return on_submit_;
+    }
+
+    MessageForm &setOnSubmit(OnSubmitCallback on_submit)
+    {
+        on_submit_ = std::move(on_submit);
+        return *this;
+    }
+
 private:
     Message content_;
     Message button1_text_;
     Message button2_text_;
+    OnSubmitCallback on_submit_;
 };
 
 }  // namespace endstone

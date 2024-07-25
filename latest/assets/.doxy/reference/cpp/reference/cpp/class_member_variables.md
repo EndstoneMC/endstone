@@ -140,6 +140,7 @@
 
 ## o
 
+* **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))

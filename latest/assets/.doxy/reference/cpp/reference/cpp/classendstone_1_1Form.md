@@ -30,6 +30,11 @@ _Represents a generic form._ [More...](#detailed-description)
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnCloseCallback**](#typedef-onclosecallback)  <br> |
 
 
 
@@ -55,9 +60,9 @@ _Represents a generic form._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 |   | [**Form**](#function-form) () = default<br> |
-|  std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**getOnClose**](#function-getonclose) () const<br>_Gets the on close callback of the form._  |
+|  OnCloseCallback | [**getOnClose**](#function-getonclose) () const<br>_Gets the on close callback of the form._  |
 |  Message | [**getTitle**](#function-gettitle) () const<br>_Gets the title of the form._  |
-|  T & | [**setOnClose**](#function-setonclose) (std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; on\_close) <br>_Sets the on close callback of the form._  |
+|  T & | [**setOnClose**](#function-setonclose) (OnCloseCallback on\_close) <br>_Sets the on close callback of the form._  |
 |  T & | [**setTitle**](#function-settitle) (Message title) <br>_Sets the title of the form._  |
 
 
@@ -71,7 +76,7 @@ _Represents a generic form._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-|  std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**on\_close\_**](#variable-on_close_)  <br> |
+|  OnCloseCallback | [**on\_close\_**](#variable-on_close_)  <br> |
 |  Message | [**title\_**](#variable-title_)  <br> |
 
 
@@ -100,6 +105,21 @@ The [**Form**](classendstone_1_1Form.md) class provides a base abstraction for d
 
 
     
+## Public Types Documentation
+
+
+
+
+### typedef OnCloseCallback 
+
+```C++
+using endstone::Form< T >::OnCloseCallback =  std::function<void(Player *)>;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -122,7 +142,7 @@ explicit endstone::Form::Form () = default
 
 _Gets the on close callback of the form._ 
 ```C++
-inline std::function< void( Player *)> endstone::Form::getOnClose () const
+inline OnCloseCallback endstone::Form::getOnClose () const
 ```
 
 
@@ -173,7 +193,7 @@ The title of the form.
 _Sets the on close callback of the form._ 
 ```C++
 inline T & endstone::Form::setOnClose (
-    std::function< void( Player *)> on_close
+    OnCloseCallback on_close
 ) 
 ```
 
@@ -241,7 +261,7 @@ A reference to the current form.
 ### variable on\_close\_ 
 
 ```C++
-std::function<void(Player *)> endstone::Form< T >::on_close_;
+OnCloseCallback endstone::Form< T >::on_close_;
 ```
 
 

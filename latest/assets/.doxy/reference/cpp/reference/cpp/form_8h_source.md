@@ -35,6 +35,7 @@ class Player;
 template <typename T>
 class Form {
 public:
+    using OnCloseCallback = std::function<void(Player *)>;
     explicit Form() = default;
 
     [[nodiscard]] Message getTitle() const
@@ -48,20 +49,20 @@ public:
         return *static_cast<T *>(this);
     }
 
-    T &setOnClose(std::function<void(Player *)> on_close)
+    T &setOnClose(OnCloseCallback on_close)
     {
         on_close_ = std::move(on_close);
         return *static_cast<T *>(this);
     }
 
-    [[nodiscard]] std::function<void(Player *)> getOnClose() const
+    [[nodiscard]] OnCloseCallback getOnClose() const
     {
         return on_close_;
     }
 
 protected:
     Message title_;
-    std::function<void(Player *)> on_close_;
+    OnCloseCallback on_close_;
 };
 
 }  // namespace endstone

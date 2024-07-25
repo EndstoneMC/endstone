@@ -36,6 +36,7 @@ namespace endstone {
 class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Toggle>;
+    using OnSubmitCallback = std::function<void(Player *, std::vector<std::variant<bool, int, std::string>>)>;
 
     ModalForm &addControl(const Control &control)
     {
@@ -76,10 +77,22 @@ public:
         return *this;
     }
 
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const
+    {
+        return on_submit_;
+    }
+
+    ModalForm &setOnSubmit(OnSubmitCallback on_submit)
+    {
+        on_submit_ = std::move(on_submit);
+        return *this;
+    }
+
 private:
     std::vector<Control> controls_;
     std::optional<Message> submit_button_text_;
     std::optional<std::string> icon_;
+    OnSubmitCallback on_submit_;
 };
 
 }  // namespace endstone
