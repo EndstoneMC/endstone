@@ -93,7 +93,7 @@ class PythonPluginLoader(PluginLoader):
 
             # prepare plugin description
             cls_attr = dict(cls.__dict__)
-            name = cls_attr.pop("name", ep_name.replace("_", " ").title().replace(" ", ""))
+            name = cls_attr.pop("name", plugin_metadata["name"])
             version = cls_attr.pop("version", plugin_metadata["version"])
 
             api_version = cls_attr.pop("api_version", None)
@@ -116,6 +116,11 @@ class PythonPluginLoader(PluginLoader):
                 elif not isinstance(load, PluginLoadOrder):
                     raise TypeError(f"Invalid value for load order: {load}")
 
+            description = cls_attr.pop("description", plugin_metadata.get("summary", None))
+            authors = cls_attr.pop("authors", plugin_metadata.get("author_email", "").split(","))
+            website = cls_attr.pop("website", "; ".join(plugin_metadata.get("project_url", [])))
+            prefix = cls_attr.pop("prefix", ep_name.replace("_", " ").title().replace(" ", ""))
+
             commands = cls_attr.pop("commands", {})
             commands = self._build_commands(commands)
 
@@ -123,7 +128,8 @@ class PythonPluginLoader(PluginLoader):
             permissions = self._build_permissions(permissions)
 
             plugin_description = PluginDescription(
-                name=name, version=version, load=load, commands=commands, permissions=permissions, **cls_attr
+                name=name, version=version, load=load, description=description, authors=authors, website=website,
+                prefix=prefix, commands=commands, permissions=permissions, **cls_attr
             )
 
             # instantiate plugin
