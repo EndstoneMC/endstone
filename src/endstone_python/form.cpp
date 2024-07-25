@@ -20,6 +20,8 @@
 
 // must be included after pybind11
 #include "endstone/form/action_form.h"
+#include "endstone/form/controls/label.h"
+#include "endstone/form/controls/slider.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -36,6 +38,20 @@ void init_form(py::module_ &m)
         .def(py::init<Message>(), py::arg("text") = "")
         .def_property("text", &Label::getText, &Label::setText, "Gets or sets the text of the label.",
                       py::return_value_policy::reference);
+
+    py::class_<endstone::Slider>(m, "Slider", "Represents a slider with a label.")
+        .def(py::init<Message, float, float, float, std::optional<float>>(), py::arg("label") = "", py::arg("min") = 0,
+             py::arg("max") = 100, py::arg("step") = 20, py::arg("default_value") = std::nullopt)
+        .def_property("label", &endstone::Slider::getLabel, &endstone::Slider::setLabel,
+                      "Gets or sets the label of the slider.")
+        .def_property("min", &endstone::Slider::getMin, &endstone::Slider::setMin,
+                      "Gets or sets the minimum value of the slider.")
+        .def_property("max", &endstone::Slider::getMax, &endstone::Slider::setMax,
+                      "Gets or sets the maximum value of the slider.")
+        .def_property("step", &endstone::Slider::getStep, &endstone::Slider::setStep,
+                      "Gets or sets the step size of the slider.")
+        .def_property("default_value", &endstone::Slider::getDefaultValue, &endstone::Slider::setDefaultValue,
+                      "Gets or sets the optional default value of the slider.");
 
     py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
         .def(py::init<Message, bool>(), py::arg("label") = "", py::arg("default_value") = false)

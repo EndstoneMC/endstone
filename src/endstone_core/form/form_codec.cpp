@@ -19,6 +19,7 @@
 
 #include "endstone/form/action_form.h"
 #include "endstone/form/controls/label.h"
+#include "endstone/form/controls/slider.h"
 #include "endstone/form/controls/toggle.h"
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
@@ -56,6 +57,22 @@ nlohmann::json FormCodec::toJson(const Label &label)
     nlohmann::json json;
     json["type"] = "label";
     json["text"] = toJson(label.getText());
+    return json;
+}
+
+template <>
+nlohmann::json FormCodec::toJson(const Slider &slider)
+{
+    nlohmann::json json;
+    json["type"] = "slider";
+    json["text"] = toJson(slider.getLabel());
+    json["min"] = slider.getMin();
+    json["max"] = slider.getMax();
+    json["step"] = slider.getStep();
+    auto default_value = slider.getDefaultValue();
+    if (default_value) {
+        json["default"] = default_value.value();
+    }
     return json;
 }
 
