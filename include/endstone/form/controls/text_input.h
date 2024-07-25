@@ -28,7 +28,7 @@ namespace endstone {
 class TextInput {
 public:
     TextInput() = default;
-    explicit TextInput(Message label, Message placeholder, std::optional<Message> default_text = std::nullopt)
+    explicit TextInput(Message label, Message placeholder, std::optional<std::string> default_text = std::nullopt)
         : label_(std::move(label)), placeholder_(std::move(placeholder)), default_text_(std::move(default_text))
     {
     }
@@ -82,7 +82,7 @@ public:
      *
      * @return The default text of the text input field.
      */
-    [[nodiscard]] std::optional<Message> getDefaultValue() const
+    [[nodiscard]] std::optional<std::string> getDefaultValue() const
     {
         return default_text_;
     }
@@ -93,7 +93,7 @@ public:
      * @param text The new default text for the text input field.
      * @return A reference to the text input field itself.
      */
-    TextInput &setDefaultValue(std::optional<Message> text)
+    TextInput &setDefaultValue(std::optional<std::string> text)
     {
         default_text_ = std::move(text);
         return *this;
@@ -102,7 +102,7 @@ public:
 private:
     Message label_;
     Message placeholder_;
-    std::optional<Message> default_text_;
+    std::optional<std::string> default_text_;
 };
 
 }  // namespace endstone

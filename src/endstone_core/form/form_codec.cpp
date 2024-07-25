@@ -68,6 +68,7 @@ nlohmann::json FormCodec::toJson(const Dropdown &dropdown)
 {
     nlohmann::json json;
     json["type"] = "dropdown";
+    json["text"] = toJson(dropdown.getLabel());
     json["options"] = dropdown.getOptions();
     auto default_index = dropdown.getDefaultIndex();
     if (default_index) {
@@ -97,7 +98,8 @@ nlohmann::json FormCodec::toJson(const StepSlider &slider)
 {
     nlohmann::json json;
     json["type"] = "step_slider";
-    json["options"] = slider.getOptions();
+    json["text"] = toJson(slider.getLabel());
+    json["steps"] = slider.getOptions();
     auto default_index = slider.getDefaultIndex();
     if (default_index) {
         json["default"] = default_index.value();
@@ -114,7 +116,7 @@ nlohmann::json FormCodec::toJson(const TextInput &input)
     json["placeholder"] = toJson(input.getPlaceholder());
     auto default_value = input.getDefaultValue();
     if (default_value) {
-        json["default"] = toJson(default_value.value());
+        json["default"] = default_value.value();
     }
     return json;
 }

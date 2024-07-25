@@ -2235,10 +2235,40 @@ class SocketAddress:
         """
         Gets the port number.
         """
-class StepSlider(Dropdown):
+class StepSlider:
     """
     Represents a step slider with a set of predefined options.
     """
+    def __init__(self, label: str | Translatable = '', options: list[str] | None = None, default_index: int | None = None) -> None:
+        ...
+    def add_option(self, option: str) -> Dropdown:
+        """
+        Adds a new option to the step slider.
+        """
+    @property
+    def default_index(self) -> int | None:
+        """
+        Gets or sets the optional default index of the step slider.
+        """
+    @default_index.setter
+    def default_index(self, arg1: int | None) -> Dropdown:
+        ...
+    @property
+    def label(self) -> str | Translatable:
+        """
+        Gets or sets the label of the step slider.
+        """
+    @label.setter
+    def label(self, arg1: str | Translatable) -> Dropdown:
+        ...
+    @property
+    def options(self) -> list[str]:
+        """
+        Gets or sets the options of the step slider.
+        """
+    @options.setter
+    def options(self, arg1: list[str]) -> Dropdown:
+        ...
 class Task:
     """
     Represents a task being executed by the scheduler
@@ -2271,19 +2301,15 @@ class TextInput:
     """
     Represents a text input field.
     """
-    @typing.overload
-    def __init__(self) -> None:
-        ...
-    @typing.overload
-    def __init__(self, label: str | Translatable = '', placeholder: str | Translatable = '', default_text: str | Translatable | None = None) -> None:
+    def __init__(self, label: str | Translatable = '', placeholder: str | Translatable = '', default_value: str | None = None) -> None:
         ...
     @property
-    def default_text(self) -> str | Translatable | None:
+    def default_value(self) -> str | None:
         """
         Gets or sets the optional default text of the text input field.
         """
-    @default_text.setter
-    def default_text(self, arg1: str | Translatable | None) -> TextInput:
+    @default_value.setter
+    def default_value(self, arg1: str | None) -> TextInput:
         ...
     @property
     def label(self) -> str | Translatable:

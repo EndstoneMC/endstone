@@ -65,17 +65,27 @@ void init_form(py::module_ &m)
         .def_property("default_value", &Slider::getDefaultValue, &Slider::setDefaultValue,
                       "Gets or sets the optional default value of the slider.");
 
-    py::class_<StepSlider, Dropdown>(m, "StepSlider", "Represents a step slider with a set of predefined options.");
+    py::class_<StepSlider>(m, "StepSlider", "Represents a step slider with a set of predefined options.")
+        .def(py::init<>([](Message label, const std::optional<std::vector<std::string>> &options,
+                           std::optional<int> default_index) {
+                 return StepSlider(std::move(label), options.value_or(std::vector<std::string>{}), default_index);
+             }),
+             py::arg("label") = "", py::arg("options") = py::none(), py::arg("default_index") = py::none())
+        .def_property("label", &StepSlider::getLabel, &StepSlider::setLabel, "Gets or sets the label of the step slider.")
+        .def_property("options", &StepSlider::getOptions, &StepSlider::setOptions,
+                      "Gets or sets the options of the step slider.")
+        .def_property("default_index", &StepSlider::getDefaultIndex, &StepSlider::setDefaultIndex,
+                      "Gets or sets the optional default index of the step slider.")
+        .def("add_option", &StepSlider::addOption, "Adds a new option to the step slider.", py::arg("option"));
 
     py::class_<TextInput>(m, "TextInput", "Represents a text input field.")
-        .def(py::init<>())  // Default constructor
-        .def(py::init<Message, Message, std::optional<Message>>(), py::arg("label") = "", py::arg("placeholder") = "",
-             py::arg("default_text") = py::none())
+        .def(py::init<Message, Message, std::optional<std::string>>(), py::arg("label") = "", py::arg("placeholder") = "",
+             py::arg("default_value") = py::none())
         .def_property("label", &TextInput::getLabel, &TextInput::setLabel,
                       "Gets or sets the label of the text input field.")
         .def_property("placeholder", &TextInput::getPlaceholder, &TextInput::setPlaceholder,
                       "Gets or sets the placeholder of the text input field.")
-        .def_property("default_text", &TextInput::getDefaultValue, &TextInput::setDefaultValue,
+        .def_property("default_value", &TextInput::getDefaultValue, &TextInput::setDefaultValue,
                       "Gets or sets the optional default text of the text input field.");
 
     py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
