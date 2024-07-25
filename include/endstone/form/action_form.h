@@ -26,6 +26,8 @@ namespace endstone {
  */
 class ActionForm : public Form<ActionForm> {
 public:
+    using OnSubmitCallback = std::function<void(Player *, int)>;
+
     /**
      * @brief Represents a button with text and an optional icon.
      */
@@ -143,9 +145,32 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Gets the on submit callback of the form.
+     *
+     * @return The on submit callback of the form.
+     */
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const
+    {
+        return on_submit_;
+    }
+
+    /**
+     * @brief Sets the on submit callback of the form.
+     *
+     * @param on_submit The callback to be set.
+     * @return A reference to the current form.
+     */
+    ActionForm &setOnSubmit(OnSubmitCallback on_submit)
+    {
+        on_submit_ = std::move(on_submit);
+        return *this;
+    }
+
 private:
     Message content_;
     std::vector<Button> buttons_;
+    OnSubmitCallback on_submit_;
 };
 
 }  // namespace endstone

@@ -32,6 +32,7 @@ class Player;
 template <typename T>
 class Form {
 public:
+    using OnCloseCallback = std::function<void(Player *)>;
     explicit Form() = default;
 
     /**
@@ -62,7 +63,7 @@ public:
      * @param on_close The callback to be set.
      * @return A reference to the current form.
      */
-    T &setOnClose(std::function<void(Player *)> on_close)
+    T &setOnClose(OnCloseCallback on_close)
     {
         on_close_ = std::move(on_close);
         return *static_cast<T *>(this);
@@ -73,14 +74,14 @@ public:
      *
      * @return The on close callback of the form.
      */
-    [[nodiscard]] std::function<void(Player *)> getOnClose() const
+    [[nodiscard]] OnCloseCallback getOnClose() const
     {
         return on_close_;
     }
 
 protected:
     Message title_;
-    std::function<void(Player *)> on_close_;
+    OnCloseCallback on_close_;
 };
 
 }  // namespace endstone

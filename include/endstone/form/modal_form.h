@@ -29,6 +29,7 @@ namespace endstone {
 class ModalForm : public Form<ModalForm> {
 public:
     using Control = std::variant<Toggle>;
+    using OnSubmitCallback = std::function<void(Player *, std::vector<std::variant<bool, int, std::string>>)>;
 
     /**
      * @brief Adds a control to the form.
@@ -108,10 +109,33 @@ public:
         return *this;
     }
 
+    /**
+     * @brief Gets the on submit callback of the form.
+     *
+     * @return The on submit callback of the form.
+     */
+    [[nodiscard]] OnSubmitCallback getOnSubmit() const
+    {
+        return on_submit_;
+    }
+
+    /**
+     * @brief Sets the on submit callback of the form.
+     *
+     * @param on_submit The callback to be set.
+     * @return A reference to the current form.
+     */
+    ModalForm &setOnSubmit(OnSubmitCallback on_submit)
+    {
+        on_submit_ = std::move(on_submit);
+        return *this;
+    }
+
 private:
     std::vector<Control> controls_;
     std::optional<Message> submit_button_text_;
     std::optional<std::string> icon_;
+    OnSubmitCallback on_submit_;
 };
 
 }  // namespace endstone

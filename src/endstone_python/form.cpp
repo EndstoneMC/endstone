@@ -41,18 +41,22 @@ void init_form(py::module_ &m)
 
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
         .def(py::init<>([](Message title, Message content, Message button1, Message button2,
-                           std::function<void(Player *)> on_close) {
+                           MessageForm::OnSubmitCallback on_submit, MessageForm::OnCloseCallback on_close) {
                  return MessageForm()
                      .setTitle(std::move(title))
                      .setContent(std::move(content))
                      .setButton1(std::move(button1))
                      .setButton2(std::move(button2))
+                     .setOnSubmit(std::move(on_submit))
                      .setOnClose(std::move(on_close));
              }),
              py::arg("title") = "", py::arg("content") = "", py::arg("button1") = "", py::arg("button2") = "",
-             py::arg("on_close") = std::function<void(Player &)>{})
+             py::arg("on_submit") = MessageForm::OnSubmitCallback{},
+             py::arg("on_close") = MessageForm::OnCloseCallback{})
         .def_property("title", &MessageForm::getTitle, &MessageForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)
+        .def_property("on_submit", &MessageForm::getOnSubmit, &MessageForm::setOnSubmit,
+                      "Gets or sets the on submit callback.", py::return_value_policy::reference)
         .def_property("on_close", &MessageForm::getOnClose, &MessageForm::setOnClose,
                       "Gets or sets the on close callback.", py::return_value_policy::reference)
         .def_property("content", &MessageForm::getContent, &MessageForm::setContent,
@@ -75,17 +79,20 @@ void init_form(py::module_ &m)
     action_form
         .def(
             py::init<>([](Message title, Message content, const std::optional<std::vector<ActionForm::Button>> &buttons,
-                          std::function<void(Player *)> on_close) {
+                          ActionForm::OnSubmitCallback on_submit, ActionForm::OnCloseCallback on_close) {
                 return ActionForm()
                     .setTitle(std::move(title))
                     .setContent(std::move(content))
                     .setButtons(buttons.value_or(std::vector<ActionForm::Button>{}))
+                    .setOnSubmit(std::move(on_submit))
                     .setOnClose(std::move(on_close));
             }),
             py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none(),
-            py::arg("on_close") = std::function<void(Player &)>{})
+            py::arg("on_submit") = ActionForm::OnSubmitCallback{}, py::arg("on_close") = ActionForm::OnCloseCallback{})
         .def_property("title", &ActionForm::getTitle, &ActionForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)
+        .def_property("on_submit", &ActionForm::getOnSubmit, &ActionForm::setOnSubmit,
+                      "Gets or sets the on submit callback.", py::return_value_policy::reference)
         .def_property("on_close", &ActionForm::getOnClose, &ActionForm::setOnClose,
                       "Gets or sets the on close callback.", py::return_value_policy::reference)
         .def_property("content", &ActionForm::getContent, &ActionForm::setContent,
@@ -98,19 +105,23 @@ void init_form(py::module_ &m)
     py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
         .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,
                            std::optional<Message> submit_button, std::optional<std::string> icon,
-                           std::function<void(Player *)> on_close) {
+                           ModalForm::OnSubmitCallback on_submit, ModalForm::OnCloseCallback on_close) {
                  return ModalForm()
                      .setTitle(std::move(title))
                      .setControls(controls.value_or(std::vector<ModalForm::Control>{}))
                      .setSubmitButton(std::move(submit_button))
                      .setIcon(std::move(icon))
+                     .setOnSubmit(std::move(on_submit))
                      .setOnClose(std::move(on_close));
              }),
              py::arg("title") = "", py::arg("controls") = py::none(), py::arg("submit_button") = py::none(),
-             py::arg("icon") = py::none(), py::arg("on_close") = std::function<void()>{})
+             py::arg("icon") = py::none(), py::arg("on_submit") = ModalForm::OnSubmitCallback{},
+             py::arg("on_close") = ModalForm::OnCloseCallback{})
         .def("add_control", &ModalForm::addControl, "Adds a control to the form.", py::arg("control"))
         .def_property("title", &ModalForm::getTitle, &ModalForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)
+        .def_property("on_submit", &ModalForm::getOnSubmit, &ModalForm::setOnSubmit,
+                      "Gets or sets the on submit callback.", py::return_value_policy::reference)
         .def_property("on_close", &ModalForm::getOnClose, &ModalForm::setOnClose, "Gets or sets the on close callback.",
                       py::return_value_policy::reference)
         .def_property("controls", &ModalForm::getControls, &ModalForm::setControls,
