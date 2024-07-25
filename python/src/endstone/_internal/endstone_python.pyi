@@ -31,7 +31,7 @@ class ActionForm:
         @text.setter
         def text(self, arg1: str | Translatable) -> ActionForm.Button:
             ...
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None) -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_button(self, text: str | Translatable, icon: str | None = None) -> ActionForm:
         """
@@ -52,6 +52,14 @@ class ActionForm:
         """
     @content.setter
     def content(self, arg1: str | Translatable) -> ActionForm:
+        ...
+    @property
+    def on_close(self) -> typing.Callable[[Player], None]:
+        """
+        Gets or sets the on close callback.
+        """
+    @on_close.setter
+    def on_close(self, arg1: typing.Callable[[Player], None]) -> ActionForm:
         ...
     @property
     def title(self) -> str | Translatable:
@@ -706,7 +714,7 @@ class MessageForm:
     """
     Represents a form with two buttons.
     """
-    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '') -> None:
+    def __init__(self, title: str | Translatable = '', content: str | Translatable = '', button1: str | Translatable = '', button2: str | Translatable = '', on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     @property
     def button1(self) -> str | Translatable:
@@ -733,6 +741,14 @@ class MessageForm:
     def content(self, arg1: str | Translatable) -> MessageForm:
         ...
     @property
+    def on_close(self) -> typing.Callable[[Player], None]:
+        """
+        Gets or sets the on close callback.
+        """
+    @on_close.setter
+    def on_close(self, arg1: typing.Callable[[Player], None]) -> MessageForm:
+        ...
+    @property
     def title(self) -> str | Translatable:
         """
         Gets or sets the title of the form.
@@ -753,7 +769,7 @@ class ModalForm:
     """
     Represents a modal form with controls.
     """
-    def __init__(self, title: str | Translatable = '', controls: list[Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None) -> None:
+    def __init__(self, title: str | Translatable = '', controls: list[Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_control(self, control: Toggle) -> ModalForm:
         """
@@ -776,12 +792,28 @@ class ModalForm:
     def icon(self, arg1: str | None) -> ModalForm:
         ...
     @property
+    def on_close(self) -> typing.Callable[[Player], None]:
+        """
+        Gets or sets the on close callback.
+        """
+    @on_close.setter
+    def on_close(self, arg1: typing.Callable[[Player], None]) -> ModalForm:
+        ...
+    @property
     def submit_button(self) -> str | Translatable | None:
         """
         Gets or sets the submit button message of the form.
         """
     @submit_button.setter
     def submit_button(self, arg1: str | Translatable | None) -> ModalForm:
+        ...
+    @property
+    def title(self) -> str | Translatable:
+        """
+        Gets or sets the title of the form.
+        """
+    @title.setter
+    def title(self, arg1: str | Translatable) -> ModalForm:
         ...
 class Objective:
     """

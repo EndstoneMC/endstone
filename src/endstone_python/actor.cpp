@@ -24,7 +24,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
+void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob)
 {
     actor.def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
         .def_property_readonly("location", &Actor::getLocation, "Gets the actor's current position.")
@@ -39,9 +39,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor)
                                py::return_value_policy::reference)
         .def("set_rotation", &Actor::setRotation, "Sets the entity's rotation.", py::arg("yaw"), py::arg("pitch"));
 
-    py::class_<Mob, Actor>(m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.")
-        .def_property_readonly("is_gliding", &Mob::isGliding,
-                               "Checks to see if an actor is gliding, such as using an Elytra.");
+    mob.def_property_readonly("is_gliding", &Mob::isGliding,
+                              "Checks to see if an actor is gliding, such as using an Elytra.");
 }
 
 }  // namespace endstone::detail

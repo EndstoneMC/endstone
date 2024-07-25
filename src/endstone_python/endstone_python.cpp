@@ -35,7 +35,7 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
-void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor);
+void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
@@ -46,7 +46,7 @@ void init_level(py::module_ &);
 void init_logger(py::module_ &);
 void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
                       py::enum_<PermissionDefault> &permission_default);
-void init_player(py::module_ &);
+void init_player(py::module_ &, py::class_<Player, Mob> &player);
 void init_plugin(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
@@ -75,6 +75,9 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
+    auto mob = py::class_<Mob, Actor>(m, "Mob",
+                                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    auto player = py::class_<Player, Mob>(m, "Player", "Represents a player.");
 
     init_color_format(m);
     init_game_mode(m);
@@ -84,8 +87,8 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_inventory(m);
     init_util(m);
     init_level(m);
-    init_actor(m, actor);
-    init_player(m);
+    init_actor(m, actor, mob);
+    init_player(m, player);
     init_scoreboard(m);
     init_command(m, command_sender);
     init_plugin(m);
@@ -236,7 +239,7 @@ void init_server(py::class_<Server> &server)
                                py::return_value_policy::reference);
 }
 
-void init_player(py::module_ &m)
+void init_player(py::module_ &m, py::class_<Player, Mob> &player)
 {
     py::class_<Skin>(m, "Skin")
         .def(py::init([](std::string skin_id, py::array_t<std::uint8_t> skin_data, std::optional<std::string> cape_id,
@@ -287,8 +290,7 @@ void init_player(py::module_ &m)
             },
             "Get the Cape data.");
 
-    py::class_<Player, Mob>(m, "Player", "Represents a player.")
-        .def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
+    player.def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")

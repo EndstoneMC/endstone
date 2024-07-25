@@ -512,14 +512,19 @@ void EndstonePlayer::sendForm(FormVariant form)
     getHandle().sendNetworkPacket(*packet);
 }
 
-void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason reason)
+void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
 {
     auto it = forms_.find(form_id);
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
-    // TODO(form): call the callback function
-    printf("Close %d, %d\n", form_id, static_cast<int>(reason));
+    std::visit(entt::overloaded{[this](auto &&arg) {
+                   auto callback = arg.getOnClose();
+                   if (callback) {
+                       callback(*this);
+                   }
+               }},
+               it->second);
     forms_.erase(it);
 }
 

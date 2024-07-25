@@ -14,6 +14,7 @@
 
 #include <utility>
 
+#include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -23,6 +24,7 @@
 #include "endstone/form/message_form.h"
 #include "endstone/form/modal_form.h"
 #include "endstone/message.h"
+#include "endstone/player.h"
 
 namespace py = pybind11;
 
@@ -30,7 +32,6 @@ namespace endstone::detail {
 
 void init_form(py::module_ &m)
 {
-
     py::class_<Toggle>(m, "Toggle", "Represents a toggle button with a label.")
         .def(py::init<Message, bool>(), py::arg("label") = "", py::arg("default_value") = false)
         .def_property("label", &Toggle::getLabel, &Toggle::setLabel, "Gets or sets the label of the toggle.",
@@ -39,16 +40,21 @@ void init_form(py::module_ &m)
                       "Gets or sets the value of the toggle.", py::return_value_policy::reference);
 
     py::class_<MessageForm>(m, "MessageForm", "Represents a form with two buttons.")
-        .def(py::init<>([](Message title, Message content, Message button1, Message button2) {
+        .def(py::init<>([](Message title, Message content, Message button1, Message button2,
+                           std::function<void(Player &)> on_close) {
                  return MessageForm()
                      .setTitle(std::move(title))
                      .setContent(std::move(content))
                      .setButton1(std::move(button1))
-                     .setButton2(std::move(button2));
+                     .setButton2(std::move(button2))
+                     .setOnClose(std::move(on_close));
              }),
-             py::arg("title") = "", py::arg("content") = "", py::arg("button1") = "", py::arg("button2") = "")
+             py::arg("title") = "", py::arg("content") = "", py::arg("button1") = "", py::arg("button2") = "",
+             py::arg("on_close") = std::function<void(Player &)>{})
         .def_property("title", &MessageForm::getTitle, &MessageForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)
+        .def_property("on_close", &MessageForm::getOnClose, &MessageForm::setOnClose,
+                      "Gets or sets the on close callback.", py::return_value_policy::reference)
         .def_property("content", &MessageForm::getContent, &MessageForm::setContent,
                       "Gets or sets the content of the form.", py::return_value_policy::reference)
         .def_property("button1", &MessageForm::getButton1, &MessageForm::setButton1,
@@ -67,16 +73,21 @@ void init_form(py::module_ &m)
                       "Gets or sets the icon path or URL of the button", py::return_value_policy::reference);
 
     action_form
-        .def(py::init<>(
-                 [](Message title, Message content, const std::optional<std::vector<ActionForm::Button>> &buttons) {
-                     return ActionForm()
-                         .setTitle(std::move(title))
-                         .setContent(std::move(content))
-                         .setButtons(buttons.value_or(std::vector<ActionForm::Button>{}));
-                 }),
-             py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none())
+        .def(
+            py::init<>([](Message title, Message content, const std::optional<std::vector<ActionForm::Button>> &buttons,
+                          std::function<void(Player &)> on_close) {
+                return ActionForm()
+                    .setTitle(std::move(title))
+                    .setContent(std::move(content))
+                    .setButtons(buttons.value_or(std::vector<ActionForm::Button>{}))
+                    .setOnClose(std::move(on_close));
+            }),
+            py::arg("title") = "", py::arg("content") = "", py::arg("buttons") = py::none(),
+            py::arg("on_close") = std::function<void(Player &)>{})
         .def_property("title", &ActionForm::getTitle, &ActionForm::setTitle, "Gets or sets the title of the form.",
                       py::return_value_policy::reference)
+        .def_property("on_close", &ActionForm::getOnClose, &ActionForm::setOnClose,
+                      "Gets or sets the on close callback.", py::return_value_policy::reference)
         .def_property("content", &ActionForm::getContent, &ActionForm::setContent,
                       "Gets or sets the content of the form.", py::return_value_policy::reference)
         .def("add_button", &ActionForm::addButton, "Adds a button to the form.", py::arg("text"),
@@ -86,16 +97,22 @@ void init_form(py::module_ &m)
 
     py::class_<ModalForm>(m, "ModalForm", "Represents a modal form with controls.")
         .def(py::init<>([](Message title, const std::optional<std::vector<ModalForm::Control>> &controls,
-                           std::optional<Message> submit_button, std::optional<std::string> icon) {
+                           std::optional<Message> submit_button, std::optional<std::string> icon,
+                           std::function<void(Player &)> on_close) {
                  return ModalForm()
                      .setTitle(std::move(title))
                      .setControls(controls.value_or(std::vector<ModalForm::Control>{}))
                      .setSubmitButton(std::move(submit_button))
-                     .setIcon(std::move(icon));
+                     .setIcon(std::move(icon))
+                     .setOnClose(std::move(on_close));
              }),
              py::arg("title") = "", py::arg("controls") = py::none(), py::arg("submit_button") = py::none(),
-             py::arg("icon") = py::none())
+             py::arg("icon") = py::none(), py::arg("on_close") = std::function<void()>{})
         .def("add_control", &ModalForm::addControl, "Adds a control to the form.", py::arg("control"))
+        .def_property("title", &ModalForm::getTitle, &ModalForm::setTitle, "Gets or sets the title of the form.",
+                      py::return_value_policy::reference)
+        .def_property("on_close", &ModalForm::getOnClose, &ModalForm::setOnClose, "Gets or sets the on close callback.",
+                      py::return_value_policy::reference)
         .def_property("controls", &ModalForm::getControls, &ModalForm::setControls,
                       "Gets or sets the controls of the modal form.", py::return_value_policy::reference)
         .def_property("icon", &ModalForm::getIcon, &ModalForm::setIcon, "Gets or sets the icon of the form.",
