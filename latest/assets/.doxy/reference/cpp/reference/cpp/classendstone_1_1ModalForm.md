@@ -34,7 +34,7 @@ Inherits the following classes: [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 | typedef std::variant&lt; [**Dropdown**](classendstone_1_1Dropdown.md), [**Label**](classendstone_1_1Label.md), [**Slider**](classendstone_1_1Slider.md), [**StepSlider**](classendstone_1_1StepSlider.md), [**TextInput**](classendstone_1_1TextInput.md), [**Toggle**](classendstone_1_1Toggle.md) &gt; | [**Control**](#typedef-control)  <br> |
-| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*, std::vector&lt; std::variant&lt; bool, int, std::string &gt; &gt;)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*, std::string)&gt; | [**OnSubmitCallback**](#typedef-onsubmitcallback)  <br> |
 
 
 ## Public Types inherited from endstone::Form
@@ -191,7 +191,7 @@ using endstone::ModalForm::Control =  std::variant<Dropdown, Label, Slider, Step
 ### typedef OnSubmitCallback 
 
 ```C++
-using endstone::ModalForm::OnSubmitCallback =  std::function<void(Player *, std::vector<std::variant<bool, int, std::string> >)>;
+using endstone::ModalForm::OnSubmitCallback =  std::function<void(Player *, std::string)>;
 ```
 
 

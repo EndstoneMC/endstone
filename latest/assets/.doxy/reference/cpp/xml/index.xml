@@ -348,7 +348,7 @@
   </compound>
   <compound refid="classendstone_1_1ModalForm" kind="class"><name>endstone::ModalForm</name>
     <member refid="classendstone_1_1ModalForm_1acb80ded2d17319dd0e625566f36760d4" kind="typedef"><name>Control</name></member>
-    <member refid="classendstone_1_1ModalForm_1a2c2064fad98d44e102b8e8745b74baed" kind="typedef"><name>OnSubmitCallback</name></member>
+    <member refid="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" kind="typedef"><name>OnSubmitCallback</name></member>
     <member refid="classendstone_1_1ModalForm_1ae93fb07234de5ad30f7204fc1b248180" kind="variable"><name>controls_</name></member>
     <member refid="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" kind="variable"><name>submit_button_text_</name></member>
     <member refid="classendstone_1_1ModalForm_1adc2b552f970f23e0165a7209eb556160" kind="variable"><name>icon_</name></member>

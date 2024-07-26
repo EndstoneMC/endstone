@@ -18,9 +18,9 @@
         </inbodydescription>
         <location file="include/endstone/form/modal_form.h" line="36" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1a2c2064fad98d44e102b8e8745b74baed" prot="public" static="no">
-        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, std::vector&lt; std::variant&lt; bool, int, std::string &gt; &gt;)&gt;</type>
-        <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(Player *, std::vector&lt;std::variant&lt;bool, int, std::string&gt; &gt;)&gt;</definition>
+      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, std::string)&gt;</type>
+        <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(Player *, std::string)&gt;</definition>
         <argsstring></argsstring>
         <name>OnSubmitCallback</name>
         <briefdescription>
@@ -351,7 +351,7 @@
       <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_close_</name></member>
       <member refid="classendstone_1_1ModalForm_1a7a6e46fb4f9f8173705cc361bc8a1336" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_submit_</name></member>
       <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnCloseCallback</name></member>
-      <member refid="classendstone_1_1ModalForm_1a2c2064fad98d44e102b8e8745b74baed" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnSubmitCallback</name></member>
+      <member refid="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnSubmitCallback</name></member>
       <member refid="classendstone_1_1ModalForm_1ab11e3d81f2ff8d80b9e7f32c5377e03f" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setControls</name></member>
       <member refid="classendstone_1_1ModalForm_1ab65fd73b51d3b4ace8ef40712863b308" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setIcon</name></member>
       <member refid="classendstone_1_1Form_1a340298a38292e92df18cfcc23561fe81" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setOnClose</name></member>
