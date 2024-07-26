@@ -18,44 +18,88 @@
 
 namespace Bedrock {
 
+class EnableNonOwnerReferences {
+public:
+    struct ControlBlock {
+        void *ptr;
+    };
+
+    EnableNonOwnerReferences()
+    {
+        control_block_ = std::make_shared<ControlBlock>();
+        control_block_->ptr = this;
+    }
+    virtual ~EnableNonOwnerReferences() = default;
+
+private:
+    template <typename T>
+    friend class NonOwnerPointer;
+
+    std::shared_ptr<Bedrock::EnableNonOwnerReferences::ControlBlock> control_block_;
+};
+
 template <class T>
 class NonOwnerPointer {
 public:
     using ElementType = std::remove_extent_t<T>;
 
     constexpr NonOwnerPointer() noexcept = default;
-    constexpr NonOwnerPointer(nullptr_t) noexcept {}
-    explicit NonOwnerPointer(ElementType &obj) : ptr(&obj){};
+    constexpr NonOwnerPointer(nullptr_t) noexcept {}  // NOLINT(*-explicit-constructor)
+    explicit NonOwnerPointer(ElementType &obj)
+    {
+        reset();
+        set(&obj);
+    };
 
-    T &operator*() const noexcept
+    constexpr T &operator*() const noexcept
     {
         return *get();
     }
 
-    T *operator->() const noexcept
+    constexpr T *operator->() const noexcept
     {
         return get();
     }
 
-    explicit operator bool() const noexcept
+    constexpr explicit operator bool() const noexcept
     {
         return get() != nullptr;
     }
 
-    [[nodiscard]] ElementType *get() const noexcept
+    void reset()
     {
-        return ptr.get();
+        if (control_block_ && !control_block_->ptr) {
+            throw std::runtime_error("Resetting a dangling pointer!");
+        }
+        control_block_.reset();
     }
 
-    std::shared_ptr<ElementType> ptr{nullptr};
-};
+private:
+    T *get() const
+    {
+        if (!control_block_) {
+            throw std::runtime_error("Accessing a null NonOwnerPointer");
+        }
+        if (!control_block_->ptr) {
+            throw std::runtime_error("Accessing a dangling NonOwnerPointer after the target object has been deleted");
+        }
+        return static_cast<T *>(control_block_->ptr);
+    }
 
-class EnableNonOwnerReferences {
-public:
-    EnableNonOwnerReferences() : ptr(*this) {}
-    virtual ~EnableNonOwnerReferences() = default;
+    void set(T *ptr)
+    {
+        if (control_block_) {
+            throw std::runtime_error("Invalid state: control block has been set");
+        }
 
-    NonOwnerPointer<EnableNonOwnerReferences> ptr;  // +8
+        if (ptr) {
+            if (!ptr->control_block_) {
+                throw std::runtime_error("set_(): ptr has no control block");
+            }
+            control_block_ = ptr->control_block_;
+        }
+    }
+    std::shared_ptr<Bedrock::EnableNonOwnerReferences::ControlBlock> control_block_;
 };
 
 }  // namespace Bedrock
