@@ -833,7 +833,7 @@ class ModalForm:
     """
     Represents a modal form with controls.
     """
-    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, list[bool | int | str]], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
+    def __init__(self, title: str | Translatable = '', controls: list[Dropdown | Label | Slider | StepSlider | TextInput | Toggle] | None = None, submit_button: str | Translatable | None = None, icon: str | None = None, on_submit: typing.Callable[[Player, str], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
     def add_control(self, control: Dropdown | Label | Slider | StepSlider | TextInput | Toggle) -> ModalForm:
         """
@@ -864,12 +864,12 @@ class ModalForm:
     def on_close(self, arg1: typing.Callable[[Player], None]) -> ModalForm:
         ...
     @property
-    def on_submit(self) -> typing.Callable[[Player, list[bool | int | str]], None]:
+    def on_submit(self) -> typing.Callable[[Player, str], None]:
         """
         Gets or sets the on submit callback.
         """
     @on_submit.setter
-    def on_submit(self, arg1: typing.Callable[[Player, list[bool | int | str]], None]) -> ModalForm:
+    def on_submit(self, arg1: typing.Callable[[Player, str], None]) -> ModalForm:
         ...
     @property
     def submit_button(self) -> str | Translatable | None:

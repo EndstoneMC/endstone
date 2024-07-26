@@ -556,19 +556,7 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
                        [&](const ModalForm &form) {
                            auto callback = form.getOnSubmit();
                            if (callback) {
-                               std::vector<std::variant<bool, int, std::string>> values;
-                               for (const auto &item : json) {
-                                   if (item.is_boolean()) {
-                                       values.emplace_back(item.get<bool>());
-                                   }
-                                   else if (item.is_number()) {
-                                       values.emplace_back(item.get<int>());
-                                   }
-                                   else {
-                                       values.emplace_back(item.get<std::string>());
-                                   }
-                               }
-                               callback(this, std::move(values));
+                               callback(this, json.dump());
                            }
                        },
                    },
