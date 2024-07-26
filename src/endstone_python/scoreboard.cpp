@@ -92,31 +92,25 @@ void init_scoreboard(py::module_ &m)
             py::arg("slot"), py::arg("order") = std::nullopt)
         .def_property("render_type", &Objective::getRenderType, &Objective::setRenderType,
                       "Gets and sets the manner in which this objective will be rendered.")
-        .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"),
-             py::return_value_policy::reference);
+        .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"));
 
     scoreboard
         .def(
             "add_objective",
             [](Scoreboard &self, const std::string &name, Criteria::Type criteria,
-               const std::optional<std::string> &display_name,
-               RenderType render_type) { self.addObjective(name, criteria, display_name.value_or(name), render_type); },
+               const std::optional<std::string> &display_name, RenderType render_type) {
+                return self.addObjective(name, criteria, display_name.value_or(name), render_type);
+            },
             "Registers an Objective on this Scoreboard with a name displayed to players", py::arg("name"),
-            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg("render_type") = RenderType::Integer,
-            py::return_value_policy::reference)
+            py::arg("criteria"), py::arg("display_name") = py::none(), py::arg("render_type") = RenderType::Integer)
         .def("get_objective", py::overload_cast<std::string>(&Scoreboard::getObjective, py::const_),
-             "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert(),
-             py::return_value_policy::reference)
+             "Gets an Objective on this Scoreboard by name", py::arg("name").noconvert())
         .def("get_objective", py::overload_cast<DisplaySlot>(&Scoreboard::getObjective, py::const_),
-             "Gets the Objective currently displayed in a DisplaySlot on this Scoreboard", py::arg("slot").noconvert(),
-             py::return_value_policy::reference)
-        .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard",
-                               py::return_value_policy::reference_internal)
+             "Gets the Objective currently displayed in a DisplaySlot on this Scoreboard", py::arg("slot").noconvert())
+        .def_property_readonly("objectives", &Scoreboard::getObjectives, "Gets all Objectives on this Scoreboard")
         .def("get_objectives_by_criteria", &Scoreboard::getObjectivesByCriteria,
-             "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"),
-             py::return_value_policy::reference_internal)
-        .def("get_scores", &Scoreboard::getScores, "Gets all scores for an entry on this Scoreboard", py::arg("entry"),
-             py::return_value_policy::reference_internal)
+             "Gets all Objectives of a Criteria on the Scoreboard", py::arg("criteria"))
+        .def("get_scores", &Scoreboard::getScores, "Gets all scores for an entry on this Scoreboard", py::arg("entry"))
         .def("reset_scores", &Scoreboard::resetScores, "Removes all scores for an entry on this Scoreboard",
              py::arg("entry"))
         .def_property_readonly("entries", &Scoreboard::getEntries, "Gets all entries tracked by this Scoreboard",

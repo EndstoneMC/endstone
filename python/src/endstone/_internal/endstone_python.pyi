@@ -1874,7 +1874,7 @@ class Scoreboard:
     """
     Represents a scoreboard
     """
-    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None, render_type: RenderType = RenderType.INTEGER) -> None:
+    def add_objective(self, name: str, criteria: Criteria.Type, display_name: str | None = None, render_type: RenderType = RenderType.INTEGER) -> Objective:
         """
         Registers an Objective on this Scoreboard with a name displayed to players
         """
