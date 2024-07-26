@@ -61,6 +61,8 @@ _Represents an objective on a scoreboard that can show scores specific to entrie
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the scoreboard to which this objective is attached._  |
 | virtual std::optional&lt; ObjectiveSortOrder &gt; | [**getSortOrder**](#function-getsortorder) () const = 0<br>_Gets the sort order for this objective._  |
 | virtual bool | [**isModifiable**](#function-ismodifiable) () const = 0<br>_Gets if the objective's scores can be modified directly by a plugin._  |
+| virtual bool | [**operator!=**](#function-operator) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
+| virtual bool | [**operator==**](#function-operator_1) (const [**Objective**](classendstone_1_1Objective.md) & other) const = 0<br> |
 | virtual void | [**setDisplay**](#function-setdisplay-12) (std::optional&lt; DisplaySlot &gt; slot) = 0<br>_Sets the display slot for this objective. This will remove it from any other display slot._  |
 | virtual void | [**setDisplay**](#function-setdisplay-22) (std::optional&lt; DisplaySlot &gt; slot, ObjectiveSortOrder order) = 0<br>_Sets the display slot and sort order for this objective. This will remove it from any other display slot._  |
 | virtual void | [**setDisplayName**](#function-setdisplayname) (std::string display\_name) = 0<br>_Sets the name displayed to players for this objective._  |
@@ -332,6 +334,36 @@ true if scores are modifiable
 
 
         
+
+<hr>
+
+
+
+### function operator!= 
+
+```C++
+virtual bool endstone::Objective::operator!= (
+    const Objective & other
+) const = 0
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+virtual bool endstone::Objective::operator== (
+    const Objective & other
+) const = 0
+```
+
+
+
 
 <hr>
 

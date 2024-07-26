@@ -64,6 +64,9 @@ public:
     virtual void setRenderType(RenderType render_type) = 0;
 
     [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
+
+    virtual bool operator==(const Objective &other) const = 0;
+    virtual bool operator!=(const Objective &other) const = 0;
 };
 
 }  // namespace endstone

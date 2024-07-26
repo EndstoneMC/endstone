@@ -379,6 +379,8 @@
     <member refid="classendstone_1_1Objective_1a830e20a8ccef64f51dda91594b68f474" kind="function"><name>getRenderType</name></member>
     <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kind="function"><name>setRenderType</name></member>
     <member refid="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" kind="function"><name>getScore</name></member>
+    <member refid="classendstone_1_1Objective_1a8a41679213a22450c756fd1c14edbc36" kind="function"><name>operator==</name></member>
+    <member refid="classendstone_1_1Objective_1abfd8c61ab066baec27ba92445cc6ce3b" kind="function"><name>operator!=</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>

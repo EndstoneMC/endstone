@@ -285,6 +285,8 @@
 
 * **operator=** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Player**](classendstone_1_1Player.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
+* **operator!=** ([**endstone::Objective**](classendstone_1_1Objective.md))
+* **operator==** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **onDisable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **onEnable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **onLoad** ([**endstone::Plugin**](classendstone_1_1Plugin.md))

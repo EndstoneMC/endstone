@@ -394,6 +394,8 @@
 * **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **OnCloseCallback** ([**endstone::Form**](classendstone_1_1Form.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
+* **operator!=** ([**endstone::Objective**](classendstone_1_1Objective.md))
+* **operator==** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **onDisable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **onEnable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **onLoad** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
