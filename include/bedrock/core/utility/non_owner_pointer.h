@@ -51,6 +51,11 @@ public:
         set(&obj);
     };
 
+    ~NonOwnerPointer()
+    {
+        reset();
+    }
+
     constexpr T &operator*() const noexcept
     {
         return *get();

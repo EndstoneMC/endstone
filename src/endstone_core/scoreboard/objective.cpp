@@ -194,4 +194,14 @@ std::unique_ptr<EndstoneObjective> EndstoneObjective::copy() const
     return std::make_unique<EndstoneObjective>(scoreboard_, objective_);
 }
 
+bool EndstoneObjective::operator==(const Objective &other) const
+{
+    return &objective_ == &static_cast<const EndstoneObjective &>(other).objective_;
+}
+
+bool EndstoneObjective::operator!=(const Objective &other) const
+{
+    return !(*this == other);
+}
+
 }  // namespace endstone::detail

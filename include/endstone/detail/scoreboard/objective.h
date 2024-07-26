@@ -46,6 +46,8 @@ public:
     [[nodiscard]] std::optional<RenderType> getRenderType() const override;
     void setRenderType(RenderType render_type) override;
     [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
+    bool operator==(const Objective &other) const override;
+    bool operator!=(const Objective &other) const override;
 
     [[nodiscard]] bool checkState() const;
     [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;

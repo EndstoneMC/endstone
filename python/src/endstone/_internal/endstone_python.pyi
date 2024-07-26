@@ -891,6 +891,11 @@ class Objective:
     """
     Represents an objective on a scoreboard that can show scores specific to entries.
     """
+    __hash__: typing.ClassVar[None] = None
+    def __eq__(self, arg0: Objective) -> bool:
+        ...
+    def __ne__(self, arg0: Objective) -> bool:
+        ...
     def get_score(self, entry: Player | Actor | str) -> Score:
         """
         Gets an entry's Score for this objective

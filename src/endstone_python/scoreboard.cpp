@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -92,7 +93,9 @@ void init_scoreboard(py::module_ &m)
             py::arg("slot"), py::arg("order") = std::nullopt)
         .def_property("render_type", &Objective::getRenderType, &Objective::setRenderType,
                       "Gets and sets the manner in which this objective will be rendered.")
-        .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"));
+        .def("get_score", &Objective::getScore, "Gets an entry's Score for this objective", py::arg("entry"))
+        .def(py::self == py::self)
+        .def(py::self != py::self);
 
     scoreboard
         .def(
