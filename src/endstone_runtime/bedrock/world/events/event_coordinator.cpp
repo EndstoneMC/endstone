@@ -113,14 +113,20 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
             const auto &weak_ref = event.player;
             EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
             auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
-            player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
+            if (player) {
+                // Players can be null if they are dead when we receive the event
+                player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
+            }
         },
         [](Details::ValueOrRef<PlayerFormResponseEvent const> value) {
             const auto &event = value.value();
             const auto &weak_ref = event.player;
             EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
             auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
-            player->getEndstonePlayer().onFormResponse(event.form_id, Json::to_nlohmann(event.form_response));
+            if (player) {
+                // Players can be null if they are dead when we receive the event
+                player->getEndstonePlayer().onFormResponse(event.form_id, Json::to_nlohmann(event.form_response));
+            }
         },
         [](auto &&ignored) {},
     };
