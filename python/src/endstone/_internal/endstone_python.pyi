@@ -83,12 +83,22 @@ class Actor(CommandSender):
     """
     def set_rotation(self, yaw: float, pitch: float) -> None:
         """
-        Sets the entity's rotation.
+        Sets the actor's rotation.
         """
     @property
     def dimension(self) -> Dimension:
         """
         Gets the current Dimension this actor resides in.
+        """
+    @property
+    def id(self) -> int:
+        """
+        Returns a unique id for this actor.
+        """
+    @property
+    def is_dead(self) -> bool:
+        """
+        Returns true if this actor has been marked for removal.
         """
     @property
     def is_in_lava(self) -> bool:
@@ -1213,6 +1223,10 @@ class Player(Mob):
     """
     Represents a player.
     """
+    def close_form(self) -> None:
+        """
+        Closes the forms that are currently open for the player.
+        """
     def give_exp(self, amount: int) -> None:
         """
         Gives the player the amount of experience specified.

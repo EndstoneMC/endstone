@@ -37,7 +37,9 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
                                py::return_value_policy::reference)
         .def_property_readonly("dimension", &Actor::getDimension, "Gets the current Dimension this actor resides in.",
                                py::return_value_policy::reference)
-        .def("set_rotation", &Actor::setRotation, "Sets the entity's rotation.", py::arg("yaw"), py::arg("pitch"));
+        .def("set_rotation", &Actor::setRotation, "Sets the actor's rotation.", py::arg("yaw"), py::arg("pitch"))
+        .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
+        .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.");
