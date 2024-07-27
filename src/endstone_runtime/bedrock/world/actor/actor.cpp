@@ -190,6 +190,9 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
     auto *self = const_cast<Actor *>(this);
 
     if (isPlayer()) {
+        if (!self->hasType(ActorType::Player)) {
+            throw std::runtime_error("Actor doesn't have a Player type but isPlayer() returns true.");
+        }
         auto *player = static_cast<Player *>(self);
         return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }

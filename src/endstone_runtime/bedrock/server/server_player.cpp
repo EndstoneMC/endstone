@@ -30,6 +30,8 @@ void ServerPlayer::die(const ActorDamageSource &source)
 
     auto &server = entt::locator<EndstoneServer>::value();
     endstone::Player &endstone_player = getEndstonePlayer();
+    endstone_player.closeForm();
+
     auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
     server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
 

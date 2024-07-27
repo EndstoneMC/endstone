@@ -512,6 +512,13 @@ void EndstonePlayer::sendForm(FormVariant form)
     getHandle().sendNetworkPacket(*packet);
 }
 
+void EndstonePlayer::closeForm()
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ClientBoundCloseForm);
+    getHandle().sendNetworkPacket(*packet);
+    forms_.clear();
+}
+
 void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
 {
     auto it = forms_.find(form_id);

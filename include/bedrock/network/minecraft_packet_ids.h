@@ -225,5 +225,6 @@ enum class MinecraftPacketIds {
     SetPlayerInventoryOptions = 307,
     SetHudPacket = 308,
     AwardAchievementPacket = 309,
+    ClientBoundCloseForm = 310,
     EndId = 310
 };

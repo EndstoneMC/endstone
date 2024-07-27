@@ -310,6 +310,11 @@ public:
      * @param form The form to send
      */
     virtual void sendForm(FormVariant form) = 0;
+
+    /**
+     * @brief Closes the forms that are currently open for the player.
+     */
+    virtual void closeForm() = 0;
 };
 
 }  // namespace endstone

@@ -105,6 +105,7 @@ public:
     [[nodiscard]] const Skin &getSkin() const override;
     void transfer(std::string address, int port) const override;
     void sendForm(FormVariant form) override;
+    void closeForm() override;
     void onFormClose(int form_id, PlayerFormCloseReason reason);
     void onFormResponse(int form_id, const nlohmann::json &json);
 
