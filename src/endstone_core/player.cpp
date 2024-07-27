@@ -219,6 +219,16 @@ void EndstonePlayer::setRotation(float yaw, float pitch)
     EndstoneMob::setRotation(yaw, pitch);
 }
 
+std::int64_t EndstonePlayer::getId() const
+{
+    return EndstoneMob::getId();
+}
+
+bool EndstonePlayer::isDead() const
+{
+    return EndstoneMob::isDead();
+}
+
 bool EndstonePlayer::isGliding() const
 {
     return EndstoneMob::isGliding();

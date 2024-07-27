@@ -162,6 +162,16 @@ void EndstoneActor::setRotation(float yaw, float pitch)
     actor_.setRotationWrapped({pitch, yaw});
 }
 
+std::int64_t EndstoneActor::getId() const
+{
+    return actor_.getOrCreateUniqueID().raw_id;
+}
+
+bool EndstoneActor::isDead() const
+{
+    return !actor_.isAlive();
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::unique_ptr<PermissibleBase> perm = []() {

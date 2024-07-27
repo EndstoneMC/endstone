@@ -65,6 +65,8 @@ public:
     [[nodiscard]] Level &getLevel() const override;
     [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
+    [[nodiscard]] std::int64_t getId() const override;
+    [[nodiscard]] bool isDead() const override;
 
     // Mob
     [[nodiscard]] bool isGliding() const override;

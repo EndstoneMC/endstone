@@ -90,14 +90,28 @@ public:
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
     /**
-     * @return Sets the entity's rotation.
+     * @return Sets the actor's rotation.
      * <p>
-     * Note that if the entity is affected by AI, it may override this rotation.
+     * Note that if the actor is affected by AI, it may override this rotation.
      *
      * @param yaw Rotation around the up axis (Y axis)
      * @param pitch Rotation around the right axis (X axis)
      */
     virtual void setRotation(float yaw, float pitch) = 0;
+
+    /**
+     * @brief Returns a unique id for this actor
+     *
+     * @return Actor id
+     */
+    [[nodiscard]] virtual std::int64_t getId() const = 0;
+
+    /**
+     * @brief Returns true if this actor has been marked for removal.
+     *
+     * @return True if it is dead.
+     */
+    [[nodiscard]] virtual bool isDead() const = 0;
 };
 
 }  // namespace endstone
