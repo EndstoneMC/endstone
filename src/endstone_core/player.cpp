@@ -510,6 +510,9 @@ void EndstonePlayer::transfer(std::string address, int port) const
 
 void EndstonePlayer::sendForm(FormVariant form)
 {
+    if (isDead()) {
+        return;
+    }
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ShowModalForm);
     std::shared_ptr<ModalFormRequestPacket> pk = std::static_pointer_cast<ModalFormRequestPacket>(packet);
     pk->form_id = ++form_ids_;
@@ -535,17 +538,20 @@ void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
-    try {
-        std::visit(entt::overloaded{[this](auto &&arg) {
-                       auto callback = arg.getOnClose();
-                       if (callback) {
-                           callback(this);
-                       }
-                   }},
-                   it->second);
-    }
-    catch (std::exception &e) {
-        getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}", e.what());
+
+    if (!isDead()) {
+        try {
+            std::visit(entt::overloaded{[this](auto &&arg) {
+                           auto callback = arg.getOnClose();
+                           if (callback) {
+                               callback(this);
+                           }
+                       }},
+                       it->second);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}", e.what());
+        }
     }
     forms_.erase(it);
 }
@@ -556,31 +562,34 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
-    try {
-        std::visit(entt::overloaded{
-                       [&](const MessageForm &form) {
-                           auto callback = form.getOnSubmit();
-                           if (callback) {
-                               callback(this, json.get<bool>() ? 0 : 1);
-                           }
+
+    if (!isDead()) {
+        try {
+            std::visit(entt::overloaded{
+                           [&](const MessageForm &form) {
+                               auto callback = form.getOnSubmit();
+                               if (callback) {
+                                   callback(this, json.get<bool>() ? 0 : 1);
+                               }
+                           },
+                           [&](const ActionForm &form) {
+                               auto callback = form.getOnSubmit();
+                               if (callback) {
+                                   callback(this, json.get<int>());
+                               }
+                           },
+                           [&](const ModalForm &form) {
+                               auto callback = form.getOnSubmit();
+                               if (callback) {
+                                   callback(this, json.dump());
+                               }
+                           },
                        },
-                       [&](const ActionForm &form) {
-                           auto callback = form.getOnSubmit();
-                           if (callback) {
-                               callback(this, json.get<int>());
-                           }
-                       },
-                       [&](const ModalForm &form) {
-                           auto callback = form.getOnSubmit();
-                           if (callback) {
-                               callback(this, json.dump());
-                           }
-                       },
-                   },
-                   it->second);
-    }
-    catch (std::exception &e) {
-        getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
+                       it->second);
+        }
+        catch (std::exception &e) {
+            getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
+        }
     }
     forms_.erase(it);
 }
