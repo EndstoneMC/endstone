@@ -982,6 +982,20 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="312" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Player::closeForm</definition>
+        <argsstring>()=0</argsstring>
+        <name>closeForm</name>
+        <briefdescription>
+<para>Closes the forms that are currently open for the player. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/player.h" line="317" column="18"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a player. </para>
@@ -1048,7 +1062,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/player.h" line="35" column="1" bodyfile="include/endstone/player.h" bodystart="35" bodyend="313"/>
+    <location file="include/endstone/player.h" line="35" column="1" bodyfile="include/endstone/player.h" bodystart="35" bodyend="318"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
@@ -1058,6 +1072,7 @@
       <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>closeForm</name></member>
       <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>CommandSender</name></member>
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
       <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
@@ -1070,6 +1085,7 @@
       <member refid="classendstone_1_1Player_1aefef97a98e1c193a0eeaf710f417b835" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getExpProgress</name></member>
       <member refid="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getGameMode</name></member>
+      <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getId</name></member>
       <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getInventory</name></member>
       <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocale</name></member>
@@ -1087,6 +1103,7 @@
       <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>giveExpLevels</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isFlying</name></member>
       <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isGliding</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInLava</name></member>

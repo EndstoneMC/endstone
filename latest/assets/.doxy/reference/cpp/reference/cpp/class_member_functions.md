@@ -43,6 +43,7 @@
 * **CommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
@@ -86,6 +87,7 @@
 * **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **getOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **getDimension** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Level**](classendstone_1_1Level.md), [**endstone::Position**](classendstone_1_1Position.md))
+* **getId** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getLevel** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::Dimension**](classendstone_1_1Dimension.md), [**endstone::Server**](classendstone_1_1Server.md), [**endstone::WeatherEvent**](classendstone_1_1WeatherEvent.md))
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getRuntimeId** ([**endstone::Actor**](classendstone_1_1Actor.md))
@@ -237,6 +239,7 @@
 
 ## i
 
+* **isDead** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isOnGround** ([**endstone::Actor**](classendstone_1_1Actor.md))

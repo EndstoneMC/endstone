@@ -248,9 +248,9 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>Sets the entity&apos;s rotation. </para>
+<para><simplesect kind="return"><para>Sets the actor&apos;s rotation. </para>
 </simplesect>
-Note that if the entity is affected by AI, it may override this rotation.</para>
+Note that if the actor is affected by AI, it may override this rotation.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>yaw</parametername>
@@ -273,6 +273,40 @@ Note that if the entity is affected by AI, it may override this rotation.</para>
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="100" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int64_t</type>
+        <definition>virtual std::int64_t endstone::Actor::getId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getId</name>
+        <briefdescription>
+<para>Returns a unique id for this actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> id </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="107" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isDead</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isDead</name>
+        <briefdescription>
+<para>Returns true if this actor has been marked for removal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if it is dead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="114" column="19"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -328,7 +362,7 @@ Note that if the entity is affected by AI, it may override this rotation.</para>
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="101"/>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="115"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
@@ -341,6 +375,7 @@ Note that if the entity is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>CommandSender</name></member>
       <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getId</name></member>
       <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getName</name></member>
@@ -349,6 +384,7 @@ Note that if the entity is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInWater</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOnGround</name></member>

@@ -29,6 +29,8 @@
     <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kind="function"><name>setRotation</name></member>
+    <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" kind="function"><name>getId</name></member>
+    <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" kind="function"><name>isDead</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
     <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>
@@ -489,6 +491,7 @@
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
+    <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>

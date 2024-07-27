@@ -98,10 +98,12 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 |   | [**Actor**](#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
 |   | [**Actor**](#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
+| virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
 | virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
 | virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](#function-getvelocity) () const = 0<br> |
+| virtual bool | [**isDead**](#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
 | virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
 | virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
@@ -307,6 +309,31 @@ The current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in
 
 
 
+### function getId 
+
+_Returns a unique id for this actor._ 
+```C++
+virtual std::int64_t endstone::Actor::getId () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Actor**](classendstone_1_1Actor.md) id 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getLevel 
 
 
@@ -408,6 +435,31 @@ Gets this actor's current velocity
 **Returns:**
 
 Current traveling velocity of this actor 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isDead 
+
+_Returns true if this actor has been marked for removal._ 
+```C++
+virtual bool endstone::Actor::isDead () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if it is dead. 
 
 
 
@@ -549,10 +601,10 @@ virtual void endstone::Actor::setRotation (
 
 **Returns:**
 
-Sets the entity's rotation. 
+Sets the actor's rotation. 
 
 
-Note that if the entity is affected by AI, it may override this rotation.
+Note that if the actor is affected by AI, it may override this rotation.
 
 
 

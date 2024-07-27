@@ -57,6 +57,10 @@ public:
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
     virtual void setRotation(float yaw, float pitch) = 0;
+
+    [[nodiscard]] virtual std::int64_t getId() const = 0;
+
+    [[nodiscard]] virtual bool isDead() const = 0;
 };
 
 }  // namespace endstone
