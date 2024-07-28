@@ -103,10 +103,12 @@ class PythonPluginLoader(PluginLoader):
                 continue
 
             # get distribution metadata
-            plugin_metadata = metadata(ep.dist.name).json
-
-            # load module
-            cls = ep.load()
+            try:
+                plugin_metadata = metadata(ep.dist.name).json
+                cls = ep.load()
+            except Exception as e:
+                self.server.logger.error(f"Error occurred when trying to load plugin from entry point '{ep.name}': {e}")
+                continue
 
             # prepare plugin description
             cls_attr = dict(cls.__dict__)
