@@ -14,6 +14,8 @@
 
 #include "endstone/detail/actor/mob.h"
 
+#include "endstone/detail/server.h"
+
 namespace endstone::detail {
 
 EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}

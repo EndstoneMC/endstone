@@ -19,6 +19,7 @@
 #include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
+#include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
@@ -27,14 +28,7 @@ class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:
     ~Minecraft() override = 0;
     MinecraftCommands &getCommands();
-
-    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const
-    {
-        if (game_session_) {
-            return game_session_->getServerNetworkHandler();
-        }
-        return nullptr;
-    }
+    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
 
 private:
     GameCallbacks *callbacks_;                                           // +24

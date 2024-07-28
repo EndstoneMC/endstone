@@ -16,13 +16,13 @@
 
 #include "endstone/actor/actor.h"
 #include "endstone/detail/permissions/permissible_base.h"
-#include "endstone/detail/server.h"
 
 class Actor;
 
 namespace endstone::detail {
 
 class EndstoneLevel;
+class EndstoneServer;
 
 class EndstoneActor : public Actor {
 public:
@@ -64,7 +64,7 @@ public:
     [[nodiscard]] bool isDead() const override;
 
     // Internal use only
-    ::Actor &getActor() const;
+    [[nodiscard]] ::Actor &getActor() const;
 
 protected:
     EndstoneServer &server_;

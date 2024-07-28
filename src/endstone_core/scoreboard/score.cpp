@@ -22,6 +22,7 @@
 #include "endstone/detail/player.h"
 #include "endstone/detail/scoreboard/objective.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 

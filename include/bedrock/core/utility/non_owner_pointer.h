@@ -108,14 +108,3 @@ private:
 };
 
 }  // namespace Bedrock
-
-namespace std {
-template <class T1, class T2>
-[[nodiscard]] Bedrock::NonOwnerPointer<T1> static_pointer_cast(const Bedrock::NonOwnerPointer<T2> &other) noexcept
-{
-    auto obj = static_cast<typename Bedrock::NonOwnerPointer<T1>::ElementType *>(other.get());
-    auto result = Bedrock::NonOwnerPointer<T1>();
-    result.ptr = std::shared_ptr<T1>(other.ptr, obj);
-    return result;
-}
-}  // namespace std

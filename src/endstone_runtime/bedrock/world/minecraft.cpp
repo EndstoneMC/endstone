@@ -23,3 +23,11 @@ MinecraftCommands &Minecraft::getCommands()
 {
     return *commands_;
 }
+
+Bedrock::NonOwnerPointer<ServerNetworkHandler> Minecraft::getServerNetworkHandler() const
+{
+    if (game_session_) {
+        return game_session_->getServerNetworkHandler();
+    }
+    return nullptr;
+}

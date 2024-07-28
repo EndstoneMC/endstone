@@ -20,11 +20,14 @@
 #include "bedrock/core/utility/observer.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
+#include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/server_event.h"
+#include "bedrock/world/game_callbacks.h"
+#include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
 
 namespace endstone::detail {

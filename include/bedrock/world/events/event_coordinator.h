@@ -18,17 +18,18 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
-#include "bedrock/server/server_instance.h"
 #include "bedrock/world/events/actor_event.h"
-#include "bedrock/world/events/block_event.h"
-#include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_ref.h"
 #include "bedrock/world/events/gameplay_handler.h"
 #include "bedrock/world/events/item_event.h"
 #include "bedrock/world/events/level_event.h"
 #include "bedrock/world/events/player_event.h"
 #include "bedrock/world/events/server_event.h"
+
+class ServerInstance;
+class Level;
 
 template <typename ListenerType>
 class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {

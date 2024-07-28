@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/world/actor/mob.h"
+#include "endstone/actor/mob.h"
 #include "endstone/detail/actor/actor.h"
 
 namespace endstone::detail {

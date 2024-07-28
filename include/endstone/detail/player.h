@@ -20,6 +20,7 @@
 
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
+#include "bedrock/world/form/player_form_close_reason.h"
 #include "endstone/detail/actor/mob.h"
 #include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/player.h"

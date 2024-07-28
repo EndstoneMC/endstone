@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "bedrock/core/math/vec3.h"
+
 struct OffsetsComponent {
     float height_offset;     // +0
     float explosion_offset;  // +4
