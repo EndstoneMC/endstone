@@ -14,6 +14,10 @@ else ()
     message(FATAL_ERROR "${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
 endif ()
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(FATAL_ERROR "Debug builds are disabled. Please build in 'Release' or 'RelWithDebInfo' mode.")
+endif ()
+
 
 # ===============
 # Dependencies
