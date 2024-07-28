@@ -83,17 +83,34 @@ class PythonPluginLoader(PluginLoader):
         loaded_plugins = []
         eps = entry_points(group="endstone")
         for ep in eps:
-            # get distribution metadata, use as fallback for name and version
-            ep_name = ep.name.replace("-", "_")
-            dist_name = "endstone_" + ep_name
-            plugin_metadata = metadata(dist_name).json
+            # enforce naming convention
+            if not ep.dist.name.replace("_", "-").startswith("endstone-"):
+                self.server.logger.error(
+                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name.")
+                self.server.logger.error(
+                    f"The name of distribution ({ep.dist.name}) does not start with 'endstone-' or 'endstone_'.")
+                continue
+
+            dist_name = "endstone-" + ep.name.replace("_", "-")
+            if ep.dist.name.replace("_", "-") != dist_name:
+                self.server.logger.error(
+                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name.")
+                self.server.logger.error(f"You need to make **ONE** of the following changes.")
+                self.server.logger.error(f"* If you intend to use the current entry point name ({ep.name}), "
+                                         f"please change the distribution name from '{ep.dist.name}' to '{dist_name}'.")
+                self.server.logger.error(f"* If not, "
+                                         f"please change the entry point name from '{ep.name}' to '{ep.dist.name[9:]}'.")
+                continue
+
+            # get distribution metadata
+            plugin_metadata = metadata(ep.dist.name).json
 
             # load module
             cls = ep.load()
 
             # prepare plugin description
             cls_attr = dict(cls.__dict__)
-            name = cls_attr.pop("name", dist_name)
+            name = cls_attr.pop("name", ep.name.replace("-", "_"))
             version = cls_attr.pop("version", plugin_metadata["version"])
 
             api_version = cls_attr.pop("api_version", None)
@@ -119,7 +136,6 @@ class PythonPluginLoader(PluginLoader):
             description = cls_attr.pop("description", plugin_metadata.get("summary", None))
             authors = cls_attr.pop("authors", plugin_metadata.get("author_email", "").split(","))
             website = cls_attr.pop("website", "; ".join(plugin_metadata.get("project_url", [])))
-            prefix = cls_attr.pop("prefix", ep_name.replace("_", " ").title().replace(" ", ""))
 
             commands = cls_attr.pop("commands", {})
             commands = self._build_commands(commands)
@@ -129,7 +145,7 @@ class PythonPluginLoader(PluginLoader):
 
             plugin_description = PluginDescription(
                 name=name, version=version, load=load, description=description, authors=authors, website=website,
-                prefix=prefix, commands=commands, permissions=permissions, **cls_attr
+                commands=commands, permissions=permissions, **cls_attr
             )
 
             # instantiate plugin
