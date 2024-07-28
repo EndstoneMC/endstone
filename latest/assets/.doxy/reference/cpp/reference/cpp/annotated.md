@@ -79,6 +79,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Vector**](classendstone_1_1Vector.md) _Represents a 3-dimensional vector._     
     * **class** [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._     
     * **class** [**WeatherEvent**](classendstone_1_1WeatherEvent.md) _Represents a Weather-related event._     
+    * **namespace** [**detail**](namespaceendstone_1_1detail.md) 
 * **namespace** [**std**](namespacestd.md)     
     * **struct** [**hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md)     
 

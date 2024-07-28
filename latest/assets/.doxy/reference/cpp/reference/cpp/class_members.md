@@ -319,7 +319,6 @@
 * **init** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **isFlying** ([**endstone::Player**](classendstone_1_1Player.md))
 * **isEnabled** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
-* **initPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **isPluginEnabled** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **isQueued** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **isRunning** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))

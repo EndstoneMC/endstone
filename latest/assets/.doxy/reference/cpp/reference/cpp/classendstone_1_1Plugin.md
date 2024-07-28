@@ -541,6 +541,23 @@ Sets the enabled state of this plugin
 
         
 
+<hr>## Friends Documentation
+
+
+
+
+
+### friend EndstonePluginManager 
+
+```C++
+class endstone::Plugin::EndstonePluginManager (
+    detail::EndstonePluginManager
+) 
+```
+
+
+
+
 <hr>
 
 ------------------------------

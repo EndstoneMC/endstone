@@ -557,6 +557,7 @@
   </compound>
   <compound refid="classendstone_1_1Plugin" kind="class"><name>endstone::Plugin</name>
     <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" kind="friend"><name>PluginLoader</name></member>
+    <member refid="classendstone_1_1Plugin_1ad9de0bdae1894ad40e33f0e12022cdbf" kind="friend"><name>detail::EndstonePluginManager</name></member>
     <member refid="classendstone_1_1Plugin_1aee2a3ea3a977bc44ea80f5a74ca5c454" kind="variable"><name>enabled_</name></member>
     <member refid="classendstone_1_1Plugin_1adfef6b28e088eeba9322262d6c4bab5b" kind="variable"><name>loader_</name></member>
     <member refid="classendstone_1_1Plugin_1abb783c24dd0a315c59a4c03e619779b3" kind="variable"><name>server_</name></member>
@@ -654,7 +655,6 @@
     <member refid="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" kind="function"><name>enablePlugin</name></member>
     <member refid="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" kind="function"><name>disablePlugin</name></member>
     <member refid="classendstone_1_1PluginLoader_1a1ea761be4c14a7e33f8885d6c8bb97df" kind="function"><name>getServer</name></member>
-    <member refid="classendstone_1_1PluginLoader_1aa4fbfcb57d18f6ac349321e4b91e3a98" kind="function"><name>initPlugin</name></member>
   </compound>
   <compound refid="classendstone_1_1PluginManager" kind="class"><name>endstone::PluginManager</name>
     <member refid="classendstone_1_1PluginManager_1a281ccb3de8a92c07a4e29f7ad2156424" kind="function"><name>PluginManager</name></member>
@@ -1016,6 +1016,8 @@
     <member refid="uuid_8h_1af337ccd795abe8d4ca38aeffcd6066e7" kind="function"><name>operator&gt;=</name></member>
     <member refid="uuid_8h_1af2cf5277faf4607f09dbd0060c401d53" kind="function"><name>swap</name></member>
     <member refid="uuid_8h_1a3d5bde372c0cb7aefcad787a85d1f551" kind="function"><name>hash_value</name></member>
+  </compound>
+  <compound refid="namespaceendstone_1_1detail" kind="namespace"><name>endstone::detail</name>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>

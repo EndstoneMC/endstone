@@ -89,11 +89,6 @@ _Represents a plugin loader, which handles direct access to specific types of pl
 
 
 
-## Protected Functions
-
-| Type | Name |
-| ---: | :--- |
-|  void | [**initPlugin**](#function-initplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, [**Logger**](classendstone_1_1Logger.md) & logger, std::filesystem::path data\_folder) <br> |
 
 
 
@@ -292,25 +287,6 @@ virtual endstone::PluginLoader::~PluginLoader () = default
 
 ```C++
 Server& endstone::PluginLoader::server_;
-```
-
-
-
-
-<hr>
-## Protected Functions Documentation
-
-
-
-
-### function initPlugin 
-
-```C++
-inline void endstone::PluginLoader::initPlugin (
-    Plugin & plugin,
-    Logger & logger,
-    std::filesystem::path data_folder
-) 
 ```
 
 

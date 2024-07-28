@@ -74,6 +74,7 @@
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
     <innerclass refid="classendstone_1_1UUID" prot="public">endstone::UUID</innerclass>
     <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
+    <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342" prot="public" static="no" strong="yes">
         <type></type>

@@ -41,6 +41,7 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br> |
+| namespace | [**detail**](namespaceendstone_1_1detail.md) <br> |
 
 
 ## Classes

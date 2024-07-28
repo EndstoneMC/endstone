@@ -44,6 +44,10 @@ namespace endstone {
 class PluginCommand;
 class PluginLoader;
 
+namespace detail {
+class EndstonePluginManager;
+}
+
 class Plugin : public CommandExecutor {
 public:
     Plugin() = default;
@@ -116,6 +120,7 @@ public:
 
 protected:
     friend class PluginLoader;
+    friend class detail::EndstonePluginManager;
 
     void setEnabled(bool enabled)
     {
