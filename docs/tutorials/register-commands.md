@@ -9,14 +9,11 @@ Let's start with a simple command `/hello` that greets the command sender.
 
 === ":fontawesome-brands-python: Python"
 
-    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="9-14"
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="6-11"
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        name = "MyPlugin"
-        version = "0.1.0"
         api_version = "0.4"
-        description = "My first Python plugin for Endstone servers!"
 
         commands = {
             "hello": {
@@ -33,7 +30,7 @@ Let's start with a simple command `/hello` that greets the command sender.
     ``` c++ title="src/my_plugin.cpp" linenums="1" hl_lines="7-9"
     #include "my_plugin.h"
 
-    ENDSTONE_PLUGIN(/*(1)!*/"MyPlugin", /*(2)!*/"0.1.0", /*(3)!*/MyPlugin)
+    ENDSTONE_PLUGIN("my_plugin", "0.1.0", MyPlugin)
     {
         description = "My first C++ plugin for Endstone servers";
 
@@ -52,15 +49,12 @@ message to whoever execute this command.
 
 === ":fontawesome-brands-python: Python"
 
-    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="1 17-21"
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="1 14-18"
     from endstone.command import Command, CommandSender
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        name = "MyPlugin"
-        version = "0.1.0"
         api_version = "0.4"
-        description = "My first Python plugin for Endstone servers!"
 
         commands = {
             "hello": {

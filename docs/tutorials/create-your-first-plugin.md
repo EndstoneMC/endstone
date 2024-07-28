@@ -94,6 +94,7 @@ toc_depth: 2
     [project]
     name = "endstone-my-plugin"
     version = "0.1.0"
+    description = "My first Python plugin for Endstone servers!"
     ```
 
     !!! notice
@@ -134,7 +135,7 @@ toc_depth: 2
     ``` CMake title="CMakeLists.txt" linenums="1"
     cmake_minimum_required(VERSION 3.15)
     
-    project(endstone_my_plugin CXX)
+    project(my_plugin CXX)
     
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -146,18 +147,10 @@ toc_depth: 2
         GIT_TAG main #(1)!
     )
     FetchContent_MakeAvailable(endstone)
-
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC") #(2)!
-        add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC")
-        link_libraries(-static-libgcc -static-libstdc++ libc++.a libc++abi.a)
-    endif ()
     ```
 
     1.  :warning: This will use the latest development version of Endstone. Consider use a release tag (e.g. `v0.4.0`) instead of `main`.
-    2.  :information_source: The following lines are necessary for ensuring ABI compatibility with the Bedrock Dedicated Server (BDS).
-
+    
     [JetBrains CLion]: https://www.jetbrains.com/clion/
 
 ## Create the main plugin class
@@ -205,10 +198,10 @@ toc_depth: 2
 
     Open `CMakeLists.txt` and add a new target.
 
-    ``` CMake title="CMakeLists.txt" linenums="1" hl_lines="23-25"
+    ``` CMake title="CMakeLists.txt" linenums="1" hl_lines="16"
     cmake_minimum_required(VERSION 3.15)
     
-    project(endstone_my_plugin CXX)
+    project(my_plugin CXX)
     
     set(CMAKE_CXX_STANDARD 17)
     set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -221,16 +214,7 @@ toc_depth: 2
     )
     FetchContent_MakeAvailable(endstone)
 
-    if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-        add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
-    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC")
-        link_libraries(-static-libgcc -static-libstdc++ libc++.a libc++abi.a)
-    endif ()
-
-    add_library(${PROJECT_NAME} SHARED src/my_plugin.cpp)
-    target_include_directories(${PROJECT_NAME} PUBLIC include)
-    target_link_libraries(${PROJECT_NAME} PRIVATE endstone::headers)
+    endstone_add_plugin(${PROJECT_NAME} src/my_plugin.cpp)
     ```
 
     You should have something similar to this:
@@ -313,17 +297,13 @@ toc_depth: 2
 
 === ":fontawesome-brands-python: Python"
 
-    Now, the plugin is almost finished. Let's tell the server about our name, version, description and the compatible 
-    API version.
+    Now, the plugin is almost finished. Let's tell the server about our compatible API version.
 
-    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="4-7"
+    ``` python title="src/endstone_my_plugin/my_plugin.py" linenums="1" hl_lines="4"
     from endstone.plugin import Plugin
 
     class MyPlugin(Plugin):
-        name = "MyPlugin"
-        version = "0.1.0"
         api_version = "0.4"
-        description = "My first Python plugin for Endstone servers!"
 
         def on_load(self) -> None:
             self.logger.info("on_load is called!")
@@ -337,7 +317,7 @@ toc_depth: 2
     
     Lastly, to have the plugin discoverable by the server, you must specify an entry point in `pyproject.toml`.
 
-    ``` toml title="pyproject.toml" linenums="1" hl_lines="9-10"
+    ``` toml title="pyproject.toml" linenums="1" hl_lines="10-11"
     [build-system]
     requires = ["hatchling"]
     build-backend = "hatchling.build"
@@ -345,6 +325,7 @@ toc_depth: 2
     [project]
     name = "endstone-my-plugin"
     version = "0.1.0"
+    description = "My first Python plugin for Endstone servers!"
 
     [project.entry-points."endstone"]
     my-plugin = "endstone_my_plugin:MyPlugin"
@@ -363,7 +344,7 @@ toc_depth: 2
     ``` c++ title="src/my_plugin.cpp" linenums="1" hl_lines="3-6"
     #include "my_plugin.h"
 
-    ENDSTONE_PLUGIN(/*(1)!*/"MyPlugin", /*(2)!*/"0.1.0", /*(3)!*/MyPlugin)
+    ENDSTONE_PLUGIN(/*(1)!*/"my_plugin", /*(2)!*/"0.1.0", /*(3)!*/MyPlugin)
     {
         description = "My first C++ plugin for Endstone servers";
     }
@@ -372,6 +353,10 @@ toc_depth: 2
     1.  :abc: This is the plugin name!
     2.  :hash: This is the plugin version!
     3.  :white_check_mark: This is the main class of the plugin!
+
+    !!! notice
+        
+        For plugin name, it must contains **only** lowercase letters, numbers and underscores.
 
 [JetBrains PyCharm]: https://www.jetbrains.com/pycharm/
 
