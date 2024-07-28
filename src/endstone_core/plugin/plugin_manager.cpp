@@ -95,9 +95,17 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
 
             auto name = plugin->getDescription().getName();
 
-            const static std::regex valid_name{"^[A-Za-z0-9 _.-]+$"};
+            const static std::regex valid_name{"^[a-z0-9_]+$"};
             if (!std::regex_match(name, valid_name)) {
                 server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", name);
+                server_.getLogger().error(
+                    "A valid plugin name should only contain lowercase letters, numbers and underscores.");
+                continue;
+            }
+
+            if (name.rfind("endstone", 0) == 0) {
+                server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
+                                          name);
                 continue;
             }
 
