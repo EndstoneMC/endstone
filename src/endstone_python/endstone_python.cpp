@@ -318,7 +318,9 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
         .def("reset_title", &Player::resetTitle,
              "Resets the title displayed to the player. This will clear the displayed title / subtitle and reset "
              "timings to their default values.")
-        .def_property_readonly("ping", &Player::getPing, "Gets the player's average ping.")
+        .def_property_readonly(
+            "ping", [](const Player &self) { return self.getPing().count(); },
+            "Gets the player's average ping in milliseconds.")
         .def("update_commands", &Player::updateCommands, "Send the list of commands to the client.")
         .def("perform_command", &Player::performCommand, py::arg("command"),
              "Makes the player perform the given command.")

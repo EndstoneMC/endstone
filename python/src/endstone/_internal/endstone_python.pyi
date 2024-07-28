@@ -1,5 +1,4 @@
 from __future__ import annotations
-import datetime
 import numpy
 import os
 import typing
@@ -1353,9 +1352,9 @@ class Player(Mob):
         Get the player's current locale.
         """
     @property
-    def ping(self) -> datetime.timedelta:
+    def ping(self) -> int:
         """
-        Gets the player's average ping.
+        Gets the player's average ping in milliseconds.
         """
     @property
     def skin(self) -> Skin:
