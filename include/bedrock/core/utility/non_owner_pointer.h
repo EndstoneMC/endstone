@@ -21,7 +21,7 @@ namespace Bedrock {
 class EnableNonOwnerReferences {
 public:
     struct ControlBlock {
-        void *ptr;
+        EnableNonOwnerReferences *ptr;
     };
 
     EnableNonOwnerReferences()
