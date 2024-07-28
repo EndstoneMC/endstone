@@ -107,14 +107,6 @@ public:
     }
 
 protected:
-    void initPlugin(Plugin &plugin, Logger &logger, std::filesystem::path data_folder)
-    {
-        plugin.loader_ = this;
-        plugin.server_ = &server_;
-        plugin.logger_ = &logger;
-        plugin.data_folder_ = std::move(data_folder);
-    }
-
     Server &server_;
 };
 

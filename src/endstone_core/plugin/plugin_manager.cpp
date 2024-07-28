@@ -15,18 +15,22 @@
 #include "endstone/detail/plugin/plugin_manager.h"
 
 #include <algorithm>
+#include <filesystem>
 #include <memory>
 #include <regex>
 #include <string>
 #include <utility>
 #include <vector>
 
+#include "endstone/detail/logger_factory.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
 #include "endstone/server.h"
+
+namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
@@ -97,6 +101,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
                 continue;
             }
 
+            initPlugin(*plugin, *loader, fs::path(directory));
             plugins_.push_back(plugin);
             lookup_names_[name] = plugin;
             loaded_plugins.push_back(plugin);
@@ -332,6 +337,23 @@ void EndstonePluginManager::unsubscribeFromDefaultPerms(bool op, Permissible &pe
             def_subs_.erase(op);
         }
     }
+}
+
+void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, std::filesystem::path base_folder)
+{
+    plugin.loader_ = &loader;
+    plugin.server_ = &server_;
+
+    auto plugin_name = plugin.getDescription().getName();
+    auto logger_name = plugin.getDescription().getPrefix();
+    if (logger_name.empty()) {
+        logger_name = plugin_name;
+    }
+    plugin.logger_ = &LoggerFactory::getLogger(logger_name);
+
+    std::transform(plugin_name.begin(), plugin_name.end(), plugin_name.begin(),
+                   [](unsigned char c) { return std::tolower(c); });
+    plugin.data_folder_ = base_folder / plugin_name;
 }
 
 std::unordered_set<Permissible *> EndstonePluginManager::getDefaultPermSubscriptions(bool op) const

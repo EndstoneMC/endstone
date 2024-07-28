@@ -34,6 +34,10 @@ namespace endstone {
 class PluginCommand;
 class PluginLoader;
 
+namespace detail {
+class EndstonePluginManager;
+}
+
 /**
  * @brief Represents a Plugin.
  */
@@ -169,6 +173,7 @@ public:
 
 protected:
     friend class PluginLoader;
+    friend class detail::EndstonePluginManager;
 
     /**
      * Sets the enabled state of this plugin

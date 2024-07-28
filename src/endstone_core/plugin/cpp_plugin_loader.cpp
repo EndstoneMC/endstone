@@ -120,15 +120,6 @@ std::unique_ptr<Plugin> CppPluginLoader::loadPlugin(const std::string &file)
         return nullptr;
     }
 
-    auto plugin_name = plugin->getDescription().getName();
-    auto logger_name = plugin->getDescription().getPrefix();
-    if (logger_name.empty()) {
-        logger_name = plugin_name;
-    }
-
-    std::transform(plugin_name.begin(), plugin_name.end(), plugin_name.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
-    initPlugin(*plugin, LoggerFactory::getLogger(logger_name), std::filesystem::path(file).parent_path() / plugin_name);
     return std::unique_ptr<Plugin>(plugin);
 }
 
