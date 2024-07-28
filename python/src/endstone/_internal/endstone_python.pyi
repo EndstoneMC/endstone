@@ -13,7 +13,7 @@ class ActionForm:
         """
         Represents a button with text and an optional icon.
         """
-        def __init__(self, text: str | Translatable = '', icon: str | None = None) -> None:
+        def __init__(self, text: str | Translatable = '', icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> None:
             ...
         @property
         def icon(self) -> str | None:
@@ -22,6 +22,14 @@ class ActionForm:
             """
         @icon.setter
         def icon(self, arg1: str) -> ActionForm.Button:
+            ...
+        @property
+        def on_click(self) -> typing.Callable[[Player], None]:
+            """
+            Gets or sets the on click callback.
+            """
+        @on_click.setter
+        def on_click(self, arg1: typing.Callable[[Player], None]) -> ActionForm.Button:
             ...
         @property
         def text(self) -> str | Translatable:

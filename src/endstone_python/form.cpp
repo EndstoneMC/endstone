@@ -71,7 +71,8 @@ void init_form(py::module_ &m)
                  return StepSlider(std::move(label), options.value_or(std::vector<std::string>{}), default_index);
              }),
              py::arg("label") = "", py::arg("options") = py::none(), py::arg("default_index") = py::none())
-        .def_property("label", &StepSlider::getLabel, &StepSlider::setLabel, "Gets or sets the label of the step slider.")
+        .def_property("label", &StepSlider::getLabel, &StepSlider::setLabel,
+                      "Gets or sets the label of the step slider.")
         .def_property("options", &StepSlider::getOptions, &StepSlider::setOptions,
                       "Gets or sets the options of the step slider.")
         .def_property("default_index", &StepSlider::getDefaultIndex, &StepSlider::setDefaultIndex,
@@ -79,8 +80,8 @@ void init_form(py::module_ &m)
         .def("add_option", &StepSlider::addOption, "Adds a new option to the step slider.", py::arg("option"));
 
     py::class_<TextInput>(m, "TextInput", "Represents a text input field.")
-        .def(py::init<Message, Message, std::optional<std::string>>(), py::arg("label") = "", py::arg("placeholder") = "",
-             py::arg("default_value") = py::none())
+        .def(py::init<Message, Message, std::optional<std::string>>(), py::arg("label") = "",
+             py::arg("placeholder") = "", py::arg("default_value") = py::none())
         .def_property("label", &TextInput::getLabel, &TextInput::setLabel,
                       "Gets or sets the label of the text input field.")
         .def_property("placeholder", &TextInput::getPlaceholder, &TextInput::setPlaceholder,
@@ -126,11 +127,14 @@ void init_form(py::module_ &m)
         py::class_<ActionForm>(m, "ActionForm", "Represents a form with buttons that let the player take action.");
 
     py::class_<ActionForm::Button>(action_form, "Button", "Represents a button with text and an optional icon.")
-        .def(py::init<Message, std::optional<std::string>>(), py::arg("text") = "", py::arg("icon") = py::none())
+        .def(py::init<Message, std::optional<std::string>, ActionForm::Button::OnClickCallback>(), py::arg("text") = "",
+             py::arg("icon") = py::none(), py::arg("on_click") = ActionForm::Button::OnClickCallback{})
         .def_property("text", &ActionForm::Button::getText, &ActionForm::Button::setText,
                       "Gets or sets the text of the button", py::return_value_policy::reference)
         .def_property("icon", &ActionForm::Button::getIcon, &ActionForm::Button::setIcon,
-                      "Gets or sets the icon path or URL of the button", py::return_value_policy::reference);
+                      "Gets or sets the icon path or URL of the button", py::return_value_policy::reference)
+        .def_property("on_click", &ActionForm::Button::getOnClick, &ActionForm::Button::setOnClick,
+                      "Gets or sets the on click callback.", py::return_value_policy::reference);
 
     action_form
         .def(
