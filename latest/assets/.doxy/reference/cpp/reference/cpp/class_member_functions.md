@@ -5,6 +5,7 @@
 
 ## a
 
+* **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **Actor** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
@@ -82,6 +83,7 @@
 ## g
 
 * **getIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **getOnClick** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **getText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **getButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **getContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
@@ -353,6 +355,7 @@
 ## s
 
 * **setIcon** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **setOnClick** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **setText** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))

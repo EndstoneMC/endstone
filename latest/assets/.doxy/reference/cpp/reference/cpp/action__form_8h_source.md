@@ -33,13 +33,14 @@ namespace endstone {
 
 class ActionForm : public Form<ActionForm> {
 public:
-    using OnSubmitCallback = std::function<void(Player *, int)>;
-
     class Button {
     public:
+        using OnClickCallback = std::function<void(Player *)>;
+
         Button() = default;
-        explicit Button(Message text, std::optional<std::string> icon = std::nullopt)
-            : text_(std::move(text)), icon_(std::move(icon))
+        explicit Button(Message text, std::optional<std::string> icon = std::nullopt,
+                        ActionForm::Button::OnClickCallback on_click = {})
+            : text_(std::move(text)), icon_(std::move(icon)), on_click_(std::move(on_click))
         {
         }
 
@@ -65,10 +66,38 @@ public:
             return *this;
         }
 
+        [[nodiscard]] OnClickCallback getOnClick() const
+        {
+            return on_click_;
+        }
+
+        Button &setOnClick(OnClickCallback on_click)
+        {
+            on_click_ = std::move(on_click);
+            return *this;
+        }
+
     private:
         Message text_;
         std::optional<std::string> icon_;
+        OnClickCallback on_click_;
     };
+
+    using OnSubmitCallback = std::function<void(Player *, int)>;
+
+    explicit ActionForm()
+    {
+        on_submit_ = [this](Player *player, int selection) {
+            if (selection < 0 || selection >= buttons_.size()) {
+                return;
+            }
+            auto &button = buttons_[selection];
+            auto on_click = button.getOnClick();
+            if (on_click) {
+                on_click(player);
+            }
+        };
+    }
 
     [[nodiscard]] Message getContent() const
     {

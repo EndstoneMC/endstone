@@ -5,6 +5,7 @@
     <member refid="classendstone_1_1ActionForm_1a5a2382f4992f2611612841261e5c5255" kind="variable"><name>content_</name></member>
     <member refid="classendstone_1_1ActionForm_1a6d636aeb18a37003ef44b1b30c82d0d2" kind="variable"><name>buttons_</name></member>
     <member refid="classendstone_1_1ActionForm_1a2f6132d73109f39a57142a7af41f5275" kind="variable"><name>on_submit_</name></member>
+    <member refid="classendstone_1_1ActionForm_1a6482191ac258c58ae2c1e3c547ffd0ba" kind="function"><name>ActionForm</name></member>
     <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" kind="function"><name>getContent</name></member>
     <member refid="classendstone_1_1ActionForm_1a3d4690491594fa31da97d5578c1bc7f9" kind="function"><name>setContent</name></member>
     <member refid="classendstone_1_1ActionForm_1a5614202a3c82ded38502d4cbf06c0484" kind="function"><name>addButton</name></member>
@@ -84,14 +85,18 @@
     <member refid="classendstone_1_1BroadcastMessageEvent_1a76737ffb8bc730b76b214d4d020a56db" kind="function"><name>getRecipients</name></member>
   </compound>
   <compound refid="classendstone_1_1ActionForm_1_1Button" kind="class"><name>endstone::ActionForm::Button</name>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a003e869baff9e28cdf847665e4159669" kind="typedef"><name>OnClickCallback</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a84c8cea3edd6cffb4b4336d6c4370d65" kind="variable"><name>text_</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1ad55412f067b599395d061269af34d97d" kind="variable"><name>icon_</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a8f5d6225886bf06fa0809157f67b90f7" kind="variable"><name>on_click_</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a5657f2f796d1d3f7642600bdb6cb2255" kind="function"><name>Button</name></member>
-    <member refid="classendstone_1_1ActionForm_1_1Button_1ada75738a9911b586061050026139338a" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a9069cf2aa295fc5ccd5c3ae0dcc56e12" kind="function"><name>Button</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a4810e6db896b645a950c372548f703c3" kind="function"><name>getText</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a2a0388f526040f2d506d79aa9a04662b" kind="function"><name>setText</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a2a51a41302b3ffff548d4227d58c2655" kind="function"><name>getIcon</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1aa3dd146dceef22e78cab106c2c307560" kind="function"><name>setIcon</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a7f7e2a07239d36874eb4dc8282b0099b" kind="function"><name>getOnClick</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1a89b06fc9f88a548931dff25fe7c82d4b" kind="function"><name>setOnClick</name></member>
   </compound>
   <compound refid="structendstone_1_1ColorFormat" kind="struct"><name>endstone::ColorFormat</name>
     <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" kind="variable"><name>Escape</name></member>

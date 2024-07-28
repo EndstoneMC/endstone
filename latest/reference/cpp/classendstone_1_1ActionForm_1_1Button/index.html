@@ -1768,6 +1768,17 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-types" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -1775,6 +1786,36 @@
     </a>
 
     <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#public-types-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Public Types Documentation">
+        <ul class="md-nav__list">
+            
+            
+            <li class="md-nav__item">
+    <a href="#typedef-onclickcallback" class="md-nav__link">
+      <span class="md-ellipsis">
+        typedef OnClickCallback
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+        </ul>
+    </nav>
     
 </li>
       
@@ -1831,6 +1872,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-getonclick" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getOnClick
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-gettext" class="md-nav__link">
       <span class="md-ellipsis">
         function getText
@@ -1847,6 +1901,19 @@
     <a href="#function-seticon" class="md-nav__link">
       <span class="md-ellipsis">
         function setIcon
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-setonclick" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setOnClick
       </span>
     </a>
 
@@ -1910,6 +1977,21 @@
 <ul>
 <li><code>#include &lt;endstone/form/action_form.h&gt;</code></li>
 </ul>
+<h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">typedef std::function&lt; void(<a href="../classendstone_1_1Player/"><strong>Player</strong></a> *)&gt;</td>
+<td style="text-align: left;"><a href="#typedef-onclickcallback"><strong>OnClickCallback</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1925,11 +2007,15 @@
 </tr>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-button-22"><strong>Button</strong></a> (Message text, std::optional&lt; std::string &gt; icon=std::nullopt) <br></td>
+<td style="text-align: left;"><a href="#function-button-22"><strong>Button</strong></a> (Message text, std::optional&lt; std::string &gt; icon=std::nullopt, ActionForm::Button::OnClickCallback on_click={}) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">std::optional&lt; std::string &gt;</td>
 <td style="text-align: left;"><a href="#function-geticon"><strong>getIcon</strong></a> () const<br><em>Get the icon of the button.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">OnClickCallback</td>
+<td style="text-align: left;"><a href="#function-getonclick"><strong>getOnClick</strong></a> () const<br><em>Gets the on submit callback of the button.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">Message</td>
@@ -1941,35 +2027,53 @@
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Button</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-setonclick"><strong>setOnClick</strong></a> (OnClickCallback on_click) <br><em>Sets the on click callback of the button.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;"><a href="./"><strong>Button</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-settext"><strong>setText</strong></a> (Message text) <br><em>Sets the text of the button.</em></td>
 </tr>
 </tbody>
 </table>
+<h2 id="public-types-documentation">Public Types Documentation<a class="headerlink" href="#public-types-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="typedef-onclickcallback">typedef OnClickCallback<a class="headerlink" href="#typedef-onclickcallback" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">OnClickCallback</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="n">Player</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</span></code></pre></div>
+<hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-button-12">function Button [&frac12;]<a class="headerlink" href="#function-button-12" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">Button</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">Button</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-button-22">function Button [2/2]<a class="headerlink" href="#function-button-22" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">Button</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">Button</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">icon</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">OnClickCallback</span><span class="w"> </span><span class="n">on_click</span><span class="o">=</span><span class="p">{}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-geticon">function getIcon<a class="headerlink" href="#function-geticon" title="Permanent link">&para;</a></h3>
 <p><em>Get the icon of the button.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">getIcon</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">getIcon</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The path or URL to the icon file </p>
 <hr>
 
+<h3 id="function-getonclick">function getOnClick<a class="headerlink" href="#function-getonclick" title="Permanent link">&para;</a></h3>
+<p><em>Gets the on submit callback of the button.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">OnClickCallback</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">getOnClick</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The on submit callback of the button. </p>
+<hr>
+
 <h3 id="function-gettext">function getText<a class="headerlink" href="#function-gettext" title="Permanent link">&para;</a></h3>
 <p><em>Gets the text of the button.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">getText</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">getText</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The text. </p>
@@ -1977,9 +2081,9 @@
 
 <h3 id="function-seticon">function setIcon<a class="headerlink" href="#function-seticon" title="Permanent link">&para;</a></h3>
 <p><em>Sets the icon for the button.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">setIcon</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">icon</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">setIcon</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">icon</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -1989,11 +2093,25 @@
 <p>A reference to the current button. </p>
 <hr>
 
+<h3 id="function-setonclick">function setOnClick<a class="headerlink" href="#function-setonclick" title="Permanent link">&para;</a></h3>
+<p><em>Sets the on click callback of the button.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">setOnClick</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">OnClickCallback</span><span class="w"> </span><span class="n">on_click</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>on_click</code> The callback to be set. </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p>A reference to the current button. </p>
+<hr>
+
 <h3 id="function-settext">function setText<a class="headerlink" href="#function-settext" title="Permanent link">&para;</a></h3>
 <p><em>Sets the text of the button.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">setText</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Button</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">Button</span><span class="o">::</span><span class="n">setText</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">text</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>

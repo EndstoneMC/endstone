@@ -28,6 +28,11 @@ _Represents a button with text and an optional icon._
 
 
 
+## Public Types
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::function&lt; void([**Player**](classendstone_1_1Player.md) \*)&gt; | [**OnClickCallback**](#typedef-onclickcallback)  <br> |
 
 
 
@@ -53,10 +58,12 @@ _Represents a button with text and an optional icon._
 | Type | Name |
 | ---: | :--- |
 |   | [**Button**](#function-button-12) () = default<br> |
-|   | [**Button**](#function-button-22) (Message text, std::optional&lt; std::string &gt; icon=std::nullopt) <br> |
+|   | [**Button**](#function-button-22) (Message text, std::optional&lt; std::string &gt; icon=std::nullopt, ActionForm::Button::OnClickCallback on\_click={}) <br> |
 |  std::optional&lt; std::string &gt; | [**getIcon**](#function-geticon) () const<br>_Get the icon of the button._  |
+|  OnClickCallback | [**getOnClick**](#function-getonclick) () const<br>_Gets the on submit callback of the button._  |
 |  Message | [**getText**](#function-gettext) () const<br>_Gets the text of the button._  |
 |  [**Button**](classendstone_1_1ActionForm_1_1Button.md) & | [**setIcon**](#function-seticon) (std::string icon) <br>_Sets the icon for the button._  |
+|  [**Button**](classendstone_1_1ActionForm_1_1Button.md) & | [**setOnClick**](#function-setonclick) (OnClickCallback on\_click) <br>_Sets the on click callback of the button._  |
 |  [**Button**](classendstone_1_1ActionForm_1_1Button.md) & | [**setText**](#function-settext) (Message text) <br>_Sets the text of the button._  |
 
 
@@ -86,6 +93,21 @@ _Represents a button with text and an optional icon._
 
 
 
+## Public Types Documentation
+
+
+
+
+### typedef OnClickCallback 
+
+```C++
+using endstone::ActionForm::Button::OnClickCallback =  std::function<void(Player *)>;
+```
+
+
+
+
+<hr>
 ## Public Functions Documentation
 
 
@@ -109,7 +131,8 @@ endstone::ActionForm::Button::Button () = default
 ```C++
 inline explicit endstone::ActionForm::Button::Button (
     Message text,
-    std::optional< std::string > icon=std::nullopt
+    std::optional< std::string > icon=std::nullopt,
+    ActionForm::Button::OnClickCallback on_click={}
 ) 
 ```
 
@@ -134,6 +157,31 @@ inline std::optional< std::string > endstone::ActionForm::Button::getIcon () con
 **Returns:**
 
 The path or URL to the icon file 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getOnClick 
+
+_Gets the on submit callback of the button._ 
+```C++
+inline OnClickCallback endstone::ActionForm::Button::getOnClick () const
+```
+
+
+
+
+
+**Returns:**
+
+The on submit callback of the button. 
 
 
 
@@ -187,6 +235,40 @@ inline Button & endstone::ActionForm::Button::setIcon (
 
 
 * `icon` The path or URL to the icon file. 
+
+
+
+**Returns:**
+
+A reference to the current button. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setOnClick 
+
+_Sets the on click callback of the button._ 
+```C++
+inline Button & endstone::ActionForm::Button::setOnClick (
+    OnClickCallback on_click
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `on_click` The callback to be set. 
 
 
 

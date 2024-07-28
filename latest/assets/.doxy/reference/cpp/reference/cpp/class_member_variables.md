@@ -144,6 +144,7 @@
 
 ## o
 
+* **on\_click\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
