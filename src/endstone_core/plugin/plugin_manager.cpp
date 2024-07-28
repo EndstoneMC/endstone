@@ -347,20 +347,40 @@ void EndstonePluginManager::unsubscribeFromDefaultPerms(bool op, Permissible &pe
     }
 }
 
-void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, std::filesystem::path base_folder)
+namespace {
+std::string toCamelCase(const std::string &input)
+{
+    std::string output;
+    bool capitalize = true;
+
+    for (auto ch : input) {
+        if (ch == '_') {
+            capitalize = true;
+        }
+        else if (capitalize) {
+            unsigned char uc = std::toupper(static_cast<unsigned char>(ch));
+            output += static_cast<char>(uc);
+            capitalize = false;
+        }
+        else {
+            output += ch;
+        }
+    }
+    return output;
+}
+}  // namespace
+
+void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
 {
     plugin.loader_ = &loader;
     plugin.server_ = &server_;
 
     auto plugin_name = plugin.getDescription().getName();
-    auto logger_name = plugin.getDescription().getPrefix();
-    if (logger_name.empty()) {
-        logger_name = plugin_name;
+    auto prefix = plugin.getDescription().getPrefix();
+    if (prefix.empty()) {
+        prefix = toCamelCase(plugin_name);
     }
-    plugin.logger_ = &LoggerFactory::getLogger(logger_name);
-
-    std::transform(plugin_name.begin(), plugin_name.end(), plugin_name.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
+    plugin.logger_ = &LoggerFactory::getLogger(prefix);
     plugin.data_folder_ = base_folder / plugin_name;
 }
 

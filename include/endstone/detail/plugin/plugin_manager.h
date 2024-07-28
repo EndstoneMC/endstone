@@ -66,7 +66,7 @@ public:
 
 private:
     friend class EndstoneServer;
-    void initPlugin(Plugin &plugin, PluginLoader &loader, std::filesystem::path base_folder);
+    void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path& base_folder);
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(bool op) const;
     Server &server_;
