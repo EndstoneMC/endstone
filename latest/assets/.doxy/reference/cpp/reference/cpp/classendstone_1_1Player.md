@@ -153,6 +153,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
 | virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
 | virtual float | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
+| virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
 | virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
 | virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
@@ -847,6 +848,31 @@ virtual float endstone::Player::getWalkSpeed () const = 0
 **Returns:**
 
 The current allowed speed, default is 0.10. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getXuid 
+
+_Returns the Xbox User ID (XUID) of this player._ 
+```C++
+virtual std::string endstone::Player::getXuid () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Player**](classendstone_1_1Player.md) XUID 
 
 
 

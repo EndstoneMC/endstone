@@ -462,6 +462,7 @@
     <member refid="classendstone_1_1Player_1a2c633b6166a107cb9a75ba2e2dc758de" kind="function"><name>~Player</name></member>
     <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" kind="function"><name>getUniqueId</name></member>
+    <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
     <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
     <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>

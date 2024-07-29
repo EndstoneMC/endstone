@@ -60,6 +60,8 @@ public:
 
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
 
+    [[nodiscard]] virtual std::string getXuid() const = 0;
+
     [[nodiscard]] virtual const SocketAddress &getAddress() const = 0;
 
     virtual void sendPopup(std::string message) const = 0;

@@ -214,6 +214,7 @@
 * **getTotalExp** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getUniqueId** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getWalkSpeed** ([**endstone::Player**](classendstone_1_1Player.md))
+* **getXuid** ([**endstone::Player**](classendstone_1_1Player.md))
 * **giveExp** ([**endstone::Player**](classendstone_1_1Player.md))
 * **giveExpLevels** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getDeathMessage** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
