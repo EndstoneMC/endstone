@@ -139,7 +139,7 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 | **⌨️ Command System**                    | 2-3 months | ✅    | v0.2.0 |
 | **🔐 Permission System**                 | 2-3 months | ✅    | v0.3.0 |
 | **🎈 Event System**                      | 2-3 months | ✅    | v0.4.0 |
-| **🖼 Form & Scoreboard API**             | 1-2 months | 🚧   |        |
+| **🖼 Form & Scoreboard API**             | 1-2 months | ✅    | v0.5.0 |
 | **👤 Player & Actor API**                | 2-3 months | 🚧   |        |
 | **🔩 Item API**                          | 1-2 months | ⏳    |        |
 | **🧱 Block API**                         | 1-2 months | ⏳    |        |
