@@ -1379,6 +1379,11 @@ class Player(Mob):
     @walk_speed.setter
     def walk_speed(self, arg1: float) -> None:
         ...
+    @property
+    def xuid(self) -> int:
+        """
+        Returns the Xbox User ID (XUID) of this player
+        """
 class PlayerChatEvent(PlayerEvent):
     """
     Called when a player sends a chat message.

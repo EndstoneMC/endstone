@@ -59,6 +59,13 @@ public:
     [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
 
     /**
+     * @brief Returns the Xbox User ID (XUID) of this player
+     *
+     * @return Player XUID
+     */
+    [[nodiscard]] virtual std::uint64_t getXuid() const = 0;
+
+    /**
      * @brief Gets the socket address of this player
      *
      * @return the player's socket address

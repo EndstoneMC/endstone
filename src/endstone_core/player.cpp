@@ -239,6 +239,11 @@ UUID EndstonePlayer::getUniqueId() const
     return uuid_;
 }
 
+std::uint64_t EndstonePlayer::getXuid() const
+{
+    return xuid_;
+}
+
 const SocketAddress &EndstonePlayer::getAddress() const
 {
     return address_;
@@ -598,31 +603,31 @@ void EndstonePlayer::initFromConnectionRequest(
     std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request)
 {
     std::visit(
-        [&](auto &&request) {
-            if (auto locale = request->getData("LanguageCode").asString(); !locale.empty()) {
+        [&](auto &&req) {
+            if (auto locale = req->getData("LanguageCode").asString(); !locale.empty()) {
                 locale_ = locale;
             }
 
-            if (auto device_os = request->getData("DeviceOS").asInt(); device_os > 0) {
+            if (auto device_os = req->getData("DeviceOS").asInt(); device_os > 0) {
                 auto platform = magic_enum::enum_cast<BuildPlatform>(device_os).value_or(BuildPlatform::Unknown);
                 device_os_ = magic_enum::enum_name(platform);
             }
 
-            if (auto device_id = request->getData("DeviceId").asString(); !device_id.empty()) {
+            if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
                 boost::uuids::string_generator gen;
                 auto boost_uuid = gen(device_id);
                 std::copy(std::begin(boost_uuid.data), std::end(boost_uuid.data), std::begin(device_id_.data));
             }
 
             {
-                auto skin_id = request->getData("SkinId").asString();
-                auto skin_height = request->getData("SkinImageHeight").asInt();
-                auto skin_width = request->getData("SkinImageWidth").asInt();
-                auto skin_data = base64_decode(request->getData("SkinData").asString()).value_or("");
-                auto cape_id = request->getData("CapeId").asString();
-                auto cape_height = request->getData("CapeImageHeight").asInt();
-                auto cape_width = request->getData("CapeImageWidth").asInt();
-                auto cape_data = base64_decode(request->getData("CapeData").asString()).value_or("");
+                auto skin_id = req->getData("SkinId").asString();
+                auto skin_height = req->getData("SkinImageHeight").asInt();
+                auto skin_width = req->getData("SkinImageWidth").asInt();
+                auto skin_data = base64_decode(req->getData("SkinData").asString()).value_or("");
+                auto cape_id = req->getData("CapeId").asString();
+                auto cape_height = req->getData("CapeImageHeight").asInt();
+                auto cape_width = req->getData("CapeImageWidth").asInt();
+                auto cape_data = base64_decode(req->getData("CapeData").asString()).value_or("");
                 skin_ = {skin_id, Skin::ImageData{skin_height, skin_width, skin_data}, cape_id,
                          Skin::ImageData{cape_height, cape_width, cape_data}};
             }

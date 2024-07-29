@@ -291,6 +291,7 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
             "Get the Cape data.");
 
     player.def_property_readonly("unique_id", &Player::getUniqueId, "Returns the UUID of this player")
+        .def_property_readonly("xuid", &Player::getXuid, "Returns the Xbox User ID (XUID) of this player")
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
