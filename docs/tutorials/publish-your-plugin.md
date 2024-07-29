@@ -1,9 +1,6 @@
 # Publish your plugin
 
-=== ":fontawesome-brands-python: Python"
+!!! warning
 
-    TODO
+    This section is still under construction.
 
-=== ":simple-cplusplus: C++"
-
-    TODO
