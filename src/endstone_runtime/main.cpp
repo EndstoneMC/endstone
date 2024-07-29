@@ -52,9 +52,9 @@ ENDSTONE_RUNTIME_CTOR int main()
         import os
         import sys
         if sys.platform == "win32":
-            sys.executable = os.path.join(sys.prefix, "python.exe")
+            sys.executable = os.path.join(sys.base_prefix, "python.exe")
         else:
-            sys.executable = os.path.join(sys.prefix, "bin", "python")
+            sys.executable = os.path.join(sys.base_prefix, "bin", "python")
         )");
         py::gil_scoped_release release{};
         release.disarm();
