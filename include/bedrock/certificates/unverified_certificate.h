@@ -14,11 +14,10 @@
 
 #pragma once
 
-#include "bedrock/certificates/unverified_certificate.h"
+#include "bedrock/certificates/web_token.h"
 
-class Certificate {
+class UnverifiedCertificate {
 public:
-    UnverifiedCertificate unverified_certificate;
-    std::unique_ptr<Certificate> parent;
-    bool is_valid;
+    WebToken raw_token;
+    std::unique_ptr<UnverifiedCertificate> parent;
 };
