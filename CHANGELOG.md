@@ -16,14 +16,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 
 - Support for Minecraft v1.21.3.
-- `Mob::isGliding` function to check if a living entity is gliding.
-- `isinstance` function can now be used to check if a `CommandSender` is a `Player` or `ConsoleCommandSender`.
-- `Player::sendTitle` and `Player::resetTitle` functions for sending and resetting an on-screen title.
-- `ActorTeleport` event that triggers when an entity teleports (e.g., Enderman, Wolf).
-- `Player::transfer` function to transfer a player to another server.
-- For Python plugins, package metadata can now be used as a fallback for plugin metadata.
 - `Actor::getId` function to get an actor's unique id, persisting between server runs.
 - `Actor::isDead` function to check if an actor is marked for removal post-death.
+- `ActorTeleport` event that triggers when an entity teleports (e.g., Enderman, Wolf).
+- `Mob::isGliding` function to check if a living entity is gliding.
+- `Player::sendTitle` and `Player::resetTitle` functions for sending and resetting an on-screen title.
+- `Player::transfer` function to transfer a player to another server.
+- `Player::getXuid` to get the Xbox User ID (XUID) of the player.
+- Python: package metadata can now be used as a fallback for plugin metadata.
+- Python: `isinstance` function can now be used to check if a `CommandSender` is a `Player` or `ConsoleCommandSender`.
 - **Experimental** Scoreboard API.
 - **Experimental** Form API.
 
