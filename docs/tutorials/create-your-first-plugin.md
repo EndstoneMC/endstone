@@ -224,7 +224,7 @@ toc_depth: 2
     Open `include/my_plugin.h` and add a new class `MyPlugin` which extends the `endstone::Plugin` class.
 
     ``` c++ title="include/my_plugin.h" linenums="1" 
-    #include "endstone/plugin/plugin.h"
+    #include <endstone/plugin/plugin.h>
 
     class MyPlugin : public endstone::Plugin {};
     ```
@@ -272,7 +272,7 @@ toc_depth: 2
     You can use the logger to log a message when the plugin is loaded, enabled and disabled like below:
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="4-8 10-13 15-18"
-    #include "endstone/plugin/plugin.h"
+    #include <endstone/plugin/plugin.h>
 
     class MyPlugin : public endstone::Plugin {
     public:

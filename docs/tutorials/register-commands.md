@@ -159,7 +159,7 @@ message to whoever execute this command. It's just a few more lines away from th
 === ":simple-cplusplus: C++"
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="5-12"
-    #include "endstone/plugin/plugin.h"
+    #include <endstone/plugin/plugin.h>
 
     class MyPlugin : public endstone::Plugin {
     public:
@@ -259,7 +259,7 @@ should be `[msg: message]`. Let's add it to our code.
     ```
 
     ``` c++ title="include/my_plugin.h" linenums="1" hl_lines="9-14"
-    #include "endstone/plugin/plugin.h"
+    #include <endstone/plugin/plugin.h>
 
     class MyPlugin : public endstone::Plugin {
     public:
@@ -281,7 +281,7 @@ should be `[msg: message]`. Let's add it to our code.
     };
     ```
 
-**:white_check_mark: And it's done!** Now when the users use `/hello This is my message!`, "This is my message!" will
+**:partying_face:  And it's done!** Now when the users use `/hello This is my message!`, "This is my message!" will
 be shown to them instead of "Hello World!".
 
 !!! tip
