@@ -5,9 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.4.11 - Unreleased
+## 0.5.0 - Unreleased
 
 <small>[Compare with 0.4.10](https://github.com/EndstoneMC/endstone/compare/v0.4.10...HEAD)</small>
+
+### Added
+
+- Support for Minecraft v1.21.3.
+- `Mob::isGliding` function to check if a living entity is gliding.
+- `isinstance` function can now be used to check if a `CommandSender` is a `Player` or `ConsoleCommandSender`.
+- `Player::sendTitle` and `Player::resetTitle` functions for sending and resetting an on-screen title.
+- `ActorTeleport` event that triggers when an entity teleports (e.g., Enderman, Wolf).
+- `Player::transfer` function to transfer a player to another server.
+- For Python plugins, package metadata can now be used as a fallback for plugin metadata.
+- `Actor::getId` function to get an actor's unique id, persisting between server runs.
+- `Actor::isDead` function to check if an actor is marked for removal post-death.
+- **Experimental** Scoreboard API.
+- **Experimental** Form API.
+
+### Changed
+
+- `Player` class now inherits from the `Mob` class instead of `Actor` class.
+- **BREAKING CHANGE:** Plugin names should only contain lowercase letters, numbers, and underscores. Use the prefix
+  property to display a different name for the plugin logger.
+- **BREAKING CHANGE:** The `player.ping` property now returns an `int` instead of `datetime.timedelta`.
+
+### Fixed
+
+- Fixed issue where `Server::setMaxPlayers` would crash due to a change in the internal struct in BDS.
 
 ## [0.4.10](https://github.com/EndstoneMC/endstone/releases/tag/v0.4.10) - 2024-07-10
 
