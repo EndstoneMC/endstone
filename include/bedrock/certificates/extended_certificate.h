@@ -14,18 +14,15 @@
 
 #pragma once
 
-#include "bedrock/certificates/unverified_certificate.h"
+#include "bedrock/certificates/certificate.h"
 
-class Certificate {
+class ExtendedCertificate {
 public:
-    [[nodiscard]] Json::Value getExtraData(const std::string &key, const Json::Value &default_value) const
+    static std::string getXuid(const Certificate &certificate, bool flag)
     {
-        auto extra_data = unverified_certificate.raw_token.data_info.get("extraData", {});
-        return extra_data.get(key, default_value);
+        if (!flag && certificate.unknown) {
+            return "";
+        }
+        return certificate.getExtraData("XUID", {}).asString();
     }
-
-    UnverifiedCertificate unverified_certificate;  // +0
-    std::unique_ptr<Certificate> parent;           // +136
-    bool is_valid;                                 // +144
-    bool unknown;                                  // +145
 };

@@ -1380,7 +1380,7 @@ class Player(Mob):
     def walk_speed(self, arg1: float) -> None:
         ...
     @property
-    def xuid(self) -> int:
+    def xuid(self) -> str:
         """
         Returns the Xbox User ID (XUID) of this player
         """

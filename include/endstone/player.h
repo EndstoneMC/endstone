@@ -63,7 +63,7 @@ public:
      *
      * @return Player XUID
      */
-    [[nodiscard]] virtual std::uint64_t getXuid() const = 0;
+    [[nodiscard]] virtual std::string getXuid() const = 0;
 
     /**
      * @brief Gets the socket address of this player

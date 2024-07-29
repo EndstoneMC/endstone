@@ -14,6 +14,7 @@
 
 #include "endstone/detail/player.h"
 
+#include <bedrock/deps/jsoncpp/nlohmann_json.h>
 #include <boost/uuid/string_generator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
@@ -50,6 +51,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
     uuid_ = component->uuid.toEndstone();
+    xuid_ = ExtendedCertificate::getXuid(*component->certificate, false);
 
     switch (component->network_id.getType()) {
     case NetworkIdentifier::Type::RakNet: {
@@ -239,7 +241,7 @@ UUID EndstonePlayer::getUniqueId() const
     return uuid_;
 }
 
-std::uint64_t EndstonePlayer::getXuid() const
+std::string EndstonePlayer::getXuid() const
 {
     return xuid_;
 }

@@ -18,6 +18,6 @@
 
 class UnverifiedCertificate {
 public:
-    WebToken raw_token;
-    std::unique_ptr<UnverifiedCertificate> parent;
+    WebToken raw_token;                             // +0
+    std::unique_ptr<UnverifiedCertificate> parent;  // +128
 };
