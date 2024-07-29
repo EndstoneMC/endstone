@@ -642,6 +642,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Register event listeners
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -651,6 +662,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#add-event-handlers" class="md-nav__link">
+      <span class="md-ellipsis">
+        Add event handlers
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#register-listeners" class="md-nav__link">
+      <span class="md-ellipsis">
+        Register listeners
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1782,6 +1834,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#add-event-handlers" class="md-nav__link">
+      <span class="md-ellipsis">
+        Add event handlers
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#register-listeners" class="md-nav__link">
+      <span class="md-ellipsis">
+        Register listeners
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1812,16 +1894,169 @@
 
 
 <h1 id="register-event-listeners">Register event listeners<a class="headerlink" href="#register-event-listeners" title="Permanent link">&para;</a></h1>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="register-event-listeners-python" name="__tabbed_1" type="radio" /><input id="register-event-listeners-c" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="register-event-listeners-python"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></span> Python</label><label for="register-event-listeners-c"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 0 1 6.156 3.553l-3.076 1.78a3.567 3.567 0 0 0-3.08-1.78A3.56 3.56 0 0 0 8.444 12 3.56 3.56 0 0 0 12 15.555a3.57 3.57 0 0 0 3.08-1.778l3.078 1.78A7.135 7.135 0 0 1 12 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z"/></svg></span> C++</label></div>
+<p>Endstone provides a powerful event system that allows plugins to listen to various events that happen in the
+server. Let's walk you through registering a simple event listener.</p>
+<h2 id="add-event-handlers">Add event handlers<a class="headerlink" href="#add-event-handlers" title="Permanent link">&para;</a></h2>
+<p>Let's say your plugin want to listen to when a player joins the server and send a message to inform everyone on the
+server.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="add-event-handlers-python" name="__tabbed_1" type="radio" /><input id="add-event-handlers-c" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="add-event-handlers-python"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></span> Python</label><label for="add-event-handlers-c"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 0 1 6.156 3.553l-3.076 1.78a3.567 3.567 0 0 0-3.08-1.78A3.56 3.56 0 0 0 8.444 12 3.56 3.56 0 0 0 12 15.555a3.57 3.57 0 0 0 3.08-1.778l3.078 1.78A7.135 7.135 0 0 1 12 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z"/></svg></span> C++</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>TODO</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/endstone_my_plugin/my_plugin.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="hll"><span class="kn">from</span> <span class="nn">endstone</span> <span class="kn">import</span> <span class="n">ColorFormat</span>
+</span></span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="hll"><span class="kn">from</span> <span class="nn">endstone.event</span> <span class="kn">import</span> <span class="n">event_handler</span><span class="p">,</span> <span class="n">PlayerJoinEvent</span>
+</span></span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">endstone.plugin</span> <span class="kn">import</span> <span class="n">Plugin</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a>    <span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;0.4&quot;</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="c1"># ...</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a>    <span class="k">def</span> <span class="nf">on_enable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;on_enable is called!&quot;</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="hll">    <span class="nd">@event_handler</span>
+</span></span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="hll">    <span class="k">def</span> <span class="nf">on_player_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">PlayerJoinEvent</span><span class="p">):</span>
+</span></span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">broadcast_message</span><span class="p">(</span><span class="n">ColorFormat</span><span class="o">.</span><span class="n">YELLOW</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> has joined the server&quot;</span><span class="p">)</span>
+</span></span></code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
-<p>TODO</p>
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">include/my_plugin.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/color_format.h&gt;</span>
+</span></span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="hll"><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/event/player/player_join_event.h&gt;</span>
+</span></span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/plugin/plugin.h&gt;</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyPlugin</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">onEnable</span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="n">getLogger</span><span class="p">().</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;onEnable is called&quot;</span><span class="p">);</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="hll"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">onPlayerJoin</span><span class="p">(</span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">)</span>
+</span></span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="hll"><span class="w">    </span><span class="p">{</span>
+</span></span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="hll"><span class="w">        </span><span class="n">getServer</span><span class="p">().</span><span class="n">broadcastMessage</span><span class="p">(</span><span class="n">ColorFormat</span><span class="o">::</span><span class="n">Yellow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;{} has joined the server&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">getPlayer</span><span class="p">().</span><span class="n">getName</span><span class="p">());</span>
+</span></span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span></span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
 </div>
 </div>
 </div>
+<h2 id="register-listeners">Register listeners<a class="headerlink" href="#register-listeners" title="Permanent link">&para;</a></h2>
+<p>Now, we need to register our event handlers to the Endstone event system.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="register-listeners-python" name="__tabbed_2" type="radio" /><input id="register-listeners-c" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="register-listeners-python"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></span> Python</label><label for="register-listeners-c"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.394 6c-.167-.29-.398-.543-.652-.69L12.926.22c-.509-.294-1.34-.294-1.848 0L2.26 5.31c-.508.293-.923 1.013-.923 1.6v10.18c0 .294.104.62.271.91.167.29.398.543.652.69l8.816 5.09c.508.293 1.34.293 1.848 0l8.816-5.09c.254-.147.485-.4.652-.69.167-.29.27-.616.27-.91V6.91c.003-.294-.1-.62-.268-.91zM12 19.11c-3.92 0-7.109-3.19-7.109-7.11 0-3.92 3.19-7.11 7.11-7.11a7.133 7.133 0 0 1 6.156 3.553l-3.076 1.78a3.567 3.567 0 0 0-3.08-1.78A3.56 3.56 0 0 0 8.444 12 3.56 3.56 0 0 0 12 15.555a3.57 3.57 0 0 0 3.08-1.778l3.078 1.78A7.135 7.135 0 0 1 12 19.11zm7.11-6.715h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79zm2.962 0h-.79v.79h-.79v-.79h-.79v-.79h.79v-.79h.79v.79h.79z"/></svg></span> C++</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">src/endstone_my_plugin/my_plugin.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">endstone</span> <span class="kn">import</span> <span class="n">ColorFormat</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">from</span> <span class="nn">endstone.event</span> <span class="kn">import</span> <span class="n">event_handler</span><span class="p">,</span> <span class="n">PlayerJoinEvent</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">from</span> <span class="nn">endstone.plugin</span> <span class="kn">import</span> <span class="n">Plugin</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="k">class</span> <span class="nc">MyPlugin</span><span class="p">(</span><span class="n">Plugin</span><span class="p">):</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="n">api_version</span> <span class="o">=</span> <span class="s2">&quot;0.4&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>    <span class="c1"># ...</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="k">def</span> <span class="nf">on_enable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;on_enable is called!&quot;</span><span class="p">)</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">register_events</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</span></span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a>    <span class="nd">@event_handler</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="k">def</span> <span class="nf">on_player_join</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">:</span> <span class="n">PlayerJoinEvent</span><span class="p">):</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">broadcast_message</span><span class="p">(</span><span class="n">ColorFormat</span><span class="o">.</span><span class="n">YELLOW</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> has joined the server&quot;</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<p>By calling <code>self.register_events</code>, Endstone will look into the object that is passed in as the argument and
+register all handlers with a <code>@event_handler</code> decorator to the event system.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-c++ highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">include/my_plugin.h</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span>
+<span class="normal"><a href="#__codelineno-3-15">15</a></span>
+<span class="normal"><a href="#__codelineno-3-16">16</a></span>
+<span class="normal"><a href="#__codelineno-3-17">17</a></span>
+<span class="normal"><a href="#__codelineno-3-18">18</a></span>
+<span class="normal"><a href="#__codelineno-3-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/color_format.h&gt;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/event/player/player_join_event.h&gt;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;endstone/plugin/plugin.h&gt;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="k">class</span><span class="w"> </span><span class="nc">MyPlugin</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Plugin</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">public</span><span class="o">:</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="c1">// ...</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">onEnable</span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="n">getLogger</span><span class="p">().</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;onEnable is called&quot;</span><span class="p">);</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="hll"><span class="w">        </span><span class="n">registerEvent</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MyPlugin</span><span class="o">::</span><span class="n">onPlayerJoin</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">);</span>
+</span></span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">onPlayerJoin</span><span class="p">(</span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">&amp;</span><span class="w"> </span><span class="n">event</span><span class="p">)</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="n">getServer</span><span class="p">().</span><span class="n">broadcastMessage</span><span class="p">(</span><span class="n">ColorFormat</span><span class="o">::</span><span class="n">Yellow</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;{} has joined the server&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">getPlayer</span><span class="p">().</span><span class="n">getName</span><span class="p">());</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="p">};</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p><strong><img alt="🥳" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f973.svg" title=":partying_face:" /> And that's it!</strong> Your plugin should now listen to and handle events when player joins.
+Remember, you can add as many methods as you want to listen to any event.</p>
 
 
 
@@ -1844,7 +2079,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 3, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2024</span>
   </span>
 
     
