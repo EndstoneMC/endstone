@@ -162,6 +162,7 @@ public:
         std::unique_ptr<Command> (*factory)();     // +8
         std::vector<CommandParameterData> params;  // +16
         std::int32_t version_offset{-1};           // +40
+        bool chaining{false};                      // +44
         std::vector<Symbol> params_symbol;         // +48
     };
 
