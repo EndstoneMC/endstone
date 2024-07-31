@@ -186,21 +186,40 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                          CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional, -1);
 
                 if (parameter.is_enum) {
-                    auto symbol = static_cast<std::uint32_t>(registry.addEnumValues(parameter.type, parameter.values));
-                    auto it = registry.enum_symbol_index.find(parameter.type);
-                    if (it == registry.enum_symbol_index.end()) {
-                        server_.getLogger().error("Unable to register enum '{}'.", parameter.type);
+                    const auto &enum_name = parameter.type;
+
+                    // Add suffix if the enum already exists
+                    std::string enum_name_final = enum_name;
+                    int i = 0;
+                    while (registry.enum_lookup.find(enum_name_final) != registry.enum_lookup.end()) {
+                        enum_name_final = fmt::format("{}_{}", enum_name, ++i);
+                    }
+                    if (enum_name_final != enum_name) {
+                        server_.getLogger().warning(
+                            "Unable to register enum '{}' as it already exists, '{}' was registered instead.",
+                            enum_name, enum_name_final);
+                    }
+
+                    // Add enum
+                    auto symbol = static_cast<std::uint32_t>(registry.addEnumValues(enum_name_final, parameter.values));
+
+                    // Check if the enum has been added
+                    auto it = registry.enum_lookup.find(enum_name_final);
+                    if (it == registry.enum_lookup.end()) {
+                        server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
                         return false;
                     }
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else if (parameter.type == "bool") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = "Boolean";
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
@@ -228,11 +247,6 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     return true;
 }
 
-void EndstoneCommandMap::addEnumValues(const std::string &name, const std::vector<std::string> &values)
-{
-    server_.getMinecraftCommands().getRegistry().addEnumValues(name, values);
-}
-
 void EndstoneCommandMap::initialise()
 {
     setMinecraftCommands();
@@ -242,7 +256,7 @@ void EndstoneCommandMap::initialise()
     for (auto *plugin : plugins) {
         auto name = plugin->getName();
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        addEnumValues("PluginName", {name});
+        server_.getMinecraftCommands().getRegistry().addEnumValues("PluginName", {name});
 
         auto commands = plugin->getDescription().getCommands();
         for (const auto &command : commands) {

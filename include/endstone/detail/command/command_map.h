@@ -29,7 +29,6 @@ public:
     bool registerCommand(std::shared_ptr<Command> command) override;
     void clearCommands() override;
     [[nodiscard]] Command *getCommand(std::string name) const override;
-    void addEnumValues(const std::string &name, const std::vector<std::string> &values);
 
 private:
     friend class EndstoneServer;

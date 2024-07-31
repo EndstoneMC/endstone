@@ -260,8 +260,8 @@ public:
     std::vector<CommandRegistry::Enum> chained_subcommands;                                        // +272
     std::vector<CommandRegistry::Symbol> symbols;                                                  // +296
     std::vector<std::string> postfixes;                                                            // +320
-    std::map<std::string, std::uint32_t> enum_symbol_index;                                        // +344
-    std::map<std::string, CommandRegistry::Symbol> enum_symbols;                                   // +360
+    std::map<std::string, std::uint32_t> enum_lookup;                                              // +344
+    std::map<std::string, CommandRegistry::Symbol> enum_value_lookup;                              // +360
     std::map<std::string, std::uint32_t> subcommand_symbol_index;                                  // +376
     std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                             // +392
     std::vector<CommandRegistry::Symbol> command_symbols;                                          // +408
@@ -329,5 +329,5 @@ struct CommandParameterData {
     int offset;                                                          // +80
     int set_offset;                                                      // +84
     bool is_optional;                                                    // +88
-    CommandParameterOption options{0};                                   // +89
+    CommandParameterOption options{CommandParameterOption::None};        // +89
 };
