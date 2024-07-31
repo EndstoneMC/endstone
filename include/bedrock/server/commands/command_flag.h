@@ -57,11 +57,14 @@ struct CommandFlag {
     }
 
     static const CommandFlag None;
+    static const CommandFlag TestUsage;
     static const CommandFlag HiddenFromBlock;
     static const CommandFlag HiddenFromPlayer;
     static const CommandFlag HiddenFromAutomation;
-    static const CommandFlag LocalOnly;
-    static const CommandFlag Communication;
+    static const CommandFlag LocalSync;
+    static const CommandFlag ExecuteDisallowed;
+    static const CommandFlag MessageType;
     static const CommandFlag NotCheat;
+    static const CommandFlag Async;
     static const CommandFlag DisabledInEditor;
 };

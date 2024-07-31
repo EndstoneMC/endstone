@@ -28,12 +28,15 @@
  * CommandFlags
  */
 const CommandFlag CommandFlag::None = {0};
+const CommandFlag CommandFlag::TestUsage = {1 << 0};
 const CommandFlag CommandFlag::HiddenFromBlock = {1 << 1};       // CommandRegistry::checkOriginCommandFlags
 const CommandFlag CommandFlag::HiddenFromPlayer = {1 << 2};      // CommandRegistry::checkOriginCommandFlags
 const CommandFlag CommandFlag::HiddenFromAutomation = {1 << 3};  // CommandRegistry::checkOriginCommandFlags
-const CommandFlag CommandFlag::LocalOnly = {1 << 4};             // CommandRegistry::serializeAvailableCommands
-const CommandFlag CommandFlag::Communication = {1 << 6};         // MinecraftCommands::requestCommandExecution
+const CommandFlag CommandFlag::LocalSync = {1 << 4};             // CommandRegistry::serializeAvailableCommands
+const CommandFlag CommandFlag::ExecuteDisallowed = {1 << 5};     // CommandRegistry::serializeAvailableCommands
+const CommandFlag CommandFlag::MessageType = {1 << 6};           // MinecraftCommands::requestCommandExecution
 const CommandFlag CommandFlag::NotCheat = {1 << 7};              // Command::run
+const CommandFlag CommandFlag::Async = {1 << 8};                 // Command::run
 const CommandFlag CommandFlag::DisabledInEditor = {1 << 9};      // CommandRegistry::enabledInEditor
 
 /**

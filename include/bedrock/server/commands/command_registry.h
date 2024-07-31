@@ -309,7 +309,8 @@ enum class CommandParameterOption : char {
     EnumAsChainedCommand = 4
 };
 
-struct CommandParameterData {
+class CommandParameterData {
+public:
     CommandParameterData(Bedrock::typeid_t<CommandRegistry> type, CommandRegistry::ParseRule parse, char const *name,
                          CommandParameterDataType param_type, char const *enum_name, char const *fallback_typename,
                          int offset, bool is_optional, int set_offset)
