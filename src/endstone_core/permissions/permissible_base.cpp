@@ -171,12 +171,14 @@ void PermissibleBase::calculateChildPermissions(const std::unordered_map<std::st
 
     for (const auto &entry : children) {
         auto name = entry.first;
+
+        auto *perm = plugin_manager.getPermission(name);
         std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
         bool value = entry.second ^ invert;
+
         permissions_[name] = std::make_unique<PermissionAttachmentInfo>(parent_, name, attachment, value);
         plugin_manager.subscribeToPermission(name, parent_);
 
-        auto *perm = plugin_manager.getPermission(name);
         if (perm != nullptr) {
             calculateChildPermissions(perm->getChildren(), !value, attachment);
         }

@@ -429,14 +429,15 @@ void EndstonePlayer::updateCommands() const
     AvailableCommandsPacket packet = registry.serializeAvailableCommands();
 
     auto &command_map = server_.getCommandMap();
-    for (auto &data : packet.commands) {
-        auto name = data.name;
+    for (auto it = packet.commands.begin(); it != packet.commands.end();) {
+        auto &name = it->name;
         auto *command = command_map.getCommand(name);
-        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this))) {
+        if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
+            it->permission_level <= CommandPermissionLevel::GameDirectors) {
+            ++it;
             continue;
         }
-        data.command_flag |= (CommandFlag::HiddenFromPlayer | CommandFlag::HiddenFromBlock);
-        data.permission_level = CommandPermissionLevel::Internal;
+        it = packet.commands.erase(it);
     }
 
     getHandle().sendNetworkPacket(packet);
