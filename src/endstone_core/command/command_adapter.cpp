@@ -16,6 +16,7 @@
 
 #include <stack>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include <entt/entt.hpp>
@@ -105,13 +106,27 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
 
 }  // namespace endstone::detail
 
+namespace {
+
+std::string removeQuotes(const std::string &str)
+{
+    if (str.size() < 2) {
+        return str;
+    }
+    if (str.front() == '"' && str.back() == '"') {
+        return str.substr(1, str.size() - 2);
+    }
+    return str;
+}
+}  // namespace
+
 template <>
 bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value,
                                                               const CommandRegistry::ParseToken &parse_token,
                                                               const CommandOrigin &, int, std::string &,
                                                               std::vector<std::string> &) const
 {
-    auto &output = reinterpret_cast<endstone::detail::CommandAdapter *>(value)->args_;
+    auto &output = static_cast<endstone::detail::CommandAdapter *>(value)->args_;
     if (!output.empty()) {
         return true;
     }
@@ -144,7 +159,13 @@ bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value,
                 if (!result.empty()) {
                     result += " ";
                 }
-                result += std::string(top->data, top->size);
+
+                auto str = std::string(top->data, top->size);
+                if (top->symbol.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
+                    str = removeQuotes(str);
+                }
+
+                result += str;
             }
 
             if (top != node && top->next != nullptr) {
