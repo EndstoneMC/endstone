@@ -24,6 +24,5 @@ public:
     ENDSTONE_HOOK void tick() override;
 
 protected:
-    friend class ServerScoreboard;
     ENDSTONE_HOOK gsl::not_null<StackRefResult<GameplayUserManager>> _getGameplayUserManagerStackRef();
 };

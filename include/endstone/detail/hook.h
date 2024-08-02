@@ -15,10 +15,12 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <optional>
 #include <system_error>
 
 #include "endstone/detail/cast.h"
+#include "endstone/endstone.h"
 
 namespace endstone::detail::hook {
 void install();
@@ -141,10 +143,30 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
 
 namespace endstone::detail::hook {
 template <typename Class, typename... Args>
-Class *call_ctor(const std::string &name, Args &&...args)
+std::function<Class *(void *, Args...)> get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name)
 {
     auto *original = get_original(name);
-    return reinterpret_cast<Class *(*)(void *, Args...)>(original)(new char[sizeof(Class)],
-                                                                   std::forward<Args>(args)...);
+    return reinterpret_cast<Class *(*)(void *, Args...)>(original);
 }
 }  // namespace endstone::detail::hook
+
+#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
+#ifdef _WIN32
+#define ENDSTONE_FACTORY_PREFIX_TARGET(type)      ENDSTONE_TOSTRING(type) "@@@std@@@std@"
+#define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) "??0" ENDSTONE_TOSTRING(type) "@@QEAA"
+#elif __linux__
+#define ENDSTONE_FACTORY_PREFIX_TARGET(type) ENDSTONE_TOSTRING(type) "6create"
+#define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) \
+    "_ZN" + std::to_string(std::strlen(ENDSTONE_TOSTRING(type))) + ENDSTONE_TOSTRING(type) "C2"
+#endif
+
+#define ENDSTONE_FACTORY_IMPLEMENT(type, ...)                                                            \
+    {                                                                                                    \
+        static std::string func_decorated_name = __FUNCDNAME__;                                          \
+        static std::string name =                                                                        \
+            ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) +                                                  \
+            func_decorated_name.substr(func_decorated_name.find(ENDSTONE_FACTORY_PREFIX_TARGET(type)) +  \
+                                       std::strlen(ENDSTONE_FACTORY_PREFIX_TARGET(type)));               \
+        return std::unique_ptr<type>(                                                                    \
+            endstone::detail::hook::get_ctor(&type::create, name)(new char[sizeof(type)], __VA_ARGS__)); \
+    }

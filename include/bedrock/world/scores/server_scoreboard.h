@@ -14,12 +14,17 @@
 
 #pragma once
 
+#include <gsl/gsl>
+
+#include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
+#include "endstone/detail/hook.h"
 
 class ServerScoreboard : public Scoreboard {
 public:
-    static std::unique_ptr<ServerScoreboard> create(Level &level);  // Endstone
+    ENDSTONE_FACTORY_DECLARE(ServerScoreboard, CommandSoftEnumRegistry, LevelStorage *,
+                             gsl::not_null<StackRefResult<GameplayUserManager>> const &);
 
 private:
     void *save_timer_;                                      // +784 (+552) std::unique_ptr<BasicTimer>

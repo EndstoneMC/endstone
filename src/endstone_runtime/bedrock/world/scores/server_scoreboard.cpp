@@ -18,18 +18,9 @@
 
 #include "endstone/detail/hook.h"
 
-std::unique_ptr<ServerScoreboard> ServerScoreboard::create(Level &level)
+std::unique_ptr<ServerScoreboard> ServerScoreboard::create(
+    CommandSoftEnumRegistry registry, LevelStorage *storage,
+    gsl::not_null<StackRefResult<GameplayUserManager>> const &gameplay_user_manager)
 {
-    std::string name = __FUNCDNAME__;
-    CommandSoftEnumRegistry registry;
-    auto *scoreboard = endstone::detail::hook::call_ctor<ServerScoreboard>(
-#ifdef _WIN32
-        "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@AEBV?$not_null@V?$StackRefResult@"
-        "VGameplayUserManager@@@@@gsl@@@Z",
-#else
-        "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageRKN3gsl8not_"
-        "nullI14StackRefResultI19GameplayUserManagerEEE",
-#endif
-        registry, nullptr, level._getGameplayUserManagerStackRef());
-    return std::unique_ptr<ServerScoreboard>(scoreboard);
+    ENDSTONE_FACTORY_IMPLEMENT(ServerScoreboard, registry, storage, gameplay_user_manager);
 }
