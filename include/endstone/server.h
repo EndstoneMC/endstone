@@ -198,7 +198,7 @@ public:
      *
      * @return the newly created Scoreboard
      */
-    [[nodiscard]] virtual Scoreboard *getNewScoreboard() = 0;
+    [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

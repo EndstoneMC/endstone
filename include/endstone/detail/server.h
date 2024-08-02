@@ -73,7 +73,7 @@ public:
 
     [[nodiscard]] Scoreboard *getScoreboard() const override;
     void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
-    [[nodiscard]] Scoreboard *getNewScoreboard() override;
+    [[nodiscard]] std::shared_ptr<Scoreboard> getNewScoreboard() override;
     [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
 
 private:
@@ -88,8 +88,8 @@ private:
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneLevel> level_;
     std::unordered_map<UUID, Player *> players_;
-    std::unique_ptr<EndstoneScoreboard> scoreboard_;
-    std::vector<std::unique_ptr<EndstoneScoreboard>> scoreboards_;
+    std::shared_ptr<EndstoneScoreboard> scoreboard_;
+    std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
 };
 
 }  // namespace endstone::detail
