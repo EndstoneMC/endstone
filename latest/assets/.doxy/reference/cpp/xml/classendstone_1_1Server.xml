@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="196" column="37" bodyfile="include/endstone/server.h" bodystart="196" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="197" column="37" bodyfile="include/endstone/server.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="201" column="37" bodyfile="include/endstone/server.h" bodystart="201" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="202" column="37" bodyfile="include/endstone/server.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -543,17 +543,17 @@
         <argsstring>() const =0</argsstring>
         <name>getScoreboard</name>
         <briefdescription>
-<para>Gets the scoreboard. </para>
+<para>Gets the primary <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> controlled by the server. </para>
         </briefdescription>
         <detaileddescription>
-<para>This will only exist after the first level has loaded.</para>
-<para><simplesect kind="return"><para>the scoreboard. </para>
+<para>This <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by default to players. This will only exist after the level has been loaded.</para>
+<para><simplesect kind="return"><para>the default server scoreboard </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="191" column="25"/>
+        <location file="include/endstone/server.h" line="192" column="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -561,7 +561,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="202"/>
+    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="203"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
       <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
