@@ -51,15 +51,13 @@ void install()
     const auto &detours = get_detours();
     const auto &targets = get_targets();
 
-    for (const auto &[name, target] : targets) {
-        auto it = detours.find(name);
-        if (it != detours.end()) {
-            void *detour = it->second;
+    for (const auto &[name, detour] : detours) {
+        if (auto it = targets.find(name); it != targets.end()) {
+            void *target = it->second;
             void *original = target;
 
             funchook_t *hook = funchook_create();
-            int status;
-            status = funchook_prepare(hook, &original, detour);
+            int status = funchook_prepare(hook, &original, detour);
             if (status != 0) {
                 throw std::system_error(status, hook_error_category());
             }
@@ -74,8 +72,12 @@ void install()
             gOriginalsByName.emplace(name, original);
         }
         else {
-            throw std::runtime_error(fmt::format("Unable to find detour function {}.", name));
+            throw std::runtime_error(fmt::format("Unable to find target function for detour: {}.", name));
         }
+    }
+
+    for (const auto &[name, target] : targets) {
+        gOriginalsByName.emplace(name, target);
     }
 }
 
