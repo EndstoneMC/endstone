@@ -58,7 +58,7 @@ public:
     [[nodiscard]] Scheduler &getScheduler() const override;
 
     [[nodiscard]] Level *getLevel() const override;
-    void setLevel(std::unique_ptr<Level> level);
+    void setLevel(std::unique_ptr<EndstoneLevel> level);
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
@@ -85,7 +85,7 @@ private:
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
     std::unique_ptr<ConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
-    std::unique_ptr<Level> level_;
+    std::unique_ptr<EndstoneLevel> level_;
     std::unordered_map<UUID, Player *> players_;
     std::unique_ptr<EndstoneScoreboard> scoreboard_;
 };

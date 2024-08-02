@@ -163,7 +163,7 @@ Level *EndstoneServer::getLevel() const
     return level_.get();
 }
 
-void EndstoneServer::setLevel(std::unique_ptr<Level> level)
+void EndstoneServer::setLevel(std::unique_ptr<EndstoneLevel> level)
 {
     level_ = std::move(level);
 }

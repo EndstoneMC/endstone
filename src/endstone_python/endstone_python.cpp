@@ -233,7 +233,8 @@ void init_server(py::class_<Server> &server)
             [](const Server &server, const std::string &message) { server.broadcastMessage(message); },
             py::arg("message"),
             "Broadcasts the specified message to every user with permission endstone.broadcast.user")
-        .def_property_readonly("scoreboard", &Server::getScoreboard, "Gets the scoreboard.",
+        .def_property_readonly("scoreboard", &Server::getScoreboard,
+                               "Gets the primary Scoreboard controlled by the server.",
                                py::return_value_policy::reference);
 }
 

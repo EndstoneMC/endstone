@@ -182,11 +182,12 @@ public:
     [[nodiscard]] virtual bool isPrimaryThread() const = 0;
 
     /**
-     * @brief Gets the scoreboard.
+     * @brief Gets the primary Scoreboard controlled by the server.
      * <p>
-     * This will only exist after the first level has loaded.
+     * This Scoreboard is saved by the server, is affected by the /scoreboard command, and is the scoreboard shown by
+     * default to players. This will only exist after the level has been loaded.
      *
-     * @return the scoreboard.
+     * @return the default server scoreboard
      */
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
