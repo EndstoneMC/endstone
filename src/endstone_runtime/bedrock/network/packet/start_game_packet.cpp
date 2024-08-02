@@ -27,7 +27,7 @@ void StartGamePacket::write(BinaryStream &stream) const
 {
     static bool client_side_generation_enabled = []() {
         auto &server = entt::locator<EndstoneServer>::value();
-        auto *level = static_cast<EndstoneLevel *>(server.getLevels()[0]);
+        auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return level->getHandle().isClientSideGenerationEnabled();
     }();
 

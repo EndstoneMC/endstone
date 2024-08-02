@@ -215,10 +215,8 @@ void init_server(py::class_<Server> &server)
              "Dispatches a command on this server, and executes it if found.")
         .def_property_readonly("scheduler", &Server::getScheduler, py::return_value_policy::reference,
                                "Gets the scheduler for managing scheduled events.")
-        .def_property_readonly("levels", &Server::getLevels, py::return_value_policy::reference_internal,
-                               "Gets a list of all levels on this server.")
-        .def("get_level", &Server::getLevel, py::arg("name"), py::return_value_policy::reference,
-             "Gets the level with the given name.")
+        .def_property_readonly("level", &Server::getLevel, py::return_value_policy::reference_internal,
+                               "Gets the server level.")
         .def_property_readonly("online_players", &Server::getOnlinePlayers, py::return_value_policy::reference_internal,
                                "Gets a list of all currently online players.")
         .def_property("max_players", &Server::getMaxPlayers, &Server::setMaxPlayers,

@@ -110,19 +110,11 @@ public:
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 
     /**
-     * @brief Gets a list of all levels on this server.
+     * @brief Gets the server level.
      *
-     * @return a list of levels
+     * @return the server level
      */
-    [[nodiscard]] virtual std::vector<Level *> getLevels() const = 0;
-
-    /**
-     * @brief Gets the level with the given name.
-     *
-     * @param name the name of the level to retrieve
-     * @return a level with the given name, or nullptr if none exists
-     */
-    [[nodiscard]] virtual Level *getLevel(std::string name) const = 0;
+    [[nodiscard]] virtual Level *getLevel() const = 0;
 
     /**
      * @brief Gets a list of all currently online players.

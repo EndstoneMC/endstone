@@ -1961,10 +1961,6 @@ class Server:
         """
         Dispatches a command on this server, and executes it if found.
         """
-    def get_level(self, name: str) -> Level:
-        """
-        Gets the level with the given name.
-        """
     @typing.overload
     def get_player(self, name: str) -> Player:
         """
@@ -1985,9 +1981,9 @@ class Server:
         Gets a CommandSender for this server.
         """
     @property
-    def levels(self) -> list[Level]:
+    def level(self) -> Level:
         """
-        Gets a list of all levels on this server.
+        Gets the server level.
         """
     @property
     def logger(self) -> Logger:

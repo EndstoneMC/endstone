@@ -29,8 +29,7 @@ public:
     MOCK_METHOD(endstone::ConsoleCommandSender &, getCommandSender, (), (const, override));
     MOCK_METHOD(bool, dispatchCommand, (endstone::CommandSender &, std::string), (const, override));
     MOCK_METHOD(endstone::Scheduler &, getScheduler, (), (const, override));
-    MOCK_METHOD(std::vector<endstone::Level *>, getLevels, (), (const, override));
-    MOCK_METHOD(endstone::Level *, getLevel, (std::string), (const, override));
+    MOCK_METHOD(endstone::Level *, getLevel, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));
     MOCK_METHOD(void, setMaxPlayers, (int), (override));

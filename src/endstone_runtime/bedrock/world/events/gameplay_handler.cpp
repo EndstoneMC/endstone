@@ -30,17 +30,7 @@ using endstone::detail::EndstoneServer;
 GameplayHandlerResult<CoordinatorResult> ScriptLevelGameplayHandler::handleEvent(LevelWeatherChangedEvent &event)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-
-    // Find out the level where this event is occurring
-    auto levels = server.getLevels();
-    auto it = std::find_if(begin(levels), end(levels), [this](auto level) {
-        auto *endstone_level = static_cast<EndstoneLevel *>(level);
-        return &(endstone_level->getHandle().getLevelEventCoordinator().getLevelGameplayHandler()) == this;
-    });
-    if (it == levels.end()) {
-        throw std::runtime_error("Unable to find level associated with the provided LevelGameplayHandler");
-    }
-    auto &level = **it;
+    auto &level = *server.getLevel();
 
     if (event.from_rain != event.to_rain) {
         endstone::WeatherChangeEvent e(level, event.to_rain);

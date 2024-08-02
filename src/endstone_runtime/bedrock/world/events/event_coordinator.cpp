@@ -181,7 +181,7 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
 void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    server.addLevel(std::make_unique<EndstoneLevel>(level));
+    server.setLevel(std::make_unique<EndstoneLevel>(level));
     server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }

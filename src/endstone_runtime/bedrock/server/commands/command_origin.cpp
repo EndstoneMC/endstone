@@ -61,7 +61,7 @@ std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSend
             tag.putString("DimensionId", "overworld");
         }
 
-        auto *level = static_cast<EndstoneLevel *>(server.getLevels()[0]);
+        auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 

@@ -149,7 +149,7 @@ bool EndstoneActor::isInLava() const
 
 Level &EndstoneActor::getLevel() const
 {
-    return *server_.getLevel(actor_.getLevel().getLevelId());
+    return *server_.getLevel();
 }
 
 Dimension &EndstoneActor::getDimension() const
