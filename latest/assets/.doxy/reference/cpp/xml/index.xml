@@ -764,6 +764,7 @@
     <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" kind="function"><name>broadcastMessage</name></member>
     <member refid="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" kind="function"><name>isPrimaryThread</name></member>
     <member refid="classendstone_1_1Server_1aead6d70b5edc7e8b8edd0982ea265756" kind="function"><name>getScoreboard</name></member>
+    <member refid="classendstone_1_1Server_1a2edf0b53e81bb6b1917b766369ac0673" kind="function"><name>getNewScoreboard</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
     <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" kind="variable"><name>NAME</name></member>

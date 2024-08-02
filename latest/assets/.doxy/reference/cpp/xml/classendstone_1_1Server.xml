@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="197" column="37" bodyfile="include/endstone/server.h" bodystart="197" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="206" column="37" bodyfile="include/endstone/server.h" bodystart="206" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="202" column="37" bodyfile="include/endstone/server.h" bodystart="202" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="211" column="37" bodyfile="include/endstone/server.h" bodystart="211" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -555,13 +555,31 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="192" column="25"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2edf0b53e81bb6b1917b766369ac0673" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> *</type>
+        <definition>virtual Scoreboard* endstone::Server::getNewScoreboard</definition>
+        <argsstring>()=0</argsstring>
+        <name>getNewScoreboard</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a new <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> to be tracked by the server. </para>
+<para>This will not be saved by the server and is not affected by the /scoreboard command.</para>
+<para><simplesect kind="return"><para>the newly created <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="201" column="25"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a server implementation. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="203"/>
+    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="212"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
       <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
@@ -575,6 +593,7 @@
       <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMaxPlayers</name></member>
       <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMinecraftVersion</name></member>
       <member refid="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Server_1a2edf0b53e81bb6b1917b766369ac0673" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getNewScoreboard</name></member>
       <member refid="classendstone_1_1Server_1a87fe533801da1f729baa68cc96099546" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlinePlayers</name></member>
       <member refid="classendstone_1_1Server_1a3f5b8f0687c88f67472718e67adada76" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Server_1ab09e09e3f7fe51d16fd5e4e82c95ba49" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
