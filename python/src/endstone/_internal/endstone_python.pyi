@@ -1961,6 +1961,10 @@ class Server:
         """
         Dispatches a command on this server, and executes it if found.
         """
+    def get_new_scoreboard(self) -> Scoreboard:
+        """
+        Gets a new Scoreboard to be tracked by the server.
+        """
     @typing.overload
     def get_player(self, name: str) -> Player:
         """
@@ -2026,7 +2030,7 @@ class Server:
     @property
     def scoreboard(self) -> Scoreboard:
         """
-        Gets the scoreboard.
+        Gets the primary Scoreboard controlled by the server.
         """
     @property
     def version(self) -> str:

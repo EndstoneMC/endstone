@@ -24,6 +24,7 @@ namespace endstone::detail {
 class EndstoneScoreboard : public Scoreboard {
 public:
     explicit EndstoneScoreboard(::Scoreboard &board);
+    explicit EndstoneScoreboard(std::unique_ptr<::Scoreboard> board);
     std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) override;
     std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
                                             std::string display_name) override;
@@ -49,6 +50,7 @@ private:
     friend class EndstoneScore;
 
     ::Scoreboard &board_;
+    std::unique_ptr<::Scoreboard> holder_;
 };
 
 }  // namespace endstone::detail

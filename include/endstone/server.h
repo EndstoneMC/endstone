@@ -192,6 +192,15 @@ public:
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     /**
+     * Gets a new Scoreboard to be tracked by the server.
+     * <p>
+     * This will not be saved by the server and is not affected by the /scoreboard command.
+     *
+     * @return the newly created Scoreboard
+     */
+    [[nodiscard]] virtual Scoreboard *getNewScoreboard() = 0;
+
+    /**
      * @brief Used for all administrative messages, such as an operator using a command.
      */
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";

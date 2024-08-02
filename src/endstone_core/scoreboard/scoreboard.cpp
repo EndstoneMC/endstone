@@ -30,6 +30,11 @@ namespace endstone::detail {
 
 EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
 
+EndstoneScoreboard::EndstoneScoreboard(std::unique_ptr<::Scoreboard> board) : board_(*board)
+{
+    holder_ = std::move(board);
+}
+
 std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);

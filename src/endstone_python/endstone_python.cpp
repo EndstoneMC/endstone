@@ -235,7 +235,9 @@ void init_server(py::class_<Server> &server)
             "Broadcasts the specified message to every user with permission endstone.broadcast.user")
         .def_property_readonly("scoreboard", &Server::getScoreboard,
                                "Gets the primary Scoreboard controlled by the server.",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def("get_new_scoreboard", &Server::getNewScoreboard, "Gets a new Scoreboard to be tracked by the server.",
+             py::return_value_policy::reference);
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)

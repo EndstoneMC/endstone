@@ -19,10 +19,15 @@
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_interface.h"
 
+namespace endstone::detail {
+class EndstoneServer;
+}
+
 class Level : public ILevel {
 public:
     ENDSTONE_HOOK void tick() override;
 
 protected:
+    friend class endstone::detail::EndstoneServer;
     ENDSTONE_HOOK gsl::not_null<StackRefResult<GameplayUserManager>> _getGameplayUserManagerStackRef();
 };

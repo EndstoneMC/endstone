@@ -39,6 +39,7 @@ public:
     MOCK_METHOD(void, broadcastMessage, (const std::string &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
+    MOCK_METHOD(endstone::Scoreboard *, getNewScoreboard, (), (override));
 };
 
 class MockPlugin : public endstone::Plugin {
