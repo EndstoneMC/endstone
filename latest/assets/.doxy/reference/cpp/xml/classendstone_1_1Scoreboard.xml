@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1Scoreboard" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Scoreboard</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; Scoreboard &gt;</basecompoundref>
     <includes refid="scoreboard_8h" local="no">endstone/scoreboard/scoreboard.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
@@ -395,6 +396,28 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Scoreboard &gt;</label>
+      </node>
+      <node id="1">
+        <label>endstone::Scoreboard</label>
+        <link refid="classendstone_1_1Scoreboard"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::enable_shared_from_this&lt; Scoreboard &gt;</label>
+      </node>
+      <node id="1">
+        <label>endstone::Scoreboard</label>
+        <link refid="classendstone_1_1Scoreboard"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
     <location file="include/endstone/scoreboard/scoreboard.h" line="29" column="1" bodyfile="include/endstone/scoreboard/scoreboard.h" bodystart="29" bodyend="128"/>
     <listofallmembers>
       <member refid="classendstone_1_1Scoreboard_1aeeea6d5b20650bc48f049facf5f09357" prot="public" virt="pure-virtual"><scope>endstone::Scoreboard</scope><name>addObjective</name></member>

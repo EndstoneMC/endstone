@@ -94,7 +94,7 @@ public:
 
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
-    [[nodiscard]] virtual Scoreboard *getNewScoreboard() = 0;
+    [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

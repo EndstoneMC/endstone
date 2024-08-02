@@ -193,7 +193,7 @@
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="classendstone_1_1Scoreboard" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>{</highlight></codeline>
+<codeline lineno="29" refid="classendstone_1_1Scoreboard" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;Scoreboard&gt;<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>

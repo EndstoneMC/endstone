@@ -14,6 +14,7 @@ _Represents a scoreboard._
 
 
 
+Inherits the following classes: std::enable_shared_from_this< Scoreboard >
 
 
 

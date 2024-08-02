@@ -62,7 +62,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::PluginManager**](classendstone_1_1PluginManager.md) _Represents a plugin manager that handles all plugins from the_ [_**Server**_](classendstone_1_1Server.md) _._
 * **class** [**endstone::Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._ 
 * **class** [**endstone::Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._ 
-* **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 
 * **class** [**endstone::Server**](classendstone_1_1Server.md) _Represents a server implementation._ 
 * **class** [**endstone::Skin**](classendstone_1_1Skin.md) _Represents a player skin._ 
 * **class** [**endstone::Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._ 
@@ -75,4 +74,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
+* **class** **std::enable_shared_from_this< Scoreboard >**    
+    * **class** [**endstone::Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._ 
 

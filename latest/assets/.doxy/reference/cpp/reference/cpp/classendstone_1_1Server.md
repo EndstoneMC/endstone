@@ -70,7 +70,7 @@ _Represents a server implementation._
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
-| virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getNewScoreboard**](#function-getnewscoreboard) () = 0<br> |
+| virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getNewScoreboard**](#function-getnewscoreboard) () = 0<br> |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case insensitive._  |
@@ -435,7 +435,7 @@ name of this server implementation
 
 
 ```C++
-virtual Scoreboard * endstone::Server::getNewScoreboard () = 0
+virtual std::shared_ptr< Scoreboard > endstone::Server::getNewScoreboard () = 0
 ```
 
 
