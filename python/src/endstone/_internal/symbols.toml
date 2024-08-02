@@ -1,4 +1,4 @@
-timestamp = 1721687222
+timestamp = 1722598968
 version = "1.21.3"
 
 [windows]
@@ -40,6 +40,7 @@ version = "1.21.3"
 "?forEachCreativeItemInstance@CreativeItemRegistry@@SAXV?$function@$$A6A_NAEAVItemInstance@@@Z@std@@@Z" = 28186272
 # Level
 "?tick@Level@@UEAAXXZ" = 28080944
+"?_getGameplayUserManagerStackRef@Level@@IEAA?AV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@XZ" = 28011280
 # MinecraftCommands
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 13659360
 # MinecraftPackets
@@ -123,6 +124,7 @@ version = "1.21.3"
 "_ZN20CreativeItemRegistry27forEachCreativeItemInstanceENSt3__18functionIFbR12ItemInstanceEEE" = 120635696
 # Level
 "_ZN5Level4tickEv" = 119555392
+"_ZN5Level31_getGameplayUserManagerStackRefEv" = 119584112
 # MinecraftCommands
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 81673040
 # MinecraftPackets

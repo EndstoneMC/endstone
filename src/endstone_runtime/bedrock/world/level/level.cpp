@@ -14,8 +14,8 @@
 
 #include "bedrock/world/level/level.h"
 
-#include <cpptrace/cpptrace.hpp>
-
+#include "bedrock/core/memory.h"
+#include "bedrock/world/level/gameplay_user_manager.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/server.h"
@@ -29,4 +29,13 @@ void Level::tick()
     scheduler.mainThreadHeartbeat(getCurrentServerTick().tick_id);
 
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, __FUNCDNAME__, this);
+}
+
+gsl::not_null<StackRefResult<GameplayUserManager>> Level::_getGameplayUserManagerStackRef()
+{
+    const StackRefResult<GameplayUserManager> tmp{
+        std::shared_ptr<GameplayUserManager>(reinterpret_cast<GameplayUserManager *>(0xdeadc0deLL))};
+    gsl::not_null result = tmp;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Level::_getGameplayUserManagerStackRef, result, this);
+    return result;
 }

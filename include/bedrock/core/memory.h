@@ -235,3 +235,19 @@ public:
 private:
     std::weak_ptr<T> ref_;
 };
+
+template <typename T>
+class StackRefResult {
+public:
+    bool operator==(const std::nullptr_t) const
+    {
+        return value == nullptr;
+    }
+
+    bool operator!=(const std::nullptr_t) const
+    {
+        return value != nullptr;
+    }
+
+    std::shared_ptr<T> value;
+};

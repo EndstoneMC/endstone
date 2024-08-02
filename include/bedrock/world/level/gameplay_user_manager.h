@@ -14,15 +14,6 @@
 
 #pragma once
 
-#include <gsl/gsl>
+#include <cstdint>
 
-#include "bedrock/world/level/gameplay_user_manager.h"
-#include "bedrock/world/level/level_interface.h"
-
-class Level : public ILevel {
-public:
-    ENDSTONE_HOOK void tick() override;
-
-protected:
-    ENDSTONE_HOOK gsl::not_null<StackRefResult<GameplayUserManager>> _getGameplayUserManagerStackRef();
-};
+class GameplayUserManager {};
