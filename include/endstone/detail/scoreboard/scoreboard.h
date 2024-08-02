@@ -41,6 +41,7 @@ public:
     void clearSlot(DisplaySlot slot) override;
     [[nodiscard]] const ::ScoreboardId &getScoreboardId(ScoreEntry entry) const;
     const ::ScoreboardId &getOrCreateScoreboardId(ScoreEntry entry);
+    [[nodiscard]] ::Scoreboard &getHandle() const;
 
     static std::string getCriteriaName(Criteria::Type type);
     static std::string getDisplaySlotName(DisplaySlot slot);

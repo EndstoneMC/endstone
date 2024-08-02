@@ -221,4 +221,9 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
         entry);
 }
 
+::Scoreboard &EndstoneScoreboard::getHandle() const
+{
+    return board_;
+}
+
 }  // namespace endstone::detail

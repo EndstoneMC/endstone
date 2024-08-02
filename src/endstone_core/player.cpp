@@ -75,6 +75,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
 EndstonePlayer::~EndstonePlayer()
 {
     server_.players_.erase(uuid_);
+    server_.removePlayerBoard(*this);
 }
 
 void EndstonePlayer::sendMessage(const std::string &message) const

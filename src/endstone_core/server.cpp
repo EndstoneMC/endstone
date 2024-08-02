@@ -268,6 +268,38 @@ std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
     return result;
 }
 
+EndstoneScoreboard &EndstoneServer::getPlayerBoard(EndstonePlayer &player) const
+{
+    auto it = player_boards_.find(&player);
+    if (it == player_boards_.end()) {
+        return *scoreboard_;
+    }
+    return *it->second;
+}
+
+void EndstoneServer::setPlayerBoard(EndstonePlayer &player, const std::shared_ptr<EndstoneScoreboard>& scoreboard)
+{
+    auto &old_board = getPlayerBoard(player).getHandle();
+    auto &new_board = scoreboard->getHandle();
+
+    if (&old_board == &new_board) {
+        return;
+    }
+
+    if (scoreboard == scoreboard_) {
+        player_boards_.erase(&player);
+    }
+    else {
+        player_boards_[&player] = scoreboard;
+    }
+    // TODO(check): should we send any packet to client?
+}
+
+void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
+{
+    player_boards_.erase(&player);
+}
+
 ::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
 {
     return *server_instance_.getMinecraft().getServerNetworkHandler();
