@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include "endstone/block/block.h"
+
 namespace endstone {
 
 /**
@@ -53,5 +55,15 @@ public:
      * @return Level containing this dimension.
      */
     [[nodiscard]] virtual Level &getLevel() const = 0;
+
+    /**
+     * Gets the {@link Block} at the given coordinates
+     *
+     * @param x X-coordinate of the block
+     * @param y Y-coordinate of the block
+     * @param z Z-coordinate of the block
+     * @return Block at the given coordinates
+     */
+    virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z);
 };
 }  // namespace endstone
