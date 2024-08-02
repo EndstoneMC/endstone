@@ -286,13 +286,15 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
         return;
     }
 
+    getPlayerBoard(player).resetScores(&player);
+
     if (&scoreboard == scoreboard_.get()) {
         player_boards_.erase(&player);
     }
     else {
         player_boards_[&player] = std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
     }
-    // TODO(check): should we send any packet to client?
+    // TODO(scoreboard): should we send any additional packet to client?
 }
 
 void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
