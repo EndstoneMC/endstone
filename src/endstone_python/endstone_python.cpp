@@ -87,9 +87,9 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_inventory(m);
     init_util(m);
     init_level(m);
+    init_scoreboard(m);
     init_actor(m, actor, mob);
     init_player(m, player);
-    init_scoreboard(m);
     init_command(m, command_sender);
     init_plugin(m);
     init_scheduler(m);
@@ -312,6 +312,8 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
                       "Gets or sets the current allowed speed that a client can fly.")
         .def_property("walk_speed", &Player::getWalkSpeed, &Player::setWalkSpeed,
                       "Gets or sets the current allowed speed that a client can walk.")
+        .def_property("scoreboard", &Player::getScoreboard, &Player::setScoreboard,
+                      "Gets or sets the player's visible Scoreboard.", py::return_value_policy::reference)
         .def("send_title", py::overload_cast<std::string, std::string, int, int, int>(&Player::sendTitle, py::const_),
              "Sends a title and a subtitle message to the player. If they are empty strings, the display will be "
              "updated as such.",

@@ -1357,6 +1357,14 @@ class Player(Mob):
         Gets the player's average ping in milliseconds.
         """
     @property
+    def scoreboard(self) -> Scoreboard:
+        """
+        Gets or sets the player's visible Scoreboard.
+        """
+    @scoreboard.setter
+    def scoreboard(self, arg1: Scoreboard) -> None:
+        ...
+    @property
     def skin(self) -> Skin:
         """
         Get the player's skin.

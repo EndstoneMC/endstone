@@ -26,6 +26,7 @@
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
+#include "scoreboard/scoreboard.h"
 
 namespace endstone {
 
@@ -204,6 +205,20 @@ public:
      * @param value The new speed.
      */
     virtual void setWalkSpeed(float value) const = 0;
+
+    /**
+     *@brief Gets the Scoreboard displayed to this player
+     *
+     * @return The current scoreboard seen by this player
+     */
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+
+    /**
+     * @breif Sets the player's visible Scoreboard.
+     *
+     * @param scoreboard New Scoreboard for the player
+     */
+    void virtual setScoreboard(Scoreboard &scoreboard) = 0;
 
     /**
      * @brief Sends a title and a subtitle message to the player. If they are empty strings, the display will be

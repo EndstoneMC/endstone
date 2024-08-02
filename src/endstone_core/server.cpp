@@ -268,7 +268,7 @@ std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
     return result;
 }
 
-EndstoneScoreboard &EndstoneServer::getPlayerBoard(EndstonePlayer &player) const
+EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
 {
     auto it = player_boards_.find(&player);
     if (it == player_boards_.end()) {
@@ -277,20 +277,20 @@ EndstoneScoreboard &EndstoneServer::getPlayerBoard(EndstonePlayer &player) const
     return *it->second;
 }
 
-void EndstoneServer::setPlayerBoard(EndstonePlayer &player, const std::shared_ptr<EndstoneScoreboard>& scoreboard)
+void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard)
 {
     auto &old_board = getPlayerBoard(player).getHandle();
-    auto &new_board = scoreboard->getHandle();
+    auto &new_board = static_cast<EndstoneScoreboard &>(scoreboard).getHandle();
 
     if (&old_board == &new_board) {
         return;
     }
 
-    if (scoreboard == scoreboard_) {
+    if (&scoreboard == scoreboard_.get()) {
         player_boards_.erase(&player);
     }
     else {
-        player_boards_[&player] = scoreboard;
+        player_boards_[&player] = std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
     }
     // TODO(check): should we send any packet to client?
 }

@@ -379,6 +379,16 @@ void EndstonePlayer::setWalkSpeed(float value) const
     updateAbilities();
 }
 
+Scoreboard &EndstonePlayer::getScoreboard() const
+{
+    return server_.getPlayerBoard(*this);
+}
+
+void EndstonePlayer::setScoreboard(Scoreboard &scoreboard)
+{
+    server_.setPlayerBoard(*this, scoreboard);
+}
+
 void EndstonePlayer::sendTitle(std::string title, std::string subtitle) const
 {
     sendTitle(std::move(title), std::move(subtitle), 10, 70, 20);

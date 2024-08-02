@@ -94,6 +94,8 @@ public:
     void setFlySpeed(float value) const override;
     [[nodiscard]] float getWalkSpeed() const override;
     void setWalkSpeed(float value) const override;
+    [[nodiscard]] Scoreboard &getScoreboard() const override;
+    void setScoreboard(Scoreboard &scoreboard) override;
     void sendTitle(std::string title, std::string subtitle) const override;
     void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const override;
     void resetTitle() const override;
