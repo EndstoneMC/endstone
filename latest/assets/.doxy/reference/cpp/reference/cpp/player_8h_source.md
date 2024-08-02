@@ -36,6 +36,7 @@
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
+#include "scoreboard/scoreboard.h"
 
 namespace endstone {
 
@@ -99,6 +100,10 @@ public:
     [[nodiscard]] virtual float getWalkSpeed() const = 0;
 
     virtual void setWalkSpeed(float value) const = 0;
+
+    [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
+
+    void virtual setScoreboard(Scoreboard &scoreboard) = 0;
 
     virtual void sendTitle(std::string title, std::string subtitle) const = 0;
 

@@ -102,6 +102,8 @@
         </childnode>
         <childnode refid="66" relation="include">
         </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
       </node>
       <node id="31">
         <label>endstone/logger.h</label>
@@ -220,7 +222,7 @@
         <label>string</label>
       </node>
       <node id="68">
-        <label>endstone/scoreboard/scoreboard.h</label>
+        <label>scoreboard/scoreboard.h</label>
         <link refid="scoreboard_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>

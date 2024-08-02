@@ -21,6 +21,7 @@
 * `#include "endstone/skin.h"`
 * `#include "endstone/util/socket_address.h"`
 * `#include "endstone/util/uuid.h"`
+* `#include "scoreboard/scoreboard.h"`
 
 
 
