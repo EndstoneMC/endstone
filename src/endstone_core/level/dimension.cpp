@@ -15,6 +15,7 @@
 #include "endstone/detail/level/dimension.h"
 
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "endstone/detail/block/block.h"
 
 namespace endstone::detail {
 
@@ -42,6 +43,11 @@ Dimension::Type EndstoneDimension::getType() const
 Level &EndstoneDimension::getLevel() const
 {
     return level_;
+}
+
+std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z)
+{
+    return EndstoneBlock::at(dimension_.getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
 }  // namespace endstone::detail

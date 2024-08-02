@@ -64,6 +64,6 @@ public:
      * @param z Z-coordinate of the block
      * @return Block at the given coordinates
      */
-    virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z);
+    virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) = 0;
 };
 }  // namespace endstone

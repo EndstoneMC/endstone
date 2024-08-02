@@ -12,30 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/block/block.h"
 
-#include "endstone/block/block_data.h"
+namespace endstone::detail {
+EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
+    : block_source_(block_source), block_pos_(block_pos)
+{
+}
 
-namespace endstone {
+std::unique_ptr<BlockData> EndstoneBlock::getData()
+{
+    // TODO(block): implement me
+    return nullptr;
+}
 
-/**
- * @brief Represents a block.
- *
- * <p>
- * This is a live object, and only one Block may exist for any given location in a world.
- * The state of the block may change concurrently to your own handling of it.
- * Use block.getState() to get a snapshot state of a block which will not be modified.
- */
-class Block {
-public:
-    virtual ~Block() = default;
+std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
+{
+    return std::make_unique<EndstoneBlock>(block_source, block_pos);
+}
 
-    /**
-     * @brief Gets the complete block data for this block
-     *
-     * @return block specific data
-     */
-    virtual std::unique_ptr<BlockData> getData() = 0;
-};
-
-}  // namespace endstone
+}  // namespace endstone::detail

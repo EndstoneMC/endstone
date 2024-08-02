@@ -163,7 +163,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             data.block_types[name]["specialTools"] = special_tools;
         }
 
-        block_legacy.forEachBlockPermutation([&](const Block &block) {
+        block_legacy.forEachBlockPermutation([&](const ::Block &block) {
             AABB collision_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);

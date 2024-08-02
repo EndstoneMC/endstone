@@ -14,28 +14,21 @@
 
 #pragma once
 
-#include "endstone/block/block_data.h"
+#include "bedrock/world/level/block_pos.h"
+#include "bedrock/world/level/block_source.h"
+#include "endstone/block/block.h"
 
-namespace endstone {
-
-/**
- * @brief Represents a block.
- *
- * <p>
- * This is a live object, and only one Block may exist for any given location in a world.
- * The state of the block may change concurrently to your own handling of it.
- * Use block.getState() to get a snapshot state of a block which will not be modified.
- */
-class Block {
+namespace endstone::detail {
+class EndstoneBlock : public Block {
 public:
-    virtual ~Block() = default;
+    EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
 
-    /**
-     * @brief Gets the complete block data for this block
-     *
-     * @return block specific data
-     */
-    virtual std::unique_ptr<BlockData> getData() = 0;
+    std::unique_ptr<BlockData> getData() override;
+
+    static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
+
+private:
+    BlockSource &block_source_;
+    BlockPos block_pos_;
 };
-
-}  // namespace endstone
+}  // namespace endstone::detail
