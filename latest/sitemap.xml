@@ -181,6 +181,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Block/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockData/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BroadcastMessageEvent/</loc>
          <lastmod>2024-08-02</lastmod>
          <changefreq>daily</changefreq>
@@ -587,6 +597,31 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/mob_8h_source/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dir_faca67fc60a7463eb1bd30eabe023cf1/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block_8h/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block_8h_source/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__data_8h/</loc>
+         <lastmod>2024-08-02</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__data_8h_source/</loc>
          <lastmod>2024-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>

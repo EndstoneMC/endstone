@@ -57,6 +57,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat) (int x, int y, int z) = 0<br> |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
 | virtual [**Type**](classendstone_1_1Dimension.md#enum-type) | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this dimension._  |
@@ -111,6 +112,47 @@ enum endstone::Dimension::Type {
 <hr>
 ## Public Functions Documentation
 
+
+
+
+### function getBlockAt 
+
+
+```C++
+virtual std::unique_ptr< Block > endstone::Dimension::getBlockAt (
+    int x,
+    int y,
+    int z
+) = 0
+```
+
+
+
+Gets the [**Block**](classendstone_1_1Block.md) at the given coordinates
+
+
+
+
+**Parameters:**
+
+
+* `x` X-coordinate of the block 
+* `y` Y-coordinate of the block 
+* `z` Z-coordinate of the block 
+
+
+
+**Returns:**
+
+[**Block**](classendstone_1_1Block.md) at the given coordinates 
+
+
+
+
+
+        
+
+<hr>
 
 
 

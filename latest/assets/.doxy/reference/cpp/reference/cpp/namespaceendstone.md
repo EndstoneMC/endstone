@@ -41,6 +41,8 @@
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
+| class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
+| class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data associated with a block._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
