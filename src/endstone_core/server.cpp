@@ -24,6 +24,7 @@ namespace fs = std::filesystem;
 #include "bedrock/core/threading.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/console_command_sender.h"

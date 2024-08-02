@@ -16,6 +16,9 @@
 
 #include <thread>
 #include <vector>
+#include <unordered_map>
+
+#include <bedrock/world/scores/scoreboard_id.h>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
@@ -89,5 +92,13 @@ class ServerNetworkEventCoordinator;
 class ScriptingEventCoordinator;
 class ScriptDeferredEventCoordinator;
 
-class ScoreboardEventListener;
+class ScoreboardEventListener {
+public:
+    virtual ~ScoreboardEventListener() = 0;
+};
 class ScoreboardEventCoordinator : public EventCoordinatorPimpl<ScoreboardEventListener> {};
+class PlayerScoreboardEventListener : public ScoreboardEventListener {
+public:
+private:
+    std::unordered_map<ScoreboardId, void *> subscribed_objectives_;  // void* = SubscribedObjectives
+};

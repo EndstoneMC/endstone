@@ -79,5 +79,6 @@ private:
     std::unordered_map<std::size_t, Bedrock::NonOwnerPointer<Objective>> objectives_lookup_;  // +472 (+304)
     std::unordered_map<std::string, std::unique_ptr<ObjectiveCriteria>> criteria_;            // +536 (+344)
     ScoreboardEventCoordinator scoreboard_event_coordinator_;                                 // +600 (+384)
-    // PlayerScoreboardEventListener player_listener_;                                          // +712 (+504)
+    PlayerScoreboardEventListener player_listener_;                                           // +712 (+504)
 };
+BEDROCK_STATIC_ASSERT_SIZE(Scoreboard, 784, 552);
