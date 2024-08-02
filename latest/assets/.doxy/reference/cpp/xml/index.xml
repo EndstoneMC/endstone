@@ -753,8 +753,7 @@
     <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
     <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1aee8ec47d389d77f2a36ed49777a77621" kind="function"><name>getScheduler</name></member>
-    <member refid="classendstone_1_1Server_1a6efe35e1a4eb79e433dbf17edf07fe1b" kind="function"><name>getLevels</name></member>
-    <member refid="classendstone_1_1Server_1a0a736709b490c346ade02b1462f5fb55" kind="function"><name>getLevel</name></member>
+    <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Server_1a87fe533801da1f729baa68cc96099546" kind="function"><name>getOnlinePlayers</name></member>
     <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" kind="function"><name>getMaxPlayers</name></member>
     <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" kind="function"><name>setMaxPlayers</name></member>

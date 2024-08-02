@@ -250,7 +250,6 @@
 * **getObjectivesByCriteria** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **getCommandSender** ([**endstone::Server**](classendstone_1_1Server.md))
-* **getLevels** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getOnlinePlayers** ([**endstone::Server**](classendstone_1_1Server.md))
