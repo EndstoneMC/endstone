@@ -16,6 +16,7 @@
 
 #include <sstream>
 
+#include <bedrock/world/scores/server_scoreboard.h>
 #include <entt/entt.hpp>
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>

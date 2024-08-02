@@ -138,3 +138,13 @@ inline std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, ret, ...) *endstone::detail::hook::get_original_rvo(fp)(&ret, __VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(fp, name, ret, ...) \
     *endstone::detail::hook::get_original_rvo(fp, name)(&ret, __VA_ARGS__)
+
+namespace endstone::detail::hook {
+template <typename Class, typename... Args>
+Class *call_ctor(const std::string &name, Args &&...args)
+{
+    auto *original = get_original(name);
+    return reinterpret_cast<Class *(*)(void *, Args...)>(original)(new char[sizeof(Class)],
+                                                                   std::forward<Args>(args)...);
+}
+}  // namespace endstone::detail::hook

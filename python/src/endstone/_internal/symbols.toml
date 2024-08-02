@@ -1,4 +1,4 @@
-timestamp = 1722598968
+timestamp = 1722602543
 version = "1.21.3"
 
 [windows]
@@ -82,6 +82,8 @@ version = "1.21.3"
 "?die@ServerPlayer@@UEAAXAEBVActorDamageSource@@@Z" = 13385840
 "?disconnect@ServerPlayer@@QEAAXXZ" = 13386000
 "?doInitialSpawn@ServerPlayer@@QEAAXXZ" = 13387488
+# ServerScoreboard
+"??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@AEBV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@@Z" = 36654656
 # StartGamePacket
 "?write@StartGamePacket@@UEBAXAEAVBinaryStream@@@Z" = 10695888
 
@@ -166,5 +168,7 @@ version = "1.21.3"
 "_ZN12ServerPlayer3dieERK17ActorDamageSource" = 98651088
 "_ZN12ServerPlayer10disconnectEv" = 98672336
 "_ZN12ServerPlayer14doInitialSpawnEv" = 98655264
+# ServerScoreboard
+"_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageRKN3gsl8not_nullI14StackRefResultI19GameplayUserManagerEEE" = 130490752
 # StartGamePacket
 "_ZNK15StartGamePacket5writeER12BinaryStream" = 78722480
