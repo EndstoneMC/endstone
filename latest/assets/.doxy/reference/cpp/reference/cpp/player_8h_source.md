@@ -127,7 +127,7 @@ public:
 
     [[nodiscard]] virtual std::string getDeviceOS() const = 0;
 
-    [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
+    [[nodiscard]] virtual std::string getDeviceId() const = 0;
 
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
 

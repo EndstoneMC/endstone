@@ -140,7 +140,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
 | virtual const [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
 | virtual bool | [**getAllowFlight**](#function-getallowflight) () const = 0<br>_Determines if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
-| virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getDeviceId**](#function-getdeviceid) () const = 0<br>_Gets the player's current device id._  |
+| virtual std::string | [**getDeviceId**](#function-getdeviceid) () const = 0<br>_Gets the player's current device id._  |
 | virtual std::string | [**getDeviceOS**](#function-getdeviceos) () const = 0<br>_Gets the player's current device's operation system (OS)._  |
 | virtual int | [**getExpLevel**](#function-getexplevel) () const = 0<br>_Gets the players current experience level._  |
 | virtual float | [**getExpProgress**](#function-getexpprogress) () const = 0<br>_Gets the players current experience progress towards the next level._  |
@@ -534,7 +534,7 @@ True if the player is allowed to fly.
 
 _Gets the player's current device id._ 
 ```C++
-virtual endstone::UUID endstone::Player::getDeviceId () const = 0
+virtual std::string endstone::Player::getDeviceId () const = 0
 ```
 
 

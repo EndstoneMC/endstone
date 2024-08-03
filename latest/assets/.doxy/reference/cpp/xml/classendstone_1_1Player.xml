@@ -942,9 +942,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="305" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
-        <definition>virtual endstone::UUID endstone::Player::getDeviceId</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Player::getDeviceId</definition>
         <argsstring>() const =0</argsstring>
         <name>getDeviceId</name>
         <briefdescription>
@@ -957,7 +957,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="312" column="29"/>
+        <location file="include/endstone/player.h" line="312" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const <ref refid="classendstone_1_1Skin" kindref="compound">Skin</ref> &amp;</type>
@@ -1139,7 +1139,7 @@
       <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>FormVariant</name></member>
       <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAddress</name></member>
       <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getAllowFlight</name></member>
-      <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceId</name></member>
+      <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceId</name></member>
       <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDeviceOS</name></member>
       <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getEffectivePermissions</name></member>

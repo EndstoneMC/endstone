@@ -504,7 +504,7 @@
     <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" kind="function"><name>getInventory</name></member>
     <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" kind="function"><name>getLocale</name></member>
     <member refid="classendstone_1_1Player_1a1113f3095eaadb6a4d207033d3eca8d5" kind="function"><name>getDeviceOS</name></member>
-    <member refid="classendstone_1_1Player_1a033fa7d741f2805093dad842a831d1ef" kind="function"><name>getDeviceId</name></member>
+    <member refid="classendstone_1_1Player_1ab370677b653ca04c9c9bab16703521f8" kind="function"><name>getDeviceId</name></member>
     <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" kind="function"><name>getSkin</name></member>
     <member refid="classendstone_1_1Player_1a1848b0b6fa8187213ab14e387895b953" kind="function"><name>transfer</name></member>
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
