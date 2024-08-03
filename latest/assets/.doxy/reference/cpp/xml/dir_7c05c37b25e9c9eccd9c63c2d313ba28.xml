@@ -9,6 +9,7 @@
     <innerfile refid="player__join__event_8h">player_join_event.h</innerfile>
     <innerfile refid="player__login__event_8h">player_login_event.h</innerfile>
     <innerfile refid="player__quit__event_8h">player_quit_event.h</innerfile>
+    <innerfile refid="player__teleport__event_8h">player_teleport_event.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

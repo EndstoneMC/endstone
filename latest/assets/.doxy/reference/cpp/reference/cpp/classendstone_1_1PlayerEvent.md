@@ -17,7 +17,7 @@ _Represents a player related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::PlayerChatEvent](classendstone_1_1PlayerChatEvent.md),  [endstone::PlayerCommandEvent](classendstone_1_1PlayerCommandEvent.md),  [endstone::PlayerDeathEvent](classendstone_1_1PlayerDeathEvent.md),  [endstone::PlayerJoinEvent](classendstone_1_1PlayerJoinEvent.md),  [endstone::PlayerLoginEvent](classendstone_1_1PlayerLoginEvent.md),  [endstone::PlayerQuitEvent](classendstone_1_1PlayerQuitEvent.md)
+Inherited by the following classes: [endstone::PlayerChatEvent](classendstone_1_1PlayerChatEvent.md),  [endstone::PlayerCommandEvent](classendstone_1_1PlayerCommandEvent.md),  [endstone::PlayerDeathEvent](classendstone_1_1PlayerDeathEvent.md),  [endstone::PlayerJoinEvent](classendstone_1_1PlayerJoinEvent.md),  [endstone::PlayerLoginEvent](classendstone_1_1PlayerLoginEvent.md),  [endstone::PlayerQuitEvent](classendstone_1_1PlayerQuitEvent.md),  [endstone::PlayerTeleportEvent](classendstone_1_1PlayerTeleportEvent.md)
 
 
 

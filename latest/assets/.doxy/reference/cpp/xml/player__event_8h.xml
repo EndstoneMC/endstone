@@ -10,6 +10,7 @@
     <includedby refid="player__join__event_8h" local="yes">include/endstone/event/player/player_join_event.h</includedby>
     <includedby refid="player__login__event_8h" local="yes">include/endstone/event/player/player_login_event.h</includedby>
     <includedby refid="player__quit__event_8h" local="yes">include/endstone/event/player/player_quit_event.h</includedby>
+    <includedby refid="player__teleport__event_8h" local="yes">include/endstone/event/player/player_teleport_event.h</includedby>
     <incdepgraph>
       <node id="19">
         <label>endstone/level/position.h</label>
@@ -427,6 +428,10 @@
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
+      <node id="8">
+        <label>include/endstone/event/player/player_teleport_event.h</label>
+        <link refid="player__teleport__event_8h_source"/>
+      </node>
       <node id="3">
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
@@ -445,6 +450,8 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="2">

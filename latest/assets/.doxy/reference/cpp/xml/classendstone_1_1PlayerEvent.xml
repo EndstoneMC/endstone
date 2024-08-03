@@ -9,6 +9,7 @@
     <derivedcompoundref refid="classendstone_1_1PlayerJoinEvent" prot="public" virt="non-virtual">endstone::PlayerJoinEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerLoginEvent" prot="public" virt="non-virtual">endstone::PlayerLoginEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerQuitEvent" prot="public" virt="non-virtual">endstone::PlayerQuitEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerTeleportEvent" prot="public" virt="non-virtual">endstone::PlayerTeleportEvent</derivedcompoundref>
     <includes refid="player__event_8h" local="no">endstone/event/player/player_event.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" prot="private" static="no" mutable="no">
@@ -80,6 +81,12 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="9">
+        <label>endstone::PlayerTeleportEvent</label>
+        <link refid="classendstone_1_1PlayerTeleportEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="3">
         <label>endstone::PlayerChatEvent</label>
         <link refid="classendstone_1_1PlayerChatEvent"/>

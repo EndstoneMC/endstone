@@ -371,6 +371,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerTeleportEvent/</loc>
+         <lastmod>2024-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Plugin/</loc>
          <lastmod>2024-08-03</lastmod>
          <changefreq>daily</changefreq>
@@ -862,6 +867,16 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__quit__event_8h_source/</loc>
+         <lastmod>2024-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__teleport__event_8h/</loc>
+         <lastmod>2024-08-03</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__teleport__event_8h_source/</loc>
          <lastmod>2024-08-03</lastmod>
          <changefreq>daily</changefreq>
     </url>

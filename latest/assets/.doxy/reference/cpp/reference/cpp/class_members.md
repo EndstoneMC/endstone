@@ -125,7 +125,7 @@
 
 ## f
 
-* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
+* **from\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **Form** ([**endstone::Form**](classendstone_1_1Form.md))
 * **FormVariant** ([**endstone::Player**](classendstone_1_1Player.md))
 * **full\_name\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -145,10 +145,10 @@
 * **getLocation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getRuntimeId** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **getVelocity** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **getEventName** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **getEventName** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **getActor** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
-* **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
-* **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
+* **getFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **getTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **getData** ([**endstone::Block**](classendstone_1_1Block.md))
 * **getLightEmission** ([**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
@@ -308,7 +308,7 @@
 * **isInLava** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isInWater** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **isOnGround** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **isCancellable** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **isCancellable** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **isRegistered** ([**endstone::Command**](classendstone_1_1Command.md))
 * **isReadOnly** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
@@ -386,7 +386,7 @@
 
 ## n
 
-* **NAME** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **NAME** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md), [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md), [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md), [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md), [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md), [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md), [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md), [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **name\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **network\_protocol\_version\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **num\_players\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
@@ -443,6 +443,7 @@
 * **PlayerJoinEvent** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **PlayerLoginEvent** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **PlayerQuitEvent** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+* **PlayerTeleportEvent** ([**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **Plugin** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **PluginCommand** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **PluginDescription** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -496,8 +497,8 @@
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
-* **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
-* **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
+* **setFrom** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
+* **setTo** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **setMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **setAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **setDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md))
@@ -585,7 +586,7 @@
 ## t
 
 * **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
-* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
+* **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **Type** ([**endstone::Criteria**](classendstone_1_1Criteria.md), [**endstone::Dimension**](classendstone_1_1Dimension.md))
@@ -680,6 +681,7 @@
 * **~PlayerJoinEvent** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **~PlayerLoginEvent** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
 * **~PlayerQuitEvent** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+* **~PlayerTeleportEvent** ([**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md))
 * **~Plugin** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))

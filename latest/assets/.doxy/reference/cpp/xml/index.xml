@@ -572,6 +572,19 @@
     <member refid="classendstone_1_1PlayerQuitEvent_1aa34fac241269914a9d141d4f8f1f362b" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1aa92fd31567b9d48f6ac2861f533871f2" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerTeleportEvent" kind="class"><name>endstone::PlayerTeleportEvent</name>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a65255877510836658e5cda1429403f91" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a4d1f49ddbc33c47de8e2521fb804a170" kind="variable"><name>from_</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a32ac0caa99422bdab2ac2bde141b1d49" kind="variable"><name>to_</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a9ab9f29f3e3dcd10bff208b2eca850f9" kind="function"><name>PlayerTeleportEvent</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1ae9c8d32bfb9ddf9c5e7cdb98b82f81b1" kind="function"><name>~PlayerTeleportEvent</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a58a064da0b7bad2f61d36937f3da9cae" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a3362e25b083566d853ccddc64084babf" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1ae56aa3575539e224c5007ab4727e2fec" kind="function"><name>getFrom</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1aaa1f6fe464e73b5b9fc11e49c0d1e712" kind="function"><name>setFrom</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a2372972d3fd46e718d276966c9e4304a" kind="function"><name>getTo</name></member>
+    <member refid="classendstone_1_1PlayerTeleportEvent_1a04475d4a275c57bb760e174a6411a101" kind="function"><name>setTo</name></member>
+  </compound>
   <compound refid="classendstone_1_1Plugin" kind="class"><name>endstone::Plugin</name>
     <member refid="classendstone_1_1Plugin_1a7935fed495dc747e3ee24e005a4439eb" kind="friend"><name>PluginLoader</name></member>
     <member refid="classendstone_1_1Plugin_1ad9de0bdae1894ad40e33f0e12022cdbf" kind="friend"><name>detail::EndstonePluginManager</name></member>
@@ -1102,6 +1115,8 @@
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
   <compound refid="player__quit__event_8h" kind="file"><name>player_quit_event.h</name>
+  </compound>
+  <compound refid="player__teleport__event_8h" kind="file"><name>player_teleport_event.h</name>
   </compound>
   <compound refid="broadcast__message__event_8h" kind="file"><name>broadcast_message_event.h</name>
   </compound>

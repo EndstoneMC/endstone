@@ -28,6 +28,7 @@
     <innerclass refid="classendstone_1_1PlayerJoinEvent" prot="public">endstone::PlayerJoinEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerQuitEvent" prot="public">endstone::PlayerQuitEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerTeleportEvent" prot="public">endstone::PlayerTeleportEvent</innerclass>
     <innerclass refid="classendstone_1_1BroadcastMessageEvent" prot="public">endstone::BroadcastMessageEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginDisableEvent" prot="public">endstone::PluginDisableEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginEnableEvent" prot="public">endstone::PluginEnableEvent</innerclass>

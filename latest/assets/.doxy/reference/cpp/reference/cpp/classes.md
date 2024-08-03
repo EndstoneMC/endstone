@@ -144,6 +144,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**Plugin**](classendstone_1_1Plugin.md)
 ([**endstone**](namespaceendstone.md))
 * [**PluginCommand**](classendstone_1_1PluginCommand.md)

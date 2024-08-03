@@ -41,6 +41,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_join\_event.h**](player__join__event_8h.md)     
                 * **file** [**player\_login\_event.h**](player__login__event_8h.md)     
                 * **file** [**player\_quit\_event.h**](player__quit__event_8h.md)     
+                * **file** [**player\_teleport\_event.h**](player__teleport__event_8h.md)     
             * **dir** [**server**](dir_77022909323d5ad872c4820a738a5429.md)     
                 * **file** [**broadcast\_message\_event.h**](broadcast__message__event_8h.md)     
                 * **file** [**plugin\_disable\_event.h**](plugin__disable__event_8h.md)     
