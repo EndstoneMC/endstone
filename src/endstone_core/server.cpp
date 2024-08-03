@@ -261,7 +261,7 @@ void EndstoneServer::setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboar
 
 std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
 {
-    CommandSoftEnumRegistry registry;
+    auto registry = CommandSoftEnumRegistry();
     auto board = ServerScoreboard::create(registry, nullptr, level_->getHandle()._getGameplayUserManagerStackRef());
     board->setPacketSender(level_->getHandle().getPacketSender());
     auto result = std::make_shared<EndstoneScoreboard>(std::move(board));
