@@ -274,6 +274,35 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="100" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::teleport</definition>
+        <argsstring>(Location location)=0</argsstring>
+        <name>teleport</name>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Teleports this entity to the given location.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New location to teleport this entity to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="107" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int64_t</type>
         <definition>virtual std::int64_t endstone::Actor::getId</definition>
@@ -289,7 +318,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="107" column="27"/>
+        <location file="include/endstone/actor/actor.h" line="114" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -306,7 +335,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="114" column="19"/>
+        <location file="include/endstone/actor/actor.h" line="121" column="19"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -362,7 +391,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="115"/>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="122"/>
     <listofallmembers>
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
@@ -403,6 +432,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
+      <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~Actor</name></member>
       <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~CommandSender</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Permissible</name></member>

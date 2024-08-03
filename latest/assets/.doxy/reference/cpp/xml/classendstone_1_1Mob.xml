@@ -125,6 +125,7 @@
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>setRotation</name></member>
+      <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Mob</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>~Actor</name></member>
       <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Mob</scope><name>~CommandSender</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Mob</scope><name>~Permissible</name></member>

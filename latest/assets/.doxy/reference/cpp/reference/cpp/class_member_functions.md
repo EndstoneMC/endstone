@@ -446,6 +446,7 @@
 
 ## t
 
+* **teleport** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
 * **trace** ([**endstone::Logger**](classendstone_1_1Logger.md))

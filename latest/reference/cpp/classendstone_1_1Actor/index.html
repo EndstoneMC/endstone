@@ -2022,6 +2022,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-teleport" class="md-nav__link">
+      <span class="md-ellipsis">
+        function teleport
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-actor" class="md-nav__link">
       <span class="md-ellipsis">
         function ~Actor
@@ -2149,6 +2162,10 @@
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setrotation"><strong>setRotation</strong></a> (float yaw, float pitch) = 0<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-teleport"><strong>teleport</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location) = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2414,8 +2431,21 @@
 </ul>
 <hr>
 
+<h3 id="function-teleport">function teleport<a class="headerlink" href="#function-teleport" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Actor</span><span class="o">::</span><span class="n">teleport</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<p><strong>Returns:</strong></p>
+<p>Teleports this entity to the given location.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>location</code> New location to teleport this entity to </li>
+</ul>
+<hr>
+
 <h3 id="function-actor">function ~Actor<a class="headerlink" href="#function-actor" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Actor</span><span class="o">::~</span><span class="n">Actor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Actor</span><span class="o">::~</span><span class="n">Actor</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

@@ -586,6 +586,7 @@
 ## t
 
 * **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
+* **teleport** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **testPermission** ([**endstone::Command**](classendstone_1_1Command.md))
 * **testPermissionSilently** ([**endstone::Command**](classendstone_1_1Command.md))
