@@ -1292,7 +1292,7 @@ class Player(Mob):
     def allow_flight(self, arg1: bool) -> None:
         ...
     @property
-    def device_id(self) -> uuid.UUID:
+    def device_id(self) -> str:
         """
         Get the player's current device id.
         """

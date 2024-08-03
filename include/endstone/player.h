@@ -309,7 +309,7 @@ public:
      *
      * @return the player's device id
      */
-    [[nodiscard]] virtual endstone::UUID getDeviceId() const = 0;
+    [[nodiscard]] virtual std::string getDeviceId() const = 0;
 
     /**
      * @brief Gets the player's skin.

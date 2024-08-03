@@ -508,7 +508,7 @@ std::string EndstonePlayer::getDeviceOS() const
     return device_os_;
 }
 
-endstone::UUID EndstonePlayer::getDeviceId() const
+std::string EndstonePlayer::getDeviceId() const
 {
     return device_id_;
 }
@@ -628,9 +628,7 @@ void EndstonePlayer::initFromConnectionRequest(
             }
 
             if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
-                boost::uuids::string_generator gen;
-                auto boost_uuid = gen(device_id);
-                std::copy(std::begin(boost_uuid.data), std::end(boost_uuid.data), std::begin(device_id_.data));
+                device_id_ = device_id;
             }
 
             {
