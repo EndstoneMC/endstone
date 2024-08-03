@@ -18,5 +18,9 @@
 
 class CommandSoftEnumRegistry {
 public:
-    CommandRegistry *registry;
+    CommandSoftEnumRegistry() = default;
+    CommandSoftEnumRegistry(const CommandSoftEnumRegistry &other) = default;
+    CommandSoftEnumRegistry &operator=(const CommandSoftEnumRegistry &other) = default;
+
+    CommandRegistry *registry{nullptr};
 };
