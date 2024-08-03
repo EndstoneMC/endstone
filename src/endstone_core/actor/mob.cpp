@@ -151,6 +151,11 @@ void EndstoneMob::setRotation(float yaw, float pitch)
     mob_.setYBodyRotation(yaw);
 }
 
+void EndstoneMob::teleport(Location location)
+{
+    EndstoneActor::teleport(location);
+}
+
 std::int64_t EndstoneMob::getId() const
 {
     return EndstoneActor::getId();

@@ -100,6 +100,13 @@ public:
     virtual void setRotation(float yaw, float pitch) = 0;
 
     /**
+     * @return Teleports this entity to the given location.
+     *
+     * @param location New location to teleport this entity to
+     */
+    virtual void teleport(Location location) = 0;
+
+    /**
      * @brief Returns a unique id for this actor
      *
      * @return Actor id

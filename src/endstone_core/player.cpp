@@ -222,6 +222,11 @@ void EndstonePlayer::setRotation(float yaw, float pitch)
     EndstoneMob::setRotation(yaw, pitch);
 }
 
+void EndstonePlayer::teleport(Location location)
+{
+    EndstoneMob::teleport(location);
+}
+
 std::int64_t EndstonePlayer::getId() const
 {
     return EndstoneMob::getId();

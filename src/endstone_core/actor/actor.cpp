@@ -17,6 +17,7 @@
 #include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/server/commands/command_utils.h"
+#include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/level/level.h"
@@ -160,6 +161,11 @@ Dimension &EndstoneActor::getDimension() const
 void EndstoneActor::setRotation(float yaw, float pitch)
 {
     actor_.setRotationWrapped({pitch, yaw});
+}
+
+void EndstoneActor::teleport(Location location)
+{
+    // TODO: implement this
 }
 
 std::int64_t EndstoneActor::getId() const
