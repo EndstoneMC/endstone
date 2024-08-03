@@ -263,6 +263,7 @@ std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
 {
     CommandSoftEnumRegistry registry{};
     auto board = ServerScoreboard::create(registry, nullptr, level_->getHandle()._getGameplayUserManagerStackRef());
+    board->setPacketSender(level_->getHandle().getPacketSender());
     auto result = std::make_shared<EndstoneScoreboard>(std::move(board));
     scoreboards_.emplace_back(result);
     return result;
@@ -286,15 +287,19 @@ void EndstoneServer::setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboa
         return;
     }
 
+    // remove player from the old board
     getPlayerBoard(player).resetScores(&player);
 
+    // add player to the new board
+    new_board.onPlayerJoined(player.getHandle());
+
+    // update tracking records
     if (&scoreboard == scoreboard_.get()) {
         player_boards_.erase(&player);
     }
     else {
         player_boards_[&player] = std::static_pointer_cast<EndstoneScoreboard>(scoreboard.shared_from_this());
     }
-    // TODO(scoreboard): should we send any additional packet to client?
 }
 
 void EndstoneServer::removePlayerBoard(EndstonePlayer &player)

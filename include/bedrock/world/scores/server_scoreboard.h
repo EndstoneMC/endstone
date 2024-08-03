@@ -30,7 +30,8 @@ private:
     void *save_timer_;                                      // +784 (+552) std::unique_ptr<BasicTimer>
     LevelStorage *level_storage_;                           // +792 (+560)
     bool is_dirty_;                                         // +800 (+568)
-    char unknown1_[48];                                     // +808 (+576)
+    char unknown1_[40];                                     // +808 (+576)
+    PacketSender *packet_sender_;                           // +848 (+616)
     ScoreboardId last_unique_scoreboard_id_;                // +856 (+624)
     std::weak_ptr<void *> on_save_callback_;                // +872 (+640)
     std::weak_ptr<void *> on_start_level_game_callback_;    // +888 (+656)
