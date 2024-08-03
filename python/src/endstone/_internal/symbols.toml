@@ -1,4 +1,4 @@
-timestamp = 1722602543
+timestamp = 1722705601
 version = "1.21.3"
 
 [windows]
@@ -51,6 +51,7 @@ version = "1.21.3"
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27126640
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27128480
 "?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27167584
+"?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 27181664
 # PlayerEventCoordinator
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 25921088
 # RakNet
@@ -137,6 +138,7 @@ version = "1.21.3"
 "_ZN6Player12getInventoryEv" = 109733856
 "_ZNK6Player7getNameEv" = 109661072
 "_ZN6Player14setPermissionsE22CommandPermissionLevel" = 109685152
+"_ZN6Player10teleportToERK4Vec3biib" = 109650944
 # PlayerEventCoordinator
 "_ZN22PlayerEventCoordinator9sendEventERK8EventRefI19PlayerGameplayEventIvEE" = 112181616
 # RakNet

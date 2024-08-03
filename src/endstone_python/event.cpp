@@ -30,6 +30,7 @@
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
+#include "endstone/event/player/player_teleport_event.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
@@ -97,6 +98,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
     py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.");
+    py::class_<PlayerTeleportEvent, PlayerEvent>(m, "PlayerTeleportEvent",
+                                                 "Called when a player is teleported from one location to another.")
+        .def_property("from_location", &PlayerTeleportEvent::getFrom, &PlayerTeleportEvent::setFrom,
+                      "Gets or sets the location that this player moved from.")
+        .def_property("to_location", &PlayerTeleportEvent::getTo, &PlayerTeleportEvent::setTo,
+                      "Gets or sets the location that this player moved to.");
 
     py::class_<BroadcastMessageEvent, Event>(
         m, "BroadcastMessageEvent", "Event triggered for server broadcast messages such as from Server.broadcast")

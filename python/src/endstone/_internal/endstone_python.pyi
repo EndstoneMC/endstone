@@ -3,7 +3,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1461,6 +1461,26 @@ class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
     """
+class PlayerTeleportEvent(PlayerEvent):
+    """
+    Called when a player is teleported from one location to another.
+    """
+    @property
+    def from_location(self) -> Location:
+        """
+        Gets or sets the location that this player moved from.
+        """
+    @from_location.setter
+    def from_location(self, arg1: Location) -> None:
+        ...
+    @property
+    def to_location(self) -> Location:
+        """
+        Gets or sets the location that this player moved to.
+        """
+    @to_location.setter
+    def to_location(self, arg1: Location) -> None:
+        ...
 class Plugin(CommandExecutor):
     """
     Represents a Plugin

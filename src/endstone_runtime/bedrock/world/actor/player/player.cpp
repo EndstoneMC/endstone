@@ -14,6 +14,7 @@
 
 #include "bedrock/world/actor/player/player.h"
 
+#include <endstone/event/player/player_teleport_event.h>
 #include <entt/entt.hpp>
 
 #include "bedrock/entity/components/abilities_component.h"
@@ -23,6 +24,25 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+
+using endstone::detail::EndstoneServer;
+
+void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
+{
+    Vec3 position = pos;
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &player = getEndstonePlayer();
+    endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+    endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        return;
+    }
+    position = {e.getTo().getX(), e.getTo().getY(), e.getTo().getZ()};
+    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Player::teleportTo, __FUNCDNAME__, this, position, should_stop_riding, cause,
+                                     entity_type, keep_velocity);
+}
 
 Container &Player::getInventory()
 {

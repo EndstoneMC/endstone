@@ -31,6 +31,7 @@
 class Player : public Mob {
 public:
     ~Player() override = 0;
+    ENDSTONE_HOOK void teleportTo(const Vec3 &, bool, int, int, bool) override;
 
     virtual void prepareRegion(ChunkSource &) = 0;
     virtual void destroyRegion() = 0;
