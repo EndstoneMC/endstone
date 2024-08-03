@@ -14,6 +14,9 @@
 
 #include "endstone/detail/actor/actor.h"
 
+#include <bedrock/world/level/dimension/vanilla_dimensions.h>
+#include <endstone/detail/level/dimension.h>
+
 #include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/server/commands/command_utils.h"
@@ -165,7 +168,19 @@ void EndstoneActor::setRotation(float yaw, float pitch)
 
 void EndstoneActor::teleport(Location location)
 {
-    // TODO: implement this
+    DimensionType destination_dimension = VanillaDimensions::Undefined;
+    if (auto *dimension = location.getDimension(); dimension) {
+        destination_dimension = static_cast<EndstoneDimension *>(dimension)->getHandle().getDimensionId();
+    }
+
+    auto rotation = RotationCommandUtils::RotationData{{location.getPitch(), 0}, {location.getYaw(), 0}, std::nullopt};
+    auto target = TeleportCommand::computeTarget(actor_,                                               // victim
+                                                 {location.getX(), location.getY(), location.getZ()},  // destination
+                                                 nullptr,                                              // facing
+                                                 destination_dimension,                                //  dimension
+                                                 rotation,                                             // rotation
+                                                 CommandVersion::CurrentVersion);
+    TeleportCommand::applyTarget(actor_, std::move(target), /*keep_velocity*/ false);
 }
 
 std::int64_t EndstoneActor::getId() const

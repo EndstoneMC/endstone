@@ -33,6 +33,7 @@ public:
     [[nodiscard]] Type getType() const override;
     [[nodiscard]] Level &getLevel() const override;
     std::unique_ptr<Block> getBlockAt(int x, int y, int z) override;
+    [[nodiscard]] ::Dimension &getHandle() const;
 
 private:
     ::Dimension &dimension_;

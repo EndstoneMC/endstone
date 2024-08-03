@@ -23,4 +23,5 @@ public:
     constexpr static DimensionType Overworld{0};
     constexpr static DimensionType Nether{1};
     constexpr static DimensionType TheEnd{2};
+    constexpr static DimensionType Undefined{3};
 };
