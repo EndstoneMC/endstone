@@ -1,4 +1,4 @@
-timestamp = 1722705601
+timestamp = 1722717510
 version = "1.21.3"
 
 [windows]
@@ -87,6 +87,9 @@ version = "1.21.3"
 "??0ServerScoreboard@@QEAA@VCommandSoftEnumRegistry@@PEAVLevelStorage@@AEBV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@@Z" = 36654656
 # StartGamePacket
 "?write@StartGamePacket@@UEBAXAEAVBinaryStream@@@Z" = 10695888
+# TeleportCommand
+"?applyTarget@TeleportCommand@@SAXAEAVActor@@VTeleportTarget@@_N@Z" = 24319440
+"?computeTarget@TeleportCommand@@SA?AVTeleportTarget@@AEAVActor@@VVec3@@PEAV4@V?$AutomaticID@VDimension@@H@@AEBV?$optional@VRotationData@RotationCommandUtils@@@std@@H@Z" = 24319936
 
 [linux]
 "_Z7getI18nv" = 74169216
@@ -174,3 +177,6 @@ version = "1.21.3"
 "_ZN16ServerScoreboardC2E23CommandSoftEnumRegistryP12LevelStorageRKN3gsl8not_nullI14StackRefResultI19GameplayUserManagerEEE" = 130490752
 # StartGamePacket
 "_ZNK15StartGamePacket5writeER12BinaryStream" = 78722480
+# TeleportCommand
+"_ZN15TeleportCommand11applyTargetER5Actor14TeleportTargetb" = 82195136
+"_ZN15TeleportCommand13computeTargetER5Actor4Vec3PS2_11AutomaticIDI9DimensioniERKNSt3__18optionalIN20RotationCommandUtils12RotationDataEEEi" = 82195520

@@ -173,13 +173,16 @@ void EndstoneActor::teleport(Location location)
         destination_dimension = static_cast<EndstoneDimension *>(dimension)->getHandle().getDimensionId();
     }
 
-    auto rotation = RotationCommandUtils::RotationData{{location.getPitch(), 0}, {location.getYaw(), 0}, std::nullopt};
+    auto rotation = RotationCommandUtils::RotationData{RelativeFloat{location.getPitch(), 0},
+                                                       RelativeFloat{location.getYaw(), 0}, std::nullopt};
+
     auto target = TeleportCommand::computeTarget(actor_,                                               // victim
                                                  {location.getX(), location.getY(), location.getZ()},  // destination
                                                  nullptr,                                              // facing
                                                  destination_dimension,                                //  dimension
                                                  rotation,                                             // rotation
                                                  CommandVersion::CurrentVersion);
+
     TeleportCommand::applyTarget(actor_, std::move(target), /*keep_velocity*/ false);
 }
 

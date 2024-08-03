@@ -13,3 +13,21 @@
 // limitations under the License.
 
 #include "bedrock/server/commands/standard/teleport_command.h"
+
+#include "endstone/detail/hook.h"
+
+TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, Vec3 *facing_position,
+                                              AutomaticID<Dimension, int> destination_dimension,
+                                              std::optional<RotationCommandUtils::RotationData> const &rotation_data,
+                                              int command_version)
+{
+    TeleportTarget result;
+    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&TeleportCommand::computeTarget, result, victim, destination, facing_position,
+                                    destination_dimension, rotation_data, command_version);
+    return result;
+}
+
+void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&TeleportCommand::applyTarget, victim, std::move(target), keep_velocity);
+}
