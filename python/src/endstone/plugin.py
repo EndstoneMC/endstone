@@ -106,7 +106,7 @@ class Plugin(endstone_python.Plugin):
         return self._config
 
     def reload_config(self) -> dict:
-        with (Path(self.data_folder) / "config.toml").open("r") as f:
+        with (Path(self.data_folder) / "config.toml").open("r", encoding="utf-8") as f:
             self._config = tomlkit.load(f)
 
         return self._config
@@ -115,7 +115,7 @@ class Plugin(endstone_python.Plugin):
         if self._config is None:
             return
 
-        with (Path(self.data_folder) / "config.toml").open("w") as f:
+        with (Path(self.data_folder) / "config.toml").open("w", encoding="utf-8") as f:
             tomlkit.dump(self._config, f)
 
     def save_default_config(self) -> None:
