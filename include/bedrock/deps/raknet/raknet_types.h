@@ -77,6 +77,10 @@ BEDROCK_STATIC_ASSERT_SIZE(SystemAddress, 136, 136);
 struct RakNetGUID {
     RakNetGUID() : g(-1), system_index(-1) {}
     explicit RakNetGUID(uint64_t g) : g(g), system_index(-1) {}
+    bool operator==(const RakNetGUID &right) const
+    {
+        return g == right.g;
+    }
 
     std::uint64_t g;
     SystemIndex system_index;
