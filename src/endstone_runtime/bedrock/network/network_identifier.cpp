@@ -62,7 +62,8 @@ bool NetworkIdentifier::equalsTypeData(const NetworkIdentifier &other) const
                sock.addr4.sin_addr.s_addr == other.sock.addr4.sin_addr.s_addr;
     case Type::Address6:
         return sock.addr6.sin6_port == other.sock.addr6.sin6_port &&
-            std::memcmp(sock.addr6.sin6_addr.s6_addr, other.sock.addr6.sin6_addr.s6_addr, sizeof(sock.addr6.sin6_addr.s6_addr);
+               std::memcmp(sock.addr6.sin6_addr.s6_addr, other.sock.addr6.sin6_addr.s6_addr,
+                           sizeof(sock.addr6.sin6_addr.s6_addr)) == 0;
     case Type::NetherNet:
         return nether_net_id == other.nether_net_id;
     case Type::Generic:

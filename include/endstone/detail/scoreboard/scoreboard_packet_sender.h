@@ -15,9 +15,12 @@
 #pragma once
 
 #include "bedrock/network/packet_sender.h"
-#include "endstone/detail/server.h"
 
 namespace endstone::detail {
+
+class EndstoneScoreboard;
+class EndstoneServer;
+
 class ScoreboardPacketSender : public PacketSender {
 public:
     ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard, PacketSender &sender);

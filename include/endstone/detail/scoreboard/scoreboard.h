@@ -17,6 +17,7 @@
 #include <memory>
 
 #include "bedrock/world/scores/scoreboard.h"
+#include "endstone/detail/scoreboard/scoreboard_packet_sender.h"
 #include "endstone/scoreboard/scoreboard.h"
 
 namespace endstone::detail {
@@ -25,6 +26,8 @@ class EndstoneScoreboard : public Scoreboard {
 public:
     explicit EndstoneScoreboard(::Scoreboard &board);
     explicit EndstoneScoreboard(std::unique_ptr<::Scoreboard> board);
+    void init();
+
     std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) override;
     std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
                                             std::string display_name) override;
@@ -52,6 +55,7 @@ private:
 
     ::Scoreboard &board_;
     std::unique_ptr<::Scoreboard> holder_;
+    std::unique_ptr<ScoreboardPacketSender> packet_sender_;
 };
 
 }  // namespace endstone::detail

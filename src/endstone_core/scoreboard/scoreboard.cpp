@@ -21,6 +21,7 @@
 #include "bedrock/world/scores/objective_criteria.h"
 #include "bedrock/world/scores/scoreboard.h"
 #include "endstone/detail/actor/actor.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/player.h"
 #include "endstone/detail/scoreboard/objective.h"
 #include "endstone/detail/scoreboard/score.h"
@@ -28,11 +29,23 @@
 
 namespace endstone::detail {
 
-EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board) {}
+EndstoneScoreboard::EndstoneScoreboard(::Scoreboard &board) : board_(board)
+{
+    init();
+}
 
 EndstoneScoreboard::EndstoneScoreboard(std::unique_ptr<::Scoreboard> board) : board_(*board)
 {
     holder_ = std::move(board);
+    init();
+}
+
+void EndstoneScoreboard::init()
+{
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+    packet_sender_ = std::make_unique<ScoreboardPacketSender>(server, *this, *level->getHandle().getPacketSender());
+    board_.setPacketSender(packet_sender_.get());
 }
 
 std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)

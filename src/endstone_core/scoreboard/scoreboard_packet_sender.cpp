@@ -14,6 +14,8 @@
 
 #include "endstone/detail/scoreboard/scoreboard_packet_sender.h"
 
+#include "endstone/detail/server.h"
+
 endstone::detail::ScoreboardPacketSender::ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard,
                                                                  PacketSender &sender)
     : server_(server), scoreboard_(scoreboard), sender_(sender)
