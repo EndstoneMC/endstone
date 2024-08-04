@@ -41,3 +41,33 @@ NetworkIdentifier::Type NetworkIdentifier::getType() const
 {
     return type;
 }
+
+bool NetworkIdentifier::operator==(const NetworkIdentifier &other) const
+{
+    return type == other.type && equalsTypeData(other);
+}
+
+bool NetworkIdentifier::operator!=(const NetworkIdentifier &other) const
+{
+    return !(*this == other);
+}
+
+bool NetworkIdentifier::equalsTypeData(const NetworkIdentifier &other) const
+{
+    switch (type) {
+    case Type::RakNet:
+        return guid == other.guid;
+    case Type::Address:
+        return sock.addr4.sin_port == other.sock.addr4.sin_port &&
+               sock.addr4.sin_addr.s_addr == other.sock.addr4.sin_addr.s_addr;
+    case Type::Address6:
+        return sock.addr6.sin6_port == other.sock.addr6.sin6_port &&
+            std::memcmp(sock.addr6.sin6_addr.s6_addr, other.sock.addr6.sin6_addr.s6_addr, sizeof(sock.addr6.sin6_addr.s6_addr);
+    case Type::NetherNet:
+        return nether_net_id == other.nether_net_id;
+    case Type::Generic:
+        return other.type == Type::Generic;
+    default:
+        return false;
+    }
+}

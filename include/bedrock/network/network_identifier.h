@@ -19,6 +19,7 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/deps/raknet/raknet_types.h"
+#include "bedrock/network/sub_client_id.h"
 
 class NetworkIdentifier {
 public:
@@ -42,5 +43,14 @@ public:
     [[nodiscard]] std::string getAddress() const;
     [[nodiscard]] std::uint16_t getPort() const;
     [[nodiscard]] Type getType() const;
+    bool operator==(const NetworkIdentifier &other) const;
+    bool operator!=(const NetworkIdentifier &other) const;
+    [[nodiscard]] bool equalsTypeData(const NetworkIdentifier &other) const;
 };
 BEDROCK_STATIC_ASSERT_SIZE(NetworkIdentifier, 160, 160);
+
+class NetworkIdentifierWithSubId {
+public:
+    NetworkIdentifier network_identifier;
+    SubClientId sub_id;
+};
