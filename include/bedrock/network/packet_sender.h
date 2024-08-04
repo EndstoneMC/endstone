@@ -14,10 +14,25 @@
 
 #pragma once
 
-#include "bedrock/network/packet.h"
+#include <functional>
 
-class PacketSender {
+#include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/entity/components/user_entity_identifier_component.h"
+#include "bedrock/network/packet.h"
+#include "bedrock/network/sub_client_id.h"
+
+class PacketSender : public Bedrock::EnableNonOwnerReferences {
 public:
-    virtual ~PacketSender() = default;
-    virtual void send(Packet &packet) = 0;
+    ~PacketSender() override = 0;
+    virtual void send(Packet &) = 0;
+    virtual void sendToServer(Packet &) = 0;
+    virtual void sendToClient(UserEntityIdentifierComponent const *, Packet const &) = 0;
+    virtual void sendToClient(NetworkIdentifier const &, Packet const &, SubClientId) = 0;
+    virtual void sendToClients(std::vector<NetworkIdentifierWithSubId> const &, Packet const &) = 0;
+    virtual void sendBroadcast(Packet const &) = 0;
+    virtual void sendBroadcast(NetworkIdentifier const &, SubClientId, Packet const &) = 0;
+    virtual void flush(NetworkIdentifier const &, std::function<void()> &&) = 0;
+
+private:
+    SubClientId sender_sub_id_{SubClientId::PrimaryClient};
 };
