@@ -41,7 +41,7 @@ class ActionForm:
             ...
     def __init__(self, title: str | Translatable = '', content: str | Translatable = '', buttons: list[ActionForm.Button] | None = None, on_submit: typing.Callable[[Player, int], None] = None, on_close: typing.Callable[[Player], None] = None) -> None:
         ...
-    def add_button(self, text: str | Translatable, icon: str | None = None) -> ActionForm:
+    def add_button(self, text: str | Translatable, icon: str | None = None, on_click: typing.Callable[[Player], None] = None) -> ActionForm:
         """
         Adds a button to the form.
         """

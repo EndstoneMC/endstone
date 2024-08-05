@@ -34,8 +34,7 @@ public:
         using OnClickCallback = std::function<void(Player *)>;
 
         Button() = default;
-        explicit Button(Message text, std::optional<std::string> icon = std::nullopt,
-                        ActionForm::Button::OnClickCallback on_click = {})
+        explicit Button(Message text, std::optional<std::string> icon = std::nullopt, OnClickCallback on_click = {})
             : text_(std::move(text)), icon_(std::move(icon)), on_click_(std::move(on_click))
         {
         }
@@ -85,9 +84,9 @@ public:
         }
 
         /**
-         * @brief Gets the on submit callback of the button.
+         * @brief Gets the on click callback of the button.
          *
-         * @return The on submit callback of the button.
+         * @return The on click callback of the button.
          */
         [[nodiscard]] OnClickCallback getOnClick() const
         {
@@ -143,11 +142,13 @@ public:
      *
      * @param text The text of the button
      * @param icon The path or URL to the icon image
+     * @param on_click The on click callback of the button
      * @return A reference to the current form.
      */
-    ActionForm &addButton(const Message &text, const std::optional<std::string> &icon = std::nullopt)
+    ActionForm &addButton(const Message &text, const std::optional<std::string> &icon = std::nullopt,
+                          Button::OnClickCallback on_click = {})
     {
-        buttons_.emplace_back(text, icon);
+        buttons_.emplace_back(text, icon, std::move(on_click));
         return *this;
     }
 

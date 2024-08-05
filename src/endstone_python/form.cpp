@@ -158,7 +158,8 @@ void init_form(py::module_ &m)
         .def_property("content", &ActionForm::getContent, &ActionForm::setContent,
                       "Gets or sets the content of the form.", py::return_value_policy::reference)
         .def("add_button", &ActionForm::addButton, "Adds a button to the form.", py::arg("text"),
-             py::arg("icon") = py::none(), py::return_value_policy::reference)
+             py::arg("icon") = py::none(), py::arg("on_click") = ActionForm::Button::OnClickCallback{},
+             py::return_value_policy::reference)
         .def_property("buttons", &ActionForm::getButtons, &ActionForm::setButtons,
                       "Gets or sets the buttons of the action form.", py::return_value_policy::reference);
 
