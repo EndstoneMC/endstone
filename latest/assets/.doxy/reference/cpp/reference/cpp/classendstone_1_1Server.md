@@ -82,6 +82,7 @@ _Represents a server implementation._
 | virtual bool | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
 | virtual void | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
+| virtual void | [**shutdown**](#function-shutdown) () = 0<br>_Shutdowns the server, stopping everything._  |
 | virtual  | [**~Server**](#function-server) () = default<br> |
 
 
@@ -754,6 +755,19 @@ virtual void endstone::Server::setMaxPlayers (
 
 
         
+
+<hr>
+
+
+
+### function shutdown 
+
+```C++
+virtual void endstone::Server::shutdown () = 0
+```
+
+
+
 
 <hr>
 

@@ -420,6 +420,7 @@
 * **setValue** ([**endstone::Score**](classendstone_1_1Score.md))
 * **Server** ([**endstone::Server**](classendstone_1_1Server.md))
 * **setMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **shutdown** ([**endstone::Server**](classendstone_1_1Server.md))
 * **ServerCommandEvent** ([**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **ServerListPingEvent** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **serialize** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

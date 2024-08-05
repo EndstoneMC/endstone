@@ -80,6 +80,8 @@ public:
 
     [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
 
+    virtual void shutdown() = 0;
+
     virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
 
     virtual void broadcastMessage(const std::string &message) const = 0;

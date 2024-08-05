@@ -784,6 +784,7 @@
     <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" kind="function"><name>setMaxPlayers</name></member>
     <member refid="classendstone_1_1Server_1a3f5b8f0687c88f67472718e67adada76" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1Server_1ab09e09e3f7fe51d16fd5e4e82c95ba49" kind="function"><name>getPlayer</name></member>
+    <member refid="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" kind="function"><name>shutdown</name></member>
     <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" kind="function"><name>broadcast</name></member>
     <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" kind="function"><name>broadcastMessage</name></member>
     <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" kind="function"><name>broadcastMessage</name></member>

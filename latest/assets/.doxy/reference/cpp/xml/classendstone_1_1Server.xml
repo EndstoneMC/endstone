@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="206" column="37" bodyfile="include/endstone/server.h" bodystart="206" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="211" column="37" bodyfile="include/endstone/server.h" bodystart="211" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="211" column="37" bodyfile="include/endstone/server.h" bodystart="211" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="216" column="37" bodyfile="include/endstone/server.h" bodystart="216" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -424,6 +424,20 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="154" column="21"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Server::shutdown</definition>
+        <argsstring>()=0</argsstring>
+        <name>shutdown</name>
+        <briefdescription>
+<para>Shutdowns the server, stopping everything. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="159" column="18"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Server::broadcast</definition>
@@ -462,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="162" column="18"/>
+        <location file="include/endstone/server.h" line="167" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -490,7 +504,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="169" column="18"/>
+        <location file="include/endstone/server.h" line="174" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -518,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="172" column="10" bodyfile="include/endstone/server.h" bodystart="172" bodyend="175"/>
+        <location file="include/endstone/server.h" line="177" column="10" bodyfile="include/endstone/server.h" bodystart="177" bodyend="180"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -535,7 +549,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="182" column="19"/>
+        <location file="include/endstone/server.h" line="187" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1aead6d70b5edc7e8b8edd0982ea265756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> *</type>
@@ -553,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="192" column="25"/>
+        <location file="include/endstone/server.h" line="197" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a87735b7a9e8a75876e8e5da3385cfa83" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &gt;</type>
@@ -571,7 +585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="201" column="30"/>
+        <location file="include/endstone/server.h" line="206" column="30"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -579,7 +593,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="212"/>
+    <location file="include/endstone/server.h" line="38" column="1" bodyfile="include/endstone/server.h" bodystart="38" bodyend="217"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
       <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
@@ -607,6 +621,7 @@
       <member refid="classendstone_1_1Server_1a2dee067a586bcea2355896f716fc3375" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>Server</name></member>
       <member refid="classendstone_1_1Server_1ab38f521ee3c088261a6448d3bf9d4dbd" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>Server</name></member>
       <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>setMaxPlayers</name></member>
+      <member refid="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>shutdown</name></member>
       <member refid="classendstone_1_1Server_1a6d90d04047e7e0730d9822be14611ba1" prot="public" virt="virtual"><scope>endstone::Server</scope><name>~Server</name></member>
     </listofallmembers>
   </compounddef>
