@@ -2083,7 +2083,7 @@
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>ActionForm</strong></a> &amp;</td>
-<td style="text-align: left;"><a href="#function-addbutton"><strong>addButton</strong></a> (const Message &amp; text, const std::optional&lt; std::string &gt; &amp; icon=std::nullopt) <br><em>Adds a button to the form.</em></td>
+<td style="text-align: left;"><a href="#function-addbutton"><strong>addButton</strong></a> (const Message &amp; text, const std::optional&lt; std::string &gt; &amp; icon=std::nullopt, Button::OnClickCallback on_click={}) <br><em>Adds a button to the form.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">const std::vector&lt; <a href="../classendstone_1_1ActionForm_1_1Button/"><strong>Button</strong></a> &gt; &amp;</td>
@@ -2178,13 +2178,15 @@
 <p><em>Adds a button to the form.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">ActionForm</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">ActionForm</span><span class="o">::</span><span class="n">addButton</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">icon</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">icon</span><span class="o">=</span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="n">Button</span><span class="o">::</span><span class="n">OnClickCallback</span><span class="w"> </span><span class="n">on_click</span><span class="o">=</span><span class="p">{}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>text</code> The text of the button </li>
 <li><code>icon</code> The path or URL to the icon image </li>
+<li><code>on_click</code> The on click callback of the button </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>A reference to the current form. </p>

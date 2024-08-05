@@ -91,7 +91,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ActionForm**](#function-actionform) () = default<br> |
-|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) (const Message & text, const std::optional&lt; std::string &gt; & icon=std::nullopt) <br>_Adds a button to the form._  |
+|  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) (const Message & text, const std::optional&lt; std::string &gt; & icon=std::nullopt, Button::OnClickCallback on\_click={}) <br>_Adds a button to the form._  |
 |  const std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & | [**getButtons**](#function-getbuttons) () const<br>_Get the buttons of the action form._  |
 |  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
 |  OnSubmitCallback | [**getOnSubmit**](#function-getonsubmit) () const<br>_Gets the on submit callback of the form._  |
@@ -212,7 +212,8 @@ _Adds a button to the form._
 ```C++
 inline ActionForm & endstone::ActionForm::addButton (
     const Message & text,
-    const std::optional< std::string > & icon=std::nullopt
+    const std::optional< std::string > & icon=std::nullopt,
+    Button::OnClickCallback on_click={}
 ) 
 ```
 
@@ -225,6 +226,7 @@ inline ActionForm & endstone::ActionForm::addButton (
 
 * `text` The text of the button 
 * `icon` The path or URL to the icon image 
+* `on_click` The on click callback of the button 
 
 
 

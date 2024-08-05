@@ -8,7 +8,7 @@
     <member refid="classendstone_1_1ActionForm_1ac76d90626698589dba21d3d9d372326f" kind="function"><name>ActionForm</name></member>
     <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" kind="function"><name>getContent</name></member>
     <member refid="classendstone_1_1ActionForm_1a3d4690491594fa31da97d5578c1bc7f9" kind="function"><name>setContent</name></member>
-    <member refid="classendstone_1_1ActionForm_1a5614202a3c82ded38502d4cbf06c0484" kind="function"><name>addButton</name></member>
+    <member refid="classendstone_1_1ActionForm_1a17e425cb57e8ada50a73c9a02e9053b5" kind="function"><name>addButton</name></member>
     <member refid="classendstone_1_1ActionForm_1a655f766116e4d39c838e37940a015471" kind="function"><name>getButtons</name></member>
     <member refid="classendstone_1_1ActionForm_1a2cabeb959f3a06e7cfce29ae1037a52e" kind="function"><name>setButtons</name></member>
     <member refid="classendstone_1_1ActionForm_1a18e87e6ed9ab7a49f74522672392ffe6" kind="function"><name>getOnSubmit</name></member>
@@ -99,7 +99,7 @@
     <member refid="classendstone_1_1ActionForm_1_1Button_1ad55412f067b599395d061269af34d97d" kind="variable"><name>icon_</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a8f5d6225886bf06fa0809157f67b90f7" kind="variable"><name>on_click_</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a5657f2f796d1d3f7642600bdb6cb2255" kind="function"><name>Button</name></member>
-    <member refid="classendstone_1_1ActionForm_1_1Button_1a9069cf2aa295fc5ccd5c3ae0dcc56e12" kind="function"><name>Button</name></member>
+    <member refid="classendstone_1_1ActionForm_1_1Button_1afcae1d95686f95714ec271693f67c743" kind="function"><name>Button</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a4810e6db896b645a950c372548f703c3" kind="function"><name>getText</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a2a0388f526040f2d506d79aa9a04662b" kind="function"><name>setText</name></member>
     <member refid="classendstone_1_1ActionForm_1_1Button_1a2a51a41302b3ffff548d4227d58c2655" kind="function"><name>getIcon</name></member>

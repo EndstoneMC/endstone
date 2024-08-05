@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="110" column="17" bodyfile="include/endstone/form/action_form.h" bodystart="110" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="109" column="17" bodyfile="include/endstone/form/action_form.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActionForm_1_1Button_1ad55412f067b599395d061269af34d97d" prot="private" static="no" mutable="no">
         <type>std::optional&lt; std::string &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="111" column="23" bodyfile="include/endstone/form/action_form.h" bodystart="111" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="110" column="23" bodyfile="include/endstone/form/action_form.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1ActionForm_1_1Button_1a8f5d6225886bf06fa0809157f67b90f7" prot="private" static="no" mutable="no">
         <type>OnClickCallback</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="112" column="25" bodyfile="include/endstone/form/action_form.h" bodystart="112" bodyend="-1"/>
+        <location file="include/endstone/form/action_form.h" line="111" column="25" bodyfile="include/endstone/form/action_form.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -73,10 +73,10 @@
         </inbodydescription>
         <location file="include/endstone/form/action_form.h" line="36" column="9"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a9069cf2aa295fc5ccd5c3ae0dcc56e12" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1afcae1d95686f95714ec271693f67c743" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::ActionForm::Button::Button</definition>
-        <argsstring>(Message text, std::optional&lt; std::string &gt; icon=std::nullopt, ActionForm::Button::OnClickCallback on_click={})</argsstring>
+        <argsstring>(Message text, std::optional&lt; std::string &gt; icon=std::nullopt, OnClickCallback on_click={})</argsstring>
         <name>Button</name>
         <param>
           <type>Message</type>
@@ -88,7 +88,7 @@
           <defval>std::nullopt</defval>
         </param>
         <param>
-          <type>ActionForm::Button::OnClickCallback</type>
+          <type>OnClickCallback</type>
           <declname>on_click</declname>
           <defval>{}</defval>
         </param>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="37" column="18" bodyfile="include/endstone/form/action_form.h" bodystart="37" bodyend="41"/>
+        <location file="include/endstone/form/action_form.h" line="37" column="18" bodyfile="include/endstone/form/action_form.h" bodystart="37" bodyend="40"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a4810e6db896b645a950c372548f703c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Message</type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="48" column="18" bodyfile="include/endstone/form/action_form.h" bodystart="48" bodyend="51"/>
+        <location file="include/endstone/form/action_form.h" line="47" column="18" bodyfile="include/endstone/form/action_form.h" bodystart="47" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a2a0388f526040f2d506d79aa9a04662b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &amp;</type>
@@ -145,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="59" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="59" bodyend="63"/>
+        <location file="include/endstone/form/action_form.h" line="58" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="58" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a2a51a41302b3ffff548d4227d58c2655" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="70" column="24" bodyfile="include/endstone/form/action_form.h" bodystart="70" bodyend="73"/>
+        <location file="include/endstone/form/action_form.h" line="69" column="24" bodyfile="include/endstone/form/action_form.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1aa3dd146dceef22e78cab106c2c307560" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &amp;</type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="81" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="81" bodyend="85"/>
+        <location file="include/endstone/form/action_form.h" line="80" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="80" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a7f7e2a07239d36874eb4dc8282b0099b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>OnClickCallback</type>
@@ -200,16 +200,16 @@
         <argsstring>() const</argsstring>
         <name>getOnClick</name>
         <briefdescription>
-<para>Gets the on submit callback of the button. </para>
+<para>Gets the on click callback of the button. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The on submit callback of the button. </para>
+<para><simplesect kind="return"><para>The on click callback of the button. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="92" column="26" bodyfile="include/endstone/form/action_form.h" bodystart="92" bodyend="95"/>
+        <location file="include/endstone/form/action_form.h" line="91" column="26" bodyfile="include/endstone/form/action_form.h" bodystart="91" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1ActionForm_1_1Button_1a89b06fc9f88a548931dff25fe7c82d4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1ActionForm_1_1Button" kindref="compound">Button</ref> &amp;</type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/form/action_form.h" line="103" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="103" bodyend="107"/>
+        <location file="include/endstone/form/action_form.h" line="102" column="16" bodyfile="include/endstone/form/action_form.h" bodystart="102" bodyend="106"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -247,10 +247,10 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/form/action_form.h" line="32" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="32" bodyend="113"/>
+    <location file="include/endstone/form/action_form.h" line="32" column="5" bodyfile="include/endstone/form/action_form.h" bodystart="32" bodyend="112"/>
     <listofallmembers>
       <member refid="classendstone_1_1ActionForm_1_1Button_1a5657f2f796d1d3f7642600bdb6cb2255" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>Button</name></member>
-      <member refid="classendstone_1_1ActionForm_1_1Button_1a9069cf2aa295fc5ccd5c3ae0dcc56e12" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>Button</name></member>
+      <member refid="classendstone_1_1ActionForm_1_1Button_1afcae1d95686f95714ec271693f67c743" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>Button</name></member>
       <member refid="classendstone_1_1ActionForm_1_1Button_1a2a51a41302b3ffff548d4227d58c2655" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>getIcon</name></member>
       <member refid="classendstone_1_1ActionForm_1_1Button_1a7f7e2a07239d36874eb4dc8282b0099b" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>getOnClick</name></member>
       <member refid="classendstone_1_1ActionForm_1_1Button_1a4810e6db896b645a950c372548f703c3" prot="public" virt="non-virtual"><scope>endstone::ActionForm::Button</scope><name>getText</name></member>
