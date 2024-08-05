@@ -591,20 +591,25 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
         try {
             std::visit(entt::overloaded{
                            [&](const MessageForm &form) {
-                               auto callback = form.getOnSubmit();
-                               if (callback) {
+                               if (auto callback = form.getOnSubmit()) {
                                    callback(this, json.get<bool>() ? 0 : 1);
                                }
                            },
                            [&](const ActionForm &form) {
-                               auto callback = form.getOnSubmit();
-                               if (callback) {
-                                   callback(this, json.get<int>());
+                               int selection = json.get<int>();
+                               if (auto callback = form.getOnSubmit()) {
+                                   callback(this, selection);
+                               }
+                               const auto &buttons = form.getButtons();
+                               if (selection >= 0 && selection < buttons.size()) {
+                                   const auto &button = buttons[selection];
+                                   if (auto on_click = button.getOnClick()) {
+                                       on_click(this);
+                                   }
                                }
                            },
                            [&](const ModalForm &form) {
-                               auto callback = form.getOnSubmit();
-                               if (callback) {
+                               if (auto callback = form.getOnSubmit()) {
                                    callback(this, json.dump());
                                }
                            },

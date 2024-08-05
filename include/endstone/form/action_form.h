@@ -114,19 +114,7 @@ public:
 
     using OnSubmitCallback = std::function<void(Player *, int)>;
 
-    explicit ActionForm()
-    {
-        on_submit_ = [this](Player *player, int selection) {
-            if (selection < 0 || selection >= buttons_.size()) {
-                return;
-            }
-            auto &button = buttons_[selection];
-            auto on_click = button.getOnClick();
-            if (on_click) {
-                on_click(player);
-            }
-        };
-    }
+    explicit ActionForm() = default;
 
     /**
      * @brief Get the content of the form.
