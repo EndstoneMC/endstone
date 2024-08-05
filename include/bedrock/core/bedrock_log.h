@@ -67,7 +67,10 @@ enum class LogAreaID {
     Editor,
     LevelTransition,
     Unknown,
-    Store
+    Store,
+    World,
+    Messaging,
+    Invalid = 10000
 };
 
 namespace Bedrock {
