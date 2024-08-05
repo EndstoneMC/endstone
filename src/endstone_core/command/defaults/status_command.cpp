@@ -34,7 +34,7 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
 
     auto &server = entt::locator<EndstoneServer>::value();
     auto time =
-        std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - server.getStartTime())
+        std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - server.getStartTime())
             .count();
     auto seconds = time % 60;
     auto minutes = (time / 60) % 60;

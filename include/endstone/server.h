@@ -211,7 +211,7 @@ public:
      *
      * @return The start time of the server。
      */
-    [[nodiscard]] virtual std::chrono::steady_clock::time_point getStartTime() = 0;
+    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

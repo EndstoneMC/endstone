@@ -49,7 +49,7 @@ public:
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::Scoreboard>, getNewScoreboard, (), (override));
-    MOCK_METHOD(std::chrono::steady_clock::time_point, getStartTime, (), (override));
+    MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
     MockServer()
     {
         ON_CALL(*this, getLogger())

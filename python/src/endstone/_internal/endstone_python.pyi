@@ -1,4 +1,5 @@
 from __future__ import annotations
+import datetime
 import numpy
 import os
 import typing
@@ -2007,6 +2008,10 @@ class Server:
         """
         Gets a PluginCommand with the given name or alias.
         """
+    def shutdown(self) -> None:
+        """
+        Shutdowns the server, stopping everything.
+        """
     @property
     def command_sender(self) -> ConsoleCommandSender:
         """
@@ -2059,6 +2064,11 @@ class Server:
     def scoreboard(self) -> Scoreboard:
         """
         Gets the primary Scoreboard controlled by the server.
+        """
+    @property
+    def start_time(self) -> datetime.datetime:
+        """
+        Gets the start time of the server.
         """
     @property
     def version(self) -> str:

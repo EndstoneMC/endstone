@@ -49,7 +49,7 @@ EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
     command_sender_ = std::make_unique<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
-    start_time_ = std::chrono::steady_clock::now();
+    start_time_ = std::chrono::system_clock::now();
 }
 
 std::string EndstoneServer::getName() const
@@ -277,7 +277,7 @@ std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
     return result;
 }
 
-std::chrono::steady_clock::time_point EndstoneServer::getStartTime()
+std::chrono::system_clock::time_point EndstoneServer::getStartTime()
 {
     return start_time_;
 }
