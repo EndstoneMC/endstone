@@ -52,6 +52,8 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
     registerPermission(root->getName() + ".version", root,  //
                        "Allows the user to view the version of the server", PermissionDefault::True);
+    registerPermission(root->getName() + ".status", root,  //
+                       "Allows the user to view the status of the server", PermissionDefault::Operator);
 #ifdef ENDSTONE_DEVTOOLS
     registerPermission(root->getName() + ".devtools", root, "Allows the user to open the DevTools.",
                        PermissionDefault::Operator);
