@@ -226,6 +226,7 @@ void init_server(py::class_<Server> &server)
         .def("get_player", py::overload_cast<endstone::UUID>(&Server::getPlayer, py::const_),
              py::arg("unique_id").noconvert(), py::return_value_policy::reference,
              "Gets the player with the given UUID.")
+        .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")
         .def("broadcast", &Server::broadcast, py::arg("message"), py::arg("permission"),
              "Broadcasts the specified message to every user with the given permission name.")
         .def(
@@ -237,7 +238,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the primary Scoreboard controlled by the server.",
                                py::return_value_policy::reference)
         .def("get_new_scoreboard", &Server::getNewScoreboard, "Gets a new Scoreboard to be tracked by the server.",
-             py::return_value_policy::reference);
+             py::return_value_policy::reference)
+        .def_property_readonly("start_time", &Server::getStartTime, "Gets the start time of the server.");
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)

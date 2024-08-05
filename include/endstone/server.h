@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <memory>
 #include <string>
 #include <string_view>
@@ -133,7 +134,7 @@ public:
     /**
      * @brief  Set the maximum amount of players allowed to be logged in at once.
      *
-     * @param maxPlayers The maximum amount of concurrent players
+     * @param max_players The maximum amount of concurrent players
      */
     virtual void setMaxPlayers(int max_players) = 0;
 
@@ -204,6 +205,13 @@ public:
      * @return the newly created Scoreboard
      */
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
+
+    /**
+     * @brief Gets the start time of the server.
+     *
+     * @return The start time of the server。
+     */
+    [[nodiscard]] virtual std::chrono::steady_clock::time_point getStartTime() = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

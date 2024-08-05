@@ -33,6 +33,27 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
     sender.sendMessage("{}---- {}Server status{} ----", ColorFormat::Green, ColorFormat::Reset, ColorFormat::Green);
 
     auto &server = entt::locator<EndstoneServer>::value();
+    auto time =
+        std::chrono::duration_cast<std::chrono::seconds>(std::chrono::steady_clock::now() - server.getStartTime())
+            .count();
+    auto seconds = time % 60;
+    auto minutes = (time / 60) % 60;
+    auto hours = (time / (60 * 60)) % 24;
+    auto days = time / (60 * 60 * 24);
+    if (days > 0) {
+        sender.sendMessage("{}Uptime: {}{} days {} hours {} minutes {} seconds", ColorFormat::Gold, ColorFormat::Red,
+                           days, hours, minutes, seconds);
+    }
+    else if (hours > 0) {
+        sender.sendMessage("{}Uptime: {}{} hours {} minutes {} seconds", ColorFormat::Gold, ColorFormat::Red, hours,
+                           minutes, seconds);
+    }
+    else if (minutes > 0) {
+        sender.sendMessage("{}Uptime: {}{} minutes {} seconds", ColorFormat::Gold, ColorFormat::Red, minutes, seconds);
+    }
+    else {
+        sender.sendMessage("{}Uptime: {}{} seconds", ColorFormat::Gold, ColorFormat::Red, seconds);
+    }
 
     return true;
 }
