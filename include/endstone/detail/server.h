@@ -66,6 +66,8 @@ public:
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 
+    void shutdown() override;
+
     void broadcast(const std::string &message, const std::string &permission) const override;
     void broadcastMessage(const std::string &message) const override;
 

@@ -154,6 +154,11 @@ public:
     [[nodiscard]] virtual Player *getPlayer(std::string name) const = 0;
 
     /**
+     * @brief Shutdowns the server, stopping everything.
+     */
+    virtual void shutdown() = 0;
+
+    /**
      * @brief Broadcasts the specified message to every user with the given permission name.
      *
      * @param message message to broadcast

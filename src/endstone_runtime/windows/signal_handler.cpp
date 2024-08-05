@@ -17,11 +17,13 @@
 #include "endstone/detail/signal_handler.h"
 
 #include <csignal>
-#include <iostream>
 
-#include <cpptrace/cpptrace.hpp>
+#include <entt/entt.hpp>
 #include <fmt/format.h>
 
+#include "endstone/detail/server.h"
+
+// Must be included after all headers
 #include "Windows.h"
 
 namespace endstone::detail {
@@ -52,6 +54,35 @@ LONG WINAPI exception_filter(EXCEPTION_POINTERS *info)
     return EXCEPTION_CONTINUE_SEARCH;
 }
 
+BOOL WINAPI console_ctrl_handler(DWORD event)
+{
+    switch (event) {
+    case CTRL_C_EVENT:
+    case CTRL_CLOSE_EVENT:
+    case CTRL_SHUTDOWN_EVENT:
+    case SIGTERM: {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.shutdown();
+        return TRUE;
+    }
+    default:
+        return FALSE;
+    }
+}
+
+void console_signal_handler(int signal)
+{
+    switch (signal) {
+    case SIGINT:
+    case SIGTERM: {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.shutdown();
+    }
+    default:
+        break;
+    }
+}
+
 }  // namespace
 
 void register_signal_handler()
@@ -61,6 +92,9 @@ void register_signal_handler()
     signal(SIGABRT, signal_handler);
     _set_abort_behavior(0, _WRITE_ABORT_MSG | _CALL_REPORTFAULT);
     SetUnhandledExceptionFilter(exception_filter);
+    SetConsoleCtrlHandler(console_ctrl_handler, TRUE);
+    signal(SIGINT, console_signal_handler);
+    signal(SIGTERM, console_signal_handler);
 }
 
 }  // namespace endstone::detail

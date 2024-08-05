@@ -31,3 +31,8 @@ Bedrock::NonOwnerPointer<ServerNetworkHandler> Minecraft::getServerNetworkHandle
     }
     return nullptr;
 }
+
+void Minecraft::requestServerShutdown(const std::string &message)
+{
+    app_->requestServerShutdown(message);
+}

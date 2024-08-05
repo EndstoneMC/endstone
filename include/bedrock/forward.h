@@ -92,7 +92,7 @@ class I18nObserver;
 class IAddActorEntityProxy;
 class IContainerManager;
 class IFoodItemComponent;
-class IMinecraftApp;
+class IGameModuleShared;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
@@ -208,6 +208,9 @@ public:
     class PositionTrackingDBClient;
     class PositionTrackingDBServer;
 };
+namespace Automation {
+class AutomationClient;
+}
 namespace cg {
 class ImageBuffer;
 }

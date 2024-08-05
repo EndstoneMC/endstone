@@ -15,6 +15,8 @@
 #pragma once
 
 #include <chrono>
+#include <memory>
+#include <string>
 
 #include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
@@ -23,12 +25,14 @@
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
+#include "bedrock/world/minecraft_app.h"
 
 class Minecraft : public Bedrock::EnableNonOwnerReferences {
 public:
     ~Minecraft() override = 0;
     MinecraftCommands &getCommands();
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
+    void requestServerShutdown(const std::string &message);
 
 private:
     GameCallbacks *callbacks_;                                           // +24
@@ -48,4 +52,11 @@ private:
     std::chrono::seconds max_player_idle_time_;                          // +176
     std::unique_ptr<MinecraftCommands> commands_;                        // +184
     std::unique_ptr<GameSession> game_session_;                          // +192
+    void *game_test_level_listener_;                                     // +200
+    void *game_test_;                                                    // +208
+    void *sim_timer_;                                                    // +216
+    void *real_timer_;                                                   // +224
+    std::variant<void *> network_;                                       // +232
+    PacketSender *packet_sender_;                                        // +248
+    IMinecraftApp *app_;                                                 // +256
 };

@@ -217,6 +217,13 @@ Player *EndstoneServer::getPlayer(std::string name) const
     return nullptr;
 }
 
+void EndstoneServer::shutdown()
+{
+    static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
+        server_instance_.getMinecraft().requestServerShutdown("");
+    });
+}
+
 void EndstoneServer::broadcast(const std::string &message, const std::string &permission) const
 {
     std::unordered_set<const CommandSender *> recipients;
