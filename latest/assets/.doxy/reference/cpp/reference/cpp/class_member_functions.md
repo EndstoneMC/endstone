@@ -206,6 +206,7 @@
 * **getPluginCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginManager** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getScheduler** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getStartTime** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getSender** ([**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **getLevelName** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getLocalPort** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))

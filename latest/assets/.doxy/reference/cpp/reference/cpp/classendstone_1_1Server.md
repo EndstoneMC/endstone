@@ -78,6 +78,7 @@ _Represents a server implementation._
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) \* | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the primary_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _controlled by the server._ |
+| virtual std::chrono::system\_clock::time\_point | [**getStartTime**](#function-getstarttime) () = 0<br>_Gets the start time of the server._  |
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
 | virtual bool | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
@@ -668,6 +669,31 @@ the default server scoreboard
 
 
 
+### function getStartTime 
+
+_Gets the start time of the server._ 
+```C++
+virtual std::chrono::system_clock::time_point endstone::Server::getStartTime () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The start time of the server。 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getVersion 
 
 _Gets the version string of this server implementation._ 
@@ -749,7 +775,7 @@ virtual void endstone::Server::setMaxPlayers (
 **Parameters:**
 
 
-* `maxPlayers` The maximum amount of concurrent players 
+* `max_players` The maximum amount of concurrent players 
 
 
 

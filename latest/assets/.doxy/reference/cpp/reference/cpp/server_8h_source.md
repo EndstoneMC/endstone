@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <memory>
 #include <string>
 #include <string_view>
@@ -97,6 +98,8 @@ public:
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
+
+    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 
