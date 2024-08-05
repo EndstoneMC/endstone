@@ -5,7 +5,7 @@
     <member refid="classendstone_1_1ActionForm_1a5a2382f4992f2611612841261e5c5255" kind="variable"><name>content_</name></member>
     <member refid="classendstone_1_1ActionForm_1a6d636aeb18a37003ef44b1b30c82d0d2" kind="variable"><name>buttons_</name></member>
     <member refid="classendstone_1_1ActionForm_1a2f6132d73109f39a57142a7af41f5275" kind="variable"><name>on_submit_</name></member>
-    <member refid="classendstone_1_1ActionForm_1a6482191ac258c58ae2c1e3c547ffd0ba" kind="function"><name>ActionForm</name></member>
+    <member refid="classendstone_1_1ActionForm_1ac76d90626698589dba21d3d9d372326f" kind="function"><name>ActionForm</name></member>
     <member refid="classendstone_1_1ActionForm_1aff5268af0e4b5386b406fdd90092aff3" kind="function"><name>getContent</name></member>
     <member refid="classendstone_1_1ActionForm_1a3d4690491594fa31da97d5578c1bc7f9" kind="function"><name>setContent</name></member>
     <member refid="classendstone_1_1ActionForm_1a5614202a3c82ded38502d4cbf06c0484" kind="function"><name>addButton</name></member>

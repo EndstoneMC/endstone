@@ -90,7 +90,7 @@ See [endstone::Form](classendstone_1_1Form.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActionForm**](#function-actionform) () <br> |
+|   | [**ActionForm**](#function-actionform) () = default<br> |
 |  [**ActionForm**](classendstone_1_1ActionForm.md) & | [**addButton**](#function-addbutton) (const Message & text, const std::optional&lt; std::string &gt; & icon=std::nullopt) <br>_Adds a button to the form._  |
 |  const std::vector&lt; [**Button**](classendstone_1_1ActionForm_1_1Button.md) &gt; & | [**getButtons**](#function-getbuttons) () const<br>_Get the buttons of the action form._  |
 |  Message | [**getContent**](#function-getcontent) () const<br>_Get the content of the form._  |
@@ -196,7 +196,7 @@ using endstone::ActionForm::OnSubmitCallback =  std::function<void(Player *, int
 ### function ActionForm 
 
 ```C++
-inline explicit endstone::ActionForm::ActionForm () 
+explicit endstone::ActionForm::ActionForm () = default
 ```
 
 
