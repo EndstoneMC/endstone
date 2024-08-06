@@ -12,22 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include <string>
-
 #include "bedrock/core/utility/binary_stream.h"
-#include "endstone/network/packet.h"
+#include "endstone/detail/network/packet_codec.h"
+#include "endstone/network/spawn_particle_effect_packet.h"
 
 namespace endstone::detail {
-
-namespace PacketCodec {
-
-std::string encode(BinaryStream &stream, Packet &packet);
-
-template <typename T, typename = std::enable_if_t<std::is_base_of_v<Packet, T> && !std::is_same_v<Packet, T>>>
-std::string encode(BinaryStream &stream, T &packet);
-
-};  // namespace PacketCodec
+template <>
+std::string PacketCodec::encode(BinaryStream &stream, SpawnParticleEffectPacket &packet)
+{
+    // TODO: implement this
+    return "";
+}
 
 }  // namespace endstone::detail

@@ -14,20 +14,21 @@
 
 #pragma once
 
-#include <string>
+#include "bedrock/core/result.h"
 
-#include "bedrock/core/utility/binary_stream.h"
-#include "endstone/network/packet.h"
+class ReadOnlyBinaryStream {
+public:
+    virtual ~ReadOnlyBinaryStream();
+    virtual Bedrock::Result<void> read(void *, std::uint64_t);
 
-namespace endstone::detail {
+    std::size_t read_pointer;
+    bool has_overflowed;
+    std::string owned_buffer;
+    std::string *buffer;
+};
 
-namespace PacketCodec {
-
-std::string encode(BinaryStream &stream, Packet &packet);
-
-template <typename T, typename = std::enable_if_t<std::is_base_of_v<Packet, T> && !std::is_same_v<Packet, T>>>
-std::string encode(BinaryStream &stream, T &packet);
-
-};  // namespace PacketCodec
-
-}  // namespace endstone::detail
+class BinaryStream : public ReadOnlyBinaryStream {
+public:
+    std::string owned_buffer;
+    std::string *buffer;
+};

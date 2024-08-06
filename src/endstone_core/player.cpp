@@ -36,6 +36,7 @@
 #include "endstone/color_format.h"
 #include "endstone/detail/base64.h"
 #include "endstone/detail/form/form_codec.h"
+#include "endstone/detail/network/packet_adapter.h"
 #include "endstone/detail/server.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -558,7 +559,8 @@ void EndstonePlayer::closeForm()
 
 void EndstonePlayer::sendPacket(Packet &packet)
 {
-    // TODO(network): implement this
+    PacketAdapter pk{packet};
+    getHandle().sendNetworkPacket(pk);
 }
 
 void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)

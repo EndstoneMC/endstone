@@ -14,20 +14,28 @@
 
 #pragma once
 
-#include <string>
-
-#include "bedrock/core/utility/binary_stream.h"
+#include "bedrock/network/packet.h"
 #include "endstone/network/packet.h"
 
 namespace endstone::detail {
 
-namespace PacketCodec {
+class PacketAdapter : public ::Packet {
+public:
+    explicit PacketAdapter(endstone::Packet &packet);
 
-std::string encode(BinaryStream &stream, Packet &packet);
+    ~PacketAdapter() override = default;
+    [[nodiscard]] virtual MinecraftPacketIds getId() const;
+    [[nodiscard]] virtual std::string getName() const;
+    [[nodiscard]] virtual Bedrock::Result<void> checkSize(std::uint64_t, bool) const;
+    virtual void write(BinaryStream &) const;
+    [[nodiscard]] virtual Bedrock::Result<void> read(ReadOnlyBinaryStream &);
+    [[nodiscard]] virtual bool disallowBatching() const;
+    [[nodiscard]] virtual bool isValid() const;
 
-template <typename T, typename = std::enable_if_t<std::is_base_of_v<Packet, T> && !std::is_same_v<Packet, T>>>
-std::string encode(BinaryStream &stream, T &packet);
+private:
+    [[nodiscard]] virtual Bedrock::Result<void> _read(ReadOnlyBinaryStream &);
 
-};  // namespace PacketCodec
+    endstone::Packet &packet_;
+};
 
 }  // namespace endstone::detail

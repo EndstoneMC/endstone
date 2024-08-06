@@ -40,7 +40,7 @@ private:
     NetworkPeer::Reliability reliability_{NetworkPeer::Reliability::ReliableOrdered};  // + 12
     SubClientId sub_client_id_{SubClientId::PrimaryClient};                            // + 16
     bool is_handled_{false};                                                           // + 17
-    NetworkPeer::PacketRecvTimepoint recv_timepoint_{};                                // + 24
+    NetworkPeer::PacketRecvTimepoint recv_timepoint_;                                  // + 24
     void *handler_{nullptr};                                                           // + 32
     Compressibility compressibility_{Compressibility::Compressible};                   // + 40
 };
