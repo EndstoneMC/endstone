@@ -34,6 +34,7 @@ void init_network(py::module_ &m)
 
     py::class_<SpawnParticleEffectPacket, Packet>(m, "SpawnParticleEffectPacket",
                                                   "Represents a packet for spawning a particle effect.")
+        .def(py::init<>())
         .def_readwrite("dimension_id", &SpawnParticleEffectPacket::dimension_id)
         .def_readwrite("actor_id", &SpawnParticleEffectPacket::actor_id)
         .def_readwrite("position", &SpawnParticleEffectPacket::position)

@@ -17,6 +17,7 @@
 #include <stdexcept>
 
 #include <endstone/network/spawn_particle_effect_packet.h>
+#include <fmt/format.h>
 
 namespace endstone::detail {
 
@@ -25,8 +26,9 @@ void PacketCodec::encode(BinaryStream &stream, Packet &packet)
     switch (packet.getType()) {
     case PacketType::SpawnParticleEffect:
         encode(stream, static_cast<SpawnParticleEffectPacket &>(packet));
+        break;
     default:
-        throw std::runtime_error("Not supported");
+        throw std::runtime_error(fmt::format("Packet type {} is not supported.", static_cast<int>(packet.getType())));
     }
 }
 }  // namespace endstone::detail

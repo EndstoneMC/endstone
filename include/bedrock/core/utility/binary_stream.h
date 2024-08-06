@@ -24,10 +24,10 @@ public:
     virtual Bedrock::Result<void> read(void *, std::uint64_t);
 
 private:
-    std::size_t read_pointer_;
-    bool has_overflowed_;
-    std::string owned_buffer_;
-    std::string *buffer_;
+    std::size_t read_pointer_;  // +8
+    bool has_overflowed_;       // +16
+    std::string owned_buffer_;  // +24
+    std::string *buffer_;       // +56
 };
 
 class BinaryStream : public ReadOnlyBinaryStream {
@@ -40,10 +40,10 @@ public:
     void writeVarInt64(std::int64_t value);
     void writeUnsignedVarInt(std::uint32_t value);
     void writeUnsignedVarInt64(std::uint64_t value);
-    void writeString(const std::string &value);
+    void writeString(std::string_view value);
     void writeFloat(float value);
 
 private:
-    std::string owned_buffer_;
-    std::string *buffer_;
+    std::string owned_buffer_; // +64
+    std::string *buffer_; // +96
 };

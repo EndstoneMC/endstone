@@ -18,17 +18,19 @@
 
 void BinaryStream::write(const void *data, std::size_t size)
 {
-    buffer_->append(static_cast<const char *>(data), size);
+    if (size > 0) {
+        buffer_->append(static_cast<const char *>(data), size);
+    }
 }
 
 void BinaryStream::writeUnsignedChar(std::uint8_t value)
 {
-    buffer_ += static_cast<char>(value);
+    write(&value, sizeof(std::uint8_t));
 }
 
 void BinaryStream::writeByte(std::uint8_t value)
 {
-    buffer_ += static_cast<char>(value);
+    write(&value, sizeof(std::uint8_t));
 }
 
 void BinaryStream::writeBool(bool value)
@@ -74,10 +76,10 @@ void BinaryStream::writeUnsignedVarInt64(std::uint64_t value)
     } while (value);
 }
 
-void BinaryStream::writeString(const std::string &value)
+void BinaryStream::writeString(std::string_view value)
 {
     writeUnsignedVarInt(value.length());
-    buffer_->append(value);
+    write(value.data(), value.size());
 }
 
 void BinaryStream::writeFloat(float value)
