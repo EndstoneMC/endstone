@@ -55,6 +55,19 @@ bool StatusCommand::execute(CommandSender &sender, const std::vector<std::string
         sender.sendMessage("{}Uptime: {}{} seconds", ColorFormat::Gold, ColorFormat::Red, seconds);
     }
 
+    auto color = ColorFormat::Green;
+    auto average_tps = server.getAverageTicksPerSecond();
+    if (average_tps < 12) {
+        color = ColorFormat::Red;
+    }
+    else if (average_tps < 17) {
+        color = ColorFormat::Gold;
+    }
+
+    sender.sendMessage("{}MSPT: {}{:.2f}", ColorFormat::Gold, color, server.getAverageMillisecondsPerTick());
+    sender.sendMessage("{}TPS: {}{:.2f}", ColorFormat::Gold, color, server.getAverageTicksPerSecond());
+    sender.sendMessage("{}Usage: {}{:.2f}%", ColorFormat::Gold, color, server.getAverageTickUsage() * 100);
+
     return true;
 }
 
