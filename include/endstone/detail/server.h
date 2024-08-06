@@ -77,11 +77,21 @@ public:
     [[nodiscard]] Scoreboard *getScoreboard() const override;
     void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
     [[nodiscard]] std::shared_ptr<Scoreboard> getNewScoreboard() override;
+    float getCurrentMillisecondsPerTick() override;
+    float getAverageMillisecondsPerTick() override;
+    float getCurrentTicksPerSecond() override;
+    float getAverageTicksPerSecond() override;
+    float getCurrentTickUsage() override;
+    float getAverageTickUsage() override;
     [[nodiscard]] std::chrono::system_clock::time_point getStartTime() override;
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
     void removePlayerBoard(EndstonePlayer &player);
     [[nodiscard]] ::ServerNetworkHandler &getServerNetworkHandler() const;
+    void tick(std::uint64_t current_tick, const std::function<void()> &tick_function);
+
+    static constexpr int TargetTicksPerSecond = 20;
+    static constexpr int TargetMillisecondsPerTick = 1000 / TargetTicksPerSecond;
 
 private:
     friend class EndstonePlayer;
@@ -99,6 +109,14 @@ private:
     std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
     std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
+
+    int tick_counter_ = 0;
+    float current_mspt_ = TargetMillisecondsPerTick * 1.0F;
+    float average_mspt_[TargetTicksPerSecond] = {TargetMillisecondsPerTick};
+    float current_tps_ = TargetTicksPerSecond * 1.0F;
+    float average_tps_[TargetTicksPerSecond] = {TargetTicksPerSecond};
+    float current_usage_ = 0.0F;
+    float average_usage_[TargetTicksPerSecond] = {0.0F};
 };
 
 }  // namespace endstone::detail

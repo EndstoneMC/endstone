@@ -41,6 +41,12 @@ public:
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::Scoreboard>, getNewScoreboard, (), (override));
+    MOCK_METHOD(float, getCurrentMillisecondsPerTick, (), (override));
+    MOCK_METHOD(float, getAverageMillisecondsPerTick, (), (override));
+    MOCK_METHOD(float, getCurrentTicksPerSecond, (), (override));
+    MOCK_METHOD(float, getAverageTicksPerSecond, (), (override));
+    MOCK_METHOD(float, getCurrentTickUsage, (), (override));
+    MOCK_METHOD(float, getAverageTickUsage, (), (override));
     MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
 };
 

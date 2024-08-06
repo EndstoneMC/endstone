@@ -20,15 +20,15 @@
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/server.h"
 
+using endstone::detail::EndstoneScheduler;
+using endstone::detail::EndstoneServer;
+
 void Level::tick()
 {
-    using endstone::detail::EndstoneScheduler;
-    using endstone::detail::EndstoneServer;
+    static std::string function_decorated_name = __FUNCDNAME__;
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &scheduler = static_cast<EndstoneScheduler &>(server.getScheduler());
-    scheduler.mainThreadHeartbeat(getCurrentServerTick().tick_id);
-
-    ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, __FUNCDNAME__, this);
+    server.tick(getCurrentServerTick().tick_id,
+                [&]() { ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&Level::tick, function_decorated_name, this); });
 }
 
 gsl::not_null<StackRefResult<GameplayUserManager>> Level::_getGameplayUserManagerStackRef()

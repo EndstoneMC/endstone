@@ -277,6 +277,36 @@ std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
     return result;
 }
 
+float EndstoneServer::getCurrentMillisecondsPerTick()
+{
+    return current_mspt_;
+}
+
+float EndstoneServer::getAverageMillisecondsPerTick()
+{
+    return std::accumulate(average_mspt_, average_mspt_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+}
+
+float EndstoneServer::getCurrentTicksPerSecond()
+{
+    return current_tps_;
+}
+
+float EndstoneServer::getAverageTicksPerSecond()
+{
+    return std::accumulate(average_tps_, average_tps_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+}
+
+float EndstoneServer::getCurrentTickUsage()
+{
+    return current_usage_;
+}
+
+float EndstoneServer::getAverageTickUsage()
+{
+    return std::accumulate(average_usage_, average_usage_ + TargetTicksPerSecond, 0.0F) / TargetTicksPerSecond;
+}
+
 std::chrono::system_clock::time_point EndstoneServer::getStartTime()
 {
     return start_time_;
@@ -323,6 +353,24 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
 ::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
 {
     return *server_instance_.getMinecraft().getServerNetworkHandler();
+}
+
+void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)
+{
+    using namespace std::chrono;
+
+    const auto tick_time = steady_clock::now();
+
+    scheduler_->mainThreadHeartbeat(current_tick);
+    tick_function();
+
+    current_mspt_ = static_cast<float>(duration_cast<milliseconds>(steady_clock::now() - tick_time).count());
+    current_tps_ = std::min(static_cast<float>(TargetTicksPerSecond), 1000.0F / std::max(1.0F, current_mspt_));
+    current_usage_ = std::min(1.0F, current_mspt_ / TargetMillisecondsPerTick);
+    const auto idx = current_tick % TargetTicksPerSecond;
+    average_mspt_[idx] = current_mspt_;
+    average_tps_[idx] = current_tps_;
+    average_usage_[idx] = current_usage_;
 }
 
 }  // namespace endstone::detail
