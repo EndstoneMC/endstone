@@ -35,9 +35,9 @@ public:
     }
 
     int dimension_id;
-    std::int64_t entity_unique_id{-1};
+    std::int64_t actor_id{-1};
     Vector<float> position;
-    std::string identifier;
+    std::string effect_name;
     std::optional<std::string> molang_variables_json;
 };
 

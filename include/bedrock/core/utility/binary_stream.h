@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <endstone/network/spawn_particle_effect_packet.h>
+
 #include "bedrock/core/result.h"
 
 class ReadOnlyBinaryStream {
@@ -21,14 +23,27 @@ public:
     virtual ~ReadOnlyBinaryStream();
     virtual Bedrock::Result<void> read(void *, std::uint64_t);
 
-    std::size_t read_pointer;
-    bool has_overflowed;
-    std::string owned_buffer;
-    std::string *buffer;
+private:
+    std::size_t read_pointer_;
+    bool has_overflowed_;
+    std::string owned_buffer_;
+    std::string *buffer_;
 };
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
-    std::string owned_buffer;
-    std::string *buffer;
+    void write(const void *data, std::size_t size);
+    void writeUnsignedChar(std::uint8_t value);
+    void writeByte(std::uint8_t value);
+    void writeBool(bool value);
+    void writeVarInt(std::int32_t value);
+    void writeVarInt64(std::int64_t value);
+    void writeUnsignedVarInt(std::uint32_t value);
+    void writeUnsignedVarInt64(std::uint64_t value);
+    void writeString(const std::string &value);
+    void writeFloat(float value);
+
+private:
+    std::string owned_buffer_;
+    std::string *buffer_;
 };

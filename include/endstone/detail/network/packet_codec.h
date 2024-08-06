@@ -23,10 +23,10 @@ namespace endstone::detail {
 
 namespace PacketCodec {
 
-std::string encode(BinaryStream &stream, Packet &packet);
+void encode(BinaryStream &stream, Packet &packet);
 
 template <typename T, typename = std::enable_if_t<std::is_base_of_v<Packet, T> && !std::is_same_v<Packet, T>>>
-std::string encode(BinaryStream &stream, T &packet);
+void encode(BinaryStream &stream, T &packet);
 
 };  // namespace PacketCodec
 

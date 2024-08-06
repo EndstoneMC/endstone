@@ -18,10 +18,18 @@
 
 namespace endstone::detail {
 template <>
-std::string PacketCodec::encode(BinaryStream &stream, SpawnParticleEffectPacket &packet)
+void PacketCodec::encode(BinaryStream &stream, SpawnParticleEffectPacket &packet)
 {
-    // TODO: implement this
-    return "";
+    stream.writeUnsignedChar(packet.dimension_id);
+    stream.writeVarInt64(packet.actor_id);
+    stream.writeFloat(packet.position.getX());
+    stream.writeFloat(packet.position.getY());
+    stream.writeFloat(packet.position.getZ());
+    stream.writeString(packet.effect_name);
+    stream.writeBool(packet.molang_variables_json.has_value());
+    if (packet.molang_variables_json.has_value()) {
+        stream.writeString(packet.molang_variables_json.value());
+    }
 }
 
 }  // namespace endstone::detail

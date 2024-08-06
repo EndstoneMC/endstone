@@ -20,11 +20,11 @@
 
 namespace endstone::detail {
 
-std::string PacketCodec::encode(BinaryStream &stream, Packet &packet)
+void PacketCodec::encode(BinaryStream &stream, Packet &packet)
 {
     switch (packet.getType()) {
     case PacketType::SpawnParticleEffect:
-        return encode(stream, static_cast<SpawnParticleEffectPacket &>(packet));
+        encode(stream, static_cast<SpawnParticleEffectPacket &>(packet));
     default:
         throw std::runtime_error("Not supported");
     }
