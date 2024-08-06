@@ -65,7 +65,12 @@ public:
     template <typename... Args>
     void sendMessage(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        sendMessage(fmt::format(format, std::forward<Args>(args)...));
+        try {
+            sendMessage(fmt::format(format, std::forward<Args>(args)...));
+        }
+        catch (std::exception &e) {
+            sendErrorMessage(e.what());
+        }
     }
 
     virtual void sendErrorMessage(const std::string &message) const = 0;

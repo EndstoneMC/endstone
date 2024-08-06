@@ -99,6 +99,17 @@ public:
 
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
 
+    virtual float getCurrentMillisecondsPerTick() = 0;
+
+    virtual float getAverageMillisecondsPerTick() = 0;
+
+    virtual float getCurrentTicksPerSecond() = 0;
+    virtual float getAverageTicksPerSecond() = 0;
+
+    virtual float getCurrentTickUsage() = 0;
+
+    virtual float getAverageTickUsage() = 0;
+
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";

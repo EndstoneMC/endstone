@@ -64,7 +64,13 @@ _Represents a server implementation._
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
+| virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
+| virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
+| virtual float | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
+| virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
+| virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
+| virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
@@ -283,6 +289,81 @@ true if execution is successful, false otherwise
 
 
 
+### function getAverageMillisecondsPerTick 
+
+_Gets the average milliseconds per tick (MSPT)._ 
+```C++
+virtual float endstone::Server::getAverageMillisecondsPerTick () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The average number of milliseconds per tick. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getAverageTickUsage 
+
+_Gets the average tick usage of the server._ 
+```C++
+virtual float endstone::Server::getAverageTickUsage () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The average tick usage in percentage. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getAverageTicksPerSecond 
+
+_Gets the average ticks per second (TPS)._ 
+```C++
+virtual float endstone::Server::getAverageTicksPerSecond () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The average ticks per second 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getCommandSender 
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._
@@ -297,6 +378,81 @@ virtual ConsoleCommandSender & endstone::Server::getCommandSender () const = 0
 **Returns:**
 
 a console command sender 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getCurrentMillisecondsPerTick 
+
+_Gets the current milliseconds per tick (MSPT)._ 
+```C++
+virtual float endstone::Server::getCurrentMillisecondsPerTick () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The average current of milliseconds per tick. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getCurrentTickUsage 
+
+_Gets the current tick usage of the server._ 
+```C++
+virtual float endstone::Server::getCurrentTickUsage () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The current tick usage in percentage. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getCurrentTicksPerSecond 
+
+_Gets the current ticks per second (TPS)._ 
+```C++
+virtual float endstone::Server::getCurrentTicksPerSecond () = 0
+```
+
+
+
+
+
+**Returns:**
+
+The current ticks per second 
 
 
 

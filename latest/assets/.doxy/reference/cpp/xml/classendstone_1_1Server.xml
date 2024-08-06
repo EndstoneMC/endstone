@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="219" column="37" bodyfile="include/endstone/server.h" bodystart="219" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="260" column="37" bodyfile="include/endstone/server.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="224" column="37" bodyfile="include/endstone/server.h" bodystart="224" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="265" column="37" bodyfile="include/endstone/server.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -587,6 +587,108 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="207" column="30"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getCurrentMillisecondsPerTick</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentMillisecondsPerTick</name>
+        <briefdescription>
+<para>Gets the current milliseconds per tick (MSPT). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average current of milliseconds per tick. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="214" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getAverageMillisecondsPerTick</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageMillisecondsPerTick</name>
+        <briefdescription>
+<para>Gets the average milliseconds per tick (MSPT). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average number of milliseconds per tick. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="221" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getCurrentTicksPerSecond</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentTicksPerSecond</name>
+        <briefdescription>
+<para>Gets the current ticks per second (TPS). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current ticks per second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="228" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getAverageTicksPerSecond</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageTicksPerSecond</name>
+        <briefdescription>
+<para>Gets the average ticks per second (TPS). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average ticks per second </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="234" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getCurrentTickUsage</definition>
+        <argsstring>()=0</argsstring>
+        <name>getCurrentTickUsage</name>
+        <briefdescription>
+<para>Gets the current tick usage of the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The current tick usage in percentage. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="241" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>float</type>
+        <definition>virtual float endstone::Server::getAverageTickUsage</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAverageTickUsage</name>
+        <briefdescription>
+<para>Gets the average tick usage of the server. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The average tick usage in percentage. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/server.h" line="248" column="19"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::chrono::system_clock::time_point</type>
         <definition>virtual std::chrono::system_clock::time_point endstone::Server::getStartTime</definition>
@@ -602,7 +704,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="214" column="52"/>
+        <location file="include/endstone/server.h" line="255" column="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -610,7 +712,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="39" column="1" bodyfile="include/endstone/server.h" bodystart="39" bodyend="225"/>
+    <location file="include/endstone/server.h" line="39" column="1" bodyfile="include/endstone/server.h" bodystart="39" bodyend="266"/>
     <listofallmembers>
       <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
       <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
@@ -618,7 +720,13 @@
       <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
+      <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageMillisecondsPerTick</name></member>
+      <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTicksPerSecond</name></member>
+      <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTickUsage</name></member>
       <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
+      <member refid="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentMillisecondsPerTick</name></member>
+      <member refid="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTicksPerSecond</name></member>
+      <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTickUsage</name></member>
       <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getLogger</name></member>
       <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMaxPlayers</name></member>

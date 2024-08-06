@@ -2,1582 +2,1582 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://endstone.dev/latest/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/changelog/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/getting-started/installation/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/getting-started/start-your-server/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/actor/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/command/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/event/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/form/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/inventory/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/level/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/misc/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/permissions/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/player/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/plugin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/scheduler/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/scoreboard/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/python/server/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/create-your-first-plugin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/install-your-plugin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/publish-your-plugin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/register-commands/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/register-event-listeners/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/schedule-tasks/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/tutorials/use-color-codes/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/annotated/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/files/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActionForm/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActionForm_1_1Button/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Actor/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorDeathEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorRemoveEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorSpawnEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ActorTeleportEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Block/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockData/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BroadcastMessageEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1ColorFormat/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Command/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CommandExecutor/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CommandMap/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CommandSender/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ConsoleCommandSender/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Criteria/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Dimension/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Dropdown/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Event/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1EventHandler/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Form/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1HandlerList/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Inventory/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Label/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Level/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Location/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Logger/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1MessageForm/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Mob/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ModalForm/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Objective/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Permissible/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Permission/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PermissionAttachment/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PermissionAttachmentInfo/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Player/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerChatEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerCommandEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerDeathEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerInventory/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerJoinEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerLoginEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerQuitEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerTeleportEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Plugin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginCommand/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginDescription/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginDisableEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginEnableEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginLoader/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PluginManager/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Position/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Scheduler/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Score/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Scoreboard/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Server/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ServerCommandEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ServerEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ServerListPingEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ServerLoadEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Skin/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/structendstone_1_1Skin_1_1ImageData/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Slider/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1SocketAddress/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1StepSlider/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Task/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1TextInput/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ThunderChangeEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Toggle/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Translatable/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1UUID/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Vector/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1WeatherChangeEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1WeatherEvent/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespaceendstone_1_1detail/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespacestd/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/structstd_1_1hash_3_01endstone_1_1UUID_01_4/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_d44c64559bbebec7f509842c48db8b23/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_6cf277b678674f97c7a2b6b3b2447b33/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/color__format_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/color__format_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/endstone_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/endstone_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/game__mode_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/game__mode_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_dd7779a583e02d88c9a89a2c881c3946/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/mob_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/mob_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_faca67fc60a7463eb1bd30eabe023cf1/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block__data_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block__data_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_5c7b2dbfabcd1115569d1e20a260545c/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__executor_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__executor_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__map_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__map_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__sender_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__sender_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/console__command__sender_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/console__command__sender_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__command_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__command_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_f1d783c0ad83ee143d16e768ebca51c8/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event__handler_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event__handler_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event__priority_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/event__priority_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/handler__list_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/handler__list_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_621c26b5fd4198aba66e7e31570ce44a/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__death__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__death__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__remove__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__remove__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__spawn__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__spawn__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__teleport__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/actor__teleport__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_7c05c37b25e9c9eccd9c63c2d313ba28/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__chat__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__chat__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__command__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__command__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__death__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__death__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__join__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__join__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__login__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__login__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__quit__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__quit__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__teleport__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__teleport__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_77022909323d5ad872c4820a738a5429/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/broadcast__message__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/broadcast__message__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__disable__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__disable__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__enable__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__enable__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__command__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__command__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__list__ping__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__list__ping__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__load__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server__load__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_7fcf87d2683114df01ea446fea23c187/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/thunder__change__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/thunder__change__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/weather__change__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/weather__change__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/weather__event_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/weather__event_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_0fd3b458603af3963ebb9c312a9238ec/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/action__form_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/action__form_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/form_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/form_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_035306890ec6a3fa870e30b726ac5ffc/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dropdown_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/label_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/label_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/slider_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/slider_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/step__slider_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/step__slider_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/text__input_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/text__input_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/toggle_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/toggle_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message__form_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message__form_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/modal__form_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/modal__form_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_d1e84b530b14f41e8b6f5ec1b5dee76c/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/inventory_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/inventory_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__inventory_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__inventory_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_8e239ca1e5fd0d936d66a30330d3a329/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dimension_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dimension_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/level_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/level_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/location_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/location_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/position_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/position_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permissible_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permissible_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__attachment_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__attachment_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__attachment__info_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__attachment__info_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__default_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/permission__default_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_53ee43673b2467e53c4cb8c30a2e7d89/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__description_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__description_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__load__order_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__load__order_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__loader_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__loader_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__manager_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__manager_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_3a50fadda3c7cdc27c965a478a3f7d27/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/scheduler_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/scheduler_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/task_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/task_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_19c52f9ea81a2cf7449c80dcee80d6f0/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/criteria_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/criteria_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/display__slot_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/display__slot_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/objective_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/objective_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/objective__sort__order_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/objective__sort__order_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/render__type_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/render__type_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/score_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/score_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/score__entry_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/score__entry_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/scoreboard_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/scoreboard_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_89b85071337bf933dea6c29b4c6a4410/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/socket__address_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/socket__address_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/uuid_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/uuid_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/vector_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/vector_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/logger_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/logger_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/message_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/server_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/skin_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/skin_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/translatable_8h/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/translatable_8h_source/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespaces/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classes/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/hierarchy/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/modules/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/pages/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/class_members/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/class_member_functions/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/class_member_variables/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/class_member_typedefs/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/class_member_enums/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespace_members/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespace_member_functions/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespace_member_variables/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespace_member_typedefs/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/namespace_member_enums/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/functions/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/macros/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/variables/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/links/</loc>
-         <lastmod>2024-08-05</lastmod>
+         <lastmod>2024-08-06</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

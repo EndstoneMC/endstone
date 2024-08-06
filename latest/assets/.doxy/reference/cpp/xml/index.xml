@@ -791,6 +791,12 @@
     <member refid="classendstone_1_1Server_1a1a2968bddfbf66a9421477b42219799e" kind="function"><name>isPrimaryThread</name></member>
     <member refid="classendstone_1_1Server_1aead6d70b5edc7e8b8edd0982ea265756" kind="function"><name>getScoreboard</name></member>
     <member refid="classendstone_1_1Server_1a87735b7a9e8a75876e8e5da3385cfa83" kind="function"><name>getNewScoreboard</name></member>
+    <member refid="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" kind="function"><name>getCurrentMillisecondsPerTick</name></member>
+    <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" kind="function"><name>getAverageMillisecondsPerTick</name></member>
+    <member refid="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" kind="function"><name>getCurrentTicksPerSecond</name></member>
+    <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" kind="function"><name>getAverageTicksPerSecond</name></member>
+    <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" kind="function"><name>getCurrentTickUsage</name></member>
+    <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" kind="function"><name>getAverageTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
