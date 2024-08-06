@@ -524,11 +524,11 @@ const Skin &EndstonePlayer::getSkin() const
     return skin_;
 }
 
-void EndstonePlayer::transfer(std::string address, int port) const
+void EndstonePlayer::transfer(std::string host, int port) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Transfer);
     auto pk = std::static_pointer_cast<TransferPacket>(packet);
-    pk->address = std::move(address);
+    pk->address = std::move(host);
     pk->port = port;
     getHandle().sendNetworkPacket(*packet);
 }

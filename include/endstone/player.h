@@ -322,10 +322,10 @@ public:
     /**
      * @brief Transfers the player to another server
      *
-     * @param address Server address to transfer the player to.
+     * @param host Server address to transfer the player to.
      * @param port Server port to transfer the player to
      */
-    virtual void transfer(std::string address, int port) const = 0;
+    virtual void transfer(std::string host, int port) const = 0;
 
     /**
      * @brief Sends a form to the player.

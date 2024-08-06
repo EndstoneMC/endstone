@@ -15,6 +15,9 @@
 #pragma once
 
 namespace endstone {
+/**
+ * @brief Represents the types of packets.
+ */
 enum class PacketType {
     SpawnParticleEffect = 118
 };

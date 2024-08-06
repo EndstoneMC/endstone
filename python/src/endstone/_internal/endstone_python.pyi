@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1005,6 +1005,47 @@ class ObjectiveSortOrder:
     @property
     def value(self) -> int:
         ...
+class Packet:
+    """
+    Represents a packet.
+    """
+    @property
+    def type(self) -> PacketType:
+        """
+        Gets the type of the packet.
+        """
+class PacketType:
+    """
+    Represents the types of packets.
+    """
+    SPAWN_PARTICLE_EFFECT: typing.ClassVar[PacketType]  # value = <PacketType.SPAWN_PARTICLE_EFFECT: 118>
+    __members__: typing.ClassVar[dict[str, PacketType]]  # value = {'SPAWN_PARTICLE_EFFECT': <PacketType.SPAWN_PARTICLE_EFFECT: 118>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Permissible:
     """
     Represents an object that may become a server operator and can be assigned permissions.
@@ -1259,6 +1300,10 @@ class Player(Mob):
         """
         Sends a form to the player.
         """
+    def send_packet(self, packet: Packet) -> None:
+        """
+        Sends a packet to the player.
+        """
     def send_popup(self, message: str) -> None:
         """
         Sends this player a popup message
@@ -1271,7 +1316,7 @@ class Player(Mob):
         """
         Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
         """
-    def transfer(self, address: str, port: int = 19132) -> None:
+    def transfer(self, host: str, port: int = 19132) -> None:
         """
         Transfers the player to another server.
         """
@@ -2334,6 +2379,15 @@ class SocketAddress:
         """
         Gets the port number.
         """
+class SpawnParticleEffectPacket(Packet):
+    """
+    Represents a packet for spawning a particle effect.
+    """
+    actor_id: int
+    dimension_id: int
+    effect_name: str
+    molang_variables_json: str | None
+    position: Vector
 class StepSlider:
     """
     Represents a step slider with a set of predefined options.

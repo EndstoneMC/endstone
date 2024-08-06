@@ -205,6 +205,7 @@ nav:
           - Form: reference/python/form.md
           - Level: reference/python/level.md
           - Inventory: reference/python/inventory.md
+          - Network: reference/python/network.md
           - Permissions: reference/python/permissions.md
           - Plugin: reference/python/plugin.md
           - Scoreboard: reference/python/scoreboard.md

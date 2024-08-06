@@ -110,7 +110,7 @@ public:
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
     [[nodiscard]] const Skin &getSkin() const override;
-    void transfer(std::string address, int port) const override;
+    void transfer(std::string host, int port) const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
     void sendPacket(Packet &packet) override;
