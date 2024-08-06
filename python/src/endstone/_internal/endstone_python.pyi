@@ -2388,6 +2388,8 @@ class SpawnParticleEffectPacket(Packet):
     effect_name: str
     molang_variables_json: str | None
     position: Vector
+    def __init__(self) -> None:
+        ...
 class StepSlider:
     """
     Represents a step slider with a set of predefined options.
