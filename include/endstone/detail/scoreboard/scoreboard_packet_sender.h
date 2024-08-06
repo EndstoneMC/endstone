@@ -25,13 +25,13 @@ class ScoreboardPacketSender : public PacketSender {
 public:
     ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard, PacketSender &sender);
     ~ScoreboardPacketSender() override = default;
-    void send(Packet &) override;
-    void sendToServer(Packet &) override;
-    void sendToClient(const UserEntityIdentifierComponent *, const Packet &) override;
-    void sendToClient(const NetworkIdentifier &, const Packet &, SubClientId) override;
-    void sendToClients(const std::vector<NetworkIdentifierWithSubId> &, const Packet &) override;
-    void sendBroadcast(const Packet &) override;
-    void sendBroadcast(const NetworkIdentifier &, SubClientId, const Packet &) override;
+    void send(::Packet &) override;
+    void sendToServer(::Packet &) override;
+    void sendToClient(const UserEntityIdentifierComponent *, const ::Packet &) override;
+    void sendToClient(const NetworkIdentifier &, const ::Packet &, SubClientId) override;
+    void sendToClients(const std::vector<NetworkIdentifierWithSubId> &, const ::Packet &) override;
+    void sendBroadcast(const ::Packet &) override;
+    void sendBroadcast(const NetworkIdentifier &, SubClientId, const ::Packet &) override;
     void flush(const NetworkIdentifier &, std::function<void()> &&) override;
 
 private:

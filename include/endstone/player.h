@@ -344,7 +344,7 @@ public:
      *
      * @param packet The packet to be sent.
      */
-    virtual void sendPacket(Packet &packet);
+    virtual void sendPacket(Packet &packet) = 0;
 };
 
 }  // namespace endstone

@@ -16,24 +16,25 @@
 
 #include "endstone/detail/server.h"
 
-endstone::detail::ScoreboardPacketSender::ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard,
-                                                                 PacketSender &sender)
+namespace endstone::detail {
+
+ScoreboardPacketSender::ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard,
+                                               PacketSender &sender)
     : server_(server), scoreboard_(scoreboard), sender_(sender)
 {
 }
 
-void endstone::detail::ScoreboardPacketSender::send(Packet &packet)
+void ScoreboardPacketSender::send(::Packet &packet)
 {
     throw std::runtime_error("Not supported!");
 }
 
-void endstone::detail::ScoreboardPacketSender::sendToServer(Packet &packet)
+void ScoreboardPacketSender::sendToServer(::Packet &packet)
 {
     throw std::runtime_error("Not supported!");
 }
 
-void endstone::detail::ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *user_identifider,
-                                                            const Packet &packet)
+void ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *user_identifider, const ::Packet &packet)
 {
     auto uuid = user_identifider->uuid.toEndstone();
     auto *player = server_.getPlayer(uuid);
@@ -48,8 +49,8 @@ void endstone::detail::ScoreboardPacketSender::sendToClient(const UserEntityIden
     sender_.sendToClient(user_identifider, packet);
 }
 
-void endstone::detail::ScoreboardPacketSender::sendToClient(const NetworkIdentifier &network_identifier,
-                                                            const Packet &packet, SubClientId sub_id)
+void ScoreboardPacketSender::sendToClient(const NetworkIdentifier &network_identifier, const ::Packet &packet,
+                                          SubClientId sub_id)
 {
     for (const auto &item : server_.getOnlinePlayers()) {
         auto *player = static_cast<EndstonePlayer *>(item);
@@ -68,13 +69,13 @@ void endstone::detail::ScoreboardPacketSender::sendToClient(const NetworkIdentif
     }
 }
 
-void endstone::detail::ScoreboardPacketSender::sendToClients(
-    const std::vector<NetworkIdentifierWithSubId> &network_identifier_with_sub_ids, const Packet &packet)
+void ScoreboardPacketSender::sendToClients(
+    const std::vector<NetworkIdentifierWithSubId> &network_identifier_with_sub_ids, const ::Packet &packet)
 {
     throw std::runtime_error("Not supported!");
 }
 
-void endstone::detail::ScoreboardPacketSender::sendBroadcast(const Packet &packet)
+void ScoreboardPacketSender::sendBroadcast(const ::Packet &packet)
 {
     for (const auto &item : server_.getOnlinePlayers()) {
         auto *player = static_cast<EndstonePlayer *>(item);
@@ -88,13 +89,14 @@ void endstone::detail::ScoreboardPacketSender::sendBroadcast(const Packet &packe
     }
 }
 
-void endstone::detail::ScoreboardPacketSender::sendBroadcast(const NetworkIdentifier &, SubClientId, const Packet &)
+void ScoreboardPacketSender::sendBroadcast(const NetworkIdentifier &, SubClientId, const ::Packet &)
 {
     throw std::runtime_error("Not supported!");
 }
 
-void endstone::detail::ScoreboardPacketSender::flush(const NetworkIdentifier &network_identifier,
-                                                     std::function<void()> &&callback)
+void ScoreboardPacketSender::flush(const NetworkIdentifier &network_identifier, std::function<void()> &&callback)
 {
     sender_.flush(network_identifier, std::forward<decltype(callback)>(callback));
 }
+
+}  // namespace endstone::detail
