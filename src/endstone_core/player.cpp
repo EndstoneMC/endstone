@@ -556,6 +556,11 @@ void EndstonePlayer::closeForm()
     forms_.clear();
 }
 
+void EndstonePlayer::sendPacket(Packet &packet)
+{
+    // TODO(network): implement this
+}
+
 void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
 {
     auto it = forms_.find(form_id);

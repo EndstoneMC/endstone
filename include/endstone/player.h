@@ -23,10 +23,11 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/network/spawn_particle_effect_packet.h"
+#include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
-#include "scoreboard/scoreboard.h"
 
 namespace endstone {
 
@@ -337,6 +338,13 @@ public:
      * @brief Closes the forms that are currently open for the player.
      */
     virtual void closeForm() = 0;
+
+    /**
+     * @brief Sends a packet to the player.
+     *
+     * @param packet The packet to be sent.
+     */
+    virtual void sendPacket(Packet &packet);
 };
 
 }  // namespace endstone
