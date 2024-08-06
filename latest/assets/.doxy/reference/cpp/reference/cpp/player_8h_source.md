@@ -33,10 +33,11 @@
 #include "endstone/form/modal_form.h"
 #include "endstone/game_mode.h"
 #include "endstone/inventory/player_inventory.h"
+#include "endstone/network/spawn_particle_effect_packet.h"
+#include "endstone/scoreboard/scoreboard.h"
 #include "endstone/skin.h"
 #include "endstone/util/socket_address.h"
 #include "endstone/util/uuid.h"
-#include "scoreboard/scoreboard.h"
 
 namespace endstone {
 
@@ -131,11 +132,13 @@ public:
 
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
 
-    virtual void transfer(std::string address, int port) const = 0;
+    virtual void transfer(std::string host, int port) const = 0;
 
     virtual void sendForm(FormVariant form) = 0;
 
     virtual void closeForm() = 0;
+
+    virtual void sendPacket(Packet &packet) = 0;
 };
 
 }  // namespace endstone

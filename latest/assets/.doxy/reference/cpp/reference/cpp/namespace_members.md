@@ -41,6 +41,7 @@
 
 ## p
 
+* **PacketType** ([**endstone**](namespaceendstone.md))
 * **PermissionDefault** ([**endstone**](namespaceendstone.md))
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 * **PluginLoadOrder** ([**endstone**](namespaceendstone.md))

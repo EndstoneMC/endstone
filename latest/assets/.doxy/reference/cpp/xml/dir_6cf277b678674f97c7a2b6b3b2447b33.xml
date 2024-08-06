@@ -9,6 +9,7 @@
     <innerdir refid="dir_0fd3b458603af3963ebb9c312a9238ec">include/endstone/form</innerdir>
     <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
     <innerdir refid="dir_8e239ca1e5fd0d936d66a30330d3a329">include/endstone/level</innerdir>
+    <innerdir refid="dir_5fb49eba5df98b849987b1937230be97">include/endstone/network</innerdir>
     <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>
     <innerdir refid="dir_53ee43673b2467e53c4cb8c30a2e7d89">include/endstone/plugin</innerdir>
     <innerdir refid="dir_3a50fadda3c7cdc27c965a478a3f7d27">include/endstone/scheduler</innerdir>

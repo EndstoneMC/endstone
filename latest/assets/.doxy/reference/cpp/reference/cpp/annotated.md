@@ -38,6 +38,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
     * **class** [**ModalForm**](classendstone_1_1ModalForm.md) _Represents a modal form with controls._     
     * **class** [**Objective**](classendstone_1_1Objective.md) _Represents an objective on a scoreboard that can show scores specific to entries._     
+    * **class** [**Packet**](classendstone_1_1Packet.md) _Represents a packet._     
     * **class** [**Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
     * **class** [**Permission**](classendstone_1_1Permission.md) _Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._    
     * **class** [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) _Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._    
@@ -72,6 +73,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
         * **struct** [**ImageData**](structendstone_1_1Skin_1_1ImageData.md)     
     * **class** [**Slider**](classendstone_1_1Slider.md) _Represents a slider with a label._     
     * **class** [**SocketAddress**](classendstone_1_1SocketAddress.md) _Represents an IP Socket Address (hostname + port number)._     
+    * **class** [**SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md) _Represents a packet for spawning a particle effect._     
     * **class** [**StepSlider**](classendstone_1_1StepSlider.md) _Represents a step slider with a set of predefined options._     
     * **class** [**Task**](classendstone_1_1Task.md) _Represents a task being executed by the scheduler._     
     * **class** [**TextInput**](classendstone_1_1TextInput.md) _Represents a text input field._     

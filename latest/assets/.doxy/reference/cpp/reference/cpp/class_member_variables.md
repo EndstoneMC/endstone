@@ -12,6 +12,7 @@
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **authors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **actor\_id** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 
 
 ## b
@@ -59,6 +60,7 @@
 * **depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **dimension\_** ([**endstone::Position**](classendstone_1_1Position.md))
 * **data** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md), [**endstone::UUID**](classendstone_1_1UUID.md))
+* **dimension\_id** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **default\_text\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 
 
@@ -68,6 +70,7 @@
 * **event\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **executor\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
 * **enabled\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
+* **effect\_name** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 
 
 ## f
@@ -132,6 +135,7 @@
 * **motd\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **max\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
 * **min\_** ([**endstone::Slider**](classendstone_1_1Slider.md))
+* **molang\_variables\_json** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 
 
 ## n
@@ -166,6 +170,7 @@
 * **provides\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **ping\_response\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **port\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
+* **position** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 
 

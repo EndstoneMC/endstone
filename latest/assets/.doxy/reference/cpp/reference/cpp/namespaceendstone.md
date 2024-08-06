@@ -66,6 +66,7 @@
 | class | [**Mob**](classendstone_1_1Mob.md) <br>_Represents a mobile entity (i.e. living entity), such as a monster or player._  |
 | class | [**ModalForm**](classendstone_1_1ModalForm.md) <br>_Represents a modal form with controls._  |
 | class | [**Objective**](classendstone_1_1Objective.md) <br>_Represents an objective on a scoreboard that can show scores specific to entries._  |
+| class | [**Packet**](classendstone_1_1Packet.md) <br>_Represents a packet._  |
 | class | [**Permissible**](classendstone_1_1Permissible.md) <br>_Represents an object that may become a server operator and can be assigned permissions._  |
 | class | [**Permission**](classendstone_1_1Permission.md) <br>_Represents a unique permission that may be attached to a_ [_**Permissible**_](classendstone_1_1Permissible.md) _._ |
 | class | [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) <br>_Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._ |
@@ -99,6 +100,7 @@
 | class | [**Skin**](classendstone_1_1Skin.md) <br>_Represents a player skin._  |
 | class | [**Slider**](classendstone_1_1Slider.md) <br>_Represents a slider with a label._  |
 | class | [**SocketAddress**](classendstone_1_1SocketAddress.md) <br>_Represents an IP Socket Address (hostname + port number)._  |
+| class | [**SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md) <br>_Represents a packet for spawning a particle effect._  |
 | class | [**StepSlider**](classendstone_1_1StepSlider.md) <br>_Represents a step slider with a set of predefined options._  |
 | class | [**Task**](classendstone_1_1Task.md) <br>_Represents a task being executed by the scheduler._  |
 | class | [**TextInput**](classendstone_1_1TextInput.md) <br>_Represents a text input field._  |
@@ -120,6 +122,7 @@
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
 | typedef std::variant&lt; std::string, [**Translatable**](classendstone_1_1Translatable.md) &gt; | [**Message**](#typedef-message)  <br> |
 | enum  | [**ObjectiveSortOrder**](#enum-objectivesortorder)  <br>_Represents the sort order of objectives on a DisplaySlot._  |
+| enum  | [**PacketType**](#enum-packettype)  <br>_Represents the types of packets._  |
 | enum  | [**PermissionDefault**](#enum-permissiondefault)  <br>_Represents the possible default values for permissions._  |
 | typedef std::function&lt; void(const [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) &)&gt; | [**PermissionRemovedExecutor**](#typedef-permissionremovedexecutor)  <br> |
 | enum  | [**PluginLoadOrder**](#enum-pluginloadorder)  <br>_Represents the order in which a plugin should be initialized and enabled._  |
@@ -270,6 +273,21 @@ using endstone::Message = typedef std::variant<std::string, Translatable>;
 enum endstone::ObjectiveSortOrder {
     Ascending,
     Descending
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum PacketType 
+
+```C++
+enum endstone::PacketType {
+    SpawnParticleEffect = 118
 };
 ```
 
