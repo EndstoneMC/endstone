@@ -2013,9 +2013,39 @@ class Server:
         Shutdowns the server, stopping everything.
         """
     @property
+    def average_mspt(self) -> float:
+        """
+        Gets the average milliseconds per tick (MSPT).
+        """
+    @property
+    def average_tick_usage(self) -> float:
+        """
+        Gets the average tick usage of the server.
+        """
+    @property
+    def average_tps(self) -> float:
+        """
+        Gets the average ticks per second (TPS).
+        """
+    @property
     def command_sender(self) -> ConsoleCommandSender:
         """
         Gets a CommandSender for this server.
+        """
+    @property
+    def current_mspt(self) -> float:
+        """
+        Gets the current milliseconds per tick (MSPT).
+        """
+    @property
+    def current_tick_usage(self) -> float:
+        """
+        Gets the current tick usage of the server.
+        """
+    @property
+    def current_tps(self) -> float:
+        """
+        Gets the current ticks per second (TPS).
         """
     @property
     def level(self) -> Level:

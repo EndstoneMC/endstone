@@ -207,14 +207,14 @@ public:
     [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
 
     /**
-     * @brief Returns the current milliseconds per tick (MSPT).
+     * @brief Gets the current milliseconds per tick (MSPT).
      *
      * @return The average current of milliseconds per tick.
      */
     virtual float getCurrentMillisecondsPerTick() = 0;
 
     /**
-     * @brief Returns the average milliseconds per tick (MSPT).
+     * @brief Gets the average milliseconds per tick (MSPT).
      *
      * @return The average number of milliseconds per tick.
      */
@@ -234,14 +234,14 @@ public:
     virtual float getAverageTicksPerSecond() = 0;
 
     /**
-     * @brief Returns the current tick usage of the server.
+     * @brief Gets the current tick usage of the server.
      *
      * @return The current tick usage in percentage.
      */
     virtual float getCurrentTickUsage() = 0;
 
     /**
-     * @brief Returns the average tick usage of the server.
+     * @brief Gets the average tick usage of the server.
      *
      * @return The average tick usage in percentage.
      */

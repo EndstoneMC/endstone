@@ -239,14 +239,26 @@ void init_server(py::class_<Server> &server)
                                py::return_value_policy::reference)
         .def("get_new_scoreboard", &Server::getNewScoreboard, "Gets a new Scoreboard to be tracked by the server.",
              py::return_value_policy::reference)
+        .def_property_readonly("current_mspt", &Server::getCurrentMillisecondsPerTick,
+                               "Gets the current milliseconds per tick (MSPT).")
+        .def_property_readonly("average_mspt", &Server::getAverageMillisecondsPerTick,
+                               "Gets the average milliseconds per tick (MSPT).")
+        .def_property_readonly("current_tps", &Server::getCurrentTicksPerSecond,
+                               "Gets the current ticks per second (TPS).")
+        .def_property_readonly("average_tps", &Server::getAverageTicksPerSecond,
+                               "Gets the average ticks per second (TPS).")
+        .def_property_readonly("current_tick_usage", &Server::getCurrentTickUsage,
+                               "Gets the current tick usage of the server.")
+        .def_property_readonly("average_tick_usage", &Server::getAverageTickUsage,
+                               "Gets the average tick usage of the server.")
         .def_property_readonly("start_time", &Server::getStartTime, "Gets the start time of the server.");
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)
 {
     py::class_<Skin>(m, "Skin")
-        .def(py::init([](std::string skin_id, py::array_t<std::uint8_t> skin_data, std::optional<std::string> cape_id,
-                         std::optional<py::array_t<std::uint8_t>> cape_data) {
+        .def(py::init([](std::string skin_id, const py::array_t<std::uint8_t> &skin_data,
+                         std::optional<std::string> cape_id, std::optional<py::array_t<std::uint8_t>> cape_data) {
                  py::buffer_info info1 = skin_data.request();
                  if (info1.ndim != 3 || info1.shape[2] != 4) {
                      throw std::runtime_error("Incompatible shape. Expected (h, w, 4)");
