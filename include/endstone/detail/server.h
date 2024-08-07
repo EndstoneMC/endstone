@@ -68,6 +68,7 @@ public:
     [[nodiscard]] Player *getPlayer(std::string name) const override;
 
     void shutdown() override;
+    void reload() override;
     void reloadData() override;
 
     void broadcast(const std::string &message, const std::string &permission) const override;

@@ -160,7 +160,14 @@ public:
     virtual void shutdown() = 0;
 
     /**
+     * @brief Reloads the server configuration, functions, scripts and plugins.
+     */
+    virtual void reload() = 0;
+
+    /**
      * @brief Reload only the Minecraft data for the server.
+     *
+     * This includes functions and script files from all behaviour packs.
      */
     virtual void reloadData() = 0;
 

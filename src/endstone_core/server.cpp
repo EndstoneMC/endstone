@@ -225,6 +225,12 @@ void EndstoneServer::shutdown()
     });
 }
 
+void EndstoneServer::reload()
+{
+    // TODO:
+    reloadData();
+}
+
 void EndstoneServer::reloadData()
 {
     server_instance_.getMinecraft().requestResourceReload();

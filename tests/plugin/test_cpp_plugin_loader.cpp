@@ -44,6 +44,7 @@ public:
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
     MOCK_METHOD(void, shutdown, (), (override));
+    MOCK_METHOD(void, reload, (), (override));
     MOCK_METHOD(void, reloadData, (), (override));
     MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));
     MOCK_METHOD(void, broadcastMessage, (const std::string &), (const, override));

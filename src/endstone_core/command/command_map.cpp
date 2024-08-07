@@ -26,6 +26,7 @@
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
+#include "endstone/detail/command/defaults/reload_command.h"
 #include "endstone/detail/command/defaults/status_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
 #include "endstone/detail/devtools/devtools_command.h"
@@ -66,8 +67,9 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 void EndstoneCommandMap::setDefaultCommands()
 {
     registerCommand(std::make_unique<PluginsCommand>());
-    registerCommand(std::make_unique<VersionCommand>());
+    registerCommand(std::make_unique<ReloadCommand>());
     registerCommand(std::make_unique<StatusCommand>());
+    registerCommand(std::make_unique<VersionCommand>());
 #ifdef ENDSTONE_DEVTOOLS
     registerCommand(std::make_unique<DevToolsCommand>());
 #endif
@@ -77,6 +79,9 @@ void EndstoneCommandMap::setMinecraftCommands()
 {
     auto &commands = server_.getMinecraftCommands();
     auto &registry = commands.getRegistry();
+
+    // Override commands
+    registry.signatures.erase("reload");
 
     std::unordered_map<std::string, std::vector<std::string>> command_aliases;
     for (const auto &[alias, command_name] : registry.aliases) {

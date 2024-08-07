@@ -50,10 +50,14 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
                                     "Gives the user the ability to use all Endstone command");
     registerPermission(root->getName() + ".plugins", root,
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
-    registerPermission(root->getName() + ".version", root,  //
-                       "Allows the user to view the version of the server", PermissionDefault::True);
-    registerPermission(root->getName() + ".status", root,  //
-                       "Allows the user to view the status of the server", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".reload", root,
+                       "Allows the user to reload the configuration and plugins of the server",
+                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".status", root, "Allows the user to view the status of the server",
+                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".version", root, "Allows the user to view the version of the server",
+                       PermissionDefault::True);
+
 #ifdef ENDSTONE_DEVTOOLS
     registerPermission(root->getName() + ".devtools", root, "Allows the user to open the DevTools.",
                        PermissionDefault::Operator);
@@ -65,10 +69,10 @@ void DefaultPermissions::registerBroadcastPermissions(Permission *parent)
 {
     auto *root = registerPermission(parent->getName() + ".broadcast", parent,
                                     "Allows the user to receive all broadcast messages");
-    registerPermission(root->getName() + ".admin", root,  //
-                       "Allows the user to receive administrative broadcasts", PermissionDefault::Operator);
-    registerPermission(root->getName() + ".user", root,  //
-                       "Allows the user to receive user broadcasts", PermissionDefault::True);
+    registerPermission(root->getName() + ".admin", root, "Allows the user to receive administrative broadcasts",
+                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".user", root, "Allows the user to receive user broadcasts",
+                       PermissionDefault::True);
     root->recalculatePermissibles();
 }
 
