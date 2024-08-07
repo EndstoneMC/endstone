@@ -225,6 +225,12 @@ void EndstoneServer::shutdown()
     });
 }
 
+void EndstoneServer::reloadData()
+{
+    server_instance_.getMinecraft().requestResourceReload();
+    level_->getHandle().loadFunctionManager();
+}
+
 void EndstoneServer::broadcast(const std::string &message, const std::string &permission) const
 {
     std::unordered_set<const CommandSender *> recipients;

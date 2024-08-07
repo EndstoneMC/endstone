@@ -160,6 +160,11 @@ public:
     virtual void shutdown() = 0;
 
     /**
+     * @brief Reload only the Minecraft data for the server.
+     */
+    virtual void reloadData() = 0;
+
+    /**
      * @brief Broadcasts the specified message to every user with the given permission name.
      *
      * @param message message to broadcast

@@ -36,3 +36,8 @@ void Minecraft::requestServerShutdown(const std::string &message)
 {
     app_->requestServerShutdown(message);
 }
+
+void Minecraft::requestResourceReload()
+{
+    game_callbacks_->onRequestResourceReload();
+}

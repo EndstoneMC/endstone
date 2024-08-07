@@ -280,7 +280,7 @@ public:
     virtual void forceRemoveEntityfromWorld(Actor &) = 0;
     virtual void forceFlushRemovedPlayers() = 0;
 
-private:
+    // private: // Endstone: make public
     virtual void loadFunctionManager() = 0;
 
 public:
