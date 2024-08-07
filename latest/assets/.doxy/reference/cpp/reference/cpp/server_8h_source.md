@@ -83,6 +83,10 @@ public:
 
     virtual void shutdown() = 0;
 
+    virtual void reload() = 0;
+
+    virtual void reloadData() = 0;
+
     virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
 
     virtual void broadcastMessage(const std::string &message) const = 0;

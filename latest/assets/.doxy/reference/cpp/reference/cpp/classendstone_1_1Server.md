@@ -88,6 +88,8 @@ _Represents a server implementation._
 | virtual std::string | [**getVersion**](#function-getversion) () const = 0<br>_Gets the version string of this server implementation._  |
 | virtual bool | [**isPrimaryThread**](#function-isprimarythread) () const = 0<br>_Checks the current thread against the expected primary server thread._  |
 |  [**Server**](classendstone_1_1Server.md) & | [**operator=**](#function-operator) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
+| virtual void | [**reload**](#function-reload) () = 0<br>_Reloads the server configuration, functions, scripts and plugins._  |
+| virtual void | [**reloadData**](#function-reloaddata) () = 0<br>_Reload only the Minecraft data for the server._  |
 | virtual void | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) = 0<br>_Set the maximum amount of players allowed to be logged in at once._  |
 | virtual void | [**shutdown**](#function-shutdown) () = 0<br>_Shutdowns the server, stopping everything._  |
 | virtual  | [**~Server**](#function-server) () = default<br> |
@@ -910,6 +912,37 @@ Server & endstone::Server::operator= (
 
 
 
+
+<hr>
+
+
+
+### function reload 
+
+```C++
+virtual void endstone::Server::reload () = 0
+```
+
+
+
+
+<hr>
+
+
+
+### function reloadData 
+
+_Reload only the Minecraft data for the server._ 
+```C++
+virtual void endstone::Server::reloadData () = 0
+```
+
+
+
+This includes functions and script files from all behaviour packs. 
+
+
+        
 
 <hr>
 

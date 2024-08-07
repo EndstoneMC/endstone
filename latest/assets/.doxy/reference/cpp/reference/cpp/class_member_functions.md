@@ -362,6 +362,8 @@
 * **runTaskTimer** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskTimerAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **resetScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **reload** ([**endstone::Server**](classendstone_1_1Server.md))
+* **reloadData** ([**endstone::Server**](classendstone_1_1Server.md))
 
 
 ## s

@@ -2259,6 +2259,32 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-reload" class="md-nav__link">
+      <span class="md-ellipsis">
+        function reload
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-reloaddata" class="md-nav__link">
+      <span class="md-ellipsis">
+        function reloadData
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-setmaxplayers" class="md-nav__link">
       <span class="md-ellipsis">
         function setMaxPlayers
@@ -2485,6 +2511,14 @@
 <tr>
 <td style="text-align: right;"><a href="./"><strong>Server</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-operator"><strong>operator=</strong></a> (const <a href="./"><strong>Server</strong></a> &amp;) = delete<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-reload"><strong>reload</strong></a> () = 0<br><em>Reloads the server configuration, functions, scripts and plugins.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-reloaddata"><strong>reloadData</strong></a> () = 0<br><em>Reload only the Minecraft data for the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2785,11 +2819,23 @@
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-reload">function reload<a class="headerlink" href="#function-reload" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reload</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div>
+<hr>
+
+<h3 id="function-reloaddata">function reloadData<a class="headerlink" href="#function-reloaddata" title="Permanent link">&para;</a></h3>
+<p><em>Reload only the Minecraft data for the server.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">reloadData</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>This includes functions and script files from all behaviour packs. </p>
+<hr>
+
 <h3 id="function-setmaxplayers">function setMaxPlayers<a class="headerlink" href="#function-setmaxplayers" title="Permanent link">&para;</a></h3>
 <p><em>Set the maximum amount of players allowed to be logged in at once.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">setMaxPlayers</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">max_players</span>
+</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2798,12 +2844,12 @@
 <hr>
 
 <h3 id="function-shutdown">function shutdown<a class="headerlink" href="#function-shutdown" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">shutdown</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">shutdown</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-server">function ~Server<a class="headerlink" href="#function-server" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::~</span><span class="n">Server</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::~</span><span class="n">Server</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

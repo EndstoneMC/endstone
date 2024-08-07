@@ -496,6 +496,8 @@
 * **runTaskTimer** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **runTaskTimerAsync** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **resetScores** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **reload** ([**endstone::Server**](classendstone_1_1Server.md))
+* **reloadData** ([**endstone::Server**](classendstone_1_1Server.md))
 * **remote\_host\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **remote\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 
