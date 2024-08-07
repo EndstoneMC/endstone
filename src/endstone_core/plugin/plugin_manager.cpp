@@ -163,6 +163,8 @@ void EndstonePluginManager::clearPlugins()
     disablePlugins();
     plugins_.clear();
     lookup_names_.clear();
+    // TODO: recreate dependency graph
+    event_handlers_.clear();
     plugin_loaders_.clear();
     permissions_.clear();
     default_perms_[true].clear();

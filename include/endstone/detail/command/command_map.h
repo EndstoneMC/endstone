@@ -32,9 +32,9 @@ public:
 
 private:
     friend class EndstoneServer;
-    void initialise();
     void setDefaultCommands();
     void setMinecraftCommands();
+    void setPluginCommands();
 
     EndstoneServer &server_;
     std::mutex mutex_;

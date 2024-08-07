@@ -35,21 +35,21 @@
 
 namespace endstone::detail {
 
-EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server) {}
+EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
+{
+    setMinecraftCommands();
+    setDefaultCommands();
+}
 
 void EndstoneCommandMap::clearCommands()
 {
     std::lock_guard lock(mutex_);
-    for (auto it = known_commands_.begin(); it != known_commands_.end();) {
-        // Only remove plugin commands
-        if (it->second->asPluginCommand() != nullptr) {
-            it->second->unregisterFrom(*this);
-            it = known_commands_.erase(it);
-        }
-        else {
-            ++it;
-        }
+    for (const auto &[name, command] : known_commands_) {
+        command->unregisterFrom(*this);
     }
+    known_commands_.clear();
+    setMinecraftCommands();
+    setDefaultCommands();
 }
 
 Command *EndstoneCommandMap::getCommand(std::string name) const
@@ -77,8 +77,7 @@ void EndstoneCommandMap::setDefaultCommands()
 
 void EndstoneCommandMap::setMinecraftCommands()
 {
-    auto &commands = server_.getMinecraftCommands();
-    auto &registry = commands.getRegistry();
+    auto &registry = server_.getMinecraftCommands().getRegistry();
 
     // Override commands
     registry.signatures.erase("reload");
@@ -126,6 +125,21 @@ void EndstoneCommandMap::setMinecraftCommands()
 
     parent->recalculatePermissibles();
     root->recalculatePermissibles();
+}
+
+void EndstoneCommandMap::setPluginCommands()
+{
+    auto plugins = server_.getPluginManager().getPlugins();
+    for (auto *plugin : plugins) {
+        auto name = plugin->getName();
+        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
+        server_.getMinecraftCommands().getRegistry().addEnumValues("PluginName", {name});
+
+        auto commands = plugin->getDescription().getCommands();
+        for (const auto &command : commands) {
+            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
+        }
+    }
 }
 
 namespace {
@@ -252,24 +266,6 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     command->setAliases(registered_alias);
     command->registerTo(*this);
     return true;
-}
-
-void EndstoneCommandMap::initialise()
-{
-    setMinecraftCommands();
-    setDefaultCommands();
-
-    auto plugins = server_.getPluginManager().getPlugins();
-    for (auto *plugin : plugins) {
-        auto name = plugin->getName();
-        std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-        server_.getMinecraftCommands().getRegistry().addEnumValues("PluginName", {name});
-
-        auto commands = plugin->getDescription().getCommands();
-        for (const auto &command : commands) {
-            registerCommand(std::make_unique<PluginCommand>(command, *plugin));
-        }
-    }
 }
 
 }  // namespace endstone::detail

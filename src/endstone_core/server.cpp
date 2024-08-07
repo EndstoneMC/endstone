@@ -16,6 +16,7 @@
 
 #include <filesystem>
 #include <memory>
+
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -25,6 +26,7 @@ namespace fs = std::filesystem;
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/scores/server_scoreboard.h"
+#include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/console_command_sender.h"
@@ -32,7 +34,9 @@ namespace fs = std::filesystem;
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
+#include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/event/server/broadcast_message_event.h"
+#include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
 
 #if !defined(ENDSTONE_VERSION)
@@ -44,12 +48,18 @@ namespace endstone::detail {
 EndstoneServer::EndstoneServer(ServerInstance &server_instance)
     : server_instance_(server_instance), logger_(LoggerFactory::getLogger("Server"))
 {
-    command_map_ = std::make_unique<EndstoneCommandMap>(*this);
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
-    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
-    command_sender_ = std::make_unique<EndstoneConsoleCommandSender>();
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
+}
+
+void EndstoneServer::init()
+{
+    getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
+                         "This server is running {} version: {} (Minecraft: {})",
+                     getName(), getVersion(), getMinecraftVersion());
+    command_sender_ = std::make_unique<EndstoneConsoleCommandSender>();
+    command_sender_->recalculatePermissions();
 }
 
 std::string EndstoneServer::getName() const
@@ -75,6 +85,11 @@ Logger &EndstoneServer::getLogger() const
 EndstoneCommandMap &EndstoneServer::getCommandMap() const
 {
     return *command_map_;
+}
+
+void EndstoneServer::setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map)
+{
+    command_map_ = std::move(command_map);
 }
 
 MinecraftCommands &EndstoneServer::getMinecraftCommands() const
@@ -110,6 +125,9 @@ bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command)
 
 void EndstoneServer::loadPlugins()
 {
+    plugin_manager_->registerLoader(std::make_unique<CppPluginLoader>(*this));
+    plugin_manager_->registerLoader(std::make_unique<PythonPluginLoader>(*this));
+
     auto plugin_dir = fs::current_path() / "plugins";
 
     if (exists(plugin_dir)) {
@@ -123,7 +141,7 @@ void EndstoneServer::loadPlugins()
 void EndstoneServer::enablePlugins(PluginLoadOrder type)
 {
     if (type == PluginLoadOrder::PostWorld) {
-        command_map_->initialise();
+        command_map_->setPluginCommands();
         DefaultPermissions::registerCorePermissions();
     }
 
@@ -227,8 +245,21 @@ void EndstoneServer::shutdown()
 
 void EndstoneServer::reload()
 {
-    // TODO:
+    plugin_manager_->clearPlugins();
+    command_map_->clearCommands();
     reloadData();
+
+    // TODO(server): Wait for at most 2.5 seconds for all async tasks to finish, otherwise issue a warning
+    loadPlugins();
+    enablePlugins(PluginLoadOrder::Startup);
+    enablePlugins(PluginLoadOrder::PostWorld);
+    ServerLoadEvent event{ServerLoadEvent::LoadType::Reload};
+    getPluginManager().callEvent(event);
+
+    // sync commands
+    for (const auto &[uuid, player] : players_) {
+        player->updateCommands();
+    }
 }
 
 void EndstoneServer::reloadData()

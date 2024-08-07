@@ -150,12 +150,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 {
     endstone::detail::register_signal_handler();
     auto &server = entt::locator<EndstoneServer>::value_or(instance);
-    server.getPluginManager().registerLoader(std::make_unique<PythonPluginLoader>(server));
-    server.getCommandSender().recalculatePermissions();
-    server.getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
-                                "This server is running {} version: {} (Minecraft: {})",
-                            server.getName(), server.getVersion(), server.getMinecraftVersion());
-
+    server.init();
     server.loadPlugins();
     server.enablePlugins(PluginLoadOrder::Startup);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerInitializeStart, this, instance);
@@ -164,6 +159,7 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
     auto &server = entt::locator<EndstoneServer>::value();
+    server.setCommandMap(std::make_unique<endstone::detail::EndstoneCommandMap>(server));
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
     server.getPluginManager().callEvent(event);

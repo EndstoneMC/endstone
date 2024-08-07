@@ -39,6 +39,7 @@ public:
     EndstoneServer &operator=(EndstoneServer const &) = delete;
     EndstoneServer &operator=(EndstoneServer &&) = delete;
     ~EndstoneServer() override = default;
+    void init();
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
@@ -46,6 +47,7 @@ public:
 
     [[nodiscard]] Logger &getLogger() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
+    void setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map);
     [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;

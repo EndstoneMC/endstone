@@ -185,6 +185,7 @@ class EndstoneRecipe(ConanFile):
             "magic_enum::magic_enum",
             "nlohmann_json::nlohmann_json",
             "ms-gsl::ms-gsl",
+            "pybind11::pybind11",
             "spdlog::spdlog",
             "tomlplusplus::tomlplusplus",
         ]
@@ -207,7 +208,6 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["runtime"].requires = [
             "core",
             "funchook::funchook",
-            "pybind11::pybind11",
             "cpptrace::cpptrace",
         ]
         if self._devtools_enabled:
