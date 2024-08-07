@@ -60,6 +60,9 @@ class PythonPluginLoader(PluginLoader):
 
     def load_plugins(self, directory) -> List[Plugin]:
         importlib.invalidate_caches()
+        for module in list(sys.modules.keys()):
+            if module.startswith("endstone_"):
+                del sys.modules[module]
 
         env = os.environ.copy()
         env.pop("LD_PRELOAD", "")
@@ -114,8 +117,6 @@ class PythonPluginLoader(PluginLoader):
             # get distribution metadata
             try:
                 plugin_metadata = metadata(ep.dist.name).json
-                module = importlib.import_module(ep.module)
-                importlib.reload(module)
                 cls = ep.load()
             except Exception as e:
                 self.server.logger.error(f"Error occurred when trying to load plugin from entry point '{ep.name}': {e}")

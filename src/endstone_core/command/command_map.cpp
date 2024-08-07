@@ -37,6 +37,7 @@ namespace endstone::detail {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
+    saveCommandRegistryState();
     setMinecraftCommands();
     setDefaultCommands();
 }
@@ -48,6 +49,7 @@ void EndstoneCommandMap::clearCommands()
         command->unregisterFrom(*this);
     }
     known_commands_.clear();
+    restoreCommandRegistryState();
     setMinecraftCommands();
     setDefaultCommands();
 }
@@ -266,6 +268,33 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     command->setAliases(registered_alias);
     command->registerTo(*this);
     return true;
+}
+
+namespace {
+struct {
+    std::vector<CommandRegistry::Enum> enums;
+    std::map<std::string, std::uint32_t> enum_lookup;
+    std::map<std::string, CommandRegistry::Signature> signatures;
+    std::map<std::string, std::string> aliases;
+} gCommandRegistryState;
+}  // namespace
+
+void EndstoneCommandMap::saveCommandRegistryState() const
+{
+    auto &registry = server_.getMinecraftCommands().getRegistry();
+    gCommandRegistryState.enums = registry.enums;
+    gCommandRegistryState.enum_lookup = registry.enum_lookup;
+    gCommandRegistryState.signatures = registry.signatures;
+    gCommandRegistryState.aliases = registry.aliases;
+}
+
+void EndstoneCommandMap::restoreCommandRegistryState() const
+{
+    auto &registry = server_.getMinecraftCommands().getRegistry();
+    registry.enums = gCommandRegistryState.enums;
+    registry.enum_lookup = gCommandRegistryState.enum_lookup;
+    registry.signatures = gCommandRegistryState.signatures;
+    registry.aliases = gCommandRegistryState.aliases;
 }
 
 }  // namespace endstone::detail

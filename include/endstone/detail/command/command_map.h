@@ -36,8 +36,11 @@ private:
     void setMinecraftCommands();
     void setPluginCommands();
 
+    void saveCommandRegistryState() const;
+    void restoreCommandRegistryState() const;
+
     EndstoneServer &server_;
-    std::mutex mutex_;
+    std::recursive_mutex mutex_;
     std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
 };
 
