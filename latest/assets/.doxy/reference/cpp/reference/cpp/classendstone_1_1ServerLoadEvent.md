@@ -223,7 +223,8 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 ```C++
 enum endstone::ServerLoadEvent::LoadType {
-    Startup
+    Startup,
+    Reload
 };
 ```
 

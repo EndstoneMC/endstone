@@ -863,6 +863,7 @@
   <compound refid="classendstone_1_1ServerLoadEvent" kind="class"><name>endstone::ServerLoadEvent</name>
     <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" kind="enum"><name>LoadType</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a13e685964c2548aa748f7ea263bad4e5" kind="enumvalue"><name>Startup</name></member>
+    <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a4d1c8263ba1036754f8db14a98f9f006" kind="enumvalue"><name>Reload</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1a0c38ee1be7f8172c828fcc32a8591554" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1ServerLoadEvent_1a6b655d60130ef5239ec7fb4b70b05670" kind="function"><name>ServerLoadEvent</name></member>
