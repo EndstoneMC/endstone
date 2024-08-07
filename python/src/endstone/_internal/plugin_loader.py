@@ -1,4 +1,5 @@
 import glob
+import importlib
 import os.path
 import site
 import subprocess
@@ -58,6 +59,8 @@ class PythonPluginLoader(PluginLoader):
         return results
 
     def load_plugins(self, directory) -> List[Plugin]:
+        importlib.invalidate_caches()
+
         env = os.environ.copy()
         env.pop("LD_PRELOAD", "")
 
@@ -86,25 +89,33 @@ class PythonPluginLoader(PluginLoader):
             # enforce naming convention
             if not ep.dist.name.replace("_", "-").startswith("endstone-"):
                 self.server.logger.error(
-                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name.")
+                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name."
+                )
                 self.server.logger.error(
-                    f"The name of distribution ({ep.dist.name}) does not start with 'endstone-' or 'endstone_'.")
+                    f"The name of distribution ({ep.dist.name}) does not start with 'endstone-' or 'endstone_'."
+                )
                 continue
 
             dist_name = "endstone-" + ep.name.replace("_", "-")
             if ep.dist.name.replace("_", "-") != dist_name:
                 self.server.logger.error(
-                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name.")
+                    f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name."
+                )
                 self.server.logger.error(f"You need to make **ONE** of the following changes.")
-                self.server.logger.error(f"* If you intend to use the current entry point name ({ep.name}), "
-                                         f"please change the distribution name from '{ep.dist.name}' to '{dist_name}'.")
-                self.server.logger.error(f"* If not, "
-                                         f"please change the entry point name from '{ep.name}' to '{ep.dist.name[9:]}'.")
+                self.server.logger.error(
+                    f"* If you intend to use the current entry point name ({ep.name}), "
+                    f"please change the distribution name from '{ep.dist.name}' to '{dist_name}'."
+                )
+                self.server.logger.error(
+                    f"* If not, " f"please change the entry point name from '{ep.name}' to '{ep.dist.name[9:]}'."
+                )
                 continue
 
             # get distribution metadata
             try:
                 plugin_metadata = metadata(ep.dist.name).json
+                module = importlib.import_module(ep.module)
+                importlib.reload(module)
                 cls = ep.load()
             except Exception as e:
                 self.server.logger.error(f"Error occurred when trying to load plugin from entry point '{ep.name}': {e}")
@@ -146,8 +157,15 @@ class PythonPluginLoader(PluginLoader):
             permissions = self._build_permissions(permissions)
 
             plugin_description = PluginDescription(
-                name=name, version=version, load=load, description=description, authors=authors, website=website,
-                commands=commands, permissions=permissions, **cls_attr
+                name=name,
+                version=version,
+                load=load,
+                description=description,
+                authors=authors,
+                website=website,
+                commands=commands,
+                permissions=permissions,
+                **cls_attr,
             )
 
             # instantiate plugin
