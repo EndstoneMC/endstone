@@ -89,6 +89,14 @@ public:
     virtual void sendTip(std::string message) const = 0;
 
     /**
+     * @brief Sends this player a toast notification.
+     *
+     * @param title The title of the toast notification.
+     * @param content The content of the toast notification.
+     */
+    virtual void sendToast(std::string title, std::string content) const = 0;
+
+    /**
      * @brief Kicks player with custom kick message.
      *
      * @param message kick message

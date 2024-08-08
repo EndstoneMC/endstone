@@ -79,6 +79,7 @@ public:
     [[nodiscard]] const SocketAddress &getAddress() const override;
     void sendPopup(std::string message) const override;
     void sendTip(std::string message) const override;
+    void sendToast(std::string title, std::string content) const override;
     void kick(std::string message) const override;
     void giveExp(int amount) override;
     void giveExpLevels(int amount) override;

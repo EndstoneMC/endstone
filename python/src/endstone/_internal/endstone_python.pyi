@@ -1316,6 +1316,10 @@ class Player(Mob):
         """
         Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.
         """
+    def send_toast(self, title: str, content: str) -> None:
+        """
+        Sends this player a toast notification.
+        """
     def transfer(self, host: str, port: int = 19132) -> None:
         """
         Transfers the player to another server.

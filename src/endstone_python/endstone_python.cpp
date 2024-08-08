@@ -312,6 +312,8 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
         .def_property_readonly("address", &Player::getAddress, "Gets the socket address of this player")
         .def("send_popup", &Player::sendPopup, py::arg("message"), "Sends this player a popup message")
         .def("send_tip", &Player::sendTip, py::arg("message"), "Sends this player a tip message")
+        .def("send_toast", &Player::sendToast, py::arg("title"), py::arg("content"),
+             "Sends this player a toast notification.")
         .def("kick", &Player::kick, py::arg("message"), "Kicks player with custom kick message.")
         .def("give_exp", &Player::giveExp, py::arg("amount"), "Gives the player the amount of experience specified.")
         .def("give_exp_levels", &Player::giveExpLevels, py::arg("amount"),

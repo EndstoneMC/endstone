@@ -25,6 +25,7 @@
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
+#include "bedrock/network/packet/toast_request_packet.h"
 #include "bedrock/network/packet/transfer_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
@@ -263,7 +264,7 @@ void EndstonePlayer::sendPopup(std::string message) const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
     auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Popup;
-    pk->message = message;
+    pk->message = std::move(message);
     getHandle().sendNetworkPacket(*packet);
 }
 
@@ -272,7 +273,16 @@ void EndstonePlayer::sendTip(std::string message) const
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
     auto pk = std::static_pointer_cast<TextPacket>(packet);
     pk->type = TextPacketType::Tip;
-    pk->message = message;
+    pk->message = std::move(message);
+    getHandle().sendNetworkPacket(*packet);
+}
+
+void EndstonePlayer::sendToast(std::string title, std::string content) const
+{
+    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::ToastRequest);
+    auto pk = std::static_pointer_cast<ToastRequestPacket>(packet);
+    pk->title = std::move(title);
+    pk->content = std::move(content);
     getHandle().sendNetworkPacket(*packet);
 }
 
@@ -406,7 +416,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
         pk->type = SetTitlePacket::TitleType::Title;
-        pk->title_text = title;
+        pk->title_text = std::move(title);
         pk->fade_in_time = fade_in;
         pk->stay_time = stay;
         pk->fade_out_time = fade_out;
@@ -416,7 +426,7 @@ void EndstonePlayer::sendTitle(std::string title, std::string subtitle, int fade
         auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::SetTitle);
         auto pk = std::static_pointer_cast<SetTitlePacket>(packet);
         pk->type = SetTitlePacket::TitleType::Subtitle;
-        pk->title_text = subtitle;
+        pk->title_text = std::move(subtitle);
         pk->fade_in_time = fade_in;
         pk->stay_time = stay;
         pk->fade_out_time = fade_out;
