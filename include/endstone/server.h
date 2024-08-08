@@ -189,7 +189,12 @@ public:
     template <typename... Args>
     void broadcastMessage(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        broadcastMessage(fmt::format(format, std::forward<Args>(args)...));
+        try {
+            broadcastMessage(fmt::format(format, std::forward<Args>(args)...));
+        }
+        catch (std::exception &e) {
+            getLogger().log(Logger::Error, e.what());
+        }
     }
 
     /**

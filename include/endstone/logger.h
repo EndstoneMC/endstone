@@ -77,7 +77,12 @@ public:
     template <typename... Args>
     void log(Level level, const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(level, fmt::format(format, std::forward<Args>(args)...));
+        try {
+            log(level, fmt::format(format, std::forward<Args>(args)...));
+        }
+        catch (std::exception &e) {
+            log(Error, e.what());
+        }
     }
 
     template <typename... Args>

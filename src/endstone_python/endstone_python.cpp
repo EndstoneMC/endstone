@@ -229,6 +229,8 @@ void init_server(py::class_<Server> &server)
              py::arg("unique_id").noconvert(), py::return_value_policy::reference,
              "Gets the player with the given UUID.")
         .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")
+        .def("reload", &Server::reload, "Reloads the server configuration, functions, scripts and plugins.")
+        .def("reload_data", &Server::reloadData, "Reload only the Minecraft data for the server.")
         .def("broadcast", &Server::broadcast, py::arg("message"), py::arg("permission"),
              "Broadcasts the specified message to every user with the given permission name.")
         .def(

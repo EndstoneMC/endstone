@@ -2057,6 +2057,14 @@ class Server:
         """
         Gets a PluginCommand with the given name or alias.
         """
+    def reload(self) -> None:
+        """
+        Reloads the server configuration, functions, scripts and plugins.
+        """
+    def reload_data(self) -> None:
+        """
+        Reload only the Minecraft data for the server.
+        """
     def shutdown(self) -> None:
         """
         Shutdowns the server, stopping everything.
