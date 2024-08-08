@@ -245,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="78" column="10" bodyfile="include/endstone/logger.h" bodystart="78" bodyend="81"/>
+        <location file="include/endstone/logger.h" line="78" column="10" bodyfile="include/endstone/logger.h" bodystart="78" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1afece6f3acad16bfa812319bce8642cba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="84" column="10" bodyfile="include/endstone/logger.h" bodystart="84" bodyend="87"/>
+        <location file="include/endstone/logger.h" line="89" column="10" bodyfile="include/endstone/logger.h" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a871e42ad85f5730044b2cc983cc3384a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -301,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="90" column="10" bodyfile="include/endstone/logger.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/logger.h" line="95" column="10" bodyfile="include/endstone/logger.h" bodystart="95" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a138fae3e1cb2ea5c193f87cfcf31f122" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -329,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="96" column="10" bodyfile="include/endstone/logger.h" bodystart="96" bodyend="99"/>
+        <location file="include/endstone/logger.h" line="101" column="10" bodyfile="include/endstone/logger.h" bodystart="101" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a4537b8cb4a086be29beed8e5a44292cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="102" column="10" bodyfile="include/endstone/logger.h" bodystart="102" bodyend="105"/>
+        <location file="include/endstone/logger.h" line="107" column="10" bodyfile="include/endstone/logger.h" bodystart="107" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -385,7 +385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="108" column="10" bodyfile="include/endstone/logger.h" bodystart="108" bodyend="111"/>
+        <location file="include/endstone/logger.h" line="113" column="10" bodyfile="include/endstone/logger.h" bodystart="113" bodyend="116"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -413,7 +413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="114" column="10" bodyfile="include/endstone/logger.h" bodystart="114" bodyend="117"/>
+        <location file="include/endstone/logger.h" line="119" column="10" bodyfile="include/endstone/logger.h" bodystart="119" bodyend="122"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -421,7 +421,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/logger.h" line="29" column="1" bodyfile="include/endstone/logger.h" bodystart="29" bodyend="118"/>
+    <location file="include/endstone/logger.h" line="29" column="1" bodyfile="include/endstone/logger.h" bodystart="29" bodyend="123"/>
     <listofallmembers>
       <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>critical</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144ab262641fef9d7f61d1dd7b0131b8f2d7" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Critical</name></member>

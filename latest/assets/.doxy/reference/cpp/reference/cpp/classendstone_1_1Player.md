@@ -169,6 +169,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
 | virtual void | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._  |
 | virtual void | [**sendTitle**](#function-sendtitle-22) (std::string title, std::string subtitle, int fade\_in, int stay, int fade\_out) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such._  |
+| virtual void | [**sendToast**](#function-sendtoast) (std::string title, std::string content) const = 0<br>_Sends this player a toast notification._  |
 | virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
 | virtual void | [**setExpLevel**](#function-setexplevel) (int level) = 0<br>_Sets the players current experience level._  |
 | virtual void | [**setExpProgress**](#function-setexpprogress) (float progress) = 0<br>_Sets the players current experience progress towards the next level._  |
@@ -1258,6 +1259,35 @@ virtual void endstone::Player::sendTitle (
 * `fade_in` time in ticks for titles to fade in. Defaults to 10. 
 * `stay` time in ticks for titles to stay. Defaults to 70. 
 * `fade_out` time in ticks for titles to fade out. Defaults to 20. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function sendToast 
+
+_Sends this player a toast notification._ 
+```C++
+virtual void endstone::Player::sendToast (
+    std::string title,
+    std::string content
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `title` The title of the toast notification. 
+* `content` The content of the toast notification. 
 
 
 

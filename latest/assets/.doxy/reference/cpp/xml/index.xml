@@ -480,6 +480,7 @@
     <member refid="classendstone_1_1Player_1af0f0bb362f33222b1e3b9e5b31e96de1" kind="function"><name>getAddress</name></member>
     <member refid="classendstone_1_1Player_1a57b35a3e8772c746590f3331bd41fab2" kind="function"><name>sendPopup</name></member>
     <member refid="classendstone_1_1Player_1ace6a01c98934469d0d7a1d3c61f444be" kind="function"><name>sendTip</name></member>
+    <member refid="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" kind="function"><name>sendToast</name></member>
     <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" kind="function"><name>kick</name></member>
     <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" kind="function"><name>giveExp</name></member>
     <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" kind="function"><name>giveExpLevels</name></member>

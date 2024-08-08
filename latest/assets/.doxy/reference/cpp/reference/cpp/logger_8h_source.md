@@ -59,43 +59,48 @@ public:
     template <typename... Args>
     void log(Level level, const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(level, fmt::format(format, std::forward<Args>(args)...));
+        try {
+            log(level, fmt::format(format, std::forward<Args>(args)...));
+        }
+        catch (std::exception &e) {
+            log(Error, e.what());
+        }
     }
 
     template <typename... Args>
     void trace(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Trace, fmt::format(format, std::forward<Args>(args)...));
+        log(Trace, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void debug(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Debug, fmt::format(format, std::forward<Args>(args)...));
+        log(Debug, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void info(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Info, fmt::format(format, std::forward<Args>(args)...));
+        log(Info, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void warning(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Warning, fmt::format(format, std::forward<Args>(args)...));
+        log(Warning, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Error, fmt::format(format, std::forward<Args>(args)...));
+        log(Error, format, std::forward<Args>(args)...);
     }
 
     template <typename... Args>
     void critical(const fmt::format_string<Args...> format, Args &&...args) const
     {
-        log(Level::Critical, fmt::format(format, std::forward<Args>(args)...));
+        log(Critical, format, std::forward<Args>(args)...);
     }
 };
 

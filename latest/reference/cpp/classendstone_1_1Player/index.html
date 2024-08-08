@@ -2338,6 +2338,19 @@
             
             
             <li class="md-nav__item">
+    <a href="#function-sendtoast" class="md-nav__link">
+      <span class="md-ellipsis">
+        function sendToast
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-setallowflight" class="md-nav__link">
       <span class="md-ellipsis">
         function setAllowFlight
@@ -2704,6 +2717,10 @@
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-sendtitle-22"><strong>sendTitle</strong></a> (std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const = 0<br><em>Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="#function-sendtoast"><strong>sendToast</strong></a> (std::string title, std::string content) const = 0<br><em>Sends this player a toast notification.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -3325,11 +3342,25 @@
 </ul>
 <hr>
 
+<h3 id="function-sendtoast">function sendToast<a class="headerlink" href="#function-sendtoast" title="Permanent link">&para;</a></h3>
+<p><em>Sends this player a toast notification.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">sendToast</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">content</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>title</code> The title of the toast notification. </li>
+<li><code>content</code> The content of the toast notification. </li>
+</ul>
+<hr>
+
 <h3 id="function-setallowflight">function setAllowFlight<a class="headerlink" href="#function-setallowflight" title="Permanent link">&para;</a></h3>
 <p><em>Sets if the</em> <a href="./"><em><strong>Player</strong></em></a> <em>is allowed to fly via jump key double-tap.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setAllowFlight</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">flight</span>
-</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setAllowFlight</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">flight</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3339,9 +3370,9 @@
 
 <h3 id="function-setexplevel">function setExpLevel<a class="headerlink" href="#function-setexplevel" title="Permanent link">&para;</a></h3>
 <p><em>Sets the players current experience level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpLevel</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span>
-</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpLevel</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3351,9 +3382,9 @@
 
 <h3 id="function-setexpprogress">function setExpProgress<a class="headerlink" href="#function-setexpprogress" title="Permanent link">&para;</a></h3>
 <p><em>Sets the players current experience progress towards the next level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpProgress</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span>
-</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpProgress</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".</p>
 <p><strong>Parameters:</strong></p>
@@ -3363,9 +3394,9 @@
 <hr>
 
 <h3 id="function-setflyspeed">function setFlySpeed<a class="headerlink" href="#function-setflyspeed" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlySpeed</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlySpeed</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Sets the speed at which a client will fly.</p>
 <p><strong>Parameters:</strong></p>
@@ -3376,9 +3407,9 @@
 
 <h3 id="function-setflying">function setFlying<a class="headerlink" href="#function-setflying" title="Permanent link">&para;</a></h3>
 <p><em>Makes this player start or stop flying.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3388,9 +3419,9 @@
 
 <h3 id="function-setgamemode">function setGameMode<a class="headerlink" href="#function-setgamemode" title="Permanent link">&para;</a></h3>
 <p><em>Sets this player's current GameMode.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">mode</span>
-</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setGameMode</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="n">GameMode</span><span class="w"> </span><span class="n">mode</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3399,9 +3430,9 @@
 <hr>
 
 <h3 id="function-setscoreboard">function setScoreboard<a class="headerlink" href="#function-setscoreboard" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setScoreboard</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scoreboard</span>
-</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setScoreboard</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="w">    </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">scoreboard</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p><a class="magiclink magiclink-github magiclink-mention" href="https://github.com/breif" title="GitHub User: breif">@breif</a> Sets the player's visible <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a>.</p>
 <p><strong>Parameters:</strong></p>
@@ -3411,9 +3442,9 @@
 <hr>
 
 <h3 id="function-setwalkspeed">function setWalkSpeed<a class="headerlink" href="#function-setwalkspeed" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setWalkSpeed</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
-</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setWalkSpeed</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">value</span>
+</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Sets the speed at which a client will walk.</p>
 <p><strong>Parameters:</strong></p>
@@ -3424,10 +3455,10 @@
 
 <h3 id="function-transfer">function transfer<a class="headerlink" href="#function-transfer" title="Permanent link">&para;</a></h3>
 <p><em>Transfers the player to another server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-44-1"><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">transfer</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">host</span><span class="p">,</span>
-</span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
-</span><span id="__span-44-4"><a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">transfer</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">host</span><span class="p">,</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">port</span>
+</span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4" href="#__codelineno-45-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -3438,18 +3469,18 @@
 
 <h3 id="function-updatecommands">function updateCommands<a class="headerlink" href="#function-updatecommands" title="Permanent link">&para;</a></h3>
 <p><em>Send the list of commands to the client.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">updateCommands</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Generally useful to ensure the client has a complete list of commands after permission changes are done. </p>
 <hr>
 
 <h3 id="function-player">function ~Player<a class="headerlink" href="#function-player" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::~</span><span class="n">Player</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 <h2 id="protected-types-documentation">Protected Types Documentation<a class="headerlink" href="#protected-types-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="typedef-formvariant">typedef FormVariant<a class="headerlink" href="#typedef-formvariant" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">FormVariant</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">MessageForm</span><span class="p">,</span><span class="w"> </span><span class="n">ActionForm</span><span class="p">,</span><span class="w"> </span><span class="n">ModalForm</span><span class="o">&gt;</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-48-1"><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">FormVariant</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">variant</span><span class="o">&lt;</span><span class="n">MessageForm</span><span class="p">,</span><span class="w"> </span><span class="n">ActionForm</span><span class="p">,</span><span class="w"> </span><span class="n">ModalForm</span><span class="o">&gt;</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

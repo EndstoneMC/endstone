@@ -548,6 +548,7 @@
 * **sendPopup** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTip** ([**endstone::Player**](classendstone_1_1Player.md))
 * **sendTitle** ([**endstone::Player**](classendstone_1_1Player.md))
+* **sendToast** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setAllowFlight** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpLevel** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setExpProgress** ([**endstone::Player**](classendstone_1_1Player.md))

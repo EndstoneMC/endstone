@@ -70,6 +70,8 @@ public:
 
     virtual void sendTip(std::string message) const = 0;
 
+    virtual void sendToast(std::string title, std::string content) const = 0;
+
     virtual void kick(std::string message) const = 0;
 
     virtual void giveExp(int amount) = 0;
