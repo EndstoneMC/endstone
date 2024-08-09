@@ -171,6 +171,7 @@ nlohmann::json FormCodec::toJson(const ActionForm &form)
     json["type"] = "form";
     json["title"] = toJson(form.getTitle());
     json["content"] = toJson(form.getContent());
+    json["buttons"] = nlohmann::json::array();
     for (const auto &button : form.getButtons()) {
         json["buttons"].push_back(toJson(button));
     }
