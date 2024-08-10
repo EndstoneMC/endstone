@@ -38,7 +38,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._ 
         * **class** [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._ 
 * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
-* **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data associated with a block._ 
 * **class** [**endstone::Command**](classendstone_1_1Command.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._    
     * **class** [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md) _Represents a_ [_**Command**_](classendstone_1_1Command.md) _belonging to a_[_**Plugin**_](classendstone_1_1Plugin.md) _._
 * **class** [**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md) _Represents a class which contains a single method for executing commands._     

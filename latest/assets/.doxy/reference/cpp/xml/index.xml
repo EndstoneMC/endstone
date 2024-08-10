@@ -76,11 +76,6 @@
   </compound>
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
-    <member refid="classendstone_1_1Block_1a40bd9c320efa2ea148818b1f498326b6" kind="function"><name>getData</name></member>
-  </compound>
-  <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
-    <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
-    <member refid="classendstone_1_1BlockData_1a2655e8d6d256fd11f51ee7e449993a91" kind="function"><name>getLightEmission</name></member>
   </compound>
   <compound refid="classendstone_1_1BroadcastMessageEvent" kind="class"><name>endstone::BroadcastMessageEvent</name>
     <member refid="classendstone_1_1BroadcastMessageEvent_1a46c6014d11f209582bf2839fec0dea35" kind="variable"><name>NAME</name></member>
@@ -1084,8 +1079,6 @@
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
-  </compound>
-  <compound refid="block__data_8h" kind="file"><name>block_data.h</name>
   </compound>
   <compound refid="color__format_8h" kind="file"><name>color_format.h</name>
   </compound>

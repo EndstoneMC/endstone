@@ -24,7 +24,7 @@
 
 #pragma once
 
-#include "endstone/block/block_data.h"
+#include <string>
 
 namespace endstone {
 
@@ -32,7 +32,7 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    virtual std::unique_ptr<BlockData> getData() = 0;
+    // [[nodiscard]] virtual std::string getType() const = 0;
 };
 
 }  // namespace endstone

@@ -24,8 +24,6 @@
 
 * [**Block**](classendstone_1_1Block.md)
 ([**endstone**](namespaceendstone.md))
-* [**BlockData**](classendstone_1_1BlockData.md)
-([**endstone**](namespaceendstone.md))
 * [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**Button**](classendstone_1_1ActionForm_1_1Button.md)
