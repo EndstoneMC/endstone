@@ -40,7 +40,9 @@ void init_level(py::module_ &m)
     dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
         .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
         .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
-                               py::return_value_policy::reference);
+                               py::return_value_policy::reference)
+        .def("get_block_at", &Dimension::getBlockAt, py::arg("x"), py::arg("y"), py::arg("z"),
+             "Gets the Block at the given coordinates");
 
     level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",

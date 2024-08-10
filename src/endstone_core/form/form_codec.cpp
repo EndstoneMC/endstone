@@ -70,8 +70,7 @@ nlohmann::json FormCodec::toJson(const Dropdown &dropdown)
     json["type"] = "dropdown";
     json["text"] = toJson(dropdown.getLabel());
     json["options"] = dropdown.getOptions();
-    auto default_index = dropdown.getDefaultIndex();
-    if (default_index) {
+    if (auto default_index = dropdown.getDefaultIndex()) {
         json["default"] = default_index.value();
     }
     return json;
@@ -86,8 +85,7 @@ nlohmann::json FormCodec::toJson(const Slider &slider)
     json["min"] = slider.getMin();
     json["max"] = slider.getMax();
     json["step"] = slider.getStep();
-    auto default_value = slider.getDefaultValue();
-    if (default_value) {
+    if (auto default_value = slider.getDefaultValue()) {
         json["default"] = default_value.value();
     }
     return json;
@@ -100,8 +98,7 @@ nlohmann::json FormCodec::toJson(const StepSlider &slider)
     json["type"] = "step_slider";
     json["text"] = toJson(slider.getLabel());
     json["steps"] = slider.getOptions();
-    auto default_index = slider.getDefaultIndex();
-    if (default_index) {
+    if (auto default_index = slider.getDefaultIndex()) {
         json["default"] = default_index.value();
     }
     return json;
@@ -114,8 +111,7 @@ nlohmann::json FormCodec::toJson(const TextInput &input)
     json["type"] = "input";
     json["text"] = toJson(input.getLabel());
     json["placeholder"] = toJson(input.getPlaceholder());
-    auto default_value = input.getDefaultValue();
-    if (default_value) {
+    if (auto default_value = input.getDefaultValue()) {
         json["default"] = default_value.value();
     }
     return json;
@@ -151,8 +147,7 @@ nlohmann::json FormCodec::toJson(const ActionForm::Button &button)
 {
     nlohmann::json json;
     json["text"] = toJson(button.getText());
-    auto icon = button.getIcon();
-    if (icon.has_value()) {
+    if (auto icon = button.getIcon(); icon.has_value()) {
         if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
             json["image"]["type"] = "url";
         }
@@ -192,13 +187,11 @@ nlohmann::json FormCodec::toJson(const ModalForm &form)
                                              control));
     }
 
-    auto submit_button = form.getSubmitButton();
-    if (submit_button.has_value()) {
+    if (auto submit_button = form.getSubmitButton(); submit_button.has_value()) {
         json["submit"] = toJson(submit_button.value());
     }
 
-    auto icon = form.getIcon();
-    if (icon.has_value()) {
+    if (auto icon = form.getIcon(); icon.has_value()) {
         if (icon.value().rfind("http://", 0) == 0 || icon.value().rfind("https://", 0) == 0) {
             json["icon"]["type"] = "url";
         }

@@ -47,6 +47,7 @@ Level &EndstoneDimension::getLevel() const
 
 std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z)
 {
+    // TODO(block): check if the chunk is within boundary, loaded and ticking.
     return EndstoneBlock::at(dimension_.getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 

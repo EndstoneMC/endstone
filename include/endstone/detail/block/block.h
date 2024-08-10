@@ -23,8 +23,6 @@ class EndstoneBlock : public Block {
 public:
     EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
 
-    std::unique_ptr<BlockData> getData() override;
-
     static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
 
 private:

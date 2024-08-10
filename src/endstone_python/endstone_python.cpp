@@ -19,6 +19,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/block/block.h"
 #include "endstone/color_format.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/command/plugin_command.h"
@@ -36,6 +37,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
+void init_block(py::module_ &, py::class_<Block> &block);
 void init_color_format(py::module_ &);
 void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
@@ -75,6 +77,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     auto permission_default =
         py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
+    auto block = py::class_<Block>(m, "Block", "Represents a block.");
     auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
     auto mob = py::class_<Mob, Actor>(m, "Mob",
                                       "Represents a mobile entity (i.e. living entity), such as a monster or player.");
@@ -90,6 +93,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_level(m);
     init_scoreboard(m);
     init_network(m);
+    init_block(m, block);
     init_actor(m, actor, mob);
     init_player(m, player);
     init_command(m, command_sender);

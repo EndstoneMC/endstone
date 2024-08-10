@@ -12,23 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/block/block.h"
 
-namespace endstone {
+#include <pybind11/pybind11.h>
 
-/**
- * @brief Represents the data associated with a block.
- */
-class BlockData {
-public:
-    virtual ~BlockData() = default;
+namespace py = pybind11;
 
-    /**
-     * @brief Get the amount of light emitted by this state when in the world.
-     *
-     * @return the light emission
-     */
-    [[nodiscard]] virtual int getLightEmission() const = 0;
-};
+namespace endstone::detail {
 
-}  // namespace endstone
+void init_block(py::module_ &m, py::class_<Block> &block) {}
+
+}  // namespace endstone::detail

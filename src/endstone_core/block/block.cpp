@@ -20,12 +20,6 @@ EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
 {
 }
 
-std::unique_ptr<BlockData> EndstoneBlock::getData()
-{
-    // TODO(block): implement me
-    return nullptr;
-}
-
 std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
     return std::make_unique<EndstoneBlock>(block_source, block_pos);

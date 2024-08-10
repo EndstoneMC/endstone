@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "endstone/block/block_data.h"
+#include <string>
 
 namespace endstone {
 
@@ -23,19 +23,19 @@ namespace endstone {
  *
  * <p>
  * This is a live object, and only one Block may exist for any given location in a world.
- * The state of the block may change concurrently to your own handling of it.
- * Use block.getState() to get a snapshot state of a block which will not be modified.
  */
 class Block {
 public:
     virtual ~Block() = default;
 
     /**
-     * @brief Gets the complete block data for this block
+     * @brief Get the type of the block.
      *
-     * @return block specific data
+     * This method returns the type of the block as a string, for example, minecraft:acacia_stairs.
+     *
+     * @return The type of the block.
      */
-    virtual std::unique_ptr<BlockData> getData() = 0;
+    // [[nodiscard]] virtual std::string getType() const = 0;
 };
 
 }  // namespace endstone

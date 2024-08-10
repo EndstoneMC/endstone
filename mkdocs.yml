@@ -200,6 +200,7 @@ nav:
           - Server: reference/python/server.md
           - Player: reference/python/player.md
           - Actor: reference/python/actor.md
+          - Block: reference/python/block.md
           - Command: reference/python/command.md
           - Event: reference/python/event.md
           - Form: reference/python/form.md
