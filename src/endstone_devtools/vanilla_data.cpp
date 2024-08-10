@@ -22,6 +22,7 @@
 #include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "endstone/detail/base64.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/level/level.h"

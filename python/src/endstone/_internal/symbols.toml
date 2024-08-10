@@ -38,6 +38,9 @@ version = "1.21.3"
 "?prepareFromRecipes@CraftingDataPacket@@SA?AV?$unique_ptr@VCraftingDataPacket@@U?$default_delete@VCraftingDataPacket@@@std@@@std@@AEBVRecipes@@_N@Z" = 8997024
 # CreativeItemRegistry
 "?forEachCreativeItemInstance@CreativeItemRegistry@@SAXV?$function@$$A6A_NAEAVItemInstance@@@Z@std@@@Z" = 28186272
+# FurnaceBlockActor
+"?getItemBurnDuration@FurnaceBlockActor@@SAMAEBVItem@@M@Z" = 36389408
+"?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 36383856
 # Level
 "?tick@Level@@UEAAXXZ" = 28080944
 "?_getGameplayUserManagerStackRef@Level@@IEAA?AV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@XZ" = 28011280
@@ -128,6 +131,7 @@ version = "1.21.3"
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 79195552
 # CreativeItemRegistry
 "_ZN20CreativeItemRegistry27forEachCreativeItemInstanceENSt3__18functionIFbR12ItemInstanceEEE" = 120635696
+# TODO: FurnaceBlockActor
 # Level
 "_ZN5Level4tickEv" = 119555392
 "_ZN5Level31_getGameplayUserManagerStackRefEv" = 119584112
