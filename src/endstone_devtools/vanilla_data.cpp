@@ -222,7 +222,8 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"maxDamage", item->getMaxDamage()},
             {"isDamageable", item->isDamageable()},
             {"maxStackSize", item->getMaxStackSize({})},
-            {"furnaceBurnIntervalMultipler", item->getFurnaceBurnIntervalMultipler()}
+            {"furnaceBurnIntervalMultipler", item->getFurnaceBurnIntervalMultipler()},
+            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}
         };
         if (!tags.is_null()) {
             data.items[name]["tags"] = tags;

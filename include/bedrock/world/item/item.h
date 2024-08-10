@@ -146,7 +146,7 @@ public:
     virtual int getIconYOffset() const = 0;
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
-    virtual float getFurnaceXPmultiplier(ItemStackBase const &) const = 0;
+    virtual float getFurnaceXPmultiplier(ItemStackBase const *) const = 0;
     virtual std::string getAuxValuesDescription() const = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
