@@ -146,7 +146,7 @@ public:
     virtual int getIconYOffset() const = 0;
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
-    virtual float getFurnaceXPmultiplier(ItemStackBase const &) const = 0;
+    virtual float getFurnaceXPmultiplier(ItemStackBase const *) const = 0;
     virtual std::string getAuxValuesDescription() const = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
@@ -174,6 +174,11 @@ public:
         return legacy_block_;
     }
 
+    [[nodiscard]] float getFurnaceBurnIntervalMultipler() const
+    {
+        return furnace_burn_interval_multipler_;
+    }
+
 private:
     std::string texture_atlas_file_;                  // +8
     int frame_count_;                                 // +40
@@ -198,9 +203,10 @@ private:
     CreativeItemCategory creative_category_;          // +464
     Item *crafting_remaining_item_;                   // +472
     std::string creative_group_;                      // +480
-    std::uint64_t unknown3_;                          // +512
-    int unknown4_;                                    // +520
-    int unknown5_;                                    // +524
+    float furnace_burn_interval_multipler_;           // +512
+    float furnace_xp_multiplier_;                     // +516
+    int unknown3_;                                    // +520
+    int unknown4_;                                    // +524
     std::vector<void *> unknown6_;                    // +528
     std::vector<void *> unknown7_;                    // +552
     std::vector<ItemTag> tags_;                       // +576
