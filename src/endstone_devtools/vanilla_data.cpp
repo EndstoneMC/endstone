@@ -222,7 +222,7 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"maxDamage", item->getMaxDamage()},
             {"isDamageable", item->isDamageable()},
             {"maxStackSize", item->getMaxStackSize({})},
-            {"furnaceBurnIntervalMultipler", item->getFurnaceBurnIntervalMultipler()},
+            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(*ItemStack::create(*item), 200)},
             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}
         };
         if (!tags.is_null()) {

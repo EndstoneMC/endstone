@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
-#include "bedrock/bedrock.h"
-#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
-#include "bedrock/world/item/item_stack_base.h"
+#include "bedrock/world/item/item_stack.h"
 #include "endstone/detail/hook.h"
 
-class ItemStack : public ItemStackBase {
-public:
-    // ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view name, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const& item, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-private:
-    ItemStackNetIdVariant network_id_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 160, 160);
+// TODO(daoge_cmd): Modify ENDSTONE_FACTORY_IMPLEMENT macros to support multiple factory functions
+// std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, int aux_value, CompoundTag const* user_data)
+// {
+//     ENDSTONE_FACTORY_IMPLEMENT(ItemStack, name, count, aux_value, user_data);
+// }
+
+std::unique_ptr<ItemStack> ItemStack::create(Item const& item, int count, int aux_value, CompoundTag const* user_data)
+{
+    ENDSTONE_FACTORY_IMPLEMENT(ItemStack, item, count, aux_value, user_data);
+}

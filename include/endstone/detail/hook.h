@@ -172,11 +172,11 @@ std::function<void(Class *, Args...)> get_ctor(std::unique_ptr<Class> (*)(Args..
 #define ENDSTONE_FACTORY_IMPLEMENT(type, ...)                                                           \
     {                                                                                                   \
         static std::string func_decorated_name = __FUNCDNAME__;                                         \
-        static std::string name =                                                                       \
+        static std::string __name =                                                                       \
             ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) +                                                 \
             func_decorated_name.substr(func_decorated_name.find(ENDSTONE_FACTORY_PREFIX_TARGET(type)) + \
                                        std::strlen(ENDSTONE_FACTORY_PREFIX_TARGET(type)));              \
         auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);                                   \
-        endstone::detail::hook::get_ctor(&type::create, name)(obj, __VA_ARGS__);                        \
+        endstone::detail::hook::get_ctor(&type::create, __name)(obj, __VA_ARGS__);                        \
         return std::unique_ptr<type>(obj);                                                              \
     }
