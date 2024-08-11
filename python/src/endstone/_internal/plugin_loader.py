@@ -14,18 +14,6 @@ from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadO
 __all__ = ["PythonPluginLoader"]
 
 
-def find_python():
-    if sys.platform == "win32":
-        path = os.path.join(sys.base_prefix, "python.exe")
-    else:
-        path = os.path.join(sys.base_prefix, "bin", "python")
-
-    if os.path.isfile(path):
-        return path
-
-    raise RuntimeError(f"Unable to find Python executable: {path}")
-
-
 class PythonPluginLoader(PluginLoader):
     SUPPORTED_API = ["0.5"]
 
@@ -70,7 +58,7 @@ class PythonPluginLoader(PluginLoader):
         for file in glob.glob(os.path.join(directory, "*.whl")):
             subprocess.run(
                 [
-                    find_python(),
+                    sys.executable,
                     "-m",
                     "pip",
                     "install",
@@ -78,6 +66,7 @@ class PythonPluginLoader(PluginLoader):
                     "--user",
                     "--quiet",
                     "--no-warn-script-location",
+                    "--disable-pip-version-check",
                 ],
                 env=env,
             )

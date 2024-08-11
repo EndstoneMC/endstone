@@ -36,7 +36,7 @@ public:
     void requestResourceReload();
 
 private:
-    GameCallbacks *game_callbacks_;                                           // +24
+    GameCallbacks *game_callbacks_;                                      // +24
     IMinecraftEventing *eventing_;                                       // +32
     std::unique_ptr<ResourcePackManager> resource_loader_;               // +40
     std::unique_ptr<StructureManager> structure_manager_;                // +48
