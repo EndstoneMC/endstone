@@ -124,7 +124,6 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         data.materials[material_name] = {
             {"isNeverBuildable", material.isNeverBuildable()},
             {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
-            {"isReplaceable", material.isReplaceable()},
             {"isLiquid", material.isLiquid()},
             {"translucency", round(material.getTranslucency())},
             {"blocksMotion", material.getBlocksMotion()},
