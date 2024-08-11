@@ -22,6 +22,7 @@
 #include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "endstone/detail/base64.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/level/level.h"
@@ -123,7 +124,6 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         data.materials[material_name] = {
             {"isNeverBuildable", material.isNeverBuildable()},
             {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
-            {"isReplaceable", material.isReplaceable()},
             {"isLiquid", material.isLiquid()},
             {"translucency", round(material.getTranslucency())},
             {"blocksMotion", material.getBlocksMotion()},
@@ -222,7 +222,7 @@ void dumpItemData(VanillaData &data, ::Level &level)
             {"maxDamage", item->getMaxDamage()},
             {"isDamageable", item->isDamageable()},
             {"maxStackSize", item->getMaxStackSize({})},
-            {"furnaceBurnIntervalMultipler", item->getFurnaceBurnIntervalMultipler()},
+            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(*ItemStack::create(*item), 200)},
             {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}
         };
         if (!tags.is_null()) {

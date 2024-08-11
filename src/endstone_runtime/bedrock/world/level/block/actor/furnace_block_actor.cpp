@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/actor/furnace_block_actor.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
-#include "bedrock/world/item/item_stack_base.h"
 #include "endstone/detail/hook.h"
 
-class ItemStack : public ItemStackBase {
-public:
-    // ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view name, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const& item, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-private:
-    ItemStackNetIdVariant network_id_;
-};
-BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 160, 160);
+float FurnaceBlockActor::getItemBurnDuration(Item const& item, float burn_interval)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&FurnaceBlockActor::getItemBurnDuration, item, burn_interval);
+}
+
+float FurnaceBlockActor::getBurnDuration(ItemStackBase const& item_instance, float burn_interval)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
+}

@@ -15,15 +15,9 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
-#include "bedrock/world/item/item_stack_base.h"
-#include "endstone/detail/hook.h"
 
-class ItemStack : public ItemStackBase {
+class FurnaceBlockActor {
 public:
-    // ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view name, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const& item, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-private:
-    ItemStackNetIdVariant network_id_;
+    ENDSTONE_HOOK static float getItemBurnDuration(class Item const& item, float burn_interval);
+    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const& item_instance, float burn_interval);
 };
-BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 160, 160);
