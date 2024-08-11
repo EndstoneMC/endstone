@@ -16,12 +16,7 @@
 
 #include "endstone/detail/hook.h"
 
-float FurnaceBlockActor::getItemBurnDuration(Item const& item, float burn_interval)
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&FurnaceBlockActor::getItemBurnDuration, item, burn_interval);
-}
-
-float FurnaceBlockActor::getBurnDuration(ItemStackBase const& item_instance, float burn_interval)
+float FurnaceBlockActor::getBurnDuration(ItemStackBase const &item_instance, float burn_interval)
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&FurnaceBlockActor::getBurnDuration, item_instance, burn_interval);
 }

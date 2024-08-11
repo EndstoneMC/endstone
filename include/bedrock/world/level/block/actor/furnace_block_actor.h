@@ -18,6 +18,5 @@
 
 class FurnaceBlockActor {
 public:
-    ENDSTONE_HOOK static float getItemBurnDuration(class Item const& item, float burn_interval);
-    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const& item_instance, float burn_interval);
+    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
 };
