@@ -38,7 +38,10 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property_readonly("dimension", &Actor::getDimension, "Gets the current Dimension this actor resides in.",
                                py::return_value_policy::reference)
         .def("set_rotation", &Actor::setRotation, "Sets the actor's rotation.", py::arg("yaw"), py::arg("pitch"))
-        .def("teleport", &Actor::teleport, "Teleports this entity to the given location.", py::arg("location"))
+        .def("teleport", py::overload_cast<Location>(&Actor::teleport), "Teleports this actor to the given location.",
+             py::arg("location"))
+        .def("teleport", py::overload_cast<Actor &>(&Actor::teleport), "Teleports this actor to the target Actor.",
+             py::arg("target"))
         .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
         .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.");
 

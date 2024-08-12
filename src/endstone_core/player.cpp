@@ -229,6 +229,11 @@ void EndstonePlayer::teleport(Location location)
     EndstoneMob::teleport(location);
 }
 
+void EndstonePlayer::teleport(Actor &target)
+{
+    EndstoneMob::teleport(target);
+}
+
 std::int64_t EndstonePlayer::getId() const
 {
     return EndstoneMob::getId();

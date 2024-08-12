@@ -93,9 +93,15 @@ class Actor(CommandSender):
         """
         Sets the actor's rotation.
         """
+    @typing.overload
     def teleport(self, location: Location) -> None:
         """
-        Teleports this entity to the given location.
+        Teleports this actor to the given location.
+        """
+    @typing.overload
+    def teleport(self, target: Actor) -> None:
+        """
+        Teleports this actor to the target Actor.
         """
     @property
     def dimension(self) -> Dimension:

@@ -186,6 +186,11 @@ void EndstoneActor::teleport(Location location)
     TeleportCommand::applyTarget(actor_, std::move(target), /*keep_velocity*/ false);
 }
 
+void EndstoneActor::teleport(Actor &target)
+{
+    teleport(target.getLocation());
+}
+
 std::int64_t EndstoneActor::getId() const
 {
     return actor_.getOrCreateUniqueID().raw_id;

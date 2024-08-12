@@ -55,6 +55,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
     void teleport(Location location) override;
+    void teleport(Actor& target) override;
     [[nodiscard]] std::int64_t getId() const override;
     [[nodiscard]] bool isDead() const override;
 
