@@ -93,6 +93,10 @@ class Actor(CommandSender):
         """
         Sets the actor's rotation.
         """
+    def teleport(self, location: Location) -> None:
+        """
+        Teleports this entity to the given location.
+        """
     @property
     def dimension(self) -> Dimension:
         """
@@ -440,8 +444,7 @@ class Dimension:
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
-    @property
-    def get_block_at(self, arg1: int, arg2: int, arg3: int) -> Block:
+    def get_block_at(self, x: int, y: int, z: int) -> Block:
         """
         Gets the Block at the given coordinates
         """
