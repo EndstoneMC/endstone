@@ -60,6 +60,8 @@ public:
 
     virtual void teleport(Location location) = 0;
 
+    virtual void teleport(Actor &target) = 0;
+
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
     [[nodiscard]] virtual bool isDead() const = 0;

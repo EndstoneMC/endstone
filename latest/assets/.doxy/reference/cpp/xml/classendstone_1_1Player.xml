@@ -1280,6 +1280,7 @@
       <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setScoreboard</name></member>
       <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setWalkSpeed</name></member>
       <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>transfer</name></member>
       <member refid="classendstone_1_1Player_1ae89a62a763f1109d05e7718ae7ff9750" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>updateCommands</name></member>
       <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>~Actor</name></member>

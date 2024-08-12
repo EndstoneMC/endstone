@@ -31,6 +31,7 @@
     <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" kind="function"><name>setRotation</name></member>
     <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" kind="function"><name>teleport</name></member>
+    <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" kind="function"><name>teleport</name></member>
     <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" kind="function"><name>getId</name></member>
     <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" kind="function"><name>isDead</name></member>
   </compound>

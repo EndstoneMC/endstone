@@ -110,7 +110,8 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
-| virtual void | [**teleport**](#function-teleport) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
+| virtual void | [**teleport**](#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
+| virtual void | [**teleport**](#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
 |   | [**~Actor**](#function-actor) () override<br> |
 
 
@@ -625,7 +626,7 @@ Note that if the actor is affected by AI, it may override this rotation.
 
 
 
-### function teleport 
+### function teleport [1/2]
 
 
 ```C++
@@ -640,7 +641,7 @@ virtual void endstone::Actor::teleport (
 
 **Returns:**
 
-Teleports this entity to the given location.
+Teleports this actor to the given location.
 
 
 
@@ -648,7 +649,37 @@ Teleports this entity to the given location.
 **Parameters:**
 
 
-* `location` New location to teleport this entity to 
+* `location` New location to teleport this actor to 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function teleport [2/2]
+
+
+```C++
+virtual void endstone::Actor::teleport (
+    Actor & target
+) = 0
+```
+
+
+
+Teleports this actor to the target [**Actor**](classendstone_1_1Actor.md).
+
+
+
+
+**Parameters:**
+
+
+* `target` [**Actor**](classendstone_1_1Actor.md) to teleport this actor to 
 
 
 

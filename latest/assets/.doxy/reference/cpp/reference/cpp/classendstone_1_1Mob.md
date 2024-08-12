@@ -139,7 +139,8 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
 |  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual void | [**setRotation**](classendstone_1_1Actor.md#function-setrotation) (float yaw, float pitch) = 0<br> |
-| virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
+| virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
+| virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
 |   | [**~Actor**](classendstone_1_1Actor.md#function-actor) () override<br> |
 
 
