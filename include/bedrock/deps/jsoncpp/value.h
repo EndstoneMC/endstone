@@ -29,7 +29,7 @@ enum ValueType {    // NOLINTBEGIN
     booleanValue,   ///< bool value
     arrayValue,     ///< array value (ordered list)
     objectValue     ///< object value (collection of name/value pairs).
-};  // NOLINTEND
+};                  // NOLINTEND
 
 class Value {
     static const Value &null;
@@ -37,6 +37,7 @@ class Value {
     class CZString {
     public:
         CZString(const char *cstr);  // NOLINT(*-explicit-constructor)
+        CZString(const CZString &other);
         ~CZString();
         bool operator<(const CZString &other) const;
         bool operator==(const CZString &other) const;
@@ -49,9 +50,13 @@ class Value {
 
 public:
     using ObjectValues = std::map<CZString, Value>;
-    using ArrayValues = std::vector<Value*>;
+    using ArrayValues = std::vector<Value *>;
 
     Value(ValueType type = nullValue);  // NOLINT(*-explicit-constructor)
+    Value(const Value &other);
+    ~Value();
+    Value &operator=(Value other);
+    void swap(Value& other);
 
     [[nodiscard]] ValueType type() const;
     [[nodiscard]] const char *asCString() const;
@@ -82,7 +87,7 @@ private:
         std::uint64_t uint_;
         double real_;
         bool bool_;
-        char **string_;
+        CZString *string_;
         ArrayValues *array_;
         ObjectValues *map_;
     } value_;  // NOLINTEND

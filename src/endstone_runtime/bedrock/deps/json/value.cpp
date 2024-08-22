@@ -55,6 +55,11 @@ const Value &Value::null = reinterpret_cast<const Value &>(kNullRef);
 
 Value::CZString::CZString(const char *cstr) : cstr_(duplicateStringValue(cstr)) {}
 
+Value::CZString::CZString(const CZString &other)
+    : cstr_(other.cstr_ != nullptr ? duplicateStringValue(other.cstr_) : other.cstr_)
+{
+}
+
 Value::CZString::~CZString()
 {
     if (cstr_) {
@@ -113,6 +118,78 @@ Json::Value::Value(Json::ValueType type)
     }
 }
 
+Value::Value(const Value &other) : type_(other.type_), allocated_(false)
+{
+    switch (type_) {
+    case nullValue:
+    case intValue:
+    case uintValue:
+    case realValue:
+    case booleanValue:
+        value_ = other.value_;
+        break;
+    case stringValue:
+        if (other.value_.string_) {
+            value_.string_ = new CZString(*other.value_.string_);
+            allocated_ = true;
+        }
+        else {
+            value_.string_ = nullptr;
+            allocated_ = false;
+        }
+        break;
+    case arrayValue:
+        value_.array_ = new ArrayValues(*other.value_.array_);
+        break;
+    case objectValue:
+        value_.map_ = new ObjectValues(*other.value_.map_);
+        break;
+    default:
+        break;
+    }
+}
+
+Value::~Value()
+{
+    switch (type_) {
+    case nullValue:
+    case intValue:
+    case uintValue:
+    case realValue:
+    case booleanValue:
+        break;
+    case stringValue:
+        if (allocated_) {
+            delete value_.string_;
+        }
+        break;
+    case arrayValue:
+        delete value_.array_;
+    case objectValue:
+        delete value_.map_;
+        break;
+    default:
+        break;
+    }
+}
+
+Value &Value::operator=(Value other)
+{
+    swap(other);
+    return *this;
+}
+
+void Value::swap(Value &other)
+{
+    ValueType temp = type_;
+    type_ = other.type_;
+    other.type_ = temp;
+    std::swap(value_, other.value_);
+    int temp2 = allocated_;
+    allocated_ = other.allocated_;
+    other.allocated_ = temp2;
+}
+
 const Value &Value::operator[](int index) const
 {
     if (type_ == nullValue) {
@@ -136,7 +213,7 @@ const Value &Value::operator[](const char *key) const
     if (it == value_.map_->end()) {
         return null;
     }
-    return (*it).second;
+    return it->second;
 }
 
 Value Value::get(const char *key, const Value &default_value) const
@@ -163,7 +240,7 @@ ValueType Value::type() const
 
 const char *Value::asCString() const
 {
-    return *value_.string_;
+    return value_.string_->c_str();
 }
 
 std::string Value::asString() const
@@ -172,7 +249,7 @@ std::string Value::asString() const
     case nullValue:
         return "";
     case stringValue:
-        return value_.string_ ? *value_.string_ : "";
+        return value_.string_ ? std::string(value_.string_->c_str()) : "";
     case booleanValue:
         return value_.bool_ ? "true" : "false";
     case intValue:
