@@ -1,4 +1,4 @@
-timestamp = 1724338227
+timestamp = 1724340466
 version = "1.21.20"
 
 [windows]
@@ -54,7 +54,7 @@ version = "1.21.20"
 # Player
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27130912
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27132784
-"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 12036896
+"?setPermissions@Player@@QEAAXW4CommandPermissionLevel@@@Z" = 27169728
 "?teleportTo@Player@@UEAAXAEBVVec3@@_NHH1@Z" = 27184192
 # PlayerEventCoordinator
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 25937744
@@ -75,7 +75,7 @@ version = "1.21.20"
 "?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942496
 "?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942544
 # ServerLevel
-"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 11427984
+"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 25868416 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
 "?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z" = 8715520
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 8795424
@@ -168,7 +168,7 @@ version = "1.21.20"
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 112191632
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 112191776
 # ServerLevel
-"_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 91127984
+"_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 91127984 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
 "_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 79096704
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 79160176

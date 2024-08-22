@@ -105,7 +105,7 @@ public:
     [[nodiscard]] virtual bool isWallBlock() const = 0;
     [[nodiscard]] virtual bool isStairBlock() const = 0;
     [[nodiscard]] virtual bool isSlabBlock() const = 0;
-    [[nodiscard]] virtual bool isDoubleSlabBlock() const = 0;
+    // [[nodiscard]] virtual bool isDoubleSlabBlock() const = 0;
     [[nodiscard]] virtual bool isDoorBlock() const = 0;
     [[nodiscard]] virtual bool isRailBlock() const = 0;
     [[nodiscard]] virtual bool isButtonBlock() const = 0;
@@ -189,13 +189,13 @@ public:
     [[nodiscard]] virtual bool canSpawnAt(BlockSource const &region, BlockPos const &) const = 0;
     virtual void notifySpawnedAt(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool causesFreezeEffect() const = 0;
-    [[nodiscard]] virtual int getIconYOffset() const = 0;
+    // [[nodiscard]] virtual int getIconYOffset() const = 0;
     [[nodiscard]] virtual std::string buildDescriptionId(Block const &) const = 0;
     [[nodiscard]] virtual bool isAuxValueRelevantForPicking() const = 0;
-    [[nodiscard]] virtual int getColor(Block const &) const = 0;
-    [[nodiscard]] virtual int getColor(BlockSource &, BlockPos const &, Block const &) const = 0;
-    [[nodiscard]] virtual int getColorAtPos(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual int getColorForParticle(BlockSource &, BlockPos const &, Block const &) const = 0;
+    // [[nodiscard]] virtual int getColor(Block const &) const = 0;
+    // [[nodiscard]] virtual int getColor(BlockSource &, BlockPos const &, Block const &) const = 0;
+    // [[nodiscard]] virtual int getColorAtPos(BlockSource &, BlockPos const &) const = 0;
+    // [[nodiscard]] virtual int getColorForParticle(BlockSource &, BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual bool isSeasonTinted(Block const &, BlockSource &, BlockPos const &) const = 0;
     virtual void onGraphicsModeChanged(BlockGraphicsModeChangeContext const &) = 0;
     [[nodiscard]] virtual float getShadeBrightness(Block const &) const = 0;
@@ -217,7 +217,7 @@ public:
     virtual void onRemove(BlockSource &, BlockPos const &) const = 0;
     virtual void onExploded(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
-    virtual void onPlace(BlockSource &, BlockPos const &) const = 0;
+    // virtual void onPlace(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
     virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;

@@ -75,8 +75,6 @@ public:
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<ActorAnimationControllerGroup> getActorAnimationControllerGroup()
         const = 0;
     [[nodiscard]] virtual BlockDefinitionGroup *getBlockDefinitions() const = 0;
-    virtual BlockComponentFactory &getBlockComponentFactory() = 0;
-    [[nodiscard]] virtual BlockComponentFactory const &getBlockComponentFactory() const = 0;
     [[nodiscard]] virtual PropertyGroupManager &getActorPropertyGroup() const = 0;
     virtual CameraPresets &getCameraPresets() = 0;
     [[nodiscard]] virtual CameraPresets const &getCameraPresets() const = 0;
@@ -130,6 +128,8 @@ public:
     virtual FeatureTypeFactory &getFeatureTypeFactory() = 0;
     [[nodiscard]] virtual JigsawStructureRegistry const &getJigsawStructureRegistry() const = 0;
     virtual JigsawStructureRegistry &getJigsawStructureRegistry() = 0;
+    virtual BlockComponentFactory &getBlockComponentFactory() = 0;
+    [[nodiscard]] virtual BlockComponentFactory const &getBlockComponentFactory() const = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<StructureManager> getStructureManager() const = 0;
     virtual Bedrock::NonOwnerPointer<StructureManager> getStructureManager() = 0;
     [[nodiscard]] virtual BiomeComponentFactory const &getBiomeComponentFactory() const = 0;
@@ -235,6 +235,7 @@ public:
     virtual void handleLevelEvent(LevelEvent, CompoundTag const &) = 0;
     virtual void handleStopSoundEvent(std::string const &) = 0;
     virtual void handleStopAllSounds() = 0;
+    virtual void unknownVfunc1() = 0;  // TODO(fixme): figure out the name of the virtual function
     virtual void broadcastLevelEvent(LevelEvent, Vec3 const &, int, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
@@ -374,9 +375,10 @@ private:
 
 public:
     [[nodiscard]] virtual PacketSender *getPacketSender() const = 0;
-    virtual void setPacketSender(PacketSender *) = 0;
+    // virtual void setPacketSender(PacketSender *) = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<NetEventCallback> getNetEventCallback() const = 0;
     virtual void setNetEventCallback(Bedrock::NonOwnerPointer<NetEventCallback>) = 0;
+    virtual void unknownVfunc2() = 0;  // TODO(fixme): figure out the name of the virtual function
     [[nodiscard]] virtual Random &getIRandom() const = 0;
     [[nodiscard]] virtual Random &getRandom() const = 0;
     [[nodiscard]] virtual Random &getThreadRandom() const = 0;
@@ -426,7 +428,6 @@ protected:
 
 private:
     virtual void *asMultiPlayerLevel() = 0;
-    virtual void *unknown() = 0;  // TODO(fixme): what and where should this function be?
 
 public:
     virtual bool isClientSideGenerationEnabled() = 0;
