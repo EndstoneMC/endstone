@@ -32,11 +32,12 @@ public:
         ActionbarTextObject = 8
     };
 
-    TitleType type;                  // +48
-    std::string title_text;          // +56
-    int fade_in_time;                // +88
-    int stay_time;                   // +92
-    int fade_out_time;               // +96
-    std::string xuid;                // +104
-    std::string platform_online_id;  // +136
+    TitleType type;                                  // +48
+    std::string title_text;                          // +56
+    std::optional<std::string> filtered_title_text;  // +88
+    int fade_in_time;                                // +128
+    int stay_time;                                   // +132
+    int fade_out_time;                               // +136
+    std::string xuid;                                // +144
+    std::string platform_online_id;                  // +176
 };
