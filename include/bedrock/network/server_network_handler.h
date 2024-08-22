@@ -65,9 +65,9 @@ private:
     GameCallbacks *callbacks_;                // +80
     Bedrock::NonOwnerPointer<ILevel> level_;  // +88
 #ifdef _WIN32
-    std::size_t pad_[87];  // +104
+    std::size_t pad_[92];  // +104
 #else
-    std::size_t pad_[70];  // +104
+    std::size_t pad_[70];  // +104 TODO(fixme): find out the new offset
 #endif
-    int max_players_;  // +800 (+664)
+    int max_players_;  // +840 (+???)
 };

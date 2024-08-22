@@ -22,10 +22,12 @@
 
 using endstone::detail::EndstoneServer;
 
-void SayCommand::_sendMessage(const std::string &message, const std::string &sender_name,
-                              const CommandOriginIdentity &origin_identity, Level &level)
+void SayCommand::_sendMessage(const std::string &message, std::optional<std::string> filtered_message,
+                              const std::string &sender_name, const CommandOriginIdentity &origin_identity,
+                              Level &level)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&SayCommand::_sendMessage, message, sender_name, origin_identity, level);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&SayCommand::_sendMessage, message, std::move(filtered_message), sender_name,
+                                origin_identity, level);
     auto &server = entt::locator<EndstoneServer>::value();
     server.getLogger().info(getI18n().get("chat.type.announcement", {sender_name, message}, nullptr));
 }

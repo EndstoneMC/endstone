@@ -426,6 +426,7 @@ protected:
 
 private:
     virtual void *asMultiPlayerLevel() = 0;
+    virtual void *unknown() = 0;  // TODO(fixme): what and where should this function be?
 
 public:
     virtual bool isClientSideGenerationEnabled() = 0;

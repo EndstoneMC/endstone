@@ -350,31 +350,32 @@ private:
     float friction_;                                                  // +412 (+364)
     BlockTintType block_tint_type_;                                   // +416 (+368)
     bool unknown_;                                                    // +420 (+372)
-    NewBlockID id_;                                                   // +422 (+374)
-    BaseGameVersion min_required_game_version_;                       // +424 (+376)
-    bool is_vanilla_;                                                 // +544 (+472)
-    std::vector<HashedString> tags_;                                  // +552 (+480)
-    std::unordered_map<std::string, void *> event_handlers_;          // +576 (+504) void* = DefinitionEvent
-    bool enable_data_driven_vanilla_blocks_and_items_;                // +640 (+544)
-    AABB visual_shape_;                                               // +644 (+548)
-    std::int64_t unknown3_;                                           // +672 (+576)
-    std::map<std::uint64_t, BlockStateInstance> states_;              // +680 (+584) void* = BlockStateInstance
-    std::unordered_map<HashedString, std::uint64_t> state_name_map_;  // +696 (+608)
-    BlockState *creative_enum_state_;                                 // +760 (+648)
-    std::vector<std::unique_ptr<Block>> block_permutations_;          // +768 (+656)
-    Block *default_state_;                                            // +792 (+680)
-    std::vector<void *> unknown4_;                                    // +800 (+688)
+    int unknown2_;                                                    // +424
+    NewBlockID id_;                                                   // +428
+    BaseGameVersion min_required_game_version_;                       // +432
+    bool is_vanilla_;                                                 // +552
+    std::vector<HashedString> tags_;                                  // +560
+    std::unordered_map<std::string, void *> event_handlers_;          // +584 void* = DefinitionEvent
+    bool enable_data_driven_vanilla_blocks_and_items_;                // +648
+    AABB visual_shape_;                                               // +652
+    std::int64_t unknown3_;                                           // +680
+    std::map<std::uint64_t, BlockStateInstance> states_;              // +688 void* = BlockStateInstance
+    std::unordered_map<HashedString, std::uint64_t> state_name_map_;  // +704
+    BlockState *creative_enum_state_;                                 // +768
+    std::vector<std::unique_ptr<Block>> block_permutations_;          // +776
+    Block *default_state_;                                            // +800
+    std::vector<void *> unknown4_;                                    // +808
 #ifdef __linux__                                                      //
-    std::shared_timed_mutex mutex_;                                   //      (+712)
+    std::shared_timed_mutex mutex_;
 #else                                                                 //
-    std::int64_t unknown5_;  // +824
+    std::int64_t unknown5_;  // +832
 #endif                                                                //
-    std::unordered_map<void *, void *> unknown6_;                     // +832 (+856)
-    std::unique_ptr<void *> block_state_group_;                       // +896        void* = BlockStateGroup
-    std::unique_ptr<void *> resource_drops_strategy_;                 // +904        void* = IResourceDropsStrategy
-    IntRange experience_drop_;                                        // +912
-    bool can_drop_with_any_tool_;                                     // +920
-    std::vector<void *> unknown9_;                                    // +928
-    std::vector<void *> unknown10_;                                   // +952
+    std::unordered_map<void *, void *> unknown6_;                     // +840
+    std::unique_ptr<void *> block_state_group_;                       // +904 void* = BlockStateGroup
+    std::unique_ptr<void *> resource_drops_strategy_;                 // +912 void* = IResourceDropsStrategy
+    IntRange experience_drop_;                                        // +920
+    bool can_drop_with_any_tool_;                                     // +928
+    std::vector<void *> unknown9_;                                    // +936
+    std::vector<void *> unknown10_;                                   // +960
     // ...
 };

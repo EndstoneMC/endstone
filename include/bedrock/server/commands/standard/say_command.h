@@ -14,12 +14,14 @@
 
 #pragma once
 
+#include <optional>
 #include <string>
 
 #include "bedrock/bedrock.h"
 
 class SayCommand {
 private:
-    ENDSTONE_HOOK static void _sendMessage(std::string const &, std::string const &,  // NOLINT(*-identifier-naming)
+    // NOLINTNEXTLINE(*-identifier-naming)
+    ENDSTONE_HOOK static void _sendMessage(std::string const &, std::optional<std::string>, std::string const &,
                                            struct CommandOriginIdentity const &, class Level &);
 };
