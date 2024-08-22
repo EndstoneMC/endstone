@@ -22,5 +22,6 @@ enum class AbilitiesLayer : std::uint16_t {
     Spectator = 2,
     Commands = 3,
     Editor = 4,
-    LayerCount = 5
+    LoadingScreen = 5,
+    LayerCount = 6
 };

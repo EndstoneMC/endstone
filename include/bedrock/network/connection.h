@@ -133,5 +133,6 @@ public:
         NetherNetNoSignalingChannel = 113,
         NetherNetNotLoggedIn = 114,
         NetherNetClientSignalingError = 115,
+        SubClientLoginDisabled = 116,
     };
 };

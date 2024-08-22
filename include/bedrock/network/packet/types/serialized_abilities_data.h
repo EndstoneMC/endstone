@@ -26,7 +26,8 @@ class SerializedAbilitiesData {
         Base = 1,
         Spectator = 2,
         Commands = 3,
-        Editor = 4
+        Editor = 4,
+        LoadingScreen = 5
     };
 
     struct SerializedLayer {
@@ -81,9 +82,7 @@ private:
 
     inline static const std::array<SerializedAbilitiesLayer, static_cast<int>(AbilitiesLayer::LayerCount)>
         // NOLINTNEXTLINE(*-identifier-naming)
-        ABILITIES_LAYER_MAP = {
-            SerializedAbilitiesLayer::CustomCache, SerializedAbilitiesLayer::Base,
-            SerializedAbilitiesLayer::Spectator,   SerializedAbilitiesLayer::Commands,
-            SerializedAbilitiesLayer::Editor,
-    };
+        ABILITIES_LAYER_MAP = {SerializedAbilitiesLayer::CustomCache, SerializedAbilitiesLayer::Base,
+                               SerializedAbilitiesLayer::Spectator,   SerializedAbilitiesLayer::Commands,
+                               SerializedAbilitiesLayer::Editor,      SerializedAbilitiesLayer::LoadingScreen};
 };

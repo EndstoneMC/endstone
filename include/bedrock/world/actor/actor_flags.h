@@ -15,8 +15,6 @@
 #pragma once
 
 enum class ActorFlags {
-
-    Unknown = -1,
     ONFIRE = 0,
     SNEAKING = 1,
     RIDING = 2,
