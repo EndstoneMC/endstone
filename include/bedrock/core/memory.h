@@ -219,6 +219,9 @@ private:
 template <typename T>
 class WeakRef {
 public:
+    WeakRef() : ref_(nullptr) {}
+    explicit WeakRef(std::weak_ptr<T> weak_ptr) : ref_(std::move(weak_ptr)) {}
+
     T &operator*() const
     {
         if (auto lock = ref_.lock()) {

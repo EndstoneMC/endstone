@@ -52,6 +52,16 @@ public:
         return entt_registry_.get_or_emplace<Component>(entity_id_, std::forward<Args>(args)...);
     }
 
+    [[nodiscard]] EntityRegistry &registry() const
+    {
+        return registry_;
+    }
+
+    [[nodiscard]] EntityId entityId() const
+    {
+        return entity_id_;
+    }
+
 private:
     EntityRegistry &registry_;                       // +0
     entt::basic_registry<EntityId> &entt_registry_;  // +8
@@ -71,8 +81,14 @@ BEDROCK_STATIC_ASSERT_SIZE(OwnerStorageEntity, 32, 32);
 
 class WeakStorageEntity {
 public:
+    WeakStorageEntity() = default;
+    explicit WeakStorageEntity(const EntityContext &ctx)
+        : registry(ctx.registry().getWeakRef()), entity_id(ctx.entityId())
+    {
+    }
+
     WeakRef<EntityRegistry> registry;
-    EntityId entity_id;
+    EntityId entity_id{static_cast<std::uint32_t>(-1)};
 };
 BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);
 

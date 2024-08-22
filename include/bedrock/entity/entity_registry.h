@@ -52,6 +52,11 @@ struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
 
 class EntityRegistry : public std::enable_shared_from_this<EntityRegistry> {
 public:
+    WeakRef<EntityRegistry> getWeakRef()
+    {
+        return WeakRef{weak_from_this()};
+    }
+
 private:
     friend class EntityContext;
 
