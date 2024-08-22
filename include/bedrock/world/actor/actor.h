@@ -250,6 +250,7 @@ public:
         return entity_context_.tryGetComponent<Component>();
     };
 
+    [[nodiscard]] bool isType(ActorType type) const;
     [[nodiscard]] bool hasType(ActorType type) const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;

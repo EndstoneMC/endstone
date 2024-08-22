@@ -64,7 +64,7 @@ void Player::setPermissions(CommandPermissionLevel level)
 
 endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
 {
-    return static_cast<endstone::detail::EndstonePlayer &>(Actor::getEndstoneActor());
+    return static_cast<endstone::detail::EndstonePlayer &>(getEndstoneActor());
 }
 
 GameType Player::getPlayerGameType() const

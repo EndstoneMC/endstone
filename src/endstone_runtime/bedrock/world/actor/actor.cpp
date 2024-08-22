@@ -17,8 +17,8 @@
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
-#include "bedrock/entity/components/flag_component.h"
 #include "bedrock/entity/components/passenger_component.h"
+#include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/world/actor/actor_collision.h"
@@ -65,6 +65,12 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
                                      entity_type, keep_velocity);
 }
 
+bool Actor::isType(ActorType type) const
+{
+    auto component = getPersistentComponent<ActorTypeComponent>();
+    return component->type == type;
+}
+
 bool Actor::hasType(ActorType type) const
 {
     auto component = getPersistentComponent<ActorTypeComponent>();
@@ -73,7 +79,7 @@ bool Actor::hasType(ActorType type) const
 
 bool Actor::isPlayer() const
 {
-    return hasComponent<FlagComponent<PlayerComponentFlag>>();
+    return hasComponent<PlayerComponent>();
 }
 
 bool Actor::isRemoved() const
@@ -189,17 +195,19 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
     auto &server = entt::locator<EndstoneServer>::value();
     auto *self = const_cast<Actor *>(this);
 
-    if (isPlayer()) {
-        if (!self->hasType(ActorType::Player)) {
-            throw std::runtime_error("Actor doesn't have a Player type but isPlayer() returns true.");
+    if (self->isType(ActorType::Player)) {
+        if (!isPlayer()) {
+            throw std::runtime_error("Actor has a Player type but isPlayer() returns false.");
         }
         auto *player = static_cast<Player *>(self);
         return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }
+
     if (self->hasType(ActorType::Mob)) {
         auto *mob = static_cast<Mob *>(self);
         return entity_context_.getOrAddComponent<endstone::detail::EndstoneMob>(server, *mob);
     }
+
     return entity_context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
 }
 
