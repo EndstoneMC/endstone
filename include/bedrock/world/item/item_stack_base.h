@@ -120,9 +120,9 @@ private:
     std::uint16_t aux_value_;                             // +32
     std::uint8_t count_;                                  // +34
     bool valid_;                                          // +35
+    bool show_pick_up_;                                   // +36
+    bool was_picked_up_;                                  // +37
     std::chrono::steady_clock::time_point pick_up_time_;  // +40
-    bool show_pick_up_;                                   // +48
-    bool was_picked_up_;                                  // +49
     std::vector<const BlockLegacy *> can_place_on_;       // +56
     std::uint64_t can_place_on_hash_;                     // +80
     std::vector<const BlockLegacy *> can_destroy_;        // +88
@@ -130,4 +130,4 @@ private:
     Tick blocking_tick_;                                  // +120
     std::unique_ptr<ItemInstance> charged_item_;          // +128
 };
-BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 136, 136);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStackBase, 128, 128);

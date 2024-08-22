@@ -21,9 +21,10 @@
 
 class ItemStack : public ItemStackBase {
 public:
-    // ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view name, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
-    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const& item, int count = 1, int aux_value = 0, CompoundTag const* user_data = nullptr);
+    ENDSTONE_FACTORY_DECLARE(ItemStack, Item const &item, int count = 1, int aux_value = 0,
+                             CompoundTag const *user_data = nullptr);
+
 private:
     ItemStackNetIdVariant network_id_;
 };
-BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 160, 160);
+BEDROCK_STATIC_ASSERT_SIZE(ItemStack, 152, 152);
