@@ -115,11 +115,11 @@ private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
     CachedComponentData cached_component_data_;            // +56 (+48)
-    std::vector<HashedString> tags_;                       // +136 (+128)
-    CompoundTag serialization_id_;                         // +160 (+152)
-    std::size_t serialization_id_hash_;                    // +184
-    std::uint32_t raw_serialization_id_hash_for_network_;  // +192
-    BlockRuntimeId runtime_id_;                            // +196
-    bool unknown4_;                                        // +200
+    std::vector<HashedString> tags_;                       // +144
+    CompoundTag serialization_id_;                         // +168
+    std::size_t serialization_id_hash_;                    // +192
+    std::uint32_t raw_serialization_id_hash_for_network_;  // +200
+    BlockRuntimeId runtime_id_;                            // +204
+    bool unknown4_;                                        // +208
 };
-BEDROCK_STATIC_ASSERT_SIZE(Block, 208, 208);
+BEDROCK_STATIC_ASSERT_SIZE(Block, 216, 216);
