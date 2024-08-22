@@ -114,7 +114,7 @@ public:
     virtual void hurtActor(ItemStack &, Actor &, Mob &) const = 0;
     virtual void hitActor(ItemStack &, Actor &, Mob &) const = 0;
     virtual void hitBlock(ItemStack &, Block const &, BlockPos const &, Mob &) const = 0;
-    virtual bool mineBlock(ItemStack &, Block const &, int x, int y, int z, Actor *) const = 0;
+    // virtual bool mineBlock(ItemStack &, Block const &, int x, int y, int z, Actor *) const = 0;
     virtual std::string buildDescriptionName(ItemStackBase const &) const = 0;
     virtual std::string buildDescriptionId(ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::string buildEffectDescriptionName(ItemStackBase const &) const = 0;
@@ -143,7 +143,7 @@ public:
     virtual int getAnimationFrameFor(Mob *, bool, ItemStack const *, bool) const = 0;
     virtual bool isEmissive(int) const = 0;
     virtual Brightness getLightEmission(int) const = 0;
-    virtual int getIconYOffset() const = 0;
+    // virtual int getIconYOffset() const = 0;
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const *) const = 0;
