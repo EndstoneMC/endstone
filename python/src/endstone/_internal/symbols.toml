@@ -77,7 +77,7 @@ version = "1.21.20"
 # ServerLevel
 "?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 25868416 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
-"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z" = 8715520
+"?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 8715520
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 8795424
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 8796800
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 8621184
@@ -170,7 +170,7 @@ version = "1.21.20"
 # ServerLevel
 "_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 91127984 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 79096704
+"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 79096704 # TODO(fixme): update symbols
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 79160176
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 79122640
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 79199120

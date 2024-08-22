@@ -51,7 +51,7 @@ private:
 public:
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
-                                        std::string const &, bool);
+                                        std::string const &, std::optional<std::string>, bool);
     ENDSTONE_HOOK void updateServerAnnouncement();
 
     [[nodiscard]] const Bedrock::NonOwnerPointer<ILevel> &getLevel() const;  // Endstone

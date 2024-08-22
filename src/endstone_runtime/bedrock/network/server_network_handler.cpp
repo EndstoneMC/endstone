@@ -29,10 +29,10 @@ using endstone::detail::EndstoneServer;
 
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
-                                            bool skip_message)
+                                            std::optional<std::string> filtered_message, bool skip_message)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
-                                message, skip_message);
+                                message, std::move(filtered_message), skip_message);
 }
 
 void ServerNetworkHandler::updateServerAnnouncement()
