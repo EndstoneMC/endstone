@@ -81,7 +81,7 @@ struct PlayerGameplayEvent<void>
           PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
           PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
           PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
-          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<368>> {};
+          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<352>> {};
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
