@@ -54,8 +54,8 @@ class Level;
 
 class Actor {
 public:
-    virtual bool getStatusFlag(ActorFlags flags) const = 0;
-    virtual void setStatusFlag(ActorFlags flags, bool value) = 0;
+    // virtual bool getStatusFlag(ActorFlags flags) const = 0;
+    // virtual void setStatusFlag(ActorFlags flags, bool value) = 0;
 #ifdef _WIN32
     virtual bool hasComponent(HashedString const &) = 0;
 #endif
@@ -211,7 +211,7 @@ protected:
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnArmorSet(ArmorSlot, ItemStack const &) const = 0;
 
 public:
-    virtual void updateEntitySpecificMolangVariables(RenderParams &) = 0;
+    // virtual void updateEntitySpecificMolangVariables(RenderParams &) = 0;
     virtual bool shouldTryMakeStepSound() = 0;
 
 protected:
@@ -250,6 +250,7 @@ public:
         return entity_context_.tryGetComponent<Component>();
     };
 
+    [[nodiscard]] bool getStatusFlag(ActorFlags flags) const;
     [[nodiscard]] bool isType(ActorType type) const;
     [[nodiscard]] bool hasType(ActorType type) const;
     [[nodiscard]] bool isPlayer() const;
