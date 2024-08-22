@@ -106,9 +106,6 @@ public:
     virtual ~RNS2_Berkley() override = 0;
 
 protected:
-    void RecvFromBlocking(RNS2RecvStruct *recvFromStruct) const;
-    ENDSTONE_HOOK unsigned int RecvFromLoopInt();
-
     RNS2Socket rns2_socket_;                                    // +184 (+180)
     RNS2_BerkleyBindParameters binding_;                        // +192 (+184)
     RakNet::LocklessUint32_t is_recv_from_loop_thread_active_;  // +256 (+248)

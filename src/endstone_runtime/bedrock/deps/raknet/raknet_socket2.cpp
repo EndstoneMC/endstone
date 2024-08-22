@@ -77,50 +77,5 @@ RNS2SendResult RNS2_Windows_Linux_360::Send_Windows_Linux_360NoVDP(RNS2Socket so
                                        file, line);
 }
 
-void RNS2_Berkley::RecvFromBlocking(RNS2RecvStruct *recv_from_struct) const
-{
-    sockaddr_storage their_addr;
-    socklen_t sock_len = sizeof(their_addr);
-    memset(&their_addr, 0, sizeof(their_addr));
-    recv_from_struct->bytes_read = recvfrom__(rns2_socket_, recv_from_struct->data, MAXIMUM_MTU_SIZE, 0,
-                                              reinterpret_cast<sockaddr *>(&their_addr), &sock_len);
-    if (recv_from_struct->bytes_read <= 0) {
-        return;
-    }
-
-    recv_from_struct->time_read = RakNet::GetTimeUS();
-
-    if (their_addr.ss_family == AF_INET) {
-        memcpy(&recv_from_struct->system_address.address.addr4, reinterpret_cast<sockaddr_in *>(&their_addr),
-               sizeof(sockaddr_in));
-        recv_from_struct->system_address.debug_port = ntohs(recv_from_struct->system_address.address.addr4.sin_port);
-    }
-    else {
-        memcpy(&recv_from_struct->system_address.address.addr6, reinterpret_cast<sockaddr_in6 *>(&their_addr),
-               sizeof(sockaddr_in6));
-        recv_from_struct->system_address.debug_port = ntohs(recv_from_struct->system_address.address.addr6.sin6_port);
-    }
-}
-
-unsigned int RNS2_Berkley::RecvFromLoopInt()
-{
-    is_recv_from_loop_thread_active_.Increment();
-    while (!end_threads_) {
-        RNS2RecvStruct *recv_from_struct;
-        recv_from_struct = binding_.event_handler->AllocRNS2RecvStruct(_FILE_AND_LINE_);
-        if (recv_from_struct != nullptr) {
-            recv_from_struct->socket = this;
-            RecvFromBlocking(recv_from_struct);
-            if (recv_from_struct->bytes_read > 0) {
-                binding_.event_handler->OnRNS2Recv(recv_from_struct);
-            }
-            else {
-                binding_.event_handler->DeallocRNS2RecvStruct(recv_from_struct, _FILE_AND_LINE_);
-            }
-        }
-    }
-    is_recv_from_loop_thread_active_.Decrement();
-    return 0;
-}
 
 }  // namespace RakNet

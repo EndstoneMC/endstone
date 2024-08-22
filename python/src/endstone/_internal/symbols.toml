@@ -1,4 +1,4 @@
-timestamp = 1724278359
+timestamp = 1724338227
 version = "1.21.20"
 
 [windows]
@@ -59,7 +59,6 @@ version = "1.21.20"
 # PlayerEventCoordinator
 "?sendEvent@PlayerEventCoordinator@@QEAAXAEBV?$EventRef@U?$PlayerGameplayEvent@X@@@@@Z" = 25937744
 # RakNet
-"?RecvFromLoopInt@RNS2_Berkley@RakNet@@IEAAIXZ" = 37541616
 "?Send_Windows_Linux_360NoVDP@RNS2_Windows_Linux_360@RakNet@@KAHHPEAURNS2_SendParameters@2@PEBDI@Z" = 37542496
 "?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 37404688
 # RakPeerHelper
@@ -153,7 +152,6 @@ version = "1.21.20"
 # PlayerEventCoordinator
 "_ZN22PlayerEventCoordinator9sendEventERK8EventRefI19PlayerGameplayEventIvEE" = 112181616
 # RakNet
-"_ZN6RakNet12RNS2_Berkley15RecvFromLoopIntEv" = 131056192
 "_ZN6RakNet22RNS2_Windows_Linux_36027Send_Windows_Linux_360NoVDPEiPNS_19RNS2_SendParametersEPKcj" = 131051472
 "_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 131084656
 # RakPeerHelper
