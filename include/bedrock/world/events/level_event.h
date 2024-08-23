@@ -21,11 +21,12 @@
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
+#include "endstone/endstone.h"
 
 class Level;
 
 struct LevelEventPlaceHolder {
-    char pad[120];
+    char pad[ENDSTONE_VARIANT_WIN32_LINUX(120, 112)];
 };
 
 struct LevelAddedActorEvent {

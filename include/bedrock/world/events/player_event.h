@@ -19,6 +19,7 @@
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/form/player_form_close_reason.h"
+#include "endstone/endstone.h"
 
 template <std::size_t N>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
@@ -77,7 +78,7 @@ struct PlayerGameplayEvent<void>
           PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
           PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
           PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
-          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<352>> {};
+          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(352, 344)>> {};
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>

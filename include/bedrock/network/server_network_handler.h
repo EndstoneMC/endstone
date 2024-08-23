@@ -29,6 +29,7 @@
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"
+#include "endstone/endstone.h"
 
 namespace endstone::detail {
 class EndstoneServer;
@@ -62,12 +63,8 @@ private:
                                                  SubClientConnectionRequest const &, SubClientId);
     ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);  // NOLINT(*-identifier-naming)
 
-    GameCallbacks *callbacks_;                // +80
-    Bedrock::NonOwnerPointer<ILevel> level_;  // +88
-#ifdef _WIN32
-    std::size_t pad_[92];  // +104
-#else
-    std::size_t pad_[70];  // +104 TODO(fixme): find out the new offset
-#endif
-    int max_players_;  // +840 (+???)
+    GameCallbacks *callbacks_;                               // +80
+    Bedrock::NonOwnerPointer<ILevel> level_;                 // +88
+    std::size_t pad_[ENDSTONE_VARIANT_WIN32_LINUX(92, 75)];  // +104
+    int max_players_;                                        // +840 (+704)
 };

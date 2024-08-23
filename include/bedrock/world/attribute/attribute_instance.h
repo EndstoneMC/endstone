@@ -17,6 +17,8 @@
 #include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute.h"
 
+class BaseAttributeMap;
+
 class AttributeInstance {
 public:
     virtual ~AttributeInstance() = default;
