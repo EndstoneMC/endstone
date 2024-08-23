@@ -17,7 +17,6 @@
 #include "bedrock/forward.h"
 #include "bedrock/world/attribute/attribute.h"
 
-class BaseAttributeMap;
 class AttributeInstance {
 public:
     virtual ~AttributeInstance() = default;
@@ -29,6 +28,8 @@ public:
     }
 
 private:
+    friend class BaseAttributeMap;
+
     BaseAttributeMap *attribute_map_;                      // +8
     Attribute *attribute_;                                 // +16
     std::vector<void *> modifier_list_;                    // +24 std::vector<AttributeModifier>

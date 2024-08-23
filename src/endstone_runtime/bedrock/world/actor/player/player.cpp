@@ -103,14 +103,12 @@ bool Player::isFlying() const
 
 int Player::getPlayerLevel() const
 {
-    static Attribute *level = AttributeCollection::getAttribute("minecraft:player.level");
-    return static_cast<int>(getAttribute(*level).getCurrentValue());
+    return static_cast<int>(getAttribute("minecraft:player.level").getCurrentValue());
 }
 
 float Player::getLevelProgress() const
 {
-    static Attribute *experience = AttributeCollection::getAttribute("minecraft:player.experience");
-    return getAttribute(*experience).getCurrentValue();
+    return getAttribute("minecraft:player.experience").getCurrentValue();
 }
 
 int Player::getXpNeededForLevelRange(int start, int end)

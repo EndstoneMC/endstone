@@ -30,15 +30,25 @@ public:
 
     [[nodiscard]] const AttributeInstance &getInstance(std::uint32_t id_value) const
     {
-        auto it = instance_map_.find(id_value);
+        const auto it = instance_map_.find(id_value);
         if (it == instance_map_.end()) {
             throw std::runtime_error("Invalid attribute id.");
         }
         return it->second;
     }
 
+    [[nodiscard]] const AttributeInstance &getInstance(const HashedString &name) const  // Endstone
+    {
+        for (const auto &[id, instance] : instance_map_) {
+            if (instance.attribute_->getName() == name) {
+                return instance;
+            }
+        }
+        throw std::runtime_error("Attribute name not found.");
+    }
+
 private:
     std::unordered_map<std::uint32_t, AttributeInstance> instance_map_;  // +0
-    std::vector<void *> dirty_attributes_;  //+64 (+40) std::vector<AttributeInstanceHandle>
+    std::vector<void *> dirty_attributes_;                               //+64 (+40) void*=AttributeInstanceHandle
 };
 BEDROCK_STATIC_ASSERT_SIZE(BaseAttributeMap, 88, 64);

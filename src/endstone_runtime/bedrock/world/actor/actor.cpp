@@ -223,8 +223,8 @@ bool Actor::isJumping() const
     return MobJump::isJumping(entity_context_);
 }
 
-const AttributeInstance &Actor::getAttribute(const Attribute &attribute) const
+const AttributeInstance &Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();
-    return component->attributes.getInstance(attribute);
+    return component->attributes.getInstance(name);
 }
