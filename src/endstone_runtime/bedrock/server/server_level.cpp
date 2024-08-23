@@ -13,3 +13,26 @@
 // limitations under the License.
 
 #include "bedrock/server/server_level.h"
+
+#include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_spawn_event.h"
+
+using endstone::detail::EndstoneServer;
+
+void ServerLevel::_postReloadActorAdded(Actor &actor)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerLevel::_postReloadActorAdded, this, actor);
+
+    if (actor.isPlayer()) {
+        return;
+    }
+
+    auto &server = entt::locator<EndstoneServer>::value();
+    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        actor.despawn();
+    }
+}

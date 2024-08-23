@@ -1,4 +1,4 @@
-timestamp = 1724428946
+timestamp = 1724446571
 version = "1.21.20"
 
 [windows]
@@ -43,8 +43,6 @@ version = "1.21.20"
 # Level
 "?tick@Level@@UEAAXXZ" = 28145984
 "?_getGameplayUserManagerStackRef@Level@@IEAA?AV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@XZ" = 28078144
-# LevelEventCoorindator
-"?sendEvent@LevelEventCoordinator@@QEAAXAEBV?$EventRef@U?$LevelGameplayEvent@X@@@@@Z" = 25936752
 # MinecraftCommands
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 13387584
 # MinecraftPackets
@@ -74,6 +72,8 @@ version = "1.21.20"
 "?sendServerLevelInitialized@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@AEAVLevel@@@Z" = 25942208
 "?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942496
 "?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942544
+# ServerLevel
+"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@@Z" = 25868416
 # ServerNetworkHandler
 "?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 8715520
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 8795424
@@ -134,8 +134,6 @@ version = "1.21.20"
 # Level
 "_ZN5Level4tickEv" = 119240976
 "_ZN5Level31_getGameplayUserManagerStackRefEv" = 119268816
-# LevelEventCoordinator
-"_ZN21LevelEventCoordinator9sendEventERK8EventRefI18LevelGameplayEventIvEE" = 112038320
 # MinecraftCommands
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 88576096
 # MinecraftPackets
@@ -155,7 +153,7 @@ version = "1.21.20"
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 77769296
 # SayCommand
-"_ZN10SayCommand12_sendMessageERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8optionalIS5_ES7_RK21CommandOriginIdentityR5Level" = 80744832
+"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 80744832
 # Scoreboard
 "_ZN10Scoreboard16resetPlayerScoreERK12ScoreboardIdR9Objective" = 130373536
 # ScriptLevelGameplayHandler
@@ -165,8 +163,10 @@ version = "1.21.20"
 "_ZN30ServerInstanceEventCoordinator26sendServerLevelInitializedER14ServerInstanceR5Level" = 112050672
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 112051392
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 112051536
+# ServerLevel
+"_ZN11ServerLevel21_postReloadActorAddedER5Actor" = 112039328
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8optionalISB_Eb" = 79189040
+"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEENS6_8optionalISC_EEb" = 79189040
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 79256368
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 79216048
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 79297392

@@ -16,4 +16,7 @@
 
 #include "bedrock/world/level/level.h"
 
-class ServerLevel : public Level {};
+class ServerLevel : public Level {
+private:
+    ENDSTONE_HOOK void _postReloadActorAdded(Actor &);
+};
