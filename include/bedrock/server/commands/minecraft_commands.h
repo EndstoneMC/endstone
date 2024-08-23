@@ -46,6 +46,7 @@ public:
     ENDSTONE_HOOK MCRESULT executeCommand(CommandContext &ctx, bool suppress_output) const;
 
 private:
-    std::unique_ptr<CommandOutputSender> output_sender_;  // +8
-    std::unique_ptr<CommandRegistry> registry_;           // +16
+    std::unique_ptr<CommandOutputSender> output_sender_;                                       // +8
+    std::unique_ptr<CommandRegistry> registry_;                                                // +16
+    CommandPermissionLevel operator_command_permission_level_{CommandPermissionLevel::Admin};  // +24
 };

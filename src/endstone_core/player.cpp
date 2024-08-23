@@ -167,7 +167,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermi
 
 bool EndstonePlayer::isOp() const
 {
-    return getHandle().getCommandPermissionLevel() >= CommandPermissionLevel::Admin;
+    return getHandle().getCommandPermissionLevel() > CommandPermissionLevel::Any;
 }
 
 void EndstonePlayer::setOp(bool value)
@@ -465,7 +465,7 @@ void EndstonePlayer::updateCommands() const
         auto &name = it->name;
         auto *command = command_map.getCommand(name);
         if (command && command->isRegistered() && command->testPermissionSilently(*static_cast<const Player *>(this)) &&
-            it->permission_level <= CommandPermissionLevel::Admin) {
+            it->permission_level <= player_.getCommandPermissionLevel()) {
             ++it;
             continue;
         }

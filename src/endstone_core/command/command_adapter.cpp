@@ -67,7 +67,6 @@ bool CommandSenderAdapter::isOp() const
 {
     switch (origin_.getPermissionsLevel()) {
     case CommandPermissionLevel::Any:
-    case CommandPermissionLevel::GameDirectors:
         return false;
     default:
         return true;
