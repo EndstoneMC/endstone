@@ -56,7 +56,7 @@ public:
     Value(const Value &other);
     ~Value();
     Value &operator=(Value other);
-    void swap(Value& other);
+    void swap(Value &other);
 
     [[nodiscard]] ValueType type() const;
     [[nodiscard]] const char *asCString() const;

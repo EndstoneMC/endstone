@@ -165,6 +165,7 @@ Value::~Value()
         break;
     case arrayValue:
         delete value_.array_;
+        break;
     case objectValue:
         delete value_.map_;
         break;
