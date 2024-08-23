@@ -30,7 +30,7 @@ public:
     }
 
 private:
-    std::variant<T *, T> variant_;
+    std::variant<T, T *> variant_;
 };
 
 }  // namespace Details
