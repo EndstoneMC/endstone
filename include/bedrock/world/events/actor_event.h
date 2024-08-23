@@ -14,15 +14,9 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/core/details.h"
 #include "bedrock/world/events/coordinator_result.h"
+#include "bedrock/world/events/event_variant.h"
 #include "endstone/endstone.h"
-
-template <std::size_t N>
-struct ActorEventPlaceHolder {
-    char pad[N];
-};
 
 template <typename Return>
 struct ActorGameplayEvent;
@@ -48,39 +42,33 @@ struct KnockBackEvent {};
 struct MountTamingEvent {};
 
 template <>
-struct ActorGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<ActorAcquiredItemEvent const>,         // 0
-                 Details::ValueOrRef<ActorAnimationChangedEvent const>,     // 1
-                 Details::ValueOrRef<ActorAttackEvent const>,               // 2
-                 Details::ValueOrRef<ActorCarriedItemChangedEvent const>,   // 3
-                 Details::ValueOrRef<ActorDefinitionTriggeredEvent const>,  // 4
-                 Details::ValueOrRef<ActorDefinitionEndedEvent const>,      // 5
-                 Details::ValueOrRef<ActorDiedEvent const>,                 // 6
-                 Details::ValueOrRef<ActorDroppedItemEvent const>,          // 7
-                 Details::ValueOrRef<ActorEquippedArmorEvent const>,        // 8
-                 Details::ValueOrRef<ActorHurtEvent const>,                 // 9
-                 Details::ValueOrRef<ActorHealthChangedEvent const>,        // 10
-                 Details::ValueOrRef<ActorKilledEvent const>,               // 11
-                 Details::ValueOrRef<ActorPlacedItemEvent const>,           // 12
-                 Details::ValueOrRef<ActorRemovedEvent const>,              // 13
-                 Details::ValueOrRef<ActorRemoveEffectEvent const>,         // 14
-                 Details::ValueOrRef<ActorStartRidingEvent const>,          // 15
-                 Details::ValueOrRef<ActorUseItemEvent const>,              // 16
-                 Details::ValueOrRef<KnockBackEvent const>,                 // 17
-                 Details::ValueOrRef<MountTamingEvent const>,               // 18
-                 Details::ValueOrRef<ActorEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(304, 320)> const>>
-        event;
-};
+struct ActorGameplayEvent<void> : public ConstEventVariant<ActorAcquiredItemEvent,         // 0
+                                                           ActorAnimationChangedEvent,     // 1
+                                                           ActorAttackEvent,               // 2
+                                                           ActorCarriedItemChangedEvent,   // 3
+                                                           ActorDefinitionTriggeredEvent,  // 4
+                                                           ActorDefinitionEndedEvent,      // 5
+                                                           ActorDiedEvent,                 // 6
+                                                           ActorDroppedItemEvent,          // 7
+                                                           ActorEquippedArmorEvent,        // 8
+                                                           ActorHurtEvent,                 // 9
+                                                           ActorHealthChangedEvent,        // 10
+                                                           ActorKilledEvent,               // 11
+                                                           ActorPlacedItemEvent,           // 12
+                                                           ActorRemovedEvent,              // 13
+                                                           ActorRemoveEffectEvent,         // 14
+                                                           ActorStartRidingEvent,          // 15
+                                                           ActorUseItemEvent,              // 16
+                                                           KnockBackEvent,                 // 17
+                                                           MountTamingEvent,               // 18
+                                                           char[ENDSTONE_VARIANT_WIN32_LINUX(304, 320)]> {};
 
 struct ProjectileHitEvent {};
 struct ActorGriefingBlockEvent {};
 struct ActorStopRidingEvent {};
 
 template <>
-struct ActorGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<ProjectileHitEvent const>,       // 0
-                 Details::ValueOrRef<ActorGriefingBlockEvent const>,  // 1
-                 Details::ValueOrRef<ActorStopRidingEvent const>,     // 2
-                 Details::ValueOrRef<ActorEventPlaceHolder<120> const>>
-        event;
-};
+struct ActorGameplayEvent<CoordinatorResult> : public ConstEventVariant<ProjectileHitEvent,       // 0
+                                                                        ActorGriefingBlockEvent,  // 1
+                                                                        ActorStopRidingEvent,     // 2
+                                                                        char[120]> {};
