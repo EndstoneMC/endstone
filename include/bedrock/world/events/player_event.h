@@ -14,13 +14,9 @@
 
 #pragma once
 
-#include <variant>
-
-#include "bedrock/core/details.h"
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"
-#include "bedrock/world/events/event_ref.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/form/player_form_close_reason.h"
 

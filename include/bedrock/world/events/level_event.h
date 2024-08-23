@@ -17,15 +17,21 @@
 #include <variant>
 
 #include "bedrock/core/details.h"
-#include "bedrock/forward.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"
-#include "bedrock/world/events/event_ref.h"
+#include "bedrock/world/events/event_variant.h"
+
+class Level;
 
 struct LevelEventPlaceHolder {
-    char pad[56];
+    char pad[120];
 };
 
-struct LevelAddedActorEvent {};
+struct LevelAddedActorEvent {
+    Bedrock::NonOwnerPointer<Level> level;  // +0
+    WeakRef<EntityContext> actor;           // +16
+};
 struct LevelBroadcastEvent {};
 struct LevelSoundBroadcastEvent {};
 struct LevelDayCycleEvent {};
@@ -37,18 +43,13 @@ template <typename Return>
 struct LevelGameplayEvent;
 
 template <>
-struct LevelGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<LevelAddedActorEvent const>,      // 0
-                 Details::ValueOrRef<LevelBroadcastEvent const>,       // 1
-                 Details::ValueOrRef<LevelSoundBroadcastEvent const>,  // 2
-                 Details::ValueOrRef<LevelDayCycleEvent const>,        // 3
-                 Details::ValueOrRef<LevelStartLeaveGameEvent const>,  // 4
+struct LevelGameplayEvent<void>
+    : public ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
+                               LevelStartLeaveGameEvent,
 #ifdef _WIN32
-                 Details::ValueOrRef<LevelGameRuleChangeEvent const>,  // 5 (windows) what is going on Mojang?
+                               LevelGameRuleChangeEvent,
 #endif
-                 Details::ValueOrRef<ScriptingInitializeEvent const>,  // 6 (windows) or 5 (linux)
-                 Details::ValueOrRef<LevelEventPlaceHolder const>>     //
-        event;
+                               ScriptingInitializeEvent, LevelEventPlaceHolder> {
 };
 
 struct LevelWeatherChangedEvent {

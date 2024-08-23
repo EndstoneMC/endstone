@@ -15,8 +15,8 @@
 #pragma once
 
 #include <thread>
-#include <vector>
 #include <unordered_map>
+#include <vector>
 
 #include <bedrock/world/scores/scoreboard_id.h>
 
@@ -64,7 +64,7 @@ class ItemEventCoordinator;
 
 class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
 public:
-    // void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
+    ENDSTONE_HOOK void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
     LevelGameplayHandler &getLevelGameplayHandler();
 
 private:

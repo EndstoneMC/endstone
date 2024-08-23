@@ -1,4 +1,4 @@
-timestamp = 1724340466
+timestamp = 1724417208
 version = "1.21.20"
 
 [windows]
@@ -45,6 +45,8 @@ version = "1.21.20"
 # Level
 "?tick@Level@@UEAAXXZ" = 28145984
 "?_getGameplayUserManagerStackRef@Level@@IEAA?AV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@XZ" = 28078144
+# LevelEventCoorindator
+"?sendEvent@LevelEventCoordinator@@QEAAXAEBV?$EventRef@U?$LevelGameplayEvent@X@@@@@Z" = 25936752
 # MinecraftCommands
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 13387584
 # MinecraftPackets
@@ -74,8 +76,6 @@ version = "1.21.20"
 "?sendServerLevelInitialized@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@AEAVLevel@@@Z" = 25942208
 "?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942496
 "?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25942544
-# ServerLevel
-"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 25868416 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
 "?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 8715520
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 8795424
@@ -138,6 +138,8 @@ version = "1.21.20"
 # Level
 "_ZN5Level4tickEv" = 119555392
 "_ZN5Level31_getGameplayUserManagerStackRefEv" = 119584112
+# LevelEventCoordinator
+"_ZN21LevelEventCoordinator9sendEventERK8EventRefI18LevelGameplayEventIvEE" = 0
 # MinecraftCommands
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 81673040
 # MinecraftPackets
@@ -157,7 +159,7 @@ version = "1.21.20"
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 77649200
 # SayCommand
-"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_RK21CommandOriginIdentityR5Level" = 82777952 # TODO(fixme): symbol needs to be updated
+"_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEES8_RK21CommandOriginIdentityR5Level" = 82777952 # TODO(fixme): update symbol
 # Scoreboard
 "_ZN10Scoreboard16resetPlayerScoreERK12ScoreboardIdR9Objective" = 130481120
 # ScriptLevelGameplayHandler
@@ -167,10 +169,8 @@ version = "1.21.20"
 "_ZN30ServerInstanceEventCoordinator26sendServerLevelInitializedER14ServerInstanceR5Level" = 112190912
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 112191632
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 112191776
-# ServerLevel
-"_ZN11ServerLevel21_postReloadActorAddedER5Actor25ActorInitializationMethod" = 91127984 # TODO(fixme): hook LevelEventCoordinator::sendEvent instead
 # ServerNetworkHandler
-"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 79096704 # TODO(fixme): update symbols
+"_ZN20ServerNetworkHandler16disconnectClientERK17NetworkIdentifier11SubClientIdN10Connection20DisconnectFailReasonERKNSt3__112basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEb" = 79096704 # TODO(fixme): update symbol
 "_ZN20ServerNetworkHandler14trytLoadPlayerER12ServerPlayerRK17ConnectionRequest" = 79160176
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 79122640
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 79199120

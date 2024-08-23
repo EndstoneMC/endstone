@@ -14,13 +14,6 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/forward.h"
-#include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/level/level.h"
 
-class ServerLevel : public Level {
-private:
-    ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
-};
+class ServerLevel : public Level {};

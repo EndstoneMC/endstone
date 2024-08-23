@@ -14,17 +14,12 @@
 
 #include "bedrock/world/events/event_coordinator.h"
 
-#include <sstream>
-
-#include <bedrock/world/scores/server_scoreboard.h>
 #include <entt/entt.hpp>
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
 #include "bedrock/deps/jsoncpp/nlohmann_json.h"
 #include "bedrock/server/server_instance.h"
-#include "bedrock/world/events/coordinator_result.h"
-#include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
@@ -33,6 +28,7 @@
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/signal_handler.h"
+#include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin_load_order.h"
 
@@ -89,15 +85,35 @@ using endstone::detail::PythonPluginLoader;
 //     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 // }
 
-// void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
-//{
-//     auto visitor = entt::overloaded{
-//         // [](Details::ValueOrRef<LevelAddedActorEvent const> value) { cpptrace::generate_trace().print(); },
-//         [](auto ignored) {},
-//     };
-//     std::visit(visitor, ref.variant.event);
-//     ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
-// }
+void LevelEventCoordinator::sendEvent(const EventRef<LevelGameplayEvent<void>> &ref)
+{
+    auto visitor = entt::overloaded{
+        [](Details::ValueOrRef<LevelAddedActorEvent const> value) {
+            const auto &event = value.value();
+            const auto &weak_ref = event.actor;
+            EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
+            auto *actor = Actor::tryGetFromEntity(ctx, false);
+            if (!actor) {
+                return;
+            }
+
+            if (actor->isPlayer()) {
+                return;
+            }
+
+            auto &server = entt::locator<EndstoneServer>::value();
+            endstone::ActorSpawnEvent e{actor->getEndstoneActor()};
+            server.getPluginManager().callEvent(e);
+
+            if (e.isCancelled()) {
+                actor->despawn();
+            }
+        },
+        [](auto &&ignored) {},
+    };
+    std::visit(visitor, ref.variant.variant.variant);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::sendEvent, this, ref);
+}
 
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
