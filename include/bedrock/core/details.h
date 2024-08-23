@@ -14,23 +14,44 @@
 
 #pragma once
 
-#include <variant>
-
 namespace Details {
 
 template <typename T>
 class ValueOrRef {
 public:
-    T &value() noexcept
+    explicit ValueOrRef(T const &ref)
     {
-        if (std::holds_alternative<T>(variant_)) {
-            return std::get<T>(variant_);
+        index_ = 0;
+        storage_.value = ref;
+    }
+
+    ~ValueOrRef()
+    {
+        if (index_ == 0) {
+            storage_.value.~T();
         }
-        return *std::get<T *>(variant_);
+    }
+
+    T asValue() const noexcept
+    {
+        switch (index_) {
+        case 0:
+            return storage_.value;
+        case 1:
+            return *storage_.ref;
+        default:
+            return T();
+        }
     }
 
 private:
-    std::variant<T, T *> variant_;
+    union Storage {
+        T value;
+        T *ref;
+        Storage() {}
+        ~Storage() {}
+    } storage_;
+    std::int8_t index_{-1};
 };
 
 }  // namespace Details

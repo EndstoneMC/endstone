@@ -18,6 +18,11 @@
 #include "bedrock/world/events/event_variant.h"
 #include "endstone/endstone.h"
 
+template <std::size_t N>
+struct ActorEventPlaceHolder {
+    char pad[N];
+};
+
 template <typename Return>
 struct ActorGameplayEvent;
 
@@ -42,26 +47,27 @@ struct KnockBackEvent {};
 struct MountTamingEvent {};
 
 template <>
-struct ActorGameplayEvent<void> : public ConstEventVariant<ActorAcquiredItemEvent,         // 0
-                                                           ActorAnimationChangedEvent,     // 1
-                                                           ActorAttackEvent,               // 2
-                                                           ActorCarriedItemChangedEvent,   // 3
-                                                           ActorDefinitionTriggeredEvent,  // 4
-                                                           ActorDefinitionEndedEvent,      // 5
-                                                           ActorDiedEvent,                 // 6
-                                                           ActorDroppedItemEvent,          // 7
-                                                           ActorEquippedArmorEvent,        // 8
-                                                           ActorHurtEvent,                 // 9
-                                                           ActorHealthChangedEvent,        // 10
-                                                           ActorKilledEvent,               // 11
-                                                           ActorPlacedItemEvent,           // 12
-                                                           ActorRemovedEvent,              // 13
-                                                           ActorRemoveEffectEvent,         // 14
-                                                           ActorStartRidingEvent,          // 15
-                                                           ActorUseItemEvent,              // 16
-                                                           KnockBackEvent,                 // 17
-                                                           MountTamingEvent,               // 18
-                                                           char[ENDSTONE_VARIANT_WIN32_LINUX(304, 320)]> {};
+struct ActorGameplayEvent<void>
+    : public ConstEventVariant<ActorAcquiredItemEvent,         // 0
+                               ActorAnimationChangedEvent,     // 1
+                               ActorAttackEvent,               // 2
+                               ActorCarriedItemChangedEvent,   // 3
+                               ActorDefinitionTriggeredEvent,  // 4
+                               ActorDefinitionEndedEvent,      // 5
+                               ActorDiedEvent,                 // 6
+                               ActorDroppedItemEvent,          // 7
+                               ActorEquippedArmorEvent,        // 8
+                               ActorHurtEvent,                 // 9
+                               ActorHealthChangedEvent,        // 10
+                               ActorKilledEvent,               // 11
+                               ActorPlacedItemEvent,           // 12
+                               ActorRemovedEvent,              // 13
+                               ActorRemoveEffectEvent,         // 14
+                               ActorStartRidingEvent,          // 15
+                               ActorUseItemEvent,              // 16
+                               KnockBackEvent,                 // 17
+                               MountTamingEvent,               // 18
+                               ActorEventPlaceHolder<ENDSTONE_VARIANT_WIN32_LINUX(304, 320)>> {};
 
 struct ProjectileHitEvent {};
 struct ActorGriefingBlockEvent {};
@@ -71,4 +77,4 @@ template <>
 struct ActorGameplayEvent<CoordinatorResult> : public ConstEventVariant<ProjectileHitEvent,       // 0
                                                                         ActorGriefingBlockEvent,  // 1
                                                                         ActorStopRidingEvent,     // 2
-                                                                        char[120]> {};
+                                                                        ActorEventPlaceHolder<120>> {};
