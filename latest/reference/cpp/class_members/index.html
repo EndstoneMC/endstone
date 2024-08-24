@@ -2467,6 +2467,7 @@
 <li><strong>ActorRemoveEvent</strong> (<a href="../classendstone_1_1ActorRemoveEvent/"><strong>endstone::ActorRemoveEvent</strong></a>)</li>
 <li><strong>ActorSpawnEvent</strong> (<a href="../classendstone_1_1ActorSpawnEvent/"><strong>endstone::ActorSpawnEvent</strong></a>)</li>
 <li><strong>ActorTeleportEvent</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>)</li>
+<li><strong>addPlayer</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>Aqua</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
 <li><strong>aliases_</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>allowChangesFrom</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
@@ -2599,6 +2600,10 @@
 <li><strong>getActor</strong> (<a href="../classendstone_1_1ActorEvent/"><strong>endstone::ActorEvent</strong></a>)</li>
 <li><strong>getFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
 <li><strong>getTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
+<li><strong>getColor</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>getPlayers</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>getProgress</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>getTitle</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>, <a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>getMessage</strong> (<a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>, <a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>)</li>
 <li><strong>getRecipients</strong> (<a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>)</li>
 <li><strong>Gold</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
@@ -2621,7 +2626,6 @@
 <li><strong>getPlugin</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>, <a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>, <a href="../classendstone_1_1PluginCommand/"><strong>endstone::PluginCommand</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>getPriority</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>getOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
-<li><strong>getTitle</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>getHandlers</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
 <li><strong>getMaxStackSize</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>getSize</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
@@ -2762,6 +2766,7 @@
 <li><strong>isInWater</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isOnGround</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>isCancellable</strong> (<a href="../classendstone_1_1ActorDeathEvent/"><strong>endstone::ActorDeathEvent</strong></a>, <a href="../classendstone_1_1ActorRemoveEvent/"><strong>endstone::ActorRemoveEvent</strong></a>, <a href="../classendstone_1_1ActorSpawnEvent/"><strong>endstone::ActorSpawnEvent</strong></a>, <a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>, <a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>, <a href="../classendstone_1_1PlayerCommandEvent/"><strong>endstone::PlayerCommandEvent</strong></a>, <a href="../classendstone_1_1PlayerDeathEvent/"><strong>endstone::PlayerDeathEvent</strong></a>, <a href="../classendstone_1_1PlayerJoinEvent/"><strong>endstone::PlayerJoinEvent</strong></a>, <a href="../classendstone_1_1PlayerLoginEvent/"><strong>endstone::PlayerLoginEvent</strong></a>, <a href="../classendstone_1_1PlayerQuitEvent/"><strong>endstone::PlayerQuitEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>, <a href="../classendstone_1_1PluginDisableEvent/"><strong>endstone::PluginDisableEvent</strong></a>, <a href="../classendstone_1_1PluginEnableEvent/"><strong>endstone::PluginEnableEvent</strong></a>, <a href="../classendstone_1_1ServerCommandEvent/"><strong>endstone::ServerCommandEvent</strong></a>, <a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>, <a href="../classendstone_1_1ServerLoadEvent/"><strong>endstone::ServerLoadEvent</strong></a>, <a href="../classendstone_1_1ThunderChangeEvent/"><strong>endstone::ThunderChangeEvent</strong></a>, <a href="../classendstone_1_1WeatherChangeEvent/"><strong>endstone::WeatherChangeEvent</strong></a>)</li>
+<li><strong>isVisible</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>Italic</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
 <li><strong>isRegistered</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>isReadOnly</strong> (<a href="../classendstone_1_1Criteria/"><strong>endstone::Criteria</strong></a>)</li>
@@ -2909,6 +2914,8 @@
 </ul>
 <h2 id="r">r<a class="headerlink" href="#r" title="Permanent link">&para;</a></h2>
 <ul>
+<li><strong>removeAll</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>removePlayer</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>recipients_</strong> (<a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>)</li>
 <li><strong>Red</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
 <li><strong>Reset</strong> (<a href="../structendstone_1_1ColorFormat/"><strong>endstone::ColorFormat</strong></a>)</li>
@@ -2948,6 +2955,10 @@
 <li><strong>setRotation</strong> (<a href="../classendstone_1_1Actor/"><strong>endstone::Actor</strong></a>)</li>
 <li><strong>setFrom</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
 <li><strong>setTo</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>, <a href="../classendstone_1_1PlayerTeleportEvent/"><strong>endstone::PlayerTeleportEvent</strong></a>)</li>
+<li><strong>setColor</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>setProgress</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
+<li><strong>setTitle</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>, <a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
+<li><strong>setVisible</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>setMessage</strong> (<a href="../classendstone_1_1BroadcastMessageEvent/"><strong>endstone::BroadcastMessageEvent</strong></a>, <a href="../classendstone_1_1PlayerChatEvent/"><strong>endstone::PlayerChatEvent</strong></a>)</li>
 <li><strong>setAliases</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>setDescription</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>, <a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
@@ -2961,7 +2972,6 @@
 <li><strong>setOptions</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>setCancelled</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>setOnClose</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
-<li><strong>setTitle</strong> (<a href="../classendstone_1_1Form/"><strong>endstone::Form</strong></a>)</li>
 <li><strong>setTime</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
 <li><strong>setPitch</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
 <li><strong>setYaw</strong> (<a href="../classendstone_1_1Location/"><strong>endstone::Location</strong></a>)</li>
@@ -3105,6 +3115,7 @@
 <li><strong>~ActorSpawnEvent</strong> (<a href="../classendstone_1_1ActorSpawnEvent/"><strong>endstone::ActorSpawnEvent</strong></a>)</li>
 <li><strong>~ActorTeleportEvent</strong> (<a href="../classendstone_1_1ActorTeleportEvent/"><strong>endstone::ActorTeleportEvent</strong></a>)</li>
 <li><strong>~Block</strong> (<a href="../classendstone_1_1Block/"><strong>endstone::Block</strong></a>)</li>
+<li><strong>~BossBar</strong> (<a href="../classendstone_1_1BossBar/"><strong>endstone::BossBar</strong></a>)</li>
 <li><strong>~Command</strong> (<a href="../classendstone_1_1Command/"><strong>endstone::Command</strong></a>)</li>
 <li><strong>~CommandExecutor</strong> (<a href="../classendstone_1_1CommandExecutor/"><strong>endstone::CommandExecutor</strong></a>)</li>
 <li><strong>~CommandMap</strong> (<a href="../classendstone_1_1CommandMap/"><strong>endstone::CommandMap</strong></a>)</li>

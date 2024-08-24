@@ -42,6 +42,7 @@
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
+| class | [**BossBar**](classendstone_1_1BossBar.md) <br> |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
 | class | [**Command**](classendstone_1_1Command.md) <br>_Represents a_ [_**Command**_](classendstone_1_1Command.md) _, which executes various tasks upon user input._ |
@@ -116,6 +117,7 @@
 
 | Type | Name |
 | ---: | :--- |
+| enum  | [**BarColor**](#enum-barcolor)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -190,6 +192,27 @@
 
 ## Public Types Documentation
 
+
+
+
+### enum BarColor 
+
+```C++
+enum endstone::BarColor {
+    Grey,
+    Blue,
+    Red,
+    Green,
+    Yellow,
+    Purple,
+    White
+};
+```
+
+
+
+
+<hr>
 
 
 

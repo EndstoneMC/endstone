@@ -3,6 +3,11 @@
 
 
 
+## b
+
+* **BarColor** ([**endstone**](namespaceendstone.md))
+
+
 ## d
 
 * **DisplaySlot** ([**endstone**](namespaceendstone.md))

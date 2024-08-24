@@ -5,6 +5,7 @@
     <innerclass refid="classendstone_1_1Actor" prot="public">endstone::Actor</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
+    <innerclass refid="classendstone_1_1BossBar" prot="public">endstone::BossBar</innerclass>
     <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
     <innerclass refid="classendstone_1_1Command" prot="public">endstone::Command</innerclass>
     <innerclass refid="classendstone_1_1CommandExecutor" prot="public">endstone::CommandExecutor</innerclass>
@@ -80,6 +81,66 @@
     <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
       <sectiondef kind="enum">
+      <memberdef kind="enum" id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarColor</name>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6acaf3a042a037c064b7513ed640c22f77" prot="public">
+          <name>Grey</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" prot="public">
+          <name>Blue</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6aee38e4d5dd68c4e440825018d549cb47" prot="public">
+          <name>Red</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ad382816a3cbeed082c9e216e7392eed1" prot="public">
+          <name>Green</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a51e6cd92b6c45f9affdc158ecca2b8b8" prot="public">
+          <name>Yellow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ab9ba865fec061c9706d2fd7ce49c0cc7" prot="public">
+          <name>Purple</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a25a81701fbfa4a1efdf660a950c1d006" prot="public">
+          <name>White</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_color.h" line="19" column="1" bodyfile="include/endstone/boss/bar_color.h" bodystart="19" bodyend="27"/>
+      </memberdef>
       <memberdef kind="enum" id="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342" prot="public" static="no" strong="yes">
         <type></type>
         <name>EventPriority</name>
