@@ -3,6 +3,7 @@
   <compounddef id="dir_d0a7fd8d5b72659767e2a2651b1ff51c" kind="dir">
     <compoundname>include/endstone/boss</compoundname>
     <innerfile refid="bar__color_8h">bar_color.h</innerfile>
+    <innerfile refid="bar__style_8h">bar_style.h</innerfile>
     <innerfile refid="boss__bar_8h">boss_bar.h</innerfile>
     <briefdescription>
     </briefdescription>

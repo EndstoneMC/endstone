@@ -84,8 +84,8 @@
       <memberdef kind="enum" id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" prot="public" static="no" strong="yes">
         <type></type>
         <name>BarColor</name>
-        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6acaf3a042a037c064b7513ed640c22f77" prot="public">
-          <name>Grey</name>
+        <enumvalue id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" prot="public">
+          <name>Pink</name>
           <briefdescription>
           </briefdescription>
           <detaileddescription>
@@ -140,6 +140,57 @@
         <inbodydescription>
         </inbodydescription>
         <location file="include/endstone/boss/bar_color.h" line="19" column="1" bodyfile="include/endstone/boss/bar_color.h" bodystart="19" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="enum" id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarStyle</name>
+        <enumvalue id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734ae41480b6bbfbf7407974a88d3d34f4fa" prot="public">
+          <name>Solid</name>
+          <briefdescription>
+<para>Makes the boss bar solid (no segments) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a680ebb3273d9b287cdbb10764a9a2c2c" prot="public">
+          <name>Segmented6</name>
+          <briefdescription>
+<para>Splits the boss bar into 6 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a10cc77057fdaaeb85630c7ba35423a21" prot="public">
+          <name>Segmented10</name>
+          <briefdescription>
+<para>Splits the boss bar into 10 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a78a0e9a4e6b5cde6eb5f30e264ea5cd6" prot="public">
+          <name>Segmented12</name>
+          <briefdescription>
+<para>Splits the boss bar into 12 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a92359dcedf3f43775a3e540c8cac0b46" prot="public">
+          <name>Segmented20</name>
+          <briefdescription>
+<para>Splits the boss bar into 20 segments. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_style.h" line="19" column="1" bodyfile="include/endstone/boss/bar_style.h" bodystart="19" bodyend="40"/>
       </memberdef>
       <memberdef kind="enum" id="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342" prot="public" static="no" strong="yes">
         <type></type>

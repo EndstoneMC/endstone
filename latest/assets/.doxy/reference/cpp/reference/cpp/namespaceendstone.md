@@ -118,6 +118,7 @@
 | Type | Name |
 | ---: | :--- |
 | enum  | [**BarColor**](#enum-barcolor)  <br> |
+| enum  | [**BarStyle**](#enum-barstyle)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -199,13 +200,32 @@
 
 ```C++
 enum endstone::BarColor {
-    Grey,
+    Pink,
     Blue,
     Red,
     Green,
     Yellow,
     Purple,
     White
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum BarStyle 
+
+```C++
+enum endstone::BarStyle {
+    Solid,
+    Segmented6,
+    Segmented10,
+    Segmented12,
+    Segmented20
 };
 ```
 

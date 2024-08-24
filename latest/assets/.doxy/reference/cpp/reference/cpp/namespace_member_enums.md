@@ -6,6 +6,7 @@
 ## b
 
 * **BarColor** ([**endstone**](namespaceendstone.md))
+* **BarStyle** ([**endstone**](namespaceendstone.md))
 
 
 ## d

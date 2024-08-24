@@ -84,10 +84,14 @@
     <member refid="classendstone_1_1BossBar_1a477546b9c817edb5c8ec85e68520d932" kind="function"><name>setTitle</name></member>
     <member refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" kind="function"><name>getColor</name></member>
     <member refid="classendstone_1_1BossBar_1a08cb7515e38e3eb3bb96260751429d86" kind="function"><name>setColor</name></member>
+    <member refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" kind="function"><name>getStyle</name></member>
+    <member refid="classendstone_1_1BossBar_1a73b26633cab0398fdece8cebb1485411" kind="function"><name>setStyle</name></member>
     <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kind="function"><name>getProgress</name></member>
     <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kind="function"><name>setVisible</name></member>
+    <member refid="classendstone_1_1BossBar_1ab133a7a4a3cac8b845bffb2ccb801c4e" kind="function"><name>shouldDarkenScreen</name></member>
+    <member refid="classendstone_1_1BossBar_1a7f9fef9d62037e25fef672969878f561" kind="function"><name>setDarkenScreen</name></member>
     <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kind="function"><name>addPlayer</name></member>
     <member refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" kind="function"><name>removePlayer</name></member>
     <member refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" kind="function"><name>removeAll</name></member>
@@ -1043,13 +1047,19 @@
   </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" kind="enum"><name>BarColor</name></member>
-    <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6acaf3a042a037c064b7513ed640c22f77" kind="enumvalue"><name>Grey</name></member>
+    <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" kind="enumvalue"><name>Pink</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" kind="enumvalue"><name>Blue</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6aee38e4d5dd68c4e440825018d549cb47" kind="enumvalue"><name>Red</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ad382816a3cbeed082c9e216e7392eed1" kind="enumvalue"><name>Green</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a51e6cd92b6c45f9affdc158ecca2b8b8" kind="enumvalue"><name>Yellow</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ab9ba865fec061c9706d2fd7ce49c0cc7" kind="enumvalue"><name>Purple</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a25a81701fbfa4a1efdf660a950c1d006" kind="enumvalue"><name>White</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734" kind="enum"><name>BarStyle</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734ae41480b6bbfbf7407974a88d3d34f4fa" kind="enumvalue"><name>Solid</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a680ebb3273d9b287cdbb10764a9a2c2c" kind="enumvalue"><name>Segmented6</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a10cc77057fdaaeb85630c7ba35423a21" kind="enumvalue"><name>Segmented10</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a78a0e9a4e6b5cde6eb5f30e264ea5cd6" kind="enumvalue"><name>Segmented12</name></member>
+    <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a92359dcedf3f43775a3e540c8cac0b46" kind="enumvalue"><name>Segmented20</name></member>
     <member refid="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342" kind="enum"><name>EventPriority</name></member>
     <member refid="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342ab5b8e20937205384be7b9e0c29a28fdb" kind="enumvalue"><name>Lowest</name></member>
     <member refid="event__priority_8h_1acf7f444050737b9ee9b7084c0ff5b342a28d0edd045e05cf5af64e35ae0c4c6ef" kind="enumvalue"><name>Low</name></member>
@@ -1105,6 +1115,8 @@
   <compound refid="block_8h" kind="file"><name>block.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
+  </compound>
+  <compound refid="bar__style_8h" kind="file"><name>bar_style.h</name>
   </compound>
   <compound refid="boss__bar_8h" kind="file"><name>boss_bar.h</name>
   </compound>

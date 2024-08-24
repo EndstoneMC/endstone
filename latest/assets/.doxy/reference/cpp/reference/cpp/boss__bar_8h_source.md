@@ -28,6 +28,7 @@
 #include <vector>
 
 #include "endstone/boss/bar_color.h"
+#include "endstone/boss/bar_style.h"
 
 namespace endstone {
 
@@ -45,6 +46,10 @@ public:
 
     virtual void setColor(const BarColor &color) = 0;
 
+    [[nodiscard]] virtual BarStyle getStyle() const = 0;
+
+    virtual void setStyle(const BarStyle &style) = 0;
+
     [[nodiscard]] virtual float getProgress() const = 0;
 
     virtual void setProgress(float progress) = 0;
@@ -52,6 +57,10 @@ public:
     [[nodiscard]] virtual bool isVisible() const = 0;
 
     virtual void setVisible(bool visible) = 0;
+
+    [[nodiscard]] virtual bool shouldDarkenScreen() const = 0;
+
+    virtual void setDarkenScreen(bool darken_screen) = 0;
 
     virtual void addPlayer(Player &player) = 0;
 

@@ -1,10 +1,10 @@
 
 
-# File bar\_color.h
+# File bar\_style.h
 
-[**File List**](files.md) **>** [**boss**](dir_d0a7fd8d5b72659767e2a2651b1ff51c.md) **>** [**bar\_color.h**](bar__color_8h.md)
+[**File List**](files.md) **>** [**boss**](dir_d0a7fd8d5b72659767e2a2651b1ff51c.md) **>** [**bar\_style.h**](bar__style_8h.md)
 
-[Go to the documentation of this file](bar__color_8h.md)
+[Go to the documentation of this file](bar__style_8h.md)
 
 
 ```C++
@@ -26,14 +26,12 @@
 
 namespace endstone {
 
-enum class BarColor {
-    Pink,
-    Blue,
-    Red,
-    Green,
-    Yellow,
-    Purple,
-    White,
+enum class BarStyle {
+    Solid,
+    Segmented6,
+    Segmented10,
+    Segmented12,
+    Segmented20,
 };
 
 }  // namespace endstone

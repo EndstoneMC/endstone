@@ -55,14 +55,18 @@
 | virtual BarColor | [**getColor**](#function-getcolor) () const = 0<br>_Returns the color of this boss bar._  |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getPlayers**](#function-getplayers) () const = 0<br>_Returns all players viewing this boss bar._  |
 | virtual float | [**getProgress**](#function-getprogress) () const = 0<br>_Returns the progress of the bar between 0.0 and 1.0._  |
+| virtual BarStyle | [**getStyle**](#function-getstyle) () const = 0<br>_Returns the style of this boss bar._  |
 | virtual std::string | [**getTitle**](#function-gettitle) () const = 0<br>_Returns the title of this boss bar._  |
 | virtual bool | [**isVisible**](#function-isvisible) () const = 0<br>_Return if the boss bar is displayed to attached players._  |
 | virtual void | [**removeAll**](#function-removeall) () = 0<br>_Removes all players from this boss bar._  |
 | virtual void | [**removePlayer**](#function-removeplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Removes the player from this boss bar causing it to be removed from their screen._  |
 | virtual void | [**setColor**](#function-setcolor) (const BarColor & color) = 0<br>_Sets the color of this boss bar._  |
+| virtual void | [**setDarkenScreen**](#function-setdarkenscreen) (bool darken\_screen) = 0<br>_Sets whether the screen should darken when the boss bar is displayed._  |
 | virtual void | [**setProgress**](#function-setprogress) (float progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
+| virtual void | [**setStyle**](#function-setstyle) (const BarStyle & style) = 0<br>_Sets the bar style of this boss bar._  |
 | virtual void | [**setTitle**](#function-settitle) (const std::string & title) = 0<br>_Sets the title of this boss bar._  |
 | virtual void | [**setVisible**](#function-setvisible) (bool visible) = 0<br>_Set if the boss bar is displayed to attached players._  |
+| virtual bool | [**shouldDarkenScreen**](#function-shoulddarkenscreen) () const = 0<br>_Returns if the screen should darken when the boss bar is displayed._  |
 | virtual  | [**~BossBar**](#function-bossbar) () = default<br> |
 
 
@@ -162,7 +166,7 @@ virtual std::vector< Player * > endstone::BossBar::getPlayers () const = 0
 
 **Returns:**
 
-an immutable list of players 
+a list of players 
 
 
 
@@ -188,6 +192,31 @@ virtual float endstone::BossBar::getProgress () const = 0
 **Returns:**
 
 the progress of the bar 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getStyle 
+
+_Returns the style of this boss bar._ 
+```C++
+virtual BarStyle endstone::BossBar::getStyle () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+the style of the bar. 
 
 
 
@@ -316,6 +345,33 @@ virtual void endstone::BossBar::setColor (
 
 
 
+### function setDarkenScreen 
+
+_Sets whether the screen should darken when the boss bar is displayed._ 
+```C++
+virtual void endstone::BossBar::setDarkenScreen (
+    bool darken_screen
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `darken_screen` true to darken the screen, false otherwise. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setProgress 
 
 _Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_ 
@@ -333,6 +389,33 @@ virtual void endstone::BossBar::setProgress (
 
 
 * `progress` the progress of the bar 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setStyle 
+
+_Sets the bar style of this boss bar._ 
+```C++
+virtual void endstone::BossBar::setStyle (
+    const BarStyle & style
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `style` the style of the bar. 
 
 
 
@@ -387,6 +470,31 @@ virtual void endstone::BossBar::setVisible (
 
 
 * `visible` visible status 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function shouldDarkenScreen 
+
+_Returns if the screen should darken when the boss bar is displayed._ 
+```C++
+virtual bool endstone::BossBar::shouldDarkenScreen () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if the screen should darken, false otherwise. 
+
 
 
 
