@@ -2,6 +2,7 @@ import glob
 import importlib
 import os.path
 import site
+import os
 import subprocess
 import sys
 from importlib_metadata import entry_points, metadata
@@ -14,12 +15,29 @@ from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadO
 __all__ = ["PythonPluginLoader"]
 
 
+def find_python():
+    paths = []
+    if sys.platform == "win32":
+        paths.append(os.path.join(sys.prefix, "python.exe"))
+    else:
+        paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}.{sys.version_info.minor}"))
+        paths.append(os.path.join(sys.prefix, "bin", "python" + f"{sys.version_info.major}"))
+        paths.append(os.path.join(sys.prefix, "bin", "python"))
+
+    for path in paths:
+        if os.path.isfile(path):
+            return path
+
+    raise RuntimeError(f"Unable to find Python executable. Attempted paths: {paths}")
+
+
 class PythonPluginLoader(PluginLoader):
     SUPPORTED_API = ["0.5"]
 
     def __init__(self, server: Server):
         PluginLoader.__init__(self, server)
         self._plugins = []
+        sys.executable = find_python()
 
     @staticmethod
     def _build_commands(commands: dict) -> list[Command]:
