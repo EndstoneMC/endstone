@@ -91,18 +91,20 @@ const std::unordered_map<std::string, void *> &get_detours()
     const auto &targets = get_targets();
 
     read_elf(module_pathname, SHT_DYNSYM, [&](auto *elf, auto &shdr, auto &sym) {
+        if (sym.st_shndx == SHN_UNDEF || GELF_ST_TYPE(sym.st_info) != STT_FUNC ||
+            GELF_ST_BIND(sym.st_info) != STB_GLOBAL) {
+            return;
+        }
+
         char *name = elf_strptr(elf, shdr.sh_link, sym.st_name);
         if (name == nullptr) {
             return;
         }
 
-        auto it = targets.find(name);
-        if (it != targets.end()) {
-            auto offset = sym.st_value;
-            spdlog::debug("D: {} -> 0x{:x}", name, offset);
-            auto *detour = static_cast<char *>(module_base) + offset;
-            detours.emplace(name, detour);
-        }
+        auto offset = sym.st_value;
+        spdlog::debug("D: {} -> 0x{:x}", name, offset);
+        auto *detour = static_cast<char *>(module_base) + offset;
+        detours.emplace(name, detour);
     });
     return detours;
 }

@@ -101,8 +101,7 @@ const std::unordered_map<std::string, void *> &get_detours()
     enumerate_symbols(  //
         module_pathname.c_str(),
         [&](const std::string &name, std::size_t offset, std::uint32_t flags) -> bool {
-            auto it = targets.find(name);
-            if (it != targets.end()) {
+            if (flags & SYMFLAG_EXPORT) {
                 spdlog::debug("D: {} -> 0x{:x}", name, offset);
                 auto *detour = static_cast<char *>(module_base) + offset;
                 detours.emplace(name, detour);
