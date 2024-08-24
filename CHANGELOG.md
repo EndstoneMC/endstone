@@ -5,9 +5,45 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.1 - Unreleased
+## 0.5.2 - Unreleased
 
-<small>[Compare with 0.5.0](https://github.com/EndstoneMC/endstone/compare/v0.5.0...HEAD)</small>
+<small>[Compare with 0.5.1](https://github.com/EndstoneMC/endstone/compare/v0.5.1...HEAD)</small>
+
+## [0.5.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.1) - 2024-08-24
+
+<small>[Compare with 0.5.0](https://github.com/EndstoneMC/endstone/compare/v0.5.0...v0.5.1)</small>
+
+### Added
+
+- Support for Minecraft v1.21.20.
+- `Player::getScoreboard` and `Player::setScoreboard` methods to allow each player to have their own scoreboard (
+  separate from the main shared scoreboard).
+- `PlayerTeleportEvent`, which is called when a player is teleported from one location to another.
+- `Actor::teleport` method to teleport an actor to a given location or actor.
+- The server can now be gracefully shut down when `Ctrl` + `C` is pressed.
+- `/status` command to show the uptime and performance of the server.
+- Basic network API to allow plugins to send custom packets. Currently, only `SpawnParticleEffectPacket` is supported.
+- `/reload` command to reload plugins in addition to addons.
+- `Player::sendToast` method to send a toast message to players.
+- Furnace-related item data to DevTools by [@smartcmd](https://github.com/smartcmd).
+
+### Changed
+
+- `Player::isOp` and `Player::setOp` methods are now consistent with the similar methods in the scripting API.
+- The fix for the warning message about empty packets is now redundant and has been removed.
+- **BREAKING CHANGE:** `Server::getLevels` has been replaced by `Server::getLevel`.
+- **BREAKING CHANGE:** `Player::getDeviceId` now returns a string object instead of a UUID object, as it is not
+  guaranteed to be a UUID on all platforms.
+
+### Fixed
+
+- [#29](https://github.com/EndstoneMC/endstone/issues/29) - Commands will no longer be sent to a player who doesn't have
+- [#32](https://github.com/EndstoneMC/endstone/issues/32) - Creating an action form without an `on_submit` callback will
+  no longer crashes the server
+- Plugin config files are now always read and written in UTF-8 encoding.
+- Added a missing parameter to `ActionForm::addButton`.
+- Action forms without any buttons can now be displayed correctly on the client side.
+- The Python executable can now be located in multiple possible locations on Linux.
 
 ## [0.5.0](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.0) - 2024-07-29
 
