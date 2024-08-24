@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_7fcf87d2683114df01ea446fea23c187" kind="dir">
+    <compoundname>include/endstone/event/weather</compoundname>
+    <innerfile refid="thunder__change__event_8h">thunder_change_event.h</innerfile>
+    <innerfile refid="weather__change__event_8h">weather_change_event.h</innerfile>
+    <innerfile refid="weather__event_8h">weather_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/weather/"/>
+  </compounddef>
+</doxygen>

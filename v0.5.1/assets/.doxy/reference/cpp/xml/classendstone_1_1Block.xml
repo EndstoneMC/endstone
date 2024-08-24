@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Block" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Block</compoundname>
+    <includes refid="block_8h" local="no">endstone/block/block.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Block::~Block</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Block</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="29" column="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a block. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This is a live object, and only one <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> may exist for any given location in a world. </para>
+    </detaileddescription>
+    <location file="include/endstone/block/block.h" line="27" column="1" bodyfile="include/endstone/block/block.h" bodystart="27" bodyend="39"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" virt="virtual"><scope>endstone::Block</scope><name>~Block</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Label" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Label</compoundname>
+    <includes refid="label_8h" local="no">endstone/form/controls/label.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Label::text_</definition>
+        <argsstring></argsstring>
+        <name>text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/label.h" line="56" column="13" bodyfile="include/endstone/form/controls/label.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Label_1a8fd70587665fc80ab3c25e6fb4ff96fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Label::Label</definition>
+        <argsstring>()=default</argsstring>
+        <name>Label</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/label.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Label_1a5e730c04ede620c30ceb354ddaa72d0a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Label::Label</definition>
+        <argsstring>(Message text)</argsstring>
+        <name>Label</name>
+        <param>
+          <type>Message</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/label.h" line="31" column="14" bodyfile="include/endstone/form/controls/label.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Label_1a902afec08369023430298fa311fb64cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Label::getText</definition>
+        <argsstring>() const</argsstring>
+        <name>getText</name>
+        <briefdescription>
+<para>Gets the text of the label. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The text of the label. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/label.h" line="38" column="14" bodyfile="include/endstone/form/controls/label.h" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Label_1ab829166df7f8cc0c8b9ba2b2119b5912" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Label" kindref="compound">Label</ref> &amp;</type>
+        <definition>Label&amp; endstone::Label::setText</definition>
+        <argsstring>(Message text)</argsstring>
+        <name>setText</name>
+        <param>
+          <type>Message</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Sets the text of the label. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new text for the label. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current label. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/label.h" line="49" column="11" bodyfile="include/endstone/form/controls/label.h" bodystart="49" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a text label. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/label.h" line="28" column="1" bodyfile="include/endstone/form/controls/label.h" bodystart="28" bodyend="57"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Label_1a902afec08369023430298fa311fb64cb" prot="public" virt="non-virtual"><scope>endstone::Label</scope><name>getText</name></member>
+      <member refid="classendstone_1_1Label_1a8fd70587665fc80ab3c25e6fb4ff96fb" prot="public" virt="non-virtual"><scope>endstone::Label</scope><name>Label</name></member>
+      <member refid="classendstone_1_1Label_1a5e730c04ede620c30ceb354ddaa72d0a" prot="public" virt="non-virtual"><scope>endstone::Label</scope><name>Label</name></member>
+      <member refid="classendstone_1_1Label_1ab829166df7f8cc0c8b9ba2b2119b5912" prot="public" virt="non-virtual"><scope>endstone::Label</scope><name>setText</name></member>
+      <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" prot="private" virt="non-virtual"><scope>endstone::Label</scope><name>text_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

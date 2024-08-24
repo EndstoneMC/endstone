@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Criteria" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Criteria</compoundname>
+    <includes refid="criteria_8h" local="no">endstone/scoreboard/criteria.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Type</name>
+        <enumvalue id="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1abcf036b6f33e182d4705f4f5b1af13ac" prot="public">
+          <name>Dummy</name>
+          <briefdescription>
+<para>The dummy criteria. Not changed by the server. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/criteria.h" line="26" column="5" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="26" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a126b4b11c3322654f2e334c892a843ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::Criteria::~Criteria</definition>
+        <argsstring>()=default</argsstring>
+        <name>~Criteria</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/criteria.h" line="33" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Criteria::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Get the name of this criteria (its unique id). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/criteria.h" line="40" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Criteria::isReadOnly</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isReadOnly</name>
+        <briefdescription>
+<para>Get whether or not this criteria is read only. If read only, scoreboards with this criteria cannot have their scores changed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if read only, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/criteria.h" line="48" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>RenderType</type>
+        <definition>virtual RenderType endstone::Criteria::getDefaultRenderType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDefaultRenderType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the RenderType used by default for this criteria.</para>
+<para><simplesect kind="return"><para>the default render type </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/scoreboard/criteria.h" line="55" column="25"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a scoreboard criteria. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/scoreboard/criteria.h" line="24" column="1" bodyfile="include/endstone/scoreboard/criteria.h" bodystart="24" bodyend="56"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Criteria_1a62d2a81d1b34cb0c271bdf470b0064de" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>getDefaultRenderType</name></member>
+      <member refid="classendstone_1_1Criteria_1a0b64daff057e51e6c0ad4ca8ff404d21" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Criteria_1a41b262cc7d4029a58773d1fa1e5c0eab" prot="public" virt="pure-virtual"><scope>endstone::Criteria</scope><name>isReadOnly</name></member>
+      <member refid="classendstone_1_1Criteria_1a31b8a6a25a4c37fa964fc34563a882d1" prot="public" virt="non-virtual"><scope>endstone::Criteria</scope><name>Type</name></member>
+      <member refid="classendstone_1_1Criteria_1a126b4b11c3322654f2e334c892a843ff" prot="public" virt="virtual"><scope>endstone::Criteria</scope><name>~Criteria</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

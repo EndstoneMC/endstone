@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PluginCommand" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PluginCommand</compoundname>
+    <basecompoundref refid="classendstone_1_1Command" prot="public" virt="non-virtual">endstone::Command</basecompoundref>
+    <includes refid="plugin__command_8h" local="no">endstone/command/plugin_command.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        <definition>Plugin&amp; endstone::PluginCommand::owner_</definition>
+        <argsstring></argsstring>
+        <name>owner_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="92" column="12" bodyfile="include/endstone/command/plugin_command.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PluginCommand_1a2ec629d4eb987db62409bce874a9d2f3" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;CommandExecutor&gt; endstone::PluginCommand::executor_</definition>
+        <argsstring></argsstring>
+        <name>executor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="93" column="21" bodyfile="include/endstone/command/plugin_command.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginCommand::PluginCommand</definition>
+        <argsstring>(const Command &amp;command, Plugin &amp;owner)</argsstring>
+        <name>PluginCommand</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &amp;</type>
+          <declname>command</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>owner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="28" column="5" bodyfile="include/endstone/command/plugin_command.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::PluginCommand::execute</definition>
+        <argsstring>(CommandSender &amp;sender, const std::vector&lt; std::string &gt; &amp;args) const override</argsstring>
+        <name>execute</name>
+        <reimplements refid="classendstone_1_1Command_1a983f63a4d9460dcc7a952eabd7c46737">execute</reimplements>
+        <param>
+          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Executes the command, returning its success</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source of the command </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments passed to the command </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the execution was successful, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="30" column="10" bodyfile="include/endstone/command/plugin_command.h" bodystart="30" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginCommand::setExecutor</definition>
+        <argsstring>(std::shared_ptr&lt; CommandExecutor &gt; executor)</argsstring>
+        <name>setExecutor</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> &gt;</type>
+          <declname>executor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> to run when parsing this command</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>executor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New executor to run </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="58" column="18" bodyfile="include/endstone/command/plugin_command.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a9260cca3aa3914763d0f21d30ba00aeb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> &amp;</type>
+        <definition>virtual CommandExecutor&amp; endstone::PluginCommand::getExecutor</definition>
+        <argsstring>() const</argsstring>
+        <name>getExecutor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the <ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> associated with this command</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1CommandExecutor" kindref="compound">CommandExecutor</ref> object linked to this command </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="68" column="30" bodyfile="include/endstone/command/plugin_command.h" bodystart="68" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1ae4564c6981d2e05a5bdbe64a46d23e1d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+        <definition>Plugin&amp; endstone::PluginCommand::getPlugin</definition>
+        <argsstring>() const</argsstring>
+        <name>getPlugin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the owner of this <ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref></para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> that owns this command </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="81" column="14" bodyfile="include/endstone/command/plugin_command.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginCommand_1a5111f2a962276060d100c46daef6fd71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="classendstone_1_1PluginCommand" kindref="compound">PluginCommand</ref> *</type>
+        <definition>PluginCommand* endstone::PluginCommand::asPluginCommand</definition>
+        <argsstring>() override</argsstring>
+        <name>asPluginCommand</name>
+        <reimplements refid="classendstone_1_1Command_1aaddbe8b0920daa59207a39fad880bf47">asPluginCommand</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/plugin_command.h" line="86" column="20" bodyfile="include/endstone/command/plugin_command.h" bodystart="86" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> belonging to a <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::PluginCommand</label>
+        <link refid="classendstone_1_1PluginCommand"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Command</label>
+        <link refid="classendstone_1_1Command"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::PluginCommand</label>
+        <link refid="classendstone_1_1PluginCommand"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Command</label>
+        <link refid="classendstone_1_1Command"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/command/plugin_command.h" line="26" column="1" bodyfile="include/endstone/command/plugin_command.h" bodystart="26" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PluginCommand_1a5111f2a962276060d100c46daef6fd71" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>asPluginCommand</name></member>
+      <member refid="classendstone_1_1Command_1aa44822c895d67402241b9570bafd2ce7" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>Command</name></member>
+      <member refid="classendstone_1_1PluginCommand_1a376735d9dccfa3142004f92063808cdc" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>execute</name></member>
+      <member refid="classendstone_1_1PluginCommand_1a2ec629d4eb987db62409bce874a9d2f3" prot="private" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>executor_</name></member>
+      <member refid="classendstone_1_1Command_1a962debbad31b2ac387877fdf82dbbdc3" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getAliases</name></member>
+      <member refid="classendstone_1_1Command_1a2f860b42aae19582ecc4a2d74ebc8cca" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getDescription</name></member>
+      <member refid="classendstone_1_1PluginCommand_1a9260cca3aa3914763d0f21d30ba00aeb" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>getExecutor</name></member>
+      <member refid="classendstone_1_1Command_1ae7306437f7a829db83548ca11288b298" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Command_1a82f4bc4bf5bbce299310b1523019bb99" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getPermissions</name></member>
+      <member refid="classendstone_1_1PluginCommand_1ae4564c6981d2e05a5bdbe64a46d23e1d" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getPlugin</name></member>
+      <member refid="classendstone_1_1Command_1a612208b29154d4c412bcd327d7a42106" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>getUsages</name></member>
+      <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>isRegistered</name></member>
+      <member refid="classendstone_1_1PluginCommand_1a025ba1c09032b5fa58580e5819d18ff9" prot="private" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>owner_</name></member>
+      <member refid="classendstone_1_1PluginCommand_1aaceb3f61ac9023104cf66875c9407e2b" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>PluginCommand</name></member>
+      <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>registerTo</name></member>
+      <member refid="classendstone_1_1Command_1a79687a94cbcfbd9a07c3aa8d72afd995" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setAliases</name></member>
+      <member refid="classendstone_1_1Command_1a1dff1fa7383c76451f28d2c131d6c77c" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setDescription</name></member>
+      <member refid="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>setExecutor</name></member>
+      <member refid="classendstone_1_1Command_1a66160b5ff3d7efbc62e93e122d699776" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setName</name></member>
+      <member refid="classendstone_1_1Command_1a53e55d4c2375b2b34e321f4f46551b09" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setPermissions</name></member>
+      <member refid="classendstone_1_1Command_1ab73ce16a9a92a52780fd2640b5f5a91a" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>setUsages</name></member>
+      <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermission</name></member>
+      <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>testPermissionSilently</name></member>
+      <member refid="classendstone_1_1Command_1ac162a2899386e5a0de4c523522324e1f" prot="public" virt="non-virtual"><scope>endstone::PluginCommand</scope><name>unregisterFrom</name></member>
+      <member refid="classendstone_1_1Command_1a1a6c0c0027b500df3e4eea60cf489ea2" prot="public" virt="virtual"><scope>endstone::PluginCommand</scope><name>~Command</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
