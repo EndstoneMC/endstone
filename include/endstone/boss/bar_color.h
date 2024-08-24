@@ -17,7 +17,7 @@
 namespace endstone {
 
 enum class BarColor {
-    Grey,
+    Pink,
     Blue,
     Red,
     Green,

@@ -13,3 +13,42 @@
 // limitations under the License.
 
 #include "endstone/detail/boss/boss_bar.h"
+
+namespace endstone::detail {
+
+std::string EndstoneBossBar::getTitle() const
+{
+    return title_;
+}
+
+BarColor EndstoneBossBar::getColor() const
+{
+    return color_;
+}
+
+BarStyle EndstoneBossBar::getStyle() const
+{
+    return style_;
+}
+
+float EndstoneBossBar::getProgress() const
+{
+    return progress_;
+}
+
+bool EndstoneBossBar::isVisible() const
+{
+    return visible_;
+}
+
+bool EndstoneBossBar::shouldDarkenScreen() const
+{
+    return darken_screen_;
+}
+
+std::vector<Player *> EndstoneBossBar::getPlayers() const
+{
+    return players_;
+}
+
+}  // namespace endstone::detail

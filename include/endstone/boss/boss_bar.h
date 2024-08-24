@@ -18,6 +18,7 @@
 #include <vector>
 
 #include "endstone/boss/bar_color.h"
+#include "endstone/boss/bar_style.h"
 
 namespace endstone {
 
@@ -52,6 +53,18 @@ public:
     virtual void setColor(const BarColor &color) = 0;
 
     /**
+     * @brief Returns the style of this boss bar.
+     * @return the style of the bar.
+     */
+    [[nodiscard]] virtual BarStyle getStyle() const = 0;
+
+    /**
+     * @brief Sets the bar style of this boss bar.
+     * @param style the style of the bar.
+     */
+    virtual void setStyle(const BarStyle &style) = 0;
+
+    /**
      * @brief Returns the progress of the bar between 0.0 and 1.0
      * @return the progress of the bar
      */
@@ -76,6 +89,18 @@ public:
     virtual void setVisible(bool visible) = 0;
 
     /**
+     * @brief Returns if the screen should darken when the boss bar is displayed.
+     * @return true if the screen should darken, false otherwise.
+     */
+    [[nodiscard]] virtual bool shouldDarkenScreen() const = 0;
+
+    /**
+     * @brief Sets whether the screen should darken when the boss bar is displayed.
+     * @param darken_screen true to darken the screen, false otherwise.
+     */
+    virtual void setDarkenScreen(bool darken_screen) = 0;
+
+    /**
      * @brief Adds the player to this boss bar causing it to display on their screen
      * @param player the player to add
      */
@@ -94,7 +119,7 @@ public:
 
     /**
      * @brief Returns all players viewing this boss bar
-     * @return an immutable list of players
+     * @return a list of players
      */
     [[nodiscard]] virtual std::vector<Player *> getPlayers() const = 0;
 };
