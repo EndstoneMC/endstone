@@ -235,14 +235,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
-                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else if (parameter.type == "bool") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = "Boolean";
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
-                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
