@@ -1968,19 +1968,6 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-setdarkenscreen" class="md-nav__link">
-      <span class="md-ellipsis">
-        function setDarkenScreen
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
     <a href="#function-setprogress" class="md-nav__link">
       <span class="md-ellipsis">
         function setProgress
@@ -2023,19 +2010,6 @@
     <a href="#function-setvisible" class="md-nav__link">
       <span class="md-ellipsis">
         function setVisible
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
-    <a href="#function-shoulddarkenscreen" class="md-nav__link">
-      <span class="md-ellipsis">
-        function shouldDarkenScreen
       </span>
     </a>
 
@@ -2142,11 +2116,7 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setcolor"><strong>setColor</strong></a> (const BarColor &amp; color) = 0<br><em>Sets the color of this boss bar.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setdarkenscreen"><strong>setDarkenScreen</strong></a> (bool darken_screen) = 0<br><em>Sets whether the screen should darken when the boss bar is displayed.</em></td>
+<td style="text-align: left;"><a href="#function-setcolor"><strong>setColor</strong></a> (BarColor color) = 0<br><em>Sets the color of this boss bar.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2154,19 +2124,15 @@
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setstyle"><strong>setStyle</strong></a> (const BarStyle &amp; style) = 0<br><em>Sets the bar style of this boss bar.</em></td>
+<td style="text-align: left;"><a href="#function-setstyle"><strong>setStyle</strong></a> (BarStyle style) = 0<br><em>Sets the bar style of this boss bar.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-settitle"><strong>setTitle</strong></a> (const std::string &amp; title) = 0<br><em>Sets the title of this boss bar.</em></td>
+<td style="text-align: left;"><a href="#function-settitle"><strong>setTitle</strong></a> (std::string title) = 0<br><em>Sets the title of this boss bar.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
 <td style="text-align: left;"><a href="#function-setvisible"><strong>setVisible</strong></a> (bool visible) = 0<br><em>Set if the boss bar is displayed to attached players.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual bool</td>
-<td style="text-align: left;"><a href="#function-shoulddarkenscreen"><strong>shouldDarkenScreen</strong></a> () const = 0<br><em>Returns if the screen should darken when the boss bar is displayed.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -2255,7 +2221,7 @@
 <h3 id="function-setcolor">function setColor<a class="headerlink" href="#function-setcolor" title="Permanent link">&para;</a></h3>
 <p><em>Sets the color of this boss bar.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setColor</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BarColor</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">color</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">BarColor</span><span class="w"> </span><span class="n">color</span>
 </span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2264,23 +2230,11 @@
 </ul>
 <hr>
 
-<h3 id="function-setdarkenscreen">function setDarkenScreen<a class="headerlink" href="#function-setdarkenscreen" title="Permanent link">&para;</a></h3>
-<p><em>Sets whether the screen should darken when the boss bar is displayed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setDarkenScreen</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">darken_screen</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>darken_screen</code> true to darken the screen, false otherwise. </li>
-</ul>
-<hr>
-
 <h3 id="function-setprogress">function setProgress<a class="headerlink" href="#function-setprogress" title="Permanent link">&para;</a></h3>
 <p><em>Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setProgress</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setProgress</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2290,9 +2244,9 @@
 
 <h3 id="function-setstyle">function setStyle<a class="headerlink" href="#function-setstyle" title="Permanent link">&para;</a></h3>
 <p><em>Sets the bar style of this boss bar.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setStyle</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">BarStyle</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">style</span>
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setStyle</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">BarStyle</span><span class="w"> </span><span class="n">style</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2302,9 +2256,9 @@
 
 <h3 id="function-settitle">function setTitle<a class="headerlink" href="#function-settitle" title="Permanent link">&para;</a></h3>
 <p><em>Sets the title of this boss bar.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setTitle</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">title</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setTitle</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">title</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2314,9 +2268,9 @@
 
 <h3 id="function-setvisible">function setVisible<a class="headerlink" href="#function-setvisible" title="Permanent link">&para;</a></h3>
 <p><em>Set if the boss bar is displayed to attached players.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setVisible</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">visible</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">setVisible</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">visible</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2324,16 +2278,8 @@
 </ul>
 <hr>
 
-<h3 id="function-shoulddarkenscreen">function shouldDarkenScreen<a class="headerlink" href="#function-shoulddarkenscreen" title="Permanent link">&para;</a></h3>
-<p><em>Returns if the screen should darken when the boss bar is displayed.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::</span><span class="n">shouldDarkenScreen</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>true if the screen should darken, false otherwise. </p>
-<hr>
-
 <h3 id="function-bossbar">function ~BossBar<a class="headerlink" href="#function-bossbar" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::~</span><span class="n">BossBar</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BossBar</span><span class="o">::~</span><span class="n">BossBar</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

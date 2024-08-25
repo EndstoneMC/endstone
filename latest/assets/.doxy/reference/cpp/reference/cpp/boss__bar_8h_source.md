@@ -40,15 +40,15 @@ public:
 
     [[nodiscard]] virtual std::string getTitle() const = 0;
 
-    virtual void setTitle(const std::string &title) = 0;
+    virtual void setTitle(std::string title) = 0;
 
     [[nodiscard]] virtual BarColor getColor() const = 0;
 
-    virtual void setColor(const BarColor &color) = 0;
+    virtual void setColor(BarColor color) = 0;
 
     [[nodiscard]] virtual BarStyle getStyle() const = 0;
 
-    virtual void setStyle(const BarStyle &style) = 0;
+    virtual void setStyle(BarStyle style) = 0;
 
     [[nodiscard]] virtual float getProgress() const = 0;
 
@@ -58,10 +58,6 @@ public:
 
     virtual void setVisible(bool visible) = 0;
 
-    [[nodiscard]] virtual bool shouldDarkenScreen() const = 0;
-
-    virtual void setDarkenScreen(bool darken_screen) = 0;
-
     virtual void addPlayer(Player &player) = 0;
 
     virtual void removePlayer(Player &player) = 0;
@@ -69,6 +65,8 @@ public:
     virtual void removeAll() = 0;
 
     [[nodiscard]] virtual std::vector<Player *> getPlayers() const = 0;
+
+    // TODO: addFlag, removeFlag, hasFlag
 };
 
 }  // namespace endstone

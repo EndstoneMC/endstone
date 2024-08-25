@@ -81,17 +81,15 @@
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
     <member refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kind="function"><name>getTitle</name></member>
-    <member refid="classendstone_1_1BossBar_1a477546b9c817edb5c8ec85e68520d932" kind="function"><name>setTitle</name></member>
+    <member refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" kind="function"><name>setTitle</name></member>
     <member refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" kind="function"><name>getColor</name></member>
-    <member refid="classendstone_1_1BossBar_1a08cb7515e38e3eb3bb96260751429d86" kind="function"><name>setColor</name></member>
+    <member refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" kind="function"><name>setColor</name></member>
     <member refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" kind="function"><name>getStyle</name></member>
-    <member refid="classendstone_1_1BossBar_1a73b26633cab0398fdece8cebb1485411" kind="function"><name>setStyle</name></member>
+    <member refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" kind="function"><name>setStyle</name></member>
     <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kind="function"><name>getProgress</name></member>
     <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kind="function"><name>setVisible</name></member>
-    <member refid="classendstone_1_1BossBar_1ab133a7a4a3cac8b845bffb2ccb801c4e" kind="function"><name>shouldDarkenScreen</name></member>
-    <member refid="classendstone_1_1BossBar_1a7f9fef9d62037e25fef672969878f561" kind="function"><name>setDarkenScreen</name></member>
     <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kind="function"><name>addPlayer</name></member>
     <member refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" kind="function"><name>removePlayer</name></member>
     <member refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" kind="function"><name>removeAll</name></member>

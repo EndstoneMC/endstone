@@ -60,13 +60,11 @@
 | virtual bool | [**isVisible**](#function-isvisible) () const = 0<br>_Return if the boss bar is displayed to attached players._  |
 | virtual void | [**removeAll**](#function-removeall) () = 0<br>_Removes all players from this boss bar._  |
 | virtual void | [**removePlayer**](#function-removeplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Removes the player from this boss bar causing it to be removed from their screen._  |
-| virtual void | [**setColor**](#function-setcolor) (const BarColor & color) = 0<br>_Sets the color of this boss bar._  |
-| virtual void | [**setDarkenScreen**](#function-setdarkenscreen) (bool darken\_screen) = 0<br>_Sets whether the screen should darken when the boss bar is displayed._  |
+| virtual void | [**setColor**](#function-setcolor) (BarColor color) = 0<br>_Sets the color of this boss bar._  |
 | virtual void | [**setProgress**](#function-setprogress) (float progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
-| virtual void | [**setStyle**](#function-setstyle) (const BarStyle & style) = 0<br>_Sets the bar style of this boss bar._  |
-| virtual void | [**setTitle**](#function-settitle) (const std::string & title) = 0<br>_Sets the title of this boss bar._  |
+| virtual void | [**setStyle**](#function-setstyle) (BarStyle style) = 0<br>_Sets the bar style of this boss bar._  |
+| virtual void | [**setTitle**](#function-settitle) (std::string title) = 0<br>_Sets the title of this boss bar._  |
 | virtual void | [**setVisible**](#function-setvisible) (bool visible) = 0<br>_Set if the boss bar is displayed to attached players._  |
-| virtual bool | [**shouldDarkenScreen**](#function-shoulddarkenscreen) () const = 0<br>_Returns if the screen should darken when the boss bar is displayed._  |
 | virtual  | [**~BossBar**](#function-bossbar) () = default<br> |
 
 
@@ -323,7 +321,7 @@ virtual void endstone::BossBar::removePlayer (
 _Sets the color of this boss bar._ 
 ```C++
 virtual void endstone::BossBar::setColor (
-    const BarColor & color
+    BarColor color
 ) = 0
 ```
 
@@ -335,33 +333,6 @@ virtual void endstone::BossBar::setColor (
 
 
 * `color` the color of the bar 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function setDarkenScreen 
-
-_Sets whether the screen should darken when the boss bar is displayed._ 
-```C++
-virtual void endstone::BossBar::setDarkenScreen (
-    bool darken_screen
-) = 0
-```
-
-
-
-
-
-**Parameters:**
-
-
-* `darken_screen` true to darken the screen, false otherwise. 
 
 
 
@@ -404,7 +375,7 @@ virtual void endstone::BossBar::setProgress (
 _Sets the bar style of this boss bar._ 
 ```C++
 virtual void endstone::BossBar::setStyle (
-    const BarStyle & style
+    BarStyle style
 ) = 0
 ```
 
@@ -431,7 +402,7 @@ virtual void endstone::BossBar::setStyle (
 _Sets the title of this boss bar._ 
 ```C++
 virtual void endstone::BossBar::setTitle (
-    const std::string & title
+    std::string title
 ) = 0
 ```
 
@@ -470,31 +441,6 @@ virtual void endstone::BossBar::setVisible (
 
 
 * `visible` visible status 
-
-
-
-
-        
-
-<hr>
-
-
-
-### function shouldDarkenScreen 
-
-_Returns if the screen should darken when the boss bar is displayed._ 
-```C++
-virtual bool endstone::BossBar::shouldDarkenScreen () const = 0
-```
-
-
-
-
-
-**Returns:**
-
-true if the screen should darken, false otherwise. 
-
 
 
 

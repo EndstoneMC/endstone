@@ -33,13 +33,13 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="35" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a477546b9c817edb5c8ec85e68520d932" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::BossBar::setTitle</definition>
-        <argsstring>(const std::string &amp;title)=0</argsstring>
+        <argsstring>(std::string title)=0</argsstring>
         <name>setTitle</name>
         <param>
-          <type>const std::string &amp;</type>
+          <type>std::string</type>
           <declname>title</declname>
         </param>
         <briefdescription>
@@ -78,13 +78,13 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="47" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a08cb7515e38e3eb3bb96260751429d86" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::BossBar::setColor</definition>
-        <argsstring>(const BarColor &amp;color)=0</argsstring>
+        <argsstring>(BarColor color)=0</argsstring>
         <name>setColor</name>
         <param>
-          <type>const BarColor &amp;</type>
+          <type>BarColor</type>
           <declname>color</declname>
         </param>
         <briefdescription>
@@ -123,13 +123,13 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="59" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a73b26633cab0398fdece8cebb1485411" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::BossBar::setStyle</definition>
-        <argsstring>(const BarStyle &amp;style)=0</argsstring>
+        <argsstring>(BarStyle style)=0</argsstring>
         <name>setStyle</name>
         <param>
-          <type>const BarStyle &amp;</type>
+          <type>BarStyle</type>
           <declname>style</declname>
         </param>
         <briefdescription>
@@ -241,51 +241,6 @@
         </inbodydescription>
         <location file="include/endstone/boss/boss_bar.h" line="89" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1ab133a7a4a3cac8b845bffb2ccb801c4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool endstone::BossBar::shouldDarkenScreen</definition>
-        <argsstring>() const =0</argsstring>
-        <name>shouldDarkenScreen</name>
-        <briefdescription>
-<para>Returns if the screen should darken when the boss bar is displayed. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>true if the screen should darken, false otherwise. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="95" column="19"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BossBar_1a7f9fef9d62037e25fef672969878f561" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::BossBar::setDarkenScreen</definition>
-        <argsstring>(bool darken_screen)=0</argsstring>
-        <name>setDarkenScreen</name>
-        <param>
-          <type>bool</type>
-          <declname>darken_screen</declname>
-        </param>
-        <briefdescription>
-<para>Sets whether the screen should darken when the boss bar is displayed. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>darken_screen</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>true to darken the screen, false otherwise. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="101" column="18"/>
-      </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::BossBar::addPlayer</definition>
@@ -312,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="107" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="95" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -340,7 +295,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="113" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="101" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -354,7 +309,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="118" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="106" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ac7677f803d68917650c1df9ba64ec777" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
@@ -371,14 +326,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="124" column="26"/>
+        <location file="include/endstone/boss/boss_bar.h" line="112" column="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/boss/boss_bar.h" line="27" column="1" bodyfile="include/endstone/boss/boss_bar.h" bodystart="27" bodyend="125"/>
+    <location file="include/endstone/boss/boss_bar.h" line="27" column="1" bodyfile="include/endstone/boss/boss_bar.h" bodystart="27" bodyend="115"/>
     <listofallmembers>
       <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addPlayer</name></member>
       <member refid="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>getColor</name></member>
@@ -389,13 +344,11 @@
       <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>isVisible</name></member>
       <member refid="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removeAll</name></member>
       <member refid="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>removePlayer</name></member>
-      <member refid="classendstone_1_1BossBar_1a08cb7515e38e3eb3bb96260751429d86" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setColor</name></member>
-      <member refid="classendstone_1_1BossBar_1a7f9fef9d62037e25fef672969878f561" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setDarkenScreen</name></member>
+      <member refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setColor</name></member>
       <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setProgress</name></member>
-      <member refid="classendstone_1_1BossBar_1a73b26633cab0398fdece8cebb1485411" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setStyle</name></member>
-      <member refid="classendstone_1_1BossBar_1a477546b9c817edb5c8ec85e68520d932" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setTitle</name></member>
+      <member refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setStyle</name></member>
+      <member refid="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setTitle</name></member>
       <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>setVisible</name></member>
-      <member refid="classendstone_1_1BossBar_1ab133a7a4a3cac8b845bffb2ccb801c4e" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>shouldDarkenScreen</name></member>
       <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" prot="public" virt="virtual"><scope>endstone::BossBar</scope><name>~BossBar</name></member>
     </listofallmembers>
   </compounddef>
