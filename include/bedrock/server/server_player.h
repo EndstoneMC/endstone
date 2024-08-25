@@ -21,7 +21,6 @@ class ServerPlayer : public Player {
 public:
     ~ServerPlayer() override = 0;
     ENDSTONE_HOOK void die(const ActorDamageSource &source) override;
-
-    ENDSTONE_HOOK void doInitialSpawn();
     ENDSTONE_HOOK void disconnect();
+    ENDSTONE_HOOK void setLocalPlayerAsInitialized();
 };

@@ -54,9 +54,9 @@ void ServerPlayer::die(const ActorDamageSource &source)
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
 }
 
-void ServerPlayer::doInitialSpawn()
+void ServerPlayer::setLocalPlayerAsInitialized()
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::doInitialSpawn, this);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::setLocalPlayerAsInitialized, this);
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = getEndstonePlayer();
     endstone::PlayerJoinEvent e{endstone_player};
