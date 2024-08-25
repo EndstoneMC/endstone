@@ -16,8 +16,11 @@
 
 #include <string>
 #include <utility>
+#include <unordered_set>
 
+#include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/util/uuid.h"
 
 namespace endstone::detail {
 
@@ -29,30 +32,30 @@ public:
     }
 
     [[nodiscard]] std::string getTitle() const override;
-    void setTitle(const std::string &title) override;
+    void setTitle(std::string title) override;
     [[nodiscard]] BarColor getColor() const override;
-    void setColor(const BarColor &color) override;
+    void setColor(BarColor color) override;
     [[nodiscard]] BarStyle getStyle() const override;
-    void setStyle(const BarStyle &style) override;
+    void setStyle(BarStyle style) override;
     [[nodiscard]] float getProgress() const override;
     void setProgress(float progress) override;
     [[nodiscard]] bool isVisible() const override;
     void setVisible(bool visible) override;
-    [[nodiscard]] bool shouldDarkenScreen() const override;
-    void setDarkenScreen(bool darken_screen) override;
     void addPlayer(Player &player) override;
     void removePlayer(Player &player) override;
     void removeAll() override;
     [[nodiscard]] std::vector<Player *> getPlayers() const override;
 
 private:
+    void send(BossEventUpdateType event_type, Player &player);
+    void broadcast(BossEventUpdateType event_type);
+
     std::string title_;
     float progress_{1.0F};
     BarColor color_;
     BarStyle style_;
-    bool darken_screen_{false};
     bool visible_{true};
-    std::vector<Player *> players_;
+    mutable std::unordered_set<UUID> players_;
 };
 
 }  // namespace endstone::detail
