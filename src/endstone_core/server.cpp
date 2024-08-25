@@ -357,13 +357,13 @@ std::chrono::system_clock::time_point EndstoneServer::getStartTime()
     return start_time_;
 }
 
-std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style)
+std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style) const
 {
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style);
 }
 
 std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
-                                                       std::vector<BarFlag> flags)
+                                                       std::vector<BarFlag> flags) const
 {
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }

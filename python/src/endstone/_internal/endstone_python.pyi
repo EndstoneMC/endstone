@@ -2223,6 +2223,10 @@ class Server:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
         """
+    def create_boss_bar(self, title: str, color: BarColor, style: BarStyle, flags: list[BarFlag] | None = None) -> BossBar:
+        """
+        Creates a boss bar instance to display to players. The progress defaults to 1.0.
+        """
     def dispatch_command(self, sender: CommandSender, command: str) -> bool:
         """
         Dispatches a command on this server, and executes it if found.

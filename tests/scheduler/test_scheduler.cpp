@@ -56,9 +56,10 @@ public:
     MOCK_METHOD(float, getAverageTickUsage, (), (override));
     MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
-                (std::string, endstone::BarColor, endstone::BarStyle), (override));
+                (std::string, endstone::BarColor, endstone::BarStyle), (const, override));
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
-                (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>), (override));
+                (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
+                (const, override));
 };
 
 class MockPlugin : public endstone::Plugin {

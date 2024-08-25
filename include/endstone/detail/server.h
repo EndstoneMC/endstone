@@ -88,9 +88,9 @@ public:
     float getCurrentTickUsage() override;
     float getAverageTickUsage() override;
     [[nodiscard]] std::chrono::system_clock::time_point getStartTime() override;
-    [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) override;
+    [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const override;
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
-                                                         std::vector<BarFlag> flags) override;
+                                                         std::vector<BarFlag> flags) const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);

@@ -261,7 +261,15 @@ void init_server(py::class_<Server> &server)
                                "Gets the current tick usage of the server.")
         .def_property_readonly("average_tick_usage", &Server::getAverageTickUsage,
                                "Gets the average tick usage of the server.")
-        .def_property_readonly("start_time", &Server::getStartTime, "Gets the start time of the server.");
+        .def_property_readonly("start_time", &Server::getStartTime, "Gets the start time of the server.")
+        .def(
+            "create_boss_bar",
+            [](const Server &self, std::string title, BarColor color, BarStyle style,
+               const std::optional<std::vector<BarFlag>> &flags) {
+                return self.createBossBar(std::move(title), color, style, flags.value_or(std::vector<BarFlag>()));
+            },
+            py::arg("title"), py::arg("color"), py::arg("style"), py::arg("flags") = std::nullopt,
+            "Creates a boss bar instance to display to players. The progress defaults to 1.0.");
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)
