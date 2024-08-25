@@ -12,9 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
+#include <string>
+#include <vector>
+
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
 
+#include "endstone/boss/boss_bar.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/scheduler/scheduler.h"
 
@@ -50,6 +55,10 @@ public:
     MOCK_METHOD(float, getCurrentTickUsage, (), (override));
     MOCK_METHOD(float, getAverageTickUsage, (), (override));
     MOCK_METHOD(std::chrono::system_clock::time_point, getStartTime, (), (override));
+    MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
+                (std::string, endstone::BarColor, endstone::BarStyle), (override));
+    MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
+                (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>), (override));
 };
 
 class MockPlugin : public endstone::Plugin {

@@ -20,6 +20,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/boss/boss_bar.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
@@ -263,6 +264,28 @@ public:
      * @return The average tick usage in percentage.
      */
     virtual float getAverageTickUsage() = 0;
+
+    /**
+     * @brief Creates a boss bar instance to display to players. The progress defaults to 1.0.
+     *
+     * @param title the title of the boss bar
+     * @param color the color of the boss bar
+     * @param style the style of the boss bar
+     * @return the created boss bar
+     */
+    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) = 0;
+
+    /**
+     * @brief Creates a boss bar instance to display to players. The progress defaults to 1.0.
+     *
+     * @param title the title of the boss bar
+     * @param color the color of the boss bar
+     * @param style the style of the boss bar
+     * @param flags a list of flags to set on the boss bar
+     * @return the created boss bar
+     */
+    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
+                                                                 std::vector<BarFlag> flags) = 0;
 
     /**
      * @brief Gets the start time of the server.

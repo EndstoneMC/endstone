@@ -17,6 +17,8 @@
 #include <filesystem>
 #include <memory>
 
+#include <endstone/detail/boss/boss_bar.h>
+
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -353,6 +355,17 @@ float EndstoneServer::getAverageTickUsage()
 std::chrono::system_clock::time_point EndstoneServer::getStartTime()
 {
     return start_time_;
+}
+
+std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style)
+{
+    return std::make_unique<EndstoneBossBar>(std::move(title), color, style);
+}
+
+std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarColor color, BarStyle style,
+                                                       std::vector<BarFlag> flags)
+{
+    return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

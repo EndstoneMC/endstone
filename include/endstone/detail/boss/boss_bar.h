@@ -26,9 +26,12 @@ namespace endstone::detail {
 
 class EndstoneBossBar : public BossBar {
 public:
-    EndstoneBossBar(std::string title, BarColor color, BarStyle style)
+    EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag>& flags = {})
         : title_(std::move(title)), color_(color), style_(style)
     {
+        for (auto const &flag : flags) {
+            flags_.set(static_cast<int>(flag));
+        }
     }
 
     [[nodiscard]] std::string getTitle() const override;
