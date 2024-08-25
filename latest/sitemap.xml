@@ -656,6 +656,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/bar__flag_8h/</loc>
+         <lastmod>2024-08-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/bar__flag_8h_source/</loc>
+         <lastmod>2024-08-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/bar__style_8h/</loc>
          <lastmod>2024-08-25</lastmod>
          <changefreq>daily</changefreq>

@@ -16,6 +16,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**block.h**](block_8h.md)     
         * **dir** [**boss**](dir_d0a7fd8d5b72659767e2a2651b1ff51c.md)     
             * **file** [**bar\_color.h**](bar__color_8h.md)     
+            * **file** [**bar\_flag.h**](bar__flag_8h.md)     
             * **file** [**bar\_style.h**](bar__style_8h.md)     
             * **file** [**boss\_bar.h**](boss__bar_8h.md)     
         * **dir** [**command**](dir_5c7b2dbfabcd1115569d1e20a260545c.md)     

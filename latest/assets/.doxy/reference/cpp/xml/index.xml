@@ -86,6 +86,9 @@
     <member refid="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" kind="function"><name>setColor</name></member>
     <member refid="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" kind="function"><name>getStyle</name></member>
     <member refid="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" kind="function"><name>setStyle</name></member>
+    <member refid="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" kind="function"><name>hasFlag</name></member>
+    <member refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" kind="function"><name>addFlag</name></member>
+    <member refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" kind="function"><name>removeFlag</name></member>
     <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kind="function"><name>getProgress</name></member>
     <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
@@ -1052,6 +1055,9 @@
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a51e6cd92b6c45f9affdc158ecca2b8b8" kind="enumvalue"><name>Yellow</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ab9ba865fec061c9706d2fd7ce49c0cc7" kind="enumvalue"><name>Purple</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a25a81701fbfa4a1efdf660a950c1d006" kind="enumvalue"><name>White</name></member>
+    <member refid="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362" kind="enum"><name>BarFlag</name></member>
+    <member refid="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" kind="enumvalue"><name>DarkenSky</name></member>
+    <member refid="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362ae93f994f01c537c4e2f7d8528c3eb5e9" kind="enumvalue"><name>Count</name></member>
     <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734" kind="enum"><name>BarStyle</name></member>
     <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734ae41480b6bbfbf7407974a88d3d34f4fa" kind="enumvalue"><name>Solid</name></member>
     <member refid="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734a680ebb3273d9b287cdbb10764a9a2c2c" kind="enumvalue"><name>Segmented6</name></member>
@@ -1113,6 +1119,8 @@
   <compound refid="block_8h" kind="file"><name>block.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
+  </compound>
+  <compound refid="bar__flag_8h" kind="file"><name>bar_flag.h</name>
   </compound>
   <compound refid="bar__style_8h" kind="file"><name>bar_style.h</name>
   </compound>

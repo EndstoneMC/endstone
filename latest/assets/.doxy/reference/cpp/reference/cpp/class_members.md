@@ -14,6 +14,7 @@
 * **ActorRemoveEvent** ([**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md))
 * **ActorSpawnEvent** ([**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md))
 * **ActorTeleportEvent** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
+* **addFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **addPlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md))
@@ -307,6 +308,7 @@
 
 ## h
 
+* **hasFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **HandlerList** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **handlers\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **hasPermission** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
@@ -478,6 +480,7 @@
 ## r
 
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
+* **removeFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removePlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **recipients\_** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
 * **Red** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))

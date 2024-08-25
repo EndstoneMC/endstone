@@ -13,6 +13,7 @@
 * `#include <string>`
 * `#include <vector>`
 * `#include "endstone/boss/bar_color.h"`
+* `#include "endstone/boss/bar_flag.h"`
 * `#include "endstone/boss/bar_style.h"`
 
 

@@ -141,6 +141,32 @@
         </inbodydescription>
         <location file="include/endstone/boss/bar_color.h" line="19" column="1" bodyfile="include/endstone/boss/bar_color.h" bodystart="19" bodyend="27"/>
       </memberdef>
+      <memberdef kind="enum" id="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BarFlag</name>
+        <enumvalue id="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" prot="public">
+          <name>DarkenSky</name>
+          <briefdescription>
+<para>Darkens the sky like during fighting a wither. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362ae93f994f01c537c4e2f7d8528c3eb5e9" prot="public">
+          <name>Count</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/boss/bar_flag.h" line="19" column="1" bodyfile="include/endstone/boss/bar_flag.h" bodystart="19" bodyend="25"/>
+      </memberdef>
       <memberdef kind="enum" id="bar__style_8h_1a3d4c6e783e6c22f3e7b6d872099c4734" prot="public" static="no" strong="yes">
         <type></type>
         <name>BarStyle</name>

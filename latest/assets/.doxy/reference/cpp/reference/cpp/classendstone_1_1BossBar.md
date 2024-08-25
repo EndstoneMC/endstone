@@ -51,14 +51,17 @@
 
 | Type | Name |
 | ---: | :--- |
+| virtual void | [**addFlag**](#function-addflag) (BarFlag flag) = 0<br>_Add an optional flag to this boss bar._  |
 | virtual void | [**addPlayer**](#function-addplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Adds the player to this boss bar causing it to display on their screen._  |
 | virtual BarColor | [**getColor**](#function-getcolor) () const = 0<br>_Returns the color of this boss bar._  |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getPlayers**](#function-getplayers) () const = 0<br>_Returns all players viewing this boss bar._  |
 | virtual float | [**getProgress**](#function-getprogress) () const = 0<br>_Returns the progress of the bar between 0.0 and 1.0._  |
 | virtual BarStyle | [**getStyle**](#function-getstyle) () const = 0<br>_Returns the style of this boss bar._  |
 | virtual std::string | [**getTitle**](#function-gettitle) () const = 0<br>_Returns the title of this boss bar._  |
+| virtual bool | [**hasFlag**](#function-hasflag) (BarFlag flag) const = 0<br>_Returns whether this boss bar has the passed flag set._  |
 | virtual bool | [**isVisible**](#function-isvisible) () const = 0<br>_Return if the boss bar is displayed to attached players._  |
 | virtual void | [**removeAll**](#function-removeall) () = 0<br>_Removes all players from this boss bar._  |
+| virtual void | [**removeFlag**](#function-removeflag) (BarFlag flag) = 0<br>_Remove an existing flag on this boss bar._  |
 | virtual void | [**removePlayer**](#function-removeplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Removes the player from this boss bar causing it to be removed from their screen._  |
 | virtual void | [**setColor**](#function-setcolor) (BarColor color) = 0<br>_Sets the color of this boss bar._  |
 | virtual void | [**setProgress**](#function-setprogress) (float progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
@@ -96,6 +99,33 @@
 
 ## Public Functions Documentation
 
+
+
+
+### function addFlag 
+
+_Add an optional flag to this boss bar._ 
+```C++
+virtual void endstone::BossBar::addFlag (
+    BarFlag flag
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `flag` an optional flag to set on the boss bar. 
+
+
+
+
+        
+
+<hr>
 
 
 
@@ -251,6 +281,40 @@ the title of the bar
 
 
 
+### function hasFlag 
+
+_Returns whether this boss bar has the passed flag set._ 
+```C++
+virtual bool endstone::BossBar::hasFlag (
+    BarFlag flag
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `flag` the flag to check. 
+
+
+
+**Returns:**
+
+whether it has the flag. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isVisible 
 
 _Return if the boss bar is displayed to attached players._ 
@@ -284,6 +348,33 @@ virtual void endstone::BossBar::removeAll () = 0
 
 
 
+
+<hr>
+
+
+
+### function removeFlag 
+
+_Remove an existing flag on this boss bar._ 
+```C++
+virtual void endstone::BossBar::removeFlag (
+    BarFlag flag
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `flag` the existing flag to remove. 
+
+
+
+
+        
 
 <hr>
 

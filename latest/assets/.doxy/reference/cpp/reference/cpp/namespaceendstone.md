@@ -118,6 +118,7 @@
 | Type | Name |
 | ---: | :--- |
 | enum  | [**BarColor**](#enum-barcolor)  <br> |
+| enum  | [**BarFlag**](#enum-barflag)  <br> |
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
@@ -207,6 +208,22 @@ enum endstone::BarColor {
     Yellow,
     Purple,
     White
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum BarFlag 
+
+```C++
+enum endstone::BarFlag {
+    DarkenSky,
+    Count
 };
 ```
 

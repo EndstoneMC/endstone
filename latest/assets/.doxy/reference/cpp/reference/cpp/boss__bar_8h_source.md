@@ -28,6 +28,7 @@
 #include <vector>
 
 #include "endstone/boss/bar_color.h"
+#include "endstone/boss/bar_flag.h"
 #include "endstone/boss/bar_style.h"
 
 namespace endstone {
@@ -49,6 +50,12 @@ public:
     [[nodiscard]] virtual BarStyle getStyle() const = 0;
 
     virtual void setStyle(BarStyle style) = 0;
+
+    [[nodiscard]] virtual bool hasFlag(BarFlag flag) const = 0;
+
+    virtual void addFlag(BarFlag flag) = 0;
+
+    virtual void removeFlag(BarFlag flag) = 0;
 
     [[nodiscard]] virtual float getProgress() const = 0;
 

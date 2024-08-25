@@ -13,6 +13,7 @@
 * **ActorRemoveEvent** ([**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md))
 * **ActorSpawnEvent** ([**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md))
 * **ActorTeleportEvent** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md))
+* **addFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **addPlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **allowChangesFrom** ([**endstone::Command**](classendstone_1_1Command.md))
 * **asPluginCommand** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
@@ -249,6 +250,7 @@
 
 ## h
 
+* **hasFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **HandlerList** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **hasPermission** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 
@@ -348,6 +350,7 @@
 ## r
 
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
+* **removeFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removePlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **registerTo** ([**endstone::Command**](classendstone_1_1Command.md))
 * **registerCommand** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
