@@ -25,6 +25,9 @@ namespace endstone {
 
 class Player;
 
+/**
+ * @brief Represents a boss bar that is displayed to players.
+ **/
 class BossBar {
 public:
     virtual ~BossBar() = default;
@@ -130,8 +133,6 @@ public:
      * @return a list of players
      */
     [[nodiscard]] virtual std::vector<Player *> getPlayers() const = 0;
-
-    // TODO: addFlag, removeFlag, hasFlag
 };
 
 }  // namespace endstone

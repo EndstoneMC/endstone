@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'Block', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -194,10 +194,180 @@ class ActorTeleportEvent(ActorEvent):
     @to_location.setter
     def to_location(self, arg1: Location) -> None:
         ...
+class BarColor:
+    BLUE: typing.ClassVar[BarColor]  # value = <BarColor.BLUE: 1>
+    GREEN: typing.ClassVar[BarColor]  # value = <BarColor.GREEN: 3>
+    PINK: typing.ClassVar[BarColor]  # value = <BarColor.PINK: 0>
+    PURPLE: typing.ClassVar[BarColor]  # value = <BarColor.PURPLE: 5>
+    RED: typing.ClassVar[BarColor]  # value = <BarColor.RED: 2>
+    WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 6>
+    YELLOW: typing.ClassVar[BarColor]  # value = <BarColor.YELLOW: 4>
+    __members__: typing.ClassVar[dict[str, BarColor]]  # value = {'PINK': <BarColor.PINK: 0>, 'BLUE': <BarColor.BLUE: 1>, 'RED': <BarColor.RED: 2>, 'GREEN': <BarColor.GREEN: 3>, 'YELLOW': <BarColor.YELLOW: 4>, 'PURPLE': <BarColor.PURPLE: 5>, 'WHITE': <BarColor.WHITE: 6>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class BarFlag:
+    DARKEN_SKY: typing.ClassVar[BarFlag]  # value = <BarFlag.DARKEN_SKY: 0>
+    __members__: typing.ClassVar[dict[str, BarFlag]]  # value = {'DARKEN_SKY': <BarFlag.DARKEN_SKY: 0>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
+class BarStyle:
+    SEGMENTED_10: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_10: 2>
+    SEGMENTED_12: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_12: 3>
+    SEGMENTED_20: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_20: 4>
+    SEGMENTED_6: typing.ClassVar[BarStyle]  # value = <BarStyle.SEGMENTED_6: 1>
+    SOLID: typing.ClassVar[BarStyle]  # value = <BarStyle.SOLID: 0>
+    __members__: typing.ClassVar[dict[str, BarStyle]]  # value = {'SOLID': <BarStyle.SOLID: 0>, 'SEGMENTED_6': <BarStyle.SEGMENTED_6: 1>, 'SEGMENTED_10': <BarStyle.SEGMENTED_10: 2>, 'SEGMENTED_12': <BarStyle.SEGMENTED_12: 3>, 'SEGMENTED_20': <BarStyle.SEGMENTED_20: 4>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class Block:
     """
     Represents a block.
     """
+class BossBar:
+    """
+    Represents a boss bar that is displayed to players.
+    """
+    def add_flag(self, flag: BarFlag) -> None:
+        """
+        Adds an optional flag to this boss bar.
+        """
+    def add_player(self, player: Player) -> None:
+        """
+        Adds the player to this boss bar causing it to display on their screen.
+        """
+    def has_flag(self, flag: BarFlag) -> bool:
+        """
+        Checks whether this boss bar has the passed flag set.
+        """
+    def remove_all(self) -> None:
+        """
+        Removes all players from this boss bar.
+        """
+    def remove_flag(self, flag: BarFlag) -> None:
+        """
+        Removes an existing flag on this boss bar.
+        """
+    def remove_player(self, player: Player) -> None:
+        """
+        Removes the player from this boss bar causing it to be removed from their screen.
+        """
+    @property
+    def color(self) -> BarColor:
+        """
+        The color of this boss bar.
+        """
+    @color.setter
+    def color(self, arg1: BarColor) -> None:
+        ...
+    @property
+    def players(self) -> list[Player]:
+        """
+        Returns all players viewing this boss bar.
+        """
+    @property
+    def progress(self) -> float:
+        """
+        The progress of the bar between 0.0 and 1.0.
+        """
+    @progress.setter
+    def progress(self, arg1: float) -> None:
+        ...
+    @property
+    def style(self) -> BarStyle:
+        """
+        The style of this boss bar.
+        """
+    @style.setter
+    def style(self, arg1: BarStyle) -> None:
+        ...
+    @property
+    def title(self) -> str:
+        """
+        The title of this boss bar.
+        """
+    @title.setter
+    def title(self, arg1: str) -> None:
+        ...
+    @property
+    def visible(self) -> bool:
+        """
+        If the boss bar is displayed to attached players.
+        """
+    @visible.setter
+    def visible(self, arg1: bool) -> None:
+        ...
 class BroadcastMessageEvent(Event):
     """
     Event triggered for server broadcast messages such as from Server.broadcast
