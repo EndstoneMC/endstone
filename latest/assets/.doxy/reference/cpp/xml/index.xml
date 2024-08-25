@@ -821,6 +821,8 @@
     <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" kind="function"><name>getAverageTicksPerSecond</name></member>
     <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" kind="function"><name>getCurrentTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" kind="function"><name>getAverageTickUsage</name></member>
+    <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" kind="function"><name>createBossBar</name></member>
+    <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>

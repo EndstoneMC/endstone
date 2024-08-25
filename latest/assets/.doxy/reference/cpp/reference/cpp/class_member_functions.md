@@ -51,6 +51,7 @@
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **createBossBar** ([**endstone::Server**](classendstone_1_1Server.md))
 * **cancel** ([**endstone::Task**](classendstone_1_1Task.md))
 
 

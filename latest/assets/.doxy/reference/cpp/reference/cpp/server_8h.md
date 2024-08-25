@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <string_view>`
 * `#include <vector>`
+* `#include "endstone/boss/boss_bar.h"`
 * `#include "endstone/level/level.h"`
 * `#include "endstone/logger.h"`
 * `#include "endstone/player.h"`

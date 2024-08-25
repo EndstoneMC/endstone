@@ -77,6 +77,7 @@
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **cancelTasks** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
+* **createBossBar** ([**endstone::Server**](classendstone_1_1Server.md))
 * **cape\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **cape\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **cancel** ([**endstone::Task**](classendstone_1_1Task.md))

@@ -63,6 +63,8 @@ _Represents a server implementation._
 | virtual void | [**broadcast**](#function-broadcast) (const std::string & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, BarStyle style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
+| virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
@@ -250,6 +252,84 @@ inline void endstone::Server::broadcastMessage (
 
 
 
+
+<hr>
+
+
+
+### function createBossBar [1/2]
+
+_Creates a boss bar instance to display to players. The progress defaults to 1.0._ 
+```C++
+virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
+    std::string title,
+    BarColor color,
+    BarStyle style
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `title` the title of the boss bar 
+* `color` the color of the boss bar 
+* `style` the style of the boss bar 
+
+
+
+**Returns:**
+
+the created boss bar 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function createBossBar [2/2]
+
+_Creates a boss bar instance to display to players. The progress defaults to 1.0._ 
+```C++
+virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
+    std::string title,
+    BarColor color,
+    BarStyle style,
+    std::vector< BarFlag > flags
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `title` the title of the boss bar 
+* `color` the color of the boss bar 
+* `style` the style of the boss bar 
+* `flags` a list of flags to set on the boss bar 
+
+
+
+**Returns:**
+
+the created boss bar 
+
+
+
+
+
+        
 
 <hr>
 
