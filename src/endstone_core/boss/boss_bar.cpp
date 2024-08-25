@@ -61,6 +61,27 @@ void EndstoneBossBar::setStyle(BarStyle style)
     }
 }
 
+bool EndstoneBossBar::hasFlag(BarFlag flag) const
+{
+    return flags_.test(static_cast<int>(flag));
+}
+
+void EndstoneBossBar::addFlag(BarFlag flag)
+{
+    if (!hasFlag(flag)) {
+        flags_.set(static_cast<int>(flag));
+        broadcast(BossEventUpdateType::UpdateProperties);
+    }
+}
+
+void EndstoneBossBar::removeFlag(BarFlag flag)
+{
+    if (hasFlag(flag)) {
+        flags_.reset(static_cast<int>(flag));
+        broadcast(BossEventUpdateType::UpdateProperties);
+    }
+}
+
 float EndstoneBossBar::getProgress() const
 {
     return progress_;
@@ -135,9 +156,9 @@ std::vector<Player *> EndstoneBossBar::getPlayers() const
 
 void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
-    auto pk = std::static_pointer_cast<BossEventPacket>(packet);
-    auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
+    const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::BossEvent);
+    const auto pk = std::static_pointer_cast<BossEventPacket>(packet);
+    const auto &handle = static_cast<EndstonePlayer &>(player).getHandle();
     pk->boss_id = handle.getOrCreateUniqueID();
     pk->player_id = handle.getOrCreateUniqueID();
     pk->event_type = event_type;
@@ -145,7 +166,7 @@ void EndstoneBossBar::send(BossEventUpdateType event_type, Player &player)
     pk->health_percent = progress_;
     pk->color = static_cast<BossBarColor>(color_);
     pk->overlay = static_cast<BossBarOverlay>(style_);
-    // TODO: flags
+    pk->darken_screen = hasFlag(BarFlag::DarkenSky);
     handle.sendNetworkPacket(*packet);
 }
 

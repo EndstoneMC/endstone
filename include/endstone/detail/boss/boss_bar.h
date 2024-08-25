@@ -15,8 +15,8 @@
 #pragma once
 
 #include <string>
-#include <utility>
 #include <unordered_set>
+#include <utility>
 
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/boss/boss_bar.h"
@@ -37,6 +37,9 @@ public:
     void setColor(BarColor color) override;
     [[nodiscard]] BarStyle getStyle() const override;
     void setStyle(BarStyle style) override;
+    [[nodiscard]] bool hasFlag(BarFlag flag) const override;
+    void addFlag(BarFlag flag) override;
+    void removeFlag(BarFlag flag) override;
     [[nodiscard]] float getProgress() const override;
     void setProgress(float progress) override;
     [[nodiscard]] bool isVisible() const override;
@@ -54,6 +57,7 @@ private:
     float progress_{1.0F};
     BarColor color_;
     BarStyle style_;
+    std::bitset<static_cast<int>(BarFlag::Count)> flags_;
     bool visible_{true};
     mutable std::unordered_set<UUID> players_;
 };

@@ -18,6 +18,7 @@
 #include <vector>
 
 #include "endstone/boss/bar_color.h"
+#include "endstone/boss/bar_flag.h"
 #include "endstone/boss/bar_style.h"
 
 namespace endstone {
@@ -63,6 +64,25 @@ public:
      * @param style the style of the bar.
      */
     virtual void setStyle(BarStyle style) = 0;
+
+    /**
+     * @brief Returns whether this boss bar has the passed flag set.
+     * @param flag the flag to check.
+     * @return whether it has the flag.
+     */
+    [[nodiscard]] virtual bool hasFlag(BarFlag flag) const = 0;
+
+    /**
+     * @brief Add an optional flag to this boss bar.
+     * @param flag an optional flag to set on the boss bar.
+     */
+    virtual void addFlag(BarFlag flag) = 0;
+
+    /**
+     * @brief Remove an existing flag on this boss bar.
+     * @param flag the existing flag to remove.
+     */
+    virtual void removeFlag(BarFlag flag) = 0;
 
     /**
      * @brief Returns the progress of the bar between 0.0 and 1.0
