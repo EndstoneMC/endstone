@@ -36,6 +36,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/python/boss/</loc>
+         <lastmod>2024-08-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/python/command/</loc>
          <lastmod>2024-08-25</lastmod>
          <changefreq>daily</changefreq>

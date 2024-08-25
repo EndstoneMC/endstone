@@ -39,7 +39,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**BossBar**](classendstone_1_1BossBar.md) <br> |
+| class | [**BossBar**](classendstone_1_1BossBar.md) <br>_Represents a boss bar that is displayed to players._  |
 
 
 

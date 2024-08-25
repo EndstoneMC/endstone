@@ -8,8 +8,9 @@
 
 
 
+_Represents a boss bar that is displayed to players._ 
 
-
+* `#include <endstone/boss/boss_bar.h>`
 
 
 

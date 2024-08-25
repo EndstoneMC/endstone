@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1BossBar" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BossBar</compoundname>
+    <includes refid="boss__bar_8h" local="no">endstone/boss/boss_bar.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -14,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="30" column="13"/>
+        <location file="include/endstone/boss/boss_bar.h" line="33" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -31,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="36" column="26"/>
+        <location file="include/endstone/boss/boss_bar.h" line="39" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a8001b15b6c865dff7505af594854f9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -59,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="42" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="45" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adf1bfb4dc7ac123c729edc425c6dbf38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>BarColor</type>
@@ -76,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="48" column="23"/>
+        <location file="include/endstone/boss/boss_bar.h" line="51" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a6f2954ac107a94b825740c52946f5fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -104,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="54" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="57" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a12f194cb1f44f0875591c2d31a26a079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>BarStyle</type>
@@ -121,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="60" column="23"/>
+        <location file="include/endstone/boss/boss_bar.h" line="63" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ae9af39fed4792bba3635aca0b33cc364" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -149,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="66" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="69" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a059c621a5d4bb4bd32aa1567195f6332" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -179,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="73" column="19"/>
+        <location file="include/endstone/boss/boss_bar.h" line="76" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -207,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="79" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="82" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -235,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="85" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="88" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>float</type>
@@ -252,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="91" column="20"/>
+        <location file="include/endstone/boss/boss_bar.h" line="94" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -280,7 +281,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="97" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="100" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -297,7 +298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="103" column="19"/>
+        <location file="include/endstone/boss/boss_bar.h" line="106" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -325,7 +326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="109" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="112" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -353,7 +354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="115" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="118" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1a5e1dfb34a264bfcbfea1af2c2a2ba578" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -381,7 +382,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="121" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="124" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1adb723506a074cee293e813a4409b12c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -395,7 +396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="126" column="18"/>
+        <location file="include/endstone/boss/boss_bar.h" line="129" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BossBar_1ac7677f803d68917650c1df9ba64ec777" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Player" kindref="compound">Player</ref> * &gt;</type>
@@ -412,14 +413,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/boss/boss_bar.h" line="132" column="26"/>
+        <location file="include/endstone/boss/boss_bar.h" line="135" column="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents a boss bar that is displayed to players. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/boss/boss_bar.h" line="28" column="1" bodyfile="include/endstone/boss/boss_bar.h" bodystart="28" bodyend="135"/>
+    <location file="include/endstone/boss/boss_bar.h" line="31" column="1" bodyfile="include/endstone/boss/boss_bar.h" bodystart="31" bodyend="136"/>
     <listofallmembers>
       <member refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addFlag</name></member>
       <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" prot="public" virt="pure-virtual"><scope>endstone::BossBar</scope><name>addPlayer</name></member>

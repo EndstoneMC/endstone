@@ -72,8 +72,6 @@ public:
     virtual void removeAll() = 0;
 
     [[nodiscard]] virtual std::vector<Player *> getPlayers() const = 0;
-
-    // TODO: addFlag, removeFlag, hasFlag
 };
 
 }  // namespace endstone
