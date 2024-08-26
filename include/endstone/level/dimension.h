@@ -57,7 +57,7 @@ public:
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     /**
-     * Gets the {@link Block} at the given coordinates
+     * @brief Gets the Block at the given coordinates
      *
      * @param x X-coordinate of the block
      * @param y Y-coordinate of the block
@@ -65,5 +65,13 @@ public:
      * @return Block at the given coordinates
      */
     virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) = 0;
+
+    /**
+     * @brief Gets the Block at the given Location.
+     *
+     * @param location Location of the block
+     * @return Block at the given coordinates
+     */
+    virtual std::unique_ptr<Block> getBlockAt(Location location) = 0;
 };
 }  // namespace endstone

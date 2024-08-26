@@ -28,7 +28,7 @@ public:
     constexpr Vector(T x, T y, T z) : x_(x), y_(y), z_(z) {}
 
     /**
-     * Gets the X component.
+     * @brief Gets the X component.
      *
      * @return The X component.
      */
@@ -38,7 +38,7 @@ public:
     }
 
     /**
-     * Set the X component.
+     * @brief Set the X component.
      *
      * @param x The new X component.
      * @return This vector.
@@ -49,7 +49,7 @@ public:
     }
 
     /**
-     * Gets the Y component.
+     * @brief Gets the Y component.
      *
      * @return The Y component.
      */
@@ -59,7 +59,7 @@ public:
     }
 
     /**
-     * Set the Y component.
+     * @brief Set the Y component.
      *
      * @param y The new Y component.
      * @return This vector.
@@ -70,7 +70,7 @@ public:
     }
 
     /**
-     * Gets the Z component.
+     * @brief Gets the Z component.
      *
      * @return The Z component.
      */
@@ -80,7 +80,7 @@ public:
     }
 
     /**
-     * Set the Z component.
+     * @brief Set the Z component.
      *
      * @param z The new Z component.
      * @return This vector.
@@ -183,7 +183,7 @@ public:
     }
 
     /**
-     * Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
+     * @brief Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
      *
      * @return the magnitude
      */
@@ -193,13 +193,13 @@ public:
     }
 
     /**
-     * Gets the magnitude of the vector squared.
+     * @brief Gets the magnitude of the vector squared.
      *
      * @return the magnitude
      */
     [[nodiscard]] constexpr T lengthSquared() const
     {
-        return x_ * x_ + y_ * y_ + z_ * z_;
+        return (x_ * x_) + (y_ * y_) + (z_ * z_);
     }
 
     /**
@@ -221,11 +221,11 @@ public:
      */
     [[nodiscard]] constexpr T distanceSquared(const Vector<T> &other) const
     {
-        return (x_ - other.x_) * (x_ - other.x_) + (y_ - other.y_) * (y_ - other.y_) +
-               (z_ - other.z_) * (z_ - other.z_);
+        return ((x_ - other.x_) * (x_ - other.x_)) + ((y_ - other.y_) * (y_ - other.y_)) +
+               ((z_ - other.z_) * (z_ - other.z_));
     }
 
-private:
+protected:
     T x_;
     T y_;
     T z_;

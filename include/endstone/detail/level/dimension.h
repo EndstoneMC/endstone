@@ -14,18 +14,14 @@
 
 #pragma once
 
-#include <unordered_map>
-
 #include "bedrock/world/level/dimension/dimension.h"
-#include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
 #include "endstone/detail/server.h"
 #include "endstone/level/dimension.h"
-#include "endstone/level/level.h"
 
 namespace endstone::detail {
 
-class EndstoneDimension : public endstone::Dimension {
+class EndstoneDimension : public Dimension {
 public:
     explicit EndstoneDimension(::Dimension &dimension, EndstoneLevel &level);
     ~EndstoneDimension() override = default;
@@ -33,6 +29,8 @@ public:
     [[nodiscard]] Type getType() const override;
     [[nodiscard]] Level &getLevel() const override;
     std::unique_ptr<Block> getBlockAt(int x, int y, int z) override;
+    std::unique_ptr<Block> getBlockAt(Location location) override;
+
     [[nodiscard]] ::Dimension &getHandle() const;
 
 private:

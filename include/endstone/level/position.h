@@ -51,6 +51,36 @@ public:
         dimension_ = &dimension;
     }
 
+    /**
+     * @brief Gets the floored value of the X component, indicating the block that this location is contained with.
+     *
+     * @return block X
+     */
+    [[nodiscard]] int getBlockX() const
+    {
+        return static_cast<int>(std::floorf(x_));
+    }
+
+    /**
+     * @brief Gets the floored value of the Y component, indicating the block that this location is contained with.
+     *
+     * @return block Y
+     */
+    [[nodiscard]] int getBlockY() const
+    {
+        return static_cast<int>(std::floorf(y_));
+    }
+
+    /**
+     * @brief Gets the floored value of the Z component, indicating the block that this location is contained with.
+     *
+     * @return block Z
+     */
+    [[nodiscard]] int getBlockZ() const
+    {
+        return static_cast<int>(std::floorf(z_));
+    }
+
 private:
     Dimension *dimension_;
 };
