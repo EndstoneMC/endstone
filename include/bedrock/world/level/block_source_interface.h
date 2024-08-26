@@ -18,6 +18,7 @@
 #include "bedrock/world/actor/actor_type.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
+#include "bedrock/world/level/chunk/level_chunk.h"
 #include "bedrock/world/level/dimension/dimension_interface.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/level/material/material_type.h"
