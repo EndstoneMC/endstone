@@ -30,29 +30,6 @@ void init_level(py::module_ &m)
     auto level = py::class_<Level>(m, "Level");
     auto dimension = py::class_<Dimension>(m, "Dimension", "Represents a dimension within a Level.");
 
-    py::enum_<Dimension::Type>(dimension, "Type", "Represents various dimension types.")
-        .value("OVERWORLD", Dimension::Type::Overworld)
-        .value("NETHER", Dimension::Type::Nether)
-        .value("THE_END", Dimension::Type::TheEnd)
-        .value("CUSTOM", Dimension::Type::Custom)
-        .export_values();
-
-    dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
-        .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
-        .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
-                               py::return_value_policy::reference)
-        .def("get_block_at", &Dimension::getBlockAt, py::arg("x"), py::arg("y"), py::arg("z"),
-             "Gets the Block at the given coordinates");
-
-    level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
-        .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",
-                               py::return_value_policy::reference_internal)
-        .def_property("time", &Level::getTime, &Level::setTime, "Gets and sets the relative in-game time on the server")
-        .def_property_readonly("dimensions", &Level::getDimensions, "Gets a list of all dimensions within this level.",
-                               py::return_value_policy::reference_internal)
-        .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
-             py::return_value_policy::reference);
-
     auto position_to_string = [](const Position &p) {
         return fmt::format("Position(dimension={}, x={}, y={}, z={})",
                            p.getDimension() ? p.getDimension()->getName() : "None", p.getX(), p.getY(), p.getZ());
@@ -79,6 +56,31 @@ void init_level(py::module_ &m)
         .def_property("yaw", &Location::getYaw, &Location::setYaw, "The yaw of this location, measured in degrees.")
         .def("__repr__", location_to_string)
         .def("__str__", location_to_string);
+
+    py::enum_<Dimension::Type>(dimension, "Type", "Represents various dimension types.")
+        .value("OVERWORLD", Dimension::Type::Overworld)
+        .value("NETHER", Dimension::Type::Nether)
+        .value("THE_END", Dimension::Type::TheEnd)
+        .value("CUSTOM", Dimension::Type::Custom)
+        .export_values();
+
+    dimension.def_property_readonly("name", &Dimension::getName, "Gets the name of this dimension")
+        .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
+        .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
+                               py::return_value_policy::reference)
+        .def("get_block_at", py::overload_cast<int, int, int>(&Dimension::getBlockAt), py::arg("x"), py::arg("y"),
+             py::arg("z"), "Gets the Block at the given coordinates")
+        .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt), py::arg("location"),
+             "Gets the Block at the given Location");
+
+    level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
+        .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",
+                               py::return_value_policy::reference_internal)
+        .def_property("time", &Level::getTime, &Level::setTime, "Gets and sets the relative in-game time on the server")
+        .def_property_readonly("dimensions", &Level::getDimensions, "Gets a list of all dimensions within this level.",
+                               py::return_value_policy::reference_internal)
+        .def("get_dimension", &Level::getDimension, py::arg("name"), "Gets the dimension with the given name.",
+             py::return_value_policy::reference);
 }
 
 }  // namespace endstone::detail

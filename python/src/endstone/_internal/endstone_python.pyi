@@ -295,6 +295,11 @@ class Block:
     """
     Represents a block.
     """
+    @property
+    def type(self) -> str:
+        """
+        Get the type of the block.
+        """
 class BossBar:
     """
     Represents a boss bar that is displayed to players.
@@ -620,9 +625,15 @@ class Dimension:
     NETHER: typing.ClassVar[Dimension.Type]  # value = <Type.NETHER: 1>
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
+    @typing.overload
     def get_block_at(self, x: int, y: int, z: int) -> Block:
         """
         Gets the Block at the given coordinates
+        """
+    @typing.overload
+    def get_block_at(self, location: Location) -> Block:
+        """
+        Gets the Block at the given Location
         """
     @property
     def level(self) -> Level:

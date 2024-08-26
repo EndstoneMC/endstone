@@ -20,11 +20,14 @@ EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
 {
 }
 
+std::string EndstoneBlock::getType() const
+{
+    return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
+}
+
 std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
     return std::make_unique<EndstoneBlock>(block_source, block_pos);
 }
-
-// TODO: getId() = block_source.getBlock(block_pos).getBlockLegacy().getFullName();
 
 }  // namespace endstone::detail

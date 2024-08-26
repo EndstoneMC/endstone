@@ -16,6 +16,7 @@
 
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_type.h"
+#include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/chunk/level_chunk.h"

@@ -35,7 +35,7 @@ public:
      *
      * @return The type of the block.
      */
-    // [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual std::string getType() const = 0;
 };
 
 }  // namespace endstone

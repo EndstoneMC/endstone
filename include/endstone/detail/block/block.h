@@ -22,6 +22,7 @@ namespace endstone::detail {
 class EndstoneBlock : public Block {
 public:
     EndstoneBlock(BlockSource &block_source, BlockPos block_pos);
+    [[nodiscard]] std::string getType() const override;
 
     static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
 

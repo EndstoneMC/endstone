@@ -20,6 +20,9 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_block(py::module_ &m, py::class_<Block> &block) {}
+void init_block(py::module_ &m, py::class_<Block> &block)
+{
+    block.def_property_readonly("type", &Block::getType, "Get the type of the block.");
+}
 
 }  // namespace endstone::detail
