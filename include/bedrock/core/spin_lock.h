@@ -14,6 +14,9 @@
 
 #pragma once
 
+#include <atomic>
+#include <thread>
+
 class SpinLock {
 public:
 private:
