@@ -18,5 +18,22 @@
 
 class Tick {
 public:
+    bool operator==(const Tick &other) const
+    {
+        return tick_id == other.tick_id;
+    }
+
+    bool operator!=(const Tick &other) const
+    {
+        return !(*this == other);
+    }
+
+    Tick operator+(int value) const
+    {
+        Tick result;
+        result.tick_id = this->tick_id + value;
+        return result;
+    }
+
     std::uint64_t tick_id;
 };
