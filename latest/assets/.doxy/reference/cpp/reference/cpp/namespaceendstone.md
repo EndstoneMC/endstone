@@ -120,6 +120,7 @@
 | enum  | [**BarColor**](#enum-barcolor)  <br> |
 | enum  | [**BarFlag**](#enum-barflag)  <br> |
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
+| enum  | [**BlockFace**](#enum-blockface)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -243,6 +244,31 @@ enum endstone::BarStyle {
     Segmented10,
     Segmented12,
     Segmented20
+};
+```
+
+
+
+
+<hr>
+
+
+
+### enum BlockFace 
+
+```C++
+enum endstone::BlockFace {
+    Self = -1,
+    North,
+    East,
+    South,
+    West,
+    Up,
+    Down,
+    NorthEast,
+    NorthWest,
+    SouthEast,
+    SouthWest
 };
 ```
 

@@ -14,6 +14,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**mob.h**](mob_8h.md)     
         * **dir** [**block**](dir_faca67fc60a7463eb1bd30eabe023cf1.md)     
             * **file** [**block.h**](block_8h.md)     
+            * **file** [**block\_face.h**](block__face_8h.md)     
         * **dir** [**boss**](dir_d0a7fd8d5b72659767e2a2651b1ff51c.md)     
             * **file** [**bar\_color.h**](bar__color_8h.md)     
             * **file** [**bar\_flag.h**](bar__flag_8h.md)     

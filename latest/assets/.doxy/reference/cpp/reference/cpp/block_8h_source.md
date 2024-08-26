@@ -24,15 +24,37 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
+#include "endstone/block/block_face.h"
+#include "endstone/level/location.h"
+
 namespace endstone {
+
+class Dimension;
 
 class Block {
 public:
     virtual ~Block() = default;
 
     [[nodiscard]] virtual std::string getType() const = 0;
+
+    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+
+    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
+
+    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+
+    [[nodiscard]] virtual Dimension &getDimension() const = 0;
+
+    [[nodiscard]] virtual int getX() const = 0;
+
+    [[nodiscard]] virtual int getY() const = 0;
+
+    [[nodiscard]] virtual int getZ() const = 0;
+
+    [[nodiscard]] virtual Location getLocation() const = 0;
 };
 
 }  // namespace endstone

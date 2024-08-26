@@ -78,6 +78,14 @@
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
     <member refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1Block_1a11141cf0fa11d58e99f104038cf72b43" kind="function"><name>getRelative</name></member>
+    <member refid="classendstone_1_1Block_1ac77da1fb429c70e4dc6944a5e97ba956" kind="function"><name>getRelative</name></member>
+    <member refid="classendstone_1_1Block_1a5f0d405ef55d43a69453c7c08288c1e4" kind="function"><name>getRelative</name></member>
+    <member refid="classendstone_1_1Block_1a614eae16f1c70f54d4b39aacc090aef5" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" kind="function"><name>getX</name></member>
+    <member refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" kind="function"><name>getY</name></member>
+    <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kind="function"><name>getZ</name></member>
+    <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" kind="function"><name>getLocation</name></member>
   </compound>
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
@@ -334,6 +342,7 @@
   <compound refid="classendstone_1_1Location" kind="class"><name>endstone::Location</name>
     <member refid="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" kind="variable"><name>pitch_</name></member>
     <member refid="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" kind="variable"><name>yaw_</name></member>
+    <member refid="classendstone_1_1Location_1ae9e92105e8564dc4bad48f2403ed8c8f" kind="function"><name>Location</name></member>
     <member refid="classendstone_1_1Location_1a21b717a3b891dd762352517c93c700be" kind="function"><name>Location</name></member>
     <member refid="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" kind="function"><name>getPitch</name></member>
     <member refid="classendstone_1_1Location_1a27175a2731840cf6a10438adb80e8ad1" kind="function"><name>setPitch</name></member>
@@ -1054,6 +1063,18 @@
     <member refid="classendstone_1_1WeatherEvent_1aa7d9b8544131dfb728d5af0d65f1e064" kind="function"><name>getLevel</name></member>
   </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785" kind="enum"><name>BlockFace</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785aad6e7652b1bdfb38783486c2c3d5e806" kind="enumvalue"><name>Self</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a601560b94fbb188919dd1d36c8ab70a4" kind="enumvalue"><name>North</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" kind="enumvalue"><name>East</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a263d7b2cf53802c9ed127b718c0bf9fd" kind="enumvalue"><name>South</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785abf495fc048d8d44b7f32536df5cf3930" kind="enumvalue"><name>West</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a258f49887ef8d14ac268c92b02503aaa" kind="enumvalue"><name>Up</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" kind="enumvalue"><name>Down</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a7254edb19370d28e3466c971d2f8a03e" kind="enumvalue"><name>NorthEast</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a142cbe82227bdec147eff3a629dd366b" kind="enumvalue"><name>NorthWest</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a865a51dff69223f0cf5ad630e5ada190" kind="enumvalue"><name>SouthEast</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785ae8eaf797b01fdb4246ed54904368b592" kind="enumvalue"><name>SouthWest</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" kind="enum"><name>BarColor</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" kind="enumvalue"><name>Pink</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" kind="enumvalue"><name>Blue</name></member>
@@ -1124,6 +1145,8 @@
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
+  </compound>
+  <compound refid="block__face_8h" kind="file"><name>block_face.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
   </compound>

@@ -4,7 +4,24 @@
     <compoundname>dimension.h</compoundname>
     <includes refid="block_8h" local="yes">endstone/block/block.h</includes>
     <incdepgraph>
-      <node id="3">
+      <node id="7">
+        <label>endstone/level/position.h</label>
+        <link refid="position_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone/block/block_face.h</label>
+        <link refid="block__face_8h_source"/>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="4">
         <label>string</label>
       </node>
       <node id="1">
@@ -13,11 +30,39 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>endstone/level/location.h</label>
+        <link refid="location_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone/util/vector.h</label>
+        <link refid="vector_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
       <node id="2">
         <label>endstone/block/block.h</label>
         <link refid="block_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>memory</label>
       </node>
     </incdepgraph>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>

@@ -646,6 +646,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__face_8h/</loc>
+         <lastmod>2024-08-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__face_8h_source/</loc>
+         <lastmod>2024-08-26</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_d0a7fd8d5b72659767e2a2651b1ff51c/</loc>
          <lastmod>2024-08-26</lastmod>
          <changefreq>daily</changefreq>

@@ -93,7 +93,8 @@ Inherits the following classes: [endstone::Position](classendstone_1_1Position.m
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Location**](#function-location) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z, float pitch=0.0, float yaw=0.0) <br> |
+|   | [**Location**](#function-location-12) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, int x, int y, int z, float pitch=0.0, float yaw=0.0) <br> |
+|   | [**Location**](#function-location-22) ([**Dimension**](classendstone_1_1Dimension.md) \* dimension, float x, float y, float z, float pitch=0.0, float yaw=0.0) <br> |
 |  float | [**getPitch**](#function-getpitch) () const<br> |
 |  float | [**getYaw**](#function-getyaw) () const<br> |
 |  void | [**setPitch**](#function-setpitch) (float pitch) <br> |
@@ -238,7 +239,27 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 
 
 
-### function Location 
+### function Location [1/2]
+
+```C++
+inline endstone::Location::Location (
+    Dimension * dimension,
+    int x,
+    int y,
+    int z,
+    float pitch=0.0,
+    float yaw=0.0
+) 
+```
+
+
+
+
+<hr>
+
+
+
+### function Location [2/2]
 
 ```C++
 inline endstone::Location::Location (

@@ -10,7 +10,10 @@
 
 
 
+* `#include <memory>`
 * `#include <string>`
+* `#include "endstone/block/block_face.h"`
+* `#include "endstone/level/location.h"`
 
 
 

@@ -1894,8 +1894,40 @@
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> &amp;</td>
+<td style="text-align: left;"><a href="#function-getdimension"><strong>getDimension</strong></a> () const = 0<br><em>Gets the dimension which contains this</em> <a href="./"><em><strong>Block</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Location/"><strong>Location</strong></a></td>
+<td style="text-align: left;"><a href="#function-getlocation"><strong>getLocation</strong></a> () const = 0<br><em>Gets the</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>of the block.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getrelative-13"><strong>getRelative</strong></a> (int offset_x, int offset_y, int offset_z) = 0<br><em>Gets the block at the given offsets.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getrelative-23"><strong>getRelative</strong></a> (BlockFace face) = 0<br><em>Gets the block at the given face.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="./"><strong>Block</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getrelative-33"><strong>getRelative</strong></a> (BlockFace face, int distance) = 0<br><em>Gets the block at the given distance of the given face.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-gettype"><strong>getType</strong></a> () const = 0<br><em>Get the type of the block.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-getx"><strong>getX</strong></a> () const = 0<br><em>Gets the x-coordinate of this block.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-gety"><strong>getY</strong></a> () const = 0<br><em>Gets the y-coordinate of this block.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="#function-getz"><strong>getZ</strong></a> () const = 0<br><em>Gets the z-coordinate of this block.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual</td>
@@ -1904,19 +1936,108 @@
 </tbody>
 </table>
 <h1 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h1>
-<p>This is a live object, and only one <a href="./"><strong>Block</strong></a> may exist for any given location in a world. </p>
+<p>This is a live object, and only one <a href="./"><strong>Block</strong></a> may exist for any given location in a dimension. </p>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-getdimension">function getDimension<a class="headerlink" href="#function-getdimension" title="Permanent link">&para;</a></h3>
+<p><em>Gets the dimension which contains this</em> <a href="./"><em><strong>Block</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Dimension</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getDimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> containing this block </p>
+<hr>
+
+<h3 id="function-getlocation">function getLocation<a class="headerlink" href="#function-getlocation" title="Permanent link">&para;</a></h3>
+<p><em>Gets the</em> <a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>of the block.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Location</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getLocation</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Location/"><strong>Location</strong></a> of block </p>
+<hr>
+
+<h3 id="function-getrelative-13">function getRelative [&#8531;]<a class="headerlink" href="#function-getrelative-13" title="Permanent link">&para;</a></h3>
+<p><em>Gets the block at the given offsets.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_x</span><span class="p">,</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_y</span><span class="p">,</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">offset_z</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>offset_x</code> X-coordinate offset </li>
+<li><code>offset_y</code> Y-coordinate offset </li>
+<li><code>offset_z</code> Z-coordinate offset </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><a href="./"><strong>Block</strong></a> at the given offsets </p>
+<hr>
+
+<h3 id="function-getrelative-23">function getRelative [&#8532;]<a class="headerlink" href="#function-getrelative-23" title="Permanent link">&para;</a></h3>
+<p><em>Gets the block at the given face.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">face</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>This method is equal to getRelative(face, 1)</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>face</code> Face of this block to return </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><a href="./"><strong>Block</strong></a> at the given face </p>
+<hr>
+
+<h3 id="function-getrelative-33">function getRelative [3/3]<a class="headerlink" href="#function-getrelative-33" title="Permanent link">&para;</a></h3>
+<p><em>Gets the block at the given distance of the given face.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getRelative</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">BlockFace</span><span class="w"> </span><span class="n">face</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">distance</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>face</code> Face of this block to return </li>
+<li><code>distance</code> Distance to get the block at </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><a href="./"><strong>Block</strong></a> at the given face </p>
+<hr>
+
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>Get the type of the block.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>This method returns the type of the block as a string, for example, minecraft:acacia_stairs.</p>
 <p><strong>Returns:</strong></p>
 <p>The type of the block. </p>
 <hr>
 
+<h3 id="function-getx">function getX<a class="headerlink" href="#function-getx" title="Permanent link">&para;</a></h3>
+<p><em>Gets the x-coordinate of this block.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getX</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>x-coordinate </p>
+<hr>
+
+<h3 id="function-gety">function getY<a class="headerlink" href="#function-gety" title="Permanent link">&para;</a></h3>
+<p><em>Gets the y-coordinate of this block.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getY</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>x-coordinate </p>
+<hr>
+
+<h3 id="function-getz">function getZ<a class="headerlink" href="#function-getz" title="Permanent link">&para;</a></h3>
+<p><em>Gets the z-coordinate of this block.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::</span><span class="n">getZ</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>x-coordinate </p>
+<hr>
+
 <h3 id="function-block">function ~Block<a class="headerlink" href="#function-block" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::~</span><span class="n">Block</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Block</span><span class="o">::~</span><span class="n">Block</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

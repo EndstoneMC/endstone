@@ -81,6 +81,95 @@
     <innerclass refid="classendstone_1_1Vector" prot="public">endstone::Vector</innerclass>
     <innernamespace refid="namespaceendstone_1_1detail">endstone::detail</innernamespace>
       <sectiondef kind="enum">
+      <memberdef kind="enum" id="block__face_8h_1aec620d05bd961a002c83b008e178a785" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>BlockFace</name>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785aad6e7652b1bdfb38783486c2c3d5e806" prot="public">
+          <name>Self</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a601560b94fbb188919dd1d36c8ab70a4" prot="public">
+          <name>North</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" prot="public">
+          <name>East</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a263d7b2cf53802c9ed127b718c0bf9fd" prot="public">
+          <name>South</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785abf495fc048d8d44b7f32536df5cf3930" prot="public">
+          <name>West</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a258f49887ef8d14ac268c92b02503aaa" prot="public">
+          <name>Up</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" prot="public">
+          <name>Down</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a7254edb19370d28e3466c971d2f8a03e" prot="public">
+          <name>NorthEast</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a142cbe82227bdec147eff3a629dd366b" prot="public">
+          <name>NorthWest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785a865a51dff69223f0cf5ad630e5ada190" prot="public">
+          <name>SouthEast</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="block__face_8h_1aec620d05bd961a002c83b008e178a785ae8eaf797b01fdb4246ed54904368b592" prot="public">
+          <name>SouthWest</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_face.h" line="19" column="1" bodyfile="include/endstone/block/block_face.h" bodystart="19" bodyend="31"/>
+      </memberdef>
       <memberdef kind="enum" id="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" prot="public" static="no" strong="yes">
         <type></type>
         <name>BarColor</name>
