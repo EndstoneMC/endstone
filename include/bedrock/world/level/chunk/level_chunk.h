@@ -42,13 +42,14 @@ private:
     void *generator_;                                        // +136
     std::optional<LevelChunkFormat> loaded_format_;          // +144
     std::string serialized_entities_buffer_;                 // +152
-    bool had_serialized_entities_;                           // +184
-    std::vector<void *> unresolved_actor_links_;             // +192 ActorLink::List
-    std::atomic<ChunkState> load_state_;                     // +216
-    ChunkTerrainDataState terrain_data_state_;               // +217
-    ChunkDebugDisplaySavedState debug_display_saved_state_;  // +218
-    ChunkCachedDataState cached_data_state_;                 // +219
-    SpinLock cached_data_state_spin_lock_;                   // +224
-    SpinLock client_request_heightmap_adjust_spin_lock_;     // +256
-    Tick last_tick_;                                         // +288
+    std::string unknown_;                                    // +184
+    bool had_serialized_entities_;                           // +216
+    std::vector<void *> unresolved_actor_links_;             // +224 ActorLink::List
+    std::atomic<ChunkState> load_state_;                     // +248
+    ChunkTerrainDataState terrain_data_state_;               // +249
+    ChunkDebugDisplaySavedState debug_display_saved_state_;  // +250
+    ChunkCachedDataState cached_data_state_;                 // +251
+    SpinLock cached_data_state_spin_lock_;                   // +256
+    SpinLock client_request_heightmap_adjust_spin_lock_;     // +288
+    Tick last_tick_;                                         // +320
 };
