@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
-  <compounddef id="classendstone_1_1Block" kind="class" language="C++" prot="public">
+  <compounddef id="classendstone_1_1Block" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::Block</compoundname>
     <includes refid="block_8h" local="no">endstone/block/block.h</includes>
       <sectiondef kind="public-func">
@@ -17,6 +17,24 @@
         </inbodydescription>
         <location file="include/endstone/block/block.h" line="29" column="13"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Block::getType</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getType</name>
+        <briefdescription>
+<para>Get the type of the block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method returns the type of the block as a string, for example, minecraft:acacia_stairs.</para>
+<para><simplesect kind="return"><para>The type of the block. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block.h" line="38" column="26"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a block. </para>
@@ -26,6 +44,7 @@
     </detaileddescription>
     <location file="include/endstone/block/block.h" line="27" column="1" bodyfile="include/endstone/block/block.h" bodystart="27" bodyend="39"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" prot="public" virt="pure-virtual"><scope>endstone::Block</scope><name>getType</name></member>
       <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" prot="public" virt="virtual"><scope>endstone::Block</scope><name>~Block</name></member>
     </listofallmembers>
   </compounddef>

@@ -32,7 +32,7 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    // [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual std::string getType() const = 0;
 };
 
 }  // namespace endstone

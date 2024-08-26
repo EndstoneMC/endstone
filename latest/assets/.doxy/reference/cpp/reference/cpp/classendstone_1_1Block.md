@@ -52,6 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -90,6 +91,34 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
     
 ## Public Functions Documentation
 
+
+
+
+### function getType 
+
+_Get the type of the block._ 
+```C++
+virtual std::string endstone::Block::getType () const = 0
+```
+
+
+
+This method returns the type of the block as a string, for example, minecraft:acacia\_stairs.
+
+
+
+
+**Returns:**
+
+The type of the block. 
+
+
+
+
+
+        
+
+<hr>
 
 
 
