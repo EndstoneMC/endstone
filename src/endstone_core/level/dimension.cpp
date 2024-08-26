@@ -66,7 +66,7 @@ std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z)
     }
 
     auto current_level_tick = level_.getHandle().getCurrentTick();
-    auto chunk_last_tick = Tick{0};  // TODO: get actual chunk last tick
+    auto chunk_last_tick = chunk->getLastTick();
     if (current_level_tick != chunk_last_tick && current_level_tick != chunk_last_tick + 1) {
         logger.error("Trying to access location ({}, {}, {}) which is not in a chunk currently ticking.", x, y, z);
         return nullptr;
