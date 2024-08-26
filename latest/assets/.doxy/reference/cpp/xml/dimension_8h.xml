@@ -65,8 +65,10 @@
 <codeline lineno="57" refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Level" kindref="compound">Level</ref><sp/>&amp;<ref refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" kindref="member">getLevel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
 <codeline lineno="67" refid="classendstone_1_1Dimension_1af8e2b622c9f8e71a1ce7bae20cf01696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Dimension_1af8e2b622c9f8e71a1ce7bae20cf01696" kindref="member">getBlockAt</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>x,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>y,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>z)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="69"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classendstone_1_1Dimension_1a677e5d9f703ffb2eeeba7ceb14a262ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1Dimension_1a677e5d9f703ffb2eeeba7ceb14a262ea" kindref="member">getBlockAt</ref>(<ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/>location)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/level/dimension.h"/>
   </compounddef>

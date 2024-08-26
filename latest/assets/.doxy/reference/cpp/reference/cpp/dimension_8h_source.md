@@ -46,6 +46,8 @@ public:
     [[nodiscard]] virtual Level &getLevel() const = 0;
 
     virtual std::unique_ptr<Block> getBlockAt(int x, int y, int z) = 0;
+
+    virtual std::unique_ptr<Block> getBlockAt(Location location) = 0;
 };
 }  // namespace endstone
 ```

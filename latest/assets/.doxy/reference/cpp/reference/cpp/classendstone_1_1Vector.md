@@ -58,11 +58,11 @@ _Represents a 3-dimensional vector._
 |  constexpr | [**Vector**](#function-vector-22) (T x, T y, T z) <br> |
 |  constexpr T | [**distance**](#function-distance) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  constexpr T | [**distanceSquared**](#function-distancesquared) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
-|  constexpr T | [**getX**](#function-getx) () const<br> |
-|  constexpr T | [**getY**](#function-gety) () const<br> |
-|  constexpr T | [**getZ**](#function-getz) () const<br> |
-|  constexpr T | [**length**](#function-length) () const<br> |
-|  constexpr T | [**lengthSquared**](#function-lengthsquared) () const<br> |
+|  constexpr T | [**getX**](#function-getx) () const<br>_Gets the X component._  |
+|  constexpr T | [**getY**](#function-gety) () const<br>_Gets the Y component._  |
+|  constexpr T | [**getZ**](#function-getz) () const<br>_Gets the Z component._  |
+|  constexpr T | [**length**](#function-length) () const<br>_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._  |
+|  constexpr T | [**lengthSquared**](#function-lengthsquared) () const<br>_Gets the magnitude of the vector squared._  |
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator\***](#function-operator_1) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator\*=**](#function-operator_2) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
@@ -75,9 +75,9 @@ _Represents a 3-dimensional vector._
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_10) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator/=**](#function-operator_11) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
-|  constexpr void | [**setX**](#function-setx) (T x) <br> |
-|  constexpr void | [**setY**](#function-sety) (T y) <br> |
-|  constexpr void | [**setZ**](#function-setz) (T z) <br> |
+|  constexpr void | [**setX**](#function-setx) (T x) <br>_Set the X component._  |
+|  constexpr void | [**setY**](#function-sety) (T y) <br>_Set the Y component._  |
+|  constexpr void | [**setZ**](#function-setz) (T z) <br>_Set the Z component._  |
 
 
 
@@ -86,6 +86,13 @@ _Represents a 3-dimensional vector._
 
 
 
+## Protected Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  T | [**x\_**](#variable-x_)  <br> |
+|  T | [**y\_**](#variable-y_)  <br> |
+|  T | [**z\_**](#variable-z_)  <br> |
 
 
 
@@ -217,14 +224,11 @@ the distance
 
 ### function getX 
 
-
+_Gets the X component._ 
 ```C++
 inline constexpr T endstone::Vector::getX () const
 ```
 
-
-
-Gets the X component.
 
 
 
@@ -245,14 +249,11 @@ The X component.
 
 ### function getY 
 
-
+_Gets the Y component._ 
 ```C++
 inline constexpr T endstone::Vector::getY () const
 ```
 
-
-
-Gets the Y component.
 
 
 
@@ -273,14 +274,11 @@ The Y component.
 
 ### function getZ 
 
-
+_Gets the Z component._ 
 ```C++
 inline constexpr T endstone::Vector::getZ () const
 ```
 
-
-
-Gets the Z component.
 
 
 
@@ -301,14 +299,11 @@ The Z component.
 
 ### function length 
 
-
+_Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2)._ 
 ```C++
 inline constexpr T endstone::Vector::length () const
 ```
 
-
-
-Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
 
 
 
@@ -329,14 +324,11 @@ the magnitude
 
 ### function lengthSquared 
 
-
+_Gets the magnitude of the vector squared._ 
 ```C++
 inline constexpr T endstone::Vector::lengthSquared () const
 ```
 
-
-
-Gets the magnitude of the vector squared.
 
 
 
@@ -537,16 +529,13 @@ inline Vector < T > & endstone::Vector::operator/= (
 
 ### function setX 
 
-
+_Set the X component._ 
 ```C++
 inline constexpr void endstone::Vector::setX (
     T x
 ) 
 ```
 
-
-
-Set the X component.
 
 
 
@@ -574,16 +563,13 @@ This vector.
 
 ### function setY 
 
-
+_Set the Y component._ 
 ```C++
 inline constexpr void endstone::Vector::setY (
     T y
 ) 
 ```
 
-
-
-Set the Y component.
 
 
 
@@ -611,16 +597,13 @@ This vector.
 
 ### function setZ 
 
-
+_Set the Z component._ 
 ```C++
 inline constexpr void endstone::Vector::setZ (
     T z
 ) 
 ```
 
-
-
-Set the Z component.
 
 
 
@@ -641,6 +624,47 @@ This vector.
 
 
         
+
+<hr>
+## Protected Attributes Documentation
+
+
+
+
+### variable x\_ 
+
+```C++
+T endstone::Vector< T >::x_;
+```
+
+
+
+
+<hr>
+
+
+
+### variable y\_ 
+
+```C++
+T endstone::Vector< T >::y_;
+```
+
+
+
+
+<hr>
+
+
+
+### variable z\_ 
+
+```C++
+T endstone::Vector< T >::z_;
+```
+
+
+
 
 <hr>## Friends Documentation
 

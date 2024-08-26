@@ -236,6 +236,7 @@
     <member refid="classendstone_1_1Dimension_1a9d9baf77525291924f80c682cc3d012c" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Dimension_1af1ff7ab3ee59c3cee8b334244c102dbf" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Dimension_1af8e2b622c9f8e71a1ce7bae20cf01696" kind="function"><name>getBlockAt</name></member>
+    <member refid="classendstone_1_1Dimension_1a677e5d9f703ffb2eeeba7ceb14a262ea" kind="function"><name>getBlockAt</name></member>
   </compound>
   <compound refid="classendstone_1_1Dropdown" kind="class"><name>endstone::Dropdown</name>
     <member refid="classendstone_1_1Dropdown_1a63178f8424835d566da0e3d6d62bb2b1" kind="variable"><name>label_</name></member>
@@ -746,6 +747,9 @@
     <member refid="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" kind="function"><name>Position</name></member>
     <member refid="classendstone_1_1Position_1adbfd6abb00c932129131dadcefa56356" kind="function"><name>getDimension</name></member>
     <member refid="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" kind="function"><name>setDimension</name></member>
+    <member refid="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" kind="function"><name>getBlockX</name></member>
+    <member refid="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" kind="function"><name>getBlockY</name></member>
+    <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" kind="function"><name>getBlockZ</name></member>
   </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
     <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" kind="function"><name>~Scheduler</name></member>

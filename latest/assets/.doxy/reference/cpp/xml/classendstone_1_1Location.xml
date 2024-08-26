@@ -233,6 +233,9 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
     <listofallmembers>
       <member refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distance</name></member>
       <member refid="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>distanceSquared</name></member>
+      <member refid="classendstone_1_1Position_1aabcabab4d69b6bdbe11300ff3265e09c" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockX</name></member>
+      <member refid="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockY</name></member>
+      <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getBlockZ</name></member>
       <member refid="classendstone_1_1Position_1adbfd6abb00c932129131dadcefa56356" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1Location_1a8d5d7508809220f179abd3aab4432272" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getPitch</name></member>
       <member refid="classendstone_1_1Vector_1a4dd96843b3397f60cc14e38acc188cde" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>getX</name></member>
@@ -264,7 +267,10 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
       <member refid="classendstone_1_1Vector_1a5b519c6680b0fc7b1ec2e20c85429fc2" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>setZ</name></member>
       <member refid="classendstone_1_1Vector_1af7abc6d458ecf1f7f0498ee1c8357c6a" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>Vector</name></member>
       <member refid="classendstone_1_1Vector_1a245e605b53217c5d4d681e0e1b77c63f" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>Vector</name></member>
+      <member refid="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="protected" virt="non-virtual"><scope>endstone::Location</scope><name>x_</name></member>
+      <member refid="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="protected" virt="non-virtual"><scope>endstone::Location</scope><name>y_</name></member>
       <member refid="classendstone_1_1Location_1ab03975ca7b7bd6374bb8c461d753682c" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>yaw_</name></member>
+      <member refid="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="protected" virt="non-virtual"><scope>endstone::Location</scope><name>z_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

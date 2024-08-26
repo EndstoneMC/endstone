@@ -441,7 +441,7 @@
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
 <codeline lineno="200" refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/>T<sp/><ref refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" kindref="member">lengthSquared</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="201"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x_<sp/>*<sp/>x_<sp/>+<sp/>y_<sp/>*<sp/>y_<sp/>+<sp/>z_<sp/>*<sp/>z_;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(x_<sp/>*<sp/>x_)<sp/>+<sp/>(y_<sp/>*<sp/>y_)<sp/>+<sp/>(z_<sp/>*<sp/>z_);</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="211" refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/>T<sp/><ref refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" kindref="member">distance</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
@@ -451,11 +451,11 @@
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
 <codeline lineno="222" refid="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/>T<sp/><ref refid="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" kindref="member">distanceSquared</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Vector" kindref="compound">Vector&lt;T&gt;</ref><sp/>&amp;other)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="223"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(x_<sp/>-<sp/>other.x_)<sp/>*<sp/>(x_<sp/>-<sp/>other.x_)<sp/>+<sp/>(y_<sp/>-<sp/>other.y_)<sp/>*<sp/>(y_<sp/>-<sp/>other.y_)<sp/>+</highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(z_<sp/>-<sp/>other.z_)<sp/>*<sp/>(z_<sp/>-<sp/>other.z_);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((x_<sp/>-<sp/>other.x_)<sp/>*<sp/>(x_<sp/>-<sp/>other.x_))<sp/>+<sp/>((y_<sp/>-<sp/>other.y_)<sp/>*<sp/>(y_<sp/>-<sp/>other.y_))<sp/>+</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((z_<sp/>-<sp/>other.z_)<sp/>*<sp/>(z_<sp/>-<sp/>other.z_));</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>x_;</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>y_;</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>T<sp/>z_;</highlight></codeline>

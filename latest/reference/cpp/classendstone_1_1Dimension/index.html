@@ -1902,9 +1902,22 @@
             
             
             <li class="md-nav__item">
-    <a href="#function-getblockat" class="md-nav__link">
+    <a href="#function-getblockat-12" class="md-nav__link">
       <span class="md-ellipsis">
-        function getBlockAt
+        function getBlockAt [&frac12;]
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
+    <a href="#function-getblockat-22" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getBlockAt [2/2]
       </span>
     </a>
 
@@ -2033,7 +2046,11 @@
 <tbody>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getblockat"><strong>getBlockAt</strong></a> (int x, int y, int z) = 0<br></td>
+<td style="text-align: left;"><a href="#function-getblockat-12"><strong>getBlockAt</strong></a> (int x, int y, int z) = 0<br><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given coordinates.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1Block/"><strong>Block</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getblockat-22"><strong>getBlockAt</strong></a> (<a href="../classendstone_1_1Location/"><strong>Location</strong></a> location) = 0<br><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given</em><a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1Level/"><strong>Level</strong></a> &amp;</td>
@@ -2064,14 +2081,14 @@
 </span></code></pre></div>
 <hr>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-getblockat">function getBlockAt<a class="headerlink" href="#function-getblockat" title="Permanent link">&para;</a></h3>
+<h3 id="function-getblockat-12">function getBlockAt [&frac12;]<a class="headerlink" href="#function-getblockat-12" title="Permanent link">&para;</a></h3>
+<p><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given coordinates.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">,</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets the <a href="../classendstone_1_1Block/"><strong>Block</strong></a> at the given coordinates</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>x</code> X-coordinate of the block </li>
@@ -2082,9 +2099,23 @@
 <p><a href="../classendstone_1_1Block/"><strong>Block</strong></a> at the given coordinates </p>
 <hr>
 
+<h3 id="function-getblockat-22">function getBlockAt [2/2]<a class="headerlink" href="#function-getblockat-22" title="Permanent link">&para;</a></h3>
+<p><em>Gets the</em> <a href="../classendstone_1_1Block/"><em><strong>Block</strong></em></a> <em>at the given</em><a href="../classendstone_1_1Location/"><em><strong>Location</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Block</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getBlockAt</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Location</span><span class="w"> </span><span class="n">location</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>location</code> <a href="../classendstone_1_1Location/"><strong>Location</strong></a> of the block </li>
+</ul>
+<p><strong>Returns:</strong></p>
+<p><a href="../classendstone_1_1Block/"><strong>Block</strong></a> at the given coordinates </p>
+<hr>
+
 <h3 id="function-getlevel">function getLevel<a class="headerlink" href="#function-getlevel" title="Permanent link">&para;</a></h3>
 <p><em>Gets the level to which this dimension belongs.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Level/"><strong>Level</strong></a> containing this dimension. </p>
@@ -2092,7 +2123,7 @@
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the name of this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Name of this dimension </p>
@@ -2100,14 +2131,14 @@
 
 <h3 id="function-gettype">function getType<a class="headerlink" href="#function-gettype" title="Permanent link">&para;</a></h3>
 <p><em>Gets the type of this dimension.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::</span><span class="n">getType</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Type of this dimension </p>
 <hr>
 
 <h3 id="function-dimension">function ~Dimension<a class="headerlink" href="#function-dimension" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Dimension</span><span class="o">::~</span><span class="n">Dimension</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 

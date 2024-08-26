@@ -8,8 +8,8 @@
         <type>typename T</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="private" static="no" mutable="no">
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="protected" static="no" mutable="no">
         <type>T</type>
         <definition>T endstone::Vector&lt; T &gt;::x_</definition>
         <argsstring></argsstring>
@@ -22,7 +22,7 @@
         </inbodydescription>
         <location file="include/endstone/util/vector.h" line="229" column="7" bodyfile="include/endstone/util/vector.h" bodystart="229" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="protected" static="no" mutable="no">
         <type>T</type>
         <definition>T endstone::Vector&lt; T &gt;::y_</definition>
         <argsstring></argsstring>
@@ -35,7 +35,7 @@
         </inbodydescription>
         <location file="include/endstone/util/vector.h" line="230" column="7" bodyfile="include/endstone/util/vector.h" bodystart="230" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="protected" static="no" mutable="no">
         <type>T</type>
         <definition>T endstone::Vector&lt; T &gt;::z_</definition>
         <argsstring></argsstring>
@@ -94,9 +94,9 @@
         <argsstring>() const</argsstring>
         <name>getX</name>
         <briefdescription>
+<para>Gets the X component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the X component.</para>
 <para><simplesect kind="return"><para>The X component. </para>
 </simplesect>
 </para>
@@ -115,9 +115,9 @@
           <declname>x</declname>
         </param>
         <briefdescription>
+<para>Set the X component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the X component.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>
@@ -141,9 +141,9 @@
         <argsstring>() const</argsstring>
         <name>getY</name>
         <briefdescription>
+<para>Gets the Y component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the Y component.</para>
 <para><simplesect kind="return"><para>The Y component. </para>
 </simplesect>
 </para>
@@ -162,9 +162,9 @@
           <declname>y</declname>
         </param>
         <briefdescription>
+<para>Set the Y component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the Y component.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>y</parametername>
@@ -188,9 +188,9 @@
         <argsstring>() const</argsstring>
         <name>getZ</name>
         <briefdescription>
+<para>Gets the Z component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the Z component.</para>
 <para><simplesect kind="return"><para>The Z component. </para>
 </simplesect>
 </para>
@@ -209,9 +209,9 @@
           <declname>z</declname>
         </param>
         <briefdescription>
+<para>Set the Z component. </para>
         </briefdescription>
         <detaileddescription>
-<para>Set the Z component.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>z</parametername>
@@ -439,9 +439,9 @@
         <argsstring>() const</argsstring>
         <name>length</name>
         <briefdescription>
+<para>Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2). </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).</para>
 <para><simplesect kind="return"><para>the magnitude </para>
 </simplesect>
 </para>
@@ -456,9 +456,9 @@
         <argsstring>() const</argsstring>
         <name>lengthSquared</name>
         <briefdescription>
+<para>Gets the magnitude of the vector squared. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the magnitude of the vector squared.</para>
 <para><simplesect kind="return"><para>the magnitude </para>
 </simplesect>
 </para>
@@ -649,9 +649,9 @@
       <member refid="classendstone_1_1Vector_1a5b519c6680b0fc7b1ec2e20c85429fc2" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>setZ</name></member>
       <member refid="classendstone_1_1Vector_1af7abc6d458ecf1f7f0498ee1c8357c6a" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>Vector</name></member>
       <member refid="classendstone_1_1Vector_1a245e605b53217c5d4d681e0e1b77c63f" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>Vector</name></member>
-      <member refid="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="private" virt="non-virtual"><scope>endstone::Vector</scope><name>x_</name></member>
-      <member refid="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="private" virt="non-virtual"><scope>endstone::Vector</scope><name>y_</name></member>
-      <member refid="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="private" virt="non-virtual"><scope>endstone::Vector</scope><name>z_</name></member>
+      <member refid="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>x_</name></member>
+      <member refid="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>y_</name></member>
+      <member refid="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>z_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -1870,6 +1870,17 @@
 </li>
       
         <li class="md-nav__item">
+    <a href="#protected-attributes-inherited-from-endstonevector" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Attributes inherited from endstone::Vector
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2035,6 +2046,18 @@
 <td style="text-align: left;"><a href="../classendstone_1_1Position/#function-position"><strong>Position</strong></a> (<a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> * dimension, float x, float y, float z) <br></td>
 </tr>
 <tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblockx"><strong>getBlockX</strong></a> () const<br><em>Gets the floored value of the X component, indicating the block that this location is contained with.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblocky"><strong>getBlockY</strong></a> () const<br><em>Gets the floored value of the Y component, indicating the block that this location is contained with.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getblockz"><strong>getBlockZ</strong></a> () const<br><em>Gets the floored value of the Z component, indicating the block that this location is contained with.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Dimension/"><strong>Dimension</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Position/#function-getdimension"><strong>getDimension</strong></a> () const<br></td>
 </tr>
@@ -2072,23 +2095,23 @@
 </tr>
 <tr>
 <td style="text-align: right;">constexpr T</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getx"><strong>getX</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getx"><strong>getX</strong></a> () const<br><em>Gets the X component.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr T</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-gety"><strong>getY</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-gety"><strong>getY</strong></a> () const<br><em>Gets the Y component.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr T</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getz"><strong>getZ</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-getz"><strong>getZ</strong></a> () const<br><em>Gets the Z component.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr T</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-length"><strong>length</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-length"><strong>length</strong></a> () const<br><em>Gets the magnitude of the vector, defined as sqrt(x<sup>2+y</sup>2+z^2).</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr T</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-lengthsquared"><strong>lengthSquared</strong></a> () const<br><em>Gets the magnitude of the vector squared.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr <a href="../classendstone_1_1Vector/"><strong>Vector</strong></a>&lt; T &gt;</td>
@@ -2140,15 +2163,39 @@
 </tr>
 <tr>
 <td style="text-align: right;">constexpr void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setx"><strong>setX</strong></a> (T x) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setx"><strong>setX</strong></a> (T x) <br><em>Set the X component.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-sety"><strong>setY</strong></a> (T y) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-sety"><strong>setY</strong></a> (T y) <br><em>Set the Y component.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">constexpr void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setz"><strong>setZ</strong></a> (T z) <br></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#function-setz"><strong>setZ</strong></a> (T z) <br><em>Set the Z component.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-attributes-inherited-from-endstonevector">Protected Attributes inherited from endstone::Vector<a class="headerlink" href="#protected-attributes-inherited-from-endstonevector" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Vector/">endstone::Vector</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">T</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-x_"><strong>x_</strong></a>  <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">T</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-y_"><strong>y_</strong></a>  <br></td>
+</tr>
+<tr>
+<td style="text-align: right;">T</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Vector/#variable-z_"><strong>z_</strong></a>  <br></td>
 </tr>
 </tbody>
 </table>

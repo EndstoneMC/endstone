@@ -48,6 +48,21 @@ public:
         dimension_ = &dimension;
     }
 
+    [[nodiscard]] int getBlockX() const
+    {
+        return static_cast<int>(std::floorf(x_));
+    }
+
+    [[nodiscard]] int getBlockY() const
+    {
+        return static_cast<int>(std::floorf(y_));
+    }
+
+    [[nodiscard]] int getBlockZ() const
+    {
+        return static_cast<int>(std::floorf(z_));
+    }
+
 private:
     Dimension *dimension_;
 };
