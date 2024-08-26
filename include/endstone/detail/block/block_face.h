@@ -12,28 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/level/dimension/dimension.h"
+#pragma once
 
-#include <endstone/detail/server.h>
+#include "endstone/block/block_face.h"
 
-Level &Dimension::getLevel() const
-{
-    return *level_;
-}
+namespace endstone::detail {
 
-const std::string &Dimension::getName() const
-{
-    return name_;
-}
+class EndstoneBlockFace {
+public:
+    static int getOffsetX(BlockFace face);
+    static int getOffsetY(BlockFace face);
+    static int getOffsetZ(BlockFace face);
+};
 
-endstone::Dimension &Dimension::getEndstoneDimension() const
-{
-    using endstone::detail::EndstoneServer;
-    auto &server = entt::locator<EndstoneServer>::value();
-    return *server.getLevel()->getDimension(getName());
-}
-
-BlockSource &Dimension::getBlockSourceFromMainChunkSource() const
-{
-    return *block_source_;
-}
+}  // namespace endstone::detail

@@ -28,6 +28,7 @@
 #include "bedrock/world/level/dimension/dimension_interface.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/saveddata/saved_data.h"
+#include "endstone/level/dimension.h"
 
 class Level;
 
@@ -38,8 +39,10 @@ class Dimension : public IDimension,
                   public std::enable_shared_from_this<Dimension> {
 public:
     [[nodiscard]] Level &getLevel() const;
-    [[nodiscard]] const std::string &getName() const;  // Endstone
     BlockSource &getBlockSourceFromMainChunkSource() const;
+
+    [[nodiscard]] const std::string &getName() const;  // Endstone
+    [[nodiscard]] endstone::Dimension &getEndstoneDimension() const; // Endstone
 
 private:
     std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;           // +104 (+96)

@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockFace', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -295,11 +295,85 @@ class Block:
     """
     Represents a block.
     """
+    @typing.overload
+    def get_relative(self, offset_x: int, offset_y: int, offset_z: int) -> Block:
+        """
+        Gets the block at the given offsets
+        """
+    @typing.overload
+    def get_relative(self, face: BlockFace, distance: int = 1) -> Block:
+        """
+        Gets the block at the given distance of the given face
+        """
+    @property
+    def dimension(self) -> Dimension:
+        """
+        Gets the dimension which contains this Block
+        """
+    @property
+    def location(self) -> Location:
+        """
+        Gets the Location of the block
+        """
     @property
     def type(self) -> str:
         """
         Get the type of the block.
         """
+    @property
+    def x(self) -> int:
+        """
+        Gets the x-coordinate of this block
+        """
+    @property
+    def y(self) -> int:
+        """
+        Gets the y-coordinate of this block
+        """
+    @property
+    def z(self) -> int:
+        """
+        Gets the z-coordinate of this block
+        """
+class BlockFace:
+    DOWN: typing.ClassVar[BlockFace]  # value = <BlockFace.DOWN: 5>
+    EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.EAST: 1>
+    NORTH: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH: 0>
+    NORTH_EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH_EAST: 6>
+    NORTH_WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH_WEST: 7>
+    SELF: typing.ClassVar[BlockFace]  # value = <BlockFace.SELF: -1>
+    SOUTH: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH: 2>
+    SOUTH_EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH_EAST: 8>
+    SOUTH_WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH_WEST: 9>
+    UP: typing.ClassVar[BlockFace]  # value = <BlockFace.UP: 4>
+    WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.WEST: 3>
+    __members__: typing.ClassVar[dict[str, BlockFace]]  # value = {'SELF': <BlockFace.SELF: -1>, 'NORTH': <BlockFace.NORTH: 0>, 'EAST': <BlockFace.EAST: 1>, 'SOUTH': <BlockFace.SOUTH: 2>, 'WEST': <BlockFace.WEST: 3>, 'UP': <BlockFace.UP: 4>, 'DOWN': <BlockFace.DOWN: 5>, 'NORTH_EAST': <BlockFace.NORTH_EAST: 6>, 'NORTH_WEST': <BlockFace.NORTH_WEST: 7>, 'SOUTH_EAST': <BlockFace.SOUTH_EAST: 8>, 'SOUTH_WEST': <BlockFace.SOUTH_WEST: 9>}
+    def __eq__(self, other: typing.Any) -> bool:
+        ...
+    def __getstate__(self) -> int:
+        ...
+    def __hash__(self) -> int:
+        ...
+    def __index__(self) -> int:
+        ...
+    def __init__(self, value: int) -> None:
+        ...
+    def __int__(self) -> int:
+        ...
+    def __ne__(self, other: typing.Any) -> bool:
+        ...
+    def __repr__(self) -> str:
+        ...
+    def __setstate__(self, state: int) -> None:
+        ...
+    def __str__(self) -> str:
+        ...
+    @property
+    def name(self) -> str:
+        ...
+    @property
+    def value(self) -> int:
+        ...
 class BossBar:
     """
     Represents a boss bar that is displayed to players.

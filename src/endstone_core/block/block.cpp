@@ -14,6 +14,9 @@
 
 #include "endstone/detail/block/block.h"
 
+#include "bedrock/world/level/dimension/dimension.h"
+#include "endstone/detail/block/block_face.h"
+
 namespace endstone::detail {
 EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
     : block_source_(block_source), block_pos_(block_pos)
@@ -23,6 +26,47 @@ EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
 std::string EndstoneBlock::getType() const
 {
     return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
+}
+
+std::unique_ptr<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
+{
+    return getDimension().getBlockAt(getX() + offset_x, getY() + offset_y, getZ() + offset_z);
+}
+
+std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face)
+{
+    return getRelative(face, 1);
+}
+
+std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face, int distance)
+{
+    return getRelative(EndstoneBlockFace::getOffsetX(face) * distance, EndstoneBlockFace::getOffsetY(face) * distance,
+                       EndstoneBlockFace::getOffsetZ(face) * distance);
+}
+
+Dimension &EndstoneBlock::getDimension() const
+{
+    return block_source_.getDimension().getEndstoneDimension();
+}
+
+int EndstoneBlock::getX() const
+{
+    return block_pos_.x;
+}
+
+int EndstoneBlock::getY() const
+{
+    return block_pos_.y;
+}
+
+int EndstoneBlock::getZ() const
+{
+    return block_pos_.z;
+}
+
+Location EndstoneBlock::getLocation() const
+{
+    return {&getDimension(), getX(), getY(), getZ()};
 }
 
 std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)

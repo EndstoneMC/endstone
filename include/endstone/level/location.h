@@ -26,6 +26,11 @@ namespace endstone {
  */
 class Location : public Position {
 public:
+    Location(Dimension *dimension, int x, int y, int z, float pitch = 0.0, float yaw = 0.0)
+        : Location(dimension, static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), pitch, yaw)
+    {
+    }
+
     Location(Dimension *dimension, float x, float y, float z, float pitch = 0.0, float yaw = 0.0)
         : Position(dimension, x, y, z), pitch_(pitch), yaw_(yaw)
     {

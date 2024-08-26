@@ -16,13 +16,39 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/block/block_face.h"
+#include "endstone/level/dimension.h"
+
 namespace py = pybind11;
 
 namespace endstone::detail {
 
 void init_block(py::module_ &m, py::class_<Block> &block)
 {
-    block.def_property_readonly("type", &Block::getType, "Get the type of the block.");
+    py::enum_<BlockFace>(m, "BlockFace")
+        .value("SELF", BlockFace::Self)
+        .value("NORTH", BlockFace::North)
+        .value("EAST", BlockFace::East)
+        .value("SOUTH", BlockFace::South)
+        .value("WEST", BlockFace::West)
+        .value("UP", BlockFace::Up)
+        .value("DOWN", BlockFace::Down)
+        .value("NORTH_EAST", BlockFace::NorthEast)
+        .value("NORTH_WEST", BlockFace::NorthWest)
+        .value("SOUTH_EAST", BlockFace::SouthEast)
+        .value("SOUTH_WEST", BlockFace::SouthWest);
+
+    block.def_property_readonly("type", &Block::getType, "Get the type of the block.")
+        .def("get_relative", py::overload_cast<int, int, int>(&Block::getRelative), py::arg("offset_x"),
+             py::arg("offset_y"), py::arg("offset_z"), "Gets the block at the given offsets")
+        .def("get_relative", py::overload_cast<BlockFace, int>(&Block::getRelative), py::arg("face"),
+             py::arg("distance") = 1, "Gets the block at the given distance of the given face")
+        .def_property_readonly("dimension", &Block::getDimension, "Gets the dimension which contains this Block",
+                               py::return_value_policy::reference)
+        .def_property_readonly("x", &Block::getX, "Gets the x-coordinate of this block")
+        .def_property_readonly("y", &Block::getY, "Gets the y-coordinate of this block")
+        .def_property_readonly("z", &Block::getZ, "Gets the z-coordinate of this block")
+        .def_property_readonly("location", &Block::getLocation, "Gets the Location of the block");
 }
 
 }  // namespace endstone::detail
