@@ -107,6 +107,11 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
     dimensions_[name] = std::move(dimension);
 }
 
+EndstoneServer &EndstoneLevel::getServer() const
+{
+    return server_;
+}
+
 ::Level &EndstoneLevel::getHandle() const
 {
     return level_;

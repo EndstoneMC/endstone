@@ -48,6 +48,7 @@ class BlockDefinitionGroup;
 class BlockGraphicsModeChangeContext;
 class BlockItem;
 class BlockReducer;
+class BlockSourceListener;
 class BlockState;
 class BodyControl;
 class BossEventSubscriptionManager;
@@ -83,6 +84,7 @@ class Explosion;
 class FeatureRegistry;
 class FeatureTypeFactory;
 class FrameUpdateContextBase;
+class GameEvent;
 class GameModuleServer;
 class GameRules;
 class GetCollisionShapeInterface;
@@ -199,6 +201,10 @@ enum class ShapeType : std::int8_t;
 enum class StructureFeatureType;
 
 // Nested Classes and Namespaces
+class BlockSourceVisitor {
+public:
+    class CollisionShape;
+};
 class PlayerCapabilities {
 public:
     class ISharedController;

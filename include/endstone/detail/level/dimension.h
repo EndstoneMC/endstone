@@ -27,7 +27,7 @@ namespace endstone::detail {
 
 class EndstoneDimension : public endstone::Dimension {
 public:
-    explicit EndstoneDimension(::Dimension &dimension, Level &level);
+    explicit EndstoneDimension(::Dimension &dimension, EndstoneLevel &level);
     ~EndstoneDimension() override = default;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] Type getType() const override;
@@ -37,7 +37,7 @@ public:
 
 private:
     ::Dimension &dimension_;
-    Level &level_;
+    EndstoneLevel &level_;
 };
 
 }  // namespace endstone::detail

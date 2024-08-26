@@ -27,8 +27,6 @@
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_property.h"
 #include "bedrock/world/level/block_pos.h"
-#include "bedrock/world/level/block_source.h"
-#include "bedrock/world/level/block_source_interface.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 #include "block_state_instance.h"
@@ -40,7 +38,10 @@ using DataID = std::uint16_t;
 
 class Actor;
 class Block;
+class BlockSource;
 class Container;
+class IBlockSource;
+class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
@@ -367,15 +368,15 @@ private:
     std::vector<void *> unknown4_;                                    // +808
 #ifdef __linux__                                                      //
     std::shared_timed_mutex mutex_;
-#else                                                                 //
+#else                                                  //
     std::int64_t unknown5_;  // +832
-#endif                                                                //
-    std::unordered_map<void *, void *> unknown6_;                     // +840
-    std::unique_ptr<void *> block_state_group_;                       // +904 void* = BlockStateGroup
-    std::unique_ptr<void *> resource_drops_strategy_;                 // +912 void* = IResourceDropsStrategy
-    IntRange experience_drop_;                                        // +920
-    bool can_drop_with_any_tool_;                                     // +928
-    std::vector<void *> unknown9_;                                    // +936
-    std::vector<void *> unknown10_;                                   // +960
+#endif                                                 //
+    std::unordered_map<void *, void *> unknown6_;      // +840
+    std::unique_ptr<void *> block_state_group_;        // +904 void* = BlockStateGroup
+    std::unique_ptr<void *> resource_drops_strategy_;  // +912 void* = IResourceDropsStrategy
+    IntRange experience_drop_;                         // +920
+    bool can_drop_with_any_tool_;                      // +928
+    std::vector<void *> unknown9_;                     // +936
+    std::vector<void *> unknown10_;                    // +960
     // ...
 };

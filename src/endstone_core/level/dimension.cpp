@@ -16,10 +16,14 @@
 
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/block/block.h"
+#include "endstone/detail/level/level.h"
 
 namespace endstone::detail {
 
-EndstoneDimension::EndstoneDimension(::Dimension &dimension, Level &level) : dimension_(dimension), level_(level) {}
+EndstoneDimension::EndstoneDimension(::Dimension &dimension, EndstoneLevel &level)
+    : dimension_(dimension), level_(level)
+{
+}
 
 std::string EndstoneDimension::getName() const
 {
@@ -47,7 +51,27 @@ Level &EndstoneDimension::getLevel() const
 
 std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z)
 {
-    // TODO(block): check if the chunk is within boundary, loaded and ticking.
+    auto &block_source = getHandle().getBlockSourceFromMainChunkSource();
+    auto &logger = level_.getServer().getLogger();
+
+    if (y < block_source.getMinHeight() || y > block_source.getMaxHeight()) {
+        logger.error("Trying to access location ({}, {}, {}) which is outside of the world boundaries.", x, y, z);
+        return nullptr;
+    }
+
+    auto *chunk = block_source.getChunkAt(BlockPos{x, y, z});
+    if (!chunk) {
+        logger.error("Trying to access location ({}, {}, {}) which is not in a chunk currently loaded.", x, y, z);
+        return nullptr;
+    }
+
+    auto current_level_tick = level_.getHandle().getCurrentTick();
+    auto chunk_last_tick = Tick{0};  // TODO: get actual chunk last tick
+    if (current_level_tick != chunk_last_tick && current_level_tick != chunk_last_tick + 1) {
+        logger.error("Trying to access location ({}, {}, {}) which is not in a chunk currently ticking.", x, y, z);
+        return nullptr;
+    }
+
     return EndstoneBlock::at(dimension_.getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 

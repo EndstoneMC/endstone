@@ -38,6 +38,7 @@ public:
     [[nodiscard]] Dimension *getDimension(std::string name) const override;
     void addDimension(std::unique_ptr<Dimension> dimension);
 
+    [[nodiscard]] EndstoneServer &getServer() const;
     [[nodiscard]] ::Level &getHandle() const;
 
 private:
