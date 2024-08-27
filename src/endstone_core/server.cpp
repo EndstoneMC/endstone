@@ -17,8 +17,6 @@
 #include <filesystem>
 #include <memory>
 
-#include <endstone/detail/boss/boss_bar.h>
-
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -30,6 +28,7 @@ namespace fs = std::filesystem;
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/detail/boss/boss_bar.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/level/level.h"

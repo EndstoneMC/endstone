@@ -16,8 +16,9 @@
 
 #include <stdexcept>
 
-#include <endstone/network/spawn_particle_effect_packet.h>
 #include <fmt/format.h>
+
+#include "endstone/network/spawn_particle_effect_packet.h"
 
 namespace endstone::detail {
 

@@ -14,7 +14,7 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 
-#include <endstone/detail/server.h>
+#include "endstone/detail/server.h"
 
 Level &Dimension::getLevel() const
 {

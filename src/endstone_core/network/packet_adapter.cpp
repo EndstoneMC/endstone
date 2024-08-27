@@ -14,8 +14,9 @@
 
 #include "endstone/detail/network/packet_adapter.h"
 
-#include <endstone/detail/network/packet_codec.h>
 #include <magic_enum/magic_enum.hpp>
+
+#include "endstone/detail/network/packet_codec.h"
 
 namespace endstone::detail {
 

@@ -14,8 +14,6 @@
 
 #pragma once
 
-#include <endstone/network/spawn_particle_effect_packet.h>
-
 #include "bedrock/core/result.h"
 
 class ReadOnlyBinaryStream {
@@ -44,6 +42,6 @@ public:
     void writeFloat(float value);
 
 private:
-    std::string owned_buffer_; // +64
-    std::string *buffer_; // +96
+    std::string owned_buffer_;  // +64
+    std::string *buffer_;       // +96
 };

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "bedrock/world/scores/server_scoreboard.h"
-#include <bedrock/world/level/level.h>
+#include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 
 std::unique_ptr<ServerScoreboard> ServerScoreboard::create(

@@ -14,7 +14,6 @@
 
 #include "bedrock/world/actor/player/player.h"
 
-#include <endstone/event/player/player_teleport_event.h>
 #include <entt/entt.hpp>
 
 #include "bedrock/entity/components/abilities_component.h"
@@ -24,6 +23,7 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
+#include "endstone/event/player/player_teleport_event.h"
 
 using endstone::detail::EndstoneServer;
 

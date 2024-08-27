@@ -14,10 +14,10 @@
 
 #include "endstone/detail/player.h"
 
-#include <bedrock/deps/jsoncpp/nlohmann_json.h>
 #include <boost/uuid/string_generator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/deps/jsoncpp/nlohmann_json.h"
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"

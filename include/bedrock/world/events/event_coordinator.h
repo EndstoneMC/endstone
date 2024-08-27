@@ -18,8 +18,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include <bedrock/world/scores/scoreboard_id.h>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
@@ -30,6 +28,7 @@
 #include "bedrock/world/events/level_event.h"
 #include "bedrock/world/events/player_event.h"
 #include "bedrock/world/events/server_event.h"
+#include "bedrock/world/scores/scoreboard_id.h"
 
 class ServerInstance;
 class Level;
