@@ -75,7 +75,7 @@ Inherited by the following classes: [endstone::ActorDeathEvent](classendstone_1_
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorEvent**](#function-actorevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](#function-getactor) () const<br> |
+|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](#function-actorevent) () override<br> |
 
 
@@ -170,14 +170,11 @@ inline explicit endstone::ActorEvent::ActorEvent (
 
 ### function getActor 
 
-
+_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._
 ```C++
 inline Actor & endstone::ActorEvent::getActor () const
 ```
 
-
-
-Returns the [**Actor**](classendstone_1_1Actor.md) involved in this event
 
 
 

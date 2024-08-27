@@ -297,6 +297,7 @@ Increasing yaw values are the equivalent of turning to your right-facing, increa
       <member refid="classendstone_1_1Vector_1a1212a7d2db661f7113c0f63b590cd497" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator/</name></member>
       <member refid="classendstone_1_1Vector_1a8904e8e1c99dd78d22273678f47f783a" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator/</name></member>
       <member refid="classendstone_1_1Vector_1af3925707b295793074f3fa992bd34d20" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator/=</name></member>
+      <member refid="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>operator==</name></member>
       <member refid="classendstone_1_1Location_1a37ad0c40bff7253e01685337daab888d" prot="private" virt="non-virtual"><scope>endstone::Location</scope><name>pitch_</name></member>
       <member refid="classendstone_1_1Position_1a514089ce3532bcb0eaf40d847957ae6b" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>Position</name></member>
       <member refid="classendstone_1_1Position_1a5e78451e64148519d4a771b0d849605d" prot="public" virt="non-virtual"><scope>endstone::Location</scope><name>setDimension</name></member>

@@ -87,6 +87,21 @@
     <member refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kind="function"><name>getZ</name></member>
     <member refid="classendstone_1_1Block_1a19e164bc3cf23481d01886dfeda41c85" kind="function"><name>getLocation</name></member>
   </compound>
+  <compound refid="classendstone_1_1BlockBreakEvent" kind="class"><name>endstone::BlockBreakEvent</name>
+    <member refid="classendstone_1_1BlockBreakEvent_1a64ca48725564c7fe543234eb464e4cbe" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1a327ccc0eed39d688459a71b8a6b809d9" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1adde7a9bb793265f5b147190769dfaff8" kind="function"><name>BlockBreakEvent</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1a0c013b5825d1ea1b75eaec4e2e076ee8" kind="function"><name>~BlockBreakEvent</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1a51513f05d20b347797c31be3fb6db1d2" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1ac908a1470e2bcf4a767e5f9e9e327815" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1BlockBreakEvent_1a0992c8dcdec3339ac035abcf6d03a3dc" kind="function"><name>getPlayer</name></member>
+  </compound>
+  <compound refid="classendstone_1_1BlockEvent" kind="class"><name>endstone::BlockEvent</name>
+    <member refid="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" kind="variable"><name>block_</name></member>
+    <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" kind="function"><name>BlockEvent</name></member>
+    <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" kind="function"><name>~BlockEvent</name></member>
+    <member refid="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" kind="function"><name>getBlock</name></member>
+  </compound>
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
     <member refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kind="function"><name>getTitle</name></member>
@@ -1038,6 +1053,7 @@
     <member refid="classendstone_1_1Vector_1a0fc1eb67cbc59047585507d28b2ed6d2" kind="function"><name>operator-</name></member>
     <member refid="classendstone_1_1Vector_1a77438991c855e2b407af434077be5b71" kind="function"><name>operator*</name></member>
     <member refid="classendstone_1_1Vector_1a8904e8e1c99dd78d22273678f47f783a" kind="function"><name>operator/</name></member>
+    <member refid="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" kind="function"><name>length</name></member>
     <member refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" kind="function"><name>lengthSquared</name></member>
     <member refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" kind="function"><name>distance</name></member>
@@ -1064,17 +1080,12 @@
   </compound>
   <compound refid="namespaceendstone" kind="namespace"><name>endstone</name>
     <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785" kind="enum"><name>BlockFace</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785aad6e7652b1bdfb38783486c2c3d5e806" kind="enumvalue"><name>Self</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" kind="enumvalue"><name>Down</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a258f49887ef8d14ac268c92b02503aaa" kind="enumvalue"><name>Up</name></member>
     <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a601560b94fbb188919dd1d36c8ab70a4" kind="enumvalue"><name>North</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" kind="enumvalue"><name>East</name></member>
     <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a263d7b2cf53802c9ed127b718c0bf9fd" kind="enumvalue"><name>South</name></member>
     <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785abf495fc048d8d44b7f32536df5cf3930" kind="enumvalue"><name>West</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a258f49887ef8d14ac268c92b02503aaa" kind="enumvalue"><name>Up</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a08a38277b0309070706f6652eeae9a53" kind="enumvalue"><name>Down</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a7254edb19370d28e3466c971d2f8a03e" kind="enumvalue"><name>NorthEast</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a142cbe82227bdec147eff3a629dd366b" kind="enumvalue"><name>NorthWest</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785a865a51dff69223f0cf5ad630e5ada190" kind="enumvalue"><name>SouthEast</name></member>
-    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785ae8eaf797b01fdb4246ed54904368b592" kind="enumvalue"><name>SouthWest</name></member>
+    <member refid="block__face_8h_1aec620d05bd961a002c83b008e178a785aa99dc62d017d04cf67266593f9c3761e" kind="enumvalue"><name>East</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6" kind="enum"><name>BarColor</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a8dc5344bc0746e1cc5abf896ca03bbdf" kind="enumvalue"><name>Pink</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a9594eec95be70e7b1710f730fdda33d9" kind="enumvalue"><name>Blue</name></member>
@@ -1190,6 +1201,10 @@
   <compound refid="actor__spawn__event_8h" kind="file"><name>actor_spawn_event.h</name>
   </compound>
   <compound refid="actor__teleport__event_8h" kind="file"><name>actor_teleport_event.h</name>
+  </compound>
+  <compound refid="block__break__event_8h" kind="file"><name>block_break_event.h</name>
+  </compound>
+  <compound refid="block__event_8h" kind="file"><name>block_event.h</name>
   </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
   </compound>
@@ -1339,6 +1354,8 @@
   <compound refid="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir"><name>include/endstone/event/actor</name>
   </compound>
   <compound refid="dir_faca67fc60a7463eb1bd30eabe023cf1" kind="dir"><name>include/endstone/block</name>
+  </compound>
+  <compound refid="dir_992e9ad7dc69726476903ba283e33c71" kind="dir"><name>include/endstone/event/block</name>
   </compound>
   <compound refid="dir_d0a7fd8d5b72659767e2a2651b1ff51c" kind="dir"><name>include/endstone/boss</name>
   </compound>

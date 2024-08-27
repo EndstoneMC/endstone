@@ -156,6 +156,11 @@ public:
         return Vector<T>(scalar / v.x_, scalar / v.y_, scalar / v.z_);
     }
 
+    constexpr bool operator==(const Vector<T> &other) const
+    {
+        return (x_ == other.x_) && (y_ == other.y_) && (z_ == other.z_);
+    }
+
     [[nodiscard]] constexpr T length() const
     {
         return std::sqrt(lengthSquared());

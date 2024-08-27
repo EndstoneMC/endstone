@@ -3,6 +3,7 @@
   <compounddef id="dir_f1d783c0ad83ee143d16e768ebca51c8" kind="dir">
     <compoundname>include/endstone/event</compoundname>
     <innerdir refid="dir_621c26b5fd4198aba66e7e31570ce44a">include/endstone/event/actor</innerdir>
+    <innerdir refid="dir_992e9ad7dc69726476903ba283e33c71">include/endstone/event/block</innerdir>
     <innerdir refid="dir_7c05c37b25e9c9eccd9c63c2d313ba28">include/endstone/event/player</innerdir>
     <innerdir refid="dir_77022909323d5ad872c4820a738a5429">include/endstone/event/server</innerdir>
     <innerdir refid="dir_7fcf87d2683114df01ea446fea23c187">include/endstone/event/weather</innerdir>

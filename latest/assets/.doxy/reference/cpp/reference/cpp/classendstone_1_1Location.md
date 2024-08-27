@@ -142,6 +142,7 @@ See [endstone::Vector](classendstone_1_1Vector.md)
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](classendstone_1_1Vector.md#function-operator_10) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator/=**](classendstone_1_1Vector.md#function-operator_11) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
+|  constexpr bool | [**operator==**](classendstone_1_1Vector.md#function-operator_12) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  constexpr void | [**setX**](classendstone_1_1Vector.md#function-setx) (T x) <br>_Set the X component._  |
 |  constexpr void | [**setY**](classendstone_1_1Vector.md#function-sety) (T y) <br>_Set the Y component._  |
 |  constexpr void | [**setZ**](classendstone_1_1Vector.md#function-setz) (T z) <br>_Set the Z component._  |

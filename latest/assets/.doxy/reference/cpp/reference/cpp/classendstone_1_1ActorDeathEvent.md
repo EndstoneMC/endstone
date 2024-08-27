@@ -112,7 +112,7 @@ See [endstone::ActorEvent](classendstone_1_1ActorEvent.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) ([**Actor**](classendstone_1_1Actor.md) & actor) <br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br> |
+|  [**Actor**](classendstone_1_1Actor.md) & | [**getActor**](classendstone_1_1ActorEvent.md#function-getactor) () const<br>_Returns the_ [_**Actor**_](classendstone_1_1Actor.md) _involved in this event._ |
 |   | [**~ActorEvent**](classendstone_1_1ActorEvent.md#function-actorevent) () override<br> |
 
 

@@ -19,6 +19,8 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._
         * **class** [**endstone::ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._
         * **class** [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._ 
+    * **class** [**endstone::BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
+        * **class** [**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) 
     * **class** [**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md) _Represents a player related event._     
         * **class** [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) _Called when a player sends a chat message._ 
         * **class** [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) _Called whenever a player runs a command._ 

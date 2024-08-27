@@ -27,17 +27,12 @@
 namespace endstone {
 
 enum class BlockFace {
-    Self = -1,
+    Down,
+    Up,
     North,
-    East,
     South,
     West,
-    Up,
-    Down,
-    NorthEast,
-    NorthWest,
-    SouthEast,
-    SouthWest,
+    East,
 };
 
 }  // namespace endstone

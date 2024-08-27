@@ -75,6 +75,7 @@ _Represents a 3-dimensional vector._
 |  constexpr [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_9) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; | [**operator/**](#function-operator_10) (T scalar) const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & | [**operator/=**](#function-operator_11) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) <br> |
+|  constexpr bool | [**operator==**](#function-operator_12) (const [**Vector**](classendstone_1_1Vector.md)&lt; T &gt; & other) const<br> |
 |  constexpr void | [**setX**](#function-setx) (T x) <br>_Set the X component._  |
 |  constexpr void | [**setY**](#function-sety) (T y) <br>_Set the Y component._  |
 |  constexpr void | [**setZ**](#function-setz) (T z) <br>_Set the Z component._  |
@@ -518,6 +519,21 @@ inline Vector < T > endstone::Vector::operator/ (
 inline Vector < T > & endstone::Vector::operator/= (
     const Vector < T > & other
 ) 
+```
+
+
+
+
+<hr>
+
+
+
+### function operator== 
+
+```C++
+inline constexpr bool endstone::Vector::operator== (
+    const Vector < T > & other
+) const
 ```
 
 

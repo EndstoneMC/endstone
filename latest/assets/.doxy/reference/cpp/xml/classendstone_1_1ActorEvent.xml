@@ -60,9 +60,9 @@
         <argsstring>() const</argsstring>
         <name>getActor</name>
         <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> involved in this event. </para>
         </briefdescription>
         <detaileddescription>
-<para>Returns the <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> involved in this event</para>
 <para><simplesect kind="return"><para><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> which is involved in this event </para>
 </simplesect>
 </para>
