@@ -3,8 +3,6 @@ import hashlib
 import logging
 import os
 import platform
-import shutil
-import site
 import subprocess
 import sys
 import tempfile
@@ -219,11 +217,8 @@ class Bootstrap:
             **kwargs: Arbitrary keyword arguments.
 
         """
-        prefix = str((self.plugin_path / ".local").resolve().absolute())
-        shutil.rmtree(prefix, ignore_errors=True)
-
         env = kwargs.pop("env", os.environ.copy())
-        env["PATH"] = os.pathsep.join(site.getsitepackages(prefixes=[prefix]) + sys.path)
+        env["PATH"] = os.pathsep.join(sys.path)
         env["PYTHONPATH"] = os.pathsep.join(sys.path)
         env["PYTHONIOENCODING"] = "UTF-8"
         self._process = subprocess.Popen(

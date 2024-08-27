@@ -2,6 +2,7 @@ import glob
 import importlib
 import os
 import os.path
+import shutil
 import site
 import subprocess
 import sys
@@ -74,6 +75,9 @@ class PythonPluginLoader(PluginLoader):
         env = os.environ.copy()
         env.pop("LD_PRELOAD", "")
 
+        prefix = os.path.join(directory, ".local")
+        shutil.rmtree(prefix, ignore_errors=True)
+
         for file in glob.glob(os.path.join(directory, "*.whl")):
             subprocess.run(
                 [
@@ -83,7 +87,7 @@ class PythonPluginLoader(PluginLoader):
                     "install",
                     file,
                     "--prefix",
-                    os.path.join(directory, ".local"),
+                    prefix,
                     "--quiet",
                     "--no-warn-script-location",
                     "--disable-pip-version-check",
@@ -91,9 +95,8 @@ class PythonPluginLoader(PluginLoader):
                 env=env,
             )
 
-        user_site_packages = site.getusersitepackages()
-        if user_site_packages not in sys.path:
-            sys.path.insert(0, user_site_packages)
+        for site_dir in site.getsitepackages(prefixes=[prefix]):
+            site.addsitedir(site_dir)
 
         loaded_plugins = []
         eps = entry_points(group="endstone")
