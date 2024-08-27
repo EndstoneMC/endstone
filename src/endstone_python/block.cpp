@@ -26,17 +26,12 @@ namespace endstone::detail {
 void init_block(py::module_ &m, py::class_<Block> &block)
 {
     py::enum_<BlockFace>(m, "BlockFace")
-        .value("SELF", BlockFace::Self)
+        .value("DOWN", BlockFace::Down)
+        .value("UP", BlockFace::Up)
         .value("NORTH", BlockFace::North)
-        .value("EAST", BlockFace::East)
         .value("SOUTH", BlockFace::South)
         .value("WEST", BlockFace::West)
-        .value("UP", BlockFace::Up)
-        .value("DOWN", BlockFace::Down)
-        .value("NORTH_EAST", BlockFace::NorthEast)
-        .value("NORTH_WEST", BlockFace::NorthWest)
-        .value("SOUTH_EAST", BlockFace::SouthEast)
-        .value("SOUTH_WEST", BlockFace::SouthWest);
+        .value("EAST", BlockFace::East);
 
     block.def_property_readonly("type", &Block::getType, "Get the type of the block.")
         .def("get_relative", py::overload_cast<int, int, int>(&Block::getRelative), py::arg("offset_x"),

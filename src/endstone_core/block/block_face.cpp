@@ -20,12 +20,8 @@ int EndstoneBlockFace::getOffsetX(BlockFace face)
 {
     switch (face) {
     case BlockFace::East:
-    case BlockFace::NorthEast:
-    case BlockFace::SouthEast:
         return 1;
     case BlockFace::West:
-    case BlockFace::NorthWest:
-    case BlockFace::SouthWest:
         return -1;
     default:
         return 0;
@@ -48,12 +44,8 @@ int EndstoneBlockFace::getOffsetZ(BlockFace face)
 {
     switch (face) {
     case BlockFace::South:
-    case BlockFace::SouthEast:
-    case BlockFace::SouthWest:
         return 1;
     case BlockFace::North:
-    case BlockFace::NorthEast:
-    case BlockFace::NorthWest:
         return -1;
     default:
         return 0;
