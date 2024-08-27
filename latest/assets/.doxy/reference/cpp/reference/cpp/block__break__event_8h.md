@@ -36,7 +36,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br> |
+| class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
 
 
 

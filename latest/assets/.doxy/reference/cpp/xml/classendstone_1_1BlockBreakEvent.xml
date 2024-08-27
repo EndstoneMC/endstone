@@ -3,6 +3,7 @@
   <compounddef id="classendstone_1_1BlockBreakEvent" kind="class" language="C++" prot="public">
     <compoundname>endstone::BlockBreakEvent</compoundname>
     <basecompoundref refid="classendstone_1_1BlockEvent" prot="public" virt="non-virtual">endstone::BlockEvent</basecompoundref>
+    <includes refid="block__break__event_8h" local="no">endstone/event/block/block_break_event.h</includes>
       <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classendstone_1_1BlockBreakEvent_1a64ca48725564c7fe543234eb464e4cbe" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -16,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="27" column="37" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="27" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="33" column="37" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="33" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -31,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="49" column="12" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="55" column="12" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -54,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="24" column="14" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="24" bodyend="24"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="30" column="14" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="30" bodyend="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1a0c013b5825d1ea1b75eaec4e2e076ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -67,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="25" column="5"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="31" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1a51513f05d20b347797c31be3fb6db1d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -85,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="28" column="18" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="28" bodyend="31"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="34" column="18" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="34" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1ac908a1470e2bcf4a767e5f9e9e327815" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -103,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="33" column="11" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="33" bodyend="36"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="39" column="11" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockBreakEvent_1a0992c8dcdec3339ac035abcf6d03a3dc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
@@ -120,12 +121,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_break_event.h" line="43" column="13" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="43" bodyend="46"/>
+        <location file="include/endstone/event/block/block_break_event.h" line="49" column="13" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="49" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Called when a block is broken by a player. </para>
     </briefdescription>
     <detaileddescription>
+<para>If a <ref refid="classendstone_1_1BlockBreakEvent" kindref="compound">BlockBreakEvent</ref> is cancelled, the block will not break and experience will not drop. </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="2">
@@ -163,7 +166,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_break_event.h" line="22" column="1" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="22" bodyend="50"/>
+    <location file="include/endstone/event/block/block_break_event.h" line="28" column="1" bodyfile="include/endstone/event/block/block_break_event.h" bodystart="28" bodyend="56"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockBreakEvent_1adde7a9bb793265f5b147190769dfaff8" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockBreakEvent</name></member>
       <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::BlockBreakEvent</scope><name>BlockEvent</name></member>

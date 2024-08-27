@@ -595,6 +595,15 @@
     <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" kind="function"><name>~PlayerEvent</name></member>
     <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" kind="function"><name>getPlayer</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerInteractActorEvent" kind="class"><name>endstone::PlayerInteractActorEvent</name>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1af02113ba1da41c5c5f0bbd22de0a09e7" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1a26c386e9a320b585013cd97d0ded093a" kind="variable"><name>actor_</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1a1af16e0f6a9d70259c6befb7b873592c" kind="function"><name>PlayerInteractActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1a3223c9370df9d9354fd174dd1918cd07" kind="function"><name>~PlayerInteractActorEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1a909cf29141d08ce11252b2ff09234f20" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1PlayerInteractActorEvent_1aaaf2ca81d80ef4e940ce615973e3d7dd" kind="function"><name>getActor</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
   </compound>
   <compound refid="classendstone_1_1PlayerJoinEvent" kind="class"><name>endstone::PlayerJoinEvent</name>
@@ -1221,6 +1230,8 @@
   <compound refid="player__death__event_8h" kind="file"><name>player_death_event.h</name>
   </compound>
   <compound refid="player__event_8h" kind="file"><name>player_event.h</name>
+  </compound>
+  <compound refid="player__interact__actor__event_8h" kind="file"><name>player_interact_actor_event.h</name>
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
   </compound>

@@ -8,8 +8,9 @@
 
 
 
+_Called when a block is broken by a player._ [More...](#detailed-description)
 
-
+* `#include <endstone/event/block/block_break_event.h>`
 
 
 
@@ -210,6 +211,13 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
+# Detailed Description
+
+
+If a [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) is cancelled, the block will not break and experience will not drop. 
+
+
+    
 ## Public Static Attributes Documentation
 
 

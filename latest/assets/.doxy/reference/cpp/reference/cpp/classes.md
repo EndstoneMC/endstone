@@ -142,6 +142,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerEvent**](classendstone_1_1PlayerEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerInventory**](classendstone_1_1PlayerInventory.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)
