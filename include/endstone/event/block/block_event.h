@@ -14,33 +14,31 @@
 
 #pragma once
 
-#include "endstone/actor/actor.h"
+#include "endstone/block/block.h"
 #include "endstone/event/event.h"
 
 namespace endstone {
 
 /**
- * @brief Represents an Actor-related event
+ * @brief Represents an Block-related event
  */
-class ActorEvent : public Event {
+class BlockEvent : public Event {
 public:
-    explicit ActorEvent(Actor &actor) : actor_(actor){};
-    ~ActorEvent() override = default;
+    explicit BlockEvent(Block &block) : block_(block){};
+    ~BlockEvent() override = default;
 
     /**
-     * @brief Returns the Actor involved in this event
+     * @brief Gets the block involved in this event.
      *
-     * @return Actor which is involved in this event
+     * @return The Block which block is involved in this event
      */
-    [[nodiscard]] Actor &getActor() const
+    [[nodiscard]] Block &getBlock() const
     {
-        return actor_;
+        return block_;
     }
 
-    // TODO(event): add getActorType method
-
 private:
-    Actor &actor_;
+    Block &block_;
 };
 
 }  // namespace endstone

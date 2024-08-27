@@ -141,12 +141,6 @@ private:
     Skin skin_;
     int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<int, FormVariant> forms_;
-
-    // right click spam fix
-    std::chrono::high_resolution_clock::time_point last_right_click_time_;
-    Vector<float> last_right_click_pos_;
-    Vector<int> last_right_click_block_pos_;
-    Vector<float> last_right_click_player_pos_;
 };
 
 }  // namespace endstone::detail

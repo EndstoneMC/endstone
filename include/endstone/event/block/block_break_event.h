@@ -14,33 +14,39 @@
 
 #pragma once
 
-#include "endstone/actor/actor.h"
-#include "endstone/event/event.h"
+#include "endstone/event/block/block_event.h"
+#include "endstone/player.h"
 
 namespace endstone {
 
-/**
- * @brief Represents an Actor-related event
- */
-class ActorEvent : public Event {
+class BlockBreakEvent : public BlockEvent {
 public:
-    explicit ActorEvent(Actor &actor) : actor_(actor){};
-    ~ActorEvent() override = default;
+    explicit BlockBreakEvent(Block &block, Player &player) : BlockEvent(block), player_(player) {}
+    ~BlockBreakEvent() override = default;
 
-    /**
-     * @brief Returns the Actor involved in this event
-     *
-     * @return Actor which is involved in this event
-     */
-    [[nodiscard]] Actor &getActor() const
+    inline static const std::string NAME = "BlockBreakEvent";
+    [[nodiscard]] std::string getEventName() const override
     {
-        return actor_;
+        return NAME;
     }
 
-    // TODO(event): add getActorType method
+    [[nodiscard]] bool isCancellable() const override
+    {
+        return true;
+    }
+
+    /**
+     * @brief Gets the Player that is breaking the block involved in this event.
+     *
+     * @return The Player that is breaking the block involved in this event
+     */
+    [[nodiscard]] Player &getPlayer() const
+    {
+        return player_;
+    }
 
 private:
-    Actor &actor_;
+    Player &player_;
 };
 
 }  // namespace endstone
