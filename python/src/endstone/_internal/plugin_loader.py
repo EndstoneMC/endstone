@@ -1,16 +1,17 @@
 import glob
 import importlib
+import os
 import os.path
 import site
-import os
 import subprocess
 import sys
-from importlib_metadata import entry_points, metadata
 from typing import List
+
 from endstone import Server
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadOrder
+from importlib_metadata import entry_points, metadata
 
 __all__ = ["PythonPluginLoader"]
 
@@ -81,7 +82,8 @@ class PythonPluginLoader(PluginLoader):
                     "pip",
                     "install",
                     file,
-                    "--user",
+                    "--prefix",
+                    os.path.join(directory, ".local"),
                     "--quiet",
                     "--no-warn-script-location",
                     "--disable-pip-version-check",
