@@ -14,23 +14,19 @@
 
 #pragma once
 
-#include "endstone/event/block/block_event.h"
-#include "endstone/player.h"
+#include "endstone/event/player/player_event.h"
 
 namespace endstone {
 
 /**
- * @brief Called when a block is broken by a player.
- *
- * <p>
- * If a BlockBreakEvent is cancelled, the block will not break and experience will not drop.
+ * @brief Represents an event that is called when a player right-clicks an actor.
  */
-class BlockBreakEvent : public BlockEvent {
+class PlayerInteractActorEvent : public PlayerEvent {
 public:
-    explicit BlockBreakEvent(Block &block, Player &player) : BlockEvent(block), player_(player) {}
-    ~BlockBreakEvent() override = default;
+    explicit PlayerInteractActorEvent(Player &player, Actor &actor) : PlayerEvent(player), actor_(actor) {}
+    ~PlayerInteractActorEvent() override = default;
 
-    inline static const std::string NAME = "BlockBreakEvent";
+    inline static const std::string NAME = "PlayerInteractActorEvent";
     [[nodiscard]] std::string getEventName() const override
     {
         return NAME;
@@ -42,17 +38,17 @@ public:
     }
 
     /**
-     * @brief Gets the Player that is breaking the block involved in this event.
+     * @brief Gets the actor that was right-clicked by the player.
      *
-     * @return The Player that is breaking the block involved in this event
+     * @return actor right-clicked by player
      */
-    [[nodiscard]] Player &getPlayer() const
+    [[nodiscard]] Actor &getActor() const
     {
-        return player_;
+        return actor_;
     }
 
 private:
-    Player &player_;
+    Actor &actor_;
 };
 
 }  // namespace endstone

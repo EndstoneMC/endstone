@@ -16,12 +16,12 @@
 
 #include <spdlog/spdlog.h>
 
-#include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/block/block.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/block/block_break_event.h"
+#include "endstone/event/player/player_interact_actor_event.h"
 
 using endstone::detail::EndstoneBlock;
 using endstone::detail::EndstoneServer;
@@ -58,6 +58,12 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
 
 bool GameMode::interact(Actor &actor, Vec3 const &location)
 {
-    // TODO(event): fire PlayerInteractActorEvent
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto &player = player_->getEndstonePlayer();
+    endstone::PlayerInteractActorEvent e{player, actor.getEndstoneActor()};
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return false;
+    }
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::interact, __FUNCDNAME__, this, actor, location);
 }
