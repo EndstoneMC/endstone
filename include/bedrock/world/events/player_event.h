@@ -84,7 +84,7 @@ template <>
 struct PlayerGameplayEvent<CoordinatorResult>
     : public ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
                                PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent,
-                               PlayerEventPlaceHolder<216>> {};
+                               PlayerEventPlaceHolder<208>> {};
 
 struct PlayerGameModeChangeEvent {};
 

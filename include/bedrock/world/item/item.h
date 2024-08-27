@@ -20,18 +20,24 @@
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_location.h"
+#include "bedrock/world/events/coordinator_result.h"
+#include "bedrock/world/events/interaction_result.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
 using BlockShape = std::int64_t;
-using InteractionResult = std::int64_t;
 
 class ItemStackBase;
 class Level;
 class Mob;
 
 class Item {
+protected:
+    // NOLINTNEXTLINE
+    ENDSTONE_HOOK CoordinatorResult _sendTryPlaceBlockEvent(Block const &, BlockSource const &, Actor const &,
+                                                            BlockPos const &, FacingID, Vec3 const &) const;
+
 public:
     virtual ~Item() = 0;
     virtual bool initServer(Json::Value const &, SemVersion const &, bool, Experiments const &) = 0;

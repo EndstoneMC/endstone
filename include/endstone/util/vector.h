@@ -182,6 +182,11 @@ public:
         return Vector<T>(scalar / v.x_, scalar / v.y_, scalar / v.z_);
     }
 
+    constexpr bool operator==(const Vector<T> &other) const
+    {
+        return (x_ == other.x_) && (y_ == other.y_) && (z_ == other.z_);
+    }
+
     /**
      * @brief Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2).
      *

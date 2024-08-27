@@ -67,7 +67,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
     void teleport(Location location) override;
-    void teleport(Actor& target) override;
+    void teleport(Actor &target) override;
     [[nodiscard]] std::int64_t getId() const override;
     [[nodiscard]] bool isDead() const override;
 
@@ -123,6 +123,7 @@ public:
         std::variant<const ::ConnectionRequest *, const ::SubClientConnectionRequest *> request);
     void disconnect();
     void updateAbilities() const;
+    bool checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos);
     [[nodiscard]] ::Player &getHandle() const;
 
 private:
@@ -140,6 +141,12 @@ private:
     Skin skin_;
     int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<int, FormVariant> forms_;
+
+    // right click spam fix
+    std::chrono::high_resolution_clock::time_point last_right_click_time_;
+    Vector<float> last_right_click_pos_;
+    Vector<int> last_right_click_block_pos_;
+    Vector<float> last_right_click_player_pos_;
 };
 
 }  // namespace endstone::detail

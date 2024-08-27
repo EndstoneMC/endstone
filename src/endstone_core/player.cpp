@@ -692,6 +692,25 @@ void EndstonePlayer::updateAbilities() const
     getHandle().sendNetworkPacket(*packet);
 }
 
+bool EndstonePlayer::checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos)
+{
+    // Reference:
+    // https://github.com/pmmp/PocketMine-MP/blob/281afb6/src/network/mcpe/handler/InGamePacketHandler.php#L476
+    using namespace std::chrono;
+    const auto now = high_resolution_clock::now();
+    const auto player_pos = getLocation();
+    const auto spam = duration_cast<milliseconds>(now - last_right_click_time_).count() < 100 &&
+                      last_right_click_pos_.distanceSquared(click_pos) < 0.00001 &&
+                      last_right_click_block_pos_ == block_pos &&
+                      last_right_click_player_pos_.distanceSquared(player_pos) < 0.00001;
+
+    last_right_click_time_ = now;
+    last_right_click_pos_ = click_pos;
+    last_right_click_block_pos_ = block_pos;
+    last_right_click_player_pos_ = {player_pos.getX(), player_pos.getY(), player_pos.getZ()};
+    return spam;
+}
+
 ::Player &EndstonePlayer::getHandle() const
 {
     return player_;

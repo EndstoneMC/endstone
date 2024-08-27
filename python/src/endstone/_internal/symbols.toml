@@ -1,4 +1,4 @@
-timestamp = 1724624540
+timestamp = 1724764746
 version = "1.21.20"
 
 [windows]
@@ -38,6 +38,12 @@ version = "1.21.20"
 "?forEachCreativeItemInstance@CreativeItemRegistry@@SAXV?$function@$$A6A_NAEAVItemInstance@@@Z@std@@@Z" = 28252896
 # FurnaceBlockActor
 "?getBurnDuration@FurnaceBlockActor@@SAMAEBVItemStackBase@@M@Z" = 37060448
+# GameMode
+"?destroyBlock@GameMode@@UEAA_NAEBVBlockPos@@E@Z" = 26498384
+"?interact@GameMode@@UEAA_NAEAVActor@@AEBVVec3@@@Z" = 26507936
+"?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@@Z" = 26535616
+# Item
+"?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 30340224
 # ItemStack
 "??0ItemStack@@QEAA@AEBVItem@@HHPEBVCompoundTag@@@Z" = 28696992
 # Level
@@ -129,6 +135,12 @@ version = "1.21.20"
 "_ZN20CreativeItemRegistry27forEachCreativeItemInstanceENSt3__18functionIFbR12ItemInstanceEEE" = 118195072
 # FurnaceBlockActor
 "_ZN17FurnaceBlockActor15getBurnDurationERK13ItemStackBasef" = 129069520
+# GameMode
+"_ZN8GameMode12destroyBlockERK8BlockPosh" = 110951824
+"_ZN8GameMode8interactER5ActorRK4Vec3" = 110947840
+"_ZN8GameMode9useItemOnER9ItemStackRK8BlockPoshRK4Vec3PK5Block" = 110960272
+# Item
+"_ZNK4Item23_sendTryPlaceBlockEventERK5BlockRK11BlockSourceRK5ActorRK8BlockPoshRK4Vec3" = 118908448
 # ItemStack
 "_ZN9ItemStackC2ERK4ItemiiPK11CompoundTag" = 119796000
 # Level
