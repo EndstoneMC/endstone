@@ -18,17 +18,31 @@
 
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/level/block/block.h"
+#include "endstone/detail/block/block.h"
+#include "endstone/detail/server.h"
+#include "endstone/event/block/block_place_event.h"
+
+using endstone::detail::EndstoneBlock;
+using endstone::detail::EndstoneServer;
 
 CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, BlockSource const &block_source,
                                                 Actor const &actor, BlockPos const &pos, FacingID face,
                                                 Vec3 const &click_pos) const
 {
-    spdlog::info("Item::_sendTryPlaceBlockEvent");
-    spdlog::info("- Block: {}", placement_block.getLegacyBlock().getFullNameId());
-    spdlog::info("- Actor: {}", CommandUtils::getActorName(actor));
-    spdlog::info("- BlockPos: {}, {}, {}", pos.x, pos.y, pos.z);
-    spdlog::info("- Face: {}", face);
-    spdlog::info("- ClickPos: {}, {}, {}", click_pos.x, click_pos.y, click_pos.z);
+    const auto &server = entt::locator<EndstoneServer>::value();
+
+    if (actor.isPlayer()) {
+        auto &player = static_cast<const Player &>(actor).getEndstonePlayer();
+        const auto block_against = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos);
+        const auto block_face = static_cast<endstone::BlockFace>(face);
+        const auto block_replaced = block_against->getRelative(block_face);
+        endstone::BlockPlaceEvent e{*block_replaced, *block_against, player};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return CoordinatorResult::Deny;
+        }
+    }
+
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Item::_sendTryPlaceBlockEvent, this, placement_block, block_source, actor, pos,
                                        face, click_pos);
 }
