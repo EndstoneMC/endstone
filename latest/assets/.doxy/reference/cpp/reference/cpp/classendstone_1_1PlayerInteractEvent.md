@@ -99,9 +99,9 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 | Type | Name |
 | ---: | :--- |
 |   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Block**](classendstone_1_1Block.md) & block\_clicked, BlockFace block\_face, const [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; & clicked\_position) <br> |
-|  BlockFace | [**getBlockFace**](#function-getblockface) () const<br> |
-|  [**Block**](classendstone_1_1Block.md) & | [**getClickedBlock**](#function-getclickedblock) () const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br> |
+|  [**Block**](classendstone_1_1Block.md) & | [**getBlockClicked**](#function-getblockclicked) () const<br>_Returns the clicked block._  |
+|  BlockFace | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
+|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |   | [**~PlayerInteractEvent**](#function-playerinteractevent) () override<br> |
@@ -251,8 +251,34 @@ inline endstone::PlayerInteractEvent::PlayerInteractEvent (
 
 
 
+### function getBlockClicked 
+
+_Returns the clicked block._ 
+```C++
+inline Block & endstone::PlayerInteractEvent::getBlockClicked () const
+```
+
+
+
+
+
+**Returns:**
+
+[**Block**](classendstone_1_1Block.md) returns the block clicked with this item. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getBlockFace 
 
+_Returns the face of the block that was clicked._ 
 ```C++
 inline BlockFace endstone::PlayerInteractEvent::getBlockFace () const
 ```
@@ -260,18 +286,16 @@ inline BlockFace endstone::PlayerInteractEvent::getBlockFace () const
 
 
 
-<hr>
+
+**Returns:**
+
+BlockFace returns the face of the block that was clicked 
 
 
 
-### function getClickedBlock 
-
-```C++
-inline Block & endstone::PlayerInteractEvent::getClickedBlock () const
-```
 
 
-
+        
 
 <hr>
 
@@ -279,12 +303,27 @@ inline Block & endstone::PlayerInteractEvent::getClickedBlock () const
 
 ### function getClickedPosition 
 
+_Gets the exact position on the block the player interacted with._ 
 ```C++
 inline Vector < float > endstone::PlayerInteractEvent::getClickedPosition () const
 ```
 
 
 
+All vector components are between 0.0 and 1.0 inclusive.
+
+
+
+
+**Returns:**
+
+the clicked position. 
+
+
+
+
+
+        
 
 <hr>
 

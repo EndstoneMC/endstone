@@ -49,7 +49,7 @@ public:
         return true;
     }
 
-    [[nodiscard]] Block &getClickedBlock() const
+    [[nodiscard]] Block &getBlockClicked() const
     {
         return block_clicked_;
     }

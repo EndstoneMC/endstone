@@ -625,7 +625,7 @@
     <member refid="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" kind="function"><name>~PlayerInteractEvent</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a09cf28f7e1b1467aed92cb5039906105" kind="function"><name>isCancellable</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1aeb9311f135f0eac12cda20b716a577d7" kind="function"><name>getClickedBlock</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1ae0019d5603ce60d5be74124aba96944c" kind="function"><name>getBlockClicked</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" kind="function"><name>getBlockFace</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a28978de3d4a8b28750df329c3bd79106" kind="function"><name>getClickedPosition</name></member>
   </compound>
