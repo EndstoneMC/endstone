@@ -22,6 +22,7 @@
 #include "endstone/detail/server.h"
 #include "endstone/event/block/block_break_event.h"
 #include "endstone/event/player/player_interact_actor_event.h"
+#include "endstone/event/player/player_interact_event.h"
 
 using endstone::detail::EndstoneBlock;
 using endstone::detail::EndstoneServer;
@@ -43,8 +44,20 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
                                       Block const *target_block)
 {
     InteractionResult result = {0};
+
+    const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstonePlayer();
-    // TODO(event): fire PlayerInteractEvent
+    const auto block = EndstoneBlock::at(player.getHandle().getDimension().getBlockSourceFromMainChunkSource(), at);
+    endstone::PlayerInteractEvent e{
+        player,
+        *block,
+        static_cast<endstone::BlockFace>(face),
+        {hit.x, hit.y, hit.z},
+    };
+    server.getPluginManager().callEvent(e);
+    if (e.isCancelled()) {
+        return result;
+    }
 
 #if _WIN32
     ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&GameMode::useItemOn, __FUNCDNAME__, result, this, item, at, face, hit,
