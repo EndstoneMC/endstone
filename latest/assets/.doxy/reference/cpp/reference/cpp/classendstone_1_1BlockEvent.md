@@ -17,7 +17,7 @@ _Represents an Block-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::BlockBreakEvent](classendstone_1_1BlockBreakEvent.md)
+Inherited by the following classes: [endstone::BlockBreakEvent](classendstone_1_1BlockBreakEvent.md),  [endstone::BlockPlaceEvent](classendstone_1_1BlockPlaceEvent.md)
 
 
 

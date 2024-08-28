@@ -65,7 +65,7 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
+      <node id="5">
         <label>include/endstone/level/dimension.h</label>
         <link refid="dimension_8h_source"/>
       </node>
@@ -74,6 +74,12 @@
         <link refid="block__event_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/block/block_place_event.h</label>
+        <link refid="block__place__event_8h_source"/>
       </node>
       <node id="3">
         <label>include/endstone/event/block/block_break_event.h</label>
@@ -84,7 +90,7 @@
         <link refid="block_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

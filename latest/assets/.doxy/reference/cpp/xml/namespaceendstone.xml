@@ -20,6 +20,7 @@
     <innerclass refid="classendstone_1_1ActorTeleportEvent" prot="public">endstone::ActorTeleportEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockBreakEvent" prot="public">endstone::BlockBreakEvent</innerclass>
     <innerclass refid="classendstone_1_1BlockEvent" prot="public">endstone::BlockEvent</innerclass>
+    <innerclass refid="classendstone_1_1BlockPlaceEvent" prot="public">endstone::BlockPlaceEvent</innerclass>
     <innerclass refid="classendstone_1_1Event" prot="public">endstone::Event</innerclass>
     <innerclass refid="classendstone_1_1EventHandler" prot="public">endstone::EventHandler</innerclass>
     <innerclass refid="classendstone_1_1HandlerList" prot="public">endstone::HandlerList</innerclass>
@@ -28,6 +29,7 @@
     <innerclass refid="classendstone_1_1PlayerDeathEvent" prot="public">endstone::PlayerDeathEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerEvent" prot="public">endstone::PlayerEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerInteractActorEvent" prot="public">endstone::PlayerInteractActorEvent</innerclass>
+    <innerclass refid="classendstone_1_1PlayerInteractEvent" prot="public">endstone::PlayerInteractEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerJoinEvent" prot="public">endstone::PlayerJoinEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerLoginEvent" prot="public">endstone::PlayerLoginEvent</innerclass>
     <innerclass refid="classendstone_1_1PlayerQuitEvent" prot="public">endstone::PlayerQuitEvent</innerclass>

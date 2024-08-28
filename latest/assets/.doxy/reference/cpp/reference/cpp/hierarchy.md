@@ -21,11 +21,13 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._ 
     * **class** [**endstone::BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
         * **class** [**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._ 
+        * **class** [**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) _Called when a block is placed by a player._ 
     * **class** [**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md) _Represents a player related event._     
         * **class** [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) _Called when a player sends a chat message._ 
         * **class** [**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) _Called whenever a player runs a command._ 
         * **class** [**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) _Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._
         * **class** [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) _Represents an event that is called when a player right-clicks an actor._ 
+        * **class** [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) _Represents an event that is called when a player right-clicks a block._ 
         * **class** [**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) _Called when a player joins a server._ 
         * **class** [**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) _Called when a player attempts to login in._ 
         * **class** [**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) _Called when a player leaves a server._ 

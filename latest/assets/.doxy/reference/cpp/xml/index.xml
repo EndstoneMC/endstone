@@ -102,6 +102,18 @@
     <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" kind="function"><name>~BlockEvent</name></member>
     <member refid="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" kind="function"><name>getBlock</name></member>
   </compound>
+  <compound refid="classendstone_1_1BlockPlaceEvent" kind="class"><name>endstone::BlockPlaceEvent</name>
+    <member refid="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a28e206da4fec970a7b0a145bc42049a0" kind="variable"><name>placed_against_</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" kind="variable"><name>player_</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a1241f96dca2583c0de81af8915cbe15d" kind="function"><name>BlockPlaceEvent</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" kind="function"><name>~BlockPlaceEvent</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a78251df1d2239d862a7d419b0d1e2fdf" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a15b9ab1abf8a86434c186640a6344fea" kind="function"><name>getPlayer</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1a86a6a402e853085647c1c048996d39e0" kind="function"><name>getBlockReplaced</name></member>
+    <member refid="classendstone_1_1BlockPlaceEvent_1acf32b8f7441ea9a85f0ecfcb4abd8474" kind="function"><name>getBlockAgainst</name></member>
+  </compound>
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
     <member refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kind="function"><name>getTitle</name></member>
@@ -603,6 +615,19 @@
     <member refid="classendstone_1_1PlayerInteractActorEvent_1ab38b49eafd6046d3baf2d147d2dd6f29" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerInteractActorEvent_1a909cf29141d08ce11252b2ff09234f20" kind="function"><name>isCancellable</name></member>
     <member refid="classendstone_1_1PlayerInteractActorEvent_1aaaf2ca81d80ef4e940ce615973e3d7dd" kind="function"><name>getActor</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerInteractEvent" kind="class"><name>endstone::PlayerInteractEvent</name>
+    <member refid="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1adc898999ef16cf149010759c413005b4" kind="variable"><name>block_clicked_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" kind="variable"><name>block_face_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" kind="variable"><name>clicked_position_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a0ed77dc780689c09d6c6f1a845c8ed21" kind="function"><name>PlayerInteractEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" kind="function"><name>~PlayerInteractEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a09cf28f7e1b1467aed92cb5039906105" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1aeb9311f135f0eac12cda20b716a577d7" kind="function"><name>getClickedBlock</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" kind="function"><name>getBlockFace</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a28978de3d4a8b28750df329c3bd79106" kind="function"><name>getClickedPosition</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerInventory" kind="class"><name>endstone::PlayerInventory</name>
   </compound>
@@ -1215,6 +1240,8 @@
   </compound>
   <compound refid="block__event_8h" kind="file"><name>block_event.h</name>
   </compound>
+  <compound refid="block__place__event_8h" kind="file"><name>block_place_event.h</name>
+  </compound>
   <compound refid="event_8h" kind="file"><name>event.h</name>
   </compound>
   <compound refid="event__handler_8h" kind="file"><name>event_handler.h</name>
@@ -1232,6 +1259,8 @@
   <compound refid="player__event_8h" kind="file"><name>player_event.h</name>
   </compound>
   <compound refid="player__interact__actor__event_8h" kind="file"><name>player_interact_actor_event.h</name>
+  </compound>
+  <compound refid="player__interact__event_8h" kind="file"><name>player_interact_event.h</name>
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
   </compound>

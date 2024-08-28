@@ -16,6 +16,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
+    * **class** [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) _Called when a block is placed by a player._     
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     
     * **class** [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._    
     * **struct** [**ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._     
@@ -51,6 +52,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) _Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._    
     * **class** [**PlayerEvent**](classendstone_1_1PlayerEvent.md) _Represents a player related event._     
     * **class** [**PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md) _Represents an event that is called when a player right-clicks an actor._     
+    * **class** [**PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md) _Represents an event that is called when a player right-clicks a block._     
     * **class** [**PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._
     * **class** [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) _Called when a player joins a server._     
     * **class** [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) _Called when a player attempts to login in._     
