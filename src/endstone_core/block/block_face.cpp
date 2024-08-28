@@ -14,6 +14,8 @@
 
 #include "endstone/detail/block/block_face.h"
 
+#include <stdexcept>
+
 namespace endstone::detail {
 
 int EndstoneBlockFace::getOffsetX(BlockFace face)
@@ -49,6 +51,26 @@ int EndstoneBlockFace::getOffsetZ(BlockFace face)
         return -1;
     default:
         return 0;
+    }
+}
+
+BlockFace EndstoneBlockFace::getOpposite(BlockFace face)
+{
+    switch (face) {
+    case BlockFace::Down:
+        return BlockFace::Up;
+    case BlockFace::Up:
+        return BlockFace::Down;
+    case BlockFace::North:
+        return BlockFace::South;
+    case BlockFace::South:
+        return BlockFace::North;
+    case BlockFace::West:
+        return BlockFace::East;
+    case BlockFace::East:
+        return BlockFace::West;
+    default:
+        throw std::invalid_argument("Invalid face");
     }
 }
 }  // namespace endstone::detail

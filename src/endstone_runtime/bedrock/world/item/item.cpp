@@ -19,10 +19,12 @@
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/world/level/block/block.h"
 #include "endstone/detail/block/block.h"
+#include "endstone/detail/block/block_face.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/block/block_place_event.h"
 
 using endstone::detail::EndstoneBlock;
+using endstone::detail::EndstoneBlockFace;
 using endstone::detail::EndstoneServer;
 
 CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, BlockSource const &block_source,
@@ -33,9 +35,9 @@ CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, Bl
 
     if (actor.isPlayer()) {
         auto &player = static_cast<const Player &>(actor).getEndstonePlayer();
-        const auto block_against = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos);
+        const auto block_replaced = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos);
         const auto block_face = static_cast<endstone::BlockFace>(face);
-        const auto block_replaced = block_against->getRelative(block_face);
+        const auto block_against = block_replaced->getRelative(EndstoneBlockFace::getOpposite(block_face));
         endstone::BlockPlaceEvent e{*block_replaced, *block_against, player};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {

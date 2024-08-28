@@ -23,6 +23,7 @@ public:
     static int getOffsetX(BlockFace face);
     static int getOffsetY(BlockFace face);
     static int getOffsetZ(BlockFace face);
+    static BlockFace getOpposite(BlockFace face);
 };
 
 }  // namespace endstone::detail
