@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockFace', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -335,19 +335,32 @@ class Block:
         """
         Gets the z-coordinate of this block
         """
+class BlockBreakEvent(BlockEvent):
+    """
+    Called when a block is broken by a player.
+    """
+    @property
+    def player(self) -> Player:
+        """
+        Gets the Player that is breaking the block involved in this event.
+        """
+class BlockEvent(Event):
+    """
+    Represents an Block-related event
+    """
+    @property
+    def block(self) -> Block:
+        """
+        Gets the block involved in this event.
+        """
 class BlockFace:
-    DOWN: typing.ClassVar[BlockFace]  # value = <BlockFace.DOWN: 5>
-    EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.EAST: 1>
-    NORTH: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH: 0>
-    NORTH_EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH_EAST: 6>
-    NORTH_WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH_WEST: 7>
-    SELF: typing.ClassVar[BlockFace]  # value = <BlockFace.SELF: -1>
-    SOUTH: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH: 2>
-    SOUTH_EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH_EAST: 8>
-    SOUTH_WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH_WEST: 9>
-    UP: typing.ClassVar[BlockFace]  # value = <BlockFace.UP: 4>
-    WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.WEST: 3>
-    __members__: typing.ClassVar[dict[str, BlockFace]]  # value = {'SELF': <BlockFace.SELF: -1>, 'NORTH': <BlockFace.NORTH: 0>, 'EAST': <BlockFace.EAST: 1>, 'SOUTH': <BlockFace.SOUTH: 2>, 'WEST': <BlockFace.WEST: 3>, 'UP': <BlockFace.UP: 4>, 'DOWN': <BlockFace.DOWN: 5>, 'NORTH_EAST': <BlockFace.NORTH_EAST: 6>, 'NORTH_WEST': <BlockFace.NORTH_WEST: 7>, 'SOUTH_EAST': <BlockFace.SOUTH_EAST: 8>, 'SOUTH_WEST': <BlockFace.SOUTH_WEST: 9>}
+    DOWN: typing.ClassVar[BlockFace]  # value = <BlockFace.DOWN: 0>
+    EAST: typing.ClassVar[BlockFace]  # value = <BlockFace.EAST: 5>
+    NORTH: typing.ClassVar[BlockFace]  # value = <BlockFace.NORTH: 2>
+    SOUTH: typing.ClassVar[BlockFace]  # value = <BlockFace.SOUTH: 3>
+    UP: typing.ClassVar[BlockFace]  # value = <BlockFace.UP: 1>
+    WEST: typing.ClassVar[BlockFace]  # value = <BlockFace.WEST: 4>
+    __members__: typing.ClassVar[dict[str, BlockFace]]  # value = {'DOWN': <BlockFace.DOWN: 0>, 'UP': <BlockFace.UP: 1>, 'NORTH': <BlockFace.NORTH: 2>, 'SOUTH': <BlockFace.SOUTH: 3>, 'WEST': <BlockFace.WEST: 4>, 'EAST': <BlockFace.EAST: 5>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
@@ -374,6 +387,25 @@ class BlockFace:
     @property
     def value(self) -> int:
         ...
+class BlockPlaceEvent(BlockEvent):
+    """
+    Called when a block is placed by a player.
+    """
+    @property
+    def block_against(self) -> Block:
+        """
+        Gets the block that this block was placed against
+        """
+    @property
+    def block_replaced(self) -> Block:
+        """
+        Gets the block which was replaced.
+        """
+    @property
+    def player(self) -> Player:
+        """
+        Gets the player who placed the block involved in this event.
+        """
 class BossBar:
     """
     Represents a boss bar that is displayed to players.
@@ -1759,6 +1791,34 @@ class PlayerEvent(Event):
     def player(self) -> Player:
         """
         Returns the player involved in this event.
+        """
+class PlayerInteractActorEvent(PlayerEvent):
+    """
+    Represents an event that is called when a player right-clicks an actor.
+    """
+    @property
+    def actor(self) -> Actor:
+        """
+        Gets the actor that was right-clicked by the player.
+        """
+class PlayerInteractEvent(PlayerEvent):
+    """
+    Represents an event that is called when a player right-clicks a block.
+    """
+    @property
+    def block_clicked(self) -> Block:
+        """
+        Returns the clicked block
+        """
+    @property
+    def block_face(self) -> BlockFace:
+        """
+        Returns the face of the block that was clicked
+        """
+    @property
+    def clicked_position(self) -> Vector:
+        """
+        Gets the exact position on the block the player interacted with.
         """
 class PlayerInventory(Inventory):
     """

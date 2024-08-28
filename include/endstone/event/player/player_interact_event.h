@@ -42,16 +42,33 @@ public:
         return true;
     }
 
-    [[nodiscard]] Block &getClickedBlock() const
+    /**
+     * @brief Returns the clicked block
+     *
+     * @return Block returns the block clicked with this item.
+     */
+    [[nodiscard]] Block &getBlockClicked() const
     {
         return block_clicked_;
     }
 
+    /**
+     * @brief Returns the face of the block that was clicked
+     *
+     * @return BlockFace returns the face of the block that was clicked
+     */
     [[nodiscard]] BlockFace getBlockFace() const
     {
         return block_face_;
     }
 
+    /**
+     * @brief Gets the exact position on the block the player interacted with.
+     * <p>
+     * All vector components are between 0.0 and 1.0 inclusive.
+     *
+     * @return the clicked position.
+     */
     [[nodiscard]] Vector<float> getClickedPosition() const
     {
         return clicked_position_;

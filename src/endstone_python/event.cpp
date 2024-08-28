@@ -22,11 +22,16 @@
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/actor/actor_teleport_event.h"
+#include "endstone/event/block/block_break_event.h"
+#include "endstone/event/block/block_event.h"
+#include "endstone/event/block/block_place_event.h"
 #include "endstone/event/event_priority.h"
 #include "endstone/event/player/player_chat_event.h"
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_event.h"
+#include "endstone/event/player/player_interact_actor_event.h"
+#include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
@@ -69,7 +74,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                "should be made under this priority.");
 
     py::class_<ActorEvent, Event>(m, "ActorEvent", "Represents an Actor-related event.")
-        .def_property_readonly("actor", &ActorRemoveEvent::getActor, py::return_value_policy::reference,
+        .def_property_readonly("actor", &ActorEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
     py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
     py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
@@ -80,6 +85,20 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                       "Gets or sets the location that this actor moved from.")
         .def_property("to_location", &ActorTeleportEvent::getTo, &ActorTeleportEvent::setTo,
                       "Gets or sets the location that this actor moved to.");
+
+    py::class_<BlockEvent, Event>(m, "BlockEvent", "Represents an Block-related event")
+        .def_property_readonly("block", &BlockEvent::getBlock, py::return_value_policy::reference,
+                               "Gets the block involved in this event.");
+    py::class_<BlockBreakEvent, BlockEvent>(m, "BlockBreakEvent", "Called when a block is broken by a player.")
+        .def_property_readonly("player", &BlockBreakEvent::getPlayer, py::return_value_policy::reference,
+                               "Gets the Player that is breaking the block involved in this event.");
+    py::class_<BlockPlaceEvent, BlockEvent>(m, "BlockPlaceEvent", "Called when a block is placed by a player.")
+        .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,
+                               "Gets the player who placed the block involved in this event.")
+        .def_property_readonly("block_replaced", &BlockPlaceEvent::getBlockReplaced, py::return_value_policy::reference,
+                               "Gets the block which was replaced.")
+        .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,
+                               "Gets the block that this block was placed against");
 
     py::class_<PlayerEvent, Event>(m, "PlayerEvent", "Represents a player related event")
         .def_property_readonly("player", &PlayerEvent::getPlayer, py::return_value_policy::reference,
@@ -93,6 +112,18 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerDeathEvent, ActorDeathEvent, PlayerEvent>(m, "PlayerDeathEvent", "Called when a player dies")
         .def_property("death_message", &PlayerDeathEvent::getDeathMessage, &PlayerDeathEvent::setDeathMessage,
                       "Gets or sets the death message that will appear to everyone on the server.");
+    py::class_<PlayerInteractEvent, PlayerEvent>(
+        m, "PlayerInteractEvent", "Represents an event that is called when a player right-clicks a block.")
+        .def_property_readonly("block_clicked", &PlayerInteractEvent::getBlockClicked,
+                               py::return_value_policy::reference, "Returns the clicked block")
+        .def_property_readonly("block_face", &PlayerInteractEvent::getBlockFace,
+                               "Returns the face of the block that was clicked")
+        .def_property_readonly("clicked_position", &PlayerInteractEvent::getClickedPosition,
+                               "Gets the exact position on the block the player interacted with.");
+    py::class_<PlayerInteractActorEvent, PlayerEvent>(
+        m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
+        .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
+                               "Gets the actor that was right-clicked by the player.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server");
     py::class_<PlayerLoginEvent, PlayerEvent>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
