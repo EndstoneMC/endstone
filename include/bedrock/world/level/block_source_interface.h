@@ -64,9 +64,11 @@ public:
                                           optional_ref<GetCollisionShapeInterface const>) const = 0;
     [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
     virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
+#if _WIN32
     virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
                                                     std::vector<AABB> *) = 0;
+#endif
     virtual WeakRef<BlockSource> getWeakRef() = 0;
     virtual void addListener(BlockSourceListener &) = 0;
     virtual void removeListener(BlockSourceListener &) = 0;
@@ -84,6 +86,11 @@ public:
     [[nodiscard]] virtual LevelChunk *getChunk(ChunkPos const &) const = 0;
     virtual Level &getLevel() = 0;
     [[nodiscard]] virtual ILevel &getILevel() const = 0;
+#if __linux__
+    virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
+    virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
+                                                    std::vector<AABB> *) = 0;
+#endif
     virtual HitResult clip(Vec3 const &, Vec3 const &, bool, ShapeType, int, bool, bool, Actor *,
                            std::function<bool(BlockSource const &, Block const &, bool)> const &) const = 0;
     virtual ChunkSource &getChunkSource() = 0;
