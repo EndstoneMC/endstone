@@ -6,7 +6,7 @@ repo_name: EndstoneMC/endstone
 repo_url: https://github.com/EndstoneMC/endstone
 edit_uri: edit/main/docs/
 
-copyright: Copyright &copy; 2023 - 2024 Vincent Wu
+copyright: Copyright &copy; 2023 - 2024 EndstoneMC
 
 extra:
   social:
@@ -95,6 +95,7 @@ theme:
   logo: assets/logo.png
   favicon: assets/logo.png
   features:
+    - announce.dismiss
     - content.action.edit
     - content.action.view
     - content.code.annotate
