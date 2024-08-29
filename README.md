@@ -81,6 +81,34 @@ pip install endstone
 endstone
 ```
 
+### 🐧 Linux
+
+Endstone on linux can be installed using an autoinstaller script
+Operating systems supported by the autoinstaller (not distros of them) are:
+- Ubuntu
+- Debian
+- Fedora
+- Arch
+
+install using wget
+```shell
+wget https://raw.githubusercontent.com/legitbox/endstone/main/autoinstall.sh
+sudo chmod +x autoinstall.sh
+wget https://raw.githubusercontent.com/legitbox/endstone/main/start.sh
+sudo chmod +x autoinstall.sh
+./autoinstall.sh
+```
+
+install using curl
+```shell
+curl -O https://raw.githubusercontent.com/legitbox/endstone/main/autoinstall.sh
+sudo chmod +x autoinstall.sh
+curl -O https://raw.githubusercontent.com/legitbox/endstone/main/start.sh
+sudo chmod +x autoinstall.sh
+./autoinstall.sh
+```
+
+
 ### 🐳 Docker
 
 [![Docker](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/docker.yml)
