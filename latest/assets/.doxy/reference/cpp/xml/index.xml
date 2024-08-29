@@ -350,6 +350,17 @@
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
   </compound>
+  <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
+    <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
+    <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
+    <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a76b91ae72d897786c73f4969203d1858" kind="function"><name>ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" kind="function"><name>~ItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
+    <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" kind="function"><name>setAmount</name></member>
+  </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>
     <member refid="classendstone_1_1Label_1a8fd70587665fc80ab3c25e6fb4ff96fb" kind="function"><name>Label</name></member>
@@ -618,14 +629,18 @@
   </compound>
   <compound refid="classendstone_1_1PlayerInteractEvent" kind="class"><name>endstone::PlayerInteractEvent</name>
     <member refid="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1adc898999ef16cf149010759c413005b4" kind="variable"><name>block_clicked_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1aa0155e6e15c31b165d0eebd9edb4c08f" kind="variable"><name>item_</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1ae64db9722300dfb44fb17e3836661bf7" kind="variable"><name>block_clicked_</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" kind="variable"><name>block_face_</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" kind="variable"><name>clicked_position_</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1a0ed77dc780689c09d6c6f1a845c8ed21" kind="function"><name>PlayerInteractEvent</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1aacb663da4d203650ae1a4cbd2ba5d483" kind="function"><name>PlayerInteractEvent</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" kind="function"><name>~PlayerInteractEvent</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a09cf28f7e1b1467aed92cb5039906105" kind="function"><name>isCancellable</name></member>
-    <member refid="classendstone_1_1PlayerInteractEvent_1ae0019d5603ce60d5be74124aba96944c" kind="function"><name>getBlockClicked</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" kind="function"><name>hasItem</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a7d0de2cc564bce6ccfa23d5d487efddc" kind="function"><name>getItemStack</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" kind="function"><name>hasBlock</name></member>
+    <member refid="classendstone_1_1PlayerInteractEvent_1aeefaab7597072b69d658265c26f9916e" kind="function"><name>getBlockClicked</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" kind="function"><name>getBlockFace</name></member>
     <member refid="classendstone_1_1PlayerInteractEvent_1a28978de3d4a8b28750df329c3bd79106" kind="function"><name>getClickedPosition</name></member>
   </compound>
@@ -1313,6 +1328,8 @@
   <compound refid="game__mode_8h" kind="file"><name>game_mode.h</name>
   </compound>
   <compound refid="inventory_8h" kind="file"><name>inventory.h</name>
+  </compound>
+  <compound refid="item__stack_8h" kind="file"><name>item_stack.h</name>
   </compound>
   <compound refid="player__inventory_8h" kind="file"><name>player_inventory.h</name>
   </compound>

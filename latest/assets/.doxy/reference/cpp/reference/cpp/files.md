@@ -79,6 +79,7 @@ Here is a list of all files with brief descriptions:
             * **file** [**modal\_form.h**](modal__form_8h.md)     
         * **dir** [**inventory**](dir_d1e84b530b14f41e8b6f5ec1b5dee76c.md)     
             * **file** [**inventory.h**](inventory_8h.md)     
+            * **file** [**item\_stack.h**](item__stack_8h.md)     
             * **file** [**player\_inventory.h**](player__inventory_8h.md)     
         * **dir** [**level**](dir_8e239ca1e5fd0d936d66a30330d3a329.md)     
             * **file** [**dimension.h**](dimension_8h.md)     

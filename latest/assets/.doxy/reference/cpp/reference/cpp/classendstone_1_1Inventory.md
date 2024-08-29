@@ -53,7 +53,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 | Type | Name |
 | ---: | :--- |
-| virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Returns the maximum stack size for an ItemStack in this inventory._  |
+| virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Returns the maximum stack size for an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _in this inventory._ |
 | virtual int | [**getSize**](#function-getsize) () const = 0<br>_Returns the size of the inventory._  |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
 
@@ -91,7 +91,7 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 ### function getMaxStackSize 
 
-_Returns the maximum stack size for an ItemStack in this inventory._ 
+_Returns the maximum stack size for an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _in this inventory._
 ```C++
 virtual int endstone::Inventory::getMaxStackSize () const = 0
 ```
@@ -102,7 +102,7 @@ virtual int endstone::Inventory::getMaxStackSize () const = 0
 
 **Returns:**
 
-The maximum size for an ItemStack in this inventory. 
+The maximum size for an [**ItemStack**](classendstone_1_1ItemStack.md) in this inventory. 
 
 
 

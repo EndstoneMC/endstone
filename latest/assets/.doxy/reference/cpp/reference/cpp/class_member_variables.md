@@ -9,6 +9,7 @@
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
+* **amount\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **authors\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -103,6 +104,7 @@
 * **icon\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Italic** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **ignore\_cancelled\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
+* **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 
 
 ## l
@@ -206,7 +208,7 @@
 * **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
-* **type\_** ([**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
+* **type\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
 * **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 

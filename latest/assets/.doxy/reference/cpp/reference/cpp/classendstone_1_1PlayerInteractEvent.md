@@ -98,11 +98,14 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, [**Block**](classendstone_1_1Block.md) & block\_clicked, BlockFace block\_face, const [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; & clicked\_position) <br> |
-|  [**Block**](classendstone_1_1Block.md) & | [**getBlockClicked**](#function-getblockclicked) () const<br>_Returns the clicked block._  |
+|   | [**PlayerInteractEvent**](#function-playerinteractevent) ([**Player**](classendstone_1_1Player.md) & player, std::unique\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item, std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; block\_clicked, BlockFace block\_face, const [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; & clicked\_position) <br> |
+|  [**Block**](classendstone_1_1Block.md) \* | [**getBlockClicked**](#function-getblockclicked) () const<br>_Returns the clicked block._  |
 |  BlockFace | [**getBlockFace**](#function-getblockface) () const<br>_Returns the face of the block that was clicked._  |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getClickedPosition**](#function-getclickedposition) () const<br>_Gets the exact position on the block the player interacted with._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|  [**ItemStack**](classendstone_1_1ItemStack.md) \* | [**getItemStack**](#function-getitemstack) () const<br>_Returns the item in hand represented by this event._  |
+|  bool | [**hasBlock**](#function-hasblock) () const<br>_Check if this event involved a block._  |
+|  bool | [**hasItem**](#function-hasitem) () const<br>_Check if this event involved an item._  |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |   | [**~PlayerInteractEvent**](#function-playerinteractevent) () override<br> |
 
@@ -238,7 +241,8 @@ const std::string endstone::PlayerInteractEvent::NAME;
 ```C++
 inline endstone::PlayerInteractEvent::PlayerInteractEvent (
     Player & player,
-    Block & block_clicked,
+    std::unique_ptr< ItemStack > item,
+    std::unique_ptr< Block > block_clicked,
     BlockFace block_face,
     const Vector < float > & clicked_position
 ) 
@@ -255,7 +259,7 @@ inline endstone::PlayerInteractEvent::PlayerInteractEvent (
 
 _Returns the clicked block._ 
 ```C++
-inline Block & endstone::PlayerInteractEvent::getBlockClicked () const
+inline Block * endstone::PlayerInteractEvent::getBlockClicked () const
 ```
 
 
@@ -354,6 +358,81 @@ name of this event
         
 Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-geteventname)
 
+
+<hr>
+
+
+
+### function getItemStack 
+
+_Returns the item in hand represented by this event._ 
+```C++
+inline ItemStack * endstone::PlayerInteractEvent::getItemStack () const
+```
+
+
+
+
+
+**Returns:**
+
+[**ItemStack**](classendstone_1_1ItemStack.md) the item used 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasBlock 
+
+_Check if this event involved a block._ 
+```C++
+inline bool endstone::PlayerInteractEvent::hasBlock () const
+```
+
+
+
+
+
+**Returns:**
+
+boolean true if it did 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function hasItem 
+
+_Check if this event involved an item._ 
+```C++
+inline bool endstone::PlayerInteractEvent::hasItem () const
+```
+
+
+
+
+
+**Returns:**
+
+boolean true if it did 
+
+
+
+
+
+        
 
 <hr>
 

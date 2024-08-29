@@ -41,10 +41,10 @@
         <argsstring>() const =0</argsstring>
         <name>getMaxStackSize</name>
         <briefdescription>
-<para>Returns the maximum stack size for an ItemStack in this inventory. </para>
+<para>Returns the maximum stack size for an <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> in this inventory. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The maximum size for an ItemStack in this inventory. </para>
+<para><simplesect kind="return"><para>The maximum size for an <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> in this inventory. </para>
 </simplesect>
 </para>
         </detaileddescription>
