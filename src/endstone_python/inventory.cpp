@@ -16,6 +16,7 @@
 
 #include <pybind11/pybind11.h>
 
+#include "endstone/inventory/item_stack.h"
 #include "endstone/inventory/player_inventory.h"
 
 namespace py = pybind11;
@@ -24,6 +25,14 @@ namespace endstone::detail {
 
 void init_inventory(py::module_ &m)
 {
+    py::class_<ItemStack>(m, "ItemStack", "Represents a stack of items.")
+        .def(py::init<std::string, int>(), py::arg("type") = "minecraft:air", py::arg("amount") = 1)
+
+        .def_property("type", &ItemStack::getType, &ItemStack::setType, "Gets or sets the type of this item.")
+
+        .def_property("amount", &ItemStack::getAmount, &ItemStack::setAmount,
+                      "Gets or sets the amount of items in this stack.");
+
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
         .def_property_readonly("size", &Inventory::getSize, "Returns the size of the inventory")
         .def_property_readonly("max_stack_size", &Inventory::getMaxStackSize,

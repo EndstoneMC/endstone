@@ -58,7 +58,7 @@ public:
      *
      * @return ItemStack the item used
      */
-    [[nodiscard]] ItemStack *getItemStack() const
+    [[nodiscard]] ItemStack *getItem() const
     {
         return item_.get();
     }
@@ -78,7 +78,7 @@ public:
      *
      * @return Block returns the block clicked with this item.
      */
-    [[nodiscard]] Block *getBlockClicked() const
+    [[nodiscard]] Block *getBlock() const
     {
         return block_clicked_.get();
     }
