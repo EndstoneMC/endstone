@@ -87,7 +87,7 @@ Endstone can be easily installed on Linux using an autoinstaller script.
 
 #### Supported Operating Systems
 
-The autoinstaller supports the following operating systems (note: these are the OSes, not their derivatives):
+The autoinstaller supports the following operating systems (note: these are the OSes, not their distros):
 
 - Ubuntu
 - Debian
