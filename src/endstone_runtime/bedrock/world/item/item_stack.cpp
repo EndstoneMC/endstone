@@ -20,7 +20,8 @@
 
 std::unique_ptr<ItemStack> ItemStack::create(Item const &item, int count, int aux_value, CompoundTag const *user_data)
 {
-    ENDSTONE_FACTORY_IMPLEMENT(ItemStack, item, count, aux_value, user_data);
+    std::unique_ptr<ItemStack> (*fp)(Item const &, int, int, CompoundTag const *) = &ItemStack::create;
+    ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(ItemStack, fp, item, count, aux_value, user_data);
 }
 
 std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, int aux_value,
