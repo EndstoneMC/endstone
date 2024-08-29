@@ -83,31 +83,54 @@ endstone
 
 ### 🐧 Linux
 
-Endstone on linux can be installed using an autoinstaller script
-Operating systems supported by the autoinstaller (not distros of them) are:
+Endstone can be easily installed on Linux using an autoinstaller script.
+
+#### Supported Operating Systems
+
+The autoinstaller supports the following operating systems (note: these are the OSes, not their derivatives):
+
 - Ubuntu
 - Debian
 - Fedora
-- Arch
+- Arch Linux
 
-install using wget
+#### Download the Installer
+
+You can use either `wget` or `curl` to download the required scripts.
+
+**Using `wget`:**
+
 ```shell
-wget https://raw.githubusercontent.com/legitbox/endstone/main/autoinstall.sh
+wget https://raw.githubusercontent.com/EndstoneMC/endstone/main/scripts/autoinstall.sh
 sudo chmod +x autoinstall.sh
-wget https://raw.githubusercontent.com/legitbox/endstone/main/start.sh
+wget https://raw.githubusercontent.com/EndstoneMC/endstone/main/scripts/start.sh
+sudo chmod +x start.sh
+```
+
+**Using `curl`:**
+
+```shell
+curl -O https://raw.githubusercontent.com/EndstoneMC/endstone/main/scripts/autoinstall.sh
 sudo chmod +x autoinstall.sh
+curl -O https://raw.githubusercontent.com/EndstoneMC/endstone/main/scripts/start.sh
+sudo chmod +x start.sh
+```
+
+#### Install and Start Endstone
+
+Once the download is complete, run the following command to install Endstone:
+
+```shell
 ./autoinstall.sh
 ```
 
-install using curl
-```shell
-curl -O https://raw.githubusercontent.com/legitbox/endstone/main/autoinstall.sh
-sudo chmod +x autoinstall.sh
-curl -O https://raw.githubusercontent.com/legitbox/endstone/main/start.sh
-sudo chmod +x autoinstall.sh
-./autoinstall.sh
-```
+This will install Endstone and automatically start the server after installation.
 
+If you want to start Endstone at any time, simply run:
+
+```shell
+./start.sh
+```
 
 ### 🐳 Docker
 
