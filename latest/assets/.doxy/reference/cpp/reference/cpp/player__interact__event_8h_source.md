@@ -55,7 +55,7 @@ public:
         return item_ != nullptr;
     }
 
-    [[nodiscard]] ItemStack *getItemStack() const
+    [[nodiscard]] ItemStack *getItem() const
     {
         return item_.get();
     }
@@ -65,7 +65,7 @@ public:
         return block_clicked_ != nullptr;
     }
 
-    [[nodiscard]] Block *getBlockClicked() const
+    [[nodiscard]] Block *getBlock() const
     {
         return block_clicked_.get();
     }
