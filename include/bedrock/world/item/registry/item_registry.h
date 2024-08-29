@@ -21,6 +21,8 @@
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/core/memory.h"
 
+class ItemRegistryRef;
+
 class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
 public:
     [[nodiscard]] WeakPtr<Item> getItem(int id) const
@@ -28,17 +30,14 @@ public:
         return id_to_item_map_.at(id);
     }
 
-    [[nodiscard]] int getItemCount() const
+    [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const
     {
-        return items_.size();
-    }
-
-    [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const
-    {
-        return name_to_item_map_;
+        return name_to_item_map_.at(name);
     }
 
 private:
+    friend ItemRegistryRef;
+
     std::vector<SharedPtr<Item>> items_;                                // +16
     std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;             // +40
     std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;  // +104 (+80)

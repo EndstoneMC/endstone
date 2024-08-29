@@ -12,22 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/registry/item_registry_ref.h"
 
-#include <memory>
+WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &name) const
+{
+    return _lockRegistry()->name_to_item_map_.at(name);
+}
 
-#include "bedrock/core/hashed_string.h"
-#include "bedrock/world/item/item.h"
-#include "bedrock/world/item/registry/item_registry.h"
+WeakPtr<Item> ItemRegistryRef::getItem(int id) const
+{
+    return _lockRegistry()->id_to_item_map_.at(id);
+}
 
-class ItemRegistryRef {
-public:
-    [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const;
-    [[nodiscard]] WeakPtr<Item> getItem(int id) const;
-    [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const;
+const std::unordered_map<HashedString, WeakPtr<Item>> &ItemRegistryRef::getNameToItemMap() const
+{
+    return _lockRegistry()->name_to_item_map_;
+}
 
-private:
-    [[nodiscard]] std::shared_ptr<ItemRegistry> _lockRegistry() const;  // NOLINT
-
-    std::weak_ptr<ItemRegistry> weak_registry_;
-};
+std::shared_ptr<ItemRegistry> ItemRegistryRef::_lockRegistry() const
+{
+    return weak_registry_.lock();
+}
