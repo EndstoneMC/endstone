@@ -142,21 +142,18 @@ std::function<Return *(Return *, const Class *, Arg...)> get_original_rvo(
     *endstone::detail::hook::get_original_rvo(fp, name)(&ret, __VA_ARGS__)
 
 namespace endstone::detail::hook {
+template <typename Class, typename... Args>
+std::unique_ptr<Class> call_ctor(const std::string &name, Args &&...args)
+{
+    auto *original = get_original(name);
+    auto *obj = reinterpret_cast<Class *>(new char[sizeof(Class)]);
 #ifdef _WIN32
-template <typename Class, typename... Args>
-std::function<Class *(Class *, Args...)> get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name)
-{
-    auto *original = get_original(name);
-    return reinterpret_cast<Class *(*)(Class *, Args...)>(original);
-}
+    reinterpret_cast<Class *(*)(Class *, Args...)>(original)(obj, std::forward<Args>(args)...);
 #elif __linux__
-template <typename Class, typename... Args>
-std::function<void(Class *, Args...)> get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name)
-{
-    auto *original = get_original(name);
-    return reinterpret_cast<void (*)(Class *, Args...)>(original);
-}
+    reinterpret_cast<void (*)(Class *, Args...)>(original)(obj, std::forward<Args>(args)...);
 #endif
+    return std::unique_ptr<Class>(obj);
+}
 }  // namespace endstone::detail::hook
 
 #define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
@@ -172,11 +169,9 @@ std::function<void(Class *, Args...)> get_ctor(std::unique_ptr<Class> (*)(Args..
 #define ENDSTONE_FACTORY_IMPLEMENT(type, ...)                                                           \
     {                                                                                                   \
         static std::string func_decorated_name = __FUNCDNAME__;                                         \
-        static std::string __name =                                                                       \
+        static std::string symbol =                                                                     \
             ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) +                                                 \
             func_decorated_name.substr(func_decorated_name.find(ENDSTONE_FACTORY_PREFIX_TARGET(type)) + \
                                        std::strlen(ENDSTONE_FACTORY_PREFIX_TARGET(type)));              \
-        auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);                                   \
-        endstone::detail::hook::get_ctor(&type::create, __name)(obj, __VA_ARGS__);                        \
-        return std::unique_ptr<type>(obj);                                                              \
+        return endstone::detail::hook::call_ctor<type>(symbol, __VA_ARGS__);                            \
     }
