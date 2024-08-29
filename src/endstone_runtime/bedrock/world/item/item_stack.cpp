@@ -13,15 +13,19 @@
 // limitations under the License.
 
 #include "bedrock/world/item/item_stack.h"
+
+#include <bedrock/world/item/registry/item_registry_manager.h>
+
 #include "endstone/detail/hook.h"
 
-// TODO(daoge_cmd): Modify ENDSTONE_FACTORY_IMPLEMENT macros to support multiple factory functions
-// std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, int aux_value, CompoundTag const* user_data)
-// {
-//     ENDSTONE_FACTORY_IMPLEMENT(ItemStack, name, count, aux_value, user_data);
-// }
-
-std::unique_ptr<ItemStack> ItemStack::create(Item const& item, int count, int aux_value, CompoundTag const* user_data)
+std::unique_ptr<ItemStack> ItemStack::create(Item const &item, int count, int aux_value, CompoundTag const *user_data)
 {
     ENDSTONE_FACTORY_IMPLEMENT(ItemStack, item, count, aux_value, user_data);
+}
+
+std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, int aux_value,
+                                             CompoundTag const *user_data)
+{
+    const auto item = ItemRegistryManager::getItemRegistry().getItem(std::string(name));
+    return create(*item, count, aux_value, user_data);
 }

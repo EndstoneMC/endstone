@@ -23,6 +23,8 @@ class ItemStack : public ItemStackBase {
 public:
     ENDSTONE_FACTORY_DECLARE(ItemStack, Item const &item, int count = 1, int aux_value = 0,
                              CompoundTag const *user_data = nullptr);
+    static std::unique_ptr<ItemStack> create(std::string_view type, int count = 1, int aux_value = 0,
+                                             CompoundTag const *user_data = nullptr);
 
 private:
     ItemStackNetIdVariant network_id_;
