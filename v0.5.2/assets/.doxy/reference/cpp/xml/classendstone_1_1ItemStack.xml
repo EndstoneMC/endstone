@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ItemStack" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ItemStack</compoundname>
+    <includes refid="item__stack_8h" local="no">endstone/inventory/item_stack.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::ItemStack::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <initializer>= &quot;minecraft:air&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="73" column="17" bodyfile="include/endstone/inventory/item_stack.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int endstone::ItemStack::amount_</definition>
+        <argsstring></argsstring>
+        <name>amount_</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="74" column="9" bodyfile="include/endstone/inventory/item_stack.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ItemStack::ItemStack</definition>
+        <argsstring>()=default</argsstring>
+        <name>ItemStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a76b91ae72d897786c73f4969203d1858" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ItemStack::ItemStack</definition>
+        <argsstring>(std::string type, int amount=1)</argsstring>
+        <name>ItemStack</name>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="27" column="14" bodyfile="include/endstone/inventory/item_stack.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::ItemStack::~ItemStack</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ItemStack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::ItemStack::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+<para>Gets the type of this item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Type of the items in this stack </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="36" column="26" bodyfile="include/endstone/inventory/item_stack.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::ItemStack::setType</definition>
+        <argsstring>(std::string type)</argsstring>
+        <name>setType</name>
+        <param>
+          <type>std::string</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Sets the type of this item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New type to set the items in this stack to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="46" column="18" bodyfile="include/endstone/inventory/item_stack.h" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>int</type>
+        <definition>virtual int endstone::ItemStack::getAmount</definition>
+        <argsstring>() const</argsstring>
+        <name>getAmount</name>
+        <briefdescription>
+<para>Gets the amount of items in this stack. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Amount of items in this stack </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="57" column="18" bodyfile="include/endstone/inventory/item_stack.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::ItemStack::setAmount</definition>
+        <argsstring>(int amount)</argsstring>
+        <name>setAmount</name>
+        <param>
+          <type>int</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+<para>Sets the amount of items in this stack. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>amount</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New amount of items in this stack </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/item_stack.h" line="67" column="18" bodyfile="include/endstone/inventory/item_stack.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a stack of items. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/inventory/item_stack.h" line="24" column="1" bodyfile="include/endstone/inventory/item_stack.h" bodystart="24" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>amount_</name></member>
+      <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getAmount</name></member>
+      <member refid="classendstone_1_1ItemStack_1afe762ec02731da9569f15eb3ecc4e0f8" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>getType</name></member>
+      <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" prot="public" virt="non-virtual"><scope>endstone::ItemStack</scope><name>ItemStack</name></member>
+      <member refid="classendstone_1_1ItemStack_1a76b91ae72d897786c73f4969203d1858" prot="public" virt="non-virtual"><scope>endstone::ItemStack</scope><name>ItemStack</name></member>
+      <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setAmount</name></member>
+      <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>setType</name></member>
+      <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" prot="private" virt="non-virtual"><scope>endstone::ItemStack</scope><name>type_</name></member>
+      <member refid="classendstone_1_1ItemStack_1a3d5879ba64ad7afe47d3c7726f276d52" prot="public" virt="virtual"><scope>endstone::ItemStack</scope><name>~ItemStack</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

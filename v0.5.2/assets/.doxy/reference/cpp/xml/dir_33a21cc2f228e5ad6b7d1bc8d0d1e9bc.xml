@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc" kind="dir">
+    <compoundname>include/endstone/permissions</compoundname>
+    <innerfile refid="permissible_8h">permissible.h</innerfile>
+    <innerfile refid="permission_8h">permission.h</innerfile>
+    <innerfile refid="permission__attachment_8h">permission_attachment.h</innerfile>
+    <innerfile refid="permission__attachment__info_8h">permission_attachment_info.h</innerfile>
+    <innerfile refid="permission__default_8h">permission_default.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/permissions/"/>
+  </compounddef>
+</doxygen>
