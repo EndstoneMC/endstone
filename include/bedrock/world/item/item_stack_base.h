@@ -37,82 +37,21 @@ public:
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual std::string toDebugString() const = 0;
 
-    [[nodiscard]] bool hasCustomHoverName() const
-    {
-        if (!user_data_) {
-            return false;
-        }
-        const auto *tag = user_data_->getCompound(TAG_DISPLAY);
-        if (!tag) {
-            return false;
-        }
-        return tag->contains(TAG_DISPLAY_NAME);
-    };
-
-    [[nodiscard]] std::string getCustomName() const
-    {
-        if (user_data_) {
-            if (const auto *tag = user_data_->getCompound(TAG_DISPLAY); tag) {
-                if (tag->contains(TAG_DISPLAY_NAME)) {
-                    return tag->getString(TAG_DISPLAY_NAME);
-                }
-            }
-        }
-        return "";
-    }
-
-    [[nodiscard]] std::uint16_t getAuxValue() const
-    {
-        if (!block_ || aux_value_ == 0x7fff) {
-            return aux_value_;
-        }
-        return block_->data_;
-    }
-
-    [[nodiscard]] std::string getName() const
-    {
-        if (hasCustomHoverName()) {
-            return getCustomName();
-        }
-        if (!item_) {
-            return "";
-        }
-        return item_->buildDescriptionName(*this);
-    }
-
-    [[nodiscard]] const Item *getItem() const
-    {
-        return item_.get();
-    }
-
-    [[nodiscard]] bool hasUserData() const
-    {
-        return user_data_ != nullptr;
-    }
-
-    [[nodiscard]] const CompoundTag *getUserData() const
-    {
-        return user_data_.get();
-    }
-
-    [[nodiscard]] bool isBlock() const
-    {
-        return item_ && item_->getLegacyBlock();
-    }
-
-    [[nodiscard]] const Block *getBlock() const
-    {
-        return block_;
-    }
-
-    [[nodiscard]] std::uint8_t getCount() const  // Endstone
-    {
-        return count_;
-    }
+    [[nodiscard]] bool hasCustomHoverName() const;
+    [[nodiscard]] std::string getCustomName() const;
+    [[nodiscard]] std::uint16_t getAuxValue() const;
+    [[nodiscard]] std::string getName() const;
+    [[nodiscard]] const Item *getItem() const;
+    [[nodiscard]] bool hasUserData() const;
+    [[nodiscard]] const CompoundTag *getUserData() const;
+    [[nodiscard]] bool isBlock() const;
+    [[nodiscard]] const Block *getBlock() const;
+    void set(std::uint8_t count);
+    [[nodiscard]] std::uint8_t getCount() const;  // Endstone
 
 private:
-    inline const static std::string TAG_DISPLAY = "display";    // NOLINT(*-identifier-naming)
-    inline const static std::string TAG_DISPLAY_NAME = "Name";  // NOLINT(*-identifier-naming)
+    const static std::string TAG_DISPLAY;       // NOLINT(*-identifier-naming)
+    const static std::string TAG_DISPLAY_NAME;  // NOLINT(*-identifier-naming)
 
     WeakPtr<Item> item_;                                  // +8
     std::unique_ptr<CompoundTag> user_data_;              // +16
