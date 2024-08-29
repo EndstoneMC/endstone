@@ -141,9 +141,8 @@ previous experience with Bukkit, you should find the API particularly intuitive 
 | **🎈 Event System**                      | 2-3 months | ✅    | v0.4.0 |
 | **🖼 Form & Scoreboard API**             | 1-2 months | ✅    | v0.5.0 |
 | **👤 Player & Actor API**                | 2-3 months | 🚧   |        |
-| **🔩 Item API**                          | 1-2 months | 🚧   |        |
 | **🧱 Block API**                         | 1-2 months | 🚧   |        |
-| **📦 Inventory API**                     | 2-3 months | ⏳    |        |
+| **📦 Item & Inventory API**              | 2-3 months | 🚧   |        |
 | **⭐ Advanced Features & Refinements**    | 4-6 months | ⏳    |        |
 | **🔬 Beta Testing & Community Feedback** | 3 months   | ⏳    |        |
 | **🚀 Official Release & Support**        | -          | ⏳    |        |
