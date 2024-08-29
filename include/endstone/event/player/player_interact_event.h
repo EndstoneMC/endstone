@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/event/player/player_event.h"
+#include "endstone/inventory/item_stack.h"
 
 namespace endstone {
 
@@ -23,10 +24,10 @@ namespace endstone {
  */
 class PlayerInteractEvent : public PlayerEvent {
 public:
-    PlayerInteractEvent(Player &player, Block &block_clicked, BlockFace block_face,
-                        const Vector<float> &clicked_position)
-        : PlayerEvent(player), block_clicked_(block_clicked), block_face_(block_face),
-          clicked_position_(clicked_position)
+    PlayerInteractEvent(Player &player, std::unique_ptr<ItemStack> item, std::unique_ptr<Block> block_clicked,
+                        BlockFace block_face, const Vector<float> &clicked_position)
+        : PlayerEvent(player), item_(std::move(item)), block_clicked_(std::move(block_clicked)),
+          block_face_(block_face), clicked_position_(clicked_position)
     {
     }
     ~PlayerInteractEvent() override = default;
@@ -43,13 +44,43 @@ public:
     }
 
     /**
+     * @brief Check if this event involved an item
+     *
+     * @return boolean true if it did
+     */
+    [[nodiscard]] bool hasItem() const
+    {
+        return item_ != nullptr;
+    }
+
+    /**
+     * @brief Returns the item in hand represented by this event
+     *
+     * @return ItemStack the item used
+     */
+    [[nodiscard]] ItemStack *getItemStack() const
+    {
+        return item_.get();
+    }
+
+    /**
+     * @brief Check if this event involved a block
+     *
+     * @return boolean true if it did
+     */
+    [[nodiscard]] bool hasBlock() const
+    {
+        return block_clicked_ != nullptr;
+    }
+
+    /**
      * @brief Returns the clicked block
      *
      * @return Block returns the block clicked with this item.
      */
-    [[nodiscard]] Block &getBlockClicked() const
+    [[nodiscard]] Block *getBlockClicked() const
     {
-        return block_clicked_;
+        return block_clicked_.get();
     }
 
     /**
@@ -75,8 +106,8 @@ public:
     }
 
 private:
-    // TODO(item): add ItemStack item
-    Block &block_clicked_;
+    std::unique_ptr<ItemStack> item_;
+    std::unique_ptr<Block> block_clicked_;
     BlockFace block_face_;
     Vector<float> clicked_position_;
 };
