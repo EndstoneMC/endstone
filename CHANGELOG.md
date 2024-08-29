@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.5.1](https://github.com/EndstoneMC/endstone/compare/v0.5.1...HEAD)</small>
 
+### Added
+
+- Support for Minecraft v1.21.22.
+- Boss bar API.
+- `Block::getRelative` to get a block relative to a block face.
+- `BlockBreakEvent` triggered when a player breaks a block.
+- `BlockPlaceEvent` triggered when a player places a block against another block.
+- `PlayerInteractEvent` triggered when a player right-clicks a block.
+- `PlayerInteractActorEvent` triggered when a player interacts with an actor.
+- An auto installer script for installing Endstone on Linux (thanks to [@legitbox](https://github.com/legitbox)).
+
+### Changed
+
+- Check chunk states before getting the block in `Dimension::getBlockAt`.
+
+### Fixed
+
+- [#38](https://github.com/EndstoneMC/endstone/issues/38) - Plugins can now be properly loaded inside a virtual
+  environment on Linux.
+
 ## [0.5.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.1) - 2024-08-24
 
 <small>[Compare with 0.5.0](https://github.com/EndstoneMC/endstone/compare/v0.5.0...v0.5.1)</small>
