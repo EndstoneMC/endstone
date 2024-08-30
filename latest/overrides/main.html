@@ -8,3 +8,35 @@ For latest updates join the chat on
          style="vertical-align: middle">
 </a>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+    kofiWidgetOverlay.draw('endstonemc', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support Us',
+        'floating-chat.donateButton.background-color': '#aac7ff',
+        'floating-chat.donateButton.text-color': '#2e3036'
+    });
+</script>
+<script>
+    let lastScrollTop = 0;
+    const widgetContainer = document.querySelector('.floatingchat-container-wrap');
+
+    window.addEventListener('scroll', function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            widgetContainer.classList.add('hidden');
+        } else {
+            widgetContainer.classList.remove('hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    }, false);
+</script>
+<style>
+    .floatingchat-container-wrap { left: unset; right: 12px; transition: transform 0.3s ease-in-out; }
+    .floatingchat-container-wrap.hidden { transform: translateY(100px); }
+    .floating-chat-kofi-popup-iframe { left: unset; right: 12px; }
+</style>
+{% endblock %}

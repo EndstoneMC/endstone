@@ -2188,8 +2188,38 @@ For latest updates join the chat on
     <script id="__config" type="application/json">{"base": "../../..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.tabs.link", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
+
       <script src="../../../assets/javascripts/bundle.af256bd8.min.js"></script>
       
     
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+    kofiWidgetOverlay.draw('endstonemc', {
+        'type': 'floating-chat',
+        'floating-chat.donateButton.text': 'Support Us',
+        'floating-chat.donateButton.background-color': '#aac7ff',
+        'floating-chat.donateButton.text-color': '#2e3036'
+    });
+</script>
+<script>
+    let lastScrollTop = 0;
+    const widgetContainer = document.querySelector('.floatingchat-container-wrap');
+
+    window.addEventListener('scroll', function () {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            widgetContainer.classList.add('hidden');
+        } else {
+            widgetContainer.classList.remove('hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+    }, false);
+</script>
+<style>
+    .floatingchat-container-wrap { left: unset; right: 12px; transition: transform 0.3s ease-in-out; }
+    .floatingchat-container-wrap.hidden { transform: translateY(100px); }
+    .floating-chat-kofi-popup-iframe { left: unset; right: 12px; }
+</style>
+
   </body>
 </html>
