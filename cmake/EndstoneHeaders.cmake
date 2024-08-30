@@ -19,19 +19,18 @@
 # ===================
 if (WIN32)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
-        message(FATAL_ERROR "MSVC is required on Windows.")
+        message(FATAL_ERROR "Endstone: MSVC is required on Windows.")
     endif ()
-    add_compile_definitions(_ITERATOR_DEBUG_LEVEL=0)
+    # Force set _ITERATOR_DEBUG_LEVEL to 0 for ABI compatibility with BDS
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D_ITERATOR_DEBUG_LEVEL=0" CACHE STRING "" FORCE)
 elseif (UNIX)
     if (NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-        message(FATAL_ERROR "Clang is required on Linux.")
+        message(FATAL_ERROR "Endstone: Clang is required on Linux.")
     endif ()
+    # Force use libc++ for ABI compatibility with BDS
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -fPIC" CACHE STRING "" FORCE)
 else ()
-    message(FATAL_ERROR "${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
-endif ()
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    message(FATAL_ERROR "Debug builds are disabled. Please build in 'Release' or 'RelWithDebInfo' mode.")
+    message(FATAL_ERROR "Endstone: ${CMAKE_SYSTEM_NAME} (${CMAKE_SYSTEM_PROCESSOR}) is not supported")
 endif ()
 
 
@@ -55,6 +54,7 @@ add_library(endstone::headers ALIAS endstone_headers)
 target_include_directories(endstone_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(endstone_headers INTERFACE fmt::fmt)
 
+
 # ===================
 # Endstone Add Plugin
 # ===================
@@ -63,11 +63,10 @@ function(endstone_add_plugin target_name)
 
     add_library(${target_name} SHARED ${ARG_UNPARSED_ARGUMENTS})
     target_include_directories(${target_name} PUBLIC include)
-    target_link_libraries(${target_name} PRIVATE endstone::headers fmt::fmt)
+    target_link_libraries(${target_name} PRIVATE endstone::headers)
     set_target_properties(${target_name} PROPERTIES PREFIX "endstone_")
 
     if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-        target_compile_options(${target_name} PRIVATE -stdlib=libc++ -fPIC)
         target_link_libraries(${target_name} PRIVATE -static-libgcc -static-libstdc++ libc++.a libc++abi.a)
     endif ()
 endfunction()
