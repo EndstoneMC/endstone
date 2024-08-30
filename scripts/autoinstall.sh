@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Made by @legitbox, this creature will auto install the endstone server software depending on what server os you are using
-# WARNING! Doesn't support any distros that are based on the supported oses
 
 
 # Define the virtual environment directory
@@ -46,21 +45,21 @@ setup_arch() {
 # Detect the Linux distribution
 if [ -f /etc/os-release ]; then
     . /etc/os-release
-    case $ID in
-        ubuntu|debian)
+    case $ID_LIKE in
+        *debian*|*ubuntu*)
             echo "Detected Debian/Ubuntu based system."
             setup_debian
             ;;
-        fedora)
+        *fedora*)
             echo "Detected Fedora based system."
             setup_fedora
             ;;
-        arch)
+        *arch*)
             echo "Detected Arch based system."
             setup_arch
             ;;
         *)
-            echo "Unsupported Linux distribution: $ID"
+            echo "Unsupported Linux distribution: $ID_LIKE"
             exit 1
             ;;
     esac
@@ -85,3 +84,4 @@ pip install endstone
 
 # Run 'endstone'
 endstone
+
