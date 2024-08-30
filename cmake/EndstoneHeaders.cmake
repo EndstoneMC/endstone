@@ -63,7 +63,7 @@ function(endstone_add_plugin target_name)
 
     add_library(${target_name} SHARED ${ARG_UNPARSED_ARGUMENTS})
     target_include_directories(${target_name} PUBLIC include)
-    target_link_libraries(${target_name} PRIVATE endstone::headers)
+    target_link_libraries(${target_name} PRIVATE endstone::headers fmt::fmt)
     set_target_properties(${target_name} PROPERTIES PREFIX "endstone_")
 
     if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
