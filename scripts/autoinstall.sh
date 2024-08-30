@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Made by @legitbox, this creature will auto install the endstone server software depending on what server os you are using
-# WARNING! Doesn't support any distros that are based on the supported oses
 
 
 # Define the virtual environment directory
