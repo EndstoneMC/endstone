@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.33">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.33">
     
     
       
@@ -2196,28 +2196,44 @@ For latest updates join the chat on
     kofiWidgetOverlay.draw('endstonemc', {
         'type': 'floating-chat',
         'floating-chat.donateButton.text': 'Support Us',
-        'floating-chat.donateButton.background-color': '#aac7ff',
-        'floating-chat.donateButton.text-color': '#2e3036'
+        'floating-chat.donateButton.background-color': '#f37574',
+        'floating-chat.donateButton.text-color': '#fff'
     });
 </script>
 <script>
     let lastScrollTop = 0;
     const widgetContainer = document.querySelector('.floatingchat-container-wrap');
+    const widgetContainerMobi = document.querySelector('.floatingchat-container-wrap-mobi');
 
     window.addEventListener('scroll', function () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > lastScrollTop) {
             widgetContainer.classList.add('hidden');
+            widgetContainerMobi.classList.add('hidden');
         } else {
             widgetContainer.classList.remove('hidden');
+            widgetContainerMobi.classList.remove('hidden');
         }
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
     }, false);
 </script>
 <style>
-    .floatingchat-container-wrap { left: unset; right: 12px; transition: transform 0.3s ease-in-out; }
-    .floatingchat-container-wrap.hidden { transform: translateY(100px); }
-    .floating-chat-kofi-popup-iframe { left: unset; right: 12px; }
+    .floatingchat-container-wrap, .floatingchat-container-wrap-mobi {
+        left: unset;
+        right: 12px;
+        width: 100%;
+        transition: transform 0.3s ease-in-out;
+        z-index: 4;
+    }
+
+    .floatingchat-container-wrap.hidden, .floatingchat-container-wrap-mobi.hidden {
+        transform: translateY(100px);
+    }
+
+    .floating-chat-kofi-popup-iframe, .floating-chat-kofi-popup-iframe-mobi {
+        left: unset;
+        right: 12px;
+    }
 </style>
 
   </body>
