@@ -6,53 +6,12 @@ For latest updates join the chat on
     <img alt="Discord"
          src="https://img.shields.io/discord/1230982180742631457?logo=discord&logoColor=white&labelColor=5865F2&color=333333&label=Discord&style=flat-square"
          style="vertical-align: middle">
-</a>
-{% endblock %}
+</a>.
 
-{% block scripts %}
-{{ super() }}
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-    kofiWidgetOverlay.draw('endstonemc', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Support Us',
-        'floating-chat.donateButton.background-color': '#f37574',
-        'floating-chat.donateButton.text-color': '#fff'
-    });
-</script>
-<script>
-    let lastScrollTop = 0;
-    const widgetContainer = document.querySelector('.floatingchat-container-wrap');
-    const widgetContainerMobi = document.querySelector('.floatingchat-container-wrap-mobi');
-
-    window.addEventListener('scroll', function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-            widgetContainer.classList.add('hidden');
-            widgetContainerMobi.classList.add('hidden');
-        } else {
-            widgetContainer.classList.remove('hidden');
-            widgetContainerMobi.classList.remove('hidden');
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-    }, false);
-</script>
-<style>
-    .floatingchat-container-wrap, .floatingchat-container-wrap-mobi {
-        left: unset;
-        right: 12px;
-        width: 100%;
-        transition: transform 0.3s ease-in-out;
-        z-index: 4;
-    }
-
-    .floatingchat-container-wrap.hidden, .floatingchat-container-wrap-mobi.hidden {
-        transform: translateY(100px);
-    }
-
-    .floating-chat-kofi-popup-iframe, .floating-chat-kofi-popup-iframe-mobi {
-        left: unset;
-        right: 12px;
-    }
-</style>
+If you like this project, please feel free to
+<a href="https://ko-fi.com/EndstoneMC">
+    <img alt="Support Us"
+         src="https://img.shields.io/badge/Support_Us-f37574?logo=kofi&logoColor=white&style=flat-square"
+         style="vertical-align: middle">
+</a>.
 {% endblock %}
