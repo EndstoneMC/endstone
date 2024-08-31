@@ -93,7 +93,7 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name))(C
 #endif
 }  // namespace endstone::detail::hook
 
-#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(##__VA_ARGS__);
+#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
 #ifdef _WIN32
 #define ENDSTONE_FACTORY_PREFIX_TARGET(type)      ENDSTONE_TOSTRING(type) "@@@std@@@std@"
 #define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) "??0" ENDSTONE_TOSTRING(type) "@@QEAA"
