@@ -369,7 +369,7 @@ private:
 #ifdef __linux__                                                      //
     std::shared_timed_mutex mutex_;
 #else                                                  //
-    std::int64_t unknown5_;  // +832
+    std::shared_mutex mutex_;  // +832
 #endif                                                 //
     std::unordered_map<void *, void *> unknown6_;      // +840
     std::unique_ptr<void *> block_state_group_;        // +904 void* = BlockStateGroup

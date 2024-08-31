@@ -71,9 +71,9 @@ Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
 }
 
 }  // namespace endstone::detail::hook
-#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) std::invoke(endstone::detail::hook::get_original(fp), __VA_ARGS__)
+#define ENDSTONE_HOOK_CALL_ORIGINAL(fp, ...) std::invoke(endstone::detail::hook::get_original(fp), ##__VA_ARGS__)
 #define ENDSTONE_HOOK_CALL_ORIGINAL_NAME(fp, name, ...) \
-    std::invoke(endstone::detail::hook::get_original(fp, name), __VA_ARGS__)
+    std::invoke(endstone::detail::hook::get_original(fp, name), ##__VA_ARGS__)
 
 namespace endstone::detail::hook {
 #ifdef _WIN32
@@ -93,7 +93,7 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name))(C
 #endif
 }  // namespace endstone::detail::hook
 
-#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(__VA_ARGS__);
+#define ENDSTONE_FACTORY_DECLARE(type, ...) static std::unique_ptr<type> create(##__VA_ARGS__);
 #ifdef _WIN32
 #define ENDSTONE_FACTORY_PREFIX_TARGET(type)      ENDSTONE_TOSTRING(type) "@@@std@@@std@"
 #define ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) "??0" ENDSTONE_TOSTRING(type) "@@QEAA"
@@ -103,7 +103,7 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name))(C
     "_ZN" + std::to_string(std::strlen(ENDSTONE_TOSTRING(type))) + ENDSTONE_TOSTRING(type) "C2"
 #endif
 
-#define ENDSTONE_FACTORY_IMPLEMENT(type, ...) ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, &type::create, __VA_ARGS__)
+#define ENDSTONE_FACTORY_IMPLEMENT(type, ...) ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, &type::create, ##__VA_ARGS__)
 
 #define ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, fp, ...)                                              \
     {                                                                                                   \
@@ -113,6 +113,6 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name))(C
             func_decorated_name.substr(func_decorated_name.find(ENDSTONE_FACTORY_PREFIX_TARGET(type)) + \
                                        std::strlen(ENDSTONE_FACTORY_PREFIX_TARGET(type)));              \
         auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);                                   \
-        endstone::detail::hook::get_ctor(fp, __name)(obj, __VA_ARGS__);                                 \
+        endstone::detail::hook::get_ctor(fp, __name)(obj, ##__VA_ARGS__);                               \
         return std::unique_ptr<type>(obj);                                                              \
     }

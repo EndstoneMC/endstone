@@ -173,7 +173,7 @@ endstone
 | Build System                     | CMake                         | CMake    |
 | Generator                        | Ninja                         | Ninja    |
 | C/C++ Compiler **(Recommended)** | MSVC 193 (Visual Studio 2022) | Clang 15 |
-| C/C++ Compiler (Minimum)         | MSVC 191 (Visual Studio 2017) | Clang 5  |
+| C/C++ Compiler (Minimum)         | MSVC 191 (Visual Studio 2017) | Clang 9  |
 | Standard Library                 | MSVC STL                      | libc++   |
 
 ## 🌟 Plugins [🔝](#-table-of-contents)
