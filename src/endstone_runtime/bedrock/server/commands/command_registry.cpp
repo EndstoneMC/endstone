@@ -44,9 +44,7 @@ const CommandRegistry::Signature *CommandRegistry::findCommand(const std::string
 std::string CommandRegistry::describe(const CommandParameterData &param) const
 {
     std::string (CommandRegistry::*fp)(const CommandParameterData &param) const = &CommandRegistry::describe;
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, result, this, param);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, param);
 }
 
 std::string CommandRegistry::describe(const CommandRegistry::Signature &signature, const std::string &name,
@@ -56,9 +54,7 @@ std::string CommandRegistry::describe(const CommandRegistry::Signature &signatur
     std::string (CommandRegistry::*fp)(const CommandRegistry::Signature &, const std::string &,
                                        const CommandRegistry::Overload &, unsigned int, unsigned int *, unsigned int *)
         const = &CommandRegistry::describe;
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(fp, result, this, signature, name, overload, a4, a5, a6);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, signature, name, overload, a4, a5, a6);
 }
 
 void CommandRegistry::registerOverloadInternal(CommandRegistry::Signature &signature,
@@ -73,10 +69,8 @@ std::unique_ptr<Command> CommandRegistry::createCommand(const CommandRegistry::P
                                                         std::vector<std::string> &error_params) const
 {
     spdlog::debug("ParseToken:\n{}", parse_token);
-    std::unique_ptr<Command> result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::createCommand, result, this, parse_token, origin, version,
-                                    error_message, error_params);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::createCommand, this, parse_token, origin, version,
+                                       error_message, error_params);
 }
 
 template <>
@@ -121,7 +115,5 @@ int CommandRegistry::addEnumValues(const std::string &name, const std::vector<st
 
 AvailableCommandsPacket CommandRegistry::serializeAvailableCommands() const
 {
-    AvailableCommandsPacket result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandRegistry::serializeAvailableCommands, result, this);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandRegistry::serializeAvailableCommands, this);
 }

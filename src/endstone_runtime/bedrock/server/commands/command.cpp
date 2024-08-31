@@ -18,7 +18,5 @@
 
 std::string Command::getCommandName() const
 {
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Command::getCommandName, result, this);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Command::getCommandName, this);
 }

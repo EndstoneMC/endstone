@@ -18,7 +18,5 @@
 
 std::shared_ptr<Packet> MinecraftPackets::createPacket(MinecraftPacketIds id)
 {
-    std::shared_ptr<Packet> result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&MinecraftPackets::createPacket, result, id);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftPackets::createPacket, id);
 }

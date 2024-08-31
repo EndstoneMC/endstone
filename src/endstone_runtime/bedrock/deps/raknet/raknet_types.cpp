@@ -25,7 +25,7 @@ std::uint16_t SystemAddress::GetPort() const
 
 void SystemAddress::ToString(bool write_port, char *dest, char port_delimiter) const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
+    ENDSTONE_HOOK_CALL_ORIGINAL(&SystemAddress::ToString, this, write_port, dest, port_delimiter);
 }
 
 }  // namespace RakNet

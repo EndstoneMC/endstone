@@ -21,10 +21,8 @@ TeleportTarget TeleportCommand::computeTarget(Actor &victim, Vec3 destination, V
                                               std::optional<RotationCommandUtils::RotationData> const &rotation_data,
                                               int command_version)
 {
-    TeleportTarget result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&TeleportCommand::computeTarget, result, victim, destination, facing_position,
-                                    destination_dimension, rotation_data, command_version);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&TeleportCommand::computeTarget, victim, destination, facing_position,
+                                       destination_dimension, rotation_data, command_version);
 }
 
 void TeleportCommand::applyTarget(Actor &victim, TeleportTarget target, bool keep_velocity)

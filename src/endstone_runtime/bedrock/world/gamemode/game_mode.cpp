@@ -45,8 +45,6 @@ bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
 InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, FacingID face, Vec3 const &hit,
                                       Block const *target_block)
 {
-    InteractionResult result = {0};
-
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstonePlayer();
     auto block = EndstoneBlock::at(player.getHandle().getDimension().getBlockSourceFromMainChunkSource(), at);
@@ -59,17 +57,11 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
     };
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
-        return result;
+        return InteractionResult{0};  // 0 - cancelled
     }
 
-#if _WIN32
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO_NAME(&GameMode::useItemOn, __FUNCDNAME__, result, this, item, at, face, hit,
-                                         target_block);
-#else
-    result =
-        ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::useItemOn, __FUNCDNAME__, this, item, at, face, hit, target_block);
-#endif
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::useItemOn, __FUNCDNAME__, this, item, at, face, hit,
+                                            target_block);
 }
 
 bool GameMode::interact(Actor &actor, Vec3 const &location)

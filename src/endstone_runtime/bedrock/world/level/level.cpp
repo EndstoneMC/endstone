@@ -33,9 +33,5 @@ void Level::tick()
 
 gsl::not_null<StackRefResult<GameplayUserManager>> Level::_getGameplayUserManagerStackRef()
 {
-    const StackRefResult<GameplayUserManager> tmp{
-        std::shared_ptr<GameplayUserManager>(reinterpret_cast<GameplayUserManager *>(0xdeadc0deLL))};
-    gsl::not_null result = tmp;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&Level::_getGameplayUserManagerStackRef, result, this);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&Level::_getGameplayUserManagerStackRef, this);
 }

@@ -19,7 +19,5 @@
 std::unique_ptr<CraftingDataPacket> CraftingDataPacket::prepareFromRecipes(const Recipes &recipe,
                                                                            bool only_crafting_recipes)
 {
-    std::unique_ptr<CraftingDataPacket> result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CraftingDataPacket::prepareFromRecipes, result, recipe, only_crafting_recipes);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CraftingDataPacket::prepareFromRecipes, recipe, only_crafting_recipes);
 }

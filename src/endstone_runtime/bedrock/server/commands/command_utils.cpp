@@ -18,7 +18,5 @@
 
 std::string CommandUtils::getActorName(const Actor &actor)
 {
-    std::string result;
-    ENDSTONE_HOOK_CALL_ORIGINAL_RVO(&CommandUtils::getActorName, result, actor);
-    return result;
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&CommandUtils::getActorName, actor);
 }
