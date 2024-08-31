@@ -64,42 +64,4 @@ public:
                                           optional_ref<GetCollisionShapeInterface const>) const = 0;
     [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
     virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
-#if _WIN32
-    virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
-    virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
-                                                    std::vector<AABB> *) = 0;
-#endif
-    virtual WeakRef<BlockSource> getWeakRef() = 0;
-    virtual void addListener(BlockSourceListener &) = 0;
-    virtual void removeListener(BlockSourceListener &) = 0;
-    virtual gsl::span<gsl::not_null<Actor *>> fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
-    virtual gsl::span<gsl::not_null<Actor *>> fetchEntities(ActorType, AABB const &, Actor const *,
-                                                            std::function<bool(Actor *)>) = 0;
-    virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
-    [[nodiscard]] virtual std::int16_t getMinHeight() const = 0;
-    [[nodiscard]] virtual std::int16_t getMaxHeight() const = 0;
-    [[nodiscard]] virtual Dimension &getDimension() const = 0;
-    virtual Dimension &getDimension() = 0;
-    [[nodiscard]] virtual Dimension const &getDimensionConst() const = 0;
-    [[nodiscard]] virtual LevelChunk *getChunkAt(BlockPos const &) const = 0;
-    [[nodiscard]] virtual LevelChunk *getChunk(int, int) const = 0;
-    [[nodiscard]] virtual LevelChunk *getChunk(ChunkPos const &) const = 0;
-    virtual Level &getLevel() = 0;
-    [[nodiscard]] virtual ILevel &getILevel() const = 0;
-#if __linux__
-    virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
-    virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
-                                                    std::vector<AABB> *) = 0;
-#endif
-    virtual HitResult clip(Vec3 const &, Vec3 const &, bool, ShapeType, int, bool, bool, Actor *,
-                           std::function<bool(BlockSource const &, Block const &, bool)> const &) const = 0;
-    virtual ChunkSource &getChunkSource() = 0;
-    [[nodiscard]] virtual bool isSolidBlockingBlock(BlockPos const &) const = 0;
-    [[nodiscard]] virtual bool isSolidBlockingBlock(int, int, int) const = 0;
-    [[nodiscard]] virtual bool areChunksFullyLoaded(BlockPos const &, int) const = 0;
-    [[nodiscard]] virtual bool canDoBlockDrops() const = 0;
-    [[nodiscard]] virtual bool canDoContainedItemDrops() const = 0;
-    [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
-    virtual void updateCheckForValidityState(bool) = 0;
-    virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
 };
