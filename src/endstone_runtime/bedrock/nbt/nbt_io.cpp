@@ -58,7 +58,7 @@ nlohmann::json NbtIo::toJson(const Tag &tag)  // NOLINT(*-no-recursion)
         return t.data;
     }
     case Tag::Type::List: {
-        nlohmann::json array;
+        auto array = nlohmann::json::array();
         const auto &t = static_cast<const ListTag &>(tag);
         for (auto i = 0; i < t.size(); i++) {
             array.push_back(toJson(*t.get(i)));
@@ -66,7 +66,7 @@ nlohmann::json NbtIo::toJson(const Tag &tag)  // NOLINT(*-no-recursion)
         return array;
     }
     case Tag::Type::Compound: {
-        nlohmann::json object;
+        auto object = nlohmann::json::object();
         const auto &t = static_cast<const CompoundTag &>(tag);
         for (const auto &[key, value] : t) {
             object[key] = toJson(*value.get());
@@ -74,7 +74,7 @@ nlohmann::json NbtIo::toJson(const Tag &tag)  // NOLINT(*-no-recursion)
         return object;
     }
     case Tag::Type::IntArray: {
-        nlohmann::json array;
+        auto array = nlohmann::json::array();
         const auto &t = static_cast<const IntArrayTag &>(tag);
         for (const auto &i : t.data) {
             array.push_back(i);
@@ -82,7 +82,7 @@ nlohmann::json NbtIo::toJson(const Tag &tag)  // NOLINT(*-no-recursion)
         return array;
     }
     case Tag::Type::ByteArray: {
-        nlohmann::json array;
+        auto array = nlohmann::json::array();
         const auto &t = static_cast<const ByteArrayTag &>(tag);
         for (const auto &i : t.data) {
             array.push_back(i);
