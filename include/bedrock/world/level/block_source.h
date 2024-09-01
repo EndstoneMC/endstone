@@ -16,7 +16,10 @@
 
 #include <memory>
 
+#include "bedrock/world/actor/actor_type.h"
+#include "bedrock/world/item/item_stack_base.h"
 #include "bedrock/world/level/block_source_interface.h"
+#include "bedrock/world/level/chunk/level_chunk.h"
 
 class BlockSource : public IBlockSource, public std::enable_shared_from_this<BlockSource> {
 public:
