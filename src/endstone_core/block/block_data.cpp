@@ -25,10 +25,54 @@ std::string EndstoneBlockData::getType() const
     return block_.getLegacyBlock().getFullNameId();
 }
 
+namespace {
+std::string toString(const CompoundTag &states)
+{
+    if (states.empty()) {
+        return "";
+    }
+
+    std::ostringstream result;
+    result << "[";
+
+    bool first = true;
+    for (const auto &[key, variant] : states) {
+        const auto *state = variant.get();
+
+        if (!first) {
+            result << ",";
+        }
+        first = false;
+
+        result << "\"" << key << "\"=";
+
+        switch (state->getId()) {
+        case Tag::Type::Byte:
+            result << (static_cast<const ByteTag *>(state)->data > 0 ? "true" : "false");
+            break;
+        case Tag::Type::Int:
+            result << static_cast<const IntTag *>(state)->data;
+            break;
+        case Tag::Type::String:
+            result << "\"" << static_cast<const StringTag *>(state)->data << "\"";
+            break;
+        default:
+            throw std::invalid_argument("Unexpected tag type in block states");
+        }
+    }
+
+    result << "]";
+    return result.str();
+}
+}  // namespace
+
 std::string EndstoneBlockData::getBlockStates() const
 {
     if (const auto *states = getHandle().getSerializationId().get("states")) {
-        return NbtIo::toJson(*states).dump();
+        if (states->getId() != Tag::Type::Compound) {
+            throw std::invalid_argument("Unexpected tag type for block states in serialization id");
+        }
+        return toString(*static_cast<const CompoundTag *>(states));
     }
     return "";
 }

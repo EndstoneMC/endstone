@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'ItemStack', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'ItemStack', 'Label', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -295,6 +295,8 @@ class Block:
     """
     Represents a block.
     """
+    def __str__(self) -> str:
+        ...
     @typing.overload
     def get_relative(self, offset_x: int, offset_y: int, offset_z: int) -> Block:
         """
@@ -305,6 +307,22 @@ class Block:
         """
         Gets the block at the given distance of the given face
         """
+    def set_data(self, data: BlockData, apply_physics: bool = True) -> None:
+        """
+        Sets the complete data for this block
+        """
+    def set_type(self, type: str, apply_physics: bool = True) -> None:
+        """
+        Sets the type of this block
+        """
+    @property
+    def data(self) -> BlockData:
+        """
+        Gets or sets the complete data for this block
+        """
+    @data.setter
+    def data(self, arg1: BlockData) -> None:
+        ...
     @property
     def dimension(self) -> Dimension:
         """
@@ -318,8 +336,11 @@ class Block:
     @property
     def type(self) -> str:
         """
-        Get the type of the block.
+        Gets or sets the type of the block.
         """
+    @type.setter
+    def type(self, arg1: str) -> None:
+        ...
     @property
     def x(self) -> int:
         """
@@ -343,6 +364,22 @@ class BlockBreakEvent(BlockEvent):
     def player(self) -> Player:
         """
         Gets the Player that is breaking the block involved in this event.
+        """
+class BlockData:
+    """
+    Represents the data related to a live block
+    """
+    def __str__(self) -> str:
+        ...
+    @property
+    def block_states(self) -> dict:
+        """
+        Gets the block states as a dict.
+        """
+    @property
+    def type(self) -> str:
+        """
+        Get the block type represented by this block data.
         """
 class BlockEvent(Event):
     """
