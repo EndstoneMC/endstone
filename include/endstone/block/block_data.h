@@ -18,7 +18,10 @@
 
 namespace endstone {
 
-class BlockData {
+/**
+ * @brief Represents the data related to a live block
+ */
+class BlockData : public std::enable_shared_from_this<BlockData> {
 public:
     virtual ~BlockData() = default;
 

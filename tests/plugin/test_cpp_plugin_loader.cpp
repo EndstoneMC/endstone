@@ -63,8 +63,8 @@ public:
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
-    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string, std::string), (const, override));
+    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
+    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string, std::string), (const, override));
     MockServer()
     {
         ON_CALL(*this, getLogger())

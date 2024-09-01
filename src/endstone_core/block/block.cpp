@@ -54,7 +54,7 @@ void EndstoneBlock::setType(std::string type, bool apply_physics)
     }
 }
 
-std::unique_ptr<BlockData> EndstoneBlock::getData()
+std::shared_ptr<BlockData> EndstoneBlock::getData() const
 {
     if (checkState()) {
         return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block_source_.getBlock(block_pos_)));
@@ -62,12 +62,12 @@ std::unique_ptr<BlockData> EndstoneBlock::getData()
     return nullptr;
 }
 
-void EndstoneBlock::setData(std::unique_ptr<BlockData> data)
+void EndstoneBlock::setData(std::shared_ptr<BlockData> data)
 {
     setData(std::move(data), true);
 }
 
-void EndstoneBlock::setData(std::unique_ptr<BlockData> data, bool apply_physics)
+void EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_physics)
 {
     if (!data) {
         auto &server = entt::locator<EndstoneServer>::value();

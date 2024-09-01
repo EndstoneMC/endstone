@@ -369,12 +369,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
+std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
 {
     return createBlockData(type, "");
 }
 
-std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std::string data) const
+std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std::string block_states) const
 {
 
     auto block = BlockTypeRegistry::lookupByName(type, false);  // false - do not log if not found
@@ -383,8 +383,8 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std
         return nullptr;
     }
 
-    if (!data.empty()) {
-        // TODO(block): support block state/permutation data
+    if (!block_states.empty()) {
+        // TODO(block): parse block states string
     }
     return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block->getRenderBlock()));
 }
