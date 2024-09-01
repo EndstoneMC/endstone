@@ -20,8 +20,6 @@
 
 namespace endstone::detail::devtools {
 
-nlohmann::json toJson(const Tag &tag);
-
 struct VanillaData {
     nlohmann::json block_types;
     nlohmann::json block_states;

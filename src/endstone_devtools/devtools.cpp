@@ -364,6 +364,11 @@ void showBlockWindow(bool *open)
     if (ImGui::CollapsingHeader(fmt::format("{} Materials", data->materials.size()).c_str())) {
         ImGui::Json(data->materials);
     }
+
+    if (ImGui::CollapsingHeader("Block Palette")) {
+        ImGui::Json(NbtIo::toJson(data->block_palette));
+    }
+
     ImGui::End();
 }
 
@@ -386,7 +391,7 @@ void showItemWindow(bool *open)
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Creative Items", data->creative_items.size()).c_str())) {
-        ImGui::Json(toJson(data->creative_items));
+        ImGui::Json(NbtIo::toJson(data->creative_items));
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {

@@ -16,9 +16,13 @@
 
 #include <string>
 
+#include <nlohmann/json.hpp>
+
 #include "bedrock/common/util/data_io.h"
 #include "bedrock/nbt/tag.h"
 
 namespace NbtIo {
-void writeNamedTag(const std::string &name, const Tag &tag, class IDataOutput &output);
-}
+void writeNamedTag(const std::string &name, const Tag &tag,  IDataOutput &output);
+nlohmann::json toJson(const Tag &tag);  // Endstone
+
+}  // namespace NbtIo
