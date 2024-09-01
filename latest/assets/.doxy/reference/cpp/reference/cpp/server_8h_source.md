@@ -127,9 +127,10 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type, std::string data) const = 0;
+    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type,
+                                                                     std::string block_states) const = 0;
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 

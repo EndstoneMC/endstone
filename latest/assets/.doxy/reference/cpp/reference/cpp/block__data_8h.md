@@ -10,6 +10,7 @@
 
 
 
+* `#include <string>`
 
 
 
@@ -34,7 +35,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**BlockData**](classendstone_1_1BlockData.md) <br> |
+| class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 
 
 

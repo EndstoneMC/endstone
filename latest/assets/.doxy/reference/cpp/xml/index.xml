@@ -81,9 +81,9 @@
     <member refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Block_1a14bfc4111312b3f9355f0d0f56205242" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1Block_1a2dc49fca3aceebd374fefa0c1744a9fd" kind="function"><name>setType</name></member>
-    <member refid="classendstone_1_1Block_1a40bd9c320efa2ea148818b1f498326b6" kind="function"><name>getData</name></member>
-    <member refid="classendstone_1_1Block_1ab7fcb82f9f1dd80fdfed2f32e5dffbc1" kind="function"><name>setData</name></member>
-    <member refid="classendstone_1_1Block_1a8ff7ea57e18cb15c3d01f37ba489da49" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1Block_1a2c3b381aa9a7b14fddc255edffb561b3" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1Block_1aac72a1a26ad5b072023a2796b00229dc" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1Block_1a4a6495b5847a31512b3330237696531a" kind="function"><name>setData</name></member>
     <member refid="classendstone_1_1Block_1a11141cf0fa11d58e99f104038cf72b43" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1ac77da1fb429c70e4dc6944a5e97ba956" kind="function"><name>getRelative</name></member>
     <member refid="classendstone_1_1Block_1a5f0d405ef55d43a69453c7c08288c1e4" kind="function"><name>getRelative</name></member>
@@ -103,6 +103,9 @@
     <member refid="classendstone_1_1BlockBreakEvent_1a0992c8dcdec3339ac035abcf6d03a3dc" kind="function"><name>getPlayer</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
+    <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
+    <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1BlockData_1ad6951c03498c864282fb4922e4ba3ab3" kind="function"><name>getBlockStates</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockEvent" kind="class"><name>endstone::BlockEvent</name>
     <member refid="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" kind="variable"><name>block_</name></member>
@@ -909,8 +912,8 @@
     <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" kind="function"><name>getAverageTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" kind="function"><name>createBossBar</name></member>
-    <member refid="classendstone_1_1Server_1a355fbc9b6ac5abf785c0cf101421ee2d" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1ae4ba88fff1054cae91addee166e4cbf9" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a851d9caa59060d05043d87d8f55f5195" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a4868142a51d6ae21775ed7ca026dcfe0" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>

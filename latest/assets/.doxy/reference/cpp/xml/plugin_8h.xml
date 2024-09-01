@@ -481,6 +481,8 @@
       <node id="36">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="14">
         <label>endstone/command/command_sender.h</label>

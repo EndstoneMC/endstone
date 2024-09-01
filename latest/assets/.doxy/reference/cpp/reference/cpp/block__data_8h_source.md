@@ -24,11 +24,20 @@
 
 #pragma once
 
-namespace endstone{
+#include <string>
 
-class BlockData{};
+namespace endstone {
 
-}
+class BlockData : public std::enable_shared_from_this<BlockData> {
+public:
+    virtual ~BlockData() = default;
+
+    [[nodiscard]] virtual std::string getType() const = 0;
+
+    [[nodiscard]] virtual std::string getBlockStates() const = 0;
+};
+
+}  // namespace endstone
 ```
 
 

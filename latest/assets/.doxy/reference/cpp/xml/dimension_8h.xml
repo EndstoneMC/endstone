@@ -46,6 +46,8 @@
       <node id="5">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>endstone/util/vector.h</label>

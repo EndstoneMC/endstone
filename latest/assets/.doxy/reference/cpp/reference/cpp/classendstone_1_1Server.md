@@ -63,8 +63,8 @@ _Represents a server implementation._
 | virtual void | [**broadcast**](#function-broadcast) (const std::string & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br> |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, std::string data) const = 0<br> |
+| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br> |
+| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, std::string block\_states) const = 0<br> |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, BarStyle style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
@@ -263,7 +263,7 @@ inline void endstone::Server::broadcastMessage (
 
 
 ```C++
-virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
+virtual std::shared_ptr< BlockData > endstone::Server::createBlockData (
     std::string type
 ) const = 0
 ```
@@ -300,9 +300,9 @@ new data instance
 
 
 ```C++
-virtual std::unique_ptr< BlockData > endstone::Server::createBlockData (
+virtual std::shared_ptr< BlockData > endstone::Server::createBlockData (
     std::string type,
-    std::string data
+    std::string block_states
 ) const = 0
 ```
 
@@ -317,7 +317,7 @@ Creates a new [**BlockData**](classendstone_1_1BlockData.md) instance for the sp
 
 
 * `type` the block type 
-* `data` data string, for example ["old\_leaf\_type":"birch","persistent\_bit":true] 
+* `block_states` block states string, for example ["old\_leaf\_type":"birch","persistent\_bit":true] 
 
 
 

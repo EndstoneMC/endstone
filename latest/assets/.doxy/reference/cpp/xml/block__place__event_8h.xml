@@ -320,6 +320,8 @@
       <node id="6">
         <label>endstone/block/block_data.h</label>
         <link refid="block__data_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="19">
         <label>endstone/command/command_sender.h</label>

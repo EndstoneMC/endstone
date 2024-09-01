@@ -52,7 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () = 0<br>_Gets the complete block data for this block._  |
+| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) (int offset\_x, int offset\_y, int offset\_z) = 0<br>_Gets the block at the given offsets._  |
@@ -63,8 +63,8 @@ _Represents a block._ [More...](#detailed-description)
 | virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
 | virtual bool | [**isValid**](#function-isvalid) () const = 0<br>_Checks if the block is valid._  |
-| virtual void | [**setData**](#function-setdata-12) (std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
-| virtual void | [**setData**](#function-setdata-22) (std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual void | [**setData**](#function-setdata-12) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
+| virtual void | [**setData**](#function-setdata-22) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
 | virtual void | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
 | virtual void | [**setType**](#function-settype-22) (std::string type, bool apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
@@ -112,7 +112,7 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
 
 _Gets the complete block data for this block._ 
 ```C++
-virtual std::unique_ptr< BlockData > endstone::Block::getData () = 0
+virtual std::shared_ptr< BlockData > endstone::Block::getData () const = 0
 ```
 
 
@@ -431,7 +431,7 @@ true if the block is valid (i.e., the containing chunk is loaded and ticking), o
 _Sets the complete data for this block._ 
 ```C++
 virtual void endstone::Block::setData (
-    std::unique_ptr< BlockData > data
+    std::shared_ptr< BlockData > data
 ) = 0
 ```
 
@@ -458,7 +458,7 @@ virtual void endstone::Block::setData (
 _Sets the complete data for this block._ 
 ```C++
 virtual void endstone::Block::setData (
-    std::unique_ptr< BlockData > data,
+    std::shared_ptr< BlockData > data,
     bool apply_physics
 ) = 0
 ```
