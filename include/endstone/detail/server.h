@@ -91,6 +91,7 @@ public:
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const override;
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                          std::vector<BarFlag> flags) const override;
+    [[nodiscard]] std::unique_ptr<BlockData> createBlockData(std::string type) const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);

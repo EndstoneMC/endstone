@@ -367,6 +367,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
+{
+    // TODO: implement this
+    throw std::runtime_error("Not implemented");
+}
+
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
 {
     auto it = player_boards_.find(&player);
