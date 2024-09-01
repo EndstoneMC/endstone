@@ -40,21 +40,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 
     py::class_<BlockData, std::shared_ptr<BlockData>>(m, "BlockData", "Represents the data related to a live block")
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
-        .def_property_readonly(
-            "block_states",
-            [](const BlockData &self) -> py::dict {
-                auto states = self.getBlockStates();
-                if (states.empty()) {
-                    return py::dict{};
-                }
-                states.front() = '{';
-                states.back() = '}';
-                std::replace(states.begin(), states.end(), '=', ':');
-                const auto json_module = pybind11::module::import("json");
-                const auto json_loads = json_module.attr("loads");
-                return json_loads(states);
-            },
-            "Gets the block states as a dict.")
+        .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states as a string.")
         .def("__str__", [](const BlockData &self) {
             return fmt::format("BlockData(type={},block_states={})", self.getType(), self.getBlockStates());
         });

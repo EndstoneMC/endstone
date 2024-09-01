@@ -372,9 +372,9 @@ class BlockData:
     def __str__(self) -> str:
         ...
     @property
-    def block_states(self) -> dict:
+    def block_states(self) -> str:
         """
-        Gets the block states as a dict.
+        Gets the block states as a string.
         """
     @property
     def type(self) -> str:

@@ -161,6 +161,7 @@ std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols =
     {"vec3f", CommandRegistry::HardNonTerminal::PositionFloat},
     {"message", CommandRegistry::HardNonTerminal::MessageRoot},
     {"json", CommandRegistry::HardNonTerminal::JsonObject},
+    {"block_states", CommandRegistry::HardNonTerminal::BlockStateArray},
 };
 }  // namespace
 
@@ -240,6 +241,12 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = "Boolean";
+                    data.enum_symbol = CommandRegistry::Symbol{symbol};
+                }
+                else if (parameter.type == "block") {
+                    static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
+                    data.param_type = CommandParameterDataType::Enum;
+                    data.enum_name = "Block";
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
                 }
                 else {

@@ -293,19 +293,19 @@ be shown to them instead of "Hello World!".
 In the section above, we added a parameter with type `message` which is a **built-in type** supported by Endstone.
 Here is a full list of all built-in types currently supported.
 
-| Type         | Alias           | Description                                                  | Example            |
-|--------------|-----------------|--------------------------------------------------------------|--------------------|
-| `int`        |                 | Represents an integer                                        | `10`               |
-| `float`      |                 | Represents a floating point number                           | `3.14`             |
-| `bool`       |                 | Represents a boolean                                         | `true`             |
-| `actor`      | `entity`        | Represents an actor selector                                 | `@e`               |
-| `player`     |                 | Represents a player selector                                 | `PlayerName`       |
-| `target`     |                 | Represents a target selector, same as `actor` and `player`   | `@a`               |
-| `str`        | `string`        | Represents a string, terminated by space                     | `Hello`            |
-| `block_pos`, | `vec3i`         | Represents a 3-Dimensional integer position                  | `1 2 3`            |
-| `pos`        | `vec3`, `vec3f` | Represents a 3-Dimensional float position                    | `1.0 2.0 3.0`      |
-| `message`    |                 | Represents a message, grabs all text input until end of line | `Hello World!`     |
-| `json`       |                 | Represents a JSON string                                     | `{"key": "value"}` |
+| Type           | Alias                       | Description                                            | Possible Value                              |
+|----------------|-----------------------------|--------------------------------------------------------|---------------------------------------------|
+| `int`          |                             | Represents an integer                                  | `10`                                        |
+| `float`        |                             | Represents a floating point number                     | `3.14`                                      |
+| `bool`         |                             | Represents a boolean                                   | `true`                                      |
+| `target`       | `actor`, `entity`, `player` | Represents a target selector                           | `@e`, `@r`, `PlayerName`                    |
+| `str`          | `string`                    | Represents a string, terminated by space               | `Hello`                                     |
+| `block_pos`    | `vec3i`                     | Represents a 3-Dimensionalinteger position             | `1 2 3`                                     |
+| `pos`          | `vec3`, `vec3f`             | Represents a 3-Dimensional float position              | `1.0 2.0 3.0`                               |
+| `message`      |                             | Represents a message with everything until end of line | `Hello World!`                              |
+| `json`         |                             | Represents a JSON string                               | `{"key": "value"}`                          |
+| `block`        |                             | Represents a block type                                | `wood`                                      |
+| `block_states` |                             | Represents the block states                            | `["wood_type"="birch","stripped_bit"=true]` |
 
 ### User-defined enum types
 
@@ -318,7 +318,7 @@ Endstone allows developer to add their own enums. The basic syntax follows the p
 - Mandatory: `(value1|value2|value3)<name: EnumType>`
 - Optional: `(value1|value2|value3)[name: EnumType]`
 
-Here, all possible values, separated by the pipeline operator `|`, are scoped inside the parentheses `()`, 
+Here, all possible values, separated by the pipeline operator `|`, are scoped inside the parentheses `()`,
 followed by the parameter kind, name and type.
 
 !!! example
