@@ -17,6 +17,7 @@
 #include <memory>
 #include <string>
 
+#include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
 #include "endstone/level/location.h"
 
@@ -35,6 +36,18 @@ public:
     virtual ~Block() = default;
 
     /**
+     * @brief Checks if the block is valid.
+     *
+     * <br>
+     * This method verifies the validity of the block. A block is considered valid
+     * if and only if the chunk containing this block is loaded and ticking. If the
+     * chunk is not loaded or not in the ticking state, this method will return false.
+     *
+     * @return true if the block is valid (i.e., the containing chunk is loaded and ticking), otherwise false.
+     */
+    [[nodiscard]] virtual bool isValid() const = 0;
+
+    /**
      * @brief Get the type of the block.
      *
      * This method returns the type of the block as a string, for example, minecraft:acacia_stairs.
@@ -42,6 +55,43 @@ public:
      * @return The type of the block.
      */
     [[nodiscard]] virtual std::string getType() const = 0;
+
+    /**
+     * @brief Sets the type of this block
+     *
+     * @param type Material to change this block to
+     */
+    virtual void setType(std::string type) = 0;
+
+    /**
+     * @brief Sets the type of this block
+     *
+     * @param type Material to change this block to
+     * @param apply_physics False to cancel physics on the changed block.
+     */
+    virtual void setType(std::string type, bool apply_physics) = 0;
+
+    /**
+     * @brief Gets the complete block data for this block
+     *
+     * @return block specific data
+     */
+    [[nodiscard]] virtual BlockData &getData() = 0;
+
+    /**
+     * @brief Sets the complete data for this block
+     *
+     * @param data new block specific data
+     */
+    virtual void setData(std::unique_ptr<BlockData> data) = 0;
+
+    /**
+     * @brief Sets the complete data for this block
+     *
+     * @param data new block specific data
+     * @param apply_physics False to cancel physics on the changed block.
+     */
+    virtual void setData(std::unique_ptr<BlockData> data, bool apply_physics) = 0;
 
     /**
      * @brief Gets the block at the given offsets

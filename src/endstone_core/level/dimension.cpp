@@ -51,28 +51,7 @@ Level &EndstoneDimension::getLevel() const
 
 std::unique_ptr<Block> EndstoneDimension::getBlockAt(int x, int y, int z)
 {
-    auto &block_source = getHandle().getBlockSourceFromMainChunkSource();
-    auto &logger = level_.getServer().getLogger();
-
-    if (y < block_source.getMinHeight() || y > block_source.getMaxHeight()) {
-        logger.error("Trying to access location ({}, {}, {}) which is outside of the world boundaries.", x, y, z);
-        return nullptr;
-    }
-
-    auto *chunk = block_source.getChunkAt(BlockPos{x, y, z});
-    if (!chunk) {
-        logger.error("Trying to access location ({}, {}, {}) which is not in a chunk currently loaded.", x, y, z);
-        return nullptr;
-    }
-
-    auto current_level_tick = level_.getHandle().getCurrentTick();
-    auto chunk_last_tick = chunk->getLastTick();
-    if (current_level_tick != chunk_last_tick && current_level_tick != chunk_last_tick + 1) {
-        logger.error("Trying to access location ({}, {}, {}) which is not in a chunk currently ticking.", x, y, z);
-        return nullptr;
-    }
-
-    return EndstoneBlock::at(dimension_.getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
+    return EndstoneBlock::at(getHandle().getBlockSourceFromMainChunkSource(), BlockPos(x, y, z));
 }
 
 std::unique_ptr<Block> EndstoneDimension::getBlockAt(Location location)
