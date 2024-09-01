@@ -2557,7 +2557,7 @@ Here is a full list of all built-in types currently supported.</p>
 <th>Type</th>
 <th>Alias</th>
 <th>Description</th>
-<th>Example</th>
+<th>Possible Value</th>
 </tr>
 </thead>
 <tbody>
@@ -2580,22 +2580,10 @@ Here is a full list of all built-in types currently supported.</p>
 <td><code>true</code></td>
 </tr>
 <tr>
-<td><code>actor</code></td>
-<td><code>entity</code></td>
-<td>Represents an actor selector</td>
-<td><code>@e</code></td>
-</tr>
-<tr>
-<td><code>player</code></td>
-<td></td>
-<td>Represents a player selector</td>
-<td><code>PlayerName</code></td>
-</tr>
-<tr>
 <td><code>target</code></td>
-<td></td>
-<td>Represents a target selector, same as <code>actor</code> and <code>player</code></td>
-<td><code>@a</code></td>
+<td><code>actor</code>, <code>entity</code>, <code>player</code></td>
+<td>Represents a target selector</td>
+<td><code>@e</code>, <code>@r</code>, <code>PlayerName</code></td>
 </tr>
 <tr>
 <td><code>str</code></td>
@@ -2604,9 +2592,9 @@ Here is a full list of all built-in types currently supported.</p>
 <td><code>Hello</code></td>
 </tr>
 <tr>
-<td><code>block_pos</code>,</td>
+<td><code>block_pos</code></td>
 <td><code>vec3i</code></td>
-<td>Represents a 3-Dimensional integer position</td>
+<td>Represents a 3-Dimensionalinteger position</td>
 <td><code>1 2 3</code></td>
 </tr>
 <tr>
@@ -2618,7 +2606,7 @@ Here is a full list of all built-in types currently supported.</p>
 <tr>
 <td><code>message</code></td>
 <td></td>
-<td>Represents a message, grabs all text input until end of line</td>
+<td>Represents a message with everything until end of line</td>
 <td><code>Hello World!</code></td>
 </tr>
 <tr>
@@ -2626,6 +2614,18 @@ Here is a full list of all built-in types currently supported.</p>
 <td></td>
 <td>Represents a JSON string</td>
 <td><code>{"key": "value"}</code></td>
+</tr>
+<tr>
+<td><code>block</code></td>
+<td></td>
+<td>Represents a block type</td>
+<td><code>wood</code></td>
+</tr>
+<tr>
+<td><code>block_states</code></td>
+<td></td>
+<td>Represents the block states</td>
+<td><code>["wood_type"="birch","stripped_bit"=true]</code></td>
 </tr>
 </tbody>
 </table>
@@ -2638,7 +2638,7 @@ comprised of a set of named constants, referred to as the enumeration, or in sho
 <li>Mandatory: <code>(value1|value2|value3)&lt;name: EnumType&gt;</code></li>
 <li>Optional: <code>(value1|value2|value3)[name: EnumType]</code></li>
 </ul>
-<p>Here, all possible values, separated by the pipeline operator <code>|</code>, are scoped inside the parentheses <code>()</code>, 
+<p>Here, all possible values, separated by the pipeline operator <code>|</code>, are scoped inside the parentheses <code>()</code>,
 followed by the parameter kind, name and type.</p>
 <div class="admonition example">
 <p class="admonition-title">Example</p>
@@ -2668,7 +2668,7 @@ When using the command, the user must select one of the specified action from th
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 1, 2024</span>
   </span>
 
     
