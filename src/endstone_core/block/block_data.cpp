@@ -14,9 +14,24 @@
 
 #include "endstone/detail/block/block_data.h"
 
+#include "bedrock/nbt/nbt_io.h"
+
 namespace endstone::detail {
 
 EndstoneBlockData::EndstoneBlockData(::Block &block) : block_(block) {}
+
+std::string EndstoneBlockData::getType() const
+{
+    return block_.getLegacyBlock().getFullNameId();
+}
+
+std::string EndstoneBlockData::getBlockStates() const
+{
+    if (const auto *states = getHandle().getSerializationId().get("states")) {
+        return NbtIo::toJson(*states).dump();
+    }
+    return "";
+}
 
 ::Block &EndstoneBlockData::getHandle() const
 {

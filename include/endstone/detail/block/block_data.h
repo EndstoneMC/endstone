@@ -22,6 +22,10 @@ namespace endstone::detail {
 class EndstoneBlockData : public BlockData {
 public:
     explicit EndstoneBlockData(::Block &block);
+
+    [[nodiscard]] std::string getType() const override;
+    [[nodiscard]] std::string getBlockStates() const override;
+
     [[nodiscard]] ::Block &getHandle() const;
 
 private:

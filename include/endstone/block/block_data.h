@@ -14,8 +14,28 @@
 
 #pragma once
 
-namespace endstone{
+#include <string>
 
-class BlockData{};
+namespace endstone {
 
-}
+class BlockData {
+public:
+    virtual ~BlockData() = default;
+
+    /**
+     * @brief Get the block type represented by this block data.
+     *
+     * @return the block type
+     */
+    [[nodiscard]] virtual std::string getType() const = 0;
+
+    /**
+     * @brief Gets the block states as a string, which when passed into a method such as
+     * Server::createBlockData(type, block_states) will unambiguously recreate this instance.
+     *
+     * @return serialized data string for this block
+     */
+    [[nodiscard]] virtual std::string getBlockStates() const = 0;
+};
+
+}  // namespace endstone

@@ -26,10 +26,10 @@
 #include "bedrock/world/flip.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_property.h"
+#include "bedrock/world/level/block/block_state_instance.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
-#include "block_state_instance.h"
 
 using Brightness = std::uint8_t;
 using FacingID = std::uint8_t;
