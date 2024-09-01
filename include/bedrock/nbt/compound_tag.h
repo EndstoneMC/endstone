@@ -92,6 +92,16 @@ public:
         return tags_.cend();
     }
 
+    [[nodiscard]] std::size_t size() const
+    {
+        return tags_.size();
+    }
+
+    [[nodiscard]] bool empty() const
+    {
+        return tags_.empty();
+    }
+
 private:
     storage_type tags_;  // +8
 };
