@@ -22,4 +22,5 @@
 class BlockTypeRegistry {
 public:
     ENDSTONE_HOOK static void forEachBlock(std::function<bool(BlockLegacy const &)>);
+    ENDSTONE_HOOK static WeakPtr<BlockLegacy> lookupByName(HashedString const &, bool);
 };

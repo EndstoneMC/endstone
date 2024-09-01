@@ -377,14 +377,14 @@ std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) con
 std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std::string data) const
 {
 
-    auto block = BlockTypeRegistry::lookupByName(type, true);
+    auto block = BlockTypeRegistry::lookupByName(type, false);  // false - do not log if not found
     if (!block) {
         getLogger().error("Block type {} cannot be found in the registry.", type);
         return nullptr;
     }
 
     if (!data.empty()) {
-        // TODO(block): support block permutation data
+        // TODO(block): support block state/permutation data
     }
     return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block->getRenderBlock()));
 }
