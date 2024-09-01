@@ -298,6 +298,16 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
 
     /**
+     * Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
+     * except for those provided in data.
+     *
+     * @param type the block type
+     * @param data data string, for example ["old_leaf_type":"birch","persistent_bit":true]
+     * @return new data instance
+     */
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type, std::string data) const = 0;
+
+    /**
      * @brief Gets the start time of the server.
      *
      * @return The start time of the server。

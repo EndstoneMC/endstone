@@ -17,6 +17,8 @@
 #include <filesystem>
 #include <memory>
 
+#include <endstone/detail/block/block_data.h>
+
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -369,8 +371,22 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
 
 std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
 {
-    // TODO: implement this
-    throw std::runtime_error("Not implemented");
+    return createBlockData(type, "");
+}
+
+std::unique_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std::string data) const
+{
+
+    auto block = BlockTypeRegistry::lookupByName(type, true);
+    if (!block) {
+        getLogger().error("Block type {} cannot be found in the registry.", type);
+        return nullptr;
+    }
+
+    if (!data.empty()) {
+        // TODO(block): support block permutation data
+    }
+    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block->getRenderBlock()));
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

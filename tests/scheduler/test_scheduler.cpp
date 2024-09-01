@@ -61,6 +61,7 @@ public:
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
     MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
+    MOCK_METHOD(std::unique_ptr<endstone::BlockData>, createBlockData, (std::string, std::string), (const, override));
 };
 
 class MockPlugin : public endstone::Plugin {
