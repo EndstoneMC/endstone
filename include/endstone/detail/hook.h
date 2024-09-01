@@ -46,28 +46,38 @@ template <typename Return, typename... Arg>
 Return (*get_original(Return (*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
 {
     auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
-    return *reinterpret_cast<decltype(fp) *>(&original);
+    return *reinterpret_cast<decltype(&fp)>(&original);
 }
 
 /**
  * @brief Gets the original member function pointer from a detour member function pointer (non-const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*get_original(Return (Class::*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
+Return (Class:: *get_original(Return (Class:: *fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
 {
-    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
-    return *reinterpret_cast<decltype(fp) *>(&original);
+    void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    struct {  // https://doi.org/10.1145/3660779
+        void *ptr;
+        std::size_t adj = 0;
+    } temp;
+    temp.ptr = original;
+    return *reinterpret_cast<decltype(&fp)>(&temp);
 }
 
 /**
  * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
-                             std::optional<std::string> name = std::nullopt))(Arg...) const
+Return (Class:: *get_original(Return (Class:: *fp)(Arg...) const,
+                              std::optional<std::string> name = std::nullopt))(Arg...) const
 {
-    auto *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
-    return *reinterpret_cast<decltype(fp) *>(&original);
+    void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
+    struct {  // https://doi.org/10.1145/3660779
+        void *ptr;
+        std::size_t adj = 0;
+    } temp;
+    temp.ptr = original;
+    return *reinterpret_cast<decltype(&fp)>(&temp);
 }
 
 }  // namespace endstone::detail::hook
