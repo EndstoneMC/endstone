@@ -30,6 +30,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
@@ -120,10 +121,15 @@ public:
 
     virtual float getAverageTickUsage() = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style) const = 0;
+    [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color,
+                                                                 BarStyle style) const = 0;
 
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type) const = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<BlockData> createBlockData(std::string type, std::string data) const = 0;
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 

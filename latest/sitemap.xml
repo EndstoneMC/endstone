@@ -165,6 +165,10 @@
          <lastmod>2024-09-01</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockData/</loc>
+         <lastmod>2024-09-01</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BlockEvent/</loc>
          <lastmod>2024-09-01</lastmod>
     </url>
@@ -538,6 +542,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/block_8h_source/</loc>
+         <lastmod>2024-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__data_8h/</loc>
+         <lastmod>2024-09-01</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/block__data_8h_source/</loc>
          <lastmod>2024-09-01</lastmod>
     </url>
     <url>

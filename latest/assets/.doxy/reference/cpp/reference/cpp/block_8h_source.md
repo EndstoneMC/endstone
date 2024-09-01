@@ -27,6 +27,7 @@
 #include <memory>
 #include <string>
 
+#include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
 #include "endstone/level/location.h"
 
@@ -38,7 +39,19 @@ class Block {
 public:
     virtual ~Block() = default;
 
+    [[nodiscard]] virtual bool isValid() const = 0;
+
     [[nodiscard]] virtual std::string getType() const = 0;
+
+    virtual void setType(std::string type) = 0;
+
+    virtual void setType(std::string type, bool apply_physics) = 0;
+
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() = 0;
+
+    virtual void setData(std::unique_ptr<BlockData> data) = 0;
+
+    virtual void setData(std::unique_ptr<BlockData> data, bool apply_physics) = 0;
 
     virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 

@@ -15,6 +15,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) _Called when a non-player entity is teleported from one location to another._     
     * **class** [**Block**](classendstone_1_1Block.md) _Represents a block._     
     * **class** [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) _Called when a block is broken by a player._     
+    * **class** [**BlockData**](classendstone_1_1BlockData.md) 
     * **class** [**BlockEvent**](classendstone_1_1BlockEvent.md) _Represents an Block-related event._     
     * **class** [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) _Called when a block is placed by a player._     
     * **class** [**BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._     

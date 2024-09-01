@@ -52,6 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
 | virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) (int offset\_x, int offset\_y, int offset\_z) = 0<br>_Gets the block at the given offsets._  |
@@ -61,6 +62,11 @@ _Represents a block._ [More...](#detailed-description)
 | virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
+| virtual bool | [**isValid**](#function-isvalid) () const = 0<br>_Checks if the block is valid._  |
+| virtual void | [**setData**](#function-setdata-12) (std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
+| virtual void | [**setData**](#function-setdata-22) (std::unique\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual void | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
+| virtual void | [**setType**](#function-settype-22) (std::string type, bool apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -99,6 +105,31 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
     
 ## Public Functions Documentation
 
+
+
+
+### function getData 
+
+_Gets the complete block data for this block._ 
+```C++
+virtual std::unique_ptr< BlockData > endstone::Block::getData () = 0
+```
+
+
+
+
+
+**Returns:**
+
+block specific data 
+
+
+
+
+
+        
+
+<hr>
 
 
 
@@ -356,6 +387,147 @@ virtual int endstone::Block::getZ () const = 0
 
 x-coordinate 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function isValid 
+
+_Checks if the block is valid._ 
+```C++
+virtual bool endstone::Block::isValid () const = 0
+```
+
+
+
+
+ This method verifies the validity of the block. A block is considered valid if and only if the chunk containing this block is loaded and ticking. If the chunk is not loaded or not in the ticking state, this method will return false.
+
+
+
+
+**Returns:**
+
+true if the block is valid (i.e., the containing chunk is loaded and ticking), otherwise false. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setData [1/2]
+
+_Sets the complete data for this block._ 
+```C++
+virtual void endstone::Block::setData (
+    std::unique_ptr< BlockData > data
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `data` new block specific data 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setData [2/2]
+
+_Sets the complete data for this block._ 
+```C++
+virtual void endstone::Block::setData (
+    std::unique_ptr< BlockData > data,
+    bool apply_physics
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `data` new block specific data 
+* `apply_physics` False to cancel physics on the changed block. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setType [1/2]
+
+_Sets the type of this block._ 
+```C++
+virtual void endstone::Block::setType (
+    std::string type
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` Material to change this block to 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setType [2/2]
+
+_Sets the type of this block._ 
+```C++
+virtual void endstone::Block::setType (
+    std::string type,
+    bool apply_physics
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `type` Material to change this block to 
+* `apply_physics` False to cancel physics on the changed block. 
 
 
 
