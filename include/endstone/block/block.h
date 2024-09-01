@@ -76,7 +76,7 @@ public:
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual BlockData &getData() = 0;
+    [[nodiscard]] virtual std::unique_ptr<BlockData> getData() = 0;
 
     /**
      * @brief Sets the complete data for this block

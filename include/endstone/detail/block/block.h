@@ -26,7 +26,7 @@ public:
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
     void setType(std::string type, bool apply_physics) override;
-    [[nodiscard]] BlockData &getData() override;
+    [[nodiscard]] std::unique_ptr<BlockData> getData() override;
     void setData(std::unique_ptr<BlockData> data) override;
     void setData(std::unique_ptr<BlockData> data, bool apply_physics) override;
     std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) override;

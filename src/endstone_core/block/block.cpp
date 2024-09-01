@@ -16,6 +16,7 @@
 
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/detail/block/block_data.h"
 #include "endstone/detail/block/block_face.h"
 #include "endstone/detail/server.h"
 
@@ -53,10 +54,12 @@ void EndstoneBlock::setType(std::string type, bool apply_physics)
     }
 }
 
-BlockData &EndstoneBlock::getData()
+std::unique_ptr<BlockData> EndstoneBlock::getData()
 {
-    // TODO: implement this
-    throw std::runtime_error("BlockData::getBlockData(): not implemented");
+    if (checkState()) {
+        return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block_source_.getBlock(block_pos_)));
+    }
+    return nullptr;
 }
 
 void EndstoneBlock::setData(std::unique_ptr<BlockData> data)
@@ -66,8 +69,24 @@ void EndstoneBlock::setData(std::unique_ptr<BlockData> data)
 
 void EndstoneBlock::setData(std::unique_ptr<BlockData> data, bool apply_physics)
 {
-    // TODO: implement this
-    throw std::runtime_error("BlockData::setBlockData(): not implemented");
+    if (!data) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.getLogger().error("EndstoneBlock::setData(): Block data cannot be nullptr.");
+        return;
+    }
+
+    if (!checkState()) {
+        return;
+    }
+
+    const ::Block &block = static_cast<EndstoneBlockData &>(*data).getHandle();
+    if (apply_physics) {
+        block_source_.setBlock(block_pos_, block, 3, nullptr, nullptr);
+    }
+    else {
+        // TODO(block): NOTIFY | NO_OBSERVER | NO_PLACE (?)
+        block_source_.setBlock(block_pos_, block, 2 | 16 | 1024, nullptr, nullptr);
+    }
 }
 
 std::unique_ptr<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
