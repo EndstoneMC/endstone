@@ -20,8 +20,3 @@ void BlockTypeRegistry::forEachBlock(std::function<bool(const BlockLegacy &)> ca
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&BlockTypeRegistry::forEachBlock, std::move(callback));
 }
-
-WeakPtr<BlockLegacy> BlockTypeRegistry::lookupByName(HashedString const &name, bool log_not_found)
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&BlockTypeRegistry::lookupByName, name, log_not_found);
-}

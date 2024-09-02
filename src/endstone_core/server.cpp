@@ -27,6 +27,7 @@ namespace fs = std::filesystem;
 #include "bedrock/core/threading.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
@@ -376,17 +377,22 @@ std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type) con
 
 std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
+    std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
+    for (const auto &[key, value] : block_states) {
+        std::visit(entt::overloaded{[&](auto &&arg) {
+                       states.emplace(key, arg);
+                   }},
+                   value);
+    }
 
-    auto block = BlockTypeRegistry::lookupByName(type, false);  // false - do not log if not found
+    const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
+    const auto *block = block_descriptor.tryGetBlockNoLogging();
     if (!block) {
         getLogger().error("Block type {} cannot be found in the registry.", type);
         return nullptr;
     }
 
-    if (!block_states.empty()) {
-        // TODO(block): parse block states string
-    }
-    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block->getRenderBlock()));
+    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

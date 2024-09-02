@@ -12,14 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/level/block/block_descriptor.h"
 
-#include <functional>
+#include "endstone/detail/hook.h"
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/block/block_legacy.h"
+Block const *BlockDescriptor::tryGetBlockNoLogging() const
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&BlockDescriptor::tryGetBlockNoLogging, this);
+}
 
-class BlockTypeRegistry {
-public:
-    ENDSTONE_HOOK static void forEachBlock(std::function<bool(BlockLegacy const &)>);
-};
+namespace ScriptModuleMinecraft::ScriptBlockUtils {
+BlockDescriptor createBlockDescriptor(
+    std::string type, std::optional<std::unordered_map<std::string, std::variant<int, std::string, bool>>> states)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor, type, states);
+}
+}  // namespace ScriptModuleMinecraft::ScriptBlockUtils

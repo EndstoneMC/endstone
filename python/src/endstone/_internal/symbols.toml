@@ -1,4 +1,4 @@
-timestamp = 1725207260
+timestamp = 1725276830
 version = "1.21.22"
 
 [windows]
@@ -10,9 +10,10 @@ version = "1.21.22"
 "?getServerThread@Threading@Bedrock@@YAAEAVAssignedThread@12@XZ" = 44934560
 # BedrockLog
 "?log_va@BedrockLog@@YAXW4LogCategory@1@V?$bitset@$02@std@@W4LogRule@1@W4LogAreaID@@IPEBDH4PEAD@Z" = 42675472
+# BlockDescriptor
+"?tryGetBlockNoLogging@BlockDescriptor@@QEBAPEBVBlock@@XZ" = 29145776
 # BlockTypeRegistry
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function@$$A6A_NAEBVBlockLegacy@@@Z@std@@@Z" = 34338112
-"?lookupByName@BlockTypeRegistry@@SA?AV?$WeakPtr@VBlockLegacy@@@@AEBVHashedString@@_N@Z" = 34394720
 # Command
 "?getCommandName@Command@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 13128016
 # CommandOriginLoader
@@ -72,6 +73,8 @@ version = "1.21.22"
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 23835344
 # Scoreboard
 "?resetPlayerScore@Scoreboard@@QEAA_NAEBUScoreboardId@@AEAVObjective@@@Z" = 37359680
+# ScriptModuleMinecraft::ScriptBlockUtils
+"?createBlockDescriptor@ScriptBlockUtils@ScriptModuleMinecraft@@YA?AVBlockDescriptor@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$unordered_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@U?$hash@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@U?$equal_to@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$variant@HV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@2@@std@@@2@@std@@@5@@Z" = 23370448
 # ScriptLevelGameplayHandler
 "?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 18138832
 # ServerInstanceEventCoordinator
@@ -108,9 +111,10 @@ version = "1.21.22"
 "_ZN7Bedrock9Threading15getServerThreadEv" = 142197696
 # BedrockLog
 "_ZN10BedrockLog6log_vaENS_11LogCategoryENSt3__16bitsetILm3EEENS_7LogRuleE9LogAreaIDjPKciS7_P13__va_list_tag" = 138934448
+# BlockDescriptor
+"_ZNK15BlockDescriptor20tryGetBlockNoLoggingEv" = 120408944
 # BlockTypeRegistry
 "_ZN17BlockTypeRegistry12forEachBlockENSt3__18functionIFbRK11BlockLegacyEEE" = 125367488
-"_ZN17BlockTypeRegistry12lookupByNameERK12HashedStringb" = 125337136
 # Command
 "_ZNK7Command14getCommandNameEv" = 97925008
 # CommandOriginLoader
@@ -170,6 +174,8 @@ version = "1.21.22"
 "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 80745200
 # Scoreboard
 "_ZN10Scoreboard16resetPlayerScoreERK12ScoreboardIdR9Objective" = 130373408
+# ScriptModuleMinecraft::ScriptBlockUtils
+"_ZN21ScriptModuleMinecraft16ScriptBlockUtils21createBlockDescriptorENSt3__112basic_stringIcNS1_11char_traitsIcEENS1_9allocatorIcEEEENS1_8optionalINS1_13unordered_mapIS7_NS1_7variantIJiS7_bEEENS1_4hashIS7_EENS1_8equal_toIS7_EENS5_INS1_4pairIKS7_SB_EEEEEEEE" = 91834416
 # ScriptLevelGameplayHandler
 "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 95061504
 # ServerInstanceEventCoordinator
