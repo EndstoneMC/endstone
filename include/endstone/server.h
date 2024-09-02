@@ -302,11 +302,11 @@ public:
      * except for those provided in data.
      *
      * @param type the block type
-     * @param block_states block states string, for example ["old_leaf_type":"birch","persistent_bit":true]
+     * @param block_states block states, for example {"old_leaf_type":"birch", "persistent_bit":true}
      * @return new data instance
      */
     [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type,
-                                                                     std::string block_states) const = 0;
+                                                                     BlockStates block_states) const = 0;
 
     /**
      * @brief Gets the start time of the server.

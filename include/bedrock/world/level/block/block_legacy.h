@@ -360,7 +360,7 @@ private:
     bool enable_data_driven_vanilla_blocks_and_items_;                // +648
     AABB visual_shape_;                                               // +652
     std::int64_t unknown3_;                                           // +680
-    std::map<std::uint64_t, BlockStateInstance> states_;              // +688 void* = BlockStateInstance
+    std::map<std::uint64_t, BlockStateInstance> states_;              // +688
     std::unordered_map<HashedString, std::uint64_t> state_name_map_;  // +704
     BlockState *creative_enum_state_;                                 // +768
     std::vector<std::unique_ptr<Block>> block_permutations_;          // +776

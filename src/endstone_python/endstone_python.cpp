@@ -269,7 +269,15 @@ void init_server(py::class_<Server> &server)
                 return self.createBossBar(std::move(title), color, style, flags.value_or(std::vector<BarFlag>()));
             },
             py::arg("title"), py::arg("color"), py::arg("style"), py::arg("flags") = std::nullopt,
-            "Creates a boss bar instance to display to players. The progress defaults to 1.0.");
+            "Creates a boss bar instance to display to players. The progress defaults to 1.0.")
+        .def(
+            "create_block_data",
+            [](const Server &self, std::string type, const std::optional<BlockStates> &block_states) {
+                return self.createBlockData(std::move(type), block_states.value_or(BlockStates{}));
+            },
+            py::arg("type"), py::arg("block_states") = std::nullopt,
+            "Creates a new BlockData instance for the specified block type, with all properties initialized to "
+            "defaults, except for those provided.");
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)

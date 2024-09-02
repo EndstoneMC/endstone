@@ -371,10 +371,10 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
 
 std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
 {
-    return createBlockData(type, "");
+    return createBlockData(type, {});
 }
 
-std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, std::string block_states) const
+std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
 
     auto block = BlockTypeRegistry::lookupByName(type, false);  // false - do not log if not found

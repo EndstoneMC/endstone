@@ -372,9 +372,9 @@ class BlockData:
     def __str__(self) -> str:
         ...
     @property
-    def block_states(self) -> str:
+    def block_states(self) -> dict[str, bool | str | int]:
         """
-        Gets the block states as a string.
+        Gets the block states for this block.
         """
     @property
     def type(self) -> str:
@@ -2441,6 +2441,10 @@ class Server:
     def broadcast_message(self, message: str) -> None:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
+        """
+    def create_block_data(self, type: str, block_states: dict[str, bool | str | int] | None = None) -> BlockData:
+        """
+        Creates a new BlockData instance for the specified block type, with all properties initialized to defaults, except for those provided.
         """
     def create_boss_bar(self, title: str, color: BarColor, style: BarStyle, flags: list[BarFlag] | None = None) -> BossBar:
         """

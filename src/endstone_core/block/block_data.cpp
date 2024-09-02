@@ -25,56 +25,31 @@ std::string EndstoneBlockData::getType() const
     return block_.getLegacyBlock().getFullNameId();
 }
 
-namespace {
-std::string toString(const CompoundTag &states)
+BlockStates EndstoneBlockData::getBlockStates() const
 {
-    if (states.empty()) {
-        return "";
-    }
-
-    std::ostringstream result;
-    result << "[";
-
-    bool first = true;
-    for (const auto &[key, variant] : states) {
-        const auto *state = variant.get();
-
-        if (!first) {
-            result << ",";
-        }
-        first = false;
-
-        result << "\"" << key << "\"=";
-
-        switch (state->getId()) {
-        case Tag::Type::Byte:
-            result << (static_cast<const ByteTag *>(state)->data > 0 ? "true" : "false");
-            break;
-        case Tag::Type::Int:
-            result << static_cast<const IntTag *>(state)->data;
-            break;
-        case Tag::Type::String:
-            result << "\"" << static_cast<const StringTag *>(state)->data << "\"";
-            break;
-        default:
-            throw std::invalid_argument("Unexpected tag type in block states");
-        }
-    }
-
-    result << "]";
-    return result.str();
-}
-}  // namespace
-
-std::string EndstoneBlockData::getBlockStates() const
-{
+    BlockStates result;
     if (const auto *states = getHandle().getSerializationId().get("states")) {
         if (states->getId() != Tag::Type::Compound) {
             throw std::invalid_argument("Unexpected tag type for block states in serialization id");
         }
-        return toString(*static_cast<const CompoundTag *>(states));
+        for (const auto &[key, variant] : *static_cast<const CompoundTag *>(states)) {
+            const auto *state = variant.get();
+            switch (state->getId()) {
+            case Tag::Type::Byte:
+                result.emplace(key, static_cast<const ByteTag *>(state)->data > 0);
+                break;
+            case Tag::Type::Int:
+                result.emplace(key, static_cast<const IntTag *>(state)->data);
+                break;
+            case Tag::Type::String:
+                result.emplace(key, static_cast<const StringTag *>(state)->data);
+                break;
+            default:
+                throw std::invalid_argument("Unexpected tag type in block states");
+            }
+        }
     }
-    return "";
+    return result;
 }
 
 ::Block &EndstoneBlockData::getHandle() const

@@ -14,11 +14,11 @@
 
 #include "endstone/block/block.h"
 
-#include <algorithm>
 #include <string>
 
 #include <fmt/format.h>
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
@@ -40,10 +40,8 @@ void init_block(py::module_ &m, py::class_<Block> &block)
 
     py::class_<BlockData, std::shared_ptr<BlockData>>(m, "BlockData", "Represents the data related to a live block")
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
-        .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states as a string.")
-        .def("__str__", [](const BlockData &self) {
-            return fmt::format("BlockData(type={},block_states={})", self.getType(), self.getBlockStates());
-        });
+        .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
+        .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
 
     block
         .def_property("type", &Block::getType, py::overload_cast<std::string>(&Block::setType),
@@ -64,10 +62,7 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("y", &Block::getY, "Gets the y-coordinate of this block")
         .def_property_readonly("z", &Block::getZ, "Gets the z-coordinate of this block")
         .def_property_readonly("location", &Block::getLocation, "Gets the Location of the block")
-        .def("__str__", [](const Block &self) {
-            return fmt::format("Block(pos=({},{},{}),type={},data={}{})", self.getX(), self.getY(), self.getZ(),
-                               self.getType(), self.getData()->getType(), self.getData()->getBlockStates());
-        });
+        .def("__str__", [](const Block &self) { return fmt::format("{}", self); });
 }
 
 }  // namespace endstone::detail

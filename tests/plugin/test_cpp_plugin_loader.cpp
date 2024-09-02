@@ -19,6 +19,7 @@
 #include <gtest/gtest.h>
 
 #include "bedrock/world/level/level.h"
+#include "endstone/block/block_data.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/scheduler/scheduler.h"
@@ -64,7 +65,8 @@ public:
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
-    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string, std::string), (const, override));
+    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string, endstone::BlockStates),
+                (const, override));
     MockServer()
     {
         ON_CALL(*this, getLogger())

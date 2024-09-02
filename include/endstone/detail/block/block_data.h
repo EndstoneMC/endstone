@@ -24,7 +24,7 @@ public:
     explicit EndstoneBlockData(::Block &block);
 
     [[nodiscard]] std::string getType() const override;
-    [[nodiscard]] std::string getBlockStates() const override;
+    [[nodiscard]] BlockStates getBlockStates() const override;
 
     [[nodiscard]] ::Block &getHandle() const;
 

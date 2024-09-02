@@ -16,6 +16,8 @@
 
 #include <cmath>
 
+#include <fmt/format.h>
+
 #include "bedrock/core/math/vec3.h"
 
 class BlockPos {
@@ -34,3 +36,16 @@ public:
 };
 
 inline const BlockPos BlockPos::ZERO{0, 0, 0};
+
+namespace fmt {
+template <>
+struct formatter<BlockPos> : formatter<string_view> {
+    using Type = BlockPos;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "BlockPos(x={}, y={}, z={})", val.x, val.y, val.z);
+    }
+};
+}  // namespace fmt
