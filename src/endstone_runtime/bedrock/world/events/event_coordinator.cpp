@@ -103,7 +103,7 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
 {
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
         &PlayerEventCoordinator::sendEvent;
-    auto visitor = entt::overloaded{
+    auto visitor = endstone::overloaded{
         [](const Details::ValueOrRef<PlayerFormCloseEvent const> &value) {
             const auto event = value.asValue();
             const auto &weak_ref = event.player;

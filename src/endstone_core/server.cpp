@@ -378,11 +378,11 @@ std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type) con
 std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
-    for (const auto &[key, value] : block_states) {
-        std::visit(entt::overloaded{[&](auto &&arg) {
-                       states.emplace(key, arg);
+    for (const auto &state : block_states) {
+        std::visit(overloaded{[&](auto &&arg) {
+                       states.emplace(state.first, arg);
                    }},
-                   value);
+                   state.second);
     }
 
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);

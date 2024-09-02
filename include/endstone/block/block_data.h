@@ -20,6 +20,8 @@
 
 #include <fmt/format.h>
 
+#include "endstone/endstone.h"
+
 namespace endstone {
 
 using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
@@ -58,20 +60,11 @@ struct formatter<endstone::BlockStates::mapped_type> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return std::visit(
-            [&ctx](auto &&arg) {
-                using T = std::decay_t<decltype(arg)>;
-                if constexpr (std::is_same_v<T, std::string>) {
-                    return format_to(ctx.out(), "{:?}", arg);
-                }
-                else if constexpr (std::is_same_v<T, bool> || std::is_same_v<T, int>) {
-                    return format_to(ctx.out(), "{}", arg);
-                }
-                else {
-                    static_assert(false, "non-exhaustive visitor!");
-                }
-            },
-            val);
+        return std::visit(endstone::overloaded{
+                              [&ctx](const std::string &arg) { return format_to(ctx.out(), "{:?}", arg); },
+                              [&ctx](auto &&arg) { return format_to(ctx.out(), "{}", arg); },
+                          },
+                          val);
     }
 };
 

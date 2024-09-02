@@ -27,7 +27,7 @@ class BlockDescriptor {
     enum class CompareType;
 
 public:
-    ENDSTONE_HOOK [[nodiscard]] Block const *tryGetBlockNoLogging() const;
+    [[nodiscard]] ENDSTONE_HOOK Block const *tryGetBlockNoLogging() const;
 
 private:
     void *unknown1_;                       // +0

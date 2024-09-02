@@ -37,6 +37,7 @@
 #include "endstone/detail/devtools/vanilla_data.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/detail/os.h"
+#include "endstone/endstone.h"
 
 namespace fs = std::filesystem;
 
@@ -260,19 +261,18 @@ void render()
         gFileBrowser->Display();
         if (gFileBrowser->HasSelected()) {
             auto path = gFileBrowser->GetSelected();
-            std::visit(
-                entt::overloaded{[&](std::monostate) { gLogger.error("Unable to save to {}: Empty.", path.string()); },
-                                 [&](const nlohmann::json &arg) {
-                                     std::ofstream file(path);
-                                     file << arg;
-                                 },
-                                 [&](const CompoundTag &arg) {
-                                     BigEndianStringByteOutput output;
-                                     NbtIo::writeNamedTag("", arg, output);
-                                     zstr::ofstream file(path.string(), std::ios::out | std::ios::binary);
-                                     file << output.buffer;
-                                 }},
-                file_to_save);
+            std::visit(overloaded{[&](std::monostate) { gLogger.error("Unable to save to {}: Empty.", path.string()); },
+                                  [&](const nlohmann::json &arg) {
+                                      std::ofstream file(path);
+                                      file << arg;
+                                  },
+                                  [&](const CompoundTag &arg) {
+                                      BigEndianStringByteOutput output;
+                                      NbtIo::writeNamedTag("", arg, output);
+                                      zstr::ofstream file(path.string(), std::ios::out | std::ios::binary);
+                                      file << output.buffer;
+                                  }},
+                       file_to_save);
             file_to_save = std::monostate();
             gFileBrowser->ClearSelected();
         }

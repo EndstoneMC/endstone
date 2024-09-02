@@ -201,17 +201,16 @@ std::string EndstoneScoreboard::getDisplaySlotName(DisplaySlot slot)
 
 const ::ScoreboardId &EndstoneScoreboard::getScoreboardId(ScoreEntry entry) const
 {
-    return std::visit(
-        entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
-                             return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
-                         },
-                         [&](Actor *actor) -> const ::ScoreboardId & {
-                             return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
-                         },
-                         [&](const std::string &fake) -> const ::ScoreboardId & {
-                             return board_.getScoreboardId(fake);
-                         }},
-        entry);
+    return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                                     return board_.getScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
+                                 },
+                                 [&](Actor *actor) -> const ::ScoreboardId & {
+                                     return board_.getScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                                 },
+                                 [&](const std::string &fake) -> const ::ScoreboardId & {
+                                     return board_.getScoreboardId(fake);
+                                 }},
+                      entry);
 }
 
 const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry entry)
@@ -221,17 +220,17 @@ const ::ScoreboardId &EndstoneScoreboard::getOrCreateScoreboardId(ScoreEntry ent
         return scoreboard_id;
     }
 
-    return std::visit(
-        entt::overloaded{[&](Player *player) -> const ::ScoreboardId & {
-                             return board_.createScoreboardId(static_cast<EndstonePlayer *>(player)->getHandle());
-                         },
-                         [&](Actor *actor) -> const ::ScoreboardId & {
-                             return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
-                         },
-                         [&](const std::string &fake) -> const ::ScoreboardId & {
-                             return board_.createScoreboardId(fake);
-                         }},
-        entry);
+    return std::visit(overloaded{[&](Player *player) -> const ::ScoreboardId & {
+                                     return board_.createScoreboardId(
+                                         static_cast<EndstonePlayer *>(player)->getHandle());
+                                 },
+                                 [&](Actor *actor) -> const ::ScoreboardId & {
+                                     return board_.createScoreboardId(static_cast<EndstoneActor *>(actor)->getActor());
+                                 },
+                                 [&](const std::string &fake) -> const ::ScoreboardId & {
+                                     return board_.createScoreboardId(fake);
+                                 }},
+                      entry);
 }
 
 ::Scoreboard &EndstoneScoreboard::getHandle() const

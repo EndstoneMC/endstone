@@ -17,6 +17,7 @@
 #include <entt/entt.hpp>
 #include <nlohmann/json.hpp>
 
+#include "endstone/endstone.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/controls/dropdown.h"
 #include "endstone/form/controls/label.h"
@@ -33,21 +34,21 @@ namespace endstone::detail {
 template <>
 nlohmann::json FormCodec::toJson(const Message &message)
 {
-    return std::visit(entt::overloaded{[&](const std::string &arg) -> nlohmann::json {
-                                           nlohmann::json json;
-                                           json["rawtext"].push_back({
-                                               {"text", arg},
-                                           });
-                                           return json;
-                                       },
-                                       [&](const Translatable &arg) -> nlohmann::json {
-                                           nlohmann::json json;
-                                           json["rawtext"].push_back({
-                                               {"translate", arg.getTranslationKey()},
-                                               {"with", arg.getParameters()},
-                                           });
-                                           return json;
-                                       }},
+    return std::visit(overloaded{[&](const std::string &arg) -> nlohmann::json {
+                                     nlohmann::json json;
+                                     json["rawtext"].push_back({
+                                         {"text", arg},
+                                     });
+                                     return json;
+                                 },
+                                 [&](const Translatable &arg) -> nlohmann::json {
+                                     nlohmann::json json;
+                                     json["rawtext"].push_back({
+                                         {"translate", arg.getTranslationKey()},
+                                         {"with", arg.getParameters()},
+                                     });
+                                     return json;
+                                 }},
                       message);
 }
 
@@ -181,7 +182,7 @@ nlohmann::json FormCodec::toJson(const ModalForm &form)
     json["title"] = toJson(form.getTitle());
     json["content"] = nlohmann::json::array();
     for (const auto &control : form.getControls()) {
-        json["content"].push_back(std::visit(entt::overloaded{[](auto &&arg) {
+        json["content"].push_back(std::visit(overloaded{[](auto &&arg) {
                                                  return toJson(arg);
                                              }},
                                              control));
