@@ -473,6 +473,8 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>endstone/command/command_sender.h</label>

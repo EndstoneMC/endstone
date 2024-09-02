@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="32" column="13"/>
+        <location file="include/endstone/block/block_data.h" line="34" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="39" column="26"/>
+        <location file="include/endstone/block/block_data.h" line="41" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>BlockStates</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="47" column="26"/>
+        <location file="include/endstone/block/block_data.h" line="49" column="26"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -80,7 +80,7 @@
         <label>std::enable_shared_from_this&lt; BlockData &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_data.h" line="30" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="30" bodyend="48"/>
+    <location file="include/endstone/block/block_data.h" line="32" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="32" bodyend="50"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getBlockStates</name></member>
       <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" prot="public" virt="pure-virtual"><scope>endstone::BlockData</scope><name>getType</name></member>

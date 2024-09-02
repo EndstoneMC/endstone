@@ -535,6 +535,8 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>endstone/command/command_sender.h</label>

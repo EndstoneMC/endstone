@@ -495,6 +495,8 @@
     <member refid="classendstone_1_1Objective_1a8a41679213a22450c756fd1c14edbc36" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Objective_1abfd8c61ab066baec27ba92445cc6ce3b" kind="function"><name>operator!=</name></member>
   </compound>
+  <compound refid="structendstone_1_1overloaded" kind="struct"><name>endstone::overloaded</name>
+  </compound>
   <compound refid="classendstone_1_1Packet" kind="class"><name>endstone::Packet</name>
     <member refid="classendstone_1_1Packet_1a0737525674b86ec7f71593ee080b0fb1" kind="function"><name>~Packet</name></member>
     <member refid="classendstone_1_1Packet_1ae6b902874f587e6041c9706318a6ee34" kind="function"><name>getType</name></member>
@@ -1221,6 +1223,7 @@
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
+    <member refid="endstone_8h_1a653e5211ad2fdddf9d08c7353381631d" kind="function"><name>overloaded</name></member>
     <member refid="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="uuid_8h_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
     <member refid="uuid_8h_1a96fb3e11970608db1df12feb7a3a829e" kind="function"><name>operator!=</name></member>

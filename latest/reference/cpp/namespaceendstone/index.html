@@ -2252,6 +2252,19 @@ If you like this project, please feel free to
             
             
             <li class="md-nav__item">
+    <a href="#function-overloaded" class="md-nav__link">
+      <span class="md-ellipsis">
+        function overloaded
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-swap" class="md-nav__link">
       <span class="md-ellipsis">
         function swap
@@ -2661,6 +2674,10 @@ If you like this project, please feel free to
 <td style="text-align: right;">class</td>
 <td style="text-align: left;"><a href="../classendstone_1_1WeatherEvent/"><strong>WeatherEvent</strong></a> <br><em>Represents a Weather-related event.</em></td>
 </tr>
+<tr>
+<td style="text-align: right;">struct</td>
+<td style="text-align: left;"><a href="../structendstone_1_1overloaded/"><strong>overloaded</strong></a> &lt;Func&gt;<br><em>Helper type for visitors.</em></td>
+</tr>
 </tbody>
 </table>
 <h2 id="public-types">Public Types<a class="headerlink" href="#public-types" title="Permanent link">&para;</a></h2>
@@ -2778,6 +2795,10 @@ If you like this project, please feel free to
 <tr>
 <td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-operator_5"><strong>operator&gt;=</strong></a> (<a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; lhs, <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> const &amp; rhs) noexcept<br></td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-overloaded"><strong>overloaded</strong></a> (Func...) <br><em>Deduction guide.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
@@ -2984,11 +3005,24 @@ If you like this project, please feel free to
 </span></code></pre></div>
 <hr>
 
+<h3 id="function-overloaded">function overloaded<a class="headerlink" href="#function-overloaded" title="Permanent link">&para;</a></h3>
+<p><em>Deduction guide.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Func</span><span class="o">&gt;</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">endstone</span><span class="o">::</span><span class="n">overloaded</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="n">Func</span><span class="p">...</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Template parameters:</strong></p>
+<ul>
+<li><code>Func</code> Types of function objects. </li>
+</ul>
+<hr>
+
 <h3 id="function-swap">function swap<a class="headerlink" href="#function-swap" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">swap</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">lhs</span><span class="p">,</span>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="w">    </span><span class="n">UUID</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">rhs</span>
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 </span></code></pre></div>
 <hr>
 

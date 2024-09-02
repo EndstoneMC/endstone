@@ -51,6 +51,16 @@
 #elif __linux__
 #define ENDSTONE_VARIANT_WIN32_LINUX(win32, linux) linux
 #endif
+
+namespace endstone {
+template <typename... Func>
+struct overloaded : Func... {
+  using Func::operator()...;
+};
+
+template <typename... Func>
+overloaded(Func...) -> overloaded<Func...>;
+}  // namespace endstone
 ```
 
 

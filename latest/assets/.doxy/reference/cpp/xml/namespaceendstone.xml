@@ -14,6 +14,7 @@
     <innerclass refid="classendstone_1_1CommandSender" prot="public">endstone::CommandSender</innerclass>
     <innerclass refid="classendstone_1_1ConsoleCommandSender" prot="public">endstone::ConsoleCommandSender</innerclass>
     <innerclass refid="classendstone_1_1PluginCommand" prot="public">endstone::PluginCommand</innerclass>
+    <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
     <innerclass refid="classendstone_1_1ActorDeathEvent" prot="public">endstone::ActorDeathEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorEvent" prot="public">endstone::ActorEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorRemoveEvent" prot="public">endstone::ActorRemoveEvent</innerclass>
@@ -578,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_data.h" line="25" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="25" bodyend="-1"/>
+        <location file="include/endstone/block/block_data.h" line="27" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="27" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="message_8h_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
         <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
@@ -635,6 +636,40 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
+      <memberdef kind="function" id="endstone_8h_1a653e5211ad2fdddf9d08c7353381631d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Func</declname>
+            <defname>Func</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>endstone::overloaded</definition>
+        <argsstring>(Func...) -&gt; overloaded&lt; Func... &gt;</argsstring>
+        <name>overloaded</name>
+        <param>
+          <type>Func...</type>
+        </param>
+        <briefdescription>
+<para>Deduction guide. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Types of function objects. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/endstone.h" line="60" column="1" declfile="include/endstone/endstone.h" declline="60" declcolumn="1"/>
+      </memberdef>
       <memberdef kind="function" id="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool endstone::operator==</definition>

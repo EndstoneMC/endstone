@@ -46,6 +46,7 @@
 * **operator==** ([**endstone**](namespaceendstone.md))
 * **operator&gt;** ([**endstone**](namespaceendstone.md))
 * **operator&gt;=** ([**endstone**](namespaceendstone.md))
+* **overloaded** ([**endstone**](namespaceendstone.md))
 
 
 ## p

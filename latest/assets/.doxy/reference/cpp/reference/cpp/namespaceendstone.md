@@ -118,6 +118,7 @@
 | class | [**Vector**](classendstone_1_1Vector.md) &lt;typename T&gt;<br>_Represents a 3-dimensional vector._  |
 | class | [**WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) <br>_Called when the weather (rain) state in a world is changing._  |
 | class | [**WeatherEvent**](classendstone_1_1WeatherEvent.md) <br>_Represents a Weather-related event._  |
+| struct | [**overloaded**](structendstone_1_1overloaded.md) &lt;Func&gt;<br>_Helper type for visitors._  |
 
 
 ## Public Types
@@ -172,6 +173,7 @@
 |  bool | [**operator==**](#function-operator_3) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
 |  bool | [**operator&gt;**](#function-operator_4) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
 |  bool | [**operator&gt;=**](#function-operator_5) ([**UUID**](classendstone_1_1UUID.md) const & lhs, [**UUID**](classendstone_1_1UUID.md) const & rhs) noexcept<br> |
+|   | [**overloaded**](#function-overloaded) (Func...) <br>_Deduction guide._  |
 |  void | [**swap**](#function-swap) ([**UUID**](classendstone_1_1UUID.md) & lhs, [**UUID**](classendstone_1_1UUID.md) & rhs) noexcept<br> |
 
 
@@ -600,6 +602,34 @@ inline bool endstone::operator>= (
 
 
 
+
+<hr>
+
+
+
+### function overloaded 
+
+_Deduction guide._ 
+```C++
+template<typename... Func>
+endstone::overloaded (
+    Func...
+) 
+```
+
+
+
+
+
+**Template parameters:**
+
+
+* `Func` Types of function objects. 
+
+
+
+
+        
 
 <hr>
 
