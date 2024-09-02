@@ -10,37 +10,43 @@
     <includedby refid="block__event_8h" local="yes">include/endstone/event/block/block_event.h</includedby>
     <includedby refid="dimension_8h" local="yes">include/endstone/level/dimension.h</includedby>
     <incdepgraph>
-      <node id="7">
+      <node id="10">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="7">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="8">
         <label>endstone/block/block_face.h</label>
         <link refid="block__face_8h_source"/>
       </node>
-      <node id="10">
+      <node id="6">
+        <label>variant</label>
+      </node>
+      <node id="13">
         <label>cmath</label>
       </node>
       <node id="3">
         <label>string</label>
       </node>
-      <node id="8">
+      <node id="11">
         <label>optional</label>
       </node>
-      <node id="6">
+      <node id="9">
         <label>endstone/level/location.h</label>
         <link refid="location_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -48,12 +54,21 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
-      <node id="9">
+      <node id="12">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
+      </node>
+      <node id="5">
+        <label>unordered_map</label>
       </node>
       <node id="1">
         <label>include/endstone/block/block.h</label>
@@ -64,9 +79,9 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -104,7 +119,9 @@
       </node>
     </invincdepgraph>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" prot="public">fmt::formatter&lt; endstone::Block &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>
+    <innernamespace refid="namespacefmt">fmt</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -173,6 +190,20 @@
 <codeline lineno="159"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fmt<sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;</highlight></codeline>
+<codeline lineno="165" refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">formatter&lt;endstone::Block&gt;<sp/>:<sp/>formatter&lt;string_view&gt;<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Block" kindref="compound">Type</ref><sp/>=<sp/><ref refid="classendstone_1_1Block" kindref="compound">endstone::Block</ref>;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Block" kindref="compound">Type</ref><sp/>&amp;val,<sp/>FormatContext<sp/>&amp;ctx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>-&gt;<sp/>format_context::iterator</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>format_to(ctx.out(),<sp/></highlight><highlight class="stringliteral">&quot;Block(pos=BlockPos(x={},<sp/>y={},<sp/>z={}),<sp/>type={},<sp/>data={})&quot;</highlight><highlight class="normal">,<sp/>val.<ref refid="classendstone_1_1Block_1a1ec1fc7c6fe1aab63db232b0f0684c76" kindref="member">getX</ref>(),<sp/>val.<ref refid="classendstone_1_1Block_1a390b31ef485c4b5176842bd3a59b01bc" kindref="member">getY</ref>(),</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>val.<ref refid="classendstone_1_1Block_1a9509b72c86339e30a4b50567f6d5279c" kindref="member">getZ</ref>(),<sp/>val.<ref refid="classendstone_1_1Block_1a990361ef55dd7f6c01bf463d0c4206ef" kindref="member">getType</ref>(),<sp/>*val.<ref refid="classendstone_1_1Block_1a2c3b381aa9a7b14fddc255edffb561b3" kindref="member">getData</ref>());</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>fmt</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/block/block.h"/>
   </compounddef>

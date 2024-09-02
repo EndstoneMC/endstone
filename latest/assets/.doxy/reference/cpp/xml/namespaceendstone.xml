@@ -567,6 +567,19 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="block__data_8h_1a688abbe501a61374454a55553d25e08f" prot="public" static="no">
+        <type>std::unordered_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt;</type>
+        <definition>using endstone::BlockStates = typedef std::unordered_map&lt;std::string, std::variant&lt;bool, std::string, int&gt; &gt;</definition>
+        <argsstring></argsstring>
+        <name>BlockStates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/block/block_data.h" line="25" column="1" bodyfile="include/endstone/block/block_data.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="typedef" id="message_8h_1ab1be61859bf80a227cf5d0b12a26ef78" prot="public" static="no">
         <type>std::variant&lt; std::string, <ref refid="classendstone_1_1Translatable" kindref="compound">Translatable</ref> &gt;</type>
         <definition>using endstone::Message = typedef std::variant&lt;std::string, Translatable&gt;</definition>

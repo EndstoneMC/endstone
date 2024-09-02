@@ -130,7 +130,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
 
     [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type,
-                                                                     std::string block_states) const = 0;
+                                                                     BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 

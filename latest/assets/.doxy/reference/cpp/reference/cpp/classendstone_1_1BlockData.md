@@ -53,7 +53,7 @@ Inherits the following classes: std::enable_shared_from_this< BlockData >
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::string | [**getBlockStates**](#function-getblockstates) () const = 0<br>_Gets the block states as a string, which when passed into a method such as Server::createBlockData(type, block\_states) will unambiguously recreate this instance._  |
+| virtual BlockStates | [**getBlockStates**](#function-getblockstates) () const = 0<br>_Gets the block states, which when passed into a method such as Server::createBlockData(type, block\_states) will unambiguously recreate this instance._  |
 | virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the block type represented by this block data._  |
 | virtual  | [**~BlockData**](#function-blockdata) () = default<br> |
 
@@ -91,9 +91,9 @@ Inherits the following classes: std::enable_shared_from_this< BlockData >
 
 ### function getBlockStates 
 
-_Gets the block states as a string, which when passed into a method such as Server::createBlockData(type, block\_states) will unambiguously recreate this instance._ 
+_Gets the block states, which when passed into a method such as Server::createBlockData(type, block\_states) will unambiguously recreate this instance._ 
 ```C++
-virtual std::string endstone::BlockData::getBlockStates () const = 0
+virtual BlockStates endstone::BlockData::getBlockStates () const = 0
 ```
 
 
@@ -102,7 +102,7 @@ virtual std::string endstone::BlockData::getBlockStates () const = 0
 
 **Returns:**
 
-serialized data string for this block 
+the block states for this block 
 
 
 

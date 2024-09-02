@@ -105,7 +105,7 @@
   <compound refid="classendstone_1_1BlockData" kind="class"><name>endstone::BlockData</name>
     <member refid="classendstone_1_1BlockData_1afe42c3c7cc62c74f14f95c02e58c576e" kind="function"><name>~BlockData</name></member>
     <member refid="classendstone_1_1BlockData_1ae7f0727945267d32623e5f76a48bbc09" kind="function"><name>getType</name></member>
-    <member refid="classendstone_1_1BlockData_1ad6951c03498c864282fb4922e4ba3ab3" kind="function"><name>getBlockStates</name></member>
+    <member refid="classendstone_1_1BlockData_1a5900334feb32d7de14feec816c40f023" kind="function"><name>getBlockStates</name></member>
   </compound>
   <compound refid="classendstone_1_1BlockEvent" kind="class"><name>endstone::BlockEvent</name>
     <member refid="classendstone_1_1BlockEvent_1ad07edcfc653b930ee644fba64a42d68f" kind="variable"><name>block_</name></member>
@@ -334,6 +334,26 @@
     <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" kind="function"><name>setTitle</name></member>
     <member refid="classendstone_1_1Form_1a340298a38292e92df18cfcc23561fe81" kind="function"><name>setOnClose</name></member>
     <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" kind="function"><name>getOnClose</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" kind="struct"><name>fmt::formatter&lt; endstone::Block &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1a329e503a43a8c88c344787df53c06dfb" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4_1add1c38750b0aa11012686b8474844c70" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockData &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4_1ab4b50fa36d38b4277a57a4fa0cd9567c" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4_1aa632a9d79ed7155ea62e11db427daed6" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockStates &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4_1ad264e0e41f2c4b242f418cdd5dbdf90e" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4_1a473ff72070fe9baf67199509257dcefc" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockStates::mapped_type &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1aa9d040b09e659ab6b9087e83aa70cd76" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4_1a7a2a54ba9cf136f805e88ad197056a88" kind="function"><name>format</name></member>
+  </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockStates::value_type &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1aad09b775459795e7252f362372b83072" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1adc0e1b7666aff1112b9b54564d09366d" kind="function"><name>format</name></member>
   </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
@@ -913,7 +933,7 @@
     <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a851d9caa59060d05043d87d8f55f5195" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1a4868142a51d6ae21775ed7ca026dcfe0" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
@@ -1196,6 +1216,7 @@
     <member refid="objective__sort__order_8h_1a3bd0139000789bdd027bcb09aca47f9fae3cf5ac19407b1a62c6fccaff675a53b" kind="enumvalue"><name>Descending</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9" kind="enum"><name>RenderType</name></member>
     <member refid="render__type_8h_1ae444241ed516d06f778078ee798db9e9aa0faef0851b4294c06f2b94bb1cb2044" kind="enumvalue"><name>Integer</name></member>
+    <member refid="block__data_8h_1a688abbe501a61374454a55553d25e08f" kind="typedef"><name>BlockStates</name></member>
     <member refid="message_8h_1ab1be61859bf80a227cf5d0b12a26ef78" kind="typedef"><name>Message</name></member>
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
@@ -1210,6 +1231,8 @@
     <member refid="uuid_8h_1a3d5bde372c0cb7aefcad787a85d1f551" kind="function"><name>hash_value</name></member>
   </compound>
   <compound refid="namespaceendstone_1_1detail" kind="namespace"><name>endstone::detail</name>
+  </compound>
+  <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
   </compound>

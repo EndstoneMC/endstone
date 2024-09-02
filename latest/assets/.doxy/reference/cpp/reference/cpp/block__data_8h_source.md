@@ -25,8 +25,14 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
+#include <variant>
+
+#include <fmt/format.h>
 
 namespace endstone {
+
+using BlockStates = std::unordered_map<std::string, std::variant<bool, std::string, int>>;
 
 class BlockData : public std::enable_shared_from_this<BlockData> {
 public:
@@ -34,10 +40,70 @@ public:
 
     [[nodiscard]] virtual std::string getType() const = 0;
 
-    [[nodiscard]] virtual std::string getBlockStates() const = 0;
+    [[nodiscard]] virtual BlockStates getBlockStates() const = 0;
 };
 
 }  // namespace endstone
+
+namespace fmt {
+
+template <>
+struct formatter<endstone::BlockStates::mapped_type> : formatter<string_view> {
+    using Type = endstone::BlockStates::mapped_type;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return std::visit(
+            [&ctx](auto &&arg) {
+                using T = std::decay_t<decltype(arg)>;
+                if constexpr (std::is_same_v<T, std::string>) {
+                    return format_to(ctx.out(), "{:?}", arg);
+                }
+                else if constexpr (std::is_same_v<T, bool> || std::is_same_v<T, int>) {
+                    return format_to(ctx.out(), "{}", arg);
+                }
+                else {
+                    static_assert(false, "non-exhaustive visitor!");
+                }
+            },
+            val);
+    }
+};
+
+template <>
+struct formatter<endstone::BlockStates::value_type> : formatter<string_view> {
+    using Type = endstone::BlockStates::value_type;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "{:?}={}", val.first, val.second);
+    }
+};
+
+template <>
+struct formatter<endstone::BlockStates> : formatter<string_view> {
+    using Type = endstone::BlockStates;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "[{}]", join(val.begin(), val.end(), ","));
+    }
+};
+
+template <>
+struct formatter<endstone::BlockData> : formatter<string_view> {
+    using Type = endstone::BlockData;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "BlockData(type={}, block_states={})", val.getType(), val.getBlockStates());
+    }
+};
+}  // namespace fmt
 ```
 
 

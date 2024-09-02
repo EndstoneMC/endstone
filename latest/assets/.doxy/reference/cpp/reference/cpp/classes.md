@@ -78,6 +78,16 @@
 
 * [**Form**](classendstone_1_1Form.md)
 ([**endstone**](namespaceendstone.md))
+* [**formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md)
+([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md)
+([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md)
+([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md)
+([**fmt**](namespacefmt.md))
+* [**formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md)
+([**fmt**](namespacefmt.md))
 
 
 ## h

@@ -2545,7 +2545,7 @@ If you like this project, please feel free to
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-createblockdata-22"><strong>createBlockData</strong></a> (std::string type, std::string block_states) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-createblockdata-22"><strong>createBlockData</strong></a> (std::string type, BlockStates block_states) const = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BossBar/"><strong>BossBar</strong></a> &gt;</td>
@@ -2752,14 +2752,14 @@ If you like this project, please feel free to
 <h3 id="function-createblockdata-22">function createBlockData [2/2]<a class="headerlink" href="#function-createblockdata-22" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">block_states</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">BlockStates</span><span class="w"> </span><span class="n">block_states</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div>
 <p>Creates a new <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>type</code> the block type </li>
-<li><code>block_states</code> block states string, for example ["old_leaf_type":"birch","persistent_bit":true] </li>
+<li><code>block_states</code> block states, for example {"old_leaf_type":"birch", "persistent_bit":true} </li>
 </ul>
 <p><strong>Returns:</strong></p>
 <p>new data instance </p>

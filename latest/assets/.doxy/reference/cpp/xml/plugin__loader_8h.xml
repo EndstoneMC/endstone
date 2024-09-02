@@ -77,12 +77,12 @@
         <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="51">
+      <node id="52">
         <label>endstone/player.h</label>
         <link refid="player_8h_source"/>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="53" relation="include">
         </childnode>
@@ -139,13 +139,13 @@
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="72" relation="include">
         </childnode>
@@ -159,7 +159,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
@@ -213,10 +213,10 @@
         <label>endstone/inventory/inventory.h</label>
         <link refid="inventory_8h_source"/>
       </node>
-      <node id="52">
+      <node id="46">
         <label>variant</label>
       </node>
-      <node id="48">
+      <node id="49">
         <label>endstone/boss/bar_flag.h</label>
         <link refid="bar__flag_8h_source"/>
       </node>
@@ -432,7 +432,7 @@
         <childnode refid="23" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="50">
         <label>endstone/boss/bar_style.h</label>
         <link refid="bar__style_8h_source"/>
       </node>
@@ -449,7 +449,7 @@
         <childnode refid="78" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>endstone/level/level.h</label>
         <link refid="level_8h_source"/>
         <childnode refid="5" relation="include">
@@ -529,6 +529,12 @@
         <link refid="block__data_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>endstone/command/command_sender.h</label>
@@ -557,7 +563,7 @@
         <link refid="score__entry_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -614,7 +620,7 @@
       <node id="43">
         <label>chrono</label>
       </node>
-      <node id="47">
+      <node id="48">
         <label>endstone/boss/bar_color.h</label>
         <link refid="bar__color_8h_source"/>
       </node>
@@ -681,18 +687,18 @@
         <childnode refid="59" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="47">
         <label>endstone/boss/boss_bar.h</label>
         <link refid="boss__bar_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
         <childnode refid="48" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
         </childnode>
       </node>
       <node id="4">

@@ -868,17 +868,17 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="298" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a4868142a51d6ae21775ed7ca026dcfe0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
         <definition>virtual std::shared_ptr&lt;BlockData&gt; endstone::Server::createBlockData</definition>
-        <argsstring>(std::string type, std::string block_states) const =0</argsstring>
+        <argsstring>(std::string type, BlockStates block_states) const =0</argsstring>
         <name>createBlockData</name>
         <param>
           <type>std::string</type>
           <declname>type</declname>
         </param>
         <param>
-          <type>std::string</type>
+          <type>BlockStates</type>
           <declname>block_states</declname>
         </param>
         <briefdescription>
@@ -898,7 +898,7 @@
 <parametername>block_states</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>block states string, for example [&quot;old_leaf_type&quot;:&quot;birch&quot;,&quot;persistent_bit&quot;:true] </para>
+<para>block states, for example {&quot;old_leaf_type&quot;:&quot;birch&quot;, &quot;persistent_bit&quot;:true} </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -941,7 +941,7 @@
       <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a851d9caa59060d05043d87d8f55f5195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
-      <member refid="classendstone_1_1Server_1a4868142a51d6ae21775ed7ca026dcfe0" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
+      <member refid="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>

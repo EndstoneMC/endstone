@@ -9,6 +9,7 @@
 * **BarFlag** ([**endstone**](namespaceendstone.md))
 * **BarStyle** ([**endstone**](namespaceendstone.md))
 * **BlockFace** ([**endstone**](namespaceendstone.md))
+* **BlockStates** ([**endstone**](namespaceendstone.md))
 
 
 ## d

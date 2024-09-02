@@ -128,6 +128,7 @@
 | enum  | [**BarFlag**](#enum-barflag)  <br> |
 | enum  | [**BarStyle**](#enum-barstyle)  <br> |
 | enum  | [**BlockFace**](#enum-blockface)  <br> |
+| typedef std::unordered\_map&lt; std::string, std::variant&lt; bool, std::string, int &gt; &gt; | [**BlockStates**](#typedef-blockstates)  <br> |
 | enum  | [**DisplaySlot**](#enum-displayslot)  <br>_Locations for displaying objectives to the player._  |
 | enum  | [**EventPriority**](#enum-eventpriority)  <br>_Represents an event's priority in execution._  |
 | enum  | [**GameMode**](#enum-gamemode)  <br>_Represents the various type of game modes that Players may have._  |
@@ -272,6 +273,19 @@ enum endstone::BlockFace {
     West,
     East
 };
+```
+
+
+
+
+<hr>
+
+
+
+### typedef BlockStates 
+
+```C++
+using endstone::BlockStates = typedef std::unordered_map<std::string, std::variant<bool, std::string, int> >;
 ```
 
 
