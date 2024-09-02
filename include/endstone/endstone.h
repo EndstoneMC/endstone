@@ -41,3 +41,21 @@
 #elif __linux__
 #define ENDSTONE_VARIANT_WIN32_LINUX(win32, linux) linux
 #endif
+
+namespace endstone {
+/**
+ * @brief Helper type for visitors.
+ * @tparam Func Types of function objects.
+ */
+template <typename... Func>
+struct overloaded : Func... {
+  using Func::operator()...;
+};
+
+/**
+ * @brief Deduction guide.
+ * @tparam Func Types of function objects.
+ */
+template <typename... Func>
+overloaded(Func...) -> overloaded<Func...>;
+}  // namespace endstone
