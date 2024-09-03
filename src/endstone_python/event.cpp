@@ -34,6 +34,7 @@
 #include "endstone/event/player/player_interact_actor_event.h"
 #include "endstone/event/player/player_interact_event.h"
 #include "endstone/event/player/player_join_event.h"
+#include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/event/player/player_teleport_event.h"
@@ -138,6 +139,9 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
                                "Gets the actor that was right-clicked by the player.");
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server");
+    py::class_<PlayerKickEvent, PlayerEvent>(m, "PlayerKickEvent", "Called when a player gets kicked from the server")
+        .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
+                      "Called when a player gets kicked from the server");
     py::class_<PlayerLoginEvent, PlayerEvent>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
