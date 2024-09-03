@@ -141,7 +141,7 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server");
     py::class_<PlayerKickEvent, PlayerEvent>(m, "PlayerKickEvent", "Called when a player gets kicked from the server")
         .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
-                      "Called when a player gets kicked from the server");
+                      "Gets or sets the reason why the player is getting kicked");
     py::class_<PlayerLoginEvent, PlayerEvent>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");

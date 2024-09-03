@@ -1931,7 +1931,7 @@ class PlayerKickEvent(PlayerEvent):
     @property
     def reason(self) -> str:
         """
-        Called when a player gets kicked from the server
+        Gets or sets the reason why the player is getting kicked
         """
     @reason.setter
     def reason(self, arg1: str) -> None:
