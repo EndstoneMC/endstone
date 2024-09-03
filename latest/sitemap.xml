@@ -337,6 +337,10 @@
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerKickEvent/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerLoginEvent/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
@@ -854,6 +858,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/player__join__event_8h_source/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__kick__event_8h/</loc>
+         <lastmod>2024-09-03</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__kick__event_8h_source/</loc>
          <lastmod>2024-09-03</lastmod>
     </url>
     <url>

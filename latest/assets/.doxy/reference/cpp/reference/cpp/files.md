@@ -52,6 +52,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**player\_interact\_actor\_event.h**](player__interact__actor__event_8h.md)     
                 * **file** [**player\_interact\_event.h**](player__interact__event_8h.md)     
                 * **file** [**player\_join\_event.h**](player__join__event_8h.md)     
+                * **file** [**player\_kick\_event.h**](player__kick__event_8h.md)     
                 * **file** [**player\_login\_event.h**](player__login__event_8h.md)     
                 * **file** [**player\_quit\_event.h**](player__quit__event_8h.md)     
                 * **file** [**player\_teleport\_event.h**](player__teleport__event_8h.md)     

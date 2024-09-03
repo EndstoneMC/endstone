@@ -9,6 +9,7 @@
     <derivedcompoundref refid="classendstone_1_1PlayerInteractActorEvent" prot="public" virt="non-virtual">endstone::PlayerInteractActorEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerInteractEvent" prot="public" virt="non-virtual">endstone::PlayerInteractEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerJoinEvent" prot="public" virt="non-virtual">endstone::PlayerJoinEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1PlayerKickEvent" prot="public" virt="non-virtual">endstone::PlayerKickEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerLoginEvent" prot="public" virt="non-virtual">endstone::PlayerLoginEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerQuitEvent" prot="public" virt="non-virtual">endstone::PlayerQuitEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerTeleportEvent" prot="public" virt="non-virtual">endstone::PlayerTeleportEvent</derivedcompoundref>
@@ -83,7 +84,7 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="11">
+      <node id="12">
         <label>endstone::PlayerTeleportEvent</label>
         <link refid="classendstone_1_1PlayerTeleportEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -101,7 +102,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>endstone::PlayerLoginEvent</label>
         <link refid="classendstone_1_1PlayerLoginEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -110,6 +111,12 @@
       <node id="4">
         <label>endstone::PlayerCommandEvent</label>
         <link refid="classendstone_1_1PlayerCommandEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone::PlayerKickEvent</label>
+        <link refid="classendstone_1_1PlayerKickEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
@@ -129,7 +136,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>endstone::PlayerQuitEvent</label>
         <link refid="classendstone_1_1PlayerQuitEvent"/>
         <childnode refid="1" relation="public-inheritance">

@@ -170,6 +170,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)

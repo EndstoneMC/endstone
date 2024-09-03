@@ -701,6 +701,16 @@
     <member refid="classendstone_1_1PlayerJoinEvent_1a7eb6abb31fececc05830dc7d2fb0dc75" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerJoinEvent_1ad768f16bff5016fc14341264afb47680" kind="function"><name>isCancellable</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerKickEvent" kind="class"><name>endstone::PlayerKickEvent</name>
+    <member refid="classendstone_1_1PlayerKickEvent_1a3ad9fb66f559d36fb0e5940a5664b9dc" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1ac8c658cd31eeb3b8aaef769927a88459" kind="variable"><name>reason_</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1a26c23c662f6234317eda7faf454c8ff5" kind="function"><name>PlayerKickEvent</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1af46ef160d35cf3f8d0930a8077c68a00" kind="function"><name>~PlayerKickEvent</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1aa1641ce45a84ef3d8c2fbd9d36b9bd9d" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1a7086ff2a3bbaddea8994c8c66a9dcf02" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1a8421ba745037cb00ef5fc333d43a790b" kind="function"><name>getReason</name></member>
+    <member refid="classendstone_1_1PlayerKickEvent_1a43bcc4f3ba93c059fc4e7f524c7d4888" kind="function"><name>setReason</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerLoginEvent" kind="class"><name>endstone::PlayerLoginEvent</name>
     <member refid="classendstone_1_1PlayerLoginEvent_1aaea7a39a26c68c5436ee3f050d6be2e6" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerLoginEvent_1ad1404a38de83bce0919fa2c2f6f5cea1" kind="variable"><name>message_</name></member>
@@ -1336,6 +1346,8 @@
   <compound refid="player__interact__event_8h" kind="file"><name>player_interact_event.h</name>
   </compound>
   <compound refid="player__join__event_8h" kind="file"><name>player_join_event.h</name>
+  </compound>
+  <compound refid="player__kick__event_8h" kind="file"><name>player_kick_event.h</name>
   </compound>
   <compound refid="player__login__event_8h" kind="file"><name>player_login_event.h</name>
   </compound>
