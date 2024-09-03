@@ -259,6 +259,7 @@ public:
     [[nodiscard]] Vec3 const &getPosPrev() const;
     void applyImpulse(Vec3 const &impulse);
     [[nodiscard]] Vec3 const &getPosDelta() const;
+    void setPosDelta(const Vec3 &);
     [[nodiscard]] Vec2 const &getRotation() const;
     void setRotationWrapped(const Vec2 &);
     [[nodiscard]] AABB const &getAABB() const;
