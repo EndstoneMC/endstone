@@ -257,6 +257,7 @@ public:
     [[nodiscard]] Level &getLevel() const;
     [[nodiscard]] Vec3 const &getPosition() const;  // NOTE: this returns the eye position instead of feet position
     [[nodiscard]] Vec3 const &getPosPrev() const;
+    void applyImpulse(Vec3 const &impulse);
     [[nodiscard]] Vec3 const &getPosDelta() const;
     [[nodiscard]] Vec2 const &getRotation() const;
     void setRotationWrapped(const Vec2 &);

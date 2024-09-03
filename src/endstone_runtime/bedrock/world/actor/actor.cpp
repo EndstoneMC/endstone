@@ -129,6 +129,11 @@ Vec3 const &Actor::getPosPrev() const
     return built_in_components_.state_vector->position_prev;
 }
 
+void Actor::applyImpulse(Vec3 const &impulse)
+{
+    built_in_components_.state_vector->position_delta = impulse;
+}
+
 Vec3 const &Actor::getPosDelta() const
 {
     return built_in_components_.state_vector->position_delta;
