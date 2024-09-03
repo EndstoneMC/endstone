@@ -98,11 +98,10 @@ Inherits the following classes: [endstone::ActorEvent](classendstone_1_1ActorEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; raw\_knockback, [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; knockback) <br> |
+|   | [**ActorKnockbackEvent**](#function-actorknockbackevent) ([**Mob**](classendstone_1_1Mob.md) & mob, [**Actor**](classendstone_1_1Actor.md) \* source, [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; knockback) <br> |
 |  [**Mob**](classendstone_1_1Mob.md) & | [**getActor**](#function-getactor) () const<br>_Returns the_ [_**Mob**_](classendstone_1_1Mob.md) _involved in this event._ |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getKnockback**](#function-getknockback) () const<br> |
-|  [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getRawKnockback**](#function-getrawknockback) () const<br>_Gets the raw knockback that will be applied to the entity._  |
 |  [**Actor**](classendstone_1_1Actor.md) \* | [**getSource**](#function-getsource) () const<br>_Get the source actor that has caused knockback to the defender, if exists._  |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
 |  void | [**setKnockback**](#function-setknockback) ([**Vector**](classendstone_1_1Vector.md)&lt; float &gt; knockback) <br>_Sets the knockback that will be applied to the entity._  |
@@ -241,7 +240,6 @@ const std::string endstone::ActorKnockbackEvent::NAME;
 inline explicit endstone::ActorKnockbackEvent::ActorKnockbackEvent (
     Mob & mob,
     Actor * source,
-    Vector < float > raw_knockback,
     Vector < float > knockback
 ) 
 ```
@@ -328,34 +326,6 @@ Gets the knockback that will be applied to the entity.
 **Returns:**
 
 the knockback 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getRawKnockback 
-
-_Gets the raw knockback that will be applied to the entity._ 
-```C++
-inline Vector < float > endstone::ActorKnockbackEvent::getRawKnockback () const
-```
-
-
-
-This value is read-only, changes made to it **will not** have any effect on the final knockback received.
-
-
-
-
-**Returns:**
-
-the raw knockback 
 
 
 
