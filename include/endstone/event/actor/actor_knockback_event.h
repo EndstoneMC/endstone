@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/actor/mob.h"
 
 namespace endstone {
 

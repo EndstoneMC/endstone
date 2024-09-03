@@ -19,6 +19,7 @@
 
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_event.h"
+#include "endstone/event/actor/actor_knockback_event.h"
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 #include "endstone/event/actor/actor_teleport_event.h"
@@ -77,6 +78,16 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property_readonly("actor", &ActorEvent::getActor, py::return_value_policy::reference,
                                "Returns the Actor involved in this event");
     py::class_<ActorDeathEvent, ActorEvent>(m, "ActorDeathEvent", "Called when an Actor dies.");
+    py::class_<ActorKnockbackEvent, ActorEvent>(m, "ActorKnockbackEvent",
+                                                "Called when a living entity receives knockback.")
+        .def_property_readonly("actor", &ActorKnockbackEvent::getActor, py::return_value_policy::reference,
+                               "Returns the Mob involved in this event")
+        .def_property_readonly("source", &ActorKnockbackEvent::getSource, py::return_value_policy::reference,
+                               "Get the source actor that has caused knockback to the defender, if exists.")
+        .def_property_readonly("raw_knockback", &ActorKnockbackEvent::getRawKnockback,
+                               "Gets the raw knockback that will be applied to the entity.")
+        .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback,
+                      "Gets or sets the knockback that will be applied to the entity.");
     py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");
     py::class_<ActorSpawnEvent, ActorEvent>(m, "ActorSpawnEvent", "Called when an Actor is spawned into a world.");
     py::class_<ActorTeleportEvent, ActorEvent>(
