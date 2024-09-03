@@ -1,4 +1,4 @@
-timestamp = 1725276830
+timestamp = 1725393212
 version = "1.21.22"
 
 [windows]
@@ -57,6 +57,7 @@ version = "1.21.22"
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 8257984
 # Mob
 "?die@Mob@@UEAAXAEBVActorDamageSource@@@Z" = 26280064
+"?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 26322464
 # Player
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 27130976
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 27132848
@@ -158,6 +159,7 @@ version = "1.21.22"
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 77701344
 # Mob
 "_ZN3Mob3dieERK17ActorDamageSource" = 108022112
+"_ZN3Mob9knockbackEP5Actorifffff" = 108021344
 # Player
 "_ZN6Player12getInventoryEv" = 110166976
 "_ZNK6Player7getNameEv" = 110093232

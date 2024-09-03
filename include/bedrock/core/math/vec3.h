@@ -42,6 +42,14 @@ public:
         return {x / other.x, y / other.y, z / other.z};
     }
 
+    constexpr Vec3 &operator+=(const Vec3 &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return *this;
+    }
+
     static const Vec3 ZERO;
 };
 BEDROCK_STATIC_ASSERT_SIZE(Vec3, 12, 12);

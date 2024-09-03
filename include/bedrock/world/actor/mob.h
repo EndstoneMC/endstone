@@ -17,13 +17,14 @@
 #include <bitset>
 
 #include "bedrock/world/actor/actor.h"
+#include "endstone/detail/actor/mob.h"
 
 class Mob : public Actor {
 public:
     ~Mob() override = 0;
     ENDSTONE_HOOK void die(const ActorDamageSource &source) override;
 
-    virtual void knockback(Actor *, int, float, float, float, float, float) = 0;
+    ENDSTONE_HOOK virtual void knockback(Actor *, int, float, float, float, float, float);
     virtual void spawnAnim() = 0;
     virtual void setSprinting(bool) = 0;
     virtual Puv::Legacy::LevelSoundEvent getDeathSound() = 0;
@@ -72,4 +73,6 @@ protected:
 public:
     [[nodiscard]] bool isGliding() const;
     void setYBodyRotation(float rotation);
+
+    [[nodiscard]] endstone::detail::EndstoneMob &getEndstoneMob() const;  // Endstone
 };

@@ -14,9 +14,10 @@
 
 #pragma once
 
-#include "bedrock/world/actor/mob.h"
 #include "endstone/actor/mob.h"
 #include "endstone/detail/actor/actor.h"
+
+class Mob;
 
 namespace endstone::detail {
 class EndstoneMob : public EndstoneActor, public Mob {
@@ -55,7 +56,7 @@ public:
     [[nodiscard]] Dimension &getDimension() const override;
     void setRotation(float yaw, float pitch) override;
     void teleport(Location location) override;
-    void teleport(Actor& target) override;
+    void teleport(Actor &target) override;
     [[nodiscard]] std::int64_t getId() const override;
     [[nodiscard]] bool isDead() const override;
 
