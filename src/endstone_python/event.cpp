@@ -84,8 +84,6 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Returns the Mob involved in this event")
         .def_property_readonly("source", &ActorKnockbackEvent::getSource, py::return_value_policy::reference,
                                "Get the source actor that has caused knockback to the defender, if exists.")
-        .def_property_readonly("raw_knockback", &ActorKnockbackEvent::getRawKnockback,
-                               "Gets the raw knockback that will be applied to the entity.")
         .def_property("knockback", &ActorKnockbackEvent::getKnockback, &ActorKnockbackEvent::setKnockback,
                       "Gets or sets the knockback that will be applied to the entity.");
     py::class_<ActorRemoveEvent, ActorEvent>(m, "ActorRemoveEvent", "Called when an Actor is removed.");

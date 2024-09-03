@@ -184,11 +184,6 @@ class ActorKnockbackEvent(ActorEvent):
     def knockback(self, arg1: Vector) -> None:
         ...
     @property
-    def raw_knockback(self) -> Vector:
-        """
-        Gets the raw knockback that will be applied to the entity.
-        """
-    @property
     def source(self) -> Actor:
         """
         Get the source actor that has caused knockback to the defender, if exists.

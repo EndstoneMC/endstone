@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "endstone/event/actor/actor_event.h"
 #include "endstone/actor/mob.h"
+#include "endstone/event/actor/actor_event.h"
 
 namespace endstone {
 
@@ -24,8 +24,8 @@ namespace endstone {
  */
 class ActorKnockbackEvent : public ActorEvent {
 public:
-    explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> raw_knockback, Vector<float> knockback)
-        : ActorEvent(mob), mob_(mob), source_(source), raw_knockback_(raw_knockback), knockback_(knockback)
+    explicit ActorKnockbackEvent(Mob &mob, Actor *source, Vector<float> knockback)
+        : ActorEvent(mob), mob_(mob), source_(source), knockback_(knockback)
     {
     }
     ~ActorKnockbackEvent() override = default;
@@ -59,19 +59,6 @@ public:
     [[nodiscard]] Actor *getSource() const
     {
         return source_;
-    }
-
-    /**
-     * @brief Gets the raw knockback that will be applied to the entity.
-     *
-     * <p>
-     * This value is read-only, changes made to it <b>will not</b> have any effect on the final knockback received.
-     *
-     * @return the raw knockback
-     */
-    [[nodiscard]] Vector<float> getRawKnockback() const
-    {
-        return raw_knockback_;
     }
 
     /**

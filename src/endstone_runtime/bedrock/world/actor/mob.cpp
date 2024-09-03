@@ -44,14 +44,12 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
     auto diff = after - before;
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorKnockbackEvent e{getEndstoneMob(),
-                                    source == nullptr ? nullptr : &source->getEndstoneActor(),
-                                    {diff.x, diff.y, diff.z},
-                                    {after.x, after.y, after.z}};
+    endstone::ActorKnockbackEvent e{
+        getEndstoneMob(), source == nullptr ? nullptr : &source->getEndstoneActor(), {diff.x, diff.y, diff.z}};
     server.getPluginManager().callEvent(e);
 
     auto knockback = e.getKnockback();
-    diff = e.isCancelled() ? Vec3::ZERO : (Vec3{knockback.getX(), knockback.getY(), knockback.getZ()} - before);
+    diff = e.isCancelled() ? Vec3::ZERO : Vec3{knockback.getX(), knockback.getY(), knockback.getZ()};
     setPosDelta(before + diff);
 }
 
