@@ -48,6 +48,22 @@
     <member refid="classendstone_1_1ActorEvent_1a3cf15029246f7add54e99e9e417b1c75" kind="function"><name>~ActorEvent</name></member>
     <member refid="classendstone_1_1ActorEvent_1af8c9cbdbfc0c7e3fcb4a5ec566e0d1d4" kind="function"><name>getActor</name></member>
   </compound>
+  <compound refid="classendstone_1_1ActorKnockbackEvent" kind="class"><name>endstone::ActorKnockbackEvent</name>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a3612ace20ee9b1d15cc5d3f65aef90a0" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1ab5e73d9ee065b8615cfed763fe869c91" kind="variable"><name>mob_</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1ac0892e6d7929da34e867dfe79e7864ff" kind="variable"><name>source_</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a7ac0fa0d6814cf5665c25105624c5e34" kind="variable"><name>raw_knockback_</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1ab4ea2192fc105fe64e328ef3497824a1" kind="variable"><name>knockback_</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a6767425eb7dc09f4989bfad6e02b232a" kind="function"><name>ActorKnockbackEvent</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a2c59d36dbcf12d782d927acc211ef292" kind="function"><name>~ActorKnockbackEvent</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a6b3eee184de0d29360031cf48680c25a" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1adef366cf60a09544042b34ecb11e761d" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a3381c1dc526c5f1dc4b2978b1864e6fe" kind="function"><name>getActor</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1affb6b6a9ce3c475e5748665a45c7db96" kind="function"><name>getSource</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a29bdb8ba32bb4808c3f36e6d4629f16a" kind="function"><name>getRawKnockback</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a2c0d9336051514bc988923228890e59f" kind="function"><name>getKnockback</name></member>
+    <member refid="classendstone_1_1ActorKnockbackEvent_1a17876ee6a06028878ff098bec3bb20f1" kind="function"><name>setKnockback</name></member>
+  </compound>
   <compound refid="classendstone_1_1ActorRemoveEvent" kind="class"><name>endstone::ActorRemoveEvent</name>
     <member refid="classendstone_1_1ActorRemoveEvent_1a4d53a93b0651f115ce32b99dc5b0398d" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1ActorRemoveEvent_1ab2b72e42268aee037949fa4d66cb429c" kind="function"><name>ActorRemoveEvent</name></member>
@@ -1285,6 +1301,8 @@
   <compound refid="actor__death__event_8h" kind="file"><name>actor_death_event.h</name>
   </compound>
   <compound refid="actor__event_8h" kind="file"><name>actor_event.h</name>
+  </compound>
+  <compound refid="actor__knockback__event_8h" kind="file"><name>actor_knockback_event.h</name>
   </compound>
   <compound refid="actor__remove__event_8h" kind="file"><name>actor_remove_event.h</name>
   </compound>

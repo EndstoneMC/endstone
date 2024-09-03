@@ -4,6 +4,7 @@
     <compoundname>endstone::ActorEvent</compoundname>
     <basecompoundref refid="classendstone_1_1Event" prot="public" virt="non-virtual">endstone::Event</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorDeathEvent" prot="public" virt="non-virtual">endstone::ActorDeathEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ActorKnockbackEvent" prot="public" virt="non-virtual">endstone::ActorKnockbackEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorRemoveEvent" prot="public" virt="non-virtual">endstone::ActorRemoveEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorSpawnEvent" prot="public" virt="non-virtual">endstone::ActorSpawnEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ActorTeleportEvent" prot="public" virt="non-virtual">endstone::ActorTeleportEvent</derivedcompoundref>
@@ -90,7 +91,7 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="7">
         <label>endstone::ActorSpawnEvent</label>
         <link refid="classendstone_1_1ActorSpawnEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -100,19 +101,25 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
+      <node id="5">
+        <label>endstone::ActorKnockbackEvent</label>
+        <link refid="classendstone_1_1ActorKnockbackEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>endstone::ActorEvent</label>
         <link refid="classendstone_1_1ActorEvent"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="6">
         <label>endstone::ActorRemoveEvent</label>
         <link refid="classendstone_1_1ActorRemoveEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::ActorTeleportEvent</label>
         <link refid="classendstone_1_1ActorTeleportEvent"/>
         <childnode refid="1" relation="public-inheritance">

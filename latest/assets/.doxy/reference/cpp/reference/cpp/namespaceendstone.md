@@ -38,6 +38,7 @@
 | class | [**Actor**](classendstone_1_1Actor.md) <br>_Represents a base actor in the level._  |
 | class | [**ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._ |
 | class | [**ActorEvent**](classendstone_1_1ActorEvent.md) <br>_Represents an Actor-related event._  |
+| class | [**ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md) <br>_Called when a living entity receives knockback._  |
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |

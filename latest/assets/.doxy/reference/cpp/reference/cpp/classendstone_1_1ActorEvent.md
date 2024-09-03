@@ -17,7 +17,7 @@ _Represents an Actor-related event._
 Inherits the following classes: [endstone::Event](classendstone_1_1Event.md)
 
 
-Inherited by the following classes: [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md),  [endstone::ActorRemoveEvent](classendstone_1_1ActorRemoveEvent.md),  [endstone::ActorSpawnEvent](classendstone_1_1ActorSpawnEvent.md),  [endstone::ActorTeleportEvent](classendstone_1_1ActorTeleportEvent.md)
+Inherited by the following classes: [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md),  [endstone::ActorKnockbackEvent](classendstone_1_1ActorKnockbackEvent.md),  [endstone::ActorRemoveEvent](classendstone_1_1ActorRemoveEvent.md),  [endstone::ActorSpawnEvent](classendstone_1_1ActorSpawnEvent.md),  [endstone::ActorTeleportEvent](classendstone_1_1ActorTeleportEvent.md)
 
 
 

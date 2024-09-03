@@ -17,6 +17,7 @@
     <innerclass refid="structendstone_1_1overloaded" prot="public">endstone::overloaded</innerclass>
     <innerclass refid="classendstone_1_1ActorDeathEvent" prot="public">endstone::ActorDeathEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorEvent" prot="public">endstone::ActorEvent</innerclass>
+    <innerclass refid="classendstone_1_1ActorKnockbackEvent" prot="public">endstone::ActorKnockbackEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorRemoveEvent" prot="public">endstone::ActorRemoveEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorSpawnEvent" prot="public">endstone::ActorSpawnEvent</innerclass>
     <innerclass refid="classendstone_1_1ActorTeleportEvent" prot="public">endstone::ActorTeleportEvent</innerclass>
