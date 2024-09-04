@@ -320,9 +320,7 @@ void EndstonePlayer::setExpProgress(float progress)
         server_.getLogger().error("Experience progress must be between 0.0 and 1.0 ({})", progress);
         return;
     }
-    auto diff = progress - getExpProgress();
-    auto xp_for_next_level = static_cast<float>(::Player::getXpNeededForLevelRange(getExpLevel(), getExpLevel() + 1));
-    giveExp(static_cast<int>(std::round(diff * xp_for_next_level)));
+    getHandle().getMutableAttribute("minecraft:player.experience").setCurrentValue(progress);
 }
 
 int EndstonePlayer::getExpLevel() const

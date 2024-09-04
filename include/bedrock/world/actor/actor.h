@@ -271,6 +271,7 @@ public:
     [[nodiscard]] bool isJumping() const;
 
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
+    [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 

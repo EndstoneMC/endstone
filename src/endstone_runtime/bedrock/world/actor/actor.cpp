@@ -238,3 +238,9 @@ const AttributeInstance &Actor::getAttribute(const HashedString &name) const
     auto component = getPersistentComponent<AttributesComponent>();
     return component->attributes.getInstance(name);
 }
+
+AttributeInstance &Actor::getMutableAttribute(const HashedString &name)
+{
+    auto component = getPersistentComponent<AttributesComponent>();
+    return component->attributes.getMutableInstance(name);
+}
