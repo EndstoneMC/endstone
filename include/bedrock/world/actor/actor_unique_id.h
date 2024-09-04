@@ -33,10 +33,10 @@ template <>
 struct hash<ActorUniqueID> {  // NOLINT
     std::size_t operator()(const ActorUniqueID &value) const noexcept
     {
-        static std::hash<std::uint64_t> hasher;
+        static std::hash<std::int64_t> hasher;
         std::size_t seed = 0;
         seed ^= hasher(value.raw_id >> 32) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-        seed ^= hasher(value.raw_id) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+        seed ^= hasher(value.raw_id & 0xffffff) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
         return seed;
     }
 };
