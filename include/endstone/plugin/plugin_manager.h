@@ -106,12 +106,12 @@ public:
      *
      * @param plugin Plugin to disable
      */
-    virtual void disablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugin(Plugin &plugin) = 0;
 
     /**
      * Disables all the loaded plugins
      */
-    virtual void disablePlugins() const = 0;
+    virtual void disablePlugins() = 0;
 
     /**
      * Disables and removes all plugins

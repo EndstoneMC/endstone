@@ -28,6 +28,7 @@
 #include "endstone/event/handler_list.h"
 #include "endstone/plugin/plugin.h"
 #include "endstone/plugin/plugin_loader.h"
+#include "endstone/scheduler/scheduler.h"
 #include "endstone/server.h"
 
 namespace fs = std::filesystem;
@@ -144,14 +145,18 @@ void EndstonePluginManager::enablePlugins() const
     }
 }
 
-void EndstonePluginManager::disablePlugin(Plugin &plugin) const
+void EndstonePluginManager::disablePlugin(Plugin &plugin)
 {
     if (plugin.isEnabled()) {
         plugin.getPluginLoader().disablePlugin(plugin);
+        server_.getScheduler().cancelTasks(plugin);
+        for (auto &[name, handler] : event_handlers_) {
+            handler.unregister(plugin);
+        }
     }
 }
 
-void EndstonePluginManager::disablePlugins() const
+void EndstonePluginManager::disablePlugins()
 {
     for (const auto &plugin : plugins_) {
         disablePlugin(*plugin);

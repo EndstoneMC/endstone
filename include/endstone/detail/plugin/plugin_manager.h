@@ -40,8 +40,8 @@ public:
     std::vector<Plugin *> loadPlugins(const std::string &directory) override;
     void enablePlugin(Plugin &plugin) const override;
     void enablePlugins() const override;
-    void disablePlugin(Plugin &plugin) const override;
-    void disablePlugins() const override;
+    void disablePlugin(Plugin &plugin) override;
+    void disablePlugins() override;
     void clearPlugins() override;
 
     /** Event system */

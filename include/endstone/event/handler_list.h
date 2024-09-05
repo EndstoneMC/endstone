@@ -26,7 +26,7 @@
 namespace endstone {
 
 /**
- * @brief A list of event handlers. Should be instantiated on a per event basis.
+ * @brief A list of event handlers. Should be instantiated on a per-event basis.
  */
 class HandlerList {
 public:
@@ -57,13 +57,13 @@ public:
      *
      * @param handler Event handler to remove
      */
-    void unregister(EventHandler &handler)
+    void unregister(const EventHandler &handler)
     {
         std::lock_guard lock(mtx_);
         auto &vector =
             handlers_.emplace(handler.getPriority(), std::vector<std::unique_ptr<EventHandler>>{}).first->second;
-        auto it = std::find_if(vector.begin(), vector.end(),
-                               [&](const std::unique_ptr<EventHandler> &h) { return h.get() == &handler; });
+        const auto it = std::find_if(vector.begin(), vector.end(),
+                                     [&](const std::unique_ptr<EventHandler> &h) { return h.get() == &handler; });
         if (it != vector.end()) {
             valid_ = false;
             vector.erase(it);
@@ -75,7 +75,7 @@ public:
      *
      * @param plugin Plugin to remove
      */
-    void unregister(Plugin &plugin)
+    void unregister(const Plugin &plugin)
     {
         std::lock_guard lock(mtx_);
         for (auto &[priority, vector] : handlers_) {
