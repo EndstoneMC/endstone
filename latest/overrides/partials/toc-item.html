@@ -10,9 +10,9 @@
     <nav class="md-nav" aria-label="{{ toc_item.title | striptags }}">
         <ul class="md-nav__list">
             {% for toc_item in toc_item.children %}
-            {% if not page.meta.toc_depth or toc_item.level <= page.meta.toc_depth %}
-            {% include "partials/toc-item.html" %}
-            {% endif %}
+                {% if not page.meta.toc_depth or toc_item.level <= page.meta.toc_depth %}
+                    {% include "partials/toc-item.html" %}
+                {% endif %}
             {% endfor %}
         </ul>
     </nav>
