@@ -35,11 +35,6 @@ bool ReloadCommand::execute(CommandSender &sender, const std::vector<std::string
         return true;
     }
 
-    if (!sender.asConsole()) {
-        sender.sendErrorMessage("This command can only be executed from the console");
-        return true;
-    }
-
     auto &server = entt::locator<EndstoneServer>::value();
     server.reload();
     server.broadcast(ColorFormat::Green + "Reload complete.", Server::BroadcastChannelAdmin);
