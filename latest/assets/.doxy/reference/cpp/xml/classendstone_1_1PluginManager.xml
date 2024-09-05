@@ -269,10 +269,10 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_manager.h" line="101" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginManager_1ae9a06b5bf29812adee95cf713af5ee17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::PluginManager::disablePlugin</definition>
-        <argsstring>(Plugin &amp;plugin) const =0</argsstring>
+        <argsstring>(Plugin &amp;plugin)=0</argsstring>
         <name>disablePlugin</name>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
@@ -297,10 +297,10 @@
         </inbodydescription>
         <location file="include/endstone/plugin/plugin_manager.h" line="109" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PluginManager_1a48e66059c7cab689978f45805d9ec56a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::PluginManager::disablePlugins</definition>
-        <argsstring>() const =0</argsstring>
+        <argsstring>()=0</argsstring>
         <name>disablePlugins</name>
         <briefdescription>
         </briefdescription>
@@ -856,8 +856,8 @@
       <member refid="classendstone_1_1PluginManager_1a69b1b46defbaf4dc22dbf871f83d9c8f" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>addPermission</name></member>
       <member refid="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>callEvent</name></member>
       <member refid="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>clearPlugins</name></member>
-      <member refid="classendstone_1_1PluginManager_1ae9a06b5bf29812adee95cf713af5ee17" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugin</name></member>
-      <member refid="classendstone_1_1PluginManager_1a48e66059c7cab689978f45805d9ec56a" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugin</name></member>
+      <member refid="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugins</name></member>
       <member refid="classendstone_1_1PluginManager_1aa4ba7ce935f60390b5522a2bdb41a37b" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>enablePlugin</name></member>
       <member refid="classendstone_1_1PluginManager_1a2f0223eca4a793a2265d943b0d8347f4" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>enablePlugins</name></member>
       <member refid="classendstone_1_1PluginManager_1ae6024f10bb48089d46fb4f20b4e4b24d" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getDefaultPermissions</name></member>

@@ -61,7 +61,7 @@
 | class | [**Event**](classendstone_1_1Event.md) <br>_Represents an event._  |
 | class | [**EventHandler**](classendstone_1_1EventHandler.md) <br>_Represents a registered_ [_**EventHandler**_](classendstone_1_1EventHandler.md) _which associates with a_[_**Plugin**_](classendstone_1_1Plugin.md) _._ |
 | class | [**Form**](classendstone_1_1Form.md) &lt;typename T&gt;<br>_Represents a generic form._  |
-| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per event basis._  |
+| class | [**HandlerList**](classendstone_1_1HandlerList.md) <br>_A list of event handlers. Should be instantiated on a per-event basis._  |
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |

@@ -119,13 +119,13 @@
         </inbodydescription>
         <location file="include/endstone/event/handler_list.h" line="41" column="18" bodyfile="include/endstone/event/handler_list.h" bodystart="41" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1HandlerList_1a880fd52adb6ef1528212bbc0296f97da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void endstone::HandlerList::unregister</definition>
-        <argsstring>(EventHandler &amp;handler)</argsstring>
+        <argsstring>(const EventHandler &amp;handler)</argsstring>
         <name>unregister</name>
         <param>
-          <type><ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1EventHandler" kindref="compound">EventHandler</ref> &amp;</type>
           <declname>handler</declname>
         </param>
         <briefdescription>
@@ -147,13 +147,13 @@
         </inbodydescription>
         <location file="include/endstone/event/handler_list.h" line="60" column="10" bodyfile="include/endstone/event/handler_list.h" bodystart="60" bodyend="71"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1HandlerList_1a340597849710c7db856747e1f46b58b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void endstone::HandlerList::unregister</definition>
-        <argsstring>(Plugin &amp;plugin)</argsstring>
+        <argsstring>(const Plugin &amp;plugin)</argsstring>
         <name>unregister</name>
         <param>
-          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <type>const <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
         </param>
         <briefdescription>
@@ -209,7 +209,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>A list of event handlers. Should be instantiated on a per event basis. </para>
+<para>A list of event handlers. Should be instantiated on a per-event basis. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -223,8 +223,8 @@
       <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>handlers_</name></member>
       <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>mtx_</name></member>
       <member refid="classendstone_1_1HandlerList_1a865c70a65f39ac2d5efb285bca5ee34d" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>registerHandler</name></member>
-      <member refid="classendstone_1_1HandlerList_1a880fd52adb6ef1528212bbc0296f97da" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
-      <member refid="classendstone_1_1HandlerList_1a340597849710c7db856747e1f46b58b9" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1HandlerList_1ad2417dc763c19d61a627a7e43c09b81a" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
+      <member refid="classendstone_1_1HandlerList_1a5950519aa05fb195d32afad8ea03addc" prot="public" virt="non-virtual"><scope>endstone::HandlerList</scope><name>unregister</name></member>
       <member refid="classendstone_1_1HandlerList_1a495f3b97e658b65ee688803e6058f98e" prot="private" virt="non-virtual"><scope>endstone::HandlerList</scope><name>valid_</name></member>
     </listofallmembers>
   </compounddef>

@@ -62,9 +62,9 @@ public:
 
     virtual void enablePlugins() const = 0;
 
-    virtual void disablePlugin(Plugin &plugin) const = 0;
+    virtual void disablePlugin(Plugin &plugin) = 0;
 
-    virtual void disablePlugins() const = 0;
+    virtual void disablePlugins() = 0;
 
     virtual void clearPlugins() = 0;
 

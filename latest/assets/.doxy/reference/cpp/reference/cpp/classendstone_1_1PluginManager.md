@@ -57,8 +57,8 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual [**Permission**](classendstone_1_1Permission.md) \* | [**addPermission**](#function-addpermission) (std::unique\_ptr&lt; [**Permission**](classendstone_1_1Permission.md) &gt; perm) = 0<br> |
 | virtual void | [**callEvent**](#function-callevent) ([**Event**](classendstone_1_1Event.md) & event) = 0<br> |
 | virtual void | [**clearPlugins**](#function-clearplugins) () = 0<br> |
-| virtual void | [**disablePlugin**](#function-disableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const = 0<br> |
-| virtual void | [**disablePlugins**](#function-disableplugins) () const = 0<br> |
+| virtual void | [**disablePlugin**](#function-disableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
+| virtual void | [**disablePlugins**](#function-disableplugins) () = 0<br> |
 | virtual void | [**enablePlugin**](#function-enableplugin) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) const = 0<br> |
 | virtual void | [**enablePlugins**](#function-enableplugins) () const = 0<br> |
 | virtual std::unordered\_set&lt; [**Permissible**](classendstone_1_1Permissible.md) \* &gt; | [**getDefaultPermSubscriptions**](#function-getdefaultpermsubscriptions) (bool op) const = 0<br> |
@@ -234,7 +234,7 @@ Disables and removes all plugins
 ```C++
 virtual void endstone::PluginManager::disablePlugin (
     Plugin & plugin
-) const = 0
+) = 0
 ```
 
 
@@ -262,7 +262,7 @@ Disables the specified plugin Attempting to disable a plugin that is not enabled
 
 
 ```C++
-virtual void endstone::PluginManager::disablePlugins () const = 0
+virtual void endstone::PluginManager::disablePlugins () = 0
 ```
 
 
