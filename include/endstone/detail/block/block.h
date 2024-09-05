@@ -38,6 +38,9 @@ public:
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
 
+    [[nodiscard]] BlockPos getPosition() const;
+    [[nodiscard]] ::Block &getMinecraftBlock() const;
+
     static std::unique_ptr<EndstoneBlock> at(BlockSource &block_source, BlockPos block_pos);
 
 private:

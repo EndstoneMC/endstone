@@ -36,7 +36,7 @@ public:
      * @return the block represented by this block state
      * @throws IllegalStateException if this block state is not placed
      */
-    [[nodiscard]] virtual Block &getBlock() const = 0;
+    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
 
     /**
      * Gets the type of this block state.

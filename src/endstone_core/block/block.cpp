@@ -57,7 +57,7 @@ void EndstoneBlock::setType(std::string type, bool apply_physics)
 std::shared_ptr<BlockData> EndstoneBlock::getData() const
 {
     if (checkState()) {
-        return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(block_source_.getBlock(block_pos_)));
+        return std::make_unique<EndstoneBlockData>(getMinecraftBlock());
     }
     return nullptr;
 }
@@ -138,6 +138,16 @@ int EndstoneBlock::getZ() const
 Location EndstoneBlock::getLocation() const
 {
     return {&getDimension(), getX(), getY(), getZ()};
+}
+
+BlockPos EndstoneBlock::getPosition() const
+{
+    return block_pos_;
+}
+
+::Block &EndstoneBlock::getMinecraftBlock() const
+{
+    return const_cast<::Block &>(block_source_.getBlock(block_pos_));
 }
 
 std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
