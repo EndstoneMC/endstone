@@ -247,7 +247,7 @@ void init_server(py::class_<Server> &server)
         .def_property_readonly("scoreboard", &Server::getScoreboard,
                                "Gets the primary Scoreboard controlled by the server.",
                                py::return_value_policy::reference)
-        .def("get_new_scoreboard", &Server::getNewScoreboard, "Gets a new Scoreboard to be tracked by the server.",
+        .def("create_scoreboard", &Server::createScoreboard, "Creates a new Scoreboard to be tracked by the server.",
              py::return_value_policy::reference)
         .def_property_readonly("current_mspt", &Server::getCurrentMillisecondsPerTick,
                                "Gets the current milliseconds per tick (MSPT).")

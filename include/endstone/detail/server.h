@@ -80,7 +80,7 @@ public:
 
     [[nodiscard]] Scoreboard *getScoreboard() const override;
     void setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboard);
-    [[nodiscard]] std::shared_ptr<Scoreboard> getNewScoreboard() override;
+    [[nodiscard]] std::shared_ptr<Scoreboard> createScoreboard() override;
     float getCurrentMillisecondsPerTick() override;
     float getAverageMillisecondsPerTick() override;
     float getCurrentTicksPerSecond() override;

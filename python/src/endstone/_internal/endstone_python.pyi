@@ -2484,13 +2484,13 @@ class Server:
         """
         Creates a boss bar instance to display to players. The progress defaults to 1.0.
         """
+    def create_scoreboard(self) -> Scoreboard:
+        """
+        Creates a new Scoreboard to be tracked by the server.
+        """
     def dispatch_command(self, sender: CommandSender, command: str) -> bool:
         """
         Dispatches a command on this server, and executes it if found.
-        """
-    def get_new_scoreboard(self) -> Scoreboard:
-        """
-        Gets a new Scoreboard to be tracked by the server.
         """
     @typing.overload
     def get_player(self, name: str) -> Player:

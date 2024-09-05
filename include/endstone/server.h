@@ -217,13 +217,13 @@ public:
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
     /**
-     * Gets a new Scoreboard to be tracked by the server.
+     * @brief Creates a new Scoreboard to be tracked by the server.
      * <p>
      * This will not be saved by the server and is not affected by the /scoreboard command.
      *
      * @return the newly created Scoreboard
      */
-    [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
+    [[nodiscard]] virtual std::shared_ptr<Scoreboard> createScoreboard() = 0;
 
     /**
      * @brief Gets the current milliseconds per tick (MSPT).
@@ -290,7 +290,7 @@ public:
                                                                  std::vector<BarFlag> flags) const = 0;
 
     /**
-     * Creates a new BlockData instance for the specified block type, with all properties initialized to defaults.
+     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to defaults.
      *
      * @param type the block type
      * @return new data instance
@@ -298,7 +298,7 @@ public:
     [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
 
     /**
-     * Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
+     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
      * except for those provided in data.
      *
      * @param type the block type

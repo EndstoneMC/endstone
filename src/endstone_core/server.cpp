@@ -314,7 +314,7 @@ void EndstoneServer::setScoreboard(std::unique_ptr<EndstoneScoreboard> scoreboar
     scoreboard_ = std::move(scoreboard);
 }
 
-std::shared_ptr<Scoreboard> EndstoneServer::getNewScoreboard()
+std::shared_ptr<Scoreboard> EndstoneServer::createScoreboard()
 {
     auto registry = CommandSoftEnumRegistry();
     auto board = ServerScoreboard::create(registry, nullptr, level_->getHandle()._getGameplayUserManagerStackRef());
