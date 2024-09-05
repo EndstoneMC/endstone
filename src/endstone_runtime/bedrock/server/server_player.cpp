@@ -14,6 +14,8 @@
 
 #include "bedrock/server/server_player.h"
 
+#include <utility>
+
 #include "bedrock/locale/i18n.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
@@ -22,6 +24,109 @@
 #include "endstone/event/player/player_quit_event.h"
 
 using endstone::detail::EndstoneServer;
+
+namespace {
+class ActorDamageSourceWrapper : public ActorDamageSource {
+public:
+    ActorDamageSourceWrapper(const ActorDamageSource &source, std::string message, std::vector<std::string> params)
+        : source_(source), message_(std::move(message)), params_(std::move(params))
+    {
+    }
+
+    ~ActorDamageSourceWrapper() override = default;
+
+    [[nodiscard]] bool isEntitySource() const override
+    {
+        return source_.isEntitySource();
+    }
+    [[nodiscard]] bool isChildEntitySource() const override
+    {
+        return source_.isChildEntitySource();
+    }
+    [[nodiscard]] bool isBlockSource() const override
+    {
+        return source_.isBlockSource();
+    }
+    [[nodiscard]] bool isFire() const override
+    {
+        return source_.isFire();
+    }
+    [[nodiscard]] bool isReducedByResistanceEffect() const override
+    {
+        return source_.isReducedByResistanceEffect();
+    }
+    [[nodiscard]] bool isReducedByEnchantReduction() const override
+    {
+        return source_.isReducedByEnchantReduction();
+    }
+    [[nodiscard]] bool isReducedByArmorReduction() const override
+    {
+        return source_.isReducedByArmorReduction();
+    }
+    [[nodiscard]] bool isFallingBlockDamage() const override
+    {
+        return source_.isFallingBlockDamage();
+    }
+    [[nodiscard]] bool isFallDamage() const override
+    {
+        return source_.isFallDamage();
+    }
+    [[nodiscard]] std::pair<std::string, std::vector<std::string>> getDeathMessage(std::string,
+                                                                                   Actor *actor) const override
+    {
+        return std::make_pair(message_, params_);
+    }
+    [[nodiscard]] bool getIsCreative() const override
+    {
+        return source_.getIsCreative();
+    }
+    [[nodiscard]] bool getIsWorldBuilder() const override
+    {
+        return source_.getIsWorldBuilder();
+    }
+    [[nodiscard]] ActorUniqueID getEntityUniqueID() const override
+    {
+        return source_.getEntityUniqueID();
+    }
+    [[nodiscard]] ActorType getEntityType() const override
+    {
+        return source_.getEntityType();
+    }
+    [[nodiscard]] ActorCategory getEntityCategories() const override
+    {
+        return source_.getEntityCategories();
+    }
+    [[nodiscard]] bool getDamagingEntityIsCreative() const override
+    {
+        return source_.getDamagingEntityIsCreative();
+    }
+    [[nodiscard]] bool getDamagingEntityIsWorldBuilder() const override
+    {
+        return source_.getDamagingEntityIsWorldBuilder();
+    }
+    [[nodiscard]] ActorUniqueID getDamagingEntityUniqueID() const override
+    {
+        return source_.getDamagingEntityUniqueID();
+    }
+    [[nodiscard]] ActorType getDamagingEntityType() const override
+    {
+        return source_.getDamagingEntityType();
+    }
+    [[nodiscard]] ActorCategory getDamagingEntityCategories() const override
+    {
+        return source_.getDamagingEntityCategories();
+    }
+    [[nodiscard]] std::unique_ptr<ActorDamageSource> clone() const override
+    {
+        return std::make_unique<ActorDamageSourceWrapper>(source_, message_, params_);
+    }
+
+private:
+    const ActorDamageSource &source_;
+    std::string message_;
+    std::vector<std::string> params_;
+};
+}  // namespace
 
 void ServerPlayer::die(const ActorDamageSource &source)
 {
@@ -37,20 +142,12 @@ void ServerPlayer::die(const ActorDamageSource &source)
 
     if (!e->getDeathMessage().empty()) {
         server.getLogger().info(e->getDeathMessage());
-        bool dirty = (e->getDeathMessage() != death_message);
-        for (const auto &player : server.getOnlinePlayers()) {
-            if (player == &endstone_player || !player->hasPermission(EndstoneServer::BroadcastChannelUser)) {
-                continue;
-            }
-            if (dirty) {
-                player->sendMessage(e->getDeathMessage());
-            }
-            else {
-                player->sendMessage({death_cause_message.first, death_cause_message.second});
-            }
+        if (e->getDeathMessage() != death_message) {
+            auto new_source = ActorDamageSourceWrapper(source, e->getDeathMessage(), {});
+            ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, new_source);
+            return;
         }
     }
-
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
 }
 

@@ -23,7 +23,7 @@
 class Actor;
 class ActorDamageSource {
 public:
-    virtual ~ActorDamageSource() = 0;
+    virtual ~ActorDamageSource() = default;
     [[nodiscard]] virtual bool isEntitySource() const = 0;
     [[nodiscard]] virtual bool isChildEntitySource() const = 0;
     [[nodiscard]] virtual bool isBlockSource() const = 0;
