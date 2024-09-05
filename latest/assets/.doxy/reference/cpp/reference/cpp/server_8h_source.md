@@ -108,7 +108,7 @@ public:
 
     [[nodiscard]] virtual Scoreboard *getScoreboard() const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<Scoreboard> getNewScoreboard() = 0;
+    [[nodiscard]] virtual std::shared_ptr<Scoreboard> createScoreboard() = 0;
 
     virtual float getCurrentMillisecondsPerTick() = 0;
 

@@ -63,10 +63,11 @@ _Represents a server implementation._
 | virtual void | [**broadcast**](#function-broadcast) (const std::string & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
 | virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br> |
-| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br> |
+| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
+| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, BarStyle style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
+| virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
 | virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
@@ -80,7 +81,6 @@ _Represents a server implementation._
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
-| virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**getNewScoreboard**](#function-getnewscoreboard) () = 0<br> |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case insensitive._  |
@@ -261,16 +261,13 @@ inline void endstone::Server::broadcastMessage (
 
 ### function createBlockData [1/2]
 
-
+_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._
 ```C++
 virtual std::shared_ptr< BlockData > endstone::Server::createBlockData (
     std::string type
 ) const = 0
 ```
 
-
-
-Creates a new [**BlockData**](classendstone_1_1BlockData.md) instance for the specified block type, with all properties initialized to defaults.
 
 
 
@@ -298,7 +295,7 @@ new data instance
 
 ### function createBlockData [2/2]
 
-
+_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._
 ```C++
 virtual std::shared_ptr< BlockData > endstone::Server::createBlockData (
     std::string type,
@@ -306,9 +303,6 @@ virtual std::shared_ptr< BlockData > endstone::Server::createBlockData (
 ) const = 0
 ```
 
-
-
-Creates a new [**BlockData**](classendstone_1_1BlockData.md) instance for the specified block type, with all properties initialized to defaults, except for those provided in data.
 
 
 
@@ -402,6 +396,34 @@ virtual std::unique_ptr< BossBar > endstone::Server::createBossBar (
 **Returns:**
 
 the created boss bar 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function createScoreboard 
+
+_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._
+```C++
+virtual std::shared_ptr< Scoreboard > endstone::Server::createScoreboard () = 0
+```
+
+
+
+This will not be saved by the server and is not affected by the /scoreboard command.
+
+
+
+
+**Returns:**
+
+the newly created [**Scoreboard**](classendstone_1_1Scoreboard.md) 
 
 
 
@@ -738,37 +760,6 @@ virtual std::string endstone::Server::getName () const = 0
 **Returns:**
 
 name of this server implementation 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getNewScoreboard 
-
-
-```C++
-virtual std::shared_ptr< Scoreboard > endstone::Server::getNewScoreboard () = 0
-```
-
-
-
-Gets a new [**Scoreboard**](classendstone_1_1Scoreboard.md) to be tracked by the server. 
-
-
-This will not be saved by the server and is not affected by the /scoreboard command.
-
-
-
-
-**Returns:**
-
-the newly created [**Scoreboard**](classendstone_1_1Scoreboard.md) 
 
 
 

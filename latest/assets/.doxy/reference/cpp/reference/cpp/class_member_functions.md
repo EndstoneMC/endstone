@@ -57,6 +57,7 @@
 * **clearSlot** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))
 * **createBlockData** ([**endstone::Server**](classendstone_1_1Server.md))
 * **createBossBar** ([**endstone::Server**](classendstone_1_1Server.md))
+* **createScoreboard** ([**endstone::Server**](classendstone_1_1Server.md))
 * **cancel** ([**endstone::Task**](classendstone_1_1Task.md))
 
 
@@ -237,7 +238,6 @@
 * **getCurrentTicksPerSecond** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
-* **getNewScoreboard** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getOnlinePlayers** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginManager** ([**endstone::Server**](classendstone_1_1Server.md))

@@ -2061,6 +2061,19 @@ If you like this project, please feel free to
             
             
             <li class="md-nav__item">
+    <a href="#function-createscoreboard" class="md-nav__link">
+      <span class="md-ellipsis">
+        function createScoreboard
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+            
+            
+            
+            <li class="md-nav__item">
     <a href="#function-dispatchcommand" class="md-nav__link">
       <span class="md-ellipsis">
         function dispatchCommand
@@ -2220,19 +2233,6 @@ If you like this project, please feel free to
     <a href="#function-getname" class="md-nav__link">
       <span class="md-ellipsis">
         function getName
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-            
-            
-            
-            <li class="md-nav__item">
-    <a href="#function-getnewscoreboard" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getNewScoreboard
       </span>
     </a>
 
@@ -2541,11 +2541,11 @@ If you like this project, please feel free to
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-createblockdata-12"><strong>createBlockData</strong></a> (std::string type) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-createblockdata-12"><strong>createBlockData</strong></a> (std::string type) const = 0<br><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-createblockdata-22"><strong>createBlockData</strong></a> (std::string type, BlockStates block_states) const = 0<br></td>
+<td style="text-align: left;"><a href="#function-createblockdata-22"><strong>createBlockData</strong></a> (std::string type, BlockStates block_states) const = 0<br><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BossBar/"><strong>BossBar</strong></a> &gt;</td>
@@ -2554,6 +2554,10 @@ If you like this project, please feel free to
 <tr>
 <td style="text-align: right;">virtual std::unique_ptr&lt; <a href="../classendstone_1_1BossBar/"><strong>BossBar</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="#function-createbossbar-22"><strong>createBossBar</strong></a> (std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const = 0<br><em>Creates a boss bar instance to display to players. The progress defaults to 1.0.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-createscoreboard"><strong>createScoreboard</strong></a> () = 0<br><em>Creates a new</em> <a href="../classendstone_1_1Scoreboard/"><em><strong>Scoreboard</strong></em></a> <em>to be tracked by the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual bool</td>
@@ -2606,10 +2610,6 @@ If you like this project, please feel free to
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const = 0<br><em>Gets the name of this server implementation.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-getnewscoreboard"><strong>getNewScoreboard</strong></a> () = 0<br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Player/"><strong>Player</strong></a> * &gt;</td>
@@ -2736,11 +2736,11 @@ If you like this project, please feel free to
 <hr>
 
 <h3 id="function-createblockdata-12">function createBlockData [&frac12;]<a class="headerlink" href="#function-createblockdata-12" title="Permanent link">&para;</a></h3>
+<p><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Creates a new <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> instance for the specified block type, with all properties initialized to defaults.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>type</code> the block type </li>
@@ -2750,12 +2750,12 @@ If you like this project, please feel free to
 <hr>
 
 <h3 id="function-createblockdata-22">function createBlockData [2/2]<a class="headerlink" href="#function-createblockdata-22" title="Permanent link">&para;</a></h3>
+<p><em>Creates a new</em> <a href="../classendstone_1_1BlockData/"><em><strong>BlockData</strong></em></a> <em>instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</em>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">BlockData</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createBlockData</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">BlockStates</span><span class="w"> </span><span class="n">block_states</span>
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Creates a new <a href="../classendstone_1_1BlockData/"><strong>BlockData</strong></a> instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>type</code> the block type </li>
@@ -2803,12 +2803,21 @@ If you like this project, please feel free to
 <p>the created boss bar </p>
 <hr>
 
+<h3 id="function-createscoreboard">function createScoreboard<a class="headerlink" href="#function-createscoreboard" title="Permanent link">&para;</a></h3>
+<p><em>Creates a new</em> <a href="../classendstone_1_1Scoreboard/"><em><strong>Scoreboard</strong></em></a> <em>to be tracked by the server.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">createScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p>This will not be saved by the server and is not affected by the /scoreboard command.</p>
+<p><strong>Returns:</strong></p>
+<p>the newly created <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> </p>
+<hr>
+
 <h3 id="function-dispatchcommand">function dispatchCommand<a class="headerlink" href="#function-dispatchcommand" title="Permanent link">&para;</a></h3>
 <p><em>Dispatches a command on this server, and executes it if found.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">dispatchCommand</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">command</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">dispatchCommand</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="n">CommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">sender</span><span class="p">,</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">command</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2821,7 +2830,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getaveragemillisecondspertick">function getAverageMillisecondsPerTick<a class="headerlink" href="#function-getaveragemillisecondspertick" title="Permanent link">&para;</a></h3>
 <p><em>Gets the average milliseconds per tick (MSPT).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageMillisecondsPerTick</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageMillisecondsPerTick</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The average number of milliseconds per tick. </p>
@@ -2829,7 +2838,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getaveragetickusage">function getAverageTickUsage<a class="headerlink" href="#function-getaveragetickusage" title="Permanent link">&para;</a></h3>
 <p><em>Gets the average tick usage of the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageTickUsage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageTickUsage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The average tick usage in percentage. </p>
@@ -2837,7 +2846,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getaveragetickspersecond">function getAverageTicksPerSecond<a class="headerlink" href="#function-getaveragetickspersecond" title="Permanent link">&para;</a></h3>
 <p><em>Gets the average ticks per second (TPS).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageTicksPerSecond</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getAverageTicksPerSecond</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The average ticks per second </p>
@@ -2845,7 +2854,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getcommandsender">function getCommandSender<a class="headerlink" href="#function-getcommandsender" title="Permanent link">&para;</a></h3>
 <p><em>Gets a</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>for this server.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">ConsoleCommandSender</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a console command sender </p>
@@ -2853,7 +2862,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getcurrentmillisecondspertick">function getCurrentMillisecondsPerTick<a class="headerlink" href="#function-getcurrentmillisecondspertick" title="Permanent link">&para;</a></h3>
 <p><em>Gets the current milliseconds per tick (MSPT).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentMillisecondsPerTick</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentMillisecondsPerTick</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The average current of milliseconds per tick. </p>
@@ -2861,7 +2870,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getcurrenttickusage">function getCurrentTickUsage<a class="headerlink" href="#function-getcurrenttickusage" title="Permanent link">&para;</a></h3>
 <p><em>Gets the current tick usage of the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentTickUsage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentTickUsage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The current tick usage in percentage. </p>
@@ -2869,7 +2878,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getcurrenttickspersecond">function getCurrentTicksPerSecond<a class="headerlink" href="#function-getcurrenttickspersecond" title="Permanent link">&para;</a></h3>
 <p><em>Gets the current ticks per second (TPS).</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentTicksPerSecond</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getCurrentTicksPerSecond</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>The current ticks per second </p>
@@ -2877,7 +2886,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getlevel">function getLevel<a class="headerlink" href="#function-getlevel" title="Permanent link">&para;</a></h3>
 <p><em>Gets the server level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Level</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLevel</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the server level </p>
@@ -2885,7 +2894,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getlogger">function getLogger<a class="headerlink" href="#function-getlogger" title="Permanent link">&para;</a></h3>
 <p><em>Returns the primary logger associated with this server instance.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLogger</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Logger</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getLogger</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1Logger/"><strong>Logger</strong></a> associated with this server </p>
@@ -2893,7 +2902,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getmaxplayers">function getMaxPlayers<a class="headerlink" href="#function-getmaxplayers" title="Permanent link">&para;</a></h3>
 <p><em>Get the maximum amount of players which can login to this server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMaxPlayers</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the amount of players this server allows </p>
@@ -2901,7 +2910,7 @@ If you like this project, please feel free to
 
 <h3 id="function-getminecraftversion">function getMinecraftVersion<a class="headerlink" href="#function-getminecraftversion" title="Permanent link">&para;</a></h3>
 <p><em>Gets the Minecraft version that this server is running.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMinecraftVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getMinecraftVersion</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>version of Minecraft </p>
@@ -2909,19 +2918,10 @@ If you like this project, please feel free to
 
 <h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
 <p><em>Gets the name of this server implementation.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>name of this server implementation </p>
-<hr>
-
-<h3 id="function-getnewscoreboard">function getNewScoreboard<a class="headerlink" href="#function-getnewscoreboard" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Scoreboard</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">getNewScoreboard</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Gets a new <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> to be tracked by the server. </p>
-<p>This will not be saved by the server and is not affected by the /scoreboard command.</p>
-<p><strong>Returns:</strong></p>
-<p>the newly created <a href="../classendstone_1_1Scoreboard/"><strong>Scoreboard</strong></a> </p>
 <hr>
 
 <h3 id="function-getonlineplayers">function getOnlinePlayers<a class="headerlink" href="#function-getonlineplayers" title="Permanent link">&para;</a></h3>

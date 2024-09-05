@@ -598,15 +598,15 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="217" column="25"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a87735b7a9e8a75876e8e5da3385cfa83" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1abbf5f449f3645d4d05b67a31d44e04bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt;Scoreboard&gt; endstone::Server::getNewScoreboard</definition>
+        <definition>virtual std::shared_ptr&lt;Scoreboard&gt; endstone::Server::createScoreboard</definition>
         <argsstring>()=0</argsstring>
-        <name>getNewScoreboard</name>
+        <name>createScoreboard</name>
         <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> to be tracked by the server. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets a new <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> to be tracked by the server. </para>
 <para>This will not be saved by the server and is not affected by the /scoreboard command.</para>
 <para><simplesect kind="return"><para>the newly created <ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> </para>
 </simplesect>
@@ -848,9 +848,9 @@
           <declname>type</declname>
         </param>
         <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>type</parametername>
@@ -882,9 +882,9 @@
           <declname>block_states</declname>
         </param>
         <briefdescription>
+<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults, except for those provided in data. </para>
         </briefdescription>
         <detaileddescription>
-<para>Creates a new <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> instance for the specified block type, with all properties initialized to defaults, except for those provided in data.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>type</parametername>
@@ -944,6 +944,7 @@
       <member refid="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
+      <member refid="classendstone_1_1Server_1abbf5f449f3645d4d05b67a31d44e04bc" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createScoreboard</name></member>
       <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
       <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageMillisecondsPerTick</name></member>
       <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTicksPerSecond</name></member>
@@ -957,7 +958,6 @@
       <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMaxPlayers</name></member>
       <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getMinecraftVersion</name></member>
       <member refid="classendstone_1_1Server_1a2478b382f6098c157032048b0f6f64ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getName</name></member>
-      <member refid="classendstone_1_1Server_1a87735b7a9e8a75876e8e5da3385cfa83" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getNewScoreboard</name></member>
       <member refid="classendstone_1_1Server_1a87fe533801da1f729baa68cc96099546" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getOnlinePlayers</name></member>
       <member refid="classendstone_1_1Server_1a3f5b8f0687c88f67472718e67adada76" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
       <member refid="classendstone_1_1Server_1ab09e09e3f7fe51d16fd5e4e82c95ba49" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getPlayer</name></member>
