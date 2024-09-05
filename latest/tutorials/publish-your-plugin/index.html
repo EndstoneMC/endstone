@@ -713,6 +713,17 @@ If you like this project, please feel free to
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Publish your plugin
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -722,6 +733,91 @@ If you like this project, please feel free to
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#install-twine" class="md-nav__link">
+      <span class="md-ellipsis">
+        Install twine
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#build-your-package" class="md-nav__link">
+      <span class="md-ellipsis">
+        Build your package
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#upload-to-testpypi" class="md-nav__link">
+      <span class="md-ellipsis">
+        Upload to TestPyPI
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#upload-to-pypi" class="md-nav__link">
+      <span class="md-ellipsis">
+        Upload to PyPI
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#publish-using-github-actions-cicd-workflows" class="md-nav__link">
+      <span class="md-ellipsis">
+        Publish using GitHub Actions CI/CD workflows
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#and-thats-it" class="md-nav__link">
+      <span class="md-ellipsis">
+        And that's it!
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1880,6 +1976,80 @@ If you like this project, please feel free to
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#install-twine" class="md-nav__link">
+      <span class="md-ellipsis">
+        Install twine
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#build-your-package" class="md-nav__link">
+      <span class="md-ellipsis">
+        Build your package
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#upload-to-testpypi" class="md-nav__link">
+      <span class="md-ellipsis">
+        Upload to TestPyPI
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#upload-to-pypi" class="md-nav__link">
+      <span class="md-ellipsis">
+        Upload to PyPI
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#publish-using-github-actions-cicd-workflows" class="md-nav__link">
+      <span class="md-ellipsis">
+        Publish using GitHub Actions CI/CD workflows
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#and-thats-it" class="md-nav__link">
+      <span class="md-ellipsis">
+        And that's it!
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1910,10 +2080,48 @@ If you like this project, please feel free to
 
 
 <h1 id="publish-your-plugin">Publish your plugin<a class="headerlink" href="#publish-your-plugin" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This section is still under construction.</p>
+<p>Let's say you have finished all the work on the new release of your project, written the release notes,
+increased the version number, tagged the release and are ready to publish.</p>
+<h2 id="install-twine">Install <code>twine</code><a class="headerlink" href="#install-twine" title="Permanent link">&para;</a></h2>
+<p>You will need to install <a href="https://twine.readthedocs.io/">Twine</a> if you haven't done so.
+<a href="https://twine.readthedocs.io/">Twine</a> is a utility for publishing Python packages to PyPI and other repositories.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>twine
+</span></code></pre></div>
+<h2 id="build-your-package">Build your package<a class="headerlink" href="#build-your-package" title="Permanent link">&para;</a></h2>
+<p>Build your package is as simple as one line of command.</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pipx<span class="w"> </span>run<span class="w"> </span>build
+</span></code></pre></div>
+<p>This will build the package in an isolated environment, generating a source-distribution and wheel in the
+<code>dist/</code> directory.</p>
+<h2 id="upload-to-testpypi">Upload to <a href="https://test.pypi.org/">TestPyPI</a><a class="headerlink" href="#upload-to-testpypi" title="Permanent link">&para;</a></h2>
+<p>Unlike <a href="https://pypi.org/">PyPI</a>, which is the actual index of all python packages, <a href="https://test.pypi.org/">TestPyPI</a> is a separate instance of the Python
+Package Index. It's a good place to try distribution tools and processes without affecting the real index.</p>
+<p>Because <a href="https://test.pypi.org/">TestPyPI</a> has a separate database from the live <a href="https://pypi.org/">PyPI</a>, you’ll need a separate user account specifically
+for TestPyPI. Go to <a href="https://test.pypi.org/account/register/">https://test.pypi.org/account/register/</a> to register your account.</p>
+<p>Once done, you can upload your distributions to <a href="https://test.pypi.org/">TestPyPI</a> using twine by specifying the <code>--repository</code>/<code>-r</code> flag:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>twine<span class="w"> </span>upload<span class="w"> </span>-r<span class="w"> </span>testpypi<span class="w"> </span>dist/*
+</span></code></pre></div>
+<p>Twine will prompt for your <strong>API token</strong> or username and password.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 </div>
+<p>For security reasons it is strongly recommended to <strong>create an API token</strong> instead of using your username and
+password when uploading a package to PyPI. If you haven’t done so, create an API token on both
+<a href="https://pypi.org/manage/account/token/">PyPI</a> and the <a href="https://test.pypi.org/manage/account/token/">TestPyPI</a>.
+You will also be asked to choose the scope of this token, for now you can just leave the token unrestricted.</p>
+<h2 id="upload-to-pypi">Upload to <a href="https://pypi.org/">PyPI</a><a class="headerlink" href="#upload-to-pypi" title="Permanent link">&para;</a></h2>
+<p>Now if things looks right, you can upload to the actual Python Package Index - <a href="https://pypi.org/">PyPI</a>:</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>twine<span class="w"> </span>upload<span class="w"> </span>-r<span class="w"> </span>pypi<span class="w"> </span>dist/*
+</span></code></pre></div>
+<h2 id="publish-using-github-actions-cicd-workflows">Publish using GitHub Actions CI/CD workflows<a class="headerlink" href="#publish-using-github-actions-cicd-workflows" title="Permanent link">&para;</a></h2>
+<p>GitHub Actions CI/CD allows you to run a series of commands whenever an event occurs on the GitHub platform.
+This can be a great choice if you want your plugin be published to PyPI automatically whenever you created a release.</p>
+<p>For more information, please follow
+the <a href="https://packaging.python.org/en/latest/guides/publishing-package-distribution-releases-using-github-actions-ci-cd-workflows/">instructions</a>
+here.</p>
+<h2 id="and-thats-it">And that's it!<a class="headerlink" href="#and-thats-it" title="Permanent link">&para;</a></h2>
+<p><strong><img alt="🥳" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f973.svg" title=":partying_face:" /> Congratulations!</strong> If everything goes well, you should soon be able to see your plugin on
+<code>https://pypi.org/project/&lt;package name&gt;</code>.</p>
 
 
 
@@ -1936,7 +2144,7 @@ If you like this project, please feel free to
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">September 5, 2024</span>
   </span>
 
     
