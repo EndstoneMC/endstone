@@ -6,6 +6,7 @@
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
     <innerclass refid="classendstone_1_1BlockData" prot="public">endstone::BlockData</innerclass>
+    <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
     <innerclass refid="classendstone_1_1BossBar" prot="public">endstone::BossBar</innerclass>
     <innerclass refid="structendstone_1_1ColorFormat" prot="public">endstone::ColorFormat</innerclass>
     <innerclass refid="classendstone_1_1Command" prot="public">endstone::Command</innerclass>

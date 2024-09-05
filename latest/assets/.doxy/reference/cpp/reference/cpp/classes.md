@@ -34,6 +34,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md)
 ([**endstone**](namespaceendstone.md))
+* [**BlockState**](classendstone_1_1BlockState.md)
+([**endstone**](namespaceendstone.md))
 * [**BossBar**](classendstone_1_1BossBar.md)
 ([**endstone**](namespaceendstone.md))
 * [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md)

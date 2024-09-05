@@ -140,6 +140,22 @@
     <member refid="classendstone_1_1BlockPlaceEvent_1a86a6a402e853085647c1c048996d39e0" kind="function"><name>getBlockReplaced</name></member>
     <member refid="classendstone_1_1BlockPlaceEvent_1acf32b8f7441ea9a85f0ecfcb4abd8474" kind="function"><name>getBlockAgainst</name></member>
   </compound>
+  <compound refid="classendstone_1_1BlockState" kind="class"><name>endstone::BlockState</name>
+    <member refid="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" kind="function"><name>~BlockState</name></member>
+    <member refid="classendstone_1_1BlockState_1a0d7699bfdc83a8c82a6ec458fb5e89c1" kind="function"><name>getBlock</name></member>
+    <member refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" kind="function"><name>getType</name></member>
+    <member refid="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" kind="function"><name>setType</name></member>
+    <member refid="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" kind="function"><name>getData</name></member>
+    <member refid="classendstone_1_1BlockState_1a350cab6ce664d167f75b287eaf34916e" kind="function"><name>setData</name></member>
+    <member refid="classendstone_1_1BlockState_1ae2e6bd0aec930c2611a34c34f9d1cb3d" kind="function"><name>getDimension</name></member>
+    <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" kind="function"><name>getX</name></member>
+    <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" kind="function"><name>getY</name></member>
+    <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" kind="function"><name>getZ</name></member>
+    <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" kind="function"><name>getLocation</name></member>
+    <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" kind="function"><name>update</name></member>
+    <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kind="function"><name>update</name></member>
+    <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" kind="function"><name>update</name></member>
+  </compound>
   <compound refid="classendstone_1_1BossBar" kind="class"><name>endstone::BossBar</name>
     <member refid="classendstone_1_1BossBar_1aed35b808e9aa8cfc810acd70f399992b" kind="function"><name>~BossBar</name></member>
     <member refid="classendstone_1_1BossBar_1adf79b39c307ce9a60ce97150a10da473" kind="function"><name>getTitle</name></member>
@@ -1273,6 +1289,8 @@
   <compound refid="block__data_8h" kind="file"><name>block_data.h</name>
   </compound>
   <compound refid="block__face_8h" kind="file"><name>block_face.h</name>
+  </compound>
+  <compound refid="block__state_8h" kind="file"><name>block_state.h</name>
   </compound>
   <compound refid="bar__color_8h" kind="file"><name>bar_color.h</name>
   </compound>

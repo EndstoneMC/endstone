@@ -5,6 +5,7 @@
     <innerfile refid="block_8h">block.h</innerfile>
     <innerfile refid="block__data_8h">block_data.h</innerfile>
     <innerfile refid="block__face_8h">block_face.h</innerfile>
+    <innerfile refid="block__state_8h">block_state.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

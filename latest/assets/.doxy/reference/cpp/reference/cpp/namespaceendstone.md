@@ -47,6 +47,7 @@
 | class | [**BlockData**](classendstone_1_1BlockData.md) <br>_Represents the data related to a live block._  |
 | class | [**BlockEvent**](classendstone_1_1BlockEvent.md) <br>_Represents an Block-related event._  |
 | class | [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) <br>_Called when a block is placed by a player._  |
+| class | [**BlockState**](classendstone_1_1BlockState.md) <br>_Represents a captured state of a block, which will not update automatically._  |
 | class | [**BossBar**](classendstone_1_1BossBar.md) <br>_Represents a boss bar that is displayed to players._  |
 | class | [**BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) <br>[_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._ |
 | struct | [**ColorFormat**](structendstone_1_1ColorFormat.md) <br>_All supported color and format codes._  |
