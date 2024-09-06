@@ -17,10 +17,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="35" column="37" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="35" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="38" column="37" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;BlockState&gt; endstone::BlockPlaceEvent::placed_block_</definition>
+        <argsstring></argsstring>
+        <name>placed_block_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_place_event.h" line="90" column="21" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BlockPlaceEvent_1a28e206da4fec970a7b0a145bc42049a0" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
         <definition>Block&amp; endstone::BlockPlaceEvent::placed_against_</definition>
@@ -32,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="77" column="11" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="77" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="91" column="11" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" prot="private" static="no" mutable="no">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
@@ -45,15 +58,19 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="78" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="78" bodyend="-1"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="92" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a1241f96dca2583c0de81af8915cbe15d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a70cf1d4cb49ebb406ba25039eef2e2cc" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::BlockPlaceEvent::BlockPlaceEvent</definition>
-        <argsstring>(Block &amp;replaced_block, Block &amp;placed_against, Player &amp;player)</argsstring>
+        <argsstring>(std::unique_ptr&lt; BlockState &gt; placed_block, Block &amp;replaced_block, Block &amp;placed_against, Player &amp;player)</argsstring>
         <name>BlockPlaceEvent</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &gt;</type>
+          <declname>placed_block</declname>
+        </param>
         <param>
           <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
           <declname>replaced_block</declname>
@@ -72,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="29" column="14" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="29" bodyend="32"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="30" column="14" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="30" bodyend="35"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1ab1bb2ece0d15adb5704b90587d971bed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -85,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="33" column="5"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="36" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
@@ -103,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="36" column="18" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="36" bodyend="39"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="39" column="18" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="39" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a78251df1d2239d862a7d419b0d1e2fdf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
@@ -121,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="41" column="11" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="41" bodyend="44"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="44" column="11" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="44" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a15b9ab1abf8a86434c186640a6344fea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
@@ -138,7 +155,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="51" column="13" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="51" bodyend="54"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="54" column="13" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a872bf4ea40ebf0fd1fed6fa09a3b5e8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> &amp;</type>
+        <definition>BlockState&amp; endstone::BlockPlaceEvent::getBlockPlacedState</definition>
+        <argsstring>() const</argsstring>
+        <name>getBlockPlacedState</name>
+        <briefdescription>
+<para>Gets the <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> for the block which was placed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref> for the block which was placed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/block/block_place_event.h" line="64" column="17" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="64" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1a86a6a402e853085647c1c048996d39e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
@@ -155,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="61" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="61" bodyend="64"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="74" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="74" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockPlaceEvent_1acf32b8f7441ea9a85f0ecfcb4abd8474" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &amp;</type>
@@ -172,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/event/block/block_place_event.h" line="71" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="71" bodyend="74"/>
+        <location file="include/endstone/event/block/block_place_event.h" line="84" column="12" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="84" bodyend="87"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -217,14 +251,15 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/event/block/block_place_event.h" line="27" column="1" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="27" bodyend="81"/>
+    <location file="include/endstone/event/block/block_place_event.h" line="28" column="1" bodyfile="include/endstone/event/block/block_place_event.h" bodystart="28" bodyend="95"/>
     <listofallmembers>
       <member refid="classendstone_1_1BlockEvent_1a4f881523c002923dd73bb4ebf4ad6fc0" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>BlockEvent</name></member>
-      <member refid="classendstone_1_1BlockPlaceEvent_1a1241f96dca2583c0de81af8915cbe15d" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>BlockPlaceEvent</name></member>
+      <member refid="classendstone_1_1BlockPlaceEvent_1a70cf1d4cb49ebb406ba25039eef2e2cc" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>BlockPlaceEvent</name></member>
       <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>Event</name></member>
       <member refid="classendstone_1_1BlockEvent_1ae5bdd3abb11f98e4d3929a6f40bbb26a" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1acf32b8f7441ea9a85f0ecfcb4abd8474" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlockAgainst</name></member>
+      <member refid="classendstone_1_1BlockPlaceEvent_1a872bf4ea40ebf0fd1fed6fa09a3b5e8b" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlockPlacedState</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a86a6a402e853085647c1c048996d39e0" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getBlockReplaced</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1ae9d0d87fc6e9e576202f755046851da5" prot="public" virt="virtual"><scope>endstone::BlockPlaceEvent</scope><name>getEventName</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a15b9ab1abf8a86434c186640a6344fea" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>getPlayer</name></member>
@@ -234,6 +269,7 @@
       <member refid="classendstone_1_1BlockPlaceEvent_1ac4e2bdd1835d163b9eb5accdfbbd63c1" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>NAME</name></member>
       <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>operator=</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a28e206da4fec970a7b0a145bc42049a0" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_against_</name></member>
+      <member refid="classendstone_1_1BlockPlaceEvent_1a5ff8f8ed7c32f7d49f2cd81196fe0d93" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>placed_block_</name></member>
       <member refid="classendstone_1_1BlockPlaceEvent_1a916d00309007668efdf242a1207e45e3" prot="private" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>player_</name></member>
       <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>setCancelled</name></member>
       <member refid="classendstone_1_1BlockEvent_1a099e0f2a50354664de1e9f9bfc02d5d7" prot="public" virt="non-virtual"><scope>endstone::BlockPlaceEvent</scope><name>~BlockEvent</name></member>

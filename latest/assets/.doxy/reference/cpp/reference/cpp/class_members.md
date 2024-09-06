@@ -179,6 +179,7 @@
 * **getBlockStates** ([**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getBlock** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getBlockAgainst** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
+* **getBlockPlacedState** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getBlockReplaced** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getColor** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getPlayers** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
@@ -477,6 +478,7 @@
 
 * **player\_** ([**endstone::BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md), [**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md), [**endstone::PlayerEvent**](classendstone_1_1PlayerEvent.md))
 * **placed\_against\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
+* **placed\_block\_** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **permissions\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **plugin\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md))
 * **priority\_** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))

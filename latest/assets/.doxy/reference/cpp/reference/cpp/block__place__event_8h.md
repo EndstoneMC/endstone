@@ -10,6 +10,7 @@
 
 
 
+* `#include "endstone/block/block_state.h"`
 * `#include "endstone/event/block/block_event.h"`
 * `#include "endstone/player.h"`
 

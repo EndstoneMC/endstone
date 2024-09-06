@@ -336,6 +336,8 @@
       <node id="45">
         <label>include/endstone/block/block_state.h</label>
         <link refid="block__state_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="34">
         <label>include/endstone/event/actor/actor_spawn_event.h</label>

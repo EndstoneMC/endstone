@@ -4,6 +4,7 @@
     <compoundname>block_state.h</compoundname>
     <includes local="no">fmt/format.h</includes>
     <includes refid="block_8h" local="yes">endstone/block/block.h</includes>
+    <includedby refid="block__place__event_8h" local="yes">include/endstone/event/block/block_place_event.h</includedby>
     <incdepgraph>
       <node id="12">
         <label>endstone/level/position.h</label>
@@ -97,6 +98,18 @@
         <label>memory</label>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/event/block/block_place_event.h</label>
+        <link refid="block__place__event_8h_source"/>
+      </node>
+      <node id="1">
+        <label>include/endstone/block/block_state.h</label>
+        <link refid="block__state_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
     <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
     <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4" prot="public">fmt::formatter&lt; endstone::BlockState &gt;</innerclass>
     <innernamespace refid="namespaceendstone">endstone</innernamespace>

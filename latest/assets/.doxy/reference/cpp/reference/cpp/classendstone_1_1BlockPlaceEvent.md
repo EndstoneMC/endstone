@@ -98,8 +98,9 @@ Inherits the following classes: [endstone::BlockEvent](classendstone_1_1BlockEve
 
 | Type | Name |
 | ---: | :--- |
-|   | [**BlockPlaceEvent**](#function-blockplaceevent) ([**Block**](classendstone_1_1Block.md) & replaced\_block, [**Block**](classendstone_1_1Block.md) & placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**BlockPlaceEvent**](#function-blockplaceevent) (std::unique\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; placed\_block, [**Block**](classendstone_1_1Block.md) & replaced\_block, [**Block**](classendstone_1_1Block.md) & placed\_against, [**Player**](classendstone_1_1Player.md) & player) <br> |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockAgainst**](#function-getblockagainst) () const<br>_Gets the block that this block was placed against._  |
+|  [**BlockState**](classendstone_1_1BlockState.md) & | [**getBlockPlacedState**](#function-getblockplacedstate) () const<br>_Gets the_ [_**BlockState**_](classendstone_1_1BlockState.md) _for the block which was placed._ |
 |  [**Block**](classendstone_1_1Block.md) & | [**getBlockReplaced**](#function-getblockreplaced) () const<br>_Gets the block which was replaced._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 |  [**Player**](classendstone_1_1Player.md) & | [**getPlayer**](#function-getplayer) () const<br>_Gets the player who placed the block involved in this event._  |
@@ -244,6 +245,7 @@ const std::string endstone::BlockPlaceEvent::NAME;
 
 ```C++
 inline explicit endstone::BlockPlaceEvent::BlockPlaceEvent (
+    std::unique_ptr< BlockState > placed_block,
     Block & replaced_block,
     Block & placed_against,
     Player & player
@@ -271,6 +273,31 @@ inline Block & endstone::BlockPlaceEvent::getBlockAgainst () const
 **Returns:**
 
 [**Block**](classendstone_1_1Block.md) the block that the new block was placed against 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getBlockPlacedState 
+
+_Gets the_ [_**BlockState**_](classendstone_1_1BlockState.md) _for the block which was placed._
+```C++
+inline BlockState & endstone::BlockPlaceEvent::getBlockPlacedState () const
+```
+
+
+
+
+
+**Returns:**
+
+The [**BlockState**](classendstone_1_1BlockState.md) for the block which was placed. 
 
 
 

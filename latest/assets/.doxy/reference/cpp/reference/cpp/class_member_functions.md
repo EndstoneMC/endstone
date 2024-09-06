@@ -120,6 +120,7 @@
 * **getBlockStates** ([**endstone::BlockData**](classendstone_1_1BlockData.md))
 * **getBlock** ([**endstone::BlockEvent**](classendstone_1_1BlockEvent.md), [**endstone::BlockState**](classendstone_1_1BlockState.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getBlockAgainst** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
+* **getBlockPlacedState** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getBlockReplaced** ([**endstone::BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md))
 * **getColor** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getPlayers** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
