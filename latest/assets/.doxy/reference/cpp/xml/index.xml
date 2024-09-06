@@ -374,6 +374,10 @@
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4_1ab4b50fa36d38b4277a57a4fa0cd9567c" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4_1aa632a9d79ed7155ea62e11db427daed6" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockState &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4_1a839df8126c198d9f7797e6e740e4c2b5" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4_1a9163e5ae9ddb9875a025a500b7591b58" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4" kind="struct"><name>fmt::formatter&lt; endstone::BlockStates &gt;</name>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4_1ad264e0e41f2c4b242f418cdd5dbdf90e" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4_1a473ff72070fe9baf67199509257dcefc" kind="function"><name>format</name></member>

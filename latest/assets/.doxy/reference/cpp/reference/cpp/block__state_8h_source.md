@@ -24,6 +24,8 @@
 
 #pragma once
 
+#include <fmt/format.h>
+
 #include "endstone/block/block.h"
 
 namespace endstone {
@@ -59,6 +61,20 @@ public:
     virtual bool update(bool force, bool apply_physics) = 0;
 };
 }  // namespace endstone
+
+namespace fmt {
+template <>
+struct formatter<endstone::BlockState> : formatter<string_view> {
+    using Type = endstone::BlockState;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "BlockState(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(),
+                         val.getY(), val.getZ(), val.getType(), *val.getData());
+    }
+};
+}  // namespace fmt
 ```
 
 
