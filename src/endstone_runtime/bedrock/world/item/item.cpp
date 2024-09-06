@@ -20,11 +20,13 @@
 #include "bedrock/world/level/block/block.h"
 #include "endstone/detail/block/block.h"
 #include "endstone/detail/block/block_face.h"
+#include "endstone/detail/block/block_state.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/block/block_place_event.h"
 
 using endstone::detail::EndstoneBlock;
 using endstone::detail::EndstoneBlockFace;
+using endstone::detail::EndstoneBlockState;
 using endstone::detail::EndstoneServer;
 
 CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, BlockSource const &block_source,
@@ -35,10 +37,12 @@ CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, Bl
 
     if (actor.isPlayer()) {
         auto &player = static_cast<const Player &>(actor).getEndstonePlayer();
+        auto &dimension = block_source.getDimension().getEndstoneDimension();
+        auto block_placed = std::make_unique<EndstoneBlockState>(dimension, pos, const_cast<Block &>(placement_block));
         const auto block_replaced = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos);
         const auto block_face = static_cast<endstone::BlockFace>(face);
         const auto block_against = block_replaced->getRelative(EndstoneBlockFace::getOpposite(block_face));
-        endstone::BlockPlaceEvent e{*block_replaced, *block_against, player};
+        endstone::BlockPlaceEvent e{std::move(block_placed), *block_replaced, *block_against, player};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
             return CoordinatorResult::Deny;

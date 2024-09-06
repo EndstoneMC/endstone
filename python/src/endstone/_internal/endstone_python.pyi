@@ -456,6 +456,11 @@ class BlockPlaceEvent(BlockEvent):
         Gets the block that this block was placed against
         """
     @property
+    def block_placed_state(self) -> BlockState:
+        """
+        Gets the BlockState for the block which was placed.
+        """
+    @property
     def block_replaced(self) -> Block:
         """
         Gets the block which was replaced.

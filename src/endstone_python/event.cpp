@@ -105,6 +105,9 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
     py::class_<BlockPlaceEvent, BlockEvent>(m, "BlockPlaceEvent", "Called when a block is placed by a player.")
         .def_property_readonly("player", &BlockPlaceEvent::getPlayer, py::return_value_policy::reference,
                                "Gets the player who placed the block involved in this event.")
+        .def_property_readonly("block_placed_state", &BlockPlaceEvent::getBlockPlacedState,
+                               py::return_value_policy::reference,
+                               "Gets the BlockState for the block which was placed.")
         .def_property_readonly("block_replaced", &BlockPlaceEvent::getBlockReplaced, py::return_value_policy::reference,
                                "Gets the block which was replaced.")
         .def_property_readonly("block_against", &BlockPlaceEvent::getBlockAgainst, py::return_value_policy::reference,

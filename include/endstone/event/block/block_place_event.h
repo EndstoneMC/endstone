@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "endstone/block/block_state.h"
 #include "endstone/event/block/block_event.h"
 #include "endstone/player.h"
 
@@ -26,8 +27,10 @@ namespace endstone {
  */
 class BlockPlaceEvent : public BlockEvent {
 public:
-    explicit BlockPlaceEvent(Block &replaced_block, Block &placed_against, Player &player)
-        : BlockEvent(replaced_block), placed_against_(placed_against), player_(player)
+    explicit BlockPlaceEvent(std::unique_ptr<BlockState> placed_block, Block &replaced_block, Block &placed_against,
+                             Player &player)
+        : BlockEvent(replaced_block), placed_block_(std::move(placed_block)), placed_against_(placed_against),
+          player_(player)
     {
     }
     ~BlockPlaceEvent() override = default;
@@ -54,6 +57,16 @@ public:
     }
 
     /**
+     * @brief Gets the BlockState for the block which was placed.
+     *
+     * @return The BlockState for the block which was placed.
+     */
+    [[nodiscard]] BlockState &getBlockPlacedState() const
+    {
+        return *placed_block_;
+    }
+
+    /**
      * @brief Gets the block which was replaced.
      *
      * @return The Block which was replaced.
@@ -74,6 +87,7 @@ public:
     }
 
 private:
+    std::unique_ptr<BlockState> placed_block_;
     Block &placed_against_;
     Player &player_;
     // TODO(event): add ItemStack item

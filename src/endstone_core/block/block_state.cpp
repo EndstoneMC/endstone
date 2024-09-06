@@ -22,9 +22,13 @@
 namespace endstone::detail {
 
 EndstoneBlockState::EndstoneBlockState(const EndstoneBlock &block)
-    : dimension_(static_cast<EndstoneDimension &>(block.getDimension())),
-      block_source_(dimension_.getHandle().getBlockSourceFromMainChunkSource()), block_pos_(block.getPosition()),
-      block_(&block.getMinecraftBlock())
+    : EndstoneBlockState(block.getDimension(), block.getPosition(), block.getMinecraftBlock())
+{
+}
+
+EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos, ::Block &block)
+    : dimension_(static_cast<EndstoneDimension &>(dimension)),
+      block_source_(dimension_.getHandle().getBlockSourceFromMainChunkSource()), block_pos_(block_pos), block_(&block)
 {
 }
 
