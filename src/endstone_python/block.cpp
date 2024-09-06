@@ -22,6 +22,7 @@
 
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
+#include "endstone/block/block_state.h"
 #include "endstone/level/dimension.h"
 
 namespace py = pybind11;
@@ -42,6 +43,21 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("type", &BlockData::getType, "Get the block type represented by this block data.")
         .def_property_readonly("block_states", &BlockData::getBlockStates, "Gets the block states for this block.")
         .def("__str__", [](const BlockData &self) { return fmt::format("{}", self); });
+
+    py::class_<BlockState, std::shared_ptr<BlockState>>(
+        m, "BlockState", "Represents a captured state of a block, which will not update automatically.")
+        .def_property_readonly("block", &BlockState::getBlock, "Gets the block represented by this block state.")
+        .def_property("type", &BlockState::getType, &BlockState::setType, "Gets or sets the type of this block state.")
+        .def_property("data", &BlockState::getData, &BlockState::setData, "Gets or sets the data for this block state.")
+        .def_property_readonly("dimension", &BlockState::getDimension, py::return_value_policy::reference,
+                               "Gets the dimension which contains the block represented by this block state.")
+        .def_property_readonly("x", &BlockState::getX, "Gets the x-coordinate of this block state.")
+        .def_property_readonly("y", &BlockState::getY, "Gets the y-coordinate of this block state.")
+        .def_property_readonly("z", &BlockState::getZ, "Gets the z-coordinate of this block state.")
+        .def_property_readonly("location", &BlockState::getLocation, "Gets the location of this block state.")
+        .def("update", py::overload_cast<bool, bool>(&BlockState::update), py::arg("force") = false,
+             py::arg("apply_physics") = true, "Attempts to update the block represented by this state.")
+        .def("__str__", [](const BlockState &self) { return fmt::format("{}", self); });
 
     block
         .def_property("type", &Block::getType, py::overload_cast<std::string>(&Block::setType),
