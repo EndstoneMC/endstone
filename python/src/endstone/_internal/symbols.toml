@@ -1,4 +1,4 @@
-timestamp = 1725393212
+timestamp = 1725749053
 version = "1.21.22"
 
 [windows]
@@ -91,6 +91,7 @@ version = "1.21.22"
 "?updateServerAnnouncement@ServerNetworkHandler@@QEAAXXZ" = 8797408
 "?_createNewPlayer@ServerNetworkHandler@@AEAAAEAVServerPlayer@@AEBVNetworkIdentifier@@AEBVSubClientConnectionRequest@@W4SubClientId@@@Z" = 8621792
 "?_displayGameMessage@ServerNetworkHandler@@AEAAXAEBVPlayer@@AEAUChatEvent@@@Z" = 8625728
+"?_isServerTextEnabled@ServerNetworkHandler@@AEBA_NAEBW4ServerTextEvent@@@Z" = 8632224
 # ServerPlayer
 "?die@ServerPlayer@@UEAAXAEBVActorDamageSource@@@Z" = 13114944
 "?disconnect@ServerPlayer@@QEAAXXZ" = 13115104
@@ -193,6 +194,7 @@ version = "1.21.22"
 "_ZN20ServerNetworkHandler24updateServerAnnouncementEv" = 79216416
 "_ZN20ServerNetworkHandler16_createNewPlayerERK17NetworkIdentifierRK26SubClientConnectionRequest11SubClientId" = 79297760
 "_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 79181568
+"_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 79217296
 # ServerPlayer
 "_ZN12ServerPlayer3dieERK17ActorDamageSource" = 97863616
 "_ZN12ServerPlayer10disconnectEv" = 97881328

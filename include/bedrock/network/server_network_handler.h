@@ -35,6 +35,13 @@ namespace endstone::detail {
 class EndstoneServer;
 }
 
+enum class ServerTextEvent : char {
+    Sleeping = 0,
+    Connection = 1,
+    ChangedSkin = 2,
+    ConnectionOriginal = 101,  // Endstone
+};
+
 class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread,
                              public NetEventCallback,
                              public LevelListener,
@@ -59,9 +66,12 @@ public:
 
 private:
     friend class endstone::detail::EndstoneServer;
-    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &,  // NOLINT(*-identifier-naming)
-                                                 SubClientConnectionRequest const &, SubClientId);
-    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);  // NOLINT(*-identifier-naming)
+    // NOLINTBEGIN(*-identifier-naming)
+    ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
+                                                 SubClientId);
+    ENDSTONE_HOOK void _displayGameMessage(Player const &, ChatEvent &);
+    [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
+    // NOLINTEND(*-identifier-naming)
 
     GameCallbacks *callbacks_;                               // +80
     Bedrock::NonOwnerPointer<ILevel> level_;                 // +88
