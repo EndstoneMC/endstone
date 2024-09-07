@@ -45,7 +45,8 @@ setup_arch() {
 # Detect the Linux distribution
 if [ -f /etc/os-release ]; then
     . /etc/os-release
-    case $ID_LIKE in
+    OS_FAMILY="${ID_LIKE:-$ID}"  # Use ID_LIKE if available, otherwise use ID
+    case $OS_FAMILY in
         *debian*|*ubuntu*)
             echo "Detected Debian/Ubuntu based system."
             setup_debian
@@ -59,7 +60,7 @@ if [ -f /etc/os-release ]; then
             setup_arch
             ;;
         *)
-            echo "Unsupported Linux distribution: $ID_LIKE"
+            echo "Unsupported Linux distribution: $OS_FAMILY"
             exit 1
             ;;
     esac
@@ -84,4 +85,3 @@ pip install endstone
 
 # Run 'endstone'
 endstone
-
