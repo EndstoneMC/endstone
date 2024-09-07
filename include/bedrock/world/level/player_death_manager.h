@@ -16,17 +16,34 @@
 
 #include "bedrock/core/pub_sub.h"
 
-class IPlayerDeathManagerProxy;
-
-class PlayerDeathManager : Bedrock::PubSub::Publisher<void(Player &), Bedrock::PubSub::ThreadModel::MultiThreaded> {
+class IPlayerDeathManagerProxy : public Bedrock::EnableNonOwnerReferences {
 public:
+    ~IPlayerDeathManagerProxy() override = 0;
+    [[nodiscard]] virtual Actor *fetchActor(ActorUniqueID) const = 0;
+    [[nodiscard]] virtual bool shouldShowDeathMessages() const = 0;
+};
+
+class PlayerDeathManagerBase {  // TODO(fixme): figure out the name
+public:
+    virtual ~PlayerDeathManagerBase() = default;
+};
+
+class PlayerDeathManager
+    : public PlayerDeathManagerBase,
+      public Bedrock::PubSub::Publisher<void(Player &), Bedrock::PubSub::ThreadModel::MultiThreaded> {
+public:
+    [[nodiscard]] gsl::not_null<IPlayerDeathManagerProxy *> getPlayerDeathManagerProxy() const
+    {
+        return proxy_.get();
+    }
+
     void resetPacketSender()  // Endstone
     {
         sender_.reset();
     }
 
 private:
-    std::unique_ptr<IPlayerDeathManagerProxy> proxy_;  // +128
-    Bedrock::NonOwnerPointer<PacketSender> sender_;    // +136
+    std::unique_ptr<IPlayerDeathManagerProxy> proxy_;  // +136
+    Bedrock::NonOwnerPointer<PacketSender> sender_;    // +144
 };
-BEDROCK_STATIC_ASSERT_SIZE(PlayerDeathManager, 152, 112);
+BEDROCK_STATIC_ASSERT_SIZE(PlayerDeathManager, 160, 120);

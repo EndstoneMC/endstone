@@ -437,8 +437,9 @@ public:
     [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
 
+    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;  // Endstone: private -> public
+
 private:
-    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
