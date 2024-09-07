@@ -32,11 +32,9 @@ EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(s
     getPermissibleBase();
 }
 
-void EndstoneActor::sendMessage(const std::string &message) const {}
-void EndstoneActor::sendMessage(const Translatable &message) const {}
+void EndstoneActor::sendMessage(const Message &message) const {}
 
-void EndstoneActor::sendErrorMessage(const std::string &message) const {}
-void EndstoneActor::sendErrorMessage(const Translatable &message) const {}
+void EndstoneActor::sendErrorMessage(const Message &message) const {}
 
 Server &EndstoneActor::getServer() const
 {

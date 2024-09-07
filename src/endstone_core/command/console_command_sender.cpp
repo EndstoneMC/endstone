@@ -14,7 +14,7 @@
 
 #include "endstone/detail/command/console_command_sender.h"
 
-#include "bedrock/locale/i18n.h"
+#include "endstone/detail/message.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -24,24 +24,14 @@ ConsoleCommandSender *EndstoneConsoleCommandSender::asConsole() const
     return const_cast<EndstoneConsoleCommandSender *>(this);
 }
 
-void EndstoneConsoleCommandSender::sendMessage(const std::string &message) const
+void EndstoneConsoleCommandSender::sendMessage(const Message &message) const
 {
-    getServer().getLogger().info(message);
+    getServer().getLogger().info(EndstoneMessage::toString(message));
 }
 
-void EndstoneConsoleCommandSender::sendMessage(const Translatable &message) const
+void EndstoneConsoleCommandSender::sendErrorMessage(const Message &message) const
 {
-    getServer().getLogger().info(getI18n().get(message.getTranslationKey(), message.getParameters(), nullptr));
-}
-
-void EndstoneConsoleCommandSender::sendErrorMessage(const std::string &message) const
-{
-    getServer().getLogger().error(message);
-}
-
-void EndstoneConsoleCommandSender::sendErrorMessage(const Translatable &message) const
-{
-    getServer().getLogger().error(getI18n().get(message.getTranslationKey(), message.getParameters(), nullptr));
+    getServer().getLogger().error(EndstoneMessage::toString(message));
 }
 
 Server &EndstoneConsoleCommandSender::getServer() const

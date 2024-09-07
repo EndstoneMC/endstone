@@ -36,10 +36,8 @@ public:
     ~EndstonePlayer() override;
 
     // CommandSender
-    void sendMessage(const std::string &message) const override;
-    void sendMessage(const Translatable &message) const override;
-    void sendErrorMessage(const Translatable &message) const override;
-    void sendErrorMessage(const std::string &message) const override;
+    void sendMessage(const Message &message) const override;
+    void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
 

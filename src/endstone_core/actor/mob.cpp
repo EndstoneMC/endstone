@@ -20,22 +20,13 @@ namespace endstone::detail {
 
 EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
 
-void EndstoneMob::sendMessage(const std::string &message) const
+
+void EndstoneMob::sendMessage(const Message &message) const
 {
     EndstoneActor::sendMessage(message);
 }
 
-void EndstoneMob::sendMessage(const Translatable &message) const
-{
-    EndstoneActor::sendMessage(message);
-}
-
-void EndstoneMob::sendErrorMessage(const Translatable &message) const
-{
-    EndstoneActor::sendErrorMessage(message);
-}
-
-void EndstoneMob::sendErrorMessage(const std::string &message) const
+void EndstoneMob::sendErrorMessage(const Message &message) const
 {
     EndstoneActor::sendErrorMessage(message);
 }

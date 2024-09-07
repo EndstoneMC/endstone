@@ -65,21 +65,12 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
 {
     command_sender
         .def(
-            "send_message",
-            [](const CommandSender &sender, const std::string &message) { sender.sendMessage(message); },
+            "send_message", [](const CommandSender &self, const Message &message) { self.sendMessage(message); },
             py::arg("message"), "Sends this sender a message")
         .def(
-            "send_message",
-            [](const CommandSender &sender, const Translatable &message) { sender.sendMessage(message); },
-            py::arg("message"), "Sends this sender a translatable message")
-        .def(
             "send_error_message",
-            [](const CommandSender &sender, const std::string &message) { sender.sendErrorMessage(message); },
+            [](const CommandSender &self, const Message &message) { self.sendErrorMessage(message); },
             py::arg("message"), "Sends this sender an error message")
-        .def(
-            "send_error_message",
-            [](const CommandSender &sender, const Translatable &message) { sender.sendErrorMessage(message); },
-            py::arg("message"), "Sends this sender a translatable error message")
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");

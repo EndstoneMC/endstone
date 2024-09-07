@@ -25,10 +25,8 @@ namespace endstone::detail {
 class CommandSenderAdapter : public ServerCommandSender {
 public:
     CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output);
-    void sendMessage(const std::string &message) const override;
-    void sendMessage(const Translatable &message) const override;
-    void sendErrorMessage(const std::string &message) const override;
-    void sendErrorMessage(const Translatable &message) const override;
+    void sendMessage(const Message &message) const override;
+    void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;

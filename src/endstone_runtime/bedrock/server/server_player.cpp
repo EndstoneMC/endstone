@@ -50,9 +50,12 @@ void ServerPlayer::die(const ActorDamageSource &source)
     // Fire player death event
     const auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
     server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
+
+    // Update death message from event
     const auto event_death_message = EndstoneMessage::toTranslatable(e->getDeathMessage());
     death_cause_message.first = event_death_message.getTranslationKey();
     death_cause_message.second = event_death_message.getParameters();
+    death_message = EndstoneMessage::toString(e->getDeathMessage());
 
     // Send death info
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
@@ -61,10 +64,10 @@ void ServerPlayer::die(const ActorDamageSource &source)
     sendNetworkPacket(*packet);
 
     // Log death message to console if not empty
-    if (death_cause_message.first.empty()) {
+    if (death_message.empty()) {
         return;
     }
-    server.getLogger().info(EndstoneMessage::toString(e->getDeathMessage()));
+    server.getLogger().info(death_message);
 
     // Broadcast death messages
     if (!player_death_manager->getPlayerDeathManagerProxy()->shouldShowDeathMessages()) {

@@ -16,13 +16,11 @@
 
 #include <stack>
 #include <string>
-#include <string_view>
 #include <vector>
 
 #include <entt/entt.hpp>
 
-#include "bedrock/world/actor/player/player.h"
-#include "endstone/detail/permissions/permissible_base.h"
+#include "endstone/detail/message.h"
 
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
@@ -30,32 +28,24 @@ CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandO
 {
 }
 
-void CommandSenderAdapter::sendMessage(const std::string &message) const
+void CommandSenderAdapter::sendMessage(const Message &message) const
 {
-    output_.forceOutput(message, {});
-}
-
-void CommandSenderAdapter::sendMessage(const Translatable &message) const
-{
+    const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : message.getParameters()) {
+    for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(message.getTranslationKey(), params);
+    output_.forceOutput(tr.getTranslationKey(), params);
 }
 
-void CommandSenderAdapter::sendErrorMessage(const std::string &message) const
+void CommandSenderAdapter::sendErrorMessage(const Message &message) const
 {
-    output_.error(message, {});
-}
-
-void CommandSenderAdapter::sendErrorMessage(const Translatable &message) const
-{
+    const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : message.getParameters()) {
+    for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.error(message.getTranslationKey(), params);
+    output_.error(tr.getTranslationKey(), params);
 }
 
 std::string CommandSenderAdapter::getName() const

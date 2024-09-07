@@ -22,10 +22,8 @@ namespace endstone::detail {
 class EndstoneConsoleCommandSender : public ServerCommandSender, public ConsoleCommandSender {
 public:
     [[nodiscard]] ConsoleCommandSender *asConsole() const override;
-    void sendMessage(const std::string &message) const override;
-    void sendMessage(const Translatable &message) const override;
-    void sendErrorMessage(const std::string &message) const override;
-    void sendErrorMessage(const Translatable &message) const override;
+    void sendMessage(const Message &message) const override;
+    void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] bool isOp() const override;

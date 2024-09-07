@@ -80,34 +80,31 @@ EndstonePlayer::~EndstonePlayer()
     server_.removePlayerBoard(*this);
 }
 
-void EndstonePlayer::sendMessage(const std::string &message) const
+void EndstonePlayer::sendMessage(const Message &message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
     auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Raw;
-    pk->message = message;
+    std::visit(overloaded{[&pk](const std::string &msg) {
+                              pk->type = TextPacketType::Raw;
+                              pk->message = msg;
+                          },
+                          [&pk](const Translatable &msg) {
+                              pk->type = TextPacketType::Translate;
+                              pk->message = msg.getTranslationKey();
+                              pk->params = msg.getParameters();
+                              pk->localize = true;
+                          }},
+               message);
     getHandle().sendNetworkPacket(*packet);
 }
 
-void EndstonePlayer::sendMessage(const Translatable &message) const
+void EndstonePlayer::sendErrorMessage(const Message &message) const
 {
-    auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);
-    auto pk = std::static_pointer_cast<TextPacket>(packet);
-    pk->type = TextPacketType::Translate;
-    pk->message = message.getTranslationKey();
-    pk->params = message.getParameters();
-    pk->localize = true;
-    getHandle().sendNetworkPacket(*packet);
-}
-
-void EndstonePlayer::sendErrorMessage(const std::string &message) const
-{
-    sendMessage(ColorFormat::Red + message);
-}
-
-void EndstonePlayer::sendErrorMessage(const Translatable &message) const
-{
-    sendMessage(message);
+    std::visit(overloaded{[this](const std::string &msg) { sendMessage(ColorFormat::Red + msg); },
+                          [this](const Translatable &msg) {
+                              sendMessage(msg);
+                          }},
+               message);
 }
 
 Server &EndstonePlayer::getServer() const

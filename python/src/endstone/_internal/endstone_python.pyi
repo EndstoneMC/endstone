@@ -728,25 +728,13 @@ class CommandSender(Permissible):
     """
     Represents a command sender.
     """
-    @typing.overload
-    def send_error_message(self, message: str) -> None:
+    def send_error_message(self, message: str | Translatable) -> None:
         """
         Sends this sender an error message
         """
-    @typing.overload
-    def send_error_message(self, message: Translatable) -> None:
-        """
-        Sends this sender a translatable error message
-        """
-    @typing.overload
-    def send_message(self, message: str) -> None:
+    def send_message(self, message: str | Translatable) -> None:
         """
         Sends this sender a message
-        """
-    @typing.overload
-    def send_message(self, message: Translatable) -> None:
-        """
-        Sends this sender a translatable message
         """
     @property
     def name(self) -> str:
@@ -1918,12 +1906,12 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     Called when a player dies
     """
     @property
-    def death_message(self) -> str:
+    def death_message(self) -> str | Translatable:
         """
         Gets or sets the death message that will appear to everyone on the server.
         """
     @death_message.setter
-    def death_message(self, arg1: str) -> None:
+    def death_message(self, arg1: str | Translatable) -> None:
         ...
 class PlayerEvent(Event):
     """
