@@ -21,13 +21,12 @@
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/message.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
+#include "endstone/translatable.h"
 
-using endstone::detail::EndstoneMessage;
 using endstone::detail::EndstoneServer;
 
 void ServerPlayer::die(const ActorDamageSource &source)
@@ -50,12 +49,10 @@ void ServerPlayer::die(const ActorDamageSource &source)
     // Fire player death event
     const auto e = std::make_unique<endstone::PlayerDeathEvent>(endstone_player, death_message);
     server.getPluginManager().callEvent(*static_cast<endstone::PlayerEvent *>(e.get()));
-
-    // Update death message from event
-    const auto event_death_message = EndstoneMessage::toTranslatable(e->getDeathMessage());
-    death_cause_message.first = event_death_message.getTranslationKey();
-    death_cause_message.second = event_death_message.getParameters();
-    death_message = EndstoneMessage::toString(e->getDeathMessage());
+    if (e->getDeathMessage() != death_message) {
+        death_cause_message.first = e->getDeathMessage();
+        death_cause_message.second.clear();
+    }
 
     // Send death info
     const auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::DeathInfo);
@@ -64,17 +61,17 @@ void ServerPlayer::die(const ActorDamageSource &source)
     sendNetworkPacket(*packet);
 
     // Log death message to console if not empty
-    if (death_message.empty()) {
+    if (e->getDeathMessage().empty()) {
         return;
     }
-    server.getLogger().info(death_message);
+    server.getLogger().info(e->getDeathMessage());
 
     // Broadcast death messages
     if (!player_death_manager->getPlayerDeathManagerProxy()->shouldShowDeathMessages()) {
         return;
     }
     for (const auto &player : server.getOnlinePlayers()) {
-        player->sendMessage(e->getDeathMessage());
+        player->sendMessage(endstone::Translatable{death_cause_message.first, death_cause_message.second});
     }
 }
 

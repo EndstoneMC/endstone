@@ -24,7 +24,7 @@ namespace endstone {
  */
 class PlayerDeathEvent : public ActorDeathEvent, public PlayerEvent {
 public:
-    explicit PlayerDeathEvent(Player &player, Message death_message)
+    explicit PlayerDeathEvent(Player &player, std::string death_message)
         : ActorDeathEvent(player), PlayerEvent(player), death_message_(std::move(death_message))
     {
     }
@@ -46,7 +46,7 @@ public:
      *
      * @return Message to appear to other players on the server.
      */
-    [[nodiscard]] Message getDeathMessage() const
+    [[nodiscard]] const std::string &getDeathMessage() const
     {
         return death_message_;
     }
@@ -56,13 +56,13 @@ public:
      *
      * @param death_message Message to appear to other players on the server.
      */
-    void setDeathMessage(Message death_message)
+    void setDeathMessage(const std::string &death_message)
     {
-        death_message_ = std::move(death_message);
+        death_message_ = death_message;
     }
 
 private:
-    Message death_message_;
+    std::string death_message_;
 
     // TODO(event): new exp, new level, new total exp, keep level, keep inventory
 };
