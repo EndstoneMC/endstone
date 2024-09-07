@@ -672,13 +672,13 @@
   </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1ae0461b69e6a0d2ea8bcda7673d1cac8b" kind="variable"><name>death_message_</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a1c9ea839bd6e19cb0eb19ec789c8da6b" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" kind="variable"><name>death_message_</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" kind="function"><name>PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a36e03de2f0aa795bdf14438f73e4607d" kind="function"><name>isCancellable</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1aaad3b2b161bab57b3fe55df7e40da6b6" kind="function"><name>getDeathMessage</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1ad216a77b9255dd2f102bb7fdd071686a" kind="function"><name>setDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a9c83eb1c19d1f3bc66c5618721db1766" kind="function"><name>getDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" kind="function"><name>setDeathMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
     <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>

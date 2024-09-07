@@ -165,11 +165,11 @@ See [endstone::ActorDeathEvent](classendstone_1_1ActorDeathEvent.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, Message death\_message) <br> |
-|  Message | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
+|   | [**PlayerDeathEvent**](#function-playerdeathevent) ([**Player**](classendstone_1_1Player.md) & player, std::string death\_message) <br> |
+|  const std::string & | [**getDeathMessage**](#function-getdeathmessage) () const<br>_Get the death message that will appear to everyone on the server._  |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
-|  void | [**setDeathMessage**](#function-setdeathmessage) (Message death\_message) <br>_Set the death message that will appear to everyone on the server._  |
+|  void | [**setDeathMessage**](#function-setdeathmessage) (const std::string & death\_message) <br>_Set the death message that will appear to everyone on the server._  |
 |   | [**~PlayerDeathEvent**](#function-playerdeathevent) () override<br> |
 
 
@@ -422,7 +422,7 @@ const std::string endstone::PlayerDeathEvent::NAME;
 ```C++
 inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
     Player & player,
-    Message death_message
+    std::string death_message
 ) 
 ```
 
@@ -437,7 +437,7 @@ inline explicit endstone::PlayerDeathEvent::PlayerDeathEvent (
 
 _Get the death message that will appear to everyone on the server._ 
 ```C++
-inline Message endstone::PlayerDeathEvent::getDeathMessage () const
+inline const std::string & endstone::PlayerDeathEvent::getDeathMessage () const
 ```
 
 
@@ -523,7 +523,7 @@ Implements [*endstone::ActorDeathEvent::isCancellable*](classendstone_1_1ActorDe
 _Set the death message that will appear to everyone on the server._ 
 ```C++
 inline void endstone::PlayerDeathEvent::setDeathMessage (
-    Message death_message
+    const std::string & death_message
 ) 
 ```
 
