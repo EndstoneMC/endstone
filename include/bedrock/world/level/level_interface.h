@@ -22,7 +22,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/bedrock.h"
 #include "bedrock/core/automatic_id.h"
 #include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
@@ -34,8 +33,8 @@
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_registry.h"
+#include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/server/player_list_entry.h"
-#include "bedrock/world/actor/mob.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/item/crafting/recipes.h"
@@ -45,6 +44,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
+#include "bedrock/world/level/storage/game_rules.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
 

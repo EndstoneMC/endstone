@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/network/packet.h"
 #include "endstone/network/packet.h"
 

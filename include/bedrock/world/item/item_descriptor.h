@@ -17,6 +17,7 @@
 #include <map>
 #include <optional>
 
+#include "bedrock/core/utility/binary_stream.h"
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/item/item_tag.h"
@@ -41,22 +42,22 @@ public:
 
     class BaseDescriptor {
     public:
-        [[nodiscard]] virtual std::unique_ptr<ItemDescriptor::BaseDescriptor> clone() const = 0;
-        [[nodiscard]] virtual bool sameItems(ItemDescriptor::BaseDescriptor const &, bool) const = 0;
-        [[nodiscard]] virtual bool sameItem(ItemDescriptor::ItemEntry const &, bool) const = 0;
+        [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> clone() const = 0;
+        [[nodiscard]] virtual bool sameItems(BaseDescriptor const &, bool) const = 0;
+        [[nodiscard]] virtual bool sameItem(ItemEntry const &, bool) const = 0;
         [[nodiscard]] virtual std::string const &getFullName() const = 0;
-        virtual void unknownVfunc1() = 0; // TODO(fixme): figure out the name of the virtual function
-        [[nodiscard]] virtual ItemDescriptor::ItemEntry getItem() const = 0;
+        virtual void unknownVfunc1() = 0;  // TODO(fixme): figure out the name of the virtual function
+        [[nodiscard]] virtual ItemEntry getItem() const = 0;
         [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const = 0;
         [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;
         [[nodiscard]] virtual std::optional<CompoundTag> save() const = 0;
         virtual void serialize(Json::Value &val) const = 0;
         virtual void serialize(BinaryStream &stream) const = 0;
-        [[nodiscard]] virtual ItemDescriptor::InternalType getType() const = 0;
+        [[nodiscard]] virtual InternalType getType() const = 0;
         [[nodiscard]] virtual bool isValid() const = 0;
         [[nodiscard]] virtual std::size_t getHash() const = 0;
         [[nodiscard]] virtual bool shouldResolve() const = 0;
-        [[nodiscard]] virtual std::unique_ptr<ItemDescriptor::BaseDescriptor> resolve() const = 0;
+        [[nodiscard]] virtual std::unique_ptr<BaseDescriptor> resolve() const = 0;
         virtual ~BaseDescriptor() = 0;
     };
 
@@ -99,5 +100,5 @@ public:
         return impl->getItem().aux_value;
     }
 
-    mutable std::unique_ptr<ItemDescriptor::BaseDescriptor> impl;
+    mutable std::unique_ptr<BaseDescriptor> impl;
 };

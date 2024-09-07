@@ -14,15 +14,4 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/core/utility/binary_stream.h"
-#include "bedrock/network/packet.h"
-#include "bedrock/world/level/level_settings.h"
-
-class StartGamePacket : public Packet {
-public:
-    ENDSTONE_HOOK virtual void write(BinaryStream &) const;
-
-private:
-    mutable LevelSettings settings_;  // +48
-};
+class GameRules {};
