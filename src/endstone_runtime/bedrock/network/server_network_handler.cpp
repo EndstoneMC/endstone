@@ -111,7 +111,7 @@ bool ServerNetworkHandler::_isServerTextEnabled(ServerTextEvent const &event) co
     }
     if (event == ServerTextEvent::ConnectionOriginal) {
         // We still need to know if we are supposed to send a join/quit message at all.
-        // So we use a magic value to call the original function with ServerTextEvent::Connection
+        // So we use a reserved value to call the original function with ServerTextEvent::Connection
         return ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_isServerTextEnabled, this,
                                            ServerTextEvent::Connection);
     }
