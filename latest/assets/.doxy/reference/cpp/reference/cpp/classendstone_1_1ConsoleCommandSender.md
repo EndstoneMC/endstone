@@ -103,12 +103,10 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual std::string | [**getName**](classendstone_1_1CommandSender.md#function-getname) () const = 0<br>_Gets the name of this command sender._  |
 | virtual [**Server**](classendstone_1_1Server.md) & | [**getServer**](classendstone_1_1CommandSender.md#function-getserver) () const = 0<br>_Returns the server instance that this command is running on._  |
-| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-13) (const std::string & message) const = 0<br>_Sends this sender a error message._  |
-| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable error message._  |
-|  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-13) (const std::string & message) const = 0<br>_Sends this sender a message._  |
-| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-23) (const [**Translatable**](classendstone_1_1Translatable.md) & message) const = 0<br>_Sends this sender a translatable message._  |
-|  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-33) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-12) (const Message & message) const = 0<br>_Sends this sender a error message._  |
+|  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+| virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) (const Message & message) const = 0<br>_Sends this sender a message._  |
+|  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 |   | [**~CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () override<br> |
 
 

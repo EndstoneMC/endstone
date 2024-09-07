@@ -2158,10 +2158,10 @@ If you like this project, please feel free to
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerdeathevent"><strong>PlayerDeathEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string death_message) <br></td>
+<td style="text-align: left;"><a href="#function-playerdeathevent"><strong>PlayerDeathEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, Message death_message) <br></td>
 </tr>
 <tr>
-<td style="text-align: right;">const std::string &amp;</td>
+<td style="text-align: right;">Message</td>
 <td style="text-align: left;"><a href="#function-getdeathmessage"><strong>getDeathMessage</strong></a> () const<br><em>Get the death message that will appear to everyone on the server.</em></td>
 </tr>
 <tr>
@@ -2174,7 +2174,7 @@ If you like this project, please feel free to
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setdeathmessage"><strong>setDeathMessage</strong></a> (const std::string &amp; death_message) <br><em>Set the death message that will appear to everyone on the server.</em></td>
+<td style="text-align: left;"><a href="#function-setdeathmessage"><strong>setDeathMessage</strong></a> (Message death_message) <br><em>Set the death message that will appear to everyone on the server.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2363,14 +2363,14 @@ If you like this project, please feel free to
 <h3 id="function-playerdeathevent">function PlayerDeathEvent<a class="headerlink" href="#function-playerdeathevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">death_message</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">death_message</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-getdeathmessage">function getDeathMessage<a class="headerlink" href="#function-getdeathmessage" title="Permanent link">&para;</a></h3>
 <p><em>Get the death message that will appear to everyone on the server.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">getDeathMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">getDeathMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>Message to appear to other players on the server. </p>
@@ -2397,7 +2397,7 @@ If you like this project, please feel free to
 <h3 id="function-setdeathmessage">function setDeathMessage<a class="headerlink" href="#function-setdeathmessage" title="Permanent link">&para;</a></h3>
 <p><em>Set the death message that will appear to everyone on the server.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerDeathEvent</span><span class="o">::</span><span class="n">setDeathMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">death_message</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">Message</span><span class="w"> </span><span class="n">death_message</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

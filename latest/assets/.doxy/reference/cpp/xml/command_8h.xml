@@ -26,7 +26,19 @@
       <node id="10">
         <label>fmt/format.h</label>
       </node>
-      <node id="14">
+      <node id="11">
+        <label>endstone/message.h</label>
+        <link refid="message_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
         <label>endstone/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="4" relation="include">
@@ -36,10 +48,13 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="12">
+        <label>variant</label>
+      </node>
       <node id="4">
         <label>string</label>
       </node>
-      <node id="12">
+      <node id="15">
         <label>unordered_set</label>
       </node>
       <node id="3">
@@ -63,17 +78,17 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="14">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="16">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="4" relation="include">
@@ -333,7 +348,7 @@
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"></highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target.<ref refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;You<sp/>do<sp/>not<sp/>have<sp/>permission<sp/>to<sp/>perform<sp/>this<sp/>command.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>target.<ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="stringliteral">&quot;You<sp/>do<sp/>not<sp/>have<sp/>permission<sp/>to<sp/>perform<sp/>this<sp/>command.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight></codeline>

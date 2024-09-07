@@ -452,11 +452,9 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>operator=</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>removeAttachment</name></member>
-      <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a8e3992eae0fee7e733685451a8e31b8d" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
-      <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>

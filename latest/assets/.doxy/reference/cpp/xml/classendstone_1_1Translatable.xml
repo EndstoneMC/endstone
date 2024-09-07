@@ -32,7 +32,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1Translatable_1a974d2848a33fee44a130c1fc6466ef4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classendstone_1_1Translatable_1a974d2848a33fee44a130c1fc6466ef4a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>endstone::Translatable::Translatable</definition>
         <argsstring>(std::string translate, std::vector&lt; std::string &gt; with={})</argsstring>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/translatable.h" line="28" column="5" bodyfile="include/endstone/translatable.h" bodystart="28" bodyend="31"/>
+        <location file="include/endstone/translatable.h" line="28" column="14" bodyfile="include/endstone/translatable.h" bodystart="28" bodyend="31"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Translatable_1aa0555700c838c423900ac0c7ada2c056" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>

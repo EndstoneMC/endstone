@@ -286,11 +286,9 @@
     <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
-    <member refid="classendstone_1_1CommandSender_1a1f3e8408c4a3d1676567fd3c364879e7" kind="function"><name>sendMessage</name></member>
-    <member refid="classendstone_1_1CommandSender_1abb1b55f1b771e1af7c612783338e0091" kind="function"><name>sendMessage</name></member>
+    <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
-    <member refid="classendstone_1_1CommandSender_1a54de4cb2de09124f72fa05b7cf2fc94f" kind="function"><name>sendErrorMessage</name></member>
-    <member refid="classendstone_1_1CommandSender_1a8e3992eae0fee7e733685451a8e31b8d" kind="function"><name>sendErrorMessage</name></member>
+    <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" kind="function"><name>sendErrorMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kind="function"><name>getName</name></member>
@@ -674,13 +672,13 @@
   </compound>
   <compound refid="classendstone_1_1PlayerDeathEvent" kind="class"><name>endstone::PlayerDeathEvent</name>
     <member refid="classendstone_1_1PlayerDeathEvent_1aa5ae502ac2f9ffe892efcf8f54d736ba" kind="variable"><name>NAME</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a8d43b4af4294e73278d0d88b27a8ad03" kind="variable"><name>death_message_</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a6eb8acf00eac81ecc98168799fa32df1" kind="function"><name>PlayerDeathEvent</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1ae0461b69e6a0d2ea8bcda7673d1cac8b" kind="variable"><name>death_message_</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1a1c9ea839bd6e19cb0eb19ec789c8da6b" kind="function"><name>PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a5babbc8a8524edf5b68b86c9e9d21380" kind="function"><name>~PlayerDeathEvent</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a0f3f1fecbc4c5677ccb0cc7e9a11e1b0" kind="function"><name>getEventName</name></member>
     <member refid="classendstone_1_1PlayerDeathEvent_1a36e03de2f0aa795bdf14438f73e4607d" kind="function"><name>isCancellable</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1a9c83eb1c19d1f3bc66c5618721db1766" kind="function"><name>getDeathMessage</name></member>
-    <member refid="classendstone_1_1PlayerDeathEvent_1adc7d96225b2ea95e7ee70349209d69ff" kind="function"><name>setDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1aaad3b2b161bab57b3fe55df7e40da6b6" kind="function"><name>getDeathMessage</name></member>
+    <member refid="classendstone_1_1PlayerDeathEvent_1ad216a77b9255dd2f102bb7fdd071686a" kind="function"><name>setDeathMessage</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerEvent" kind="class"><name>endstone::PlayerEvent</name>
     <member refid="classendstone_1_1PlayerEvent_1af4eb1d01665dafc47db34a43d7e96281" kind="variable"><name>player_</name></member>

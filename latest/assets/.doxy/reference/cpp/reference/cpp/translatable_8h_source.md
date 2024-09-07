@@ -32,7 +32,7 @@ namespace endstone {
 
 class Translatable {
 public:
-    Translatable(std::string translate, std::vector<std::string> with = {})
+    explicit Translatable(std::string translate, std::vector<std::string> with = {})
         : translate_(std::move(translate)), with_(std::move(with))
     {
     }

@@ -91,7 +91,7 @@ _Represents an object with a text representation that can be translated by the M
 ### function Translatable 
 
 ```C++
-inline endstone::Translatable::Translatable (
+inline explicit endstone::Translatable::Translatable (
     std::string translate,
     std::vector< std::string > with={}
 ) 
