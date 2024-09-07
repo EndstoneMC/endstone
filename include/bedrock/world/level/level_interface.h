@@ -44,6 +44,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
+#include "bedrock/world/level/player_death_manager.h"
 #include "bedrock/world/level/storage/game_rules.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"
@@ -437,7 +438,7 @@ public:
     virtual void pauseAndFlushTaskGroups() = 0;
 
 private:
-    virtual void *_getPlayerDeathManager() = 0;
+    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;

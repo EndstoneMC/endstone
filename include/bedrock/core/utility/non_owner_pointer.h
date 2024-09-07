@@ -36,7 +36,7 @@ private:
     template <typename T>
     friend class NonOwnerPointer;
 
-    std::shared_ptr<Bedrock::EnableNonOwnerReferences::ControlBlock> control_block_;
+    std::shared_ptr<ControlBlock> control_block_;
 };
 
 template <class T>
@@ -67,9 +67,9 @@ public:
         return get();
     }
 
-    constexpr explicit operator bool() const noexcept
+    [[nodiscard]] bool isValid() const noexcept
     {
-        return get() != nullptr;
+        return control_block_ && control_block_->ptr != nullptr;
     }
 
     void reset()
@@ -105,7 +105,7 @@ private:
             control_block_ = ptr->control_block_;
         }
     }
-    std::shared_ptr<Bedrock::EnableNonOwnerReferences::ControlBlock> control_block_;
+    std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_;
 };
 
 }  // namespace Bedrock
