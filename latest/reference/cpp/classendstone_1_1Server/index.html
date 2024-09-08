@@ -2529,11 +2529,11 @@ If you like this project, please feel free to
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-broadcast"><strong>broadcast</strong></a> (const std::string &amp; message, const std::string &amp; permission) const = 0<br><em>Broadcasts the specified message to every user with the given permission name.</em></td>
+<td style="text-align: left;"><a href="#function-broadcast"><strong>broadcast</strong></a> (const Message &amp; message, const std::string &amp; permission) const = 0<br><em>Broadcasts the specified message to every user with the given permission name.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-broadcastmessage-12"><strong>broadcastMessage</strong></a> (const std::string &amp; message) const = 0<br><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em></td>
+<td style="text-align: left;"><a href="#function-broadcastmessage-12"><strong>broadcastMessage</strong></a> (const Message &amp; message) const = 0<br><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
@@ -2703,7 +2703,7 @@ If you like this project, please feel free to
 <h3 id="function-broadcast">function broadcast<a class="headerlink" href="#function-broadcast" title="Permanent link">&para;</a></h3>
 <p><em>Broadcasts the specified message to every user with the given permission name.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">broadcast</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span><span class="p">,</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">permission</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -2717,7 +2717,7 @@ If you like this project, please feel free to
 <h3 id="function-broadcastmessage-12">function broadcastMessage [&frac12;]<a class="headerlink" href="#function-broadcastmessage-12" title="Permanent link">&para;</a></h3>
 <p><em>Broadcasts the specified message to every user with permission endstone.broadcast.user.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Server</span><span class="o">::</span><span class="n">broadcastMessage</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">Message</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">message</span>
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

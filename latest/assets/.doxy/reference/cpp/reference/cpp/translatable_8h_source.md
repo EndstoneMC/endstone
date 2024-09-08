@@ -37,14 +37,19 @@ public:
     {
     }
 
-    [[nodiscard]] const std::string &getTranslationKey() const
+    [[nodiscard]] const std::string &getTranslate() const
     {
         return translate_;
     }
 
-    [[nodiscard]] const std::vector<std::string> &getParameters() const
+    [[nodiscard]] const std::vector<std::string> &getWith() const
     {
         return with_;
+    }
+
+    [[nodiscard]] bool empty() const
+    {
+        return translate_.empty();
     }
 
 private:

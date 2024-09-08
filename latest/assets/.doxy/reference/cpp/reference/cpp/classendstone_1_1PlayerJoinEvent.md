@@ -98,9 +98,11 @@ Inherits the following classes: [endstone::PlayerEvent](classendstone_1_1PlayerE
 
 | Type | Name |
 | ---: | :--- |
-|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player) <br> |
+|   | [**PlayerJoinEvent**](#function-playerjoinevent) ([**Player**](classendstone_1_1Player.md) & player, std::string join\_message) <br> |
 | virtual std::string | [**getEventName**](#function-geteventname) () override const<br> |
+|  std::string | [**getJoinMessage**](#function-getjoinmessage) () const<br>_Gets the join message to send to all online players._  |
 | virtual bool | [**isCancellable**](#function-iscancellable) () override const<br> |
+|  void | [**setJoinMessage**](#function-setjoinmessage) (std::string message) <br>_Sets the join message to send to all online players._  |
 |   | [**~PlayerJoinEvent**](#function-playerjoinevent) () override<br> |
 
 
@@ -234,7 +236,8 @@ const std::string endstone::PlayerJoinEvent::NAME;
 
 ```C++
 inline explicit endstone::PlayerJoinEvent::PlayerJoinEvent (
-    Player & player
+    Player & player,
+    std::string join_message
 ) 
 ```
 
@@ -275,6 +278,31 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 
+### function getJoinMessage 
+
+_Gets the join message to send to all online players._ 
+```C++
+inline std::string endstone::PlayerJoinEvent::getJoinMessage () const
+```
+
+
+
+
+
+**Returns:**
+
+Message to appear to other players on the server. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isCancellable 
 
 
@@ -300,6 +328,33 @@ true if this event can be cancelled
         
 Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function-iscancellable)
 
+
+<hr>
+
+
+
+### function setJoinMessage 
+
+_Sets the join message to send to all online players._ 
+```C++
+inline void endstone::PlayerJoinEvent::setJoinMessage (
+    std::string message
+) 
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `message` Message to appear to other players on the server. 
+
+
+
+
+        
 
 <hr>
 

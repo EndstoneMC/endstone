@@ -137,6 +137,7 @@
 * **enablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **enablePlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **effect\_name** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
+* **empty** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **end** ([**endstone::UUID**](classendstone_1_1UUID.md))
 
 
@@ -258,8 +259,10 @@
 * **getBlockFace** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getClickedPosition** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getItem** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
+* **getJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **getReason** ([**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **getKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
+* **getQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
 * **getDataFolder** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **getLogger** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginLoader** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -331,8 +334,8 @@
 * **getOwner** ([**endstone::Task**](classendstone_1_1Task.md))
 * **getTaskId** ([**endstone::Task**](classendstone_1_1Task.md))
 * **getPlaceholder** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
-* **getParameters** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
-* **getTranslationKey** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **getTranslate** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
+* **getWith** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## h
@@ -382,6 +385,11 @@
 * **isPrimaryThread** ([**endstone::Server**](classendstone_1_1Server.md))
 * **isSync** ([**endstone::Task**](classendstone_1_1Task.md))
 * **isNil** ([**endstone::UUID**](classendstone_1_1UUID.md))
+
+
+## j
+
+* **join\_message\_** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 
 
 ## k
@@ -518,6 +526,11 @@
 * **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
 
 
+## q
+
+* **quit\_message\_** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
+
+
 ## r
 
 * **raw\_knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -620,8 +633,10 @@
 * **setWalkSpeed** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setCommand** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **setDeathMessage** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
+* **setJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
 * **setReason** ([**endstone::PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md))
 * **setKickMessage** ([**endstone::PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md))
+* **setQuitMessage** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **setEnabled** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **setExecutor** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))

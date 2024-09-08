@@ -60,8 +60,8 @@ _Represents a server implementation._
 | ---: | :--- |
 |   | [**Server**](#function-server-12) () = default<br> |
 |   | [**Server**](#function-server-22) (const [**Server**](classendstone_1_1Server.md) &) = delete<br> |
-| virtual void | [**broadcast**](#function-broadcast) (const std::string & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
-| virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const std::string & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
+| virtual void | [**broadcast**](#function-broadcast) (const Message & message, const std::string & permission) const = 0<br>_Broadcasts the specified message to every user with the given permission name._  |
+| virtual void | [**broadcastMessage**](#function-broadcastmessage-12) (const Message & message) const = 0<br>_Broadcasts the specified message to every user with permission endstone.broadcast.user._  |
 |  void | [**broadcastMessage**](#function-broadcastmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-12) (std::string type) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults._ |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**createBlockData**](#function-createblockdata-22) (std::string type, BlockStates block\_states) const = 0<br>_Creates a new_ [_**BlockData**_](classendstone_1_1BlockData.md) _instance for the specified block type, with all properties initialized to defaults, except for those provided in data._ |
@@ -191,7 +191,7 @@ endstone::Server::Server (
 _Broadcasts the specified message to every user with the given permission name._ 
 ```C++
 virtual void endstone::Server::broadcast (
-    const std::string & message,
+    const Message & message,
     const std::string & permission
 ) const = 0
 ```
@@ -220,7 +220,7 @@ virtual void endstone::Server::broadcast (
 _Broadcasts the specified message to every user with permission endstone.broadcast.user._ 
 ```C++
 virtual void endstone::Server::broadcastMessage (
-    const std::string & message
+    const Message & message
 ) const = 0
 ```
 

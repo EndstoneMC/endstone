@@ -53,8 +53,9 @@ _Represents an object with a text representation that can be translated by the M
 | Type | Name |
 | ---: | :--- |
 |   | [**Translatable**](#function-translatable) (std::string translate, std::vector&lt; std::string &gt; with={}) <br> |
-|  const std::vector&lt; std::string &gt; & | [**getParameters**](#function-getparameters) () const<br>_Get the translation parameters._  |
-|  const std::string & | [**getTranslationKey**](#function-gettranslationkey) () const<br>_Get the translation key for use in a translation component._  |
+|  bool | [**empty**](#function-empty) () const<br>_Check if the message to be translated is empty._  |
+|  const std::string & | [**getTranslate**](#function-gettranslate) () const<br>_Get the message to be translated._  |
+|  const std::vector&lt; std::string &gt; & | [**getWith**](#function-getwith) () const<br>_Get the translation parameters._  |
 
 
 
@@ -104,11 +105,11 @@ inline explicit endstone::Translatable::Translatable (
 
 
 
-### function getParameters 
+### function empty 
 
-_Get the translation parameters._ 
+_Check if the message to be translated is empty._ 
 ```C++
-inline const std::vector< std::string > & endstone::Translatable::getParameters () const
+inline bool endstone::Translatable::empty () const
 ```
 
 
@@ -117,7 +118,7 @@ inline const std::vector< std::string > & endstone::Translatable::getParameters 
 
 **Returns:**
 
-the translation parameters 
+true if the message to be translated is empty, false otherwise 
 
 
 
@@ -129,11 +130,11 @@ the translation parameters
 
 
 
-### function getTranslationKey 
+### function getTranslate 
 
-_Get the translation key for use in a translation component._ 
+_Get the message to be translated._ 
 ```C++
-inline const std::string & endstone::Translatable::getTranslationKey () const
+inline const std::string & endstone::Translatable::getTranslate () const
 ```
 
 
@@ -142,7 +143,32 @@ inline const std::string & endstone::Translatable::getTranslationKey () const
 
 **Returns:**
 
-the translation key 
+the message to be translated 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getWith 
+
+_Get the translation parameters._ 
+```C++
+inline const std::vector< std::string > & endstone::Translatable::getWith () const
+```
+
+
+
+
+
+**Returns:**
+
+the translation parameters 
 
 
 

@@ -1979,9 +1979,35 @@ If you like this project, please feel free to
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getjoinmessage" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getJoinMessage
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-iscancellable" class="md-nav__link">
       <span class="md-ellipsis">
         function isCancellable
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-setjoinmessage" class="md-nav__link">
+      <span class="md-ellipsis">
+        function setJoinMessage
       </span>
     </a>
 
@@ -2072,15 +2098,23 @@ If you like this project, please feel free to
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-playerjoinevent"><strong>PlayerJoinEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player) <br></td>
+<td style="text-align: left;"><a href="#function-playerjoinevent"><strong>PlayerJoinEvent</strong></a> (<a href="../classendstone_1_1Player/"><strong>Player</strong></a> &amp; player, std::string join_message) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual std::string</td>
 <td style="text-align: left;"><a href="#function-geteventname"><strong>getEventName</strong></a> () override const<br></td>
 </tr>
 <tr>
+<td style="text-align: right;">std::string</td>
+<td style="text-align: left;"><a href="#function-getjoinmessage"><strong>getJoinMessage</strong></a> () const<br><em>Gets the join message to send to all online players.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual bool</td>
 <td style="text-align: left;"><a href="#function-iscancellable"><strong>isCancellable</strong></a> () override const<br></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="#function-setjoinmessage"><strong>setJoinMessage</strong></a> (std::string message) <br><em>Sets the join message to send to all online players.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"></td>
@@ -2168,8 +2202,9 @@ If you like this project, please feel free to
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-playerjoinevent">function PlayerJoinEvent<a class="headerlink" href="#function-playerjoinevent" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="n">Player</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">player</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">join_message</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 
@@ -2182,8 +2217,16 @@ If you like this project, please feel free to
 <p>Implements <a href="../classendstone_1_1Event/#function-geteventname"><em>endstone::Event::getEventName</em></a></p>
 <hr>
 
+<h3 id="function-getjoinmessage">function getJoinMessage<a class="headerlink" href="#function-getjoinmessage" title="Permanent link">&para;</a></h3>
+<p><em>Gets the join message to send to all online players.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">getJoinMessage</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>Message to appear to other players on the server. </p>
+<hr>
+
 <h3 id="function-iscancellable">function isCancellable<a class="headerlink" href="#function-iscancellable" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">isCancellable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">isCancellable</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div>
 <p>Whether the event can be cancelled by a plugin or the server.</p>
 <p><strong>Returns:</strong></p>
@@ -2191,8 +2234,20 @@ If you like this project, please feel free to
 <p>Implements <a href="../classendstone_1_1Event/#function-iscancellable"><em>endstone::Event::isCancellable</em></a></p>
 <hr>
 
+<h3 id="function-setjoinmessage">function setJoinMessage<a class="headerlink" href="#function-setjoinmessage" title="Permanent link">&para;</a></h3>
+<p><em>Sets the join message to send to all online players.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::</span><span class="n">setJoinMessage</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">message</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span>
+</span></code></pre></div></p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>message</code> Message to appear to other players on the server. </li>
+</ul>
+<hr>
+
 <h3 id="function-playerjoinevent_1">function ~PlayerJoinEvent<a class="headerlink" href="#function-playerjoinevent_1" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::~</span><span class="n">PlayerJoinEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerJoinEvent</span><span class="o">::~</span><span class="n">PlayerJoinEvent</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
 </span></code></pre></div>
 <hr>
 

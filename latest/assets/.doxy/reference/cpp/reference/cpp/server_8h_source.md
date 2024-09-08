@@ -89,9 +89,9 @@ public:
 
     virtual void reloadData() = 0;
 
-    virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
+    virtual void broadcast(const Message &message, const std::string &permission) const = 0;
 
-    virtual void broadcastMessage(const std::string &message) const = 0;
+    virtual void broadcastMessage(const Message &message) const = 0;
 
     template <typename... Args>
     void broadcastMessage(const fmt::format_string<Args...> format, Args &&...args) const

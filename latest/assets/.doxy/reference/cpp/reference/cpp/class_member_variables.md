@@ -107,6 +107,11 @@
 * **item\_** ([**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 
 
+## j
+
+* **join\_message\_** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
+
+
 ## k
 
 * **knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -186,6 +191,11 @@
 * **port\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **position** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
+
+
+## q
+
+* **quit\_message\_** ([**endstone::PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md))
 
 
 ## r

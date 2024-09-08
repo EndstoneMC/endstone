@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="321" column="37" bodyfile="include/endstone/server.h" bodystart="321" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="322" column="37" bodyfile="include/endstone/server.h" bodystart="322" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="326" column="37" bodyfile="include/endstone/server.h" bodystart="326" bodyend="-1"/>
+        <location file="include/endstone/server.h" line="327" column="37" bodyfile="include/endstone/server.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -467,13 +467,13 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="174" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Server::broadcast</definition>
-        <argsstring>(const std::string &amp;message, const std::string &amp;permission) const =0</argsstring>
+        <argsstring>(const Message &amp;message, const std::string &amp;permission) const =0</argsstring>
         <name>broadcast</name>
         <param>
-          <type>const std::string &amp;</type>
+          <type>const Message &amp;</type>
           <declname>message</declname>
         </param>
         <param>
@@ -507,13 +507,13 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="182" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void endstone::Server::broadcastMessage</definition>
-        <argsstring>(const std::string &amp;message) const =0</argsstring>
+        <argsstring>(const Message &amp;message) const =0</argsstring>
         <name>broadcastMessage</name>
         <param>
-          <type>const std::string &amp;</type>
+          <type>const Message &amp;</type>
           <declname>message</declname>
         </param>
         <briefdescription>
@@ -866,7 +866,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="298" column="30"/>
+        <location file="include/endstone/server.h" line="299" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -908,7 +908,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="308" column="30"/>
+        <location file="include/endstone/server.h" line="309" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::chrono::system_clock::time_point</type>
@@ -925,7 +925,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="316" column="52"/>
+        <location file="include/endstone/server.h" line="317" column="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -933,12 +933,12 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/server.h" line="41" column="1" bodyfile="include/endstone/server.h" bodystart="41" bodyend="327"/>
+    <location file="include/endstone/server.h" line="41" column="1" bodyfile="include/endstone/server.h" bodystart="41" bodyend="328"/>
     <listofallmembers>
-      <member refid="classendstone_1_1Server_1a15cf39bd58121440da4349a222867e29" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
+      <member refid="classendstone_1_1Server_1aad0acb0f58d11256a696ecdc04287331" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcast</name></member>
       <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelAdmin</name></member>
       <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>BroadcastChannelUser</name></member>
-      <member refid="classendstone_1_1Server_1a959f7196b2991d34fb65046629cd6a6a" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
+      <member refid="classendstone_1_1Server_1acc4f0ea241258f9d987752f1b86d1c8e" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a3ed020d4865697b14256c386952aef8c" prot="public" virt="non-virtual"><scope>endstone::Server</scope><name>broadcastMessage</name></member>
       <member refid="classendstone_1_1Server_1a851d9caa59060d05043d87d8f55f5195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
       <member refid="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBlockData</name></member>
