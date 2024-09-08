@@ -73,8 +73,8 @@ public:
     void reload() override;
     void reloadData() override;
 
-    void broadcast(const std::string &message, const std::string &permission) const override;
-    void broadcastMessage(const std::string &message) const override;
+    void broadcast(const Message &message, const std::string &permission) const override;
+    void broadcastMessage(const Message &message) const override;
 
     [[nodiscard]] bool isPrimaryThread() const override;
 

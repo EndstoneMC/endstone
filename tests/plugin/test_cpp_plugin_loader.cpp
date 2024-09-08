@@ -47,8 +47,8 @@ public:
     MOCK_METHOD(void, shutdown, (), (override));
     MOCK_METHOD(void, reload, (), (override));
     MOCK_METHOD(void, reloadData, (), (override));
-    MOCK_METHOD(void, broadcast, (const std::string &, const std::string &), (const, override));
-    MOCK_METHOD(void, broadcastMessage, (const std::string &), (const, override));
+    MOCK_METHOD(void, broadcast, (const endstone::Message &, const std::string &), (const, override));
+    MOCK_METHOD(void, broadcastMessage, (const endstone::Message &), (const, override));
     MOCK_METHOD(bool, isPrimaryThread, (), (const, override));
     MOCK_METHOD(endstone::Scoreboard *, getScoreboard, (), (const, override));
     MOCK_METHOD(std::shared_ptr<endstone::Scoreboard>, createScoreboard, (), (override));

@@ -23,7 +23,7 @@ std::string EndstoneMessage::toString(Message message)
 {
     return std::visit(overloaded{[](const std::string &string) { return string; },
                                  [](const Translatable &tr) {
-                                     return getI18n().get(tr.getTranslationKey(), tr.getParameters(), nullptr);
+                                     return getI18n().get(tr.getTranslate(), tr.getWith(), nullptr);
                                  }},
                       message);
 }

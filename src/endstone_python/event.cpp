@@ -141,14 +141,18 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         m, "PlayerInteractActorEvent", "Represents an event that is called when a player right-clicks an actor.")
         .def_property_readonly("actor", &PlayerInteractActorEvent::getActor, py::return_value_policy::reference,
                                "Gets the actor that was right-clicked by the player.");
-    py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server");
+    py::class_<PlayerJoinEvent, PlayerEvent>(m, "PlayerJoinEvent", "Called when a player joins a server")
+        .def_property("join_message", &PlayerJoinEvent::getJoinMessage, &PlayerJoinEvent::setJoinMessage,
+                      "Gets or sets the join message to send to all online players.");
     py::class_<PlayerKickEvent, PlayerEvent>(m, "PlayerKickEvent", "Called when a player gets kicked from the server")
         .def_property("reason", &PlayerKickEvent::getReason, &PlayerKickEvent::setReason,
                       "Gets or sets the reason why the player is getting kicked");
     py::class_<PlayerLoginEvent, PlayerEvent>(m, "PlayerLoginEvent", "Called when a player attempts to login in.")
         .def_property("kick_message", &PlayerLoginEvent::getKickMessage, &PlayerLoginEvent::setKickMessage,
                       "Gets or sets kick message to display if event is cancelled");
-    py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.");
+    py::class_<PlayerQuitEvent, PlayerEvent>(m, "PlayerQuitEvent", "Called when a player leaves a server.")
+        .def_property("quit_message", &PlayerQuitEvent::getQuitMessage, &PlayerQuitEvent::setQuitMessage,
+                      "Gets or sets the quit message to send to all online players.");
     py::class_<PlayerTeleportEvent, PlayerEvent>(m, "PlayerTeleportEvent",
                                                  "Called when a player is teleported from one location to another.")
         .def_property("from_location", &PlayerTeleportEvent::getFrom, &PlayerTeleportEvent::setFrom,

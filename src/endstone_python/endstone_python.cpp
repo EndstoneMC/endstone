@@ -200,9 +200,9 @@ void init_translatable(py::module_ &m)
                  return Translatable(std::move(translate), with.value_or(std::vector<std::string>{}));
              }),
              py::arg("translate"), py::arg("with_") = py::none())
-        .def_property_readonly("translate", &Translatable::getTranslationKey,
+        .def_property_readonly("translate", &Translatable::getTranslate,
                                "Get the translation key for use in a translation component.")
-        .def_property_readonly("with_", &Translatable::getParameters, "Get the translation parameters.");
+        .def_property_readonly("with_", &Translatable::getWith, "Get the translation parameters.");
 }
 
 void init_server(py::class_<Server> &server)
@@ -240,8 +240,7 @@ void init_server(py::class_<Server> &server)
         .def("broadcast", &Server::broadcast, py::arg("message"), py::arg("permission"),
              "Broadcasts the specified message to every user with the given permission name.")
         .def(
-            "broadcast_message",
-            [](const Server &server, const std::string &message) { server.broadcastMessage(message); },
+            "broadcast_message", [](const Server &self, const Message &message) { self.broadcastMessage(message); },
             py::arg("message"),
             "Broadcasts the specified message to every user with permission endstone.broadcast.user")
         .def_property_readonly("scoreboard", &Server::getScoreboard,

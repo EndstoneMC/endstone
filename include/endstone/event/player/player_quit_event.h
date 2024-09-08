@@ -23,7 +23,10 @@ namespace endstone {
  */
 class PlayerQuitEvent : public PlayerEvent {
 public:
-    explicit PlayerQuitEvent(Player &player) : PlayerEvent(player) {}
+    explicit PlayerQuitEvent(Player &player, std::string quit_message)
+        : PlayerEvent(player), quit_message_(std::move(quit_message))
+    {
+    }
     ~PlayerQuitEvent() override = default;
 
     inline static const std::string NAME = "PlayerQuitEvent";
@@ -36,6 +39,29 @@ public:
     {
         return false;
     }
+
+    /**
+     * @brief Gets the quit message to send to all online players.
+     *
+     * @return Message to appear to other players on the server.
+     */
+    [[nodiscard]] std::string getQuitMessage() const
+    {
+        return quit_message_;
+    }
+
+    /**
+     * @brief Sets the quit message to send to all online players.
+     *
+     * @param message Message to appear to other players on the server.
+     */
+    void setQuitMessage(std::string message)
+    {
+        quit_message_ = std::move(message);
+    }
+
+private:
+    std::string quit_message_;
 };
 
 }  // namespace endstone

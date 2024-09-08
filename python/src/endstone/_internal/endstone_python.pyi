@@ -1906,12 +1906,12 @@ class PlayerDeathEvent(ActorDeathEvent, PlayerEvent):
     Called when a player dies
     """
     @property
-    def death_message(self) -> str | Translatable:
+    def death_message(self) -> str:
         """
         Gets or sets the death message that will appear to everyone on the server.
         """
     @death_message.setter
-    def death_message(self, arg1: str | Translatable) -> None:
+    def death_message(self, arg1: str) -> None:
         ...
 class PlayerEvent(Event):
     """
@@ -1973,6 +1973,14 @@ class PlayerJoinEvent(PlayerEvent):
     """
     Called when a player joins a server
     """
+    @property
+    def join_message(self) -> str:
+        """
+        Gets or sets the join message to send to all online players.
+        """
+    @join_message.setter
+    def join_message(self, arg1: str) -> None:
+        ...
 class PlayerKickEvent(PlayerEvent):
     """
     Called when a player gets kicked from the server
@@ -2001,6 +2009,14 @@ class PlayerQuitEvent(PlayerEvent):
     """
     Called when a player leaves a server.
     """
+    @property
+    def quit_message(self) -> str:
+        """
+        Gets or sets the quit message to send to all online players.
+        """
+    @quit_message.setter
+    def quit_message(self, arg1: str) -> None:
+        ...
 class PlayerTeleportEvent(PlayerEvent):
     """
     Called when a player is teleported from one location to another.
@@ -2517,11 +2533,11 @@ class Server:
     """
     Represents a server implementation.
     """
-    def broadcast(self, message: str, permission: str) -> None:
+    def broadcast(self, message: str | Translatable, permission: str) -> None:
         """
         Broadcasts the specified message to every user with the given permission name.
         """
-    def broadcast_message(self, message: str) -> None:
+    def broadcast_message(self, message: str | Translatable) -> None:
         """
         Broadcasts the specified message to every user with permission endstone.broadcast.user
         """

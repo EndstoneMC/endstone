@@ -179,14 +179,14 @@ public:
      * @param message message to broadcast
      * @param permission the required permission Permissibles must have to receive the broadcast
      */
-    virtual void broadcast(const std::string &message, const std::string &permission) const = 0;
+    virtual void broadcast(const Message &message, const std::string &permission) const = 0;
 
     /**
      * @brief Broadcasts the specified message to every user with permission endstone.broadcast.user
      *
      * @param message the message
      */
-    virtual void broadcastMessage(const std::string &message) const = 0;
+    virtual void broadcastMessage(const Message &message) const = 0;
 
     template <typename... Args>
     void broadcastMessage(const fmt::format_string<Args...> format, Args &&...args) const
@@ -290,7 +290,8 @@ public:
                                                                  std::vector<BarFlag> flags) const = 0;
 
     /**
-     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to defaults.
+     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
+     * defaults.
      *
      * @param type the block type
      * @return new data instance
@@ -298,8 +299,8 @@ public:
     [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
 
     /**
-     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to defaults,
-     * except for those provided in data.
+     * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
+     * defaults, except for those provided in data.
      *
      * @param type the block type
      * @param block_states block states, for example {"old_leaf_type":"birch", "persistent_bit":true}

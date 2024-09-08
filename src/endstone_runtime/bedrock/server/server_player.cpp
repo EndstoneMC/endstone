@@ -20,7 +20,9 @@
 #include "bedrock/network/minecraft_packets.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/hook.h"
+#include "endstone/detail/message.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
@@ -67,21 +69,38 @@ void ServerPlayer::die(const ActorDamageSource &source)
     server.getLogger().info(e->getDeathMessage());
 
     // Broadcast death messages
-    if (!player_death_manager->getPlayerDeathManagerProxy()->shouldShowDeathMessages()) {
-        return;
-    }
-    for (const auto &player : server.getOnlinePlayers()) {
-        player->sendMessage(endstone::Translatable{death_cause_message.first, death_cause_message.second});
+    if (player_death_manager->getPlayerDeathManagerProxy()->shouldShowDeathMessages()) {
+        endstone::Translatable tr{death_cause_message.first, death_cause_message.second};
+        for (const auto &player : server.getOnlinePlayers()) {
+            player->sendMessage(tr);
+        }
     }
 }
 
 void ServerPlayer::setLocalPlayerAsInitialized()
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::setLocalPlayerAsInitialized, this);
+
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = getEndstonePlayer();
-    endstone::PlayerJoinEvent e{endstone_player};
+
+    endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
+                              {endstone_player.getName()}};
+    const std::string join_message = endstone::detail::EndstoneMessage::toString(tr);
+
+    endstone::PlayerJoinEvent e{endstone_player, join_message};
     server.getPluginManager().callEvent(e);
+
+    if (e.getJoinMessage() != join_message) {
+        tr = endstone::Translatable{e.getJoinMessage(), {}};
+    }
+
+    if (!e.getJoinMessage().empty()) {
+        for (const auto &player : server.getOnlinePlayers()) {
+            player->sendMessage(tr);
+        }
+    }
+
     endstone_player.recalculatePermissions();
     endstone_player.updateCommands();
 }
@@ -91,7 +110,22 @@ void ServerPlayer::disconnect()
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = getEndstonePlayer();
     endstone_player.disconnect();
-    endstone::PlayerQuitEvent e{endstone_player};
+
+    endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};
+    const std::string quit_message = endstone::detail::EndstoneMessage::toString(tr);
+
+    endstone::PlayerQuitEvent e{endstone_player, quit_message};
     server.getPluginManager().callEvent(e);
+
+    if (e.getQuitMessage() != quit_message) {
+        tr = endstone::Translatable{e.getQuitMessage(), {}};
+    }
+
+    if (!e.getQuitMessage().empty()) {
+        for (const auto &player : server.getOnlinePlayers()) {
+            player->sendMessage(tr);
+        }
+    }
+
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::disconnect, this);
 }

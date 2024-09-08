@@ -36,6 +36,7 @@ namespace fs = std::filesystem;
 #include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/message.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
@@ -272,7 +273,7 @@ void EndstoneServer::reloadData()
     level_->getHandle().loadFunctionManager();
 }
 
-void EndstoneServer::broadcast(const std::string &message, const std::string &permission) const
+void EndstoneServer::broadcast(const Message &message, const std::string &permission) const
 {
     std::unordered_set<const CommandSender *> recipients;
     for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
@@ -282,7 +283,7 @@ void EndstoneServer::broadcast(const std::string &message, const std::string &pe
         }
     }
 
-    BroadcastMessageEvent event{!isPrimaryThread(), message, recipients};
+    BroadcastMessageEvent event{!isPrimaryThread(), EndstoneMessage::toString(message), recipients};
     getPluginManager().callEvent(event);
 
     if (event.isCancelled()) {
@@ -294,7 +295,7 @@ void EndstoneServer::broadcast(const std::string &message, const std::string &pe
     }
 }
 
-void EndstoneServer::broadcastMessage(const std::string &message) const
+void EndstoneServer::broadcastMessage(const Message &message) const
 {
     broadcast(message, BroadcastChannelUser);
 }

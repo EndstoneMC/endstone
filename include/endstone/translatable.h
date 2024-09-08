@@ -31,11 +31,11 @@ public:
     }
 
     /**
-     * @brief Get the translation key for use in a translation component.
+     * @brief Get the message to be translated.
      *
-     * @return the translation key
+     * @return the message to be translated
      */
-    [[nodiscard]] const std::string &getTranslationKey() const
+    [[nodiscard]] const std::string &getTranslate() const
     {
         return translate_;
     }
@@ -45,9 +45,19 @@ public:
      *
      * @return the translation parameters
      */
-    [[nodiscard]] const std::vector<std::string> &getParameters() const
+    [[nodiscard]] const std::vector<std::string> &getWith() const
     {
         return with_;
+    }
+
+    /**
+     * @brief Check if the message to be translated is empty
+     *
+     * @return true if the message to be translated is empty, false otherwise
+     */
+    [[nodiscard]] bool empty() const
+    {
+        return translate_.empty();
     }
 
 private:

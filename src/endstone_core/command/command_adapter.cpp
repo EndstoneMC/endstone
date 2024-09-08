@@ -32,20 +32,20 @@ void CommandSenderAdapter::sendMessage(const Message &message) const
 {
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : tr.getParameters()) {
+    for (const auto &param : tr.getWith()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(tr.getTranslationKey(), params);
+    output_.forceOutput(tr.getTranslate(), params);
 }
 
 void CommandSenderAdapter::sendErrorMessage(const Message &message) const
 {
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : tr.getParameters()) {
+    for (const auto &param : tr.getWith()) {
         params.emplace_back(param);
     }
-    output_.error(tr.getTranslationKey(), params);
+    output_.error(tr.getTranslate(), params);
 }
 
 std::string CommandSenderAdapter::getName() const
