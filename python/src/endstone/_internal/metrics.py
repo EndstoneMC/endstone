@@ -1,11 +1,10 @@
 import os
 import platform
-import sys
 from pathlib import Path
 from typing import Any, Dict
 
 from endstone import Server
-from endstone_bstats import MetricsBase, MetricsConfig, AdvancedPie, SimplePie
+from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie, DrilldownPie
 
 
 class Metrics(MetricsBase):
@@ -28,7 +27,7 @@ class Metrics(MetricsBase):
 
         self.add_custom_chart(SimplePie("endstone_version", lambda: self._server.version))
         self.add_custom_chart(SimplePie("minecraft_version", lambda: self._server.minecraft_version))
-        self.add_custom_chart(SimplePie("python_version", lambda: f"{sys.version_info.major}.{sys.version_info.minor}"))
+        self.add_custom_chart(DrilldownPie("python_version", self._get_python_version))
         self.add_custom_chart(AdvancedPie("player_platform", self._get_player_platforms))
         self.add_custom_chart(AdvancedPie("player_game_version", self._get_player_game_versions))
 
@@ -43,9 +42,15 @@ class Metrics(MetricsBase):
     def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
         platform_data["playerAmount"] = len(self._server.online_players)
 
-        platform_data["osName"] = platform.system()
+        os_name = platform.system()
+        if os_name == "Windows":
+            platform_data["osName"] = f"Windows {platform.release()}"
+            platform_data["osVersion"] = platform.version()
+        elif os_name == "Linux":
+            platform_data["osName"] = "Linux"
+            platform_data["osVersion"] = platform.release()
+
         platform_data["osArch"] = platform.machine().lower()
-        platform_data["osVersion"] = platform.release()
         platform_data["coreCount"] = os.cpu_count()
 
     def log_info(self, message: str) -> None:
@@ -53,6 +58,15 @@ class Metrics(MetricsBase):
 
     def log_error(self, message: str, exception: Exception) -> None:
         self._server.logger.warning(f"{message}: {exception}")
+
+    def _get_python_version(self) -> dict[str, dict[str, int]]:
+        python_impl = platform.python_implementation()
+        major, minor, patch = platform.python_version_tuple()
+        return {
+            f"{python_impl} {major}.{minor}": {
+                f"{python_impl} {major}.{minor}.{patch}": 1,
+            },
+        }
 
     def _get_player_platforms(self) -> dict[str, int]:
         result: dict[str, int] = {}
