@@ -696,14 +696,11 @@ void EndstonePlayer::initFromConnectionRequest(
                 device_id_ = device_id;
             }
 
-            {
-                auto game_version = req->getData("GameVersion").asString();
-                if (!game_version.empty()) {
-                    game_version_ = game_version;
-                }
-                else {
-                    game_version_ = server_.getMinecraftVersion();
-                }
+            if (auto game_version = req->getData("GameVersion").asString(); !game_version.empty()) {
+                game_version_ = game_version;
+            }
+            else {
+                game_version_ = server_.getMinecraftVersion();
             }
 
             {

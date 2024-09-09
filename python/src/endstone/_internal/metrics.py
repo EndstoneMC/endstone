@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 from endstone import Server
-from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie
+from endstone_bstats import MetricsBase, MetricsConfig, AdvancedPie, SimplePie
 
 
 class Metrics(MetricsBase):
@@ -30,6 +30,7 @@ class Metrics(MetricsBase):
         self.add_custom_chart(SimplePie("minecraft_version", lambda: self._server.minecraft_version))
         self.add_custom_chart(SimplePie("python_version", lambda: f"{sys.version_info.major}.{sys.version_info.minor}"))
         self.add_custom_chart(AdvancedPie("player_platform", self._get_player_platforms))
+        self.add_custom_chart(AdvancedPie("player_game_version", self._get_player_game_versions))
 
     @property
     def enabled(self) -> bool:
@@ -60,5 +61,15 @@ class Metrics(MetricsBase):
                 result[player.device_os] = 1
             else:
                 result[player.device_os] += 1
+
+        return result
+
+    def _get_player_game_versions(self) -> dict[str, int]:
+        result: dict[str, int] = {}
+        for player in self._server.online_players:
+            if player.game_version not in result:
+                result[player.game_version] = 1
+            else:
+                result[player.game_version] += 1
 
         return result
