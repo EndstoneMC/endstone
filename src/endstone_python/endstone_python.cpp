@@ -170,27 +170,27 @@ void init_logger(py::module &m)
         .export_values();
 
     logger.def("set_level", &Logger::setLevel, py::arg("level"), "Set the logging level for this Logger instance.")
-        .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
-             "Check if the Logger instance is enabled for the given log Level.")
-        .def(
-            "trace", [](const Logger &logger, const std::string &message) { logger.trace(message); },
-            py::arg("message"), "Log a message at the TRACE level.")
-        .def(
-            "debug", [](const Logger &logger, const std::string &message) { logger.debug(message); },
-            py::arg("message"), "Log a message at the DEBUG level.")
-        .def(
-            "info", [](const Logger &logger, const std::string &message) { logger.info(message); }, py::arg("message"),
-            "Log a message at the INFO level.")
-        .def(
-            "warning", [](const Logger &logger, const std::string &message) { logger.warning(message); },
-            py::arg("message"), "Log a message at the WARNING level.")
-        .def(
-            "error", [](const Logger &logger, const std::string &message) { logger.error(message); },
-            py::arg("message"), "Log a message at the ERROR level.")
-        .def(
-            "critical", [](const Logger &logger, const std::string &message) { logger.critical(message); },
-            py::arg("message"), "Log a message at the CRITICAL level.")
-        .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
+       .def("is_enabled_for", &Logger::isEnabledFor, py::arg("level"),
+            "Check if the Logger instance is enabled for the given log Level.")
+       .def(
+           "trace", [](const Logger &self, const std::string &message) { self.log(Logger::Trace, message); },
+           py::arg("message"), "Log a message at the TRACE level.")
+       .def(
+           "debug", [](const Logger &self, const std::string &message) { self.log(Logger::Debug, message); },
+           py::arg("message"), "Log a message at the DEBUG level.")
+       .def(
+           "info", [](const Logger &self, const std::string &message) { self.log(Logger::Info, message); },
+           py::arg("message"), "Log a message at the INFO level.")
+       .def(
+           "warning", [](const Logger &self, const std::string &message) { self.log(Logger::Warning, message); },
+           py::arg("message"), "Log a message at the WARNING level.")
+       .def(
+           "error", [](const Logger &self, const std::string &message) { self.log(Logger::Error, message); },
+           py::arg("message"), "Log a message at the ERROR level.")
+       .def(
+           "critical", [](const Logger &self, const std::string &message) { self.log(Logger::Critical, message); },
+           py::arg("message"), "Log a message at the CRITICAL level.")
+       .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
 void init_translatable(py::module_ &m)
