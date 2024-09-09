@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 from endstone import Server
-from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie, DrilldownPie
+from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie, DrilldownPie, SingleLineChart
 
 
 class Metrics(MetricsBase):
@@ -25,6 +25,7 @@ class Metrics(MetricsBase):
             log_response_status_text=self._config.log_response_status_text_enabled,
         )
 
+        self.add_custom_chart(SingleLineChart("players", lambda: len(self._server.online_players)))
         self.add_custom_chart(SimplePie("endstone_version", lambda: self._server.version))
         self.add_custom_chart(SimplePie("minecraft_version", lambda: self._server.minecraft_version))
         self.add_custom_chart(DrilldownPie("python_version", self._get_python_version))
@@ -40,8 +41,6 @@ class Metrics(MetricsBase):
         return True
 
     def append_platform_data(self, platform_data: Dict[str, Any]) -> None:
-        platform_data["playerAmount"] = len(self._server.online_players)
-
         os_name = platform.system()
         if os_name == "Windows":
             platform_data["osName"] = f"Windows {platform.release()}"
