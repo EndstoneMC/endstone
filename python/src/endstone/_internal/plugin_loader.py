@@ -9,6 +9,7 @@ import sys
 from typing import List
 
 from endstone import Server
+from endstone._internal.metrics import Metrics
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadOrder
@@ -40,6 +41,10 @@ class PythonPluginLoader(PluginLoader):
         PluginLoader.__init__(self, server)
         self._plugins = []
         sys.executable = find_python()
+        self._metrics = Metrics(self.server)
+
+    def __del__(self):
+        self._metrics.shutdown()
 
     @staticmethod
     def _build_commands(commands: dict) -> list[Command]:
