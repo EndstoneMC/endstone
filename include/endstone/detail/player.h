@@ -109,6 +109,7 @@ public:
     [[nodiscard]] std::string getLocale() const override;
     [[nodiscard]] std::string getDeviceOS() const override;
     [[nodiscard]] std::string getDeviceId() const override;
+    [[nodiscard]] std::string getGameVersion() const override;
     [[nodiscard]] const Skin &getSkin() const override;
     void transfer(std::string host, int port) const override;
     void sendForm(FormVariant form) override;
@@ -136,6 +137,7 @@ private:
     std::string locale_ = "en-US";
     std::string device_os_ = "Unknown";
     std::string device_id_;
+    std::string game_version_;
     Skin skin_;
     int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api
     std::unordered_map<int, FormVariant> forms_;

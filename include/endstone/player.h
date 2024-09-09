@@ -321,6 +321,13 @@ public:
     [[nodiscard]] virtual std::string getDeviceId() const = 0;
 
     /**
+     * @brief Gets the player's current game version.
+     *
+     * @return the player's game version
+     */
+    [[nodiscard]] virtual std::string getGameVersion() const = 0;
+
+    /**
      * @brief Gets the player's skin.
      *
      * @return the player's skin

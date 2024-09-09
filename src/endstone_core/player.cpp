@@ -530,6 +530,11 @@ std::string EndstonePlayer::getDeviceId() const
     return device_id_;
 }
 
+std::string EndstonePlayer::getGameVersion() const
+{
+    return game_version_;
+}
+
 const Skin &EndstonePlayer::getSkin() const
 {
     return skin_;
@@ -689,6 +694,16 @@ void EndstonePlayer::initFromConnectionRequest(
 
             if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
                 device_id_ = device_id;
+            }
+
+            {
+                auto game_version = req->getData("GameVersion").asString();
+                if (!game_version.empty()) {
+                    game_version_ = game_version;
+                }
+                else {
+                    game_version_ = server_.getMinecraftVersion();
+                }
             }
 
             {

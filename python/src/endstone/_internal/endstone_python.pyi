@@ -1819,6 +1819,11 @@ class Player(Mob):
     def game_mode(self, arg1: GameMode) -> None:
         ...
     @property
+    def game_version(self) -> str:
+        """
+        Get the player's current game version.
+        """
+    @property
     def inventory(self) -> PlayerInventory:
         """
         Get the player's inventory.
