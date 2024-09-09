@@ -49,7 +49,10 @@ class Metrics(MetricsBase):
             platform_data["osName"] = "Linux"
             platform_data["osVersion"] = platform.release()
 
-        platform_data["osArch"] = platform.machine().lower()
+        os_arch = platform.machine().lower()
+        if os_arch == "x86_64":
+            os_arch = "amd64"
+        platform_data["osArch"] = os_arch
         platform_data["coreCount"] = os.cpu_count()
 
     def log_info(self, message: str) -> None:
