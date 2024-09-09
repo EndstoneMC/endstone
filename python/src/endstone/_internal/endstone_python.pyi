@@ -840,14 +840,14 @@ class Dimension:
     OVERWORLD: typing.ClassVar[Dimension.Type]  # value = <Type.OVERWORLD: 0>
     THE_END: typing.ClassVar[Dimension.Type]  # value = <Type.THE_END: 2>
     @typing.overload
-    def get_block_at(self, x: int, y: int, z: int) -> Block:
-        """
-        Gets the Block at the given coordinates
-        """
-    @typing.overload
     def get_block_at(self, location: Location) -> Block:
         """
         Gets the Block at the given Location
+        """
+    @typing.overload
+    def get_block_at(self, x: int, y: int, z: int) -> Block:
+        """
+        Gets the Block at the given coordinates
         """
     @property
     def level(self) -> Level:
@@ -2390,6 +2390,21 @@ class Position(Vector):
         ...
     def __str__(self) -> str:
         ...
+    @property
+    def block_x(self) -> int:
+        """
+        Gets the floored value of the X component, indicating the block that this location is contained with.
+        """
+    @property
+    def block_y(self) -> int:
+        """
+        Gets the floored value of the Y component, indicating the block that this location is contained with.
+        """
+    @property
+    def block_z(self) -> int:
+        """
+        Gets the floored value of the Z component, indicating the block that this location is contained with.
+        """
     @property
     def dimension(self) -> Dimension:
         """

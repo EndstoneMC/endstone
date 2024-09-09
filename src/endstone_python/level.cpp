@@ -40,6 +40,15 @@ void init_level(py::module_ &m)
              py::arg("z"))
         .def_property("dimension", &Position::getDimension, &Position::setDimension, py::return_value_policy::reference,
                       "The Dimension that contains this position")
+        .def_property_readonly(
+            "block_x", &Position::getBlockX,
+            "Gets the floored value of the X component, indicating the block that this location is contained with.")
+        .def_property_readonly(
+            "block_y", &Position::getBlockY,
+            "Gets the floored value of the Y component, indicating the block that this location is contained with.")
+        .def_property_readonly(
+            "block_z", &Position::getBlockZ,
+            "Gets the floored value of the Z component, indicating the block that this location is contained with.")
         .def("__repr__", position_to_string)
         .def("__str__", position_to_string);
 
@@ -68,10 +77,10 @@ void init_level(py::module_ &m)
         .def_property_readonly("type", &Dimension::getType, "Gets the type of this dimension")
         .def_property_readonly("level", &Dimension::getLevel, "Gets the level to which this dimension belongs",
                                py::return_value_policy::reference)
+        .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt), py::arg("location").noconvert(),
+             "Gets the Block at the given Location")
         .def("get_block_at", py::overload_cast<int, int, int>(&Dimension::getBlockAt), py::arg("x"), py::arg("y"),
-             py::arg("z"), "Gets the Block at the given coordinates")
-        .def("get_block_at", py::overload_cast<Location>(&Dimension::getBlockAt), py::arg("location"),
-             "Gets the Block at the given Location");
+             py::arg("z"), "Gets the Block at the given coordinates");
 
     level.def_property_readonly("name", &Level::getName, "Gets the unique name of this level")
         .def_property_readonly("actors", &Level::getActors, "Get a list of all actors in this level",
