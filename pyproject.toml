@@ -30,6 +30,7 @@ dependencies = [
     "importlib-resources",
     "numpy",
     "packaging",
+    "psutil",
     "requests",
     "rich",
     "tomlkit",

@@ -1,8 +1,8 @@
-import os
 import platform
 from pathlib import Path
 from typing import Any, Dict
 
+import psutil
 from endstone import Server
 from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie, DrilldownPie, SingleLineChart
 
@@ -53,7 +53,7 @@ class Metrics(MetricsBase):
         if os_arch == "x86_64":
             os_arch = "amd64"
         platform_data["osArch"] = os_arch
-        platform_data["coreCount"] = os.cpu_count()
+        platform_data["coreCount"] = psutil.cpu_count(logical=False)
 
     def log_info(self, message: str) -> None:
         self._server.logger.info(message)
