@@ -134,7 +134,7 @@ private:
     PermissibleBase perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::string locale_ = "en-US";
-    std::string device_os_ = "unknown";
+    std::string device_os_ = "Unknown";
     std::string device_id_;
     Skin skin_;
     int form_ids_ = 0xffff;  // Set to a large value to avoid collision with forms created by script api

@@ -650,9 +650,41 @@ void EndstonePlayer::initFromConnectionRequest(
                 locale_ = locale;
             }
 
+            // https://github.com/GeyserMC/Geyser/blob/master/common/src/main/java/org/geysermc/floodgate/util/DeviceOs.java
             if (auto device_os = req->getData("DeviceOS").asInt(); device_os > 0) {
                 auto platform = magic_enum::enum_cast<BuildPlatform>(device_os).value_or(BuildPlatform::Unknown);
-                device_os_ = magic_enum::enum_name(platform);
+                switch (platform) {
+                case BuildPlatform::Google:
+                    device_os_ = "Android";
+                    break;
+                case BuildPlatform::OSX:
+                    device_os_ = "macOS";
+                    break;
+                case BuildPlatform::GearVR:
+                    device_os_ = "Gear VR";
+                    break;
+                case BuildPlatform::UWP:
+                    device_os_ = "Windows";
+                    break;
+                case BuildPlatform::Win32:
+                    device_os_ = "Windows x86";
+                    break;
+                case BuildPlatform::tvOS_Deprecated:
+                    device_os_ = "Apple TV";
+                    break;
+                case BuildPlatform::Sony:
+                    device_os_ = "PlayStation";
+                    break;
+                case BuildPlatform::Nx:
+                    device_os_ = "Switch";
+                    break;
+                case BuildPlatform::WindowsPhone_Deprecated:
+                    device_os_ = "Windows Phone";
+                    break;
+                default:
+                    device_os_ = magic_enum::enum_name(platform);
+                    break;
+                }
             }
 
             if (auto device_id = req->getData("DeviceId").asString(); !device_id.empty()) {
