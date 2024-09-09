@@ -132,6 +132,8 @@ public:
 
     [[nodiscard]] virtual std::string getDeviceId() const = 0;
 
+    [[nodiscard]] virtual std::string getGameVersion() const = 0;
+
     [[nodiscard]] virtual const Skin &getSkin() const = 0;
 
     virtual void transfer(std::string host, int port) const = 0;

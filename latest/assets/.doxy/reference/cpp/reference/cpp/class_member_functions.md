@@ -183,6 +183,7 @@
 * **getExpProgress** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getFlySpeed** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getGameMode** ([**endstone::Player**](classendstone_1_1Player.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
+* **getGameVersion** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getInventory** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getLocale** ([**endstone::Player**](classendstone_1_1Player.md))
 * **getPing** ([**endstone::Player**](classendstone_1_1Player.md))
