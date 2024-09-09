@@ -37,6 +37,7 @@ public:
     [[nodiscard]] virtual std::string toString() const = 0;
     [[nodiscard]] virtual std::string toDebugString() const = 0;
 
+    [[nodiscard]] bool isNull() const;
     [[nodiscard]] bool hasCustomHoverName() const;
     [[nodiscard]] std::string getCustomName() const;
     [[nodiscard]] std::uint16_t getAuxValue() const;

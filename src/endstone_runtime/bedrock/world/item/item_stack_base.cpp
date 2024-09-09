@@ -14,6 +14,22 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
+bool ItemStackBase::isNull() const
+{
+    if (valid_) {
+        const auto *item = getItem();
+        if (!item || item->getFullItemName() != "minecraft:air") {
+            if (count_ > 0 || block_ != nullptr || aux_value_ > 0) {
+                return false;
+            }
+            if (item || user_data_ || can_destroy_hash_ > 0 || can_place_on_hash_) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 bool ItemStackBase::hasCustomHoverName() const
 {
     if (!user_data_) {

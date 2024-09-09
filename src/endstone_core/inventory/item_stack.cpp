@@ -16,9 +16,17 @@
 
 namespace endstone::detail {
 
+EndstoneItemStack::EndstoneItemStack(::ItemStack &item)
+{
+    if (!item.isNull()) {
+        handle_ = &item;
+    }
+}
+
 std::string EndstoneItemStack::getType() const
 {
-    return handle_ != nullptr ? handle_->getItem()->getFullItemName() : "minecraft:air";
+    // TODO: add BedrockBlockNames::Air = HashedString("minecraft:air")
+    return (handle_ && !handle_->isNull()) ? handle_->getItem()->getFullItemName() : "minecraft:air";
 }
 
 void EndstoneItemStack::setType(std::string type)
@@ -45,7 +53,7 @@ void EndstoneItemStack::setAmount(int amount)
     if (count == 0) {
         reset();
     }
-    if (handle_ == nullptr) {
+    if (handle_ == nullptr || handle_->isNull()) {
         return;
     }
     handle_->set(count);

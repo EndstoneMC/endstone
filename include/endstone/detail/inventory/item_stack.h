@@ -21,7 +21,7 @@ namespace endstone::detail {
 
 class EndstoneItemStack : public ItemStack {
 public:
-    explicit EndstoneItemStack(::ItemStack &item) : handle_(&item) {}
+    explicit EndstoneItemStack(::ItemStack &item);
 
     [[nodiscard]] std::string getType() const override;
     void setType(std::string type) override;
