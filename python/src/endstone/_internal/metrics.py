@@ -66,7 +66,7 @@ class Metrics(MetricsBase):
         major, minor, patch = platform.python_version_tuple()
         return {
             f"{python_impl} {major}.{minor}": {
-                f"{python_impl} {major}.{minor}.{patch}": 1,
+                f"{major}.{minor}.{patch}": 1,
             },
         }
 
