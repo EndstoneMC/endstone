@@ -12,9 +12,10 @@ from typing import Union
 
 import click
 import requests
-from endstone import __minecraft_version__ as minecraft_version
 from packaging.version import Version
-from rich.progress import Progress, TextColumn, BarColumn, DownloadColumn, TimeRemainingColumn
+from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
+
+from endstone import __minecraft_version__ as minecraft_version
 
 
 class Bootstrap:

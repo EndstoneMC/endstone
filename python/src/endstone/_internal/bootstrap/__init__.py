@@ -4,6 +4,7 @@ import platform
 import sys
 
 import click
+
 from endstone._internal.version import __version__
 
 logging.basicConfig(

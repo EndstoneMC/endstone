@@ -5,13 +5,13 @@ from ctypes import get_last_error
 from ctypes.wintypes import (
     BOOL,
     DWORD,
-    LPCSTR,
-    LPCWSTR,
-    LPVOID,
-    LPCVOID,
-    LPDWORD,
     HANDLE,
     HMODULE,
+    LPCSTR,
+    LPCVOID,
+    LPCWSTR,
+    LPDWORD,
+    LPVOID,
 )
 
 from endstone._internal.bootstrap.base import Bootstrap

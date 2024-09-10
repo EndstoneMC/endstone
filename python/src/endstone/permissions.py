@@ -1,6 +1,6 @@
 from endstone._internal.endstone_python import (
-    Permission,
     Permissible,
+    Permission,
     PermissionAttachment,
     PermissionAttachmentInfo,
     PermissionDefault,

@@ -1,3 +1,3 @@
-from endstone._internal.endstone_python import BossBar, BarColor, BarFlag, BarStyle
+from endstone._internal.endstone_python import BarColor, BarFlag, BarStyle, BossBar
 
 __all__ = ["BossBar", "BarColor", "BarFlag", "BarStyle"]

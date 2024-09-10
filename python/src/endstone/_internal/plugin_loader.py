@@ -8,12 +8,13 @@ import subprocess
 import sys
 from typing import List
 
+from importlib_metadata import entry_points, metadata
+
 from endstone import Server
 from endstone._internal.metrics import Metrics
 from endstone.command import Command
 from endstone.permissions import Permission, PermissionDefault
-from endstone.plugin import PluginDescription, PluginLoader, Plugin, PluginLoadOrder
-from importlib_metadata import entry_points, metadata
+from endstone.plugin import Plugin, PluginDescription, PluginLoader, PluginLoadOrder
 
 __all__ = ["PythonPluginLoader"]
 
@@ -121,7 +122,7 @@ class PythonPluginLoader(PluginLoader):
                 self.server.logger.error(
                     f"Error occurred when trying to load plugin from entry point '{ep.name}': Invalid name."
                 )
-                self.server.logger.error(f"You need to make **ONE** of the following changes.")
+                self.server.logger.error("You need to make **ONE** of the following changes.")
                 self.server.logger.error(
                     f"* If you intend to use the current entry point name ({ep.name}), "
                     f"please change the distribution name from '{ep.dist.name}' to '{dist_name}'."

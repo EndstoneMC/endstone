@@ -5,6 +5,8 @@ import typing
 from pathlib import Path
 
 import tomlkit
+from importlib_resources import as_file, files
+
 from endstone._internal import endstone_python
 from endstone._internal.endstone_python import (
     PluginCommand,
@@ -14,7 +16,6 @@ from endstone._internal.endstone_python import (
     PluginManager,
 )
 from endstone.event import Event
-from importlib_resources import files, as_file
 
 __all__ = [
     "Plugin",

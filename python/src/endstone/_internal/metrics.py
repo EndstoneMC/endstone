@@ -3,8 +3,9 @@ from pathlib import Path
 from typing import Any, Dict
 
 import psutil
+from endstone_bstats import AdvancedPie, DrilldownPie, MetricsBase, MetricsConfig, SimplePie, SingleLineChart
+
 from endstone import Server
-from endstone_bstats import MetricsBase, MetricsConfig, SimplePie, AdvancedPie, DrilldownPie, SingleLineChart
 
 
 class Metrics(MetricsBase):

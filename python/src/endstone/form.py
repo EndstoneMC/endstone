@@ -1,9 +1,9 @@
 from endstone._internal.endstone_python import (
     ActionForm,
-    MessageForm,
-    ModalForm,
     Dropdown,
     Label,
+    MessageForm,
+    ModalForm,
     Slider,
     StepSlider,
     TextInput,
