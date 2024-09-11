@@ -23,6 +23,8 @@
 
 namespace endstone {
 
+class BlockState;
+
 class Dimension;
 
 /**
@@ -156,6 +158,16 @@ public:
      * @return Location of block
      */
     [[nodiscard]] virtual Location getLocation() const = 0;
+
+    /**
+     * Captures the current state of this block.
+     * <p>
+     * The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a
+     * sign after you capture its state.
+     *
+     * @return BlockState with the current state of this block.
+     */
+    [[nodiscard]] virtual std::shared_ptr<BlockState> captureState() const = 0;
 };
 
 }  // namespace endstone

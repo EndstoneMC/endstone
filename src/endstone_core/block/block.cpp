@@ -14,6 +14,8 @@
 
 #include "endstone/detail/block/block.h"
 
+#include <endstone/detail/block/block_state.h>
+
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/block/block_data.h"
@@ -138,6 +140,11 @@ int EndstoneBlock::getZ() const
 Location EndstoneBlock::getLocation() const
 {
     return {&getDimension(), getX(), getY(), getZ()};
+}
+
+std::shared_ptr<BlockState> EndstoneBlock::captureState() const
+{
+    return std::make_shared<EndstoneBlockState>(*this);
 }
 
 BlockPos EndstoneBlock::getPosition() const

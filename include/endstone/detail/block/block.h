@@ -37,6 +37,7 @@ public:
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
+    [[nodiscard]] std::shared_ptr<BlockState> captureState() const override;
 
     [[nodiscard]] BlockPos getPosition() const;
     [[nodiscard]] ::Block &getMinecraftBlock() const;

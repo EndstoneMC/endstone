@@ -319,6 +319,10 @@ class Block:
     """
     def __str__(self) -> str:
         ...
+    def capture_state(self) -> BlockState:
+        """
+        Captures the current state of this block. The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a sign after you capture its state.
+        """
     @typing.overload
     def get_relative(self, offset_x: int, offset_y: int, offset_z: int) -> Block:
         """

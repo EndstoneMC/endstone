@@ -78,6 +78,9 @@ void init_block(py::module_ &m, py::class_<Block> &block)
         .def_property_readonly("y", &Block::getY, "Gets the y-coordinate of this block")
         .def_property_readonly("z", &Block::getZ, "Gets the z-coordinate of this block")
         .def_property_readonly("location", &Block::getLocation, "Gets the Location of the block")
+        .def("capture_state", &Block::captureState,
+             "Captures the current state of this block. The returned object will never be updated, and you are not "
+             "guaranteed that (for example) a sign is still a sign after you capture its state.")
         .def("__str__", [](const Block &self) { return fmt::format("{}", self); });
 }
 
