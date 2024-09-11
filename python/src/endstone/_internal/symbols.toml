@@ -136,7 +136,7 @@ version = "1.21.23"
 # CommandUtils
 "_ZN12CommandUtils12getActorNameERK5Actor" = 88557264
 # Common
-"_ZN6Common20getGameVersionStringEv" = 65264140
+"_ZN6Common20getGameVersionStringEv" = 65264160
 # CraftingDataPacket
 "_ZN18CraftingDataPacket18prepareFromRecipesERK7Recipesb" = 79294224
 # CreativeItemRegistry
