@@ -33,6 +33,8 @@
 
 namespace endstone {
 
+class BlockState;
+
 class Dimension;
 
 class Block {
@@ -68,6 +70,8 @@ public:
     [[nodiscard]] virtual int getZ() const = 0;
 
     [[nodiscard]] virtual Location getLocation() const = 0;
+
+    [[nodiscard]] virtual std::shared_ptr<BlockState> captureState() const = 0;
 };
 
 }  // namespace endstone

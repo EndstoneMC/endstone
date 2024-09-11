@@ -52,6 +52,7 @@ _Represents a block._ [More...](#detailed-description)
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::shared\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br> |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
@@ -105,6 +106,37 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
     
 ## Public Functions Documentation
 
+
+
+
+### function captureState 
+
+
+```C++
+virtual std::shared_ptr< BlockState > endstone::Block::captureState () const = 0
+```
+
+
+
+Captures the current state of this block. 
+
+
+The returned object will never be updated, and you are not guaranteed that (for example) a sign is still a sign after you capture its state.
+
+
+
+
+**Returns:**
+
+[**BlockState**](classendstone_1_1BlockState.md) with the current state of this block. 
+
+
+
+
+
+        
+
+<hr>
 
 
 

@@ -44,6 +44,7 @@
 
 ## c
 
+* **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **clearCommands** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))

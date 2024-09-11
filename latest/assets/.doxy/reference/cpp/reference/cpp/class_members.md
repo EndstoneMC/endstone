@@ -66,6 +66,7 @@
 ## c
 
 * **content\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
+* **captureState** ([**endstone::Block**](classendstone_1_1Block.md))
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **command\_map\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
