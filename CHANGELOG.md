@@ -5,9 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.3 - Unreleased
+## 0.5.4 - Unreleased
 
-<small>[Compare with 0.5.2](https://github.com/EndstoneMC/endstone/compare/v0.5.2...HEAD)</small>
+<small>[Compare with 0.5.3](https://github.com/EndstoneMC/endstone/compare/v0.5.3...HEAD)</small>
+
+## [0.5.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.3) - 2024-09-12
+
+<small>[Compare with 0.5.2](https://github.com/EndstoneMC/endstone/compare/v0.5.2...v0.5.3)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.23.
+- Introduced the `BlockData` class, which encapsulates both the block type and a specific state from all possible block
+  states.
+- Block types and block states can now be used as command arguments.
+- Added `PlayerKnockbackEvent`, triggered when a player receives knockback. Developers can modify the knockback that the
+  player will receive.
+- Added `PlayerKickEvent`, triggered when a player is kicked from the server, allowing for customization of kick
+  messages.
+- Introduced the `BlockState` class, representing a snapshot of a block at a specific point in time.
+- `PlayerJoinEvent` and `PlayerQuitEvent` now include getter and setter methods for customizing join/quit messages.
+- Integrated bStats metrics.
+
+### Changed
+
+- **BREAKING CHANGE**: Renamed `Server::getNewScoreboard` to `Server::createScoreboard` for consistency with other
+  methods like `createBossbar` and `createBlockData`.
+- Lifted the restriction on the `/reload` command for console use. It can now be executed in-game.
+
+### Fixed
+
+- Enforced the use of libc++ for C++ plugins on Linux to resolve symbol errors.
+- `Player::setExpProgress` now correctly sets experience progress without precision loss.
+- Fixed an issue where death messages were being sent to players twice.
+- Resolved a crash when calling `ItemStack::getType` on an item from `PlayerInteractEvent` when the player interacts
+  with a block with bare hands.
+- `PlayerInteractEvent::hasItem` now correctly returns `false` if the player has no item in hand when interacting.
 
 ## [0.5.2](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.2) - 2024-08-30
 
