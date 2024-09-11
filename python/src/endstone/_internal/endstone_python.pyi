@@ -1051,6 +1051,8 @@ class ItemStack:
     """
     def __init__(self, type: str = 'minecraft:air', amount: int = 1) -> None:
         ...
+    def __str__(self) -> str:
+        ...
     @property
     def amount(self) -> int:
         """

@@ -1,5 +1,7 @@
 #include <utility>
 
+#include <fmt/format.h>
+
 // Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,3 +77,16 @@ private:
 };
 
 }  // namespace endstone
+
+namespace fmt {
+template <>
+struct formatter<endstone::ItemStack> : formatter<string_view> {
+    using Type = endstone::ItemStack;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
+    {
+        return format_to(ctx.out(), "ItemStack({} x {})", val.getType(), val.getAmount());
+    }
+};
+}  // namespace fmt

@@ -48,12 +48,12 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstonePlayer();
     auto block = EndstoneBlock::at(player.getHandle().getDimension().getBlockSourceFromMainChunkSource(), at);
+    std::unique_ptr<EndstoneItemStack> item_stack = nullptr;
+    if (!item.isNull()) {
+        item_stack = std::make_unique<EndstoneItemStack>(item);
+    }
     endstone::PlayerInteractEvent e{
-        player,
-        std::make_unique<EndstoneItemStack>(item),
-        std::move(block),
-        static_cast<endstone::BlockFace>(face),
-        {hit.x, hit.y, hit.z},
+        player, std::move(item_stack), std::move(block), static_cast<endstone::BlockFace>(face), {hit.x, hit.y, hit.z},
     };
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {

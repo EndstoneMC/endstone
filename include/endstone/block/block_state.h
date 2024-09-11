@@ -28,7 +28,7 @@ namespace endstone {
  * Block. Note that another plugin may change the state of the block, and you will not know, or they may change the
  * block to another type entirely, causing your BlockState to become invalid.
  */
-class BlockState {
+class BlockState : public std::enable_shared_from_this<BlockState> {
 public:
     virtual ~BlockState() = default;
 
