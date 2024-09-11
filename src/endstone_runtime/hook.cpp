@@ -59,12 +59,12 @@ void install()
             funchook_t *hook = funchook_create();
             int status = funchook_prepare(hook, &original, detour);
             if (status != 0) {
-                throw std::system_error(status, hook_error_category());
+                throw std::system_error(status, hook_error_category(), fmt::format("Unable to hook {}", name));
             }
 
             status = funchook_install(hook, 0);
             if (status != 0) {
-                throw std::system_error(status, hook_error_category());
+                throw std::system_error(status, hook_error_category(), fmt::format("Unable to hook {}", name));
             }
 
             spdlog::debug("{}: {} -> {} -> {}", name, target, detour, original);
