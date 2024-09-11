@@ -196,7 +196,7 @@ version = "1.21.20"
 "_ZN20ServerNetworkHandler19_displayGameMessageERK6PlayerR9ChatEvent" = 79181600
 "_ZNK20ServerNetworkHandler20_isServerTextEnabledERK15ServerTextEvent" = 79217328
 # ServerPlayer
-"_ZN12ServerPlayer3dieERK17ActorDamageSource" = 98651120
+"_ZN12ServerPlayer3dieERK17ActorDamageSource" = 97863648
 "_ZN12ServerPlayer10disconnectEv" = 97881360
 "_ZN12ServerPlayer27setLocalPlayerAsInitializedEv" = 97887520
 # ServerScoreboard
