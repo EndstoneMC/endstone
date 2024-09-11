@@ -25,6 +25,7 @@
 #include "endstone/event/player/player_kick_event.h"
 #include "endstone/event/player/player_login_event.h"
 
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id, SubClientId sub_client_id,
@@ -32,16 +33,20 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                             std::optional<std::string> filtered_message, bool skip_message)
 {
     std::string msg = message;
-    if (const auto *server_player = _getServerPlayer(network_id, sub_client_id)) {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        endstone::PlayerKickEvent e{server_player->getEndstonePlayer(), msg};
-        server.getPluginManager().callEvent(e);
-
-        if (e.isCancelled()) {
-            return;
-        }
-        msg = e.getReason();
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto *endstone_player = server.getPlayer(network_id, sub_client_id);
+    if (!endstone_player) {
+        throw std::runtime_error("Unable to find server player by network id and sub client id.");
     }
+
+    endstone::PlayerKickEvent e{*endstone_player, msg};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        return;
+    }
+    msg = e.getReason();
+
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason, msg,
                                 std::move(filtered_message), skip_message);
 }

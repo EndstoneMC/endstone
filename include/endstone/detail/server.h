@@ -68,6 +68,7 @@ public:
     void setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
+    [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
 
     void shutdown() override;
     void reload() override;
@@ -115,7 +116,7 @@ private:
     std::unique_ptr<ConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneLevel> level_;
-    std::unordered_map<UUID, Player *> players_;
+    std::unordered_map<UUID, EndstonePlayer *> players_;
     std::shared_ptr<EndstoneScoreboard> scoreboard_;
     std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
     std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;

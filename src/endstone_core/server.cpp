@@ -248,6 +248,17 @@ Player *EndstoneServer::getPlayer(std::string name) const
     return nullptr;
 }
 
+Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClientId sub_id) const
+{
+    for (const auto &[uuid, player] : players_) {
+        if (const auto component = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
+            component->network_id == network_id && component->sub_client_id == sub_id) {
+            return player;
+        }
+    }
+    return nullptr;
+}
+
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
