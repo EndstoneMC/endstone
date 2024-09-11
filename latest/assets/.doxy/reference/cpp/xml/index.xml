@@ -390,6 +390,10 @@
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1aad09b775459795e7252f362372b83072" kind="typedef"><name>Type</name></member>
     <member refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4_1adc0e1b7666aff1112b9b54564d09366d" kind="function"><name>format</name></member>
   </compound>
+  <compound refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" kind="struct"><name>fmt::formatter&lt; endstone::ItemStack &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1ad78d75e07f93f63fc0413cee2954d7f0" kind="typedef"><name>Type</name></member>
+    <member refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4_1a6116802aa2eb42ae63921aa2f140c160" kind="function"><name>format</name></member>
+  </compound>
   <compound refid="classendstone_1_1HandlerList" kind="class"><name>endstone::HandlerList</name>
     <member refid="classendstone_1_1HandlerList_1ab763f006b235b0de384c00307a837f67" kind="variable"><name>mtx_</name></member>
     <member refid="classendstone_1_1HandlerList_1aeb44cef7cd2c841d804cd2a42f266660" kind="variable"><name>handlers_</name></member>

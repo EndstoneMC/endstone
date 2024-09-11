@@ -14,6 +14,7 @@ _Represents a captured state of a block, which will not update automatically._ [
 
 
 
+Inherits the following classes: std::enable_shared_from_this< BlockState >
 
 
 

@@ -30,7 +30,7 @@
 
 namespace endstone {
 
-class BlockState {
+class BlockState : public std::enable_shared_from_this<BlockState> {
 public:
     virtual ~BlockState() = default;
 

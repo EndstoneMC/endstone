@@ -237,6 +237,8 @@
         <link refid="item__stack_8h_source"/>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="35">
         <label>endstone/form/controls/toggle.h</label>
