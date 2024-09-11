@@ -16,12 +16,7 @@
 
 namespace endstone::detail {
 
-EndstoneItemStack::EndstoneItemStack(::ItemStack &item)
-{
-    if (!item.isNull()) {
-        handle_ = &item;
-    }
-}
+EndstoneItemStack::EndstoneItemStack(::ItemStack &item) : handle_(item.isNull() ? nullptr : &item) {}
 
 std::string EndstoneItemStack::getType() const
 {
