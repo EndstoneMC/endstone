@@ -19,6 +19,7 @@
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/locale/i18n.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_chat_event.h"
@@ -32,23 +33,28 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                             Connection::DisconnectFailReason reason, const std::string &message,
                                             std::optional<std::string> filtered_message, bool skip_message)
 {
-    std::string msg = message;
     const auto &server = entt::locator<EndstoneServer>::value();
     auto *endstone_player = server.getPlayer(network_id, sub_client_id);
     if (!endstone_player) {
-        throw std::runtime_error("Unable to find server player by network id and sub client id.");
+        return;
     }
 
-    endstone::PlayerKickEvent e{*endstone_player, msg};
+    auto kick_message = getI18n().get(message, nullptr);
+    endstone::PlayerKickEvent e{*endstone_player, kick_message};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
         return;
     }
-    msg = e.getReason();
 
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason, msg,
-                                std::move(filtered_message), skip_message);
+    if (e.getReason() != kick_message) {
+        kick_message = e.getReason();
+    }
+    else {
+        kick_message = message;
+    }
+    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
+                                kick_message, std::move(filtered_message), skip_message);
 }
 
 void ServerNetworkHandler::updateServerAnnouncement()

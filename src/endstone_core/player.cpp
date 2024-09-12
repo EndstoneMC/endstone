@@ -293,8 +293,8 @@ void EndstonePlayer::kick(std::string message) const
 {
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
     server_.getServerNetworkHandler().disconnectClient(component->network_id, component->sub_client_id,
-                                                       Connection::DisconnectFailReason::NoReason, message,
-                                                       std::nullopt, message.empty());
+                                                       Connection::DisconnectFailReason::Kicked, message, std::nullopt,
+                                                       false);
 }
 
 void EndstonePlayer::giveExp(int amount)
