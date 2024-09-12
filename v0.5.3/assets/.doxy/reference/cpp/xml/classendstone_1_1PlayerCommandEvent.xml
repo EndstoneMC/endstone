@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerCommandEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerCommandEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <includes refid="player__command__event_8h" local="no">endstone/event/player/player_command_event.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerCommandEvent_1a847453583d9293cfc93634b9e75ac377" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PlayerCommandEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;PlayerCommandEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="31" column="37" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerCommandEvent_1a956ce601de67c62197ef0c5fe92f8f62" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerCommandEvent::command_</definition>
+        <argsstring></argsstring>
+        <name>command_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="63" column="17" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1aab55ef626bb9b1d60352ce8d56c8703a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerCommandEvent::PlayerCommandEvent</definition>
+        <argsstring>(Player &amp;player, std::string command)</argsstring>
+        <name>PlayerCommandEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="26" column="14" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="26" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1aceec4542ce0df6900c30921cfd78fe87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerCommandEvent::~PlayerCommandEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~PlayerCommandEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a64066f629ce1473239141c71c1177010" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerCommandEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="32" column="18" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a4e37eb524b310112fe13d174aaab874e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::PlayerCommandEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="37" column="11" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerCommandEvent::getCommand</definition>
+        <argsstring>() const</argsstring>
+        <name>getCommand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the command that the player is attempting to send.</para>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> the player is attempting to send </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="47" column="18" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::PlayerCommandEvent::setCommand</definition>
+        <argsstring>(std::string command)</argsstring>
+        <name>setCommand</name>
+        <param>
+          <type>std::string</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the command that the player will send.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New command that the player will send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_command_event.h" line="57" column="10" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Called whenever a player runs a command. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::PlayerCommandEvent</label>
+        <link refid="classendstone_1_1PlayerCommandEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::PlayerCommandEvent</label>
+        <link refid="classendstone_1_1PlayerCommandEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_command_event.h" line="24" column="1" bodyfile="include/endstone/event/player/player_command_event.h" bodystart="24" bodyend="64"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a956ce601de67c62197ef0c5fe92f8f62" prot="private" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>command_</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a4096e979a5e327ddecdd9328f087d57b" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>getCommand</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a64066f629ce1473239141c71c1177010" prot="public" virt="virtual"><scope>endstone::PlayerCommandEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a4e37eb524b310112fe13d174aaab874e" prot="public" virt="virtual"><scope>endstone::PlayerCommandEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a847453583d9293cfc93634b9e75ac377" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1aab55ef626bb9b1d60352ce8d56c8703a" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>PlayerCommandEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1a6d2c4a174ce786fc8a1cd6cd8f9ca7c5" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>setCommand</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerCommandEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1PlayerCommandEvent_1aceec4542ce0df6900c30921cfd78fe87" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>~PlayerCommandEvent</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerCommandEvent</scope><name>~PlayerEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

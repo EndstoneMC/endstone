@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1CommandMap" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::CommandMap</compoundname>
+    <includes refid="command__map_8h" local="no">endstone/command/command_map.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a25331c5810be15454974aaefe3fbc68b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CommandMap::CommandMap</definition>
+        <argsstring>()=default</argsstring>
+        <name>CommandMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1afc2b0e7676d5d23fffb429c5910a1645" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CommandMap::CommandMap</definition>
+        <argsstring>(const CommandMap &amp;)=delete</argsstring>
+        <name>CommandMap</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="31" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a5d335762c372e8aba7270a1fbfb202f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        <definition>CommandMap&amp; endstone::CommandMap::operator=</definition>
+        <argsstring>(const CommandMap &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="32" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::CommandMap::CommandMap</definition>
+        <argsstring>(CommandMap &amp;&amp;)=default</argsstring>
+        <name>CommandMap</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a4d222517c8e20f2bb08e242e0270330f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
+        <definition>CommandMap&amp; endstone::CommandMap::operator=</definition>
+        <argsstring>(CommandMap &amp;&amp;)=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="34" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::CommandMap::~CommandMap</definition>
+        <argsstring>()=default</argsstring>
+        <name>~CommandMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="36" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::CommandMap::registerCommand</definition>
+        <argsstring>(std::shared_ptr&lt; Command &gt; command)=0</argsstring>
+        <name>registerCommand</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1Command" kindref="compound">Command</ref> &gt;</type>
+          <declname>command</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers a command.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>command</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the command to register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true on success, false if a command with the same name is already registered </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="44" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::CommandMap::clearCommands</definition>
+        <argsstring>()=0</argsstring>
+        <name>clearCommands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Clears all registered commands. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="49" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> *</type>
+        <definition>virtual Command* endstone::CommandMap::getCommand</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getCommand</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the command registered to the specified name</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the command to retrieve </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> with the specified name or nullptr if a command with that label doesn&apos;t exist </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="57" column="22"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a command map that manages all commands of the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/command/command_map.h" line="28" column="1" bodyfile="include/endstone/command/command_map.h" bodystart="28" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>clearCommands</name></member>
+      <member refid="classendstone_1_1CommandMap_1a25331c5810be15454974aaefe3fbc68b" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
+      <member refid="classendstone_1_1CommandMap_1afc2b0e7676d5d23fffb429c5910a1645" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
+      <member refid="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
+      <member refid="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>getCommand</name></member>
+      <member refid="classendstone_1_1CommandMap_1a5d335762c372e8aba7270a1fbfb202f7" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CommandMap_1a4d222517c8e20f2bb08e242e0270330f" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>registerCommand</name></member>
+      <member refid="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" prot="public" virt="virtual"><scope>endstone::CommandMap</scope><name>~CommandMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

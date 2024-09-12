@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_035306890ec6a3fa870e30b726ac5ffc" kind="dir">
+    <compoundname>include/endstone/form/controls</compoundname>
+    <innerfile refid="dropdown_8h">dropdown.h</innerfile>
+    <innerfile refid="label_8h">label.h</innerfile>
+    <innerfile refid="slider_8h">slider.h</innerfile>
+    <innerfile refid="step__slider_8h">step_slider.h</innerfile>
+    <innerfile refid="text__input_8h">text_input.h</innerfile>
+    <innerfile refid="toggle_8h">toggle.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/"/>
+  </compounddef>
+</doxygen>

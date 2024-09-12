@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir">
+    <compoundname>include/endstone/inventory</compoundname>
+    <innerfile refid="inventory_8h">inventory.h</innerfile>
+    <innerfile refid="item__stack_8h">item_stack.h</innerfile>
+    <innerfile refid="player__inventory_8h">player_inventory.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/inventory/"/>
+  </compounddef>
+</doxygen>

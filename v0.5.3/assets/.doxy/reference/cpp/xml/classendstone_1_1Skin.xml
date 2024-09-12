@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Skin" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Skin</compoundname>
+    <includes refid="skin_8h" local="no">endstone/skin.h</includes>
+    <innerclass refid="structendstone_1_1Skin_1_1ImageData" prot="public">endstone::Skin::ImageData</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Skin::skin_id_</definition>
+        <argsstring></argsstring>
+        <name>skin_id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="84" column="17" bodyfile="include/endstone/skin.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Skin_1aaad023e4790ab3bb235ce881cb3a5e05" prot="private" static="no" mutable="no">
+        <type><ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref></type>
+        <definition>ImageData endstone::Skin::skin_data_</definition>
+        <argsstring></argsstring>
+        <name>skin_data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="85" column="15" bodyfile="include/endstone/skin.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::Skin::cape_id_</definition>
+        <argsstring></argsstring>
+        <name>cape_id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="86" column="19" bodyfile="include/endstone/skin.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Skin_1ad5c1ff963e353b17b1b1b819e16ec0e2" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref> &gt;</type>
+        <definition>std::optional&lt;ImageData&gt; endstone::Skin::cape_data_</definition>
+        <argsstring></argsstring>
+        <name>cape_data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="87" column="19" bodyfile="include/endstone/skin.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Skin_1a632d137848165fa41e2a6e2d0b1bd860" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Skin::Skin</definition>
+        <argsstring>()=default</argsstring>
+        <name>Skin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="34" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Skin_1a3ffe17c5145118e1c2e83c4ca3e0669a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Skin::Skin</definition>
+        <argsstring>(std::string skin_id, ImageData skin_data, std::optional&lt; std::string &gt; cape_id=std::nullopt, std::optional&lt; ImageData &gt; cape_data=std::nullopt)</argsstring>
+        <name>Skin</name>
+        <param>
+          <type>std::string</type>
+          <declname>skin_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref></type>
+          <declname>skin_data</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>cape_id</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref> &gt;</type>
+          <declname>cape_data</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="36" column="5" bodyfile="include/endstone/skin.h" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Skin_1a648fbc52816f06c865fa3ff35d9171c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; endstone::Skin::getSkinId</definition>
+        <argsstring>() const</argsstring>
+        <name>getSkinId</name>
+        <briefdescription>
+<para>Gets the skin id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the skin id. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="48" column="24" bodyfile="include/endstone/skin.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Skin_1a347494dbdbbb3d36578f3251d4517024" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref> &amp;</type>
+        <definition>const ImageData&amp; endstone::Skin::getSkinData</definition>
+        <argsstring>() const</argsstring>
+        <name>getSkinData</name>
+        <briefdescription>
+<para>Gets the skin data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the skin data. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="58" column="22" bodyfile="include/endstone/skin.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Skin_1aa5a5f981e3390ab64790adec3fed83f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::optional&lt; std::string &gt; &amp;</type>
+        <definition>const std::optional&lt;std::string&gt;&amp; endstone::Skin::getCapeId</definition>
+        <argsstring>() const</argsstring>
+        <name>getCapeId</name>
+        <briefdescription>
+<para>Gets the cape id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the cape id. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="68" column="26" bodyfile="include/endstone/skin.h" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Skin_1ace02c5b2aed36091ed4b6760f3036e11" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::optional&lt; <ref refid="structendstone_1_1Skin_1_1ImageData" kindref="compound">ImageData</ref> &gt; &amp;</type>
+        <definition>const std::optional&lt;ImageData&gt;&amp; endstone::Skin::getCapeData</definition>
+        <argsstring>() const</argsstring>
+        <name>getCapeData</name>
+        <briefdescription>
+<para>Gets the cape data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the cape data. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="78" column="26" bodyfile="include/endstone/skin.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a player skin. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/skin.h" line="26" column="1" bodyfile="include/endstone/skin.h" bodystart="26" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Skin_1ad5c1ff963e353b17b1b1b819e16ec0e2" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>cape_data_</name></member>
+      <member refid="classendstone_1_1Skin_1a7dc86a18a4cd9717572d333e0ca9637a" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>cape_id_</name></member>
+      <member refid="classendstone_1_1Skin_1ace02c5b2aed36091ed4b6760f3036e11" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>getCapeData</name></member>
+      <member refid="classendstone_1_1Skin_1aa5a5f981e3390ab64790adec3fed83f2" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>getCapeId</name></member>
+      <member refid="classendstone_1_1Skin_1a347494dbdbbb3d36578f3251d4517024" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>getSkinData</name></member>
+      <member refid="classendstone_1_1Skin_1a648fbc52816f06c865fa3ff35d9171c8" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>getSkinId</name></member>
+      <member refid="classendstone_1_1Skin_1a632d137848165fa41e2a6e2d0b1bd860" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>Skin</name></member>
+      <member refid="classendstone_1_1Skin_1a3ffe17c5145118e1c2e83c4ca3e0669a" prot="public" virt="non-virtual"><scope>endstone::Skin</scope><name>Skin</name></member>
+      <member refid="classendstone_1_1Skin_1aaad023e4790ab3bb235ce881cb3a5e05" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>skin_data_</name></member>
+      <member refid="classendstone_1_1Skin_1aaa8acbed9e68495f28de0b06022fa61c" prot="private" virt="non-virtual"><scope>endstone::Skin</scope><name>skin_id_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

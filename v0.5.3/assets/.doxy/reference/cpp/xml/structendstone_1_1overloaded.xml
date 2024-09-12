@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structendstone_1_1overloaded" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::overloaded</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">endstone::Func</basecompoundref>
+    <includes refid="endstone_8h" local="no">endstone/endstone.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename...</type>
+        <declname>Func</declname>
+        <defname>Func</defname>
+      </param>
+    </templateparamlist>
+    <briefdescription>
+<para>Helper type for visitors. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>Func</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Types of function objects. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::overloaded&lt; Func &gt;</label>
+        <link refid="structendstone_1_1overloaded"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Func</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::overloaded&lt; Func &gt;</label>
+        <link refid="structendstone_1_1overloaded"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Func</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/endstone.h" line="51" column="1" bodyfile="include/endstone/endstone.h" bodystart="51" bodyend="53"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

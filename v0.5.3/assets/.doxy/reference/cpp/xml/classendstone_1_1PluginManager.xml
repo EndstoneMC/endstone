@@ -1,0 +1,888 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PluginManager" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::PluginManager</compoundname>
+    <includes refid="plugin__manager_8h" local="no">endstone/plugin/plugin_manager.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a281ccb3de8a92c07a4e29f7ad2156424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginManager::PluginManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>PluginManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="37" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a9abdd544558986b3037204b669bd3753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginManager::PluginManager</definition>
+        <argsstring>(PluginManager const &amp;)=delete</argsstring>
+        <name>PluginManager</name>
+        <param>
+          <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a7dc3a3fc362e6b6ef46b3ce612e524c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> &amp;</type>
+        <definition>PluginManager&amp; endstone::PluginManager::operator=</definition>
+        <argsstring>(PluginManager const &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classendstone_1_1PluginManager" kindref="compound">PluginManager</ref> const &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="39" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a648f03d094a5d49c697c6dbd3a94b9a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::PluginManager::~PluginManager</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PluginManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="40" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ac8aee762e697dfff805f6fcba27d973b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::registerLoader</definition>
+        <argsstring>(std::unique_ptr&lt; PluginLoader &gt; loader)=0</argsstring>
+        <name>registerLoader</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &gt;</type>
+          <declname>loader</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers the specified plugin loader</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>loader</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> to register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="47" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1acc282a3c8803b699caf5d690b32fd006" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
+        <definition>virtual Plugin* endstone::PluginManager::getPlugin</definition>
+        <argsstring>(const std::string &amp;name) const =0</argsstring>
+        <name>getPlugin</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks if the given plugin is loaded and returns it when applicable. Please note that the name of the plugin is case-sensitive</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the plugin to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> if it exists, otherwise nullptr </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="56" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a3b6ef4f6f8d0117ec7546c3bc1a61079" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
+        <definition>virtual std::vector&lt;Plugin *&gt; endstone::PluginManager::getPlugins</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPlugins</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a list of all currently loaded plugins</para>
+<para><simplesect kind="return"><para>List of Plugins </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="63" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a4727c832fc835f645d111ce008a7c9d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::PluginManager::isPluginEnabled</definition>
+        <argsstring>(const std::string &amp;name) const =0</argsstring>
+        <name>isPluginEnabled</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks if the given plugin is enabled or not Please note that the name of the plugin is case-sensitive.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the plugin to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the plugin is enabled, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="72" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1af271c20893989ead66a7b2b65d2067fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::PluginManager::isPluginEnabled</definition>
+        <argsstring>(Plugin *plugin) const =0</argsstring>
+        <name>isPluginEnabled</name>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> *</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Checks if the given plugin is enabled or not</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if the plugin is enabled, otherwise false </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="80" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a13b517620d61e1432ef3d8d7b5a396e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
+        <definition>virtual std::vector&lt;Plugin *&gt; endstone::PluginManager::loadPlugins</definition>
+        <argsstring>(const std::string &amp;directory)=0</argsstring>
+        <name>loadPlugins</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>directory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads the plugin contained within the specified directory</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>directory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Directory to check for plugins </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of all plugins loaded </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="88" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1aa4ba7ce935f60390b5522a2bdb41a37b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::enablePlugin</definition>
+        <argsstring>(Plugin &amp;plugin) const =0</argsstring>
+        <name>enablePlugin</name>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="96" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a2f0223eca4a793a2265d943b0d8347f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::enablePlugins</definition>
+        <argsstring>() const =0</argsstring>
+        <name>enablePlugins</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable all the loaded plugins </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="101" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::disablePlugin</definition>
+        <argsstring>(Plugin &amp;plugin)=0</argsstring>
+        <name>disablePlugin</name>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="109" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::disablePlugins</definition>
+        <argsstring>()=0</argsstring>
+        <name>disablePlugins</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables all the loaded plugins </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="114" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::clearPlugins</definition>
+        <argsstring>()=0</argsstring>
+        <name>clearPlugins</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables and removes all plugins </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="119" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::callEvent</definition>
+        <argsstring>(Event &amp;event)=0</argsstring>
+        <name>callEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;</type>
+          <declname>event</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Calls an event which will be passed to plugins.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> to be called </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="126" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a3f7b1b0a5e838c7b299a93e12a816ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::registerEvent</definition>
+        <argsstring>(std::string event, std::function&lt; void(Event &amp;)&gt; executor, EventPriority priority, Plugin &amp;plugin, bool ignore_cancelled)=0</argsstring>
+        <name>registerEvent</name>
+        <param>
+          <type>std::string</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>std::function&lt; void(<ref refid="classendstone_1_1Event" kindref="compound">Event</ref> &amp;)&gt;</type>
+          <declname>executor</declname>
+        </param>
+        <param>
+          <type>EventPriority</type>
+          <declname>priority</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ignore_cancelled</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Registers the given event</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Event" kindref="compound">Event</ref> name to register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>executor</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>EventExecutor to register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>priority</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Priority of this event </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to register </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ignore_cancelled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Do not call executor if event was already cancelled </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="138" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a46fab70d7948563ecbed9654f2ca5303" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> *</type>
+        <definition>virtual Permission* endstone::PluginManager::getPermission</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getPermission</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> from its fully qualified name</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the permission </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>, or null if none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="147" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a69b1b46defbaf4dc22dbf871f83d9c8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> *</type>
+        <definition>virtual Permission* endstone::PluginManager::addPermission</definition>
+        <argsstring>(std::unique_ptr&lt; Permission &gt; perm)=0</argsstring>
+        <name>addPermission</name>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &gt;</type>
+          <declname>perm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Adds a <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to this plugin manager.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>perm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to add </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>, or nullptr if a permission is already defined with the given name of the new permission </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="155" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a8e228f95cb9ae2fa7691a0bab7a4ab15" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::removePermission</definition>
+        <argsstring>(Permission &amp;perm)=0</argsstring>
+        <name>removePermission</name>
+        <param>
+          <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <declname>perm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes a <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> registration from this plugin manager.</para>
+<para>If the specified permission does not exist in this plugin manager, nothing will happen. Removing a permission registration will <bold>not</bold> remove the permission from any Permissibles that have it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>perm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="165" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a88d24d0be87c7a5905c69638c667e324" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::removePermission</definition>
+        <argsstring>(std::string name)=0</argsstring>
+        <name>removePermission</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Removes a <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> registration from this plugin manager.</para>
+<para>If the specified permission does not exist in this plugin manager, nothing will happen. Removing a permission registration will <bold>not</bold> remove the permission from any Permissibles that have it.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="175" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ae6024f10bb48089d46fb4f20b4e4b24d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Permission *&gt; endstone::PluginManager::getDefaultPermissions</definition>
+        <argsstring>(bool op) const =0</argsstring>
+        <name>getDefaultPermissions</name>
+        <param>
+          <type>bool</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the default permissions for the given op status</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Which set of default permissions to get </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The default permissions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="183" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a6b871de71ea1884cf526b4c5880e732e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::recalculatePermissionDefaults</definition>
+        <argsstring>(Permission &amp;perm)=0</argsstring>
+        <name>recalculatePermissionDefaults</name>
+        <param>
+          <type><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
+          <declname>perm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recalculates the defaults for the given <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>.</para>
+<para>This will have no effect if the specified permission is not registered here.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>perm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to recalculate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="192" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a368d558addb19a455e0616a134a32e51" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::subscribeToPermission</definition>
+        <argsstring>(std::string permission, Permissible &amp;permissible)=0</argsstring>
+        <name>subscribeToPermission</name>
+        <param>
+          <type>std::string</type>
+          <declname>permission</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
+          <declname>permissible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Subscribes the given <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> for information about the requested <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>, by name. If the specified <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> changes in any form, the <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> will be asked to recalculate.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>permission</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to subscribe to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>permissible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> subscribing </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="201" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a701f8e4b82cf233b04a0aeb5f9fba330" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::unsubscribeFromPermission</definition>
+        <argsstring>(std::string permission, Permissible &amp;permissible)=0</argsstring>
+        <name>unsubscribeFromPermission</name>
+        <param>
+          <type>std::string</type>
+          <declname>permission</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
+          <declname>permissible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unsubscribes the given <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> for information about the requested <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref>, by name.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>permission</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to unsubscribe from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>permissible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> subscribing </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="209" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a3e908071c946fa349430b9ebe63a75f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Permissible *&gt; endstone::PluginManager::getPermissionSubscriptions</definition>
+        <argsstring>(std::string permission) const =0</argsstring>
+        <name>getPermissionSubscriptions</name>
+        <param>
+          <type>std::string</type>
+          <declname>permission</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a set containing all subscribed Permissibles to the given permission, by name</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>permission</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> to query for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Set containing all subscribed permissions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="217" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a2adbff6684c18d854c1b98f155380c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::subscribeToDefaultPerms</definition>
+        <argsstring>(bool op, Permissible &amp;permissible)=0</argsstring>
+        <name>subscribeToDefaultPerms</name>
+        <param>
+          <type>bool</type>
+          <declname>op</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
+          <declname>permissible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Subscribes to the given Default permissions by operator status</para>
+<para>If the specified defaults change in any form, the <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> will be asked to recalculate.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Default list to subscribe to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>permissible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> subscribing </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="228" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a63338f3bc2efba65583c19a03e605a78" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginManager::unsubscribeFromDefaultPerms</definition>
+        <argsstring>(bool op, Permissible &amp;permissible)=0</argsstring>
+        <name>unsubscribeFromDefaultPerms</name>
+        <param>
+          <type>bool</type>
+          <declname>op</declname>
+        </param>
+        <param>
+          <type><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> &amp;</type>
+          <declname>permissible</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Unsubscribes from the given Default permissions by operator status</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Default list to unsubscribe from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>permissible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> subscribing </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="236" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1a042a2afd92df7e0d9d714c99791df377" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Permissible *&gt; endstone::PluginManager::getDefaultPermSubscriptions</definition>
+        <argsstring>(bool op) const =0</argsstring>
+        <name>getDefaultPermSubscriptions</name>
+        <param>
+          <type>bool</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a set containing all subscribed <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref>s to the given default list, by op status</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Default list to query for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Set containing all subscribed permissions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="244" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginManager_1ae944898ea4c8d76e5eb4bf71aaeb8d8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::unordered_set&lt; <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> * &gt;</type>
+        <definition>virtual std::unordered_set&lt;Permission *&gt; endstone::PluginManager::getPermissions</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPermissions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a set of all registered permissions.</para>
+<para>This set is a copy and will not be modified live.</para>
+<para><simplesect kind="return"><para>Set containing all current registered permissions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_manager.h" line="253" column="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a plugin manager that handles all plugins from the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/plugin/plugin_manager.h" line="35" column="1" bodyfile="include/endstone/plugin/plugin_manager.h" bodystart="35" bodyend="254"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PluginManager_1a69b1b46defbaf4dc22dbf871f83d9c8f" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>addPermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>callEvent</name></member>
+      <member refid="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>clearPlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugin</name></member>
+      <member refid="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>disablePlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1aa4ba7ce935f60390b5522a2bdb41a37b" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>enablePlugin</name></member>
+      <member refid="classendstone_1_1PluginManager_1a2f0223eca4a793a2265d943b0d8347f4" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>enablePlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1ae6024f10bb48089d46fb4f20b4e4b24d" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getDefaultPermissions</name></member>
+      <member refid="classendstone_1_1PluginManager_1a042a2afd92df7e0d9d714c99791df377" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getDefaultPermSubscriptions</name></member>
+      <member refid="classendstone_1_1PluginManager_1a46fab70d7948563ecbed9654f2ca5303" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getPermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1ae944898ea4c8d76e5eb4bf71aaeb8d8b" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getPermissions</name></member>
+      <member refid="classendstone_1_1PluginManager_1a3e908071c946fa349430b9ebe63a75f8" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getPermissionSubscriptions</name></member>
+      <member refid="classendstone_1_1PluginManager_1acc282a3c8803b699caf5d690b32fd006" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getPlugin</name></member>
+      <member refid="classendstone_1_1PluginManager_1a3b6ef4f6f8d0117ec7546c3bc1a61079" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>getPlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1a4727c832fc835f645d111ce008a7c9d0" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>isPluginEnabled</name></member>
+      <member refid="classendstone_1_1PluginManager_1af271c20893989ead66a7b2b65d2067fa" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>isPluginEnabled</name></member>
+      <member refid="classendstone_1_1PluginManager_1a13b517620d61e1432ef3d8d7b5a396e4" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>loadPlugins</name></member>
+      <member refid="classendstone_1_1PluginManager_1a7dc3a3fc362e6b6ef46b3ce612e524c5" prot="public" virt="non-virtual"><scope>endstone::PluginManager</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PluginManager_1a281ccb3de8a92c07a4e29f7ad2156424" prot="public" virt="non-virtual"><scope>endstone::PluginManager</scope><name>PluginManager</name></member>
+      <member refid="classendstone_1_1PluginManager_1a9abdd544558986b3037204b669bd3753" prot="public" virt="non-virtual"><scope>endstone::PluginManager</scope><name>PluginManager</name></member>
+      <member refid="classendstone_1_1PluginManager_1a6b871de71ea1884cf526b4c5880e732e" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>recalculatePermissionDefaults</name></member>
+      <member refid="classendstone_1_1PluginManager_1a3f7b1b0a5e838c7b299a93e12a816ea6" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>registerEvent</name></member>
+      <member refid="classendstone_1_1PluginManager_1ac8aee762e697dfff805f6fcba27d973b" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>registerLoader</name></member>
+      <member refid="classendstone_1_1PluginManager_1a8e228f95cb9ae2fa7691a0bab7a4ab15" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>removePermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1a88d24d0be87c7a5905c69638c667e324" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>removePermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1a2adbff6684c18d854c1b98f155380c8c" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>subscribeToDefaultPerms</name></member>
+      <member refid="classendstone_1_1PluginManager_1a368d558addb19a455e0616a134a32e51" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>subscribeToPermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1a63338f3bc2efba65583c19a03e605a78" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>unsubscribeFromDefaultPerms</name></member>
+      <member refid="classendstone_1_1PluginManager_1a701f8e4b82cf233b04a0aeb5f9fba330" prot="public" virt="pure-virtual"><scope>endstone::PluginManager</scope><name>unsubscribeFromPermission</name></member>
+      <member refid="classendstone_1_1PluginManager_1a648f03d094a5d49c697c6dbd3a94b9a8" prot="public" virt="virtual"><scope>endstone::PluginManager</scope><name>~PluginManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

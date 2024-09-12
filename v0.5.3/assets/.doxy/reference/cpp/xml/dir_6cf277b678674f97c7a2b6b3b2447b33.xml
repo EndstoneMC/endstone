@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_6cf277b678674f97c7a2b6b3b2447b33" kind="dir">
+    <compoundname>include/endstone</compoundname>
+    <innerdir refid="dir_dd7779a583e02d88c9a89a2c881c3946">include/endstone/actor</innerdir>
+    <innerdir refid="dir_faca67fc60a7463eb1bd30eabe023cf1">include/endstone/block</innerdir>
+    <innerdir refid="dir_d0a7fd8d5b72659767e2a2651b1ff51c">include/endstone/boss</innerdir>
+    <innerdir refid="dir_5c7b2dbfabcd1115569d1e20a260545c">include/endstone/command</innerdir>
+    <innerdir refid="dir_f1d783c0ad83ee143d16e768ebca51c8">include/endstone/event</innerdir>
+    <innerdir refid="dir_0fd3b458603af3963ebb9c312a9238ec">include/endstone/form</innerdir>
+    <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
+    <innerdir refid="dir_8e239ca1e5fd0d936d66a30330d3a329">include/endstone/level</innerdir>
+    <innerdir refid="dir_5fb49eba5df98b849987b1937230be97">include/endstone/network</innerdir>
+    <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>
+    <innerdir refid="dir_53ee43673b2467e53c4cb8c30a2e7d89">include/endstone/plugin</innerdir>
+    <innerdir refid="dir_3a50fadda3c7cdc27c965a478a3f7d27">include/endstone/scheduler</innerdir>
+    <innerdir refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0">include/endstone/scoreboard</innerdir>
+    <innerdir refid="dir_89b85071337bf933dea6c29b4c6a4410">include/endstone/util</innerdir>
+    <innerfile refid="color__format_8h">color_format.h</innerfile>
+    <innerfile refid="endstone_8h">endstone.h</innerfile>
+    <innerfile refid="game__mode_8h">game_mode.h</innerfile>
+    <innerfile refid="logger_8h">logger.h</innerfile>
+    <innerfile refid="message_8h">message.h</innerfile>
+    <innerfile refid="player_8h">player.h</innerfile>
+    <innerfile refid="server_8h">server.h</innerfile>
+    <innerfile refid="skin_8h">skin.h</innerfile>
+    <innerfile refid="translatable_8h">translatable.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/"/>
+  </compounddef>
+</doxygen>
