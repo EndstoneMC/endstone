@@ -15,6 +15,6 @@
 #pragma once
 
 struct IntRange {
-    int min;
-    int max;
+    int range_min;
+    int range_max;
 };
