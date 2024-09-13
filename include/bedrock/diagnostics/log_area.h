@@ -14,11 +14,24 @@
 
 #pragma once
 
-#include <bitset>
-#include <cstdarg>
-#include <cstdio>
+namespace BedrockLog {
+    enum LogCategory : unsigned int {
+        LogArea = 0,
+        LogWorldGen = 1,
+        LogLoot = 2,
+        LogRender = 3,
+        LogStructure = 4,
+        LogUI = 5,
+        LogOnline = 6,
+        NumLogCategories = 7,
+    };
 
-#include "bedrock/bedrock.h"
+enum LogRule : unsigned int {
+    DefaultRules = 0,
+    ClientAndServer = 1,
+};
+
+}
 
 enum class LogAreaID {
     All,
@@ -72,16 +85,3 @@ enum class LogAreaID {
     Messaging,
     Invalid = 10000
 };
-
-namespace Bedrock {
-using LogLevel = std::uint32_t;
-}
-
-namespace BedrockLog {
-enum class LogCategory;
-enum class LogRule;
-
-ENDSTONE_HOOK void log_va(BedrockLog::LogCategory category, std::bitset<3> channel_mask, BedrockLog::LogRule rule,
-                          LogAreaID area, std::uint32_t priority, char const *function, int line, char const *format,
-                          va_list args);
-}  // namespace BedrockLog

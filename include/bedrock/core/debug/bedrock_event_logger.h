@@ -15,12 +15,14 @@
 #pragma once
 
 #include <bitset>
+#include <cstdarg>
+#include <cstdio>
 
-struct ActorDataFlagComponent {
-    [[nodiscard]] bool getStatusFlag(ActorFlags flags) const
-    {
-        return flag_set.test(static_cast<int>(flags));
-    }
+#include "bedrock/bedrock.h"
+#include "bedrock/diagnostics/log_area.h"
+#include "bedrock/diagnostics/log_level.h"
 
-    std::bitset<static_cast<int>(ActorFlags::Count)> flag_set;
-};
+namespace BedrockLog {
+ENDSTONE_HOOK void log_va(LogCategory category, std::bitset<3> channel_mask, LogRule rule, LogAreaID area,
+                          Bedrock::LogLevel priority, char const *function, int line, char const *format, va_list args);
+}  // namespace BedrockLog

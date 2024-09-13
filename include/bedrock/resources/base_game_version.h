@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/semver/sem_version.h"
+#include "bedrock/core/sem_ver/sem_version.h"
 
 class BaseGameVersion {
 public:

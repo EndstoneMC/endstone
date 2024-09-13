@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <bitset>
 #include <string>
 #include <unordered_set>
 #include <utility>
@@ -26,7 +27,7 @@ namespace endstone::detail {
 
 class EndstoneBossBar : public BossBar {
 public:
-    EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag>& flags = {})
+    EndstoneBossBar(std::string title, BarColor color, BarStyle style, const std::vector<BarFlag> &flags = {})
         : title_(std::move(title)), color_(color), style_(style)
     {
         for (auto const &flag : flags) {

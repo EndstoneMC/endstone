@@ -12,35 +12,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/core/bedrock_log.h"
+#include "bedrock/core/debug/bedrock_event_logger.h"
 
-#include <cctype>
 #include <cstdio>
-#include <unordered_map>
 
 #include <magic_enum/magic_enum.hpp>
 
 #include "endstone/detail/logger_factory.h"
 #include "endstone/logger.h"
 
-void BedrockLog::log_va(BedrockLog::LogCategory /*category*/, std::bitset<3> /*channel_mask*/,
-                        BedrockLog::LogRule /*rule*/, LogAreaID area, std::uint32_t priority, const char * /*function*/,
-                        int /*line*/, const char *format, va_list args)
+void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*/, LogRule /*rule*/, LogAreaID area,
+                        Bedrock::LogLevel priority, const char * /*function*/, int /*line*/, const char *format,
+                        va_list args)
 {
     auto name = magic_enum::enum_name(area);
     auto &logger = endstone::detail::LoggerFactory::getLogger(std::string(name));
     endstone::Logger::Level log_level;
     switch (priority) {
-    case 1:
+    case Bedrock::LogLevel::Verbose:
         log_level = endstone::Logger::Level::Debug;
         break;
-    case 2:
+    case Bedrock::LogLevel::Info:
         log_level = endstone::Logger::Level::Info;
         break;
-    case 4:
+    case Bedrock::LogLevel::Warning:
         log_level = endstone::Logger::Level::Warning;
         break;
-    case 8:
+    case Bedrock::LogLevel::Error:
         log_level = endstone::Logger::Level::Error;
         break;
     default:

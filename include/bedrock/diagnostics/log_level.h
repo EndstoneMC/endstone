@@ -14,13 +14,8 @@
 
 #pragma once
 
-#include <bitset>
-
-struct ActorDataFlagComponent {
-    [[nodiscard]] bool getStatusFlag(ActorFlags flags) const
-    {
-        return flag_set.test(static_cast<int>(flags));
-    }
-
-    std::bitset<static_cast<int>(ActorFlags::Count)> flag_set;
+namespace Bedrock {
+enum LogLevel : int {
+    Verbose = 1, Info = 2, Warning = 4,   Error = 8,
 };
+}

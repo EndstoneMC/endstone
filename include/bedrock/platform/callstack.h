@@ -18,7 +18,8 @@
 #include <optional>
 #include <string_view>
 
-#include "bedrock/core/bedrock_log.h"
+#include "bedrock/diagnostics/log_area.h"
+#include "bedrock/diagnostics/log_level.h"
 
 namespace Bedrock {
 
