@@ -18,7 +18,7 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/extended_certificate.h"
-#include "bedrock/core/utility/uuid.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/sub_client_id.h"
 

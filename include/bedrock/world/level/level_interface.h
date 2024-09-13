@@ -25,7 +25,7 @@
 #include "bedrock/core/automatic_id.h"
 #include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
-#include "bedrock/core/utility/uuid.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/entity/strict_entity_context.h"
 #include "bedrock/forward.h"

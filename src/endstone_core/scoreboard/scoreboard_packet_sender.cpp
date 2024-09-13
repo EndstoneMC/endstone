@@ -15,6 +15,7 @@
 #include "endstone/detail/scoreboard/scoreboard_packet_sender.h"
 
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/uuid.h"
 
 namespace endstone::detail {
 
@@ -36,7 +37,7 @@ void ScoreboardPacketSender::sendToServer(::Packet &packet)
 
 void ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *user_identifider, const ::Packet &packet)
 {
-    auto uuid = user_identifider->uuid.toEndstone();
+    auto uuid = EndstoneUUID::fromMinecraft(user_identifider->uuid);
     auto *player = server_.getPlayer(uuid);
     if (!player) {
         return;

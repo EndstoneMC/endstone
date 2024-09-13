@@ -26,6 +26,7 @@
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/uuid.h"
 
 namespace endstone::detail::devtools {
 
@@ -214,7 +215,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         if (entry.recipe) {
             recipe["id"] = entry.recipe->getRecipeId();
             recipe["netId"] = entry.recipe->getNetId().raw_id;
-            recipe["uuid"] = entry.recipe->getId().toEndstone().str();
+            recipe["uuid"] = EndstoneUUID::fromMinecraft(entry.recipe->getId()).str();
             recipe["tag"] = entry.recipe->getTag().getString();
             recipe["priority"] = entry.recipe->getPriority();
 

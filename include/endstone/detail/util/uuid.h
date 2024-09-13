@@ -14,15 +14,14 @@
 
 #pragma once
 
-#include <string>
-
-#include "bedrock/core/utility/observer.h"
 #include "bedrock/platform/uuid.h"
+#include "endstone/util/uuid.h"
 
-namespace Social {
-class MultiplayerServiceObserver : public Core::Observer<MultiplayerServiceObserver, Core::SingleThreadedLock> {
+namespace endstone::detail {
+
+class EndstoneUUID {
 public:
-    virtual void onInvalidPlayerJoinedLobby(mce::UUID const &uuid, std::string const &xuid) = 0;
-    virtual void onUserDisconnectedBecauseConcurrentLogin(std::string const &id) = 0;
+    static mce::UUID toMinecraft(const UUID &in);
+    static UUID fromMinecraft(const mce::UUID &in);
 };
-}  // namespace Social
+}  // namespace endstone::detail

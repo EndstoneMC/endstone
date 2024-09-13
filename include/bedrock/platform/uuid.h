@@ -14,15 +14,17 @@
 
 #pragma once
 
-#include <string>
+#include <array>
+#include <cstdint>
 
-#include "bedrock/core/utility/observer.h"
-#include "bedrock/platform/uuid.h"
+#include "bedrock/bedrock.h"
+#include "endstone/util/uuid.h"
 
-namespace Social {
-class MultiplayerServiceObserver : public Core::Observer<MultiplayerServiceObserver, Core::SingleThreadedLock> {
+namespace mce {
+class UUID {
 public:
-    virtual void onInvalidPlayerJoinedLobby(mce::UUID const &uuid, std::string const &xuid) = 0;
-    virtual void onUserDisconnectedBecauseConcurrentLogin(std::string const &id) = 0;
+    std::int64_t data[2];
 };
-}  // namespace Social
+BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
+
+}  // namespace mce

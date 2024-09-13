@@ -16,21 +16,18 @@
 
 #include <gtest/gtest.h>
 
-#include "bedrock/core/utility/uuid.h"
-#include "endstone/util/uuid.h"
+#include "bedrock/platform/uuid.h"
+#include "endstone/detail/util/uuid.h"
 
 TEST(UUIDTest, ConvertToAndFromEndstone)
 {
-    std::uint8_t data[16];
+    endstone::UUID expect;
     for (std::uint8_t i = 0; i < 16; ++i) {
-        data[i] = i;  // Initialization for test
+        expect.data[i] = i;  // Initialization for test
     }
 
-    endstone::UUID expect;
-    std::copy(std::begin(data), std::end(data), std::begin(expect.data));
-
-    mce::UUID mce_uuid = mce::UUID::fromEndstone(expect);
-    endstone::UUID actual = mce_uuid.toEndstone();
+    const auto mce_uuid = endstone::detail::EndstoneUUID::toMinecraft(expect);
+    const auto actual = endstone::detail::EndstoneUUID::fromMinecraft(mce_uuid);
 
     for (std::uint8_t i = 0; i < 16; ++i) {
         EXPECT_EQ(expect.data[i], actual.data[i]);

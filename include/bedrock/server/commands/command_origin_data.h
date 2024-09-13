@@ -16,7 +16,7 @@
 #include <cstdint>
 #include <string>
 
-#include "bedrock/core/utility/uuid.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_origin_type.h"
 
 struct CommandOriginData {

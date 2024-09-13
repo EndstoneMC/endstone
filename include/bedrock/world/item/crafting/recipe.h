@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/common/resources/base_game_version.h"
-#include "bedrock/core/utility/uuid.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
 #include "bedrock/world/item/item_instance.h"

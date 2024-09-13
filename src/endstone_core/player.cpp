@@ -39,6 +39,7 @@
 #include "endstone/detail/form/form_codec.h"
 #include "endstone/detail/network/packet_adapter.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/uuid.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
 
@@ -52,7 +53,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     if (!component) {
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
-    uuid_ = component->uuid.toEndstone();
+    uuid_ = EndstoneUUID::fromMinecraft(component->uuid);
     xuid_ = ExtendedCertificate::getXuid(*component->certificate, false);
 
     switch (component->network_id.getType()) {
