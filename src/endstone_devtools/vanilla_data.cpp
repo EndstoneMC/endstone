@@ -16,7 +16,7 @@
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/common/util/bytes_data_output.h"
+#include "bedrock/common/util/string_byte_output.h"
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet/crafting_data_packet.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"

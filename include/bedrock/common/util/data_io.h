@@ -47,3 +47,22 @@ public:
     virtual void writeLongLong(std::int64_t v) = 0;
     virtual void writeBytes(void const *data, std::uint64_t bytes) = 0;
 };
+
+class BytesDataOutput : public IDataOutput {
+public:
+    ~BytesDataOutput() override = default;
+    void writeString(std::string_view v) override;
+    void writeLongString(std::string_view v) override;
+    void writeFloat(float v) override;
+    void writeDouble(double v) override;
+    void writeByte(std::uint8_t v) override;
+    void writeShort(std::int16_t v) override;
+    void writeInt(std::int32_t v) override;
+    void writeLongLong(std::int64_t v) override;
+};
+
+class PrintStream {
+public:
+    virtual ~PrintStream() = 0;
+    virtual void print(std::string const &) = 0;
+};

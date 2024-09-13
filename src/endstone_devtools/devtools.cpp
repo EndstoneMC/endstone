@@ -30,7 +30,7 @@
 #include <GLFW/glfw3.h>
 #include <entt/entt.hpp>
 
-#include "bedrock/common/util/bytes_data_output.h"
+#include "bedrock/common/util/string_byte_output.h"
 #include "bedrock/nbt/nbt_io.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"

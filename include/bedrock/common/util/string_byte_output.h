@@ -14,10 +14,22 @@
 
 #pragma once
 
-#include <string>
+#include "bedrock/common/util/data_io.h"
 
-class PrintStream {
+class StringByteOutput : public BytesDataOutput {
 public:
-    virtual ~PrintStream() = 0;
-    virtual void print(std::string const &) = 0;
+    ~StringByteOutput() override = default;
+    void writeBytes(const void *data, std::uint64_t bytes) override;
+
+    std::string buffer;
+};
+
+class BigEndianStringByteOutput : public StringByteOutput {
+public:
+    ~BigEndianStringByteOutput() override = default;
+    void writeFloat(float v) override;
+    void writeDouble(double v) override;
+    void writeShort(std::int16_t v) override;
+    void writeInt(std::int32_t v) override;
+    void writeLongLong(std::int64_t v) override;
 };
