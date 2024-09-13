@@ -19,7 +19,7 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/web_token.h"
-#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/deps/json/value.h"
 #include "bedrock/network/sub_client_id.h"
 
 class ConnectionRequest {

@@ -19,14 +19,14 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/common/network/xbox_live_user_observer.h"
-#include "bedrock/common/platform/multiplayer_service_observer.h"
 #include "bedrock/core/threading.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/packet/types/connection_request.h"
 #include "bedrock/network/packet/types/sub_client_connection_request.h"
+#include "bedrock/network/xbox_live_user_observer.h"
+#include "bedrock/platform/multiplayer_service_observer.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/server_event.h"

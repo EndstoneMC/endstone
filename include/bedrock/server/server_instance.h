@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/common/app_platform_listener.h"
+#include "bedrock/application/app_platform_listener.h"
 #include "bedrock/core/file/storage_area_state_listener.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/minecraft.h"

@@ -18,7 +18,7 @@
 #include <optional>
 
 #include "bedrock/core/utility/binary_stream.h"
-#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/deps/json/value.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/item/item_tag.h"
 

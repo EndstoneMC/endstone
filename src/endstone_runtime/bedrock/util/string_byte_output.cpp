@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/util/string_byte_output.h"
+#include "bedrock/util/string_byte_output.h"
 
 void StringByteOutput::writeBytes(const void *data, std::uint64_t bytes)
 {

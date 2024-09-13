@@ -14,12 +14,12 @@
 
 #pragma once
 
-#include "bedrock/common/resources/base_game_version.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/resources/base_game_version.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
+#include "bedrock/world/item/crafting/recipe_unlocking_requirement.h"
 #include "bedrock/world/item/item_instance.h"
-#include "recipe_unlocking_requirement.h"
 
 struct RecipeNetIdTag {};
 using RecipeNetId = TypedServerNetId<RecipeNetIdTag, unsigned int>;

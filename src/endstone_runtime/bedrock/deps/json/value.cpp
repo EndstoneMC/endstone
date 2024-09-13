@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/deps/json/value.h"
 
 #include <cmath>
 #include <limits>

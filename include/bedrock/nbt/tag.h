@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/common/util/data_io.h"
 #include "bedrock/core/result.h"
+#include "bedrock/util/data_io.h"
 
 class Tag {
 public:
@@ -36,7 +36,7 @@ public:
     };
 
     virtual ~Tag() = default;
-    virtual void deleteChildren() {};
+    virtual void deleteChildren(){};
     virtual void write(IDataOutput &) const = 0;
     virtual Bedrock::Result<void> load(IDataInput &) = 0;
     [[nodiscard]] virtual std::string toString() const = 0;

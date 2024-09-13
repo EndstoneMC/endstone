@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/deps/jsoncpp/value.h"
+#include "bedrock/deps/json/value.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"

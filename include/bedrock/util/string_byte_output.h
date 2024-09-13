@@ -12,11 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/shared_constants.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
+#include "bedrock/util/data_io.h"
 
-std::string Common::getGameVersionString()
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Common::getGameVersionString);
-}
+class StringByteOutput : public BytesDataOutput {
+public:
+    ~StringByteOutput() override = default;
+    void writeBytes(const void *data, std::uint64_t bytes) override;
+
+    std::string buffer;
+};
+
+class BigEndianStringByteOutput : public StringByteOutput {
+public:
+    ~BigEndianStringByteOutput() override = default;
+    void writeFloat(float v) override;
+    void writeDouble(double v) override;
+    void writeShort(std::int16_t v) override;
+    void writeInt(std::int32_t v) override;
+    void writeLongLong(std::int64_t v) override;
+};

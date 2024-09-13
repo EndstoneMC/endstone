@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/util/data_io.h"
+#include "bedrock/util/data_io.h"
 
 void BytesDataOutput::writeString(std::string_view v)
 {

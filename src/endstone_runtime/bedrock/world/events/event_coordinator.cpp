@@ -18,7 +18,7 @@
 #include <pybind11/pybind11.h>
 #include <spdlog/spdlog.h>
 
-#include "bedrock/deps/jsoncpp/nlohmann_json.h"
+#include "bedrock/deps/json/nlohmann_json.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
