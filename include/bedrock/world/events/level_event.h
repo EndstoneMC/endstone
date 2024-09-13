@@ -16,7 +16,6 @@
 
 #include <variant>
 
-#include "bedrock/core/details.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/world/events/coordinator_result.h"

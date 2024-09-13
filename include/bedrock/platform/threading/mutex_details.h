@@ -1,4 +1,4 @@
-// Copyright (c) 2023, The Endstone Project. (https://endstone.dev) All Rights Reserved.
+// Copyright (c) 2024, The Endstone Project. (https://endstone.dev) All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,19 +16,6 @@
 
 #include <mutex>
 
-namespace Core {
-class FilePathManager;
-
-template <typename T>
-class PathBuffer;
-
-class StorageAreaStateListener : public std::enable_shared_from_this<StorageAreaStateListener> {
-public:
-    virtual ~StorageAreaStateListener() = 0;
-
-private:
-    std::mutex mtx_;  // +24
-};
-// static_assert(sizeof(StorageAreaStateListener) == 104);
-
-}  // namespace Core
+namespace Bedrock::Threading {
+using Mutex = std::mutex;
+}

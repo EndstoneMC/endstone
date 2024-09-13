@@ -22,7 +22,6 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"

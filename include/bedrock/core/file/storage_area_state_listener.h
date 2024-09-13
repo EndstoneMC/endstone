@@ -14,44 +14,18 @@
 
 #pragma once
 
-namespace Details {
+#include <memory>
 
-template <typename T>
-class ValueOrRef {
+#include "bedrock/forward.h"
+#include "bedrock/platform/threading/mutex_details.h"
+
+namespace Core {
+class StorageAreaStateListener {
 public:
-    explicit ValueOrRef(T const &ref)
-    {
-        index_ = 0;
-        storage_.value = ref;
-    }
-
-    ~ValueOrRef()
-    {
-        if (index_ == 0) {
-            storage_.value.~T();
-        }
-    }
-
-    T asValue() const noexcept
-    {
-        switch (index_) {
-        case 0:
-            return storage_.value;
-        case 1:
-            return *storage_.ref;
-        default:
-            return T();
-        }
-    }
+    virtual ~StorageAreaStateListener() = 0;
 
 private:
-    union Storage {
-        T value;
-        T *ref;
-        Storage() {}
-        ~Storage() {}
-    } storage_;
-    std::int8_t index_{-1};
+    std::shared_ptr<Core::StorageAreaState> file_storage_area_;  // +8
+    Bedrock::Threading::Mutex mutex_;                            // +24
 };
-
-}  // namespace Details
+}  // namespace Core

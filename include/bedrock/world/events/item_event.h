@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "bedrock/core/details.h"
 #include "bedrock/world/events/coordinator_result.h"
 
 template <std::size_t N>

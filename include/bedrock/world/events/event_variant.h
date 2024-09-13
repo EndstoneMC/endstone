@@ -17,7 +17,39 @@
 #include <type_traits>
 #include <variant>
 
-#include "bedrock/core/details.h"
+namespace Details {
+template <typename T>
+class ValueOrRef {
+    union Variant {
+        const T *pointer;
+        const T value;
+        Variant() {}
+        ~Variant() {}
+    };
+
+    explicit ValueOrRef(T value) : is_pointer_(false)
+    {
+        variant_.value = value;
+    }
+
+public:
+    ~ValueOrRef()
+    {
+        if (!is_pointer_) {
+            variant_.value.~T();
+        }
+    }
+
+    T &value() const noexcept
+    {
+        return is_pointer_ ? *variant_.pointer : variant_.value;
+    }
+
+private:
+    Variant variant_;
+    const bool is_pointer_;
+};
+}  // namespace Details
 
 template <typename... Events>
 struct EventVariantImpl {

@@ -204,6 +204,7 @@ class BlockSourceVisitor {
 public:
     class CollisionShape;
 };
+
 class PlayerCapabilities {
 public:
     class ISharedController;
@@ -220,8 +221,12 @@ namespace cg {
 class ImageBuffer;
 }
 namespace Core {
+class FilePathManager;
 class LevelStorageResult;
-}
+class StorageAreaState;
+template <typename T>
+class PathBuffer;
+}  // namespace Core
 
 namespace Bedrock::PubSub {
 class SubscriptionBase;

@@ -18,8 +18,6 @@
 #include <memory>
 #include <string>
 
-#include "bedrock/core/file.h"
-#include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/server/commands/minecraft_commands.h"

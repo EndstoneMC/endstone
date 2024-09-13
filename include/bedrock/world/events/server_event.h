@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "bedrock/core/details.h"
 #include "bedrock/entity/entity_context.h"
 
 template <typename Return>

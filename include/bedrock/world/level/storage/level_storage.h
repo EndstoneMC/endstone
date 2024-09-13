@@ -17,10 +17,8 @@
 #include <functional>
 #include <memory>
 #include <string>
-#include <string_view>
 #include <vector>
 
-#include "bedrock/core/file.h"
 #include "bedrock/core/threading.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"

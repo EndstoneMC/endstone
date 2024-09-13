@@ -104,8 +104,8 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
     void (PlayerEventCoordinator::*fp)(const EventRef<PlayerGameplayEvent<void>> &) =
         &PlayerEventCoordinator::sendEvent;
     auto visitor = endstone::overloaded{
-        [](const Details::ValueOrRef<PlayerFormCloseEvent const> &value) {
-            const auto event = value.asValue();
+        [](const Details::ValueOrRef<PlayerFormCloseEvent const> &arg) {
+            const auto &event = arg.value();
             const auto &weak_ref = event.player;
             EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
             auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
@@ -114,8 +114,8 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
                 player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
             }
         },
-        [](const Details::ValueOrRef<PlayerFormResponseEvent const> &value) {
-            const auto event = value.asValue();
+        [](const Details::ValueOrRef<PlayerFormResponseEvent const> &arg) {
+            const auto &event = arg.value();
             const auto &weak_ref = event.player;
             EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
             auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
