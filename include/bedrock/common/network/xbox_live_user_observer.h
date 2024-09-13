@@ -14,7 +14,14 @@
 
 #pragma once
 
-struct RelativeFloat {
-    float offset;
-    float relative;
+#include <string>
+
+#include "bedrock/core/utility/observer.h"
+
+namespace Social {
+class XboxLiveUserObserver : public Core::Observer<XboxLiveUserObserver, Core::SingleThreadedLock> {
+public:
+    virtual void onXboxUserBlocked(std::string const &) = 0;
+    virtual void onXboxUserUnblocked(std::string const &) = 0;
 };
+}  // namespace Social

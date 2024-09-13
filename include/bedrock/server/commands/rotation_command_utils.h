@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/core/math/relative_float.h"
 #include "bedrock/core/math/vec2.h"
+#include "bedrock/server/commands/command.h"
 
 class RotationCommandUtils {
 public:

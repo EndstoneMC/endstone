@@ -21,16 +21,25 @@
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
 
+class RelativeFloat {
+public:
+    RelativeFloat() = default;
+    RelativeFloat(float offset, bool relative);
+    [[nodiscard]] float getValue(float base) const;
+    [[nodiscard]] bool isRelative() const;
+
+private:
+    float offset_;
+    bool relative_;
+};
+
 class Command {
 public:
     Command() = default;
     virtual ~Command() = default;
     [[nodiscard]] ENDSTONE_HOOK std::string getCommandName() const;
 
-    virtual bool collectOptionalArguments()
-    {
-        return true;
-    }
+    virtual bool collectOptionalArguments();
     virtual void execute(CommandOrigin const &, CommandOutput &) const = 0;
 
 private:

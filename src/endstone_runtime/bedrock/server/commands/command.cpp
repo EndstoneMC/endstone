@@ -16,7 +16,24 @@
 
 #include "endstone/detail/hook.h"
 
+RelativeFloat::RelativeFloat(float offset, bool relative) : offset_(offset), relative_(relative) {}
+
+float RelativeFloat::getValue(float base) const
+{
+    return relative_ ? base + offset_ : offset_;
+}
+
+bool RelativeFloat::isRelative() const
+{
+    return relative_;
+}
+
 std::string Command::getCommandName() const
 {
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Command::getCommandName, this);
+}
+
+bool Command::collectOptionalArguments()
+{
+    return true;
 }

@@ -14,10 +14,14 @@
 
 #pragma once
 
+#include <cstdint>
+#include <optional>
+#include <string>
+
 #include "bedrock/bedrock.h"
-#include "bedrock/core/memory.h"
+#include "bedrock/common/network/xbox_live_user_observer.h"
+#include "bedrock/common/platform/multiplayer_service_observer.h"
 #include "bedrock/core/threading.h"
-#include "bedrock/core/utility/observer.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
@@ -49,7 +53,7 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public Social::XboxLiveUserObserver {
 public:
     ~ServerNetworkHandler() override = 0;
-    
+
     ENDSTONE_HOOK bool trytLoadPlayer(ServerPlayer &, ConnectionRequest const &);
     ENDSTONE_HOOK void disconnectClient(NetworkIdentifier const &, SubClientId, Connection::DisconnectFailReason,
                                         std::string const &, std::optional<std::string>, bool);

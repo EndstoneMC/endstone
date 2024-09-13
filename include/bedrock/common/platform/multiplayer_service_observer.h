@@ -14,38 +14,15 @@
 
 #pragma once
 
-#include <atomic>
-#include <cstdint>
-#include <vector>
+#include <string>
 
-#include <gsl/gsl>
+#include "bedrock/core/utility/observer.h"
+#include "bedrock/core/utility/uuid.h"
 
-namespace Core {
-
-template <typename ObserverType, typename LockType>
-class Subject {
+namespace Social {
+class MultiplayerServiceObserver : public Core::Observer<MultiplayerServiceObserver, Core::SingleThreadedLock> {
 public:
-private:
-    LockType lock_;
-    std::vector<gsl::not_null<ObserverType *>> observers_;
+    virtual void onInvalidPlayerJoinedLobby(mce::UUID const &uuid, std::string const &xuid) = 0;
+    virtual void onUserDisconnectedBecauseConcurrentLogin(std::string const &id) = 0;
 };
-
-template <typename T, typename LockType>
-class Observer {
-public:
-    virtual ~Observer() = 0;
-
-private:
-    virtual void _onSubjectDestroyed() = 0;
-
-    using SubjectType = Subject<T, LockType>;
-    SubjectType *subject_;
-};
-
-class SingleThreadedLock {
-public:
-private:
-    std::atomic<bool> locked_;
-};
-
-}  // namespace Core
+}  // namespace Social
