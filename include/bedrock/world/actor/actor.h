@@ -276,27 +276,28 @@ public:
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
 protected:
-    EntityContext entity_context_;                                            // +8
-    std::array<char[16], 10> unknown3_;                                       // +32
-    std::string custom_init_event_name_;                                      // +192
-    ActorInitializationMethod init_method_;                                   // +224
-    bool force_init_method_to_spawn_on_reload_;                               // +225
-    bool added_;                                                              // +226
-    ActorDefinitionGroup *definitions_;                                       // +232
-    std::unique_ptr<ActorDefinitionDescriptor> current_description_;          // +240
-    std::shared_ptr<RopeSystem> leash_rope_system_;                           // +248
-    std::string unknown6_;                                                    // +264
-    char unknown7_[72];                                                       // +296
-    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> unknown8_;  // +368
-    SynchedActorDataEntityWrapper entity_data_;                               // +384
-    std::unique_ptr<SpatialActorNetworkData> network_data_;                   // +432
-    Vec3 sent_delta_;                                                         // +440
-    char unknown11_[92];                                                      // +452
-    WeakRef<Dimension> dimension_;                                            // +544
-    Level *level_;                                                            // +560
-    HashedString actor_renderer_id_;                                          // +568
-    ActorCategory categories_;                                                // +616
-    BuiltInActorComponents built_in_components_;                              // +624
+    EntityContext entity_context_;                                                          // +8
+    std::array<char[16], 10> init_params_;                                                  // +32
+    std::string custom_init_event_name_;                                                    // +192
+    ActorInitializationMethod init_method_;                                                 // +224
+    bool force_init_method_to_spawn_on_reload_;                                             // +225
+    bool added_;                                                                            // +226
+    ActorDefinitionGroup *definitions_;                                                     // +232
+    std::unique_ptr<ActorDefinitionDescriptor> current_description_;                        // +240
+    std::shared_ptr<RopeSystem> leash_rope_system_;                                         // +248
+    std::string alias_;                                                                     // +264
+    std::optional<glm::mat4x4> previous_render_transform_;                                  // +296
+    int last_hurt_by_player_time_;                                                          // +364
+    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> previous_bone_matrices_;  // +368
+    SynchedActorDataEntityWrapper entity_data_;                                             // +384
+    std::unique_ptr<SpatialActorNetworkData> network_data_;                                 // +432
+    Vec3 sent_delta_;                                                                       // +440
+    char unknown11_[92];                                                                    // +452
+    WeakRef<Dimension> dimension_;                                                          // +544
+    Level *level_;                                                                          // +560
+    HashedString actor_renderer_id_;                                                        // +568
+    ActorCategory categories_;                                                              // +616
+    BuiltInActorComponents built_in_components_;                                            // +624
     // ...
 
 public:
