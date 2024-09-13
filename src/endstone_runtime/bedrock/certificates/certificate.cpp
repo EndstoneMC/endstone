@@ -12,12 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/certificates/certificate.h"
 
-#include "bedrock/certificates/web_token.h"
+Json::Value Certificate::getExtraData(const std::string &key, const Json::Value &default_value) const
+{
+    const auto extra_data = unverified_certificate_.raw_token_.data_info.get("extraData", {});
+    return extra_data.get(key, default_value);
+}
 
-class UnverifiedCertificate {
-public:
-    WebToken raw_token;                             // +0
-    std::unique_ptr<UnverifiedCertificate> parent;  // +128
-};
+bool Certificate::isValid() const
+{
+    return valid_;
+}
+
+bool Certificate::isSelfSigned() const
+{
+    return self_signed_;
+}

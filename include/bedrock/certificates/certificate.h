@@ -14,18 +14,26 @@
 
 #pragma once
 
-#include "bedrock/certificates/unverified_certificate.h"
+#include <memory>
+
+#include "bedrock/certificates/web_token.h"
+
+class UnverifiedCertificate {
+    friend class Certificate;
+
+    WebToken raw_token_;                                                    // +0
+    std::unique_ptr<UnverifiedCertificate> parent_unverified_certificate_;  // +128
+};
 
 class Certificate {
 public:
-    [[nodiscard]] Json::Value getExtraData(const std::string &key, const Json::Value &default_value) const
-    {
-        auto extra_data = unverified_certificate.raw_token.data_info.get("extraData", {});
-        return extra_data.get(key, default_value);
-    }
+    [[nodiscard]] Json::Value getExtraData(const std::string &key, const Json::Value &default_value) const;
+    [[nodiscard]] bool isValid() const;
+    [[nodiscard]] bool isSelfSigned() const;
 
-    UnverifiedCertificate unverified_certificate;  // +0
-    std::unique_ptr<Certificate> parent;           // +136
-    bool is_valid;                                 // +144
-    bool unknown;                                  // +145
+private:
+    UnverifiedCertificate unverified_certificate_;  // +0
+    std::unique_ptr<Certificate> parent_;           // +136
+    bool valid_;                                 // +144
+    bool self_signed_;                           // +145
 };

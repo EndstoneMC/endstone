@@ -12,11 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/certificates/extended_certificate.h"
 
-#include "bedrock/certificates/certificate.h"
-
-class ExtendedCertificate {
-public:
-    static std::string getXuid(const Certificate &certificate, bool trust_self_signed);
-};
+std::string ExtendedCertificate::getXuid(const Certificate &certificate, bool trust_self_signed)
+{
+    if (!trust_self_signed && certificate.isSelfSigned()) {
+        return "";
+    }
+    return certificate.getExtraData("XUID", {}).asString();
+}

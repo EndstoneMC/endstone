@@ -18,7 +18,6 @@
 #include <string>
 
 #include "bedrock/certificates/certificate.h"
-#include "bedrock/certificates/unverified_certificate.h"
 #include "bedrock/certificates/web_token.h"
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/network/sub_client_id.h"
