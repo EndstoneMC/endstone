@@ -17,27 +17,9 @@
 #include <memory>
 #include <stdexcept>
 
+#include "bedrock/core/utility/enable_non_owner_references.h"
+
 namespace Bedrock {
-
-class EnableNonOwnerReferences {
-public:
-    struct ControlBlock {
-        EnableNonOwnerReferences *ptr;
-    };
-
-    EnableNonOwnerReferences()
-    {
-        control_block_ = std::make_shared<ControlBlock>();
-        control_block_->ptr = this;
-    }
-    virtual ~EnableNonOwnerReferences() = default;
-
-private:
-    template <typename T>
-    friend class NonOwnerPointer;
-
-    std::shared_ptr<ControlBlock> control_block_;
-};
 
 template <class T>
 class NonOwnerPointer {
