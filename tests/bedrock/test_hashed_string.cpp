@@ -14,7 +14,7 @@
 
 #include <gtest/gtest.h>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 
 TEST(HashedStringTest, ComputerHash)
 {

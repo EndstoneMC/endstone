@@ -23,7 +23,7 @@
 #include <gsl/gsl>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"

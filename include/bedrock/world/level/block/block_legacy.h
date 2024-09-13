@@ -16,7 +16,7 @@
 
 #include <shared_mutex>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"

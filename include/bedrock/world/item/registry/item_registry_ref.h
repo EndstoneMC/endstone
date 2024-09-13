@@ -16,7 +16,7 @@
 
 #include <memory>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/item/registry/item_registry.h"
 

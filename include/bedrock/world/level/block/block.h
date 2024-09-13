@@ -19,7 +19,7 @@
 #include <gsl/gsl>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_legacy.h"

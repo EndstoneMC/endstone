@@ -18,7 +18,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/memory.h"
 
 class ItemRegistryRef;

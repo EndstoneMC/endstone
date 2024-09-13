@@ -16,7 +16,7 @@
 
 #include <cstdint>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/world/attribute/redefinition_mode.h"
 
 class Attribute {

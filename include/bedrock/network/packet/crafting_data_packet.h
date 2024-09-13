@@ -17,7 +17,7 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/core/hashed_string.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/network/packet.h"
 #include "bedrock/world/item/crafting/recipe.h"
 #include "bedrock/world/item/crafting/recipes.h"
