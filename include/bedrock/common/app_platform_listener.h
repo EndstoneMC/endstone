@@ -21,6 +21,6 @@ public:
     virtual ~AppPlatformListener() = 0;
 
 private:
-    bool initialized_;  // +8
+    bool listener_registered_;  // +8
 };
 BEDROCK_STATIC_ASSERT_SIZE(AppPlatformListener, 16, 16);

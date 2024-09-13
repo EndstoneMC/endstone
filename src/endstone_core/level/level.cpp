@@ -17,7 +17,7 @@
 #include <entt/entt.hpp>
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/core/automatic_id.h"
+#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"

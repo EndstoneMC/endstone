@@ -22,15 +22,15 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/automatic_id.h"
 #include "bedrock/core/file.h"
 #include "bedrock/core/memory.h"
-#include "bedrock/platform/uuid.h"
+#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/entity/strict_entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/packet_sender.h"
+#include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/commands/standard/teleport_command.h"

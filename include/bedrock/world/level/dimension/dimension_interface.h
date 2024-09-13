@@ -14,11 +14,9 @@
 
 #pragma once
 
-#include "bedrock/core/automatic_id.h"
+#include "bedrock/core/utility/automatic_id.h"
 
 class Dimension;
-
-using DimensionType = AutomaticID<Dimension, int>;
 
 class IDimension {
 public:

@@ -14,14 +14,14 @@
 
 #pragma once
 
-template <typename Type, typename Value>
+template <typename T, typename ValueType>
 class AutomaticID {
 public:
-    Value id;
+    ValueType runtime_id;
 
     bool operator==(const AutomaticID &other) const
     {
-        return id == other.id;
+        return runtime_id == other.runtime_id;
     }
 
     bool operator!=(const AutomaticID &other) const
@@ -29,3 +29,6 @@ public:
         return !(*this == other);
     }
 };
+
+class Dimension;
+using DimensionType = AutomaticID<Dimension, int>;

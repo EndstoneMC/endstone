@@ -32,12 +32,12 @@ std::string EndstoneDimension::getName() const
 
 Dimension::Type EndstoneDimension::getType() const
 {
-    switch (dimension_.getDimensionId().id) {
-    case VanillaDimensions::Overworld.id:
+    switch (dimension_.getDimensionId().runtime_id) {
+    case VanillaDimensions::Overworld.runtime_id:
         return Type::Overworld;
-    case VanillaDimensions::Nether.id:
+    case VanillaDimensions::Nether.runtime_id:
         return Type::Nether;
-    case VanillaDimensions::TheEnd.id:
+    case VanillaDimensions::TheEnd.runtime_id:
         return Type::TheEnd;
     default:
         return Type::Custom;

@@ -18,8 +18,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/automatic_id.h"
 #include "bedrock/core/memory.h"
+#include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
@@ -41,8 +41,8 @@ public:
     [[nodiscard]] Level &getLevel() const;
     BlockSource &getBlockSourceFromMainChunkSource() const;
 
-    [[nodiscard]] const std::string &getName() const;  // Endstone
-    [[nodiscard]] endstone::Dimension &getEndstoneDimension() const; // Endstone
+    [[nodiscard]] const std::string &getName() const;                 // Endstone
+    [[nodiscard]] endstone::Dimension &getEndstoneDimension() const;  // Endstone
 
 private:
     std::vector<ActorChunkTransferEntry> actor_chunk_transfer_queue_;           // +104 (+96)
