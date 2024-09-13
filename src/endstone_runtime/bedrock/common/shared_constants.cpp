@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/common/game_version.h"
+#include "bedrock/common/shared_constants.h"
 
 #include "endstone/detail/hook.h"
 

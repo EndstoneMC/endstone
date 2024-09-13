@@ -16,7 +16,7 @@
 
 #include <shared_mutex>
 
-#include "bedrock/common/game_version.h"
+#include "bedrock/common/resources/base_game_version.h"
 #include "bedrock/core/hashed_string.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/math/int_range.h"

@@ -16,7 +16,7 @@
 
 #include <string>
 
-#include "bedrock/common/game_version.h"
+#include "bedrock/common/resources/base_game_version.h"
 #include "bedrock/deps/jsoncpp/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_location.h"
