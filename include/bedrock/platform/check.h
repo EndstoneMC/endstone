@@ -17,15 +17,14 @@
 #include <system_error>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/callstack.h"
+#include "bedrock/platform/callstack.h"
 
 namespace Bedrock {
 template <typename E = std::error_code>
-class ErrorInfo {
-public:
+struct ErrorInfo {
     E error;
-    std::vector<Bedrock::CallStack::FrameWithContext> frames;
-    std::vector<Bedrock::ErrorInfo<E>> frame_errors;
+    CallStack call_stack;
+    std::vector<ErrorInfo<E>> frame_errors;
 };
 BEDROCK_STATIC_ASSERT_SIZE(ErrorInfo<>, 64, 64);
 

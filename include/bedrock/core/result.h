@@ -19,7 +19,7 @@
 #include <nonstd/expected.hpp>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/error_info.h"
+#include "bedrock/platform/check.h"
 
 namespace Bedrock {
 
