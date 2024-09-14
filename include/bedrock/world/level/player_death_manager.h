@@ -14,7 +14,8 @@
 
 #pragma once
 
-#include "bedrock/core/pub_sub.h"
+#include "bedrock/core/utility/pub_sub/publisher.h"
+#include "bedrock/core/utility/pub_sub/thread_model.h"
 
 class IPlayerDeathManagerProxy : public Bedrock::EnableNonOwnerReferences {
 public:

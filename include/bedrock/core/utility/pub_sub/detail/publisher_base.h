@@ -14,21 +14,17 @@
 
 #pragma once
 
-#include <mutex>
-#include <shared_mutex>
+#include "bedrock/core/container/intrusive_list.h"
+#include "bedrock/core/utility/pub_sub/detail/subscription_body.h"
 
-namespace Bedrock::Threading {
+namespace Bedrock::PubSub::Detail {
 
-#ifdef _WIN32
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_mutex;
-#endif
+class PublisherBase : public PublisherDisconnector {
+    using ConnectionList = Intrusive::list<SubscriptionBodyBase, Intrusive::list_base_hook<SubscriptionBodyBase>>;
 
-#ifdef __linux__
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_timed_mutex;
-#endif
+protected:
+    ConnectionList subscriptions_;    // +8
+    std::uint32_t subscriber_count_;  // +24
+};
 
-}  // namespace Bedrock::Threading
+}  // namespace Bedrock::PubSub::Detail

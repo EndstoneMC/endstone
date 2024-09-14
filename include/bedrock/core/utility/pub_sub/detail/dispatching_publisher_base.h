@@ -14,21 +14,11 @@
 
 #pragma once
 
-#include <mutex>
-#include <shared_mutex>
+#include "bedrock/core/utility/pub_sub/detail/threading_publisher_base.h"
 
-namespace Bedrock::Threading {
+namespace Bedrock::PubSub::Detail {
 
-#ifdef _WIN32
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_mutex;
-#endif
+template <typename T>
+class DispatchingPublisherBase : public ThreadingPublisherBase<T> {};
 
-#ifdef __linux__
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_timed_mutex;
-#endif
-
-}  // namespace Bedrock::Threading
+}  // namespace Bedrock::PubSub::Detail

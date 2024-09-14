@@ -14,21 +14,16 @@
 
 #pragma once
 
-#include <mutex>
-#include <shared_mutex>
+#include "bedrock/platform/threading/mutex_details.h"
 
-namespace Bedrock::Threading {
+namespace Bedrock::PubSub::ThreadModel {
 
-#ifdef _WIN32
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_mutex;
-#endif
+struct MultiThreaded {
+    using MutexType = Bedrock::Threading::Mutex;
+};
 
-#ifdef __linux__
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_timed_mutex;
-#endif
+struct MultiThreadedStrict {
+    using MutexType = Bedrock::Threading::RecursiveMutex;
+};
 
-}  // namespace Bedrock::Threading
+}  // namespace Bedrock::PubSub::ThreadModel

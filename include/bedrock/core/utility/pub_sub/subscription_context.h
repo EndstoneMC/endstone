@@ -14,21 +14,12 @@
 
 #pragma once
 
-#include <mutex>
-#include <shared_mutex>
+namespace Bedrock::PubSub {
 
-namespace Bedrock::Threading {
+class SubscriptionContext {
+public:
+    virtual ~SubscriptionContext() = 0;
+    virtual void to_string(std::string &a2) = 0;
+};
 
-#ifdef _WIN32
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_mutex;
-#endif
-
-#ifdef __linux__
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_timed_mutex;
-#endif
-
-}  // namespace Bedrock::Threading
+}  // namespace Bedrock::PubSub

@@ -14,21 +14,22 @@
 
 #pragma once
 
-#include <mutex>
-#include <shared_mutex>
+namespace Bedrock::Intrusive {
 
-namespace Bedrock::Threading {
+template <typename T, typename U>
+class list_standard_operations {};
 
-#ifdef _WIN32
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_mutex;
-#endif
+template <typename T>
+class list_base_hook : public list_standard_operations<list_base_hook<T>, list_base_hook<T>> {
+    list_base_hook *next_;
+    list_base_hook *prev_;
+};
 
-#ifdef __linux__
-using Mutex = std::mutex;
-using RecursiveMutex = std::recursive_mutex;
-using SharedMutex = std::shared_timed_mutex;
-#endif
+template <typename ItemType, typename T, typename U = T>
+class list {
+    using HookType = T;
 
-}  // namespace Bedrock::Threading
+    HookType sentinel_;
+};
+
+}  // namespace Bedrock::Intrusive
