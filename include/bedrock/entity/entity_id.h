@@ -14,27 +14,30 @@
 
 #pragma once
 
-#include <string>
-
 #include <entt/entt.hpp>
+
+class EntityId;
+
+struct EntityIdTraits {
+    using value_type = EntityId;                         // NOLINT(*-identifier-naming)
+    using entity_type = std::uint32_t;                   // NOLINT(*-identifier-naming)
+    using version_type = std::uint16_t;                  // NOLINT(*-identifier-naming)
+    static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
+    static constexpr entity_type version_mask = 0x3FFF;  // 14b
+};
 
 class EntityId {
 public:
-    using entity_type = std::uint32_t;  // NOLINT(*-identifier-naming)
-    explicit constexpr EntityId(entity_type id) : value_(id){};
-    explicit constexpr operator entity_type() const
+    using underlying_type = EntityIdTraits::entity_type;  // NOLINT(*-identifier-naming)
+
+    EntityId() = default;
+
+    explicit constexpr EntityId(underlying_type entity) : raw_id_(entity){};
+    explicit constexpr operator underlying_type() const
     {
-        return value_;
+        return raw_id_;
     }
 
 private:
-    entity_type value_;
-};
-
-struct EntityTraits {
-    using value_type = EntityId;                         // NOLINT(*-identifier-naming)
-    using entity_type = uint32_t;                        // NOLINT(*-identifier-naming)
-    using version_type = uint16_t;                       // NOLINT(*-identifier-naming)
-    static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
-    static constexpr entity_type version_mask = 0x3FFF;  // 14b
+    underlying_type raw_id_;
 };

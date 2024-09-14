@@ -23,7 +23,7 @@
 #include "bedrock/gamerefs/weak_ref.h"
 
 template <>
-struct entt::entt_traits<EntityId> : basic_entt_traits<EntityTraits> {
+struct entt::entt_traits<EntityId> : basic_entt_traits<EntityIdTraits> {
     static constexpr auto page_size = ENTT_SPARSE_PAGE;
 };
 static_assert(entt::entt_traits<EntityId>::page_size == 2048);

@@ -18,6 +18,17 @@
 
 class ActorOwnerComponent {
 public:
+    Actor &getActor()
+    {
+        return *actor;
+    }
+
+    Actor &getActor() const
+    {
+        return *actor;
+    }
+
+private:
     std::unique_ptr<Actor> actor;
 };
 // static_assert(entt::type_hash<ActorOwnerComponent>::value() == 0x132A5818);

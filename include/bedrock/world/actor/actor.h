@@ -23,18 +23,21 @@
 #include <gsl/gsl>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
-#include "bedrock/shared_ptr.h"
+#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/utility/automatic_id.h"
+#include "bedrock/entity/components/aabb_shape_component.h"
+#include "bedrock/entity/components/actor_rotation_component.h"
+#include "bedrock/entity/components/actor_walk_animation_component.h"
 #include "bedrock/entity/components/attributes_component.h"
-#include "bedrock/entity/components/built_in_actor_components.h"
+#include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
@@ -49,6 +52,13 @@
 
 class Player;
 class Level;
+
+struct BuiltInActorComponents {
+    gsl::not_null<StateVectorComponent *> state_vector_component;
+    gsl::not_null<AABBShapeComponent *> aabb_shape_component;
+    gsl::not_null<ActorRotationComponent *> actor_rotation_component;
+    gsl::not_null<ActorWalkAnimationComponent *> walk_animation_component;
+};
 
 class Actor {
 public:

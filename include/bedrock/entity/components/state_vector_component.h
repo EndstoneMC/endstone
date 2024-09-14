@@ -14,32 +14,10 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
-#include "bedrock/world/phys/aabb.h"
 
 struct StateVectorComponent {
-    Vec3 position;        // +0
-    Vec3 position_prev;   // +12
-    Vec3 position_delta;  // +24
+    Vec3 pos;        // +0
+    Vec3 pos_prev;   // +12
+    Vec3 pos_delta;  // +24
 };
-
-struct AABBShapeComponent {
-    AABB aabb;
-};
-
-struct ActorRotationComponent {
-    Vec2 rotation;
-    Vec2 rotation_prev;
-};
-
-struct ActorWalkAnimationComponent {};
-
-struct BuiltInActorComponents {
-    StateVectorComponent *state_vector;
-    AABBShapeComponent *aabb;
-    ActorRotationComponent *rotation;
-    ActorWalkAnimationComponent *walk_animation;
-};
-BEDROCK_STATIC_ASSERT_SIZE(BuiltInActorComponents, 32, 32);

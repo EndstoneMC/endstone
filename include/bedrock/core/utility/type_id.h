@@ -14,22 +14,18 @@
 
 #pragma once
 
-template <typename ComponentFlag>
-class FlagComponent {
+#include <cstdint>
+
+#include "bedrock/bedrock.h"
+
+namespace Bedrock {
+
+using TypeIdStorage = std::uint16_t;
+
+template <typename T>
+class typeid_t {  // NOLINT(*-identifier-naming)
 public:
-    ComponentFlag flag;
+    TypeIdStorage id;
 };
 
-struct PlayerComponentFlag {};
-struct OnGroundFlagComponent {};
-struct WasOnGroundFlag {};
-struct InWaterFlag {};
-struct InLavaFlag {};
-struct MobIsJumpingFlag {};
-
-#if defined __clang__ || defined __GNUC__
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x356FFFCA);
-#elif defined _MSC_VER
-static_assert(entt::type_hash<FlagComponent<PlayerComponentFlag>>::value() == 0x600FBE1D);
-static_assert(entt::type_hash<OnGroundFlagComponent>::value() == 0xC3E299A3);
-#endif
+}  // namespace Bedrock

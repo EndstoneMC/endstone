@@ -18,7 +18,7 @@
 #include <memory>
 #include <vector>
 
-#include "bedrock/core/type_id.h"
+#include "bedrock/core/utility/type_id.h"
 #include "bedrock/world/level/block/components/block_component_base.h"
 
 class BlockComponentStorage {

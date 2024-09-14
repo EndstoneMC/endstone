@@ -24,7 +24,7 @@
 
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
-#include "bedrock/entity/strict_entity_context.h"
+#include "bedrock/entity/strict/strict_entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/gamerefs/stack_ref_result.h"

@@ -37,7 +37,7 @@ void ScoreboardPacketSender::sendToServer(::Packet &packet)
 
 void ScoreboardPacketSender::sendToClient(const UserEntityIdentifierComponent *user_identifider, const ::Packet &packet)
 {
-    auto uuid = EndstoneUUID::fromMinecraft(user_identifider->uuid);
+    auto uuid = EndstoneUUID::fromMinecraft(user_identifider->client_uuid);
     auto *player = server_.getPlayer(uuid);
     if (!player) {
         return;
@@ -61,7 +61,7 @@ void ScoreboardPacketSender::sendToClient(const NetworkIdentifier &network_ident
         }
 
         auto user_identifier = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
-        if (user_identifier->network_id != network_identifier || user_identifier->sub_client_id != sub_id) {
+        if (user_identifier->network_id != network_identifier || user_identifier->client_sub_id != sub_id) {
             continue;
         }
 

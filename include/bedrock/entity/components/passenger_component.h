@@ -14,9 +14,8 @@
 
 #pragma once
 
-#include "bedrock/entity/strict_entity_context.h"
-#include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/entity/components/strict_actor_id_entity_context_pair.h"
 
-struct PassengerComponent : public StrictEntityContext {
-    ActorUniqueID vehicle_id;  // +8
+struct PassengerComponent {
+    StrictActorIDEntityContextPair vehicle;
 };

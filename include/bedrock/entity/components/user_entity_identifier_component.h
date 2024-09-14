@@ -18,16 +18,16 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/extended_certificate.h"
-#include "bedrock/platform/uuid.h"
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/network/sub_client_id.h"
+#include "bedrock/platform/uuid.h"
 
 class UserEntityIdentifierComponent {
 public:
     NetworkIdentifier network_id;              // +0
-    SubClientId sub_client_id;                 // +160
-    mce::UUID uuid;                            // +168
-    std::string pfid;                          // +184
+    SubClientId client_sub_id;                 // +160
+    mce::UUID client_uuid;                     // +168
+    std::string playfab_id_unverified;         // +184
     std::unique_ptr<Certificate> certificate;  // +216
 };
 #if defined __clang__ || defined __GNUC__

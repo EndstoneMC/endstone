@@ -14,12 +14,20 @@
 
 #pragma once
 
-#include "bedrock/entity/components/mob_is_jumping_flag_component.h"
+#include "bedrock/entity/entity_id.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
-namespace MobJump {
-inline bool isJumping(EntityContext const &ctx)
-{
-    return ctx.hasComponent<MobIsJumpingFlagComponent>();
-}
-}  // namespace MobJump
+class StrictEntityContext {
+public:
+    [[nodiscard]] bool isNull() const
+    {
+        return (static_cast<EntityId::underlying_type>(entity_id_) & EntityIdTraits::entity_mask) ==
+               EntityIdTraits::entity_mask;
+    }
+
+private:
+    EntityId entity_id_;         // +0
+    std::uint32_t registry_id_;  // +4
+    EntityRegistry *registry_;   // +8
+};

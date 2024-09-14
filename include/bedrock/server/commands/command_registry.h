@@ -24,7 +24,7 @@
 #include <vector>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/type_id.h"
+#include "bedrock/core/utility/type_id.h"
 #include "bedrock/network/packet/available_commands_packet.h"
 #include "bedrock/server/commands/command_flag.h"
 #include "bedrock/server/commands/command_origin.h"

@@ -30,6 +30,6 @@ private:
     friend class StackResultStorageEntity;
 
     WeakRef<EntityRegistry> registry_;
-    EntityId entity_{static_cast<std::uint32_t>(-1)};
+    EntityId entity_{static_cast<EntityId::underlying_type>(-1)};
 };
 BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);

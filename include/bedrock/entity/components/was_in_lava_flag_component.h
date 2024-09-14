@@ -14,16 +14,4 @@
 
 #pragma once
 
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-
-class StrictEntityContext {
-public:
-    [[nodiscard]] bool isNull() const
-    {
-        return (static_cast<EntityId::entity_type>(entity_id_) & 0x3FFFF) == 0x3FFFF;
-    }
-
-private:
-    EntityId entity_id_;         // +0
-    std::uint32_t registry_id_;  // +4
-};
+struct WasInLavaFlagComponent { };

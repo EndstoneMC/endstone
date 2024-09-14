@@ -16,4 +16,4 @@
 
 #include "bedrock/entity/components/vec3_component.h"
 
-struct PostTickPositionDeltaComponent : public Vec3Component {};
+struct PostTickPositionDeltaComponent : Vec3Component {};

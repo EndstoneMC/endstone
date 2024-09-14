@@ -14,12 +14,10 @@
 
 #pragma once
 
-#include "bedrock/entity/components/mob_is_jumping_flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/components/actor_unique_id_component.h"
+#include "bedrock/entity/strict/strict_entity_context.h"
 
-namespace MobJump {
-inline bool isJumping(EntityContext const &ctx)
-{
-    return ctx.hasComponent<MobIsJumpingFlagComponent>();
-}
-}  // namespace MobJump
+struct StrictActorIDEntityContextPair {
+    StrictEntityContext entity;
+    ActorUniqueID actor_id;
+};

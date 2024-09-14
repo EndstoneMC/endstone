@@ -14,12 +14,8 @@
 
 #pragma once
 
-#include "bedrock/entity/components/mob_is_jumping_flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-
-namespace MobJump {
-inline bool isJumping(EntityContext const &ctx)
-{
-    return ctx.hasComponent<MobIsJumpingFlagComponent>();
-}
-}  // namespace MobJump
+template <typename ValueType>
+class ActorDataComponentBase {
+protected:
+    ValueType value_;
+};

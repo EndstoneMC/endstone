@@ -14,17 +14,20 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
+#include "bedrock/entity/components/was_in_lava_flag_component.h"
+#include "bedrock/entity/components/was_in_water_flag_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 namespace ActorEnvironment {
+
 inline bool getIsInWater(EntityContext const &ctx)
 {
-    return ctx.hasComponent<FlagComponent<InWaterFlag>>();
+    return ctx.hasComponent<WasInWaterFlagComponent>();
 }
 
 inline bool getIsInLava(EntityContext const &ctx)
 {
-    return ctx.hasComponent<FlagComponent<InLavaFlag>>();
+    return ctx.hasComponent<WasInLavaFlagComponent>();
 }
+
 }  // namespace ActorEnvironment

@@ -53,7 +53,7 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     if (!component) {
         throw std::runtime_error("UserEntityIdentifierComponent is not valid");
     }
-    uuid_ = EndstoneUUID::fromMinecraft(component->uuid);
+    uuid_ = EndstoneUUID::fromMinecraft(component->client_uuid);
     xuid_ = ExtendedCertificate::getXuid(*component->certificate, false);
 
     switch (component->network_id.getType()) {
@@ -293,7 +293,7 @@ void EndstonePlayer::sendToast(std::string title, std::string content) const
 void EndstonePlayer::kick(std::string message) const
 {
     auto *component = getHandle().tryGetComponent<UserEntityIdentifierComponent>();
-    server_.getServerNetworkHandler().disconnectClient(component->network_id, component->sub_client_id,
+    server_.getServerNetworkHandler().disconnectClient(component->network_id, component->client_sub_id,
                                                        Connection::DisconnectFailReason::Kicked, message, std::nullopt,
                                                        false);
 }

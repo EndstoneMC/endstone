@@ -14,19 +14,4 @@
 
 #pragma once
 
-#include <cstdint>
-
-#include "bedrock/bedrock.h"
-
-namespace Bedrock {
-
-template <typename Context>
-class typeid_t {  // NOLINT(*-identifier-naming)
-public:
-    std::uint16_t id;
-};
-
-template <typename Context, typename Type>
-typeid_t<Context> type_id();
-
-}  // namespace Bedrock
+struct OnGroundFlagComponent {};

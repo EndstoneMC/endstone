@@ -16,7 +16,7 @@
 
 #include "bedrock/entity/components/actor_data_flag_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
-#include "bedrock/entity/components/actor_type_component.h"
+#include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
@@ -121,42 +121,43 @@ Level &Actor::getLevel() const
 
 Vec3 const &Actor::getPosition() const
 {
-    return built_in_components_.state_vector->position;
+    return built_in_components_.state_vector_component->pos;
 }
 
 Vec3 const &Actor::getPosPrev() const
 {
-    return built_in_components_.state_vector->position_prev;
+    return built_in_components_.state_vector_component->pos_prev;
 }
 
 void Actor::applyImpulse(Vec3 const &impulse)
 {
-    built_in_components_.state_vector->position_delta += impulse;
+    built_in_components_.state_vector_component->pos_delta += impulse;
 }
 
 Vec3 const &Actor::getPosDelta() const
 {
-    return built_in_components_.state_vector->position_delta;
+    return built_in_components_.state_vector_component->pos_delta;
 }
 
 void Actor::setPosDelta(const Vec3 &pos_delta)
 {
-    built_in_components_.state_vector->position_delta = pos_delta;
+    built_in_components_.state_vector_component->pos_delta = pos_delta;
 }
 
 Vec2 const &Actor::getRotation() const
 {
-    return built_in_components_.rotation->rotation;
+    return built_in_components_.actor_rotation_component->rotation_degree;
 }
 
 void Actor::setRotationWrapped(const Vec2 &rot)
 {
-    RotationUtility::setRot(rot, built_in_components_.rotation->rotation, built_in_components_.rotation->rotation_prev);
+    RotationUtility::setRot(rot, built_in_components_.actor_rotation_component->rotation_degree,
+                            built_in_components_.actor_rotation_component->rotation_degree_previous);
 }
 
 AABB const &Actor::getAABB() const
 {
-    return built_in_components_.aabb->aabb;
+    return built_in_components_.aabb_shape_component->aabb;
 }
 
 ActorRuntimeID Actor::getRuntimeID() const
@@ -176,9 +177,9 @@ ActorUniqueID Actor::getOrCreateUniqueID() const
 
 Actor *Actor::getVehicle() const
 {
-    auto *component = tryGetComponent<PassengerComponent>();
-    if (component && !component->isNull()) {
-        return level_->fetchEntity(component->vehicle_id, false);
+    const auto *component = tryGetComponent<PassengerComponent>();
+    if (component && !component->vehicle.entity.isNull()) {
+        return level_->fetchEntity(component->vehicle.actor_id, false);
     }
     return nullptr;
 }
@@ -200,9 +201,9 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
         return nullptr;
     }
 
-    auto &actor = component->actor;
-    if (actor && (!actor->isRemoved() || include_removed)) {
-        return actor.get();
+    auto &actor = component->getActor();
+    if (!actor.isRemoved() || include_removed) {
+        return &actor;
     }
     return nullptr;
 }

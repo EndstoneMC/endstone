@@ -252,7 +252,7 @@ Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClient
 {
     for (const auto &[uuid, player] : players_) {
         if (const auto component = player->getHandle().getPersistentComponent<UserEntityIdentifierComponent>();
-            component->network_id == network_id && component->sub_client_id == sub_id) {
+            component->network_id == network_id && component->client_sub_id == sub_id) {
             return player;
         }
     }
