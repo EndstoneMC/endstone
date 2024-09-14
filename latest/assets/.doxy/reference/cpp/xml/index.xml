@@ -1235,6 +1235,7 @@
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ad382816a3cbeed082c9e216e7392eed1" kind="enumvalue"><name>Green</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a51e6cd92b6c45f9affdc158ecca2b8b8" kind="enumvalue"><name>Yellow</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6ab9ba865fec061c9706d2fd7ce49c0cc7" kind="enumvalue"><name>Purple</name></member>
+    <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a2e31f16d0f61e79b46d42f2228ca7bd6" kind="enumvalue"><name>RebeccaPurple</name></member>
     <member refid="bar__color_8h_1a554d2e220ce8a5afd95c31e6065a75f6a25a81701fbfa4a1efdf660a950c1d006" kind="enumvalue"><name>White</name></member>
     <member refid="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362" kind="enum"><name>BarFlag</name></member>
     <member refid="bar__flag_8h_1acc3803a64f53c1f4880bc60821eca362aa12715294416f81a7a85a5a7ebb8fc70" kind="enumvalue"><name>DarkenSky</name></member>
