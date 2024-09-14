@@ -16,13 +16,11 @@
 
 #include <bitset>
 #include <cstdarg>
-#include <cstdio>
 
 #include "bedrock/bedrock.h"
 #include "bedrock/diagnostics/log_area.h"
-#include "bedrock/diagnostics/log_level.h"
 
 namespace BedrockLog {
 ENDSTONE_HOOK void log_va(LogCategory category, std::bitset<3> channel_mask, LogRule rule, LogAreaID area,
-                          Bedrock::LogLevel priority, char const *function, int line, char const *format, va_list args);
+                          std::uint32_t priority, char const *function, int line, char const *format, va_list args);
 }  // namespace BedrockLog

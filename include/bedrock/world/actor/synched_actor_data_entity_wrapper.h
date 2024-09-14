@@ -19,10 +19,9 @@
 
 class SynchedActorDataEntityWrapper {
 public:
-    virtual ~SynchedActorDataEntityWrapper() = default;
-    gsl::not_null<void *> data_;         // SynchedActorDataComponent
-    gsl::not_null<void *> flag_data_;    // ActorDataFlagComponent
-    gsl::not_null<void *> dirty_flags_;  // ActorDataDirtyFlagsComponent
-    WeakRef<EntityContext> entity_context_;
+    gsl::not_null<void *> data_;             // +0  SynchedActorDataComponent
+    gsl::not_null<void *> flag_data_;        // +8  ActorDataFlagComponent
+    gsl::not_null<void *> dirty_flags_;      // +16 ActorDataDirtyFlagsComponent
+    WeakRef<EntityContext> entity_context_;  // +24
 };
-// static_assert(sizeof(SynchedActorDataEntityWrapper) == 40);
+BEDROCK_STATIC_ASSERT_SIZE(SynchedActorDataEntityWrapper, 48, 48);

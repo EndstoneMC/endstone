@@ -17,4 +17,6 @@
 #include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
 
 template <typename T>
-class OwnerPtr : public GameRefs<T>::OwnerStorage {};
+class OwnerPtr : public GameRefs<T>::OwnerStorage {
+    using GameRefs<T>::OwnerStorage::OwnerStorage;
+};

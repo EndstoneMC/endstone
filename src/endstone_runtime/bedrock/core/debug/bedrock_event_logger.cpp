@@ -18,11 +18,12 @@
 
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/diagnostics/log_level.h"
 #include "endstone/detail/logger_factory.h"
 #include "endstone/logger.h"
 
 void BedrockLog::log_va(LogCategory /*category*/, std::bitset<3> /*channel_mask*/, LogRule /*rule*/, LogAreaID area,
-                        Bedrock::LogLevel priority, const char * /*function*/, int /*line*/, const char *format,
+                        std::uint32_t priority, const char * /*function*/, int /*line*/, const char *format,
                         va_list args)
 {
     auto name = magic_enum::enum_name(area);

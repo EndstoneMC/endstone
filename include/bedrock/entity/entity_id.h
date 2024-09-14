@@ -38,14 +38,3 @@ struct EntityTraits {
     static constexpr entity_type entity_mask = 0x3FFFF;  // 18b
     static constexpr entity_type version_mask = 0x3FFF;  // 14b
 };
-
-template <>
-struct entt::entt_traits<EntityId> : entt::basic_entt_traits<EntityTraits> {
-    static constexpr auto page_size = ENTT_SPARSE_PAGE;
-};
-static_assert(entt::entt_traits<EntityId>::page_size == 2048);
-
-template <>
-struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
-    using type = entt::basic_storage<EntityId, EntityId, std::allocator<EntityId>>;  // NOLINT(*-identifier-naming)
-};

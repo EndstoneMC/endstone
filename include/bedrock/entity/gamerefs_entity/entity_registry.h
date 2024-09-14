@@ -22,6 +22,17 @@
 #include "bedrock/gamerefs/enable_get_weak_ref.h"
 #include "bedrock/gamerefs/weak_ref.h"
 
+template <>
+struct entt::entt_traits<EntityId> : basic_entt_traits<EntityTraits> {
+    static constexpr auto page_size = ENTT_SPARSE_PAGE;
+};
+static_assert(entt::entt_traits<EntityId>::page_size == 2048);
+
+template <>
+struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
+    using type = basic_storage<EntityId, EntityId>;  // NOLINT(*-identifier-naming)
+};
+
 class EntityRegistry : public EnableGetWeakRef<EntityRegistry>, public std::enable_shared_from_this<EntityRegistry> {
 public:
     WeakRef<EntityRegistry> getWeakRef();

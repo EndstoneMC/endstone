@@ -14,8 +14,7 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
-
+#include "bedrock/entity/entity_id.h"
 #include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
 class EntityContext : public EnableGetWeakRef<EntityContext> {
