@@ -15,10 +15,9 @@
 #pragma once
 
 #include <map>
-#include <set>
 #include <string>
 
-#include "bedrock/core/threading.h"
+#include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"
 

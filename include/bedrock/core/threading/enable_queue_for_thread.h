@@ -12,15 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/core/threading.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
+#include <memory>
+
+#include "bedrock/forward.h"
 
 namespace Bedrock::Threading {
 
-AssignedThread &getServerThread()
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&getServerThread);
-}
+class EnableQueueForThread {
+public:
+    virtual ~EnableQueueForThread() = 0;
+
+private:
+    std::unique_ptr<TaskGroup> queue_for_thread_task_group_;  // +8
+};
 
 }  // namespace Bedrock::Threading

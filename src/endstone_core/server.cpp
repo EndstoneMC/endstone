@@ -23,9 +23,9 @@ namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
 
-#include "bedrock/shared_constants.h"
-#include "bedrock/core/threading.h"
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/platform/threading/assigned_thread.h"
+#include "bedrock/shared_constants.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/block/block_descriptor.h"
 #include "bedrock/world/scores/server_scoreboard.h"

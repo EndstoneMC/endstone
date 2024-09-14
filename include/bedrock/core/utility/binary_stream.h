@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/result.h"
+#include "bedrock/platform/result.h"
 
 class ReadOnlyBinaryStream {
 public:

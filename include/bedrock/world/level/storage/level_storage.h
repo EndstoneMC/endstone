@@ -19,7 +19,7 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/core/threading.h"
+#include "bedrock/core/threading/async.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"
 #include "bedrock/world/level/storage/db_helpers.h"

@@ -17,7 +17,7 @@
 #include <cstdint>
 #include <string>
 
-#include "bedrock/core/result.h"
+#include "bedrock/platform/result.h"
 
 class IDataInput {
 public:

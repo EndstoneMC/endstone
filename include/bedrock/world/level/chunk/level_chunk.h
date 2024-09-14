@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/threading.h"
+#include "bedrock/platform/threading/mutex_details.h"
 #include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/tick.h"

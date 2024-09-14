@@ -16,10 +16,8 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/core/threading.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/weather/thunder_change_event.h"
 #include "endstone/event/weather/weather_change_event.h"

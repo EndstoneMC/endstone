@@ -19,7 +19,7 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/threading.h"
+#include "bedrock/core/threading/enable_queue_for_main_thread.h"
 #include "bedrock/network/connection.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"

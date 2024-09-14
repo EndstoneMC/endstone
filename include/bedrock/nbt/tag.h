@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/result.h"
+#include "bedrock/platform/result.h"
 #include "bedrock/util/data_io.h"
 
 class Tag {
