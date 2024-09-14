@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <gsl/gsl>
 
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_interface.h"

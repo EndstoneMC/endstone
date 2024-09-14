@@ -16,8 +16,9 @@
 
 #include <cstdint>
 
-enum class PlayerScoreSetFunction : std::int8_t {
-    Set = 0,
-    Add = 1,
-    Subtract = 2
+enum class PlayerPermissionLevel : std::int8_t {
+    Visitor = 0,
+    Member = 1,
+    Operator = 2,
+    Custom = 3
 };

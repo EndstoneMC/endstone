@@ -39,13 +39,13 @@
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_category.h"
+#include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
-#include "bedrock/world/actor/actor_type.h"
+#include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
-#include "bedrock/world/damagesource/actor_damage_source.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/material/material_type.h"
 #include "endstone/detail/actor/actor.h"
@@ -290,6 +290,7 @@ protected:
     ActorInitializationMethod init_method_;                                                 // +224
     bool force_init_method_to_spawn_on_reload_;                                             // +225
     bool added_;                                                                            // +226
+    int send_rate_counter_;                                                                 // +228
     ActorDefinitionGroup *definitions_;                                                     // +232
     std::unique_ptr<ActorDefinitionDescriptor> current_description_;                        // +240
     std::shared_ptr<RopeSystem> leash_rope_system_;                                         // +248

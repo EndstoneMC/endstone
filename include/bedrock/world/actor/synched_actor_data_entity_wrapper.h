@@ -14,8 +14,9 @@
 
 #pragma once
 
+#include <gsl/gsl>
+
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
-#include "bedrock/gamerefs/weak_ref.h"
 
 class SynchedActorDataEntityWrapper {
 public:

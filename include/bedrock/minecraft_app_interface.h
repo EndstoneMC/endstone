@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
 
 class Minecraft;
@@ -21,9 +22,8 @@ class Minecraft;
 class IMinecraftApp {
 public:
     virtual ~IMinecraftApp() = 0;
-    [[nodiscard]] virtual gsl::not_null<Bedrock::NonOwnerPointer<Minecraft>> getPrimaryMinecraft() const = 0;
-    [[nodiscard]] virtual gsl::not_null<Bedrock::NonOwnerPointer<Automation::AutomationClient>> getAutomationClient()
-        const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<Minecraft> getPrimaryMinecraft() const = 0;
+    [[nodiscard]] virtual Bedrock::NotNullNonOwnerPtr<Automation::AutomationClient> getAutomationClient() const = 0;
     [[nodiscard]] virtual bool isEduMode() const = 0;
     [[nodiscard]] virtual bool isDedicatedServer() const = 0;
     virtual void onNetworkMaxPlayersChanged(std::uint32_t) = 0;

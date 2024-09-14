@@ -23,5 +23,6 @@ enum class ActorLocation {
     ExplosionPoint = 5,
     Eyes = 6,
     BreathingPoint = 7,
-    Mouth = 8
+    Mouth = 8,
+    Count = 9
 };

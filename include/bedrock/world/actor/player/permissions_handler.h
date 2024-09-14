@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/server/commands/command_permission_level.h"
-#include "bedrock/world/actor/player/player_permission_level.h"
+#include "bedrock/server/commands/player_permission_level.h"
 
 class PermissionsHandler {
 public:

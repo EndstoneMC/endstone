@@ -16,7 +16,7 @@
 
 bool ItemStackBase::isNull() const
 {
-    if (valid_) {
+    if (valid_deprecated_) {
         const auto *item = getItem();
         if (!item || item->getFullItemName() != "minecraft:air") {
             if (count_ > 0 || block_ != nullptr || aux_value_ > 0) {

@@ -26,7 +26,7 @@
 #include "bedrock/world/events/gameplay_handler.h"
 #include "bedrock/world/events/item_event.h"
 #include "bedrock/world/events/level_event.h"
-#include "bedrock/world/events/player_event.h"
+#include "bedrock/world/events/player_events.h"
 #include "bedrock/world/events/server_event.h"
 #include "bedrock/world/scores/scoreboard_id.h"
 

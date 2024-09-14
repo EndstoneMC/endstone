@@ -14,16 +14,16 @@
 
 #include "bedrock/world/attribute/attribute_instance.h"
 
-#include "bedrock/world/attribute/base_attribute_map.h"
+#include "bedrock/world/attribute/attribute_map.h"
 
 float AttributeInstance::getCurrentValue() const
 {
-    return current_.default_value;
+    return current_value_;
 }
 
 void AttributeInstance::setCurrentValue(float value)
 {
-    current_.default_value = value;
+    current_value_ = value;
     _setDirty();
 }
 

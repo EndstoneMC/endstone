@@ -17,10 +17,11 @@
 #include <string>
 #include <vector>
 
-#include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_unique_id.h"
+#include "bedrock/world/actor/actor_types.h"
 
 class Actor;
+
 class ActorDamageSource {
 public:
     virtual ~ActorDamageSource() = default;

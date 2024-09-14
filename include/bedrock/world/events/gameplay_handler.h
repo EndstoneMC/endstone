@@ -19,7 +19,7 @@
 #include "bedrock/world/events/event_ref.h"
 #include "bedrock/world/events/event_result.h"
 #include "bedrock/world/events/level_event.h"
-#include "bedrock/world/events/player_event.h"
+#include "bedrock/world/events/player_events.h"
 #include "bedrock/world/events/server_event.h"
 
 template <typename Type>

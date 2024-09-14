@@ -28,15 +28,16 @@ public:
                              gsl::not_null<StackRefResult<GameplayUserManager>> const &);
 
 private:
-    void *save_timer_;                                      // +784 (+552) std::unique_ptr<BasicTimer>
-    LevelStorage *level_storage_;                           // +792 (+560)
-    bool is_dirty_;                                         // +800 (+568)
-    char unknown1_[40];                                     // +808 (+576)
-    PacketSender *packet_sender_;                           // +848 (+616)
-    ScoreboardId last_unique_scoreboard_id_;                // +856 (+624)
-    std::weak_ptr<void *> on_save_callback_;                // +872 (+640)
-    std::weak_ptr<void *> on_start_level_game_callback_;    // +888 (+656)
-    std::weak_ptr<void *> on_remove_actor_callback_;        // +904 (+672)
-    std::weak_ptr<void *> gameplay_user_removed_callback_;  // +920 (+688)
+    void *save_timer_;                                                              // +784 (+552)
+    LevelStorage *level_storage_;                                                   // +792 (+560)
+    bool is_dirty_;                                                                 // +800 (+568)
+    WeakRef<GameplayUserManager> gameplay_user_manager_;                            // +808 (+576)
+    std::vector<const Objective *> tracked_objectives_;                             // +824 (+592)
+    PacketSender *packet_sender_;                                                   // +848 (+616)
+    ScoreboardId last_unique_scoreboard_id_;                                        // +856 (+624)
+    std::weak_ptr<void *> on_save_subscription_;                                    // +872 (+640)
+    std::weak_ptr<void *> on_level_storage_manager_start_leave_game_subscription_;  // +888 (+656)
+    std::weak_ptr<void *> on_remove_actor_entity_references_subscription_;          // +904 (+672)
+    std::weak_ptr<void *> on_gameplay_user_removed_subscription_;                   // +920 (+688)
 };
 BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 936, 704);

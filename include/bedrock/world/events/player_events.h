@@ -15,11 +15,10 @@
 #pragma once
 
 #include "bedrock/deps/json/value.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
-#include "bedrock/world/form/player_form_close_reason.h"
-#include "endstone/endstone.h"
 
 template <std::size_t N>
 struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
@@ -37,16 +36,24 @@ struct PlayerDropItemEvent {};
 struct PlayerEatFoodEvent {};
 struct PlayerDamageEvent {};
 struct PlayerDisconnectEvent {};
+
+enum class PlayerFormCloseReason : int {
+    UserClosed = 0,
+    UserBusy = 1
+};
+
 struct PlayerFormCloseEvent {
     WeakRef<EntityContext> player;
     int form_id;
     PlayerFormCloseReason form_close_reason;
 };
+
 struct PlayerFormResponseEvent {
     WeakRef<EntityContext> player;
     int form_id;
     Json::Value form_response;
 };
+
 struct PlayerInitialSpawnEvent {};
 struct PlayerOpenContainerEvent {};
 struct PlayerShootArrowEvent {};

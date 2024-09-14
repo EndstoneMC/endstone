@@ -18,7 +18,6 @@
 #include "bedrock/entity/gamerefs_entity/owner_storage_entity.h"
 #include "bedrock/entity/gamerefs_entity/stack_result_storage_entity.h"
 #include "bedrock/entity/gamerefs_entity/weak_storage_entity.h"
-#include "bedrock/gamerefs/gamerefs_shareptr/gamerefs_shareptr.h"
 
 template <>
 struct GameRefs<EntityContext> {

@@ -46,7 +46,7 @@ public:
         [[nodiscard]] virtual bool sameItems(BaseDescriptor const &, bool) const = 0;
         [[nodiscard]] virtual bool sameItem(ItemEntry const &, bool) const = 0;
         [[nodiscard]] virtual std::string const &getFullName() const = 0;
-        virtual void unknownVfunc1() = 0;  // TODO(fixme): figure out the name of the virtual function
+        [[nodiscard]] virtual std::string toString() const = 0;
         [[nodiscard]] virtual ItemEntry getItem() const = 0;
         [[nodiscard]] virtual bool forEachItemUntil(std::function<bool(Item const &, std::int16_t)> func) const = 0;
         [[nodiscard]] virtual std::map<std::string, std::string> toMap() const = 0;

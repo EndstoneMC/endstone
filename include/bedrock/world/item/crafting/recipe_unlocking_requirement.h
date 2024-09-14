@@ -20,9 +20,14 @@
 
 class RecipeUnlockingRequirement {
 public:
-    enum class UnlockingContext : char;
+    enum class UnlockingContext : int {
+        None = 0,
+        AlwaysUnlocked = 0x1,
+        PlayerInWater = 0x2,
+        PlayerHasManyItems = 0x3,
+    };
 
 private:
-    UnlockingContext unlocking_context_;
+    UnlockingContext context_;
     std::vector<RecipeIngredient> ingredients_;
 };

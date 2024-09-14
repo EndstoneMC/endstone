@@ -38,9 +38,10 @@ public:
 private:
     friend ItemRegistryRef;
 
-    std::vector<SharedPtr<Item>> items_;                                // +16
-    std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;             // +40
-    std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;  // +104 (+80)
-    std::unordered_map<HashedString, WeakPtr<Item>> unknown2_;          // +168 (+120)
-    std::unordered_map<HashedString, WeakPtr<Item>> unknown3_;          // +232 (+160)
+    std::vector<SharedPtr<Item>> items_;                                          // +16
+    std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;                       // +40
+    std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;            // +104 (+80)
+    std::unordered_map<HashedString, WeakPtr<Item>> tile_namespace_to_item_map_;  // +168 (+120)
+    std::unordered_map<HashedString, WeakPtr<Item>> tile_item_name_to_item_map_;  // +232 (+160)
+    // ...
 };

@@ -24,7 +24,7 @@
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_permission_level.h"
-#include "bedrock/world/actor/player/abilities_index.h"
+#include "bedrock/world/actor/player/abilities.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/command/command_sender.h"

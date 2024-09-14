@@ -14,7 +14,10 @@
 
 #pragma once
 
-enum class PlayerFormCloseReason {
-    UserClosed = 0,
-    UserBusy = 1
+#include <cstdint>
+
+enum ServerAuthMovementMode : std::int8_t {
+    ClientAuthoritative = 0,
+    ServerAuthoritative = 1,
+    ServerAuthoritativeWithRewind = 2,
 };

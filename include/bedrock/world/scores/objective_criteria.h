@@ -16,7 +16,10 @@
 
 #include <string>
 
-#include "bedrock/world/scores/objective_render_type.h"
+enum class ObjectiveRenderType : std::uint8_t {
+    Integer = 0,
+    Hearts = 1,
+};
 
 class ObjectiveCriteria {
 public:

@@ -20,16 +20,16 @@
 
 class ItemDescriptorCount : public ItemDescriptor {
 public:
-    [[nodiscard]] std::int16_t getStackSize() const
+    [[nodiscard]] std::uint16_t getStackSize() const
     {
         return stack_size_;
     }
 
-    void setStackSize(std::int16_t stack_size)
+    void setStackSize(std::uint16_t stack_size)
     {
         stack_size_ = stack_size;
     }
 
 private:
-    std::int16_t stack_size_;
+    std::uint16_t stack_size_;
 };

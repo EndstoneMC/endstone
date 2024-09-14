@@ -16,9 +16,107 @@
 
 #include <array>
 
-#include "abilities_index.h"
-#include "ability.h"
+#include <entt/entt.hpp>
+
 #include "bedrock/bedrock.h"
+
+enum class AbilitiesIndex : std::int16_t {
+    Invalid = -1,
+    Build = 0,
+    Mine = 1,
+    DoorsAndSwitches = 2,
+    OpenContainers = 3,
+    AttackPlayers = 4,
+    AttackMobs = 5,
+    OperatorCommands = 6,
+    Teleport = 7,
+    Invulnerable = 8,
+    Flying = 9,
+    MayFly = 10,
+    Instabuild = 11,
+    Lightning = 12,
+    FlySpeed = 13,
+    WalkSpeed = 14,
+    Muted = 15,
+    WorldBuilder = 16,
+    NoClip = 17,
+    PrivilegedBuilder = 18,
+    AbilityCount = 19,
+};
+
+class Ability {
+public:
+    enum class Type : std::uint8_t {
+        Invalid = 0,
+        Unset = 1,
+        Bool = 2,
+        Float = 3,
+    };
+
+    enum class Options : std::uint8_t {
+        None = 0,
+        NoSave = 1,
+        CommandExposed = 2,
+        PermissionsInterfaceExposed = 4,
+        _entt_enum_as_bitmask  // NOLINT(*-identifier-naming)
+    };
+
+    union Value {
+        bool bool_val;
+        float float_val;
+    };
+
+    Ability() = default;
+
+    [[nodiscard]] Type getType() const
+    {
+        return type_;
+    }
+
+    [[nodiscard]] bool getBool() const
+    {
+        return value_.bool_val;
+    }
+
+    [[nodiscard]] float getFloat() const
+    {
+        return value_.float_val;
+    }
+
+    void setBool(bool value)
+    {
+        if (type_ == Type::Unset) {
+            type_ = Type::Bool;
+            value_ = {};
+        }
+        value_.bool_val = value;
+    }
+
+    void setFloat(float value)
+    {
+        if (type_ == Type::Unset) {
+            type_ = Type::Float;
+            value_ = {};
+        }
+        value_.float_val = value;
+    }
+
+    [[nodiscard]] bool hasOptions(Options options) const
+    {
+        return !!(options & options_);
+    }
+
+    [[nodiscard]] bool isSet() const
+    {
+        return type_ != Type::Unset;
+    }
+
+private:
+    Type type_;
+    Value value_;
+    Options options_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(Ability, 12, 12);
 
 class Abilities {
 public:

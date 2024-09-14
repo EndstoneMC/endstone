@@ -18,9 +18,8 @@
 #include <memory>
 #include <optional>
 
-#include "bedrock/world/scores/display_objective.h"
 #include "bedrock/world/scores/objective.h"
-#include "criteria.h"
+#include "endstone/detail/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
 

@@ -25,6 +25,7 @@
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/entity/strict/strict_entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/gamerefs/stack_ref_result.h"
@@ -237,7 +238,7 @@ public:
     virtual void handleLevelEvent(LevelEvent, CompoundTag const &) = 0;
     virtual void handleStopSoundEvent(std::string const &) = 0;
     virtual void handleStopAllSounds() = 0;
-    virtual void unknownVfunc1() = 0;  // TODO(fixme): figure out the name of the virtual function
+    virtual void handleStopMusicEvent() = 0;
     virtual void broadcastLevelEvent(LevelEvent, Vec3 const &, int, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLevelEvent(LevelEvent, CompoundTag const &, UserEntityIdentifierComponent const *) = 0;
     virtual void broadcastLocalEvent(BlockSource &, LevelEvent, Vec3 const &, int) = 0;
@@ -377,10 +378,9 @@ private:
 
 public:
     [[nodiscard]] virtual PacketSender *getPacketSender() const = 0;
-    // virtual void setPacketSender(PacketSender *) = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<NetEventCallback> getNetEventCallback() const = 0;
     virtual void setNetEventCallback(Bedrock::NonOwnerPointer<NetEventCallback>) = 0;
-    virtual void unknownVfunc2() = 0;  // TODO(fixme): figure out the name of the virtual function
+    [[nodiscard]] virtual gsl::not_null<StackRefResult<ILevelRandom>> getILevelRandom() = 0;
     [[nodiscard]] virtual Random &getIRandom() const = 0;
     [[nodiscard]] virtual Random &getRandom() const = 0;
     [[nodiscard]] virtual Random &getThreadRandom() const = 0;

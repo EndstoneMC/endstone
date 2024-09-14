@@ -16,7 +16,7 @@
 
 #include <entt/entt.hpp>
 
-#include "bedrock/world/attribute/base_attribute_map.h"
+#include "bedrock/world/attribute/attribute_map.h"
 
 struct AttributesComponent {
     BaseAttributeMap attributes;

@@ -14,9 +14,12 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/bedrock.h"
+#include "bedrock/entity/components/replay_state_config.h"
 
-enum class RedefinitionMode : std::uint8_t {
-    KeepCurrent = 0,
-    UpdateToNewDefault = 1
+struct SyncedPlayerMovementSettings {
+    ServerAuthMovementMode authority_mode;
+    int rewind_history_size;
+    bool server_auth_block_breaking;
 };
+BEDROCK_STATIC_ASSERT_SIZE(SyncedPlayerMovementSettings, 12, 12);

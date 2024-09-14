@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/actor/actor_type.h"
+#include "bedrock/world/actor/actor_types.h"
 
 struct ActorTypeComponent {
     ActorType type;

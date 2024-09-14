@@ -19,7 +19,7 @@
 
 class ScoreboardIdentityRef {
 public:
-    [[nodiscard]] int getNumReferences() const
+    [[nodiscard]] std::uint32_t getNumReferences() const
     {
         return num_references_;
     }
@@ -60,6 +60,6 @@ public:
     }
 
 private:
-    int num_references_;
+    std::uint32_t num_references_;
     ScoreboardId scoreboard_id_;
 };

@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include <system_error>
 #include <unordered_map>
 
 #include "bedrock/bedrock.h"

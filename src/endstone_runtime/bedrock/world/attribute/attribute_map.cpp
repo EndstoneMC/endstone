@@ -12,7 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/attribute/base_attribute_map.h"
+#include "bedrock/world/attribute/attribute_map.h"
+
+#include <stdexcept>
 
 const AttributeInstance &BaseAttributeMap::getInstance(const Attribute &attribute) const
 {

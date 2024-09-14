@@ -183,34 +183,44 @@ public:
 
     [[nodiscard]] float getFurnaceBurnIntervalMultipler() const
     {
-        return furnace_burn_interval_multipler_;
+        return furnace_burn_interval_modifier_;
     }
 
 private:
     std::string texture_atlas_file_;                  // +8
     int frame_count_;                                 // +40
-    std::uint16_t use_anim_;                          // +44
-    bool animates_in_toolbar_;                        // +46
+    bool animates_in_toolbar_;                        // +44
+    bool is_mirrored_art_;                            // +45
+    std::uint16_t use_anim_;                          // +46
     std::string hover_text_color_format_;             // +48
-    std::uint64_t unknown_;                           // +80
+    int icon_frame_;                                  // +80
+    int atlas_frame_;                                 // +84
     int atlas_total_frame_;                           // +88
     std::string icon_name_;                           // +96
     std::string atlas_name_;                          // +128
-    std::int8_t max_stack_size_;                      // +160
+    std::uint8_t max_stack_size_;                     // +160
     std::int16_t id_;                                 // +162
     std::string description_id_;                      // +168
     HashedString raw_name_id_;                        // +200
     std::string namespace_;                           // +248
     HashedString full_name_;                          // +280
     std::int16_t max_damage_;                         // +328
-    std::int16_t unknown2_;                           // +330
+    bool is_glint_ : 1;                               // +330
+    bool hand_equipped_ : 1;                          //
+    bool is_stacked_by_data_ : 1;                     //
+    bool requires_world_builder_ : 1;                 //
+    bool explodable_ : 1;                             //
+    bool fire_resistat_ : 1;                          //
+    bool should_despawn_ : 1;                         //
+    bool allow_offhand_ : 1;                          //
+    bool ignores_permission_ : 1;                     // +331
     int max_use_duration_;                            // +332
     BaseGameVersion min_required_base_game_version_;  // +336
     WeakPtr<BlockLegacy> legacy_block_;               // +456
     CreativeItemCategory creative_category_;          // +464
     Item *crafting_remaining_item_;                   // +472
     std::string creative_group_;                      // +480
-    float furnace_burn_interval_multipler_;           // +512
+    float furnace_burn_interval_modifier_;           // +512
     float furnace_xp_multiplier_;                     // +516
     int unknown3_;                                    // +520
     int unknown4_;                                    // +524

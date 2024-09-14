@@ -17,6 +17,8 @@
 #include <memory>
 #include <stdexcept>
 
+#include <gsl/pointers>
+
 #include "bedrock/core/utility/enable_non_owner_references.h"
 
 namespace Bedrock {
@@ -89,5 +91,8 @@ private:
     }
     std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_;
 };
+
+template <typename T>
+using NotNullNonOwnerPtr = gsl::not_null<NonOwnerPointer<T>>;
 
 }  // namespace Bedrock

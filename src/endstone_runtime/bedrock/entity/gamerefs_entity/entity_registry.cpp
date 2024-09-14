@@ -14,6 +14,8 @@
 
 #include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
+#include "bedrock/gamerefs/weak_ref.h"
+
 WeakRef<EntityRegistry> EntityRegistry::getWeakRef()
 {
     return WeakRef<EntityRegistry>(weak_from_this());

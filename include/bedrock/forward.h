@@ -92,6 +92,7 @@ class IAddActorEntityProxy;
 class IContainerManager;
 class IFoodItemComponent;
 class IGameModuleShared;
+class ILevelRandom;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;

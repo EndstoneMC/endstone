@@ -17,7 +17,11 @@
 #include <cstdint>
 
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/world/attribute/redefinition_mode.h"
+
+enum class RedefinitionMode : std::int8_t {
+    KeepCurrent = 0,
+    UpdateToNewDefault = 1
+};
 
 class Attribute {
 public:

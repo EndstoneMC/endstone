@@ -20,7 +20,9 @@
 
 #include "bedrock/entity/entity_id.h"
 #include "bedrock/gamerefs/enable_get_weak_ref.h"
-#include "bedrock/gamerefs/weak_ref.h"
+
+template <typename>
+class WeakRef;
 
 template <>
 struct entt::entt_traits<EntityId> : basic_entt_traits<EntityIdTraits> {

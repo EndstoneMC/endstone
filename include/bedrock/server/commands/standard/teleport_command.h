@@ -20,7 +20,7 @@
 #include "bedrock/core/math/vec3.h"
 #include "bedrock/util/rotation_command_utils.h"
 #include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_type.h"
+#include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/level/change_dimension_request.h"
 
 class TeleportData {

@@ -19,9 +19,19 @@
 
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/world/scores/objective_criteria.h"
-#include "bedrock/world/scores/player_score_set_function.h"
-#include "bedrock/world/scores/score_info.h"
+#include "bedrock/world/scores/score.h"
 #include "bedrock/world/scores/scoreboard_id.h"
+
+enum class ObjectiveSortOrder : std::uint8_t {
+    Ascending = 0,
+    Descending = 1
+};
+
+enum class PlayerScoreSetFunction : std::uint8_t {
+    Set = 0,
+    Add = 1,
+    Subtract = 2
+};
 
 class Objective : public Bedrock::EnableNonOwnerReferences {
 public:
@@ -45,4 +55,31 @@ private:
     std::string name_;                              // +88
     std::string display_name_;                      // +120
     const ObjectiveCriteria &criteria_;             // +152
+};
+
+class DisplayObjective {
+public:
+    [[nodiscard]] bool isDisplaying(const Objective &objective) const
+    {
+        return objective_ == &objective;
+    }
+
+    [[nodiscard]] bool isValid() const
+    {
+        return objective_ != nullptr;
+    }
+
+    [[nodiscard]] const Objective &getObjective() const
+    {
+        return *objective_;
+    }
+
+    [[nodiscard]] ObjectiveSortOrder getSortOrder() const
+    {
+        return sort_order_;
+    }
+
+private:
+    const Objective *objective_;
+    ObjectiveSortOrder sort_order_;
 };

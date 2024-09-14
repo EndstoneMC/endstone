@@ -20,22 +20,24 @@
 #include "bedrock/world/item/crafting/recipe_ingredient.h"
 #include "bedrock/world/item/crafting/recipe_unlocking_requirement.h"
 #include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/network_item_instance_descriptor.h"
 
 struct RecipeNetIdTag {};
 using RecipeNetId = TypedServerNetId<RecipeNetIdTag, unsigned int>;
 
 class Recipe {
 public:
-    class Result {
+    class Results {
     public:
         [[nodiscard]] const std::vector<ItemInstance> &getItems() const
         {
-            return items_;
+            return results_;
         }
 
     private:
-        bool unknown_;                     // +0
-        std::vector<ItemInstance> items_;  // +8
+        bool results_are_loaded_;            // +0
+        std::vector<ItemInstance> results_;  // +8
+        std::vector<NetworkItemInstanceDescriptor> unloaded_results_;
     };
 
     virtual ~Recipe() = 0;
@@ -81,7 +83,7 @@ public:
 
     [[nodiscard]] const std::vector<RecipeIngredient> &getIngredients() const
     {
-        return ingredients_;
+        return my_ingredients_;
     }
 
     [[nodiscard]] const RecipeUnlockingRequirement &getUnlockingRequirement() const
@@ -96,15 +98,14 @@ public:
 
 private:
     std::string recipe_id_;                             // +8
-    mce::UUID id_;                                      // +40  (+32)
+    mce::UUID my_id_;                                   // +40  (+32)
     int width_;                                         // +56  (+48)
     int height_;                                        // +60  (+52)
     int priority_;                                      // +64  (+56)
     RecipeNetId recipe_net_id_;                         // +68  (+60)
-    std::vector<RecipeIngredient> ingredients_;         // +72  (+64)
-    Result result_;                                     // +96  (+88)
-    char pad_[24];                                      // +104 (+96)
+    std::vector<RecipeIngredient> my_ingredients_;      // +72  (+64)
+    Results results_;                                   // +96  (+88)
     RecipeUnlockingRequirement unlocking_requirement_;  // +152 (+144)
-    SemVersion version_;                                // +184 (+176)
+    SemVersion recipe_data_version_;                    // +184 (+176)
     HashedString tag_;                                  // +296 (+264)
 };

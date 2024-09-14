@@ -43,19 +43,19 @@ private:
     std::vector<void *> listeners_;                        // +72 std::vector<AttributeInstanceHandle>
     std::shared_ptr<AttributeInstanceDelegate> delegate_;  // +96
     union {                                                //
-        float default_values[3];                           //
+        float default_values_[3];                          //
         struct {                                           //
-            float min_value;                               // (+112)
-            float max_value;                               // (+116)
-            float default_value;                           // (+120)
+            float default_min_value_;                      // (+112)
+            float default_max_value_;                      // (+116)
+            float default_value_;                          // (+120)
         };                                                 //
-    } default_;                                            // +112
+    };                                                     // +112
     union {                                                //
-        float default_values[3];                           //
+        float current_values_[3];                          //
         struct {                                           //
-            float min_value;                               // (+124)
-            float max_value;                               // (+128)
-            float default_value;                           // (+132)
+            float current_min_value_;                      // (+124)
+            float current_max_value_;                      // (+128)
+            float current_value_;                          // (+132)
         };                                                 //
-    } current_;                                            // +124
+    };                                                     // +124
 };

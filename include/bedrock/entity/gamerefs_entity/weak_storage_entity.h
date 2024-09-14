@@ -16,10 +16,9 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/entity/entity_id.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/entity_registry.h"
 #include "bedrock/gamerefs/weak_ref.h"
-
-class EntityRegistry;
-class EntityContext;
 
 class WeakStorageEntity {
 public:

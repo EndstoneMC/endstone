@@ -95,8 +95,8 @@ public:
     virtual int GetLowestPing(AddressOrGUID) const = 0;
     virtual void SetOccasionalPing(bool) = 0;
     virtual std::uint64_t GetClockDifferential(AddressOrGUID) = 0;
-    virtual void unknownSetter(bool) = 0;  // TODO(fixme): figure out the name of the virtual function
-    virtual bool unknownGetter() = 0;      // TODO(fixme): figure out the name of the virtual function
+    virtual void SetAllowUnconnectedPings(bool) = 0;
+    virtual bool GetAllowUnconnectedPings() const = 0;
     virtual void SetOfflinePingResponse(char const *, unsigned int) = 0;
     virtual void GetOfflinePingResponse(char **, unsigned int *) = 0;
     virtual SystemAddress GetInternalID(SystemAddress, int) const = 0;
