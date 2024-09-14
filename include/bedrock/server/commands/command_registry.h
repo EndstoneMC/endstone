@@ -38,8 +38,11 @@ class CommandParameterData;
 
 class CommandRegistry {
 public:
+    static int const HardTerminalCount = 0x22;
+    static int const NonTerminalBit = 0x100000;
+    static int const FirstNonTerminal = 0x100001;
     enum class HardNonTerminal : std::uint32_t {
-        // Epsilon = NonTerminalBit,
+        Epsilon = NonTerminalBit,
         Int = 0x100001,
         Float = 0x100002,
         Val = 0x100003,
@@ -134,9 +137,18 @@ public:
     };
 
     class Symbol {
+        static int const EnumBit = 0x200000;
+        static int const OptionalBit = 0x400000;
+        static int const FactorizationBit = 0x800000;
+        static int const PostfixBit = 0x1000000;
+        static int const EnumValueBit = 0x2000000;
+        static int const SoftEnumBit = 0x4000000;
+        static int const ChainedSubcommandBit = 0x8000000;
+        static int const ChainedSubcommandValueBit = 0x10000000;
+
     public:
         explicit Symbol(std::uint32_t value = 0) : value_(value){};
-        explicit Symbol(CommandRegistry::HardNonTerminal value) : value_(static_cast<std::uint32_t>(value)){};
+        explicit Symbol(HardNonTerminal value) : value_(static_cast<std::uint32_t>(value)){};
 
         [[nodiscard]] std::uint32_t value() const
         {
@@ -167,19 +179,19 @@ public:
     };
 
     struct Signature {
-        std::string name;                                  // +0
-        std::string description;                           // +32
-        std::vector<CommandRegistry::Overload> overloads;  // +64
-        std::vector<int> subcommand_values;                // +88
-        CommandPermissionLevel permission_level;           // +112
-        CommandRegistry::Symbol command_symbol;            // +116
-        CommandRegistry::Symbol command_alias_symbol;      // +120
-        CommandFlag flags;                                 // +124
-        int first_rule;                                    // +128
-        int first_factorization;                           // +132
-        int first_optional;                                // +136
-        bool runnable;                                     // +140
-        std::int64_t unknown7;                             // +144
+        std::string name;                         // +0
+        std::string description;                  // +32
+        std::vector<Overload> overloads;          // +64
+        std::vector<int> subcommand_values;       // +88
+        CommandPermissionLevel permission_level;  // +112
+        Symbol command_symbol;                    // +116
+        Symbol command_alias_symbol;              // +120
+        CommandFlag flags;                        // +124
+        int first_rule;                           // +128
+        int first_factorization;                  // +132
+        int first_optional;                       // +136
+        bool runnable;                            // +140
+        std::int64_t unknown7;                    // +144
     };
 
     struct ParseToken {
@@ -194,12 +206,12 @@ public:
     };
     BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
 
-    using ParseRule = bool (CommandRegistry::*)(void *, const CommandRegistry::ParseToken &, const CommandOrigin &, int,
-                                                std::string &, std::vector<std::string> &) const;
+    using ParseRule = bool (CommandRegistry::*)(void *, const ParseToken &, const CommandOrigin &, int, std::string &,
+                                                std::vector<std::string> &) const;
     using CommandOverrideFunctor = std::function<void(CommandFlag &, std::string const &)>;
 
     template <typename T>
-    bool parse(void *value, const CommandRegistry::ParseToken &parse_token, const CommandOrigin &, int, std::string &,
+    bool parse(void *value, const ParseToken &parse_token, const CommandOrigin &, int, std::string &,
                std::vector<std::string> &) const;
 
     class ParseTable;
@@ -214,6 +226,8 @@ public:
     class OptionalParameterChain;
     class ConstrainedValue;
     class RegistryState;
+    struct ChainedSubcommand;
+    struct Factorization;
 
     ENDSTONE_HOOK void registerCommand(const std::string &name, char const *description, CommandPermissionLevel level,
                                        CommandFlag flag1, CommandFlag flag2);
@@ -228,15 +242,14 @@ public:
     }
 
     template <typename CommandType>
-    const CommandRegistry::Overload *registerOverload(const char *name, CommandVersion version,
-                                                      std::vector<CommandParameterData> params)
+    const Overload *registerOverload(const char *name, CommandVersion version, std::vector<CommandParameterData> params)
     {
-        auto *signature = const_cast<CommandRegistry::Signature *>(findCommand(name));
+        auto *signature = const_cast<Signature *>(findCommand(name));
         if (!signature) {
             return nullptr;
         }
 
-        auto overload = CommandRegistry::Overload(version, CommandRegistry::allocateCommand<CommandType>);
+        auto overload = Overload(version, allocateCommand<CommandType>);
         overload.params = std::move(params);
 
         signature->overloads.push_back(overload);
@@ -244,56 +257,55 @@ public:
         return &signature->overloads.back();
     }
 
-    std::string describe(const CommandRegistry::Signature &signature, const CommandRegistry::Overload &overload)
+    std::string describe(const Signature &signature, const Overload &overload)
     {
         return describe(signature, signature.name, overload, 0, nullptr, nullptr);
     }
 
-    std::function<void(class Packet const &)> network_update_callback;                             // +0
-    std::function<int(bool &, std::string const &, class Actor const &)> get_score_for_objective;  // +56
-    bool edu_mode;                                                                                 // +128
-    std::vector<CommandRegistry::ParseRule> rules;                                                 // +136
-    std::map<std::uint32_t, CommandRegistry::ParseTable> parse_tables;                             // +160
-    std::vector<CommandRegistry::OptionalParameterChain> optionals;                                // +176
-    std::vector<std::string> enum_values;                                                          // +200
-    std::vector<CommandRegistry::Enum> enums;                                                      // +224
-    std::vector<std::string> subcommands;                                                          // +248
-    std::vector<CommandRegistry::Enum> chained_subcommands;                                        // +272
-    std::vector<CommandRegistry::Symbol> symbols;                                                  // +296
-    std::vector<std::string> postfixes;                                                            // +320
-    std::map<std::string, std::uint32_t> enum_lookup;                                              // +344
-    std::map<std::string, CommandRegistry::Symbol> enum_value_lookup;                              // +360
-    std::map<std::string, std::uint32_t> subcommand_symbol_index;                                  // +376
-    std::map<std::string, CommandRegistry::Symbol> subcommand_symbols;                             // +392
-    std::vector<CommandRegistry::Symbol> command_symbols;                                          // +408
-    std::map<std::string, CommandRegistry::Signature> signatures;                                  // +432
-    std::map<Bedrock::typeid_t<CommandRegistry>, int> type_lookup;                                 // +448
-    std::map<std::string, std::string> aliases;                                                    // +464
-    std::vector<SemanticConstraint> semantic_constraints;                                          // +480
-    std::map<SemanticConstraint, unsigned char> semantic_constraint_lookup;                        // +504
-    std::vector<CommandRegistry::ConstrainedValue> constrained_values;                             // +520
-    std::map<std::pair<std::uint64_t, std::uint32_t>, std::uint32_t> constrained_value_lookup;     // +544
-    std::vector<CommandRegistry::SoftEnum> soft_enums;                                             // +560
-    std::map<std::string, std::uint32_t> soft_enum_lookup;                                         // +584
-    std::vector<CommandRegistry::RegistryState> state_stack;                                       // +600
-    char param_symbols[104];                                                                       // +624
-    std::unordered_map<unsigned char, unsigned char> unknown11;                                    // +728
-    std::unordered_map<unsigned char, unsigned char> unknown12;                                    // +792
-    // ...
+    std::function<void(Packet const &)> network_update_callback;                                // +0
+    std::function<int(bool &, std::string const &, Actor const &)> get_score_for_objective;     // +56
+    bool edu_mode;                                                                              // +128
+    std::vector<ParseRule> rules;                                                               // +136
+    std::map<std::uint32_t, ParseTable> parse_tables;                                           // +160
+    std::vector<OptionalParameterChain> optionals;                                              // +176
+    std::vector<std::string> enum_values;                                                       // +200
+    std::vector<Enum> enums;                                                                    // +224
+    std::vector<std::string> chained_subcommand_values;                                         // +248
+    std::vector<ChainedSubcommand> chained_subcommands;                                         // +272
+    std::vector<Factorization> factorizations;                                                  // +296
+    std::vector<std::string> postfixes;                                                         // +320
+    std::map<std::string, std::uint32_t> enum_lookup;                                           // +344
+    std::map<std::string, std::uint64_t> enum_value_lookup;                                     // +360
+    std::map<std::string, std::uint32_t> chained_subcommand_lookup;                             // +376
+    std::map<std::string, std::uint64_t> chained_subcommand_value_lookup;                       // +392
+    std::vector<Symbol> command_symbols;                                                        // +408
+    std::map<std::string, Signature> signatures;                                                // +432
+    std::map<Bedrock::typeid_t<CommandRegistry>, std::int32_t> type_lookup;                     // +448
+    std::map<std::string, std::string> aliases;                                                 // +464
+    std::vector<SemanticConstraint> semantic_constraints;                                       // +480
+    std::map<SemanticConstraint, std::uint8_t> semantic_constraint_lookup;                      // +504
+    std::vector<ConstrainedValue> constrained_values;                                           // +520
+    std::map<std::pair<std::uint64_t, std::uint32_t>, std::uint32_t> constrained_value_lookup;  // +544
+    std::vector<SoftEnum> soft_enums;                                                           // +560
+    std::map<std::string, std::uint32_t> soft_enum_lookup;                                      // +584
+    std::vector<RegistryState> state_stack;                                                     // +600
+    char param_symbols[100];                                                                    // +624
+    std::unordered_set<int> skip_on_eps_autocomplete_symbols;                                   // +728
+    std::unordered_set<int> allow_empty_symbols;                                                // +792
+    CommandOverrideFunctor command_override_functor;
 
 private:
-    [[nodiscard]] ENDSTONE_HOOK const CommandRegistry::Signature *findCommand(const std::string &name) const;
-    [[nodiscard]] ENDSTONE_HOOK std::unique_ptr<Command> createCommand(const CommandRegistry::ParseToken &parse_token,
+    [[nodiscard]] ENDSTONE_HOOK const Signature *findCommand(const std::string &name) const;
+    [[nodiscard]] ENDSTONE_HOOK std::unique_ptr<Command> createCommand(const ParseToken &parse_token,
                                                                        const CommandOrigin &origin, int version,
                                                                        std::string &error_message,
                                                                        std::vector<std::string> &error_params) const;
     [[nodiscard]] ENDSTONE_HOOK std::string describe(CommandParameterData const &) const;
-    [[nodiscard]] ENDSTONE_HOOK std::string describe(const CommandRegistry::Signature &signature,
-                                                     const std::string &name, const CommandRegistry::Overload &overload,
-                                                     unsigned int a4, unsigned int *a5, unsigned int *a6) const;
+    [[nodiscard]] ENDSTONE_HOOK std::string describe(const Signature &signature, const std::string &name,
+                                                     const Overload &overload, unsigned int a4, unsigned int *a5,
+                                                     unsigned int *a6) const;
 
-    ENDSTONE_HOOK void registerOverloadInternal(CommandRegistry::Signature &signature,
-                                                CommandRegistry::Overload &overload);
+    ENDSTONE_HOOK void registerOverloadInternal(Signature &signature, Overload &overload);
 };
 
 enum class CommandParameterDataType : int {
@@ -303,7 +315,7 @@ enum class CommandParameterDataType : int {
     Postfix = 3
 };
 
-enum class CommandParameterOption : char {
+enum class CommandParameterOption : std::uint8_t {
     None = 0,
     EnumAutocompleteExpansion = 1,
     HasSemanticConstraint = 2,

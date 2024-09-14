@@ -132,7 +132,7 @@ bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command)
     auto origin = CommandOrigin::fromEndstone(sender);
     CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
     auto result = getMinecraftCommands().executeCommand(ctx, true);
-    return result.success;
+    return result.isSuccess();
 }
 
 void EndstoneServer::loadPlugins()

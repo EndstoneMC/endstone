@@ -29,6 +29,7 @@
 #include "bedrock/network/packet/transfer_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/platform/build_platform.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/game_type.h"

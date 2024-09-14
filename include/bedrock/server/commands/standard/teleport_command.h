@@ -18,22 +18,10 @@
 
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
-#include "bedrock/server/commands/rotation_command_utils.h"
+#include "bedrock/util/rotation_command_utils.h"
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/actor_type.h"
-#include "bedrock/world/level/dimension/dimension_interface.h"
-
-class ChangeDimensionRequest {
-public:
-    int unknown1;                  // +0
-    DimensionType from_dimension;  // +4
-    DimensionType to_dimension;    // +8
-    Vec3 from_position;            // +12
-    Vec3 to_position;              // +24
-    bool unknown2;                 // +36
-    bool unknown3;                 // +37
-    void *unknown4;                // +40 std::unique_ptr
-};
+#include "bedrock/world/level/change_dimension_request.h"
 
 class TeleportData {
 public:

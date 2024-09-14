@@ -126,6 +126,7 @@ class Path;
 class PauseManager;
 class PermissionsFile;
 class PhotoStorage;
+class PlayerListEntry;
 class PlayerMovementSettings;
 class PortalForcer;
 class PositionTrackingDBClient;

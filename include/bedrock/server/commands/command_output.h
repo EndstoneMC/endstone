@@ -16,6 +16,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 #include <vector>
 
 #include "bedrock/bedrock.h"
@@ -42,7 +43,7 @@ public:
 
 class CommandOutputParameter {
 public:
-    explicit CommandOutputParameter(std::string value) : string(value) {}
+    explicit CommandOutputParameter(std::string value) : string(std::move(value)) {}
     std::string string;  // +0
     int count{0};        // +32
 };

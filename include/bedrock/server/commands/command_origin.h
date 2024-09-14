@@ -23,8 +23,6 @@
 #include "bedrock/network/network_identifier.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_origin_data.h"
-#include "bedrock/server/commands/command_origin_identity.h"
-#include "bedrock/server/commands/command_origin_type.h"
 #include "bedrock/server/commands/command_permission_level.h"
 #include "bedrock/world/actor/player/abilities_index.h"
 #include "bedrock/world/level/block_pos.h"
@@ -34,6 +32,11 @@
 class Actor;
 class Level;
 class ILevel;
+
+struct CommandOriginIdentity {
+    std::string xuid;
+    std::string platform_online_id;
+};
 
 class CommandOrigin {
 public:

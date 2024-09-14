@@ -20,7 +20,6 @@
 #include "bedrock/bedrock.h"
 
 class SayCommand {
-private:
     // NOLINTNEXTLINE(*-identifier-naming)
     ENDSTONE_HOOK static void _sendMessage(std::string const &, std::optional<std::string>, std::string const &,
                                            struct CommandOriginIdentity const &, class Level &);

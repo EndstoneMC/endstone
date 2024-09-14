@@ -17,12 +17,18 @@
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/server/commands/command.h"
 
-class RotationCommandUtils {
+namespace RotationCommandUtils {
+class RotationData {
 public:
-    class RotationData {
-    public:
-        RelativeFloat rot_x;
-        RelativeFloat rot_y;
-        std::optional<Vec2> command_origin_rotation;
-    };
+    RotationData(RelativeFloat const &rot_x, RelativeFloat const &rot_y,
+                 std::optional<Vec2> const &command_origin_rotation)
+        : rot_x_(rot_x), rot_y_(rot_y), command_origin_rotation_(command_origin_rotation)
+    {
+    }
+
+private:
+    RelativeFloat rot_x_;
+    RelativeFloat rot_y_;
+    std::optional<Vec2> command_origin_rotation_;
 };
+};  // namespace RotationCommandUtils

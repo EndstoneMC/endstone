@@ -15,19 +15,10 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/utility/mc_result.h"
 #include "bedrock/server/commands/command_context.h"
 #include "bedrock/server/commands/command_output.h"
 #include "bedrock/server/commands/command_registry.h"
-
-struct MCRESULT {
-    bool success{false};
-    std::uint8_t category{0};
-    std::uint16_t code{0};
-};
-inline MCRESULT const MCRESULT_Success{true};                     // NOLINT
-inline MCRESULT const MCRESULT_CommandNotFound{false, 0, 1};      // NOLINT
-inline MCRESULT const MCRESULT_NotEnoughPermission{false, 0, 2};  // NOLINT
-inline MCRESULT const MCRESULT_CommandsDisabled{false, 0, 7};     // NOLINT
 
 class MinecraftCommands {
 public:
@@ -49,4 +40,5 @@ private:
     std::unique_ptr<CommandOutputSender> output_sender_;                                       // +8
     std::unique_ptr<CommandRegistry> registry_;                                                // +16
     CommandPermissionLevel operator_command_permission_level_{CommandPermissionLevel::Admin};  // +24
+    // ...
 };

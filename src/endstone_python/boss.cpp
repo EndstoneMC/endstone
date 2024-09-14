@@ -34,6 +34,7 @@ void init_boss(py::module_ &m)
         .value("GREEN", BarColor::Green)
         .value("YELLOW", BarColor::Yellow)
         .value("PURPLE", BarColor::Purple)
+        .value("REBECCA_PURPLE", BarColor::RebeccaPurple)
         .value("WHITE", BarColor::White);
 
     py::enum_<BarFlag>(m, "BarFlag")  //

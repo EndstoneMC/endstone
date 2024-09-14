@@ -14,9 +14,7 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
-
-enum class ActorType {
+enum class ActorType : int {
     Undefined = 1,
     TypeMask = 0x000000ff,
     Mob = 0x00000100,
