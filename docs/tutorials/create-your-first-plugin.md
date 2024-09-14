@@ -54,7 +54,7 @@ toc_depth: 2
 
     !!! tip
         Endstone server requires its plugins to be installed in the same Python environment. A virtual environment is
-        **strongly recommanded**.
+        **strongly recommended**.
 
     ### Check your dependencies
 
