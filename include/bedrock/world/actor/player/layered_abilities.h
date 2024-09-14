@@ -17,8 +17,17 @@
 #include <array>
 
 #include "bedrock/world/actor/player/abilities.h"
-#include "bedrock/world/actor/player/abilities_layer.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
+
+enum class AbilitiesLayer : std::uint16_t {
+    CustomCache = 0,
+    Base = 1,
+    Spectator = 2,
+    Commands = 3,
+    Editor = 4,
+    LoadingScreen = 5,
+    LayerCount = 6
+};
 
 class LayeredAbilities {
 public:
@@ -76,6 +85,16 @@ public:
     [[nodiscard]] const PermissionsHandler &getPermissionHandler() const
     {
         return permissions_;
+    }
+
+    [[nodiscard]] CommandPermissionLevel getCommandPermissions() const
+    {
+        return permissions_.command_permissions;
+    }
+
+    [[nodiscard]] PlayerPermissionLevel getPlayerPermissions() const
+    {
+        return permissions_.player_permissions;
     }
 
     void forEachLayer(const std::function<void(AbilitiesLayer, Abilities &)> &callback)

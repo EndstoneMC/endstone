@@ -16,10 +16,10 @@
 
 #include <functional>
 
+#include "bedrock/common_types.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/network/packet.h"
-#include "bedrock/network/sub_client_id.h"
 
 class PacketSender : public Bedrock::EnableNonOwnerReferences {
 public:

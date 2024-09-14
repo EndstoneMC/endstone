@@ -14,11 +14,8 @@
 
 #pragma once
 
-#include <string>
-#include <vector>
-
 #include "bedrock/network/packet.h"
-#include "bedrock/network/packet/types/serialized_abilities_data.h"
+#include "bedrock/network/packet/types/world/actor/serialized_abilities_data.h"
 
 class UpdateAbilitiesPacket : public Packet {
 public:

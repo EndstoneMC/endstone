@@ -14,11 +14,25 @@
 
 #pragma once
 
-enum class SubClientId : std::uint8_t {
-    PrimaryClient = 0,
-    Client2 = 1,
-    Client3 = 2,
-    Client4 = 3,
-    ExtraIdSlotStart = 100,
-    EditorUI = 101,
+#include <memory>
+#include <string>
+
+#include "bedrock/certificates/certificate.h"
+#include "bedrock/certificates/web_token.h"
+#include "bedrock/deps/json/value.h"
+
+class SubClientConnectionRequest {
+public:
+    [[nodiscard]] Json::Value getData(const std::string &key) const
+    {
+        if (certificate_ && raw_token_) {
+            return raw_token_->data_info.get(key, Json::nullValue);
+        }
+        return Json::nullValue;
+    }
+
+private:
+    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
+    std::unique_ptr<Certificate> certificate_;                 // +8
+    std::unique_ptr<WebToken> raw_token_;                      // +16
 };

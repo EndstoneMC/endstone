@@ -17,37 +17,10 @@
 #include <string>
 
 #include "bedrock/network/packet.h"
+#include "bedrock/network/packet/types/world/actor/ai/util/boss_event_data.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 
-enum class BossEventUpdateType {
-    Add = 0,
-    PlayerAdded = 1,
-    Remove = 2,
-    PlayerRemoved = 3,
-    UpdatePercent = 4,
-    UpdateName = 5,
-    UpdateProperties = 6,
-    UpdateStyle = 7,
-    Query = 8,
-};
 
-enum class BossBarColor {  // NOLINTBEGIN
-    PINK = 0,
-    BLUE = 1,
-    RED = 2,
-    GREEN = 3,
-    YELLOW = 4,
-    PURPLE = 5,
-    WHITE = 6,
-};  // NOLINTEND
-
-enum class BossBarOverlay {  // NOLINTBEGIN
-    PROGRESS = 0,
-    NOTCHED_6 = 1,
-    NOTCHED_10 = 2,
-    NOTCHED_12 = 3,
-    NOTCHED_20 = 4,
-};  // NOLINTEND
 
 class BossEventPacket : public Packet {
 public:

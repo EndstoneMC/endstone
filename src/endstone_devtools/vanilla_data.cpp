@@ -16,9 +16,9 @@
 
 #include <magic_enum/magic_enum.hpp>
 
-#include "bedrock/util/string_byte_output.h"
 #include "bedrock/nbt/nbt_io.h"
 #include "bedrock/network/packet/crafting_data_packet.h"
+#include "bedrock/util/string_byte_output.h"
 #include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/level/block/actor/furnace_block_actor.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
@@ -266,41 +266,41 @@ void dumpRecipes(VanillaData &data, ::Level &level)
         }
 
         switch (entry.entry_type) {
-        case ShapelessRecipe: {
+        case CraftingDataEntryType::ShapelessRecipe: {
             data.recipes.shapeless.push_back(recipe);
             break;
         }
-        case ShapedRecipe: {
+        case CraftingDataEntryType::ShapedRecipe: {
             dumpShapedRecipe(*entry.recipe, recipe);
             data.recipes.shaped.push_back(recipe);
             break;
         }
-        case FurnaceRecipe: {
+        case CraftingDataEntryType::FurnaceRecipe: {
             data.recipes.furnace.push_back(recipe);
             break;
         }
-        case FurnaceAuxRecipe: {
+        case CraftingDataEntryType::FurnaceAuxRecipe: {
             data.recipes.furnace_aux.push_back(recipe);
             break;
         }
-        case MultiRecipe: {
+        case CraftingDataEntryType::MultiRecipe: {
             data.recipes.multi.push_back(recipe);
             break;
         }
-        case ShulkerBoxRecipe: {
+        case CraftingDataEntryType::ShulkerBoxRecipe: {
             data.recipes.shulker_box.push_back(recipe);
             break;
         }
-        case ShapelessChemistryRecipe: {
+        case CraftingDataEntryType::ShapelessChemistryRecipe: {
             data.recipes.shapeless_chemistry.push_back(recipe);
             break;
         }
-        case ShapedChemistryRecipe: {
+        case CraftingDataEntryType::ShapedChemistryRecipe: {
             dumpShapedRecipe(*entry.recipe, recipe);
             data.recipes.shaped_chemistry.push_back(recipe);
             break;
         }
-        case SmithingTransformRecipe: {
+        case CraftingDataEntryType::SmithingTransformRecipe: {
             recipe["template"] = recipe["input"][0];
             recipe["base"] = recipe["input"][1];
             recipe["addition"] = recipe["input"][2];
@@ -308,7 +308,7 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             data.recipes.smithing_transform.push_back(recipe);
             break;
         }
-        case SmithingTrimRecipe: {
+        case CraftingDataEntryType::SmithingTrimRecipe: {
             recipe["template"] = recipe["input"][0];
             recipe["base"] = recipe["input"][1];
             recipe["addition"] = recipe["input"][2];
@@ -317,7 +317,6 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             break;
         }
         default:
-        case COUNT:
             throw std::runtime_error("Unknown craft data type");
         }
     }

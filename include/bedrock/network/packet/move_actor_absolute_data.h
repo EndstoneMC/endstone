@@ -22,12 +22,20 @@
 
 class MoveActorAbsoluteData {
 public:
-    ActorRuntimeID runtime_id;    // +0
-    std::int8_t flag;             // +8
-    Vec3 position;                // +12
-    std::int8_t x_rot_byte;       // +24
-    std::int8_t z_rot_byte;       // +25
-    std::int8_t y_head_rot_byte;  // +26
-    std::int8_t y_body_rot_byte;  // +27
+    union Header {
+        std::uint8_t raw;
+        struct {
+            bool is_on_ground : 1;
+            bool teleported : 1;
+            bool force_move_local_entity : 1;
+        };
+    };
+    ActorRuntimeID runtime_id;  // +0
+    Header header;              // +8
+    Vec3 pos;                   // +12
+    std::int8_t rot_x;          // +24
+    std::int8_t rot_y;          // +25
+    std::int8_t rot_y_head;     // +26
+    std::int8_t rot_y_body;     // +27
 };
 BEDROCK_STATIC_ASSERT_SIZE(MoveActorAbsoluteData, 32, 32);

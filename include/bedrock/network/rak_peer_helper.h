@@ -17,24 +17,16 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/deps/raknet/rak_peer_interface.h"
 #include "bedrock/deps/raknet/raknet_types.h"
-
-struct ConnectionDefinition {
-    std::uint16_t port;                       // +0
-    std::uint16_t port_v6;                    // +2
-    std::uint32_t fallback;                   // +4
-    std::uint32_t max_num_players;            // +8
-    std::uint32_t max_num_connections;        // +12
-    bool is_server_visible_to_lan_discovery;  // +16
-};
+#include "bedrock/network/connection_definition.h"
 
 class RakPeerHelper {
 public:
-    enum class PeerPurpose {
+    enum class PeerPurpose : int {
         Gameplay = 0,
         LanDiscovery = 1,
         Count = 2
     };
 
     ENDSTONE_HOOK RakNet::StartupResult peerStartup(RakNet::RakPeerInterface *, ConnectionDefinition const &,
-                                                    RakPeerHelper::PeerPurpose);
+                                                    PeerPurpose);
 };

@@ -14,18 +14,19 @@
 
 #pragma once
 
-class SubClientConnectionRequest {
-public:
-    [[nodiscard]] Json::Value getData(const std::string &key) const
-    {
-        if (certificate_ && raw_token_) {
-            return raw_token_->data_info.get(key, Json::nullValue);
-        }
-        return Json::nullValue;
-    }
+#include <cstdint>
 
-private:
-    std::unique_ptr<void *> certificate_data_;  // +0 std::unique_ptr<UnverifiedCertificate>
-    std::unique_ptr<void *> certificate_;       // +8 std::unique_ptr<Certificate>
-    std::unique_ptr<WebToken> raw_token_;       // +16
+struct ConnectionDefinition {
+    enum class PortBusyFallbackPolicy : int {  // size=0x4
+        UseRandom = 0,
+        Fail = 0x1,
+    };
+
+    std::uint16_t ipv4_port;                  // +0
+    std::uint16_t ipv6_port;                  // +2
+    PortBusyFallbackPolicy fallback;          // +4
+    std::uint32_t max_num_players;            // +8
+    std::uint32_t max_num_connections;        // +12
+    bool is_server_visible_to_lan_discovery;  // +16
+    bool allow_unconnected_pongs;             // +17
 };

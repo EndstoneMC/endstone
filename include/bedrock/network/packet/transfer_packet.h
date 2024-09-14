@@ -22,4 +22,5 @@ class TransferPacket : public Packet {
 public:
     std::string address;
     int port;
+    bool reload_world;
 };

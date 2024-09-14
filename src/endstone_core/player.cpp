@@ -17,11 +17,11 @@
 #include <boost/uuid/string_generator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
+#include "bedrock/certificates/extended_certificate.h"
 #include "bedrock/deps/json/nlohmann_json.h"
 #include "bedrock/deps/raknet/rak_peer_interface.h"
-#include "bedrock/entity/components/abilities_component.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
-#include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/packet.h"
 #include "bedrock/network/packet/modal_form_request_packet.h"
 #include "bedrock/network/packet/set_title_packet.h"
 #include "bedrock/network/packet/text_packet.h"
@@ -29,7 +29,6 @@
 #include "bedrock/network/packet/transfer_packet.h"
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
-#include "bedrock/server/commands/command_origin_data.h"
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/game_type.h"

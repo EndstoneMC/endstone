@@ -17,7 +17,7 @@
 #include <utility>
 
 #include "bedrock/locale/i18n.h"
-#include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/packet.h"
 #include "bedrock/network/packet/death_info_packet.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"

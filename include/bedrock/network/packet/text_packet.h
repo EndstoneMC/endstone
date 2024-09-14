@@ -37,7 +37,7 @@ enum class TextPacketType : char {
 class TextPacket : public Packet {
 public:
     TextPacketType type{TextPacketType::Raw};     // +48
-    std::string player_name;                      // +56
+    std::string author;                           // +56
     std::string message;                          // +88
     std::optional<std::string> filtered_message;  // +120
     std::vector<std::string> params;              // +160

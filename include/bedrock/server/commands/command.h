@@ -47,6 +47,6 @@ private:
     CommandRegistry *registry_ = nullptr;                                         // +16
     CommandRegistry::Symbol symbol_;                                              // +24
     CommandPermissionLevel permission_level_ = CommandPermissionLevel::Internal;  // +28
-    CommandFlag flag_ = CommandFlag::None;                                        // +30
+    CommandFlag flag_{0};                                                         // +30
 };
 BEDROCK_STATIC_ASSERT_SIZE(Command, 32, 32);

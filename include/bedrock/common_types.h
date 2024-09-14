@@ -16,12 +16,11 @@
 
 #include <cstdint>
 
-enum class AbilitiesLayer : std::uint16_t {
-    CustomCache = 0,
-    Base = 1,
-    Spectator = 2,
-    Commands = 3,
-    Editor = 4,
-    LoadingScreen = 5,
-    LayerCount = 6
+enum class SubClientId : std::uint8_t {
+    PrimaryClient = 0,
+    Client2 = 1,
+    Client3 = 2,
+    Client4 = 3,
+    ExtraIdSlotStart = 100,
+    EditorUI = 101,
 };

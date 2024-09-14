@@ -24,11 +24,11 @@ class Actor;
 
 class SpatialActorNetworkData {
 public:
-    Actor *actor;                                         // +0
-    bool initialised;                                     // +8
-    bool auto_send;                                       // +9
-    MoveActorAbsoluteData last_sent;                      // +16
-    MoveActorAbsoluteData current;                        // +48
-    std::unordered_set<ActorUniqueID> last_spatial_tick;  // +80
+    Actor *actor;                                                 // +0
+    bool has_initialized_last_sent;                               // +8
+    bool auto_send;                                               // +9
+    MoveActorAbsoluteData last_sent_move_data;                    // +16
+    MoveActorAbsoluteData last_received_move_data;                // +48
+    std::unordered_set<ActorUniqueID> last_spatial_update_ticks;  // +80
 };
 // static_assert(sizeof(SpatialActorNetworkData) == 144);

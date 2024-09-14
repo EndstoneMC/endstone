@@ -15,56 +15,90 @@
 
 #pragma once
 
+using CommandFlagSize = std::uint16_t;
+
+enum class CommandUsageFlag : CommandFlagSize {
+    Normal = 0,
+    Test = 1,
+};
+
+enum class CommandVisibilityFlag : CommandFlagSize {
+    Visible = 0,
+    HiddenFromCommandBlockOrigin = 2,
+    HiddenFromPlayerOrigin = 4,
+    HiddenFromAutomationOrigin = 8,
+    Hidden = HiddenFromCommandBlockOrigin | HiddenFromPlayerOrigin,
+    Removed = HiddenFromCommandBlockOrigin | HiddenFromPlayerOrigin | HiddenFromAutomationOrigin,
+};
+
+enum class CommandSyncFlag : CommandFlagSize {
+    Synced = 0,
+    Local = 16,
+};
+
+enum class CommandExecuteFlag : CommandFlagSize {
+    Allowed = 0,
+    Disallowed = 32,
+};
+
+enum class CommandTypeFlag : CommandFlagSize {
+    None = 0,
+    Message = 64,
+};
+
+enum class CommandCheatFlag : CommandFlagSize {
+    Cheat = 0,
+    NotCheat = 128,
+};
+
+enum class CommandAsyncFlag : CommandFlagSize {
+    Synch = 0,
+    Async = 256,
+};
+
+enum class CommandEditorFlag : CommandFlagSize {
+    Editor = 0,
+    NotEditor = 512,
+};
+
 struct CommandFlag {
-    std::uint16_t value;
+    CommandFlagSize flag;
     // bitwise OR
-    CommandFlag operator|(const CommandFlag &flag) const
+    CommandFlag operator|(const CommandFlag &other) const
     {
-        return CommandFlag{static_cast<std::uint16_t>(value | flag.value)};
+        return CommandFlag{static_cast<CommandFlagSize>(flag | other.flag)};
     }
     // bitwise AND
-    CommandFlag operator&(const CommandFlag &flag) const
+    CommandFlag operator&(const CommandFlag &other) const
     {
-        return CommandFlag{static_cast<std::uint16_t>(value & flag.value)};
+        return CommandFlag{static_cast<CommandFlagSize>(flag & other.flag)};
     }
     // bitwise XOR
-    CommandFlag operator^(const CommandFlag &flag) const
+    CommandFlag operator^(const CommandFlag &other) const
     {
-        return CommandFlag{static_cast<std::uint16_t>(value ^ flag.value)};
+        return CommandFlag{static_cast<CommandFlagSize>(flag ^ other.flag)};
     }
     // bitwise NOT
     CommandFlag operator~() const
     {
-        return CommandFlag{static_cast<std::uint16_t>(~value)};
+        return CommandFlag{static_cast<CommandFlagSize>(~flag)};
     }
     // assignment OR
-    CommandFlag &operator|=(const CommandFlag &flag)
+    CommandFlag &operator|=(const CommandFlag &other)
     {
-        value |= flag.value;
+        flag |= other.flag;
         return *this;
     }
     // assignment AND
-    CommandFlag &operator&=(const CommandFlag &flag)
+    CommandFlag &operator&=(const CommandFlag &other)
     {
-        value &= flag.value;
+        flag &= other.flag;
         return *this;
     }
     // assignment XOR
-    CommandFlag &operator^=(const CommandFlag &flag)
+    CommandFlag &operator^=(const CommandFlag &other)
     {
-        value ^= flag.value;
+        flag ^= other.flag;
         return *this;
     }
-
-    static const CommandFlag None;
-    static const CommandFlag TestUsage;
-    static const CommandFlag HiddenFromBlock;
-    static const CommandFlag HiddenFromPlayer;
-    static const CommandFlag HiddenFromAutomation;
-    static const CommandFlag LocalSync;
-    static const CommandFlag ExecuteDisallowed;
-    static const CommandFlag MessageType;
-    static const CommandFlag NotCheat;
-    static const CommandFlag Async;
-    static const CommandFlag DisabledInEditor;
 };

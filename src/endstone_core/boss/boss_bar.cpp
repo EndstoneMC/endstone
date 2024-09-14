@@ -14,9 +14,7 @@
 
 #include "endstone/detail/boss/boss_bar.h"
 
-#include <entt/entt.hpp>
-
-#include "bedrock/network/minecraft_packets.h"
+#include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/detail/server.h"
 

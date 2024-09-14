@@ -11,9 +11,36 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
 #pragma once
 
-enum class Compressibility {
-    Compressible = 0x0,
-    Incompressible = 0x1,
+enum class BossEventUpdateType :int{
+    Add = 0,
+    PlayerAdded = 1,
+    Remove = 2,
+    PlayerRemoved = 3,
+    UpdatePercent = 4,
+    UpdateName = 5,
+    UpdateProperties = 6,
+    UpdateStyle = 7,
+    Query = 8,
+};
+
+enum class BossBarColor :int {
+    PINK = 0,
+    BLUE = 1,
+    RED = 2,
+    GREEN = 3,
+    YELLOW = 4,
+    PURPLE = 5,
+    REBECCA_PURPLE = 6,
+    WHITE = 7,
+};
+
+enum class BossBarOverlay :int {
+    PROGRESS = 0,
+    NOTCHED_6 = 1,
+    NOTCHED_10 = 2,
+    NOTCHED_12 = 3,
+    NOTCHED_20 = 4,
 };

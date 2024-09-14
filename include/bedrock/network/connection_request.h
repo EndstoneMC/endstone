@@ -19,8 +19,8 @@
 
 #include "bedrock/certificates/certificate.h"
 #include "bedrock/certificates/web_token.h"
+#include "bedrock/common_types.h"
 #include "bedrock/deps/json/value.h"
-#include "bedrock/network/sub_client_id.h"
 
 class ConnectionRequest {
 public:
@@ -33,8 +33,8 @@ public:
     }
 
 private:
-    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0 std::unique_ptr<UnverifiedCertificate>
-    std::unique_ptr<Certificate> certificate_;                 // +8 std::unique_ptr<Certificate>
+    std::unique_ptr<UnverifiedCertificate> certificate_data_;  // +0
+    std::unique_ptr<Certificate> certificate_;                 // +8
     std::unique_ptr<WebToken> raw_token_;                      // +16
-    SubClientId sub_client_id_;                                // +24
+    SubClientId client_sub_id_;                                // +24
 };

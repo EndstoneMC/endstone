@@ -14,13 +14,18 @@
 #pragma once
 #include <chrono>
 
+enum class Compressibility {
+    Compressible = 0,
+    Incompressible = 1,
+};
+
 class NetworkPeer {
 public:
     enum class Reliability {
-        Reliable = 0x0,
-        ReliableOrdered = 0x1,
-        Unreliable = 0x2,
-        UnreliableSequenced = 0x3,
+        Reliable = 0,
+        ReliableOrdered = 1,
+        Unreliable = 2,
+        UnreliableSequenced = 3,
     };
 
     using PacketRecvTimepoint = std::chrono::steady_clock::time_point;

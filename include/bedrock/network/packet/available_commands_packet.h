@@ -23,30 +23,57 @@
 
 class AvailableCommandsPacket : public Packet {
 public:
-    struct OverloadData;
-    struct ChainedSubcommandData;
-    struct EnumData;
-    struct SoftEnumData;
-    struct ConstrainedValueData;
-    struct CommandData {
-        std::string name;                         // +0
-        std::string description;                  // +32
-        CommandFlag command_flag;                 // +64
-        CommandPermissionLevel permission_level;  // +66
-        std::vector<void *> overloads;            // +72 std::vector<OverloadData>
-        std::vector<int> subcommand_values;       // +96
-        int enum_symbol_index = -1;               // +120
+    struct EnumData {
+        std::string name;
+        std::vector<std::uint32_t> values;
     };
-    // static_assert(sizeof(CommandData) == 128);
+
+    struct ChainedSubcommandData {
+        std::string name;
+        std::vector<std::pair<std::uint32_t, std::uint32_t>> values;
+    };
+
+    struct SoftEnumData {
+        std::string name;
+        std::vector<std::string> values;
+    };
+
+    struct ConstrainedValueData {
+        std::uint32_t enum_value_symbol;
+        std::uint32_t enum_symbol;
+        std::vector<std::uint8_t> constraints;
+    };
+
+    struct ParamData {
+        std::string name;
+        std::uint32_t parse_symbols;
+        bool optional;
+        std::uint8_t param_options;
+    };
+
+    struct OverloadData {
+        std::vector<ParamData> params;
+        bool is_chaining;
+    };
+
+    struct CommandData {
+        std::string name;                                        // +0
+        std::string description;                                 // +32
+        CommandFlagSize flags;                                   // +64
+        CommandPermissionLevel permission_level;                 // +66
+        std::vector<OverloadData> overloads;                     // +72
+        std::vector<std::uint32_t> chained_subcommands_indexes;  // +96
+        int alias_enum = -1;                                     // +120
+    };
 
     ~AvailableCommandsPacket() override = default;
 
-    std::vector<std::string> enum_names;        // +48
-    std::vector<std::string> subcommand_names;  // +72
-    std::vector<void *> enums;                  // +96  std::vector<EnumData>
-    std::vector<std::string> postfixes;         // +120
-    std::vector<void *> chained_subcommands;    // +144 std::vector<ChainedSubcommandData>
-    std::vector<CommandData> commands;          // +168 std::vector<CommandData>
-    std::vector<void *> soft_enums;             // +192 std::vector<SoftEnumData>
-    std::vector<void *> constrained_values;     // +216 std::vector<ConstrainedValueData>
+    std::vector<std::string> enum_values;                    // +48
+    std::vector<std::string> postfixes;                      // +72
+    std::vector<EnumData> enums;                             // +96
+    std::vector<std::string> chained_subcommand_values;      // +120
+    std::vector<ChainedSubcommandData> chained_subcommands;  // +144
+    std::vector<CommandData> commands;                       // +168
+    std::vector<SoftEnumData> soft_enums;                    // +192
+    std::vector<ConstrainedValueData> constraints;           // +216
 };

@@ -18,8 +18,8 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/common_types.h"
 #include "bedrock/deps/raknet/raknet_types.h"
-#include "bedrock/network/sub_client_id.h"
 
 class NetworkIdentifier {
 public:
@@ -31,7 +31,7 @@ public:
         Generic = 4,
     };
 
-    std::uint32_t nether_net_id;   // +0
+    std::uint64_t nether_net_id;   // +0
     RakNet::RakNetGUID guid;       // +8
     union {                        //
         sockaddr_storage sa_stor;  //

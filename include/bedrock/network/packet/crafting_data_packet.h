@@ -23,7 +23,7 @@
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/network_item_instance_descriptor.h"
 
-enum CraftingDataEntryType {
+enum class CraftingDataEntryType {
     ShapelessRecipe = 0,
     ShapedRecipe = 1,
     FurnaceRecipe = 2,

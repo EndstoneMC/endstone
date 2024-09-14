@@ -41,7 +41,8 @@ class SerializedAbilitiesData {
 public:
     SerializedAbilitiesData() = default;
     SerializedAbilitiesData(ActorUniqueID target_player, const LayeredAbilities &layered_abilities)
-        : target_player_(target_player), permissions_(layered_abilities.getPermissionHandler())
+        : target_player_(target_player), command_permissions_(layered_abilities.getCommandPermissions()),
+          player_permissions_(layered_abilities.getPlayerPermissions())
     {
         layered_abilities.forEachLayer([this](AbilitiesLayer layer, const Abilities &abilities) {
             if (!abilities.isAnyAbilitySet()) {
@@ -76,9 +77,10 @@ public:
     }
 
 private:
-    ActorUniqueID target_player_{-1};      // +0
-    PermissionsHandler permissions_;       // +8
-    std::vector<SerializedLayer> layers_;  // +16
+    ActorUniqueID target_player_{-1};             // +0
+    CommandPermissionLevel command_permissions_;  // +8
+    PlayerPermissionLevel player_permissions_;    // +9
+    std::vector<SerializedLayer> layers_;         // +16
 
     inline static const std::array<SerializedAbilitiesLayer, static_cast<int>(AbilitiesLayer::LayerCount)>
         // NOLINTNEXTLINE(*-identifier-naming)
