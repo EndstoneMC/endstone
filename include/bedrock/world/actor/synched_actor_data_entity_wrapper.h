@@ -14,14 +14,15 @@
 
 #pragma once
 
-#include <memory>
-
-#include "bedrock/core/memory.h"
-#include "bedrock/entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gamerefs/weak_ref.h"
 
 class SynchedActorDataEntityWrapper {
 public:
-    char pad[24];
-    WeakRef<EntityContext> ctx;
+    virtual ~SynchedActorDataEntityWrapper() = default;
+    gsl::not_null<void *> data_;         // SynchedActorDataComponent
+    gsl::not_null<void *> flag_data_;    // ActorDataFlagComponent
+    gsl::not_null<void *> dirty_flags_;  // ActorDataDirtyFlagsComponent
+    WeakRef<EntityContext> entity_context_;
 };
 // static_assert(sizeof(SynchedActorDataEntityWrapper) == 40);

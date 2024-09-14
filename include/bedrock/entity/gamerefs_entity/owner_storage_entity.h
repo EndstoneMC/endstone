@@ -14,17 +14,27 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
+#include <optional>
+
+#include "bedrock/bedrock.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+class OwnerStorageEntity {
+public:
+    [[nodiscard]] EntityContext &getStackRef() const
+    {
+        if (!context_.has_value()) {
+            throw std::bad_optional_access();
+        }
+        return const_cast<EntityContext &>(context_.value());
+    }
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+    [[nodiscard]] bool hasValue() const
+    {
+        return context_.has_value();
+    }
+
+private:
+    std::optional<EntityContext> context_;
+};
+BEDROCK_STATIC_ASSERT_SIZE(OwnerStorageEntity, 32, 32);

@@ -19,7 +19,7 @@
 #include <vector>
 
 #include "bedrock/core/string/string_hash.h"
-#include "bedrock/core/memory.h"
+#include "bedrock/shared_ptr.h"
 
 class ItemRegistryRef;
 

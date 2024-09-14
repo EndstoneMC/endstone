@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/entity/entity_registry.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 class StrictEntityContext {
 public:

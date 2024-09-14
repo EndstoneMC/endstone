@@ -19,6 +19,7 @@
 #include "bedrock/deps/json/value.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
+#include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/interaction_result.h"

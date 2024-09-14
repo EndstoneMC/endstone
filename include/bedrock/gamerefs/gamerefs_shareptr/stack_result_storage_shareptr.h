@@ -14,17 +14,21 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include <memory>
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+template <typename T>
+class StackResultStorageSharePtr {
+public:
+    bool operator==(const std::nullptr_t) const
+    {
+        return value_ == nullptr;
+    }
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+    bool operator!=(const std::nullptr_t) const
+    {
+        return value_ != nullptr;
+    }
+
+private:
+    std::shared_ptr<T> value_;
+};

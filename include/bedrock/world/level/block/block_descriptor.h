@@ -20,7 +20,7 @@
 #include <variant>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/spin_lock.h"
+#include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/block/block.h"
 
 class BlockDescriptor {

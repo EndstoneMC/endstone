@@ -16,6 +16,9 @@
 
 namespace Bedrock {
 enum LogLevel : int {
-    Verbose = 1, Info = 2, Warning = 4,   Error = 8,
+    Verbose = 1,
+    Info = 2,
+    Warning = 4,
+    Error = 8,
 };
-}
+}  // namespace Bedrock

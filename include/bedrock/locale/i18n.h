@@ -22,7 +22,6 @@
 #include <gsl/gsl>
 
 #include "bedrock/bedrock.h"
-#include "bedrock/core/memory.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
 

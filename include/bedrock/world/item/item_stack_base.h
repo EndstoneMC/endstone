@@ -19,9 +19,9 @@
 #include <string>
 #include <string_view>
 
-#include "bedrock/core/memory.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"
+#include "bedrock/shared_ptr.h"
 #include "bedrock/world/item/item.h"
 #include "bedrock/world/level/block/block.h"
 #include "bedrock/world/level/block/block_legacy.h"

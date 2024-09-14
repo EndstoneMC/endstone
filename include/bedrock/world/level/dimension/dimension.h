@@ -18,10 +18,8 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/memory.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/level/block_source.h"
 #include "bedrock/world/level/dimension/dimension_height_range.h"

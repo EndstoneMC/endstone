@@ -49,18 +49,3 @@ template <>
 struct entt::storage_type<EntityId, EntityId, std::allocator<EntityId>, void> {
     using type = entt::basic_storage<EntityId, EntityId, std::allocator<EntityId>>;  // NOLINT(*-identifier-naming)
 };
-
-class EntityRegistry : public std::enable_shared_from_this<EntityRegistry> {
-public:
-    WeakRef<EntityRegistry> getWeakRef()
-    {
-        return WeakRef{weak_from_this()};
-    }
-
-private:
-    friend class EntityContext;
-
-    std::string name_;                         // +16
-    entt::basic_registry<EntityId> registry_;  // +48
-    std::uint32_t id_;                         // +352
-};

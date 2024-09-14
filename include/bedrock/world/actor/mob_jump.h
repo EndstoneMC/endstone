@@ -15,7 +15,7 @@
 #pragma once
 
 #include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 namespace MobJump {
 inline bool isJumping(EntityContext const &ctx)

@@ -15,23 +15,22 @@
 #pragma once
 
 namespace BedrockLog {
-    enum LogCategory : unsigned int {
-        LogArea = 0,
-        LogWorldGen = 1,
-        LogLoot = 2,
-        LogRender = 3,
-        LogStructure = 4,
-        LogUI = 5,
-        LogOnline = 6,
-        NumLogCategories = 7,
-    };
+enum LogCategory : unsigned int {
+    LogArea = 0,
+    LogWorldGen = 1,
+    LogLoot = 2,
+    LogRender = 3,
+    LogStructure = 4,
+    LogUI = 5,
+    LogOnline = 6,
+    NumLogCategories = 7,
+};
 
 enum LogRule : unsigned int {
     DefaultRules = 0,
     ClientAndServer = 1,
 };
-
-}
+}  // namespace BedrockLog
 
 enum class LogAreaID {
     All,

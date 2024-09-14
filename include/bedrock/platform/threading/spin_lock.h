@@ -23,5 +23,5 @@ private:
     std::hash<std::thread::id> thread_hasher_;  // +0
     std::size_t no_thread_id_;                  // +8
     std::atomic<std::size_t> owner_thread_;     // +16
-    int owner_ref_count_;                       // +24
+    std::uint32_t owner_ref_count_;                       // +24
 };

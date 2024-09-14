@@ -16,6 +16,7 @@
 
 #include <gsl/gsl>
 
+#include "bedrock/gamerefs/stack_ref_result.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/storage/level_storage.h"
 #include "bedrock/world/scores/scoreboard.h"

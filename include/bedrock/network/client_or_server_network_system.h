@@ -14,17 +14,14 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/forward.h"
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+class ClientOrServerNetworkSystemRef
+    : std::variant<std::reference_wrapper<ClientNetworkSystem>, std::reference_wrapper<ServerNetworkSystem>> {
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+    using ClientRefT = std::reference_wrapper<ClientNetworkSystem>;
+    using ServerRefT = std::reference_wrapper<ServerNetworkSystem>;
+
+public:
+    using std::variant<ClientRefT, ServerRefT>::variant;
+};

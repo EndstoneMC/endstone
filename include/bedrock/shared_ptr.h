@@ -15,9 +15,7 @@
 #pragma once
 
 #include <memory>
-
-template <typename T>
-class OwnerPtr;
+#include <atomic>
 
 template <typename T>
 struct SharedCounter {
@@ -214,43 +212,4 @@ public:
 
 private:
     SharedCounter<T> *pc_;
-};
-
-template <typename T>
-class WeakRef {
-public:
-    WeakRef() = default;
-    explicit WeakRef(std::weak_ptr<T> weak_ptr) : ref_(std::move(weak_ptr)) {}
-
-    T &operator*() const
-    {
-        if (auto lock = ref_.lock()) {
-            return *lock;
-        }
-        throw std::bad_weak_ptr();
-    }
-
-    T *operator->() const noexcept
-    {
-        return ref_.lock().get();
-    }
-
-private:
-    std::weak_ptr<T> ref_;
-};
-
-template <typename T>
-class StackRefResult {
-public:
-    bool operator==(const std::nullptr_t) const
-    {
-        return value == nullptr;
-    }
-
-    bool operator!=(const std::nullptr_t) const
-    {
-        return value != nullptr;
-    }
-
-    std::shared_ptr<T> value;
 };

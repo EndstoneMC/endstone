@@ -12,19 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
-
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
+WeakRef<EntityRegistry> EntityRegistry::getWeakRef()
 {
-    return ctx.hasComponent<OnGroundFlagComponent>();
+    return WeakRef<EntityRegistry>(weak_from_this());
 }
-
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision

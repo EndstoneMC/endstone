@@ -18,6 +18,7 @@
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/core/utility/automatic_id.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
@@ -46,12 +47,12 @@ std::vector<Actor *> EndstoneLevel::getActors() const
 {
     std::vector<Actor *> result;
     for (const auto &e : level_.getEntities()) {
-        const auto &ctx = e.storage.context;
-        if (!ctx.has_value()) {
+        if (!e.hasValue()) {
             continue;
         }
 
-        auto *actor = ::Actor::tryGetFromEntity(ctx.value(), false);
+        // TODO(check): is this the correct usage of OwnerPtr<EntityContext> ?
+        const auto *actor = ::Actor::tryGetFromEntity(e.getStackRef(), false);
         if (!actor) {
             continue;
         }

@@ -14,17 +14,22 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include <string>
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+#include <entt/entt.hpp>
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+#include "bedrock/entity/entity_id.h"
+#include "bedrock/gamerefs/enable_get_weak_ref.h"
+#include "bedrock/gamerefs/weak_ref.h"
+
+class EntityRegistry : public EnableGetWeakRef<EntityRegistry>, public std::enable_shared_from_this<EntityRegistry> {
+public:
+    WeakRef<EntityRegistry> getWeakRef();
+
+private:
+    friend class EntityContext;
+
+    std::string debug_name_;                   // +16
+    entt::basic_registry<EntityId> registry_;  // +48
+    std::uint32_t id_;                         // +352
+};

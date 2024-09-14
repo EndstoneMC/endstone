@@ -14,11 +14,12 @@
 
 #pragma once
 
+#include <optional>
 #include <shared_mutex>
 
-#include "bedrock/core/string/string_hash.h"
 #include "bedrock/core/math/color.h"
-#include "bedrock/entity/entity_context.h"
+#include "bedrock/core/string/string_hash.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/util/int_range.h"

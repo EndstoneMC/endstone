@@ -17,7 +17,8 @@
 #include <variant>
 
 #include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 #include "endstone/endstone.h"

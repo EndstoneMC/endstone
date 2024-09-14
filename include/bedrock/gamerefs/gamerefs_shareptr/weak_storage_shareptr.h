@@ -14,17 +14,26 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include <memory>
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+template <typename T>
+class WeakStorageSharePtr {
+public:
+    WeakStorageSharePtr() = default;
+    explicit WeakStorageSharePtr(std::weak_ptr<T> const &handle) : handle_(handle){};
+    T &operator*() const
+    {
+        if (auto lock = handle_.lock()) {
+            return *lock;
+        }
+        throw std::bad_weak_ptr();
+    }
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+    T *operator->() const noexcept
+    {
+        return handle_.lock().get();
+    }
+
+private:
+    std::weak_ptr<T> handle_;
+};

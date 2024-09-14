@@ -14,17 +14,14 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/gamerefs/gamerefs_shareptr/owner_storage_shareptr.h"
+#include "bedrock/gamerefs/gamerefs_shareptr/stack_result_storage_shareptr.h"
+#include "bedrock/gamerefs/gamerefs_shareptr/weak_storage_shareptr.h"
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
-
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+template <typename T>
+struct GameRefs {
+    using OwnerStorage = OwnerStorageSharePtr<T>;
+    using StackResultStorage = StackResultStorageSharePtr<T>;
+    using WeakStorage = WeakStorageSharePtr<T>;
+    using StackRef = T;
+};

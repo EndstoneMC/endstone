@@ -22,11 +22,12 @@
 #include <unordered_map>
 #include <vector>
 
-#include "bedrock/core/memory.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/entity/strict_entity_context.h"
 #include "bedrock/forward.h"
+#include "bedrock/gamerefs/owner_ptr.h"
+#include "bedrock/gamerefs/stack_ref_result.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"

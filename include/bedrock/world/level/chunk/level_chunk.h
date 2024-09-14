@@ -14,8 +14,8 @@
 
 #pragma once
 
-#include "bedrock/core/spin_lock.h"
 #include "bedrock/core/threading.h"
+#include "bedrock/platform/threading/spin_lock.h"
 #include "bedrock/world/level/chunk_pos.h"
 #include "bedrock/world/level/tick.h"
 

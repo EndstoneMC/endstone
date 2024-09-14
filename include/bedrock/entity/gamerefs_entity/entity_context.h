@@ -14,16 +14,11 @@
 
 #pragma once
 
-#include <cstdint>
-#include <optional>
-
 #include <entt/entt.hpp>
 
-#include "bedrock/bedrock.h"
-#include "bedrock/core/memory.h"
-#include "bedrock/entity/entity_registry.h"
+#include "bedrock/entity/gamerefs_entity/entity_registry.h"
 
-class EntityContext {
+class EntityContext : public EnableGetWeakRef<EntityContext> {
 public:
     EntityContext(EntityRegistry &registry, EntityId entity_id)
         : registry_(registry), entt_registry_(registry.registry_), entity_id_(entity_id){};
@@ -66,45 +61,4 @@ private:
     EntityRegistry &registry_;                       // +0
     entt::basic_registry<EntityId> &entt_registry_;  // +8
     EntityId entity_id_;                             // +16
-};
-
-class OwnerStorageEntity {
-public:
-    OwnerStorageEntity(const OwnerStorageEntity &) = delete;
-    OwnerStorageEntity &operator=(const OwnerStorageEntity &) = delete;
-    OwnerStorageEntity(OwnerStorageEntity &&) noexcept = default;
-    OwnerStorageEntity &operator=(OwnerStorageEntity &&) noexcept = delete;
-
-    std::optional<EntityContext> context;
-};
-BEDROCK_STATIC_ASSERT_SIZE(OwnerStorageEntity, 32, 32);
-
-class WeakStorageEntity {
-public:
-    WeakStorageEntity() = default;
-    explicit WeakStorageEntity(const EntityContext &ctx)
-        : registry(ctx.registry().getWeakRef()), entity_id(ctx.entityId())
-    {
-    }
-
-    WeakRef<EntityRegistry> registry;
-    EntityId entity_id{static_cast<std::uint32_t>(-1)};
-};
-BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);
-
-template <>
-class OwnerPtr<EntityContext> {
-public:
-    OwnerPtr(const OwnerPtr &) = delete;
-    OwnerPtr &operator=(const OwnerPtr &) = delete;
-    OwnerPtr(OwnerPtr &&) noexcept = default;
-    OwnerPtr &operator=(OwnerPtr &&) noexcept = delete;
-
-    OwnerStorageEntity storage;
-};
-
-template <>
-class WeakRef<EntityContext> {
-public:
-    WeakStorageEntity storage;
 };

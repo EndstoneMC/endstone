@@ -14,17 +14,22 @@
 
 #pragma once
 
-#include "bedrock/entity/components/flag_component.h"
-#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/bedrock.h"
+#include "bedrock/entity/entity_id.h"
+#include "bedrock/gamerefs/weak_ref.h"
 
-namespace ActorCollision {
-inline bool isOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<OnGroundFlagComponent>();
-}
+class EntityRegistry;
+class EntityContext;
 
-inline bool wasOnGround(EntityContext const &ctx)
-{
-    return ctx.hasComponent<FlagComponent<WasOnGroundFlag>>();
-}
-}  // namespace ActorCollision
+class WeakStorageEntity {
+public:
+    WeakStorageEntity() = default;
+    explicit WeakStorageEntity(const EntityContext &ctx);
+
+private:
+    friend class StackResultStorageEntity;
+
+    WeakRef<EntityRegistry> registry_;
+    EntityId entity_{static_cast<std::uint32_t>(-1)};
+};
+BEDROCK_STATIC_ASSERT_SIZE(WeakStorageEntity, 24, 24);

@@ -14,7 +14,9 @@
 
 #pragma once
 
-#include "bedrock/entity/entity_context.h"
+#include <optional>
+
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 
 template <typename Return>
 struct ServerInstanceGameplayEvent;

@@ -19,6 +19,8 @@
 #include <spdlog/spdlog.h>
 
 #include "bedrock/deps/json/nlohmann_json.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/server/server_instance.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
@@ -106,20 +108,18 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
     auto visitor = endstone::overloaded{
         [](const Details::ValueOrRef<PlayerFormCloseEvent const> &arg) {
             const auto &event = arg.value();
-            const auto &weak_ref = event.player;
-            EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
-            auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
-            if (player) {
+            const StackResultStorageEntity entity(event.player);
+            // TODO(check): is this the correct usage of WeakRef<EntityContext> ?
+            if (const auto *player = static_cast<Player *>(Actor::tryGetFromEntity(entity.getStackRef(), false))) {
                 // Players can be null if they are dead when we receive the event
                 player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
             }
         },
         [](const Details::ValueOrRef<PlayerFormResponseEvent const> &arg) {
             const auto &event = arg.value();
-            const auto &weak_ref = event.player;
-            EntityContext ctx{*weak_ref.storage.registry, weak_ref.storage.entity_id};
-            auto *player = static_cast<Player *>(Actor::tryGetFromEntity(ctx, false));
-            if (player) {
+            const StackResultStorageEntity entity(event.player);
+            // TODO(check): is this the correct usage of WeakRef<EntityContext> ?
+            if (const auto *player = static_cast<Player *>(Actor::tryGetFromEntity(entity.getStackRef(), false))) {
                 // Players can be null if they are dead when we receive the event
                 player->getEndstonePlayer().onFormResponse(event.form_id, Json::to_nlohmann(event.form_response));
             }

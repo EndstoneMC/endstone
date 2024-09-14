@@ -14,7 +14,9 @@
 
 #pragma once
 
-#include "bedrock/entity/entity_context.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gamerefs/owner_ptr.h"
+#include "bedrock/network/client_or_server_network_system.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/server_network_handler.h"
 
@@ -29,13 +31,12 @@ public:
     }
 
 private:
-    ServerNetworkSystem *network_system_;                           // +0
-    int unknown1_;                                                  // +8
-    OwnerStorageEntity entity_;                                     // +16
-    char unknown2_[16];                                             // +48
-    std::unique_ptr<ServerNetworkHandler> server_network_handler_;  // +64
-    void *unknown3_;                                                // +72
-    std::unique_ptr<NetEventCallback> net_event_callback_;          // +80
-    LoopbackPacketSender *loopback_packet_sender_;                  // +88
-    SubClientId sub_client_id_;                                     // +96
+    ClientOrServerNetworkSystemRef network_;                           // +0
+    OwnerPtr<EntityContext> level_entity_;                             // +16
+    Bedrock::NonOwnerPointer<Level> level_;                            // +48
+    std::unique_ptr<ServerNetworkHandler> server_network_handler_;     // +64
+    std::unique_ptr<NetEventCallback> legacy_client_network_handler_;  // +72
+    std::unique_ptr<NetEventCallback> client_network_handler_;         // +80
+    LoopbackPacketSender *loopback_packet_sender_;                     // +88
+    SubClientId client_sub_id_;                                        // +96
 };

@@ -14,7 +14,6 @@
 
 #include "bedrock/world/level/level.h"
 
-#include "bedrock/core/memory.h"
 #include "bedrock/world/level/gameplay_user_manager.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/scheduler/scheduler.h"
