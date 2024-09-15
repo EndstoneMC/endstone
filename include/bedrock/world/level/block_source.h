@@ -16,14 +16,58 @@
 
 #include <memory>
 
+#include "bedrock/core/utility/automatic_id.h"
+#include "bedrock/forward.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/item/item_stack_base.h"
+#include "bedrock/world/level/block/block.h"
+#include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_interface.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/material/material.h"
+#include "bedrock/world/level/material/material_type.h"
 
-class BlockSource : public IBlockSource, public std::enable_shared_from_this<BlockSource> {
+class ILevel;
+class Level;
+
+using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
+
+class IConstBlockSource {
 public:
-    ~BlockSource() override = 0;
+    virtual ~IConstBlockSource() = 0;
+    [[nodiscard]] virtual Block const &getBlock(int, int, int) const = 0;
+    [[nodiscard]] virtual Block const &getBlock(BlockPos const &) const = 0;
+    [[nodiscard]] virtual Block const &getBlock(BlockPos const &, std::uint32_t) const = 0;
+    [[nodiscard]] virtual BlockActor const *getBlockEntity(BlockPos const &) const = 0;
+    [[nodiscard]] virtual Block const &getExtraBlock(BlockPos const &) const = 0;
+    [[nodiscard]] virtual Block const &getLiquidBlock(BlockPos const &) const = 0;
+    [[nodiscard]] virtual bool hasBlock(BlockPos const &) const = 0;
+    virtual bool removeBlock(BlockPos const &) = 0;
+    [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
+    [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
+    [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
+    [[nodiscard]] virtual Material const &getMaterial(BlockPos const &) const = 0;
+    [[nodiscard]] virtual Material const &getMaterial(int, int, int) const = 0;
+    [[nodiscard]] virtual bool hasBorderBlock(BlockPos) const = 0;
+    [[nodiscard]] virtual bool hasChunksAt(Bounds const &, bool) const = 0;
+    [[nodiscard]] virtual bool hasChunksAt(BlockPos const &, int, bool) const = 0;
+    [[nodiscard]] virtual bool hasChunksAt(AABB const &, bool) const = 0;
+    [[nodiscard]] virtual DimensionType getDimensionId() const = 0;
+    virtual void fetchAABBs(std::vector<AABB> &, AABB const &, bool) const = 0;
+    virtual void fetchCollisionShapes(std::vector<AABB> &, AABB const &, bool,
+                                      optional_ref<GetCollisionShapeInterface const>, std::vector<AABB> *) const = 0;
+    virtual void fetchCollisionShapesAndBlocks(std::vector<BlockSourceVisitor::CollisionShape> &, AABB const &, bool,
+                                               optional_ref<GetCollisionShapeInterface const>,
+                                               std::vector<AABB> *) const = 0;
+    virtual AABB getTallestCollisionShape(AABB const &, float *, bool,
+                                          optional_ref<GetCollisionShapeInterface const>) const = 0;
+    [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
+    virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
+};
+
+class IBlockSource : public IConstBlockSource {
+public:
+    ~IBlockSource() override = 0;
     void fetchAABBs(std::vector<AABB> &, AABB const &, bool) const override = 0;
     void fetchCollisionShapes(std::vector<AABB> &, AABB const &, bool, optional_ref<GetCollisionShapeInterface const>,
                               std::vector<AABB> *) const override = 0;
@@ -31,9 +75,8 @@ public:
     virtual WeakRef<BlockSource> getWeakRef() = 0;
     virtual void addListener(BlockSourceListener &) = 0;
     virtual void removeListener(BlockSourceListener &) = 0;
-    virtual gsl::span<gsl::not_null<Actor *>> fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
-    virtual gsl::span<gsl::not_null<Actor *>> fetchEntities(ActorType, AABB const &, Actor const *,
-                                                            std::function<bool(Actor *)>) = 0;
+    virtual ActorSpan fetchEntities(Actor const *, AABB const &, bool, bool) = 0;
+    virtual ActorSpan fetchEntities(ActorType, AABB const &, Actor const *, std::function<bool(Actor *)>) = 0;
     virtual bool setBlock(BlockPos const &, Block const &, int, ActorBlockSyncMessage const *, Actor *) = 0;
     [[nodiscard]] virtual std::int16_t getMinHeight() const = 0;
     [[nodiscard]] virtual std::int16_t getMaxHeight() const = 0;
@@ -59,4 +102,11 @@ public:
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
+};
+
+class BlockSource : public IBlockSource,
+                    public EnableGetWeakRef<BlockSource>,
+                    public std::enable_shared_from_this<BlockSource> {
+public:
+    ~BlockSource() override = 0;
 };

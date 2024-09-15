@@ -21,11 +21,31 @@
 #include "bedrock/bedrock.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/level/block/block_component_storage.h"
 #include "bedrock/world/level/block/block_legacy.h"
-#include "bedrock/world/level/block/cached_component_data.h"
+#include "bedrock/world/level/block/block_serialization_id.h"
+#include "bedrock/world/level/block/components/block_component_direct_data.h"
+#include "bedrock/world/level/block/components/block_component_storage.h"
 
-using BlockRuntimeId = std::uint32_t;
+enum class BlockOcclusionType : int {
+    Unknown = 0,
+    HalfSlab = 1,
+    Leaf = 2,
+    ThinConnects2D = 3,
+    Connects2D = 4,
+    isLiquid = 5,
+    Portal = 6,
+    Ice = 7,
+    Cactus = 8,
+    PowderSnow = 9,
+    SculkShrieker = 10,
+    Default = 11,
+};
+
+struct CachedComponentData {
+    Brightness emissive_brightness;     // +0
+    bool is_solid;                      // +1
+    BlockOcclusionType occlusion_type;  // +4
+};
 
 class Block : public BlockComponentStorage {
 public:
@@ -46,37 +66,37 @@ public:
 
     [[nodiscard]] BurnOdds getBurnOdds() const
     {
-        return cached_component_data_.burn_odds;
+        return direct_data_.burn_odds;
     }
 
     [[nodiscard]] float getDestroySpeed() const
     {
-        return cached_component_data_.destroy_speed;
+        return direct_data_.destroy_speed;
     }
 
     [[nodiscard]] float getExplosionResistance() const
     {
-        return cached_component_data_.explosion_resistance;
+        return direct_data_.explosion_resistance;
     }
 
     [[nodiscard]] FlameOdds getFlameOdds() const
     {
-        return cached_component_data_.flame_odds;
+        return direct_data_.flame_odds;
     }
 
     [[nodiscard]] float getFriction() const
     {
-        return cached_component_data_.friction;
+        return direct_data_.friction;
     }
 
     [[nodiscard]] Brightness getLight() const
     {
-        return cached_component_data_.light;
+        return direct_data_.light;
     }
 
     [[nodiscard]] Brightness getLightEmission() const
     {
-        return cached_component_data_.light_emission;
+        return direct_data_.light_emission;
     }
 
     [[nodiscard]] const Material &getMaterial() const
@@ -115,11 +135,12 @@ private:
     DataID data_;                                          // +40 (+36)
     gsl::not_null<BlockLegacy *> legacy_block_;            // +48 (+40)
     CachedComponentData cached_component_data_;            // +56 (+48)
+    BlockComponentDirectData direct_data_;                 // +64
     std::vector<HashedString> tags_;                       // +144
-    CompoundTag serialization_id_;                         // +168
-    std::size_t serialization_id_hash_;                    // +192
+    BlockSerializationId serialization_id_;                // +168
+    HashType64 serialization_id_hash_;                     // +192
     std::uint32_t raw_serialization_id_hash_for_network_;  // +200
     BlockRuntimeId runtime_id_;                            // +204
-    bool unknown4_;                                        // +208
+    bool has_runtime_id_;                                  // +208
 };
 BEDROCK_STATIC_ASSERT_SIZE(Block, 216, 216);

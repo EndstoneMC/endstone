@@ -14,10 +14,6 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include "bedrock/nbt/compound_tag.h"
 
-class FurnaceBlockActor: public BlockActor {
-public:
-    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
-};
+using BlockSerializationId = CompoundTag;

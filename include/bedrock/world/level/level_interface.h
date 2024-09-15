@@ -40,7 +40,7 @@
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/item/crafting/recipes.h"
 #include "bedrock/world/item/registry/item_registry_ref.h"
-#include "bedrock/world/level/block/block_palette.h"
+#include "bedrock/world/level/block_palette.h"
 #include "bedrock/world/level/block/registry/block_type_registry.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/game_type.h"

@@ -14,10 +14,22 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include <cstdint>
 
-class FurnaceBlockActor: public BlockActor {
-public:
-    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
+namespace DBHelpers {
+enum class Category : std::uint8_t {
+    Uncategorized = 0,
+    Actor = 1,
+    Block = 3,
+    Chunk = 4,
+    EDU = 5,
+    Item = 6,
+    Player = 7,
+    TickingArea = 8,
+    VolumeArea = 9,
+    WorldFeature = 10,
+    ForcedCorruption = 11,
+    Count = 12,
+    All = 13,
 };
+};  // namespace DBHelpers

@@ -16,6 +16,11 @@
 
 class ChunkPos {
 public:
-    int x;
-    int z;
+    union {
+        std::int64_t packed;
+        union {
+            int x;
+            int z;
+        };
+    };
 };

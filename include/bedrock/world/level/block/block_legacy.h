@@ -15,8 +15,11 @@
 #pragma once
 
 #include <optional>
-#include <shared_mutex>
 
+#include <entt/entt.hpp>
+
+#include "bedrock/common_types.h"
+#include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/string/string_hash.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
@@ -25,17 +28,12 @@
 #include "bedrock/util/int_range.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
-#include "bedrock/world/level/block/block_component_storage.h"
-#include "bedrock/world/level/block/block_property.h"
+#include "bedrock/world/level/block/block_color_logic.h"
 #include "bedrock/world/level/block/block_state_instance.h"
+#include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
-
-using Brightness = std::uint8_t;
-using FacingID = std::uint8_t;
-using NewBlockID = std::uint16_t;
-using DataID = std::uint16_t;
 
 class Actor;
 class Block;
@@ -46,6 +44,58 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
+
+enum class BlockProperty : std::uint64_t {
+    None = 0x0,
+    Stair = 0x1,
+    HalfSlab = 0x2,
+    Hopper = 0x4,
+    TopSnow = 0x8,
+    FenceGate = 0x10,
+    Leaves = 0x20,
+    ThinConnects2D = 0x40,
+    Connects2D = 0x80,
+    Carpet = 0x100,
+    Button = 0x200,
+    Door = 0x400,
+    Portal = 0x800,
+    CanFall = 0x1000,
+    Snow = 0x2000,
+    Trap = 0x4000,
+    Sign = 0x8000,
+    Walkable = 0x10000,
+    PressurePlate = 0x20000,
+    PistonBlockGrabber = 0x40000,
+    TopSolidBlocking = 0x80000,
+    CubeShaped = 0x200000,
+    Power_NO = 0x400000,
+    Power_BlockDown = 0x800000,
+    Immovable = 0x1000000,
+    BreakOnPush = 0x2000000,
+    Piston = 0x4000000,
+    InfiniBurn = 0x8000000,
+    RequiresWorldBuilder = 0x10000000,
+    CausesDamage = 0x20000000,
+    BreaksWhenFallenOnByFallingBlock = 0x40000000,
+    OnlyPistonPush = 0x80000000,
+    Liquid = 0x100000000,
+    CanBeBuiltOver = 0x200000000,
+    SnowRecoverable = 0x400000000,
+    Scaffolding = 0x800000000,
+    CanSupportCenterHangingBlock = 0x1000000000,
+    BreaksWhenHitByArrow_DEPRECATED = 0x2000000000,
+    Unwalkable = 0x4000000000,
+    Hollow = 0x10000000000,
+    OperatorBlock = 0x20000000000,
+    SupportedByFlowerPot = 0x40000000000,
+    PreventsJumping = 0x80000000000,
+    ContainsHoney = 0x100000000000,
+    Slime = 0x200000000000,
+    SculkReplaceable_DEPRECATED = 0x400000000000,
+    Climbable = 0x800000000000,
+    CanHaltWhenClimbing = 0x1000000000000,
+    _entt_enum_as_bitmask
+};
 
 class BlockLegacy : public BlockComponentStorage {
     struct NameInfo {
@@ -306,78 +356,74 @@ public:
     }
 
 private:
-    std::string description_id_;                                      // +40
-    NameInfo name_info_;                                              // +72  (+64)
-    BlockProperty properties_;                                        // +248 (+208)
-    bool fancy_;                                                      // +256 (+216)
-    BlockRenderLayer render_layer_;                                   // +260 (+220)
-    bool render_layer_can_render_as_opaque_;                          // +264 (+224)
-    BlockActorType block_entity_type_;                                // +268 (+228)
-    bool animated_texture_;                                           // +272 (+232)
-    float brightness_gamma_;                                          // +276 (+236)
-    float thickness_;                                                 // +280 (+240)
-    bool can_slide_;                                                  // +284 (+244)
-    bool can_react_to_neighbors_during_instatick_;                    // +285 (+245)
-    bool is_interaction_;                                             // +286 (+246)
-    float gravity_;                                                   // +288 (+248)
-    Material *material_;                                              // +296 (+256)
-    bool heavy_;                                                      // +304 (+264)
-    float particle_quantity_scalar_;                                  // +308 (+268)
-    CreativeItemCategory creative_item_category_;                     // +312 (+272)
-    std::string creative_group_;                                      // +320 (+280)
-    bool is_hidden_in_commands_;                                      // +352 (+304)
-    bool allow_runes_;                                                // +353 (+305)
-    bool can_be_broken_from_falling_;                                 // +354 (+306)
-    bool can_be_original_surface_;                                    // +355 (+307)
-    bool solid_;                                                      // +356 (+308)
-    bool pushes_out_items_;                                           // +357 (+309)
-    bool ignore_block_for_inside_cube_renderer_;                      // +358 (+310)
-    bool is_trapdoor_;                                                // +359 (+311)
-    bool is_door_;                                                    // +360 (+312)
-    bool is_opaque_full_block_;                                       // +361 (+313)
-    float translucency_;                                              // +364 (+316)
-    bool should_random_tick_;                                         // +368 (+320)
-    bool should_random_tick_extra_layer_;                             // +369 (+321)
-    bool is_mob_piece_;                                               // +370 (+322)
-    bool can_be_extra_block_;                                         // +371 (+323)
-    bool can_propagate_brightness_;                                   // +372 (+324)
-    Brightness light_block_;                                          // +373 (+325)
-    Brightness light_emission_;                                       // +374 (+326)
-    FlameOdds flame_odds_;                                            // +376 (+328)
-    BurnOdds burn_odds_;                                              // +380 (+332)
-    LavaFlammable lava_flammable_;                                    // +384 (+336)
-    float destroy_speed_;                                             // +388 (+340)
-    float explosion_resistence_;                                      // +392 (+344)
-    mce::Color map_color_;                                            // +396 (+348)
-    float friction_;                                                  // +412 (+364)
-    BlockTintType block_tint_type_;                                   // +416 (+368)
-    bool unknown_;                                                    // +420 (+372)
-    int unknown2_;                                                    // +424
-    NewBlockID id_;                                                   // +428
-    BaseGameVersion min_required_game_version_;                       // +432
-    bool is_vanilla_;                                                 // +552
-    std::vector<HashedString> tags_;                                  // +560
-    std::unordered_map<std::string, void *> event_handlers_;          // +584 void* = DefinitionEvent
-    bool enable_data_driven_vanilla_blocks_and_items_;                // +648
-    AABB visual_shape_;                                               // +652
-    std::int64_t unknown3_;                                           // +680
-    std::map<std::uint64_t, BlockStateInstance> states_;              // +688
-    std::unordered_map<HashedString, std::uint64_t> state_name_map_;  // +704
-    BlockState *creative_enum_state_;                                 // +768
-    std::vector<std::unique_ptr<Block>> block_permutations_;          // +776
-    Block *default_state_;                                            // +800
-    std::vector<void *> unknown4_;                                    // +808
-#ifdef __linux__                                                      //
-    std::shared_timed_mutex mutex_;
-#else                                                  //
-    std::shared_mutex mutex_;  // +832
-#endif                                                 //
-    std::unordered_map<void *, void *> unknown6_;      // +840
-    std::unique_ptr<void *> block_state_group_;        // +904 void* = BlockStateGroup
-    std::unique_ptr<void *> resource_drops_strategy_;  // +912 void* = IResourceDropsStrategy
-    IntRange experience_drop_;                         // +920
-    bool can_drop_with_any_tool_;                      // +928
-    std::vector<void *> unknown9_;                     // +936
-    std::vector<void *> unknown10_;                    // +960
+    std::string description_id_;                                          // +40
+    NameInfo name_info_;                                                  // +72  (+64)
+    BlockProperty properties_;                                            // +248 (+208)
+    bool fancy_;                                                          // +256 (+216)
+    BlockRenderLayer render_layer_;                                       // +260 (+220)
+    bool render_layer_can_render_as_opaque_;                              // +264 (+224)
+    BlockActorType block_entity_type_;                                    // +268 (+228)
+    bool animated_texture_;                                               // +272 (+232)
+    float brightness_gamma_;                                              // +276 (+236)
+    float thickness_;                                                     // +280 (+240)
+    bool can_slide_;                                                      // +284 (+244)
+    bool can_react_to_neighbors_during_instatick_;                        // +285 (+245)
+    bool is_interaction_;                                                 // +286 (+246)
+    float gravity_;                                                       // +288 (+248)
+    Material *material_;                                                  // +296 (+256)
+    bool falling_;                                                        // +304 (+264)
+    float particle_quantity_scalar_;                                      // +308 (+268)
+    CreativeItemCategory creative_item_category_;                         // +312 (+272)
+    std::string creative_group_;                                          // +320 (+280)
+    bool is_hidden_in_commands_;                                          // +352 (+304)
+    bool allow_runes_;                                                    // +353 (+305)
+    bool can_be_broken_from_falling_;                                     // +354 (+306)
+    bool can_be_original_surface_;                                        // +355 (+307)
+    bool solid_;                                                          // +356 (+308)
+    bool pushes_out_items_;                                               // +357 (+309)
+    bool ignore_block_for_inside_cube_renderer_;                          // +358 (+310)
+    bool is_trapdoor_;                                                    // +359 (+311)
+    bool is_door_;                                                        // +360 (+312)
+    bool is_opaque_full_block_;                                           // +361 (+313)
+    float translucency_;                                                  // +364 (+316)
+    bool should_random_tick_;                                             // +368 (+320)
+    bool should_random_tick_extra_layer_;                                 // +369 (+321)
+    bool is_mob_piece_;                                                   // +370 (+322)
+    bool can_be_extra_block_;                                             // +371 (+323)
+    bool can_propagate_brightness_;                                       // +372 (+324)
+    Brightness light_block_;                                              // +373 (+325)
+    Brightness light_emission_;                                           // +374 (+326)
+    FlameOdds flame_odds_;                                                // +376 (+328)
+    BurnOdds burn_odds_;                                                  // +380 (+332)
+    LavaFlammable lava_flammable_;                                        // +384 (+336)
+    float destroy_speed_;                                                 // +388 (+340)
+    float explosion_resistence_;                                          // +392 (+344)
+    mce::Color map_color_;                                                // +396 (+348)
+    float friction_;                                                      // +412 (+364)
+    BlockTintType block_tint_type_;                                       // +416 (+368)
+    bool m_return_default_block_on_unidentified_block_state_;             // +420 (+372)
+    BlockColorLogic color_logic_;                                         // +424
+    NewBlockID id_;                                                       // +428
+    BaseGameVersion min_required_game_version_;                           // +432
+    bool is_vanilla_;                                                     // +552
+    std::vector<HashedString> tags_;                                      // +560
+    std::unordered_map<std::string, void *> event_handlers_;              // +584 void* = DefinitionEvent
+    bool enable_data_driven_vanilla_blocks_and_items_;                    // +648
+    AABB visual_shape_;                                                   // +652
+    std::int32_t bits_used_;                                              // +680
+    std::int32_t total_bits_used_;                                        // +684
+    std::map<std::uint64_t, BlockStateInstance> states_;                  // +688
+    std::unordered_map<HashedString, std::uint64_t> state_name_map_;      // +704
+    std::size_t creative_enum_state_;                                     // +768
+    std::vector<std::unique_ptr<Block>> block_permutations_;              // +776
+    Block *default_state_;                                                // +800
+    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;  // +808
+    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;  // +832
+    std::unique_ptr<void *> block_state_group_;                           // +904 void* = BlockStateGroup
+    std::unique_ptr<void *> resource_drops_strategy_;                     // +912 void* = IResourceDropsStrategy
+    IntRange experience_drop_;                                            // +920
+    bool can_drop_with_any_tool_;                                         // +928
+    std::vector<void *> unknown9_;                                        // +936
+    std::vector<void *> unknown10_;                                       // +960
     // ...
 };

@@ -15,6 +15,11 @@
 #pragma once
 
 #include <cstdint>
+#include <vector>
+
+#include "bedrock/util/new_type.h"
+
+using ActorList = std::vector<class Actor *>;
 
 enum class SubClientId : std::uint8_t {
     PrimaryClient = 0,
@@ -24,3 +29,15 @@ enum class SubClientId : std::uint8_t {
     ExtraIdSlotStart = 100,
     EditorUI = 101,
 };
+
+using BlockRuntimeId = std::uint32_t;
+struct NewBlockID : NewType<std::uint16_t> {};
+
+struct Brightness : NewType<std::uint8_t> {};
+struct BrightnessPair {
+    Brightness sky;
+    Brightness block;
+};
+
+using DataID = std::uint16_t;
+using FacingID = std::uint8_t;

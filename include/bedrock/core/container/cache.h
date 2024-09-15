@@ -14,21 +14,16 @@
 
 #pragma once
 
-class DBHelpers {
-public:
-    enum class Category {
-        Uncategorized = 0,
-        Actor = 1,
-        Block = 3,
-        Chunk = 4,
-        EDU = 5,
-        Item = 6,
-        Player = 7,
-        TickingArea = 8,
-        VolumeArea = 9,
-        WorldFeature = 10,
-        ForcedCorruption = 11,
-        Count = 12,
-        All = 13,
-    };
+#include <unordered_map>
+
+#include "bedrock/platform/threading/mutex_details.h"
+
+namespace Core {
+
+template <class KeyType, typename ValueType, typename U = ValueType>
+class Cache {
+    Bedrock::Threading::SharedMutex access_;
+    std::unordered_map<KeyType, ValueType> content_;
 };
+
+}  // namespace Core

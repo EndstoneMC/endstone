@@ -14,21 +14,43 @@
 
 #pragma once
 
-#include <memory>
+#include <nlohmann/json.hpp>
 
-template <typename T>
-class OwnerStorageSharePtr {
-public:
-    T &operator*() const
+template <typename ValueType>
+struct NewType {
+    using Raw = ValueType;
+    Raw value;
+
+    operator const Raw &() const
     {
-        return *value_;
+        return value;
     }
 
-    T *operator->() const noexcept
+    NewType &operator=(const Raw &rhs)
     {
-        return value_.get();
+        value = rhs;
+        return *this;
     }
 
-private:
-    std::shared_ptr<T> value_;
+    bool operator==(const Raw &rhs) const
+    {
+        return value == rhs;
+    }
+
+    bool operator!=(const Raw &rhs) const
+    {
+        return !(*this == rhs);
+    }
 };
+
+template <typename ValueType>
+void to_json(nlohmann::json &j, const NewType<ValueType> &nt)
+{
+    j = nt.value;
+}
+
+template <typename ValueType>
+void from_json(const nlohmann::json &j, NewType<ValueType> &nt)
+{
+    j.get_to(nt.value);
+}

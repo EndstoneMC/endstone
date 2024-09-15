@@ -23,8 +23,13 @@
 
 class BlockPalette {
 public:
+    enum class PaletteType : int {
+        Sequential = 0,
+        Hashed = 1,
+    };
+
     virtual ~BlockPalette() = 0;
-    [[nodiscard]] virtual int getPaletteType() const = 0;
+    [[nodiscard]] virtual PaletteType getPaletteType() const = 0;
     virtual void appendBlock(const Block &) = 0;
     [[nodiscard]] virtual const Block &getBlock(const BlockRuntimeId &) const = 0;
 
@@ -34,12 +39,12 @@ protected:
 public:
     [[nodiscard]] std::size_t getNumBlockNetworkIds() const
     {
-        return block_from_runtime_id_.size();
+        return block_from_network_id_.size();
     }
 
 private:
-    Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;  // +8
-    std::map<std::string, const BlockLegacy *> name_lookup_;                  // +88
-    std::vector<Block *> block_from_runtime_id_;                              // +104
-    Level *level_;                                                            // +128
+    Bedrock::Threading::Mutex legacy_block_states_conversion_warning_mutex_;    // +8
+    std::set<std::pair<int, int>> legacy_block_states_conversion_warning_set_;  // +88
+    std::vector<Block *> block_from_network_id_;                                // +104
+    Level *level_;                                                              // +128
 };

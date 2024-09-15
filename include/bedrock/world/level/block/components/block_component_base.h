@@ -14,4 +14,7 @@
 
 #pragma once
 
-class BlockComponentBase {};
+class BlockComponentBase {
+public:
+    virtual ~BlockComponentBase() = 0;
+};

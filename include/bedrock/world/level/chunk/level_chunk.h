@@ -39,10 +39,10 @@ private:
     std::uint8_t lighting_fixup_done_;                       // +128
     std::atomic<bool> lighting_task_active_;                 // +129
     bool read_only_;                                         // +130
-    void *generator_;                                        // +136
+    ChunkSource *generator_;                                 // +136
     std::optional<LevelChunkFormat> loaded_format_;          // +144
     std::string serialized_entities_buffer_;                 // +152
-    std::string unknown_;                                    // +184
+    std::string failed_serialized_entities_buffer_;          // +184
     bool had_serialized_entities_;                           // +216
     std::vector<void *> unresolved_actor_links_;             // +224 ActorLink::List
     std::atomic<ChunkState> load_state_;                     // +248
@@ -52,4 +52,5 @@ private:
     SpinLock cached_data_state_spin_lock_;                   // +256
     SpinLock client_request_heightmap_adjust_spin_lock_;     // +288
     Tick last_tick_;                                         // +320
+    // ...
 };

@@ -14,10 +14,24 @@
 
 #pragma once
 
-#include "bedrock/bedrock.h"
-#include "bedrock/world/level/block/actor/block_actor.h"
+#include <cstdint>
 
-class FurnaceBlockActor: public BlockActor {
-public:
-    ENDSTONE_HOOK static float getBurnDuration(class ItemStackBase const &item_instance, float burn_interval);
+enum BlockColorLogic : std::int32_t {
+    Default = 0,
+    CoralFan = 0x1,
+    DoubleVegetation = 0x2,
+    Grass = 0x3,
+    Kelp = 0x4,
+    Leaves = 0x5,
+    Liquid = 0x6,
+    RedStoneWire = 0x7,
+    Seagrass = 0x8,
+    SeaPickle = 0x9,
+    ShulkerBox = 0xa,
+    Stem = 0xb,
+    SugarCane = 0xc,
+    TallGrass = 0xd,
+    UndyedShulkerBox = 0xe,
+    Vine = 0xf,
+    Waterlily = 0x10,
 };

@@ -22,7 +22,16 @@
 #include "bedrock/core/threading/async.h"
 #include "bedrock/forward.h"
 #include "bedrock/nbt/compound_tag.h"
-#include "bedrock/world/level/storage/db_helpers.h"
+#include "bedrock/world/level/storage/db_storage_performance_data.h"
+
+struct PlayerStorageIds {
+    std::string msa_id;
+    std::string platform_id;
+    std::string platform_online_id;
+    std::string platform_offline_id;
+    std::string self_signed_id;
+    std::string random_client_id;
+};
 
 class LevelStorage {
 public:

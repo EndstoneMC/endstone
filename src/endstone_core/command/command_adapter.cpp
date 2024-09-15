@@ -145,13 +145,13 @@ bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value,
             auto *top = stack.top();
             stack.pop();
 
-            if (top->size > 0) {
+            if (top->length > 0) {
                 if (!result.empty()) {
                     result += " ";
                 }
 
-                auto str = std::string(top->data, top->size);
-                if (top->symbol.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
+                auto str = std::string(top->text, top->length);
+                if (top->type.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
                     str = removeQuotes(str);
                 }
 

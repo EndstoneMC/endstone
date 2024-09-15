@@ -14,13 +14,7 @@
 
 #pragma once
 
-#include "bedrock/core/utility/automatic_id.h"
-
-class Dimension;
-
-class IDimension {
+class BlockActor {
 public:
-    virtual ~IDimension() = 0;
-    [[nodiscard]] virtual bool isNaturalDimension() const = 0;
-    [[nodiscard]] virtual DimensionType getDimensionId() const = 0;
+    virtual ~BlockActor() = 0;
 };

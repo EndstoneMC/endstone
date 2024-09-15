@@ -24,15 +24,24 @@
 #include "bedrock/world/level/block/block.h"
 
 class BlockDescriptor {
-    enum class CompareType;
+    enum class CompareType : std::uint32_t {
+        AnyTag = 0x0,
+        BlockName = 0x1,
+        States = 0x2,
+        Unknown = 0x3,
+    };
+
+    class ResolveHelper {
+        BlockDescriptor *block_descriptor_;
+    };
 
 public:
     [[nodiscard]] ENDSTONE_HOOK Block const *tryGetBlockNoLogging() const;
 
 private:
-    void *unknown1_;                       // +0
+    ResolveHelper resolve_helper_;         // +0
     HashedString block_name_;              // +8
-    bool is_complex_alias_block_;          // +56
+    bool is_complex_alias_;                // +56
     std::shared_ptr<void *> tags_;         // +64  void*=ExpressionNode
     std::vector<void *> states_;           // +80  void*=BlockDescriptor::State
     std::vector<void *> resolved_states_;  // +104 void*=BlockDescriptor::State

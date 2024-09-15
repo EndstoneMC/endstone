@@ -27,8 +27,8 @@ public:
 
 private:
     std::vector<std::pair<Bedrock::typeid_t<void>, std::unique_ptr<BlockComponentBase>>> components_;  // +8
-    bool allow_adding_;                                                                                // +32
-    bool allow_replacement_;                                                                           // +33
-    bool allow_try_get_before_finalization_;                                                           // +34
+    bool allow_adding_components_;                                                                     // +32
+    bool allow_replacement_components_;                                                                // +33
+    bool allow_try_get_components_before_finalization_;                                                // +34
 };
 BEDROCK_STATIC_ASSERT_SIZE(BlockComponentStorage, 40, 40);
