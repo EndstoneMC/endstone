@@ -14,7 +14,6 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
-};
+#include "bedrock/world/events/player_event_coordinator.h"
+
+class ClientPlayerEventCoordinator : public PlayerEventCoordinator{};

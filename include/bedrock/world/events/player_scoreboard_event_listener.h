@@ -14,7 +14,11 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+#include "bedrock/world/events/scoreboard_event_listener.h"
+#include "bedrock/world/scores/scoreboard_id.h"
+
+class PlayerScoreboardEventListener : public ScoreboardEventListener {
+public:
+private:
+    std::unordered_map<ScoreboardId, void *> subscribed_objectives_;  // void* = SubscribedObjectives
 };

@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/world/events/gameplay_handler.h"
+#include "bedrock/scripting/event_handlers/script_level_gameplay_handler.h"
 
 #include <entt/entt.hpp>
 
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
 #include "bedrock/world/actor/player/player.h"
+#include "bedrock/world/events/level_events.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/weather/thunder_change_event.h"

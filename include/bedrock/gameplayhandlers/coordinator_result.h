@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+enum class CoordinatorResult : int {
+    Cancel = 0,
+    Continue = 0x1,
 };

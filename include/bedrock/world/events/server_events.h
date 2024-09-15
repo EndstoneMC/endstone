@@ -29,12 +29,9 @@ struct ServerInstanceEventPlaceHolder {
 };
 
 template <>
-struct ServerInstanceGameplayEvent<void> {
-    std::variant<Details::ValueOrRef<ServerInstanceLeaveGameDoneEvent const>,     // 0
-                 Details::ValueOrRef<ServerInstanceRequestResourceReload const>,  // 1
-                 Details::ValueOrRef<ServerInstanceEventPlaceHolder const>>
-        event;
-};
+struct ServerInstanceGameplayEvent<void>
+    : ConstEventVariant<ServerInstanceLeaveGameDoneEvent, ServerInstanceRequestResourceReload,
+                        ServerInstanceEventPlaceHolder> {};
 
 template <typename Return>
 struct MutableServerNetworkGameplayEvent;
@@ -49,7 +46,4 @@ struct ChatEvent {
 };
 
 template <>
-struct MutableServerNetworkGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<ChatEvent>>  // 0
-        event;
-};
+struct MutableServerNetworkGameplayEvent<CoordinatorResult> : MutableEventVariant<ChatEvent> {};

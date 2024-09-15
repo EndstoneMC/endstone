@@ -14,7 +14,10 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+#include "bedrock/forward.h"
+
+template <typename T>
+struct ScriptEventHandler {
+    Scripting::WeakLifetimeScope scope;
+    Scripting::TypedObjectHandle<T> script_events_handle;
 };

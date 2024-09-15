@@ -18,11 +18,11 @@
 
 #include "bedrock/deps/json/value.h"
 #include "bedrock/forward.h"
+#include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_location.h"
-#include "bedrock/world/events/coordinator_result.h"
-#include "bedrock/world/events/interaction_result.h"
+#include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/item/item_descriptor.h"
 #include "bedrock/world/item/item_tag.h"
 #include "bedrock/world/level/block/block_legacy.h"
@@ -220,7 +220,7 @@ private:
     CreativeItemCategory creative_category_;          // +464
     Item *crafting_remaining_item_;                   // +472
     std::string creative_group_;                      // +480
-    float furnace_burn_interval_modifier_;           // +512
+    float furnace_burn_interval_modifier_;            // +512
     float furnace_xp_multiplier_;                     // +516
     int unknown3_;                                    // +520
     int unknown4_;                                    // +524

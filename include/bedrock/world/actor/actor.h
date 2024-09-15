@@ -37,7 +37,6 @@
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_permission_level.h"
-#include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/actor/actor_flags.h"

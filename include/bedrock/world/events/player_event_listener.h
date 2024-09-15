@@ -14,7 +14,7 @@
 
 #pragma once
 
-class InteractionResult {
+class PlayerEventListener {
 public:
-    int value;
+    virtual ~PlayerEventListener() = 0;
 };

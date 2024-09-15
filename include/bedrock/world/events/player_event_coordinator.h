@@ -15,24 +15,12 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
-#include "bedrock/world/events/coordinator_result.h"
-#include "bedrock/world/events/event_ref.h"
-#include "bedrock/world/events/event_result.h"
-#include "bedrock/world/events/level_event.h"
+#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/events/player_event_listener.h"
 #include "bedrock/world/events/player_events.h"
-#include "bedrock/world/events/server_event.h"
 
-template <typename Type>
-struct GameplayHandlerResult {
-    Type value;
-    EventResult result;
-};
-
-class LevelGameplayHandler {
-    virtual ~LevelGameplayHandler() = 0;
-};
-class ScriptLevelGameplayHandler : public LevelGameplayHandler {
+class PlayerEventCoordinator : public EventCoordinatorPimpl<PlayerEventListener> {
 public:
-    ~ScriptLevelGameplayHandler() override = 0;
-    virtual ENDSTONE_HOOK GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
+    ENDSTONE_HOOK void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
 };

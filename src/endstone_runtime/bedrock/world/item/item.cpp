@@ -45,7 +45,7 @@ CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, Bl
         endstone::BlockPlaceEvent e{std::move(block_placed), *block_replaced, *block_against, player};
         server.getPluginManager().callEvent(e);
         if (e.isCancelled()) {
-            return CoordinatorResult::Deny;
+            return CoordinatorResult::Cancel;
         }
     }
 

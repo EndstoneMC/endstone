@@ -18,8 +18,9 @@
 
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
-#include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 #include "endstone/endstone.h"
 
@@ -45,11 +46,9 @@ struct LevelGameplayEvent;
 
 template <>
 struct LevelGameplayEvent<void>
-    : public ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
+    : ConstEventVariant<LevelAddedActorEvent, LevelBroadcastEvent, LevelSoundBroadcastEvent, LevelDayCycleEvent,
                                LevelStartLeaveGameEvent,
-#ifdef _WIN32
                                LevelGameRuleChangeEvent,
-#endif
                                ScriptingInitializeEvent, LevelEventPlaceHolder> {
 };
 
@@ -66,6 +65,5 @@ template <typename Return>
 struct MutableLevelGameplayEvent;
 
 template <>
-struct MutableLevelGameplayEvent<CoordinatorResult> {
-    std::variant<Details::ValueOrRef<LevelWeatherChangedEvent>> event;
+struct MutableLevelGameplayEvent<CoordinatorResult>: MutableEventVariant<LevelWeatherChangedEvent> {
 };

@@ -14,7 +14,16 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+#include "bedrock/gameplayhandlers/level_gameplay_handler.h"
+#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/events/level_event_listener.h"
+
+class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
+public:
+    // ENDSTONE_HOOK void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
+    LevelGameplayHandler &getLevelGameplayHandler();
+
+private:
+    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
+    std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
 };

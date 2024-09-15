@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include "bedrock/world/events/coordinator_result.h"
+#include "bedrock/gameplayhandlers/coordinator_result.h"
 
 template <std::size_t N>
 struct ItemEventPlaceHolder {

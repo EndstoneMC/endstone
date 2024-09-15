@@ -14,7 +14,15 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+#include "bedrock/bedrock.h"
+#include "bedrock/server/server_instance.h"
+#include "bedrock/world/events/event_coordinator.h"
+#include "bedrock/world/events/server_instance_event_listener.h"
+
+class ServerInstanceEventCoordinator : public EventCoordinatorPimpl<ServerInstanceEventListener> {
+public:
+    ENDSTONE_HOOK void sendServerInitializeStart(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerThreadStarted(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerThreadStopped(ServerInstance &instance);
+    ENDSTONE_HOOK void sendServerLevelInitialized(ServerInstance &instance, Level &level);
 };

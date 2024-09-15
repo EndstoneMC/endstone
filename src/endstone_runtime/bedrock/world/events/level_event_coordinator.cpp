@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/events/level_event_coordinator.h"
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
-};
+LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
+{
+    return *level_gameplay_handler_;
+}

@@ -20,6 +20,7 @@
 
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
 #include "bedrock/forward.h"
 #include "bedrock/gamerefs/owner_ptr.h"
 #include "bedrock/world/level/block_source.h"

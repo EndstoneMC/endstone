@@ -14,8 +14,7 @@
 
 #pragma once
 
-template <typename E>
-class EventRef {
+class GameplayHandler {
 public:
-    E variant;
+    virtual ~GameplayHandler() = 0;
 };

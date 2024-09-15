@@ -65,3 +65,9 @@ template <typename... Events>
 struct MutableEventVariant {
     EventVariantImpl<Events...> variant;
 };
+
+template <typename E>
+class EventRef {
+public:
+    E variant;
+};

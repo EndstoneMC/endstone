@@ -17,6 +17,7 @@
 #include <unordered_map>
 
 #include "bedrock/world/scores/player_scoreboard_id.h"
+#include "bedrock/world/scores/scoreboard_id.h"
 
 class IdentityDictionary {
 public:

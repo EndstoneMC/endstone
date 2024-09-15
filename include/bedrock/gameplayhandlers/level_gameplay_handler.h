@@ -14,7 +14,6 @@
 
 #pragma once
 
-enum class CoordinatorResult : int {
-    Deny = 0,
-    Default = 1
-};
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
+
+class LevelGameplayHandler : public GameplayHandler {};

@@ -14,7 +14,13 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+enum class HandlerResult : int {
+    BypassListeners = 0,
+    NotifyListeners = 1,
+};
+
+template<typename ReturnValueType>
+struct GameplayHandlerResult {
+    HandlerResult handler_result;
+    ReturnValueType return_value;
 };

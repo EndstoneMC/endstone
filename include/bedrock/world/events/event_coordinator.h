@@ -14,24 +14,13 @@
 
 #pragma once
 
+#include <functional>
 #include <thread>
-#include <unordered_map>
 #include <vector>
 
-#include "bedrock/bedrock.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
-#include "bedrock/world/events/actor_event.h"
-#include "bedrock/world/events/event_ref.h"
-#include "bedrock/world/events/gameplay_handler.h"
-#include "bedrock/world/events/item_event.h"
-#include "bedrock/world/events/level_event.h"
-#include "bedrock/world/events/player_events.h"
-#include "bedrock/world/events/server_event.h"
-#include "bedrock/world/scores/scoreboard_id.h"
-
-class ServerInstance;
-class Level;
+#include "bedrock/world/events/event_result.h"
 
 template <typename ListenerType>
 class EventCoordinatorPimpl : public Bedrock::EnableNonOwnerReferences {
@@ -41,63 +30,9 @@ public:
 private:
     std::vector<ListenerType *> listeners_;                                      // +24
     std::vector<std::function<EventResult(ListenerType &)>> events_to_process_;  // +48
-    std::vector<ListenerType *> unk3_;                                           // +72
-    bool unk4_;                                                                  // +96
+    std::vector<ListenerType *> pending_registrations_;                          // +72
+    bool has_pending_registrations_;                                             // +96
     std::thread::id thread_id_;                                                  // +100 (+104)
     bool thread_id_initialized_;                                                 // +104 (+112)
     std::int32_t thread_check_index_;                                            // +112 (+116)
-};
-
-class ActorEventCoordinator {
-public:
-    // void sendEvent(EventRef<ActorGameplayEvent<void>> const &ref);
-    // CoordinatorResult sendEvent(EventRef<ActorGameplayEvent<CoordinatorResult>> const &ref);
-};
-
-class BlockEventCoordinator {
-public:
-    // void sendEvent(EventRef<BlockGameplayEvent<void>> const &ref);
-    // CoordinatorResult sendEvent(EventRef<BlockGameplayEvent<CoordinatorResult>> const &ref);
-};
-class ItemEventCoordinator;
-
-class LevelEventCoordinator : public EventCoordinatorPimpl<LevelEventListener> {
-public:
-    // ENDSTONE_HOOK void sendEvent(EventRef<LevelGameplayEvent<void>> const &ref);
-    LevelGameplayHandler &getLevelGameplayHandler();
-
-private:
-    std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
-    std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
-};
-
-class PlayerEventCoordinator {
-public:
-    ENDSTONE_HOOK void sendEvent(EventRef<PlayerGameplayEvent<void>> const &ref);
-    // CoordinatorResult sendEvent(EventRef<PlayerGameplayEvent<CoordinatorResult>> const &ref);
-};
-class ServerPlayerEventCoordinator : public PlayerEventCoordinator {};
-class ClientPlayerEventCoordinator : public PlayerEventCoordinator {};
-
-class ServerInstanceEventCoordinator {
-public:
-    ENDSTONE_HOOK void sendServerInitializeStart(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerThreadStarted(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerThreadStopped(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerLevelInitialized(ServerInstance &instance, Level &level);
-};
-
-class ServerNetworkEventCoordinator;
-class ScriptingEventCoordinator;
-class ScriptDeferredEventCoordinator;
-
-class ScoreboardEventListener {
-public:
-    virtual ~ScoreboardEventListener() = 0;
-};
-class ScoreboardEventCoordinator : public EventCoordinatorPimpl<ScoreboardEventListener> {};
-class PlayerScoreboardEventListener : public ScoreboardEventListener {
-public:
-private:
-    std::unordered_map<ScoreboardId, void *> subscribed_objectives_;  // void* = SubscribedObjectives
 };

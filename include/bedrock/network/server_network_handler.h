@@ -29,7 +29,7 @@
 #include "bedrock/platform/multiplayer_service_observer.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/player/player.h"
-#include "bedrock/world/events/server_event.h"
+#include "bedrock/world/events/server_events.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/level/level_interface.h"
 #include "bedrock/world/level/level_listener.h"

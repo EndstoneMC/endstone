@@ -245,6 +245,14 @@ class GamePublishSetting;
 namespace Puv::Legacy {
 enum class LevelSoundEvent : int;
 }
+namespace Scripting {
+class WeakLifetimeScope;
+template <typename T>
+class TypedObjectHandle;
+}  // namespace Scripting
+namespace ScriptModuleMinecraft {
+class IScriptWorldBeforeEvents;
+}
 
 // Template Classes
 template <typename A, typename B, typename C>

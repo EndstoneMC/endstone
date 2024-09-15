@@ -16,8 +16,8 @@
 
 #include "bedrock/deps/json/value.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
+#include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
-#include "bedrock/world/events/coordinator_result.h"
 #include "bedrock/world/events/event_variant.h"
 
 template <std::size_t N>
@@ -78,7 +78,7 @@ struct PlayerGameplayEvent;
 
 template <>
 struct PlayerGameplayEvent<void>
-    : public ConstEventVariant<
+    : ConstEventVariant<
           PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
           PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
           PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInitialSpawnEvent,
@@ -89,9 +89,9 @@ struct PlayerGameplayEvent<void>
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
-    : public ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
-                               PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent,
-                               PlayerEventPlaceHolder<208>> {};
+    : ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
+                        PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent,
+                        PlayerEventPlaceHolder<208>> {};
 
 struct PlayerGameModeChangeEvent {};
 
@@ -99,4 +99,4 @@ template <typename Return>
 struct MutablePlayerGameplayEvent;
 template <>
 struct MutablePlayerGameplayEvent<CoordinatorResult>
-    : public MutableEventVariant<PlayerGameModeChangeEvent, PlayerEventPlaceHolder<32>> {};
+    : MutableEventVariant<PlayerGameModeChangeEvent, PlayerEventPlaceHolder<32>> {};

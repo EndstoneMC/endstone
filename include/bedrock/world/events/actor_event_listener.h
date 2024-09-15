@@ -14,7 +14,7 @@
 
 #pragma once
 
-enum class EventResult : int {
-    StopProcessing = 0,
-    KeepGoing = 1
+class ActorEventListener {
+public:
+    virtual ~ActorEventListener() = 0;
 };
