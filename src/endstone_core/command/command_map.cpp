@@ -190,9 +190,13 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         }
     }
 
-    // Check for available usages and enums
+    // Check for available usages
+    auto usages = command->getUsages();
+    if (usages.empty()) {
+        usages.push_back("/" + name);
+    }
     std::vector<std::vector<CommandParameterData>> pending_param_data;
-    for (const auto &usage : command->getUsages()) {
+    for (const auto &usage : usages) {
         auto parser = CommandUsageParser(usage);
         std::string command_name;
         std::vector<CommandUsageParser::Parameter> parameters;
@@ -203,6 +207,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                                             command_name, usage, name);
             }
 
+            bool success = true;
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
                 auto data =
@@ -251,16 +256,18 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
                     if (it == gTypeSymbols.end()) {
-                        server_.getLogger().error("Error occurred when registering usage '{}'. Unsupported type '{}'.",
-                                                  usage, parameter.type);
-                        break;
+                        server_.getLogger().error(
+                            "Unable to register command '{}'. Unsupported type '{}' in usage '{}'.", name,
+                            parameter.type, usage);
+                        success = false;
+                        break;  // early stop if any of the param in the usage is invalid
                     }
                     data.fallback_symbol = CommandRegistry::Symbol{it->second};
                 }
                 param_data.push_back(data);
             }
 
-            if (!param_data.empty()) {
+            if (success) {
                 pending_param_data.push_back(param_data);
             }
         }
