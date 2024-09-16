@@ -60,7 +60,6 @@ std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSend
             tag.putByte("CommandPermissionLevel", static_cast<std::uint8_t>(CommandPermissionLevel::Owner));
             tag.putString("DimensionId", "overworld");
         }
-
         auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
@@ -68,24 +67,9 @@ std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSend
     if (auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
         CompoundTag tag;
         {
-            auto origin_type = CommandOriginType::GameDirectorEntityServer;
-            auto entity_id = player->getHandle().getOrCreateUniqueID();
-            CompoundTag origin;
-            {
-                origin.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-                origin.putInt64("EntityId", entity_id.raw_id);
-            }
-            CompoundTag output_receiver;
-            {
-                output_receiver.putByte("OriginType", static_cast<std::uint8_t>(origin_type));
-                output_receiver.putInt64("EntityId", entity_id.raw_id);
-            }
-            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Virtual));
-            tag.putCompound("Origin", std::move(origin));
-            tag.putCompound("OutputReceiver", std::move(output_receiver));
-            tag.putInt("Version", CommandVersion::CurrentVersion);
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
+            tag.putInt64("PlayerId", player->getHandle().getOrCreateUniqueID().raw_id);
         }
-
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getHandle().getLevel()));
     }
 
