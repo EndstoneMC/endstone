@@ -221,7 +221,7 @@ endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
         return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
     }
 
-    if (self->hasType(ActorType::Mob)) {
+    if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
         auto *mob = static_cast<Mob *>(self);
         return entity_context_.getOrAddComponent<endstone::detail::EndstoneMob>(server, *mob);
     }
