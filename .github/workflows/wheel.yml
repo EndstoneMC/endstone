@@ -81,6 +81,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           cache: 'pip'
+          allow-prereleases: true
 
       - name: Set up Clang 15
         env:
