@@ -66,8 +66,8 @@ bool NetworkIdentifier::equalsTypeData(const NetworkIdentifier &other) const
                            sizeof(sock.addr6.sin6_addr.s6_addr)) == 0;
     case Type::NetherNet:
         return nether_net_id == other.nether_net_id;
-    case Type::Generic:
-        return other.type == Type::Generic;
+    case Type::Invalid:
+        return other.type == Type::Invalid;
     default:
         return false;
     }

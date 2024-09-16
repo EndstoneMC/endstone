@@ -68,10 +68,10 @@ EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
         break;
     }
     case NetworkIdentifier::Type::NetherNet:
-    case NetworkIdentifier::Type::Generic:
-        throw std::runtime_error("Unsupported type of NetworkIdentifier");
+    case NetworkIdentifier::Type::Invalid:
+    default:
+        break;
     }
-
     server_.players_.emplace(uuid_, this);
 }
 
