@@ -221,10 +221,11 @@ class BarColor:
     GREEN: typing.ClassVar[BarColor]  # value = <BarColor.GREEN: 3>
     PINK: typing.ClassVar[BarColor]  # value = <BarColor.PINK: 0>
     PURPLE: typing.ClassVar[BarColor]  # value = <BarColor.PURPLE: 5>
+    REBECCA_PURPLE: typing.ClassVar[BarColor]  # value = <BarColor.REBECCA_PURPLE: 6>
     RED: typing.ClassVar[BarColor]  # value = <BarColor.RED: 2>
-    WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 6>
+    WHITE: typing.ClassVar[BarColor]  # value = <BarColor.WHITE: 7>
     YELLOW: typing.ClassVar[BarColor]  # value = <BarColor.YELLOW: 4>
-    __members__: typing.ClassVar[dict[str, BarColor]]  # value = {'PINK': <BarColor.PINK: 0>, 'BLUE': <BarColor.BLUE: 1>, 'RED': <BarColor.RED: 2>, 'GREEN': <BarColor.GREEN: 3>, 'YELLOW': <BarColor.YELLOW: 4>, 'PURPLE': <BarColor.PURPLE: 5>, 'WHITE': <BarColor.WHITE: 6>}
+    __members__: typing.ClassVar[dict[str, BarColor]]  # value = {'PINK': <BarColor.PINK: 0>, 'BLUE': <BarColor.BLUE: 1>, 'RED': <BarColor.RED: 2>, 'GREEN': <BarColor.GREEN: 3>, 'YELLOW': <BarColor.YELLOW: 4>, 'PURPLE': <BarColor.PURPLE: 5>, 'REBECCA_PURPLE': <BarColor.REBECCA_PURPLE: 6>, 'WHITE': <BarColor.WHITE: 7>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __getstate__(self) -> int:
