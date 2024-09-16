@@ -168,30 +168,30 @@ std::unordered_map<std::string, CommandRegistry::HardNonTerminal> gTypeSymbols =
 bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
 {
     std::lock_guard lock(mutex_);
+    auto &registry = server_.getMinecraftCommands().getRegistry();
 
     if (!command) {
+        server_.getLogger().error("Unable to register a null command.");
         return false;
     }
 
+    // Check if the command name is available
     auto name = command->getName();
     if (auto it = known_commands_.find(name); it != known_commands_.end() && it->second->getName() == it->first) {
+        server_.getLogger().error("Unable to register command '{}' as it already exists.", name);
         return false;  // the name was registered and is not an alias, we don't replace it
     }
 
-    auto &registry = server_.getMinecraftCommands().getRegistry();
-    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
-                             {static_cast<CommandFlagSize>(CommandCheatFlag::NotCheat)}, {0});
-    known_commands_.emplace(name, command);
-
-    std::vector<std::string> registered_alias;
+    // Check for available aliases
+    std::vector<std::string> pending_aliases;
     for (const auto &alias : command->getAliases()) {
         if (known_commands_.find(alias) == known_commands_.end()) {
-            registry.registerAlias(name, alias);
-            known_commands_.emplace(alias, command);
-            registered_alias.push_back(alias);
+            pending_aliases.push_back(alias);
         }
     }
 
+    // Check for available usages and enums
+    std::vector<std::vector<CommandParameterData>> pending_param_data;
     for (const auto &usage : command->getUsages()) {
         auto parser = CommandUsageParser(usage);
         std::string command_name;
@@ -219,9 +219,8 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                         enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                     }
                     if (enum_name_final != enum_name) {
-                        server_.getLogger().warning(
-                            "Unable to register enum '{}' as it already exists, '{}' was registered instead.",
-                            enum_name, enum_name_final);
+                        server_.getLogger().warning("Enum '{}' already exists, '{}' will be registered instead.",
+                                                    enum_name, enum_name_final);
                     }
 
                     // Add enum
@@ -231,7 +230,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     auto it = registry.enum_lookup.find(enum_name_final);
                     if (it == registry.enum_lookup.end()) {
                         server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
-                        return false;
+                        throw std::runtime_error("Unreachable");
                     }
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
@@ -254,23 +253,40 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     if (it == gTypeSymbols.end()) {
                         server_.getLogger().error("Error occurred when registering usage '{}'. Unsupported type '{}'.",
                                                   usage, parameter.type);
-                        return false;
+                        break;
                     }
                     data.fallback_symbol = CommandRegistry::Symbol{it->second};
                 }
-
                 param_data.push_back(data);
             }
 
-            registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
+            if (!param_data.empty()) {
+                pending_param_data.push_back(param_data);
+            }
         }
         else {
             server_.getLogger().error("Error occurred when parsing usage '{}'. {}", usage, error_message);
-            continue;
         }
     }
 
-    command->setAliases(registered_alias);
+    if (pending_param_data.empty()) {
+        server_.getLogger().info("Unable to register command '{}': no valid usage", name);
+        return false;
+    }
+
+    // Actual registration starts from here
+    registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
+                             {static_cast<CommandFlagSize>(CommandCheatFlag::NotCheat)}, {0});
+    known_commands_.emplace(name, command);
+    for (const auto &alias : pending_aliases) {
+        registry.registerAlias(name, alias);
+        known_commands_.emplace(alias, command);
+    }
+    for (const auto &param_data : pending_param_data) {
+        registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
+    }
+
+    command->setAliases(pending_aliases);
     command->registerTo(*this);
     return true;
 }

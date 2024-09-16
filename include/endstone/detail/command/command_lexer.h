@@ -103,7 +103,7 @@ private:
         return value_[position_++];
     }
 
-    Token next(CommandLexer::TokenType type);
+    Token next(TokenType type);
     Token nextIdentifier();
     Token nextNumber();
 
