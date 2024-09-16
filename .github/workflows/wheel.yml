@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: [ "3.9", "3.10", "3.11", "3.12" ]
+        python: [ "3.9", "3.10", "3.11", "3.12", "3.13" ]
 
     runs-on: windows-2019
     steps:
@@ -31,6 +31,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
           cache: 'pip'
+          allow-prereleases: true
 
       - name: Set up MSVC
         uses: ilammy/msvc-dev-cmd@v1
