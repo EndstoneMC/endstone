@@ -14,10 +14,5 @@
 
 #pragma once
 
-#include "bedrock/forward.h"
-
 template <typename T>
-struct ScriptEventHandler {
-    Scripting::WeakLifetimeScope scope;
-    Scripting::TypedObjectHandle<T> script_events_handle;
-};
+struct ScriptEventHandler {};

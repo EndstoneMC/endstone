@@ -15,6 +15,7 @@
 #pragma once
 
 #include "bedrock/bedrock.h"
+#include "bedrock/forward.h"
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gameplayhandlers/event_handler_dispatcher.h"
 #include "bedrock/gameplayhandlers/gameplay_handler_result.h"
@@ -25,6 +26,6 @@
 class ScriptLevelGameplayHandler : public EventHandlerDispatcher<LevelGameplayHandler>,
                                    public ScriptEventHandler<ScriptModuleMinecraft::IScriptWorldBeforeEvents> {
 public:
-    ~ScriptLevelGameplayHandler() override = 0;
+    virtual ~ScriptLevelGameplayHandler() = 0;
     virtual ENDSTONE_HOOK GameplayHandlerResult<CoordinatorResult> handleEvent(LevelWeatherChangedEvent &event);
 };

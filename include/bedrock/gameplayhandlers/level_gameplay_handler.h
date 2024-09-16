@@ -15,5 +15,12 @@
 #pragma once
 
 #include "bedrock/gameplayhandlers/gameplay_handler.h"
+#include "bedrock/gameplayhandlers/gameplay_handler_result.h"
+#include "bedrock/world/events/level_events.h"
 
-class LevelGameplayHandler : public GameplayHandler {};
+class LevelGameplayHandler : public GameplayHandler {
+public:
+    virtual HandlerResult handleEvent(LevelGameplayEvent<void> const &event) = 0;
+    virtual GameplayHandlerResult<CoordinatorResult> handleEvent(MutableLevelGameplayEvent<CoordinatorResult> &a2) = 0;
+};
+
