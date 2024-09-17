@@ -14,7 +14,9 @@
 
 #include "bedrock/server/commands/command_origin.h"
 
+#include <bedrock/nbt/nbt_io.h>
 #include <entt/entt.hpp>
+#include <spdlog/spdlog.h>
 
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/actor.h"
@@ -29,6 +31,7 @@ using endstone::detail::EndstoneServer;
 
 endstone::CommandSender *CommandOrigin::toEndstone() const
 {
+    spdlog::info("{}", NbtIo::toJson(serialize()).dump());
     auto &server = entt::locator<EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
@@ -39,7 +42,14 @@ endstone::CommandSender *CommandOrigin::toEndstone() const
         endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
         return &player;
     }
-    case CommandOriginType::Entity:
+    case CommandOriginType::Entity: {
+        auto *entity = getEntity();
+        endstone::Actor &actor = entity->getEndstoneActor();
+        return &actor;
+    }
+    case CommandOriginType::Virtual: {
+        return getOutputReceiver().toEndstone();
+    }
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add BlockCommandSender, Entity and CommandMinecart

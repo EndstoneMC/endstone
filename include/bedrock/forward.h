@@ -39,8 +39,6 @@ class BaseLightTextureImageBuilder;
 class BehaviorFactory;
 class BiomeComponentFactory;
 class BiomeManager;
-class BiomeRegistry;
-class BlockActor;
 class BlockClimberDefinition;
 class BlockComponentFactory;
 class BlockDefinitionGroup;
@@ -95,6 +93,7 @@ class IFoodItemComponent;
 class IGameModuleShared;
 class ILevelRandom;
 class IMinecraftEventing;
+class IndexSet;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
 class InputMode;
@@ -107,7 +106,6 @@ class ItemUseMethod;
 class JigsawStructureRegistry;
 class LevelChunkMetaData;
 class LevelData;
-class LevelEventListener;
 class LevelSoundManager;
 class LevelStorageObserver;
 class LevelStorageWriteBatch;
@@ -182,7 +180,6 @@ enum class ArmorSlot;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
 enum class BlockActorType;
-enum class BlockOcclusionType;
 enum class BlockRenderLayer;
 enum class BlockSupportType;
 enum class BlockTintType;
@@ -259,9 +256,5 @@ template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename A, typename B, typename C>
 class Factory;
-template <typename A, typename B>
-class TagRegistry;
-template <typename T>
-class IDType;
 template <typename T>
 using optional_ref = T *;  // NOLINT(*-identifier-naming)

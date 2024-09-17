@@ -62,7 +62,7 @@ public:
     [[nodiscard]] virtual bool isSelectorExpansionAllowed() const = 0;                           // 18
     [[nodiscard]] virtual const NetworkIdentifier &getSourceId() const = 0;                      // 19
     [[nodiscard]] virtual SubClientId getSourceSubId() const = 0;                                // 20
-    [[nodiscard]] virtual CommandOrigin *getOutputReceiver() const = 0;                          // 21
+    [[nodiscard]] virtual CommandOrigin &getOutputReceiver() const = 0;                          // 21
     [[nodiscard]] virtual CommandOriginIdentity getIdentity() const = 0;                         // 22
     [[nodiscard]] virtual CommandOriginType getOriginType() const = 0;                           // 23
     [[nodiscard]] virtual CommandOriginData toCommandOriginData() const = 0;                     // 24

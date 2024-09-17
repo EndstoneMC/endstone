@@ -28,6 +28,7 @@
 #include "bedrock/util/int_range.h"
 #include "bedrock/world/direction.h"
 #include "bedrock/world/flip.h"
+#include "bedrock/world/level/block/actor/block_actor.h"
 #include "bedrock/world/level/block/block_color_logic.h"
 #include "bedrock/world/level/block/block_state_instance.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
