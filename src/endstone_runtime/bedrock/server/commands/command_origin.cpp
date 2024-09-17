@@ -31,7 +31,6 @@ using endstone::detail::EndstoneServer;
 
 endstone::CommandSender *CommandOrigin::toEndstone() const
 {
-    spdlog::info("{}", NbtIo::toJson(serialize()).dump());
     auto &server = entt::locator<EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
@@ -47,9 +46,9 @@ endstone::CommandSender *CommandOrigin::toEndstone() const
         endstone::Actor &actor = entity->getEndstoneActor();
         return &actor;
     }
-    case CommandOriginType::Virtual: {
-        return getOutputReceiver().toEndstone();
-    }
+    case CommandOriginType::Virtual:
+        // TODO(command): we need ProxiedCommandSender, getOrigin will return the callee, getOutputReceiver will return
+        //   the caller
     case CommandOriginType::CommandBlock:
     case CommandOriginType::MinecartCommandBlock:
         // TODO(permission): add BlockCommandSender, Entity and CommandMinecart

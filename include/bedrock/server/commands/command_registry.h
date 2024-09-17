@@ -19,6 +19,7 @@
 #include <map>
 #include <memory>
 #include <optional>
+#include <stack>
 #include <string>
 #include <utility>
 #include <vector>
@@ -344,3 +345,48 @@ public:
     bool is_optional;                                                    // +88
     CommandParameterOption options{CommandParameterOption::None};        // +89
 };
+
+namespace fmt {
+
+template <>
+struct formatter<CommandRegistry::ParseToken> : formatter<string_view> {
+    using Type = CommandRegistry::ParseToken;
+
+    template <typename FormatContext>
+    auto format(const Type &val, FormatContext &ctx) -> format_context::iterator
+    {
+        std::stack<std::pair<const CommandRegistry::ParseToken *, int>> to_visit;
+        auto out = ctx.out();
+
+        to_visit.emplace(&val, 0);
+        while (!to_visit.empty()) {
+            auto node_level = to_visit.top();
+            to_visit.pop();
+
+            const auto *node = node_level.first;
+            auto level = node_level.second;
+
+            for (int i = 0; i < level * 4; ++i) {
+                *out++ = ' ';
+            }
+
+            if (node) {
+                out = format_to(out, "Symbol: 0x{:x}", node->type.value());
+                if (node->length > 0) {
+                    out = format_to(out, ", Data: {}", std::string(node->text, node->length));
+                }
+                out = format_to(out, "\n");
+
+                if (node->next) {
+                    to_visit.emplace(node->next.get(), level);
+                }
+                if (node->child) {
+                    to_visit.emplace(node->child.get(), level + 1);
+                }
+            }
+        }
+
+        return out;
+    }
+};
+}  // namespace fmt

@@ -19,6 +19,7 @@
 #include <vector>
 
 #include <entt/entt.hpp>
+#include <spdlog/spdlog.h>
 
 #include "endstone/detail/message.h"
 
@@ -111,63 +112,43 @@ std::string removeQuotes(const std::string &str)
 }  // namespace
 
 template <>
-bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value,
-                                                              const CommandRegistry::ParseToken &parse_token,
+bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value, const ParseToken &parse_token,
                                                               const CommandOrigin &, int, std::string &,
                                                               std::vector<std::string> &) const
 {
+    spdlog::info("ParseToken:\n{}", parse_token);
     auto &output = static_cast<endstone::detail::CommandAdapter *>(value)->args_;
-    if (!output.empty()) {
-        return true;
-    }
 
-    const auto *root = &parse_token;
-    while (root->parent != nullptr) {  // Find the root node
-        root = root->parent;
-    }
+    std::string result;
+    std::stack<const ParseToken *> stack;
+    stack.push(&parse_token);
 
-    const auto *command_name = root->child.get();  // Command name is always the first child
-    if (command_name == nullptr) {                 // No way this can happen, but just in case
-        return false;
-    }
+    while (!stack.empty()) {
+        const auto *top = stack.top();
+        stack.pop();
 
-    if (command_name->next == nullptr) {  // No arguments, no problem
-        return true;
-    }
-
-    // This is where the magic happen, we recreate the command args from the parse token!
-    for (auto *node = command_name->next.get(); node; node = node->next.get()) {
-        std::string result;
-        std::stack<CommandRegistry::ParseToken *> stack;
-        stack.push(node);
-
-        while (!stack.empty()) {
-            auto *top = stack.top();
-            stack.pop();
-
-            if (top->length > 0) {
-                if (!result.empty()) {
-                    result += " ";
-                }
-
-                auto str = std::string(top->text, top->length);
-                if (top->type.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
-                    str = removeQuotes(str);
-                }
-
-                result += str;
+        if (top->length > 0) {
+            if (!result.empty()) {
+                result += " ";
             }
 
-            if (top != node && top->next != nullptr) {
-                stack.push(top->next.get());
+            auto str = std::string(top->text, top->length);
+            if (top->type.value() == static_cast<std::uint32_t>(HardNonTerminal::Id)) {
+                str = removeQuotes(str);
             }
 
-            if (top->child != nullptr) {
-                stack.push(top->child.get());
-            }
+            result += str;
         }
 
-        output.push_back(result);
+        if (top != &parse_token && top->next != nullptr) {
+            stack.push(top->next.get());
+        }
+
+        if (top->child != nullptr) {
+            stack.push(top->child.get());
+        }
     }
+
+    output.push_back(result);
     return true;
 }
