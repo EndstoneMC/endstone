@@ -37,6 +37,7 @@ ENDSTONE_RUNTIME_CTOR int main()
     auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
+        std::this_thread::sleep_for(std::chrono::seconds(5));
 
         // Initialise an isolated Python environment to avoid installing signal handlers
         // https://docs.python.org/3/c-api/init_config.html#init-isolated-conf

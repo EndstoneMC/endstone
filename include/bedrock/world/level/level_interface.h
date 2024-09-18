@@ -405,6 +405,7 @@ public:
     virtual GameRules &getGameRules() = 0;
     [[nodiscard]] virtual bool hasStartWithMapEnabled() const = 0;
     [[nodiscard]] virtual bool isEditorWorld() const = 0;
+    [[nodiscard]] virtual bool isHardcore() const = 0;
     virtual Abilities &getDefaultAbilities() = 0;
     virtual PermissionsHandler &getDefaultPermissions() = 0;
     [[nodiscard]] virtual PermissionsHandler const &getDefaultPermissions() const = 0;

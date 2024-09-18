@@ -23,8 +23,11 @@
 #include "bedrock/shared_ptr.h"
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
+#include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"
 #include "bedrock/world/item/item_descriptor.h"
+#include "bedrock/world/item/item_helper.h"
 #include "bedrock/world/item/item_tag.h"
+#include "bedrock/world/item/rarity.h"
 #include "bedrock/world/level/block/block_legacy.h"
 
 using BlockShape = std::int64_t;
@@ -81,6 +84,8 @@ public:
     virtual bool isGlint(ItemStackBase const &) const = 0;
     virtual bool isPattern() const = 0;
     virtual int getPatternIndex() const = 0;
+    virtual Rarity getBaseRarity() const;
+    virtual Rarity getRarity(ItemStackBase const &stack) const;
     virtual bool showsDurabilityInCreative() const = 0;
     virtual bool isWearableThroughLootTable(CompoundTag const *) const = 0;
     virtual bool canDestroyInCreative() const = 0;
@@ -88,6 +93,7 @@ public:
     virtual bool isLiquidClipItem() const = 0;
     virtual bool shouldInteractionWithBlockBypassLiquid(Block const &) const = 0;
     virtual bool requiresInteract() const = 0;
+    virtual std::string getHoverTextColor(ItemStackBase const &stack) const;
     virtual void appendFormattedHovertext(ItemStackBase const &, Level &, std::string &, bool) const = 0;
     virtual bool isValidRepairItem(ItemStackBase const &, ItemStackBase const &, BaseGameVersion const &) const = 0;
     virtual int getEnchantSlot() const = 0;
@@ -187,44 +193,47 @@ public:
     }
 
 private:
-    std::string texture_atlas_file_;                  // +8
-    int frame_count_;                                 // +40
-    bool animates_in_toolbar_;                        // +44
-    bool is_mirrored_art_;                            // +45
-    std::uint16_t use_anim_;                          // +46
-    std::string hover_text_color_format_;             // +48
-    int icon_frame_;                                  // +80
-    int atlas_frame_;                                 // +84
-    int atlas_total_frame_;                           // +88
-    std::string icon_name_;                           // +96
-    std::string atlas_name_;                          // +128
-    std::uint8_t max_stack_size_;                     // +160
-    std::int16_t id_;                                 // +162
-    std::string description_id_;                      // +168
-    HashedString raw_name_id_;                        // +200
-    std::string namespace_;                           // +248
-    HashedString full_name_;                          // +280
-    std::int16_t max_damage_;                         // +328
-    bool is_glint_ : 1;                               // +330
-    bool hand_equipped_ : 1;                          //
-    bool is_stacked_by_data_ : 1;                     //
-    bool requires_world_builder_ : 1;                 //
-    bool explodable_ : 1;                             //
-    bool fire_resistat_ : 1;                          //
-    bool should_despawn_ : 1;                         //
-    bool allow_offhand_ : 1;                          //
-    bool ignores_permission_ : 1;                     // +331
-    int max_use_duration_;                            // +332
-    BaseGameVersion min_required_base_game_version_;  // +336
-    WeakPtr<BlockLegacy> legacy_block_;               // +456
-    CreativeItemCategory creative_category_;          // +464
-    Item *crafting_remaining_item_;                   // +472
-    std::string creative_group_;                      // +480
-    float furnace_burn_interval_modifier_;            // +512
-    float furnace_xp_multiplier_;                     // +516
-    int unknown3_;                                    // +520
-    int unknown4_;                                    // +524
-    std::vector<void *> unknown6_;                    // +528
-    std::vector<void *> unknown7_;                    // +552
-    std::vector<ItemTag> tags_;                       // +576
+    std::string texture_atlas_file_;                                            // +8
+    int frame_count_;                                                           // +40
+    bool animates_in_toolbar_;                                                  // +44
+    bool is_mirrored_art_;                                                      // +45
+    std::uint16_t use_anim_;                                                    // +46
+    std::string hover_text_color_format_;                                       // +48
+    int icon_frame_;                                                            // +80
+    int atlas_frame_;                                                           // +84
+    int atlas_total_frame_;                                                     // +88
+    std::string icon_name_;                                                     // +96
+    std::string atlas_name_;                                                    // +128
+    std::uint8_t max_stack_size_;                                               // +160
+    std::int16_t id_;                                                           // +162
+    std::string description_id_;                                                // +168
+    HashedString raw_name_id_;                                                  // +200
+    std::string namespace_;                                                     // +248
+    HashedString full_name_;                                                    // +280
+    std::int16_t max_damage_;                                                   // +328
+    bool is_glint_ : 1;                                                         // +330
+    bool hand_equipped_ : 1;                                                    //
+    bool is_stacked_by_data_ : 1;                                               //
+    bool requires_world_builder_ : 1;                                           //
+    bool explodable_ : 1;                                                       //
+    bool fire_resistat_ : 1;                                                    //
+    bool should_despawn_ : 1;                                                   //
+    bool allow_offhand_ : 1;                                                    //
+    bool ignores_permission_ : 1;                                               // +331
+    int max_use_duration_;                                                      // +332
+    BaseGameVersion min_required_base_game_version_;                            // +336
+    WeakPtr<BlockLegacy> legacy_block_;                                         // +456
+    CreativeItemCategory creative_category_;                                    // +464
+    Item *crafting_remaining_item_;                                             // +472
+    std::string creative_group_;                                                // +480
+    float furnace_burn_interval_modifier_;                                      // +512
+    float furnace_xp_multiplier_;                                               // +516
+    ItemCommandVisibility is_hidden_in_command_;                                // +520
+    Rarity base_rarity_;                                                        // +524
+    Interactions::Mining::MineBlockItemEffectType mine_block_type_;             // +528
+    std::unique_ptr<class FoodItemComponentLegacy> food_component_legacy_;      // +536
+    std::unique_ptr<class SeedItemComponentLegacy> seed_component_legacy_;      // +544
+    std::unique_ptr<class CameraItemComponentLegacy> camera_component_legacy_;  // +552
+    std::vector<std::function<void()>> on_reset_bai_callback_;                  // +560
+    std::vector<ItemTag> tags_;                                                 // +584
 };

@@ -191,7 +191,6 @@ public:
     virtual void onStructureBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void onStructureNeighborBlockPlace(BlockSource &, BlockPos const &) const = 0;
     virtual void setupRedstoneComponent(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual ::BlockProperty getRedstoneProperty(BlockSource &, BlockPos const &) const = 0;
     virtual void updateEntityAfterFallOn(BlockPos const &, UpdateEntityAfterFallOnInterface &) const = 0;
     [[nodiscard]] virtual bool isBounceBlock() const = 0;
     [[nodiscard]] virtual bool isPreservingMediumWhenPlaced(BlockLegacy const *) const = 0;
@@ -402,14 +401,14 @@ private:
     mce::Color map_color_;                                                // +396 (+348)
     float friction_;                                                      // +412 (+364)
     BlockTintType block_tint_type_;                                       // +416 (+368)
-    bool m_return_default_block_on_unidentified_block_state_;             // +420 (+372)
+    bool return_default_block_on_unidentified_block_state_;               // +420 (+372)
     BlockColorLogic color_logic_;                                         // +424
     NewBlockID id_;                                                       // +428
     BaseGameVersion min_required_game_version_;                           // +432
     bool is_vanilla_;                                                     // +552
     std::vector<HashedString> tags_;                                      // +560
     std::unordered_map<std::string, void *> event_handlers_;              // +584 void* = DefinitionEvent
-    bool enable_data_driven_vanilla_blocks_and_items_;                    // +648
+    bool data_driven_vanilla_blocks_and_items_enabled_;                   // +648
     AABB visual_shape_;                                                   // +652
     std::int32_t bits_used_;                                              // +680
     std::int32_t total_bits_used_;                                        // +684

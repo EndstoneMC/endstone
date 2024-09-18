@@ -14,7 +14,15 @@
 
 #pragma once
 
+#include <cstdint>
+
 struct BlockComponentDirectData {
+    enum LayerBitMask : std::uint32_t {
+        NONE = 0x0,
+        INIT = 0x1,
+        RENDERING = 0x2,
+    };
+
     class BlockTransformationComponent const *block_transformation_component;          // +0
     class BlockCollisionBoxComponent const *block_collision_box_component;             // +8
     class BlockSelectionBoxComponent const *block_selection_box_component;             // +16
@@ -32,4 +40,6 @@ struct BlockComponentDirectData {
     FlameOdds flame_odds;                                                              // +64
     float friction;                                                                    // +68
     float destroy_speed;                                                               // +72
+    class BlockDestructibleByMiningComponent const *destructible_by_mining_component;  // +80
+    LayerBitMask finalized;                                                            // +88
 };
