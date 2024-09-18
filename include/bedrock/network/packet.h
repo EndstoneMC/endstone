@@ -238,7 +238,9 @@ enum class MinecraftPacketIds {
     JigsawStructureDataPacket = 313,
     CurrentStructureFeaturePacket = 314,
     ServerboundDiagnosticsPacket = 315,
-    EndId = 316,
+    CameraAimAssist = 316,
+    ContainerRegistryCleanup = 317,
+    EndId = 318,
 };
 
 class Packet {

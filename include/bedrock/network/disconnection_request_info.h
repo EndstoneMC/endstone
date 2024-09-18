@@ -134,5 +134,6 @@ public:
         NetherNetNotLoggedIn = 114,
         NetherNetClientSignalingError = 115,
         SubClientLoginDisabled = 116,
+        DeepLinkTryingToOpenDemoWorldWhileSignedIn = 116,
     };
 };
