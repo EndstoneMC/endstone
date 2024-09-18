@@ -14,4 +14,22 @@
 
 #pragma once
 
-class Biome{};
+class Biome{
+public:
+    virtual ~Biome() = 0;
+
+    [[nodiscard]] const HashedString &getIdentifier() const
+    {
+        return name_;
+    }
+
+    [[nodiscard]] unsigned int getId() const
+    {
+        return biome_id_;
+    }
+
+private:
+    HashedString name_;// +0
+    char filler_[132];// +48
+    unsigned int biome_id_;// +180
+};

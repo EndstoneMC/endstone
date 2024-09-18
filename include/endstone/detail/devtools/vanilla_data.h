@@ -29,6 +29,7 @@ struct VanillaData {
     nlohmann::json items;
     ::ListTag creative_items;
     nlohmann::json item_tags;
+    nlohmann::json biomes;
     struct {
         nlohmann::json shapeless;
         nlohmann::json shaped;
