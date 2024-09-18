@@ -19,7 +19,6 @@
 #include <vector>
 
 #include <entt/entt.hpp>
-#include <spdlog/spdlog.h>
 
 #include "endstone/detail/message.h"
 
@@ -116,7 +115,6 @@ bool CommandRegistry::parse<endstone::detail::CommandAdapter>(void *value, const
                                                               const CommandOrigin &, int, std::string &,
                                                               std::vector<std::string> &) const
 {
-    spdlog::info("ParseToken:\n{}", parse_token);
     auto &output = static_cast<endstone::detail::CommandAdapter *>(value)->args_;
 
     std::string result;

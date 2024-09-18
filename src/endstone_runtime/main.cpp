@@ -33,8 +33,7 @@ namespace py = pybind11;
 
 ENDSTONE_RUNTIME_CTOR int main()
 {
-    spdlog::flush_every(std::chrono::seconds(5));
-    auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
+    const auto &logger = endstone::detail::LoggerFactory::getLogger("EndstoneRuntime");
     try {
         logger.info("Initialising...");
         std::this_thread::sleep_for(std::chrono::seconds(5));
