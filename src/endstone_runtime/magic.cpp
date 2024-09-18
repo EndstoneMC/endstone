@@ -27,4 +27,4 @@
 /**
  * CommandVersion
  */
-const int CommandVersion::CurrentVersion = 41;
+const int CommandVersion::CurrentVersion = 42;
