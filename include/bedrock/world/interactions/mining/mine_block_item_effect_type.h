@@ -20,10 +20,10 @@ namespace Interactions::Mining {
 
 enum class MineBlockItemEffectType : std::int32_t {
     Default = 0,
-    DoNothing = 0x1,
-    ComponentItem = 0x2,
-    DiggerItem = 0x3,
-    ShearsItem = 0x4,
+    DoNothing = 1,
+    ComponentItem = 2,
+    DiggerItem = 3,
+    ShearsItem = 4,
 };
 
 }  // namespace Interactions::Mining

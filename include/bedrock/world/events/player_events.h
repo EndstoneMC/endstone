@@ -19,11 +19,11 @@
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/gamerefs/weak_ref.h"
 #include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/item/item_stack.h"
+#include "bedrock/world/level/game_type.h"
 
-template <std::size_t N>
-struct PlayerEventPlaceHolder {  // To ensure our variant is initialised with correct storage size
-    char pad[N];
-};
+template <typename Return>
+struct PlayerGameplayEvent;
 
 struct PlayerSkinLoadedClientEvent {};
 struct PlayerAddEvent {};
@@ -64,39 +64,58 @@ struct PlayerSelectedItemChangedEvent {};
 struct PlayerDimensionChangeBeforeEvent {};
 struct PlayerDimensionChangeAfterEvent {};
 struct PlayerInteractWithEntityAfterEvent {};
-struct PlayerInteractWithBlockAfterEvent {};
+// NOTE: keep it up to date to ensure the variant has the right size
+struct PlayerInteractWithBlockAfterEvent {
+    WeakRef<EntityContext> player;
+    Vec3 block_location;
+    FacingID block_face;
+    Vec3 face_location;
+    std::size_t before_item[sizeof(ItemStack) / 8];  // Endstone: ItemStack is not constructible currently
+    std::size_t after_item[sizeof(ItemStack) / 8];
+    bool is_first_event;
+};
 struct PlayerInputPermissionCategoryChangeEvent {};
+
+template <>
+struct PlayerGameplayEvent<void>
+    : ConstEventVariant<PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent,
+                        PlayerArmorExchangeEvent, PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent,
+                        PlayerEatFoodEvent, PlayerDamageEvent, PlayerDisconnectEvent, PlayerFormCloseEvent,
+                        PlayerFormResponseEvent, PlayerInitialSpawnEvent, PlayerOpenContainerEvent,
+                        PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
+                        PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
+                        PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
+                        PlayerInteractWithBlockAfterEvent, PlayerInputPermissionCategoryChangeEvent> {};
+BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 
 struct PlayerSayCommandEvent {};
 struct PlayerGetExperienceOrbEvent {};
 struct PlayerInteractEvent {};
 struct PlayerInteractWithEntityBeforeEvent {};
-struct PlayerInteractWithBlockBeforeEvent {};
-
-template <typename Return>
-struct PlayerGameplayEvent;
-
-template <>
-struct PlayerGameplayEvent<void>
-    : ConstEventVariant<
-          PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent, PlayerArmorExchangeEvent,
-          PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent, PlayerEatFoodEvent, PlayerDamageEvent,
-          PlayerDisconnectEvent, PlayerFormCloseEvent, PlayerFormResponseEvent, PlayerInitialSpawnEvent,
-          PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
-          PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
-          PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent, PlayerInteractWithBlockAfterEvent,
-          PlayerInputPermissionCategoryChangeEvent, PlayerEventPlaceHolder<352>> {};
+// NOTE: keep it up to date to ensure the variant has the right size
+struct PlayerInteractWithBlockBeforeEvent {
+    WeakRef<EntityContext> player;
+    Vec3 block_location;
+    FacingID block_face;
+    Vec3 face_location;
+    std::size_t item[sizeof(ItemStack) / 8];  // Endstone: ItemStack is not constructible currently
+    bool is_first_event;
+};
 
 template <>
 struct PlayerGameplayEvent<CoordinatorResult>
     : ConstEventVariant<PlayerSayCommandEvent, PlayerGetExperienceOrbEvent, PlayerInteractEvent,
-                        PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent,
-                        PlayerEventPlaceHolder<208>> {};
+                        PlayerInteractWithEntityBeforeEvent, PlayerInteractWithBlockBeforeEvent> {};
+BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<CoordinatorResult>, 232, 232);
 
-struct PlayerGameModeChangeEvent {};
+struct PlayerGameModeChangeEvent {
+    WeakRef<EntityContext> player;
+    GameType from_game_mode;
+    GameType to_game_mode;
+};
 
 template <typename Return>
 struct MutablePlayerGameplayEvent;
 template <>
-struct MutablePlayerGameplayEvent<CoordinatorResult>
-    : MutableEventVariant<PlayerGameModeChangeEvent, PlayerEventPlaceHolder<32>> {};
+struct MutablePlayerGameplayEvent<CoordinatorResult> : MutableEventVariant<PlayerGameModeChangeEvent> {};
+BEDROCK_STATIC_ASSERT_SIZE(MutablePlayerGameplayEvent<CoordinatorResult>, 48, 48);

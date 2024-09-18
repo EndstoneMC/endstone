@@ -18,8 +18,8 @@
 
 enum class Rarity : std::int32_t {
     Common = 0,
-    Uncommon = 0x1,
-    Rare = 0x2,
-    Epic = 0x3,
-    _count = 0x4,
+    Uncommon = 1,
+    Rare = 2,
+    Epic = 3,
+    Count = 4,
 };

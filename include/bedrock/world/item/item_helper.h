@@ -17,7 +17,7 @@
 #include <cstdint>
 
 enum class ItemCommandVisibility : std::uint8_t {
-    Visible = 0x0,
-    Hidden = 0x1,
-    DeferToLegacyBlock = 0x2,
+    Visible = 0,
+    Hidden = 1,
+    DeferToLegacyBlock = 2,
 };
