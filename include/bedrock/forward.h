@@ -80,6 +80,7 @@ class Experiments;
 class Explosion;
 class FeatureRegistry;
 class FeatureTypeFactory;
+class FogDefinition;
 class FrameUpdateContextBase;
 class GameEvent;
 class GameModuleServer;

@@ -352,10 +352,11 @@ void dumpRecipes(VanillaData &data, ::Level &level)
     }
 }
 
-void dumpBiomes(VanillaData &data, ::Level &level){
+void dumpBiomes(VanillaData &data, ::Level &level)
+{
     auto &biomes = data.biomes;
-    level.getBiomeRegistry().forEachBiome([&biomes](const Biome &b) {
-        biomes[b.getIdentifier().getString()] = b.getId();
+    level.getBiomeRegistry().forEachBiome([&biomes](const Biome &biome) {
+        biomes[biome.getName()] = {{"id", biome.getId()}};
     });
 }
 
