@@ -96,7 +96,7 @@
 | define  | [**ENDSTONE\_TOSTRING**](endstone_8h.md#define-endstone_tostring) (x) ENDSTONE\_STRINGIFY(x)<br> |
 | define  | [**ENDSTONE\_VERSION\_MAJOR**](endstone_8h.md#define-endstone_version_major)  0<br> |
 | define  | [**ENDSTONE\_VERSION\_MINOR**](endstone_8h.md#define-endstone_version_minor)  5<br> |
-| define  | [**ENDSTONE\_VERSION\_PATCH**](endstone_8h.md#define-endstone_version_patch)  3<br> |
+| define  | [**ENDSTONE\_VERSION\_PATCH**](endstone_8h.md#define-endstone_version_patch)  4<br> |
 
 ## Macro Definition Documentation
 
@@ -215,7 +215,7 @@
 ### define ENDSTONE\_VERSION\_PATCH 
 
 ```C++
-#define ENDSTONE_VERSION_PATCH 3
+#define ENDSTONE_VERSION_PATCH 4
 ```
 
 
