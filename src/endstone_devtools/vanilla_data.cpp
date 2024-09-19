@@ -352,6 +352,13 @@ void dumpRecipes(VanillaData &data, ::Level &level)
     }
 }
 
+void dumpBiomes(VanillaData &data, ::Level &level){
+    auto &biomes = data.biomes;
+    level.getBiomeRegistry().forEachBiome([&biomes](const Biome &b) {
+        biomes[b.getIdentifier().getString()] = b.getId();
+    });
+}
+
 }  // namespace
 
 VanillaData *VanillaData::get()
@@ -375,6 +382,7 @@ VanillaData *VanillaData::get()
                     dumpBlockData(data, level);
                     dumpItemData(data, level);
                     dumpRecipes(data, level);
+                    dumpBiomes(data, level);
                     entt::locator<VanillaData>::emplace(std::move(data));
                     ready = true;
                 });
