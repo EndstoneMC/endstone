@@ -5,9 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.4 - Unreleased
+## 0.5.5 - Unreleased
 
-<small>[Compare with 0.5.3](https://github.com/EndstoneMC/endstone/compare/v0.5.3...HEAD)</small>
+<small>[Compare with 0.5.4](https://github.com/EndstoneMC/endstone/compare/v0.5.4...HEAD)</small>
+
+## [0.5.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4) - 2024-09-19
+
+<small>[Compare with 0.5.3](https://github.com/EndstoneMC/endstone/compare/v0.5.3...v0.5.4)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.30.
+- Added support for Python 3.13.
+- Added biome data to the DevTools by [@CoolLoong](https://github.com/CoolLoong).
+
+### Changed
+
+- **BREAKING CHANGE**: `Player::performCommand` now executes the command as a Player to
+  resolve [#53](https://github.com/EndstoneMC/endstone/issues/53). This means the command execution will now depend on
+  the player's permissions as operator permissions are no longer granted. If you still want to have the player perform a
+  command with elevated permissions, consider using `Server::dispatchCommand` to execute
+  `execute as {player_name} run {command}`.
+
+### Fixed
+
+- `Actor::isOnGround`, `Actor::isInWater`, and `Actor::isInLava` now return the correct values.
+- Fixed a typo in the documentation by [@thatgurkangurk](https://github.com/thatgurkangurk).
+- Fixed the command parser logic for chained commands.
+- Fixed a server crash when spawning a simulated player due to the absence of an invalid network identifier.
 
 ## [0.5.3](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.3) - 2024-09-12
 
