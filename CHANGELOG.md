@@ -7,7 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 0.5.5 - Unreleased
 
-<small>[Compare with 0.5.4](https://github.com/EndstoneMC/endstone/compare/v0.5.4...HEAD)</small>
+<small>[Compare with 0.5.4.1](https://github.com/EndstoneMC/endstone/compare/v0.5.4.1...HEAD)</small>
+
+## [0.5.4.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4.1) - 2023-09-19
+
+<small>[Compare with 0.5.4](https://github.com/EndstoneMC/endstone/compare/v0.5.4...v0.5.4.1)</small>
+
+### Fixed
+
+- Fixed a crash that could occur when the player uses emotes.
 
 ## [0.5.4](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4) - 2024-09-19
 
