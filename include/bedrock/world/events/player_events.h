@@ -74,6 +74,7 @@ struct PlayerInteractWithBlockAfterEvent {
     std::size_t after_item[sizeof(ItemStack) / 8];
     bool is_first_event;
 };
+struct PlayerEmoteEvent {};
 struct PlayerInputPermissionCategoryChangeEvent {};
 
 template <>
@@ -85,7 +86,8 @@ struct PlayerGameplayEvent<void>
                         PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
                         PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
                         PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerInputPermissionCategoryChangeEvent> {};
+                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerInputPermissionCategoryChangeEvent> {
+};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 
 struct PlayerSayCommandEvent {};
