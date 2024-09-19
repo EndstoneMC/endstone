@@ -1,0 +1,468 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Actor" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::Actor</compoundname>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
+    <derivedcompoundref refid="classendstone_1_1Mob" prot="public" virt="non-virtual">endstone::Mob</derivedcompoundref>
+    <includes refid="actor_8h" local="no">endstone/actor/actor.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Actor::Actor</definition>
+        <argsstring>()=default</argsstring>
+        <name>Actor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="28" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Actor::Actor</definition>
+        <argsstring>(const Actor &amp;)=delete</argsstring>
+        <name>Actor</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="29" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+        <definition>Actor&amp; endstone::Actor::operator=</definition>
+        <argsstring>(const Actor &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="30" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a87d53d3bf300ae2ec479300c153dd1db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Actor::Actor</definition>
+        <argsstring>(Actor &amp;&amp;)=delete</argsstring>
+        <name>Actor</name>
+        <param>
+          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="31" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+        <definition>Actor&amp; endstone::Actor::operator=</definition>
+        <argsstring>(Actor &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="32" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Actor::~Actor</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~Actor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="34" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::uint64_t</type>
+        <definition>virtual std::uint64_t endstone::Actor::getRuntimeId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getRuntimeId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the runtime id for this actor</para>
+<para><simplesect kind="return"><para>Runtime id for this actor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="41" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+        <definition>virtual Location endstone::Actor::getLocation</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLocation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the actor&apos;s current position</para>
+<para><simplesect kind="return"><para>a new copy of <ref refid="classendstone_1_1Location" kindref="compound">Location</ref> containing the position of this actor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="48" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
+        <definition>virtual Vector&lt;float&gt; endstone::Actor::getVelocity</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getVelocity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets this actor&apos;s current velocity</para>
+<para><simplesect kind="return"><para>Current traveling velocity of this actor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="55" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isOnGround</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isOnGround</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the actor is supported by a block.</para>
+<para><simplesect kind="return"><para>True if actor is on ground. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="62" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isInWater</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isInWater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the actor is in water.</para>
+<para><simplesect kind="return"><para>True if the actor is in water. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="69" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isInLava</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isInLava</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the actor is in lava.</para>
+<para><simplesect kind="return"><para>True if the actor is in lava. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="76" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Level" kindref="compound">Level</ref> &amp;</type>
+        <definition>virtual Level&amp; endstone::Actor::getLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the current <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> this actor resides in</para>
+<para><simplesect kind="return"><para>The current <ref refid="classendstone_1_1Level" kindref="compound">Level</ref> this actor resides in </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="83" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
+        <definition>virtual Dimension&amp; endstone::Actor::getDimension</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getDimension</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the current <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> this actor resides in</para>
+<para><simplesect kind="return"><para>The current <ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> this actor resides in </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="90" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::setRotation</definition>
+        <argsstring>(float yaw, float pitch)=0</argsstring>
+        <name>setRotation</name>
+        <param>
+          <type>float</type>
+          <declname>yaw</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>pitch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Sets the actor&apos;s rotation. </para>
+</simplesect>
+Note that if the actor is affected by AI, it may override this rotation.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>yaw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation around the up axis (Y axis) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pitch</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rotation around the right axis (X axis) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="100" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::teleport</definition>
+        <argsstring>(Location location)=0</argsstring>
+        <name>teleport</name>
+        <param>
+          <type><ref refid="classendstone_1_1Location" kindref="compound">Location</ref></type>
+          <declname>location</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Teleports this actor to the given location.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>location</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New location to teleport this actor to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="107" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::teleport</definition>
+        <argsstring>(Actor &amp;target)=0</argsstring>
+        <name>teleport</name>
+        <param>
+          <type><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Teleports this actor to the target <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> to teleport this actor to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="114" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int64_t</type>
+        <definition>virtual std::int64_t endstone::Actor::getId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getId</name>
+        <briefdescription>
+<para>Returns a unique id for this actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref> id </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="121" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isDead</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isDead</name>
+        <briefdescription>
+<para>Returns true if this actor has been marked for removal. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if it is dead. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="128" column="19"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a base actor in the level. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>endstone::Mob</label>
+        <link refid="classendstone_1_1Mob"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>endstone::Player</label>
+        <link refid="classendstone_1_1Player"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::Actor</label>
+        <link refid="classendstone_1_1Actor"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="129"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Actor_1a87d53d3bf300ae2ec479300c153dd1db" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>Actor</name></member>
+      <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>asCommandSender</name></member>
+      <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>CommandSender</name></member>
+      <member refid="classendstone_1_1Actor_1ac2248482f4355415a6153282c6efea64" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getDimension</name></member>
+      <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getId</name></member>
+      <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLevel</name></member>
+      <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getRuntimeId</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getVelocity</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isDead</name></member>
+      <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInLava</name></member>
+      <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOnGround</name></member>
+      <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOp</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
+      <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
+      <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
+      <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~Actor</name></member>
+      <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>~CommandSender</name></member>
+      <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Permissible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

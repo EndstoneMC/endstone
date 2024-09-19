@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="plugin__description_8h" kind="file" language="C++">
+    <compoundname>plugin_description.h</compoundname>
+    <includes local="no">string</includes>
+    <includes local="no">utility</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">fmt/format.h</includes>
+    <includes refid="command_8h" local="yes">endstone/command/command.h</includes>
+    <includes local="yes">endstone/detail/plugin/plugin_description_builder.h</includes>
+    <includes refid="endstone_8h" local="yes">endstone/endstone.h</includes>
+    <includes refid="permission_8h" local="yes">endstone/permissions/permission.h</includes>
+    <includes refid="plugin__load__order_8h" local="yes">endstone/plugin/plugin_load_order.h</includes>
+    <includedby refid="plugin_8h" local="yes">include/endstone/plugin/plugin.h</includedby>
+    <incdepgraph>
+      <node id="18">
+        <label>endstone/detail/plugin/plugin_description_builder.h</label>
+      </node>
+      <node id="24">
+        <label>functional</label>
+      </node>
+      <node id="9">
+        <label>endstone/command/command_map.h</label>
+        <link refid="command__map_8h_source"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>fmt/format.h</label>
+      </node>
+      <node id="12">
+        <label>endstone/message.h</label>
+        <link refid="message_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>endstone/translatable.h</label>
+        <link refid="translatable_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>endstone/plugin/plugin_load_order.h</label>
+        <link refid="plugin__load__order_8h_source"/>
+      </node>
+      <node id="13">
+        <label>variant</label>
+      </node>
+      <node id="2">
+        <label>string</label>
+      </node>
+      <node id="16">
+        <label>unordered_set</label>
+      </node>
+      <node id="20">
+        <label>endstone/permissions/permission.h</label>
+        <link refid="permission_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>endstone/event/event_priority.h</label>
+        <link refid="event__priority_8h_source"/>
+      </node>
+      <node id="8">
+        <label>optional</label>
+      </node>
+      <node id="25">
+        <label>endstone/event/event.h</label>
+        <link refid="event_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+      <node id="23">
+        <label>endstone/plugin/plugin_manager.h</label>
+        <link refid="plugin__manager_8h_source"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>utility</label>
+      </node>
+      <node id="19">
+        <label>endstone/endstone.h</label>
+        <link refid="endstone_8h_source"/>
+      </node>
+      <node id="11">
+        <label>endstone/command/command_sender.h</label>
+        <link refid="command__sender_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>endstone/permissions/permissible.h</label>
+        <link refid="permissible_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>endstone/permissions/permission_attachment_info.h</label>
+        <link refid="permission__attachment__info_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>unordered_map</label>
+      </node>
+      <node id="1">
+        <label>include/endstone/plugin/plugin_description.h</label>
+        <link refid="plugin__description_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>algorithm</label>
+      </node>
+      <node id="10">
+        <label>memory</label>
+      </node>
+      <node id="22">
+        <label>endstone/permissions/permission_default.h</label>
+        <link refid="permission__default_8h_source"/>
+      </node>
+      <node id="6">
+        <label>endstone/command/command.h</label>
+        <link refid="command_8h_source"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/endstone/plugin/plugin.h</label>
+        <link refid="plugin_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/endstone/event/server/plugin_enable_event.h</label>
+        <link refid="plugin__enable__event_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/endstone/plugin/plugin_loader.h</label>
+        <link refid="plugin__loader_8h_source"/>
+      </node>
+      <node id="6">
+        <label>include/endstone/event/server/broadcast_message_event.h</label>
+        <link refid="broadcast__message__event_8h_source"/>
+      </node>
+      <node id="4">
+        <label>include/endstone/event/event_handler.h</label>
+        <link refid="event__handler_8h_source"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/endstone/event/server/plugin_disable_event.h</label>
+        <link refid="plugin__disable__event_8h_source"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/endstone/command/plugin_command.h</label>
+        <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="12">
+        <label>include/endstone/scheduler/scheduler.h</label>
+        <link refid="scheduler_8h_source"/>
+      </node>
+      <node id="5">
+        <label>include/endstone/event/handler_list.h</label>
+        <link refid="handler__list_8h_source"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/endstone/plugin/plugin_description.h</label>
+        <link refid="plugin__description_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/endstone/scheduler/task.h</label>
+        <link refid="task_8h_source"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/endstone/event/server/server_command_event.h</label>
+        <link refid="server__command__event_8h_source"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classendstone_1_1PluginDescription" prot="public">endstone::PluginDescription</innerclass>
+    <innernamespace refid="namespaceendstone">endstone</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2023,<sp/>The<sp/>Endstone<sp/>Project.<sp/>(https://endstone.dev)<sp/>All<sp/>Rights<sp/>Reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/command/command.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/detail/plugin/plugin_description_builder.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/endstone.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/permissions/permission.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/plugin/plugin_load_order.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classendstone_1_1PluginDescription" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PluginDescription" kindref="compound">PluginDescription</ref>(std::string<sp/>name,<sp/>std::string<sp/>version,<sp/>std::string<sp/>description<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PluginLoadOrder<sp/>load<sp/>=<sp/>PluginLoadOrder::PostWorld,<sp/>std::vector&lt;std::string&gt;<sp/>authors<sp/>=<sp/>{},</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>contributors<sp/>=<sp/>{},<sp/>std::string<sp/>website<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>std::string<sp/>prefix<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>provides<sp/>=<sp/>{},<sp/>std::vector&lt;std::string&gt;<sp/>depend<sp/>=<sp/>{},</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>soft_depend<sp/>=<sp/>{},<sp/>std::vector&lt;std::string&gt;<sp/>load_before<sp/>=<sp/>{},</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PermissionDefault<sp/>default_permission<sp/>=<sp/>PermissionDefault::Operator,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;Command&gt;<sp/>commands<sp/>=<sp/>{},<sp/>std::vector&lt;Permission&gt;<sp/>permissions<sp/>=<sp/>{})</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>description_(std::move(description)),<sp/>load_(load),<sp/>authors_(std::move(authors)),</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>contributors_(std::move(contributors)),<sp/>website_(std::move(website)),<sp/>prefix_(std::move(prefix)),</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>provides_(std::move(provides)),<sp/>depend_(std::move(depend)),<sp/>soft_depend_(std::move(soft_depend)),</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>load_before_(std::move(load_before)),<sp/>default_permission_(default_permission),<sp/>commands_(std::move(commands)),</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_(std::move(permissions))</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name_<sp/>=<sp/>std::move(name);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::replace(name_.begin(),<sp/>name_.end(),<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>version_<sp/>=<sp/>std::move(version);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>full_name_<sp/>=<sp/>fmt::format(</highlight><highlight class="stringliteral">&quot;{}<sp/>v{}&quot;</highlight><highlight class="normal">,<sp/>name_,<sp/>version_);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>api_version_<sp/>=<sp/>ENDSTONE_API_VERSION;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a5a2f39ff668525dfa077122be1596328" kindref="member">getName</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="62"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>name_;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1PluginDescription_1ad18d8a055c2490eab5ed52a098fea461" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1ad18d8a055c2490eab5ed52a098fea461" kindref="member">getVersion</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="72"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>version_;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classendstone_1_1PluginDescription_1a311c84d8ffa82c26c06e9cbcb5c3ccf9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a311c84d8ffa82c26c06e9cbcb5c3ccf9" kindref="member">getFullName</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="82"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>full_name_;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="classendstone_1_1PluginDescription_1ae194d349c1f8229882beaf0eb03e8a55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1ae194d349c1f8229882beaf0eb03e8a55" kindref="member">getAPIVersion</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="92"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>api_version_;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="classendstone_1_1PluginDescription_1a5eefb00d2ebb98e02b00f27751bbcf85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a5eefb00d2ebb98e02b00f27751bbcf85" kindref="member">getDescription</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="101"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>description_;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>PluginLoadOrder<sp/><ref refid="classendstone_1_1PluginDescription_1a5667754725d4b2426fa9759bf5028f46" kindref="member">getLoad</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="111"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>load_;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="classendstone_1_1PluginDescription_1a0fa0df5f3b62c3e0722c6395a5e14c22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1a0fa0df5f3b62c3e0722c6395a5e14c22" kindref="member">getAuthors</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="121"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>authors_;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classendstone_1_1PluginDescription_1a7590f2e57843fcd0f831ba76695d9a90" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1a7590f2e57843fcd0f831ba76695d9a90" kindref="member">getContributors</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="131"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>contributors_;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="classendstone_1_1PluginDescription_1a2c0839588d2d69aeeb5963294b75fe02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a2c0839588d2d69aeeb5963294b75fe02" kindref="member">getWebsite</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="141"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>website_;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="classendstone_1_1PluginDescription_1a576a777680f917842d66c21f100e8226" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string<sp/><ref refid="classendstone_1_1PluginDescription_1a576a777680f917842d66c21f100e8226" kindref="member">getPrefix</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="151"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>prefix_;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="classendstone_1_1PluginDescription_1ad3993763e55564208a31e4b031e21518" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1ad3993763e55564208a31e4b031e21518" kindref="member">getProvides</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="161"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>provides_;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="classendstone_1_1PluginDescription_1acf4e07bcbf623f270f1292a508743f2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1acf4e07bcbf623f270f1292a508743f2e" kindref="member">getDepend</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="171"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>depend_;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="classendstone_1_1PluginDescription_1a100e76d2e114dbfb7ddc5fdca2ebc889" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1a100e76d2e114dbfb7ddc5fdca2ebc889" kindref="member">getSoftDepend</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="181"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>soft_depend_;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="classendstone_1_1PluginDescription_1afa7a7f277ddd5883105230f86cc15127" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;std::string&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1afa7a7f277ddd5883105230f86cc15127" kindref="member">getLoadBefore</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="191"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>load_before_;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>PermissionDefault<sp/><ref refid="classendstone_1_1PluginDescription_1ab55182911b0a4b0c0fe4060d61549be4" kindref="member">getDefaultPermission</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="201"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>default_permission_;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="classendstone_1_1PluginDescription_1a5a1d5e827187d8a3347c698e943e9196" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;Command&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1a5a1d5e827187d8a3347c698e943e9196" kindref="member">getCommands</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="211"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>commands_;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="classendstone_1_1PluginDescription_1adb8e5df5fe24327b545c5acf0b0d2c1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;Permission&gt;<sp/><ref refid="classendstone_1_1PluginDescription_1adb8e5df5fe24327b545c5acf0b0d2c1b" kindref="member">getPermissions</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="221"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissions_;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>name_;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>version_;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>full_name_;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>api_version_;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>description_;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>PluginLoadOrder<sp/>load_<sp/>=<sp/>PluginLoadOrder::PostWorld;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>authors_;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>contributors_;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>website_;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>prefix_;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>provides_;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>depend_;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>soft_depend_;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>load_before_;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>PermissionDefault<sp/>default_permission_<sp/>=<sp/>PermissionDefault::Operator;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Command&gt;<sp/>commands_;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;Permission&gt;<sp/>permissions_;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/endstone/plugin/plugin_description.h"/>
+  </compounddef>
+</doxygen>

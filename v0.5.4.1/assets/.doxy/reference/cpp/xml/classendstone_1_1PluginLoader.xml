@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PluginLoader" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::PluginLoader</compoundname>
+    <includes refid="plugin__loader_8h" local="no">endstone/plugin/plugin_loader.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PluginLoader_1a6f6ba6e975ff05973806277763eda744" prot="protected" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server&amp; endstone::PluginLoader::server_</definition>
+        <argsstring></argsstring>
+        <name>server_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="110" column="12" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a939f5cd14c8dbac76c77f1acea8eb926" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginLoader::PluginLoader</definition>
+        <argsstring>(Server &amp;server)</argsstring>
+        <name>PluginLoader</name>
+        <param>
+          <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+          <declname>server</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="37" column="14" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a599ce19d8a2e1d5870942218f380b506" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PluginLoader::PluginLoader</definition>
+        <argsstring>(const PluginLoader &amp;)=delete</argsstring>
+        <name>PluginLoader</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="38" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1adeca2f97f79b37bd1e4f662ca08ac573" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+        <definition>PluginLoader&amp; endstone::PluginLoader::operator=</definition>
+        <argsstring>(const PluginLoader &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="39" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a6a8f266b427ace08cd86695ffda049f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::PluginLoader::~PluginLoader</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PluginLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="41" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1aa061ed008c70eaaab58b755d45838f34" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
+        <definition>virtual std::vector&lt;Plugin *&gt; endstone::PluginLoader::loadPlugins</definition>
+        <argsstring>(const std::string &amp;directory)=0</argsstring>
+        <name>loadPlugins</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>directory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Loads the plugin contained within the specified directory</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>directory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Directory to check for plugins </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A list of all plugins loaded </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="49" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginLoader::enablePlugin</definition>
+        <argsstring>(Plugin &amp;plugin) const</argsstring>
+        <name>enablePlugin</name>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="57" column="18" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="57" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PluginLoader::disablePlugin</definition>
+        <argsstring>(Plugin &amp;plugin) const</argsstring>
+        <name>disablePlugin</name>
+        <param>
+          <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
+          <declname>plugin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>plugin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="80" column="18" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="80" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PluginLoader_1a1ea761be4c14a7e33f8885d6c8bb97df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Server" kindref="compound">Server</ref> &amp;</type>
+        <definition>Server&amp; endstone::PluginLoader::getServer</definition>
+        <argsstring>() const</argsstring>
+        <name>getServer</name>
+        <briefdescription>
+<para>Retrieves the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> object associated with the <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns a reference to the <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> object that the <ref refid="classendstone_1_1PluginLoader" kindref="compound">PluginLoader</ref> is associated with.</para>
+<para><simplesect kind="return"><para>The <ref refid="classendstone_1_1Server" kindref="compound">Server</ref> reference. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/plugin/plugin_loader.h" line="104" column="13" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="104" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a plugin loader, which handles direct access to specific types of plugins. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Server</label>
+        <link refid="classendstone_1_1Server"/>
+      </node>
+      <node id="1">
+        <label>endstone::PluginLoader</label>
+        <link refid="classendstone_1_1PluginLoader"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>server_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/plugin/plugin_loader.h" line="35" column="1" bodyfile="include/endstone/plugin/plugin_loader.h" bodystart="35" bodyend="111"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" prot="public" virt="virtual"><scope>endstone::PluginLoader</scope><name>disablePlugin</name></member>
+      <member refid="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" prot="public" virt="virtual"><scope>endstone::PluginLoader</scope><name>enablePlugin</name></member>
+      <member refid="classendstone_1_1PluginLoader_1a1ea761be4c14a7e33f8885d6c8bb97df" prot="public" virt="non-virtual"><scope>endstone::PluginLoader</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1PluginLoader_1aa061ed008c70eaaab58b755d45838f34" prot="public" virt="pure-virtual"><scope>endstone::PluginLoader</scope><name>loadPlugins</name></member>
+      <member refid="classendstone_1_1PluginLoader_1adeca2f97f79b37bd1e4f662ca08ac573" prot="public" virt="non-virtual"><scope>endstone::PluginLoader</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PluginLoader_1a939f5cd14c8dbac76c77f1acea8eb926" prot="public" virt="non-virtual"><scope>endstone::PluginLoader</scope><name>PluginLoader</name></member>
+      <member refid="classendstone_1_1PluginLoader_1a599ce19d8a2e1d5870942218f380b506" prot="public" virt="non-virtual"><scope>endstone::PluginLoader</scope><name>PluginLoader</name></member>
+      <member refid="classendstone_1_1PluginLoader_1a6f6ba6e975ff05973806277763eda744" prot="protected" virt="non-virtual"><scope>endstone::PluginLoader</scope><name>server_</name></member>
+      <member refid="classendstone_1_1PluginLoader_1a6a8f266b427ace08cd86695ffda049f6" prot="public" virt="virtual"><scope>endstone::PluginLoader</scope><name>~PluginLoader</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

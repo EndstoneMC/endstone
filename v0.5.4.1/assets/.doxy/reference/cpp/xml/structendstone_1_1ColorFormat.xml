@@ -1,0 +1,497 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structendstone_1_1ColorFormat" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::ColorFormat</compoundname>
+    <includes refid="color__format_8h" local="no">endstone/color_format.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Escape</definition>
+        <argsstring></argsstring>
+        <name>Escape</name>
+        <initializer>= &quot;§&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="26" column="37" bodyfile="include/endstone/color_format.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a1fb8b3ffcad01c8b26a773d0860fe32c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Black</definition>
+        <argsstring></argsstring>
+        <name>Black</name>
+        <initializer>= Escape + &apos;0&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="29" column="37" bodyfile="include/endstone/color_format.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a26718fb739d7faddbd8a7db51cce89c7" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkBlue</definition>
+        <argsstring></argsstring>
+        <name>DarkBlue</name>
+        <initializer>= Escape + &apos;1&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="30" column="37" bodyfile="include/endstone/color_format.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a735c697fee84ef93555f19e4a502a250" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkGreen</definition>
+        <argsstring></argsstring>
+        <name>DarkGreen</name>
+        <initializer>= Escape + &apos;2&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="31" column="37" bodyfile="include/endstone/color_format.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a2833271065e4cc033f3bd8d4e1badec8" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkAqua</definition>
+        <argsstring></argsstring>
+        <name>DarkAqua</name>
+        <initializer>= Escape + &apos;3&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="32" column="37" bodyfile="include/endstone/color_format.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aef0a1c813297221a678cd3868f1c574e" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkRed</definition>
+        <argsstring></argsstring>
+        <name>DarkRed</name>
+        <initializer>= Escape + &apos;4&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="33" column="37" bodyfile="include/endstone/color_format.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a465c2fa2360ff1577a74601c20d9a4e1" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkPurple</definition>
+        <argsstring></argsstring>
+        <name>DarkPurple</name>
+        <initializer>= Escape + &apos;5&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="34" column="37" bodyfile="include/endstone/color_format.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aa3853893c8dc3b0a288d3e026a2825b8" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Gold</definition>
+        <argsstring></argsstring>
+        <name>Gold</name>
+        <initializer>= Escape + &apos;6&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="35" column="37" bodyfile="include/endstone/color_format.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ab9ff0a7e4d30f0e595350dd54156fbe9" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Gray</definition>
+        <argsstring></argsstring>
+        <name>Gray</name>
+        <initializer>= Escape + &apos;7&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="36" column="37" bodyfile="include/endstone/color_format.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1afe1f7fc1cb284bb2f59f08d5ea110182" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::DarkGray</definition>
+        <argsstring></argsstring>
+        <name>DarkGray</name>
+        <initializer>= Escape + &apos;8&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="37" column="37" bodyfile="include/endstone/color_format.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a9763977a405b24ac1ea573996b409344" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Blue</definition>
+        <argsstring></argsstring>
+        <name>Blue</name>
+        <initializer>= Escape + &apos;9&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="38" column="37" bodyfile="include/endstone/color_format.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ad05261f68acd5a0984618817c481bab4" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Green</definition>
+        <argsstring></argsstring>
+        <name>Green</name>
+        <initializer>= Escape + &apos;a&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="39" column="37" bodyfile="include/endstone/color_format.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ac81f6289b25dcff8b5e3c7c504344e99" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Aqua</definition>
+        <argsstring></argsstring>
+        <name>Aqua</name>
+        <initializer>= Escape + &apos;b&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="40" column="37" bodyfile="include/endstone/color_format.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a17bd30509e0661175bf772d0ea321383" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Red</definition>
+        <argsstring></argsstring>
+        <name>Red</name>
+        <initializer>= Escape + &apos;c&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="41" column="37" bodyfile="include/endstone/color_format.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ad955aad9752b042df59465f37f071936" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::LightPurple</definition>
+        <argsstring></argsstring>
+        <name>LightPurple</name>
+        <initializer>= Escape + &apos;d&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="42" column="37" bodyfile="include/endstone/color_format.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ae06270a626b0620c0dda4c758a60406b" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Yellow</definition>
+        <argsstring></argsstring>
+        <name>Yellow</name>
+        <initializer>= Escape + &apos;e&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="43" column="37" bodyfile="include/endstone/color_format.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a4e7fac41f7b4a09441840de8ae4cbdca" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::White</definition>
+        <argsstring></argsstring>
+        <name>White</name>
+        <initializer>= Escape + &apos;f&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="44" column="37" bodyfile="include/endstone/color_format.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a7a191ebf7addc0ff04247f573c7655c6" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MinecoinGold</definition>
+        <argsstring></argsstring>
+        <name>MinecoinGold</name>
+        <initializer>= Escape + &apos;g&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="45" column="37" bodyfile="include/endstone/color_format.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a17065c8c8dd36be690997ad908c4e013" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialQuartz</definition>
+        <argsstring></argsstring>
+        <name>MaterialQuartz</name>
+        <initializer>= Escape + &apos;h&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="46" column="37" bodyfile="include/endstone/color_format.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aaa604973e04999129a9c26d054b988eb" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialIron</definition>
+        <argsstring></argsstring>
+        <name>MaterialIron</name>
+        <initializer>= Escape + &apos;i&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="47" column="37" bodyfile="include/endstone/color_format.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a69eb1585f03593a0ab8ce41f5aaec9bb" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialNetherite</definition>
+        <argsstring></argsstring>
+        <name>MaterialNetherite</name>
+        <initializer>= Escape + &apos;j&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="48" column="37" bodyfile="include/endstone/color_format.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a49c63bee8b778b15cbf987c157425db0" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialRedstone</definition>
+        <argsstring></argsstring>
+        <name>MaterialRedstone</name>
+        <initializer>= Escape + &apos;m&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="49" column="37" bodyfile="include/endstone/color_format.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ae99223d17d83499c171ed5bf3d3e433a" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialCopper</definition>
+        <argsstring></argsstring>
+        <name>MaterialCopper</name>
+        <initializer>= Escape + &apos;n&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="50" column="37" bodyfile="include/endstone/color_format.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aaabba304e785134d46ba480b42733970" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialGold</definition>
+        <argsstring></argsstring>
+        <name>MaterialGold</name>
+        <initializer>= Escape + &apos;p&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="51" column="37" bodyfile="include/endstone/color_format.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a2263c7218be45262300c9c1dc137929c" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialEmerald</definition>
+        <argsstring></argsstring>
+        <name>MaterialEmerald</name>
+        <initializer>= Escape + &apos;q&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="52" column="37" bodyfile="include/endstone/color_format.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a82e9a74c713adf13465bd05172988ddd" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialDiamond</definition>
+        <argsstring></argsstring>
+        <name>MaterialDiamond</name>
+        <initializer>= Escape + &apos;s&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="53" column="37" bodyfile="include/endstone/color_format.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a2e34300b53a7377cab6a8fe6908bf276" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialLapis</definition>
+        <argsstring></argsstring>
+        <name>MaterialLapis</name>
+        <initializer>= Escape + &apos;t&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="54" column="37" bodyfile="include/endstone/color_format.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aea57e06707a7b78e6f77ba7e27511338" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialAmethyst</definition>
+        <argsstring></argsstring>
+        <name>MaterialAmethyst</name>
+        <initializer>= Escape + &apos;u&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="55" column="37" bodyfile="include/endstone/color_format.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a1af3ad039c0718ceca118bd8116a2d69" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Obfuscated</definition>
+        <argsstring></argsstring>
+        <name>Obfuscated</name>
+        <initializer>= Escape + &apos;k&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="58" column="37" bodyfile="include/endstone/color_format.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a58141a8f5ff7780dc6b473fb08574e68" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Bold</definition>
+        <argsstring></argsstring>
+        <name>Bold</name>
+        <initializer>= Escape + &apos;l&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="59" column="37" bodyfile="include/endstone/color_format.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a90709e488b7b7879e783f3ffc80f9c61" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Italic</definition>
+        <argsstring></argsstring>
+        <name>Italic</name>
+        <initializer>= Escape + &apos;o&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="60" column="37" bodyfile="include/endstone/color_format.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ad0d9e7f6813d5a0529277cc29fa98da8" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::Reset</definition>
+        <argsstring></argsstring>
+        <name>Reset</name>
+        <initializer>= Escape + &apos;r&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="61" column="37" bodyfile="include/endstone/color_format.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>All supported color and format codes. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/color_format.h" line="24" column="1" bodyfile="include/endstone/color_format.h" bodystart="24" bodyend="62"/>
+    <listofallmembers>
+      <member refid="structendstone_1_1ColorFormat_1ac81f6289b25dcff8b5e3c7c504344e99" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Aqua</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a1fb8b3ffcad01c8b26a773d0860fe32c" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Black</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a9763977a405b24ac1ea573996b409344" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Blue</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a58141a8f5ff7780dc6b473fb08574e68" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Bold</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a2833271065e4cc033f3bd8d4e1badec8" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkAqua</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a26718fb739d7faddbd8a7db51cce89c7" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkBlue</name></member>
+      <member refid="structendstone_1_1ColorFormat_1afe1f7fc1cb284bb2f59f08d5ea110182" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkGray</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a735c697fee84ef93555f19e4a502a250" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkGreen</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a465c2fa2360ff1577a74601c20d9a4e1" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkPurple</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aef0a1c813297221a678cd3868f1c574e" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>DarkRed</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ae88506debc45287385eae171aa061154" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Escape</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aa3853893c8dc3b0a288d3e026a2825b8" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Gold</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ab9ff0a7e4d30f0e595350dd54156fbe9" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Gray</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ad05261f68acd5a0984618817c481bab4" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Green</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a90709e488b7b7879e783f3ffc80f9c61" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Italic</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ad955aad9752b042df59465f37f071936" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>LightPurple</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aea57e06707a7b78e6f77ba7e27511338" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialAmethyst</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ae99223d17d83499c171ed5bf3d3e433a" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialCopper</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a82e9a74c713adf13465bd05172988ddd" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialDiamond</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a2263c7218be45262300c9c1dc137929c" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialEmerald</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aaabba304e785134d46ba480b42733970" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialGold</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aaa604973e04999129a9c26d054b988eb" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialIron</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a2e34300b53a7377cab6a8fe6908bf276" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialLapis</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a69eb1585f03593a0ab8ce41f5aaec9bb" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialNetherite</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a17065c8c8dd36be690997ad908c4e013" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialQuartz</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a49c63bee8b778b15cbf987c157425db0" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialRedstone</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a7a191ebf7addc0ff04247f573c7655c6" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MinecoinGold</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a1af3ad039c0718ceca118bd8116a2d69" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Obfuscated</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a17bd30509e0661175bf772d0ea321383" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Red</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ad0d9e7f6813d5a0529277cc29fa98da8" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Reset</name></member>
+      <member refid="structendstone_1_1ColorFormat_1a4e7fac41f7b4a09441840de8ae4cbdca" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>White</name></member>
+      <member refid="structendstone_1_1ColorFormat_1ae06270a626b0620c0dda4c758a60406b" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Yellow</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

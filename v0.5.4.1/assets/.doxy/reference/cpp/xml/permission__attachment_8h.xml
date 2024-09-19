@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="permission__attachment_8h" kind="file" language="C++">
+    <compoundname>permission_attachment.h</compoundname>
+    <includes local="no">algorithm</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">utility</includes>
+    <includes refid="permissible_8h" local="yes">endstone/permissions/permissible.h</includes>
+    <includes refid="permission_8h" local="yes">endstone/permissions/permission.h</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>unordered_set</label>
+      </node>
+      <node id="10">
+        <label>endstone/permissions/permission.h</label>
+        <link refid="permission_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>endstone/event/event_priority.h</label>
+        <link refid="event__priority_8h_source"/>
+      </node>
+      <node id="15">
+        <label>endstone/event/event.h</label>
+        <link refid="event_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>vector</label>
+      </node>
+      <node id="12">
+        <label>endstone/plugin/plugin_manager.h</label>
+        <link refid="plugin__manager_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="7">
+        <label>endstone/permissions/permissible.h</label>
+        <link refid="permissible_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>endstone/permissions/permission_attachment_info.h</label>
+        <link refid="permission__attachment__info_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>unordered_map</label>
+      </node>
+      <node id="2">
+        <label>algorithm</label>
+      </node>
+      <node id="1">
+        <label>include/endstone/permissions/permission_attachment.h</label>
+        <link refid="permission__attachment_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>memory</label>
+      </node>
+      <node id="11">
+        <label>endstone/permissions/permission_default.h</label>
+        <link refid="permission__default_8h_source"/>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classendstone_1_1PermissionAttachment" prot="public">endstone::PermissionAttachment</innerclass>
+    <innernamespace refid="namespaceendstone">endstone</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2024,<sp/>The<sp/>Endstone<sp/>Project.<sp/>(https://endstone.dev)<sp/>All<sp/>Rights<sp/>Reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Licensed<sp/>under<sp/>the<sp/>Apache<sp/>License,<sp/>Version<sp/>2.0<sp/>(the<sp/>&quot;License&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>you<sp/>may<sp/>not<sp/>use<sp/>this<sp/>file<sp/>except<sp/>in<sp/>compliance<sp/>with<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>may<sp/>obtain<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>License<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>http://www.apache.org/licenses/LICENSE-2.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unless<sp/>required<sp/>by<sp/>applicable<sp/>law<sp/>or<sp/>agreed<sp/>to<sp/>in<sp/>writing,<sp/>software</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>distributed<sp/>under<sp/>the<sp/>License<sp/>is<sp/>distributed<sp/>on<sp/>an<sp/>&quot;AS<sp/>IS&quot;<sp/>BASIS,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WITHOUT<sp/>WARRANTIES<sp/>OR<sp/>CONDITIONS<sp/>OF<sp/>ANY<sp/>KIND,<sp/>either<sp/>express<sp/>or<sp/>implied.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>See<sp/>the<sp/>License<sp/>for<sp/>the<sp/>specific<sp/>language<sp/>governing<sp/>permissions<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>limitations<sp/>under<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/permissions/permissible.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/permissions/permission.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>PermissionRemovedExecutor<sp/>=<sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PermissionAttachment<sp/>&amp;)&gt;;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1PermissionAttachment" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref>(<ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin,<sp/><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref><sp/>&amp;permissible)<sp/>:<sp/>permissible_(permissible),<sp/>plugin_(plugin)<sp/>{}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="classendstone_1_1PermissionAttachment_1a45bddb7213bb2be6d970619d17621e1f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;<ref refid="classendstone_1_1PermissionAttachment_1a45bddb7213bb2be6d970619d17621e1f" kindref="member">getPlugin</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="43"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>plugin_;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classendstone_1_1PermissionAttachment_1afdec8bd9ec22c4927bbe3f0942634502" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1afdec8bd9ec22c4927bbe3f0942634502" kindref="member">setRemovalCallback</ref>(PermissionRemovedExecutor<sp/>ex)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>removed_<sp/>=<sp/>std::move(ex);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classendstone_1_1PermissionAttachment_1aaa0a0536b3e09e20e52f39c4bd048014" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>PermissionRemovedExecutor<sp/><ref refid="classendstone_1_1PermissionAttachment_1aaa0a0536b3e09e20e52f39c4bd048014" kindref="member">getRemovalCallback</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="64"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>removed_;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classendstone_1_1PermissionAttachment_1a786591e64833dbb520533f90322532c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref><sp/>&amp;<ref refid="classendstone_1_1PermissionAttachment_1a786591e64833dbb520533f90322532c6" kindref="member">getPermissible</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="74"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissible_;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classendstone_1_1PermissionAttachment_1a6df19b98be8ce9eb40fa1774676021b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::unordered_map&lt;std::string,<sp/>bool&gt;<sp/><ref refid="classendstone_1_1PermissionAttachment_1a6df19b98be8ce9eb40fa1774676021b2" kindref="member">getPermissions</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="85"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissions_;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" kindref="member">setPermission</ref>(std::string<sp/>name,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(name.begin(),<sp/>name.end(),<sp/>name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_[name]<sp/>=<sp/>value;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissible_.<ref refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kindref="member">recalculatePermissions</ref>();</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classendstone_1_1PermissionAttachment_1ab342904042506f6fc662d809987fbeb3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1ab342904042506f6fc662d809987fbeb3" kindref="member">setPermission</ref>(<ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref><sp/>&amp;perm,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>value)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PermissionAttachment_1a6f9165a21202205b209092e59ea059d5" kindref="member">setPermission</ref>(perm.<ref refid="classendstone_1_1Permission_1ad3c9f16d5737c0bd1ffca96d069eb18e" kindref="member">getName</ref>(),<sp/>value);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" kindref="member">unsetPermission</ref>(std::string<sp/>name)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::transform(name.begin(),<sp/>name.end(),<sp/>name.begin(),<sp/>[](</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c)<sp/>{<sp/>return<sp/>std::tolower(c);<sp/>});</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissions_.erase(name);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>permissible_.<ref refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kindref="member">recalculatePermissions</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132" refid="classendstone_1_1PermissionAttachment_1a21033433ac446e94631d0025aa621151" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1a21033433ac446e94631d0025aa621151" kindref="member">unsetPermission</ref>(<ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref><sp/>&amp;perm)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1PermissionAttachment_1a3a61d225f54d78fcc966d7039ee66e2b" kindref="member">unsetPermission</ref>(perm.<ref refid="classendstone_1_1Permission_1ad3c9f16d5737c0bd1ffca96d069eb18e" kindref="member">getName</ref>());</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="classendstone_1_1PermissionAttachment_1ae05dac79b46d01cbb836267045cac38e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1PermissionAttachment_1ae05dac79b46d01cbb836267045cac38e" kindref="member">remove</ref>()</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>permissible_.<ref refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" kindref="member">removeAttachment</ref>(*</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>PermissionRemovedExecutor<sp/>removed_;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>bool&gt;<sp/>permissions_;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref><sp/>&amp;permissible_;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref><sp/>&amp;plugin_;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/endstone/permissions/permission_attachment.h"/>
+  </compounddef>
+</doxygen>

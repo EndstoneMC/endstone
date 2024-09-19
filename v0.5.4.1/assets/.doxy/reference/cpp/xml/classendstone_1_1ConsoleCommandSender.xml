@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ConsoleCommandSender" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ConsoleCommandSender</compoundname>
+    <basecompoundref refid="classendstone_1_1CommandSender" prot="public" virt="non-virtual">endstone::CommandSender</basecompoundref>
+    <includes refid="console__command__sender_8h" local="no">endstone/command/console_command_sender.h</includes>
+    <briefdescription>
+<para>Represents a console command sender. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ConsoleCommandSender</label>
+        <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ConsoleCommandSender</label>
+        <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::CommandSender</label>
+        <link refid="classendstone_1_1CommandSender"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Permissible</label>
+        <link refid="classendstone_1_1Permissible"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/command/console_command_sender.h" line="24" column="1" bodyfile="include/endstone/command/console_command_sender.h" bodystart="24" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asCommandSender</name></member>
+      <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asConsole</name></member>
+      <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>asPlayer</name></member>
+      <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" virt="non-virtual"><scope>endstone::ConsoleCommandSender</scope><name>CommandSender</name></member>
+      <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getEffectivePermissions</name></member>
+      <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getName</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>getServer</name></member>
+      <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>hasPermission</name></member>
+      <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>isOp</name></member>
+      <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>isPermissionSet</name></member>
+      <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>recalculatePermissions</name></member>
+      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::ConsoleCommandSender</scope><name>sendErrorMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::ConsoleCommandSender</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::ConsoleCommandSender</scope><name>setOp</name></member>
+      <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" prot="public" virt="non-virtual"><scope>endstone::ConsoleCommandSender</scope><name>~CommandSender</name></member>
+      <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::ConsoleCommandSender</scope><name>~Permissible</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

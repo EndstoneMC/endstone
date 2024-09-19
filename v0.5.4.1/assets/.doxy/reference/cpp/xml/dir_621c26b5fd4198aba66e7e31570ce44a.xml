@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir">
+    <compoundname>include/endstone/event/actor</compoundname>
+    <innerfile refid="actor__death__event_8h">actor_death_event.h</innerfile>
+    <innerfile refid="actor__event_8h">actor_event.h</innerfile>
+    <innerfile refid="actor__knockback__event_8h">actor_knockback_event.h</innerfile>
+    <innerfile refid="actor__remove__event_8h">actor_remove_event.h</innerfile>
+    <innerfile refid="actor__spawn__event_8h">actor_spawn_event.h</innerfile>
+    <innerfile refid="actor__teleport__event_8h">actor_teleport_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/actor/"/>
+  </compounddef>
+</doxygen>

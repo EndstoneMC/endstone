@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ModalForm" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ModalForm</compoundname>
+    <basecompoundref refid="classendstone_1_1Form" prot="public" virt="non-virtual">endstone::Form&lt; ModalForm &gt;</basecompoundref>
+    <includes refid="modal__form_8h" local="no">endstone/form/modal_form.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1acb80ded2d17319dd0e625566f36760d4" prot="public" static="no">
+        <type>std::variant&lt; <ref refid="classendstone_1_1Dropdown" kindref="compound">Dropdown</ref>, <ref refid="classendstone_1_1Label" kindref="compound">Label</ref>, <ref refid="classendstone_1_1Slider" kindref="compound">Slider</ref>, <ref refid="classendstone_1_1StepSlider" kindref="compound">StepSlider</ref>, <ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref>, <ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &gt;</type>
+        <definition>using endstone::ModalForm::Control =  std::variant&lt;Dropdown, Label, Slider, StepSlider, TextInput, Toggle&gt;</definition>
+        <argsstring></argsstring>
+        <name>Control</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="36" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *, std::string)&gt;</type>
+        <definition>using endstone::ModalForm::OnSubmitCallback =  std::function&lt;void(Player *, std::string)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnSubmitCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="37" column="5" bodyfile="include/endstone/form/modal_form.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ModalForm_1ae93fb07234de5ad30f7204fc1b248180" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; Control &gt;</type>
+        <definition>std::vector&lt;Control&gt; endstone::ModalForm::controls_</definition>
+        <argsstring></argsstring>
+        <name>controls_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="140" column="17" bodyfile="include/endstone/form/modal_form.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; Message &gt;</type>
+        <definition>std::optional&lt;Message&gt; endstone::ModalForm::submit_button_text_</definition>
+        <argsstring></argsstring>
+        <name>submit_button_text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="141" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ModalForm_1adc2b552f970f23e0165a7209eb556160" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::ModalForm::icon_</definition>
+        <argsstring></argsstring>
+        <name>icon_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="142" column="19" bodyfile="include/endstone/form/modal_form.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1ModalForm_1a7a6e46fb4f9f8173705cc361bc8a1336" prot="private" static="no" mutable="no">
+        <type>OnSubmitCallback</type>
+        <definition>OnSubmitCallback endstone::ModalForm::on_submit_</definition>
+        <argsstring></argsstring>
+        <name>on_submit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="143" column="22" bodyfile="include/endstone/form/modal_form.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1a088ec6bda44aaba9124c3e16b7d2aa58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
+        <definition>ModalForm&amp; endstone::ModalForm::addControl</definition>
+        <argsstring>(const Control &amp;control)</argsstring>
+        <name>addControl</name>
+        <param>
+          <type>const Control &amp;</type>
+          <declname>control</declname>
+        </param>
+        <briefdescription>
+<para>Adds a control to the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>control</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The control to add to the form. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="45" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1a3f04549ae4e3841d315ab89f3fd6899f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; Control &gt;</type>
+        <definition>std::vector&lt;Control&gt; endstone::ModalForm::getControls</definition>
+        <argsstring>() const</argsstring>
+        <name>getControls</name>
+        <briefdescription>
+<para>Gets the controls of the modal form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A list of controls in the modal form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="56" column="18" bodyfile="include/endstone/form/modal_form.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1ab11e3d81f2ff8d80b9e7f32c5377e03f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
+        <definition>ModalForm&amp; endstone::ModalForm::setControls</definition>
+        <argsstring>(std::vector&lt; Control &gt; controls)</argsstring>
+        <name>setControls</name>
+        <param>
+          <type>std::vector&lt; Control &gt;</type>
+          <declname>controls</declname>
+        </param>
+        <briefdescription>
+<para>Sets the controls of the modal form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>controls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The list of controls to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="67" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1acb82246f433ddc5a7c963d299a06ab62" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; Message &gt;</type>
+        <definition>std::optional&lt;Message&gt; endstone::ModalForm::getSubmitButton</definition>
+        <argsstring>() const</argsstring>
+        <name>getSubmitButton</name>
+        <briefdescription>
+<para>Gets the submit button text of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The submit button text of the form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="78" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1a10dfa45d293d41020a581083efece0a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
+        <definition>ModalForm&amp; endstone::ModalForm::setSubmitButton</definition>
+        <argsstring>(std::optional&lt; Message &gt; text)</argsstring>
+        <name>setSubmitButton</name>
+        <param>
+          <type>std::optional&lt; Message &gt;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Sets the submit button text of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The submit button text to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="89" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="89" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1ac40916524243325614523a86115154a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::ModalForm::getIcon</definition>
+        <argsstring>() const</argsstring>
+        <name>getIcon</name>
+        <briefdescription>
+<para>Get the icon of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The path or URL to the icon file </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="100" column="20" bodyfile="include/endstone/form/modal_form.h" bodystart="100" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1ab65fd73b51d3b4ace8ef40712863b308" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
+        <definition>ModalForm&amp; endstone::ModalForm::setIcon</definition>
+        <argsstring>(std::optional&lt; std::string &gt; icon)</argsstring>
+        <name>setIcon</name>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>icon</declname>
+        </param>
+        <briefdescription>
+<para>Sets the icon of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>icon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path or URL to the icon file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="111" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="111" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>OnSubmitCallback</type>
+        <definition>OnSubmitCallback endstone::ModalForm::getOnSubmit</definition>
+        <argsstring>() const</argsstring>
+        <name>getOnSubmit</name>
+        <briefdescription>
+<para>Gets the on submit callback of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The on submit callback of the form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="122" column="23" bodyfile="include/endstone/form/modal_form.h" bodystart="122" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ModalForm_1a84770eeea84530fd062d6f98c40c248e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ModalForm" kindref="compound">ModalForm</ref> &amp;</type>
+        <definition>ModalForm&amp; endstone::ModalForm::setOnSubmit</definition>
+        <argsstring>(OnSubmitCallback on_submit)</argsstring>
+        <name>setOnSubmit</name>
+        <param>
+          <type>OnSubmitCallback</type>
+          <declname>on_submit</declname>
+        </param>
+        <briefdescription>
+<para>Sets the on submit callback of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>on_submit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to be set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/modal_form.h" line="133" column="15" bodyfile="include/endstone/form/modal_form.h" bodystart="133" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a modal form with controls. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ModalForm</label>
+        <link refid="classendstone_1_1ModalForm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Form&lt; ModalForm &gt;</label>
+        <link refid="classendstone_1_1Form"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ModalForm</label>
+        <link refid="classendstone_1_1ModalForm"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Form&lt; ModalForm &gt;</label>
+        <link refid="classendstone_1_1Form"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/form/modal_form.h" line="34" column="1" bodyfile="include/endstone/form/modal_form.h" bodystart="34" bodyend="144"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ModalForm_1a088ec6bda44aaba9124c3e16b7d2aa58" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>addControl</name></member>
+      <member refid="classendstone_1_1ModalForm_1acb80ded2d17319dd0e625566f36760d4" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>Control</name></member>
+      <member refid="classendstone_1_1ModalForm_1ae93fb07234de5ad30f7204fc1b248180" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>controls_</name></member>
+      <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>Form</name></member>
+      <member refid="classendstone_1_1ModalForm_1a3f04549ae4e3841d315ab89f3fd6899f" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getControls</name></member>
+      <member refid="classendstone_1_1ModalForm_1ac40916524243325614523a86115154a5" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getIcon</name></member>
+      <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getOnClose</name></member>
+      <member refid="classendstone_1_1ModalForm_1afb79d3eda590aca8e014c5db99715e70" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getOnSubmit</name></member>
+      <member refid="classendstone_1_1ModalForm_1acb82246f433ddc5a7c963d299a06ab62" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getSubmitButton</name></member>
+      <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1ModalForm_1adc2b552f970f23e0165a7209eb556160" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>icon_</name></member>
+      <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_close_</name></member>
+      <member refid="classendstone_1_1ModalForm_1a7a6e46fb4f9f8173705cc361bc8a1336" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>on_submit_</name></member>
+      <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnCloseCallback</name></member>
+      <member refid="classendstone_1_1ModalForm_1ab4f2f004b3e53a53b2ebe3c9ae04b740" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>OnSubmitCallback</name></member>
+      <member refid="classendstone_1_1ModalForm_1ab11e3d81f2ff8d80b9e7f32c5377e03f" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setControls</name></member>
+      <member refid="classendstone_1_1ModalForm_1ab65fd73b51d3b4ace8ef40712863b308" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setIcon</name></member>
+      <member refid="classendstone_1_1Form_1a340298a38292e92df18cfcc23561fe81" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setOnClose</name></member>
+      <member refid="classendstone_1_1ModalForm_1a84770eeea84530fd062d6f98c40c248e" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setOnSubmit</name></member>
+      <member refid="classendstone_1_1ModalForm_1a10dfa45d293d41020a581083efece0a9" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setSubmitButton</name></member>
+      <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" virt="non-virtual"><scope>endstone::ModalForm</scope><name>setTitle</name></member>
+      <member refid="classendstone_1_1ModalForm_1a9c20fa164938a772d5a6fe6a460be120" prot="private" virt="non-virtual"><scope>endstone::ModalForm</scope><name>submit_button_text_</name></member>
+      <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::ModalForm</scope><name>title_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Form" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Form</compoundname>
+    <includes refid="form_8h" local="no">endstone/form/form.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="classendstone_1_1Player" kindref="compound">Player</ref> *)&gt;</type>
+        <definition>using endstone::Form&lt; T &gt;::OnCloseCallback =  std::function&lt;void(Player *)&gt;</definition>
+        <argsstring></argsstring>
+        <name>OnCloseCallback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="35" column="5" bodyfile="include/endstone/form/form.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Form&lt; T &gt;::title_</definition>
+        <argsstring></argsstring>
+        <name>title_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="83" column="13" bodyfile="include/endstone/form/form.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" static="no" mutable="no">
+        <type>OnCloseCallback</type>
+        <definition>OnCloseCallback endstone::Form&lt; T &gt;::on_close_</definition>
+        <argsstring></argsstring>
+        <name>on_close_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="84" column="21" bodyfile="include/endstone/form/form.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Form&lt; T &gt;::Form</definition>
+        <argsstring>()=default</argsstring>
+        <name>Form</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="36" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Form&lt; T &gt;::getTitle</definition>
+        <argsstring>() const</argsstring>
+        <name>getTitle</name>
+        <briefdescription>
+<para>Gets the title of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The title of the form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="43" column="14" bodyfile="include/endstone/form/form.h" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; endstone::Form&lt; T &gt;::setTitle</definition>
+        <argsstring>(Message title)</argsstring>
+        <name>setTitle</name>
+        <param>
+          <type>Message</type>
+          <declname>title</declname>
+        </param>
+        <briefdescription>
+<para>Sets the title of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The title of the form to be set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="54" column="7" bodyfile="include/endstone/form/form.h" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Form_1a340298a38292e92df18cfcc23561fe81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T&amp; endstone::Form&lt; T &gt;::setOnClose</definition>
+        <argsstring>(OnCloseCallback on_close)</argsstring>
+        <name>setOnClose</name>
+        <param>
+          <type>OnCloseCallback</type>
+          <declname>on_close</declname>
+        </param>
+        <briefdescription>
+<para>Sets the on close callback of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>on_close</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The callback to be set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="66" column="7" bodyfile="include/endstone/form/form.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>OnCloseCallback</type>
+        <definition>OnCloseCallback endstone::Form&lt; T &gt;::getOnClose</definition>
+        <argsstring>() const</argsstring>
+        <name>getOnClose</name>
+        <briefdescription>
+<para>Gets the on close callback of the form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The on close callback of the form. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/form.h" line="77" column="22" bodyfile="include/endstone/form/form.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a generic form. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="classendstone_1_1Form" kindref="compound">Form</ref> class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. </para>
+    </detaileddescription>
+    <location file="include/endstone/form/form.h" line="33" column="1" bodyfile="include/endstone/form/form.h" bodystart="33" bodyend="85"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Form_1a77028f5b2f946a921e9e118da00dbe3a" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>Form</name></member>
+      <member refid="classendstone_1_1Form_1ad0a5721b99d2d9bd30eec414d9c218b6" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getOnClose</name></member>
+      <member refid="classendstone_1_1Form_1a08c5096cfa0a1fb79c160d3bd0890679" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>getTitle</name></member>
+      <member refid="classendstone_1_1Form_1a2e7d8ad1b41e12cf0d4f1e8522bf3e46" prot="protected" virt="non-virtual"><scope>endstone::Form</scope><name>on_close_</name></member>
+      <member refid="classendstone_1_1Form_1a2aa24725e41a18e53dc651e46e279e28" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>OnCloseCallback</name></member>
+      <member refid="classendstone_1_1Form_1a340298a38292e92df18cfcc23561fe81" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>setOnClose</name></member>
+      <member refid="classendstone_1_1Form_1a008d89ccea406e30c41ef749b40a4b68" prot="public" virt="non-virtual"><scope>endstone::Form</scope><name>setTitle</name></member>
+      <member refid="classendstone_1_1Form_1af2a1436a2dd61dc1d76898e5078ef9ff" prot="protected" virt="non-virtual"><scope>endstone::Form</scope><name>title_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

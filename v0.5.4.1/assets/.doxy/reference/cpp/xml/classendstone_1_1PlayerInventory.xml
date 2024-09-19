@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerInventory" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerInventory</compoundname>
+    <basecompoundref refid="classendstone_1_1Inventory" prot="public" virt="non-virtual">endstone::Inventory</basecompoundref>
+    <includes refid="player__inventory_8h" local="no">endstone/inventory/player_inventory.h</includes>
+    <briefdescription>
+<para>Interface to the inventory of a <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>, including the four armor slots and any extra slots. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Inventory</label>
+        <link refid="classendstone_1_1Inventory"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerInventory</label>
+        <link refid="classendstone_1_1PlayerInventory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::Inventory</label>
+        <link refid="classendstone_1_1Inventory"/>
+      </node>
+      <node id="1">
+        <label>endstone::PlayerInventory</label>
+        <link refid="classendstone_1_1PlayerInventory"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/inventory/player_inventory.h" line="24" column="1" bodyfile="include/endstone/inventory/player_inventory.h" bodystart="24" bodyend="24"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getMaxStackSize</name></member>
+      <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::PlayerInventory</scope><name>getSize</name></member>
+      <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::PlayerInventory</scope><name>~Inventory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
