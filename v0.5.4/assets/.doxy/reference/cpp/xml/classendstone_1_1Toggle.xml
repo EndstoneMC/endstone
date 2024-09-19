@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Toggle" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Toggle</compoundname>
+    <includes refid="toggle_8h" local="no">endstone/form/controls/toggle.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::Toggle::label_</definition>
+        <argsstring></argsstring>
+        <name>label_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="80" column="13" bodyfile="include/endstone/form/controls/toggle.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool endstone::Toggle::default_value_</definition>
+        <argsstring></argsstring>
+        <name>default_value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="81" column="10" bodyfile="include/endstone/form/controls/toggle.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a1c470350b59df5562dcc97f5dd1385a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Toggle::Toggle</definition>
+        <argsstring>()=default</argsstring>
+        <name>Toggle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a31ca9d6bea35c794ce39248ea7cecf28" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Toggle::Toggle</definition>
+        <argsstring>(Message label, bool default_value=false)</argsstring>
+        <name>Toggle</name>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>default_value</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="31" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::Toggle::getLabel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLabel</name>
+        <briefdescription>
+<para>Gets the label of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The label of the toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="40" column="14" bodyfile="include/endstone/form/controls/toggle.h" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a191c27ea77eaa18dae2bb12d31f2d1ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
+        <definition>Toggle&amp; endstone::Toggle::setLabel</definition>
+        <argsstring>(Message label)</argsstring>
+        <name>setLabel</name>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+<para>Sets the label of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new label for the toggle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="51" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="51" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Toggle::getDefaultValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getDefaultValue</name>
+        <briefdescription>
+<para>Gets the default value of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The default value of the toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="62" column="11" bodyfile="include/endstone/form/controls/toggle.h" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Toggle_1a1f6af05c285c7e62daaec4c0cdaf45da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Toggle" kindref="compound">Toggle</ref> &amp;</type>
+        <definition>Toggle&amp; endstone::Toggle::setDefaultValue</definition>
+        <argsstring>(bool value)</argsstring>
+        <name>setDefaultValue</name>
+        <param>
+          <type>bool</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the default value of the toggle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new default value for the toggle. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the current toggle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/toggle.h" line="73" column="12" bodyfile="include/endstone/form/controls/toggle.h" bodystart="73" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a toggle button with a label. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/toggle.h" line="28" column="1" bodyfile="include/endstone/form/controls/toggle.h" bodystart="28" bodyend="82"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Toggle_1a3229768ec0b1d6a3e3254177f74f7eff" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>default_value_</name></member>
+      <member refid="classendstone_1_1Toggle_1a3a5805179c86bb7f90c753c244b54162" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>getDefaultValue</name></member>
+      <member refid="classendstone_1_1Toggle_1a0448b55baf2e8096ee855c46059e0161" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>getLabel</name></member>
+      <member refid="classendstone_1_1Toggle_1ab70b5d10613173b8cbe80b53c5f769a3" prot="private" virt="non-virtual"><scope>endstone::Toggle</scope><name>label_</name></member>
+      <member refid="classendstone_1_1Toggle_1a1f6af05c285c7e62daaec4c0cdaf45da" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>setDefaultValue</name></member>
+      <member refid="classendstone_1_1Toggle_1a191c27ea77eaa18dae2bb12d31f2d1ce" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>setLabel</name></member>
+      <member refid="classendstone_1_1Toggle_1a1c470350b59df5562dcc97f5dd1385a1" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>Toggle</name></member>
+      <member refid="classendstone_1_1Toggle_1a31ca9d6bea35c794ce39248ea7cecf28" prot="public" virt="non-virtual"><scope>endstone::Toggle</scope><name>Toggle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

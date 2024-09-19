@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_77022909323d5ad872c4820a738a5429" kind="dir">
+    <compoundname>include/endstone/event/server</compoundname>
+    <innerfile refid="broadcast__message__event_8h">broadcast_message_event.h</innerfile>
+    <innerfile refid="plugin__disable__event_8h">plugin_disable_event.h</innerfile>
+    <innerfile refid="plugin__enable__event_8h">plugin_enable_event.h</innerfile>
+    <innerfile refid="server__command__event_8h">server_command_event.h</innerfile>
+    <innerfile refid="server__event_8h">server_event.h</innerfile>
+    <innerfile refid="server__list__ping__event_8h">server_list_ping_event.h</innerfile>
+    <innerfile refid="server__load__event_8h">server_load_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/server/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_5c7b2dbfabcd1115569d1e20a260545c" kind="dir">
+    <compoundname>include/endstone/command</compoundname>
+    <innerfile refid="command_8h">command.h</innerfile>
+    <innerfile refid="command__executor_8h">command_executor.h</innerfile>
+    <innerfile refid="command__map_8h">command_map.h</innerfile>
+    <innerfile refid="command__sender_8h">command_sender.h</innerfile>
+    <innerfile refid="console__command__sender_8h">console_command_sender.h</innerfile>
+    <innerfile refid="plugin__command_8h">plugin_command.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/command/"/>
+  </compounddef>
+</doxygen>

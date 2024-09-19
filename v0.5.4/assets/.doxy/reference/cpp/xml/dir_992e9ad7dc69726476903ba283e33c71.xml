@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_992e9ad7dc69726476903ba283e33c71" kind="dir">
+    <compoundname>include/endstone/event/block</compoundname>
+    <innerfile refid="block__break__event_8h">block_break_event.h</innerfile>
+    <innerfile refid="block__event_8h">block_event.h</innerfile>
+    <innerfile refid="block__place__event_8h">block_place_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/block/"/>
+  </compounddef>
+</doxygen>

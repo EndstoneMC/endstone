@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_dd7779a583e02d88c9a89a2c881c3946" kind="dir">
+    <compoundname>include/endstone/actor</compoundname>
+    <innerfile refid="actor_8h">actor.h</innerfile>
+    <innerfile refid="mob_8h">mob.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/actor/"/>
+  </compounddef>
+</doxygen>
