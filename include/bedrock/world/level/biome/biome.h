@@ -71,6 +71,6 @@ private:
     OceanRuinConfiguration ocean_ruin_config_;                // +144
     std::vector<std::shared_ptr<void *>> mobs_;               // +160
     CachedClientComponentData cached_client_component_data_;  // +184
-    const int id_;                                            // +188
+    int id_;                                                  // +188 Endstone: remove const to suppress build warning
     // BiomeComponentStorage biome_component_storage_;
 };
