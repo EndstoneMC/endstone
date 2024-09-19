@@ -30,8 +30,8 @@
 #include <GLFW/glfw3.h>
 #include <entt/entt.hpp>
 
-#include "bedrock/util/string_byte_output.h"
 #include "bedrock/nbt/nbt_io.h"
+#include "bedrock/util/string_byte_output.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/devtools/imgui/imgui_json.h"
 #include "endstone/detail/devtools/vanilla_data.h"
@@ -67,6 +67,7 @@ void showItemWindow(bool *open);
 void showRecipeWindow(bool *open);
 void showBiomeWindow(bool *open);
 void openFileBrowser(std::string title, const std::string &input_name);
+void exportAll(const std::filesystem::path &base_path, const VanillaData *dat);
 
 void render()
 {
@@ -171,8 +172,11 @@ void render()
 
         if (ImGui::BeginMainMenuBar()) {
             if (ImGui::BeginMenu("File")) {
-                ImGui::SeparatorText("Export");
                 auto *data = VanillaData::get();
+                ImGui::SeparatorText("Export");
+                if (ImGui::MenuItem("Export All")) {
+                    exportAll(data_dir, data);
+                }
                 if (ImGui::BeginMenu("JSON files", data != nullptr)) {
                     if (ImGui::MenuItem("Block Types")) {
                         file_to_save = data->block_types;
@@ -215,7 +219,8 @@ void render()
                             {"materialReducer", data->recipes.material_reducer},
                         };
                         openFileBrowser("Save Recipes", "recipes.json");
-                    }if (ImGui::MenuItem("Biomes")) {
+                    }
+                    if (ImGui::MenuItem("Biomes")) {
                         file_to_save = data->biomes;
                         openFileBrowser("Save Biomes", "biomes.json");
                     }
@@ -503,6 +508,52 @@ void openFileBrowser(std::string title, const std::string &input_name)
     gFileBrowser->SetTitle(std::move(title));
     gFileBrowser->SetTypeFilters({fs::path(input_name).extension().string()});
     gFileBrowser->SetInputName(input_name);
+}
+
+void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
+{
+    static auto save_json_to_file = [&](const nlohmann::json &arg, const std::string &name) {
+        std::ofstream file(base_path / name);
+        file << arg;
+    };
+    static auto save_nbt_to_file = [&](const CompoundTag &arg, const std::string &name) {
+        BigEndianStringByteOutput output;
+        NbtIo::writeNamedTag("", arg, output);
+        zstr::ofstream file((base_path / name).string(), std::ios::out | std::ios::binary);
+        file << output.buffer;
+    };
+    save_json_to_file(data->block_types, "block_types.json");
+    save_json_to_file(data->block_states, "block_states.json");
+    save_json_to_file(data->block_tags, "block_tags.json");
+    save_json_to_file(data->materials, "materials.json");
+    save_json_to_file(data->items, "items.json");
+    save_json_to_file(data->item_tags, "item_tags.json");
+    save_json_to_file(data->biomes, "biomes.json");
+
+    auto block_palette = CompoundTag();
+    block_palette.put("blocks", data->block_palette.copy());
+    save_nbt_to_file(block_palette, "block_palette.nbt");
+
+    auto creative_items = CompoundTag();
+    creative_items.put("items", data->creative_items.copy());
+    save_nbt_to_file(block_palette, "creative_items.nbt");
+
+    auto recipe_json = nlohmann::json{
+        {"shapeless", data->recipes.shapeless},
+        {"shaped", data->recipes.shaped},
+        {"furnace", data->recipes.furnace},
+        {"furnaceAux", data->recipes.furnace_aux},
+        {"multi", data->recipes.multi},
+        {"shulkerBox", data->recipes.shulker_box},
+        {"shapelessChemistry", data->recipes.shapeless_chemistry},
+        {"shapedChemistry", data->recipes.shaped_chemistry},
+        {"smithingTransform", data->recipes.smithing_transform},
+        {"smithingTrim", data->recipes.smithing_trim},
+        {"potionMixes", data->recipes.potion_mixes},
+        {"containerMixes", data->recipes.container_mixes},
+        {"materialReducer", data->recipes.material_reducer},
+    };
+    save_json_to_file(recipe_json, "recipes.json");
 }
 
 }  // namespace endstone::detail::devtools
