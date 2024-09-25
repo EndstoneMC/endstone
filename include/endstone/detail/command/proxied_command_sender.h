@@ -15,3 +15,36 @@
 #pragma once
 
 #include "endstone/command/proxied_command_sender.h"
+
+namespace endstone::detail {
+
+class EndstoneProxiedCommandSender : public ProxiedCommandSender {
+public:
+    EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee);
+    [[nodiscard]] bool isOp() const override;
+    void setOp(bool value) override;
+    [[nodiscard]] bool isPermissionSet(std::string name) const override;
+    [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
+    [[nodiscard]] bool hasPermission(std::string name) const override;
+    [[nodiscard]] bool hasPermission(const Permission &perm) const override;
+    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    PermissionAttachment *addAttachment(Plugin &plugin) override;
+    bool removeAttachment(PermissionAttachment &attachment) override;
+    void recalculatePermissions() override;
+    [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+    [[nodiscard]] CommandSender *asCommandSender() const override;
+    [[nodiscard]] ConsoleCommandSender *asConsole() const override;
+    [[nodiscard]] Player *asPlayer() const override;
+    void sendMessage(const Message &message) const override;
+    void sendErrorMessage(const Message &message) const override;
+    [[nodiscard]] Server &getServer() const override;
+    [[nodiscard]] std::string getName() const override;
+    [[nodiscard]] CommandSender &getCaller() const override;
+    [[nodiscard]] CommandSender &getCallee() const override;
+
+private:
+    CommandSender &caller_;
+    CommandSender &callee_;
+};
+
+}  // namespace endstone::detail

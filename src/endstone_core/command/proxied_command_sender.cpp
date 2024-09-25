@@ -13,3 +13,111 @@
 // limitations under the License.
 
 #include "endstone/detail/command/proxied_command_sender.h"
+
+namespace endstone::detail {
+
+EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee)
+    : caller_(caller), callee_(callee)
+{
+}
+bool EndstoneProxiedCommandSender::isOp() const
+{
+    return getCaller().isOp();
+}
+
+void EndstoneProxiedCommandSender::setOp(bool value)
+{
+    getCaller().setOp(value);
+}
+
+bool EndstoneProxiedCommandSender::isPermissionSet(std::string name) const
+{
+    return getCaller().isPermissionSet(name);
+}
+
+bool EndstoneProxiedCommandSender::isPermissionSet(const Permission &perm) const
+{
+    return getCaller().isPermissionSet(perm);
+}
+
+bool EndstoneProxiedCommandSender::hasPermission(std::string name) const
+{
+    return getCaller().hasPermission(name);
+}
+
+bool EndstoneProxiedCommandSender::hasPermission(const Permission &perm) const
+{
+    return getCaller().hasPermission(perm);
+}
+
+PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+{
+    return getCaller().addAttachment(plugin, name, value);
+}
+
+PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
+{
+    return getCaller().addAttachment(plugin);
+}
+
+bool EndstoneProxiedCommandSender::removeAttachment(PermissionAttachment &attachment)
+{
+    return getCaller().removeAttachment(attachment);
+}
+
+void EndstoneProxiedCommandSender::recalculatePermissions()
+{
+    getCaller().recalculatePermissions();
+}
+
+std::unordered_set<PermissionAttachmentInfo *> EndstoneProxiedCommandSender::getEffectivePermissions() const
+{
+    return getCaller().getEffectivePermissions();
+}
+
+CommandSender *EndstoneProxiedCommandSender::asCommandSender() const
+{
+    return ProxiedCommandSender::asCommandSender();
+}
+
+ConsoleCommandSender *EndstoneProxiedCommandSender::asConsole() const
+{
+    return ProxiedCommandSender::asConsole();
+}
+
+Player *EndstoneProxiedCommandSender::asPlayer() const
+{
+    return ProxiedCommandSender::asPlayer();
+}
+
+void EndstoneProxiedCommandSender::sendMessage(const Message &message) const
+{
+    getCaller().sendMessage(message);
+}
+
+void EndstoneProxiedCommandSender::sendErrorMessage(const Message &message) const
+{
+    getCaller().sendErrorMessage(message);
+}
+
+Server &EndstoneProxiedCommandSender::getServer() const
+{
+    return getCallee().getServer();
+}
+
+std::string EndstoneProxiedCommandSender::getName() const
+{
+    return getCallee().getName();
+}
+
+CommandSender &EndstoneProxiedCommandSender::getCaller() const
+{
+    return caller_;
+}
+
+CommandSender &EndstoneProxiedCommandSender::getCallee() const
+{
+    return callee_;
+}
+
+}  // namespace endstone::detail
