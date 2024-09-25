@@ -60,14 +60,6 @@ public:
 
     bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
-        if (auto *player = sender.asPlayer(); player) {
-            PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(*player), std::ref(command),
-                                   std::ref(args));
-        }
-        if (auto *console = sender.asConsole(); console) {
-            PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(*console), std::ref(command),
-                                   std::ref(args));
-        }
         PYBIND11_OVERRIDE_NAME(bool, Plugin, "on_command", onCommand, std::ref(sender), std::ref(command),
                                std::ref(args));
     }

@@ -36,14 +36,6 @@ public:
 
     bool onCommand(CommandSender &sender, const Command &command, const std::vector<std::string> &args) override
     {
-        if (auto *player = sender.asPlayer(); player) {
-            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*player), std::ref(command),
-                                   std::ref(args));
-        }
-        if (auto *console = sender.asConsole(); console) {
-            PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(*console),
-                                   std::ref(command), std::ref(args));
-        }
         PYBIND11_OVERRIDE_NAME(bool, CommandExecutor, "on_command", onCommand, std::ref(sender), std::ref(command),
                                std::ref(args));
     }
@@ -113,3 +105,27 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
 }
 
 }  // namespace endstone::detail
+
+namespace PYBIND11_NAMESPACE {
+template <>
+struct polymorphic_type_hook<endstone::CommandSender> {
+    static const void *get(const endstone::CommandSender *src, const std::type_info *&type)
+    {
+        if (!src) {
+            return src;
+        }
+
+        if (const auto *player = src->asPlayer()) {
+            type = &typeid(endstone::Player);
+            return player;
+        }
+
+        if (const auto *console = src->asConsole()) {
+            type = &typeid(endstone::ConsoleCommandSender);
+            return console;
+        }
+
+        return src;
+    }
+};
+}  // namespace PYBIND11_NAMESPACE
