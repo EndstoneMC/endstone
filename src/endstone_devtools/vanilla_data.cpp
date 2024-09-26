@@ -96,7 +96,15 @@ void dumpBlockData(VanillaData &data, ::Level &level)
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
             AABB collision_shape = {0};
+            AABB collision_shape_for_camera = {0};
+            AABB outline_shape = {0};
+            AABB visual_shape = {0};
+            AABB ui_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
+            block.getCollisionShapeForCamera(collision_shape_for_camera, region, {0, 0, 0});
+            block.getOutlineShape(outline_shape, region, {0, 0, 0});
+            block.getVisualShape(visual_shape);
+            block.getUIShape(ui_shape);
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
@@ -120,6 +128,33 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                      round(collision_shape.max.x),
                      round(collision_shape.max.y),
                      round(collision_shape.max.z),
+                 }},
+                {"outlineShape",
+                 {
+                     round(outline_shape.min.x),
+                     round(outline_shape.min.y),
+                     round(outline_shape.min.z),
+                     round(outline_shape.max.x),
+                     round(outline_shape.max.y),
+                     round(outline_shape.max.z),
+                 }},
+                {"visualShape",
+                 {
+                     round(visual_shape.min.x),
+                     round(visual_shape.min.y),
+                     round(visual_shape.min.z),
+                     round(visual_shape.max.x),
+                     round(visual_shape.max.y),
+                     round(visual_shape.max.z),
+                 }},
+                {"uiShape",
+                 {
+                     round(ui_shape.min.x),
+                     round(ui_shape.min.y),
+                     round(ui_shape.min.z),
+                     round(ui_shape.max.x),
+                     round(ui_shape.max.y),
+                     round(ui_shape.max.z),
                  }},
             });
             data.block_palette.add(block.getSerializationId().copy());

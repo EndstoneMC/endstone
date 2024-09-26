@@ -129,6 +129,29 @@ public:
         return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
     }
 
+    bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
+    {
+        return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos) && out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
+    }
+
+    bool getOutlineShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
+    {
+        out_aabb = legacy_block_->getOutline(*this, region, pos, out_aabb);
+        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
+    }
+
+    bool getVisualShape(AABB &out_aabb) const
+    {
+        out_aabb = legacy_block_->getVisualShape(*this, out_aabb);
+        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
+    }
+
+    bool getUIShape(AABB &out_aabb) const
+    {
+        out_aabb = legacy_block_->getUIShape(*this, out_aabb);
+        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
+    }
+
 private:
     friend class ItemStackBase;
 
