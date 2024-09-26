@@ -152,6 +152,11 @@ public:
         return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
     }
 
+    bool getLiquidClipShape(AABB &out_aabb, BlockSource &region, BlockPos const &pos) const
+    {
+        return legacy_block_->getLiquidClipVolume(*this, region, pos, out_aabb) && out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
+    }
+
 private:
     friend class ItemStackBase;
 

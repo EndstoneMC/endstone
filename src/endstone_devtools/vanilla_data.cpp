@@ -100,11 +100,13 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             AABB outline_shape = {0};
             AABB visual_shape = {0};
             AABB ui_shape = {0};
+            AABB liquid_clip_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
             block.getCollisionShapeForCamera(collision_shape_for_camera, region, {0, 0, 0});
             block.getOutlineShape(outline_shape, region, {0, 0, 0});
             block.getVisualShape(visual_shape);
             block.getUIShape(ui_shape);
+            block.getLiquidClipShape(liquid_clip_shape, region, {0, 0, 0});
             auto map_color = block.getLegacyBlock().getMapColor(region, {0, 10, 0}, block);
             data.block_states.push_back({
                 {"name", name},
@@ -155,6 +157,15 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                      round(ui_shape.max.x),
                      round(ui_shape.max.y),
                      round(ui_shape.max.z),
+                 }},
+                {"liquidClipShape",
+                 {
+                     round(liquid_clip_shape.min.x),
+                     round(liquid_clip_shape.min.y),
+                     round(liquid_clip_shape.min.z),
+                     round(liquid_clip_shape.max.x),
+                     round(liquid_clip_shape.max.y),
+                     round(liquid_clip_shape.max.z),
                  }},
             });
             data.block_palette.add(block.getSerializationId().copy());
