@@ -25,3 +25,9 @@ functionality, design innovative and bespoke player experiences.
     [**:octicons-arrow-right-24: Tutorials**](tutorials/create-your-first-plugin.md)
 
 </div>
+
+## 🎮 Looking for Hosting Support?
+
+Try [Bisect Hosting](https://bisecthosting.com/endstone) and get **25% off** with promo code **`endstone`**.
+
+[![Bisect Hosting](assets/bisecthosting-banner.webp)](https://bisecthosting.com/endstone)
