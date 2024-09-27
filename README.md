@@ -40,6 +40,9 @@ We are excited to announce the Endstone project. Endstone offers a plugin API fo
 both Python and C++ languages. This allows developers to enhance Bedrock Dedicated Servers with various features and
 functionalities.
 
+🏆 **This project is proudly sponsored by [Bisect Hosting](https://bisecthosting.com/endstone).**  
+[![Bisect Hosting](docs/assets/bisecthosting-banner.webp)](https://bisecthosting.com/endstone)
+
 ## 🎯 Features [🔝](#-table-of-contents)
 
 - **Cross-platform**: We have dedicated efforts to support both Windows and Linux. Proudly, we are the only
