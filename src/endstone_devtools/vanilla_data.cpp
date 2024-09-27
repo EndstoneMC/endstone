@@ -96,13 +96,11 @@ void dumpBlockData(VanillaData &data, ::Level &level)
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
             AABB collision_shape = {0};
-            AABB collision_shape_for_camera = {0};
             AABB outline_shape = {0};
             AABB visual_shape = {0};
             AABB ui_shape = {0};
             AABB liquid_clip_shape = {0};
             block.getCollisionShape(collision_shape, region, {0, 0, 0}, nullptr);
-            block.getCollisionShapeForCamera(collision_shape_for_camera, region, {0, 0, 0});
             block.getOutlineShape(outline_shape, region, {0, 0, 0});
             block.getVisualShape(visual_shape);
             block.getUIShape(ui_shape);
