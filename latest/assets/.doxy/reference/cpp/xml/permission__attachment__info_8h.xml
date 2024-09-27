@@ -116,6 +116,10 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
+      <node id="49">
+        <label>include/endstone/command/proxied_command_sender.h</label>
+        <link refid="proxied__command__sender_8h_source"/>
+      </node>
       <node id="35">
         <label>include/endstone/event/actor/actor_remove_event.h</label>
         <link refid="actor__remove__event_8h_source"/>
@@ -168,10 +172,10 @@
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>include/endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -245,6 +249,8 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
@@ -257,9 +263,9 @@
         <link refid="permissible_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
         <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="23">
@@ -332,7 +338,7 @@
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>

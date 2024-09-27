@@ -915,6 +915,11 @@
     <member refid="classendstone_1_1Position_1aba9ba0d20087e330bb959116d13c463a" kind="function"><name>getBlockY</name></member>
     <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" kind="function"><name>getBlockZ</name></member>
   </compound>
+  <compound refid="classendstone_1_1ProxiedCommandSender" kind="class"><name>endstone::ProxiedCommandSender</name>
+    <member refid="classendstone_1_1ProxiedCommandSender_1ae4aa6d5d3a8fc60f471c6bfda6c8b7d9" kind="function"><name>~ProxiedCommandSender</name></member>
+    <member refid="classendstone_1_1ProxiedCommandSender_1ae097da0205a78357302ae2070e0bfa05" kind="function"><name>getCaller</name></member>
+    <member refid="classendstone_1_1ProxiedCommandSender_1a134a31c08b50616431745d14586bbd72" kind="function"><name>getCallee</name></member>
+  </compound>
   <compound refid="classendstone_1_1Scheduler" kind="class"><name>endstone::Scheduler</name>
     <member refid="classendstone_1_1Scheduler_1a869448c7e94100977f5c3026c6a16a45" kind="function"><name>~Scheduler</name></member>
     <member refid="classendstone_1_1Scheduler_1a368d0e5279de7d5a77185021af91f7ba" kind="function"><name>runTask</name></member>
@@ -1331,6 +1336,8 @@
   <compound refid="console__command__sender_8h" kind="file"><name>console_command_sender.h</name>
   </compound>
   <compound refid="plugin__command_8h" kind="file"><name>plugin_command.h</name>
+  </compound>
+  <compound refid="proxied__command__sender_8h" kind="file"><name>proxied_command_sender.h</name>
   </compound>
   <compound refid="endstone_8h" kind="file"><name>endstone.h</name>
     <member refid="endstone_8h_1a5293e6d0f7cb888f6ac099548191fc09" kind="define"><name>ENDSTONE_STRINGIFY</name></member>

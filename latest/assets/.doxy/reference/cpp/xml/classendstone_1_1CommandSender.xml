@@ -5,6 +5,7 @@
     <basecompoundref refid="classendstone_1_1Permissible" prot="public" virt="non-virtual">endstone::Permissible</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ConsoleCommandSender" prot="public" virt="non-virtual">endstone::ConsoleCommandSender</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ProxiedCommandSender" prot="public" virt="non-virtual">endstone::ProxiedCommandSender</derivedcompoundref>
     <includes refid="command__sender_8h" local="no">endstone/command/command_sender.h</includes>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -242,6 +243,12 @@
       <node id="6">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>endstone::ProxiedCommandSender</label>
+        <link refid="classendstone_1_1ProxiedCommandSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
