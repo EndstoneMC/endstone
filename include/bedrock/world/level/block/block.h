@@ -126,35 +126,32 @@ public:
                            optional_ref<GetCollisionShapeInterface const> entity) const
     {
         out_aabb = legacy_block_->getCollisionShape(*this, region, pos, entity);
-        return isAABBValid(out_aabb);
+        return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
     }
 
     bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
     {
-        return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos) && isAABBValid(out_aabb);
+        return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
     }
 
-    bool getOutlineShape(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
+    const AABB &getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const
     {
-        out_aabb = legacy_block_->getOutline(*this, region, pos, out_aabb);
-        return isAABBValid(out_aabb);
+        return legacy_block_->getOutline(*this, region, pos, buffer);
     }
 
-    bool getVisualShape(AABB &out_aabb) const
+    const AABB &getVisualShape(AABB &buffer) const
     {
-        out_aabb = legacy_block_->getVisualShape(*this, out_aabb);
-        return isAABBValid(out_aabb);
+        return legacy_block_->getVisualShape(*this, buffer);
     }
 
-    bool getUIShape(AABB &out_aabb) const
+    const AABB &getUIShape(AABB &buffer) const
     {
-        out_aabb = legacy_block_->getUIShape(*this, out_aabb);
-        return isAABBValid(out_aabb);
+        return legacy_block_->getUIShape(*this, buffer);
     }
 
-    bool getLiquidClipShape(AABB &out_aabb, BlockSource &region, BlockPos const &pos) const
+    bool getLiquidClipShape(BlockSource &region, BlockPos const &pos, AABB &include_box) const
     {
-        return legacy_block_->getLiquidClipVolume(*this, region, pos, out_aabb) && isAABBValid(out_aabb);
+        return legacy_block_->getLiquidClipVolume(*this, region, pos, include_box);
     }
 
 private:
@@ -170,10 +167,5 @@ private:
     std::uint32_t raw_serialization_id_hash_for_network_;  // +216
     BlockRuntimeId runtime_id_;                            // +220
     bool has_runtime_id_;                                  // +224
-
-    static bool isAABBValid(AABB const &aabb)
-    {
-        return aabb.min.x < aabb.max.x && aabb.min.y < aabb.max.y && aabb.min.z < aabb.max.z;
-    }
 };
 BEDROCK_STATIC_ASSERT_SIZE(Block, 232, 232);
