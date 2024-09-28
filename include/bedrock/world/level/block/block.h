@@ -129,6 +129,31 @@ public:
         return out_aabb.min.x < out_aabb.max.x && out_aabb.min.y < out_aabb.max.y && out_aabb.min.z < out_aabb.max.z;
     }
 
+    bool getCollisionShapeForCamera(AABB &out_aabb, IConstBlockSource const &region, BlockPos const &pos) const
+    {
+        return legacy_block_->getCollisionShapeForCamera(out_aabb, *this, region, pos);
+    }
+
+    const AABB &getOutline(IConstBlockSource const &region, BlockPos const &pos, AABB &buffer) const
+    {
+        return legacy_block_->getOutline(*this, region, pos, buffer);
+    }
+
+    const AABB &getVisualShape(AABB &buffer) const
+    {
+        return legacy_block_->getVisualShape(*this, buffer);
+    }
+
+    const AABB &getUIShape(AABB &buffer) const
+    {
+        return legacy_block_->getUIShape(*this, buffer);
+    }
+
+    bool getLiquidClipShape(BlockSource &region, BlockPos const &pos, AABB &include_box) const
+    {
+        return legacy_block_->getLiquidClipVolume(*this, region, pos, include_box);
+    }
+
 private:
     friend class ItemStackBase;
 
