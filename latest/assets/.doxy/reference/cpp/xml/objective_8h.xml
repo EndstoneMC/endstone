@@ -64,6 +64,8 @@
         <link refid="score_8h_source"/>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>endstone/scoreboard/objective_sort_order.h</label>

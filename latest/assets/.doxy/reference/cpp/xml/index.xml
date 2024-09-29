@@ -945,9 +945,9 @@
   <compound refid="classendstone_1_1Score" kind="class"><name>endstone::Score</name>
     <member refid="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" kind="function"><name>~Score</name></member>
     <member refid="classendstone_1_1Score_1ad4f90b17d4d35334a1732bf428649368" kind="function"><name>getEntry</name></member>
-    <member refid="classendstone_1_1Score_1a43ca786522b2afb317fe5d372b6fc59c" kind="function"><name>getValue</name></member>
-    <member refid="classendstone_1_1Score_1af1f7bffee5b2dc2919d9c12e12ba36fe" kind="function"><name>setValue</name></member>
-    <member refid="classendstone_1_1Score_1a1bdd66c862ca7134a12b4abbcc81c52e" kind="function"><name>isScoreSet</name></member>
+    <member refid="classendstone_1_1Score_1a3f28ed4a164e808ab54731a0b95584a4" kind="function"><name>getValue</name></member>
+    <member refid="classendstone_1_1Score_1a4a25da5377571e4e1e8aba68d0ad1eb2" kind="function"><name>setValue</name></member>
+    <member refid="classendstone_1_1Score_1a3eee2cfc2724be70720963df89f94ee4" kind="function"><name>isScoreSet</name></member>
     <member refid="classendstone_1_1Score_1a6a5beac3078fe4b7f2087d287f365e42" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Score_1ab71fa7b59912d982530710ceb1d690ab" kind="function"><name>getScoreboard</name></member>
   </compound>

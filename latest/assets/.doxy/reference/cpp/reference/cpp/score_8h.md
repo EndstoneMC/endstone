@@ -11,6 +11,7 @@
 
 
 * `#include "endstone/scoreboard/score_entry.h"`
+* `#include "endstone/util/result.h"`
 
 
 

@@ -5,6 +5,7 @@
     <includes local="no">nonstd/expected.hpp</includes>
     <includes refid="error_8h" local="yes">endstone/util/error.h</includes>
     <includedby refid="objective_8h" local="yes">include/endstone/scoreboard/objective.h</includedby>
+    <includedby refid="score_8h" local="yes">include/endstone/scoreboard/score.h</includedby>
     <incdepgraph>
       <node id="4">
         <label>string_view</label>
@@ -149,10 +150,18 @@
         <link refid="result_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
       </node>
       <node id="20">
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
+      </node>
+      <node id="30">
+        <label>include/endstone/scoreboard/score.h</label>
+        <link refid="score_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
       <node id="5">
         <label>include/endstone/event/block/block_break_event.h</label>

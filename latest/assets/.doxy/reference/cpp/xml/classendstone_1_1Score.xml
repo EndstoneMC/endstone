@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="29" column="13"/>
+        <location file="include/endstone/scoreboard/score.h" line="30" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1ad4f90b17d4d35334a1732bf428649368" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ScoreEntry</type>
@@ -32,11 +32,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="36" column="25"/>
+        <location file="include/endstone/scoreboard/score.h" line="37" column="25"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Score_1a43ca786522b2afb317fe5d372b6fc59c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>int</type>
-        <definition>virtual int endstone::Score::getValue</definition>
+      <memberdef kind="function" id="classendstone_1_1Score_1a3f28ed4a164e808ab54731a0b95584a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; int &gt;</type>
+        <definition>virtual Result&lt;int&gt; endstone::Score::getValue</definition>
         <argsstring>() const =0</argsstring>
         <name>getValue</name>
         <briefdescription>
@@ -49,11 +49,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="43" column="18"/>
+        <location file="include/endstone/scoreboard/score.h" line="44" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Score_1af1f7bffee5b2dc2919d9c12e12ba36fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::Score::setValue</definition>
+      <memberdef kind="function" id="classendstone_1_1Score_1a4a25da5377571e4e1e8aba68d0ad1eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::Score::setValue</definition>
         <argsstring>(int score)=0</argsstring>
         <name>setValue</name>
         <param>
@@ -77,11 +77,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="50" column="18"/>
+        <location file="include/endstone/scoreboard/score.h" line="51" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Score_1a1bdd66c862ca7134a12b4abbcc81c52e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool endstone::Score::isScoreSet</definition>
+      <memberdef kind="function" id="classendstone_1_1Score_1a3eee2cfc2724be70720963df89f94ee4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; bool &gt;</type>
+        <definition>virtual Result&lt;bool&gt; endstone::Score::isScoreSet</definition>
         <argsstring>() const =0</argsstring>
         <name>isScoreSet</name>
         <briefdescription>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="58" column="19"/>
+        <location file="include/endstone/scoreboard/score.h" line="59" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1a6a5beac3078fe4b7f2087d287f365e42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Objective" kindref="compound">Objective</ref> &amp;</type>
@@ -111,7 +111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="65" column="24"/>
+        <location file="include/endstone/scoreboard/score.h" line="66" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Score_1ab71fa7b59912d982530710ceb1d690ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Scoreboard" kindref="compound">Scoreboard</ref> &amp;</type>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/scoreboard/score.h" line="72" column="25"/>
+        <location file="include/endstone/scoreboard/score.h" line="73" column="25"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -136,14 +136,14 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/scoreboard/score.h" line="27" column="1" bodyfile="include/endstone/scoreboard/score.h" bodystart="27" bodyend="73"/>
+    <location file="include/endstone/scoreboard/score.h" line="28" column="1" bodyfile="include/endstone/scoreboard/score.h" bodystart="28" bodyend="74"/>
     <listofallmembers>
       <member refid="classendstone_1_1Score_1ad4f90b17d4d35334a1732bf428649368" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>getEntry</name></member>
       <member refid="classendstone_1_1Score_1a6a5beac3078fe4b7f2087d287f365e42" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>getObjective</name></member>
       <member refid="classendstone_1_1Score_1ab71fa7b59912d982530710ceb1d690ab" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>getScoreboard</name></member>
-      <member refid="classendstone_1_1Score_1a43ca786522b2afb317fe5d372b6fc59c" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>getValue</name></member>
-      <member refid="classendstone_1_1Score_1a1bdd66c862ca7134a12b4abbcc81c52e" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>isScoreSet</name></member>
-      <member refid="classendstone_1_1Score_1af1f7bffee5b2dc2919d9c12e12ba36fe" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>setValue</name></member>
+      <member refid="classendstone_1_1Score_1a3f28ed4a164e808ab54731a0b95584a4" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>getValue</name></member>
+      <member refid="classendstone_1_1Score_1a3eee2cfc2724be70720963df89f94ee4" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>isScoreSet</name></member>
+      <member refid="classendstone_1_1Score_1a4a25da5377571e4e1e8aba68d0ad1eb2" prot="public" virt="pure-virtual"><scope>endstone::Score</scope><name>setValue</name></member>
       <member refid="classendstone_1_1Score_1aaf6dc0162a28e0b9b3224221d22cb2ea" prot="public" virt="virtual"><scope>endstone::Score</scope><name>~Score</name></member>
     </listofallmembers>
   </compounddef>

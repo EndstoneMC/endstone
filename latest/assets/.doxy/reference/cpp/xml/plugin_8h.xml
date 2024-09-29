@@ -562,6 +562,8 @@
         <link refid="score_8h_source"/>
         <childnode refid="75" relation="include">
         </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
       </node>
       <node id="21">
         <label>endstone/permissions/permission_attachment_info.h</label>
