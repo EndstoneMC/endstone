@@ -45,12 +45,13 @@ namespace endstone::detail::devtools {
 
 namespace {
 auto &gLogger = LoggerFactory::getLogger("DevTools");
+std::vector<std::string> gErrors = {};
 GLFWwindow *gWindow = nullptr;
 ImGui::FileBrowser *gFileBrowser = nullptr;
 
 void onError(int error, const char *description)
 {
-    gLogger.error("GLFW Error {}: {}", error, description);
+    gErrors.push_back(fmt::format("GLFW Error {}: {}", error, description));
 }
 
 void onWindowClose(GLFWwindow *window)
@@ -73,7 +74,7 @@ void render()
 {
     glfwSetErrorCallback(onError);
     if (!glfwInit()) {
-        gLogger.error("glfwInit failed!");
+        gErrors.emplace_back("glfwInit failed!");
         return;
     }
 
@@ -92,7 +93,7 @@ void render()
     }
 
     if (gWindow == nullptr) {
-        gLogger.error("glfwCreateWindow failed!");
+        gErrors.emplace_back("glfwCreateWindow failed!");
         return;
     }
 
@@ -101,7 +102,12 @@ void render()
     glfwSwapInterval(1);  // Enable vsync
 
     if (glewInit() != GLEW_OK) {
-        gLogger.error("glewInit failed!");
+        gErrors.emplace_back("glewInit failed!");
+
+        // Destroy the window if GLEW initialization fails
+        glfwDestroyWindow(gWindow);
+        glfwTerminate();
+        gWindow = nullptr;
         return;
     }
 
@@ -321,6 +327,12 @@ void show()
 {
     if (gWindow) {
         glfwShowWindow(gWindow);
+    }
+    else {
+        gLogger.error("DevTools is currently unavailable.");
+        for (const auto &error_message : gErrors) {
+            gLogger.error(error_message);
+        }
     }
 }
 
