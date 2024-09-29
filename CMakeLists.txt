@@ -66,7 +66,7 @@ find_package(GTest CONFIG REQUIRED)
 add_library(endstone_headers INTERFACE)
 add_library(endstone::headers ALIAS endstone_headers)
 target_include_directories(endstone_headers INTERFACE include)
-target_link_libraries(endstone_headers INTERFACE fmt::fmt)
+target_link_libraries(endstone_headers INTERFACE fmt::fmt nonstd::expected-lite)
 
 include(GNUInstallDirs)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
@@ -91,8 +91,8 @@ file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_cor
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
-        EnTT::EnTT nonstd::expected-lite glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
-        pybind11::embed spdlog::spdlog tomlplusplus::tomlplusplus)
+        EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json pybind11::embed
+        spdlog::spdlog tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)

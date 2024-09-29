@@ -1,9 +1,6 @@
-import os
-
 from conan import ConanFile
 from conan.tools.build import check_min_cppstd
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
-from conan.tools.files import copy
 from conan.tools.scm import Git
 from conans.errors import ConanInvalidConfiguration
 from conans.model.version import Version
@@ -114,9 +111,9 @@ class EndstoneRecipe(ConanFile):
         self.requires("base64/0.5.2")
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
-        self.requires("cpptrace/0.6.2")
+        self.requires("cpptrace/0.7.1")
         # self.requires("entt/3.13.0")
-        self.requires("expected-lite/0.6.3")
+        self.requires("expected-lite/0.8.0")
         self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
@@ -171,7 +168,7 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["headers"].libs = []
         self.cpp_info.components["headers"].libdirs = []
         self.cpp_info.components["headers"].set_property("cmake_target_name", "endstone::headers")
-        self.cpp_info.components["headers"].requires = ["fmt::fmt"]
+        self.cpp_info.components["headers"].requires = ["fmt::fmt", "expected-lite::expected-lite"]
 
         self.cpp_info.components["core"].libs = ["endstone_core"]
         self.cpp_info.components["core"].set_property("cmake_target_name", "endstone::core")
@@ -180,7 +177,6 @@ class EndstoneRecipe(ConanFile):
             "boost::boost",
             "concurrentqueue::concurrentqueue",
             # "entt::entt",
-            "expected-lite::expected-lite",
             "glm::glm",
             "magic_enum::magic_enum",
             "nlohmann_json::nlohmann_json",
