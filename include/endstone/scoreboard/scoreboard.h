@@ -20,6 +20,7 @@
 #include "endstone/scoreboard/display_slot.h"
 #include "endstone/scoreboard/objective.h"
 #include "endstone/scoreboard/score_entry.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -35,10 +36,9 @@ public:
      *
      * @param name Name of the Objective
      * @param criteria Criteria for the Objective
-     * @return A reference to the newly registered Objective,
-     * or <code>nullptr</code> if an objective by that name already exists.
+     * @return A reference to the newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) = 0;
+    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -46,11 +46,10 @@ public:
      * @param name Name of the Objective
      * @param criteria Criteria type for the Objective
      * @param display_name Name displayed to players for the Objective.
-     * @return A reference to the newly registered Objective,
-     * or <code>nullptr</code> if an objective by that name already exists.
+     * @return A reference to the newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
-                                                    std::string display_name) = 0;
+    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria,
+                                                            std::string display_name) = 0;
 
     /**
      * @brief Registers an Objective on this Scoreboard
@@ -59,11 +58,10 @@ public:
      * @param criteria Criteria type for the Objective
      * @param display_name Name displayed to players for the Objective.
      * @param render_type Manner of rendering the Objective
-     * @return A reference to the newly registered Objective,
-     * or <code>nullptr</code> if an objective by that name already exists.
+     * @return A reference to the newly registered Objective.
      */
-    virtual std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                                    RenderType render_type) = 0;
+    virtual Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria,
+                                                            std::string display_name, RenderType render_type) = 0;
 
     /**
      * @brief Gets an Objective on this Scoreboard by name

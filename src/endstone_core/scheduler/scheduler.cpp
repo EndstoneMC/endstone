@@ -15,8 +15,24 @@
 #include "endstone/detail/scheduler/scheduler.h"
 
 #include "endstone/detail/scheduler/async_task.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
+
+namespace {
+Result<void> validate(const Plugin &plugin, const std::function<void()> &task)
+{
+    if (!task) {
+        return nonstd::make_unexpected(make_error("Plugin {} attempted to register an empty task", plugin.getName()));
+    }
+
+    if (!plugin.isEnabled()) {
+        return nonstd::make_unexpected(
+            make_error("Plugin {} attempted to register task while disabled", plugin.getName()));
+    }
+    return {};
+}
+}  // namespace
 
 EndstoneScheduler::EndstoneScheduler(Server &server) : server_(server) {}
 
@@ -33,13 +49,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskLater(Plugin &plugin, std::funct
 std::shared_ptr<Task> EndstoneScheduler::runTaskTimer(Plugin &plugin, std::function<void()> task, std::uint64_t delay,
                                                       std::uint64_t period)
 {
-    if (!task) {
-        server_.getLogger().error("Plugin {} attempted to register an empty task", plugin.getName());
-        return nullptr;
-    }
-
-    if (!plugin.isEnabled()) {
-        server_.getLogger().error("Plugin {} attempted to register task while disabled", plugin.getName());
+    if (!validate(plugin, task)) {
         return nullptr;
     }
 
@@ -63,13 +73,7 @@ std::shared_ptr<Task> EndstoneScheduler::runTaskLaterAsync(Plugin &plugin, std::
 std::shared_ptr<Task> EndstoneScheduler::runTaskTimerAsync(Plugin &plugin, std::function<void()> task,
                                                            std::uint64_t delay, std::uint64_t period)
 {
-    if (!task) {
-        server_.getLogger().error("Plugin {} attempted to register an empty task", plugin.getName());
-        return nullptr;
-    }
-
-    if (!plugin.isEnabled()) {
-        server_.getLogger().error("Plugin {} attempted to register task while disabled", plugin.getName());
+    if (!validate(plugin, task)) {
         return nullptr;
     }
 

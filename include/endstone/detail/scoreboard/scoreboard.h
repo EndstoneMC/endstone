@@ -28,11 +28,11 @@ public:
     explicit EndstoneScoreboard(std::unique_ptr<::Scoreboard> board);
     void init();
 
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria) override;
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria,
-                                            std::string display_name) override;
-    std::unique_ptr<Objective> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
-                                            RenderType render_type) override;
+    Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria) override;
+    Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria,
+                                                    std::string display_name) override;
+    Result<std::unique_ptr<Objective>> addObjective(std::string name, Criteria::Type criteria, std::string display_name,
+                                                    RenderType render_type) override;
     [[nodiscard]] std::unique_ptr<Objective> getObjective(std::string name) const override;
     [[nodiscard]] std::unique_ptr<Objective> getObjective(DisplaySlot slot) const override;
     [[nodiscard]] std::vector<std::unique_ptr<Objective>> getObjectives() const override;

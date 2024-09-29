@@ -26,6 +26,7 @@
 #include "endstone/detail/scoreboard/objective.h"
 #include "endstone/detail/scoreboard/score.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
 
@@ -48,33 +49,29 @@ void EndstoneScoreboard::init()
     board_.setPacketSender(packet_sender_.get());
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
+Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria)
 {
     return addObjective(name, criteria, name);
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name)
+Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+                                                                    std::string display_name)
 {
     return addObjective(name, criteria, name, RenderType::Integer);
 }
 
-std::unique_ptr<Objective> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
-                                                            std::string display_name, RenderType render_type)
+Result<std::unique_ptr<Objective>> EndstoneScoreboard::addObjective(std::string name, Criteria::Type criteria,
+                                                                    std::string display_name, RenderType render_type)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto *cr = board_.getCriteria(getCriteriaName(criteria));
+    const auto *cr = board_.getCriteria(getCriteriaName(criteria));
     if (!cr) {
-        server.getLogger().error("Unknown criteria: {}.", getCriteriaName(criteria));
-        return nullptr;
+        throw std::runtime_error("getCriteria returns null!");
     }
 
     auto *objective = board_.addObjective(name, display_name, *cr);
     if (!objective) {
-        server.getLogger().error("Objective {} already exists.", name);
-        return nullptr;
+        return nonstd::make_unexpected(make_error("Objective {} already exists.", name));
     }
-
     return std::make_unique<EndstoneObjective>(*this, *objective);
 }
 

@@ -18,6 +18,7 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
+#include "endstone/util/error.h"
 
 namespace endstone {
 
