@@ -22,6 +22,7 @@
 #include "endstone/detail/scoreboard/score.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
 
@@ -30,44 +31,42 @@ EndstoneObjective::EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective
 {
 }
 
-std::optional<std::string> EndstoneObjective::getName() const
+Result<std::string> EndstoneObjective::getName() const
 {
-    if (checkState()) {
-        return objective_.getName();
-    }
-    return std::nullopt;
+    return checkState()
+        .and_then([](const auto *self) -> Result<std::string> { return self->objective_.getName(); })
+        .or_else([](const auto &err) -> Result<std::string> { return nonstd::make_unexpected(err); });
 }
 
-std::optional<std::string> EndstoneObjective::getDisplayName() const
+Result<std::string> EndstoneObjective::getDisplayName() const
 {
-    if (checkState()) {
-        return objective_.getDisplayName();
-    }
-    return std::nullopt;
+    return checkState()
+        .and_then([](const auto *self) -> Result<std::string> { return self->objective_.getDisplayName(); })
+        .or_else([](const auto &err) -> Result<std::string> { return nonstd::make_unexpected(err); });
 }
 
-void EndstoneObjective::setDisplayName(std::string display_name)
+Result<void> EndstoneObjective::setDisplayName(std::string display_name)
 {
-    if (checkState()) {
-        objective_.setDisplayName(display_name);
-        // TODO(scoreboard): probably we need to mark it as dirty, check this later
-    }
+    return checkState()
+        .and_then([&display_name](const auto *self) -> Result<void> {
+            self->objective_.setDisplayName(display_name);
+            return {};
+        })
+        .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
-const Criteria *EndstoneObjective::getCriteria() const
+Result<const Criteria *> EndstoneObjective::getCriteria() const
 {
-    if (checkState()) {
-        return &criteria_;
-    }
-    return nullptr;
+    return checkState()
+        .and_then([](const auto *self) -> Result<const Criteria *> { return &self->criteria_; })
+        .or_else([](const auto &err) -> Result<const Criteria *> { return nonstd::make_unexpected(err); });
 }
 
-bool EndstoneObjective::isModifiable() const
+Result<bool> EndstoneObjective::isModifiable() const
 {
-    if (checkState()) {
-        return !criteria_.isReadOnly();
-    }
-    return false;
+    return checkState()
+        .and_then([](const auto *self) -> Result<bool> { return !self->criteria_.isReadOnly(); })
+        .or_else([](const auto &err) -> Result<bool> { return nonstd::make_unexpected(err); });
 }
 
 Scoreboard &EndstoneObjective::getScoreboard() const
@@ -75,118 +74,128 @@ Scoreboard &EndstoneObjective::getScoreboard() const
     return scoreboard_;
 }
 
-void EndstoneObjective::unregister() const
+Result<void> EndstoneObjective::unregister() const
 {
-    if (checkState()) {
-        scoreboard_.board_.removeObjective(&objective_);
-    }
+    return checkState()
+        .and_then([](const auto *self) -> Result<void> {
+            self->scoreboard_.board_.removeObjective(&self->objective_);
+            return {};
+        })
+        .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
-std::optional<DisplaySlot> EndstoneObjective::getDisplaySlot() const
+Result<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
     std::optional<DisplaySlot> result;
-    if (!checkState()) {
-        return result;
-    }
-
-    forEachDisplayObjective([&](auto slot, const auto &display) -> bool {
-        if (&display.getObjective() == &objective_) {
-            result = slot;
-            return false;
-        }
-        return true;
-    });
-    return result;
+    return forEachDisplayObjective([&](auto slot, const auto &display) -> bool {
+               if (&display.getObjective() == &objective_) {
+                   result = slot;
+                   return false;
+               }
+               return true;
+           })
+        .and_then([&result]() -> Result<DisplaySlot> {
+            if (result) {
+                return result.value();
+            }
+            return nonstd::make_unexpected(make_error("Object is not displayer"));
+        })
+        .or_else([](const auto &err) -> Result<DisplaySlot> { return nonstd::make_unexpected(err); });
 }
 
-std::optional<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
+Result<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
 {
     std::optional<ObjectiveSortOrder> result;
-    if (!checkState()) {
-        return result;
-    }
-
-    forEachDisplayObjective([&](auto /*slot*/, const auto &display) -> bool {
-        if (&display.getObjective() == &objective_) {
-            result = static_cast<ObjectiveSortOrder>(display.getSortOrder());
-            return false;
-        }
-        return true;
-    });
-    return result;
+    return forEachDisplayObjective([&](auto /*slot*/, const auto &display) -> bool {
+               if (&display.getObjective() == &objective_) {
+                   result = static_cast<ObjectiveSortOrder>(display.getSortOrder());
+                   return false;
+               }
+               return true;
+           })
+        .and_then([&result]() -> Result<ObjectiveSortOrder> {
+            if (result) {
+                return result.value();
+            }
+            return nonstd::make_unexpected(make_error("Object is not displayer"));
+        })
+        .or_else([](const auto &err) -> Result<ObjectiveSortOrder> { return nonstd::make_unexpected(err); });
 }
 
-void EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot)
+Result<void> EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot)
 {
-    setDisplay(slot, ObjectiveSortOrder::Ascending);
+    return setDisplay(slot, ObjectiveSortOrder::Ascending);
 }
 
-void EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order)
+Result<void> EndstoneObjective::setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order)
 {
-    if (!checkState()) {
-        return;
-    }
-
-    forEachDisplayObjective([this](auto i, const auto &display) -> bool {
-        if (&display.getObjective() == &objective_) {
-            scoreboard_.board_.clearDisplayObjective(EndstoneScoreboard::getDisplaySlotName(i));
-        }
-        return true;
-    });
-
-    if (slot.has_value()) {
-        scoreboard_.board_.setDisplayObjective(EndstoneScoreboard::getDisplaySlotName(slot.value()), objective_,
-                                               static_cast<::ObjectiveSortOrder>(order));
-    }
+    return forEachDisplayObjective([this](auto i, const auto &display) -> bool {
+               if (&display.getObjective() == &objective_) {
+                   scoreboard_.board_.clearDisplayObjective(EndstoneScoreboard::getDisplaySlotName(i));
+               }
+               return true;
+           })
+        .and_then([&]() -> Result<void> {
+            if (slot.has_value()) {
+                scoreboard_.board_.setDisplayObjective(EndstoneScoreboard::getDisplaySlotName(slot.value()), objective_,
+                                                       static_cast<::ObjectiveSortOrder>(order));
+            }
+            return {};
+        })
+        .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
-std::optional<RenderType> EndstoneObjective::getRenderType() const
+Result<RenderType> EndstoneObjective::getRenderType() const
 {
-    if (checkState()) {
-        return static_cast<RenderType>(objective_.getRenderType());
-    }
-    return std::nullopt;
+    return checkState()
+        .and_then([](const auto *self) -> Result<RenderType> {
+            return static_cast<RenderType>(self->objective_.getRenderType());
+        })
+        .or_else([](const auto &err) -> Result<RenderType> { return nonstd::make_unexpected(err); });
 }
 
-void EndstoneObjective::setRenderType(RenderType render_type)
+Result<void> EndstoneObjective::setRenderType(RenderType render_type)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.getLogger().error("Objective::setRenderType is not supported.");
+    return checkState()
+        .and_then([](const auto * /*self*/) -> Result<void> {
+            return nonstd::make_unexpected(make_error("setRenderType is not supported."));
+        })
+        .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
-std::unique_ptr<Score> EndstoneObjective::getScore(ScoreEntry entry) const
+Result<std::unique_ptr<Score>> EndstoneObjective::getScore(ScoreEntry entry) const
 {
-    if (checkState()) {
-        return std::make_unique<EndstoneScore>(copy(), entry);
-    }
-    return nullptr;
+    return checkState()
+        .and_then([entry](const auto *self) -> Result<std::unique_ptr<Score>> {
+            return std::make_unique<EndstoneScore>(self->copy(), entry);
+        })
+        .or_else([](const auto &err) -> Result<std::unique_ptr<Score>> { return nonstd::make_unexpected(err); });
 }
 
-bool EndstoneObjective::checkState() const
+Result<const EndstoneObjective *> EndstoneObjective::checkState() const
 {
     if (scoreboard_.board_.getObjective(name_) == nullptr) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        server.getLogger().error("Objective {} is unregistered from the scoreboard.", name_);
-        return false;
+        return nonstd::make_unexpected(make_error("Objective '{}' is unregistered from the scoreboard.", name_));
     }
-    return true;
+    return this;
 }
 
-void EndstoneObjective::forEachDisplayObjective(
+Result<void> EndstoneObjective::forEachDisplayObjective(
     const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const
 {
-    if (!checkState()) {
-        return;
-    }
-
-    for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
-        const auto *display = scoreboard_.board_.getDisplayObjective(EndstoneScoreboard::getDisplaySlotName(slot));
-        if (display) {
-            if (!callback(slot, *display)) {
-                return;
+    return checkState()
+        .and_then([&callback](const EndstoneObjective *self) -> Result<void> {
+            for (auto const &slot : magic_enum::enum_values<DisplaySlot>()) {
+                const auto slot_name = EndstoneScoreboard::getDisplaySlotName(slot);
+                if (const auto *display = self->scoreboard_.board_.getDisplayObjective(slot_name)) {
+                    if (!callback(slot, *display)) {
+                        return {};
+                    }
+                }
             }
-        }
-    }
+            return {};
+        })
+        .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
 std::unique_ptr<EndstoneObjective> EndstoneObjective::copy() const

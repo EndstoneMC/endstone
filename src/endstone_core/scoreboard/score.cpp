@@ -63,7 +63,6 @@ void EndstoneScore::setValue(int score)
                                                          PlayerScoreSetFunction::Set);
         if (!success) {
             server.getLogger().error("Cannot modify score");
-            return;
         }
     }
 }

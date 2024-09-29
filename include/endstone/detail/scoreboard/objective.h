@@ -31,30 +31,31 @@ class EndstoneObjective : public Objective {
 public:
     explicit EndstoneObjective(EndstoneScoreboard &scoreboard, ::Objective &objective);
 
-    [[nodiscard]] std::optional<std::string> getName() const override;
-    [[nodiscard]] std::optional<std::string> getDisplayName() const override;
-    void setDisplayName(std::string display_name) override;
-    [[nodiscard]] const Criteria *getCriteria() const override;
-    [[nodiscard]] bool isModifiable() const override;
+    [[nodiscard]] Result<std::string> getName() const override;
+    [[nodiscard]] Result<std::string> getDisplayName() const override;
+    Result<void> setDisplayName(std::string display_name) override;
+    [[nodiscard]] Result<const Criteria *> getCriteria() const override;
+    [[nodiscard]] Result<bool> isModifiable() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
-    void unregister() const override;
-    [[nodiscard]] std::optional<DisplaySlot> getDisplaySlot() const override;
-    [[nodiscard]] std::optional<ObjectiveSortOrder> getSortOrder() const override;
-    void setDisplay(std::optional<DisplaySlot> slot) override;
-    void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
-    [[nodiscard]] std::optional<RenderType> getRenderType() const override;
-    void setRenderType(RenderType render_type) override;
-    [[nodiscard]] std::unique_ptr<Score> getScore(ScoreEntry entry) const override;
+    [[nodiscard]] Result<void> unregister() const override;
+    [[nodiscard]] Result<DisplaySlot> getDisplaySlot() const override;
+    [[nodiscard]] Result<ObjectiveSortOrder> getSortOrder() const override;
+    Result<void> setDisplay(std::optional<DisplaySlot> slot) override;
+    Result<void> setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) override;
+    [[nodiscard]] Result<RenderType> getRenderType() const override;
+    Result<void> setRenderType(RenderType render_type) override;
+    [[nodiscard]] Result<std::unique_ptr<Score>> getScore(ScoreEntry entry) const override;
     bool operator==(const Objective &other) const override;
     bool operator!=(const Objective &other) const override;
 
-    [[nodiscard]] bool checkState() const;
+    [[nodiscard]] Result<const EndstoneObjective *> checkState() const;
     [[nodiscard]] std::unique_ptr<EndstoneObjective> copy() const;
 
 private:
     friend class EndstoneScore;
 
-    void forEachDisplayObjective(const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const;
+    Result<void> forEachDisplayObjective(
+        const std::function<bool(DisplaySlot, const DisplayObjective &)> &callback) const;
 
     std::string name_;
     EndstoneScoreboard &scoreboard_;
