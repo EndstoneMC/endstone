@@ -18,6 +18,7 @@
 
 // must be included after pybind11
 #include "endstone/actor/actor.h"
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/player.h"
 #include "endstone/scoreboard/criteria.h"
 #include "endstone/scoreboard/display_slot.h"

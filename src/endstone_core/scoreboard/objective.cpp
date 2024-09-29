@@ -98,7 +98,7 @@ Result<DisplaySlot> EndstoneObjective::getDisplaySlot() const
             if (result) {
                 return result.value();
             }
-            return nonstd::make_unexpected(make_error("Object is not displayer"));
+            return nonstd::make_unexpected(make_error("Object is not displayed."));
         })
         .or_else([](const auto &err) -> Result<DisplaySlot> { return nonstd::make_unexpected(err); });
 }
@@ -117,7 +117,7 @@ Result<ObjectiveSortOrder> EndstoneObjective::getSortOrder() const
             if (result) {
                 return result.value();
             }
-            return nonstd::make_unexpected(make_error("Object is not displayer"));
+            return nonstd::make_unexpected(make_error("Object is not displayed."));
         })
         .or_else([](const auto &err) -> Result<ObjectiveSortOrder> { return nonstd::make_unexpected(err); });
 }

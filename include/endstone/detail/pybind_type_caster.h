@@ -12,16 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#pragma once
+
 #include <pybind11/pybind11.h>
 
+#include "endstone/util/result.h"
 #include "endstone/util/uuid.h"
 
 namespace pybind11::detail {
 template <>
-struct type_caster<endstone::UUID> {
+class type_caster<endstone::UUID> {
 public:
-    PYBIND11_TYPE_CASTER(endstone::UUID, const_name("uuid.UUID"));
-
     // Python -> C++
     bool load(handle src, bool)
     {
@@ -82,5 +83,42 @@ public:
 
         return {res};
     }
+
+    PYBIND11_TYPE_CASTER(endstone::UUID, const_name("uuid.UUID"));
 };
+
+template <typename Value>
+class type_caster<endstone::Result<Value>> {
+public:
+    using value_conv = make_caster<Value>;
+
+    template <typename T>
+    static handle cast(T &&src, return_value_policy policy, handle parent)
+    {
+        if (!src) {
+            throw std::runtime_error(std::string(src.error().getMessage()));
+        }
+        if (!std::is_lvalue_reference<T>::value) {
+            policy = return_value_policy_override<Value>::policy(policy);
+        }
+        return value_conv::cast(*std::forward<T>(src), policy, parent);
+    }
+
+    PYBIND11_TYPE_CASTER(endstone::Result<Value>, value_conv::name);
+};
+
+template <>
+class type_caster<endstone::Result<void>> {
+public:
+    template <typename T>
+    static handle cast(T &&src, return_value_policy policy, handle parent)
+    {
+        if (!src) {
+            throw std::runtime_error(std::string(src.error().getMessage()));
+        }
+        return none().release();
+    }
+    PYBIND11_TYPE_CASTER(endstone::Result<void>, const_name("None"));
+};
+
 }  // namespace pybind11::detail
