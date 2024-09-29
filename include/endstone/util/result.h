@@ -14,18 +14,13 @@
 
 #pragma once
 
-#include <fmt/format.h>
+#include <nonstd/expected.hpp>
 
 #include "endstone/util/error.h"
 
-namespace endstone::detail {
+namespace endstone {
 
-template <typename... Args>
-Error make_error(const fmt::format_string<Args...> format, Args &&...args)
-{
-    return make_error(fmt::format(format, std::forward<Args>(args)...));
-}
+template <typename T>
+using Result = nonstd::expected<T, Error>;
 
-Error make_error(std::string_view message);
-
-}  // namespace endstone::detail
+} // namespace endstone
