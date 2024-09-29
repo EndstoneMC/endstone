@@ -15,6 +15,7 @@
 #pragma once
 
 #include "endstone/scoreboard/score_entry.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -40,14 +41,14 @@ public:
      *
      * @return the current score
      */
-    [[nodiscard]] virtual int getValue() const = 0;
+    [[nodiscard]] virtual Result<int> getValue() const = 0;
 
     /**
      * @brief Sets the current score.
      *
      * @param score New score
      */
-    virtual void setValue(int score) = 0;
+    virtual Result<void> setValue(int score) = 0;
 
     /**
      * @brief Shows if this score has been set at any point in time.
@@ -55,7 +56,7 @@ public:
      * @return if this score has been set before
      */
 
-    [[nodiscard]] virtual bool isScoreSet() const = 0;
+    [[nodiscard]] virtual Result<bool> isScoreSet() const = 0;
 
     /**
      * @brief Gets the Objective being tracked by this Score.

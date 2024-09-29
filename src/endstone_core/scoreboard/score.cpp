@@ -20,6 +20,7 @@
 #include "endstone/detail/scoreboard/objective.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
 
@@ -33,47 +34,46 @@ ScoreEntry EndstoneScore::getEntry() const
     return entry_;
 }
 
-int EndstoneScore::getValue() const
+Result<int> EndstoneScore::getValue() const
 {
-    if (objective_->checkState()) {
-        const auto &id = getScoreboardId();
-        if (id.isValid() && objective_->objective_.hasScore(id)) {
-            return objective_->objective_.getPlayerScore(id).value;
-        }
-    }
-    return 0;
+    return objective_->checkState().and_then([&](const auto *obj) -> Result<int> {
+        return getScoreboardId().and_then([&](const auto *id) -> Result<int> {
+            if (id->isValid() && obj->objective_.hasScore(*id)) {
+                return obj->objective_.getPlayerScore(*id).value;
+            }
+            return 0;
+        });
+    });
 }
 
-void EndstoneScore::setValue(int score)
+Result<void> EndstoneScore::setValue(int score)
 {
-    if (objective_->checkState()) {
-        const auto &id = getOrCreateScoreboardId();
-        if (!id.isValid()) {
-            throw std::runtime_error("Invalid scoreboard id");
-        }
+    return objective_->checkState().and_then([&](const auto *obj) -> Result<void> {
+        return getOrCreateScoreboardId().and_then([&](const auto *id) -> Result<void> {
+            return obj->isModifiable().and_then([&](bool modifiable) -> Result<void> {
+                if (!modifiable) {
+                    return nonstd::make_unexpected(make_error("Cannot modify read-only score."));
+                }
 
-        auto &server = entt::locator<EndstoneServer>::value();
-        if (!objective_->isModifiable()) {
-            server.getLogger().error("Cannot modify read-only score");
-            return;
-        }
+                bool success = false;
+                obj->scoreboard_.board_.modifyPlayerScore(success, *id, obj->objective_, score,
+                                                          PlayerScoreSetFunction::Set);
 
-        bool success = false;
-        objective_->scoreboard_.board_.modifyPlayerScore(success, id, objective_->objective_, score,
-                                                         PlayerScoreSetFunction::Set);
-        if (!success) {
-            server.getLogger().error("Cannot modify score");
-        }
-    }
+                if (!success) {
+                    return nonstd::make_unexpected(make_error("Unable to modify score."));
+                }
+                return {};
+            });
+        });
+    });
 }
 
-bool EndstoneScore::isScoreSet() const
+Result<bool> EndstoneScore::isScoreSet() const
 {
-    if (objective_->checkState()) {
-        const auto &id = getScoreboardId();
-        return id.isValid() && objective_->objective_.hasScore(id);
-    }
-    return false;
+    return objective_->checkState().and_then([&](const auto *obj) -> Result<bool> {
+        return getScoreboardId().and_then(
+            [&](const auto *id) -> Result<bool> { return id->isValid() && obj->objective_.hasScore(*id); });
+    });
 }
 
 Objective &EndstoneScore::getObjective() const
@@ -86,20 +86,17 @@ Scoreboard &EndstoneScore::getScoreboard() const
     return objective_->getScoreboard();
 }
 
-const ScoreboardId &EndstoneScore::getScoreboardId() const
+Result<const ScoreboardId *> EndstoneScore::getScoreboardId() const
 {
-    if (objective_->checkState()) {
-        return objective_->scoreboard_.getScoreboardId(entry_);
-    }
-    return ScoreboardId::INVALID;
+    return objective_->checkState().and_then(
+        [this](const auto *obj) -> Result<const ScoreboardId *> { return &obj->scoreboard_.getScoreboardId(entry_); });
 }
 
-const ScoreboardId &EndstoneScore::getOrCreateScoreboardId()
+Result<const ScoreboardId *> EndstoneScore::getOrCreateScoreboardId()
 {
-    if (objective_->checkState()) {
-        return objective_->scoreboard_.getOrCreateScoreboardId(entry_);
-    }
-    return ScoreboardId::INVALID;
+    return objective_->checkState().and_then([this](const auto *obj) -> Result<const ScoreboardId *> {
+        return &obj->scoreboard_.getOrCreateScoreboardId(entry_);
+    });
 }
 
 }  // namespace endstone::detail
