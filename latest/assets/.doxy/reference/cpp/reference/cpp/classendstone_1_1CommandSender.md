@@ -321,7 +321,7 @@ virtual void endstone::CommandSender::sendErrorMessage (
 **Parameters:**
 
 
-* `message` Error message to be displayed 
+* `message` [**Error**](classendstone_1_1Error.md) message to be displayed 
 
 
 

@@ -72,6 +72,8 @@
 
 ## e
 
+* [**Error**](classendstone_1_1Error.md)
+([**endstone**](namespaceendstone.md))
 * [**Event**](classendstone_1_1Event.md)
 ([**endstone**](namespaceendstone.md))
 * [**EventHandler**](classendstone_1_1EventHandler.md)

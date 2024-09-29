@@ -60,6 +60,7 @@
 ## r
 
 * **RenderType** ([**endstone**](namespaceendstone.md))
+* **Result** ([**endstone**](namespaceendstone.md))
 
 
 ## s

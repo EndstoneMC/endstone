@@ -18,6 +18,11 @@
 * **PermissionRemovedExecutor** ([**endstone**](namespaceendstone.md))
 
 
+## r
+
+* **Result** ([**endstone**](namespaceendstone.md))
+
+
 ## s
 
 * **ScoreEntry** ([**endstone**](namespaceendstone.md))

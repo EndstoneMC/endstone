@@ -331,6 +331,13 @@
     <member refid="classendstone_1_1Dropdown_1ab9ff1b4c75b981ef0fc838bcba8f03fb" kind="function"><name>getDefaultIndex</name></member>
     <member refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" kind="function"><name>setDefaultIndex</name></member>
   </compound>
+  <compound refid="classendstone_1_1Error" kind="class"><name>endstone::Error</name>
+    <member refid="classendstone_1_1Error_1a108fe2e1ee8af548ab0ea0381bc81982" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1Error_1a1a72fb2a478376b9cb78a55fbb1502ed" kind="variable"><name>stack_trace_</name></member>
+    <member refid="classendstone_1_1Error_1af611da345686deb7c2a012faec27ac49" kind="function"><name>Error</name></member>
+    <member refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" kind="function"><name>getMessage</name></member>
+    <member refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" kind="function"><name>getStackTrace</name></member>
+  </compound>
   <compound refid="classendstone_1_1Event" kind="class"><name>endstone::Event</name>
     <member refid="classendstone_1_1Event_1a17c460fb3a1fa2b8b8f60a0744c0ab89" kind="variable"><name>async_</name></member>
     <member refid="classendstone_1_1Event_1a5f9dfb12b76c9d6b46a42fb4238576f0" kind="variable"><name>cancelled_</name></member>
@@ -518,20 +525,21 @@
   </compound>
   <compound refid="classendstone_1_1Objective" kind="class"><name>endstone::Objective</name>
     <member refid="classendstone_1_1Objective_1aa8fe81958a62274b81fe7d9d8ff515fd" kind="function"><name>~Objective</name></member>
-    <member refid="classendstone_1_1Objective_1a65fbf00ed3948df90e71f629a4445528" kind="function"><name>getName</name></member>
-    <member refid="classendstone_1_1Objective_1aca819a25cbcec968f0a20d56fe7d8919" kind="function"><name>getDisplayName</name></member>
-    <member refid="classendstone_1_1Objective_1aef9a2e958f08540ef6c2f0c8bfc6663d" kind="function"><name>setDisplayName</name></member>
-    <member refid="classendstone_1_1Objective_1abdbe48ffec8d1ef2aef0ce347cbf0727" kind="function"><name>getCriteria</name></member>
-    <member refid="classendstone_1_1Objective_1abfd716f0de3c85f04700f06f4eb48a9a" kind="function"><name>isModifiable</name></member>
+    <member refid="classendstone_1_1Objective_1aff021ca010a2fb11fee690287dfa75a8" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1Objective_1a9063cb6f454ab8b1401432b11d06ef20" kind="function"><name>getDisplayName</name></member>
+    <member refid="classendstone_1_1Objective_1ae52c4ee3ccf4131d348b9e45d51da12f" kind="function"><name>setDisplayName</name></member>
+    <member refid="classendstone_1_1Objective_1a2e3775f6d975e0439fbea6efa4323ef8" kind="function"><name>getCriteria</name></member>
+    <member refid="classendstone_1_1Objective_1aee144759caf41143b2cf220bb3ce46e6" kind="function"><name>isModifiable</name></member>
     <member refid="classendstone_1_1Objective_1a7951f05df88d99ccab006e536024c554" kind="function"><name>getScoreboard</name></member>
-    <member refid="classendstone_1_1Objective_1aa121126c45b531b856e831ad2aa77722" kind="function"><name>unregister</name></member>
-    <member refid="classendstone_1_1Objective_1a3c685f112273da1b269825fa16f1c4d7" kind="function"><name>getDisplaySlot</name></member>
-    <member refid="classendstone_1_1Objective_1a61a8112003db94a2301031fb111a5920" kind="function"><name>getSortOrder</name></member>
-    <member refid="classendstone_1_1Objective_1a2d69ba72027b6c837d46f668fbd36d8d" kind="function"><name>setDisplay</name></member>
-    <member refid="classendstone_1_1Objective_1a62669bd4b8e423aa0d8842b6e338f335" kind="function"><name>setDisplay</name></member>
-    <member refid="classendstone_1_1Objective_1a830e20a8ccef64f51dda91594b68f474" kind="function"><name>getRenderType</name></member>
-    <member refid="classendstone_1_1Objective_1a6a4869abea6ce40be772c89daafd4bf8" kind="function"><name>setRenderType</name></member>
-    <member refid="classendstone_1_1Objective_1a3ec23aff7926110841fb76737d97cd72" kind="function"><name>getScore</name></member>
+    <member refid="classendstone_1_1Objective_1a218f638cc46edb3c49224ed1c9c1823a" kind="function"><name>unregister</name></member>
+    <member refid="classendstone_1_1Objective_1a05742d6fde25b2bf3301b9653f8cc4d8" kind="function"><name>isDisplayed</name></member>
+    <member refid="classendstone_1_1Objective_1a3cef31608047ed28dddd4b42d4fdd914" kind="function"><name>getDisplaySlot</name></member>
+    <member refid="classendstone_1_1Objective_1abf2979811a5890af453e0b66b947fc5e" kind="function"><name>getSortOrder</name></member>
+    <member refid="classendstone_1_1Objective_1a868a131e4ee63ae6b57c5c7ebd2b2d66" kind="function"><name>setDisplay</name></member>
+    <member refid="classendstone_1_1Objective_1a43680d97210bfad10bddaaac23e8e10a" kind="function"><name>setDisplay</name></member>
+    <member refid="classendstone_1_1Objective_1a299a66313c76160ccdae1d8009539d45" kind="function"><name>getRenderType</name></member>
+    <member refid="classendstone_1_1Objective_1a30a800f84498171557551309627642fa" kind="function"><name>setRenderType</name></member>
+    <member refid="classendstone_1_1Objective_1a37e6e47dbde17f3ba11f6a8434a2a675" kind="function"><name>getScore</name></member>
     <member refid="classendstone_1_1Objective_1a8a41679213a22450c756fd1c14edbc36" kind="function"><name>operator==</name></member>
     <member refid="classendstone_1_1Objective_1abfd8c61ab066baec27ba92445cc6ce3b" kind="function"><name>operator!=</name></member>
   </compound>
@@ -1287,6 +1295,7 @@
     <member refid="permission__attachment_8h_1afe5c52ae8db67deff2df8c157cd1c71e" kind="typedef"><name>PermissionRemovedExecutor</name></member>
     <member refid="task_8h_1ae2ff6d706eb4d7bdf8062917bb90ac29" kind="typedef"><name>TaskId</name></member>
     <member refid="score__entry_8h_1a6d9b2d7c129a48a5e7dea2125d37e94d" kind="typedef"><name>ScoreEntry</name></member>
+    <member refid="result_8h_1a4af084d432127e336ffec03d016a299a" kind="typedef"><name>Result</name></member>
     <member refid="endstone_8h_1a653e5211ad2fdddf9d08c7353381631d" kind="function"><name>overloaded</name></member>
     <member refid="uuid_8h_1ad7d0fbae7e1dd31cae1c84965a2f65a8" kind="function"><name>operator==</name></member>
     <member refid="uuid_8h_1ac40f4f96efb610d56f90c6541fc8b400" kind="function"><name>operator&lt;</name></member>
@@ -1512,6 +1521,10 @@
   <compound refid="skin_8h" kind="file"><name>skin.h</name>
   </compound>
   <compound refid="translatable_8h" kind="file"><name>translatable.h</name>
+  </compound>
+  <compound refid="error_8h" kind="file"><name>error.h</name>
+  </compound>
+  <compound refid="result_8h" kind="file"><name>result.h</name>
   </compound>
   <compound refid="socket__address_8h" kind="file"><name>socket_address.h</name>
   </compound>

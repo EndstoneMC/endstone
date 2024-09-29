@@ -77,6 +77,7 @@
 ## e
 
 * **execute** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
+* **Error** ([**endstone::Error**](classendstone_1_1Error.md))
 * **Event** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::ServerEvent**](classendstone_1_1ServerEvent.md))
 * **EventHandler** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **error** ([**endstone::Logger**](classendstone_1_1Logger.md))
@@ -129,7 +130,7 @@
 * **getProgress** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getStyle** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **getTitle** ([**endstone::BossBar**](classendstone_1_1BossBar.md), [**endstone::Form**](classendstone_1_1Form.md))
-* **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
+* **getMessage** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md), [**endstone::Error**](classendstone_1_1Error.md), [**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **getRecipients** ([**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md))
 * **getAliases** ([**endstone::Command**](classendstone_1_1Command.md))
 * **getDescription** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
@@ -143,6 +144,7 @@
 * **getDefaultIndex** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **getLabel** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::Slider**](classendstone_1_1Slider.md), [**endstone::TextInput**](classendstone_1_1TextInput.md), [**endstone::Toggle**](classendstone_1_1Toggle.md))
 * **getOptions** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **getStackTrace** ([**endstone::Error**](classendstone_1_1Error.md))
 * **getEventType** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **getPlugin** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md), [**endstone::PluginCommand**](classendstone_1_1PluginCommand.md), [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md), [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPriority** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
@@ -306,6 +308,7 @@
 * **info** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isEnabledFor** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isGliding** ([**endstone::Mob**](classendstone_1_1Mob.md))
+* **isDisplayed** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **isModifiable** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **isOp** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **isPermissionSet** ([**endstone::Permissible**](classendstone_1_1Permissible.md))

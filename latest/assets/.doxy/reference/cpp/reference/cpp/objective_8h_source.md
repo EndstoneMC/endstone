@@ -28,6 +28,7 @@
 
 #include "endstone/scoreboard/objective_sort_order.h"
 #include "endstone/scoreboard/score.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -37,33 +38,35 @@ class Objective {
 public:
     virtual ~Objective() = default;
 
-    [[nodiscard]] virtual std::optional<std::string> getName() const = 0;
+    [[nodiscard]] virtual Result<std::string> getName() const = 0;
 
-    [[nodiscard]] virtual std::optional<std::string> getDisplayName() const = 0;
+    [[nodiscard]] virtual Result<std::string> getDisplayName() const = 0;
 
-    virtual void setDisplayName(std::string display_name) = 0;
+    virtual Result<void> setDisplayName(std::string display_name) = 0;
 
-    [[nodiscard]] virtual const Criteria *getCriteria() const = 0;
+    [[nodiscard]] virtual Result<const Criteria *> getCriteria() const = 0;
 
-    [[nodiscard]] virtual bool isModifiable() const = 0;
+    [[nodiscard]] virtual Result<bool> isModifiable() const = 0;
 
     [[nodiscard]] virtual Scoreboard &getScoreboard() const = 0;
 
-    virtual void unregister() const = 0;
+    [[nodiscard]] virtual Result<void> unregister() const = 0;
 
-    [[nodiscard]] virtual std::optional<DisplaySlot> getDisplaySlot() const = 0;
+    [[nodiscard]] virtual Result<bool> isDisplayed() const = 0;
 
-    [[nodiscard]] virtual std::optional<ObjectiveSortOrder> getSortOrder() const = 0;
+    [[nodiscard]] virtual Result<DisplaySlot> getDisplaySlot() const = 0;
 
-    virtual void setDisplay(std::optional<DisplaySlot> slot) = 0;
+    [[nodiscard]] virtual Result<ObjectiveSortOrder> getSortOrder() const = 0;
 
-    virtual void setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) = 0;
+    virtual Result<void> setDisplay(std::optional<DisplaySlot> slot) = 0;
 
-    [[nodiscard]] virtual std::optional<RenderType> getRenderType() const = 0;
+    virtual Result<void> setDisplay(std::optional<DisplaySlot> slot, ObjectiveSortOrder order) = 0;
 
-    virtual void setRenderType(RenderType render_type) = 0;
+    [[nodiscard]] virtual Result<RenderType> getRenderType() const = 0;
 
-    [[nodiscard]] virtual std::unique_ptr<Score> getScore(ScoreEntry entry) const = 0;
+    virtual Result<void> setRenderType(RenderType render_type) = 0;
+
+    [[nodiscard]] virtual Result<std::unique_ptr<Score>> getScore(ScoreEntry entry) const = 0;
 
     virtual bool operator==(const Objective &other) const = 0;
     virtual bool operator!=(const Objective &other) const = 0;

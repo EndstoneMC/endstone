@@ -161,7 +161,7 @@
 <parametername>message</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Error message to be displayed </para>
+<para><ref refid="classendstone_1_1Error" kindref="compound">Error</ref> message to be displayed </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
