@@ -176,6 +176,7 @@ class EndstoneRecipe(ConanFile):
             "base64::base64",
             "boost::boost",
             "concurrentqueue::concurrentqueue",
+            "cpptrace::cpptrace",
             # "entt::entt",
             "glm::glm",
             "magic_enum::magic_enum",
@@ -204,7 +205,6 @@ class EndstoneRecipe(ConanFile):
         self.cpp_info.components["runtime"].requires = [
             "core",
             "funchook::funchook",
-            "cpptrace::cpptrace",
         ]
         if self._devtools_enabled:
             self.cpp_info.components["runtime"].requires.extend(["devtools"])

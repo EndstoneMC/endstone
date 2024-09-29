@@ -91,8 +91,8 @@ file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_cor
 add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
-        EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json pybind11::embed
-        spdlog::spdlog tomlplusplus::tomlplusplus)
+        cpptrace::cpptrace EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
+        pybind11::embed spdlog::spdlog tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
@@ -134,7 +134,7 @@ endif ()
 file(GLOB_RECURSE ENDSTONE_RUNTIME_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_runtime/*.cpp")
 add_library(endstone_runtime SHARED ${ENDSTONE_RUNTIME_SOURCE_FILES})
 add_library(endstone::runtime ALIAS endstone_runtime)
-target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook cpptrace::cpptrace)
+target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
 if (ENDSTONE_DEVTOOLS_ENABLED)
     target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
 endif ()
