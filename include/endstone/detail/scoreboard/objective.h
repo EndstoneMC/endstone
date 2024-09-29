@@ -38,6 +38,7 @@ public:
     [[nodiscard]] Result<bool> isModifiable() const override;
     [[nodiscard]] Scoreboard &getScoreboard() const override;
     [[nodiscard]] Result<void> unregister() const override;
+    [[nodiscard]] Result<bool> isDisplayed() const override;
     [[nodiscard]] Result<DisplaySlot> getDisplaySlot() const override;
     [[nodiscard]] Result<ObjectiveSortOrder> getSortOrder() const override;
     Result<void> setDisplay(std::optional<DisplaySlot> slot) override;

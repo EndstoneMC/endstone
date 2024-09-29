@@ -79,6 +79,13 @@ public:
     [[nodiscard]] virtual Result<void> unregister() const = 0;
 
     /**
+     * @brief Gets if the objective is currently displayed in a slot.
+     *
+     * @return true if the objective is displayed
+     */
+    [[nodiscard]] virtual Result<bool> isDisplayed() const = 0;
+
+    /**
      * @brief Gets the display slot this objective is displayed at.
      *
      * @return the display slot for this objective

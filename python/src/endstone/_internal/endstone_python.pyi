@@ -1382,9 +1382,14 @@ class Objective:
     def display_name(self, arg1: str) -> None:
         ...
     @property
-    def display_slot(self) -> DisplaySlot:
+    def display_slot(self) -> DisplaySlot | None:
         """
         Gets the display slot this objective is displayed at
+        """
+    @property
+    def is_displayed(self) -> bool:
+        """
+        Gets if the objective is currently displayed in a slot.
         """
     @property
     def is_modifiable(self) -> bool:
@@ -1410,7 +1415,7 @@ class Objective:
         Gets the scoreboard to which this objective is attached
         """
     @property
-    def sort_order(self) -> ObjectiveSortOrder:
+    def sort_order(self) -> ObjectiveSortOrder | None:
         """
         Gets and sets the sort order for this objective
         """

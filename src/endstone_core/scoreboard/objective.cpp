@@ -84,6 +84,20 @@ Result<void> EndstoneObjective::unregister() const
         .or_else([](const auto &err) -> Result<void> { return nonstd::make_unexpected(err); });
 }
 
+Result<bool> EndstoneObjective::isDisplayed() const
+{
+    bool displayed = false;
+    return forEachDisplayObjective([&](auto /*slot*/, const auto &display) -> bool {
+               if (&display.getObjective() == &objective_) {
+                   displayed = true;
+                   return false;
+               }
+               return true;
+           })
+        .and_then([&displayed]() -> Result<bool> { return displayed; })
+        .or_else([](const auto &err) -> Result<bool> { return nonstd::make_unexpected(err); });
+}
+
 Result<DisplaySlot> EndstoneObjective::getDisplaySlot() const
 {
     std::optional<DisplaySlot> result;
