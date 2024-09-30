@@ -31,14 +31,14 @@ PythonPluginLoader::PythonPluginLoader(Server &server) : PluginLoader(server)
     }
     catch (std::exception &e) {
         server.getLogger().error("Error occurred when trying to register a plugin loader: {}", e.what());
-        throw e;
+        throw;
     }
 }
 
 PythonPluginLoader::~PythonPluginLoader()
 {
     py::gil_scoped_acquire gil{};
-    obj_.dec_ref();
+    (void)obj_.dec_ref();
     obj_.release();
 }
 

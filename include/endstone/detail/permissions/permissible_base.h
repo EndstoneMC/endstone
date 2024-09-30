@@ -18,6 +18,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <nonstd/expected.hpp>
+
 #include "endstone/permissions/permissible.h"
 #include "endstone/permissions/permission_attachment.h"
 #include "endstone/permissions/permission_attachment_info.h"
@@ -38,9 +40,9 @@ public:
     [[nodiscard]] bool isPermissionSet(const Permission &perm) const override;
     [[nodiscard]] bool hasPermission(std::string name) const override;
     [[nodiscard]] bool hasPermission(const Permission &perm) const override;
-    PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) override;
-    PermissionAttachment *addAttachment(Plugin &plugin) override;
-    bool removeAttachment(PermissionAttachment &attachment) override;
+    Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) override;
+    Result<PermissionAttachment *> addAttachment(Plugin &plugin) override;
+    Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
     [[nodiscard]] CommandSender *asCommandSender() const override;

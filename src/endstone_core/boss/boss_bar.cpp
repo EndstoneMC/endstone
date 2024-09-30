@@ -17,6 +17,7 @@
 #include "bedrock/network/packet.h"
 #include "bedrock/network/packet/boss_event_packet.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
 
@@ -85,17 +86,16 @@ float EndstoneBossBar::getProgress() const
     return progress_;
 }
 
-void EndstoneBossBar::setProgress(float progress)
+Result<void> EndstoneBossBar::setProgress(float progress)
 {
     if (progress < 0.0F || progress > 1.0F) {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        server.getLogger().error("Progress must be between 0.0 and 1.0");
-        return;
+        return nonstd::make_unexpected(make_error("Progress must be between 0.0 and 1.0"));
     }
     if (progress_ != progress) {
         progress_ = progress;
         broadcast(BossEventUpdateType::UpdatePercent);
     }
+    return {};
 }
 
 bool EndstoneBossBar::isVisible() const

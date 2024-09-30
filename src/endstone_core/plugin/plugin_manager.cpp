@@ -23,6 +23,7 @@
 #include <vector>
 
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/util/error.h"
 #include "endstone/event/event.h"
 #include "endstone/event/event_handler.h"
 #include "endstone/event/handler_list.h"
@@ -205,26 +206,29 @@ void EndstonePluginManager::callEvent(Event &event)
     }
 }
 
-void EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
-                                          EventPriority priority, Plugin &plugin, bool ignore_cancelled)
+Result<void> EndstonePluginManager::registerEvent(std::string event, std::function<void(Event &)> executor,
+                                                  EventPriority priority, Plugin &plugin, bool ignore_cancelled)
 {
     if (!plugin.isEnabled()) {
-        server_.getLogger().error("Plugin {} attempted to register listener for event {} while not enabled.",
-                                  plugin.getDescription().getFullName(), event);
-        return;
+        return nonstd::make_unexpected(
+            make_error("Plugin {} attempted to register listener for event {} while not enabled.",
+                       plugin.getDescription().getFullName(), event));
     }
 
     auto &handler_list = event_handlers_.emplace(event, event).first->second;
-    if (handler_list.registerHandler(
-            std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled)) == nullptr) {
-        server_.getLogger().error("Plugin {} failed to register listener for event {}.", event);
+    const auto *handler = handler_list.registerHandler(
+        std::make_unique<EventHandler>(event, executor, priority, plugin, ignore_cancelled));
+    if (!handler) {
+        return nonstd::make_unexpected(
+            make_error("Plugin {} failed to register listener for event {}: Handler type mismatch", event));
     }
+    return {};
 }
 
 Permission *EndstonePluginManager::getPermission(std::string name) const
 {
     std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c) { return std::tolower(c); });
-    auto it = permissions_.find(name);
+    const auto it = permissions_.find(name);
     if (it == permissions_.end()) {
         return nullptr;
     }

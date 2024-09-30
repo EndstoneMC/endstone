@@ -18,7 +18,7 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
-#include "endstone/util/error.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -90,7 +90,7 @@ public:
      * @param value Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
     /**
      * Adds a new empty PermissionAttachment to this object
@@ -98,7 +98,7 @@ public:
      * @param plugin Plugin responsible for this attachment, may not be null or disabled
      * @return The PermissionAttachment that was just created
      */
-    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
+    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin) = 0;
 
     /**
      * Removes the given PermissionAttachment from this object
@@ -106,7 +106,7 @@ public:
      * @param attachment Attachment to remove
      * @return true if the specified attachment was removed successfully, false when it isn't part of this object
      */
-    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
 
     /**
      * Recalculates the permissions for this object, if the attachments have changed values.

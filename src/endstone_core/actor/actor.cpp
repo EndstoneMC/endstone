@@ -66,17 +66,17 @@ bool EndstoneActor::hasPermission(const Permission &perm) const
     return getPermissibleBase().hasPermission(perm);
 }
 
-PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> EndstoneActor::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return getPermissibleBase().addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *EndstoneActor::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> EndstoneActor::addAttachment(Plugin &plugin)
 {
     return getPermissibleBase().addAttachment(plugin);
 }
 
-bool EndstoneActor::removeAttachment(PermissionAttachment &attachment)
+Result<void> EndstoneActor::removeAttachment(PermissionAttachment &attachment)
 {
     return getPermissibleBase().removeAttachment(attachment);
 }

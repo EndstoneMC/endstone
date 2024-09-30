@@ -39,6 +39,7 @@
 #include "endstone/detail/form/form_codec.h"
 #include "endstone/detail/network/packet_adapter.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 #include "endstone/detail/util/uuid.h"
 #include "endstone/form/action_form.h"
 #include "endstone/form/message_form.h"
@@ -139,17 +140,17 @@ bool EndstonePlayer::hasPermission(const Permission &perm) const
     return perm_.hasPermission(perm);
 }
 
-PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return perm_.addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *EndstonePlayer::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin)
 {
     return perm_.addAttachment(plugin);
 }
 
-bool EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
+Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
 {
     return perm_.removeAttachment(attachment);
 }
@@ -313,13 +314,13 @@ float EndstonePlayer::getExpProgress() const
     return getHandle().getLevelProgress();
 }
 
-void EndstonePlayer::setExpProgress(float progress)
+Result<void> EndstonePlayer::setExpProgress(float progress)
 {
     if (progress < 0.0 || progress > 1.0) {
-        server_.getLogger().error("Experience progress must be between 0.0 and 1.0 ({})", progress);
-        return;
+        return nonstd::make_unexpected(make_error("Experience progress must be between 0.0 and 1.0 ({})", progress));
     }
     getHandle().getMutableAttribute("minecraft:player.experience").setCurrentValue(progress);
+    return {};
 }
 
 int EndstonePlayer::getExpLevel() const
@@ -327,13 +328,13 @@ int EndstonePlayer::getExpLevel() const
     return getHandle().getPlayerLevel();
 }
 
-void EndstonePlayer::setExpLevel(int level)
+Result<void> EndstonePlayer::setExpLevel(int level)
 {
     if (level < 0) {
-        server_.getLogger().error("Experience level must not be negative ({})", level);
-        return;
+        return nonstd::make_unexpected(make_error("Experience level must not be negative ({})", level));
     }
     giveExpLevels(level - getExpLevel());
+    return {};
 }
 
 int EndstonePlayer::getTotalExp() const
@@ -364,15 +365,15 @@ bool EndstonePlayer::isFlying() const
     return getHandle().isFlying();
 }
 
-void EndstonePlayer::setFlying(bool value)
+Result<void> EndstonePlayer::setFlying(bool value)
 {
     if (!getAllowFlight()) {
-        server_.getLogger().error("Player {} is not allowed to fly.", getName());
-        return;
+        return nonstd::make_unexpected(make_error("Player {} is not allowed to fly.", getName()));
     }
 
     getHandle().getAbilities().setAbility(AbilitiesIndex::Flying, value);
     updateAbilities();
+    return {};
 }
 
 float EndstonePlayer::getFlySpeed() const

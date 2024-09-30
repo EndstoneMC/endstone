@@ -51,8 +51,12 @@ void EndstoneBlock::setType(std::string type, bool apply_physics)
 {
     using detail::EndstoneServer;
     if (checkState()) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        setData(server.createBlockData(type), apply_physics);
+        const auto &server = entt::locator<EndstoneServer>::value();
+        server.createBlockData(type).and_then([&](auto &block_data) -> Result<void> {
+            // TODO: propagate the error from createBlockData
+            setData(block_data, apply_physics);
+            return {};
+        });
     }
 }
 

@@ -133,7 +133,7 @@ public:
      *
      * @param progress New experience progress
      */
-    virtual void setExpProgress(float progress) = 0;
+    virtual Result<void> setExpProgress(float progress) = 0;
 
     /**
      * @brief Gets the players current experience level
@@ -147,7 +147,7 @@ public:
      *
      * @param level New experience level
      */
-    virtual void setExpLevel(int level) = 0;
+    virtual Result<void> setExpLevel(int level) = 0;
 
     /**
      * @brief Gets the players total experience points.
@@ -185,7 +185,7 @@ public:
      *
      * @param value True to fly.
      */
-    virtual void setFlying(bool value) = 0;
+    virtual Result<void> setFlying(bool value) = 0;
 
     /**
      * @brief Gets the current allowed speed that a client can fly.

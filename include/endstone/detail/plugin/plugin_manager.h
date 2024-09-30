@@ -46,8 +46,8 @@ public:
 
     /** Event system */
     void callEvent(Event &event) override;
-    void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority, Plugin &plugin,
-                       bool ignore_cancelled) override;
+    Result<void> registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                               Plugin &plugin, bool ignore_cancelled) override;
 
     /** Permission system */
     [[nodiscard]] Permission *getPermission(std::string name) const override;
@@ -66,7 +66,7 @@ public:
 
 private:
     friend class EndstoneServer;
-    void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path& base_folder);
+    void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(bool op) const;
     Server &server_;

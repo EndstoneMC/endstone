@@ -74,17 +74,18 @@ bool EndstoneConsoleCommandSender::hasPermission(const Permission &perm) const
     return ServerCommandSender::hasPermission(perm);
 }
 
-PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> EndstoneConsoleCommandSender::addAttachment(Plugin &plugin, const std::string &name,
+                                                                           bool value)
 {
     return ServerCommandSender::addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *EndstoneConsoleCommandSender::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> EndstoneConsoleCommandSender::addAttachment(Plugin &plugin)
 {
     return ServerCommandSender::addAttachment(plugin);
 }
 
-bool EndstoneConsoleCommandSender::removeAttachment(PermissionAttachment &attachment)
+Result<void> EndstoneConsoleCommandSender::removeAttachment(PermissionAttachment &attachment)
 {
     return ServerCommandSender::removeAttachment(attachment);
 }

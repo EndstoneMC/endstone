@@ -16,9 +16,8 @@
 
 #include <memory>
 
-#include <entt/entt.hpp>
-
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
 #include "endstone/permissions/permission.h"
 #include "endstone/permissions/permission_attachment_info.h"
 
@@ -93,51 +92,50 @@ bool PermissibleBase::hasPermission(PermissionDefault default_value, bool op)
     }
 }
 
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> PermissibleBase::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    auto *result = addAttachment(plugin);
+    if (name.empty()) {
+        return nonstd::make_unexpected(make_error("Permission name cannot be empty"));
+    }
+
+    auto result = addAttachment(plugin);
     if (result) {
-        result->setPermission(name, value);
+        result.value()->setPermission(name, value);
         recalculatePermissions();
     }
 
     return result;
 }
 
-PermissionAttachment *PermissibleBase::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> PermissibleBase::addAttachment(Plugin &plugin)
 {
     if (!plugin.isEnabled()) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        server.getLogger().error("Could not add PermissionAttachment: Plugin {} is disabled",
-                                 plugin.getDescription().getFullName());
-        return nullptr;
+        return nonstd::make_unexpected(make_error("Could not add PermissionAttachment: Plugin {} is disabled",
+                                                  plugin.getDescription().getFullName()));
     }
 
-    auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
+    const auto &it = attachments_.emplace_back(std::make_unique<PermissionAttachment>(plugin, parent_));
     auto *result = it.get();
     recalculatePermissions();
     return result;
 }
 
-bool PermissibleBase::removeAttachment(PermissionAttachment &attachment)
+Result<void> PermissibleBase::removeAttachment(PermissionAttachment &attachment)
 {
-    auto it = std::find_if(attachments_.begin(), attachments_.end(),
-                           [&attachment](const auto &item) { return item.get() == &attachment; });
+    const auto it = std::find_if(attachments_.begin(), attachments_.end(),
+                                 [&attachment](const auto &item) { return item.get() == &attachment; });
 
     if (it != attachments_.end()) {
-        auto callback = it->get()->getRemovalCallback();
-        if (callback) {
+        if (auto callback = it->get()->getRemovalCallback()) {
             callback(attachment);
         }
 
         attachments_.erase(it);
         recalculatePermissions();
-        return true;
+        return {};
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.getLogger().error("Given attachment is not part of Permissible object.");
-    return false;
+    return nonstd::make_unexpected(make_error("Given attachment is not part of Permissible object."));
 }
 
 void PermissibleBase::recalculatePermissions()
@@ -146,7 +144,7 @@ void PermissibleBase::recalculatePermissions()
     auto &plugin_manager = server.getPluginManager();
 
     clearPermissions();
-    auto defaults = plugin_manager.getDefaultPermissions(isOp());
+    const auto defaults = plugin_manager.getDefaultPermissions(isOp());
     plugin_manager.subscribeToDefaultPerms(isOp(), parent_);
 
     for (auto *perm : defaults) {

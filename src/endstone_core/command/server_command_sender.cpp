@@ -51,17 +51,17 @@ bool ServerCommandSender::hasPermission(const Permission &perm) const
     return perm_.hasPermission(perm);
 }
 
-PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return perm_.addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *ServerCommandSender::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin)
 {
     return perm_.addAttachment(plugin);
 }
 
-bool ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
+Result<void> ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
 {
     return perm_.removeAttachment(attachment);
 }

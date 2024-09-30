@@ -135,8 +135,8 @@ public:
      * @param ignore_cancelled Do not call executor if event was already
      *     cancelled
      */
-    virtual void registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
-                               Plugin &plugin, bool ignore_cancelled) = 0;
+    virtual Result<void> registerEvent(std::string event, std::function<void(Event &)> executor, EventPriority priority,
+                                       Plugin &plugin, bool ignore_cancelled) = 0;
 
     /**
      * Gets a Permission from its fully qualified name

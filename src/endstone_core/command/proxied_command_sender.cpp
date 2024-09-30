@@ -14,6 +14,8 @@
 
 #include "endstone/detail/command/proxied_command_sender.h"
 
+#include <nonstd/expected.hpp>
+
 namespace endstone::detail {
 
 EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee)
@@ -50,17 +52,18 @@ bool EndstoneProxiedCommandSender::hasPermission(const Permission &perm) const
     return getCaller().hasPermission(perm);
 }
 
-PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin, const std::string &name,
+                                                                           bool value)
 {
     return getCaller().addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> EndstoneProxiedCommandSender::addAttachment(Plugin &plugin)
 {
     return getCaller().addAttachment(plugin);
 }
 
-bool EndstoneProxiedCommandSender::removeAttachment(PermissionAttachment &attachment)
+Result<void> EndstoneProxiedCommandSender::removeAttachment(PermissionAttachment &attachment)
 {
     return getCaller().removeAttachment(attachment);
 }

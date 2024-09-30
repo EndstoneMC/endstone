@@ -65,7 +65,7 @@ public:
 
     [[nodiscard]] std::vector<Player *> getOnlinePlayers() const override;
     [[nodiscard]] int getMaxPlayers() const override;
-    void setMaxPlayers(int max_players) override;
+    Result<void> setMaxPlayers(int max_players) override;
     [[nodiscard]] Player *getPlayer(endstone::UUID id) const override;
     [[nodiscard]] Player *getPlayer(std::string name) const override;
     [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
@@ -93,8 +93,9 @@ public:
                                                          BarStyle style) const override;
     [[nodiscard]] std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                          std::vector<BarFlag> flags) const override;
-    [[nodiscard]] std::shared_ptr<BlockData> createBlockData(std::string type) const override;
-    [[nodiscard]] std::shared_ptr<BlockData> createBlockData(std::string type, BlockStates block_states) const override;
+    [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const override;
+    [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+                                                                     BlockStates block_states) const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);

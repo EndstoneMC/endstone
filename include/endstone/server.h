@@ -26,6 +26,7 @@
 #include "endstone/logger.h"
 #include "endstone/player.h"
 #include "endstone/scoreboard/scoreboard.h"
+#include "endstone/util/result.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -138,7 +139,7 @@ public:
      *
      * @param max_players The maximum amount of concurrent players
      */
-    virtual void setMaxPlayers(int max_players) = 0;
+    virtual Result<void> setMaxPlayers(int max_players) = 0;
 
     /**
      * @brief Gets the player with the given UUID.
@@ -296,7 +297,7 @@ public:
      * @param type the block type
      * @return new data instance
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const = 0;
 
     /**
      * @brief Creates a new BlockData instance for the specified block type, with all properties initialized to
@@ -306,8 +307,8 @@ public:
      * @param block_states block states, for example {"old_leaf_type":"birch", "persistent_bit":true}
      * @return new data instance
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type,
-                                                                     BlockStates block_states) const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+                                                                             BlockStates block_states) const = 0;
 
     /**
      * @brief Gets the start time of the server.

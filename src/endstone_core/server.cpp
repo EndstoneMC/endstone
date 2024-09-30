@@ -17,8 +17,6 @@
 #include <filesystem>
 #include <memory>
 
-#include <endstone/detail/block/block_data.h>
-
 namespace fs = std::filesystem;
 
 #include <boost/algorithm/string.hpp>
@@ -31,6 +29,7 @@ namespace fs = std::filesystem;
 #include "bedrock/world/scores/server_scoreboard.h"
 #include "endstone/color_format.h"
 #include "endstone/command/plugin_command.h"
+#include "endstone/detail/block/block_data.h"
 #include "endstone/detail/boss/boss_bar.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/command/console_command_sender.h"
@@ -40,6 +39,7 @@ namespace fs = std::filesystem;
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
+#include "endstone/detail/util/error.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
 #include "endstone/plugin/plugin.h"
@@ -214,22 +214,21 @@ int EndstoneServer::getMaxPlayers() const
     return getServerNetworkHandler().max_players_;
 }
 
-void EndstoneServer::setMaxPlayers(int max_players)
+Result<void> EndstoneServer::setMaxPlayers(int max_players)
 {
     if (max_players < 0) {
-        getLogger().error("Unable to set the max number of players to a negative value: {}.", max_players);
-        return;
+        return nonstd::make_unexpected(make_error("Max number of players must not be negative."));
     }
     if (max_players > ENDSTONE_MAX_PLAYERS) {
-        getLogger().warning("Unable to set the max number of players to a value greater than {}.",
-                            ENDSTONE_MAX_PLAYERS);
-        return;
+        return nonstd::make_unexpected(
+            make_error("Max number of players must not exceed the hard limit {}", ENDSTONE_MAX_PLAYERS));
     }
     getServerNetworkHandler().max_players_ = max_players;
     getServerNetworkHandler().updateServerAnnouncement();
+    return {};
 }
 
-Player *EndstoneServer::getPlayer(endstone::UUID id) const
+Player *EndstoneServer::getPlayer(UUID id) const
 {
     auto it = players_.find(id);
     if (it != players_.end()) {
@@ -389,12 +388,12 @@ std::unique_ptr<BossBar> EndstoneServer::createBossBar(std::string title, BarCol
     return std::make_unique<EndstoneBossBar>(std::move(title), color, style, flags);
 }
 
-std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type) const
+Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type) const
 {
     return createBlockData(type, {});
 }
 
-std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
+Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string type, BlockStates block_states) const
 {
     std::unordered_map<std::string, std::variant<int, std::string, bool>> states;
     for (const auto &state : block_states) {
@@ -407,11 +406,10 @@ std::shared_ptr<BlockData> EndstoneServer::createBlockData(std::string type, Blo
     const auto block_descriptor = ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, states);
     const auto *block = block_descriptor.tryGetBlockNoLogging();
     if (!block) {
-        getLogger().error("Block type {} cannot be found in the registry.", type);
-        return nullptr;
+        return nonstd::make_unexpected(make_error("Block type {} cannot be found in the registry.", type));
     }
 
-    return std::make_unique<EndstoneBlockData>(const_cast<::Block &>(*block));
+    return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

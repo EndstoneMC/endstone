@@ -37,7 +37,7 @@ public:
     MOCK_METHOD(endstone::Level *, getLevel, (), (const, override));
     MOCK_METHOD(std::vector<endstone::Player *>, getOnlinePlayers, (), (const, override));
     MOCK_METHOD(int, getMaxPlayers, (), (const, override));
-    MOCK_METHOD(void, setMaxPlayers, (int), (override));
+    MOCK_METHOD(endstone::Result<void>, setMaxPlayers, (int), (override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
     MOCK_METHOD(void, shutdown, (), (override));
@@ -60,9 +60,10 @@ public:
     MOCK_METHOD(std::unique_ptr<endstone::BossBar>, createBossBar,
                 (std::string, endstone::BarColor, endstone::BarStyle, std::vector<endstone::BarFlag>),
                 (const, override));
-    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string), (const, override));
-    MOCK_METHOD(std::shared_ptr<endstone::BlockData>, createBlockData, (std::string, endstone::BlockStates),
+    MOCK_METHOD(endstone::Result<std::shared_ptr<endstone::BlockData>>, createBlockData, (std::string),
                 (const, override));
+    MOCK_METHOD(endstone::Result<std::shared_ptr<endstone::BlockData>>, createBlockData,
+                (std::string, endstone::BlockStates), (const, override));
 };
 
 class MockPlugin : public endstone::Plugin {

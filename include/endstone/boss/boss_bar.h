@@ -20,6 +20,7 @@
 #include "endstone/boss/bar_color.h"
 #include "endstone/boss/bar_flag.h"
 #include "endstone/boss/bar_style.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -97,7 +98,7 @@ public:
      * @brief Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)
      * @param progress the progress of the bar
      */
-    virtual void setProgress(float progress) = 0;
+    virtual Result<void> setProgress(float progress) = 0;
 
     /**
      * @brief Return if the boss bar is displayed to attached players

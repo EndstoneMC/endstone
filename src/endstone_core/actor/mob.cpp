@@ -61,17 +61,17 @@ bool EndstoneMob::hasPermission(const Permission &perm) const
     return EndstoneActor::hasPermission(perm);
 }
 
-PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin, const std::string &name, bool value)
+Result<PermissionAttachment *> EndstoneMob::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
     return EndstoneActor::addAttachment(plugin, name, value);
 }
 
-PermissionAttachment *EndstoneMob::addAttachment(Plugin &plugin)
+Result<PermissionAttachment *> EndstoneMob::addAttachment(Plugin &plugin)
 {
     return EndstoneActor::addAttachment(plugin);
 }
 
-bool EndstoneMob::removeAttachment(PermissionAttachment &attachment)
+Result<void> EndstoneMob::removeAttachment(PermissionAttachment &attachment)
 {
     return EndstoneActor::removeAttachment(attachment);
 }
