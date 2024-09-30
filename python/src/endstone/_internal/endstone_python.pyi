@@ -1531,7 +1531,7 @@ class Permissible:
         """
         Recalculates the permissions.
         """
-    def remove_attachment(self, attachment: PermissionAttachment) -> bool:
+    def remove_attachment(self, attachment: PermissionAttachment) -> None:
         """
         Removes a given PermissionAttachment.
         """

@@ -19,6 +19,7 @@
 #include "endstone/boss/bar_flag.h"
 #include "endstone/boss/bar_style.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/player.h"
 
 namespace py = pybind11;
