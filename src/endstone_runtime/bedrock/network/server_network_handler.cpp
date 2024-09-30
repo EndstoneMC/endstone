@@ -67,14 +67,14 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
     const auto new_player =
         ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::trytLoadPlayer, this, server_player, connection_request);
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstonePlayer();
-    endstone_player.initFromConnectionRequest(&connection_request);
+    const auto endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
+    endstone_player->initFromConnectionRequest(&connection_request);
 
-    endstone::PlayerLoginEvent e{endstone_player};
+    endstone::PlayerLoginEvent e{*endstone_player};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
+        endstone_player->kick(e.getKickMessage());
     }
     return new_player;
 }
@@ -86,14 +86,14 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
     auto &server_player = ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::_createNewPlayer, this, network_id,
                                                       sub_client_connection_request, sub_client_id);
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = server_player.getEndstonePlayer();
-    endstone_player.initFromConnectionRequest(&sub_client_connection_request);
+    const auto endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
+    endstone_player->initFromConnectionRequest(&sub_client_connection_request);
 
-    endstone::PlayerLoginEvent e{endstone_player};
+    endstone::PlayerLoginEvent e{*endstone_player};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
-        endstone_player.kick(e.getKickMessage());
+        endstone_player->kick(e.getKickMessage());
     }
     return server_player;
 }
@@ -101,7 +101,7 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
 void ServerNetworkHandler::_displayGameMessage(const Player &player, ChatEvent &event)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::PlayerChatEvent e{player.getEndstonePlayer(), event.message};
+    endstone::PlayerChatEvent e{*player.getEndstoneActor<EndstonePlayer>(), event.message};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {

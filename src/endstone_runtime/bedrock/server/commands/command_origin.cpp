@@ -23,8 +23,10 @@
 #include "endstone/command/command_sender.h"
 #include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/level/level.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
 
+using endstone::detail::EndstoneActor;
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
@@ -37,14 +39,10 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
         return server.getCommandSender();
     }
     case CommandOriginType::Player: {
-        auto *entity = getEntity();
-        endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
-        return player.shared_from_base<endstone::Player>();
+        return std::static_pointer_cast<endstone::Player>(getEntity()->getEndstoneActor<EndstonePlayer>());
     }
     case CommandOriginType::Entity: {
-        auto *entity = getEntity();
-        endstone::Actor &actor = entity->getEndstoneActor();
-        return actor.shared_from_base<endstone::Actor>();
+        return getEntity()->getEndstoneActor<EndstoneActor>();
     }
     case CommandOriginType::Virtual:
         // TODO(command): we need ProxiedCommandSender, getOrigin will return the callee, getOutputReceiver will return

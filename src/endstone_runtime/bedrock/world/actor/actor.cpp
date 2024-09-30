@@ -35,13 +35,17 @@
 #include "endstone/event/actor/actor_remove_event.h"
 #include "endstone/event/actor/actor_teleport_event.h"
 
+using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneActorComponent;
+using endstone::detail::EndstoneMob;
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 void Actor::remove()
 {
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorRemoveEvent e{getEndstoneActor()};
+        endstone::ActorRemoveEvent e{*getEndstoneActor<EndstoneActor>()};
         server.getPluginManager().callEvent(e);
     }
 
@@ -53,7 +57,7 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
     Vec3 position = pos;
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        auto &actor = getEndstoneActor();
+        auto &actor = *getEndstoneActor<EndstoneActor>();
         endstone::Location to{&actor.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
         endstone::ActorTeleportEvent e{actor, actor.getLocation(), to};
         server.getPluginManager().callEvent(e);
@@ -209,14 +213,8 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
     return nullptr;
 }
 
-std::shared_ptr<endstone::Actor> Actor::getEndstoneActor0() const
+std::shared_ptr<EndstoneActor> Actor::getEndstoneActor0() const
 {
-    using endstone::detail::EndstoneActor;
-    using endstone::detail::EndstoneActorComponent;
-    using endstone::detail::EndstoneMob;
-    using endstone::detail::EndstonePlayer;
-    using endstone::detail::EndstoneServer;
-
     auto &server = entt::locator<EndstoneServer>::value();
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<EndstoneActorComponent>();
@@ -230,11 +228,11 @@ std::shared_ptr<endstone::Actor> Actor::getEndstoneActor0() const
             throw std::runtime_error("Actor has a Player type but isPlayer() returns false.");
         }
         auto *player = static_cast<Player *>(self);
-        component.actor = std::static_pointer_cast<endstone::Player>(EndstonePlayer::create(server, *player));
+        component.actor = EndstonePlayer::create(server, *player);
     }
     else if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
         auto *mob = static_cast<Mob *>(self);
-        component.actor = std::static_pointer_cast<endstone::Mob>(EndstoneMob::create(server, *mob));
+        component.actor = EndstoneMob::create(server, *mob);
     }
     else {
         component.actor = EndstoneActor::create(server, *self);

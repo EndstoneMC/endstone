@@ -23,9 +23,10 @@ namespace endstone::detail {
 
 class EndstoneLevel;
 class EndstoneServer;
+class EndstoneActor;
 
 struct EndstoneActorComponent {
-    std::shared_ptr<Actor> actor;
+    std::shared_ptr<EndstoneActor> actor;
 };
 
 class EndstoneActor : public Actor {

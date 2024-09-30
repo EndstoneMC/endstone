@@ -21,7 +21,10 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/signal_handler.h"
+
+using endstone::detail::EndstonePlayer;
 
 void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>> &ref)
 {
@@ -33,7 +36,8 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
             const StackResultStorageEntity entity(event.player);
             if (const auto *player = static_cast<Player *>(Actor::tryGetFromEntity(entity.getStackRef(), false))) {
                 // Players can be null if they are dead when we receive the event
-                player->getEndstonePlayer().onFormClose(event.form_id, event.form_close_reason);
+                player->getEndstoneActor<EndstonePlayer>()->onFormClose(event.form_id,
+                                                                                          event.form_close_reason);
             }
         },
         [](const Details::ValueOrRef<PlayerFormResponseEvent const> &arg) {
@@ -41,7 +45,8 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
             const StackResultStorageEntity entity(event.player);
             if (const auto *player = static_cast<Player *>(Actor::tryGetFromEntity(entity.getStackRef(), false))) {
                 // Players can be null if they are dead when we receive the event
-                player->getEndstonePlayer().onFormResponse(event.form_id, Json::to_nlohmann(event.form_response));
+                player->getEndstoneActor<EndstonePlayer>()->onFormResponse(
+                    event.form_id, to_nlohmann(event.form_response));
             }
         },
         [](auto &&ignored) {},

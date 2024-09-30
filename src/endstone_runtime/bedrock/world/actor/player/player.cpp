@@ -25,15 +25,16 @@
 #include "endstone/detail/server.h"
 #include "endstone/event/player/player_teleport_event.h"
 
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int entity_type, bool keep_velocity)
 {
     Vec3 position = pos;
-    auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = getEndstonePlayer();
-    endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
-    endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
+    const auto &server = entt::locator<EndstoneServer>::value();
+    const auto player = getEndstoneActor<EndstonePlayer>();
+    const endstone::Location to{&player->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+    endstone::PlayerTeleportEvent e{*player, player->getLocation(), to};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
@@ -57,14 +58,9 @@ const std::string &Player::getName() const
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    auto &player = getEndstonePlayer();
-    player.recalculatePermissions();
-    player.updateCommands();
-}
-
-endstone::detail::EndstonePlayer &Player::getEndstonePlayer() const
-{
-    return static_cast<endstone::detail::EndstonePlayer &>(getEndstoneActor());
+    const auto player = getEndstoneActor<EndstonePlayer>();
+    player->recalculatePermissions();
+    player->updateCommands();
 }
 
 GameType Player::getPlayerGameType() const

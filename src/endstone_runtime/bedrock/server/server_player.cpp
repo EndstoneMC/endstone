@@ -29,6 +29,7 @@
 #include "endstone/event/player/player_quit_event.h"
 #include "endstone/translatable.h"
 
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 void ServerPlayer::die(const ActorDamageSource &source)
@@ -41,7 +42,7 @@ void ServerPlayer::die(const ActorDamageSource &source)
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::Player &endstone_player = getEndstonePlayer();
+    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
     endstone_player.closeForm();
 
     // Do a server side translation for logging
@@ -82,7 +83,7 @@ void ServerPlayer::setLocalPlayerAsInitialized()
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::setLocalPlayerAsInitialized, this);
 
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = getEndstonePlayer();
+    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
                               {endstone_player.getName()}};
@@ -108,7 +109,7 @@ void ServerPlayer::setLocalPlayerAsInitialized()
 void ServerPlayer::disconnect()
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = getEndstonePlayer();
+    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
     endstone_player.disconnect();
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};

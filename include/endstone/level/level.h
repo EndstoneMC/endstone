@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "endstone/actor/actor.h"
@@ -39,7 +40,7 @@ public:
      *
      * @return A List of all actors currently residing in this level
      */
-    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Actor>> getActors() const = 0;
 
     /**
      * @brief Gets the relative in-game time of this level.

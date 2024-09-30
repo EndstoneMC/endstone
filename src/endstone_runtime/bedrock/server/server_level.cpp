@@ -18,6 +18,7 @@
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_spawn_event.h"
 
+using endstone::detail::EndstoneActor;
 using endstone::detail::EndstoneServer;
 
 void ServerLevel::_postReloadActorAdded(Actor &actor)
@@ -29,7 +30,7 @@ void ServerLevel::_postReloadActorAdded(Actor &actor)
     }
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
+    endstone::ActorSpawnEvent e{*actor.getEndstoneActor<EndstoneActor>()};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {

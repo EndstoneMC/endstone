@@ -43,9 +43,9 @@ std::string EndstoneLevel::getName() const
     return level_.getLevelId();
 }
 
-std::vector<Actor *> EndstoneLevel::getActors() const
+std::vector<std::shared_ptr<Actor>> EndstoneLevel::getActors() const
 {
-    std::vector<Actor *> result;
+    std::vector<std::shared_ptr<Actor>> result;
     for (const auto &e : level_.getEntities()) {
         if (!e.hasValue()) {
             continue;
@@ -61,7 +61,7 @@ std::vector<Actor *> EndstoneLevel::getActors() const
             continue;
         }
 
-        result.push_back(&actor->getEndstoneActor());
+        result.push_back(actor->getEndstoneActor<Actor>());
     }
     return result;
 }

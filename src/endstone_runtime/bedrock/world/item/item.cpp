@@ -27,6 +27,7 @@
 using endstone::detail::EndstoneBlock;
 using endstone::detail::EndstoneBlockFace;
 using endstone::detail::EndstoneBlockState;
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, BlockSource const &block_source,
@@ -35,7 +36,7 @@ CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, Bl
 {
     if (actor.isPlayer()) {
         const auto &server = entt::locator<EndstoneServer>::value();
-        auto &player = static_cast<const Player &>(actor).getEndstonePlayer();
+        auto &player = *actor.getEndstoneActor<EndstonePlayer>();
         auto &dimension = block_source.getDimension().getEndstoneDimension();
 
         const auto block_face = static_cast<endstone::BlockFace>(face);

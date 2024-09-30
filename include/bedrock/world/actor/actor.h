@@ -308,7 +308,7 @@ protected:
     BuiltInActorComponents built_in_components_;                                            // +624
     // ...
 
-    std::shared_ptr<endstone::Actor> getEndstoneActor0() const;
+    std::shared_ptr<endstone::detail::EndstoneActor> getEndstoneActor0() const;
 
 public:
     template <typename T>

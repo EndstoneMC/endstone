@@ -73,6 +73,4 @@ protected:
 public:
     [[nodiscard]] bool isGliding() const;
     void setYBodyRotation(float rotation);
-
-    [[nodiscard]] endstone::detail::EndstoneMob &getEndstoneMob() const;  // Endstone
 };

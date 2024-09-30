@@ -133,8 +133,4 @@ public:
     [[nodiscard]] float getLevelProgress() const;
 
     static int getXpNeededForLevelRange(int start, int end);
-
-private:
-public:
-    [[nodiscard]] endstone::detail::EndstonePlayer &getEndstonePlayer() const;  // Endstone
 };

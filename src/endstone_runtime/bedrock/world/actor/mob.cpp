@@ -16,18 +16,23 @@
 
 #include "bedrock/entity/components/mob_body_rotation_component.h"
 #include "bedrock/world/actor/actor_flags.h"
+#include "endstone/actor/actor.h"
+#include "endstone/actor/mob.h"
+#include "endstone/detail/actor/mob.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/actor/actor_death_event.h"
 #include "endstone/event/actor/actor_knockback_event.h"
 
+using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneMob;
 using endstone::detail::EndstoneServer;
 
 void Mob::die(const ActorDamageSource &source)
 {
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorDeathEvent e{getEndstoneActor()};
+        endstone::ActorDeathEvent e{*getEndstoneActor<EndstoneActor>()};
         server.getPluginManager().callEvent(e);
     }
 
@@ -44,8 +49,9 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
     auto diff = after - before;
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorKnockbackEvent e{
-        getEndstoneMob(), source == nullptr ? nullptr : &source->getEndstoneActor(), {diff.x, diff.y, diff.z}};
+    endstone::ActorKnockbackEvent e{*getEndstoneActor<EndstoneMob>(),
+                                    source == nullptr ? nullptr : source->getEndstoneActor<EndstoneActor>().get(),
+                                    {diff.x, diff.y, diff.z}};
     server.getPluginManager().callEvent(e);
 
     auto knockback = e.getKnockback();
@@ -61,9 +67,4 @@ bool Mob::isGliding() const
 void Mob::setYBodyRotation(float rotation)
 {
     getPersistentComponent<MobBodyRotationComponent>()->y_body_rot = rotation;
-}
-
-endstone::detail::EndstoneMob &Mob::getEndstoneMob() const
-{
-    return static_cast<endstone::detail::EndstoneMob &>(getEndstoneActor());
 }
