@@ -39,11 +39,7 @@ protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
-    Player() = default;
-    Player(const Player &) = delete;
-    Player &operator=(const Player &) = delete;
-    Player(Player &&) = delete;
-    Player &operator=(Player &&) = delete;
+    using Mob::Mob;
 
     ~Player() override = default;
 

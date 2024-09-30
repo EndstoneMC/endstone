@@ -18,8 +18,8 @@
 
 namespace endstone::detail {
 
-EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee)
-    : caller_(caller), callee_(callee)
+EndstoneProxiedCommandSender::EndstoneProxiedCommandSender(Protected, CommandSender &caller, CommandSender &callee)
+    : ProxiedCommandSender(Protected()), caller_(caller), callee_(callee)
 {
 }
 bool EndstoneProxiedCommandSender::isOp() const

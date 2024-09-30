@@ -46,8 +46,9 @@
 
 namespace endstone::detail {
 
-EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
-    : EndstoneMob(server, player), player_(player), perm_(static_cast<Player *>(this)),
+EndstonePlayer::EndstonePlayer(Protected, EndstoneServer &server, ::Player &player)
+    : EndstoneMob(Protected(), server, player), Player(Protected()), player_(player),
+      perm_(PermissibleBase::create(static_cast<Player *>(this))),
       inventory_(std::make_unique<EndstonePlayerInventory>(player.getInventory()))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
@@ -122,47 +123,47 @@ std::string EndstonePlayer::getName() const
 
 bool EndstonePlayer::isPermissionSet(std::string name) const
 {
-    return perm_.isPermissionSet(name);
+    return perm_->isPermissionSet(name);
 }
 
 bool EndstonePlayer::isPermissionSet(const Permission &perm) const
 {
-    return perm_.isPermissionSet(perm);
+    return perm_->isPermissionSet(perm);
 }
 
 bool EndstonePlayer::hasPermission(std::string name) const
 {
-    return perm_.hasPermission(name);
+    return perm_->hasPermission(name);
 }
 
 bool EndstonePlayer::hasPermission(const Permission &perm) const
 {
-    return perm_.hasPermission(perm);
+    return perm_->hasPermission(perm);
 }
 
 Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    return perm_.addAttachment(plugin, name, value);
+    return perm_->addAttachment(plugin, name, value);
 }
 
 Result<PermissionAttachment *> EndstonePlayer::addAttachment(Plugin &plugin)
 {
-    return perm_.addAttachment(plugin);
+    return perm_->addAttachment(plugin);
 }
 
 Result<void> EndstonePlayer::removeAttachment(PermissionAttachment &attachment)
 {
-    return perm_.removeAttachment(attachment);
+    return perm_->removeAttachment(attachment);
 }
 
 void EndstonePlayer::recalculatePermissions()
 {
-    perm_.recalculatePermissions();
+    perm_->recalculatePermissions();
 }
 
 std::unordered_set<PermissionAttachmentInfo *> EndstonePlayer::getEffectivePermissions() const
 {
-    return perm_.getEffectivePermissions();
+    return perm_->getEffectivePermissions();
 }
 
 bool EndstonePlayer::isOp() const
@@ -723,7 +724,7 @@ void EndstonePlayer::initFromConnectionRequest(
 
 void EndstonePlayer::disconnect()
 {
-    perm_.clearPermissions();
+    perm_->clearPermissions();
 }
 
 void EndstonePlayer::updateAbilities() const

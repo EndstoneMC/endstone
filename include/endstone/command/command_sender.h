@@ -32,7 +32,8 @@ class Player;
  */
 class CommandSender : public Permissible {
 public:
-    CommandSender() = default;
+    using Permissible::Permissible;
+
     ~CommandSender() override = default;
 
     // Permissible

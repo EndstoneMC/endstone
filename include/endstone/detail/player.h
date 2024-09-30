@@ -32,7 +32,7 @@ namespace endstone::detail {
 
 class EndstonePlayer : public EndstoneMob, public Player {
 public:
-    explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
+    explicit EndstonePlayer(Protected, EndstoneServer &server, ::Player &player);
     ~EndstonePlayer() override;
 
     // CommandSender
@@ -132,7 +132,7 @@ private:
     UUID uuid_;
     std::string xuid_;
     SocketAddress address_;
-    PermissibleBase perm_;
+    std::shared_ptr<PermissibleBase> perm_;
     std::unique_ptr<EndstonePlayerInventory> inventory_;
     std::string locale_ = "en-US";
     std::string device_os_ = "Unknown";

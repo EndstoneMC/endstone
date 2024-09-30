@@ -22,9 +22,10 @@
 
 namespace endstone::detail {
 
-ServerCommandSender::ServerCommandSender() : perm_(this) {}
-
-ServerCommandSender::ServerCommandSender(PermissibleBase perm) : perm_(std::move(perm)) {}
+ServerCommandSender::ServerCommandSender(Protected, std::shared_ptr<PermissibleBase> perm)
+    : CommandSender(Protected()), perm_(perm ? std::move(perm) : PermissibleBase::create(this))
+{
+}
 
 Server &ServerCommandSender::getServer() const
 {
@@ -33,47 +34,47 @@ Server &ServerCommandSender::getServer() const
 
 bool ServerCommandSender::isPermissionSet(std::string name) const
 {
-    return perm_.isPermissionSet(name);
+    return perm_->isPermissionSet(name);
 }
 
 bool ServerCommandSender::isPermissionSet(const Permission &perm) const
 {
-    return perm_.isPermissionSet(perm);
+    return perm_->isPermissionSet(perm);
 }
 
 bool ServerCommandSender::hasPermission(std::string name) const
 {
-    return perm_.hasPermission(name);
+    return perm_->hasPermission(name);
 }
 
 bool ServerCommandSender::hasPermission(const Permission &perm) const
 {
-    return perm_.hasPermission(perm);
+    return perm_->hasPermission(perm);
 }
 
 Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin, const std::string &name, bool value)
 {
-    return perm_.addAttachment(plugin, name, value);
+    return perm_->addAttachment(plugin, name, value);
 }
 
 Result<PermissionAttachment *> ServerCommandSender::addAttachment(Plugin &plugin)
 {
-    return perm_.addAttachment(plugin);
+    return perm_->addAttachment(plugin);
 }
 
 Result<void> ServerCommandSender::removeAttachment(PermissionAttachment &attachment)
 {
-    return perm_.removeAttachment(attachment);
+    return perm_->removeAttachment(attachment);
 }
 
 void ServerCommandSender::recalculatePermissions()
 {
-    perm_.recalculatePermissions();
+    perm_->recalculatePermissions();
 }
 
 std::unordered_set<PermissionAttachmentInfo *> ServerCommandSender::getEffectivePermissions() const
 {
-    return perm_.getEffectivePermissions();
+    return perm_->getEffectivePermissions();
 }
 
 }  // namespace endstone::detail

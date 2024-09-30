@@ -32,7 +32,8 @@ namespace endstone::detail {
  */
 class PermissibleBase : public Permissible {
 public:
-    explicit PermissibleBase(Permissible *opable);
+    explicit PermissibleBase(Protected, Permissible *opable);
+    static std::shared_ptr<PermissibleBase> create(Permissible *opable);
 
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;

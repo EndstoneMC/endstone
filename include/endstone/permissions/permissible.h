@@ -32,7 +32,14 @@ class PermissionAttachment;
  * @brief Represents an object that may become a server operator and can be assigned permissions.
  */
 class Permissible : public std::enable_shared_from_this<Permissible> {
+protected:
+    struct Protected {
+        explicit Protected() = default;
+    };
+
 public:
+    explicit Permissible(Protected) {}
+
     virtual ~Permissible() = default;
 
     /**

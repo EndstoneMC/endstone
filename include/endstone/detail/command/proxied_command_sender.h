@@ -20,7 +20,7 @@ namespace endstone::detail {
 
 class EndstoneProxiedCommandSender : public ProxiedCommandSender {
 public:
-    EndstoneProxiedCommandSender(CommandSender &caller, CommandSender &callee);
+    EndstoneProxiedCommandSender(Protected, CommandSender &caller, CommandSender &callee);
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;

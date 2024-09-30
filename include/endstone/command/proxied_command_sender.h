@@ -23,6 +23,8 @@ namespace endstone {
  */
 class ProxiedCommandSender : public CommandSender {
 public:
+    using CommandSender::CommandSender;
+
     ~ProxiedCommandSender() override = default;
 
     /**

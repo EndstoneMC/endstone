@@ -23,8 +23,8 @@
 #include "endstone/detail/message.h"
 
 namespace endstone::detail {
-CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
-    : origin_(origin), output_(output)
+CommandSenderAdapter::CommandSenderAdapter(Protected, const CommandOrigin &origin, CommandOutput &output)
+    : ServerCommandSender(Protected()), origin_(origin), output_(output)
 {
 }
 

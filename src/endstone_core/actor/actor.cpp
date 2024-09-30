@@ -27,7 +27,8 @@
 
 namespace endstone::detail {
 
-EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor)
+EndstoneActor::EndstoneActor(Protected, EndstoneServer &server, ::Actor &actor)
+    : Actor(Protected()), server_(server), actor_(actor)
 {
     getPermissibleBase();
 }
@@ -200,11 +201,7 @@ bool EndstoneActor::isDead() const
 
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
-    static std::unique_ptr<PermissibleBase> perm = []() {
-        auto instance = std::make_unique<PermissibleBase>(nullptr);
-        instance->recalculatePermissions();
-        return instance;
-    }();
+    static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);
     return *perm;
 }
 

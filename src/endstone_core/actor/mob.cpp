@@ -18,8 +18,10 @@
 
 namespace endstone::detail {
 
-EndstoneMob::EndstoneMob(EndstoneServer &server, ::Mob &mob) : EndstoneActor(server, mob), mob_(mob) {}
-
+EndstoneMob::EndstoneMob(Protected, EndstoneServer &server, ::Mob &mob)
+    : EndstoneActor(Protected(), server, mob), Mob(Protected()), mob_(mob)
+{
+}
 
 void EndstoneMob::sendMessage(const Message &message) const
 {

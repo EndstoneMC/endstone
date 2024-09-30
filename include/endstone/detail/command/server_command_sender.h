@@ -22,8 +22,7 @@ namespace endstone::detail {
 class ServerCommandSender : public CommandSender {
 
 public:
-    ServerCommandSender();
-    explicit ServerCommandSender(PermissibleBase perm);
+    explicit ServerCommandSender(Protected, std::shared_ptr<PermissibleBase> perm = nullptr);
     [[nodiscard]] Server &getServer() const override;
 
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
@@ -37,7 +36,7 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
 
 private:
-    PermissibleBase perm_;
+    std::shared_ptr<PermissibleBase> perm_;
 };
 
 }  // namespace endstone::detail

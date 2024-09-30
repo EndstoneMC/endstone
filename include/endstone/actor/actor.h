@@ -25,11 +25,7 @@ namespace endstone {
  */
 class Actor : public CommandSender {
 public:
-    Actor() = default;
-    Actor(const Actor &) = delete;
-    Actor &operator=(const Actor &) = delete;
-    Actor(Actor &&) = delete;
-    Actor &operator=(Actor &&) = delete;
+    using CommandSender::CommandSender;
 
     ~Actor() override = default;
 

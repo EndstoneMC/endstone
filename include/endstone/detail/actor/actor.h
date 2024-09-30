@@ -26,7 +26,7 @@ class EndstoneServer;
 
 class EndstoneActor : public Actor {
 public:
-    EndstoneActor(EndstoneServer &server, ::Actor &actor);
+    EndstoneActor(Protected, EndstoneServer &server, ::Actor &actor);
     ~EndstoneActor() override = default;
 
     // CommandSender

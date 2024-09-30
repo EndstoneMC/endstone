@@ -23,7 +23,17 @@
 
 namespace endstone::detail {
 
-PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
+PermissibleBase::PermissibleBase(Protected, Permissible *opable)
+    : Permissible(Protected()), opable_(opable), parent_(opable ? *opable : *this)
+{
+}
+
+std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
+{
+    auto permissible = std::make_shared<PermissibleBase>(Protected(), opable);
+    permissible->recalculatePermissions();
+    return permissible;
+}
 
 bool PermissibleBase::isOp() const
 {
