@@ -33,11 +33,16 @@ bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstonePlayer();
-    const auto block = EndstoneBlock::at(player.getHandle().getDimension().getBlockSourceFromMainChunkSource(), pos);
-    endstone::BlockBreakEvent e{*block, player};
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return false;
+    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+    if (const auto block = EndstoneBlock::at(block_source, pos)) {
+        endstone::BlockBreakEvent e{*block.value(), player};
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return false;
+        }
+    }
+    else {
+        server.getLogger().error(block.error());
     }
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::destroyBlock, __FUNCDNAME__, this, pos, face);
 }
@@ -47,17 +52,24 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstonePlayer();
-    auto block = EndstoneBlock::at(player.getHandle().getDimension().getBlockSourceFromMainChunkSource(), at);
-    std::unique_ptr<EndstoneItemStack> item_stack = nullptr;
-    if (!item.isNull()) {
-        item_stack = std::make_unique<EndstoneItemStack>(item);
+    auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
+    if (auto block = EndstoneBlock::at(block_source, at)) {
+        std::unique_ptr<EndstoneItemStack> item_stack =
+            item.isNull() ? nullptr : std::make_unique<EndstoneItemStack>(item);
+        endstone::PlayerInteractEvent e{
+            player,
+            std::move(item_stack),
+            std::move(block.value()),
+            static_cast<endstone::BlockFace>(face),
+            {hit.x, hit.y, hit.z},
+        };
+        server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return InteractionResult::Failure();
+        }
     }
-    endstone::PlayerInteractEvent e{
-        player, std::move(item_stack), std::move(block), static_cast<endstone::BlockFace>(face), {hit.x, hit.y, hit.z},
-    };
-    server.getPluginManager().callEvent(e);
-    if (e.isCancelled()) {
-        return InteractionResult{0};  // 0 - cancelled
+    else {
+        server.getLogger().error(block.error());
     }
 
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::useItemOn, __FUNCDNAME__, this, item, at, face, hit,

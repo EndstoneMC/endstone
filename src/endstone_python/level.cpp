@@ -17,6 +17,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/location.h"
 #include "endstone/level/position.h"

@@ -161,8 +161,7 @@ public:
             EventType::NAME, [func, &instance](Event &e) { (instance.*func)(static_cast<EventType &>(e)); }, priority,
             *this, ignore_cancelled);
         if (!result) {
-            server_->getLogger().error(result.error().getMessage());
-            server_->getLogger().error(result.error().getStackTrace());
+            server_->getLogger().error(result.error());
         }
     }
 
@@ -174,8 +173,7 @@ public:
             EventType::NAME, [func](Event &e) { func(static_cast<EventType &>(e)); }, priority, *this,
             ignore_cancelled);
         if (!result) {
-            server_->getLogger().error(result.error().getMessage());
-            server_->getLogger().error(result.error().getStackTrace());
+            server_->getLogger().error(result.error());
         }
     }
 

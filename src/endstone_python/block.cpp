@@ -23,6 +23,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
 #include "endstone/block/block_state.h"
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/level/dimension.h"
 
 namespace py = pybind11;

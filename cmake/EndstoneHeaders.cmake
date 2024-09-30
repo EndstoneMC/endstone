@@ -47,7 +47,12 @@ FetchContent_Declare(
         GIT_REPOSITORY https://github.com/fmtlib/fmt.git
         GIT_TAG 10.2.1
 )
-FetchContent_MakeAvailable(fmt)
+FetchContent_Declare(
+        expected-lite
+        GIT_REPOSITORY https://github.com/martinmoene/expected-lite.git
+        GIT_TAG 0.8.0
+)
+FetchContent_MakeAvailable(fmt expected-lite)
 
 
 # ===================
@@ -56,7 +61,7 @@ FetchContent_MakeAvailable(fmt)
 add_library(endstone_headers INTERFACE)
 add_library(endstone::headers ALIAS endstone_headers)
 target_include_directories(endstone_headers INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(endstone_headers INTERFACE fmt::fmt)
+target_link_libraries(endstone_headers INTERFACE fmt::fmt nonstd::expected-lite)
 
 
 # ===================

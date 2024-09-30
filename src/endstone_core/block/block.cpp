@@ -14,111 +14,99 @@
 
 #include "endstone/detail/block/block.h"
 
-#include <endstone/detail/block/block_state.h>
-
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/block/block_data.h"
 #include "endstone/detail/block/block_face.h"
+#include "endstone/detail/block/block_state.h"
 #include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
+
+using endstone::detail::EndstoneServer;
 
 namespace endstone::detail {
 EndstoneBlock::EndstoneBlock(BlockSource &block_source, BlockPos block_pos)
     : block_source_(block_source), block_pos_(block_pos)
 {
-    (void)checkState();
 }
 
 bool EndstoneBlock::isValid() const
 {
-    return checkState();
+    return checkState().has_value();
 }
 
-std::string EndstoneBlock::getType() const
+Result<std::string> EndstoneBlock::getType() const
 {
-    if (checkState()) {
-        return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
-    }
-    return "minecraft:air";
+    return checkState().and_then([](const auto *self) -> Result<std::string> {
+        return self->block_source_.getBlock(self->block_pos_).getLegacyBlock().getFullNameId();
+    });
 }
 
-void EndstoneBlock::setType(std::string type)
+Result<void> EndstoneBlock::setType(std::string type)
 {
-    setType(type, true);
+    return setType(type, true);
 }
 
-void EndstoneBlock::setType(std::string type, bool apply_physics)
+Result<void> EndstoneBlock::setType(std::string type, bool apply_physics)
 {
-    using detail::EndstoneServer;
-    if (checkState()) {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<void> {
         const auto &server = entt::locator<EndstoneServer>::value();
-        server.createBlockData(type).and_then([&](auto &block_data) -> Result<void> {
-            // TODO: propagate the error from createBlockData
-            setData(block_data, apply_physics);
-            return {};
-        });
-    }
+        return server.createBlockData(type).and_then(
+            [&](auto &block_data) -> Result<void> { return setData(block_data, apply_physics); });
+    });
 }
 
-std::shared_ptr<BlockData> EndstoneBlock::getData() const
+Result<std::shared_ptr<BlockData>> EndstoneBlock::getData() const
 {
-    if (checkState()) {
-        return std::make_unique<EndstoneBlockData>(getMinecraftBlock());
-    }
-    return nullptr;
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::shared_ptr<BlockData>> {
+        return std::make_shared<EndstoneBlockData>(getMinecraftBlock());
+    });
 }
 
-void EndstoneBlock::setData(std::shared_ptr<BlockData> data)
+Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data)
 {
-    setData(std::move(data), true);
+    return setData(std::move(data), true);
 }
 
-void EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_physics)
+Result<void> EndstoneBlock::setData(std::shared_ptr<BlockData> data, bool apply_physics)
 {
     if (!data) {
-        auto &server = entt::locator<EndstoneServer>::value();
-        server.getLogger().error("EndstoneBlock::setData(): Block data cannot be nullptr.");
-        return;
+        return nonstd::make_unexpected(make_error("Block data cannot be null"));
     }
 
-    if (!checkState()) {
-        return;
-    }
-
-    const ::Block &block = static_cast<EndstoneBlockData &>(*data).getHandle();
-    if (apply_physics) {
-        block_source_.setBlock(block_pos_, block, 3, nullptr, nullptr);
-    }
-    else {
-        // TODO(block): NOTIFY | NO_OBSERVER | NO_PLACE (?)
-        block_source_.setBlock(block_pos_, block, 2 | 16 | 1024, nullptr, nullptr);
-    }
+    return checkState().and_then([&](const auto * /*self*/) -> Result<void> {
+        const ::Block &block = static_cast<EndstoneBlockData &>(*data).getHandle();
+        if (apply_physics) {
+            block_source_.setBlock(block_pos_, block, 1 | 2, nullptr, nullptr);  // NEIGHBORS | NETWORK
+        }
+        else {
+            block_source_.setBlock(block_pos_, block, 2, nullptr, nullptr);  // NETWORK
+        }
+        return {};
+    });
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
+Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(int offset_x, int offset_y, int offset_z)
 {
-    if (checkState()) {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {
         return getDimension().getBlockAt(getX() + offset_x, getY() + offset_y, getZ() + offset_z);
-    }
-    return nullptr;
+    });
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face)
+Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(BlockFace face)
 {
-    if (checkState()) {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {  //
         return getRelative(face, 1);
-    }
-    return nullptr;
+    });
 }
 
-std::unique_ptr<Block> EndstoneBlock::getRelative(BlockFace face, int distance)
+Result<std::unique_ptr<Block>> EndstoneBlock::getRelative(BlockFace face, int distance)
 {
-    if (checkState()) {
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::unique_ptr<Block>> {
         return getRelative(EndstoneBlockFace::getOffsetX(face) * distance,
                            EndstoneBlockFace::getOffsetY(face) * distance,
                            EndstoneBlockFace::getOffsetZ(face) * distance);
-    }
-    return nullptr;
+    });
 }
 
 Dimension &EndstoneBlock::getDimension() const
@@ -161,36 +149,38 @@ BlockPos EndstoneBlock::getPosition() const
     return const_cast<::Block &>(block_source_.getBlock(block_pos_));
 }
 
-std::unique_ptr<EndstoneBlock> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
+Result<std::unique_ptr<EndstoneBlock>> EndstoneBlock::at(BlockSource &block_source, BlockPos block_pos)
 {
-    return std::make_unique<EndstoneBlock>(block_source, block_pos);
+    auto block = std::make_unique<EndstoneBlock>(block_source, block_pos);
+    if (auto result = block->checkState(); !result) {
+        return nonstd::make_unexpected(result.error());
+    }
+    return std::move(block);
 }
 
-bool EndstoneBlock::checkState() const
+Result<const EndstoneBlock *> EndstoneBlock::checkState() const
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-
     if (block_pos_.y < block_source_.getMinHeight() || block_pos_.y > block_source_.getMaxHeight()) {
-        server.getLogger().error("Trying to access location ({}, {}, {}) which is outside of the world boundaries.",
-                                 block_pos_.x, block_pos_.y, block_pos_.z);
-        return false;
+        return nonstd::make_unexpected(
+            make_error("Trying to access location ({}, {}, {}) which is outside of the world boundaries.", block_pos_.x,
+                       block_pos_.y, block_pos_.z));
     }
 
-    auto *chunk = block_source_.getChunkAt(block_pos_);
+    const auto *chunk = block_source_.getChunkAt(block_pos_);
     if (!chunk) {
-        server.getLogger().error("Trying to access location ({}, {}, {}) which is not in a chunk currently loaded.",
-                                 block_pos_.x, block_pos_.y, block_pos_.z);
-        return false;
+        return nonstd::make_unexpected(
+            make_error("Trying to access location ({}, {}, {}) which is not in a chunk currently loaded.", block_pos_.x,
+                       block_pos_.y, block_pos_.z));
     }
 
-    auto current_level_tick = block_source_.getLevel().getCurrentTick();
-    auto chunk_last_tick = chunk->getLastTick();
+    const auto current_level_tick = block_source_.getLevel().getCurrentTick();
+    const auto chunk_last_tick = chunk->getLastTick();
     if (current_level_tick != chunk_last_tick && current_level_tick != chunk_last_tick + 1) {
-        server.getLogger().error("Trying to access location ({}, {}, {}) which is not in a chunk currently ticking.",
-                                 block_pos_.x, block_pos_.y, block_pos_.z);
-        return false;
+        return nonstd::make_unexpected(
+            make_error("Trying to access location ({}, {}, {}) which is not in a chunk currently ticking.",
+                       block_pos_.x, block_pos_.y, block_pos_.z));
     }
-    return true;
+    return this;
 }
 
 }  // namespace endstone::detail

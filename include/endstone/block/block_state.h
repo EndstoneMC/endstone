@@ -17,6 +17,7 @@
 #include <fmt/format.h>
 
 #include "endstone/block/block.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -36,9 +37,8 @@ public:
      * @brief Gets the block represented by this block state.
      *
      * @return the block represented by this block state
-     * @throws IllegalStateException if this block state is not placed
      */
-    [[nodiscard]] virtual std::unique_ptr<Block> getBlock() const = 0;
+    [[nodiscard]] virtual Result<std::unique_ptr<Block>> getBlock() const = 0;
 
     /**
      * @brief Gets the type of this block state.
@@ -52,7 +52,7 @@ public:
      *
      * @param type Block type to change this block state to
      */
-    virtual void setType(std::string type) = 0;
+    virtual Result<void> setType(std::string type) = 0;
 
     /**
      * @brief Gets the data for this block state.
@@ -66,7 +66,7 @@ public:
      *
      * @param data New block specific data
      */
-    virtual void setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
 
     /**
      * @brief Gets the dimension which contains the block represented by this block state.
@@ -111,7 +111,7 @@ public:
      *
      * @return true if the update was successful, otherwise false
      */
-    virtual bool update() = 0;
+    virtual Result<bool> update() = 0;
 
     /**
      * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
@@ -121,7 +121,7 @@ public:
      * @param force true to forcefully set the state
      * @return true if the update was successful, otherwise false
      */
-    virtual bool update(bool force) = 0;
+    virtual Result<bool> update(bool force) = 0;
 
     /**
      * @brief Attempts to update the block represented by this state, setting it to the new values as defined by this
@@ -134,7 +134,7 @@ public:
      * @param apply_physics false to cancel updating physics on surrounding blocks
      * @return true if the update was successful, otherwise false
      */
-    virtual bool update(bool force, bool apply_physics) = 0;
+    virtual Result<bool> update(bool force, bool apply_physics) = 0;
 };
 }  // namespace endstone
 

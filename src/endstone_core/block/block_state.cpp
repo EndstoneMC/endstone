@@ -14,10 +14,10 @@
 
 #include "endstone/detail/block/block_state.h"
 
-#include <bedrock/world/level/block/block_descriptor.h>
-#include <endstone/detail/block/block_data.h>
-
+#include "bedrock/world/level/block/block_descriptor.h"
 #include "endstone/detail/block/block.h"
+#include "endstone/detail/block/block_data.h"
+#include "endstone/detail/util/error.h"
 
 namespace endstone::detail {
 
@@ -32,7 +32,7 @@ EndstoneBlockState::EndstoneBlockState(Dimension &dimension, BlockPos block_pos,
 {
 }
 
-std::unique_ptr<Block> EndstoneBlockState::getBlock() const
+Result<std::unique_ptr<Block>> EndstoneBlockState::getBlock() const
 {
     return EndstoneBlock::at(block_source_, block_pos_);
 }
@@ -42,19 +42,18 @@ std::string EndstoneBlockState::getType() const
     return block_->getLegacyBlock().getFullNameId();
 }
 
-void EndstoneBlockState::setType(std::string type)
+Result<void> EndstoneBlockState::setType(std::string type)
 {
     if (getType() != type) {
-        const auto block_descriptor =
-            ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor(type, std::nullopt);
+        using ScriptModuleMinecraft::ScriptBlockUtils::createBlockDescriptor;
+        const auto block_descriptor = createBlockDescriptor(type, std::nullopt);
         auto *block = const_cast<::Block *>(block_descriptor.tryGetBlockNoLogging());
         if (!block) {
-            const auto &server = entt::locator<EndstoneServer>::value();
-            server.getLogger().error("BlockState::setType failed: unknown block type {}.", type);
-            return;
+            return nonstd::make_unexpected(make_error("BlockState::setType failed: unknown block type {}.", type));
         }
         block_ = block;
     }
+    return {};
 }
 
 std::shared_ptr<BlockData> EndstoneBlockState::getData() const
@@ -62,14 +61,13 @@ std::shared_ptr<BlockData> EndstoneBlockState::getData() const
     return std::make_shared<EndstoneBlockData>(*block_);
 }
 
-void EndstoneBlockState::setData(std::shared_ptr<BlockData> data)
+Result<void> EndstoneBlockState::setData(std::shared_ptr<BlockData> data)
 {
     if (!data) {
-        const auto &server = entt::locator<EndstoneServer>::value();
-        server.getLogger().error("BlockState::setData failed: data cannot be null.");
-        return;
+        return nonstd::make_unexpected(make_error("Block data cannot be null"));
     }
     block_ = &std::dynamic_pointer_cast<EndstoneBlockData>(data)->getHandle();
+    return {};
 }
 
 Dimension &EndstoneBlockState::getDimension() const
@@ -97,24 +95,25 @@ Location EndstoneBlockState::getLocation() const
     return Location{&dimension_, getX(), getY(), getZ()};
 }
 
-bool EndstoneBlockState::update()
+Result<bool> EndstoneBlockState::update()
 {
     return update(false);
 }
 
-bool EndstoneBlockState::update(bool force)
+Result<bool> EndstoneBlockState::update(bool force)
 {
     return update(force, true);
 }
 
-bool EndstoneBlockState::update(bool force, bool apply_physics)
+Result<bool> EndstoneBlockState::update(bool force, bool apply_physics)
 {
-    const auto block = getBlock();
-    if (block->getType() != getType() && !force) {
-        return false;
-    }
-    block->setData(getData(), apply_physics);
-    return true;
+    return getBlock().and_then([&](const auto &block) -> Result<bool> {
+        if (block->getType() != getType() && !force) {
+            return false;
+        }
+        block->setData(getData(), apply_physics);
+        return true;
+    });
 }
 
 }  // namespace endstone::detail

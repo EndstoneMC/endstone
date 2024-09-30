@@ -18,8 +18,9 @@
 #include <utility>
 
 #include <fmt/format.h>
-#include <fmt/ostream.h>
 #include <fmt/std.h>
+
+#include "endstone/util/error.h"
 
 namespace endstone {
 
@@ -113,6 +114,12 @@ public:
     void error(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Error, format, std::forward<Args>(args)...);
+    }
+
+    void error(const endstone::Error &error) const
+    {
+        log(Error, error.getMessage());
+        log(Error, error.getStackTrace());
     }
 
     template <typename... Args>

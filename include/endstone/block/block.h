@@ -20,6 +20,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
 #include "endstone/level/location.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -56,14 +57,14 @@ public:
      *
      * @return The type of the block.
      */
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual Result<std::string> getType() const = 0;
 
     /**
      * @brief Sets the type of this block
      *
      * @param type Material to change this block to
      */
-    virtual void setType(std::string type) = 0;
+    virtual Result<void> setType(std::string type) = 0;
 
     /**
      * @brief Sets the type of this block
@@ -71,21 +72,21 @@ public:
      * @param type Material to change this block to
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual void setType(std::string type, bool apply_physics) = 0;
+    virtual Result<void> setType(std::string type, bool apply_physics) = 0;
 
     /**
      * @brief Gets the complete block data for this block
      *
      * @return block specific data
      */
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> getData() const = 0;
 
     /**
      * @brief Sets the complete data for this block
      *
      * @param data new block specific data
      */
-    virtual void setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
 
     /**
      * @brief Sets the complete data for this block
@@ -93,7 +94,7 @@ public:
      * @param data new block specific data
      * @param apply_physics False to cancel physics on the changed block.
      */
-    virtual void setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
+    virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
 
     /**
      * @brief Gets the block at the given offsets
@@ -103,7 +104,7 @@ public:
      * @param offset_z Z-coordinate offset
      * @return Block at the given offsets
      */
-    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
     /**
      * @brief Gets the block at the given face
@@ -113,7 +114,7 @@ public:
      * @param face Face of this block to return
      * @return Block at the given face
      */
-    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face) = 0;
 
     /**
      * @brief Gets the block at the given distance of the given face
@@ -122,7 +123,7 @@ public:
      * @param distance Distance to get the block at
      * @return Block at the given face
      */
-    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
 
     /**
      * @brief Gets the dimension which contains this Block
@@ -180,8 +181,17 @@ struct formatter<endstone::Block> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "Block(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(), val.getY(),
-                         val.getZ(), val.getType(), *val.getData());
+        auto it = ctx.out();
+        it = format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
+                       val.getType().value_or("INVALID"));
+        if (auto data = val.getData()) {
+            it = format_to(it, ", data={}", *data.value());
+        }
+        else {
+            it = format_to(it, ", data=INVALID");
+        }
+        it = format_to(it, ")");
+        return it;
     }
 };
 }  // namespace fmt

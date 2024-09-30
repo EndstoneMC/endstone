@@ -33,19 +33,32 @@ CoordinatorResult Item::_sendTryPlaceBlockEvent(Block const &placement_block, Bl
                                                 Actor const &actor, BlockPos const &pos, FacingID face,
                                                 Vec3 const &click_pos) const
 {
-    const auto &server = entt::locator<EndstoneServer>::value();
-
     if (actor.isPlayer()) {
+        const auto &server = entt::locator<EndstoneServer>::value();
         auto &player = static_cast<const Player &>(actor).getEndstonePlayer();
         auto &dimension = block_source.getDimension().getEndstoneDimension();
-        auto block_placed = std::make_unique<EndstoneBlockState>(dimension, pos, const_cast<Block &>(placement_block));
-        const auto block_replaced = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos);
+
         const auto block_face = static_cast<endstone::BlockFace>(face);
-        const auto block_against = block_replaced->getRelative(EndstoneBlockFace::getOpposite(block_face));
-        endstone::BlockPlaceEvent e{std::move(block_placed), *block_replaced, *block_against, player};
-        server.getPluginManager().callEvent(e);
-        if (e.isCancelled()) {
-            return CoordinatorResult::Cancel;
+
+        auto block_placed = std::make_unique<EndstoneBlockState>(dimension, pos, const_cast<Block &>(placement_block));
+        if (const auto block_replaced = EndstoneBlock::at(const_cast<BlockSource &>(block_source), pos)) {
+
+            const auto opposite = EndstoneBlockFace::getOpposite(block_face);
+            if (const auto block_against = block_replaced.value()->getRelative(opposite)) {
+
+                endstone::BlockPlaceEvent e{std::move(block_placed), *block_replaced.value(), *block_against.value(),
+                                            player};
+                server.getPluginManager().callEvent(e);
+                if (e.isCancelled()) {
+                    return CoordinatorResult::Cancel;
+                }
+            }
+            else {
+                server.getLogger().error(block_against.error());
+            }
+        }
+        else {
+            server.getLogger().error(block_replaced.error());
         }
     }
 

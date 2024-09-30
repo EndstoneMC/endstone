@@ -24,20 +24,20 @@ namespace endstone::detail {
 class EndstoneBlockState : public BlockState {
 public:
     explicit EndstoneBlockState(const EndstoneBlock &block);
-    explicit EndstoneBlockState(Dimension &dimension_, BlockPos block_pos,  ::Block &block);
-    [[nodiscard]] std::unique_ptr<Block> getBlock() const override;
+    explicit EndstoneBlockState(Dimension &dimension, BlockPos block_pos, ::Block &block);
+    [[nodiscard]] Result<std::unique_ptr<Block>> getBlock() const override;
     [[nodiscard]] std::string getType() const override;
-    void setType(std::string type) override;
+    Result<void> setType(std::string type) override;
     [[nodiscard]] std::shared_ptr<BlockData> getData() const override;
-    void setData(std::shared_ptr<BlockData> data) override;
+    Result<void> setData(std::shared_ptr<BlockData> data) override;
     [[nodiscard]] Dimension &getDimension() const override;
     [[nodiscard]] int getX() const override;
     [[nodiscard]] int getY() const override;
     [[nodiscard]] int getZ() const override;
     [[nodiscard]] Location getLocation() const override;
-    bool update() override;
-    bool update(bool force) override;
-    bool update(bool force, bool apply_physics) override;
+    Result<bool> update() override;
+    Result<bool> update(bool force) override;
+    Result<bool> update(bool force, bool apply_physics) override;
 
 private:
     EndstoneDimension &dimension_;
