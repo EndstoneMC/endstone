@@ -192,6 +192,7 @@ void dumpItemData(VanillaData &data, ::Level &level)
         data.items[name] = {{"id", item->getId()},
                             {"attackDamage", item->getAttackDamage()},
                             {"armorValue", item->getArmorValue()},
+                            {"enchantValue", item->getEnchantValue()},
                             {"toughnessValue", item->getToughnessValue()},
                             {"maxDamage", item->getMaxDamage()},
                             {"isDamageable", item->isDamageable()},
