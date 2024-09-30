@@ -25,10 +25,6 @@ namespace endstone {
  */
 class Actor : public CommandSender {
 public:
-    using CommandSender::CommandSender;
-
-    ~Actor() override = default;
-
     /**
      * Returns the runtime id for this actor
      *

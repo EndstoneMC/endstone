@@ -46,9 +46,8 @@
 
 namespace endstone::detail {
 
-EndstonePlayer::EndstonePlayer(Protected, EndstoneServer &server, ::Player &player)
-    : EndstoneMob(Protected(), server, player), Player(Protected()), player_(player),
-      perm_(PermissibleBase::create(static_cast<Player *>(this))),
+EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
+    : EndstoneMob(server, player), player_(player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
       inventory_(std::make_unique<EndstonePlayerInventory>(player.getInventory()))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();

@@ -23,8 +23,8 @@
 #include "endstone/detail/message.h"
 
 namespace endstone::detail {
-CommandSenderAdapter::CommandSenderAdapter(Protected, const CommandOrigin &origin, CommandOutput &output)
-    : ServerCommandSender(Protected()), origin_(origin), output_(output)
+CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
+    : origin_(origin), output_(output)
 {
 }
 
@@ -68,6 +68,11 @@ void CommandSenderAdapter::setOp(bool value)
     getServer().getLogger().error("Changing the operator status of {} is not supported.", getName());
 }
 
+std::shared_ptr<CommandSenderAdapter> CommandSenderAdapter::create(const CommandOrigin &origin, CommandOutput &output)
+{
+    return Permissible::create0<CommandSenderAdapter>(origin, output);
+}
+
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const
 {
     auto &server = entt::locator<EndstoneServer>::value();
@@ -80,16 +85,11 @@ void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output)
         return;
     }
 
-    bool success;
-    if (auto *sender = origin.toEndstone(); sender) {
-        success = command->execute(*sender, args_);
+    auto sender = origin.getEndstoneSender();
+    if (!sender) {
+        sender = CommandSenderAdapter::create(origin, output);
     }
-    else {
-        auto dummy_sender = CommandSenderAdapter(origin, output);
-        success = command->execute(dummy_sender, args_);
-    }
-
-    if (success) {
+    if (command->execute(*sender, args_)) {
         output.success();
     }
 }

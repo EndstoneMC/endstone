@@ -23,10 +23,6 @@ namespace endstone {
  */
 class ProxiedCommandSender : public CommandSender {
 public:
-    using CommandSender::CommandSender;
-
-    ~ProxiedCommandSender() override = default;
-
     /**
      * @brief Returns the CommandSender which triggered this proxied command.
      *

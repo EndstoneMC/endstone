@@ -14,7 +14,6 @@
 
 #include "bedrock/server/commands/command_origin.h"
 
-#include <bedrock/nbt/nbt_io.h>
 #include <entt/entt.hpp>
 #include <spdlog/spdlog.h>
 
@@ -22,6 +21,7 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 
@@ -29,22 +29,22 @@ using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
-endstone::CommandSender *CommandOrigin::toEndstone() const
+std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() const
 {
     auto &server = entt::locator<EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
-        return &server.getCommandSender();
+        return server.getCommandSender();
     }
     case CommandOriginType::Player: {
         auto *entity = getEntity();
         endstone::Player &player = static_cast<::Player *>(entity)->getEndstonePlayer();
-        return &player;
+        return player.shared_from_base<endstone::Player>();
     }
     case CommandOriginType::Entity: {
         auto *entity = getEntity();
         endstone::Actor &actor = entity->getEndstoneActor();
-        return &actor;
+        return actor.shared_from_base<endstone::Actor>();
     }
     case CommandOriginType::Virtual:
         // TODO(command): we need ProxiedCommandSender, getOrigin will return the callee, getOutputReceiver will return

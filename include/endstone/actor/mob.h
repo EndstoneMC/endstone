@@ -22,8 +22,6 @@ namespace endstone {
  */
 class Mob : public Actor {
 public:
-    using Actor::Actor;
-
     /**
      * @brief Checks to see if an actor is gliding, such as using an Elytra.
      * @return True if this actor is gliding.

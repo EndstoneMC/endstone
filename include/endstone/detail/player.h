@@ -31,8 +31,10 @@ class ServerNetworkHandler;
 namespace endstone::detail {
 
 class EndstonePlayer : public EndstoneMob, public Player {
+protected:
+    explicit EndstonePlayer(EndstoneServer &server, ::Player &player);
+
 public:
-    explicit EndstonePlayer(Protected, EndstoneServer &server, ::Player &player);
     ~EndstonePlayer() override;
 
     // CommandSender

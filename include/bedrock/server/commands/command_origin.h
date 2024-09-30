@@ -74,7 +74,7 @@ public:
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
     virtual void setUUID(const mce::UUID &uuid) = 0;                                             // 31
 
-    [[nodiscard]] endstone::CommandSender *toEndstone() const;                                          // Endstone
+    [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender() const;                   // Endstone
     [[nodiscard]] static std::unique_ptr<CommandOrigin> fromEndstone(endstone::CommandSender &sender);  // Endstone
 
 protected:

@@ -31,10 +31,10 @@ namespace endstone::detail {
  * Base Permissible for use in any Permissible object via proxy or extension
  */
 class PermissibleBase : public Permissible {
-public:
-    explicit PermissibleBase(Protected, Permissible *opable);
-    static std::shared_ptr<PermissibleBase> create(Permissible *opable);
+protected:
+    explicit PermissibleBase(Permissible *opable);
 
+public:
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;
@@ -48,6 +48,8 @@ public:
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
     [[nodiscard]] CommandSender *asCommandSender() const override;
     void clearPermissions();
+
+    static std::shared_ptr<PermissibleBase> create(Permissible *opable);
 
 private:
     void calculateChildPermissions(const std::unordered_map<std::string, bool> &children, bool invert,

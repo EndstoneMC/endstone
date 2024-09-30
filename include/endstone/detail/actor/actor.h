@@ -25,10 +25,10 @@ class EndstoneLevel;
 class EndstoneServer;
 
 class EndstoneActor : public Actor {
-public:
-    EndstoneActor(Protected, EndstoneServer &server, ::Actor &actor);
-    ~EndstoneActor() override = default;
+protected:
+    EndstoneActor(EndstoneServer &server, ::Actor &actor);
 
+public:
     // CommandSender
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;

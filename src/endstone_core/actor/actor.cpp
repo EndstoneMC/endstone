@@ -27,8 +27,7 @@
 
 namespace endstone::detail {
 
-EndstoneActor::EndstoneActor(Protected, EndstoneServer &server, ::Actor &actor)
-    : Actor(Protected()), server_(server), actor_(actor)
+EndstoneActor::EndstoneActor(EndstoneServer &server, ::Actor &actor) : server_(server), actor_(actor)
 {
     getPermissibleBase();
 }

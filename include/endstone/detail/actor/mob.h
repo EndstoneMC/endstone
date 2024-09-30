@@ -21,9 +21,10 @@ class Mob;
 
 namespace endstone::detail {
 class EndstoneMob : public EndstoneActor, public Mob {
-public:
-    explicit EndstoneMob(Protected, EndstoneServer &server, ::Mob &mob);
+protected:
+    explicit EndstoneMob(EndstoneServer &server, ::Mob &mob);
 
+public:
     // CommandSender
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;

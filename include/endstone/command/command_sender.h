@@ -32,10 +32,6 @@ class Player;
  */
 class CommandSender : public Permissible {
 public:
-    using Permissible::Permissible;
-
-    ~CommandSender() override = default;
-
     // Permissible
     /**
      * @brief Casts a Permissible as CommandSender

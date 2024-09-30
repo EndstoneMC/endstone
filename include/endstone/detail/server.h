@@ -51,7 +51,7 @@ public:
     [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
-    [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
+    [[nodiscard]] std::shared_ptr<ConsoleCommandSender> getCommandSender() const override;
     [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command) const override;
 
     void loadPlugins();
@@ -114,7 +114,7 @@ private:
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
-    std::unique_ptr<ConsoleCommandSender> command_sender_;
+    std::shared_ptr<ConsoleCommandSender> command_sender_;
     std::unique_ptr<EndstoneScheduler> scheduler_;
     std::unique_ptr<EndstoneLevel> level_;
     std::unordered_map<UUID, EndstonePlayer *> players_;

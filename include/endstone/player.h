@@ -39,10 +39,6 @@ protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
-    using Mob::Mob;
-
-    ~Player() override = default;
-
     // CommandSender
     [[nodiscard]] Player *asPlayer() const override
     {

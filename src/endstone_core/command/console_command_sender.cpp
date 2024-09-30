@@ -100,4 +100,9 @@ std::unordered_set<PermissionAttachmentInfo *> EndstoneConsoleCommandSender::get
     return ServerCommandSender::getEffectivePermissions();
 }
 
+std::shared_ptr<EndstoneConsoleCommandSender> EndstoneConsoleCommandSender::create()
+{
+    return create0<EndstoneConsoleCommandSender>();
+}
+
 }  // namespace endstone::detail

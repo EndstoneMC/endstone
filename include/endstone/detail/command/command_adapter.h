@@ -15,21 +15,23 @@
 #pragma once
 
 #include "bedrock/server/commands/command.h"
-#include "endstone/command/command_sender.h"
 #include "endstone/detail/command/server_command_sender.h"
-#include "endstone/detail/permissions/permissible_base.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
 class CommandSenderAdapter : public ServerCommandSender {
+protected:
+    CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output);
+
 public:
-    CommandSenderAdapter(Protected, const CommandOrigin &origin, CommandOutput &output);
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
+
+    static std::shared_ptr<CommandSenderAdapter> create(const CommandOrigin &origin, CommandOutput &output);
 
 private:
     const CommandOrigin &origin_;

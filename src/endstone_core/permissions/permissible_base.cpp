@@ -23,17 +23,7 @@
 
 namespace endstone::detail {
 
-PermissibleBase::PermissibleBase(Protected, Permissible *opable)
-    : Permissible(Protected()), opable_(opable), parent_(opable ? *opable : *this)
-{
-}
-
-std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
-{
-    auto permissible = std::make_shared<PermissibleBase>(Protected(), opable);
-    permissible->recalculatePermissions();
-    return permissible;
-}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
 
 bool PermissibleBase::isOp() const
 {
@@ -222,6 +212,11 @@ void PermissibleBase::clearPermissions()
     plugin_manager.unsubscribeFromDefaultPerms(false, parent_);
     plugin_manager.unsubscribeFromDefaultPerms(true, parent_);
     permissions_.clear();
+}
+
+std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
+{
+    return create0<PermissibleBase>(opable);
 }
 
 }  // namespace endstone::detail

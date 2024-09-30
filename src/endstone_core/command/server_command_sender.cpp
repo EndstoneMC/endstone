@@ -22,8 +22,8 @@
 
 namespace endstone::detail {
 
-ServerCommandSender::ServerCommandSender(Protected, std::shared_ptr<PermissibleBase> perm)
-    : CommandSender(Protected()), perm_(perm ? std::move(perm) : PermissibleBase::create(this))
+ServerCommandSender::ServerCommandSender(std::shared_ptr<PermissibleBase> perm)
+    : perm_(perm ? std::move(perm) : PermissibleBase::create(this))
 {
 }
 

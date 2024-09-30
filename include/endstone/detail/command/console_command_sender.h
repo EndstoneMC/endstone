@@ -37,6 +37,8 @@ public:
     Result<void> removeAttachment(PermissionAttachment &attachment) override;
     void recalculatePermissions() override;
     [[nodiscard]] std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const override;
+
+    static std::shared_ptr<EndstoneConsoleCommandSender> create();
 };
 
 }  // namespace endstone::detail

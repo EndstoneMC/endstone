@@ -63,8 +63,7 @@ void EndstoneServer::init()
     getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
                          "This server is running {} version: {} (Minecraft: {})",
                      getName(), getVersion(), getMinecraftVersion());
-    command_sender_ = std::make_unique<EndstoneConsoleCommandSender>();
-    command_sender_->recalculatePermissions();
+    command_sender_ = EndstoneConsoleCommandSender::create();
 }
 
 std::string EndstoneServer::getName() const
@@ -122,9 +121,9 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
     return nullptr;
 }
 
-ConsoleCommandSender &EndstoneServer::getCommandSender() const
+std::shared_ptr<ConsoleCommandSender> EndstoneServer::getCommandSender() const
 {
-    return *command_sender_;
+    return command_sender_;
 }
 
 bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command) const
