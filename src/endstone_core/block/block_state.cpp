@@ -107,13 +107,17 @@ Result<bool> EndstoneBlockState::update(bool force)
 
 Result<bool> EndstoneBlockState::update(bool force, bool apply_physics)
 {
-    return getBlock().and_then([&](const auto &block) -> Result<bool> {
-        if (block->getType() != getType() && !force) {
-            return false;
-        }
-        block->setData(getData(), apply_physics);
-        return true;
-    });
+    auto result = getBlock();
+    if (!result) {
+        return nonstd::make_unexpected(result.error());
+    }
+
+    auto &block = result.value();
+    if (block->getType() != getType() && !force) {
+        return false;
+    }
+    block->setData(getData(), apply_physics);
+    return true;
 }
 
 }  // namespace endstone::detail

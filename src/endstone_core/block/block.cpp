@@ -37,8 +37,8 @@ bool EndstoneBlock::isValid() const
 
 Result<std::string> EndstoneBlock::getType() const
 {
-    return checkState().and_then([](const auto *self) -> Result<std::string> {
-        return self->block_source_.getBlock(self->block_pos_).getLegacyBlock().getFullNameId();
+    return checkState().and_then([&](const auto * /*self*/) -> Result<std::string> {
+        return block_source_.getBlock(block_pos_).getLegacyBlock().getFullNameId();
     });
 }
 
@@ -51,8 +51,11 @@ Result<void> EndstoneBlock::setType(std::string type, bool apply_physics)
 {
     return checkState().and_then([&](const auto * /*self*/) -> Result<void> {
         const auto &server = entt::locator<EndstoneServer>::value();
-        return server.createBlockData(type).and_then(
-            [&](auto &block_data) -> Result<void> { return setData(block_data, apply_physics); });
+        auto result = server.createBlockData(type);
+        if (!result) {
+            return nonstd::make_unexpected(result.error());
+        }
+        return setData(result.value(), apply_physics);
     });
 }
 
