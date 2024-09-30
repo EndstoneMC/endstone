@@ -39,8 +39,8 @@ Permission createPermission(std::string name, const std::optional<std::string> &
 }
 }  // namespace
 
-void init_permissions(py::module_ &m, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
-                      py::enum_<PermissionDefault> &permission_default)
+void init_permissions(py::module_ &m, py::class_<Permissible, std::shared_ptr<Permissible>> &permissible,
+                      py::class_<Permission> &permission, py::enum_<PermissionDefault> &permission_default)
 {
     permission_default  //
         .value("TRUE", PermissionDefault::True)

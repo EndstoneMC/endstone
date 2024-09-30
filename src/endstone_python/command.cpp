@@ -53,7 +53,7 @@ Command createCommand(std::string name, const std::optional<std::string> &descri
 }
 }  // namespace
 
-void init_command(py::module &m, py::class_<CommandSender, Permissible> &command_sender)
+void init_command(py::module &m, py::class_<CommandSender, std::shared_ptr<CommandSender>, Permissible> &command_sender)
 {
     command_sender
         .def(
@@ -67,7 +67,8 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
 
-    py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
+    py::class_<ConsoleCommandSender, std::shared_ptr<ConsoleCommandSender>, CommandSender>(
+        m, "ConsoleCommandSender", "Represents a console command sender.");
 
     py::class_<Command, std::shared_ptr<Command>>(m, "Command",
                                                   "Represents a Command, which executes various tasks upon user input")

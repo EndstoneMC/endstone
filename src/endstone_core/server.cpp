@@ -294,8 +294,7 @@ void EndstoneServer::broadcast(const Message &message, const std::string &permis
 {
     std::unordered_set<const CommandSender *> recipients;
     for (const auto *permissible : getPluginManager().getPermissionSubscriptions(permission)) {
-        const auto *sender = permissible->asCommandSender();
-        if (sender != nullptr && sender->hasPermission(permission)) {
+        if (const auto *sender = permissible->asCommandSender(); sender && sender->hasPermission(permission)) {
             recipients.insert(sender);
         }
     }
