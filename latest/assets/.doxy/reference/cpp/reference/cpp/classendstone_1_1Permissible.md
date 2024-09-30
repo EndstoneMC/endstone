@@ -53,8 +53,8 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
+| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
+| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () const = 0<br> |
 | virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () const = 0<br> |
 | virtual bool | [**hasPermission**](#function-haspermission-12) (std::string name) const = 0<br> |
@@ -63,7 +63,7 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 | virtual bool | [**isPermissionSet**](#function-ispermissionset-12) (std::string name) const = 0<br> |
 | virtual bool | [**isPermissionSet**](#function-ispermissionset-22) (const [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
 | virtual void | [**recalculatePermissions**](#function-recalculatepermissions) () = 0<br> |
-| virtual bool | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
+| virtual Result&lt; void &gt; | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
 | virtual  | [**~Permissible**](#function-permissible) () = default<br> |
 
@@ -103,7 +103,7 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 
 ```C++
-virtual PermissionAttachment * endstone::Permissible::addAttachment (
+virtual Result< PermissionAttachment * > endstone::Permissible::addAttachment (
     Plugin & plugin,
     const std::string & name,
     bool value
@@ -144,7 +144,7 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 
 ```C++
-virtual PermissionAttachment * endstone::Permissible::addAttachment (
+virtual Result< PermissionAttachment * > endstone::Permissible::addAttachment (
     Plugin & plugin
 ) = 0
 ```
@@ -413,7 +413,7 @@ Recalculates the permissions for this object, if the attachments have changed va
 
 
 ```C++
-virtual bool endstone::Permissible::removeAttachment (
+virtual Result< void > endstone::Permissible::removeAttachment (
     PermissionAttachment & attachment
 ) = 0
 ```

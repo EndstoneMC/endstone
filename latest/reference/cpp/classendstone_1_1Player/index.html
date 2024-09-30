@@ -2813,11 +2813,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-setallowflight"><strong>setAllowFlight</strong></a> (bool flight) = 0<br><em>Sets if the</em> <a href="./"><em><strong>Player</strong></em></a> <em>is allowed to fly via jump key double-tap.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual void</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="#function-setexplevel"><strong>setExpLevel</strong></a> (int level) = 0<br><em>Sets the players current experience level.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual void</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="#function-setexpprogress"><strong>setExpProgress</strong></a> (float progress) = 0<br><em>Sets the players current experience progress towards the next level.</em></td>
 </tr>
 <tr>
@@ -2825,7 +2825,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-setflyspeed"><strong>setFlySpeed</strong></a> (float value) const = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual void</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="#function-setflying"><strong>setFlying</strong></a> (bool value) = 0<br><em>Makes this player start or stop flying.</em></td>
 </tr>
 <tr>
@@ -3025,11 +3025,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
+<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-12"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin, const std::string &amp; name, bool value) = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> *</td>
+<td style="text-align: right;">virtual Result&lt; <a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> * &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-addattachment-22"><strong>addAttachment</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) = 0<br></td>
 </tr>
 <tr>
@@ -3065,7 +3065,7 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-recalculatepermissions"><strong>recalculatePermissions</strong></a> () = 0<br></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual bool</td>
+<td style="text-align: right;">virtual Result&lt; void &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-removeattachment"><strong>removeAttachment</strong></a> (<a href="../classendstone_1_1PermissionAttachment/"><strong>PermissionAttachment</strong></a> &amp; attachment) = 0<br></td>
 </tr>
 <tr>
@@ -3460,7 +3460,7 @@ For latest updates join the chat on
 
 <h3 id="function-setexplevel">function setExpLevel<a class="headerlink" href="#function-setexplevel" title="Permanent link">&para;</a></h3>
 <p><em>Sets the players current experience level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpLevel</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpLevel</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span>
 </span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3472,7 +3472,7 @@ For latest updates join the chat on
 
 <h3 id="function-setexpprogress">function setExpProgress<a class="headerlink" href="#function-setexpprogress" title="Permanent link">&para;</a></h3>
 <p><em>Sets the players current experience progress towards the next level.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpProgress</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setExpProgress</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">progress</span>
 </span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
@@ -3497,7 +3497,7 @@ For latest updates join the chat on
 
 <h3 id="function-setflying">function setFlying<a class="headerlink" href="#function-setflying" title="Permanent link">&para;</a></h3>
 <p><em>Makes this player start or stop flying.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Result</span><span class="o">&lt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Player</span><span class="o">::</span><span class="n">setFlying</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">value</span>
 </span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>

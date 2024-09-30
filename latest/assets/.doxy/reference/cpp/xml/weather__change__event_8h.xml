@@ -4,14 +4,14 @@
     <compoundname>weather_change_event.h</compoundname>
     <includes refid="weather__event_8h" local="yes">endstone/event/weather/weather_event.h</includes>
     <incdepgraph>
-      <node id="19">
+      <node id="23">
         <label>endstone/level/position.h</label>
         <link refid="position_8h_source"/>
-        <childnode refid="18" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -42,7 +42,7 @@
       <node id="11">
         <label>variant</label>
       </node>
-      <node id="22">
+      <node id="26">
         <label>cmath</label>
       </node>
       <node id="4">
@@ -60,6 +60,18 @@
         </childnode>
       </node>
       <node id="20">
+        <label>string_view</label>
+      </node>
+      <node id="18">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="19">
+        <label>endstone/util/error.h</label>
+        <link refid="error_8h_source"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
         <label>optional</label>
       </node>
       <node id="5">
@@ -85,17 +97,25 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>utility</label>
-      </node>
       <node id="17">
-        <label>endstone/level/location.h</label>
-        <link refid="location_8h_source"/>
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
         <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+      </node>
+      <node id="10">
+        <label>utility</label>
+      </node>
+      <node id="21">
+        <label>endstone/level/location.h</label>
+        <link refid="location_8h_source"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -103,9 +123,9 @@
         <link refid="actor_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -129,11 +149,13 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="21">
+      <node id="25">
         <label>endstone/util/vector.h</label>
         <link refid="vector_8h_source"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -144,7 +166,7 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="22">
         <label>memory</label>
       </node>
     </incdepgraph>

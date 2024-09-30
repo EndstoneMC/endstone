@@ -15,6 +15,7 @@
 * `#include "endstone/boss/bar_color.h"`
 * `#include "endstone/boss/bar_flag.h"`
 * `#include "endstone/boss/bar_style.h"`
+* `#include "endstone/util/result.h"`
 
 
 

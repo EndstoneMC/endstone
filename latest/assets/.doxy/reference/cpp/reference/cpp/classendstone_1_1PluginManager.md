@@ -73,7 +73,7 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins) (const std::string & directory) = 0<br> |
 |  [**PluginManager**](classendstone_1_1PluginManager.md) & | [**operator=**](#function-operator) ([**PluginManager**](classendstone_1_1PluginManager.md) const &) = delete<br> |
 | virtual void | [**recalculatePermissionDefaults**](#function-recalculatepermissiondefaults) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
-| virtual void | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; void([**Event**](classendstone_1_1Event.md) &)&gt; executor, EventPriority priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, bool ignore\_cancelled) = 0<br> |
+| virtual Result&lt; void &gt; | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; void([**Event**](classendstone_1_1Event.md) &)&gt; executor, EventPriority priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, bool ignore\_cancelled) = 0<br> |
 | virtual void | [**registerLoader**](#function-registerloader) (std::unique\_ptr&lt; [**PluginLoader**](classendstone_1_1PluginLoader.md) &gt; loader) = 0<br> |
 | virtual void | [**removePermission**](#function-removepermission-12) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
 | virtual void | [**removePermission**](#function-removepermission-22) (std::string name) = 0<br> |
@@ -731,7 +731,7 @@ This will have no effect if the specified permission is not registered here.
 
 
 ```C++
-virtual void endstone::PluginManager::registerEvent (
+virtual Result< void > endstone::PluginManager::registerEvent (
     std::string event,
     std::function< void( Event &)> executor,
     EventPriority priority,

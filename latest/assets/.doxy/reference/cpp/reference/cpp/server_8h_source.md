@@ -36,6 +36,7 @@
 #include "endstone/logger.h"
 #include "endstone/player.h"
 #include "endstone/scoreboard/scoreboard.h"
+#include "endstone/util/result.h"
 #include "endstone/util/uuid.h"
 
 namespace endstone {
@@ -77,7 +78,7 @@ public:
 
     [[nodiscard]] virtual int getMaxPlayers() const = 0;
 
-    virtual void setMaxPlayers(int max_players) = 0;
+    virtual Result<void> setMaxPlayers(int max_players) = 0;
 
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
@@ -127,10 +128,10 @@ public:
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color, BarStyle style,
                                                                  std::vector<BarFlag> flags) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type) const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<BlockData> createBlockData(std::string type,
-                                                                     BlockStates block_states) const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
+                                                                             BlockStates block_states) const = 0;
 
     [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
 

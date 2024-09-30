@@ -15,6 +15,7 @@
 * `#include "endstone/scoreboard/display_slot.h"`
 * `#include "endstone/scoreboard/objective.h"`
 * `#include "endstone/scoreboard/score_entry.h"`
+* `#include "endstone/util/result.h"`
 
 
 

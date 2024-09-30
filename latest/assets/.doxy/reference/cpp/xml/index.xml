@@ -171,7 +171,7 @@
     <member refid="classendstone_1_1BossBar_1a7620a5bbf2fe2e260ffd981ed812b233" kind="function"><name>addFlag</name></member>
     <member refid="classendstone_1_1BossBar_1a1300817a31f861f6ec11094ab4d39a40" kind="function"><name>removeFlag</name></member>
     <member refid="classendstone_1_1BossBar_1a26fd77e91731b0d93a1053251c551cd0" kind="function"><name>getProgress</name></member>
-    <member refid="classendstone_1_1BossBar_1ad87883aafad616b5d94c5f171140b790" kind="function"><name>setProgress</name></member>
+    <member refid="classendstone_1_1BossBar_1a4baa83a84eb1d5747b1bbe01fed910dc" kind="function"><name>setProgress</name></member>
     <member refid="classendstone_1_1BossBar_1a00f426146a25566319f641881318aa43" kind="function"><name>isVisible</name></member>
     <member refid="classendstone_1_1BossBar_1ac037275aadff9ea427432063ffeca138" kind="function"><name>setVisible</name></member>
     <member refid="classendstone_1_1BossBar_1a12761830372d48958fd50bddef835170" kind="function"><name>addPlayer</name></member>
@@ -557,9 +557,9 @@
     <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" kind="function"><name>isPermissionSet</name></member>
     <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" kind="function"><name>hasPermission</name></member>
     <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" kind="function"><name>hasPermission</name></member>
-    <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" kind="function"><name>addAttachment</name></member>
-    <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" kind="function"><name>removeAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1Permissible_1a6ee88130abcae19b48e833391505187e" kind="function"><name>removeAttachment</name></member>
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" kind="function"><name>asCommandSender</name></member>
@@ -631,14 +631,14 @@
     <member refid="classendstone_1_1Player_1a1b4b6ce04b9dc31318a3d81144c85692" kind="function"><name>giveExp</name></member>
     <member refid="classendstone_1_1Player_1aed4057a9b18e9a6a6413acf3e6aa0d07" kind="function"><name>giveExpLevels</name></member>
     <member refid="classendstone_1_1Player_1aefef97a98e1c193a0eeaf710f417b835" kind="function"><name>getExpProgress</name></member>
-    <member refid="classendstone_1_1Player_1a97b5f5e159340ddab9622c6f16176d6e" kind="function"><name>setExpProgress</name></member>
+    <member refid="classendstone_1_1Player_1a132588ceb2ead9c0256d7e919b9385f6" kind="function"><name>setExpProgress</name></member>
     <member refid="classendstone_1_1Player_1af38317c0a52ffc820eb751388ebbb7b3" kind="function"><name>getExpLevel</name></member>
-    <member refid="classendstone_1_1Player_1a7816ae526469ef35cd741f992804ae0e" kind="function"><name>setExpLevel</name></member>
+    <member refid="classendstone_1_1Player_1a337fd2bb0aaf23641e70c64eab40b202" kind="function"><name>setExpLevel</name></member>
     <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" kind="function"><name>getTotalExp</name></member>
     <member refid="classendstone_1_1Player_1a981dfc3f6b3fd184569c64904401300f" kind="function"><name>getAllowFlight</name></member>
     <member refid="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" kind="function"><name>setAllowFlight</name></member>
     <member refid="classendstone_1_1Player_1a269a96d6e70d265860c915b80acce853" kind="function"><name>isFlying</name></member>
-    <member refid="classendstone_1_1Player_1abf6427a0a0b922254c7a151c05531176" kind="function"><name>setFlying</name></member>
+    <member refid="classendstone_1_1Player_1af687a0747f1b03f6f798159a982f9979" kind="function"><name>setFlying</name></member>
     <member refid="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" kind="function"><name>getFlySpeed</name></member>
     <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" kind="function"><name>setFlySpeed</name></member>
     <member refid="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" kind="function"><name>getWalkSpeed</name></member>
@@ -899,7 +899,7 @@
     <member refid="classendstone_1_1PluginManager_1ab56ff89a7ecf2d6b912f95c77c1508d9" kind="function"><name>disablePlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a14a15ef4e634b7109ef923c4dc84b64d" kind="function"><name>clearPlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a4dfe6ff074c30ba3055cdd8e81fc724c" kind="function"><name>callEvent</name></member>
-    <member refid="classendstone_1_1PluginManager_1a3f7b1b0a5e838c7b299a93e12a816ea6" kind="function"><name>registerEvent</name></member>
+    <member refid="classendstone_1_1PluginManager_1a6277cf11adbeafea26628d3e1dcbc5ae" kind="function"><name>registerEvent</name></member>
     <member refid="classendstone_1_1PluginManager_1a46fab70d7948563ecbed9654f2ca5303" kind="function"><name>getPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a69b1b46defbaf4dc22dbf871f83d9c8f" kind="function"><name>addPermission</name></member>
     <member refid="classendstone_1_1PluginManager_1a8e228f95cb9ae2fa7691a0bab7a4ab15" kind="function"><name>removePermission</name></member>
@@ -953,9 +953,9 @@
   </compound>
   <compound refid="classendstone_1_1Scoreboard" kind="class"><name>endstone::Scoreboard</name>
     <member refid="classendstone_1_1Scoreboard_1a3353d465636fad59aab0c4656f80ff37" kind="function"><name>~Scoreboard</name></member>
-    <member refid="classendstone_1_1Scoreboard_1aeeea6d5b20650bc48f049facf5f09357" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a0710314f798f80efbb2935e9aeb7d3df" kind="function"><name>addObjective</name></member>
-    <member refid="classendstone_1_1Scoreboard_1a12c61fd2864f69f9735edcce7373ef30" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1ac27709669d77352e39db1e91e03b1c40" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1ab62d112f446e1e45b4c04c9cfc17fe8b" kind="function"><name>addObjective</name></member>
+    <member refid="classendstone_1_1Scoreboard_1ababf2e8eb90faaf4bb43db237de0cc6b" kind="function"><name>addObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a86cf22c186e037101a1d5aae75b6ccca" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1aed806bf5dffdee9e8af5047b56301820" kind="function"><name>getObjective</name></member>
     <member refid="classendstone_1_1Scoreboard_1a3126ef103bead4d6caeccb06938dfec8" kind="function"><name>getObjectives</name></member>
@@ -984,7 +984,7 @@
     <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Server_1a87fe533801da1f729baa68cc96099546" kind="function"><name>getOnlinePlayers</name></member>
     <member refid="classendstone_1_1Server_1acac268b65787dd0261790dab8c4f110d" kind="function"><name>getMaxPlayers</name></member>
-    <member refid="classendstone_1_1Server_1a44ff16f118e70e3a032854124ffca958" kind="function"><name>setMaxPlayers</name></member>
+    <member refid="classendstone_1_1Server_1a62623e412798de5f0f5cf78c05477c4f" kind="function"><name>setMaxPlayers</name></member>
     <member refid="classendstone_1_1Server_1a3f5b8f0687c88f67472718e67adada76" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1Server_1ab09e09e3f7fe51d16fd5e4e82c95ba49" kind="function"><name>getPlayer</name></member>
     <member refid="classendstone_1_1Server_1a349c02e809ca14e2c16b0fa6bf021d1a" kind="function"><name>shutdown</name></member>
@@ -1004,8 +1004,8 @@
     <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" kind="function"><name>getAverageTickUsage</name></member>
     <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" kind="function"><name>createBossBar</name></member>
-    <member refid="classendstone_1_1Server_1a851d9caa59060d05043d87d8f55f5195" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1a79fba868c67bc3f8bdfec709a2eb3d01" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a3cc037d4b98ab10da73d41282a7cd924" kind="function"><name>createBlockData</name></member>
+    <member refid="classendstone_1_1Server_1a68bd68c063e3c5b445ff6f8f3825c8c5" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a1a8387bc10d12e8b2895fa29654ded55" kind="function"><name>getStartTime</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>

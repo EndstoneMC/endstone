@@ -172,10 +172,10 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**sendTitle**](#function-sendtitle-22) (std::string title, std::string subtitle, int fade\_in, int stay, int fade\_out) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such._  |
 | virtual void | [**sendToast**](#function-sendtoast) (std::string title, std::string content) const = 0<br>_Sends this player a toast notification._  |
 | virtual void | [**setAllowFlight**](#function-setallowflight) (bool flight) = 0<br>_Sets if the_ [_**Player**_](classendstone_1_1Player.md) _is allowed to fly via jump key double-tap._ |
-| virtual void | [**setExpLevel**](#function-setexplevel) (int level) = 0<br>_Sets the players current experience level._  |
-| virtual void | [**setExpProgress**](#function-setexpprogress) (float progress) = 0<br>_Sets the players current experience progress towards the next level._  |
+| virtual Result&lt; void &gt; | [**setExpLevel**](#function-setexplevel) (int level) = 0<br>_Sets the players current experience level._  |
+| virtual Result&lt; void &gt; | [**setExpProgress**](#function-setexpprogress) (float progress) = 0<br>_Sets the players current experience progress towards the next level._  |
 | virtual void | [**setFlySpeed**](#function-setflyspeed) (float value) const = 0<br> |
-| virtual void | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
+| virtual Result&lt; void &gt; | [**setFlying**](#function-setflying) (bool value) = 0<br>_Makes this player start or stop flying._  |
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual void | [**setScoreboard**](#function-setscoreboard) ([**Scoreboard**](classendstone_1_1Scoreboard.md) & scoreboard) = 0<br> |
 | virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
@@ -245,8 +245,8 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](classendstone_1_1Permissible.md#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
-| virtual [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* | [**addAttachment**](classendstone_1_1Permissible.md#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
+| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](classendstone_1_1Permissible.md#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
+| virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](classendstone_1_1Permissible.md#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](classendstone_1_1Permissible.md#function-ascommandsender) () const = 0<br> |
 | virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](classendstone_1_1Permissible.md#function-geteffectivepermissions) () const = 0<br> |
 | virtual bool | [**hasPermission**](classendstone_1_1Permissible.md#function-haspermission-12) (std::string name) const = 0<br> |
@@ -255,7 +255,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual bool | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-12) (std::string name) const = 0<br> |
 | virtual bool | [**isPermissionSet**](classendstone_1_1Permissible.md#function-ispermissionset-22) (const [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
 | virtual void | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br> |
-| virtual bool | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
+| virtual Result&lt; void &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
@@ -1354,7 +1354,7 @@ virtual void endstone::Player::setAllowFlight (
 
 _Sets the players current experience level._ 
 ```C++
-virtual void endstone::Player::setExpLevel (
+virtual Result< void > endstone::Player::setExpLevel (
     int level
 ) = 0
 ```
@@ -1381,7 +1381,7 @@ virtual void endstone::Player::setExpLevel (
 
 _Sets the players current experience progress towards the next level._ 
 ```C++
-virtual void endstone::Player::setExpProgress (
+virtual Result< void > endstone::Player::setExpProgress (
     float progress
 ) = 0
 ```
@@ -1441,7 +1441,7 @@ Sets the speed at which a client will fly.
 
 _Makes this player start or stop flying._ 
 ```C++
-virtual void endstone::Player::setFlying (
+virtual Result< void > endstone::Player::setFlying (
     bool value
 ) = 0
 ```

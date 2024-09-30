@@ -65,7 +65,7 @@ _Represents a boss bar that is displayed to players._
 | virtual void | [**removeFlag**](#function-removeflag) (BarFlag flag) = 0<br>_Remove an existing flag on this boss bar._  |
 | virtual void | [**removePlayer**](#function-removeplayer) ([**Player**](classendstone_1_1Player.md) & player) = 0<br>_Removes the player from this boss bar causing it to be removed from their screen._  |
 | virtual void | [**setColor**](#function-setcolor) (BarColor color) = 0<br>_Sets the color of this boss bar._  |
-| virtual void | [**setProgress**](#function-setprogress) (float progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
+| virtual Result&lt; void &gt; | [**setProgress**](#function-setprogress) (float progress) = 0<br>_Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_  |
 | virtual void | [**setStyle**](#function-setstyle) (BarStyle style) = 0<br>_Sets the bar style of this boss bar._  |
 | virtual void | [**setTitle**](#function-settitle) (std::string title) = 0<br>_Sets the title of this boss bar._  |
 | virtual void | [**setVisible**](#function-setvisible) (bool visible) = 0<br>_Set if the boss bar is displayed to attached players._  |
@@ -439,7 +439,7 @@ virtual void endstone::BossBar::setColor (
 
 _Sets the progress of the bar. Values should be between 0.0 (empty) and 1.0 (full)_ 
 ```C++
-virtual void endstone::BossBar::setProgress (
+virtual Result< void > endstone::BossBar::setProgress (
     float progress
 ) = 0
 ```

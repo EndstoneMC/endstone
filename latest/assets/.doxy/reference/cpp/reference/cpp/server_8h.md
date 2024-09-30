@@ -21,6 +21,7 @@
 * `#include "endstone/logger.h"`
 * `#include "endstone/player.h"`
 * `#include "endstone/scoreboard/scoreboard.h"`
+* `#include "endstone/util/result.h"`
 * `#include "endstone/util/uuid.h"`
 
 

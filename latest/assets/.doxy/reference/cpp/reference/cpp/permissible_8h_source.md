@@ -28,6 +28,7 @@
 #include <unordered_set>
 
 #include "endstone/permissions/permission_attachment_info.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -52,11 +53,11 @@ public:
 
     [[nodiscard]] virtual bool hasPermission(const Permission &perm) const = 0;
 
-    virtual PermissionAttachment *addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
+    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin, const std::string &name, bool value) = 0;
 
-    virtual PermissionAttachment *addAttachment(Plugin &plugin) = 0;
+    virtual Result<PermissionAttachment *> addAttachment(Plugin &plugin) = 0;
 
-    virtual bool removeAttachment(PermissionAttachment &attachment) = 0;
+    virtual Result<void> removeAttachment(PermissionAttachment &attachment) = 0;
 
     virtual void recalculatePermissions() = 0;
 

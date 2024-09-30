@@ -377,9 +377,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="127" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1a97b5f5e159340ddab9622c6f16176d6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::Player::setExpProgress</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1a132588ceb2ead9c0256d7e919b9385f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::Player::setExpProgress</definition>
         <argsstring>(float progress)=0</argsstring>
         <name>setExpProgress</name>
         <param>
@@ -404,7 +404,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="136" column="18"/>
+        <location file="include/endstone/player.h" line="136" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1af38317c0a52ffc820eb751388ebbb7b3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -423,9 +423,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="143" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1a7816ae526469ef35cd741f992804ae0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::Player::setExpLevel</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1a337fd2bb0aaf23641e70c64eab40b202" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::Player::setExpLevel</definition>
         <argsstring>(int level)=0</argsstring>
         <name>setExpLevel</name>
         <param>
@@ -449,7 +449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="150" column="18"/>
+        <location file="include/endstone/player.h" line="150" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -531,9 +531,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="181" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1abf6427a0a0b922254c7a151c05531176" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::Player::setFlying</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1af687a0747f1b03f6f798159a982f9979" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::Player::setFlying</definition>
         <argsstring>(bool value)=0</argsstring>
         <name>setFlying</name>
         <param>
@@ -557,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="188" column="18"/>
+        <location file="include/endstone/player.h" line="188" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>float</type>
@@ -1214,8 +1214,8 @@
       <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
       <member refid="classendstone_1_1Actor_1a87d53d3bf300ae2ec479300c153dd1db" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Actor</name></member>
-      <member refid="classendstone_1_1Permissible_1a45029c63f65a3451c2225e515f08cbf9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
-      <member refid="classendstone_1_1Permissible_1af44d389662c6739de911be8d996afa3e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asCommandSender</name></member>
       <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asConsole</name></member>
       <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" prot="public" virt="virtual"><scope>endstone::Player</scope><name>asPlayer</name></member>
@@ -1272,7 +1272,7 @@
       <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
       <member refid="classendstone_1_1Player_1adf03a1a7668477bc13b7f51805fa69a8" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>Player</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>recalculatePermissions</name></member>
-      <member refid="classendstone_1_1Permissible_1abcc26358591f3aef6007d815e8265c47" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
+      <member refid="classendstone_1_1Permissible_1a6ee88130abcae19b48e833391505187e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>resetTitle</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>sendErrorMessage</name></member>
@@ -1286,9 +1286,9 @@
       <member refid="classendstone_1_1Player_1a8294c943551a0e2fa0e31362d332f41e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendTitle</name></member>
       <member refid="classendstone_1_1Player_1a2558a7cac1d76547e05eee61db8cc1ea" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>sendToast</name></member>
       <member refid="classendstone_1_1Player_1a7fa8057141ec4e2a2f7f7191f0d063a3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setAllowFlight</name></member>
-      <member refid="classendstone_1_1Player_1a7816ae526469ef35cd741f992804ae0e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpLevel</name></member>
-      <member refid="classendstone_1_1Player_1a97b5f5e159340ddab9622c6f16176d6e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpProgress</name></member>
-      <member refid="classendstone_1_1Player_1abf6427a0a0b922254c7a151c05531176" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlying</name></member>
+      <member refid="classendstone_1_1Player_1a337fd2bb0aaf23641e70c64eab40b202" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpLevel</name></member>
+      <member refid="classendstone_1_1Player_1a132588ceb2ead9c0256d7e919b9385f6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setExpProgress</name></member>
+      <member refid="classendstone_1_1Player_1af687a0747f1b03f6f798159a982f9979" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlying</name></member>
       <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>

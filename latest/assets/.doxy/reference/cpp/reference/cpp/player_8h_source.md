@@ -80,11 +80,11 @@ public:
 
     [[nodiscard]] virtual float getExpProgress() const = 0;
 
-    virtual void setExpProgress(float progress) = 0;
+    virtual Result<void> setExpProgress(float progress) = 0;
 
     [[nodiscard]] virtual int getExpLevel() const = 0;
 
-    virtual void setExpLevel(int level) = 0;
+    virtual Result<void> setExpLevel(int level) = 0;
 
     [[nodiscard]] virtual int getTotalExp() const = 0;
 
@@ -94,7 +94,7 @@ public:
 
     [[nodiscard]] virtual bool isFlying() const = 0;
 
-    virtual void setFlying(bool value) = 0;
+    virtual Result<void> setFlying(bool value) = 0;
 
     [[nodiscard]] virtual float getFlySpeed() const = 0;
 
