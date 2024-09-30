@@ -19,9 +19,7 @@
 #include "bedrock/server/commands/command_utils.h"
 #include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/world/actor/actor.h"
-#include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
-#include "bedrock/world/level/level.h"
 #include "endstone/detail/level/dimension.h"
 #include "endstone/detail/level/level.h"
 
@@ -207,6 +205,11 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
 ::Actor &EndstoneActor::getActor() const
 {
     return actor_;
+}
+
+std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::Actor &actor)
+{
+    return create0<EndstoneActor>(server, actor);
 }
 
 }  // namespace endstone::detail

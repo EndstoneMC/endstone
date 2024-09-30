@@ -166,4 +166,9 @@ bool EndstoneMob::isGliding() const
     return mob_.isGliding();
 }
 
+std::shared_ptr<EndstoneMob> EndstoneMob::create(EndstoneServer &server, ::Mob &mob)
+{
+    return create0<EndstoneMob>(server, mob);
+}
+
 }  // namespace endstone::detail

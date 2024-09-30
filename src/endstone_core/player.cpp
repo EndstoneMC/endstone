@@ -739,4 +739,9 @@ void EndstonePlayer::updateAbilities() const
     return player_;
 }
 
+std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)
+{
+    return create0<EndstonePlayer>(server, player);
+}
+
 }  // namespace endstone::detail

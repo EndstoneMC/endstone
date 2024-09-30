@@ -24,6 +24,10 @@ namespace endstone::detail {
 class EndstoneLevel;
 class EndstoneServer;
 
+struct EndstoneActorComponent {
+    std::shared_ptr<Actor> actor;
+};
+
 class EndstoneActor : public Actor {
 protected:
     EndstoneActor(EndstoneServer &server, ::Actor &actor);
@@ -65,6 +69,8 @@ public:
 
     // Internal use only
     [[nodiscard]] ::Actor &getActor() const;
+
+    static std::shared_ptr<EndstoneActor> create(EndstoneServer &server, ::Actor &actor);
 
 protected:
     EndstoneServer &server_;

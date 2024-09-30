@@ -62,6 +62,8 @@ public:
     // Mob
     [[nodiscard]] bool isGliding() const override;
 
+    static std::shared_ptr<EndstoneMob> create(EndstoneServer &server, ::Mob &mob);
+
 private:
     ::Mob &mob_;
 };

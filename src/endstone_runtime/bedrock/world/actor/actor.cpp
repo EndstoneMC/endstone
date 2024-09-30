@@ -28,6 +28,7 @@
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/actor/actor.h"
+#include "endstone/detail/actor/mob.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
@@ -208,25 +209,37 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
     return nullptr;
 }
 
-endstone::detail::EndstoneActor &Actor::getEndstoneActor() const
+std::shared_ptr<endstone::Actor> Actor::getEndstoneActor0() const
 {
+    using endstone::detail::EndstoneActor;
+    using endstone::detail::EndstoneActorComponent;
+    using endstone::detail::EndstoneMob;
+    using endstone::detail::EndstonePlayer;
+    using endstone::detail::EndstoneServer;
+
     auto &server = entt::locator<EndstoneServer>::value();
     auto *self = const_cast<Actor *>(this);
+    auto &component = entity_context_.getOrAddComponent<EndstoneActorComponent>();
+    if (component.actor) {
+        return component.actor;
+    }
 
     if (self->isType(ActorType::Player)) {
         if (!isPlayer()) {
+            // Sanity check, should never be reachable
             throw std::runtime_error("Actor has a Player type but isPlayer() returns false.");
         }
         auto *player = static_cast<Player *>(self);
-        return entity_context_.getOrAddComponent<endstone::detail::EndstonePlayer>(server, *player);
+        component.actor = std::static_pointer_cast<endstone::Player>(EndstonePlayer::create(server, *player));
     }
-
-    if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
+    else if (self->hasType(ActorType::Mob) || self->hasCategory(ActorCategory::Mob)) {
         auto *mob = static_cast<Mob *>(self);
-        return entity_context_.getOrAddComponent<endstone::detail::EndstoneMob>(server, *mob);
+        component.actor = std::static_pointer_cast<endstone::Mob>(EndstoneMob::create(server, *mob));
     }
-
-    return entity_context_.getOrAddComponent<endstone::detail::EndstoneActor>(server, *self);
+    else {
+        component.actor = EndstoneActor::create(server, *self);
+    }
+    return component.actor;
 }
 
 bool Actor::isJumping() const

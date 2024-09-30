@@ -127,6 +127,8 @@ public:
     bool checkRightClickSpam(Vector<int> block_pos, Vector<float> click_pos);
     [[nodiscard]] ::Player &getHandle() const;
 
+    static std::shared_ptr<EndstonePlayer> create(EndstoneServer &server, ::Player &player);
+
 private:
     friend class ::ServerNetworkHandler;
 
