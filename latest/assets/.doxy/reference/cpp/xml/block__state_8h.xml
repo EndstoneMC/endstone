@@ -4,6 +4,7 @@
     <compoundname>block_state.h</compoundname>
     <includes local="no">fmt/format.h</includes>
     <includes refid="block_8h" local="yes">endstone/block/block.h</includes>
+    <includes refid="result_8h" local="yes">endstone/util/result.h</includes>
     <includedby refid="block__place__event_8h" local="yes">include/endstone/event/block/block_place_event.h</includedby>
     <incdepgraph>
       <node id="12">
@@ -32,8 +33,28 @@
       <node id="5">
         <label>string</label>
       </node>
+      <node id="19">
+        <label>string_view</label>
+      </node>
+      <node id="17">
+        <label>nonstd/expected.hpp</label>
+      </node>
+      <node id="18">
+        <label>endstone/util/error.h</label>
+        <link refid="error_8h_source"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
       <node id="13">
         <label>optional</label>
+      </node>
+      <node id="16">
+        <label>endstone/util/result.h</label>
+        <link refid="result_8h_source"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
       <node id="11">
         <label>endstone/level/location.h</label>
@@ -85,6 +106,8 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/endstone/block/block_state.h</label>
@@ -92,6 +115,8 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -138,22 +163,23 @@
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fmt/format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/block/block.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="classendstone_1_1BlockState" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;BlockState&gt;<sp/>{</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="41" refid="classendstone_1_1BlockState_1a0d7699bfdc83a8c82a6ec458fb5e89c1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Block&gt;<sp/><ref refid="classendstone_1_1BlockState_1a0d7699bfdc83a8c82a6ec458fb5e89c1" kindref="member">getBlock</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/util/result.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classendstone_1_1BlockState" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::enable_shared_from_this&lt;BlockState&gt;<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classendstone_1_1BlockState" kindref="compound">BlockState</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1BlockState_1a5201536524391a54d61165cfdfd8533a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;std::unique_ptr&lt;Block&gt;&gt;<sp/><ref refid="classendstone_1_1BlockState_1a5201536524391a54d61165cfdfd8533a" kindref="member">getBlock</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48" refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" kindref="member">getType</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" kindref="member">setType</ref>(std::string<sp/>type)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="55" refid="classendstone_1_1BlockState_1a54d7aaead025b9adfb2a5ff5a40290dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;void&gt;<sp/><ref refid="classendstone_1_1BlockState_1a54d7aaead025b9adfb2a5ff5a40290dc" kindref="member">setType</ref>(std::string<sp/>type)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="62" refid="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;BlockData&gt;<sp/><ref refid="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" kindref="member">getData</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="classendstone_1_1BlockState_1a350cab6ce664d167f75b287eaf34916e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState_1a350cab6ce664d167f75b287eaf34916e" kindref="member">setData</ref>(std::shared_ptr&lt;BlockData&gt;<sp/>data)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="69" refid="classendstone_1_1BlockState_1aa7feb45825a6b6b1bbf763c30f54812d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;void&gt;<sp/><ref refid="classendstone_1_1BlockState_1aa7feb45825a6b6b1bbf763c30f54812d" kindref="member">setData</ref>(std::shared_ptr&lt;BlockData&gt;<sp/>data)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76" refid="classendstone_1_1BlockState_1ae2e6bd0aec930c2611a34c34f9d1cb3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref><sp/>&amp;<ref refid="classendstone_1_1BlockState_1ae2e6bd0aec930c2611a34c34f9d1cb3d" kindref="member">getDimension</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
@@ -165,11 +191,11 @@
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104" refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Location" kindref="compound">Location</ref><sp/><ref refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" kindref="member">getLocation</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114" refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" kindref="member">update</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="114" refid="classendstone_1_1BlockState_1a8e68d6116122ac5ce523ab17117a9501" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;bool&gt;<sp/><ref refid="classendstone_1_1BlockState_1a8e68d6116122ac5ce523ab17117a9501" kindref="member">update</ref>()<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124" refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" kindref="member">update</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124" refid="classendstone_1_1BlockState_1acebc229bc621572fe102911ce82871d8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;bool&gt;<sp/><ref refid="classendstone_1_1BlockState_1acebc229bc621572fe102911ce82871d8" kindref="member">update</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137" refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" kindref="member">update</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>apply_physics)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="137" refid="classendstone_1_1BlockState_1a8a4a9803c4d40c350d291fefa81945aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Result&lt;bool&gt;<sp/><ref refid="classendstone_1_1BlockState_1a8a4a9803c4d40c350d291fefa81945aa" kindref="member">update</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>apply_physics)<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="139"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>

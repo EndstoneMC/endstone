@@ -57,8 +57,8 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-12) (int x, int y, int z) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlockAt**](#function-getblockat-12) (int x, int y, int z) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._ |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlockAt**](#function-getblockat-22) ([**Location**](classendstone_1_1Location.md) location) = 0<br>_Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._ |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the level to which this dimension belongs._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this dimension._  |
 | virtual [**Type**](classendstone_1_1Dimension.md#enum-type) | [**getType**](#function-gettype) () const = 0<br>_Gets the type of this dimension._  |
@@ -120,7 +120,7 @@ enum endstone::Dimension::Type {
 
 _Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given coordinates._
 ```C++
-virtual std::unique_ptr< Block > endstone::Dimension::getBlockAt (
+virtual Result< std::unique_ptr< Block > > endstone::Dimension::getBlockAt (
     int x,
     int y,
     int z
@@ -158,7 +158,7 @@ virtual std::unique_ptr< Block > endstone::Dimension::getBlockAt (
 
 _Gets the_ [_**Block**_](classendstone_1_1Block.md) _at the given_[_**Location**_](classendstone_1_1Location.md) _._
 ```C++
-virtual std::unique_ptr< Block > endstone::Dimension::getBlockAt (
+virtual Result< std::unique_ptr< Block > > endstone::Dimension::getBlockAt (
     Location location
 ) = 0
 ```

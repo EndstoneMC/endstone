@@ -60,7 +60,8 @@
 |   | [**Logger**](#function-logger) () = default<br> |
 |  void | [**critical**](#function-critical) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 |  void | [**debug**](#function-debug) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-|  void | [**error**](#function-error) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+|  void | [**error**](#function-error-12) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
+|  void | [**error**](#function-error-22) (const [**endstone::Error**](classendstone_1_1Error.md) & error) const<br> |
 | virtual std::string\_view | [**getName**](#function-getname) () const = 0<br>_Get the name of this_ [_**Logger**_](classendstone_1_1Logger.md) _instance._ |
 |  void | [**info**](#function-info) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual bool | [**isEnabledFor**](#function-isenabledfor) ([**Level**](classendstone_1_1Logger.md#enum-level) level) const = 0<br>_Check if the_ [_**Logger**_](classendstone_1_1Logger.md) _instance is enabled for the given log_[_**Level**_](classendstone_1_1Level.md) _._ |
@@ -173,13 +174,28 @@ inline void endstone::Logger::debug (
 
 
 
-### function error 
+### function error [1/2]
 
 ```C++
 template<typename... Args>
 inline void endstone::Logger::error (
     const fmt::format_string< Args... > format,
     Args &&... args
+) const
+```
+
+
+
+
+<hr>
+
+
+
+### function error [2/2]
+
+```C++
+inline void endstone::Logger::error (
+    const endstone::Error & error
 ) const
 ```
 

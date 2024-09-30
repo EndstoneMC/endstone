@@ -30,6 +30,7 @@
 #include "endstone/block/block_data.h"
 #include "endstone/block/block_face.h"
 #include "endstone/level/location.h"
+#include "endstone/util/result.h"
 
 namespace endstone {
 
@@ -43,23 +44,23 @@ public:
 
     [[nodiscard]] virtual bool isValid() const = 0;
 
-    [[nodiscard]] virtual std::string getType() const = 0;
+    [[nodiscard]] virtual Result<std::string> getType() const = 0;
 
-    virtual void setType(std::string type) = 0;
+    virtual Result<void> setType(std::string type) = 0;
 
-    virtual void setType(std::string type, bool apply_physics) = 0;
+    virtual Result<void> setType(std::string type, bool apply_physics) = 0;
 
-    [[nodiscard]] virtual std::shared_ptr<BlockData> getData() const = 0;
+    [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> getData() const = 0;
 
-    virtual void setData(std::shared_ptr<BlockData> data) = 0;
+    virtual Result<void> setData(std::shared_ptr<BlockData> data) = 0;
 
-    virtual void setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
+    virtual Result<void> setData(std::shared_ptr<BlockData> data, bool apply_physics) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(int offset_x, int offset_y, int offset_z) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(int offset_x, int offset_y, int offset_z) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(BlockFace face) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face) = 0;
 
-    virtual std::unique_ptr<Block> getRelative(BlockFace face, int distance) = 0;
+    virtual Result<std::unique_ptr<Block>> getRelative(BlockFace face, int distance) = 0;
 
     [[nodiscard]] virtual Dimension &getDimension() const = 0;
 
@@ -84,8 +85,17 @@ struct formatter<endstone::Block> : formatter<string_view> {
     template <typename FormatContext>
     auto format(const Type &val, FormatContext &ctx) const -> format_context::iterator
     {
-        return format_to(ctx.out(), "Block(pos=BlockPos(x={}, y={}, z={}), type={}, data={})", val.getX(), val.getY(),
-                         val.getZ(), val.getType(), *val.getData());
+        auto it = ctx.out();
+        it = format_to(it, "Block(pos=BlockPos(x={}, y={}, z={}), type={}", val.getX(), val.getY(), val.getZ(),
+                       val.getType().value_or("INVALID"));
+        if (auto data = val.getData()) {
+            it = format_to(it, ", data={}", *data.value());
+        }
+        else {
+            it = format_to(it, ", data=INVALID");
+        }
+        it = format_to(it, ")");
+        return it;
     }
 };
 }  // namespace fmt

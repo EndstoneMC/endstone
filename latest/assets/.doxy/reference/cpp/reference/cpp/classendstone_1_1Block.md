@@ -53,21 +53,21 @@ _Represents a block._ [More...](#detailed-description)
 | Type | Name |
 | ---: | :--- |
 | virtual std::shared\_ptr&lt; [**BlockState**](classendstone_1_1BlockState.md) &gt; | [**captureState**](#function-capturestate) () const = 0<br> |
-| virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
+| virtual Result&lt; std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the complete block data for this block._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains this_ [_**Block**_](classendstone_1_1Block.md) _._ |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the_ [_**Location**_](classendstone_1_1Location.md) _of the block._ |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-13) (int offset\_x, int offset\_y, int offset\_z) = 0<br>_Gets the block at the given offsets._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-23) (BlockFace face) = 0<br>_Gets the block at the given face._  |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getRelative**](#function-getrelative-33) (BlockFace face, int distance) = 0<br>_Gets the block at the given distance of the given face._  |
-| virtual std::string | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getRelative**](#function-getrelative-13) (int offset\_x, int offset\_y, int offset\_z) = 0<br>_Gets the block at the given offsets._  |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getRelative**](#function-getrelative-23) (BlockFace face) = 0<br>_Gets the block at the given face._  |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getRelative**](#function-getrelative-33) (BlockFace face, int distance) = 0<br>_Gets the block at the given distance of the given face._  |
+| virtual Result&lt; std::string &gt; | [**getType**](#function-gettype) () const = 0<br>_Get the type of the block._  |
 | virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block._  |
 | virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block._  |
 | virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block._  |
 | virtual bool | [**isValid**](#function-isvalid) () const = 0<br>_Checks if the block is valid._  |
-| virtual void | [**setData**](#function-setdata-12) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
-| virtual void | [**setData**](#function-setdata-22) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
-| virtual void | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
-| virtual void | [**setType**](#function-settype-22) (std::string type, bool apply\_physics) = 0<br>_Sets the type of this block._  |
+| virtual Result&lt; void &gt; | [**setData**](#function-setdata-12) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; void &gt; | [**setData**](#function-setdata-22) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data, bool apply\_physics) = 0<br>_Sets the complete data for this block._  |
+| virtual Result&lt; void &gt; | [**setType**](#function-settype-12) (std::string type) = 0<br>_Sets the type of this block._  |
+| virtual Result&lt; void &gt; | [**setType**](#function-settype-22) (std::string type, bool apply\_physics) = 0<br>_Sets the type of this block._  |
 | virtual  | [**~Block**](#function-block) () = default<br> |
 
 
@@ -144,7 +144,7 @@ The returned object will never be updated, and you are not guaranteed that (for 
 
 _Gets the complete block data for this block._ 
 ```C++
-virtual std::shared_ptr< BlockData > endstone::Block::getData () const = 0
+virtual Result< std::shared_ptr< BlockData > > endstone::Block::getData () const = 0
 ```
 
 
@@ -219,7 +219,7 @@ virtual Location endstone::Block::getLocation () const = 0
 
 _Gets the block at the given offsets._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual Result< std::unique_ptr< Block > > endstone::Block::getRelative (
     int offset_x,
     int offset_y,
     int offset_z
@@ -257,7 +257,7 @@ virtual std::unique_ptr< Block > endstone::Block::getRelative (
 
 _Gets the block at the given face._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual Result< std::unique_ptr< Block > > endstone::Block::getRelative (
     BlockFace face
 ) = 0
 ```
@@ -294,7 +294,7 @@ This method is equal to getRelative(face, 1)
 
 _Gets the block at the given distance of the given face._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::Block::getRelative (
+virtual Result< std::unique_ptr< Block > > endstone::Block::getRelative (
     BlockFace face,
     int distance
 ) = 0
@@ -330,7 +330,7 @@ virtual std::unique_ptr< Block > endstone::Block::getRelative (
 
 _Get the type of the block._ 
 ```C++
-virtual std::string endstone::Block::getType () const = 0
+virtual Result< std::string > endstone::Block::getType () const = 0
 ```
 
 
@@ -462,7 +462,7 @@ true if the block is valid (i.e., the containing chunk is loaded and ticking), o
 
 _Sets the complete data for this block._ 
 ```C++
-virtual void endstone::Block::setData (
+virtual Result< void > endstone::Block::setData (
     std::shared_ptr< BlockData > data
 ) = 0
 ```
@@ -489,7 +489,7 @@ virtual void endstone::Block::setData (
 
 _Sets the complete data for this block._ 
 ```C++
-virtual void endstone::Block::setData (
+virtual Result< void > endstone::Block::setData (
     std::shared_ptr< BlockData > data,
     bool apply_physics
 ) = 0
@@ -518,7 +518,7 @@ virtual void endstone::Block::setData (
 
 _Sets the type of this block._ 
 ```C++
-virtual void endstone::Block::setType (
+virtual Result< void > endstone::Block::setType (
     std::string type
 ) = 0
 ```
@@ -545,7 +545,7 @@ virtual void endstone::Block::setType (
 
 _Sets the type of this block._ 
 ```C++
-virtual void endstone::Block::setType (
+virtual Result< void > endstone::Block::setType (
     std::string type,
     bool apply_physics
 ) = 0

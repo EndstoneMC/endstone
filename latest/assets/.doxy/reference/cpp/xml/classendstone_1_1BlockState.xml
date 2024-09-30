@@ -16,11 +16,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="33" column="13"/>
+        <location file="include/endstone/block/block_state.h" line="34" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a0d7699bfdc83a8c82a6ec458fb5e89c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
-        <definition>virtual std::unique_ptr&lt;Block&gt; endstone::BlockState::getBlock</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a5201536524391a54d61165cfdfd8533a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt; &gt;</type>
+        <definition>virtual Result&lt;std::unique_ptr&lt;Block&gt; &gt; endstone::BlockState::getBlock</definition>
         <argsstring>() const =0</argsstring>
         <name>getBlock</name>
         <briefdescription>
@@ -29,20 +29,11 @@
         <detaileddescription>
 <para><simplesect kind="return"><para>the block represented by this block state </para>
 </simplesect>
-<parameterlist kind="exception"><parameteritem>
-<parameternamelist>
-<parametername>IllegalStateException</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>if this block state is not placed </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="41" column="30"/>
+        <location file="include/endstone/block/block_state.h" line="41" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ae5c5fbb7989498006f3e7e48d76e10cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -61,9 +52,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="48" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::BlockState::setType</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a54d7aaead025b9adfb2a5ff5a40290dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::BlockState::setType</definition>
         <argsstring>(std::string type)=0</argsstring>
         <name>setType</name>
         <param>
@@ -87,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="55" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="55" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::shared_ptr&lt; <ref refid="classendstone_1_1BlockData" kindref="compound">BlockData</ref> &gt;</type>
@@ -106,9 +97,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="62" column="30"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a350cab6ce664d167f75b287eaf34916e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>void</type>
-        <definition>virtual void endstone::BlockState::setData</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1aa7feb45825a6b6b1bbf763c30f54812d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::BlockState::setData</definition>
         <argsstring>(std::shared_ptr&lt; BlockData &gt; data)=0</argsstring>
         <name>setData</name>
         <param>
@@ -132,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="69" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="69" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BlockState_1ae2e6bd0aec930c2611a34c34f9d1cb3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Dimension" kindref="compound">Dimension</ref> &amp;</type>
@@ -219,9 +210,9 @@
         </inbodydescription>
         <location file="include/endstone/block/block_state.h" line="104" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a8e68d6116122ac5ce523ab17117a9501" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; bool &gt;</type>
+        <definition>virtual Result&lt;bool&gt; endstone::BlockState::update</definition>
         <argsstring>()=0</argsstring>
         <name>update</name>
         <briefdescription>
@@ -235,11 +226,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="114" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="114" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1acebc229bc621572fe102911ce82871d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; bool &gt;</type>
+        <definition>virtual Result&lt;bool&gt; endstone::BlockState::update</definition>
         <argsstring>(bool force)=0</argsstring>
         <name>update</name>
         <param>
@@ -266,11 +257,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="124" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="124" column="20"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>bool</type>
-        <definition>virtual bool endstone::BlockState::update</definition>
+      <memberdef kind="function" id="classendstone_1_1BlockState_1a8a4a9803c4d40c350d291fefa81945aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; bool &gt;</type>
+        <definition>virtual Result&lt;bool&gt; endstone::BlockState::update</definition>
         <argsstring>(bool force, bool apply_physics)=0</argsstring>
         <name>update</name>
         <param>
@@ -311,7 +302,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/block/block_state.h" line="137" column="18"/>
+        <location file="include/endstone/block/block_state.h" line="137" column="20"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -342,9 +333,9 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/block/block_state.h" line="31" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="31" bodyend="138"/>
+    <location file="include/endstone/block/block_state.h" line="32" column="1" bodyfile="include/endstone/block/block_state.h" bodystart="32" bodyend="138"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BlockState_1a0d7699bfdc83a8c82a6ec458fb5e89c1" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1BlockState_1a5201536524391a54d61165cfdfd8533a" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getBlock</name></member>
       <member refid="classendstone_1_1BlockState_1aec5f854487918a3100a6da6383816329" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getData</name></member>
       <member refid="classendstone_1_1BlockState_1ae2e6bd0aec930c2611a34c34f9d1cb3d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getDimension</name></member>
       <member refid="classendstone_1_1BlockState_1a6f8f4a475c2c955b1a883877d9b4baf5" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getLocation</name></member>
@@ -352,11 +343,11 @@
       <member refid="classendstone_1_1BlockState_1a465f89196adeb9f1cb76b1425f8b1856" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getX</name></member>
       <member refid="classendstone_1_1BlockState_1a26cb455d3bb6d9ab6f703d1df14c9232" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getY</name></member>
       <member refid="classendstone_1_1BlockState_1a1d4ccdc3539f2d549ef3d98393bb89af" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>getZ</name></member>
-      <member refid="classendstone_1_1BlockState_1a350cab6ce664d167f75b287eaf34916e" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setData</name></member>
-      <member refid="classendstone_1_1BlockState_1aa88e548ecca5594b29a7cc309a65266f" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setType</name></member>
-      <member refid="classendstone_1_1BlockState_1aeaca92e63b3fa7bf37eb82e59bb9a45d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
-      <member refid="classendstone_1_1BlockState_1a4d603b37f4b38df4151ced22c7f78331" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
-      <member refid="classendstone_1_1BlockState_1a6bb9b025f0e02b8ec732e6a74c27b599" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1aa7feb45825a6b6b1bbf763c30f54812d" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setData</name></member>
+      <member refid="classendstone_1_1BlockState_1a54d7aaead025b9adfb2a5ff5a40290dc" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>setType</name></member>
+      <member refid="classendstone_1_1BlockState_1a8e68d6116122ac5ce523ab17117a9501" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1acebc229bc621572fe102911ce82871d8" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
+      <member refid="classendstone_1_1BlockState_1a8a4a9803c4d40c350d291fefa81945aa" prot="public" virt="pure-virtual"><scope>endstone::BlockState</scope><name>update</name></member>
       <member refid="classendstone_1_1BlockState_1a7e3b8131f58cbb0ba1cd3338d8b90c12" prot="public" virt="virtual"><scope>endstone::BlockState</scope><name>~BlockState</name></member>
     </listofallmembers>
   </compounddef>

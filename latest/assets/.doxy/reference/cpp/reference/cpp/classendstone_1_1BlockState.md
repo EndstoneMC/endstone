@@ -53,7 +53,7 @@ Inherits the following classes: std::enable_shared_from_this< BlockState >
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
+| virtual Result&lt; std::unique\_ptr&lt; [**Block**](classendstone_1_1Block.md) &gt; &gt; | [**getBlock**](#function-getblock) () const = 0<br>_Gets the block represented by this block state._  |
 | virtual std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; | [**getData**](#function-getdata) () const = 0<br>_Gets the data for this block state._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br>_Gets the dimension which contains the block represented by this block state._  |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br>_Gets the location of this block state._  |
@@ -61,11 +61,11 @@ Inherits the following classes: std::enable_shared_from_this< BlockState >
 | virtual int | [**getX**](#function-getx) () const = 0<br>_Gets the x-coordinate of this block state._  |
 | virtual int | [**getY**](#function-gety) () const = 0<br>_Gets the y-coordinate of this block state._  |
 | virtual int | [**getZ**](#function-getz) () const = 0<br>_Gets the z-coordinate of this block state._  |
-| virtual void | [**setData**](#function-setdata) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the data for this block state._  |
-| virtual void | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
-| virtual bool | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
-| virtual bool | [**update**](#function-update-23) (bool force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
-| virtual bool | [**update**](#function-update-33) (bool force, bool apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual Result&lt; void &gt; | [**setData**](#function-setdata) (std::shared\_ptr&lt; [**BlockData**](classendstone_1_1BlockData.md) &gt; data) = 0<br>_Sets the data for this block state._  |
+| virtual Result&lt; void &gt; | [**setType**](#function-settype) (std::string type) = 0<br>_Sets the type of this block state._  |
+| virtual Result&lt; bool &gt; | [**update**](#function-update-13) () = 0<br>_Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._  |
+| virtual Result&lt; bool &gt; | [**update**](#function-update-23) (bool force) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
+| virtual Result&lt; bool &gt; | [**update**](#function-update-33) (bool force, bool apply\_physics) = 0<br>_Attempts to update the block represented by this state, setting it to the new values as defined by this state._  |
 | virtual  | [**~BlockState**](#function-blockstate) () = default<br> |
 
 
@@ -111,7 +111,7 @@ Unlike [**Block**](classendstone_1_1Block.md), which only one object can exist p
 
 _Gets the block represented by this block state._ 
 ```C++
-virtual std::unique_ptr< Block > endstone::BlockState::getBlock () const = 0
+virtual Result< std::unique_ptr< Block > > endstone::BlockState::getBlock () const = 0
 ```
 
 
@@ -122,13 +122,6 @@ virtual std::unique_ptr< Block > endstone::BlockState::getBlock () const = 0
 
 the block represented by this block state 
 
-
-
-
-**Exception:**
-
-
-* `IllegalStateException` if this block state is not placed 
 
 
 
@@ -318,7 +311,7 @@ z-coordinate
 
 _Sets the data for this block state._ 
 ```C++
-virtual void endstone::BlockState::setData (
+virtual Result< void > endstone::BlockState::setData (
     std::shared_ptr< BlockData > data
 ) = 0
 ```
@@ -345,7 +338,7 @@ virtual void endstone::BlockState::setData (
 
 _Sets the type of this block state._ 
 ```C++
-virtual void endstone::BlockState::setType (
+virtual Result< void > endstone::BlockState::setType (
     std::string type
 ) = 0
 ```
@@ -372,7 +365,7 @@ virtual void endstone::BlockState::setType (
 
 _Attempts to update the block represented by this state, setting it to yhe new values as defined by this state._ 
 ```C++
-virtual bool endstone::BlockState::update () = 0
+virtual Result< bool > endstone::BlockState::update () = 0
 ```
 
 
@@ -400,7 +393,7 @@ true if the update was successful, otherwise false
 
 _Attempts to update the block represented by this state, setting it to the new values as defined by this state._ 
 ```C++
-virtual bool endstone::BlockState::update (
+virtual Result< bool > endstone::BlockState::update (
     bool force
 ) = 0
 ```
@@ -437,7 +430,7 @@ true if the update was successful, otherwise false
 
 _Attempts to update the block represented by this state, setting it to the new values as defined by this state._ 
 ```C++
-virtual bool endstone::BlockState::update (
+virtual Result< bool > endstone::BlockState::update (
     bool force,
     bool apply_physics
 ) = 0
