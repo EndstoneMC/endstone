@@ -10,6 +10,7 @@
 
 
 
+* `#include <memory>`
 * `#include <string>`
 * `#include "endstone/actor/actor.h"`
 

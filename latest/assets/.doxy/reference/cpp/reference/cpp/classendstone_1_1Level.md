@@ -52,7 +52,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::vector&lt; [**Actor**](classendstone_1_1Actor.md) \* &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this level._  |
+| virtual std::vector&lt; std::shared\_ptr&lt; [**Actor**](classendstone_1_1Actor.md) &gt; &gt; | [**getActors**](#function-getactors) () const = 0<br>_Get a list of all actors in this level._  |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) \* | [**getDimension**](#function-getdimension) (std::string name) const = 0<br>_Gets the dimension with the given name._  |
 | virtual std::vector&lt; [**Dimension**](classendstone_1_1Dimension.md) \* &gt; | [**getDimensions**](#function-getdimensions) () const = 0<br>_Gets a list of all dimensions within this level._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the unique name of this level._  |
@@ -96,7 +96,7 @@ _Represents a level, which may contain actors, chunks and blocks._
 
 _Get a list of all actors in this level._ 
 ```C++
-virtual std::vector< Actor * > endstone::Level::getActors () const = 0
+virtual std::vector< std::shared_ptr< Actor > > endstone::Level::getActors () const = 0
 ```
 
 

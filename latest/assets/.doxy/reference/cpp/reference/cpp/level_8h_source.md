@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 
 #include "endstone/actor/actor.h"
@@ -36,7 +37,7 @@ public:
 
     [[nodiscard]] virtual std::string getName() const = 0;
 
-    [[nodiscard]] virtual std::vector<Actor *> getActors() const = 0;
+    [[nodiscard]] virtual std::vector<std::shared_ptr<Actor>> getActors() const = 0;
 
     [[nodiscard]] virtual int getTime() const = 0;
 

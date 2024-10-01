@@ -32,14 +32,6 @@ namespace endstone {
 
 class Actor : public CommandSender {
 public:
-    Actor() = default;
-    Actor(const Actor &) = delete;
-    Actor &operator=(const Actor &) = delete;
-    Actor(Actor &&) = delete;
-    Actor &operator=(Actor &&) = delete;
-
-    ~Actor() override = default;
-
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
 
     [[nodiscard]] virtual Location getLocation() const = 0;

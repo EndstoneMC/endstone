@@ -464,6 +464,8 @@
       <node id="54">
         <label>endstone/level/level.h</label>
         <link refid="level_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -573,6 +575,8 @@
       <node id="17">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="18" relation="include">

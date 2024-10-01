@@ -1871,6 +1871,28 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#protected-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-static-functions" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Static Functions
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2040,9 +2062,82 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-shared_from_base" class="md-nav__link">
+      <span class="md-ellipsis">
+        function shared_from_base
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-permissible" class="md-nav__link">
       <span class="md-ellipsis">
         function ~Permissible
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-permissible_1" class="md-nav__link">
+      <span class="md-ellipsis">
+        function Permissible
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-static-functions-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Static Functions Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Static Functions Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-create0" class="md-nav__link">
+      <span class="md-ellipsis">
+        function create0
       </span>
     </a>
 
@@ -2093,6 +2188,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/permissions/permissible.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: std::enable_shared_from_this&lt; Permissible &gt;</p>
 <p>Inherited by the following classes: <a href="../classendstone_1_1CommandSender/">endstone::CommandSender</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
@@ -2152,8 +2248,42 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-setop"><strong>setOp</strong></a> (bool value) = 0<br><em>Sets the operator status of this object.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">std::shared_ptr&lt; Derived &gt;</td>
+<td style="text-align: left;"><a href="#function-shared_from_base"><strong>shared_from_base</strong></a> () <br></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual</td>
 <td style="text-align: left;"><a href="#function-permissible"><strong>~Permissible</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-functions">Protected Functions<a class="headerlink" href="#protected-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="#function-permissible"><strong>Permissible</strong></a> () <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-static-functions">Protected Static Functions<a class="headerlink" href="#protected-static-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::shared_ptr&lt; Derived &gt;</td>
+<td style="text-align: left;"><a href="#function-create0"><strong>create0</strong></a> (Args &amp;&amp;... args) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2299,8 +2429,27 @@ For latest updates join the chat on
 </ul>
 <hr>
 
+<h3 id="function-shared_from_base">function shared_from_base<a class="headerlink" href="#function-shared_from_base" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="o">&gt;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permissible</span><span class="o">::</span><span class="n">shared_from_base</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+
 <h3 id="function-permissible">function ~Permissible<a class="headerlink" href="#function-permissible" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permissible</span><span class="o">::~</span><span class="n">Permissible</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permissible</span><span class="o">::~</span><span class="n">Permissible</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+</span></code></pre></div>
+<hr>
+<h2 id="protected-functions-documentation">Protected Functions Documentation<a class="headerlink" href="#protected-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-permissible_1">function Permissible<a class="headerlink" href="#function-permissible_1" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permissible</span><span class="o">::</span><span class="n">Permissible</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+</span></code></pre></div>
+<hr>
+<h2 id="protected-static-functions-documentation">Protected Static Functions Documentation<a class="headerlink" href="#protected-static-functions-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="function-create0">function create0<a class="headerlink" href="#function-create0" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Derived</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Derived</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Permissible</span><span class="o">::</span><span class="n">create0</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="w"> </span><span class="n">args</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
 

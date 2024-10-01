@@ -7,7 +7,6 @@
 
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
-* **Actor** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -48,9 +47,9 @@
 * **Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **clearCommands** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
-* **CommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
+* **create0** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **cancelTask** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
@@ -342,8 +341,8 @@
 
 ## o
 
-* **operator=** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Player**](classendstone_1_1Player.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **onCommand** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
+* **operator=** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md), [**endstone::Event**](classendstone_1_1Event.md), [**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **operator!=** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **operator==** ([**endstone::Objective**](classendstone_1_1Objective.md), [**endstone::Vector**](classendstone_1_1Vector.md))
 * **onDisable** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
@@ -362,10 +361,10 @@
 
 ## p
 
+* **Permissible** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **Permission** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **PermissionAttachment** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **PermissionAttachmentInfo** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
-* **Player** ([**endstone::Player**](classendstone_1_1Player.md))
 * **performCommand** ([**endstone::Player**](classendstone_1_1Player.md))
 * **PlayerChatEvent** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **PlayerCommandEvent** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md))
@@ -461,6 +460,7 @@
 * **setDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setOp** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
+* **shared\_from\_base** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **setDefault** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **setPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **setRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
@@ -558,7 +558,6 @@
 
 ## ~
 
-* **~Actor** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **~ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **~ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **~ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -575,7 +574,6 @@
 * **~Command** ([**endstone::Command**](classendstone_1_1Command.md))
 * **~CommandExecutor** ([**endstone::CommandExecutor**](classendstone_1_1CommandExecutor.md))
 * **~CommandMap** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
-* **~CommandSender** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **~Criteria** ([**endstone::Criteria**](classendstone_1_1Criteria.md))
 * **~Dimension** ([**endstone::Dimension**](classendstone_1_1Dimension.md))
 * **~Event** ([**endstone::Event**](classendstone_1_1Event.md))
@@ -586,7 +584,6 @@
 * **~Objective** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **~Packet** ([**endstone::Packet**](classendstone_1_1Packet.md))
 * **~Permissible** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
-* **~Player** ([**endstone::Player**](classendstone_1_1Player.md))
 * **~PlayerChatEvent** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **~PlayerCommandEvent** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md))
 * **~PlayerDeathEvent** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
@@ -601,7 +598,6 @@
 * **~Plugin** ([**endstone::Plugin**](classendstone_1_1Plugin.md))
 * **~PluginLoader** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **~PluginManager** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **~ProxiedCommandSender** ([**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md))
 * **~Scheduler** ([**endstone::Scheduler**](classendstone_1_1Scheduler.md))
 * **~Score** ([**endstone::Score**](classendstone_1_1Score.md))
 * **~Scoreboard** ([**endstone::Scoreboard**](classendstone_1_1Scoreboard.md))

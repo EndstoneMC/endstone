@@ -133,9 +133,6 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Player**](#function-player-13) () = default<br> |
-|   | [**Player**](#function-player-23) (const [**Player**](classendstone_1_1Player.md) &) = delete<br> |
-|   | [**Player**](#function-player-33) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](#function-asplayer) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
 | virtual void | [**closeForm**](#function-closeform) () = 0<br>_Closes the forms that are currently open for the player._  |
 | virtual const [**SocketAddress**](classendstone_1_1SocketAddress.md) & | [**getAddress**](#function-getaddress) () const = 0<br>_Gets the socket address of this player._  |
@@ -160,8 +157,6 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**giveExpLevels**](#function-giveexplevels) (int amount) = 0<br>_Gives the player the amount of experience levels specified._  |
 | virtual bool | [**isFlying**](#function-isflying) () const = 0<br>_Checks to see if this player is currently flying or not._  |
 | virtual void | [**kick**](#function-kick) (std::string message) const = 0<br>_Kicks player with custom kick message._  |
-|  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator) (const [**Player**](classendstone_1_1Player.md) &) = delete<br> |
-|  [**Player**](classendstone_1_1Player.md) & | [**operator=**](#function-operator_1) ([**Player**](classendstone_1_1Player.md) &&) = delete<br> |
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual void | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual void | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
@@ -181,7 +176,6 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
 | virtual void | [**transfer**](#function-transfer) (std::string host, int port) const = 0<br>_Transfers the player to another server._  |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
-|   | [**~Player**](#function-player) () override<br> |
 
 
 ## Public Functions inherited from endstone::Mob
@@ -199,9 +193,6 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-13) () = default<br> |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|   | [**Actor**](classendstone_1_1Actor.md#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](classendstone_1_1Actor.md#function-getdimension) () const = 0<br> |
 | virtual std::int64\_t | [**getId**](classendstone_1_1Actor.md#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](classendstone_1_1Actor.md#function-getlevel) () const = 0<br> |
@@ -212,12 +203,9 @@ See [endstone::Actor](classendstone_1_1Actor.md)
 | virtual bool | [**isInLava**](classendstone_1_1Actor.md#function-isinlava) () const = 0<br> |
 | virtual bool | [**isInWater**](classendstone_1_1Actor.md#function-isinwater) () const = 0<br> |
 | virtual bool | [**isOnGround**](classendstone_1_1Actor.md#function-isonground) () const = 0<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](classendstone_1_1Actor.md#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual void | [**setRotation**](classendstone_1_1Actor.md#function-setrotation) (float yaw, float pitch) = 0<br> |
 | virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
 | virtual void | [**teleport**](classendstone_1_1Actor.md#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
-|   | [**~Actor**](classendstone_1_1Actor.md#function-actor) () override<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -226,7 +214,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () = default<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](classendstone_1_1CommandSender.md#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](classendstone_1_1CommandSender.md#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
@@ -236,7 +223,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 |  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) (const Message & message) const = 0<br>_Sends this sender a message._  |
 |  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-|   | [**~CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () override<br> |
 
 
 ## Public Functions inherited from endstone::Permissible
@@ -257,6 +243,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual void | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br> |
 | virtual Result&lt; void &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
+|  std::shared\_ptr&lt; Derived &gt; | [**shared\_from\_base**](classendstone_1_1Permissible.md#function-shared_from_base) () <br> |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
@@ -383,6 +370,13 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Protected Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**Permissible**](classendstone_1_1Permissible.md#function-permissible) () <br> |
 
 
 
@@ -393,53 +387,17 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Protected Static Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|  std::shared\_ptr&lt; Derived &gt; | [**create0**](classendstone_1_1Permissible.md#function-create0) (Args &&... args) <br> |
 
 
 ## Public Functions Documentation
 
-
-
-
-### function Player [1/3]
-
-```C++
-endstone::Player::Player () = default
-```
-
-
-
-
-<hr>
-
-
-
-### function Player [2/3]
-
-```C++
-endstone::Player::Player (
-    const Player &
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function Player [3/3]
-
-```C++
-endstone::Player::Player (
-    Player &&
-) = delete
-```
-
-
-
-
-<hr>
 
 
 
@@ -1045,36 +1003,6 @@ virtual void endstone::Player::kick (
 
 
 
-### function operator= 
-
-```C++
-Player & endstone::Player::operator= (
-    const Player &
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function operator= 
-
-```C++
-Player & endstone::Player::operator= (
-    Player &&
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
 ### function performCommand 
 
 _Makes the player perform the given command._ 
@@ -1593,19 +1521,6 @@ Generally useful to ensure the client has a complete list of commands after perm
 
 
         
-
-<hr>
-
-
-
-### function ~Player 
-
-```C++
-endstone::Player::~Player () override
-```
-
-
-
 
 <hr>
 ## Protected Types Documentation

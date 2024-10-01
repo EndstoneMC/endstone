@@ -46,30 +46,30 @@
       <node id="2">
         <label>string</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>unordered_set</label>
       </node>
-      <node id="15">
+      <node id="16">
         <label>string_view</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>nonstd/expected.hpp</label>
       </node>
-      <node id="14">
+      <node id="15">
         <label>endstone/util/error.h</label>
         <link refid="error_8h_source"/>
-        <childnode refid="15" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="8">
         <label>vector</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>endstone/util/result.h</label>
         <link refid="result_8h_source"/>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -90,22 +90,27 @@
       <node id="9">
         <label>endstone/permissions/permissible.h</label>
         <link refid="permissible_8h_source"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
-      <node id="11">
+      <node id="12">
         <label>endstone/permissions/permission_attachment_info.h</label>
         <link refid="permission__attachment__info_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+      </node>
+      <node id="10">
+        <label>memory</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -464,51 +469,48 @@
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33" refid="classendstone_1_1CommandSender" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Permissible</highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" refkind="member"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kindref="member">asCommandSender</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
-<codeline lineno="45"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kindref="member">asConsole</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="55"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kindref="member">asPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="65"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Message<sp/>&amp;message)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="78"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(fmt::format(format,<sp/>std::forward&lt;Args&gt;(args)...));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Permissible</highlight></codeline>
+<codeline lineno="41" refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" refkind="member"><highlight class="comment"></highlight><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kindref="member">asCommandSender</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override</highlight></codeline>
+<codeline lineno="42"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kindref="member">asConsole</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="52"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Player" kindref="compound">Player</ref><sp/>*<ref refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kindref="member">asPlayer</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="62"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Message<sp/>&amp;message)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="75"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kindref="member">sendMessage</ref>(fmt::format(format,<sp/>std::forward&lt;Args&gt;(args)...));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(e.what());</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(e.what());</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Message<sp/>&amp;message)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
-<codeline lineno="96"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(fmt::format(format,<sp/>std::forward&lt;Args&gt;(args)...));</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105" refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Server" kindref="compound">Server</ref><sp/>&amp;<ref refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kindref="member">getServer</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112" refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kindref="member">getName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="114"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Message<sp/>&amp;message)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fmt::format_string&lt;Args...&gt;<sp/>format,<sp/>Args<sp/>&amp;&amp;...args)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="93"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" kindref="member">sendErrorMessage</ref>(fmt::format(format,<sp/>std::forward&lt;Args&gt;(args)...));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1Server" kindref="compound">Server</ref><sp/>&amp;<ref refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kindref="member">getServer</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kindref="member">getName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/command/command_sender.h"/>
   </compounddef>

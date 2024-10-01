@@ -10,6 +10,7 @@
 
 
 
+* `#include <memory>`
 * `#include <string>`
 * `#include <unordered_set>`
 * `#include "endstone/permissions/permission_attachment_info.h"`

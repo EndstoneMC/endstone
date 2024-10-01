@@ -209,9 +209,9 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="91" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> &amp;</type>
-        <definition>virtual ConsoleCommandSender&amp; endstone::Server::getCommandSender</definition>
+      <memberdef kind="function" id="classendstone_1_1Server_1a641740db1fb60fa6d96370c43e0dfe45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ConsoleCommandSender" kindref="compound">ConsoleCommandSender</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt;ConsoleCommandSender&gt; endstone::Server::getCommandSender</definition>
         <argsstring>() const =0</argsstring>
         <name>getCommandSender</name>
         <briefdescription>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/server.h" line="98" column="35"/>
+        <location file="include/endstone/server.h" line="98" column="30"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -949,7 +949,7 @@
       <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageMillisecondsPerTick</name></member>
       <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTicksPerSecond</name></member>
       <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTickUsage</name></member>
-      <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
+      <member refid="classendstone_1_1Server_1a641740db1fb60fa6d96370c43e0dfe45" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCommandSender</name></member>
       <member refid="classendstone_1_1Server_1a2a9e4988b27ff1cfa65df290a8d61c7c" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentMillisecondsPerTick</name></member>
       <member refid="classendstone_1_1Server_1a3b94b752dcf483b607c247ff335a0deb" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTicksPerSecond</name></member>
       <member refid="classendstone_1_1Server_1a4961829bb78b2cbb9e53393f6c4ee3ad" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getCurrentTickUsage</name></member>

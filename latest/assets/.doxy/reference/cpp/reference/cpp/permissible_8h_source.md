@@ -24,6 +24,7 @@
 
 #pragma once
 
+#include <memory>
 #include <string>
 #include <unordered_set>
 
@@ -37,7 +38,10 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible {
+class Permissible : public std::enable_shared_from_this<Permissible> {
+protected:
+    explicit Permissible(){};
+
 public:
     virtual ~Permissible() = default;
 
@@ -64,6 +68,24 @@ public:
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 
     [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
+
+    template <typename Derived>
+    std::shared_ptr<Derived> shared_from_base()
+    {
+        return std::static_pointer_cast<Derived>(shared_from_this());
+    }
+
+protected:
+    template <typename Derived, typename... Args>
+    static std::shared_ptr<Derived> create0(Args &&...args)
+    {
+        struct make_shared_enabler : Derived {
+            explicit make_shared_enabler(Args &&...args) : Derived(std::forward<Args>(args)...) {}
+        };
+        auto result = std::make_shared<make_shared_enabler>(std::forward<Args>(args)...);
+        result->recalculatePermissions();
+        return result;
+    }
 };
 }  // namespace endstone
 ```

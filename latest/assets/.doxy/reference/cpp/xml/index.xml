@@ -15,12 +15,6 @@
     <member refid="classendstone_1_1ActionForm_1a2a1571de49cee09428183550ba9d21f6" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
-    <member refid="classendstone_1_1Actor_1aa2a7995cb17a5a434e5cfcd86e3429f4" kind="function"><name>Actor</name></member>
-    <member refid="classendstone_1_1Actor_1ae834839aa63e25fbd02b080818295c55" kind="function"><name>Actor</name></member>
-    <member refid="classendstone_1_1Actor_1abc2a69af162df3f3f3537a090792ecdd" kind="function"><name>operator=</name></member>
-    <member refid="classendstone_1_1Actor_1a87d53d3bf300ae2ec479300c153dd1db" kind="function"><name>Actor</name></member>
-    <member refid="classendstone_1_1Actor_1adeb8493a17eaf195804a9aaa20ab1435" kind="function"><name>operator=</name></member>
-    <member refid="classendstone_1_1Actor_1ac83e893c1875f8edb172c6f7bc7333d9" kind="function"><name>~Actor</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
     <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" kind="function"><name>getVelocity</name></member>
@@ -282,8 +276,6 @@
     <member refid="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" kind="function"><name>getCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
-    <member refid="classendstone_1_1CommandSender_1a2051a5fd2283167f3d2802e5817adb2e" kind="function"><name>CommandSender</name></member>
-    <member refid="classendstone_1_1CommandSender_1a6cb63c95fcb72d2a15afad86c0a1d629" kind="function"><name>~CommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kind="function"><name>asConsole</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
@@ -449,7 +441,7 @@
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
     <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" kind="function"><name>getName</name></member>
-    <member refid="classendstone_1_1Level_1a1e835342a3a271a9f4b75aa7a321d1d4" kind="function"><name>getActors</name></member>
+    <member refid="classendstone_1_1Level_1a5cbccfd6b0d6d7601574654c9d2e129a" kind="function"><name>getActors</name></member>
     <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" kind="function"><name>getTime</name></member>
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1a79e833bb3b01ea1ac5c06bb9e37d7b1b" kind="function"><name>getDimensions</name></member>
@@ -551,6 +543,7 @@
     <member refid="classendstone_1_1Packet_1ae6b902874f587e6041c9706318a6ee34" kind="function"><name>getType</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
+    <member refid="classendstone_1_1Permissible_1a79d614f6982271b55b3a73dd8aeea697" kind="function"><name>Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" kind="function"><name>isOp</name></member>
     <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" kind="function"><name>setOp</name></member>
@@ -564,6 +557,8 @@
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" kind="function"><name>asCommandSender</name></member>
+    <member refid="classendstone_1_1Permissible_1ae62482c60fcaae47e38450a70a529613" kind="function"><name>shared_from_base</name></member>
+    <member refid="classendstone_1_1Permissible_1ae78ea6f08d91e1f1bfa5bb0fe3a12284" kind="function"><name>create0</name></member>
   </compound>
   <compound refid="classendstone_1_1Permission" kind="class"><name>endstone::Permission</name>
     <member refid="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" kind="variable"><name>DefaultPermission</name></member>
@@ -615,12 +610,6 @@
   </compound>
   <compound refid="classendstone_1_1Player" kind="class"><name>endstone::Player</name>
     <member refid="classendstone_1_1Player_1a03ceece6b2097f9219b3b5976f232041" kind="typedef"><name>FormVariant</name></member>
-    <member refid="classendstone_1_1Player_1ad5c3e424cf0d8bd0c5dfe2fb907c726d" kind="function"><name>Player</name></member>
-    <member refid="classendstone_1_1Player_1a216795ac51b31012f7dc17d140272982" kind="function"><name>Player</name></member>
-    <member refid="classendstone_1_1Player_1aa8bf70ec233f8741cc0bcc810ba1cdfc" kind="function"><name>operator=</name></member>
-    <member refid="classendstone_1_1Player_1adf03a1a7668477bc13b7f51805fa69a8" kind="function"><name>Player</name></member>
-    <member refid="classendstone_1_1Player_1a02acf696396f354a6caacc2a115c7992" kind="function"><name>operator=</name></member>
-    <member refid="classendstone_1_1Player_1a2c633b6166a107cb9a75ba2e2dc758de" kind="function"><name>~Player</name></member>
     <member refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" kind="function"><name>getUniqueId</name></member>
     <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" kind="function"><name>getXuid</name></member>
@@ -925,7 +914,6 @@
     <member refid="classendstone_1_1Position_1a07caf1676929d3673b2507a1ccc7a9af" kind="function"><name>getBlockZ</name></member>
   </compound>
   <compound refid="classendstone_1_1ProxiedCommandSender" kind="class"><name>endstone::ProxiedCommandSender</name>
-    <member refid="classendstone_1_1ProxiedCommandSender_1ae4aa6d5d3a8fc60f471c6bfda6c8b7d9" kind="function"><name>~ProxiedCommandSender</name></member>
     <member refid="classendstone_1_1ProxiedCommandSender_1ae097da0205a78357302ae2070e0bfa05" kind="function"><name>getCaller</name></member>
     <member refid="classendstone_1_1ProxiedCommandSender_1a134a31c08b50616431745d14586bbd72" kind="function"><name>getCallee</name></member>
   </compound>
@@ -979,7 +967,7 @@
     <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" kind="function"><name>getLogger</name></member>
     <member refid="classendstone_1_1Server_1a612846abaf6bd84f56d1cb81a3c0aa95" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ad65f8ef9b0f8f4af5d56788af89c5367" kind="function"><name>getPluginCommand</name></member>
-    <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
+    <member refid="classendstone_1_1Server_1a641740db1fb60fa6d96370c43e0dfe45" kind="function"><name>getCommandSender</name></member>
     <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1aee8ec47d389d77f2a36ed49777a77621" kind="function"><name>getScheduler</name></member>
     <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" kind="function"><name>getLevel</name></member>

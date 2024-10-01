@@ -46,14 +46,6 @@ protected:
     using FormVariant = std::variant<MessageForm, ActionForm, ModalForm>;
 
 public:
-    Player() = default;
-    Player(const Player &) = delete;
-    Player &operator=(const Player &) = delete;
-    Player(Player &&) = delete;
-    Player &operator=(Player &&) = delete;
-
-    ~Player() override = default;
-
     // CommandSender
     [[nodiscard]] Player *asPlayer() const override
     {

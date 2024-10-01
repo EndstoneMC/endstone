@@ -97,7 +97,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () = default<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](classendstone_1_1CommandSender.md#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](classendstone_1_1CommandSender.md#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
@@ -107,7 +106,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 |  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) (const Message & message) const = 0<br>_Sends this sender a message._  |
 |  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-|   | [**~CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () override<br> |
 
 
 ## Public Functions inherited from endstone::Permissible
@@ -128,6 +126,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual void | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br> |
 | virtual Result&lt; void &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
+|  std::shared\_ptr&lt; Derived &gt; | [**shared\_from\_base**](classendstone_1_1Permissible.md#function-shared_from_base) () <br> |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
@@ -201,12 +200,26 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Protected Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**Permissible**](classendstone_1_1Permissible.md#function-permissible) () <br> |
 
 
 
 
 
 
+## Protected Static Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|  std::shared\_ptr&lt; Derived &gt; | [**create0**](classendstone_1_1Permissible.md#function-create0) (Args &&... args) <br> |
 
 
 

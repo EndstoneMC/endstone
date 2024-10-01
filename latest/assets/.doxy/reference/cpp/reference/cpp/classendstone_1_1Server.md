@@ -72,7 +72,7 @@ _Represents a server implementation._
 | virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual float | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
-| virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
+| virtual std::shared\_ptr&lt; [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) &gt; | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
@@ -550,7 +550,7 @@ The average ticks per second
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._
 ```C++
-virtual ConsoleCommandSender & endstone::Server::getCommandSender () const = 0
+virtual std::shared_ptr< ConsoleCommandSender > endstone::Server::getCommandSender () const = 0
 ```
 
 

@@ -66,7 +66,7 @@ public:
 
     [[nodiscard]] virtual PluginCommand *getPluginCommand(std::string name) const = 0;
 
-    [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
+    [[nodiscard]] virtual std::shared_ptr<ConsoleCommandSender> getCommandSender() const = 0;
 
     [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command) const = 0;
 

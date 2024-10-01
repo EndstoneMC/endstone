@@ -1893,6 +1893,28 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#protected-functions-inherited-from-endstonepermissible" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Functions inherited from endstone::Permissible
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
+    <a href="#protected-static-functions-inherited-from-endstonepermissible" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Static Functions inherited from endstone::Permissible
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -1922,19 +1944,6 @@ For latest updates join the chat on
     <a href="#function-getcaller" class="md-nav__link">
       <span class="md-ellipsis">
         function getCaller
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-proxiedcommandsender" class="md-nav__link">
-      <span class="md-ellipsis">
-        function ~ProxiedCommandSender
       </span>
     </a>
 
@@ -2003,10 +2012,6 @@ For latest updates join the chat on
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getcaller"><strong>getCaller</strong></a> () const = 0<br><em>Returns the</em> <a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>which triggered this proxied command.</em></td>
 </tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-proxiedcommandsender"><strong>~ProxiedCommandSender</strong></a> () override<br></td>
-</tr>
 </tbody>
 </table>
 <h2 id="public-functions-inherited-from-endstonecommandsender">Public Functions inherited from endstone::CommandSender<a class="headerlink" href="#public-functions-inherited-from-endstonecommandsender" title="Permanent link">&para;</a></h2>
@@ -2019,10 +2024,6 @@ For latest updates join the chat on
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-commandsender"><strong>CommandSender</strong></a> () = default<br></td>
-</tr>
 <tr>
 <td style="text-align: right;">virtual <a href="../classendstone_1_1CommandSender/"><strong>CommandSender</strong></a> *</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-ascommandsender"><strong>asCommandSender</strong></a> () override const<br><em>Casts a</em> <a href="../classendstone_1_1Permissible/"><em><strong>Permissible</strong></em></a> <em>as</em><a href="../classendstone_1_1CommandSender/"><em><strong>CommandSender</strong></em></a> <em>.</em></td>
@@ -2058,10 +2059,6 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">void</td>
 <td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-sendmessage-22"><strong>sendMessage</strong></a> (const fmt::format_string&lt; Args... &gt; format, Args &amp;&amp;... args) const<br></td>
-</tr>
-<tr>
-<td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="../classendstone_1_1CommandSender/#function-commandsender"><strong>~CommandSender</strong></a> () override<br></td>
 </tr>
 </tbody>
 </table>
@@ -2124,8 +2121,44 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-setop"><strong>setOp</strong></a> (bool value) = 0<br><em>Sets the operator status of this object.</em></td>
 </tr>
 <tr>
+<td style="text-align: right;">std::shared_ptr&lt; Derived &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-shared_from_base"><strong>shared_from_base</strong></a> () <br></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-permissible"><strong>~Permissible</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-functions-inherited-from-endstonepermissible">Protected Functions inherited from endstone::Permissible<a class="headerlink" href="#protected-functions-inherited-from-endstonepermissible" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Permissible/">endstone::Permissible</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"></td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-permissible"><strong>Permissible</strong></a> () <br></td>
+</tr>
+</tbody>
+</table>
+<h2 id="protected-static-functions-inherited-from-endstonepermissible">Protected Static Functions inherited from endstone::Permissible<a class="headerlink" href="#protected-static-functions-inherited-from-endstonepermissible" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1Permissible/">endstone::Permissible</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::shared_ptr&lt; Derived &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Permissible/#function-create0"><strong>create0</strong></a> (Args &amp;&amp;... args) <br></td>
 </tr>
 </tbody>
 </table>
@@ -2144,11 +2177,6 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>a shared pointer to the caller which triggered the command </p>
-<hr>
-
-<h3 id="function-proxiedcommandsender">function ~ProxiedCommandSender<a class="headerlink" href="#function-proxiedcommandsender" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">endstone</span><span class="o">::</span><span class="n">ProxiedCommandSender</span><span class="o">::~</span><span class="n">ProxiedCommandSender</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">override</span>
-</span></code></pre></div>
 <hr>
 
 <hr />

@@ -30,8 +30,6 @@ namespace endstone {
 
 class ProxiedCommandSender : public CommandSender {
 public:
-    ~ProxiedCommandSender() override = default;
-
     [[nodiscard]] virtual CommandSender &getCaller() const = 0;
 
     [[nodiscard]] virtual CommandSender &getCallee() const = 0;

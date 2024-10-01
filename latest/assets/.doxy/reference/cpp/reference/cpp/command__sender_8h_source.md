@@ -39,9 +39,6 @@ class Player;
 
 class CommandSender : public Permissible {
 public:
-    CommandSender() = default;
-    ~CommandSender() override = default;
-
     // Permissible
     [[nodiscard]] CommandSender *asCommandSender() const override
     {

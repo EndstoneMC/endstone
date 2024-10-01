@@ -94,9 +94,6 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Actor**](#function-actor-13) () = default<br> |
-|   | [**Actor**](#function-actor-23) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|   | [**Actor**](#function-actor-33) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
@@ -107,12 +104,9 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
 | virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator) (const [**Actor**](classendstone_1_1Actor.md) &) = delete<br> |
-|  [**Actor**](classendstone_1_1Actor.md) & | [**operator=**](#function-operator_1) ([**Actor**](classendstone_1_1Actor.md) &&) = delete<br> |
 | virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
 | virtual void | [**teleport**](#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
 | virtual void | [**teleport**](#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
-|   | [**~Actor**](#function-actor) () override<br> |
 
 
 ## Public Functions inherited from endstone::CommandSender
@@ -121,7 +115,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 
 | Type | Name |
 | ---: | :--- |
-|   | [**CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () = default<br> |
 | virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](classendstone_1_1CommandSender.md#function-ascommandsender) () override const<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) \* | [**asConsole**](classendstone_1_1CommandSender.md#function-asconsole) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as Console._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**asPlayer**](classendstone_1_1CommandSender.md#function-asplayer) () const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Player**_](classendstone_1_1Player.md) _._ |
@@ -131,7 +124,6 @@ See [endstone::CommandSender](classendstone_1_1CommandSender.md)
 |  void | [**sendErrorMessage**](classendstone_1_1CommandSender.md#function-senderrormessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
 | virtual void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-12) (const Message & message) const = 0<br>_Sends this sender a message._  |
 |  void | [**sendMessage**](classendstone_1_1CommandSender.md#function-sendmessage-22) (const fmt::format\_string&lt; Args... &gt; format, Args &&... args) const<br> |
-|   | [**~CommandSender**](classendstone_1_1CommandSender.md#function-commandsender) () override<br> |
 
 
 ## Public Functions inherited from endstone::Permissible
@@ -152,6 +144,7 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual void | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br> |
 | virtual Result&lt; void &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
+|  std::shared\_ptr&lt; Derived &gt; | [**shared\_from\_base**](classendstone_1_1Permissible.md#function-shared_from_base) () <br> |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
@@ -225,59 +218,30 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
+## Protected Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|   | [**Permissible**](classendstone_1_1Permissible.md#function-permissible) () <br> |
 
 
 
 
 
 
+## Protected Static Functions inherited from endstone::Permissible
+
+See [endstone::Permissible](classendstone_1_1Permissible.md)
+
+| Type | Name |
+| ---: | :--- |
+|  std::shared\_ptr&lt; Derived &gt; | [**create0**](classendstone_1_1Permissible.md#function-create0) (Args &&... args) <br> |
 
 
 ## Public Functions Documentation
 
-
-
-
-### function Actor [1/3]
-
-```C++
-endstone::Actor::Actor () = default
-```
-
-
-
-
-<hr>
-
-
-
-### function Actor [2/3]
-
-```C++
-endstone::Actor::Actor (
-    const Actor &
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function Actor [3/3]
-
-```C++
-endstone::Actor::Actor (
-    Actor &&
-) = delete
-```
-
-
-
-
-<hr>
 
 
 
@@ -555,36 +519,6 @@ True if actor is on ground.
 
 
 
-### function operator= 
-
-```C++
-Actor & endstone::Actor::operator= (
-    const Actor &
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
-### function operator= 
-
-```C++
-Actor & endstone::Actor::operator= (
-    Actor &&
-) = delete
-```
-
-
-
-
-<hr>
-
-
-
 ### function setRotation 
 
 
@@ -683,19 +617,6 @@ Teleports this actor to the target [**Actor**](classendstone_1_1Actor.md).
 
 
         
-
-<hr>
-
-
-
-### function ~Actor 
-
-```C++
-endstone::Actor::~Actor () override
-```
-
-
-
 
 <hr>
 
