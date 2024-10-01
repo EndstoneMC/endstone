@@ -1084,14 +1084,9 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="5">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -1119,14 +1114,9 @@
         <childnode refid="5" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="5">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/endstone/player.h" line="37" column="1" bodyfile="include/endstone/player.h" bodystart="37" bodyend="355"/>
@@ -1181,7 +1171,6 @@
       <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Player_1a6dbf34f6330cf0c9e17872426e1c2eb0" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>kick</name></member>
       <member refid="classendstone_1_1Player_1a9484ec57ceb309acfcfe4b2d61026f56" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>performCommand</name></member>
-      <member refid="classendstone_1_1Permissible_1a79d614f6982271b55b3a73dd8aeea697" prot="protected" virt="non-virtual"><scope>endstone::Player</scope><name>Permissible</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1a6ee88130abcae19b48e833391505187e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1Player_1a95e6751b89ba7f4572997bf0d315c82a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>resetTitle</name></member>
@@ -1206,7 +1195,6 @@
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setScoreboard</name></member>
       <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setWalkSpeed</name></member>
-      <member refid="classendstone_1_1Permissible_1ae62482c60fcaae47e38450a70a529613" prot="public" virt="non-virtual"><scope>endstone::Player</scope><name>shared_from_base</name></member>
       <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Player_1a1eb6fe0de5da814e8d7467817e935603" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>transfer</name></member>

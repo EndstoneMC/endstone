@@ -361,7 +361,6 @@
 
 ## p
 
-* **Permissible** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **Permission** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **PermissionAttachment** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **PermissionAttachmentInfo** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
@@ -460,7 +459,6 @@
 * **setDisplayName** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setRenderType** ([**endstone::Objective**](classendstone_1_1Objective.md))
 * **setOp** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
-* **shared\_from\_base** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **setDefault** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **setPermission** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **setRemovalCallback** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))

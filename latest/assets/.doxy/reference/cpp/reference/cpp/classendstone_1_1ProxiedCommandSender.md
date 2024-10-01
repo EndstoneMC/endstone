@@ -132,7 +132,6 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 | virtual void | [**recalculatePermissions**](classendstone_1_1Permissible.md#function-recalculatepermissions) () = 0<br> |
 | virtual Result&lt; void &gt; | [**removeAttachment**](classendstone_1_1Permissible.md#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](classendstone_1_1Permissible.md#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
-|  std::shared\_ptr&lt; Derived &gt; | [**shared\_from\_base**](classendstone_1_1Permissible.md#function-shared_from_base) () <br> |
 | virtual  | [**~Permissible**](classendstone_1_1Permissible.md#function-permissible) () = default<br> |
 
 
@@ -206,13 +205,6 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
-## Protected Functions inherited from endstone::Permissible
-
-See [endstone::Permissible](classendstone_1_1Permissible.md)
-
-| Type | Name |
-| ---: | :--- |
-|   | [**Permissible**](classendstone_1_1Permissible.md#function-permissible) () <br> |
 
 
 

@@ -14,7 +14,6 @@ _Represents an object that may become a server operator and can be assigned perm
 
 
 
-Inherits the following classes: std::enable_shared_from_this< Permissible >
 
 
 Inherited by the following classes: [endstone::CommandSender](classendstone_1_1CommandSender.md)
@@ -66,7 +65,6 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 | virtual void | [**recalculatePermissions**](#function-recalculatepermissions) () = 0<br> |
 | virtual Result&lt; void &gt; | [**removeAttachment**](#function-removeattachment) ([**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) & attachment) = 0<br> |
 | virtual void | [**setOp**](#function-setop) (bool value) = 0<br>_Sets the operator status of this object._  |
-|  std::shared\_ptr&lt; Derived &gt; | [**shared\_from\_base**](#function-shared_from_base) () <br> |
 | virtual  | [**~Permissible**](#function-permissible) () = default<br> |
 
 
@@ -92,11 +90,6 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 
 
-## Protected Functions
-
-| Type | Name |
-| ---: | :--- |
-|   | [**Permissible**](#function-permissible) () <br> |
 
 
 ## Protected Static Functions
@@ -485,39 +478,10 @@ virtual void endstone::Permissible::setOp (
 
 
 
-### function shared\_from\_base 
-
-```C++
-template<typename Derived>
-inline std::shared_ptr< Derived > endstone::Permissible::shared_from_base () 
-```
-
-
-
-
-<hr>
-
-
-
 ### function ~Permissible 
 
 ```C++
 virtual endstone::Permissible::~Permissible () = default
-```
-
-
-
-
-<hr>
-## Protected Functions Documentation
-
-
-
-
-### function Permissible 
-
-```C++
-inline explicit endstone::Permissible::Permissible () 
 ```
 
 

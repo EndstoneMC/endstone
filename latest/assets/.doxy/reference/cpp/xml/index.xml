@@ -441,7 +441,7 @@
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
     <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" kind="function"><name>getName</name></member>
-    <member refid="classendstone_1_1Level_1a5cbccfd6b0d6d7601574654c9d2e129a" kind="function"><name>getActors</name></member>
+    <member refid="classendstone_1_1Level_1a1e835342a3a271a9f4b75aa7a321d1d4" kind="function"><name>getActors</name></member>
     <member refid="classendstone_1_1Level_1a2a0a6904b53c1d0952c6bdcfce91d0cd" kind="function"><name>getTime</name></member>
     <member refid="classendstone_1_1Level_1a52d11546e286762d10b7c2a523fd2dd7" kind="function"><name>setTime</name></member>
     <member refid="classendstone_1_1Level_1a79e833bb3b01ea1ac5c06bb9e37d7b1b" kind="function"><name>getDimensions</name></member>
@@ -543,7 +543,6 @@
     <member refid="classendstone_1_1Packet_1ae6b902874f587e6041c9706318a6ee34" kind="function"><name>getType</name></member>
   </compound>
   <compound refid="classendstone_1_1Permissible" kind="class"><name>endstone::Permissible</name>
-    <member refid="classendstone_1_1Permissible_1a79d614f6982271b55b3a73dd8aeea697" kind="function"><name>Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" kind="function"><name>~Permissible</name></member>
     <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" kind="function"><name>isOp</name></member>
     <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" kind="function"><name>setOp</name></member>
@@ -557,7 +556,6 @@
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" kind="function"><name>asCommandSender</name></member>
-    <member refid="classendstone_1_1Permissible_1ae62482c60fcaae47e38450a70a529613" kind="function"><name>shared_from_base</name></member>
     <member refid="classendstone_1_1Permissible_1ae78ea6f08d91e1f1bfa5bb0fe3a12284" kind="function"><name>create0</name></member>
   </compound>
   <compound refid="classendstone_1_1Permission" kind="class"><name>endstone::Permission</name>
@@ -967,7 +965,7 @@
     <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" kind="function"><name>getLogger</name></member>
     <member refid="classendstone_1_1Server_1a612846abaf6bd84f56d1cb81a3c0aa95" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ad65f8ef9b0f8f4af5d56788af89c5367" kind="function"><name>getPluginCommand</name></member>
-    <member refid="classendstone_1_1Server_1a641740db1fb60fa6d96370c43e0dfe45" kind="function"><name>getCommandSender</name></member>
+    <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
     <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1aee8ec47d389d77f2a36ed49777a77621" kind="function"><name>getScheduler</name></member>
     <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" kind="function"><name>getLevel</name></member>

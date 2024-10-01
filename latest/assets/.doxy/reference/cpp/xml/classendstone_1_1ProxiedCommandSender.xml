@@ -58,14 +58,9 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -81,14 +76,9 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/endstone/command/proxied_command_sender.h" line="24" column="1" bodyfile="include/endstone/command/proxied_command_sender.h" bodystart="24" bodyend="39"/>
@@ -109,7 +99,6 @@
       <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isOp</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>isPermissionSet</name></member>
-      <member refid="classendstone_1_1Permissible_1a79d614f6982271b55b3a73dd8aeea697" prot="protected" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>Permissible</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1a6ee88130abcae19b48e833391505187e" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendErrorMessage</name></member>
@@ -117,7 +106,6 @@
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::ProxiedCommandSender</scope><name>setOp</name></member>
-      <member refid="classendstone_1_1Permissible_1ae62482c60fcaae47e38450a70a529613" prot="public" virt="non-virtual"><scope>endstone::ProxiedCommandSender</scope><name>shared_from_base</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::ProxiedCommandSender</scope><name>~Permissible</name></member>
     </listofallmembers>
   </compounddef>

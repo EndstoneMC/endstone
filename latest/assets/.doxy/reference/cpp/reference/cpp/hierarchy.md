@@ -6,6 +6,13 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 
 * **class** [**endstone::Form**](classendstone_1_1Form.md) _Represents a generic form._ 
 * **class** [**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md) _Represents a button with text and an optional icon._ 
+* **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
+    * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
+        * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
+            * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
+                * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
+        * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
+        * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
 * **class** [**endstone::Event**](classendstone_1_1Event.md) _Represents an event._     
     * **class** [**endstone::ActorEvent**](classendstone_1_1ActorEvent.md) _Represents an Actor-related event._     
         * **class** [**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md) _Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _dies._    
@@ -82,56 +89,6 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **struct** [**endstone::ColorFormat**](structendstone_1_1ColorFormat.md) _All supported color and format codes._ 
 * **struct** [**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md) 
 * **struct** [**std::hash&lt; endstone::UUID &gt;**](structstd_1_1hash_3_01endstone_1_1UUID_01_4.md) 
-* **class** **std::enable_shared_from_this< Permissible >**    
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
-    * **class** [**endstone::Permissible**](classendstone_1_1Permissible.md) _Represents an object that may become a server operator and can be assigned permissions._     
-        * **class** [**endstone::CommandSender**](classendstone_1_1CommandSender.md) _Represents a command sender._     
-            * **class** [**endstone::Actor**](classendstone_1_1Actor.md) _Represents a base actor in the level._     
-                * **class** [**endstone::Mob**](classendstone_1_1Mob.md) _Represents a mobile entity (i.e. living entity), such as a monster or player._     
-                    * **class** [**endstone::Player**](classendstone_1_1Player.md) _Represents a player._ 
-            * **class** [**endstone::ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) _Represents a console command sender._ 
-            * **class** [**endstone::ProxiedCommandSender**](classendstone_1_1ProxiedCommandSender.md) _Interface for proxied command sender._ 
 * **class** **std::enable_shared_from_this< BlockData >**    
     * **class** [**endstone::BlockData**](classendstone_1_1BlockData.md) _Represents the data related to a live block._ 
 * **class** **std::enable_shared_from_this< BlockState >**    

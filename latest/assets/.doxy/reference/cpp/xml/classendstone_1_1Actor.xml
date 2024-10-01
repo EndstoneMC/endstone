@@ -288,16 +288,16 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
         <label>endstone::Mob</label>
         <link refid="classendstone_1_1Mob"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="6">
+      <node id="5">
         <label>endstone::Player</label>
         <link refid="classendstone_1_1Player"/>
-        <childnode refid="5" relation="public-inheritance">
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
       <node id="2">
@@ -306,14 +306,9 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -329,14 +324,9 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>std::enable_shared_from_this&lt; Permissible &gt;</label>
-      </node>
       <node id="3">
         <label>endstone::Permissible</label>
         <link refid="classendstone_1_1Permissible"/>
-        <childnode refid="4" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="121"/>
@@ -365,7 +355,6 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOp</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isPermissionSet</name></member>
       <member refid="classendstone_1_1Permissible_1af40d6121208b293a05abf56c47792995" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isPermissionSet</name></member>
-      <member refid="classendstone_1_1Permissible_1a79d614f6982271b55b3a73dd8aeea697" prot="protected" virt="non-virtual"><scope>endstone::Actor</scope><name>Permissible</name></member>
       <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>recalculatePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1a6ee88130abcae19b48e833391505187e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>removeAttachment</name></member>
       <member refid="classendstone_1_1CommandSender_1a25f6e7b7397652fd14cb57bc994b00eb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
@@ -374,7 +363,6 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
-      <member refid="classendstone_1_1Permissible_1ae62482c60fcaae47e38450a70a529613" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>shared_from_base</name></member>
       <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Permissible</name></member>

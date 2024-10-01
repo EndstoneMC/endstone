@@ -38,10 +38,7 @@ class Plugin;
 class Permission;
 class PermissionAttachment;
 
-class Permissible : public std::enable_shared_from_this<Permissible> {
-protected:
-    explicit Permissible(){};
-
+class Permissible {
 public:
     virtual ~Permissible() = default;
 
@@ -68,12 +65,6 @@ public:
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 
     [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
-
-    template <typename Derived>
-    std::shared_ptr<Derived> shared_from_base()
-    {
-        return std::static_pointer_cast<Derived>(shared_from_this());
-    }
 
 protected:
     template <typename Derived, typename... Args>
