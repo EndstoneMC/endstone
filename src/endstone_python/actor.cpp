@@ -24,8 +24,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 
-void init_actor(py::module_ &m, py::class_<Actor, std::shared_ptr<Actor>, CommandSender> &actor,
-                py::class_<Mob, std::shared_ptr<Mob>, Actor> &mob)
+void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob)
 {
     actor.def_property_readonly("runtime_id", &Actor::getRuntimeId, "Returns the runtime id for this actor.")
         .def_property_readonly("location", &Actor::getLocation, "Gets the actor's current position.")

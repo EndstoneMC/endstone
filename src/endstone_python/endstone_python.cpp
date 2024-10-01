@@ -36,12 +36,11 @@
 namespace py = pybind11;
 
 namespace endstone::detail {
-void init_actor(py::module_ &, py::class_<Actor, std::shared_ptr<Actor>, CommandSender> &actor,
-                py::class_<Mob, std::shared_ptr<Mob>, Actor> &mob);
+void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
 void init_block(py::module_ &, py::class_<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
-void init_command(py::module &, py::class_<CommandSender, std::shared_ptr<CommandSender>, Permissible> &command_sender);
+void init_command(py::module &, py::class_<CommandSender, Permissible> &command_sender);
 void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority> &event_priority);
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
@@ -49,9 +48,9 @@ void init_inventory(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
 void init_network(py::module_ &);
-void init_permissions(py::module_ &, py::class_<Permissible, std::shared_ptr<Permissible>> &permissible,
-                      py::class_<Permission> &permission, py::enum_<PermissionDefault> &permission_default);
-void init_player(py::module_ &, py::class_<Player, std::shared_ptr<Player>, Mob> &player);
+void init_permissions(py::module_ &, py::class_<Permissible> &permissible, py::class_<Permission> &permission,
+                      py::enum_<PermissionDefault> &permission_default);
+void init_player(py::module_ &, py::class_<Player, Mob> &player);
 void init_plugin(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
@@ -71,7 +70,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         m, "EventPriority",
         "Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR");
 
-    auto permissible = py::class_<Permissible, std::shared_ptr<Permissible>>(
+    auto permissible = py::class_<Permissible>(
         m, "Permissible", "Represents an object that may become a server operator and can be assigned permissions.");
     auto permission =
         py::class_<Permission>(m, "Permission", "Represents a unique permission that may be attached to a Permissible");
@@ -79,13 +78,11 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
         py::enum_<PermissionDefault>(m, "PermissionDefault", "Represents the possible default values for permissions");
     auto server = py::class_<Server>(m, "Server", "Represents a server implementation.");
     auto block = py::class_<Block>(m, "Block", "Represents a block.");
-    auto command_sender = py::class_<CommandSender, std::shared_ptr<CommandSender>, Permissible>(
-        m, "CommandSender", "Represents a command sender.");
-    auto actor =
-        py::class_<Actor, std::shared_ptr<Actor>, CommandSender>(m, "Actor", "Represents a base actor in the level.");
-    auto mob = py::class_<Mob, std::shared_ptr<Mob>, Actor>(
-        m, "Mob", "Represents a mobile entity (i.e. living entity), such as a monster or player.");
-    auto player = py::class_<Player, std::shared_ptr<Player>, Mob>(m, "Player", "Represents a player.");
+    auto command_sender = py::class_<CommandSender, Permissible>(m, "CommandSender", "Represents a command sender.");
+    auto actor = py::class_<Actor, CommandSender>(m, "Actor", "Represents a base actor in the level.");
+    auto mob = py::class_<Mob, Actor>(m, "Mob",
+                                      "Represents a mobile entity (i.e. living entity), such as a monster or player.");
+    auto player = py::class_<Player, Mob>(m, "Player", "Represents a player.");
 
     init_color_format(m);
     init_game_mode(m);
@@ -282,7 +279,7 @@ void init_server(py::class_<Server> &server)
             "defaults, except for those provided.");
 }
 
-void init_player(py::module_ &m, py::class_<Player, std::shared_ptr<Player>, Mob> &player)
+void init_player(py::module_ &m, py::class_<Player, Mob> &player)
 {
     py::class_<Skin>(m, "Skin")
         .def(py::init([](std::string skin_id, const py::array_t<std::uint8_t> &skin_data,

@@ -59,7 +59,7 @@ private:
     [[nodiscard]] static bool hasPermission(PermissionDefault default_value, bool op);
     Permissible *opable_;
     Permissible &parent_;
-    std::vector<std::unique_ptr<PermissionAttachment>> attachments_{};
-    std::unordered_map<std::string, std::unique_ptr<PermissionAttachmentInfo>> permissions_{};
+    std::vector<std::unique_ptr<PermissionAttachment>> attachments_;
+    std::unordered_map<std::string, std::unique_ptr<PermissionAttachmentInfo>> permissions_;
 };
 }  // namespace endstone::detail
