@@ -95,7 +95,7 @@ public:
      *
      * @return a console command sender
      */
-    [[nodiscard]] virtual std::shared_ptr<ConsoleCommandSender> getCommandSender() const = 0;
+    [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
 
     /**
      * @brief Dispatches a command on this server, and executes it if found.

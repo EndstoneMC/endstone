@@ -36,13 +36,11 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
     auto &server = entt::locator<EndstoneServer>::value();
     switch (getOriginType()) {
     case CommandOriginType::DedicatedServer: {
-        return server.getCommandSender();
+        return server.getCommandSender().shared_from_base<endstone::CommandSender>();
     }
-    case CommandOriginType::Player: {
-        return std::static_pointer_cast<endstone::Player>(getEntity()->getEndstoneActor<EndstonePlayer>());
-    }
+    case CommandOriginType::Player:
     case CommandOriginType::Entity: {
-        return getEntity()->getEndstoneActor<EndstoneActor>();
+        return getEntity()->getEndstoneActor<EndstoneActor>().shared_from_base<endstone::CommandSender>();
     }
     case CommandOriginType::Virtual:
         // TODO(command): we need ProxiedCommandSender, getOrigin will return the callee, getOutputReceiver will return

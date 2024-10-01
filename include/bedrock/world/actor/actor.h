@@ -308,12 +308,12 @@ protected:
     BuiltInActorComponents built_in_components_;                                            // +624
     // ...
 
-    std::shared_ptr<endstone::detail::EndstoneActor> getEndstoneActor0() const;
+    endstone::detail::EndstoneActor &getEndstoneActor0() const;
 
 public:
     template <typename T>
-    [[nodiscard]] std::shared_ptr<T> getEndstoneActor() const
+    [[nodiscard]] T &getEndstoneActor() const
     {
-        return std::static_pointer_cast<T>(getEndstoneActor0());
+        return static_cast<T &>(getEndstoneActor0());
     }
 };

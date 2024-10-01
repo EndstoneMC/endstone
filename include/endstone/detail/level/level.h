@@ -25,13 +25,13 @@
 
 namespace endstone::detail {
 
-class EndstoneLevel : public endstone::Level {
+class EndstoneLevel : public Level {
 public:
     explicit EndstoneLevel(::Level &level);
     ~EndstoneLevel() override = default;
 
     [[nodiscard]] std::string getName() const override;
-    [[nodiscard]] std::vector<std::shared_ptr<Actor>> getActors() const override;
+    [[nodiscard]] std::vector<Actor *> getActors() const override;
     [[nodiscard]] int getTime() const override;
     void setTime(int time) override;
     [[nodiscard]] std::vector<Dimension *> getDimensions() const override;

@@ -51,7 +51,7 @@ public:
     [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
-    [[nodiscard]] std::shared_ptr<ConsoleCommandSender> getCommandSender() const override;
+    [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
     [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command) const override;
 
     void loadPlugins();

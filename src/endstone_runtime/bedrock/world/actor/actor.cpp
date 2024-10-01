@@ -45,7 +45,7 @@ void Actor::remove()
 {
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorRemoveEvent e{*getEndstoneActor<EndstoneActor>()};
+        endstone::ActorRemoveEvent e{getEndstoneActor<EndstoneActor>()};
         server.getPluginManager().callEvent(e);
     }
 
@@ -57,7 +57,7 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
     Vec3 position = pos;
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        auto &actor = *getEndstoneActor<EndstoneActor>();
+        auto &actor = getEndstoneActor<EndstoneActor>();
         endstone::Location to{&actor.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
         endstone::ActorTeleportEvent e{actor, actor.getLocation(), to};
         server.getPluginManager().callEvent(e);
@@ -213,13 +213,13 @@ Actor *Actor::tryGetFromEntity(EntityContext const &ctx, bool include_removed)
     return nullptr;
 }
 
-std::shared_ptr<EndstoneActor> Actor::getEndstoneActor0() const
+EndstoneActor &Actor::getEndstoneActor0() const
 {
     auto &server = entt::locator<EndstoneServer>::value();
     auto *self = const_cast<Actor *>(this);
     auto &component = entity_context_.getOrAddComponent<EndstoneActorComponent>();
     if (component.actor) {
-        return component.actor;
+        return *component.actor;
     }
 
     if (self->isType(ActorType::Player)) {
@@ -237,7 +237,7 @@ std::shared_ptr<EndstoneActor> Actor::getEndstoneActor0() const
     else {
         component.actor = EndstoneActor::create(server, *self);
     }
-    return component.actor;
+    return *component.actor;
 }
 
 bool Actor::isJumping() const

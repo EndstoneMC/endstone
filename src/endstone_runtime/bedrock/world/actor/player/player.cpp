@@ -32,9 +32,9 @@ void Player::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int
 {
     Vec3 position = pos;
     const auto &server = entt::locator<EndstoneServer>::value();
-    const auto player = getEndstoneActor<EndstonePlayer>();
-    const endstone::Location to{&player->getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
-    endstone::PlayerTeleportEvent e{*player, player->getLocation(), to};
+    auto &player = getEndstoneActor<EndstonePlayer>();
+    const endstone::Location to{&player.getDimension(), pos.x, pos.y, pos.z, getRotation().x, getRotation().y};
+    endstone::PlayerTeleportEvent e{player, player.getLocation(), to};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {
@@ -58,9 +58,9 @@ const std::string &Player::getName() const
 void Player::setPermissions(CommandPermissionLevel level)
 {
     ENDSTONE_HOOK_CALL_ORIGINAL(&Player::setPermissions, this, level);
-    const auto player = getEndstoneActor<EndstonePlayer>();
-    player->recalculatePermissions();
-    player->updateCommands();
+    auto &player = getEndstoneActor<EndstonePlayer>();
+    player.recalculatePermissions();
+    player.updateCommands();
 }
 
 GameType Player::getPlayerGameType() const

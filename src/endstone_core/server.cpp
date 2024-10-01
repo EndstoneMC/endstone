@@ -121,9 +121,9 @@ PluginCommand *EndstoneServer::getPluginCommand(std::string name) const
     return nullptr;
 }
 
-std::shared_ptr<ConsoleCommandSender> EndstoneServer::getCommandSender() const
+ConsoleCommandSender &EndstoneServer::getCommandSender() const
 {
-    return command_sender_;
+    return *command_sender_;
 }
 
 bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command) const

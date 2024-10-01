@@ -42,7 +42,7 @@ void ServerPlayer::die(const ActorDamageSource &source)
     ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&ServerPlayer::die, __FUNCDNAME__, this, source);
 
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
+    auto &endstone_player = getEndstoneActor<EndstonePlayer>();
     endstone_player.closeForm();
 
     // Do a server side translation for logging
@@ -83,7 +83,7 @@ void ServerPlayer::setLocalPlayerAsInitialized()
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerPlayer::setLocalPlayerAsInitialized, this);
 
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
+    auto &endstone_player = getEndstoneActor<EndstonePlayer>();
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.joined",
                               {endstone_player.getName()}};
@@ -109,7 +109,7 @@ void ServerPlayer::setLocalPlayerAsInitialized()
 void ServerPlayer::disconnect()
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &endstone_player = *getEndstoneActor<EndstonePlayer>();
+    auto &endstone_player = getEndstoneActor<EndstonePlayer>();
     endstone_player.disconnect();
 
     endstone::Translatable tr{endstone::ColorFormat::Yellow + "%multiplayer.player.left", {endstone_player.getName()}};

@@ -34,7 +34,7 @@ using endstone::detail::EndstoneServer;
 bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = *player_->getEndstoneActor<EndstonePlayer>();
+    auto &player = player_->getEndstoneActor<EndstonePlayer>();
     auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
     if (const auto block = EndstoneBlock::at(block_source, pos)) {
         endstone::BlockBreakEvent e{*block.value(), player};
@@ -53,7 +53,7 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
                                       Block const *target_block)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = *player_->getEndstoneActor<EndstonePlayer>();
+    auto &player = player_->getEndstoneActor<EndstonePlayer>();
     auto &block_source = player.getHandle().getDimension().getBlockSourceFromMainChunkSource();
     if (auto block = EndstoneBlock::at(block_source, at)) {
         std::unique_ptr<EndstoneItemStack> item_stack =
@@ -81,8 +81,8 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
 bool GameMode::interact(Actor &actor, Vec3 const &location)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &player = *player_->getEndstoneActor<EndstonePlayer>();
-    endstone::PlayerInteractActorEvent e{player, *actor.getEndstoneActor<EndstoneActor>()};
+    auto &player = player_->getEndstoneActor<EndstonePlayer>();
+    endstone::PlayerInteractActorEvent e{player, actor.getEndstoneActor<EndstoneActor>()};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;
