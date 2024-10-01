@@ -150,7 +150,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**Scoreboard**](classendstone_1_1Scoreboard.md) & | [**getScoreboard**](#function-getscoreboard) () const = 0<br>_Gets the_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _displayed to this player._ |
 | virtual const [**Skin**](classendstone_1_1Skin.md) & | [**getSkin**](#function-getskin) () const = 0<br>_Gets the player's skin._  |
 | virtual int | [**getTotalExp**](#function-gettotalexp) () const = 0<br>_Gets the players total experience points._  |
-| virtual [**endstone::UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
+| virtual [**UUID**](classendstone_1_1UUID.md) | [**getUniqueId**](#function-getuniqueid) () const = 0<br>_Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._ |
 | virtual float | [**getWalkSpeed**](#function-getwalkspeed) () const = 0<br>_Gets the current allowed speed that a client can walk._  |
 | virtual std::string | [**getXuid**](#function-getxuid) () const = 0<br>_Returns the Xbox User ID (XUID) of this player._  |
 | virtual void | [**giveExp**](#function-giveexp) (int amount) = 0<br>_Gives the player the amount of experience specified._  |
@@ -811,7 +811,7 @@ Current total experience points
 
 _Returns the_ [_**UUID**_](classendstone_1_1UUID.md) _of this player._
 ```C++
-virtual endstone::UUID endstone::Player::getUniqueId () const = 0
+virtual UUID endstone::Player::getUniqueId () const = 0
 ```
 
 

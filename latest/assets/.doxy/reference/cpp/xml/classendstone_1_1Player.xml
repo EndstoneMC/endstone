@@ -38,9 +38,9 @@
         </inbodydescription>
         <location file="include/endstone/player.h" line="43" column="13" bodyfile="include/endstone/player.h" bodystart="43" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref></type>
-        <definition>virtual endstone::UUID endstone::Player::getUniqueId</definition>
+      <memberdef kind="function" id="classendstone_1_1Player_1a2f6259d8ac07fb50c56757844786683b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref></type>
+        <definition>virtual UUID endstone::Player::getUniqueId</definition>
         <argsstring>() const =0</argsstring>
         <name>getUniqueId</name>
         <briefdescription>
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/player.h" line="53" column="29"/>
+        <location file="include/endstone/player.h" line="53" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
@@ -1151,7 +1151,7 @@
       <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
       <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getSkin</name></member>
       <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getTotalExp</name></member>
-      <member refid="classendstone_1_1Player_1ad96468603cc648a70440d804da130c64" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
+      <member refid="classendstone_1_1Player_1a2f6259d8ac07fb50c56757844786683b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getWalkSpeed</name></member>
       <member refid="classendstone_1_1Player_1a47c04697994e74cdac0e8b7c4d6b09c7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getXuid</name></member>

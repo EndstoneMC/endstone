@@ -52,7 +52,7 @@ public:
         return const_cast<Player *>(this);
     }
 
-    [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
+    [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     [[nodiscard]] virtual std::string getXuid() const = 0;
 
