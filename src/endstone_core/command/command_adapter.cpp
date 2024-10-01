@@ -21,6 +21,7 @@
 #include <entt/entt.hpp>
 
 #include "endstone/detail/message.h"
+#include "endstone/detail/permissions/permissible.h"
 
 namespace endstone::detail {
 CommandSenderAdapter::CommandSenderAdapter(const CommandOrigin &origin, CommandOutput &output)
@@ -70,7 +71,7 @@ void CommandSenderAdapter::setOp(bool value)
 
 std::shared_ptr<CommandSenderAdapter> CommandSenderAdapter::create(const CommandOrigin &origin, CommandOutput &output)
 {
-    return Permissible::create0<CommandSenderAdapter>(origin, output);
+    return PermissibleFactory::create<CommandSenderAdapter>(origin, output);
 }
 
 void CommandAdapter::execute(const CommandOrigin &origin, CommandOutput &output) const

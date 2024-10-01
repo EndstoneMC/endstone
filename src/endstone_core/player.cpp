@@ -38,6 +38,7 @@
 #include "endstone/detail/base64.h"
 #include "endstone/detail/form/form_codec.h"
 #include "endstone/detail/network/packet_adapter.h"
+#include "endstone/detail/permissions/permissible.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/util/error.h"
 #include "endstone/detail/util/uuid.h"
@@ -741,7 +742,7 @@ void EndstonePlayer::updateAbilities() const
 
 std::shared_ptr<EndstonePlayer> EndstonePlayer::create(EndstoneServer &server, ::Player &player)
 {
-    return create0<EndstonePlayer>(server, player);
+    return PermissibleFactory::create<EndstonePlayer>(server, player);
 }
 
 }  // namespace endstone::detail

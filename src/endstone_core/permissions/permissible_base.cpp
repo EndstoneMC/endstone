@@ -16,6 +16,8 @@
 
 #include <memory>
 
+#include <endstone/detail/permissions/permissible.h>
+
 #include "endstone/detail/server.h"
 #include "endstone/detail/util/error.h"
 #include "endstone/permissions/permission.h"
@@ -23,7 +25,7 @@
 
 namespace endstone::detail {
 
-PermissibleBase::PermissibleBase(Private, Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
+PermissibleBase::PermissibleBase(Permissible *opable) : opable_(opable), parent_(opable ? *opable : *this) {}
 
 bool PermissibleBase::isOp() const
 {
@@ -216,7 +218,7 @@ void PermissibleBase::clearPermissions()
 
 std::shared_ptr<PermissibleBase> PermissibleBase::create(Permissible *opable)
 {
-    return std::make_shared<PermissibleBase>(Private(), opable);
+    return PermissibleFactory::create<PermissibleFactory::Option::Lazy, PermissibleBase>(opable);
 }
 
 }  // namespace endstone::detail

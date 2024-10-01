@@ -31,12 +31,10 @@ namespace endstone::detail {
  * Base Permissible for use in any Permissible object via proxy or extension
  */
 class PermissibleBase : public Permissible {
-    struct Private {
-        explicit Private() = default;
-    };
+protected:
+    explicit PermissibleBase(Permissible *opable);
 
 public:
-    explicit PermissibleBase(Private, Permissible *opable);
     [[nodiscard]] bool isOp() const override;
     void setOp(bool value) override;
     [[nodiscard]] bool isPermissionSet(std::string name) const override;

@@ -15,6 +15,7 @@
 #include "endstone/detail/command/console_command_sender.h"
 
 #include "endstone/detail/message.h"
+#include "endstone/detail/permissions/permissible.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -102,7 +103,7 @@ std::unordered_set<PermissionAttachmentInfo *> EndstoneConsoleCommandSender::get
 
 std::shared_ptr<EndstoneConsoleCommandSender> EndstoneConsoleCommandSender::create()
 {
-    return create0<EndstoneConsoleCommandSender>();
+    return PermissibleFactory::create<EndstoneConsoleCommandSender>();
 }
 
 }  // namespace endstone::detail

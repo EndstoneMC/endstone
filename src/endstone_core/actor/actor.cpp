@@ -22,6 +22,7 @@
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "endstone/detail/level/dimension.h"
 #include "endstone/detail/level/level.h"
+#include "endstone/detail/permissions/permissible.h"
 
 namespace endstone::detail {
 
@@ -209,7 +210,7 @@ PermissibleBase &EndstoneActor::getPermissibleBase()
 
 std::shared_ptr<EndstoneActor> EndstoneActor::create(EndstoneServer &server, ::Actor &actor)
 {
-    return create0<EndstoneActor>(server, actor);
+    return PermissibleFactory::create<EndstoneActor>(server, actor);
 }
 
 }  // namespace endstone::detail
