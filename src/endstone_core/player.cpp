@@ -83,6 +83,11 @@ EndstonePlayer::~EndstonePlayer()
     server_.removePlayerBoard(*this);
 }
 
+Player *EndstonePlayer::asPlayer() const
+{
+    return Player::asPlayer();
+}
+
 void EndstonePlayer::sendMessage(const Message &message) const
 {
     auto packet = MinecraftPackets::createPacket(MinecraftPacketIds::Text);

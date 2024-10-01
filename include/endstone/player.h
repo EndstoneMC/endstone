@@ -50,7 +50,7 @@ public:
      *
      * @return Player UUID
      */
-    [[nodiscard]] virtual endstone::UUID getUniqueId() const = 0;
+    [[nodiscard]] virtual UUID getUniqueId() const = 0;
 
     /**
      * @brief Returns the Xbox User ID (XUID) of this player

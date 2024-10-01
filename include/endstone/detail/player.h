@@ -38,6 +38,7 @@ public:
     ~EndstonePlayer() override;
 
     // CommandSender
+    [[nodiscard]] Player *asPlayer() const override;
     void sendMessage(const Message &message) const override;
     void sendErrorMessage(const Message &message) const override;
     [[nodiscard]] Server &getServer() const override;
