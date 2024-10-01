@@ -379,13 +379,6 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
 
-## Protected Static Functions inherited from endstone::Permissible
-
-See [endstone::Permissible](classendstone_1_1Permissible.md)
-
-| Type | Name |
-| ---: | :--- |
-|  std::shared\_ptr&lt; Derived &gt; | [**create0**](classendstone_1_1Permissible.md#function-create0) (Args &&... args) <br> |
 
 
 ## Public Functions Documentation

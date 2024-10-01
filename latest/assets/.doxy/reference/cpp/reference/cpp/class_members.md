@@ -75,7 +75,6 @@
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **Control** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **controls\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
-* **create0** ([**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **children\_** ([**endstone::Permission**](classendstone_1_1Permission.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **command\_** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))

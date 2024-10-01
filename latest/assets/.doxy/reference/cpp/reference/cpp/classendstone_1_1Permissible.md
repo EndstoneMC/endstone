@@ -92,11 +92,6 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 
 
-## Protected Static Functions
-
-| Type | Name |
-| ---: | :--- |
-|  std::shared\_ptr&lt; Derived &gt; | [**create0**](#function-create0) (Args &&... args) <br> |
 
 
 ## Public Functions Documentation
@@ -482,24 +477,6 @@ virtual void endstone::Permissible::setOp (
 
 ```C++
 virtual endstone::Permissible::~Permissible () = default
-```
-
-
-
-
-<hr>
-## Protected Static Functions Documentation
-
-
-
-
-### function create0 
-
-```C++
-template<typename Derived, typename... Args>
-static inline std::shared_ptr< Derived > endstone::Permissible::create0 (
-    Args &&... args
-) 
 ```
 
 

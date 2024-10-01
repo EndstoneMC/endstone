@@ -556,7 +556,6 @@
     <member refid="classendstone_1_1Permissible_1acbd0e4c4815db28b66ef14976f110af5" kind="function"><name>recalculatePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" kind="function"><name>getEffectivePermissions</name></member>
     <member refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" kind="function"><name>asCommandSender</name></member>
-    <member refid="classendstone_1_1Permissible_1ae78ea6f08d91e1f1bfa5bb0fe3a12284" kind="function"><name>create0</name></member>
   </compound>
   <compound refid="classendstone_1_1Permission" kind="class"><name>endstone::Permission</name>
     <member refid="classendstone_1_1Permission_1a385c02996be80249d7de305f42f92924" kind="variable"><name>DefaultPermission</name></member>

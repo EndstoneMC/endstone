@@ -343,35 +343,6 @@
         <location file="include/endstone/permissions/permissible.h" line="125" column="28"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-static-func">
-      <memberdef kind="function" id="classendstone_1_1Permissible_1ae78ea6f08d91e1f1bfa5bb0fe3a12284" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>typename Derived</type>
-          </param>
-          <param>
-            <type>typename...</type>
-            <declname>Args</declname>
-            <defname>Args</defname>
-          </param>
-        </templateparamlist>
-        <type>std::shared_ptr&lt; Derived &gt;</type>
-        <definition>static std::shared_ptr&lt;Derived&gt; endstone::Permissible::create0</definition>
-        <argsstring>(Args &amp;&amp;...args)</argsstring>
-        <name>create0</name>
-        <param>
-          <type>Args &amp;&amp;...</type>
-          <declname>args</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/permissions/permissible.h" line="129" column="28" bodyfile="include/endstone/permissions/permissible.h" bodystart="129" bodyend="137"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Represents an object that may become a server operator and can be assigned permissions. </para>
     </briefdescription>
@@ -419,12 +390,11 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/permissions/permissible.h" line="34" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="34" bodyend="138"/>
+    <location file="include/endstone/permissions/permissible.h" line="34" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="34" bodyend="126"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>asCommandSender</name></member>
-      <member refid="classendstone_1_1Permissible_1ae78ea6f08d91e1f1bfa5bb0fe3a12284" prot="protected" virt="non-virtual"><scope>endstone::Permissible</scope><name>create0</name></member>
       <member refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>getEffectivePermissions</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>hasPermission</name></member>
       <member refid="classendstone_1_1Permissible_1ae3da30350acda91f5a007e15fc783ae6" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>hasPermission</name></member>

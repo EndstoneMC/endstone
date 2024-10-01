@@ -65,18 +65,6 @@ public:
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 
     [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
-
-protected:
-    template <typename Derived, typename... Args>
-    static std::shared_ptr<Derived> create0(Args &&...args)
-    {
-        struct make_shared_enabler : Derived {
-            explicit make_shared_enabler(Args &&...args) : Derived(std::forward<Args>(args)...) {}
-        };
-        auto result = std::make_shared<make_shared_enabler>(std::forward<Args>(args)...);
-        result->recalculatePermissions();
-        return result;
-    }
 };
 }  // namespace endstone
 ```
