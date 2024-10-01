@@ -311,7 +311,7 @@ protected:
     endstone::detail::EndstoneActor &getEndstoneActor0() const;
 
 public:
-    template <typename T>
+    template <typename T = endstone::detail::EndstoneActor>
     [[nodiscard]] T &getEndstoneActor() const
     {
         return static_cast<T &>(getEndstoneActor0());

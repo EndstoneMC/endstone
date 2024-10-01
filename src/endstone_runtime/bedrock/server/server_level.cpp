@@ -30,7 +30,7 @@ void ServerLevel::_postReloadActorAdded(Actor &actor)
     }
 
     auto &server = entt::locator<EndstoneServer>::value();
-    endstone::ActorSpawnEvent e{actor.getEndstoneActor<EndstoneActor>()};
+    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
     server.getPluginManager().callEvent(e);
 
     if (e.isCancelled()) {

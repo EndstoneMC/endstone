@@ -14,7 +14,6 @@
 
 #include "bedrock/server/commands/command_origin.h"
 
-#include <endstone/detail/command/console_command_sender.h>
 #include <entt/entt.hpp>
 #include <spdlog/spdlog.h>
 
@@ -22,7 +21,7 @@
 #include "bedrock/world/actor/actor.h"
 #include "bedrock/world/actor/player/player.h"
 #include "endstone/command/command_sender.h"
-#include "endstone/detail/command/command_adapter.h"
+#include "endstone/detail/command/console_command_sender.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/player.h"
 #include "endstone/detail/server.h"
@@ -43,8 +42,7 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
     }
     case CommandOriginType::Player:
     case CommandOriginType::Entity: {
-        return std::static_pointer_cast<endstone::Actor>(
-            getEntity()->getEndstoneActor<EndstoneActor>().shared_from_this());
+        return std::static_pointer_cast<endstone::Actor>(getEntity()->getEndstoneActor().shared_from_this());
     }
     case CommandOriginType::Virtual:
         // TODO(command): we need ProxiedCommandSender, getOrigin will return the callee, getOutputReceiver will return

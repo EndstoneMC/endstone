@@ -61,7 +61,7 @@ std::vector<Actor *> EndstoneLevel::getActors() const
             continue;
         }
 
-        result.push_back(&actor->getEndstoneActor<Actor>());
+        result.push_back(&actor->getEndstoneActor());
     }
     return result;
 }

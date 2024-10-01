@@ -22,6 +22,9 @@ namespace endstone::detail {
 class EndstoneConsoleCommandSender : public ServerCommandSender,
                                      public ConsoleCommandSender,
                                      public std::enable_shared_from_this<EndstoneConsoleCommandSender> {
+protected:
+    EndstoneConsoleCommandSender() = default;
+
 public:
     [[nodiscard]] ConsoleCommandSender *asConsole() const override;
     void sendMessage(const Message &message) const override;

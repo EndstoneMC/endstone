@@ -82,7 +82,7 @@ bool GameMode::interact(Actor &actor, Vec3 const &location)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstoneActor<EndstonePlayer>();
-    endstone::PlayerInteractActorEvent e{player, actor.getEndstoneActor<EndstoneActor>()};
+    endstone::PlayerInteractActorEvent e{player, actor.getEndstoneActor()};
     server.getPluginManager().callEvent(e);
     if (e.isCancelled()) {
         return false;

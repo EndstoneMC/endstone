@@ -32,7 +32,7 @@ void Mob::die(const ActorDamageSource &source)
 {
     if (!isPlayer()) {
         auto &server = entt::locator<EndstoneServer>::value();
-        endstone::ActorDeathEvent e{getEndstoneActor<EndstoneActor>()};
+        endstone::ActorDeathEvent e{getEndstoneActor()};
         server.getPluginManager().callEvent(e);
     }
 
@@ -50,7 +50,7 @@ void Mob::knockback(Actor *source, int damage, float dx, float dz, float horizon
 
     auto &server = entt::locator<EndstoneServer>::value();
     endstone::ActorKnockbackEvent e{getEndstoneActor<EndstoneMob>(),
-                                    source == nullptr ? nullptr : &source->getEndstoneActor<EndstoneActor>(),
+                                    source == nullptr ? nullptr : &source->getEndstoneActor(),
                                     {diff.x, diff.y, diff.z}};
     server.getPluginManager().callEvent(e);
 
