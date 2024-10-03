@@ -29,7 +29,7 @@ namespace endstone {
  * You should not use this except for a few cases like logging commands, blocking commands on certain places, or
  * applying modifiers.
  *
- * The command message contains a slash at the start
+ * <b>The command message contains a slash '/' at the start</b>
  */
 class ServerCommandEvent : public ServerEvent {
 public:

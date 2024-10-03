@@ -19,6 +19,7 @@
 
 #include "endstone/command/command.h"
 #include "endstone/command/command_map.h"
+#include "endstone/detail/command/command_wrapper.h"
 
 namespace endstone::detail {
 
@@ -27,6 +28,7 @@ class EndstoneCommandMap : public CommandMap {
 public:
     explicit EndstoneCommandMap(EndstoneServer &server);
     bool registerCommand(std::shared_ptr<Command> command) override;
+    bool dispatch(CommandSender &sender, std::string command_line) const override;
     void clearCommands() override;
     [[nodiscard]] Command *getCommand(std::string name) const override;
 
@@ -41,7 +43,7 @@ private:
 
     EndstoneServer &server_;
     std::recursive_mutex mutex_;
-    std::unordered_map<std::string, std::shared_ptr<Command>> known_commands_;
+    std::unordered_map<std::string, std::shared_ptr<CommandWrapper>> known_commands_;
 };
 
 }  // namespace endstone::detail

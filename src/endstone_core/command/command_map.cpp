@@ -19,16 +19,18 @@
 #include <unordered_map>
 #include <vector>
 
+#include <boost/algorithm/string.hpp>
+
 #include "bedrock/locale/i18n.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
-#include "endstone/detail/command/bedrock_command.h"
-#include "endstone/detail/command/command_adapter.h"
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/reload_command.h"
 #include "endstone/detail/command/defaults/status_command.h"
 #include "endstone/detail/command/defaults/version_command.h"
+#include "endstone/detail/command/minecraft_command.h"
+#include "endstone/detail/command/minecraft_command_adapter.h"
 #include "endstone/detail/devtools/devtools_command.h"
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/server.h"
@@ -40,6 +42,32 @@ EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
     saveCommandRegistryState();
     setMinecraftCommands();
     setDefaultCommands();
+}
+
+bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_line) const
+{
+    if (!command_line.empty() && command_line[0] == '/') {
+        command_line = command_line.substr(1);
+    }
+
+    std::vector<std::string> args;
+    split(args, command_line, boost::is_any_of(" "), boost::token_compress_on);
+    if (args.empty()) {
+        return false;
+    }
+
+    const auto *target = getCommand(args[0]);
+    if (!target) {
+        return false;
+    }
+
+    try {
+        return target->execute(sender, std::vector(args.begin() + 1, args.begin() + args.size()));
+    }
+    catch (const std::exception &e) {
+        server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
+        return false;
+    }
 }
 
 void EndstoneCommandMap::clearCommands()
@@ -110,7 +138,9 @@ void EndstoneCommandMap::setMinecraftCommands()
             aliases.insert(aliases.end(), it->second.begin(), it->second.end());
         }
 
-        auto command = std::make_shared<BedrockCommand>(command_name, description, usages, aliases);
+        auto command = std::make_shared<CommandWrapper>(
+            server_.getMinecraftCommands(),
+            std::make_unique<MinecraftCommand>(command_name, description, usages, aliases));
         command->registerTo(*this);
 
         known_commands_.emplace(signature.name, command);
@@ -175,6 +205,10 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         return false;
     }
 
+    auto wrapped =
+        std::make_shared<CommandWrapper>(server_.getMinecraftCommands(), std::make_unique<Command>(*command));
+    command = wrapped;
+
     // Check if the command name is available
     auto name = command->getName();
     if (auto it = known_commands_.find(name); it != known_commands_.end() && it->second->getName() == it->first) {
@@ -211,7 +245,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
             std::vector<CommandParameterData> param_data;
             for (const auto &parameter : parameters) {
                 auto data =
-                    CommandParameterData({0}, &CommandRegistry::parse<CommandAdapter>, parameter.name.c_str(),
+                    CommandParameterData({0}, &CommandRegistry::parse<MinecraftCommandAdapter>, parameter.name.c_str(),
                                          CommandParameterDataType::Basic, nullptr, nullptr, 0, parameter.optional, -1);
 
                 if (parameter.is_enum) {
@@ -284,13 +318,13 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
     // Actual registration starts from here
     registry.registerCommand(name, command->getDescription().c_str(), CommandPermissionLevel::Any,
                              {static_cast<CommandFlagSize>(CommandCheatFlag::NotCheat)}, {0});
-    known_commands_.emplace(name, command);
+    known_commands_.emplace(name, wrapped);
     for (const auto &alias : pending_aliases) {
         registry.registerAlias(name, alias);
-        known_commands_.emplace(alias, command);
+        known_commands_.emplace(alias, wrapped);
     }
     for (const auto &param_data : pending_param_data) {
-        registry.registerOverload<CommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
+        registry.registerOverload<MinecraftCommandAdapter>(name.c_str(), {1, INT_MAX}, param_data);
     }
 
     command->setAliases(pending_aliases);

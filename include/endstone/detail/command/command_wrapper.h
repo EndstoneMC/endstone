@@ -14,15 +14,24 @@
 
 #pragma once
 
+#include "bedrock/server/commands/minecraft_commands.h"
 #include "endstone/command/command.h"
+
 namespace endstone::detail {
-/**
- * Represents a view of a Command provided by Bedrock Dedicated Server
- */
-class BedrockCommand : public Command {
+
+class CommandWrapper : public Command {
 public:
-    explicit BedrockCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
-                            std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {});
-    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+    CommandWrapper(MinecraftCommands &minecraft_commands, std::unique_ptr<Command> command);
+
+    [[nodiscard]] bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+    [[nodiscard]] PluginCommand *asPluginCommand() const override;
+    [[nodiscard]] Command &unwrap() const;
+
+    static std::unique_ptr<CommandOrigin> getCommandOrigin(CommandSender &sender);
+
+private:
+    MinecraftCommands &minecraft_commands_;
+    std::unique_ptr<Command> command_;
 };
+
 }  // namespace endstone::detail

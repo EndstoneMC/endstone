@@ -23,27 +23,17 @@
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
 
+using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-
-    auto command_line = ctx.getCommand();
-    if (!command_line.empty() && command_line[0] == '/') {
-        command_line = command_line.substr(1);
-    }
-
-    auto command_name = command_line.substr(0, command_line.find_first_of(' '));
-    auto *command = server.getCommandMap().getCommand(std::string(command_name));
-    auto sender = ctx.getOrigin().getEndstoneSender();
-    if (command && sender) {
-        if (!command->testPermission(*sender)) {
-            return MCRESULT_NotEnoughPermission;
-        }
+    const auto &server = entt::locator<EndstoneServer>::value();
+    if (const auto sender = ctx.getOrigin().getEndstoneSender(); sender) {
+        auto command_line = ctx.getCommand();
 
         if (auto *player = sender->asPlayer(); player) {
-            server.getLogger().info("{} issued server command: {}", player->getName(), ctx.getCommand());
+            server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
 
             endstone::PlayerCommandEvent event(*player, ctx.getCommand());
             server.getPluginManager().callEvent(event);
@@ -51,17 +41,33 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
             if (event.isCancelled()) {
                 return MCRESULT_CommandsDisabled;
             }
+            command_line = event.getCommand();
         }
 
         if (auto *console = sender->asConsole(); console) {
-            endstone::ServerCommandEvent event(*console, ctx.getCommand());
+            endstone::ServerCommandEvent event(*console, command_line);
             server.getPluginManager().callEvent(event);
 
             if (event.isCancelled()) {
                 return MCRESULT_CommandsDisabled;
             }
+            command_line = event.getCommand();
         }
+
+        if (server.dispatchCommand(*sender, command_line)) {
+            return MCRESULT_Success;
+        }
+        return MCRESULT_CommandNotFound;
     }
 
+    // For other types of sender we don't support yet, fallback to the original dispatching route
     return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::executeCommand, this, ctx, suppress_output);
+}
+
+Command *MinecraftCommands::compileCommand(HashedString const &command_str, CommandOrigin &origin,
+                                           CurrentCmdVersion command_version,
+                                           std::function<void(const std::string &)> on_parser_error)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&MinecraftCommands::compileCommand, this, command_str, origin, command_version,
+                                       on_parser_error);
 }

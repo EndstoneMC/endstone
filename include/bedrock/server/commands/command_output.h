@@ -19,7 +19,7 @@
 #include <utility>
 #include <vector>
 
-#include "bedrock/bedrock.h"
+#include "bedrock/server/commands/command_property_bag.h"
 
 enum class CommandOutputMessageType {
     Success = 0,
@@ -36,33 +36,47 @@ enum class CommandOutputType {
 
 class CommandOutputMessage {
 public:
-    CommandOutputMessageType type;    // +0
-    std::string message_id;           // +8
-    std::vector<std::string> params;  // +40
+    CommandOutputMessage(CommandOutputMessageType type, std::string message_id, std::vector<std::string> &&params);
+
+    [[nodiscard]] CommandOutputMessageType getType() const;
+    [[nodiscard]] std::string const &getMessageId() const;
+    [[nodiscard]] std::vector<std::string> const &getParams() const;
+
+private:
+    CommandOutputMessageType type_;    // +0
+    std::string message_id_;           // +8
+    std::vector<std::string> params_;  // +40
 };
 
 class CommandOutputParameter {
 public:
-    explicit CommandOutputParameter(std::string value) : string(std::move(value)) {}
-    std::string string;  // +0
-    int count{0};        // +32
+    explicit CommandOutputParameter(std::string value) : string_(std::move(value)) {}
+    [[nodiscard]] std::string const &getText() const;
+    [[nodiscard]] int count() const;
+
+private:
+    std::string string_;  // +0
+    int count_{0};        // +32
 };
 
 class CommandOutput {
 public:
+    explicit CommandOutput(CommandOutputType type);
     void success();
     void forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
     void error(const std::string &message_id, const std::vector<CommandOutputParameter> &params);
+    [[nodiscard]] int getSuccessCount() const;
+    [[nodiscard]] const std::vector<CommandOutputMessage> &getMessages() const;
 
 private:
-    ENDSTONE_HOOK void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
-                                  enum CommandOutputMessageType);
+    void addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
+                    CommandOutputMessageType);
 
-    CommandOutputType type_;                          // +0
-    std::unique_ptr<class CommandPropertyBag> data_;  // +8
-    std::vector<CommandOutputMessage> messages_;      // +16
-    int success_count_;                               // +40
-    bool has_player_text_;                            // +44
+    CommandOutputType type_;                      // +0
+    std::unique_ptr<CommandPropertyBag> data_;    // +8
+    std::vector<CommandOutputMessage> messages_;  // +16
+    int success_count_{0};                        // +40
+    bool has_player_text_{false};                 // +44
 };
 
 class CommandOutputSender {};

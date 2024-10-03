@@ -67,7 +67,6 @@ class ContainerRemovedListener;
 class CopperBehavior;
 class CraftingContainer;
 class CraftingContext;
-class CurrentCmdVersion;
 class DataLoadHelper;
 class Difficulty;
 class DimensionBrightnessRamp;

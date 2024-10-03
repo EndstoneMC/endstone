@@ -256,7 +256,7 @@ public:
         return command_map_ != nullptr;
     }
 
-    [[nodiscard]] virtual PluginCommand *asPluginCommand()
+    [[nodiscard]] virtual PluginCommand *asPluginCommand() const
     {
         return nullptr;
     }

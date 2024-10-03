@@ -126,12 +126,9 @@ ConsoleCommandSender &EndstoneServer::getCommandSender() const
     return *command_sender_;
 }
 
-bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command) const
+bool EndstoneServer::dispatchCommand(CommandSender &sender, std::string command_line) const
 {
-    auto origin = CommandOrigin::fromEndstone(sender);
-    CommandContext ctx{command, std::move(origin), CommandVersion::CurrentVersion};
-    auto result = getMinecraftCommands().executeCommand(ctx, true);
-    return result.isSuccess();
+    return command_map_->dispatch(sender, std::move(command_line));
 }
 
 void EndstoneServer::loadPlugins()

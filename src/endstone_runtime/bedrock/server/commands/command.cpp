@@ -33,6 +33,11 @@ std::string Command::getCommandName() const
     return ENDSTONE_HOOK_CALL_ORIGINAL(&Command::getCommandName, this);
 }
 
+void Command::run(CommandOrigin const &origin, CommandOutput &output) const
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&Command::run, this, origin, output);
+}
+
 bool Command::collectOptionalArguments()
 {
     return true;

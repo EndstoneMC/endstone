@@ -12,23 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/bedrock_command.h"
+#include "endstone/detail/command/minecraft_command.h"
 
 #include <utility>
 
+#include "endstone/detail/level/level.h"
+#include "endstone/detail/server.h"
+
 namespace endstone::detail {
 
-BedrockCommand::BedrockCommand(std::string name, std::string description, std::vector<std::string> usages,
-                               std::vector<std::string> aliases, std::vector<std::string> permissions)
+MinecraftCommand::MinecraftCommand(std::string name, std::string description, std::vector<std::string> usages,
+                                   std::vector<std::string> aliases, std::vector<std::string> permissions)
     : Command(std::move(name), std::move(description), std::move(usages), std::move(aliases), std::move(permissions))
 {
     setPermissions("minecraft.command." + getName());
 }
 
-bool BedrockCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
+bool MinecraftCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
-    sender.sendErrorMessage("Command '/{}' is provided by Bedrock Dedicated Server and is not executable.", getName());
-    return false;
+    throw std::runtime_error("MinecraftCommand::execute is not supposed to be called. Something is wrong.");
 }
 
 }  // namespace endstone::detail

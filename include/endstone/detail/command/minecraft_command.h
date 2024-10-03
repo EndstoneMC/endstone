@@ -12,19 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/server/commands/command_registry.h"
-#include "bedrock/world/level/dimension/vanilla_dimensions.h"
+#pragma once
+
+#include "bedrock/server/commands/command_origin.h"
+#include "endstone/command/command.h"
+
+namespace endstone::detail {
 
 /**
- * NOTE for endstone developers:
- *
- * This file contains hard-coded magic values required for the Endstone to function.
- * Currently, there's no trivial way to determine these values during runtime.
- * Hence, these values are hard-coded for the time being.
- * These values need to be checked and updated on each game update.
+ * Represents a view of a Command provided by Minecraft
  */
+class MinecraftCommand : public Command {
+public:
+    explicit MinecraftCommand(std::string name, std::string description = "", std::vector<std::string> usages = {},
+                              std::vector<std::string> aliases = {}, std::vector<std::string> permissions = {});
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+};
 
-/**
- * CommandVersion
- */
-const int CommandVersion::CurrentVersion = 42;
+}  // namespace endstone::detail

@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "endstone/command/command_sender.h"
+
 namespace endstone {
 
 class Command;
@@ -42,6 +44,15 @@ public:
      * @return true on success, false if a command with the same name is already registered
      */
     virtual bool registerCommand(std::shared_ptr<Command> command) = 0;
+
+    /**
+     * @brief Looks for the requested command and executes it if found.
+     *
+     * @param sender The command's sender
+     * @param command_line command + arguments. Example: "/test abc 123"
+     * @return true if execution is successful, false otherwise
+     */
+    virtual bool dispatch(CommandSender &sender, std::string command_line) const = 0;
 
     /**
      * Clears all registered commands.

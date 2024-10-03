@@ -54,31 +54,3 @@ std::shared_ptr<endstone::CommandSender> CommandOrigin::getEndstoneSender() cons
         return nullptr;
     }
 }
-
-std::unique_ptr<CommandOrigin> CommandOrigin::fromEndstone(endstone::CommandSender &sender)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-
-    if (auto *console = sender.asConsole(); console) {
-        CompoundTag tag;
-        {
-            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
-            tag.putString("RequestId", "00000000-0000-0000-0000-000000000000");
-            tag.putByte("CommandPermissionLevel", static_cast<std::uint8_t>(CommandPermissionLevel::Owner));
-            tag.putString("DimensionId", "overworld");
-        }
-        auto *level = static_cast<EndstoneLevel *>(server.getLevel());
-        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
-    }
-
-    if (auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
-        CompoundTag tag;
-        {
-            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
-            tag.putInt64("PlayerId", player->getHandle().getOrCreateUniqueID().raw_id);
-        }
-        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getHandle().getLevel()));
-    }
-
-    return nullptr;
-}

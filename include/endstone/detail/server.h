@@ -52,7 +52,7 @@ public:
     [[nodiscard]] PluginManager &getPluginManager() const override;
     [[nodiscard]] PluginCommand *getPluginCommand(std::string name) const override;
     [[nodiscard]] ConsoleCommandSender &getCommandSender() const override;
-    [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command) const override;
+    [[nodiscard]] bool dispatchCommand(CommandSender &sender, std::string command_line) const override;
 
     void loadPlugins();
     void enablePlugins(PluginLoadOrder type);

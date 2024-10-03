@@ -83,9 +83,9 @@ public:
         return owner_;
     }
 
-    [[nodiscard]] PluginCommand *asPluginCommand() override
+    [[nodiscard]] PluginCommand *asPluginCommand() const override
     {
-        return this;
+        return const_cast<PluginCommand *>(this);
     }
 
 private:

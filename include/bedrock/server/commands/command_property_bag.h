@@ -14,15 +14,9 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/core/utility/property_bag.h"
 
-enum class CurrentCmdVersion : std::int32_t {
-    Latest = 42
-};
-
-struct CommandVersion {
-    int from;
-    int to;
-
-    inline static const int CurrentVersion = static_cast<int>(CurrentCmdVersion::Latest);
+class CommandPropertyBag : public PropertyBag {
+public:
+    virtual ~CommandPropertyBag();
 };

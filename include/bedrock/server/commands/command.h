@@ -37,10 +37,11 @@ class Command {
 public:
     Command() = default;
     virtual ~Command() = default;
-    [[nodiscard]] ENDSTONE_HOOK std::string getCommandName() const;
-
     virtual bool collectOptionalArguments();
     virtual void execute(CommandOrigin const &, CommandOutput &) const = 0;
+
+    [[nodiscard]] ENDSTONE_HOOK std::string getCommandName() const;
+    ENDSTONE_HOOK void run(CommandOrigin const &origin, CommandOutput &output) const;
 
 private:
     int version_ = 0;

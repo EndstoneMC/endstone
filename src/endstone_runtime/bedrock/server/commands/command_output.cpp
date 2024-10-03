@@ -14,12 +14,46 @@
 
 #include "bedrock/server/commands/command_output.h"
 
-#include "endstone/detail/hook.h"
+#include <utility>
 
-void CommandOutput::addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
-                               enum CommandOutputMessageType type)
+#include "bedrock/locale/i18n.h"
+
+CommandOutputMessage::CommandOutputMessage(CommandOutputMessageType type, std::string message_id,
+                                           std::vector<std::string> &&params)
+    : type_(type), message_id_(std::move(message_id)), params_(std::move(params))
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&CommandOutput::addMessage, this, message_id, params, type);
+}
+
+CommandOutputMessageType CommandOutputMessage::getType() const
+{
+    return type_;
+}
+
+std::string const &CommandOutputMessage::getMessageId() const
+{
+    return message_id_;
+}
+
+std::vector<std::string> const &CommandOutputMessage::getParams() const
+{
+    return params_;
+}
+
+std::string const &CommandOutputParameter::getText() const
+{
+    return string_;
+}
+
+int CommandOutputParameter::count() const
+{
+    return count_;
+}
+
+CommandOutput::CommandOutput(CommandOutputType type) : type_(type) {}
+
+void CommandOutput::success()
+{
+    success_count_++;
 }
 
 void CommandOutput::forceOutput(const std::string &message_id, const std::vector<CommandOutputParameter> &params)
@@ -36,7 +70,27 @@ void CommandOutput::error(const std::string &message_id, const std::vector<Comma
     }
 }
 
-void CommandOutput::success()
+int CommandOutput::getSuccessCount() const
 {
-    success_count_++;
+    return success_count_;
+}
+
+const std::vector<CommandOutputMessage> &CommandOutput::getMessages() const
+{
+    return messages_;
+}
+
+void CommandOutput::addMessage(const std::string &message_id, const std::vector<CommandOutputParameter> &params,
+                               CommandOutputMessageType type)
+{
+    if (type_ == CommandOutputType::LastOutput) {
+        messages_.clear();
+    }
+
+    std::vector<std::string> param_list;
+    param_list.reserve(params.size());
+    for (const auto &param : params) {
+        param_list.push_back(param.getText());
+    }
+    messages_.emplace_back(type, message_id, std::move(param_list));
 }

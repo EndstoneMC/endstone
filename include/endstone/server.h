@@ -101,10 +101,10 @@ public:
      * @brief Dispatches a command on this server, and executes it if found.
      *
      * @param sender the apparent sender of the command
-     * @param command the command + arguments.
+     * @param command_line the command + arguments.
      * @return true if execution is successful, false otherwise
      */
-    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command) const = 0;
+    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
 
     /**
      * @brief Gets the scheduler for managing scheduled events.

@@ -14,15 +14,10 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/deps/json/value.h"
 
-enum class CurrentCmdVersion : std::int32_t {
-    Latest = 42
-};
-
-struct CommandVersion {
-    int from;
-    int to;
-
-    inline static const int CurrentVersion = static_cast<int>(CurrentCmdVersion::Latest);
+class PropertyBag {
+protected:
+    Json::Value json_value_;
+    int change_version_;
 };

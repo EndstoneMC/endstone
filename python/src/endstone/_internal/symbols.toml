@@ -1,4 +1,4 @@
-timestamp = 1726688546
+timestamp = 1727987716
 version = "1.21.30"
 
 [windows]
@@ -16,6 +16,7 @@ version = "1.21.30"
 "?forEachBlock@BlockTypeRegistry@@SAXV?$function@$$A6A_NAEBVBlockLegacy@@@Z@std@@@Z" = 34035488
 # Command
 "?getCommandName@Command@@QEBA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 13071536
+"?run@Command@@QEBAXAEBVCommandOrigin@@AEAVCommandOutput@@@Z" = 13110032
 # CommandOriginLoader
 "?load@CommandOriginLoader@@SA?AV?$unique_ptr@VCommandOrigin@@U?$default_delete@VCommandOrigin@@@std@@@std@@AEBVCompoundTag@@AEAVServerLevel@@@Z" = 13091744
 # CommandOutput
@@ -52,6 +53,7 @@ version = "1.21.30"
 "?tick@Level@@UEAAXXZ" = 27644512
 "?_getGameplayUserManagerStackRef@Level@@IEAA?AV?$not_null@V?$StackRefResult@VGameplayUserManager@@@@@gsl@@XZ" = 27575296
 # MinecraftCommands
+"?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 14822352
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 14878912
 # MinecraftPackets
 "?createPacket@MinecraftPackets@@SA?AV?$shared_ptr@VPacket@@@std@@W4MinecraftPacketIds@@@Z" = 8215760
@@ -119,6 +121,7 @@ version = "1.21.30"
 "_ZN17BlockTypeRegistry12forEachBlockENSt3__18functionIFbRK11BlockLegacyEEE" = 128649664
 # Command
 "_ZNK7Command14getCommandNameEv" = 99942672
+"_ZNK7Command3runERK13CommandOriginR13CommandOutput" = 99942784
 # CommandOriginLoader
 "_ZN19CommandOriginLoader4loadERK11CompoundTagR11ServerLevel" = 99994208
 # CommandOutput
@@ -155,6 +158,7 @@ version = "1.21.30"
 "_ZN5Level4tickEv" = 122631760
 "_ZN5Level31_getGameplayUserManagerStackRefEv" = 122660048
 # MinecraftCommands
+"_ZN17MinecraftCommands14compileCommandERK12HashedStringR13CommandOrigin17CurrentCmdVersionNSt3__18functionIFvRKNS6_12basic_stringIcNS6_11char_traitsIcEENS6_9allocatorIcEEEEEEE" = 89568896
 "_ZNK17MinecraftCommands14executeCommandER14CommandContextb" = 89565904
 # MinecraftPackets
 "_ZN16MinecraftPackets12createPacketE18MinecraftPacketIds" = 78388480
