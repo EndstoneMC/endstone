@@ -7,6 +7,7 @@
 
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **asActor** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **ActorKnockbackEvent** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
@@ -62,6 +63,7 @@
 
 ## d
 
+* **dispatch** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **Dropdown** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::StepSlider**](classendstone_1_1StepSlider.md))
 * **debug** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **disablePlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))

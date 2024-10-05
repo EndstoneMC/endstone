@@ -71,6 +71,12 @@
         <label>include/endstone/event/player/player_death_event.h</label>
         <link refid="player__death__event_8h_source"/>
       </node>
+      <node id="47">
+        <label>include/endstone/command/command_map.h</label>
+        <link refid="command__map_8h_source"/>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
       <node id="21">
         <label>include/endstone/plugin/plugin.h</label>
         <link refid="plugin_8h_source"/>
@@ -161,7 +167,7 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="49">
         <label>include/endstone/command/proxied_command_sender.h</label>
         <link refid="proxied__command__sender_8h_source"/>
       </node>
@@ -217,10 +223,10 @@
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>include/endstone/permissions/permission.h</label>
         <link refid="permission_8h_source"/>
-        <childnode refid="50" relation="include">
+        <childnode refid="51" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -279,7 +285,7 @@
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="47">
+      <node id="48">
         <label>include/endstone/command/console_command_sender.h</label>
         <link refid="console__command__sender_8h_source"/>
       </node>
@@ -296,6 +302,8 @@
         </childnode>
         <childnode refid="48" relation="include">
         </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
@@ -308,9 +316,9 @@
         <link refid="permissible_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
         <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
         </childnode>
       </node>
       <node id="22">
@@ -377,7 +385,7 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>include/endstone/permissions/permission_attachment.h</label>
         <link refid="permission__attachment_8h_source"/>
       </node>
@@ -471,9 +479,9 @@
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="123" refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::unordered_set&lt;PermissionAttachmentInfo<sp/>*&gt;<sp/><ref refid="classendstone_1_1Permissible_1a6a1c1a23b64c890e7eba0409c80571ef" kindref="member">getEffectivePermissions</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*asCommandSender()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="127"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref><sp/>*<ref refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf" kindref="member">asCommandSender</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/permissions/permissible.h"/>
   </compounddef>

@@ -74,7 +74,7 @@ Inherits the following classes: [endstone::Command](classendstone_1_1Command.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**PluginCommand**](#function-plugincommand) (const [**Command**](classendstone_1_1Command.md) & command, [**Plugin**](classendstone_1_1Plugin.md) & owner) <br> |
-| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () override<br> |
+| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () override const<br> |
 | virtual bool | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) override const<br> |
 | virtual [**CommandExecutor**](classendstone_1_1CommandExecutor.md) & | [**getExecutor**](#function-getexecutor) () const<br> |
 |  [**Plugin**](classendstone_1_1Plugin.md) & | [**getPlugin**](#function-getplugin) () const<br> |
@@ -88,7 +88,7 @@ See [endstone::Command](classendstone_1_1Command.md)
 | Type | Name |
 | ---: | :--- |
 |   | [**Command**](classendstone_1_1Command.md#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
-| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](classendstone_1_1Command.md#function-asplugincommand) () <br> |
+| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](classendstone_1_1Command.md#function-asplugincommand) () const<br> |
 | virtual bool | [**execute**](classendstone_1_1Command.md#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) const<br> |
 |  std::vector&lt; std::string &gt; | [**getAliases**](classendstone_1_1Command.md#function-getaliases) () const<br> |
 |  std::string | [**getDescription**](classendstone_1_1Command.md#function-getdescription) () const<br> |
@@ -184,7 +184,7 @@ inline endstone::PluginCommand::PluginCommand (
 ### function asPluginCommand 
 
 ```C++
-inline virtual PluginCommand * endstone::PluginCommand::asPluginCommand () override
+inline virtual PluginCommand * endstone::PluginCommand::asPluginCommand () override const
 ```
 
 

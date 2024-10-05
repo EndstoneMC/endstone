@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="30" column="5"/>
+        <location file="include/endstone/command/command_map.h" line="32" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1afc2b0e7676d5d23fffb429c5910a1645" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="31" column="5"/>
+        <location file="include/endstone/command/command_map.h" line="33" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a5d335762c372e8aba7270a1fbfb202f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="32" column="16"/>
+        <location file="include/endstone/command/command_map.h" line="34" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="33" column="5"/>
+        <location file="include/endstone/command/command_map.h" line="35" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a4d222517c8e20f2bb08e242e0270330f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classendstone_1_1CommandMap" kindref="compound">CommandMap</ref> &amp;</type>
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="34" column="16"/>
+        <location file="include/endstone/command/command_map.h" line="36" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="36" column="13"/>
+        <location file="include/endstone/command/command_map.h" line="38" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -122,7 +122,49 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="44" column="18"/>
+        <location file="include/endstone/command/command_map.h" line="46" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::CommandMap::dispatch</definition>
+        <argsstring>(CommandSender &amp;sender, std::string command_line) const =0</argsstring>
+        <name>dispatch</name>
+        <param>
+          <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
+          <declname>sender</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>command_line</declname>
+        </param>
+        <briefdescription>
+<para>Looks for the requested command and executes it if found. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The command&apos;s sender </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>command_line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>command + arguments. Example: &quot;/test abc 123&quot; </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if execution is successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/command/command_map.h" line="55" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
@@ -136,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="49" column="18"/>
+        <location file="include/endstone/command/command_map.h" line="60" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1Command" kindref="compound">Command</ref> *</type>
@@ -166,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/command/command_map.h" line="57" column="22"/>
+        <location file="include/endstone/command/command_map.h" line="68" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -174,12 +216,13 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/command/command_map.h" line="28" column="1" bodyfile="include/endstone/command/command_map.h" bodystart="28" bodyend="58"/>
+    <location file="include/endstone/command/command_map.h" line="30" column="1" bodyfile="include/endstone/command/command_map.h" bodystart="30" bodyend="69"/>
     <listofallmembers>
       <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>clearCommands</name></member>
       <member refid="classendstone_1_1CommandMap_1a25331c5810be15454974aaefe3fbc68b" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
       <member refid="classendstone_1_1CommandMap_1afc2b0e7676d5d23fffb429c5910a1645" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
       <member refid="classendstone_1_1CommandMap_1a4ebefdf37ff6f59a731c03217fe4bb9c" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>CommandMap</name></member>
+      <member refid="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>dispatch</name></member>
       <member refid="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" prot="public" virt="pure-virtual"><scope>endstone::CommandMap</scope><name>getCommand</name></member>
       <member refid="classendstone_1_1CommandMap_1a5d335762c372e8aba7270a1fbfb202f7" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>
       <member refid="classendstone_1_1CommandMap_1a4d222517c8e20f2bb08e242e0270330f" prot="public" virt="non-virtual"><scope>endstone::CommandMap</scope><name>operator=</name></member>

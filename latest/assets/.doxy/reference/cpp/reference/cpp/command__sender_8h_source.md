@@ -33,6 +33,7 @@
 
 namespace endstone {
 
+class Actor;
 class ConsoleCommandSender;
 class Server;
 class Player;
@@ -46,6 +47,11 @@ public:
     }
 
     [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
+    {
+        return nullptr;
+    }
+
+    [[nodiscard]] virtual Actor *asActor() const
     {
         return nullptr;
     }

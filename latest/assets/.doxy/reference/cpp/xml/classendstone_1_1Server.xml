@@ -226,10 +226,10 @@
         </inbodydescription>
         <location file="include/endstone/server.h" line="98" column="35"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool endstone::Server::dispatchCommand</definition>
-        <argsstring>(CommandSender &amp;sender, std::string command) const =0</argsstring>
+        <argsstring>(CommandSender &amp;sender, std::string command_line) const =0</argsstring>
         <name>dispatchCommand</name>
         <param>
           <type><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> &amp;</type>
@@ -237,7 +237,7 @@
         </param>
         <param>
           <type>std::string</type>
-          <declname>command</declname>
+          <declname>command_line</declname>
         </param>
         <briefdescription>
 <para>Dispatches a command on this server, and executes it if found. </para>
@@ -253,7 +253,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>command</parametername>
+<parametername>command_line</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>the command + arguments. </para>
@@ -945,7 +945,7 @@
       <member refid="classendstone_1_1Server_1a3cea2ceabe8b83f437a0236d2c087b65" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createBossBar</name></member>
       <member refid="classendstone_1_1Server_1abbf5f449f3645d4d05b67a31d44e04bc" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>createScoreboard</name></member>
-      <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
+      <member refid="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>dispatchCommand</name></member>
       <member refid="classendstone_1_1Server_1a63e3ffb84311f233e965144501ceb195" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageMillisecondsPerTick</name></member>
       <member refid="classendstone_1_1Server_1a23be2bfc5675e6b04cce1e2a7f7f3277" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTicksPerSecond</name></member>
       <member refid="classendstone_1_1Server_1a08daaf367859b76040b252ba7e2b3dcf" prot="public" virt="pure-virtual"><scope>endstone::Server</scope><name>getAverageTickUsage</name></member>

@@ -54,7 +54,7 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 | Type | Name |
 | ---: | :--- |
 |   | [**Command**](#function-command) (std::string name, std::string description="", std::vector&lt; std::string &gt; usages={}, std::vector&lt; std::string &gt; aliases={}, std::vector&lt; std::string &gt; permissions={}) <br> |
-| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () <br> |
+| virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**asPluginCommand**](#function-asplugincommand) () const<br> |
 | virtual bool | [**execute**](#function-execute) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, const std::vector&lt; std::string &gt; & args) const<br> |
 |  std::vector&lt; std::string &gt; | [**getAliases**](#function-getaliases) () const<br> |
 |  std::string | [**getDescription**](#function-getdescription) () const<br> |
@@ -127,7 +127,7 @@ inline explicit endstone::Command::Command (
 ### function asPluginCommand 
 
 ```C++
-inline virtual PluginCommand * endstone::Command::asPluginCommand () 
+inline virtual PluginCommand * endstone::Command::asPluginCommand () const
 ```
 
 

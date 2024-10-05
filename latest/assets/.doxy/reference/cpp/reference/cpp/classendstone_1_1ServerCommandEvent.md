@@ -217,7 +217,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 You should not use this except for a few cases like logging commands, blocking commands on certain places, or applying modifiers.
 
 
-The command message contains a slash at the start 
+**The command message contains a slash '/' at the start** 
 
 
     

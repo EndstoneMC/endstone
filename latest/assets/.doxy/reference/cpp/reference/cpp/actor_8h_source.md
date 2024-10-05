@@ -32,6 +32,12 @@ namespace endstone {
 
 class Actor : public CommandSender {
 public:
+    // CommandSender
+    [[nodiscard]] Actor* asActor() const override
+    {
+        return const_cast<Actor *>(this);
+    }
+
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
 
     [[nodiscard]] virtual Location getLocation() const = 0;

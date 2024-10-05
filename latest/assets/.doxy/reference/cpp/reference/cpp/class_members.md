@@ -7,6 +7,7 @@
 
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **asActor** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
 * **actor\_** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md), [**endstone::PlayerInteractActorEvent**](classendstone_1_1PlayerInteractActorEvent.md))
@@ -102,6 +103,7 @@
 * **DarkPurple** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkRed** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **description\_** ([**endstone::Command**](classendstone_1_1Command.md), [**endstone::Permission**](classendstone_1_1Permission.md), [**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **dispatch** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **Dropdown** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md), [**endstone::StepSlider**](classendstone_1_1StepSlider.md))
 * **default\_index\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **debug** ([**endstone::Logger**](classendstone_1_1Logger.md))

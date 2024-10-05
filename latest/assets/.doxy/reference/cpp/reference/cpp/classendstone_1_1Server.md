@@ -68,7 +68,7 @@ _Represents a server implementation._
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-12) (std::string title, BarColor color, BarStyle style) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::unique\_ptr&lt; [**BossBar**](classendstone_1_1BossBar.md) &gt; | [**createBossBar**](#function-createbossbar-22) (std::string title, BarColor color, BarStyle style, std::vector&lt; BarFlag &gt; flags) const = 0<br>_Creates a boss bar instance to display to players. The progress defaults to 1.0._  |
 | virtual std::shared\_ptr&lt; [**Scoreboard**](classendstone_1_1Scoreboard.md) &gt; | [**createScoreboard**](#function-createscoreboard) () = 0<br>_Creates a new_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _to be tracked by the server._ |
-| virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
+| virtual bool | [**dispatchCommand**](#function-dispatchcommand) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Dispatches a command on this server, and executes it if found._  |
 | virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual float | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
@@ -441,7 +441,7 @@ _Dispatches a command on this server, and executes it if found._
 ```C++
 virtual bool endstone::Server::dispatchCommand (
     CommandSender & sender,
-    std::string command
+    std::string command_line
 ) const = 0
 ```
 
@@ -453,7 +453,7 @@ virtual bool endstone::Server::dispatchCommand (
 
 
 * `sender` the apparent sender of the command 
-* `command` the command + arguments. 
+* `command_line` the command + arguments. 
 
 
 

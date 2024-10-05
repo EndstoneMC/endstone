@@ -28,6 +28,8 @@
 #include <string>
 #include <vector>
 
+#include "endstone/command/command_sender.h"
+
 namespace endstone {
 
 class Command;
@@ -43,6 +45,8 @@ public:
     virtual ~CommandMap() = default;
 
     virtual bool registerCommand(std::shared_ptr<Command> command) = 0;
+
+    virtual bool dispatch(CommandSender &sender, std::string command_line) const = 0;
 
     virtual void clearCommands() = 0;
 

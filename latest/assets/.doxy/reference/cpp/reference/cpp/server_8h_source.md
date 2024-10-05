@@ -68,7 +68,7 @@ public:
 
     [[nodiscard]] virtual ConsoleCommandSender &getCommandSender() const = 0;
 
-    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command) const = 0;
+    [[nodiscard]] virtual bool dispatchCommand(CommandSender &sender, std::string command_line) const = 0;
 
     [[nodiscard]] virtual Scheduler &getScheduler() const = 0;
 

@@ -15,6 +15,7 @@
     <member refid="classendstone_1_1ActionForm_1a2a1571de49cee09428183550ba9d21f6" kind="function"><name>setOnSubmit</name></member>
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
+    <member refid="classendstone_1_1Actor_1a116c5083ae28119fbd6ec34568c8552a" kind="function"><name>asActor</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
     <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" kind="function"><name>getVelocity</name></member>
@@ -257,7 +258,7 @@
     <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" kind="function"><name>registerTo</name></member>
     <member refid="classendstone_1_1Command_1ac162a2899386e5a0de4c523522324e1f" kind="function"><name>unregisterFrom</name></member>
     <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kind="function"><name>isRegistered</name></member>
-    <member refid="classendstone_1_1Command_1aaddbe8b0920daa59207a39fad880bf47" kind="function"><name>asPluginCommand</name></member>
+    <member refid="classendstone_1_1Command_1a9b47871a5d15778160cd8afb5a7bdb3c" kind="function"><name>asPluginCommand</name></member>
     <member refid="classendstone_1_1Command_1a403d11862caed467be923652aabff55a" kind="function"><name>allowChangesFrom</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandExecutor" kind="class"><name>endstone::CommandExecutor</name>
@@ -272,12 +273,14 @@
     <member refid="classendstone_1_1CommandMap_1a4d222517c8e20f2bb08e242e0270330f" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1CommandMap_1abc727aa73950b67e85315d0fa0317c9d" kind="function"><name>~CommandMap</name></member>
     <member refid="classendstone_1_1CommandMap_1a5b3beafddf2091946afee009ae1cf5de" kind="function"><name>registerCommand</name></member>
+    <member refid="classendstone_1_1CommandMap_1a4f06f0f67a32638079499c1b8bbc8dbc" kind="function"><name>dispatch</name></member>
     <member refid="classendstone_1_1CommandMap_1a668e38f90aad2458f33563f84d87c95a" kind="function"><name>clearCommands</name></member>
     <member refid="classendstone_1_1CommandMap_1adaa3d3c2707fbb2af72b7bcb7ecf298d" kind="function"><name>getCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandSender" kind="class"><name>endstone::CommandSender</name>
     <member refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d" kind="function"><name>asCommandSender</name></member>
     <member refid="classendstone_1_1CommandSender_1ae245d2d408ea4a8e34f4c168cb4eba87" kind="function"><name>asConsole</name></member>
+    <member refid="classendstone_1_1CommandSender_1a1091414f8c9d9245f2beeee9e3679462" kind="function"><name>asActor</name></member>
     <member refid="classendstone_1_1CommandSender_1a52b3fa3b0210161f58c06ab4f23b23c6" kind="function"><name>asPlayer</name></member>
     <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" kind="function"><name>sendMessage</name></member>
     <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" kind="function"><name>sendMessage</name></member>
@@ -803,7 +806,7 @@
     <member refid="classendstone_1_1PluginCommand_1a49cc0fd16a008de539a703fa63fd7ef4" kind="function"><name>setExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1a9260cca3aa3914763d0f21d30ba00aeb" kind="function"><name>getExecutor</name></member>
     <member refid="classendstone_1_1PluginCommand_1ae4564c6981d2e05a5bdbe64a46d23e1d" kind="function"><name>getPlugin</name></member>
-    <member refid="classendstone_1_1PluginCommand_1a5111f2a962276060d100c46daef6fd71" kind="function"><name>asPluginCommand</name></member>
+    <member refid="classendstone_1_1PluginCommand_1abaf57123bc994ea15ffbe20a550345c4" kind="function"><name>asPluginCommand</name></member>
   </compound>
   <compound refid="classendstone_1_1PluginDescription" kind="class"><name>endstone::PluginDescription</name>
     <member refid="classendstone_1_1PluginDescription_1aacb04a904088262c76bc1a413d041c56" kind="variable"><name>name_</name></member>
@@ -965,7 +968,7 @@
     <member refid="classendstone_1_1Server_1a612846abaf6bd84f56d1cb81a3c0aa95" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ad65f8ef9b0f8f4af5d56788af89c5367" kind="function"><name>getPluginCommand</name></member>
     <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
-    <member refid="classendstone_1_1Server_1a9c8fecebf6fb62aa916da3017cb63de6" kind="function"><name>dispatchCommand</name></member>
+    <member refid="classendstone_1_1Server_1ae51b7402688f21fe9779349df0c5df73" kind="function"><name>dispatchCommand</name></member>
     <member refid="classendstone_1_1Server_1aee8ec47d389d77f2a36ed49777a77621" kind="function"><name>getScheduler</name></member>
     <member refid="classendstone_1_1Server_1a0a60aee946cfdf663b22f50f440e756b" kind="function"><name>getLevel</name></member>
     <member refid="classendstone_1_1Server_1a87fe533801da1f729baa68cc96099546" kind="function"><name>getOnlinePlayers</name></member>

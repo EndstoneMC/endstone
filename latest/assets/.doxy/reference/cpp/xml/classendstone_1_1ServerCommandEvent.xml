@@ -174,7 +174,7 @@
     </briefdescription>
     <detaileddescription>
 <para>You should not use this except for a few cases like logging commands, blocking commands on certain places, or applying modifiers.</para>
-<para>The command message contains a slash at the start </para>
+<para><bold>The command message contains a slash &apos;/&apos; at the start</bold> </para>
     </detaileddescription>
     <inheritancegraph>
       <node id="1">

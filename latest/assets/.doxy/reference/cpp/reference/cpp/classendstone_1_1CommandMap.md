@@ -56,6 +56,7 @@ _Represents a command map that manages all commands of the_ [_**Server**_](class
 |   | [**CommandMap**](#function-commandmap-23) (const [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |   | [**CommandMap**](#function-commandmap-33) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
 | virtual void | [**clearCommands**](#function-clearcommands) () = 0<br> |
+| virtual bool | [**dispatch**](#function-dispatch) ([**CommandSender**](classendstone_1_1CommandSender.md) & sender, std::string command\_line) const = 0<br>_Looks for the requested command and executes it if found._  |
 | virtual [**Command**](classendstone_1_1Command.md) \* | [**getCommand**](#function-getcommand) (std::string name) const = 0<br> |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator) (const [**CommandMap**](classendstone_1_1CommandMap.md) &) = delete<br> |
 |  [**CommandMap**](classendstone_1_1CommandMap.md) & | [**operator=**](#function-operator_1) ([**CommandMap**](classendstone_1_1CommandMap.md) &&) = default<br> |
@@ -147,6 +148,42 @@ virtual void endstone::CommandMap::clearCommands () = 0
 
 
 Clears all registered commands. 
+
+
+        
+
+<hr>
+
+
+
+### function dispatch 
+
+_Looks for the requested command and executes it if found._ 
+```C++
+virtual bool endstone::CommandMap::dispatch (
+    CommandSender & sender,
+    std::string command_line
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `sender` The command's sender 
+* `command_line` command + arguments. Example: "/test abc 123" 
+
+
+
+**Returns:**
+
+true if execution is successful, false otherwise 
+
+
+
 
 
         

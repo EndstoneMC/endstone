@@ -319,7 +319,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Gets a set containing all of the permissions currently in effect by this object</para>
+<para>Gets a set containing all the permissions currently in effect by this object</para>
 <para><simplesect kind="return"><para>Set of currently effective permissions </para>
 </simplesect>
 </para>
@@ -335,12 +335,16 @@
         <name>asCommandSender</name>
         <reimplementedby refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d">asCommandSender</reimplementedby>
         <briefdescription>
+<para>Casts a <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> as <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>, nullptr if not a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/permissions/permissible.h" line="125" column="28"/>
+        <location file="include/endstone/permissions/permissible.h" line="130" column="28"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -390,7 +394,7 @@
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/permissions/permissible.h" line="34" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="34" bodyend="126"/>
+    <location file="include/endstone/permissions/permissible.h" line="34" column="1" bodyfile="include/endstone/permissions/permissible.h" bodystart="34" bodyend="131"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" prot="public" virt="pure-virtual"><scope>endstone::Permissible</scope><name>addAttachment</name></member>

@@ -55,7 +55,7 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 | ---: | :--- |
 | virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-12) ([**Plugin**](classendstone_1_1Plugin.md) & plugin, const std::string & name, bool value) = 0<br> |
 | virtual Result&lt; [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) \* &gt; | [**addAttachment**](#function-addattachment-22) ([**Plugin**](classendstone_1_1Plugin.md) & plugin) = 0<br> |
-| virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () const = 0<br> |
+| virtual [**CommandSender**](classendstone_1_1CommandSender.md) \* | [**asCommandSender**](#function-ascommandsender) () const = 0<br>_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._ |
 | virtual std::unordered\_set&lt; [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) \* &gt; | [**getEffectivePermissions**](#function-geteffectivepermissions) () const = 0<br> |
 | virtual bool | [**hasPermission**](#function-haspermission-12) (std::string name) const = 0<br> |
 | virtual bool | [**hasPermission**](#function-haspermission-22) (const [**Permission**](classendstone_1_1Permission.md) & perm) const = 0<br> |
@@ -179,12 +179,24 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 ### function asCommandSender 
 
+_Casts a_ [_**Permissible**_](classendstone_1_1Permissible.md) _as_[_**CommandSender**_](classendstone_1_1CommandSender.md) _._
 ```C++
 virtual CommandSender * endstone::Permissible::asCommandSender () const = 0
 ```
 
 
 
+
+
+**Returns:**
+
+[**CommandSender**](classendstone_1_1CommandSender.md), nullptr if not a [**CommandSender**](classendstone_1_1CommandSender.md) 
+
+
+
+
+
+        
 
 <hr>
 
@@ -199,7 +211,7 @@ virtual std::unordered_set< PermissionAttachmentInfo * > endstone::Permissible::
 
 
 
-Gets a set containing all of the permissions currently in effect by this object
+Gets a set containing all the permissions currently in effect by this object
 
 
 
