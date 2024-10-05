@@ -18,6 +18,7 @@
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/server/commands/command_origin_loader.h"
+#include "endstone/detail/command/command_output_with_sender.h"
 #include "endstone/detail/level/level.h"
 
 namespace endstone::detail {
@@ -50,9 +51,8 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
         return false;
     }
 
-    // run the command
-    // TODO: we should pass down the sender as well
-    CommandOutput output{CommandOutputType::AllOutput};
+    // run the command and pass down the sender
+    CommandOutputWithSender output{CommandOutputType::AllOutput, sender};
     command->run(*command_origin, output);
 
     // redirect outputs to sender
