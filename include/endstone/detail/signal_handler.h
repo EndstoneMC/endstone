@@ -31,7 +31,7 @@ inline void print_frame(std::ostream &stream, bool color, unsigned frame_number_
     const auto *green = color ? "\033[32m" : "";
     const auto *yellow = color ? "\033[33m" : "";
     const auto *blue = color ? "\033[34m" : "";
-    std::string line = fmt::format("#{:<{}} ", counter, frame_number_width);
+    std::string line = fmt::format("[{:<{}}] ", counter, frame_number_width);
     if (frame.is_inline) {
         line += fmt::format("{:<{}}", "(inlined)", 2 * sizeof(cpptrace::frame_ptr) + 2);
     }

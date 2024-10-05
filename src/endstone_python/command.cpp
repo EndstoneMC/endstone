@@ -16,11 +16,13 @@
 
 #include <utility>
 
+#include <pybind11/functional.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
 #include "endstone/command/command_executor.h"
 #include "endstone/command/command_sender.h"
+#include "endstone/command/command_sender_wrapper.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/logger.h"
 #include "endstone/plugin/plugin.h"
@@ -66,6 +68,13 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
         .def_property_readonly("server", &CommandSender::getServer, py::return_value_policy::reference,
                                "Returns the server instance that this command is running on")
         .def_property_readonly("name", &CommandSender::getName, "Gets the name of this command sender");
+
+    py::class_<CommandSenderWrapper, CommandSender>(
+        m, "CommandSenderWrapper",
+        "Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output")
+        .def(py::init<CommandSender &, CommandSenderWrapper::Callback, CommandSenderWrapper::Callback>(),
+             py::arg("sender"), py::arg("on_message") = CommandSenderWrapper::Callback{},
+             py::arg("on_error") = CommandSenderWrapper::Callback{});
 
     py::class_<ConsoleCommandSender, CommandSender>(m, "ConsoleCommandSender", "Represents a console command sender.");
 
