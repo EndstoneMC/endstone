@@ -116,12 +116,17 @@ public:
     virtual void recalculatePermissions() = 0;
 
     /**
-     * Gets a set containing all of the permissions currently in effect by this object
+     * Gets a set containing all the permissions currently in effect by this object
      *
      * @return Set of currently effective permissions
      */
     [[nodiscard]] virtual std::unordered_set<PermissionAttachmentInfo *> getEffectivePermissions() const = 0;
 
+    /**
+     * @brief Casts a Permissible as CommandSender
+     *
+     * @return CommandSender, nullptr if not a CommandSender
+     */
     [[nodiscard]] virtual CommandSender *asCommandSender() const = 0;
 };
 }  // namespace endstone

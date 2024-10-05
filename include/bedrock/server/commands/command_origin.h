@@ -16,7 +16,6 @@
 
 #include <optional>
 
-
 #include "bedrock/common_types.h"
 #include "bedrock/core/math/vec2.h"
 #include "bedrock/core/math/vec3.h"
@@ -75,7 +74,7 @@ public:
     [[nodiscard]] virtual bool isValid() const = 0;                                              // 30
     virtual void setUUID(const mce::UUID &uuid) = 0;                                             // 31
 
-    [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender() const;                   // Endstone
+    [[nodiscard]] std::shared_ptr<endstone::CommandSender> getEndstoneSender() const;  // Endstone
 
 protected:
     mce::UUID uuid_;

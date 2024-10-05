@@ -22,7 +22,7 @@
 
 namespace endstone::detail {
 
-CommandWrapper::CommandWrapper(MinecraftCommands &minecraft_commands, std::unique_ptr<Command> command)
+CommandWrapper::CommandWrapper(MinecraftCommands &minecraft_commands, std::shared_ptr<Command> command)
     : Command(*command), minecraft_commands_(minecraft_commands), command_(std::move(command))
 {
 }
@@ -47,6 +47,7 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
         [&sender](auto const &err) { sender.sendErrorMessage(err); });
 
     // run the command
+    // TODO: we should pass down the sender as well
     CommandOutput output{CommandOutputType::AllOutput};
     command->run(*command_origin, output);
 
@@ -79,9 +80,9 @@ Command &CommandWrapper::unwrap() const
 
 std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &sender)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<EndstoneServer>::value();
 
-    if (auto *console = sender.asConsole(); console) {
+    if (const auto *console = sender.asConsole(); console) {
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::DedicatedServer));
@@ -89,11 +90,11 @@ std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &s
             tag.putByte("CommandPermissionLevel", static_cast<std::uint8_t>(CommandPermissionLevel::Owner));
             tag.putString("DimensionId", "overworld");
         }
-        auto *level = static_cast<EndstoneLevel *>(server.getLevel());
+        const auto *level = static_cast<EndstoneLevel *>(server.getLevel());
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(level->getHandle()));
     }
 
-    if (auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
+    if (const auto *player = static_cast<EndstonePlayer *>(sender.asPlayer()); player) {
         CompoundTag tag;
         {
             tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
@@ -102,9 +103,15 @@ std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &s
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(player->getHandle().getLevel()));
     }
 
-    // TODO: entity
+    if (const auto *actor = static_cast<EndstoneActor *>(sender.asActor()); actor) {
+        CompoundTag tag;
+        {
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
+            tag.putInt64("EntityId", actor->getActor().getOrCreateUniqueID().raw_id);
+        }
+        return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(actor->getActor().getLevel()));
+    }
 
-    // TODO: if sender is CommandOriginWrapper, unwrap the origin and return its clone
     return nullptr;
 }
 

@@ -23,6 +23,7 @@
 
 namespace endstone {
 
+class Actor;
 class ConsoleCommandSender;
 class Server;
 class Player;
@@ -33,11 +34,6 @@ class Player;
 class CommandSender : public Permissible {
 public:
     // Permissible
-    /**
-     * @brief Casts a Permissible as CommandSender
-     *
-     * @return CommandSender, nullptr if not a CommandSender
-     */
     [[nodiscard]] CommandSender *asCommandSender() const override
     {
         return const_cast<CommandSender *>(this);
@@ -49,6 +45,16 @@ public:
      * @return CommandSender, nullptr if not a Console
      */
     [[nodiscard]] virtual ConsoleCommandSender *asConsole() const
+    {
+        return nullptr;
+    }
+
+    /**
+     * @brief Gets a CommandSender as Actor
+     *
+     * @return Player, nullptr if not an Actor
+     */
+    [[nodiscard]] virtual Actor *asActor() const
     {
         return nullptr;
     }

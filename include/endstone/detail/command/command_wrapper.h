@@ -21,7 +21,7 @@ namespace endstone::detail {
 
 class CommandWrapper : public Command {
 public:
-    CommandWrapper(MinecraftCommands &minecraft_commands, std::unique_ptr<Command> command);
+    CommandWrapper(MinecraftCommands &minecraft_commands, std::shared_ptr<Command> command);
 
     [[nodiscard]] bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
     [[nodiscard]] PluginCommand *asPluginCommand() const override;
@@ -31,7 +31,7 @@ public:
 
 private:
     MinecraftCommands &minecraft_commands_;
-    std::unique_ptr<Command> command_;
+    std::shared_ptr<Command> command_;
 };
 
 }  // namespace endstone::detail

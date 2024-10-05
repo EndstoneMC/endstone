@@ -62,7 +62,7 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
     }
 
     try {
-        return target->execute(sender, std::vector(args.begin() + 1, args.begin() + args.size()));
+        return target->execute(sender, std::vector(args.begin() + 1, args.end()));
     }
     catch (const std::exception &e) {
         server_.getLogger().error("Unhandled exception executing '{}': {}", command_line, e.what());
@@ -205,8 +205,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
         return false;
     }
 
-    auto wrapped =
-        std::make_shared<CommandWrapper>(server_.getMinecraftCommands(), std::make_unique<Command>(*command));
+    auto wrapped = std::make_shared<CommandWrapper>(server_.getMinecraftCommands(), command);
     command = wrapped;
 
     // Check if the command name is available
