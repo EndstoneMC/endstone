@@ -14,7 +14,6 @@
 
 #include "endstone/detail/command/command_wrapper.h"
 
-#include <bedrock/locale/i18n.h>
 #include <boost/algorithm/string.hpp>
 
 #include "bedrock/server/commands/command_origin_loader.h"
@@ -59,10 +58,10 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
     for (const auto &message : output.getMessages()) {
         switch (message.getType()) {
         case CommandOutputMessageType::Success:
-            sender.sendMessage(getI18n().get(message.getMessageId(), message.getParams(), nullptr));
+            sender.sendMessage(Translatable(message.getMessageId(), message.getParams()));
             break;
         case CommandOutputMessageType::Error:
-            sender.sendErrorMessage(getI18n().get(message.getMessageId(), message.getParams(), nullptr));
+            sender.sendErrorMessage(Translatable(message.getMessageId(), message.getParams()));
             break;
         default:
             throw std::runtime_error("Unsupported CommandOutputMessageType");
@@ -110,7 +109,7 @@ std::unique_ptr<CommandOrigin> CommandWrapper::getCommandOrigin(CommandSender &s
     if (const auto *actor = static_cast<EndstoneActor *>(sender.asActor()); actor) {
         CompoundTag tag;
         {
-            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Player));
+            tag.putByte("OriginType", static_cast<std::uint8_t>(CommandOriginType::Entity));
             tag.putInt64("EntityId", actor->getActor().getOrCreateUniqueID().raw_id);
         }
         return CommandOriginLoader::load(tag, static_cast<ServerLevel &>(actor->getActor().getLevel()));
