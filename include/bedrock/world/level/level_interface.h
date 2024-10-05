@@ -22,6 +22,7 @@
 #include <unordered_map>
 #include <vector>
 
+#include "bedrock/config/player_capabilities.h"
 #include "bedrock/core/utility/automatic_id.h"
 #include "bedrock/entity/components/user_entity_identifier_component.h"
 #include "bedrock/entity/strict/strict_entity_context.h"

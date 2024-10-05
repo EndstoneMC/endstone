@@ -209,10 +209,6 @@ public:
     class CollisionShape;
 };
 
-class PlayerCapabilities {
-public:
-    class ISharedController;
-};
 class PositionTrackingDB {
 public:
     class PositionTrackingDBClient;

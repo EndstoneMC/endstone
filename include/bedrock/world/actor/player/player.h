@@ -122,6 +122,7 @@ public:
     ENDSTONE_HOOK void setPermissions(CommandPermissionLevel level);
 
     [[nodiscard]] GameType getPlayerGameType() const;
+    [[nodiscard]] PlayerPermissionLevel getPlayerPermissionLevel() const;
 
     // Abilities
     [[nodiscard]] LayeredAbilities &getAbilities();

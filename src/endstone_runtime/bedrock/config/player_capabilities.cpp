@@ -12,22 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/config/player_capabilities.h"
 
-#include "bedrock/world/level/gameplay_user_manager.h"
-#include "bedrock/world/level/level_interface.h"
+namespace PlayerCapabilities {
 
-namespace endstone::detail {
-class EndstoneServer;
+PlayerData::PlayerData(const Player &player) : player_(player) {}
+
+bool PlayerData::isAbilityEnabled(AbilitiesIndex index) const
+{
+    return player_.getAbilities().getBool(index);
 }
 
-class Level : public ILevel {
-public:
-    ENDSTONE_HOOK void tick() override;
+bool PlayerData::isTeacher() const
+{
+    return player_.isTeacher();
+}
 
-    static bool isUsableLevel(const ILevel &level);
+bool PlayerData::isOperator() const
+{
+    return player_.getPlayerPermissionLevel() >= PlayerPermissionLevel::Operator;
+}
 
-protected:
-    friend class endstone::detail::EndstoneServer;
-    ENDSTONE_HOOK gsl::not_null<StackRefResult<GameplayUserManager>> _getGameplayUserManagerStackRef();
-};
+}  // namespace PlayerCapabilities

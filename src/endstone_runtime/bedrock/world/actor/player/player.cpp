@@ -75,6 +75,11 @@ GameType Player::getPlayerGameType() const
     return game_type;
 }
 
+PlayerPermissionLevel Player::getPlayerPermissionLevel() const
+{
+    return getAbilities().getPlayerPermissions();
+}
+
 LayeredAbilities &Player::getAbilities()
 {
     auto component = getPersistentComponent<AbilitiesComponent>();
