@@ -83,9 +83,7 @@
         <link refid="message_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
@@ -95,11 +93,13 @@
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
       </node>
-      <node id="56">
+      <node id="57">
         <label>include/endstone/form/controls/text_input.h</label>
         <link refid="text__input_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -122,7 +122,7 @@
         <label>include/endstone/event/server/server_list_ping_event.h</label>
         <link refid="server__list__ping__event_8h_source"/>
       </node>
-      <node id="59">
+      <node id="60">
         <label>include/endstone/form/action_form.h</label>
         <link refid="action__form_8h_source"/>
         <childnode refid="7" relation="include">
@@ -142,12 +142,12 @@
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
-      <node id="51">
+      <node id="52">
         <label>include/endstone/form/controls/dropdown.h</label>
         <link refid="dropdown_8h_source"/>
-        <childnode refid="52" relation="include">
-        </childnode>
         <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -172,17 +172,17 @@
         <childnode refid="25" relation="include">
         </childnode>
       </node>
-      <node id="50">
+      <node id="51">
         <label>include/endstone/command/proxied_command_sender.h</label>
         <link refid="proxied__command__sender_8h_source"/>
       </node>
-      <node id="60">
+      <node id="61">
         <label>include/endstone/form/message_form.h</label>
         <link refid="message__form_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="53">
+      <node id="54">
         <label>include/endstone/form/modal_form.h</label>
         <link refid="modal__form_8h_source"/>
         <childnode refid="7" relation="include">
@@ -240,10 +240,10 @@
         <label>include/endstone/event/player/player_command_event.h</label>
         <link refid="player__command__event_8h_source"/>
       </node>
-      <node id="57">
+      <node id="58">
         <label>include/endstone/form/controls/toggle.h</label>
         <link refid="toggle_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -268,10 +268,10 @@
         <label>include/endstone/event/weather/weather_change_event.h</label>
         <link refid="weather__change__event_8h_source"/>
       </node>
-      <node id="55">
+      <node id="56">
         <label>include/endstone/form/controls/slider.h</label>
         <link refid="slider_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="33">
@@ -304,7 +304,7 @@
         <label>include/endstone/event/weather/thunder_change_event.h</label>
         <link refid="thunder__change__event_8h_source"/>
       </node>
-      <node id="49">
+      <node id="50">
         <label>include/endstone/command/console_command_sender.h</label>
         <link refid="console__command__sender_8h_source"/>
       </node>
@@ -323,6 +323,8 @@
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
@@ -334,15 +336,19 @@
         <label>include/endstone/command/plugin_command.h</label>
         <link refid="plugin__command_8h_source"/>
       </node>
-      <node id="58">
+      <node id="59">
         <label>include/endstone/form/form.h</label>
         <link refid="form_8h_source"/>
-        <childnode refid="59" relation="include">
-        </childnode>
         <childnode refid="60" relation="include">
         </childnode>
-        <childnode refid="53" relation="include">
+        <childnode refid="61" relation="include">
         </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>include/endstone/command/command_sender_wrapper.h</label>
+        <link refid="command__sender__wrapper_8h_source"/>
       </node>
       <node id="8">
         <label>include/endstone/event/block/block_break_event.h</label>
@@ -392,10 +398,10 @@
         <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="54">
+      <node id="55">
         <label>include/endstone/form/controls/label.h</label>
         <link refid="label_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="47">
@@ -410,10 +416,10 @@
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="53">
         <label>include/endstone/form/controls/step_slider.h</label>
         <link refid="step__slider_8h_source"/>
-        <childnode refid="53" relation="include">
+        <childnode refid="54" relation="include">
         </childnode>
       </node>
       <node id="46">

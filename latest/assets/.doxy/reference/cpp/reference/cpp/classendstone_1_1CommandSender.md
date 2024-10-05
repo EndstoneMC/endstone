@@ -17,7 +17,7 @@ _Represents a command sender._
 Inherits the following classes: [endstone::Permissible](classendstone_1_1Permissible.md)
 
 
-Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md),  [endstone::ProxiedCommandSender](classendstone_1_1ProxiedCommandSender.md)
+Inherited by the following classes: [endstone::Actor](classendstone_1_1Actor.md),  [endstone::CommandSenderWrapper](classendstone_1_1CommandSenderWrapper.md),  [endstone::ConsoleCommandSender](classendstone_1_1ConsoleCommandSender.md),  [endstone::ProxiedCommandSender](classendstone_1_1ProxiedCommandSender.md)
 
 
 

@@ -4,6 +4,7 @@
     <compoundname>endstone::CommandSender</compoundname>
     <basecompoundref refid="classendstone_1_1Permissible" prot="public" virt="non-virtual">endstone::Permissible</basecompoundref>
     <derivedcompoundref refid="classendstone_1_1Actor" prot="public" virt="non-virtual">endstone::Actor</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1CommandSenderWrapper" prot="public" virt="non-virtual">endstone::CommandSenderWrapper</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ConsoleCommandSender" prot="public" virt="non-virtual">endstone::ConsoleCommandSender</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ProxiedCommandSender" prot="public" virt="non-virtual">endstone::ProxiedCommandSender</derivedcompoundref>
     <includes refid="command__sender_8h" local="no">endstone/command/command_sender.h</includes>
@@ -14,6 +15,7 @@
         <argsstring>() const override</argsstring>
         <name>asCommandSender</name>
         <reimplements refid="classendstone_1_1Permissible_1aed8659219fb404113107df3d35216ebf">asCommandSender</reimplements>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aee8faba171d9306e54b9108d6e78c31c">asCommandSender</reimplementedby>
         <briefdescription>
 <para>Casts a <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> as <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>. </para>
         </briefdescription>
@@ -31,6 +33,7 @@
         <definition>virtual ConsoleCommandSender* endstone::CommandSender::asConsole</definition>
         <argsstring>() const</argsstring>
         <name>asConsole</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1af132584a397c576d98f51e138be0e6fe">asConsole</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as Console. </para>
         </briefdescription>
@@ -49,6 +52,7 @@
         <argsstring>() const</argsstring>
         <name>asActor</name>
         <reimplementedby refid="classendstone_1_1Actor_1a116c5083ae28119fbd6ec34568c8552a">asActor</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a560100134114cadaf66e10f77d6fcbad">asActor</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Actor" kindref="compound">Actor</ref>. </para>
         </briefdescription>
@@ -66,6 +70,7 @@
         <definition>virtual Player* endstone::CommandSender::asPlayer</definition>
         <argsstring>() const</argsstring>
         <name>asPlayer</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aaecb20ead1422f65759effc2c0447d1c">asPlayer</reimplementedby>
         <reimplementedby refid="classendstone_1_1Player_1a1a45f4760d9bf018d75fdf00e942d883">asPlayer</reimplementedby>
         <briefdescription>
 <para>Gets a <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref> as <ref refid="classendstone_1_1Player" kindref="compound">Player</ref>. </para>
@@ -84,6 +89,7 @@
         <definition>virtual void endstone::CommandSender::sendMessage</definition>
         <argsstring>(const Message &amp;message) const =0</argsstring>
         <name>sendMessage</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c">sendMessage</reimplementedby>
         <param>
           <type>const Message &amp;</type>
           <declname>message</declname>
@@ -140,6 +146,7 @@
         <definition>virtual void endstone::CommandSender::sendErrorMessage</definition>
         <argsstring>(const Message &amp;message) const =0</argsstring>
         <name>sendErrorMessage</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf">sendErrorMessage</reimplementedby>
         <param>
           <type>const Message &amp;</type>
           <declname>message</declname>
@@ -196,6 +203,7 @@
         <definition>virtual Server&amp; endstone::CommandSender::getServer</definition>
         <argsstring>() const =0</argsstring>
         <name>getServer</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a250399cce499de4220556a64111e0787">getServer</reimplementedby>
         <briefdescription>
 <para>Returns the server instance that this command is running on. </para>
         </briefdescription>
@@ -213,6 +221,7 @@
         <definition>virtual std::string endstone::CommandSender::getName</definition>
         <argsstring>() const =0</argsstring>
         <name>getName</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642">getName</reimplementedby>
         <briefdescription>
 <para>Gets the name of this command sender. </para>
         </briefdescription>
@@ -233,12 +242,18 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="6">
+        <label>endstone::CommandSenderWrapper</label>
+        <link refid="classendstone_1_1CommandSenderWrapper"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::ProxiedCommandSender</label>
         <link refid="classendstone_1_1ProxiedCommandSender"/>
         <childnode refid="1" relation="public-inheritance">

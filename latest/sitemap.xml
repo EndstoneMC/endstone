@@ -213,6 +213,10 @@
          <lastmod>2024-10-05</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1CommandSenderWrapper/</loc>
+         <lastmod>2024-10-05</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1ConsoleCommandSender/</loc>
          <lastmod>2024-10-05</lastmod>
     </url>
@@ -694,6 +698,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/command__sender_8h_source/</loc>
+         <lastmod>2024-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/command__sender__wrapper_8h/</loc>
+         <lastmod>2024-10-05</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/command__sender__wrapper_8h_source/</loc>
          <lastmod>2024-10-05</lastmod>
     </url>
     <url>

@@ -23,6 +23,7 @@
         <definition>virtual bool endstone::Permissible::isOp</definition>
         <argsstring>() const =0</argsstring>
         <name>isOp</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a3677c8f7a848edc3ee53c5a23ab58b52">isOp</reimplementedby>
         <briefdescription>
 <para>Checks if this object is a server operator. </para>
         </briefdescription>
@@ -40,6 +41,7 @@
         <definition>virtual void endstone::Permissible::setOp</definition>
         <argsstring>(bool value)=0</argsstring>
         <name>setOp</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1adc6b57a30c34ea968b81ceb660a1e976">setOp</reimplementedby>
         <param>
           <type>bool</type>
           <declname>value</declname>
@@ -68,6 +70,7 @@
         <definition>virtual bool endstone::Permissible::isPermissionSet</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>isPermissionSet</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889">isPermissionSet</reimplementedby>
         <param>
           <type>std::string</type>
           <declname>name</declname>
@@ -98,6 +101,7 @@
         <definition>virtual bool endstone::Permissible::isPermissionSet</definition>
         <argsstring>(const Permission &amp;perm) const =0</argsstring>
         <name>isPermissionSet</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d">isPermissionSet</reimplementedby>
         <param>
           <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
@@ -128,6 +132,7 @@
         <definition>virtual bool endstone::Permissible::hasPermission</definition>
         <argsstring>(std::string name) const =0</argsstring>
         <name>hasPermission</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038">hasPermission</reimplementedby>
         <param>
           <type>std::string</type>
           <declname>name</declname>
@@ -158,6 +163,7 @@
         <definition>virtual bool endstone::Permissible::hasPermission</definition>
         <argsstring>(const Permission &amp;perm) const =0</argsstring>
         <name>hasPermission</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c">hasPermission</reimplementedby>
         <param>
           <type>const <ref refid="classendstone_1_1Permission" kindref="compound">Permission</ref> &amp;</type>
           <declname>perm</declname>
@@ -188,6 +194,7 @@
         <definition>virtual Result&lt;PermissionAttachment *&gt; endstone::Permissible::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin, const std::string &amp;name, bool value)=0</argsstring>
         <name>addAttachment</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a2f06564da650b224755dd94a7e218713">addAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -242,6 +249,7 @@
         <definition>virtual Result&lt;PermissionAttachment *&gt; endstone::Permissible::addAttachment</definition>
         <argsstring>(Plugin &amp;plugin)=0</argsstring>
         <name>addAttachment</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1abbb401c042f47f11afef6e1f10d93d47">addAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> &amp;</type>
           <declname>plugin</declname>
@@ -272,6 +280,7 @@
         <definition>virtual Result&lt;void&gt; endstone::Permissible::removeAttachment</definition>
         <argsstring>(PermissionAttachment &amp;attachment)=0</argsstring>
         <name>removeAttachment</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1acca85df8f344f2e39b50c358244b7c38">removeAttachment</reimplementedby>
         <param>
           <type><ref refid="classendstone_1_1PermissionAttachment" kindref="compound">PermissionAttachment</ref> &amp;</type>
           <declname>attachment</declname>
@@ -302,6 +311,7 @@
         <definition>virtual void endstone::Permissible::recalculatePermissions</definition>
         <argsstring>()=0</argsstring>
         <name>recalculatePermissions</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd">recalculatePermissions</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -316,6 +326,7 @@
         <definition>virtual std::unordered_set&lt;PermissionAttachmentInfo *&gt; endstone::Permissible::getEffectivePermissions</definition>
         <argsstring>() const =0</argsstring>
         <name>getEffectivePermissions</name>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1a0b39a5fbbd550b462efc40ce58910b16">getEffectivePermissions</reimplementedby>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -334,6 +345,7 @@
         <argsstring>() const =0</argsstring>
         <name>asCommandSender</name>
         <reimplementedby refid="classendstone_1_1CommandSender_1a0ddeae541cef266a6dd95f9253da8a3d">asCommandSender</reimplementedby>
+        <reimplementedby refid="classendstone_1_1CommandSenderWrapper_1aee8faba171d9306e54b9108d6e78c31c">asCommandSender</reimplementedby>
         <briefdescription>
 <para>Casts a <ref refid="classendstone_1_1Permissible" kindref="compound">Permissible</ref> as <ref refid="classendstone_1_1CommandSender" kindref="compound">CommandSender</ref>. </para>
         </briefdescription>
@@ -354,12 +366,18 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="6">
+        <label>endstone::CommandSenderWrapper</label>
+        <link refid="classendstone_1_1CommandSenderWrapper"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
         <label>endstone::ConsoleCommandSender</label>
         <link refid="classendstone_1_1ConsoleCommandSender"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::ProxiedCommandSender</label>
         <link refid="classendstone_1_1ProxiedCommandSender"/>
         <childnode refid="2" relation="public-inheritance">

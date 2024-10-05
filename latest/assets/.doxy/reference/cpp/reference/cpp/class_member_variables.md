@@ -168,6 +168,8 @@
 * **on\_click\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md))
 * **on\_submit\_** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **Obfuscated** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **on\_error\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
+* **on\_message\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **options\_** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
 * **on\_close\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **owner\_** ([**endstone::PluginCommand**](classendstone_1_1PluginCommand.md))
@@ -213,11 +215,11 @@
 ## s
 
 * **source\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
+* **sender\_** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **stack\_trace\_** ([**endstone::Error**](classendstone_1_1Error.md))
 * **submit\_button\_text\_** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **server\_** ([**endstone::Plugin**](classendstone_1_1Plugin.md), [**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **soft\_depend\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
-* **sender\_** ([**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **server\_guid\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **skin\_data\_** ([**endstone::Skin**](classendstone_1_1Skin.md))
 * **skin\_id\_** ([**endstone::Skin**](classendstone_1_1Skin.md))

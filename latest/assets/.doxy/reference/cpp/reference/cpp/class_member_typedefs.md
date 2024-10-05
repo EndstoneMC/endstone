@@ -5,6 +5,7 @@
 
 ## c
 
+* **Callback** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **Control** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 
 

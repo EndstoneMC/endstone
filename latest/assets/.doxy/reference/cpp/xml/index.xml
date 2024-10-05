@@ -289,6 +289,32 @@
     <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" kind="function"><name>getServer</name></member>
     <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" kind="function"><name>getName</name></member>
   </compound>
+  <compound refid="classendstone_1_1CommandSenderWrapper" kind="class"><name>endstone::CommandSenderWrapper</name>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aecfc3f07c79d140b40d890b7a7a2d541" kind="typedef"><name>Callback</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a41ad90af25dd6fb6255edf5ff2c099b5" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1ab9681dee5565195c3f25dcb2e5f25d43" kind="variable"><name>on_message_</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a90e1149cfbcb7b6e36a73c4172f84dc5" kind="variable"><name>on_error_</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a0f9429e921096e79eeb39a5d8d78ea57" kind="function"><name>CommandSenderWrapper</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a46ff186c06fed5c771888c5d9167852c" kind="function"><name>sendMessage</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aeb7bc0ed994ee4aacd4834f5c97c5bdf" kind="function"><name>sendErrorMessage</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a3677c8f7a848edc3ee53c5a23ab58b52" kind="function"><name>isOp</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1adc6b57a30c34ea968b81ceb660a1e976" kind="function"><name>setOp</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a07e8de81fb735c7745c96cbb4d022889" kind="function"><name>isPermissionSet</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a3a0af073b600c858dc0587c9a399296d" kind="function"><name>isPermissionSet</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aa112f1f81d557d85be8d85c264ec6038" kind="function"><name>hasPermission</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a47a9cae3fa4ac1c4cb19a39d3f716a7c" kind="function"><name>hasPermission</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a2f06564da650b224755dd94a7e218713" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1abbb401c042f47f11afef6e1f10d93d47" kind="function"><name>addAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1acca85df8f344f2e39b50c358244b7c38" kind="function"><name>removeAttachment</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a02337d177f390cee414977a16b3e07bd" kind="function"><name>recalculatePermissions</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a0b39a5fbbd550b462efc40ce58910b16" kind="function"><name>getEffectivePermissions</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aee8faba171d9306e54b9108d6e78c31c" kind="function"><name>asCommandSender</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1af132584a397c576d98f51e138be0e6fe" kind="function"><name>asConsole</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a560100134114cadaf66e10f77d6fcbad" kind="function"><name>asActor</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1aaecb20ead1422f65759effc2c0447d1c" kind="function"><name>asPlayer</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1a250399cce499de4220556a64111e0787" kind="function"><name>getServer</name></member>
+    <member refid="classendstone_1_1CommandSenderWrapper_1af7a2f45adfa1e55eda23bd39a16d3642" kind="function"><name>getName</name></member>
+  </compound>
   <compound refid="classendstone_1_1ConsoleCommandSender" kind="class"><name>endstone::ConsoleCommandSender</name>
   </compound>
   <compound refid="classendstone_1_1Criteria" kind="class"><name>endstone::Criteria</name>
@@ -1330,6 +1356,8 @@
   <compound refid="command__map_8h" kind="file"><name>command_map.h</name>
   </compound>
   <compound refid="command__sender_8h" kind="file"><name>command_sender.h</name>
+  </compound>
+  <compound refid="command__sender__wrapper_8h" kind="file"><name>command_sender_wrapper.h</name>
   </compound>
   <compound refid="console__command__sender_8h" kind="file"><name>console_command_sender.h</name>
   </compound>
