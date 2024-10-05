@@ -58,6 +58,7 @@ bool EndstoneCommandMap::dispatch(CommandSender &sender, std::string command_lin
 
     const auto *target = getCommand(args[0]);
     if (!target) {
+        sender.sendErrorMessage(Translatable("commands.generic.unknown", {args[0]}));
         return false;
     }
 

@@ -46,6 +46,10 @@ bool CommandWrapper::execute(CommandSender &sender, const std::vector<std::strin
         full_command, *command_origin, CurrentCmdVersion::Latest,
         [&sender](auto const &err) { sender.sendErrorMessage(err); });
 
+    if (!command) {
+        return false;
+    }
+
     // run the command
     // TODO: we should pass down the sender as well
     CommandOutput output{CommandOutputType::AllOutput};
