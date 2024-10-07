@@ -256,10 +256,10 @@
     <member refid="classendstone_1_1Command_1a3d6b00319efa8c4e8bc51227532577d6" kind="function"><name>testPermission</name></member>
     <member refid="classendstone_1_1Command_1a72a27372e25345d4efe9f421520fc44b" kind="function"><name>testPermissionSilently</name></member>
     <member refid="classendstone_1_1Command_1a13203cecd13789249010de07d2ec68cf" kind="function"><name>registerTo</name></member>
-    <member refid="classendstone_1_1Command_1ac162a2899386e5a0de4c523522324e1f" kind="function"><name>unregisterFrom</name></member>
+    <member refid="classendstone_1_1Command_1af0220a368428afc83b15d638e40426fd" kind="function"><name>unregisterFrom</name></member>
     <member refid="classendstone_1_1Command_1a4b4bfe6350f3deae258fc5fd8e344fbf" kind="function"><name>isRegistered</name></member>
     <member refid="classendstone_1_1Command_1a9b47871a5d15778160cd8afb5a7bdb3c" kind="function"><name>asPluginCommand</name></member>
-    <member refid="classendstone_1_1Command_1a403d11862caed467be923652aabff55a" kind="function"><name>allowChangesFrom</name></member>
+    <member refid="classendstone_1_1Command_1adac361e9cc0668151e63edebe173a8af" kind="function"><name>allowChangesFrom</name></member>
   </compound>
   <compound refid="classendstone_1_1CommandExecutor" kind="class"><name>endstone::CommandExecutor</name>
     <member refid="classendstone_1_1CommandExecutor_1a9dfc0b1fe01086e280de0d8202f6482c" kind="function"><name>~CommandExecutor</name></member>

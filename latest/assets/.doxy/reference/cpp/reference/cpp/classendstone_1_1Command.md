@@ -70,7 +70,7 @@ Inherited by the following classes: [endstone::PluginCommand](classendstone_1_1P
 |  void | [**setUsages**](#function-setusages) (Usage... usages) <br> |
 |  bool | [**testPermission**](#function-testpermission) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
 |  bool | [**testPermissionSilently**](#function-testpermissionsilently) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**unregisterFrom**](#function-unregisterfrom) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  bool | [**unregisterFrom**](#function-unregisterfrom) (const [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 | virtual  | [**~Command**](#function-command) () = default<br> |
 
 
@@ -616,7 +616,7 @@ true if they can use it, otherwise false
 
 ```C++
 inline bool endstone::Command::unregisterFrom (
-    CommandMap & command_map
+    const CommandMap & command_map
 ) 
 ```
 

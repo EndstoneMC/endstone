@@ -134,7 +134,7 @@ public:
             return true;
         }
 
-        target.sendErrorMessage("You do not have permission to perform this command.");
+        target.sendErrorMessage(Translatable("commands.generic.unknown", {getName()}));
         return false;
     }
 
@@ -158,7 +158,7 @@ public:
         return false;
     }
 
-    bool unregisterFrom(CommandMap &command_map)
+    bool unregisterFrom(const CommandMap &command_map)
     {
         if (allowChangesFrom(command_map)) {
             command_map_ = nullptr;
@@ -179,7 +179,7 @@ public:
     }
 
 private:
-    bool allowChangesFrom(CommandMap &command_map)
+    bool allowChangesFrom(const CommandMap &command_map) const
     {
         return (!isRegistered() || command_map_ == &command_map);
     }

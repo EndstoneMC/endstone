@@ -104,7 +104,7 @@ See [endstone::Command](classendstone_1_1Command.md)
 |  void | [**setUsages**](classendstone_1_1Command.md#function-setusages) (Usage... usages) <br> |
 |  bool | [**testPermission**](classendstone_1_1Command.md#function-testpermission) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
 |  bool | [**testPermissionSilently**](classendstone_1_1Command.md#function-testpermissionsilently) (const [**CommandSender**](classendstone_1_1CommandSender.md) & target) const<br> |
-|  bool | [**unregisterFrom**](classendstone_1_1Command.md#function-unregisterfrom) ([**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
+|  bool | [**unregisterFrom**](classendstone_1_1Command.md#function-unregisterfrom) (const [**CommandMap**](classendstone_1_1CommandMap.md) & command\_map) <br> |
 | virtual  | [**~Command**](classendstone_1_1Command.md#function-command) () = default<br> |
 
 
