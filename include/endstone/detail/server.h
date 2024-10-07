@@ -70,6 +70,7 @@ public:
     [[nodiscard]] Player *getPlayer(std::string name) const override;
     [[nodiscard]] Player *getPlayer(const ::NetworkIdentifier &network_id, SubClientId sub_id) const;
 
+    [[nodiscard]] bool getOnlineMode() const override;
     void shutdown() override;
     void reload() override;
     void reloadData() override;

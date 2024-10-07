@@ -207,7 +207,7 @@ std::vector<Player *> EndstoneServer::getOnlinePlayers() const
 
 int EndstoneServer::getMaxPlayers() const
 {
-    return getServerNetworkHandler().max_players_;
+    return getServerNetworkHandler().max_num_players_;
 }
 
 Result<void> EndstoneServer::setMaxPlayers(int max_players)
@@ -219,7 +219,7 @@ Result<void> EndstoneServer::setMaxPlayers(int max_players)
         return nonstd::make_unexpected(
             make_error("Max number of players must not exceed the hard limit {}", ENDSTONE_MAX_PLAYERS));
     }
-    getServerNetworkHandler().max_players_ = max_players;
+    getServerNetworkHandler().max_num_players_ = max_players;
     getServerNetworkHandler().updateServerAnnouncement();
     return {};
 }
@@ -252,6 +252,11 @@ Player *EndstoneServer::getPlayer(const NetworkIdentifier &network_id, SubClient
         }
     }
     return nullptr;
+}
+
+bool EndstoneServer::getOnlineMode() const
+{
+    return getServerNetworkHandler().network_server_config_.require_trusted_authentication;
 }
 
 void EndstoneServer::shutdown()

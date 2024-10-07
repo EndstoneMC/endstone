@@ -20,13 +20,18 @@
 
 #include "bedrock/bedrock.h"
 #include "bedrock/core/threading/enable_queue_for_main_thread.h"
+#include "bedrock/forward.h"
+#include "bedrock/minecraft_app_interface.h"
 #include "bedrock/network/connection_request.h"
 #include "bedrock/network/disconnection_request_info.h"
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/network_identifier.h"
+#include "bedrock/network/network_server_config.h"
 #include "bedrock/network/sub_client_connection_request.h"
 #include "bedrock/network/xbox_live_user_observer.h"
 #include "bedrock/platform/multiplayer_service_observer.h"
+#include "bedrock/server/commands/minecraft_commands.h"
+#include "bedrock/server/deny_list.h"
 #include "bedrock/server/server_player.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/events/server_events.h"
@@ -63,6 +68,7 @@ public:
 
 private:
     friend class endstone::detail::EndstoneServer;
+
     // NOLINTBEGIN(*-identifier-naming)
     ENDSTONE_HOOK ServerPlayer &_createNewPlayer(NetworkIdentifier const &, SubClientConnectionRequest const &,
                                                  SubClientId);
@@ -70,8 +76,32 @@ private:
     [[nodiscard]] ENDSTONE_HOOK bool _isServerTextEnabled(ServerTextEvent const &) const;
     // NOLINTEND(*-identifier-naming)
 
-    GameCallbacks *callbacks_;                               // +80
-    Bedrock::NonOwnerPointer<ILevel> level_;                 // +88
-    std::size_t pad_[ENDSTONE_VARIANT_WIN32_LINUX(92, 75)];  // +104
-    int max_players_;                                        // +840 (+704)
+    GameCallbacks *callbacks_;                                   // +80
+    Bedrock::NonOwnerPointer<ILevel> level_;                     // +88
+    ServerNetworkSystem *network_;                               // +96
+    PrivateKeyManager *server_keys_;                             // +112
+    ServerLocator *server_locator_;                              // +120
+    gsl::not_null<PacketSender *> packet_sender_;                // +128
+    bool use_allow_list_;                                        // +136
+    AllowList *allow_list_;                                      // +144
+    PermissionsFile *permissions_file_;                          // +152
+    DenyList server_deny_list_;                                  // +160
+    NetworkServerConfig network_server_config_;                  // +264
+    bool has_displayed_pack_errors_;                             // +336
+    NetworkIdentifier my_id_;                                    // +344
+    int max_chunk_radius_;                                       // +504
+    MinecraftCommands *minecraft_commands_;                      // +512
+    IMinecraftApp *app_;                                         // +520
+    Bedrock::NonOwnerPointer<void *> text_filtering_processor_;  // +528 TextFilteringProcessor
+    std::unique_ptr<void *> client_cache_manager_;               // +536
+    std::unordered_map<unsigned long, std::string> server_storage_for_clients_connecting_attempt_;  // +552
+    std::unique_ptr<void *> companion_handler_;          // +616 ClassroomModeNetworkHandler
+    std::string tenant_id_;                              // +624
+    std::string shareable_identity_token_;               // +656
+    Bedrock::Threading::Mutex validate_player_mutex_;    // +688
+    bool allow_incoming_;                                // +768
+    std::unique_ptr<void *> server_network_controller_;  // +776 IServerNetworkController
+    std::string server_name_;                            // +784
+    std::vector<std::string> trusted_keys_;              // +816
+    int max_num_players_;                                // +840
 };

@@ -753,7 +753,7 @@ class CommandSender(Permissible):
         """
 class CommandSenderWrapper(CommandSender):
     """
-    Represents a wrapper class that forwards commands to a CommandSender and captures its output
+    Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output
     """
     def __init__(self, sender: CommandSender, on_message: typing.Callable[[str | Translatable], None] = None, on_error: typing.Callable[[str | Translatable], None] = None) -> None:
         ...
@@ -2683,6 +2683,11 @@ class Server:
     def name(self) -> str:
         """
         Gets the name of this server implementation.
+        """
+    @property
+    def online_mode(self) -> bool:
+        """
+        Gets whether the Server is in online mode or not.
         """
     @property
     def online_players(self) -> list[Player]:

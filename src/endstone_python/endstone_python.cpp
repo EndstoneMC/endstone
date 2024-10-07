@@ -234,6 +234,8 @@ void init_server(py::class_<Server> &server)
         .def("get_player", py::overload_cast<endstone::UUID>(&Server::getPlayer, py::const_),
              py::arg("unique_id").noconvert(), py::return_value_policy::reference,
              "Gets the player with the given UUID.")
+        .def_property_readonly("online_mode", &Server::getOnlineMode,
+                               "Gets whether the Server is in online mode or not.")
         .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")
         .def("reload", &Server::reload, "Reloads the server configuration, functions, scripts and plugins.")
         .def("reload_data", &Server::reloadData, "Reload only the Minecraft data for the server.")

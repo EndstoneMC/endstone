@@ -29,6 +29,7 @@ class Metrics(MetricsBase):
         self.add_custom_chart(SingleLineChart("players", lambda: len(self._server.online_players)))
         self.add_custom_chart(SimplePie("endstone_version", lambda: self._server.version))
         self.add_custom_chart(SimplePie("minecraft_version", lambda: self._server.minecraft_version))
+        self.add_custom_chart(DrilldownPie("online_mode", self._get_online_mode))
         self.add_custom_chart(DrilldownPie("python_version", self._get_python_version))
         self.add_custom_chart(AdvancedPie("player_platform", self._get_player_platforms))
         self.add_custom_chart(AdvancedPie("player_game_version", self._get_player_game_versions))
@@ -61,6 +62,14 @@ class Metrics(MetricsBase):
 
     def log_error(self, message: str, exception: Exception) -> None:
         self._server.logger.warning(f"{message}: {exception}")
+
+    def _get_online_mode(self) -> dict[str, dict[str, int]]:
+        value = "true" if self._server.online_mode else "false"
+        return {
+            value: {
+                value: 1,
+            },
+        }
 
     def _get_python_version(self) -> dict[str, dict[str, int]]:
         python_impl = platform.python_implementation()

@@ -151,6 +151,7 @@ class ScreenSetupCleanupHelper;
 class ScreenshotOptions;
 class SearchQuery;
 class SerializedSkin;
+class ServerLocator;
 class ServerMetrics;
 class ServerNetworkSystem;
 class SnapshotFilenameAndLength;

@@ -40,6 +40,7 @@ public:
     MOCK_METHOD(endstone::Result<void>, setMaxPlayers, (int), (override));
     MOCK_METHOD(endstone::Player *, getPlayer, (endstone::UUID), (const, override));
     MOCK_METHOD(endstone::Player *, getPlayer, (std::string), (const, override));
+    MOCK_METHOD(bool, getOnlineMode, (), (const, override));
     MOCK_METHOD(void, shutdown, (), (override));
     MOCK_METHOD(void, reload, (), (override));
     MOCK_METHOD(void, reloadData, (), (override));

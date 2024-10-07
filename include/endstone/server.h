@@ -150,7 +150,14 @@ public:
     [[nodiscard]] virtual Player *getPlayer(endstone::UUID id) const = 0;
 
     /**
-     * @brief Gets the player with the exact given name, case insensitive.
+     * @brief Gets whether the Server is in online mode or not.
+     *
+     * @return true if the server authenticates clients, false otherwise
+     */
+    [[nodiscard]] virtual bool getOnlineMode() const = 0;
+
+    /**
+     * @brief Gets the player with the exact given name, case-insensitive.
      *
      * @param name Exact name of the player to retrieve
      * @return a player object if one was found, null otherwise
