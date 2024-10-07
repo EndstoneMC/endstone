@@ -81,9 +81,10 @@ _Represents a server implementation._
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
 | virtual std::string | [**getMinecraftVersion**](#function-getminecraftversion) () const = 0<br>_Gets the Minecraft version that this server is running._  |
 | virtual std::string | [**getName**](#function-getname) () const = 0<br>_Gets the name of this server implementation._  |
+| virtual bool | [**getOnlineMode**](#function-getonlinemode) () const = 0<br>_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._ |
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
-| virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case insensitive._  |
+| virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
@@ -771,6 +772,31 @@ name of this server implementation
 
 
 
+### function getOnlineMode 
+
+_Gets whether the_ [_**Server**_](classendstone_1_1Server.md) _is in online mode or not._
+```C++
+virtual bool endstone::Server::getOnlineMode () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+true if the server authenticates clients, false otherwise 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getOnlinePlayers 
 
 _Gets a list of all currently online players._ 
@@ -832,7 +858,7 @@ a player object if one was found, null otherwise
 
 ### function getPlayer [2/2]
 
-_Gets the player with the exact given name, case insensitive._ 
+_Gets the player with the exact given name, case-insensitive._ 
 ```C++
 virtual Player * endstone::Server::getPlayer (
     std::string name

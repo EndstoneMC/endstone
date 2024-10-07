@@ -249,6 +249,7 @@
 * **getCurrentTicksPerSecond** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getMaxPlayers** ([**endstone::Server**](classendstone_1_1Server.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **getMinecraftVersion** ([**endstone::Server**](classendstone_1_1Server.md))
+* **getOnlineMode** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getOnlinePlayers** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginCommand** ([**endstone::Server**](classendstone_1_1Server.md))
 * **getPluginManager** ([**endstone::Server**](classendstone_1_1Server.md))
