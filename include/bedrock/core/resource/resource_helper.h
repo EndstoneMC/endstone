@@ -14,17 +14,16 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/core/file/path.h"
+#include "bedrock/core/resource/resource_util.h"
+#include "bedrock/core/string/string_hash.h"
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+class ResourceLocation {
+public:
+    ResourceFileSystem file_system;
+
+private:
+    Core::HeapPathBuffer path_;
+    HashType64 path_hash_;
+    std::size_t full_hash_;
 };

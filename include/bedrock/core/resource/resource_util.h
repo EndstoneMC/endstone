@@ -14,17 +14,19 @@
 
 #pragma once
 
-#include <cstdint>
-
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+enum class ResourceFileSystem : int {
+    UserPackage = 0,
+    AppPackage = 1,
+    Raw = 2,
+    RawPersistent = 3,
+    SettingsDir = 4,
+    ExternalDir = 5,
+    ServerPackage = 6,
+    DataDir = 7,
+    UserDir = 8,
+    ScreenshotsDir = 9,
+    StoreCache = 10,
+    MaterialsDir = 11,
+    ShaderSDKDir = 12,
+    Invalid = 13,
 };

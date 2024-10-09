@@ -16,15 +16,26 @@
 
 #include <cstdint>
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+#include "bedrock/core/utility/non_owner_pointer.h"
+#include "bedrock/resources/pack_error.h"
+#include "bedrock/resources/pack_settings.h"
+#include "bedrock/resources/resource_pack.h"
+
+class PackStats {
+public:
+    uint32_t overridden_entity_count;
+    uint32_t custom_entity_count;
+    uint32_t custom_animation_count;
+    uint32_t custom_effect_count;
+};
+
+class PackInstance {
+public:
+    PackReport pack_report;
+
+private:
+    PackSettings *pack_settings_;
+    Bedrock::NonOwnerPointer<ResourcePack> pack_;
+    PackStats stats_;
+    int subpack_index_;
 };

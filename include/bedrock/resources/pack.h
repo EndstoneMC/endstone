@@ -14,17 +14,19 @@
 
 #pragma once
 
-#include <cstdint>
+#include <functional>
+#include <map>
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+#include "bedrock/forward.h"
+#include "bedrock/resources/pack_access_strategy.h"
+
+class Pack : public Bedrock::EnableNonOwnerReferences {
+public:
+private:
+    std::unique_ptr<PackManifest> manifest_;
+    std::unique_ptr<PackAccessStrategy> access_strategy_;
+    std::unique_ptr<SubpackInfoCollection> subpack_info_pack_;
+    std::unique_ptr<PackMetadata> metadata_;
+    std::map<void *, std::function<void(Pack &)>> pack_updated_callbacks_;
+    std::map<void *, std::function<void(Pack &)>> pack_deleted_callbacks_;
 };

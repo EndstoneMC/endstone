@@ -14,17 +14,10 @@
 
 #pragma once
 
-#include <cstdint>
+#include <memory>
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
-};
+namespace Bedrock::Resources {
+
+class PreloadCache : public std::enable_shared_from_this<PreloadCache> {};
+
+};  // namespace Bedrock::Resources

@@ -19,11 +19,10 @@
 #include <unordered_map>
 #include <vector>
 
-#include <gsl/gsl>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
+#include "bedrock/resources/pack_access_strategy.h"
 
 class I18n {
 public:

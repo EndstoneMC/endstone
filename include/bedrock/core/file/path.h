@@ -14,17 +14,29 @@
 
 #pragma once
 
-#include <cstdint>
+#include <string>
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+namespace Core {
+
+class PathPart {
+public:
+private:
+    std::string utf8_std_string_;
 };
+
+class Path {
+public:
+private:
+    PathPart path_part_;
+};
+
+template <typename T>
+class PathBuffer {
+public:
+private:
+    T container_;
+};
+
+using HeapPathBuffer = PathBuffer<std::string>;
+
+}  // namespace Core

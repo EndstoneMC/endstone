@@ -14,17 +14,20 @@
 
 #pragma once
 
-#include <cstdint>
+#include <memory>
+#include <unordered_set>
 
-enum class PackType : std::int8_t {
-    Invalid = 0,
-    Addon = 1,
-    Cached = 2,
-    CopyProtected = 3,
-    Behavior = 4,
-    PersonaPiece = 5,
-    Resources = 6,
-    Skins = 7,
-    WorldTemplate = 8,
-    Count = 9,
+#include <gsl/gsl>
+
+#include "bedrock/core/file/path.h"
+#include "bedrock/resources/preload_cache.h"
+
+class PackAccessStrategy {
+public:
+    virtual ~PackAccessStrategy() = 0;
+
+private:
+    bool asset_set_populated_;
+    std::unordered_set<Core::Path> asset_set_;
+    gsl::not_null<std::shared_ptr<Bedrock::Resources::PreloadCache>> preloaded_;
 };
