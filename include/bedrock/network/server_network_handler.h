@@ -19,6 +19,7 @@
 #include <string>
 
 #include "bedrock/bedrock.h"
+#include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/threading/enable_queue_for_main_thread.h"
 #include "bedrock/forward.h"
 #include "bedrock/minecraft_app_interface.h"
@@ -56,6 +57,17 @@ class ServerNetworkHandler : public Bedrock::Threading::EnableQueueForMainThread
                              public LevelListener,
                              public Social::MultiplayerServiceObserver,
                              public Social::XboxLiveUserObserver {
+    class Client {
+    public:
+        [[nodiscard]] ConnectionRequest const &getPrimaryRequest() const;
+        [[nodiscard]] std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &
+        getSubClientRequests() const;
+
+    private:
+        std::unique_ptr<ConnectionRequest> primary_request_;
+        std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> sub_client_requests_;
+    };
+
 public:
     ~ServerNetworkHandler() override = 0;
 
@@ -94,14 +106,19 @@ private:
     IMinecraftApp *app_;                                         // +520
     Bedrock::NonOwnerPointer<void *> text_filtering_processor_;  // +528 TextFilteringProcessor
     std::unique_ptr<void *> client_cache_manager_;               // +536
-    std::unordered_map<unsigned long, std::string> server_storage_for_clients_connecting_attempt_;  // +552
-    std::unique_ptr<void *> companion_handler_;          // +616 ClassroomModeNetworkHandler
-    std::string tenant_id_;                              // +624
-    std::string shareable_identity_token_;               // +656
-    Bedrock::Threading::Mutex validate_player_mutex_;    // +688
-    bool allow_incoming_;                                // +768
-    std::unique_ptr<void *> server_network_controller_;  // +776 IServerNetworkController
-    std::string server_name_;                            // +784
-    std::vector<std::string> trusted_keys_;              // +816
-    int max_num_players_;                                // +840
+    std::unordered_map<std::uint64_t, std::string> server_storage_for_clients_connecting_attempt_;  // +552
+    std::unique_ptr<void *> companion_handler_;                               // +616 ClassroomModeNetworkHandler
+    std::string tenant_id_;                                                   // +624
+    std::string shareable_identity_token_;                                    // +656
+    Bedrock::Threading::Mutex validate_player_mutex_;                         // +688
+    bool allow_incoming_;                                                     // +768
+    std::unique_ptr<void *> server_network_controller_;                       // +776 IServerNetworkController
+    std::string server_name_;                                                 // +784
+    std::vector<std::string> trusted_keys_;                                   // +816
+    int max_num_players_;                                                     // +840
+    std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;               // +848
+    std::vector<mce::UUID> known_emote_piece_ids_;                            // +912
+    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +936
+    bool is_trial_;                                                           // +1000
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
 };

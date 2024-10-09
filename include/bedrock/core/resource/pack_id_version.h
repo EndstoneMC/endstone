@@ -14,18 +14,26 @@
 
 #pragma once
 
-#include <array>
-#include <cstdint>
+#include "bedrock/core/resource/pack_type.h"
+#include "bedrock/core/sem_ver/sem_version.h"
+#include "bedrock/platform/uuid.h"
 
-#include "bedrock/bedrock.h"
-#include "endstone/util/uuid.h"
+struct PackIdVersion {
+    mce::UUID id;        // +0
+    SemVersion version;  // +16
+    PackType pack_type;  // +128
 
-namespace mce {
-class UUID {
-public:
-    [[nodiscard]] std::string asString() const;
-
-    std::int64_t data[2];
+    bool operator==(const PackIdVersion &other) const
+    {
+        return id.data[0] == other.id.data[0] && id.data[1] == other.id.data[1] && version == other.version;
+    }
 };
-BEDROCK_STATIC_ASSERT_SIZE(UUID, 16, 16);
-}  // namespace mce
+
+template <>
+struct std::hash<PackIdVersion> {
+    std::size_t operator()(const PackIdVersion &value) const noexcept
+    {
+        static std::hash<std::string> hasher;
+        return hasher(value.id.asString() + value.version.asString());
+    }
+};

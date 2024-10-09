@@ -12,22 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/core/sem_ver/sem_version.h"
 
-#include <string>
+const std::string &SemVersion::asString() const
+{
+    return full_version_string_;
+}
 
-class SemVersion {
-public:
-    [[nodiscard]] const std::string &asString() const;
-    bool operator==(const SemVersion &version) const;
+bool SemVersion::operator==(const SemVersion &rhs) const
+{
+    if (this->any_version_ && rhs.any_version_) {
+        return true;
+    }
 
-private:
-    std::uint16_t major_;              // +0
-    std::uint16_t minor_;              // +2
-    std::uint16_t patch_;              // +4
-    std::string pre_release_;          // +8
-    std::string build_meta_;           // +40
-    std::string full_version_string_;  // +72
-    bool valid_version_;               // +104
-    bool any_version_;                 // +105
-};
+    if (this->any_version_ || rhs.any_version_) {
+        return false;
+    }
+
+    if (this->major_ != rhs.major_ || this->minor_ != rhs.minor_ || this->patch_ != rhs.patch_) {
+        return false;
+    }
+
+    if (this->pre_release_ != rhs.pre_release_) {
+        return false;
+    }
+    return true;
+}

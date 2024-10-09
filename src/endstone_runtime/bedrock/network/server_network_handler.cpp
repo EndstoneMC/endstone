@@ -62,6 +62,17 @@ void ServerNetworkHandler::updateServerAnnouncement()
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::updateServerAnnouncement, this);
 }
 
+ConnectionRequest const &ServerNetworkHandler::Client::getPrimaryRequest() const
+{
+    return *primary_request_;
+}
+
+std::unordered_map<SubClientId, std::unique_ptr<SubClientConnectionRequest>> const &ServerNetworkHandler::Client::
+    getSubClientRequests() const
+{
+    return sub_client_requests_;
+}
+
 bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const ConnectionRequest &connection_request)
 {
     const auto new_player =
