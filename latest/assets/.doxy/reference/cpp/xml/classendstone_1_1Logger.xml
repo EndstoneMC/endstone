@@ -247,6 +247,23 @@
         </inbodydescription>
         <location file="include/endstone/logger.h" line="79" column="10" bodyfile="include/endstone/logger.h" bodystart="79" bodyend="87"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1a12b20b30c71ad1a32750b1cf204eaed3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::trace</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>trace</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="89" column="10" bodyfile="include/endstone/logger.h" bodystart="89" bodyend="92"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1afece6f3acad16bfa812319bce8642cba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -273,7 +290,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="90" column="10" bodyfile="include/endstone/logger.h" bodystart="90" bodyend="93"/>
+        <location file="include/endstone/logger.h" line="95" column="10" bodyfile="include/endstone/logger.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1afd79f51c7869d41732ce5fa3378d4c2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::debug</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>debug</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="100" column="10" bodyfile="include/endstone/logger.h" bodystart="100" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a871e42ad85f5730044b2cc983cc3384a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -301,7 +335,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="96" column="10" bodyfile="include/endstone/logger.h" bodystart="96" bodyend="99"/>
+        <location file="include/endstone/logger.h" line="106" column="10" bodyfile="include/endstone/logger.h" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1aa6e245e9c7704bbed956aaf3f8df94ae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::info</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>info</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="111" column="10" bodyfile="include/endstone/logger.h" bodystart="111" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a138fae3e1cb2ea5c193f87cfcf31f122" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -329,7 +380,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="102" column="10" bodyfile="include/endstone/logger.h" bodystart="102" bodyend="105"/>
+        <location file="include/endstone/logger.h" line="117" column="10" bodyfile="include/endstone/logger.h" bodystart="117" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1ac0c495a5be4a737d755be069ee2dcdbc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::warning</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>warning</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="122" column="10" bodyfile="include/endstone/logger.h" bodystart="122" bodyend="125"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a4537b8cb4a086be29beed8e5a44292cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -357,7 +425,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="108" column="10" bodyfile="include/endstone/logger.h" bodystart="108" bodyend="111"/>
+        <location file="include/endstone/logger.h" line="128" column="10" bodyfile="include/endstone/logger.h" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1aad6f17ce5b3438c9a8187d53a047e54d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::error</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>error</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="133" column="10" bodyfile="include/endstone/logger.h" bodystart="133" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -385,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="114" column="10" bodyfile="include/endstone/logger.h" bodystart="114" bodyend="117"/>
+        <location file="include/endstone/logger.h" line="139" column="10" bodyfile="include/endstone/logger.h" bodystart="139" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1ac0f6bd20f1b02e4f18eaedc6a87ee710" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -402,7 +487,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="119" column="10" bodyfile="include/endstone/logger.h" bodystart="119" bodyend="123"/>
+        <location file="include/endstone/logger.h" line="144" column="10" bodyfile="include/endstone/logger.h" bodystart="144" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Logger_1afd2c58b50e57b84a57635278a535e2f2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void endstone::Logger::critical</definition>
+        <argsstring>(const std::string &amp;message) const</argsstring>
+        <name>critical</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/logger.h" line="150" column="10" bodyfile="include/endstone/logger.h" bodystart="150" bodyend="153"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -430,7 +532,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/logger.h" line="126" column="10" bodyfile="include/endstone/logger.h" bodystart="126" bodyend="129"/>
+        <location file="include/endstone/logger.h" line="156" column="10" bodyfile="include/endstone/logger.h" bodystart="156" bodyend="159"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -438,17 +540,21 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/logger.h" line="30" column="1" bodyfile="include/endstone/logger.h" bodystart="30" bodyend="130"/>
+    <location file="include/endstone/logger.h" line="30" column="1" bodyfile="include/endstone/logger.h" bodystart="30" bodyend="160"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Logger_1afd2c58b50e57b84a57635278a535e2f2" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>critical</name></member>
       <member refid="classendstone_1_1Logger_1aca507742a0f4d372c5ce0e56143e8fb3" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>critical</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144ab262641fef9d7f61d1dd7b0131b8f2d7" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Critical</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144a5156b3df41deb6bdec3fa5c113872aad" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Debug</name></member>
+      <member refid="classendstone_1_1Logger_1afd79f51c7869d41732ce5fa3378d4c2c" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>debug</name></member>
       <member refid="classendstone_1_1Logger_1a871e42ad85f5730044b2cc983cc3384a" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>debug</name></member>
+      <member refid="classendstone_1_1Logger_1aad6f17ce5b3438c9a8187d53a047e54d" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>error</name></member>
       <member refid="classendstone_1_1Logger_1a86c1d62c9325ca51c41d12b2e94b0bdc" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>error</name></member>
       <member refid="classendstone_1_1Logger_1ac0f6bd20f1b02e4f18eaedc6a87ee710" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>error</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144a92f14f63c9c6d02df94e051bb9d4c5e2" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Error</name></member>
       <member refid="classendstone_1_1Logger_1a129515baf5eca9a21431973581919acb" prot="public" virt="pure-virtual"><scope>endstone::Logger</scope><name>getName</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144a8a6b3a482644555e09a4638368978cdb" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Info</name></member>
+      <member refid="classendstone_1_1Logger_1aa6e245e9c7704bbed956aaf3f8df94ae" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>info</name></member>
       <member refid="classendstone_1_1Logger_1a138fae3e1cb2ea5c193f87cfcf31f122" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>info</name></member>
       <member refid="classendstone_1_1Logger_1a6985fcd498c81e1cf5c68bebd6f41df3" prot="public" virt="pure-virtual"><scope>endstone::Logger</scope><name>isEnabledFor</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Level</name></member>
@@ -457,8 +563,10 @@
       <member refid="classendstone_1_1Logger_1af01bc59b42b754ba5b7ccb19838763da" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Logger</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144aac64420f39fa1bf41d2d90f20d8e2ef1" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Off</name></member>
       <member refid="classendstone_1_1Logger_1a310b9bd648301066760d387ca2fe7e2a" prot="public" virt="pure-virtual"><scope>endstone::Logger</scope><name>setLevel</name></member>
+      <member refid="classendstone_1_1Logger_1a12b20b30c71ad1a32750b1cf204eaed3" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>trace</name></member>
       <member refid="classendstone_1_1Logger_1afece6f3acad16bfa812319bce8642cba" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>trace</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144ac724505c604c99849fc89ab22b0e5e82" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Trace</name></member>
+      <member refid="classendstone_1_1Logger_1ac0c495a5be4a737d755be069ee2dcdbc" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>warning</name></member>
       <member refid="classendstone_1_1Logger_1a4537b8cb4a086be29beed8e5a44292cf" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>warning</name></member>
       <member refid="classendstone_1_1Logger_1a3dbfb0b3c4c4412231d66eb623b9f144a9a4dddb4eb589329c128fad92e2ff91c" prot="public" virt="non-virtual"><scope>endstone::Logger</scope><name>Warning</name></member>
       <member refid="classendstone_1_1Logger_1a44faaf98cb5398fbb95d7a81228caa2f" prot="public" virt="virtual"><scope>endstone::Logger</scope><name>~Logger</name></member>

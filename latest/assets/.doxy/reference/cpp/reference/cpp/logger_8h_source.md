@@ -68,10 +68,20 @@ public:
         }
     }
 
+    void trace(const std::string &message) const
+    {
+        log(Trace, message);
+    }
+
     template <typename... Args>
     void trace(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Trace, format, std::forward<Args>(args)...);
+    }
+
+    void debug(const std::string &message) const
+    {
+        log(Debug, message);
     }
 
     template <typename... Args>
@@ -80,16 +90,31 @@ public:
         log(Debug, format, std::forward<Args>(args)...);
     }
 
+    void info(const std::string &message) const
+    {
+        log(Info, message);
+    }
+
     template <typename... Args>
     void info(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Info, format, std::forward<Args>(args)...);
     }
 
+    void warning(const std::string &message) const
+    {
+        log(Warning, message);
+    }
+
     template <typename... Args>
     void warning(const fmt::format_string<Args...> format, Args &&...args) const
     {
         log(Warning, format, std::forward<Args>(args)...);
+    }
+
+    void error(const std::string &message) const
+    {
+        log(Error, message);
     }
 
     template <typename... Args>
@@ -102,6 +127,11 @@ public:
     {
         log(Error, error.getMessage());
         log(Error, error.getStackTrace());
+    }
+
+    void critical(const std::string &message) const
+    {
+        log(Critical, message);
     }
 
     template <typename... Args>
