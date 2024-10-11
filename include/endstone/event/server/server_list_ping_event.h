@@ -65,6 +65,18 @@ public:
     }
 
     /**
+     * Sets the local port of the server.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setServerGuid(std::string guid)
+    {
+        server_guid_ = guid;
+    }
+
+    /**
      * Get the local port of the server.
      *
      * @return The local port
