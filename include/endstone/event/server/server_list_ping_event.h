@@ -231,8 +231,9 @@ public:
 private:
     std::string ping_response_;
     std::string remote_host_;
-    int remote_port_;
     std::string motd_;
+public:
+    int remote_port_;
     int network_protocol_version_;
     std::string minecraft_version_network_;
     int num_players_;
