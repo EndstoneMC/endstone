@@ -276,6 +276,7 @@ public:
     [[nodiscard]] bool isRiding() const;
     [[nodiscard]] bool hasCategory(ActorCategory) const;
     [[nodiscard]] bool isJumping() const;
+    [[nodiscard]] std::vector<std::string> getTags() const;
 
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone

@@ -14,10 +14,14 @@
 
 #pragma once
 
-#include "bedrock/util/id_type.h"
-#include "bedrock/util/tag_registry.h"
+#include <cstdint>
+#include <vector>
 
-using BiomeTagID = IDType<struct BiomeTagIDType>;
-using BiomeTagSetID = IDType<struct BiomeTagSetIDType>;
+class IndexSet {
+public:
+    [[nodiscard]] std::vector<std::uint64_t> const &getPacked() const;
 
-using BiomeTagRegistry = TagRegistry<BiomeTagID, BiomeTagSetID>;
+private:
+    std::vector<std::uint64_t> packed_;
+    std::vector<std::uint64_t> sparse_;
+};

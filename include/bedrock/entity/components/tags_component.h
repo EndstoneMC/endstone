@@ -14,10 +14,10 @@
 
 #pragma once
 
-#include "bedrock/util/id_type.h"
-#include "bedrock/util/tag_registry.h"
+class TagsComponentBase {};
 
-using BiomeTagID = IDType<struct BiomeTagIDType>;
-using BiomeTagSetID = IDType<struct BiomeTagSetIDType>;
-
-using BiomeTagRegistry = TagRegistry<BiomeTagID, BiomeTagSetID>;
+template <typename T>
+class TagsComponent : public TagsComponentBase {
+public:
+    T tag_set_id;
+};

@@ -149,6 +149,11 @@ class Actor(CommandSender):
         Returns the runtime id for this actor.
         """
     @property
+    def scoreboard_tags(self) -> list[str]:
+        """
+        Returns a list of scoreboard tags for this actor.
+        """
+    @property
     def velocity(self) -> Vector:
         """
         Gets this actor's current velocity.

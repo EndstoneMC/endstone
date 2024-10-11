@@ -36,6 +36,7 @@
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/commands/standard/teleport_command.h"
 #include "bedrock/util/id_type.h"
+#include "bedrock/util/level_tag_registry_types.h"
 #include "bedrock/util/tag_registry.h"
 #include "bedrock/world/actor/player/layered_abilities.h"
 #include "bedrock/world/actor/player/permissions_handler.h"
@@ -361,7 +362,7 @@ private:
 
 public:
     [[nodiscard]] virtual PlayerCapabilities::ISharedController const &getCapabilities() const = 0;
-    virtual std::string const &getTagRegistry() = 0;
+    virtual LevelTagRegistry &getTagRegistry() = 0;
     [[nodiscard]] virtual PlayerMovementSettings const &getPlayerMovementSettings() const = 0;
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &, mce::UUID const &,

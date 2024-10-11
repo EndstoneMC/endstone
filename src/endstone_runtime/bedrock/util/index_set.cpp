@@ -12,12 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/util/index_set.h"
 
-#include "bedrock/util/id_type.h"
-#include "bedrock/util/tag_registry.h"
-
-using BiomeTagID = IDType<struct BiomeTagIDType>;
-using BiomeTagSetID = IDType<struct BiomeTagSetIDType>;
-
-using BiomeTagRegistry = TagRegistry<BiomeTagID, BiomeTagSetID>;
+std::vector<std::uint64_t> const &IndexSet::getPacked() const
+{
+    return packed_;
+}

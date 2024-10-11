@@ -17,7 +17,8 @@
 #include "bedrock/util/id_type.h"
 #include "bedrock/util/tag_registry.h"
 
-using BiomeTagID = IDType<struct BiomeTagIDType>;
-using BiomeTagSetID = IDType<struct BiomeTagSetIDType>;
 
-using BiomeTagRegistry = TagRegistry<BiomeTagID, BiomeTagSetID>;
+using LevelTagID = IDType<struct LevelTagIDType>;
+using LevelTagSetID = IDType<struct LevelTagSetIDType>;
+
+using LevelTagRegistry = TagRegistry<LevelTagID, LevelTagSetID>;

@@ -15,12 +15,24 @@
 #pragma once
 
 #include "bedrock/forward.h"
-#include "bedrock/util/id_type.h"
+#include "bedrock/util/index_set.h"
 
-template <typename TagIDType, typename TagSetIDType>
+template <typename TagID, typename TagSetID>
 class TagRegistry {
-    std::unordered_map<HashedString, std::uint64_t> tag_index_map_;
-    std::vector<std::string> tags_;
-    std::vector<IndexSet> sets_;
-    IDType<TagSetIDType> empty_tag_set_;
+public:
+    std::vector<std::string> getTagsInSet(TagSetID tag_set_id)
+    {
+        std::vector<std::string> tags;
+        auto index_set = sets_[tag_set_id.id.value()];
+        for (const auto index : index_set.getPacked()) {
+            tags.emplace_back(tags_[index]);
+        }
+        return tags;
+    }
+
+private:
+    std::unordered_map<HashedString, std::uint64_t> tag_index_map_;  // +0
+    std::vector<std::string> tags_;                                  // +64
+    std::vector<IndexSet> sets_;                                     // +88
+    TagSetID empty_tag_set_;                                         // +136
 };

@@ -13,11 +13,15 @@
 // limitations under the License.
 
 #pragma once
-
-#include "bedrock/util/id_type.h"
 #include "bedrock/util/tag_registry.h"
 
-using BiomeTagID = IDType<struct BiomeTagIDType>;
-using BiomeTagSetID = IDType<struct BiomeTagSetIDType>;
+namespace TagSystem {
 
-using BiomeTagRegistry = TagRegistry<BiomeTagID, BiomeTagSetID>;
+template <typename TagID, typename TagSetID>
+bool hasTag(TagsComponent<TagSetID> const &comp, TagID const &tagID, TagRegistry<TagID, TagSetID> const &registry)
+{
+    registry.tryGetTagID();
+    // todo:
+}
+
+}  // namespace TagSystem

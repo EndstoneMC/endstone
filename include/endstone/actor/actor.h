@@ -26,7 +26,7 @@ namespace endstone {
 class Actor : public CommandSender {
 public:
     // CommandSender
-    [[nodiscard]] Actor* asActor() const override
+    [[nodiscard]] Actor *asActor() const override
     {
         return const_cast<Actor *>(this);
     }
@@ -124,6 +124,13 @@ public:
      * @return True if it is dead.
      */
     [[nodiscard]] virtual bool isDead() const = 0;
+
+    /**
+     * @brief Returns a list of scoreboard tags for this actor.
+     *
+     * @return a list of scoreboard tags for this actor
+     */
+    [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 };
 
 }  // namespace endstone

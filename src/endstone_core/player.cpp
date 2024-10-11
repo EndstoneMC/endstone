@@ -250,6 +250,11 @@ bool EndstonePlayer::isDead() const
     return EndstoneMob::isDead();
 }
 
+std::vector<std::string> EndstonePlayer::getScoreboardTags() const
+{
+    return EndstoneMob::getScoreboardTags();
+}
+
 bool EndstonePlayer::isGliding() const
 {
     return EndstoneMob::isGliding();

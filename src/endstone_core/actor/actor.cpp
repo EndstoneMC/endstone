@@ -197,6 +197,11 @@ bool EndstoneActor::isDead() const
     return !actor_.isAlive();
 }
 
+std::vector<std::string> EndstoneActor::getScoreboardTags() const
+{
+    return actor_.getTags();
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);

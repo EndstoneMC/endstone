@@ -15,6 +15,7 @@
 #include "endstone/actor/actor.h"
 
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 #include "endstone/actor/mob.h"
 #include "endstone/level/dimension.h"
@@ -43,7 +44,9 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def("teleport", py::overload_cast<Actor &>(&Actor::teleport), "Teleports this actor to the target Actor.",
              py::arg("target"))
         .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
-        .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.");
+        .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
+        .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
+                               "Returns a list of scoreboard tags for this actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.");

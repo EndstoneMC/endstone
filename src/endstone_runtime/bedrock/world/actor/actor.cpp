@@ -21,6 +21,8 @@
 #include "bedrock/entity/components/passenger_component.h"
 #include "bedrock/entity/components/player_component.h"
 #include "bedrock/entity/components/runtime_id_component.h"
+#include "bedrock/entity/components/tags_component.h"
+#include "bedrock/entity/systems/tag_system.h"
 #include "bedrock/entity/utilities/rotation_utility.h"
 #include "bedrock/world/actor/actor_collision.h"
 #include "bedrock/world/actor/actor_environment.h"
@@ -243,6 +245,15 @@ EndstoneActor &Actor::getEndstoneActor0() const
 bool Actor::isJumping() const
 {
     return MobJump::isJumping(entity_context_);
+}
+
+std::vector<std::string> Actor::getTags() const
+{
+    auto *component = tryGetComponent<TagsComponent<IDType<LevelTagSetIDType>>>();
+    if (!component) {
+        return {};
+    }
+    return getLevel().getTagRegistry().getTagsInSet(component->tag_set_id);
 }
 
 const AttributeInstance &Actor::getAttribute(const HashedString &name) const
