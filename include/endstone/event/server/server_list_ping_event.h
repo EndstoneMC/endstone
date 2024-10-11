@@ -75,6 +75,18 @@ public:
     }
 
     /**
+     * Sets the local port of the server.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setLocalPort(int port)
+    {
+        local_port_ = port;
+    }
+
+    /**
      * Get the local port of the server for IPv6 support
      *
      * @return The local port for IPv6
@@ -82,6 +94,18 @@ public:
     [[nodiscard]] int getLocalPortV6() const
     {
         return local_port_v6_;
+    }
+
+    /**
+     * Sets the local port of the server for IPv6 support.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setLocalPortV6(int port)
+    {
+        local_port_v6_ = port;
     }
 
     /**
@@ -231,9 +255,8 @@ public:
 private:
     std::string ping_response_;
     std::string remote_host_;
-    std::string motd_;
-public:
     int remote_port_;
+    std::string motd_;
     int network_protocol_version_;
     std::string minecraft_version_network_;
     int num_players_;
