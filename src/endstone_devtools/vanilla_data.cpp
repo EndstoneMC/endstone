@@ -93,6 +93,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         if (!special_tools.is_null()) {
             data.block_types[name]["specialTools"] = special_tools;
         }
+        data.block_types[name]["defaultBlockStateHash"] = block_legacy.getDefaultState()->getRuntimeId();
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
             AABB collision_shape;
