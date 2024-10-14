@@ -12,11 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/resource_pack_repository.h"
+#include "bedrock/resources/pack_source.h"
 
-#include "endstone/detail/hook.h"
-
-void ResourcePackRepository::_initializePackSource()
+void CompositePackSource::addPackSource(PackSource *pack_source)
 {
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
+    pack_sources_.emplace_back(pack_source);
+}
+
+void CompositePackSource::clear()
+{
+    pack_sources_.clear();
+}
+
+std::vector<PackSource *> CompositePackSource::getPackSources()
+{
+    return pack_sources_;
 }

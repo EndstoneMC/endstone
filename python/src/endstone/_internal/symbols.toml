@@ -1,4 +1,4 @@
-timestamp = 1727987716
+timestamp = 1728933927
 version = "1.21.30"
 
 [windows]
@@ -70,6 +70,8 @@ version = "1.21.30"
 "?ToString@SystemAddress@RakNet@@QEBAX_NPEADD@Z" = 37138000
 # RakPeerHelper
 "?peerStartup@RakPeerHelper@@QEAA?AW4StartupResult@RakNet@@PEAVRakPeerInterface@3@AEBUConnectionDefinition@@W4PeerPurpose@1@@Z" = 8265632
+# ResourcePackRepository
+"?_initializePackSource@ResourcePackRepository@@AEAAXXZ" = 9253008
 # SayCommand
 "?_sendMessage@SayCommand@@CAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@3@0AEBUCommandOriginIdentity@@AEAVLevel@@@Z" = 23116144
 # Scoreboard
@@ -173,6 +175,8 @@ version = "1.21.30"
 "_ZNK6RakNet13SystemAddress8ToStringEbPcc" = 134586416
 # RakPeerHelper
 "_ZN13RakPeerHelper11peerStartupEPN6RakNet16RakPeerInterfaceERK20ConnectionDefinitionNS_11PeerPurposeE" = 78459312
+# ResourcePackRepository
+"_ZN22ResourcePackRepository21_initializePackSourceEv" = 80958128
 # SayCommand
 "_ZN10SayCommand12_sendMessageERKNSt3__112basic_stringIcNS0_11char_traitsIcEENS0_9allocatorIcEEEENS0_8optionalIS6_EES8_RK21CommandOriginIdentityR5Level" = 90709328
 # Scoreboard

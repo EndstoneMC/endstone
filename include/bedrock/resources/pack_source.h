@@ -36,14 +36,18 @@ public:
     virtual ~PackSource() = 0;
     virtual void forEachPackConst(ConstPackCallback callback) const = 0;
     virtual void forEachPack(PackCallback callback) = 0;
-    [[nodiscard]] virtual PackOrigin getPackOrigin() const;
-    [[nodiscard]] virtual PackType getPackType() const;
+    [[nodiscard]] virtual PackOrigin getPackOrigin() const = 0;
+    [[nodiscard]] virtual PackType getPackType() const = 0;
     virtual PackSourceReport load(IPackManifestFactory &factory,
-                                  Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &a3) = 0;
+                                  Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &) = 0;
 };
 
 class CompositePackSource : public PackSource {
 public:
+    void addPackSource(PackSource *pack_source);
+    void clear();
+    std::vector<PackSource *> getPackSources();
+
 private:
     std::vector<PackSource *> pack_sources_;
 };

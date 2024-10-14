@@ -16,4 +16,12 @@
 
 #include "bedrock/resources/resource_pack_repository_interface.h"
 
-class ResourcePackRepository : public IResourcePackRepository {};
+class ResourcePackRepository : public IResourcePackRepository {
+public:
+private:
+    ENDSTONE_HOOK void _initializePackSource();  // NOLINT
+
+    Bedrock::NotNullNonOwnerPtr<Core::FilePathManager> file_path_manager_;  // +24
+    std::vector<std::unique_ptr<ResourcePack>> all_resource_packs_;         // +40
+    std::unique_ptr<CompositePackSource> pack_source_;                      // +64
+};
