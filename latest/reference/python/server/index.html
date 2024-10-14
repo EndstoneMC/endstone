@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
@@ -2774,6 +2774,339 @@ For latest updates join the chat on
 
 
         <p>Represents a server implementation.</p>
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.broadcast" href="#endstone.Server.broadcast">broadcast</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Broadcasts the specified message to every user with the given permission name.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.broadcast_message" href="#endstone.Server.broadcast_message">broadcast_message</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Broadcasts the specified message to every user with permission endstone.broadcast.user</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.create_block_data" href="#endstone.Server.create_block_data">create_block_data</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Creates a new BlockData instance for the specified block type, with all properties initialized to defaults, except for those provided.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.create_boss_bar" href="#endstone.Server.create_boss_bar">create_boss_bar</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Creates a boss bar instance to display to players. The progress defaults to 1.0.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.create_scoreboard" href="#endstone.Server.create_scoreboard">create_scoreboard</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Creates a new Scoreboard to be tracked by the server.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.dispatch_command" href="#endstone.Server.dispatch_command">dispatch_command</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Dispatches a command on this server, and executes it if found.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.get_player" href="#endstone.Server.get_player">get_player</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.get_plugin_command" href="#endstone.Server.get_plugin_command">get_plugin_command</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets a PluginCommand with the given name or alias.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.reload" href="#endstone.Server.reload">reload</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Reloads the server configuration, functions, scripts and plugins.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.reload_data" href="#endstone.Server.reload_data">reload_data</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Reload only the Minecraft data for the server.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.Server.shutdown" href="#endstone.Server.shutdown">shutdown</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Shutdowns the server, stopping everything.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.average_mspt" href="#endstone.Server.average_mspt">average_mspt</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the average milliseconds per tick (MSPT).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.average_tick_usage" href="#endstone.Server.average_tick_usage">average_tick_usage</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the average tick usage of the server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.average_tps" href="#endstone.Server.average_tps">average_tps</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the average ticks per second (TPS).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.command_sender" href="#endstone.Server.command_sender">command_sender</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.ConsoleCommandSender" href="../command/#endstone.command.ConsoleCommandSender">ConsoleCommandSender</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets a CommandSender for this server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.current_mspt" href="#endstone.Server.current_mspt">current_mspt</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the current milliseconds per tick (MSPT).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.current_tick_usage" href="#endstone.Server.current_tick_usage">current_tick_usage</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the current tick usage of the server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.current_tps" href="#endstone.Server.current_tps">current_tps</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#float">float</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the current ticks per second (TPS).</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.level" href="#endstone.Server.level">level</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Level" href="../level/#endstone.level.Level">Level</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the server level.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.logger" href="#endstone.Server.logger">logger</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Logger" href="../misc/#endstone.Logger">Logger</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the primary logger associated with this server instance.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.max_players" href="#endstone.Server.max_players">max_players</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The maximum amount of players which can login to this server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.minecraft_version" href="#endstone.Server.minecraft_version">minecraft_version</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the Minecraft version that this server is running.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.name" href="#endstone.Server.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the name of this server implementation.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.online_mode" href="#endstone.Server.online_mode">online_mode</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets whether the Server is in online mode or not.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.online_players" href="#endstone.Server.online_players">online_players</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Player" href="../player/#endstone.Player">Player</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets a list of all currently online players.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.plugin_manager" href="#endstone.Server.plugin_manager">plugin_manager</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PluginManager" href="../plugin/#endstone.plugin.PluginManager">PluginManager</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the plugin manager for interfacing with plugins.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.scheduler" href="#endstone.Server.scheduler">scheduler</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Scheduler" href="../scheduler/#endstone.scheduler.Scheduler">Scheduler</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the scheduler for managing scheduled events.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.scoreboard" href="#endstone.Server.scoreboard">scoreboard</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Scoreboard" href="../scoreboard/#endstone.scoreboard.Scoreboard">Scoreboard</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the primary Scoreboard controlled by the server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.start_time" href="#endstone.Server.start_time">start_time</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="datetime.datetime" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the start time of the server.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.Server.version" href="#endstone.Server.version">version</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the version of this server implementation.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 

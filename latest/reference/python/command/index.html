@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
@@ -2523,6 +2523,68 @@ For latest updates join the chat on
 
 
 
+
+
+
+
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command" href="#endstone.command.Command">Command</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a Command, which executes various tasks upon user input</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandExecutor" href="#endstone.command.CommandExecutor">CommandExecutor</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a class which contains a single method for executing commands</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSender" href="#endstone.command.CommandSender">CommandSender</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a command sender.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSenderWrapper" href="#endstone.command.CommandSenderWrapper">CommandSenderWrapper</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a wrapper that forwards commands to the wrapped CommandSender and captures its output</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.ConsoleCommandSender" href="#endstone.command.ConsoleCommandSender">ConsoleCommandSender</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a console command sender.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2556,6 +2618,132 @@ For latest updates join the chat on
 
 
         <p>Represents a Command, which executes various tasks upon user input</p>
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.execute" href="#endstone.command.Command.execute">execute</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Executes the command, returning its success</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.test_permission" href="#endstone.command.Command.test_permission">test_permission</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Tests the given CommandSender to see if they can perform this command.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.test_permission_silently" href="#endstone.command.Command.test_permission_silently">test_permission_silently</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Tests the given CommandSender to see if they can perform this command. No error is sent to the sender.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.aliases" href="#endstone.command.Command.aliases">aliases</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of aliases of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.description" href="#endstone.command.Command.description">description</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Brief description of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.name" href="#endstone.command.Command.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Name of this command.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.permissions" href="#endstone.command.Command.permissions">permissions</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>The permissions required by users to be able to perform this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.registered" href="#endstone.command.Command.registered">registered</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the current registered state of this command</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.Command.usages" href="#endstone.command.Command.usages">usages</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>List of usages of this command</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -2798,6 +2986,36 @@ For latest updates join the chat on
 
 
 
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandExecutor.on_command" href="#endstone.command.CommandExecutor.on_command">on_command</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Executes the given command, returning its success.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2854,6 +3072,80 @@ For latest updates join the chat on
 
 
         <p>Represents a command sender.</p>
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSender.send_error_message" href="#endstone.command.CommandSender.send_error_message">send_error_message</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this sender an error message</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSender.send_message" href="#endstone.command.CommandSender.send_message">send_message</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sends this sender a message</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSender.name" href="#endstone.command.CommandSender.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the name of this command sender</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.command.CommandSender.server" href="#endstone.command.CommandSender.server">server</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Server" href="../server/#endstone.Server">Server</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the server instance that this command is running on</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -2986,6 +3278,15 @@ For latest updates join the chat on
 
 
 
+
+
+
+
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -3021,6 +3322,15 @@ For latest updates join the chat on
 
 
         <p>Represents a console command sender.</p>
+
+
+
+
+
+
+
+
+
 
 
 

@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
     
     
       
@@ -1082,6 +1082,19 @@ For latest updates join the chat on
     <a href="#endstone.actor.Actor.runtime_id" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;runtime_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.actor.Actor.scoreboard_tags" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;scoreboard_tags
       </span>
     </a>
 
@@ -2280,6 +2293,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#endstone.actor.Actor.scoreboard_tags" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;scoreboard_tags
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#endstone.actor.Actor.velocity" class="md-nav__link">
       <span class="md-ellipsis">
         <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;velocity
@@ -2407,6 +2433,44 @@ For latest updates join the chat on
 
 
 
+
+
+
+
+<p><span class="doc-section-title">Classes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor" href="#endstone.actor.Actor">Actor</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a base actor in the level.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Mob" href="#endstone.actor.Mob">Mob</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a mobile entity (i.e. living entity), such as a monster or player.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
   <div class="doc doc-children">
 
 
@@ -2433,6 +2497,179 @@ For latest updates join the chat on
 
 
         <p>Represents a base actor in the level.</p>
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.set_rotation" href="#endstone.actor.Actor.set_rotation">set_rotation</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Sets the actor's rotation.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.teleport" href="#endstone.actor.Actor.teleport">teleport</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.dimension" href="#endstone.actor.Actor.dimension">dimension</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Dimension" href="../level/#endstone.level.Dimension">Dimension</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the current Dimension this actor resides in.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.id" href="#endstone.actor.Actor.id">id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns a unique id for this actor.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.is_dead" href="#endstone.actor.Actor.is_dead">is_dead</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns true if this actor has been marked for removal.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.is_in_lava" href="#endstone.actor.Actor.is_in_lava">is_in_lava</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns true if the actor is in lava.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.is_in_water" href="#endstone.actor.Actor.is_in_water">is_in_water</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns true if the actor is in water.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.is_on_ground" href="#endstone.actor.Actor.is_on_ground">is_on_ground</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns true if the actor is supported by a block, i.e. on ground.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.level" href="#endstone.actor.Actor.level">level</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Level" href="../level/#endstone.level.Level">Level</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the current Level this actor resides in.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.location" href="#endstone.actor.Actor.location">location</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Location" href="../level/#endstone.level.Location">Location</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the actor's current position.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.runtime_id" href="#endstone.actor.Actor.runtime_id">runtime_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns the runtime id for this actor.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.scoreboard_tags" href="#endstone.actor.Actor.scoreboard_tags">scoreboard_tags</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Returns a list of scoreboard tags for this actor.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Actor.velocity" href="#endstone.actor.Actor.velocity">velocity</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Vector" href="../misc/#endstone.util.Vector">Vector</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets this actor's current velocity.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -2656,6 +2893,29 @@ For latest updates join the chat on
 
 
 
+<h4 id="endstone.actor.Actor.scoreboard_tags" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">scoreboard_tags</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.actor.Actor.scoreboard_tags" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">scoreboard_tags</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Returns a list of scoreboard tags for this actor.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
 <h4 id="endstone.actor.Actor.velocity" class="doc doc-heading">
 <code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">velocity</span>
 
@@ -2745,6 +3005,40 @@ For latest updates join the chat on
 
 
         <p>Represents a mobile entity (i.e. living entity), such as a monster or player.</p>
+
+
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.actor.Mob.is_gliding" href="#endstone.actor.Mob.is_gliding">is_gliding</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Checks to see if an actor is gliding, such as using an Elytra.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 

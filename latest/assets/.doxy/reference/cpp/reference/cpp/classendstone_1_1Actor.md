@@ -100,6 +100,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
 | virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
+| virtual std::vector&lt; std::string &gt; | [**getScoreboardTags**](#function-getscoreboardtags) () const = 0<br>_Returns a list of scoreboard tags for this actor._  |
 | virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](#function-getvelocity) () const = 0<br> |
 | virtual bool | [**isDead**](#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
 | virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
@@ -385,6 +386,31 @@ Returns the runtime id for this actor
 **Returns:**
 
 Runtime id for this actor 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getScoreboardTags 
+
+_Returns a list of scoreboard tags for this actor._ 
+```C++
+virtual std::vector< std::string > endstone::Actor::getScoreboardTags () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+a list of scoreboard tags for this actor 
 
 
 

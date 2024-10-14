@@ -33,7 +33,7 @@ namespace endstone {
 class Actor : public CommandSender {
 public:
     // CommandSender
-    [[nodiscard]] Actor* asActor() const override
+    [[nodiscard]] Actor *asActor() const override
     {
         return const_cast<Actor *>(this);
     }
@@ -63,6 +63,8 @@ public:
     [[nodiscard]] virtual std::int64_t getId() const = 0;
 
     [[nodiscard]] virtual bool isDead() const = 0;
+
+    [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 };
 
 }  // namespace endstone
