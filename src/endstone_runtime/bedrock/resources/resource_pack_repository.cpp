@@ -15,8 +15,11 @@
 #include "bedrock/resources/resource_pack_repository.h"
 
 #include "endstone/detail/hook.h"
+#include "endstone/detail/packs/endstone_pack_source.h"
 
 void ResourcePackRepository::_initializePackSource()
 {
+    static endstone::detail::EndstonePackSource endstone_pack_source{PackType::Resources};
     ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
+    pack_source_->addPackSource(&endstone_pack_source);
 }

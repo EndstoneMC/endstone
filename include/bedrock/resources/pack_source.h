@@ -33,7 +33,7 @@ private:
 
 class PackSource {
 public:
-    virtual ~PackSource() = 0;
+    virtual ~PackSource() = default;
     virtual void forEachPackConst(ConstPackCallback callback) const = 0;
     virtual void forEachPack(PackCallback callback) = 0;
     [[nodiscard]] virtual PackOrigin getPackOrigin() const = 0;

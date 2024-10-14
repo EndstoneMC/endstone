@@ -17,6 +17,7 @@
 #include <functional>
 #include <map>
 
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/pack_access_strategy.h"
 
