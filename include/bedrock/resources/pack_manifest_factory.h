@@ -14,29 +14,15 @@
 
 #pragma once
 
-#include <cstdint>
+#include <memory>
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/resources/pack_error.h"
-#include "bedrock/resources/pack_settings.h"
-#include "bedrock/resources/pack_source.h"
-#include "bedrock/resources/resource_pack.h"
+#include "bedrock/resources/pack.h"
+#include "bedrock/resources/pack_access_strategy.h"
 
-class PackStats {
+class IPackManifestFactory {
 public:
-    uint32_t overridden_entity_count;
-    uint32_t custom_entity_count;
-    uint32_t custom_animation_count;
-    uint32_t custom_effect_count;
-};
-
-class PackInstance {
-public:
-    PackReport pack_report;
-
-private:
-    PackSettings *pack_settings_;
-    Bedrock::NonOwnerPointer<ResourcePack> pack_;
-    PackStats stats_;
-    int subpack_index_;
+    virtual ~IPackManifestFactory() = 0;
+    virtual std::unique_ptr<PackManifest> create(PackAccessStrategy &access_strategy,
+                                                 ResourceLocation const &resource_location, PackReport &report,
+                                                 SubpackInfoCollection *subpack_info) = 0;
 };

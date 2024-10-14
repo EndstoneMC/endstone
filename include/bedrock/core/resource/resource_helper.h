@@ -14,9 +14,14 @@
 
 #pragma once
 
+#include <unordered_map>
+
 #include "bedrock/core/file/path.h"
+#include "bedrock/core/resource/content_identity.h"
 #include "bedrock/core/resource/resource_util.h"
 #include "bedrock/core/string/string_hash.h"
+
+using ContentKeyMap = std::unordered_map<ContentIdentity, std::string>;
 
 class ResourceLocation {
 public:
@@ -26,4 +31,18 @@ private:
     Core::HeapPathBuffer path_;
     HashType64 path_hash_;
     std::size_t full_hash_;
+};
+
+enum class PackOrigin : std::uint8_t {
+    _Unknown = 0,
+    _RealmsUnknown = 1,
+    Package = 2,
+    Treatment = 3,
+    Dev = 4,
+    World = 5,
+    User = 6,
+    TempCache = 7,
+    PremiumCache = 8,
+    PremiumTempCache = 9,
+    Test = 10,
 };

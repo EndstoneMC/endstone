@@ -14,29 +14,14 @@
 
 #pragma once
 
-#include <cstdint>
+#include "bedrock/core/resource/content_identity.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 
-#include "bedrock/core/utility/non_owner_pointer.h"
-#include "bedrock/resources/pack_error.h"
-#include "bedrock/resources/pack_settings.h"
-#include "bedrock/resources/pack_source.h"
-#include "bedrock/resources/resource_pack.h"
-
-class PackStats {
+class IContentKeyProvider : public Bedrock::EnableNonOwnerReferences {
 public:
-    uint32_t overridden_entity_count;
-    uint32_t custom_entity_count;
-    uint32_t custom_animation_count;
-    uint32_t custom_effect_count;
-};
-
-class PackInstance {
-public:
-    PackReport pack_report;
-
-private:
-    PackSettings *pack_settings_;
-    Bedrock::NonOwnerPointer<ResourcePack> pack_;
-    PackStats stats_;
-    int subpack_index_;
+    [[nodiscard]] virtual std::string getContentKey(ContentIdentity const &a2) const = 0;
+    [[nodiscard]] virtual std::string getAlternateContentKey(ContentIdentity const &a2) const;
+    [[nodiscard]] virtual bool requireEncryptedReads() const;
+    virtual void setTempContentKeys(ContentKeyMap const &a2) = 0;
+    virtual void clearTempContentKeys() = 0;
 };
