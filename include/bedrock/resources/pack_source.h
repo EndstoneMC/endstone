@@ -17,6 +17,7 @@
 #include <functional>
 
 #include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/resources/content_key_provider.h"
 #include "bedrock/resources/pack.h"
 #include "bedrock/resources/pack_manifest_factory.h"
@@ -39,4 +40,10 @@ public:
     [[nodiscard]] virtual PackType getPackType() const;
     virtual PackSourceReport load(IPackManifestFactory &factory,
                                   Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &a3) = 0;
+};
+
+class CompositePackSource : public PackSource {
+public:
+private:
+    std::vector<PackSource *> pack_sources_;
 };

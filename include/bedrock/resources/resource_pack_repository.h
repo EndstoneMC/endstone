@@ -14,16 +14,6 @@
 
 #pragma once
 
-#include <memory>
+#include "bedrock/resources/resource_pack_repository_interface.h"
 
-#include "bedrock/resources/pack.h"
-#include "bedrock/resources/pack_access_strategy.h"
-#include "bedrock/resources/pack_error.h"
-
-class IPackManifestFactory {
-public:
-    virtual ~IPackManifestFactory() = 0;
-    virtual std::unique_ptr<PackManifest> create(PackAccessStrategy &access_strategy,
-                                                 ResourceLocation const &resource_location, PackReport &report,
-                                                 SubpackInfoCollection *subpack_info) = 0;
-};
+class ResourcePackRepository : public IResourcePackRepository {};

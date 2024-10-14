@@ -40,3 +40,15 @@ private:
     PackStats stats_;
     int subpack_index_;
 };
+
+class ResourcePackStack {
+    using PackInstanceStack = std::vector<PackInstance>;
+
+public:
+    virtual ~ResourcePackStack() = 0;
+
+    PackInstanceStack stack;
+
+private:
+    std::unique_ptr<PackSourceReport> pack_source_report_;
+};

@@ -18,6 +18,7 @@
 
 #include "bedrock/core/file/path.h"
 #include "bedrock/core/resource/content_identity.h"
+#include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/resource/resource_util.h"
 #include "bedrock/core/string/string_hash.h"
 
@@ -33,6 +34,11 @@ private:
     std::size_t full_hash_;
 };
 
+struct PackInstanceId {
+    PackIdVersion pack_id;
+    std::string subpack_name;
+};
+
 enum class PackOrigin : std::uint8_t {
     _Unknown = 0,
     _RealmsUnknown = 1,
@@ -45,4 +51,14 @@ enum class PackOrigin : std::uint8_t {
     PremiumCache = 8,
     PremiumTempCache = 9,
     Test = 10,
+};
+
+enum class PackCategory : std::int32_t {
+    _Unknown = 0,
+    _RealmsUnknown = 1,
+    Standard = 2,
+    Premium = 3,
+    Custom = 4,
+    Subpack = 5,
+    Chemistry = 6,
 };
