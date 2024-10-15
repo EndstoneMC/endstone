@@ -27,6 +27,10 @@ using PackCallback = std::function<void(Pack &)>;
 
 class PackSourceReport {
 public:
+    PackSourceReport() = default;
+    void addReport(PackIdVersion const &pack_id, PackReport &&report);
+    bool hasErrors() const;
+
 private:
     std::unordered_map<PackIdVersion, PackReport> reports_;
 };

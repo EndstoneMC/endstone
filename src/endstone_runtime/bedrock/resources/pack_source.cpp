@@ -14,6 +14,19 @@
 
 #include "bedrock/resources/pack_source.h"
 
+void PackSourceReport::addReport(PackIdVersion const &pack_id, PackReport &&report)
+{
+    reports_[pack_id] = std::move(report);
+}
+
+bool PackSourceReport::hasErrors() const
+{
+    return std::any_of(reports_.begin(), reports_.end(), [](const auto &pair) {
+        const auto &[pack_id, report] = pair;
+        return report.hasErrors();
+    });
+}
+
 void CompositePackSource::addPackSource(PackSource *pack_source)
 {
     pack_sources_.emplace_back(pack_source);

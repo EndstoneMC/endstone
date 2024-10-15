@@ -14,6 +14,28 @@
 
 #include "bedrock/core/sem_ver/sem_version.h"
 
+#include <utility>
+
+#include <fmt/format.h>
+
+SemVersion::SemVersion() : full_version_string_("0.0.0") {}
+
+SemVersion::SemVersion(any_version_constructor) : full_version_string_("*"), valid_version_(true), any_version_(true) {}
+
+SemVersion::SemVersion(std::uint16_t major, std::uint16_t minor, std::uint16_t patch, std::string pre_release,
+                       std::string build_meta)
+    : major_(major), minor_(minor), patch_(patch), pre_release_(std::move(pre_release)),
+      build_meta_(std::move(build_meta)), valid_version_(true)
+{
+    full_version_string_ = fmt::format("{}.{}.{}", major_, minor_, patch_);
+    if (!pre_release_.empty()) {
+        full_version_string_ += pre_release_;
+    }
+    if (!build_meta_.empty()) {
+        full_version_string_ += build_meta_;
+    }
+}
+
 const std::string &SemVersion::asString() const
 {
     return full_version_string_;

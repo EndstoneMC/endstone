@@ -12,17 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/resources/pack_error.h"
 
-#include "bedrock/core/resource/content_identity.h"
-#include "bedrock/core/resource/resource_helper.h"
-#include "bedrock/core/utility/enable_non_owner_references.h"
-
-class IContentKeyProvider : public Bedrock::EnableNonOwnerReferences {
-public:
-    [[nodiscard]] virtual std::string getContentKey(ContentIdentity const &) const = 0;
-    [[nodiscard]] virtual std::string getAlternateContentKey(ContentIdentity const &) const;
-    [[nodiscard]] virtual bool requireEncryptedReads() const;
-    virtual void setTempContentKeys(ContentKeyMap const &) = 0;
-    virtual void clearTempContentKeys() = 0;
-};
+bool PackReport::hasErrors() const
+{
+    return !errors_.empty();
+}

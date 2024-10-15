@@ -47,7 +47,13 @@ PackType EndstonePackSource::getPackType() const
 PackSourceReport EndstonePackSource::load(IPackManifestFactory &factory,
                                           const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &)
 {
-    // TODO:
+    if (discovered_) {
+        return {};
+    }
+
+    // TODO: load .zip and .mcpack from resource_packs
+    spdlog::info("EndstonePackSource::load");
+    discovered_ = true;
     return {};
 }
 

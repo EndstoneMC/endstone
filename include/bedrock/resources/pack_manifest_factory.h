@@ -16,7 +16,6 @@
 
 #include <memory>
 
-#include "bedrock/resources/pack.h"
 #include "bedrock/resources/pack_access_strategy.h"
 #include "bedrock/resources/pack_error.h"
 

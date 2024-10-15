@@ -18,16 +18,23 @@
 
 class SemVersion {
 public:
+    struct any_version_constructor {};
+    static any_version_constructor const AnyVersionConstructor;
+
+    SemVersion();
+    explicit SemVersion(any_version_constructor);
+    SemVersion(std::uint16_t major, std::uint16_t minor, std::uint16_t patch, std::string pre_release,
+               std::string build_meta);
     [[nodiscard]] const std::string &asString() const;
     bool operator==(const SemVersion &version) const;
 
 private:
-    std::uint16_t major_;              // +0
-    std::uint16_t minor_;              // +2
-    std::uint16_t patch_;              // +4
+    std::uint16_t major_{0};           // +0
+    std::uint16_t minor_{0};           // +2
+    std::uint16_t patch_{0};           // +4
     std::string pre_release_;          // +8
     std::string build_meta_;           // +40
     std::string full_version_string_;  // +72
-    bool valid_version_;               // +104
-    bool any_version_;                 // +105
+    bool valid_version_{false};        // +104
+    bool any_version_{false};          // +105
 };

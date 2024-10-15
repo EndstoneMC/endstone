@@ -32,6 +32,7 @@ public:
 
 private:
     ::PackType pack_type_;
+    bool discovered_{false};
     std::vector<std::unique_ptr<Pack>> packs_;
 };
 

@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <memory>
 #include <vector>
 
 #include "bedrock/core/resource/pack_id_version.h"
@@ -43,15 +44,18 @@ using PackErrors = std::vector<std::shared_ptr<PackError>>;
 
 class PackReport {
 public:
+    PackReport() = default;
+    [[nodiscard]] bool hasErrors() const;
+
 private:
-    ResourceLocation location_;
-    bool was_upgraded_;
-    bool attempted_upgrade_;
-    PackErrors errors_;
-    PackErrors warnings_;
-    SemVersion required_base_game_version_;
-    std::string original_name_;
-    std::string original_version_;
-    PackIdVersion identity_;
-    PackType pack_type_;
+    ResourceLocation location_;              // +0
+    bool was_upgraded_;                      // +56
+    bool attempted_upgrade_;                 // +57
+    PackErrors errors_;                      // +64
+    PackErrors warnings_;                    // +88
+    SemVersion required_base_game_version_;  // +112
+    std::string original_name_;              // +224
+    std::string original_version_;           // +256
+    PackIdVersion identity_;                 // +288
+    PackType pack_type_;                     // +424
 };
