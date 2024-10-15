@@ -46,7 +46,7 @@ private:
     Bedrock::NonOwnerPointer<Core::FilePathManager> file_path_manager_;  // +128
     ServerMetrics *server_metrics_;                                      // +144
     bool corruption_detected_;                                           // +152
-    bool fire_on_level_corrupt_;                                          // +153
+    bool fire_on_level_corrupt_;                                         // +153
     double frame_duration_;                                              // +160
     double last_frame_start_;                                            // +168
     std::chrono::seconds max_player_idle_time_;                          // +176

@@ -26,3 +26,8 @@ public:
     virtual void setTempContentKeys(ContentKeyMap const &) = 0;
     virtual void clearTempContentKeys() = 0;
 };
+
+class IContentAccessibilityProvider : public IContentKeyProvider {
+public:
+    [[nodiscard]] virtual bool canAccess(ContentIdentity const &) const = 0;
+};

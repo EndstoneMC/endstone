@@ -166,6 +166,7 @@ class SubChunkPacket;
 class SubChunkPos;
 class SurfaceBuilderRegistry;
 class SubpackInfoCollection;
+class TestPackSource;
 class TextObjectRoot;
 class TaskGroup;
 class TickingAreaList;

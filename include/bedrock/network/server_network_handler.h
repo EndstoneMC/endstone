@@ -120,5 +120,5 @@ private:
     std::vector<mce::UUID> known_emote_piece_ids_;                            // +912
     std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +936
     bool is_trial_;                                                           // +1000
-    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;   // +1008
 };
