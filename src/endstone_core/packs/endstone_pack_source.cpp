@@ -14,11 +14,18 @@
 
 #include "endstone/detail/packs/endstone_pack_source.h"
 
-#include <spdlog/spdlog.h>
+#include <utility>
+
+#include "endstone/detail/logger_factory.h"
+
+namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-EndstonePackSource::EndstonePackSource(PackType pack_type) : pack_type_(pack_type) {}
+EndstonePackSource::EndstonePackSource(std::filesystem::path path, PackType pack_type)
+    : path_(std::move(path)), pack_type_(pack_type)
+{
+}
 
 void EndstonePackSource::forEachPackConst(ConstPackCallback callback) const
 {
@@ -44,17 +51,46 @@ PackType EndstonePackSource::getPackType() const
     return pack_type_;
 }
 
-PackSourceReport EndstonePackSource::load(IPackManifestFactory &factory,
-                                          const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &)
+PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory,
+                                          const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &key_provider)
 {
     if (discovered_) {
         return {};
     }
 
-    // TODO: load .zip and .mcpack from resource_packs
-    spdlog::info("EndstonePackSource::load");
+    // Server may not be initialized at this point. Let's get the logger directly from LoggerFactory.
+    const auto &logger = LoggerFactory::getLogger("Server");
+    logger.info("Loading resource packs...");
+
+    PackSourceReport report;
+    for (const auto &entry : fs::directory_iterator(path_)) {
+        fs::path file;
+
+        if (!is_regular_file(entry.status())) {
+            continue;
+        }
+
+        file = entry.path();
+        if (file.extension() == ".mcpack" || file.extension() == ".zip") {
+            const auto file_location = ResourceLocation(Core::Path(file.string()), ResourceFileSystem::Raw);
+            auto pack = Pack::createPack(file_location, getPackType(), getPackOrigin(), manifest_factory, key_provider,
+                                         &report, Core::Path::EMPTY);
+            packs_.emplace_back(std::move(pack));
+        }
+    }
+
+    for (const auto &[pack_id, report] : report.getReports()) {
+        if (report.hasErrors()) {
+            logger.error("Could not load resource pack from '{}':",
+                         report.getLocation().getRelativePath().getContainer());
+            for (const auto &pack_error : report.getErrors()) {
+                logger.error(pack_error->getLocErrorMessage());
+            }
+        }
+    }
+
     discovered_ = true;
-    return {};
+    return report;
 }
 
 }  // namespace endstone::detail

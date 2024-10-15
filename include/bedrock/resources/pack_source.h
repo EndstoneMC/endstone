@@ -30,6 +30,7 @@ public:
     PackSourceReport() = default;
     void addReport(PackIdVersion const &pack_id, PackReport &&report);
     bool hasErrors() const;
+    [[nodiscard]] std::unordered_map<PackIdVersion, PackReport> const &getReports() const;
 
 private:
     std::unordered_map<PackIdVersion, PackReport> reports_;

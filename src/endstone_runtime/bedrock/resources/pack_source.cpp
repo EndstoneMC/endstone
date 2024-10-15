@@ -27,6 +27,11 @@ bool PackSourceReport::hasErrors() const
     });
 }
 
+std::unordered_map<PackIdVersion, PackReport> const &PackSourceReport::getReports() const
+{
+    return reports_;
+}
+
 void CompositePackSource::addPackSource(PackSource *pack_source)
 {
     pack_sources_.emplace_back(pack_source);

@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <filesystem>
+
 #include "bedrock/resources/pack.h"
 #include "bedrock/resources/pack_source.h"
 
@@ -21,7 +23,7 @@ namespace endstone::detail {
 
 class EndstonePackSource : public PackSource {
 public:
-    explicit EndstonePackSource(::PackType pack_type);
+    EndstonePackSource(std::filesystem::path path, ::PackType pack_type);
     ~EndstonePackSource() override = default;
     void forEachPackConst(ConstPackCallback callback) const override;
     void forEachPack(PackCallback callback) override;
@@ -31,6 +33,7 @@ public:
                           const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
 
 private:
+    std::filesystem::path path_;
     ::PackType pack_type_;
     bool discovered_{false};
     std::vector<std::unique_ptr<Pack>> packs_;

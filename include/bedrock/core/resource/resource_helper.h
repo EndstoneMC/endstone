@@ -26,12 +26,22 @@ using ContentKeyMap = std::unordered_map<ContentIdentity, std::string>;
 
 class ResourceLocation {
 public:
-    ResourceFileSystem file_system;
+    ResourceLocation();
+    explicit ResourceLocation(Core::Path const &path);
+    ResourceLocation(Core::Path const &path, ResourceFileSystem file_system);
+
+    [[nodiscard]] Core::HeapPathBuffer const &getRelativePath() const;
 
 private:
-    Core::HeapPathBuffer path_;
-    HashType64 path_hash_;
-    std::size_t full_hash_;
+    void _computeHashes();
+
+public:
+    ResourceFileSystem file_system{ResourceFileSystem::UserPackage};  // +0
+
+private:
+    Core::HeapPathBuffer path_;  // +8
+    HashType64 path_hash_;       // +40
+    std::size_t full_hash_;      // +48
 };
 
 struct PackInstanceId {

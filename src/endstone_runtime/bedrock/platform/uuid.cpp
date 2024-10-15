@@ -23,7 +23,7 @@ std::string UUID::asString() const
 {
     std::ostringstream oss;
     oss << std::hex << std::setfill('0');
-    oss << std::setw(8) << (data[0] >> 32);
+    oss << std::setw(8) << (data[0] >> 32 & 0xFFFFFFFF);
     oss << '-';
     oss << std::setw(4) << (data[0] >> 16 & 0xFFFF);
     oss << '-';

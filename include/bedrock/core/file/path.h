@@ -16,16 +16,43 @@
 
 #include <string>
 
+#include <gsl/gsl>
+
 namespace Core {
 
 class PathPart {
 public:
+    PathPart() = default;
+    explicit PathPart(std::string &&str);
+    explicit PathPart(std::string const &str);
+    explicit PathPart(gsl::not_null<const char *> c_str);
+    PathPart(gsl::not_null<const char *> c_str, std::size_t size);
+
+    [[nodiscard]] char const *getUtf8CString() const;
+    [[nodiscard]] std::string const &getUtf8StdString() const;
+    [[nodiscard]] std::size_t size() const;
+    [[nodiscard]] bool empty() const;
+
 private:
     std::string utf8_std_string_;
 };
 
 class Path {
 public:
+    Path() = default;
+    explicit Path(std::string &&str);
+    explicit Path(std::string const &str);
+    explicit Path(const char *c_str);
+    Path(const char *c_str, std::size_t size);
+
+    [[nodiscard]] char const *getUtf8CString() const;
+    [[nodiscard]] std::string_view getUtf8StringView() const;
+    [[nodiscard]] std::string const &getUtf8StdString() const;
+    [[nodiscard]] std::size_t size() const;
+    [[nodiscard]] bool empty() const;
+
+    static Path const EMPTY;
+
 private:
     PathPart path_part_;
 };
@@ -33,6 +60,16 @@ private:
 template <typename T>
 class PathBuffer {
 public:
+    PathBuffer() = default;
+    explicit PathBuffer(T const &container) : container_(container) {}
+    explicit PathBuffer(const char *c_str) : container_(c_str) {}
+    explicit PathBuffer(Path const &path) : container_(path.getUtf8StdString()) {}
+
+    T const &getContainer() const
+    {
+        return container_;
+    };
+
 private:
     T container_;
 };

@@ -14,7 +14,17 @@
 
 #include "bedrock/resources/pack_error.h"
 
+ResourceLocation const &PackReport::getLocation() const
+{
+    return location_;
+}
+
 bool PackReport::hasErrors() const
 {
     return !errors_.empty();
+}
+
+PackErrors const &PackReport::getErrors() const
+{
+    return errors_;
 }

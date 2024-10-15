@@ -33,6 +33,7 @@ enum class PackErrorType : int {
 class PackError {
 public:
     virtual ~PackError() = default;
+    [[nodiscard]] virtual std::string getLocErrorMessage() const;
 
 private:
     std::vector<std::string> error_parameters_;  // +8
@@ -45,7 +46,9 @@ using PackErrors = std::vector<std::shared_ptr<PackError>>;
 class PackReport {
 public:
     PackReport() = default;
+    [[nodiscard]] ResourceLocation const &getLocation() const;
     [[nodiscard]] bool hasErrors() const;
+    [[nodiscard]] PackErrors const &getErrors() const;
 
 private:
     ResourceLocation location_;              // +0
