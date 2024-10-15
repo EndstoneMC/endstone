@@ -1,4 +1,4 @@
-timestamp = 1728933927
+timestamp = 1728950623
 version = "1.21.30"
 
 [windows]
@@ -58,6 +58,8 @@ version = "1.21.30"
 # Mob
 "?die@Mob@@UEAAXAEBVActorDamageSource@@@Z" = 25668064
 "?knockback@Mob@@UEAAXPEAVActor@@HMMMMM@Z" = 25706544
+# Pack
+"?createPack@Pack@@SA?AV?$unique_ptr@VPack@@U?$default_delete@VPack@@@std@@@std@@AEBVResourceLocation@@W4PackType@@W4PackOrigin@@AEAVIPackManifestFactory@@AEBV?$not_null@V?$NonOwnerPointer@$$CBVIContentKeyProvider@@@Bedrock@@@gsl@@PEAVPackSourceReport@@AEBVPath@Core@@@Z" = 9131184
 # Player
 "?getInventory@Player@@QEAAAEAVContainer@@XZ" = 26522032
 "?getName@Player@@QEBAAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ" = 26523904
@@ -163,6 +165,8 @@ version = "1.21.30"
 # Mob
 "_ZN3Mob3dieERK17ActorDamageSource" = 110056144
 "_ZN3Mob9knockbackEP5Actorifffff" = 110055376
+# Pack
+"_ZN4Pack10createPackERK16ResourceLocation8PackType10PackOriginR20IPackManifestFactoryRKN3gsl8not_nullIN7Bedrock15NonOwnerPointerIK19IContentKeyProviderEEEEP16PackSourceReportRKN4Core4PathE" = 75481600
 # Player
 "_ZN6Player12getInventoryEv" = 112535680
 "_ZNK6Player7getNameEv" = 112461040

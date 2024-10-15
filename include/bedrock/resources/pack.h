@@ -18,11 +18,21 @@
 #include <map>
 
 #include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
+#include "bedrock/resources/content_key_provider.h"
 #include "bedrock/resources/pack_access_strategy.h"
+#include "bedrock/resources/pack_manifest_factory.h"
+
+class PackSourceReport;
 
 class Pack : public Bedrock::EnableNonOwnerReferences {
 public:
+    ENDSTONE_HOOK static std::unique_ptr<Pack> createPack(
+        ResourceLocation const &file_location, PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
+        Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider, PackSourceReport *report,
+        Core::Path const &zip_sub_dir);
+
 private:
     std::unique_ptr<PackManifest> manifest_;
     std::unique_ptr<PackAccessStrategy> access_strategy_;
