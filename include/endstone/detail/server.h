@@ -17,15 +17,16 @@
 #include <chrono>
 #include <memory>
 #include <string>
-#include <string_view>
+
+#include <bedrock/resources/resource_pack_repository_interface.h>
 
 #include "bedrock/server/server_instance.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/packs/endstone_pack_source.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
-#include "endstone/level/level.h"
 #include "endstone/plugin/plugin_manager.h"
 #include "endstone/server.h"
 
@@ -33,13 +34,14 @@ namespace endstone::detail {
 
 class EndstoneServer : public Server {
 public:
-    explicit EndstoneServer(ServerInstance &server_instance);
+    explicit EndstoneServer();
     EndstoneServer(EndstoneServer const &) = delete;
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
     EndstoneServer &operator=(EndstoneServer &&) = delete;
     ~EndstoneServer() override = default;
-    void init();
+    void init(ServerInstance &server_instance);
+    EndstonePackSource &getOrCreateResourcePackSource(IResourcePackRepository &repo) const;
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
@@ -111,7 +113,7 @@ private:
     friend class EndstonePlayer;
 
     void enablePlugin(Plugin &plugin);
-    ServerInstance &server_instance_;
+    ServerInstance *server_instance_;
     Logger &logger_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
@@ -123,6 +125,8 @@ private:
     std::vector<std::weak_ptr<EndstoneScoreboard>> scoreboards_;
     std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
+
+    mutable std::unique_ptr<EndstonePackSource> resource_pack_source_;
 
     int tick_counter_ = 0;
     float current_mspt_ = TargetMillisecondsPerTick * 1.0F;

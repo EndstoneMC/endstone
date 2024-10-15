@@ -50,20 +50,29 @@ namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-EndstoneServer::EndstoneServer(ServerInstance &server_instance)
-    : server_instance_(server_instance), logger_(LoggerFactory::getLogger("Server"))
+EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
 }
 
-void EndstoneServer::init()
+void EndstoneServer::init(ServerInstance &server_instance)
 {
+    server_instance_ = &server_instance;
     getLogger().info(ColorFormat::DarkAqua + ColorFormat::Bold +
                          "This server is running {} version: {} (Minecraft: {})",
                      getName(), getVersion(), getMinecraftVersion());
     command_sender_ = EndstoneConsoleCommandSender::create();
+}
+
+EndstonePackSource &EndstoneServer::getOrCreateResourcePackSource(IResourcePackRepository &repo) const
+{
+    if (!resource_pack_source_) {
+        resource_pack_source_ =
+            std::make_unique<EndstonePackSource>(repo.getResourcePacksPath().getContainer(), PackType::Resources);
+    }
+    return *resource_pack_source_;
 }
 
 std::string EndstoneServer::getName() const
@@ -105,7 +114,7 @@ void EndstoneServer::setCommandMap(std::unique_ptr<EndstoneCommandMap> command_m
 
 MinecraftCommands &EndstoneServer::getMinecraftCommands() const
 {
-    return server_instance_.getMinecraft().getCommands();
+    return server_instance_->getMinecraft().getCommands();
 }
 
 PluginManager &EndstoneServer::getPluginManager() const
@@ -262,7 +271,7 @@ bool EndstoneServer::getOnlineMode() const
 void EndstoneServer::shutdown()
 {
     static_cast<EndstoneScheduler &>(getScheduler()).runTask([this]() {
-        server_instance_.getMinecraft().requestServerShutdown("");
+        server_instance_->getMinecraft().requestServerShutdown("");
     });
 }
 
@@ -287,7 +296,7 @@ void EndstoneServer::reload()
 
 void EndstoneServer::reloadData()
 {
-    server_instance_.getMinecraft().requestResourceReload();
+    server_instance_->getMinecraft().requestResourceReload();
     level_->getHandle().loadFunctionManager();
 }
 
@@ -452,7 +461,7 @@ void EndstoneServer::removePlayerBoard(EndstonePlayer &player)
 
 ::ServerNetworkHandler &EndstoneServer::getServerNetworkHandler() const
 {
-    return *server_instance_.getMinecraft().getServerNetworkHandler();
+    return *server_instance_->getMinecraft().getServerNetworkHandler();
 }
 
 void EndstoneServer::tick(std::uint64_t current_tick, const std::function<void()> &tick_function)

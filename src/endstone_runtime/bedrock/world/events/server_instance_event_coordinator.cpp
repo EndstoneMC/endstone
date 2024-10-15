@@ -39,8 +39,8 @@ using endstone::detail::PythonPluginLoader;
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
     endstone::detail::register_signal_handler();
-    auto &server = entt::locator<EndstoneServer>::value_or(instance);
-    server.init();
+    auto &server = entt::locator<EndstoneServer>::value_or();
+    server.init(instance);
     server.loadPlugins();
     server.enablePlugins(PluginLoadOrder::Startup);
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerInitializeStart, this, instance);

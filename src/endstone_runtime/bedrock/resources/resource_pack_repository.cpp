@@ -16,11 +16,11 @@
 
 #include "endstone/detail/hook.h"
 #include "endstone/detail/packs/endstone_pack_source.h"
+#include "endstone/detail/server.h"
 
 void ResourcePackRepository::_initializePackSource()
 {
-    static endstone::detail::EndstonePackSource endstone_pack_source{getResourcePacksPath().getContainer(),
-                                                                     PackType::Resources};
     ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    pack_source_->addPackSource(&endstone_pack_source);
+    auto &server = entt::locator<endstone::detail::EndstoneServer>::value_or();
+    pack_source_->addPackSource(&server.getOrCreateResourcePackSource(*this));
 }

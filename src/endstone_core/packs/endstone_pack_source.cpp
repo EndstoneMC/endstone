@@ -16,7 +16,10 @@
 
 #include <utility>
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/logger_factory.h"
+#include "endstone/detail/server.h"
 
 namespace fs = std::filesystem;
 
@@ -58,9 +61,8 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
         return {};
     }
 
-    // Server may not be initialized at this point. Let's get the logger directly from LoggerFactory.
-    const auto &logger = LoggerFactory::getLogger("Server");
-    logger.info("Loading resource packs...");
+    auto &server = entt::locator<EndstoneServer>::value_or();
+    server.getLogger().info("Loading resource packs...");
 
     PackSourceReport report;
     for (const auto &entry : fs::directory_iterator(path_)) {
@@ -81,10 +83,10 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
 
     for (const auto &[pack_id, report] : report.getReports()) {
         if (report.hasErrors()) {
-            logger.error("Could not load resource pack from '{}':",
-                         report.getLocation().getRelativePath().getContainer());
+            server.getLogger().error("Could not load resource pack from '{}':",
+                                     report.getLocation().getRelativePath().getContainer());
             for (const auto &pack_error : report.getErrors()) {
-                logger.error(pack_error->getLocErrorMessage());
+                server.getLogger().error(pack_error->getLocErrorMessage());
             }
         }
     }
