@@ -41,6 +41,21 @@ const std::string &SemVersion::asString() const
     return full_version_string_;
 }
 
+std::uint16_t SemVersion::getMajor() const
+{
+    return major_;
+}
+
+std::uint16_t SemVersion::getMinor() const
+{
+    return minor_;
+}
+
+std::uint16_t SemVersion::getPatch() const
+{
+    return patch_;
+}
+
 bool SemVersion::operator==(const SemVersion &rhs) const
 {
     if (this->any_version_ && rhs.any_version_) {

@@ -26,6 +26,9 @@ public:
     SemVersion(std::uint16_t major, std::uint16_t minor, std::uint16_t patch, std::string pre_release,
                std::string build_meta);
     [[nodiscard]] const std::string &asString() const;
+    [[nodiscard]] std::uint16_t getMajor() const;
+    [[nodiscard]] std::uint16_t getMinor() const;
+    [[nodiscard]] std::uint16_t getPatch() const;
     bool operator==(const SemVersion &version) const;
 
 private:

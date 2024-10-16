@@ -12,16 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/resource_pack_repository.h"
+#pragma once
 
-#include "endstone/detail/hook.h"
-#include "endstone/detail/packs/endstone_pack_source.h"
-#include "endstone/detail/server.h"
+#include "bedrock/core/resource/content_identity.h"
+#include "bedrock/core/resource/pack_id_version.h"
+#include "bedrock/core/resource/resource_helper.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 
-void ResourcePackRepository::_initializePackSource()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    auto &server = entt::locator<endstone::detail::EndstoneServer>::value_or();
-    pack_source_->addPackSource(
-        &server.createResourcePackSource(Bedrock::NonOwnerPointer<IResourcePackRepository>(*this)));
-}
+class PackManifest : public Bedrock::EnableNonOwnerReferences {
+public:
+    [[nodiscard]] PackIdVersion const &getIdentity() const;
+
+private:
+    ResourceLocation location_;
+    PackIdVersion identity_;
+    ContentIdentity content_identity_;
+};

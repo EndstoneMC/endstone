@@ -41,7 +41,9 @@ public:
     EndstoneServer &operator=(EndstoneServer &&) = delete;
     ~EndstoneServer() override = default;
     void init(ServerInstance &server_instance);
-    EndstonePackSource &getOrCreateResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
+    EndstonePackSource &createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
+    [[nodiscard]] EndstonePackSource &getResourcePackSource() const;
+    [[nodiscard]] Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> getResourcePackRepository() const;
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;

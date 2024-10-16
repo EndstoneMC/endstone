@@ -66,8 +66,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
     command_sender_ = EndstoneConsoleCommandSender::create();
 }
 
-EndstonePackSource &EndstoneServer::getOrCreateResourcePackSource(
-    Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
+EndstonePackSource &EndstoneServer::createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
 {
     resource_pack_repository_ = repo;
     if (!resource_pack_source_) {
@@ -75,6 +74,16 @@ EndstonePackSource &EndstoneServer::getOrCreateResourcePackSource(
             std::make_unique<EndstonePackSource>(repo->getResourcePacksPath().getContainer(), PackType::Resources);
     }
     return *resource_pack_source_;
+}
+
+EndstonePackSource &EndstoneServer::getResourcePackSource() const
+{
+    return *resource_pack_source_;
+}
+
+Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> EndstoneServer::getResourcePackRepository() const
+{
+    return Bedrock::NonOwnerPointer<const IResourcePackRepository>(*resource_pack_repository_);
 }
 
 std::string EndstoneServer::getName() const

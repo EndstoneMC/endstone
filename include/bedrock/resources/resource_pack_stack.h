@@ -37,7 +37,7 @@ public:
     PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
                  PackSettings *pack_settings);
 
-    PackReport pack_report{};
+    PackReport pack_report;
 
 private:
     PackSettings *pack_settings_;
@@ -52,7 +52,7 @@ class ResourcePackStack {
 public:
     virtual ~ResourcePackStack() = 0;
 
-    static std::unique_ptr<ResourcePackStack> deserialize(
+    ENDSTONE_HOOK static std::unique_ptr<ResourcePackStack> deserialize(
         std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo);
 
     PackInstanceStack stack;

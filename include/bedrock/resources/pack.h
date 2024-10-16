@@ -22,12 +22,16 @@
 #include "bedrock/forward.h"
 #include "bedrock/resources/content_key_provider.h"
 #include "bedrock/resources/pack_access_strategy.h"
+#include "bedrock/resources/pack_manifest.h"
 #include "bedrock/resources/pack_manifest_factory.h"
 
 class PackSourceReport;
 
 class Pack : public Bedrock::EnableNonOwnerReferences {
 public:
+    [[nodiscard]] PackManifest const &getManifest() const;
+    PackManifest &getManifest();
+
     ENDSTONE_HOOK static std::unique_ptr<Pack> createPack(
         ResourceLocation const &file_location, PackType type, PackOrigin origin, IPackManifestFactory &manifest_factory,
         Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider, PackSourceReport *report,

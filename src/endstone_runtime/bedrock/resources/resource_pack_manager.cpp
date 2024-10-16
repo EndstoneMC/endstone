@@ -31,3 +31,35 @@ ResourcePackStack const &ResourcePackManager::getStack(ResourcePackStackType sta
         throw std::runtime_error("Invalid stack type");
     }
 }
+
+bool ResourcePackManager::setStack(std::unique_ptr<ResourcePackStack> stack, ResourcePackStackType stack_type,
+                                   bool compose)
+{
+    switch (stack_type) {
+    case ResourcePackStackType::LEVEL:
+        level_stack_ = std::move(stack);
+        break;
+    case ResourcePackStackType::ADDON:
+        addon_stack_ = std::move(stack);
+        break;
+    case ResourcePackStackType::GLOBAL:
+        global_stack_ = std::move(stack);
+        break;
+    case ResourcePackStackType::TREATMENT:
+        treatment_stack_ = std::move(stack);
+        break;
+    case ResourcePackStackType::BASE_GAME:
+        base_game_stack_ = std::move(stack);
+        break;
+    default:
+        return false;
+    }
+
+    if (compose) {
+        throw std::runtime_error("compose=true is not supported yet");
+    }
+    else {
+        pending_restack_ = true;
+    }
+    return true;
+}

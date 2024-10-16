@@ -29,13 +29,30 @@ namespace endstone::detail {
 
 EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneServer>::value()), level_(level)
 {
+    // Load all dimensions when the level is loaded
     const static AutomaticID<::Dimension, int> dimension_ids[] = {VanillaDimensions::Overworld,
                                                                   VanillaDimensions::Nether, VanillaDimensions::TheEnd};
     for (const auto &dimension_id : dimension_ids) {
-        // Load all dimensions when the level is loaded
+
         auto dimension = level.getOrCreateDimension(dimension_id);
         addDimension(std::make_unique<EndstoneDimension>(*dimension, *this));
     }
+
+    // Add loaded resource packs to stack
+    auto *resource_pack_manager = level.getClientResourcePackManager();
+    nlohmann::json resource_packs_json;
+    server_.getResourcePackSource().forEachPackConst([&resource_packs_json](auto &pack) {
+        auto &identity = pack.getManifest().getIdentity();
+        resource_packs_json.push_back({
+            {"pack_id", identity.id.asString()},
+            {"version", {identity.version.getMajor(), identity.version.getMinor(), identity.version.getPatch()}},
+        });
+    });
+    std::stringstream ss(resource_packs_json.dump());
+    auto pack_stack = ResourcePackStack::deserialize(ss, server_.getResourcePackRepository());
+    // NOTE: we use ResourcePackStackType::ADDON here to avoid conflicts, as the addon stack of client resource pack
+    // manager is not currently used by BDS but will get sent to the client.
+    resource_pack_manager->setStack(std::move(pack_stack), ResourcePackStackType::ADDON, false);
 }
 
 std::string EndstoneLevel::getName() const

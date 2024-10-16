@@ -18,6 +18,7 @@
 
 #include "bedrock/resources/pack_access_strategy.h"
 #include "bedrock/resources/pack_error.h"
+#include "bedrock/resources/pack_manifest.h"
 
 class IPackManifestFactory {
 public:

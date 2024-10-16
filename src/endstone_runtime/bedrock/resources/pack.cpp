@@ -16,6 +16,16 @@
 
 #include "endstone/detail/hook.h"
 
+PackManifest const &Pack::getManifest() const
+{
+    return *manifest_;
+}
+
+PackManifest &Pack::getManifest()
+{
+    return *manifest_;
+}
+
 std::unique_ptr<Pack> Pack::createPack(ResourceLocation const &file_location, PackType type, PackOrigin origin,
                                        IPackManifestFactory &manifest_factory,
                                        Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> const &key_provider,
