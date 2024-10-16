@@ -12,14 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/pack_manifest.h"
+#pragma once
+#include "bedrock/server/commands/command_version.h"
+#include "bedrock/shared_types/molang/molang_version.h"
 
-PackIdVersion const &PackManifest::getIdentity() const
-{
-    return identity_;
-}
-
-std::string PackManifest::getName() const
-{
-    return name_;
-}
+class MinEngineVersion {
+    SemVersion sem_version_;
+    CurrentCmdVersion command_version_;
+    MolangVersion molang_version_;
+};

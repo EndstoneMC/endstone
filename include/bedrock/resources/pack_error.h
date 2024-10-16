@@ -49,6 +49,8 @@ public:
     [[nodiscard]] ResourceLocation const &getLocation() const;
     [[nodiscard]] bool hasErrors() const;
     [[nodiscard]] PackErrors const &getErrors() const;
+     [[nodiscard]] PackIdVersion const &getIdentity() const;
+    [[nodiscard]] std::string const &getOriginalName() const;
 
 private:
     ResourceLocation location_;              // +0

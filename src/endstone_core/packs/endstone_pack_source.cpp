@@ -77,6 +77,15 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
             const auto file_location = ResourceLocation(Core::Path(file.string()), ResourceFileSystem::Raw);
             auto pack = Pack::createPack(file_location, getPackType(), getPackOrigin(), manifest_factory, key_provider,
                                          &report, Core::Path::EMPTY);
+            if (!pack) {
+                server.getLogger().error("Could not load resource pack from '{}':",
+                                         file_location.getRelativePath().getContainer());
+                continue;
+            }
+
+            auto &manifest = pack->getManifest();
+            server.getLogger().info("Loaded {} v{} (Pack ID: {})", manifest.getName(),
+                                    manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString());
             packs_.emplace_back(std::move(pack));
         }
     }

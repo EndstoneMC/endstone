@@ -12,14 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/pack_manifest.h"
+#pragma once
 
-PackIdVersion const &PackManifest::getIdentity() const
-{
-    return identity_;
-}
-
-std::string PackManifest::getName() const
-{
-    return name_;
-}
+class PackCapability {
+public:
+    enum class TrustLevel : int {
+        NotTrusted = 0,
+        Trusted = 1,
+    };
+};

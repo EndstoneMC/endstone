@@ -18,13 +18,21 @@
 #include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/resource/resource_helper.h"
 #include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/resources/base_game_version.h"
+#include "bedrock/resources/min_engine_version.h"
+#include "bedrock/resources/pack_capabililty.h"
 
 class PackManifest : public Bedrock::EnableNonOwnerReferences {
 public:
     [[nodiscard]] PackIdVersion const &getIdentity() const;
+    [[nodiscard]] std::string getName() const;
 
 private:
     ResourceLocation location_;
     PackIdVersion identity_;
     ContentIdentity content_identity_;
+    MinEngineVersion min_engine_version_;
+    BaseGameVersion required_base_game_version_;
+    std::unordered_map<std::string, PackCapability::TrustLevel> capabilities_;
+    std::string name_;
 };

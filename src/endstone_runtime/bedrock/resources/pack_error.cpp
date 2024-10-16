@@ -28,3 +28,13 @@ PackErrors const &PackReport::getErrors() const
 {
     return errors_;
 }
+
+PackIdVersion const &PackReport::getIdentity() const
+{
+    return identity_;
+}
+
+std::string const &PackReport::getOriginalName() const
+{
+    return original_name_;
+}
