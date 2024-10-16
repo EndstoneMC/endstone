@@ -32,6 +32,7 @@
 #include "bedrock/network/net_event_callback.h"
 #include "bedrock/network/packet_sender.h"
 #include "bedrock/platform/uuid.h"
+#include "bedrock/resources/resource_pack_manager.h"
 #include "bedrock/server/commands/command_origin.h"
 #include "bedrock/server/commands/command_registry.h"
 #include "bedrock/server/commands/standard/teleport_command.h"
@@ -336,17 +337,13 @@ public:
     virtual void setLevelId(std::string) = 0;
     virtual TaskGroup &getSyncTasksGroup() = 0;
     virtual TaskGroup &getIOTasksGroup() = 0;
-
-private:
-    [[nodiscard]] virtual void *getClientResourcePackManager() const = 0;
-    [[nodiscard]] virtual void *getServerResourcePackManager() const = 0;
+    [[nodiscard]] virtual ResourcePackManager *getClientResourcePackManager() const = 0;
+    [[nodiscard]] virtual ResourcePackManager *getServerResourcePackManager() const = 0;
     virtual void *getTradeTables() = 0;
     virtual void decrementTagCache(std::string const &,
                                    TagRegistry<IDType<LevelTagIDType>, IDType<LevelTagSetIDType>> &) = 0;
     virtual void incrementTagCache(std::string const &,
                                    TagRegistry<IDType<LevelTagIDType>, IDType<LevelTagSetIDType>> &) = 0;
-
-public:
     [[nodiscard]] virtual bool isEdu() const = 0;
     virtual ActorFactory &getActorFactory() = 0;
     [[nodiscard]] virtual ActorFactory const &getActorFactory() const = 0;
@@ -355,12 +352,8 @@ public:
     virtual StackRefResult<EntityRegistry> getEntityRegistry() = 0;
     virtual EntitySystems &getEntitySystems() = 0;
     virtual WeakRef<EntityContext> getLevelEntity() = 0;
-
-private:
     virtual void runCommand(HashedString const &, CommandOrigin &, CommandOriginSystem, CurrentCmdVersion) = 0;
     virtual void runCommand(Command &, CommandOrigin &, CommandOriginSystem) = 0;
-
-public:
     [[nodiscard]] virtual PlayerCapabilities::ISharedController const &getCapabilities() const = 0;
     virtual LevelTagRegistry &getTagRegistry() = 0;
     [[nodiscard]] virtual PlayerMovementSettings const &getPlayerMovementSettings() const = 0;
@@ -368,11 +361,7 @@ public:
     [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &, mce::UUID const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;
-
-private:
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBServer *getPositionTrackerDBServer() const = 0;
-
-public:
     virtual void flushRunTimeLighting() = 0;
     virtual void loadBlockDefinitionGroup(Experiments const &) = 0;
     virtual void initializeBlockDefinitionGroup() = 0;
@@ -384,12 +373,8 @@ public:
     [[nodiscard]] virtual std::string const &getPlayerPlatformOnlineId(mce::UUID const &) const = 0;
     [[nodiscard]] virtual std::vector<WeakEntityRef> const &getActiveUsers() const = 0;
     [[nodiscard]] virtual std::vector<Actor *> getRuntimeActorList() const = 0;
-
-private:
     virtual void notifySubChunkRequestManager(SubChunkPacket const &) = 0;
     virtual void *getSubChunkRequestManager() = 0;
-
-public:
     [[nodiscard]] virtual PacketSender *getPacketSender() const = 0;
     [[nodiscard]] virtual Bedrock::NonOwnerPointer<NetEventCallback> getNetEventCallback() const = 0;
     virtual void setNetEventCallback(Bedrock::NonOwnerPointer<NetEventCallback>) = 0;

@@ -22,6 +22,8 @@
 
 class ResourcePackManager : public ResourceLoader {
 public:
+    [[nodiscard]] ResourcePackStack const &getStack(ResourcePackStackType stack_type) const;
+
 private:
     std::unordered_set<gsl::not_null<ResourcePackListener *>> listeners_set_;      // +88
     std::unique_ptr<ResourcePackStack> addon_stack_;                               // +152

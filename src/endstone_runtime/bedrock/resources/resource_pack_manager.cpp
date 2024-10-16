@@ -13,3 +13,21 @@
 // limitations under the License.
 
 #include "bedrock/resources/resource_pack_manager.h"
+
+ResourcePackStack const &ResourcePackManager::getStack(ResourcePackStackType stack_type) const
+{
+    switch (stack_type) {
+    case ResourcePackStackType::LEVEL:
+        return *level_stack_;
+    case ResourcePackStackType::ADDON:
+        return *addon_stack_;
+    case ResourcePackStackType::GLOBAL:
+        return *global_stack_;
+    case ResourcePackStackType::TREATMENT:
+        return *treatment_stack_;
+    case ResourcePackStackType::BASE_GAME:
+        return *base_game_stack_;
+    default:
+        throw std::runtime_error("Invalid stack type");
+    }
+}

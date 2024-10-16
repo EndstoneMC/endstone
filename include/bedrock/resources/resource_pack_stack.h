@@ -32,6 +32,9 @@ public:
 
 class PackInstance {
 public:
+    PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
+                 PackSettings *pack_settings);
+
     PackReport pack_report;
 
 private:

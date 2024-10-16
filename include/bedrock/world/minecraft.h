@@ -33,6 +33,7 @@ public:
     [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
     void requestServerShutdown(const std::string &message);
     void requestResourceReload();
+    [[nodiscard]] ResourcePackManager &getResourceLoader() const;
 
 private:
     GameCallbacks *game_callbacks_;                                      // +24

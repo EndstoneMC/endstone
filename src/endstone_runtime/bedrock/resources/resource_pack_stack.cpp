@@ -13,3 +13,9 @@
 // limitations under the License.
 
 #include "bedrock/resources/resource_pack_stack.h"
+
+PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool /*is_dependent*/,
+                           PackSettings *pack_settings)
+    : pack_(pack), subpack_index_(subpack_index), pack_settings_(pack_settings)
+{
+}

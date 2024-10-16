@@ -80,3 +80,12 @@ enum class PackCategory : std::int32_t {
     Subpack = 5,
     Chemistry = 6,
 };
+
+enum class ResourcePackStackType : std::int32_t {
+    LEVEL = 0,
+    ADDON = 1,
+    GLOBAL = 2,
+    TREATMENT = 3,
+    BASE_GAME = 4,
+    SIZE = 5,
+};
