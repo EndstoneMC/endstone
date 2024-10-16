@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include <functional>
 #include <unordered_map>
 
 #include "bedrock/core/file/path.h"
@@ -21,6 +22,7 @@
 #include "bedrock/core/resource/pack_id_version.h"
 #include "bedrock/core/resource/resource_util.h"
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 
 using ContentKeyMap = std::unordered_map<ContentIdentity, std::string>;
 
@@ -47,6 +49,12 @@ private:
 struct PackInstanceId {
     PackIdVersion pack_id;
     std::string subpack_name;
+};
+
+class ResourceLoader : public Bedrock::EnableNonOwnerReferences {
+public:
+private:
+    std::function<Core::PathBuffer<std::string>()> get_path_;
 };
 
 enum class PackOrigin : std::uint8_t {

@@ -66,11 +66,13 @@ void EndstoneServer::init(ServerInstance &server_instance)
     command_sender_ = EndstoneConsoleCommandSender::create();
 }
 
-EndstonePackSource &EndstoneServer::getOrCreateResourcePackSource(IResourcePackRepository &repo) const
+EndstonePackSource &EndstoneServer::getOrCreateResourcePackSource(
+    Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
 {
+    resource_pack_repository_ = repo;
     if (!resource_pack_source_) {
         resource_pack_source_ =
-            std::make_unique<EndstonePackSource>(repo.getResourcePacksPath().getContainer(), PackType::Resources);
+            std::make_unique<EndstonePackSource>(repo->getResourcePacksPath().getContainer(), PackType::Resources);
     }
     return *resource_pack_source_;
 }

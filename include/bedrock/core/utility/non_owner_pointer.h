@@ -64,6 +64,16 @@ public:
         control_block_.reset();
     }
 
+    [[nodiscard]] bool operator==(nullptr_t) const noexcept
+    {
+        return get() == nullptr;
+    }
+
+    [[nodiscard]] bool operator!=(nullptr_t) const noexcept
+    {
+        return get() != nullptr;
+    }
+
 private:
     T *get() const
     {
@@ -91,18 +101,6 @@ private:
     }
     std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_;
 };
-
-template <class T>
-[[nodiscard]] bool operator==(const NonOwnerPointer<T> &lhs, nullptr_t) noexcept
-{
-    return lhs.get() == nullptr;
-}
-
-template <class T>
-[[nodiscard]] bool operator!=(const NonOwnerPointer<T> &lhs, nullptr_t) noexcept
-{
-    return lhs.get() != nullptr;
-}
 
 template <typename T>
 using NotNullNonOwnerPtr = gsl::not_null<NonOwnerPointer<T>>;

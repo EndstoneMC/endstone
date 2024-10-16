@@ -12,16 +12,4 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "bedrock/resources/resource_pack_repository.h"
-
-#include "endstone/detail/hook.h"
-#include "endstone/detail/packs/endstone_pack_source.h"
-#include "endstone/detail/server.h"
-
-void ResourcePackRepository::_initializePackSource()
-{
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackRepository::_initializePackSource, this);
-    auto &server = entt::locator<endstone::detail::EndstoneServer>::value_or();
-    pack_source_->addPackSource(
-        &server.getOrCreateResourcePackSource(Bedrock::NonOwnerPointer<IResourcePackRepository>(*this)));
-}
+#include "bedrock/resources/resource_pack_manager.h"

@@ -23,6 +23,7 @@
 #include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/pack_access_strategy.h"
+#include "bedrock/resources/resource_pack_manager.h"
 
 class I18n {
 public:

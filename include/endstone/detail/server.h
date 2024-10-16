@@ -41,7 +41,7 @@ public:
     EndstoneServer &operator=(EndstoneServer &&) = delete;
     ~EndstoneServer() override = default;
     void init(ServerInstance &server_instance);
-    EndstonePackSource &getOrCreateResourcePackSource(IResourcePackRepository &repo) const;
+    EndstonePackSource &getOrCreateResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
 
     [[nodiscard]] std::string getName() const override;
     [[nodiscard]] std::string getVersion() const override;
@@ -126,7 +126,8 @@ private:
     std::unordered_map<const EndstonePlayer *, std::shared_ptr<EndstoneScoreboard>> player_boards_;
     std::chrono::system_clock::time_point start_time_;
 
-    mutable std::unique_ptr<EndstonePackSource> resource_pack_source_;
+    Bedrock::NonOwnerPointer<IResourcePackRepository> resource_pack_repository_;
+    std::unique_ptr<EndstonePackSource> resource_pack_source_;
 
     int tick_counter_ = 0;
     float current_mspt_ = TargetMillisecondsPerTick * 1.0F;

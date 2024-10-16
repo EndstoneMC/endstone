@@ -21,6 +21,7 @@
 #include "bedrock/forward.h"
 #include "bedrock/minecraft_app_interface.h"
 #include "bedrock/network/server_network_handler.h"
+#include "bedrock/resources/resource_pack_manager.h"
 #include "bedrock/server/commands/minecraft_commands.h"
 #include "bedrock/world/game_callbacks.h"
 #include "bedrock/world/game_session.h"
