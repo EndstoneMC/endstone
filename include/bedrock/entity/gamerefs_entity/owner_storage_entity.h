@@ -34,6 +34,11 @@ public:
         return context_.has_value();
     }
 
+    [[nodiscard]] operator bool() const noexcept
+    {
+        return hasValue();
+    }
+
 private:
     std::optional<EntityContext> context_;
 };

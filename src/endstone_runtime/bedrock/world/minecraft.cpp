@@ -46,3 +46,11 @@ ResourcePackManager &Minecraft::getResourceLoader() const
 {
     return *resource_loader_;
 }
+
+Level *Minecraft::getLevel() const
+{
+    if (game_session_) {
+        return game_session_->getLevel();
+    }
+    return nullptr;
+}

@@ -49,6 +49,9 @@ void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &i
 void ServerInstanceEventCoordinator::sendServerThreadStarted(ServerInstance &instance)
 {
     auto &server = entt::locator<EndstoneServer>::value();
+    auto &level = *instance.getMinecraft().getLevel();
+    server.setLevel(std::make_unique<EndstoneLevel>(level));
+    server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
     server.setCommandMap(std::make_unique<endstone::detail::EndstoneCommandMap>(server));
     server.enablePlugins(PluginLoadOrder::PostWorld);
     ServerLoadEvent event{ServerLoadEvent::LoadType::Startup};
@@ -63,12 +66,4 @@ void ServerInstanceEventCoordinator::sendServerThreadStopped(ServerInstance &ins
     entt::locator<EndstoneServer>::reset();  // we explicitly acquire GIL and destroy the server instance as the command
                                              // map and the plugin manager hold shared_ptrs to python objects
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerThreadStopped, this, instance);
-}
-
-void ServerInstanceEventCoordinator::sendServerLevelInitialized(ServerInstance &instance, Level &level)
-{
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.setLevel(std::make_unique<EndstoneLevel>(level));
-    server.setScoreboard(std::make_unique<EndstoneScoreboard>(level.getScoreboard()));
-    ENDSTONE_HOOK_CALL_ORIGINAL(&ServerInstanceEventCoordinator::sendServerLevelInitialized, this, instance, level);
 }

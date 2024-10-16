@@ -25,10 +25,8 @@ class LoopbackPacketSender;
 
 class GameSession {
 public:
-    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const
-    {
-        return Bedrock::NonOwnerPointer<ServerNetworkHandler>(*server_network_handler_);
-    }
+    [[nodiscard]] Bedrock::NonOwnerPointer<ServerNetworkHandler> getServerNetworkHandler() const;
+    [[nodiscard]] Level *getLevel() const;
 
 private:
     ClientOrServerNetworkSystemRef network_;                           // +0

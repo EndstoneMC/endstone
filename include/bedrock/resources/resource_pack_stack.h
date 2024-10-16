@@ -22,6 +22,8 @@
 #include "bedrock/resources/pack_source.h"
 #include "bedrock/resources/resource_pack.h"
 
+class IResourcePackRepository;
+
 class PackStats {
 public:
     uint32_t overridden_entity_count;
@@ -35,12 +37,12 @@ public:
     PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
                  PackSettings *pack_settings);
 
-    PackReport pack_report;
+    PackReport pack_report{};
 
 private:
     PackSettings *pack_settings_;
     Bedrock::NonOwnerPointer<ResourcePack> pack_;
-    PackStats stats_;
+    PackStats stats_{};
     int subpack_index_;
 };
 
@@ -49,6 +51,9 @@ class ResourcePackStack {
 
 public:
     virtual ~ResourcePackStack() = 0;
+
+    static std::unique_ptr<ResourcePackStack> deserialize(
+        std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo);
 
     PackInstanceStack stack;
 

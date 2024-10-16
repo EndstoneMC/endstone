@@ -14,8 +14,16 @@
 
 #include "bedrock/resources/resource_pack_stack.h"
 
+#include "endstone/detail/hook.h"
+
 PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool /*is_dependent*/,
                            PackSettings *pack_settings)
     : pack_(pack), subpack_index_(subpack_index), pack_settings_(pack_settings)
 {
+}
+
+std::unique_ptr<ResourcePackStack> ResourcePackStack::deserialize(
+    std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo)
+{
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ResourcePackStack::deserialize, file_stream, repo);
 }

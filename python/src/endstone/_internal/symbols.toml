@@ -84,7 +84,6 @@ version = "1.21.30"
 "?handleEvent@ScriptLevelGameplayHandler@@UEAA?AU?$GameplayHandlerResult@W4CoordinatorResult@@@@AEAULevelWeatherChangedEvent@@@Z" = 14554912
 # ServerInstanceEventCoordinator
 "?sendServerInitializeStart@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25336208
-"?sendServerLevelInitialized@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@AEAVLevel@@@Z" = 25336256
 "?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25336544
 "?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 25336592
 # ServerLevel
@@ -191,7 +190,6 @@ version = "1.21.30"
 "_ZN26ScriptLevelGameplayHandler11handleEventER24LevelWeatherChangedEvent" = 96818400
 # ServerInstanceEventCoordinator
 "_ZN30ServerInstanceEventCoordinator25sendServerInitializeStartER14ServerInstance" = 114784400
-"_ZN30ServerInstanceEventCoordinator26sendServerLevelInitializedER14ServerInstanceR5Level" = 114784832
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStartedER14ServerInstance" = 114785552
 "_ZN30ServerInstanceEventCoordinator23sendServerThreadStoppedER14ServerInstance" = 114785696
 # ServerLevel

@@ -12,18 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/game_session.h"
 
-#include <variant>
+#include "bedrock/world/level/level.h"
 
-#include "bedrock/forward.h"
+Bedrock::NonOwnerPointer<ServerNetworkHandler> GameSession::getServerNetworkHandler() const
+{
+    return Bedrock::NonOwnerPointer<ServerNetworkHandler>(*server_network_handler_);
+}
 
-class ClientOrServerNetworkSystemRef
-    : std::variant<std::reference_wrapper<ClientNetworkSystem>, std::reference_wrapper<ServerNetworkSystem>> {
-
-    using ClientRefT = std::reference_wrapper<ClientNetworkSystem>;
-    using ServerRefT = std::reference_wrapper<ServerNetworkSystem>;
-
-public:
-    using std::variant<ClientRefT, ServerRefT>::variant;
-};
+Level *GameSession::getLevel() const
+{
+    if (level_entity_ && level_ != nullptr) {
+        return level_.access();
+    }
+    return nullptr;
+}

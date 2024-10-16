@@ -33,7 +33,7 @@ public:
     explicit NonOwnerPointer(ElementType &obj)
     {
         reset();
-        set(&obj);
+        _set(&obj);
     };
 
     ~NonOwnerPointer()
@@ -43,12 +43,12 @@ public:
 
     constexpr T &operator*() const noexcept
     {
-        return *get();
+        return *_get();
     }
 
     constexpr T *operator->() const noexcept
     {
-        return get();
+        return _get();
     }
 
     [[nodiscard]] bool isValid() const noexcept
@@ -64,18 +64,28 @@ public:
         control_block_.reset();
     }
 
+    [[nodiscard]] T *access() const
+    {
+        return _get();
+    }
+
+    [[nodiscard]] operator bool() const noexcept
+    {
+        return isValid();
+    }
+
     [[nodiscard]] bool operator==(nullptr_t) const noexcept
     {
-        return get() == nullptr;
+        return !isValid();
     }
 
     [[nodiscard]] bool operator!=(nullptr_t) const noexcept
     {
-        return get() != nullptr;
+        return isValid();
     }
 
 private:
-    T *get() const
+    T *_get() const
     {
         if (!control_block_) {
             throw std::runtime_error("Accessing a null NonOwnerPointer");
@@ -86,7 +96,7 @@ private:
         return static_cast<T *>(control_block_->ptr);
     }
 
-    void set(T *ptr)
+    void _set(T *ptr)
     {
         if (control_block_) {
             throw std::runtime_error("Invalid state: control block has been set");

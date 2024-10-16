@@ -34,6 +34,7 @@ public:
     void requestServerShutdown(const std::string &message);
     void requestResourceReload();
     [[nodiscard]] ResourcePackManager &getResourceLoader() const;
+    [[nodiscard]] Level *getLevel() const;
 
 private:
     GameCallbacks *game_callbacks_;                                      // +24
