@@ -18,11 +18,11 @@
 #include <memory>
 #include <string>
 
-#include <bedrock/resources/resource_pack_repository_interface.h>
-
+#include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/level/level.h"
 #include "endstone/detail/packs/endstone_pack_source.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
@@ -39,7 +39,6 @@ public:
     EndstoneServer(EndstoneServer &&) = delete;
     EndstoneServer &operator=(EndstoneServer const &) = delete;
     EndstoneServer &operator=(EndstoneServer &&) = delete;
-    ~EndstoneServer() override = default;
     void init(ServerInstance &server_instance);
     EndstonePackSource &createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo);
     [[nodiscard]] EndstonePackSource &getResourcePackSource() const;

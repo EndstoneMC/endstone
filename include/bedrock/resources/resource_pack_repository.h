@@ -40,14 +40,14 @@ private:
     std::vector<ResourceLocation> invalid_behavior_pack_location_;                         // +176
     std::vector<ResourceLocation> invalid_resource_pack_location_;                         // +200
     std::vector<ResourceLocation> invalid_template_pack_location_;                         // +224
-    IMinecraftEventing &eventing_;                                                         // +248
-    PackManifestFactory &manifest_factory_;                                                // +256
+    IMinecraftEventing *eventing_;                                                         // +248
+    PackManifestFactory *manifest_factory_;                                                // +256
     Bedrock::NotNullNonOwnerPtr<IContentAccessibilityProvider> content_accessibility_;     // +264
     Core::HeapPathBuffer current_world_path_;                                              // +280
     Core::HeapPathBuffer current_premium_world_template_path_;                             // +312
     ContentKeyMap temp_cache_content_keys_;                                                // +344
     std::unique_ptr<PackSettingsFactory> pack_settings_factory_;                           // +408
-    PackSourceFactory &pack_source_factory_;                                               // +416
+    PackSourceFactory *pack_source_factory_;                                               // +416
     std::map<void *, std::function<void(ResourcePack *)>> remove_resource_pack_callback_;  // +424
     std::unique_ptr<TaskGroup> init_task_group_;                                           // +440
     Bedrock::Threading::Mutex initialize_mutex_;                                           // +448

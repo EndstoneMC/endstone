@@ -19,11 +19,12 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/actor/actor.h"
-#include "endstone/detail/server.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/level.h"
 
 namespace endstone::detail {
+
+class EndstoneServer;
 
 class EndstoneLevel : public Level {
 public:

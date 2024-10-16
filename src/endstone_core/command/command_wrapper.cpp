@@ -19,6 +19,7 @@
 #include "bedrock/server/commands/command_origin_loader.h"
 #include "endstone/detail/command/command_output_with_sender.h"
 #include "endstone/detail/level/level.h"
+#include "endstone/detail/server.h"
 
 namespace endstone::detail {
 
