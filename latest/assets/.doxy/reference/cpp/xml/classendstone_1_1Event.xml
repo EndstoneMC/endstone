@@ -126,6 +126,7 @@
         <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1aecff22889cac261fc45bc6126e32dbf4">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginDisableEvent_1a9083d88e6a5e47ed6307cc5f8ee12d4c">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginEnableEvent_1a80a2a76f95e0c011b04994475905d79b">getEventName</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerCommandEvent_1af62a9d9bbc278b05dece09c1273e5b63">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerListPingEvent_1ad7a1dfe69b843c7b20cb52a4a3bea3e5">getEventName</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a">getEventName</reimplementedby>
@@ -168,6 +169,7 @@
         <reimplementedby refid="classendstone_1_1BroadcastMessageEvent_1a059942b6bf79dd5e4ce35868fa159102">isCancellable</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginDisableEvent_1a1fdadca8f16440488b2069003b1b52f3">isCancellable</reimplementedby>
         <reimplementedby refid="classendstone_1_1PluginEnableEvent_1a921d98900c525ca71e7fc31d249fec42">isCancellable</reimplementedby>
+        <reimplementedby refid="classendstone_1_1ScriptMessageEvent_1a4ec1687443ac52edb1cf11b318bfa412">isCancellable</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerCommandEvent_1af535389f564d130ea29ad148b03eac04">isCancellable</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerListPingEvent_1ad0a00ce2f9403eae549f7fb4063078db">isCancellable</reimplementedby>
         <reimplementedby refid="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22">isCancellable</reimplementedby>
@@ -260,13 +262,19 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="26">
+        <label>endstone::ScriptMessageEvent</label>
+        <link refid="classendstone_1_1ScriptMessageEvent"/>
+        <childnode refid="22" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="13">
         <label>endstone::PlayerChatEvent</label>
         <link refid="classendstone_1_1PlayerChatEvent"/>
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="26">
+      <node id="27">
         <label>endstone::ServerCommandEvent</label>
         <link refid="classendstone_1_1ServerCommandEvent"/>
         <childnode refid="22" relation="public-inheritance">
@@ -292,7 +300,7 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="28">
+      <node id="29">
         <label>endstone::ServerLoadEvent</label>
         <link refid="classendstone_1_1ServerLoadEvent"/>
         <childnode refid="22" relation="public-inheritance">
@@ -322,10 +330,10 @@
         <childnode refid="22" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="30">
+      <node id="31">
         <label>endstone::ThunderChangeEvent</label>
         <link refid="classendstone_1_1ThunderChangeEvent"/>
-        <childnode refid="29" relation="public-inheritance">
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
       <node id="18">
@@ -340,23 +348,23 @@
         <childnode refid="12" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>endstone::WeatherEvent</label>
         <link refid="classendstone_1_1WeatherEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>endstone::WeatherChangeEvent</label>
         <link refid="classendstone_1_1WeatherChangeEvent"/>
-        <childnode refid="29" relation="public-inheritance">
+        <childnode refid="30" relation="public-inheritance">
         </childnode>
       </node>
       <node id="1">
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="27">
+      <node id="28">
         <label>endstone::ServerListPingEvent</label>
         <link refid="classendstone_1_1ServerListPingEvent"/>
         <childnode refid="22" relation="public-inheritance">

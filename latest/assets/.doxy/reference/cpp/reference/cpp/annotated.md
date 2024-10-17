@@ -77,6 +77,7 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Scheduler**](classendstone_1_1Scheduler.md) _Represents a scheduler that executes various tasks._     
     * **class** [**Score**](classendstone_1_1Score.md) _Represents a score for an objective on a scoreboard._     
     * **class** [**Scoreboard**](classendstone_1_1Scoreboard.md) _Represents a scoreboard._     
+    * **class** [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) _Called when a message is sent by_ `/scriptevent` _command._    
     * **class** [**Server**](classendstone_1_1Server.md) _Represents a server implementation._     
     * **class** [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when the console runs a command, early in the process._     
     * **class** [**ServerEvent**](classendstone_1_1ServerEvent.md) _Represents an Server-related event._     

@@ -105,6 +105,7 @@
 | class | [**Scheduler**](classendstone_1_1Scheduler.md) <br>_Represents a scheduler that executes various tasks._  |
 | class | [**Score**](classendstone_1_1Score.md) <br>_Represents a score for an objective on a scoreboard._  |
 | class | [**Scoreboard**](classendstone_1_1Scoreboard.md) <br>_Represents a scoreboard._  |
+| class | [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) <br>_Called when a message is sent by_ `/scriptevent` _command._ |
 | class | [**Server**](classendstone_1_1Server.md) <br>_Represents a server implementation._  |
 | class | [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) <br>_Called when the console runs a command, early in the process._  |
 | class | [**ServerEvent**](classendstone_1_1ServerEvent.md) <br>_Represents an Server-related event._  |

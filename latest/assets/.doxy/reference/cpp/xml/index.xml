@@ -987,6 +987,18 @@
     <member refid="classendstone_1_1Scoreboard_1a34423dec12f04dfc311a2d52ab2da93a" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1Scoreboard_1ab2486b647e947f8f0a87350fda36a786" kind="function"><name>clearSlot</name></member>
   </compound>
+  <compound refid="classendstone_1_1ScriptMessageEvent" kind="class"><name>endstone::ScriptMessageEvent</name>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a640a9ad1b0b372ef2c0abc125e49bc04" kind="variable"><name>NAME</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a58317ac21e5a652d21cc76f29e8fd689" kind="variable"><name>message_id_</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1af5d0528484ef2dea019233ac46bb36b1" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a1947b8b1a29c49b0302268f093ca5506" kind="variable"><name>sender_</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a5ca8c894f05907c46541fdd1546ec1b7" kind="function"><name>ScriptMessageEvent</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a23b45d138202bb0494068a76a775d703" kind="function"><name>getEventName</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a4ec1687443ac52edb1cf11b318bfa412" kind="function"><name>isCancellable</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a720552c44cf9ab47aea12d47a92a685a" kind="function"><name>getMessageId</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1aea742f99ea250c9de9fe96e5b8477b25" kind="function"><name>getMessage</name></member>
+    <member refid="classendstone_1_1ScriptMessageEvent_1a3dce93f3693e1e082dd636eb78602b32" kind="function"><name>getSender</name></member>
+  </compound>
   <compound refid="classendstone_1_1Server" kind="class"><name>endstone::Server</name>
     <member refid="classendstone_1_1Server_1a7be1e023a703bcc57e49e341c9987397" kind="variable"><name>BroadcastChannelAdmin</name></member>
     <member refid="classendstone_1_1Server_1ac3e6fddabfcbb3075d2539b673d04ed2" kind="variable"><name>BroadcastChannelUser</name></member>
@@ -1437,6 +1449,8 @@
   <compound refid="plugin__disable__event_8h" kind="file"><name>plugin_disable_event.h</name>
   </compound>
   <compound refid="plugin__enable__event_8h" kind="file"><name>plugin_enable_event.h</name>
+  </compound>
+  <compound refid="script__message__event_8h" kind="file"><name>script_message_event.h</name>
   </compound>
   <compound refid="server__command__event_8h" kind="file"><name>server_command_event.h</name>
   </compound>

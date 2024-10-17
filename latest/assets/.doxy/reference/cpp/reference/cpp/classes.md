@@ -216,6 +216,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Scoreboard**](classendstone_1_1Scoreboard.md)
 ([**endstone**](namespaceendstone.md))
+* [**ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md)
+([**endstone**](namespaceendstone.md))
 * [**Server**](classendstone_1_1Server.md)
 ([**endstone**](namespaceendstone.md))
 * [**ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md)

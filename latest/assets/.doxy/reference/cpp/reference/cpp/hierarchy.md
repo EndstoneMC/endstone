@@ -40,6 +40,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::BroadcastMessageEvent**](classendstone_1_1BroadcastMessageEvent.md) [_**Event**_](classendstone_1_1Event.md) _triggered for server broadcast messages such as from_[_**Server::broadcast**_](classendstone_1_1Server.md#function-broadcast) _._
         * **class** [**endstone::PluginDisableEvent**](classendstone_1_1PluginDisableEvent.md) _Called when a plugin is disabled._ 
         * **class** [**endstone::PluginEnableEvent**](classendstone_1_1PluginEnableEvent.md) _Called when a plugin is enabled._ 
+        * **class** [**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md) _Called when a message is sent by_ `/scriptevent` _command._
         * **class** [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md) _Called when the console runs a command, early in the process._ 
         * **class** [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md) _Called when a server ping is coming in._ 
         * **class** [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md) _Called when either the server startup or reload has completed._ 

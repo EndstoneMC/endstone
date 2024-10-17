@@ -63,6 +63,7 @@ Here is a list of all files with brief descriptions:
                 * **file** [**broadcast\_message\_event.h**](broadcast__message__event_8h.md)     
                 * **file** [**plugin\_disable\_event.h**](plugin__disable__event_8h.md)     
                 * **file** [**plugin\_enable\_event.h**](plugin__enable__event_8h.md)     
+                * **file** [**script\_message\_event.h**](script__message__event_8h.md)     
                 * **file** [**server\_command\_event.h**](server__command__event_8h.md)     
                 * **file** [**server\_event.h**](server__event_8h.md)     
                 * **file** [**server\_list\_ping\_event.h**](server__list__ping__event_8h.md)     

@@ -6,6 +6,7 @@
     <derivedcompoundref refid="classendstone_1_1BroadcastMessageEvent" prot="public" virt="non-virtual">endstone::BroadcastMessageEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PluginDisableEvent" prot="public" virt="non-virtual">endstone::PluginDisableEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PluginEnableEvent" prot="public" virt="non-virtual">endstone::PluginEnableEvent</derivedcompoundref>
+    <derivedcompoundref refid="classendstone_1_1ScriptMessageEvent" prot="public" virt="non-virtual">endstone::ScriptMessageEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ServerCommandEvent" prot="public" virt="non-virtual">endstone::ServerCommandEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ServerListPingEvent" prot="public" virt="non-virtual">endstone::ServerListPingEvent</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1ServerLoadEvent" prot="public" virt="non-virtual">endstone::ServerLoadEvent</derivedcompoundref>
@@ -53,12 +54,18 @@
     </detaileddescription>
     <inheritancegraph>
       <node id="6">
+        <label>endstone::ScriptMessageEvent</label>
+        <link refid="classendstone_1_1ScriptMessageEvent"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
         <label>endstone::ServerCommandEvent</label>
         <link refid="classendstone_1_1ServerCommandEvent"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="8">
+      <node id="9">
         <label>endstone::ServerLoadEvent</label>
         <link refid="classendstone_1_1ServerLoadEvent"/>
         <childnode refid="1" relation="public-inheritance">
@@ -74,7 +81,7 @@
         <label>endstone::Event</label>
         <link refid="classendstone_1_1Event"/>
       </node>
-      <node id="7">
+      <node id="8">
         <label>endstone::ServerListPingEvent</label>
         <link refid="classendstone_1_1ServerListPingEvent"/>
         <childnode refid="1" relation="public-inheritance">

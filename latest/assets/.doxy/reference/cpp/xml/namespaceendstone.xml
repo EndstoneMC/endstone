@@ -44,6 +44,7 @@
     <innerclass refid="classendstone_1_1BroadcastMessageEvent" prot="public">endstone::BroadcastMessageEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginDisableEvent" prot="public">endstone::PluginDisableEvent</innerclass>
     <innerclass refid="classendstone_1_1PluginEnableEvent" prot="public">endstone::PluginEnableEvent</innerclass>
+    <innerclass refid="classendstone_1_1ScriptMessageEvent" prot="public">endstone::ScriptMessageEvent</innerclass>
     <innerclass refid="classendstone_1_1ServerCommandEvent" prot="public">endstone::ServerCommandEvent</innerclass>
     <innerclass refid="classendstone_1_1ServerEvent" prot="public">endstone::ServerEvent</innerclass>
     <innerclass refid="classendstone_1_1ServerListPingEvent" prot="public">endstone::ServerListPingEvent</innerclass>
