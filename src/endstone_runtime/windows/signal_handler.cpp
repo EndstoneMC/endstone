@@ -61,8 +61,10 @@ BOOL WINAPI console_ctrl_handler(DWORD event)
     case CTRL_CLOSE_EVENT:
     case CTRL_SHUTDOWN_EVENT:
     case SIGTERM: {
-        auto &server = entt::locator<EndstoneServer>::value();
-        server.shutdown();
+        if (entt::locator<EndstoneServer>::has_value()) {
+            auto &server = entt::locator<EndstoneServer>::value();
+            server.shutdown();
+        }
         return TRUE;
     }
     default:

@@ -36,8 +36,10 @@ void signal_handler(int signum, siginfo_t *info, void *ctx)
 
 void console_signal_handler(int signum, siginfo_t *info, void *ctx)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    server.shutdown();
+    if (entt::locator<EndstoneServer>::has_value()) {
+        auto &server = entt::locator<EndstoneServer>::value();
+        server.shutdown();
+    }
 }
 
 void register_handler(int signal, void (*handler)(int, siginfo_t *, void *))
