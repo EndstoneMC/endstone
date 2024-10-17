@@ -16,9 +16,9 @@
 
 #include <utility>
 
-#include <entt/entt.hpp>
+#include <boost/algorithm/string/trim.hpp>
 
-#include "endstone/detail/logger_factory.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/server.h"
 
 namespace fs = std::filesystem;
@@ -74,6 +74,36 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
 
         file = entry.path();
         if (file.extension() == ".mcpack" || file.extension() == ".zip") {
+
+            // Check if the key file exists, in which case the pack would've been encrypted
+            std::string key;
+            auto key_path = file.string() + ".key";
+            if (std::filesystem::exists(key_path)) {
+                try {
+                    std::ifstream file_stream(key_path);
+                    if (!file_stream.is_open()) {
+                        server.getLogger().error("Could not open encryption key file: '{}'.", key_path);
+                        continue;
+                    }
+
+                    std::ostringstream ss;
+                    ss << file_stream.rdbuf();
+                    key = ss.str();
+                    boost::algorithm::trim(key);
+
+                    if (key.length() != 32) {
+                        server.getLogger().error("Could not open encryption key file: '{}'. Invalid encryption key "
+                                                 "length, must be exactly 32 bytes.",
+                                                 key_path);
+                        continue;
+                    }
+                }
+                catch (const std::exception &e) {
+                    server.getLogger().error("Could not open encryption key file:  '{}'. {}.", key_path, e.what());
+                    continue;
+                }
+            }
+
             const auto file_location = ResourceLocation(Core::Path(file.string()), ResourceFileSystem::Raw);
             auto pack = Pack::createPack(file_location, getPackType(), getPackOrigin(), manifest_factory, key_provider,
                                          &report, Core::Path::EMPTY);
@@ -84,8 +114,18 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
             }
 
             auto &manifest = pack->getManifest();
-            server.getLogger().info("Loaded {} v{} (Pack ID: {})", manifest.getName(),
-                                    manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString());
+
+            if (!key.empty()) {
+                content_keys_[manifest.getIdentity()] = key;
+                server.getLogger().info("Loaded {} v{} (Pack ID: {}) {}[encrypted]", manifest.getName(),
+                                        manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString(),
+                                        ColorFormat::Gold);
+            }
+            else {
+                server.getLogger().info("Loaded {} v{} (Pack ID: {})", manifest.getName(),
+                                        manifest.getIdentity().version.asString(),
+                                        manifest.getIdentity().id.asString());
+            }
             packs_.emplace_back(std::move(pack));
         }
     }
@@ -102,6 +142,11 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
 
     discovered_ = true;
     return report;
+}
+
+std::unordered_map<PackIdVersion, std::string> EndstonePackSource::getContentKeys() const
+{
+    return content_keys_;
 }
 
 }  // namespace endstone::detail

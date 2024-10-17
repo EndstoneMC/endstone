@@ -31,12 +31,14 @@ public:
     [[nodiscard]] PackType getPackType() const override;
     PackSourceReport load(IPackManifestFactory &factory,
                           const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
+    std::unordered_map<PackIdVersion, std::string> getContentKeys() const;
 
 private:
     std::filesystem::path path_;
     ::PackType pack_type_;
     bool discovered_{false};
     std::vector<std::unique_ptr<Pack>> packs_;
+    std::unordered_map<PackIdVersion, std::string> content_keys_;
 };
 
 }  // namespace endstone::detail
