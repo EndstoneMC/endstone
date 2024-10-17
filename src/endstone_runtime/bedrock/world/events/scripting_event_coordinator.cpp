@@ -12,13 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/events/scripting_event_coordinator.h"
 
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scripting_event_listener.h"
-#include "bedrock/world/events/scripting_events.h"
+#include "endstone/detail/hook.h"
 
-class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
-public:
-    ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
-};
+CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
+{
+    // TODO: call endstone::ScriptEventCommandEvent
+    return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, ref);
+}
