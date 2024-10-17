@@ -18,6 +18,9 @@
 
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {
-    // TODO: call endstone::ScriptEventCommandEvent
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, ref);
+    return std::visit(endstone::overloaded{[&](const Details::ValueOrRef<ScriptCommandMessageEvent const> &arg) {
+                          // TODO(event): call endstone::ScriptEventCommandEvent
+                          return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, arg.value());
+                      }},
+                      ref.get().variant);
 }

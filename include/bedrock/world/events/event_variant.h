@@ -27,12 +27,12 @@ class ValueOrRef {
         ~Variant() {}
     };
 
-    explicit ValueOrRef(T value) : is_pointer_(false)
+public:
+    ValueOrRef(std::reference_wrapper<T> ref) : is_pointer_(true)
     {
-        variant_.value = value;
+        variant_.pointer = &ref.get();
     }
 
-public:
     ~ValueOrRef()
     {
         if (!is_pointer_) {
@@ -46,6 +46,11 @@ public:
     }
 
 private:
+    explicit ValueOrRef(T value) : is_pointer_(false)
+    {
+        variant_.value = value;
+    }
+
     Variant variant_;
     const bool is_pointer_;
 };
@@ -53,21 +58,46 @@ private:
 
 template <typename... Events>
 struct EventVariantImpl {
+    EventVariantImpl(EventVariantImpl const &) = default;
+    EventVariantImpl(EventVariantImpl &&) = default;
+
+    template <typename Event>
+    EventVariantImpl(std::reference_wrapper<Event> event)
+        : variant{std::in_place_type<Details::ValueOrRef<Event>>, event}
+    {
+    }
+
     std::variant<Details::ValueOrRef<Events>...> variant;
 };
 
 template <typename... Events>
-struct ConstEventVariant {
-    EventVariantImpl<std::add_const_t<Events>...> variant;
-};
+using ConstEventVariant = EventVariantImpl<std::add_const_t<Events>...>;
 
 template <typename... Events>
 struct MutableEventVariant {
     EventVariantImpl<Events...> variant;
 };
 
-template <typename E>
+template <typename EventVariant>
 class EventRef {
 public:
-    E variant;
+    EventRef(EventRef const &) = delete;
+
+    template <typename Event>
+    EventRef(Event &event) : variant_(std::ref(event))
+    {
+    }
+
+    EventVariant &get()
+    {
+        return variant_;
+    }
+
+    EventVariant const &get() const
+    {
+        return variant_;
+    }
+
+private:
+    EventVariant variant_;
 };

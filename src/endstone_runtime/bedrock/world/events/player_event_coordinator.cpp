@@ -50,6 +50,6 @@ void PlayerEventCoordinator::sendEvent(const EventRef<PlayerGameplayEvent<void>>
         },
         [](auto &&ignored) {},
     };
-    std::visit(visitor, ref.variant.variant.variant);
+    std::visit(visitor, ref.get().variant);
     ENDSTONE_HOOK_CALL_ORIGINAL(fp, this, ref);
 }

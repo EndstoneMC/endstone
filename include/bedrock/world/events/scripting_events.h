@@ -19,6 +19,7 @@
 
 #include <gsl/gsl>
 
+#include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/level/block_pos.h"
@@ -42,4 +43,6 @@ template <typename Return>
 struct ScriptingGameplayEvent;
 
 template <>
-struct ScriptingGameplayEvent<CoordinatorResult> : ConstEventVariant<ScriptCommandMessageEvent> {};
+struct ScriptingGameplayEvent<CoordinatorResult> : ConstEventVariant<ScriptCommandMessageEvent> {
+    using ConstEventVariant<ScriptCommandMessageEvent>::ConstEventVariant;
+};
