@@ -14,13 +14,25 @@
 
 #include "bedrock/world/events/scripting_event_coordinator.h"
 
+#include <entt/entt.hpp>
+
 #include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+
+using endstone::detail::EndstoneServer;
 
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {
+    auto &server = entt::locator<EndstoneServer>::value();
     return std::visit(endstone::overloaded{[&](const Details::ValueOrRef<ScriptCommandMessageEvent const> &arg) {
                           // TODO(event): call endstone::ScriptEventCommandEvent
-                          return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, arg.value());
+                          const auto &event = arg.value();
+
+                          // fix: wtf mojang devs - the original function accesses the pointer without checking
+                          if (!scripting_event_handler_) {
+                              return CoordinatorResult::Continue;
+                          }
+                          return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
                       }},
                       ref.get().variant);
 }

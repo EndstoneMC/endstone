@@ -14,15 +14,6 @@
 
 #pragma once
 
-#include "bedrock/gameplayhandlers/scripting_event_handler.h"
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scripting_event_listener.h"
-#include "bedrock/world/events/scripting_events.h"
+#include "bedrock/gameplayhandlers/gameplay_handler.h"
 
-class ScriptingEventCoordinator : public EventCoordinatorPimpl<ScriptingEventListener> {
-public:
-    ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
-
-private:
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;
-};
+class ScriptingEventHandler : public GameplayHandler {};
