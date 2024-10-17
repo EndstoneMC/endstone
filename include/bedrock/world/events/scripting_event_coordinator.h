@@ -24,5 +24,5 @@ public:
     ENDSTONE_HOOK CoordinatorResult sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref);
 
 private:
-    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;
+    std::unique_ptr<ScriptingEventHandler> scripting_event_handler_;  // +112
 };

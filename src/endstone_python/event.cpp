@@ -41,6 +41,7 @@
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/plugin_disable_event.h"
 #include "endstone/event/server/plugin_enable_event.h"
+#include "endstone/event/server/script_message_event.h"
 #include "endstone/event/server/server_command_event.h"
 #include "endstone/event/server/server_list_ping_event.h"
 #include "endstone/event/server/server_load_event.h"
@@ -173,6 +174,13 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
 
     py::class_<PluginDisableEvent, Event>(m, "PluginDisableEvent", "Called when a plugin is disabled.")
         .def_property_readonly("plugin", &PluginDisableEvent::getPlugin, py::return_value_policy::reference);
+
+    py::class_<ScriptMessageEvent, Event>(m, "ScriptMessageEvent",
+                                          "Called when a message is sent by `/scriptevent` command")
+        .def_property_readonly("message_id", &ScriptMessageEvent::getMessageId, "Get the message id to send.")
+        .def_property_readonly("message", &ScriptMessageEvent::getMessage, "Get the message to send.")
+        .def_property_readonly("sender", &ScriptMessageEvent::getSender,
+                               "Gets the command sender who initiated the command.");
 
     py::class_<ServerCommandEvent, Event>(m, "ServerCommandEvent",
                                           "Called when the console runs a command, early in the process.")
