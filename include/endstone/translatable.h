@@ -25,19 +25,19 @@ namespace endstone {
  */
 class Translatable {
 public:
-    explicit Translatable(std::string translate, std::vector<std::string> with = {})
-        : translate_(std::move(translate)), with_(std::move(with))
+    explicit Translatable(std::string text, std::vector<std::string> params = {})
+        : text_(std::move(text)), params_(std::move(params))
     {
     }
 
     /**
-     * @brief Get the message to be translated.
+     * @brief Get the text to be translated.
      *
-     * @return the message to be translated
+     * @return the text to be translated
      */
-    [[nodiscard]] const std::string &getTranslate() const
+    [[nodiscard]] const std::string &getText() const
     {
-        return translate_;
+        return text_;
     }
 
     /**
@@ -45,9 +45,9 @@ public:
      *
      * @return the translation parameters
      */
-    [[nodiscard]] const std::vector<std::string> &getWith() const
+    [[nodiscard]] const std::vector<std::string> &getParameters() const
     {
-        return with_;
+        return params_;
     }
 
     /**
@@ -57,12 +57,12 @@ public:
      */
     [[nodiscard]] bool empty() const
     {
-        return translate_.empty();
+        return text_.empty();
     }
 
 private:
-    std::string translate_;
-    std::vector<std::string> with_;
+    std::string text_;
+    std::vector<std::string> params_;
 };
 
 }  // namespace endstone

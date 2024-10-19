@@ -98,8 +98,8 @@ void EndstonePlayer::sendMessage(const Message &message) const
                           },
                           [&pk](const Translatable &msg) {
                               pk->type = TextPacketType::Translate;
-                              pk->message = msg.getTranslate();
-                              pk->params = msg.getWith();
+                              pk->message = msg.getText();
+                              pk->params = msg.getParameters();
                               pk->localize = true;
                           }},
                message);
@@ -110,7 +110,7 @@ void EndstonePlayer::sendErrorMessage(const Message &message) const
 {
     std::visit(overloaded{[this](const std::string &msg) { sendMessage(ColorFormat::Red + msg); },
                           [this](const Translatable &msg) {
-                              Translatable tr{ColorFormat::Red + "%" + msg.getTranslate(), msg.getWith()};
+                              Translatable tr{ColorFormat::Red + "%" + msg.getText(), msg.getParameters()};
                               sendMessage(tr);
                           }},
                message);

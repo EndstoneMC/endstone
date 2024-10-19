@@ -44,8 +44,8 @@ nlohmann::json FormCodec::toJson(const Message &message)
                                  [&](const Translatable &arg) -> nlohmann::json {
                                      nlohmann::json json;
                                      json["rawtext"].push_back({
-                                         {"translate", arg.getTranslate()},
-                                         {"with", arg.getWith()},
+                                         {"translate", arg.getText()},
+                                         {"with", arg.getParameters()},
                                      });
                                      return json;
                                  }},

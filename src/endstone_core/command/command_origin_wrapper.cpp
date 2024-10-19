@@ -29,20 +29,20 @@ void CommandOriginWrapper::sendMessage(const Message &message) const
 {
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : tr.getWith()) {
+    for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.forceOutput(tr.getTranslate(), params);
+    output_.forceOutput(tr.getText(), params);
 }
 
 void CommandOriginWrapper::sendErrorMessage(const Message &message) const
 {
     const auto tr = EndstoneMessage::toTranslatable(message);
     std::vector<CommandOutputParameter> params;
-    for (const auto &param : tr.getWith()) {
+    for (const auto &param : tr.getParameters()) {
         params.emplace_back(param);
     }
-    output_.error(tr.getTranslate(), params);
+    output_.error(tr.getText(), params);
 }
 
 std::string CommandOriginWrapper::getName() const

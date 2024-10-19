@@ -196,13 +196,12 @@ void init_logger(py::module &m)
 void init_translatable(py::module_ &m)
 {
     py::class_<Translatable>(m, "Translatable")
-        .def(py::init([](std::string translate, const std::optional<std::vector<std::string>> &with) {
-                 return Translatable(std::move(translate), with.value_or(std::vector<std::string>{}));
+        .def(py::init([](std::string text, const std::optional<std::vector<std::string>> &params) {
+                 return Translatable(std::move(text), params.value_or(std::vector<std::string>{}));
              }),
-             py::arg("translate"), py::arg("with_") = py::none())
-        .def_property_readonly("translate", &Translatable::getTranslate,
-                               "Get the translation key for use in a translation component.")
-        .def_property_readonly("with_", &Translatable::getWith, "Get the translation parameters.");
+             py::arg("text"), py::arg("params") = py::none())
+        .def_property_readonly("text", &Translatable::getText, "Get the text to be translated.")
+        .def_property_readonly("params", &Translatable::getParameters, "Get the translation parameters.");
 }
 
 void init_server(py::class_<Server> &server)
