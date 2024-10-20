@@ -194,6 +194,7 @@
 * **port\_** ([**endstone::SocketAddress**](classendstone_1_1SocketAddress.md))
 * **position** ([**endstone::SpawnParticleEffectPacket**](classendstone_1_1SpawnParticleEffectPacket.md))
 * **placeholder\_** ([**endstone::TextInput**](classendstone_1_1TextInput.md))
+* **params\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## q
@@ -229,11 +230,10 @@
 
 ## t
 
-* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md))
+* **text\_** ([**endstone::ActionForm::Button**](classendstone_1_1ActionForm_1_1Button.md), [**endstone::Label**](classendstone_1_1Label.md), [**endstone::Translatable**](classendstone_1_1Translatable.md))
 * **to\_** ([**endstone::ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md), [**endstone::PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md), [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md), [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md))
 * **title\_** ([**endstone::Form**](classendstone_1_1Form.md))
 * **type\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md), [**endstone::ServerLoadEvent**](classendstone_1_1ServerLoadEvent.md))
-* **translate\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## u
@@ -253,7 +253,6 @@
 * **White** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **website\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **width** ([**endstone::Skin::ImageData**](structendstone_1_1Skin_1_1ImageData.md))
-* **with\_** ([**endstone::Translatable**](classendstone_1_1Translatable.md))
 
 
 ## x

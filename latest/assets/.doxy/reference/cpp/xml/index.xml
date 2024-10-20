@@ -1200,11 +1200,11 @@
     <member refid="classendstone_1_1Toggle_1a1f6af05c285c7e62daaec4c0cdaf45da" kind="function"><name>setDefaultValue</name></member>
   </compound>
   <compound refid="classendstone_1_1Translatable" kind="class"><name>endstone::Translatable</name>
-    <member refid="classendstone_1_1Translatable_1a625cc1a0ddb1b943cca1a7fa03db0507" kind="variable"><name>translate_</name></member>
-    <member refid="classendstone_1_1Translatable_1ac12b172c158ca6e902d142fab0ea0ec7" kind="variable"><name>with_</name></member>
-    <member refid="classendstone_1_1Translatable_1a974d2848a33fee44a130c1fc6466ef4a" kind="function"><name>Translatable</name></member>
-    <member refid="classendstone_1_1Translatable_1a7eac20bade6acd093a62d77061ac251e" kind="function"><name>getTranslate</name></member>
-    <member refid="classendstone_1_1Translatable_1a0dc763acaca9abfa312d3276e2ec17a7" kind="function"><name>getWith</name></member>
+    <member refid="classendstone_1_1Translatable_1a0747771031c0424636e4590b518afc28" kind="variable"><name>text_</name></member>
+    <member refid="classendstone_1_1Translatable_1a9b9c3bd1af4d425bedc026f419dca28e" kind="variable"><name>params_</name></member>
+    <member refid="classendstone_1_1Translatable_1a9aa73dc65b0117858f5ff0d62c441029" kind="function"><name>Translatable</name></member>
+    <member refid="classendstone_1_1Translatable_1ad606caab1e9a3e5f0c91286863357e1b" kind="function"><name>getText</name></member>
+    <member refid="classendstone_1_1Translatable_1a302745a0e6b396f97c941981fa535856" kind="function"><name>getParameters</name></member>
     <member refid="classendstone_1_1Translatable_1aeb41cd43cf6f4123c5159e1958e4c383" kind="function"><name>empty</name></member>
   </compound>
   <compound refid="classendstone_1_1UUID" kind="class"><name>endstone::UUID</name>

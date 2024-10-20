@@ -52,10 +52,10 @@ _Represents an object with a text representation that can be translated by the M
 
 | Type | Name |
 | ---: | :--- |
-|   | [**Translatable**](#function-translatable) (std::string translate, std::vector&lt; std::string &gt; with={}) <br> |
+|   | [**Translatable**](#function-translatable) (std::string text, std::vector&lt; std::string &gt; params={}) <br> |
 |  bool | [**empty**](#function-empty) () const<br>_Check if the message to be translated is empty._  |
-|  const std::string & | [**getTranslate**](#function-gettranslate) () const<br>_Get the message to be translated._  |
-|  const std::vector&lt; std::string &gt; & | [**getWith**](#function-getwith) () const<br>_Get the translation parameters._  |
+|  const std::vector&lt; std::string &gt; & | [**getParameters**](#function-getparameters) () const<br>_Get the translation parameters._  |
+|  const std::string & | [**getText**](#function-gettext) () const<br>_Get the text to be translated._  |
 
 
 
@@ -93,8 +93,8 @@ _Represents an object with a text representation that can be translated by the M
 
 ```C++
 inline explicit endstone::Translatable::Translatable (
-    std::string translate,
-    std::vector< std::string > with={}
+    std::string text,
+    std::vector< std::string > params={}
 ) 
 ```
 
@@ -130,11 +130,11 @@ true if the message to be translated is empty, false otherwise
 
 
 
-### function getTranslate 
+### function getParameters 
 
-_Get the message to be translated._ 
+_Get the translation parameters._ 
 ```C++
-inline const std::string & endstone::Translatable::getTranslate () const
+inline const std::vector< std::string > & endstone::Translatable::getParameters () const
 ```
 
 
@@ -143,7 +143,7 @@ inline const std::string & endstone::Translatable::getTranslate () const
 
 **Returns:**
 
-the message to be translated 
+the translation parameters 
 
 
 
@@ -155,11 +155,11 @@ the message to be translated
 
 
 
-### function getWith 
+### function getText 
 
-_Get the translation parameters._ 
+_Get the text to be translated._ 
 ```C++
-inline const std::vector< std::string > & endstone::Translatable::getWith () const
+inline const std::string & endstone::Translatable::getText () const
 ```
 
 
@@ -168,7 +168,7 @@ inline const std::vector< std::string > & endstone::Translatable::getWith () con
 
 **Returns:**
 
-the translation parameters 
+the text to be translated 
 
 
 

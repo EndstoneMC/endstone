@@ -1910,9 +1910,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-gettranslate" class="md-nav__link">
+    <a href="#function-getparameters" class="md-nav__link">
       <span class="md-ellipsis">
-        function getTranslate
+        function getParameters
       </span>
     </a>
 
@@ -1923,9 +1923,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-getwith" class="md-nav__link">
+    <a href="#function-gettext" class="md-nav__link">
       <span class="md-ellipsis">
-        function getWith
+        function getText
       </span>
     </a>
 
@@ -1987,27 +1987,27 @@ For latest updates join the chat on
 <tbody>
 <tr>
 <td style="text-align: right;"></td>
-<td style="text-align: left;"><a href="#function-translatable"><strong>Translatable</strong></a> (std::string translate, std::vector&lt; std::string &gt; with={}) <br></td>
+<td style="text-align: left;"><a href="#function-translatable"><strong>Translatable</strong></a> (std::string text, std::vector&lt; std::string &gt; params={}) <br></td>
 </tr>
 <tr>
 <td style="text-align: right;">bool</td>
 <td style="text-align: left;"><a href="#function-empty"><strong>empty</strong></a> () const<br><em>Check if the message to be translated is empty.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">const std::string &amp;</td>
-<td style="text-align: left;"><a href="#function-gettranslate"><strong>getTranslate</strong></a> () const<br><em>Get the message to be translated.</em></td>
+<td style="text-align: right;">const std::vector&lt; std::string &gt; &amp;</td>
+<td style="text-align: left;"><a href="#function-getparameters"><strong>getParameters</strong></a> () const<br><em>Get the translation parameters.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">const std::vector&lt; std::string &gt; &amp;</td>
-<td style="text-align: left;"><a href="#function-getwith"><strong>getWith</strong></a> () const<br><em>Get the translation parameters.</em></td>
+<td style="text-align: right;">const std::string &amp;</td>
+<td style="text-align: left;"><a href="#function-gettext"><strong>getText</strong></a> () const<br><em>Get the text to be translated.</em></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-translatable">function Translatable<a class="headerlink" href="#function-translatable" title="Permanent link">&para;</a></h3>
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">explicit</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Translatable</span><span class="o">::</span><span class="n">Translatable</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">translate</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">with</span><span class="o">=</span><span class="p">{}</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">text</span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">params</span><span class="o">=</span><span class="p">{}</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div>
 <hr>
@@ -2020,20 +2020,20 @@ For latest updates join the chat on
 <p>true if the message to be translated is empty, false otherwise </p>
 <hr>
 
-<h3 id="function-gettranslate">function getTranslate<a class="headerlink" href="#function-gettranslate" title="Permanent link">&para;</a></h3>
-<p><em>Get the message to be translated.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Translatable</span><span class="o">::</span><span class="n">getTranslate</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>the message to be translated </p>
-<hr>
-
-<h3 id="function-getwith">function getWith<a class="headerlink" href="#function-getwith" title="Permanent link">&para;</a></h3>
+<h3 id="function-getparameters">function getParameters<a class="headerlink" href="#function-getparameters" title="Permanent link">&para;</a></h3>
 <p><em>Get the translation parameters.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Translatable</span><span class="o">::</span><span class="n">getWith</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Translatable</span><span class="o">::</span><span class="n">getParameters</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the translation parameters </p>
+<hr>
+
+<h3 id="function-gettext">function getText<a class="headerlink" href="#function-gettext" title="Permanent link">&para;</a></h3>
+<p><em>Get the text to be translated.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">Translatable</span><span class="o">::</span><span class="n">getText</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the text to be translated </p>
 <hr>
 
 <hr />
