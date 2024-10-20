@@ -22,6 +22,7 @@
 
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
@@ -74,6 +75,13 @@ public:
      * @return Logger associated with this server
      */
     [[nodiscard]] virtual Logger &getLogger() const = 0;
+
+    /**
+     * @brief Gets the current language interface used by the server.
+     *
+     * @return Language interface used by the server for translations.
+     */
+    [[nodiscard]] virtual Language &getLanguage() const = 0;
 
     /**
      * @brief Gets the plugin manager for interfacing with plugins.

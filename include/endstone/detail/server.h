@@ -22,6 +22,7 @@
 #include "bedrock/server/server_instance.h"
 #include "endstone/command/console_command_sender.h"
 #include "endstone/detail/command/command_map.h"
+#include "endstone/detail/lang/language.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/packs/endstone_pack_source.h"
 #include "endstone/detail/plugin/plugin_manager.h"
@@ -49,6 +50,7 @@ public:
     [[nodiscard]] std::string getMinecraftVersion() const override;
 
     [[nodiscard]] Logger &getLogger() const override;
+    [[nodiscard]] Language &getLanguage() const override;
     [[nodiscard]] EndstoneCommandMap &getCommandMap() const;
     void setCommandMap(std::unique_ptr<EndstoneCommandMap> command_map);
     [[nodiscard]] MinecraftCommands &getMinecraftCommands() const;
@@ -116,6 +118,7 @@ private:
     void enablePlugin(Plugin &plugin);
     ServerInstance *server_instance_;
     Logger &logger_;
+    std::unique_ptr<EndstoneLanguage> language_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;
     std::shared_ptr<ConsoleCommandSender> command_sender_;

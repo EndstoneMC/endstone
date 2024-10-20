@@ -52,6 +52,7 @@ namespace endstone::detail {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
     start_time_ = std::chrono::system_clock::now();
@@ -111,6 +112,11 @@ std::string EndstoneServer::getMinecraftVersion() const
 Logger &EndstoneServer::getLogger() const
 {
     return logger_;
+}
+
+Language &EndstoneServer::getLanguage() const
+{
+    return *language_;
 }
 
 EndstoneCommandMap &EndstoneServer::getCommandMap() const
