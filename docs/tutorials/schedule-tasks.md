@@ -17,9 +17,9 @@ Here, we want an on-screen popup displaying "Hi!" to appear for every online pla
 
         def on_enable(self) -> None:
             self.logger.info("on_enable is called!")
-            self.server.scheduler.run_task(self, self.send_time, delay=0, period=20)
+            self.server.scheduler.run_task(self, self.say_hi, delay=0, period=20)
 
-        def send_time(self) -> None:
+        def say_hi(self) -> None:
             for player in self.server.online_players:
                 player.send_popup("Hi!")
     ```
@@ -36,10 +36,10 @@ Here, we want an on-screen popup displaying "Hi!" to appear for every online pla
         void onEnable() override
         {
             getLogger().info("onEnable is called");
-            getServer().getScheduler().runTaskTimer([&]() { sendTime(); }, 0, 20);
+            getServer().getScheduler().runTaskTimer([&]() { sayHi(); }, 0, 20);
         }
 
-        void sendTime()
+        void sayHi()
         {
             for (auto& player : getServer().getOnlinePlayers())
             {
