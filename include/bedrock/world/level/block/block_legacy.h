@@ -22,6 +22,7 @@
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/optional_ref.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/forward.h"
 #include "bedrock/resources/base_game_version.h"

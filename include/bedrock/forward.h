@@ -256,5 +256,3 @@ template <typename A, typename B, typename C>
 class OwnerPtrFactory;
 template <typename A, typename B, typename C>
 class Factory;
-template <typename T>
-using optional_ref = T *;  // NOLINT(*-identifier-naming)

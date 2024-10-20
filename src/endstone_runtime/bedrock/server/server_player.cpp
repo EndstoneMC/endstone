@@ -27,7 +27,7 @@
 #include "endstone/event/player/player_death_event.h"
 #include "endstone/event/player/player_join_event.h"
 #include "endstone/event/player/player_quit_event.h"
-#include "endstone/translatable.h"
+#include "endstone/lang/translatable.h"
 
 using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
