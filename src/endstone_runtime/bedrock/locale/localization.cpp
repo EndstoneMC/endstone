@@ -12,28 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/locale/localization.h"
 
-template <typename T>
-class optional_ref {
-public:
-    optional_ref(nullptr_t) : ptr_(nullptr) {}
-
-    [[nodiscard]] T &unwrap() const
-    {
-        return *ptr_;
-    }
-
-    [[nodiscard]] bool is_some() const
-    {
-        return ptr_ != nullptr;
-    }
-
-    [[nodiscard]] bool is_none() const
-    {
-        return ptr_ == nullptr;
-    }
-
-protected:
-    T *ptr_;
-};
+std::string Localization::getLanguageCode() const
+{
+    return code_;
+}

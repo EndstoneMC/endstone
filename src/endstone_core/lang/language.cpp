@@ -14,3 +14,52 @@
 
 #include "endstone/detail/lang/language.h"
 
+#include <bedrock/locale/i18n.h>
+
+namespace endstone::detail {
+
+std::string EndstoneLanguage::translate(std::string text) const
+{
+    return translate(text, getLocale());
+}
+
+std::string EndstoneLanguage::translate(std::string text, std::string locale) const
+{
+    return translate(text, {}, locale);
+}
+
+std::string EndstoneLanguage::translate(std::string text, std::vector<std::string> params) const
+{
+    return translate(text, params, getLocale());
+}
+
+std::string EndstoneLanguage::translate(std::string text, std::vector<std::string> params, std::string locale) const
+{
+    auto &i18n = getI18n();
+    auto localization = i18n.getLocaleFor(locale);
+    if (!localization) {
+        localization = i18n.getLocaleFor(getLocale());
+    }
+    return i18n.get(text, params, localization);
+}
+
+std::string EndstoneLanguage::translate(Translatable translatable) const
+{
+    return translate(translatable, getLocale());
+}
+
+std::string EndstoneLanguage::translate(Translatable translatable, std::string locale) const
+{
+    return translate(translatable.getText(), translatable.getParameters(), locale);
+}
+
+std::string EndstoneLanguage::getLocale() const
+{
+    auto current_language = getI18n().getCurrentLanguage();
+    if (current_language.is_none()) {
+        return FallbackLocale;
+    }
+    return current_language.unwrap().getLanguageCode();
+}
+
+}  // namespace endstone::detail

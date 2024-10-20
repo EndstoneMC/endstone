@@ -14,26 +14,22 @@
 
 #pragma once
 
-template <typename T>
-class optional_ref {
+#include <map>
+#include <string>
+
+#include "bedrock/platform/threading/mutex_details.h"
+
+class Localization {
+    using Map = std::map<std::string, std::string>;
+
 public:
-    optional_ref(nullptr_t) : ptr_(nullptr) {}
+    [[nodiscard]] std::string getLanguageCode() const;
 
-    [[nodiscard]] T &unwrap() const
-    {
-        return *ptr_;
-    }
-
-    [[nodiscard]] bool is_some() const
-    {
-        return ptr_ != nullptr;
-    }
-
-    [[nodiscard]] bool is_none() const
-    {
-        return ptr_ == nullptr;
-    }
-
-protected:
-    T *ptr_;
+private:
+    bool comma_seperator_;
+    std::string digit_group_seperator_;
+    std::string code_;
+    Map strings_;
+    Map case_sensitive_cache_;
+    Bedrock::Threading::SharedMutex case_sensitive_cache_mutex_;
 };

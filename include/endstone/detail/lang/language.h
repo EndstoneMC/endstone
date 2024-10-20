@@ -18,6 +18,18 @@
 
 namespace endstone::detail {
 
-class EndstoneLanguage {};
+class EndstoneLanguage : public Language {
+public:
+    [[nodiscard]] std::string translate(std::string text) const override;
+    [[nodiscard]] std::string translate(std::string text, std::string locale) const override;
+    [[nodiscard]] std::string translate(std::string text, std::vector<std::string> params) const override;
+    [[nodiscard]] std::string translate(std::string text, std::vector<std::string> params,
+                                        std::string locale) const override;
+    [[nodiscard]] std::string translate(Translatable translatable) const override;
+    [[nodiscard]] std::string translate(Translatable translatable, std::string locale) const override;
+    [[nodiscard]] std::string getLocale() const override;
+
+    inline const static std::string FallbackLocale = "en_US";
+};
 
 }  // namespace endstone::detail
