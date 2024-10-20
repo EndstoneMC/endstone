@@ -12,16 +12,5 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "endstone/detail/lang/language.h"
 
-#include <string>
-#include <utility>
-#include <variant>
-
-#include "endstone/lang/translatable.h"
-
-namespace endstone {
-
-using Message = std::variant<std::string, Translatable>;
-
-}  // namespace endstone

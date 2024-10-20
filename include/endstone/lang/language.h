@@ -14,14 +14,8 @@
 
 #pragma once
 
-#include <string>
-#include <utility>
-#include <variant>
-
-#include "endstone/lang/translatable.h"
-
 namespace endstone {
 
-using Message = std::variant<std::string, Translatable>;
+class Language {};
 
 }  // namespace endstone

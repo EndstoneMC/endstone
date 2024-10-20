@@ -14,14 +14,10 @@
 
 #pragma once
 
-#include <string>
-#include <utility>
-#include <variant>
+#include "endstone/lang/language.h"
 
-#include "endstone/lang/translatable.h"
+namespace endstone::detail {
 
-namespace endstone {
+class EndstoneLanguage {};
 
-using Message = std::variant<std::string, Translatable>;
-
-}  // namespace endstone
+}  // namespace endstone::detail
