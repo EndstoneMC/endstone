@@ -206,6 +206,7 @@ nav:
           - Command: reference/python/command.md
           - Event: reference/python/event.md
           - Form: reference/python/form.md
+          - Language: reference/python/lang.md
           - Level: reference/python/level.md
           - Inventory: reference/python/inventory.md
           - Network: reference/python/network.md

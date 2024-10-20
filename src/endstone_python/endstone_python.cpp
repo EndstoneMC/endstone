@@ -45,6 +45,7 @@ void init_event(py::module_ &, py::class_<Event> &event, py::enum_<EventPriority
 void init_form(py::module_ &);
 void init_game_mode(py::module_ &);
 void init_inventory(py::module_ &);
+void init_lang(py::module_ &);
 void init_level(py::module_ &);
 void init_logger(py::module_ &);
 void init_network(py::module_ &);
@@ -55,7 +56,6 @@ void init_plugin(py::module_ &);
 void init_scheduler(py::module_ &);
 void init_scoreboard(py::module_ &);
 void init_server(py::class_<Server> &server);
-void init_translatable(py::module_ &);
 void init_util(py::module_ &);
 
 PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
@@ -87,7 +87,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_color_format(m);
     init_game_mode(m);
     init_logger(m);
-    init_translatable(m);
+    init_lang(m);
     init_form(m);
     init_inventory(m);
     init_util(m);
@@ -193,17 +193,6 @@ void init_logger(py::module &m)
         .def_property_readonly("name", &Logger::getName, "Get the name of this Logger instance.");
 }
 
-void init_translatable(py::module_ &m)
-{
-    py::class_<Translatable>(m, "Translatable")
-        .def(py::init([](std::string text, const std::optional<std::vector<std::string>> &params) {
-                 return Translatable(std::move(text), params.value_or(std::vector<std::string>{}));
-             }),
-             py::arg("text"), py::arg("params") = py::none())
-        .def_property_readonly("text", &Translatable::getText, "Get the text to be translated.")
-        .def_property_readonly("params", &Translatable::getParameters, "Get the translation parameters.");
-}
-
 void init_server(py::class_<Server> &server)
 {
     server.def_property_readonly("name", &Server::getVersion, "Gets the name of this server implementation.")
@@ -212,6 +201,8 @@ void init_server(py::class_<Server> &server)
                                "Gets the Minecraft version that this server is running.")
         .def_property_readonly("logger", &Server::getLogger, py::return_value_policy::reference,
                                "Returns the primary logger associated with this server instance.")
+        .def_property_readonly("language", &Server::getLanguage, py::return_value_policy::reference,
+                               "Gets the current language interface used by the server.")
         .def_property_readonly("plugin_manager", &Server::getPluginManager, py::return_value_policy::reference,
                                "Gets the plugin manager for interfacing with plugins.")
         .def("get_plugin_command", &Server::getPluginCommand, py::arg("name"), py::return_value_policy::reference,

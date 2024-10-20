@@ -22,7 +22,7 @@
 namespace endstone {
 
 /**
- * @brief An interface for translating text into different languages.
+ * @brief Represents the interface for translating text into different languages.
  */
 class Language {
 public:

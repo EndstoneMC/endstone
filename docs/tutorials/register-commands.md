@@ -143,7 +143,7 @@ message to whoever execute this command. It's just a few more lines away from th
         permissions = {
             "my_plugin.command.hello": {
                 "description": "Allow users to use the /hello command.",
-                "default": True, #(1)!
+                "default": True,
             }
         }
 
