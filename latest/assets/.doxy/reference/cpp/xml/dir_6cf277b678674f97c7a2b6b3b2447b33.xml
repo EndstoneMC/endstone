@@ -9,6 +9,7 @@
     <innerdir refid="dir_f1d783c0ad83ee143d16e768ebca51c8">include/endstone/event</innerdir>
     <innerdir refid="dir_0fd3b458603af3963ebb9c312a9238ec">include/endstone/form</innerdir>
     <innerdir refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c">include/endstone/inventory</innerdir>
+    <innerdir refid="dir_cd2600a5c389b96acc106cf97f774d1c">include/endstone/lang</innerdir>
     <innerdir refid="dir_8e239ca1e5fd0d936d66a30330d3a329">include/endstone/level</innerdir>
     <innerdir refid="dir_5fb49eba5df98b849987b1937230be97">include/endstone/network</innerdir>
     <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>
@@ -24,7 +25,6 @@
     <innerfile refid="player_8h">player.h</innerfile>
     <innerfile refid="server_8h">server.h</innerfile>
     <innerfile refid="skin_8h">skin.h</innerfile>
-    <innerfile refid="translatable_8h">translatable.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

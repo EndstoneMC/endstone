@@ -49,6 +49,10 @@
          <lastmod>2024-10-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/python/lang/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/python/level/</loc>
          <lastmod>2024-10-20</lastmod>
     </url>
@@ -262,6 +266,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Label/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Language/</loc>
          <lastmod>2024-10-20</lastmod>
     </url>
     <url>
@@ -1157,6 +1165,26 @@
          <lastmod>2024-10-20</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dir_cd2600a5c389b96acc106cf97f774d1c/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/language_8h/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/language_8h_source/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/translatable_8h/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/translatable_8h_source/</loc>
+         <lastmod>2024-10-20</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_8e239ca1e5fd0d936d66a30330d3a329/</loc>
          <lastmod>2024-10-20</lastmod>
     </url>
@@ -1478,14 +1506,6 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/skin_8h_source/</loc>
-         <lastmod>2024-10-20</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/translatable_8h/</loc>
-         <lastmod>2024-10-20</lastmod>
-    </url>
-    <url>
-         <loc>https://endstone.dev/latest/reference/cpp/translatable_8h_source/</loc>
          <lastmod>2024-10-20</lastmod>
     </url>
     <url>

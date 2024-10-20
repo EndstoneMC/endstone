@@ -76,6 +76,7 @@ _Represents a server implementation._
 | virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
+| virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
 | virtual int | [**getMaxPlayers**](#function-getmaxplayers) () const = 0<br>_Get the maximum amount of players which can login to this server._  |
@@ -636,6 +637,31 @@ virtual float endstone::Server::getCurrentTicksPerSecond () = 0
 **Returns:**
 
 The current ticks per second 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getLanguage 
+
+_Gets the current language interface used by the server._ 
+```C++
+virtual Language & endstone::Server::getLanguage () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+[**Language**](classendstone_1_1Language.md) interface used by the server for translations. 
 
 
 

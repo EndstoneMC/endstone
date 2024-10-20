@@ -65,6 +65,8 @@
     <innerclass refid="classendstone_1_1Inventory" prot="public">endstone::Inventory</innerclass>
     <innerclass refid="classendstone_1_1ItemStack" prot="public">endstone::ItemStack</innerclass>
     <innerclass refid="classendstone_1_1PlayerInventory" prot="public">endstone::PlayerInventory</innerclass>
+    <innerclass refid="classendstone_1_1Language" prot="public">endstone::Language</innerclass>
+    <innerclass refid="classendstone_1_1Translatable" prot="public">endstone::Translatable</innerclass>
     <innerclass refid="classendstone_1_1Dimension" prot="public">endstone::Dimension</innerclass>
     <innerclass refid="classendstone_1_1Level" prot="public">endstone::Level</innerclass>
     <innerclass refid="classendstone_1_1Location" prot="public">endstone::Location</innerclass>
@@ -89,7 +91,6 @@
     <innerclass refid="classendstone_1_1Scoreboard" prot="public">endstone::Scoreboard</innerclass>
     <innerclass refid="classendstone_1_1Server" prot="public">endstone::Server</innerclass>
     <innerclass refid="classendstone_1_1Skin" prot="public">endstone::Skin</innerclass>
-    <innerclass refid="classendstone_1_1Translatable" prot="public">endstone::Translatable</innerclass>
     <innerclass refid="classendstone_1_1Error" prot="public">endstone::Error</innerclass>
     <innerclass refid="classendstone_1_1SocketAddress" prot="public">endstone::SocketAddress</innerclass>
     <innerclass refid="classendstone_1_1UUID" prot="public">endstone::UUID</innerclass>

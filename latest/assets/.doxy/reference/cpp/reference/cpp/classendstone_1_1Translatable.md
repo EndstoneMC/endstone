@@ -10,7 +10,7 @@
 
 _Represents an object with a text representation that can be translated by the Minecraft client._ 
 
-* `#include <endstone/translatable.h>`
+* `#include <endstone/lang/translatable.h>`
 
 
 
@@ -179,5 +179,5 @@ the text to be translated
 <hr>
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/translatable.h`
+The documentation for this class was generated from the following file `include/endstone/lang/translatable.h`
 

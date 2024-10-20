@@ -32,6 +32,7 @@
 
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
+#include "endstone/lang/language.h"
 #include "endstone/level/level.h"
 #include "endstone/logger.h"
 #include "endstone/player.h"
@@ -61,6 +62,8 @@ public:
     [[nodiscard]] virtual std::string getMinecraftVersion() const = 0;
 
     [[nodiscard]] virtual Logger &getLogger() const = 0;
+
+    [[nodiscard]] virtual Language &getLanguage() const = 0;
 
     [[nodiscard]] virtual PluginManager &getPluginManager() const = 0;
 

@@ -68,6 +68,7 @@
 | class | [**Inventory**](classendstone_1_1Inventory.md) <br>_Interface to the various inventories._  |
 | class | [**ItemStack**](classendstone_1_1ItemStack.md) <br>_Represents a stack of items._  |
 | class | [**Label**](classendstone_1_1Label.md) <br>_Represents a text label._  |
+| class | [**Language**](classendstone_1_1Language.md) <br>_Represents the interface for translating text into different languages._  |
 | class | [**Level**](classendstone_1_1Level.md) <br>_Represents a level, which may contain actors, chunks and blocks._  |
 | class | [**Location**](classendstone_1_1Location.md) <br>_Represents a 3-dimensional location in a dimension within a level._  |
 | class | [**Logger**](classendstone_1_1Logger.md) <br>[_**Logger**_](classendstone_1_1Logger.md) _class which can format and output varies levels of logs._ |

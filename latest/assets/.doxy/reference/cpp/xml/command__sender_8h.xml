@@ -33,7 +33,7 @@
         </childnode>
       </node>
       <node id="7">
-        <label>endstone/translatable.h</label>
+        <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>

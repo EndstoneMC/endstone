@@ -28,7 +28,7 @@
 #include <utility>
 #include <variant>
 
-#include "endstone/translatable.h"
+#include "endstone/lang/translatable.h"
 
 namespace endstone {
 

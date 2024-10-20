@@ -46,8 +46,12 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
+      <node id="31">
+        <label>endstone/plugin/plugin_load_order.h</label>
+        <link refid="plugin__load__order_8h_source"/>
+      </node>
       <node id="14">
-        <label>endstone/translatable.h</label>
+        <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -55,10 +59,6 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-      </node>
-      <node id="31">
-        <label>endstone/plugin/plugin_load_order.h</label>
-        <link refid="plugin__load__order_8h_source"/>
       </node>
       <node id="13">
         <label>variant</label>

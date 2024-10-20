@@ -468,6 +468,16 @@
     <member refid="classendstone_1_1Label_1a902afec08369023430298fa311fb64cb" kind="function"><name>getText</name></member>
     <member refid="classendstone_1_1Label_1ab829166df7f8cc0c8b9ba2b2119b5912" kind="function"><name>setText</name></member>
   </compound>
+  <compound refid="classendstone_1_1Language" kind="class"><name>endstone::Language</name>
+    <member refid="classendstone_1_1Language_1a62acb7590ea7237ef734b6c98b585c0b" kind="function"><name>~Language</name></member>
+    <member refid="classendstone_1_1Language_1a0bc2d7dd2a9b9b43aeb57f5278a4cb7e" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1aed24e5f934caf4816cb8471818ee2335" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1acbd599919da84faee5aa55eaf8440d6c" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1a8a6cde954fdb3b2b623f68346c2906e1" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1a633b4bcff201523d59123b7da61ab324" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1a41d81b4bfb0d53c5aae61c7312b8a11c" kind="function"><name>translate</name></member>
+    <member refid="classendstone_1_1Language_1a4a6fdc89482f25a189791fda12b083e6" kind="function"><name>getLocale</name></member>
+  </compound>
   <compound refid="classendstone_1_1Level" kind="class"><name>endstone::Level</name>
     <member refid="classendstone_1_1Level_1ac053439dfd214fde2596aecbd158cb97" kind="function"><name>~Level</name></member>
     <member refid="classendstone_1_1Level_1aa55eace2debac6499fd261db27a260bf" kind="function"><name>getName</name></member>
@@ -1010,6 +1020,7 @@
     <member refid="classendstone_1_1Server_1a29d50cb9b2c09942f11148c2e78a9d6b" kind="function"><name>getVersion</name></member>
     <member refid="classendstone_1_1Server_1a849bb8c24789cc5130abd4d4bbb5dddb" kind="function"><name>getMinecraftVersion</name></member>
     <member refid="classendstone_1_1Server_1a0a66b9b4460a3a698ddd2527304f814e" kind="function"><name>getLogger</name></member>
+    <member refid="classendstone_1_1Server_1ad6fe2bfa03da368f47888e759e81476f" kind="function"><name>getLanguage</name></member>
     <member refid="classendstone_1_1Server_1a612846abaf6bd84f56d1cb81a3c0aa95" kind="function"><name>getPluginManager</name></member>
     <member refid="classendstone_1_1Server_1ad65f8ef9b0f8f4af5d56788af89c5367" kind="function"><name>getPluginCommand</name></member>
     <member refid="classendstone_1_1Server_1a9cc59a43de86052756ff9e26ea7aa052" kind="function"><name>getCommandSender</name></member>
@@ -1494,6 +1505,10 @@
   </compound>
   <compound refid="player__inventory_8h" kind="file"><name>player_inventory.h</name>
   </compound>
+  <compound refid="language_8h" kind="file"><name>language.h</name>
+  </compound>
+  <compound refid="translatable_8h" kind="file"><name>translatable.h</name>
+  </compound>
   <compound refid="dimension_8h" kind="file"><name>dimension.h</name>
   </compound>
   <compound refid="level_8h" kind="file"><name>level.h</name>
@@ -1559,8 +1574,6 @@
   </compound>
   <compound refid="skin_8h" kind="file"><name>skin.h</name>
   </compound>
-  <compound refid="translatable_8h" kind="file"><name>translatable.h</name>
-  </compound>
   <compound refid="error_8h" kind="file"><name>error.h</name>
   </compound>
   <compound refid="result_8h" kind="file"><name>result.h</name>
@@ -1594,6 +1607,8 @@
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
   </compound>
   <compound refid="dir_d1e84b530b14f41e8b6f5ec1b5dee76c" kind="dir"><name>include/endstone/inventory</name>
+  </compound>
+  <compound refid="dir_cd2600a5c389b96acc106cf97f774d1c" kind="dir"><name>include/endstone/lang</name>
   </compound>
   <compound refid="dir_8e239ca1e5fd0d936d66a30330d3a329" kind="dir"><name>include/endstone/level</name>
   </compound>

@@ -4,7 +4,7 @@
 
 
 
-[**FileList**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**translatable.h**](translatable_8h.md)
+[**FileList**](files.md) **>** [**endstone**](dir_6cf277b678674f97c7a2b6b3b2447b33.md) **>** [**lang**](dir_cd2600a5c389b96acc106cf97f774d1c.md) **>** [**translatable.h**](translatable_8h.md)
 
 [Go to the source code of this file](translatable_8h_source.md)
 
@@ -90,5 +90,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/translatable.h`
+The documentation for this class was generated from the following file `include/endstone/lang/translatable.h`
 

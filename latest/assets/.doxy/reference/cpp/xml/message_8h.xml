@@ -5,7 +5,7 @@
     <includes local="no">string</includes>
     <includes local="no">utility</includes>
     <includes local="no">variant</includes>
-    <includes refid="translatable_8h" local="yes">endstone/translatable.h</includes>
+    <includes refid="translatable_8h" local="yes">endstone/lang/translatable.h</includes>
     <includedby refid="command__sender_8h" local="yes">include/endstone/command/command_sender.h</includedby>
     <includedby refid="dropdown_8h" local="yes">include/endstone/form/controls/dropdown.h</includedby>
     <includedby refid="label_8h" local="yes">include/endstone/form/controls/label.h</includedby>
@@ -27,7 +27,7 @@
         </childnode>
       </node>
       <node id="5">
-        <label>endstone/translatable.h</label>
+        <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -497,7 +497,7 @@
 <codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;variant&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/translatable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/lang/translatable.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>

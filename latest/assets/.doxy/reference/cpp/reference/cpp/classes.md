@@ -124,6 +124,8 @@
 
 * [**Label**](classendstone_1_1Label.md)
 ([**endstone**](namespaceendstone.md))
+* [**Language**](classendstone_1_1Language.md)
+([**endstone**](namespaceendstone.md))
 * [**Level**](classendstone_1_1Level.md)
 ([**endstone**](namespaceendstone.md))
 * [**Location**](classendstone_1_1Location.md)

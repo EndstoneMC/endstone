@@ -103,8 +103,12 @@
       <node id="41">
         <label>cstdint</label>
       </node>
+      <node id="39">
+        <label>endstone/inventory/inventory.h</label>
+        <link refid="inventory_8h_source"/>
+      </node>
       <node id="11">
-        <label>endstone/translatable.h</label>
+        <label>endstone/lang/translatable.h</label>
         <link refid="translatable_8h_source"/>
         <childnode refid="7" relation="include">
         </childnode>
@@ -112,10 +116,6 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-      </node>
-      <node id="39">
-        <label>endstone/inventory/inventory.h</label>
-        <link refid="inventory_8h_source"/>
       </node>
       <node id="3">
         <label>variant</label>

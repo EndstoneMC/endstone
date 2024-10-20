@@ -88,6 +88,9 @@ Here is a list of all files with brief descriptions:
             * **file** [**inventory.h**](inventory_8h.md)     
             * **file** [**item\_stack.h**](item__stack_8h.md)     
             * **file** [**player\_inventory.h**](player__inventory_8h.md)     
+        * **dir** [**lang**](dir_cd2600a5c389b96acc106cf97f774d1c.md)     
+            * **file** [**language.h**](language_8h.md)     
+            * **file** [**translatable.h**](translatable_8h.md)     
         * **dir** [**level**](dir_8e239ca1e5fd0d936d66a30330d3a329.md)     
             * **file** [**dimension.h**](dimension_8h.md)     
             * **file** [**level.h**](level_8h.md)     
@@ -132,5 +135,4 @@ Here is a list of all files with brief descriptions:
         * **file** [**player.h**](player_8h.md)     
         * **file** [**server.h**](server_8h.md)     
         * **file** [**skin.h**](skin_8h.md)     
-        * **file** [**translatable.h**](translatable_8h.md)     
 
