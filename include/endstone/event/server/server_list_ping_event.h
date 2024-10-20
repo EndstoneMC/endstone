@@ -65,6 +65,18 @@ public:
     }
 
     /**
+     * Sets the local port of the server.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setServerGuid(std::string guid)
+    {
+        server_guid_ = guid;
+    }
+
+    /**
      * Get the local port of the server.
      *
      * @return The local port
@@ -75,6 +87,18 @@ public:
     }
 
     /**
+     * Sets the local port of the server.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setLocalPort(int port)
+    {
+        local_port_ = port;
+    }
+
+    /**
      * Get the local port of the server for IPv6 support
      *
      * @return The local port for IPv6
@@ -82,6 +106,18 @@ public:
     [[nodiscard]] int getLocalPortV6() const
     {
         return local_port_v6_;
+    }
+
+    /**
+     * Sets the local port of the server for IPv6 support.
+     * This can be usefull when dealing with proxies
+     * to avoid a port missmatch.
+     * 
+     * @param port the port that should be set
+     */
+    void setLocalPortV6(int port)
+    {
+        local_port_v6_ = port;
     }
 
     /**
