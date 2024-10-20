@@ -47,6 +47,13 @@ void init_lang(py::module_ &m)
             },
             "Translates a given text using a set of parameters for a specific locale.", py::arg("text"),
             py::arg("params") = std::nullopt, py::arg("locale") = std::nullopt)
+        .def(
+            "translate",
+            [](const Language &self, const Translatable &translatable, const std::optional<std::string> &locale) {
+                return self.translate(translatable, locale.value_or(self.getLocale()));
+            },
+            "Translates a Translatable object into a specific locale.", py::arg("translatable"),
+            py::arg("locale") = std::nullopt)
         .def_property_readonly("locale", &Language::getLocale, "Gets the current locale.");
 }
 

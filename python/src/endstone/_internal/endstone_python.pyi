@@ -1103,9 +1103,15 @@ class Language:
     """
     Represents the interface for translating text into different languages.
     """
+    @typing.overload
     def translate(self, text: str, params: list[str] | None = None, locale: str | None = None) -> str:
         """
         Translates a given text using a set of parameters for a specific locale.
+        """
+    @typing.overload
+    def translate(self, translatable: Translatable, locale: str | None = None) -> str:
+        """
+        Translates a Translatable object into a specific locale.
         """
     @property
     def locale(self) -> str:
