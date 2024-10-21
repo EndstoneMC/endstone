@@ -202,6 +202,11 @@ std::vector<std::string> EndstoneActor::getScoreboardTags() const
     return actor_.getTags();
 }
 
+bool EndstoneActor::addScoreboardTag(std::string tag) const
+{
+    return actor_.addTag(tag);
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);

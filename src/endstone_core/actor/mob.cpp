@@ -167,6 +167,11 @@ std::vector<std::string> EndstoneMob::getScoreboardTags() const
     return EndstoneActor::getScoreboardTags();
 }
 
+bool EndstoneMob::addScoreboardTag(std::string tag) const
+{
+    return EndstoneActor::addScoreboardTag(tag);
+}
+
 bool EndstoneMob::isGliding() const
 {
     return mob_.isGliding();

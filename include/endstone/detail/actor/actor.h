@@ -68,6 +68,7 @@ public:
     [[nodiscard]] std::int64_t getId() const override;
     [[nodiscard]] bool isDead() const override;
     [[nodiscard]] std::vector<std::string> getScoreboardTags() const override;
+    [[nodiscard]] bool addScoreboardTag(std::string tag) const override;
 
     // Internal use only
     [[nodiscard]] ::Actor &getActor() const;

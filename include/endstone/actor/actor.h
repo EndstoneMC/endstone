@@ -131,6 +131,14 @@ public:
      * @return a list of scoreboard tags for this actor
      */
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
+
+    /**
+     * @brief Add a tag to this actor.
+     *
+     * @param tag the tag to add
+     * @return true if the tag was successfully added, false if the tag already exists.
+     */
+    [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
 };
 
 }  // namespace endstone
