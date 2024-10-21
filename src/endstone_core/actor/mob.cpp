@@ -172,6 +172,11 @@ bool EndstoneMob::addScoreboardTag(std::string tag) const
     return EndstoneActor::addScoreboardTag(tag);
 }
 
+bool EndstoneMob::removeScoreboardTag(std::string tag) const
+{
+    return EndstoneActor::removeScoreboardTag(tag);
+}
+
 bool EndstoneMob::isGliding() const
 {
     return mob_.isGliding();

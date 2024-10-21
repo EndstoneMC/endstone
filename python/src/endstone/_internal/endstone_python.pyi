@@ -91,7 +91,11 @@ class Actor(CommandSender):
     """
     def add_scoreboard_tag(self, tag: str) -> bool:
         """
-        Add a tag to this actor.
+        Adds a tag to this actor.
+        """
+    def remove_scoreboard_tag(self, tag: str) -> bool:
+        """
+        Removes a given tag from this actor.
         """
     def set_rotation(self, yaw: float, pitch: float) -> None:
         """

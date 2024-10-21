@@ -207,6 +207,11 @@ bool EndstoneActor::addScoreboardTag(std::string tag) const
     return actor_.addTag(tag);
 }
 
+bool EndstoneActor::removeScoreboardTag(std::string tag) const
+{
+    return actor_.removeTag(tag);
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);

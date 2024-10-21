@@ -133,12 +133,20 @@ public:
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 
     /**
-     * @brief Add a tag to this actor.
+     * @brief Adds a tag to this actor.
      *
      * @param tag the tag to add
      * @return true if the tag was successfully added, false if the tag already exists.
      */
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
+
+    /**
+     * @brief Removes a given tag from this actor.
+     *
+     * @param tag the tag to remove
+     * @return true if the tag was successfully removed, false if the tag does not exist.
+     */
+    [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
 };
 
 }  // namespace endstone

@@ -47,7 +47,9 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
         .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
                                "Returns a list of scoreboard tags for this actor.")
-        .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Add a tag to this actor.", py::arg("tag"));
+        .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Adds a tag to this actor.", py::arg("tag"))
+        .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, "Removes a given tag from this actor.",
+             py::arg("tag"));
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.");
