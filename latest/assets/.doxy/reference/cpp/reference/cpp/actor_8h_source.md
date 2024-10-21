@@ -67,6 +67,8 @@ public:
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
+
+    [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
 };
 
 }  // namespace endstone

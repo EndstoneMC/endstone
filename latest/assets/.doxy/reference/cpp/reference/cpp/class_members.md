@@ -549,6 +549,7 @@
 
 ## r
 
+* **removeScoreboardTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **raw\_knockback\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removeFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))

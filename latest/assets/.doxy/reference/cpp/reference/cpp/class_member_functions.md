@@ -394,6 +394,7 @@
 
 ## r
 
+* **removeScoreboardTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **removeAll** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removeFlag** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
 * **removePlayer** ([**endstone::BossBar**](classendstone_1_1BossBar.md))
