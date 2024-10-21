@@ -256,6 +256,21 @@ std::vector<std::string> Actor::getTags() const
     return getLevel().getTagRegistry().getTagsInSet(component->tag_set_id);
 }
 
+bool Actor::addTag(const std::string &tag)
+{
+    if (!level_) {
+        return false;
+    }
+    auto &component = entity_context_.getOrAddComponent<TagsComponent<IDType<LevelTagSetIDType>>>();
+    auto &tag_registry = getLevel().getTagRegistry();
+    if (TagSystem::hasTag(component, tag, tag_registry)) {
+        return false;
+    }
+    getLevel().incrementTagCache(tag, tag_registry);
+    tag_registry.addTagToSet(tag, component.tag_set_id);
+    return true;
+}
+
 const AttributeInstance &Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();

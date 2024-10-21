@@ -18,10 +18,13 @@
 namespace TagSystem {
 
 template <typename TagID, typename TagSetID>
-bool hasTag(TagsComponent<TagSetID> const &comp, TagID const &tagID, TagRegistry<TagID, TagSetID> const &registry)
+bool hasTag(TagsComponent<TagSetID> const &comp, const std::string &tag, TagRegistry<TagID, TagSetID> const &registry)
 {
-    registry.tryGetTagID();
-    // todo:
+    auto tag_id = registry.tryGetTagID(tag);
+    if (!tag_id.id) {
+        return false;
+    }
+    return registry.tagContainedInSet(tag_id, comp.tag_set_id);
 }
 
 }  // namespace TagSystem

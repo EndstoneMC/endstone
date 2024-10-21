@@ -30,7 +30,56 @@ public:
         return tags;
     }
 
+    [[nodiscard]] TagID tryGetTagID(std::string const &tag) const
+    {
+        auto it = tag_index_map_.find(HashedString(tag));
+        if (it == tag_index_map_.end()) {
+            return {};
+        }
+        return {it->second};
+    }
+
+    [[nodiscard]] bool tagContainedInSet(TagID tag_id, TagSetID set_id) const
+    {
+        return _getSet(set_id).contains(tag_id.id.value());
+    }
+
+    TagSetID getTagSetID(IndexSet const &set)
+    {
+        for (std::size_t i = 0; i < sets_.size(); i++) {
+            if (sets_[i] == set) {
+                return {i};
+            }
+        }
+        auto next_set_id = sets_.size();
+        sets_.push_back(set);
+        return {next_set_id};
+    }
+
+    TagSetID addTagToSet(std::string const &tag, TagSetID &tag_set_id)
+    {
+        auto tag_id = tryGetTagID(tag);
+        if (!tag_id.id) {
+            auto next_id = tags_.size();
+            tag_id.id = next_id;
+            tags_.emplace_back(tag);
+            tag_index_map_[HashedString(tag)] = next_id;
+        }
+
+        auto &index_set = sets_.at(tag_set_id.id.value());
+        if (index_set.contains(tag_id.id.value())) {
+            return tag_set_id;
+        }
+        index_set.insert(tag_id.id.value());
+        return getTagSetID(index_set);
+    }
+
 private:
+    IndexSet const &_getSet(TagSetID set_id) const
+    {
+        return sets_.at(set_id.id.value());
+    }
+
     std::unordered_map<HashedString, std::uint64_t> tag_index_map_;  // +0
     std::vector<std::string> tags_;                                  // +64
     std::vector<IndexSet> sets_;                                     // +88
