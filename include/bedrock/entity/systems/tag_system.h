@@ -27,4 +27,14 @@ bool hasTag(TagsComponent<TagSetID> const &comp, const std::string &tag, TagRegi
     return registry.tagContainedInSet(tag_id, comp.tag_set_id);
 }
 
+template <typename TagID, typename TagSetID>
+bool removeTag(TagsComponent<TagSetID> &comp, std::string const &tag, TagRegistry<TagID, TagSetID> &registry)
+{
+    auto tag_id = registry.tryGetTagID(tag);
+    if (tag_id.id) {
+        registry.removeTagFromSet(tag_id, comp.tag_set_id);
+    }
+    return true;
+}
+
 }  // namespace TagSystem

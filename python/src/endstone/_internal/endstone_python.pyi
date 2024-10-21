@@ -89,6 +89,10 @@ class Actor(CommandSender):
     """
     Represents a base actor in the level.
     """
+    def add_scoreboard_tag(self, tag: str) -> bool:
+        """
+        Add a tag to this actor.
+        """
     def set_rotation(self, yaw: float, pitch: float) -> None:
         """
         Sets the actor's rotation.

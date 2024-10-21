@@ -22,7 +22,8 @@ public:
     [[nodiscard]] std::vector<std::uint64_t> const &getPacked() const;
     [[nodiscard]] bool contains(std::size_t index) const;
     void insert(std::size_t index);
-    bool operator==(const IndexSet& other) const;
+    void remove(std::size_t index);
+    bool operator==(const IndexSet &other) const;
 
 private:
     std::vector<std::uint64_t> packed_;

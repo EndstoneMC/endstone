@@ -74,6 +74,19 @@ public:
         return getTagSetID(index_set);
     }
 
+    TagSetID removeTagFromSet(const TagID tag_id, TagSetID &tag_set_id)
+    {
+        if (!tag_id.id) {
+            return tag_set_id;
+        }
+        auto index_set = sets_[tag_set_id.id.value()];
+        if (index_set.contains(tag_id.id.value())) {
+            index_set.remove(tag_id.id.value());
+            return getTagSetID(index_set);
+        }
+        return tag_set_id;
+    }
+
 private:
     IndexSet const &_getSet(TagSetID set_id) const
     {

@@ -271,6 +271,21 @@ bool Actor::addTag(const std::string &tag)
     return true;
 }
 
+bool Actor::removeTag(const std::string &tag)
+{
+    if (!level_) {
+        return false;
+    }
+    auto &component = entity_context_.getOrAddComponent<TagsComponent<IDType<LevelTagSetIDType>>>();
+    auto &tag_registry = getLevel().getTagRegistry();
+    if (!TagSystem::hasTag(component, tag, tag_registry)) {
+        return false;
+    }
+    getLevel().decrementTagCache(tag, tag_registry);
+    TagSystem::removeTag(component, tag, tag_registry);
+    return true;
+}
+
 const AttributeInstance &Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();

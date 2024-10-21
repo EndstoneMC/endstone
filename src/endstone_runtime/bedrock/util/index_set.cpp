@@ -40,6 +40,15 @@ void IndexSet::insert(std::size_t index)
     sparse_[index] = next_packed_id;
 }
 
+void IndexSet::remove(std::size_t index)
+{
+    auto packed_id = sparse_[index];
+    packed_.erase(packed_.begin() + packed_id);
+    for (auto i = packed_id; i < packed_.size(); i++) {
+        sparse_[i]--;
+    }
+}
+
 bool IndexSet::operator==(const IndexSet &other) const
 {
     if (packed_.size() != other.packed_.size()) {
