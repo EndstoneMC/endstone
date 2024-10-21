@@ -94,6 +94,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 
 | Type | Name |
 | ---: | :--- |
+| virtual bool | [**addScoreboardTag**](#function-addscoreboardtag) (std::string tag) const = 0<br>_Add a tag to this actor._  |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
@@ -230,6 +231,40 @@ See [endstone::Permissible](classendstone_1_1Permissible.md)
 
 ## Public Functions Documentation
 
+
+
+
+### function addScoreboardTag 
+
+_Add a tag to this actor._ 
+```C++
+virtual bool endstone::Actor::addScoreboardTag (
+    std::string tag
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `tag` the tag to add 
+
+
+
+**Returns:**
+
+true if the tag was successfully added, false if the tag already exists. 
+
+
+
+
+
+        
+
+<hr>
 
 
 

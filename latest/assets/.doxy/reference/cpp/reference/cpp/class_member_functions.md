@@ -7,6 +7,7 @@
 
 * **ActionForm** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **addButton** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
+* **addScoreboardTag** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **asActor** ([**endstone::Actor**](classendstone_1_1Actor.md), [**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **ActorDeathEvent** ([**endstone::ActorDeathEvent**](classendstone_1_1ActorDeathEvent.md))
 * **ActorEvent** ([**endstone::ActorEvent**](classendstone_1_1ActorEvent.md))
