@@ -1141,11 +1141,13 @@
       <member refid="classendstone_1_1Player_1a9ee0dac306f3c2a8da7441d2f5bf5850" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a9e1a2ff2d70cb6595962047f17bcb798" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getGameMode</name></member>
       <member refid="classendstone_1_1Player_1af27fa164812bf2653148836631b98732" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getGameVersion</name></member>
+      <member refid="classendstone_1_1Actor_1a547e0f2ecb4be6edb82f909f48946031" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getHealth</name></member>
       <member refid="classendstone_1_1Actor_1a78059bed5b1a6b23bfb2be9ac6ae81a3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getId</name></member>
       <member refid="classendstone_1_1Player_1ae48de78cf20fa944d234a22d0deb23bc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getInventory</name></member>
       <member refid="classendstone_1_1Actor_1ac8febcb944888f87bd38ebaca1b46ac2" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLevel</name></member>
       <member refid="classendstone_1_1Player_1a8ffda8f3cdcb8d689f55821a1006dc05" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocale</name></member>
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocation</name></member>
+      <member refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getMaxHealth</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getName</name></member>
       <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getPing</name></member>
       <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getRuntimeId</name></member>

@@ -97,9 +97,11 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**addScoreboardTag**](#function-addscoreboardtag) (std::string tag) const = 0<br>_Adds a tag to this actor._  |
 | virtual [**Actor**](classendstone_1_1Actor.md) \* | [**asActor**](#function-asactor) () override const<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _as_[_**Actor**_](classendstone_1_1Actor.md) _._ |
 | virtual [**Dimension**](classendstone_1_1Dimension.md) & | [**getDimension**](#function-getdimension) () const = 0<br> |
+| virtual int | [**getHealth**](#function-gethealth) () const = 0<br>_Gets the entity's health from 0 to its max possible value, where 0 is dead._  |
 | virtual std::int64\_t | [**getId**](#function-getid) () const = 0<br>_Returns a unique id for this actor._  |
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
+| virtual int | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
 | virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
 | virtual std::vector&lt; std::string &gt; | [**getScoreboardTags**](#function-getscoreboardtags) () const = 0<br>_Returns a list of scoreboard tags for this actor._  |
 | virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](#function-getvelocity) () const = 0<br> |
@@ -324,6 +326,31 @@ The current [**Dimension**](classendstone_1_1Dimension.md) this actor resides in
 
 
 
+### function getHealth 
+
+_Gets the entity's health from 0 to its max possible value, where 0 is dead._ 
+```C++
+virtual int endstone::Actor::getHealth () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+Health represented from 0 to max 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getId 
 
 _Returns a unique id for this actor._ 
@@ -394,6 +421,31 @@ Gets the actor's current position
 **Returns:**
 
 a new copy of [**Location**](classendstone_1_1Location.md) containing the position of this actor 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getMaxHealth 
+
+_Gets the maximum health this entity has._ 
+```C++
+virtual int endstone::Actor::getMaxHealth () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+Maximum health 
 
 
 

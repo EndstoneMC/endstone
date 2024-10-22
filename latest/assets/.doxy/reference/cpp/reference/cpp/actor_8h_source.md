@@ -64,6 +64,10 @@ public:
 
     [[nodiscard]] virtual bool isDead() const = 0;
 
+    [[nodiscard]] virtual int getHealth() const = 0;
+
+    [[nodiscard]] virtual int getMaxHealth() const = 0;
+
     [[nodiscard]] virtual std::vector<std::string> getScoreboardTags() const = 0;
 
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
