@@ -14,6 +14,8 @@
 
 #include "endstone/detail/actor/actor.h"
 
+#include <endstone/detail/util/error.h>
+
 #include "bedrock/entity/components/offsets_component.h"
 #include "bedrock/entity/components/post_tick_position_delta_component.h"
 #include "bedrock/server/commands/command_utils.h"
@@ -200,6 +202,17 @@ bool EndstoneActor::isDead() const
 int EndstoneActor::getHealth() const
 {
     return actor_.getHealth();
+}
+
+Result<void> EndstoneActor::setHealth(int health) const
+{
+    if (health < 0 || health > getMaxHealth()) {
+        return nonstd::make_unexpected(
+            make_error("Health value ({}) must be between 0 and {}.", health, getMaxHealth()));
+    }
+    auto &instance = actor_.getMutableAttribute("minecraft:health");
+    instance.setCurrentValue(static_cast<float>(health));
+    return {};
 }
 
 int EndstoneActor::getMaxHealth() const

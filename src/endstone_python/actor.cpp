@@ -18,6 +18,7 @@
 #include <pybind11/stl.h>
 
 #include "endstone/actor/mob.h"
+#include "endstone/detail/pybind_type_caster.h"
 #include "endstone/level/dimension.h"
 #include "endstone/level/level.h"
 
@@ -45,8 +46,8 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
              py::arg("target"))
         .def_property_readonly("id", &Actor::getId, "Returns a unique id for this actor.")
         .def_property_readonly("is_dead", &Actor::isDead, "Returns true if this actor has been marked for removal.")
-        .def_property_readonly("health", &Actor::getHealth,
-                               "Gets the entity's health from 0 to its max possible value, where 0 is dead.")
+        .def_property("health", &Actor::getHealth, &Actor::setHealth,
+                      "Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.")
         .def_property_readonly("max_health", &Actor::getMaxHealth, "Gets the maximum health this entity has.")
         .def_property_readonly("scoreboard_tags", &Actor::getScoreboardTags,
                                "Returns a list of scoreboard tags for this actor.")

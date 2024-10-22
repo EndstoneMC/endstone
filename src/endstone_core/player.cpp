@@ -255,6 +255,11 @@ int EndstonePlayer::getHealth() const
     return EndstoneMob::getHealth();
 }
 
+Result<void> EndstonePlayer::setHealth(int health) const
+{
+    return EndstoneMob::setHealth(health);
+}
+
 int EndstonePlayer::getMaxHealth() const
 {
     return EndstoneMob::getMaxHealth();

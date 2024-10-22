@@ -133,6 +133,13 @@ public:
     [[nodiscard]] virtual int getHealth() const = 0;
 
     /**
+     * Sets the entity's health from 0 to its possible value, where 0 is dead.
+     *
+     * @param health New health represented from 0 to max
+     */
+    [[nodiscard]] virtual Result<void> setHealth(int health) const = 0;
+
+    /**
      * @brief Gets the maximum health this entity has.
      *
      * @return Maximum health

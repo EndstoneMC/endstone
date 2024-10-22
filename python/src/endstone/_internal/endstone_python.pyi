@@ -119,8 +119,11 @@ class Actor(CommandSender):
     @property
     def health(self) -> int:
         """
-        Gets the entity's health from 0 to its max possible value, where 0 is dead.
+        Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
         """
+    @health.setter
+    def health(self, arg1: int) -> ...:
+        ...
     @property
     def id(self) -> int:
         """
