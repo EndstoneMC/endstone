@@ -122,7 +122,7 @@ class Actor(CommandSender):
         Gets or sets the entity's health from 0 to its max possible value, where 0 is dead.
         """
     @health.setter
-    def health(self, arg1: int) -> ...:
+    def health(self, arg1: int) -> None:
         ...
     @property
     def id(self) -> int:
@@ -1817,6 +1817,16 @@ class Player(Mob):
     def send_toast(self, title: str, content: str) -> None:
         """
         Sends this player a toast notification.
+        """
+    @typing.overload
+    def spawn_particle(self, name: str, location: Location, molang_variables_json: str | None = None) -> None:
+        """
+        Spawns the particle at the target location.
+        """
+    @typing.overload
+    def spawn_particle(self, name: str, x: float, y: float, z: float, molang_variables_json: str | None = None) -> None:
+        """
+        Spawns the particle at the target location.
         """
     def transfer(self, host: str, port: int = 19132) -> None:
         """

@@ -249,6 +249,46 @@ public:
     virtual void resetTitle() const = 0;
 
     /**
+     * @brief Spawns the particle at the target location.
+     *
+     * @param name the name of the particle effect to spawn
+     * @param location the location to spawn at
+     */
+    virtual void spawnParticle(std::string name, Location location) const = 0;
+
+    /**
+     * @brief Spawns the particle at the target location.
+     *
+     * @param name the name of the particle effect to spawn
+     * @param x the position on the x axis to spawn at
+     * @param y the position on the y axis to spawn at
+     * @param z the position on the z axis to spawn at
+     */
+    virtual void spawnParticle(std::string name, float x, float y, float z) const = 0;
+
+    /**
+     * @brief Spawns the particle at the target location.
+     *
+     * @param name the name of the particle effect to spawn
+     * @param location the location to spawn at
+     * @param molang_variables_json the customizable molang variables that can be adjusted for this particle, in json
+     */
+    virtual void spawnParticle(std::string name, Location location,
+                               std::optional<std::string> molang_variables_json) const = 0;
+
+    /**
+     * @brief Spawns the particle at the target location.
+     *
+     * @param name the name of the particle effect to spawn
+     * @param x the position on the x axis to spawn at
+     * @param y the position on the y axis to spawn at
+     * @param z the position on the z axis to spawn at
+     * @param molang_variables_json the customizable molang variables that can be adjusted for this particle, in json
+     */
+    virtual void spawnParticle(std::string name, float x, float y, float z,
+                               std::optional<std::string> molang_variables_json) const = 0;
+
+    /**
      * @brief Gets the player's average ping
      *
      * @return player ping
@@ -351,7 +391,7 @@ public:
      *
      * @param packet The packet to be sent.
      */
-    virtual void sendPacket(Packet &packet) = 0;
+    virtual void sendPacket(Packet &packet) const = 0;
 };
 
 }  // namespace endstone

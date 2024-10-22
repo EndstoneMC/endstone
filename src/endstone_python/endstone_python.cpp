@@ -355,6 +355,15 @@ void init_player(py::module_ &m, py::class_<Player, Mob> &player)
         .def("reset_title", &Player::resetTitle,
              "Resets the title displayed to the player. This will clear the displayed title / subtitle and reset "
              "timings to their default values.")
+        .def("spawn_particle",
+             py::overload_cast<std::string, Location, std::optional<std::string>>(&Player::spawnParticle, py::const_),
+             "Spawns the particle at the target location.", py::arg("name"), py::arg("location").noconvert(),
+             py::arg("molang_variables_json") = std::nullopt)
+        .def("spawn_particle",
+             py::overload_cast<std::string, float, float, float, std::optional<std::string>>(&Player::spawnParticle,
+                                                                                             py::const_),
+             "Spawns the particle at the target location.", py::arg("name"), py::arg("x"), py::arg("y"), py::arg("z"),
+             py::arg("molang_variables_json") = std::nullopt)
         .def_property_readonly(
             "ping", [](const Player &self) { return self.getPing().count(); },
             "Gets the player's average ping in milliseconds.")

@@ -109,6 +109,12 @@ public:
     void sendTitle(std::string title, std::string subtitle) const override;
     void sendTitle(std::string title, std::string subtitle, int fade_in, int stay, int fade_out) const override;
     void resetTitle() const override;
+    void spawnParticle(std::string name, Location location) const override;
+    void spawnParticle(std::string name, float x, float y, float z) const override;
+    void spawnParticle(std::string name, Location location,
+                       std::optional<std::string> molang_variables_json) const override;
+    void spawnParticle(std::string name, float x, float y, float z,
+                       std::optional<std::string> molang_variables_json) const override;
     [[nodiscard]] std::chrono::milliseconds getPing() const override;
     void updateCommands() const override;
     bool performCommand(std::string command) const override;  // NOLINT(*-use-nodiscard)
@@ -123,7 +129,7 @@ public:
     void transfer(std::string host, int port) const override;
     void sendForm(FormVariant form) override;
     void closeForm() override;
-    void sendPacket(Packet &packet) override;
+    void sendPacket(Packet &packet) const override;
     void onFormClose(int form_id, PlayerFormCloseReason reason);
     void onFormResponse(int form_id, const nlohmann::json &json);
 

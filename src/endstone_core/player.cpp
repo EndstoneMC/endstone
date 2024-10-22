@@ -481,6 +481,34 @@ void EndstonePlayer::resetTitle() const
     getHandle().sendNetworkPacket(*packet);
 }
 
+void EndstonePlayer::spawnParticle(std::string name, Location location) const
+{
+    spawnParticle(name, location.getX(), location.getY(), location.getZ());
+}
+
+void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z) const
+{
+    spawnParticle(name, x, y, z, std::nullopt);
+}
+
+void EndstonePlayer::spawnParticle(std::string name, Location location,
+                                   std::optional<std::string> molang_variables_json) const
+{
+    spawnParticle(name, location.getX(), location.getY(), location.getZ(), molang_variables_json);
+}
+
+void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
+                                   std::optional<std::string> molang_variables_json) const
+{
+    SpawnParticleEffectPacket pk;
+    pk.dimension_id = static_cast<int>(getDimension().getType());
+    pk.actor_id = getHandle().getOrCreateUniqueID().raw_id;
+    pk.effect_name = name;
+    pk.position = {x, y, z};
+    pk.molang_variables_json = molang_variables_json;
+    sendPacket(pk);
+}
+
 std::chrono::milliseconds EndstonePlayer::getPing() const
 {
     auto *peer = entt::locator<RakNet::RakPeerInterface *>::value();
@@ -611,7 +639,7 @@ void EndstonePlayer::closeForm()
     forms_.clear();
 }
 
-void EndstonePlayer::sendPacket(Packet &packet)
+void EndstonePlayer::sendPacket(Packet &packet) const
 {
     PacketAdapter pk{packet};
     getHandle().sendNetworkPacket(pk);

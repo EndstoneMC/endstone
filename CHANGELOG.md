@@ -24,13 +24,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added `Server::getLanguage` to translate a message into a specific locale.
 - Added `Actor::getHealth`, `Actor::setHealth`, and `Actor::getMaxHealth` for getting and setting actor health.
 - Added `CommandSenderWrapper` to capture the output of command execution for any command sender.
+- Added `Player::spawnParticle` to send a particle effect that is only visible to the player.
 
 ### Changed
 
 - Error messages from DevTools, when OpenGL is not available, are now suppressed.
-- The return type of a few methods has been changed to `endstone::Result` to include error messages, which will
-  automatically throw exceptions
-  on the Python side.
+- The return type of several methods has been changed to `endstone::Result` to include error messages, which will
+  automatically throw exceptions with the same messages on the Python side.
 
 ### Fixed
 
