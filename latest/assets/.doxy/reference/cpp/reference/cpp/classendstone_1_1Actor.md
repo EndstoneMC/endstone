@@ -110,6 +110,7 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
 | virtual bool | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
+| virtual Result&lt; void &gt; | [**setHealth**](#function-sethealth) (int health) const = 0<br> |
 | virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
 | virtual void | [**teleport**](#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
 | virtual void | [**teleport**](#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
@@ -671,6 +672,36 @@ virtual bool endstone::Actor::removeScoreboardTag (
 
 true if the tag was successfully removed, false if the tag does not exist. 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setHealth 
+
+
+```C++
+virtual Result< void > endstone::Actor::setHealth (
+    int health
+) const = 0
+```
+
+
+
+Sets the entity's health from 0 to its possible value, where 0 is dead.
+
+
+
+
+**Parameters:**
+
+
+* `health` New health represented from 0 to max 
 
 
 

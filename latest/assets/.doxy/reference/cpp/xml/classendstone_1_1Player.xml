@@ -1196,6 +1196,7 @@
       <member refid="classendstone_1_1Player_1af687a0747f1b03f6f798159a982f9979" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlying</name></member>
       <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
+      <member refid="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setHealth</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setScoreboard</name></member>

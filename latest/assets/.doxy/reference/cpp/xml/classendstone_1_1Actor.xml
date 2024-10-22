@@ -310,6 +310,34 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="133" column="18"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Result&lt; void &gt;</type>
+        <definition>virtual Result&lt;void&gt; endstone::Actor::setHealth</definition>
+        <argsstring>(int health) const =0</argsstring>
+        <name>setHealth</name>
+        <param>
+          <type>int</type>
+          <declname>health</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sets the entity&apos;s health from 0 to its possible value, where 0 is dead.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>health</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New health represented from 0 to max </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="140" column="21"/>
+      </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
         <definition>virtual int endstone::Actor::getMaxHealth</definition>
@@ -325,7 +353,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="140" column="18"/>
+        <location file="include/endstone/actor/actor.h" line="147" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1aaa1dab3ecfbf98fc8d4b8a92e3540f1a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::string &gt;</type>
@@ -342,7 +370,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="147" column="26"/>
+        <location file="include/endstone/actor/actor.h" line="154" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -372,7 +400,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="155" column="19"/>
+        <location file="include/endstone/actor/actor.h" line="162" column="19"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
@@ -402,7 +430,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/actor/actor.h" line="163" column="19"/>
+        <location file="include/endstone/actor/actor.h" line="170" column="19"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -458,7 +486,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="164"/>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="171"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
@@ -495,6 +523,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1CommandSender_1a9ef7b0d45dc7ba12073ce93187c54b87" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendErrorMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
+      <member refid="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setHealth</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>

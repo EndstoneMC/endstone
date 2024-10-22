@@ -594,6 +594,7 @@
 * **setButtons** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md))
 * **setContent** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md))
 * **setOnSubmit** ([**endstone::ActionForm**](classendstone_1_1ActionForm.md), [**endstone::MessageForm**](classendstone_1_1MessageForm.md), [**endstone::ModalForm**](classendstone_1_1ModalForm.md))
+* **setHealth** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setRotation** ([**endstone::Actor**](classendstone_1_1Actor.md))
 * **setKnockback** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
 * **source\_** ([**endstone::ActorKnockbackEvent**](classendstone_1_1ActorKnockbackEvent.md))
