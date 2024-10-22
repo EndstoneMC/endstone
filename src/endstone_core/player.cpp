@@ -502,7 +502,6 @@ void EndstonePlayer::spawnParticle(std::string name, float x, float y, float z,
 {
     SpawnParticleEffectPacket pk;
     pk.dimension_id = static_cast<int>(getDimension().getType());
-    pk.actor_id = getHandle().getOrCreateUniqueID().raw_id;
     pk.effect_name = name;
     pk.position = {x, y, z};
     pk.molang_variables_json = molang_variables_json;
