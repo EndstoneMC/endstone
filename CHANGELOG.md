@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added the `ScriptMessageEvent`, which will get called when a script message is sent using the `/scriptevent` command.
 - Added `Server::getLanguage` to translate a message into a specific locale.
 - Added `Actor::getHealth`, `Actor::setHealth`, and `Actor::getMaxHealth` for getting and setting actor health.
+- Added `CommandSenderWrapper` to capture the output of command execution for any command sender.
 
 ### Changed
 
