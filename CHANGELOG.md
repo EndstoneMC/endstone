@@ -9,6 +9,33 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.5.4.1](https://github.com/EndstoneMC/endstone/compare/v0.5.4.1...HEAD)</small>
 
+### Added
+
+- CommandSender will now be downcast to the correct derived type on the Python side.
+- Added the `Objective::isDisplayed` method to check if an objective is being displayed in any of the scoreboard slots.
+- Added `Server::getOnlineMode` to check if the server is running with authentication enabled.
+- Added `Actor::getScoreboardTags` to get the list of tags added to the actor.
+- Added `Actor::addTag` and `Actor::removeTag` to modify the actor's tags.
+- Added support for loading zipped resource packs. You can now put `.zip` and `.mcpack` resource packs under
+  the `resource_packs` folder, and they will be loaded automatically when the server starts.
+- Added support for encrypted resource packs. You can put the keys in the `.zip.key` or `.mcpack.key` format next to the
+  resource packs.
+- Added the `ScriptMessageEvent`, which will get called when a script message is sent using the `/scriptevent` command.
+- Added `Server::getLanguage` to translate a message into a specific locale.
+- Added `Actor::getHealth`, `Actor::setHealth`, and `Actor::getMaxHealth` for getting and setting actor health.
+
+### Changed
+
+- Error messages from DevTools, when OpenGL is not available, are now suppressed.
+- The return type of a few methods has been changed to `endstone::Result` to include error messages, which will
+  automatically throw exceptions
+  on the Python side.
+
+### Fixed
+
+- Fixed a crash that occurred while handling server ping
+  requests ([#60](https://github.com/EndstoneMC/endstone/issues/60)).
+
 ## [0.5.4.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4.1) - 2023-09-19
 
 <small>[Compare with 0.5.4](https://github.com/EndstoneMC/endstone/compare/v0.5.4...v0.5.4.1)</small>
