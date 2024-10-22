@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added the `Objective::isDisplayed` method to check if an objective is being displayed in any of the scoreboard slots.
 - Added `Server::getOnlineMode` to check if the server is running with authentication enabled.
 - Added `Actor::getScoreboardTags` to get the list of tags added to the actor.
-- Added `Actor::addTag` and `Actor::removeTag` to modify the actor's tags.
+- Added `Actor::addScoreboardTag` and `Actor::removeScoreboardTag` to modify the actor's tags.
 - Added support for loading zipped resource packs. You can now put `.zip` and `.mcpack` resource packs under
   the `resource_packs` folder, and they will be loaded automatically when the server starts.
 - Added support for encrypted resource packs. You can put the keys in the `.zip.key` or `.mcpack.key` format next to the
