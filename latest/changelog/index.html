@@ -2812,13 +2812,13 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Added <code>Server::getLanguage</code> to translate a message into a specific locale.</li>
 <li>Added <code>Actor::getHealth</code>, <code>Actor::setHealth</code>, and <code>Actor::getMaxHealth</code> for getting and setting actor health.</li>
 <li>Added <code>CommandSenderWrapper</code> to capture the output of command execution for any command sender.</li>
+<li>Added <code>Player::spawnParticle</code> to send a particle effect that is only visible to the player.</li>
 </ul>
 <h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Error messages from DevTools, when OpenGL is not available, are now suppressed.</li>
-<li>The return type of a few methods has been changed to <code>endstone::Result</code> to include error messages, which will
-  automatically throw exceptions
-  on the Python side.</li>
+<li>The return type of several methods has been changed to <code>endstone::Result</code> to include error messages, which will
+  automatically throw exceptions with the same messages on the Python side.</li>
 </ul>
 <h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
 <ul>

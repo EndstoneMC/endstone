@@ -160,7 +160,7 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**performCommand**](#function-performcommand) (std::string command) const = 0<br>_Makes the player perform the given command._  |
 | virtual void | [**resetTitle**](#function-resettitle) () const = 0<br>_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._  |
 | virtual void | [**sendForm**](#function-sendform) (FormVariant form) = 0<br>_Sends a form to the player._  |
-| virtual void | [**sendPacket**](#function-sendpacket) ([**Packet**](classendstone_1_1Packet.md) & packet) = 0<br>_Sends a packet to the player._  |
+| virtual void | [**sendPacket**](#function-sendpacket) ([**Packet**](classendstone_1_1Packet.md) & packet) const = 0<br>_Sends a packet to the player._  |
 | virtual void | [**sendPopup**](#function-sendpopup) (std::string message) const = 0<br>_Sends this player a popup message._  |
 | virtual void | [**sendTip**](#function-sendtip) (std::string message) const = 0<br>_Sends this player a tip message._  |
 | virtual void | [**sendTitle**](#function-sendtitle-12) (std::string title, std::string subtitle) const = 0<br>_Sends a title and a subtitle message to the player. If they are empty strings, the display will be updated as such. The titles will be displayed with the default timings._  |
@@ -174,6 +174,10 @@ Inherits the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual void | [**setGameMode**](#function-setgamemode) (GameMode mode) = 0<br>_Sets this player's current GameMode._  |
 | virtual void | [**setScoreboard**](#function-setscoreboard) ([**Scoreboard**](classendstone_1_1Scoreboard.md) & scoreboard) = 0<br> |
 | virtual void | [**setWalkSpeed**](#function-setwalkspeed) (float value) const = 0<br> |
+| virtual void | [**spawnParticle**](#function-spawnparticle-14) (std::string name, [**Location**](classendstone_1_1Location.md) location) const = 0<br>_Spawns the particle at the target location._  |
+| virtual void | [**spawnParticle**](#function-spawnparticle-24) (std::string name, float x, float y, float z) const = 0<br>_Spawns the particle at the target location._  |
+| virtual void | [**spawnParticle**](#function-spawnparticle-34) (std::string name, [**Location**](classendstone_1_1Location.md) location, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
+| virtual void | [**spawnParticle**](#function-spawnparticle-44) (std::string name, float x, float y, float z, std::optional&lt; std::string &gt; molang\_variables\_json) const = 0<br>_Spawns the particle at the target location._  |
 | virtual void | [**transfer**](#function-transfer) (std::string host, int port) const = 0<br>_Transfers the player to another server._  |
 | virtual void | [**updateCommands**](#function-updatecommands) () const = 0<br>_Send the list of commands to the client._  |
 
@@ -1076,7 +1080,7 @@ _Sends a packet to the player._
 ```C++
 virtual void endstone::Player::sendPacket (
     Packet & packet
-) = 0
+) const = 0
 ```
 
 
@@ -1462,6 +1466,134 @@ Sets the speed at which a client will walk.
 
 
 * `value` The new speed. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function spawnParticle [1/4]
+
+_Spawns the particle at the target location._ 
+```C++
+virtual void endstone::Player::spawnParticle (
+    std::string name,
+    Location location
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` the name of the particle effect to spawn 
+* `location` the location to spawn at 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function spawnParticle [2/4]
+
+_Spawns the particle at the target location._ 
+```C++
+virtual void endstone::Player::spawnParticle (
+    std::string name,
+    float x,
+    float y,
+    float z
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` the name of the particle effect to spawn 
+* `x` the position on the x axis to spawn at 
+* `y` the position on the y axis to spawn at 
+* `z` the position on the z axis to spawn at 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function spawnParticle [3/4]
+
+_Spawns the particle at the target location._ 
+```C++
+virtual void endstone::Player::spawnParticle (
+    std::string name,
+    Location location,
+    std::optional< std::string > molang_variables_json
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` the name of the particle effect to spawn 
+* `location` the location to spawn at 
+* `molang_variables_json` the customizable molang variables that can be adjusted for this particle, in json 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function spawnParticle [4/4]
+
+_Spawns the particle at the target location._ 
+```C++
+virtual void endstone::Player::spawnParticle (
+    std::string name,
+    float x,
+    float y,
+    float z,
+    std::optional< std::string > molang_variables_json
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` the name of the particle effect to spawn 
+* `x` the position on the x axis to spawn at 
+* `y` the position on the y axis to spawn at 
+* `z` the position on the z axis to spawn at 
+* `molang_variables_json` the customizable molang variables that can be adjusted for this particle, in json 
 
 
 

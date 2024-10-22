@@ -106,6 +106,16 @@ public:
 
     virtual void resetTitle() const = 0;
 
+    virtual void spawnParticle(std::string name, Location location) const = 0;
+
+    virtual void spawnParticle(std::string name, float x, float y, float z) const = 0;
+
+    virtual void spawnParticle(std::string name, Location location,
+                               std::optional<std::string> molang_variables_json) const = 0;
+
+    virtual void spawnParticle(std::string name, float x, float y, float z,
+                               std::optional<std::string> molang_variables_json) const = 0;
+
     [[nodiscard]] virtual std::chrono::milliseconds getPing() const = 0;
 
     virtual void updateCommands() const = 0;
@@ -134,7 +144,7 @@ public:
 
     virtual void closeForm() = 0;
 
-    virtual void sendPacket(Packet &packet) = 0;
+    virtual void sendPacket(Packet &packet) const = 0;
 };
 
 }  // namespace endstone

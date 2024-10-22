@@ -486,6 +486,7 @@
 * **setGameMode** ([**endstone::Player**](classendstone_1_1Player.md), [**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **setScoreboard** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setWalkSpeed** ([**endstone::Player**](classendstone_1_1Player.md))
+* **spawnParticle** ([**endstone::Player**](classendstone_1_1Player.md))
 * **setCommand** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md), [**endstone::ServerCommandEvent**](classendstone_1_1ServerCommandEvent.md))
 * **setDeathMessage** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))
 * **setJoinMessage** ([**endstone::PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md))
