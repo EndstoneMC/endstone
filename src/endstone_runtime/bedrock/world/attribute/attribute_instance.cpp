@@ -21,6 +21,11 @@ float AttributeInstance::getCurrentValue() const
     return current_value_;
 }
 
+float AttributeInstance::getMaxValue() const
+{
+    return current_max_value_;
+}
+
 void AttributeInstance::setCurrentValue(float value)
 {
     current_value_ = value;

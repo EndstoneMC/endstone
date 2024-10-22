@@ -28,6 +28,7 @@ public:
     // virtual void tick() = 0;
 
     [[nodiscard]] float getCurrentValue() const;
+    [[nodiscard]] float getMaxValue() const;
     void setCurrentValue(float value);
     [[nodiscard]] Attribute *getAttribute() const;
 

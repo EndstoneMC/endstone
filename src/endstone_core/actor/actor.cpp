@@ -197,6 +197,16 @@ bool EndstoneActor::isDead() const
     return !actor_.isAlive();
 }
 
+int EndstoneActor::getHealth() const
+{
+    return actor_.getHealth();
+}
+
+int EndstoneActor::getMaxHealth() const
+{
+    return actor_.getMaxHealth();
+}
+
 std::vector<std::string> EndstoneActor::getScoreboardTags() const
 {
     return actor_.getTags();

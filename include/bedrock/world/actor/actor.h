@@ -279,6 +279,8 @@ public:
     [[nodiscard]] std::vector<std::string> getTags() const;
     bool addTag(const std::string &tag);
     bool removeTag(const std::string &tag);
+    [[nodiscard]] int getHealth() const;
+    [[nodiscard]] int getMaxHealth() const;
 
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone

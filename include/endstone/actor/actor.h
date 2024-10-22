@@ -126,6 +126,20 @@ public:
     [[nodiscard]] virtual bool isDead() const = 0;
 
     /**
+     * @brief Gets the entity's health from 0 to its max possible value, where 0 is dead.
+     *
+     * @return Health represented from 0 to max
+     */
+    [[nodiscard]] virtual int getHealth() const = 0;
+
+    /**
+     * @brief Gets the maximum health this entity has.
+     *
+     * @return Maximum health
+     */
+    [[nodiscard]] virtual int getMaxHealth() const = 0;
+
+    /**
      * @brief Returns a list of scoreboard tags for this actor.
      *
      * @return a list of scoreboard tags for this actor

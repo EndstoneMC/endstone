@@ -250,6 +250,16 @@ bool EndstonePlayer::isDead() const
     return EndstoneMob::isDead();
 }
 
+int EndstonePlayer::getHealth() const
+{
+    return EndstoneMob::getHealth();
+}
+
+int EndstonePlayer::getMaxHealth() const
+{
+    return EndstoneMob::getMaxHealth();
+}
+
 std::vector<std::string> EndstonePlayer::getScoreboardTags() const
 {
     return EndstoneMob::getScoreboardTags();

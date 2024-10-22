@@ -117,6 +117,11 @@ class Actor(CommandSender):
         Gets the current Dimension this actor resides in.
         """
     @property
+    def health(self) -> int:
+        """
+        Gets the entity's health from 0 to its max possible value, where 0 is dead.
+        """
+    @property
     def id(self) -> int:
         """
         Returns a unique id for this actor.
@@ -150,6 +155,11 @@ class Actor(CommandSender):
     def location(self) -> Location:
         """
         Gets the actor's current position.
+        """
+    @property
+    def max_health(self) -> int:
+        """
+        Gets the maximum health this entity has.
         """
     @property
     def runtime_id(self) -> int:
