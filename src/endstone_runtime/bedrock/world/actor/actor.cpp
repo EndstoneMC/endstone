@@ -267,7 +267,7 @@ bool Actor::addTag(const std::string &tag)
         return false;
     }
     getLevel().incrementTagCache(tag, tag_registry);
-    tag_registry.addTagToSet(tag, component.tag_set_id);
+    component.tag_set_id = tag_registry.addTagToSet(tag, component.tag_set_id);
     return true;
 }
 

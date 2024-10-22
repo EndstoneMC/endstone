@@ -52,7 +52,7 @@ public:
             }
         }
         auto next_set_id = sets_.size();
-        sets_.push_back(set);
+        sets_.emplace_back(set);
         return {next_set_id};
     }
 
@@ -66,12 +66,14 @@ public:
             tag_index_map_[HashedString(tag)] = next_id;
         }
 
-        auto &index_set = sets_.at(tag_set_id.id.value());
+        auto &index_set = _getSet(tag_set_id);
         if (index_set.contains(tag_id.id.value())) {
             return tag_set_id;
         }
-        index_set.insert(tag_id.id.value());
-        return getTagSetID(index_set);
+
+        IndexSet new_set = index_set;
+        new_set.insert(tag_id.id.value());
+        return getTagSetID(new_set);
     }
 
     TagSetID removeTagFromSet(const TagID tag_id, TagSetID &tag_set_id)
@@ -79,18 +81,21 @@ public:
         if (!tag_id.id) {
             return tag_set_id;
         }
-        auto index_set = sets_[tag_set_id.id.value()];
-        if (index_set.contains(tag_id.id.value())) {
-            index_set.remove(tag_id.id.value());
-            return getTagSetID(index_set);
+
+        auto &index_set = _getSet(tag_set_id);
+        if (!index_set.contains(tag_id.id.value())) {
+            return tag_set_id;
         }
-        return tag_set_id;
+
+        IndexSet new_set = index_set;
+        new_set.remove(tag_id.id.value());
+        return getTagSetID(new_set);
     }
 
 private:
     IndexSet const &_getSet(TagSetID set_id) const
     {
-        return sets_.at(set_id.id.value());
+        return sets_[set_id.id.value()];
     }
 
     std::unordered_map<HashedString, std::uint64_t> tag_index_map_;  // +0

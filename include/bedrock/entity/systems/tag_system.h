@@ -32,7 +32,7 @@ bool removeTag(TagsComponent<TagSetID> &comp, std::string const &tag, TagRegistr
 {
     auto tag_id = registry.tryGetTagID(tag);
     if (tag_id.id) {
-        registry.removeTagFromSet(tag_id, comp.tag_set_id);
+        comp.tag_set_id = registry.removeTagFromSet(tag_id, comp.tag_set_id);
     }
     return true;
 }
