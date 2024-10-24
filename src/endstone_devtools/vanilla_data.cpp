@@ -113,7 +113,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"burnOdds", block.getBurnOdds()},
                 {"flameOdds", block.getFlameOdds()},
                 {"thickness", round(block.getThickness())},
-                {"light", block.getLight()},
+                {"lightDampening", block.getLight()},
                 {"lightEmission", block.getLightEmission()},
                 {"explosionResistance", round(block.getExplosionResistance())},
                 {"friction", round(block.getFriction())},
