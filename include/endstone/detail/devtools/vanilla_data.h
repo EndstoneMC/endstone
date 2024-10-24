@@ -36,7 +36,7 @@ struct VanillaData {
         nlohmann::json furnace;
         nlohmann::json furnace_aux;
         nlohmann::json multi;
-        nlohmann::json shulker_box;
+        nlohmann::json user_data_shapeless;
         nlohmann::json shapeless_chemistry;
         nlohmann::json shaped_chemistry;
         nlohmann::json smithing_transform;

@@ -41,4 +41,4 @@ private:
     std::weak_ptr<void *> on_gameplay_user_removed_subscription_;                   // +920 (+688)
     std::shared_ptr<void *> scoreboard_imgui_module_;                               //
 };
-BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 968, 704);
+BEDROCK_STATIC_ASSERT_SIZE(ServerScoreboard, 968, 736);

@@ -126,6 +126,7 @@ public:
     virtual OwnerPtr<EntityContext> takeEntity(WeakEntityRef, LevelChunk &) = 0;
     [[nodiscard]] virtual StrictEntityContext fetchStrictEntity(ActorUniqueID, bool) const = 0;
     [[nodiscard]] virtual Actor *fetchEntity(ActorUniqueID, bool) const = 0;
+    virtual void *getActorFetcher() = 0;
     [[nodiscard]] virtual Actor *getRuntimeEntity(ActorRuntimeID, bool) const = 0;
     [[nodiscard]] virtual void *getActorRuntimeIDManager() = 0;
     [[nodiscard]] virtual void *getActorRuntimeIDManager() const = 0;

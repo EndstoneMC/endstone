@@ -29,7 +29,7 @@ enum class CraftingDataEntryType {
     FurnaceRecipe = 2,
     FurnaceAuxRecipe = 3,
     MultiRecipe = 4,
-    ShulkerBoxRecipe = 5,
+    UserDataShapelessRecipe = 5,
     ShapelessChemistryRecipe = 6,
     ShapedChemistryRecipe = 7,
     SmithingTransformRecipe = 8,

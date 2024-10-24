@@ -240,7 +240,9 @@ enum class MinecraftPacketIds {
     ServerboundDiagnosticsPacket = 315,
     CameraAimAssist = 316,
     ContainerRegistryCleanup = 317,
-    EndId = 318,
+    MovementEffect = 318,
+    SetMovementAuthorityMode = 319,
+    EndId,
 };
 
 class Packet {

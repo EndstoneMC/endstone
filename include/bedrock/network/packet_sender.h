@@ -23,6 +23,7 @@
 
 class PacketSender : public Bedrock::EnableNonOwnerReferences {
 public:
+    [[nodiscard]] virtual bool isInitialized() const = 0;
     virtual void send(Packet &) = 0;
     virtual void sendToServer(Packet &) = 0;
     virtual void sendToClient(UserEntityIdentifierComponent const *, Packet const &) = 0;

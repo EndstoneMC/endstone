@@ -44,11 +44,12 @@ protected:
 
 public:
     virtual ~Item() = 0;
-    virtual bool initServer(Json::Value const &, SemVersion const &, bool, Experiments const &) = 0;
+    virtual bool initServer(Json::Value const &, SemVersion const &, IPackLoadContext &, JsonBetaState) = 0;
     virtual void tearDown() = 0;
     virtual Item &setDescriptionId(std::string const &) = 0;
     virtual std::string const &getDescriptionId() const = 0;
     virtual int getMaxUseDuration(ItemStack const *) const = 0;
+    virtual WeakPtr<const BlockLegacy> const &getLegacyBlockForRendering() const = 0;
     virtual bool isMusicDisk() const = 0;
     virtual void executeEvent(ItemStackBase &, std::string const &, RenderParams &) const = 0;
     virtual bool isComponentBased() const = 0;
@@ -149,18 +150,16 @@ public:
     virtual bool shouldSendInteractionGameEvents() const = 0;
     virtual bool useInterruptedByAttacking() const = 0;
     virtual bool hasSameRelevantUserData(ItemStackBase const &, ItemStackBase const &) const = 0;
-    virtual void initClient(Json::Value const &, SemVersion const &, bool, Experiments const &) = 0;
+    virtual void initClient(Json::Value const &, SemVersion const &, JsonBetaState, IPackLoadContext &) = 0;
     virtual Item &setIconInfo(std::string const &, int) = 0;
     virtual ResolvedItemIconInfo getIconInfo(ItemStackBase const &, int, bool) const = 0;
     virtual std::string getInteractText(Player const &) const = 0;
     virtual int getAnimationFrameFor(Mob *, bool, ItemStack const *, bool) const = 0;
     virtual bool isEmissive(int) const = 0;
     virtual Brightness getLightEmission(int) const = 0;
-    // virtual int getIconYOffset() const = 0;
     virtual bool canBeCharged() const = 0;
     virtual void playSoundIncrementally(ItemStack const &, Mob &) const = 0;
     virtual float getFurnaceXPmultiplier(ItemStackBase const *) const = 0;
-    virtual std::string getAuxValuesDescription() const = 0;
     virtual bool calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;
     virtual bool _checkUseOnPermissions(Actor &, ItemStackBase &, FacingID const &, BlockPos const &) const = 0;
     virtual bool _calculatePlacePos(ItemStackBase &, Actor &, FacingID &, BlockPos &) const = 0;

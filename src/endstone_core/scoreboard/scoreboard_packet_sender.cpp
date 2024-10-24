@@ -25,6 +25,11 @@ ScoreboardPacketSender::ScoreboardPacketSender(EndstoneServer &server, EndstoneS
 {
 }
 
+bool ScoreboardPacketSender::isInitialized() const
+{
+    return sender_.isInitialized();
+}
+
 void ScoreboardPacketSender::send(::Packet &packet)
 {
     throw std::runtime_error("Not supported!");

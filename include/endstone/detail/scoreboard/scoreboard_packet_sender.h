@@ -25,6 +25,7 @@ class ScoreboardPacketSender : public PacketSender {
 public:
     ScoreboardPacketSender(EndstoneServer &server, EndstoneScoreboard &scoreboard, PacketSender &sender);
     ~ScoreboardPacketSender() override = default;
+    [[nodiscard]] bool isInitialized() const override;
     void send(::Packet &) override;
     void sendToServer(::Packet &) override;
     void sendToClient(const UserEntityIdentifierComponent *, const ::Packet &) override;

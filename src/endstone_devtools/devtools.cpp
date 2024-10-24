@@ -215,7 +215,7 @@ void render()
                             {"furnace", data->recipes.furnace},
                             {"furnaceAux", data->recipes.furnace_aux},
                             {"multi", data->recipes.multi},
-                            {"shulkerBox", data->recipes.shulker_box},
+                            {"shulkerBox", data->recipes.user_data_shapeless},
                             {"shapelessChemistry", data->recipes.shapeless_chemistry},
                             {"shapedChemistry", data->recipes.shaped_chemistry},
                             {"smithingTransform", data->recipes.smithing_transform},
@@ -456,8 +456,8 @@ void showRecipeWindow(bool *open)
     if (ImGui::CollapsingHeader(fmt::format("{} Multi Recipes", data->recipes.multi.size()).c_str())) {
         ImGui::Json(data->recipes.multi);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Shulker Box Recipes", data->recipes.shulker_box.size()).c_str())) {
-        ImGui::Json(data->recipes.shulker_box);
+    if (ImGui::CollapsingHeader(fmt::format("{} Shulker Box Recipes", data->recipes.user_data_shapeless.size()).c_str())) {
+        ImGui::Json(data->recipes.user_data_shapeless);
     }
     if (ImGui::CollapsingHeader(
             fmt::format("{} Shapeless Chemistry Recipes", data->recipes.shapeless_chemistry.size()).c_str())) {
@@ -556,7 +556,7 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
         {"furnace", data->recipes.furnace},
         {"furnaceAux", data->recipes.furnace_aux},
         {"multi", data->recipes.multi},
-        {"shulkerBox", data->recipes.shulker_box},
+        {"userDataShapeless", data->recipes.user_data_shapeless},
         {"shapelessChemistry", data->recipes.shapeless_chemistry},
         {"shapedChemistry", data->recipes.shaped_chemistry},
         {"smithingTransform", data->recipes.smithing_transform},

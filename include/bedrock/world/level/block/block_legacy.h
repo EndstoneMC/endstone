@@ -147,8 +147,6 @@ public:
     [[nodiscard]] virtual bool canConnect(Block const &, FacingID, Block const &) const = 0;
     [[nodiscard]] virtual bool isMovingBlock() const = 0;
     [[nodiscard]] virtual CopperBehavior const *tryGetCopperBehavior() const = 0;
-    [[nodiscard]] virtual bool canDamperVibrations() const = 0;
-    [[nodiscard]] virtual bool canOccludeVibrations() const = 0;
     [[nodiscard]] virtual bool isStemBlock() const = 0;
     [[nodiscard]] virtual bool isContainerBlock() const = 0;
     [[nodiscard]] virtual bool isCraftingBlock() const = 0;
@@ -159,7 +157,6 @@ public:
     [[nodiscard]] virtual bool isWallBlock() const = 0;
     [[nodiscard]] virtual bool isStairBlock() const = 0;
     [[nodiscard]] virtual bool isSlabBlock() const = 0;
-    // [[nodiscard]] virtual bool isDoubleSlabBlock() const = 0;
     [[nodiscard]] virtual bool isDoorBlock() const = 0;
     [[nodiscard]] virtual bool isRailBlock() const = 0;
     [[nodiscard]] virtual bool isButtonBlock() const = 0;
@@ -167,6 +164,7 @@ public:
     [[nodiscard]] virtual bool isCandleCakeBlock() const = 0;
     [[nodiscard]] virtual bool isMultifaceBlock() const = 0;
     [[nodiscard]] virtual bool isSignalSource() const = 0;
+    [[nodiscard]] virtual bool isConsumerComponent() const = 0;
     [[nodiscard]] virtual bool canBeOriginalSurface() const = 0;
     [[nodiscard]] virtual bool isSilentWhenJumpingOff() const = 0;
     [[nodiscard]] virtual bool isValidAuxValue(int) const = 0;
@@ -242,13 +240,8 @@ public:
     [[nodiscard]] virtual bool canSpawnAt(BlockSource const &region, BlockPos const &) const = 0;
     virtual void notifySpawnedAt(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool causesFreezeEffect() const = 0;
-    // [[nodiscard]] virtual int getIconYOffset() const = 0;
     [[nodiscard]] virtual std::string buildDescriptionId(Block const &) const = 0;
     [[nodiscard]] virtual bool isAuxValueRelevantForPicking() const = 0;
-    // [[nodiscard]] virtual int getColor(Block const &) const = 0;
-    // [[nodiscard]] virtual int getColor(BlockSource &, BlockPos const &, Block const &) const = 0;
-    // [[nodiscard]] virtual int getColorAtPos(BlockSource &, BlockPos const &) const = 0;
-    // [[nodiscard]] virtual int getColorForParticle(BlockSource &, BlockPos const &, Block const &) const = 0;
     [[nodiscard]] virtual bool isSeasonTinted(Block const &, BlockSource &, BlockPos const &) const = 0;
     virtual void onGraphicsModeChanged(BlockGraphicsModeChangeContext const &) = 0;
     [[nodiscard]] virtual float getShadeBrightness(Block const &) const = 0;
@@ -270,7 +263,6 @@ public:
     virtual void onRemove(BlockSource &, BlockPos const &) const = 0;
     virtual void onExploded(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void onStandOn(EntityContext &, BlockPos const &) const = 0;
-    // virtual void onPlace(BlockSource &, BlockPos const &) const = 0;
     [[nodiscard]] virtual bool shouldTickOnSetBlock() const = 0;
     virtual void tick(BlockSource &, BlockPos const &, Random &) const = 0;
     virtual void randomTick(BlockSource &, BlockPos const &, Random &) const = 0;
@@ -287,20 +279,6 @@ public:
     [[nodiscard]] virtual mce::Color getMapColor(BlockSource &, BlockPos const &, Block const &) const = 0;
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
-    [[nodiscard]] virtual mce::Color getDustColor(Block const &) const = 0;
-    virtual void _iterateCandles(Block const &, BlockPos const &, std::function<void(Vec3 const &, int)>) const = 0;
-    [[nodiscard]] virtual ItemInstance const getBaseSeed() const = 0;
-    virtual void onLand(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual bool isFreeToFall(BlockSource &, BlockPos const &) const = 0;
-    virtual void startFalling(BlockSource &, BlockPos const &, Block const &, bool) const = 0;
-    [[nodiscard]] virtual int getInputSignal(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual bool isAlternateInput(Block const &) const = 0;
-    [[nodiscard]] virtual int getAlternateSignal(BlockSource &, BlockPos const &) const = 0;
-    [[nodiscard]] virtual int getOutputSignal(Block const &) const = 0;
-    [[nodiscard]] virtual int getTurnOffDelay(Block const &) const = 0;
-    [[nodiscard]] virtual int getTurnOnDelay(Block const &) const = 0;
-    [[nodiscard]] virtual Block const *getOnBlock(Block const *) const = 0;
-    [[nodiscard]] virtual Block const *getOffBlock(Block const *) const = 0;
 
     [[nodiscard]] bool canDropWithAnyTool() const
     {
@@ -377,7 +355,7 @@ private:
     CreativeItemCategory creative_item_category_;                         // +312 (+272)
     std::string creative_group_;                                          // +320 (+280)
     bool is_hidden_in_commands_;                                          // +352 (+304)
-    bool allow_runes_;                                                    // +353 (+305)
+    bool allows_runes_;                                                   // +353 (+305)
     bool can_be_broken_from_falling_;                                     // +354 (+306)
     bool can_be_original_surface_;                                        // +355 (+307)
     bool solid_;                                                          // +356 (+308)
@@ -397,34 +375,30 @@ private:
     FlameOdds flame_odds_;                                                // +376 (+328)
     BurnOdds burn_odds_;                                                  // +380 (+332)
     LavaFlammable lava_flammable_;                                        // +384 (+336)
-    float destroy_speed_;                                                 // +388 (+340)
-    float explosion_resistence_;                                          // +392 (+344)
-    mce::Color map_color_;                                                // +396 (+348)
-    float friction_;                                                      // +412 (+364)
-    BlockTintType block_tint_type_;                                       // +416 (+368)
-    bool return_default_block_on_unidentified_block_state_;               // +420 (+372)
-    BlockColorLogic color_logic_;                                         // +424
-    NewBlockID id_;                                                       // +428
-    BaseGameVersion min_required_game_version_;                           // +432
-    bool is_vanilla_;                                                     // +552
-    std::vector<HashedString> tags_;                                      // +560
-    std::unordered_map<std::string, void *> event_handlers_;              // +584 void* = DefinitionEvent
-    bool data_driven_vanilla_blocks_and_items_enabled_;                   // +648
-    AABB visual_shape_;                                                   // +652
-    std::int32_t bits_used_;                                              // +680
-    std::int32_t total_bits_used_;                                        // +684
-    std::map<std::uint64_t, BlockStateInstance> states_;                  // +688
-    std::unordered_map<HashedString, std::uint64_t> state_name_map_;      // +704
-    std::size_t creative_enum_state_;                                     // +768
-    std::vector<std::unique_ptr<Block>> block_permutations_;              // +776
-    Block *default_state_;                                                // +800
-    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;  // +808
-    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;  // +832
-    std::unique_ptr<void *> block_state_group_;                           // +904 void* = BlockStateGroup
-    std::unique_ptr<void *> resource_drops_strategy_;                     // +912 void* = IResourceDropsStrategy
-    IntRange experience_drop_;                                            // +920
-    bool can_drop_with_any_tool_;                                         // +928
-    std::vector<void *> unknown9_;                                        // +936
-    std::vector<void *> unknown10_;                                       // +960
-    // ...
+    mce::Color map_color_;                                                // +388
+    float friction_;                                                      // +404
+    BlockTintType block_tint_type_;                                       // +408
+    bool return_default_block_on_unidentified_block_state_;               // +412
+    BlockColorLogic color_logic_;                                         // +416
+    NewBlockID id_;                                                       // +420
+    BaseGameVersion min_required_game_version_;                           // +424
+    bool is_vanilla_;                                                     // +544
+    std::vector<HashedString> tags_;                                      // +552
+    std::unordered_map<std::string, void *> event_handlers_;              // +576 void* = DefinitionEvent
+    bool data_driven_vanilla_blocks_and_items_enabled_;                   // +640
+    AABB visual_shape_;                                                   // +644
+    std::int32_t bits_used_;                                              // +672
+    std::int32_t total_bits_used_;                                        // +676
+    std::map<std::uint64_t, BlockStateInstance> states_;                  // +680
+    std::unordered_map<HashedString, std::uint64_t> state_name_map_;      // +696
+    std::size_t creative_enum_state_;                                     // +760
+    std::vector<std::unique_ptr<Block>> block_permutations_;              // +768
+    Block *default_state_;                                                // +792
+    std::vector<std::unique_ptr<void *>> get_placement_block_callbacks_;  // +800
+    Core::Cache<std::uint16_t, const Block *> legacy_data_lookup_table_;  // +824
+    std::unique_ptr<void *> block_state_group_;                           // +896 void* = BlockStateGroup
+    std::unique_ptr<void *> resource_drops_strategy_;                     // +904 void* = IResourceDropsStrategy
+    IntRange experience_drop_;                                            // +912
+    bool can_drop_with_any_tool_;                                         // +920
+                                                                          // ...
 };

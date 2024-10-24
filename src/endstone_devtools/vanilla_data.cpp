@@ -334,8 +334,8 @@ void dumpRecipes(VanillaData &data, ::Level &level)
             data.recipes.multi.push_back(recipe);
             break;
         }
-        case CraftingDataEntryType::ShulkerBoxRecipe: {
-            data.recipes.shulker_box.push_back(recipe);
+        case CraftingDataEntryType::UserDataShapelessRecipe: {
+            data.recipes.user_data_shapeless.push_back(recipe);
             break;
         }
         case CraftingDataEntryType::ShapelessChemistryRecipe: {

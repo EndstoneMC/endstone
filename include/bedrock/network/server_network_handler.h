@@ -90,35 +90,33 @@ private:
 
     GameCallbacks *callbacks_;                                   // +80
     Bedrock::NonOwnerPointer<ILevel> level_;                     // +88
-    ServerNetworkSystem *network_;                               // +96
-    PrivateKeyManager *server_keys_;                             // +112
-    ServerLocator *server_locator_;                              // +120
-    gsl::not_null<PacketSender *> packet_sender_;                // +128
-    bool use_allow_list_;                                        // +136
-    AllowList *allow_list_;                                      // +144
-    PermissionsFile *permissions_file_;                          // +152
-    DenyList server_deny_list_;                                  // +160
-    NetworkServerConfig network_server_config_;                  // +264
-    bool has_displayed_pack_errors_;                             // +336
-    NetworkIdentifier my_id_;                                    // +344
-    int max_chunk_radius_;                                       // +504
-    MinecraftCommands *minecraft_commands_;                      // +512
-    IMinecraftApp *app_;                                         // +520
-    Bedrock::NonOwnerPointer<void *> text_filtering_processor_;  // +528 TextFilteringProcessor
-    std::unique_ptr<void *> client_cache_manager_;               // +536
-    std::unordered_map<std::uint64_t, std::string> server_storage_for_clients_connecting_attempt_;  // +552
-    std::unique_ptr<void *> companion_handler_;                               // +616 ClassroomModeNetworkHandler
-    std::string tenant_id_;                                                   // +624
-    std::string shareable_identity_token_;                                    // +656
-    Bedrock::Threading::Mutex validate_player_mutex_;                         // +688
-    bool allow_incoming_;                                                     // +768
-    std::unique_ptr<void *> server_network_controller_;                       // +776 IServerNetworkController
-    std::string server_name_;                                                 // +784
-    std::vector<std::string> trusted_keys_;                                   // +816
-    int max_num_players_;                                                     // +840
-    std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;               // +848
-    std::vector<mce::UUID> known_emote_piece_ids_;                            // +912
-    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +936
-    bool is_trial_;                                                           // +1000
-    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;   // +1008
+    ServerNetworkSystem *network_;                               // +112
+    PrivateKeyManager *server_keys_;                             // +120
+    ServerLocator *server_locator_;                              // +128
+    gsl::not_null<PacketSender *> packet_sender_;                // +136
+    bool use_allow_list_;                                        // +144
+    AllowList *allow_list_;                                      // +152
+    PermissionsFile *permissions_file_;                          // +160
+    DenyList server_deny_list_;                                  // +168
+    NetworkServerConfig network_server_config_;                  // +272
+    bool has_displayed_pack_errors_;                             // +344
+    NetworkIdentifier my_id_;                                    // +352
+    int max_chunk_radius_;                                       // +512
+    MinecraftCommands *minecraft_commands_;                      // +520
+    IMinecraftApp *app_;                                         // +528
+    Bedrock::NonOwnerPointer<void *> text_filtering_processor_;  // +536 TextFilteringProcessor
+    std::unique_ptr<void *> client_cache_manager_;               // +560
+    std::unordered_map<std::uint64_t, std::string> server_storage_for_clients_connecting_attempt_;  // +560
+    std::unique_ptr<void *> companion_handler_;                               // +632 ClassroomModeNetworkHandler
+    Bedrock::Threading::Mutex validate_player_mutex_;                         // +640
+    bool allow_incoming_;                                                     // +720
+    std::unique_ptr<void *> server_network_controller_;                       // +728 IServerNetworkController
+    std::string server_name_;                                                 // +736
+    std::vector<std::string> trusted_keys_;                                   // +768
+    int max_num_players_;                                                     // +792
+    std::unordered_set<mce::UUID> known_emote_piece_id_lookup_;               // +800
+    std::vector<mce::UUID> known_emote_piece_ids_;                            // +864
+    std::unordered_map<NetworkIdentifier, std::unique_ptr<Client>> clients_;  // +888
+    bool is_trial_;                                                           // +952
+    std::unordered_map<PackIdVersion, std::string> pack_id_to_content_key_;   // +960
 };
