@@ -456,7 +456,8 @@ void showRecipeWindow(bool *open)
     if (ImGui::CollapsingHeader(fmt::format("{} Multi Recipes", data->recipes.multi.size()).c_str())) {
         ImGui::Json(data->recipes.multi);
     }
-    if (ImGui::CollapsingHeader(fmt::format("{} Shulker Box Recipes", data->recipes.user_data_shapeless.size()).c_str())) {
+    if (ImGui::CollapsingHeader(
+            fmt::format("{} User Data Shapeless Recipes", data->recipes.user_data_shapeless.size()).c_str())) {
         ImGui::Json(data->recipes.user_data_shapeless);
     }
     if (ImGui::CollapsingHeader(

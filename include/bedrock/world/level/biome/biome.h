@@ -67,10 +67,9 @@ private:
     mce::Color water_color_;                                  // +104
     float water_transparency_;                                // +120
     bool rain_;                                               // +124
-    WeakRef<const FogDefinition> fog_definition_;             // +128
-    OceanRuinConfiguration ocean_ruin_config_;                // +144
-    std::vector<std::shared_ptr<void *>> mobs_;               // +160
-    CachedClientComponentData cached_client_component_data_;  // +184
-    int id_;                                                  // +188 Endstone: remove const to suppress build warning
+    OceanRuinConfiguration ocean_ruin_config_;                // +128
+    std::vector<std::shared_ptr<void *>> mobs_;               // +144 void* = MobSpawnerData
+    CachedClientComponentData cached_client_component_data_;  // +168
+    std::uint16_t id_;                                        // +170
     // BiomeComponentStorage biome_component_storage_;
 };
