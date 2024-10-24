@@ -16,10 +16,14 @@
 
 #include <functional>
 
-#include "bedrock/bedrock.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
 #include "bedrock/world/item/item_instance.h"
+#include "bedrock/world/item/registry/creative_item_entry.h"
 
-class CreativeItemRegistry {
+class CreativeItemRegistry : public Bedrock::EnableNonOwnerReferences {
 public:
-    ENDSTONE_HOOK static void forEachCreativeItemInstance(std::function<bool(ItemInstance &)>);
+    void forEachCreativeItemInstance(std::function<bool(const ItemInstance &)>) const;
+
+private:
+    std::vector<CreativeItemEntry> creative_items_;  // +24
 };

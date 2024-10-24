@@ -29,6 +29,11 @@ const std::unordered_map<HashedString, WeakPtr<Item>> &ItemRegistryRef::getNameT
     return _lockRegistry()->name_to_item_map_;
 }
 
+Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistryRef::getCreativeItemRegistry()
+{
+    return _lockRegistry()->getCreativeItemRegistry();
+}
+
 std::shared_ptr<ItemRegistry> ItemRegistryRef::_lockRegistry() const
 {
     return weak_registry_.lock();

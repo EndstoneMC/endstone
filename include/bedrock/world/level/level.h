@@ -29,5 +29,4 @@ public:
 
 protected:
     friend class endstone::detail::EndstoneServer;
-    ENDSTONE_HOOK gsl::not_null<StackRefResult<GameplayUserManager>> _getGameplayUserManagerStackRef();
 };

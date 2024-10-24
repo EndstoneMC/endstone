@@ -16,6 +16,7 @@ from packaging.version import Version
 from rich.progress import BarColumn, DownloadColumn, Progress, TextColumn, TimeRemainingColumn
 
 from endstone import __minecraft_version__ as minecraft_version
+from endstone import __version__ as endstone_version
 
 
 class Bootstrap:
@@ -50,6 +51,10 @@ class Bootstrap:
     def plugin_path(self) -> Path:
         return self.server_path / "plugins"
 
+    @property
+    def user_agent(self) -> str:
+        return f"Endstone/{endstone_version} (Minecraft/{minecraft_version})"
+
     def _validate(self) -> None:
         if platform.system().lower() != self.target_system:
             raise NotImplementedError(f"{platform.system()} is not supported by this bootstrap.")
@@ -74,7 +79,7 @@ class Bootstrap:
         with tempfile.TemporaryFile(dir=dst) as f:
             metadata = server_data["binary"][minecraft_version][self.target_system.lower()]
             url = metadata["url"]
-            response = requests.get(url, stream=True)
+            response = requests.get(url, stream=True, headers={"User-Agent": self.user_agent})
             response.raise_for_status()
             total_size = int(response.headers.get("Content-Length", 0))
             self._logger.info(f"Downloading server from {url}...")

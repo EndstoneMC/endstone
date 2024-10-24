@@ -47,4 +47,4 @@ private:
     std::unique_ptr<IPlayerDeathManagerProxy> proxy_;  // +136
     Bedrock::NonOwnerPointer<PacketSender> sender_;    // +144
 };
-BEDROCK_STATIC_ASSERT_SIZE(PlayerDeathManager, 160, 120);
+BEDROCK_STATIC_ASSERT_SIZE(PlayerDeathManager, 168, 128);

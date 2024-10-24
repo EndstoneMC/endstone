@@ -205,7 +205,8 @@ void dumpItemData(VanillaData &data, ::Level &level)
         }
     }
 
-    CreativeItemRegistry::forEachCreativeItemInstance([&](ItemInstance &item_instance) {
+    auto creative_item_registry = item_registry.getCreativeItemRegistry();
+    creative_item_registry->forEachCreativeItemInstance([&](const ItemInstance &item_instance) {
         CompoundTag tag;
         tag.putString("name", item_instance.getItem()->getFullItemName());
         tag.putShort("damage", static_cast<std::int16_t>(item_instance.getAuxValue()));

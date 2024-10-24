@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/core/utility/pub_sub/detail/dispatching_publisher_base.h"
 
@@ -21,5 +23,8 @@ namespace Bedrock::PubSub {
 
 template <typename Func, typename T>
 class Publisher : public Detail::DispatchingPublisherBase<T>, Connector<Func> {};
+
+template <typename Func, typename T>
+using PublisherPtr = std::unique_ptr<Publisher<Func, T>>;
 
 }  // namespace Bedrock::PubSub

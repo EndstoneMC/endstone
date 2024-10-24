@@ -14,6 +14,4 @@
 
 #pragma once
 
-#include <cstdint>
-
 class GameplayUserManager {};

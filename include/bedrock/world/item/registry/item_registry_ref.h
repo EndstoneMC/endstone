@@ -17,7 +17,9 @@
 #include <memory>
 
 #include "bedrock/core/string/string_hash.h"
+#include "bedrock/core/utility/non_owner_pointer.h"
 #include "bedrock/world/item/item.h"
+#include "bedrock/world/item/registry/creative_item_registry.h"
 #include "bedrock/world/item/registry/item_registry.h"
 
 class ItemRegistryRef {
@@ -25,6 +27,7 @@ public:
     [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const;
     [[nodiscard]] WeakPtr<Item> getItem(int id) const;
     [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const;
+    Bedrock::NonOwnerPointer<CreativeItemRegistry> getCreativeItemRegistry();
 
 private:
     [[nodiscard]] std::shared_ptr<ItemRegistry> _lockRegistry() const;  // NOLINT

@@ -14,13 +14,23 @@
 
 #pragma once
 
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scoreboard_event_listener.h"
+#include "bedrock/core/utility/enable_non_owner_references.h"
+#include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
+#include "bedrock/world/item/item_instance.h"
 
-template <>
-class EventCoordinator<ScoreboardEventListener> : public EventCoordinatorPimpl<ScoreboardEventListener> {
+class CreativeItemRegistry;
+
+struct CreativeItemNetIdTag {};
+using CreativeItemNetId = TypedServerNetId<CreativeItemNetIdTag, unsigned int>;
+
+class CreativeItemEntry : public Bedrock::EnableNonOwnerReferences {
+public:
+    [[nodiscard]] ItemInstance const &getItemInstance() const;
+
 private:
-    std::unique_ptr<void *> event_tracker_listener_;  // void*=EventTracking::EventTrackerListener
+    CreativeItemRegistry *registry_;  // +24
+    std::uint32_t group_index_;
+    CreativeItemNetId creative_net_id_;
+    ItemInstance item_instance_;
+    std::uint32_t index;
 };
-
-class ScoreboardEventCoordinator : public EventCoordinator<ScoreboardEventListener> {};

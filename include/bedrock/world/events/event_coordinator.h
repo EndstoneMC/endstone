@@ -36,3 +36,6 @@ private:
     bool thread_id_initialized_;                                                 // +104 (+112)
     std::int32_t thread_check_index_;                                            // +112 (+116)
 };
+
+template <typename ListenerType>
+class EventCoordinator;

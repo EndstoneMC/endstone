@@ -16,4 +16,12 @@
 
 #include "bedrock/world/item/item_stack_base.h"
 
-class ItemInstance : public ItemStackBase {};
+class ItemInstance : public ItemStackBase {
+public:
+    void reinit(const Item &, int, int) override;
+    void reinit(const BlockLegacy &, int) override;
+    void reinit(std::string_view, int, int) override;
+    void setNull(std::optional<std::string>) override;
+    [[nodiscard]] std::string toString() const override;
+    [[nodiscard]] std::string toDebugString() const override;
+};

@@ -14,13 +14,13 @@
 
 #pragma once
 
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scoreboard_event_listener.h"
+#include <functional>
+#include <vector>
 
-template <>
-class EventCoordinator<ScoreboardEventListener> : public EventCoordinatorPimpl<ScoreboardEventListener> {
-private:
-    std::unique_ptr<void *> event_tracker_listener_;  // void*=EventTracking::EventTrackerListener
+#include "bedrock/core/string/string_hash.h"
+
+struct ItemRegistryComplexAlias {
+    std::function<HashedString(short)> callback;
+    std::vector<std::reference_wrapper<const HashedString>> split_names;
+    bool allow_commands;
 };
-
-class ScoreboardEventCoordinator : public EventCoordinator<ScoreboardEventListener> {};

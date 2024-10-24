@@ -58,6 +58,7 @@
 #include "bedrock/world/level/block_palette.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/game_type.h"
+#include "bedrock/world/level/gameplay_user_manager.h"
 #include "bedrock/world/level/level_listener.h"
 #include "bedrock/world/level/level_settings.h"
 #include "bedrock/world/level/player_death_manager.h"
@@ -83,7 +84,9 @@ public:
     [[nodiscard]] virtual ChunkTickRangeManager const &getChunkTickRangeManager() const = 0;
     virtual PortalForcer &getPortalForcer() = 0;
     virtual void requestPlayerChangeDimension(Player &, ChangeDimensionRequest &&) = 0;
+    virtual void *getPlayerDimensionTransferManager() = 0;
     virtual void entityChangeDimension(Actor &, DimensionType, std::optional<Vec3>) = 0;
+    virtual void *getActorDimensionTransferManager() = 0;
     [[nodiscard]] virtual Spawner &getSpawner() const = 0;
     virtual Bedrock::NonOwnerPointer<BossEventSubscriptionManager> getBossEventSubscriptionManager() = 0;
     [[nodiscard]] virtual ProjectileFactory &getProjectileFactory() const = 0;
@@ -112,15 +115,20 @@ public:
     virtual void addUser(OwnerPtr<EntityContext>) = 0;
     virtual Actor *addDisplayEntity(BlockSource &, OwnerPtr<EntityContext>) = 0;
     virtual void removeDisplayEntity(WeakEntityRef) = 0;
+    virtual void *getDisplayActorManager() = 0;
     virtual void suspendPlayer(Player &) = 0;
     virtual void resumePlayer(Player &) = 0;
     virtual bool isPlayerSuspended(Player &) const = 0;
+    virtual Bedrock::NonOwnerPointer<GameplayUserManager> getGameplayUserManager() = 0;
+    [[nodiscard]] virtual Bedrock::NonOwnerPointer<GameplayUserManager> getGameplayUserManager() const = 0;
     virtual OwnerPtr<EntityContext> removeActorAndTakeEntity(WeakEntityRef) = 0;
     virtual OwnerPtr<EntityContext> removeActorFromWorldAndTakeEntity(WeakEntityRef) = 0;
     virtual OwnerPtr<EntityContext> takeEntity(WeakEntityRef, LevelChunk &) = 0;
     [[nodiscard]] virtual StrictEntityContext fetchStrictEntity(ActorUniqueID, bool) const = 0;
     [[nodiscard]] virtual Actor *fetchEntity(ActorUniqueID, bool) const = 0;
     [[nodiscard]] virtual Actor *getRuntimeEntity(ActorRuntimeID, bool) const = 0;
+    [[nodiscard]] virtual void *getActorRuntimeIDManager() = 0;
+    [[nodiscard]] virtual void *getActorRuntimeIDManager() const = 0;
     [[nodiscard]] virtual Mob *getMob(ActorUniqueID) const = 0;
     [[nodiscard]] virtual Player *getPlayer(std::string const &) const = 0;
     [[nodiscard]] virtual Player *getPlayer(mce::UUID const &) const = 0;
@@ -135,6 +143,7 @@ public:
     [[nodiscard]] virtual mce::Color getPlayerColor(Player const &) const = 0;
     [[nodiscard]] virtual Tick const &getCurrentTick() const = 0;
     [[nodiscard]] virtual Tick getCurrentServerTick() const = 0;
+    [[nodiscard]] virtual void *getTickDeltaTimeManager() const = 0;
     [[nodiscard]] virtual BiomeRegistry const &getBiomeRegistry() const = 0;
     virtual BiomeRegistry &getBiomeRegistry() = 0;
     [[nodiscard]] virtual BlockPalette const &getBlockPalette() const = 0;
@@ -173,6 +182,7 @@ public:
     virtual bool explode(BlockSource &, Actor *, Vec3 const &, float, bool, bool, float, bool) = 0;
     virtual bool explode(Explosion &) = 0;
     virtual void spawnParticleEffect(std::string const &, Vec3 const &, Dimension *) = 0;
+    [[nodiscard]] virtual void *getServerParticleManager() const = 0;
     virtual void denyEffect(BlockSource &, Vec3 const &) = 0;
     virtual void potionSplash(Vec3 const &, mce::Color const &, bool) = 0;
     virtual bool extinguishFire(BlockSource &, BlockPos const &, std::uint8_t, Actor *) = 0;
@@ -212,6 +222,8 @@ public:
     [[nodiscard]] virtual bool hasPlatformBroadcast() const = 0;
     virtual void setHasLockedBehaviorPack(bool) = 0;
     virtual void setHasLockedResourcePack(bool) = 0;
+    virtual void *getServerSleepManager() = 0;
+    [[nodiscard]] virtual void *getServerSleepManager() const = 0;
     virtual void setCommandsEnabled(bool) = 0;
     virtual void setWorldTemplateOptionsUnlocked() = 0;
     [[nodiscard]] virtual bool hasLevelStorage() const = 0;
@@ -221,8 +233,12 @@ public:
     [[nodiscard]] virtual LevelData const &getLevelData() const = 0;
     virtual PhotoStorage &getPhotoStorage() = 0;
     virtual void createPhotoStorage() = 0;
+    virtual void *getPhotoManager() = 0;
+    [[nodiscard]] virtual void *getPhotoManager() const = 0;
     virtual void setEducationLevelSettings(EducationLevelSettings) = 0;
     [[nodiscard]] virtual std::optional<EducationLevelSettings> const &getEducationLevelSettings() const = 0;
+    virtual void *getEducationSettingsManager() = 0;
+    [[nodiscard]] virtual void *getEducationSettingsManager() const = 0;
     virtual void save() = 0;
     virtual void saveLevelData() = 0;
     virtual void saveGameData() = 0;
@@ -250,6 +266,7 @@ public:
     virtual LevelEventCoordinator &getLevelEventCoordinator() = 0;
     virtual void handleLevelEvent(LevelEvent, Vec3 const &, int) = 0;
     virtual void handleLevelEvent(LevelEvent, CompoundTag const &) = 0;
+    virtual void *getLevelEventManager() = 0;
     virtual void handleStopSoundEvent(std::string const &) = 0;
     virtual void handleStopAllSounds() = 0;
     virtual void handleStopMusicEvent() = 0;
@@ -264,6 +281,7 @@ public:
     virtual void broadcastSoundEvent(Dimension &, Puv::Legacy::LevelSoundEvent, Vec3 const &, int,
                                      ActorDefinitionIdentifier const &, bool, bool) = 0;
     virtual void broadcastActorEvent(Actor &, ActorEvent, int) const = 0;
+    [[nodiscard]] virtual void *getActorEventBroadcaster() const = 0;
     virtual void addChunkViewTracker(std::weak_ptr<ChunkViewSource>) = 0;
     virtual void onChunkReload(Bounds const &) = 0;
     virtual void onChunkReloaded(ChunkSource &, LevelChunk &) = 0;
@@ -279,33 +297,25 @@ public:
     [[nodiscard]] virtual int countUsersWithMatchingNetworkId(NetworkIdentifier const &) const = 0;
     [[nodiscard]] virtual std::vector<OwnerPtr<EntityContext>> const &getUsers() const = 0;
     [[nodiscard]] virtual std::vector<OwnerPtr<EntityContext>> const &getEntities() const = 0;
-
-private:
     virtual void onSubChunkLoaded(ChunkSource &, LevelChunk &, std::int16_t, bool) = 0;
-
-public:
+    virtual void *getSubChunkManager() = 0;
     virtual void onChunkLoaded(ChunkSource &, LevelChunk &) = 0;
     virtual void onChunkDiscarded(LevelChunk &) = 0;
-
-private:
+    virtual void *getLevelChunkEventManager() = 0;
     virtual void *getLevelChunkMetaDataManager() = 0;
-
-public:
     virtual void queueEntityDestruction(OwnerPtr<EntityContext>) = 0;
     virtual OwnerPtr<EntityContext> removeEntity(Actor &) = 0;
     virtual OwnerPtr<EntityContext> removeEntity(WeakEntityRef) = 0;
     virtual void forceRemoveEntity(Actor &) = 0;
     virtual void forceRemoveEntityfromWorld(Actor &) = 0;
     virtual void forceFlushRemovedPlayers() = 0;
-
-    // private: // Endstone: make public
     virtual void loadFunctionManager() = 0;
-
-public:
     virtual void levelCleanupQueueEntityRemoval(OwnerPtr<EntityContext>) = 0;
     virtual void registerTemporaryPointer(_TickPtr &) = 0;
     virtual void unregisterTemporaryPointer(_TickPtr &) = 0;
+    virtual void *getTempEPtrManager() = 0;
     virtual bool destroyBlock(BlockSource &, BlockPos const &, bool) = 0;
+    virtual void *getLevelBlockDestroyer() = 0;
     virtual void upgradeStorageVersion(StorageVersion) = 0;
     virtual void suspendAndSave() = 0;
     virtual Particle *addParticle(ParticleType, Vec3 const &, Vec3 const &, int, CompoundTag const *, bool) = 0;
@@ -320,6 +330,7 @@ public:
     [[nodiscard]] virtual std::vector<ChunkPos> const &getClientTickingOffsets() const = 0;
     [[nodiscard]] virtual std::vector<ChunkPos> getSortedPositionsFromClientOffsets(
         std::vector<ChunkPos> const &) const = 0;
+    [[nodiscard]] virtual void *getChunkTickOffsetManager() const = 0;
     [[nodiscard]] virtual bool isExporting() const = 0;
     virtual void setIsExporting(bool) = 0;
     virtual SavedDataStorage &getSavedData() = 0;
@@ -344,6 +355,7 @@ public:
                                    TagRegistry<IDType<LevelTagIDType>, IDType<LevelTagSetIDType>> &) = 0;
     virtual void incrementTagCache(std::string const &,
                                    TagRegistry<IDType<LevelTagIDType>, IDType<LevelTagSetIDType>> &) = 0;
+    virtual void *getTagCacheManager() = 0;
     [[nodiscard]] virtual bool isEdu() const = 0;
     virtual ActorFactory &getActorFactory() = 0;
     [[nodiscard]] virtual ActorFactory const &getActorFactory() const = 0;
@@ -358,8 +370,11 @@ public:
     virtual LevelTagRegistry &getTagRegistry() = 0;
     [[nodiscard]] virtual PlayerMovementSettings const &getPlayerMovementSettings() const = 0;
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
+    [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
+    [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
     [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &, mce::UUID const &,
                                           ActorUniqueID const &) const = 0;
+    [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBServer *getPositionTrackerDBServer() const = 0;
     virtual void flushRunTimeLighting() = 0;
@@ -371,6 +386,8 @@ public:
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;
     [[nodiscard]] virtual std::string const &getPlayerXUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual std::string const &getPlayerPlatformOnlineId(mce::UUID const &) const = 0;
+    virtual void *getPlayerListManager() = 0;
+    [[nodiscard]] virtual void *getPlayerListManager() const = 0;
     [[nodiscard]] virtual std::vector<WeakEntityRef> const &getActiveUsers() const = 0;
     [[nodiscard]] virtual std::vector<Actor *> getRuntimeActorList() const = 0;
     virtual void notifySubChunkRequestManager(SubChunkPacket const &) = 0;
@@ -384,6 +401,7 @@ public:
     [[nodiscard]] virtual Random &getThreadRandom() const = 0;
     virtual HitResult &getHitResult() = 0;
     virtual HitResult &getLiquidHitResult() = 0;
+    virtual void *getHitResultWrapper() = 0;
     [[nodiscard]] virtual std::string const &getImmersiveReaderString() const = 0;
     virtual void setImmersiveReaderString(std::string) = 0;
     virtual AdventureSettings &getAdventureSettings() = 0;
@@ -412,6 +430,7 @@ public:
     virtual LayeredAbilities *getPlayerAbilities(ActorUniqueID const &) = 0;
     virtual void setPlayerAbilities(ActorUniqueID const &, LayeredAbilities const &) = 0;
     virtual void sendAllPlayerAbilities(Player const &) = 0;
+    virtual void *getPlayerAbilitiesManager() = 0;
     [[nodiscard]] virtual Recipes &getRecipes() const = 0;
     [[nodiscard]] virtual BlockReducer *getBlockReducer() const = 0;
     [[nodiscard]] virtual std::weak_ptr<TrimPatternRegistry const> getTrimPatternRegistry() const = 0;
@@ -420,17 +439,19 @@ public:
     virtual std::weak_ptr<TrimMaterialRegistry> getTrimMaterialRegistry() = 0;
     virtual void digestServerItemComponents(ItemComponentPacket const &) = 0;
     [[nodiscard]] virtual BlockLegacy const &getRegisteredBorderBlock() const = 0;
+    virtual void *getLevelChunkPerformanceTelemetry() = 0;
     [[nodiscard]] virtual bool use3DBiomeMaps() const = 0;
     virtual void addBlockSourceForValidityTracking(BlockSource *) = 0;
     virtual void removeBlockSourceFromValidityTracking(BlockSource *) = 0;
-
-protected:
+    virtual void *getBlockSourceValidityManager() = 0;
+    virtual void *getChunkGenerationManager() = 0;
+    [[nodiscard]] virtual void *getChunkGenerationManager() const = 0;
+    [[nodiscard]] virtual void *getMapDataManager() const = 0;
     virtual Level *asLevel() = 0;
-
-private:
     virtual void *asMultiPlayerLevel() = 0;
-
-public:
+    [[nodiscard]] virtual void *getCameraRegistry() const = 0;
+    virtual void *getCameraRegistry() = 0;
+    virtual void *getCameraSystems() = 0;
     virtual bool isClientSideGenerationEnabled() = 0;
     virtual bool blockNetworkIdsAreHashes() = 0;
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;

@@ -17,7 +17,11 @@
 #include "bedrock/world/item/item_instance.h"
 #include "endstone/detail/hook.h"
 
-void CreativeItemRegistry::forEachCreativeItemInstance(std::function<bool(ItemInstance &)> callback)
+void CreativeItemRegistry::forEachCreativeItemInstance(std::function<bool(const ItemInstance &)> func) const
 {
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&CreativeItemRegistry::forEachCreativeItemInstance, std::move(callback));
+    for (const auto &creative_item : creative_items_) {
+        if (!func(creative_item.getItemInstance())) {
+            break;
+        }
+    }
 }

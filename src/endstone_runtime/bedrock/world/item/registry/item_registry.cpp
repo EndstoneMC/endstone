@@ -12,15 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/world/item/registry/item_registry.h"
 
-#include "bedrock/world/events/event_coordinator.h"
-#include "bedrock/world/events/scoreboard_event_listener.h"
+WeakPtr<Item> ItemRegistry::getItem(int id) const
+{
+    return id_to_item_map_.at(id);
+}
 
-template <>
-class EventCoordinator<ScoreboardEventListener> : public EventCoordinatorPimpl<ScoreboardEventListener> {
-private:
-    std::unique_ptr<void *> event_tracker_listener_;  // void*=EventTracking::EventTrackerListener
-};
+WeakPtr<Item> ItemRegistry::getItem(const HashedString &name) const
+{
+    return name_to_item_map_.at(name);
+}
 
-class ScoreboardEventCoordinator : public EventCoordinator<ScoreboardEventListener> {};
+Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistry::getCreativeItemRegistry() const
+{
+    return Bedrock::NonOwnerPointer<CreativeItemRegistry>(*creative_item_registry_);
+}

@@ -13,12 +13,13 @@
 // limitations under the License.
 
 #include "bedrock/world/scores/server_scoreboard.h"
+
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 
 std::unique_ptr<ServerScoreboard> ServerScoreboard::create(
     CommandSoftEnumRegistry registry, LevelStorage *storage,
-    gsl::not_null<StackRefResult<GameplayUserManager>> const &gameplay_user_manager)
+    Bedrock::NotNullNonOwnerPtr<GameplayUserManager> gameplay_user_manager)
 {
     ENDSTONE_FACTORY_IMPLEMENT(ServerScoreboard, registry, storage, gameplay_user_manager);
 }

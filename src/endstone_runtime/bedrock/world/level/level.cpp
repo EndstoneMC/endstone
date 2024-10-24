@@ -34,8 +34,3 @@ bool Level::isUsableLevel(const ILevel &level)
 {
     return !level.getTearingDown();
 }
-
-gsl::not_null<StackRefResult<GameplayUserManager>> Level::_getGameplayUserManagerStackRef()
-{
-    return ENDSTONE_HOOK_CALL_ORIGINAL(&Level::_getGameplayUserManagerStackRef, this);
-}
