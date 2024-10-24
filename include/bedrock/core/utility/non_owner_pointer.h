@@ -33,9 +33,11 @@ public:
     explicit NonOwnerPointer(ElementType &ptr) : NonOwnerPointer(&ptr) {}
     explicit NonOwnerPointer(ElementType *ptr)
     {
-        _setControlBlock(ptr);
-        if (control_block_->ptr) {
-            pointer_ = static_cast<T *>(control_block_->ptr);
+        if (ptr) {
+            _setControlBlock(ptr);
+        }
+        if (control_block_->is_valid) {
+            pointer_ = ptr;
         }
     }
 
@@ -56,12 +58,12 @@ public:
 
     [[nodiscard]] bool isValid() const noexcept
     {
-        return control_block_ && control_block_->ptr != nullptr;
+        return control_block_ && control_block_->is_valid;
     }
 
     void reset()
     {
-        if (control_block_ && !control_block_->ptr) {
+        if (control_block_ && !control_block_->is_valid) {
             throw std::runtime_error("Resetting a dangling pointer!");
         }
         control_block_.reset();
@@ -94,7 +96,7 @@ private:
         if (!control_block_) {
             throw std::runtime_error("Accessing a null NonOwnerPointer");
         }
-        if (!control_block_->ptr) {
+        if (!control_block_->is_valid) {
             throw std::runtime_error("Accessing a dangling NonOwnerPointer after the target object has been deleted");
         }
         return pointer_;
@@ -109,14 +111,14 @@ private:
             if (!ptr->control_block_) {
                 throw std::runtime_error("_setControlBlock(): ptr has no control block");
             }
+            control_block_ = ptr->control_block_;
             if (!isValid()) {
                 throw std::runtime_error("The newly set NonOwnerPointer was not valid");
             }
-            control_block_ = ptr->control_block_;
         }
     }
-    std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_;  // +0
-    T *pointer_{nullptr};                                                    // +24
+    std::shared_ptr<EnableNonOwnerReferences::ControlBlock> control_block_{nullptr};  // +0
+    T *pointer_{nullptr};                                                             // +24
 };
 
 template <typename T>

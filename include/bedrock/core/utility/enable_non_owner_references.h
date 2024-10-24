@@ -22,15 +22,19 @@ namespace Bedrock {
 class EnableNonOwnerReferences {
 public:
     struct ControlBlock {
-        EnableNonOwnerReferences *ptr;
+        bool is_valid;
     };
 
     EnableNonOwnerReferences()
     {
         control_block_ = std::make_shared<ControlBlock>();
-        control_block_->ptr = this;
+        control_block_->is_valid = true;
     }
-    virtual ~EnableNonOwnerReferences() = default;
+
+    virtual ~EnableNonOwnerReferences()
+    {
+        control_block_->is_valid = false;
+    }
 
 private:
     template <typename T>
