@@ -85,8 +85,6 @@ public:
         return entity_context_.tryGetComponent<Component>();
     };
 
-    // virtual bool getStatusFlag(ActorFlags flags) const = 0;
-    // virtual void setStatusFlag(ActorFlags flags, bool value) = 0;
     virtual void outOfWorld() = 0;
     virtual void reloadHardcoded(ActorInitializationMethod, VariantParameterList const &) = 0;
     virtual void reloadHardcodedClient(ActorInitializationMethod, VariantParameterList const &) = 0;
@@ -176,7 +174,6 @@ public:
     virtual void setOffhandSlot(ItemStack const &) = 0;
     [[nodiscard]] virtual ItemStack const &getEquippedTotem() const = 0;
     virtual bool consumeTotem() = 0;
-    virtual bool save(CompoundTag &) const = 0;
     virtual bool load(CompoundTag const &, DataLoadHelper &) = 0;
     [[nodiscard]] virtual HashedString const &queryEntityRenderer() const = 0;
     [[nodiscard]] virtual ActorUniqueID getSourceUniqueID() const = 0;
@@ -216,8 +213,6 @@ public:
     virtual bool getInteraction(Player &, ActorInteraction &, Vec3 const &) = 0;
     [[nodiscard]] virtual bool canDestroyBlock(Block const &) const = 0;
     virtual void setAuxValue(int) = 0;
-    virtual void startSpinAttack() = 0;
-    virtual void stopSpinAttack() = 0;
     virtual void renderDebugServerState(Options const &) = 0;
     virtual void kill() = 0;
     virtual void die(ActorDamageSource const &) = 0;
@@ -237,7 +232,6 @@ protected:
     [[nodiscard]] virtual bool _shouldProvideFeedbackOnArmorSet(ArmorSlot, ItemStack const &) const = 0;
 
 public:
-    // virtual void updateEntitySpecificMolangVariables(RenderParams &) = 0;
     virtual bool shouldTryMakeStepSound() = 0;
 
 protected:
@@ -249,7 +243,6 @@ public:
 
 protected:
     virtual void _playStepSound(BlockPos const &, Block const &) = 0;
-    virtual void _doAutoAttackOnTouch(Actor &) = 0;
 
 public:
     [[nodiscard]] bool getStatusFlag(ActorFlags flags) const;
