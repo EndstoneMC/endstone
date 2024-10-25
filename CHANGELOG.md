@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
+- Added support for Minecraft v1.21.40/41 (Bundles of Bravery).
 - CommandSender will now be downcast to the correct derived type on the Python side.
 - Added the `Objective::isDisplayed` method to check if an objective is being displayed in any of the scoreboard slots.
 - Added `Server::getOnlineMode` to check if the server is running with authentication enabled.
