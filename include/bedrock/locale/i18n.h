@@ -61,7 +61,7 @@ public:
     virtual std::string const &getLanguageName(std::string const &) = 0;
     virtual std::shared_ptr<Localization> getLocaleFor(std::string const &) = 0;
     virtual std::string const &getLocaleCodeFor(std::string const &) = 0;
-    virtual optional_ref<Localization const> getCurrentLanguage() = 0;
+    virtual gsl::not_null<std::shared_ptr<const Localization>> getCurrentLanguage() = 0;
     virtual bool languageSupportsHypenSplitting() = 0;
     virtual std::string getLocalizedAssetFileWithFallback(std::string const &, std::string const &) = 0;
     virtual bool isPackKeyword(std::string const &) = 0;

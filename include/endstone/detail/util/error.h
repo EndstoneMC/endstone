@@ -20,12 +20,12 @@
 
 namespace endstone::detail {
 
+Error make_error(std::string_view message);
+
 template <typename... Args>
 Error make_error(const fmt::format_string<Args...> format, Args &&...args)
 {
-    return make_error(fmt::format(format, std::forward<Args>(args)...));
+    return make_error(std::string_view(fmt::format(format, std::forward<Args>(args)...)));
 }
-
-Error make_error(std::string_view message);
 
 }  // namespace endstone::detail

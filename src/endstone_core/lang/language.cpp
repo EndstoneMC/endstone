@@ -55,11 +55,7 @@ std::string EndstoneLanguage::translate(Translatable translatable, std::string l
 
 std::string EndstoneLanguage::getLocale() const
 {
-    auto current_language = getI18n().getCurrentLanguage();
-    if (current_language.is_none()) {
-        return FallbackLocale;
-    }
-    return current_language.unwrap().getLanguageCode();
+    return getI18n().getCurrentLanguage()->getLanguageCode();
 }
 
 }  // namespace endstone::detail
