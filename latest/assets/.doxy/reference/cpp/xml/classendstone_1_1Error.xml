@@ -4,9 +4,9 @@
     <compoundname>endstone::Error</compoundname>
     <includes refid="error_8h" local="no">endstone/util/error.h</includes>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classendstone_1_1Error_1a108fe2e1ee8af548ab0ea0381bc81982" prot="private" static="no" mutable="no">
-        <type>std::string_view</type>
-        <definition>std::string_view endstone::Error::message_</definition>
+      <memberdef kind="variable" id="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Error::message_</definition>
         <argsstring></argsstring>
         <name>message_</name>
         <briefdescription>
@@ -15,11 +15,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/error.h" line="49" column="22" bodyfile="include/endstone/util/error.h" bodystart="49" bodyend="-1"/>
+        <location file="include/endstone/util/error.h" line="49" column="15" bodyfile="include/endstone/util/error.h" bodystart="49" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classendstone_1_1Error_1a1a72fb2a478376b9cb78a55fbb1502ed" prot="private" static="no" mutable="no">
-        <type>std::string_view</type>
-        <definition>std::string_view endstone::Error::stack_trace_</definition>
+      <memberdef kind="variable" id="classendstone_1_1Error_1ae3b5543e80a7f6a83ba9b0ecb52288bc" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Error::stack_trace_</definition>
         <argsstring></argsstring>
         <name>stack_trace_</name>
         <briefdescription>
@@ -28,7 +28,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/error.h" line="50" column="22" bodyfile="include/endstone/util/error.h" bodystart="50" bodyend="-1"/>
+        <location file="include/endstone/util/error.h" line="50" column="15" bodyfile="include/endstone/util/error.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -51,7 +51,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/error.h" line="26" column="5" bodyfile="include/endstone/util/error.h" bodystart="26" bodyend="26"/>
+        <location file="include/endstone/util/error.h" line="26" column="3" bodyfile="include/endstone/util/error.h" bodystart="26" bodyend="26"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>std::string_view</type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/error.h" line="33" column="23" bodyfile="include/endstone/util/error.h" bodystart="33" bodyend="36"/>
+        <location file="include/endstone/util/error.h" line="33" column="21" bodyfile="include/endstone/util/error.h" bodystart="33" bodyend="36"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>std::string_view</type>
@@ -85,7 +85,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/util/error.h" line="43" column="23" bodyfile="include/endstone/util/error.h" bodystart="43" bodyend="46"/>
+        <location file="include/endstone/util/error.h" line="43" column="21" bodyfile="include/endstone/util/error.h" bodystart="43" bodyend="46"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -98,8 +98,8 @@
       <member refid="classendstone_1_1Error_1af611da345686deb7c2a012faec27ac49" prot="public" virt="non-virtual"><scope>endstone::Error</scope><name>Error</name></member>
       <member refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" prot="public" virt="non-virtual"><scope>endstone::Error</scope><name>getMessage</name></member>
       <member refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" prot="public" virt="non-virtual"><scope>endstone::Error</scope><name>getStackTrace</name></member>
-      <member refid="classendstone_1_1Error_1a108fe2e1ee8af548ab0ea0381bc81982" prot="private" virt="non-virtual"><scope>endstone::Error</scope><name>message_</name></member>
-      <member refid="classendstone_1_1Error_1a1a72fb2a478376b9cb78a55fbb1502ed" prot="private" virt="non-virtual"><scope>endstone::Error</scope><name>stack_trace_</name></member>
+      <member refid="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" prot="private" virt="non-virtual"><scope>endstone::Error</scope><name>message_</name></member>
+      <member refid="classendstone_1_1Error_1ae3b5543e80a7f6a83ba9b0ecb52288bc" prot="private" virt="non-virtual"><scope>endstone::Error</scope><name>stack_trace_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

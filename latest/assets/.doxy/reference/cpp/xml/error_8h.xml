@@ -501,21 +501,21 @@
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="classendstone_1_1Error" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1Error" kindref="compound">Error</ref><sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1Error" kindref="compound">Error</ref>(std::string_view<sp/>message,<sp/>std::string_view<sp/>stack_trace)<sp/>:<sp/>message_(message),<sp/>stack_trace_(stack_trace)<sp/>{}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><ref refid="classendstone_1_1Error" kindref="compound">Error</ref>(std::string_view<sp/>message,<sp/>std::string_view<sp/>stack_trace)<sp/>:<sp/>message_(message),<sp/>stack_trace_(stack_trace)<sp/>{}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" kindref="member">getMessage</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>message_;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33" refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" kindref="member">getMessage</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>message_;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" kindref="member">getStackTrace</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stack_trace_;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43" refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>std::string_view<sp/><ref refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" kindref="member">getStackTrace</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stack_trace_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string_view<sp/>message_;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string_view<sp/>stack_trace_;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>std::string<sp/>message_;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>std::string<sp/>stack_trace_;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>

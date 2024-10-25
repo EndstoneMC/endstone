@@ -30,21 +30,21 @@ namespace endstone {
 
 class Error {
 public:
-    Error(std::string_view message, std::string_view stack_trace) : message_(message), stack_trace_(stack_trace) {}
+  Error(std::string_view message, std::string_view stack_trace) : message_(message), stack_trace_(stack_trace) {}
 
-    [[nodiscard]] std::string_view getMessage() const noexcept
-    {
-        return message_;
-    }
+  [[nodiscard]] std::string_view getMessage() const noexcept
+  {
+    return message_;
+  }
 
-    [[nodiscard]] std::string_view getStackTrace() const noexcept
-    {
-        return stack_trace_;
-    }
+  [[nodiscard]] std::string_view getStackTrace() const noexcept
+  {
+    return stack_trace_;
+  }
 
 private:
-    std::string_view message_;
-    std::string_view stack_trace_;
+  std::string message_;
+  std::string stack_trace_;
 };
 
 }  // namespace endstone

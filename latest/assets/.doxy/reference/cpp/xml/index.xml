@@ -359,8 +359,8 @@
     <member refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" kind="function"><name>setDefaultIndex</name></member>
   </compound>
   <compound refid="classendstone_1_1Error" kind="class"><name>endstone::Error</name>
-    <member refid="classendstone_1_1Error_1a108fe2e1ee8af548ab0ea0381bc81982" kind="variable"><name>message_</name></member>
-    <member refid="classendstone_1_1Error_1a1a72fb2a478376b9cb78a55fbb1502ed" kind="variable"><name>stack_trace_</name></member>
+    <member refid="classendstone_1_1Error_1a76da8953868eeb80373357c0f524e08a" kind="variable"><name>message_</name></member>
+    <member refid="classendstone_1_1Error_1ae3b5543e80a7f6a83ba9b0ecb52288bc" kind="variable"><name>stack_trace_</name></member>
     <member refid="classendstone_1_1Error_1af611da345686deb7c2a012faec27ac49" kind="function"><name>Error</name></member>
     <member refid="classendstone_1_1Error_1a940c1dd781469d3a9f0bf69c7a5cbf03" kind="function"><name>getMessage</name></member>
     <member refid="classendstone_1_1Error_1a5ecca04e37249d7e84266e24f96744b0" kind="function"><name>getStackTrace</name></member>
