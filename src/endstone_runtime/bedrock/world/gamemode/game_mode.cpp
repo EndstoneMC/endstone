@@ -50,7 +50,7 @@ bool GameMode::destroyBlock(BlockPos const &pos, FacingID face)
 }
 
 InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, FacingID face, Vec3 const &hit,
-                                      Block const *target_block)
+                                      Block const *target_block, bool is_first_event)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &player = player_->getEndstoneActor<EndstonePlayer>();
@@ -75,7 +75,7 @@ InteractionResult GameMode::useItemOn(ItemStack &item, BlockPos const &at, Facin
     }
 
     return ENDSTONE_HOOK_CALL_ORIGINAL_NAME(&GameMode::useItemOn, __FUNCDNAME__, this, item, at, face, hit,
-                                            target_block);
+                                            target_block, is_first_event);
 }
 
 bool GameMode::interact(Actor &actor, Vec3 const &location)

@@ -14,7 +14,31 @@
 
 #include "bedrock/world/events/level_event_coordinator.h"
 
+#include "endstone/detail/hook.h"
+#include "endstone/detail/server.h"
+#include "endstone/event/actor/actor_spawn_event.h"
+
+using endstone::detail::EndstoneActor;
+using endstone::detail::EndstoneServer;
+
 LevelGameplayHandler &LevelEventCoordinator::getLevelGameplayHandler()
 {
     return *level_gameplay_handler_;
+}
+
+void LevelEventCoordinator::_postReloadActorAdded(Actor &actor, ActorInitializationMethod init_method)
+{
+    ENDSTONE_HOOK_CALL_ORIGINAL(&LevelEventCoordinator::_postReloadActorAdded, this, actor, init_method);
+
+    if (actor.isPlayer()) {
+        return;
+    }
+
+    auto &server = entt::locator<EndstoneServer>::value();
+    endstone::ActorSpawnEvent e{actor.getEndstoneActor()};
+    server.getPluginManager().callEvent(e);
+
+    if (e.isCancelled()) {
+        actor.despawn();
+    }
 }

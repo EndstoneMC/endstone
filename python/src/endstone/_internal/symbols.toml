@@ -40,13 +40,15 @@ version = "1.21.41"
 # GameMode
 "?destroyBlock@GameMode@@UEAA_NAEBVBlockPos@@E@Z" = 31200912
 "?interact@GameMode@@UEAA_NAEAVActor@@AEBVVec3@@@Z" = 31212272
-"?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@@Z" = 31242272
+"?useItemOn@GameMode@@UEAA?AVInteractionResult@@AEAVItemStack@@AEBVBlockPos@@EAEBVVec3@@PEBVBlock@@_N@Z" = 31242272
 # Item
 "?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 35722336
 # ItemStack
 "??0ItemStack@@QEAA@AEBVItem@@HHPEBVCompoundTag@@@Z" = 33714608
 # Level
 "?tick@Level@@UEAAXXZ" = 33035040
+# LevelEventCoordinator
+"?_postReloadActorAdded@LevelEventCoordinator@@AEAAXAEAVActor@@W4ActorInitializationMethod@@@Z" = 30325040
 # MinecraftCommands
 "?compileCommand@MinecraftCommands@@QEAAPEAVCommand@@AEBVHashedString@@AEAVCommandOrigin@@W4CurrentCmdVersion@@V?$function@$$A6AXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z@std@@@Z" = 17597568
 "?executeCommand@MinecraftCommands@@QEBA?AUMCRESULT@@AEAVCommandContext@@_N@Z" = 17658368
@@ -87,8 +89,6 @@ version = "1.21.41"
 "?sendServerInitializeStart@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 30418160
 "?sendServerThreadStarted@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 30418496
 "?sendServerThreadStopped@ServerInstanceEventCoordinator@@QEAAXAEAVServerInstance@@@Z" = 30418544
-# ServerLevel
-"?_postReloadActorAdded@ServerLevel@@AEAAXAEAVActor@@@Z" = 30325040
 # ServerNetworkHandler
 "?disconnectClient@ServerNetworkHandler@@QEAAXAEBVNetworkIdentifier@@W4SubClientId@@W4DisconnectFailReason@Connection@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$optional@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@7@_N@Z" = 9610816
 "?trytLoadPlayer@ServerNetworkHandler@@QEAA_NAEAVServerPlayer@@AEBVConnectionRequest@@@Z" = 9697904

@@ -36,7 +36,7 @@ public:
     virtual float getPickRange(InputMode const &, bool) = 0;
     virtual bool useItem(ItemStack &) = 0;
     ENDSTONE_HOOK virtual InteractionResult useItemOn(ItemStack &, BlockPos const &, FacingID, Vec3 const &,
-                                                      Block const *);
+                                                      Block const *, bool);
     ENDSTONE_HOOK virtual bool interact(Actor &, Vec3 const &);
     virtual bool attack(Actor &) = 0;
     virtual void releaseUsingItem() = 0;

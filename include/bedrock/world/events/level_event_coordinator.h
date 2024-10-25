@@ -15,6 +15,8 @@
 #pragma once
 
 #include "bedrock/gameplayhandlers/level_gameplay_handler.h"
+#include "bedrock/world/actor/actor.h"
+#include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/level_event_listener.h"
 
@@ -24,6 +26,8 @@ public:
     LevelGameplayHandler &getLevelGameplayHandler();
 
 private:
+    ENDSTONE_HOOK void _postReloadActorAdded(Actor &, ActorInitializationMethod);
+
     std::unique_ptr<LevelGameplayHandler> level_gameplay_handler_;     // +112
     std::shared_ptr<Bedrock::PubSub::SubscriptionBase> subscription_;  // +120
 };
