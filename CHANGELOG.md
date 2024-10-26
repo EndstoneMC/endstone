@@ -5,13 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.5 - Unreleased
+## 0.5.6 - Unreleased
 
-<small>[Compare with 0.5.4.1](https://github.com/EndstoneMC/endstone/compare/v0.5.4.1...HEAD)</small>
+<small>[Compare with 0.5.5](https://github.com/EndstoneMC/endstone/compare/v0.5.5...HEAD)</small>
+
+## [0.5.5](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.5) - 2024-10-26
+
+<small>[Compare with 0.5.4.1](https://github.com/EndstoneMC/endstone/compare/v0.5.4.1...v0.5.5)</small>
 
 ### Added
 
-- Added support for Minecraft v1.21.40/41 (Bundles of Bravery).
+- Added support for Minecraft v1.21.40 (Bundles of Bravery).
 - CommandSender will now be downcast to the correct derived type on the Python side.
 - Added the `Objective::isDisplayed` method to check if an objective is being displayed in any of the scoreboard slots.
 - Added `Server::getOnlineMode` to check if the server is running with authentication enabled.
