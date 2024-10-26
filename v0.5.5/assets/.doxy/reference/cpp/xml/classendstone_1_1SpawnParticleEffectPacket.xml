@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1SpawnParticleEffectPacket" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>endstone::SpawnParticleEffectPacket</compoundname>
+    <basecompoundref refid="classendstone_1_1Packet" prot="public" virt="non-virtual">endstone::Packet</basecompoundref>
+    <includes refid="spawn__particle__effect__packet_8h" local="no">endstone/network/spawn_particle_effect_packet.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classendstone_1_1SpawnParticleEffectPacket_1a1fe651993905e264a8d58bbc53c329ce" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int endstone::SpawnParticleEffectPacket::dimension_id</definition>
+        <argsstring></argsstring>
+        <name>dimension_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="37" column="9" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1SpawnParticleEffectPacket_1ab7b054dd5655bc191c4278f568ad250e" prot="public" static="no" mutable="no">
+        <type>std::int64_t</type>
+        <definition>std::int64_t endstone::SpawnParticleEffectPacket::actor_id</definition>
+        <argsstring></argsstring>
+        <name>actor_id</name>
+        <initializer>{-1}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="38" column="18" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1SpawnParticleEffectPacket_1abb982870aec04473b2420bb2c13456ef" prot="public" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
+        <definition>Vector&lt;float&gt; endstone::SpawnParticleEffectPacket::position</definition>
+        <argsstring></argsstring>
+        <name>position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="39" column="12" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1SpawnParticleEffectPacket_1acfbf1dbac284b693461f3c72443eb520" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::SpawnParticleEffectPacket::effect_name</definition>
+        <argsstring></argsstring>
+        <name>effect_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="40" column="17" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1SpawnParticleEffectPacket_1ac6930732a0dffd1c31b0acb5f8453b7f" prot="public" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::SpawnParticleEffectPacket::molang_variables_json</definition>
+        <argsstring></argsstring>
+        <name>molang_variables_json</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="41" column="19" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1SpawnParticleEffectPacket_1ae811207ba8cf84e9dc22a611ffb167bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>PacketType</type>
+        <definition>PacketType endstone::SpawnParticleEffectPacket::getType</definition>
+        <argsstring>() const override</argsstring>
+        <name>getType</name>
+        <reimplements refid="classendstone_1_1Packet_1ae6b902874f587e6041c9706318a6ee34">getType</reimplements>
+        <briefdescription>
+<para>Gets the type of the packet. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The type of the packet. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/network/spawn_particle_effect_packet.h" line="32" column="17" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a packet for spawning a particle effect. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::Packet</label>
+        <link refid="classendstone_1_1Packet"/>
+      </node>
+      <node id="1">
+        <label>endstone::SpawnParticleEffectPacket</label>
+        <link refid="classendstone_1_1SpawnParticleEffectPacket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>endstone::Vector&lt; float &gt;</label>
+        <link refid="classendstone_1_1Vector"/>
+      </node>
+      <node id="2">
+        <label>endstone::Packet</label>
+        <link refid="classendstone_1_1Packet"/>
+      </node>
+      <node id="1">
+        <label>endstone::SpawnParticleEffectPacket</label>
+        <link refid="classendstone_1_1SpawnParticleEffectPacket"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>position</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/network/spawn_particle_effect_packet.h" line="30" column="1" bodyfile="include/endstone/network/spawn_particle_effect_packet.h" bodystart="30" bodyend="42"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1ab7b054dd5655bc191c4278f568ad250e" prot="public" virt="non-virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>actor_id</name></member>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1a1fe651993905e264a8d58bbc53c329ce" prot="public" virt="non-virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>dimension_id</name></member>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1acfbf1dbac284b693461f3c72443eb520" prot="public" virt="non-virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>effect_name</name></member>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1ae811207ba8cf84e9dc22a611ffb167bc" prot="public" virt="virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>getType</name></member>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1ac6930732a0dffd1c31b0acb5f8453b7f" prot="public" virt="non-virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>molang_variables_json</name></member>
+      <member refid="classendstone_1_1SpawnParticleEffectPacket_1abb982870aec04473b2420bb2c13456ef" prot="public" virt="non-virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>position</name></member>
+      <member refid="classendstone_1_1Packet_1a0737525674b86ec7f71593ee080b0fb1" prot="public" virt="virtual"><scope>endstone::SpawnParticleEffectPacket</scope><name>~Packet</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1TextInput" kind="class" language="C++" prot="public">
+    <compoundname>endstone::TextInput</compoundname>
+    <includes refid="text__input_8h" local="no">endstone/form/controls/text_input.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1TextInput_1a4ee0deba99c54cabcf389ab0a672d89a" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::TextInput::label_</definition>
+        <argsstring></argsstring>
+        <name>label_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="103" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1TextInput_1a4a9230a84959d6a2cb00b31b5afb8529" prot="private" static="no" mutable="no">
+        <type>Message</type>
+        <definition>Message endstone::TextInput::placeholder_</definition>
+        <argsstring></argsstring>
+        <name>placeholder_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="104" column="13" bodyfile="include/endstone/form/controls/text_input.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1TextInput_1ad07211ef414102b38a1c1736ed8c639a" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::TextInput::default_text_</definition>
+        <argsstring></argsstring>
+        <name>default_text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="105" column="19" bodyfile="include/endstone/form/controls/text_input.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1TextInput_1aea76fc3cb5e535cda7b7539d5ce486cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::TextInput::TextInput</definition>
+        <argsstring>()=default</argsstring>
+        <name>TextInput</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="30" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ad58d0a3a7dd465cf7a4aa9054dc14167" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::TextInput::TextInput</definition>
+        <argsstring>(Message label, Message placeholder, std::optional&lt; std::string &gt; default_text=std::nullopt)</argsstring>
+        <name>TextInput</name>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>Message</type>
+          <declname>placeholder</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>default_text</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="31" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::TextInput::getLabel</definition>
+        <argsstring>() const</argsstring>
+        <name>getLabel</name>
+        <briefdescription>
+<para>Gets the label of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The label of the text input field. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="41" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1a1ada248ddb24c43d7b69dad70c3f38e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <definition>TextInput&amp; endstone::TextInput::setLabel</definition>
+        <argsstring>(Message label)</argsstring>
+        <name>setLabel</name>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <briefdescription>
+<para>Sets the label of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>label</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new label for the text input field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the text input field itself. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="52" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Message</type>
+        <definition>Message endstone::TextInput::getPlaceholder</definition>
+        <argsstring>() const</argsstring>
+        <name>getPlaceholder</name>
+        <briefdescription>
+<para>Gets the placeholder of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The placeholder of the text input field. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="63" column="14" bodyfile="include/endstone/form/controls/text_input.h" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1aeabc41d53c80eb7e0939cf2fcc80d257" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <definition>TextInput&amp; endstone::TextInput::setPlaceholder</definition>
+        <argsstring>(Message placeholder)</argsstring>
+        <name>setPlaceholder</name>
+        <param>
+          <type>Message</type>
+          <declname>placeholder</declname>
+        </param>
+        <briefdescription>
+<para>Sets the placeholder of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>placeholder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new placeholder for the text input field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the text input field itself. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="74" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ade8c29b99bdd5fa4a51062e3a65ab37d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::TextInput::getDefaultValue</definition>
+        <argsstring>() const</argsstring>
+        <name>getDefaultValue</name>
+        <briefdescription>
+<para>Gets the default text of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The default text of the text input field. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="85" column="20" bodyfile="include/endstone/form/controls/text_input.h" bodystart="85" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1TextInput_1ae87a0a9ad2ac940289a531824ac2a5d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1TextInput" kindref="compound">TextInput</ref> &amp;</type>
+        <definition>TextInput&amp; endstone::TextInput::setDefaultValue</definition>
+        <argsstring>(std::optional&lt; std::string &gt; text)</argsstring>
+        <name>setDefaultValue</name>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Sets the default text of the text input field. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new default text for the text input field. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A reference to the text input field itself. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/text_input.h" line="96" column="15" bodyfile="include/endstone/form/controls/text_input.h" bodystart="96" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a text input field. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/form/controls/text_input.h" line="28" column="1" bodyfile="include/endstone/form/controls/text_input.h" bodystart="28" bodyend="106"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1TextInput_1ad07211ef414102b38a1c1736ed8c639a" prot="private" virt="non-virtual"><scope>endstone::TextInput</scope><name>default_text_</name></member>
+      <member refid="classendstone_1_1TextInput_1ade8c29b99bdd5fa4a51062e3a65ab37d" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>getDefaultValue</name></member>
+      <member refid="classendstone_1_1TextInput_1ad71cdf754913ee542a4ba0149824e214" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>getLabel</name></member>
+      <member refid="classendstone_1_1TextInput_1aca59bfd3c2b319af6e30336193dcf025" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>getPlaceholder</name></member>
+      <member refid="classendstone_1_1TextInput_1a4ee0deba99c54cabcf389ab0a672d89a" prot="private" virt="non-virtual"><scope>endstone::TextInput</scope><name>label_</name></member>
+      <member refid="classendstone_1_1TextInput_1a4a9230a84959d6a2cb00b31b5afb8529" prot="private" virt="non-virtual"><scope>endstone::TextInput</scope><name>placeholder_</name></member>
+      <member refid="classendstone_1_1TextInput_1ae87a0a9ad2ac940289a531824ac2a5d0" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>setDefaultValue</name></member>
+      <member refid="classendstone_1_1TextInput_1a1ada248ddb24c43d7b69dad70c3f38e3" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>setLabel</name></member>
+      <member refid="classendstone_1_1TextInput_1aeabc41d53c80eb7e0939cf2fcc80d257" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>setPlaceholder</name></member>
+      <member refid="classendstone_1_1TextInput_1aea76fc3cb5e535cda7b7539d5ce486cf" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>TextInput</name></member>
+      <member refid="classendstone_1_1TextInput_1ad58d0a3a7dd465cf7a4aa9054dc14167" prot="public" virt="non-virtual"><scope>endstone::TextInput</scope><name>TextInput</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

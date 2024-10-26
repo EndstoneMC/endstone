@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structendstone_1_1Skin_1_1ImageData" kind="struct" language="C++" prot="public">
+    <compoundname>endstone::Skin::ImageData</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int endstone::Skin::ImageData::height</definition>
+        <argsstring></argsstring>
+        <name>height</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="29" column="13" bodyfile="include/endstone/skin.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int endstone::Skin::ImageData::width</definition>
+        <argsstring></argsstring>
+        <name>width</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="30" column="13" bodyfile="include/endstone/skin.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1Skin_1_1ImageData_1a0d40ddd60a74155b22f5ac0af6238f2c" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Skin::ImageData::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/skin.h" line="31" column="21" bodyfile="include/endstone/skin.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/skin.h" line="28" column="5" bodyfile="include/endstone/skin.h" bodystart="28" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structendstone_1_1Skin_1_1ImageData_1a0d40ddd60a74155b22f5ac0af6238f2c" prot="public" virt="non-virtual"><scope>endstone::Skin::ImageData</scope><name>data</name></member>
+      <member refid="structendstone_1_1Skin_1_1ImageData_1a298bf3c3af3d88954ceed30f05ecdebd" prot="public" virt="non-virtual"><scope>endstone::Skin::ImageData</scope><name>height</name></member>
+      <member refid="structendstone_1_1Skin_1_1ImageData_1a4c097b64658c7cb54b0f79cfb3a750fd" prot="public" virt="non-virtual"><scope>endstone::Skin::ImageData</scope><name>width</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

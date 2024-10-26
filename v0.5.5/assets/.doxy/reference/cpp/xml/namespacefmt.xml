@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacefmt" kind="namespace" language="C++">
+    <compoundname>fmt</compoundname>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1Block_01_4" prot="public">fmt::formatter&lt; endstone::Block &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates::mapped_type &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates::value_type &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4" prot="public">fmt::formatter&lt; endstone::BlockStates &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4" prot="public">fmt::formatter&lt; endstone::BlockData &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4" prot="public">fmt::formatter&lt; endstone::BlockState &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4" prot="public">fmt::formatter&lt; endstone::ItemStack &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/block/block.h" line="176" column="1"/>
+  </compounddef>
+</doxygen>
