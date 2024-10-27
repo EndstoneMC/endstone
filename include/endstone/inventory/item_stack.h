@@ -18,12 +18,14 @@
 
 #pragma once
 
+#include <memory>
+
 namespace endstone {
 
 /**
  * @brief Represents a stack of items.
  */
-class ItemStack {
+class ItemStack : public std::enable_shared_from_this<ItemStack> {
 public:
     ItemStack() = default;
     explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
