@@ -186,6 +186,7 @@ nav:
   - Getting Started:
       - Installation: getting-started/installation.md
       - Start your server: getting-started/start-your-server.md
+      - Project structure: getting-started/project-structure.md
   - Tutorials:
       - Create your first plugin: tutorials/create-your-first-plugin.md
       - Install your plugin: tutorials/install-your-plugin.md
