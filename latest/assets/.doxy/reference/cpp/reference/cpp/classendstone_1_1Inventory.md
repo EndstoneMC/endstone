@@ -53,8 +53,10 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 | Type | Name |
 | ---: | :--- |
+| virtual std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; | [**getItem**](#function-getitem) (int index) const = 0<br>_Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._ |
 | virtual int | [**getMaxStackSize**](#function-getmaxstacksize) () const = 0<br>_Returns the maximum stack size for an_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _in this inventory._ |
 | virtual int | [**getSize**](#function-getsize) () const = 0<br>_Returns the size of the inventory._  |
+| virtual void | [**setItem**](#function-setitem) (int index, std::shared\_ptr&lt; [**ItemStack**](classendstone_1_1ItemStack.md) &gt; item) = 0<br>_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._ |
 | virtual  | [**~Inventory**](#function-inventory) () = default<br> |
 
 
@@ -86,6 +88,40 @@ Inherited by the following classes: [endstone::PlayerInventory](classendstone_1_
 
 ## Public Functions Documentation
 
+
+
+
+### function getItem 
+
+_Returns the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _found in the slot at the given index._
+```C++
+virtual std::shared_ptr< ItemStack > endstone::Inventory::getItem (
+    int index
+) const = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `index` The index of the Slot's [**ItemStack**](classendstone_1_1ItemStack.md) to return 
+
+
+
+**Returns:**
+
+The [**ItemStack**](classendstone_1_1ItemStack.md) in the slot 
+
+
+
+
+
+        
+
+<hr>
 
 
 
@@ -129,6 +165,35 @@ virtual int endstone::Inventory::getSize () const = 0
 
 The size of the inventory 
 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setItem 
+
+_Stores the_ [_**ItemStack**_](classendstone_1_1ItemStack.md) _at the given index of the inventory._
+```C++
+virtual void endstone::Inventory::setItem (
+    int index,
+    std::shared_ptr< ItemStack > item
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `index` The index where to put the [**ItemStack**](classendstone_1_1ItemStack.md) 
+* `item` The [**ItemStack**](classendstone_1_1ItemStack.md) to set 
 
 
 

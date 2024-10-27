@@ -24,6 +24,10 @@
 
 #pragma once
 
+#include <memory>
+
+#include "endstone/inventory/item_stack.h"
+
 namespace endstone {
 class Inventory {
 public:
@@ -31,6 +35,10 @@ public:
     [[nodiscard]] virtual int getSize() const = 0;
 
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
+
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItem(int index) const = 0;
+
+    virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
 };
 }  // namespace endstone
 ```

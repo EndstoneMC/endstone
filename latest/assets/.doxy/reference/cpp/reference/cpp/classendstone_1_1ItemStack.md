@@ -14,6 +14,7 @@ _Represents a stack of items._
 
 
 
+Inherits the following classes: std::enable_shared_from_this< ItemStack >
 
 
 
@@ -83,6 +84,12 @@ _Represents a stack of items._
 
 
 
+## Protected Functions
+
+| Type | Name |
+| ---: | :--- |
+| virtual const detail::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-12) () const<br> |
+| virtual detail::EndstoneItemStack \* | [**asEndstoneItemStack**](#function-asendstoneitemstack-22) () <br> |
 
 
 
@@ -229,6 +236,51 @@ inline virtual void endstone::ItemStack::setType (
 
 ```C++
 virtual endstone::ItemStack::~ItemStack () = default
+```
+
+
+
+
+<hr>
+## Protected Functions Documentation
+
+
+
+
+### function asEndstoneItemStack [1/2]
+
+```C++
+inline virtual const detail::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () const
+```
+
+
+
+
+<hr>
+
+
+
+### function asEndstoneItemStack [2/2]
+
+```C++
+inline virtual detail::EndstoneItemStack * endstone::ItemStack::asEndstoneItemStack () 
+```
+
+
+
+
+<hr>## Friends Documentation
+
+
+
+
+
+### friend EndstoneItemStack 
+
+```C++
+class endstone::ItemStack::EndstoneItemStack (
+    detail::EndstoneItemStack
+) 
 ```
 
 

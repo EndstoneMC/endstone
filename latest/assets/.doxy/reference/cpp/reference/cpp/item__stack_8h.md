@@ -12,6 +12,7 @@
 
 * `#include <utility>`
 * `#include <fmt/format.h>`
+* `#include <memory>`
 
 
 
@@ -30,6 +31,7 @@
 | Type | Name |
 | ---: | :--- |
 | namespace | [**endstone**](namespaceendstone.md) <br> |
+| namespace | [**detail**](namespaceendstone_1_1detail.md) <br> |
 | namespace | [**fmt**](namespacefmt.md) <br> |
 
 

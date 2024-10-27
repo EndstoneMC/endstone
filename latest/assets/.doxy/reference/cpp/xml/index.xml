@@ -454,8 +454,11 @@
     <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" kind="function"><name>~Inventory</name></member>
     <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" kind="function"><name>getSize</name></member>
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
+    <member refid="classendstone_1_1Inventory_1a03242079a0da4d841504ddfec5c50ceb" kind="function"><name>getItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" kind="function"><name>setItem</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
+    <member refid="classendstone_1_1ItemStack_1a48f826c758828421a29e85e3f8c98126" kind="friend"><name>detail::EndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
     <member refid="classendstone_1_1ItemStack_1aca0b4d279429247412e0e0d0b37d46a9" kind="variable"><name>amount_</name></member>
     <member refid="classendstone_1_1ItemStack_1a7593f4108fb7f234050fd70abd7d2957" kind="function"><name>ItemStack</name></member>
@@ -465,6 +468,8 @@
     <member refid="classendstone_1_1ItemStack_1ad6432e26b2e4c2e32a97cfc5fee2555f" kind="function"><name>setType</name></member>
     <member refid="classendstone_1_1ItemStack_1a0dd7a79674dcefdf8255ed48bc88de4a" kind="function"><name>getAmount</name></member>
     <member refid="classendstone_1_1ItemStack_1a4eeac443885604ca40fbc64bc05ddb3b" kind="function"><name>setAmount</name></member>
+    <member refid="classendstone_1_1ItemStack_1a404e08288c613ebc5f77bb4c009e0418" kind="function"><name>asEndstoneItemStack</name></member>
+    <member refid="classendstone_1_1ItemStack_1ad9905cad5b9b5e86e90a4c0deefc33a2" kind="function"><name>asEndstoneItemStack</name></member>
   </compound>
   <compound refid="classendstone_1_1Label" kind="class"><name>endstone::Label</name>
     <member refid="classendstone_1_1Label_1ab06f2fe28f2fd41931cf10fa9810d2d4" kind="variable"><name>text_</name></member>

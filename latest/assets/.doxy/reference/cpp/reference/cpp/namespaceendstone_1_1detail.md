@@ -77,5 +77,5 @@
 
 
 ------------------------------
-The documentation for this class was generated from the following file `include/endstone/plugin/plugin.h`
+The documentation for this class was generated from the following file `include/endstone/inventory/item_stack.h`
 

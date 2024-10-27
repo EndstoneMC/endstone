@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="23" column="13"/>
+        <location file="include/endstone/inventory/inventory.h" line="27" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="29" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="33" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>int</type>
@@ -50,7 +50,77 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/inventory/inventory.h" line="36" column="18"/>
+        <location file="include/endstone/inventory/inventory.h" line="40" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a03242079a0da4d841504ddfec5c50ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+        <definition>virtual std::shared_ptr&lt;ItemStack&gt; endstone::Inventory::getItem</definition>
+        <argsstring>(int index) const =0</argsstring>
+        <name>getItem</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Returns the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> found in the slot at the given index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index of the Slot&apos;s <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to return </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> in the slot </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/inventory.h" line="48" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Inventory::setItem</definition>
+        <argsstring>(int index, std::shared_ptr&lt; ItemStack &gt; item)=0</argsstring>
+        <name>setItem</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+          <declname>item</declname>
+        </param>
+        <briefdescription>
+<para>Stores the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> at the given index of the inventory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The index where to put the <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>item</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/inventory/inventory.h" line="56" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -70,10 +140,12 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="include/endstone/inventory/inventory.h" line="21" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="21" bodyend="37"/>
+    <location file="include/endstone/inventory/inventory.h" line="25" column="1" bodyfile="include/endstone/inventory/inventory.h" bodystart="25" bodyend="57"/>
     <listofallmembers>
+      <member refid="classendstone_1_1Inventory_1a03242079a0da4d841504ddfec5c50ceb" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>getItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>getMaxStackSize</name></member>
       <member refid="classendstone_1_1Inventory_1aeb95253ae2eaa18839b05b3612a7007e" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>getSize</name></member>
+      <member refid="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" prot="public" virt="pure-virtual"><scope>endstone::Inventory</scope><name>setItem</name></member>
       <member refid="classendstone_1_1Inventory_1ae4195380f173c841a5df5ddea12087ae" prot="public" virt="virtual"><scope>endstone::Inventory</scope><name>~Inventory</name></member>
     </listofallmembers>
   </compounddef>

@@ -28,9 +28,15 @@
 
 #pragma once
 
+#include <memory>
+
 namespace endstone {
 
-class ItemStack {
+namespace detail {
+class EndstoneItemStack;
+}
+
+class ItemStack : public std::enable_shared_from_this<ItemStack> {
 public:
     ItemStack() = default;
     explicit ItemStack(std::string type, int amount = 1) : type_(std::move(type)), amount_(amount) {}
@@ -56,6 +62,19 @@ public:
     virtual void setAmount(int amount)
     {
         amount_ = amount;
+    }
+
+protected:
+    friend class detail::EndstoneItemStack;
+
+    virtual const detail::EndstoneItemStack *asEndstoneItemStack() const
+    {
+        return nullptr;
+    }
+
+    virtual detail::EndstoneItemStack *asEndstoneItemStack()
+    {
+        return nullptr;
     }
 
 private:

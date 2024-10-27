@@ -10,6 +10,8 @@
 
 
 
+* `#include <memory>`
+* `#include "endstone/inventory/item_stack.h"`
 
 
 
