@@ -35,7 +35,11 @@ void init_inventory(py::module_ &m)
     py::class_<Inventory>(m, "Inventory", "Interface to the various inventories.")
         .def_property_readonly("size", &Inventory::getSize, "Returns the size of the inventory")
         .def_property_readonly("max_stack_size", &Inventory::getMaxStackSize,
-                               "Returns the maximum stack size for an ItemStack in this inventory.");
+                               "Returns the maximum stack size for an ItemStack in this inventory.")
+        .def("get_item", &Inventory::getItem, py::arg("item"),
+             "Returns the ItemStack found in the slot at the given index")
+        .def("set_item", &Inventory::setItem, py::arg("index"), py::arg("item"),
+             "Stores the ItemStack at the given index of the inventory.");
 
     py::class_<PlayerInventory, Inventory>(
         m, "PlayerInventory",

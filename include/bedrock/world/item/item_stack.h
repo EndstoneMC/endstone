@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <string_view>
+
 #include "bedrock/bedrock.h"
 #include "bedrock/world/inventory/network/item_stack_net_id_variant.h"
 #include "bedrock/world/item/item_stack_base.h"
@@ -21,10 +23,12 @@
 
 class ItemStack : public ItemStackBase {
 public:
+    ENDSTONE_FACTORY_DECLARE(ItemStack);
+    ENDSTONE_FACTORY_DECLARE(ItemStack, const ItemStack &rhs);
     ENDSTONE_FACTORY_DECLARE(ItemStack, Item const &item, int count = 1, int aux_value = 0,
                              CompoundTag const *user_data = nullptr);
-    static std::unique_ptr<ItemStack> create(std::string_view type, int count = 1, int aux_value = 0,
-                                             CompoundTag const *user_data = nullptr);
+    ENDSTONE_FACTORY_DECLARE(ItemStack, std::string_view type, int count = 1, int aux_value = 0,
+                             CompoundTag const *user_data = nullptr);
 
 private:
     ItemStackNetIdVariant network_id_;

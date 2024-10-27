@@ -1,4 +1,4 @@
-timestamp = 1729786800
+timestamp = 1730070027
 version = "1.21.41"
 
 [windows]
@@ -44,6 +44,8 @@ version = "1.21.41"
 # Item
 "?_sendTryPlaceBlockEvent@Item@@IEBA?AW4CoordinatorResult@@AEBVBlock@@AEBVBlockSource@@AEBVActor@@AEBVBlockPos@@EAEBVVec3@@@Z" = 35722336
 # ItemStack
+"??0ItemStack@@QEAA@XZ" = 33714976
+"??0ItemStack@@QEAA@AEBV0@@Z" = 33714384
 "??0ItemStack@@QEAA@AEBVItem@@HHPEBVCompoundTag@@@Z" = 33714608
 # Level
 "?tick@Level@@UEAAXXZ" = 33035040
@@ -151,6 +153,8 @@ version = "1.21.41"
 # Item
 "_ZNK4Item23_sendTryPlaceBlockEventERK5BlockRK11BlockSourceRK5ActorRK8BlockPoshRK4Vec3" = 123520352
 # ItemStack
+"_ZN9ItemStackC2Ev" = 124176560
+"_ZN9ItemStackC2ERKS_" = 124178464
 "_ZN9ItemStackC2ERK4ItemiiPK11CompoundTag" = 124176752
 # Level
 "_ZN5Level4tickEv" = 123875328

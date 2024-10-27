@@ -1072,6 +1072,14 @@ class Inventory:
     """
     Interface to the various inventories.
     """
+    def get_item(self, item: int) -> ItemStack:
+        """
+        Returns the ItemStack found in the slot at the given index
+        """
+    def set_item(self, index: int, item: ItemStack) -> None:
+        """
+        Stores the ItemStack at the given index of the inventory.
+        """
     @property
     def max_stack_size(self) -> int:
         """

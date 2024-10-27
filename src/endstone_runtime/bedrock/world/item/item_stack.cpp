@@ -18,6 +18,18 @@
 
 #include "endstone/detail/hook.h"
 
+std::unique_ptr<ItemStack> ItemStack::create()
+{
+    std::unique_ptr<ItemStack> (*fp)() = &ItemStack::create;
+    ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(ItemStack, fp);
+}
+
+std::unique_ptr<ItemStack> ItemStack::create(const ItemStack &rhs)
+{
+    std::unique_ptr<ItemStack> (*fp)(const ItemStack &) = &ItemStack::create;
+    ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(ItemStack, fp, rhs);
+}
+
 std::unique_ptr<ItemStack> ItemStack::create(Item const &item, int count, int aux_value, CompoundTag const *user_data)
 {
     std::unique_ptr<ItemStack> (*fp)(Item const &, int, int, CompoundTag const *) = &ItemStack::create;
@@ -28,5 +40,8 @@ std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, i
                                              CompoundTag const *user_data)
 {
     const auto item = ItemRegistryManager::getItemRegistry().getItem(std::string(name));
+    if (!item) {
+        return create();
+    }
     return create(*item, count, aux_value, user_data);
 }
