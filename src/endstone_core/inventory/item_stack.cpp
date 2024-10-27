@@ -54,6 +54,24 @@ void EndstoneItemStack::setAmount(int amount)
     handle_->set(count);
 }
 
+std::shared_ptr<EndstoneItemStack> EndstoneItemStack::fromMinecraft(::ItemStack &item)
+{
+    if (item.isNull()) {
+        return nullptr;
+    }
+    return std::make_shared<EndstoneItemStack>(item);
+}
+
+const EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack() const
+{
+    return this;
+}
+
+EndstoneItemStack *EndstoneItemStack::asEndstoneItemStack()
+{
+    return this;
+}
+
 void EndstoneItemStack::reset()
 {
     handle_ = nullptr;

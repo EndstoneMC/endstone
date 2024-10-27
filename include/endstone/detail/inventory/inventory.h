@@ -24,6 +24,8 @@ public:
     explicit EndstoneInventory(::Container &container);
     [[nodiscard]] int getSize() const override;
     [[nodiscard]] int getMaxStackSize() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getItem(int index) const override;
+    void setItem(int index, std::shared_ptr<ItemStack> item) override;
 
 private:
     ::Container &container_;

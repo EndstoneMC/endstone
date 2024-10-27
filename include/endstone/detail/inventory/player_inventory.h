@@ -23,15 +23,10 @@ class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory
 public:
     using EndstoneInventory::EndstoneInventory;
 
-    int getSize() const override
-    {
-        return EndstoneInventory::getSize();
-    }
-
-    int getMaxStackSize() const override
-    {
-        return EndstoneInventory::getMaxStackSize();
-    }
+    int getSize() const override;
+    int getMaxStackSize() const override;
+    [[nodiscard]] std::shared_ptr<ItemStack> getItem(int index) const override;
+    void setItem(int index, std::shared_ptr<ItemStack> item) override;
 };
 
 }  // namespace endstone::detail

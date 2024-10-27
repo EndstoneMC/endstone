@@ -190,16 +190,17 @@ void dumpItemData(VanillaData &data, ::Level &level)
             data.item_tags[tag_name].push_back(name);
         }
 
-        data.items[name] = {{"id", item->getId()},
-                            {"attackDamage", item->getAttackDamage()},
-                            {"armorValue", item->getArmorValue()},
-                            {"enchantValue", item->getEnchantValue()},
-                            {"toughnessValue", item->getToughnessValue()},
-                            {"maxDamage", item->getMaxDamage()},
-                            {"isDamageable", item->isDamageable()},
-                            {"maxStackSize", item->getMaxStackSize({})},
-                            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(*ItemStack::create(*item), 200)},
-                            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
+        data.items[name] = {
+            {"id", item->getId()},
+            {"attackDamage", item->getAttackDamage()},
+            {"armorValue", item->getArmorValue()},
+            {"enchantValue", item->getEnchantValue()},
+            {"toughnessValue", item->getToughnessValue()},
+            {"maxDamage", item->getMaxDamage()},
+            {"isDamageable", item->isDamageable()},
+            {"maxStackSize", item->getMaxStackSize({})},
+            {"furnaceBurnDuration", FurnaceBlockActor::getBurnDuration(*::ItemStack::create(*item), 200)},
+            {"furnaceXPMultiplier", item->getFurnaceXPmultiplier(nullptr)}};
         if (!tags.is_null()) {
             data.items[name]["tags"] = tags;
         }

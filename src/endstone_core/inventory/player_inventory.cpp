@@ -12,32 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/inventory/inventory.h"
+#include "endstone/detail/inventory/player_inventory.h"
 
-#include "endstone/detail/inventory/item_stack.h"
 
 namespace endstone::detail {
 
-EndstoneInventory::EndstoneInventory(Container &container) : container_(container) {}
-
-int EndstoneInventory::getSize() const
+int EndstonePlayerInventory::getSize() const
 {
-    return container_.getContainerSize();
+    return EndstoneInventory::getSize();
 }
 
-int EndstoneInventory::getMaxStackSize() const
+int EndstonePlayerInventory::getMaxStackSize() const
 {
-    return container_.getMaxStackSize();
+    return EndstoneInventory::getMaxStackSize();
 }
 
-std::shared_ptr<ItemStack> EndstoneInventory::getItem(int index) const
+std::shared_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 {
-    return EndstoneItemStack::fromMinecraft(const_cast<::ItemStack &>(container_.getItem(index)));
+    return EndstoneInventory::getItem(index);
 }
 
-void EndstoneInventory::setItem(int index, std::shared_ptr<ItemStack> item)
+void EndstonePlayerInventory::setItem(int index, std::shared_ptr<ItemStack> item)
 {
-    container_.setItem(index, *EndstoneItemStack::toMinecraft(item));
+    EndstoneInventory::setItem(index, item);
 }
 
 }  // namespace endstone::detail

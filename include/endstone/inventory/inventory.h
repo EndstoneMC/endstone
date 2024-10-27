@@ -14,6 +14,10 @@
 
 #pragma once
 
+#include <memory>
+
+#include "endstone/inventory/item_stack.h"
+
 namespace endstone {
 /**
  * @brief Interface to the various inventories.
@@ -34,5 +38,21 @@ public:
      * @return The maximum size for an ItemStack in this inventory.
      */
     [[nodiscard]] virtual int getMaxStackSize() const = 0;
+
+    /**
+     * @brief Returns the ItemStack found in the slot at the given index
+     *
+     * @param index The index of the Slot's ItemStack to return
+     * @return The ItemStack in the slot
+     */
+    [[nodiscard]] virtual std::shared_ptr<ItemStack> getItem(int index) const = 0;
+
+    /**
+     * @brief Stores the ItemStack at the given index of the inventory.
+     *
+     * @param index The index where to put the ItemStack
+     * @param item The ItemStack to set
+     */
+    virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
 };
 }  // namespace endstone

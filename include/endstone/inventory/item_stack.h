@@ -22,6 +22,10 @@
 
 namespace endstone {
 
+namespace detail {
+class EndstoneItemStack;
+}
+
 /**
  * @brief Represents a stack of items.
  */
@@ -71,6 +75,19 @@ public:
     virtual void setAmount(int amount)
     {
         amount_ = amount;
+    }
+
+protected:
+    friend class detail::EndstoneItemStack;
+
+    virtual const detail::EndstoneItemStack *asEndstoneItemStack() const
+    {
+        return nullptr;
+    }
+
+    virtual detail::EndstoneItemStack *asEndstoneItemStack()
+    {
+        return nullptr;
     }
 
 private:
