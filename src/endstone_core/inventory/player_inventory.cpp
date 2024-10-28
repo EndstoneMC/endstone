@@ -14,7 +14,6 @@
 
 #include "endstone/detail/inventory/player_inventory.h"
 
-
 namespace endstone::detail {
 
 int EndstonePlayerInventory::getSize() const
@@ -35,6 +34,7 @@ std::shared_ptr<ItemStack> EndstonePlayerInventory::getItem(int index) const
 void EndstonePlayerInventory::setItem(int index, std::shared_ptr<ItemStack> item)
 {
     EndstoneInventory::setItem(index, item);
+    holder_.sendInventory(false);
 }
 
 }  // namespace endstone::detail

@@ -24,8 +24,6 @@
 #include "bedrock/world/events/event_coordinator.h"
 #include "bedrock/world/events/player_event_coordinator.h"
 #include "bedrock/world/level/game_type.h"
-#include "endstone/detail/player.h"
-#include "endstone/player.h"
 
 class Player : public Mob {
 public:

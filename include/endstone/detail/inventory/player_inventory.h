@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/world/actor/player/player.h"
 #include "endstone/detail/inventory/inventory.h"
 #include "endstone/inventory/player_inventory.h"
 
@@ -21,12 +22,15 @@ namespace endstone::detail {
 
 class EndstonePlayerInventory : public EndstoneInventory, public PlayerInventory {
 public:
-    using EndstoneInventory::EndstoneInventory;
+    explicit EndstonePlayerInventory(::Player &holder) : EndstoneInventory(holder.getInventory()), holder_(holder){};
 
-    int getSize() const override;
-    int getMaxStackSize() const override;
+    [[nodiscard]] int getSize() const override;
+    [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] std::shared_ptr<ItemStack> getItem(int index) const override;
     void setItem(int index, std::shared_ptr<ItemStack> item) override;
+
+private:
+    ::Player &holder_;
 };
 
 }  // namespace endstone::detail

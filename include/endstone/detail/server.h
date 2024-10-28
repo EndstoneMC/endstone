@@ -25,6 +25,7 @@
 #include "endstone/detail/lang/language.h"
 #include "endstone/detail/level/level.h"
 #include "endstone/detail/packs/endstone_pack_source.h"
+#include "endstone/detail/player.h"
 #include "endstone/detail/plugin/plugin_manager.h"
 #include "endstone/detail/scheduler/scheduler.h"
 #include "endstone/detail/scoreboard/scoreboard.h"

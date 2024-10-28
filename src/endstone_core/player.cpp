@@ -30,13 +30,13 @@
 #include "bedrock/network/packet/update_abilities_packet.h"
 #include "bedrock/network/server_network_handler.h"
 #include "bedrock/platform/build_platform.h"
-#include "bedrock/server/commands/command_origin_loader.h"
 #include "bedrock/world/actor/player/player.h"
 #include "bedrock/world/level/game_type.h"
 #include "bedrock/world/level/level.h"
 #include "endstone/color_format.h"
 #include "endstone/detail/base64.h"
 #include "endstone/detail/form/form_codec.h"
+#include "endstone/detail/inventory/player_inventory.h"
 #include "endstone/detail/network/packet_adapter.h"
 #include "endstone/detail/permissions/permissible.h"
 #include "endstone/detail/server.h"
@@ -49,7 +49,7 @@ namespace endstone::detail {
 
 EndstonePlayer::EndstonePlayer(EndstoneServer &server, ::Player &player)
     : EndstoneMob(server, player), player_(player), perm_(PermissibleBase::create(static_cast<Player *>(this))),
-      inventory_(std::make_unique<EndstonePlayerInventory>(player.getInventory()))
+      inventory_(std::make_unique<EndstonePlayerInventory>(player))
 {
     auto *component = player.tryGetComponent<UserEntityIdentifierComponent>();
     if (!component) {

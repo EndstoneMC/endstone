@@ -51,7 +51,7 @@ public:
     virtual void dropEquipmentOnDeath(ActorDamageSource const &, int) = 0;
     virtual void dropEquipmentOnDeath() = 0;
     virtual void clearVanishEnchantedItemsOnDeath() = 0;
-    virtual void sendInventory(bool) = 0;
+    virtual void sendInventory(bool should_select_slot) = 0;
     [[nodiscard]] virtual float getDamageAfterEnchantReduction(ActorDamageSource const &, float) const = 0;
     virtual bool createAIGoals() = 0;
     virtual void onBorn(Actor &, Actor &) = 0;
