@@ -53,7 +53,7 @@ Return (*get_original(Return (*fp)(Arg...), std::optional<std::string> name = st
  * @brief Gets the original member function pointer from a detour member function pointer (non-const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-Return (Class:: *get_original(Return (Class:: *fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
+Return (Class::*get_original(Return (Class::*fp)(Arg...), std::optional<std::string> name = std::nullopt))(Arg...)
 {
     void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
     struct {  // https://doi.org/10.1145/3660779
@@ -68,8 +68,8 @@ Return (Class:: *get_original(Return (Class:: *fp)(Arg...), std::optional<std::s
  * @brief Gets the original member function pointer from a detour member function pointer (const, no ref-qualifier)
  */
 template <typename Return, typename Class, typename... Arg>
-Return (Class:: *get_original(Return (Class:: *fp)(Arg...) const,
-                              std::optional<std::string> name = std::nullopt))(Arg...) const
+Return (Class::*get_original(Return (Class::*fp)(Arg...) const,
+                             std::optional<std::string> name = std::nullopt))(Arg...) const
 {
     void *original = name.has_value() ? get_original(name.value()) : get_original(fp_cast(fp));
     struct {  // https://doi.org/10.1145/3660779
@@ -115,14 +115,22 @@ void (*get_ctor(std::unique_ptr<Class> (*)(Args...), const std::string &name))(C
 
 #define ENDSTONE_FACTORY_IMPLEMENT(type, ...) ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, &type::create, ##__VA_ARGS__)
 
-#define ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, fp, ...)                                              \
-    {                                                                                                   \
-        static std::string func_decorated_name = __FUNCDNAME__;                                         \
-        static std::string __name =                                                                     \
-            ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type) +                                                 \
-            func_decorated_name.substr(func_decorated_name.find(ENDSTONE_FACTORY_PREFIX_TARGET(type)) + \
-                                       std::strlen(ENDSTONE_FACTORY_PREFIX_TARGET(type)));              \
-        auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);                                   \
-        endstone::detail::hook::get_ctor(fp, __name)(obj, ##__VA_ARGS__);                               \
-        return std::unique_ptr<type>(obj);                                                              \
+#define ENDSTONE_FACTORY_IMPLEMENT_OVERLOAD(type, fp, ...)                             \
+    {                                                                                  \
+        static std::string func_decorated_name = __FUNCDNAME__;                        \
+        static std::string ctor_decorated_name = []() {                                \
+            std::string prefix_target = ENDSTONE_FACTORY_PREFIX_TARGET(type);          \
+            std::string name = ENDSTONE_FACTORY_PREFIX_REPLACEMENT(type);              \
+            std::size_t pos = func_decorated_name.find(prefix_target);                 \
+            pos += std::strlen(prefix_target.c_str());                                 \
+            name += func_decorated_name.substr(pos);                                   \
+            pos = name.find("BV1@@Z");                                                 \
+            if (pos != std::string::npos) {                                            \
+                name.replace(pos, 6, "BV0@@Z");                                        \
+            }                                                                          \
+            return name;                                                               \
+        }();                                                                           \
+        auto *obj = reinterpret_cast<type *>(new char[sizeof(type)]);                  \
+        endstone::detail::hook::get_ctor(fp, ctor_decorated_name)(obj, ##__VA_ARGS__); \
+        return std::unique_ptr<type>(obj);                                             \
     }
