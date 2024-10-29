@@ -1072,11 +1072,11 @@ class Inventory:
     """
     Interface to the various inventories.
     """
-    def get_item(self, item: int) -> ItemStack:
+    def get_item(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
         """
-    def set_item(self, index: int, item: ItemStack) -> None:
+    def set_item(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
         """
