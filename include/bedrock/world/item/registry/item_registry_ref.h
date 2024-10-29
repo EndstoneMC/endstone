@@ -24,8 +24,8 @@
 
 class ItemRegistryRef {
 public:
-    [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const;
-    [[nodiscard]] WeakPtr<Item> getItem(int id) const;
+    [[nodiscard]] WeakPtr<Item> getItem(const HashedString &id) const;
+    [[nodiscard]] WeakPtr<Item> getItem(std::int16_t id) const;
     [[nodiscard]] const std::unordered_map<HashedString, WeakPtr<Item>> &getNameToItemMap() const;
     Bedrock::NonOwnerPointer<CreativeItemRegistry> getCreativeItemRegistry();
 

@@ -14,14 +14,14 @@
 
 #include "bedrock/world/item/registry/item_registry_ref.h"
 
-WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &name) const
+WeakPtr<Item> ItemRegistryRef::getItem(const HashedString &id) const
 {
-    return _lockRegistry()->name_to_item_map_.at(name);
+    return _lockRegistry()->getItem(id);
 }
 
-WeakPtr<Item> ItemRegistryRef::getItem(int id) const
+WeakPtr<Item> ItemRegistryRef::getItem(std::int16_t id) const
 {
-    return _lockRegistry()->id_to_item_map_.at(id);
+    return _lockRegistry()->getItem(id);
 }
 
 const std::unordered_map<HashedString, WeakPtr<Item>> &ItemRegistryRef::getNameToItemMap() const

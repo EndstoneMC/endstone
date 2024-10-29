@@ -67,7 +67,7 @@ std::string ItemStackBase::getName() const
     if (hasCustomHoverName()) {
         return getCustomName();
     }
-    if (!item_) {
+    if (item_.isNull()) {
         return "";
     }
     return item_->buildDescriptionName(*this);
@@ -90,7 +90,7 @@ const CompoundTag *ItemStackBase::getUserData() const
 
 bool ItemStackBase::isBlock() const
 {
-    return item_ && item_->getLegacyBlock();
+    return !item_.isNull() && !item_->getLegacyBlock().isNull();
 }
 
 const Block *ItemStackBase::getBlock() const

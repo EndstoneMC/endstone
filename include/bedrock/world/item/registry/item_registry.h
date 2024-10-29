@@ -41,7 +41,7 @@ class ItemRegistry : public std::enable_shared_from_this<ItemRegistry> {
     };
 
 public:
-    [[nodiscard]] WeakPtr<Item> getItem(int id) const;
+    [[nodiscard]] WeakPtr<Item> getItem(std::int16_t id) const;
     [[nodiscard]] WeakPtr<Item> getItem(const HashedString &name) const;
     Bedrock::NonOwnerPointer<CreativeItemRegistry> getCreativeItemRegistry() const;
 

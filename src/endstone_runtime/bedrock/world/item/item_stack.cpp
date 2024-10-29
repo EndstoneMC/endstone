@@ -40,7 +40,7 @@ std::unique_ptr<ItemStack> ItemStack::create(std::string_view name, int count, i
                                              CompoundTag const *user_data)
 {
     const auto item = ItemRegistryManager::getItemRegistry().getItem(std::string(name));
-    if (!item) {
+    if (item.isNull()) {
         return create();
     }
     return create(*item, count, aux_value, user_data);

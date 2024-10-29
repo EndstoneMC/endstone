@@ -14,8 +14,10 @@
 
 #pragma once
 
-#include <memory>
 #include <atomic>
+#include <memory>
+
+#include <gsl/gsl>
 
 template <typename T>
 struct SharedCounter {
@@ -190,7 +192,7 @@ public:
         std::swap(pc_, other.pc_);
     }
 
-    T *operator->() const noexcept
+    gsl::not_null<T *> operator->() const noexcept
     {
         return get();
     }
@@ -200,14 +202,20 @@ public:
         return *get();
     }
 
-    explicit operator bool() const
+    [[nodiscard]] bool isNull() const noexcept
     {
-        return get() != nullptr;
+        return get() == nullptr;
     }
 
     T *get() const noexcept
     {
         return pc_ ? pc_->ptr : nullptr;
+    }
+
+    static WeakPtr const &null()
+    {
+        static WeakPtr wnull{nullptr};
+        return wnull;
     }
 
 private:

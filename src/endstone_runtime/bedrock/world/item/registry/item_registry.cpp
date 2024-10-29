@@ -14,14 +14,22 @@
 
 #include "bedrock/world/item/registry/item_registry.h"
 
-WeakPtr<Item> ItemRegistry::getItem(int id) const
+WeakPtr<Item> ItemRegistry::getItem(std::int16_t id) const
 {
-    return id_to_item_map_.at(id);
+    const auto it = id_to_item_map_.find(id);
+    if (it == id_to_item_map_.end()) {
+        return WeakPtr<Item>::null();
+    }
+    return it->second;
 }
 
-WeakPtr<Item> ItemRegistry::getItem(const HashedString &name) const
+WeakPtr<Item> ItemRegistry::getItem(const HashedString &id) const
 {
-    return name_to_item_map_.at(name);
+    const auto it = name_to_item_map_.find(id);
+    if (it == name_to_item_map_.end()) {
+        return WeakPtr<Item>::null();
+    }
+    return it->second;
 }
 
 Bedrock::NonOwnerPointer<CreativeItemRegistry> ItemRegistry::getCreativeItemRegistry() const
