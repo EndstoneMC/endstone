@@ -37,4 +37,29 @@ void EndstonePlayerInventory::setItem(int index, std::shared_ptr<ItemStack> item
     holder_.sendInventory(false);
 }
 
+void EndstonePlayerInventory::addItem(ItemStack &item)
+{
+    EndstoneInventory::addItem(item);
+}
+
+std::vector<std::shared_ptr<ItemStack>> EndstonePlayerInventory::getContents() const
+{
+    return EndstoneInventory::getContents();
+}
+
+int EndstonePlayerInventory::first(ItemStack &item)
+{
+    return EndstoneInventory::first(item);
+}
+
+bool EndstonePlayerInventory::isEmpty() const
+{
+    return EndstoneInventory::isEmpty();
+}
+
+void EndstonePlayerInventory::clear()
+{
+    EndstoneInventory::clear();
+}
+
 }  // namespace endstone::detail

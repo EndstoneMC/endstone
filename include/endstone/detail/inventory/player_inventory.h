@@ -28,6 +28,11 @@ public:
     [[nodiscard]] int getMaxStackSize() const override;
     [[nodiscard]] std::shared_ptr<ItemStack> getItem(int index) const override;
     void setItem(int index, std::shared_ptr<ItemStack> item) override;
+    void addItem(ItemStack &item) override;
+    [[nodiscard]] std::vector<std::shared_ptr<ItemStack>> getContents() const override;
+    [[nodiscard]] int first(ItemStack &item) override;
+    [[nodiscard]] bool isEmpty() const override;
+    void clear() override;
 
 private:
     ::Player &holder_;

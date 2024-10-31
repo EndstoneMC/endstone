@@ -1072,6 +1072,30 @@ class Inventory:
     """
     Interface to the various inventories.
     """
+    def __get_item__(self, index: int) -> ItemStack:
+        """
+        Returns the ItemStack found in the slot at the given index
+        """
+    def __len__(self) -> int:
+        """
+        Returns the size of the inventory
+        """
+    def __set_item__(self, index: int, item: ItemStack | None) -> None:
+        """
+        Stores the ItemStack at the given index of the inventory.
+        """
+    def add_item(self, item: ItemStack) -> None:
+        """
+        Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.
+        """
+    def clear(self) -> None:
+        """
+        Clears out the whole Inventory.
+        """
+    def first(self, item: ItemStack) -> int:
+        """
+        Returns the first slot in the inventory containing an ItemStack with the given stack.
+        """
     def get_item(self, index: int) -> ItemStack:
         """
         Returns the ItemStack found in the slot at the given index
@@ -1079,6 +1103,16 @@ class Inventory:
     def set_item(self, index: int, item: ItemStack | None) -> None:
         """
         Stores the ItemStack at the given index of the inventory.
+        """
+    @property
+    def contents(self) -> list[ItemStack]:
+        """
+        Returns all ItemStacks from the inventory
+        """
+    @property
+    def is_empty(self) -> bool:
+        """
+         Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.
         """
     @property
     def max_stack_size(self) -> int:

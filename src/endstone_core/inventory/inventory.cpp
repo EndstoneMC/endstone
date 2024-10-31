@@ -37,7 +37,42 @@ std::shared_ptr<ItemStack> EndstoneInventory::getItem(int index) const
 
 void EndstoneInventory::setItem(int index, std::shared_ptr<ItemStack> item)
 {
-    container_.setItem(index, *EndstoneItemStack::toMinecraft(item));
+    container_.setItemWithForceBalance(index, *EndstoneItemStack::toMinecraft(item), true);
+}
+
+void EndstoneInventory::addItem(ItemStack &item)
+{
+    container_.addItemWithForceBalance(*EndstoneItemStack::toMinecraft(item.shared_from_this()));
+}
+
+std::vector<std::shared_ptr<ItemStack>> EndstoneInventory::getContents() const
+{
+    const auto slots = container_.getSlots();
+    std::vector<std::shared_ptr<ItemStack>> contents;
+    for (const auto &slot : slots) {
+        if (slot && !slot->isNull()) {
+            contents.push_back(EndstoneItemStack::fromMinecraft(const_cast<::ItemStack &>(*slot)));
+        }
+        else {
+            contents.push_back(nullptr);
+        }
+    }
+    return contents;
+}
+
+int EndstoneInventory::first(ItemStack &item)
+{
+    return container_.findFirstSlotForItem(*EndstoneItemStack::toMinecraft(item.shared_from_this()));
+}
+
+bool EndstoneInventory::isEmpty() const
+{
+    return container_.isEmpty();
+}
+
+void EndstoneInventory::clear()
+{
+    container_.removeAllItems();
 }
 
 }  // namespace endstone::detail

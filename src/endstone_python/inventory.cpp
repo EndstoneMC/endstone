@@ -44,6 +44,25 @@ void init_inventory(py::module_ &m)
             [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
                 self.setItem(index, item.value_or(nullptr));
             },
+            py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.")
+        .def("add_item", &Inventory::addItem, py::arg("item"),
+             "Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as "
+             "well as it can.")
+        .def_property_readonly("contents", &Inventory::getContents, "Returns all ItemStacks from the inventory")
+        .def("first", &Inventory::first, py::arg("item"),
+             "Returns the first slot in the inventory containing an ItemStack with the given stack.")
+        .def_property_readonly("is_empty", &Inventory::isEmpty,
+                               " Check whether this inventory is empty. An inventory is considered to be empty if "
+                               "there are no ItemStacks in any slot of this inventory.")
+        .def("clear", &Inventory::clear, "Clears out the whole Inventory.")
+        .def("__len__", &Inventory::getSize, "Returns the size of the inventory")
+        .def("__get_item__", &Inventory::getItem, py::arg("index"),
+             "Returns the ItemStack found in the slot at the given index")
+        .def(
+            "__set_item__",
+            [](Inventory &self, int index, std::optional<std::shared_ptr<ItemStack>> item) {
+                self.setItem(index, item.value_or(nullptr));
+            },
             py::arg("index"), py::arg("item"), "Stores the ItemStack at the given index of the inventory.");
 
     py::class_<PlayerInventory, Inventory>(

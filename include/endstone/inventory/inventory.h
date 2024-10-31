@@ -15,6 +15,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "endstone/inventory/item_stack.h"
 
@@ -54,5 +55,41 @@ public:
      * @param item The ItemStack to set
      */
     virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
+
+    /**
+     * @brief Stores the given ItemStacks in the inventory. This will try to fill
+     * existing stacks and empty slots as well as it can.
+     *
+     * @param item The ItemStack to add
+     */
+    virtual void addItem(ItemStack &item) = 0;
+
+    /**
+     * @brief Returns all ItemStacks from the inventory
+     *
+     * @return An array of ItemStacks from the inventory. Individual items may be null.
+     */
+    [[nodiscard]] virtual std::vector<std::shared_ptr<ItemStack>> getContents() const = 0;
+
+    /**
+     * @brief Returns the first slot in the inventory containing an ItemStack with the given stack.
+     *
+     * @param item The ItemStack to match against
+     * @return The slot index of the given ItemStack or -1 if not found
+     */
+    [[nodiscard]] virtual int first(ItemStack &item) = 0;
+
+    /**
+     * @brief Check whether this inventory is empty. An inventory is considered
+     * to be empty if there are no ItemStacks in any slot of this inventory.
+     *
+     * @return true if empty, false otherwise
+     */
+    [[nodiscard]] virtual bool isEmpty() const = 0;
+
+    /**
+     * @brief Clears out the whole Inventory.
+     */
+    virtual void clear() = 0;
 };
 }  // namespace endstone
