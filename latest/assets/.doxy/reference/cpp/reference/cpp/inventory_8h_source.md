@@ -25,6 +25,7 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "endstone/inventory/item_stack.h"
 
@@ -39,6 +40,16 @@ public:
     [[nodiscard]] virtual std::shared_ptr<ItemStack> getItem(int index) const = 0;
 
     virtual void setItem(int index, std::shared_ptr<ItemStack> item) = 0;
+
+    virtual void addItem(ItemStack &item) = 0;
+
+    [[nodiscard]] virtual std::vector<std::shared_ptr<ItemStack>> getContents() const = 0;
+
+    [[nodiscard]] virtual int first(ItemStack &item) = 0;
+
+    [[nodiscard]] virtual bool isEmpty() const = 0;
+
+    virtual void clear() = 0;
 };
 }  // namespace endstone
 ```

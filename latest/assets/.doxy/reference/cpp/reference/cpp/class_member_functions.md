@@ -24,6 +24,7 @@
 * **asPlayer** ([**endstone::CommandSender**](classendstone_1_1CommandSender.md), [**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Player**](classendstone_1_1Player.md))
 * **addAttachment** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md), [**endstone::Permissible**](classendstone_1_1Permissible.md))
 * **addOption** ([**endstone::Dropdown**](classendstone_1_1Dropdown.md))
+* **addItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **asEndstoneItemStack** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **addControl** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 * **addParent** ([**endstone::Permission**](classendstone_1_1Permission.md))
@@ -52,6 +53,7 @@
 * **clearCommands** ([**endstone::CommandMap**](classendstone_1_1CommandMap.md))
 * **CommandSenderWrapper** ([**endstone::CommandSenderWrapper**](classendstone_1_1CommandSenderWrapper.md))
 * **callEvent** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **clear** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **critical** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **closeForm** ([**endstone::Player**](classendstone_1_1Player.md))
 * **clearPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
@@ -93,6 +95,7 @@
 ## f
 
 * **Form** ([**endstone::Form**](classendstone_1_1Form.md))
+* **first** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **format** ([**fmt::formatter&lt; endstone::Block &gt;**](structfmt_1_1formatter_3_01endstone_1_1Block_01_4.md), [**fmt::formatter&lt; endstone::BlockData &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockData_01_4.md), [**fmt::formatter&lt; endstone::BlockState &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockState_01_4.md), [**fmt::formatter&lt; endstone::BlockStates &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::mapped\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1mapped__type_01_4.md), [**fmt::formatter&lt; endstone::BlockStates::value\_type &gt;**](structfmt_1_1formatter_3_01endstone_1_1BlockStates_1_1value__type_01_4.md), [**fmt::formatter&lt; endstone::ItemStack &gt;**](structfmt_1_1formatter_3_01endstone_1_1ItemStack_01_4.md))
 
 
@@ -157,6 +160,7 @@
 * **getPriority** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
 * **getOnClose** ([**endstone::Form**](classendstone_1_1Form.md))
 * **getHandlers** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
+* **getContents** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **getItem** ([**endstone::Inventory**](classendstone_1_1Inventory.md), [**endstone::PlayerInteractEvent**](classendstone_1_1PlayerInteractEvent.md))
 * **getMaxStackSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **getSize** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
@@ -314,6 +318,7 @@
 * **isAsynchronous** ([**endstone::Event**](classendstone_1_1Event.md))
 * **isCancelled** ([**endstone::Event**](classendstone_1_1Event.md), [**endstone::Task**](classendstone_1_1Task.md))
 * **isIgnoreCancelled** ([**endstone::EventHandler**](classendstone_1_1EventHandler.md))
+* **isEmpty** ([**endstone::Inventory**](classendstone_1_1Inventory.md))
 * **ItemStack** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **info** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **isEnabledFor** ([**endstone::Logger**](classendstone_1_1Logger.md))

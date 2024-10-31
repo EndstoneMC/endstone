@@ -108,6 +108,8 @@
         <link refid="inventory_8h_source"/>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
         <childnode refid="40" relation="include">
         </childnode>
       </node>

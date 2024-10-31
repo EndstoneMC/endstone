@@ -11,6 +11,7 @@
 
 
 * `#include <memory>`
+* `#include <vector>`
 * `#include "endstone/inventory/item_stack.h"`
 
 

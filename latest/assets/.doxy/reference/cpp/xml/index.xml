@@ -456,6 +456,11 @@
     <member refid="classendstone_1_1Inventory_1ae57598046e6b5df98a7710d91953a823" kind="function"><name>getMaxStackSize</name></member>
     <member refid="classendstone_1_1Inventory_1a03242079a0da4d841504ddfec5c50ceb" kind="function"><name>getItem</name></member>
     <member refid="classendstone_1_1Inventory_1a69eeb486417970b8575356f39ee55320" kind="function"><name>setItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a44e46ae514650cc16b605b1b4769c6fc" kind="function"><name>addItem</name></member>
+    <member refid="classendstone_1_1Inventory_1a939142807707c78b4871181fbd73b1af" kind="function"><name>getContents</name></member>
+    <member refid="classendstone_1_1Inventory_1a30d61d7b9ec2232c7f0d1b038f6f1a1a" kind="function"><name>first</name></member>
+    <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" kind="function"><name>isEmpty</name></member>
+    <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a48f826c758828421a29e85e3f8c98126" kind="friend"><name>detail::EndstoneItemStack</name></member>

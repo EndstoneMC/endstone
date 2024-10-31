@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/logo.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -1988,6 +1988,22 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-additem"><strong>addItem</strong></a> (<a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Stores the given ItemStacks in the inventory. This will try to fill existing stacks and empty slots as well as it can.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-clear"><strong>clear</strong></a> () = 0<br><em>Clears out the whole</em> <a href="../classendstone_1_1Inventory/"><em><strong>Inventory</strong></em></a> <em>.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual int</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-first"><strong>first</strong></a> (<a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &amp; item) = 0<br><em>Returns the first slot in the inventory containing an</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>with the given stack.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt; &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-getcontents"><strong>getContents</strong></a> () const = 0<br><em>Returns all ItemStacks from the inventory.</em></td>
+</tr>
+<tr>
 <td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1ItemStack/"><strong>ItemStack</strong></a> &gt;</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-getitem"><strong>getItem</strong></a> (int index) const = 0<br><em>Returns the</em> <a href="../classendstone_1_1ItemStack/"><em><strong>ItemStack</strong></em></a> <em>found in the slot at the given index.</em></td>
 </tr>
@@ -1998,6 +2014,10 @@ For latest updates join the chat on
 <tr>
 <td style="text-align: right;">virtual int</td>
 <td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-getsize"><strong>getSize</strong></a> () const = 0<br><em>Returns the size of the inventory.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1Inventory/#function-isempty"><strong>isEmpty</strong></a> () const = 0<br><em>Check whether this inventory is empty. An inventory is considered to be empty if there are no ItemStacks in any slot of this inventory.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
