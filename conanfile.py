@@ -112,7 +112,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/0.7.1")
-        # self.requires("entt/3.13.0")
+        self.requires("entt/3.14.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
         self.requires("funchook/1.1.3")
@@ -177,7 +177,7 @@ class EndstoneRecipe(ConanFile):
             "boost::boost",
             "concurrentqueue::concurrentqueue",
             "cpptrace::cpptrace",
-            # "entt::entt",
+            "entt::entt",
             "glm::glm",
             "magic_enum::magic_enum",
             "nlohmann_json::nlohmann_json",
