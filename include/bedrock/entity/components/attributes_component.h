@@ -14,13 +14,8 @@
 
 #pragma once
 
-#include <entt/entt.hpp>
-
 #include "bedrock/world/attribute/attribute_map.h"
 
 struct AttributesComponent {
     BaseAttributeMap attributes;
 };
-#ifdef _WIN32
-static_assert(entt::type_hash<AttributesComponent>::value() == 0xB6B29444);
-#endif

@@ -16,8 +16,6 @@
 
 #include <optional>
 
-#include <entt/entt.hpp>
-
 #include "bedrock/common_types.h"
 #include "bedrock/core/container/cache.h"
 #include "bedrock/core/math/color.h"
