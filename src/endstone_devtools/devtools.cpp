@@ -549,7 +549,7 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
 
     auto creative_items = CompoundTag();
     creative_items.put("items", data->creative_items.copy());
-    save_nbt_to_file(block_palette, "creative_items.nbt");
+    save_nbt_to_file(creative_items, "creative_items.nbt");
 
     auto recipe_json = nlohmann::json{
         {"shapeless", data->recipes.shapeless},
