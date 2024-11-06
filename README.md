@@ -11,8 +11,7 @@
   Write your plugins in Python and C++ for Bedrock Dedicated Servers.
 </p>
 
-[![Windows](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/windows.yml)
-[![Linux](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/linux.yml)
+[![CI](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml/badge.svg)](https://github.com/EndstoneMC/endstone/actions/workflows/ci.yml)
 [![Documentation](https://github.com/EndstoneMC/endstone/actions/workflows/docs.yml/badge.svg)](https://endstone.dev/)
 [![Minecraft - Version](https://img.shields.io/badge/minecraft-v1.21.41_(Bedrock)-black)](https://feedback.minecraft.net/hc/en-us/articles/31222183227149-Minecraft-Bedrock-Edition-1-21-40-Bundles-of-Bravery)
 [![PyPI - Version](https://img.shields.io/pypi/v/endstone)](https://pypi.org/project/endstone)
