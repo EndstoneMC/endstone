@@ -12,9 +12,10 @@ permissions: read-all
 
 jobs:
   build_wheels:
-    name: ${{ matrix.python-tag }}-${{ matrix.platform }}
+    name: Build Wheel (${{ matrix.python-tag }}-${{ matrix.platform }})
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ ubuntu-latest, windows-latest ]
         python-tag: [ "cp39", "cp310", "cp311", "cp312", "cp313" ]
@@ -30,10 +31,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up MSVC (Windows)
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x86_64
+
+      - name: Set up CMake and Ninja
+        uses: lukka/get-cmake@latest
+
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.21.3
         env:
           CIBW_BUILD: ${{ matrix.python-tag }}-${{ matrix.platform }}
+          CIBW_BUILD_VERBOSITY: 1
 
       - uses: actions/upload-artifact@v4
         with:
