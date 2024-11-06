@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(endstone)
+project(endstone LANGUAGES CXX)
 
 # Check if the project is being used as dependency
 if (NOT CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR)
@@ -46,7 +46,7 @@ find_package(glm CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(Microsoft.GSL CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(Python COMPONENTS Interpreter Development REQUIRED)
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
@@ -89,7 +89,7 @@ add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
 add_library(endstone::core ALIAS endstone_core)
 target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
         cpptrace::cpptrace EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
-        pybind11::embed spdlog::spdlog tomlplusplus::tomlplusplus)
+        pybind11::module spdlog::spdlog tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
