@@ -202,8 +202,6 @@ public:
         char const *text;                   // +24
         std::uint32_t length;               // +32
         Symbol type;                        // +36
-
-        friend std::ostream &operator<<(std::ostream &os, const ParseToken &token);
     };
     BEDROCK_STATIC_ASSERT_SIZE(CommandRegistry::ParseToken, 40, 40);
 

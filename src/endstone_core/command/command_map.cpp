@@ -25,6 +25,7 @@
 #include "bedrock/server/commands/command_registry.h"
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_usage_parser.h"
+#include "endstone/detail/command/defaults/ban_command.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/reload_command.h"
 #include "endstone/detail/command/defaults/status_command.h"
@@ -97,6 +98,7 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 
 void EndstoneCommandMap::setDefaultCommands()
 {
+    registerCommand(std::make_unique<BanCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<ReloadCommand>());
     registerCommand(std::make_unique<StatusCommand>());
