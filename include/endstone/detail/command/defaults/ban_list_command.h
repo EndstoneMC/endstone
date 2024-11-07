@@ -12,30 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/defaults/ban_command.h"
+#pragma once
 
-#include <string>
-#include <vector>
-
-#include "endstone/detail/server.h"
+#include "endstone/detail/command/endstone_command.h"
 
 namespace endstone::detail {
+class BanListCommand : public EndstoneCommand {
+public:
+    BanListCommand();
+    bool execute(CommandSender &sender, const std::vector<std::string> &args) const override;
+};
 
-BanCommand::BanCommand() : EndstoneCommand("ban")
-{
-    setDescription("commands.ban.description");
-    setUsages("/ban <name: str> [reason: message]");
-    setPermissions("endstone.command.ban");
-}
-
-bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
-{
-    if (!testPermission(sender)) {
-        return true;
-    }
-
-    // TODO (ban): implement this
-    return true;
-}
-
-};  // namespace endstone::detail
+}  // namespace endstone::detail

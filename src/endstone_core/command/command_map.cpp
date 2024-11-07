@@ -26,6 +26,8 @@
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/defaults/ban_command.h"
+#include "endstone/detail/command/defaults/ban_list_command.h"
+#include "endstone/detail/command/defaults/pardon_command.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/reload_command.h"
 #include "endstone/detail/command/defaults/status_command.h"
@@ -99,6 +101,8 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 void EndstoneCommandMap::setDefaultCommands()
 {
     registerCommand(std::make_unique<BanCommand>());
+    registerCommand(std::make_unique<BanListCommand>());
+    registerCommand(std::make_unique<PardonCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<ReloadCommand>());
     registerCommand(std::make_unique<StatusCommand>());
@@ -276,6 +280,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     data.param_type = CommandParameterDataType::Enum;
                     data.enum_name = it->first.c_str();
                     data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else if (parameter.type == "bool") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));

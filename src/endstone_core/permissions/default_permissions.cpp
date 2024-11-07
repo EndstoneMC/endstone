@@ -48,6 +48,18 @@ void DefaultPermissions::registerCommandPermissions(Permission *parent)
 {
     auto *root = registerPermission(parent->getName() + ".command", parent,
                                     "Gives the user the ability to use all Endstone command");
+
+    registerPermission(root->getName() + ".ban", root, "Allows the user to ban players.", PermissionDefault::Operator);
+    registerPermission(root->getName() + ".banip", root, "Allows the user to ban IP addresses.",
+                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".banlist", root, "Allows the user to list all the banned ips or players.",
+                       PermissionDefault::Operator);
+
+    registerPermission(root->getName() + ".unban", root, "Allows the user to unban players.",
+                       PermissionDefault::Operator);
+    registerPermission(root->getName() + ".unbanip", root, "Allows the user to unban IP addresses.",
+                       PermissionDefault::Operator);
+
     registerPermission(root->getName() + ".plugins", root,
                        "Allows the user to view the list of plugins running on this server", PermissionDefault::True);
     registerPermission(root->getName() + ".reload", root,

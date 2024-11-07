@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/command/defaults/ban_command.h"
+#include "endstone/detail/command/defaults/ban_list_command.h"
 
 #include <string>
 #include <vector>
@@ -21,14 +21,14 @@
 
 namespace endstone::detail {
 
-BanCommand::BanCommand() : EndstoneCommand("ban")
+BanListCommand::BanListCommand() : EndstoneCommand("banlist")
 {
-    setDescription("commands.ban.description");
-    setUsages("/ban <name: str> [reason: message]");
-    setPermissions("endstone.command.ban");
+    setDescription("Lists the banned players or IP addresses.");
+    setUsages("/banlist (ips|players)[type: BanListType]");
+    setPermissions("endstone.command.banlist");
 }
 
-bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
+bool BanListCommand::execute(CommandSender &sender, const std::vector<std::string> &args) const
 {
     if (!testPermission(sender)) {
         return true;
