@@ -34,27 +34,22 @@ void ServerNetworkHandler::disconnectClient(const NetworkIdentifier &network_id,
                                             std::optional<std::string> filtered_message, bool skip_message)
 {
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto *endstone_player = server.getPlayer(network_id, sub_client_id);
-    if (!endstone_player) {
-        return;
-    }
+    auto disconnect_message = message;
+    if (auto *endstone_player = server.getPlayer(network_id, sub_client_id)) {
+        auto kick_message = getI18n().get(message, nullptr);
+        endstone::PlayerKickEvent e{*endstone_player, kick_message};
+        server.getPluginManager().callEvent(e);
 
-    auto kick_message = getI18n().get(message, nullptr);
-    endstone::PlayerKickEvent e{*endstone_player, kick_message};
-    server.getPluginManager().callEvent(e);
+        if (e.isCancelled()) {
+            return;
+        }
 
-    if (e.isCancelled()) {
-        return;
-    }
-
-    if (e.getReason() != kick_message) {
-        kick_message = e.getReason();
-    }
-    else {
-        kick_message = message;
+        if (e.getReason() != disconnect_message) {
+            disconnect_message = e.getReason();
+        }
     }
     ENDSTONE_HOOK_CALL_ORIGINAL(&ServerNetworkHandler::disconnectClient, this, network_id, sub_client_id, reason,
-                                kick_message, std::move(filtered_message), skip_message);
+                                disconnect_message, std::move(filtered_message), skip_message);
 }
 
 void ServerNetworkHandler::updateServerAnnouncement()
