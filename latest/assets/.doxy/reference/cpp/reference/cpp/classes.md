@@ -24,6 +24,8 @@
 
 ## b
 
+* [**BanList**](classendstone_1_1BanList.md)
+([**endstone**](namespaceendstone.md))
 * [**Block**](classendstone_1_1Block.md)
 ([**endstone**](namespaceendstone.md))
 * [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md)

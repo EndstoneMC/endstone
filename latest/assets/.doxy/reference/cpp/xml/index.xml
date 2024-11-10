@@ -91,6 +91,15 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1a04e8968e9384a64661f04baefe5f886a" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
+  <compound refid="classendstone_1_1BanList" kind="class"><name>endstone::BanList</name>
+    <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" kind="function"><name>~BanList</name></member>
+    <member refid="classendstone_1_1BanList_1a7c69a04564631d8065b53199c54da98e" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1BanList_1a37bccae938e654a145e7cd49a84eb33e" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1BanList_1afa0bac6f660754a8cd3955fdf207e226" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1BanList_1a836894e9f9860c73c39203b6264897f3" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1BanList_1af18277175e0fdf6e50b09414c93d8d76" kind="function"><name>isBanned</name></member>
+    <member refid="classendstone_1_1BanList_1a318bdf95fa85830c44538cecea967267" kind="function"><name>removeBan</name></member>
+  </compound>
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
     <member refid="classendstone_1_1Block_1a1d34cbe7add47b55cc52e655c511183f" kind="function"><name>isValid</name></member>
@@ -1381,6 +1390,8 @@
   </compound>
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
+  <compound refid="ban__list_8h" kind="file"><name>ban_list.h</name>
+  </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
   </compound>
   <compound refid="block__data_8h" kind="file"><name>block_data.h</name>
@@ -1606,6 +1617,8 @@
   <compound refid="dir_dd7779a583e02d88c9a89a2c881c3946" kind="dir"><name>include/endstone/actor</name>
   </compound>
   <compound refid="dir_621c26b5fd4198aba66e7e31570ce44a" kind="dir"><name>include/endstone/event/actor</name>
+  </compound>
+  <compound refid="dir_f1b1f2e9abb31749ef58cd98f22bcd78" kind="dir"><name>include/endstone/ban</name>
   </compound>
   <compound refid="dir_faca67fc60a7463eb1bd30eabe023cf1" kind="dir"><name>include/endstone/block</name>
   </compound>

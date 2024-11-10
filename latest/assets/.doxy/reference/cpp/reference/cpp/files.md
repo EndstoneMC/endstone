@@ -12,6 +12,8 @@ Here is a list of all files with brief descriptions:
         * **dir** [**actor**](dir_dd7779a583e02d88c9a89a2c881c3946.md)     
             * **file** [**actor.h**](actor_8h.md)     
             * **file** [**mob.h**](mob_8h.md)     
+        * **dir** [**ban**](dir_f1b1f2e9abb31749ef58cd98f22bcd78.md)     
+            * **file** [**ban\_list.h**](ban__list_8h.md)     
         * **dir** [**block**](dir_faca67fc60a7463eb1bd30eabe023cf1.md)     
             * **file** [**block.h**](block_8h.md)     
             * **file** [**block\_data.h**](block__data_8h.md)     
