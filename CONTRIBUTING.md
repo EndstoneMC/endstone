@@ -31,7 +31,7 @@ the package manager, run the following commands in your Python environment.
 
 ```shell
 pip install conan
-conan detect profile
+conan profile detect
 ```
 
 ### Install dependencies
@@ -94,7 +94,7 @@ cmake --build --preset conan-relwithdebinfo
 
 ### Install
 
-To install **Endstone** from your local sources, you will need to activate the build environment and then run:
+To install **Endstone** from your local sources, simply run:
 
 ```shell
 pip install -U .
