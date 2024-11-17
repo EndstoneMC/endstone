@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerProfile" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::PlayerProfile</compoundname>
+    <includes refid="player__profile_8h" local="no">endstone/profile/player_profile.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerProfile_1a93733cffcf46cf82ac27a1b773528483" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::PlayerProfile::~PlayerProfile</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PlayerProfile</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/profile/player_profile.h" line="29" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerProfile_1a027d22c262d52bcc0bc4306e4a3245a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+        <definition>virtual std::optional&lt;UUID&gt; endstone::PlayerProfile::getUniqueId</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getUniqueId</name>
+        <briefdescription>
+<para>Gets the player&apos;s unique id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s unique id, or std::nullopt if not available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/profile/player_profile.h" line="36" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerProfile_1a3b17a152dbabce0729df60341e1f3410" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt;std::string&gt; endstone::PlayerProfile::getName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Gets the player name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player name, or std::nullopt if not available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/profile/player_profile.h" line="43" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerProfile_1a0d08499577fec708acb5ca9002efeb7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>virtual std::optional&lt;std::string&gt; endstone::PlayerProfile::getXuid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getXuid</name>
+        <briefdescription>
+<para>Gets the player&apos;s xbox user id (xuid). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s xbox user id (xuid), or std::nullopt if not available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/profile/player_profile.h" line="50" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerProfile_1aba0a84cc23f7848afd84b5c8f308a8d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::PlayerProfile::isComplete</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isComplete</name>
+        <briefdescription>
+<para>Checks whether this profile is complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A profile is currently considered complete if it has a name and a unique id.</para>
+<para><simplesect kind="return"><para>true if this profile is complete </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/profile/player_profile.h" line="59" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A player profile. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/profile/player_profile.h" line="27" column="1" bodyfile="include/endstone/profile/player_profile.h" bodystart="27" bodyend="60"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerProfile_1a3b17a152dbabce0729df60341e1f3410" prot="public" virt="pure-virtual"><scope>endstone::PlayerProfile</scope><name>getName</name></member>
+      <member refid="classendstone_1_1PlayerProfile_1a027d22c262d52bcc0bc4306e4a3245a7" prot="public" virt="pure-virtual"><scope>endstone::PlayerProfile</scope><name>getUniqueId</name></member>
+      <member refid="classendstone_1_1PlayerProfile_1a0d08499577fec708acb5ca9002efeb7b" prot="public" virt="pure-virtual"><scope>endstone::PlayerProfile</scope><name>getXuid</name></member>
+      <member refid="classendstone_1_1PlayerProfile_1aba0a84cc23f7848afd84b5c8f308a8d2" prot="public" virt="pure-virtual"><scope>endstone::PlayerProfile</scope><name>isComplete</name></member>
+      <member refid="classendstone_1_1PlayerProfile_1a93733cffcf46cf82ac27a1b773528483" prot="public" virt="virtual"><scope>endstone::PlayerProfile</scope><name>~PlayerProfile</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

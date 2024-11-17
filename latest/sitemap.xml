@@ -173,6 +173,10 @@
          <lastmod>2024-11-17</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BanEntry/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BanList/</loc>
          <lastmod>2024-11-17</lastmod>
     </url>
@@ -374,6 +378,10 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerLoginEvent/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1PlayerProfile/</loc>
          <lastmod>2024-11-17</lastmod>
     </url>
     <url>
@@ -618,6 +626,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/dir_f1b1f2e9abb31749ef58cd98f22bcd78/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/ban__entry_8h/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/ban__entry_8h_source/</loc>
          <lastmod>2024-11-17</lastmod>
     </url>
     <url>
@@ -1358,6 +1374,18 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/plugin__manager_8h_source/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/dir_69aa83db54d47362b78b719d1ebae01d/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__profile_8h/</loc>
+         <lastmod>2024-11-17</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/player__profile_8h_source/</loc>
          <lastmod>2024-11-17</lastmod>
     </url>
     <url>

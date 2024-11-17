@@ -24,6 +24,8 @@
 
 ## b
 
+* [**BanEntry**](classendstone_1_1BanEntry.md)
+([**endstone**](namespaceendstone.md))
 * [**BanList**](classendstone_1_1BanList.md)
 ([**endstone**](namespaceendstone.md))
 * [**Block**](classendstone_1_1Block.md)
@@ -187,6 +189,8 @@
 * [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md)
+([**endstone**](namespaceendstone.md))
+* [**PlayerProfile**](classendstone_1_1PlayerProfile.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md)
 ([**endstone**](namespaceendstone.md))

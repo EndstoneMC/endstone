@@ -91,6 +91,20 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1a04e8968e9384a64661f04baefe5f886a" kind="function"><name>getTo</name></member>
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
+  <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
+    <member refid="classendstone_1_1BanEntry_1a67c78bf82836dc9bfaac0dcb05aa351b" kind="function"><name>~BanEntry</name></member>
+    <member refid="classendstone_1_1BanEntry_1ab68551161f00c313a0553dc0c3a2652c" kind="function"><name>getTarget</name></member>
+    <member refid="classendstone_1_1BanEntry_1a82eadf890a3eed85d19aa19cef3e222f" kind="function"><name>getCreated</name></member>
+    <member refid="classendstone_1_1BanEntry_1a58af6d0112ac795a95d64cb4acf8c724" kind="function"><name>setCreated</name></member>
+    <member refid="classendstone_1_1BanEntry_1ac896cd14c4ebe67c444f282a2f516232" kind="function"><name>getSource</name></member>
+    <member refid="classendstone_1_1BanEntry_1a37561d6a331ad46ccec868b0f46972f1" kind="function"><name>setSource</name></member>
+    <member refid="classendstone_1_1BanEntry_1a8ba67dc34c9780f541a24700c29a3311" kind="function"><name>getExpiration</name></member>
+    <member refid="classendstone_1_1BanEntry_1a0585068eae70fe1251b864b61493c3c2" kind="function"><name>setExpiration</name></member>
+    <member refid="classendstone_1_1BanEntry_1ae2979157e4591efc514acafebb1dab8b" kind="function"><name>getReason</name></member>
+    <member refid="classendstone_1_1BanEntry_1abf22b8452f7e90febb376632505f04fa" kind="function"><name>setReason</name></member>
+    <member refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kind="function"><name>save</name></member>
+    <member refid="classendstone_1_1BanEntry_1a836ef65edc301c8e48ddb6b0045d3950" kind="function"><name>remove</name></member>
+  </compound>
   <compound refid="classendstone_1_1BanList" kind="class"><name>endstone::BanList</name>
     <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" kind="function"><name>~BanList</name></member>
     <member refid="classendstone_1_1BanList_1a7c69a04564631d8065b53199c54da98e" kind="function"><name>getBanEntry</name></member>
@@ -819,6 +833,13 @@
     <member refid="classendstone_1_1PlayerLoginEvent_1ab88b5eee711f0524d08c9018830dec78" kind="function"><name>getKickMessage</name></member>
     <member refid="classendstone_1_1PlayerLoginEvent_1a8f5b97ba68ebdaf921e4d9a9e6f8219e" kind="function"><name>setKickMessage</name></member>
   </compound>
+  <compound refid="classendstone_1_1PlayerProfile" kind="class"><name>endstone::PlayerProfile</name>
+    <member refid="classendstone_1_1PlayerProfile_1a93733cffcf46cf82ac27a1b773528483" kind="function"><name>~PlayerProfile</name></member>
+    <member refid="classendstone_1_1PlayerProfile_1a027d22c262d52bcc0bc4306e4a3245a7" kind="function"><name>getUniqueId</name></member>
+    <member refid="classendstone_1_1PlayerProfile_1a3b17a152dbabce0729df60341e1f3410" kind="function"><name>getName</name></member>
+    <member refid="classendstone_1_1PlayerProfile_1a0d08499577fec708acb5ca9002efeb7b" kind="function"><name>getXuid</name></member>
+    <member refid="classendstone_1_1PlayerProfile_1aba0a84cc23f7848afd84b5c8f308a8d2" kind="function"><name>isComplete</name></member>
+  </compound>
   <compound refid="classendstone_1_1PlayerQuitEvent" kind="class"><name>endstone::PlayerQuitEvent</name>
     <member refid="classendstone_1_1PlayerQuitEvent_1a9a422070fcabd4719e3c1711af48fbcb" kind="variable"><name>NAME</name></member>
     <member refid="classendstone_1_1PlayerQuitEvent_1a1c96bd265b80988f2b45a3a7576aad97" kind="variable"><name>quit_message_</name></member>
@@ -1390,6 +1411,8 @@
   </compound>
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
+  <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
+  </compound>
   <compound refid="ban__list_8h" kind="file"><name>ban_list.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
@@ -1580,6 +1603,8 @@
   </compound>
   <compound refid="plugin__manager_8h" kind="file"><name>plugin_manager.h</name>
   </compound>
+  <compound refid="player__profile_8h" kind="file"><name>player_profile.h</name>
+  </compound>
   <compound refid="scheduler_8h" kind="file"><name>scheduler.h</name>
   </compound>
   <compound refid="task_8h" kind="file"><name>task.h</name>
@@ -1651,6 +1676,8 @@
   <compound refid="dir_7c05c37b25e9c9eccd9c63c2d313ba28" kind="dir"><name>include/endstone/event/player</name>
   </compound>
   <compound refid="dir_53ee43673b2467e53c4cb8c30a2e7d89" kind="dir"><name>include/endstone/plugin</name>
+  </compound>
+  <compound refid="dir_69aa83db54d47362b78b719d1ebae01d" kind="dir"><name>include/endstone/profile</name>
   </compound>
   <compound refid="dir_3a50fadda3c7cdc27c965a478a3f7d27" kind="dir"><name>include/endstone/scheduler</name>
   </compound>

@@ -42,6 +42,7 @@
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
+| class | [**BanEntry**](classendstone_1_1BanEntry.md) &lt;typename T&gt;<br>_A single entry from a ban list. This may represent either a player ban or an IP ban._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;typename T&gt;<br>_A class that represents a ban list, containing bans of some target type._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
@@ -93,6 +94,7 @@
 | class | [**PlayerJoinEvent**](classendstone_1_1PlayerJoinEvent.md) <br>_Called when a player joins a server._  |
 | class | [**PlayerKickEvent**](classendstone_1_1PlayerKickEvent.md) <br>_Called when a player gets kicked from the server._  |
 | class | [**PlayerLoginEvent**](classendstone_1_1PlayerLoginEvent.md) <br>_Called when a player attempts to login in._  |
+| class | [**PlayerProfile**](classendstone_1_1PlayerProfile.md) <br>_A player profile._  |
 | class | [**PlayerQuitEvent**](classendstone_1_1PlayerQuitEvent.md) <br>_Called when a player leaves a server._  |
 | class | [**PlayerTeleportEvent**](classendstone_1_1PlayerTeleportEvent.md) <br>_Called when a player is teleported from one location to another._  |
 | class | [**Plugin**](classendstone_1_1Plugin.md) <br>_Represents a_ [_**Plugin**_](classendstone_1_1Plugin.md) _._ |

@@ -7,6 +7,7 @@
     <includes local="no">cstdint</includes>
     <includes local="no">string</includes>
     <includedby refid="player_8h" local="yes">include/endstone/player.h</includedby>
+    <includedby refid="player__profile_8h" local="yes">include/endstone/profile/player_profile.h</includedby>
     <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
       <node id="4">
@@ -93,6 +94,10 @@
         <label>include/endstone/event/player/player_quit_event.h</label>
         <link refid="player__quit__event_8h_source"/>
       </node>
+      <node id="28">
+        <label>include/endstone/profile/player_profile.h</label>
+        <link refid="player__profile_8h_source"/>
+      </node>
       <node id="10">
         <label>include/endstone/event/player/player_interact_event.h</label>
         <link refid="player__interact__event_8h_source"/>
@@ -177,6 +182,8 @@
         <label>include/endstone/util/uuid.h</label>
         <link refid="uuid_8h"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>

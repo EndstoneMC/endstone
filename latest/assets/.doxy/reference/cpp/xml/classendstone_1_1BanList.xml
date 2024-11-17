@@ -23,7 +23,7 @@
         <location file="include/endstone/ban/ban_list.h" line="32" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a7c69a04564631d8065b53199c54da98e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>BanEntry&lt; T &gt; *</type>
+        <type><ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref>&lt; T &gt; *</type>
         <definition>virtual BanEntry&lt;T&gt;* endstone::BanList&lt; T &gt;::getBanEntry</definition>
         <argsstring>(T target) const =0</argsstring>
         <name>getBanEntry</name>
@@ -32,7 +32,7 @@
           <declname>target</declname>
         </param>
         <briefdescription>
-<para>Gets a BanEntry by the target. </para>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by the target. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -53,7 +53,7 @@
         <location file="include/endstone/ban/ban_list.h" line="40" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a37bccae938e654a145e7cd49a84eb33e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>BanEntry&lt; T &gt; &amp;</type>
+        <type><ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref>&lt; T &gt; &amp;</type>
         <definition>virtual BanEntry&lt;T&gt;&amp; endstone::BanList&lt; T &gt;::addBan</definition>
         <argsstring>(T target, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::system_clock::time_point &gt; expires, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
@@ -119,7 +119,7 @@
         <location file="include/endstone/ban/ban_list.h" line="51" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1afa0bac6f660754a8cd3955fdf207e226" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type>BanEntry&lt; T &gt; &amp;</type>
+        <type><ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref>&lt; T &gt; &amp;</type>
         <definition>virtual BanEntry&lt;T&gt;&amp; endstone::BanList&lt; T &gt;::addBan</definition>
         <argsstring>(T target, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::seconds &gt; duration, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
@@ -185,12 +185,12 @@
         <location file="include/endstone/ban/ban_list.h" line="65" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1BanList_1a836894e9f9860c73c39203b6264897f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; BanEntry&lt; T &gt; * &gt;</type>
+        <type>std::vector&lt; <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref>&lt; T &gt; * &gt;</type>
         <definition>virtual std::vector&lt;BanEntry&lt;T&gt;*&gt; endstone::BanList&lt; T &gt;::getEntries</definition>
         <argsstring>() const =0</argsstring>
         <name>getEntries</name>
         <briefdescription>
-<para>Gets a vector containing pointers to every BanEntry in this list. </para>
+<para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>std::vector&lt;BanEntry&lt;T&gt;*&gt; A vector containing pointers to every entry tracked by this list </para>
@@ -211,7 +211,7 @@
           <declname>target</declname>
         </param>
         <briefdescription>
-<para>Checks if a BanEntry exists for the target, indicating an active ban status. </para>
+<para>Checks if a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -223,7 +223,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>true If a BanEntry exists for the target, indicating an active ban status </para>
+<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status </para>
 </simplesect>
 <simplesect kind="return"><para>false Otherwise </para>
 </simplesect>
