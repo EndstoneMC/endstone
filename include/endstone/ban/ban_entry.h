@@ -14,13 +14,12 @@
 
 #pragma once
 
-#pragma once
-
 #include <string>
 #include <memory>
 #include <optional>
 #include <chrono>
 
+namespace endstone{
 /**
  * @brief A single entry from a ban list. This may represent either a player ban or an IP ban.
  *
@@ -117,3 +116,4 @@ public:
      */
     virtual void remove() = 0;
 };
+}
