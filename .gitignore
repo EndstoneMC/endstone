@@ -16,3 +16,4 @@ bedrock_server/*
 wheelhouse/*
 stubs/*
 .cache/*
+dist/*
