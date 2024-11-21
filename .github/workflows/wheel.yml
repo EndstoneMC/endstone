@@ -17,12 +17,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-22.04, windows-2019 ]
         python-tag: [ "cp39", "cp310", "cp311", "cp312", "cp313" ]
         include:
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             platform: manylinux_x86_64
-          - os: windows-latest
+          - os: windows-2019
             platform: win_amd64
 
     steps:
