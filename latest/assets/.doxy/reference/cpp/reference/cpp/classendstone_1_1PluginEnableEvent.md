@@ -246,7 +246,6 @@ inline explicit endstone::PluginEnableEvent::PluginEnableEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PluginEnableEvent::getEventName () override const
 ```
@@ -276,7 +275,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getPlugin 
 
-
 ```C++
 inline Plugin & endstone::PluginEnableEvent::getPlugin () const
 ```
@@ -303,7 +301,6 @@ Gets the plugin involved in this event
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PluginEnableEvent::isCancellable () override const

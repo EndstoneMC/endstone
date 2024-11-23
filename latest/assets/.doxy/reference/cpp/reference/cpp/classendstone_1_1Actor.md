@@ -301,7 +301,6 @@ Implements [*endstone::CommandSender::asActor*](classendstone_1_1CommandSender.m
 
 ### function getDimension 
 
-
 ```C++
 virtual Dimension & endstone::Actor::getDimension () const = 0
 ```
@@ -379,7 +378,6 @@ virtual std::int64_t endstone::Actor::getId () const = 0
 
 ### function getLevel 
 
-
 ```C++
 virtual Level & endstone::Actor::getLevel () const = 0
 ```
@@ -406,7 +404,6 @@ The current [**Level**](classendstone_1_1Level.md) this actor resides in
 
 
 ### function getLocation 
-
 
 ```C++
 virtual Location endstone::Actor::getLocation () const = 0
@@ -460,7 +457,6 @@ Maximum health
 
 ### function getRuntimeId 
 
-
 ```C++
 virtual std::uint64_t endstone::Actor::getRuntimeId () const = 0
 ```
@@ -512,7 +508,6 @@ a list of scoreboard tags for this actor
 
 
 ### function getVelocity 
-
 
 ```C++
 virtual Vector < float > endstone::Actor::getVelocity () const = 0
@@ -566,7 +561,6 @@ True if it is dead.
 
 ### function isInLava 
 
-
 ```C++
 virtual bool endstone::Actor::isInLava () const = 0
 ```
@@ -594,7 +588,6 @@ True if the actor is in lava.
 
 ### function isInWater 
 
-
 ```C++
 virtual bool endstone::Actor::isInWater () const = 0
 ```
@@ -621,7 +614,6 @@ True if the actor is in water.
 
 
 ### function isOnGround 
-
 
 ```C++
 virtual bool endstone::Actor::isOnGround () const = 0
@@ -684,7 +676,6 @@ true if the tag was successfully removed, false if the tag does not exist.
 
 ### function setHealth 
 
-
 ```C++
 virtual Result< void > endstone::Actor::setHealth (
     int health
@@ -713,7 +704,6 @@ Sets the entity's health from 0 to its possible value, where 0 is dead.
 
 
 ### function setRotation 
-
 
 ```C++
 virtual void endstone::Actor::setRotation (
@@ -753,7 +743,6 @@ Note that if the actor is affected by AI, it may override this rotation.
 
 ### function teleport [1/2]
 
-
 ```C++
 virtual void endstone::Actor::teleport (
     Location location
@@ -786,7 +775,6 @@ Teleports this actor to the given location.
 
 
 ### function teleport [2/2]
-
 
 ```C++
 virtual void endstone::Actor::teleport (

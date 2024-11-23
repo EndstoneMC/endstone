@@ -151,7 +151,6 @@ inline constexpr endstone::Vector::Vector (
 
 ### function distance 
 
-
 ```C++
 inline constexpr T endstone::Vector::distance (
     const Vector < T > & other
@@ -187,7 +186,6 @@ the distance
 
 
 ### function distanceSquared 
-
 
 ```C++
 inline constexpr T endstone::Vector::distanceSquared (

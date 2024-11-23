@@ -214,7 +214,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 If a [**BlockPlaceEvent**](classendstone_1_1BlockPlaceEvent.md) is cancelled, the block will not be placed. 
@@ -336,7 +336,6 @@ The [**Block**](classendstone_1_1Block.md) which was replaced.
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::BlockPlaceEvent::getEventName () override const
 ```
@@ -390,7 +389,6 @@ The [**Player**](classendstone_1_1Player.md) who placed the block involved in th
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::BlockPlaceEvent::isCancellable () override const

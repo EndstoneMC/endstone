@@ -112,6 +112,7 @@
 
 ### enum Level 
 
+_Specifies the log level._ 
 ```C++
 enum endstone::Logger::Level {
     Trace = 0,

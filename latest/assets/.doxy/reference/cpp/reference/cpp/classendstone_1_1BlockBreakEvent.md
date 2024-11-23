@@ -211,7 +211,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 If a [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) is cancelled, the block will not break and experience will not drop. 
@@ -255,7 +255,6 @@ inline explicit endstone::BlockBreakEvent::BlockBreakEvent (
 
 
 ### function getEventName 
-
 
 ```C++
 inline virtual std::string endstone::BlockBreakEvent::getEventName () override const
@@ -310,7 +309,6 @@ The [**Player**](classendstone_1_1Player.md) that is breaking the block involved
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::BlockBreakEvent::isCancellable () override const

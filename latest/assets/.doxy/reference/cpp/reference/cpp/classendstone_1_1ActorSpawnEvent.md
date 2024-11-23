@@ -210,7 +210,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 If an [**Actor**](classendstone_1_1Actor.md) Spawn event is cancelled, the actor will not spawn. 
@@ -254,7 +254,6 @@ inline explicit endstone::ActorSpawnEvent::ActorSpawnEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ActorSpawnEvent::getEventName () override const
 ```
@@ -283,7 +282,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ActorSpawnEvent::isCancellable () override const

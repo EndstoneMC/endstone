@@ -248,7 +248,6 @@ inline explicit endstone::ActorDeathEvent::ActorDeathEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ActorDeathEvent::getEventName () override const
 ```
@@ -277,7 +276,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ActorDeathEvent::isCancellable () override const

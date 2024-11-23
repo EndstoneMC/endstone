@@ -127,7 +127,6 @@ endstone::Event::Event (
 
 ### function getEventName 
 
-
 ```C++
 virtual std::string endstone::Event::getEventName () const = 0
 ```
@@ -154,7 +153,6 @@ name of this event
 
 
 ### function isAsynchronous 
-
 
 ```C++
 inline bool endstone::Event::isAsynchronous () const
@@ -183,7 +181,6 @@ false by default, true if the event fires asynchronously
 
 ### function isCancellable 
 
-
 ```C++
 virtual bool endstone::Event::isCancellable () const = 0
 ```
@@ -210,7 +207,6 @@ true if this event can be cancelled
 
 
 ### function isCancelled 
-
 
 ```C++
 inline bool endstone::Event::isCancelled () const
@@ -253,7 +249,6 @@ Event & endstone::Event::operator= (
 
 
 ### function setCancelled 
-
 
 ```C++
 inline void endstone::Event::setCancelled (

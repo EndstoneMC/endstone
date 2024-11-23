@@ -98,7 +98,7 @@ _Represents a generic form._ [More...](#detailed-description)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 The [**Form**](classendstone_1_1Form.md) class provides a base abstraction for different types of forms. It supports three types of forms: Action, Message, and Modal. Each form has a title, which can be a string or a translatable object. 

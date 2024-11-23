@@ -98,6 +98,7 @@ _Represents a dimension within a_ [_**Level**_](classendstone_1_1Level.md) _._
 
 ### enum Type 
 
+_Represents various dimension types._ 
 ```C++
 enum endstone::Dimension::Type {
     Overworld = 0,

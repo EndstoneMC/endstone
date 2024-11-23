@@ -249,7 +249,6 @@ inline endstone::ThunderChangeEvent::ThunderChangeEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ThunderChangeEvent::getEventName () override const
 ```
@@ -279,7 +278,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function isCancellable 
 
-
 ```C++
 inline virtual bool endstone::ThunderChangeEvent::isCancellable () override const
 ```
@@ -308,7 +306,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function toThunderState 
-
 
 ```C++
 inline bool endstone::ThunderChangeEvent::toThunderState () const

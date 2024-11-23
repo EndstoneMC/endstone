@@ -130,7 +130,6 @@ endstone::PluginLoader::PluginLoader (
 
 ### function disablePlugin 
 
-
 ```C++
 inline virtual void endstone::PluginLoader::disablePlugin (
     Plugin & plugin
@@ -159,7 +158,6 @@ Disables the specified plugin Attempting to disable a plugin that is not enabled
 
 
 ### function enablePlugin 
-
 
 ```C++
 inline virtual void endstone::PluginLoader::enablePlugin (
@@ -217,7 +215,6 @@ The [**Server**](classendstone_1_1Server.md) reference.
 
 
 ### function loadPlugins 
-
 
 ```C++
 virtual std::vector< Plugin * > endstone::PluginLoader::loadPlugins (

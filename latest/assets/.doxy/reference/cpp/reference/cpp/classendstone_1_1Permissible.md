@@ -101,7 +101,6 @@ Inherited by the following classes: [endstone::CommandSender](classendstone_1_1C
 
 ### function addAttachment [1/2]
 
-
 ```C++
 virtual Result< PermissionAttachment * > endstone::Permissible::addAttachment (
     Plugin & plugin,
@@ -141,7 +140,6 @@ The [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) that wa
 
 
 ### function addAttachment [2/2]
-
 
 ```C++
 virtual Result< PermissionAttachment * > endstone::Permissible::addAttachment (
@@ -204,7 +202,6 @@ virtual CommandSender * endstone::Permissible::asCommandSender () const = 0
 
 ### function getEffectivePermissions 
 
-
 ```C++
 virtual std::unordered_set< PermissionAttachmentInfo * > endstone::Permissible::getEffectivePermissions () const = 0
 ```
@@ -231,7 +228,6 @@ Set of currently effective permissions
 
 
 ### function hasPermission [1/2]
-
 
 ```C++
 virtual bool endstone::Permissible::hasPermission (
@@ -268,7 +264,6 @@ Value of the permission
 
 
 ### function hasPermission [2/2]
-
 
 ```C++
 virtual bool endstone::Permissible::hasPermission (
@@ -331,7 +326,6 @@ true if this is an operator, otherwise false
 
 ### function isPermissionSet [1/2]
 
-
 ```C++
 virtual bool endstone::Permissible::isPermissionSet (
     std::string name
@@ -367,7 +361,6 @@ true if the permission is set, otherwise false
 
 
 ### function isPermissionSet [2/2]
-
 
 ```C++
 virtual bool endstone::Permissible::isPermissionSet (
@@ -405,7 +398,6 @@ true if the permission is set, otherwise false
 
 ### function recalculatePermissions 
 
-
 ```C++
 virtual void endstone::Permissible::recalculatePermissions () = 0
 ```
@@ -422,7 +414,6 @@ Recalculates the permissions for this object, if the attachments have changed va
 
 
 ### function removeAttachment 
-
 
 ```C++
 virtual Result< void > endstone::Permissible::removeAttachment (

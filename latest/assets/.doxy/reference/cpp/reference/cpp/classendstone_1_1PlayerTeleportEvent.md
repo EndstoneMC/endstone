@@ -253,7 +253,6 @@ inline explicit endstone::PlayerTeleportEvent::PlayerTeleportEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerTeleportEvent::getEventName () override const
 ```
@@ -332,7 +331,6 @@ inline const Location & endstone::PlayerTeleportEvent::getTo () const
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerTeleportEvent::isCancellable () override const

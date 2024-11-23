@@ -282,7 +282,6 @@ inline endstone::Location::Location (
 
 ### function getPitch 
 
-
 ```C++
 inline float endstone::Location::getPitch () const
 ```
@@ -310,7 +309,6 @@ the incline's pitch
 
 ### function getYaw 
 
-
 ```C++
 inline float endstone::Location::getYaw () const
 ```
@@ -337,7 +335,6 @@ the rotation's yaw
 
 
 ### function setPitch 
-
 
 ```C++
 inline void endstone::Location::setPitch (
@@ -372,7 +369,6 @@ Increasing pitch values the equivalent of looking down.
 
 
 ### function setYaw 
-
 
 ```C++
 inline void endstone::Location::setYaw (

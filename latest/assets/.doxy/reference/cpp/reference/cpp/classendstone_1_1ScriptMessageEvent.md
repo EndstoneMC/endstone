@@ -250,7 +250,6 @@ inline endstone::ScriptMessageEvent::ScriptMessageEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ScriptMessageEvent::getEventName () override const
 ```
@@ -280,7 +279,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getMessage 
 
-
 ```C++
 inline const std::string & endstone::ScriptMessageEvent::getMessage () const
 ```
@@ -307,7 +305,6 @@ Message to send
 
 
 ### function getMessageId 
-
 
 ```C++
 inline const std::string & endstone::ScriptMessageEvent::getMessageId () const
@@ -336,7 +333,6 @@ Message id to send
 
 ### function getSender 
 
-
 ```C++
 inline const CommandSender & endstone::ScriptMessageEvent::getSender () const
 ```
@@ -363,7 +359,6 @@ Gets the command sender who initiated the command
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ScriptMessageEvent::isCancellable () override const

@@ -170,7 +170,6 @@ inline explicit endstone::PlayerEvent::PlayerEvent (
 
 ### function getPlayer 
 
-
 ```C++
 inline Player & endstone::PlayerEvent::getPlayer () const
 ```

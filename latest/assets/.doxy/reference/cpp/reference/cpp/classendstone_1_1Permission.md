@@ -137,7 +137,6 @@ inline explicit endstone::Permission::Permission (
 
 ### function addParent [1/2]
 
-
 ```C++
 inline Permission * endstone::Permission::addParent (
     std::string name,
@@ -179,7 +178,6 @@ Parent permission it created or loaded
 
 ### function addParent [2/2]
 
-
 ```C++
 inline void endstone::Permission::addParent (
     Permission & perm,
@@ -211,7 +209,6 @@ Adds this permission to the specified parent permission.
 
 ### function getChildren 
 
-
 ```C++
 inline std::unordered_map< std::string, bool > & endstone::Permission::getChildren () 
 ```
@@ -238,7 +235,6 @@ Gets the children of this permission. If you change this map in any form, you mu
 
 
 ### function getDefault 
-
 
 ```C++
 inline PermissionDefault endstone::Permission::getDefault () const
@@ -267,7 +263,6 @@ Default value of this permission.
 
 ### function getDescription 
 
-
 ```C++
 inline std::string endstone::Permission::getDescription () const
 ```
@@ -295,7 +290,6 @@ Brief description of this permission
 
 ### function getName 
 
-
 ```C++
 inline std::string endstone::Permission::getName () const
 ```
@@ -322,7 +316,6 @@ Fully qualified name
 
 
 ### function getPermissibles 
-
 
 ```C++
 inline std::unordered_set< Permissible * > endstone::Permission::getPermissibles () const
@@ -366,7 +359,6 @@ inline void endstone::Permission::init (
 
 ### function recalculatePermissibles 
 
-
 ```C++
 inline void endstone::Permission::recalculatePermissibles () 
 ```
@@ -386,7 +378,6 @@ This should be called after modifying the children, and is automatically called 
 
 
 ### function setDefault 
-
 
 ```C++
 inline void endstone::Permission::setDefault (
@@ -419,7 +410,6 @@ This will not be saved to disk, and is a temporary operation until the server re
 
 
 ### function setDescription 
-
 
 ```C++
 inline void endstone::Permission::setDescription (

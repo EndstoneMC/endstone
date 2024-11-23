@@ -250,7 +250,6 @@ inline explicit endstone::PlayerChatEvent::PlayerChatEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerChatEvent::getEventName () override const
 ```
@@ -280,7 +279,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getMessage 
 
-
 ```C++
 inline std::string endstone::PlayerChatEvent::getMessage () const
 ```
@@ -307,7 +305,6 @@ Message the player is attempting to send
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerChatEvent::isCancellable () override const
@@ -337,7 +334,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function setMessage 
-
 
 ```C++
 inline void endstone::PlayerChatEvent::setMessage (

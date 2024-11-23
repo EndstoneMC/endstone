@@ -214,7 +214,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 This may be as a result of natural causes (Enderman, Shulker), pathfinding (Wolf), or commands (/teleport). 
@@ -259,7 +259,6 @@ inline explicit endstone::ActorTeleportEvent::ActorTeleportEvent (
 
 
 ### function getEventName 
-
 
 ```C++
 inline virtual std::string endstone::ActorTeleportEvent::getEventName () override const
@@ -339,7 +338,6 @@ inline const Location & endstone::ActorTeleportEvent::getTo () const
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ActorTeleportEvent::isCancellable () override const

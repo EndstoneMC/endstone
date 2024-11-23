@@ -134,6 +134,7 @@ _Represents a server implementation._
 
 ### variable BroadcastChannelAdmin 
 
+_Used for all administrative messages, such as an operator using a command._ 
 ```C++
 const std::string endstone::Server::BroadcastChannelAdmin;
 ```
@@ -147,6 +148,7 @@ const std::string endstone::Server::BroadcastChannelAdmin;
 
 ### variable BroadcastChannelUser 
 
+_Used for all announcement messages, such as informing users that a player has joined._ 
 ```C++
 const std::string endstone::Server::BroadcastChannelUser;
 ```
@@ -1120,6 +1122,7 @@ Server & endstone::Server::operator= (
 
 ### function reload 
 
+_Reloads the server configuration, functions, scripts and plugins._ 
 ```C++
 virtual void endstone::Server::reload () = 0
 ```
@@ -1178,6 +1181,7 @@ virtual Result< void > endstone::Server::setMaxPlayers (
 
 ### function shutdown 
 
+_Shutdowns the server, stopping everything._ 
 ```C++
 virtual void endstone::Server::shutdown () = 0
 ```

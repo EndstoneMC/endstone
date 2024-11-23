@@ -335,7 +335,6 @@ the clicked position.
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerInteractEvent::getEventName () override const
 ```
@@ -439,7 +438,6 @@ boolean true if it did
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerInteractEvent::isCancellable () override const

@@ -120,7 +120,6 @@ inline endstone::SocketAddress::SocketAddress (
 
 ### function getHostname 
 
-
 ```C++
 inline const std::string & endstone::SocketAddress::getHostname () const
 ```
@@ -147,7 +146,6 @@ The hostname of this socket address
 
 
 ### function getPort 
-
 
 ```C++
 inline std::uint32_t endstone::SocketAddress::getPort () const

@@ -460,7 +460,6 @@ Message to appear to other players on the server.
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerDeathEvent::getEventName () override const
 ```
@@ -489,7 +488,6 @@ Implements [*endstone::ActorDeathEvent::getEventName*](classendstone_1_1ActorDea
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerDeathEvent::isCancellable () override const

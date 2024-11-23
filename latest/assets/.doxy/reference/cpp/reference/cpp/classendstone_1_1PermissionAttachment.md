@@ -114,7 +114,6 @@ inline endstone::PermissionAttachment::PermissionAttachment (
 
 ### function getPermissible 
 
-
 ```C++
 inline Permissible & endstone::PermissionAttachment::getPermissible () const
 ```
@@ -141,7 +140,6 @@ Gets the [**Permissible**](classendstone_1_1Permissible.md) that this is attache
 
 
 ### function getPermissions 
-
 
 ```C++
 inline std::unordered_map< std::string, bool > endstone::PermissionAttachment::getPermissions () const
@@ -170,7 +168,6 @@ Copy of all permissions and values expressed by this attachment
 
 ### function getPlugin 
 
-
 ```C++
 inline Plugin & endstone::PermissionAttachment::getPlugin () const
 ```
@@ -197,7 +194,6 @@ Gets the plugin responsible for this attachment
 
 
 ### function getRemovalCallback 
-
 
 ```C++
 inline PermissionRemovedExecutor endstone::PermissionAttachment::getRemovalCallback () const
@@ -226,7 +222,6 @@ Executor to be called when this is removed
 
 ### function remove 
 
-
 ```C++
 inline bool endstone::PermissionAttachment::remove () 
 ```
@@ -253,7 +248,6 @@ true if the permissible was removed successfully, false if it did not exist
 
 
 ### function setPermission [1/2]
-
 
 ```C++
 inline void endstone::PermissionAttachment::setPermission (
@@ -286,7 +280,6 @@ Sets a permission to the given value, by its fully qualified name
 
 ### function setPermission [2/2]
 
-
 ```C++
 inline void endstone::PermissionAttachment::setPermission (
     Permission & perm,
@@ -318,7 +311,6 @@ Sets a permission to the given value
 
 ### function setRemovalCallback 
 
-
 ```C++
 inline void endstone::PermissionAttachment::setRemovalCallback (
     PermissionRemovedExecutor ex
@@ -348,7 +340,6 @@ Sets an executor to be called for when this attachment is removed from a [**Perm
 
 ### function unsetPermission [1/2]
 
-
 ```C++
 inline void endstone::PermissionAttachment::unsetPermission (
     std::string name
@@ -377,7 +368,6 @@ Removes the specified permission from this attachment. If the permission does no
 
 
 ### function unsetPermission [2/2]
-
 
 ```C++
 inline void endstone::PermissionAttachment::unsetPermission (

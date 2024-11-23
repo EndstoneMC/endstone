@@ -249,7 +249,6 @@ inline endstone::WeatherChangeEvent::WeatherChangeEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::WeatherChangeEvent::getEventName () override const
 ```
@@ -279,7 +278,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function isCancellable 
 
-
 ```C++
 inline virtual bool endstone::WeatherChangeEvent::isCancellable () override const
 ```
@@ -308,7 +306,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function toWeatherState 
-
 
 ```C++
 inline bool endstone::WeatherChangeEvent::toWeatherState () const

@@ -134,7 +134,6 @@ inline endstone::PluginDescription::PluginDescription (
 
 ### function getAPIVersion 
 
-
 ```C++
 inline std::string endstone::PluginDescription::getAPIVersion () const
 ```
@@ -161,7 +160,6 @@ the API version supported by the plugin
 
 
 ### function getAuthors 
-
 
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getAuthors () const
@@ -190,7 +188,6 @@ an immutable list of the plugin's authors
 
 ### function getCommands 
 
-
 ```C++
 inline std::vector< Command > endstone::PluginDescription::getCommands () const
 ```
@@ -217,7 +214,6 @@ the commands this plugin will register
 
 
 ### function getContributors 
-
 
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getContributors () const
@@ -246,7 +242,6 @@ an immutable list of the plugin's contributions
 
 ### function getDefaultPermission 
 
-
 ```C++
 inline PermissionDefault endstone::PluginDescription::getDefaultPermission () const
 ```
@@ -273,7 +268,6 @@ the default value for the plugin's permissions
 
 
 ### function getDepend 
-
 
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getDepend () const
@@ -302,7 +296,6 @@ immutable list of the plugin's dependencies
 
 ### function getDescription 
 
-
 ```C++
 inline std::string endstone::PluginDescription::getDescription () const
 ```
@@ -326,7 +319,6 @@ description of this plugin, or empty if not specified
 
 
 ### function getFullName 
-
 
 ```C++
 inline std::string endstone::PluginDescription::getFullName () const
@@ -355,7 +347,6 @@ a descriptive name of the plugin and respective version
 
 ### function getLoad 
 
-
 ```C++
 inline PluginLoadOrder endstone::PluginDescription::getLoad () const
 ```
@@ -382,7 +373,6 @@ the phase when the plugin should be loaded
 
 
 ### function getLoadBefore 
-
 
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getLoadBefore () const
@@ -411,7 +401,6 @@ immutable list of plugins that should consider this plugin a soft-dependency
 
 ### function getName 
 
-
 ```C++
 inline std::string endstone::PluginDescription::getName () const
 ```
@@ -438,7 +427,6 @@ the name of the plugin
 
 
 ### function getPermissions 
-
 
 ```C++
 inline std::vector< Permission > endstone::PluginDescription::getPermissions () const
@@ -467,7 +455,6 @@ the permissions this plugin will register
 
 ### function getPrefix 
 
-
 ```C++
 inline std::string endstone::PluginDescription::getPrefix () const
 ```
@@ -494,7 +481,6 @@ the prefixed logging token, or empty if not specified
 
 
 ### function getProvides 
-
 
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getProvides () const
@@ -523,7 +509,6 @@ immutable list of the plugin APIs which this plugin provides
 
 ### function getSoftDepend 
 
-
 ```C++
 inline std::vector< std::string > endstone::PluginDescription::getSoftDepend () const
 ```
@@ -551,7 +536,6 @@ immutable list of the plugin's preferred dependencies
 
 ### function getVersion 
 
-
 ```C++
 inline std::string endstone::PluginDescription::getVersion () const
 ```
@@ -578,7 +562,6 @@ the version of the plugin
 
 
 ### function getWebsite 
-
 
 ```C++
 inline std::string endstone::PluginDescription::getWebsite () const

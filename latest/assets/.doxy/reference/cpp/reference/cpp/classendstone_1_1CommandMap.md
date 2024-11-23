@@ -140,7 +140,6 @@ endstone::CommandMap::CommandMap (
 
 ### function clearCommands 
 
-
 ```C++
 virtual void endstone::CommandMap::clearCommands () = 0
 ```
@@ -193,7 +192,6 @@ true if execution is successful, false otherwise
 
 
 ### function getCommand 
-
 
 ```C++
 virtual Command * endstone::CommandMap::getCommand (
@@ -260,7 +258,6 @@ CommandMap & endstone::CommandMap::operator= (
 
 
 ### function registerCommand 
-
 
 ```C++
 virtual bool endstone::CommandMap::registerCommand (

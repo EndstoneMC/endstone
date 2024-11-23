@@ -98,7 +98,7 @@ _Implementation of Universally Unique Identifier (_ [_**UUID**_](classendstone_1
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 Adapted from [https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp](https://github.com/boostorg/uuid/blob/develop/include/boost/uuid/uuid.hpp) 

@@ -343,6 +343,7 @@ visible status
 
 ### function removeAll 
 
+_Removes all players from this boss bar._ 
 ```C++
 virtual void endstone::BossBar::removeAll () = 0
 ```

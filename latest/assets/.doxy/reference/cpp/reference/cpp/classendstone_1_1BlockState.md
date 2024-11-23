@@ -95,7 +95,7 @@ Inherits the following classes: std::enable_shared_from_this< BlockState >
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 Unlike [**Block**](classendstone_1_1Block.md), which only one object can exist per coordinate, [**BlockState**](classendstone_1_1BlockState.md) can exist multiple times for any given [**Block**](classendstone_1_1Block.md). Note that another plugin may change the state of the block, and you will not know, or they may change the block to another type entirely, causing your [**BlockState**](classendstone_1_1BlockState.md) to become invalid. 

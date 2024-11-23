@@ -276,7 +276,6 @@ inline explicit endstone::CommandSenderWrapper::CommandSenderWrapper (
 
 ### function addAttachment [1/2]
 
-
 ```C++
 inline virtual Result< PermissionAttachment * > endstone::CommandSenderWrapper::addAttachment (
     Plugin & plugin,
@@ -318,7 +317,6 @@ Implements [*endstone::Permissible::addAttachment*](classendstone_1_1Permissible
 
 
 ### function addAttachment [2/2]
-
 
 ```C++
 inline virtual Result< PermissionAttachment * > endstone::CommandSenderWrapper::addAttachment (
@@ -466,7 +464,6 @@ Implements [*endstone::CommandSender::asPlayer*](classendstone_1_1CommandSender.
 
 ### function getEffectivePermissions 
 
-
 ```C++
 inline virtual std::unordered_set< PermissionAttachmentInfo * > endstone::CommandSenderWrapper::getEffectivePermissions () override const
 ```
@@ -550,7 +547,6 @@ Implements [*endstone::CommandSender::getServer*](classendstone_1_1CommandSender
 
 ### function hasPermission [1/2]
 
-
 ```C++
 inline virtual bool endstone::CommandSenderWrapper::hasPermission (
     std::string name
@@ -588,7 +584,6 @@ Implements [*endstone::Permissible::hasPermission*](classendstone_1_1Permissible
 
 
 ### function hasPermission [2/2]
-
 
 ```C++
 inline virtual bool endstone::CommandSenderWrapper::hasPermission (
@@ -655,7 +650,6 @@ Implements [*endstone::Permissible::isOp*](classendstone_1_1Permissible.md#funct
 
 ### function isPermissionSet [1/2]
 
-
 ```C++
 inline virtual bool endstone::CommandSenderWrapper::isPermissionSet (
     std::string name
@@ -693,7 +687,6 @@ Implements [*endstone::Permissible::isPermissionSet*](classendstone_1_1Permissib
 
 
 ### function isPermissionSet [2/2]
-
 
 ```C++
 inline virtual bool endstone::CommandSenderWrapper::isPermissionSet (
@@ -733,7 +726,6 @@ Implements [*endstone::Permissible::isPermissionSet*](classendstone_1_1Permissib
 
 ### function recalculatePermissions 
 
-
 ```C++
 inline virtual void endstone::CommandSenderWrapper::recalculatePermissions () override
 ```
@@ -752,7 +744,6 @@ Implements [*endstone::Permissible::recalculatePermissions*](classendstone_1_1Pe
 
 
 ### function removeAttachment 
-
 
 ```C++
 inline virtual Result< void > endstone::CommandSenderWrapper::removeAttachment (

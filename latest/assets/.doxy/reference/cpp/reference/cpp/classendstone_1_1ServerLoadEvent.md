@@ -269,7 +269,6 @@ inline explicit endstone::ServerLoadEvent::ServerLoadEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ServerLoadEvent::getEventName () override const
 ```
@@ -311,7 +310,6 @@ inline LoadType endstone::ServerLoadEvent::getType () const
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ServerLoadEvent::isCancellable () override const

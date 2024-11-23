@@ -250,7 +250,6 @@ inline explicit endstone::PlayerQuitEvent::PlayerQuitEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerQuitEvent::getEventName () override const
 ```
@@ -304,7 +303,6 @@ Message to appear to other players on the server.
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerQuitEvent::isCancellable () override const

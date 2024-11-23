@@ -250,7 +250,6 @@ inline explicit endstone::PlayerKickEvent::PlayerKickEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerKickEvent::getEventName () override const
 ```
@@ -304,7 +303,6 @@ string kick reason
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerKickEvent::isCancellable () override const

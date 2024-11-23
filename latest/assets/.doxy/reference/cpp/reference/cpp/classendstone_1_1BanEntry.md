@@ -94,7 +94,7 @@ _A single entry from a ban list. This may represent either a player ban or an IP
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 Unsaved information is not automatically written to the implementation's ban list, instead, the [**save()**](classendstone_1_1BanEntry.md#function-save) method must be called to write the changes to the ban list. If this ban entry has expired (such as from an unban) and is no longer found in the list, the [**save()**](classendstone_1_1BanEntry.md#function-save) call will re-add it to the list, therefore banning the victim specified.
@@ -246,6 +246,7 @@ the target, e.g. profile or IP address
 
 ### function remove 
 
+_Removes this ban entry from the appropriate ban list._ 
 ```C++
 virtual void endstone::BanEntry::remove () = 0
 ```

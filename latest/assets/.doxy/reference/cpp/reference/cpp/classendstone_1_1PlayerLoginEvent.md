@@ -250,7 +250,6 @@ inline explicit endstone::PlayerLoginEvent::PlayerLoginEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerLoginEvent::getEventName () override const
 ```
@@ -280,7 +279,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getKickMessage 
 
-
 ```C++
 inline const std::string & endstone::PlayerLoginEvent::getKickMessage () const
 ```
@@ -307,7 +305,6 @@ Current kick message
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerLoginEvent::isCancellable () override const
@@ -337,7 +334,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function setKickMessage 
-
 
 ```C++
 inline void endstone::PlayerLoginEvent::setKickMessage (

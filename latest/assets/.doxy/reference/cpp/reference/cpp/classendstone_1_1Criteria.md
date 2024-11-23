@@ -113,7 +113,6 @@ enum endstone::Criteria::Type {
 
 ### function getDefaultRenderType 
 
-
 ```C++
 virtual RenderType endstone::Criteria::getDefaultRenderType () const = 0
 ```

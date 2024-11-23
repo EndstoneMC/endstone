@@ -93,7 +93,6 @@ _Represents a task being executed by the scheduler._
 
 ### function cancel 
 
-
 ```C++
 virtual void endstone::Task::cancel () = 0
 ```
@@ -110,7 +109,6 @@ Attempts to cancel this task.
 
 
 ### function getOwner 
-
 
 ```C++
 virtual Plugin * endstone::Task::getOwner () const = 0
@@ -139,7 +137,6 @@ The [**Plugin**](classendstone_1_1Plugin.md) that owns the task
 
 ### function getTaskId 
 
-
 ```C++
 virtual TaskId endstone::Task::getTaskId () const = 0
 ```
@@ -167,7 +164,6 @@ Returns the taskId for the task.
 
 ### function isCancelled 
 
-
 ```C++
 virtual bool endstone::Task::isCancelled () const = 0
 ```
@@ -194,7 +190,6 @@ true if the task has been cancelled
 
 
 ### function isSync 
-
 
 ```C++
 virtual bool endstone::Task::isSync () const = 0

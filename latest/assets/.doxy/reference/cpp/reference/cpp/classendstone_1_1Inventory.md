@@ -125,6 +125,7 @@ virtual void endstone::Inventory::addItem (
 
 ### function clear 
 
+_Clears out the whole_ [_**Inventory**_](classendstone_1_1Inventory.md) _._
 ```C++
 virtual void endstone::Inventory::clear () = 0
 ```

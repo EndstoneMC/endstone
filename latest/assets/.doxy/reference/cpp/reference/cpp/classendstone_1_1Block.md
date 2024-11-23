@@ -97,7 +97,7 @@ _Represents a block._ [More...](#detailed-description)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 This is a live object, and only one [**Block**](classendstone_1_1Block.md) may exist for any given location in a dimension. 
@@ -110,7 +110,6 @@ This is a live object, and only one [**Block**](classendstone_1_1Block.md) may e
 
 
 ### function captureState 
-
 
 ```C++
 virtual std::shared_ptr< BlockState > endstone::Block::captureState () const = 0

@@ -210,7 +210,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 This event should only be used for monitoring. Modifying the actor during or after this event leads to undefined behaviours. This event will not be called for Players. 
@@ -254,7 +254,6 @@ inline explicit endstone::ActorRemoveEvent::ActorRemoveEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ActorRemoveEvent::getEventName () override const
 ```
@@ -283,7 +282,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ActorRemoveEvent::isCancellable () override const

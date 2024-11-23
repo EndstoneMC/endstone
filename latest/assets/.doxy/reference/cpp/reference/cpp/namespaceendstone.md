@@ -312,6 +312,7 @@ using endstone::BlockStates = typedef std::unordered_map<std::string, std::varia
 
 ### enum DisplaySlot 
 
+_Locations for displaying objectives to the player._ 
 ```C++
 enum endstone::DisplaySlot {
     BelowName,
@@ -354,6 +355,7 @@ Listeners with lower priority are called first will listeners with higher priori
 
 ### enum GameMode 
 
+_Represents the various type of game modes that Players may have._ 
 ```C++
 enum endstone::GameMode {
     Survival = 0,
@@ -385,6 +387,7 @@ using endstone::Message = typedef std::variant<std::string, Translatable>;
 
 ### enum ObjectiveSortOrder 
 
+_Represents the sort order of objectives on a DisplaySlot._ 
 ```C++
 enum endstone::ObjectiveSortOrder {
     Ascending,
@@ -401,6 +404,7 @@ enum endstone::ObjectiveSortOrder {
 
 ### enum PacketType 
 
+_Represents the types of packets._ 
 ```C++
 enum endstone::PacketType {
     SpawnParticleEffect = 118
@@ -416,6 +420,7 @@ enum endstone::PacketType {
 
 ### enum PermissionDefault 
 
+_Represents the possible default values for permissions._ 
 ```C++
 enum endstone::PermissionDefault {
     True,
@@ -447,6 +452,7 @@ using endstone::PermissionRemovedExecutor = typedef std::function<void(const Per
 
 ### enum PluginLoadOrder 
 
+_Represents the order in which a plugin should be initialized and enabled._ 
 ```C++
 enum endstone::PluginLoadOrder {
     Startup,
@@ -463,6 +469,7 @@ enum endstone::PluginLoadOrder {
 
 ### enum RenderType 
 
+_Controls the way in which an_ [_**Objective**_](classendstone_1_1Objective.md) _is rendered on the client side._
 ```C++
 enum endstone::RenderType {
     Integer
@@ -490,7 +497,6 @@ using endstone::Result = typedef nonstd::expected<T, Error>;
 
 
 ### typedef ScoreEntry 
-
 
 ```C++
 using endstone::ScoreEntry = typedef std::variant<Player *, Actor *, std::string>;

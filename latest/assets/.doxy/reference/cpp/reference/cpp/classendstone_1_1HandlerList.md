@@ -112,7 +112,6 @@ inline explicit endstone::HandlerList::HandlerList (
 
 ### function getHandlers 
 
-
 ```C++
 inline std::vector< EventHandler * > endstone::HandlerList::getHandlers () const
 ```
@@ -139,7 +138,6 @@ the array of registered handlers
 
 
 ### function registerHandler 
-
 
 ```C++
 inline EventHandler * endstone::HandlerList::registerHandler (
@@ -177,7 +175,6 @@ the pointer to the registered handler
 
 ### function unregister [1/2]
 
-
 ```C++
 inline void endstone::HandlerList::unregister (
     const EventHandler & handler
@@ -206,7 +203,6 @@ Remove a handler from a specific order slot
 
 
 ### function unregister [2/2]
-
 
 ```C++
 inline void endstone::HandlerList::unregister (

@@ -211,7 +211,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 This event should be async if fired from an async thread. 
@@ -257,7 +257,6 @@ inline endstone::BroadcastMessageEvent::BroadcastMessageEvent (
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::BroadcastMessageEvent::getEventName () override const
 ```
@@ -287,7 +286,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getMessage 
 
-
 ```C++
 inline const std::string & endstone::BroadcastMessageEvent::getMessage () const
 ```
@@ -315,7 +313,6 @@ Message to broadcast
 
 ### function getRecipients 
 
-
 ```C++
 inline const std::unordered_set< const CommandSender * > & endstone::BroadcastMessageEvent::getRecipients () const
 ```
@@ -342,7 +339,6 @@ All CommandSenders who will see this broadcast message
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::BroadcastMessageEvent::isCancellable () override const
@@ -372,7 +368,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function setMessage 
-
 
 ```C++
 inline void endstone::BroadcastMessageEvent::setMessage (

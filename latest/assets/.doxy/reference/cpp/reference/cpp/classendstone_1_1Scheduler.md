@@ -99,7 +99,6 @@ _Represents a scheduler that executes various tasks._
 
 ### function cancelTask 
 
-
 ```C++
 virtual void endstone::Scheduler::cancelTask (
     TaskId id
@@ -128,7 +127,6 @@ Removes task from scheduler.
 
 
 ### function cancelTasks 
-
 
 ```C++
 virtual void endstone::Scheduler::cancelTasks (
@@ -159,7 +157,6 @@ Removes all tasks associated with a particular plugin from the scheduler.
 
 ### function getPendingTasks 
 
-
 ```C++
 virtual std::vector< Task * > endstone::Scheduler::getPendingTasks () = 0
 ```
@@ -189,7 +186,6 @@ Pending tasks
 
 
 ### function isQueued 
-
 
 ```C++
 virtual bool endstone::Scheduler::isQueued (
@@ -227,7 +223,6 @@ If the task is queued to be run.
 
 ### function isRunning 
 
-
 ```C++
 virtual bool endstone::Scheduler::isRunning (
     TaskId id
@@ -263,7 +258,6 @@ If the task is currently running.
 
 
 ### function runTask 
-
 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTask (
@@ -345,7 +339,6 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 
 ### function runTaskLater 
-
 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTaskLater (
@@ -431,7 +424,6 @@ a [**Task**](classendstone_1_1Task.md) that contains the id number (nullptr if t
 
 
 ### function runTaskTimer 
-
 
 ```C++
 virtual std::shared_ptr< Task > endstone::Scheduler::runTaskTimer (

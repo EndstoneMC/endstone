@@ -406,6 +406,7 @@ true if this plugin is enabled, otherwise false
 
 ### function onDisable 
 
+_Called when this plugin is disabled._ 
 ```C++
 inline virtual void endstone::Plugin::onDisable () 
 ```
@@ -419,6 +420,7 @@ inline virtual void endstone::Plugin::onDisable ()
 
 ### function onEnable 
 
+_Called when this plugin is enabled._ 
 ```C++
 inline virtual void endstone::Plugin::onEnable () 
 ```
@@ -516,7 +518,6 @@ endstone::Plugin::~Plugin () override
 
 
 ### function setEnabled 
-
 
 ```C++
 inline void endstone::Plugin::setEnabled (

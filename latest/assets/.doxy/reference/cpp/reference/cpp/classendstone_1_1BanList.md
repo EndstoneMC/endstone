@@ -89,7 +89,7 @@ _A class that represents a ban list, containing bans of some target type._ [More
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 

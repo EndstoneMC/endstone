@@ -112,7 +112,6 @@ inline endstone::EventHandler::EventHandler (
 
 ### function callEvent 
 
-
 ```C++
 inline void endstone::EventHandler::callEvent (
     Event & event
@@ -142,7 +141,6 @@ Calls the event executor
 
 ### function getEventType 
 
-
 ```C++
 inline std::string endstone::EventHandler::getEventType () const
 ```
@@ -169,7 +167,6 @@ Registered event type
 
 
 ### function getPlugin 
-
 
 ```C++
 inline Plugin & endstone::EventHandler::getPlugin () const
@@ -198,7 +195,6 @@ Registered [**Plugin**](classendstone_1_1Plugin.md)
 
 ### function getPriority 
 
-
 ```C++
 inline EventPriority endstone::EventHandler::getPriority () const
 ```
@@ -225,7 +221,6 @@ Registered Priority
 
 
 ### function isIgnoreCancelled 
-
 
 ```C++
 inline bool endstone::EventHandler::isIgnoreCancelled () const

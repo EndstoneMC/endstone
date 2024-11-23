@@ -278,7 +278,6 @@ inline Mob & endstone::ActorKnockbackEvent::getActor () const
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::ActorKnockbackEvent::getEventName () override const
 ```
@@ -307,7 +306,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 ### function getKnockback 
-
 
 ```C++
 inline Vector < float > endstone::ActorKnockbackEvent::getKnockback () const
@@ -363,7 +361,6 @@ actor that caused knockback, or nullptr if the knockback is not caused by an act
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ActorKnockbackEvent::isCancellable () override const

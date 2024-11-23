@@ -274,7 +274,6 @@ actor right-clicked by player
 
 ### function getEventName 
 
-
 ```C++
 inline virtual std::string endstone::PlayerInteractActorEvent::getEventName () override const
 ```
@@ -303,7 +302,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::PlayerInteractActorEvent::isCancellable () override const

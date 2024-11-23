@@ -198,7 +198,6 @@ Implements [*endstone::Command::asPluginCommand*](classendstone_1_1Command.md#fu
 
 ### function execute 
 
-
 ```C++
 inline virtual bool endstone::PluginCommand::execute (
     CommandSender & sender,
@@ -239,7 +238,6 @@ Implements [*endstone::Command::execute*](classendstone_1_1Command.md#function-e
 
 ### function getExecutor 
 
-
 ```C++
 inline virtual CommandExecutor & endstone::PluginCommand::getExecutor () const
 ```
@@ -267,7 +265,6 @@ Gets the [**CommandExecutor**](classendstone_1_1CommandExecutor.md) associated w
 
 ### function getPlugin 
 
-
 ```C++
 inline Plugin & endstone::PluginCommand::getPlugin () const
 ```
@@ -294,7 +291,6 @@ Gets the owner of this [**PluginCommand**](classendstone_1_1PluginCommand.md)
 
 
 ### function setExecutor 
-
 
 ```C++
 inline virtual void endstone::PluginCommand::setExecutor (

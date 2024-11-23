@@ -79,7 +79,7 @@ Inherits the following classes: endstone::Func
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 

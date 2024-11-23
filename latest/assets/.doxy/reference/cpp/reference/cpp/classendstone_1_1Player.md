@@ -427,6 +427,7 @@ Implements [*endstone::CommandSender::asPlayer*](classendstone_1_1CommandSender.
 
 ### function closeForm 
 
+_Closes the forms that are currently open for the player._ 
 ```C++
 virtual void endstone::Player::closeForm () = 0
 ```
@@ -1036,6 +1037,7 @@ true if the command was successful, otherwise false
 
 ### function resetTitle 
 
+_Resets the title displayed to the player. This will clear the displayed title / subtitle and reset timings to their default values._ 
 ```C++
 virtual void endstone::Player::resetTitle () const = 0
 ```
@@ -1334,7 +1336,6 @@ This is a percentage value. 0.0 is "no progress" and 1.0 is "next level".
 
 ### function setFlySpeed 
 
-
 ```C++
 virtual void endstone::Player::setFlySpeed (
     float value
@@ -1418,7 +1419,6 @@ virtual void endstone::Player::setGameMode (
 
 ### function setScoreboard 
 
-
 ```C++
 virtual void endstone::Player::setScoreboard (
     Scoreboard & scoreboard
@@ -1447,7 +1447,6 @@ virtual void endstone::Player::setScoreboard (
 
 
 ### function setWalkSpeed 
-
 
 ```C++
 virtual void endstone::Player::setWalkSpeed (

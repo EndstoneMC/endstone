@@ -90,7 +90,6 @@ Inherited by the following classes: [endstone::Plugin](classendstone_1_1Plugin.m
 
 ### function onCommand 
 
-
 ```C++
 inline virtual bool endstone::CommandExecutor::onCommand (
     CommandSender & sender,

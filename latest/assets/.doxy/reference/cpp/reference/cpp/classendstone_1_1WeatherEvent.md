@@ -170,7 +170,6 @@ inline explicit endstone::WeatherEvent::WeatherEvent (
 
 ### function getLevel 
 
-
 ```C++
 inline Level & endstone::WeatherEvent::getLevel () const
 ```

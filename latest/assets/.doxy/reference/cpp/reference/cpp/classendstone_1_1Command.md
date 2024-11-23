@@ -139,7 +139,6 @@ inline virtual PluginCommand * endstone::Command::asPluginCommand () const
 
 ### function execute 
 
-
 ```C++
 inline virtual bool endstone::Command::execute (
     CommandSender & sender,
@@ -178,7 +177,6 @@ true if the execution was successful, otherwise false
 
 ### function getAliases 
 
-
 ```C++
 inline std::vector< std::string > endstone::Command::getAliases () const
 ```
@@ -205,7 +203,6 @@ List of aliases
 
 
 ### function getDescription 
-
 
 ```C++
 inline std::string endstone::Command::getDescription () const
@@ -234,7 +231,6 @@ Description of this command
 
 ### function getName 
 
-
 ```C++
 inline std::string endstone::Command::getName () const
 ```
@@ -261,7 +257,6 @@ Name of this command
 
 
 ### function getPermissions 
-
 
 ```C++
 inline std::vector< std::string > endstone::Command::getPermissions () const
@@ -290,7 +285,6 @@ List of permission names, or empty if none
 
 ### function getUsages 
 
-
 ```C++
 inline std::vector< std::string > endstone::Command::getUsages () const
 ```
@@ -318,7 +312,6 @@ List of usages
 
 ### function isRegistered 
 
-
 ```C++
 inline bool endstone::Command::isRegistered () const
 ```
@@ -345,7 +338,6 @@ true if this command is currently registered false otherwise
 
 
 ### function registerTo 
-
 
 ```C++
 inline bool endstone::Command::registerTo (
@@ -383,7 +375,6 @@ true if the registration was successful, false otherwise
 
 ### function setAliases 
 
-
 ```C++
 template<typename... Alias>
 inline void endstone::Command::setAliases (
@@ -414,7 +405,6 @@ Sets the list of aliases to request on registration for this command.
 
 ### function setDescription 
 
-
 ```C++
 inline void endstone::Command::setDescription (
     std::string description
@@ -443,7 +433,6 @@ Sets a brief description of this command.
 
 
 ### function setName 
-
 
 ```C++
 inline void endstone::Command::setName (
@@ -477,7 +466,6 @@ May only be used before registering the command.
 
 ### function setPermissions 
 
-
 ```C++
 template<typename... Permission>
 inline void endstone::Command::setPermissions (
@@ -508,7 +496,6 @@ Sets the permissions required by users to be able to perform this command
 
 ### function setUsages 
 
-
 ```C++
 template<typename... Usage>
 inline void endstone::Command::setUsages (
@@ -538,7 +525,6 @@ Sets the usages of this command
 
 
 ### function testPermission 
-
 
 ```C++
 inline bool endstone::Command::testPermission (
@@ -576,7 +562,6 @@ true if they can use it, otherwise false
 
 ### function testPermissionSilently 
 
-
 ```C++
 inline bool endstone::Command::testPermissionSilently (
     const CommandSender & target
@@ -612,7 +597,6 @@ true if they can use it, otherwise false
 
 
 ### function unregisterFrom 
-
 
 ```C++
 inline bool endstone::Command::unregisterFrom (

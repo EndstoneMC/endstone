@@ -250,7 +250,6 @@ inline explicit endstone::PlayerCommandEvent::PlayerCommandEvent (
 
 ### function getCommand 
 
-
 ```C++
 inline std::string endstone::PlayerCommandEvent::getCommand () const
 ```
@@ -277,7 +276,6 @@ Gets the command that the player is attempting to send.
 
 
 ### function getEventName 
-
 
 ```C++
 inline virtual std::string endstone::PlayerCommandEvent::getEventName () override const
@@ -308,7 +306,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function isCancellable 
 
-
 ```C++
 inline virtual bool endstone::PlayerCommandEvent::isCancellable () override const
 ```
@@ -337,7 +334,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function setCommand 
-
 
 ```C++
 inline void endstone::PlayerCommandEvent::setCommand (

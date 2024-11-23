@@ -205,7 +205,6 @@ this objective's name
 
 ### function getRenderType 
 
-
 ```C++
 virtual Result< RenderType > endstone::Objective::getRenderType () const = 0
 ```
@@ -507,6 +506,7 @@ virtual Result< void > endstone::Objective::setRenderType (
 
 ### function unregister 
 
+_Unregisters this objective from the associated_ [_**Scoreboard**_](classendstone_1_1Scoreboard.md) _._
 ```C++
 virtual Result< void > endstone::Objective::unregister () const = 0
 ```

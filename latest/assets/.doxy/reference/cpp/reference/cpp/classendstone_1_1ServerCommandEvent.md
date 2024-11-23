@@ -211,7 +211,7 @@ See [endstone::Event](classendstone_1_1Event.md)
 
 
 
-# Detailed Description
+## Detailed Description
 
 
 You should not use this except for a few cases like logging commands, blocking commands on certain places, or applying modifiers.
@@ -259,7 +259,6 @@ inline endstone::ServerCommandEvent::ServerCommandEvent (
 
 ### function getCommand 
 
-
 ```C++
 inline std::string endstone::ServerCommandEvent::getCommand () const
 ```
@@ -286,7 +285,6 @@ Gets the command that the server is attempting to execute from the console
 
 
 ### function getEventName 
-
 
 ```C++
 inline virtual std::string endstone::ServerCommandEvent::getEventName () override const
@@ -317,7 +315,6 @@ Implements [*endstone::Event::getEventName*](classendstone_1_1Event.md#function-
 
 ### function getSender 
 
-
 ```C++
 inline CommandSender & endstone::ServerCommandEvent::getSender () const
 ```
@@ -344,7 +341,6 @@ The sender
 
 
 ### function isCancellable 
-
 
 ```C++
 inline virtual bool endstone::ServerCommandEvent::isCancellable () override const
@@ -374,7 +370,6 @@ Implements [*endstone::Event::isCancellable*](classendstone_1_1Event.md#function
 
 
 ### function setCommand 
-
 
 ```C++
 inline void endstone::ServerCommandEvent::setCommand (

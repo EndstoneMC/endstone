@@ -276,7 +276,6 @@ block Z
 
 ### function getDimension 
 
-
 ```C++
 inline Dimension * endstone::Position::getDimension () const
 ```
@@ -303,7 +302,6 @@ Gets the dimension that this position resides in
 
 
 ### function setDimension 
-
 
 ```C++
 inline void endstone::Position::setDimension (
