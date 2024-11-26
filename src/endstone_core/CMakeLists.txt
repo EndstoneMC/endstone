@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.15)
+project(endstone_core LANGUAGES CXX)
+
+find_package(base64 REQUIRED)
+find_package(Boost REQUIRED)
+find_package(concurrentqueue REQUIRED)
+find_package(cpptrace REQUIRED)
+find_package(EnTT REQUIRED)
+find_package(glm REQUIRED)
+find_package(magic_enum REQUIRED)
+find_package(Microsoft.GSL REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(pybind11 REQUIRED)
+find_package(spdlog REQUIRED)
+find_package(tomlplusplus REQUIRED)
+
+add_library(endstone_core
+        actor/actor.cpp
+        actor/mob.cpp
+        block/block.cpp
+        block/block_data.cpp
+        block/block_face.cpp
+        block/block_state.cpp
+        boss/boss_bar.cpp
+        command/command_lexer.cpp
+        command/command_map.cpp
+        command/command_origin_wrapper.cpp
+        command/command_usage_parser.cpp
+        command/command_wrapper.cpp
+        command/console_command_sender.cpp
+        command/minecraft_command.cpp
+        command/minecraft_command_adapter.cpp
+        command/proxied_command_sender.cpp
+        command/server_command_sender.cpp
+        command/defaults/ban_command.cpp
+        command/defaults/ban_list_command.cpp
+        command/defaults/pardon_command.cpp
+        command/defaults/plugins_command.cpp
+        command/defaults/reload_command.cpp
+        command/defaults/status_command.cpp
+        command/defaults/version_command.cpp
+        event/server/server_list_ping_event.cpp
+        form/form_codec.cpp
+        inventory/inventory.cpp
+        inventory/item_stack.cpp
+        inventory/player_inventory.cpp
+        lang/language.cpp
+        level/dimension.cpp
+        level/level.cpp
+        network/packet_adapter.cpp
+        network/packet_codec.cpp
+        network/spawn_particle_effect_packet_codec.cpp
+        packs/endstone_pack_source.cpp
+        permissions/default_permissions.cpp
+        permissions/permissible_base.cpp
+        plugin/cpp_plugin_loader.cpp
+        plugin/plugin_manager.cpp
+        plugin/python_plugin_loader.cpp
+        scheduler/async_task.cpp
+        scheduler/scheduler.cpp
+        scheduler/task.cpp
+        scheduler/thread_pool_executor.cpp
+        scoreboard/criteria.cpp
+        scoreboard/objective.cpp
+        scoreboard/score.cpp
+        scoreboard/scoreboard.cpp
+        scoreboard/scoreboard_packet_sender.cpp
+        spdlog/console_log_sink.cpp
+        spdlog/file_log_sink.cpp
+        spdlog/level_formatter.cpp
+        spdlog/spdlog_adapter.cpp
+        spdlog/text_formatter.cpp
+        util/error.cpp
+        util/uuid.cpp
+        logger_factory.cpp
+        message.cpp
+        player.cpp
+        server.cpp
+)
+add_library(endstone::core ALIAS endstone_core)
+target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
+        cpptrace::cpptrace EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
+        pybind11::module spdlog::spdlog tomlplusplus::tomlplusplus)
+if (UNIX)
+    target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
+    target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
+endif ()
+target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${ENDSTONE_VERSION}")
+
+include(GNUInstallDirs)
+install(TARGETS endstone_core
+        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})

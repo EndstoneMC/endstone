@@ -84,23 +84,7 @@ install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT ends
 # ==============
 # endstone::core
 # ==============
-file(GLOB_RECURSE ENDSTONE_CORE_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_core/*.cpp")
-add_library(endstone_core ${ENDSTONE_CORE_SOURCE_FILES})
-add_library(endstone::core ALIAS endstone_core)
-target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
-        cpptrace::cpptrace EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
-        pybind11::module spdlog::spdlog tomlplusplus::tomlplusplus)
-if (UNIX)
-    target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
-    target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
-endif ()
-target_compile_definitions(endstone_core PUBLIC ENDSTONE_VERSION="${ENDSTONE_VERSION}")
-
-include(GNUInstallDirs)
-install(TARGETS endstone_core
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+add_subdirectory(src/endstone_core)
 
 # ==================
 # endstone::devtools
