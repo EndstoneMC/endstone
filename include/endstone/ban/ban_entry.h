@@ -14,42 +14,28 @@
 
 #pragma once
 
-#include <string>
-#include <memory>
-#include <optional>
 #include <chrono>
+#include <optional>
+#include <string>
 
-namespace endstone{
+namespace endstone {
 /**
- * @brief A single entry from a ban list. This may represent either a player ban or an IP ban.
- *
- * Unsaved information is not automatically written to the implementation's ban list, instead, the save() method must
- * be called to write the changes to the ban list. If this ban entry has expired (such as from an unban) and is no
- * longer found in the list, the save() call will re-add it to the list, therefore banning the victim specified.
- *
- * Likewise, changes to the associated BanList or other entries may or may not be reflected in this entry.
- *
- * @tparam T The ban target
+ * @brief A single entry from a ban list.
  */
-template<typename T>
 class BanEntry {
+protected:
+    using Date = std::chrono::system_clock::time_point;
+
 public:
     // Ensure derived class has virtual destructor
     virtual ~BanEntry() = default;
-
-    /**
-     * @brief Gets the target involved.
-     *
-     * @return the target, e.g. profile or IP address
-     */
-    virtual T& getTarget() const = 0;
 
     /**
      * @brief Gets the date this ban entry was created.
      *
      * @return the creation date
      */
-    virtual std::chrono::system_clock::time_point getCreated() const = 0;
+    [[nodiscard]] virtual Date getCreated() const = 0;
 
     /**
      * @brief Sets the date this ban entry was created.
@@ -57,14 +43,14 @@ public:
      * @param created the new created date
      * @see save() saving changes
      */
-    virtual void setCreated(std::chrono::system_clock::time_point created) = 0;
+    virtual void setCreated(Date created) = 0;
 
     /**
      * @brief Gets the source of this ban.
      *
      * @return the source of the ban
      */
-    virtual std::string getSource() const = 0;
+    [[nodiscard]] virtual std::string getSource() const = 0;
 
     /**
      * @brief Sets the source of this ban.
@@ -79,7 +65,7 @@ public:
      *
      * @return the expiration date
      */
-    virtual std::optional<std::chrono::system_clock::time_point> getExpiration() const = 0;
+    [[nodiscard]] virtual std::optional<Date> getExpiration() const = 0;
 
     /**
      * @brief Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.
@@ -87,14 +73,14 @@ public:
      * @param expiration the new expiration date, or std::nullopt to indicate an eternity
      * @see save() saving changes
      */
-    virtual void setExpiration(std::optional<std::chrono::system_clock::time_point> expiration) = 0;
+    virtual void setExpiration(std::optional<Date> expiration) = 0;
 
     /**
      * @brief Gets the reason for this ban.
      *
      * @return the ban reason, or std::nullopt if not set
      */
-    virtual std::optional<std::string> getReason() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getReason() const = 0;
 
     /**
      * @brief Sets the reason for this ban.
@@ -112,8 +98,9 @@ public:
     virtual void save() = 0;
 
     /**
-     * @brief Removes this ban entry from the appropriate ban list.
+     * @brief Removes this ban entry from the associated ban list.
      */
     virtual void remove() = 0;
 };
-}
+
+}  // namespace endstone

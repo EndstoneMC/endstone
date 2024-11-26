@@ -14,17 +14,17 @@
 
 #pragma once
 
-#include <string>
 #include <memory>
-#include <future>
 #include <optional>
+#include <string>
+
 #include "endstone/util/uuid.h"
 
-namespace endstone{
+namespace endstone {
 /**
  * @brief A player profile.
  */
-class PlayerProfile {
+class PlayerProfile : public std::enable_shared_from_this<PlayerProfile> {
 public:
     virtual ~PlayerProfile() = default;
 
@@ -33,21 +33,21 @@ public:
      *
      * @return the player's unique id, or std::nullopt if not available
      */
-    virtual std::optional<UUID> getUniqueId() const = 0;
+    [[nodiscard]] virtual std::optional<UUID> getUniqueId() const = 0;
 
     /**
      * @brief Gets the player name.
      *
      * @return the player name, or std::nullopt if not available
      */
-    virtual std::optional<std::string> getName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getName() const = 0;
 
     /**
      * @brief Gets the player's xbox user id (xuid).
      *
      * @return the player's xbox user id (xuid), or std::nullopt if not available
      */
-    virtual std::optional<std::string> getXuid() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getXuid() const = 0;
 
     /**
      * @brief Checks whether this profile is complete.
@@ -56,6 +56,6 @@ public:
      *
      * @return true if this profile is complete
      */
-    virtual bool isComplete() const = 0;
+    [[nodiscard]] virtual bool isComplete() const = 0;
 };
-}
+}  // namespace endstone
