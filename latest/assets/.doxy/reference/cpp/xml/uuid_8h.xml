@@ -97,6 +97,8 @@
       <node id="28">
         <label>include/endstone/profile/player_profile.h</label>
         <link refid="player__profile_8h_source"/>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>include/endstone/event/player/player_interact_event.h</label>
@@ -141,6 +143,10 @@
         <link refid="plugin__disable__event_8h_source"/>
         <childnode refid="24" relation="include">
         </childnode>
+      </node>
+      <node id="29">
+        <label>include/endstone/ban/player_ban_entry.h</label>
+        <link refid="player__ban__entry_8h_source"/>
       </node>
       <node id="18">
         <label>include/endstone/command/plugin_command.h</label>

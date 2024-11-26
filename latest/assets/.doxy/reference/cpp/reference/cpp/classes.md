@@ -170,6 +170,8 @@
 ([**endstone**](namespaceendstone.md))
 * [**Player**](classendstone_1_1Player.md)
 ([**endstone**](namespaceendstone.md))
+* [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md)
+([**endstone**](namespaceendstone.md))
 * [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md)
 ([**endstone**](namespaceendstone.md))
 * [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md)

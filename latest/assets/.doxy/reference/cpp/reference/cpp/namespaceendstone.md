@@ -42,7 +42,7 @@
 | class | [**ActorRemoveEvent**](classendstone_1_1ActorRemoveEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is removed._ |
 | class | [**ActorSpawnEvent**](classendstone_1_1ActorSpawnEvent.md) <br>_Called when an_ [_**Actor**_](classendstone_1_1Actor.md) _is spawned into a world._ |
 | class | [**ActorTeleportEvent**](classendstone_1_1ActorTeleportEvent.md) <br>_Called when a non-player entity is teleported from one location to another._  |
-| class | [**BanEntry**](classendstone_1_1BanEntry.md) &lt;typename T&gt;<br>_A single entry from a ban list. This may represent either a player ban or an IP ban._  |
+| class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 | class | [**BanList**](classendstone_1_1BanList.md) &lt;typename T&gt;<br>_A class that represents a ban list, containing bans of some target type._  |
 | class | [**Block**](classendstone_1_1Block.md) <br>_Represents a block._  |
 | class | [**BlockBreakEvent**](classendstone_1_1BlockBreakEvent.md) <br>_Called when a block is broken by a player._  |
@@ -84,6 +84,7 @@
 | class | [**PermissionAttachment**](classendstone_1_1PermissionAttachment.md) <br>_Holds information about a permission attachment on a_ [_**Permissible**_](classendstone_1_1Permissible.md) _object._ |
 | class | [**PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md) <br>_Holds information on a permission and which_ [_**PermissionAttachment**_](classendstone_1_1PermissionAttachment.md) _provides it._ |
 | class | [**Player**](classendstone_1_1Player.md) <br>_Represents a player._  |
+| class | [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) <br> |
 | class | [**PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md) <br>_Called when a player sends a chat message._  |
 | class | [**PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md) <br>_Called whenever a player runs a command._  |
 | class | [**PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md) <br>_Called when a_ [_**Player**_](classendstone_1_1Player.md) _dies._ |

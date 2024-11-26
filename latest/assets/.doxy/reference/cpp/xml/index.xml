@@ -92,18 +92,18 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
-    <member refid="classendstone_1_1BanEntry_1a67c78bf82836dc9bfaac0dcb05aa351b" kind="function"><name>~BanEntry</name></member>
-    <member refid="classendstone_1_1BanEntry_1ab68551161f00c313a0553dc0c3a2652c" kind="function"><name>getTarget</name></member>
-    <member refid="classendstone_1_1BanEntry_1a82eadf890a3eed85d19aa19cef3e222f" kind="function"><name>getCreated</name></member>
-    <member refid="classendstone_1_1BanEntry_1a58af6d0112ac795a95d64cb4acf8c724" kind="function"><name>setCreated</name></member>
-    <member refid="classendstone_1_1BanEntry_1ac896cd14c4ebe67c444f282a2f516232" kind="function"><name>getSource</name></member>
-    <member refid="classendstone_1_1BanEntry_1a37561d6a331ad46ccec868b0f46972f1" kind="function"><name>setSource</name></member>
-    <member refid="classendstone_1_1BanEntry_1a8ba67dc34c9780f541a24700c29a3311" kind="function"><name>getExpiration</name></member>
-    <member refid="classendstone_1_1BanEntry_1a0585068eae70fe1251b864b61493c3c2" kind="function"><name>setExpiration</name></member>
-    <member refid="classendstone_1_1BanEntry_1ae2979157e4591efc514acafebb1dab8b" kind="function"><name>getReason</name></member>
-    <member refid="classendstone_1_1BanEntry_1abf22b8452f7e90febb376632505f04fa" kind="function"><name>setReason</name></member>
-    <member refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kind="function"><name>save</name></member>
-    <member refid="classendstone_1_1BanEntry_1a836ef65edc301c8e48ddb6b0045d3950" kind="function"><name>remove</name></member>
+    <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
+    <member refid="classendstone_1_1BanEntry_1a58fb472991f88c6aaadad29cb55523a0" kind="function"><name>~BanEntry</name></member>
+    <member refid="classendstone_1_1BanEntry_1a40896dce89cc5005ce06be95c1e090d1" kind="function"><name>getCreated</name></member>
+    <member refid="classendstone_1_1BanEntry_1ace78a196076f2b2e069284654c273af7" kind="function"><name>setCreated</name></member>
+    <member refid="classendstone_1_1BanEntry_1a653d053232298c5129cc3876251daa18" kind="function"><name>getSource</name></member>
+    <member refid="classendstone_1_1BanEntry_1a53855cc41593c6bbe7271ef2705caa12" kind="function"><name>setSource</name></member>
+    <member refid="classendstone_1_1BanEntry_1a6b016ffd6f4b525c51f11fb14e2cfabc" kind="function"><name>getExpiration</name></member>
+    <member refid="classendstone_1_1BanEntry_1aee34c8c149ebdb62f7c2ddc830e34895" kind="function"><name>setExpiration</name></member>
+    <member refid="classendstone_1_1BanEntry_1a6e39a9929b66552b09c7ab37d245e206" kind="function"><name>getReason</name></member>
+    <member refid="classendstone_1_1BanEntry_1afa88d3979eea314e45a64af03c41c216" kind="function"><name>setReason</name></member>
+    <member refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" kind="function"><name>save</name></member>
+    <member refid="classendstone_1_1BanEntry_1acd1038fcbb104c142c0aebcaf33ec390" kind="function"><name>remove</name></member>
   </compound>
   <compound refid="classendstone_1_1BanList" kind="class"><name>endstone::BanList</name>
     <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" kind="function"><name>~BanList</name></member>
@@ -738,6 +738,9 @@
     <member refid="classendstone_1_1Player_1acfa7b2445c386d21b05ee441c614cf9e" kind="function"><name>sendForm</name></member>
     <member refid="classendstone_1_1Player_1a7487bdbd73d71e461239d377790d377c" kind="function"><name>closeForm</name></member>
     <member refid="classendstone_1_1Player_1aa28e46523502cc4d0c4975fa92cfc067" kind="function"><name>sendPacket</name></member>
+  </compound>
+  <compound refid="classendstone_1_1PlayerBanEntry" kind="class"><name>endstone::PlayerBanEntry</name>
+    <member refid="classendstone_1_1PlayerBanEntry_1af3c62580f3955a868f4b24e8ad6eaec4" kind="function"><name>getTarget</name></member>
   </compound>
   <compound refid="classendstone_1_1PlayerChatEvent" kind="class"><name>endstone::PlayerChatEvent</name>
     <member refid="classendstone_1_1PlayerChatEvent_1a06ce04642473d0eeff2bac22d3319d87" kind="variable"><name>NAME</name></member>
@@ -1414,6 +1417,8 @@
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
   </compound>
   <compound refid="ban__list_8h" kind="file"><name>ban_list.h</name>
+  </compound>
+  <compound refid="player__ban__entry_8h" kind="file"><name>player_ban_entry.h</name>
   </compound>
   <compound refid="block_8h" kind="file"><name>block.h</name>
   </compound>

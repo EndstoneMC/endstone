@@ -2,16 +2,27 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1BanEntry" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::BanEntry</compoundname>
+    <derivedcompoundref refid="classendstone_1_1PlayerBanEntry" prot="public" virt="non-virtual">endstone::PlayerBanEntry</derivedcompoundref>
     <includes refid="ban__entry_8h" local="no">endstone/ban/ban_entry.h</includes>
-    <templateparamlist>
-      <param>
-        <type>typename T</type>
-      </param>
-    </templateparamlist>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="protected" static="no">
+        <type>std::chrono::system_clock::time_point</type>
+        <definition>using endstone::BanEntry::Date =  std::chrono::system_clock::time_point</definition>
+        <argsstring></argsstring>
+        <name>Date</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/ban_entry.h" line="27" column="5" bodyfile="include/endstone/ban/ban_entry.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a67c78bf82836dc9bfaac0dcb05aa351b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a58fb472991f88c6aaadad29cb55523a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
-        <definition>virtual endstone::BanEntry&lt; T &gt;::~BanEntry</definition>
+        <definition>virtual endstone::BanEntry::~BanEntry</definition>
         <argsstring>()=default</argsstring>
         <name>~BanEntry</name>
         <briefdescription>
@@ -20,28 +31,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="38" column="13"/>
+        <location file="include/endstone/ban/ban_entry.h" line="31" column="13"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1ab68551161f00c313a0553dc0c3a2652c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>T &amp;</type>
-        <definition>virtual T&amp; endstone::BanEntry&lt; T &gt;::getTarget</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getTarget</name>
-        <briefdescription>
-<para>Gets the target involved. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>the target, e.g. profile or IP address </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="45" column="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a82eadf890a3eed85d19aa19cef3e222f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::chrono::system_clock::time_point</type>
-        <definition>virtual std::chrono::system_clock::time_point endstone::BanEntry&lt; T &gt;::getCreated</definition>
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a40896dce89cc5005ce06be95c1e090d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>Date</type>
+        <definition>virtual Date endstone::BanEntry::getCreated</definition>
         <argsstring>() const =0</argsstring>
         <name>getCreated</name>
         <briefdescription>
@@ -54,15 +48,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="52" column="51"/>
+        <location file="include/endstone/ban/ban_entry.h" line="38" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a58af6d0112ac795a95d64cb4acf8c724" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1ace78a196076f2b2e069284654c273af7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::setCreated</definition>
-        <argsstring>(std::chrono::system_clock::time_point created)=0</argsstring>
+        <definition>virtual void endstone::BanEntry::setCreated</definition>
+        <argsstring>(Date created)=0</argsstring>
         <name>setCreated</name>
         <param>
-          <type>std::chrono::system_clock::time_point</type>
+          <type>Date</type>
           <declname>created</declname>
         </param>
         <briefdescription>
@@ -78,17 +72,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> saving changes </para>
+<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" kindref="member">save()</ref> saving changes </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="60" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="46" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1ac896cd14c4ebe67c444f282a2f516232" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a653d053232298c5129cc3876251daa18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
-        <definition>virtual std::string endstone::BanEntry&lt; T &gt;::getSource</definition>
+        <definition>virtual std::string endstone::BanEntry::getSource</definition>
         <argsstring>() const =0</argsstring>
         <name>getSource</name>
         <briefdescription>
@@ -101,11 +95,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="67" column="25"/>
+        <location file="include/endstone/ban/ban_entry.h" line="53" column="26"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a37561d6a331ad46ccec868b0f46972f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a53855cc41593c6bbe7271ef2705caa12" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::setSource</definition>
+        <definition>virtual void endstone::BanEntry::setSource</definition>
         <argsstring>(std::string source)=0</argsstring>
         <name>setSource</name>
         <param>
@@ -125,17 +119,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> saving changes </para>
+<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" kindref="member">save()</ref> saving changes </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="75" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="61" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a8ba67dc34c9780f541a24700c29a3311" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::optional&lt; std::chrono::system_clock::time_point &gt;</type>
-        <definition>virtual std::optional&lt;std::chrono::system_clock::time_point&gt; endstone::BanEntry&lt; T &gt;::getExpiration</definition>
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a6b016ffd6f4b525c51f11fb14e2cfabc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::optional&lt; Date &gt;</type>
+        <definition>virtual std::optional&lt;Date&gt; endstone::BanEntry::getExpiration</definition>
         <argsstring>() const =0</argsstring>
         <name>getExpiration</name>
         <briefdescription>
@@ -148,15 +142,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="82" column="27"/>
+        <location file="include/endstone/ban/ban_entry.h" line="68" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a0585068eae70fe1251b864b61493c3c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1aee34c8c149ebdb62f7c2ddc830e34895" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::setExpiration</definition>
-        <argsstring>(std::optional&lt; std::chrono::system_clock::time_point &gt; expiration)=0</argsstring>
+        <definition>virtual void endstone::BanEntry::setExpiration</definition>
+        <argsstring>(std::optional&lt; Date &gt; expiration)=0</argsstring>
         <name>setExpiration</name>
         <param>
-          <type>std::optional&lt; std::chrono::system_clock::time_point &gt;</type>
+          <type>std::optional&lt; Date &gt;</type>
           <declname>expiration</declname>
         </param>
         <briefdescription>
@@ -172,17 +166,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> saving changes </para>
+<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" kindref="member">save()</ref> saving changes </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="90" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="76" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1ae2979157e4591efc514acafebb1dab8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a6e39a9929b66552b09c7ab37d245e206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::optional&lt; std::string &gt;</type>
-        <definition>virtual std::optional&lt;std::string&gt; endstone::BanEntry&lt; T &gt;::getReason</definition>
+        <definition>virtual std::optional&lt;std::string&gt; endstone::BanEntry::getReason</definition>
         <argsstring>() const =0</argsstring>
         <name>getReason</name>
         <briefdescription>
@@ -195,11 +189,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="97" column="27"/>
+        <location file="include/endstone/ban/ban_entry.h" line="83" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1abf22b8452f7e90febb376632505f04fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1afa88d3979eea314e45a64af03c41c216" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::setReason</definition>
+        <definition>virtual void endstone::BanEntry::setReason</definition>
         <argsstring>(std::optional&lt; std::string &gt; reason)=0</argsstring>
         <name>setReason</name>
         <param>
@@ -219,17 +213,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> saving changes </para>
+<simplesect kind="see"><para><ref refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" kindref="member">save()</ref> saving changes </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="105" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="91" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::save</definition>
+        <definition>virtual void endstone::BanEntry::save</definition>
         <argsstring>()=0</argsstring>
         <name>save</name>
         <briefdescription>
@@ -240,54 +234,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="112" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="98" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1BanEntry_1a836ef65edc301c8e48ddb6b0045d3950" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1BanEntry_1acd1038fcbb104c142c0aebcaf33ec390" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::BanEntry&lt; T &gt;::remove</definition>
+        <definition>virtual void endstone::BanEntry::remove</definition>
         <argsstring>()=0</argsstring>
         <name>remove</name>
         <briefdescription>
-<para>Removes this ban entry from the appropriate ban list. </para>
+<para>Removes this ban entry from the associated ban list. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ban_entry.h" line="117" column="18"/>
+        <location file="include/endstone/ban/ban_entry.h" line="103" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>A single entry from a ban list. This may represent either a player ban or an IP ban. </para>
+<para>A single entry from a ban list. </para>
     </briefdescription>
     <detaileddescription>
-<para>Unsaved information is not automatically written to the implementation&apos;s ban list, instead, the <ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> method must be called to write the changes to the ban list. If this ban entry has expired (such as from an unban) and is no longer found in the list, the <ref refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" kindref="member">save()</ref> call will re-add it to the list, therefore banning the victim specified.</para>
-<para>Likewise, changes to the associated <ref refid="classendstone_1_1BanList" kindref="compound">BanList</ref> or other entries may or may not be reflected in this entry.</para>
-<para><parameterlist kind="templateparam"><parameteritem>
-<parameternamelist>
-<parametername>T</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The ban target </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-</para>
     </detaileddescription>
-    <location file="include/endstone/ban/ban_entry.h" line="35" column="1" bodyfile="include/endstone/ban/ban_entry.h" bodystart="35" bodyend="118"/>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::BanEntry</label>
+        <link refid="classendstone_1_1BanEntry"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerBanEntry</label>
+        <link refid="classendstone_1_1PlayerBanEntry"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/endstone/ban/ban_entry.h" line="25" column="1" bodyfile="include/endstone/ban/ban_entry.h" bodystart="25" bodyend="104"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BanEntry_1a82eadf890a3eed85d19aa19cef3e222f" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getCreated</name></member>
-      <member refid="classendstone_1_1BanEntry_1a8ba67dc34c9780f541a24700c29a3311" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getExpiration</name></member>
-      <member refid="classendstone_1_1BanEntry_1ae2979157e4591efc514acafebb1dab8b" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getReason</name></member>
-      <member refid="classendstone_1_1BanEntry_1ac896cd14c4ebe67c444f282a2f516232" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getSource</name></member>
-      <member refid="classendstone_1_1BanEntry_1ab68551161f00c313a0553dc0c3a2652c" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getTarget</name></member>
-      <member refid="classendstone_1_1BanEntry_1a836ef65edc301c8e48ddb6b0045d3950" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>remove</name></member>
-      <member refid="classendstone_1_1BanEntry_1a337bee705f69e694a899e1043c454e13" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>save</name></member>
-      <member refid="classendstone_1_1BanEntry_1a58af6d0112ac795a95d64cb4acf8c724" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setCreated</name></member>
-      <member refid="classendstone_1_1BanEntry_1a0585068eae70fe1251b864b61493c3c2" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setExpiration</name></member>
-      <member refid="classendstone_1_1BanEntry_1abf22b8452f7e90febb376632505f04fa" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setReason</name></member>
-      <member refid="classendstone_1_1BanEntry_1a37561d6a331ad46ccec868b0f46972f1" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setSource</name></member>
-      <member refid="classendstone_1_1BanEntry_1a67c78bf82836dc9bfaac0dcb05aa351b" prot="public" virt="virtual"><scope>endstone::BanEntry</scope><name>~BanEntry</name></member>
+      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="protected" virt="non-virtual"><scope>endstone::BanEntry</scope><name>Date</name></member>
+      <member refid="classendstone_1_1BanEntry_1a40896dce89cc5005ce06be95c1e090d1" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1a6b016ffd6f4b525c51f11fb14e2cfabc" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getExpiration</name></member>
+      <member refid="classendstone_1_1BanEntry_1a6e39a9929b66552b09c7ab37d245e206" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1a653d053232298c5129cc3876251daa18" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>getSource</name></member>
+      <member refid="classendstone_1_1BanEntry_1acd1038fcbb104c142c0aebcaf33ec390" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>remove</name></member>
+      <member refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>save</name></member>
+      <member refid="classendstone_1_1BanEntry_1ace78a196076f2b2e069284654c273af7" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1aee34c8c149ebdb62f7c2ddc830e34895" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setExpiration</name></member>
+      <member refid="classendstone_1_1BanEntry_1afa88d3979eea314e45a64af03c41c216" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1a53855cc41593c6bbe7271ef2705caa12" prot="public" virt="pure-virtual"><scope>endstone::BanEntry</scope><name>setSource</name></member>
+      <member refid="classendstone_1_1BanEntry_1a58fb472991f88c6aaadad29cb55523a0" prot="public" virt="virtual"><scope>endstone::BanEntry</scope><name>~BanEntry</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

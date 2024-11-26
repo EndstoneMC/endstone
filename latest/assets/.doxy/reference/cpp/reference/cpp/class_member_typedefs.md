@@ -9,6 +9,11 @@
 * **Control** ([**endstone::ModalForm**](classendstone_1_1ModalForm.md))
 
 
+## d
+
+* **Date** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
+
+
 ## f
 
 * **FormVariant** ([**endstone::Player**](classendstone_1_1Player.md))

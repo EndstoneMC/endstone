@@ -24,26 +24,26 @@
 
 #pragma once
 
-#include <string>
 #include <memory>
-#include <future>
 #include <optional>
+#include <string>
+
 #include "endstone/util/uuid.h"
 
-namespace endstone{
-class PlayerProfile {
+namespace endstone {
+class PlayerProfile : public std::enable_shared_from_this<PlayerProfile> {
 public:
     virtual ~PlayerProfile() = default;
 
-    virtual std::optional<UUID> getUniqueId() const = 0;
+    [[nodiscard]] virtual std::optional<UUID> getUniqueId() const = 0;
 
-    virtual std::optional<std::string> getName() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getName() const = 0;
 
-    virtual std::optional<std::string> getXuid() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getXuid() const = 0;
 
-    virtual bool isComplete() const = 0;
+    [[nodiscard]] virtual bool isComplete() const = 0;
 };
-}
+}  // namespace endstone
 ```
 
 

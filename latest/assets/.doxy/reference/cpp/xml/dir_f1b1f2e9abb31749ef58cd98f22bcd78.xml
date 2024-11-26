@@ -4,6 +4,7 @@
     <compoundname>include/endstone/ban</compoundname>
     <innerfile refid="ban__entry_8h">ban_entry.h</innerfile>
     <innerfile refid="ban__list_8h">ban_list.h</innerfile>
+    <innerfile refid="player__ban__entry_8h">player_ban_entry.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

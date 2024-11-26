@@ -14,6 +14,7 @@ _A player profile._
 
 
 
+Inherits the following classes: std::enable_shared_from_this< PlayerProfile >
 
 
 

@@ -24,33 +24,32 @@
 
 #pragma once
 
-#include <string>
-#include <memory>
-#include <optional>
 #include <chrono>
+#include <optional>
+#include <string>
 
-namespace endstone{
-template<typename T>
+namespace endstone {
 class BanEntry {
+protected:
+    using Date = std::chrono::system_clock::time_point;
+
 public:
     // Ensure derived class has virtual destructor
     virtual ~BanEntry() = default;
 
-    virtual T& getTarget() const = 0;
+    [[nodiscard]] virtual Date getCreated() const = 0;
 
-    virtual std::chrono::system_clock::time_point getCreated() const = 0;
+    virtual void setCreated(Date created) = 0;
 
-    virtual void setCreated(std::chrono::system_clock::time_point created) = 0;
-
-    virtual std::string getSource() const = 0;
+    [[nodiscard]] virtual std::string getSource() const = 0;
 
     virtual void setSource(std::string source) = 0;
 
-    virtual std::optional<std::chrono::system_clock::time_point> getExpiration() const = 0;
+    [[nodiscard]] virtual std::optional<Date> getExpiration() const = 0;
 
-    virtual void setExpiration(std::optional<std::chrono::system_clock::time_point> expiration) = 0;
+    virtual void setExpiration(std::optional<Date> expiration) = 0;
 
-    virtual std::optional<std::string> getReason() const = 0;
+    [[nodiscard]] virtual std::optional<std::string> getReason() const = 0;
 
     virtual void setReason(std::optional<std::string> reason) = 0;
 
@@ -58,7 +57,8 @@ public:
 
     virtual void remove() = 0;
 };
-}
+
+}  // namespace endstone
 ```
 
 

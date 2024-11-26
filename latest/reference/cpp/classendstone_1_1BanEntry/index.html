@@ -1940,9 +1940,9 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#detailed-description" class="md-nav__link">
+    <a href="#protected-types" class="md-nav__link">
       <span class="md-ellipsis">
-        Detailed Description
+        Protected Types
       </span>
     </a>
 
@@ -2006,19 +2006,6 @@ For latest updates join the chat on
     <a href="#function-getsource" class="md-nav__link">
       <span class="md-ellipsis">
         function getSource
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#function-gettarget" class="md-nav__link">
-      <span class="md-ellipsis">
-        function getTarget
       </span>
     </a>
 
@@ -2123,6 +2110,36 @@ For latest updates join the chat on
     
 </li>
       
+        <li class="md-nav__item">
+    <a href="#protected-types-documentation" class="md-nav__link">
+      <span class="md-ellipsis">
+        Protected Types Documentation
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="Protected Types Documentation">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#typedef-date" class="md-nav__link">
+      <span class="md-ellipsis">
+        typedef Date
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
     </ul>
   
 </nav>
@@ -2155,12 +2172,12 @@ For latest updates join the chat on
 
 
 <h1 id="class-endstonebanentry">Class endstone::BanEntry<a class="headerlink" href="#class-endstonebanentry" title="Permanent link">&para;</a></h1>
-<p><strong>template &lt;typename T&gt;</strong></p>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>BanEntry</strong></a></p>
-<p><em>A single entry from a ban list. This may represent either a player ban or an IP ban.</em> <a href="#detailed-description">More...</a></p>
+<p><em>A single entry from a ban list.</em> </p>
 <ul>
 <li><code>#include &lt;endstone/ban/ban_entry.h&gt;</code></li>
 </ul>
+<p>Inherited by the following classes: <a href="../classendstone_1_1PlayerBanEntry/">endstone::PlayerBanEntry</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2171,11 +2188,11 @@ For latest updates join the chat on
 </thead>
 <tbody>
 <tr>
-<td style="text-align: right;">virtual std::chrono::system_clock::time_point</td>
+<td style="text-align: right;">virtual Date</td>
 <td style="text-align: left;"><a href="#function-getcreated"><strong>getCreated</strong></a> () const = 0<br><em>Gets the date this ban entry was created.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::optional&lt; std::chrono::system_clock::time_point &gt;</td>
+<td style="text-align: right;">virtual std::optional&lt; Date &gt;</td>
 <td style="text-align: left;"><a href="#function-getexpiration"><strong>getExpiration</strong></a> () const = 0<br><em>Gets the date this ban expires on, or std::nullopt for no defined end date.</em></td>
 </tr>
 <tr>
@@ -2187,12 +2204,8 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getsource"><strong>getSource</strong></a> () const = 0<br><em>Gets the source of this ban.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual T &amp;</td>
-<td style="text-align: left;"><a href="#function-gettarget"><strong>getTarget</strong></a> () const = 0<br><em>Gets the target involved.</em></td>
-</tr>
-<tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-remove"><strong>remove</strong></a> () = 0<br><em>Removes this ban entry from the appropriate ban list.</em></td>
+<td style="text-align: left;"><a href="#function-remove"><strong>remove</strong></a> () = 0<br><em>Removes this ban entry from the associated ban list.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2200,11 +2213,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setcreated"><strong>setCreated</strong></a> (std::chrono::system_clock::time_point created) = 0<br><em>Sets the date this ban entry was created.</em></td>
+<td style="text-align: left;"><a href="#function-setcreated"><strong>setCreated</strong></a> (Date created) = 0<br><em>Sets the date this ban entry was created.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; std::chrono::system_clock::time_point &gt; expiration) = 0<br><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em></td>
+<td style="text-align: left;"><a href="#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; Date &gt; expiration) = 0<br><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
@@ -2220,17 +2233,25 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
-<h2 id="detailed-description">Detailed Description<a class="headerlink" href="#detailed-description" title="Permanent link">&para;</a></h2>
-<p>Unsaved information is not automatically written to the implementation's ban list, instead, the <a href="./#function-save"><strong>save()</strong></a> method must be called to write the changes to the ban list. If this ban entry has expired (such as from an unban) and is no longer found in the list, the <a href="./#function-save"><strong>save()</strong></a> call will re-add it to the list, therefore banning the victim specified.</p>
-<p>Likewise, changes to the associated <a href="../classendstone_1_1BanList/"><strong>BanList</strong></a> or other entries may or may not be reflected in this entry.</p>
-<p><strong>Template parameters:</strong></p>
-<ul>
-<li><code>T</code> The ban target </li>
-</ul>
+<h2 id="protected-types">Protected Types<a class="headerlink" href="#protected-types" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">typedef std::chrono::system_clock::time_point</td>
+<td style="text-align: left;"><a href="#typedef-date"><strong>Date</strong></a>  <br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-getcreated">function getCreated<a class="headerlink" href="#function-getcreated" title="Permanent link">&para;</a></h3>
 <p><em>Gets the date this ban entry was created.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getCreated</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getCreated</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the creation date </p>
@@ -2238,7 +2259,7 @@ For latest updates join the chat on
 
 <h3 id="function-getexpiration">function getExpiration<a class="headerlink" href="#function-getexpiration" title="Permanent link">&para;</a></h3>
 <p><em>Gets the date this ban expires on, or std::nullopt for no defined end date.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getExpiration</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getExpiration</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the expiration date </p>
@@ -2260,32 +2281,24 @@ For latest updates join the chat on
 <p>the source of the ban </p>
 <hr>
 
-<h3 id="function-gettarget">function getTarget<a class="headerlink" href="#function-gettarget" title="Permanent link">&para;</a></h3>
-<p><em>Gets the target involved.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getTarget</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div></p>
-<p><strong>Returns:</strong></p>
-<p>the target, e.g. profile or IP address </p>
-<hr>
-
 <h3 id="function-remove">function remove<a class="headerlink" href="#function-remove" title="Permanent link">&para;</a></h3>
-<p><em>Removes this ban entry from the appropriate ban list.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">remove</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<p><em>Removes this ban entry from the associated ban list.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">remove</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <hr>
 
 <h3 id="function-save">function save<a class="headerlink" href="#function-save" title="Permanent link">&para;</a></h3>
 <p><em>Saves the ban entry, overwriting any previous data in the ban list.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">save</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">save</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p>Saving the ban entry of an unbanned player will cause the player to be banned once again. </p>
 <hr>
 
 <h3 id="function-setcreated">function setCreated<a class="headerlink" href="#function-setcreated" title="Permanent link">&para;</a></h3>
 <p><em>Sets the date this ban entry was created.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setCreated</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="n">created</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setCreated</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">Date</span><span class="w"> </span><span class="n">created</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2296,9 +2309,9 @@ For latest updates join the chat on
 
 <h3 id="function-setexpiration">function setExpiration<a class="headerlink" href="#function-setexpiration" title="Permanent link">&para;</a></h3>
 <p><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setExpiration</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">expiration</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setExpiration</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">expiration</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2309,9 +2322,9 @@ For latest updates join the chat on
 
 <h3 id="function-setreason">function setReason<a class="headerlink" href="#function-setreason" title="Permanent link">&para;</a></h3>
 <p><em>Sets the reason for this ban.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setReason</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">reason</span>
-</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setReason</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">reason</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2322,9 +2335,9 @@ For latest updates join the chat on
 
 <h3 id="function-setsource">function setSource<a class="headerlink" href="#function-setsource" title="Permanent link">&para;</a></h3>
 <p><em>Sets the source of this ban.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setSource</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">source</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setSource</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">source</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
@@ -2334,7 +2347,12 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-banentry">function ~BanEntry<a class="headerlink" href="#function-banentry" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::~</span><span class="n">BanEntry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::~</span><span class="n">BanEntry</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+</span></code></pre></div>
+<hr>
+<h2 id="protected-types-documentation">Protected Types Documentation<a class="headerlink" href="#protected-types-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="typedef-date">typedef Date<a class="headerlink" href="#typedef-date" title="Permanent link">&para;</a></h3>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">using</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">Date</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">system_clock</span><span class="o">::</span><span class="n">time_point</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

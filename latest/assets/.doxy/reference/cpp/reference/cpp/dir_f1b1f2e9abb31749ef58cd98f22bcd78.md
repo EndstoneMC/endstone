@@ -23,6 +23,7 @@
 | ---: | :--- |
 | file | [**ban\_entry.h**](ban__entry_8h.md) <br> |
 | file | [**ban\_list.h**](ban__list_8h.md) <br> |
+| file | [**player\_ban\_entry.h**](player__ban__entry_8h.md) <br> |
 
 
 

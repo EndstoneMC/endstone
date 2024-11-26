@@ -10,10 +10,9 @@
 
 
 
-* `#include <string>`
-* `#include <memory>`
-* `#include <optional>`
 * `#include <chrono>`
+* `#include <optional>`
+* `#include <string>`
 
 
 
@@ -38,7 +37,7 @@
 
 | Type | Name |
 | ---: | :--- |
-| class | [**BanEntry**](classendstone_1_1BanEntry.md) &lt;typename T&gt;<br>_A single entry from a ban list. This may represent either a player ban or an IP ban._  |
+| class | [**BanEntry**](classendstone_1_1BanEntry.md) <br>_A single entry from a ban list._  |
 
 
 
