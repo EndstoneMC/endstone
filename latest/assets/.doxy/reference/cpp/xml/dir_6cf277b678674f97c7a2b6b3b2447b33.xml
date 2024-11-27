@@ -15,7 +15,6 @@
     <innerdir refid="dir_5fb49eba5df98b849987b1937230be97">include/endstone/network</innerdir>
     <innerdir refid="dir_33a21cc2f228e5ad6b7d1bc8d0d1e9bc">include/endstone/permissions</innerdir>
     <innerdir refid="dir_53ee43673b2467e53c4cb8c30a2e7d89">include/endstone/plugin</innerdir>
-    <innerdir refid="dir_69aa83db54d47362b78b719d1ebae01d">include/endstone/profile</innerdir>
     <innerdir refid="dir_3a50fadda3c7cdc27c965a478a3f7d27">include/endstone/scheduler</innerdir>
     <innerdir refid="dir_19c52f9ea81a2cf7449c80dcee80d6f0">include/endstone/scoreboard</innerdir>
     <innerdir refid="dir_89b85071337bf933dea6c29b4c6a4410">include/endstone/util</innerdir>

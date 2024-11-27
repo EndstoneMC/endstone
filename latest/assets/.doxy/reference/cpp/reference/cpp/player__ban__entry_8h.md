@@ -11,7 +11,7 @@
 
 
 * `#include "endstone/ban/ban_entry.h"`
-* `#include "endstone/profile/player_profile.h"`
+* `#include "endstone/util/uuid.h"`
 
 
 

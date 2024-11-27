@@ -27,35 +27,59 @@
 #include <chrono>
 #include <optional>
 #include <string>
+#include <utility>
 
 namespace endstone {
 class BanEntry {
-protected:
-    using Date = std::chrono::system_clock::time_point;
 
 public:
-    // Ensure derived class has virtual destructor
-    virtual ~BanEntry() = default;
+    using Date = std::chrono::system_clock::time_point;
 
-    [[nodiscard]] virtual Date getCreated() const = 0;
+    [[nodiscard]] Date getCreated() const
+    {
+        return created_;
+    }
 
-    virtual void setCreated(Date created) = 0;
+    void setCreated(Date created)
+    {
+        created_ = created;
+    }
 
-    [[nodiscard]] virtual std::string getSource() const = 0;
+    [[nodiscard]] std::string_view getSource()
+    {
+        return source_;
+    }
 
-    virtual void setSource(std::string source) = 0;
+    void setSource(std::string_view source)
+    {
+        source_ = !source.empty() ? source : "(Unknown)";
+    }
 
-    [[nodiscard]] virtual std::optional<Date> getExpiration() const = 0;
+    [[nodiscard]] std::optional<Date> getExpiration() const
+    {
+        return expiration_;
+    }
 
-    virtual void setExpiration(std::optional<Date> expiration) = 0;
+    void setExpiration(std::optional<Date> expiration)
+    {
+        expiration_ = expiration;
+    }
 
-    [[nodiscard]] virtual std::optional<std::string> getReason() const = 0;
+    [[nodiscard]] std::string_view getReason() const
+    {
+        return reason_;
+    }
 
-    virtual void setReason(std::optional<std::string> reason) = 0;
+    void setReason(std::string_view reason)
+    {
+        reason_ = !reason.empty() ? reason : "Banned by an operator.";
+    }
 
-    virtual void save() = 0;
-
-    virtual void remove() = 0;
+private:
+    Date created_;
+    std::string source_;
+    std::optional<Date> expiration_;
+    std::string reason_;
 };
 
 }  // namespace endstone

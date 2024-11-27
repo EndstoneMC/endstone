@@ -1929,6 +1929,17 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+    <a href="#public-types-inherited-from-endstonebanentry" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Types inherited from endstone::BanEntry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions
@@ -1951,17 +1962,6 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
-    <a href="#protected-types-inherited-from-endstonebanentry" class="md-nav__link">
-      <span class="md-ellipsis">
-        Protected Types inherited from endstone::BanEntry
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-      
-        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -1975,9 +1975,35 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-gettarget" class="md-nav__link">
+    <a href="#function-getname" class="md-nav__link">
       <span class="md-ellipsis">
-        function getTarget
+        function getName
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getuniqueid" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getUniqueId
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#function-getxuid" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getXuid
       </span>
     </a>
 
@@ -2025,78 +2051,7 @@ For latest updates join the chat on
 <h1 id="class-endstoneplayerbanentry">Class endstone::PlayerBanEntry<a class="headerlink" href="#class-endstoneplayerbanentry" title="Permanent link">&para;</a></h1>
 <p><a href="../annotated/"><strong>ClassList</strong></a> <strong>&gt;</strong> <a href="../namespaceendstone/"><strong>endstone</strong></a> <strong>&gt;</strong> <a href="./"><strong>PlayerBanEntry</strong></a></p>
 <p>Inherits the following classes: <a href="../classendstone_1_1BanEntry/">endstone::BanEntry</a></p>
-<h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">virtual std::shared_ptr&lt; <a href="../classendstone_1_1PlayerProfile/"><strong>PlayerProfile</strong></a> &gt;</td>
-<td style="text-align: left;"><a href="#function-gettarget"><strong>getTarget</strong></a> () const = 0<br><em>Gets the target involved.</em></td>
-</tr>
-</tbody>
-</table>
-<h2 id="public-functions-inherited-from-endstonebanentry">Public Functions inherited from endstone::BanEntry<a class="headerlink" href="#public-functions-inherited-from-endstonebanentry" title="Permanent link">&para;</a></h2>
-<p>See <a href="../classendstone_1_1BanEntry/">endstone::BanEntry</a></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: right;">Type</th>
-<th style="text-align: left;">Name</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: right;">virtual Date</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getcreated"><strong>getCreated</strong></a> () const = 0<br><em>Gets the date this ban entry was created.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::optional&lt; Date &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getexpiration"><strong>getExpiration</strong></a> () const = 0<br><em>Gets the date this ban expires on, or std::nullopt for no defined end date.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::optional&lt; std::string &gt;</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getreason"><strong>getReason</strong></a> () const = 0<br><em>Gets the reason for this ban.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual std::string</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getsource"><strong>getSource</strong></a> () const = 0<br><em>Gets the source of this ban.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-remove"><strong>remove</strong></a> () = 0<br><em>Removes this ban entry from the associated ban list.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-save"><strong>save</strong></a> () = 0<br><em>Saves the ban entry, overwriting any previous data in the ban list.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setcreated"><strong>setCreated</strong></a> (Date created) = 0<br><em>Sets the date this ban entry was created.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; Date &gt; expiration) = 0<br><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setreason"><strong>setReason</strong></a> (std::optional&lt; std::string &gt; reason) = 0<br><em>Sets the reason for this ban.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setsource"><strong>setSource</strong></a> (std::string source) = 0<br><em>Sets the source of this ban.</em></td>
-</tr>
-<tr>
-<td style="text-align: right;">virtual</td>
-<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-banentry"><strong>~BanEntry</strong></a> () = default<br></td>
-</tr>
-</tbody>
-</table>
-<h2 id="protected-types-inherited-from-endstonebanentry">Protected Types inherited from endstone::BanEntry<a class="headerlink" href="#protected-types-inherited-from-endstonebanentry" title="Permanent link">&para;</a></h2>
+<h2 id="public-types-inherited-from-endstonebanentry">Public Types inherited from endstone::BanEntry<a class="headerlink" href="#public-types-inherited-from-endstonebanentry" title="Permanent link">&para;</a></h2>
 <p>See <a href="../classendstone_1_1BanEntry/">endstone::BanEntry</a></p>
 <table>
 <thead>
@@ -2112,13 +2067,96 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">std::string</td>
+<td style="text-align: left;"><a href="#function-getname"><strong>getName</strong></a> () const<br><em>Gets the banned player's name.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::optional&lt; <a href="../classendstone_1_1UUID/"><strong>UUID</strong></a> &gt;</td>
+<td style="text-align: left;"><a href="#function-getuniqueid"><strong>getUniqueId</strong></a> () const<br><em>Gets the banned player's unique id.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::optional&lt; std::string &gt;</td>
+<td style="text-align: left;"><a href="#function-getxuid"><strong>getXuid</strong></a> () const<br><em>Gets the banned player's xbox user id (xuid).</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="public-functions-inherited-from-endstonebanentry">Public Functions inherited from endstone::BanEntry<a class="headerlink" href="#public-functions-inherited-from-endstonebanentry" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1BanEntry/">endstone::BanEntry</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">Date</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getcreated"><strong>getCreated</strong></a> () const<br><em>Gets the date this ban entry was created.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::optional&lt; Date &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getexpiration"><strong>getExpiration</strong></a> () const<br><em>Gets the date this ban expires on, or std::nullopt for no defined end date.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string_view</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getreason"><strong>getReason</strong></a> () const<br><em>Gets the reason for this ban.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">std::string_view</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-getsource"><strong>getSource</strong></a> () <br><em>Gets the source of this ban.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setcreated"><strong>setCreated</strong></a> (Date created) <br><em>Sets the date this ban entry was created.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setexpiration"><strong>setExpiration</strong></a> (std::optional&lt; Date &gt; expiration) <br><em>Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setreason"><strong>setReason</strong></a> (std::string_view reason) <br><em>Sets the reason for this ban.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanEntry/#function-setsource"><strong>setSource</strong></a> (std::string_view source) <br><em>Sets the source of this ban.</em></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
-<h3 id="function-gettarget">function getTarget<a class="headerlink" href="#function-gettarget" title="Permanent link">&para;</a></h3>
-<p><em>Gets the target involved.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="w"> </span><span class="n">PlayerProfile</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanEntry</span><span class="o">::</span><span class="n">getTarget</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<h3 id="function-getname">function getName<a class="headerlink" href="#function-getname" title="Permanent link">&para;</a></h3>
+<p><em>Gets the banned player's name.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanEntry</span><span class="o">::</span><span class="n">getName</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
-<p>the target, i.e. the banned player </p>
+<p>the player name </p>
+<hr>
+
+<h3 id="function-getuniqueid">function getUniqueId<a class="headerlink" href="#function-getuniqueid" title="Permanent link">&para;</a></h3>
+<p><em>Gets the banned player's unique id.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">UUID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanEntry</span><span class="o">::</span><span class="n">getUniqueId</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the player's unique id, or std::nullopt if not available </p>
+<hr>
+
+<h3 id="function-getxuid">function getXuid<a class="headerlink" href="#function-getxuid" title="Permanent link">&para;</a></h3>
+<p><em>Gets the banned player's xbox user id (xuid).</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PlayerBanEntry</span><span class="o">::</span><span class="n">getXuid</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>the player's xbox user id (xuid), or std::nullopt if not available </p>
 <hr>
 
 <hr />

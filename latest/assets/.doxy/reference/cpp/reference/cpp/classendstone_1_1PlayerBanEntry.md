@@ -30,6 +30,13 @@ Inherits the following classes: [endstone::BanEntry](classendstone_1_1BanEntry.m
 
 
 
+## Public Types inherited from endstone::BanEntry
+
+See [endstone::BanEntry](classendstone_1_1BanEntry.md)
+
+| Type | Name |
+| ---: | :--- |
+| typedef std::chrono::system\_clock::time\_point | [**Date**](classendstone_1_1BanEntry.md#typedef-date)  <br> |
 
 
 
@@ -72,7 +79,9 @@ Inherits the following classes: [endstone::BanEntry](classendstone_1_1BanEntry.m
 
 | Type | Name |
 | ---: | :--- |
-| virtual std::shared\_ptr&lt; [**PlayerProfile**](classendstone_1_1PlayerProfile.md) &gt; | [**getTarget**](#function-gettarget) () const = 0<br>_Gets the target involved._  |
+|  std::string | [**getName**](#function-getname) () const<br>_Gets the banned player's name._  |
+|  std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; | [**getUniqueId**](#function-getuniqueid) () const<br>_Gets the banned player's unique id._  |
+|  std::optional&lt; std::string &gt; | [**getXuid**](#function-getxuid) () const<br>_Gets the banned player's xbox user id (xuid)._  |
 
 
 ## Public Functions inherited from endstone::BanEntry
@@ -81,17 +90,14 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 | Type | Name |
 | ---: | :--- |
-| virtual Date | [**getCreated**](classendstone_1_1BanEntry.md#function-getcreated) () const = 0<br>_Gets the date this ban entry was created._  |
-| virtual std::optional&lt; Date &gt; | [**getExpiration**](classendstone_1_1BanEntry.md#function-getexpiration) () const = 0<br>_Gets the date this ban expires on, or std::nullopt for no defined end date._  |
-| virtual std::optional&lt; std::string &gt; | [**getReason**](classendstone_1_1BanEntry.md#function-getreason) () const = 0<br>_Gets the reason for this ban._  |
-| virtual std::string | [**getSource**](classendstone_1_1BanEntry.md#function-getsource) () const = 0<br>_Gets the source of this ban._  |
-| virtual void | [**remove**](classendstone_1_1BanEntry.md#function-remove) () = 0<br>_Removes this ban entry from the associated ban list._  |
-| virtual void | [**save**](classendstone_1_1BanEntry.md#function-save) () = 0<br>_Saves the ban entry, overwriting any previous data in the ban list._  |
-| virtual void | [**setCreated**](classendstone_1_1BanEntry.md#function-setcreated) (Date created) = 0<br>_Sets the date this ban entry was created._  |
-| virtual void | [**setExpiration**](classendstone_1_1BanEntry.md#function-setexpiration) (std::optional&lt; Date &gt; expiration) = 0<br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
-| virtual void | [**setReason**](classendstone_1_1BanEntry.md#function-setreason) (std::optional&lt; std::string &gt; reason) = 0<br>_Sets the reason for this ban._  |
-| virtual void | [**setSource**](classendstone_1_1BanEntry.md#function-setsource) (std::string source) = 0<br>_Sets the source of this ban._  |
-| virtual  | [**~BanEntry**](classendstone_1_1BanEntry.md#function-banentry) () = default<br> |
+|  Date | [**getCreated**](classendstone_1_1BanEntry.md#function-getcreated) () const<br>_Gets the date this ban entry was created._  |
+|  std::optional&lt; Date &gt; | [**getExpiration**](classendstone_1_1BanEntry.md#function-getexpiration) () const<br>_Gets the date this ban expires on, or std::nullopt for no defined end date._  |
+|  std::string\_view | [**getReason**](classendstone_1_1BanEntry.md#function-getreason) () const<br>_Gets the reason for this ban._  |
+|  std::string\_view | [**getSource**](classendstone_1_1BanEntry.md#function-getsource) () <br>_Gets the source of this ban._  |
+|  void | [**setCreated**](classendstone_1_1BanEntry.md#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
+|  void | [**setExpiration**](classendstone_1_1BanEntry.md#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
+|  void | [**setReason**](classendstone_1_1BanEntry.md#function-setreason) (std::string\_view reason) <br>_Sets the reason for this ban._  |
+|  void | [**setSource**](classendstone_1_1BanEntry.md#function-setsource) (std::string\_view source) <br>_Sets the source of this ban._  |
 
 
 
@@ -100,13 +106,6 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 
 
-## Protected Types inherited from endstone::BanEntry
-
-See [endstone::BanEntry](classendstone_1_1BanEntry.md)
-
-| Type | Name |
-| ---: | :--- |
-| typedef std::chrono::system\_clock::time\_point | [**Date**](classendstone_1_1BanEntry.md#typedef-date)  <br> |
 
 
 
@@ -158,11 +157,11 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 
 
-### function getTarget 
+### function getName 
 
-_Gets the target involved._ 
+_Gets the banned player's name._ 
 ```C++
-virtual std::shared_ptr< PlayerProfile > endstone::PlayerBanEntry::getTarget () const = 0
+inline std::string endstone::PlayerBanEntry::getName () const
 ```
 
 
@@ -171,7 +170,57 @@ virtual std::shared_ptr< PlayerProfile > endstone::PlayerBanEntry::getTarget () 
 
 **Returns:**
 
-the target, i.e. the banned player 
+the player name 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getUniqueId 
+
+_Gets the banned player's unique id._ 
+```C++
+inline std::optional< UUID > endstone::PlayerBanEntry::getUniqueId () const
+```
+
+
+
+
+
+**Returns:**
+
+the player's unique id, or std::nullopt if not available 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getXuid 
+
+_Gets the banned player's xbox user id (xuid)._ 
+```C++
+inline std::optional< std::string > endstone::PlayerBanEntry::getXuid () const
+```
+
+
+
+
+
+**Returns:**
+
+the player's xbox user id (xuid), or std::nullopt if not available 
 
 
 

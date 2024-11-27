@@ -1,25 +1,100 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
-  <compounddef id="classendstone_1_1PlayerBanEntry" kind="class" language="C++" prot="public" abstract="yes">
+  <compounddef id="classendstone_1_1PlayerBanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::PlayerBanEntry</compoundname>
     <basecompoundref refid="classendstone_1_1BanEntry" prot="public" virt="non-virtual">endstone::BanEntry</basecompoundref>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1af3c62580f3955a868f4b24e8ad6eaec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::shared_ptr&lt; <ref refid="classendstone_1_1PlayerProfile" kindref="compound">PlayerProfile</ref> &gt;</type>
-        <definition>virtual std::shared_ptr&lt;PlayerProfile&gt; endstone::PlayerBanEntry::getTarget</definition>
-        <argsstring>() const =0</argsstring>
-        <name>getTarget</name>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1ab4a20630b1df00f1a2a5d104cbc6d56c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerBanEntry::name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
         <briefdescription>
-<para>Gets the target involved. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>the target, i.e. the banned player </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_entry.h" line="55" column="17" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1a25d40f94f62da9f0813b3caa2cb40ad4" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+        <definition>std::optional&lt;UUID&gt; endstone::PlayerBanEntry::uuid_</definition>
+        <argsstring></argsstring>
+        <name>uuid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_entry.h" line="56" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerBanEntry_1a797e796d74e68f85e0b648c9fb2d21c9" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::PlayerBanEntry::xuid_</definition>
+        <argsstring></argsstring>
+        <name>xuid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_entry.h" line="57" column="19" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerBanEntry::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+<para>Gets the banned player&apos;s name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player name </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/player_ban_entry.h" line="29" column="30"/>
+        <location file="include/endstone/ban/player_ban_entry.h" line="29" column="18" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1ac9cdade25bc24662b2787b6709826177" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+        <definition>std::optional&lt;UUID&gt; endstone::PlayerBanEntry::getUniqueId</definition>
+        <argsstring>() const</argsstring>
+        <name>getUniqueId</name>
+        <briefdescription>
+<para>Gets the banned player&apos;s unique id. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s unique id, or std::nullopt if not available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_entry.h" line="39" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanEntry_1a2d2b7b61a57ea33e5cc629e2aa65fd09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; endstone::PlayerBanEntry::getXuid</definition>
+        <argsstring>() const</argsstring>
+        <name>getXuid</name>
+        <briefdescription>
+<para>Gets the banned player&apos;s xbox user id (xuid). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the player&apos;s xbox user id (xuid), or std::nullopt if not available </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_entry.h" line="49" column="20" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="49" bodyend="52"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -50,21 +125,23 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/ban/player_ban_entry.h" line="22" column="1" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="22" bodyend="30"/>
+    <location file="include/endstone/ban/player_ban_entry.h" line="22" column="1" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="22" bodyend="58"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="protected" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>Date</name></member>
-      <member refid="classendstone_1_1BanEntry_1a40896dce89cc5005ce06be95c1e090d1" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>getCreated</name></member>
-      <member refid="classendstone_1_1BanEntry_1a6b016ffd6f4b525c51f11fb14e2cfabc" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>getExpiration</name></member>
-      <member refid="classendstone_1_1BanEntry_1a6e39a9929b66552b09c7ab37d245e206" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>getReason</name></member>
-      <member refid="classendstone_1_1BanEntry_1a653d053232298c5129cc3876251daa18" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>getSource</name></member>
-      <member refid="classendstone_1_1PlayerBanEntry_1af3c62580f3955a868f4b24e8ad6eaec4" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>getTarget</name></member>
-      <member refid="classendstone_1_1BanEntry_1acd1038fcbb104c142c0aebcaf33ec390" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>remove</name></member>
-      <member refid="classendstone_1_1BanEntry_1a7dd30af5442ae96f2d672485b53ef81f" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>save</name></member>
-      <member refid="classendstone_1_1BanEntry_1ace78a196076f2b2e069284654c273af7" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>setCreated</name></member>
-      <member refid="classendstone_1_1BanEntry_1aee34c8c149ebdb62f7c2ddc830e34895" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>setExpiration</name></member>
-      <member refid="classendstone_1_1BanEntry_1afa88d3979eea314e45a64af03c41c216" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>setReason</name></member>
-      <member refid="classendstone_1_1BanEntry_1a53855cc41593c6bbe7271ef2705caa12" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanEntry</scope><name>setSource</name></member>
-      <member refid="classendstone_1_1BanEntry_1a58fb472991f88c6aaadad29cb55523a0" prot="public" virt="virtual"><scope>endstone::PlayerBanEntry</scope><name>~BanEntry</name></member>
+      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>Date</name></member>
+      <member refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1a3da7f863a294a9186b6a3e6972aa3541" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getExpiration</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getName</name></member>
+      <member refid="classendstone_1_1BanEntry_1a5612afaf95b8c6e8522688c4c21d470a" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1a505eeded5b8dcef5cd6425b0fe4bbc4f" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getSource</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1ac9cdade25bc24662b2787b6709826177" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getUniqueId</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1a2d2b7b61a57ea33e5cc629e2aa65fd09" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getXuid</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1ab4a20630b1df00f1a2a5d104cbc6d56c" prot="private" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>name_</name></member>
+      <member refid="classendstone_1_1BanEntry_1a25928ad6ec89d5a53291fac94de08af2" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>setCreated</name></member>
+      <member refid="classendstone_1_1BanEntry_1a034fd3be01a6210a5be8b1436df544e3" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>setExpiration</name></member>
+      <member refid="classendstone_1_1BanEntry_1acb14dbbe8c9989d7e87ec79847da53de" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>setReason</name></member>
+      <member refid="classendstone_1_1BanEntry_1a97d67a552fda68322217b55fc0566d81" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>setSource</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1a25d40f94f62da9f0813b3caa2cb40ad4" prot="private" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>uuid_</name></member>
+      <member refid="classendstone_1_1PlayerBanEntry_1a797e796d74e68f85e0b648c9fb2d21c9" prot="private" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>xuid_</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

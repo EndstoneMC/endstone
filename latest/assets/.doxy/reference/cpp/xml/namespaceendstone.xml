@@ -5,8 +5,8 @@
     <innerclass refid="classendstone_1_1Actor" prot="public">endstone::Actor</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1BanEntry" prot="public">endstone::BanEntry</innerclass>
-    <innerclass refid="classendstone_1_1BanList" prot="public">endstone::BanList</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanEntry" prot="public">endstone::PlayerBanEntry</innerclass>
+    <innerclass refid="classendstone_1_1PlayerBanList" prot="public">endstone::PlayerBanList</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
     <innerclass refid="classendstone_1_1BlockData" prot="public">endstone::BlockData</innerclass>
     <innerclass refid="classendstone_1_1BlockState" prot="public">endstone::BlockState</innerclass>
@@ -86,7 +86,6 @@
     <innerclass refid="classendstone_1_1PluginDescription" prot="public">endstone::PluginDescription</innerclass>
     <innerclass refid="classendstone_1_1PluginLoader" prot="public">endstone::PluginLoader</innerclass>
     <innerclass refid="classendstone_1_1PluginManager" prot="public">endstone::PluginManager</innerclass>
-    <innerclass refid="classendstone_1_1PlayerProfile" prot="public">endstone::PlayerProfile</innerclass>
     <innerclass refid="classendstone_1_1Scheduler" prot="public">endstone::Scheduler</innerclass>
     <innerclass refid="classendstone_1_1Task" prot="public">endstone::Task</innerclass>
     <innerclass refid="classendstone_1_1Criteria" prot="public">endstone::Criteria</innerclass>
