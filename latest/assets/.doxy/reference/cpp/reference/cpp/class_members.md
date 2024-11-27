@@ -105,6 +105,7 @@
 ## d
 
 * **Date** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
+* **DateFormat** ([**endstone::BanEntry**](classendstone_1_1BanEntry.md))
 * **DarkAqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkBlue** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **DarkGray** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))

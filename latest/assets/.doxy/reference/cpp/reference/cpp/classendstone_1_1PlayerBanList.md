@@ -54,8 +54,8 @@ _Represents a ban list, containing banned players._
 | ---: | :--- |
 | virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-14) (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
 | virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-24) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-34) (std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::seconds &gt; duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
-| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-44) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::seconds &gt; duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-34) (std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
+| virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) & | [**addBan**](#function-addban-44) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br>_Adds a ban to this list. If a previous ban exists, this will update the previous entry._  |
 | virtual const [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-14) (std::string name) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._ |
 | virtual [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-24) (std::string name) = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name._ |
 | virtual const [**PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) \* | [**getBanEntry**](#function-getbanentry-34) (std::string name, std::optional&lt; [**UUID**](classendstone_1_1UUID.md) &gt; uuid, std::optional&lt; std::string &gt; xuid) const = 0<br>_Gets a_ [_**BanEntry**_](classendstone_1_1BanEntry.md) _by player name,_[_**UUID**_](classendstone_1_1UUID.md) _, or XUID._ |
@@ -191,7 +191,7 @@ _Adds a ban to this list. If a previous ban exists, this will update the previou
 virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
     std::string name,
     std::optional< std::string > reason,
-    std::optional< std::chrono::seconds > duration,
+    std::chrono::seconds duration,
     std::optional< std::string > source
 ) = 0
 ```
@@ -205,7 +205,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 
 * `name` The name of the target. 
 * `reason` The reason for the ban, std::nullopt indicates implementation default. 
-* `duration` The duration of the ban, or std::nullopt to imply forever. 
+* `duration` The duration of the ban 
 * `source` The source of the ban, std::nullopt indicates implementation default. 
 
 
@@ -233,7 +233,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
     std::optional< UUID > uuid,
     std::optional< std::string > xuid,
     std::optional< std::string > reason,
-    std::optional< std::chrono::seconds > duration,
+    std::chrono::seconds duration,
     std::optional< std::string > source
 ) = 0
 ```
@@ -249,7 +249,7 @@ virtual PlayerBanEntry & endstone::PlayerBanList::addBan (
 * `uuid` The [**UUID**](classendstone_1_1UUID.md) of the target, std::nullopt if not used. 
 * `xuid` The XUID of the target, std::nullopt if not used. 
 * `reason` The reason for the ban, std::nullopt indicates implementation default. 
-* `duration` The duration of the ban, or std::nullopt to imply forever. 
+* `duration` The duration of the ban 
 * `source` The source of the ban, std::nullopt indicates implementation default. 
 
 

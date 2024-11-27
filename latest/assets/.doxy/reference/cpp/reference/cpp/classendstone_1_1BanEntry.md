@@ -33,13 +33,18 @@ Inherited by the following classes: [endstone::PlayerBanEntry](classendstone_1_1
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::chrono::time\_point&lt; std::chrono::system\_clock, std::chrono::seconds &gt; | [**Date**](#typedef-date)  <br> |
+| typedef std::chrono::system\_clock::time\_point | [**Date**](#typedef-date)  <br> |
 
 
 
 
 
 
+## Public Static Attributes
+
+| Type | Name |
+| ---: | :--- |
+|  const std::string | [**DateFormat**](#variable-dateformat)   = = "%FT%T%Ez"<br> |
 
 
 
@@ -102,7 +107,22 @@ Inherited by the following classes: [endstone::PlayerBanEntry](classendstone_1_1
 ### typedef Date 
 
 ```C++
-using endstone::BanEntry::Date =  std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds>;
+using endstone::BanEntry::Date =  std::chrono::system_clock::time_point;
+```
+
+
+
+
+<hr>
+## Public Static Attributes Documentation
+
+
+
+
+### variable DateFormat 
+
+```C++
+const std::string endstone::BanEntry::DateFormat;
 ```
 
 

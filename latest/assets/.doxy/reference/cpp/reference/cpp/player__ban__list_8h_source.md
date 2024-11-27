@@ -40,11 +40,11 @@ public:
                                    std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
                                    std::optional<std::string> source) = 0;
 
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
-                                   std::optional<std::chrono::seconds> duration, std::optional<std::string> source) = 0;
+    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
+                                   std::optional<std::string> source) = 0;
 
     virtual PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                                   std::optional<std::string> reason, std::optional<std::chrono::seconds> duration,
+                                   std::optional<std::string> reason, std::chrono::seconds duration,
                                    std::optional<std::string> source) = 0;
 
     [[nodiscard]] virtual std::vector<const PlayerBanEntry *> getEntries() const = 0;

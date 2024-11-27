@@ -33,7 +33,9 @@ namespace endstone {
 class BanEntry {
 
 public:
-    using Date = std::chrono::time_point<std::chrono::system_clock, std::chrono::seconds>;
+    using Date = std::chrono::system_clock::time_point;
+
+    inline static const std::string DateFormat = "%FT%T%Ez";
 
     [[nodiscard]] Date getCreated() const
     {
@@ -76,7 +78,7 @@ public:
     }
 
 private:
-    Date created_ = std::chrono::time_point_cast<std::chrono::seconds>(std::chrono::system_clock::now());
+    Date created_ = std::chrono::system_clock::now();
     std::string source_ = "(Unknown)";
     std::optional<Date> expiration_ = std::nullopt;
     std::string reason_ = "Banned by an operator.";

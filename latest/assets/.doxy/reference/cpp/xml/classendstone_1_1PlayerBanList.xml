@@ -341,10 +341,10 @@
         </inbodydescription>
         <location file="include/endstone/ban/player_ban_list.h" line="80" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a669f04838d823a4fea34939d75b92016" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aff31d80ff757c9ee35c72d7d7f3c1794" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
         <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
-        <argsstring>(std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::seconds &gt; duration, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <argsstring>(std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
         <param>
           <type>std::string</type>
@@ -355,7 +355,7 @@
           <declname>reason</declname>
         </param>
         <param>
-          <type>std::optional&lt; std::chrono::seconds &gt;</type>
+          <type>std::chrono::seconds</type>
           <declname>duration</declname>
         </param>
         <param>
@@ -387,7 +387,7 @@
 <parametername>duration</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The duration of the ban, or std::nullopt to imply forever. </para>
+<para>The duration of the ban </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -407,10 +407,10 @@
         </inbodydescription>
         <location file="include/endstone/ban/player_ban_list.h" line="93" column="28"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a21eccbb725d732f48d81e25070c68cd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a9ec941e645e18d8143d6e6d0d04a3a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
         <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
-        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; std::chrono::seconds &gt; duration, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
         <name>addBan</name>
         <param>
           <type>std::string</type>
@@ -429,7 +429,7 @@
           <declname>reason</declname>
         </param>
         <param>
-          <type>std::optional&lt; std::chrono::seconds &gt;</type>
+          <type>std::chrono::seconds</type>
           <declname>duration</declname>
         </param>
         <param>
@@ -477,7 +477,7 @@
 <parametername>duration</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The duration of the ban, or std::nullopt to imply forever. </para>
+<para>The duration of the ban </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -709,8 +709,8 @@
     <listofallmembers>
       <member refid="classendstone_1_1PlayerBanList_1a3e74f2c99b6d6675e5e2643d87011482" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
       <member refid="classendstone_1_1PlayerBanList_1aa108c09d941d261902cf47681a7f5545" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
-      <member refid="classendstone_1_1PlayerBanList_1a669f04838d823a4fea34939d75b92016" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
-      <member refid="classendstone_1_1PlayerBanList_1a21eccbb725d732f48d81e25070c68cd0" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1aff31d80ff757c9ee35c72d7d7f3c1794" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a9ec941e645e18d8143d6e6d0d04a3a06" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
       <member refid="classendstone_1_1PlayerBanList_1a8f2ba1e5aa67dc9029988d2935e5a632" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
       <member refid="classendstone_1_1PlayerBanList_1a27df98f35f99b653eb9f5822a7ea3537" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
       <member refid="classendstone_1_1PlayerBanList_1a26d531366bcc1138920a567c114d0b5d" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>

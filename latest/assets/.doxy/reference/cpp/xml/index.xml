@@ -92,7 +92,8 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
-    <member refid="classendstone_1_1BanEntry_1ac2b34cd5390619f462aeaa6ad30b93a5" kind="typedef"><name>Date</name></member>
+    <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
+    <member refid="classendstone_1_1BanEntry_1ab6991f9c822ac9cd969188b71aabae4a" kind="variable"><name>DateFormat</name></member>
     <member refid="classendstone_1_1BanEntry_1a3f858c5afab3a1d2beb3db993f361142" kind="variable"><name>created_</name></member>
     <member refid="classendstone_1_1BanEntry_1abf7c2480ec91e2691f15dcfa7b38a208" kind="variable"><name>source_</name></member>
     <member refid="classendstone_1_1BanEntry_1a2ee4c7b3dbb27eaad5fe46e71562cbc5" kind="variable"><name>expiration_</name></member>
@@ -748,8 +749,8 @@
     <member refid="classendstone_1_1PlayerBanList_1ad4f9e318fd167d1f4831a8c237922d29" kind="function"><name>getBanEntry</name></member>
     <member refid="classendstone_1_1PlayerBanList_1a3e74f2c99b6d6675e5e2643d87011482" kind="function"><name>addBan</name></member>
     <member refid="classendstone_1_1PlayerBanList_1aa108c09d941d261902cf47681a7f5545" kind="function"><name>addBan</name></member>
-    <member refid="classendstone_1_1PlayerBanList_1a669f04838d823a4fea34939d75b92016" kind="function"><name>addBan</name></member>
-    <member refid="classendstone_1_1PlayerBanList_1a21eccbb725d732f48d81e25070c68cd0" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1PlayerBanList_1aff31d80ff757c9ee35c72d7d7f3c1794" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1PlayerBanList_1a9ec941e645e18d8143d6e6d0d04a3a06" kind="function"><name>addBan</name></member>
     <member refid="classendstone_1_1PlayerBanList_1ab458330db7628667635c187ac560e633" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1PlayerBanList_1a352403913b003022503abc667035c461" kind="function"><name>getEntries</name></member>
     <member refid="classendstone_1_1PlayerBanList_1a61d16ed125ebe7dd63d54ce01ca7c886" kind="function"><name>isBanned</name></member>
