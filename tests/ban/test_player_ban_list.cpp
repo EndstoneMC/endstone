@@ -15,6 +15,7 @@
 #include <fstream>
 #include <optional>
 
+#include <date/date.h>
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 
@@ -39,7 +40,7 @@ TEST_F(PlayerBanListTest, LoadBanList)
 {
     nlohmann::json json = nlohmann::json::array();
     json.push_back({
-        {"created", "2024-11-27 12:34:01 Z"},
+        {"created", "2024-11-27T12:34:01+02:00"},
         {"name", "player11"},
         {"reason", "Misconduct"},
         {"source", "Moderator"},
@@ -56,7 +57,7 @@ TEST_F(PlayerBanListTest, LoadBanList)
     EXPECT_EQ(player_ban_.getEntries().size(), 1);
     auto *entry = player_ban_.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
-    EXPECT_EQ(entry->getCreated().time_since_epoch().count(), 17327108410000000LL);
+    EXPECT_EQ(date::format("%FT%T%Ez", entry->getCreated()), "2024-11-27T10:34:01+00:00");
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
     EXPECT_EQ(entry->getSource(), "Moderator");

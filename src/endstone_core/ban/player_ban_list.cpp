@@ -105,7 +105,7 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
 {
     std::optional<BanEntry::Date> expires = std::nullopt;
     if (duration.has_value()) {
-        expires = std::chrono::system_clock::now() + duration.value();
+        expires = date::floor<std::chrono::seconds>(std::chrono::system_clock::now()) + duration.value();
     }
     return addBan(name, uuid, xuid, reason, expires, source);
 }
@@ -179,10 +179,10 @@ Result<void> EndstonePlayerBanList::save()
         if (entry.getXuid().has_value()) {
             json["xuid"] = entry.getXuid().value();
         }
-        json["created"] = date::format("%F %T %Z", entry.getCreated());
+        json["created"] = date::format("%FT%T%Ez", entry.getCreated());
         json["source"] = entry.getSource();
         if (entry.getExpiration().has_value()) {
-            json["expires"] = date::format("%F %T %Z", entry.getExpiration().value());
+            json["expires"] = date::format("%FT%T%Ez", entry.getExpiration().value());
         }
         else {
             json["expires"] = "forever";
@@ -191,9 +191,9 @@ Result<void> EndstonePlayerBanList::save()
         array.push_back(json);
     }
 
-    std::ofstream writer(file_, std::ofstream::out | std::ofstream::trunc);
+    std::ofstream file(file_);
     try {
-        writer << array;
+        file << array;
         return {};
     }
     catch (const std::exception &e) {
@@ -209,7 +209,7 @@ Result<void> EndstonePlayerBanList::load()
 
     entries_.clear();
 
-    std::ifstream file(file_, std::ifstream::in);
+    std::ifstream file(file_);
     try {
         auto array = nlohmann::json::parse(file);
         for (const auto &json : array) {
@@ -235,7 +235,7 @@ Result<void> EndstonePlayerBanList::load()
                 std::string created = json["created"];
                 std::istringstream in{created};
                 BanEntry::Date date;
-                in >> date::parse("%F %T %Z", date);
+                in >> date::parse("%FT%T%Ez", date);
                 if (!in.fail()) {
                     entry.setCreated(date);
                 }
@@ -247,7 +247,7 @@ Result<void> EndstonePlayerBanList::load()
                 std::string expires = json["expires"];
                 std::istringstream in{expires};
                 BanEntry::Date date;
-                in >> date::parse("%F %T %Z", date);
+                in >> date::parse("%FT%T%Ez", date);
                 if (!in.fail()) {
                     entry.setExpiration(date);
                 }
