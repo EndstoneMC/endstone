@@ -94,7 +94,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 |  Date | [**getCreated**](classendstone_1_1BanEntry.md#function-getcreated) () const<br>_Gets the date this ban entry was created._  |
 |  std::optional&lt; Date &gt; | [**getExpiration**](classendstone_1_1BanEntry.md#function-getexpiration) () const<br>_Gets the date this ban expires on, or std::nullopt for no defined end date._  |
 |  std::string | [**getReason**](classendstone_1_1BanEntry.md#function-getreason) () const<br>_Gets the reason for this ban._  |
-|  std::string | [**getSource**](classendstone_1_1BanEntry.md#function-getsource) () <br>_Gets the source of this ban._  |
+|  std::string | [**getSource**](classendstone_1_1BanEntry.md#function-getsource) () const<br>_Gets the source of this ban._  |
 |  void | [**setCreated**](classendstone_1_1BanEntry.md#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
 |  void | [**setExpiration**](classendstone_1_1BanEntry.md#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
 |  void | [**setReason**](classendstone_1_1BanEntry.md#function-setreason) (std::string reason) <br>_Sets the reason for this ban._  |

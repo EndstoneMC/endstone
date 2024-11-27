@@ -45,7 +45,7 @@ public:
         created_ = created;
     }
 
-    [[nodiscard]] std::string getSource()
+    [[nodiscard]] std::string getSource() const
     {
         return source_;
     }

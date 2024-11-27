@@ -159,7 +159,7 @@
       <member refid="classendstone_1_1BanEntry_1a3da7f863a294a9186b6a3e6972aa3541" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getExpiration</name></member>
       <member refid="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getName</name></member>
       <member refid="classendstone_1_1BanEntry_1ae64cc8ac600a8a35f2420ddc0709ade0" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getReason</name></member>
-      <member refid="classendstone_1_1BanEntry_1ac27cafb57b53f7a79cccf667182ee0be" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getSource</name></member>
+      <member refid="classendstone_1_1BanEntry_1ad72c12362e0b7d4d5f4fcc9874f4f375" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getSource</name></member>
       <member refid="classendstone_1_1PlayerBanEntry_1ac9cdade25bc24662b2787b6709826177" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getUniqueId</name></member>
       <member refid="classendstone_1_1PlayerBanEntry_1a2d2b7b61a57ea33e5cc629e2aa65fd09" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getXuid</name></member>
       <member refid="classendstone_1_1PlayerBanEntry_1ab4a20630b1df00f1a2a5d104cbc6d56c" prot="private" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>name_</name></member>
