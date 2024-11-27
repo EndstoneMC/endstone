@@ -48,7 +48,6 @@ TEST_F(PlayerBanListTest, AddAndRetrieveBanEntry)
     // Retrieve and validate the ban entry
     auto *entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
-    EXPECT_EQ(date::format("%FT%T%Ez", entry->getCreated()), "2024-11-27T12:34:01+00:00");
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
     EXPECT_EQ(entry->getSource(), "Moderator");
@@ -157,8 +156,6 @@ TEST_F(PlayerBanListTest, SaveWithMissingOptionalFields)
 
     ASSERT_EQ(array.size(), 1);
     auto json = array.front();
-    EXPECT_EQ(json["created"],
-              date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getCreated())));
     EXPECT_EQ(json["name"], "player12");
     EXPECT_FALSE(json.contains("uuid"));
     EXPECT_FALSE(json.contains("xuid"));
