@@ -92,7 +92,7 @@
     <member refid="classendstone_1_1ActorTeleportEvent_1aeabc5788b424d23a598b057a05f767d0" kind="function"><name>setTo</name></member>
   </compound>
   <compound refid="classendstone_1_1BanEntry" kind="class"><name>endstone::BanEntry</name>
-    <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" kind="typedef"><name>Date</name></member>
+    <member refid="classendstone_1_1BanEntry_1ac2b34cd5390619f462aeaa6ad30b93a5" kind="typedef"><name>Date</name></member>
     <member refid="classendstone_1_1BanEntry_1a3f858c5afab3a1d2beb3db993f361142" kind="variable"><name>created_</name></member>
     <member refid="classendstone_1_1BanEntry_1abf7c2480ec91e2691f15dcfa7b38a208" kind="variable"><name>source_</name></member>
     <member refid="classendstone_1_1BanEntry_1a2ee4c7b3dbb27eaad5fe46e71562cbc5" kind="variable"><name>expiration_</name></member>

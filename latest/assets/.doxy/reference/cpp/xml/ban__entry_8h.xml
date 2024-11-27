@@ -83,7 +83,7 @@
 <codeline lineno="26" refid="classendstone_1_1BanEntry" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Date<sp/>=<sp/>std::chrono::system_clock::time_point;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>Date<sp/>=<sp/>std::chrono::time_point&lt;std::chrono::system_clock,<sp/>std::chrono::seconds&gt;;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36" refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>Date<sp/><ref refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" kindref="member">getCreated</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="37"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
@@ -126,7 +126,7 @@
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>Date<sp/>created_<sp/>=<sp/>std::chrono::system_clock::now();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>Date<sp/>created_<sp/>=<sp/>std::chrono::time_point_cast&lt;std::chrono::seconds&gt;(std::chrono::system_clock::now());</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>source_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;(Unknown)&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;Date&gt;<sp/>expiration_<sp/>=<sp/>std::nullopt;</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>reason_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Banned<sp/>by<sp/>an<sp/>operator.&quot;</highlight><highlight class="normal">;</highlight></codeline>

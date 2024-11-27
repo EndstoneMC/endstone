@@ -36,7 +36,7 @@ See [endstone::BanEntry](classendstone_1_1BanEntry.md)
 
 | Type | Name |
 | ---: | :--- |
-| typedef std::chrono::system\_clock::time\_point | [**Date**](classendstone_1_1BanEntry.md#typedef-date)  <br> |
+| typedef std::chrono::time\_point&lt; std::chrono::system\_clock, std::chrono::seconds &gt; | [**Date**](classendstone_1_1BanEntry.md#typedef-date)  <br> |
 
 
 

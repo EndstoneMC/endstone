@@ -5,9 +5,9 @@
     <derivedcompoundref refid="classendstone_1_1PlayerBanEntry" prot="public" virt="non-virtual">endstone::PlayerBanEntry</derivedcompoundref>
     <includes refid="ban__entry_8h" local="no">endstone/ban/ban_entry.h</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" static="no">
-        <type>std::chrono::system_clock::time_point</type>
-        <definition>using endstone::BanEntry::Date =  std::chrono::system_clock::time_point</definition>
+      <memberdef kind="typedef" id="classendstone_1_1BanEntry_1ac2b34cd5390619f462aeaa6ad30b93a5" prot="public" static="no">
+        <type>std::chrono::time_point&lt; std::chrono::system_clock, std::chrono::seconds &gt;</type>
+        <definition>using endstone::BanEntry::Date =  std::chrono::time_point&lt;std::chrono::system_clock, std::chrono::seconds&gt;</definition>
         <argsstring></argsstring>
         <name>Date</name>
         <briefdescription>
@@ -25,7 +25,7 @@
         <definition>Date endstone::BanEntry::created_</definition>
         <argsstring></argsstring>
         <name>created_</name>
-        <initializer>= std::chrono::system_clock::now()</initializer>
+        <initializer>= std::chrono::time_point_cast&lt;std::chrono::seconds&gt;(std::chrono::system_clock::now())</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -285,7 +285,7 @@
     <location file="include/endstone/ban/ban_entry.h" line="26" column="1" bodyfile="include/endstone/ban/ban_entry.h" bodystart="26" bodyend="119"/>
     <listofallmembers>
       <member refid="classendstone_1_1BanEntry_1a3f858c5afab3a1d2beb3db993f361142" prot="private" virt="non-virtual"><scope>endstone::BanEntry</scope><name>created_</name></member>
-      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::BanEntry</scope><name>Date</name></member>
+      <member refid="classendstone_1_1BanEntry_1ac2b34cd5390619f462aeaa6ad30b93a5" prot="public" virt="non-virtual"><scope>endstone::BanEntry</scope><name>Date</name></member>
       <member refid="classendstone_1_1BanEntry_1a2ee4c7b3dbb27eaad5fe46e71562cbc5" prot="private" virt="non-virtual"><scope>endstone::BanEntry</scope><name>expiration_</name></member>
       <member refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" prot="public" virt="non-virtual"><scope>endstone::BanEntry</scope><name>getCreated</name></member>
       <member refid="classendstone_1_1BanEntry_1a3da7f863a294a9186b6a3e6972aa3541" prot="public" virt="non-virtual"><scope>endstone::BanEntry</scope><name>getExpiration</name></member>

@@ -154,7 +154,7 @@
     </collaborationgraph>
     <location file="include/endstone/ban/player_ban_entry.h" line="24" column="1" bodyfile="include/endstone/ban/player_ban_entry.h" bodystart="24" bodyend="66"/>
     <listofallmembers>
-      <member refid="classendstone_1_1BanEntry_1ab092a6e12e478e31aabc04ccd7944f25" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>Date</name></member>
+      <member refid="classendstone_1_1BanEntry_1ac2b34cd5390619f462aeaa6ad30b93a5" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>Date</name></member>
       <member refid="classendstone_1_1BanEntry_1a3d58f91d59173138b7e5530b604ae70d" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getCreated</name></member>
       <member refid="classendstone_1_1BanEntry_1a3da7f863a294a9186b6a3e6972aa3541" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getExpiration</name></member>
       <member refid="classendstone_1_1PlayerBanEntry_1a896cb5a70c13eaae3274577097a4c8be" prot="public" virt="non-virtual"><scope>endstone::PlayerBanEntry</scope><name>getName</name></member>
