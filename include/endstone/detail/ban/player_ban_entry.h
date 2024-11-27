@@ -15,16 +15,9 @@
 #pragma once
 
 #include "endstone/ban/player_ban_entry.h"
-#include "endstone/detail/ban/ban_entry.h"
 
 namespace endstone::detail {
 
-class EndstonePlayerBanEntry : public PlayerBanEntry, public EndstoneBanEntry {
-public:
-    [[nodiscard]] std::shared_ptr<PlayerProfile> getTarget() const override = 0;
-
-private:
-    std::shared_ptr<PlayerProfile> target_;
-};
+class EndstonePlayerBanEntry : public PlayerBanEntry {};
 
 }  // namespace endstone::detail

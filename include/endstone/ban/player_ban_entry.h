@@ -15,18 +15,46 @@
 #pragma once
 
 #include "endstone/ban/ban_entry.h"
-#include "endstone/profile/player_profile.h"
+#include "endstone/util/uuid.h"
 
 namespace endstone {
 
 class PlayerBanEntry : public BanEntry {
 public:
     /**
-     * @brief Gets the target involved.
+     * @brief Gets the banned player's name.
      *
-     * @return the target, i.e. the banned player
+     * @return the player name
      */
-    [[nodiscard]] virtual std::shared_ptr<PlayerProfile> getTarget() const = 0;
+    [[nodiscard]] std::string getName() const
+    {
+        return name_;
+    }
+
+    /**
+     * @brief Gets the banned player's unique id.
+     *
+     * @return the player's unique id, or std::nullopt if not available
+     */
+    [[nodiscard]] std::optional<UUID> getUniqueId() const
+    {
+        return uuid_;
+    }
+
+    /**
+     * @brief Gets the banned player's xbox user id (xuid).
+     *
+     * @return the player's xbox user id (xuid), or std::nullopt if not available
+     */
+    [[nodiscard]] std::optional<std::string> getXuid() const
+    {
+        return xuid_;
+    }
+
+private:
+    std::string name_;
+    std::optional<UUID> uuid_;
+    std::optional<std::string> xuid_;
 };
 
 }  // namespace endstone

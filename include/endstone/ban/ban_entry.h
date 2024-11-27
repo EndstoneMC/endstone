@@ -17,25 +17,26 @@
 #include <chrono>
 #include <optional>
 #include <string>
+#include <utility>
 
 namespace endstone {
 /**
  * @brief A single entry from a ban list.
  */
 class BanEntry {
-protected:
-    using Date = std::chrono::system_clock::time_point;
 
 public:
-    // Ensure derived class has virtual destructor
-    virtual ~BanEntry() = default;
+    using Date = std::chrono::system_clock::time_point;
 
     /**
      * @brief Gets the date this ban entry was created.
      *
      * @return the creation date
      */
-    [[nodiscard]] virtual Date getCreated() const = 0;
+    [[nodiscard]] Date getCreated() const
+    {
+        return created_;
+    }
 
     /**
      * @brief Sets the date this ban entry was created.
@@ -43,14 +44,20 @@ public:
      * @param created the new created date
      * @see save() saving changes
      */
-    virtual void setCreated(Date created) = 0;
+    void setCreated(Date created)
+    {
+        created_ = created;
+    }
 
     /**
      * @brief Gets the source of this ban.
      *
      * @return the source of the ban
      */
-    [[nodiscard]] virtual std::string getSource() const = 0;
+    [[nodiscard]] std::string_view getSource()
+    {
+        return source_;
+    }
 
     /**
      * @brief Sets the source of this ban.
@@ -58,49 +65,57 @@ public:
      * @param source the new source
      * @see save() saving changes
      */
-    virtual void setSource(std::string source) = 0;
+    void setSource(std::string_view source)
+    {
+        source_ = !source.empty() ? source : "(Unknown)";
+    }
 
     /**
      * @brief Gets the date this ban expires on, or std::nullopt for no defined end date.
      *
      * @return the expiration date
      */
-    [[nodiscard]] virtual std::optional<Date> getExpiration() const = 0;
+    [[nodiscard]] std::optional<Date> getExpiration() const
+    {
+        return expiration_;
+    }
 
     /**
      * @brief Sets the date this ban expires on. std::nullopt values are considered "infinite" bans.
      *
-     * @param expiration the new expiration date, or std::nullopt to indicate an eternity
-     * @see save() saving changes
+     * @param expiration the new expiration date, or std::nullopt to indicate an infinite ban
      */
-    virtual void setExpiration(std::optional<Date> expiration) = 0;
+    void setExpiration(std::optional<Date> expiration)
+    {
+        expiration_ = expiration;
+    }
 
     /**
      * @brief Gets the reason for this ban.
      *
-     * @return the ban reason, or std::nullopt if not set
+     * @return the ban reason
      */
-    [[nodiscard]] virtual std::optional<std::string> getReason() const = 0;
+    [[nodiscard]] std::string_view getReason() const
+    {
+        return reason_;
+    }
 
     /**
      * @brief Sets the reason for this ban.
      *
-     * @param reason the new reason, std::nullopt values assume the implementation default
+     * @param reason the new reason, empty values assume the implementation default
      * @see save() saving changes
      */
-    virtual void setReason(std::optional<std::string> reason) = 0;
+    void setReason(std::string_view reason)
+    {
+        reason_ = !reason.empty() ? reason : "Banned by an operator.";
+    }
 
-    /**
-     * @brief Saves the ban entry, overwriting any previous data in the ban list.
-     *
-     * Saving the ban entry of an unbanned player will cause the player to be banned once again.
-     */
-    virtual void save() = 0;
-
-    /**
-     * @brief Removes this ban entry from the associated ban list.
-     */
-    virtual void remove() = 0;
+private:
+    Date created_;
+    std::string source_;
+    std::optional<Date> expiration_;
+    std::string reason_;
 };
 
 }  // namespace endstone

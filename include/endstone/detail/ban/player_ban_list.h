@@ -14,26 +14,10 @@
 
 #pragma once
 
-#include "endstone/ban/ban_entry.h"
+#include "endstone/ban/player_ban_list.h"
 
 namespace endstone::detail {
 
-class EndstoneBanEntry : public BanEntry {
-public:
-    [[nodiscard]] Date getCreated() const override;
-    void setCreated(Date created) override;
-    [[nodiscard]] std::string getSource() const override;
-    void setSource(std::string source) override;
-    [[nodiscard]] std::optional<Date> getExpiration() const override;
-    void setExpiration(std::optional<Date> expiration) override;
-    [[nodiscard]] std::optional<std::string> getReason() const override;
-    void setReason(std::optional<std::string> reason) override;
-
-private:
-    Date created_;
-    std::string source_;
-    std::optional<Date> expiration_;
-    std::optional<std::string> reason_;
-};
+class EndstonePlayerBanList : public PlayerBanList {};
 
 }  // namespace endstone::detail

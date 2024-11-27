@@ -12,8 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "endstone/detail/ban/player_ban_entry.h"
+#include "endstone/detail/ban/player_ban_list.h"
 
 namespace endstone::detail {
-
-}  // namespace endstone::detail
+}
