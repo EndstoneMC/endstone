@@ -14,6 +14,8 @@
 
 #pragma once
 
+#include <utility>
+
 #include "endstone/ban/ban_entry.h"
 #include "endstone/util/uuid.h"
 
@@ -21,6 +23,12 @@ namespace endstone {
 
 class PlayerBanEntry : public BanEntry {
 public:
+    explicit PlayerBanEntry(std::string name, std::optional<UUID> uuid = std::nullopt,
+                            std::optional<std::string> xuid = std::nullopt)
+        : name_(std::move(name)), uuid_(uuid), xuid_(std::move(xuid))
+    {
+    }
+
     /**
      * @brief Gets the banned player's name.
      *
