@@ -45,14 +45,14 @@ public:
         created_ = created;
     }
 
-    [[nodiscard]] std::string_view getSource()
+    [[nodiscard]] std::string getSource()
     {
         return source_;
     }
 
-    void setSource(std::string_view source)
+    void setSource(std::string source)
     {
-        source_ = !source.empty() ? source : "(Unknown)";
+        source_ = std::move(source);
     }
 
     [[nodiscard]] std::optional<Date> getExpiration() const
@@ -65,21 +65,21 @@ public:
         expiration_ = expiration;
     }
 
-    [[nodiscard]] std::string_view getReason() const
+    [[nodiscard]] std::string getReason() const
     {
         return reason_;
     }
 
-    void setReason(std::string_view reason)
+    void setReason(std::string reason)
     {
-        reason_ = !reason.empty() ? reason : "Banned by an operator.";
+        reason_ = std::move(reason);
     }
 
 private:
-    Date created_;
-    std::string source_;
-    std::optional<Date> expiration_;
-    std::string reason_;
+    Date created_ = std::chrono::system_clock::now();
+    std::string source_ = "(Unknown)";
+    std::optional<Date> expiration_ = std::nullopt;
+    std::string reason_ = "Banned by an operator.";
 };
 
 }  // namespace endstone

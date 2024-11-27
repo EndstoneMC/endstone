@@ -23,10 +23,15 @@ class PlayerBanList {
 public:
     virtual ~PlayerBanList() = default;
 
-    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name) const = 0;
+    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name) const = 0;
+
+    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name) = 0;
+
+    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                            std::optional<std::string> xuid) const = 0;
 
     [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                      std::optional<std::string> xuid) const = 0;
+                                                      std::optional<std::string> xuid) = 0;
 
     virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
                                    std::optional<BanEntry::Date> expires, std::optional<std::string> source) = 0;
@@ -42,7 +47,9 @@ public:
                                    std::optional<std::string> reason, std::optional<std::chrono::seconds> duration,
                                    std::optional<std::string> source) = 0;
 
-    [[nodiscard]] virtual std::vector<PlayerBanEntry *> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<const PlayerBanEntry *> getEntries() const = 0;
+
+    [[nodiscard]] virtual std::vector<PlayerBanEntry *> getEntries() = 0;
 
     [[nodiscard]] virtual bool isBanned(std::string name) const = 0;
 

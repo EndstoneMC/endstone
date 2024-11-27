@@ -384,6 +384,7 @@
 * **PermissionAttachment** ([**endstone::PermissionAttachment**](classendstone_1_1PermissionAttachment.md))
 * **PermissionAttachmentInfo** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **performCommand** ([**endstone::Player**](classendstone_1_1Player.md))
+* **PlayerBanEntry** ([**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md))
 * **PlayerChatEvent** ([**endstone::PlayerChatEvent**](classendstone_1_1PlayerChatEvent.md))
 * **PlayerCommandEvent** ([**endstone::PlayerCommandEvent**](classendstone_1_1PlayerCommandEvent.md))
 * **PlayerDeathEvent** ([**endstone::PlayerDeathEvent**](classendstone_1_1PlayerDeathEvent.md))

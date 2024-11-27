@@ -2172,11 +2172,11 @@ For latest updates join the chat on
 <td style="text-align: left;"><a href="#function-getexpiration"><strong>getExpiration</strong></a> () const<br><em>Gets the date this ban expires on, or std::nullopt for no defined end date.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::string_view</td>
+<td style="text-align: right;">std::string</td>
 <td style="text-align: left;"><a href="#function-getreason"><strong>getReason</strong></a> () const<br><em>Gets the reason for this ban.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">std::string_view</td>
+<td style="text-align: right;">std::string</td>
 <td style="text-align: left;"><a href="#function-getsource"><strong>getSource</strong></a> () <br><em>Gets the source of this ban.</em></td>
 </tr>
 <tr>
@@ -2189,11 +2189,11 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setreason"><strong>setReason</strong></a> (std::string_view reason) <br><em>Sets the reason for this ban.</em></td>
+<td style="text-align: left;"><a href="#function-setreason"><strong>setReason</strong></a> (std::string reason) <br><em>Sets the reason for this ban.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">void</td>
-<td style="text-align: left;"><a href="#function-setsource"><strong>setSource</strong></a> (std::string_view source) <br><em>Sets the source of this ban.</em></td>
+<td style="text-align: left;"><a href="#function-setsource"><strong>setSource</strong></a> (std::string source) <br><em>Sets the source of this ban.</em></td>
 </tr>
 </tbody>
 </table>
@@ -2221,7 +2221,7 @@ For latest updates join the chat on
 
 <h3 id="function-getreason">function getReason<a class="headerlink" href="#function-getreason" title="Permanent link">&para;</a></h3>
 <p><em>Gets the reason for this ban.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getReason</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getReason</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the ban reason </p>
@@ -2229,7 +2229,7 @@ For latest updates join the chat on
 
 <h3 id="function-getsource">function getSource<a class="headerlink" href="#function-getsource" title="Permanent link">&para;</a></h3>
 <p><em>Gets the source of this ban.</em> 
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">getSource</span><span class="w"> </span><span class="p">()</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>the source of the ban </p>
@@ -2263,7 +2263,7 @@ For latest updates join the chat on
 <h3 id="function-setreason">function setReason<a class="headerlink" href="#function-setreason" title="Permanent link">&para;</a></h3>
 <p><em>Sets the reason for this ban.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setReason</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">reason</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">reason</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
@@ -2276,7 +2276,7 @@ For latest updates join the chat on
 <h3 id="function-setsource">function setSource<a class="headerlink" href="#function-setsource" title="Permanent link">&para;</a></h3>
 <p><em>Sets the source of this ban.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">BanEntry</span><span class="o">::</span><span class="n">setSource</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">source</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">source</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">)</span><span class="w"> </span>
 </span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>

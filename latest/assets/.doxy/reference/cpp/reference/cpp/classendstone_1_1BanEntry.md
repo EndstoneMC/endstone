@@ -60,12 +60,12 @@ Inherited by the following classes: [endstone::PlayerBanEntry](classendstone_1_1
 | ---: | :--- |
 |  Date | [**getCreated**](#function-getcreated) () const<br>_Gets the date this ban entry was created._  |
 |  std::optional&lt; Date &gt; | [**getExpiration**](#function-getexpiration) () const<br>_Gets the date this ban expires on, or std::nullopt for no defined end date._  |
-|  std::string\_view | [**getReason**](#function-getreason) () const<br>_Gets the reason for this ban._  |
-|  std::string\_view | [**getSource**](#function-getsource) () <br>_Gets the source of this ban._  |
+|  std::string | [**getReason**](#function-getreason) () const<br>_Gets the reason for this ban._  |
+|  std::string | [**getSource**](#function-getsource) () <br>_Gets the source of this ban._  |
 |  void | [**setCreated**](#function-setcreated) (Date created) <br>_Sets the date this ban entry was created._  |
 |  void | [**setExpiration**](#function-setexpiration) (std::optional&lt; Date &gt; expiration) <br>_Sets the date this ban expires on. std::nullopt values are considered "infinite" bans._  |
-|  void | [**setReason**](#function-setreason) (std::string\_view reason) <br>_Sets the reason for this ban._  |
-|  void | [**setSource**](#function-setsource) (std::string\_view source) <br>_Sets the source of this ban._  |
+|  void | [**setReason**](#function-setreason) (std::string reason) <br>_Sets the reason for this ban._  |
+|  void | [**setSource**](#function-setsource) (std::string source) <br>_Sets the source of this ban._  |
 
 
 
@@ -168,7 +168,7 @@ the expiration date
 
 _Gets the reason for this ban._ 
 ```C++
-inline std::string_view endstone::BanEntry::getReason () const
+inline std::string endstone::BanEntry::getReason () const
 ```
 
 
@@ -193,7 +193,7 @@ the ban reason
 
 _Gets the source of this ban._ 
 ```C++
-inline std::string_view endstone::BanEntry::getSource () 
+inline std::string endstone::BanEntry::getSource () 
 ```
 
 
@@ -276,7 +276,7 @@ inline void endstone::BanEntry::setExpiration (
 _Sets the reason for this ban._ 
 ```C++
 inline void endstone::BanEntry::setReason (
-    std::string_view reason
+    std::string reason
 ) 
 ```
 
@@ -306,7 +306,7 @@ inline void endstone::BanEntry::setReason (
 _Sets the source of this ban._ 
 ```C++
 inline void endstone::BanEntry::setSource (
-    std::string_view source
+    std::string source
 ) 
 ```
 
