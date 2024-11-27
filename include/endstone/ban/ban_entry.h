@@ -54,7 +54,7 @@ public:
      *
      * @return the source of the ban
      */
-    [[nodiscard]] std::string getSource()
+    [[nodiscard]] std::string getSource() const
     {
         return source_;
     }

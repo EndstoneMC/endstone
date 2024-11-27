@@ -14,7 +14,6 @@
 
 #include "endstone/detail/player.h"
 
-#include <boost/uuid/string_generator.hpp>
 #include <magic_enum/magic_enum.hpp>
 
 #include "bedrock/certificates/extended_certificate.h"

@@ -34,6 +34,7 @@ class EndstoneRecipe(ConanFile):
         "capstone/*:tms320c64x": False,
         "capstone/*:m680x": False,
         "capstone/*:evm": False,
+        "date/*:header_only": True,
     }
 
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
@@ -112,6 +113,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("boost/1.85.0")
         self.requires("concurrentqueue/1.0.4")
         self.requires("cpptrace/0.7.1")
+        self.requires("date/3.0.3")
         self.requires("entt/3.14.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
@@ -177,6 +179,7 @@ class EndstoneRecipe(ConanFile):
             "boost::boost",
             "concurrentqueue::concurrentqueue",
             "cpptrace::cpptrace",
+            "date::date",
             "entt::entt",
             "glm::glm",
             "magic_enum::magic_enum",

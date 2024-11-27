@@ -50,12 +50,13 @@ public:
     void removeBan(std::string name) override;
     void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
 
+    void save();
+    void load();
+
 private:
     static bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
                       const std::optional<std::string> &xuid);
 
-    void save();
-    void load();
     void removeExpired();
 
     std::vector<PlayerBanEntry> entries_;

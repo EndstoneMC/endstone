@@ -5,6 +5,7 @@ find_package(base64 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(concurrentqueue REQUIRED)
 find_package(cpptrace REQUIRED)
+find_package(date REQUIRED)
 find_package(EnTT REQUIRED)
 find_package(glm REQUIRED)
 find_package(magic_enum REQUIRED)
@@ -80,9 +81,21 @@ add_library(endstone_core
         server.cpp
 )
 add_library(endstone::core ALIAS endstone_core)
-target_link_libraries(endstone_core PUBLIC endstone::headers aklomp::base64 boost::boost concurrentqueue::concurrentqueue
-        cpptrace::cpptrace EnTT::EnTT glm::glm magic_enum::magic_enum Microsoft.GSL::GSL nlohmann_json::nlohmann_json
-        pybind11::module spdlog::spdlog tomlplusplus::tomlplusplus)
+target_link_libraries(endstone_core PUBLIC
+        endstone::headers
+        aklomp::base64
+        boost::boost
+        concurrentqueue::concurrentqueue
+        cpptrace::cpptrace
+        date::date
+        EnTT::EnTT
+        glm::glm
+        magic_enum::magic_enum
+        Microsoft.GSL::GSL
+        nlohmann_json::nlohmann_json
+        pybind11::module
+        spdlog::spdlog
+        tomlplusplus::tomlplusplus)
 if (UNIX)
     target_link_libraries(endstone_core PUBLIC ${CMAKE_DL_LIBS})
     target_compile_definitions(endstone_core PUBLIC ENDSTONE_DISABLE_DEVTOOLS)
