@@ -17,6 +17,7 @@
 #include <filesystem>
 
 #include "endstone/ban/player_ban_list.h"
+#include "endstone/util/result.h"
 
 namespace fs = std::filesystem;
 
@@ -50,8 +51,8 @@ public:
     void removeBan(std::string name) override;
     void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
 
-    void save();
-    void load();
+    Result<void> save();
+     Result<void> load();
 
 private:
     static bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,

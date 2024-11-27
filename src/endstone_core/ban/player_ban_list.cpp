@@ -18,13 +18,16 @@
 
 #include <boost/uuid/string_generator.hpp>
 #include <date/date.h>
-#include <entt/entt.hpp>
 #include <fmt/format.h>
+#include <fmt/std.h>
 #include <nlohmann/json.hpp>
 
-#include "endstone/detail/server.h"
+#include "endstone/detail/util/error.h"
+#include "endstone/util/result.h"
 
 namespace endstone::detail {
+
+EndstonePlayerBanList::EndstonePlayerBanList(fs::path file) : file_(file) {}
 
 const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name) const
 {
@@ -164,7 +167,7 @@ bool EndstonePlayerBanList::match(const PlayerBanEntry &entry, const std::string
     return name_match && uuid_match && xuid_match;
 }
 
-void EndstonePlayerBanList::save()
+Result<void> EndstonePlayerBanList::save()
 {
     nlohmann::json array = nlohmann::json::array();
     for (const auto &entry : entries_) {
@@ -176,10 +179,10 @@ void EndstonePlayerBanList::save()
         if (entry.getXuid().has_value()) {
             json["xuid"] = entry.getXuid().value();
         }
-        json["created"] = date::format("%F %T Z", entry.getCreated());
+        json["created"] = date::format("%F %T %Z", entry.getCreated());
         json["source"] = entry.getSource();
         if (entry.getExpiration().has_value()) {
-            json["expires"] = date::format("%F %T Z", entry.getExpiration().value());
+            json["expires"] = date::format("%F %T %Z", entry.getExpiration().value());
         }
         else {
             json["expires"] = "forever";
@@ -188,72 +191,76 @@ void EndstonePlayerBanList::save()
         array.push_back(json);
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
     std::ofstream writer(file_, std::ofstream::out | std::ofstream::trunc);
     try {
         writer << array;
+        return {};
     }
     catch (const std::exception &e) {
-        server.getLogger().error("Unable to write file '{}': {}", file_, e.what());
+        return nonstd::make_unexpected(make_error("Unable to read file '{}': {}", file_, e.what()));
     }
 }
 
-void EndstonePlayerBanList::load()
+Result<void> EndstonePlayerBanList::load()
 {
     if (!exists(file_)) {
-        return;
+        return {};
     }
 
     entries_.clear();
 
-    auto &server = entt::locator<EndstoneServer>::value();
     std::ifstream file(file_, std::ifstream::in);
     try {
         auto array = nlohmann::json::parse(file);
-        std::string name = array["name"];
-        std::optional<UUID> uuid;
-        std::optional<std::string> xuid = std::nullopt;
-        if (array.contains("uuid")) {
-            try {
-                boost::uuids::string_generator gen;
-                boost::uuids::uuid u1 = gen(std::string(array["uuid"]));
-                UUID u2;
-                std::memcpy(u2.data, u1.data, u1.size());
-                uuid = u2;
+        for (const auto &json : array) {
+            std::string name = json["name"];
+            std::optional<UUID> uuid = std::nullopt;
+            std::optional<std::string> xuid = std::nullopt;
+            if (json.contains("uuid")) {
+                try {
+                    boost::uuids::string_generator gen;
+                    boost::uuids::uuid u1 = gen(std::string(json["uuid"]));
+                    UUID u2;
+                    std::memcpy(u2.data, u1.data, u1.size());
+                    uuid = u2;
+                }
+                catch (std::exception &) {
+                }
             }
-            catch (std::exception &) {
-                uuid = std::nullopt;
+            if (json.contains("xuid")) {
+                xuid = json["xuid"];
             }
-        }
-        if (array.contains("xuid")) {
-            xuid = array["xuid"];
-        }
-        PlayerBanEntry entry{name, uuid, xuid};
-        if (array.contains("created")) {
-            std::string created = array["created"];
-            std::istringstream in{created};
-            BanEntry::Date date;
-            in >> date::parse("%FT%TZ", date);
-            if (!in.fail()) {
-                entry.setCreated(date);
+            PlayerBanEntry entry{name, uuid, xuid};
+            if (json.contains("created")) {
+                std::string created = json["created"];
+                std::istringstream in{created};
+                BanEntry::Date date;
+                in >> date::parse("%F %T %Z", date);
+                if (!in.fail()) {
+                    entry.setCreated(date);
+                }
             }
-        }
-        if (array.contains("source")) {
-            entry.setSource(array["source"]);
-        }
-        if (array.contains("expires")) {
-            std::string expires = array["expires"];
-            std::istringstream in{expires};
-            BanEntry::Date date;
-            in >> date::parse("%FT%TZ", date);
-            if (!in.fail()) {
-                entry.setExpiration(date);
+            if (json.contains("source")) {
+                entry.setSource(json["source"]);
             }
+            if (json.contains("expires")) {
+                std::string expires = json["expires"];
+                std::istringstream in{expires};
+                BanEntry::Date date;
+                in >> date::parse("%F %T %Z", date);
+                if (!in.fail()) {
+                    entry.setExpiration(date);
+                }
+            }
+            if (json.contains("reason")) {
+                entry.setReason(json["reason"]);
+            }
+            entries_.emplace_back(entry);
         }
-        entries_.emplace_back(entry);
+        return {};
     }
     catch (const std::exception &e) {
-        server.getLogger().error("Unable to read file '{}': {}", file_, e.what());
+        return nonstd::make_unexpected(make_error("Unable to read file '{}': {}", file_, e.what()));
     }
 }
 
