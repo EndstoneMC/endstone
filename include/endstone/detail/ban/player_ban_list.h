@@ -14,10 +14,52 @@
 
 #pragma once
 
+#include <filesystem>
+
 #include "endstone/ban/player_ban_list.h"
+
+namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-class EndstonePlayerBanList : public PlayerBanList {};
+class EndstonePlayerBanList : public PlayerBanList {
+public:
+    explicit EndstonePlayerBanList(fs::path file);
+
+    [[nodiscard]] const PlayerBanEntry *getBanEntry(std::string name) const override;
+    [[nodiscard]] PlayerBanEntry *getBanEntry(std::string name) override;
+    [[nodiscard]] const PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                    std::optional<std::string> xuid) const override;
+    [[nodiscard]] PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
+                                              std::optional<std::string> xuid) override;
+    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                           std::optional<std::string> source) override;
+    PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                           std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                           std::optional<std::string> source) override;
+    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
+                           std::optional<std::chrono::seconds> duration, std::optional<std::string> source) override;
+    PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
+                           std::optional<std::string> reason, std::optional<std::chrono::seconds> duration,
+                           std::optional<std::string> source) override;
+    [[nodiscard]] std::vector<const PlayerBanEntry *> getEntries() const override;
+    [[nodiscard]] std::vector<PlayerBanEntry *> getEntries() override;
+    [[nodiscard]] bool isBanned(std::string name) const override;
+    [[nodiscard]] bool isBanned(std::string name, std::optional<UUID> uuid,
+                                std::optional<std::string> xuid) const override;
+    void removeBan(std::string name) override;
+    void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
+
+private:
+    static bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
+                      const std::optional<std::string> &xuid);
+
+    void save();
+    void load();
+    void removeExpired();
+
+    std::vector<PlayerBanEntry> entries_;
+    fs::path file_;
+};
 
 }  // namespace endstone::detail

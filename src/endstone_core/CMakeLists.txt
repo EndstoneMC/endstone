@@ -18,7 +18,6 @@ find_package(tomlplusplus REQUIRED)
 add_library(endstone_core
         actor/actor.cpp
         actor/mob.cpp
-        ban/player_ban_entry.cpp
         ban/player_ban_list.cpp
         block/block.cpp
         block/block_data.cpp

@@ -22,7 +22,26 @@ public:
      * @param name The player name to search for.
      * @return PlayerBanEntry* The corresponding entry, or nullptr if none found.
      */
-    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name) const = 0;
+    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name) const = 0;
+
+    /**
+     * @brief Gets a BanEntry by player name.
+     *
+     * @param name The player name to search for.
+     * @return PlayerBanEntry* The corresponding entry, or nullptr if none found.
+     */
+    [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name) = 0;
+
+    /**
+     * @brief Gets a BanEntry by player name, UUID, or XUID.
+     *
+     * @param name The player name to search for.
+     * @param uuid The UUID of the player to search for, std::nullopt if not used.
+     * @param xuid The XUID of the player to search for, std::nullopt if not used.
+     * @return PlayerBanEntry* The corresponding entry, or nullptr if none found.
+     */
+    [[nodiscard]] virtual const PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
+                                                            std::optional<std::string> xuid) const = 0;
 
     /**
      * @brief Gets a BanEntry by player name, UUID, or XUID.
@@ -33,7 +52,7 @@ public:
      * @return PlayerBanEntry* The corresponding entry, or nullptr if none found.
      */
     [[nodiscard]] virtual PlayerBanEntry *getBanEntry(std::string name, std::optional<UUID> uuid,
-                                                      std::optional<std::string> xuid) const = 0;
+                                                      std::optional<std::string> xuid) = 0;
 
     /**
      * @brief Adds a ban to this list. If a previous ban exists, this will update the previous entry.
@@ -92,9 +111,16 @@ public:
     /**
      * @brief Gets a vector containing pointers to every BanEntry in this list.
      *
-     * @return std::vector<PlayerBanEntry*> A vector containing pointers to every entry tracked by this list.
+     * @return A vector containing pointers to every entry tracked by this list.
      */
-    [[nodiscard]] virtual std::vector<PlayerBanEntry *> getEntries() const = 0;
+    [[nodiscard]] virtual std::vector<const PlayerBanEntry *> getEntries() const = 0;
+
+    /**
+     * @brief Gets a vector containing pointers to every BanEntry in this list.
+     *
+     * @return  A vector containing pointers to every entry tracked by this list.
+     */
+    [[nodiscard]] virtual std::vector<PlayerBanEntry *> getEntries() = 0;
 
     /**
      * @brief Checks if a BanEntry exists for the target, indicating an active ban status.
