@@ -15,6 +15,7 @@
 #include "endstone/detail/ban/player_ban_list.h"
 
 #include <fstream>
+#include <utility>
 
 #include <boost/uuid/string_generator.hpp>
 #include <date/date.h>
@@ -27,7 +28,7 @@
 
 namespace endstone::detail {
 
-EndstonePlayerBanList::EndstonePlayerBanList(fs::path file) : file_(file) {}
+EndstonePlayerBanList::EndstonePlayerBanList(fs::path file) : file_(std::move(file)) {}
 
 const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name) const
 {
@@ -86,28 +87,25 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
         entries_.emplace_back(new_entry);
         entry = &entries_.back();
     }
+    else {
+        // TODO: update entry
+    }
 
     save();
     return *entry;
 }
 
 PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
-                                              std::optional<std::chrono::seconds> duration,
-                                              std::optional<std::string> source)
+                                              std::chrono::seconds duration, std::optional<std::string> source)
 {
     return addBan(name, std::nullopt, std::nullopt, reason, duration, source);
 }
 
 PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UUID> uuid,
                                               std::optional<std::string> xuid, std::optional<std::string> reason,
-                                              std::optional<std::chrono::seconds> duration,
-                                              std::optional<std::string> source)
+                                              std::chrono::seconds duration, std::optional<std::string> source)
 {
-    std::optional<BanEntry::Date> expires = std::nullopt;
-    if (duration.has_value()) {
-        expires = date::floor<std::chrono::seconds>(std::chrono::system_clock::now()) + duration.value();
-    }
-    return addBan(name, uuid, xuid, reason, expires, source);
+    return addBan(name, uuid, xuid, reason, std::chrono::system_clock::now() + duration, source);
 }
 
 std::vector<const PlayerBanEntry *> EndstonePlayerBanList::getEntries() const
@@ -179,10 +177,11 @@ Result<void> EndstonePlayerBanList::save()
         if (entry.getXuid().has_value()) {
             json["xuid"] = entry.getXuid().value();
         }
-        json["created"] = date::format("%FT%T%Ez", entry.getCreated());
+        json["created"] = date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getCreated()));
         json["source"] = entry.getSource();
         if (entry.getExpiration().has_value()) {
-            json["expires"] = date::format("%FT%T%Ez", entry.getExpiration().value());
+            json["expires"] =
+                date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getExpiration().value()));
         }
         else {
             json["expires"] = "forever";
@@ -192,12 +191,16 @@ Result<void> EndstonePlayerBanList::save()
     }
 
     std::ofstream file(file_);
+    if (!file) {
+        return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
+    }
+
     try {
         file << array;
         return {};
     }
     catch (const std::exception &e) {
-        return nonstd::make_unexpected(make_error("Unable to read file '{}': {}", file_, e.what()));
+        return nonstd::make_unexpected(make_error("Unable to write file '{}': {}", file_, e.what()));
     }
 }
 
@@ -210,6 +213,10 @@ Result<void> EndstonePlayerBanList::load()
     entries_.clear();
 
     std::ifstream file(file_);
+    if (!file) {
+        return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
+    }
+
     try {
         auto array = nlohmann::json::parse(file);
         for (const auto &json : array) {
@@ -235,7 +242,7 @@ Result<void> EndstonePlayerBanList::load()
                 std::string created = json["created"];
                 std::istringstream in{created};
                 BanEntry::Date date;
-                in >> date::parse("%FT%T%Ez", date);
+                in >> date::parse(BanEntry::DateFormat, date);
                 if (!in.fail()) {
                     entry.setCreated(date);
                 }
@@ -247,7 +254,7 @@ Result<void> EndstonePlayerBanList::load()
                 std::string expires = json["expires"];
                 std::istringstream in{expires};
                 BanEntry::Date date;
-                in >> date::parse("%FT%T%Ez", date);
+                in >> date::parse(BanEntry::DateFormat, date);
                 if (!in.fail()) {
                     entry.setExpiration(date);
                 }

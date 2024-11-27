@@ -86,12 +86,12 @@ public:
      *
      * @param name The name of the target.
      * @param reason The reason for the ban, std::nullopt indicates implementation default.
-     * @param duration The duration of the ban, or std::nullopt to imply forever.
+     * @param duration The duration of the ban
      * @param source The source of the ban, std::nullopt indicates implementation default.
      * @return PlayerBanEntry& The entry for the newly created ban, or the entry for the (updated) previous ban.
      */
-    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
-                                   std::optional<std::chrono::seconds> duration, std::optional<std::string> source) = 0;
+    virtual PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
+                                   std::optional<std::string> source) = 0;
 
     /**
      * @brief Adds a ban to this list. If a previous ban exists, this will update the previous entry.
@@ -100,12 +100,12 @@ public:
      * @param uuid The UUID of the target, std::nullopt if not used.
      * @param xuid The XUID of the target, std::nullopt if not used.
      * @param reason The reason for the ban, std::nullopt indicates implementation default.
-     * @param duration The duration of the ban, or std::nullopt to imply forever.
+     * @param duration The duration of the ban
      * @param source The source of the ban, std::nullopt indicates implementation default.
      * @return PlayerBanEntry& The entry for the newly created ban, or the entry for the (updated) previous ban.
      */
     virtual PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                                   std::optional<std::string> reason, std::optional<std::chrono::seconds> duration,
+                                   std::optional<std::string> reason, std::chrono::seconds duration,
                                    std::optional<std::string> source) = 0;
 
     /**

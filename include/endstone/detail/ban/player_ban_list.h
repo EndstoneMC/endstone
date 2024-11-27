@@ -38,10 +38,10 @@ public:
     PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
                            std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
                            std::optional<std::string> source) override;
-    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason,
-                           std::optional<std::chrono::seconds> duration, std::optional<std::string> source) override;
+    PlayerBanEntry &addBan(std::string name, std::optional<std::string> reason, std::chrono::seconds duration,
+                           std::optional<std::string> source) override;
     PlayerBanEntry &addBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid,
-                           std::optional<std::string> reason, std::optional<std::chrono::seconds> duration,
+                           std::optional<std::string> reason, std::chrono::seconds duration,
                            std::optional<std::string> source) override;
     [[nodiscard]] std::vector<const PlayerBanEntry *> getEntries() const override;
     [[nodiscard]] std::vector<PlayerBanEntry *> getEntries() override;
@@ -52,7 +52,7 @@ public:
     void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
 
     Result<void> save();
-     Result<void> load();
+    Result<void> load();
 
 private:
     static bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
