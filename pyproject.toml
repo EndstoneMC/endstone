@@ -93,7 +93,7 @@ test-command = "pytest {package}/python/tests"
 test-requires = "pytest"
 
 [tool.cibuildwheel.linux]
-manylinux-x86_64-image = "endstone/manylinux:manylinux_2_28_x86_64"
+manylinux-x86_64-image = "ghcr.io/endstonemc/manylinux_2_31_x86_64"
 environment = { LLVM_VERSION = 15, CC = "/usr/bin/clang-${LLVM_VERSION}", CXX = "/usr/bin/clang++-${LLVM_VERSION}" }
 before-all = [
     "apt-get update -y -q && apt-get install -y -q build-essential lsb-release wget software-properties-common gnupg",
