@@ -38,20 +38,22 @@ protected:
     }
 };
 
-TEST_F(PlayerBanListTest, AddAndRetrieveBanEntry)
+TEST_F(PlayerBanListTest, AddBanEntry)
 {
     EndstonePlayerBanList ban_list{file_};
 
-    // Add a new ban entry
     ban_list.addBan("player11", "Misconduct", std::nullopt, "Moderator");
 
-    // Retrieve and validate the ban entry
     auto *entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getReason(), "Misconduct");
     EXPECT_EQ(entry->getSource(), "Moderator");
     EXPECT_FALSE(entry->getExpiration());
+
+    const auto &const_ref = ban_list;
+    const auto *const_entry = const_ref.getBanEntry("player11");
+    ASSERT_EQ(entry, const_entry);
 }
 
 TEST_F(PlayerBanListTest, AddBanEntryWithOptionalFields)
@@ -59,8 +61,8 @@ TEST_F(PlayerBanListTest, AddBanEntryWithOptionalFields)
     EndstonePlayerBanList ban_list{file_};
     ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
 
-    // Retrieve and validate the ban entry
     auto *entry = ban_list.getBanEntry("player11", uuid_, xuid_);
+
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");
     EXPECT_EQ(entry->getUniqueId(), uuid_);
@@ -70,33 +72,62 @@ TEST_F(PlayerBanListTest, AddBanEntryWithOptionalFields)
     EXPECT_FALSE(entry->getExpiration());
 }
 
+TEST_F(PlayerBanListTest, UpdateBanEntry)
+{
+    EndstonePlayerBanList ban_list{file_};
+
+    ban_list.addBan("player11", "Misconduct", std::nullopt, "Moderator");
+
+    auto *entry = ban_list.getBanEntry("player11");
+    ASSERT_NE(entry, nullptr);
+    EXPECT_EQ(entry->getName(), "player11");
+    EXPECT_EQ(entry->getReason(), "Misconduct");
+    EXPECT_EQ(entry->getSource(), "Moderator");
+    EXPECT_FALSE(entry->getExpiration());
+    EXPECT_FALSE(entry->getUniqueId());
+    EXPECT_FALSE(entry->getXuid());
+
+    ban_list.addBan("player11", uuid_, xuid_, "Cheating", std::chrono::hours(6), "Admin");
+    entry = ban_list.getBanEntry("player11");
+    ASSERT_NE(entry, nullptr);
+    EXPECT_EQ(entry->getName(), "player11");
+    EXPECT_EQ(entry->getReason(), "Cheating");
+    EXPECT_EQ(entry->getSource(), "Admin");
+    EXPECT_LE(entry->getExpiration(), std::chrono::system_clock::now() + std::chrono::minutes(360));
+    EXPECT_EQ(entry->getUniqueId(), uuid_);
+    EXPECT_EQ(entry->getXuid(), xuid_);
+
+    EXPECT_EQ(ban_list.getEntries().size(), 1);
+}
+
 TEST_F(PlayerBanListTest, IsBanned)
 {
     EndstonePlayerBanList ban_list{file_};
 
-    // Add a ban entry
     ban_list.addBan("player11", "Misconduct", std::chrono::hours(24), "Moderator");
-
-    // Check if the player is banned
     EXPECT_TRUE(ban_list.isBanned("player11"));
-
-    // Check for a player not in the ban list
     EXPECT_FALSE(ban_list.isBanned("playerNotExist"));
 }
 
 TEST_F(PlayerBanListTest, RemoveBanEntry)
 {
     EndstonePlayerBanList ban_list{file_};
-
-    // Add a ban entry
     ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
-
-    // Remove the ban entry
     ban_list.removeBan("player11", uuid_, xuid_);
 
-    // Check if the entry was removed
-    EXPECT_FALSE(ban_list.isBanned("player11"));
+    EXPECT_FALSE(ban_list.isBanned("player11", uuid_, xuid_));
     auto *entry = ban_list.getBanEntry("player11", uuid_, xuid_);
+    EXPECT_EQ(entry, nullptr);
+}
+
+TEST_F(PlayerBanListTest, RemoveBanEntryByName)
+{
+    EndstonePlayerBanList ban_list{file_};
+    ban_list.addBan("player11", uuid_, xuid_, "Misconduct", std::nullopt, "Moderator");
+    ban_list.removeBan("player11");
+
+    EXPECT_FALSE(ban_list.isBanned("player11"));
+    auto *entry = ban_list.getBanEntry("player11");
     EXPECT_EQ(entry, nullptr);
 }
 
@@ -104,10 +135,7 @@ TEST_F(PlayerBanListTest, AddBanWithDuration)
 {
     EndstonePlayerBanList ban_list{file_};
 
-    // Add a ban entry with duration
     ban_list.addBan("player11", "Misconduct", std::chrono::hours(1), "Moderator");
-
-    // Retrieve and validate the ban entry
     auto *entry = ban_list.getBanEntry("player11");
     ASSERT_NE(entry, nullptr);
     EXPECT_EQ(entry->getName(), "player11");

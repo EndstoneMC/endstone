@@ -27,11 +27,18 @@ TEST_F(LoggerFactoryTest, CreateLogger)
     ASSERT_EQ("TestLogger", logger.getName());
 }
 
-TEST_F(LoggerFactoryTest, GetLogger)
+TEST_F(LoggerFactoryTest, GetLoggerSameName)
 {
     auto &logger1 = detail::LoggerFactory::getLogger("TestLogger");
     auto &logger2 = detail::LoggerFactory::getLogger("TestLogger");
     ASSERT_EQ(&logger1, &logger2);
+}
+
+TEST_F(LoggerFactoryTest, GetLoggerDifferentName)
+{
+    auto &logger1 = detail::LoggerFactory::getLogger("Logger1");
+    auto &logger2 = detail::LoggerFactory::getLogger("Logger2");
+    ASSERT_NE(&logger1, &logger2);
 }
 
 TEST_F(LoggerFactoryTest, SetLevel)

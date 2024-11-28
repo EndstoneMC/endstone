@@ -47,7 +47,7 @@ const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name, std::
                                  [&](const PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); });
 
     if (it != entries_.end()) {
-        return const_cast<PlayerBanEntry *>(&(*it));
+        return &(*it);
     }
     return nullptr;
 }
@@ -74,25 +74,22 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
                                               std::optional<std::string> xuid, std::optional<std::string> reason,
                                               std::optional<BanEntry::Date> expires, std::optional<std::string> source)
 {
-    auto *entry = getBanEntry(name, uuid, xuid);
-    if (!entry) {
-        PlayerBanEntry new_entry{name, uuid, xuid};
-        if (reason.has_value()) {
-            new_entry.setReason(reason.value());
-        }
-        new_entry.setExpiration(expires);
-        if (source.has_value()) {
-            new_entry.setSource(source.value());
-        }
-        entries_.emplace_back(new_entry);
-        entry = &entries_.back();
-    }
-    else {
-        // TODO: update entry
-    }
+    entries_.erase(std::remove_if(entries_.begin(), entries_.end(),
+                                  [&](PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); }),
+                   entries_.end());
 
+    PlayerBanEntry new_entry{name, uuid, xuid};
+    if (reason.has_value()) {
+        new_entry.setReason(reason.value());
+    }
+    new_entry.setExpiration(expires);
+    if (source.has_value()) {
+        new_entry.setSource(source.value());
+    }
+    auto &entry = entries_.emplace_back(new_entry);
     save();
-    return *entry;
+
+    return entry;
 }
 
 PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<std::string> reason,
@@ -159,9 +156,9 @@ bool EndstonePlayerBanList::match(const PlayerBanEntry &entry, const std::string
 {
     const bool name_match = entry.getName() == name;
     const bool uuid_match =
-        !uuid.has_value() || (entry.getUniqueId().has_value() && entry.getUniqueId().value() == uuid.value());
+        uuid.has_value() && entry.getUniqueId().has_value() ? entry.getUniqueId().value() == uuid.value() : true;
     const bool xuid_match =
-        !xuid.has_value() || (entry.getXuid().has_value() && entry.getXuid().value() == xuid.value());
+        xuid.has_value() && entry.getXuid().has_value() ? entry.getXuid().value() == xuid.value() : true;
     return name_match && uuid_match && xuid_match;
 }
 
