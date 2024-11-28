@@ -30,6 +30,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/lang/language.h"
@@ -127,6 +128,8 @@ public:
 
     virtual float getAverageTickUsage() = 0;
 
+    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
+
     [[nodiscard]] virtual std::unique_ptr<BossBar> createBossBar(std::string title, BarColor color,
                                                                  BarStyle style) const = 0;
 
@@ -138,7 +141,7 @@ public:
     [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
                                                                              BlockStates block_states) const = 0;
 
-    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
+    [[nodiscard]] virtual PlayerBanList &getPlayerBanList() const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

@@ -86,6 +86,7 @@ _Represents a server implementation._
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
+| virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getPlayerBanList**](#function-getplayerbanlist) () const = 0<br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
@@ -907,6 +908,33 @@ virtual Player * endstone::Server::getPlayer (
 **Returns:**
 
 a player object if one was found, null otherwise 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getPlayerBanList 
+
+```C++
+virtual PlayerBanList & endstone::Server::getPlayerBanList () const = 0
+```
+
+
+
+Gets the player ban list.
+
+
+
+
+**Returns:**
+
+The player ban list 
 
 
 
