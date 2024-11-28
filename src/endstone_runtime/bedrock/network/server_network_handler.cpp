@@ -75,6 +75,13 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
     const auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&connection_request);
+
+    if (server.getPlayerBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
+                                           endstone_player.getXuid())) {
+        endstone_player.kick("You have been banned from this server.");
+        return new_player;
+    }
+
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
 
@@ -93,6 +100,12 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
     auto &server = entt::locator<EndstoneServer>::value();
     auto &endstone_player = server_player.getEndstoneActor<EndstonePlayer>();
     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
+
+    if (server.getPlayerBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
+                                           endstone_player.getXuid())) {
+        endstone_player.kick("You have been banned from this server.");
+        return server_player;
+    }
 
     endstone::PlayerLoginEvent e{endstone_player};
     server.getPluginManager().callEvent(e);
