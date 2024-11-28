@@ -21,6 +21,7 @@
 #include "bedrock/resources/resource_pack_repository_interface.h"
 #include "bedrock/server/server_instance.h"
 #include "endstone/command/console_command_sender.h"
+#include "endstone/detail/ban/player_ban_list.h"
 #include "endstone/detail/command/command_map.h"
 #include "endstone/detail/lang/language.h"
 #include "endstone/detail/level/level.h"
@@ -103,6 +104,7 @@ public:
     [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const override;
     [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
                                                                      BlockStates block_states) const override;
+    [[nodiscard]] PlayerBanList &getPlayerBanList() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);
@@ -119,6 +121,7 @@ private:
     void enablePlugin(Plugin &plugin);
     ServerInstance *server_instance_;
     Logger &logger_;
+    std::unique_ptr<EndstonePlayerBanList> player_ban_list_;
     std::unique_ptr<EndstoneLanguage> language_;
     std::unique_ptr<EndstoneCommandMap> command_map_;
     std::unique_ptr<EndstonePluginManager> plugin_manager_;

@@ -34,8 +34,41 @@ bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &
         return true;
     }
 
-    // TODO (ban): implement this
+    if (args.empty()) {
+        return false;
+    }
+
+    auto &server = entt::locator<EndstoneServer>::value();
+    auto &ban_list = server.getPlayerBanList();
+    auto name = args.front();
+
+    if (ban_list.isBanned(name)) {
+        sender.sendErrorMessage("Nothing changed. The player is already banned.");
+        return true;
+    }
+
+    std::optional<std::string> reason;
+    if (args.size() > 1) {
+        reason = args[1];
+    }
+
+    std::optional<UUID> uuid;
+    std::optional<std::string> xuid;
+
+    auto *player = server.getPlayer(name);
+    if (player) {
+        name = player->getName();
+        uuid = player->getUniqueId();
+        xuid = player->getXuid();
+    }
+
+    ban_list.addBan(name, uuid, xuid, reason, std::nullopt, sender.getName());
+    sender.sendMessage(Translatable{"commands.ban.success", {name}});
+
+    if (player) {
+        player->kick("You have been banned from this server.");
+    }
     return true;
 }
 
-};  // namespace endstone::detail
+}  // namespace endstone::detail

@@ -20,6 +20,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
 #include "endstone/lang/language.h"
@@ -283,6 +284,13 @@ public:
     virtual float getAverageTickUsage() = 0;
 
     /**
+     * @brief Gets the start time of the server.
+     *
+     * @return The start time of the server。
+     */
+    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
+
+    /**
      * @brief Creates a boss bar instance to display to players. The progress defaults to 1.0.
      *
      * @param title the title of the boss bar
@@ -326,11 +334,11 @@ public:
                                                                              BlockStates block_states) const = 0;
 
     /**
-     * @brief Gets the start time of the server.
+     * Gets the player ban list.
      *
-     * @return The start time of the server。
+     * @return The player ban list
      */
-    [[nodiscard]] virtual std::chrono::system_clock::time_point getStartTime() = 0;
+    [[nodiscard]] virtual PlayerBanList &getPlayerBanList() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

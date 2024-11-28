@@ -66,6 +66,7 @@ public:
                 (const, override));
     MOCK_METHOD(endstone::Result<std::shared_ptr<endstone::BlockData>>, createBlockData,
                 (std::string, endstone::BlockStates), (const, override));
+    MOCK_METHOD(endstone::PlayerBanList &, getPlayerBanList, (), (const, override));
 };
 
 class MockPlugin : public endstone::Plugin {

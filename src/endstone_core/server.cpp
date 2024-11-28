@@ -52,6 +52,7 @@ namespace endstone::detail {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
@@ -65,6 +66,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
                          "This server is running {} version: {} (Minecraft: {})",
                      getName(), getVersion(), getMinecraftVersion());
     command_sender_ = EndstoneConsoleCommandSender::create();
+    player_ban_list_->load();
 }
 
 EndstonePackSource &EndstoneServer::createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
@@ -438,6 +440,11 @@ Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
     }
 
     return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
+}
+
+PlayerBanList &EndstoneServer::getPlayerBanList() const
+{
+    return *player_ban_list_;
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const
