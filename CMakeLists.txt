@@ -46,8 +46,6 @@ find_package(glm CONFIG REQUIRED)
 find_package(magic_enum CONFIG REQUIRED)
 find_package(Microsoft.GSL CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
-find_package(pybind11 CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(tomlplusplus CONFIG REQUIRED)
 if (UNIX)
@@ -72,14 +70,7 @@ install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 # ================
 # endstone::python
 # ================
-file(GLOB_RECURSE ENDSTONE_PYTHON_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_python/*.cpp")
-pybind11_add_module(endstone_python MODULE ${ENDSTONE_PYTHON_SOURCE_FILES})
-target_include_directories(endstone_python PUBLIC include)
-target_link_libraries(endstone_python PRIVATE endstone::headers)
-
-include(GNUInstallDirs)
-install(TARGETS endstone_python DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-
+add_subdirectory(src/endstone_python)
 
 # ==============
 # endstone::core
@@ -135,12 +126,8 @@ install(TARGETS endstone_runtime
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
-    if (MSVC)
-        install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-    elseif (UNIX)
-        add_custom_command(TARGET endstone_python POST_BUILD COMMAND ${CMAKE_STRIP} --strip-debug --strip-unneeded $<TARGET_FILE:endstone_python>)
-    endif ()
+if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
+    install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
 endif ()
 
 if (WIN32)

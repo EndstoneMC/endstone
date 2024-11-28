@@ -11,7 +11,7 @@ find_package(glm REQUIRED)
 find_package(magic_enum REQUIRED)
 find_package(Microsoft.GSL REQUIRED)
 find_package(nlohmann_json REQUIRED)
-find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(tomlplusplus REQUIRED)
@@ -93,7 +93,7 @@ target_link_libraries(endstone_core PUBLIC
         magic_enum::magic_enum
         Microsoft.GSL::GSL
         nlohmann_json::nlohmann_json
-        pybind11::module
+        pybind11::embed
         spdlog::spdlog
         tomlplusplus::tomlplusplus)
 if (UNIX)
