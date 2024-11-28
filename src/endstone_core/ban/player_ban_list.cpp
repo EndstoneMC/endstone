@@ -17,6 +17,7 @@
 #include <fstream>
 #include <utility>
 
+#include <boost/algorithm/string.hpp>
 #include <boost/uuid/string_generator.hpp>
 #include <date/date.h>
 #include <fmt/format.h>
@@ -154,11 +155,13 @@ void EndstonePlayerBanList::removeBan(std::string name, std::optional<UUID> uuid
 bool EndstonePlayerBanList::match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
                                   const std::optional<std::string> &xuid)
 {
-    const bool name_match = entry.getName() == name;
+    const bool name_match = boost::iequals(entry.getName(), name);
     const bool uuid_match =
         uuid.has_value() && entry.getUniqueId().has_value() ? entry.getUniqueId().value() == uuid.value() : true;
     const bool xuid_match =
-        xuid.has_value() && entry.getXuid().has_value() ? entry.getXuid().value() == xuid.value() : true;
+        xuid.has_value() && !xuid.value().empty() && entry.getXuid().has_value() && !entry.getXuid().value().empty()
+            ? entry.getXuid().value() == xuid.value()
+            : true;
     return name_match && uuid_match && xuid_match;
 }
 
@@ -272,7 +275,7 @@ void EndstonePlayerBanList::removeExpired()
 {
     auto it = entries_.begin();
     while (it != entries_.end()) {
-        if (it->getExpiration() < std::chrono::system_clock::now()) {
+        if (it->getExpiration().has_value() && it->getExpiration().value() < std::chrono::system_clock::now()) {
             it = entries_.erase(it);
         }
         else {

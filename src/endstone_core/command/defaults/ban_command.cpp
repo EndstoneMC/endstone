@@ -38,7 +38,7 @@ bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &
         return false;
     }
 
-    auto &server = entt::locator<EndstoneServer>::value();
+    const auto &server = entt::locator<EndstoneServer>::value();
     auto &ban_list = server.getPlayerBanList();
     auto name = args.front();
 
@@ -55,11 +55,13 @@ bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &
     std::optional<UUID> uuid;
     std::optional<std::string> xuid;
 
-    auto *player = server.getPlayer(name);
+    const auto *player = server.getPlayer(name);
     if (player) {
         name = player->getName();
         uuid = player->getUniqueId();
-        xuid = player->getXuid();
+        if (!player->getXuid().empty()) {
+            xuid = player->getXuid();
+        }
     }
 
     ban_list.addBan(name, uuid, xuid, reason, std::nullopt, sender.getName());

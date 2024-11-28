@@ -34,7 +34,25 @@ bool BanListCommand::execute(CommandSender &sender, const std::vector<std::strin
         return true;
     }
 
-    // TODO (ban): implement this
+    const bool show_players = args.empty() || args[0] == "players";
+    const bool show_ips = args.empty() || args[0] == "ips";
+
+    const auto &server = entt::locator<EndstoneServer>::value();
+
+    if (show_players) {
+        const auto entries = server.getPlayerBanList().getEntries();
+        sender.sendMessage(Translatable{"commands.banlist.players", {std::to_string(entries.size())}});
+
+        for (const auto &entry : entries) {
+            sender.sendMessage("- {} was banned by {}: {}", entry->getName(), entry->getSource(), entry->getReason());
+        }
+    }
+
+    if (show_ips) {
+        // TODO: add ip ban list
+        sender.sendMessage(Translatable{"commands.banlist.ips", {std::to_string(0)}});
+    }
+
     return true;
 }
 
