@@ -114,20 +114,19 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
 
 void EndstoneLevel::loadResourcePacks()
 {
-    // Add loaded resource packs to stack
     auto *manager = level_.getClientResourcePackManager();
-    auto repo = server_.getResourcePackRepository();
     auto &source = server_.getResourcePackSource();
 
     // Load packs from world_resource_packs.json first
     nlohmann::json json;
-    fs::path file_path = fs::current_path() / repo->getResourcePacksPath().getContainer() / "world_resource_packs.json";
+    fs::path file_path = fs::current_path() / "worlds" / level_.getLevelId() / "world_resource_packs.json";
+
     if (exists(file_path)) {
         std::ifstream file(file_path);
         file >> json;
     }
 
-    // Append zipped packs to the list
+    // Append loaded packs to the stack
     source.forEachPackConst([&json](auto &pack) {
         auto &identity = pack.getManifest().getIdentity();
         json.push_back({
