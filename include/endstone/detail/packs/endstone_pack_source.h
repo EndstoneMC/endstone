@@ -31,7 +31,7 @@ public:
     [[nodiscard]] PackType getPackType() const override;
     PackSourceReport load(IPackManifestFactory &factory,
                           const Bedrock::NotNullNonOwnerPtr<const IContentKeyProvider> &) override;
-    std::unordered_map<PackIdVersion, std::string> getContentKeys() const;
+    [[nodiscard]] std::unordered_map<PackIdVersion, std::string> getContentKeys() const;
 
 private:
     std::filesystem::path path_;

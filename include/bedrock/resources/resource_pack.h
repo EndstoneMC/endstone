@@ -22,6 +22,8 @@
 
 class ResourcePack : public Bedrock::EnableNonOwnerReferences {
 public:
+    [[nodiscard]] PackManifest &getManifest() const;
+
 private:
     bool hidden_;
     bool error_;

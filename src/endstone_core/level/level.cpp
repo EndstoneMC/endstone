@@ -22,6 +22,7 @@
 #include "bedrock/world/level/dimension/dimension.h"
 #include "bedrock/world/level/dimension/vanilla_dimensions.h"
 #include "bedrock/world/level/level.h"
+#include "endstone/color_format.h"
 #include "endstone/detail/level/dimension.h"
 #include "endstone/level/dimension.h"
 
@@ -38,21 +39,7 @@ EndstoneLevel::EndstoneLevel(::Level &level) : server_(entt::locator<EndstoneSer
         addDimension(std::make_unique<EndstoneDimension>(*dimension, *this));
     }
 
-    // Add loaded resource packs to stack
-    auto *resource_pack_manager = level.getClientResourcePackManager();
-    nlohmann::json resource_packs_json;
-    server_.getResourcePackSource().forEachPackConst([&resource_packs_json](auto &pack) {
-        auto &identity = pack.getManifest().getIdentity();
-        resource_packs_json.push_back({
-            {"pack_id", identity.id.asString()},
-            {"version", {identity.version.getMajor(), identity.version.getMinor(), identity.version.getPatch()}},
-        });
-    });
-    std::stringstream ss(resource_packs_json.dump());
-    auto pack_stack = ResourcePackStack::deserialize(ss, server_.getResourcePackRepository());
-    // NOTE: we use ResourcePackStackType::ADDON here to avoid conflicts, as the addon stack of client resource pack
-    // manager is not currently used by BDS but will get sent to the client.
-    resource_pack_manager->setStack(std::move(pack_stack), ResourcePackStackType::ADDON, false);
+    loadResourcePacks();
 }
 
 std::string EndstoneLevel::getName() const
@@ -123,6 +110,47 @@ void EndstoneLevel::addDimension(std::unique_ptr<Dimension> dimension)
         return;
     }
     dimensions_[name] = std::move(dimension);
+}
+
+void EndstoneLevel::loadResourcePacks()
+{
+    // Add loaded resource packs to stack
+    auto *manager = level_.getClientResourcePackManager();
+    auto repo = server_.getResourcePackRepository();
+    auto &source = server_.getResourcePackSource();
+
+    // Load packs from world_resource_packs.json first
+    nlohmann::json json;
+    fs::path file_path = fs::current_path() / repo->getResourcePacksPath().getContainer() / "world_resource_packs.json";
+    if (exists(file_path)) {
+        std::ifstream file(file_path);
+        file >> json;
+    }
+
+    // Append zipped packs to the list
+    source.forEachPackConst([&json](auto &pack) {
+        auto &identity = pack.getManifest().getIdentity();
+        json.push_back({
+            {"pack_id", identity.id.asString()},
+            {"version", {identity.version.getMajor(), identity.version.getMinor(), identity.version.getPatch()}},
+        });
+    });
+
+    // Deserialize the pack stack from json
+    std::stringstream ss(json.dump());
+    auto pack_stack = ResourcePackStack::deserialize(ss, server_.getResourcePackRepository());
+
+    auto content_keys = source.getContentKeys();
+    for (const auto &pack_instance : pack_stack->stack) {
+        const auto &manifest = pack_instance.getManifest();
+        bool encrypted = content_keys.find(manifest.getIdentity()) != content_keys.end();
+        server_.getLogger().info("Loaded {} v{} (Pack ID: {}) {}", manifest.getName(),
+                                 manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString(),
+                                 encrypted ? ColorFormat::Green + "[encrypted]" : "");
+    }
+
+    // Replace the level pack stack
+    manager->setStack(std::move(pack_stack), ResourcePackStackType::LEVEL, false);
 }
 
 EndstoneServer &EndstoneLevel::getServer() const

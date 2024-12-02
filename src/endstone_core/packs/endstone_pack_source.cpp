@@ -113,19 +113,6 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
                 continue;
             }
 
-            auto &manifest = pack->getManifest();
-
-            if (!key.empty()) {
-                content_keys_[manifest.getIdentity()] = key;
-                server.getLogger().info("Loaded {} v{} (Pack ID: {}) {}[encrypted]", manifest.getName(),
-                                        manifest.getIdentity().version.asString(), manifest.getIdentity().id.asString(),
-                                        ColorFormat::Gold);
-            }
-            else {
-                server.getLogger().info("Loaded {} v{} (Pack ID: {})", manifest.getName(),
-                                        manifest.getIdentity().version.asString(),
-                                        manifest.getIdentity().id.asString());
-            }
             packs_.emplace_back(std::move(pack));
         }
     }

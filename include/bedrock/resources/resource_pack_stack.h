@@ -37,6 +37,8 @@ public:
     PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int subpack_index, bool is_dependent,
                  PackSettings *pack_settings);
 
+    [[nodiscard]] const PackManifest &getManifest() const;
+
     PackReport pack_report;
 
 private:

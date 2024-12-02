@@ -22,6 +22,15 @@ PackInstance::PackInstance(Bedrock::NotNullNonOwnerPtr<ResourcePack> pack, int s
 {
 }
 
+const PackManifest &PackInstance::getManifest() const
+{
+    static PackManifest empty_manifest;
+    if (!pack_) {
+        return empty_manifest;
+    }
+    return pack_->getManifest();
+}
+
 std::unique_ptr<ResourcePackStack> ResourcePackStack::deserialize(
     std::istream &file_stream, Bedrock::NotNullNonOwnerPtr<const IResourcePackRepository> const &repo)
 {
