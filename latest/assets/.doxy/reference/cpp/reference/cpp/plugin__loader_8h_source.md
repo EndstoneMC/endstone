@@ -47,7 +47,9 @@ public:
 
     virtual ~PluginLoader() = default;
 
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
+    [[nodiscard]] virtual Plugin *loadPlugin(const std::string &file) = 0;
+
+    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
 
     virtual void enablePlugin(Plugin &plugin) const
     {

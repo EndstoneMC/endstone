@@ -238,6 +238,7 @@
 * **getSoftDepend** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **getVersion** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md), [**endstone::Server**](classendstone_1_1Server.md))
 * **getWebsite** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
+* **getPluginFileFilters** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md))
 * **getDefaultPermSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getDefaultPermissions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **getPermissionSubscriptions** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
@@ -354,7 +355,8 @@
 * **Location** ([**endstone::Location**](classendstone_1_1Location.md))
 * **Logger** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **log** ([**endstone::Logger**](classendstone_1_1Logger.md))
-* **loadPlugins** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **loadPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **loadPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 

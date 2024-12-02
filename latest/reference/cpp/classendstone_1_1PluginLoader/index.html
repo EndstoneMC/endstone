@@ -2016,6 +2016,19 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
+    <a href="#function-getpluginfilefilters" class="md-nav__link">
+      <span class="md-ellipsis">
+        function getPluginFileFilters
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
     <a href="#function-getserver" class="md-nav__link">
       <span class="md-ellipsis">
         function getServer
@@ -2029,9 +2042,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#function-loadplugins" class="md-nav__link">
+    <a href="#function-loadplugin" class="md-nav__link">
       <span class="md-ellipsis">
-        function loadPlugins
+        function loadPlugin
       </span>
     </a>
 
@@ -2157,19 +2170,23 @@ For latest updates join the chat on
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-disableplugin"><strong>disablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const<br></td>
+<td style="text-align: left;"><a href="#function-disableplugin"><strong>disablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const<br><em>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;">virtual void</td>
-<td style="text-align: left;"><a href="#function-enableplugin"><strong>enablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const<br></td>
+<td style="text-align: left;"><a href="#function-enableplugin"><strong>enablePlugin</strong></a> (<a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> &amp; plugin) const<br><em>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; std::string &gt;</td>
+<td style="text-align: left;"><a href="#function-getpluginfilefilters"><strong>getPluginFileFilters</strong></a> () const = 0<br><em>Returns a list of all filename filters expected by this</em> <a href="./"><em><strong>PluginLoader</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="../classendstone_1_1Server/"><strong>Server</strong></a> &amp;</td>
 <td style="text-align: left;"><a href="#function-getserver"><strong>getServer</strong></a> () const<br><em>Retrieves the</em> <a href="../classendstone_1_1Server/"><em><strong>Server</strong></em></a> <em>object associated with the</em><a href="./"><em><strong>PluginLoader</strong></em></a> <em>.</em></td>
 </tr>
 <tr>
-<td style="text-align: right;">virtual std::vector&lt; <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> * &gt;</td>
-<td style="text-align: left;"><a href="#function-loadplugins"><strong>loadPlugins</strong></a> (const std::string &amp; directory) = 0<br></td>
+<td style="text-align: right;">virtual <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> *</td>
+<td style="text-align: left;"><a href="#function-loadplugin"><strong>loadPlugin</strong></a> (const std::string &amp; file) = 0<br><em>Loads the plugin contained in the specified file.</em></td>
 </tr>
 <tr>
 <td style="text-align: right;"><a href="./"><strong>PluginLoader</strong></a> &amp;</td>
@@ -2212,11 +2229,11 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-disableplugin">function disablePlugin<a class="headerlink" href="#function-disableplugin" title="Permanent link">&para;</a></h3>
+<p><em>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">disablePlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Disables the specified plugin Attempting to disable a plugin that is not enabled will have no effect</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to disable </li>
@@ -2224,54 +2241,60 @@ For latest updates join the chat on
 <hr>
 
 <h3 id="function-enableplugin">function enablePlugin<a class="headerlink" href="#function-enableplugin" title="Permanent link">&para;</a></h3>
+<p><em>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect.</em> 
 <div class="language-C++ highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">inline</span><span class="w"> </span><span class="k">virtual</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">enablePlugin</span><span class="w"> </span><span class="p">(</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">Plugin</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">plugin</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="p">)</span><span class="w"> </span><span class="k">const</span>
-</span></code></pre></div>
-<p>Enables the specified plugin Attempting to enable a plugin that is already enabled will have no effect</p>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
 <li><code>plugin</code> <a href="../classendstone_1_1Plugin/"><strong>Plugin</strong></a> to enable </li>
 </ul>
 <hr>
 
+<h3 id="function-getpluginfilefilters">function getPluginFileFilters<a class="headerlink" href="#function-getpluginfilefilters" title="Permanent link">&para;</a></h3>
+<p><em>Returns a list of all filename filters expected by this</em> <a href="./"><em><strong>PluginLoader</strong></em></a> <em>.</em>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">getPluginFileFilters</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
+<p><strong>Returns:</strong></p>
+<p>The filters </p>
+<hr>
+
 <h3 id="function-getserver">function getServer<a class="headerlink" href="#function-getserver" title="Permanent link">&para;</a></h3>
 <p><em>Retrieves the</em> <a href="../classendstone_1_1Server/"><em><strong>Server</strong></em></a> <em>object associated with the</em><a href="./"><em><strong>PluginLoader</strong></em></a> <em>.</em>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kr">inline</span><span class="w"> </span><span class="n">Server</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">getServer</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="k">const</span>
 </span></code></pre></div></p>
 <p>This function returns a reference to the <a href="../classendstone_1_1Server/"><strong>Server</strong></a> object that the <a href="./"><strong>PluginLoader</strong></a> is associated with.</p>
 <p><strong>Returns:</strong></p>
 <p>The <a href="../classendstone_1_1Server/"><strong>Server</strong></a> reference. </p>
 <hr>
 
-<h3 id="function-loadplugins">function loadPlugins<a class="headerlink" href="#function-loadplugins" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">loadPlugins</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">directory</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-</span></code></pre></div>
-<p>Loads the plugin contained within the specified directory</p>
+<h3 id="function-loadplugin">function loadPlugin<a class="headerlink" href="#function-loadplugin" title="Permanent link">&para;</a></h3>
+<p><em>Loads the plugin contained in the specified file.</em> 
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">Plugin</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">loadPlugin</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">file</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+</span></code></pre></div></p>
 <p><strong>Parameters:</strong></p>
 <ul>
-<li><code>directory</code> Directory to check for plugins </li>
+<li><code>file</code> File to attempt to load </li>
 </ul>
-<p><strong>Returns:</strong></p>
-<p>A list of all plugins loaded </p>
 <hr>
 
 <h3 id="function-operator">function operator=<a class="headerlink" href="#function-operator" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">PluginLoader</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PluginLoader</span><span class="w"> </span><span class="o">&amp;</span>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">PluginLoader</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="k">operator</span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">PluginLoader</span><span class="w"> </span><span class="o">&amp;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">delete</span>
 </span></code></pre></div>
 <hr>
 
 <h3 id="function-pluginloader">function ~PluginLoader<a class="headerlink" href="#function-pluginloader" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::~</span><span class="n">PluginLoader</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">virtual</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::~</span><span class="n">PluginLoader</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">default</span>
 </span></code></pre></div>
 <hr>
 <h2 id="protected-attributes-documentation">Protected Attributes Documentation<a class="headerlink" href="#protected-attributes-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="variable-server_">variable server_<a class="headerlink" href="#variable-server_" title="Permanent link">&para;</a></h3>
-<div class="language-C++ highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">Server</span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">server_</span><span class="p">;</span>
+<div class="language-C++ highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Server</span><span class="o">&amp;</span><span class="w"> </span><span class="n">endstone</span><span class="o">::</span><span class="n">PluginLoader</span><span class="o">::</span><span class="n">server_</span><span class="p">;</span>
 </span></code></pre></div>
 <hr>
 

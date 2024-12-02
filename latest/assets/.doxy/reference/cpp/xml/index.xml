@@ -971,7 +971,8 @@
     <member refid="classendstone_1_1PluginLoader_1a599ce19d8a2e1d5870942218f380b506" kind="function"><name>PluginLoader</name></member>
     <member refid="classendstone_1_1PluginLoader_1adeca2f97f79b37bd1e4f662ca08ac573" kind="function"><name>operator=</name></member>
     <member refid="classendstone_1_1PluginLoader_1a6a8f266b427ace08cd86695ffda049f6" kind="function"><name>~PluginLoader</name></member>
-    <member refid="classendstone_1_1PluginLoader_1aa061ed008c70eaaab58b755d45838f34" kind="function"><name>loadPlugins</name></member>
+    <member refid="classendstone_1_1PluginLoader_1a0b1f29bb3b3e377efeba89efc5f0c7df" kind="function"><name>loadPlugin</name></member>
+    <member refid="classendstone_1_1PluginLoader_1af2b03219b3895758e4c0de3d45e71423" kind="function"><name>getPluginFileFilters</name></member>
     <member refid="classendstone_1_1PluginLoader_1aa14e843ba2f369aae119f8284fd4ce77" kind="function"><name>enablePlugin</name></member>
     <member refid="classendstone_1_1PluginLoader_1ae3223c941eb3c61add708b064811310a" kind="function"><name>disablePlugin</name></member>
     <member refid="classendstone_1_1PluginLoader_1a1ea761be4c14a7e33f8885d6c8bb97df" kind="function"><name>getServer</name></member>
@@ -986,7 +987,9 @@
     <member refid="classendstone_1_1PluginManager_1a3b6ef4f6f8d0117ec7546c3bc1a61079" kind="function"><name>getPlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a4727c832fc835f645d111ce008a7c9d0" kind="function"><name>isPluginEnabled</name></member>
     <member refid="classendstone_1_1PluginManager_1af271c20893989ead66a7b2b65d2067fa" kind="function"><name>isPluginEnabled</name></member>
-    <member refid="classendstone_1_1PluginManager_1a13b517620d61e1432ef3d8d7b5a396e4" kind="function"><name>loadPlugins</name></member>
+    <member refid="classendstone_1_1PluginManager_1a5ed0d3fc3a1ce906d6654bd903e4500b" kind="function"><name>loadPlugin</name></member>
+    <member refid="classendstone_1_1PluginManager_1abb4bebfa16577172dd473985269776e1" kind="function"><name>loadPlugins</name></member>
+    <member refid="classendstone_1_1PluginManager_1af7ce5bc842f09d077430986b4a496ec9" kind="function"><name>loadPlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1aa4ba7ce935f60390b5522a2bdb41a37b" kind="function"><name>enablePlugin</name></member>
     <member refid="classendstone_1_1PluginManager_1a2f0223eca4a793a2265d943b0d8347f4" kind="function"><name>enablePlugins</name></member>
     <member refid="classendstone_1_1PluginManager_1a590c1e061513b9431b20d62bee105d8e" kind="function"><name>disablePlugin</name></member>

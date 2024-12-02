@@ -70,7 +70,9 @@ _Represents a plugin manager that handles all plugins from the_ [_**Server**_](c
 | virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**getPlugins**](#function-getplugins) () const = 0<br> |
 | virtual bool | [**isPluginEnabled**](#function-ispluginenabled-12) (const std::string & name) const = 0<br> |
 | virtual bool | [**isPluginEnabled**](#function-ispluginenabled-22) ([**Plugin**](classendstone_1_1Plugin.md) \* plugin) const = 0<br> |
-| virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins) (const std::string & directory) = 0<br> |
+| virtual [**Plugin**](classendstone_1_1Plugin.md) \* | [**loadPlugin**](#function-loadplugin) (std::string file) = 0<br> |
+| virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins-12) (std::string directory) = 0<br> |
+| virtual std::vector&lt; [**Plugin**](classendstone_1_1Plugin.md) \* &gt; | [**loadPlugins**](#function-loadplugins-22) (std::vector&lt; std::string &gt; files) = 0<br> |
 |  [**PluginManager**](classendstone_1_1PluginManager.md) & | [**operator=**](#function-operator) ([**PluginManager**](classendstone_1_1PluginManager.md) const &) = delete<br> |
 | virtual void | [**recalculatePermissionDefaults**](#function-recalculatepermissiondefaults) ([**Permission**](classendstone_1_1Permission.md) & perm) = 0<br> |
 | virtual Result&lt; void &gt; | [**registerEvent**](#function-registerevent) (std::string event, std::function&lt; void([**Event**](classendstone_1_1Event.md) &)&gt; executor, EventPriority priority, [**Plugin**](classendstone_1_1Plugin.md) & plugin, bool ignore\_cancelled) = 0<br> |
@@ -626,11 +628,50 @@ true if the plugin is enabled, otherwise false
 
 
 
-### function loadPlugins 
+### function loadPlugin 
+
+```C++
+virtual Plugin * endstone::PluginManager::loadPlugin (
+    std::string file
+) = 0
+```
+
+
+
+Loads the plugin in the specified file 
+
+
+File must be valid according to the current enabled [**Plugin**](classendstone_1_1Plugin.md) interfaces
+
+
+
+
+**Parameters:**
+
+
+* `file` File containing the plugin to load 
+
+
+
+**Returns:**
+
+The [**Plugin**](classendstone_1_1Plugin.md) loaded, or nullptr if it was invalid 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function loadPlugins [1/2]
 
 ```C++
 virtual std::vector< Plugin * > endstone::PluginManager::loadPlugins (
-    const std::string & directory
+    std::string directory
 ) = 0
 ```
 
@@ -645,6 +686,42 @@ Loads the plugin contained within the specified directory
 
 
 * `directory` Directory to check for plugins 
+
+
+
+**Returns:**
+
+A list of all plugins loaded 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function loadPlugins [2/2]
+
+```C++
+virtual std::vector< Plugin * > endstone::PluginManager::loadPlugins (
+    std::vector< std::string > files
+) = 0
+```
+
+
+
+Loads the plugins in the list of the files
+
+
+
+
+**Parameters:**
+
+
+* `files` List of files containing plugins to load 
 
 
 
