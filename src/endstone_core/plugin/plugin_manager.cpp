@@ -83,7 +83,21 @@ bool EndstonePluginManager::isPluginEnabled(Plugin *plugin) const
     return it != plugins_.end() && plugin->isEnabled();
 }
 
-std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &directory)
+Plugin *EndstonePluginManager::loadPlugin(std::string file)
+{
+    Plugin *result = nullptr;
+    for (const auto &loader : plugin_loaders_) {
+        if (auto *plugin = loader->loadPlugin(file); plugin) {
+            if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+                result = plugin;
+            }
+            break;
+        }
+    }
+    return result;
+}
+
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
 {
     std::vector<Plugin *> loaded_plugins;
 
@@ -95,37 +109,23 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(const std::string &dire
                 continue;
             }
 
-            auto name = plugin->getDescription().getName();
-
-            const static std::regex valid_name{"^[a-z0-9_]+$"};
-            if (!std::regex_match(name, valid_name)) {
-                server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", name);
-                server_.getLogger().error(
-                    "A valid plugin name should only contain lowercase letters, numbers and underscores.");
-                continue;
+            if (initPlugin(*plugin, *loader, fs::path(directory))) {
+                loaded_plugins.push_back(plugin);
             }
-
-            if (name.rfind("endstone", 0) == 0) {
-                server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
-                                          name);
-                continue;
-            }
-
-            initPlugin(*plugin, *loader, fs::path(directory));
-            plugins_.push_back(plugin);
-            lookup_names_[name] = plugin;
-            loaded_plugins.push_back(plugin);
         }
     }
 
-    for (const auto &plugin : loaded_plugins) {
-        plugin->getLogger().info("Loading {}", plugin->getDescription().getFullName());
-        try {
-            plugin->onLoad();
-        }
-        catch (std::exception &e) {
-            plugin->getLogger().error("Error occurred when loading {}", plugin->getDescription().getFullName());
-            plugin->getLogger().error(e.what());
+    return loaded_plugins;
+}
+
+std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::vector<std::string> files)
+{
+    std::vector<Plugin *> loaded_plugins;
+
+    // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
+    for (const auto &file : files) {
+        if (auto *plugin = loadPlugin(file)) {
+            loaded_plugins.push_back(plugin);
         }
     }
 
@@ -381,18 +381,45 @@ std::string toCamelCase(const std::string &input)
 }
 }  // namespace
 
-void EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
+bool EndstonePluginManager::initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder)
 {
-    plugin.loader_ = &loader;
-    plugin.server_ = &server_;
-
+    const static std::regex valid_name{"^[a-z0-9_]+$"};
     auto plugin_name = plugin.getDescription().getName();
+    if (!std::regex_match(plugin_name, valid_name)) {
+        server_.getLogger().error("Could not load plugin '{}': Plugin name contains invalid characters.", plugin_name);
+        server_.getLogger().error(
+            "A valid plugin name should only contain lowercase letters, numbers and underscores.");
+        return false;
+    }
+
+    if (plugin_name.rfind("endstone", 0) == 0) {
+        server_.getLogger().error("Could not load plugin '{}': Plugin name must not start with 'endstone'.",
+                                  plugin_name);
+        return false;
+    }
+
     auto prefix = plugin.getDescription().getPrefix();
     if (prefix.empty()) {
         prefix = toCamelCase(plugin_name);
     }
+
+    plugin.loader_ = &loader;
+    plugin.server_ = &server_;
     plugin.logger_ = &LoggerFactory::getLogger(prefix);
     plugin.data_folder_ = base_folder / plugin_name;
+
+    plugins_.push_back(&plugin);
+    lookup_names_[plugin_name] = &plugin;
+
+    plugin.getLogger().info("Loading {}", plugin.getDescription().getFullName());
+    try {
+        plugin.onLoad();
+    }
+    catch (std::exception &e) {
+        plugin.getLogger().error("Error occurred when loading {}", plugin.getDescription().getFullName());
+        plugin.getLogger().error(e.what());
+    }
+    return true;
 }
 
 std::unordered_set<Permissible *> EndstonePluginManager::getDefaultPermSubscriptions(bool op) const

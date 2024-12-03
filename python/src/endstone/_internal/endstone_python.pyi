@@ -2380,9 +2380,18 @@ class PluginLoader:
         """
         Enables the specified plugin
         """
+    def load_plugin(self, file: str) -> Plugin:
+        """
+        Loads the plugin contained in the specified file
+        """
     def load_plugins(self, directory: str) -> list[Plugin]:
         """
         Loads the plugin contained within the specified directory
+        """
+    @property
+    def plugin_file_filters(self) -> list[str]:
+        """
+        Returns a list of all filename filters expected by this PluginLoader
         """
     @property
     def server(self) -> Server:
@@ -2447,9 +2456,19 @@ class PluginManager:
         """
         Checks if the given plugin is enabled or not
         """
+    def load_plugin(self, file: str) -> Plugin:
+        """
+        Loads the plugin in the specified file
+        """
+    @typing.overload
     def load_plugins(self, directory: str) -> list[Plugin]:
         """
         Loads the plugin contained within the specified directory
+        """
+    @typing.overload
+    def load_plugins(self, files: list[str]) -> list[Plugin]:
+        """
+        Loads the plugins in the list of the files
         """
     def recalculate_permission_defaults(self, perm: Permission) -> None:
         """

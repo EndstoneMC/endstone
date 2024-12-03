@@ -14,11 +14,9 @@
 
 #pragma once
 
-#include <cctype>
 #include <filesystem>
-#include <memory>
+#include <regex>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "endstone/event/server/plugin_disable_event.h"
@@ -41,15 +39,65 @@ public:
     virtual ~PluginLoader() = default;
 
     /**
-     * Loads the plugin contained within the specified directory
+     * Loads the plugin contained in the specified file
+     *
+     * @param file File to attempt to load
+     * @return Plugin that was contained in the specified file, or nullptr if unsuccessful
+     */
+    [[nodiscard]] virtual Plugin *loadPlugin(std::string file) = 0;
+
+    /**
+     * @brief Loads the plugin contained within the specified directory
      *
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
+    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(std::string directory)
+    {
+        auto &logger = server_.getLogger();
+
+        auto dir = std::filesystem::path(directory);
+        if (!exists(dir)) {
+            logger.error("Error occurred when trying to load plugins in '{}': Provided directory does not exist.",
+                         dir.string());
+            return {};
+        }
+
+        if (!is_directory(dir)) {
+            logger.error("Error occurred when trying to load plugins in '{}': Provided path is not a directory.",
+                         dir.string());
+            return {};
+        }
+
+        std::vector<Plugin *> loaded_plugins;
+
+        for (const auto &entry : std::filesystem::directory_iterator(dir)) {
+            if (!is_regular_file(entry.status())) {
+                continue;
+            }
+
+            const auto &file = entry.path();
+            for (const auto &pattern : getPluginFileFilters()) {
+                if (std::regex r(pattern); std::regex_search(file.string(), r)) {
+                    if (auto *plugin = loadPlugin(file.string())) {
+                        loaded_plugins.push_back(plugin);
+                    }
+                }
+            }
+        }
+
+        return loaded_plugins;
+    }
 
     /**
-     * Enables the specified plugin
+     * @brief Returns a list of all filename filters expected by this PluginLoader
+     *
+     * @return The filters
+     */
+    [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
+
+    /**
+     * @brief Enables the specified plugin
      * Attempting to enable a plugin that is already enabled will have no effect
      *
      * @param plugin Plugin to enable
@@ -72,7 +120,7 @@ public:
     }
 
     /**
-     * Disables the specified plugin
+     * @brief Disables the specified plugin
      * Attempting to disable a plugin that is not enabled will have no effect
      *
      * @param plugin Plugin to disable

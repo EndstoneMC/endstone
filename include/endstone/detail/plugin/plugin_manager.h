@@ -37,7 +37,9 @@ public:
     [[nodiscard]] std::vector<Plugin *> getPlugins() const override;
     [[nodiscard]] bool isPluginEnabled(const std::string &name) const override;
     bool isPluginEnabled(Plugin *plugin) const override;
-    std::vector<Plugin *> loadPlugins(const std::string &directory) override;
+    Plugin *loadPlugin(std::string file) override;
+    std::vector<Plugin *> loadPlugins(std::string directory) override;
+    std::vector<Plugin *> loadPlugins(std::vector<std::string> files) override;
     void enablePlugin(Plugin &plugin) const override;
     void enablePlugins() const override;
     void disablePlugin(Plugin &plugin) override;
@@ -66,7 +68,7 @@ public:
 
 private:
     friend class EndstoneServer;
-    void initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
+    bool initPlugin(Plugin &plugin, PluginLoader &loader, const std::filesystem::path &base_folder);
     void calculatePermissionDefault(Permission &perm);
     void dirtyPermissibles(bool op) const;
     Server &server_;

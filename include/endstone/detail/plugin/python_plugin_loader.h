@@ -27,7 +27,9 @@ public:
     explicit PythonPluginLoader(Server &server);
     ~PythonPluginLoader() override;
 
-    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) override;
+    [[nodiscard]] Plugin *loadPlugin(std::string file) override;
+    [[nodiscard]] std::vector<Plugin *> loadPlugins(std::string directory) override;
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
     void enablePlugin(Plugin &plugin) const override;
     void disablePlugin(Plugin &plugin) const override;
 

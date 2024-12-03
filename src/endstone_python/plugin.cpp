@@ -69,16 +69,31 @@ class PyPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    std::vector<Plugin *> loadPlugins(const std::string &directory) override
+    [[nodiscard]] Plugin *loadPlugin(std::string file) override
     {
         try {
-            PYBIND11_OVERRIDE_PURE_NAME(std::vector<Plugin *>, PluginLoader, "load_plugins", loadPlugins,
-                                        std::ref(directory));
+            PYBIND11_OVERRIDE_PURE_NAME(Plugin *, PluginLoader, "load_plugin", loadPlugin, file);
+        }
+        catch (std::exception &e) {
+            server_.getLogger().error("Error occurred when trying to load plugins in '{}': {}", file, e.what());
+            return {};
+        }
+    }
+
+    std::vector<Plugin *> loadPlugins(std::string directory) override
+    {
+        try {
+            PYBIND11_OVERRIDE_PURE_NAME(std::vector<Plugin *>, PluginLoader, "load_plugins", loadPlugins, directory);
         }
         catch (std::exception &e) {
             server_.getLogger().error("Error occurred when trying to load plugins in '{}': {}", directory, e.what());
             return {};
         }
+    }
+
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override
+    {
+        return {"\\.whl"};
     }
 };
 
@@ -188,10 +203,14 @@ void init_plugin(py::module &m)
 
     plugin_loader  //
         .def(py::init<Server &>(), py::arg("server"))
+        .def("load_plugin", &PluginLoader::loadPlugin, py::arg("file"), py::return_value_policy::reference,
+             "Loads the plugin contained in the specified file")
         .def("load_plugins", &PluginLoader::loadPlugins, py::arg("directory"),
              py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")
         .def("enable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
         .def("disable_plugin", &PluginLoader::enablePlugin, py::arg("plugin"), "Disables the specified plugin")
+        .def_property_readonly("plugin_file_filters", &PluginLoader::getPluginFileFilters,
+                               "Returns a list of all filename filters expected by this PluginLoader")
         .def_property_readonly("server", &PluginLoader::getServer, py::return_value_policy::reference,
                                "Retrieves the Server object associated with the PluginLoader.");
 
@@ -204,8 +223,12 @@ void init_plugin(py::module &m)
              py::arg("plugin"), "Checks if the given plugin is enabled or not")
         .def("is_plugin_enabled", py::overload_cast<Plugin *>(&PluginManager::isPluginEnabled, py::const_),
              py::arg("plugin"), "Checks if the given plugin is enabled or not")
-        .def("load_plugins", &PluginManager::loadPlugins, py::arg("directory"),
-             "Loads the plugin contained within the specified directory")
+        .def("load_plugin", &PluginManager::loadPlugin, py::arg("file"), py::return_value_policy::reference,
+             "Loads the plugin in the specified file")
+        .def("load_plugins", py::overload_cast<std::string>(&PluginManager::loadPlugins), py::arg("directory"),
+             py::return_value_policy::reference_internal, "Loads the plugin contained within the specified directory")
+        .def("load_plugins", py::overload_cast<std::vector<std::string>>(&PluginManager::loadPlugins), py::arg("files"),
+             py::return_value_policy::reference_internal, "Loads the plugins in the list of the files")
         .def("enable_plugin", &PluginManager::enablePlugin, py::arg("plugin"), "Enables the specified plugin")
         .def("enable_plugins", &PluginManager::enablePlugins, "Enable all the loaded plugins")
         .def("disable_plugin", &PluginManager::disablePlugin, py::arg("plugin"), "Disables the specified plugin")

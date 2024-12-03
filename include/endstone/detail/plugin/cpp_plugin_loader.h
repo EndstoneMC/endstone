@@ -26,9 +26,8 @@ class CppPluginLoader : public PluginLoader {
 public:
     using PluginLoader::PluginLoader;
 
-    [[nodiscard]] std::vector<Plugin *> loadPlugins(const std::string &directory) override;
-    [[nodiscard]] std::unique_ptr<Plugin> loadPlugin(const std::string &file);
-    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const;
+    [[nodiscard]] Plugin *loadPlugin(std::string file) override;
+    [[nodiscard]] std::vector<std::string> getPluginFileFilters() const override;
 
 private:
     std::vector<std::unique_ptr<Plugin>> plugins_;

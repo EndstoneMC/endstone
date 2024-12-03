@@ -80,12 +80,30 @@ public:
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
 
     /**
+     * Loads the plugin in the specified file
+     *
+     * File must be valid according to the current enabled Plugin interfaces
+     *
+     * @param file File containing the plugin to load
+     * @return The Plugin loaded, or nullptr if it was invalid
+     */
+    virtual Plugin *loadPlugin(std::string file) = 0;
+
+    /**
      * Loads the plugin contained within the specified directory
      *
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(const std::string &directory) = 0;
+    virtual std::vector<Plugin *> loadPlugins(std::string directory) = 0;
+
+    /**
+     * Loads the plugins in the list of the files
+     *
+     * @param files List of files containing plugins to load
+     * @return A list of all plugins loaded
+     */
+    virtual std::vector<Plugin *> loadPlugins(std::vector<std::string> files) = 0;
 
     /**
      * Enables the specified plugin

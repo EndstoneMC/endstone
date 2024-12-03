@@ -42,9 +42,19 @@ PythonPluginLoader::~PythonPluginLoader()
     obj_.release();
 }
 
-std::vector<Plugin *> PythonPluginLoader::loadPlugins(const std::string &directory)
+Plugin *PythonPluginLoader::loadPlugin(std::string file)
+{
+    return pimpl()->loadPlugin(file);
+}
+
+std::vector<Plugin *> PythonPluginLoader::loadPlugins(std::string directory)
 {
     return pimpl()->loadPlugins(directory);
+}
+
+std::vector<std::string> PythonPluginLoader::getPluginFileFilters() const
+{
+    return pimpl()->getPluginFileFilters();
 }
 
 void PythonPluginLoader::enablePlugin(Plugin &plugin) const
