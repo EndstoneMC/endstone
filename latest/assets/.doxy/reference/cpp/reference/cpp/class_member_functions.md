@@ -356,7 +356,7 @@
 * **Logger** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **log** ([**endstone::Logger**](classendstone_1_1Logger.md))
 * **loadPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **loadPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **loadPlugins** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **length** ([**endstone::Vector**](classendstone_1_1Vector.md))
 * **lengthSquared** ([**endstone::Vector**](classendstone_1_1Vector.md))
 

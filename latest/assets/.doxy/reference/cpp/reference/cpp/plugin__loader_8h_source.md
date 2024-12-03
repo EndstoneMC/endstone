@@ -24,11 +24,9 @@
 
 #pragma once
 
-#include <cctype>
 #include <filesystem>
-#include <memory>
+#include <regex>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include "endstone/event/server/plugin_disable_event.h"
@@ -47,7 +45,44 @@ public:
 
     virtual ~PluginLoader() = default;
 
-    [[nodiscard]] virtual Plugin *loadPlugin(const std::string &file) = 0;
+    [[nodiscard]] virtual Plugin *loadPlugin(std::string file) = 0;
+
+    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(std::string directory)
+    {
+        auto &logger = server_.getLogger();
+
+        auto dir = std::filesystem::path(directory);
+        if (!exists(dir)) {
+            logger.error("Error occurred when trying to load plugins in '{}': Provided directory does not exist.",
+                         dir.string());
+            return {};
+        }
+
+        if (!is_directory(dir)) {
+            logger.error("Error occurred when trying to load plugins in '{}': Provided path is not a directory.",
+                         dir.string());
+            return {};
+        }
+
+        std::vector<Plugin *> loaded_plugins;
+
+        for (const auto &entry : std::filesystem::directory_iterator(dir)) {
+            if (!is_regular_file(entry.status())) {
+                continue;
+            }
+
+            const auto &file = entry.path();
+            for (const auto &pattern : getPluginFileFilters()) {
+                if (std::regex r(pattern); std::regex_search(file.string(), r)) {
+                    if (auto *plugin = loadPlugin(file.string())) {
+                        loaded_plugins.push_back(plugin);
+                    }
+                }
+            }
+        }
+
+        return loaded_plugins;
+    }
 
     [[nodiscard]] virtual std::vector<std::string> getPluginFileFilters() const = 0;
 

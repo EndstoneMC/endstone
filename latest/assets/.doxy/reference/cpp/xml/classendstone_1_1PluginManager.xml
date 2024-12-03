@@ -209,7 +209,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Loads the plugin in the specified file </para>
+<para>Loads the plugin in the specified file</para>
 <para>File must be valid according to the current enabled <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> interfaces</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_manager.h" line="90" column="21"/>
+        <location file="include/endstone/plugin/plugin_manager.h" line="90" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginManager_1abb4bebfa16577172dd473985269776e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_manager.h" line="98" column="26"/>
+        <location file="include/endstone/plugin/plugin_manager.h" line="98" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginManager_1af7ce5bc842f09d077430986b4a496ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1Plugin" kindref="compound">Plugin</ref> * &gt;</type>
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/plugin/plugin_manager.h" line="106" column="26"/>
+        <location file="include/endstone/plugin/plugin_manager.h" line="106" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classendstone_1_1PluginManager_1aa4ba7ce935f60390b5522a2bdb41a37b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>

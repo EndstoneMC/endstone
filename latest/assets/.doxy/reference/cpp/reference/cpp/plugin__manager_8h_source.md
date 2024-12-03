@@ -56,11 +56,11 @@ public:
 
     [[nodiscard]] virtual bool isPluginEnabled(Plugin *plugin) const = 0;
 
-    [[nodiscard]] virtual Plugin *loadPlugin(std::string file) = 0;
+    virtual Plugin *loadPlugin(std::string file) = 0;
 
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(std::string directory) = 0;
+    virtual std::vector<Plugin *> loadPlugins(std::string directory) = 0;
 
-    [[nodiscard]] virtual std::vector<Plugin *> loadPlugins(std::vector<std::string> files) = 0;
+    virtual std::vector<Plugin *> loadPlugins(std::vector<std::string> files) = 0;
 
     virtual void enablePlugin(Plugin &plugin) const = 0;
 

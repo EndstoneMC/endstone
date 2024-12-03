@@ -638,7 +638,7 @@ virtual Plugin * endstone::PluginManager::loadPlugin (
 
 
 
-Loads the plugin in the specified file 
+Loads the plugin in the specified file
 
 
 File must be valid according to the current enabled [**Plugin**](classendstone_1_1Plugin.md) interfaces

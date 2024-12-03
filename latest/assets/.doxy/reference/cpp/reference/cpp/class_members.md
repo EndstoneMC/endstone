@@ -444,7 +444,7 @@
 * **load\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **load\_before\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))
 * **loadPlugin** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
-* **loadPlugins** ([**endstone::PluginManager**](classendstone_1_1PluginManager.md))
+* **loadPlugins** ([**endstone::PluginLoader**](classendstone_1_1PluginLoader.md), [**endstone::PluginManager**](classendstone_1_1PluginManager.md))
 * **level\_name\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
 * **local\_port\_v6\_** ([**endstone::ServerListPingEvent**](classendstone_1_1ServerListPingEvent.md))
