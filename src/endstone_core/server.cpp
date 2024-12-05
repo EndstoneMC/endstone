@@ -220,7 +220,7 @@ Scheduler &EndstoneServer::getScheduler() const
 
 Level *EndstoneServer::getLevel() const
 {
-    return level_.get();
+    return level_ ? level_.get() : nullptr;
 }
 
 void EndstoneServer::setLevel(std::unique_ptr<EndstoneLevel> level)

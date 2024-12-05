@@ -320,7 +320,6 @@ public:
     virtual void upgradeStorageVersion(StorageVersion) = 0;
     virtual void suspendAndSave() = 0;
     virtual Particle *addParticle(ParticleType, Vec3 const &, Vec3 const &, int, CompoundTag const *, bool) = 0;
-    virtual void _destroyEffect(BlockPos const &, Block const &, int) = 0;
     virtual void addParticleEffect(HashedString const &, Vec3 const &, MolangVariableMap const &) = 0;
     virtual void addTerrainParticleEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
     virtual void addTerrainSlideEffect(BlockPos const &, Block const &, Vec3 const &, float, float, float) = 0;
@@ -383,7 +382,6 @@ public:
     virtual void initializeBlockDefinitionGroup() = 0;
     virtual Bedrock::NonOwnerPointer<IUnknownBlockTypeRegistry> getUnknownBlockTypeRegistry() = 0;
     [[nodiscard]] virtual bool isClientSide() const = 0;
-    virtual std::unordered_map<mce::UUID, PlayerListEntry> &getPlayerList() = 0;
     [[nodiscard]] virtual std::unordered_map<mce::UUID, PlayerListEntry> const &getPlayerList() const = 0;
     [[nodiscard]] virtual std::string const &getPlayerXUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual std::string const &getPlayerPlatformOnlineId(mce::UUID const &) const = 0;
@@ -458,20 +456,13 @@ public:
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;
     [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
-
-    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;  // Endstone: private -> public
+    virtual void *cerealContext() = 0;
+    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;  // Endstone: protected -> public
 
 private:
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
-#ifdef __linux__  // wtf mojang
-    virtual void onSourceCreated(BlockSource &) = 0;
-    virtual void onSourceDestroyed(BlockSource &) = 0;
-#endif
-
-protected:
-    virtual void _subTick() = 0;
-    virtual void _initializeMapDataManager() = 0;
+    virtual void *_cerealContext();
 };

@@ -25,8 +25,18 @@ class Level : public ILevel {
 public:
     ENDSTONE_HOOK void tick() override;
 
+#ifdef __linux__  // wtf mojang
+    virtual void onSourceCreated(BlockSource &) = 0;
+    virtual void onSourceDestroyed(BlockSource &) = 0;
+#endif
+
+protected:
+    virtual void _subTick() = 0;
+
+public:
     static bool isUsableLevel(const ILevel &level);
 
 protected:
+    virtual void _initializeMapDataManager() = 0;
     friend class endstone::detail::EndstoneServer;
 };

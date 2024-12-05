@@ -61,9 +61,8 @@ struct EventVariantImpl {
     EventVariantImpl(EventVariantImpl const &) = default;
     EventVariantImpl(EventVariantImpl &&) = default;
 
-    template <typename Event>
-    EventVariantImpl(std::reference_wrapper<Event> event)
-        : variant{std::in_place_type<Details::ValueOrRef<Event>>, event}
+    template <typename T>
+    EventVariantImpl(std::reference_wrapper<T> event) : variant{std::in_place_type<Details::ValueOrRef<T>>, event}
     {
     }
 

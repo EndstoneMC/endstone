@@ -17,13 +17,14 @@
 #include <optional>
 #include <string>
 
-#include <gsl/gsl>
-
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/events/event_variant.h"
 #include "bedrock/world/level/block_pos.h"
 #include "bedrock/world/level/block_source.h"
+
+struct ScriptModuleStartupEvent {};
+struct ScriptModuleShutdownEvent {};
 
 struct BlockObject {
     gsl::not_null<BlockSource *> region;
@@ -39,10 +40,12 @@ struct ScriptCommandMessageEvent {
     std::optional<ActorUniqueID> initiator;
 };
 
-template <typename Return>
+template <typename Result>
 struct ScriptingGameplayEvent;
 
 template <>
-struct ScriptingGameplayEvent<CoordinatorResult> : ConstEventVariant<ScriptCommandMessageEvent> {
-    using ConstEventVariant<ScriptCommandMessageEvent>::ConstEventVariant;
+struct ScriptingGameplayEvent<CoordinatorResult>
+    : ConstEventVariant<ScriptCommandMessageEvent, ScriptModuleStartupEvent, ScriptModuleShutdownEvent> {
+    using ConstEventVariant<ScriptCommandMessageEvent, ScriptModuleStartupEvent,
+                            ScriptModuleShutdownEvent>::ConstEventVariant;
 };

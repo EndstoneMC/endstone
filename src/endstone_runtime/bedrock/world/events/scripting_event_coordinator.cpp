@@ -17,38 +17,40 @@
 #include <entt/entt.hpp>
 
 #include "endstone/detail/hook.h"
-#include "endstone/detail/level/level.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/script_message_event.h"
 
-using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneServer;
 
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {
     auto &server = entt::locator<EndstoneServer>::value();
-    auto &level = static_cast<EndstoneLevel *>(server.getLevel())->getHandle();
-
-    return std::visit(endstone::overloaded{[&](const Details::ValueOrRef<ScriptCommandMessageEvent const> &arg) {
-                          const auto &event = arg.value();
-                          endstone::CommandSender *sender = nullptr;
-                          if (event.source_actor.has_value()) {
-                              if (auto *actor = level.fetchEntity(event.source_actor.value(), false); actor) {
-                                  sender = &actor->getEndstoneActor();
+    return std::visit(endstone::overloaded{
+                          [&](const Details::ValueOrRef<ScriptCommandMessageEvent const> &arg) {
+                              const auto &event = arg.value();
+                              const endstone::CommandSender *sender = nullptr;
+                              if (event.source_actor.has_value()) {
+                                  if (auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {
+                                      sender = &actor->getEndstoneActor();
+                                  }
                               }
-                          }
-                          // TODO(command): add support for BlockCommandSender
-                          if (!sender) {
-                              sender = &server.getCommandSender();
-                          }
-                          endstone::ScriptMessageEvent e{event.message_id, event.message_value, *sender};
-                          server.getPluginManager().callEvent(e);
+                              // TODO(command): add support for BlockCommandSender
+                              if (!sender) {
+                                  sender = &server.getCommandSender();
+                              }
+                              endstone::ScriptMessageEvent e{event.message_id, event.message_value, *sender};
+                              server.getPluginManager().callEvent(e);
 
-                          // fix: wtf mojang devs - the original function accesses the pointer without checking
-                          if (!scripting_event_handler_) {
-                              return CoordinatorResult::Continue;
-                          }
-                          return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
-                      }},
+                              // fix: wtf mojang devs - the original function accesses the pointer without checking
+                              if (!scripting_event_handler_) {
+                                  return CoordinatorResult::Continue;
+                              }
+                              return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
+                          },
+                          [&](auto &&arg) -> CoordinatorResult {
+                              const auto &event = arg.value();
+                              return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
+                          },
+                      },
                       ref.get().variant);
 }
