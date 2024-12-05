@@ -65,7 +65,17 @@ class Bootstrap:
 
     def _download(self, dst: Union[str, os.PathLike]) -> None:
         dst = Path(dst)
+        try:
+            country_code = requests.get("http://ip-api.com/json", timeout=10)
+            country_code.raise_for_status()
+            country_code = country_code.json().get("countryCode", "")
+        except requests.RequestException:
+            country_code = ""
 
+        if country_code == "CN":
+            user_input = input("According to the information provided by ip-api.com, the current IP may be in China. Do you want to use the China mirror for initializing the related components? [Y/n]: ").strip().lower()
+            if user_input == "y":
+                self._remote = f"https://ghp.ci/{self._remote}"
         self._logger.info("Loading index from the remote server...")
         response = requests.get(self._remote)
         response.raise_for_status()
