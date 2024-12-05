@@ -93,6 +93,7 @@ class IContentTierManager;
 class IFoodItemComponent;
 class IGameModuleShared;
 class ILevelRandom;
+class ILevelStorageManagerConnector;
 class IMinecraftEventing;
 class INpcDialogueData;
 class IUnknownBlockTypeRegistry;
