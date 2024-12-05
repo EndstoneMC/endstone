@@ -59,6 +59,7 @@ struct PlayerOpenContainerEvent {};
 struct PlayerShootArrowEvent {};
 struct PlayerRespawnEvent {};
 struct PlayerStopLoadingEvent {};
+struct PlayerInputModeChangeEvent {};
 struct PlayerUpdateInteractionEvent {};
 struct PlayerSelectedItemChangedEvent {};
 struct PlayerDimensionChangeBeforeEvent {};
@@ -75,6 +76,7 @@ struct PlayerInteractWithBlockAfterEvent {
     bool is_first_event;
 };
 struct PlayerEmoteEvent {};
+struct PlayerScriptInputEvent {};
 struct PlayerInputPermissionCategoryChangeEvent {};
 
 template <>
@@ -82,12 +84,12 @@ struct PlayerGameplayEvent<void>
     : ConstEventVariant<PlayerSkinLoadedClientEvent, PlayerAddEvent, PlayerAddExpEvent, PlayerAddLevelEvent,
                         PlayerArmorExchangeEvent, PlayerDestroyBlockEvent, PlayerUseNameTagEvent, PlayerDropItemEvent,
                         PlayerEatFoodEvent, PlayerDamageEvent, PlayerDisconnectEvent, PlayerFormCloseEvent,
-                        PlayerFormResponseEvent, PlayerInitialSpawnEvent, PlayerOpenContainerEvent,
-                        PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent, PlayerUpdateInteractionEvent,
-                        PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
+                        PlayerFormResponseEvent, PlayerInputModeChangeEvent, PlayerInitialSpawnEvent,
+                        PlayerOpenContainerEvent, PlayerShootArrowEvent, PlayerRespawnEvent, PlayerStopLoadingEvent,
+                        PlayerUpdateInteractionEvent, PlayerSelectedItemChangedEvent, PlayerDimensionChangeBeforeEvent,
                         PlayerDimensionChangeAfterEvent, PlayerInteractWithEntityAfterEvent,
-                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerInputPermissionCategoryChangeEvent> {
-};
+                        PlayerInteractWithBlockAfterEvent, PlayerEmoteEvent, PlayerScriptInputEvent,
+                        PlayerInputPermissionCategoryChangeEvent> {};
 BEDROCK_STATIC_ASSERT_SIZE(PlayerGameplayEvent<void>, 384, 384);
 
 struct PlayerSayCommandEvent {};
