@@ -24,5 +24,4 @@ public:
     ENDSTONE_HOOK void sendServerInitializeStart(ServerInstance &instance);
     ENDSTONE_HOOK void sendServerThreadStarted(ServerInstance &instance);
     ENDSTONE_HOOK void sendServerThreadStopped(ServerInstance &instance);
-    ENDSTONE_HOOK void sendServerLevelInitialized(ServerInstance &instance, Level &level);
 };

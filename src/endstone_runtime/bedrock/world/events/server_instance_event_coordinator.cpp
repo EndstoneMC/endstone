@@ -20,7 +20,6 @@
 #include "bedrock/world/level/level.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/level/level.h"
-#include "endstone/detail/plugin/python_plugin_loader.h"
 #include "endstone/detail/scoreboard/scoreboard.h"
 #include "endstone/detail/server.h"
 #include "endstone/detail/signal_handler.h"
@@ -34,11 +33,9 @@ using endstone::ServerLoadEvent;
 using endstone::detail::EndstoneLevel;
 using endstone::detail::EndstoneScoreboard;
 using endstone::detail::EndstoneServer;
-using endstone::detail::PythonPluginLoader;
 
 void ServerInstanceEventCoordinator::sendServerInitializeStart(ServerInstance &instance)
 {
-    endstone::detail::register_signal_handler();
     auto &server = entt::locator<EndstoneServer>::value_or();
     server.init(instance);
     server.loadPlugins();

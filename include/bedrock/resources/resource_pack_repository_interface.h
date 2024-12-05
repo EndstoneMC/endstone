@@ -22,7 +22,8 @@ class IResourcePackRepository : public Bedrock::EnableNonOwnerReferences {
 public:
     virtual void getResourcePacksByPackId(std::vector<PackInstanceId> const &, std::vector<PackInstance> &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackId(PackIdVersion const &) const = 0;
-    [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdInPath(PackIdVersion const &,Core::Path const &) const = 0;
+    [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdInPath(PackIdVersion const &,
+                                                                       Core::Path const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackByUUID(mce::UUID const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackForPackIdOwned(PackIdVersion const &) const = 0;
     [[nodiscard]] virtual ResourcePack *getResourcePackSatisfiesPackId(PackIdVersion const &, bool) const = 0;
@@ -39,6 +40,7 @@ public:
     virtual void addCachedResourcePacks(ContentKeyMap const *) = 0;
     virtual void addWorldResourcePacks(Core::Path const &) = 0;
     virtual void addPremiumWorldTemplateResourcePacks(Core::Path const &, ContentIdentity const &) = 0;
+    virtual void addTempWorldTemplateResourcePacks(mce::UUID const &) = 0;
     virtual void removePacksLoadedFromCache() = 0;
     virtual void removePacksLoadedFromWorld() = 0;
     [[nodiscard]] virtual Core::HeapPathBuffer getResourcePacksPath() const = 0;

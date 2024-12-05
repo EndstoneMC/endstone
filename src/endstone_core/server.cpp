@@ -39,6 +39,7 @@ namespace fs = std::filesystem;
 #include "endstone/detail/permissions/default_permissions.h"
 #include "endstone/detail/plugin/cpp_plugin_loader.h"
 #include "endstone/detail/plugin/python_plugin_loader.h"
+#include "endstone/detail/signal_handler.h"
 #include "endstone/detail/util/error.h"
 #include "endstone/event/server/broadcast_message_event.h"
 #include "endstone/event/server/server_load_event.h"
@@ -52,6 +53,8 @@ namespace endstone::detail {
 
 EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
 {
+    register_signal_handler();
+
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);

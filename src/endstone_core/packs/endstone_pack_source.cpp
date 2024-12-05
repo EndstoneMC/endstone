@@ -18,7 +18,6 @@
 
 #include <boost/algorithm/string/trim.hpp>
 
-#include "endstone/color_format.h"
 #include "endstone/detail/server.h"
 
 namespace fs = std::filesystem;
