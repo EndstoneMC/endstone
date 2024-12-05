@@ -128,8 +128,9 @@ public:
     virtual void hurtActor(ItemStack &, Actor &, Mob &) const = 0;
     virtual void hitActor(ItemStack &, Actor &, Mob &) const = 0;
     virtual void hitBlock(ItemStack &, Block const &, BlockPos const &, Mob &) const = 0;
-    // virtual bool mineBlock(ItemStack &, Block const &, int x, int y, int z, Actor *) const = 0;
     virtual std::string buildDescriptionName(ItemStackBase const &) const = 0;
+    // virtual Bedrock::Safety::RedactableString const buildRedactedDescriptionName
+    virtual void const buildRedactedDescriptionName(ItemStackBase const &) const = 0;
     virtual std::string buildDescriptionId(ItemDescriptor const &, CompoundTag const *) const = 0;
     virtual std::string buildEffectDescriptionName(ItemStackBase const &) const = 0;
     virtual void readUserData(ItemStackBase &, IDataInput &, ReadOnlyBinaryStream &) const = 0;
@@ -191,12 +192,12 @@ public:
         return furnace_burn_interval_modifier_;
     }
 
-private:
+protected:
     std::string texture_atlas_file_;                                            // +8
     int frame_count_;                                                           // +40
     bool animates_in_toolbar_;                                                  // +44
     bool is_mirrored_art_;                                                      // +45
-    std::uint16_t use_anim_;                                                    // +46
+    std::uint8_t use_anim_;                                                     // +46
     std::string hover_text_color_format_;                                       // +48
     int icon_frame_;                                                            // +80
     int atlas_frame_;                                                           // +84

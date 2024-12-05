@@ -49,29 +49,30 @@ private:
     friend ItemRegistryRef;
     using ItemRegistryMap = std::vector<SharedPtr<Item>>;
 
-    ItemRegistryMap item_registry_;                                                        // +16
-    std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;                                // +40
-    std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;                     // +104 (+80)
-    std::unordered_map<HashedString, WeakPtr<Item>> tile_namespace_to_item_map_;           // +168 (+120)
-    std::unordered_map<HashedString, WeakPtr<Item>> tile_item_name_to_item_map_;           // +232 (+160)
-    std::unordered_map<HashedString, ItemAlias> item_alias_lookup_map_;                    // +296
-    std::unordered_map<std::size_t, ItemHashAlias> reverse_alias_lookup_map_;              // +360
-    std::unordered_map<std::size_t, ItemHashAlias> reverse_full_name_alias_lookup_map_;    // +424
-    std::unordered_map<HashedString, ItemRegistryComplexAlias> complex_alias_lookup_map_;  // +488
-    std::unordered_map<std::int16_t, HashedString> legacy_id_to_name_map_;                 // +552
-    std::int16_t max_item_id_;                                                             // +616
-    std::vector<HashedString> attachable_definitions_;                                     // +624
-    std::unordered_map<ItemTag, std::unordered_set<const Item *>> tag_to_items_map_;       // +648
-    std::unordered_set<const Item *> const empty_item_set_;                                // +712
-    bool server_initializing_creative_items_;                                              // +776
-    bool is_initialized_;                                                                  // +777
-    std::function<void(ItemRegistryRef)> extra_item_init_callback_;                        // +784
-    Bedrock::PubSub::PublisherPtr<void(), Bedrock::PubSub::ThreadModel::MultiThreaded>
-        finished_init_publisher_;                                   // +848
-    std::shared_ptr<std::atomic<int>> can_update_tags_;             // +856
-    ItemRegistryMap dead_item_registry_;                            // +872
-    BaseGameVersion world_base_game_version_;                       // +896
-    bool check_for_item_world_compatibility_;                       // +1016
-    std::shared_ptr<std::mutex> compatibility_check_mutex_;         // +1024
-    std::unique_ptr<CreativeItemRegistry> creative_item_registry_;  // +1040
+    std::unique_ptr<void *> cereal_context_;                                               // +16
+    ItemRegistryMap item_registry_;                                                        // +24
+    std::unordered_map<int, WeakPtr<Item>> id_to_item_map_;                                //
+    std::unordered_map<HashedString, WeakPtr<Item>> name_to_item_map_;                     //
+    std::unordered_map<HashedString, WeakPtr<Item>> tile_namespace_to_item_map_;           //
+    std::unordered_map<HashedString, WeakPtr<Item>> tile_item_name_to_item_map_;           //
+    std::unordered_map<HashedString, ItemAlias> item_alias_lookup_map_;                    //
+    std::unordered_map<std::size_t, ItemHashAlias> reverse_alias_lookup_map_;              //
+    std::unordered_map<std::size_t, ItemHashAlias> reverse_full_name_alias_lookup_map_;    //
+    std::unordered_map<HashedString, ItemRegistryComplexAlias> complex_alias_lookup_map_;  //
+    std::unordered_map<std::int16_t, HashedString> legacy_id_to_name_map_;                 //
+    std::int16_t max_item_id_;                                                             //
+    std::vector<HashedString> attachable_definitions_;                                     //
+    std::unordered_map<ItemTag, std::unordered_set<const Item *>> tag_to_items_map_;       //
+    std::unordered_set<const Item *> const empty_item_set_;                                //
+    bool server_initializing_creative_items_;                                              //
+    bool is_initialized_;                                                                  //
+    std::function<void(ItemRegistryRef)> extra_item_init_callback_;                        //
+    std::unique_ptr<Bedrock::PubSub::PublisherPtr<void(), Bedrock::PubSub::ThreadModel::MultiThreaded>>
+        finished_init_publisher_;                                   //
+    std::shared_ptr<std::atomic<int>> can_update_tags_;             //
+    ItemRegistryMap dead_item_registry_;                            //
+    BaseGameVersion world_base_game_version_;                       //
+    bool check_for_item_world_compatibility_;                       //
+    std::shared_ptr<std::mutex> compatibility_check_mutex_;         //
+    std::unique_ptr<CreativeItemRegistry> creative_item_registry_;  //
 };
