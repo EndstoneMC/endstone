@@ -14,12 +14,9 @@
 
 #pragma once
 
-#include <memory>
+#include <cstdint>
 
-#include <boost/container/flat_map.hpp>
-#include <boost/container/flat_set.hpp>
-
-#include "bedrock/core/utility/type_id.h"
+#include "bedrock/bedrock.h"
 
 class BlockComponentStorage {
 public:
