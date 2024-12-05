@@ -122,8 +122,13 @@ void EndstoneLevel::loadResourcePacks()
     fs::path file_path = fs::current_path() / "worlds" / level_.getLevelId() / "world_resource_packs.json";
 
     if (exists(file_path)) {
-        std::ifstream file(file_path);
-        file >> json;
+        try {
+            std::ifstream file(file_path);
+            json = nlohmann::json::parse(file, nullptr, true, true);
+        }
+        catch (std::exception &e) {
+            server_.getLogger().error("Failed to load from {}", file_path);
+        }
     }
 
     // Append loaded packs to the stack
