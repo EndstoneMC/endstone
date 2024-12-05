@@ -176,7 +176,6 @@ class TrackedPacketDataContainer;
 class TrimMaterialRegistry;
 class TrimPatternRegistry;
 class UpdateEntityAfterFallOnInterface;
-class VariantParameterList;
 class WeakEntityRef;
 class _TickPtr;  // NOLINT
 

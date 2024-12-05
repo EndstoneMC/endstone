@@ -37,6 +37,7 @@
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_permission_level.h"
+#include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_damage_source.h"
 #include "bedrock/world/actor/actor_flags.h"
@@ -141,7 +142,7 @@ public:
     [[nodiscard]] virtual bool isOnFire() const = 0;
     [[nodiscard]] virtual bool isSurfaceMob() const = 0;
     [[nodiscard]] virtual bool isTargetable() const = 0;
-    virtual bool canAttack(Actor *, bool) const = 0;
+    // virtual bool canAttack(Actor *, bool) const = 0;
     virtual void setTarget(Actor *) = 0;
     virtual bool isValidTarget(Actor *) const = 0;
     virtual bool attack(Actor &, ActorDamageCause const &) = 0;
@@ -280,30 +281,61 @@ public:
 
     static Actor *tryGetFromEntity(EntityContext const &, bool include_removed);
 
-protected:
-    EntityContext entity_context_;                                                          // +8
-    std::array<char[16], 10> init_params_;                                                  // +32
-    std::string custom_init_event_name_;                                                    // +192
-    ActorInitializationMethod init_method_;                                                 // +224
-    bool force_init_method_to_spawn_on_reload_;                                             // +225
-    bool added_;                                                                            // +226
-    int send_rate_counter_;                                                                 // +228
-    ActorDefinitionGroup *definitions_;                                                     // +232
-    std::unique_ptr<ActorDefinitionDescriptor> current_description_;                        // +240
-    std::shared_ptr<RopeSystem> leash_rope_system_;                                         // +248
-    std::string alias_;                                                                     // +264
-    std::optional<glm::mat4x4> previous_render_transform_;                                  // +296
-    int last_hurt_by_player_time_;                                                          // +364
-    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> previous_bone_matrices_;  // +368
-    SynchedActorDataEntityWrapper entity_data_;                                             // +384
-    std::unique_ptr<SpatialActorNetworkData> network_data_;                                 // +432
-    Vec3 sent_delta_;                                                                       // +440
-    char unknown11_[92];                                                                    // +452
-    WeakRef<Dimension> dimension_;                                                          // +544
-    Level *level_;                                                                          // +560
-    HashedString actor_renderer_id_;                                                        // +568
-    ActorCategory categories_;                                                              // +616
-    BuiltInActorComponents built_in_components_;                                            // +624
+private:
+    EntityContext entity_context_;  // +8
+    VariantParameterList init_params_;
+    std::string custom_init_event_name_;
+    ActorInitializationMethod init_method_;
+    bool force_init_method_to_spawn_on_reload_;
+
+public:
+    bool added;
+    int send_rate_counter;
+    ActorDefinitionGroup *definitions;
+    std::unique_ptr<ActorDefinitionDescriptor> current_description;
+    std::shared_ptr<RopeSystem> leash_rope_system;
+    std::string alias;
+    std::optional<glm::mat4x4> previous_render_transform;
+    int last_hurt_by_player_time;
+    std::map<HashedString, std::vector<std::vector<glm::mat4x4>>> previous_bone_matrices;
+    SynchedActorDataEntityWrapper entity_data;
+    std::unique_ptr<SpatialActorNetworkData> network_data;
+    Vec3 sent_delta;
+    float scale;
+    float scale_prev;
+    bool ignore_lighting;
+    bool filter_lighting;
+    float step_sound_volume;
+    float step_sound_pitch;
+    AABB *last_hit_bb;
+    HashType64 name_tag_hash;
+    float shadow_offset;
+    float pushthrough;
+    int tick_count;
+    int invulnerable_time;
+    int last_health;
+    bool hurt_marked;
+    bool was_hurt_last_frame;
+    bool invulnerable;
+    int flame_tex_frame_index;
+    float flame_frame_increment_time;
+    bool always_fire_immune;
+    bool inherit_rotation_when_riding;
+    bool forced_loading;
+    bool force_send_motion_packet;
+    bool highlighted_this_frame;
+    bool initialized;
+    bool processed_on_chunk_discard;
+    float sound_volume;
+    int shake_time;
+    ActorUniqueID legacy_unique_id;
+
+private:
+    WeakRef<Dimension> dimension_;                // +456
+    Level *level_;                                // +472
+    HashedString actor_renderer_id_;              //
+    ActorCategory categories_;                    //
+    BuiltInActorComponents built_in_components_;  //
     // ...
 
     endstone::detail::EndstoneActor &getEndstoneActor0() const;
