@@ -118,7 +118,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"explosionResistance", round(block.getExplosionResistance())},
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
-                {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
+                // {"canContainLiquid", block.getLegacyBlock().canContainLiquid()},
                 // {"canDropWithAnyTool", block.canDropWithAnyTool()},
                 {"mapColor", map_color.toHexString()},
                 {"collisionShape",

@@ -49,7 +49,6 @@ public:
     virtual void appendAdditionalTranslations(std::unordered_map<std::string, std::string> const &,
                                               std::string const &) = 0;
     virtual void appendLanguageStrings(PackAccessStrategy *) = 0;
-    virtual void appendTranslations(std::string const &, std::unordered_map<std::string, std::string> const &) = 0;
     virtual void addI18nObserver(I18nObserver &) = 0;
     virtual void chooseLanguage(std::string const &) = 0;
     virtual std::string get(std::string const &, std::vector<std::string> const &, std::shared_ptr<Localization>) = 0;

@@ -14,21 +14,26 @@
 
 #pragma once
 
-#include <memory>
+#include <cstdint>
 
-#include <boost/container/flat_map.hpp>
-#include <boost/container/flat_set.hpp>
-
-#include "bedrock/core/utility/type_id.h"
-
-class BlockComponentStorage {
-public:
-    class ComponentBase {};
-
-private:
-    std::size_t padding_[12];                            // +0
-    bool allow_adding_components_;                       // +96
-    bool allow_replacement_components_;                  // +97
-    bool allow_try_get_components_before_finalization_;  // +98
+enum LiquidType : std::uint8_t {
+    WATER = 0,
 };
-BEDROCK_STATIC_ASSERT_SIZE(BlockComponentStorage, 104, 104);
+
+enum LiquidReaction : std::uint8_t {
+    BROKEN = 0,
+    POPPED = 1,
+    BLOCKING = 2,
+    NOREACTION = 3,
+};
+
+struct BlockedDirections {
+    std::uint8_t stops_flow_directions_mask;
+};
+
+struct DetectionRule {
+    bool can_contain_liquid;
+    BlockedDirections stop_flow_directions;
+    LiquidReaction on_liquid_touches;
+    LiquidType liquid_type;
+};

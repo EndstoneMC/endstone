@@ -186,7 +186,7 @@ enum class ArmorSlot;
 enum class ArmorTextureType;
 enum class BedSleepingResult;
 enum class BlockActorType;
-enum class BlockRenderLayer;
+enum class BlockRenderLayer : std::uint8_t;
 enum class BlockSupportType;
 enum class BlockTintType;
 enum class BurnOdds;
