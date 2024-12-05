@@ -21,12 +21,15 @@ public:
     virtual ~ReadOnlyBinaryStream();
     virtual Bedrock::Result<void> read(void *, std::uint64_t);
 
+protected:
+    std::string owned_buffer_;  // +8
+    std::string_view view_;     // +40
+
 private:
-    std::size_t read_pointer_;  // +8
-    bool has_overflowed_;       // +16
-    std::string owned_buffer_;  // +24
-    std::string *buffer_;       // +56
+    std::size_t read_pointer_;  // +56
+    bool has_overflowed_;       // +64
 };
+BEDROCK_STATIC_ASSERT_SIZE(ReadOnlyBinaryStream, 72, 64);
 
 class BinaryStream : public ReadOnlyBinaryStream {
 public:
@@ -42,6 +45,6 @@ public:
     void writeFloat(float value);
 
 private:
-    std::string owned_buffer_;  // +64
-    std::string *buffer_;       // +96
+    std::string *buffer_;  // +72
 };
+BEDROCK_STATIC_ASSERT_SIZE(BinaryStream, 80, 72);

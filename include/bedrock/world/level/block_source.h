@@ -24,6 +24,7 @@
 #include "bedrock/world/level/block/block_legacy.h"
 #include "bedrock/world/level/block_source_interface.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
+#include "bedrock/world/level/level_seed.h"
 #include "bedrock/world/level/material/material.h"
 #include "bedrock/world/level/material/material_type.h"
 
@@ -42,7 +43,6 @@ public:
     [[nodiscard]] virtual Block const &getExtraBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual Block const &getLiquidBlock(BlockPos const &) const = 0;
     [[nodiscard]] virtual bool hasBlock(BlockPos const &) const = 0;
-    virtual bool removeBlock(BlockPos const &) = 0;
     [[nodiscard]] virtual bool containsAnyLiquid(AABB const &) const = 0;
     [[nodiscard]] virtual bool containsMaterial(AABB const &, MaterialType) const = 0;
     [[nodiscard]] virtual bool isUnderWater(Vec3 const &, Block const &) const = 0;
@@ -62,7 +62,6 @@ public:
     virtual AABB getTallestCollisionShape(AABB const &, float *, bool,
                                           optional_ref<GetCollisionShapeInterface const>) const = 0;
     [[nodiscard]] virtual float getBrightness(BlockPos const &) const = 0;
-    virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
 };
 
 class IBlockSource : public IConstBlockSource {
@@ -88,6 +87,11 @@ public:
     [[nodiscard]] virtual LevelChunk *getChunk(ChunkPos const &) const = 0;
     virtual Level &getLevel() = 0;
     [[nodiscard]] virtual ILevel &getILevel() const = 0;
+    [[nodiscard]] virtual LevelSeed64 getLevelSeed64() const = 0;
+    [[nodiscard]] virtual std::uint16_t getAboveTopSolidBlock(int, int, bool, bool) const = 0;
+    [[nodiscard]] virtual std::uint16_t getHeight(std::function<bool(const Block &)> const &,
+                                                  BlockPos const &) const = 0;
+    [[nodiscard]] virtual std::uint16_t getHeight(std::function<bool(const Block &)> const &, int, int) const = 0;
     virtual std::vector<AABB> &fetchAABBs(AABB const &, bool) = 0;
     virtual std::vector<AABB> &fetchCollisionShapes(AABB const &, bool, std::optional<EntityContext const>,
                                                     std::vector<AABB> *) = 0;
@@ -102,6 +106,8 @@ public:
     [[nodiscard]] virtual bool isInstaticking(BlockPos const &) const = 0;
     virtual void updateCheckForValidityState(bool) = 0;
     virtual bool checkBlockPermissions(Actor &, BlockPos const &, FacingID, ItemStackBase const &, bool) = 0;
+    virtual bool removeBlock(BlockPos const &) = 0;
+    virtual void postGameEvent(Actor *, GameEvent const &, BlockPos const &, Block const *) = 0;
 };
 
 class BlockSource : public IBlockSource,
