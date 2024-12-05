@@ -127,7 +127,7 @@ void EndstoneLevel::loadResourcePacks()
             json = nlohmann::json::parse(file, nullptr, true, true);
         }
         catch (std::exception &e) {
-            server_.getLogger().error("Failed to load from {}", file_path);
+            server_.getLogger().error("Failed to load from {}: {}", file_path, e.what());
         }
     }
 
