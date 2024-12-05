@@ -19,7 +19,7 @@
 #include "bedrock/network/network_peer.h"
 #include "bedrock/platform/result.h"
 
-enum class MinecraftPacketIds {
+enum class MinecraftPacketIds : int {
     KeepAlive = 0,
     Login = 1,
     PlayStatus = 2,
@@ -242,7 +242,8 @@ enum class MinecraftPacketIds {
     ContainerRegistryCleanup = 317,
     MovementEffect = 318,
     SetMovementAuthorityMode = 319,
-    EndId,
+    CameraAimAssistPresets = 320,
+    EndId = 321,
 };
 
 class Packet {

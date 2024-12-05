@@ -83,7 +83,7 @@ public:
         BlockMismatch = 63,
         InvalidHeights = 64,
         InvalidWidths = 65,
-        ConnectionLost = 66,
+        ConnectionLost_DEPRECATED = 66,
         ZombieConnection = 67,
         Shutdown = 68,
         ReasonNotSet_DEPRECATED = 69,

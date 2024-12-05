@@ -729,7 +729,7 @@ void EndstonePlayer::initFromConnectionRequest(
                 case BuildPlatform::OSX:
                     device_os_ = "macOS";
                     break;
-                case BuildPlatform::GearVR:
+                case BuildPlatform::GearVR_Deprecated:
                     device_os_ = "Gear VR";
                     break;
                 case BuildPlatform::UWP:

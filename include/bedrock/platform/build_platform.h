@@ -20,7 +20,7 @@ enum class BuildPlatform {
     iOS = 2,
     OSX = 3,
     Amazon = 4,
-    GearVR = 5,
+    GearVR_Deprecated = 5,
     UWP = 7,
     Win32 = 8,
     Dedicated = 9,

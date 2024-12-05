@@ -166,5 +166,6 @@ enum class ActorType : int {
     WindChargeProjectile = 143 | Projectile,
     Bogged = 144 | SkeletonMonster,
     OminousItemSpawner = 145,
+    Creaking = 146 | Monster,
     _entt_enum_as_bitmask
 };
