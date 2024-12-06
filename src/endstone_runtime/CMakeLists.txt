@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.15)
 project(endstone_runtime LANGUAGES CXX)
 
+if (UNIX)
+    find_package(libelf REQUIRED)
+endif ()
+
 include(FetchContent)
 FetchContent_Declare(
         funchook
