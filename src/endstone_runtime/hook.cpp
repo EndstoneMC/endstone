@@ -14,11 +14,12 @@
 
 #include "endstone/detail/hook.h"
 
+#include <funchook.h>
+
 #include <string>
 #include <system_error>
 #include <unordered_map>
 
-#include <funchook/funchook.h>
 #include <spdlog/spdlog.h>
 
 namespace endstone::detail::hook {

@@ -31,33 +31,12 @@ if (ENDSTONE_DEVTOOLS_ENABLED)
     add_compile_definitions(ENDSTONE_DEVTOOLS)
 endif ()
 
-# ========
-# packages
-# ========
-find_package(base64 CONFIG REQUIRED)
-find_package(Boost CONFIG REQUIRED)
-find_package(concurrentqueue CONFIG REQUIRED)
-find_package(cpptrace CONFIG REQUIRED)
-find_package(EnTT CONFIG REQUIRED)
-find_package(expected-lite REQUIRED)
-find_package(fmt CONFIG REQUIRED)
-find_package(funchook CONFIG REQUIRED)
-find_package(glm CONFIG REQUIRED)
-find_package(magic_enum CONFIG REQUIRED)
-find_package(Microsoft.GSL CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
-find_package(tomlplusplus CONFIG REQUIRED)
-if (UNIX)
-    find_package(libelf CONFIG REQUIRED)
-endif ()
-
-find_package(GTest CONFIG REQUIRED)
-
-
 # =================
 # endstone::headers
 # =================
+find_package(fmt REQUIRED)
+find_package(expected-lite REQUIRED)
+
 add_library(endstone_headers INTERFACE)
 add_library(endstone::headers ALIAS endstone_headers)
 target_include_directories(endstone_headers INTERFACE include)
@@ -65,7 +44,6 @@ target_link_libraries(endstone_headers INTERFACE fmt::fmt nonstd::expected-lite)
 
 include(GNUInstallDirs)
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
-
 
 # ================
 # endstone::python
@@ -103,43 +81,14 @@ endif ()
 # =================
 # endstone::runtime
 # =================
-file(GLOB_RECURSE ENDSTONE_RUNTIME_SOURCE_FILES CONFIGURE_DEPENDS "src/endstone_runtime/*.cpp")
-add_library(endstone_runtime SHARED ${ENDSTONE_RUNTIME_SOURCE_FILES})
-add_library(endstone::runtime ALIAS endstone_runtime)
-target_link_libraries(endstone_runtime PRIVATE endstone::core funchook::funchook)
-if (ENDSTONE_DEVTOOLS_ENABLED)
-    target_link_libraries(endstone_runtime PRIVATE endstone::devtools)
-endif ()
-if (WIN32)
-    target_link_libraries(endstone_runtime PRIVATE dbghelp.lib ws2_32.lib)
-    target_link_options(endstone_runtime PRIVATE "/INCREMENTAL:NO")
-endif ()
-if (UNIX)
-    target_link_libraries(endstone_runtime PRIVATE libelf::libelf)
-    target_link_options(endstone_runtime PRIVATE "-Wl,--exclude-libs,ALL")
-    target_compile_options(endstone_runtime PRIVATE "-fvisibility=hidden" "-fms-extensions")
-endif ()
-
-include(GNUInstallDirs)
-install(TARGETS endstone_runtime
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(TARGETS endstone_runtime DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-if (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo" AND MSVC)
-    install(FILES $<TARGET_PDB_FILE:endstone_runtime> DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-endif ()
-
-if (WIN32)
-    add_library(endstone_runtime_loader SHARED "src/endstone_runtime/loader.cpp")
-    target_compile_definitions(endstone_runtime_loader PRIVATE _CRT_SECURE_NO_WARNINGS ENDSTONE_RUNTIME_LOADER)
-    install(TARGETS endstone_runtime_loader DESTINATION "endstone/_internal/" COMPONENT endstone_wheel OPTIONAL)
-endif ()
+add_subdirectory(src/endstone_runtime)
 
 # =====
 # tests
 # =====
 if (NOT BUILD_TESTING STREQUAL OFF)
+    find_package(GTest REQUIRED)
+
     add_library(test_plugin SHARED tests/plugin/test_plugin.cpp)
     target_link_libraries(test_plugin PRIVATE endstone::headers)
     set_target_properties(test_plugin PROPERTIES LIBRARY_OUTPUT_DIRECTORY "plugins")

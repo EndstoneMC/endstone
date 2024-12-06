@@ -36,13 +36,7 @@ conan profile detect
 
 ### Install dependencies
 
-First of all, add the `funchook/1.1.3` recipe to your conan local repository.
-
-```shell
-conan export third_party/funchook --version 1.1.3
-```
-
-Then, run the following commands:
+First of all, run the following commands to install dependencies of this project:
 
 === ":fontawesome-brands-windows: Command Prompt"
     ```shell
