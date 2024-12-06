@@ -117,7 +117,7 @@ class EndstoneRecipe(ConanFile):
         self.requires("entt/3.14.0")
         self.requires("expected-lite/0.8.0")
         self.requires("fmt/[~10]", transitive_headers=True, transitive_libs=True)
-        self.requires("funchook/1.1.3")
+        # self.requires("funchook/1.1.3")
         self.requires("glm/1.0.1")
         self.requires("magic_enum/0.9.5")
         self.requires("ms-gsl/4.0.0")
