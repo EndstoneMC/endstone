@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1StepSlider" kind="class" language="C++" prot="public">
+    <compoundname>endstone::StepSlider</compoundname>
+    <basecompoundref refid="classendstone_1_1Dropdown" prot="public" virt="non-virtual">endstone::Dropdown</basecompoundref>
+    <includes refid="step__slider_8h" local="no">endstone/form/controls/step_slider.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1StepSlider_1ad095868e59dd8f5cac7ce788c7038977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Dropdown::Dropdown</definition>
+        <argsstring>()=default</argsstring>
+        <name>Dropdown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/step_slider.h" line="26" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1StepSlider_1ac91f43ee6f2a4a562564a4fa09d4090a" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Dropdown::Dropdown</definition>
+        <argsstring>(Message label, std::vector&lt; std::string &gt; options, std::optional&lt; int &gt; default_index=std::nullopt)</argsstring>
+        <name>Dropdown</name>
+        <param>
+          <type>Message</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; int &gt;</type>
+          <declname>default_index</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/form/controls/step_slider.h" line="26" column="5" bodyfile="include/endstone/form/controls/dropdown.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a step slider with a set of predefined options. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::StepSlider</label>
+        <link refid="classendstone_1_1StepSlider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Dropdown</label>
+        <link refid="classendstone_1_1Dropdown"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::StepSlider</label>
+        <link refid="classendstone_1_1StepSlider"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::Dropdown</label>
+        <link refid="classendstone_1_1Dropdown"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/form/controls/step_slider.h" line="24" column="1" bodyfile="include/endstone/form/controls/step_slider.h" bodystart="24" bodyend="27"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Dropdown_1a7f70f69c1ec1d3c891146079bd050934" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>addOption</name></member>
+      <member refid="classendstone_1_1StepSlider_1ad095868e59dd8f5cac7ce788c7038977" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>Dropdown</name></member>
+      <member refid="classendstone_1_1StepSlider_1ac91f43ee6f2a4a562564a4fa09d4090a" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>Dropdown</name></member>
+      <member refid="classendstone_1_1Dropdown_1ac91f43ee6f2a4a562564a4fa09d4090a" prot="public" virt="non-virtual" ambiguityscope="endstone::Dropdown::"><scope>endstone::StepSlider</scope><name>Dropdown</name></member>
+      <member refid="classendstone_1_1Dropdown_1ab9ff1b4c75b981ef0fc838bcba8f03fb" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>getDefaultIndex</name></member>
+      <member refid="classendstone_1_1Dropdown_1a424095abea8be681ef3ebc756663b879" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>getLabel</name></member>
+      <member refid="classendstone_1_1Dropdown_1ada5b741131abbd0fab2b1757ea9a1cd6" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>getOptions</name></member>
+      <member refid="classendstone_1_1Dropdown_1a35213db20c98a01f5d3ac52f7de985cd" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>setDefaultIndex</name></member>
+      <member refid="classendstone_1_1Dropdown_1a73a8d33341dfc5da209028107553398a" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>setLabel</name></member>
+      <member refid="classendstone_1_1Dropdown_1a97df9914cf801c57571f99884a496921" prot="public" virt="non-virtual"><scope>endstone::StepSlider</scope><name>setOptions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

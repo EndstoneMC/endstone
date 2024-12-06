@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Translatable" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Translatable</compoundname>
+    <includes refid="translatable_8h" local="no">endstone/lang/translatable.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Translatable_1a0747771031c0424636e4590b518afc28" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string endstone::Translatable::text_</definition>
+        <argsstring></argsstring>
+        <name>text_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="64" column="17" bodyfile="include/endstone/lang/translatable.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Translatable_1a9b9c3bd1af4d425bedc026f419dca28e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; endstone::Translatable::params_</definition>
+        <argsstring></argsstring>
+        <name>params_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="65" column="17" bodyfile="include/endstone/lang/translatable.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Translatable_1a9aa73dc65b0117858f5ff0d62c441029" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::Translatable::Translatable</definition>
+        <argsstring>(std::string text, std::vector&lt; std::string &gt; params={})</argsstring>
+        <name>Translatable</name>
+        <param>
+          <type>std::string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt;</type>
+          <declname>params</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="28" column="14" bodyfile="include/endstone/lang/translatable.h" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Translatable_1ad606caab1e9a3e5f0c91286863357e1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; endstone::Translatable::getText</definition>
+        <argsstring>() const</argsstring>
+        <name>getText</name>
+        <briefdescription>
+<para>Get the text to be translated. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the text to be translated </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="38" column="24" bodyfile="include/endstone/lang/translatable.h" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Translatable_1a302745a0e6b396f97c941981fa535856" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt;std::string&gt;&amp; endstone::Translatable::getParameters</definition>
+        <argsstring>() const</argsstring>
+        <name>getParameters</name>
+        <briefdescription>
+<para>Get the translation parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the translation parameters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="48" column="24" bodyfile="include/endstone/lang/translatable.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Translatable_1aeb41cd43cf6f4123c5159e1958e4c383" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::Translatable::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>Check if the message to be translated is empty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the message to be translated is empty, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/lang/translatable.h" line="58" column="11" bodyfile="include/endstone/lang/translatable.h" bodystart="58" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an object with a text representation that can be translated by the Minecraft client. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/lang/translatable.h" line="26" column="1" bodyfile="include/endstone/lang/translatable.h" bodystart="26" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Translatable_1aeb41cd43cf6f4123c5159e1958e4c383" prot="public" virt="non-virtual"><scope>endstone::Translatable</scope><name>empty</name></member>
+      <member refid="classendstone_1_1Translatable_1a302745a0e6b396f97c941981fa535856" prot="public" virt="non-virtual"><scope>endstone::Translatable</scope><name>getParameters</name></member>
+      <member refid="classendstone_1_1Translatable_1ad606caab1e9a3e5f0c91286863357e1b" prot="public" virt="non-virtual"><scope>endstone::Translatable</scope><name>getText</name></member>
+      <member refid="classendstone_1_1Translatable_1a9b9c3bd1af4d425bedc026f419dca28e" prot="private" virt="non-virtual"><scope>endstone::Translatable</scope><name>params_</name></member>
+      <member refid="classendstone_1_1Translatable_1a0747771031c0424636e4590b518afc28" prot="private" virt="non-virtual"><scope>endstone::Translatable</scope><name>text_</name></member>
+      <member refid="classendstone_1_1Translatable_1a9aa73dc65b0117858f5ff0d62c441029" prot="public" virt="non-virtual"><scope>endstone::Translatable</scope><name>Translatable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

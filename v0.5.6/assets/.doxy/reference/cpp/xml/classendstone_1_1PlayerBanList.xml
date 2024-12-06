@@ -1,0 +1,727 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerBanList" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>endstone::PlayerBanList</compoundname>
+    <includes refid="player__ban__list_8h" local="no">endstone/ban/player_ban_list.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a66813f3c67c642ad17caf7a474edab17" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual endstone::PlayerBanList::~PlayerBanList</definition>
+        <argsstring>()=default</argsstring>
+        <name>~PlayerBanList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="17" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a8f2ba1e5aa67dc9029988d2935e5a632" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <definition>virtual const PlayerBanEntry* endstone::PlayerBanList::getBanEntry</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>getBanEntry</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by player name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to search for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PlayerBanEntry* The corresponding entry, or nullptr if none found. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="25" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a27df98f35f99b653eb9f5822a7ea3537" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <definition>virtual PlayerBanEntry* endstone::PlayerBanList::getBanEntry</definition>
+        <argsstring>(std::string name)=0</argsstring>
+        <name>getBanEntry</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by player name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to search for. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PlayerBanEntry* The corresponding entry, or nullptr if none found. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="33" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a26d531366bcc1138920a567c114d0b5d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <definition>virtual const PlayerBanEntry* endstone::PlayerBanList::getBanEntry</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid) const =0</argsstring>
+        <name>getBanEntry</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by player name, <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>, or XUID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to search for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the player to search for, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The XUID of the player to search for, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PlayerBanEntry* The corresponding entry, or nullptr if none found. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="43" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1ad4f9e318fd167d1f4831a8c237922d29" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> *</type>
+        <definition>virtual PlayerBanEntry* endstone::PlayerBanList::getBanEntry</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid)=0</argsstring>
+        <name>getBanEntry</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <briefdescription>
+<para>Gets a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> by player name, <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref>, or XUID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to search for. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the player to search for, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The XUID of the player to search for, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PlayerBanEntry* The corresponding entry, or nullptr if none found. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="54" column="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a3e74f2c99b6d6675e5e2643d87011482" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
+        <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
+        <argsstring>(std::string name, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <name>addBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; BanEntry::Date &gt;</type>
+          <declname>expires</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expires</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The date for the ban&apos;s expiration (unban), or std::nullopt to imply forever. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="66" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aa108c09d941d261902cf47681a7f5545" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
+        <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <name>addBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; BanEntry::Date &gt;</type>
+          <declname>expires</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The XUID of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>expires</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The date for the ban&apos;s expiration (unban), or std::nullopt to imply forever. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="80" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aff31d80ff757c9ee35c72d7d7f3c1794" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
+        <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
+        <argsstring>(std::string name, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <name>addBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::chrono::seconds</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The duration of the ban </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="93" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a9ec941e645e18d8143d6e6d0d04a3a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> &amp;</type>
+        <definition>virtual PlayerBanEntry&amp; endstone::PlayerBanList::addBan</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <name>addBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reason</declname>
+        </param>
+        <param>
+          <type>std::chrono::seconds</type>
+          <declname>duration</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Adds a ban to this list. If a previous ban exists, this will update the previous entry. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the target. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The XUID of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reason</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The reason for the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The duration of the ban </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The source of the ban, std::nullopt indicates implementation default. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="107" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1ab458330db7628667635c187ac560e633" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; const <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> * &gt;</type>
+        <definition>virtual std::vector&lt;const PlayerBanEntry *&gt; endstone::PlayerBanList::getEntries</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getEntries</name>
+        <briefdescription>
+<para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A vector containing pointers to every entry tracked by this list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="116" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a352403913b003022503abc667035c461" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="classendstone_1_1PlayerBanEntry" kindref="compound">PlayerBanEntry</ref> * &gt;</type>
+        <definition>virtual std::vector&lt;PlayerBanEntry *&gt; endstone::PlayerBanList::getEntries</definition>
+        <argsstring>()=0</argsstring>
+        <name>getEntries</name>
+        <briefdescription>
+<para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A vector containing pointers to every entry tracked by this list. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="123" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a61d16ed125ebe7dd63d54ce01ca7c886" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::PlayerBanList::isBanned</definition>
+        <argsstring>(std::string name) const =0</argsstring>
+        <name>isBanned</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to find. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+</simplesect>
+<simplesect kind="return"><para>false Otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="132" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1a7be12babcf8042a19a693895b81f44b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::PlayerBanList::isBanned</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid) const =0</argsstring>
+        <name>isBanned</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to find. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The XUID of the target, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true If a <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> exists for the target, indicating an active ban status. </para>
+</simplesect>
+<simplesect kind="return"><para>false Otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="143" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1aad775f3d7c09741817b4768a1e56a31a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PlayerBanList::removeBan</definition>
+        <argsstring>(std::string name)=0</argsstring>
+        <name>removeBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Removes the specified player from this list, therefore indicating a &quot;not banned&quot; status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to remove from this list. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="151" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerBanList_1ac46c7ca6a478bf175ff321c05cf5c0a5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::PlayerBanList::removeBan</definition>
+        <argsstring>(std::string name, std::optional&lt; UUID &gt; uuid, std::optional&lt; std::string &gt; xuid)=0</argsstring>
+        <name>removeBan</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classendstone_1_1UUID" kindref="compound">UUID</ref> &gt;</type>
+          <declname>uuid</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>xuid</declname>
+        </param>
+        <briefdescription>
+<para>Removes the specified player from this list, therefore indicating a &quot;not banned&quot; status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The player name to remove from this list. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The unique id of the player, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The xbox user id (xuid) of the player, std::nullopt if not used. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/ban/player_ban_list.h" line="160" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a ban list, containing banned players. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/ban/player_ban_list.h" line="15" column="1" bodyfile="include/endstone/ban/player_ban_list.h" bodystart="15" bodyend="161"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerBanList_1a3e74f2c99b6d6675e5e2643d87011482" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1aa108c09d941d261902cf47681a7f5545" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1aff31d80ff757c9ee35c72d7d7f3c1794" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a9ec941e645e18d8143d6e6d0d04a3a06" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a8f2ba1e5aa67dc9029988d2935e5a632" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a27df98f35f99b653eb9f5822a7ea3537" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a26d531366bcc1138920a567c114d0b5d" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1ad4f9e318fd167d1f4831a8c237922d29" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1ab458330db7628667635c187ac560e633" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a352403913b003022503abc667035c461" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a61d16ed125ebe7dd63d54ce01ca7c886" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>isBanned</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a7be12babcf8042a19a693895b81f44b4" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>isBanned</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1aad775f3d7c09741817b4768a1e56a31a" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>removeBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1ac46c7ca6a478bf175ff321c05cf5c0a5" prot="public" virt="pure-virtual"><scope>endstone::PlayerBanList</scope><name>removeBan</name></member>
+      <member refid="classendstone_1_1PlayerBanList_1a66813f3c67c642ad17caf7a474edab17" prot="public" virt="virtual"><scope>endstone::PlayerBanList</scope><name>~PlayerBanList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

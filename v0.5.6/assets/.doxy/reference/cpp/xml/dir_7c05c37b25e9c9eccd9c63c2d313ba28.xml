@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_7c05c37b25e9c9eccd9c63c2d313ba28" kind="dir">
+    <compoundname>include/endstone/event/player</compoundname>
+    <innerfile refid="player__chat__event_8h">player_chat_event.h</innerfile>
+    <innerfile refid="player__command__event_8h">player_command_event.h</innerfile>
+    <innerfile refid="player__death__event_8h">player_death_event.h</innerfile>
+    <innerfile refid="player__event_8h">player_event.h</innerfile>
+    <innerfile refid="player__interact__actor__event_8h">player_interact_actor_event.h</innerfile>
+    <innerfile refid="player__interact__event_8h">player_interact_event.h</innerfile>
+    <innerfile refid="player__join__event_8h">player_join_event.h</innerfile>
+    <innerfile refid="player__kick__event_8h">player_kick_event.h</innerfile>
+    <innerfile refid="player__login__event_8h">player_login_event.h</innerfile>
+    <innerfile refid="player__quit__event_8h">player_quit_event.h</innerfile>
+    <innerfile refid="player__teleport__event_8h">player_teleport_event.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/event/player/"/>
+  </compounddef>
+</doxygen>

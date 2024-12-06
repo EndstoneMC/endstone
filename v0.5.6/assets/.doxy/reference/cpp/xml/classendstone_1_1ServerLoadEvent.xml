@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1ServerLoadEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::ServerLoadEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1ServerEvent" prot="public" virt="non-virtual">endstone::ServerEvent</basecompoundref>
+    <includes refid="server__load__event_8h" local="no">endstone/event/server/server_load_event.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>LoadType</name>
+        <enumvalue id="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a13e685964c2548aa748f7ea263bad4e5" prot="public">
+          <name>Startup</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529a4d1c8263ba1036754f8db14a98f9f006" prot="public">
+          <name>Reload</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="30" column="5" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="30" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ServerLoadEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;ServerLoadEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="42" column="37" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1ServerLoadEvent_1a0c38ee1be7f8172c828fcc32a8591554" prot="private" static="no" mutable="no">
+        <type>LoadType</type>
+        <definition>LoadType endstone::ServerLoadEvent::type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="54" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1a6b655d60130ef5239ec7fb4b70b05670" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::ServerLoadEvent::ServerLoadEvent</definition>
+        <argsstring>(LoadType type)</argsstring>
+        <name>ServerLoadEvent</name>
+        <param>
+          <type>LoadType</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="35" column="14" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>LoadType</type>
+        <definition>LoadType endstone::ServerLoadEvent::getType</definition>
+        <argsstring>() const</argsstring>
+        <name>getType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="37" column="15" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="37" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::ServerLoadEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="43" column="18" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::ServerLoadEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/server/server_load_event.h" line="48" column="11" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="48" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Called when either the server startup or reload has completed. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::ServerLoadEvent</label>
+        <link refid="classendstone_1_1ServerLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ServerEvent</label>
+        <link refid="classendstone_1_1ServerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::ServerLoadEvent</label>
+        <link refid="classendstone_1_1ServerLoadEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::ServerEvent</label>
+        <link refid="classendstone_1_1ServerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/server/server_load_event.h" line="28" column="1" bodyfile="include/endstone/event/server/server_load_event.h" bodystart="28" bodyend="55"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1ServerEvent_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ServerEvent_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual" ambiguityscope="endstone::Event::"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual" ambiguityscope="endstone::Event::"><scope>endstone::ServerLoadEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1a662aec6d6e841b68e1d1fc269d7f184a" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1ad6f8ab066b197a8175518ac9e8dcabae" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>getType</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1ae9bf0371dda434c3227c2b88c098fa22" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1a0fdde50ad13a7c2dc531ca89341a0529" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>LoadType</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1aadade0b34a9857cae4d6eca19401cfb6" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1a6b655d60130ef5239ec7fb4b70b05670" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>ServerLoadEvent</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1ServerLoadEvent_1a0c38ee1be7f8172c828fcc32a8591554" prot="private" virt="non-virtual"><scope>endstone::ServerLoadEvent</scope><name>type_</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::ServerLoadEvent</scope><name>~Event</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

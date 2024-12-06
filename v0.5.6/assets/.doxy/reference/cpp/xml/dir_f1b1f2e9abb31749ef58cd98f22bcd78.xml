@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_f1b1f2e9abb31749ef58cd98f22bcd78" kind="dir">
+    <compoundname>include/endstone/ban</compoundname>
+    <innerfile refid="ban__entry_8h">ban_entry.h</innerfile>
+    <innerfile refid="player__ban__entry_8h">player_ban_entry.h</innerfile>
+    <innerfile refid="player__ban__list_8h">player_ban_list.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/ban/"/>
+  </compounddef>
+</doxygen>

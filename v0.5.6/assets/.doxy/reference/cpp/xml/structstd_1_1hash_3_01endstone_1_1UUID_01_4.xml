@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structstd_1_1hash_3_01endstone_1_1UUID_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>std::hash&lt; endstone::UUID &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t std::hash&lt; endstone::UUID &gt;::operator()</definition>
+        <argsstring>(const endstone::UUID &amp;value) const noexcept</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1UUID" kindref="compound">endstone::UUID</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/uuid.h" line="160" column="17" bodyfile="include/endstone/util/uuid.h" bodystart="160" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/util/uuid.h" line="159" column="1" bodyfile="include/endstone/util/uuid.h" bodystart="159" bodyend="164"/>
+    <listofallmembers>
+      <member refid="structstd_1_1hash_3_01endstone_1_1UUID_01_4_1aba2e224d81006d5f09afad62be9dfd1c" prot="public" virt="non-virtual"><scope>std::hash&lt; endstone::UUID &gt;</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
