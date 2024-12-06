@@ -5,9 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.6 - Unreleased
+## 0.5.7 - Unreleased
 
-<small>[Compare with 0.5.5](https://github.com/EndstoneMC/endstone/compare/v0.5.5...HEAD)</small>
+<small>[Compare with 0.5.6](https://github.com/EndstoneMC/endstone/compare/v0.5.6...HEAD)</small>
+
+## [0.5.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.6) - 2024-12-06
+
+<small>[Compare with 0.5.5](https://github.com/EndstoneMC/endstone/compare/v0.5.5...v0.5.6)</small>
+
+### Added
+
+- Added support for Minecraft v1.21.50 (The Garden Awakens).
+- Added `Inventory::getItem` and `Inventory::setItem` methods to manipulate a player's inventory.
+- Added `Inventory::getContents` method to retrieve all items in an inventory.
+- Added `/ban` and `/unban` commands to add or remove players from the deny list.
+- Added `/banlist [ips|players]` command to list all banned players and/or IPs.
+- Added `PluginManager::loadPlugin` to allow third-party plugin loaders to load plugins from single files instead of
+  directories. [#98](https://github.com/EndstoneMC/endstone/issues/98)
+
+### Fixed
+
+- Fixed an issue where `block_palette.nbt` was dumped twice in the DevTools.
+
+### Changed
+
+- Added support for loading a mixture of folder packs listed in `world_resource_packs.json` (the conventional method)
+  and zipped packs in `.zip` or `.mcpack` format placed under `resource_packs`.
 
 ## [0.5.5](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.5) - 2024-10-26
 
