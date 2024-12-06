@@ -14,8 +14,12 @@
 
 #include "bedrock/world/events/scripting_event_coordinator.h"
 
+#include <boost/mpl/bool.hpp>
 #include <entt/entt.hpp>
 
+#include "bedrock/gameplayhandlers/coordinator_result.h"
+#include "bedrock/world/events/event_variant.h"
+#include "bedrock/world/events/scripting_events.h"
 #include "endstone/detail/hook.h"
 #include "endstone/detail/server.h"
 #include "endstone/event/server/script_message_event.h"
@@ -24,33 +28,41 @@ using endstone::detail::EndstoneServer;
 
 CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGameplayEvent<CoordinatorResult>> ref)
 {
-    auto &server = entt::locator<EndstoneServer>::value();
-    return std::visit(endstone::overloaded{
-                          [&](const Details::ValueOrRef<ScriptCommandMessageEvent const> &arg) {
-                              const auto &event = arg.value();
-                              const endstone::CommandSender *sender = nullptr;
-                              if (event.source_actor.has_value()) {
-                                  if (auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {
-                                      sender = &actor->getEndstoneActor();
-                                  }
-                              }
-                              // TODO(command): add support for BlockCommandSender
-                              if (!sender) {
-                                  sender = &server.getCommandSender();
-                              }
-                              endstone::ScriptMessageEvent e{event.message_id, event.message_value, *sender};
-                              server.getPluginManager().callEvent(e);
+    const auto &server = entt::locator<EndstoneServer>::value();
 
-                              // fix: wtf mojang devs - the original function accesses the pointer without checking
-                              if (!scripting_event_handler_) {
-                                  return CoordinatorResult::Continue;
-                              }
-                              return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
-                          },
-                          [&](auto &&arg) -> CoordinatorResult {
-                              const auto &event = arg.value();
-                              return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
-                          },
-                      },
-                      ref.get().variant);
+    auto visitor = [&](auto &&arg) -> CoordinatorResult {
+        using T = std::decay_t<decltype(arg)>;
+
+        if constexpr (std::is_same_v<T, Details::ValueOrRef<const ScriptCommandMessageEvent>>) {
+            const auto &event = arg.value();
+            const endstone::CommandSender *sender = nullptr;
+            if (event.source_actor.has_value()) {
+                if (auto *actor = event.level.fetchEntity(event.source_actor.value(), false); actor) {
+                    sender = &actor->getEndstoneActor();
+                }
+            }
+            // TODO(command): add support for BlockCommandSender
+            if (!sender) {
+                sender = &server.getCommandSender();
+            }
+            endstone::ScriptMessageEvent e{event.message_id, event.message_value, *sender};
+            server.getPluginManager().callEvent(e);
+
+            // fix: wtf mojang devs - the original function accesses the pointer without checking
+            if (!scripting_event_handler_) {
+                return CoordinatorResult::Continue;
+            }
+            return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
+        }
+        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const ScriptModuleStartupEvent>> ||
+                           std::is_same_v<T, Details::ValueOrRef<const ScriptModuleShutdownEvent>>) {
+            const auto &event = arg.value();
+            return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
+        }
+        else {
+            static_assert(boost::mpl::false_::value, "non-exhaustive visitor!");
+        }
+    };
+
+    return std::visit(visitor, ref.get().variant);
 }
