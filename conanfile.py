@@ -205,10 +205,7 @@ class EndstoneRecipe(ConanFile):
 
         self.cpp_info.components["runtime"].libs = ["endstone_runtime"]
         self.cpp_info.components["runtime"].set_property("cmake_target_name", "endstone::runtime")
-        self.cpp_info.components["runtime"].requires = [
-            "core",
-            "funchook::funchook",
-        ]
+        self.cpp_info.components["runtime"].requires = ["core"]
         if self._devtools_enabled:
             self.cpp_info.components["runtime"].requires.extend(["devtools"])
         if self.settings.os == "Windows":
