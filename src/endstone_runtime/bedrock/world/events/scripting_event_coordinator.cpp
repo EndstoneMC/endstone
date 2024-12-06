@@ -52,16 +52,10 @@ CoordinatorResult ScriptingEventCoordinator::sendEvent(EventRef<ScriptingGamepla
             if (!scripting_event_handler_) {
                 return CoordinatorResult::Continue;
             }
-            return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
         }
-        else if constexpr (std::is_same_v<T, Details::ValueOrRef<const ScriptModuleStartupEvent>> ||
-                           std::is_same_v<T, Details::ValueOrRef<const ScriptModuleShutdownEvent>>) {
-            const auto &event = arg.value();
-            return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
-        }
-        else {
-            static_assert(boost::mpl::false_::value, "non-exhaustive visitor!");
-        }
+
+        const auto &event = arg.value();
+        return ENDSTONE_HOOK_CALL_ORIGINAL(&ScriptingEventCoordinator::sendEvent, this, event);
     };
 
     return std::visit(visitor, ref.get().variant);
