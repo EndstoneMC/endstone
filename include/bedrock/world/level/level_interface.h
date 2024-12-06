@@ -464,5 +464,5 @@ private:
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
-    virtual void *_cerealContext();
+    virtual void *_cerealContext() = 0;
 };
