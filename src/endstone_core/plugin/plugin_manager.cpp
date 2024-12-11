@@ -87,11 +87,15 @@ Plugin *EndstonePluginManager::loadPlugin(std::string file)
 {
     Plugin *result = nullptr;
     for (const auto &loader : plugin_loaders_) {
-        if (auto *plugin = loader->loadPlugin(file); plugin) {
-            if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
-                result = plugin;
+        for (const auto &pattern : loader->getPluginFileFilters()) {
+            if (std::regex r(pattern); std::regex_search(file, r)) {
+                if (auto *plugin = loader->loadPlugin(file); plugin) {
+                    if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+                        result = plugin;
+                    }
+                    break;
+                }
             }
-            break;
         }
     }
     return result;
