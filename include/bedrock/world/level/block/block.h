@@ -56,6 +56,11 @@ public:
         return legacy_block_->canDropWithAnyTool();
     }
 
+    [[nodiscard]] bool canContainLiquid() const
+    {
+        return direct_data_.water_detection_rule.can_contain_liquid;
+    }
+
     [[nodiscard]] const CompoundTag &getSerializationId() const
     {
         return serialization_id_;
