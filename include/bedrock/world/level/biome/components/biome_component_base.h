@@ -17,5 +17,4 @@
 struct BiomeComponentBase {
     virtual ~BiomeComponentBase();
 };
-static_assert(sizeof(BiomeComponentBase) == 8);
-
+BEDROCK_STATIC_ASSERT_SIZE(BiomeComponentBase, 8, 8);

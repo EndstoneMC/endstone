@@ -23,4 +23,4 @@ private:
     std::vector<std::pair<Bedrock::typeid_t<void>, std::unique_ptr<BiomeComponentBase>>> component_list_;  // +0
     bool allow_adding_components_;                                                                         // +24
 };
-static_assert(sizeof(BiomeComponentStorage) == 32);
+BEDROCK_STATIC_ASSERT_SIZE(BiomeComponentStorage, 32, 32);
