@@ -28,19 +28,9 @@ public:
         return never_buildable_;
     }
 
-    [[nodiscard]] bool isAlwaysDestroyable() const
-    {
-        return always_destroyable_;
-    }
-
     [[nodiscard]] bool isLiquid() const
     {
         return is_liquid_;
-    }
-
-    [[nodiscard]] float getTranslucency() const
-    {
-        return translucency_;
     }
 
     [[nodiscard]] bool getBlocksMotion() const
@@ -71,11 +61,9 @@ public:
 private:
     MaterialType type_;          // +0
     bool never_buildable_;       // +4
-    bool always_destroyable_;    // +5
-    bool is_liquid_;             // +6
-    float translucency_;         // +8
-    bool blocks_motion_;         // +12
-    bool blocks_precipitation_;  // +13
-    bool solid_;                 // +14
-    bool super_hot_;             // +15
+    bool is_liquid_;             // +5
+    bool blocks_motion_;         // +6
+    bool blocks_precipitation_;  // +7
+    bool solid_;                 // +8
+    bool super_hot_;             // +9
 };
