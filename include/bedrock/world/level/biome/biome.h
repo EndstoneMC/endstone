@@ -51,6 +51,7 @@ public:
     }
 
 private:
+    // FIXME: structure needs to be updated
     HashedString hash_;                                       // +0
     float temperature_;                                       // +56
     float downfall_;                                          // +60
