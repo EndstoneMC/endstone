@@ -29,9 +29,9 @@ float BlockLegacy::getThickness() const
     return thickness_;
 }
 
-const Material &BlockLegacy::getMaterial() const
+float BlockLegacy::getTranslucency() const
 {
-    return *material_;
+    return translucency_;
 }
 
 const std::vector<HashedString> &BlockLegacy::getTags() const

@@ -25,7 +25,7 @@ struct VanillaData {
     nlohmann::json block_states;
     nlohmann::json block_tags;
     ::ListTag block_palette;
-    nlohmann::json materials;
+    // nlohmann::json materials;
     nlohmann::json items;
     ::ListTag creative_items;
     nlohmann::json item_tags;

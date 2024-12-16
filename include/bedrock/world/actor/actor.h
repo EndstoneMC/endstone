@@ -47,7 +47,6 @@
 #include "bedrock/world/actor/actor_unique_id.h"
 #include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
 #include "bedrock/world/level/dimension/dimension.h"
-#include "bedrock/world/level/material/material_type.h"
 #include "endstone/detail/actor/actor.h"
 
 class Player;

@@ -32,7 +32,6 @@
 #include "bedrock/world/level/block/block_state_instance.h"
 #include "bedrock/world/level/block/components/block_component_storage.h"
 #include "bedrock/world/level/block_pos.h"
-#include "bedrock/world/level/material/material.h"
 #include "bedrock/world/phys/aabb.h"
 
 class Actor;
@@ -44,6 +43,8 @@ class IConstBlockSource;
 class ItemStack;
 class ItemInstance;
 class Player;
+class Material;
+class MaterialType;
 
 enum class BlockProperty : std::uint64_t {
     None = 0x0,
@@ -278,7 +279,7 @@ public:
     [[nodiscard]] bool requiresCorrectToolForDrops() const;
     [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
-    [[nodiscard]] const Material &getMaterial() const;
+    [[nodiscard]] float getTranslucency() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
     [[nodiscard]] const std::string &getDescriptionId() const;
     [[nodiscard]] const std::string &getFullNameId() const;

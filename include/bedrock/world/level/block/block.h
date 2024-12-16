@@ -111,11 +111,6 @@ public:
         return direct_data_.light_emission;
     }
 
-    [[nodiscard]] const Material &getMaterial() const
-    {
-        return legacy_block_->getMaterial();
-    }
-
     [[nodiscard]] const std::vector<HashedString> &getTags() const
     {
         if (!tags_.empty()) {
@@ -127,6 +122,11 @@ public:
     [[nodiscard]] float getThickness() const
     {
         return legacy_block_->getThickness();
+    }
+
+    [[nodiscard]] float getTranslucency() const
+    {
+        return legacy_block_->getTranslucency();
     }
 
     [[nodiscard]] const BlockLegacy &getLegacyBlock() const
