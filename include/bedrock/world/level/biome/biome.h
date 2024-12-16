@@ -16,61 +16,64 @@
 
 #include <cstdint>
 
-#include "bedrock/core/math/color.h"
-#include "bedrock/forward.h"
-#include "bedrock/gamerefs/weak_ref.h"
+#include "bedrock/common_types.h"
+#include "bedrock/world/level/biome/components/biome_component_storage.h"
+#include "bedrock/world/level/biome/mob_spawner_data.h"
+
+enum class OceanTempCategory {
+    COLD = 0,
+    WARM = 1,
+};
+
+struct OceanRuinConfiguration {
+    OceanTempCategory type;
+    float large_probability;
+    float cluster_probability;
+};
 
 class Biome {
-    enum class OceanTempCategory : std::int32_t {
-        COLD = 0,
-        WARM = 1,
-    };
-
-    struct CachedClientComponentData {
-        bool has_noise_based_color_palette;
-        bool is_roofed_forest;
-    };
-
-    struct OceanRuinConfiguration {
-        OceanTempCategory type;
-        float large_probability;
-        float cluster_probability;
-    };
-
 public:
     virtual ~Biome() = 0;
 
     [[nodiscard]] const std::string &getName() const
     {
-        return hash_.getString();
+        return hash.getString();
     }
 
-    [[nodiscard]] int getId() const
+    [[nodiscard]] BiomeIdType getId() const
     {
         return id_;
     }
 
+    HashedString hash;                         // +8
+    float temperature;                         // +56
+    float downfall;                            // +60
+    float red_spore_density;                   // +64
+    float blue_spore_density;                  // +68
+    float ash_density;                         // +72
+    float white_ash_density;                   // +76
+    float snow_accumulation;                   // +80
+    float foliage_snow;                        // +84
+    float min_snow_level;                      // +88
+    float max_snow_level;                      // +92
+    float depth;                               // +96
+    float scale;                               // +100
+    int map_water_color;                       // +104
+    float water_transparency;                  // +108
+    bool rain;                                 // +112
+    OceanRuinConfiguration ocean_ruin_config;  // +116
+
+protected:
+    MobList mobs_;             // +128
+    MobCategoryMap mobs_map_;  // +152
+    struct CachedClientComponentData {
+        bool has_noise_based_color_palette;
+        bool is_roofed_forest;
+    };
+    static_assert(sizeof(CachedClientComponentData) == 2);
+    CachedClientComponentData cached_client_component_data_;  // +344
+
 private:
-    // FIXME: structure needs to be updated
-    HashedString hash_;                                       // +0
-    float temperature_;                                       // +56
-    float downfall_;                                          // +60
-    float red_spore_density_;                                 // +64
-    float blue_spore_density_;                                // +68
-    float ash_density_;                                       // +72
-    float white_ash_density_;                                 // +76
-    float snow_accumulation_;                                 // +80
-    float foliage_snow_;                                      // +84
-    float min_snow_level_;                                    // +88
-    float max_snow_level_;                                    // +92
-    float depth_;                                             // +96
-    float scale_;                                             // +100
-    mce::Color water_color_;                                  // +104
-    float water_transparency_;                                // +120
-    bool rain_;                                               // +124
-    OceanRuinConfiguration ocean_ruin_config_;                // +128
-    std::vector<std::shared_ptr<void *>> mobs_;               // +144 void* = MobSpawnerData
-    CachedClientComponentData cached_client_component_data_;  // +168
-    std::uint16_t id_;                                        // +170
-    // BiomeComponentStorage biome_component_storage_;
+    BiomeIdType id_;                                 // +346
+    BiomeComponentStorage biome_component_storage_;  // +352
 };

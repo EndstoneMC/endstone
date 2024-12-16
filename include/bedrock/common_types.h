@@ -20,6 +20,9 @@
 #include "bedrock/util/new_type.h"
 
 using ActorList = std::vector<class Actor *>;
+using BlockActorList = std::vector<class BlockActor *>;
+using MobList = std::vector<std::shared_ptr<class MobSpawnerData>>;
+using MobCategoryMap = std::array<std::vector<std::shared_ptr<class MobSpawnerData>>, 8UL>;
 
 enum class SubClientId : std::uint8_t {
     PrimaryClient = 0,
@@ -31,13 +34,19 @@ enum class SubClientId : std::uint8_t {
 };
 
 using BlockRuntimeId = std::uint32_t;
+using BiomeIdType = std::uint16_t;
+
 struct NewBlockID : NewType<std::uint16_t> {};
+static_assert(sizeof(NewBlockID) == 2);
 
 struct Brightness : NewType<std::uint8_t> {};
+static_assert(sizeof(Brightness) == 1);
+
 struct BrightnessPair {
     Brightness sky;
     Brightness block;
 };
+static_assert(sizeof(BrightnessPair) == 2);
 
 using DataID = std::uint16_t;
 using FacingID = std::uint8_t;
