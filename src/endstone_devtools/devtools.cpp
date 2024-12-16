@@ -196,10 +196,6 @@ void render()
                         file_to_save = data->block_tags;
                         openFileBrowser("Save Block Tags", "block_tags.json");
                     }
-                    if (ImGui::MenuItem("Materials")) {
-                        file_to_save = data->materials;
-                        openFileBrowser("Save Materials", "materials.json");
-                    }
                     if (ImGui::MenuItem("Items")) {
                         file_to_save = data->items;
                         openFileBrowser("Save Items", "items.json");
@@ -388,10 +384,6 @@ void showBlockWindow(bool *open)
         ImGui::Json(data->block_tags);
     }
 
-    if (ImGui::CollapsingHeader(fmt::format("{} Materials", data->materials.size()).c_str())) {
-        ImGui::Json(data->materials);
-    }
-
     if (ImGui::CollapsingHeader("Block Palette")) {
         ImGui::Json(NbtIo::toJson(data->block_palette));
     }
@@ -538,7 +530,6 @@ void exportAll(const std::filesystem::path &base_path, const VanillaData *data)
     save_json_to_file(data->block_types, "block_types.json");
     save_json_to_file(data->block_states, "block_states.json");
     save_json_to_file(data->block_tags, "block_tags.json");
-    save_json_to_file(data->materials, "materials.json");
     save_json_to_file(data->items, "items.json");
     save_json_to_file(data->item_tags, "item_tags.json");
     save_json_to_file(data->biomes, "biomes.json");

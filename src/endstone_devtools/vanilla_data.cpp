@@ -50,21 +50,8 @@ void dumpBlockData(VanillaData &data, ::Level &level)
     auto item_registry = level.getItemRegistry();
 
     BlockTypeRegistry::forEachBlock([&](const BlockLegacy &block_legacy) {
-        const auto &material = block_legacy.getMaterial();
-        auto material_name = magic_enum::enum_name(material.getType());
-        data.materials[material_name] = {
-            {"isNeverBuildable", material.isNeverBuildable()},
-            {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
-            {"isLiquid", material.isLiquid()},
-            {"translucency", round(material.getTranslucency())},
-            {"blocksMotion", material.getBlocksMotion()},
-            {"blocksPrecipitation", material.getBlocksPrecipitation()},
-            {"isSolid", material.isSolid()},
-            {"isSuperHot", material.isSuperHot()},
-            {"isSolidBlocking", material.isSolidBlocking()},
-        };
-
         const auto &name = block_legacy.getFullNameId();
+
         nlohmann::json tags;
         for (const auto &tag : block_legacy.getTags()) {
             auto tag_name = tag.getString();
@@ -79,21 +66,10 @@ void dumpBlockData(VanillaData &data, ::Level &level)
             data.block_tags[tag_name].push_back(name);
         }
 
-        data.block_types[name] = {{"material", magic_enum::enum_name(material.getType())}};
+        data.block_types[name] = {{"defaultBlockStateHash", block_legacy.getDefaultState()->getRuntimeId()}};
         if (!tags.is_null()) {
             data.block_types[name]["tags"] = tags;
         }
-
-        nlohmann::json special_tools;
-        for (const auto &[key, item] : item_registry.getNameToItemMap()) {
-            if (item->canDestroySpecial(*block_legacy.getDefaultState())) {
-                special_tools.push_back(item->getFullItemName());
-            }
-        }
-        if (!special_tools.is_null()) {
-            data.block_types[name]["specialTools"] = special_tools;
-        }
-        data.block_types[name]["defaultBlockStateHash"] = block_legacy.getDefaultState()->getRuntimeId();
 
         block_legacy.forEachBlockPermutation([&](const ::Block &block) {
             AABB collision_shape;
@@ -119,7 +95,9 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
                 {"canContainLiquid", block.canContainLiquid()},
-                // {"canDropWithAnyTool", block.canDropWithAnyTool()},
+                {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
+                {"isSolid", block.isSolid()},
+                {"translucency", block.getTranslucency()},
                 {"mapColor", map_color.toHexString()},
                 {"collisionShape",
                  {

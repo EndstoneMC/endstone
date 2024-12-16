@@ -25,11 +25,11 @@
 #include "bedrock/world/level/block_source_interface.h"
 #include "bedrock/world/level/chunk/level_chunk.h"
 #include "bedrock/world/level/level_seed.h"
-#include "bedrock/world/level/material/material.h"
-#include "bedrock/world/level/material/material_type.h"
 
 class ILevel;
 class Level;
+class Material;
+class MaterialType;
 
 using ActorSpan = gsl::span<gsl::not_null<Actor *>>;
 

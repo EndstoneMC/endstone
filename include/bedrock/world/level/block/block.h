@@ -51,14 +51,19 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    [[nodiscard]] bool canDropWithAnyTool() const
+    [[nodiscard]] bool requiresCorrectToolForDrops() const
     {
-        return legacy_block_->canDropWithAnyTool();
+        return legacy_block_->requiresCorrectToolForDrops();
     }
 
     [[nodiscard]] bool canContainLiquid() const
     {
         return direct_data_.water_detection_rule.can_contain_liquid;
+    }
+
+    [[nodiscard]] bool isSolid() const
+    {
+        return legacy_block_->isSolid();
     }
 
     [[nodiscard]] const CompoundTag &getSerializationId() const
@@ -106,11 +111,6 @@ public:
         return direct_data_.light_emission;
     }
 
-    [[nodiscard]] const Material &getMaterial() const
-    {
-        return legacy_block_->getMaterial();
-    }
-
     [[nodiscard]] const std::vector<HashedString> &getTags() const
     {
         if (!tags_.empty()) {
@@ -122,6 +122,11 @@ public:
     [[nodiscard]] float getThickness() const
     {
         return legacy_block_->getThickness();
+    }
+
+    [[nodiscard]] float getTranslucency() const
+    {
+        return legacy_block_->getTranslucency();
     }
 
     [[nodiscard]] const BlockLegacy &getLegacyBlock() const
