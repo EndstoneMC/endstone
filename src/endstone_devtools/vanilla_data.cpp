@@ -54,9 +54,9 @@ void dumpBlockData(VanillaData &data, ::Level &level)
         auto material_name = magic_enum::enum_name(material.getType());
         data.materials[material_name] = {
             {"isNeverBuildable", material.isNeverBuildable()},
-            {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
+            // {"isAlwaysDestroyable", material.isAlwaysDestroyable()},
             {"isLiquid", material.isLiquid()},
-            {"translucency", round(material.getTranslucency())},
+            // {"translucency", round(material.getTranslucency())},
             {"blocksMotion", material.getBlocksMotion()},
             {"blocksPrecipitation", material.getBlocksPrecipitation()},
             {"isSolid", material.isSolid()},
@@ -119,7 +119,7 @@ void dumpBlockData(VanillaData &data, ::Level &level)
                 {"friction", round(block.getFriction())},
                 {"hardness", round(block.getDestroySpeed())},
                 {"canContainLiquid", block.canContainLiquid()},
-                // {"canDropWithAnyTool", block.canDropWithAnyTool()},
+                // {"requiresCorrectToolForDrops", block.requiresCorrectToolForDrops()},
                 {"mapColor", map_color.toHexString()},
                 {"collisionShape",
                  {

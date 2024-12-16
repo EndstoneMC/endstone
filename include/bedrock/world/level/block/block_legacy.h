@@ -275,7 +275,8 @@ public:
     virtual void _onHitByActivatingAttack(BlockSource &, BlockPos const &, Actor *) const = 0;
     virtual void entityInside(BlockSource &, BlockPos const &, Actor &) const = 0;
 
-    [[nodiscard]] bool canDropWithAnyTool() const;
+    [[nodiscard]] bool requiresCorrectToolForDrops() const;
+    [[nodiscard]] bool isSolid() const;
     [[nodiscard]] float getThickness() const;
     [[nodiscard]] const Material &getMaterial() const;
     [[nodiscard]] const std::vector<HashedString> &getTags() const;
@@ -353,6 +354,6 @@ private:
     std::unique_ptr<void *> block_state_group_;                           //
     std::unique_ptr<void *> resource_drops_strategy_;                     //
     IntRange experience_drop_;                                            //
-    bool can_drop_with_any_tool_;                                         //
+    bool requires_correct_tool_for_drops;                                 //
                                                                           // ...
 };

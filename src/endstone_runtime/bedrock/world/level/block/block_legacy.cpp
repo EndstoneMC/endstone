@@ -14,9 +14,14 @@
 
 #include "bedrock/world/level/block/block_legacy.h"
 
-bool BlockLegacy::canDropWithAnyTool() const
+bool BlockLegacy::requiresCorrectToolForDrops() const
 {
-    return can_drop_with_any_tool_;
+    return requires_correct_tool_for_drops;
+}
+
+bool BlockLegacy::isSolid() const
+{
+    return solid_;
 }
 
 float BlockLegacy::getThickness() const

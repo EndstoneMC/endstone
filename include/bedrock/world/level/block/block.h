@@ -51,14 +51,19 @@ class Block {
 public:
     virtual ~Block() = default;
 
-    [[nodiscard]] bool canDropWithAnyTool() const
+    [[nodiscard]] bool requiresCorrectToolForDrops() const
     {
-        return legacy_block_->canDropWithAnyTool();
+        return legacy_block_->requiresCorrectToolForDrops();
     }
 
     [[nodiscard]] bool canContainLiquid() const
     {
         return direct_data_.water_detection_rule.can_contain_liquid;
+    }
+
+    [[nodiscard]] bool isSolid() const
+    {
+        return legacy_block_->isSolid();
     }
 
     [[nodiscard]] const CompoundTag &getSerializationId() const
