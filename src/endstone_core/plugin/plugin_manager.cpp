@@ -106,9 +106,12 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
     std::vector<Plugin *> loaded_plugins;
 
     // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
-    for (const auto &loader : plugin_loaders_) {
+    size_t current_loader_index = 0;
+    while (current_loader_index < plugin_loaders_.size()) {
+        auto &loader = plugin_loaders_[current_loader_index];
         auto plugins = loader->loadPlugins(directory);
-        for (const auto &plugin : plugins) {
+
+        for (auto *plugin : plugins) {
             if (!plugin) {
                 continue;
             }
@@ -117,6 +120,8 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
                 loaded_plugins.push_back(plugin);
             }
         }
+
+        current_loader_index++;
     }
 
     return loaded_plugins;
