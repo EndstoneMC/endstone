@@ -56,14 +56,29 @@ public:
         return server_guid_;
     }
 
+    void setServerGuid(std::string guid)
+    {
+        server_guid_ = std::move(guid);
+    }
+
     [[nodiscard]] int getLocalPort() const
     {
         return local_port_;
     }
 
+    void setLocalPort(int port)
+    {
+        local_port_ = port;
+    }
+
     [[nodiscard]] int getLocalPortV6() const
     {
         return local_port_v6_;
+    }
+
+    void setLocalPortV6(int port)
+    {
+        local_port_v6_ = port;
     }
 
     [[nodiscard]] std::string getMotd() const

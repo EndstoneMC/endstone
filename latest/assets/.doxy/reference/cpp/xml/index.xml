@@ -1154,8 +1154,11 @@
     <member refid="classendstone_1_1ServerListPingEvent_1a0e6c471cdd050f14c86f1c216d44f377" kind="function"><name>getRemoteHost</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a96dbff8031414d99f72fc62eb208c7fd" kind="function"><name>getRemotePort</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1aa6a64659d29e47acf3af3e860c1d16da" kind="function"><name>getServerGuid</name></member>
+    <member refid="classendstone_1_1ServerListPingEvent_1a7398713547a0938d75954d29da7b8aba" kind="function"><name>setServerGuid</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ad7e01f29129c5e342a38ad8a8732c96a" kind="function"><name>getLocalPort</name></member>
+    <member refid="classendstone_1_1ServerListPingEvent_1a5da7cb54f3d9d5a97a5c9696a5a7123a" kind="function"><name>setLocalPort</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1aa68b81ed4b1a3fd074213be9c8ce9f9c" kind="function"><name>getLocalPortV6</name></member>
+    <member refid="classendstone_1_1ServerListPingEvent_1a831630406c4b0d3c92fa914a26251953" kind="function"><name>setLocalPortV6</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a6815d44f4a92512b6af951ffeb540c01" kind="function"><name>getMotd</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1ad534cad4e5f078d2a49c2ece69503239" kind="function"><name>setMotd</name></member>
     <member refid="classendstone_1_1ServerListPingEvent_1a9855e0851bdc24a5329ab6dfebd8fb52" kind="function"><name>getNetworkProtocolVersion</name></member>

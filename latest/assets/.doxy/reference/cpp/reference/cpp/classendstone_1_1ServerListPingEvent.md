@@ -117,10 +117,13 @@ Inherits the following classes: [endstone::ServerEvent](classendstone_1_1ServerE
 |  std::string | [**serialize**](#function-serialize) () <br> |
 |  void | [**setGameMode**](#function-setgamemode) (GameMode game\_mode) <br> |
 |  void | [**setLevelName**](#function-setlevelname) (std::string level\_name) <br> |
+|  void | [**setLocalPort**](#function-setlocalport) (int port) <br> |
+|  void | [**setLocalPortV6**](#function-setlocalportv6) (int port) <br> |
 |  void | [**setMaxPlayers**](#function-setmaxplayers) (int max\_players) <br> |
 |  void | [**setMinecraftVersionNetwork**](#function-setminecraftversionnetwork) (std::string minecraft\_version\_network) <br> |
 |  void | [**setMotd**](#function-setmotd) (std::string motd) <br> |
 |  void | [**setNumPlayers**](#function-setnumplayers) (int num\_players) <br> |
+|  void | [**setServerGuid**](#function-setserverguid) (std::string guid) <br> |
 
 
 ## Public Functions inherited from endstone::ServerEvent
@@ -731,6 +734,64 @@ Set the level name.
 
 
 
+### function setLocalPort 
+
+```C++
+inline void endstone::ServerListPingEvent::setLocalPort (
+    int port
+) 
+```
+
+
+
+Set the local port of the server.
+
+
+
+
+**Parameters:**
+
+
+* `port` the local port 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setLocalPortV6 
+
+```C++
+inline void endstone::ServerListPingEvent::setLocalPortV6 (
+    int port
+) 
+```
+
+
+
+Set the local port of the server for IPv6 support.
+
+
+
+
+**Parameters:**
+
+
+* `port` the local port for IPv6 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setMaxPlayers 
 
 ```C++
@@ -837,6 +898,35 @@ Set the number of players online.
 
 
 * `num_players` the number of players 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setServerGuid 
+
+```C++
+inline void endstone::ServerListPingEvent::setServerGuid (
+    std::string guid
+) 
+```
+
+
+
+Set the unique identifier of the server.
+
+
+
+
+**Parameters:**
+
+
+* `guid` the server guid 
 
 
 
