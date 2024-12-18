@@ -65,6 +65,16 @@ public:
     }
 
     /**
+     * Set the unique identifier of the server.
+     *
+     * @param guid the server guid
+     */
+    void setServerGuid(std::string guid)
+    {
+        server_guid_ = std::move(guid);
+    }
+
+    /**
      * Get the local port of the server.
      *
      * @return The local port
@@ -75,6 +85,16 @@ public:
     }
 
     /**
+     * Set the local port of the server.
+     *
+     * @param port the local port
+     */
+    void setLocalPort(int port)
+    {
+        local_port_ = port;
+    }
+
+    /**
      * Get the local port of the server for IPv6 support
      *
      * @return The local port for IPv6
@@ -82,6 +102,16 @@ public:
     [[nodiscard]] int getLocalPortV6() const
     {
         return local_port_v6_;
+    }
+
+    /**
+     * Set the local port of the server for IPv6 support.
+     *
+     * @param port the local port for IPv6
+     */
+    void setLocalPortV6(int port)
+    {
+        local_port_v6_ = port;
     }
 
     /**
