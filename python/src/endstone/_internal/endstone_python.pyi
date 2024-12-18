@@ -2899,13 +2899,19 @@ class ServerListPingEvent(Event):
     @property
     def local_port(self) -> int:
         """
-        Get the local port of the server.
+        Get or set the local port of the server.
         """
+    @local_port.setter
+    def local_port(self, arg1: int) -> None:
+        ...
     @property
     def local_port_v6(self) -> int:
         """
-        Get the local port of the server for IPv6 support
+        Get or set the local port of the server for IPv6 support
         """
+    @local_port_v6.setter
+    def local_port_v6(self, arg1: int) -> None:
+        ...
     @property
     def max_players(self) -> int:
         """
@@ -2956,8 +2962,11 @@ class ServerListPingEvent(Event):
     @property
     def server_guid(self) -> str:
         """
-        Get the unique identifier of the server.
+        Get or set the unique identifier of the server.
         """
+    @server_guid.setter
+    def server_guid(self, arg1: str) -> None:
+        ...
 class ServerLoadEvent(Event):
     """
     Called when either the server startup or reload has completed.

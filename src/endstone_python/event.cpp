@@ -193,11 +193,12 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
                                "Get the host the ping is coming from.")
         .def_property_readonly("remote_port", &ServerListPingEvent::getRemotePort,
                                "Get the port the ping is coming from.")
-        .def_property_readonly("server_guid", &ServerListPingEvent::getServerGuid,
-                               "Get the unique identifier of the server.")
-        .def_property_readonly("local_port", &ServerListPingEvent::getLocalPort, "Get the local port of the server.")
-        .def_property_readonly("local_port_v6", &ServerListPingEvent::getLocalPortV6,
-                               "Get the local port of the server for IPv6 support")
+        .def_property("server_guid", &ServerListPingEvent::getServerGuid, &ServerListPingEvent::setServerGuid,
+                      "Get or set the unique identifier of the server.")
+        .def_property("local_port", &ServerListPingEvent::getLocalPort, &ServerListPingEvent::setLocalPort,
+                      "Get or set the local port of the server.")
+        .def_property("local_port_v6", &ServerListPingEvent::getLocalPortV6, &ServerListPingEvent::setLocalPortV6,
+                      "Get or set the local port of the server for IPv6 support")
         .def_property("motd", &ServerListPingEvent::getMotd, &ServerListPingEvent::setMotd,
                       "Gets or sets the message of the day message.")
         .def_property_readonly("network_protocol_version", &ServerListPingEvent::getNetworkProtocolVersion,
