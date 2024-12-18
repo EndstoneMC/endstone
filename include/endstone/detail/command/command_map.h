@@ -38,6 +38,7 @@ private:
     void setMinecraftCommands();
     void setPluginCommands();
 
+    void patchCommandRegistry();
     void saveCommandRegistryState() const;
     void restoreCommandRegistryState() const;
 

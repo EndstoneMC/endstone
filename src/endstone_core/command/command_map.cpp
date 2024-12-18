@@ -42,6 +42,7 @@ namespace endstone::detail {
 
 EndstoneCommandMap::EndstoneCommandMap(EndstoneServer &server) : server_(server)
 {
+    patchCommandRegistry();
     saveCommandRegistryState();
     setMinecraftCommands();
     setDefaultCommands();
@@ -116,11 +117,8 @@ void EndstoneCommandMap::setMinecraftCommands()
 {
     auto &registry = server_.getMinecraftCommands().getRegistry();
 
-    // Override commands
-    registry.signatures.erase("reload");
-
     std::unordered_map<std::string, std::vector<std::string>> command_aliases;
-    for (const auto &[alias, command_name] : registry.aliases) {
+    for (const auto &[alias, command_name] : registry.aliases_) {
         auto it = command_aliases.emplace(command_name, std::vector<std::string>()).first;
         it->second.push_back(alias);
     }
@@ -130,7 +128,7 @@ void EndstoneCommandMap::setMinecraftCommands()
     auto *parent = DefaultPermissions::registerPermission(
         root->getName() + ".command", root, "Gives the user the ability to use all vanilla minecraft commands");
 
-    for (const auto &[command_name, signature] : registry.signatures) {
+    for (const auto &[command_name, signature] : registry.signatures_) {
         auto description = getI18n().get(signature.description, {}, nullptr);
 
         std::vector<std::string> usages;
@@ -260,7 +258,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     // Add suffix if the enum already exists
                     std::string enum_name_final = enum_name;
                     int i = 0;
-                    while (registry.enum_lookup.find(enum_name_final) != registry.enum_lookup.end()) {
+                    while (registry.enum_lookup_.find(enum_name_final) != registry.enum_lookup_.end()) {
                         enum_name_final = fmt::format("{}_{}", enum_name, ++i);
                     }
                     if (enum_name_final != enum_name) {
@@ -269,30 +267,30 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                     }
 
                     // Add enum
-                    auto symbol = static_cast<std::uint32_t>(registry.addEnumValues(enum_name_final, parameter.values));
+                    auto symbol = registry.addEnumValues(enum_name_final, parameter.values);
 
                     // Check if the enum has been added
-                    auto it = registry.enum_lookup.find(enum_name_final);
-                    if (it == registry.enum_lookup.end()) {
+                    auto it = registry.enum_lookup_.find(enum_name_final);
+                    if (it == registry.enum_lookup_.end()) {
                         server_.getLogger().error("Unable to register enum '{}'.", enum_name_final);
                         throw std::runtime_error("Unreachable");
                     }
                     data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name = it->first.c_str();
-                    data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.enum_name_or_postfix = it->first.c_str();
+                    data.enum_or_postfix_symbol = symbol;
                     data.options = CommandParameterOption::EnumAutocompleteExpansion;
                 }
                 else if (parameter.type == "bool") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Boolean", {}));
                     data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name = "Boolean";
-                    data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.enum_name_or_postfix = "Boolean";
+                    data.enum_or_postfix_symbol = symbol;
                 }
                 else if (parameter.type == "block") {
                     static auto symbol = static_cast<std::uint32_t>(registry.addEnumValues("Block", {}));
                     data.param_type = CommandParameterDataType::Enum;
-                    data.enum_name = "Block";
-                    data.enum_symbol = CommandRegistry::Symbol{symbol};
+                    data.enum_name_or_postfix = "Block";
+                    data.enum_or_postfix_symbol = symbol;
                 }
                 else {
                     auto it = gTypeSymbols.find(std::string(parameter.type));
@@ -303,7 +301,7 @@ bool EndstoneCommandMap::registerCommand(std::shared_ptr<Command> command)
                         success = false;
                         break;  // early stop if any of the param in the usage is invalid
                     }
-                    data.fallback_symbol = CommandRegistry::Symbol{it->second};
+                    data.chained_subcommand_symbol = static_cast<int>(it->second);
                 }
                 param_data.push_back(data);
             }
@@ -348,22 +346,31 @@ struct {
 } gCommandRegistryState;
 }  // namespace
 
+void EndstoneCommandMap::patchCommandRegistry()
+{
+    std::lock_guard lock(mutex_);
+    auto &registry = server_.getMinecraftCommands().getRegistry();
+
+    // remove the vanilla `/reload` command (to be replaced by ours)
+    registry.signatures_.erase("reload");
+}
+
 void EndstoneCommandMap::saveCommandRegistryState() const
 {
     auto &registry = server_.getMinecraftCommands().getRegistry();
-    gCommandRegistryState.enums = registry.enums;
-    gCommandRegistryState.enum_lookup = registry.enum_lookup;
-    gCommandRegistryState.signatures = registry.signatures;
-    gCommandRegistryState.aliases = registry.aliases;
+    gCommandRegistryState.enums = registry.enums_;
+    gCommandRegistryState.enum_lookup = registry.enum_lookup_;
+    gCommandRegistryState.signatures = registry.signatures_;
+    gCommandRegistryState.aliases = registry.aliases_;
 }
 
 void EndstoneCommandMap::restoreCommandRegistryState() const
 {
     auto &registry = server_.getMinecraftCommands().getRegistry();
-    registry.enums = gCommandRegistryState.enums;
-    registry.enum_lookup = gCommandRegistryState.enum_lookup;
-    registry.signatures = gCommandRegistryState.signatures;
-    registry.aliases = gCommandRegistryState.aliases;
+    registry.enums_ = gCommandRegistryState.enums;
+    registry.enum_lookup_ = gCommandRegistryState.enum_lookup;
+    registry.signatures_ = gCommandRegistryState.signatures;
+    registry.aliases_ = gCommandRegistryState.aliases;
 }
 
 }  // namespace endstone::detail

@@ -16,5 +16,5 @@
 
 Json::Value const &WebToken::getData() const
 {
-    return data_info;
+    return data_info_;
 }

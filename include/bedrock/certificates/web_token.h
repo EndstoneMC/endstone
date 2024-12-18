@@ -18,7 +18,7 @@
 
 class WebToken {
 public:
-    Json::Value const &getData() const;
+    [[nodiscard]] Json::Value const &getData() const;
 
 private:
     std::string header_;       // +0

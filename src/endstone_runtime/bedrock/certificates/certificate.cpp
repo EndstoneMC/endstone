@@ -16,7 +16,7 @@
 
 Json::Value Certificate::getExtraData(const std::string &key, const Json::Value &default_value) const
 {
-    const auto extra_data = unverified_certificate_.raw_token_.data_info.get("extraData", {});
+    const auto extra_data = unverified_certificate_.raw_token_.getData().get("extraData", {});
     return extra_data.get(key, default_value);
 }
 
