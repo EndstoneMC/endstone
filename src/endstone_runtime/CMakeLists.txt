@@ -23,6 +23,7 @@ add_library(endstone_runtime SHARED
         bedrock/shared_constants.cpp
         bedrock/certificates/certificate.cpp
         bedrock/certificates/extended_certificate.cpp
+        bedrock/certificates/web_token.cpp
         bedrock/config/player_capabilities.cpp
         bedrock/core/debug/bedrock_event_logger.cpp
         bedrock/core/file/path.cpp

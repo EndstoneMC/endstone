@@ -22,10 +22,10 @@ Json::Value Certificate::getExtraData(const std::string &key, const Json::Value 
 
 bool Certificate::isValid() const
 {
-    return valid_;
+    return is_valid_;
 }
 
 bool Certificate::isSelfSigned() const
 {
-    return self_signed_;
+    return is_self_signed_;
 }

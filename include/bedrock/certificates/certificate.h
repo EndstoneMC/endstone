@@ -32,8 +32,8 @@ public:
     [[nodiscard]] bool isSelfSigned() const;
 
 private:
-    UnverifiedCertificate unverified_certificate_;  // +0
-    std::unique_ptr<Certificate> parent_;           // +136
-    bool valid_;                                 // +144
-    bool self_signed_;                           // +145
+    UnverifiedCertificate unverified_certificate_;     // +0
+    std::unique_ptr<Certificate> parent_certificate_;  // +136
+    bool is_valid_;                                    // +144
+    bool is_self_signed_;                              // +145
 };

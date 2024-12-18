@@ -12,18 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
+#include "bedrock/certificates/web_token.h"
 
-#include "bedrock/deps/json/value.h"
-
-class WebToken {
-public:
-    Json::Value const &getData() const;
-
-private:
-    std::string header_;       // +0
-    Json::Value header_info_;  // +32
-    std::string data_;         // +48
-    Json::Value data_info_;    // +80
-    std::string signature_;    // +96
-};
+Json::Value const &WebToken::getData() const
+{
+    return data_info;
+}

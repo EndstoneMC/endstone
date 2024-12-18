@@ -27,7 +27,7 @@ public:
     [[nodiscard]] Json::Value getData(const std::string &key) const
     {
         if (certificate_ && raw_token_) {
-            return raw_token_->data_info.get(key, Json::nullValue);
+            return raw_token_->getData().get(key, Json::nullValue);
         }
         return Json::nullValue;
     }
