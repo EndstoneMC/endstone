@@ -87,11 +87,15 @@ Plugin *EndstonePluginManager::loadPlugin(std::string file)
 {
     Plugin *result = nullptr;
     for (const auto &loader : plugin_loaders_) {
-        if (auto *plugin = loader->loadPlugin(file); plugin) {
-            if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
-                result = plugin;
+        for (const auto &pattern : loader->getPluginFileFilters()) {
+            if (std::regex r(pattern); std::regex_search(file, r)) {
+                if (auto *plugin = loader->loadPlugin(file); plugin) {
+                    if (initPlugin(*plugin, *loader, fs::path(file).parent_path())) {
+                        result = plugin;
+                    }
+                    break;
+                }
             }
-            break;
         }
     }
     return result;
@@ -104,7 +108,7 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
     // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
     for (const auto &loader : plugin_loaders_) {
         auto plugins = loader->loadPlugins(directory);
-        for (const auto &plugin : plugins) {
+        for (auto *plugin : plugins) {
             if (!plugin) {
                 continue;
             }
