@@ -67,7 +67,7 @@ public:
     /**
      * Set the unique identifier of the server.
      *
-     * @param guid the server guid to be set
+     * @param guid the server guid
      */
     void setServerGuid(std::string guid)
     {
@@ -87,7 +87,7 @@ public:
     /**
      * Set the local port of the server.
      *
-     * @param port the port that should be set
+     * @param port the local port
      */
     void setLocalPort(int port)
     {
