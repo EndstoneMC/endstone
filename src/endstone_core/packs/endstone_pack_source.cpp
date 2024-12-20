@@ -112,6 +112,9 @@ PackSourceReport EndstonePackSource::load(IPackManifestFactory &manifest_factory
                 continue;
             }
 
+            if (!key.empty()) {
+                content_keys_[pack->getManifest().getIdentity()] = key;
+            }
             packs_.emplace_back(std::move(pack));
         }
     }
