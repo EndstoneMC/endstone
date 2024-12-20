@@ -106,13 +106,22 @@ std::vector<Plugin *> EndstonePluginManager::loadPlugins(std::string directory)
     std::vector<Plugin *> loaded_plugins;
 
     // TODO(plugin): handling logic for depend, soft_depend, load_before and provides
-    for (const auto &loader : plugin_loaders_) {
+
+    // Create a copy of the current plugin loaders.
+    // This is necessary because some plugins might register new loaders during their `onLoad` phase,
+    // which could modify the `plugin_loaders_` vector and invalidate the iterator.
+    std::vector<PluginLoader *> loaders;
+    for (const auto &plugin_loader : plugin_loaders_) {
+        loaders.emplace_back(plugin_loader.get());
+    }
+
+    // Iterate over the copied loaders to load plugins from the specified directory.
+    for (const auto &loader : loaders) {
         auto plugins = loader->loadPlugins(directory);
         for (auto *plugin : plugins) {
             if (!plugin) {
                 continue;
             }
-
             if (initPlugin(*plugin, *loader, fs::path(directory))) {
                 loaded_plugins.push_back(plugin);
             }
