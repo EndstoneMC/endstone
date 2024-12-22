@@ -141,6 +141,7 @@ void init_color_format(py::module_ &m)
         .def_property_readonly_static("MATERIAL_LAPIS", [](const py::object &) { return ColorFormat::MaterialLapis; })
         .def_property_readonly_static("MATERIAL_AMETHYST",
                                       [](const py::object &) { return ColorFormat::MaterialAmethyst; })
+        .def_property_readonly_static("MATERIAL_RESIN", [](const py::object &) { return ColorFormat::MaterialResin; })
         .def_property_readonly_static("OBFUSCATED", [](const py::object &) { return ColorFormat::Obfuscated; })
         .def_property_readonly_static("BOLD", [](const py::object &) { return ColorFormat::Bold; })
         .def_property_readonly_static("ITALIC", [](const py::object &) { return ColorFormat::Italic; })

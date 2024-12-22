@@ -59,6 +59,7 @@ private:
         {ColorFormat::MaterialDiamond.back(), "\x1b[38;2;44;186;168m"},
         {ColorFormat::MaterialLapis.back(), "\x1b[38;2;33;73;123m"},
         {ColorFormat::MaterialAmethyst.back(), "\x1b[38;2;154;92;198m"},
+        {ColorFormat::MaterialResin.back(), "\x1b[38;2;234;113;19m"},
 
         // Formatting codes
         {ColorFormat::Obfuscated.back(), "\x1b[8m"},
