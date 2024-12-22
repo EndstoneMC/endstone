@@ -144,7 +144,9 @@ void EndstoneLevel::loadResourcePacks()
     std::stringstream ss(json.dump());
     auto pack_stack = ResourcePackStack::deserialize(ss, server_.getResourcePackRepository());
 
+    // Add encryption keys to network handler to be sent to clients
     auto content_keys = source.getContentKeys();
+    server_.getServerNetworkHandler().pack_id_to_content_key_.insert(content_keys.begin(), content_keys.end());
     for (const auto &pack_instance : pack_stack->stack) {
         const auto &manifest = pack_instance.getManifest();
         bool encrypted = content_keys.find(manifest.getIdentity()) != content_keys.end();

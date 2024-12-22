@@ -182,9 +182,6 @@ void EndstoneServer::enablePlugins(PluginLoadOrder type)
     if (type == PluginLoadOrder::PostWorld) {
         command_map_->setPluginCommands();
         DefaultPermissions::registerCorePermissions();
-        // TODO(refactor): should we move the following to EndstoneLevel::loadResourcePacks?
-        const auto &content_keys = getResourcePackSource().getContentKeys();
-        getServerNetworkHandler().pack_id_to_content_key_.insert(content_keys.begin(), content_keys.end());
     }
 
     auto plugins = plugin_manager_->getPlugins();
