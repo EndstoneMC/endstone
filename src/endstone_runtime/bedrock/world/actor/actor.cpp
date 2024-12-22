@@ -321,6 +321,16 @@ void Actor::setNameTag(const std::string &name)
     entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::NAME), name);
 }
 
+const std::string &Actor::getScoreTag() const
+{
+    return entity_data.getString(static_cast<SynchedActorData::ID>(ActorDataIDs::SCORE));
+}
+
+void Actor::setScoreTag(const std::string & score)
+{
+    entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::SCORE), score);
+}
+
 const AttributeInstance &Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();

@@ -276,8 +276,10 @@ public:
     [[nodiscard]] int getHealth() const;
     [[nodiscard]] int getMaxHealth() const;
     void setNameTagVisible(bool);
-    const std::string &getNameTag() const;
+    [[nodiscard]] const std::string &getNameTag() const;
     void setNameTag(const std::string &);
+    [[nodiscard]] const std::string &getScoreTag() const;
+    void setScoreTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
 
