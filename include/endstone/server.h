@@ -338,7 +338,7 @@ public:
      *
      * @return The player ban list
      */
-    [[nodiscard]] virtual PlayerBanList &getPlayerBanList() const = 0;
+    [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.

@@ -443,7 +443,7 @@ Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
     return std::make_shared<EndstoneBlockData>(const_cast<::Block &>(*block));
 }
 
-PlayerBanList &EndstoneServer::getPlayerBanList() const
+PlayerBanList &EndstoneServer::getBanList() const
 {
     return *player_ban_list_;
 }

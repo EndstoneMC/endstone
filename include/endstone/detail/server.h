@@ -104,7 +104,7 @@ public:
     [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type) const override;
     [[nodiscard]] Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
                                                                      BlockStates block_states) const override;
-    [[nodiscard]] PlayerBanList &getPlayerBanList() const override;
+    [[nodiscard]] PlayerBanList &getBanList() const override;
 
     [[nodiscard]] EndstoneScoreboard &getPlayerBoard(const EndstonePlayer &player) const;
     void setPlayerBoard(EndstonePlayer &player, Scoreboard &scoreboard);

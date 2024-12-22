@@ -40,7 +40,7 @@ bool BanListCommand::execute(CommandSender &sender, const std::vector<std::strin
     const auto &server = entt::locator<EndstoneServer>::value();
 
     if (show_players) {
-        const auto entries = server.getPlayerBanList().getEntries();
+        const auto entries = server.getBanList().getEntries();
         sender.sendMessage(Translatable{"commands.banlist.players", {std::to_string(entries.size())}});
 
         for (const auto &entry : entries) {

@@ -39,7 +39,7 @@ bool BanCommand::execute(CommandSender &sender, const std::vector<std::string> &
     }
 
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &ban_list = server.getPlayerBanList();
+    auto &ban_list = server.getBanList();
     auto name = args.front();
 
     if (ban_list.isBanned(name)) {

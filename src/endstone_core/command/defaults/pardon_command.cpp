@@ -40,7 +40,7 @@ bool PardonCommand::execute(CommandSender &sender, const std::vector<std::string
     }
 
     const auto &server = entt::locator<EndstoneServer>::value();
-    auto &ban_list = server.getPlayerBanList();
+    auto &ban_list = server.getBanList();
     const auto &name = args.front();
 
     const auto *entry = ban_list.getBanEntry(name);
