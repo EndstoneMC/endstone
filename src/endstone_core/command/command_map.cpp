@@ -26,8 +26,10 @@
 #include "endstone/command/plugin_command.h"
 #include "endstone/detail/command/command_usage_parser.h"
 #include "endstone/detail/command/defaults/ban_command.h"
+#include "endstone/detail/command/defaults/ban_ip_command.h"
 #include "endstone/detail/command/defaults/ban_list_command.h"
 #include "endstone/detail/command/defaults/pardon_command.h"
+#include "endstone/detail/command/defaults/pardon_ip_command.h"
 #include "endstone/detail/command/defaults/plugins_command.h"
 #include "endstone/detail/command/defaults/reload_command.h"
 #include "endstone/detail/command/defaults/status_command.h"
@@ -102,8 +104,10 @@ Command *EndstoneCommandMap::getCommand(std::string name) const
 void EndstoneCommandMap::setDefaultCommands()
 {
     registerCommand(std::make_unique<BanCommand>());
+    registerCommand(std::make_unique<BanIpCommand>());
     registerCommand(std::make_unique<BanListCommand>());
     registerCommand(std::make_unique<PardonCommand>());
+    registerCommand(std::make_unique<PardonIpCommand>());
     registerCommand(std::make_unique<PluginsCommand>());
     registerCommand(std::make_unique<ReloadCommand>());
     registerCommand(std::make_unique<StatusCommand>());

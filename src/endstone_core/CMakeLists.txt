@@ -36,8 +36,10 @@ add_library(endstone_core
         command/proxied_command_sender.cpp
         command/server_command_sender.cpp
         command/defaults/ban_command.cpp
+        command/defaults/ban_ip_command.cpp
         command/defaults/ban_list_command.cpp
         command/defaults/pardon_command.cpp
+        command/defaults/pardon_ip_command.cpp
         command/defaults/plugins_command.cpp
         command/defaults/reload_command.cpp
         command/defaults/status_command.cpp
