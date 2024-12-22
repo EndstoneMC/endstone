@@ -61,7 +61,7 @@ bool PardonIpCommand::execute(CommandSender &sender, const std::vector<std::stri
         return true;
     }
 
-    sender.sendMessage(Translatable{"commands.ununban.success", {entry->getAddress()}});
+    sender.sendMessage(Translatable{"commands.unbanip.success", {entry->getAddress()}});
     ban_list.removeBan(address);
     return true;
 }
