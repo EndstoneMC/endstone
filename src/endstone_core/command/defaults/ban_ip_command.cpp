@@ -77,6 +77,12 @@ bool BanIpCommand::execute(CommandSender &sender, const std::vector<std::string>
     else {
         sender.sendMessage(Translatable{"commands.banip.success", {address}});
     }
+
+    for (const auto &online_player : server.getOnlinePlayers()) {
+        if (online_player->getAddress().getHostname() == address) {
+            online_player->kick("You have been IP banned from this server.");
+        }
+    }
     return true;
 }
 
