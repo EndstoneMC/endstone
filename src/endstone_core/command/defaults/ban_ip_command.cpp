@@ -38,7 +38,43 @@ bool BanIpCommand::execute(CommandSender &sender, const std::vector<std::string>
         return false;
     }
 
-    // TODO: implement this
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto &ban_list = server.getIpBanList();
+    const auto &name_or_address = args.front();
+    std::string address;
+    const Player *player = nullptr;
+
+    if (sockaddr_in sa_v4{}; inet_pton(AF_INET, name_or_address.c_str(), &(sa_v4.sin_addr)) == 1) {
+        address = name_or_address;
+    }
+    else if (sockaddr_in6 sa_v6{}; inet_pton(AF_INET6, name_or_address.c_str(), &(sa_v6.sin6_addr)) == 1) {
+        address = name_or_address;
+    }
+    else if (player = server.getPlayer(name_or_address); player) {
+        address = player->getAddress().getHostname();
+    }
+    else {
+        sender.sendErrorMessage(Translatable{"commands.banip.invalid"});
+        return true;
+    }
+
+    if (ban_list.isBanned(address)) {
+        sender.sendErrorMessage("Nothing changed. That IP is already banned.");
+        return true;
+    }
+
+    std::optional<std::string> reason;
+    if (args.size() > 1) {
+        reason = args[1];
+    }
+
+    ban_list.addBan(address, reason, std::nullopt, sender.getName());
+    if (player) {
+        sender.sendMessage(Translatable{"commands.banip.success.players", {address, player->getName()}});
+    }
+    else {
+        sender.sendMessage(Translatable{"commands.banip.success", {address}});
+    }
     return true;
 }
 

@@ -77,8 +77,13 @@ bool ServerNetworkHandler::trytLoadPlayer(ServerPlayer &server_player, const Con
     endstone_player.initFromConnectionRequest(&connection_request);
 
     if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                           endstone_player.getXuid())) {
+                                     endstone_player.getXuid())) {
         endstone_player.kick("You have been banned from this server.");
+        return new_player;
+    }
+
+    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
+        endstone_player.kick("You have been IP banned from this server.");
         return new_player;
     }
 
@@ -102,8 +107,13 @@ ServerPlayer &ServerNetworkHandler::_createNewPlayer(const NetworkIdentifier &ne
     endstone_player.initFromConnectionRequest(&sub_client_connection_request);
 
     if (server.getBanList().isBanned(endstone_player.getName(), endstone_player.getUniqueId(),
-                                           endstone_player.getXuid())) {
+                                     endstone_player.getXuid())) {
         endstone_player.kick("You have been banned from this server.");
+        return server_player;
+    }
+
+    if (server.getIpBanList().isBanned(endstone_player.getAddress().getHostname())) {
+        endstone_player.kick("You have been IP banned from this server.");
         return server_player;
     }
 

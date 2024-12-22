@@ -39,7 +39,29 @@ bool PardonIpCommand::execute(CommandSender &sender, const std::vector<std::stri
         return false;
     }
 
-    // TODO: implement this
+    const auto &server = entt::locator<EndstoneServer>::value();
+    auto &ban_list = server.getIpBanList();
+    const auto &address = args.front();
+
+    if (sockaddr_in sa_v4{}; inet_pton(AF_INET, address.c_str(), &(sa_v4.sin_addr)) == 1) {
+        // valid ipv4 address
+    }
+    else if (sockaddr_in6 sa_v6{}; inet_pton(AF_INET6, address.c_str(), &(sa_v6.sin6_addr)) == 1) {
+        // valid ipv6 address
+    }
+    else {
+        sender.sendErrorMessage(Translatable{"commands.unbanip.invalid"});
+        return true;
+    }
+
+    const auto *entry = ban_list.getBanEntry(address);
+    if (!entry) {
+        sender.sendErrorMessage("Nothing changed. That IP is not banned.");
+        return true;
+    }
+
+    sender.sendMessage(Translatable{"commands.ununban.success", {entry->getAddress()}});
+    ban_list.removeBan(address);
     return true;
 }
 
