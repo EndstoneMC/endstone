@@ -33,9 +33,7 @@ namespace endstone {
 
 class IpBanEntry : public BanEntry {
 public:
-    explicit IpBanEntry(std::string address)        : address_(std::move(address))
-    {
-    }
+    explicit IpBanEntry(std::string address) : address_(std::move(address)) {}
 
     [[nodiscard]] std::string getAddress() const
     {

@@ -15,31 +15,32 @@
 #include <string>
 #include <vector>
 
+#include "endstone/ban/ban_list.h"
 #include "endstone/ban/ip_ban_entry.h"
 
 namespace endstone {
 
-class IpBanList {
+class IpBanList : public BanList<IpBanEntry> {
 public:
-    virtual ~IpBanList() = default;
+    ~IpBanList() override = default;
 
-    [[nodiscard]] virtual const IpBanEntry *getBanEntry(std::string address) const = 0;
+    [[nodiscard]] const IpBanEntry *getBanEntry(std::string address) const override = 0;
 
-    [[nodiscard]] virtual IpBanEntry *getBanEntry(std::string address) = 0;
+    [[nodiscard]] IpBanEntry *getBanEntry(std::string address) override = 0;
 
-    virtual IpBanEntry &addBan(std::string address, std::optional<std::string> reason,
-                               std::optional<BanEntry::Date> expires, std::optional<std::string> source) = 0;
+    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
+                       std::optional<std::string> source) override = 0;
 
-    virtual IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::chrono::seconds duration,
-                               std::optional<std::string> source) = 0;
+    IpBanEntry &addBan(std::string address, std::optional<std::string> reason, std::chrono::seconds duration,
+                       std::optional<std::string> source) override = 0;
 
-    [[nodiscard]] virtual std::vector<const IpBanEntry *> getEntries() const = 0;
+    [[nodiscard]] std::vector<const IpBanEntry *> getEntries() const override = 0;
 
-    [[nodiscard]] virtual std::vector<IpBanEntry *> getEntries() = 0;
+    [[nodiscard]] std::vector<IpBanEntry *> getEntries() override = 0;
 
-    [[nodiscard]] virtual bool isBanned(std::string address) const = 0;
+    [[nodiscard]] bool isBanned(std::string address) const override = 0;
 
-    virtual void removeBan(std::string address) = 0;
+    void removeBan(std::string address) override = 0;
 };
 
 }  // namespace endstone

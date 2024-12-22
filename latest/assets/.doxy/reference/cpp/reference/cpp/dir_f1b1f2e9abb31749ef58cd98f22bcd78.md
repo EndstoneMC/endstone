@@ -22,6 +22,7 @@
 | Type | Name |
 | ---: | :--- |
 | file | [**ban\_entry.h**](ban__entry_8h.md) <br> |
+| file | [**ban\_list.h**](ban__list_8h.md) <br> |
 | file | [**ip\_ban\_entry.h**](ip__ban__entry_8h.md) <br> |
 | file | [**ip\_ban\_list.h**](ip__ban__list_8h.md) <br> |
 | file | [**player\_ban\_entry.h**](player__ban__entry_8h.md) <br> |

@@ -177,6 +177,10 @@
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>
+         <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1BanList/</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
          <loc>https://endstone.dev/latest/reference/cpp/classendstone_1_1Block/</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
@@ -642,6 +646,14 @@
     </url>
     <url>
          <loc>https://endstone.dev/latest/reference/cpp/ban__entry_8h_source/</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/ban__list_8h/</loc>
+         <lastmod>2024-12-22</lastmod>
+    </url>
+    <url>
+         <loc>https://endstone.dev/latest/reference/cpp/ban__list_8h_source/</loc>
          <lastmod>2024-12-22</lastmod>
     </url>
     <url>

@@ -2,12 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1IpBanList" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>endstone::IpBanList</compoundname>
+    <basecompoundref refid="classendstone_1_1BanList" prot="public" virt="non-virtual">endstone::BanList&lt; IpBanEntry &gt;</basecompoundref>
     <includes refid="ip__ban__list_8h" local="no">endstone/ban/ip_ban_list.h</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1ab9f126e5ce83ef435ab93ea79fa88c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a99859c818b01e6685f3326e4ee0e0cf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>virtual endstone::IpBanList::~IpBanList</definition>
-        <argsstring>()=default</argsstring>
+        <definition>endstone::IpBanList::~IpBanList</definition>
+        <argsstring>() override=default</argsstring>
         <name>~IpBanList</name>
         <briefdescription>
         </briefdescription>
@@ -15,13 +16,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="17" column="13"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="18" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1aa091c265b07d34c2c19bbd20baf06261" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> *</type>
-        <definition>virtual const IpBanEntry* endstone::IpBanList::getBanEntry</definition>
-        <argsstring>(std::string address) const =0</argsstring>
+        <definition>const IpBanEntry* endstone::IpBanList::getBanEntry</definition>
+        <argsstring>(std::string address) const override=0</argsstring>
         <name>getBanEntry</name>
+        <reimplements refid="classendstone_1_1BanList_1aa33e3b87befa2a3b0c9061148b85ae41">getBanEntry</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -45,13 +47,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="25" column="31"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="26" column="23"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a7886b982d2d76c065409acea13487128" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> *</type>
-        <definition>virtual IpBanEntry* endstone::IpBanList::getBanEntry</definition>
-        <argsstring>(std::string address)=0</argsstring>
+        <definition>IpBanEntry* endstone::IpBanList::getBanEntry</definition>
+        <argsstring>(std::string address) override=0</argsstring>
         <name>getBanEntry</name>
+        <reimplements refid="classendstone_1_1BanList_1aa692e8038fcbe4d7144732193dddc735">getBanEntry</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -75,13 +78,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="33" column="25"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="34" column="17"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a196f5a82c78d55f3110bda01abcf5936" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &amp;</type>
-        <definition>virtual IpBanEntry&amp; endstone::IpBanList::addBan</definition>
-        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <definition>IpBanEntry&amp; endstone::IpBanList::addBan</definition>
+        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) override=0</argsstring>
         <name>addBan</name>
+        <reimplements refid="classendstone_1_1BanList_1a870bdf81cca7c644ea3fbdfa49c27e71">addBan</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -141,13 +145,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="44" column="24"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="45" column="16"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1aa61ef61a6580a7caa3fe036471e3e8cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> &amp;</type>
-        <definition>virtual IpBanEntry&amp; endstone::IpBanList::addBan</definition>
-        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source)=0</argsstring>
+        <definition>IpBanEntry&amp; endstone::IpBanList::addBan</definition>
+        <argsstring>(std::string address, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) override=0</argsstring>
         <name>addBan</name>
+        <reimplements refid="classendstone_1_1BanList_1a8946b2cb32e676fb4873dac4bdb6fb4c">addBan</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -207,13 +212,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="56" column="24"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="57" column="16"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a048c5999bd866b389bda8f4936f99ed3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; const <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> * &gt;</type>
-        <definition>virtual std::vector&lt;const IpBanEntry *&gt; endstone::IpBanList::getEntries</definition>
-        <argsstring>() const =0</argsstring>
+        <definition>std::vector&lt;const IpBanEntry *&gt; endstone::IpBanList::getEntries</definition>
+        <argsstring>() const override=0</argsstring>
         <name>getEntries</name>
+        <reimplements refid="classendstone_1_1BanList_1ab1566a2dcc04049d8de84682cf908ae3">getEntries</reimplements>
         <briefdescription>
 <para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
         </briefdescription>
@@ -224,13 +230,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="64" column="26"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="65" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1af132010dbe348cea18b62f3a56f46d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref> * &gt;</type>
-        <definition>virtual std::vector&lt;IpBanEntry *&gt; endstone::IpBanList::getEntries</definition>
-        <argsstring>()=0</argsstring>
+        <definition>std::vector&lt;IpBanEntry *&gt; endstone::IpBanList::getEntries</definition>
+        <argsstring>() override=0</argsstring>
         <name>getEntries</name>
+        <reimplements refid="classendstone_1_1BanList_1a07e80dd01440e4d3efd50dc62e873677">getEntries</reimplements>
         <briefdescription>
 <para>Gets a vector containing pointers to every <ref refid="classendstone_1_1BanEntry" kindref="compound">BanEntry</ref> in this list. </para>
         </briefdescription>
@@ -241,13 +248,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="71" column="26"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="72" column="18"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
-        <definition>virtual bool endstone::IpBanList::isBanned</definition>
-        <argsstring>(std::string address) const =0</argsstring>
+        <definition>bool endstone::IpBanList::isBanned</definition>
+        <argsstring>(std::string address) const override=0</argsstring>
         <name>isBanned</name>
+        <reimplements refid="classendstone_1_1BanList_1a7fd3e0a897b072736e9df35d91b12c19">isBanned</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -273,13 +281,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="80" column="19"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="81" column="11"/>
       </memberdef>
-      <memberdef kind="function" id="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
-        <definition>virtual void endstone::IpBanList::removeBan</definition>
-        <argsstring>(std::string address)=0</argsstring>
+        <definition>void endstone::IpBanList::removeBan</definition>
+        <argsstring>(std::string address) override=0</argsstring>
         <name>removeBan</name>
+        <reimplements refid="classendstone_1_1BanList_1abefb6ec9f4a696e98609579e3b87718a">removeBan</reimplements>
         <param>
           <type>std::string</type>
           <declname>address</declname>
@@ -301,7 +310,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/ban/ip_ban_list.h" line="87" column="18"/>
+        <location file="include/endstone/ban/ip_ban_list.h" line="88" column="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -309,17 +318,42 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/ban/ip_ban_list.h" line="15" column="1" bodyfile="include/endstone/ban/ip_ban_list.h" bodystart="15" bodyend="88"/>
+    <inheritancegraph>
+      <node id="2">
+        <label>endstone::BanList&lt; IpBanEntry &gt;</label>
+        <link refid="classendstone_1_1BanList"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanList</label>
+        <link refid="classendstone_1_1IpBanList"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>endstone::BanList&lt; IpBanEntry &gt;</label>
+        <link refid="classendstone_1_1BanList"/>
+      </node>
+      <node id="1">
+        <label>endstone::IpBanList</label>
+        <link refid="classendstone_1_1IpBanList"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/ban/ip_ban_list.h" line="16" column="1" bodyfile="include/endstone/ban/ip_ban_list.h" bodystart="16" bodyend="89"/>
     <listofallmembers>
-      <member refid="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
-      <member refid="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
-      <member refid="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getBanEntry</name></member>
-      <member refid="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getBanEntry</name></member>
-      <member refid="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getEntries</name></member>
-      <member refid="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getEntries</name></member>
-      <member refid="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>isBanned</name></member>
-      <member refid="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>removeBan</name></member>
-      <member refid="classendstone_1_1IpBanList_1ab9f126e5ce83ef435ab93ea79fa88c6a" prot="public" virt="virtual"><scope>endstone::IpBanList</scope><name>~IpBanList</name></member>
+      <member refid="classendstone_1_1IpBanList_1a196f5a82c78d55f3110bda01abcf5936" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1IpBanList_1aa61ef61a6580a7caa3fe036471e3e8cf" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>addBan</name></member>
+      <member refid="classendstone_1_1IpBanList_1aa091c265b07d34c2c19bbd20baf06261" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1IpBanList_1a7886b982d2d76c065409acea13487128" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getBanEntry</name></member>
+      <member refid="classendstone_1_1IpBanList_1a048c5999bd866b389bda8f4936f99ed3" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1IpBanList_1af132010dbe348cea18b62f3a56f46d69" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>getEntries</name></member>
+      <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>isBanned</name></member>
+      <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" prot="public" virt="pure-virtual"><scope>endstone::IpBanList</scope><name>removeBan</name></member>
+      <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" prot="public" virt="virtual"><scope>endstone::IpBanList</scope><name>~BanList</name></member>
+      <member refid="classendstone_1_1IpBanList_1a99859c818b01e6685f3326e4ee0e0cf3" prot="public" virt="non-virtual"><scope>endstone::IpBanList</scope><name>~IpBanList</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

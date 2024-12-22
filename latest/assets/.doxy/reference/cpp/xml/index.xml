@@ -107,6 +107,17 @@
     <member refid="classendstone_1_1BanEntry_1ae64cc8ac600a8a35f2420ddc0709ade0" kind="function"><name>getReason</name></member>
     <member refid="classendstone_1_1BanEntry_1a59ff6c4f71850c5f1d006199d987d049" kind="function"><name>setReason</name></member>
   </compound>
+  <compound refid="classendstone_1_1BanList" kind="class"><name>endstone::BanList</name>
+    <member refid="classendstone_1_1BanList_1a409cf606a2985931ed9a7eb51b9362ea" kind="function"><name>~BanList</name></member>
+    <member refid="classendstone_1_1BanList_1aa33e3b87befa2a3b0c9061148b85ae41" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1BanList_1aa692e8038fcbe4d7144732193dddc735" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1BanList_1a870bdf81cca7c644ea3fbdfa49c27e71" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1BanList_1a8946b2cb32e676fb4873dac4bdb6fb4c" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1BanList_1ab1566a2dcc04049d8de84682cf908ae3" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1BanList_1a07e80dd01440e4d3efd50dc62e873677" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1BanList_1a7fd3e0a897b072736e9df35d91b12c19" kind="function"><name>isBanned</name></member>
+    <member refid="classendstone_1_1BanList_1abefb6ec9f4a696e98609579e3b87718a" kind="function"><name>removeBan</name></member>
+  </compound>
   <compound refid="classendstone_1_1Block" kind="class"><name>endstone::Block</name>
     <member refid="classendstone_1_1Block_1a8a7ea0b990c4c610f75cf53bd5c6647b" kind="function"><name>~Block</name></member>
     <member refid="classendstone_1_1Block_1a1d34cbe7add47b55cc52e655c511183f" kind="function"><name>isValid</name></member>
@@ -484,15 +495,15 @@
     <member refid="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" kind="function"><name>getAddress</name></member>
   </compound>
   <compound refid="classendstone_1_1IpBanList" kind="class"><name>endstone::IpBanList</name>
-    <member refid="classendstone_1_1IpBanList_1ab9f126e5ce83ef435ab93ea79fa88c6a" kind="function"><name>~IpBanList</name></member>
-    <member refid="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" kind="function"><name>getBanEntry</name></member>
-    <member refid="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" kind="function"><name>getBanEntry</name></member>
-    <member refid="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" kind="function"><name>addBan</name></member>
-    <member refid="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" kind="function"><name>addBan</name></member>
-    <member refid="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" kind="function"><name>getEntries</name></member>
-    <member refid="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" kind="function"><name>getEntries</name></member>
-    <member refid="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" kind="function"><name>isBanned</name></member>
-    <member refid="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" kind="function"><name>removeBan</name></member>
+    <member refid="classendstone_1_1IpBanList_1a99859c818b01e6685f3326e4ee0e0cf3" kind="function"><name>~IpBanList</name></member>
+    <member refid="classendstone_1_1IpBanList_1aa091c265b07d34c2c19bbd20baf06261" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1IpBanList_1a7886b982d2d76c065409acea13487128" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1IpBanList_1a196f5a82c78d55f3110bda01abcf5936" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1IpBanList_1aa61ef61a6580a7caa3fe036471e3e8cf" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1IpBanList_1a048c5999bd866b389bda8f4936f99ed3" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1IpBanList_1af132010dbe348cea18b62f3a56f46d69" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kind="function"><name>isBanned</name></member>
+    <member refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kind="function"><name>removeBan</name></member>
   </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a48f826c758828421a29e85e3f8c98126" kind="friend"><name>detail::EndstoneItemStack</name></member>
@@ -1449,6 +1460,8 @@
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
+  </compound>
+  <compound refid="ban__list_8h" kind="file"><name>ban_list.h</name>
   </compound>
   <compound refid="ip__ban__entry_8h" kind="file"><name>ip_ban_entry.h</name>
   </compound>

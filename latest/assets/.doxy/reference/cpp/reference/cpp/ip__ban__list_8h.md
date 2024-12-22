@@ -14,6 +14,7 @@
 * `#include <optional>`
 * `#include <string>`
 * `#include <vector>`
+* `#include "endstone/ban/ban_list.h"`
 * `#include "endstone/ban/ip_ban_entry.h"`
 
 

@@ -6,14 +6,29 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
+    <includes refid="ban__list_8h" local="yes">endstone/ban/ban_list.h</includes>
     <includes refid="ip__ban__entry_8h" local="yes">endstone/ban/ip_ban_entry.h</includes>
     <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
-      <node id="12">
+      <node id="13">
         <label>cstdint</label>
       </node>
       <node id="4">
         <label>string</label>
+      </node>
+      <node id="6">
+        <label>endstone/ban/ban_list.h</label>
+        <link refid="ban__list_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>optional</label>
@@ -21,7 +36,7 @@
       <node id="5">
         <label>vector</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h_source"/>
         <childnode refid="2" relation="include">
@@ -30,10 +45,10 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>utility</label>
       </node>
       <node id="1">
@@ -49,28 +64,30 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>endstone/ban/ip_ban_entry.h</label>
-        <link refid="ip__ban__entry_8h_source"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>cstddef</label>
-      </node>
       <node id="9">
-        <label>endstone/util/uuid.h</label>
-        <link refid="uuid_8h_source"/>
+        <label>endstone/ban/ip_ban_entry.h</label>
+        <link refid="ip__ban__entry_8h_source"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+      </node>
+      <node id="12">
+        <label>cstddef</label>
+      </node>
+      <node id="10">
+        <label>endstone/util/uuid.h</label>
+        <link refid="uuid_8h_source"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -78,7 +95,7 @@
       <node id="2">
         <label>chrono</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>algorithm</label>
       </node>
     </incdepgraph>
@@ -180,34 +197,35 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/ban/ip_ban_entry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15" refid="classendstone_1_1IpBanList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref><sp/>{</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~<ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>*<ref refid="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" kindref="member">getBanEntry</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33" refid="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>*<ref refid="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" kindref="member">getBanEntry</ref>(std::string<sp/>address)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44" refid="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>&amp;<ref refid="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" kindref="member">addBan</ref>(std::string<sp/>address,<sp/>std::optional&lt;std::string&gt;<sp/>reason,</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;BanEntry::Date&gt;<sp/>expires,<sp/>std::optional&lt;std::string&gt;<sp/>source)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>&amp;<ref refid="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" kindref="member">addBan</ref>(std::string<sp/>address,<sp/>std::optional&lt;std::string&gt;<sp/>reason,<sp/>std::chrono::seconds<sp/>duration,</highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>source)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;const<sp/>IpBanEntry<sp/>*&gt;<sp/><ref refid="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" kindref="member">getEntries</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::vector&lt;IpBanEntry<sp/>*&gt;<sp/><ref refid="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" kindref="member">getEntries</ref>()<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80" refid="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" kindref="member">isBanned</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight></codeline>
-<codeline lineno="87" refid="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" kindref="member">removeBan</ref>(std::string<sp/>address)<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/ban/ban_list.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;endstone/ban/ip_ban_entry.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">endstone<sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classendstone_1_1IpBanList" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1BanList" kindref="compound">BanList</ref>&lt;IpBanEntry&gt;<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classendstone_1_1IpBanList" kindref="compound">IpBanList</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classendstone_1_1IpBanList_1aa091c265b07d34c2c19bbd20baf06261" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>*<ref refid="classendstone_1_1IpBanList_1aa091c265b07d34c2c19bbd20baf06261" kindref="member">getBanEntry</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classendstone_1_1IpBanList_1a7886b982d2d76c065409acea13487128" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>*<ref refid="classendstone_1_1IpBanList_1a7886b982d2d76c065409acea13487128" kindref="member">getBanEntry</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="classendstone_1_1IpBanList_1a196f5a82c78d55f3110bda01abcf5936" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>&amp;<ref refid="classendstone_1_1IpBanList_1a196f5a82c78d55f3110bda01abcf5936" kindref="member">addBan</ref>(std::string<sp/>address,<sp/>std::optional&lt;std::string&gt;<sp/>reason,<sp/>std::optional&lt;BanEntry::Date&gt;<sp/>expires,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>source)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classendstone_1_1IpBanList_1aa61ef61a6580a7caa3fe036471e3e8cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classendstone_1_1IpBanEntry" kindref="compound">IpBanEntry</ref><sp/>&amp;<ref refid="classendstone_1_1IpBanList_1aa61ef61a6580a7caa3fe036471e3e8cf" kindref="member">addBan</ref>(std::string<sp/>address,<sp/>std::optional&lt;std::string&gt;<sp/>reason,<sp/>std::chrono::seconds<sp/>duration,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::optional&lt;std::string&gt;<sp/>source)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classendstone_1_1IpBanList_1a048c5999bd866b389bda8f4936f99ed3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;const<sp/>IpBanEntry<sp/>*&gt;<sp/><ref refid="classendstone_1_1IpBanList_1a048c5999bd866b389bda8f4936f99ed3" kindref="member">getEntries</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="classendstone_1_1IpBanList_1af132010dbe348cea18b62f3a56f46d69" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>std::vector&lt;IpBanEntry<sp/>*&gt;<sp/><ref refid="classendstone_1_1IpBanList_1af132010dbe348cea18b62f3a56f46d69" kindref="member">getEntries</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1a65ab85f06f3522ee90ec267859db0054" kindref="member">isBanned</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classendstone_1_1IpBanList_1ac87901f151c53c57c5ae8267c7b7d601" kindref="member">removeBan</ref>(std::string<sp/>address)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>endstone</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/endstone/ban/ip_ban_list.h"/>
   </compounddef>

@@ -1940,6 +1940,17 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#public-functions-inherited-from-endstonebanlist" class="md-nav__link">
+      <span class="md-ellipsis">
+        Public Functions inherited from endstone::BanList
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#public-functions-documentation" class="md-nav__link">
       <span class="md-ellipsis">
         Public Functions Documentation
@@ -2188,6 +2199,7 @@ For latest updates join the chat on
 <ul>
 <li><code>#include &lt;endstone/ban/player_ban_list.h&gt;</code></li>
 </ul>
+<p>Inherits the following classes: <a href="../classendstone_1_1BanList/">endstone::BanList</a></p>
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -2259,6 +2271,54 @@ For latest updates join the chat on
 </tr>
 </tbody>
 </table>
+<h2 id="public-functions-inherited-from-endstonebanlist">Public Functions inherited from endstone::BanList<a class="headerlink" href="#public-functions-inherited-from-endstonebanlist" title="Permanent link">&para;</a></h2>
+<p>See <a href="../classendstone_1_1BanList/">endstone::BanList</a></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Type</th>
+<th style="text-align: left;">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">virtual T &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-12"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::optional&lt; BanEntry::Date &gt; expires, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual T &amp;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-addban-22"><strong>addBan</strong></a> (std::string target, std::optional&lt; std::string &gt; reason, std::chrono::seconds duration, std::optional&lt; std::string &gt; source) = 0<br><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual const T *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry-12"><strong>getBanEntry</strong></a> (std::string target) const = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual T *</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getbanentry-22"><strong>getBanEntry</strong></a> (std::string target) = 0<br><em>Gets a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>by target.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; const T * &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries-12"><strong>getEntries</strong></a> () const = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual std::vector&lt; T * &gt;</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-getentries-22"><strong>getEntries</strong></a> () = 0<br><em>Gets a vector containing pointers to every</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>in this list.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual bool</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-isbanned"><strong>isBanned</strong></a> (std::string target) const = 0<br><em>Checks if a</em> <a href="../classendstone_1_1BanEntry/"><em><strong>BanEntry</strong></em></a> <em>exists for the target, indicating an active ban status.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual void</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-removeban"><strong>removeBan</strong></a> (std::string target) = 0<br><em>Removes the specified target from this list, therefore indicating a "not banned" status.</em></td>
+</tr>
+<tr>
+<td style="text-align: right;">virtual</td>
+<td style="text-align: left;"><a href="../classendstone_1_1BanList/#function-banlist"><strong>~BanList</strong></a> () = default<br></td>
+</tr>
+</tbody>
+</table>
 <h2 id="public-functions-documentation">Public Functions Documentation<a class="headerlink" href="#public-functions-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="function-addban-14">function addBan [&frac14;]<a class="headerlink" href="#function-addban-14" title="Permanent link">&para;</a></h3>
 <p><em>Adds a ban to this list. If a previous ban exists, this will update the previous entry.</em> 
@@ -2278,6 +2338,7 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-addban-12"><em>endstone::BanList::addBan</em></a></p>
 <hr>
 
 <h3 id="function-addban-24">function addBan [2/4]<a class="headerlink" href="#function-addban-24" title="Permanent link">&para;</a></h3>
@@ -2322,6 +2383,7 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p><a href="../classendstone_1_1PlayerBanEntry/"><strong>PlayerBanEntry</strong></a>&amp; The entry for the newly created ban, or the entry for the (updated) previous ban. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-addban-22"><em>endstone::BanList::addBan</em></a></p>
 <hr>
 
 <h3 id="function-addban-44">function addBan [4/4]<a class="headerlink" href="#function-addban-44" title="Permanent link">&para;</a></h3>
@@ -2360,6 +2422,7 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getbanentry-12"><em>endstone::BanList::getBanEntry</em></a></p>
 <hr>
 
 <h3 id="function-getbanentry-24">function getBanEntry [2/4]<a class="headerlink" href="#function-getbanentry-24" title="Permanent link">&para;</a></h3>
@@ -2374,6 +2437,7 @@ For latest updates join the chat on
 </ul>
 <p><strong>Returns:</strong></p>
 <p>PlayerBanEntry* The corresponding entry, or nullptr if none found. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getbanentry-22"><em>endstone::BanList::getBanEntry</em></a></p>
 <hr>
 
 <h3 id="function-getbanentry-34">function getBanEntry [&frac34;]<a class="headerlink" href="#function-getbanentry-34" title="Permanent link">&para;</a></h3>
@@ -2418,6 +2482,7 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A vector containing pointers to every entry tracked by this list. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getentries-12"><em>endstone::BanList::getEntries</em></a></p>
 <hr>
 
 <h3 id="function-getentries-22">function getEntries [2/2]<a class="headerlink" href="#function-getentries-22" title="Permanent link">&para;</a></h3>
@@ -2426,6 +2491,7 @@ For latest updates join the chat on
 </span></code></pre></div></p>
 <p><strong>Returns:</strong></p>
 <p>A vector containing pointers to every entry tracked by this list. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-getentries-22"><em>endstone::BanList::getEntries</em></a></p>
 <hr>
 
 <h3 id="function-isbanned-12">function isBanned [&frac12;]<a class="headerlink" href="#function-isbanned-12" title="Permanent link">&para;</a></h3>
@@ -2442,6 +2508,7 @@ For latest updates join the chat on
 <p>true If a <a href="../classendstone_1_1BanEntry/"><strong>BanEntry</strong></a> exists for the target, indicating an active ban status. </p>
 <p><strong>Returns:</strong></p>
 <p>false Otherwise. </p>
+<p>Implements <a href="../classendstone_1_1BanList/#function-isbanned"><em>endstone::BanList::isBanned</em></a></p>
 <hr>
 
 <h3 id="function-isbanned-22">function isBanned [2/2]<a class="headerlink" href="#function-isbanned-22" title="Permanent link">&para;</a></h3>
@@ -2474,6 +2541,7 @@ For latest updates join the chat on
 <ul>
 <li><code>name</code> The player name to remove from this list. </li>
 </ul>
+<p>Implements <a href="../classendstone_1_1BanList/#function-removeban"><em>endstone::BanList::removeBan</em></a></p>
 <hr>
 
 <h3 id="function-removeban-22">function removeBan [2/2]<a class="headerlink" href="#function-removeban-22" title="Permanent link">&para;</a></h3>

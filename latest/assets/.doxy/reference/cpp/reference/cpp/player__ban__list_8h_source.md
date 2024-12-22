@@ -15,11 +15,12 @@
 #include <string>
 #include <vector>
 
+#include "endstone/ban/ban_list.h"
 #include "endstone/ban/player_ban_entry.h"
 
 namespace endstone {
 
-class PlayerBanList {
+class PlayerBanList : public BanList<PlayerBanEntry> {
 public:
     virtual ~PlayerBanList() = default;
 
