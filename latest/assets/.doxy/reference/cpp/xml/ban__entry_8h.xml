@@ -6,6 +6,7 @@
     <includes local="no">optional</includes>
     <includes local="no">string</includes>
     <includes local="no">utility</includes>
+    <includedby refid="ip__ban__entry_8h" local="yes">include/endstone/ban/ip_ban_entry.h</includedby>
     <includedby refid="player__ban__entry_8h" local="yes">include/endstone/ban/player_ban_entry.h</includedby>
     <incdepgraph>
       <node id="4">
@@ -50,7 +51,7 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="3">
+      <node id="17">
         <label>include/endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
         <childnode refid="4" relation="include">
@@ -90,16 +91,30 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="2">
+      <node id="16">
         <label>include/endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="1">
         <label>include/endstone/ban/ban_entry.h</label>
         <link refid="ban__entry_8h"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/endstone/ban/ip_ban_list.h</label>
+        <link refid="ip__ban__list_8h_source"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/endstone/ban/ip_ban_entry.h</label>
+        <link refid="ip__ban__entry_8h_source"/>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="6">

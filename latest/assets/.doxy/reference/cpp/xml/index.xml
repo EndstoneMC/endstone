@@ -478,6 +478,22 @@
     <member refid="classendstone_1_1Inventory_1ade31b1be3db4e11cadda1767a419c62c" kind="function"><name>isEmpty</name></member>
     <member refid="classendstone_1_1Inventory_1afc114b9f2e5c05fb1e1388963b8c86e8" kind="function"><name>clear</name></member>
   </compound>
+  <compound refid="classendstone_1_1IpBanEntry" kind="class"><name>endstone::IpBanEntry</name>
+    <member refid="classendstone_1_1IpBanEntry_1a5d1d45ba5dfa2993909e03d945e33125" kind="variable"><name>address_</name></member>
+    <member refid="classendstone_1_1IpBanEntry_1a0268afb79ea778f4a19d51f268bcb656" kind="function"><name>IpBanEntry</name></member>
+    <member refid="classendstone_1_1IpBanEntry_1a015a82a92b1a448b5e4235c15e75baa2" kind="function"><name>getAddress</name></member>
+  </compound>
+  <compound refid="classendstone_1_1IpBanList" kind="class"><name>endstone::IpBanList</name>
+    <member refid="classendstone_1_1IpBanList_1ab9f126e5ce83ef435ab93ea79fa88c6a" kind="function"><name>~IpBanList</name></member>
+    <member refid="classendstone_1_1IpBanList_1a94a883d19cc7981bf0be83214cb1bccf" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1IpBanList_1a16522a07e79843eb998a8af37522d596" kind="function"><name>getBanEntry</name></member>
+    <member refid="classendstone_1_1IpBanList_1ad9c281fe8ee8b19ff57ab687d90badbd" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1IpBanList_1a4c44003d41f429e110b99b1e4bd6ce72" kind="function"><name>addBan</name></member>
+    <member refid="classendstone_1_1IpBanList_1ac38e09ed01c465ee0deef3ba66a5ecfb" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1IpBanList_1a601d5471984361f5213499d25f9b4368" kind="function"><name>getEntries</name></member>
+    <member refid="classendstone_1_1IpBanList_1a0f08fbcd7b4d33191fa93ac522c45668" kind="function"><name>isBanned</name></member>
+    <member refid="classendstone_1_1IpBanList_1af913241944bfdd20c39c1f80545b7330" kind="function"><name>removeBan</name></member>
+  </compound>
   <compound refid="classendstone_1_1ItemStack" kind="class"><name>endstone::ItemStack</name>
     <member refid="classendstone_1_1ItemStack_1a48f826c758828421a29e85e3f8c98126" kind="friend"><name>detail::EndstoneItemStack</name></member>
     <member refid="classendstone_1_1ItemStack_1a88b7ec0244561b1406e8229dc46dad3b" kind="variable"><name>type_</name></member>
@@ -1118,7 +1134,8 @@
     <member refid="classendstone_1_1Server_1a1fd9913bc1544002d02df85e07aa08d0" kind="function"><name>createBossBar</name></member>
     <member refid="classendstone_1_1Server_1a3cc037d4b98ab10da73d41282a7cd924" kind="function"><name>createBlockData</name></member>
     <member refid="classendstone_1_1Server_1a68bd68c063e3c5b445ff6f8f3825c8c5" kind="function"><name>createBlockData</name></member>
-    <member refid="classendstone_1_1Server_1a4171c3bbdac120ee5f764bc5254a47fb" kind="function"><name>getPlayerBanList</name></member>
+    <member refid="classendstone_1_1Server_1af75a39983fe1865b13c0ce6c70303cb8" kind="function"><name>getBanList</name></member>
+    <member refid="classendstone_1_1Server_1a15f568d1d3ec41166042ae45f6b17ce2" kind="function"><name>getIpBanList</name></member>
   </compound>
   <compound refid="classendstone_1_1ServerCommandEvent" kind="class"><name>endstone::ServerCommandEvent</name>
     <member refid="classendstone_1_1ServerCommandEvent_1a6df4d8250b60448f4574d4d732d6f1ad" kind="variable"><name>NAME</name></member>
@@ -1432,6 +1449,10 @@
   <compound refid="mob_8h" kind="file"><name>mob.h</name>
   </compound>
   <compound refid="ban__entry_8h" kind="file"><name>ban_entry.h</name>
+  </compound>
+  <compound refid="ip__ban__entry_8h" kind="file"><name>ip_ban_entry.h</name>
+  </compound>
+  <compound refid="ip__ban__list_8h" kind="file"><name>ip_ban_list.h</name>
   </compound>
   <compound refid="player__ban__entry_8h" kind="file"><name>player_ban_entry.h</name>
   </compound>

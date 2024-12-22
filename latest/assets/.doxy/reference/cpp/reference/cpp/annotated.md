@@ -39,6 +39,8 @@ Here are the classes, structs, unions and interfaces with brief descriptions:
     * **class** [**Form**](classendstone_1_1Form.md) _Represents a generic form._     
     * **class** [**HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._     
     * **class** [**Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
+    * **class** [**IpBanEntry**](classendstone_1_1IpBanEntry.md)     
+    * **class** [**IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._     
     * **class** [**ItemStack**](classendstone_1_1ItemStack.md) _Represents a stack of items._     
     * **class** [**Label**](classendstone_1_1Label.md) _Represents a text label._     
     * **class** [**Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._     

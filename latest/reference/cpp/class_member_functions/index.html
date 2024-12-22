@@ -2483,10 +2483,10 @@ For latest updates join the chat on
 <li><strong>addAttachment</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>addOption</strong> (<a href="../classendstone_1_1Dropdown/"><strong>endstone::Dropdown</strong></a>)</li>
 <li><strong>addItem</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
+<li><strong>addBan</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>asEndstoneItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>addControl</strong> (<a href="../classendstone_1_1ModalForm/"><strong>endstone::ModalForm</strong></a>)</li>
 <li><strong>addParent</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
-<li><strong>addBan</strong> (<a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>addPermission</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>addObjective</strong> (<a href="../classendstone_1_1Scoreboard/"><strong>endstone::Scoreboard</strong></a>)</li>
 </ul>
@@ -2620,6 +2620,9 @@ For latest updates join the chat on
 <li><strong>getItem</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>, <a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
 <li><strong>getMaxStackSize</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
 <li><strong>getSize</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
+<li><strong>getAddress</strong> (<a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
+<li><strong>getBanEntry</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
+<li><strong>getEntries</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>, <a href="../classendstone_1_1Scoreboard/"><strong>endstone::Scoreboard</strong></a>)</li>
 <li><strong>getAmount</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>getLocale</strong> (<a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a>, <a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getActors</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>
@@ -2646,7 +2649,6 @@ For latest updates join the chat on
 <li><strong>getAttachment</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>)</li>
 <li><strong>getPermission</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>getValue</strong> (<a href="../classendstone_1_1PermissionAttachmentInfo/"><strong>endstone::PermissionAttachmentInfo</strong></a>, <a href="../classendstone_1_1Score/"><strong>endstone::Score</strong></a>)</li>
-<li><strong>getAddress</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getAllowFlight</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDeviceId</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>getDeviceOS</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
@@ -2664,8 +2666,6 @@ For latest updates join the chat on
 <li><strong>getXuid</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>, <a href="../classendstone_1_1PlayerBanEntry/"><strong>endstone::PlayerBanEntry</strong></a>)</li>
 <li><strong>giveExp</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
 <li><strong>giveExpLevels</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
-<li><strong>getBanEntry</strong> (<a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
-<li><strong>getEntries</strong> (<a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>, <a href="../classendstone_1_1Scoreboard/"><strong>endstone::Scoreboard</strong></a>)</li>
 <li><strong>getDeathMessage</strong> (<a href="../classendstone_1_1PlayerDeathEvent/"><strong>endstone::PlayerDeathEvent</strong></a>)</li>
 <li><strong>getBlockFace</strong> (<a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
 <li><strong>getClickedPosition</strong> (<a href="../classendstone_1_1PlayerInteractEvent/"><strong>endstone::PlayerInteractEvent</strong></a>)</li>
@@ -2711,16 +2711,17 @@ For latest updates join the chat on
 <li><strong>getAverageMillisecondsPerTick</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getAverageTickUsage</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getAverageTicksPerSecond</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
+<li><strong>getBanList</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getCommandSender</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getCurrentMillisecondsPerTick</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getCurrentTickUsage</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getCurrentTicksPerSecond</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
+<li><strong>getIpBanList</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getLanguage</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getMaxPlayers</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>, <a href="../classendstone_1_1ServerListPingEvent/"><strong>endstone::ServerListPingEvent</strong></a>)</li>
 <li><strong>getMinecraftVersion</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getOnlineMode</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getOnlinePlayers</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
-<li><strong>getPlayerBanList</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getPluginCommand</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getPluginManager</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
 <li><strong>getScheduler</strong> (<a href="../classendstone_1_1Server/"><strong>endstone::Server</strong></a>)</li>
@@ -2775,6 +2776,8 @@ For latest updates join the chat on
 <li><strong>isCancelled</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>, <a href="../classendstone_1_1Task/"><strong>endstone::Task</strong></a>)</li>
 <li><strong>isIgnoreCancelled</strong> (<a href="../classendstone_1_1EventHandler/"><strong>endstone::EventHandler</strong></a>)</li>
 <li><strong>isEmpty</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
+<li><strong>IpBanEntry</strong> (<a href="../classendstone_1_1IpBanEntry/"><strong>endstone::IpBanEntry</strong></a>)</li>
+<li><strong>isBanned</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>ItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>info</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
 <li><strong>isEnabledFor</strong> (<a href="../classendstone_1_1Logger/"><strong>endstone::Logger</strong></a>)</li>
@@ -2783,7 +2786,6 @@ For latest updates join the chat on
 <li><strong>isModifiable</strong> (<a href="../classendstone_1_1Objective/"><strong>endstone::Objective</strong></a>)</li>
 <li><strong>init</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>isFlying</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
-<li><strong>isBanned</strong> (<a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>isEnabled</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>)</li>
 <li><strong>isPluginEnabled</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>isQueued</strong> (<a href="../classendstone_1_1Scheduler/"><strong>endstone::Scheduler</strong></a>)</li>
@@ -2865,10 +2867,10 @@ For latest updates join the chat on
 <li><strong>recalculatePermissions</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>removeAttachment</strong> (<a href="../classendstone_1_1CommandSenderWrapper/"><strong>endstone::CommandSenderWrapper</strong></a>, <a href="../classendstone_1_1Permissible/"><strong>endstone::Permissible</strong></a>)</li>
 <li><strong>registerHandler</strong> (<a href="../classendstone_1_1HandlerList/"><strong>endstone::HandlerList</strong></a>)</li>
+<li><strong>removeBan</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>, <a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>recalculatePermissibles</strong> (<a href="../classendstone_1_1Permission/"><strong>endstone::Permission</strong></a>)</li>
 <li><strong>remove</strong> (<a href="../classendstone_1_1PermissionAttachment/"><strong>endstone::PermissionAttachment</strong></a>)</li>
 <li><strong>resetTitle</strong> (<a href="../classendstone_1_1Player/"><strong>endstone::Player</strong></a>)</li>
-<li><strong>removeBan</strong> (<a href="../classendstone_1_1PlayerBanList/"><strong>endstone::PlayerBanList</strong></a>)</li>
 <li><strong>registerEvent</strong> (<a href="../classendstone_1_1Plugin/"><strong>endstone::Plugin</strong></a>, <a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>recalculatePermissionDefaults</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
 <li><strong>registerLoader</strong> (<a href="../classendstone_1_1PluginManager/"><strong>endstone::PluginManager</strong></a>)</li>
@@ -3051,6 +3053,7 @@ For latest updates join the chat on
 <li><strong>~Dimension</strong> (<a href="../classendstone_1_1Dimension/"><strong>endstone::Dimension</strong></a>)</li>
 <li><strong>~Event</strong> (<a href="../classendstone_1_1Event/"><strong>endstone::Event</strong></a>)</li>
 <li><strong>~Inventory</strong> (<a href="../classendstone_1_1Inventory/"><strong>endstone::Inventory</strong></a>)</li>
+<li><strong>~IpBanList</strong> (<a href="../classendstone_1_1IpBanList/"><strong>endstone::IpBanList</strong></a>)</li>
 <li><strong>~ItemStack</strong> (<a href="../classendstone_1_1ItemStack/"><strong>endstone::ItemStack</strong></a>)</li>
 <li><strong>~Language</strong> (<a href="../classendstone_1_1Language/"><strong>endstone::Language</strong></a>)</li>
 <li><strong>~Level</strong> (<a href="../classendstone_1_1Level/"><strong>endstone::Level</strong></a>)</li>

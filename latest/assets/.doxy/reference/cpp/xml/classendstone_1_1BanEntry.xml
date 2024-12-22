@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classendstone_1_1BanEntry" kind="class" language="C++" prot="public">
     <compoundname>endstone::BanEntry</compoundname>
+    <derivedcompoundref refid="classendstone_1_1IpBanEntry" prot="public" virt="non-virtual">endstone::IpBanEntry</derivedcompoundref>
     <derivedcompoundref refid="classendstone_1_1PlayerBanEntry" prot="public" virt="non-virtual">endstone::PlayerBanEntry</derivedcompoundref>
     <includes refid="ban__entry_8h" local="no">endstone/ban/ban_entry.h</includes>
       <sectiondef kind="public-type">
@@ -291,9 +292,15 @@
         <label>endstone::BanEntry</label>
         <link refid="classendstone_1_1BanEntry"/>
       </node>
-      <node id="2">
+      <node id="3">
         <label>endstone::PlayerBanEntry</label>
         <link refid="classendstone_1_1PlayerBanEntry"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>endstone::IpBanEntry</label>
+        <link refid="classendstone_1_1IpBanEntry"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

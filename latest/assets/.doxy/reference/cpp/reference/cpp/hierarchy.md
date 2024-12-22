@@ -48,6 +48,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
         * **class** [**endstone::ThunderChangeEvent**](classendstone_1_1ThunderChangeEvent.md) _Called when the thunder state in a world is changing._ 
         * **class** [**endstone::WeatherChangeEvent**](classendstone_1_1WeatherChangeEvent.md) _Called when the weather (rain) state in a world is changing._ 
 * **class** [**endstone::BanEntry**](classendstone_1_1BanEntry.md) _A single entry from a ban list._     
+    * **class** [**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md) 
     * **class** [**endstone::PlayerBanEntry**](classendstone_1_1PlayerBanEntry.md) 
 * **class** [**endstone::Block**](classendstone_1_1Block.md) _Represents a block._ 
 * **class** [**endstone::BossBar**](classendstone_1_1BossBar.md) _Represents a boss bar that is displayed to players._ 
@@ -65,6 +66,7 @@ This inheritance list is sorted roughly, but not completely, alphabetically:
 * **class** [**endstone::HandlerList**](classendstone_1_1HandlerList.md) _A list of event handlers. Should be instantiated on a per-event basis._ 
 * **class** [**endstone::Inventory**](classendstone_1_1Inventory.md) _Interface to the various inventories._     
     * **class** [**endstone::PlayerInventory**](classendstone_1_1PlayerInventory.md) _Interface to the inventory of a_ [_**Player**_](classendstone_1_1Player.md) _, including the four armor slots and any extra slots._
+* **class** [**endstone::IpBanList**](classendstone_1_1IpBanList.md) _Represents a ban list, containing banned IP addresses._ 
 * **class** [**endstone::Label**](classendstone_1_1Label.md) _Represents a text label._ 
 * **class** [**endstone::Language**](classendstone_1_1Language.md) _Represents the interface for translating text into different languages._ 
 * **class** [**endstone::Level**](classendstone_1_1Level.md) _Represents a level, which may contain actors, chunks and blocks._ 

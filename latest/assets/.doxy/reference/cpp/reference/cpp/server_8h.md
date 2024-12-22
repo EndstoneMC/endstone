@@ -15,6 +15,7 @@
 * `#include <string>`
 * `#include <string_view>`
 * `#include <vector>`
+* `#include "endstone/ban/ip_ban_list.h"`
 * `#include "endstone/ban/player_ban_list.h"`
 * `#include "endstone/block/block_data.h"`
 * `#include "endstone/boss/boss_bar.h"`

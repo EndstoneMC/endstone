@@ -9,6 +9,7 @@
 * **Aqua** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **aliases\_** ([**endstone::Command**](classendstone_1_1Command.md))
 * **async\_** ([**endstone::Event**](classendstone_1_1Event.md))
+* **address\_** ([**endstone::IpBanEntry**](classendstone_1_1IpBanEntry.md))
 * **amount\_** ([**endstone::ItemStack**](classendstone_1_1ItemStack.md))
 * **attachment\_** ([**endstone::PermissionAttachmentInfo**](classendstone_1_1PermissionAttachmentInfo.md))
 * **api\_version\_** ([**endstone::PluginDescription**](classendstone_1_1PluginDescription.md))

@@ -16,7 +16,7 @@ _A single entry from a ban list._
 
 
 
-Inherited by the following classes: [endstone::PlayerBanEntry](classendstone_1_1PlayerBanEntry.md)
+Inherited by the following classes: [endstone::IpBanEntry](classendstone_1_1IpBanEntry.md),  [endstone::PlayerBanEntry](classendstone_1_1PlayerBanEntry.md)
 
 
 

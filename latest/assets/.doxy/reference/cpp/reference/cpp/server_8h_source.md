@@ -30,6 +30,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/ban/ip_ban_list.h"
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
@@ -141,7 +142,9 @@ public:
     [[nodiscard]] virtual Result<std::shared_ptr<BlockData>> createBlockData(std::string type,
                                                                              BlockStates block_states) const = 0;
 
-    [[nodiscard]] virtual PlayerBanList &getPlayerBanList() const = 0;
+    [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
+
+    [[nodiscard]] virtual IpBanList &getIpBanList() const = 0;
 
     inline static const std::string BroadcastChannelAdmin = "endstone.broadcast.admin";
 

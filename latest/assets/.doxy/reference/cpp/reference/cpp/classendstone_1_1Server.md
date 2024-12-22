@@ -72,10 +72,12 @@ _Represents a server implementation._
 | virtual float | [**getAverageMillisecondsPerTick**](#function-getaveragemillisecondspertick) () = 0<br>_Gets the average milliseconds per tick (MSPT)._  |
 | virtual float | [**getAverageTickUsage**](#function-getaveragetickusage) () = 0<br>_Gets the average tick usage of the server._  |
 | virtual float | [**getAverageTicksPerSecond**](#function-getaveragetickspersecond) () = 0<br>_Gets the average ticks per second (TPS)._  |
+| virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getBanList**](#function-getbanlist) () const = 0<br> |
 | virtual [**ConsoleCommandSender**](classendstone_1_1ConsoleCommandSender.md) & | [**getCommandSender**](#function-getcommandsender) () const = 0<br>_Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._ |
 | virtual float | [**getCurrentMillisecondsPerTick**](#function-getcurrentmillisecondspertick) () = 0<br>_Gets the current milliseconds per tick (MSPT)._  |
 | virtual float | [**getCurrentTickUsage**](#function-getcurrenttickusage) () = 0<br>_Gets the current tick usage of the server._  |
 | virtual float | [**getCurrentTicksPerSecond**](#function-getcurrenttickspersecond) () = 0<br>_Gets the current ticks per second (TPS)._  |
+| virtual [**IpBanList**](classendstone_1_1IpBanList.md) & | [**getIpBanList**](#function-getipbanlist) () const = 0<br> |
 | virtual [**Language**](classendstone_1_1Language.md) & | [**getLanguage**](#function-getlanguage) () const = 0<br>_Gets the current language interface used by the server._  |
 | virtual [**Level**](classendstone_1_1Level.md) \* | [**getLevel**](#function-getlevel) () const = 0<br>_Gets the server level._  |
 | virtual [**Logger**](classendstone_1_1Logger.md) & | [**getLogger**](#function-getlogger) () const = 0<br>_Returns the primary logger associated with this server instance._  |
@@ -86,7 +88,6 @@ _Represents a server implementation._
 | virtual std::vector&lt; [**Player**](classendstone_1_1Player.md) \* &gt; | [**getOnlinePlayers**](#function-getonlineplayers) () const = 0<br>_Gets a list of all currently online players._  |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-12) ([**endstone::UUID**](classendstone_1_1UUID.md) id) const = 0<br>_Gets the player with the given_ [_**UUID**_](classendstone_1_1UUID.md) _._ |
 | virtual [**Player**](classendstone_1_1Player.md) \* | [**getPlayer**](#function-getplayer-22) (std::string name) const = 0<br>_Gets the player with the exact given name, case-insensitive._  |
-| virtual [**PlayerBanList**](classendstone_1_1PlayerBanList.md) & | [**getPlayerBanList**](#function-getplayerbanlist) () const = 0<br> |
 | virtual [**PluginCommand**](classendstone_1_1PluginCommand.md) \* | [**getPluginCommand**](#function-getplugincommand) (std::string name) const = 0<br>_Gets a_ [_**PluginCommand**_](classendstone_1_1PluginCommand.md) _with the given name or alias._ |
 | virtual [**PluginManager**](classendstone_1_1PluginManager.md) & | [**getPluginManager**](#function-getpluginmanager) () const = 0<br>_Gets the plugin manager for interfacing with plugins._  |
 | virtual [**Scheduler**](classendstone_1_1Scheduler.md) & | [**getScheduler**](#function-getscheduler) () const = 0<br>_Gets the scheduler for managing scheduled events._  |
@@ -551,6 +552,33 @@ The average ticks per second
 
 
 
+### function getBanList 
+
+```C++
+virtual PlayerBanList & endstone::Server::getBanList () const = 0
+```
+
+
+
+Gets the player ban list.
+
+
+
+
+**Returns:**
+
+The player ban list 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getCommandSender 
 
 _Gets a_ [_**CommandSender**_](classendstone_1_1CommandSender.md) _for this server._
@@ -640,6 +668,33 @@ virtual float endstone::Server::getCurrentTicksPerSecond () = 0
 **Returns:**
 
 The current ticks per second 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getIpBanList 
+
+```C++
+virtual IpBanList & endstone::Server::getIpBanList () const = 0
+```
+
+
+
+Gets the IP ban list.
+
+
+
+
+**Returns:**
+
+The IP ban list 
 
 
 
@@ -908,33 +963,6 @@ virtual Player * endstone::Server::getPlayer (
 **Returns:**
 
 a player object if one was found, null otherwise 
-
-
-
-
-
-        
-
-<hr>
-
-
-
-### function getPlayerBanList 
-
-```C++
-virtual PlayerBanList & endstone::Server::getPlayerBanList () const = 0
-```
-
-
-
-Gets the player ban list.
-
-
-
-
-**Returns:**
-
-The player ban list 
 
 
 

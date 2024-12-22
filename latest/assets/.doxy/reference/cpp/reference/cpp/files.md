@@ -14,6 +14,8 @@ Here is a list of all files with brief descriptions:
             * **file** [**mob.h**](mob_8h.md)     
         * **dir** [**ban**](dir_f1b1f2e9abb31749ef58cd98f22bcd78.md)     
             * **file** [**ban\_entry.h**](ban__entry_8h.md)     
+            * **file** [**ip\_ban\_entry.h**](ip__ban__entry_8h.md)     
+            * **file** [**ip\_ban\_list.h**](ip__ban__list_8h.md)     
             * **file** [**player\_ban\_entry.h**](player__ban__entry_8h.md)     
             * **file** [**player\_ban\_list.h**](player__ban__list_8h.md)     
         * **dir** [**block**](dir_faca67fc60a7463eb1bd30eabe023cf1.md)     

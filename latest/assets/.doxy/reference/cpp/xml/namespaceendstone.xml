@@ -5,6 +5,8 @@
     <innerclass refid="classendstone_1_1Actor" prot="public">endstone::Actor</innerclass>
     <innerclass refid="classendstone_1_1Mob" prot="public">endstone::Mob</innerclass>
     <innerclass refid="classendstone_1_1BanEntry" prot="public">endstone::BanEntry</innerclass>
+    <innerclass refid="classendstone_1_1IpBanEntry" prot="public">endstone::IpBanEntry</innerclass>
+    <innerclass refid="classendstone_1_1IpBanList" prot="public">endstone::IpBanList</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanEntry" prot="public">endstone::PlayerBanEntry</innerclass>
     <innerclass refid="classendstone_1_1PlayerBanList" prot="public">endstone::PlayerBanList</innerclass>
     <innerclass refid="classendstone_1_1Block" prot="public">endstone::Block</innerclass>
