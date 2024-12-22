@@ -14,22 +14,22 @@
 
 #include "endstone/detail/ban/player_ban_list.h"
 
-#include <fstream>
-#include <utility>
-
 #include <boost/algorithm/string.hpp>
-#include <boost/uuid/string_generator.hpp>
-#include <date/date.h>
-#include <fmt/format.h>
-#include <fmt/std.h>
-#include <nlohmann/json.hpp>
-
-#include "endstone/detail/util/error.h"
-#include "endstone/util/result.h"
 
 namespace endstone::detail {
 
-EndstonePlayerBanList::EndstonePlayerBanList(fs::path file) : file_(std::move(file)) {}
+bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
+           const std::optional<std::string> &xuid)
+{
+    const bool name_match = boost::iequals(entry.getName(), name);
+    const bool uuid_match =
+        uuid.has_value() && entry.getUniqueId().has_value() ? entry.getUniqueId().value() == uuid.value() : true;
+    const bool xuid_match =
+        xuid.has_value() && !xuid.value().empty() && entry.getXuid().has_value() && !entry.getXuid().value().empty()
+            ? entry.getXuid().value() == xuid.value()
+            : true;
+    return name_match && uuid_match && xuid_match;
+}
 
 const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name) const
 {
@@ -108,22 +108,12 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
 
 std::vector<const PlayerBanEntry *> EndstonePlayerBanList::getEntries() const
 {
-    std::vector<const PlayerBanEntry *> entries;
-    entries.reserve(entries_.size());
-    for (const auto &entry : entries_) {
-        entries.push_back(&entry);
-    }
-    return entries;
+    return EndstoneBanList::getEntries();
 }
 
 std::vector<PlayerBanEntry *> EndstonePlayerBanList::getEntries()
 {
-    std::vector<PlayerBanEntry *> entries;
-    entries.reserve(entries_.size());
-    for (auto &entry : entries_) {
-        entries.push_back(&entry);
-    }
-    return entries;
+    return EndstoneBanList::getEntries();
 }
 
 bool EndstonePlayerBanList::isBanned(std::string name) const
@@ -149,138 +139,6 @@ void EndstonePlayerBanList::removeBan(std::string name, std::optional<UUID> uuid
     if (it != entries_.end()) {
         entries_.erase(it);
         save();
-    }
-}
-
-bool EndstonePlayerBanList::match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
-                                  const std::optional<std::string> &xuid)
-{
-    const bool name_match = boost::iequals(entry.getName(), name);
-    const bool uuid_match =
-        uuid.has_value() && entry.getUniqueId().has_value() ? entry.getUniqueId().value() == uuid.value() : true;
-    const bool xuid_match =
-        xuid.has_value() && !xuid.value().empty() && entry.getXuid().has_value() && !entry.getXuid().value().empty()
-            ? entry.getXuid().value() == xuid.value()
-            : true;
-    return name_match && uuid_match && xuid_match;
-}
-
-Result<void> EndstonePlayerBanList::save()
-{
-    nlohmann::json array = nlohmann::json::array();
-    for (const auto &entry : entries_) {
-        nlohmann::json json;
-        json["name"] = entry.getName();
-        if (entry.getUniqueId().has_value()) {
-            json["uuid"] = entry.getUniqueId().value().str();
-        }
-        if (entry.getXuid().has_value()) {
-            json["xuid"] = entry.getXuid().value();
-        }
-        json["created"] = date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getCreated()));
-        json["source"] = entry.getSource();
-        if (entry.getExpiration().has_value()) {
-            json["expires"] =
-                date::format(BanEntry::DateFormat, date::floor<std::chrono::seconds>(entry.getExpiration().value()));
-        }
-        else {
-            json["expires"] = "forever";
-        }
-        json["reason"] = entry.getReason();
-        array.push_back(json);
-    }
-
-    std::ofstream file(file_);
-    if (!file) {
-        return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
-    }
-
-    try {
-        file << array;
-        return {};
-    }
-    catch (const std::exception &e) {
-        return nonstd::make_unexpected(make_error("Unable to write file '{}': {}", file_, e.what()));
-    }
-}
-
-Result<void> EndstonePlayerBanList::load()
-{
-    if (!exists(file_)) {
-        return {};
-    }
-
-    entries_.clear();
-
-    std::ifstream file(file_);
-    if (!file) {
-        return nonstd::make_unexpected(make_error("Unable to open file '{}'.", file_));
-    }
-
-    try {
-        auto array = nlohmann::json::parse(file);
-        for (const auto &json : array) {
-            std::string name = json["name"];
-            std::optional<UUID> uuid = std::nullopt;
-            std::optional<std::string> xuid = std::nullopt;
-            if (json.contains("uuid")) {
-                try {
-                    boost::uuids::string_generator gen;
-                    boost::uuids::uuid u1 = gen(std::string(json["uuid"]));
-                    UUID u2;
-                    std::memcpy(u2.data, u1.data, u1.size());
-                    uuid = u2;
-                }
-                catch (std::exception &) {
-                }
-            }
-            if (json.contains("xuid")) {
-                xuid = json["xuid"];
-            }
-            PlayerBanEntry entry{name, uuid, xuid};
-            if (json.contains("created")) {
-                std::string created = json["created"];
-                std::istringstream in{created};
-                BanEntry::Date date;
-                in >> date::parse(BanEntry::DateFormat, date);
-                if (!in.fail()) {
-                    entry.setCreated(date);
-                }
-            }
-            if (json.contains("source")) {
-                entry.setSource(json["source"]);
-            }
-            if (json.contains("expires")) {
-                std::string expires = json["expires"];
-                std::istringstream in{expires};
-                BanEntry::Date date;
-                in >> date::parse(BanEntry::DateFormat, date);
-                if (!in.fail()) {
-                    entry.setExpiration(date);
-                }
-            }
-            if (json.contains("reason")) {
-                entry.setReason(json["reason"]);
-            }
-            entries_.emplace_back(entry);
-        }
-        return {};
-    }
-    catch (const std::exception &e) {
-        return nonstd::make_unexpected(make_error("Unable to read file '{}': {}", file_, e.what()));
-    }
-}
-
-void EndstonePlayerBanList::removeExpired()
-{
-    auto it = entries_.begin();
-    while (it != entries_.end()) {
-        if (it->getExpiration().has_value() && it->getExpiration().value() < std::chrono::system_clock::now()) {
-            it = entries_.erase(it);
-        }
-        else {
-            ++it;
-        }
     }
 }
 

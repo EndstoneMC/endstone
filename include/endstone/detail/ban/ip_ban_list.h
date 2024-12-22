@@ -14,18 +14,31 @@
 
 #pragma once
 
-#include <filesystem>
-
 #include "endstone/ban/ip_ban_list.h"
-#include "endstone/util/result.h"
+#include "endstone/detail/ban/ban_list.h"
 
-namespace fs = std::filesystem;
+namespace nlohmann {
+template <>
+struct adl_serializer<endstone::IpBanEntry> {
+    static endstone::IpBanEntry from_json(const json &j)  // NOLINT(*-identifier-naming)
+    {
+        return endstone::IpBanEntry(j.at("ip").get<std::string>());
+    }
+
+    static void to_json(json &j, const endstone::IpBanEntry &entry)  // NOLINT(*-identifier-naming)
+    {
+        j["ip"] = entry.getAddress();
+    }
+};
+}  // namespace nlohmann
 
 namespace endstone::detail {
 
-class EndstoneIpBanList : public IpBanList {
+bool match(const IpBanEntry &entry, const std::string &address);
+
+class EndstoneIpBanList : public IpBanList, public EndstoneBanList<IpBanEntry> {
 public:
-    explicit EndstoneIpBanList(fs::path file);
+    using EndstoneBanList::EndstoneBanList;
 
     [[nodiscard]] const IpBanEntry *getBanEntry(std::string address) const override;
     [[nodiscard]] IpBanEntry *getBanEntry(std::string address) override;
@@ -37,17 +50,6 @@ public:
     [[nodiscard]] std::vector<IpBanEntry *> getEntries() override;
     [[nodiscard]] bool isBanned(std::string address) const override;
     void removeBan(std::string address) override;
-
-    Result<void> save();
-    Result<void> load();
-
-private:
-    static bool match(const IpBanEntry &entry, const std::string &address);
-
-    void removeExpired();
-
-    std::vector<IpBanEntry> entries_;
-    fs::path file_;
 };
 
 }  // namespace endstone::detail

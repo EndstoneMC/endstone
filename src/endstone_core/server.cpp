@@ -449,6 +449,7 @@ PlayerBanList &EndstoneServer::getBanList() const
 {
     return *player_ban_list_;
 }
+
 IpBanList &EndstoneServer::getIpBanList() const
 {
     return *ip_ban_list_;

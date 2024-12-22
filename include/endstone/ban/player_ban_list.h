@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 
+#include "endstone/ban/ban_list.h"
 #include "endstone/ban/player_ban_entry.h"
 
 namespace endstone {
@@ -12,7 +13,7 @@ namespace endstone {
 /**
  * @brief Represents a ban list, containing banned players.
  */
-class PlayerBanList {
+class PlayerBanList : public BanList<PlayerBanEntry> {
 public:
     virtual ~PlayerBanList() = default;
 

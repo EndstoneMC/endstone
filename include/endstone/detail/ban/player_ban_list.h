@@ -14,18 +14,58 @@
 
 #pragma once
 
-#include <filesystem>
+#include <boost/uuid/string_generator.hpp>
 
 #include "endstone/ban/player_ban_list.h"
-#include "endstone/util/result.h"
+#include "endstone/detail/ban/ban_list.h"
 
-namespace fs = std::filesystem;
+namespace nlohmann {
+template <>
+struct adl_serializer<endstone::PlayerBanEntry> {
+    static endstone::PlayerBanEntry from_json(const json &j)  // NOLINT(*-identifier-naming)
+    {
+        std::string name = j["name"];
+        std::optional<endstone::UUID> uuid = std::nullopt;
+        std::optional<std::string> xuid = std::nullopt;
+        if (j.contains("uuid")) {
+            try {
+                boost::uuids::string_generator gen;
+                boost::uuids::uuid u1 = gen(std::string(j["uuid"]));
+                endstone::UUID u2;
+                std::memcpy(u2.data, u1.data, u1.size());
+                uuid = u2;
+            }
+            catch (std::exception &) {
+            }
+        }
+        if (j.contains("xuid")) {
+            xuid = j["xuid"];
+        }
+
+        return endstone::PlayerBanEntry(name, uuid, xuid);
+    }
+
+    static void to_json(json &j, const endstone::PlayerBanEntry &entry)  // NOLINT(*-identifier-naming)
+    {
+        j["name"] = entry.getName();
+        if (entry.getUniqueId().has_value()) {
+            j["uuid"] = entry.getUniqueId().value().str();
+        }
+        if (entry.getXuid().has_value()) {
+            j["xuid"] = entry.getXuid().value();
+        }
+    }
+};
+}  // namespace nlohmann
 
 namespace endstone::detail {
 
-class EndstonePlayerBanList : public PlayerBanList {
+inline bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid = std::nullopt,
+                  const std::optional<std::string> &xuid = std::nullopt);
+
+class EndstonePlayerBanList : public PlayerBanList, public EndstoneBanList<PlayerBanEntry> {
 public:
-    explicit EndstonePlayerBanList(fs::path file);
+    using EndstoneBanList::EndstoneBanList;
 
     [[nodiscard]] const PlayerBanEntry *getBanEntry(std::string name) const override;
     [[nodiscard]] PlayerBanEntry *getBanEntry(std::string name) override;
@@ -50,18 +90,6 @@ public:
                                 std::optional<std::string> xuid) const override;
     void removeBan(std::string name) override;
     void removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid) override;
-
-    Result<void> save();
-    Result<void> load();
-
-private:
-    static bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
-                      const std::optional<std::string> &xuid);
-
-    void removeExpired();
-
-    std::vector<PlayerBanEntry> entries_;
-    fs::path file_;
 };
 
 }  // namespace endstone::detail
