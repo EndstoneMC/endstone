@@ -71,6 +71,7 @@ public:
     MOCK_METHOD(endstone::Result<std::shared_ptr<endstone::BlockData>>, createBlockData,
                 (std::string, endstone::BlockStates), (const, override));
     MOCK_METHOD(endstone::PlayerBanList &, getBanList, (), (const, override));
+    MOCK_METHOD(endstone::IpBanList &, getIpBanList, (), (const, override));
 
     MockServer()
     {

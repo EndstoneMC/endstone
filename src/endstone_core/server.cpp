@@ -56,6 +56,7 @@ EndstoneServer::EndstoneServer() : logger_(LoggerFactory::getLogger("Server"))
     register_signal_handler();
 
     player_ban_list_ = std::make_unique<EndstonePlayerBanList>("banned-players.json");
+    ip_ban_list_ = std::make_unique<EndstoneIpBanList>("banned-ips.json");
     language_ = std::make_unique<EndstoneLanguage>();
     plugin_manager_ = std::make_unique<EndstonePluginManager>(*this);
     scheduler_ = std::make_unique<EndstoneScheduler>(*this);
@@ -70,6 +71,7 @@ void EndstoneServer::init(ServerInstance &server_instance)
                      getName(), getVersion(), getMinecraftVersion());
     command_sender_ = EndstoneConsoleCommandSender::create();
     player_ban_list_->load();
+    ip_ban_list_->load();
 }
 
 EndstonePackSource &EndstoneServer::createResourcePackSource(Bedrock::NotNullNonOwnerPtr<IResourcePackRepository> repo)
@@ -446,6 +448,10 @@ Result<std::shared_ptr<BlockData>> EndstoneServer::createBlockData(std::string t
 PlayerBanList &EndstoneServer::getBanList() const
 {
     return *player_ban_list_;
+}
+IpBanList &EndstoneServer::getIpBanList() const
+{
+    return *ip_ban_list_;
 }
 
 EndstoneScoreboard &EndstoneServer::getPlayerBoard(const EndstonePlayer &player) const

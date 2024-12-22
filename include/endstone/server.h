@@ -20,6 +20,7 @@
 #include <string_view>
 #include <vector>
 
+#include "endstone/ban/ip_ban_list.h"
 #include "endstone/ban/player_ban_list.h"
 #include "endstone/block/block_data.h"
 #include "endstone/boss/boss_bar.h"
@@ -339,6 +340,13 @@ public:
      * @return The player ban list
      */
     [[nodiscard]] virtual PlayerBanList &getBanList() const = 0;
+
+    /**
+     * Gets the IP ban list.
+     *
+     * @return The IP ban list
+     */
+    [[nodiscard]] virtual IpBanList &getIpBanList() const = 0;
 
     /**
      * @brief Used for all administrative messages, such as an operator using a command.
