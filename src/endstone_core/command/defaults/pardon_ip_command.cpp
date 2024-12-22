@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/deps/raknet/socket_includes.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {

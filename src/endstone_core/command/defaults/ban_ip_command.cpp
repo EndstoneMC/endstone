@@ -17,6 +17,7 @@
 #include <string>
 #include <vector>
 
+#include "bedrock/deps/raknet/socket_includes.h"
 #include "endstone/detail/server.h"
 
 namespace endstone::detail {
@@ -71,6 +72,7 @@ bool BanIpCommand::execute(CommandSender &sender, const std::vector<std::string>
     ban_list.addBan(address, reason, std::nullopt, sender.getName());
     if (player) {
         sender.sendMessage(Translatable{"commands.banip.success.players", {address, player->getName()}});
+        player->kick("You have been IP banned from this server.");
     }
     else {
         sender.sendMessage(Translatable{"commands.banip.success", {address}});
