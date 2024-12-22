@@ -80,6 +80,7 @@ add_library(endstone_runtime SHARED
         bedrock/world/minecraft.cpp
         bedrock/world/actor/actor.cpp
         bedrock/world/actor/mob.cpp
+        bedrock/world/actor/synched_actor_data.cpp
         bedrock/world/actor/player/abilities.cpp
         bedrock/world/actor/player/player.cpp
         bedrock/world/attribute/attribute_instance.cpp

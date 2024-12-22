@@ -306,6 +306,21 @@ int Actor::getMaxHealth() const
     return 0;
 }
 
+void Actor::setNameTagVisible(bool visible)
+{
+    SynchedActorDataAccess::setActorFlag(entity_context_, ActorFlags::ALWAYS_SHOW_NAME, visible);
+}
+
+const std::string &Actor::getNameTag() const
+{
+    return entity_data.getString(static_cast<SynchedActorData::ID>(ActorDataIDs::NAME));
+}
+
+void Actor::setNameTag(const std::string &name)
+{
+    entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::NAME), name);
+}
+
 const AttributeInstance &Actor::getAttribute(const HashedString &name) const
 {
     auto component = getPersistentComponent<AttributesComponent>();

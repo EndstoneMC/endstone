@@ -34,6 +34,7 @@
 #include "bedrock/entity/components/attributes_component.h"
 #include "bedrock/entity/components/state_vector_component.h"
 #include "bedrock/entity/gamerefs_entity/entity_context.h"
+#include "bedrock/entity/utilities/synched_actor_data_access.h"
 #include "bedrock/network/spatial_actor_network_data.h"
 #include "bedrock/platform/uuid.h"
 #include "bedrock/server/commands/command_permission_level.h"
@@ -45,7 +46,7 @@
 #include "bedrock/world/actor/actor_runtime_id.h"
 #include "bedrock/world/actor/actor_types.h"
 #include "bedrock/world/actor/actor_unique_id.h"
-#include "bedrock/world/actor/synched_actor_data_entity_wrapper.h"
+#include "bedrock/world/actor/synched_actor_data.h"
 #include "bedrock/world/level/dimension/dimension.h"
 #include "endstone/detail/actor/actor.h"
 
@@ -274,7 +275,9 @@ public:
     bool removeTag(const std::string &tag);
     [[nodiscard]] int getHealth() const;
     [[nodiscard]] int getMaxHealth() const;
-
+    void setNameTagVisible(bool);
+    const std::string &getNameTag() const;
+    void setNameTag(const std::string &);
     [[nodiscard]] const AttributeInstance &getAttribute(const HashedString &name) const;  // Endstone
     [[nodiscard]] AttributeInstance &getMutableAttribute(const HashedString &name);       // Endstone
 

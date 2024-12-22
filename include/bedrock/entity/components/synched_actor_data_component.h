@@ -14,15 +14,7 @@
 
 #pragma once
 
-#include <gsl/gsl>
 
-#include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
-
-class SynchedActorDataEntityWrapper {
-public:
-    gsl::not_null<void *> data_;             // +0  SynchedActorDataComponent
-    gsl::not_null<void *> flag_data_;        // +8  ActorDataFlagComponent
-    gsl::not_null<void *> dirty_flags_;      // +16 ActorDataDirtyFlagsComponent
-    WeakRef<EntityContext> entity_context_;  // +24
+struct SynchedActorDataComponent {
+    SynchedActorData data;
 };
-BEDROCK_STATIC_ASSERT_SIZE(SynchedActorDataEntityWrapper, 48, 48);
