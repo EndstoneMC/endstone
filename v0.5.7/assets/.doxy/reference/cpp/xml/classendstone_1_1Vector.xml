@@ -1,0 +1,675 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1Vector" kind="class" language="C++" prot="public">
+    <compoundname>endstone::Vector</compoundname>
+    <includes refid="vector_8h" local="no">endstone/util/vector.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T endstone::Vector&lt; T &gt;::x_</definition>
+        <argsstring></argsstring>
+        <name>x_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="234" column="7" bodyfile="include/endstone/util/vector.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T endstone::Vector&lt; T &gt;::y_</definition>
+        <argsstring></argsstring>
+        <name>y_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="235" column="7" bodyfile="include/endstone/util/vector.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="protected" static="no" mutable="no">
+        <type>T</type>
+        <definition>T endstone::Vector&lt; T &gt;::z_</definition>
+        <argsstring></argsstring>
+        <name>z_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="236" column="7" bodyfile="include/endstone/util/vector.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1Vector_1af7abc6d458ecf1f7f0498ee1c8357c6a" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr endstone::Vector&lt; T &gt;::Vector</definition>
+        <argsstring>()</argsstring>
+        <name>Vector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="27" column="15" bodyfile="include/endstone/util/vector.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a245e605b53217c5d4d681e0e1b77c63f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr</type>
+        <definition>constexpr endstone::Vector&lt; T &gt;::Vector</definition>
+        <argsstring>(T x, T y, T z)</argsstring>
+        <name>Vector</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="28" column="15" bodyfile="include/endstone/util/vector.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a4dd96843b3397f60cc14e38acc188cde" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::getX</definition>
+        <argsstring>() const</argsstring>
+        <name>getX</name>
+        <briefdescription>
+<para>Gets the X component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The X component. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="35" column="17" bodyfile="include/endstone/util/vector.h" bodystart="35" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1aaddaeaa8e19c615a2ebc0ed97ee4e9db" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>constexpr void endstone::Vector&lt; T &gt;::setX</definition>
+        <argsstring>(T x)</argsstring>
+        <name>setX</name>
+        <param>
+          <type>T</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>Set the X component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new X component. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="46" column="20" bodyfile="include/endstone/util/vector.h" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a07b757a5eed5f58e4b07847eb7cb8f77" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::getY</definition>
+        <argsstring>() const</argsstring>
+        <name>getY</name>
+        <briefdescription>
+<para>Gets the Y component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The Y component. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="56" column="17" bodyfile="include/endstone/util/vector.h" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a9a871a7080fc93e201885582a54a6b19" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>constexpr void endstone::Vector&lt; T &gt;::setY</definition>
+        <argsstring>(T y)</argsstring>
+        <name>setY</name>
+        <param>
+          <type>T</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+<para>Set the Y component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new Y component. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="67" column="20" bodyfile="include/endstone/util/vector.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a84588ede264dbea3273c9fc3812ba82b" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::getZ</definition>
+        <argsstring>() const</argsstring>
+        <name>getZ</name>
+        <briefdescription>
+<para>Gets the Z component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The Z component. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="77" column="17" bodyfile="include/endstone/util/vector.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a5b519c6680b0fc7b1ec2e20c85429fc2" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr void</type>
+        <definition>constexpr void endstone::Vector&lt; T &gt;::setZ</definition>
+        <argsstring>(T z)</argsstring>
+        <name>setZ</name>
+        <param>
+          <type>T</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Set the Z component. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>z</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new Z component. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>This vector. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="88" column="20" bodyfile="include/endstone/util/vector.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1aba78f506442e1a0ced331974b7ecc237" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>constexpr Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator+</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="93" column="22" bodyfile="include/endstone/util/vector.h" bodystart="93" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1aad4af3f6158a8082b1378a996f3f1833" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>constexpr Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator-</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="98" column="22" bodyfile="include/endstone/util/vector.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a877f0cb3244b2d87fc4b910d15acbbc9" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>constexpr Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator*</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="103" column="22" bodyfile="include/endstone/util/vector.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a1212a7d2db661f7113c0f63b590cd497" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>constexpr Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator/</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="108" column="22" bodyfile="include/endstone/util/vector.h" bodystart="108" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a81caca99d57f1b939be66444ded0af48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+        <definition>Vector&lt;T&gt;&amp; endstone::Vector&lt; T &gt;::operator+=</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="113" column="12" bodyfile="include/endstone/util/vector.h" bodystart="113" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a1eb1932eecdb794b85f0480e2e0146a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+        <definition>Vector&lt;T&gt;&amp; endstone::Vector&lt; T &gt;::operator-=</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="121" column="12" bodyfile="include/endstone/util/vector.h" bodystart="121" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a742453feb781ab00f80ea8ca261d73c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+        <definition>Vector&lt;T&gt;&amp; endstone::Vector&lt; T &gt;::operator*=</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other)</argsstring>
+        <name>operator*=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="129" column="12" bodyfile="include/endstone/util/vector.h" bodystart="129" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1af3925707b295793074f3fa992bd34d20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+        <definition>Vector&lt;T&gt;&amp; endstone::Vector&lt; T &gt;::operator/=</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other)</argsstring>
+        <name>operator/=</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="137" column="12" bodyfile="include/endstone/util/vector.h" bodystart="137" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a5ef968e42391dec6a1f8d6ddbd876fcc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator+</definition>
+        <argsstring>(T scalar) const</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="145" column="12" bodyfile="include/endstone/util/vector.h" bodystart="145" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a0fc1eb67cbc59047585507d28b2ed6d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator-</definition>
+        <argsstring>(T scalar) const</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="150" column="12" bodyfile="include/endstone/util/vector.h" bodystart="150" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a77438991c855e2b407af434077be5b71" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator*</definition>
+        <argsstring>(T scalar) const</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="155" column="12" bodyfile="include/endstone/util/vector.h" bodystart="155" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a8904e8e1c99dd78d22273678f47f783a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; endstone::Vector&lt; T &gt;::operator/</definition>
+        <argsstring>(T scalar) const</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="160" column="12" bodyfile="include/endstone/util/vector.h" bodystart="160" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool endstone::Vector&lt; T &gt;::operator==</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="185" column="20" bodyfile="include/endstone/util/vector.h" bodystart="185" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::length</definition>
+        <argsstring>() const</argsstring>
+        <name>length</name>
+        <briefdescription>
+<para>Gets the magnitude of the vector, defined as sqrt(x^2+y^2+z^2). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the magnitude </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="195" column="18" bodyfile="include/endstone/util/vector.h" bodystart="195" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::lengthSquared</definition>
+        <argsstring>() const</argsstring>
+        <name>lengthSquared</name>
+        <briefdescription>
+<para>Gets the magnitude of the vector squared. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the magnitude </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="205" column="18" bodyfile="include/endstone/util/vector.h" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::distance</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>distance</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the distance between this vector and another.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the distance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="216" column="18" bodyfile="include/endstone/util/vector.h" bodystart="216" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" prot="public" static="no" constexpr="yes" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>constexpr T</type>
+        <definition>constexpr T endstone::Vector&lt; T &gt;::distanceSquared</definition>
+        <argsstring>(const Vector&lt; T &gt; &amp;other) const</argsstring>
+        <name>distanceSquared</name>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the squared distance between this vector and another.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other vector </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the distance </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="227" column="18" bodyfile="include/endstone/util/vector.h" bodystart="227" bodyend="231"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classendstone_1_1Vector_1a478b4f59b88f6d64889608c053969de6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; operator+</definition>
+        <argsstring>(T scalar, const Vector&lt; T &gt; &amp;v)</argsstring>
+        <name>operator+</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="165" column="19" bodyfile="include/endstone/util/vector.h" bodystart="165" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1Vector_1a16f34bea284e41dc34177ef54cd4a56b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; operator-</definition>
+        <argsstring>(T scalar, const Vector&lt; T &gt; &amp;v)</argsstring>
+        <name>operator-</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="170" column="19" bodyfile="include/endstone/util/vector.h" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1Vector_1a62a4ad73522b697dbaa77be9c41320ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; operator*</definition>
+        <argsstring>(T scalar, const Vector&lt; T &gt; &amp;v)</argsstring>
+        <name>operator*</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="175" column="19" bodyfile="include/endstone/util/vector.h" bodystart="175" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="friend" id="classendstone_1_1Vector_1a0365e98317b222a3b2da4ab90bbecba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt;</type>
+        <definition>Vector&lt;T&gt; operator/</definition>
+        <argsstring>(T scalar, const Vector&lt; T &gt; &amp;v)</argsstring>
+        <name>operator/</name>
+        <param>
+          <type>T</type>
+          <declname>scalar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; T &gt; &amp;</type>
+          <declname>v</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/util/vector.h" line="180" column="19" bodyfile="include/endstone/util/vector.h" bodystart="180" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents a 3-dimensional vector. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/util/vector.h" line="25" column="1" bodyfile="include/endstone/util/vector.h" bodystart="25" bodyend="237"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1Vector_1a1cf74725d363e9b8b61c15b488ca181d" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>distance</name></member>
+      <member refid="classendstone_1_1Vector_1afa6155c36969b8b1694ca36e2bf6b2b8" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>distanceSquared</name></member>
+      <member refid="classendstone_1_1Vector_1a4dd96843b3397f60cc14e38acc188cde" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>getX</name></member>
+      <member refid="classendstone_1_1Vector_1a07b757a5eed5f58e4b07847eb7cb8f77" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>getY</name></member>
+      <member refid="classendstone_1_1Vector_1a84588ede264dbea3273c9fc3812ba82b" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>getZ</name></member>
+      <member refid="classendstone_1_1Vector_1ac1d344ebd47c06ee1fce6b75a996eacc" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>length</name></member>
+      <member refid="classendstone_1_1Vector_1a18e241adb4c98828d113c53b7b065e04" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>lengthSquared</name></member>
+      <member refid="classendstone_1_1Vector_1a877f0cb3244b2d87fc4b910d15acbbc9" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1Vector_1a77438991c855e2b407af434077be5b71" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1Vector_1a62a4ad73522b697dbaa77be9c41320ac" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator*</name></member>
+      <member refid="classendstone_1_1Vector_1a742453feb781ab00f80ea8ca261d73c7" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator*=</name></member>
+      <member refid="classendstone_1_1Vector_1aba78f506442e1a0ced331974b7ecc237" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Vector_1a5ef968e42391dec6a1f8d6ddbd876fcc" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Vector_1a478b4f59b88f6d64889608c053969de6" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator+</name></member>
+      <member refid="classendstone_1_1Vector_1a81caca99d57f1b939be66444ded0af48" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator+=</name></member>
+      <member refid="classendstone_1_1Vector_1aad4af3f6158a8082b1378a996f3f1833" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Vector_1a0fc1eb67cbc59047585507d28b2ed6d2" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Vector_1a16f34bea284e41dc34177ef54cd4a56b" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator-</name></member>
+      <member refid="classendstone_1_1Vector_1a1eb1932eecdb794b85f0480e2e0146a8" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator-=</name></member>
+      <member refid="classendstone_1_1Vector_1a1212a7d2db661f7113c0f63b590cd497" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator/</name></member>
+      <member refid="classendstone_1_1Vector_1a8904e8e1c99dd78d22273678f47f783a" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator/</name></member>
+      <member refid="classendstone_1_1Vector_1a0365e98317b222a3b2da4ab90bbecba2" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator/</name></member>
+      <member refid="classendstone_1_1Vector_1af3925707b295793074f3fa992bd34d20" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator/=</name></member>
+      <member refid="classendstone_1_1Vector_1adeb43307778c502701288edb44b975db" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>operator==</name></member>
+      <member refid="classendstone_1_1Vector_1aaddaeaa8e19c615a2ebc0ed97ee4e9db" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>setX</name></member>
+      <member refid="classendstone_1_1Vector_1a9a871a7080fc93e201885582a54a6b19" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>setY</name></member>
+      <member refid="classendstone_1_1Vector_1a5b519c6680b0fc7b1ec2e20c85429fc2" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>setZ</name></member>
+      <member refid="classendstone_1_1Vector_1af7abc6d458ecf1f7f0498ee1c8357c6a" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>Vector</name></member>
+      <member refid="classendstone_1_1Vector_1a245e605b53217c5d4d681e0e1b77c63f" prot="public" virt="non-virtual"><scope>endstone::Vector</scope><name>Vector</name></member>
+      <member refid="classendstone_1_1Vector_1a86ad239adf538f12527ecdef11ce8412" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>x_</name></member>
+      <member refid="classendstone_1_1Vector_1a4c09803cc5c0cd47059a0c5780c534a5" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>y_</name></member>
+      <member refid="classendstone_1_1Vector_1a0536c500a60561d68b4b569f46bfb6b2" prot="protected" virt="non-virtual"><scope>endstone::Vector</scope><name>z_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

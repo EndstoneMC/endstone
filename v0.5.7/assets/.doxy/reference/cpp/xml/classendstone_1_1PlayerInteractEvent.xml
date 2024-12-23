@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classendstone_1_1PlayerInteractEvent" kind="class" language="C++" prot="public">
+    <compoundname>endstone::PlayerInteractEvent</compoundname>
+    <basecompoundref refid="classendstone_1_1PlayerEvent" prot="public" virt="non-virtual">endstone::PlayerEvent</basecompoundref>
+    <includes refid="player__interact__event_8h" local="no">endstone/event/player/player_interact_event.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::PlayerInteractEvent::NAME</definition>
+        <argsstring></argsstring>
+        <name>NAME</name>
+        <initializer>= &quot;PlayerInteractEvent&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="35" column="37" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1aa0155e6e15c31b165d0eebd9edb4c08f" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;ItemStack&gt; endstone::PlayerInteractEvent::item_</definition>
+        <argsstring></argsstring>
+        <name>item_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="109" column="21" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1ae64db9722300dfb44fb17e3836661bf7" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Block&gt; endstone::PlayerInteractEvent::block_clicked_</definition>
+        <argsstring></argsstring>
+        <name>block_clicked_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="110" column="21" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" prot="private" static="no" mutable="no">
+        <type>BlockFace</type>
+        <definition>BlockFace endstone::PlayerInteractEvent::block_face_</definition>
+        <argsstring></argsstring>
+        <name>block_face_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="111" column="15" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" prot="private" static="no" mutable="no">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
+        <definition>Vector&lt;float&gt; endstone::PlayerInteractEvent::clicked_position_</definition>
+        <argsstring></argsstring>
+        <name>clicked_position_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="112" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1aacb663da4d203650ae1a4cbd2ba5d483" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerInteractEvent::PlayerInteractEvent</definition>
+        <argsstring>(Player &amp;player, std::unique_ptr&lt; ItemStack &gt; item, std::unique_ptr&lt; Block &gt; block_clicked, BlockFace block_face, const Vector&lt; float &gt; &amp;clicked_position)</argsstring>
+        <name>PlayerInteractEvent</name>
+        <param>
+          <type><ref refid="classendstone_1_1Player" kindref="compound">Player</ref> &amp;</type>
+          <declname>player</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> &gt;</type>
+          <declname>item</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classendstone_1_1Block" kindref="compound">Block</ref> &gt;</type>
+          <declname>block_clicked</declname>
+        </param>
+        <param>
+          <type>BlockFace</type>
+          <declname>block_face</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt; &amp;</type>
+          <declname>clicked_position</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="27" column="5" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="27" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>endstone::PlayerInteractEvent::~PlayerInteractEvent</definition>
+        <argsstring>() override=default</argsstring>
+        <name>~PlayerInteractEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string endstone::PlayerInteractEvent::getEventName</definition>
+        <argsstring>() const override</argsstring>
+        <name>getEventName</name>
+        <reimplements refid="classendstone_1_1Event_1a826fe74f9c4195a36a364b9aeeb321bb">getEventName</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets a user-friendly identifier for this event.</para>
+<para><simplesect kind="return"><para>name of this event </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="36" column="18" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a09cf28f7e1b1467aed92cb5039906105" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool endstone::PlayerInteractEvent::isCancellable</definition>
+        <argsstring>() const override</argsstring>
+        <name>isCancellable</name>
+        <reimplements refid="classendstone_1_1Event_1a8e8cba21dd1527394f600dbf6769a0b9">isCancellable</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Whether the event can be cancelled by a plugin or the server.</para>
+<para><simplesect kind="return"><para>true if this event can be cancelled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="41" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::PlayerInteractEvent::hasItem</definition>
+        <argsstring>() const</argsstring>
+        <name>hasItem</name>
+        <briefdescription>
+<para>Check if this event involved an item. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>boolean true if it did </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="51" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a63095c1415d38e471a58c83bba81d6b2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> *</type>
+        <definition>ItemStack* endstone::PlayerInteractEvent::getItem</definition>
+        <argsstring>() const</argsstring>
+        <name>getItem</name>
+        <briefdescription>
+<para>Returns the item in hand represented by this event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1ItemStack" kindref="compound">ItemStack</ref> the item used </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="61" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool endstone::PlayerInteractEvent::hasBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>hasBlock</name>
+        <briefdescription>
+<para>Check if this event involved a block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>boolean true if it did </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="71" column="11" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1ad47002bd323c6a36baf24425151f2660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> *</type>
+        <definition>Block* endstone::PlayerInteractEvent::getBlock</definition>
+        <argsstring>() const</argsstring>
+        <name>getBlock</name>
+        <briefdescription>
+<para>Returns the clicked block. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="classendstone_1_1Block" kindref="compound">Block</ref> returns the block clicked with this item. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="81" column="12" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="81" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>BlockFace</type>
+        <definition>BlockFace endstone::PlayerInteractEvent::getBlockFace</definition>
+        <argsstring>() const</argsstring>
+        <name>getBlockFace</name>
+        <briefdescription>
+<para>Returns the face of the block that was clicked. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>BlockFace returns the face of the block that was clicked </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="91" column="16" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1PlayerInteractEvent_1a28978de3d4a8b28750df329c3bd79106" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classendstone_1_1Vector" kindref="compound">Vector</ref>&lt; float &gt;</type>
+        <definition>Vector&lt;float&gt; endstone::PlayerInteractEvent::getClickedPosition</definition>
+        <argsstring>() const</argsstring>
+        <name>getClickedPosition</name>
+        <briefdescription>
+<para>Gets the exact position on the block the player interacted with. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All vector components are between 0.0 and 1.0 inclusive.</para>
+<para><simplesect kind="return"><para>the clicked position. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/event/player/player_interact_event.h" line="103" column="13" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Represents an event that is called when a player right-clicks a block. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>endstone::PlayerInteractEvent</label>
+        <link refid="classendstone_1_1PlayerInteractEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>endstone::PlayerInteractEvent</label>
+        <link refid="classendstone_1_1PlayerInteractEvent"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>endstone::Event</label>
+        <link refid="classendstone_1_1Event"/>
+      </node>
+      <node id="2">
+        <label>endstone::PlayerEvent</label>
+        <link refid="classendstone_1_1PlayerEvent"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/endstone/event/player/player_interact_event.h" line="25" column="1" bodyfile="include/endstone/event/player/player_interact_event.h" bodystart="25" bodyend="113"/>
+    <listofallmembers>
+      <member refid="classendstone_1_1PlayerInteractEvent_1ae64db9722300dfb44fb17e3836661bf7" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>block_clicked_</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a6eae7ed2b14249eeea133f6297d0a960" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>block_face_</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a50a670a3475715ed0b2e8d7ca24320ea" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>clicked_position_</name></member>
+      <member refid="classendstone_1_1Event_1a28cca8d74920493b449d035540acf023" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1Event_1a7199136ebb40e1441bc61e29f83c3cad" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>Event</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1ad47002bd323c6a36baf24425151f2660" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getBlock</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1ad38f34d2deabcbd5503b3ceaafd033c7" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getBlockFace</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a28978de3d4a8b28750df329c3bd79106" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getClickedPosition</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1ad3cf6bffe4c85dd968febed54fb22e2e" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>getEventName</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a63095c1415d38e471a58c83bba81d6b2" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getItem</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a0024c3db9eaec88a139f3c3fcb687e55" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>getPlayer</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a34e1b96ac0ad624c40e8877a4696111e" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>hasBlock</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a24de1e03d7c563bc8cddc7ee7e4c73c5" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>hasItem</name></member>
+      <member refid="classendstone_1_1Event_1ae89b54f63dc32b0c8797a59db69b6931" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>isAsynchronous</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a09cf28f7e1b1467aed92cb5039906105" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>isCancellable</name></member>
+      <member refid="classendstone_1_1Event_1a392163d87ff21752806523e050cd10bb" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>isCancelled</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1aa0155e6e15c31b165d0eebd9edb4c08f" prot="private" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>item_</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1abac8921bf78c78354ff50a94cd9d25b1" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>NAME</name></member>
+      <member refid="classendstone_1_1Event_1ae8dc9a0f7f723981bca4b1d4e5855b47" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>operator=</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1a244b2be43274af72138b157f63455419" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1aacb663da4d203650ae1a4cbd2ba5d483" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>PlayerInteractEvent</name></member>
+      <member refid="classendstone_1_1Event_1ad52e803ff719bd82e650f3cf06aae614" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>setCancelled</name></member>
+      <member refid="classendstone_1_1Event_1a6aeaa8096baba90f8ace94106e0e05f3" prot="public" virt="virtual"><scope>endstone::PlayerInteractEvent</scope><name>~Event</name></member>
+      <member refid="classendstone_1_1PlayerEvent_1ab31b937251b8ccc1c72c275d1c7a522b" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>~PlayerEvent</name></member>
+      <member refid="classendstone_1_1PlayerInteractEvent_1a79542b22fedd19df03ea203e9c0cd9f7" prot="public" virt="non-virtual"><scope>endstone::PlayerInteractEvent</scope><name>~PlayerInteractEvent</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

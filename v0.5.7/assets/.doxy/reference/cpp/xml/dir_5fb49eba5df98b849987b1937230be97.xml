@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_5fb49eba5df98b849987b1937230be97" kind="dir">
+    <compoundname>include/endstone/network</compoundname>
+    <innerfile refid="packet_8h">packet.h</innerfile>
+    <innerfile refid="packet__type_8h">packet_type.h</innerfile>
+    <innerfile refid="spawn__particle__effect__packet_8h">spawn_particle_effect_packet.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/endstone/network/"/>
+  </compounddef>
+</doxygen>
