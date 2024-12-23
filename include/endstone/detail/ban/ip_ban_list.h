@@ -36,7 +36,11 @@ namespace endstone::detail {
 
 bool match(const IpBanEntry &entry, const std::string &address);
 
-class EndstoneIpBanList : public IpBanList, public EndstoneBanList<IpBanEntry> {
+struct IpBanEntryMatcher {
+    bool operator()(const IpBanEntry &entry, const std::string &address) const;
+};
+
+class EndstoneIpBanList : public IpBanList, public EndstoneBanList<IpBanEntry, IpBanEntryMatcher> {
 public:
     using EndstoneBanList::EndstoneBanList;
 

@@ -60,10 +60,13 @@ struct adl_serializer<endstone::PlayerBanEntry> {
 
 namespace endstone::detail {
 
-inline bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid = std::nullopt,
-                  const std::optional<std::string> &xuid = std::nullopt);
+struct PlayerBanEntryMatcher {
+    bool operator()(const PlayerBanEntry &entry, const std::string &name,
+                    const std::optional<UUID> &uuid = std::nullopt,
+                    const std::optional<std::string> &xuid = std::nullopt) const;
+};
 
-class EndstonePlayerBanList : public PlayerBanList, public EndstoneBanList<PlayerBanEntry> {
+class EndstonePlayerBanList : public PlayerBanList, public EndstoneBanList<PlayerBanEntry, PlayerBanEntryMatcher> {
 public:
     using EndstoneBanList::EndstoneBanList;
 

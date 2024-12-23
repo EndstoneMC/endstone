@@ -32,7 +32,7 @@ namespace fs = std::filesystem;
 
 namespace endstone::detail {
 
-template <typename T>
+template <typename T, typename Matcher>
 class EndstoneBanList : public BanList<T> {
 public:
     explicit EndstoneBanList(fs::path file) : file_(std::move(file)){};
@@ -42,7 +42,7 @@ public:
     [[nodiscard]] const T *getBanEntry(std::string target) const override
     {
         const auto it =
-            std::find_if(entries_.begin(), entries_.end(), [&](const T &entry) { return match(entry, target); });
+            std::find_if(entries_.begin(), entries_.end(), [&](const T &entry) { return matcher_(entry, target); });
 
         if (it != entries_.end()) {
             return &(*it);
@@ -52,7 +52,8 @@ public:
 
     [[nodiscard]] T *getBanEntry(std::string target) override
     {
-        const auto it = std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return match(entry, target); });
+        const auto it =
+            std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); });
 
         if (it != entries_.end()) {
             return &(*it);
@@ -63,8 +64,9 @@ public:
     T &addBan(std::string target, std::optional<std::string> reason, std::optional<BanEntry::Date> expires,
               std::optional<std::string> source) override
     {
-        entries_.erase(std::remove_if(entries_.begin(), entries_.end(), [&](T &entry) { return match(entry, target); }),
-                       entries_.end());
+        entries_.erase(
+            std::remove_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); }),
+            entries_.end());
 
         T new_entry{target};
         if (reason.has_value()) {
@@ -114,7 +116,8 @@ public:
 
     void removeBan(std::string target) override
     {
-        const auto it = std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return match(entry, target); });
+        const auto it =
+            std::find_if(entries_.begin(), entries_.end(), [&](T &entry) { return matcher_(entry, target); });
         if (it != entries_.end()) {
             entries_.erase(it);
             save();
@@ -219,6 +222,7 @@ protected:
 
     std::vector<T> entries_;
     fs::path file_;
+    Matcher matcher_;
 };
 
 }  // namespace endstone::detail

@@ -18,8 +18,8 @@
 
 namespace endstone::detail {
 
-bool match(const PlayerBanEntry &entry, const std::string &name, const std::optional<UUID> &uuid,
-           const std::optional<std::string> &xuid)
+bool PlayerBanEntryMatcher::operator()(const PlayerBanEntry &entry, const std::string &name,
+                                       const std::optional<UUID> &uuid, const std::optional<std::string> &xuid) const
 {
     const bool name_match = boost::iequals(entry.getName(), name);
     const bool uuid_match =
@@ -45,7 +45,7 @@ const PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name, std::
                                                          std::optional<std::string> xuid) const
 {
     const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](const PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); });
+                                 [&](const PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
 
     if (it != entries_.end()) {
         return &(*it);
@@ -57,7 +57,7 @@ PlayerBanEntry *EndstonePlayerBanList::getBanEntry(std::string name, std::option
                                                    std::optional<std::string> xuid)
 {
     const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); });
+                                 [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
 
     if (it != entries_.end()) {
         return &(*it);
@@ -76,7 +76,7 @@ PlayerBanEntry &EndstonePlayerBanList::addBan(std::string name, std::optional<UU
                                               std::optional<BanEntry::Date> expires, std::optional<std::string> source)
 {
     entries_.erase(std::remove_if(entries_.begin(), entries_.end(),
-                                  [&](PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); }),
+                                  [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); }),
                    entries_.end());
 
     PlayerBanEntry new_entry{name, uuid, xuid};
@@ -135,7 +135,7 @@ void EndstonePlayerBanList::removeBan(std::string name)
 void EndstonePlayerBanList::removeBan(std::string name, std::optional<UUID> uuid, std::optional<std::string> xuid)
 {
     const auto it = std::find_if(entries_.begin(), entries_.end(),
-                                 [&](PlayerBanEntry &entry) { return match(entry, name, uuid, xuid); });
+                                 [&](PlayerBanEntry &entry) { return matcher_(entry, name, uuid, xuid); });
     if (it != entries_.end()) {
         entries_.erase(it);
         save();

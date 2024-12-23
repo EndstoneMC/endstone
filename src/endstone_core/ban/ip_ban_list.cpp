@@ -16,7 +16,7 @@
 
 namespace endstone::detail {
 
-bool match(const IpBanEntry &entry, const std::string &address)
+bool IpBanEntryMatcher::operator()(const IpBanEntry &entry, const std::string &address) const
 {
     return entry.getAddress() == address;
 }
