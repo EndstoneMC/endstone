@@ -9,6 +9,31 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 <small>[Compare with 0.5.6](https://github.com/EndstoneMC/endstone/compare/v0.5.6...HEAD)</small>
 
+### Added
+
+- Added getter and setter for name tags and score tags in the `Actor` class.
+- Added the `Actor::getType` function to retrieve actor types (e.g., `minecraft:pig`).
+- Added `isNameTagAlwaysVisible` and `setNameTagAlwaysVisible` methods to the `Actor` class to control the visibility of
+  name tags.
+- Implemented `/ban-ip` and `/unban-ip` commands.
+- Added `Server::getIpBanList` for managing IP bans.
+- Added setters for fields in `ServerListPingEvent` by [@theaddonn](https://github.com/theaddonn).
+- Added a new color code (`§v`).
+
+### Changed
+
+- Renamed `Server::getPlayerBanList` to `Server::getBanList`.
+- Removed deprecated material from DevTools by [@smartcmd](https://github.com/smartcmd).
+
+### Fixed
+
+- Prevented a crash caused by killing a player in a form callback, which invalidated the player object.
+- Fixed an issue where the player inventory was not updated after calling `clear`.
+- Fixed loading of encrypted resource packs.
+- Ensured the correct plugin loader is selected when loading from a file by third-party plugin loaders
+  by [@engsr6982](https://github.com/engsr6982).
+- Ensured players with matching IP addresses are immediately kicked upon banning.
+
 ## [0.5.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.6) - 2024-12-06
 
 <small>[Compare with 0.5.5](https://github.com/EndstoneMC/endstone/compare/v0.5.5...v0.5.6)</small>
