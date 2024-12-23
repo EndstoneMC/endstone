@@ -29,7 +29,7 @@
 
 #define ENDSTONE_VERSION_MAJOR 0
 #define ENDSTONE_VERSION_MINOR 5
-#define ENDSTONE_VERSION_PATCH 6
+#define ENDSTONE_VERSION_PATCH 7
 #define ENDSTONE_API_VERSION   ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR) "." ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)
 
 #define ENDSTONE_MAX_PLAYERS 200
@@ -55,7 +55,7 @@
 namespace endstone {
 template <typename... Func>
 struct overloaded : Func... {
-  using Func::operator()...;
+    using Func::operator()...;
 };
 
 template <typename... Func>
