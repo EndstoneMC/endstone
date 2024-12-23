@@ -24,7 +24,6 @@ class ActorChunkTransferEntry;
 class ActorDamageCause;
 class ActorDefinitionDescriptor;
 class ActorDefinitionGroup;
-class ActorDefinitionIdentifier;
 class ActorEvent;
 class ActorFactory;
 class ActorInteraction;

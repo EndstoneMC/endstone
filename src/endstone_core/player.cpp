@@ -184,6 +184,11 @@ void EndstonePlayer::setOp(bool value)
     getHandle().setPermissions(value ? CommandPermissionLevel::Any : CommandPermissionLevel::Admin);
 }
 
+std::string EndstonePlayer::getType() const
+{
+    return EndstoneMob::getType();
+}
+
 std::uint64_t EndstonePlayer::getRuntimeId() const
 {
     return EndstoneMob::getRuntimeId();

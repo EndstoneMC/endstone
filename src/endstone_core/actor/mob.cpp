@@ -96,6 +96,11 @@ void EndstoneMob::setOp(bool value)
     EndstoneActor::setOp(value);
 }
 
+std::string EndstoneMob::getType() const
+{
+    return EndstoneActor::getType();
+}
+
 std::uint64_t EndstoneMob::getRuntimeId() const
 {
     return EndstoneActor::getRuntimeId();

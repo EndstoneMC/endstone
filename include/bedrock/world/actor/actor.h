@@ -41,6 +41,7 @@
 #include "bedrock/util/variant_parameter_list.h"
 #include "bedrock/world/actor/actor_category.h"
 #include "bedrock/world/actor/actor_damage_source.h"
+#include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_flags.h"
 #include "bedrock/world/actor/actor_initialization_method.h"
 #include "bedrock/world/actor/actor_runtime_id.h"
@@ -250,6 +251,8 @@ public:
     void setStatusFlag(ActorFlags, bool);
     [[nodiscard]] bool isType(ActorType type) const;
     [[nodiscard]] bool hasType(ActorType type) const;
+    [[nodiscard]] ActorType getEntityTypeId() const;
+    [[nodiscard]] const ActorDefinitionIdentifier &getActorIdentifier() const;
     [[nodiscard]] bool isPlayer() const;
     [[nodiscard]] bool isRemoved() const;
     [[nodiscard]] bool isOnGround() const;

@@ -15,6 +15,7 @@
 #include "bedrock/world/actor/actor.h"
 
 #include "bedrock/entity/components/actor_data_flag_component.h"
+#include "bedrock/entity/components/actor_definition_identifier_component.h"
 #include "bedrock/entity/components/actor_owner_component.h"
 #include "bedrock/entity/components/actor_type_flag_component.h"
 #include "bedrock/entity/components/actor_unique_id_component.h"
@@ -93,6 +94,20 @@ bool Actor::hasType(ActorType type) const
 {
     auto component = getPersistentComponent<ActorTypeComponent>();
     return !!(component->type & type);
+}
+
+ActorType Actor::getEntityTypeId() const
+{
+    return getPersistentComponent<ActorTypeComponent>()->type;
+}
+
+const ActorDefinitionIdentifier &Actor::getActorIdentifier() const
+{
+    static ActorDefinitionIdentifier empty;
+    if (auto *component = tryGetComponent<ActorDefinitionIdentifierComponent>(); component) {
+        return component->identifier;
+    }
+    return empty;
 }
 
 bool Actor::isPlayer() const

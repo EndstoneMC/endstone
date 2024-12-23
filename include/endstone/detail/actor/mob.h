@@ -45,6 +45,7 @@ public:
     void setOp(bool value) override;
 
     // Actor
+    [[nodiscard]] std::string getType() const override;
     [[nodiscard]] std::uint64_t getRuntimeId() const override;
     [[nodiscard]] Location getLocation() const override;
     [[nodiscard]] Vector<float> getVelocity() const override;

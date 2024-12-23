@@ -207,6 +207,11 @@ class Actor(CommandSender):
         Returns a list of scoreboard tags for this actor.
         """
     @property
+    def type(self) -> str:
+        """
+        Gets the type of the actor.
+        """
+    @property
     def velocity(self) -> Vector:
         """
         Gets this actor's current velocity.

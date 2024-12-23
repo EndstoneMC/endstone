@@ -21,6 +21,7 @@
 #include "bedrock/gameplayhandlers/coordinator_result.h"
 #include "bedrock/resources/base_game_version.h"
 #include "bedrock/shared_ptr.h"
+#include "bedrock/world/actor/actor_definition_identifier.h"
 #include "bedrock/world/actor/actor_location.h"
 #include "bedrock/world/gamemode/interaction_result.h"
 #include "bedrock/world/interactions/mining/mine_block_item_effect_type.h"

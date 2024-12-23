@@ -102,6 +102,11 @@ void EndstoneActor::setOp(bool value)
     getPermissibleBase().setOp(value);
 }
 
+std::string EndstoneActor::getType() const
+{
+    return actor_.getActorIdentifier().getCanonicalName();
+}
+
 std::uint64_t EndstoneActor::getRuntimeId() const
 {
     return actor_.getRuntimeID().raw_id;
