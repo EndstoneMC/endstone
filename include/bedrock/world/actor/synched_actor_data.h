@@ -34,13 +34,46 @@ enum class DataItemType : std::uint8_t {
 };
 
 class DataItem {
-public:
     using ID = std::uint16_t;
+
+public:
+    virtual ~DataItem() = default;
+    ID getId() const;
+    DataItemType getType() const;
+
+protected:
+    friend class SynchedActorData;
+
+    const DataItemType type_;  // +8
+    const ID id_;              // +10
+};
+
+template <typename T>
+class DataItem2 : public DataItem {
+public:
+private:
+    friend class SynchedActorData;
+    friend class SynchedActorDataEntityWrapper;
+
+    T data_;  // +16
 };
 
 class SynchedActorData {
 public:
     using ID = DataItem::ID;
+    using DataList = std::vector<std::unique_ptr<DataItem>>;
+
+    [[nodiscard]] const std::string &getString(ID) const;
+
+private:
+    friend class SynchedActorDataEntityWrapper;
+
+    DataItem &_get(ID);
+    DataItem *_find(ID) const;
+
+    DataList items_array_;                                                   // +0
+    std::bitset<static_cast<int>(ActorDataIDs::Count)> dirty_flags_;         // +24
+    std::bitset<static_cast<int>(ActorDataIDs::Count)> has_component_data_;  // +48
 };
 
 struct SynchedActorDataComponent;
@@ -52,6 +85,8 @@ public:
     void set(SynchedActorData::ID, const T &);
 
 private:
+    gsl::not_null<SynchedActorData *> _get() const;
+
     gsl::not_null<SynchedActorDataComponent *> data_;            // +0
     gsl::not_null<ActorDataFlagComponent *> flag_data_;          // +8
     gsl::not_null<ActorDataDirtyFlagsComponent *> dirty_flags_;  // +16

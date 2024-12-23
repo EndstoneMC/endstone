@@ -39,6 +39,7 @@ add_library(endstone_runtime SHARED
         bedrock/entity/gamerefs_entity/entity_registry.cpp
         bedrock/entity/gamerefs_entity/stack_result_storage_entity.cpp
         bedrock/entity/gamerefs_entity/weak_storage_entity.cpp
+        bedrock/entity/utilities/synched_actor_data_access.cpp
         bedrock/locale/i18n.cpp
         bedrock/locale/localization.cpp
         bedrock/nbt/compound_tag.cpp

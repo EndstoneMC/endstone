@@ -15,3 +15,62 @@
 #include "bedrock/world/actor/synched_actor_data.h"
 
 #include "bedrock/entity/components/synched_actor_data_component.h"
+
+DataItem::ID DataItem::getId() const
+{
+    return id_;
+}
+
+DataItemType DataItem::getType() const
+{
+    return type_;
+}
+
+const std::string &SynchedActorData::getString(ID id) const
+{
+    static std::string empty_string;
+    if (id >= items_array_.size()) {
+        return empty_string;
+    }
+    auto *item = items_array_[id].get();
+    if (!item) {
+        return empty_string;
+    }
+    if (item->getType() != DataItemType::String) {
+        return empty_string;
+    }
+    return static_cast<DataItem2<std::string> *>(item)->data_;
+}
+
+DataItem &SynchedActorData::_get(ID id)
+{
+    return *items_array_[id].get();
+}
+
+DataItem *SynchedActorData::_find(ID id) const
+{
+    return items_array_[id].get();
+}
+
+const std::string &SynchedActorDataEntityWrapper::getString(SynchedActorData::ID id) const
+{
+    return data_->data.getString(id);
+}
+
+gsl::not_null<SynchedActorData *> SynchedActorDataEntityWrapper::_get() const
+{
+    return &data_->data;
+}
+
+template <>
+void SynchedActorDataEntityWrapper::set<std::string>(SynchedActorData::ID id, const std::string &value)
+{
+    auto data = _get();
+    auto *item = data->_find(id);
+    if (!item || item->getType() != DataItemType::String) {
+        return;
+    }
+    auto *string_item = static_cast<DataItem2<std::string> *>(item);
+    string_item->data_ = value;
+    data->dirty_flags_.set(id, true);
+}

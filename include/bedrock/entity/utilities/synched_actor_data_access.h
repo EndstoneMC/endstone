@@ -14,6 +14,7 @@
 
 #pragma once
 
+#include "bedrock/entity/gamerefs_entity/entity_context.h"
 #include "bedrock/world/actor/actor_flags.h"
 
 namespace SynchedActorDataAccess {

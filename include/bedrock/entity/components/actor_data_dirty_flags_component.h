@@ -19,5 +19,5 @@
 #include "bedrock/world/actor/actor_data_ids.h"
 
 struct ActorDataDirtyFlagsComponent {
-    std::bitset<static_cast<int>(ActorDataIDs::Count)> dirty_flags_;  // +0
+    std::bitset<static_cast<int>(ActorDataIDs::Count)> dirty_flags;  // +0
 };

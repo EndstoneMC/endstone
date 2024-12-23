@@ -17,11 +17,17 @@
 #include <bitset>
 
 #include "bedrock/entity/components/actor_data_component_base.h"
+#include "bedrock/world/actor/actor_flags.h"
 
 struct ActorDataFlagComponent : ActorDataComponentBase<std::bitset<static_cast<int>(ActorFlags::Count)>> {
 
-    [[nodiscard]] bool getStatusFlag(ActorFlags flags) const
+    [[nodiscard]] bool getStatusFlag(ActorFlags flag) const
     {
-        return value_.test(static_cast<int>(flags));
+        return value_.test(static_cast<int>(flag));
+    }
+
+    void setStatusFlag(ActorFlags flag, bool value)
+    {
+        value_.set(static_cast<int>(flag), value);
     }
 };
