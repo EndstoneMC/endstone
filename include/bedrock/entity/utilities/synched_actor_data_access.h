@@ -18,5 +18,6 @@
 #include "bedrock/world/actor/actor_flags.h"
 
 namespace SynchedActorDataAccess {
+bool getActorFlag(const EntityContext &, ActorFlags);
 void setActorFlag(EntityContext &, ActorFlags, bool);
 }

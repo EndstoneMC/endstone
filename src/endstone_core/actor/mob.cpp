@@ -202,6 +202,16 @@ void EndstoneMob::setNameTagVisible(bool visible)
     EndstoneActor::setNameTagVisible(visible);
 }
 
+bool EndstoneMob::isNameTagAlwaysVisible() const
+{
+    return EndstoneActor::isNameTagAlwaysVisible();
+}
+
+void EndstoneMob::setNameTagAlwaysVisible(bool visible)
+{
+    EndstoneActor::setNameTagAlwaysVisible(visible);
+}
+
 std::string EndstoneMob::getNameTag() const
 {
     return EndstoneActor::getNameTag();

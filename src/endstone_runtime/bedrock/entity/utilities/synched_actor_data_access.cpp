@@ -17,6 +17,14 @@
 #include "bedrock/entity/components/actor_data_dirty_flags_component.h"
 #include "bedrock/entity/components/actor_data_flag_component.h"
 
+bool SynchedActorDataAccess::getActorFlag(const EntityContext &entity, ActorFlags flag)
+{
+    if (auto *data_flag = entity.tryGetComponent<ActorDataFlagComponent>()) {
+        return data_flag->getStatusFlag(flag);
+    }
+    return false;
+}
+
 void SynchedActorDataAccess::setActorFlag(EntityContext &entity, ActorFlags flag, bool value)
 {
     auto &dirty_flags = entity.getOrAddComponent<ActorDataDirtyFlagsComponent>();

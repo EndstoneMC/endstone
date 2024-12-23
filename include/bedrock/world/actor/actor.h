@@ -246,7 +246,8 @@ protected:
     virtual void _playStepSound(BlockPos const &, Block const &) = 0;
 
 public:
-    [[nodiscard]] bool getStatusFlag(ActorFlags flags) const;
+    [[nodiscard]] bool getStatusFlag(ActorFlags) const;
+    void setStatusFlag(ActorFlags, bool);
     [[nodiscard]] bool isType(ActorType type) const;
     [[nodiscard]] bool hasType(ActorType type) const;
     [[nodiscard]] bool isPlayer() const;

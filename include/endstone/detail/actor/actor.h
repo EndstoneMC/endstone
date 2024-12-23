@@ -75,6 +75,8 @@ public:
     [[nodiscard]] bool removeScoreboardTag(std::string tag) const override;
     [[nodiscard]] bool isNameTagVisible() const override;
     void setNameTagVisible(bool visible) override;
+    [[nodiscard]] bool isNameTagAlwaysVisible() const override;
+    void setNameTagAlwaysVisible(bool visible) override;
     [[nodiscard]] std::string getNameTag() const override;
     void setNameTag(std::string name) override;
     [[nodiscard]] std::string getScoreTag() const override;

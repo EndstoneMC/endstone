@@ -73,10 +73,14 @@ void Actor::teleportTo(const Vec3 &pos, bool should_stop_riding, int cause, int 
                                      entity_type, keep_velocity);
 }
 
-bool Actor::getStatusFlag(ActorFlags flags) const
+bool Actor::getStatusFlag(ActorFlags flag) const
 {
-    auto component = getPersistentComponent<ActorDataFlagComponent>();
-    return component->getStatusFlag(flags);
+    return SynchedActorDataAccess::getActorFlag(entity_context_, flag);
+}
+
+void Actor::setStatusFlag(ActorFlags flag, bool value)
+{
+    SynchedActorDataAccess::setActorFlag(entity_context_, flag, value);
 }
 
 bool Actor::isType(ActorType type) const
@@ -308,7 +312,7 @@ int Actor::getMaxHealth() const
 
 void Actor::setNameTagVisible(bool visible)
 {
-    SynchedActorDataAccess::setActorFlag(entity_context_, ActorFlags::CAN_SHOW_NAME, visible);
+    setStatusFlag(ActorFlags::CAN_SHOW_NAME, visible);
 }
 
 const std::string &Actor::getNameTag() const

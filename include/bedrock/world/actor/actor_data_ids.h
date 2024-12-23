@@ -14,6 +14,7 @@
 
 #pragma once
 
+// NOLINTBEGIN(*-identifier-naming)
 enum class ActorDataIDs : uint8_t {
     RESERVED_0 = 0,
     STRUCTURAL_INTEGRITY = 1,
@@ -149,3 +150,4 @@ enum class ActorDataIDs : uint8_t {
     VISIBLE_MOB_EFFECTS = 131,
     Count = 132,
 };
+// NOLINTEND(*-identifier-naming)

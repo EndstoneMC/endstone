@@ -184,6 +184,20 @@ public:
     virtual void setNameTagVisible(bool visible) = 0;
 
     /**
+     * @brief Checks if the actor's name tag is always visible.
+     *
+     * @return True if the name tag is always visible, false otherwise.
+     */
+    [[nodiscard]] virtual bool isNameTagAlwaysVisible() const = 0;
+
+    /**
+     * @brief Sets whether the actor's name tag should always be visible.
+     *
+     * @param visible True to make the name tag always visible, false to disable always visibility.
+     */
+    virtual void setNameTagAlwaysVisible(bool visible) = 0;
+
+    /**
      * @brief Gets the current name tag of the actor.
      *
      * @return The name tag.

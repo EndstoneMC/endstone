@@ -245,6 +245,16 @@ void EndstoneActor::setNameTagVisible(bool visible)
     actor_.setNameTagVisible(visible);
 }
 
+bool EndstoneActor::isNameTagAlwaysVisible() const
+{
+    return actor_.getStatusFlag(ActorFlags::ALWAYS_SHOW_NAME);
+}
+
+void EndstoneActor::setNameTagAlwaysVisible(bool visible)
+{
+    actor_.setStatusFlag(ActorFlags::ALWAYS_SHOW_NAME, visible);
+}
+
 std::string EndstoneActor::getNameTag() const
 {
     return actor_.getNameTag();

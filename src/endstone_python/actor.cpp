@@ -54,8 +54,10 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
         .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Adds a tag to this actor.", py::arg("tag"))
         .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, "Removes a given tag from this actor.",
              py::arg("tag"))
-        .def_property("is_nametag_visible", &Actor::isNameTagVisible, &Actor::setNameTagVisible,
+        .def_property("is_name_tag_visible", &Actor::isNameTagVisible, &Actor::setNameTagVisible,
                       "Gets or sets if the actor's name tag is visible or not.")
+        .def_property("is_name_tag_always_visible", &Actor::isNameTagAlwaysVisible, &Actor::setNameTagAlwaysVisible,
+                      "Gets or sets if the actor's name tag is always visible or not.")
         .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
                       "Gets or sets the current name tag of the actor.")
         .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,

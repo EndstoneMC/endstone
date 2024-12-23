@@ -44,7 +44,7 @@ const std::string &SynchedActorData::getString(ID id) const
 
 DataItem &SynchedActorData::_get(ID id)
 {
-    return *items_array_[id].get();
+    return *items_array_[id];
 }
 
 DataItem *SynchedActorData::_find(ID id) const

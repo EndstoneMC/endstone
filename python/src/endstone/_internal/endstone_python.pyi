@@ -145,12 +145,20 @@ class Actor(CommandSender):
         Returns true if the actor is in water.
         """
     @property
-    def is_nametag_visible(self) -> bool:
+    def is_name_tag_always_visible(self) -> bool:
+        """
+        Gets or sets if the actor's name tag is always visible or not.
+        """
+    @is_name_tag_always_visible.setter
+    def is_name_tag_always_visible(self, arg1: bool) -> None:
+        ...
+    @property
+    def is_name_tag_visible(self) -> bool:
         """
         Gets or sets if the actor's name tag is visible or not.
         """
-    @is_nametag_visible.setter
-    def is_nametag_visible(self, arg1: bool) -> None:
+    @is_name_tag_visible.setter
+    def is_name_tag_visible(self, arg1: bool) -> None:
         ...
     @property
     def is_on_ground(self) -> bool:
