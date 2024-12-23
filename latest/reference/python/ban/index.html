@@ -10,13 +10,13 @@
         <meta name="author" content="Vincent Wu">
       
       
-        <link rel="canonical" href="https://endstone.dev/latest/reference/python/scheduler/">
+        <link rel="canonical" href="https://endstone.dev/latest/reference/python/ban/">
       
       
-        <link rel="prev" href="../scoreboard/">
+        <link rel="prev" href="../actor/">
       
       
-        <link rel="next" href="../misc/">
+        <link rel="next" href="../block/">
       
       
       <link rel="icon" href="../../../assets/logo.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Scheduler - Endstone</title>
+        <title>Ban - Endstone</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#endstone.scheduler" class="md-skip">
+        <a href="#endstone.ban" class="md-skip">
           Skip to content
         </a>
       
@@ -140,7 +140,7 @@ For latest updates join the chat on
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Scheduler
+              Ban
             
           </span>
         </div>
@@ -975,10 +975,28 @@ For latest updates join the chat on
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ban/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Ban
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -987,6 +1005,299 @@ For latest updates join the chat on
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+    <a href="#endstone.ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" ban">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanEntry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;IpBanEntry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" IpBanEntry">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanEntry.address" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;address
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;IpBanList
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" IpBanList">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList.entries" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;entries
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList.add_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;add_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList.get_ban_entry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_ban_entry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList.is_banned" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_banned
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.IpBanList.remove_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;remove_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerBanEntry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerBanEntry">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.name" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;name
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.unique_id" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;unique_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.xuid" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;xuid
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerBanList
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerBanList">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.entries" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;entries
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.add_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;add_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.get_ban_entry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_ban_entry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.is_banned" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_banned
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.remove_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;remove_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1248,28 +1559,10 @@ For latest updates join the chat on
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Scheduler
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../scheduler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1278,222 +1571,6 @@ For latest updates join the chat on
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-    <a href="#endstone.scheduler" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;scheduler
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label=" scheduler">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Scheduler
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label=" Scheduler">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.cancel_task" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel_task
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.cancel_tasks" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel_tasks
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.get_pending_tasks" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_pending_tasks
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.is_queued" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_queued
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.is_running" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_running
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.run_task" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_task
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Task
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-    <nav class="md-nav" aria-label=" Task">
-        <ul class="md-nav__list">
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.is_cancelled" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;is_cancelled
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.is_sync" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;is_sync
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.owner" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;owner
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.task_id" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;task_id
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.cancel" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-                
-            
-        </ul>
-    </nav>
-    
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2203,100 +2280,35 @@ For latest updates join the chat on
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-    <a href="#endstone.scheduler" class="md-nav__link">
+    <a href="#endstone.ban" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;scheduler
+        <code class="doc-symbol doc-symbol-toc doc-symbol-module"></code>&nbsp;ban
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label=" scheduler">
+    <nav class="md-nav" aria-label=" ban">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler" class="md-nav__link">
+    <a href="#endstone.ban.IpBanEntry" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Scheduler
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;IpBanEntry
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label=" Scheduler">
+    <nav class="md-nav" aria-label=" IpBanEntry">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.cancel_task" class="md-nav__link">
+    <a href="#endstone.ban.IpBanEntry.address" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel_task
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.cancel_tasks" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel_tasks
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.get_pending_tasks" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_pending_tasks
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.is_queued" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_queued
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.is_running" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_running
-      </span>
-    </a>
-
-    <!-- Table of contents list -->
-    
-</li>
-                
-            
-                
-                    <li class="md-nav__item">
-    <a href="#endstone.scheduler.Scheduler.run_task" class="md-nav__link">
-      <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;run_task
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;address
       </span>
     </a>
 
@@ -2313,22 +2325,22 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;Task
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;IpBanList
       </span>
     </a>
 
     <!-- Table of contents list -->
     
-    <nav class="md-nav" aria-label=" Task">
+    <nav class="md-nav" aria-label=" IpBanList">
         <ul class="md-nav__list">
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.is_cancelled" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList.entries" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;is_cancelled
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;entries
       </span>
     </a>
 
@@ -2339,9 +2351,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.is_sync" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList.add_ban" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;is_sync
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;add_ban
       </span>
     </a>
 
@@ -2352,9 +2364,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.owner" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList.get_ban_entry" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;owner
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_ban_entry
       </span>
     </a>
 
@@ -2365,9 +2377,9 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.task_id" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList.is_banned" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;task_id
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_banned
       </span>
     </a>
 
@@ -2378,9 +2390,151 @@ For latest updates join the chat on
             
                 
                     <li class="md-nav__item">
-    <a href="#endstone.scheduler.Task.cancel" class="md-nav__link">
+    <a href="#endstone.ban.IpBanList.remove_ban" class="md-nav__link">
       <span class="md-ellipsis">
-        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;cancel
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;remove_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerBanEntry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerBanEntry">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.name" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;name
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.unique_id" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;unique_id
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanEntry.xuid" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;xuid
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;PlayerBanList
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label=" PlayerBanList">
+        <ul class="md-nav__list">
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.entries" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-attribute"></code>&nbsp;entries
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.add_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;add_ban
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.get_ban_entry" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;get_ban_entry
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.is_banned" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;is_banned
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+</li>
+                
+            
+                
+                    <li class="md-nav__item">
+    <a href="#endstone.ban.PlayerBanList.remove_ban" class="md-nav__link">
+      <span class="md-ellipsis">
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;remove_ban
       </span>
     </a>
 
@@ -2415,7 +2569,7 @@ For latest updates join the chat on
                   
 
   
-    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/python/scheduler.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/edit/main/docs/reference/python/ban.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -2424,24 +2578,24 @@ For latest updates join the chat on
     
       
     
-    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/python/scheduler.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/EndstoneMC/endstone/raw/main/docs/reference/python/ban.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-  <h1>Scheduler</h1>
+  <h1>Ban</h1>
 
 <div class="doc doc-object doc-module">
 
 
 
-<h2 id="endstone.scheduler" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">endstone.scheduler</span>
+<h2 id="endstone.ban" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-module"></code>            <span class="doc doc-object-name doc-module-name">endstone.ban</span>
 
 
-<a href="#endstone.scheduler" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#endstone.ban" class="headerlink" title="Permanent link">&para;</a></h2>
 
     <div class="doc doc-contents first">
 
@@ -2461,18 +2615,34 @@ For latest updates join the chat on
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler" href="#endstone.scheduler.Scheduler">Scheduler</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanEntry" href="#endstone.ban.IpBanEntry">IpBanEntry</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a scheduler that executes various tasks</p>
+                <p>Represents a ban entry for an IP address.</p>
               </div>
             </td>
           </tr>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task" href="#endstone.scheduler.Task">Task</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList" href="#endstone.ban.IpBanList">IpBanList</a></code></td>
             <td>
               <div class="doc-md-description">
-                <p>Represents a task being executed by the scheduler</p>
+                <p>Represents a ban list containing banned IP addresses.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanEntry" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a ban entry for a player.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList" href="#endstone.ban.PlayerBanList">PlayerBanList</a></code></td>
+            <td>
+              <div class="doc-md-description">
+                <p>Represents a ban list containing banned players.</p>
               </div>
             </td>
           </tr>
@@ -2498,87 +2668,54 @@ For latest updates join the chat on
 
 
 
-<h3 id="endstone.scheduler.Scheduler" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">Scheduler</span>
+<h3 id="endstone.ban.IpBanEntry" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">IpBanEntry</span>
 
 
-<a href="#endstone.scheduler.Scheduler" class="headerlink" title="Permanent link">&para;</a></h3>
-
+<a href="#endstone.ban.IpBanEntry" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">IpBanEntry</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span>
+</span></code></pre></div>
 
     <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="endstone._internal.endstone_python.BanEntry">BanEntry</span></code></p>
 
 
-        <p>Represents a scheduler that executes various tasks</p>
-
-
-
-
-
+        <p>Represents a ban entry for an IP address.</p>
 
 
 
 
-<p><span class="doc-section-title">Methods:</span></p>
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
     <table>
       <thead>
         <tr>
           <th>Name</th>
+          <th>Type</th>
           <th>Description</th>
         </tr>
       </thead>
       <tbody>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.cancel_task" href="#endstone.scheduler.Scheduler.cancel_task">cancel_task</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Removes task from scheduler.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.cancel_tasks" href="#endstone.scheduler.Scheduler.cancel_tasks">cancel_tasks</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Removes all tasks associated with a particular plugin from the scheduler.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.get_pending_tasks" href="#endstone.scheduler.Scheduler.get_pending_tasks">get_pending_tasks</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns a vector of all pending tasks.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.is_queued" href="#endstone.scheduler.Scheduler.is_queued">is_queued</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Check if the task queued to be run later.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.is_running" href="#endstone.scheduler.Scheduler.is_running">is_running</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Check if the task currently running.</p>
-                </div>
-              </td>
-            </tr>
-            <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Scheduler.run_task" href="#endstone.scheduler.Scheduler.run_task">run_task</a></code></td>
-              <td>
-                <div class="doc-md-description">
-                  <p>Returns a task that will be executed synchronously</p>
-                </div>
-              </td>
-            </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanEntry.address" href="#endstone.ban.IpBanEntry.address">address</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the banned IP address.</p>
+              </div>
+            </td>
+          </tr>
       </tbody>
     </table>
-
-
 
 
 
@@ -2591,126 +2728,30 @@ For latest updates join the chat on
 
 
 
+<div class="doc doc-object doc-attribute">
 
 
-<div class="doc doc-object doc-function">
+
+<h4 id="endstone.ban.IpBanEntry.address" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">address</span>
 
 
-<h4 id="endstone.scheduler.Scheduler.cancel_task" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">cancel_task</span>
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
 
-
-<a href="#endstone.scheduler.Scheduler.cancel_task" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cancel_task</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<a href="#endstone.ban.IpBanEntry.address" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Removes task from scheduler.</p>
-
+        <p>Gets the banned IP address.</p>
     </div>
 
 </div>
 
-<div class="doc doc-object doc-function">
 
-
-<h4 id="endstone.scheduler.Scheduler.cancel_tasks" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">cancel_tasks</span>
-
-
-<a href="#endstone.scheduler.Scheduler.cancel_tasks" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cancel_tasks</span><span class="p">(</span><span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Removes all tasks associated with a particular plugin from the scheduler.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="endstone.scheduler.Scheduler.get_pending_tasks" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">get_pending_tasks</span>
-
-
-<a href="#endstone.scheduler.Scheduler.get_pending_tasks" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_pending_tasks</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Task" href="#endstone.scheduler.Task">Task</a></span><span class="p">]</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns a vector of all pending tasks.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="endstone.scheduler.Scheduler.is_queued" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">is_queued</span>
-
-
-<a href="#endstone.scheduler.Scheduler.is_queued" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_queued</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Check if the task queued to be run later.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="endstone.scheduler.Scheduler.is_running" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">is_running</span>
-
-
-<a href="#endstone.scheduler.Scheduler.is_running" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_running</span><span class="p">(</span><span class="nb">id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Check if the task currently running.</p>
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="endstone.scheduler.Scheduler.run_task" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">run_task</span>
-
-
-<a href="#endstone.scheduler.Scheduler.run_task" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">run_task</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">plugin</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">task</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="typing.Callable" href="https://docs.python.org/3/library/typing.html#typing.Callable">Callable</a></span><span class="p">[[],</span> <span class="kc">None</span><span class="p">],</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">delay</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">period</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.Task" href="#endstone.scheduler.Task">Task</a></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns a task that will be executed synchronously</p>
-
-    </div>
-
-</div>
 
 
 
@@ -2724,17 +2765,17 @@ For latest updates join the chat on
 
 
 
-<h3 id="endstone.scheduler.Task" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">Task</span>
+<h3 id="endstone.ban.IpBanList" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">IpBanList</span>
 
 
-<a href="#endstone.scheduler.Task" class="headerlink" title="Permanent link">&para;</a></h3>
+<a href="#endstone.ban.IpBanList" class="headerlink" title="Permanent link">&para;</a></h3>
 
 
     <div class="doc doc-contents ">
 
 
-        <p>Represents a task being executed by the scheduler</p>
+        <p>Represents a ban list containing banned IP addresses.</p>
 
 
 
@@ -2754,10 +2795,34 @@ For latest updates join the chat on
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.cancel" href="#endstone.scheduler.Task.cancel">cancel</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList.add_ban" href="#endstone.ban.IpBanList.add_ban">add_ban</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Attempts to cancel this task.</p>
+                  <p>Adds a ban to this list, or updates an existing one.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList.get_ban_entry" href="#endstone.ban.IpBanList.get_ban_entry">get_ban_entry</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets a BanEntry by IP address.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList.is_banned" href="#endstone.ban.IpBanList.is_banned">is_banned</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Checks if a BanEntry exists for the target by IP address.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList.remove_ban" href="#endstone.ban.IpBanList.remove_ban">remove_ban</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Removes an IP address from the ban list.</p>
                 </div>
               </td>
             </tr>
@@ -2778,46 +2843,13 @@ For latest updates join the chat on
       </thead>
       <tbody>
           <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.is_cancelled" href="#endstone.scheduler.Task.is_cancelled">is_cancelled</a></code></td>
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.IpBanList.entries" href="#endstone.ban.IpBanList.entries">entries</a></code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.IpBanEntry" href="#endstone.ban.IpBanEntry">IpBanEntry</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns true if the task has been cancelled.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.is_sync" href="#endstone.scheduler.Task.is_sync">is_sync</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns true if the task is run by server thread.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.owner" href="#endstone.scheduler.Task.owner">owner</a></code></td>
-            <td>
-                  <code><span title="endstone._internal.endstone_python.Plugin">Plugin</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the Plugin that owns the task.</p>
-              </div>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td><code><a class="autorefs autorefs-internal" title="endstone.scheduler.Task.task_id" href="#endstone.scheduler.Task.task_id">task_id</a></code></td>
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Returns the task id.</p>
+                <p>Gets a vector of pointers to entries in the ban list.</p>
               </div>
             </td>
           </tr>
@@ -2839,90 +2871,21 @@ For latest updates join the chat on
 
 
 
-<h4 id="endstone.scheduler.Task.is_cancelled" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">is_cancelled</span>
+<h4 id="endstone.ban.IpBanList.entries" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">entries</span>
 
 
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
   </span>
 
-<a href="#endstone.scheduler.Task.is_cancelled" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">is_cancelled</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+<a href="#endstone.ban.IpBanList.entries" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">entries</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.IpBanEntry" href="#endstone.ban.IpBanEntry">IpBanEntry</a></span><span class="p">]</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Returns true if the task has been cancelled.</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h4 id="endstone.scheduler.Task.is_sync" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">is_sync</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#endstone.scheduler.Task.is_sync" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">is_sync</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns true if the task is run by server thread.</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h4 id="endstone.scheduler.Task.owner" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">owner</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#endstone.scheduler.Task.owner" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">owner</span><span class="p">:</span> <span class="n"><span title="endstone._internal.endstone_python.Plugin">Plugin</span></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns the Plugin that owns the task.</p>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-attribute">
-
-
-
-<h4 id="endstone.scheduler.Task.task_id" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">task_id</span>
-
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-property"><code>property</code></small>
-  </span>
-
-<a href="#endstone.scheduler.Task.task_id" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">task_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#int">int</a></span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Returns the task id.</p>
+        <p>Gets a vector of pointers to entries in the ban list.</p>
     </div>
 
 </div>
@@ -2932,17 +2895,482 @@ For latest updates join the chat on
 <div class="doc doc-object doc-function">
 
 
-<h4 id="endstone.scheduler.Task.cancel" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">cancel</span>
+<h4 id="endstone.ban.IpBanList.add_ban" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">add_ban</span>
 
 
-<a href="#endstone.scheduler.Task.cancel" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">cancel</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+<a href="#endstone.ban.IpBanList.add_ban" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_ban</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">reason</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">expires</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="datetime.datetime" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">source</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.IpBanEntry" href="#endstone.ban.IpBanEntry">IpBanEntry</a></span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Attempts to cancel this task.</p>
+        <p>Adds a ban to this list, or updates an existing one.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.IpBanList.get_ban_entry" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">get_ban_entry</span>
+
+
+<a href="#endstone.ban.IpBanList.get_ban_entry" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_ban_entry</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.IpBanEntry" href="#endstone.ban.IpBanEntry">IpBanEntry</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets a BanEntry by IP address.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.IpBanList.is_banned" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">is_banned</span>
+
+
+<a href="#endstone.ban.IpBanList.is_banned" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_banned</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Checks if a BanEntry exists for the target by IP address.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.IpBanList.remove_ban" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">remove_ban</span>
+
+
+<a href="#endstone.ban.IpBanList.remove_ban" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">remove_ban</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Removes an IP address from the ban list.</p>
+
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="endstone.ban.PlayerBanEntry" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">PlayerBanEntry</span>
+
+
+<a href="#endstone.ban.PlayerBanEntry" class="headerlink" title="Permanent link">&para;</a></h3>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">PlayerBanEntry</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">uuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="endstone._internal.endstone_python.BanEntry">BanEntry</span></code></p>
+
+
+        <p>Represents a ban entry for a player.</p>
+
+
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanEntry.name" href="#endstone.ban.PlayerBanEntry.name">name</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the banned player's name.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanEntry.unique_id" href="#endstone.ban.PlayerBanEntry.unique_id">unique_id</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the banned player's unique ID, or None if not available.</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanEntry.xuid" href="#endstone.ban.PlayerBanEntry.xuid">xuid</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets the banned player's Xbox user ID (XUID), or None if not available.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.ban.PlayerBanEntry.name" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">name</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.ban.PlayerBanEntry.name" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the banned player's name.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.ban.PlayerBanEntry.unique_id" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">unique_id</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.ban.PlayerBanEntry.unique_id" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">unique_id</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the banned player's unique ID, or None if not available.</p>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.ban.PlayerBanEntry.xuid" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">xuid</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.ban.PlayerBanEntry.xuid" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets the banned player's Xbox user ID (XUID), or None if not available.</p>
+    </div>
+
+</div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="endstone.ban.PlayerBanList" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-class"></code>            <span class="doc doc-object-name doc-class-name">PlayerBanList</span>
+
+
+<a href="#endstone.ban.PlayerBanList" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+
+        <p>Represents a ban list containing banned players.</p>
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList.add_ban" href="#endstone.ban.PlayerBanList.add_ban">add_ban</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Adds a ban to this list, or updates an existing one.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList.get_ban_entry" href="#endstone.ban.PlayerBanList.get_ban_entry">get_ban_entry</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Gets a BanEntry by player name, UUID, or XUID.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList.is_banned" href="#endstone.ban.PlayerBanList.is_banned">is_banned</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Checks if a BanEntry exists for the target by name, UUID, or XUID.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList.remove_ban" href="#endstone.ban.PlayerBanList.remove_ban">remove_ban</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Removes a player from the ban list by name, UUID, or XUID.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+
+<p><span class="doc-section-title">Attributes:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td><code><a class="autorefs autorefs-internal" title="endstone.ban.PlayerBanList.entries" href="#endstone.ban.PlayerBanList.entries">entries</a></code></td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a>[<a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PlayerBanEntry" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Gets a vector of pointers to entries in the ban list.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="endstone.ban.PlayerBanList.entries" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-attribute"></code>            <span class="doc doc-object-name doc-attribute-name">entries</span>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#endstone.ban.PlayerBanList.entries" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">entries</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#list">list</a></span><span class="p">[</span><span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PlayerBanEntry" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></span><span class="p">]</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets a vector of pointers to entries in the ban list.</p>
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.PlayerBanList.add_ban" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">add_ban</span>
+
+
+<a href="#endstone.ban.PlayerBanList.add_ban" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_ban</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">uuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">reason</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">expires</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="datetime.datetime" href="https://docs.python.org/3/library/datetime.html#datetime.datetime">datetime</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">source</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PlayerBanEntry" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Adds a ban to this list, or updates an existing one.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.PlayerBanList.get_ban_entry" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">get_ban_entry</span>
+
+
+<a href="#endstone.ban.PlayerBanList.get_ban_entry" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">get_ban_entry</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">uuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-internal" title="endstone._internal.endstone_python.PlayerBanEntry" href="#endstone.ban.PlayerBanEntry">PlayerBanEntry</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Gets a BanEntry by player name, UUID, or XUID.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.PlayerBanList.is_banned" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">is_banned</span>
+
+
+<a href="#endstone.ban.PlayerBanList.is_banned" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">is_banned</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">uuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/functions.html#bool">bool</a></span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Checks if a BanEntry exists for the target by name, UUID, or XUID.</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="endstone.ban.PlayerBanList.remove_ban" class="doc doc-heading">
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <span class="doc doc-object-name doc-function-name">remove_ban</span>
+
+
+<a href="#endstone.ban.PlayerBanList.remove_ban" class="headerlink" title="Permanent link">&para;</a></h4>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">remove_ban</span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">name</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span><span class="p">,</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">uuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" title="uuid.UUID" href="https://docs.python.org/3/library/uuid.html#uuid.UUID">UUID</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">xuid</span><span class="p">:</span> <span class="n"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a></span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</span></code></pre></div>
+
+    <div class="doc doc-contents ">
+
+        <p>Removes a player from the ban list by name, UUID, or XUID.</p>
 
     </div>
 
@@ -2986,7 +3414,7 @@ For latest updates join the chat on
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 23, 2024</span>
   </span>
 
     
@@ -2996,7 +3424,7 @@ For latest updates join the chat on
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 29, 2024</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 23, 2024</span>
   </span>
 
     
@@ -3056,7 +3484,7 @@ For latest updates join the chat on
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../scoreboard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Scoreboard">
+          <a href="../actor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Actor">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3066,20 +3494,20 @@ For latest updates join the chat on
                 Previous
               </span>
               <div class="md-ellipsis">
-                Scoreboard
+                Actor
               </div>
             </div>
           </a>
         
         
           
-          <a href="../misc/" class="md-footer__link md-footer__link--next" aria-label="Next: Miscellaneous">
+          <a href="../block/" class="md-footer__link md-footer__link--next" aria-label="Next: Block">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Miscellaneous
+                Block
               </div>
             </div>
             <div class="md-footer__button md-icon">
