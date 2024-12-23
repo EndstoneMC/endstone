@@ -16,6 +16,7 @@
 
 #include <gsl/gsl>
 
+#include "bedrock/core/math/vec3.h"
 #include "bedrock/entity/components/actor_data_dirty_flags_component.h"
 #include "bedrock/entity/components/actor_data_flag_component.h"
 #include "bedrock/entity/gamerefs_entity/gamerefs_entity.h"
@@ -60,10 +61,18 @@ private:
 
 class SynchedActorData {
 public:
-    using ID = DataItem::ID;
+    using TypeInt8 = std::int8_t;
+    using TypeShort = std::int16_t;
+    using TypeInt = std::int32_t;
+    using TypeInt64 = std::int64_t;
+    using TypeFloat = float;
+    using TypeVec3 = Vec3;
     using DataList = std::vector<std::unique_ptr<DataItem>>;
+    using ID = DataItem::ID;
 
+    [[nodiscard]] TypeInt8 getInt8(ID) const;
     [[nodiscard]] const std::string &getString(ID) const;
+    [[nodiscard]] bool hasData(ID) const;
 
 private:
     friend class SynchedActorDataEntityWrapper;
@@ -80,6 +89,7 @@ struct SynchedActorDataComponent;
 
 class SynchedActorDataEntityWrapper {
 public:
+    [[nodiscard]] SynchedActorData::TypeInt8 getInt8(SynchedActorData::ID) const;
     [[nodiscard]] const std::string &getString(SynchedActorData::ID) const;
     template <typename T>
     void set(SynchedActorData::ID, const T &);

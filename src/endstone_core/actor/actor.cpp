@@ -247,12 +247,13 @@ void EndstoneActor::setNameTagVisible(bool visible)
 
 bool EndstoneActor::isNameTagAlwaysVisible() const
 {
-    return actor_.getStatusFlag(ActorFlags::ALWAYS_SHOW_NAME);
+    return actor_.entity_data.getInt8(static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW)) != 0;
 }
 
 void EndstoneActor::setNameTagAlwaysVisible(bool visible)
 {
-    actor_.setStatusFlag(ActorFlags::ALWAYS_SHOW_NAME, visible);
+    actor_.entity_data.set<SynchedActorData::TypeInt8>(
+        static_cast<SynchedActorData::ID>(ActorDataIDs::NAMETAG_ALWAYS_SHOW), visible);
 }
 
 std::string EndstoneActor::getNameTag() const

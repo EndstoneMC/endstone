@@ -26,20 +26,34 @@ DataItemType DataItem::getType() const
     return type_;
 }
 
+SynchedActorData::TypeInt8 SynchedActorData::getInt8(ID id) const
+{
+    if (!hasData(id)) {
+        return 0;
+    }
+    auto *item = _find(id);
+    if (item->getType() != DataItemType::Byte) {
+        return 0;
+    }
+    return static_cast<DataItem2<TypeInt8> *>(item)->data_;
+}
+
 const std::string &SynchedActorData::getString(ID id) const
 {
     static std::string empty_string;
-    if (id >= items_array_.size()) {
+    if (!hasData(id)) {
         return empty_string;
     }
-    auto *item = items_array_[id].get();
-    if (!item) {
-        return empty_string;
-    }
+    auto *item = _find(id);
     if (item->getType() != DataItemType::String) {
         return empty_string;
     }
     return static_cast<DataItem2<std::string> *>(item)->data_;
+}
+
+bool SynchedActorData::hasData(ID id) const
+{
+    return id >= items_array_.size() && items_array_[id];
 }
 
 DataItem &SynchedActorData::_get(ID id)
@@ -52,6 +66,11 @@ DataItem *SynchedActorData::_find(ID id) const
     return items_array_[id].get();
 }
 
+SynchedActorData::TypeInt8 SynchedActorDataEntityWrapper::getInt8(SynchedActorData::ID id) const
+{
+    return data_->data.getInt8(id);
+}
+
 const std::string &SynchedActorDataEntityWrapper::getString(SynchedActorData::ID id) const
 {
     return data_->data.getString(id);
@@ -60,6 +79,20 @@ const std::string &SynchedActorDataEntityWrapper::getString(SynchedActorData::ID
 gsl::not_null<SynchedActorData *> SynchedActorDataEntityWrapper::_get() const
 {
     return &data_->data;
+}
+
+template <>
+void SynchedActorDataEntityWrapper::set<SynchedActorData::TypeInt8>(SynchedActorData::ID id,
+                                                                    const SynchedActorData::TypeInt8 &value)
+{
+    auto data = _get();
+    auto *item = data->_find(id);
+    if (!item || item->getType() != DataItemType::Byte) {
+        return;
+    }
+    auto *string_item = static_cast<DataItem2<SynchedActorData::TypeInt8> *>(item);
+    string_item->data_ = value;
+    data->dirty_flags_.set(id, true);
 }
 
 template <>

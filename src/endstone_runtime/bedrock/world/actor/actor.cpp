@@ -323,6 +323,7 @@ const std::string &Actor::getNameTag() const
 void Actor::setNameTag(const std::string &name)
 {
     entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::NAME), name);
+    name_tag_hash = HashedString(name).getHash();
 }
 
 const std::string &Actor::getScoreTag() const
