@@ -2928,6 +2928,11 @@ class Server:
         Gets the average ticks per second (TPS).
         """
     @property
+    def ban_list(self) -> PlayerBanList:
+        """
+        Gets the player ban list.
+        """
+    @property
     def command_sender(self) -> ConsoleCommandSender:
         """
         Gets a CommandSender for this server.
@@ -2946,6 +2951,11 @@ class Server:
     def current_tps(self) -> float:
         """
         Gets the current ticks per second (TPS).
+        """
+    @property
+    def ip_ban_list(self) -> IpBanList:
+        """
+        Gets the IP ban list.
         """
     @property
     def language(self) -> Language:

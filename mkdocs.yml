@@ -203,6 +203,7 @@ nav:
           - Server: reference/python/server.md
           - Player: reference/python/player.md
           - Actor: reference/python/actor.md
+          - Ban: reference/python/ban.md
           - Block: reference/python/block.md
           - Boss: reference/python/boss.md
           - Command: reference/python/command.md
