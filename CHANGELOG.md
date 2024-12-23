@@ -5,9 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.5.7 - Unreleased
+## 0.5.8 - Unreleased
 
-<small>[Compare with 0.5.6](https://github.com/EndstoneMC/endstone/compare/v0.5.6...HEAD)</small>
+<small>[Compare with 0.5.7](https://github.com/EndstoneMC/endstone/compare/v0.5.7...HEAD)</small>
+
+## [0.5.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7) - 2024-12-23
+
+<small>[Compare with 0.5.6](https://github.com/EndstoneMC/endstone/compare/v0.5.6...v0.5.7)</small>
 
 ### Added
 
@@ -20,11 +24,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added setters for fields in `ServerListPingEvent` by [@theaddonn](https://github.com/theaddonn).
 - Added a new color code (`§v`).
 
-### Changed
-
-- Renamed `Server::getPlayerBanList` to `Server::getBanList`.
-- Removed deprecated material from DevTools by [@smartcmd](https://github.com/smartcmd).
-
 ### Fixed
 
 - Prevented a crash caused by killing a player in a form callback, which invalidated the player object.
@@ -33,6 +32,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Ensured the correct plugin loader is selected when loading from a file by third-party plugin loaders
   by [@engsr6982](https://github.com/engsr6982).
 - Ensured players with matching IP addresses are immediately kicked upon banning.
+
+### Changed
+
+- Renamed `Server::getPlayerBanList` to `Server::getBanList`.
+- Removed deprecated material from DevTools by [@smartcmd](https://github.com/smartcmd).
 
 ## [0.5.6](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.6) - 2024-12-06
 
