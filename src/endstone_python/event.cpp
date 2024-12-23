@@ -60,12 +60,16 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
         .def_property(
             "cancelled",
             [](Event &self) {
-                PyErr_WarnEx(PyExc_DeprecationWarning, "Event.cancelled is deprecated. Use Event.is_cancelled instead.",
+                PyErr_WarnEx(PyExc_FutureWarning,
+                             "The event.cancelled property is deprecated and will be removed from endstone in a future "
+                             "version. Use event.is_cancelled instead.",
                              1);
                 return self.isCancelled();
             },
             [](Event &self, bool value) {
-                PyErr_WarnEx(PyExc_DeprecationWarning, "Event.cancelled is deprecated. Use Event.is_cancelled instead.",
+                PyErr_WarnEx(PyExc_FutureWarning,
+                             "The event.cancelled property is deprecated and will be removed from endstone in a future "
+                             "version. Use event.is_cancelled instead.",
                              1);
                 self.setCancelled(value);
             },

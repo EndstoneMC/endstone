@@ -8,6 +8,7 @@ import shutil
 import site
 import subprocess
 import sys
+import warnings
 
 import pkginfo
 from importlib_metadata import EntryPoint, distribution, entry_points, metadata
@@ -19,6 +20,8 @@ from endstone.permissions import Permission, PermissionDefault
 from endstone.plugin import Plugin, PluginDescription, PluginLoader, PluginLoadOrder
 
 __all__ = ["PythonPluginLoader"]
+
+warnings.simplefilter(action="always", category=FutureWarning)
 
 
 def find_python():

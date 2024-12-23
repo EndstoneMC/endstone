@@ -64,7 +64,7 @@ class Plugin(endstone_python.Plugin):
         return self._description
 
     def register_events(self, listener: object) -> None:
-        if not self.enabled:
+        if not self.is_enabled:
             raise RuntimeError(f"Plugin {self.name} attempted to register events while not enabled")
 
         if listener is None:
