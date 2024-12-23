@@ -695,21 +695,23 @@ void EndstonePlayer::onFormClose(int form_id, PlayerFormCloseReason /*reason*/)
         return;  // Could be a form created via the script api, do nothing
     }
 
+    auto form_variant = std::move(it->second);
+    forms_.erase(it);
+
     if (!isDead()) {
         try {
-            std::visit(overloaded{[this](auto &&arg) {
-                           auto callback = arg.getOnClose();
+            std::visit(overloaded{[this](auto &&form) {
+                           auto callback = form.getOnClose();
                            if (callback) {
                                callback(this);
                            }
                        }},
-                       it->second);
+                       form_variant);
         }
         catch (std::exception &e) {
             getServer().getLogger().error("Error occurred when calling a on close callback of a form: {}", e.what());
         }
     }
-    forms_.erase(it);
 }
 
 void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
@@ -718,6 +720,9 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
     if (it == forms_.end()) {
         return;  // Could be a form created via the script api, do nothing
     }
+
+    auto form_variant = std::move(it->second);
+    forms_.erase(it);
 
     if (!isDead()) {
         try {
@@ -746,13 +751,12 @@ void EndstonePlayer::onFormResponse(int form_id, const nlohmann::json &json)
                                }
                            },
                        },
-                       it->second);
+                       form_variant);
         }
         catch (std::exception &e) {
             getServer().getLogger().error("Error occurred when calling a on submit callback of a form: {}", e.what());
         }
     }
-    forms_.erase(it);
 }
 
 void EndstonePlayer::initFromConnectionRequest(
