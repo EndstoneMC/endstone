@@ -396,6 +396,20 @@
         </inbodydescription>
         <location file="include/endstone/color_format.h" line="55" column="37" bodyfile="include/endstone/color_format.h" bodystart="55" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="structendstone_1_1ColorFormat_1aadf91100868d5d1872ad046f23365298" prot="public" static="yes" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string endstone::ColorFormat::MaterialResin</definition>
+        <argsstring></argsstring>
+        <name>MaterialResin</name>
+        <initializer>= Escape + &apos;v&apos;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/color_format.h" line="56" column="37" bodyfile="include/endstone/color_format.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a1af3ad039c0718ceca118bd8116a2d69" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
         <definition>const std::string endstone::ColorFormat::Obfuscated</definition>
@@ -408,7 +422,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/color_format.h" line="58" column="37" bodyfile="include/endstone/color_format.h" bodystart="58" bodyend="-1"/>
+        <location file="include/endstone/color_format.h" line="59" column="37" bodyfile="include/endstone/color_format.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a58141a8f5ff7780dc6b473fb08574e68" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -422,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/color_format.h" line="59" column="37" bodyfile="include/endstone/color_format.h" bodystart="59" bodyend="-1"/>
+        <location file="include/endstone/color_format.h" line="60" column="37" bodyfile="include/endstone/color_format.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1ColorFormat_1a90709e488b7b7879e783f3ffc80f9c61" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -436,7 +450,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/color_format.h" line="60" column="37" bodyfile="include/endstone/color_format.h" bodystart="60" bodyend="-1"/>
+        <location file="include/endstone/color_format.h" line="61" column="37" bodyfile="include/endstone/color_format.h" bodystart="61" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structendstone_1_1ColorFormat_1ad0d9e7f6813d5a0529277cc29fa98da8" prot="public" static="yes" mutable="no">
         <type>const std::string</type>
@@ -450,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/endstone/color_format.h" line="61" column="37" bodyfile="include/endstone/color_format.h" bodystart="61" bodyend="-1"/>
+        <location file="include/endstone/color_format.h" line="62" column="37" bodyfile="include/endstone/color_format.h" bodystart="62" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -458,7 +472,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/endstone/color_format.h" line="24" column="1" bodyfile="include/endstone/color_format.h" bodystart="24" bodyend="62"/>
+    <location file="include/endstone/color_format.h" line="24" column="1" bodyfile="include/endstone/color_format.h" bodystart="24" bodyend="63"/>
     <listofallmembers>
       <member refid="structendstone_1_1ColorFormat_1ac81f6289b25dcff8b5e3c7c504344e99" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Aqua</name></member>
       <member refid="structendstone_1_1ColorFormat_1a1fb8b3ffcad01c8b26a773d0860fe32c" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Black</name></member>
@@ -486,6 +500,7 @@
       <member refid="structendstone_1_1ColorFormat_1a69eb1585f03593a0ab8ce41f5aaec9bb" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialNetherite</name></member>
       <member refid="structendstone_1_1ColorFormat_1a17065c8c8dd36be690997ad908c4e013" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialQuartz</name></member>
       <member refid="structendstone_1_1ColorFormat_1a49c63bee8b778b15cbf987c157425db0" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialRedstone</name></member>
+      <member refid="structendstone_1_1ColorFormat_1aadf91100868d5d1872ad046f23365298" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MaterialResin</name></member>
       <member refid="structendstone_1_1ColorFormat_1a7a191ebf7addc0ff04247f573c7655c6" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>MinecoinGold</name></member>
       <member refid="structendstone_1_1ColorFormat_1a1af3ad039c0718ceca118bd8116a2d69" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Obfuscated</name></member>
       <member refid="structendstone_1_1ColorFormat_1a17bd30509e0661175bf772d0ea321383" prot="public" virt="non-virtual"><scope>endstone::ColorFormat</scope><name>Red</name></member>

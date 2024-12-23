@@ -64,6 +64,7 @@ _All supported color and format codes._
 |  const std::string | [**MaterialNetherite**](#variable-materialnetherite)   = = Escape + 'j'<br> |
 |  const std::string | [**MaterialQuartz**](#variable-materialquartz)   = = Escape + 'h'<br> |
 |  const std::string | [**MaterialRedstone**](#variable-materialredstone)   = = Escape + 'm'<br> |
+|  const std::string | [**MaterialResin**](#variable-materialresin)   = = Escape + 'v'<br> |
 |  const std::string | [**MinecoinGold**](#variable-minecoingold)   = = Escape + 'g'<br> |
 |  const std::string | [**Obfuscated**](#variable-obfuscated)   = = Escape + 'k'<br> |
 |  const std::string | [**Red**](#variable-red)   = = Escape + 'c'<br> |
@@ -446,6 +447,19 @@ const std::string endstone::ColorFormat::MaterialQuartz;
 
 ```C++
 const std::string endstone::ColorFormat::MaterialRedstone;
+```
+
+
+
+
+<hr>
+
+
+
+### variable MaterialResin 
+
+```C++
+const std::string endstone::ColorFormat::MaterialResin;
 ```
 
 

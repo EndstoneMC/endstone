@@ -432,6 +432,141 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         </inbodydescription>
         <location file="include/endstone/actor/actor.h" line="170" column="19"/>
       </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool endstone::Actor::isNameTagVisible</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isNameTagVisible</name>
+        <briefdescription>
+<para>Checks if the actor&apos;s name tag is currently visible. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the name tag is visible, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="177" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::setNameTagVisible</definition>
+        <argsstring>(bool visible)=0</argsstring>
+        <name>setNameTagVisible</name>
+        <param>
+          <type>bool</type>
+          <declname>visible</declname>
+        </param>
+        <briefdescription>
+<para>Sets if the actor&apos;s name tag is visible or not. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>visible</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to make the name tag visible, false to hide it. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="184" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Actor::getNameTag</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getNameTag</name>
+        <briefdescription>
+<para>Gets the current name tag of the actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The name tag. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="191" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::setNameTag</definition>
+        <argsstring>(std::string name)=0</argsstring>
+        <name>setNameTag</name>
+        <param>
+          <type>std::string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Sets the name tag for the actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new name tag to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="198" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string endstone::Actor::getScoreTag</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getScoreTag</name>
+        <briefdescription>
+<para>Gets the current score tag of the actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The score tag. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="205" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void endstone::Actor::setScoreTag</definition>
+        <argsstring>(std::string score)=0</argsstring>
+        <name>setScoreTag</name>
+        <param>
+          <type>std::string</type>
+          <declname>score</declname>
+        </param>
+        <briefdescription>
+<para>Sets the score tag for the actor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>score</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new score tag to set. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/endstone/actor/actor.h" line="212" column="18"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Represents a base actor in the level. </para>
@@ -486,7 +621,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
         <link refid="classendstone_1_1Permissible"/>
       </node>
     </collaborationgraph>
-    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="171"/>
+    <location file="include/endstone/actor/actor.h" line="26" column="1" bodyfile="include/endstone/actor/actor.h" bodystart="26" bodyend="213"/>
     <listofallmembers>
       <member refid="classendstone_1_1Permissible_1a8594c12d218b5bdc56be5fd00f8ea39c" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
       <member refid="classendstone_1_1Permissible_1afe4b77a467e072cb34415918f87ae3b3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>addAttachment</name></member>
@@ -503,8 +638,10 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getMaxHealth</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getNameTag</name></member>
       <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getRuntimeId</name></member>
       <member refid="classendstone_1_1Actor_1aaa1dab3ecfbf98fc8d4b8a92e3540f1a" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getScoreboardTags</name></member>
+      <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getScoreTag</name></member>
       <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getServer</name></member>
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Permissible_1ade03215666f81be410f2b058fa2c158b" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>hasPermission</name></member>
@@ -512,6 +649,7 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1Actor_1aa099af11ae3053289f31c65c9126b50a" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isDead</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isNameTagVisible</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOnGround</name></member>
       <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isOp</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>isPermissionSet</name></member>
@@ -524,8 +662,11 @@ Note that if the actor is affected by AI, it may override this rotation.</para>
       <member refid="classendstone_1_1CommandSender_1a000782a076576822ea70b640f5f230ea" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1CommandSender_1a991e541b0e30e75ab7f508d6fdb141ad" prot="public" virt="non-virtual"><scope>endstone::Actor</scope><name>sendMessage</name></member>
       <member refid="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setHealth</name></member>
+      <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setNameTag</name></member>
+      <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setNameTagVisible</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setRotation</name></member>
+      <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>setScoreTag</name></member>
       <member refid="classendstone_1_1Actor_1aa012c328995d90d51c31bb2116bf6eb5" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Actor_1a17192ce29b31550384e64a68e37e2af9" prot="public" virt="pure-virtual"><scope>endstone::Actor</scope><name>teleport</name></member>
       <member refid="classendstone_1_1Permissible_1afd630275e217c42932d29208712fe438" prot="public" virt="virtual"><scope>endstone::Actor</scope><name>~Permissible</name></member>

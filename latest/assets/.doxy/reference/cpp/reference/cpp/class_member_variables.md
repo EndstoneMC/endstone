@@ -149,6 +149,7 @@
 * **MaterialNetherite** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MaterialQuartz** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MaterialRedstone** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
+* **MaterialResin** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **MinecoinGold** ([**endstone::ColorFormat**](structendstone_1_1ColorFormat.md))
 * **mtx\_** ([**endstone::HandlerList**](classendstone_1_1HandlerList.md))
 * **message\_id\_** ([**endstone::ScriptMessageEvent**](classendstone_1_1ScriptMessageEvent.md))

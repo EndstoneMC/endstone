@@ -102,16 +102,22 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual [**Level**](classendstone_1_1Level.md) & | [**getLevel**](#function-getlevel) () const = 0<br> |
 | virtual [**Location**](classendstone_1_1Location.md) | [**getLocation**](#function-getlocation) () const = 0<br> |
 | virtual int | [**getMaxHealth**](#function-getmaxhealth) () const = 0<br>_Gets the maximum health this entity has._  |
+| virtual std::string | [**getNameTag**](#function-getnametag) () const = 0<br>_Gets the current name tag of the actor._  |
 | virtual std::uint64\_t | [**getRuntimeId**](#function-getruntimeid) () const = 0<br> |
+| virtual std::string | [**getScoreTag**](#function-getscoretag) () const = 0<br>_Gets the current score tag of the actor._  |
 | virtual std::vector&lt; std::string &gt; | [**getScoreboardTags**](#function-getscoreboardtags) () const = 0<br>_Returns a list of scoreboard tags for this actor._  |
 | virtual [**Vector**](classendstone_1_1Vector.md)&lt; float &gt; | [**getVelocity**](#function-getvelocity) () const = 0<br> |
 | virtual bool | [**isDead**](#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
 | virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
 | virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
+| virtual bool | [**isNameTagVisible**](#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
 | virtual bool | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual Result&lt; void &gt; | [**setHealth**](#function-sethealth) (int health) const = 0<br> |
+| virtual void | [**setNameTag**](#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
+| virtual void | [**setNameTagVisible**](#function-setnametagvisible) (bool visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
 | virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
+| virtual void | [**setScoreTag**](#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
 | virtual void | [**teleport**](#function-teleport-12) ([**Location**](classendstone_1_1Location.md) location) = 0<br> |
 | virtual void | [**teleport**](#function-teleport-22) ([**Actor**](classendstone_1_1Actor.md) & target) = 0<br> |
 
@@ -455,6 +461,31 @@ Maximum health
 
 
 
+### function getNameTag 
+
+_Gets the current name tag of the actor._ 
+```C++
+virtual std::string endstone::Actor::getNameTag () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+The name tag. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function getRuntimeId 
 
 ```C++
@@ -471,6 +502,31 @@ Returns the runtime id for this actor
 **Returns:**
 
 Runtime id for this actor 
+
+
+
+
+
+        
+
+<hr>
+
+
+
+### function getScoreTag 
+
+_Gets the current score tag of the actor._ 
+```C++
+virtual std::string endstone::Actor::getScoreTag () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+The score tag. 
 
 
 
@@ -613,6 +669,31 @@ True if the actor is in water.
 
 
 
+### function isNameTagVisible 
+
+_Checks if the actor's name tag is currently visible._ 
+```C++
+virtual bool endstone::Actor::isNameTagVisible () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if the name tag is visible, false otherwise. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isOnGround 
 
 ```C++
@@ -703,6 +784,60 @@ Sets the entity's health from 0 to its possible value, where 0 is dead.
 
 
 
+### function setNameTag 
+
+_Sets the name tag for the actor._ 
+```C++
+virtual void endstone::Actor::setNameTag (
+    std::string name
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `name` The new name tag to set. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setNameTagVisible 
+
+_Sets if the actor's name tag is visible or not._ 
+```C++
+virtual void endstone::Actor::setNameTagVisible (
+    bool visible
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `visible` True to make the name tag visible, false to hide it. 
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function setRotation 
 
 ```C++
@@ -731,6 +866,33 @@ Note that if the actor is affected by AI, it may override this rotation.
 
 * `yaw` Rotation around the up axis (Y axis) 
 * `pitch` Rotation around the right axis (X axis) 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setScoreTag 
+
+_Sets the score tag for the actor._ 
+```C++
+virtual void endstone::Actor::setScoreTag (
+    std::string score
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `score` The new score tag to set. 
 
 
 

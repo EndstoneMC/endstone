@@ -35,6 +35,12 @@
     <member refid="classendstone_1_1Actor_1aaa1dab3ecfbf98fc8d4b8a92e3540f1a" kind="function"><name>getScoreboardTags</name></member>
     <member refid="classendstone_1_1Actor_1a7df17ed4f47907e5022b1eff1f306271" kind="function"><name>addScoreboardTag</name></member>
     <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" kind="function"><name>removeScoreboardTag</name></member>
+    <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" kind="function"><name>isNameTagVisible</name></member>
+    <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" kind="function"><name>setNameTagVisible</name></member>
+    <member refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" kind="function"><name>getNameTag</name></member>
+    <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" kind="function"><name>setNameTag</name></member>
+    <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" kind="function"><name>getScoreTag</name></member>
+    <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" kind="function"><name>setScoreTag</name></member>
   </compound>
   <compound refid="classendstone_1_1ActorDeathEvent" kind="class"><name>endstone::ActorDeathEvent</name>
     <member refid="classendstone_1_1ActorDeathEvent_1a18887864dc592fcce27965ceda143deb" kind="variable"><name>NAME</name></member>
@@ -261,6 +267,7 @@
     <member refid="structendstone_1_1ColorFormat_1a82e9a74c713adf13465bd05172988ddd" kind="variable"><name>MaterialDiamond</name></member>
     <member refid="structendstone_1_1ColorFormat_1a2e34300b53a7377cab6a8fe6908bf276" kind="variable"><name>MaterialLapis</name></member>
     <member refid="structendstone_1_1ColorFormat_1aea57e06707a7b78e6f77ba7e27511338" kind="variable"><name>MaterialAmethyst</name></member>
+    <member refid="structendstone_1_1ColorFormat_1aadf91100868d5d1872ad046f23365298" kind="variable"><name>MaterialResin</name></member>
     <member refid="structendstone_1_1ColorFormat_1a1af3ad039c0718ceca118bd8116a2d69" kind="variable"><name>Obfuscated</name></member>
     <member refid="structendstone_1_1ColorFormat_1a58141a8f5ff7780dc6b473fb08574e68" kind="variable"><name>Bold</name></member>
     <member refid="structendstone_1_1ColorFormat_1a90709e488b7b7879e783f3ffc80f9c61" kind="variable"><name>Italic</name></member>

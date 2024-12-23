@@ -1381,10 +1381,12 @@
       <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getLocation</name></member>
       <member refid="classendstone_1_1Actor_1a612dffb2563ce0535c0e2d7214c6254b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getMaxHealth</name></member>
       <member refid="classendstone_1_1CommandSender_1acf20807a70561a571e20d4ee3791d69e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getName</name></member>
+      <member refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getNameTag</name></member>
       <member refid="classendstone_1_1Player_1ac05782597079f4b556eba2f0ef2d592f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getPing</name></member>
       <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getRuntimeId</name></member>
       <member refid="classendstone_1_1Player_1a2e15fa57398c698ffdbe96b1d4b8c350" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getScoreboard</name></member>
       <member refid="classendstone_1_1Actor_1aaa1dab3ecfbf98fc8d4b8a92e3540f1a" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getScoreboardTags</name></member>
+      <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getScoreTag</name></member>
       <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
       <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getSkin</name></member>
       <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getTotalExp</name></member>
@@ -1401,6 +1403,7 @@
       <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isGliding</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isNameTagVisible</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOnGround</name></member>
       <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOp</name></member>
       <member refid="classendstone_1_1Permissible_1ae625f98f57116c559dc35a6cfce960d9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isPermissionSet</name></member>
@@ -1429,9 +1432,12 @@
       <member refid="classendstone_1_1Player_1a36fe0a887b27ac602c0392cc0154001b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setFlySpeed</name></member>
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setHealth</name></member>
+      <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTag</name></member>
+      <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTagVisible</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setRotation</name></member>
       <member refid="classendstone_1_1Player_1a90d8066d7e5715f245ab270bac8cb3ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setScoreboard</name></member>
+      <member refid="classendstone_1_1Actor_1adeec376304cd5900f6c848f9e946320e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setScoreTag</name></member>
       <member refid="classendstone_1_1Player_1ae06900ef1cc1453b40f6af3c8c22a28f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setWalkSpeed</name></member>
       <member refid="classendstone_1_1Player_1a296b131565af237f3942bb932d26f15e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>spawnParticle</name></member>
       <member refid="classendstone_1_1Player_1adb0ea6e6f598df36802fa507051fa017" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>spawnParticle</name></member>

@@ -75,6 +75,18 @@ public:
     [[nodiscard]] virtual bool addScoreboardTag(std::string tag) const = 0;
 
     [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
+
+    [[nodiscard]] virtual bool isNameTagVisible() const = 0;
+
+    virtual void setNameTagVisible(bool visible) = 0;
+
+    [[nodiscard]] virtual std::string getNameTag() const = 0;
+
+    virtual void setNameTag(std::string name) = 0;
+
+    [[nodiscard]] virtual std::string getScoreTag() const = 0;
+
+    virtual void setScoreTag(std::string score) = 0;
 };
 
 }  // namespace endstone

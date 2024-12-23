@@ -60,6 +60,7 @@ struct ColorFormat {
     inline static const std::string MaterialDiamond = Escape + 's';
     inline static const std::string MaterialLapis = Escape + 't';
     inline static const std::string MaterialAmethyst = Escape + 'u';
+    inline static const std::string MaterialResin = Escape + 'v';
 
     // Format code
     inline static const std::string Obfuscated = Escape + 'k';
