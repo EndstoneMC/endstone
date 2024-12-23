@@ -38,6 +38,8 @@ public:
         return const_cast<Actor *>(this);
     }
 
+    [[nodiscard]] virtual std::string getType() const = 0;
+
     [[nodiscard]] virtual std::uint64_t getRuntimeId() const = 0;
 
     [[nodiscard]] virtual Location getLocation() const = 0;

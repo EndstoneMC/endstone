@@ -16,6 +16,7 @@
   </compound>
   <compound refid="classendstone_1_1Actor" kind="class"><name>endstone::Actor</name>
     <member refid="classendstone_1_1Actor_1a116c5083ae28119fbd6ec34568c8552a" kind="function"><name>asActor</name></member>
+    <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" kind="function"><name>getType</name></member>
     <member refid="classendstone_1_1Actor_1ab2848bd47a25fce207a1a4e6b1783ce3" kind="function"><name>getRuntimeId</name></member>
     <member refid="classendstone_1_1Actor_1a32d24d587443d4107786096fda5322fb" kind="function"><name>getLocation</name></member>
     <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" kind="function"><name>getVelocity</name></member>

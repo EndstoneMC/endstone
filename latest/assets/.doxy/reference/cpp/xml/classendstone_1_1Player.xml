@@ -1390,6 +1390,7 @@
       <member refid="classendstone_1_1CommandSender_1a9431ace635e9b8c156ffae17263b39b9" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getServer</name></member>
       <member refid="classendstone_1_1Player_1a7886559023c2ad1f287c51b594be4844" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getSkin</name></member>
       <member refid="classendstone_1_1Player_1ad91364e3a8a8a33750d38970626646fc" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getTotalExp</name></member>
+      <member refid="classendstone_1_1Actor_1a35dbee5875715f9edd8be8b117377129" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getType</name></member>
       <member refid="classendstone_1_1Player_1a2f6259d8ac07fb50c56757844786683b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getUniqueId</name></member>
       <member refid="classendstone_1_1Actor_1ae7c87760c01416e9d7f3542e116054ce" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getVelocity</name></member>
       <member refid="classendstone_1_1Player_1af8f804891833ccea4e124df9390557b6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>getWalkSpeed</name></member>
