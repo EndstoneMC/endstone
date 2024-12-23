@@ -55,12 +55,24 @@ namespace endstone::detail {
 void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriority> &event_priority)
 {
     event.def_property_readonly("event_name", &Event::getEventName, "Gets a user-friendly identifier for this event.")
-        .def_property_readonly("cancellable", &Event::isCancellable,
+        .def_property_readonly("is_cancellable", &Event::isCancellable,
                                "Whether the event can be cancelled by a plugin or the server.")
-        .def_property("cancelled", &Event::isCancelled, &Event::setCancelled,
-                      "Gets or sets the cancellation state of this event. A cancelled event will not be executed in "
-                      "the server, but will still pass to other plugins")
-        .def_property_readonly("asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
+        .def_property(
+            "cancelled",
+            [](Event &self) {
+                PyErr_WarnEx(PyExc_DeprecationWarning, "Event.cancelled is deprecated. Use Event.is_cancelled instead.",
+                             1);
+                return self.isCancelled();
+            },
+            [](Event &self, bool value) {
+                PyErr_WarnEx(PyExc_DeprecationWarning, "Event.cancelled is deprecated. Use Event.is_cancelled instead.",
+                             1);
+                self.setCancelled(value);
+            },
+            "Gets or sets the cancellation state of this event. A cancelled event will not be executed in "
+            "the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.")
+        .def_property_readonly("is_cancelled", &Event::isCancelled, "Gets whether the event is currently cancelled.")
+        .def_property_readonly("is_asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
 
     event_priority
         .value("LOWEST", EventPriority::Lowest,

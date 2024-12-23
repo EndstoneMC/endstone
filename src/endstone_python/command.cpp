@@ -103,7 +103,7 @@ void init_command(py::module &m, py::class_<CommandSender, Permissible> &command
             "permissions", &Command::getPermissions,
             [](Command &self, const std::vector<std::string> &permissions) { self.setPermissions(permissions); },
             "The permissions required by users to be able to perform this command")
-        .def_property_readonly("registered", &Command::isRegistered,
+        .def_property_readonly("is_registered", &Command::isRegistered,
                                "Returns the current registered state of this command");
 
     py::class_<CommandExecutor, PyCommandExecutor, std::shared_ptr<CommandExecutor>>(

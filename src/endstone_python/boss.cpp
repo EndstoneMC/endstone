@@ -54,7 +54,7 @@ void init_boss(py::module_ &m)
         .def_property("style", &BossBar::getStyle, &BossBar::setStyle, "The style of this boss bar.")
         .def_property("progress", &BossBar::getProgress, &BossBar::setProgress,
                       "The progress of the bar between 0.0 and 1.0.")
-        .def_property("visible", &BossBar::isVisible, &BossBar::setVisible,
+        .def_property("is_visible", &BossBar::isVisible, &BossBar::setVisible,
                       "If the boss bar is displayed to attached players.")
         .def("has_flag", &BossBar::hasFlag, py::arg("flag"), "Checks whether this boss bar has the passed flag set.")
         .def("add_flag", &BossBar::addFlag, py::arg("flag"), "Adds an optional flag to this boss bar.")

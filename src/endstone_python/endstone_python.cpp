@@ -224,9 +224,8 @@ void init_server(py::class_<Server> &server)
                       "The maximum amount of players which can login to this server.")
         .def("get_player", py::overload_cast<std::string>(&Server::getPlayer, py::const_), py::arg("name").noconvert(),
              py::return_value_policy::reference, "Gets the player with the exact given name, case insensitive.")
-        .def("get_player", py::overload_cast<endstone::UUID>(&Server::getPlayer, py::const_),
-             py::arg("unique_id").noconvert(), py::return_value_policy::reference,
-             "Gets the player with the given UUID.")
+        .def("get_player", py::overload_cast<UUID>(&Server::getPlayer, py::const_), py::arg("unique_id").noconvert(),
+             py::return_value_policy::reference, "Gets the player with the given UUID.")
         .def_property_readonly("online_mode", &Server::getOnlineMode,
                                "Gets whether the Server is in online mode or not.")
         .def("shutdown", &Server::shutdown, "Shutdowns the server, stopping everything.")

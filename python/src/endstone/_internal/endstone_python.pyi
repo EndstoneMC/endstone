@@ -667,6 +667,14 @@ class BossBar:
     def color(self, arg1: BarColor) -> None:
         ...
     @property
+    def is_visible(self) -> bool:
+        """
+        If the boss bar is displayed to attached players.
+        """
+    @is_visible.setter
+    def is_visible(self, arg1: bool) -> None:
+        ...
+    @property
     def players(self) -> list[Player]:
         """
         Returns all players viewing this boss bar.
@@ -694,14 +702,6 @@ class BossBar:
         """
     @title.setter
     def title(self, arg1: str) -> None:
-        ...
-    @property
-    def visible(self) -> bool:
-        """
-        If the boss bar is displayed to attached players.
-        """
-    @visible.setter
-    def visible(self, arg1: bool) -> None:
         ...
 class BroadcastMessageEvent(Event):
     """
@@ -791,6 +791,11 @@ class Command:
     def description(self, arg1: str) -> None:
         ...
     @property
+    def is_registered(self) -> bool:
+        """
+        Returns the current registered state of this command
+        """
+    @property
     def name(self) -> str:
         """
         Name of this command.
@@ -806,11 +811,6 @@ class Command:
     @permissions.setter
     def permissions(self, arg1: list[str]) -> None:
         ...
-    @property
-    def registered(self) -> bool:
-        """
-        Returns the current registered state of this command
-        """
     @property
     def usages(self) -> list[str]:
         """
@@ -1048,19 +1048,9 @@ class Event:
     Represents an event.
     """
     @property
-    def asynchronous(self) -> bool:
-        """
-        Whether the event fires asynchronously.
-        """
-    @property
-    def cancellable(self) -> bool:
-        """
-        Whether the event can be cancelled by a plugin or the server.
-        """
-    @property
     def cancelled(self) -> bool:
         """
-        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.
         """
     @cancelled.setter
     def cancelled(self, arg1: bool) -> None:
@@ -1069,6 +1059,21 @@ class Event:
     def event_name(self) -> str:
         """
         Gets a user-friendly identifier for this event.
+        """
+    @property
+    def is_asynchronous(self) -> bool:
+        """
+        Whether the event fires asynchronously.
+        """
+    @property
+    def is_cancellable(self) -> bool:
+        """
+        Whether the event can be cancelled by a plugin or the server.
+        """
+    @property
+    def is_cancelled(self) -> bool:
+        """
+        Gets whether the event is currently cancelled.
         """
 class EventPriority:
     """
@@ -2343,7 +2348,7 @@ class Plugin(CommandExecutor):
         Returns the folder that the plugin data's files are located in.
         """
     @property
-    def enabled(self) -> bool:
+    def is_enabled(self) -> bool:
         """
         Returns a value indicating whether this plugin is currently enabled
         """
