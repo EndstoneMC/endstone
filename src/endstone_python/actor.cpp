@@ -53,7 +53,13 @@ void init_actor(py::module_ &m, py::class_<Actor, CommandSender> &actor, py::cla
                                "Returns a list of scoreboard tags for this actor.")
         .def("add_scoreboard_tag", &Actor::addScoreboardTag, "Adds a tag to this actor.", py::arg("tag"))
         .def("remove_scoreboard_tag", &Actor::removeScoreboardTag, "Removes a given tag from this actor.",
-             py::arg("tag"));
+             py::arg("tag"))
+        .def_property("is_nametag_visible", &Actor::isNameTagVisible, &Actor::setNameTagVisible,
+                      "Gets or sets if the actor's name tag is visible or not.")
+        .def_property("name_tag", &Actor::getNameTag, &Actor::setNameTag,
+                      "Gets or sets the current name tag of the actor.")
+        .def_property("score_tag", &Actor::getScoreTag, &Actor::setScoreTag,
+                      "Gets or sets the current score tag of the actor.");
 
     mob.def_property_readonly("is_gliding", &Mob::isGliding,
                               "Checks to see if an actor is gliding, such as using an Elytra.");

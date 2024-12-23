@@ -170,14 +170,14 @@ public:
     [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
 
     /**
-     * @brief Checks if the name tag is currently visible.
+     * @brief Checks if the actor's name tag is currently visible.
      *
      * @return True if the name tag is visible, false otherwise.
      */
     [[nodiscard]] virtual bool isNameTagVisible() const = 0;
 
     /**
-     * @brief Sets whether the name tag is visible or not.
+     * @brief Sets if the actor's name tag is visible or not.
      *
      * @param visible True to make the name tag visible, false to hide it.
      */

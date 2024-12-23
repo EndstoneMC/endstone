@@ -145,6 +145,14 @@ class Actor(CommandSender):
         Returns true if the actor is in water.
         """
     @property
+    def is_nametag_visible(self) -> bool:
+        """
+        Gets or sets if the actor's name tag is visible or not.
+        """
+    @is_nametag_visible.setter
+    def is_nametag_visible(self, arg1: bool) -> None:
+        ...
+    @property
     def is_on_ground(self) -> bool:
         """
         Returns true if the actor is supported by a block, i.e. on ground.
@@ -165,10 +173,26 @@ class Actor(CommandSender):
         Gets the maximum health this entity has.
         """
     @property
+    def name_tag(self) -> str:
+        """
+        Gets or sets the current name tag of the actor.
+        """
+    @name_tag.setter
+    def name_tag(self, arg1: str) -> None:
+        ...
+    @property
     def runtime_id(self) -> int:
         """
         Returns the runtime id for this actor.
         """
+    @property
+    def score_tag(self) -> str:
+        """
+        Gets or sets the current score tag of the actor.
+        """
+    @score_tag.setter
+    def score_tag(self, arg1: str) -> None:
+        ...
     @property
     def scoreboard_tags(self) -> list[str]:
         """
@@ -676,6 +700,7 @@ class ColorFormat:
     MATERIAL_NETHERITE: typing.ClassVar[str] = '§j'
     MATERIAL_QUARTZ: typing.ClassVar[str] = '§h'
     MATERIAL_REDSTONE: typing.ClassVar[str] = '§m'
+    MATERIAL_RESIN: typing.ClassVar[str] = '§v'
     MINECOIN_GOLD: typing.ClassVar[str] = '§g'
     OBFUSCATED: typing.ClassVar[str] = '§k'
     RED: typing.ClassVar[str] = '§c'
