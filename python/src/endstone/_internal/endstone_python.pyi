@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -278,6 +278,42 @@ class ActorTeleportEvent(ActorEvent):
         """
     @to_location.setter
     def to_location(self, arg1: Location) -> None:
+        ...
+class BanEntry:
+    """
+    A single entry from a ban list.
+    """
+    @property
+    def created(self) -> datetime.datetime:
+        """
+        Gets or sets the date this ban entry was created.
+        """
+    @created.setter
+    def created(self, arg1: datetime.datetime) -> None:
+        ...
+    @property
+    def expiration(self) -> datetime.datetime | None:
+        """
+        Gets or sets the date this ban expires on.
+        """
+    @expiration.setter
+    def expiration(self, arg1: datetime.datetime | None) -> None:
+        ...
+    @property
+    def reason(self) -> str:
+        """
+        Gets or sets the reason for this ban.
+        """
+    @reason.setter
+    def reason(self, arg1: str) -> None:
+        ...
+    @property
+    def source(self) -> str:
+        """
+        Gets or sets the source of this ban.
+        """
+    @source.setter
+    def source(self, arg1: str) -> None:
         ...
 class BarColor:
     BLUE: typing.ClassVar[BarColor]  # value = <BarColor.BLUE: 1>
@@ -1162,6 +1198,17 @@ class Inventory:
         """
         Returns the size of the inventory
         """
+class IpBanEntry(BanEntry):
+    """
+    Represents a ban entry for an IP address.
+    """
+    def __init__(self, address: str) -> None:
+        ...
+    @property
+    def address(self) -> str:
+        """
+        Gets the banned IP address.
+        """
 class ItemStack:
     """
     Represents a stack of items.
@@ -2034,6 +2081,27 @@ class Player(Mob):
     def xuid(self) -> str:
         """
         Returns the Xbox User ID (XUID) of this player
+        """
+class PlayerBanEntry(BanEntry):
+    """
+    Represents a ban entry for a player.
+    """
+    def __init__(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> None:
+        ...
+    @property
+    def name(self) -> str:
+        """
+        Gets the banned player's name.
+        """
+    @property
+    def unique_id(self) -> uuid.UUID | None:
+        """
+        Gets the banned player's unique ID, or None if not available.
+        """
+    @property
+    def xuid(self) -> str | None:
+        """
+        Gets the banned player's Xbox user ID (XUID), or None if not available.
         """
 class PlayerChatEvent(PlayerEvent):
     """

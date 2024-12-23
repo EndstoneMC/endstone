@@ -37,6 +37,7 @@ namespace py = pybind11;
 
 namespace endstone::detail {
 void init_actor(py::module_ &, py::class_<Actor, CommandSender> &actor, py::class_<Mob, Actor> &mob);
+void init_ban(py::module_ &);
 void init_block(py::module_ &, py::class_<Block> &block);
 void init_boss(py::module_ &);
 void init_color_format(py::module_ &);
@@ -91,6 +92,7 @@ PYBIND11_MODULE(endstone_python, m)  // NOLINT(*-use-anonymous-namespace)
     init_form(m);
     init_inventory(m);
     init_util(m);
+    init_ban(m);
     init_level(m);
     init_scoreboard(m);
     init_network(m);

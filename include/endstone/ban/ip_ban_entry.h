@@ -17,7 +17,6 @@
 #include <utility>
 
 #include "endstone/ban/ban_entry.h"
-#include "endstone/util/uuid.h"
 
 namespace endstone {
 

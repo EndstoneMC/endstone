@@ -6,6 +6,7 @@ find_package(pybind11 REQUIRED)
 
 pybind11_add_module(endstone_python MODULE
         actor.cpp
+        ban.cpp
         block.cpp
         boss.cpp
         command.cpp
