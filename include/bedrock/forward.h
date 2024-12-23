@@ -201,6 +201,7 @@ enum class JsonBetaState;
 enum class LavaFlammable;
 enum class LevelChunkFormat : std::int8_t;
 enum class LevelEvent;
+enum class NoteBlockInstrument;
 enum class ParticleType;
 enum class PlayerSleepStatus;
 enum class ShapeType : std::int8_t;

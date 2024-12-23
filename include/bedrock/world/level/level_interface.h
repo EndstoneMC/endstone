@@ -372,7 +372,7 @@ public:
     virtual void setPlayerMovementSettings(PlayerMovementSettings const &) = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() = 0;
     [[nodiscard]] virtual void *getPlayerMovementSettingsManager() const = 0;
-    [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &, mce::UUID const &,
+    [[nodiscard]] virtual bool canUseSkin(SerializedSkin const &, NetworkIdentifier const &,
                                           ActorUniqueID const &) const = 0;
     [[nodiscard]] virtual void *getTrustedSkinHelper() const = 0;
     [[nodiscard]] virtual PositionTrackingDB::PositionTrackingDBClient *getPositionTrackerDBClient() const = 0;
@@ -456,13 +456,13 @@ public:
     [[nodiscard]] virtual ItemRegistryRef getItemRegistry() const = 0;
     [[nodiscard]] virtual std::weak_ptr<BlockTypeRegistry> getBlockRegistry() const = 0;
     virtual void pauseAndFlushTaskGroups() = 0;
-    virtual void *cerealContext() = 0;
-    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;  // Endstone: protected -> public
+    [[nodiscard]] virtual const void *cerealContext() const = 0;  // const cereal::ReflectionCtx &
+    virtual PlayerDeathManager *_getPlayerDeathManager() = 0;     // Endstone: protected -> public
 
 private:
     virtual MapDataManager &_getMapDataManager() = 0;
     virtual void *getArmorTrimUnloader() = 0;
     [[nodiscard]] virtual void *getPlayerSleepManager() const = 0;
     virtual void *getPlayerSleepManager() = 0;
-    virtual void *_cerealContext() = 0;
+    virtual void *_cerealContext() = 0;  // cereal::ReflectionCtx &
 };

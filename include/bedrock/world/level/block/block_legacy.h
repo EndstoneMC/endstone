@@ -149,7 +149,7 @@ public:
     [[nodiscard]] virtual bool isStemBlock() const = 0;
     [[nodiscard]] virtual bool isContainerBlock() const = 0;
     [[nodiscard]] virtual bool isCraftingBlock() const = 0;
-    [[nodiscard]] virtual bool isWaterBlocking() const = 0;
+    [[nodiscard]] virtual bool isLavaBlocking() const = 0;
     [[nodiscard]] virtual bool isFenceBlock() const = 0;
     [[nodiscard]] virtual bool isFenceGateBlock() const = 0;
     [[nodiscard]] virtual bool isThinFenceBlock() const = 0;
@@ -335,7 +335,7 @@ private:
     float friction_;                                                      //
     BlockTintType block_tint_type_;                                       //
     bool return_default_block_on_unidentified_block_state_;               //
-    BlockColorLogic color_logic_;                                         //
+    NoteBlockInstrument note_block_instrument_;                           //
     NewBlockID id_;                                                       //
     BaseGameVersion min_required_game_version_;                           //
     bool is_vanilla_;                                                     //

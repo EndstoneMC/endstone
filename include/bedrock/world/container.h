@@ -18,6 +18,7 @@
 #include <functional>
 
 #include "bedrock/core/math/vec3.h"
+#include "bedrock/core/utility/pub_sub/connector.h"
 #include "bedrock/forward.h"
 #include "bedrock/world/item/item_stack.h"
 
@@ -72,8 +73,8 @@ public:
     virtual void serverInitItemStackIds(int, int, ItemStackNetIdChangedCallback) = 0;
     virtual void addContentChangeListener(ContainerContentChangeListener *) = 0;
     virtual void removeContentChangeListener(ContainerContentChangeListener *) = 0;
-    virtual void addRemovedListener(ContainerRemovedListener *) = 0;
-    virtual void removeRemovedListener(ContainerRemovedListener *) = 0;
+    virtual Bedrock::PubSub::Connector<void()> *getContainerRemovedConnector();
+    [[nodiscard]] virtual bool hasRemovedSubscribers() const;
     [[nodiscard]] virtual ItemStack const &getItem(int) const = 0;
     virtual bool hasRoomForItem(ItemStack const &) = 0;
     virtual bool addItem(ItemStack &) = 0;
