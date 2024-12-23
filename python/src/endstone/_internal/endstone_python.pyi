@@ -4,7 +4,7 @@ import numpy
 import os
 import typing
 import uuid
-__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
+__all__ = ['ActionForm', 'Actor', 'ActorDeathEvent', 'ActorEvent', 'ActorKnockbackEvent', 'ActorRemoveEvent', 'ActorSpawnEvent', 'ActorTeleportEvent', 'BanEntry', 'BarColor', 'BarFlag', 'BarStyle', 'Block', 'BlockBreakEvent', 'BlockData', 'BlockEvent', 'BlockFace', 'BlockPlaceEvent', 'BlockState', 'BossBar', 'BroadcastMessageEvent', 'ColorFormat', 'Command', 'CommandExecutor', 'CommandSender', 'CommandSenderWrapper', 'ConsoleCommandSender', 'Criteria', 'Dimension', 'DisplaySlot', 'Dropdown', 'Event', 'EventPriority', 'GameMode', 'Inventory', 'IpBanEntry', 'IpBanList', 'ItemStack', 'Label', 'Language', 'Level', 'Location', 'Logger', 'MessageForm', 'Mob', 'ModalForm', 'Objective', 'ObjectiveSortOrder', 'Packet', 'PacketType', 'Permissible', 'Permission', 'PermissionAttachment', 'PermissionAttachmentInfo', 'PermissionDefault', 'Player', 'PlayerBanEntry', 'PlayerBanList', 'PlayerChatEvent', 'PlayerCommandEvent', 'PlayerDeathEvent', 'PlayerEvent', 'PlayerInteractActorEvent', 'PlayerInteractEvent', 'PlayerInventory', 'PlayerJoinEvent', 'PlayerKickEvent', 'PlayerLoginEvent', 'PlayerQuitEvent', 'PlayerTeleportEvent', 'Plugin', 'PluginCommand', 'PluginDescription', 'PluginDisableEvent', 'PluginEnableEvent', 'PluginLoadOrder', 'PluginLoader', 'PluginManager', 'Position', 'RenderType', 'Scheduler', 'Score', 'Scoreboard', 'ScriptMessageEvent', 'Server', 'ServerCommandEvent', 'ServerListPingEvent', 'ServerLoadEvent', 'Skin', 'Slider', 'SocketAddress', 'SpawnParticleEffectPacket', 'StepSlider', 'Task', 'TextInput', 'ThunderChangeEvent', 'Toggle', 'Translatable', 'Vector', 'WeatherChangeEvent']
 class ActionForm:
     """
     Represents a form with buttons that let the player take action.
@@ -1209,6 +1209,31 @@ class IpBanEntry(BanEntry):
         """
         Gets the banned IP address.
         """
+class IpBanList:
+    """
+    Represents a ban list containing banned IP addresses.
+    """
+    def add_ban(self, address: str, reason: str | None = None, expires: datetime.datetime | None = None, source: str | None = None) -> IpBanEntry:
+        """
+        Adds a ban to this list, or updates an existing one.
+        """
+    def get_ban_entry(self, address: str) -> IpBanEntry:
+        """
+        Gets a BanEntry by IP address.
+        """
+    def is_banned(self, address: str) -> bool:
+        """
+        Checks if a BanEntry exists for the target by IP address.
+        """
+    def remove_ban(self, address: str) -> None:
+        """
+        Removes an IP address from the ban list.
+        """
+    @property
+    def entries(self) -> list[IpBanEntry]:
+        """
+        Gets a vector of pointers to entries in the ban list.
+        """
 class ItemStack:
     """
     Represents a stack of items.
@@ -2102,6 +2127,31 @@ class PlayerBanEntry(BanEntry):
     def xuid(self) -> str | None:
         """
         Gets the banned player's Xbox user ID (XUID), or None if not available.
+        """
+class PlayerBanList:
+    """
+    Represents a ban list containing banned players.
+    """
+    def add_ban(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None, reason: str | None = None, expires: datetime.datetime | None = None, source: str | None = None) -> PlayerBanEntry:
+        """
+        Adds a ban to this list, or updates an existing one.
+        """
+    def get_ban_entry(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> PlayerBanEntry:
+        """
+        Gets a BanEntry by player name, UUID, or XUID.
+        """
+    def is_banned(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> bool:
+        """
+        Checks if a BanEntry exists for the target by name, UUID, or XUID.
+        """
+    def remove_ban(self, name: str, uuid: uuid.UUID | None = None, xuid: str | None = None) -> None:
+        """
+        Removes a player from the ban list by name, UUID, or XUID.
+        """
+    @property
+    def entries(self) -> list[PlayerBanEntry]:
+        """
+        Gets a vector of pointers to entries in the ban list.
         """
 class PlayerChatEvent(PlayerEvent):
     """

@@ -271,7 +271,11 @@ void init_server(py::class_<Server> &server)
             },
             py::arg("type"), py::arg("block_states") = std::nullopt,
             "Creates a new BlockData instance for the specified block type, with all properties initialized to "
-            "defaults, except for those provided.");
+            "defaults, except for those provided.")
+        .def_property_readonly("ban_list", &Server::getBanList, "Gets the player ban list.",
+                               py::return_value_policy::reference)
+        .def_property_readonly("ip_ban_list", &Server::getIpBanList, "Gets the IP ban list.",
+                               py::return_value_policy::reference);
 }
 
 void init_player(py::module_ &m, py::class_<Player, Mob> &player)
