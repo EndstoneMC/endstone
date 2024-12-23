@@ -64,6 +64,12 @@ public:
     [[nodiscard]] std::vector<std::string> getScoreboardTags() const override;
     [[nodiscard]] bool addScoreboardTag(std::string tag) const override;
     [[nodiscard]] bool removeScoreboardTag(std::string tag) const override;
+    [[nodiscard]] bool isNameTagVisible() const override;
+    void setNameTagVisible(bool visible) override;
+    [[nodiscard]] std::string getNameTag() const override;
+    void setNameTag(std::string name) override;
+    [[nodiscard]] std::string getScoreTag() const override;
+    void setScoreTag(std::string score) override;
 
     // Mob
     [[nodiscard]] bool isGliding() const override;

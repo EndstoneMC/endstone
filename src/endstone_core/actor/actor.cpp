@@ -235,6 +235,36 @@ bool EndstoneActor::removeScoreboardTag(std::string tag) const
     return actor_.removeTag(tag);
 }
 
+bool EndstoneActor::isNameTagVisible() const
+{
+    return actor_.canShowNameTag();
+}
+
+void EndstoneActor::setNameTagVisible(bool visible)
+{
+    actor_.setNameTagVisible(visible);
+}
+
+std::string EndstoneActor::getNameTag() const
+{
+    return actor_.getNameTag();
+}
+
+void EndstoneActor::setNameTag(std::string name)
+{
+    actor_.setNameTag(name);
+}
+
+std::string EndstoneActor::getScoreTag() const
+{
+    return actor_.getScoreTag();
+}
+
+void EndstoneActor::setScoreTag(std::string score)
+{
+    actor_.setScoreTag(score);
+}
+
 PermissibleBase &EndstoneActor::getPermissibleBase()
 {
     static std::shared_ptr<PermissibleBase> perm = PermissibleBase::create(nullptr);

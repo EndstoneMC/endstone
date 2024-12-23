@@ -168,6 +168,48 @@ public:
      * @return true if the tag was successfully removed, false if the tag does not exist.
      */
     [[nodiscard]] virtual bool removeScoreboardTag(std::string tag) const = 0;
+
+    /**
+     * @brief Checks if the name tag is currently visible.
+     *
+     * @return True if the name tag is visible, false otherwise.
+     */
+    [[nodiscard]] virtual bool isNameTagVisible() const = 0;
+
+    /**
+     * @brief Sets whether the name tag is visible or not.
+     *
+     * @param visible True to make the name tag visible, false to hide it.
+     */
+    virtual void setNameTagVisible(bool visible) = 0;
+
+    /**
+     * @brief Gets the current name tag of the actor.
+     *
+     * @return The name tag.
+     */
+    [[nodiscard]] virtual std::string getNameTag() const = 0;
+
+    /**
+     * @brief Sets the name tag for the actor.
+     *
+     * @param name The new name tag to set.
+     */
+    virtual void setNameTag(std::string name) = 0;
+
+    /**
+     * @brief Gets the current score tag of the actor.
+     *
+     * @return The score tag.
+     */
+    [[nodiscard]] virtual std::string getScoreTag() const = 0;
+
+    /**
+     * @brief Sets the score tag for the actor.
+     *
+     * @param score The new score tag to set.
+     */
+    virtual void setScoreTag(std::string score) = 0;
 };
 
 }  // namespace endstone

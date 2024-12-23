@@ -308,7 +308,7 @@ int Actor::getMaxHealth() const
 
 void Actor::setNameTagVisible(bool visible)
 {
-    SynchedActorDataAccess::setActorFlag(entity_context_, ActorFlags::ALWAYS_SHOW_NAME, visible);
+    SynchedActorDataAccess::setActorFlag(entity_context_, ActorFlags::CAN_SHOW_NAME, visible);
 }
 
 const std::string &Actor::getNameTag() const
@@ -326,7 +326,7 @@ const std::string &Actor::getScoreTag() const
     return entity_data.getString(static_cast<SynchedActorData::ID>(ActorDataIDs::SCORE));
 }
 
-void Actor::setScoreTag(const std::string & score)
+void Actor::setScoreTag(const std::string &score)
 {
     entity_data.set(static_cast<SynchedActorData::ID>(ActorDataIDs::SCORE), score);
 }

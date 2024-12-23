@@ -279,6 +279,36 @@ bool EndstonePlayer::removeScoreboardTag(std::string tag) const
     return EndstoneMob::removeScoreboardTag(tag);
 }
 
+bool EndstonePlayer::isNameTagVisible() const
+{
+    return EndstoneMob::isNameTagVisible();
+}
+
+void EndstonePlayer::setNameTagVisible(bool visible)
+{
+    EndstoneMob::setNameTagVisible(visible);
+}
+
+std::string EndstonePlayer::getNameTag() const
+{
+    return EndstoneMob::getNameTag();
+}
+
+void EndstonePlayer::setNameTag(std::string name)
+{
+    EndstoneMob::setNameTag(name);
+}
+
+std::string EndstonePlayer::getScoreTag() const
+{
+    return EndstoneMob::getScoreTag();
+}
+
+void EndstonePlayer::setScoreTag(std::string score)
+{
+    EndstoneMob::setScoreTag(score);
+}
+
 bool EndstonePlayer::isGliding() const
 {
     return EndstoneMob::isGliding();
