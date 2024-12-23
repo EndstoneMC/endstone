@@ -37,6 +37,8 @@
     <member refid="classendstone_1_1Actor_1a6f068c4612aa487ba76d3a4c3e3b1033" kind="function"><name>removeScoreboardTag</name></member>
     <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" kind="function"><name>isNameTagVisible</name></member>
     <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" kind="function"><name>setNameTagVisible</name></member>
+    <member refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" kind="function"><name>isNameTagAlwaysVisible</name></member>
+    <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" kind="function"><name>setNameTagAlwaysVisible</name></member>
     <member refid="classendstone_1_1Actor_1a7bac2e604ceb3d48c3fbc6a628f6eaec" kind="function"><name>getNameTag</name></member>
     <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" kind="function"><name>setNameTag</name></member>
     <member refid="classendstone_1_1Actor_1a29bb3fe504b2b2bffd749a0d9ef1ed92" kind="function"><name>getScoreTag</name></member>

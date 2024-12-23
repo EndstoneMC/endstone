@@ -80,6 +80,10 @@ public:
 
     virtual void setNameTagVisible(bool visible) = 0;
 
+    [[nodiscard]] virtual bool isNameTagAlwaysVisible() const = 0;
+
+    virtual void setNameTagAlwaysVisible(bool visible) = 0;
+
     [[nodiscard]] virtual std::string getNameTag() const = 0;
 
     virtual void setNameTag(std::string name) = 0;

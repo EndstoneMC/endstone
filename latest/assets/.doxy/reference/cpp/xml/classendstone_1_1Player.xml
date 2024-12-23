@@ -1403,6 +1403,7 @@
       <member refid="classendstone_1_1Mob_1a7903900a62a82e920230c7fc75ff5ac6" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isGliding</name></member>
       <member refid="classendstone_1_1Actor_1a876f9f220c4628b15556f2b50b103928" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInLava</name></member>
       <member refid="classendstone_1_1Actor_1a07d1ec2bc5458fbd0c4d60711e4ddcd1" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isInWater</name></member>
+      <member refid="classendstone_1_1Actor_1a26211c565a42de6f28565bed6d3c854b" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1ada87051d8b64c9df5cab73732bddf710" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isNameTagVisible</name></member>
       <member refid="classendstone_1_1Actor_1a7cfff436cf3ddabdb1f28f744234f218" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOnGround</name></member>
       <member refid="classendstone_1_1Permissible_1a337e6323e8e49d8ce6e2c16b091e5d53" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>isOp</name></member>
@@ -1433,6 +1434,7 @@
       <member refid="classendstone_1_1Player_1a7ba5aa570e0cf9e5c41dcc8b1602f76e" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setGameMode</name></member>
       <member refid="classendstone_1_1Actor_1a4a45b1cc01511125a524e95b67effec7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setHealth</name></member>
       <member refid="classendstone_1_1Actor_1afa33b47ae91605841f0c4ef5ec127ac7" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTag</name></member>
+      <member refid="classendstone_1_1Actor_1a6c7dc2e5a9b99db8b000e84e4eba5822" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTagAlwaysVisible</name></member>
       <member refid="classendstone_1_1Actor_1a81d7145659190f3419446959641b4989" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setNameTagVisible</name></member>
       <member refid="classendstone_1_1Permissible_1a2cf4819b46b03d25c17f1fa15a679233" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setOp</name></member>
       <member refid="classendstone_1_1Actor_1a857512cc626e30cb57d03cacae88dd9f" prot="public" virt="pure-virtual"><scope>endstone::Player</scope><name>setRotation</name></member>

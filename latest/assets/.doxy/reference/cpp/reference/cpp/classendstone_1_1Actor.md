@@ -110,11 +110,13 @@ Inherited by the following classes: [endstone::Mob](classendstone_1_1Mob.md)
 | virtual bool | [**isDead**](#function-isdead) () const = 0<br>_Returns true if this actor has been marked for removal._  |
 | virtual bool | [**isInLava**](#function-isinlava) () const = 0<br> |
 | virtual bool | [**isInWater**](#function-isinwater) () const = 0<br> |
+| virtual bool | [**isNameTagAlwaysVisible**](#function-isnametagalwaysvisible) () const = 0<br>_Checks if the actor's name tag is always visible._  |
 | virtual bool | [**isNameTagVisible**](#function-isnametagvisible) () const = 0<br>_Checks if the actor's name tag is currently visible._  |
 | virtual bool | [**isOnGround**](#function-isonground) () const = 0<br> |
 | virtual bool | [**removeScoreboardTag**](#function-removescoreboardtag) (std::string tag) const = 0<br>_Removes a given tag from this actor._  |
 | virtual Result&lt; void &gt; | [**setHealth**](#function-sethealth) (int health) const = 0<br> |
 | virtual void | [**setNameTag**](#function-setnametag) (std::string name) = 0<br>_Sets the name tag for the actor._  |
+| virtual void | [**setNameTagAlwaysVisible**](#function-setnametagalwaysvisible) (bool visible) = 0<br>_Sets whether the actor's name tag should always be visible._  |
 | virtual void | [**setNameTagVisible**](#function-setnametagvisible) (bool visible) = 0<br>_Sets if the actor's name tag is visible or not._  |
 | virtual void | [**setRotation**](#function-setrotation) (float yaw, float pitch) = 0<br> |
 | virtual void | [**setScoreTag**](#function-setscoretag) (std::string score) = 0<br>_Sets the score tag for the actor._  |
@@ -669,6 +671,31 @@ True if the actor is in water.
 
 
 
+### function isNameTagAlwaysVisible 
+
+_Checks if the actor's name tag is always visible._ 
+```C++
+virtual bool endstone::Actor::isNameTagAlwaysVisible () const = 0
+```
+
+
+
+
+
+**Returns:**
+
+True if the name tag is always visible, false otherwise. 
+
+
+
+
+
+        
+
+<hr>
+
+
+
 ### function isNameTagVisible 
 
 _Checks if the actor's name tag is currently visible._ 
@@ -801,6 +828,33 @@ virtual void endstone::Actor::setNameTag (
 
 
 * `name` The new name tag to set. 
+
+
+
+
+        
+
+<hr>
+
+
+
+### function setNameTagAlwaysVisible 
+
+_Sets whether the actor's name tag should always be visible._ 
+```C++
+virtual void endstone::Actor::setNameTagAlwaysVisible (
+    bool visible
+) = 0
+```
+
+
+
+
+
+**Parameters:**
+
+
+* `visible` True to make the name tag always visible, false to disable always visibility. 
 
 
 
