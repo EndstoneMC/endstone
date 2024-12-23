@@ -98,10 +98,10 @@
         </childnode>
         <childnode refid="90" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="48">
+      <node id="45">
         <label>endstone/ban/player_ban_list.h</label>
         <link refid="player__ban__list_8h_source"/>
         <childnode refid="40" relation="include">
@@ -114,7 +114,7 @@
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
       <node id="28">
@@ -149,7 +149,7 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="50" relation="include">
         </childnode>
@@ -167,7 +167,7 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="12">
@@ -200,7 +200,7 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="49">
         <label>cstdint</label>
       </node>
       <node id="38">
@@ -299,7 +299,7 @@
       <node id="90">
         <label>endstone/util/socket_address.h</label>
         <link refid="socket__address_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -463,14 +463,14 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="49">
+      <node id="46">
         <label>endstone/ban/player_ban_entry.h</label>
         <link refid="player__ban__entry_8h_source"/>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
       <node id="56">
@@ -607,8 +607,6 @@
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
       </node>
       <node id="10">
         <label>endstone/command/command_sender.h</label>
@@ -686,20 +684,20 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="48">
         <label>cstddef</label>
       </node>
       <node id="26">
         <label>unordered_map</label>
       </node>
-      <node id="45">
+      <node id="47">
         <label>endstone/util/uuid.h</label>
         <link refid="uuid_8h_source"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -726,7 +724,7 @@
       <node id="78">
         <label>endstone/network/spawn_particle_effect_packet.h</label>
         <link refid="spawn__particle__effect__packet_8h_source"/>
-        <childnode refid="47" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>

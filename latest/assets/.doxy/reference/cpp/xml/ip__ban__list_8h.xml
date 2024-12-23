@@ -10,9 +10,6 @@
     <includes refid="ip__ban__entry_8h" local="yes">endstone/ban/ip_ban_entry.h</includes>
     <includedby refid="server_8h" local="yes">include/endstone/server.h</includedby>
     <incdepgraph>
-      <node id="13">
-        <label>cstdint</label>
-      </node>
       <node id="4">
         <label>string</label>
       </node>
@@ -74,29 +71,9 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>cstddef</label>
-      </node>
-      <node id="10">
-        <label>endstone/util/uuid.h</label>
-        <link refid="uuid_8h_source"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
       </node>
       <node id="2">
         <label>chrono</label>
-      </node>
-      <node id="11">
-        <label>algorithm</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
