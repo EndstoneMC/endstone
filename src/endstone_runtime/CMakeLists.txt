@@ -43,6 +43,7 @@ add_library(endstone_runtime SHARED
         bedrock/locale/i18n.cpp
         bedrock/locale/localization.cpp
         bedrock/nbt/compound_tag.cpp
+        bedrock/nbt/list_tag.cpp
         bedrock/nbt/nbt_io.cpp
         bedrock/nbt/tag.cpp
         bedrock/network/network_identifier.cpp

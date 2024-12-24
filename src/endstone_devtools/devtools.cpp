@@ -41,6 +41,85 @@
 
 namespace fs = std::filesystem;
 
+namespace nlohmann {
+template <>
+struct adl_serializer<Tag> {
+    static void to_json(json &j, const Tag &tag)  // NOLINT(*-identifier-naming)
+    {
+        switch (tag.getId()) {
+        case Tag::Type::Byte: {
+            j = static_cast<const ByteTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::Short: {
+            j = static_cast<const ShortTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::Int: {
+            j = static_cast<const IntTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::Int64: {
+            j = static_cast<const Int64Tag &>(tag).data;
+            break;
+        }
+        case Tag::Type::Float: {
+            j = static_cast<const FloatTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::Double: {
+            j = static_cast<const DoubleTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::String: {
+            j = static_cast<const StringTag &>(tag).data;
+            break;
+        }
+        case Tag::Type::List: {
+            const auto &t = static_cast<const ListTag &>(tag);
+            for (auto i = 0; i < t.size(); i++) {
+                j.push_back(*t.get(i));
+            }
+            break;
+        }
+        case Tag::Type::Compound: {
+            const auto &t = static_cast<const CompoundTag &>(tag);
+            for (const auto &[key, value] : t) {
+                j[key] = *value.get();
+            }
+            break;
+        }
+        case Tag::Type::IntArray: {
+            const auto &t = static_cast<const IntArrayTag &>(tag);
+            for (const auto &i : t.data) {
+                j.push_back(i);
+            }
+            break;
+        }
+        case Tag::Type::ByteArray: {
+            const auto &t = static_cast<const ByteArrayTag &>(tag);
+            for (const auto &i : t.data) {
+                j.push_back(i);
+            }
+            break;
+        }
+        case Tag::Type::End:
+        default:
+            break;
+        }
+    }
+};
+
+template <>
+struct adl_serializer<ListTag> {
+    static void to_json(json &j, const ListTag &tag)  // NOLINT(*-identifier-naming)
+    {
+        adl_serializer<Tag>::to_json(j, tag);
+    }
+};
+
+}  // namespace nlohmann
+
 namespace endstone::detail::devtools {
 
 namespace {
@@ -385,7 +464,8 @@ void showBlockWindow(bool *open)
     }
 
     if (ImGui::CollapsingHeader("Block Palette")) {
-        ImGui::Json(NbtIo::toJson(data->block_palette));
+        nlohmann::json block_palette = data->block_palette;
+        ImGui::Json(data->block_palette);
     }
 
     ImGui::End();
@@ -410,7 +490,7 @@ void showItemWindow(bool *open)
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Creative Items", data->creative_items.size()).c_str())) {
-        ImGui::Json(NbtIo::toJson(data->creative_items));
+        ImGui::Json(data->creative_items);
     }
 
     if (ImGui::CollapsingHeader(fmt::format("{} Item Tags", data->item_tags.size()).c_str())) {

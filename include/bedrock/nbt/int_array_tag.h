@@ -21,9 +21,9 @@
 #include "bedrock/nbt/tag.h"
 
 class IntArrayTag : public Tag {
+public:
     using ArrayData = std::vector<int>;
 
-public:
     explicit IntArrayTag(ArrayData data = {}) : data(std::move(data)) {}
 
     void write(IDataOutput &output) const override

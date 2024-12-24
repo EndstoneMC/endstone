@@ -18,126 +18,42 @@
 #include <memory>
 #include <vector>
 
-#include <fmt/format.h>
-
 #include "bedrock/bedrock.h"
 #include "bedrock/nbt/tag.h"
+
+class CompoundTag;
 
 class ListTag : public Tag {
     using List = std::vector<std::unique_ptr<Tag>>;
 
 public:
     ListTag() = default;
+    void deleteChildren() override;
+    void write(IDataOutput &output) const override;
+    Bedrock::Result<void> load(IDataInput &input) override;
+    [[nodiscard]] std::string toString() const override;
+    [[nodiscard]] Type getId() const override;
+    [[nodiscard]] bool equals(const Tag &other) const override;
+    [[nodiscard]] std::unique_ptr<Tag> copy() const override;
+    [[nodiscard]] std::size_t hash() const override;
+    void print(const std::string &string, PrintStream &stream) const override;
 
-    void deleteChildren() override
-    {
-        while (!list_.empty()) {
-            list_.back()->deleteChildren();
-            list_.pop_back();
-        }
-    }
-
-    void write(IDataOutput &output) const override
-    {
-        output.writeByte(static_cast<std::uint8_t>(type_));
-        output.writeInt(static_cast<std::int32_t>(list_.size()));
-        for (const auto &data : list_) {
-            data->write(output);
-        }
-    }
-
-    Bedrock::Result<void> load(IDataInput &input) override
-    {
-        auto byte_result = input.readByteResult();
-        if (!byte_result) {
-            return nonstd::make_unexpected(byte_result.error());
-        }
-        type_ = static_cast<Type>(byte_result.value());
-
-        auto int_result = input.readIntResult();
-        if (!int_result) {
-            return nonstd::make_unexpected(int_result.error());
-        }
-
-        const auto size = int_result.value();
-        list_.clear();
-        list_.reserve(size);
-        for (int i = 0; i < size; ++i) {
-            auto tag_result = newTag(type_);
-            if (!tag_result) {
-                return nonstd::make_unexpected(tag_result.error());
-            }
-            auto tag = std::move(tag_result.value());
-            tag->load(input);
-            list_.push_back(std::move(tag));
-        }
-        return {};
-    }
-
-    [[nodiscard]] std::string toString() const override
-    {
-        return fmt::format("{} entries of type {}", list_.size(), Tag::getTagName(type_));
-    }
-
-    [[nodiscard]] Type getId() const override
-    {
-        return Type::List;
-    }
-
-    [[nodiscard]] bool equals(const Tag &other) const override
-    {
-        return Tag::equals(other) && list_ == static_cast<const ListTag &>(other).list_ &&
-               type_ == static_cast<const ListTag &>(other).type_;
-    }
-
-    [[nodiscard]] std::unique_ptr<Tag> copy() const override
-    {
-        return copyList();
-    }
-
-    [[nodiscard]] std::size_t hash() const override
-    {
-        return boost::hash_range(list_.begin(), list_.end());
-    }
-
-    void print(const std::string &string, PrintStream &stream) const override
-    {
-        Tag::print(string, stream);
-        stream.print(string);
-        stream.print("{\n");
-        stream.print("   ");
-        for (const auto &data : list_) {
-            data->print(string, stream);
-        }
-        stream.print(string);
-        stream.print("}\n");
-    }
-
-    [[nodiscard]] std::size_t size() const
-    {
-        return list_.size();
-    }
-
-    [[nodiscard]] Tag *get(std::size_t index) const
-    {
-        return list_[index].get();
-    }
-
-    void add(std::unique_ptr<Tag> tag)
-    {
-        type_ = tag->getId();
-        list_.push_back(std::move(tag));
-    }
-
-    [[nodiscard]] std::unique_ptr<ListTag> copyList() const
-    {
-        auto copy = std::make_unique<ListTag>();
-        copy->type_ = type_;
-        for (const auto &data : list_) {
-            copy->list_.push_back(data->copy());
-        }
-        return copy;
-    }
+    void add(std::unique_ptr<Tag> tag);
+    [[nodiscard]] Tag *get(int index) const;
+    [[nodiscard]] float getFloat(int index) const;
+    [[nodiscard]] int getInt(int index) const;
+    [[nodiscard]] double getDouble(int index) const;
+    [[nodiscard]] const std::string &getString(int index) const;
+    [[nodiscard]] std::int64_t getInt64(int index) const;
+    [[nodiscard]] std::int16_t getShort(int index) const;
+    [[nodiscard]] std::uint8_t getByte(int index) const;
+    [[nodiscard]] std::size_t size() const;
+    [[nodiscard]] std::unique_ptr<ListTag> copyList() const;
+    [[nodiscard]] const CompoundTag *getCompound(int index) const;
+    CompoundTag *getCompound(int index);
+    void erase(int index);
+    void popBack();
+    void forEachCompoundTag(std::function<void(const CompoundTag &)> func) const;
 
 private:
     List list_;  // +8

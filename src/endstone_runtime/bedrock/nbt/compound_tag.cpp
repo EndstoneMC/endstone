@@ -19,8 +19,6 @@
 #include "bedrock/nbt/compound_tag_variant.h"
 #include "bedrock/nbt/nbt_io.h"
 
-CompoundTag::CompoundTag() = default;
-
 void CompoundTag::write(IDataOutput &output) const
 {
     for (const auto &[key, value] : tags_) {
@@ -74,64 +72,6 @@ std::uint64_t CompoundTag::hash() const
     return seed;
 }
 
-std::unique_ptr<CompoundTag> CompoundTag::clone() const
-{
-    auto new_tag = std::make_unique<CompoundTag>();
-    new_tag->deepCopy(*this);
-    return new_tag;
-}
-
-void CompoundTag::deepCopy(const CompoundTag &other)
-{
-    tags_.clear();
-    for (const auto &[key, value] : other.tags_) {
-        tags_[key].emplace(std::move(*value.get()->copy()));
-    }
-}
-
-bool CompoundTag::contains(std::string_view key) const
-{
-    return get(key) != nullptr;
-}
-
-bool CompoundTag::contains(std::string_view key, Tag::Type type) const
-{
-    if (const auto *tag = get(key); tag) {
-        return tag->getId() == type;
-    }
-    return false;
-}
-
-const Tag *CompoundTag::get(std::string_view key) const
-{
-    auto it = tags_.find(key);
-    if (it != tags_.end()) {
-        return it->second.get();
-    }
-    return nullptr;
-}
-
-const std::string &CompoundTag::getString(std::string_view key) const
-{
-    static std::string empty;
-    if (const auto *tag = get(key); tag) {
-        if (tag->getId() == Tag::Type::String) {
-            return static_cast<const StringTag *>(tag)->data;
-        }
-    }
-    return empty;
-}
-
-const CompoundTag *CompoundTag::getCompound(std::string_view key) const
-{
-    if (const auto *tag = get(key); tag) {
-        if (tag->getId() == Tag::Type::Compound) {
-            return static_cast<const CompoundTag *>(tag);
-        }
-    }
-    return nullptr;
-}
-
 Tag &CompoundTag::put(std::string name, Tag &&tag)
 {
     return tags_[name].emplace(std::forward<Tag>(tag));
@@ -143,11 +83,6 @@ Tag *CompoundTag::put(std::string name, std::unique_ptr<Tag> tag)
         return nullptr;
     }
     return &tags_[name].emplace(std::move(*tag));
-}
-
-void CompoundTag::putBoolean(std::string name, bool value)
-{
-    tags_[name].emplace(ByteTag(value ? 1 : 0));
 }
 
 std::uint8_t &CompoundTag::putByte(std::string name, std::uint8_t value)
@@ -205,18 +140,92 @@ CompoundTag *CompoundTag::putCompound(std::string name, std::unique_ptr<Compound
     }
     return static_cast<CompoundTag *>(&tags_[name].emplace(std::move(*value)));
 }
-std::size_t CompoundTag::size() const
+
+void CompoundTag::putBoolean(std::string name, bool value)
 {
-    return tags_.size();
+    tags_[name].emplace(ByteTag(value ? 1 : 0));
 }
-bool CompoundTag::empty() const
+
+const Tag *CompoundTag::get(StringView key) const
+{
+    auto it = tags_.find(key);
+    if (it != tags_.end()) {
+        return it->second.get();
+    }
+    return nullptr;
+}
+
+Tag *CompoundTag::get(StringView key)
+{
+    auto it = tags_.find(key);
+    if (it != tags_.end()) {
+        return it->second.get();
+    }
+    return nullptr;
+}
+
+const std::string &CompoundTag::getString(StringView key) const
+{
+    static std::string empty;
+    if (const auto *tag = get(key); tag) {
+        if (tag->getId() == Tag::Type::String) {
+            return static_cast<const StringTag *>(tag)->data;
+        }
+    }
+    return empty;
+}
+
+const CompoundTag *CompoundTag::getCompound(StringView key) const
+{
+    if (const auto *tag = get(key); tag) {
+        if (tag->getId() == Type::Compound) {
+            return static_cast<const CompoundTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
+CompoundTag *CompoundTag::getCompound(StringView key)
+{
+    if (auto *tag = get(key); tag) {
+        if (tag->getId() == Type::Compound) {
+            return static_cast<CompoundTag *>(tag);
+        }
+    }
+    return nullptr;
+}
+
+bool CompoundTag::contains(StringView key) const
+{
+    return get(key) != nullptr;
+}
+
+bool CompoundTag::contains(StringView key, Tag::Type type) const
+{
+    if (const auto *tag = get(key); tag) {
+        return tag->getId() == type;
+    }
+    return false;
+}
+
+bool CompoundTag::isEmpty() const
 {
     return tags_.empty();
 }
 
-TagMap::const_iterator CompoundTag::end() const
+void CompoundTag::deepCopy(const CompoundTag &other)
 {
-    return tags_.end();
+    tags_.clear();
+    for (const auto &[key, value] : other.tags_) {
+        tags_[key].emplace(std::move(*value.get()->copy()));
+    }
+}
+
+std::unique_ptr<CompoundTag> CompoundTag::clone() const
+{
+    auto new_tag = std::make_unique<CompoundTag>();
+    new_tag->deepCopy(*this);
+    return new_tag;
 }
 
 TagMap::const_iterator CompoundTag::begin() const
@@ -224,12 +233,12 @@ TagMap::const_iterator CompoundTag::begin() const
     return tags_.begin();
 }
 
-TagMap::iterator CompoundTag::end()
+TagMap::const_iterator CompoundTag::end() const
 {
     return tags_.end();
 }
 
-TagMap::iterator CompoundTag::begin()
+std::size_t CompoundTag::size() const
 {
-    return tags_.begin();
+    return tags_.size();
 }

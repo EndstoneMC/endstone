@@ -45,7 +45,7 @@ void Tag::print(PrintStream &stream) const
     print("", stream);
 }
 
-Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Tag::Type type)
+Bedrock::Result<std::unique_ptr<Tag>> Tag::newTag(Type type)
 {
     switch (type) {
     case Type::End:

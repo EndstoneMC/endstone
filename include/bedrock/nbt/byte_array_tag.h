@@ -26,9 +26,9 @@
 #include "bedrock/nbt/tag.h"
 
 class ByteArrayTag : public Tag {
+public:
     using ArrayData = std::vector<unsigned char>;
 
-public:
     explicit ByteArrayTag(ArrayData data = {}) : data(std::move(data)) {}
 
     void write(IDataOutput &output) const override
