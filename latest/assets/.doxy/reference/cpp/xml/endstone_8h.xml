@@ -191,7 +191,7 @@
       </memberdef>
       <memberdef kind="define" id="endstone_8h_1a1a384214544c4bcb200df812e5ac2bc9" prot="public" static="no">
         <name>ENDSTONE_VERSION_PATCH</name>
-        <initializer>8</initializer>
+        <initializer>7</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -271,7 +271,7 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MAJOR<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_MINOR<sp/>5</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_VERSION_PATCH<sp/>7</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_API_VERSION<sp/><sp/><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MAJOR)<sp/>&quot;.&quot;</highlight><highlight class="normal"><sp/>ENDSTONE_TOSTRING(ENDSTONE_VERSION_MINOR)</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENDSTONE_MAX_PLAYERS<sp/>200</highlight><highlight class="normal"></highlight></codeline>

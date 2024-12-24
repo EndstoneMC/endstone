@@ -1973,6 +1973,25 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#0571-2024-12-24" class="md-nav__link">
+      <span class="md-ellipsis">
+        0.5.7.1 - 2024-12-24
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="0.5.7.1 - 2024-12-24">
+        <ul class="md-nav__list">
+            
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#057-2024-12-23" class="md-nav__link">
       <span class="md-ellipsis">
         0.5.7 - 2024-12-23
@@ -2481,6 +2500,25 @@ For latest updates join the chat on
 </li>
       
         <li class="md-nav__item">
+    <a href="#0571-2024-12-24" class="md-nav__link">
+      <span class="md-ellipsis">
+        0.5.7.1 - 2024-12-24
+      </span>
+    </a>
+
+    <!-- Table of contents list -->
+    
+    <nav class="md-nav" aria-label="0.5.7.1 - 2024-12-24">
+        <ul class="md-nav__list">
+            
+                
+            
+        </ul>
+    </nav>
+    
+</li>
+      
+        <li class="md-nav__item">
     <a href="#057-2024-12-23" class="md-nav__link">
       <span class="md-ellipsis">
         0.5.7 - 2024-12-23
@@ -2979,7 +3017,15 @@ For latest updates join the chat on
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="058-unreleased">0.5.8 - Unreleased<a class="headerlink" href="#058-unreleased" title="Permanent link">&para;</a></h2>
-<p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.7...HEAD">Compare with 0.5.7</a></small></p>
+<p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.7.1...HEAD">Compare with 0.5.7.1</a></small></p>
+<h2 id="0571-2024-12-24"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7.1">0.5.7.1</a> - 2024-12-24<a class="headerlink" href="#0571-2024-12-24" title="Permanent link">&para;</a></h2>
+<p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.7...v0.5.7.1">Compare with 0.5.7</a></small></p>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed an issue where the <code>event.is_cancelled</code> property in the Python binding was not writable.</li>
+<li>Prevented player command execution from being printed to the console if the <code>PlayerCommandEvent</code> was already cancelled
+  by plugins.</li>
+</ul>
 <h2 id="057-2024-12-23"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7">0.5.7</a> - 2024-12-23<a class="headerlink" href="#057-2024-12-23" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.6...v0.5.7">Compare with 0.5.6</a></small></p>
 <h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
@@ -2993,7 +3039,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Added setters for fields in <code>ServerListPingEvent</code> by <a href="https://github.com/theaddonn">@theaddonn</a>.</li>
 <li>Added a new color code (<code>§v</code>).</li>
 </ul>
-<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Prevented a crash caused by killing a player in a form callback, which invalidated the player object.</li>
 <li>Fixed an issue where the player inventory was not updated after calling <code>clear</code>.</li>
@@ -3019,7 +3065,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Added <code>PluginManager::loadPlugin</code> to allow third-party plugin loaders to load plugins from single files instead of
   directories. <a href="https://github.com/EndstoneMC/endstone/issues/98">#98</a></li>
 </ul>
-<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed an issue where <code>block_palette.nbt</code> was dumped twice in the DevTools.</li>
 </ul>
@@ -3054,14 +3100,14 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>The return type of several methods has been changed to <code>endstone::Result</code> to include error messages, which will
   automatically throw exceptions with the same messages on the Python side.</li>
 </ul>
-<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed a crash that occurred while handling server ping
   requests (<a href="https://github.com/EndstoneMC/endstone/issues/60">#60</a>).</li>
 </ul>
 <h2 id="0541-2023-09-19"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.5.4.1">0.5.4.1</a> - 2023-09-19<a class="headerlink" href="#0541-2023-09-19" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.5.4...v0.5.4.1">Compare with 0.5.4</a></small></p>
-<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_4">Fixed<a class="headerlink" href="#fixed_4" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed a crash that could occur when the player uses emotes.</li>
 </ul>
@@ -3081,7 +3127,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   command with elevated permissions, consider using <code>Server::dispatchCommand</code> to execute
   <code>execute as {player_name} run {command}</code>.</li>
 </ul>
-<h3 id="fixed_4">Fixed<a class="headerlink" href="#fixed_4" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_5">Fixed<a class="headerlink" href="#fixed_5" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Actor::isOnGround</code>, <code>Actor::isInWater</code>, and <code>Actor::isInLava</code> now return the correct values.</li>
 <li>Fixed a typo in the documentation by <a href="https://github.com/thatgurkangurk">@thatgurkangurk</a>.</li>
@@ -3110,7 +3156,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   methods like <code>createBossbar</code> and <code>createBlockData</code>.</li>
 <li>Lifted the restriction on the <code>/reload</code> command for console use. It can now be executed in-game.</li>
 </ul>
-<h3 id="fixed_5">Fixed<a class="headerlink" href="#fixed_5" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_6">Fixed<a class="headerlink" href="#fixed_6" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Enforced the use of libc++ for C++ plugins on Linux to resolve symbol errors.</li>
 <li><code>Player::setExpProgress</code> now correctly sets experience progress without precision loss.</li>
@@ -3136,7 +3182,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Check chunk states before getting the block in <code>Dimension::getBlockAt</code>.</li>
 </ul>
-<h3 id="fixed_6">Fixed<a class="headerlink" href="#fixed_6" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_7">Fixed<a class="headerlink" href="#fixed_7" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/EndstoneMC/endstone/issues/38">#38</a> - Plugins can now be properly loaded inside a virtual
   environment on Linux.</li>
@@ -3165,7 +3211,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><strong>BREAKING CHANGE:</strong> <code>Player::getDeviceId</code> now returns a string object instead of a UUID object, as it is not
   guaranteed to be a UUID on all platforms.</li>
 </ul>
-<h3 id="fixed_7">Fixed<a class="headerlink" href="#fixed_7" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_8">Fixed<a class="headerlink" href="#fixed_8" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/EndstoneMC/endstone/issues/29">#29</a> - Commands will no longer be sent to a player who doesn't have</li>
 <li><a href="https://github.com/EndstoneMC/endstone/issues/32">#32</a> - Creating an action form without an <code>on_submit</code> callback will
@@ -3199,7 +3245,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   property to display a different name for the plugin logger.</li>
 <li><strong>BREAKING CHANGE:</strong> The <code>player.ping</code> property now returns an <code>int</code> instead of <code>datetime.timedelta</code>.</li>
 </ul>
-<h3 id="fixed_8">Fixed<a class="headerlink" href="#fixed_8" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_9">Fixed<a class="headerlink" href="#fixed_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fixed issue where <code>Server::setMaxPlayers</code> would crash due to a change in the internal struct in BDS.</li>
 <li>Fixed issue that python executable cannot be located when running in a virtual environment.</li>
@@ -3213,7 +3259,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Support for recipes with output items possessing NBT (Named Binary Tag) tags. These tags are now also included
   in the dumped data.</li>
 </ul>
-<h3 id="fixed_9">Fixed<a class="headerlink" href="#fixed_9" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_10">Fixed<a class="headerlink" href="#fixed_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Issue with shaped recipes. Recipes that have item tags as input (instead of item names) can now be dumped correctly.</li>
 </ul>
@@ -3242,7 +3288,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li><code>Permissible.op</code> property in the python binding is renamed to <code>Permissible.is_op</code>.</li>
 <li>Crash dumps will now print system and version info in addition to stacktraces.</li>
 </ul>
-<h3 id="fixed_10">Fixed<a class="headerlink" href="#fixed_10" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_11">Fixed<a class="headerlink" href="#fixed_11" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Suppressed warning message about empty UDP packets from the output.</li>
 </ul>
@@ -3252,7 +3298,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Support Minecraft v1.21 (Tricky Trials)</li>
 </ul>
-<h3 id="fixed_11">Fixed<a class="headerlink" href="#fixed_11" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_12">Fixed<a class="headerlink" href="#fixed_12" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Player::getPing</code> now returns correct value instead of -1 on Linux.</li>
 <li><code>Player::isFlying</code> now works correctly in all conditions.</li>
@@ -3286,14 +3332,14 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
   in <a href="https://github.com/EndstoneMC/endstone/pull/12">#12</a></li>
 <li>Endstone no longer requires the presence of debug symbols at runtime.</li>
 </ul>
-<h3 id="fixed_12">Fixed<a class="headerlink" href="#fixed_12" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_13">Fixed<a class="headerlink" href="#fixed_13" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>Actor::getVelocity</code> now returns the correct velocity when the actor rides a vehicle.</li>
 <li>Python plugin loader now works correctly with Python 3.9.</li>
 </ul>
 <h2 id="046-2024-05-15"><a href="https://github.com/EndstoneMC/endstone/releases/tag/v0.4.6">0.4.6</a> - 2024-05-15<a class="headerlink" href="#046-2024-05-15" title="Permanent link">&para;</a></h2>
 <p><small><a href="https://github.com/EndstoneMC/endstone/compare/v0.4.5...v0.4.6">Compare with 0.4.5</a></small></p>
-<h3 id="fixed_13">Fixed<a class="headerlink" href="#fixed_13" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_14">Fixed<a class="headerlink" href="#fixed_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Improved the detection of Python executable.</li>
 </ul>
@@ -3305,7 +3351,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Python plugin loader now loads all <code>*.whl</code> plugins under the <code>plguins</code> folder and their dependencies during server
   start up.</li>
 </ul>
-<h3 id="fixed_14">Fixed<a class="headerlink" href="#fixed_14" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_15">Fixed<a class="headerlink" href="#fixed_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Scheduler now works on Linux.</li>
 </ul>
@@ -3343,7 +3389,7 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <ul>
 <li>Support for Minecraft v1.20.81 (Bedrock)</li>
 </ul>
-<h3 id="fixed_15">Fixed<a class="headerlink" href="#fixed_15" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_16">Fixed<a class="headerlink" href="#fixed_16" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Server no longer crashes when the weather is changed on Linux.</li>
 </ul>
@@ -3363,7 +3409,7 @@ Additionally, we add a few useful functions to <code>Player</code> and <code>Ser
 <ul>
 <li>Support for Minecraft v1.20.80 - Armored Paws (Bedrock)</li>
 </ul>
-<h3 id="fixed_16">Fixed<a class="headerlink" href="#fixed_16" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_17">Fixed<a class="headerlink" href="#fixed_17" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Player permissions are recalculated when the op status is changed.</li>
 <li>Incorrect UUID for Players corrected.</li>
@@ -3401,7 +3447,7 @@ and <code>Player</code>.</p>
 <li>Wheels are now built and released with <code>RelWithDebInfo</code> configuration to enable stack trace printing.</li>
 <li>Support for Minecraft v1.20.73 (Bedrock)</li>
 </ul>
-<h3 id="fixed_17">Fixed<a class="headerlink" href="#fixed_17" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_18">Fixed<a class="headerlink" href="#fixed_18" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Server no longer crashes when <code>/listd</code> command is executed.</li>
 </ul>
@@ -3424,7 +3470,7 @@ mechanisms.</p>
 <li>Plugin names and websites are now displayed when using <code>/version [plugin: PluginName]</code>.</li>
 <li>Support for Minecraft v1.20.72 (Bedrock)</li>
 </ul>
-<h3 id="fixed_18">Fixed<a class="headerlink" href="#fixed_18" title="Permanent link">&para;</a></h3>
+<h3 id="fixed_19">Fixed<a class="headerlink" href="#fixed_19" title="Permanent link">&para;</a></h3>
 <ul>
 <li>C++ plugin loader now respects the <code>prefix</code> property of a plugin.</li>
 </ul>
