@@ -23,7 +23,6 @@
 #include "endstone/event/player/player_command_event.h"
 #include "endstone/event/server/server_command_event.h"
 
-using endstone::detail::EndstonePlayer;
 using endstone::detail::EndstoneServer;
 
 MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_output) const
@@ -33,8 +32,6 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
         auto command_line = ctx.getCommand();
 
         if (auto *player = sender->asPlayer(); player) {
-            server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
-
             endstone::PlayerCommandEvent event(*player, ctx.getCommand());
             server.getPluginManager().callEvent(event);
 
@@ -42,6 +39,7 @@ MCRESULT MinecraftCommands::executeCommand(CommandContext &ctx, bool suppress_ou
                 return MCRESULT_CommandsDisabled;
             }
             command_line = event.getCommand();
+            server.getLogger().info("{} issued server command: {}", player->getName(), command_line);
         }
 
         if (auto *console = sender->asConsole(); console) {
