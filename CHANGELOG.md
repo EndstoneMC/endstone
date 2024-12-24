@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 0.5.8 - Unreleased
 
-<small>[Compare with 0.5.7](https://github.com/EndstoneMC/endstone/compare/v0.5.7...HEAD)</small>
+<small>[Compare with 0.5.7.1](https://github.com/EndstoneMC/endstone/compare/v0.5.7.1...HEAD)</small>
+
+## [0.5.7.1](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7.1) - 2024-12-24
+
+<small>[Compare with 0.5.7](https://github.com/EndstoneMC/endstone/compare/v0.5.7...v0.5.7.1)</small>
+
+### Fixed
+
+- Fixed an issue where the `event.is_cancelled` property in the Python binding was not writable.
+- Prevented player command execution from being printed to the console if the `PlayerCommandEvent` was already cancelled
+  by plugins.
 
 ## [0.5.7](https://github.com/EndstoneMC/endstone/releases/tag/v0.5.7) - 2024-12-23
 
