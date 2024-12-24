@@ -75,7 +75,9 @@ void init_event(py::module_ &m, py::class_<Event> &event, py::enum_<EventPriorit
             },
             "Gets or sets the cancellation state of this event. A cancelled event will not be executed in "
             "the server, but will still pass to other plugins. [Warning] Deprecated: Use is_cancelled instead.")
-        .def_property_readonly("is_cancelled", &Event::isCancelled, "Gets whether the event is currently cancelled.")
+        .def_property("is_cancelled", &Event::isCancelled, &Event::setCancelled,
+                      "Gets or sets the cancellation state of this event. A cancelled event will not be executed in "
+                      "the server, but will still pass to other plugins.")
         .def_property_readonly("is_asynchronous", &Event::isAsynchronous, "Whether the event fires asynchronously.");
 
     event_priority

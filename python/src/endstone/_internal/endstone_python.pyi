@@ -1073,8 +1073,11 @@ class Event:
     @property
     def is_cancelled(self) -> bool:
         """
-        Gets whether the event is currently cancelled.
+        Gets or sets the cancellation state of this event. A cancelled event will not be executed in the server, but will still pass to other plugins.
         """
+    @is_cancelled.setter
+    def is_cancelled(self, arg1: bool) -> None:
+        ...
 class EventPriority:
     """
     Listeners are called in following order: LOWEST -> LOW -> NORMAL -> HIGH -> HIGHEST -> MONITOR
